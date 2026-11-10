@@ -25,7 +25,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 321; cases with a line that has both a refused and an unknown operand (the order this property guards): 230; cases with a choose stopped at an unknown guard: 392, of which 18 have one refused on every way it can still resolve.
+- Cases with a refused operand somewhere: 321; cases with a line that has both a refused and an unknown operand (the order this property guards): 229; cases with a choose stopped at an unknown guard: 392, of which 18 have one refused on every way it can still resolve.
 
 ## tax_monotone
 
@@ -41,7 +41,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-3192 of 3620 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+3264 of 3696 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.qip_early:true
@@ -84,7 +84,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dependent.absence_no_return:true
 - dependent.hoh_absence:true
 - dependent.tiebreak_other:false
-- dependent.kidnap_eic#0
+- dependent.kidnap_eic_kidnapped#0
+- dependent.kidnap_eic_kidnapped:true
 - dependent.kidnap_eic:true
 - dependent.dc_under13:false
 - dependent.dc_over12_care:false
@@ -111,6 +112,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - eic.no:true
 - eic.wsb_line5_stop:true
 - eic.clergy:true
+- eic.from_step1_foreign#1
+- eic.from_step1_resident#1
 - f1040.line6d:true
 - f1040.line27b:true
 - f1040.line28_box:true
@@ -408,6 +411,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s1a.line21_figured:positive
 - s1a.died_before_65:true
 - s1a.senior_decedent:true
+- s1a.no:true
 - s2.e05_over:true
 - s8812.clw_a4#0
 - s8812.no:true

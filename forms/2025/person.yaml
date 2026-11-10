@@ -92,9 +92,13 @@ form:
       expr:
         op: input
         source: Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?
+          If your card says "Valid for Work Only With DHS Authorization", answer yes only if the DHS authorization is valid.
       cite:
         doc: i1040gi
-        locator: p. 18, Step 3, question 4
+        locator: p. 18, Step 3, question 4; p. 104, Valid SSN for No Tax on Tips, "However, if “Valid for Work Only with DHS
+          Authorization” is printed on your social security card, your SSN is valid only as long as the DHS authorization
+          is valid"; p. 108, Valid SSN, "see Valid SSN for No Tax on Tips, earlier"; p. 110, Valid SSN, "see Valid SSN for No
+          Tax on Tips, earlier"
     - id: person.eic_ssn
       printed: (helper)
       type: Bool
@@ -245,15 +249,15 @@ form:
         - guard:
             op: test
             eq:
-            - person.work_ssn
+            - person.tin
             - const: true
-          then: person.work_ssn
+          then: person.tin
         - guard:
             op: test
             eq:
-            - person.work_ssn
+            - person.tin
             - const: false
-          then: person.tin
+          then: person.work_ssn
       cite:
         doc: i1040gi
         locator: p. 17, Before you begin, "The other spouse must have either an SSN or ITIN"
@@ -5232,6 +5236,50 @@ form:
         doc: i5329
         locator: p. 8, Line 47, "Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025
           from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12)."
+    - id: person.senior_work_ssn
+      printed: (helper)
+      label: Born before January 2, 1961, and has a valid SSN
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.age65
+            - const: true
+          then: person.work_ssn
+        - guard:
+            op: test
+            eq:
+            - person.age65
+            - const: false
+          then: person.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN"'
+    - id: person.spouse_senior_work_ssn
+      printed: (helper)
+      label: Your spouse's entry, if your spouse was born before January 2, 1961, and has a valid SSN
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.role
+            - const: taxpayer
+          then: person.no
+        - guard:
+            op: test
+            eq:
+            - person.role
+            - const: spouse
+          then: person.senior_work_ssn
+      cite:
+        doc: i1040gi
+        locator: 'p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN"'
   # --- end Stage 21 ---
   collection:
     cite:

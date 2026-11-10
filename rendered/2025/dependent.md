@@ -417,8 +417,8 @@
 ## (gate) — `dependent.kidnap_residency`
 
 - **Authored helper label:** A child presumed kidnapped who lived with you for fewer than 7 months of 2025, not counting the time missing
-- **Encoded (Bool):** helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?" = true and helper "Months lived with you in 2025, counting temporary absences" < 7 (a count)
-- Expr: `{"all":[{"eq":["dependent.kidnapped",{"const":true}],"op":"test"},{"lt":["dependent.months",{"const":7,"type":"Count"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Lived with you for fewer than 7 months of 2025, not counting the time missing" = true → helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?"] [helper "Lived with you for fewer than 7 months of 2025, not counting the time missing" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.under_7_months",{"const":true}],"op":"test"},"then":"dependent.kidnapped"},{"guard":{"eq":["dependent.under_7_months",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [p501] p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true." (a child who lived with you for more than half of 2025 meets the residency test without this treatment) (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
 
 ## (helper) — `dependent.no`
@@ -581,8 +581,8 @@
 ## (gate) — `dependent.qr_kidnapped`
 
 - **Authored helper label:** A child aged 18 or under at the end of 2025 presumed kidnapped by someone who isn't a family member
-- **Encoded (Bool):** helper "Age at the end of 2025" < 19 (a count) and helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?" = true
-- Expr: `{"all":[{"lt":["dependent.age",{"const":19,"type":"Count"}],"op":"test"},{"eq":["dependent.kidnapped",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Aged 18 or under at the end of 2025" = true → helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?"] [helper "Aged 18 or under at the end of 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.under_19_kidnap",{"const":true}],"op":"test"},"then":"dependent.kidnapped"},{"guard":{"eq":["dependent.under_19_kidnap",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [p501] p. 18, Kidnapped child, "This treatment applies for all years until the earlier of: 1. The year there is a determination that the child is dead, or 2. The year the child would have reached age 18." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
 
 ## (helper) — `dependent.qualifying_relative`
@@ -613,16 +613,16 @@
 ## (gate) — `dependent.claimed_no_tin`
 
 - **Authored helper label:** A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN
-- **Encoded (Bool):** helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = false and (helper "Qualifying child who is your dependent (Step 2)" = true or helper "Qualifying relative who is your dependent (Step 4, questions 2 and 5)" = true)
-- Expr: `{"all":[{"eq":["dependent.tin",{"const":false}],"op":"test"},{"any":[{"eq":["dependent.qc_dependent",{"const":true}],"op":"test"},{"eq":["dependent.qr_dependent",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = false → helper "Meets the tests to be your dependent (a qualifying child, or else a qualifying relative)"] [helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.tin",{"const":false}],"op":"test"},"then":"dependent.meets_tests"},{"guard":{"eq":["dependent.tin",{"const":true}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 22, Social security number, "You must enter each dependent’s social security number (SSN)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.claimed`
 
 - **Authored helper label:** Your dependent
-- **Encoded (Bool):** (helper "Qualifying child who is your dependent (Step 2)" = true or helper "Qualifying relative who is your dependent (Step 4, questions 2 and 5)" = true)
+- **Encoded (Bool):** Enter the amount from helper "Meets the tests to be your dependent (a qualifying child, or else a qualifying relative)".
 - **Refusal:** when dependent.claimed_no_tin is true, cannot complete Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3)). Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as "Died" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool. Cite: [i1040gi] p. 22, Social security number, "You must enter each dependent’s social security number (SSN)" and "If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter “Died” on row (3) of the Dependents section and include a copy of the child’s birth certificate, death certificate, or hospital records"; p. 14, Head of Household, "The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR" (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"any":[{"eq":["dependent.qc_dependent",{"const":true}],"op":"test"},{"eq":["dependent.qr_dependent",{"const":true}],"op":"test"}],"op":"test"}`
+- Expr: `{"from":"dependent.meets_tests","op":"copy"}`
 - Cite: [i1040gi] pp. 17–19, Who Qualifies as Your Dependent (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.under_ctc_age`
@@ -804,11 +804,11 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["dependent.other_claimant",{"const":true}],"op":"test"},"then":"dependent.eic_child_tests"},{"guard":{"eq":["dependent.other_claimant",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 44, Qualifying child of more than one person, "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits" (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `dependent.kidnap_eic_related`
+## (helper) — `dependent.kidnap_eic_kidnapped`
 
-- **Authored helper label:** A child presumed kidnapped: meets the EIC relationship test but did not live with you in the United States for more than half of 2025
-- **Encoded (Bool):** Choose — [helper "A child, sibling, or a descendant of either" = true → helper "Did not live with you in the United States for more than half of 2025"] [helper "A child, sibling, or a descendant of either" = false → helper "Year parameter household.no (false)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qc_relationship",{"const":true}],"op":"test"},"then":"dependent.not_us_half"},{"guard":{"eq":["dependent.qc_relationship",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- **Authored helper label:** A child who meets the EIC relationship test: presumed kidnapped and did not live with you in the United States for more than half of 2025
+- **Encoded (Bool):** Choose — [helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?" = true → helper "Did not live with you in the United States for more than half of 2025"] [helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.kidnapped",{"const":true}],"op":"test"},"then":"dependent.not_us_half"},{"guard":{"eq":["dependent.kidnapped",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.not_us_half`
@@ -821,8 +821,8 @@
 ## (gate) — `dependent.kidnap_eic`
 
 - **Authored helper label:** A child presumed kidnapped who meets the EIC relationship test but did not live with you in the United States for more than half of 2025, not counting the time missing
-- **Encoded (Bool):** Choose — [helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?" = true → helper "A child presumed kidnapped: meets the EIC relationship test but did not live with you in the United States for more than half of 2025"] [helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?" = false → helper "Year parameter household.no (false)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["dependent.kidnapped",{"const":true}],"op":"test"},"then":"dependent.kidnap_eic_related"},{"guard":{"eq":["dependent.kidnapped",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- **Encoded (Bool):** Choose — [helper "A child, sibling, or a descendant of either" = true → helper "A child who meets the EIC relationship test: presumed kidnapped and did not live with you in the United States for more than half of 2025"] [helper "A child, sibling, or a descendant of either" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qc_relationship",{"const":true}],"op":"test"},"then":"dependent.kidnap_eic_kidnapped"},{"guard":{"eq":["dependent.qc_relationship",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.eic_ssn_child`
@@ -1293,3 +1293,24 @@
 - **Shown on the values sheet only when:** A lifetime learning credit student: an eligible student who is not an American opportunity credit student (`dependent.edu_llc`)
 - Expr: `{"alternatives":[{"guard":{"eq":["dependent.edu_llc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.zero"},"def":"aqee","line":"ws4_llc"}},{"guard":{"eq":["dependent.edu_llc",{"const":false}],"op":"test"},"then":"dependent.zero"}],"op":"choose"}`
 - Cite: [f8863] p. 2, Part III, line 31, "Adjusted qualified education expenses (see instructions). Include the total of all amounts from all Parts III, line 31, on Part II, line 10"; i8863 p. 9, Line 31 (2025; sha256 a251a1cf)
+
+## (helper) — `dependent.under_7_months`
+
+- **Authored helper label:** Lived with you for fewer than 7 months of 2025, not counting the time missing
+- **Encoded (Bool):** helper "Months lived with you in 2025, counting temporary absences" < 7 (a count)
+- Expr: `{"lt":["dependent.months",{"const":7,"type":"Count"}],"op":"test"}`
+- Cite: [p501] p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true." (a child who lived with you for more than half of 2025 meets the residency test without this treatment) (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `dependent.under_19_kidnap`
+
+- **Authored helper label:** Aged 18 or under at the end of 2025
+- **Encoded (Bool):** helper "Age at the end of 2025" < 19 (a count)
+- Expr: `{"lt":["dependent.age",{"const":19,"type":"Count"}],"op":"test"}`
+- Cite: [p501] p. 18, Kidnapped child, "This treatment applies for all years until the earlier of: 1. The year there is a determination that the child is dead, or 2. The year the child would have reached age 18." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `dependent.meets_tests`
+
+- **Authored helper label:** Meets the tests to be your dependent (a qualifying child, or else a qualifying relative)
+- **Encoded (Bool):** Choose — [helper "Qualifying child who is your dependent (Step 2)" = true → helper "Qualifying child who is your dependent (Step 2)"] [helper "Qualifying child who is your dependent (Step 2)" = false → helper "Qualifying relative who is your dependent (Step 4, questions 2 and 5)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qc_dependent",{"const":true}],"op":"test"},"then":"dependent.qc_dependent"},{"guard":{"eq":["dependent.qc_dependent",{"const":false}],"op":"test"},"then":"dependent.qr_dependent"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 17–19, Who Qualifies as Your Dependent (2025; printed date 2026-02-25; sha256 482e9c48)

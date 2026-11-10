@@ -751,17 +751,20 @@ form:
       type: Bool
       label: A child presumed kidnapped who lived with you for fewer than 7 months of 2025, not counting the time missing
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.kidnapped
-              - const: true
-          - op: test
-            lt:
-              - dependent.months
-              - const: 7
-                type: Count
+            - dependent.under_7_months
+            - const: true
+          then: dependent.kidnapped
+        - guard:
+            op: test
+            eq:
+            - dependent.under_7_months
+            - const: false
+          then: dependent.no
       cite:
         doc: p501
         locator: p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true." (a child who lived with you for more than half of 2025 meets the residency test without this treatment)
@@ -1213,17 +1216,20 @@ form:
       type: Bool
       label: A child aged 18 or under at the end of 2025 presumed kidnapped by someone who isn't a family member
       expr:
-        op: test
-        all:
-          - op: test
-            lt:
-              - dependent.age
-              - const: 19
-                type: Count
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.kidnapped
-              - const: true
+            - dependent.under_19_kidnap
+            - const: true
+          then: dependent.kidnapped
+        - guard:
+            op: test
+            eq:
+            - dependent.under_19_kidnap
+            - const: false
+          then: dependent.no
       cite:
         doc: p501
         locator: 'p. 18, Kidnapped child, "This treatment applies for all years until the earlier of: 1. The year there is a determination that the child is dead, or 2. The year the child would have reached age 18."'
@@ -1329,22 +1335,20 @@ form:
       type: Bool
       label: A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN
       expr:
-        op: test
-        all:
-        - op: test
-          eq:
-          - dependent.tin
-          - const: false
-        - op: test
-          any:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-            - dependent.qc_dependent
-            - const: true
-          - op: test
+            - dependent.tin
+            - const: false
+          then: dependent.meets_tests
+        - guard:
+            op: test
             eq:
-            - dependent.qr_dependent
+            - dependent.tin
             - const: true
+          then: dependent.no
       cite:
         doc: i1040gi
         locator: 'p. 22, Social security number, "You must enter each dependent’s social security number (SSN)"'
@@ -1353,16 +1357,8 @@ form:
       type: Bool
       label: Your dependent
       expr:
-        op: test
-        any:
-        - op: test
-          eq:
-          - dependent.qc_dependent
-          - const: true
-        - op: test
-          eq:
-          - dependent.qr_dependent
-          - const: true
+        op: copy
+        from: dependent.meets_tests
       cite:
         doc: i1040gi
         locator: pp. 17–19, Who Qualifies as Your Dependent
@@ -1914,10 +1910,10 @@ form:
       cite:
         doc: i1040gi
         locator: p. 44, Qualifying child of more than one person, "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits"
-    - id: dependent.kidnap_eic_related
+    - id: dependent.kidnap_eic_kidnapped
       printed: (helper)
-      label: 'A child presumed kidnapped: meets the EIC relationship test but did not live with you in the United States for more
-        than half of 2025'
+      label: 'A child who meets the EIC relationship test: presumed kidnapped and did not live with you in the United States
+        for more than half of 2025'
       type: Bool
       expr:
         op: choose
@@ -1925,20 +1921,18 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.qc_relationship
+            - dependent.kidnapped
             - const: true
           then: dependent.not_us_half
         - guard:
             op: test
             eq:
-            - dependent.qc_relationship
+            - dependent.kidnapped
             - const: false
           then: dependent.no
       cite:
         doc: i1040gi
-        locator: p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see
-          Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets
-          the residency test without this treatment)
+        locator: p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment)
     - id: dependent.not_us_half
       printed: (helper)
       label: Did not live with you in the United States for more than half of 2025
@@ -1950,9 +1944,7 @@ form:
         - const: false
       cite:
         doc: i1040gi
-        locator: p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see
-          Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets
-          the residency test without this treatment)
+        locator: p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment)
     - id: dependent.kidnap_eic
       printed: (gate)
       type: Bool
@@ -1963,13 +1955,13 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.kidnapped
+            - dependent.qc_relationship
             - const: true
-          then: dependent.kidnap_eic_related
+          then: dependent.kidnap_eic_kidnapped
         - guard:
             op: test
             eq:
-            - dependent.kidnapped
+            - dependent.qc_relationship
             - const: false
           then: dependent.no
       cite:
@@ -3152,6 +3144,54 @@ form:
           locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for
             each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having
             paid) qualified education expenses in 2025."
+    - id: dependent.under_7_months
+      printed: (helper)
+      type: Bool
+      label: Lived with you for fewer than 7 months of 2025, not counting the time missing
+      expr:
+        op: test
+        lt:
+          - dependent.months
+          - const: 7
+            type: Count
+      cite:
+        doc: p501
+        locator: p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true." (a child who lived with you for more than half of 2025 meets the residency test without this treatment)
+    - id: dependent.under_19_kidnap
+      printed: (helper)
+      type: Bool
+      label: Aged 18 or under at the end of 2025
+      expr:
+        op: test
+        lt:
+          - dependent.age
+          - const: 19
+            type: Count
+      cite:
+        doc: p501
+        locator: 'p. 18, Kidnapped child, "This treatment applies for all years until the earlier of: 1. The year there is a determination that the child is dead, or 2. The year the child would have reached age 18."'
+    - id: dependent.meets_tests
+      printed: (helper)
+      type: Bool
+      label: Meets the tests to be your dependent (a qualifying child, or else a qualifying relative)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_dependent
+            - const: true
+          then: dependent.qc_dependent
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_dependent
+            - const: false
+          then: dependent.qr_dependent
+      cite:
+        doc: i1040gi
+        locator: pp. 17–19, Who Qualifies as Your Dependent
     # --- end Stage 19 ---
   collection:
     cite:

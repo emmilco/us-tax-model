@@ -828,6 +828,18 @@
   },
   {
    "case": "classm.eic.9",
+   "printed": "2",
+   "project": "$595.00",
+   "model": "$0.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. A married filer filing separately with no qualifying child stops at Step 4, question 1 (i1040gi p. 41, \"Yes. STOP You can't take the credit\"), so Worksheet A is not completed and line 2 is not shown: the project hides it (shown_when eic.eligible, false here) and Form 1040 line 27a, eic.credit, is $0, as the model says. The project's line 2 is the worksheet's computed but unshown amount ($595.00, the EIC Table amount for line 1), the value this case asserted in the previous round; a hidden line's internal value is not a difference (adjudication method, the shown_when rule), so the model's $0.00 for an unshown line is not evidence.",
+   "drop": true,
+   "context": "73b43fa133edebc3413e5457baacf89aaf279ce21aaa8345881eab7689383057",
+   "date": "2026-11-10",
+   "run": "f38e3f54a8eb1573679c250e0f8454468cbcadf8769de63ccbde045f4759f2c0",
+   "subject_key": "cbfd548085feb328586b9e2b2e52de4302484487e513e6c8a1cbd973f248f7c5"
+  },
+  {
+   "case": "classm.eic.9",
    "printed": "5",
    "project": "$2,787.00",
    "model": "$0.00",
@@ -850,12 +862,12 @@
    "printed": "6 (eic.line6)",
    "project": "$595.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. i1040gi p. 41, Step 4, question 1: \"Are you a married taxpayer whose filing status is married filing separately or head of household? ... Yes. STOP You can't take the credit.\" The case is married filing separately with no qualifying child; the model stops and enters $0.00. The project agrees that the step stops (executed on the job's inputs: eic.married_rules true, eic.step4 false), hides Worksheet A line 6 (shown_when eic.eligible) and gives the credit through eic.credit, which Form 1040 line 27a reads, not line 6; on this case eic.eligible, eic.credit and line 27a are refused at scope.other_line16, and the separate return is refused at s3.mfs as well. Line 6's $595.00 is the worksheet arithmetic on a line the filer never reaches and no printed amount takes it; as classm.eic.5 and classm.eic.8.",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. A married filer filing separately with no qualifying child stops at Step 4, question 1 (i1040gi p. 41, \"Yes. STOP You can't take the credit\"), so Worksheet A is not completed and line 6 is not shown: the project hides it (shown_when eic.eligible, false here) and Form 1040 line 27a, eic.credit, is $0, as the model says. The project's line 6 is the worksheet's computed but unshown amount ($595.00, the EIC Table amount for line 1), the value this case asserted in the previous round; a hidden line's internal value is not a difference (adjudication method, the shown_when rule), so the model's $0.00 for an unshown line is not evidence.",
    "drop": true,
-   "context": "09046fe9150e5bbe6d19901982570a7789da09f4e78d6377ef2a92a86d6cb2ca",
-   "date": "2026-11-09",
-   "run": "1e6f90ef30d0e08392f7bee2bd9225ad2f4dce5152886db3ef3cdc7826c0535c",
-   "subject_key": "2def72184214d51792ee0e5a7a80274d6c5107b6e4654b7cd4e5e9b4547096ad"
+   "context": "73b43fa133edebc3413e5457baacf89aaf279ce21aaa8345881eab7689383057",
+   "date": "2026-11-10",
+   "run": "f38e3f54a8eb1573679c250e0f8454468cbcadf8769de63ccbde045f4759f2c0",
+   "subject_key": "e4d69a26270e45ecd2f68a63be3e54fc616e6b53564c00f7acce3d166eec3085"
   }
  ]
 }

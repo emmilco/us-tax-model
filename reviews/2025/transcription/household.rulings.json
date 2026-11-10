@@ -138,6 +138,48 @@
   },
   {
    "printed": "household.ctc_disallowed_claim",
+   "project_expr_sha256": "684afea5fdbe3fa7d2c22e7b862e75adfc797ca6ac2cd86f8b85fe2ac3c933d8",
+   "second_expr_sha256": "cc2a9a7cc08a724a93c974fd59329c6f823b34d2fd6532c699dddd12d9151747",
+   "ruling": "Ruling: model error; i1040s8812 p. 2, Form 8862 may be required, \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\". As ruled before (T-101): the reply copies household.credit_disallowed, true whenever the answer is Yes also on a return that claims none of the credits (f2.t101.credit_disallowed_eic_zero: project false, reply true), and it needs the answer where the project does not ask it (classm.s8812.4.deepseek). Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/household.json; 1,747 fixtures, 500 generated returns seed 20261026, 247 partial records): 1,717 of 2,520 comparisons agree; differences {\"candidate-unknown\": 98, \"project-refuses\": 629, \"project-unknown\": 74, \"value\": 2}; on completed returns {\"candidate-unknown\": 73, \"value\": 1}.",
+   "context": "122b1e22d2926a1d8080f188877d9eb30e3931f99d94e107928fd83bc0c1d505",
+   "date": "2026-11-10",
+   "run": "d1e6f80210704f68f45f6c7c6d7004d691de5b076590f5c6ad2c6ef36f05f56d",
+   "subject_key": "a87b6a3ad6b14bced2e4ba624cf3b4622094a81f46e9a0d81c2cd46f0f9db614",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@household",
+     "fixture:stage14.asset.refuse_ads_past_gds@household",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@household",
+     "fixture:stage14.asset.refuse_class@household",
+     "fixture:stage14.asset.refuse_listed_low@household",
+     "fixture:stage14.asset.refuse_s179_over@household",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@household",
+     "fixture:classm.f2441.2.deepseek@household",
+     "fixture:classm.f8889.3.deepseek@household",
+     "fixture:classm.f8889.4.deepseek@household",
+     "fixture:classm.f8889.5.deepseek@household",
+     "fixture:classm.s8812.4.deepseek@household",
+     "fixture:classm.retirement.2.deepseek@household",
+     "fixture:classm.sa.3.deepseek@household",
+     "fixture:classm.sa.4.deepseek@household",
+     "fixture:classm.sa.5.deepseek@household",
+     "fixture:classm.f4952.4@household",
+     "fixture:classm.f5695.1@household",
+     "fixture:f2.t101.credit_disallowed_eic_zero@household",
+     "fixture:stage9.mut.eic_no_child_credit_disallowed@household"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "household.ctc_disallowed_claim",
    "project_expr_sha256": "ffbc720bfff29e3eabffba919d8a29be3a7a9927fac7ee0ba217b4756dd5f2ec",
    "second_expr_sha256": "cc2a9a7cc08a724a93c974fd59329c6f823b34d2fd6532c699dddd12d9151747",
    "ruling": "Ruling: model error; i1040s8812 p. 2, Form 8862 may be required, \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\" (Form 8862 is needed only to claim the credit). The candidate copies household.credit_disallowed, so it is true whenever the answer is Yes, also on a return that claims no child tax credit or credit for other dependents (Schedule 8812 line 8 not above line 11, where line 12 says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\"). The project tests line 8 above line 11 first and then the answer, which it now reads through its gate line household.credit_disallowed_if_claimed (asked only when the return claims one of the four credits). executable-triage-v2 (`../triage/household.json`; 1,638 fixtures, 500 generated returns seed 20261026, 235 partial records): no value difference on a completed return; 1 candidate-unknown on a completed return (the answer is withheld where the project does not need it); the other differences are refused or incomplete records. Same reading as the earlier ruling on this line (T-101). Project stands.",
@@ -145,6 +187,35 @@
    "date": "2026-11-07",
    "run": "fa36aa981f8ec0e7456e8e192b53d811200ce695d2923cbaa6d92e47db602333",
    "subject_key": "8417c11399fcffd76cbcf8902720ccd3383d325ad06dbbc2629237f0b8e94a37"
+  },
+  {
+   "printed": "household.ctc_ssn",
+   "project_expr_sha256": "8de7ab006fca42eda69ab358242e4503193cb538cb34e219cc094ec17f04f1b5",
+   "second_expr_sha256": "f2424df01388cb3dfebf47d111ce3630c3adc92b543298bfbebce78099d3fc94",
+   "ruling": "Ruling: representation; project retained. i1040gi p. 17, Before you begin: \"If you are filing a joint return, only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN\". The reply counts the taxpayer's and the spouse's entries by role; the project counts every person, and any roster other than one entry for you and, on a joint return, one for your spouse is refused at Form 1040 line 1a (household.roster_bad), so the counts agree within scope, as ruled before. The project's person count reads person.work_ssn_or_tin, now a choice on person.tin first (owner, T-264), so it is unknown on records that answer work_ssn and withhold tin (classm.s1a.1: no dependent, the line is not read on that return); the reply's unknowns withhold the filing status (stage21.choose.eic_limit_status_unanswered). No value differs. Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/household.json; 1,747 fixtures, 500 generated returns seed 20261026, 247 partial records): 2,484 of 2,520 comparisons agree; differences {\"candidate-unknown\": 3, \"project-unknown\": 33}; on completed returns {\"project-unknown\": 5}.",
+   "context": "122b1e22d2926a1d8080f188877d9eb30e3931f99d94e107928fd83bc0c1d505",
+   "date": "2026-11-10",
+   "run": "d1e6f80210704f68f45f6c7c6d7004d691de5b076590f5c6ad2c6ef36f05f56d",
+   "subject_key": "89daaa64198086deab00bbf2a33eb58b9357ef79c322683b2bf83e726e30b0b6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@household",
+     "fixture:classm.f2441.2.deepseek@household",
+     "fixture:classm.f2441.3.deepseek@household",
+     "fixture:classm.f2441.4.deepseek@household",
+     "fixture:classm.f2441.5.deepseek@household",
+     "fixture:classm.f2441.6.deepseek@household",
+     "fixture:stage21.choose.eic_limit_status_unanswered@household",
+     "fixture:mutation.t2.s1a.mfs_ssn_unanswered@household",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@household"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "household.ctc_ssn",
@@ -292,6 +363,48 @@
    "ruling": "Ruling: model error; i1040gi p. 43, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed ...\" (the form goes with a claim of the credit). The candidate copies household.credit_disallowed, so the earned income credit refuses on a Yes answer also when Steps 1 to 5 are not passed and no credit is claimed (f2.t101.credit_disallowed_no_credit_claimed, completed: project false, candidate true; audit.s8812.credit_disallowed, refused), and it needs the answer where eic.eligible is false. The project-refuses differences are refused records on which eic.eligible refuses. The package's narrowing (PENDING-9, T-101) matches the source. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 2,255 of 2,284 agree; 21 candidate-unknown, 6 project-refuses, 2 value; on returns the full interview completes: 2 candidate-unknown, 1 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 2 candidate-unknown household.credit_disallowed (for example classm.f8962.3.deepseek without household.credit_disallowed, household); 1 value (for example f2.t101.credit_disallowed_no_credit_claimed, household). Project stands.",
    "context": "5b3ad023b8158dd828f19e76a88fc32de3950137e88089d97c1f217572bbfa8c",
    "subject_key": "62b5ae5f1a4d4361adb5b2d1a8a16f5f5fb254af36aea0dfbd8c3dedaa50554c"
+  },
+  {
+   "printed": "household.eic_disallowed_claim",
+   "project_expr_sha256": "bd2646fb905574b228d50ec02a822a3c3526e372bd42a0bdcbc699357e0a577d",
+   "second_expr_sha256": "cc2a9a7cc08a724a93c974fd59329c6f823b34d2fd6532c699dddd12d9151747",
+   "ruling": "Ruling: model error; i1040gi p. 43, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed\" (the form goes with a claim of the credit). As ruled before (T-101): the reply copies household.credit_disallowed, so it is true on a Yes answer also when no credit is claimed (f2.t101.credit_disallowed_eic_zero: project false, reply true), and it needs the answer where eic.eligible is false and the project does not ask it (classm.s8812.4.deepseek). Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/household.json; 1,747 fixtures, 500 generated returns seed 20261026, 247 partial records): 1,804 of 2,520 comparisons agree; differences {\"candidate-unknown\": 104, \"project-refuses\": 540, \"project-unknown\": 70, \"value\": 2}; on completed returns {\"candidate-unknown\": 73, \"value\": 1}.",
+   "context": "122b1e22d2926a1d8080f188877d9eb30e3931f99d94e107928fd83bc0c1d505",
+   "date": "2026-11-10",
+   "run": "d1e6f80210704f68f45f6c7c6d7004d691de5b076590f5c6ad2c6ef36f05f56d",
+   "subject_key": "12b95f968277748af7f0e2d24b57eccf1951e18803fd8d01d45877780e92e965",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@household",
+     "fixture:stage14.asset.refuse_ads_past_gds@household",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@household",
+     "fixture:stage14.asset.refuse_class@household",
+     "fixture:stage14.asset.refuse_listed_low@household",
+     "fixture:stage14.asset.refuse_s179_over@household",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@household",
+     "fixture:classm.f8889.3.deepseek@household",
+     "fixture:classm.f8889.4.deepseek@household",
+     "fixture:classm.f8889.5.deepseek@household",
+     "fixture:classm.s8812.4.deepseek@household",
+     "fixture:classm.sa.1.deepseek@household",
+     "fixture:classm.sa.3.deepseek@household",
+     "fixture:classm.sa.4.deepseek@household",
+     "fixture:classm.sa.5.deepseek@household",
+     "fixture:classm.carloan.3@household",
+     "fixture:classm.f4952.4@household",
+     "fixture:classm.f8889.3@household",
+     "fixture:f2.t101.credit_disallowed_eic_zero@household",
+     "fixture:audit.s8812.credit_disallowed@household"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "household.filing_status_conflict",
@@ -593,9 +706,11 @@
    "printed": "household.taxpayer_work_ssn",
    "project_expr_sha256": "9c19df7c37b0505e2f4c4bb402aebc0ceb35a8ae76307dfd91fd64e90b3c668d",
    "second_expr_sha256": "e586f24f3edc5edc31c8d6b3b247b49e4a64144dc106c71d9990dbf6718f63d1",
-   "ruling": "Ruling: representation; i1040gi pp. 101, 106 and 110 (Schedule 1-A: the taxpayer's own valid SSN). The reply now counts only the taxpayer's entry, as the project (1 <= n against 0 < n on an integral count); the prior model error (either spouse) is gone. No difference. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,300 of 2,300 agree; none; on returns the full interview completes: none. Project stands.",
-   "context": "3869ce22c01134c6d9d30980dd470592291ac6d1e7fdba1542c35829e23815de",
-   "subject_key": "54d79afc8fd529496402fc1b95fdd3c7b0d35ccdd465fb12da81c0d3efc07945",
+   "ruling": "Ruling: representation; project retained. The project tests 0 < count and the reply 1 <= count; for a count the two are the same test, as ruled before. No difference. Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/household.json; 1,747 fixtures, 500 generated returns seed 20261026, 247 partial records): 2,520 of 2,520 comparisons agree; differences {}; on completed returns none.",
+   "context": "122b1e22d2926a1d8080f188877d9eb30e3931f99d94e107928fd83bc0c1d505",
+   "date": "2026-11-10",
+   "run": "d1e6f80210704f68f45f6c7c6d7004d691de5b076590f5c6ad2c6ef36f05f56d",
+   "subject_key": "20eee7513d316ad89ff84372abc44c5a6ad96223691288f030d9f6cf6544b6a5",
    "triage": {
     "verdict": "agrees on sample",
     "kinds": [],

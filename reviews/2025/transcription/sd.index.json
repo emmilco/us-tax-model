@@ -1,485 +1,489 @@
 {
- "kind": "transcription",
- "form": "sd",
- "family": "claude",
- "base": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
- "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
- },
- "lines": [
-  {
-   "key": "sd.line18",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "5799834bbfedaa7095b142b1176e6a709368c46854ca9ec0fd56a0fcf37aa765"
+  "kind": "transcription",
+  "form": "sd",
+  "family": "claude",
+  "base": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+  "head_rows": {
+    "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews",
+    "agree / disagree / missing": "15 / 41 / 0"
   },
-  {
-   "key": "sd.line19",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "9ac57baf2ba8927b4ee2731b08a94160a42be73648c2a728e7e99825fc80e8c1"
+  "lines": [
+    {
+      "key": "sd.line18",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "AGREE",
+      "subject_key": "5799834bbfedaa7095b142b1176e6a709368c46854ca9ec0fd56a0fcf37aa765"
+    },
+    {
+      "key": "sd.line19",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "AGREE",
+      "subject_key": "9ac57baf2ba8927b4ee2731b08a94160a42be73648c2a728e7e99825fc80e8c1"
+    },
+    {
+      "key": "sd.filing4952",
+      "record": "63ed4e60666ed661a75e5e7d0a83f29f6882822276f4dcc88ae33c9856ec80a4",
+      "status": "DISAGREE",
+      "ruling": "Ruling: model error; f4952 p. 3, Who Must File: \"you must file Form 4952 to claim a deduction for your investment interest expense. Exception. You don't have to file Form 4952 if all of the following apply.\" The reply's note says the Schedule D pages do not say when Form 4952 is filed and reads it as filed whenever the filer has investment interest (f4952.has_interest); the project reads f4952.required (Form 4952 used, an election on line 4g or interest paid or carried forward, and the filing test with its exception). The reply is true where the exception applies and the form is not filed (classm.sd.2.deepseek: project false, reply true). The reply was not given the Form 4952 pages that decide it (an interface gap of the review), but its reading contradicts the source. Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/sd.json; 1,747 fixtures, 500 generated returns seed 20261026, 120 partial records): 1,994 of 2,366 comparisons agree; differences {\"project-refuses\": 135, \"project-unknown\": 24, \"value\": 213}; on completed returns {\"value\": 67}.",
+      "subject_key": "4b338abbb122ccbb5a9591238dd21a19ccef93225d8f9f2614ef5a93c7c50b05"
+    },
+    {
+      "key": "sd.investment_election",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; i1040sd p. 15, Schedule D Tax Worksheet: complete it \"if you file Form 4952 and you have an amount on line 4g\", line 3: \"Enter the amount from Form 4952 ..., line 4g\". The candidate yields f4952.line4g when Form 4952 is filed or line 4g is positive and 0 otherwise; the project copies f4952.election, line 4g behind its cited gates, so both give line 4g whenever both compute. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,039 of 2,115 comparisons agree; 65 candidate-refuses, 9 project-refuses, 2 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 2}, \"refused\": {\"candidate-refuses\": 65, \"project-refuses\": 9}}). No value differs. All 65 candidate-refuses are on returns the project refuses elsewhere (by return: refused): the candidate's filing test reads Form 4952 and Schedule B terms the project does not read at this line (f4952.unsupported 17, sb.line8 11, f4952.alternative_allocation 11, sb.unsupported 10, sb.fbar_required 9, sb.form8938 5, f4952.bad_dividends 2); the 9 project-refuses are cited gates (div.bad_components 6, div.unsupported 1, sales[s2].digital 1, sales[s1].digital 1); the 2 project-unknown withhold sales[s2].aggregate_eligible. Project stands.",
+      "subject_key": "af13182b5c0d73967e70536b098fad66d23a4ce174bb702f7aee36b8fb49a4a4"
+    },
+    {
+      "key": "sd.filed",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "DISAGREE",
+      "ruling": "Ruling: model error; i1040gi p. 31, Line 7a, Exception 1: \"1. You have no capital losses, and your only capital gains are capital gain distributions from Form(s) 1099-DIV, box 2a ... and 2. None of the Form(s) 1099-DIV ... have an amount in box 2b ..., box 2c ..., or box 2d\"; i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet to figure your capital loss carryovers from 2024 to 2025 if your 2024 Schedule D, line 21, is a loss and (a) ... or (b) ... Otherwise, you don’t have any carryovers.\" The candidate requires Schedule D whenever sd.carryover is answered Yes; the project requires it when line 6 or line 14 is a nonzero loss (with the sales count and lines 18 and 19). executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,027 of 2,115 comparisons agree; 43 project-refuses, 41 project-unknown, 4 value (by return: {\"incomplete\": {\"project-unknown\": 32, \"value\": 2}, \"refused\": {\"project-refuses\": 43, \"project-unknown\": 9, \"value\": 2}}). The 4 value differences, each project false and candidate true with sd.carryover Yes, no sales, lines 6, 14, 18 and 19 all $0: classm.f8863.3.deepseek (refused), classm.f8863.3 (refused), stage20.line21_at_both_bounds (incomplete), stage20.mut.line21_below_limit (incomplete); a Yes with worksheet lines 8 and 13 at $0 leaves no capital loss, so Exception 1 applies and the project is right. None is on a completed return. Project refusals: sd.other_forms 17, div.unsupported 10, div.bad_components 8, div.section1202 3, div.amt 3, div.bad_special 2; project-unknown: sd.distributions 32, sd.other_forms 7, clcw.prior_sd15 1, sd.carryover 1 (withheld screen answers): scope. Same expression and reading as Stage 20. Project stands.",
+      "subject_key": "a0da8172869390721a53d2819210659f4d223b63b3b4ca26e82da1fadbffa1ef"
+    },
+    {
+      "key": "sd.zero",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "AGREE",
+      "subject_key": "daef9d66f55b601a2e3ca88cd01274f3cd02e485b4918f7b6e0f9bda4bf662c4"
+    },
+    {
+      "key": "sd.has_loss",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "AGREE",
+      "subject_key": "4b26b3dd4851a8b0268bbe134078552ef98ef09b387286bc2932ec3823388ef0"
+    },
+    {
+      "key": "sd.to1040",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 2, line 16: \"If line 16 is zero, skip lines 17 through 21 below and enter -0- on Form 1040, 1040-SR, or 1040-NR, line 7a\". The candidate's extra zero branch equals line 16 when line 16 is zero; both enter line 16 for a gain and line 21 for a loss. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,043 of 2,115 comparisons agree; 71 project-refuses, 1 project-unknown (by return: {\"refused\": {\"project-refuses\": 71, \"project-unknown\": 1}}). No value differs. Project refusals are cited Schedule D and Form 1099-DIV gates (div.bad_components 18, sales[s1].digital 17, div.unsupported 11, sales[s2].digital 7, sales[a].digital 6, div.section1202 5, div.amt 4, div.bad_special 2, sales[s3].digital 1); the project-unknown withholds div.box2c. Same reading as Stage 20. Project stands.",
+      "subject_key": "ba6b66c7707a04f84ae0b6e72bb44b96abb26af7c99b85f291b0cc435e4e5a3f"
+    },
+    {
+      "key": "sd.net_gain",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "DISAGREE",
+      "ruling": "Ruling: representation; i1040gi p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3: \"Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-\". The candidate's min(max(line 15, 0), max(line 16, 0)) equals the project's max(min(line 15, line 16), 0) for all values. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,043 of 2,115 comparisons agree; 71 project-refuses, 1 project-unknown (by return: {\"refused\": {\"project-refuses\": 71, \"project-unknown\": 1}}). No value differs; the differences are cited gates (div.bad_components 18, sales[s1].digital 17, div.unsupported 11, sales[s2].digital 7, sales[a].digital 6, div.section1202 5, div.amt 4, div.bad_special 2, sales[s3].digital 1) and one withheld div.box2c. Project stands.",
+      "subject_key": "bbd11d3431a342ef07b9f30cbe7af8598db355f34749342fae4dbef7b6eeb0a3"
+    },
+    {
+      "key": "sd.distributions_if_dividends",
+      "record": "f75a302aa919962360442c473d2a93acc82a60b95521fe942b058224ee7fdfec",
+      "status": "AGREE",
+      "subject_key": "e1cf4351f9ddd9a6b43463bfb2567cc4b977baa5f523761f209222e786b3d8af"
+    },
+    {
+      "key": "1a(d)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 1a, column (d). The candidate adds the digital-asset boxes (G–L) to box A on the aggregate route without the Schedule D screen; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes and invalid aggregate use, and sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,025 of 2,115 comparisons agree; 50 project-refuses, 40 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 50, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s3].digital 2; project-unknown: sd.other_forms 40 (partial records withholding the screen the interview asks before any total). No value differs, so no completed return differs; no refusal is the new sales.wash_bad gate. Same expression and the same reading as Stage 20 (scope). Scratch uncapped re-run (/tmp/adj-bklg-income/full/) gives the same counts. Project stands. (carried over from reviews/2025/transcription/sd.index.json at 26f283ec, review of 2026-11-03)",
+      "subject_key": "fa7ed27d25d8dc9521025a6868c0b0e028bf608825e21bb0465b42a18a95e0c7"
+    },
+    {
+      "key": "1a(e)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 1a, column (e). The candidate adds the digital-asset boxes (G–L) to box A on the aggregate route without the Schedule D screen; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes and invalid aggregate use, and sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,025 of 2,115 comparisons agree; 50 project-refuses, 40 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 50, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s3].digital 2; project-unknown: sd.other_forms 40 (partial records withholding the screen the interview asks before any total). No value differs, so no completed return differs; no refusal is the new sales.wash_bad gate. Same expression and the same reading as Stage 20 (scope). Scratch uncapped re-run (/tmp/adj-bklg-income/full/) gives the same counts. Project stands. (carried over from reviews/2025/transcription/sd.index.json at 26f283ec, review of 2026-11-03)",
+      "subject_key": "3dedb34182b961966e64801f584dd6ff4b13cc3c1e3683d37a64cd18a5a23401"
+    },
+    {
+      "key": "1a(g)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 1a: \"Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\", column (g). The candidate adds digital-asset box G to box A on the aggregate route without the Schedule D screen; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "38c50ff88510782d0034d6e6f262952e0c535e9fc3d08f51837b3fbff0b8a28e"
+    },
+    {
+      "key": "1a(h)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 1a: \"Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\", column (h). The candidate adds digital-asset box G to box A on the aggregate route without the Schedule D screen; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "de20c6daa78a420cc681f9a7204d6d5b8ae0eb572d579beaf4f7c5b301755faf"
+    },
+    {
+      "key": "1b(d)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 1b: \"Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked\", column (d). The candidate adds digital-asset box G to box A and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "e4b00598d8c55cc4a63b1d8139d0c9262396382b5c8e4934b663e50dbde4d656"
+    },
+    {
+      "key": "1b(e)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 1b: \"Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked\", column (e). The candidate adds digital-asset box G to box A and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "7ab1ac7455233e81dc0e52d22ae2d13bf1a2c10480e734399b580f780396e848"
+    },
+    {
+      "key": "1b(g)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 1b: \"Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked\", column (g). The candidate adds digital-asset box G to box A and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "4b8ead69b399da44bee504c961b1de6bb46998744b61dd162ee35318b1f8f7fd"
+    },
+    {
+      "key": "1b(h)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 1b: \"Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked\", column (h). The candidate adds digital-asset box G to box A and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "48cf46cb16aac9a9c49aa5939542cf37e7eb120fbb770d1d9eeed326f2b7c485"
+    },
+    {
+      "key": "2(d)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 2: \"Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked\", column (d). The candidate adds digital-asset box H to box B and drops the route test; the project sums box B behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box B sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box B; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "575fb40509fe6cf1eb8a6643a347f5a9d6127e30296c51a04a43b683b7688c46"
+    },
+    {
+      "key": "2(e)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 2: \"Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked\", column (e). The candidate adds digital-asset box H to box B and drops the route test; the project sums box B behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box B sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box B; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "983dc756ca6b944f4e5127d2d8db7317ffa0174e5b74af4b29ae6f7d12efcb01"
+    },
+    {
+      "key": "2(g)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 2: \"Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked\", column (g). The candidate adds digital-asset box H to box B and drops the route test; the project sums box B behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box B sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box B; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,220 of 2,350 comparisons agree; 74 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 74, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 31, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "0827f72bb35c2a9e95738ad7fff90de17476019a410cc07a395e1e0cf704d5b4"
+    },
+    {
+      "key": "2(h)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 2: \"Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked\", column (h). The candidate adds digital-asset box H to box B and drops the route test; the project sums box B behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box B sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box B; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,220 of 2,350 comparisons agree; 74 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 74, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 31, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "a15719d00a538688607403a373a9ea983d792dd9fc93682954da42276d8e57da"
+    },
+    {
+      "key": "3(d)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 3: \"Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked\", column (d). The candidate adds digital-asset box I to box C and drops the route test; the project sums box C behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box C sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box C; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "3d1e82b1a6f80ef5134d3a4be53e8d498a7a5debc6a57dc7851a642edbfbe218"
+    },
+    {
+      "key": "3(e)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 3: \"Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked\", column (e). The candidate adds digital-asset box I to box C and drops the route test; the project sums box C behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box C sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box C; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "7ddb0743f108fa714202170cba19a73cb0d4a6b44ea19bab4d085abb373f0eb0"
+    },
+    {
+      "key": "3(g)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 3: \"Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked\", column (g). The candidate adds digital-asset box I to box C and drops the route test; the project sums box C behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box C sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box C; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "9dbce828443b8b662388942157ea6712581a0bed800eb4f5bf06dc4d85e79d71"
+    },
+    {
+      "key": "3(h)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 3: \"Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked\", column (h). The candidate adds digital-asset box I to box C and drops the route test; the project sums box C behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box C sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box C; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "989ca64077fbd4eb118ed53b5c7e1dfd565e2f7c6b8f2afc507b9042efbb97fa"
+    },
+    {
+      "key": "8a(d)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 8a, column (d). The candidate adds the digital-asset boxes (G–L) to box D on the aggregate route without the Schedule D screen; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes and invalid aggregate use, and sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,025 of 2,115 comparisons agree; 50 project-refuses, 40 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 50, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s3].digital 2; project-unknown: sd.other_forms 40 (partial records withholding the screen the interview asks before any total). No value differs, so no completed return differs; no refusal is the new sales.wash_bad gate. Same expression and the same reading as Stage 20 (scope). Scratch uncapped re-run (/tmp/adj-bklg-income/full/) gives the same counts. Project stands. (carried over from reviews/2025/transcription/sd.index.json at 26f283ec, review of 2026-11-03)",
+      "subject_key": "ea299344c3eb3ba4d5735524c18df1820b83696e65e2cccba7c995c9acf2bcb5"
+    },
+    {
+      "key": "8a(e)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 8a, column (e). The candidate adds the digital-asset boxes (G–L) to box D on the aggregate route without the Schedule D screen; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes and invalid aggregate use, and sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,025 of 2,115 comparisons agree; 50 project-refuses, 40 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 50, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s3].digital 2; project-unknown: sd.other_forms 40 (partial records withholding the screen the interview asks before any total). No value differs, so no completed return differs; no refusal is the new sales.wash_bad gate. Same expression and the same reading as Stage 20 (scope). Scratch uncapped re-run (/tmp/adj-bklg-income/full/) gives the same counts. Project stands. (carried over from reviews/2025/transcription/sd.index.json at 26f283ec, review of 2026-11-03)",
+      "subject_key": "1b5b4b5e216bc6f367e1bc87d5b839a13cab9f514f8f56d35f9a18e2c218a4fe"
+    },
+    {
+      "key": "8a(g)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 8a: \"Totals for all long-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\", column (g). The candidate adds digital-asset box J to box D on the aggregate route without the Schedule D screen; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "a545452c1cd7423309e54103966c5cfd1860e5a43b4e061706e8b6b64d715ce1"
+    },
+    {
+      "key": "8a(h)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 8a: \"Totals for all long-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\", column (h). The candidate adds digital-asset box J to box D on the aggregate route without the Schedule D screen; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "e2038164b6c7b9eb2666994ce78ead71425051e2e77cef3e28023ae76374086d"
+    },
+    {
+      "key": "8b(d)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 8b: \"Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked\", column (d). The candidate adds digital-asset box J to box D and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "3f35449575c5881cb25708413d2ecbd170a257fb5176395b2a18b397c8db388a"
+    },
+    {
+      "key": "8b(e)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 8b: \"Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked\", column (e). The candidate adds digital-asset box J to box D and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "a28526ace7ec4b88a3bf1040dbbb4c1b13cc8c5391db9fe269901d6c0bd7751a"
+    },
+    {
+      "key": "8b(g)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 8b: \"Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked\", column (g). The candidate adds digital-asset box J to box D and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "faacb6d2cd8c0e9011eed7682d188e27fd970b5ca6f8f58455b13a9f7c143c43"
+    },
+    {
+      "key": "8b(h)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 8b: \"Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked\", column (h). The candidate adds digital-asset box J to box D and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "1870e49ce0060091cc359d5ae4fe18ec85a83b0b194edf78a32a1a6ca5a4a968"
+    },
+    {
+      "key": "9(d)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 9: \"Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked\", column (d). The candidate adds digital-asset box K to box E and drops the route test; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box E sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box E; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "3c036096d32520cb150db5f2e8b31d81917a14d55ff7f619415faf1af7d307cc"
+    },
+    {
+      "key": "9(e)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 9: \"Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked\", column (e). The candidate adds digital-asset box K to box E and drops the route test; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box E sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box E; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "d3e3b909a195f905dbf5f62fc270dbf2d48dd6fe4f9d5af13f4749adac9f8600"
+    },
+    {
+      "key": "9(g)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 9: \"Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked\", column (g). The candidate adds digital-asset box K to box E and drops the route test; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box E sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box E; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "278e70f76056ce77f6b6f1d518fca16cc9bc48829d91d7fd2220f2264276479c"
+    },
+    {
+      "key": "9(h)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 9: \"Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked\", column (h). The candidate adds digital-asset box K to box E and drops the route test; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box E sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box E; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "61c27543c0f1109855dd78ca3dfc553ca6f0b26581d71779aaea390b4e1edd4c"
+    },
+    {
+      "key": "10(d)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 10: \"Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked\", column (d). The candidate adds digital-asset box L to box F and drops the route test; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box F sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box F; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "a514ccc22e9bdea185d5b2d14986170a4a8b1786081bf50faa2e2c76598901ed"
+    },
+    {
+      "key": "10(e)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 10: \"Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked\", column (e). The candidate adds digital-asset box L to box F and drops the route test; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box F sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box F; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "a60b844c298f21d59e2046cf7d3b40757da7e7f7dcb9cface73a79f9fcf5a82b"
+    },
+    {
+      "key": "10(g)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 10: \"Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked\", column (g). The candidate adds digital-asset box L to box F and drops the route test; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box F sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box F; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "35c8f09dfb2e9cee45b9c9936a667296ad9fa93b6af2e7173754041dc10de986"
+    },
+    {
+      "key": "10(h)",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 10: \"Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked\", column (h). The candidate adds digital-asset box L to box F and drops the route test; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box F sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box F; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
+      "subject_key": "378a8fb7709744d5fe2712bb92224df5747b1a3bc2b1d6f2acdc1a4e6a8102e2"
+    },
+    {
+      "key": "4",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "AGREE",
+      "subject_key": "18bd6e068ac48b10cbeed8a297fd36e45a35f15c0d4504bb944972f047dc7cd1"
+    },
+    {
+      "key": "5",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "AGREE",
+      "subject_key": "15fd57c9e5249d6a48c04d644f0d774e58db00c7028a21b34054b92f5cebaa9c"
+    },
+    {
+      "key": "6",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 6: \"Short-term capital loss carryover. Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet in the instructions\", printed \"( )\"; line 7: \"Combine lines 1a through 6 in column (h)\". With the T-140 interface note (\"a loss carryover printed in parentheses, held as a negative amount\", now in the prompt) the candidate holds the carryover negative, 0 − choose(sd.carryover: clcw.line8, else 0), which is algebraically the project's choose(sd.carryover: 0 − clcw.line8, else 0). executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,057 of 2,115 comparisons agree; 40 project-unknown, 18 project-refuses (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 18, \"project-unknown\": 9}}). No value differs: the 26 sign-flip value differences of Stage 20 (classm.sd.2 −$16,565.00 against $16,565.00) are gone. The project refuses on sd.other_forms (18) and is unknown on partial records withholding sd.other_forms (40), a cited Schedule D screen the interview asks first; the candidate declares no refusal. Project stands.",
+      "subject_key": "d5152a5d8efef0efad56e0936d043b5650d5bd8ddc44f69c99b70ec0cc01d03a"
+    },
+    {
+      "key": "11",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "AGREE",
+      "subject_key": "86f2843ea1f3b2669dc28d722d059e1c192180961a934a47ffe31b89c62e8642"
+    },
+    {
+      "key": "12",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "AGREE",
+      "subject_key": "0e1cd51153c2fa05d0da52bb2ef4d3c2e0c42eac8786b311538d80e77b27c937"
+    },
+    {
+      "key": "14",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "DISAGREE",
+      "ruling": "Ruling: scope; f1040sd p. 1, line 14: \"Long-term capital loss carryover. Enter the amount, if any, from line 13 of your Capital Loss Carryover Worksheet in the instructions\", printed \"( )\"; line 15: \"Combine lines 8a through 14 in column (h)\". With the T-140 interface note (\"a loss carryover printed in parentheses, held as a negative amount\", now in the prompt) the candidate holds the carryover negative, 0 − choose(sd.carryover: clcw.line13, else 0), which is algebraically the project's choose(sd.carryover: 0 − clcw.line13, else 0). executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,057 of 2,115 comparisons agree; 40 project-unknown, 18 project-refuses (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 18, \"project-unknown\": 9}}). No value differs: the 22 sign-flip value differences of Stage 20 (classm.sd.2 −$17,835.00 against $17,835.00) are gone. The project refuses on sd.other_forms (18) and is unknown on partial records withholding sd.other_forms (40), a cited Schedule D screen the interview asks first; the candidate declares no refusal. Project stands.",
+      "subject_key": "810da896836f6cbe28e56c46d3f01aaeedcad78891e05c7bb065515982b1d101"
+    },
+    {
+      "key": "13",
+      "record": "f75a302aa919962360442c473d2a93acc82a60b95521fe942b058224ee7fdfec",
+      "status": "AGREE",
+      "subject_key": "6ae54d7a05ba8c1fe94febf95da9c4f16be858b46cc0d07dba56d4a4a86d7101"
+    },
+    {
+      "key": "7",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "AGREE",
+      "subject_key": "d432120db2d615d583c0ac8182588638ac4e1be7fd558df8499293119d2f1471"
+    },
+    {
+      "key": "15",
+      "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
+      "status": "AGREE",
+      "subject_key": "ad3c96b19585b211358c7317bccd0f960d246218564c0f9348b7f66ee674798c"
+    },
+    {
+      "key": "16",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "AGREE",
+      "subject_key": "f5203eb4579cbcbde39a70154eee9c4b20ba47bd77ee0cabb23650fd643ff582"
+    },
+    {
+      "key": "17",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "AGREE",
+      "subject_key": "8159609ba2457fb32e5b8409238fa38212d3682b38f19c7d8ea7e09da23beee0"
+    },
+    {
+      "key": "20",
+      "record": "63ed4e60666ed661a75e5e7d0a83f29f6882822276f4dcc88ae33c9856ec80a4",
+      "status": "DISAGREE",
+      "ruling": "Ruling: model error; f1040sd p. 2, line 20: \"Are lines 18 and 19 both zero or blank and you are not filing Form 4952?\". The reply's lines 18 and 19 are the project's, as ruled before; every difference comes from its sd.filing4952 reading (filed whenever there is investment interest), ruled model error on that line (classm.sd.2.deepseek: project true, reply false). Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/sd.json; 1,747 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,096 of 2,366 comparisons agree; differences {\"project-refuses\": 96, \"project-unknown\": 24, \"value\": 150}; on completed returns {\"value\": 61}.",
+      "subject_key": "2748bd6c705364d9d915e7e78a894d993f16a8260289f61e6e7ffafdd0e543e5"
+    },
+    {
+      "key": "21",
+      "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+      "status": "AGREE",
+      "subject_key": "3687225da97b7c9b126566bc1f27ae55967d865fe5e6f80455d130a9f151f25c"
+    },
+    {
+      "key": "22",
+      "record": "f75a302aa919962360442c473d2a93acc82a60b95521fe942b058224ee7fdfec",
+      "status": "DISAGREE",
+      "ruling": "Ruling: model error; the candidate reads f1040.line3a whatever box 1a is above zero, so it needs that answer where the source does not: i1040gi p. 25, Line 3a, \"Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b\": with box 1a (line 3b) zero, line 3a is zero. The project reads the gate line f1040.line3a_if_ordinary, which takes f1040.line3a when box 1a is above zero holds and zero otherwise; the interview asks f1040.line3a only then (gated_by f1040.line3a_if_ordinary), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
+      "subject_key": "3d3e9aaf76af15a4b855424ab99d2863850595b6689ec122534b10af9deddba9"
+    }
+  ],
+  "subjects": {
+    "sd.line18": "2bbae14fd67622e88c468eacec973d73b3b9ed389fb0401a7e07aded80c90926",
+    "sd.line19": "b653bf85615a8a9a33689a866188bc4740382a75c6c28c008f27bbd7bf9181a4",
+    "sd.filing4952": "c463919a506118918868fb38826faafbd33315376d7f29963f6e818120502b75",
+    "sd.investment_election": "a3d91ae14f27d51f584ab503205e59279759a061e193355b00ebdf9732585be4",
+    "sd.filed": "2809343429f80f68a2596485238d1f8e2f2d7c8ff67ec1d4b394d2e8bf49b38d",
+    "sd.zero": "ce16c7c938fea13ef80d3f7cf152cea6dd84d856dea677c44b6e24fbc5cc60fd",
+    "sd.has_loss": "1e2c8c7df8ec4dc8a21e5ed72420311c4ae2a7b2895ded86e2213151661ada7f",
+    "sd.to1040": "c6be714faee43a2731a8e84b3fdbc9673314f85a90a3ddff50bd1fcc4a556678",
+    "sd.net_gain": "9975d7415b27cc117455a94113d2867f95c94c61be4bc016b9faae8e92704ab9",
+    "sd.distributions_if_dividends": "e298b33df964936239e1aa4a899b76c8308e3041094d52235a155aab067750ae",
+    "1a(d)": "db323fdbca8ec838dd92e590ab5d32425bb9ad0a4ac875d70448d368a9a769f1",
+    "1a(e)": "4dbf6fdf6081e979d40efde9dbedb81fccfaea20f72c5a7a5d3cff390d9fbe4f",
+    "1a(g)": "a91699e17121d70da04ce1c520b0b5fffafa11141dc42b49fc132f94f3cb0a94",
+    "1a(h)": "1135af99d26f8eb86dd39d56926262ba5188731fb97d0eb2ae241d3d6e391610",
+    "1b(d)": "80c37dd3668f64aed9767cc78d73eef9fd24370f8ffb9f3e2be9b8769c8f4aa6",
+    "1b(e)": "55013dc3fb051eb21d7540f1d0b97672683670877a71a3a8d57d257e9b6a2152",
+    "1b(g)": "3c300eaa8758756e0c4d62de7e13e2e54105e1f3c9282c0e1a41b3a01267a833",
+    "1b(h)": "2e61606e0aca606976b8510b886b627d58318c385610aae1f88bc562d3ec2d43",
+    "2(d)": "70161a5b47a0923cbd563f0b70305694fbff1d73468b691eb5d4e9dde928979a",
+    "2(e)": "a625bce4a4ac5a41e71ac077a67c620e6db1eb9a1bb49b32e6eeeebbf29f78c8",
+    "2(g)": "309c10eb1735f926b0a285026842312945ab72ef6740824b673f70e98e059ef3",
+    "2(h)": "acfbf57cf9a80970159ac4ce7a3699f6b35a0326cd57e008955dfd33493a9e02",
+    "3(d)": "3881906eb8acf70950703449d5f85a7341942d8c8f43b14eabab9f5ac97fc55b",
+    "3(e)": "d0c09a53ddb33c0d5766d0fcd690cee8df1c39cdd58f1e1d5e8de336b8ce7a95",
+    "3(g)": "18d700d521cc805dd90a43823c5558f4ebb57c4b16311bbc9c7c4fab8f8fec52",
+    "3(h)": "392b77525528ba1c0b2803cd4c1d6d5acee6fd5bd3dc8e206e79aa42c80cc840",
+    "8a(d)": "569a8311e92e3c0dba2aa6455ed621ea3c57c0361d0f1ed01ec74f5f0aaa8e87",
+    "8a(e)": "24c93ba85d3424ff1bc186ac2456fd471d57f8e9b378e1fca241d67781ec2697",
+    "8a(g)": "1a21469a74deebf480b3c6eaae4f7cb5f96b2f776d1633e7d31c2949f805dacd",
+    "8a(h)": "06e8b78e1bc01658881cb8c82fd48553a2eded4c96e656bd5a597afff29a7afb",
+    "8b(d)": "0a0a0864cf2acba9df092c565ea5756e67ed3636cb76797e46712a31c94af64a",
+    "8b(e)": "7498b03f9a311d8a41cdb477fb8717403ac7cdf28202a2f0bc3de32fffe31e73",
+    "8b(g)": "3a4b75bf8c999a14258b4926f04608d9752a7c3a0299a652569793e5acabac6f",
+    "8b(h)": "49b59614ab30770e9f6707ee914b636af6e2b7b9de95b18b1045a915692f5a98",
+    "9(d)": "5275f33fb72d1ea09ed99aa8359ac5e8ff86a7bc8eaa6be94795c373852d5383",
+    "9(e)": "2b01e0ce5107814c7b2bee68bffd7554b5cdef98dde2cef7f5ebbdfa1e60e905",
+    "9(g)": "6293f156eb58ecd309f515a267e91bb88e4f122da763b9d917a8f1ca1d05df41",
+    "9(h)": "6919b99cf7c94932c022cd1e6bc626ab7837d52258d3ed42913c18079bb8d260",
+    "10(d)": "e601c2e7c50aba93bdcf87196a54a0da79f5da2714658316306292a4dacb1792",
+    "10(e)": "61e121db7dcbe3863d2c89c20706748c87ec1ee6f94a322442fa81a0b42b3627",
+    "10(g)": "ae933c2ed14216bc750f70461c6e3f29ce64cf060eeab652478769b373a98f9a",
+    "10(h)": "1b2f74ba7158600e7e443826aa59bded6b107da86d8cbbc8298f8df5683539a3",
+    "4": "8443fdc5d500eee152c93b8ac69b9e0be5abbbeea079cb21ed743de3113ee688",
+    "5": "d2e3c99b1256da39cb9edb3b970d05980cba8a8f018c68f4a618bacc43e0a0d2",
+    "6": "e635ea08698589bfff629738a5a8bd7dddf7a260aeae4eaf8c46c4a0c54bb9d7",
+    "11": "df971d64bc79d90427e3786ce033c8847772e0a83e9172ee90e24a06204419c5",
+    "12": "b671b3f19b0d13b3d41295c28f916c47f9d85e9b983e57fb290fc2546c88a0d0",
+    "14": "852949d5edfbbdcb954882a21b06e4cf555493d6cb93c30e7ea3372c6a3d9c3c",
+    "13": "919862ce6dea30eb0676331db28b397ec864ae318355df9f2156e996cae20b36",
+    "7": "a9899e1cb09a90f27e64f53f7ca4eb6bf3bb50aeead5c209cd3f6ae267790ef3",
+    "15": "0db746e2ca06bdedba11c108bf05789daab7e6242607bc4d0572996b6b0cdc01",
+    "16": "b8dbb7d8e80124667bc28ec012ef66fb86be6ecbd9d4a9306e7686c76a56db45",
+    "17": "9f04394cf47348ce817245c55c2e34211aea92c3fdb2faa27a605060397de9b7",
+    "20": "8cf2ccba61ffc9bb1201307f724b0a77f616641dda4bdc38d073d2caae531f68",
+    "21": "462bcca25b8919800e51951ff48b8e68fc1da54a6bbce933ad2a870576d270a8",
+    "22": "5cc1ac47b2b535c6dbfa51b2449db78e1d2bb875c542c56b67fb5a6b62209fa9"
   },
-  {
-   "key": "sd.filing4952",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "50b839cdd8f2e257e559908f595d492fe2f1705b957a9d0b51bbbf2ed341dd2d"
-  },
-  {
-   "key": "sd.investment_election",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040sd p. 15, Schedule D Tax Worksheet: complete it \"if you file Form 4952 and you have an amount on line 4g\", line 3: \"Enter the amount from Form 4952 ..., line 4g\". The candidate yields f4952.line4g when Form 4952 is filed or line 4g is positive and 0 otherwise; the project copies f4952.election, line 4g behind its cited gates, so both give line 4g whenever both compute. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,039 of 2,115 comparisons agree; 65 candidate-refuses, 9 project-refuses, 2 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 2}, \"refused\": {\"candidate-refuses\": 65, \"project-refuses\": 9}}). No value differs. All 65 candidate-refuses are on returns the project refuses elsewhere (by return: refused): the candidate's filing test reads Form 4952 and Schedule B terms the project does not read at this line (f4952.unsupported 17, sb.line8 11, f4952.alternative_allocation 11, sb.unsupported 10, sb.fbar_required 9, sb.form8938 5, f4952.bad_dividends 2); the 9 project-refuses are cited gates (div.bad_components 6, div.unsupported 1, sales[s2].digital 1, sales[s1].digital 1); the 2 project-unknown withhold sales[s2].aggregate_eligible. Project stands.",
-   "subject_key": "af13182b5c0d73967e70536b098fad66d23a4ce174bb702f7aee36b8fb49a4a4"
-  },
-  {
-   "key": "sd.filed",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 31, Line 7a, Exception 1: \"1. You have no capital losses, and your only capital gains are capital gain distributions from Form(s) 1099-DIV, box 2a ... and 2. None of the Form(s) 1099-DIV ... have an amount in box 2b ..., box 2c ..., or box 2d\"; i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet to figure your capital loss carryovers from 2024 to 2025 if your 2024 Schedule D, line 21, is a loss and (a) ... or (b) ... Otherwise, you don’t have any carryovers.\" The candidate requires Schedule D whenever sd.carryover is answered Yes; the project requires it when line 6 or line 14 is a nonzero loss (with the sales count and lines 18 and 19). executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,027 of 2,115 comparisons agree; 43 project-refuses, 41 project-unknown, 4 value (by return: {\"incomplete\": {\"project-unknown\": 32, \"value\": 2}, \"refused\": {\"project-refuses\": 43, \"project-unknown\": 9, \"value\": 2}}). The 4 value differences, each project false and candidate true with sd.carryover Yes, no sales, lines 6, 14, 18 and 19 all $0: classm.f8863.3.deepseek (refused), classm.f8863.3 (refused), stage20.line21_at_both_bounds (incomplete), stage20.mut.line21_below_limit (incomplete); a Yes with worksheet lines 8 and 13 at $0 leaves no capital loss, so Exception 1 applies and the project is right. None is on a completed return. Project refusals: sd.other_forms 17, div.unsupported 10, div.bad_components 8, div.section1202 3, div.amt 3, div.bad_special 2; project-unknown: sd.distributions 32, sd.other_forms 7, clcw.prior_sd15 1, sd.carryover 1 (withheld screen answers): scope. Same expression and reading as Stage 20. Project stands.",
-   "subject_key": "a0da8172869390721a53d2819210659f4d223b63b3b4ca26e82da1fadbffa1ef"
-  },
-  {
-   "key": "sd.zero",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "daef9d66f55b601a2e3ca88cd01274f3cd02e485b4918f7b6e0f9bda4bf662c4"
-  },
-  {
-   "key": "sd.has_loss",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "4b26b3dd4851a8b0268bbe134078552ef98ef09b387286bc2932ec3823388ef0"
-  },
-  {
-   "key": "sd.to1040",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 2, line 16: \"If line 16 is zero, skip lines 17 through 21 below and enter -0- on Form 1040, 1040-SR, or 1040-NR, line 7a\". The candidate's extra zero branch equals line 16 when line 16 is zero; both enter line 16 for a gain and line 21 for a loss. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,043 of 2,115 comparisons agree; 71 project-refuses, 1 project-unknown (by return: {\"refused\": {\"project-refuses\": 71, \"project-unknown\": 1}}). No value differs. Project refusals are cited Schedule D and Form 1099-DIV gates (div.bad_components 18, sales[s1].digital 17, div.unsupported 11, sales[s2].digital 7, sales[a].digital 6, div.section1202 5, div.amt 4, div.bad_special 2, sales[s3].digital 1); the project-unknown withholds div.box2c. Same reading as Stage 20. Project stands.",
-   "subject_key": "ba6b66c7707a04f84ae0b6e72bb44b96abb26af7c99b85f291b0cc435e4e5a3f"
-  },
-  {
-   "key": "sd.net_gain",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3: \"Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-\". The candidate's min(max(line 15, 0), max(line 16, 0)) equals the project's max(min(line 15, line 16), 0) for all values. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,043 of 2,115 comparisons agree; 71 project-refuses, 1 project-unknown (by return: {\"refused\": {\"project-refuses\": 71, \"project-unknown\": 1}}). No value differs; the differences are cited gates (div.bad_components 18, sales[s1].digital 17, div.unsupported 11, sales[s2].digital 7, sales[a].digital 6, div.section1202 5, div.amt 4, div.bad_special 2, sales[s3].digital 1) and one withheld div.box2c. Project stands.",
-   "subject_key": "bbd11d3431a342ef07b9f30cbe7af8598db355f34749342fae4dbef7b6eeb0a3"
-  },
-  {
-   "key": "sd.distributions_if_dividends",
-   "record": "f75a302aa919962360442c473d2a93acc82a60b95521fe942b058224ee7fdfec",
-   "status": "AGREE",
-   "subject_key": "e1cf4351f9ddd9a6b43463bfb2567cc4b977baa5f523761f209222e786b3d8af"
-  },
-  {
-   "key": "1a(d)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1a, column (d). The candidate adds the digital-asset boxes (G–L) to box A on the aggregate route without the Schedule D screen; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes and invalid aggregate use, and sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,025 of 2,115 comparisons agree; 50 project-refuses, 40 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 50, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s3].digital 2; project-unknown: sd.other_forms 40 (partial records withholding the screen the interview asks before any total). No value differs, so no completed return differs; no refusal is the new sales.wash_bad gate. Same expression and the same reading as Stage 20 (scope). Scratch uncapped re-run (/tmp/adj-bklg-income/full/) gives the same counts. Project stands. (carried over from reviews/2025/transcription/sd.index.json at 26f283ec, review of 2026-11-03)",
-   "subject_key": "fa7ed27d25d8dc9521025a6868c0b0e028bf608825e21bb0465b42a18a95e0c7"
-  },
-  {
-   "key": "1a(e)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1a, column (e). The candidate adds the digital-asset boxes (G–L) to box A on the aggregate route without the Schedule D screen; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes and invalid aggregate use, and sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,025 of 2,115 comparisons agree; 50 project-refuses, 40 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 50, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s3].digital 2; project-unknown: sd.other_forms 40 (partial records withholding the screen the interview asks before any total). No value differs, so no completed return differs; no refusal is the new sales.wash_bad gate. Same expression and the same reading as Stage 20 (scope). Scratch uncapped re-run (/tmp/adj-bklg-income/full/) gives the same counts. Project stands. (carried over from reviews/2025/transcription/sd.index.json at 26f283ec, review of 2026-11-03)",
-   "subject_key": "3dedb34182b961966e64801f584dd6ff4b13cc3c1e3683d37a64cd18a5a23401"
-  },
-  {
-   "key": "1a(g)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1a: \"Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\", column (g). The candidate adds digital-asset box G to box A on the aggregate route without the Schedule D screen; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "38c50ff88510782d0034d6e6f262952e0c535e9fc3d08f51837b3fbff0b8a28e"
-  },
-  {
-   "key": "1a(h)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1a: \"Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\", column (h). The candidate adds digital-asset box G to box A on the aggregate route without the Schedule D screen; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "de20c6daa78a420cc681f9a7204d6d5b8ae0eb572d579beaf4f7c5b301755faf"
-  },
-  {
-   "key": "1b(d)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1b: \"Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked\", column (d). The candidate adds digital-asset box G to box A and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "e4b00598d8c55cc4a63b1d8139d0c9262396382b5c8e4934b663e50dbde4d656"
-  },
-  {
-   "key": "1b(e)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1b: \"Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked\", column (e). The candidate adds digital-asset box G to box A and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "7ab1ac7455233e81dc0e52d22ae2d13bf1a2c10480e734399b580f780396e848"
-  },
-  {
-   "key": "1b(g)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1b: \"Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked\", column (g). The candidate adds digital-asset box G to box A and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "4b8ead69b399da44bee504c961b1de6bb46998744b61dd162ee35318b1f8f7fd"
-  },
-  {
-   "key": "1b(h)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1b: \"Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked\", column (h). The candidate adds digital-asset box G to box A and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "48cf46cb16aac9a9c49aa5939542cf37e7eb120fbb770d1d9eeed326f2b7c485"
-  },
-  {
-   "key": "2(d)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 2: \"Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked\", column (d). The candidate adds digital-asset box H to box B and drops the route test; the project sums box B behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box B sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box B; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "575fb40509fe6cf1eb8a6643a347f5a9d6127e30296c51a04a43b683b7688c46"
-  },
-  {
-   "key": "2(e)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 2: \"Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked\", column (e). The candidate adds digital-asset box H to box B and drops the route test; the project sums box B behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box B sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box B; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "983dc756ca6b944f4e5127d2d8db7317ffa0174e5b74af4b29ae6f7d12efcb01"
-  },
-  {
-   "key": "2(g)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 2: \"Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked\", column (g). The candidate adds digital-asset box H to box B and drops the route test; the project sums box B behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box B sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box B; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,220 of 2,350 comparisons agree; 74 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 74, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 31, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "0827f72bb35c2a9e95738ad7fff90de17476019a410cc07a395e1e0cf704d5b4"
-  },
-  {
-   "key": "2(h)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 2: \"Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked\", column (h). The candidate adds digital-asset box H to box B and drops the route test; the project sums box B behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box B sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box B; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,220 of 2,350 comparisons agree; 74 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 74, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 31, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "a15719d00a538688607403a373a9ea983d792dd9fc93682954da42276d8e57da"
-  },
-  {
-   "key": "3(d)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 3: \"Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked\", column (d). The candidate adds digital-asset box I to box C and drops the route test; the project sums box C behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box C sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box C; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "3d1e82b1a6f80ef5134d3a4be53e8d498a7a5debc6a57dc7851a642edbfbe218"
-  },
-  {
-   "key": "3(e)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 3: \"Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked\", column (e). The candidate adds digital-asset box I to box C and drops the route test; the project sums box C behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box C sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box C; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "7ddb0743f108fa714202170cba19a73cb0d4a6b44ea19bab4d085abb373f0eb0"
-  },
-  {
-   "key": "3(g)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 3: \"Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked\", column (g). The candidate adds digital-asset box I to box C and drops the route test; the project sums box C behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box C sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box C; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "9dbce828443b8b662388942157ea6712581a0bed800eb4f5bf06dc4d85e79d71"
-  },
-  {
-   "key": "3(h)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 3: \"Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked\", column (h). The candidate adds digital-asset box I to box C and drops the route test; the project sums box C behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box C sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box C; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "989ca64077fbd4eb118ed53b5c7e1dfd565e2f7c6b8f2afc507b9042efbb97fa"
-  },
-  {
-   "key": "8a(d)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8a, column (d). The candidate adds the digital-asset boxes (G–L) to box D on the aggregate route without the Schedule D screen; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes and invalid aggregate use, and sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,025 of 2,115 comparisons agree; 50 project-refuses, 40 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 50, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s3].digital 2; project-unknown: sd.other_forms 40 (partial records withholding the screen the interview asks before any total). No value differs, so no completed return differs; no refusal is the new sales.wash_bad gate. Same expression and the same reading as Stage 20 (scope). Scratch uncapped re-run (/tmp/adj-bklg-income/full/) gives the same counts. Project stands. (carried over from reviews/2025/transcription/sd.index.json at 26f283ec, review of 2026-11-03)",
-   "subject_key": "ea299344c3eb3ba4d5735524c18df1820b83696e65e2cccba7c995c9acf2bcb5"
-  },
-  {
-   "key": "8a(e)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8a, column (e). The candidate adds the digital-asset boxes (G–L) to box D on the aggregate route without the Schedule D screen; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes and invalid aggregate use, and sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,025 of 2,115 comparisons agree; 50 project-refuses, 40 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 50, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s3].digital 2; project-unknown: sd.other_forms 40 (partial records withholding the screen the interview asks before any total). No value differs, so no completed return differs; no refusal is the new sales.wash_bad gate. Same expression and the same reading as Stage 20 (scope). Scratch uncapped re-run (/tmp/adj-bklg-income/full/) gives the same counts. Project stands. (carried over from reviews/2025/transcription/sd.index.json at 26f283ec, review of 2026-11-03)",
-   "subject_key": "1b5b4b5e216bc6f367e1bc87d5b839a13cab9f514f8f56d35f9a18e2c218a4fe"
-  },
-  {
-   "key": "8a(g)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8a: \"Totals for all long-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\", column (g). The candidate adds digital-asset box J to box D on the aggregate route without the Schedule D screen; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "a545452c1cd7423309e54103966c5cfd1860e5a43b4e061706e8b6b64d715ce1"
-  },
-  {
-   "key": "8a(h)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8a: \"Totals for all long-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\", column (h). The candidate adds digital-asset box J to box D on the aggregate route without the Schedule D screen; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "e2038164b6c7b9eb2666994ce78ead71425051e2e77cef3e28023ae76374086d"
-  },
-  {
-   "key": "8b(d)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8b: \"Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked\", column (d). The candidate adds digital-asset box J to box D and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "3f35449575c5881cb25708413d2ecbd170a257fb5176395b2a18b397c8db388a"
-  },
-  {
-   "key": "8b(e)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8b: \"Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked\", column (e). The candidate adds digital-asset box J to box D and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "a28526ace7ec4b88a3bf1040dbbb4c1b13cc8c5391db9fe269901d6c0bd7751a"
-  },
-  {
-   "key": "8b(g)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8b: \"Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked\", column (g). The candidate adds digital-asset box J to box D and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "faacb6d2cd8c0e9011eed7682d188e27fd970b5ca6f8f58455b13a9f7c143c43"
-  },
-  {
-   "key": "8b(h)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8b: \"Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked\", column (h). The candidate adds digital-asset box J to box D and filters route \"not aggregate\" where the project filters route \"detail\"; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. sales_route has exactly the values detail and aggregate (params/2025.yaml, sales_route), so the route tests are the same set (representation on that part). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "1870e49ce0060091cc359d5ae4fe18ec85a83b0b194edf78a32a1a6ca5a4a968"
-  },
-  {
-   "key": "9(d)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 9: \"Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked\", column (d). The candidate adds digital-asset box K to box E and drops the route test; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box E sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box E; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "3c036096d32520cb150db5f2e8b31d81917a14d55ff7f619415faf1af7d307cc"
-  },
-  {
-   "key": "9(e)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 9: \"Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked\", column (e). The candidate adds digital-asset box K to box E and drops the route test; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box E sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box E; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "d3e3b909a195f905dbf5f62fc270dbf2d48dd6fe4f9d5af13f4749adac9f8600"
-  },
-  {
-   "key": "9(g)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 9: \"Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked\", column (g). The candidate adds digital-asset box K to box E and drops the route test; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box E sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box E; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "278e70f76056ce77f6b6f1d518fca16cc9bc48829d91d7fd2220f2264276479c"
-  },
-  {
-   "key": "9(h)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 9: \"Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked\", column (h). The candidate adds digital-asset box K to box E and drops the route test; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box E sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box E; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "61c27543c0f1109855dd78ca3dfc553ca6f0b26581d71779aaea390b4e1edd4c"
-  },
-  {
-   "key": "10(d)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 10: \"Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked\", column (d). The candidate adds digital-asset box L to box F and drops the route test; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box F sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box F; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "a514ccc22e9bdea185d5b2d14986170a4a8b1786081bf50faa2e2c76598901ed"
-  },
-  {
-   "key": "10(e)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 10: \"Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked\", column (e). The candidate adds digital-asset box L to box F and drops the route test; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box F sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box F; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "a60b844c298f21d59e2046cf7d3b40757da7e7f7dcb9cface73a79f9fcf5a82b"
-  },
-  {
-   "key": "10(g)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 10: \"Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked\", column (g). The candidate adds digital-asset box L to box F and drops the route test; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box F sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box F; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "35c8f09dfb2e9cee45b9c9936a667296ad9fa93b6af2e7173754041dc10de986"
-  },
-  {
-   "key": "10(h)",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 10: \"Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked\", column (h). The candidate adds digital-asset box L to box F and drops the route test; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use (sales.bad_aggregate; sales.covered is true only for boxes A and D) and sd.other_forms. A box F sale on the aggregate route is refused by the project (sales.bad_aggregate: sales.covered is false for box F; i1040sd p. 10, Lines 1a and 8a: the aggregate totals are for transactions with \"a Form 1099-B or Form 1099-DA (or substitute statement) that shows basis was reported to the IRS\"), so the dropped test differs only on refused returns. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 12c1131f578d; 1,730 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,219 of 2,350 comparisons agree; 75 project-refuses, 56 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 28}, \"refused\": {\"project-refuses\": 75, \"project-unknown\": 28}}). Project refusals (scratch uncapped re-run, same bank): sales.digital 32, sd.other_forms 21, sales.bad_aggregate 12, sales.bad_code 8, sales.special 2; project-unknown: partial records withholding sd.other_forms 52, sales.special 2, sales.aggregate_eligible 2 (screens the interview asks before any total). No value differs and no completed return differs. Same reading as the carried rulings on 1a(d), 1a(e), 8a(d) and 8a(e) (scope). Project stands.",
-   "subject_key": "378a8fb7709744d5fe2712bb92224df5747b1a3bc2b1d6f2acdc1a4e6a8102e2"
-  },
-  {
-   "key": "4",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "18bd6e068ac48b10cbeed8a297fd36e45a35f15c0d4504bb944972f047dc7cd1"
-  },
-  {
-   "key": "5",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "15fd57c9e5249d6a48c04d644f0d774e58db00c7028a21b34054b92f5cebaa9c"
-  },
-  {
-   "key": "6",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 6: \"Short-term capital loss carryover. Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet in the instructions\", printed \"( )\"; line 7: \"Combine lines 1a through 6 in column (h)\". With the T-140 interface note (\"a loss carryover printed in parentheses, held as a negative amount\", now in the prompt) the candidate holds the carryover negative, 0 − choose(sd.carryover: clcw.line8, else 0), which is algebraically the project's choose(sd.carryover: 0 − clcw.line8, else 0). executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,057 of 2,115 comparisons agree; 40 project-unknown, 18 project-refuses (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 18, \"project-unknown\": 9}}). No value differs: the 26 sign-flip value differences of Stage 20 (classm.sd.2 −$16,565.00 against $16,565.00) are gone. The project refuses on sd.other_forms (18) and is unknown on partial records withholding sd.other_forms (40), a cited Schedule D screen the interview asks first; the candidate declares no refusal. Project stands.",
-   "subject_key": "d5152a5d8efef0efad56e0936d043b5650d5bd8ddc44f69c99b70ec0cc01d03a"
-  },
-  {
-   "key": "11",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "86f2843ea1f3b2669dc28d722d059e1c192180961a934a47ffe31b89c62e8642"
-  },
-  {
-   "key": "12",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "0e1cd51153c2fa05d0da52bb2ef4d3c2e0c42eac8786b311538d80e77b27c937"
-  },
-  {
-   "key": "14",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 14: \"Long-term capital loss carryover. Enter the amount, if any, from line 13 of your Capital Loss Carryover Worksheet in the instructions\", printed \"( )\"; line 15: \"Combine lines 8a through 14 in column (h)\". With the T-140 interface note (\"a loss carryover printed in parentheses, held as a negative amount\", now in the prompt) the candidate holds the carryover negative, 0 − choose(sd.carryover: clcw.line13, else 0), which is algebraically the project's choose(sd.carryover: 0 − clcw.line13, else 0). executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,057 of 2,115 comparisons agree; 40 project-unknown, 18 project-refuses (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 18, \"project-unknown\": 9}}). No value differs: the 22 sign-flip value differences of Stage 20 (classm.sd.2 −$17,835.00 against $17,835.00) are gone. The project refuses on sd.other_forms (18) and is unknown on partial records withholding sd.other_forms (40), a cited Schedule D screen the interview asks first; the candidate declares no refusal. Project stands.",
-   "subject_key": "810da896836f6cbe28e56c46d3f01aaeedcad78891e05c7bb065515982b1d101"
-  },
-  {
-   "key": "13",
-   "record": "f75a302aa919962360442c473d2a93acc82a60b95521fe942b058224ee7fdfec",
-   "status": "AGREE",
-   "subject_key": "6ae54d7a05ba8c1fe94febf95da9c4f16be858b46cc0d07dba56d4a4a86d7101"
-  },
-  {
-   "key": "7",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "AGREE",
-   "subject_key": "d432120db2d615d583c0ac8182588638ac4e1be7fd558df8499293119d2f1471"
-  },
-  {
-   "key": "15",
-   "record": "d06dee5fbea212212349b702d6adb24ff08ccae7d166cc95b5c85a9d8f098b8c",
-   "status": "AGREE",
-   "subject_key": "ad3c96b19585b211358c7317bccd0f960d246218564c0f9348b7f66ee674798c"
-  },
-  {
-   "key": "16",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "f5203eb4579cbcbde39a70154eee9c4b20ba47bd77ee0cabb23650fd643ff582"
-  },
-  {
-   "key": "17",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "8159609ba2457fb32e5b8409238fa38212d3682b38f19c7d8ea7e09da23beee0"
-  },
-  {
-   "key": "20",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 2, line 20: \"Are lines 18 and 19 both zero or blank and you are not filing Form 4952?\". The candidate's predicate is the project's with lines 18 and 19 read as its own lines 18 and 19 (which now agree with the project's: the candidate takes g28.line7 and u1250.line18 behind line 17), so it is the same test. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,070 of 2,115 comparisons agree; 44 project-refuses, 1 project-unknown (by return: {\"refused\": {\"project-refuses\": 44, \"project-unknown\": 1}}). No value differs: the 4 Stage 20 value differences (classm.sd.2, stage20.blind.r7, generated 235), caused by the candidate's positive line 14 entering g28.line5, are gone after the T-140 sign note. Project refusals are cited gates read through g28/u1250 and Form 4952 (sales[s1].digital 16, div.bad_components 9, sales[a].digital 6, sales[s2].digital 4, div.amt 3, div.section1202 2, div.unsupported 2, div.bad_special 1, sales[s3].digital 1); the project-unknown withholds div.box2c. Project stands.",
-   "subject_key": "7b1fd43dba41cb211423f1bcf3ae106fa631a7ccafe4f9e146f5989e7fcfc652"
-  },
-  {
-   "key": "21",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "3687225da97b7c9b126566bc1f27ae55967d865fe5e6f80455d130a9f151f25c"
-  },
-  {
-   "key": "22",
-   "record": "f75a302aa919962360442c473d2a93acc82a60b95521fe942b058224ee7fdfec",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; the candidate reads f1040.line3a whatever box 1a is above zero, so it needs that answer where the source does not: i1040gi p. 25, Line 3a, \"Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b\": with box 1a (line 3b) zero, line 3a is zero. The project reads the gate line f1040.line3a_if_ordinary, which takes f1040.line3a when box 1a is above zero holds and zero otherwise; the interview asks f1040.line3a only then (gated_by f1040.line3a_if_ordinary), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
-   "subject_key": "3d3e9aaf76af15a4b855424ab99d2863850595b6689ec122534b10af9deddba9"
+  "__rest__": "428de7b0aecb0ec58b80e6b99fb756277616bb08aed9f21f90e6accedff64e84",
+  "foreign": {
+    "sd.filing4952": "c405707b740da3bf0125426dc18b58e2ef543b6ec4effa8f0989c54d79b6c596",
+    "sd.distributions_if_dividends": "972cf38c15d80da0f8de2081225037cf0d43af899903b01f148edc4104ceee2a",
+    "1a(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
+    "1a(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
+    "1a(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
+    "1a(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
+    "1b(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
+    "1b(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
+    "1b(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
+    "1b(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
+    "2(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
+    "2(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
+    "2(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
+    "2(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
+    "3(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
+    "3(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
+    "3(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
+    "3(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
+    "8a(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
+    "8a(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
+    "8a(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
+    "8a(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
+    "8b(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
+    "8b(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
+    "8b(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
+    "8b(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
+    "9(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
+    "9(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
+    "9(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
+    "9(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
+    "10(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
+    "10(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
+    "10(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
+    "10(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
+    "13": "50d638b3489ec9106a7903e3fe89f538c4938a1c481a3921f285f376d8cb4b74",
+    "7": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "20": "11eeae15ac96f8b70e57e71d2e8fe0e6529f22fabbb484d45554ddd477f459b2",
+    "22": "5d5fac7682b7a2fa13c2250bae25effb6239a504e9095246e6b2c15009ed77b2"
   }
- ],
- "subjects": {
-  "sd.line18": "2bbae14fd67622e88c468eacec973d73b3b9ed389fb0401a7e07aded80c90926",
-  "sd.line19": "b653bf85615a8a9a33689a866188bc4740382a75c6c28c008f27bbd7bf9181a4",
-  "sd.filing4952": "c463919a506118918868fb38826faafbd33315376d7f29963f6e818120502b75",
-  "sd.investment_election": "a3d91ae14f27d51f584ab503205e59279759a061e193355b00ebdf9732585be4",
-  "sd.filed": "2809343429f80f68a2596485238d1f8e2f2d7c8ff67ec1d4b394d2e8bf49b38d",
-  "sd.zero": "ce16c7c938fea13ef80d3f7cf152cea6dd84d856dea677c44b6e24fbc5cc60fd",
-  "sd.has_loss": "1e2c8c7df8ec4dc8a21e5ed72420311c4ae2a7b2895ded86e2213151661ada7f",
-  "sd.to1040": "c6be714faee43a2731a8e84b3fdbc9673314f85a90a3ddff50bd1fcc4a556678",
-  "sd.net_gain": "9975d7415b27cc117455a94113d2867f95c94c61be4bc016b9faae8e92704ab9",
-  "sd.distributions_if_dividends": "e298b33df964936239e1aa4a899b76c8308e3041094d52235a155aab067750ae",
-  "1a(d)": "db323fdbca8ec838dd92e590ab5d32425bb9ad0a4ac875d70448d368a9a769f1",
-  "1a(e)": "4dbf6fdf6081e979d40efde9dbedb81fccfaea20f72c5a7a5d3cff390d9fbe4f",
-  "1a(g)": "a91699e17121d70da04ce1c520b0b5fffafa11141dc42b49fc132f94f3cb0a94",
-  "1a(h)": "1135af99d26f8eb86dd39d56926262ba5188731fb97d0eb2ae241d3d6e391610",
-  "1b(d)": "80c37dd3668f64aed9767cc78d73eef9fd24370f8ffb9f3e2be9b8769c8f4aa6",
-  "1b(e)": "55013dc3fb051eb21d7540f1d0b97672683670877a71a3a8d57d257e9b6a2152",
-  "1b(g)": "3c300eaa8758756e0c4d62de7e13e2e54105e1f3c9282c0e1a41b3a01267a833",
-  "1b(h)": "2e61606e0aca606976b8510b886b627d58318c385610aae1f88bc562d3ec2d43",
-  "2(d)": "70161a5b47a0923cbd563f0b70305694fbff1d73468b691eb5d4e9dde928979a",
-  "2(e)": "a625bce4a4ac5a41e71ac077a67c620e6db1eb9a1bb49b32e6eeeebbf29f78c8",
-  "2(g)": "309c10eb1735f926b0a285026842312945ab72ef6740824b673f70e98e059ef3",
-  "2(h)": "acfbf57cf9a80970159ac4ce7a3699f6b35a0326cd57e008955dfd33493a9e02",
-  "3(d)": "3881906eb8acf70950703449d5f85a7341942d8c8f43b14eabab9f5ac97fc55b",
-  "3(e)": "d0c09a53ddb33c0d5766d0fcd690cee8df1c39cdd58f1e1d5e8de336b8ce7a95",
-  "3(g)": "18d700d521cc805dd90a43823c5558f4ebb57c4b16311bbc9c7c4fab8f8fec52",
-  "3(h)": "392b77525528ba1c0b2803cd4c1d6d5acee6fd5bd3dc8e206e79aa42c80cc840",
-  "8a(d)": "569a8311e92e3c0dba2aa6455ed621ea3c57c0361d0f1ed01ec74f5f0aaa8e87",
-  "8a(e)": "24c93ba85d3424ff1bc186ac2456fd471d57f8e9b378e1fca241d67781ec2697",
-  "8a(g)": "1a21469a74deebf480b3c6eaae4f7cb5f96b2f776d1633e7d31c2949f805dacd",
-  "8a(h)": "06e8b78e1bc01658881cb8c82fd48553a2eded4c96e656bd5a597afff29a7afb",
-  "8b(d)": "0a0a0864cf2acba9df092c565ea5756e67ed3636cb76797e46712a31c94af64a",
-  "8b(e)": "7498b03f9a311d8a41cdb477fb8717403ac7cdf28202a2f0bc3de32fffe31e73",
-  "8b(g)": "3a4b75bf8c999a14258b4926f04608d9752a7c3a0299a652569793e5acabac6f",
-  "8b(h)": "49b59614ab30770e9f6707ee914b636af6e2b7b9de95b18b1045a915692f5a98",
-  "9(d)": "5275f33fb72d1ea09ed99aa8359ac5e8ff86a7bc8eaa6be94795c373852d5383",
-  "9(e)": "2b01e0ce5107814c7b2bee68bffd7554b5cdef98dde2cef7f5ebbdfa1e60e905",
-  "9(g)": "6293f156eb58ecd309f515a267e91bb88e4f122da763b9d917a8f1ca1d05df41",
-  "9(h)": "6919b99cf7c94932c022cd1e6bc626ab7837d52258d3ed42913c18079bb8d260",
-  "10(d)": "e601c2e7c50aba93bdcf87196a54a0da79f5da2714658316306292a4dacb1792",
-  "10(e)": "61e121db7dcbe3863d2c89c20706748c87ec1ee6f94a322442fa81a0b42b3627",
-  "10(g)": "ae933c2ed14216bc750f70461c6e3f29ce64cf060eeab652478769b373a98f9a",
-  "10(h)": "1b2f74ba7158600e7e443826aa59bded6b107da86d8cbbc8298f8df5683539a3",
-  "4": "8443fdc5d500eee152c93b8ac69b9e0be5abbbeea079cb21ed743de3113ee688",
-  "5": "d2e3c99b1256da39cb9edb3b970d05980cba8a8f018c68f4a618bacc43e0a0d2",
-  "6": "e635ea08698589bfff629738a5a8bd7dddf7a260aeae4eaf8c46c4a0c54bb9d7",
-  "11": "df971d64bc79d90427e3786ce033c8847772e0a83e9172ee90e24a06204419c5",
-  "12": "b671b3f19b0d13b3d41295c28f916c47f9d85e9b983e57fb290fc2546c88a0d0",
-  "14": "852949d5edfbbdcb954882a21b06e4cf555493d6cb93c30e7ea3372c6a3d9c3c",
-  "13": "919862ce6dea30eb0676331db28b397ec864ae318355df9f2156e996cae20b36",
-  "7": "a9899e1cb09a90f27e64f53f7ca4eb6bf3bb50aeead5c209cd3f6ae267790ef3",
-  "15": "0db746e2ca06bdedba11c108bf05789daab7e6242607bc4d0572996b6b0cdc01",
-  "16": "b8dbb7d8e80124667bc28ec012ef66fb86be6ecbd9d4a9306e7686c76a56db45",
-  "17": "9f04394cf47348ce817245c55c2e34211aea92c3fdb2faa27a605060397de9b7",
-  "20": "8cf2ccba61ffc9bb1201307f724b0a77f616641dda4bdc38d073d2caae531f68",
-  "21": "462bcca25b8919800e51951ff48b8e68fc1da54a6bbce933ad2a870576d270a8",
-  "22": "5cc1ac47b2b535c6dbfa51b2449db78e1d2bb875c542c56b67fb5a6b62209fa9"
- },
- "__rest__": "428de7b0aecb0ec58b80e6b99fb756277616bb08aed9f21f90e6accedff64e84",
- "foreign": {
-  "sd.distributions_if_dividends": "972cf38c15d80da0f8de2081225037cf0d43af899903b01f148edc4104ceee2a",
-  "1a(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
-  "1a(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
-  "1a(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
-  "1a(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
-  "1b(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
-  "1b(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
-  "1b(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
-  "1b(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
-  "2(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
-  "2(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
-  "2(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
-  "2(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
-  "3(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
-  "3(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
-  "3(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
-  "3(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
-  "8a(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
-  "8a(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
-  "8a(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
-  "8a(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
-  "8b(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
-  "8b(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
-  "8b(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
-  "8b(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
-  "9(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
-  "9(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
-  "9(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
-  "9(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
-  "10(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
-  "10(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
-  "10(g)": "6ef4a62c223de6eb8366220902b7daae8c07a022550fd420ff01968dd530f6fd",
-  "10(h)": "cd1c4d1844143ace94c5b64cb05f4898d634a0b20bde2d451e1974ea98607d19",
-  "13": "50d638b3489ec9106a7903e3fe89f538c4938a1c481a3921f285f376d8cb4b74",
-  "7": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "22": "5d5fac7682b7a2fa13c2250bae25effb6239a504e9095246e6b2c15009ed77b2"
- }
 }

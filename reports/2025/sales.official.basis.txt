@@ -465,6 +465,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [f8606] Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?" and "Go to line 4" (2025; 748a2bf2)
       note: taken: {"eq":["person.ira_has",{"const":false}],"op":"test"}
+  (helper) Your spouse's entry, if your spouse was born before January 2, 1961, and has a valid SSN
+      = false
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.role",{"const":"taxpayer"}],"op":"test"}
 
 == Qualified business income and section 199A dividends — amounts and the choice of Form 8995 ==
   (helper) Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?
@@ -1418,6 +1422,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s1a.line21: chose $0 (guard 0)
   s1a.line30: chose $0 (guard 0)
   s1a.line36a: chose $0 (guard 0)
+  person[taxpayer].spouse_senior_work_ssn: chose false (guard 0)
   s1a.line36b: chose $0 (guard 0)
   qbi.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -1655,7 +1660,8 @@ Derivations:
   sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
   sa.age65: test(sa.age65_count = 0; 0 = 0)
   s1a.line36a: choose(sa.age65 = false; false = false; s1a.zero = $0)
-  s1a.spouse_senior_count: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
+  person[taxpayer].spouse_senior_work_ssn: choose(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].no = false)
+  s1a.spouse_senior_count: sum_over(person[taxpayer].spouse_senior_work_ssn = false; true = true)
   s1a.spouse_senior: test(s1a.spouse_senior_count = 0; 0 = 0)
   s1a.line36b: choose(s1a.spouse_senior = false; false = false; s1a.zero = $0)
   s1a.line37: sum(s1a.line36a = $0; s1a.line36b = $0)

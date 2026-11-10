@@ -4271,6 +4271,52 @@
    "subject_key": "b0c5f6eaf6f8727133c09657d71941680f0ef5d42937d4efab2c52053b777c62"
   },
   {
+   "printed": "person.senior_work_ssn",
+   "project_expr_sha256": "945dc8986a2c4e2fac5c2ffbe5e64fceade1fb972a88ca73aff84389a51ed05f",
+   "second_expr_sha256": "221a598d835bc76d0e9e90dc9ab5a3ab6b75822fd716235b7eba2f8814962b43",
+   "ruling": "Ruling: representation; i1040gi p. 110: \"Fill out Schedule 1-A, Part V, only if: You (and/or your spouse if filing a joint return) were born before January 2, 1961. You have a valid social security number (SSN).\" The reply is the conjunction all[age65, work_ssn]; the project is the same test as a nested choose on age65 first, the order the Schedule 1-A Part V counts read it, so a person's SSN question is reached only for someone born before January 2, 1961. executable-triage-v2: 4,571 of 4,573 comparisons agree; the 2 differences are project-unknown on refused partial records withholding age65 with work_ssn answered no, where the conjunction is false from its second operand and the choose waits for its first (the BUG-0471 trade-off, owner accepted). No completed value differs. Project retained.",
+   "context": "740d967cd5c8d1671a243b376d33c178d19c6dd0611076c3ed36d5b2da80eeb9",
+   "date": "2026-11-10",
+   "run": "4b3158e6f03edd1a0247a1d1719de46359aead3ca1e40ae8806e243d17b6491f",
+   "subject_key": "57f12eef086172d18bef187eea797d667bdb22037839015353e18fe11c5036f9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.eic.5.deepseek-person[taxpayer].age65@person[taxpayer]",
+     "partial:classm.eic.5.deepseek-person[spouse].age65@person[spouse]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.spouse_senior_work_ssn",
+   "project_expr_sha256": "9af382a5eeb91f0542c4d048948096edf4694b19ddf0328e067adeef9a431504",
+   "second_expr_sha256": "6da781e0687ababf6fca788a63beca43837c743ffdd62b8da65ac0a2b0e0e93e",
+   "ruling": "Ruling: representation; i1040gi p. 110: \"If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN.\" The reply is all[role spouse, age65, work_ssn]; the project is the same conjunction as a nested choose in that order (role, then age, then SSN, through person.senior_work_ssn). executable-triage-v2: 4,532 of 4,573 comparisons agree; all 41 differences are project-unknown on incomplete or refused partial records withholding person.role (the role is asked first for every person entry), where the conjunction is decided false by a later operand (the BUG-0471 trade-off, owner accepted). No completed value differs. Project retained.",
+   "context": "740d967cd5c8d1671a243b376d33c178d19c6dd0611076c3ed36d5b2da80eeb9",
+   "date": "2026-11-10",
+   "run": "4b3158e6f03edd1a0247a1d1719de46359aead3ca1e40ae8806e243d17b6491f",
+   "subject_key": "bf5b9537c411c02ab64e8009218f1d4ee9b8f1fae998b3e163a2b5e8049f6313",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:ss.person.separation@person[second]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].role@person[taxpayer]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].role@person[taxpayer]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].role@person[taxpayer]",
+     "partial:stage14.asset.qip-person[taxpayer].role@person[taxpayer]",
+     "partial:stage14.asset.done-person[taxpayer].role@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "person.tin_or_itin_applied",
    "project_expr_sha256": "775ed4cd4dfb16988687c164eb248ed4110c22adf8ba792580698a62acefa456",
    "second_expr_sha256": "a93f6810326f9dbf2d10125ac80a1163a24f755212258950e600a21909673fa8",
@@ -4353,6 +4399,31 @@
      "fixture:classm.f8889.4.deepseek@person[taxpayer]",
      "fixture:classm.f8889.5.deepseek@person[taxpayer]",
      "fixture:classm.f4952.4.deepseek@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.work_ssn_or_tin",
+   "project_expr_sha256": "f9cafe420ac9a73547be19775162bc901176b21c58ec2601aeb46903fb9c0ba2",
+   "second_expr_sha256": "3a2ae0ee9aef7c284ae74480f62ff462352bb57ff75ba14a640171511b2df513",
+   "ruling": "Ruling: representation; i1040gi p. 17, Before you begin: \"The other spouse must have either an SSN or ITIN\". The reply is the project's former test, any[tin, work_ssn]; the project is the same disjunction as a nested choose with person.tin first (owner, T-264: the interview asks the SSN-or-ITIN question first, and an SSN valid for employment is an SSN), so on definite answers the two agree. executable-triage-v2 (.transcription/triage/2025/person.json; 1,747 fixtures, 500 generated returns seed 20261026): 4,499 of 4,573 comparisons agree; every difference is project-unknown (74), records that state work_ssn and withhold tin: partial records, and class M records whose route never reads the line (classm.s1a.1, .2, .5, .9: no dependent, so household.id_count is not read), where the project waits for the first operand as the owner accepted (BUG-0471 trade-off). No completed value differs. Project retained.",
+   "context": "740d967cd5c8d1671a243b376d33c178d19c6dd0611076c3ed36d5b2da80eeb9",
+   "date": "2026-11-10",
+   "run": "4b3158e6f03edd1a0247a1d1719de46359aead3ca1e40ae8806e243d17b6491f",
+   "subject_key": "2c504dbc2bdaa284b0b29c4c2e40296358274564422943beddb5b3d0204e466b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]"
     ],
     "policy": "executable-triage-v2"
    }

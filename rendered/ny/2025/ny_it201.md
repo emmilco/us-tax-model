@@ -295,8 +295,8 @@
 ## (gate) — `ny_it201.gate.spouse_nonresident`
 
 - **Authored helper label:** A joint return with a spouse who was not a full-year New York State and City resident
-- **Encoded (Bool):** f1040 line Filing Status = 'mfj' and helper "On your joint return, was your spouse also a full-year New York State and New York City resident?" = false
-- Expr: `{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["ny_it201.ask.spouse_resident",{"const":false}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "No"] [f1040 line Filing Status = 'mfj' → helper "The spouse on a joint return was not a full-year New York State and City resident"] [f1040 line Filing Status = 'mfs' → helper "No"] [f1040 line Filing Status = 'hoh' → helper "No"] [f1040 line Filing Status = 'qss' → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"ny_it201.no"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"ny_it201.spouse_not_resident"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"ny_it201.no"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"ny_it201.no"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 4, Item A, "One spouse is a New York State resident and the other is a nonresident or part-year resident." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.gate.special_accrual`
@@ -2056,3 +2056,10 @@
 - **Encoded (NonNegDollars):** Add column (80), line 81, and line 82.
 - Expr: `{"of":["ny_it201.tax_due","ny_it201.line81","ny_it201.line82"],"op":"sum"}`
 - Cite: [ny_it201i] p. 23, Line 80: Amount you owe, "Enter on line 80 the amount of tax you owe plus any estimated tax penalty you owe (see line 81 instructions) and any other penalties and interest you owe (see line 82 instructions)." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (helper) — `ny_it201.spouse_not_resident`
+
+- **Authored helper label:** The spouse on a joint return was not a full-year New York State and City resident
+- **Encoded (Bool):** helper "On your joint return, was your spouse also a full-year New York State and New York City resident?" = false
+- Expr: `{"eq":["ny_it201.ask.spouse_resident",{"const":false}],"op":"test"}`
+- Cite: [ny_it201i] p. 4, Item A, "One spouse is a New York State resident and the other is a nonresident or part-year resident." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)

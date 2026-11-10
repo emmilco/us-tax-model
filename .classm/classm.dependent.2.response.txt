@@ -2,8 +2,8 @@
 lines:
   - printed: "dependent[a].dc_line2d"
     value: "4000.00"
-    work: "Parent is a qualifying person (qualifying relative dependent, unable to care for self, deemed to have lived with you more than half of 2025 under the death rule); col (d) = $4,000 paid in 2025, with no cap at line 2 (the $3,000 limit applies on line 3)"
+    work: "Parent is a qualifying person: a dependent qualifying relative who could not care for self and is treated as living with you over half of 2025 (born/died rule, Pub 503); qualified expenses paid = $4,000 (the $3,000 cap applies at line 3, not here)"
   - printed: "dependent[a].dc_line2c"
     value: "yes"
-    work: "Age 80 (over 12) and physically or mentally unable to care for self = disabled per i2441 col (c)"
+    work: "Age 80 (over 12) and physically or mentally unable to care for self, so disabled per the i2441 column (c) instructions"
 ```

@@ -4,6 +4,45 @@
  "rulings": [
   {
    "printed": "(Step 5, 1)",
+   "project_expr_sha256": "13424c1e39fc678985f0aa1114a5722041a082faf31843b76cb7476f9d9dd5e1",
+   "second_expr_sha256": "75582dc16843f066356ea2dad3aaa3b5679a312be7a40c27f337485b8fd652cc",
+   "ruling": "Ruling: model error; i1040gi p. 42, Step 5, question 1, \"No. Complete the following worksheet\"; Step 5 is reached only after Steps 1 to 4, each of which can end \"STOP You can't take the credit\" (pp. 40-42). A line the filer does not reach must not show an amount (adjudication README, skipped-line rule): the reply shows a nonzero amount on completed returns where the project hides the line (shown_when eic.reached_step5), on returns a STOP of Steps 1 to 4 ends (classm.f4952.2.deepseek: investment income over $11,950, Step 2, question 2; the reply shows $32,619.00). The project refusals are cited screens reached first on refused returns (stage14.asset.refuse_qip_2017) and its unknowns are records withholding an answer (stage14.mut.asset_2025_listed_unanswered). This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 659 of 2,344 comparisons agree; differences {\"candidate-shows-skipped\": 1209, \"project-refuses\": 428, \"project-unknown\": 48}; on completed returns {\"candidate-shows-skipped\": 771}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "1076c001792abe23315a08432457946e8ef4d0b1e0370ed7c2726933d3061858",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@eic",
+     "fixture:stage14.asset.refuse_ads_past_gds@eic",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@eic",
+     "fixture:stage14.asset.refuse_class@eic",
+     "fixture:stage14.asset.refuse_listed_low@eic",
+     "fixture:stage14.asset.refuse_s179_over@eic",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@eic",
+     "fixture:classm.f2441.2.deepseek@eic",
+     "fixture:classm.f8889.3.deepseek@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f8889.5.deepseek@eic",
+     "fixture:classm.f4952.2.deepseek@eic",
+     "fixture:classm.f4952.3.deepseek@eic",
+     "fixture:classm.f8960.2.deepseek@eic",
+     "fixture:classm.f8960.3.deepseek@eic",
+     "fixture:classm.g28.1.deepseek@eic",
+     "fixture:classm.sa.2.deepseek@eic",
+     "fixture:classm.carloan.3@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(Step 5, 1)",
    "project_expr_sha256": "33f205e60ac6d6c47e940259575fc4ff65c44340c44455abbcd98b4195ca138d",
    "second_expr_sha256": "85955aad22e41bba4ce2a2edd4f40983a19dcbb14eaa6e2724fdfa64baefb8c4",
    "ruling": "Ruling: model error; i1040gi p. 42, Step 5, question 1, \"No. Complete the following worksheet\", line 1. Each STOP of Steps 1 to 4 ends the flowchart before Step 5 and the worksheets (i1040gi p. 40, Step 1, question 1: \"No. STOP You can’t take the credit.\"; Step 2, question 2, investment income more than $11,950; pp. 40-42). executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass f3d45b388827; 1,702 fixtures, 500 generated returns seed 20261026, 97 partial records; 2,299 comparisons): 648 of 2,299 agree; differences 1,179 candidate-shows-skipped, 429 project-refuses, 43 project-unknown; on returns the full interview completes: 750 candidate-shows-skipped. eic's triage ran with the in-memory BUG-0470 patch of the pass-scope split (/tmp/gw_adj/triage_patched.py); every completed-return witness was read from an uncapped rerun of the same evaluator on the same bank (scratch /tmp/adj/tr/eicwork/full/eic.json; the record keeps 6 per kind). The candidate gives the Step 5 worksheet line no shown_when, so it shows a nonzero amount on 750 completed returns that stop before Step 5 (amounts such as $50,000.00 and $120,000.00, line 1z), where the project hides the line (shown_when eic.reached_step5); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs. The project-refuses and project-unknowns are on refused or incomplete records (cited scope screens and question order): scope. Gate-wave check (HEAD against the working tree): every fixture (1,702) and the 500 generated returns evaluated in both trees; no printed eic line or refusal differs on any completed return, and no record changes return state; on 5 completed fixtures only eic helpers (eic.qc_count, eic.limit, eic.step1_income and their kin) are unknown in the working tree where HEAD's all() was decided false by a later operand, and on incomplete or refused records some values become unknown (one refused record, classm.scveh.2, reports a different first refusal). As the ruling on main. Project stands.",
@@ -80,6 +119,40 @@
   },
   {
    "printed": "(Step 5, 2)",
+   "project_expr_sha256": "9155b85ad672ce321a170f64fb4407e58fa05e092d2de53069dfd93241afca8f",
+   "second_expr_sha256": "86f20445d6f39d3a2e251c94353d11cce7f7b9e0f8cdeee17ccd98dfb4002459",
+   "ruling": "Ruling: scope; i1040gi p. 42, Step 5, line 2 (Medicaid waiver payments). Both sides give $0 wherever both give a value; no completed-return difference. The project refusals are cited screens reached first on refused returns (stage14.asset.refuse_qip_2017); the reply's refusal is its other-income screen on a record withholding Schedule 1 (stage9.eic.refuse.other_income.schedule1_unanswered). This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 1,849 of 2,344 comparisons agree; differences {\"candidate-refuses\": 1, \"project-refuses\": 441, \"project-unknown\": 53}; on completed returns none. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "2e79897e216adefcc3945ea2b916286d8223cc4b15d7fe10ad3eb9ebdfc33d02",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@eic",
+     "fixture:stage14.asset.refuse_ads_past_gds@eic",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@eic",
+     "fixture:stage14.asset.refuse_class@eic",
+     "fixture:stage14.asset.refuse_listed_low@eic",
+     "fixture:stage14.asset.refuse_s179_over@eic",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@eic",
+     "fixture:classm.f8889.3.deepseek@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f8889.5.deepseek@eic",
+     "fixture:classm.sa.2.deepseek@eic",
+     "fixture:classm.carloan.3@eic",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(Step 5, 2)",
    "project_expr_sha256": "a11d1f015f12e93dbd1763af80b724281621014a10ff9b9c9b7117f0736a1479",
    "second_expr_sha256": "b16766589c75d0bdfed71b5b1922cab41bdf9521d17e2f0441dab71abfcd5bf5",
    "ruling": "Ruling: scope; i1040gi p. 42, Step 5, line 2 (Medicaid waiver payments). Both sides give $0 on every supported return (combat pay is refused through s8812.combat_pay); executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 1,604 of 2,135 agree; differences 429 project-refuses, 102 project-unknown; on returns the full interview completes: none. No completed-return difference: the differences are on refused or incomplete records where the project's shown_when eic.reached_step5 evaluates the upstream screens. Project stands.",
@@ -136,6 +209,47 @@
      "fixture:classm.f8889.5.deepseek@eic",
      "fixture:classm.f8995a.2@eic",
      "fixture:classm.f8889.3@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(Step 5, 3)",
+   "project_expr_sha256": "58989fbe50eb949f37c0724d10160a0151729b2199c66981928c3152bf82729c",
+   "second_expr_sha256": "fd613d3b05d9c5bd0d4c9e320b026f14d5c80987e815c8fad875599a9f91858f",
+   "ruling": "Ruling: model error; i1040gi p. 42, Step 5, line 3, \"Subtract line 2 from line 1\"; each STOP of Steps 1 to 4 ends the flow chart before Step 5. A line the filer does not reach must not show an amount (adjudication README, skipped-line rule): the reply shows a nonzero amount on completed returns where the project hides the line (shown_when eic.reached_step5), on returns a STOP of Steps 1 to 4 ends (classm.f4952.2.deepseek, Step 2, question 2; the reply shows $32,619.00). This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 680 of 2,344 comparisons agree; differences {\"candidate-refuses\": 1, \"candidate-shows-skipped\": 1209, \"project-refuses\": 406, \"project-unknown\": 48}; on completed returns {\"candidate-shows-skipped\": 771}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "ecccc753f5d76f8bb5265551b6309b53cd36467820b1a1d5595fac574fa2f7d4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@eic",
+     "fixture:stage14.asset.refuse_ads_past_gds@eic",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@eic",
+     "fixture:stage14.asset.refuse_class@eic",
+     "fixture:stage14.asset.refuse_listed_low@eic",
+     "fixture:stage14.asset.refuse_s179_over@eic",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@eic",
+     "fixture:classm.f2441.2.deepseek@eic",
+     "fixture:classm.f8889.3.deepseek@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f8889.5.deepseek@eic",
+     "fixture:classm.f4952.2.deepseek@eic",
+     "fixture:classm.f4952.3.deepseek@eic",
+     "fixture:classm.f8960.2.deepseek@eic",
+     "fixture:classm.f8960.3.deepseek@eic",
+     "fixture:classm.g28.1.deepseek@eic",
+     "fixture:classm.sa.2.deepseek@eic",
+     "fixture:classm.carloan.3@eic",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@eic"
     ],
     "policy": "executable-triage-v2"
    }
@@ -212,6 +326,51 @@
      "fixture:classm.g28.1.deepseek@eic",
      "fixture:classm.f8995a.2@eic",
      "fixture:classm.f8889.3@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(Step 5, 4)",
+   "project_expr_sha256": "9155b85ad672ce321a170f64fb4407e58fa05e092d2de53069dfd93241afca8f",
+   "second_expr_sha256": "86f20445d6f39d3a2e251c94353d11cce7f7b9e0f8cdeee17ccd98dfb4002459",
+   "ruling": "Ruling: model error; i1040gi p. 42, Step 5, line 4, nontaxable combat pay elected into earned income; each STOP of Steps 1 to 4 ends the flow chart before Step 5. Both sides give $0 where both give a value. The reply also needs answers the project does not read on those returns (s8812.combat_pay, unanswered on records where Step 5 is not reached, so Step 5 line 4's combat-pay screen is not asked), so it is unknown or refuses there; a candidate that needs an answer the source does not need is a model error. (classm.f4952.2.deepseek unknown; stage5.return.refund_combat_pay_no_children refused where the project hides the line). This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 1,720 of 2,344 comparisons agree; differences {\"candidate-refuses\": 5, \"candidate-unknown\": 112, \"project-refuses\": 454, \"project-unknown\": 53}; on completed returns {\"candidate-refuses\": 2, \"candidate-unknown\": 70}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "ca35634632c01711c855f5e00fdd6a6f18bac12f055a36a11ad9c4195e4d7bac",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@eic",
+     "fixture:stage14.asset.refuse_ads_past_gds@eic",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@eic",
+     "fixture:stage14.asset.refuse_class@eic",
+     "fixture:stage14.asset.refuse_listed_low@eic",
+     "fixture:stage14.asset.refuse_s179_over@eic",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f4952.2.deepseek@eic",
+     "fixture:classm.f4952.3.deepseek@eic",
+     "fixture:classm.f4952.4.deepseek@eic",
+     "fixture:classm.f8960.2.deepseek@eic",
+     "fixture:classm.f8960.3.deepseek@eic",
+     "fixture:classm.person.1.deepseek@eic",
+     "fixture:classm.carloan.3@eic",
+     "fixture:classm.f8995a.2@eic",
+     "fixture:classm.tax_on_amount.2@eic",
+     "fixture:classm.f8889.4@eic",
+     "fixture:classm.gift.1@eic",
+     "fixture:stage15.refuse.f2441.combat_pay@eic",
+     "fixture:stage5.return.refund_combat_pay_no_children@eic",
+     "fixture:stage8.hoh.actc.three_children.line12_stop_combat_pay@eic",
+     "fixture:stage9.s8812.not_taking_eic.combat_pay@eic"
     ],
     "policy": "executable-triage-v2"
    }
@@ -399,6 +558,59 @@
    }
   },
   {
+   "printed": "(Step 5, 5)",
+   "project_expr_sha256": "d968a1e93b4730506d89957210890a684d5601d043a43394cb896eb1adb83cf6",
+   "second_expr_sha256": "047d5121c6e7f0de1c510fb0b244dccda00cc89df7d713c731fb8a45c212633f",
+   "ruling": "Ruling: model error; i1040gi p. 42, Step 5, line 5, \"Add lines 3 and 4. This is your earned income\"; each STOP of Steps 1 to 4 ends the flow chart before Step 5. A line the filer does not reach must not show an amount (adjudication README, skipped-line rule): the reply shows a nonzero amount on completed returns where the project hides the line (shown_when eic.reached_step5), on returns a STOP of Steps 1 to 4 ends (classm.g28.1.deepseek: the reply shows $32,936.00). The reply also needs answers the project does not read on those returns (s8812.combat_pay, unanswered on records where Step 5 is not reached, so Step 5 line 4's combat-pay screen is not asked), so it is unknown or refuses there; a candidate that needs an answer the source does not need is a model error. This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 681 of 2,344 comparisons agree; differences {\"candidate-refuses\": 6, \"candidate-shows-skipped\": 1104, \"candidate-unknown\": 112, \"project-refuses\": 398, \"project-unknown\": 43}; on completed returns {\"candidate-refuses\": 2, \"candidate-shows-skipped\": 701, \"candidate-unknown\": 70}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "bc985be8fa8a22cdb28c4f6bb7d8d2b8b99c89cc0b7bbab25d34525ecd5d3ae7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@eic",
+     "fixture:stage14.asset.refuse_ads_past_gds@eic",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@eic",
+     "fixture:stage14.asset.refuse_class@eic",
+     "fixture:stage14.asset.refuse_listed_low@eic",
+     "fixture:stage14.asset.refuse_s179_over@eic",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@eic",
+     "fixture:classm.f2441.2.deepseek@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f4952.2.deepseek@eic",
+     "fixture:classm.f4952.3.deepseek@eic",
+     "fixture:classm.f4952.4.deepseek@eic",
+     "fixture:classm.f8960.2.deepseek@eic",
+     "fixture:classm.f8960.3.deepseek@eic",
+     "fixture:classm.g28.1.deepseek@eic",
+     "fixture:classm.sd.1.deepseek@eic",
+     "fixture:classm.sd.2.deepseek@eic",
+     "fixture:classm.sd.3.deepseek@eic",
+     "fixture:classm.u1250.1.deepseek@eic",
+     "fixture:classm.person.1.deepseek@eic",
+     "fixture:classm.carloan.3@eic",
+     "fixture:classm.f8995a.2@eic",
+     "fixture:classm.tax_on_amount.2@eic",
+     "fixture:classm.f8889.4@eic",
+     "fixture:classm.gift.1@eic",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@eic",
+     "fixture:stage15.refuse.f2441.combat_pay@eic",
+     "fixture:stage5.return.refund_combat_pay_no_children@eic",
+     "fixture:stage8.hoh.actc.three_children.line12_stop_combat_pay@eic",
+     "fixture:stage9.s8812.not_taking_eic.combat_pay@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "1",
    "project_expr_sha256": "068a5482076bf710994c0dadb25e2f50d277909de10e824f8ca02a446259efd3",
    "second_expr_sha256": "1b6e2488e504ac0a45d8502da02714c07f5b049e9caf0c8706a73e86c8f35e02",
@@ -465,6 +677,59 @@
    "ruling": "Ruling: finding; the open difference is representation and the line carries a project defect. (1) executable-triage-v1 (triage/eic.json; 1,083 fixtures, 500 generated returns seed 20261026, 134 partial records; 1,717 comparisons): 0 differ, 1,717 agree; the candidate's extra scope.schedule1 branch reaches Worksheet B only on returns the project refuses on that screen (see eic.self_employed). (2) Project, finding: i1040gi p. 43, Step 6: \"1. Do you want the IRS to figure the credit for you? ... No. Go to Worksheet A.\" (Worksheet A is reached only after Steps 1 to 5 pass; each \"STOP You can't take the credit\" ends the flowchart before it) The project evaluates Worksheet A line 1 on every return, nonzero on returns that STOP before Worksheet A (e.g. stage16.cleanup.mut.clwb_three_figured, investment income over $11,950, Step 2 question 2/3; generated 439, filer without a valid SSN, Step 1 question 2: line 2 3,545.00 read from it). Under the README skipped-line rule a nonzero amount (or no value) on a line the source says to skip is a defect of the side producing it, here the project. The candidate does the same. See eic.findings.md F2. Uncertainty: this treats a STOP before Worksheet A as skipping its lines.",
    "context": "63c3b4aae4d95b88d785a6f0da7b6112f44ff5b010360f92f0aef768a0bff9d3",
    "subject_key": "d273ae4ce370ddfabad0746a2bad092c4c1438cee29e9991e6b917d63054b7af"
+  },
+  {
+   "printed": "1",
+   "project_expr_sha256": "15de0f7de404d8d48c38e2bd1dc9ad64db330135fde15c757905224365c3c90b",
+   "second_expr_sha256": "7df4cab3dce5df2beb6fba4d746030c1421c55975fbc1dab8c1d1614f7ec41d3",
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, \"Use this worksheet only if you answered 'No' to Step 5, question 2\", line 1; the worksheet is reached only after Steps 1 to 5. A line the filer does not reach must not show an amount (adjudication README, skipped-line rule): the reply shows a nonzero amount on completed returns where the project hides the line (shown_when eic.eligible), on returns a STOP of Steps 1 to 4 ends (stage14.asset.hy_5yr; the reply shows $45,910.00). The reply also needs answers the project does not read on those returns (s8812.combat_pay, unanswered on records where Step 5 is not reached, so Step 5 line 4's combat-pay screen is not asked), so it is unknown or refuses there; a candidate that needs an answer the source does not need is a model error. This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 654 of 2,344 comparisons agree; differences {\"candidate-refuses\": 6, \"candidate-shows-skipped\": 1225, \"candidate-unknown\": 112, \"project-refuses\": 310, \"project-unknown\": 37}; on completed returns {\"candidate-refuses\": 2, \"candidate-shows-skipped\": 813, \"candidate-unknown\": 70}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "dc0ea0364e20df9592ace7d781a5ec2a50878ff956f3bcca68aabbf4488dc3e1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@eic",
+     "fixture:stage14.asset.mq_7yr@eic",
+     "fixture:stage14.asset.mq_mixed@eic",
+     "fixture:stage14.asset.mq_not@eic",
+     "fixture:stage14.asset.bonus_100@eic",
+     "fixture:stage14.asset.bonus_40_before@eic",
+     "fixture:classm.f8889.1.deepseek@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f4952.2.deepseek@eic",
+     "fixture:classm.f4952.3.deepseek@eic",
+     "fixture:classm.f4952.4.deepseek@eic",
+     "fixture:classm.f8960.2.deepseek@eic",
+     "fixture:classm.f8960.3.deepseek@eic",
+     "fixture:classm.clcw.1.deepseek@eic",
+     "fixture:classm.clcw.4.deepseek@eic",
+     "fixture:classm.dependent.1.deepseek@eic",
+     "fixture:classm.dependent.3.deepseek@eic",
+     "fixture:classm.dependent.4.deepseek@eic",
+     "fixture:classm.person.1.deepseek@eic",
+     "fixture:classm.carloan.3@eic",
+     "fixture:classm.f8995a.2@eic",
+     "fixture:classm.tax_on_amount.2@eic",
+     "fixture:classm.f8889.4@eic",
+     "fixture:classm.gift.1@eic",
+     "fixture:stage9.eic.mut.classm_f8995a_2_line2_zero@eic",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@eic",
+     "fixture:stage15.refuse.f2441.combat_pay@eic",
+     "fixture:stage5.return.refund_combat_pay_no_children@eic",
+     "fixture:stage8.hoh.actc.three_children.line12_stop_combat_pay@eic",
+     "fixture:stage9.s8812.not_taking_eic.combat_pay@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "1",
@@ -585,6 +850,59 @@
      "fixture:f1.t153.own_child_nontaxpayer_other@eic",
      "fixture:stage15.refuse.f2441.combat_pay@eic",
      "fixture:stage15.refuse.f2441.mfs@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2",
+   "project_expr_sha256": "055228c01f7542f434c71c572acbb210154e170c103238875437fa5ee2ea8ebd",
+   "second_expr_sha256": "595b7da866a5dcbcae12d7c1cae130c1f6b6a48701a6f80855f75a5bd9aeeee8",
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 2, the EIC Table amount; the worksheet is reached only after Steps 1 to 5 (p. 42, Step 4, question 2, age 25 to 64 for a filer with no qualifying child: \"No. STOP\"). A line the filer does not reach must not show an amount (adjudication README, skipped-line rule): the reply shows a nonzero amount on completed returns where the project hides the line (shown_when eic.eligible), on returns a STOP of Steps 1 to 4 ends (stage9.eic.no_child.over65; the reply shows $308.00). The reply also needs answers the project does not read on those returns (s8812.combat_pay, unanswered on records where Step 5 is not reached, so Step 5 line 4's combat-pay screen is not asked), so it is unknown or refuses there; a candidate that needs an answer the source does not need is a model error. This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 1,797 of 2,344 comparisons agree; differences {\"candidate-refuses\": 15, \"candidate-shows-skipped\": 66, \"candidate-unknown\": 131, \"project-refuses\": 302, \"project-unknown\": 33}; on completed returns {\"candidate-refuses\": 2, \"candidate-shows-skipped\": 34, \"candidate-unknown\": 76}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "cbfd548085feb328586b9e2b2e52de4302484487e513e6c8a1cbd973f248f7c5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@eic",
+     "fixture:classm.f8889.1.deepseek@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f4952.2.deepseek@eic",
+     "fixture:classm.f4952.3.deepseek@eic",
+     "fixture:classm.f4952.4.deepseek@eic",
+     "fixture:classm.f8960.2.deepseek@eic",
+     "fixture:classm.f8960.3.deepseek@eic",
+     "fixture:classm.clcw.1.deepseek@eic",
+     "fixture:classm.clcw.3.deepseek@eic",
+     "fixture:classm.clcw.4.deepseek@eic",
+     "fixture:classm.dependent.1.deepseek@eic",
+     "fixture:classm.dependent.3.deepseek@eic",
+     "fixture:classm.dependent.4.deepseek@eic",
+     "fixture:classm.eic.5.deepseek@eic",
+     "fixture:classm.retirement.3.deepseek@eic",
+     "fixture:classm.carloan.3@eic",
+     "fixture:classm.f8995a.2@eic",
+     "fixture:classm.retirement.3@eic",
+     "fixture:classm.tax_on_amount.2@eic",
+     "fixture:classm.tcw.4@eic",
+     "fixture:classm.f8889.4@eic",
+     "fixture:classm.clcw.3@eic",
+     "fixture:classm.gift.1@eic",
+     "fixture:stage8.refuse.dependent.other_claimant@eic",
+     "fixture:stage8.refuse.dependent.married@eic",
+     "fixture:stage9.eic.mut.classm_f8995a_2_line2_zero@eic",
+     "fixture:f1.t153.friend_child_taxpayer@eic",
+     "fixture:f1.t153.own_child_nontaxpayer_other@eic",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@eic"
     ],
     "policy": "executable-triage-v2"
    }
@@ -758,6 +1076,52 @@
   },
   {
    "printed": "3",
+   "project_expr_sha256": "26532be9bea7e7f99e32e69d24cdd3f66cba69e3336a40a4e0b0acfb4234597f",
+   "second_expr_sha256": "3555b266d0fc295625b8037d5f739e357f5823b98ed11f570db776d8ac454d41",
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 3, \"Enter the amount from Form 1040 or 1040-SR, line 11b\"; the worksheet is reached only after Steps 1 to 5, and line 3 only when line 2 is not zero. A line the filer does not reach must not show an amount (adjudication README, skipped-line rule): the reply shows a nonzero amount on completed returns where the project hides the line (shown_when eic.show3), on returns a STOP of Steps 1 to 4 ends (stage14.asset.hy_5yr; the reply shows $45,910.00). The project refusals are cited screens (classm.eic.6.deepseek) and its unknowns records withholding an answer (classm.sa.2.deepseek). This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 757 of 2,344 comparisons agree; differences {\"candidate-shows-skipped\": 1532, \"candidate-unknown\": 8, \"project-refuses\": 27, \"project-unknown\": 20}; on completed returns {\"candidate-shows-skipped\": 1001}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "f47d63a5755cbc83f29506e557983f1f8ab321c33d4c7c4eebee8a61b6772f8c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@eic",
+     "fixture:stage14.asset.mq_7yr@eic",
+     "fixture:stage14.asset.mq_mixed@eic",
+     "fixture:stage14.asset.mq_not@eic",
+     "fixture:stage14.asset.bonus_100@eic",
+     "fixture:stage14.asset.bonus_40_before@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.eic.6.deepseek@eic",
+     "fixture:classm.f5329.3.deepseek@eic",
+     "fixture:classm.sa.2.deepseek@eic",
+     "fixture:classm.s1a.7@eic",
+     "fixture:classm.eic.9@eic",
+     "fixture:classm.eic.10@eic",
+     "fixture:classm.eic.12@eic",
+     "fixture:classm.f8889.4@eic",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@eic",
+     "fixture:stage21.f1.where_lower_bound_still_decides@eic",
+     "fixture:t264.eic.show5_agi_open_married_child@eic",
+     "fixture:stage10.ira.roth_code_unanswered@eic",
+     "fixture:stage15.refuse.f2441.mfs@eic",
+     "fixture:stage16.hsa.partial.H01@eic",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@eic",
+     "fixture:mutation.t2.no_itemize_f8960_9a@eic",
+     "fixture:mutation.t2.f8889.all_year_dec_unanswered@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3",
    "project_expr_sha256": "e519ab9d8dc198b6c74b6124fc3d8b5086bb8eceb31f87879efad9f78aa12754",
    "second_expr_sha256": "903ec5dee406c0b21e10327413e6133076604a12816fb0865fc16c60abf6a078",
    "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A: \"Use this worksheet only if you answered “No” to Step 5, question 2. Otherwise, use Worksheet B.\" and line 2: \"If line 2 is zero, STOP You can’t take the credit.\" The candidate has no shown_when and shows a nonzero amount on 320 completed returns where the project hides the line (shown_when eic.show3); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 714 of 2,135 agree; differences 1350 candidate-shows-skipped, 38 project-unknown, 27 project-refuses, 6 candidate-unknown; on returns the full interview completes: 320 candidate-shows-skipped. Project stands.",
@@ -796,6 +1160,58 @@
      "fixture:stage21.f1.special_null@eic",
      "fixture:stage21.f1.aggregate_eligible_withheld@eic",
      "fixture:stage21.f1.aggregate_eligible_null@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4",
+   "project_expr_sha256": "36fdc912495d911d954ca78c4059f1fa473638427d0517c8dcbf97cc8731c97e",
+   "second_expr_sha256": "e1783dad259dd577a506fbde4865b22bcce4eba2afcc7fe86a3401be66540d5e",
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 4, \"Are the amounts on lines 3 and 1 the same?\". The reply's comparison is the project's where both show it; Boolean flow predicates follow the convention for skipped lines, so its showing a value where the project hides the line (stage14.asset.hy_5yr) is not itself the defect. The reply also needs answers the project does not read on those returns (s8812.combat_pay, unanswered on records where Step 5 is not reached, so Step 5 line 4's combat-pay screen is not asked), so it is unknown or refuses there; a candidate that needs an answer the source does not need is a model error. This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 1,457 of 2,344 comparisons agree; differences {\"candidate-refuses\": 5, \"candidate-shows-skipped\": 720, \"candidate-unknown\": 120, \"project-refuses\": 23, \"project-unknown\": 19}; on completed returns {\"candidate-refuses\": 2, \"candidate-shows-skipped\": 494, \"candidate-unknown\": 70}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "cf47daa5a637ccc6da32ad92e8abd3db5e4974fa4e10b6dc726ed88552becab3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@eic",
+     "fixture:stage14.asset.mq_7yr@eic",
+     "fixture:stage14.asset.mq_mixed@eic",
+     "fixture:stage14.asset.mq_not@eic",
+     "fixture:stage14.asset.bonus_100@eic",
+     "fixture:stage14.asset.bonus_40_before@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f4952.2.deepseek@eic",
+     "fixture:classm.f4952.3.deepseek@eic",
+     "fixture:classm.f4952.4.deepseek@eic",
+     "fixture:classm.f8960.2.deepseek@eic",
+     "fixture:classm.f8960.3.deepseek@eic",
+     "fixture:classm.eic.6.deepseek@eic",
+     "fixture:classm.f5329.3.deepseek@eic",
+     "fixture:classm.s1a.7@eic",
+     "fixture:classm.tax_on_amount.2@eic",
+     "fixture:classm.eic.9@eic",
+     "fixture:classm.eic.10@eic",
+     "fixture:classm.eic.12@eic",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@eic",
+     "fixture:stage21.f1.where_lower_bound_still_decides@eic",
+     "fixture:stage15.refuse.f2441.combat_pay@eic",
+     "fixture:stage15.refuse.f2441.mfs@eic",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@eic",
+     "fixture:mutation.t2.no_itemize_f8960_9a@eic",
+     "fixture:mutation.t2.eic.single_line5_skip@eic",
+     "fixture:stage5.return.refund_combat_pay_no_children@eic",
+     "fixture:stage8.hoh.actc.three_children.line12_stop_combat_pay@eic",
+     "fixture:stage9.s8812.not_taking_eic.combat_pay@eic"
     ],
     "policy": "executable-triage-v2"
    }
@@ -942,9 +1358,54 @@
    "printed": "4b",
    "project_expr_sha256": "2616f8e8b52c56de40c863b3adbd225e437c195bc63df41f863c11b979c1590f",
    "second_expr_sha256": "4a9d217bad47a5f799293124639b666c0d9e0cf220b613239e53616d5205662b",
-   "ruling": "Ruling: model error — i1040gi p. 47, Worksheet B: \"Use this worksheet if you answered 'Yes' to Step 5, question 2\"; i1040gi p. 42, Step 5, question 2. The candidate omits shown_when and shows Worksheet B line 4b on every return, including 319 completed returns that never use Worksheet B or STOP before Step 5; the project hides line 4b with eic.show_wsb4b. Where both show the line, zero value differences occur. Evidence: triage/eic.json, executable-triage-v2, 2081 comparisons, 347 agreements; differences by return state {\"completed\": {\"candidate-shows-skipped\": 319}, \"incomplete\": {\"candidate-shows-skipped\": 661, \"candidate-unknown\": 16, \"project-unknown\": 20}, \"refused\": {\"candidate-refuses\": 7, \"candidate-shows-skipped\": 389, \"candidate-unknown\": 5, \"project-refuses\": 309, \"project-unknown\": 8}}. Sample witnesses: {\"id\": \"classm.f8889.1.deepseek\", \"kind\": \"fixture\"}, {\"id\": \"classm.f4952.1.deepseek\", \"kind\": \"fixture\"}.",
-   "context": "373e8a6010aba0c9b3c47efa5cdf4e2a6b662c48f97ece7a544f4aab9c71630d",
-   "subject_key": "117a22ba314b9963326e1987c11b8666dd56f34c5fd96b07ef7d6ef8639df8e6"
+   "ruling": "Ruling: model error; i1040gi p. 47, Worksheet B, \"Use this worksheet if you answered 'Yes' to Step 5, question 2\", line 4b; each STOP of Steps 1 to 4 ends the flow chart before Step 5 and the worksheets. A line the filer does not reach must not show an amount (adjudication README, skipped-line rule): the reply shows a nonzero amount on completed returns where the project hides the line (shown_when eic.show_wsb4b), on returns a STOP of Steps 1 to 4 ends (stage14.asset.hy_5yr: Steps 1 and 2 not passed; the reply shows $45,910.00). The reply also needs answers the project does not read on those returns (s8812.combat_pay, unanswered on records where Step 5 is not reached, so Step 5 line 4's combat-pay screen is not asked), so it is unknown or refuses there; a candidate that needs an answer the source does not need is a model error. This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 398 of 2,344 comparisons agree; differences {\"candidate-refuses\": 8, \"candidate-shows-skipped\": 1489, \"candidate-unknown\": 130, \"project-refuses\": 310, \"project-unknown\": 9}; on completed returns {\"candidate-refuses\": 2, \"candidate-shows-skipped\": 992, \"candidate-unknown\": 70}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "26fba290239e907b9ee2544c81b8420f1ee42befd3233cd20b175f049c799144",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@eic",
+     "fixture:stage14.asset.mq_7yr@eic",
+     "fixture:stage14.asset.mq_mixed@eic",
+     "fixture:stage14.asset.mq_not@eic",
+     "fixture:stage14.asset.bonus_100@eic",
+     "fixture:stage14.asset.bonus_40_before@eic",
+     "fixture:classm.f8889.1.deepseek@eic",
+     "fixture:classm.f8889.3.deepseek@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f8889.5.deepseek@eic",
+     "fixture:classm.f4952.2.deepseek@eic",
+     "fixture:classm.f4952.3.deepseek@eic",
+     "fixture:classm.f4952.4.deepseek@eic",
+     "fixture:classm.f8960.2.deepseek@eic",
+     "fixture:classm.clcw.1.deepseek@eic",
+     "fixture:classm.clcw.4.deepseek@eic",
+     "fixture:classm.dependent.1.deepseek@eic",
+     "fixture:classm.dependent.3.deepseek@eic",
+     "fixture:classm.dependent.4.deepseek@eic",
+     "fixture:classm.carloan.3@eic",
+     "fixture:classm.tax_on_amount.2@eic",
+     "fixture:classm.f8889.4@eic",
+     "fixture:classm.gift.1@eic",
+     "fixture:stage9.eic.refuse.combat_pay@eic",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@eic",
+     "fixture:stage15.refuse.f2441.combat_pay@eic",
+     "fixture:stage5.return.refund_combat_pay_no_children@eic",
+     "fixture:stage14.refuse.sch1a_tips@eic",
+     "fixture:stage14.refuse.sch1a_tips_business_only@eic",
+     "fixture:stage8.refuse.s8812.combat_pay@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "4b",
@@ -1121,6 +1582,49 @@
   {
    "printed": "5",
    "project_expr_sha256": "ba58df54ec94941062725dad26b0184f89a13090f9b573c8bfa9a6714cc3d331",
+   "second_expr_sha256": "6a360715f79b9efe8916f8b39c4a1ff4c68b6e87b41d9961b3874a2f94fe2806",
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 4, \"Yes. Leave line 5 blank\", and line 5. No value differs. The reply needs dependent answers the project does not read on those returns (classm.f8863.2.deepseek: dependent[dep_a].joint_return, unknown where the project hides the line), an answer the source does not need; its refusals are its own dependent-test placements on refused returns (stage8.refuse.dependent.other_claimant). This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 2,304 of 2,344 comparisons agree; differences {\"candidate-refuses\": 11, \"candidate-unknown\": 19, \"project-refuses\": 3, \"project-unknown\": 7}; on completed returns {\"candidate-unknown\": 8}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "e81eabfcc8027330329c81a694959662b5d1a58bd97fd81336615a100b854f3d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8863.2.deepseek@eic",
+     "fixture:classm.sa.2.deepseek@eic",
+     "fixture:classm.asset.1@eic",
+     "fixture:classm.carloan.3@eic",
+     "fixture:classm.f4952.2@eic",
+     "fixture:classm.f8995a.1@eic",
+     "fixture:classm.s1.6@eic",
+     "fixture:classm.sales.1@eic",
+     "fixture:classm.eic.10@eic",
+     "fixture:stage8.refuse.dependent.other_claimant@eic",
+     "fixture:stage8.refuse.dependent.married@eic",
+     "fixture:stage9.eic.no_child.qc_of_another_and_dependent@eic",
+     "fixture:f1.t153.friend_child_taxpayer@eic",
+     "fixture:f1.t153.own_child_nontaxpayer_other@eic",
+     "fixture:stage9.eic.refuse.dependent_of_another@eic",
+     "fixture:mutation.t2.scveh.mq_prior_car_q4@eic",
+     "fixture:mutation.t2.scveh.mq_2025_car_q2@eic",
+     "fixture:ss.mfs@eic",
+     "fixture:stage21.f1.special_withheld@eic",
+     "generated:20261026.6@eic",
+     "generated:20261026.23@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "5",
+   "project_expr_sha256": "ba58df54ec94941062725dad26b0184f89a13090f9b573c8bfa9a6714cc3d331",
    "second_expr_sha256": "db70c9db2eaf6c63cc5c7b7802e782cd46f1b879193e9395412d5369f12a172a",
    "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 4, \"Yes. Skip line 5; enter the amount from line 2 on line 6\", and line 5, \"Yes. Leave line 5 blank; enter the amount from line 2 on line 6\"; p. 48, Worksheet B, line 10. Each STOP of Steps 1 to 4 ends the flowchart before Step 5 and the worksheets (i1040gi p. 40, Step 1, question 1: \"No. STOP You can’t take the credit.\"; Step 2, question 2, investment income more than $11,950; pp. 40-42). executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass f3d45b388827; 1,702 fixtures, 500 generated returns seed 20261026, 97 partial records; 2,299 comparisons): 1,918 of 2,299 agree; differences 292 candidate-shows-skipped, 58 candidate-unknown, 20 project-refuses, 11 candidate-refuses; on returns the full interview completes: 210 candidate-shows-skipped, 22 candidate-unknown. eic's triage ran with the in-memory BUG-0470 patch of the pass-scope split (/tmp/gw_adj/triage_patched.py); every completed-return witness was read from an uncapped rerun of the same evaluator on the same bank (scratch /tmp/adj/tr/eicwork/full/eic.json; the record keeps 6 per kind). No value differs where both show the line. The candidate computes line 5 \"either way\" (its note), so it shows a table credit on 210 completed returns where the source skips or blanks it (e.g. classm.f4952.1 and classm.eic.6, line 4 Yes, $2,798 and $8,046; classm.f2441.2, $385), where the project hides it (eic.show5); a nonzero amount on a line the source skips is a model error (README, skipped-line rule). The candidate-unknowns on dependent answers (dependent.kidnapped, dependent.us_half, dependent.joint_return) are on 22 completed fixtures the project ends at eic.below_top (line 11b not less than the highest Step 1 limit, so Step 1, question 1 is No whatever the child count; eic.below_top false, eic.eligible false and eic.credit $0 on all 22, e.g. classm.asset.1, classm.f2441.1, classm.f8880.2, classm.tcw.2); the interview does not ask them there, and a candidate that needs an answer the source does not need is a model error (README). The project-refuses and project-unknowns are on refused or incomplete records (cited scope screens and question order): scope. Gate-wave check (HEAD against the working tree): every fixture (1,702) and the 500 generated returns evaluated in both trees; no printed eic line or refusal differs on any completed return, and no record changes return state; on 5 completed fixtures only eic helpers (eic.qc_count, eic.limit, eic.step1_income and their kin) are unknown in the working tree where HEAD's all() was decided false by a later operand, and on incomplete or refused records some values become unknown (one refused record, classm.scveh.2, reports a different first refusal). As today's ruling on main. Project stands.",
    "context": "e0be81a5c03868a6d1012cf7edac52e5c835b73a749054a3d8c6f154854bff73",
@@ -1183,6 +1687,56 @@
    "second_expr_sha256": "daf862e2b9a9428b34dbbe9af9543303542c17cffa6b22d13b3c280e84957b16",
    "ruling": "Ruling: equivalent representation; project retained. As ruled before under line 6: the same choice (line 2 when line 4 is Yes or line 3 is below the line 5 amount; the smaller of lines 5 and 2 otherwise) written as two guards instead of nested choices. The line is now keyed by its id because Worksheet B also prints a line 6 (BUG-0054).",
    "subject_key": "4d12691bc9110676ef519fb3479fe76985d21e24801c4f4cda51f1ff676a57af"
+  },
+  {
+   "printed": "6 (eic.line6)",
+   "project_expr_sha256": "68a1323189c2a121189e91dad62470a8a3d55e1148f042a49a659b53f7b402e6",
+   "second_expr_sha256": "5a19d13792dbe85c27d813aab6be1d7e1a8a4381caf3ee70833852cd4a845f49",
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 6, \"This is your earned income credit\"; the worksheet is reached only after Steps 1 to 5. A line the filer does not reach must not show an amount (adjudication README, skipped-line rule): the reply shows a nonzero amount on completed returns where the project hides the line (shown_when eic.eligible), on returns a STOP of Steps 1 to 4 ends (stage9.eic.no_child.over65; the reply shows $308.00). The reply also needs answers the project does not read on those returns (s8812.combat_pay, unanswered on records where Step 5 is not reached, so Step 5 line 4's combat-pay screen is not asked), so it is unknown or refuses there; a candidate that needs an answer the source does not need is a model error. This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 2,094 of 2,344 comparisons agree; differences {\"candidate-refuses\": 19, \"candidate-shows-skipped\": 66, \"candidate-unknown\": 131, \"project-refuses\": 3, \"project-unknown\": 31}; on completed returns {\"candidate-refuses\": 2, \"candidate-shows-skipped\": 34, \"candidate-unknown\": 76}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "e4d69a26270e45ecd2f68a63be3e54fc616e6b53564c00f7acce3d166eec3085",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f4952.2.deepseek@eic",
+     "fixture:classm.f4952.3.deepseek@eic",
+     "fixture:classm.f4952.4.deepseek@eic",
+     "fixture:classm.f8960.2.deepseek@eic",
+     "fixture:classm.f8960.3.deepseek@eic",
+     "fixture:classm.clcw.3.deepseek@eic",
+     "fixture:classm.eic.5.deepseek@eic",
+     "fixture:classm.retirement.3.deepseek@eic",
+     "fixture:classm.carloan.3@eic",
+     "fixture:classm.f8995a.2@eic",
+     "fixture:classm.retirement.3@eic",
+     "fixture:classm.tax_on_amount.2@eic",
+     "fixture:classm.tcw.4@eic",
+     "fixture:classm.eic.10@eic",
+     "fixture:classm.f8889.4@eic",
+     "fixture:classm.clcw.3@eic",
+     "fixture:stage8.refuse.dependent.other_claimant@eic",
+     "fixture:stage8.refuse.dependent.married@eic",
+     "fixture:stage9.eic.mut.classm_f8995a_2_line2_zero@eic",
+     "fixture:stage9.eic.no_child.qc_of_another_and_dependent@eic",
+     "fixture:stage21.choose.eic_limit_status_unanswered@eic",
+     "fixture:t264.eic.show5_agi_open_married_child@eic",
+     "fixture:f1.t153.friend_child_taxpayer@eic",
+     "fixture:stage9.eic.refuse.dependent_of_another@eic",
+     "fixture:stage10.ira.roth_code_unanswered@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "6 (eic.line6)",
@@ -1448,6 +2002,59 @@
    }
   },
   {
+   "printed": "6 (eic.wsb_6)",
+   "project_expr_sha256": "a9446da8b5010c4b97a30aba7313301fc39a363c78f02d561136a70a9ae24464",
+   "second_expr_sha256": "06614cfdfcab54ca79a6bfae1be27527abbc3ed70ed3fefc8c67bd36be3e1fb5",
+   "ruling": "Ruling: model error; i1040gi p. 47, Worksheet B, line 4b, \"If line 4b is zero or less, STOP You can't take the credit\", and Part 5, line 6; the worksheet is reached only after Steps 1 to 4. A line the filer does not reach must not show an amount (adjudication README, skipped-line rule): the reply shows a nonzero amount on completed returns where the project hides the line (shown_when eic.show_wsb6), on returns a STOP of Steps 1 to 4 ends (stage14.asset.hy_5yr; the reply shows $45,910.00). The reply also needs answers the project does not read on those returns (s8812.combat_pay, unanswered on records where Step 5 is not reached, so Step 5 line 4's combat-pay screen is not asked), so it is unknown or refuses there; a candidate that needs an answer the source does not need is a model error. This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 412 of 2,344 comparisons agree; differences {\"candidate-refuses\": 6, \"candidate-shows-skipped\": 1477, \"candidate-unknown\": 130, \"project-refuses\": 310, \"project-unknown\": 9}; on completed returns {\"candidate-refuses\": 2, \"candidate-shows-skipped\": 988, \"candidate-unknown\": 70}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "50e68b85d270a0813bda11063b064b55c8296607a3dde74ec858125ef8cca3eb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@eic",
+     "fixture:stage14.asset.mq_7yr@eic",
+     "fixture:stage14.asset.mq_mixed@eic",
+     "fixture:stage14.asset.mq_not@eic",
+     "fixture:stage14.asset.bonus_100@eic",
+     "fixture:stage14.asset.bonus_40_before@eic",
+     "fixture:classm.f8889.1.deepseek@eic",
+     "fixture:classm.f8889.3.deepseek@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f8889.5.deepseek@eic",
+     "fixture:classm.f4952.2.deepseek@eic",
+     "fixture:classm.f4952.3.deepseek@eic",
+     "fixture:classm.f4952.4.deepseek@eic",
+     "fixture:classm.f8960.2.deepseek@eic",
+     "fixture:classm.clcw.1.deepseek@eic",
+     "fixture:classm.clcw.4.deepseek@eic",
+     "fixture:classm.dependent.1.deepseek@eic",
+     "fixture:classm.dependent.3.deepseek@eic",
+     "fixture:classm.dependent.4.deepseek@eic",
+     "fixture:classm.carloan.3@eic",
+     "fixture:classm.tax_on_amount.2@eic",
+     "fixture:classm.f8889.4@eic",
+     "fixture:classm.gift.1@eic",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@eic",
+     "fixture:stage15.refuse.f2441.combat_pay@eic",
+     "fixture:stage5.return.refund_combat_pay_no_children@eic",
+     "fixture:stage14.refuse.sch1a_tips@eic",
+     "fixture:stage14.refuse.sch1a_tips_business_only@eic",
+     "fixture:stage8.hoh.actc.three_children.line12_stop_combat_pay@eic",
+     "fixture:stage9.s8812.not_taking_eic.combat_pay@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "eic.check_27c",
    "project_expr_sha256": "070f1b3c1dcded9b851d2e447da2fcf8e3080ebe9501738c115378210baf62e3",
    "second_expr_sha256": "0875a7a2a184537538527f01e280c4d10d19f5891a1f431b523e953d2d3318e4",
@@ -1596,6 +2203,48 @@
    "second_expr_sha256": "51207cfaf7a7056979e5c0005af8ec5fadefb49111438ce7e888e6a1c6be6d3a",
    "ruling": "Ruling: representation and scope; project retained; equivalence not proved. As ruled before: the project counts each STOP that says to check line 27c only where the flow chart reaches it, plus Worksheet A line 2 zero; ten Stage 9 fixtures assert it, each predicted by hand. The Worksheet B STOP at line 4b ('If line 4b is zero or less, STOP. You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c', i1040gi p. 47) is tested directly by the second; in the project Worksheet B line 6 is then zero, so Worksheet A line 2 is zero and its STOP checks the box (stage14.eic.wsb_stop_27c).",
    "subject_key": "40a54203d2549e120a5edcb582769417764e82991f6ee61913721106822914f3"
+  },
+  {
+   "printed": "eic.check_27c",
+   "project_expr_sha256": "bb230c78fc14ddb218dec9fa73252542a1ffeb13efec9c853ad01ab851cc1e2e",
+   "second_expr_sha256": "7e2722e64ce79c7bedd443b22662f5edead1c7dae9845f19c7920a1ab7728fb4",
+   "ruling": "Ruling: model error; i1040gi p. 43, Line 27c, and the STOPs that say to check it (p. 40, Step 1, question 2; p. 41, Step 3, question 6; p. 42, Step 4, questions 3 and 5; p. 46, Worksheet A, line 2; p. 47, Worksheet B, line 5). No value differs. The reply needs the kidnapping answer of a dependent the project does not ask it of (classm.f8962.2.deepseek: dependent[dep_b].kidnapped, unknown where the project gives false; the EIC kidnapped-child test reads it only for a child who meets the relationship test, i1040gi p. 21, Kidnapped child), an answer the source does not need there. Its refusals are its own dependent-test placements on refused returns (stage8.refuse.dependent.other_claimant); the project's are cited screens (classm.eic.10: sa.dependent) and records withholding a Step 2 answer (classm.gift.1: div.any). This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 2,285 of 2,344 comparisons agree; differences {\"candidate-refuses\": 11, \"candidate-unknown\": 35, \"project-refuses\": 2, \"project-unknown\": 11}; on completed returns {\"candidate-unknown\": 15}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "bd0258e2d0724a33d19cdd2b46ace634d7c4020e566ea082f0b29fdba9f407b5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@eic",
+     "fixture:classm.f8962.2.deepseek@eic",
+     "fixture:classm.s8812.4.deepseek@eic",
+     "fixture:classm.f8863.2.deepseek@eic",
+     "fixture:classm.sa.5.deepseek@eic",
+     "fixture:classm.asset.1@eic",
+     "fixture:classm.eic.10@eic",
+     "fixture:classm.gift.1@eic",
+     "fixture:stage8.refuse.dependent.other_claimant@eic",
+     "fixture:stage8.refuse.dependent.married@eic",
+     "fixture:f1.t153.friend_child_taxpayer@eic",
+     "fixture:f1.t153.own_child_nontaxpayer_other@eic",
+     "fixture:stage9.eic.refuse.dependent_of_another@eic",
+     "fixture:stage10.ira.roth_code_unanswered@eic",
+     "fixture:stage15.refuse.f2441.mfs@eic",
+     "fixture:mutation.t2.f8889.all_year_dec_unanswered@eic",
+     "fixture:mutation.t2.scveh.mq_prior_car_q4@eic",
+     "fixture:mutation.t2.scveh.mq_2025_car_q2@eic",
+     "generated:20261026.6@eic",
+     "generated:20261026.23@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "eic.check_27c",
@@ -1793,6 +2442,52 @@
   },
   {
    "printed": "eic.credit",
+   "project_expr_sha256": "bce131cf3b57ce869b528421e79c3bb84954d033c7fae7f81f0a5e1b569e8fda",
+   "second_expr_sha256": "5ef4f8d9c0edf9b2be53fb8020738532fbcd5465877bcd9282f4f0d541b55b2c",
+   "ruling": "Ruling: model error; i1040gi pp. 40-48, each \"STOP You can't take the credit\"; Worksheet A, line 6, \"This is your earned income credit\". No value differs. The reply needs dependent answers the project's chain does not read on those returns (classm.f8863.2.deepseek: dependent[dep_a].joint_return, unknown where the project gives $0), an answer the source does not need; its refusals are its own dependent-test placements (stage8.refuse.dependent.other_claimant: eic_tiebreak) on refused returns, and the project's refusals and unknowns are its cited screens (classm.eic.8.deepseek: dependent[dep_a].claimed_no_tin) and records withholding a Step 2 answer (classm.f8889.4.deepseek: div.any). This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 2,276 of 2,344 comparisons agree; differences {\"candidate-refuses\": 12, \"candidate-unknown\": 27, \"project-refuses\": 11, \"project-unknown\": 18}; on completed returns {\"candidate-unknown\": 10}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "4cbd6b27cf323c5d4eb8e344bb92927b51842bfa17ff585bc32d971a2a7c1746",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f8863.2.deepseek@eic",
+     "fixture:classm.eic.8.deepseek@eic",
+     "fixture:classm.sa.2.deepseek@eic",
+     "fixture:classm.asset.1@eic",
+     "fixture:classm.carloan.3@eic",
+     "fixture:classm.f2441.1@eic",
+     "fixture:classm.f4952.2@eic",
+     "fixture:classm.f8995a.1@eic",
+     "fixture:classm.f8995a.2@eic",
+     "fixture:classm.eic.10@eic",
+     "fixture:classm.f8889.4@eic",
+     "fixture:stage8.refuse.dependent.other_claimant@eic",
+     "fixture:stage8.refuse.dependent.married@eic",
+     "fixture:stage15.refuse.dependent.dc_no_tin@eic",
+     "fixture:audit.eic.credit_disallowed@eic",
+     "fixture:stage9.eic.mut.classm_f8995a_2_line2_zero@eic",
+     "fixture:stage9.eic.no_child.qc_of_another_and_dependent@eic",
+     "fixture:f1.t153.friend_child_taxpayer@eic",
+     "fixture:f1.t153.own_child_nontaxpayer_other@eic",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@eic",
+     "fixture:stage10.ira.roth_code_unanswered@eic",
+     "generated:20261026.6@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "eic.credit",
    "project_expr_sha256": "f56a3004855ef6ae217d17a40441007f9805960112ccd11c76adf8c503560e87",
    "second_expr_sha256": "ac0ae46c5df9c10c1251320b977057fa6a167749a7374a656d0e66d07c89c1dc",
    "ruling": "Ruling: model error; i1040gi pp. 40-48, each \"STOP You can’t take the credit\"; Worksheet A, line 6, and Worksheet B, line 11, \"Enter this amount on Form 1040 or 1040-SR, line 27a\"; p. 42, Step 4, question 2 (Pub. 596 for a death in 2025). executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass f3d45b388827; 1,702 fixtures, 500 generated returns seed 20261026, 97 partial records; 2,299 comparisons): 2,068 of 2,299 agree; differences 169 candidate-unknown, 35 project-refuses, 21 candidate-refuses, 6 project-unknown; on returns the full interview completes: 99 candidate-unknown. eic's triage ran with the in-memory BUG-0470 patch of the pass-scope split (/tmp/gw_adj/triage_patched.py); every completed-return witness was read from an uncapped rerun of the same evaluator on the same bank (scratch /tmp/adj/tr/eicwork/full/eic.json; the record keeps 6 per kind). No value differs on any record. Of the 99 completed candidate-unknowns, 77 need eic.died_2025 through the candidate's gate eic.h_died_noqc on returns the project ends before Step 4 (41 at Step 1, question 1, 33 at eic.below_top, 3 at Step 2, investment income more than $11,950; project $0); the source asks about a death in 2025 only at Step 4, question 2. The candidate-unknowns on dependent answers (dependent.kidnapped, dependent.us_half, dependent.joint_return) are on 22 completed fixtures the project ends at eic.below_top (line 11b not less than the highest Step 1 limit, so Step 1, question 1 is No whatever the child count; eic.below_top false, eic.eligible false and eic.credit $0 on all 22, e.g. classm.asset.1, classm.f2441.1, classm.f8880.2, classm.tcw.2); the interview does not ask them there, and a candidate that needs an answer the source does not need is a model error (README). The project-refuses and project-unknowns are on refused or incomplete records (cited scope screens and question order): scope. Gate-wave check (HEAD against the working tree): every fixture (1,702) and the 500 generated returns evaluated in both trees; no printed eic line or refusal differs on any completed return, and no record changes return state; on 5 completed fixtures only eic helpers (eic.qc_count, eic.limit, eic.step1_income and their kin) are unknown in the working tree where HEAD's all() was decided false by a later operand, and on incomplete or refused records some values become unknown (one refused record, classm.scveh.2, reports a different first refusal). As today's ruling on main. Project stands.",
@@ -1833,6 +2528,56 @@
      "partial:classm.s8812.1.deepseek-eic.qc_of_another@eic",
      "partial:classm.f1095a.1.gpt-eic.qc_of_another@eic",
      "partial:classm.f1095a.1.gpt-eic.same_home@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "eic.eligible",
+   "project_expr_sha256": "2e82a2f62dcd22a3b5245ecfcf77ed699c6cfc554aaea180348c3cb36115923b",
+   "second_expr_sha256": "371a43b830d414d036e579b5c71fb903a193af6ffe7377fef99d3f1b9e9f744d",
+   "ruling": "Ruling: model error; i1040gi pp. 40-43, Steps 1 to 5 (each \"No. STOP You can't take the credit\"), and p. 46, Worksheet A, line 2. The reply folds Worksheet A line 2 being zero into eligibility; the project's line is Steps 1 to 5 passed and carries the line 2 STOP on eic.credit (line 6 is line 2, $0) and on the line 27c box (eic.worksheet_a_stop), so the helper values differ where line 2 is zero (classm.f8880.1.deepseek: project true, reply false) with no printed amount changed (eic.credit has no value difference). The reply also needs dependent answers the interview does not ask on those returns (classm.f8863.2.deepseek: dependent[dep_a].joint_return), so it is unknown on completed returns: an answer the source does not need. This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 2,162 of 2,344 comparisons agree; differences {\"candidate-refuses\": 14, \"candidate-unknown\": 27, \"project-refuses\": 3, \"project-unknown\": 18, \"value\": 120}; on completed returns {\"candidate-unknown\": 10, \"value\": 99}. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "348dbd32f005b0e55bdd6e1e43dd68b606b17d78f186a7359a572c1f2e2f4014",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@eic",
+     "fixture:classm.f8889.4.deepseek@eic",
+     "fixture:classm.f1095a.1.deepseek@eic",
+     "fixture:classm.f8962.3.deepseek@eic",
+     "fixture:classm.f8880.1.deepseek@eic",
+     "fixture:classm.f1040.4.deepseek@eic",
+     "fixture:classm.s8812.1.deepseek@eic",
+     "fixture:classm.f8863.2.deepseek@eic",
+     "fixture:classm.f8863.4.deepseek@eic",
+     "fixture:classm.asset.1@eic",
+     "fixture:classm.carloan.3@eic",
+     "fixture:classm.f2441.1@eic",
+     "fixture:classm.f4952.2@eic",
+     "fixture:classm.f8995a.1@eic",
+     "fixture:classm.f8995a.2@eic",
+     "fixture:classm.eic.10@eic",
+     "fixture:classm.f8889.4@eic",
+     "fixture:stage8.refuse.dependent.other_claimant@eic",
+     "fixture:stage8.refuse.dependent.married@eic",
+     "fixture:stage9.eic.mut.classm_f8995a_2_line2_zero@eic",
+     "fixture:stage9.eic.no_child.qc_of_another_and_dependent@eic",
+     "fixture:stage21.choose.eic_limit_status_unanswered@eic",
+     "fixture:t264.eic.show5_agi_open_married_child@eic",
+     "fixture:f1.t153.friend_child_taxpayer@eic",
+     "fixture:f1.t153.own_child_nontaxpayer_other@eic",
+     "fixture:stage9.eic.refuse.dependent_of_another@eic",
+     "fixture:stage10.ira.roth_code_unanswered@eic"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2110,6 +2855,35 @@
      "fixture:mutation.household.hoh_community_property_eic_not_claimed@eic",
      "generated:20261026.6@eic",
      "generated:20261026.23@eic"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "eic.separated_box",
+   "project_expr_sha256": "bdf36c1fd34ed536d4e8831bfebe213d17613ce3f9de55bf936092b8cc89255f",
+   "second_expr_sha256": "6e49ef848455764bba983119ff78e77ad5f9396dfc6bf9f1fbd1402c82636d47",
+   "ruling": "Ruling: project retained (the owner's ruling on the separated-spouses box). i1040gi p. 41, Step 3, question 6, \"No. Check the box in the Dependents section that discusses the special rule for separated spouses\": question 6 is reached only after Steps 1 and 2 are passed, which the project requires (eic.reached_step3). No completed-return difference: the reply refuses or is unknown only on refused or incomplete records through its own dependent-test placements (stage8.refuse.dependent.other_claimant; classm.tcw.9: dependent[dep_b].us_half). This pass re-reviews the EIC eligibility chain (BUG-0466/0471 follow-up, T-264: eic.reached_step3 through eic.from_step1_income to eic.from_step2_income, then eic.reached_step5 and eic.eligible, the steps in the flow chart's order; the line 27c Worksheet A test through eic.worksheet_a_stop), the same conjunctions in operand order, which change no completed value. Triage was run with only its review-scope split patched in memory outside the repository (BUG-0470: this pass's scope holds the keys (Step 5, 1) to (Step 5, 5), which contain \", \"). executable-triage-v2 (.transcription/triage/2025/eic.json; 1,747 fixtures, 500 generated returns seed 20261026, 131 partial records): 2,329 of 2,344 comparisons agree; differences {\"candidate-refuses\": 12, \"candidate-unknown\": 3}; on completed returns none. Project retained.",
+   "context": "f5ae38aa51d43ee4bf4445c5b2067db39b7a1394a21779938b5aabccafb4f649",
+   "date": "2026-11-10",
+   "run": "19df357291eaf1970d36a83180d14de971ef696507131ebbba3992d6b6c53c90",
+   "subject_key": "52d7540e5ebd0fce4511e357467f8257926a1c314a39868657f5d32e3182a8cd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.tcw.9@eic",
+     "fixture:classm.tcw.15@eic",
+     "fixture:stage8.refuse.dependent.other_claimant@eic",
+     "fixture:stage8.refuse.dependent.married@eic",
+     "fixture:f1.t153.friend_child_taxpayer@eic",
+     "fixture:f1.t153.own_child_nontaxpayer_other@eic",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@eic",
+     "fixture:mutation.household.hoh_community_property_eic_not_claimed@eic",
+     "generated:20261026.6@eic"
     ],
     "policy": "executable-triage-v2"
    }

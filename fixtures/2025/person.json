@@ -1797,6 +1797,42 @@
           "cents": 800000
         }
       }
+    },
+    {
+      "id": "t264.person.senior_counts_under_65",
+      "covers": [
+        "person",
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "stage21.refuse.limit_binds (a single filer born after January 1, 1961) read for Schedule 1-A Part V: no one on the return was born before January 2, 1961, so the count of seniors with a valid SSN and the count of a spouse who is one are both zero (p. 110).",
+      "inputs": {
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].retirement[a].box1": 300000,
+        "person[taxpayer].retirement[a].code": "simple_S",
+        "person[taxpayer].retirement[a].exc_amount": 150000,
+        "person[taxpayer].retirement[a].exception": "e23",
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.senior_count": {
+          "kind": "count",
+          "value": 0
+        },
+        "s1a.spouse_senior_count": {
+          "kind": "count",
+          "value": 0
+        }
+      }
     }
   ]
 }

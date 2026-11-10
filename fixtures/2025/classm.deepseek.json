@@ -16484,6 +16484,7 @@
         "person[taxpayer].role": "taxpayer",
         "person[taxpayer].age65": false,
         "person[taxpayer].blind": false,
+        "person[taxpayer].tin": true,
         "person[taxpayer].work_ssn": true,
         "person[taxpayer].eic_ssn": true,
         "person[taxpayer].under16": false,
@@ -26039,6 +26040,7 @@
           "b",
           "c"
         ],
+        "person[taxpayer].tin": true,
         "person[taxpayer].work_ssn": true,
         "person[taxpayer].eic_ssn": true,
         "person[taxpayer].under16": false,
@@ -27717,6 +27719,7 @@
           "a",
           "b"
         ],
+        "person[taxpayer].tin": true,
         "person[taxpayer].work_ssn": true,
         "person[taxpayer].eic_ssn": true,
         "person[taxpayer].under16": false,

@@ -5,6 +5,16 @@
   {
    "printed": "1",
    "restated": "Round f1040 line 1z to the nearest multiple of (half up) $1.",
+   "model": "Form IT-201 line 1 reads only \"Wages, salaries, tips, etc.\" with \"Whole dollars only.\" The pages given contain no line 1 instruction saying to take federal Form 1040 line 1z or how to round, so neither the operand nor the half-up rounding can be confirmed. The refusals are consistent with the residency, separate-return, special accrual, Yonkers, Item G and decedent text.",
+   "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" The line-scoped request (rerun because line 1's third refusal gate, ny_it201.gate.spouse_nonresident, became a choice on the filing status, BUG-0466/0471 follow-up) gave only the pages its citations name, and line 1 cites only the form page, so p. 7 was not given; the restatement follows it, rounded half up by amb.ny.2025.whole_dollars (IT-201-I p. 2, whole dollars). The model found the refusals consistent with the text. Citation gap: BUG-0439, as ruled on this line before. Project stands.",
+   "context": "a4d7d6c1a68e21e7f1bd79e3bbf47d53d2444fc5d0ae0921e375c315cb696f89",
+   "date": "2026-11-10",
+   "run": "ec696c207b5bffcbbb689f696d6db0ffbe2abfa563e9c3c7f1a737542ae68fb9",
+   "subject_key": "970cb6bce2bc3d6fb2477d034fb1e9089decb55d73ce026cea225b46890dc7bb"
+  },
+  {
+   "printed": "1",
+   "restated": "Round f1040 line 1z to the nearest multiple of (half up) $1.",
    "model": "The form prints line 1 as 'Wages, salaries, tips, etc.' under 'Federal income and adjustments' with 'Whole dollars only', but the pages given contain no line 1 instruction. Nothing here says the amount is federal Form 1040 line 1z or how to round to whole dollars (half up or otherwise). The refusals are consistent with the text given.",
    "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" The line-scoped request (rerun because line 1's refusals read the restructured ny_it201.ask.state_resident) gave only the pages its citations name, and line 1 cites only the form page, so p. 7 was not given; the restatement follows it, rounded half up by amb.ny.2025.whole_dollars (IT-201-I p. 2, whole dollars). The model found the refusals consistent with the text. Citation gap: BUG-0439. Project stands.",
    "context": "44ed7d5c6ec947a4beb343e1d97711fb991b324a6641b29d8799039f7693d46e",

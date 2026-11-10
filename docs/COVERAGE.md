@@ -442,7 +442,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [p501] p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
   - *Refused at:* `household.hoh_eligible`
 - **`dependent.claimed_no_tin`**: Does someone who would be your dependent lack an SSN, ITIN or ATIN issued by the due date of your return?
-  - *The data asks or tests:* A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN (`test`)
+  - *The data asks or tests:* A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN (`choose`)
   - *Not covered:* Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3)). Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as "Died" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool.
     *Source:* [i1040gi] p. 22, Social security number, "You must enter each dependent’s social security number (SSN)" and "If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter “Died” on row (3) of the Dependents section and include a copy of the child’s birth certificate, death certificate, or hospital records"; p. 14, Head of Household, "The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR"
   - *Refused at:* `dependent.claimed`, `dependent.hoh_test1`
@@ -476,7 +476,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 44, Married child
   - *Refused at:* `dependent.qualifying_child`, `dependent.qualifying_relative`, `dependent.eic_child`
 - **`dependent.kidnap_residency`**: Did a child presumed kidnapped by someone outside the family live with you for fewer than 7 months of 2025, not counting the time missing?
-  - *The data asks or tests:* A child presumed kidnapped who lived with you for fewer than 7 months of 2025, not counting the time missing (`test`)
+  - *The data asks or tests:* A child presumed kidnapped who lived with you for fewer than 7 months of 2025, not counting the time missing (`choose`)
   - *Not covered:* Kidnapped child (Pub. 501; Pub. 596 for the EIC). A child presumed kidnapped by someone who isn't a family member, who lived with you for fewer than 7 months of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.
     *Source:* [i1040gi] p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)"
   - *Refused at:* `dependent.lived_half`
@@ -486,7 +486,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)"
   - *Refused at:* `dependent.eic_child`
 - **`dependent.qr_kidnapped`**: Was a child under 19 whom you would claim as a qualifying relative presumed kidnapped during 2025 by someone outside the family?
-  - *The data asks or tests:* A child aged 18 or under at the end of 2025 presumed kidnapped by someone who isn't a family member (`test`)
+  - *The data asks or tests:* A child aged 18 or under at the end of 2025 presumed kidnapped by someone who isn't a family member (`choose`)
   - *Not covered:* Kidnapped child (Pub. 501). A child presumed kidnapped by someone who isn't a family member may be your qualifying relative under part-year rules this tool does not apply.
     *Source:* [p501] p. 18, Kidnapped child, "You can treat a child as your qualifying relative even if the child has been kidnapped, but the following statements must be true."
   - *Refused at:* `dependent.qualifying_relative`

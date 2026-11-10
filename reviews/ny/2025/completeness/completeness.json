@@ -79,10 +79,10 @@
  },
  {
   "form": "ny_it201",
-  "prompt_sha": "a11c6e2145c1393c952532b8d8d9ee0d9d72d15aaf89a0449f1a2dacb647d4ed",
+  "prompt_sha": "97d0adf5c2125e5cbb3eab730409bc8cc25e45be27b3ac2b4e7111a0579bd97c",
   "claims": [
    {
-    "item": "ny_it201.line1",
+    "item": "ny_it201.std_deduction",
     "sentences": [
      {
       "quote": "You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown, and – you can demonstrate that reasonable efforts have been made to locate your spouse, and – good cause exists for the failure to file a joint New York return.",
@@ -95,16 +95,12 @@
      {
       "quote": "You are unable to file a joint New York return because: – your spouse refuses to sign a joint New York return; and – reasonable efforts have been made to have your spouse sign a joint return; and – there exists objective evidence of alienation from your spouse such as: • judicial order of protection; • legal separation under a decree of divorce or separate maintenance; or • living apart for the twelve months immediately preceding application to file a separate return, or commencement of an action for divorce or commencement of certain family court proceedings; and – good cause exists for the failure to file a joint New York return.",
       "page": "ny_it201i p. 5"
-     },
-     {
-      "quote": "Note: If you are married filing a joint federal return but are required to file separate returns for New York State, complete item H as if you filed separate federal returns.",
-      "page": "ny_it201i p. 6"
      }
     ],
-    "quote": "You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown, and – you can demonstrate that reasonable efforts have been made to locate your spouse, and – good cause exists for the failure to file a joint New York return. / In this case, you may file a separate New York return using filing status . / You are unable to file a joint New York return because: – your spouse refuses to sign a joint New York return; and – reasonable efforts have been made to have your spouse sign a joint return; and – there exists objective evidence of alienation from your spouse such as: • judicial order of protection; • legal separation under a decree of divorce or separate maintenance; or • living apart for the twelve months immediately preceding application to file a separate return, or commencement of an action for divorce or commencement of certain family court proceedings; and – good cause exists for the failure to file a joint New York return. / Note: If you are married filing a joint federal return but are required to file separate returns for New York State, complete item H as if you filed separate federal returns.",
-    "page": "ny_it201i p. 5; ny_it201i p. 6",
-    "why_uncovered": "The encoding assumes the New York filing status matches the federal one. Its only exception is the resident/nonresident spouse case (ask.spouse_resident and gate.spouse_nonresident). No question or refusal covers a couple filing a joint federal return where one spouse files a separate New York return because the other spouse's whereabouts are unknown or the spouse refuses to sign. That return needs separate-return income, deductions, item H dependents and household-credit tables.",
-    "closest_item": "ny_it201.line1",
+    "quote": "You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown, and – you can demonstrate that reasonable efforts have been made to locate your spouse, and – good cause exists for the failure to file a joint New York return. / In this case, you may file a separate New York return using filing status . / You are unable to file a joint New York return because: – your spouse refuses to sign a joint New York return; and – reasonable efforts have been made to have your spouse sign a joint return; and – there exists objective evidence of alienation from your spouse such as: • judicial order of protection; • legal separation under a decree of divorce or separate maintenance; or • living apart for the twelve months immediately preceding application to file a separate return, or commencement of an action for divorce or commencement of certain family court proceedings; and – good cause exists for the failure to file a joint New York return.",
+    "page": "ny_it201i p. 5",
+    "why_uncovered": "The encoding takes the New York filing status from the federal return. Its only filing-status exception is the gate for a spouse who is not a resident (ny_it201.gate.spouse_nonresident). Nothing asks about the two other Item A exceptions, where a couple filing a joint federal return may file separate New York returns: a spouse whose whereabouts are unknown, or a spouse who refuses to sign. Nothing refuses those cases either. When either exception applies, the filing status is married filing separately. That changes the standard deduction, the tax computation, the household credits and the school tax credits.",
+    "closest_item": "ny_it201.std_deduction",
     "effect": "amount"
    },
    {
@@ -117,8 +113,44 @@
     ],
     "quote": "If line 36 is more than line 35, leave line 37 and line 38 blank.",
     "page": "ny_it201i p. 11",
-    "why_uncovered": "Line 37 is encoded as line 35 minus line 36 with no floor or blank rule. When the dependent exemptions exceed line 35, the result is negative. That negative amount flows to line 38 and line 47 (New York City taxable income). The line 69a rate-reduction credit (0.171% of taxable income) and the tax lookups could then produce negative or incorrect amounts.",
+    "why_uncovered": "Line 37 is encoded as line 35 minus line 36. Nothing limits it at zero or leaves it blank when the dependent exemption is more than line 35. A negative result would flow to line 38 and to line 47, where the instructions say \"If No, enter the line 38 amount on line 47\". From line 47 it would reach the line 69a rate reduction amount, which is 0.171% of New York City taxable income. A negative taxable income could therefore produce a negative credit.",
     "closest_item": "ny_it201.line37",
+    "effect": "amount"
+   },
+   {
+    "item": "ny_it201.line69a",
+    "sentences": [
+     {
+      "quote": "If you are a New York City resident or part-year resident and you marked Yes at item C on the front of Form IT-201 indicating that you can be claimed as a dependent on another taxpayer’s federal return, or your income (see below) is more than $500,000, you do not qualify to claim this credit.",
+      "page": "ny_it201i p. 20"
+     },
+     {
+      "quote": "If you are a New York City resident or part-year resident and marked No at item C on the front of Form IT-201, use your New York City taxable income (see below) to calculate your credit.",
+      "page": "ny_it201i p. 21"
+     }
+    ],
+    "quote": "If you are a New York City resident or part-year resident and you marked Yes at item C on the front of Form IT-201 indicating that you can be claimed as a dependent on another taxpayer’s federal return, or your income (see below) is more than $500,000, you do not qualify to claim this credit. / If you are a New York City resident or part-year resident and marked No at item C on the front of Form IT-201, use your New York City taxable income (see below) to calculate your credit.",
+    "page": "ny_it201i p. 20; ny_it201i p. 21",
+    "why_uncovered": "Line 69a's only gate is ny_it201.gate.stc_rr_income, which covers income over $500,000. The item C test appears only in ny_it201.stc_fixed_eligible, which applies to line 69, the fixed-amount credit. No item for line 69a cites or applies the rule that a filer who can be claimed as a dependent (item C Yes) does not qualify for the rate reduction amount.",
+    "closest_item": "ny_it201.line69a",
+    "effect": "amount"
+   },
+   {
+    "item": "ny_it201.ask.owes_use_tax",
+    "sentences": [
+     {
+      "quote": "You may not use this line to report: • any sales and use tax on business purchases if the business is registered for sales and use tax purposes. You must report this tax on the business’s sales tax return.",
+      "page": "ny_it201i p. 18"
+     },
+     {
+      "quote": "• any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV).",
+      "page": "ny_it201i p. 18"
+     }
+    ],
+    "quote": "You may not use this line to report: • any sales and use tax on business purchases if the business is registered for sales and use tax purposes. You must report this tax on the business’s sales tax return. / • any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV).",
+    "page": "ny_it201i p. 18",
+    "why_uncovered": "The use-tax questions ask whether the filer owes tax on untaxed purchases, and whether any purchase was $1,000 or more or business-related (which routes to Form ST-141). They do not exclude motor vehicles, trailers, ATVs, vessels and snowmobiles, which are paid to the DMV. They also do not exclude purchases by a business registered for sales tax. A filer whose only unpaid use tax is on such items could answer Yes and receive a chart amount on line 59. The vehicle case may also be routed to Form ST-141, which is the wrong place for it.",
+    "closest_item": "ny_it201.ask.owes_use_tax",
     "effect": "amount"
    }
   ],
@@ -171,7 +203,7 @@
     ]
    }
   ],
-  "cost": 0.41722,
+  "cost": 0.43942000000000003,
   "model": "claude-opus-5-5"
  },
  {
