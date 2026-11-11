@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
  "head_rows": {
-  "match / mismatch / unclear / missing": "73 / 1 / 1 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "71 / 4 / 0 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -52,9 +52,9 @@
   },
   {
    "key": "3 (sc.line3)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "2689ffd6026c70a814c94e30b520220dd14190ebfd11f82710e25efd6c7ce2a1"
+   "subject_key": "86bf637c982fde7abbc85fd84baad16b34c4eeab6df8194e8e87c21aac685d53"
   },
   {
    "key": "4 (sc.line4)",
@@ -94,15 +94,15 @@
   },
   {
    "key": "10 (sc.line10)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "15459842a80830c32545159ac56e42ccd5e49a1806474f867c0b71aaf4b4f6cc"
+   "subject_key": "03e065eadbd23110e7f02d91f38b55eacb413a8651b2a6f82c1e362da6b9dedb"
   },
   {
    "key": "11",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "0d44d3ea84f17ca4bf55705c632d80780f31fd6ba057c757457bb25fc3c9857b"
+   "subject_key": "4ca540024db4cda032f58b38c1c091d45363bfe7ce977a5b54a89c468e6bcbef"
   },
   {
    "key": "12 (sc.line12)",
@@ -112,9 +112,9 @@
   },
   {
    "key": "13 (sc.line13)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "c2b906229c7dfdfd594a5e26c7c7e73f4a6c0f610d82ffc108a23ebc4046a1e3"
+   "subject_key": "3082abe1cee4f9f4d14c5a32ae01a0d82e9cd1dbff21a4a6bfb8e57c6b3eabde"
   },
   {
    "key": "14 (sc.line14)",
@@ -124,10 +124,10 @@
   },
   {
    "key": "15",
-   "record": "ecc43b164324d92dbb1dac7d162776bda23fc0341323f3f5bebbd8b81929a643",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MISMATCH",
-   "ruling": "Ruling: representation; i1040sc p. 8, Line 14, \"Deduct on line 14 amounts paid for employee accident and health insurance\", and Line 15. Employee health insurance belongs on line 14, whose question names \"accident and health plans\" for employees (sc.line14); a filer who put it on line 15 instead would get the same deduction, since lines 14 and 15 are read only by the line 28 total (sc.line28, sc.line28_pre179). The added home-expense exclusion (BUG-0475) the model accepts. No value changes.",
-   "subject_key": "eb62171fefdb380b9c19932fb2ba6ad68c62a7ce801d215d158d61793f55d5ce"
+   "ruling": "Ruling: representation; as the earlier ruling on this line. i1040sc p. 8, Line 15, \"Deduct on line 14 amounts paid for employee accident and health insurance\". Employee health insurance belongs on line 14, whose question names \"accident and health plans\" for employees (sc.line14); a filer who put it on line 15 would get the same deduction, since lines 14 and 15 are read only by the line 28 total (sc.line28, sc.line28_pre179). The added exclusion of a listed vehicle's insurance (i1040sc p. 7, Line 9, \"gasoline, oil, repairs, insurance, license plates, etc.\"), which the model accepts, is this round's change. No value changes.",
+   "subject_key": "e3801883489fca7d9bdb6daf1f28bf4c4e8fc108ccf54285f9d21a77cf83cc2d"
   },
   {
    "key": "16a",
@@ -173,21 +173,22 @@
   },
   {
    "key": "21",
-   "record": "ecc43b164324d92dbb1dac7d162776bda23fc0341323f3f5bebbd8b81929a643",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "1ff39a32dd7765c926e89c1c6cebc06bedffd0582b8a07b4fa77bcf708c0fce6"
+   "subject_key": "b231019015bfeefe68597b2a4b5b84bed5ae0b9cb9b043a9f9ad2d8ba1596839"
   },
   {
    "key": "22",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "ed5823ff32091c6f985a6dfc9b72edfccf385d910030ff38cfb82f63aea6473f"
+   "subject_key": "eb445eb6dd16284419762a51cb86ca8c691c1a20e1a1979708d8ca5d3142b26d"
   },
   {
    "key": "23",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
-   "status": "MATCH",
-   "subject_key": "fa2167a97cb73d6db95db732aa9c31416bb41c86332928b6ff831aba8126efe8"
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding (low; pre-existing, not introduced by this change); i1040sc p. 9, Line 23, \"Taxes assessed to pay for improvements, such as paving and sewers\" is in the do-not-deduct list and the question does not name it: recorded in BUG-0529 (sc.line23, special assessments). The Form 8846 reduction of the employer social security and Medicare taxes (\"Reduce your deduction by the amount shown on Form 8846, line 4\") is outside the tool: sc.special lists \"wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)\" and a Yes refuses through sc.screened. This round added only the listed vehicle's license plates (i1040sc p. 7, Line 9), which the model accepts.",
+   "subject_key": "7201dcf72e23de11034809b482c950aa1fc8ddc8485c36b7977c3f6e37ebda75"
   },
   {
    "key": "24a",
@@ -197,9 +198,9 @@
   },
   {
    "key": "24b",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "aa556f3830018196bc24ee4b4158377f1685fc6d60031a65445365672137b1b5"
+   "subject_key": "8f7506da3826ac6f0b5eccd45934f36daade39b8ea9bbc213c275ac450492279"
   },
   {
    "key": "25",
@@ -209,9 +210,10 @@
   },
   {
    "key": "26",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
-   "status": "MATCH",
-   "subject_key": "d86c0577a24193383020258d7bccf1295fff90cd95ca1f28aff9f815c67922bf"
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sc p. 10, Line 26, \"reduced by the amount of the following credit(s)\" (Forms 5884, 8844, 8932, 8994). Wages reduced by an employment credit are refused: sc.special lists \"wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)\", and a Yes makes sc.screened true, which refuses sc.line1. On every computed return no credit applies, so the line is total wages. The accounting-method wording added this round the model accepts.",
+   "subject_key": "337f096a7edcaf9aa54394b9887ca00c717dc4a78e7e789f74e5b9881f79583f"
   },
   {
    "key": "27a",
@@ -233,9 +235,9 @@
   },
   {
    "key": "28",
-   "record": "ecc43b164324d92dbb1dac7d162776bda23fc0341323f3f5bebbd8b81929a643",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "7e34209eddc3f4996253ccbd02a054f1193e1a92b209bfae6e90decfed3755c3"
+   "subject_key": "51aedf82c183226bf13f002ec7b4b5d4b69fba5ad4807c11840710480e420756"
   },
   {
    "key": "29",
@@ -287,9 +289,9 @@
   },
   {
    "key": "5 (sc.ho_line5)",
-   "record": "ecc43b164324d92dbb1dac7d162776bda23fc0341323f3f5bebbd8b81929a643",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "4970ac382b9f84fce5845f18ce899cd94c177cd94a0ccf9820b77ec782781b53"
+   "subject_key": "0208e95102d9d498e1aebf66df26600c8a9205d082c273c72160a7d3d0d433c8"
   },
   {
    "key": "30",
@@ -365,15 +367,15 @@
   },
   {
    "key": "12 (sc.s179_allowed)",
-   "record": "ecc43b164324d92dbb1dac7d162776bda23fc0341323f3f5bebbd8b81929a643",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "a2eb1b9413db8827a4d044a76f0b4cade27df638ce23c3d3646fd00f792ef962"
+   "subject_key": "b05bef5d0b14f1c0541452fc2d905f9f44d639297ca6780337705e6431ac15bd"
   },
   {
    "key": "(screen) (sc.hi_uses)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "4ff104ca681b75162d4469d51530f2856419252ec4b5fff1464934bbe72cfd73"
+   "subject_key": "c31e31ced0329b0b8e070859088201021611a13c5497e37dd885b0577b72f082"
   },
   {
    "key": "(screen) (sc.hi_screen)",
@@ -383,9 +385,9 @@
   },
   {
    "key": "1 (sc.f7206_line1)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "e5e15ff1b0e94ece9453ce64f4a122a70106183f1f24684fd96d5641b1ee5a6d"
+   "subject_key": "c6e5b3e61f2469bd07bdeb36410abd27945d9d5d876717ea2569d324b346be76"
   },
   {
    "key": "2 (sc.f7206_line2)",
@@ -395,9 +397,9 @@
   },
   {
    "key": "3 (sc.f7206_line3)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "75f146195b74dd4e480abb3ae75d70fb247d4c53eb08ad4c254f17884a6f73ca"
+   "subject_key": "71c31173b61f58293fc8c98659d1771ebc71d40fb3d38a3b54eab81c9ed2c2c0"
   },
   {
    "key": "4 (sc.f7206_line4)",
@@ -413,10 +415,10 @@
   },
   {
    "key": "7 (sc.f7206_line7)",
-   "record": "ecc43b164324d92dbb1dac7d162776bda23fc0341323f3f5bebbd8b81929a643",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: owner accepted (amb.2025.f7206_line15_person, T-041); restatement accepted, as the earlier rulings on this line. On a joint return Schedule 1 line 15 combines both spouses; Form 7206 is figured for the person whose business establishes the plan, and line 9 looks to 'the same trade or business', so the project uses that person's own Schedule SE line 13. The readings agree when only one spouse is self-employed.",
-   "subject_key": "3f325de539246b75ca6122874b66f9dcc847c000c8beea65276a0209bc5a2971"
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; owner's ruling (amb.2025.f7206_line15_person, T-041); restatement accepted, as the earlier rulings on this line. On a joint return Schedule 1 line 15 combines both spouses; Form 7206 is figured for the person whose business establishes the plan, and line 9 looks to \"the same trade or business\", so the project uses that person's own Schedule SE line 13. The readings agree when only one spouse is self-employed. Line 7 did not change this round; it is in scope through its rendered glossary.",
+   "subject_key": "6fa127a53fd450777cc00cdeea1527408c86425125fd8c200b3dbb2e93d0f43a"
   },
   {
    "key": "8 (sc.f7206_line8)",
@@ -438,9 +440,9 @@
   },
   {
    "key": "13 (sc.f7206_line13)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
    "status": "MATCH",
-   "subject_key": "5f47c5d1757785e5290c658d9abb92d3dc73c7a96d1a2235d1cf8726c7989823"
+   "subject_key": "ad4647bd2302276727f4fb15ce912365f9430c330c99e5aebf0d680e547b025f"
   },
   {
    "key": "14 (sc.f7206_line14)",
@@ -469,19 +471,19 @@
   "(screen) (sc.special)": "b6054cf6d08de1448607610ff7324be5e50a13132e292f5f5a5fc5dce25a1c89",
   "1 (sc.line1)": "9fae6f700a00928210f705396ff73c77d764798966bedf9605838efe8f67b144",
   "2 (sc.line2)": "a740eed3e32368c0a0975232c06d42726848f95d06bb1bddc037583ac496e10b",
-  "3 (sc.line3)": "32dfb404a18c1f8633e0318597f3f2d8b2053aa400441bccc2b375867c25a6d3",
+  "3 (sc.line3)": "31fb688586d9b8ed8d036e426c428a61910989c79b35af95efaefa6ad183e63d",
   "4 (sc.line4)": "7b85ae1e7bcd8268c76f2f79ad655b96c785b5c0fdd697ebc6f61267b02caa44",
   "5 (sc.line5)": "47740fe30007eb21334133749240887288f65f6e778209a425ecd20a93f45048",
   "6": "1f493718ee3436e80c160291430e5d61df692217454968863ed4adb17c6dad73",
   "7 (sc.line7)": "aaaa2c5c17ffeca5bdda093346fce4ab45952c057bf2ab939301a3e7ad379254",
   "8 (sc.line8)": "d902ac0c28f9c6eac684b610b8143faf793e4e163cda80f03ca2eaca5035c3bf",
   "9 (sc.line9)": "9aefea8c8c0a9be5851271590bfbcab3691e3eb71297df7a8d82235f9baf50cf",
-  "10 (sc.line10)": "596b8a3ccc22de340a5b754b6fd63d9263530ce36c7c37aca16cc8ae555de789",
-  "11": "c860f599f3f0b7c2101bfb57cddda3031e0917a5b9d2d3ec935b643942b45930",
+  "10 (sc.line10)": "cf7d3523e5c8af1e6cf1f7301ecf30fdb648ff00672e839129636a5e410097b9",
+  "11": "2ec48574cb68ab73559b08d0f5a80bdc300fa0a98687e867ca97dce21e9a2898",
   "12 (sc.line12)": "a39929fe1712d2f6d15a1f390a4fc55229124d31030280ae077282980e7dc67c",
-  "13 (sc.line13)": "e19962e88f0a52f9ecbad7c1a8904d178038ca6bd871bee2ad0c34c76c5a002a",
+  "13 (sc.line13)": "66589bf17b1d9dc9c44c61bfb54bd14b48f08a57f9a71a4c589e08e75cf87135",
   "14 (sc.line14)": "7aa0f97754f1d5cdd4f062aa15d5b277af14a0a1cc2e10a94c619a55b3f2fdef",
-  "15": "2ba0fc03efae99353544850d8bca97eca55be358409c621a655c4e4ab4951851",
+  "15": "429b0a4344afbaf982f3239636af1c1a89644b714d7dfb67136ffe5bcd23d18b",
   "16a": "655f63ef4b8c69b66fd0543bf5f126822a11e6a73aefe93c6061236f9362c766",
   "16b": "932de183ab38295ccc43a9e59f73ae78ab3decf693620fdeca293f5d43f465e9",
   "17": "42aa865dbe72d2693ea13a5dceb35a31ca25350fc58cdc2f5901f02a2877d157",
@@ -489,17 +491,17 @@
   "19": "337923fa22d7496de27efabfdb27b7f8d97a9c68000d4722ded9eacfaa917db5",
   "20a": "8e4e6556211dd7aed7078cdd15c2ae1202af3b925d4c771c7f8370fd8c9c6083",
   "20b": "0fe2b6367c501d171a51099e46e59e1867ca138d07accf8233dd78dae5dae099",
-  "21": "8879683e937a848f403557e9be9c9f7c186de963528459e26b2f20ab1337fe6d",
-  "22": "be932e2a45ec9b9ad7bc7afe6900e0e71f5f82c93ba3dc23e5b498300853251d",
-  "23": "6bd230c2a980411ead0ef77e480a5ab35e21811e887dd12ded3b2b403a23be25",
+  "21": "6714c08c3c131383b2d8a4756ae2c9077d99ec7bab1d63a8840f1a6f7365bd63",
+  "22": "715f2a50240a9ec4c26296df90bfebb36ae515a8448ed022eab668709517ab74",
+  "23": "49b576c4ba7f4c62ca7a346a5042fb69b52a1323c06bd5f6a7bca51c9fc43e30",
   "24a": "827a15912a1ed16a491da4a23f662a63a6a05cf73ae72846314ba376b2844602",
-  "24b": "70b55924d05eb90ead1028c95268bdd9225d2ed1721a9d7abdd224f42158fa0e",
+  "24b": "bdbadb23ad30759ee3321b4a18ec3ecf5576b1e948ca296bff072b145868f634",
   "25": "039eb6d208fa89ad7b27bea34881f6c64f7dc0a0ce1191f8197359f5f36f4882",
-  "26": "a3d438611bbce53f4df601f6e0e2877deac87ec458f3a1c1d49f944563b3a409",
+  "26": "26b7d741c4766aa8ff61cb5de8bdf6effcb87e1c66fa19795fd5b04d5815113c",
   "27a": "4543d2ec340b33f1758027df6f9f7e5bc36c55d528e9d8123d43625074a84236",
   "48": "2407fa82672e5b3a4962333281572936acbc2ad935216f4cf18202717201cda6",
   "27b": "6ae07cb4f45d196fb8d96b5f216a6b7ee44a2ca355fbdb1e3b6c2e12f395b42d",
-  "28": "c784bc6818fed48944fd23c56a46a7c6d6704e5e439eddb892a536fb5fab1a55",
+  "28": "c8fcf7c7878052c36c208ce550df0ff7e28733fd7ee05bb7d1b802ab04fb17fc",
   "29": "5e252890f40ebaf167e76d93a87be5b2a3c16bad2464fb510c868ba8b9b3d2b4",
   "(screen) (sc.ho_uses)": "ef5c3e8372d70c514df195b4e4fa6991b5208e5280292707d1fc1b3e8a0c05bd",
   "(screen) (sc.ho_other)": "f4b5d7242f56552080b3617765afc533d194fdc9ec282dc5eb90d8a356eeb249",
@@ -508,7 +510,7 @@
   "3a": "f032c1aa616e675b295a4be9748270b4c92a3dca1786e32bc1cd1ed510b6c140",
   "4 (sc.ho_line4)": "c16a11b8934124f13c7226b8945dc16407c6b35e3e0612405a2ad90352ed45cd",
   "1 (sc.ho_line1)": "93604a87acc0da5e391576b70009e23bb7c8d01a2bc4e755bdb9b477e0d452c3",
-  "5 (sc.ho_line5)": "94739643a1899e13da4d9df29dd2974b57dd53aa3533d8ec24d4bbce5b933cbe",
+  "5 (sc.ho_line5)": "015b83e5804755ba3ec19d931afc13941a616ae47a0a2ba01a3207ba9aea621f",
   "30": "2b2454406fde06a52b62715df8f45ee04691af33384cb10429efa6adda93e364",
   "31": "1422a43a9afabd8d0b571ce73dc64eb53b2e044a0ae273a7ae4fa0bcf181f6ac",
   "32": "b25d38d7fe4a3729fd765e7af7fd4e8de7a41893f83623de88158cddf985c07b",
@@ -521,19 +523,19 @@
   "40": "033bea5099029a14cbec4b858fe135c0c759ace2d8cfbfc7e65d1d15c432984f",
   "41": "ac91ba25000990d92da68710d46ca204aaa6e9d40a7cc2d3bcb6ac1ccb2c4d95",
   "42": "278262894b269d7757fb3a8c270656a79d5e44a2dca3b867e8628a5d9490f2e9",
-  "12 (sc.s179_allowed)": "b57178d89651a5541ca6783cc7371e1353e50421de35c77a7e4641db3ef4a498",
-  "(screen) (sc.hi_uses)": "d780af140ed61b7636e582896ef38a06a901001438731a5df5133ab2e56bb73a",
+  "12 (sc.s179_allowed)": "d34a4633d28938cdc0bf0dca4017197ec312506c8ae79cf6e540051334cf4f1a",
+  "(screen) (sc.hi_uses)": "de337a12f489094c044f67e7a8290d83ea2d5e00d7b4d7b60bf56c25f7cb43ba",
   "(screen) (sc.hi_screen)": "a2dec570d2e040adde80c037b79193fe9da036b710becfa33502a71209a7c117",
-  "1 (sc.f7206_line1)": "ca22ab0386d35458dca2d715df8e9f925b61ddfda12d1e3708023992f07ff124",
+  "1 (sc.f7206_line1)": "1bd2b7713de07addd04ce0b968a6901b8e3a8cfa661f5ec43ebd18c9b9e5849e",
   "2 (sc.f7206_line2)": "4a8f3bc38b51a3f22cb9c88722a242193ce322c350c38175024a52896c2c7433",
-  "3 (sc.f7206_line3)": "ce1706c34d2dd588f8bee4a51e6124f12cc7e138897b6ac75c224aac3a434adb",
+  "3 (sc.f7206_line3)": "48a2fed1d6a66108dbca81b5e7afa798e7aa314e4119b8bb0cdc631f9831da5b",
   "4 (sc.f7206_line4)": "7185c97a5e68441ae339f83b1976c871b54aeeb3bb98a6229b6488ded57bf79e",
   "5 (sc.f7206_line5)": "1e4d8104b52947e1b606366f9dbbf92ea57041036e8c26f0893f9a9a1b210069",
-  "7 (sc.f7206_line7)": "3cd7edde33ff0d2848610a90dd58af8afed03fea9a9448b55b269815adc2a2cd",
+  "7 (sc.f7206_line7)": "aee5f8760211f4a11fe4265472f8269c62b21dbf6edc6557ff8892e40c64e608",
   "8 (sc.f7206_line8)": "a25c1b9cfc5a2fb7c531e3ccd16f759b968a4fd1767e2fb9f5ea58c859e6d814",
   "9 (sc.f7206_line9)": "55682ff4ca61a3c39016a7cda38325fe21a61d302b1b24366bbbe8ee97fab3e4",
   "10 (sc.f7206_line10)": "4a6fc23293b452a587c8c681fed56f7847ca1a8659fe9eca1087cc54255ba119",
-  "13 (sc.f7206_line13)": "99c5774896376db77445b76f8b1b95eb36cbf116da9176acaca129b728f56de6",
+  "13 (sc.f7206_line13)": "b20b4a5ff25e94769931528e2cbdcf859011dc8702ea6e7539413107fffc39ff",
   "14 (sc.f7206_line14)": "0d0fbf293b1249e6e33b3d7cd621a712654c312e3eb03ec95bddbf2d6a777459",
   "1(c)": "37936dcc3e8495d753da824fee76a6d1afc169abaaa8f34982a815eb98305bfe",
   "(screen) (sc.tips_ot)": "fdb948c18792a3f705d0fc12465389f045c5185076bb24a588958840d81e5685"
