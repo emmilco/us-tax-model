@@ -9,3 +9,7 @@ Findings: 3; ruled 3; in the baseline to be worked off 0.
 | unruled | `gate:ny_it201.federal_care#1` | verdict FALSE_NO with 6 finding(s); adjudicate and rule with subject_sha 421216571657 | ruled: The gate is the federal credit's own condition (the New York credit follows the federal one); the findings are about the federal questions' wording, or read their labels for their prompts. The wording findings that hold are registered against f2441.care (BUG-0447), the federal form's lane. |
 | unruled | `gate:ny_it201.has_pension_income#1` | verdict FALSE_NO with 3 finding(s); adjudicate and rule with subject_sha 285f702efc17 | ruled: Every finding is pension income reported outside lines 9 and 10 (wages, an estate or trust K-1), refused federally. |
 | unruled | `gate:ny_it201.mctmt_possible#1` | verdict FALSE_NO with 4 finding(s); adjudicate and rule with subject_sha 438944083b1c | ruled: Every finding is self-employment income other than Schedule C (partnership, farm, minister), refused federally. |
+
+## Due at the next release
+
+- `gate:ny_it201.has_line28_income`: the condition's wording, the gated lines or their citations changed since its samples; run false_no_review.py --gates gate:ny_it201.has_line28_income

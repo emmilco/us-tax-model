@@ -3022,13 +3022,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (question) Were you (and your spouse, on a joint return) a New York City resident (the Bronx, Brooklyn, Manhattan, Queens or Staten Island) for all of 2025, by the same test with New York City in place of New York State?
       = UNKNOWN (no input supplied for ny_it201.ask.city_resident)
       cite: [ny_it201i] p. 31, New York City and Yonkers, "substitute New York City or Yonkers in place of New York State" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Were you a New York City nonresident on December 31, 2024, or will you be a New York State or City nonresident on January 1, 2026, and do you have income fixed and determinable in one tax year but reported federally in another (accrued income)?
+  (question) Were you (or, on a joint return, your spouse) a New York City nonresident on December 31, 2024, or will you (or, on a joint return, your spouse) be a New York State or City nonresident on January 1, 2026, and does that person have income fixed and determinable in one tax year but reported federally in another (accrued income)?
       = UNKNOWN (no input supplied for ny_it201.ask.special_accrual)
       cite: [ny_it201i] p. 31, Special accruals, "you may have to use special accrual rules (see below) to calculate your New York State and New York City personal income tax for 2025" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) Did you or your spouse maintain living quarters in Yonkers for any part of 2025, or work in Yonkers while not living there (item D2)?
       = UNKNOWN (no input supplied for ny_it201.ask.yonkers)
       cite: [ny_it201i] p. 5, Item D2, "All IT-201 filers must complete item D2." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Does any New York special condition code apply to you (item G: for example A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1)?
+  (question) Does any New York special condition code apply to you (or, on a joint return, your spouse) (item G: for example A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1)?
       = UNKNOWN (no input supplied for ny_it201.ask.special_code)
       cite: [ny_it201i] p. 5, Item G, "If you qualify for one or more of the special conditions below, enter the specified two-character code." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) Is this return for a taxpayer (or spouse) who died after December 31, 2024?
@@ -3037,43 +3037,61 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (question) Can you be claimed as a dependent on another taxpayer's federal return? Answer Yes even if the other taxpayer did not claim you (item C).
       = UNKNOWN (no input supplied for ny_it201.ask.item_c)
       cite: [ny_it201i] p. 5, Item C, "If you can be claimed as a dependent on another taxpayer’s federal return, you must mark an X in the Yes box." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Did you receive an inflation refund check from the New York State Tax Department and include it in federal adjusted gross income?
+  (question) Did you (or, on a joint return, your spouse) receive an inflation refund check from the New York State Tax Department and include it in federal adjusted gross income?
       = UNKNOWN (no input supplied for ny_it201.ask.inflation_check)
       cite: [ny_it201i] p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Did you have interest or dividends from bonds of states other than New York or their local governments, or from tax-exempt mutual or money market funds that invest in them, that was not included in federal adjusted gross income?
+  (question) Did you (or, on a joint return, your spouse) have interest or dividends from bonds of states other than New York or their local governments, or from tax-exempt mutual or money market funds that invest in them, that was not included in federal adjusted gross income?
       = UNKNOWN (no input supplied for ny_it201.ask.out_of_state_bond_interest)
       cite: [ny_it201i] p. 7, Line 20, "Do you have interest income from state and local bonds and obligations from states other than New York State or its local governments?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Are you a public employee of New York State or its local governments with 414(h) retirement contributions shown on a Form W-2?
+  (question) Are you (or, on a joint return, your spouse) a public employee of New York State or its local governments who is a member of one of the retirement systems below, with 414(h) retirement contributions shown on a Form W-2?
+
+      The retirement systems:
+      - the New York State and Local Retirement Systems (the Employees' Retirement System or the Police and Fire Retirement System)
+      - the New York State Teachers' Retirement System
+      - the Optional Retirement Program, as an employee of the State or City University of New York
+      - the New York City Employees' Retirement System, Teachers' Retirement System or Board of Education Retirement System, the New York City Police Pension Fund or the NYC Fire Department Pension Fund
+      - the Manhattan and Bronx Surface Transit Operating Authority (MABSTOA) Pension Plan
+
+      Do not count contributions to a 401(k), 403(b) or 457 plan.
       = UNKNOWN (no input supplied for ny_it201.ask.414h)
       cite: [ny_it201i] p. 8, Line 21, "Are you a public employee of New York State or its local governments?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Did you make a nonqualified withdrawal during 2025 from an account under New York's 529 college savings program?
+  (question) Did you (or, on a joint return, your spouse) make a withdrawal during 2025 from an account under New York's 529 college savings program that is nonqualified for New York?
+
+      A withdrawal is nonqualified for New York unless it was used:
+      - for the beneficiary's qualified higher education expenses at an eligible college or other post-secondary institution
+      - for the beneficiary's qualified postsecondary credentialing expenses at an eligible educational institution, on or after July 4, 2025
+      - to pay principal or interest on a qualified education loan of the beneficiary or the beneficiary's sibling
+      - for a rollover to a Roth IRA or to an ABLE account
+      - for any purpose, if the withdrawal is the result of the beneficiary's death or disability
+
+      Answer Yes for a withdrawal used for elementary or secondary school tuition, or for a transfer to another state's 529 program: New York treats these as nonqualified although they are qualified federally. A transfer between family members' accounts within New York's program, not paid out, is not a withdrawal.
       = UNKNOWN (no input supplied for ny_it201.ask.529_nonqualified)
       cite: [ny_it201i] p. 8, Line 22, "Did you make a nonqualified withdrawal during 2025 from an account established under New York’s 529 college savings program?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Does any other New York addition or subtraction on Form IT-225 apply to you, for example modifications passed through from a partnership, S corporation, estate or trust, the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?
+  (question) Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?
       = UNKNOWN (no input supplied for ny_it201.ask.it225)
       cite: [ny_it201i] p. 8, Line 23, "Use this line to report other additions that are not specifically listed on Form IT-201." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) Did you or your spouse receive a pension or other distribution included in federal adjusted gross income from a New York State or local government pension plan or a federal government pension plan, including a return of your own contributions before retirement? Count the military, a U.S. territory or the District of Columbia, the MTA Police 20-Year Retirement Program, MABSTOA, the Long Island Rail Road, and the Optional Retirement Program of SUNY, CUNY or the State Education Department (for example an annuity paid by TIAA), whether received as an employee, as a beneficiary, or as a former spouse under a domestic relations order.
       = UNKNOWN (no input supplied for ny_it201.ask.gov_pension)
       cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Did you include interest from U.S. government bonds or other U.S. government obligations (for example Treasury bills, notes or bonds, or U.S. savings bonds), or dividends from a fund investing in them, in federal income?
+  (question) Did you include interest from your (or, on a joint return, your spouse's) U.S. government bonds or other U.S. government obligations (for example Treasury bills, notes or bonds, or U.S. savings bonds), or dividends from a fund investing in them, in federal income?
       = UNKNOWN (no input supplied for ny_it201.ask.us_obligation_interest)
       cite: [ny_it201i] p. 9, Line 28, "Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) Did you or your spouse have pension or annuity income or IRA distributions (periodic or lump-sum) included in federal adjusted gross income other than a government pension subtracted on line 26 (periodic distributions from a government section 457 deferred compensation plan count here), and was the person who received it 59 1/2 or older in 2025 (or did they receive it as a beneficiary)?
       = UNKNOWN (no input supplied for ny_it201.ask.pension_exclusion)
       cite: [ny_it201i] p. 9, Line 29, "Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10) that was not from a New York State or local government pension plan or federal government pension plan?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) During 2025, did you, as an account owner, contribute to or withdraw from a New York 529 college savings account, or, as a beneficiary, receive a withdrawal included in federal adjusted gross income?
+  (question) During 2025, did you (or, on a joint return, your spouse), as an account owner, contribute to or withdraw from a New York 529 college savings account, or, as a beneficiary, receive a withdrawal included in federal adjusted gross income?
       = UNKNOWN (no input supplied for ny_it201.ask.529_owner)
       cite: [ny_it201i] p. 10, Line 30, "During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) Is your New York itemized deduction (Form IT-196) larger than your New York standard deduction, or are you married filing separately with a spouse who itemizes on their New York return?
       = UNKNOWN (no input supplied for ny_it201.ask.itemize)
       cite: [ny_it201i] p. 10, Line 34, "You may take either the New York standard deduction or the New York itemized deduction." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Did you have income from sources outside New York State and pay income tax on it to another state, a local government of another state, the District of Columbia or a province of Canada?
+  (question) Did you (or, on a joint return, your spouse) have income from sources outside New York State and pay income tax on it to another state, a local government of another state, the District of Columbia or a province of Canada?
       = UNKNOWN (no input supplied for ny_it201.ask.resident_credit)
       cite: [ny_it201i] p. 13, Line 41: Resident credit, "Did you have income from sources outside New York State and pay income tax to another state, a local government of another state, the District of Columbia, or to a province of Canada?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) Are you claiming any other New York State nonrefundable or refundable credit on Form IT-201-ATT (for example long-term care insurance, investment, solar energy, farmers' school tax or claim of right)?
       = UNKNOWN (no input supplied for ny_it201.ask.other_credits)
       cite: [ny_it201i] p. 13, Line 42, "If you are claiming any nonrefundable credits, complete the appropriate credit forms and Form IT-201-ATT." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Do you owe any other New York State or City tax on Form IT-201-ATT, for example the separate tax on a lump-sum distribution (Form IT-230)?
+  (question) Do you (or, on a joint return, your spouse) owe any other New York State or City tax on Form IT-201-ATT, for example the separate tax on a lump-sum distribution (Form IT-230)?
       = UNKNOWN (no input supplied for ny_it201.ask.other_taxes)
       cite: [ny_it201i] p. 13, Line 45, "If you are subject to any other taxes, complete the appropriate forms and Part 2 of Form IT-201-ATT." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) Can you claim the New York City unincorporated business tax credit, the New York City accumulation distribution credit, or the part-year resident New York City child and dependent care credit?
@@ -3082,10 +3100,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (question) Did you or your spouse have net earnings from self-employment allocated to New York City (MCTD Zone 1) or to Zone 2 of more than $50,000?
       = UNKNOWN (no input supplied for ny_it201.ask.mctmt)
       cite: [ny_it201i] p. 15, Lines 54a through 54e, "Did you or your spouse have net earnings from self-employment allocated to Zone 1 or Zone 2, or both that exceed $50,000?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Do you owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?
+  (question) Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?
       = UNKNOWN (no input supplied for ny_it201.ask.owes_use_tax)
       cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You owe sales or compensating use tax if you:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Do you owe use tax on an item or service costing $1,000 or more, or on purchases for a business, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?
+  (question) Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?
       = UNKNOWN (no input supplied for ny_it201.ask.use_tax_st141)
       cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) Do you want to make voluntary contributions to the funds listed on Form IT-227?

@@ -53,12 +53,13 @@ bank:
       taxed by New York; this tool does not compute that addition.
   - input: ny_it201.ask.414h
     order: 1010
-    help: Members of New York public retirement systems add back 414(h) contributions shown on Form W-2; this tool
-      does not compute that addition.
+    help: On a joint return, count your spouse's Forms W-2 as well as your own. Members of these New York public
+      retirement systems add back 414(h) contributions shown on Form W-2; this tool does not compute that addition.
   - input: ny_it201.ask.529_nonqualified
     order: 1011
-    help: A nonqualified withdrawal from a New York 529 account may have to be added back; this tool does not compute
-      it.
+    help: New York's list of qualified uses is narrower than the federal one, so a withdrawal that is tax-free
+      federally can still be nonqualified for New York. A nonqualified withdrawal may have to be added back (the
+      Line 22 worksheet); this tool does not compute it.
   - input: ny_it201.ask.it225
     order: 1012
     help: Form IT-225 holds the New York modifications not printed on Form IT-201 (many come from a partnership,
