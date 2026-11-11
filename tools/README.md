@@ -156,6 +156,34 @@ each step's wall time is in `.git/check-all-times`, with each self-test's as
 over worker threads (`MUTATE_WORKERS`, default `defaultWorkers()` of `engine/src/pool.ts`);
 `MUTATE_WORKERS=1` runs it on one.
 
+A surviving mutant must be explained, by a structural rule checked against the data or by
+a hand-written equivalence argument keyed by the mutant's id (`EQUIVALENT_IF` in
+`engine/src/mutate.ts`). A hand-written argument names its premises and is pinned to a
+digest of them (`premiseDigest`); when a premise changes the digest moves, the survivor is
+listed as not yet explained and the step fails until someone re-reads the argument and
+records the new digest. The digest covers what the two routes' values can depend on:
+
+- for a premise line: its expression (operator, operands in order, constants, parameter
+  and table references, guards, collection and field), its refusal gates in order with
+  each gate's line, `when_known`, form, remedy and citation (a refusal value carries all
+  of them, spec 4.7), its type, its printed marker, its display condition, and the list of
+  lines that read it;
+- for a `param:` premise the parameter's type and value, for `enum:` the value names, for
+  `table:` the table without its title, citation and column notes, and for `def:` the
+  def's id, kind, parameters, collection keys and each line's facts as above.
+
+It does not cover an input's question text, a line's label, citation or note, or a
+parameter's, enum's or table's citation: rewording a question or correcting a citation
+leaves every argument pinned, and needs no re-reading. An argument that reasons from what
+a question says, rather than from the expressions, would need the wording pinned too;
+no argument does, and one that did would have to add it to its own `holds`. The step runs
+two self-tests of the pins: `premiseDigestSelfTest` (on a synthetic form, each wording or
+citation edit leaves the digest and each edit to an expression, type, gate, marker,
+display condition, reader, parameter, enum, table or def moves it; on the real data,
+rewording every question, label and line citation leaves every pinned argument holding,
+and changing any one premise line's type or premise parameter's value un-pins it) and
+`retargetSelfTest` (an argument is not taken by a mutant that now reads another line).
+
 `tools/hooks/pre-commit` refuses any commit whose tree is not exactly a tree a green
 run of the tier the commit needs tested (a marker, or one of the recorded green
 trees): no green run, a run of too low a tier, a tree changed since the run, or a
