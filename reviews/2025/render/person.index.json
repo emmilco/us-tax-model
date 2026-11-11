@@ -4,8 +4,7 @@
  "family": "claude",
  "base": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
  "head_rows": {
-  "match / mismatch / unclear / missing": "27 / 5 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -172,38 +171,33 @@
   },
   {
    "key": "27",
-   "record": "00da4d5dc17276370324291c5f71c1e7257b7df68451a5e95135ffd1a264e679",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, \"After January 31, 2026, but before you file the return\"; p970 p. 2, \"After February 2, 2026 (January 31 falls on a Saturday)\"; the register chooses Pub. 970 (person.edu_1098t help), and the reviewer was given p970 p. 11 only, not p. 2. The reviewer accepts the arithmetic (inst + mat - adj, floored at zero, capped at $4,000) and the gate on lines 23 to 26, TINs and EIN. The earlier finding rulings on this line were T-113 (BUG-0285, the applied-for TIN for the lifetime learning credit), which this pass does not raise; they are why carry refused. render MISMATCH on the date only. Project stands.",
-   "subject_key": "883477f567637356d8be39a9b14a3cd9cc0fa75c9f428de5f8b07370efd1f2b2"
+   "record": "feceb06e427749c385013f6b4d4f534f62341ef6661bb79d2dff2edbcbc84fba",
+   "status": "MATCH",
+   "subject_key": "a777675c3f35e83494f13aff27aa43fef9cb09cef363d3a5519f06fdcfb88899"
   },
   {
    "key": "28",
-   "record": "00da4d5dc17276370324291c5f71c1e7257b7df68451a5e95135ffd1a264e679",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, \"After January 31, 2026, but before you file the return\"; p970 p. 2, \"After February 2, 2026 (January 31 falls on a Saturday)\"; the register chooses Pub. 970 (person.edu_1098t help), and the reviewer was given p970 p. 11 only, not p. 2. The reviewer accepts the restatement of line 28. The earlier finding rulings on this line were T-113 (BUG-0285, the applied-for TIN for the lifetime learning credit), which this pass does not raise; they are why carry refused. render MISMATCH on the date only. Project stands.",
-   "subject_key": "dd2334de40c7dfcdbdb43cb8696a9a653f1b8e83cc90acc6955b7ba3f1305100"
+   "record": "feceb06e427749c385013f6b4d4f534f62341ef6661bb79d2dff2edbcbc84fba",
+   "status": "MATCH",
+   "subject_key": "23d920e2d6434b84ab90f936591e4ef9fbb42ea37e629cc9647195a621108a8a"
   },
   {
    "key": "29",
-   "record": "00da4d5dc17276370324291c5f71c1e7257b7df68451a5e95135ffd1a264e679",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, \"After January 31, 2026, but before you file the return\"; p970 p. 2, \"After February 2, 2026 (January 31 falls on a Saturday)\"; the register chooses Pub. 970 (person.edu_1098t help), and the reviewer was given p970 p. 11 only, not p. 2. The reviewer accepts the restatement of line 29. The earlier finding rulings on this line were T-113 (BUG-0285, the applied-for TIN for the lifetime learning credit), which this pass does not raise; they are why carry refused. render MISMATCH on the date only. Project stands.",
-   "subject_key": "32d822ae3fa48c4cfb06a4d46bbb5d292bd039ca2840a2905dd3aeb74575d016"
+   "record": "feceb06e427749c385013f6b4d4f534f62341ef6661bb79d2dff2edbcbc84fba",
+   "status": "MATCH",
+   "subject_key": "cfb2b62813a2007c2dd094cca51afa29e22bbae17c6bdb783e6452f1de674e54"
   },
   {
    "key": "30",
-   "record": "00da4d5dc17276370324291c5f71c1e7257b7df68451a5e95135ffd1a264e679",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, \"After January 31, 2026, but before you file the return\"; p970 p. 2, \"After February 2, 2026 (January 31 falls on a Saturday)\"; the register chooses Pub. 970 (person.edu_1098t help), and the reviewer was given p970 p. 11 only, not p. 2. The reviewer accepts the restatement of line 30. The earlier finding rulings on this line were T-113 (BUG-0285, the applied-for TIN for the lifetime learning credit), which this pass does not raise; they are why carry refused. render MISMATCH on the date only. Project stands.",
-   "subject_key": "21d34923b3b74784be6ec76935a906569da8bbf0c777865f1c14922085984b87"
+   "record": "feceb06e427749c385013f6b4d4f534f62341ef6661bb79d2dff2edbcbc84fba",
+   "status": "MATCH",
+   "subject_key": "10fe4057aec10ebc8085e087bfd0f461a2632c640372879c42226e0730522fdc"
   },
   {
    "key": "31",
-   "record": "00da4d5dc17276370324291c5f71c1e7257b7df68451a5e95135ffd1a264e679",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, \"After January 31, 2026, but before you file the return\"; p970 p. 2, \"After February 2, 2026 (January 31 falls on a Saturday)\"; the register chooses Pub. 970 (person.edu_1098t help), and the reviewer was given p970 p. 11 only, not p. 2. The reviewer accepts the computation and the refusals for an applied-for ITIN or ATIN (the T-113 gate). The earlier finding rulings on this line were T-113 (BUG-0285, the applied-for TIN for the lifetime learning credit), which this pass does not raise; they are why carry refused. render MISMATCH on the date only. Project stands.",
-   "subject_key": "0a27a72a2e3755c138792d401595e046d64e8c109043b5ffd3fab04c3ade5a6d"
+   "record": "feceb06e427749c385013f6b4d4f534f62341ef6661bb79d2dff2edbcbc84fba",
+   "status": "MATCH",
+   "subject_key": "743da44ce44d540414c80ee65e1a196a168480f5dcf13b80727c3b242067b8e1"
   }
  ],
  "subjects": {
@@ -234,11 +228,11 @@
   "24": "9f1d38d7e493b18f7b91c64374bad4f7eaa16e7049076217bf16d8d3c87ed5a7",
   "25": "92bbf9d23da231a378008f560b77f4ecc9287bdf9de6a32bb55f97d1df37d95c",
   "26": "5e230914a1d319de23b13cb4bc87ab8ec9fae1f62dbbda87ffa25dcff0585388",
-  "27": "a72d481f5a280f07789825900f93f1832348f651db2eef6addf2a65a34dbbeb3",
-  "28": "49e10ad6cabcd004755ad3bd735ff43173698289a7f0a9ec057266e1449746e9",
-  "29": "8014bf2356c7673890dbacac435e73676c90f7fbe93aa2e016d49ee1399890c6",
-  "30": "bc0ba8d60195c0e5374df917308810c95a15a210d7ff0bde028d577783339477",
-  "31": "1049ff4469d58484c8ca83972581d4b6b0156d0b6044915176b9830e74f919ed"
+  "27": "7ff0e25b012ef1d2f80a503e6f631ffe88ddeeee2f39018f4ee3117ef0f47a7c",
+  "28": "e63e10d0a4fb2abb802f6143b490c682d07efa35ffbdaadd36670d52601e8a53",
+  "29": "19865074012fffa9a091e91391679b888824c8642c75802cd3445b019efb4eeb",
+  "30": "e99139e1b4fb3894cd289bc7ade152dac74a15224321159b2b45dbdaa97a45ef",
+  "31": "9cc7fe72aae3572bab89dc87d0d00c18af1f1d02409ae51ec673f63008ea4f0b"
  },
  "__rest__": "774637a29894532eb1f17ff28873aee0739a6158bd21538f87516cd8da60346c"
 }

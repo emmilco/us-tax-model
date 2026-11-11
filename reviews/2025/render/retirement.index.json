@@ -3,6 +3,9 @@
  "form": "retirement",
  "family": "claude",
  "base": "6567afaee18d96fd41ee69f38a7a48bff4f4e116bb7e30bc2bcf736071a80a2b",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "(SMW 1)",
@@ -26,9 +29,9 @@
   },
   {
    "key": "(SMW 5)",
-   "record": "6567afaee18d96fd41ee69f38a7a48bff4f4e116bb7e30bc2bcf736071a80a2b",
+   "record": "9722f84a3c4c5556e464278026f3d66b36253246014061bd6dce1032c16cf4d8",
    "status": "MATCH",
-   "subject_key": "19fc22d06b065fbc1532350add22b5a45e31d7266f7d31c6000b4c7714c67ea1"
+   "subject_key": "543f596807dd03f7dab166d2a42b71b094ec2bb1250b9119f1e358db6b7c7721"
   },
   {
    "key": "(SMW 6)",
@@ -74,7 +77,7 @@
   "(SMW 1)": "ad87260361bfb295a11bb9e2bfc483b0a1fe062286ab2bc8254ee0b919dc3a44",
   "(SMW 2)": "c78a1d6263be1b778d5f1def78a0ced131c2ff5ae07cfa65abd87cd115c011db",
   "(SMW 4)": "1f109d32140745bf81f3a038ac561f6354aae2fd1988978b8448dad9411f081e",
-  "(SMW 5)": "4cabf643166f0252f22fb0efd0b55b279686e3a40a017cddccc288fc2d938c99",
+  "(SMW 5)": "de6b3565e17e5d1718b690d31b0b2e1990f1e2264f0872e112dcbe1df43f68a5",
   "(SMW 6)": "68aba9ecbd1a084a843adad94467c55267f75d5ae74be3750ff9cec72e05faeb",
   "(SMW 7)": "3704eb0af67c1b531972d00771e6a875dfcce5f2a8271ad5f14ddf279a678d86",
   "(SMW 8)": "253f26399e33f6afc971a9544c2bf14bf4ba5b5e563ed05a7243512587b5d1e4",

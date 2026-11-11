@@ -560,8 +560,8 @@
 ## (helper) — `dependent.lawful`
 
 - **Authored helper label:** Your relationship with this person did not violate local law
-- **Encoded (Bool):** Input — Did your relationship with this person not violate local law? (Asked for a person who is a Step 4 relative only as a member of your household all year, such as a sibling's grandchild or a step sibling's child, or who is no relative.)
-- Expr: `{"op":"input","source":"Did your relationship with this person not violate local law? (Asked for a person who is a Step 4 relative only as a member of your household all year, such as a sibling's grandchild or a step sibling's child, or who is no relative.)"}`
+- **Encoded (Bool):** Input — Was your relationship with this person lawful under local law throughout 2025? Answer No only if the relationship violated local law at any time during 2025. (Asked for a person who is a Step 4 relative only as a member of your household all year, such as a sibling's grandchild or a step sibling's child, or who is no relative.)
+- Expr: `{"op":"input","source":"Was your relationship with this person lawful under local law throughout 2025? Answer No only if the relationship violated local law at any time during 2025. (Asked for a person who is a Step 4 relative only as a member of your household all year, such as a sibling's grandchild or a step sibling's child, or who is no relative.)"}`
 - Cite: [i1040gi] p. 19, Step 4, "Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn’t violate local law." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.qr_income`
@@ -849,9 +849,9 @@
 ## (helper) — `dependent.dc_under13`
 
 - **Authored helper label:** Under age 13 for part of 2025 when the care was provided?
-- **Encoded (Bool):** Input — Was this child under age 13 for part of 2025, when you paid for their care? (A child who turned 13 in 2025 is a qualifying person only for the part of the year before their 13th birthday.)
-- Expr: `{"op":"input","source":"Was this child under age 13 for part of 2025, when you paid for their care? (A child who turned 13 in 2025 is a qualifying person only for the part of the year before their 13th birthday.)"}`
-- Cite: [p503] p. 3, Person qualifying for part of year, "You determine a person's qualifying status each day. For example, if your child for whom you pay child and dependent care expenses turns 13 years old and no longer qualifies on September 16, count only those expenses through September 15" (For use in preparing 2025 returns; sha256 3a00d0c1)
+- **Encoded (Bool):** Input — Was any of this child's 2025 care that you are claiming provided before their 13th birthday? (A child who turned 13 in 2025 is a qualifying person only for the part of the year before their 13th birthday. What counts is when the care was provided, not when you paid for it; answer Yes for care provided before the birthday even if you paid for it after.)
+- Expr: `{"op":"input","source":"Was any of this child's 2025 care that you are claiming provided before their 13th birthday? (A child who turned 13 in 2025 is a qualifying person only for the part of the year before their 13th birthday. What counts is when the care was provided, not when you paid for it; answer Yes for care provided before the birthday even if you paid for it after.)"}`
+- Cite: [p503] p. 3, Person qualifying for part of year, "You determine a person's qualifying status each day. For example, if your child for whom you pay child and dependent care expenses turns 13 years old and no longer qualifies on September 16, count only those expenses through September 15"; p. 3, "who was under age 13 when the care was provided" (For use in preparing 2025 returns; sha256 3a00d0c1)
 
 ## (helper) — `dependent.dc_child`
 

@@ -4,26 +4,29 @@
  "family": "claude",
  "base": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "26 / 10 / 0 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1 (box)",
-   "record": "8f4bf2406fea95f47a18e3a0f828fca15dc167c155a849bf764071989c222f3e",
+   "record": "14e7a332a0a51ec9312c71a740cef9a5ad4a7df8a81feb3321c8ed8b9ceb3760",
    "status": "MATCH",
-   "subject_key": "25c49f1777e396e79890281862d3203382448b0f2ab84c93238b4220b0a2498c"
+   "subject_key": "b367280b03a373417dcb1ba01eb2fed04f0be28358910c7c49d4c67246b7d0fa"
   },
   {
    "key": "2 (box)",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH",
-   "subject_key": "1a4fdef952d94ac52e9824a97894fe8b4c8bc1e624367bbbcb73efe009cd21fc"
+   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",
+   "subject_key": "81c3016b3d1e32b219739b80dbb4733289426997883b4bf64a170e2a6773e9fa"
   },
   {
    "key": "3",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH",
-   "subject_key": "82b50ce246892a04f096788e21f74aba8936609f477229ab3525a0c0d366d770"
+   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",
+   "subject_key": "813b82f9ec0f1a6d6157738cbb81081975d2f8f53533cd278456df51681dc2d8"
   },
   {
    "key": "4",
@@ -65,9 +68,9 @@
   },
   {
    "key": "9b",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
    "status": "MATCH",
-   "subject_key": "1f448e382f574d927781d1c16e452ccb3393f8e3b76cb0d5a148794091cbb250"
+   "subject_key": "e5af7c82cfaf3a52916f43f2cc8d584b06ff993ea3a516f052a3d561764177fc"
   },
   {
    "key": "9c",
@@ -114,33 +117,33 @@
   },
   {
    "key": "13",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
    "status": "MATCH",
-   "subject_key": "6fe72b9ba645ad5e109bd3241796c18d08b660b00b8762ea1a6a8e2f9cfdb9e0"
+   "subject_key": "d08e73e75229bf89b6cff718e12dfc7ea7eb36b9821e62c7b925a37d8d865be6"
   },
   {
    "key": "14",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
    "status": "MATCH",
-   "subject_key": "24cc5412a7ac981d0deff460429d8e428ca3101efbf50c1a31662d7bdcc44fab"
+   "subject_key": "e3a15cc9b1dea489ceb319d64eeab284604676fed9b1f04277a6b190fc4c2ca6"
   },
   {
    "key": "15",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
    "status": "MATCH",
-   "subject_key": "3e37cfda26c5cdff8300906c2eaeed3ab1c5c06242229303a1c1a11042829e9b"
+   "subject_key": "23f2f31b638e00e7681fcfb9dd6dbb75dcba26244f6bc0da92176d324a77e6b7"
   },
   {
    "key": "16",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
    "status": "MATCH",
-   "subject_key": "90f16dfe2b9d20080ce04c22123e9aa5ae0aa01286f9021d35e2094a1d0d3e4c"
+   "subject_key": "8ab512bae1eaea396a7c5206b5b5ecf3d250a3260e224f9bf448a3aa41bdae24"
   },
   {
    "key": "17",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
    "status": "MATCH",
-   "subject_key": "150bce1993a1ec753930ed0cc9ea5aea127d2f335d4f26663d03a57bd7092123"
+   "subject_key": "b609221fd2894e28ddc9d9a821d6b6eb746a4a90d70509ded027d55348079c8c"
   },
   {
    "key": "18",
@@ -164,9 +167,10 @@
   },
   {
    "key": "21",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH",
-   "subject_key": "fcfd8ead969b68f822cb880e48d40585f161105f15fb45b7a671b2eb3451e71c"
+   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f2441 p. 2, line 21, \"Enter $5,000 ($2,500 if married filing separately and you were required to enter your spouse's earned income on line 19)\". The project refuses every married filing separately return (s3.mfs in scope.ready, and on lines 11 and 26, whose refusal names \"lines 19 and 21\"; owner decision 5), so the $2,500 case never arises; as the transcription ruling on this line. No change to the data.",
+   "subject_key": "08c3c63066d39807121688aea6997fb90990a3b07802303465a892b0f79920eb"
   },
   {
    "key": "22",
@@ -188,9 +192,9 @@
   },
   {
    "key": "25",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
    "status": "MATCH",
-   "subject_key": "5db74bef22b6921302dd19095f4750973129f03b6f9ea0ea0ba35f8cd5e67297"
+   "subject_key": "c8a7a26ea6d285e3b95e422e7b6c39bdedf2da43eb684356bf202144ce662185"
   },
   {
    "key": "26",
@@ -200,9 +204,10 @@
   },
   {
    "key": "27",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH",
-   "subject_key": "b2d334cddfcadf6b9b1fec1d3db9679c4363773dd9a7beaa3bedf87ec9782544"
+   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",
+   "subject_key": "48f17cf8735586b8767852729f068ee21fe8b76017099fcae35c08b9c62b6076"
   },
   {
    "key": "28",
@@ -218,9 +223,10 @@
   },
   {
    "key": "30",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH",
-   "subject_key": "47336098c109a1f6b8e72113b0576945dae4737a11bc9d08ef53f9318d0aca34"
+   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",
+   "subject_key": "565afe4614ef116c9208f54d488e3b71cb3cfea983a16235f9ccb9cc09de05cb"
   },
   {
    "key": "31",
@@ -230,16 +236,16 @@
   }
  ],
  "subjects": {
-  "1 (box)": "86743e320de904be6eb7e0d802dbff9b0d85421c8d96cae2123dc63fcbf206ee",
-  "2 (box)": "7e25e6d90fb80e6e87f2e987666208700a5bb487014174fd8ae9f43975ae7ae5",
-  "3": "58d13ce0e227a02a798b53d7ac68d072b4ed36c25b327ecb8b782baee0ccec2c",
+  "1 (box)": "bff3d468afa95d7c6882054f447ef997ea68a0203fe0d90f4f0278e59156eade",
+  "2 (box)": "37d3860625019eff0959b7f470f8c13a929825e76d67623b61647b92f63949b4",
+  "3": "13d120769fa84354183ef458d07d925c7a69799284333acfc8ab13f9b06ca591",
   "4": "65ad69c5e8c90589973e31b7331b7e54b7eeec0da4a9da21fb99ebc46d650886",
   "5": "7e9d36ccd0386049fe2332050fc622ba6bc809c0427cdb1daf10a1670ee6bda0",
   "6": "34f0d934a032cf5160050a88a7c21ff9f4b54c02714966c2a6fce32c9aca03fb",
   "7": "9b9154af283c2b42e9d64eb62ce706bf52b02db97816b30e65038653eeb3c9aa",
   "8": "17c760497e98f0b2f513dfc9cc6b76141b008ea179d06e5f01941e0ab163e0e8",
   "9a": "1977cacb10616275b442697ba7a9affa31d8ac798cd108cb3732bb71f06d5a31",
-  "9b": "98f5a6f6d9a45a18f3db05cb5069ad192a8294feb6693b2135f28e5837ef91ca",
+  "9b": "a7374679a99810db05f962bc2febce150ce1aba29004557a8d0215752425b5b8",
   "9c": "f74e5d34374954784150a4b36925a4b51e36c003924447854be3d10e25038a00",
   "CLW 1": "9e6914a4c2458a24954540197815718445ef1b16fa893d85a79e09335e00f1f7",
   "CLW 2": "31afc58b3cf1a5deee2bd8dd6650a4a883ebbd795f51d555863602569d5a358c",
@@ -247,24 +253,24 @@
   "10": "beb1d772c6355612bcb2d8cd668139efb1b99702b069e88d72a3b14454819f9a",
   "11": "61112cd04e10bd07071fb4cfb9ebbc42d409edcd4da7bc3f3b25aa399737cc64",
   "12": "27e355e131fd547c722f8fb844c74991cf94a00904e11f73c5ac7c019c88e90f",
-  "13": "0d6b24c4dee38b3e7fc64a5336ab4453ffd6622fed85200ab5df61f382c19433",
-  "14": "41d5eab20c50ca295760f35c98ab0acce98204a7724f31607383bbda6c75cb36",
-  "15": "ea11d49594051a18ec69c038e6a96b55c8c78a938e684ff08cd673f307460c94",
-  "16": "1f932776e414d9f216e529e9247a21cfcdd92f2367675407c0c4c5a60e58846a",
-  "17": "127059b90424a280ef0e24a4cbefd3fd41a7d8ff0134d604601e7839b8490278",
+  "13": "6d19999b2d5e32db7dc028d67009d1281eac5956f0f371cbc35ea53251dec021",
+  "14": "fd6809740f98f841ec8a4f18f3594f5d04078168283971aaaba07ab7be041c2f",
+  "15": "2a1307982433af827c009c79e3cd536228c7ac72553814672c56cded0ca56382",
+  "16": "7f44d90c408b59e9b31b01fdc87f0677f84f3fb0aed32d9b8ff8d76cee3eba7b",
+  "17": "1ca42929dcfa0a2729c6887d392128267e4850482de2b5ba0e03f1b9a0064877",
   "18": "0173f358a0769e400ef832f67d5fed47d84f265a613c786cb44d02824177e752",
   "19": "4fa05799b9419a9cd11d34fcdd78f0367c16e4205211c290d41584406a2b8949",
   "20": "3aab5c68c71c94c0354eb93b008c5b539f5ff921257d450219e800653174b0d3",
-  "21": "8cf7000074db45ea7b844982714abc90f452095c7388c4a1a8a07803853c69ab",
+  "21": "7cafa7d867acbfaf07feca23f0e8ff3b61a812ae578493abd2567a44283f0c10",
   "22": "b915b927da69a12457c6002e5f4945115d7ede5473d998b24281b6acff79954e",
   "23": "e74db98f2ed34dedf19a98f08d8d1d1e292d34c7d1b2dbbc5c1e396eb43b78f7",
   "24": "c4455d17f0737c3ab5cbad5a5d0a496bfb08d4d0b51305717e5efdeb09ad5f19",
-  "25": "5dd78c78cf5d50801c606997c1ef0bb8c189cf12af90388f719d6cad015cf91f",
+  "25": "ae8218569f2cf8ebdbd0d039a469c576f54870b28c4c92753ad2c73344b846b6",
   "26": "90b1ba6674d128d79ba05341a50c2bb64366e6734e0df6a88c9f9dd10beea6b4",
-  "27": "c9c2f90ef380b3c3b0a2f081a1bf8edb6d91dade55123e9eb91cfaa47c7681e9",
+  "27": "50786952bf6d158a3a17d42fbb939f0983c9b79465502f8a4e1ea865ad14fa96",
   "28": "208f72b6ca518d77c27979fd4088f6e51a4a18aeb44779a921cd4d572a31dbcd",
   "29": "b6d8757189cc5ba3f8e0410f2083b76e555b3c635eb498aa1810ec854604c0ff",
-  "30": "db2ba30ce3aa222c209c2e088b869b3a8c7e074b385ea3a85b0a1e3217889ffb",
+  "30": "11bffc1ea1a9b3470aa2459992137931e599b30989506727e7e69d4b86d8d118",
   "31": "9bfe370e903a66d4b98337a63a9ce2fa854b3e0e155cfbbd12dd477da41513cc"
  },
  "__rest__": "bb4b29bcc2aa36444c7a09d3b0883307635faecc1234ab9c0d9ed9d55d114f4d"

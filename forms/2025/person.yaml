@@ -75,12 +75,13 @@ form:
     - id: person.itin_applied
       printed: (helper)
       type: Bool
-      label: If not, have you applied for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your
-        return?
+      label: If not, have you applied, or are you applying, for an ITIN, or for the renewal of your expired ITIN, on or before
+        the due date of your return?
       expr:
         op: input
-        source: If you have neither (or your ITIN has expired and was not renewed), have you applied for an ITIN, or for the renewal
-          of your expired ITIN, on or before the due date of your 2025 return (including extensions)?
+        source: If you have neither (or your ITIN has expired and was not renewed), have you applied, or are you applying, for
+          an ITIN, or for the renewal of your expired ITIN, on or before the due date of your 2025 return (including extensions)?
+          Answer Yes if you are applying with this return, for example by filing Form W-7 with it.
       cite:
         doc: i1040gi
         locator: p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN on or before the return due date
@@ -130,7 +131,8 @@ form:
       type: NonNegDollars
       expr:
         op: input
-        source: Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment
+        source: Qualified educator expenses you paid in 2025 (professional development courses you took that are related to
+          the curriculum you teach or to the students you teach, and books, supplies, equipment
           (including computer equipment, software and services) and other materials used in the classroom, including personal
           protective equipment, disinfectant and other supplies used to prevent the spread of coronavirus; not expenses for
           home schooling or nonathletic supplies for courses in health or physical education), reduced by excludable savings bond interest (Form 8815), nontaxable qualified
@@ -138,7 +140,8 @@ form:
           zero if none
       cite:
         doc: i1040gi
-        locator: p. 93, Schedule 1, line 11, Qualified expenses, 'equipment (including computer equipment, software, and
+        locator: p. 93, Schedule 1, line 11, Qualified expenses, 'For professional development courses you have taken related
+          to the curriculum you teach or to the students you teach', 'equipment (including computer equipment, software, and
           services)', 'for personal protective equipment, disinfectant, and other supplies used for the prevention of the
           spread of coronavirus', and 'You must reduce your qualified expenses by the following amounts'; p. 93, 'Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses
           in health or physical education.'
@@ -2220,7 +2223,8 @@ form:
       expr:
         op: input
         source: Did you make contributions (other than rollover contributions) to a traditional IRA for 2025, deductible or
-          not, including contributions made by the due date of your 2025 return for 2025?
+          not, including contributions made by the due date of your 2025 return for 2025? Do not count contributions made under
+          a SEP or SIMPLE IRA plan, including those you made for yourself as a self-employed person.
       cite:
         doc: f8880
         locator: 'Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any
@@ -2528,8 +2532,8 @@ form:
         op: input
         source: 'Your contributions to your traditional IRAs for 2025, made in 2025 or made by April 15, 2026, and designated for
           2025; do not include rollover contributions, contributions made in 2025 that you deducted for 2024, contributions withdrawn
-          (with their earnings) by the due date of your return, trustees'' fees billed separately, or employer contributions to
-          a SEP or SIMPLE IRA'
+          (with their earnings) by the due date of your return, trustees'' fees billed separately, or contributions made under
+          a SEP or SIMPLE IRA plan, by your employer or by you for yourself as a self-employed person'
       cite:
         doc: i1040gi
         locator: 'p. 98, IRA Deduction Worksheet—Continued, line 11, "Enter traditional IRA contributions made, or that will be

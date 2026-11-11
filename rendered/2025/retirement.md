@@ -172,8 +172,8 @@
 ## (helper) — `retirement.months`
 
 - **Authored helper label:** Number of months for which this year's payments were made
-- **Encoded (Count):** Input — Number of months in 2025 for which payments were made
-- Expr: `{"op":"input","source":"Number of months in 2025 for which payments were made"}`
+- **Encoded (Count):** Input — Number of months for which this year's payments were made (at most 12) — the months covered by the payments included in box 1 of this Form 1099-R, not the calendar months of 2025 since the payments began; for example, a pension paid monthly in arrears that began in July, with five payments in 2025 for July through November, is 5
+- Expr: `{"op":"input","source":"Number of months for which this year's payments were made (at most 12) — the months covered by the payments included in box 1 of this Form 1099-R, not the calendar months of 2025 since the payments began; for example, a pension paid monthly in arrears that began in July, with five payments in 2025 for July through November, is 5"}`
 - Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `retirement.recovered`
@@ -573,9 +573,9 @@
 ## (gate) — `retirement.code_screen`
 
 - **Authored helper label:** A code 2, 4 or 7 distribution whose code does not fit
-- **Encoded (Bool):** Input — Is either of these true of this distribution: the exception that code 2 shows covers only part of it; or its code is wrong because you were under age 59½ when you received it (code 7) or you are not the beneficiary of a person who died (code 4)?
-- Expr: `{"op":"input","source":"Is either of these true of this distribution: the exception that code 2 shows covers only part of it; or its code is wrong because you were under age 59½ when you received it (code 7) or you are not the beneficiary of a person who died (code 4)?"}`
-- Cite: [i5329] p. 1, Who Must File, "You received a distribution subject to the tax on early distributions from a qualified retirement plan (other than a Roth IRA) and you meet an exception to the tax on early distributions from the list shown later, but box 7 of your Form 1099-R doesn’t indicate an exception or the exception doesn’t apply to the entire distribution." (2025; sha256 aec3d325)
+- **Encoded (Bool):** Input — Is either of these true of this distribution: it has code 2 and the exception that code 2 shows does not apply to all of it (it applies to only part of the distribution, or to none of it); or its code is wrong: code 7 although you were under age 59½ when you received it (other than a distribution from a section 457 plan that is not from a rollover from a qualified retirement plan), or code 4 although you are not the beneficiary of a person who died?
+- Expr: `{"op":"input","source":"Is either of these true of this distribution: it has code 2 and the exception that code 2 shows does not apply to all of it (it applies to only part of the distribution, or to none of it); or its code is wrong: code 7 although you were under age 59½ when you received it (other than a distribution from a section 457 plan that is not from a rollover from a qualified retirement plan), or code 4 although you are not the beneficiary of a person who died?"}`
+- Cite: [i5329] p. 1, Who Must File, "You received a distribution subject to the tax on early distributions from a qualified retirement plan (other than a Roth IRA) and you meet an exception to the tax on early distributions from the list shown later, but box 7 of your Form 1099-R doesn’t indicate an exception or the exception doesn’t apply to the entire distribution."; p. 5, Line 2, exception 13, "Distributions from a section 457 plan, which aren’t from a rollover from a qualified retirement plan." (2025; sha256 aec3d325)
 
 ## (gate) — `retirement.screen_refused`
 
