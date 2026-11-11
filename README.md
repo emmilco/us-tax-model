@@ -284,9 +284,10 @@ all constants of the data); the banded table lookup is proved monotone in its ke
 entries do not fall from band to band, as the Tax Table's do. Lean also holds a second evaluator,
 written independently over the same canonical JSON. It is total by construction: every evaluation spends
 from a step budget, so it always returns, and an exhausted budget comes back as an error, never as a
-number. Both evaluators run over every test case and over generated returns.
+number. Both evaluators run over every test case and over 400 generated whole returns, drawn by the
+generator the property tests use.
 
-**What it earns.** The current report compares 4,470,945 line values across 1,994 cases and finds no
+**What it earns.** The current report compares 6,114,183 line values across 2,168 cases and finds no
 difference. Note the shape of the claim: the atoms are proved, and two separate implementations agree.
 The TypeScript evaluator itself is not formally verified.
 
