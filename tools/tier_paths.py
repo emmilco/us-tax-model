@@ -85,7 +85,7 @@ READERS = {
         "engine/src/year.ts", "lean/Main.lean", "tools/check_all_steps.sh", "tools/check_consumers.py",
         "tools/check_instruction_cites.py", "tools/check_limits.py", "tools/check_operands.py", "tools/check_signs.py",
         "tools/citations.py", "tools/fixtures_year.py", "tools/human_review/reading.py", "tools/jurisdiction.py",
-        "tools/transcription/screen_review.py"]},
+        "tools/transcription/question_review.py", "tools/transcription/screen_review.py"]},
 }
 
 # (file, idiom) -> why the enumeration stays inside named, non-allowlisted directories.

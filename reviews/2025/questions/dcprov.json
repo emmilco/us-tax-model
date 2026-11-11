@@ -1,0 +1,161 @@
+{
+ "form": "dcprov",
+ "reviews": {
+  "dcprov.household": {
+   "subject_sha": "9670788b2841b8c13e276c3c535ee25a1e9488df85254bf9dce80f4468402a5d",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "2f5e027c35dea87ca5d5df59ef17b79094756aa04963b535c1ad61fa23925226",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.023031999999999997,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dcprov.household.9670788b2841.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Column (d), \"You must check either the \"Yes\" or \"No\" box in column (d) to indicate whether or not the care provider listed in column (a) was your household employee during the year\" and \"For example, nannies are generally household employees, while daycare centers are not\"",
+      "p. 3, Column (d), \"You must check either the \"Yes\" or \"No\" box in column (d)\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  },
+  "dcprov.paid": {
+   "subject_sha": "1cdc1468de7f91b6d570df3a4d566ebbc147a51365908d2a9341af87e27cb28f",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "The filer's employer hired a care provider (for example, contracted a nanny agency or a daycare) under its dependent care plan and paid that provider directly for the filer's child.",
+       "source_text": "i2441 p. 3, Columns (a) and (b): \"your employer furnished the care (either at your workplace or by hiring a care provider) ... enter -0- in column (e). But if your employer paid a third party (not hired by your employer) on your behalf to provide the care, you must provide information on the third party\"",
+       "why": "The question includes \"amounts your employer paid to the provider on your behalf\" and gives zero only \"if your employer furnished the care.\" It never says that care from a provider your employer hired counts as furnished by the employer. A filer in this situation could reasonably report the employer's payments, when the lines need -0-.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c43d66006a1587a3bdb0722402291f8fd60c7f9daa31bbe514a494cb5438f0db",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.031087999999999998,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dcprov.paid.1cdc1468de7f.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Column (e), \"Enter the total amount you actually paid in 2025 to the care provider\"",
+      "p. 3, Column (e), \"Enter the total amount you actually paid in 2025 to the care provider. Also, include amounts your employer paid to a third party on your behalf. It doesn't matter when the expenses were incurred. Don't reduce this amount by any reimbursement you received\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  },
+  "dcprov.related": {
+   "subject_sha": "dc28911c7b32ba3b76167d779f90290e1133f9176d4d32e03a8372e3890491bf",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "93ac90e88c93c74d5e334ed7520f5331b585be9f758e88403f472bb4a01c72af",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.02164,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dcprov.related.dc28911c7b32.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p503",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Payments to Relatives or Dependents, \"However, don't count any amounts you pay to\"",
+      "p. 8, Payments to Relatives or Dependents, \"However, don't count any amounts you pay to\" and \"The parent of your qualifying person if your qualifying person is your child and under age 13\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9"
+    }
+   ]
+  },
+  "dcprov.tin_kind": {
+   "subject_sha": "4abab27e59ec2becaf8ef8be751e1cff0b8680b0d6553bfe492fcf4249bc5236",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "ed0bda062f7773acc6cd5ef91468cc8b6e276b070179efd15cb98a597b7b03a8",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.027536,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dcprov.tin_kind.4abab27e59ec.1.response.txt"
+    }
+   ],
+   "type": "Enum(dc_tin_kind)",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Column (c), \"If the care provider is an individual, enter their SSN or individual taxpayer identification number (ITIN). Otherwise, enter the provider's employer identification number (EIN)\"; p. 3, Due Diligence, \"Enter “See Attached Statement” in the columns for which you don't have the information. Then, attach a statement to your return explaining that the provider didn't give you the information you requested\"; p. 3, Columns (a) and (b), \"enter “See W-2” in column (b), leave column (c) blank, check the “No” box in column (d), and enter -0- in column (e)\"; p. 3, U.S. citizens and resident aliens living abroad, \"may not have, and may not be required to get, a U.S. taxpayer identification number\"",
+      "p. 3, Due Diligence, \"Enter “See Attached Statement” in the columns for which you don't have the information\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  }
+ }
+}

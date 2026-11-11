@@ -1,0 +1,173 @@
+{
+ "form": "ny_it2",
+ "reviews": {
+  "ny_it2.city_withheld": {
+   "subject_sha": "6096fa4d01c52978bb30d5e438dff28e4843027e82e62c9b25475f5aada6dc81",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose Form W-2 shows more than four box 12 or box 14 items fills a second W-2 Record for the same W-2, and when asked this question for that record truthfully enters the NYC withholding from the W-2 again, so it is counted twice.",
+       "source_text": "ny_it2 p. 2: \"If your federal Form W-2 shows more than four items in box 12 or box 14, complete an additional W-2 Record. Fill in boxes a, b, and c with the same information as on the first W-2 Record for the same federal Form W-2. Then enter the additional items in box 12 or box 14.\" Question: \"For this Form W-2 (Form IT-2, W-2 record) — Form W-2 box 19, local income tax withheld for New York City (0 if none)\"",
+       "why": "The question ties the answer to the federal W-2 (\"For this Form W-2\") and not to the IT-2 record, and neither it nor its help says a continuation record must show 0. A truthful filer would repeat the box 19 NYC amount on the continuation record, and that amount then flows twice into the NYC withholding total on IT-201, line 73.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "4077b703680b655230e84472c9fd3cbf55100f13989fdb1b5957785c639e2e2d",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.049524,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it2.city_withheld.6096fa4d01c5.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it2",
+     "revision": "Form IT-2 (2025), Summary of W-2 Statements; final 2025 edition (footer 'IT-2 (2025) (back)'); PDF modified 2025-09-26",
+     "text_sha256": "4884d0d4403f8d1f3bd71a6834951e51fca1ca288ff3ecbab3c6866a286c10b8",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, W-2 Record 1, \"Box 19 Local income tax withheld\"",
+      "p. 2, Entering whole dollar amounts, \"drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "a6e61a9d7a0cd5464a36232dae9d0f4d5ca5380323f1117a2077f7e621049739"
+    },
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Line 55: Yonkers resident income tax surcharge, \"If you were a resident of Yonkers, did you enter an amount that is more than 0 on line 46?\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it2.state_withheld": {
+   "subject_sha": "369216f53ab2ed27498b4e7a67df167907bcfd1250d503ab1a41face3ade8f48",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose federal Form W-2 shows more than four box 12 or box 14 items needs a second W-2 Record for the same W-2, and if asked this question again for that record would truthfully re-enter the same box 17 New York withholding, so it is counted twice.",
+       "source_text": "ny_it2 p. 2: \"If your federal Form W-2 shows more than four items in box 12 or box 14, complete an additional W-2 Record. Fill in boxes a, b, and c with the same information as on the first W-2 Record for the same federal Form W-2. Then enter the additional items in box 12 or box 14.\"",
+       "why": "The question asks \"New York State income tax withheld on this Form W-2\" for each W-2 Record. A continuation record should carry only boxes a, b, c and the extra box 12/14 items, not box 17a again. Line 17a amounts are totaled to IT-201 line 72, so repeating the withholding double-counts it.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "For a record marked Corrected (W-2c), the federal Form W-2c shows both a 'previously reported' and a 'correct information' amount for state income tax withheld, and the question does not say which one to enter.",
+       "source_text": "ny_it2 p. 2: \"Corrected (W-2c) box – Mark an X in this box if the W-2 Record is for a federal Form W-2c ... Enter the corrected information from the W-2c\"",
+       "why": "The question's \"box 17 ... where box 15 shows NY\" fits either column on a W-2c. The text requires the corrected figure, so a filer who enters the previously reported amount gives a different value.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "511f861751827a0bcb6d6afed0c5f88ec554f554f1a256046b28d128b6192687",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.048412,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it2.state_withheld.369216f53ab2.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it2",
+     "revision": "Form IT-2 (2025), Summary of W-2 Statements; final 2025 edition (footer 'IT-2 (2025) (back)'); PDF modified 2025-09-26",
+     "text_sha256": "4884d0d4403f8d1f3bd71a6834951e51fca1ca288ff3ecbab3c6866a286c10b8",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, W-2 Record 1, \"Box 17a NYS income tax withheld\"",
+      "p. 2, Entering whole dollar amounts, \"drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "a6e61a9d7a0cd5464a36232dae9d0f4d5ca5380323f1117a2077f7e621049739"
+    }
+   ]
+  },
+  "ny_it2.yonkers_withheld": {
+   "subject_sha": "e584120af35667380590c8c5594dfcb9f2e2fd1b1b5a7235a7b61ff2dec5eefc",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "a2d3a9e2da949bb857199ca29c08252de072f15fe9d9a966a3434c53929892f2",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.039004,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it2.yonkers_withheld.e584120af356.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it2",
+     "revision": "Form IT-2 (2025), Summary of W-2 Statements; final 2025 edition (footer 'IT-2 (2025) (back)'); PDF modified 2025-09-26",
+     "text_sha256": "4884d0d4403f8d1f3bd71a6834951e51fca1ca288ff3ecbab3c6866a286c10b8",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, W-2 Record 1, \"Box 19 Local income tax withheld\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "a6e61a9d7a0cd5464a36232dae9d0f4d5ca5380323f1117a2077f7e621049739"
+    },
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      21
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 21, Lines 72, 73, and 74, \"Enter on the appropriate line your total New York State, New York City, and Yonkers tax withheld from any of the following:\""
+     ],
+     "cols_pages": [
+      21
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  }
+ }
+}

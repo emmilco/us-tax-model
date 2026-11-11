@@ -1,0 +1,568 @@
+{
+ "form": "sales",
+ "reviews": {
+  "sales.aggregate_eligible": {
+   "subject_sha": "9ac3a231b7882e3950383c4f9ec431a005d24c85b9063cde72a4fd2481e28258",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "The broker issued a corrected Form 1099-B that still shows basis reported to the IRS, no amounts in box 1f or 1g, and no Ordinary or QOF box checked, and the filer needs no adjustments. A filer could read 'no corrections' as 'no corrected 1099-B' and answer no, which forces a fail the text does not support.",
+       "source_text": "i1040sd p. 10: \"You don’t need to make any adjustments to the basis or type of gain or loss reported on Form 1099-B or Form 1099-DA (or substitute statement), or to your gain or loss.\"",
+       "why": "The text's condition is that the filer needs no adjustments to the basis, the type of gain or loss, or the gain or loss itself. 'No corrections' can instead be read as 'the broker sent no corrected form', and the two readings give different answers to this question.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "42cea82f1316165bc12e98dfa48f1e04bdb508ca1ed95bc9f548e7ec3d9d9250",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.046892,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sales.aggregate_eligible.9ac3a231b788.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sd",
+     "revision": "2025; printed date 2025-12-11",
+     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, lines 1a and 8a"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+    }
+   ]
+  },
+  "sales.box": {
+   "subject_sha": "fa144fa054619c734c9ae8720e39e599cac121e5f15b6cae56471a27bd3989b0",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer sells cryptocurrency received as a gift, has documentation of the donor's basis but none of the donor's holding period, and held it 1 year or less after receiving it.",
+       "source_text": "p550 p. 82, Holding period of digital assets received as a gift: \"if you do not have documentation substantiating that person's holding period, then your holding period begins the day after you receive the gift.\"",
+       "why": "The question says a gift with donor's-basis treatment has a holding period that begins on the day the donor's did. That filer would add on the donor's time and could pick a long-term digital box. The lines need a short-term box (G, H or I), because the digital-asset rule turns on documentation of the donor's holding period, not on basis.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer with a digital asset sale must choose among G–L but is not told which of those boxes are short-term or long-term, or which depend on whether basis was reported.",
+       "source_text": "i8949 p. 3: \"digital asset transactions should be reported using box G, H, or I for short-term transactions. Box J, K, or L should be used to report long-term transactions.\"; Box A or Box G / Box B or Box H / Box C or Box I pairings",
+       "why": "The label says only \"G–L digital assets,\" and the help maps only A–F. A filer could reasonably pick any of G–L, for example G for a long-term sale with basis reported. Each box feeds different Schedule D lines (1a/1b/2/3 versus 8a/8b/9/10).",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer sells property inherited from a 2010 decedent whose executor elected to file Form 8939.",
+       "source_text": "p550 p. 82: \"If you acquired the property from someone who died in 2010 and the executor made the election to file Form 8939, see Revenue Procedure 2011-41 to determine your holding period.\"",
+       "why": "The help says \"inherited property is always long-term,\" but the question carves out this case. A filer reading the help could report long-term even when Rev. Proc. 2011-41 gives a short-term holding period.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "2d09b6dc18bd3919bcb8aa0c77349331d4b7243c6c6bfc37d3df698a16bb02a3",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.164152,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sales.box.fa144fa05461.1.response.txt"
+    }
+   ],
+   "type": "Enum(sales_box)",
+   "readers": 35,
+   "brief": true,
+   "used": [
+    {
+     "doc": "i8949",
+     "revision": "2025; printed date 2026-01-20",
+     "text_sha256": "d3ddc2b91cf89087ca348ebb00dbd1c80bbc025fa4df1176753d25013f581a67",
+     "pages": [
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 2–5, holding period and checkbox classifications; p. 2, \"To figure the holding period, begin counting on the day after you received the property and include the day you disposed of it.\" and \"Generally, if you disposed of property that you acquired by inheritance, report the disposition as a long-term gain (or loss) regardless of how long you held the property.\"; p. 6, \"However, you must still report the short-term gain (or loss) on the sale on Part I and the long-term gain (or loss) on Part II.\"; , Property received as a gift, \"If you receive a gift of property and your basis is determined by the donor's adjusted basis, your holding period is considered to have started on the same day the donor's holding period started.\", Stock dividends, \"The holding period for stock you received as a taxable stock dividend begins on the date of distribution. The holding period for new stock you received as a nontaxable stock dividend begins on the same day as the holding period of the old stock. This rule also applies to stock acquired in a spin-off\", Nontaxable stock rights, \"Your holding period for nontaxable stock rights includes the holding period of the underlying stock. The holding period for stock acquired through the exercise of stock rights begins on the date the right was exercised.\" and Option exercised, \"Your holding period for property you acquire when you exercise an option begins the day after you exercise the option.\"; , \"Your holding period for the new stock or securities includes the holding period of the stock or securities sold.\" and \"If, on the date of the short sale, you held substantially identical property for more than 1 year, any loss you realize on the short sale is a long-term capital loss\"; i8949 p. 2, \"A nonbusiness bad debt must be treated as a short-term capital loss.\"; i8949 p. 5, Net asset value (NAV) method for money market funds, \"No long-term capital gain (or loss) can be entered under the NAV method.\"; , Inherited property, \"If you acquired the property from someone who died in 2010 and the executor made the election to file Form 8939, see Revenue Procedure 2011-41 to determine your holding period.\"; , Securities traded on an established market, \"your holding period begins the day after the trade date you bought the securities, and ends on the trade date you sold them\" and \"Do not confuse the trade date with the\"; , U.S. Treasury notes and bonds, \"starts the day after the Secretary of the Treasury, through news releases, gives notification of acceptance to successful bidders\" and \"starts the day after the subscription is submitted\", Automatic investment service, \"full shares are considered bought first and any fractional shares are considered bought last. Your holding period starts on the day after the bank's purchase date.\" and \"your holding period for that share is a split holding period\", Nontaxable trades, \"your holding period for the new property begins on the day following the date you acquired the old property\", Property received as a gift, \"If your basis is determined by the fair market value of the property, your holding period starts on the day after the date of the gift.\", Real property bought, \"begin counting on the day after you received title to it or on the day after you took possession of it and assumed the burdens and privileges of ownership, whichever happened first\" and Real property repossessed, \"Your holding period does not include the time between the original sale and the repossession.\"; i8949 p. 6, Column (b)—Date Acquired, \"For property you previously elected to treat as having been sold and reacquired on January 1, 2001 (or January 2, 2001, for readily tradable stock), enter the date of the deemed sale and reacquisition.\"; , Short Sales, \"your gain when closing a short sale is short term if you (a) held substantially identical property for 1 year or less on the date of the short sale, or (b) acquired property substantially identical to the property sold short after the short sale but on or before the date you close the short sale\" and \"Report any short sale on Form 8949 in the year it closes.\"; , Writer of option, \"If you are not in the business of writing options and an option you write on stocks, securities, commodities, or commodity futures is not exercised (or repurchased), the amount you receive is a short-term capital gain.\" and Option not exercised, \"you are considered to have sold or traded the option on the date it expired.\"; , \"Losses from the sale, exchange, or termination of a securities futures contract to sell are generally treated in the same manner as losses from the closing of a short sale\"; , \"Any capital gain or loss on a sale, exchange, or termination of a contract to sell property will be considered short term, regardless of how long you hold the contract.\"; , Demutualization of Life Insurance Companies, \"Your holding period for the new stock includes the period you held an equity interest in the mutual company.\""
+     ],
+     "cols_pages": [
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "cols_sha256": "cabdc81a0677c0e4de4a89f9a71d328395c4cc839206ebadb56aeb54bf954b85"
+    },
+    {
+     "doc": "p550",
+     "revision": "2025 returns; printed date 2026-03-05",
+     "text_sha256": "e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26",
+     "pages": [
+      81,
+      82,
+      86,
+      87,
+      88
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      81,
+      82,
+      86,
+      87,
+      88
+     ],
+     "cols_sha256": "7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51"
+    },
+    {
+     "doc": "i1040sd",
+     "revision": "2025; printed date 2025-12-11",
+     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+     "pages": [
+      6
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+    }
+   ]
+  },
+  "sales.code": {
+   "subject_sha": "f76dba9d2f28adb73edbaf23a236b8662e90adabc8aaf7b79abc82fabcdcdc73",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "d4443f509cef12cccedf7c3bf50f5d72e1926485f448b74a4593bdcab8b22b9e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.12499199999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sales.code.f76dba9d2f28.1.response.txt"
+    }
+   ],
+   "type": "Enum(sales_code)",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8949",
+     "revision": "2025; printed date 2026-01-20",
+     "text_sha256": "d3ddc2b91cf89087ca348ebb00dbd1c80bbc025fa4df1176753d25013f581a67",
+     "pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 7–11, columns (e) through (h), codes B and W",
+      "pp. 7–11, columns (e) through (h), codes B and W; p. 6, Column (d)—Proceeds (Sales Price), \"If there are any selling expenses or option premiums that aren't reflected on the form or statement you received (by an adjustment to either the proceeds or basis shown)\"; p. 11, Worksheet for Accrued Market Discount Adjustment in Column (g), \"reporting the sale or retirement of a market discount bond, enter code “D” for the transaction in column (f)\"; p. 12, Worksheet for Contingent Payment Debt Instrument Adjustment in Column (g), \"reporting the sale of a taxable contingent payment debt instrument subject to the noncontingent bond method, enter code “O”\"; p. 10, \"with the Ordinary box in box 2 on Form 1099-B or box 6 on Form 1099-DA checked and the security is a taxable contingent payment debt instrument\"; , Market Discount Bonds, \"a capital gain from the disposition of a market discount bond is treated as interest income to the extent of accrued market discount\""
+     ],
+     "cols_pages": [
+      6,
+      7,
+      9,
+      10
+     ],
+     "cols_sha256": "cabdc81a0677c0e4de4a89f9a71d328395c4cc839206ebadb56aeb54bf954b85"
+    },
+    {
+     "doc": "i1040sd",
+     "revision": "2025; printed date 2025-12-11",
+     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+     "pages": [
+      4,
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, lines 1a and 8a"
+     ],
+     "cols_pages": [
+      4
+     ],
+     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+    }
+   ]
+  },
+  "sales.correct_basis": {
+   "subject_sha": "75d6ec717056ca18daff0e24d4e7957a654200eb4a14746a4b1e4aec61eddc93",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer sells depreciable property held for investment (not used in a trade or business) at a loss and reports it on Form 8949, or sells property on which they made capital improvements.",
+       "source_text": "i8949 p. 7, Adjustments to basis: \"Increase the basis of your property by capital improvements. Decrease it by depreciation, amortization, and depletion.\" (see also i8949 p. 5, Dispositions of depreciable property not used in a trade or business)",
+       "why": "The question's list of adjustments covers wash sales, short-sale payments, options, nondividend distributions, splits, OID, market discount and bond premium. It never mentions capital improvements, depreciation, amortization or depletion. A filer working from that list would leave these out, so the basis entered in column (e) and the B-code difference would be wrong.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer bought the property on a time-payment plan that charges little or no interest.",
+       "source_text": "p550 p. 59, Unstated interest: \"the basis of your property is your stated purchase price, minus the amount considered to be unstated interest.\"",
+       "why": "The question says basis is 'usually its cost, including costs of purchase such as commissions' and never mentions removing unstated interest. A filer in this situation would enter the full stated price, so the basis would be overstated.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "6d0033f80d9fc1b77660666322341d304858f83393c2c5fa3a9b9882ed7663ac",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.139516,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sales.correct_basis.75d6ec717056.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8949",
+     "revision": "2025; printed date 2026-01-20",
+     "text_sha256": "d3ddc2b91cf89087ca348ebb00dbd1c80bbc025fa4df1176753d25013f581a67",
+     "pages": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 7–11, columns (e) through (h), codes B and W",
+      "pp. 7–11, columns (e) through (h), codes B and W; p. 6, Schedule A (Form 8971)—Consistent basis reporting, \"In this case, first use an amount that is equal to or less than the final estate tax value listed in Part II, column (h), of the Schedule A (Form 8971). This amount is your initial basis in the property.\"; , \"If your loss was disallowed because of the wash sale rules, add the disallowed loss to the cost of the new stock or securities (except in (4) above).\" and \"Instead, you must increase the basis of the stock used to close the short sale by that amount.\"; i8949 p. 7, \"Increase your basis by any amount you included in income upon grant or exercise of the option.\"; i8949 p. 5, Nondividend distributions, \"Reduce your cost (or other basis) in a share by the distributions allocable to such share.\"; i8949 p. 6, Column (e)—Cost or Other Basis, \"The basis of property you buy is usually its cost, including the purchase price and any costs of purchase, such as commissions.\", \"The basis of property acquired by gift is generally the basis of the property in the hands of the donor. The basis of inherited property is generally the fair market value at the date of death.\" and \"If you elected to recognize gain on property held on January 1, 2001, your basis in the property is its closing market price or fair market value, whichever applies, on the date of the deemed sale and reacquisition\"; , Fair market value less than donor's adjusted basis, \"your basis for gain on its sale or other disposition is the same as the donor's adjusted basis plus or minus any required adjustments to basis during the period you hold the property. Your basis for loss is its fair market value at the time of the gift\" and \"You have neither gain nor loss.\"; , Gift received after 1976, \"your basis is the donor's adjusted basis increased by the part of the gift tax paid that was for the net increase in value of the gift\" and Part sale, part gift, \"your basis is the larger of the amount you paid for the property or the transferor's adjusted basis in the property at the time of the transfer\" and \"For figuring loss, your basis is limited to the property's fair market value at the time of the transfer.\"; i8949 p. 7, Adjustments to basis, \"Also, adjust your basis for any stock splits.\", \"Increase the cost or other basis of a taxable OID debt instrument by the amount of OID that you have included in gross income for that instrument.\", \"Increase the cost or other basis of a tax-exempt OID debt instrument by the amount of tax-exempt OID that accrued on the debt instrument while held by you.\", \"If you elect to currently include in income the market discount on a bond, increase the basis of the bond by the market discount that has been included in income for that bond.\", \"If you elect to amortize bond premium on a taxable bond, reduce the basis of the bond by any bond premium amortization allowed as either an offset to interest income or as a deduction for that bond. Reduce the basis of a tax-exempt bond by any bond premium amortization for that bond.\", \"you must allocate your basis in the property between the part sold and the part contributed based on the fair market value of each\" and Average basis, \"You can use the average basis method to determine the basis of shares of stock if the shares are identical to each other\"; , Property Received as Inheritance, \"The FMV on the alternate valuation date\", \"The value under the special-use valuation method for real property used in farming or other closely held business, if elected by the personal representative.\", \"to the extent of the value excluded from the decedent's taxable estate as a qualified conservation easement\", \"If no Form 706 was filed, or the executor was not required to provide you Schedule A (Form 8971), use the appraised value on the date of death for state inheritance or transmission taxes.\" and Appreciated property you gave the decedent, \"Your basis in certain appreciated property that you inherited is the decedent's adjusted basis in the property immediately before death rather than its fair market value.\" and \"gave the decedent as a gift during the 1-year period ending on the date of death\"; , Property Received in Taxable Trades, \"the basis of the new property is its fair market value at the time of the trade\", Property Received in Nontaxable Trades, \"is generally the same as the adjusted basis of the property you gave up. Increase this amount by any cash you paid, additional costs you had, and any gain recognized.\", Property Received From Your Spouse, \"your basis is the same as your spouse's or former spouse's adjusted basis just before the transfer\", Restricted property, \"your basis in the property is generally its fair market value when it becomes substantially vested\" and Bargain purchases, \"Your basis in the property is the price you pay plus the amount you include in income.\"; , Property Received for Services, \"The amount you include in income then becomes your basis in the property.\"; , Payments in lieu of dividends, \"If your payment is made for a liquidating distribution or nontaxable stock distribution\", \"(more than 1 year in the case of an extraordinary dividend, as defined later)\", \"To determine how long a short sale is kept open, do not include any period during which you hold, have an option to buy, or are under a contractual obligation to buy substantially identical stock or securities.\" and \"the deduction for amounts you pay in lieu of dividends will be disallowed only to the extent the payments are more than the amount you receive as ordinary income from the lender of the stock for the use of collateral with the short sale\" and \"you have a capital expense. You must add the payment to the cost of the stock sold short.\""
+     ],
+     "cols_pages": [
+      5,
+      6,
+      7,
+      9,
+      10
+     ],
+     "cols_sha256": "cabdc81a0677c0e4de4a89f9a71d328395c4cc839206ebadb56aeb54bf954b85"
+    },
+    {
+     "doc": "p550",
+     "revision": "2025 returns; printed date 2026-03-05",
+     "text_sha256": "e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26",
+     "pages": [
+      59,
+      60,
+      61,
+      86
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      59,
+      60,
+      61,
+      86
+     ],
+     "cols_sha256": "7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51"
+    }
+   ]
+  },
+  "sales.proceeds": {
+   "subject_sha": "ad37f14df200e062c709f9ea102ce53ab6daf359548bf97a48331d7de7f3c949",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer sold real estate, such as a main home, and got a Form 1099-S from the closing agent showing gross proceeds; the closing costs are not reflected on the form.",
+       "source_text": "i8949 p. 6: \"If you received a Form 1099-B, Form 1099-DA, or Form 1099-S (or substitute statement) for a transaction, enter in column (d) the proceeds shown on the form or statement you received.\" p. 8 example: \"Enter $320,000 in column (d)\" with the $20,000 of selling expenses entered in column (g) under code E.",
+       "why": "The question only says \"per broker report\" and \"if no report\". A filer whose Form 1099-S came from a closing agent can reasonably decide there was no broker report and enter net proceeds (gross minus selling expenses), for example $300,000 instead of the $320,000 the lines need. If that filer also uses code E for the same expenses, they are counted twice.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "454986c67e55cc028fa57f66d657fdd69a768d2f0cafa4e170beedf61ae5d6e9",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.133904,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sales.proceeds.ad37f14df200.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 9,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8949",
+     "revision": "2025; printed date 2026-01-20",
+     "text_sha256": "d3ddc2b91cf89087ca348ebb00dbd1c80bbc025fa4df1176753d25013f581a67",
+     "pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, column (d); p. 6, \"If the proceeds you received were more than shown on Form 1099-B, Form 1099-DA, or Form 1099-S (or substitute statement), enter the correct proceeds in column (d).\"; p. 6, Column (d)—Proceeds (Sales Price), \"The net proceeds equal the gross proceeds minus any selling expenses (such as broker's fees, commissions, and state and local transfer taxes).\" and \"If you sold a call option and it was exercised, you adjust the sales price of the property sold under the option for any option premiums\"; , Gain or Loss From Options, \"If a call option you sold after 2013 was exercised, the option premium you received will be reflected in the proceeds shown in box 1d of Form 1099-B\"",
+      "pp. 7–11, columns (e) through (h), codes B and W"
+     ],
+     "cols_pages": [
+      6,
+      7,
+      9,
+      10
+     ],
+     "cols_sha256": "cabdc81a0677c0e4de4a89f9a71d328395c4cc839206ebadb56aeb54bf954b85"
+    },
+    {
+     "doc": "f1040sd",
+     "revision": "2025; created 2025-10-06",
+     "text_sha256": "221151530f7cd599e8ad00bc3e1ba62d6b7ff34e402c336f4ae58d698c9f5187",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule D (2025), Parts I–III",
+      "p. 1, Part I, line 1a, column (d), \"Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\", \"(d) Proceeds (sales price)\"",
+      "p. 1, Part I, line 1b, column (d), \"Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked\", \"(d) Proceeds (sales price)\"",
+      "p. 1, Part I, line 2, column (d), \"Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked\", \"(d) Proceeds (sales price)\"",
+      "p. 1, Part I, line 3, column (d), \"Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked\", \"(d) Proceeds (sales price)\"",
+      "p. 1, Part II, line 10, column (d), \"Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked\", \"(d) Proceeds (sales price)\"",
+      "p. 1, Part II, line 8a, column (d), \"Totals for all long-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\", \"(d) Proceeds (sales price)\"",
+      "p. 1, Part II, line 8b, column (d), \"Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked\", \"(d) Proceeds (sales price)\"",
+      "p. 1, Part II, line 9, column (d), \"Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked\", \"(d) Proceeds (sales price)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "eb461181b39879c79d1c0b7761ca0cd9ade46fdb1531cdee3281053c348f6c41"
+    },
+    {
+     "doc": "i1040sd",
+     "revision": "2025; printed date 2025-12-11",
+     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+     "pages": [
+      6
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+    }
+   ]
+  },
+  "sales.reported_basis": {
+   "subject_sha": "dda8393f1b2db159224d5712c95561c6a7af509ceb64c141919cffeadd838064",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer sells employee stock-option or RSU shares, and the broker's year-end package shows two figures: the box 1e cost basis that was reported to the IRS, and a separate supplemental 'adjusted cost basis' that includes the compensation income.",
+       "source_text": "i8949 p. 7: \"For covered securities, enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e)\"; p. 8: \"the basis shown in box 1e on Form 1099-B or box 1g on Form 1099-DA is incorrect ... enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect\"; p. 11 worksheet line 1: \"Enter the cost or other basis shown on Form 1099-B or Form 1099-DA\"",
+       "why": "The question asks only for the 'Basis shown on broker report' and does not name box 1e of Form 1099-B or box 1g of Form 1099-DA. A filer could reasonably enter the broker's supplemental adjusted basis instead of the box 1e figure. That would put a non-reported basis in column (e) and shrink or erase the code B difference the lines need.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f39acb7a691723b4c00a37dfb39adefbc87a8b98d7d160cad8a8e30445487fee",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.074004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sales.reported_basis.dda8393f1b2d.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8949",
+     "revision": "2025; printed date 2026-01-20",
+     "text_sha256": "d3ddc2b91cf89087ca348ebb00dbd1c80bbc025fa4df1176753d25013f581a67",
+     "pages": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 7–11, columns (e) through (h), codes B and W"
+     ],
+     "cols_pages": [
+      7,
+      9,
+      10
+     ],
+     "cols_sha256": "cabdc81a0677c0e4de4a89f9a71d328395c4cc839206ebadb56aeb54bf954b85"
+    }
+   ]
+  },
+  "sales.route": {
+   "subject_sha": "7664e05bf808a65204aea51b5c254f791990f6a5704860a589c5cd7d49c92ce4",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "b885e31fbb26c0a078a580a17133403ad0fb8e8a49cb96cc548a62f198eb356c",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.033828,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sales.route.7664e05bf808.1.response.txt"
+    }
+   ],
+   "type": "Enum(sales_route)",
+   "readers": 33,
+   "brief": true,
+   "used": [
+    {
+     "doc": "i1040sd",
+     "revision": "2025; printed date 2025-12-11",
+     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, lines 1a and 8a"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+    }
+   ]
+  },
+  "sales.wash_loss": {
+   "subject_sha": "ef58cf87ca093e11112579e6e48107794e3bc3ff6999674af43cc9c48b57aa08",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer's sale was at a loss only because of unreported selling expenses or option premiums (code E, a negative column (g) adjustment). The question caps the entry at column (e) less column (d) after code B, so the filer enters less than the disallowed loss, or 0.",
+       "source_text": "i8949 p. 9, code E: 'In column (g), enter as a negative number (in parentheses) selling expenses ... and option premiums that you paid'; i8949 p. 8: 'If you entered more than one code in column (f) on the same row, enter the net adjustment in column (g).'",
+       "why": "The real loss on the sale includes the code E adjustment. The cap 'column (e) less column (d), after any code B basis correction' leaves it out, so the filer understates the nondeductible loss that column (g) needs.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer sold bonus-award stock at a loss and received another bonus award of substantially identical stock within 30 days. This is neither a purchase, a fully taxable trade, a contract or option, nor an IRA acquisition, so the filer would answer 0.",
+       "source_text": "p550 p. 87, Example 2: 'If you receive another bonus award of substantially identical stock within 30 days of the sale, you cannot deduct your loss on the sale.'",
+       "why": "The question's closed list of triggers ('buy', 'acquire them in a fully taxable trade', 'acquire a contract or option', 'for your IRA or Roth IRA') leaves out an acquisition by compensation award, which the publication treats as a wash sale.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer had a loss on the sale, exchange or termination of a securities futures contract to sell and, within 30 days, sold or shorted substantially identical stock. The question gives the short-sale test only for 'a loss on a short sale', so the filer would answer 0.",
+       "source_text": "p550 p. 88: 'This treatment also applies to losses from the sale, exchange, or termination of a securities futures contract to sell.'; p550 p. 87: 'Losses from ... a securities futures contract to sell are generally treated in the same manner as losses from the closing of a short sale'",
+       "why": "The question never says that securities futures contracts to sell follow the short-sale wash-sale rule, so this disallowed loss would be missed.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "682379df4a7971b0aee3ac4b4ba085b6c76aed529115d72b1cb1cb3e633d7d2c",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.135444,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sales.wash_loss.ef58cf87ca09.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8949",
+     "revision": "2025; printed date 2026-01-20",
+     "text_sha256": "d3ddc2b91cf89087ca348ebb00dbd1c80bbc025fa4df1176753d25013f581a67",
+     "pages": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, code W, \"You have a nondeductible loss from a wash sale\" and \"enter the amount of the nondeductible loss as a positive number in column (g)\"",
+      "p. 10, code W, \"You have a nondeductible loss from a wash sale\" and \"enter the amount of the nondeductible loss as a positive number in column (g)\"; , Wash Sales, \"A wash sale occurs when you sell or trade stock or securities at a loss\"",
+      "p. 10, code W, \"enter the amount of the nondeductible loss as a positive number in column (g)\"",
+      "p. 10, code W; a lower corrected loss requires an explanation statement; , Wash Sales, \"A wash sale occurs when you sell or otherwise dispose of stock or securities (including a contract or option to acquire or sell stock or securities) at a loss and, within 30 days before or after the sale or disposition, you\" and \"These wash sale rules don't apply to a redemption of shares in a floating-NAV (net asset value) money market fund.\"; , Wash Sales, \"unless the loss was incurred in the ordinary course of your business as a dealer in stock or securities\", \"Acquire substantially identical stock for your individual retirement arrangement (IRA) or Roth IRA.\" and \"If you sell stock and your spouse or a corporation you control buys substantially identical stock, you also have a wash sale.\"; , Options and futures contracts, \"They do not apply to losses from sales or trades of commodity futures contracts and foreign currencies.\" and More or less stock bought than sold, \"You do this by matching the shares bought with an equal number of the shares sold.\"; , Short sales, \"The wash sale rules apply to a loss realized on a short sale if you sell, or enter into another short sale of, substantially identical stock or securities within a period beginning 30 days before the date the short sale is complete and ending 30 days after that date.\", \"a short sale is considered complete on the date the short sale is entered into if\" and \"Otherwise, a short sale is not considered complete until the property is delivered to close the sale.\"; , Residual interests in a real estate mortgage investment conduit (REMIC), \"during the period beginning 6 months before the sale of the interest and ending 6 months after that sale, you acquire any residual interest in any REMIC or any interest in a taxable mortgage pool that is comparable to a residual interest\"; i8949 p. 10, \"If no part of the loss is a nondeductible loss from a wash sale transaction, enter -0- in column (g).\"",
+      "pp. 7–11, columns (e) through (h), codes B and W"
+     ],
+     "cols_pages": [
+      7,
+      9,
+      10
+     ],
+     "cols_sha256": "cabdc81a0677c0e4de4a89f9a71d328395c4cc839206ebadb56aeb54bf954b85"
+    },
+    {
+     "doc": "i1040sd",
+     "revision": "2025; printed date 2025-12-11",
+     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+     "pages": [
+      5
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+    },
+    {
+     "doc": "p550",
+     "revision": "2025 returns; printed date 2026-03-05",
+     "text_sha256": "e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26",
+     "pages": [
+      86,
+      87,
+      88
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      86,
+      87,
+      88
+     ],
+     "cols_sha256": "7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51"
+    }
+   ]
+  }
+ }
+}

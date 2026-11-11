@@ -6,7 +6,7 @@ A screen is a yes/no input that one or more lines name as a refusal gate: answer
 lines refuse with a citation; answered no, they are computed (usually with the source the screen
 covers pinned to zero). A screen worded narrower than those lines lets an unsupported case through
 as a zero; one worded wider refuses cases the tool computes. The review gives the model the
-screen's question, each gated line with its encoded English (from rendered/) and its refusal text,
+screen's question and the help the interview shows with it, each gated line with its encoded English (from rendered/) and its refusal text,
 and the archived pages those lines cite, and asks for every case the wording misses or sweeps in.
 
 A choose-guard gate (gates.py: an input marked `gated_by` and its gate line) is reviewed the same way, keyed
@@ -115,7 +115,11 @@ def gate_note(gate):
             f"Gate condition: {gate}\n")
 
 
-def build_prompt(screen, sline, gated, excerpt, gate=""):
+def help_note(help_text):
+    return f"Help shown with it: {indent_rest(help_text, '  ')}\n" if help_text else ""
+
+
+def build_prompt(screen, sline, gated, excerpt, gate="", help_text=""):
     items = []
     for doc, l, r in gated:
         items.append(f"""- Line `{l['id']}` (document {doc}, printed {l['printed']}): {indent_rest(l['label'], "    ")}
@@ -134,7 +138,7 @@ situation the tool does compute correctly.
 # The screening question
 
 Input `{screen}`: {sline['expr']['source']}
-{gate_note(gate)}
+{help_note(help_text)}{gate_note(gate)}
 # Lines that refuse when the answer is yes
 
 {chr(10).join(items)}
@@ -239,20 +243,24 @@ def gate_prompt_for(unit, lines, mani):
 
 
 def prompt_for(screen, gated, lines, mani, with_gate=True):
-    """The review prompt of one screen and the pages it gives. A gated screen's prompt shows its gate condition;
-    `with_gate=False` is the prompt without it, which is the screen's review subject (screen_subject)."""
+    """The review prompt of one screen and the pages it gives. The prompt shows the help the interview gives with
+    the question (gates.wording) and, for a gated screen, its gate condition; `with_gate=False` is the prompt without
+    either, which is the screen's review subject (screen_subject)."""
     if screen.startswith("gate:"):
         return gate_prompt_for(gated, lines, mani)
     sdoc, sline = lines[screen]
     pseudo = {"id": screen, "lines": [sline] + [l for _, l, _ in gated] + [{"cite": r["cite"], "expr": {}} for _, _, r in gated]}
     excerpt, used = excerpt_for(pseudo, mani)
-    return build_prompt(screen, sline, gated, excerpt, screen_gate(screen, lines) if with_gate else ""), used
+    return build_prompt(screen, sline, gated, excerpt, screen_gate(screen, lines) if with_gate else "",
+                        gates.wording(sline)["help"] if with_gate else ""), used
 
 
 def screen_subject(screen, gated, lines, mani):
-    """The hash a screen's review is current against: the prompt without the gate condition, so gating a screen's
-    input changes it only through the wording or gated lines it already depended on. The gate condition is the subject of
-    the gate's own review (gate:<condition>)."""
+    """The hash a screen's review is current against: the prompt without the gate condition and without the help, so
+    gating a screen's input changes it only through the wording or gated lines it already depended on. The gate
+    condition is the subject of the gate's own review (gate:<condition>). The help is in the subject of the question
+    review (question_review.py), which judges every question with its help; here it is reviewer context, so a change to
+    the help alone does not make a screen due and reaches its review at the screen's next sample."""
     prompt, _ = prompt_for(screen, gated, lines, mani, with_gate=False)
     return hashlib.sha256(prompt.encode()).hexdigest()
 

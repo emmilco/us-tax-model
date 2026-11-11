@@ -1,0 +1,2800 @@
+{
+ "form": "dependent",
+ "reviews": {
+  "dependent.absence_no_return": {
+   "subject_sha": "3a9c2b50c9e5a685b00db5eadf2066afee1fe4b935152cacb6a216bf115b3c28",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer counted a stretch when the person lived elsewhere for an ordinary reason, not a special circumstance, such as a child staying with a grandparent for months by choice, while the filer kept up the home and expected the child back; the filer truthfully answers no, but that time does not count.",
+       "source_text": "p501 p. 9: \"considered to live together even if one or both of you are temporarily absent from your home due to special circumstances such as illness, education, business, vacation, military service, or detention in a juvenile facility\"; i1040gi p. 14: \"Temporary absences by you or the other person for special circumstances\"",
+       "why": "The question names only the expected-return and keep-up-the-home conditions. It leaves out that the absence must be temporary and due to a special circumstance, so a counted absence failing only those conditions gets a no where the line needs a yes.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer counted a short absence from which return was not expected, but the person lived with the filer more than half the year even without that time; the truthful yes makes hoh_test2 false and wrongly removes a person who meets Test 2.",
+       "source_text": "Question: \"did you count as time lived with you an absence by you or the person from which it was not reasonable to assume the absent person would return...\"; line dependent.hoh_absence: \"A Test 2 person only by counting an absence head of household does not count\"; i1040gi p. 14 Test 2: \"in which one of the following also lived for more than half of the year\"",
+       "why": "The lines need to know whether the more-than-half-year result depends on a non-qualifying absence. The question asks whether any such absence was counted at all, so a harmless one still produces yes.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8c0e046d7f08d36d5c11c63d35e1979c6f9bbe6903732a4233626bbabb8f147a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.050496,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.absence_no_return.3a9c2b50c9e5.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\"",
+      "p. 9, Temporary absences, \"You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances\" and \"It must be reasonable to assume the absent person will return to the home after the temporary absence.\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year); , Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\""
+     ],
+     "cols_pages": [
+      14
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "dependent.age": {
+   "subject_sha": "5cb0786502079c57bbe5e09ee5dcb77505692cf57f93b2714ce5d164b4a7bd28",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "c3749239875600574bb875a0b4c88455d3736e855afe719460c775a6735ad77a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.071884,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.age.5cb078650207.1.response.txt"
+    }
+   ],
+   "type": "Count",
+   "readers": 7,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17,
+      18
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Step 1, \"Under age 19 at the end of 2025 and younger than you\"",
+      "p. 17, Step 1, \"Under age 19 at the end of 2025\"",
+      "p. 17, Step 1, \"Under age 24 at the end of 2025, a full-time student\"",
+      "p. 17, Step 1, the age conditions",
+      "p. 18, Step 3, \"Was the child under age 17 at the end of 2025?\"",
+      "p. 18, Step 3, question 3"
+     ],
+     "cols_pages": [
+      17,
+      18
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Qualifying Person(s), \"A qualifying child under age 13 whom you can claim as a dependent. If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13\"",
+      "p. 3, Column (c), \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      18
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 18, Kidnapped child, \"This treatment applies for all years until the earlier of: 1. The year there is a determination that the child is dead, or 2. The year the child would have reached age 18.\""
+     ],
+     "cols_pages": [
+      18
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.born_died": {
+   "subject_sha": "9ddcc65c3fbefd68ecb37bbb19b32a863dd86d4ea932206321ea052057c95af9",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "863e8baea6822474c47fbdc2ff7e50939ee9bd63c2e775133e423589f21b7775",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.060132000000000005,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.born_died.9ddcc65c3fbe.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, \"If the person for whom you kept up a home was born or died in 2025, you still may be able to file as head of household\"; , Child born alive, \"State or local law must treat the child as having been born alive. There must be proof of a live birth shown by an official document, such as a birth certificate.\"; , Stillborn child, \"You can’t claim a stillborn child as a dependent.\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      9,
+      13
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Death or birth, \"To qualify you for head of household filing status, the qualifying person (as defined in Table 4) must be one of the following\"; , \"the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025\""
+     ],
+     "cols_pages": [
+      13
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    },
+    {
+     "doc": "p503",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Birth or death of otherwise qualifying person, \"a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive in 2025\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9"
+    }
+   ]
+  },
+  "dependent.canada_mexico": {
+   "subject_sha": "755da227796042fbdb74d80fc0cf7ad42d871e7e388d884dcb3b66c96d3e08f4",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer's adopted child is not a U.S. citizen, national or resident alien and lives with the U.S.-citizen filer outside Canada and Mexico for the whole year, so the filer truthfully answers no, but the citizen test is met through the adoption exception.",
+       "source_text": "i1040gi p. 18, Step 2, question 1: \"Was the child a U.S. citizen, U.S. national, U.S. resident alien, or a resident of Canada or Mexico? ... If the child was adopted, see Exception to citizen test, later.\"",
+       "why": "Step 2, question 1 is the test that `dependent.resident` stands for, and it includes the adoption exception. Neither this question nor the citizen/national/resident-alien helper asks about the exception, so the line returns false when the dependency test is actually met.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "4bf999b7e8b0d3554ca4ddd01af39324bf5f48b611385197521b0306fea10351",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.036236,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.canada_mexico.755da2277960.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      18
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 18, Step 2, question 1",
+      "p. 18, Step 2, question 1, \"or a resident of Canada or Mexico\""
+     ],
+     "cols_pages": [
+      18
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "dependent.citizen": {
+   "subject_sha": "d3a1d6a84bf2ec6c8437f971fb95409a1a6b434ad3edcb99918c7001e911d031",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A U.S. citizen filer has a nonresident-alien child who was lawfully placed with them for legal adoption and lived with them all year, but the adoption was not yet final, so the filer answers no because the child is not yet their 'adopted child'.",
+       "source_text": "i1040gi p. 20, Adopted child: \"An adopted child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption.\"; Exception to citizen test: \"If you are a U.S. citizen or U.S. national and your adopted child lived with you all year as a member of your household, that child meets the requirement to be a U.S. citizen\"",
+       "why": "The question says 'your adopted child' but does not say this includes a child placed with you for adoption. A filer whose adoption is still pending would answer no, which takes the child out of the dependent, child tax credit and credit for other dependents lines that the exception should reach.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "593bb54c78929c2155b86c02f9dac15db437e073ab55443d93f59b713473f29d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053608,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.citizen.d3a1d6a84bf2.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      18,
+      19,
+      20
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 18, Step 2, question 1",
+      "p. 18, Step 2, question 1, and Step 3, question 2; p. 20, Exception to citizen test (\"If you are a U.S. citizen or U.S. national and your adopted child lived with you all year as a member of your household, that child meets the requirement to be a U.S. citizen in Step 2, question 1; Step 3, question 2; Step 4, question 2; and Step 5, question 3\")",
+      "p. 18, Step 3, question 3, and p. 19, Step 5",
+      "p. 18, Step 3, questions 1–4"
+     ],
+     "cols_pages": [
+      18,
+      19,
+      20
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "dependent.dc_incapable": {
+   "subject_sha": "deb6fb64a7246cd9fe15f61ed3a09d3fcbf1c88c5ef39017b2dd1e571d186031",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A person over age 12 became unable to care for themselves partway through 2025 (for example, after an accident in October), and the filer paid for their care earlier in the year while they could still care for themselves.",
+       "source_text": "p503 p. 3: \"Person qualifying for part of year. You determine a person's qualifying status each day.\"; i2441 p. 3, Column (c): \"was over age 12 at the time the care was provided and was disabled\"",
+       "why": "The question asks only whether the person was unable to care for themselves at any point \"In 2025\", so a truthful yes makes them a qualifying person and checks 2(c) for the whole year. The text ties both qualifying status and the disability to the time the care was provided, so care paid for before the disability began can be wrongly counted on lines 2, 3 and 16.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "32aacb02e7df740502cf60eb1b6a031fa29df2ae5dc9edc9d37b6f6a40df6d3f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.047768000000000005,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.dc_incapable.deb6fb64a724.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Physically or mentally not able to care for oneself, \"Persons who can't dress, clean, or feed themselves because of physical or mental disabilities are considered not able to care for themselves. Also, persons who must have constant attention to prevent them from injuring themselves or others are considered not able to care for themselves\"",
+      "p. 1, Qualifying Person(s), \"A qualifying child under age 13 whom you can claim as a dependent. If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13\"",
+      "p. 1, Qualifying Person(s), \"Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent\"; , Birth or death of otherwise qualifying person",
+      "p. 3, Column (c), \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    },
+    {
+     "doc": "p503",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
+     "pages": [
+      3
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9"
+    }
+   ]
+  },
+  "dependent.dc_over12_care": {
+   "subject_sha": "9c3f10555bc3f33aa408d923389cbc326d99757f7017155ac9c275b431d55a2d",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "0ce7f0482859f7cdf07e78880d8d85a844d1ac1f7201d4f9004f268e78e12f59",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.031363999999999996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.dc_over12_care.9c3f10555bc3.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Qualifying Person(s), \"A qualifying child under age 13 whom you can claim as a dependent. If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13\"",
+      "p. 3, Column (c), \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  },
+  "dependent.dc_paid": {
+   "subject_sha": "227dcbfb2c3994c147792f5d3b93e9422547b417d6b1ade281c6281ba0cf1acc",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A joint filer works while their spouse is a full-time student or is disabled, and pays for care during the months the spouse was in school or disabled rather than working or looking for work.",
+       "source_text": "i2441 p. 4, If You or Your Spouse Was a Student or Disabled: \"For each month or part of a month your spouse was a student or was disabled, they are considered to have worked and earned income.\"; p503 p. 6: \"If you or your spouse was a full-time student or disabled, see Rule for student-spouse or spouse not able to care for self\"",
+       "why": "The question limits expenses to care \"so that you (and your spouse, if filing jointly) could work or look for work\" and counts \"only for the days of work or looking for work.\" A truthful filer would leave out care paid during the spouse's months of school or disability, which the text treats as work-related.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "In 2025 the filer paid a former spouse (divorced partway through the year) or a stepchild or foster child under 19 to provide care.",
+       "source_text": "p503 p. 8, Payments to Relatives or Dependents: \"don't count any amounts you pay to: ... 2. Your child (including stepchild or foster child) who was under age 19 at the end of the year ... 3. A person who was your spouse any time during the year\"",
+       "why": "The question excludes only payments to \"your spouse\" and \"your child under 19.\" An ordinary filer would include payments to someone who was a spouse earlier in the year, or to a stepchild or foster child under 19, and the text bars both.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "bfc4b68288cc24d25926813950e24813db3d66608b0c28a6109d30aa4616bf2a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.12975599999999998,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.dc_paid.227dcbfb2c39.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 3–4, Column (d), \"Enter the qualified expenses you incurred and paid in 2025 for the person listed in column (a)\" and \"Expenses you incurred in 2025 but didn't pay until 2026\"; , Expenses prepaid in an earlier year, \"If you pay for services before they are provided, you can count the prepaid expenses only in the year the care is received\"; p. 2, Care of the qualifying person, \"It doesn't include the cost of food, lodging, education, clothing, or entertainment. You can include the cost of care provided outside your home for your dependent under age 13, or any other qualifying person who regularly spends at least 8 hours a day in your home. If the care was provided by a dependent care center, the center must meet all applicable state and local regulations.\" and \"But don't include the cost of schooling for a child in kindergarten or above.\" and \"But don't include any expenses for sending your child to an overnight camp, a summer school, or a tutoring program.\"; p. 2, \"Child support payments aren't qualified expenses.\" and \"Generally, if you worked or actively looked for work during only part of the period in which you incurred the expenses, you must figure your expenses for each day.\"; , Temporary absence from work, \"An absence of 2 weeks or less is a short, temporary absence.\"; , Part-time work, \"However, if you are required to pay for care weekly, monthly, or in another way that includes both days worked and days not worked, you can figure your credit including the expenses you paid for days you didn't work. Any day when you work at least 1 hour is a day of work.\"; , Expenses partly work related, \"If part of an expense is work related (for either household services or the care of a qualifying person) and part is for other purposes, you have to divide the expense.\" and \"However, you don't have to divide the expense if only a small part is for other purposes.\"; p. 1, Qualified Expenses, \"These include amounts paid for household services and care of the qualifying person while you worked or looked for work.\"; p. 2, Household services, \"They include, for example, the services of a cook, maid, babysitter, housekeeper, or cleaning person if the services were partly for the care of the qualifying person. However, they don't include the services of a chauffeur, bartender, or gardener.\"; , Volunteer work, \"For this purpose, you aren't considered to be working if you do unpaid volunteer work or work for a nominal salary.\"; , Transportation, \"If a care provider takes a qualifying person to or from a place where care is provided, that transportation is for the care of the qualifying person.\" and \"However, transportation not provided by a care provider isn't for the care of a qualifying person. Also, if you pay the transportation cost for the care provider to come to your home, that expense isn't for care of a qualifying person.\"; , Fees and deposits, \"Fees you paid to an agency to get the services of a care provider, deposits you paid to an agency or preschool, application fees, and other indirect expenses are work-related expenses if you have to pay them to get care\" and \"However, a forfeited deposit isn't for the care of a qualifying person if care isn't provided.\"; , Meals and lodging provided for housekeeper, \"If you have expenses for meals that your housekeeper eats in your home because of their employment, count these as work-related expenses. If you have extra expenses for providing lodging in your home to the housekeeper, count these as work-related expenses also.\"; p. 3, Columns (a) and (b), \"If you were covered by your employer's dependent care plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your employer's name in column (a)\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    },
+    {
+     "doc": "f2441",
+     "revision": "2025; created 2025-03-18",
+     "text_sha256": "f39ca34d11c156e1ac55f4e2b5f16ef03c919773245cd7e50836e4c1555339c7",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 2441 (2025), line 2, column (d)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "0e24fa891992674b84736c78565752c4a7d6f411fca4e24e5bb1307f239f60d6"
+    },
+    {
+     "doc": "p503",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
+     "pages": [
+      6,
+      7,
+      8,
+      10
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      6,
+      7,
+      8,
+      10
+     ],
+     "cols_sha256": "44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9"
+    }
+   ]
+  },
+  "dependent.dc_under13": {
+   "subject_sha": "825a2fb15a80b8aafb4bd26e9b68ebd3869648ae54a8b5cb7eb8b8cc3b93deaa",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A child turned 13 in July 2025 and was cared for in June, but the parent paid that June care bill in August, after the birthday.",
+       "source_text": "p503 p. 3: \"Your qualifying child who is your dependent and who was under age 13 when the care was provided\"; i2441 p. 5, Line 16: \"It doesn't matter when the expenses were paid\"",
+       "why": "The question keys on the child's age 'when you paid for their care', so a truthful filer answers no, but the lines need yes because the care was given before the 13th birthday.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A child turned 13 in March 2025, and the parent prepaid in February for care given only after the birthday.",
+       "source_text": "Question: \"Was this child under age 13 for part of 2025, when you paid for their care?\"; i2441 p. 1: \"the child is a qualifying person for the part of the year they were under age 13\"",
+       "why": "A truthful filer answers yes because the child was under 13 at payment, but none of the care fell in the under-13 period, so the child must not be treated as a qualifying person for that care.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b27c3210e28311874dcfe9350cd5dfc570232120eb8f897537eabf2d84829262",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.03984,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.dc_under13.825a2fb15a80.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p503",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Person qualifying for part of year, \"You determine a person's qualifying status each day. For example, if your child for whom you pay child and dependent care expenses turns 13 years old and no longer qualifies on September 16, count only those expenses through September 15\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9"
+    },
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Qualifying Person(s), \"A qualifying child under age 13 whom you can claim as a dependent. If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13\""
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  },
+  "dependent.disabled": {
+   "subject_sha": "4305fa429186ebc0a91d2a563b31b72da15ddab6f6305a57014b7f651e3f1c07",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "bf757eb9588fe5349e30a61e69523ae6af9d574f40eaacd3c6e59dd53651ba85",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.04196,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.disabled.4305fa429186.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17,
+      19,
+      21
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Step 1, \"Any age and permanently and totally disabled (defined later)\"; p. 21, Permanently and totally disabled, \"the person can’t engage in any substantial gainful activity because of a physical or mental condition\"",
+      "p. 17, Step 1, the age conditions",
+      "p. 19, Step 4, \"If the person was permanently and totally disabled, see Exception to gross income test\""
+     ],
+     "cols_pages": [
+      17,
+      19,
+      21
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "dependent.edu": {
+   "subject_sha": "a4d213a705c8d071d60a7e76ade94759c6478b8e20412850facc8ff812a773f1",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "In December 2025 a parent prepays tuition for the dependent's academic period beginning in August 2026, and pays nothing for any period beginning in 2025 or January–March 2026.",
+       "source_text": "i8863 p. 2: \"the credits are based on the amount of adjusted qualified education expenses paid for the student in 2025 for academic periods beginning in 2025 or beginning in the first 3 months of 2026.\"",
+       "why": "The question asks only whether anyone 'pay[s] qualified education expenses in 2025' and never limits this to academic periods beginning in 2025 or the first 3 months of 2026, so a truthful yes opens the credit lines for expenses that cannot count for 2025.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8fa4bbc2ddcc2ee64ae4f670b2216fe68cb3a7c7b5c46a702d23f991a66e18d9",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.030944,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu.a4d213a705c8.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      2
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Who Can Claim an Education Credit, \"You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution.\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.edu_1098t": {
+   "subject_sha": "b50d20e718571a2dfa3fe68f0fd09653a4c6dbebfc719b16dce715a5549e5696",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The institution was required to furnish a 2025 Form 1098-T but did not, and the filer or student asked for it on February 1 or February 2, 2026, before filing, and met the other required steps; the question's 'after February 2, 2026' leads this filer to answer no.",
+       "source_text": "i8863 (2025) p. 1: \"After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T.\"",
+       "why": "The recorded reading chose the i8863 date (after January 31, 2026), but the question uses the Pub. 970 date (after February 2, 2026). A request made on February 1 or 2 meets the instructions but fails the question's wording, so the lines lose a yes they need.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The institution was not required to furnish a Form 1098-T, but the filer cannot show that the student was enrolled or cannot substantiate payment of qualified tuition; the question still has this filer answer yes.",
+       "source_text": "i8863 (2025) p. 1: \"If a student's educational institution isn't required to provide a Form 1098-T to the student, you may claim one of these education benefits without a Form 1098-T if you otherwise qualify, can demonstrate that you (or a dependent) were enrolled at an eligible educational institution, and can substantiate the payment of qualified tuition and related expenses.\" Question: \"Answer yes also if the institution was not required to furnish one (for example ...)\"",
+       "why": "The question attaches the enrollment and payment proof condition only to the not-furnished exception. Under the not-required exception, a filer who lacks that proof would truthfully answer yes, and the credit lines would receive a yes the text does not allow.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "cd0be7516b80a1e94bf5a5bb47c0e7a0bad16e7df4fc72f3c38507b854d378af",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.049240000000000006,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_1098t.b50d20e71857.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Form 1098-T requirement, \"To be eligible to claim the American opportunity credit or the lifetime learning credit, the law requires a taxpayer (or a dependent) to have received Form 1098-T, Tuition Statement, from an eligible educational institution, whether domestic or foreign.\"; p. 1, \"You must fully cooperate with the educational institution’s efforts to gather the information needed to furnish the Form 1098-T.\"",
+      "p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.edu_a2025": {
+   "subject_sha": "c7eb773cc2f6cbc8b2bdf79b9396fb8c3e90b01dee87d139b1a7e099ac15b4fd",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "Tuition was paid in 2025 for a term starting in January–March 2026 (or in December 2024 for a term starting in 2025), and the student received a tax-free scholarship in 2025 for that term.",
+       "source_text": "i8863 (2025) p. 9: \"a. Tax-free educational assistance received in 2025 allocable to the academic period\"; \"each academic period beginning or treated as beginning ... in 2025 for which you paid ... qualified education expenses in 2025\"; \"If any qualified education expenses for the student were paid in 2025 for an academic period beginning in the first 3 months of 2026, treat that academic period as if it began in 2025.\"",
+       "why": "\"This student's 2025 expenses\" can mean expenses paid in 2025 or expenses for terms in 2025. Under the second reading, a filer would leave out 2025 aid for an early-2026 term the worksheet covers, and would include 2025 aid for a 2025 term paid in 2024 that is not on line 1. Either way the amount reaching line 3 would be wrong.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "3fc9a5b0109ca43b782fbdfe82ee27e1823c078e0489dc5b166f1556f4b9274b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.044899999999999995,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_a2025.c7eb773cc2f6.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"3. Total adjustments (add lines 2a, 2b, and 2c)\"",
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"a. Tax-free educational assistance received in 2025 allocable to the academic period\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.edu_a2026": {
+   "subject_sha": "f4243ee8162fe99133836de6e0b4ae37f65b37a3cf8594e8f45493fabfe7ec51",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "22b5cdc4bca879b2e0affb70b25aed6f1bf4d31e3614f504ea6522bc4bbf806d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.024815999999999998,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_a2026.f4243ee8162f.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"3. Total adjustments (add lines 2a, 2b, and 2c)\"",
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"b. Tax-free educational assistance received in 2026 (and before you file your 2025 tax return) allocable to the academic period\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.edu_ein": {
+   "subject_sha": "a16b3137e007954384d8b60694b54fffb49b207c9c34364f589026b823e86926",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "aa8e31ed5037c7eb231ba0d5daa5e49dafe56e532dad0811dea24a8458e3a74a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.03544,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_ein.a16b3137e007.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      3,
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Student qualifications, \"5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions).\"",
+      "p. 4, Student qualifications, \"7. You must provide the educational institution’s employer identification number (EIN) on your Form 8863.\""
+     ],
+     "cols_pages": [
+      3,
+      4
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.edu_inst": {
+   "subject_sha": "54877944d80650008d9c65e2cccc09c36dba62f6ec631890cf14645c06c6ae9d",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The institution charges a mandatory nonacademic fee (a student activity, athletic or course lab fee) as a condition of attendance rather than of enrollment, and the filer leaves it out because the question lists only 'required enrollment fees'.",
+       "source_text": "i8863 p. 4: \"tuition and fees required for the student's enrollment or attendance\"; \"Qualified education expenses include nonacademic fees, such as student activity fees, athletic fees, or other expenses unrelated to the academic course of instruction, only if the fee must be paid to the institution as a condition of enrollment or attendance.\"",
+       "why": "The question's fee item says only 'required enrollment fees'. It leaves out fees required for attendance and does not say that mandatory nonacademic fees count, so a truthful filer can understate the institution-required expenses that lines 27 and 31 need.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "e7701874eacbced11ba9b7384e7ec15c76154a17e70f13e2c13374a08c088787",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.083616,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_inst.54877944d806.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 5,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      3,
+      4,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\"; , \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return.\"",
+      "p. 4, Qualified Education Expenses, \"Generally, qualified education expenses are amounts paid in 2025 for tuition and fees required for the student’s enrollment or attendance at an eligible educational institution.\"; p. 4, \"Any course or other education involving sports, games, or hobbies, or any noncredit course, unless such course or other education is part of the student’s degree program or (for the lifetime learning credit only) helps the student acquire or improve job skills.\"",
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025.\""
+     ],
+     "cols_pages": [
+      3,
+      4,
+      9
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    },
+    {
+     "doc": "f8863",
+     "revision": "2025",
+     "text_sha256": "8e2a766019b69e75af71e8da04f82a27534acb97f9ae4c2b72438a56d10d444e",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Part III, line 27, \"Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000\"; , Line 27",
+      "p. 2, Part III, line 28, \"Subtract $2,000 from line 27. If zero or less, enter -0-\"",
+      "p. 2, Part III, line 29, \"Multiply line 28 by 25% (0.25)\"",
+      "p. 2, Part III, line 30, \"If line 28 is zero, enter the amount from line 27.\", \"Include the total of all amounts from all Parts III, line 30, on Part I, line 1\"",
+      "p. 2, Part III, line 31, \"Adjusted qualified education expenses (see instructions). Include the total of all amounts from all Parts III, line 31, on Part II, line 10\"; , Line 31"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "37bbeebd24c238e54a031ab21ac880feb5d8e9ce98f792e1b45d93e1bf8abc6c"
+    },
+    {
+     "doc": "p970",
+     "revision": "2025",
+     "text_sha256": "a5c80030374da420bbaf3118a8a42fe79092e8529663d02ef601b6ae06657e00",
+     "pages": [
+      11
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      11
+     ],
+     "cols_sha256": "f6622ed07641c7d4e2a217fb9d9b1fecb7ab16f08dbc758f1a0963e1fe677e0a"
+    }
+   ]
+  },
+  "dependent.edu_line23": {
+   "subject_sha": "ea8766c69d33594c14cf93c12713e3c1d0a5a39a2e746084140daaadd66442ca",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "079ff478f0f6ed91b9839d8c63017cd38a3ab981ef3363c2bdbc64678e6e66a0",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.03782,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_line23.ea8766c69d33.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f8863",
+     "revision": "2025",
+     "text_sha256": "8e2a766019b69e75af71e8da04f82a27534acb97f9ae4c2b72438a56d10d444e",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Part III, line 23, \"Has the American opportunity credit been claimed for this student for any 4 prior tax years?\"; , Line 23",
+      "p. 2, Part III, line 23, \"Yes—Stop! Go to line 31 for this student.\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "37bbeebd24c238e54a031ab21ac880feb5d8e9ce98f792e1b45d93e1bf8abc6c"
+    },
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      8
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.edu_line24": {
+   "subject_sha": "c34fb056ee62917d132f3c8b279b775505eb234345ea4b00f24ad9f432f0474b",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "9575593a82c849b386510d730307daff664ad20abde643b09790388bbae33cc4",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.046652,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_line24.c34fb056ee62.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f8863",
+     "revision": "2025",
+     "text_sha256": "8e2a766019b69e75af71e8da04f82a27534acb97f9ae4c2b72438a56d10d444e",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Part III, line 24, \"No—Stop! Go to line 31 for this student.\"",
+      "p. 2, Part III, line 24, \"Was the student enrolled at least half-time for at least one academic period that began or is treated as having begun in 2025 at an eligible educational institution in a program leading toward a postsecondary degree, certificate, or other recognized postsecondary educational credential?\"; , Line 24"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "37bbeebd24c238e54a031ab21ac880feb5d8e9ce98f792e1b45d93e1bf8abc6c"
+    },
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      8
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.edu_line25": {
+   "subject_sha": "49fd6022cf6d66e459be0da73fa7751c485b6c704bdfb2e04627249d4b81dfba",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "67f951f6a08f42ea74c620c0a84c5b93f29c49cc78fa4f17b79877d013ff4864",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.052912,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_line25.49fd6022cf6d.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f8863",
+     "revision": "2025",
+     "text_sha256": "8e2a766019b69e75af71e8da04f82a27534acb97f9ae4c2b72438a56d10d444e",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Part III, line 25, \"Did the student complete the first 4 years of postsecondary education before 2025?\"; , Line 25",
+      "p. 2, Part III, line 25, \"Yes—Stop! Go to line 31 for this student.\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "37bbeebd24c238e54a031ab21ac880feb5d8e9ce98f792e1b45d93e1bf8abc6c"
+    },
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      8
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.edu_line26": {
+   "subject_sha": "ae7432fa30efa0904b9897a7849ae7cecc842e8b8a943ddc6b2e08187ecdb5db",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "283643464c2fda9a49a9f3801d0eb2285a4257b22684429028d19d4638152500",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.033292,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_line26.ae7432fa30ef.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f8863",
+     "revision": "2025",
+     "text_sha256": "8e2a766019b69e75af71e8da04f82a27534acb97f9ae4c2b72438a56d10d444e",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Part III, line 26, \"No—Complete lines 27 through 30 for this student.\"",
+      "p. 2, Part III, line 26, \"Was the student convicted, before the end of 2025, of a felony for possession or distribution of a controlled substance?\"; , Line 26"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "37bbeebd24c238e54a031ab21ac880feb5d8e9ce98f792e1b45d93e1bf8abc6c"
+    },
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      8
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.edu_mat": {
+   "subject_sha": "dcc09cc791eca6a0664959cfe39104ca8382edb605169734cba220894f531ceb",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "In December 2025 a filer buys books and equipment for a course whose academic period begins in fall 2026, so the period is neither in 2025 nor in the first 3 months of 2026.",
+       "source_text": "i8863 (2025) p. 9: \"Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025\"; i8863 p. 4: \"Qualified education expenses paid in 2025 for an academic period that begins in the first 3 months of 2026 can be used in figuring an education credit for 2025 only.\"",
+       "why": "The question asks only for materials \"paid for in 2025 for this student\" and does not limit them to academic periods beginning in 2025 or the first 3 months of 2026. A truthful answer would include these later-period materials in line 27. The phrase \"the same exclusions as for the expenses paid to the institution\" does not state this timing limit, so an ordinary filer reading this question would not apply it.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "82eadc823eb9ad7eeb3fc0fa88556653ba1731dd2750f5444eff74e69cb76d95",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.062884,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_mat.dcc09cc791ec.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      4,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Qualified Education Expenses, \"American opportunity credit: Qualified education expenses include amounts paid for tuition, fees, and course materials, which include books, supplies, and equipment needed for a course of study, whether or not the materials are purchased from the educational institution as a condition of enrollment or attendance.\"",
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025.\""
+     ],
+     "cols_pages": [
+      4,
+      9
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    },
+    {
+     "doc": "f8863",
+     "revision": "2025",
+     "text_sha256": "8e2a766019b69e75af71e8da04f82a27534acb97f9ae4c2b72438a56d10d444e",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Part III, line 27, \"Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000\"; , Line 27",
+      "p. 2, Part III, line 28, \"Subtract $2,000 from line 27. If zero or less, enter -0-\"",
+      "p. 2, Part III, line 29, \"Multiply line 28 by 25% (0.25)\"",
+      "p. 2, Part III, line 30, \"If line 28 is zero, enter the amount from line 27.\", \"Include the total of all amounts from all Parts III, line 30, on Part I, line 1\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "37bbeebd24c238e54a031ab21ac880feb5d8e9ce98f792e1b45d93e1bf8abc6c"
+    }
+   ]
+  },
+  "dependent.edu_over": {
+   "subject_sha": "f2b97d419f844255dbf60849a8665cc25c6f36626c91c3e52f6dc2286d3b4a32",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "Part of the period's tuition was paid in 2024. The 2025 assistance exceeds the amount paid in 2025 but not the period's full tuition, so the filer answers no while worksheet line 3 exceeds line 1.",
+       "source_text": "i8863 p. 9: \"1. Total qualified education expenses paid for or on behalf of the student in 2025 for the academic period\"; p. 4: \"You cannot use any amount you paid in 2024 or 2026 to figure the qualified education expenses you use to figure your 2025 education credit(s).\"",
+       "why": "The question compares against \"that period's qualified education expenses\" with no limit to amounts paid in 2025. The worksheet compares only against expenses paid in 2025.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "An American opportunity credit student buys required books at an off-campus store. Assistance exceeds tuition and fees but not tuition, fees and books, so the filer answers yes although worksheet line 3 does not exceed line 1.",
+       "source_text": "Question: \"qualified education expenses that had to be paid to the institution (tuition, required fees and course materials required to be paid to the institution)\"; i8863 p. 4: \"American opportunity credit: Qualified education expenses include ... course materials ... whether or not the materials are purchased from the educational institution\"",
+       "why": "The question uses the lifetime learning credit definition of expenses. For the American opportunity credit, line 1 is larger, so the question reports an excess where none exists.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The only excess comes from assistance received in 2026 after the return is filed, from a refund of expenses not paid in 2025, or from an academic period that did not begin (or is not treated as beginning) in 2025, such as fall 2024. The filer answers yes.",
+       "source_text": "i8863 p. 9: \"b. Tax-free educational assistance received in 2026 (and before you file your 2025 tax return)\"; \"c. Refunds of qualified education expenses paid in 2025 if the refund is received in 2025 or in 2026 before you file\"; \"for each academic period beginning or treated as beginning ... in 2025\"",
+       "why": "The question puts no year or timing limit on the assistance, the refunds or the academic period. It brings in amounts and periods the worksheet excludes.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "288faeeb83831e948e458ed1c16e7497ca908cf1eecedda6167eab793799775b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.050184000000000006,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_over.f2b97d419f84.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      4,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Tax-free educational assistance, \"For tax-free educational assistance received in 2025, reduce the qualified education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic period.\"",
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025.\""
+     ],
+     "cols_pages": [
+      4,
+      9
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.edu_refunds": {
+   "subject_sha": "5b0bfc9b9b5642c59e5648eaab3c83f6dd057ebeb49de2ff7c96e758675384d6",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "313e9a4da49cb0ddfede75c46dfd1550ab2ef37ca46e5f03dbc0e0fbdc21e7e6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.023664,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_refunds.5b0bfc9b9b56.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"3. Total adjustments (add lines 2a, 2b, and 2c)\"",
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"c. Refunds of qualified education expenses paid in 2025 if the refund is received in 2025 or in 2026 before you file your 2025 tax return\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.edu_tin_issued": {
+   "subject_sha": "6d7d8d1861bf5d636ff63071ddddba94da3894b3924e28d9fada50803b9e97cc",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "455b7cfd1a4cf0085e30e7121b8c020de7f36df507b62c08a19f8cea7bf2a914",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.03222,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_tin_issued.6d7d8d1861bf.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\"",
+      "p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\"; p. 3, Table 1, \"Students must have been issued a TIN by the due date of their 2025 return (including extensions)\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.eic_ssn": {
+   "subject_sha": "014b7bf43a5e5d66b02ab4357b5a5392a373c1cb1cdeddf3234beaf7c22b0468",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "b9077b6478f08e1cd57f36b7eb9b5c10245f8c9b87f7a8ac977e9d75f02de22b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.035460000000000005,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.eic_ssn.014b7bf43a5e.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      44,
+      45,
+      46
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 46, Worksheet A, line 2, \"the number of qualifying children you have who have valid SSNs\"; pp. 44–45, Social security number (SSN), \"For the EIC, a valid SSN is a number issued by the Social Security Administration unless 'Not Valid for Employment' is printed on the social security card\"",
+      "pp. 44–45, Social security number (SSN), EIC"
+     ],
+     "cols_pages": [
+      44,
+      45
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "dependent.gross_income": {
+   "subject_sha": "98884b0cf938ddd02fefabd226a203058c33739526ac55479f0ca13d4fc83306",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The person runs a manufacturing, merchandising or mining business that also has miscellaneous income, such as a supplier rebate or interest on business accounts.",
+       "source_text": "p501 p. 19: \"In a manufacturing, merchandising, or mining business, gross income is the total net sales minus the cost of goods sold, plus any miscellaneous income from the business.\"",
+       "why": "For this kind of business the question says to include only 'business sales minus the cost of goods sold'. A filer following it leaves out the miscellaneous business income, so the amount is too low and could wrongly fall under $5,200.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A person who was permanently and totally disabled during 2025 earned income for services at a sheltered workshop that qualifies under the medical-care conditions.",
+       "source_text": "p501 p. 19: \"For purposes of the gross income test, the gross income of an individual who is permanently and totally disabled at any time during the year doesn't include income for services the individual performs at a sheltered workshop.\"; i1040gi p. 19: \"If the person was permanently and totally disabled, see Exception to gross income test, later.\"",
+       "why": "Workshop pay is taxable, so a truthful answer to 'all income ... that isn't exempt from tax' includes it. The gross income test must leave it out, and no listed refusal covers this case.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The person is a degree candidate who received a scholarship, part used for tuition and required books and part used for room and board.",
+       "source_text": "Question: \"certain amounts received as scholarship and fellowship grants\"; p501 p. 19: \"Scholarships received by degree candidates and used for tuition, fees, supplies, books, and equipment required for particular courses aren't generally included in gross income.\"",
+       "why": "The question never says which scholarship amounts count, so a filer may include the whole grant or leave it all out. The text counts only the part not used for qualified tuition-type expenses.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The person's business had customer returns and allowances during 2025.",
+       "source_text": "Question: \"business sales minus the cost of goods sold\"; p501 p. 19: \"total net sales minus the cost of goods sold\"",
+       "why": "'Business sales' can be read as gross sales before returns and allowances or as net sales. The two readings give different amounts, and the text requires net sales.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "130349729dc594cd2737edff9853913e30fc3aa9c0e1be37f09e29531c47eea5",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.061135999999999996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.gross_income.98884b0cf938.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Step 4, \"Who had gross income of less than $5,200 in 2025\"",
+      "p. 19, Step 4, \"Who had gross income of less than $5,200 in 2025\"; , Gross income defined, \"Gross income is all income in the form of money, property, and services that isn’t exempt from tax.\"; , \"Gross receipts from rental property are gross income. Don’t deduct taxes, repairs, or other expenses to determine the gross income from rental property.\"; , \"Gross income includes a partner’s share of the gross (not net) partnership income.\"; , \"Gross income also includes all taxable unemployment compensation, taxable social security benefits, and certain amounts received as scholarship and fellowship grants.\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      19
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.joint_return": {
+   "subject_sha": "008217feb20de76813940b9871cfc25f4863b87bcf3b3a5e048230f4165b0d40",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A married filer filing jointly with their own spouse lists their child as a dependent on that joint return and answers yes, because the joint return 'includes this person.'",
+       "source_text": "i1040gi p. 17, Step 1: \"Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund of withheld income tax or estimated tax paid\"; p. 21: \"If the person is married and files a joint return, you can't claim that person as your dependent.\"",
+       "why": "The test applies only when the person files a joint return as one of the spouses. The wording 'a joint return ... that includes this person' could also mean a return that lists the person as a dependent. A yes on that reading wrongly fails the qualifying-child and EIC tests, which then drives the CTC and EIC lines to zero.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f5c802c3720a57ed59cb9a99e9d9137c62af729efbe93f95c4781545148ca3ec",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.049152,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.joint_return.008217feb20d.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17,
+      21,
+      41
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Step 1, \"Do you have a child who meets the conditions to be your qualifying child?\"",
+      "p. 17, Step 1, \"Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund\"; p. 21, Married person, \"If the person is married and files a joint return, you can’t claim that person as your dependent.\"",
+      "p. 41, Step 3, \"A qualifying child for the EIC is your...\" (relationship AND age AND not filing a joint return AND lived with you in the United States for more than half of 2025)"
+     ],
+     "cols_pages": [
+      17,
+      21,
+      41
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "dependent.kidnapped": {
+   "subject_sha": "6f0528e177c74403f525666de5b645500b6f9f52bea0a09d83f5d4104cfcd5c3",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A child was kidnapped by a stranger in 2025 after living with the filer for only 1 of the 5 months before the kidnapping, so the filer truthfully answers yes and the residency and qualifying-relative lines treat the child as qualifying.",
+       "source_text": "p501 p. 13, Kidnapped child: \"2. In the year the kidnapping occurred, the child lived with you for more than half of the part of the year before the date of the kidnapping.\"; p501 p. 18: \"2. In the year the kidnapping occurred, the child met the tests to be your qualifying relative for the part of the year before the date of the kidnapping.\"",
+       "why": "The question asks only about the presumption and the child being missing in 2025. It never checks the pre-kidnapping residency or qualifying-relative condition, and neither gate shown tests it.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A child returned in 2025 who lived with the filer for less than half of the rest of the year after the return still gets a yes, so the lines treat the child as meeting the residency test.",
+       "source_text": "p501 p. 13, Kidnapped child: \"3. In the year of the child's return, the child lived with you for more than half the part of the year following the date of the child's return.\"",
+       "why": "The question says to answer yes even if the child has since been returned. It does not ask about the post-return condition the text requires for the year of return.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A missing child who was determined to be dead in 2024 or 2025, or who would have turned 18 during 2025, is still 'missing because of the kidnapping at some time during 2025', so the filer answers yes.",
+       "source_text": "p501 p. 13 and p. 18: \"This treatment applies for all years until the earlier of: 1. The year there is a determination that the child is dead, or 2. The year the child would have reached age 18.\"",
+       "why": "The question does not exclude the year of a death determination or the year the child would turn 18. The residency and EIC lines have no age gate, and the qualifying-relative gate admits age 18 at year end.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "6c2b2e5c1ea1a0edc54755e9403f710b4497fe885197b7a44f52f949ad9dd861",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.07619999999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.kidnapped.6f0528e177c7.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      21
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 21, Kidnapped child, \"If your child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a family member, you may be able to take the child into account\"; , Kidnapped child, \"1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family.\", \"2. In the year the kidnapping occurred, the child lived with you for more than half of the part of the year before the date of the kidnapping.\" and \"3. In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return.\"; , \"This treatment applies for all years until the earlier of\"; , Kidnapped child, \"You can treat a child as your qualifying relative even if the child has been kidnapped\"",
+      "p. 21, Kidnapped child, \"the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC).\" (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment)"
+     ],
+     "cols_pages": [
+      21
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      13,
+      18
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Kidnapped child, \"You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true.\" (a child who lived with you for more than half of 2025 meets the residency test without this treatment)",
+      "p. 18, Kidnapped child, \"This treatment applies for all years until the earlier of: 1. The year there is a determination that the child is dead, or 2. The year the child would have reached age 18.\""
+     ],
+     "cols_pages": [
+      13,
+      18
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.lawful": {
+   "subject_sha": "5be179e45e3fddca843318bb7113e5ded919f80357469170baab71784f97778f",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "The filer's household member was married to someone else until a divorce became final mid-2025, so cohabiting violated state law for part of the year, and the filer answers yes because the relationship is lawful now or was lawful by year end.",
+       "source_text": "p501 p. 19, Local law violated: \"A person doesn’t meet this test if at any time during the year the relationship between you and that person violates local law.\"",
+       "why": "The question \"Did your relationship with this person not violate local law?\" gives no time frame and does not say that a violation at any time during 2025 disqualifies the person. A truthful yes based on the current or year-end status lets in a person the member-of-household test excludes.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The filer's relationship with the household member was lawful, and the filer reads the double negative \"Did your relationship with this person not violate local law?\" as asking whether it violated the law, then answers no.",
+       "source_text": "i1040gi p. 19, Step 4: \"if your relationship didn’t violate local law\"",
+       "why": "A yes/no question phrased with \"not\" can reasonably be answered either way for the same facts. A filer who answers \"no, it didn't violate\" sets the input to false and wrongly loses the qualifying relative.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a636726ab63f46ed6939ddbeed05e73f38f89573fb7c1048b5add1d4b75fc0ff",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.047799999999999995,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.lawful.5be179e45e3f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Step 4, \"A qualifying relative is your...\" through \"Any other person (other than your spouse) who lived with you all year as a member of your household\"; , Joint return, \"If you file a joint return, the person can be related to either you or your spouse.\"",
+      "p. 19, Step 4, \"Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn’t violate local law.\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      19
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.months": {
+   "subject_sha": "3536ce7384c29a243aa96bcf945846b77731caf41f1bae186005d537bf05e075",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A disabled dependent who is not a qualifying child (for example, a qualifying-relative parent) lived with the filer from January until dying in October 2025 but spent one month elsewhere. The person actually lived with the filer more than half of 2025, but the question tells the filer to enter 0 because the home was not the person's home for the entire time they were alive.",
+       "source_text": "i1040gi p. 21, Exception to time lived with you: \"Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025\"",
+       "why": "The text gives a born-or-died person who is not a qualifying child an extra way to count as living with you all year; it does not take away months the person actually lived with you. The question's \"0 otherwise\" makes `dependent.lived_half` false for a person who did live with the filer more than half of 2025, and that can drop them as a Form 2441 qualifying person. The same applies to a person adopted or placed in 2025 who lived with the filer more than half the year but not for the entire time since placement.",
+       "bound": ""
+      },
+      {
+       "kind": "TYPE",
+       "situation": "The accepted answer is a count with no upper bound, but the question and the residency rule deal in months of a single year.",
+       "source_text": "i1040gi p. 17, Step 1: \"Who lived with you for more than half of 2025\"; question: \"Months this person lived with you in 2025 (0–12)\"",
+       "why": "Months lived with you during 2025 cannot exceed 12. The answer should be bounded to match the question's stated range.",
+       "bound": "whole number 0 to 12"
+      }
+     ],
+     "prompt_sha": "32bda75de7ea8016ef3767870464fd3fa7ab2a967e83793fe187fb6c9dbb926a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.084968,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.months.3536ce7384c2.1.response.txt"
+    }
+   ],
+   "type": "Count",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17,
+      21
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Step 1, \"Who lived with you for more than half of 2025\"",
+      "p. 17, Step 1, \"Who lived with you for more than half of 2025\"; , Death or birth of child, \"The same is true if the child lived with you more than half the year except for any required hospital stay following birth.\"; , Kidnapped child, \"You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true.\"; p. 21, Exception to time lived with you (\"the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025\"; \"Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025\")",
+      "p. 21, Kidnapped child, \"For details, see Pub. 501 (Pub. 596 for the EIC)\""
+     ],
+     "cols_pages": [
+      17,
+      21
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      13
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Kidnapped child, \"You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true.\" (a child who lived with you for more than half of 2025 meets the residency test without this treatment)"
+     ],
+     "cols_pages": [
+      13
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.other_claimant": {
+   "subject_sha": "0dfb2b12467fdd774ab7f9262e1dd3cd20a608f4de1897cde7093e97dbf9f7c0",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A 20-year-old full-time student who provided over half of their own support lives with a grandparent who files a return, so the child meets the EIC conditions to be the grandparent's qualifying child but not the dependent conditions, and the filer answers yes.",
+       "source_text": "i1040gi p. 19, Step 4: \"Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025\"; Step 1 (p. 17) includes \"Who didn't provide over half of their own support for 2025\"; p501 p. 15: \"meets the relationship, age, residency, support, and joint return tests\"",
+       "why": "The question accepts a yes under the EIC rules, which drop the support test. That single yes feeds dependent.qc_tiebreak, which needs the dependent-rule test including support, so the person can wrongly fail the qualifying-relative test.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer files jointly, and the child is also their spouse's child who lived with both of them, so the filer truthfully answers yes because the child meets the conditions to be the spouse's qualifying child.",
+       "source_text": "i1040gi p. 17: \"If the child meets the conditions to be a qualifying child of any other person (other than your spouse if filing jointly) for 2025\"; p501 p. 15: \"isn’t a qualifying child of anyone else except your spouse with whom you plan to file a joint return\"",
+       "why": "The question asks about \"any other person\" and drops the exclusion for a spouse on a joint return. A yes based only on the spouse wrongly triggers both tiebreak gates.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A child meets the EIC conditions for another person but not the dependent conditions, or the reverse.",
+       "source_text": "Question: \"under the dependent rules or under the EIC rules (which have no support test)\"",
+       "why": "The two lines need separate determinations: the EIC-rule test for dependent.eic_tiebreak and the dependent-rule test for dependent.qc_tiebreak. A single yes or no joined by \"or\" can't give both, and filers may read \"or\" as either rule or as the rule relevant to them.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "4f3df68d8514e12cd92b9a340ff37fffcddd988bccc4c8527ca66d431082cc69",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06462799999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.other_claimant.0dfb2b12467f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17,
+      19,
+      44
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Step 1, \"If the child meets the conditions to be a qualifying child of any other person ... see Qualifying child of more than one person\"",
+      "p. 44, Qualifying child of more than one person, \"Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits\""
+     ],
+     "cols_pages": [
+      17,
+      19,
+      44
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Qualifying Child of More Than One Person, \"Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person.\"; , Step 4, \"For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid.\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.other_nontaxpayer": {
+   "subject_sha": "70ba8bb7e9318f1ce3ea2db1db86498bf0d166c999a6712f7f97a08b613d5286",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "The person is not the qualifying child of anyone else, and the filer reads the conditional 'If this person meets the conditions to be the qualifying child of another person' as not applying, so they answer 'no'.",
+       "source_text": "i1040gi p. 19, Step 4: \"Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025.\"",
+       "why": "With no other person, the condition is met and the line needs 'yes' (true if no one qualifies). A filer could answer 'no' because there is no such person, and the line would then wrongly report that another taxpayer can claim this person, which blocks the qualifying-relative claim.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "36bf81d22ace7c93a35a13cb24bf9b084d8cc44eb846874637a489c3a9fd601a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.051384,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.other_nontaxpayer.70ba8bb7e931.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Step 4, \"Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025. For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid.\"; , Example 2—return filed to claim refund, \"Your friend files a return only to get a refund of the income tax withheld and doesn’t claim the earned income credit or any other tax credits or deductions.\"; , Child in Canada or Mexico, \"If the persons the child does live with aren’t U.S. citizens and have no U.S. gross income, those persons aren’t “taxpayers,” so the child isn’t the qualifying child of any other taxpayer.\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      15,
+      18
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Qualifying Child of More Than One Person, \"Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person.\"; , Step 4, \"For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid.\""
+     ],
+     "cols_pages": [
+      15,
+      18
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.parent_home_paid": {
+   "subject_sha": "fec87246500b3e5aec3b7958a4518292a2f01f3a43e5717ae4c18bd829f92997",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "e15affc752bb8a0ed83602d36da34458a381409b58dd5443d7f74d435a9cb3d9",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053708,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.parent_home_paid.fec87246500b.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      14,
+      15,
+      22
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Head of Household, Test 1, \"You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent\"",
+      "p. 14, Head of Household, Test 1; p. 15, \"If the person is anyone else, see Pub. 501\"; , Death or birth, \"Your parent for whom you paid, for the entire part of the year your parent was alive, more than half the cost of keeping up the home your parent lived in\"; , \"If you pay more than half the cost of keeping your parent in a rest home or home for the elderly, that counts as paying more than half the cost of keeping up your parent’s main home.\" , Keeping Up a Home, \"Costs you include. Include in the cost of keeping up a home expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home.\" , \"Costs you don’t include. Don’t include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation. Also don’t include the value of your services or those of a member of your household.\" , Note, \"Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you.\"; , Note, \"if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided for that person, rather than support provided by the government or other third party.\"",
+      "p. 22, Social security number, \"You must enter each dependent’s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter “Died” on row (3) of the Dependents section and include a copy of the child’s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
+     ],
+     "cols_pages": [
+      14,
+      15,
+      22
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      9
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.part_year_home": {
+   "subject_sha": "f9cd0024bb54749f8b7cd244ce4dd8d1a11f045ef2ee5f2f2cef7e334f3e3944",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A child born in February 2025 is placed with the filer for adoption in July 2025 and lives with the filer from then to year end, which is more than half the time since placement but not more than half the time the child was alive in 2025.",
+       "source_text": "p503 p. 3: \"a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive in 2025\"; question: \"(or, for a person adopted or placed with you in 2025, more than half of the time since the adoption or placement)\"",
+       "why": "The question's parenthetical tells the filer to measure from placement, so the truthful answer is yes. Line dependent.dc_lived_half then becomes true for the child and dependent care credit, but p503 measures only the time the person was alive in 2025, which gives no.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A person who was both born (or died) in 2025 and adopted or placed in 2025 meets one measure (time alive) but not the other (time since placement).",
+       "source_text": "i1040gi p. 15: \"the child must have lived with you for more than half the part of the year the child was alive\" ... \"Similarly, if you adopted the person ... more than half the time since the person was adopted or placed with you in 2025\"",
+       "why": "The question joins the two measures with \"or\" but presents the adoption measure as a parenthetical exception. A filer could read it as \"use the placement measure only\" or as \"either measure is enough,\" and the two readings give different answers to the one yes/no that both lines use.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "545d7c5ce73e4ca96d0bfb3263eca2715e90be7a9f625dbbd20b63abe25285e6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.075532,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.part_year_home.f9cd0024bb54.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Death or birth, \"To qualify you for head of household filing status, the qualifying person (as defined in Table 4) must be one of the following\"; , \"the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025\"",
+      "p. 9, Death or birth, \"Your qualifying child or qualifying relative who lived with you for more than half the part of the year they were alive\"; , \"more than half the time since the person was adopted or placed with you in 2025\"; , temporary absences, \"or detention in a juvenile facility\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    },
+    {
+     "doc": "p503",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Birth or death of otherwise qualifying person, \"a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive in 2025\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      14,
+      15
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "dependent.placed": {
+   "subject_sha": "a9a875ecc6d55671c48cc1174eddc44c7f2d38f6d95641995e7dee17f2bf4337",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose child came to live with them in 2025 through an informal arrangement, such as a relative or friend handing over care with no agency or court involved, may truthfully answer yes because they consider the child a foster child placed with them, but the help never defines 'eligible foster child'.",
+       "source_text": "i1040gi p. 15: \"A foster child is any child placed with you by an authorized placement agency or by judgment, decree, or other order of any court of competent jurisdiction.\" Question: \"or placed with you as an eligible foster child, during 2025?\"",
+       "why": "The shortened-year rule applies only to a foster child placed by an authorized agency or court order, and the question and help do not state that limit. An informal placement can therefore return yes and wrongly trigger the 'lived with you more than half the time since placed' treatment.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a7f1a59b1a34b569fa0eefeaa1bc09204f94df895b275989485cb0b5a7e23f61",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.043472,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.placed.a9a875ecc6d5.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, \"Similarly, if you adopted the person for whom you kept up a home in 2025, the person was lawfully placed with you for legal adoption by you in 2025, or the person was an eligible foster child placed with you during 2025\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Death or birth, \"To qualify you for head of household filing status, the qualifying person (as defined in Table 4) must be one of the following\"; , \"the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.ptc_files": {
+   "subject_sha": "13d88642cacd1a30f77bfd9ae3f7e0ca32db485508cdd4dafba70cccbfa8ef01",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A married dependent under 65 and not blind has gross income of $5 or more, and their spouse files a separate return and itemizes. Chart B requires that dependent to file, but none of the three tests in the question's parenthetical is met, so the filer answers no and the dependent's modified AGI is left out of line 2b.",
+       "source_text": "i1040gi p. 10, Chart B, Married dependents: \"Your gross income was at least $5 and your spouse files a separate return and itemizes deductions.\"",
+       "why": "The parenthetical lists only the tests for a single dependent under 65 and not blind. A filer who relies on it misses this income-based filing requirement, which Form 8962 line 2b counts.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A single dependent who is blind or age 65 or older has $2,000 of unearned income. The filer applies the $1,350 figure in the question and answers yes, although Chart B sets that dependent's threshold at $3,350, so their modified AGI is wrongly added to line 2b.",
+       "source_text": "Question: \"unearned income over $1,350 ... for a single dependent under 65 and not blind\"; i1040gi p. 10: \"Yes. You must file a return if ... Your unearned income was over $3,350 ($5,350 if 65 or older and blind).\"",
+       "why": "The question gives only the lower thresholds and states no figures for dependents who are blind or 65 or older. A filer with such a dependent is likely to use the printed numbers and over-include.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A parent elects Form 8814 to report a child's interest and dividends over $1,350, so the child files no return. The filer could answer no (the child is not required to file) or yes (the child's unearned income is over $1,350). Line 2b still needs the Form 8814 amounts.",
+       "source_text": "i8962 p. 8, Line 2b: \"If you are filing Form 8814 ... and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.\"",
+       "why": "The question does not say how to answer when the parent's election takes the place of the child's return. A no answer drops amounts that Worksheet 1-2 requires.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8b94a9137f5136d8f582b99c27c6d26718249b3c35bbe5e4b35dde1f951d345b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.058660000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.ptc_files.13d88642cacd.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"",
+      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\", \"Do not include the modified AGI of dependents who are filing a tax return only to claim a refund of tax withheld or estimated tax.\"; , Chart B—For Children and Other Dependents, \"Your unearned income was over $1,350.\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      10
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "dependent.ptc_magi": {
+   "subject_sha": "d839ec18316e1291a6d6301e909241cd89598f4ac1afd4c5ed6cac50b2c8c2d3",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer files Form 8814 for a child dependent and Form 8814, line 4 is more than $1,350; the child files no return, so there is no 'line 11a' to report, yet Worksheet 1-2 needs the child's amounts.",
+       "source_text": "i8962 (2025) p. 8, Line 2b: \"If you are filing Form 8814 ... and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.\"",
+       "why": "The question asks only for figures from the dependent's own return, and no listed refusal covers Form 8814. A truthful filer reports nothing for this child (and the gate would likely answer false), so line 2b leaves out amounts the instructions require.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A dependent who filed Form 2555 could reasonably report the foreign earned income, the separate exclusion lines, or several lines (e.g., 42 and 45) instead of only lines 45 and 50.",
+       "source_text": "i8962 (2025) p. 8, Worksheet 1-2, line 3: \"Enter any amounts for your dependents from Form 2555, lines 45 and 50\"",
+       "why": "The question says only \"plus any Form 2555 amounts\" without naming lines 45 and 50. Reasonable readings give different totals, including double counting the exclusion that line 45 already includes.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "df2581e3ba07aae2119c42e52f4e33f17edaa5db838882c07e87fe1e0fd438c7",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.04328,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.ptc_magi.d839ec18316e.1.response.txt"
+    }
+   ],
+   "type": "Dollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"",
+      "p. 8, Worksheet 1-2, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  },
+  "dependent.qr_all_year": {
+   "subject_sha": "2cc66bfb8906ace4cf5159b8ffca2864d612342dca5cb54cddac864fa565b364",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "58208dd2ac509926a853c252b0d7ae6da78e1881edf1d04a8b68c8611ac968e7",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.051404000000000005,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.qr_all_year.2cc66bfb8906.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Temporary absences, \"A person is considered to live with you as a member of your household during periods of time when one of you, or both, is temporarily absent due to special circumstances\" and \"If the person is placed in a nursing home for an indefinite period of time to receive constant medical care, the absence may be considered temporary.\"; p. 19, Death or birth, \"A person who died during the year, but lived with you as a member of your household until death, will meet this test.\" through \"your main home was the person’s main home for the entire time since the person was adopted or placed with you in 2025.\"; , Step 4, \"Any other person (other than your spouse) who lived with you all year as a member of your household\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Step 4, \"A qualifying relative is your...\" through \"Any other person (other than your spouse) who lived with you all year as a member of your household\"; , Joint return, \"If you file a joint return, the person can be related to either you or your spouse.\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "dependent.relationship": {
+   "subject_sha": "d8a44439a855c790ac00b7b08cf0466e0bc9679dfbbe87faeec865773c938093",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A widowed filer, not filing a joint return, supports their late spouse's grandmother (or a sibling's spouse's parent) who did not live with them all year, and truthfully answers in_law because they call her a grandmother-in-law.",
+       "source_text": "i1040gi p. 19, Step 4: \"Stepbrother, stepsister, stepfather, stepmother, son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law\"; p501 p. 19: \"Your son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\"",
+       "why": "The question's value is \"in_law (step-parent or in-law, ...)\" and does not say which in-laws count. Step 4 lists only six specific in-law relationships, so a grandparent-in-law or other loose in-law passes qr_listed_relative without living with the filer all year, and also passes the Test 2 head of household check.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ac4eb7566edd01469ed2982556695286144d1b57c6fc747ec039878b7740d9ed",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.133428,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.relationship.d8a44439a855.1.response.txt"
+    }
+   ],
+   "type": "Enum(dependent_relationship)",
+   "readers": 5,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      14,
+      17,
+      19,
+      20,
+      21,
+      22
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Head of Household, Test 1, \"You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent\"",
+      "p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)",
+      "p. 17, Step 1, \"Son, daughter, stepchild, foster child, brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them\"",
+      "p. 19, Step 4, \"A qualifying relative is your...\" through \"Any other person (other than your spouse) who lived with you all year as a member of your household\"; , Joint return, \"If you file a joint return, the person can be related to either you or your spouse.\"",
+      "p. 22, Social security number, \"You must enter each dependent’s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter “Died” on row (3) of the Dependents section and include a copy of the child’s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\"",
+      "pp. 17 and 19, Steps 1 and 4, \"A qualifying child is your...\" and \"A qualifying relative is your...\"; p. 20, Adopted child, \"An adopted child includes a child lawfully placed with you for legal adoption\"; p. 21, Foster child, \"A foster child is any child placed with you by an authorized placement agency or by judgment, decree, or other order of any court of competent jurisdiction\"; , Relatives who don't have to live with you, \"Your father, mother, grandparent, or other direct ancestor, but not foster parent\"; , Member of Household or Relationship Test, \"If at any time during the year the person was your spouse, that person can’t be your qualifying relative.\"; , \"Any of these relationships that were established by marriage aren’t ended by death or divorce.\""
+     ],
+     "cols_pages": [
+      14,
+      17,
+      19,
+      20,
+      21,
+      22
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      19
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.self_support": {
+   "subject_sha": "9b64a8ed8561d460f79026a8e98fb22c39d7707fdc07ad5bb8b2edac4c105905",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "572c3b60ba545bbee6bc82b3231ecb22a5945bc71ede63dc8dc32821ea6bb0e5",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.085944,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.self_support.9b64a8ed8561.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Step 1, \"Do you have a child who meets the conditions to be your qualifying child?\"",
+      "p. 17, Step 1, \"Who didn't provide over half of their own support for 2025\"; , Support Test (To Be a Qualifying Child), \"However, to see what is or isn’t support, see Support Test (To Be a Qualifying Relative), later.\"; , \"A person’s own funds aren’t support unless they are actually spent for support.\"; , \"For lodging, the amount of support is the fair rental value of the lodging.\"; , \"You can’t include in your contribution to your child’s support any support paid for by the child with the child’s own wages, even if you paid the wages.\"; , Foster care payments and expenses, \"Payments you receive for the support of a foster child from a child placement agency are considered support provided by the agency.\"; , Scholarships, \"A scholarship received by a child who is a student isn’t taken into account in determining whether the child provided more than half of their own support.\"; , \"If a child receives social security benefits and uses them toward their own support, the benefits are considered as provided by the child.\"; , Total Support, \"Total support includes amounts spent to provide food, lodging, clothing, education, medical and dental care, recreation, transportation, and similar necessities.\"; , Tax-exempt income, \"In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person.\"; , Support provided by the state (welfare, food benefits, housing, etc.), \"Benefits provided by the state to a needy person are generally considered support provided by the state.\"; , \"Similarly, payments you receive for the support of a foster child from a state or county are considered support provided by the state or county.\"; , Person living in their own home, \"The total fair rental value of a person’s home that the person owns is considered support contributed by that person.\"; , Property, \"Property provided as support is measured by its fair market value.\"; , Capital expenses, \"Because the car is bought and owned by your child, the car’s fair market value ($4,500) must be included in your child’s support.\"; , Medical insurance benefits, \"Medical insurance benefits, including basic and supplementary Medicare benefits, aren’t part of support.\"; , Tuition payments and allowances under the GI Bill, \"Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support.\"; , Don’t Include in Total Support, \"1. Federal, state, and local income taxes paid by persons from their own income.\", \"2. Social security and Medicare taxes paid by persons from their own income.\", \"3. Life insurance premiums.\", \"4. Funeral expenses.\" and \"6. Survivors’ and Dependents’ Educational Assistance payments used for the support of the child who receives them.\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      15,
+      19,
+      20,
+      21
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      15,
+      19,
+      20,
+      21
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.spouse_relative": {
+   "subject_sha": "5f8d47acd0bc6925e128494d5cd866ca7152429f5282c01d4babe6f1efc23965",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "97015cf7f0eb1e65cbeed6692a5de11b70892d21dbdab0bf5359318007b54e93",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.04486,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.spouse_relative.5f8d47acd0bc.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Joint return, \"If you file a joint return, the person can be related to either you or your spouse. Also, the person doesn’t need to be related to the spouse who provides support.\"; p. 19, Relatives who don't have to live with you, \"Your child, stepchild, or foster child, or a descendant of any of them\" through \"mother-in-law, brother-in-law, or sister-in-law.\" and \"Any of these relationships that were established by marriage aren’t ended by death or divorce.\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Step 4, \"A qualifying relative is your...\" through \"Any other person (other than your spouse) who lived with you all year as a member of your household\"; , Joint return, \"If you file a joint return, the person can be related to either you or your spouse.\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "dependent.student": {
+   "subject_sha": "87c3327e5375e815c30a102a3a71c5416bd107b6941ebae24163155e413b0911",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "9a2286da0c93dee61b05515e3a2190ebeeca053a0012226a3958322874f3300d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.043196,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.student.87c3327e5375.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17,
+      21
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Step 1, \"Under age 24 at the end of 2025, a full-time student (defined later)\"; p. 21, Full-time student, \"A full-time student is a child who during any part of 5 calendar months of 2025 was enrolled as a full-time student at a school\"; , Student defined, \"1. A full-time student at a school that has a regular teaching staff and course of study, and a regularly enrolled student body at the school; or\"; , Full-time student, \"A full-time student is a student who is enrolled for the number of hours or courses the school considers to be full-time attendance.\"; , Vocational high school students, \"Students who work on “co-op” jobs in private industry as a part of a school’s regular course of classroom and practical training are considered full-time students.\"",
+      "p. 17, Step 1, the age conditions"
+     ],
+     "cols_pages": [
+      17,
+      21
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      13
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      13
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.supported": {
+   "subject_sha": "7204516709895fe63f92ae95cf91535085dc144121a57d917a490572a83f5cce",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "No one person gave over half of a parent's support. The filer gave 45% and a sibling gave 35%, and the sibling signed a multiple support statement (Form 2120) letting the filer claim the parent. The filer truthfully answers no, but the qualifying-relative line needs yes.",
+       "source_text": "i1040gi p. 21, Multiple support agreements: \"special rules may apply that would treat you as having provided over half of the support\"; p501 p. 21: \"you can agree that any one of you who individually provides more than 10% of the person's support, but only one, can claim that person as a dependent\"",
+       "why": "The question asks only whether the filer personally provided over half. It gives no route for the multiple support agreement, which the Step 4 support condition expressly carves in.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A noncustodial divorced parent's child is not anyone's qualifying child. The parents together provided over half of the child's support, and the custodial parent signed Form 8332, but the noncustodial parent alone did not provide over half. That parent truthfully answers no, yet the child is treated as their qualifying relative.",
+       "source_text": "p501 p. 22: \"A child who doesn't meet the requirements to be a qualifying child of either parent will be treated as the qualifying relative of the child's noncustodial parent if all four of the following statements are true\"; i1040gi p. 19: \"But see Children of divorced or separated parents\"",
+       "why": "Under the divorced or separated parents rule, combined parental support plus the release satisfies the support test. The question's wording misses this.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A remarried parent's new spouse, whom the parent does not file jointly with, paid most of the child's support. The parent truthfully answers no, though that support counts as the parent's.",
+       "source_text": "p501 p. 22, Remarried parent: \"If you remarry, the support provided by your new spouse is treated as provided by you.\"; i1040gi p. 20: \"Support of a child received from a parent's spouse is treated as provided by the parent.\"",
+       "why": "The question's list of what counts as yours omits support provided by a new spouse.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "The filer's child was kidnapped by a non-family member. The filer provided over half of the support only for the part of the year before the kidnapping, so the filer truthfully answers no for 2025.",
+       "source_text": "p501 p. 18, Kidnapped child: \"In the year the kidnapping occurred, the child met the tests to be your qualifying relative for the part of the year before the date of the kidnapping.\"; i1040gi p. 19: \"But see ... Kidnapped child\"",
+       "why": "For a kidnapped child, the support test is applied to the part-year before the kidnapping. The question asks about all of 2025.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer pays for adult day care for a non-disabled elderly parent and counts it as support they provided, because the question says to count payments 'for the person's child or dependent care' as yours.",
+       "source_text": "Question: \"count payments you make for the person's child or dependent care as yours\"; p501 p. 21, Childcare expenses: \"you can include these payments in the amount you provided for the support of your child or disabled dependent\"",
+       "why": "The text limits this rule to care of the filer's child or a disabled dependent. The question's wording extends it to any dependent care, and could also be read as care for this person's own child.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8b463fe0979b1984d5c03d035fcda7f8decead9a7fcef3f50aa4e1f33b67cbfb",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.14949199999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.supported.720451670989.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      19,
+      20,
+      21
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Step 4, \"Does any person meet the conditions to be your qualifying relative?\"",
+      "p. 19, Step 4, \"For whom you provided over half of the person's support in 2025\"; p. 21, Public assistance payments; , TANF and other governmental payments, \"those payments are considered support you provided for that person\"; , \"For lodging, the amount of support is the fair rental value of the lodging.\"; , Armed Forces dependency allotments, \"The part of the allotment contributed by the government and the part taken out of your military pay are both considered provided by you in figuring whether you provide more than half of the support.\"; , \"A person’s own funds aren’t support unless they are actually spent for support.\"; , Foster care, \"Payments you receive for the support of a foster child from a child placement agency are considered support provided by the agency.\"; , \"Similarly, payments you receive for the support of a foster child from a state or county are considered support provided by the state or county.\"; , Child’s wages used for own support, \"You can’t include in your contribution to your child’s support any support paid for by the child with the child’s own wages, even if you paid the wages.\"; , Support provided by the state (welfare, food benefits, housing, etc.), \"Benefits provided by the state to a needy person are generally considered support provided by the state.\"; , Total Support, \"Total support includes amounts spent to provide food, lodging, clothing, education, medical and dental care, recreation, transportation, and similar necessities.\"; , Tax-exempt income, \"In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person.\"; , \"Expenses not directly related to any one member of a household, such as the cost of food for the household, must be divided among the members of the household.\"; , Year support is provided, \"The year you provide the support is the year you pay for it, even if you do so with borrowed money that you repay in a later year.\"; , Tax-exempt military quarters allowances, \"These allowances are treated the same way as dependency allotments in figuring support.\"; , Home for the aged, \"the amount of support you provide each year is the lump-sum payment divided by the relative’s life expectancy\"; , Person living in their own home, \"The total fair rental value of a person’s home that the person owns is considered support contributed by that person.\"; , Living with someone rent free, \"you must reduce the amount you provide for support of that person by the fair rental value of lodging the person provides you\"; , Property, \"Property provided as support is measured by its fair market value.\"; , Capital expenses, \"Because you own the car and don’t give it to your child but merely let your child use it, don’t include the cost of the car in your child’s total support.\"; , Medical insurance premiums, \"Medical insurance premiums you pay, including premiums for supplementary Medicare coverage, are included in the support you provide.\"; , Medical insurance benefits, \"Medical insurance benefits, including basic and supplementary Medicare benefits, aren’t part of support.\"; , Tuition payments and allowances under the GI Bill, \"Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support.\"; , Childcare expenses, \"If you pay someone to provide child or dependent care, you can include these payments in the amount you provided for the support of your child or disabled dependent\"; , Don’t Include in Total Support, \"1. Federal, state, and local income taxes paid by persons from their own income.\", \"2. Social security and Medicare taxes paid by persons from their own income.\", \"3. Life insurance premiums.\", \"4. Funeral expenses.\", \"5. Scholarships received by your child if your child is a student.\" and \"6. Survivors’ and Dependents’ Educational Assistance payments used for the support of the child who receives them.\"; , Foster care payments and expenses, \"If you are in the trade or business of providing foster care, your unreimbursed expenses aren’t considered support provided by you.\"; , Lodging, \"Fair rental value includes a reasonable allowance for the use of furniture and appliances, and for heat and other utilities that are provided.\"; , \"If you don’t provide the total lodging, the total fair rental value must be divided depending on how much of the total lodging you provide.\"; , Support provided by the state, \"However, payments based on the needs of the recipient won’t be considered as used entirely for that person’s support if it is shown that part of the payments weren’t used for that purpose.\"; , Social security benefits, \"If spouses each receive benefits that are paid by one check made out to both of them, half of the total paid is considered to be for the support of each spouse, unless they can show otherwise.\"; , Alimony, \"Payments to a spouse that are alimony or separate maintenance payments, or similar payments from an estate or trust, aren’t treated as a payment for the support of a dependent.\"",
+      "p. 20, Multiple support agreements",
+      "p. 21, Married person",
+      "pp. 19–20, Exception to gross income test"
+     ],
+     "cols_pages": [
+      19,
+      20,
+      21
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      15,
+      18,
+      19,
+      20,
+      21,
+      22
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 18, Kidnapped child, \"You can treat a child as your qualifying relative even if the child has been kidnapped, but the following statements must be true.\""
+     ],
+     "cols_pages": [
+      15,
+      18,
+      19,
+      20,
+      21,
+      22
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "dependent.tin": {
+   "subject_sha": "fccecfc7bce047d5f38641ca0e71714d0eed359ff1c80e10ad3fb2cc5474f5f9",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A dependent student whose ITIN or ATIN application was filed before the due date but not issued by then: the filer answers yes, so dependent.edu_student_tin can pass and Form 8863 lines 27–29 get filled.",
+       "source_text": "i8863 p. 3, Who cannot claim a credit: \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\"",
+       "why": "The question counts \"have you applied for an ITIN or ATIN for this person by then\" as yes. The education-credit text requires a TIN actually issued by the due date and has no rule that treats an application as issuance, so a filer with only a pending application is let into the credit.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer has an extension to October but the dependent student's own return is due April 15, and the student's TIN is issued in July: the filer answers yes, but the education-credit test is not met.",
+       "source_text": "i8863 p. 3: \"issued a TIN by the due date of his or her 2025 return (including extensions)\"; question: \"issued on or before the due date of your 2025 return (including extensions)\"",
+       "why": "The question measures from the filer's due date. Form 8863 measures from the student's own due date, which can be earlier, so a TIN issued between the two dates wrongly counts as yes for lines 27–29.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f1f89ec9f2a099c22c98ca0eb75b1168f6b233353ba00d7536445c81781083a5",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.0872,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.tin.fccecfc7bce0.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      18,
+      19,
+      22
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 18, Step 3, question 1, and p. 19, Step 5, question 2; , \"If your ITIN wasn’t included on at least one U.S. federal tax return for the last 3 consecutive tax years, it expires on December 31 of the third consecutive tax year, and must be renewed before being used again on a U.S. federal tax return.\"",
+      "p. 18, Step 3, question 3, and p. 19, Step 5",
+      "p. 18, Step 3, questions 1–4",
+      "p. 22, Social security number, \"You must enter each dependent’s social security number (SSN)\""
+     ],
+     "cols_pages": [
+      18,
+      19,
+      22
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    },
+    {
+     "doc": "p503",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
+     "pages": [
+      3
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9"
+    }
+   ]
+  },
+  "dependent.us_half": {
+   "subject_sha": "fab9c484d31173a919594399ea45cb1d2f68e58a88e136fc28663b1117c84a9d",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer's child, presumed by law enforcement to have been kidnapped by a non-family member during 2025, lived with the filer in the United States for more than half of the pre-kidnapping part of 2025 but not for more than half of the whole year.",
+       "source_text": "i1040gi p. 21, Kidnapped child: \"you may be able to take the child into account in determining your eligibility for ... the earned income credit (EIC)\"; p. 41 TIP: \"If the child didn't live with you for more than half of 2025 because of a temporary absence, birth, death, placement with you for foster or adoption, or kidnapping, see Exception to time lived with you\"",
+       "why": "The help tells the filer that time a kidnapped child was missing does not count, so this filer answers no. Line dependent.eic_child_from_joint takes that answer directly as the EIC residency test, with no kidnapping alternative, so the child fails the EIC test even though the instructions list kidnapping as an exception that can satisfy residency.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "1eb18e69dafe287806dabcb4f1da93abd7f1ebf47d84b0a3096d797bf126caa9",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.083732,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.us_half.fab9c484d311.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      21,
+      41,
+      43,
+      44,
+      45
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 21, Kidnapped child, \"the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC).\" (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment)",
+      "p. 41, Step 3, \"A qualifying child for the EIC is your...\" (relationship AND age AND not filing a joint return AND lived with you in the United States for more than half of 2025)",
+      "p. 41, Step 3, \"Who lived with you in the United States for more than half of 2025\"; p. 43, Exception to time lived with you; p. 44, Members of the military; p. 45, United States"
+     ],
+     "cols_pages": [
+      21,
+      41,
+      43,
+      44,
+      45
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "dependent.work_ssn": {
+   "subject_sha": "7bc433e62b855c9712b32262edb790e157470f58069dcc42799a243a71d66735",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A child born and died in 2025 who never got an SSN may still count for the child tax credit, but a truthful filer answers no, so the line routes the child to false.",
+       "source_text": "i1040gi p. 22: \"For the child tax credit, your child must have a valid SSN... If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter “Died” on row (3) of the Dependents section and include a copy of the child’s birth certificate, death certificate, or hospital records. The document must show the child was born alive.\"",
+       "why": "The cited SSN paragraph gives an exception for a child who was born and died in 2025: the return enters \"Died\" and attaches a birth or death document instead of an SSN. The question asks only whether the person had an SSN valid for employment, so this child gets a no and loses the credit the exception allows.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A child's card says \"Valid for Work Only With DHS Authorization\" and the DHS authorization was valid during 2025 but expired before the filer answers, or the reverse.",
+       "source_text": "i1040gi p. 22: \"if “Valid for Work Only With DHS Authorization” is printed on your child’s social security card, your child has the required SSN only as long as the DHS authorization is valid\"",
+       "why": "The question says \"answer yes only if the DHS authorization is valid\" but gives no date for that test, such as during 2025, at the return due date, or now. Filers with an authorization that lapsed or began at different times could reasonably answer differently.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5ccc1617162e58e5980df647e6c093174640e83e585d77c3ca71587c4d06884f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.048408,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.work_ssn.7bc433e62b85.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      18,
+      22
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 18, Step 3, question 4; p. 22, \"if “Valid for Work Only With DHS Authorization” is printed on your child’s social security card, your child has the required SSN only as long as the DHS authorization is valid\"",
+      "p. 18, Step 3, questions 1–4"
+     ],
+     "cols_pages": [
+      18,
+      22
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "dependent.younger": {
+   "subject_sha": "f140cd19ba981b065372ae668c96082cbae4b9e859e39234057aa2418d72bb76",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "baef5fbb2a773744e5e8b54635a39467267c2d4fc9a5a671da6f6e834763293f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.030216,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.younger.f140cd19ba98.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Step 1, \"and younger than you (or your spouse if filing jointly)\"; , \"if you are married filing jointly, the child must be younger than you or your spouse but doesn't have to be younger than both of you\"",
+      "p. 17, Step 1, the age conditions"
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      13
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      13
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  }
+ }
+}

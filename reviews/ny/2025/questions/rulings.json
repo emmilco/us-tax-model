@@ -1,0 +1,442 @@
+{
+ "rulings": {
+  "unruled:ny_it201.ask.414h#1": {
+   "reason": "Finding 0 changes value (a spouse's 414(h) contributions on a joint return); finding 1 only refuses.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "real, changes value",
+     "evidence": "IT-201-I p. 8, Line 21, \"if shown on any federal Form W-2\". The question asks \"Are you ...\"; a joint filer whose spouse alone is a member answers No, and ny_it201.line21 stays zero (the tool computes no addition; Yes refuses through ny_it201.gate.line21). BUG-0501."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "Membership in the listed systems is in the help only; a non-member public employee answering Yes is refused through ny_it201.gate.line21. Over-refusal. BUG-0501."
+    }
+   ],
+   "bugs": [
+    "BUG-0501"
+   ],
+   "subject_sha": "52901bc445e5e66924ddbd27dd3f26480d550139f3400b8331e7501e4a2f08d2"
+  },
+  "unruled:ny_it201.ask.itemize#1": {
+   "reason": "No defect: married filing separately is refused for the whole return, and a Yes only refuses (IT-196).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "out of scope",
+     "evidence": "s3.mfs refuses a married filing separately federal return, on which the New York return is built; a Yes here also only refuses ny_it201.line34 through ny_it201.gate.itemize (\"This tool takes the New York standard deduction only\")."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "b000806b160da4de2dc989de78c460bbdfa036ec274e7c44eddbcc15aa55aa6c"
+  },
+  "unruled:ny_it2.city_withheld#1": {
+   "subject_sha": "6096fa4d01c52978bb30d5e438dff28e4843027e82e62c9b25475f5aada6dc81",
+   "reason": "No defect: the tool keeps one New York record per federal W-2; there are no continuation records.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "wrong",
+     "evidence": "forms/ny/2025/ny_it2.yaml header: \"one New York record per federal Form W-2 (decision B2), keyed like the federal W-2 entries\"; only boxes 17 and 19 are asked, so no box 12/14 continuation record is created and the withholding is entered once."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:ny_it2.state_withheld#1": {
+   "subject_sha": "369216f53ab2ed27498b4e7a67df167907bcfd1250d503ab1a41face3ade8f48",
+   "reason": "Finding 0 misreads the record structure; finding 1 (W-2c column) is a rare low.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "wrong",
+     "evidence": "ny_it2 is one record per federal W-2 (ny_it2.yaml header, decision B2); no continuation record is asked, so box 17 is entered once."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "real, low",
+     "evidence": "ny_it2 p. 2, Corrected (W-2c): \"Enter the corrected information from the W-2c\". The help names only \"Box 17 of the Form W-2\"; a W-2c filer will usually take the corrected column. Rare.",
+     "bug": "BUG-0521"
+    }
+   ],
+   "bugs": [
+    "BUG-0521"
+   ]
+  },
+  "unruled:ny_it201.ask.529_nonqualified#1": {
+   "subject_sha": "200bdcc0b0faddb568e948cf0d50aa1cc66f9100e9c64dc5d517db14f350d420",
+   "reason": "Finding 0 changes value (New York's definition of nonqualified); finding 1 only refuses.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "real, changes value",
+     "evidence": "IT-201-I p. 8, Line 22: nonqualified withdrawals include 'any withdrawal used to pay tuition ... at elementary or secondary public, private, or religious schools' and transfers to another state's program. These are qualified federally; a filer who used a New York 529 for K-12 tuition answers No and ny_it201.line22 stays zero (Yes refuses through ny_it201.gate.line22).",
+     "bug": "BUG-0550"
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "IT-201-I p. 8, withdrawals on the beneficiary's death or disability and in-program family transfers are not nonqualified. A Yes refuses through ny_it201.gate.line22. Over-refusal.",
+     "bug": "BUG-0550"
+    }
+   ],
+   "bugs": [
+    "BUG-0550"
+   ]
+  },
+  "unruled:ny_it201.ask.abode_part_year#1": {
+   "subject_sha": "a47b17d403fa0a248b322614e7a038e47a1cd45ab6af7facd95e15ba3ce11e48",
+   "reason": "Finding 0 is a low (over-refusal); finding 1 is refused by the ST-141 gate.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "IT-201-I p. 18, Line 59, a period over half a month counts as a month. A short absence answers Yes and ny_it201.gate.use_tax_abode refuses line 59. Over-refusal.",
+     "bug": "BUG-0551"
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "out of scope",
+     "evidence": "An ST-141 filer answers Yes to ny_it201.ask.use_tax_st141, and ny_it201.gate.use_tax_st141 refuses line 59 whatever this answer.",
+     "gate": "ny_it201.gate.use_tax_st141 (refusal on ny_it201.line59)"
+    }
+   ],
+   "bugs": [
+    "BUG-0551"
+   ]
+  },
+  "unruled:ny_it201.ask.city_resident#1": {
+   "subject_sha": "27c7115fff146e8f717f5bf1d1de014b0234b0bff23725b319111a58a65889bf",
+   "reason": "No defect: the tool prepares a return for a full-year City resident only; both cases are refused.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "out of scope",
+     "evidence": "A full-year non-City State resident is outside the target (the form's header: 'for a full-year New York City resident'); the No is refused through ny_it201.gate.part_year_city. Only the refusal's form name (IT-360.1) does not fit a never-City resident.",
+     "gate": "ny_it201.gate.part_year_city (refusal on ny_it201.line1: \"This tool computes the New York City resident tax for a full-year City resident only\")"
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "Either reading refuses the mixed case: 'both' gives No (ny_it201.gate.part_year_city); 'either' gives Yes, and ny_it201.ask.spouse_resident ('was your spouse also a full-year New York State and New York City resident?') then gives No, refusing through ny_it201.gate.spouse_nonresident.",
+     "line": "ny_it201.ask.spouse_resident (ny_it201.gate.spouse_nonresident)"
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:ny_it201.ask.est_late#1": {
+   "subject_sha": "f7d50b75637ca81e8c8720a173e4b3ddb2225b2e0407f5ce217072a8ce4d28df",
+   "reason": "Lows: each reading that diverges gives a Yes, which only refuses (IT-2105.9).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "IT-201-I p. 23, Line 81, underpayment is measured against all prepayments. A Yes makes ny_it201.gate.estimated_penalty true, refusing ny_it201.line81. Over-refusal.",
+     "bug": "BUG-0551"
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "Annualized installments answer Yes and are refused through ny_it201.gate.estimated_penalty. Over-refusal.",
+     "bug": "BUG-0551"
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "real, low",
+     "evidence": "The required annual payment is the smallest of the candidate figures (90% of 2025 tax, 100% or 110% of 2024 tax), so every other reading gives a larger quarter and more Yes answers, which refuse. Over-refusal.",
+     "bug": "BUG-0551"
+    }
+   ],
+   "bugs": [
+    "BUG-0551"
+   ]
+  },
+  "unruled:ny_it201.ask.it225#1": {
+   "subject_sha": "ddb693ff8258fe9c873b2ebc1189615d7b73920aa1a3defcadeebc58016f3097",
+   "reason": "No defect: partnership and S corporation income is refused for the federal return.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "out of scope",
+     "evidence": "The New York return is built on the tool's federal return, where partnership and S corporation income is refused by scope.schedule1 ('partnerships, S corporations ... (Schedule E or a Schedule K-1)'); EA-113 and ES-125 pass-throughs cannot arise.",
+     "gate": "scope.schedule1 (refusal on scope.ready: partnerships, S corporations, estates or trusts, Schedule E or a Schedule K-1)"
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:ny_it201.ask.late_penalty#1": {
+   "subject_sha": "aae55ff10c16e42ea4ee9192ce957a747e134f78bdab7e60e5ca9c56ff936c0f",
+   "reason": "No defect: paying after April 15 is paying late on the question's own words.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "wrong",
+     "evidence": "IT-201-I p. 24: interest runs on tax not paid by April 15, 2026. An extension filer paying with the return after April 15 is 'paying late', and the question names 'a late ... payment penalty or interest'; a Yes refuses through ny_it201.gate.late."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:ny_it201.ask.other_taxes#1": {
+   "subject_sha": "604cec4d70444765aa7b2e37c78368a5d6fe94cffca7ae8e1715e48018e6790e",
+   "reason": "No defect: City other taxes are refused as well.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "wrong",
+     "evidence": "ny_it201.gate.other_taxes refuses both line 45 ('Form IT-201-ATT, Part 2 (and Form IT-230)') and the City other-taxes line ('Form IT-201-ATT, Part 3 (and Form IT-230)'), so a City-only tax is meant to give Yes."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:ny_it201.ask.out_of_state_bond_interest#1": {
+   "subject_sha": "7ed23960a939fcfda72de2031b570f4f55d882bf640a18fc063fc61a2a90e806",
+   "reason": "No defect: pass-through EA-113 cannot arise.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "Partnership and S corporation income is refused on the federal return by scope.schedule1, on which the New York return is built.",
+     "gate": "scope.schedule1 (refusal on scope.ready: partnerships, S corporations, estates or trusts, Schedule E or a Schedule K-1)"
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:ny_it201.ask.owes_use_tax#1": {
+   "subject_sha": "e0d4808de8396f1f26fc0db992541afbf04aae3c65b5429bd7ef099b03bda5da",
+   "reason": "Finding 1 is caught by the ST-141 question; finding 0 is a low.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "real, low",
+     "evidence": "IT-201-I p. 18, additional local use tax when a lower New York local rate was paid. The question asks only about purchases 'without paying New York tax'; the residual is a rate difference (for a City resident at most a fraction of a percent), and the chart path is an income-based estimate. Low.",
+     "bug": "BUG-0551"
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "A vehicle, vessel or snowmobile costs $1,000 or more and a registered business's purchases are 'for a business': ny_it201.ask.use_tax_st141 is Yes for both, and ny_it201.gate.use_tax_st141 refuses line 59, so no chart amount is entered.",
+     "line": "ny_it201.ask.use_tax_st141 (ny_it201.gate.use_tax_st141)"
+    }
+   ],
+   "bugs": [
+    "BUG-0551"
+   ]
+  },
+  "unruled:ny_it201.ask.prior_agi_high#1": {
+   "subject_sha": "865b0d462e79a9eb654b4019ee960f5aca704ddd082463b3efd371b8c64226ed",
+   "reason": "Low: the farmer or fisherman exception is not asked; the line's note records that it only refuses more.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "IT-201-I p. 23, 'and you are not a farmer or a fisherman'. A Yes selects the 110% harbor, a higher bar, so a farmer can only be refused more often (ny_it201.safe_harbor note). Over-refusal.",
+     "bug": "BUG-0551"
+    }
+   ],
+   "bugs": [
+    "BUG-0551"
+   ]
+  },
+  "unruled:ny_it201.ask.prior_full_year#1": {
+   "subject_sha": "242f3d2e99b057ae51b200dfecfa3f1c451f9f00b55b1b7b0bf8792056af0def",
+   "reason": "Low: a No only refuses.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "real, low",
+     "evidence": "IT-201-I p. 23, 'based on a 12-month return'. A 2024 part-year resident who reads 'covering a full 12 months' as residence answers No; ny_it201.est_below_safe_harbor is then true and a balance due is refused. Over-refusal.",
+     "bug": "BUG-0551"
+    }
+   ],
+   "bugs": [
+    "BUG-0551"
+   ]
+  },
+  "unruled:ny_it201.ask.prior_year_tax#1": {
+   "subject_sha": "939d3af06267b3fe9b3c7316dfd3d73d534ebf7c886697a33c7f042cf977c1ab",
+   "reason": "Lows: a 2024 Yonkers or MCTMT liability is rare for a 2025 full-year City resident; the credits reading mostly refuses more.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "real, low",
+     "evidence": "IT-201-I p. 23, Line 79 pools State, City, Yonkers and MCTMT estimated tax. 2025 Yonkers and MCTMT are refused (ny_it201.gate.yonkers, ny_it201.gate.mctmt), so the case needs a 2024-only Yonkers or MCTMT liability, which lowers the harbor and can miss a penalty. Rare.",
+     "bug": "BUG-0551"
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "real, low",
+     "evidence": "'The tax shown on your 2024 return' does not name the line. The tax before credits is the larger figure and only refuses more; a filer subtracting refundable credits could set the harbor too low. Rare.",
+     "bug": "BUG-0551"
+    }
+   ],
+   "bugs": [
+    "BUG-0551"
+   ]
+  },
+  "unruled:ny_it201.ask.special_accrual#1": {
+   "subject_sha": "b38ea3afe49f952bc81d72e6ae856a467abc99bb4373fed0b7ce49a699d21bca",
+   "reason": "No defect: every case is a part-year State or City resident, refused for the return.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "A 2025 move out of New York City is a part-year City resident, refused by ny_it201.gate.part_year_city.",
+     "gate": "ny_it201.gate.part_year_city (refusal on ny_it201.line1: \"This tool computes the New York City resident tax for a full-year City resident only\")"
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "A City part-year resident is refused by ny_it201.gate.part_year_city.",
+     "gate": "ny_it201.gate.part_year_city (refusal on ny_it201.line1: \"This tool computes the New York City resident tax for a full-year City resident only\")"
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "out of scope",
+     "evidence": "A Buffalo resident is not a full-year City resident and is refused by ny_it201.gate.part_year_city; the question is never reached with a computed return.",
+     "gate": "ny_it201.gate.part_year_city (refusal on ny_it201.line1: \"This tool computes the New York City resident tax for a full-year City resident only\")"
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "out of scope",
+     "evidence": "A filer who moved into New York State in 2025 is a part-year State resident, refused by ny_it201.gate.part_year_state ('Form IT-203').",
+     "gate": "ny_it201.gate.part_year_state (refusal on ny_it201.line1)"
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:ny_it201.ask.spouse_resident#1": {
+   "subject_sha": "93ef5c6b182c5cfade27b38282a3870da1f708e1ca968d65f7aff025e6bb98b9",
+   "reason": "No defect: a spouse outside the City cannot be computed by a City-only return.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "The return computes City tax for full-year City residents only; a spouse who was not a full-year City resident is refused, by ny_it201.ask.city_resident ('you (and your spouse, on a joint return)') or here. Only the refusal's remedy names the State-residence rule.",
+     "gate": "ny_it201.gate.spouse_nonresident; ny_it201.gate.part_year_city"
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:ny_it201.ask.state_resident#1": {
+   "subject_sha": "6b435c4c21def0b59626cc78d466fbb3dc6514fab9c10dce482a9de5397ed677",
+   "reason": "Findings 0 and 1 are lows (over-refusal); finding 2 is refused by the spouse gate.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "real, low",
+     "evidence": "IT-201-I p. 30: the military exception applies to the 184-day test, not to domicile. The question's 'Answer No ... if you were in active military service' sends a New York-domiciled servicemember out through ny_it201.gate.part_year_state. Over-refusal.",
+     "bug": "BUG-0551"
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "real, low",
+     "evidence": "IT-201-I p. 30: student housing is only not a permanent place of abode; a domiciled student is still a resident. 'Answer No ... if your only New York residence was undergraduate student housing' refuses. Over-refusal.",
+     "bug": "BUG-0551"
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "The joint election taxing both as residents is outside the tool: ny_it201.gate.spouse_nonresident refuses ('this tool does neither').",
+     "gate": "ny_it201.gate.spouse_nonresident (refusal on ny_it201.line1)"
+    }
+   ],
+   "bugs": [
+    "BUG-0551"
+   ]
+  },
+  "unruled:ny_it201.ask.use_tax_st141#1": {
+   "subject_sha": "ec43f6b444abcd8bf452ebfb87259a90f171f6731288b07e13d68c009ad3b6ba",
+   "reason": "Lows: both cases answer Yes and are refused, where line 59 should be zero.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "IT-201-I p. 18, a registered business's purchases are not reported on line 59. A Yes refuses through ny_it201.gate.use_tax_st141. Over-refusal.",
+     "bug": "BUG-0551"
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "IT-201-I p. 18, vehicle use tax is paid to the DMV. A Yes refuses. Over-refusal.",
+     "bug": "BUG-0551"
+    }
+   ],
+   "bugs": [
+    "BUG-0551"
+   ]
+  },
+  "unruled:ny_it201.ask.yonkers#1": {
+   "subject_sha": "fa5e5637ae6fc8c758d15327a2a2c1d65cda7128a3536257b935aa33c3d835bd",
+   "reason": "Finding 1 is refused for the return (married filing separately); finding 0 is a low.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "real, low",
+     "evidence": "IT-201-I p. 5, Item D2, 'maintained or had use of', including quarters 'maintained for your primary use by another person, family member, or employer'. A full-year City resident with such Yonkers quarters answers No and the Yonkers surcharge is not refused. Rare.",
+     "bug": "BUG-0551"
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "out of scope",
+     "evidence": "s3.mfs refuses a married filing separately federal return, on which the New York return is built.",
+     "gate": "s3.mfs"
+    }
+   ],
+   "bugs": [
+    "BUG-0551"
+   ]
+  },
+  "unruled:ny_it201.line79_amount#1": {
+   "subject_sha": "f2324e55def5c8a42c96dafce466991795a14af3c8d7a5517da221450ae169e9",
+   "reason": "No defect: an amount above line 77 is refused.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "TYPE",
+     "class": "covered",
+     "evidence": "ny_it201.gate.line79_over ('Line 79 is more than line 77') refuses ('Line 79 more than the overpayment').",
+     "line": "ny_it201.gate.line79_over"
+    }
+   ],
+   "bugs": []
+  }
+ },
+ "baseline": {}
+}

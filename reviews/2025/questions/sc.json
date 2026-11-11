@@ -1,0 +1,3178 @@
+{
+ "form": "sc",
+ "reviews": {
+  "sc.at_risk": {
+   "subject_sha": "8eb6780e5301bcf641a73150d524a9ce6c0727cb8fb4a28142fc7997f22a60d8",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose only nonrecourse loan is qualified nonrecourse financing borrowed to hold real property would answer no, so box 32b gets checked even though the instructions treat that financing as an exception.",
+       "source_text": "Question: 'Answer no if any of these is invested in it: a nonrecourse loan used to finance the business, buy property used in it, or buy the business, that is not secured by your own property ... and that you are not personally responsible to repay'. i1040sc pp. 14-15: 'However, there is an exception for certain nonrecourse financing borrowed by you in connection with holding real property. See the Instructions for Form 6198 and Pub. 925.'",
+       "why": "The question leaves out the exception for qualified nonrecourse financing on real property. Because of that, a truthful answer would mark amounts as not at risk when the at-risk rules count them as at risk, and the 32b line would be set when it should not be.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "cfbbf27e831057d62e66e43a82af57bc66516a7deb55a3876affc51780887d4a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.059292,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.at_risk.8eb6780e5301.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Line 32, Some investment is not at risk",
+      "pp. 14-15, Line 32, At-risk rules and Figuring your loss"
+     ],
+     "cols_pages": [
+      14,
+      15
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "sc.f7206_line1": {
+   "subject_sha": "c777293e550deb2289c81d26e7e42bb372f38052831ead15d5ed51bd15019619",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A retired public safety officer had 2025 premiums for this business's plan paid from retirement plan distributions that were nontaxable (up to $3,000), and reports them in the total because the question never excludes them.",
+       "source_text": "f7206 (2025) line 1: \"But don't include the following... • Any amounts paid, not to exceed $3,000, from retirement plan distributions that were nontaxable because you are a retired public safety officer.\"; i1040gi p. 95: \"Amounts paid for health insurance coverage from retirement plan distributions that were nontaxable because you are a retired public safety officer can't be used to figure the deduction.\"",
+       "why": "The question lists the subsidized-plan months and long-term care as exclusions but omits this one. A truthful answer therefore overstates line 1 and line 3 by up to $3,000.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "In December 2025 a filer prepaid premiums for 2026 coverage and includes them, because the question asks for the total 'paid in 2025' without limiting it to coverage for 2025.",
+       "source_text": "f7206 (2025) line 1: \"Enter the total amount paid in 2025 for health insurance coverage established under your business ... for 2025 for you, your spouse, and your dependents.\"",
+       "why": "The form counts only 2025 payments for 2025 coverage. The question's wording also takes in 2025 payments for coverage of other years.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "6352611ab5169d3d74897f9aab6bca1a7047c6ff572a27fec3d0bec76889a983",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06670000000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.f7206_line1.c777293e550d.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f7206",
+     "revision": "2025; created 2025-10-02",
+     "text_sha256": "1f54af11e092a24258ac71f29d2bcfeeda1d6100ca332357d4569eea889e1dbb",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 7206 (2025), line 1; ; , \"A qualified small employer health reimbursement arrangement (QSEHRA) is considered to be a subsidized health plan maintained by an employer\"",
+      "Form 7206 (2025), line 3"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "e3b265efad583dd859c584d4e7e8a17d7b6e927878922ab5f020e2ff79a18d87"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      94,
+      95
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 95, Schedule 1, line 17, Exceptions; "
+     ],
+     "cols_pages": [
+      95
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i7206",
+     "revision": "2025",
+     "text_sha256": "88aebffe01e22b57dadeb703483459075718cb0b2514fe8f00185975cfbeef3a",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      1,
+      2
+     ],
+     "cols_sha256": "5bfa308e7e4634d4a0162d76b4af6a4182b8539a390109360875303222231cfe"
+    }
+   ]
+  },
+  "sc.hi_screen": {
+   "subject_sha": "9e0ff9f43b8a1fbaf5cacbfd5eb222c1f527143230ca3af1e4f384354c7a5f21",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "On a joint return where this business and its health plan belong to the spouse, a filer cannot tell whether 'you' in 'you file Form 2555', 'you were a more-than-2% shareholder of an S corporation', 'you used an optional method' and 'you are a retired public safety officer' means the business owner or the person answering, because only the last item adds '(yours or your spouse's)'.",
+       "source_text": "i1040gi p. 95: 'Use Form 7206 instead of the Self-Employed Health Insurance Deduction Worksheet ... if any of the following applies ... • You file Form 2555.'; i7206 p. 1: 'You received wages in 2025 from an S corporation in which you were a more-than-2% shareholder.'",
+       "why": "The conditions apply to the person whose business carries the insurance plan. A filer who reads 'you' as themselves rather than the spouse who owns the business could answer no when the spouse files Form 2555 or is the S corporation shareholder, or yes when only the non-owner meets a condition. The two readings give different gate results.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "4b08bccb567f195839870b3c38facee962ac0a94a25d2da18accb080cb6674ea",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.062556,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.hi_screen.9e0ff9f43b8a.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      95
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 95, Schedule 1, line 17, Exceptions",
+      "p. 95, Schedule 1, line 17, Exceptions, \"Use Pub. 974 instead of the worksheet ... if the insurance plan ... was obtained through the Marketplace, and advance payments of the premium tax credit were made or you are claiming the premium tax credit\"; , \"the total of the amounts entered for each person on line 2 of all Form(s) 7206 can’t be more than the appropriate limit shown on line 2 for that person\" (refused, owner ruling)"
+     ],
+     "cols_pages": [
+      95
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i7206",
+     "revision": "2025",
+     "text_sha256": "88aebffe01e22b57dadeb703483459075718cb0b2514fe8f00185975cfbeef3a",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      1,
+      2
+     ],
+     "cols_sha256": "5bfa308e7e4634d4a0162d76b4af6a4182b8539a390109360875303222231cfe"
+    }
+   ]
+  },
+  "sc.hi_uses": {
+   "subject_sha": "07209fc1a1b56e56d205cee683dfe7f5fce2010d4246747a57710bc2acd529d2",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A sole proprietor who paid only dental, vision or qualified long-term care premiums answers No, because the question asks only about \"health insurance\" and never says these count.",
+       "source_text": "i1040gi p. 94, Line 17: \"the amount you paid for health insurance (which includes medical, dental, and vision insurance and qualified long-term care insurance)\"",
+       "why": "An ordinary filer would read \"health insurance\" as medical coverage only. A No gives zero on line 14, even though Form 7206 lines 1–2 would count those premiums.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A self-employed filer who voluntarily pays Medicare premiums for coverage in their own name answers No, because they don't see Medicare as insurance \"established under this business.\"",
+       "source_text": "i1040gi p. 95: \"Medicare premiums you voluntarily pay to obtain insurance in your name that is similar to qualifying private health insurance can be used to figure the deduction.\"",
+       "why": "The question doesn't say that Medicare premiums can count as a policy in your own name under the business. A filer would likely answer No, and line 14 would be zero when a deduction is allowed.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "d697531a0f9310b8cef7ed6f64f980fcff2c97370b9c976aa20892fd66e5b1db",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.07648,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.hi_uses.07209fc1a1b5.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      94,
+      95
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 94–95, Schedule 1, line 17, \"The insurance plan must be established under your business ... the policy can be either in your name or in the name of the business\" and \"Your personal services must have been a material income-producing factor in the business\""
+     ],
+     "cols_pages": [
+      95
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f7206",
+     "revision": "2025; created 2025-10-02",
+     "text_sha256": "1f54af11e092a24258ac71f29d2bcfeeda1d6100ca332357d4569eea889e1dbb",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 7206 (2025), line 14, \"Enter the smaller of line 3 or line 13 here and on Schedule 1 (Form 1040), line 17\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "e3b265efad583dd859c584d4e7e8a17d7b6e927878922ab5f020e2ff79a18d87"
+    }
+   ]
+  },
+  "sc.ho_home_sqft": {
+   "subject_sha": "1d7e1dc4eac579e2c1b76d19a0017390cff52948e040d94804fde1ddb2058fd2",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "9e5319383863aa4b87b0aca53d4692ddab21e94d4083fc91ad1a0c3a73fca5c0",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.0286,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.ho_home_sqft.1d7e1dc4eac5.1.response.txt"
+    }
+   ],
+   "type": "Count",
+   "readers": 0,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 30, \"Simplified method filers only: Enter the total square footage of (a) your home\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    }
+   ]
+  },
+  "sc.ho_other": {
+   "subject_sha": "29d341c4b68cdcd6efc78bbeaea0585e69c5299bda8e798764f78e278e558eae",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer runs two or more of their own businesses from the same home, each on its own Schedule C. The question asks only about sharing the area with someone else's business, so the filer truthfully answers no, and the tool could allow up to 300 square feet for each business.",
+       "source_text": "i1040sc p. 10: \"If you conduct more than one business that qualifies for this deduction in your home, your election to use the simplified method applies to all your qualified business uses of your home. You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home ... Allocate the actual square footage used (up to the maximum 300 square feet) among your qualified business uses\"",
+       "why": "The 300-square-foot cap is shared across all of the filer's own home businesses, and the area must be allocated among them. None of the listed conditions covers the filer's other businesses, so this case is not screened even though the per-business figure needs that allocation.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "Spouses run the business as a qualified joint venture and must split the home-office square footage between them. None of the listed items applies, so the filer answers no.",
+       "source_text": "i1040sc p. 11, Line 2: \"If you and your spouse conducted the business as a qualified joint venture, split the square feet between you and your spouse in the same manner you split your other tax attributes.\"",
+       "why": "Line 2 needs a split square-footage figure for qualified joint venture spouses. The question does not ask about that split, and an ordinary filer would not treat a spouse's share as \"someone else's business.\"",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "7399d86cfaaf9438b730e6273fb27913d82f717899cfa499e86ddb936411488b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06748799999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.ho_other.29d341c4b68c.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      10,
+      11,
+      12,
+      13
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Line 30; pp. 10-13, Instructions for the Simplified Method Worksheet, Daycare Facility Worksheet, Business use of more than one home, Shared use and Part-year use or area changes; p. 10, Electing to use the simplified method, \"on a timely filed, original federal income tax return for that year\"",
+      "pp. 10-13, Line 30 and the Simplified Method Worksheet"
+     ],
+     "cols_pages": [
+      10,
+      13
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "sc.ho_sqft": {
+   "subject_sha": "8af4d64fdb41fec45ce299e9ec0cc46945716ec7a0b36a70d3e0eb7c079a0f50",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A family daycare provider uses an area regularly for daycare but not exclusively, for example as a family room in the evenings, and so leaves that area out because the question asks only for space used 'regularly and exclusively' or for storage.",
+       "source_text": "i1040sc p. 10: 'multiplying the area (measured in square feet) used regularly and exclusively for business, regularly for daycare, or regularly for storage of inventory or product samples, by $5'",
+       "why": "Daycare space only has to be used regularly; the hours fraction on line 3b handles non-exclusive use. The question names only the exclusive-use and storage cases, so a truthful daycare filer reports too little or zero.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer shares the business area with a roommate or spouse who runs a separate qualifying business, or runs this business with a spouse as a qualified joint venture, and enters the whole area used.",
+       "source_text": "i1040sc p. 13: 'you may not include the same square feet to figure your deduction as the other person. You must allocate the shared space'; p. 11 Line 2: 'split the square feet between you and your spouse in the same manner you split your other tax attributes'",
+       "why": "The question asks for 'the square feet of your home used ... for this business' and does not ask for the filer's allocated share. The shared or joint-venture space is then claimed in full by more than one person.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer runs two qualifying businesses in the home, each in its own area, for example 200 and 250 square feet, and answers this question truthfully on each Schedule C.",
+       "source_text": "i1040sc p. 10: 'You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home that qualify for this deduction. Allocate the actual square footage used (up to the maximum 300 square feet) among your qualified business uses'",
+       "why": "Each Schedule C gets its own answer, and only the per-answer 300 check applies. Together the two schedules claim 450 square feet against a 300 square-foot limit shared by all the businesses.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer used two homes for the same business in 2025 and counts the business area in both homes.",
+       "source_text": "i1040sc p. 13: 'If you used more than one home for the same business during 2025, you may elect to use the simplified method for only one home; you must file a Form 8829 ... for any additional home'",
+       "why": "'The square feet of your home' does not limit the answer to the single home chosen for the simplified method. Area claimed on Form 8829 for the other home is counted again here.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "A filer starts business use partway through the year, moves, or changes the area during the year, as in the Finley example (400 square feet from July 20).",
+       "source_text": "i1040sc p. 13: 'your deduction is limited to the average monthly allowable square footage ... adding the amount of allowable square feet you used in each month and dividing the sum by 12 ... can't take more than 300 square feet into account for any 1 month ... less than 15 days in a month, use -0-'; p. 11 Line 2: 'Do not enter more than 300 square feet or, if applicable, the average monthly allowable square footage'",
+       "why": "Line 2 needs the average monthly allowable square footage: each month capped at 300, months with under 15 days of use set to zero, and the total divided by 12 (125 in the Finley example). The question asks for the actual area used, which gives 400 in that example.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose business area was not used for all of 2025 reads 'throughout 2025' and must decide what to report.",
+       "source_text": "Question: 'used regularly and exclusively for this business ... throughout 2025'",
+       "why": "The filer can reasonably read this as asking for space used for the whole year, giving 0 for part-year space, or for the space used at any time during the year, giving the full area. Neither reading produces the average monthly allowable square footage that line 2 needs.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5775b8859e4ee2fe70685b82be5dc910f31013de7980ecc4e25655d492f8f755",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.084356,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.ho_sqft.8af4d64fdb41.1.response.txt"
+    }
+   ],
+   "type": "Count",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      10,
+      11,
+      12,
+      13
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Simplified method, \"You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home ... Allocate the actual square footage used (up to the maximum 300 square feet) among your qualified business uses\"",
+      "p. 12, Simplified Method Worksheet, line 2",
+      "p. 12, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method",
+      "p. 12, Simplified Method Worksheet, lines 3c and 4 (line 3b is 1.0 without daycare)",
+      "pp. 10-13, Line 30, the Simplified Method Worksheet and its instructions"
+     ],
+     "cols_pages": [
+      10,
+      13
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "sc.ho_uses": {
+   "subject_sha": "ad42f32ef2fc3afb8408ea69a9484687068f07e45138b895a722bc431939ea62",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A family daycare provider uses part of the home regularly for daycare but not exclusively, so the deduction is allowed, yet the question's parenthetical lists only exclusive business use or inventory/sample storage, and the filer answers no.",
+       "source_text": "i1040sc p. 10, Simplified method: \"the area (measured in square feet) used regularly and exclusively for business, regularly for daycare, or regularly for storage of inventory or product samples\"; p. 11, Line 3b: \"If you did not use the part of your home exclusively for providing daycare, complete the Daycare Facility Worksheet\"",
+       "why": "The text treats regular daycare use as a qualifying use even without exclusive use. A filer reading the parenthetical as the definition would answer no, and line 30 would be zero when a deduction is allowed.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer uses a room regularly and exclusively for the business but fails another qualification test (for example, it is not the principal place of business), answers yes to the parenthetical, and gets a line 30 deduction.",
+       "source_text": "Question: \"(a part of your home used regularly and exclusively for the business, or regularly for storing inventory or product samples)\"; i1040sc p. 13: \"The simplified method is not an alternative to the exclusivity and other tests that must be met in order to qualify for this deduction. For more information about qualifying business uses, see Qualifying for a Deduction in Pub. 587.\"",
+       "why": "The parenthetical reads as a full test, so a filer who meets only the regular-and-exclusive test answers yes even though the other Pub. 587 tests are not met. The lines then compute a deduction the text does not allow.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "6115051eec2e88b94383b7ed40ba2127deecfa2e05c6fb9beca2eca84c0eeb00",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.073232,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.ho_uses.ad42f32ef2fc.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      10,
+      11,
+      12,
+      13,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Line 30, Business use of your home; Pub. 587 referenced",
+      "p. 10, Simplified method, \"If you conduct more than one business that qualifies for this deduction in your home, your election to use the simplified method applies to all your qualified business uses of your home. You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home\" (owner: refused)",
+      "p. 10, Simplified method, \"You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home that qualify for this deduction\"",
+      "p. 14, Reporting your expenses for business use of the home, \"Include the amount from line 5 of the Simplified Method Worksheet on line 30\"",
+      "pp. 10-13, Line 30 and the Simplified Method Worksheet"
+     ],
+     "cols_pages": [
+      10,
+      13,
+      14
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "sc.line1": {
+   "subject_sha": "f798335179734dd48b9cbb9f06cef48a91d5ea868bf63480d13434e81d8f4601",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer is a statutory employee whose Schedule C covers income from a Form W-2 with the 'Statutory employee' box checked. Reading 'gross receipts or sales of this business,' they would not enter their W-2 box 1 wages.",
+       "source_text": "i1040sc p. 5, Statutory employees: \"Enter your statutory employee income from box 1 of Form W-2 on line 1 of Schedule C and check the box on that line.\" f1040sc line 1: \"check the box if this income was reported to you on Form W-2 and the 'Statutory employee' box on that form was checked\"",
+       "why": "The question names Forms 1099-NEC, 1099-K and other Forms 1099 but never mentions statutory employee wages from Form W-2. A truthful filer would leave out an amount that line 1, and so line 3, must include.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Spouses who elected qualified joint venture treatment each file a separate Schedule C. Asked for the 'gross receipts or sales of this business,' a spouse would enter the business's total receipts instead of their own share.",
+       "source_text": "i1040sc p. 3, Making the election: \"divide all items of income, gain, loss, deduction, and credit attributable to the business between you and your spouse based on your respective interests in the business... Enter your share of the applicable income, deduction, or (loss) on the appropriate lines of your separate Schedule C\"",
+       "why": "The question asks for receipts 'of this business' without limiting them to the filer's share. In a qualified joint venture, both spouses would report the full receipts, so they would be counted twice across the two Schedules C.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "2605660472312674f91b0c9e769a7b50f049fd92a95b761dc749ca7855f97202",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.167904,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line1.f79833517973.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 1, \"Enter gross receipts from your trade or business. Be sure to check any Forms 1099 you received\"; p. 9, Line 23, \"If you collected this tax from the buyer, you must also include the amount collected in gross receipts or sales on line 1\"; p. 6, Name, image, likeness (NIL) income, \"However, report royalties and other NIL income that is not self-employment income on Schedule E instead\"",
+      "pp. 2-15, the items named in the screens of this Schedule C"
+     ],
+     "cols_pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 3"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    }
+   ]
+  },
+  "sc.line10": {
+   "subject_sha": "d544b8d8916a9c6169b8bb0baab579c65c81e59f5118728c5de6b8a72c4ad443",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "An accrual-method filer incurred commissions in 2025 that it will not pay until 2026, so line 10 needs them but a truthful answer to 'you paid' leaves them out.",
+       "source_text": "i1040sc p. 7, Line 10: \"Enter the total commissions and fees for the tax year.\" (Schedule C item F allows the Accrual method)",
+       "why": "The text asks for the commissions and fees deductible for the tax year under the filer's accounting method. The question asks only what the filer paid, which matches the cash method only.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who is not a dealer paid a broker's commission to sell a business asset and never capitalized it, so truthfully reports it as 'not capitalized'.",
+       "source_text": "i1040sc p. 7, Line 10: \"Generally, commissions and other fees paid to facilitate the sale of property must be capitalized. However, if you are a dealer in property, enter on line 10 ...\"",
+       "why": "'Not capitalized' reads as a description of what the filer actually did, not as a rule that requires capitalization. Sale-facilitating commissions that must be capitalized therefore get into line 10, and the dealer exception is never explained.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer includes commissions paid in 2024 or 2026 (for example, a January 2026 payment), because the question gives no time frame.",
+       "source_text": "Question: \"Commissions and fees you paid (not capitalized and not deducted elsewhere)\"; i1040sc p. 7: \"Enter the total commissions and fees for the tax year.\"",
+       "why": "The question does not limit the amount to the 2025 tax year, so amounts from other years can be included.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "06ddf6aadc9a60b20d63d128a99d98174434019b24af2966775db13b7a5b7555",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.078008,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line10.d544b8d8916a.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 10"
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line11": {
+   "subject_sha": "5be13e55ab51b24681890e039962ae874bdbcfae9ebf794871a14d0e2c2dc2a9",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "An accrual-method business incurs contract labor costs in 2025 that it has not paid by year end, or pays in 2025 for services accrued and deducted in 2024.",
+       "source_text": "i1040sc p. 7, Line 11: \"Enter the total cost of contract labor for the tax year.\" (f1040sc p. 1, line F, Accounting method: Cash / Accrual)",
+       "why": "The question asks for \"Payments\" and gives no year, so an accrual filer would report cash paid instead of the cost incurred for the tax year. Unpaid 2025 costs are left out, and payments for prior-year costs may be pulled in.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer pays an independent contractor for work that is deducted somewhere other than lines 17, 21, 26 or 37, such as repairs to a home office claimed through Form 8829 on line 30, or labor capitalized into an asset's basis.",
+       "source_text": "i1040sc p. 7, Line 11: \"Do not include contract labor deducted elsewhere on your return, such as contract labor includible on line 17, 21, 26, or 37.\" Question: \"(not included on lines 17, 21, 26 or 37)\"",
+       "why": "The instructions give those four lines only as examples (\"such as\"), but the question makes them a closed list. A truthful filer would include contract labor deducted or capitalized elsewhere, so it would be counted twice.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "cf5213bfc06c0e9dcb6d38742b7236ef2c64a2a487837806a2a1a99807dfb231",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.079304,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line11.5be13e55ab51.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 11"
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line14": {
+   "subject_sha": "762a2edddb36776627eec870cf911b737c71ca73ec6125d5d40715434ed18cdf",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A sole proprietor makes contributions on their own behalf to a dependent care assistance program and has a deductible amount figured on Form 2441, but answers zero because the question says \"not for yourself.\"",
+       "source_text": "i1040sc (2025) p. 7, Line 14: \"If you made contributions on your behalf as a self-employed person to a dependent care assistance program, complete Form 2441, Parts I and III, to figure your deductible contributions to that program.\"",
+       "why": "The instructions put the deductible self-employed dependent care assistance contributions on line 14. Only self-employed contributions for group-term life insurance and accident and health plans are kept off line 14. The blanket \"not for yourself\" wording therefore leaves out an amount the line needs.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "An employer that claims the small employer health insurance premiums credit on Form 8941 reports its full contributions to employee health plans, so line 14 is not reduced by the credit.",
+       "source_text": "i1040sc (2025) p. 7, Line 14: \"You must reduce your line 14 deduction by the amount of any credit for small employer health insurance premiums determined on Form 8941.\"",
+       "why": "The question asks for gross \"Contributions to employee benefit programs\". Line 14 needs that amount after it is reduced by the Form 8941 credit, so line 28 and the section 179 business income figure come out too high.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b650da4f254cc0f38d370e6bf8670aa1c68547f55db089fb5515ecb3bf1c0f09",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.080932,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line14.762a2edddb36.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      7,
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 7-8, Line 14"
+     ],
+     "cols_pages": [
+      7,
+      8
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line15": {
+   "subject_sha": "5e9aa414ce3c66adff57e811e72412a50a583bcbc8850241c2bc34e8237adbe9",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A sole proprietor who pays accident and health insurance premiums for employees could read the question as asking for those premiums, because it excludes only health insurance 'for yourself'. Those premiums also belong on line 14, so they would be counted twice in lines 28 and 28_pre179.",
+       "source_text": "i1040sc p. 8, Line 15: \"Deduct on line 14 amounts paid for employee accident and health insurance.\" Question: \"Premiums for business insurance (not health insurance for yourself, ...)\"",
+       "why": "The question excludes only the filer's own health insurance, so employee accident and health premiums seem to belong in the answer. Line 14 (sc.line14), which feeds the same sums, already holds them, so this figure would be too large.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "d6bdcc998dba38131049dde77673ee00e4161b9e946be1b50eb2779af522d1d2",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.077972,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line15.5e9aa414ce3c.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      8,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 15; p. 14, Line 30, \"Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home\""
+     ],
+     "cols_pages": [
+      8,
+      14
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line16a": {
+   "subject_sha": "4cdef80fc38da3ca99290a8e86810f8ec2c76111eea9690041eeb79d734a580d",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who must file Form 8990 has business interest limited for 2025 and truthfully enters all the mortgage interest paid, not the reduced amount.",
+       "source_text": "i1040sc p. 8: \"If you must file Form 8990, figure the limit on your business interest expenses on Form 8990 before completing lines 16a and 16b. ... report the reduced interest on lines 16a and 16b. The interest you can’t deduct this year will carry forward to next year on Form 8990.\"",
+       "why": "The question asks for 'Interest you paid for 2025' and never mentions the Form 8990 limit, so the filer reports the full amount. Line 16a needs only the allowed part; the disallowed part is carried forward.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who figures business use of the home on Form 8829 (not the simplified method) includes the business part of the home mortgage interest on line 16a.",
+       "source_text": "f1040sc p. 1, Part II: \"Enter expenses for business use of your home only on line 30.\"; line 30: \"Expenses for business use of your home. Do not report these expenses elsewhere. Attach Form 8829\"",
+       "why": "The question excludes home mortgage interest only in a parenthetical tied to the simplified method. A Form 8829 filer can read that as permission to put the business part of home mortgage interest on line 16a. That amount belongs on Form 8829 and line 30, so line 28 would count it twice.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "1d55bad1a3952e73b2c3677105cb8f0fa5f621f1ae3c7ff1f18497b0aa43075c",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.088376,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line16a.4cdef80fc38d.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      8,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Lines 16a and 16b, How to report; p. 14, Line 30, \"You can’t deduct any excess mortgage interest, excess real estate taxes, or excess casualty losses on Schedule C for this home\""
+     ],
+     "cols_pages": [
+      8,
+      14
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line16b": {
+   "subject_sha": "a3818c53a06488da8eeadd4f11aa84d40736aa0f9de1ae7498b819821e15da74",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who must file Form 8990 and whose business interest is partly disallowed this year would enter all of the other business interest paid, including the part that carries forward.",
+       "source_text": "i1040sc (2025) p. 8, Lines 16a and 16b: \"If you must file Form 8990, figure the limit on your business interest expenses on Form 8990 before completing lines 16a and 16b ... report the reduced interest on lines 16a and 16b. The interest you can't deduct this year will carry forward to next year on Form 8990.\"",
+       "why": "The question asks for 'Other interest on business debt' and never says to reduce it to the amount allowed after the Form 8990 limit. Interest that is disallowed and carried forward would flow into line 28 and the line 28 helper.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose interest on a mortgage for business real property must be capitalized (for example, added to basis under the uniform capitalization rules), and who did not receive a Form 1098 for it, would include that interest.",
+       "source_text": "i1040sc (2025) p. 8, How to report: \"Don't include mortgage interest that must be capitalized, for example, added to basis. See Pub. 551, under Uniform Capitalization Rules\"",
+       "why": "The question explicitly includes 'mortgage interest not reported on a Form 1098 to you' and does not exclude capitalized interest. Interest that belongs in basis would then be deducted on line 28.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "7f199d544c9f7c6661669445cac609c47d286aa8efc1464f42974ba87eafebb1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09194,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line16b.a3818c53a064.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      8,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Lines 16a and 16b, \"If you paid interest in 2025 that also applies to future years, deduct only the part that applies to 2025\" and \"include your share of the interest on line 16b\"; p. 14, Line 30, \"You can’t deduct any excess mortgage interest, excess real estate taxes, or excess casualty losses on Schedule C for this home\""
+     ],
+     "cols_pages": [
+      8,
+      14
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line17": {
+   "subject_sha": "35e1b5de951b74920096c86102dc8efebc94f50c13850a0cb7c04297ae6eee97",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer paid costs to resolve an IRS-asserted tax deficiency for the business, such as representation or audit-defense costs, and does not see them as fees for tax advice or for preparing the forms.",
+       "source_text": "i1040sc (2025) p. 8, Line 17: \"Also, include expenses incurred in resolving asserted tax deficiencies related to your business.\"",
+       "why": "The question names only fees for operating the business, for tax advice and for preparing the business tax forms. A truthful filer could leave out deficiency-resolution expenses that line 17, and therefore line 28, must include.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer paid attorney fees to buy business real property or equipment, or to organize the business, and reports them because they relate to the business.",
+       "source_text": "Question: \"Fees of accountants and attorneys directly related to operating the business\"; i1040sc (2025) p. 8, Line 17: \"fees ... that are ordinary and necessary expenses directly related to operating your business.\"",
+       "why": "The question drops the \"ordinary and necessary\" qualifier. A filer could therefore include professional fees that must be capitalized rather than deducted currently, which would overstate line 28 and the pre-179 business income figure.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "af08856f132e4304329de0e32e59ccd8c6860a3432453a6be27e3983a433d072",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.07138800000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line17.35e1b5de951b.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 17"
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line18": {
+   "subject_sha": "054cd0b0f04aedc48eae9830d0dfd4cf44e35d7d85d88a2a1dbdb3dcb9491236",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "b132d624dd5a8763c8a45be77676e310aa6def644e5f662fc995b97f2c7f5017",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.05524,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line18.054cd0b0f04a.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 18"
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line19": {
+   "subject_sha": "c60e273f3b204bb25bf5cf35bae88671abccfc1f47ed98ad3f7bbb5e53590a02",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "An employer contributes more for employees than the plan's deduction limits allow (for example, above the SEP percentage-of-compensation limit), and a filer answering truthfully enters the full amount contributed.",
+       "source_text": "i1040sc p. 8, Line 19: \"Enter your deduction for the contributions you made ... This deduction may be subject to limitations. For more information on potential limitations, see Pub. 560.\"",
+       "why": "The question asks for \"Contributions you made for your employees\", but line 19 takes only the deductible amount. Any nondeductible excess flows into lines 28 and 28_pre179 and overstates expenses.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "An employer pays a 2024 plan contribution in early 2025, or pays a 2025 contribution in early 2026 before the return is filed, and cannot tell which year's amount to report.",
+       "source_text": "Question: \"Contributions you made for your employees to a pension, profit-sharing or annuity plan ...\"; i1040sc p. 8, Line 19: \"Enter your deduction for the contributions you made\"",
+       "why": "The question gives no tax year. A filer could reasonably report contributions paid during 2025 or contributions deducted for 2025, and these give different amounts.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "91d0d7732df44eb152b8bc52abc3b482bb13ff835f271eb26e6673ff2a961d27",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06952,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line19.c60e273f3b20.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 19"
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line2": {
+   "subject_sha": "87688ce3e1eccfc30dd71b833c08efd335edd30db4ff962be289c05a139fa3b1",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who sells at a discounted or sale price and records only the discounted price in gross receipts counts those upfront discounts as 'price reductions you gave customers' on line 2, so the discount is subtracted from line 1 a second time.",
+       "source_text": "Question: \"Returns and allowances (refunds and price reductions you gave customers)\"; i1040sc p. 6, Line 2: \"A sales allowance is a reduction in the selling price of products, instead of a cash or credit refund.\"",
+       "why": "The text treats an allowance as a substitute for a refund, a reduction given after the sale on goods already sold. The question's plain 'price reductions' also covers point-of-sale discounts that are already left out of gross receipts, so the line 3 subtraction double-counts them.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who refunded money that never entered line 1 enters it on line 2, such as a returned deposit, an overpayment, or sales tax handed back, or a refund already netted out of a processor's gross total that the filer used for line 1.",
+       "source_text": "Question: \"refunds ... you gave customers\"; i1040sc p. 6, Line 2: \"A sales return is a cash or credit refund you gave to customers who returned defective, damaged, or unwanted products.\"",
+       "why": "The text limits returns to refunds for products customers returned, which reverse sales counted in gross receipts. The question's open-ended 'refunds you gave customers' takes in refunds that do not reverse a line 1 amount, which understates line 3.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "e4ff7b642fea840b5f5bf74bef0d991554b4f1b83dbe4ec379a454131de16131",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.05274,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line2.87688ce3e1ec.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Line 2"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 3"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    }
+   ]
+  },
+  "sc.line20b": {
+   "subject_sha": "7b281181ce3bb912038df6948134199033f8beb785ce16d0e0d9fa72f37192dc",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer who figures the home office deduction on Form 8829 (actual expenses) rather than the simplified method rents their home, and includes the business part of that rent in this answer because the question's stated reason for leaving out home rent mentions only the simplified method.",
+       "source_text": "f1040sc (2025) p. 1, Part II: \"Enter expenses for business use of your home only on line 30.\"; line 30: \"Do not report these expenses elsewhere. Attach Form 8829 unless using the simplified method.\"",
+       "why": "The question ties the exclusion to the simplified method. It can be read as allowing Form 8829 filers to put home rent on line 20b, but the form keeps all home-use expenses off line 20b whichever method is used. Including it would count the same rent in line 28 and again through Form 8829 on line 30.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c832a542ee6964d2731eba81ca296e36d00525e3078454f19d12aab964eaa09d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.079456,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line20b.7b281181ce3b.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      8,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Lines 20a and 20b; p. 14, Line 30, \"Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home\""
+     ],
+     "cols_pages": [
+      8,
+      14
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line21": {
+   "subject_sha": "448731439046caa2aed753b1663bb2ea3175e19024d4392c555b627eb8985e23",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who pays to repair or maintain a business vehicle (for example, an oil change or brake repair on the work truck) would truthfully include it here, but those costs belong in car and truck expenses on line 9, or are already covered by the standard mileage rate.",
+       "source_text": "f1040sc (2025) p. 1: '9 Car and truck expenses (see instructions)'; i1040sc p. 8, Line 21: 'Deduct the cost of incidental repairs and maintenance that do not add to the property's value or appreciably prolong its life.'",
+       "why": "The question leaves out vehicle repairs and maintenance, which are reported on line 9. Line 28 adds both line 9 and line 21, so the same cost would be counted twice, or would be added on top of a standard mileage amount that already includes it.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer who figures home-office expenses on Form 8829 instead of the simplified method could read the home-repair exclusion as applying only to simplified-method filers, and then include business-portion home repairs here.",
+       "source_text": "f1040sc (2025) p. 1, Part II: 'Enter expenses for business use of your home only on line 30.'; i1040sc p. 14: 'If you didn't use the simplified method, include the amount from line 36 of Form 8829 on line 30'",
+       "why": "The question explains the home-repair exclusion by pointing only to the simplified method. Form 8829 filers can reasonably take it as not covering them, yet their home repairs belong on Form 8829 and line 30, so including them here would count them twice.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "0ca10e52ca0eadd6d1b91e7ebab43a222bb5a93af3262e82317bc8ae28028f52",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.091036,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line21.448731439046.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      8,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 21; p. 14, Line 30, \"Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home\""
+     ],
+     "cols_pages": [
+      8,
+      14
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line22": {
+   "subject_sha": "e36cd7673bba50fb57c9fee171f8b4a8c09477c24a0fa19d1d4f85c4233aaa6c",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who makes or sells goods reports the raw materials and supplies used in production both on Part III line 38 and in answer to this question, so line 28 also includes amounts already in cost of goods sold on line 4.",
+       "source_text": "f1040sc (2025) p. 1, line 22: \"Supplies (not included in Part III)\"; p. 2, Part III line 38: \"Materials and supplies\"",
+       "why": "The question asks for all \"Materials and supplies actually consumed and used in the business during 2025\". It never excludes materials and supplies already counted in cost of goods sold, so a truthful answer counts them twice.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer includes office supplies and postage in this answer and also reports them as office expense on line 18, which line 28 also adds.",
+       "source_text": "i1040sc (2025) p. 8, Line 18: \"Include on this line your expenses for office supplies and postage.\"",
+       "why": "The question's phrase \"Materials and supplies ... consumed and used in the business\" covers office supplies. The instructions put these on line 18, so they are counted twice in line 28.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer deducted incidental supplies in 2024 when they were bought, then uses them in 2025 and reports them here as consumed in 2025.",
+       "source_text": "i1040sc (2025) pp. 8-9, Line 22: \"only to the extent you actually consumed and used them in your business during the tax year (unless you deducted them in a prior tax year)\"",
+       "why": "The question leaves out the exclusion for supplies already deducted in a prior year. A truthful answer about supplies consumed in 2025 therefore brings in costs that were already deducted.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c22c033c110c4fce3fad667da42a239c3575ab88c7b73c0f155e5753192b64b1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.081804,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line22.e36cd7673bba.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      8,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 22; p. 9, \"You can also deduct the cost of books, professional instruments, equipment, etc., if you normally use them within a year\""
+     ],
+     "cols_pages": [
+      8,
+      9
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line23": {
+   "subject_sha": "e06859861c861f7d9c954f7078cc653888c2f7d8d3dfc851cb22476d42c25b5c",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A restaurant or bar owner who claims the credit for employer social security and Medicare taxes on tips (Form 8846) reports the full employer share of those taxes, because the question never says to reduce it by the credit.",
+       "source_text": "i1040sc p. 9, Line 23: \"Social security and Medicare taxes paid to match required withholding from your employees' wages. Reduce your deduction by the amount shown on Form 8846, line 4.\"",
+       "why": "The question asks for \"the employer share of social security and Medicare taxes\" with no reduction. A truthful answer therefore overstates line 23 by the Form 8846, line 4 amount.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose business property was charged a special assessment for paving or sewers includes it as a real estate tax on a business asset.",
+       "source_text": "i1040sc p. 9, Line 23, Do not deduct: \"Taxes assessed to pay for improvements, such as paving and sewers.\"",
+       "why": "The question invites \"real estate and personal property taxes on business assets\" but omits this exclusion. These assessments are capital costs, not deductible taxes on line 23.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5506b2a2d42cc0b87996b651cd4b36301885d8c406ad622848c2dd378ac03697",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.08537600000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line23.e06859861c86.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      9,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Line 23, \"Contributions to a state unemployment insurance fund, or paid family and medical leave program disability benefit fund if they are considered taxes under state law\"; p. 14, Line 30, \"You can’t deduct any excess mortgage interest, excess real estate taxes, or excess casualty losses on Schedule C for this home\""
+     ],
+     "cols_pages": [
+      9,
+      14
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line24a": {
+   "subject_sha": "cfdf887e7461c0fa89f444afe38251b1d303ff90b2c1ff97d0b7a1f6ccc766b9",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who took a business trip on a cruise ship or other luxury water vessel enters the full cost of that travel, because the question lists no limit on it.",
+       "source_text": "i1040sc p. 9, Line 24a: \"These rules apply to both employers and employees. Other rules apply to luxury water travel.\"",
+       "why": "The instructions say luxury water travel is subject to its own limits. The question's \"Other limits\" list leaves this out, so a truthful answer can include an amount above what line 24a allows.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer paid hotel occupancy taxes on a business-trip lodging bill and reads \"not ... lodging taxes\" as telling them to strip those taxes out of the lodging amount.",
+       "source_text": "i1040sc p. 9, Line 24a: \"Incidental expenses include fees and tips ... They do not include expenses for laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams or telephone calls\"; \"Enter your expenses for lodging ... connected with overnight travel\"",
+       "why": "In the tax text, the exclusion only defines what counts as an incidental expense for the $5 method, and lodging taxes remain part of the deductible lodging cost. Placed as a bare \"not\" bullet in the question, it can be read as removing lodging taxes from the line 24a amount altogether, which gives a lower figure.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "9605d28521376c858a9fe06d76a60df3ffe52e3a350cbed2c4e17f15bc344dc1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.090604,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line24a.cfdf887e7461.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Line 24a, \"you can use an optional method for deducting incidental expenses only if you did not pay or incur meal expenses on a day you were traveling away from your tax home\", \"The amount of the deduction is $5 a day\", \"They do not include expenses for laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams or telephone calls\" and \"You cannot use this method on any day that you use the standard meal allowance\", \"You can’t deduct expenses paid or incurred in connection with employment away from home if that period of employment exceeds 1 year\", \"you cannot deduct travel expenses for your spouse, your dependent, or any other individual unless\" and \"held outside the North American area unless\"; p. 9, Line 24b, \"you can use the standard meal allowance for your daily meals and incidental expenses\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line25": {
+   "subject_sha": "c061a19a4902ea8160858e91ff105efae812c4771ebde72e034c0702e722ecda",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "788eb73b827204ade4dd2f18b87080c531f60a941bfba745691cddfe0e1394f6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.075776,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line25.c061a19a4902.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      10,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Line 25; p. 14, Line 30, \"Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home\""
+     ],
+     "cols_pages": [
+      10,
+      14
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line26": {
+   "subject_sha": "116fa07665700e25cec8a1c4c3699885f6c8dd4d398cd10ec06dd30fc3ca9790",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "An employer who claims the Work Opportunity Credit, Empowerment Zone Employment Credit, Form 8932 credit or Form 8994 paid leave credit enters gross wages paid, but line 26 needs wages reduced by those credits.",
+       "source_text": "i1040sc p. 10, Line 26: \"Enter the total salaries and wages for the tax year reduced by the amount of the following credit(s), if applicable. • Work Opportunity Credit (Form 5884). • Empowerment Zone Employment Credit (Form 8844). • Credit for Employer Differential Wage Payments (Form 8932). • Employer Credit for Paid Family and Medical Leave (Form 8994).\"",
+       "why": "The question asks for 'Salaries and wages you paid your employees in 2025' and never tells the filer to subtract these credits. Only the label mentions them. A truthful answer is the figure before the credit reduction, so lines 28 and the section 179 business income limit are understated by the credit amount. The question also does not say that credits passed through from a pass-through entity are not subtracted.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "An accrual-method or fiscal-year filer has wages that belong to the tax year but were paid in 2026, or were paid outside calendar 2025, and leaves them out because the question asks only for wages 'paid ... in 2025'.",
+       "source_text": "i1040sc p. 10, Line 26: \"Enter the total salaries and wages for the tax year\"; f1040sc p. 1, line F: \"Accounting method: (1) Cash (2) Accrual (3) Other\"",
+       "why": "The text measures wages for the tax year under the filer's accounting method. Asking for amounts paid in calendar 2025 leaves out wages accrued but unpaid at year end, and it brings in prior-year accruals paid in 2025.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "d4d3ab9c85b33ee7f853ac4ae1f37a74fc8f54a24f6749f6e1f3ed4753b67a4a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.077764,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line26.116fa0766570.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Line 26, \"If you provided taxable fringe benefits to your employees, such as personal use of a car, do not deduct as wages the amount applicable to depreciation and other expenses claimed elsewhere\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.line35": {
+   "subject_sha": "bc729471cbffa44df7d4d64f8fd50bd3c3e7136d8c408e470cb7be9e1b28b0cf",
+   "samples": [
+    {
+     "verdict": "WRONG_FIGURE",
+     "findings": [
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "A filer who changes the business's inventory accounting method starting in 2025 follows the question's parenthetical and enters last year's closing inventory as originally reported, not the amount refigured under the new method.",
+       "source_text": "i1040sc 2025 p.15, Line 35: \"If you are changing your method of accounting beginning with 2025, refigure last year's closing inventory using your new method of accounting and enter the result on line 35.\" Also f1040sc 2025 p.2, line 35: \"If different from last year's closing inventory, attach explanation\"; question: \"(the same as your closing inventory for 2024)\"",
+       "why": "The question says the opening inventory equals the 2024 closing figure, so a filer changing methods gives the amount before the refigure. Line 40 needs the refigured opening inventory, and the form expects that it can differ from last year's closing inventory.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A fiscal-year filer whose 2025 tax year starts, for example, July 1, 2025 could give inventory as of January 1, 2025 instead of the start of the tax year.",
+       "source_text": "i1040sc 2025 p.15, Part III: \"you must take inventories into account at the beginning and end of your tax year\"; question: \"Inventory at the beginning of 2025 (the same as your closing inventory for 2024)\"",
+       "why": "\"Beginning of 2025\" and \"closing inventory for 2024\" can be read as calendar dates, while line 35 needs inventory at the beginning of the tax year. For a fiscal-year filer the two readings give different amounts.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a4630007723acbb1bc36b10319fd775e9a398c5e81d0242ff8e63ed0e501ffd1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.054236,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line35.bc729471cbff.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Line 35",
+      "p. 15, Lines 33 and 35"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 40"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    }
+   ]
+  },
+  "sc.line36": {
+   "subject_sha": "7da264652a2f142e9bd8b9a8ba09da7a488b65d4d874d5af5db55bf87d58c55c",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A manufacturer or producer buys raw materials or parts that it builds into finished products, then sells those products. A filer could truthfully leave these purchases out because the materials were not themselves bought 'for sale'.",
+       "source_text": "f1040sc 2025 p.2, line 36: \"Purchases less cost of items withdrawn for personal use\"",
+       "why": "Line 36 asks for 'Purchases' with no limit to resale goods. The question narrows this to 'merchandise or materials for sale', so a producer's purchases of components for manufacture may be left out of line 40.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer is not sure whether to report only purchases made in 2025 or all purchases on record for the business, including those from earlier years.",
+       "source_text": "f1040sc 2025 p.2, line 35: \"Inventory at beginning of year\"; line 41: \"Inventory at end of year\"",
+       "why": "Part III measures cost of goods sold from beginning to end of the 2025 tax year, so line 36 needs purchases made during the year. The question says only 'For this business' and gives no time frame.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "643d8de07f8109fc12cb16bd5f226e92de5d97904e45ebad55afef63ac61ba0b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.042707999999999996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line36.7da264652a2f.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 36",
+      "Schedule C (2025), line 40"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    }
+   ]
+  },
+  "sc.line37": {
+   "subject_sha": "4ab2e35020526ea598b16cd5deb67b0b857e87f302c98359ac8c7e712b5d70c3",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "020201da3e2f33328213b45c0b7f4b82d4fc0057382c3624d72a802017ccbeaf",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.030196,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line37.4ab2e3502052.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 37",
+      "Schedule C (2025), line 40"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    }
+   ]
+  },
+  "sc.line38": {
+   "subject_sha": "7509e6369ed42f550e710f232524ced82cedfde35d3885e1dc7f882e2afef9d7",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "d0bcd9226485cf9bf9d7442b202b06a66b80b68505465983096728acfc3646c9",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.031604,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line38.7509e6369ed4.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 38",
+      "Schedule C (2025), line 40"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    }
+   ]
+  },
+  "sc.line39": {
+   "subject_sha": "218ad2209fb950e5575f30c55211332d3e53a89b24e710191197466374a6092c",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who also reports beginning inventory, purchases, cost of labor, or materials and supplies includes those amounts again when asked for 'Other costs of goods sold', so line 40 counts them twice.",
+       "source_text": "f1040sc 2025 p.2: '35 Inventory at beginning of year ... 36 Purchases less cost of items withdrawn for personal use ... 37 Cost of labor ... 38 Materials and supplies ... 39 Other costs ... 40 Add lines 35 through 39'",
+       "why": "Line 39 must hold only cost-of-goods-sold costs that are not on lines 35–38. The question says 'Other costs of goods sold' but never says what they are other than, so a truthful answer can include amounts already on lines 35–38.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer puts depreciation or supplies into 'other costs of goods sold' that are already deducted in Part II, so the same cost is subtracted twice.",
+       "source_text": "f1040sc 2025 p.1: '13 Depreciation and section 179 expense deduction (not included in Part III)'; '22 Supplies (not included in Part III)'",
+       "why": "The form lets a cost appear either in Part III or in Part II, not both. The question does not exclude costs claimed as Part II expenses, so a truthful answer can include them in line 40 and line 42 as well.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f483cc1a58db39f8f32b557d4b6df35b5eb8ceaa0c2a52e18875122143ca19af",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.041544,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line39.218ad2209fb9.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 39",
+      "Schedule C (2025), line 40"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    }
+   ]
+  },
+  "sc.line41": {
+   "subject_sha": "9e6aaf9a1ea9f37d38b5bcbdde5b1629094ea3c8f2df764c92db653f831b8930",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A retailer with unsold goods at year end could reasonably answer with the goods' retail or selling value, which is higher than the cost-based value line 42 needs.",
+       "source_text": "f1040sc 2025 p.2, line 33: 'Method(s) used to value closing inventory: a Cost b Lower of cost or market c Other'; line 41: 'Inventory at end of year'",
+       "why": "The question 'Inventory at the end of 2025' does not say the inventory must be valued by the closing-inventory method on line 33 (cost or lower of cost or market). A filer who enters the selling price would overstate line 41 and understate cost of goods sold on line 42.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "dcb0a1171787cb5e7f9092be570cf36ac916751ef507abffcd7ab8bd22a51fc2",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.035072,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line41.9e6aaf9a1ea9.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 41",
+      "Schedule C (2025), line 42"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    }
+   ]
+  },
+  "sc.line48": {
+   "subject_sha": "c5a59e46b4e9990f60a65566e03358ae3b5b3a2a99ef12bb22d706109f99b26f",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "f663fcdbfa82fd44792668fe619125356d0195948a7b353a7f62c5efc3e86545",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.023848,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line48.c5a59e46b4e9.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), Part V, line 48",
+      "Schedule C (2025), line 27b"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    }
+   ]
+  },
+  "sc.line6": {
+   "subject_sha": "48129eb96bc30e74e69ced908acb96a71065fc4e538b04b9f5026e95f524b7df",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose listed property's business use fell to 50% or less in 2025 must put the recapture of excess depreciation, or the inclusion amount for leased listed property, on line 6, but nothing in the question tells them to.",
+       "source_text": "i1040sc p. 6, Line 6: \"If the business use percentage of any listed property ... dropped to 50% or less in 2025, report on this line any recapture of excess depreciation, including any section 179 expense deduction ... include on this line any inclusion amount.\"",
+       "why": "An ordinary filer would not think of depreciation recapture or a lease inclusion amount as 'other business income' like scrap sales or prizes, so line 6 and line 7 would come out too low.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer who claimed the biofuel credit on Form 6478 line 3, or the biodiesel, renewable diesel or sustainable aviation fuel credit on Form 8864 line 11, must include it on line 6, but the question names only the credit for federal fuel tax on the 2024 Form 1040.",
+       "source_text": "i1040sc p. 6, Line 6: \"Any amount of credit for biofuel claimed on line 3 of Form 6478. • Any amount of credit for biodiesel, renewable diesel, and sustainable aviation fuel claimed on line 11 of Form 8864.\"",
+       "why": "The question names one fuel credit and leaves these two out, so a filer reading it would likely not add these credits as income.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer who has finance reserve income may leave it out, because the question's list of examples does not mention it.",
+       "source_text": "i1040sc p. 6, Line 6: \"Be sure to include amounts from the following. • Finance reserve income.\"",
+       "why": "The instructions name finance reserve income as a line 6 item, but the question leaves it out of its examples, and an ordinary filer may not see it as falling under 'such as'.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a334aa69297e8991cdf080039048aa37c4343a6b93741daadec595fb2b28617b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.07605200000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line6.48129eb96bc3.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      6,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Line 6, \"Credit for federal tax paid on fuels claimed on your 2024 Form 1040 or 1040-SR\"; p. 9, Line 23, \"if the state or local government allowed you to retain any part of the sales tax you collected, you must include that amount as income on line 6\""
+     ],
+     "cols_pages": [
+      6,
+      9
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 7"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    }
+   ]
+  },
+  "sc.line8": {
+   "subject_sha": "f965d2e180492c04217128233494b86d00b29732bfb0985fcca84560f957ecdf",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who produced property or bought goods for resale and had to capitalize some advertising-related costs into inventory or other property would report the full advertising spending, including the capitalized part.",
+       "source_text": "i1040sc (2025) p. 6, Part II: \"you must generally capitalize certain expenses in inventory or other property... Reduce the amounts on lines 8 through 27a and Part V by amounts capitalized.\"",
+       "why": "The question asks for advertising expenses without telling the filer to leave out amounts capitalized into inventory or property. Those amounts reach line 28 and also flow through cost of goods sold, so they would be counted twice.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who paid for advertising across several years, or who paid in advance for future campaigns, could report all of it because the question names no tax year.",
+       "source_text": "f1040sc (2025) p. 1, Part II, line 8 \"Advertising\" on Schedule C for 2025; question: \"Advertising expenses of this business; zero if none\"",
+       "why": "Line 8 needs only the 2025 advertising expense for this business. The question has no time frame, so amounts from other years could be included.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "53035a525ebea78d45903481462316e6bb46c0fa869e25a05a25a7dd2aed70fb",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06798,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.line8.f965d2e18049.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Part II, Expenses; Schedule C (2025), line 8"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), line 28"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17-19, Business Income Limit, Taxable income, \"figure taxable income without regard to ... The section 179 deduction\""
+     ],
+     "cols_pages": [
+      17,
+      18,
+      19
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "sc.meals_100": {
+   "subject_sha": "46033f6b927dbb8977973d9649f6fd8df0bdb8851afb504c5b34659f747d58c1",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A family daycare provider figures the deductible cost of meals and snacks given to eligible children using the standard meal and snack rates, or actual cost net of a USDA food program reimbursement, and the question gives no category that covers those amounts.",
+       "source_text": "i1040sc (2025) p. 10, Line 24b: \"Daycare providers. If you qualify as a family daycare provider, you can use the standard meal and snack rates, instead of actual costs, to figure the deductible cost of meals and snacks provided to eligible children. If you receive reimbursement under a food program of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement, if any.\"",
+       "why": "The Line 24b instructions treat this daycare meal cost as deductible on that line and not as a 50% item. None of the six listed categories reaches it, and no other helper feeding line 24b covers it, so a truthful filer would leave it out.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who threw a holiday party for employees reports the whole party cost, including the venue, band or other entertainment, because the question lists the activity itself rather than just the food and beverages.",
+       "source_text": "Question: \"recreational, social or similar activities for your employees (such as a holiday party or a summer picnic)\"; i1040sc (2025) p. 9, Line 24b: \"Enter your deductible business meal expenses... Do not include entertainment expenses on this line.\"",
+       "why": "Line 24b takes only meal expenses, and entertainment costs must stay off this line. The wording asks for the cost of the activities, which brings non-meal recreation costs into line 24b.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "388930465925b787ada5e41774842a63209c9e1edf8faf828fd434f90a96cd6c",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.057067999999999994,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.meals_100.46033f6b927d.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      9,
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Line 24b, Amount of deduction, \"However, you can fully deduct meals and incidentals furnished or reimbursed to an employee if you properly treat the expense as wages subject to withholding. You can also fully deduct meals and incidentals provided to a nonemployee to the extent the expenses are includible in the gross income of that person and reported on Form 1099-NEC\"",
+      "p. 9, Line 24b, \"Enter your deductible business meal expenses\""
+     ],
+     "cols_pages": [
+      9,
+      10
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "sc.meals_50": {
+   "subject_sha": "f3d3dfb0dfdd881c281ae5ed2c601fc3786021d5dd9ddba2422363b5f397d529",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer reimburses an employee's meals while the employee travels away from home on business, under a plan that does not treat the reimbursement as wages.",
+       "source_text": "i1040sc p. 9, Line 24b: \"This includes expenses for meals while traveling away from home for business.\" p. 10: \"you can deduct only 50% of your business meal expenses, including meals incurred while away from home on business\"",
+       "why": "The question covers only meals \"while you travel\" and meals with a business contact, so a filer would leave out an employee's travel meals. Those meals are 50% business meal expenses that line 24b needs.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "An interstate truck operator or pilot subject to DOT hours-of-service limits reports all meals eaten while traveling away from home during duty periods.",
+       "source_text": "Question: \"meals while you travel away from home on business\"; i1040sc p. 10: \"for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80% for business meals consumed during or incident to any period of duty\"",
+       "why": "The help lists all travel meals with no exception for DOT duty periods. The filer would enter those 80% meals here, and the 50% multiplier would then understate the deduction.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer buys meals for an employee and treats them as wages, or buys meals for a consultant and reports them on the consultant's Form 1099-NEC.",
+       "source_text": "Question: \"meals with a current or potential business customer, client, consultant or similar business contact\"; i1040sc p. 10: \"you can fully deduct meals and incidentals furnished or reimbursed to an employee if you properly treat the expense as wages ... You can also fully deduct meals and incidentals provided to a nonemployee to the extent the expenses are includible in the gross income of that person and reported on Form 1099-NEC\"",
+       "why": "Nothing in the question excludes these fully deductible meals, so they would be entered here and cut to 50%.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A family daycare provider reads the help's sentence about the Department of Agriculture food program and must decide whether food for the daycare children belongs in this amount.",
+       "source_text": "Question: \"For food reimbursed under a food program of the Department of Agriculture, include only the cost above the reimbursement\"; i1040sc p. 10: \"you can use the standard meal and snack rates, instead of actual costs, to figure the deductible cost of meals and snacks provided to eligible children\"",
+       "why": "The question's list of meal types (travel meals and meals with business contacts) does not include children's food. Its daycare sentence suggests that food goes here anyway. The help also never mentions the standard meal and snack rates, so the filer cannot tell whether to include the food or which amount to use.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ec15d7458edafbc3d1faf06457efd002c6f47b6ff274e88c73356f3a0b6f0985",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.073196,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.meals_50.f3d3dfb0dfdd.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      9,
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Line 24b, Amount of deduction, \"In most cases, you can deduct only 50% of your business meal expenses\"",
+      "p. 10, Line 24b, Amount of deduction, \"you can deduct only 50% of your business meal expenses\"",
+      "pp. 9–10, Line 24b, Business meal expenses (\"You can deduct a percentage of the actual cost of a meal if the following conditions are met\"), Standard meal allowance, Amount of deduction (\"including meals incurred while away from home on business\") and Daycare providers (\"only deduct the cost of food that exceeds reimbursement\"); p. 9, Line 24a, \"Do not include entertainment expenses on this line\""
+     ],
+     "cols_pages": [
+      9,
+      10
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "sc.meals_80": {
+   "subject_sha": "128c23413f8bd96918aa8efd25431163f7c70f78ddd388d2be0a5233c9fedcd9",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A sole proprietor running a trucking business reimburses its employee interstate drivers' on-duty meals under an accountable plan, not as wages; the filer was not personally subject to the DOT limits, so a truthful answer leaves these meals out.",
+       "source_text": "i1040sc p. 10: \"for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80% for business meals consumed during or incident to any period of duty for which those limits are in effect\"",
+       "why": "The text ties the 80% rate to meals consumed by any individual subject to the DOT limits, including the business's employees. The question asks only about duty periods \"for which you were subject to\" the limits, so these meals drop to the 50% rate or are left out.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "711c4920dfed5ceaed4563274c1e2e208adde14ec67a673942c386d10365af67",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.034072,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.meals_80.128c23413f8b.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Line 24b, Amount of deduction",
+      "p. 10, Line 24b, Amount of deduction, \"for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80%\"",
+      "p. 10, Line 24b, Amount of deduction, \"the percentage is increased to 80%\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "sc.method_other": {
+   "subject_sha": "eb862c5eb3045da286dccbb24994ed83fd030a46be90cfc655574dbe212fcd56",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer changed accounting method in 2023 or 2024 and still has part of a net positive section 481(a) adjustment to include on 2025 line 6, but did not change method for 2025, so they truthfully answer no.",
+       "source_text": "i1040sc p. 4, Line F: \"A net positive section 481(a) adjustment is generally taken into account over a period of 4 years. Include any net positive section 481(a) adjustments on line 6.\"",
+       "why": "The question asks only whether the filer changed method 'for 2025'. A section 481(a) adjustment carried into 2025 from an earlier change still has to be screened out, but this wording does not catch it.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A business that has existed for only one or two prior years, or that has a predecessor entity, averages its gross receipts over a full 3 years or leaves out the predecessor's receipts, gets a figure of $31 million or less, and answers no.",
+       "source_text": "i1040sc p. 15, Part III: \"If your business has not been in existence for all of the 3-tax-year period used in figuring average gross receipts, base your average on the period it has existed, and if your business has a predecessor entity, include the gross receipts of the predecessor entity ... annualize your business's gross receipts for the short tax years\"",
+       "why": "'Average annual gross receipts for the 3 prior years' does not tell the filer to average only over the period the business existed, to include a predecessor's receipts, or to annualize short years. A filer who is not a small business taxpayer can therefore come out under $31 million and answer no.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "0dc13493a208f8c0c3c79cfd6df34413d9dfc78bbee73223224972912d8c7cf7",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.166828,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.method_other.eb862c5eb304.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Line F, \"Special rules apply to long-term contracts (see section 460 for details)\"; p. 6, Part II, Capitalizing costs; p. 15, Part III, Small business taxpayer, \"and (b) are not a tax shelter (as defined in section 448(d)(3))\"; , Uniform Capitalization Rules, \"The uniform capitalization rules do not apply to the following\" and \"A small business taxpayer that meets the gross receipts test under section 448(c) and that is not a tax shelter\"",
+      "pp. 2-15, the items named in the screens of this Schedule C"
+     ],
+     "cols_pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "p538",
+     "revision": null,
+     "text_sha256": "4186d7aaa8f711c9a524b87fac1e3df05640b6d66130093b2469480acb06ef6c",
+     "pages": [
+      17
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "f500211df18a4aafd843e48bbad4b9102c598cf5ccc0fae96c7814a4bef0ae00"
+    }
+   ]
+  },
+  "sc.passive": {
+   "subject_sha": "6e071a6b2a75a02825ac8131a105698b17b0f3539b072603664ee5e3186a2b9e",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer works 300 hours in the business and their spouse, who is not an owner, works 400 hours, so the filer reads 'you worked in it more than 500 hours' as covering only their own hours and answers no.",
+       "source_text": "i1040sc p. 4, Line G: \"Participation by your spouse during the tax year in an activity in which you own an interest can be counted as your participation in the activity. This rule applies even if your spouse did not own an interest in the activity and whether or not you and your spouse file a joint return.\"",
+       "why": "The question's examples speak only of the filer's own work and never say a spouse's hours count, so the filer gives 'no' where Line G needs 'Yes'. The spouse co-ownership screen does not catch this, because the spouse here is not an owner.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "The filer materially participates in renting out equipment where the average customer use is 7 days or less, which falls under one of the Form 8582 exceptions, but answers no because the business is renting property.",
+       "source_text": "i1040sc p. 5, Rental of personal property: \"However, if you met any of the five exceptions listed under Rental Activities in the Instructions for Form 8582, the rental of the property is not treated as a rental activity and the material participation rules explained earlier apply.\"",
+       "why": "The wording 'something other than a rental activity' gives no hint that a rental meeting one of the five exceptions is not treated as a rental activity. A truthful filer says no where Line G needs 'Yes'.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5fbfb96c1d3e6e345f2222e20efb39ac42063d1c17101c75cb43d477549fb60e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.148652,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.passive.6e071a6b2a75.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Line G, Material participation (the seven tests) and Rental of personal property",
+      "pp. 2-15, the items named in the screens of this Schedule C"
+     ],
+     "cols_pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "sc.rent_equipment": {
+   "subject_sha": "c4f16d9db4a39cc8fb8af4f83119a91a05a55ec75e575bfe5aaf2a21c18339ea",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "2d4f85ed8d6527b756ac0e8dcbec14bb85d84e4059b4b4f179bca38dcd4a8fee",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.039608,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.rent_equipment.c4f16d9db4a3.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Lines 20a and 20b",
+      "p. 8, Lines 20a and 20b, \"If you rented or leased vehicles, machinery, or equipment, enter on line 20a the business portion of your rental cost\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "sc.special": {
+   "subject_sha": "4da2b6aaa83f923b0611f2e90289ef027c2070f571d5bb7559f3f6d269f33cf4",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "The filer's business is a creditor in a customer's chapter 11 case, or the filer's own chapter 11 case closed before 2025, and the filer answers yes to 'a chapter 11 bankruptcy case.'",
+       "source_text": "i1040sc 2025 p. 5, Part I: \"If you were a debtor in a chapter 11 bankruptcy case during 2025, see Chapter 11 Bankruptcy Cases in the Instructions for Form 1040\"",
+       "why": "The special rule applies only when the filer was the debtor and only during 2025. The question's 'a chapter 11 bankruptcy case' leaves out both limits, so a creditor or someone with a past case can truthfully answer yes and be screened out without need.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "3b8fab0880dfe1e8eda3b874da4cd88143d6c97e538f4e633dc13f5b38b03fd1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.199836,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.special.4da2b6aaa83f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I; p. 6, Medicaid waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12 and 14 (including 'If you made contributions on your behalf as a self-employed person to a dependent care assistance program, complete Form 2441, Parts I and III'); p. 8, Lines 16a and 16b; p. 9, Line 23; p. 10, Lines 26 and 27a; p. 1, Qualified sound recording productions; p. 2, \"a sporadic activity, a not-for-profit activity, or a hobby does not qualify as a business\" and \"unless you have elected to treat the domestic LLC as a corporation\"; p. 6, Line 6, recapture; p. 14, Line 31, \"prior year unallowed passive activity losses\"; p. 6, Installment sales, \"If you use the installment method, attach a statement to your return\"; p. 9, Line 23, \"But some licenses, such as liquor licenses, may have to be amortized\"; p. 9, Line 24a, \"Other rules apply to luxury water travel\"; , Luxury Water Travel, \"there is a daily limit on the amount you can deduct\"; , \"If the section 179 property is not used predominantly (more than 50%) in your trade or business at any time before the end of the property’s recovery period\"; , \"there is a presumption that you’re providing services as an employee for purposes of section 199A for the 3-year period after ceasing to be an employee\", and p. 3, Determining if information reported on your Form 1099-PATR is included in QBI",
+      "pp. 2-15, the items named in the screens of this Schedule C"
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "p463",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda",
+     "pages": [
+      12
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      12
+     ],
+     "cols_sha256": "a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326"
+    },
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      4
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "i8995",
+     "revision": "2025; printed date 2026-01-26",
+     "text_sha256": "96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2",
+     "pages": [
+      2
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a"
+    }
+   ]
+  },
+  "sc.spouse_owned": {
+   "subject_sha": "b4c6c631c673e4beab3b0a41d8496296a8c1d00068a81e7abd9cd244c14802a5",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "Spouses jointly own and run an unincorporated business and share profits, but have no partnership agreement, made no qualified joint venture election, and do not think of the business as community property.",
+       "source_text": "i1040sc p. 2: \"Generally, if you and your spouse jointly own and operate an unincorporated business and share in the profits and losses, you are partners in a partnership, whether or not you have a formal partnership agreement.\"",
+       "why": "The parenthetical names three formal arrangements. A filer with no agreement or election may decide that none of them applies and answer no, so the gate does not screen out a business that is a partnership by default and belongs on Form 1065.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "88c52708f1aff91999754ae908e677806d7605cfb02f369ffd6a7e5df21e7a57",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.143556,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.spouse_owned.b4c6c631c673.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Business Owned and Operated by Spouses, Qualified Joint Venture and Community Income",
+      "pp. 2-15, the items named in the screens of this Schedule C"
+     ],
+     "cols_pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "sc.statutory": {
+   "subject_sha": "55aefa8d0c7c8846c30bdd81a1ceae1cafa622f55c0514e38562dad2427abef5",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer's Schedule C business includes notary public fees along with other self-employment receipts, such as loan-signing agent fees reported together on the same schedule.",
+       "source_text": "i1040sc p. 14, Line 31: \"Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.\"",
+       "why": "The question asks whether \"this business income\" is notary fees. A filer whose income is only partly notary fees could fairly answer no, because not all of it is, or yes, because some of it is. The notary self-employment treatment the gate screens for applies whenever notary fees are part of line 31. Statutory employee income cannot be mixed in this way (\"You cannot combine these amounts on a single Schedule C\", p. 5), but the instructions give no such separation rule for notary fees.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a925e555ab74d8782ed5517cc2304ab70dcd510c2b98451c22aa9020e0ff3d48",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.14255600000000002,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.statutory.55aefa8d0c7c.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 1, Statutory employees; p. 14, Line 31, Statutory employees and Notary public",
+      "pp. 2-15, the items named in the screens of this Schedule C"
+     ],
+     "cols_pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "sc.tips_ot": {
+   "subject_sha": "57e5b7273f1f5a9aa1d79e7bd768c0f7577edd35d785eff70937b3e5d9e5c6fc",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A sole proprietor's Schedule C business has no tips but receives qualified overtime on Form 1099-NEC, so the filer answers yes and the business is counted toward the line 5 count of businesses with tips.",
+       "source_text": "i1040gi p. 104, line 5: \"Include the qualified tips you and/or your spouse received in the course of a trade or business... If you and/or your spouse received qualified tips in the course of more than one trade or business, complete the Multiple Trades or Businesses Worksheet\"; p. 108, line 14b: \"Enter on Line 14b only the qualified overtime compensation amount that is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3\"",
+       "why": "The line cites only line 5, and line 5's per-business count and net income limit apply to qualified tips received in a trade or business. Overtime goes on line 14b, which uses a per-payor worksheet rather than a per-business one. Folding overtime into the question counts businesses that line 5 does not reach.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A business received qualified tips but has a net loss after allocable deductions, so no tip deduction survives for it.",
+       "source_text": "i1040gi p. 104: \"but only to the extent the trade or business in which you received the qualified tips has net income... Do not reduce it below zero.\"",
+       "why": "The phrase \"that you would deduct on Schedule 1-A\" can be read as \"received qualified tips here,\" which gives yes. It can also be read as \"will end up deducting an amount after the net income limit,\" which gives no. The two readings change whether the business is counted.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b1212174d75ef7083d0461c36bdcab2395539dd74576f4e74737ff4dd4816e3c",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.04858,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sc.tips_ot.57e5b7273f1f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      104,
+      108
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 104, Schedule 1-A, line 5",
+      "p. 104, Schedule 1-A, line 5, \"the qualified tips you and/or your spouse received in the course of a trade or business\"; p. 108, line 14b"
+     ],
+     "cols_pages": [
+      104
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,494 @@
+{
+ "form": "f2441",
+ "reviews": {
+  "f2441.benefits": {
+   "subject_sha": "d589c9d2366213b4febfb9b586b71767a1bb95671661ae90cabbce51029ec74a",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A self-employed filer or partner received benefits under a dependent care assistance program from their own sole proprietorship or partnership, for example reported on Schedule K-1 (Form 1065) box 13 code O, and has no W-2 box 10 amount or grace-period carryover, so they answer no.",
+       "source_text": "f2441 (2025) p. 2, line 12: \"If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership\"; i2441 (2025) p. 1: \"Benefits you received as a partner should be shown in box 13 of your Schedule K-1 (Form 1065) with code O.\"",
+       "why": "The question defines dependent care benefits as only W-2 box 10 amounts or a 2024 grace-period carryover. A filer whose benefits came from their own business answers no, so Part III and the line 1e taxable amount are skipped even though the benefits must be counted on line 12.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "An employee received dependent care benefits that the employer did not show in W-2 box 10, such as on-site daycare or direct payments to a provider that were left out, and answers no because nothing appears in box 10.",
+       "source_text": "i2441 (2025) p. 1, Definitions: \"Dependent care benefits may include: • Amounts your employer paid directly to either you or your care provider ... • The fair market value of care in a daycare facility provided or sponsored by your employer ... If you received dependent care benefits as an employee, they should be shown in box 10\"",
+       "why": "The text treats box 10 as where benefits should be reported, not as what defines them. The question's \"amounts shown in box 10\" wording leads a filer with unreported benefits to answer no, although Form 2441 Part III is still required.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c6430b3cd4e4de24f2fd678a7e3fad1da35bd3f5597e1591432483f6f0f3d12c",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.05964,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f2441.benefits.d589c9d23662.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f2441",
+     "revision": "2025; created 2025-03-18",
+     "text_sha256": "f39ca34d11c156e1ac55f4e2b5f16ef03c919773245cd7e50836e4c1555339c7",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 2441 (2025), Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"; , Purpose of Form",
+      "Form 2441 (2025), line 3"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "0e24fa891992674b84736c78565752c4a7d6f411fca4e24e5bb1307f239f60d6"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      24
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 24, Line 1e, \"Taxable Dependent Care Benefits From Form 2441, Line 26\" and \"But first complete Form 2441 to see if you can exclude part or all of the benefits\""
+     ],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Purpose of Form, \"In addition, if you (or your spouse if filing jointly) received any dependent care benefits for 2025, you must use Form 2441 to figure the amount, if any, of the benefits you can exclude from your income\""
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  },
+  "f2441.care": {
+   "subject_sha": "40ef5b597bc3c79508ca66a9632f0ccbab2b5daf7aec68d7305d16dcfb4d044a",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer paid for care of a disabled parent who lived with them more than half of 2025 but whom they cannot claim as a dependent only because the parent had gross income of $5,200 or more. The filer reads 'a dependent or spouse who was not able to care for themselves' and truthfully answers no.",
+       "source_text": "i2441 p. 1, Qualifying Person(s): \"Any disabled person ... whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer's 2025 tax return.\"",
+       "why": "The question limits qualifying persons other than a spouse to 'a dependent', so it leaves out the 'could claim as a dependent except' group. Those filers answer no. That blocks f2441.filing and s3 line 2, and also f2441.nondependent_gate, which exists to handle exactly these persons.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer paid their 17-year-old child, or their spouse, to watch a younger child so the filer could work, and truthfully answers yes.",
+       "source_text": "Question: \"did you ... pay for, or incur expenses for, the care of a qualifying person\"; i2441 p. 3: \"No credit is allowed for any amount paid to your spouse, the parent of your qualifying child, or a person whom you can claim as a dependent. If your child ... provided the care, they must have been age 19 or older by the end of the year and they can't be your dependent.\"",
+       "why": "The question does not exclude payments to ineligible related providers. A filer whose only care payments went to such a provider still answers yes. That switches on Form 2441 filing and the s3 line 2 credit path, even though these expenses cannot support the credit.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "92ea8c4d9a6c0a24e211d9faa1240dc5c0f8f4c10d9af30d6de4ebff0482df2d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.069232,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f2441.care.40ef5b597bc3.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Purpose of Form, \"If you paid someone to care for your child or other qualifying person so you (or your spouse if filing jointly) could work or look for work in 2025, you may be able to take the credit for child and dependent care expenses\"",
+      "p. 1, Purpose of Form, \"In addition, if you (or your spouse if filing jointly) received any dependent care benefits for 2025, you must use Form 2441 to figure the amount, if any, of the benefits you can exclude from your income\"",
+      "p. 1, Qualifying Person(s), \"A qualifying child under age 13 whom you can claim as a dependent. If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13\"; p. 1, Qualifying Person(s), \"Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent\"; p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"",
+      "p. 1, Qualifying Person(s), \"or could claim as a dependent except\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    },
+    {
+     "doc": "f1040s3",
+     "revision": "2025; created 2025-11-17",
+     "text_sha256": "43c7ba36b506a538179465978807938c64bde632d7e1bff225bb6b13b19f37bd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 3 (2025), line 2"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "1ae44325c8d22211a6eadd11b393254317542704e5fed0fb419e41690210fc48"
+    }
+   ]
+  },
+  "f2441.employer_care": {
+   "subject_sha": "4f701989b874417f69341f96c84c68dbae6981c37eec808cf4c65155be1b7c4b",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "An employer provides on-site or employer-contracted child care, but the filer is not covered by an employer dependent care plan (for example, the care is a perk outside any dependent care assistance program); the filer truthfully answers yes.",
+       "source_text": "i2441 p. 3, Columns (a) and (b): \"If you were covered by your employer's dependent care plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your employer's name in column (a)\"",
+       "why": "The question asks only whether the employer furnished the care. It drops the instructions' first condition, coverage under the employer's dependent care plan, so filers outside a plan answer yes and trigger the employer-furnished treatment.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "0be0926639dfb64a231ccbbae3656d11a3a46c0939179d697dcb12b05db1362f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.040568,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f2441.employer_care.4f701989b874.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Columns (a) and (b), \"If you were covered by your employer's dependent care plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your employer's name in column (a)\"",
+      "p. 3, Columns (a) and (b), \"enter your employer's name in column (a)\"",
+      "p. 5, Line 16, \"Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s)\"; p. 3, Columns (a) and (b), \"your employer furnished the care (either at your workplace or by hiring a care provider)\""
+     ],
+     "cols_pages": [
+      3,
+      5
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  },
+  "f2441.line13": {
+   "subject_sha": "877621131d07ede49359a320e8208eabf9b6978b554e690d353ed009f4882451",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "On a joint return, the spouse's employer plan let the spouse carry forward unused 2024 benefits that the spouse used during the 2025 grace period, but the filer answers zero because the question asks only about 'your employer's dependent care plan'.",
+       "source_text": "i2441 p. 5, Line 13: \"If you had an employer-provided dependent care plan, your employer may have permitted you to carry forward any unused amount from 2024 ... Enter on line 13 the amount you carried forward and used in 2025 during the grace period.\" Line 12: \"Enter the total amount of dependent care benefits you received in 2025 ... Form(s) W-2\"",
+       "why": "Lines 12 through 15 combine both spouses' benefits on a joint return, so line 13 needs both spouses' grace-period carryforwards. The singular 'your employer's' wording leads a joint filer to leave out the spouse's carryforward. The help text does not say to include the spouse's plan.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a11d256d94b8f131a1c123caee9b35f077521e6db0e630d20fe6bd6f388f9b55",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.034756,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f2441.line13.877621131d07.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 13, \"Enter on line 13 the amount you carried forward and used in 2025 during the grace period\"",
+      "p. 5, Line 15, \"Add the amounts on lines 12 and 13 and subtract from that total the amount on line 14\"",
+      "p. 5, Line 18, \"however, for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12\"; p. 5, Line 13, \"Enter on line 13 the amount you carried forward and used in 2025 during the grace period\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  },
+  "f2441.line14": {
+   "subject_sha": "e6669176d41397075094b45f9d3ef29fd300cd146d3d2f8f4dded1e0961399f8",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "3d803be789d012d21fe7463a5d49d9f3341c682b0369f0db5e1363cae8f19ead",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.021384,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f2441.line14.e6669176d413.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 14, \"enter on line 14 the total of the following amounts included on line 12\"",
+      "p. 5, Line 14, \"enter on line 14 the total of the following amounts included on line 12\" and \"Any amount you didn't receive but are permitted by your employer to carry forward and use in the following year\"",
+      "p. 5, Line 15, \"Add the amounts on lines 12 and 13 and subtract from that total the amount on line 14. Enter the result on line 15\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  },
+  "f2441.nondependent": {
+   "subject_sha": "cb1347eee66e7704f83258da5afda5bd4ef8327ae3694b03be7859f03026fc1d",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer paid for the care of their spouse, who could not care for themselves and lived with them for more than half of 2025; a spouse is a qualifying person who is never the filer's dependent, but the question's two alternatives leave the spouse out, so the filer truthfully answers no.",
+       "source_text": "i2441 p. 1: \"2. Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year.\"",
+       "why": "The gate asks about care for a qualifying person who is not the filer's dependent. The question covers only the 'would be your dependent except' disabled person and the custodial-parent child, so care for a disabled spouse gets no yes.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "246f907f19917c85ab89f6d9cdba1e8f7d04082d5b866314b32200ba01d976bb",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.048451999999999995,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f2441.nondependent.cb1347eee66e.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Qualifying Person(s), \"or could claim as a dependent except\"",
+      "p. 1, Qualifying Person(s), \"or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer's 2025 tax return\"; p. 1, Special rule for children of divorced or separated parents or parents who live apart, \"Even if you can't claim your child as a dependent, they are treated as your qualifying person if\"; , Birth or death of otherwise qualifying person, \"a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive in 2025\""
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    },
+    {
+     "doc": "p503",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
+     "pages": [
+      3
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9"
+    }
+   ]
+  },
+  "f2441.paid_2026": {
+   "subject_sha": "8c0ce4fbef2e412cd00f03003b697091d4fc3a858f19531bd372a4498a85e338",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "b81b7613f2c8b28de979cc136d2cfb2aae3db3da0c64915688ce1c1427130fa4",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.040251999999999996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f2441.paid_2026.8c0ce4fbef2e.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 16, \"Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn't matter when the expenses were paid\"",
+      "p. 5, Line 16, \"Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn't matter when the expenses were paid\"; p. 3, Columns (a) and (b), \"If you were covered by your employer's dependent care plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your employer's name in column (a)\""
+     ],
+     "cols_pages": [
+      3,
+      5
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  },
+  "f2441.plan_max": {
+   "subject_sha": "d704091d151b7acfa99f2c621515d26cabe01776af66485b986d65708ca72f12",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "On a joint return where only the spouse's employer plan provides the benefits and that plan caps the exclusion at $4,000, the filer may enter $5,000, reading 'your dependent care plan' as their own plan only.",
+       "source_text": "i2441 (2025) p. 5, Line 21: \"Enter on line 21 the maximum amount that you may exclude for the year under your dependent care plan ... if your dependent care plan only allows a maximum of $4,000 to be excluded, substitute $4,000\"",
+       "why": "Line 21 must reflect the lower maximum of any plan behind the benefits on line 12, including a spouse's plan. The question says 'your dependent care plan (or plans...)' and tells filers to enter $5,000 'if you do not know of a lower plan maximum', which a filer with no plan of their own could reasonably take as $5,000. The help text does not mention a spouse's plan.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "356131f392138011b5fb15b95803f10128b047eea08eeb3dd8a01ed23b0cd640",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.040244,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f2441.plan_max.d704091d151b.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\"",
+      "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan. For example, if your dependent care plan only allows a maximum of $4,000 to be excluded, substitute $4,000 for the $5,000 amount to enter on line 21\"",
+      "p. 5, Line 21, \"Enter on line 21 the maximum amount that you may exclude for the year under your dependent care plan\" and \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  },
+  "f2441.spouse_died": {
+   "subject_sha": "3c1fa97a0cdaf003a14f48f3c1c5da5fc454b48071b318c17b8afce6d464fdcd",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose spouse died in 2025, who then remarried before year end and files jointly with the new, living spouse, would truthfully answer yes, so the gate opens even though the joint return is not filed as a surviving spouse of the person who died.",
+       "source_text": "p503 p. 11: \"If your spouse died during the year and you file a joint return as a surviving spouse, you may, but aren't required to, take into account the earned income of your spouse who died during the year\"",
+       "why": "The question \"Did your spouse die in 2025?\" does not tie the death to the spouse on the joint return, and the gate only checks MFJ status. A remarried filer could therefore leave out the living joint spouse's earned income, which the earned income limit requires them to use.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "96ce7f23abedae33fafee0a377a19224b278866196cba4b255ed063c931ee639",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.038292,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f2441.spouse_died.3c1fa97a0cda.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p503",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
+     "pages": [
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Surviving spouse, \"If your spouse died during the year and you file a joint return as a surviving spouse, you may, but aren't required to, take into account the earned income of your spouse who died during the year\""
+     ],
+     "cols_pages": [
+      11
+     ],
+     "cols_sha256": "44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9"
+    },
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Special Situations, \"If your spouse died in 2025, see Pub. 503\""
+     ],
+     "cols_pages": [
+      4
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  }
+ }
+}

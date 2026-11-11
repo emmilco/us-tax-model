@@ -1,0 +1,204 @@
+{
+ "form": "gift",
+ "reviews": {
+  "gift.deduction": {
+   "subject_sha": "1e5e32e437f3c7bd24a082958d5ddf9ddefe614780050cfcce3fe98f79365d81",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer gives a single clothing or household item that is not in good used condition, claims more than $500 for it, and attaches a qualified appraisal and Form 8283; the question tells them to leave it out.",
+       "source_text": "i1040sca p. 11: \"A deduction for these contributions will be allowed only if the items are in good used condition or better. However, this rule doesn't apply to a contribution of any single item for which a deduction of more than $500 is claimed and for which you include a qualified appraisal and Form 8283 with your tax return.\"; i8283 p. 3: \"You must file Form 8283, Section B, if you are contributing a single article of clothing or household item that is not in good used condition or better and for which you are claiming a deduction of over $500.\"",
+       "why": "The question excludes every clothing or household item not in good used condition, with no exception for an appraised single item over $500. That allowed deduction is therefore dropped from gift.allowed and Schedule A line 12, and the item is missed by the Section B test.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "e16b32f2d18ff61791292dfa2b12c648f173a296e457e641f44a7e3024ab2e9d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.068764,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/gift.deduction.1e5e32e437f3.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8283",
+     "revision": "December 2025; printed date 2026-01-30",
+     "text_sha256": "cd582a9f231564c755d552a21d937b33e24df8b9fe65f4f823b7c9eca9dfe1ad",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 1–3, Who Must File and Which Sections To Complete; , Section B, \"for which you claimed a deduction of more than $5,000 per item or group (except contributions reportable in Section A)\"",
+      "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A",
+      "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property, \"Similar items of property are items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings.\"; , Contributions of clothing and household items, \"A deduction for these contributions will be allowed only if the items are in good used condition or better\"; Gifts of $250 or more"
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "53a4b54ff613d5c600c1af7ba5bf9024418fe89441ae8d629a955bd59aa6e3c7"
+    },
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      11
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      11
+     ],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    },
+    {
+     "doc": "f8283",
+     "revision": "December 2025; created 2025-07-01",
+     "text_sha256": "d33f4c2762c7366b560ae700f7c403b698b6567187a94eb4f7943b3ab6c20219",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "2a4ef5ee41c489f0de7f68915540d45a11937f39759f0c9ffb0f326461ee9320"
+    }
+   ]
+  },
+  "gift.public_securities": {
+   "subject_sha": "90792201f6f2466e40053e5d9cc775ff4c47b91c65d0ff62f8902a22e3fb0ec9",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer donates securities that are not listed on an exchange or regularly traded over the counter but still qualify under Regulations section 1.170A-13(c)(7)(xi)(B). Told to answer No, the filer makes `gift.not_public` true and the gift is treated as Section B property, although the instructions put it in Section A.",
+       "source_text": "i8283 p. 3, Section A: \"2. The following items even if the claimed value was more than $5,000 ... d. Certain other securities even though the securities do not meet any of the criteria described in paragraphs 2.a through 2.c above (for more information, see Regulations section 1.170A-13(c)(7)(xi)(B))\"; f8283 p. 1: \"Also list publicly traded securities and certain other property even if the deduction is more than $5,000\"",
+       "why": "The question admits only the three tests a–c and tells the filer to answer No for any stock that is neither listed nor regularly traded over the counter. That leaves out the 2.d securities, which the cited Section A text keeps out of Section B.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "70d17d85762078046994fb61b778167e317051fa720f11f08b0c1e48c1fc2507",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.07242799999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/gift.public_securities.90792201f6f2.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8283",
+     "revision": "December 2025; printed date 2026-01-30",
+     "text_sha256": "cd582a9f231564c755d552a21d937b33e24df8b9fe65f4f823b7c9eca9dfe1ad",
+     "pages": [
+      1,
+      2,
+      3,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 1–3, Who Must File and Which Sections To Complete; , Section A, \"Also list publicly traded securities and certain other property even if the deduction is more than $5,000\"",
+      "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 9, Securities, \"A security is generally considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose quotations are published daily; (b) regularly traded on a national or regional over-the-counter market; or (c) quoted daily in a national newspaper of general circulation in the case of mutual fund shares\" and \"Nonpublicly traded securities may include, but are not limited to, privately held stock or shares in an entity such as an S corporation or a C corporation, privately held Limited Liability Company (LLC) membership, or privately held partnership interest\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      9
+     ],
+     "cols_sha256": "53a4b54ff613d5c600c1af7ba5bf9024418fe89441ae8d629a955bd59aa6e3c7"
+    },
+    {
+     "doc": "f8283",
+     "revision": "December 2025; created 2025-07-01",
+     "text_sha256": "d33f4c2762c7366b560ae700f7c403b698b6567187a94eb4f7943b3ab6c20219",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "2a4ef5ee41c489f0de7f68915540d45a11937f39759f0c9ffb0f326461ee9320"
+    }
+   ]
+  },
+  "gift.special": {
+   "subject_sha": "dae2b41666eaab9cf55eee30edb0b5700fa53bc401fc99a449eb2d37c16d8581",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer gives ordinary income property, such as short-term-held stock or inventory-like property, with FMV over $5,000 but a deduction of $5,000 or less after the required reduction, and truthfully answers yes because the property is 'worth more than $5,000'.",
+       "source_text": "i8283 p. 2: \"Use Section A to report donations of property for which you claimed a deduction of $5,000 or less per item or group of similar items\"; p. 1: \"Make any required reductions to the amount of the contributions before you determine if you must file Form 8283.\"",
+       "why": "Which section applies, and whether an appraisal is needed, turns on the deduction claimed after reductions, not on FMV. The question's alternative 'or property worth more than $5,000' brings in Section A cases that need no appraisal, so the line refuses them. The p. 3 sentence about property 'valued in excess of $5,000' sits inside the Section B paragraph, which is limited to items with a deduction over $5,000.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer donates securities over $5,000 that are not publicly traded under the question's three-part definition but are covered by the 'certain other securities' rule, and answers yes.",
+       "source_text": "i8283 p. 3, Section A item 2.d: \"Certain other securities even though the securities do not meet any of the criteria described in paragraphs 2.a through 2.c above (for more information, see Regulations section 1.170A-13(c)(7)(xi)(B))\"",
+       "why": "The question exempts only publicly traded securities as it defines them. The text also places these other securities in Section A even when the deduction is over $5,000, so a truthful yes refuses a case the text treats as Section A.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8255d379e88c6d328a6c22f1b0eee8c16333cb63cb2cefc13fb89fcf01da1eac",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.080812,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/gift.special.dae2b41666ea.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8283",
+     "revision": "December 2025; printed date 2026-01-30",
+     "text_sha256": "cd582a9f231564c755d552a21d937b33e24df8b9fe65f4f823b7c9eca9dfe1ad",
+     "pages": [
+      1,
+      2,
+      3,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A",
+      "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property, \"Similar items of property are items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings.\"; p. 9, Securities, \"A security is generally considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose quotations are published daily\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      9
+     ],
+     "cols_sha256": "53a4b54ff613d5c600c1af7ba5bf9024418fe89441ae8d629a955bd59aa6e3c7"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,1085 @@
+{
+ "form": "asset",
+ "reviews": {
+  "asset.after_jan19": {
+   "subject_sha": "5afedeade8f9dfffb58eb196f68eaac94e9b6ff1b569fa45f6f9d1995e104609",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer signed a written binding contract for the property before January 20, 2025, but took delivery or title after January 19, 2025, and truthfully answers yes. The helper then applies the 100% allowance instead of 40%.",
+       "source_text": "i4562 (2025) p. 5, Line 14: \"certain qualified property acquired after January 19, 2025; certain qualified property acquired after September 27, 2017, and before January 20, 2025\"",
+       "why": "For the special allowance, property is not treated as acquired after January 19, 2025 if it was bought under a written binding contract entered into before January 20, 2025. That rule is the reason the text says \"certain\" qualified property. The question gives no help on this, so an ordinary filer would use the delivery or purchase date. (The binding-contract rule is not in the quoted snapshot, which is cut off before the Qualified property definition finishes.)",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b2f0a58359ee0a947dac6d9bfb458b601c9b6dea6bc1a482cc27edbc778d29ed",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.03816,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.after_jan19.5afedeade8f9.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 14, Certain qualified property acquired after January 19, 2025, and Certain qualified property acquired after September 27, 2017, and before January 20, 2025"
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  },
+  "asset.bonus_choice": {
+   "subject_sha": "f5c7994b46309f9ea1d1542b8d78631e71fe19c3fe5bbfc4461ac7e6063cc9c5",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose property is not qualified property (for example nonresidential real property with a recovery period over 20 years, property that must use ADS, or listed property used 50% or less for business) has not elected out, so 'none' does not truthfully fit, and they may pick 'full'; the lines would then give a 100% or 40% allowance the property cannot have.",
+       "source_text": "i4562 p. 6: 'Qualified property is: • Tangible property depreciated under MACRS with a recovery period of 20 years or less'; p. 7: 'Exceptions. Qualified property does not include: • Listed property used 50% or less... • Any property required to be depreciated under the Alternative Depreciation System'",
+       "why": "The question offers only claimed, elected 40%, or elected out. It never asks whether the property qualifies, and the line computes an allowance for any 'full' answer. Ineligible property can therefore receive a special allowance it must not have.",
+       "bound": ""
+      },
+      {
+       "kind": "TYPE",
+       "situation": "Property with a long production period or certain aircraft gets a 60% allowance, either because the filer elected the reduced rate after January 19, 2025 or because it was acquired after September 27, 2017 and before January 20, 2025; qualified reuse and recycling property gets 50%. None of the listed choices produces these rates.",
+       "source_text": "i4562 p. 6: 'you can elect to take a 40% special depreciation allowance for certain qualified property (60% for property with a long production period and certain aircraft)'; 'Property with a long production period and certain aircraft ... is eligible for a special depreciation allowance of 60%'; 'Certain qualified reuse and recycling property ... is eligible for a 50% special depreciation allowance.'",
+       "why": "The value set full/forty/none maps only to 100%, 40% or zero. A filer in these situations has no choice that yields the required 60% or 50%.",
+       "bound": "Applicable percentages stated: 100%, 60% (long production period/certain aircraft, elected or pre-January 20, 2025), 50% (reuse and recycling property), 40%, or 0% (elected out)"
+      }
+     ],
+     "prompt_sha": "8743c78ac34d9f4310ae08609f80b5a99a988b40a50a73b6d4147942fb0bee17",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.071692,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.bonus_choice.f5c7994b4630.1.response.txt"
+    }
+   ],
+   "type": "Enum(bonus_choice)",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      5,
+      6,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 5-7, Line 14, Qualified property and Election out",
+      "pp. 5–6, Line 14, \"you can elect to take a 40% special depreciation allowance\"; p. 7, Election out, \"for any class of property\""
+     ],
+     "cols_pages": [
+      5,
+      6,
+      7
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  },
+  "asset.bonus_same": {
+   "subject_sha": "714608ea57d50e089a65de1d4a44602d501d82e8079509361aacd8a7e05d0025",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "a850d982518f1214a7adfac6b18ac024fa8e9704351e40873b052b4608de9032",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.03726,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.bonus_same.714608ea57d5.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Election out",
+      "p. 7, Election out, \"for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  },
+  "asset.class": {
+   "subject_sha": "b1c4f2ceed6a944f170766849c478c482231e7c7798e76081587f5cfaf570243",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer has qualified improvement property that was placed in service before 2018 and is still being depreciated in 2025, which line asset.qip_early needs reported as 'cqip'.",
+       "source_text": "Question: 'qualified improvement property (... that you placed in service after 2017 ...)'; line asset.qip_early: \"column (a) = 'cqip' and helper 'Year of recovery in 2025' > 8\"",
+       "why": "The question defines the cqip choice as placed in service after 2017, so a truthful filer with pre-2018 interior improvements never chooses cqip. The gate that exists to catch exactly that case can never fire.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer has property whose class is assigned by statute rather than by Table B-1 or B-2, such as qualified rent-to-own property, initial clearing and grading land improvements for gas utility property, or a qualified smart electric meter or grid system.",
+       "source_text": "p946 p. 98: 'See Which Property Class Applies Under GDS? ... for the following. ... Qualified rent-to-own property. ... Initial clearing and grading land improvements for gas utility property ...'; i4562 p. 10: '3-year property includes ... Any qualified rent-to-own property'; '10-year property includes ... Any qualified smart electric meter property'",
+       "why": "The question sends the filer only to Tables B-1 and B-2 and the A/B/C/QIP choices. A truthful filer would pick a table class (for example 57.0 at 5 years, or 49.14 at 20 years) instead of the 3-, 10-, 15- or 20-year class the lines need.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer has solar, wind or other energy property, or section 1245 real property with no class life, which the enum covers with cDEF_energy and cA_1245real.",
+       "source_text": "p946 p. 108: 'Section 1245 Real Property With No Class Life ... 7 ... 40'; 'F. Energy property described in section 48(a)(3)(A) ... 5'",
+       "why": "The question's 'Or choose' list names only A, B, C and qualified improvement property, so a filer with energy property is likely to choose A (7 years) instead of the 5-year energy class.",
+       "bound": ""
+      },
+      {
+       "kind": "TYPE",
+       "situation": "Several classes the text assigns cannot be entered, because the enum has no value for them.",
+       "source_text": "i4562 p. 10: '3-year property includes ... qualified rent-to-own property'; '15-year property includes ... Initial clearing and grading land improvements for gas utility property'; '20-year property includes ... Initial clearing and grading land improvements for electric utility transmission and distribution plants'; '10-year property includes ... qualified smart electric meter property'",
+       "why": "The enum has no value for these statutory classes. The lines therefore cannot receive the recovery period the text requires for them.",
+       "bound": "The enum would also need values for rent-to-own (3-yr), smart meter/grid (10-yr), retail motor fuels outlet, gas utility clearing and grading, electric transmission and gas distribution lines (15-yr), and electric utility clearing and grading (20-yr)."
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer buys appliances, carpets or furniture for a residential rental activity.",
+       "source_text": "i4562 p. 10: '5-year property includes ... Appliances, carpets, furniture, etc., used in a rental real estate activity'; p946 p. 99: '00.11 Office Furniture, Fixtures, and Equipment ... 7'",
+       "why": "The question gives no guidance for rental real estate. A filer could reasonably choose 00.11 (7 years) or 57.0 (5 years), and the two give different recovery periods.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "e94d0767de68675fb187f761b5c1f2a5e7b1a2813f6b8f90337ac2eff37e5a7d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.21867599999999998,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.class.b1c4f2ceed6a.1.response.txt"
+    }
+   ],
+   "type": "Enum(asset_class)",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      31,
+      33,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 98, Appendix B, How To Use the Tables; , Determining the classification; p946 p. 31, Qualified improvement property, \"Generally, this is any improvement to an interior part of a building that is nonresidential real property, and the improvement is section 1250 property, is made by you, and is placed in service by you after 2017 and after the date the building was first placed in service by any person\", \"However, a qualified improvement does not include any improvement for which the expenditure is attributable to any of the following\" and \"The enlargement of the building. • Any elevator or escalator. • The internal structural framework of the building\"; p946 p. 33, Additions and Improvements, \"An addition or improvement you make to depreciable property is treated as separate depreciable property\" and \"Its property class and recovery period are the same as those that would apply to the original property if you had placed it in service at the same time you placed the addition or improvement in service\"",
+      "pp. 99–108, Table B-1, \"Table B-1. Table of Class Lives and Recovery Periods\", \"Class Life GDS (in years) (MACRS) ADS\", \"Table B-2. Table of Class Lives and Recovery Periods\" (GDS (MACRS) column); , Column (d)—Recovery period"
+     ],
+     "cols_pages": [
+      17,
+      31,
+      33
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    },
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      2,
+      3,
+      10,
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Determining the classification, \"Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017\"",
+      "pp. 2-3, Special rules for qualified section 179 real property, \"You can elect to treat certain qualified real property placed in service during the tax year as section 179 property\"; , \"Land and land improvements do not qualify as section 179 property\" and \"you cannot elect the section 179 deduction for the following property\""
+     ],
+     "cols_pages": [
+      2,
+      3,
+      10,
+      11
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  },
+  "asset.cost": {
+   "subject_sha": "b032dfc0bbd007b21e339db5cad4a7e96243abd2ef99fb5f11cfd09575690fb2",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer bought a vehicle for which an alternative motor vehicle credit was allowed (or a pre-2007 qualified electric vehicle credit was claimed) and enters the full purchase price including sales tax, as the question directs.",
+       "source_text": "i4562 p. 14, Column (d): \"For a vehicle, reduce your basis by any qualified electric vehicle credit you claimed for property placed in service before January 1, 2007, or by any alternative motor vehicle credit allowed.\"",
+       "why": "The question says only \"what you paid, including sales tax, delivery and installation\" and never mentions the vehicle credit reduction. A truthful answer therefore overstates the cost that feeds asset.basis, the bonus figure, MACRS depreciation and scveh.line19.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer traded in old property toward the new asset, or acquired it in an involuntary conversion, and could enter either the full contract price or only the cash or other amount actually paid.",
+       "source_text": "i4562 p. 14, Column (d): \"If you traded in old property, see Property acquired in a like-kind exchange or involuntary conversion\"; p. 9: \"you must depreciate the carryover basis ... The depreciable basis of the new property is the adjusted basis of the exchanged or involuntarily converted property plus any additional amount paid for it.\"",
+       "why": "The phrase \"what you paid\" can be read as the sticker price or as the cash paid. Neither reading is the carryover basis plus any additional amount paid, and the question gives no guidance for trade-ins.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "For property placed in service before 2025 (used by asset.macrs_prior), a filer could read \"other basis\" as the current adjusted basis after depreciation already taken and enter that net figure.",
+       "source_text": "i4562 p. 14, Column (d): \"Enter the property's actual cost (including sales tax) or other basis (unadjusted for prior years' depreciation).\"",
+       "why": "The question never says the amount is unadjusted for prior depreciation. A filer reading \"other basis\" as adjusted basis would understate the basis, and prior depreciation would then be subtracted a second time.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "d30301f3774e7a3b4771950156ca9d1f4df0f0c545fcabee0ee722af8e15c2bb",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.095556,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.cost.b032dfc0bbd0.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Column (c)—Basis for depreciation",
+      "p. 11, Column (c)—Basis for depreciation; p. 14, Column (d)—Cost or other basis",
+      "p. 14, Lines 26 and 27; p. 15, Column (f)—Recovery period, \"For property placed in service after 1986 and used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS recovery period\"",
+      "pp. 8-12, Part III, and Pub. 946 Appendix B"
+     ],
+     "cols_pages": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  },
+  "asset.listed": {
+   "subject_sha": "ccebabfec06d600cf430f82d491881584eb9d2715c1829d8462e9e096509fbba",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer owns a printer, scanner or other peripheral placed in service before 2018 that is not used only at their regular business establishment.",
+       "source_text": "i4562 p. 3: \"Any computer or peripheral equipment used exclusively at a regular business establishment\"; p. 14: \"Other listed property (computers and peripheral equipment placed in service before 2018, etc.)\"",
+       "why": "The question names only \"a computer placed in service before 2018\". A filer with a pre-2018 peripheral that is listed property would truthfully answer no, which sends it to lines 6, 14, 17 or 19 instead of Part V.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "An employee (or other user) owns a pre-2018 computer used only at an establishment that is run by someone else, such as the employer's office.",
+       "source_text": "i4562 p. 3: \"used exclusively at a regular business establishment and owned or leased by the person operating the establishment\"; \"for any property listed in (1) above, the regular business establishment of an employee is their employer's regular business establishment\"",
+       "why": "For computers, the exception applies only if the owner operates the establishment. The employer-establishment rule covers only item (1) equipment. A filer who uses the computer only at the employer's office would call that their regular business establishment and answer no, although the computer remains listed property.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer owns entertainment or recreational property that is not photographic, phonographic, communication or video equipment and uses it only in the business.",
+       "source_text": "i4562 p. 3: \"Any property used for entertainment or recreational purposes\"; Exceptions: \"1. Photographic, phonographic, communication, or video equipment used exclusively in a taxpayer's trade or business\"",
+       "why": "The question applies the exclusive-business-use carve-out to all entertainment or recreation property. The text excepts only the four named equipment types, so other such property stays listed even when used only in the business, yet the filer would answer no.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer has a camera or communication device used partly for business and partly personally, and does not regard it as used \"for entertainment or recreation\".",
+       "source_text": "Question: \"property used for entertainment or recreation (such as photographic, phonographic, communication or video recording equipment) that is not used exclusively in your business\"; i4562 p. 3 Exceptions item 1",
+       "why": "One reading treats any such equipment that is not used exclusively in the business as listed (answer yes). Another reading requires actual entertainment use (answer no). The two readings send the asset to Part V or to Parts II and III.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f4c5e02065626b2114f231df15432f137cf684bf3e447e024520114fd3eb7197",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.130188,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.listed.ccebabfec06d.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 18,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      3,
+      5,
+      9,
+      10,
+      13,
+      14,
+      15,
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Line 25",
+      "p. 13, Part V and Line 25",
+      "p. 14, Lines 26 and 27, line 27 (ADS) and Listed property recapture",
+      "p. 15, Column (h)",
+      "p. 15, Column (h)—Depreciation deduction, \"For property used more than 50% in a qualified business use (line 26) ... figure column (h) by following the instructions for line 19, column (g)\"",
+      "p. 16, Column (i)",
+      "p. 3, Listed Property and its Exceptions, \"a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home\"; p. 13, Part V",
+      "p. 5, Line 14",
+      "p. 5, Line 6",
+      "p. 5, Line 6, \"Do not include any listed property on line 6\"; p. 9, Lines 19a Through 19j, \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025\"",
+      "p. 9, Line 17",
+      "pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property"
+     ],
+     "cols_pages": [
+      3,
+      5,
+      9,
+      10,
+      13,
+      14,
+      15
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  },
+  "asset.not179": {
+   "subject_sha": "2a1b978d3218b2cc03302e0bd27d4d371903955968470d73bac5e329ee24960c",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The property is used predominantly outside the United States, and it is not property described in section 168(g)(4).",
+       "source_text": "p946 p. 17: \"Property used predominantly outside the United States, except property described in section 168(g)(4)\"; i4562 p. 2: \"Property used mainly outside the United States (except for property described in section 168(g)(4))\"",
+       "why": "The list leaves out this excepted category, so a truthful filer answers no. The lines then count the property as section 179 property and include it in s179.line2, and the gate does not flag an election on it.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "The filer bought the asset from a related person, such as a parent, or otherwise did not acquire it by purchase.",
+       "source_text": "p946 p. 17: \"They do not qualify as section 179 property because you and your father are related persons\"; i4562 p. 2: \"Section 179 property is property that you acquire by purchase\"",
+       "why": "The label says \"This property is not section 179 property\", but the question only asks about the listed exclusions. Property that fails the purchase requirement under What Property Qualifies? gets a no answer and is treated as section 179 property.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "The asset is land itself rather than a land improvement.",
+       "source_text": "p946 p. 17: \"Land and land improvements do not qualify as section 179 property\"",
+       "why": "The bullet names only \"a land improvement\", so a filer entering land as an asset may answer no.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A corporation buys property and leases it to others without meeting the manufacture test or the lease-term and 15% test.",
+       "source_text": "Question: \"property you purchased and lease to others, unless you manufactured or produced it, or the lease term ...\"; p946 p. 17: \"Certain property you lease to others (if you are a non-corporate lessor)\" and \"This rule does not apply to corporations\"",
+       "why": "The leasing exclusion applies only to non-corporate lessors. A corporate filer answering truthfully says yes, and its property is wrongly excluded from line 2 and its election is flagged.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The property is used by a section 521 farmers' cooperative.",
+       "source_text": "Question: \"property used by a tax-exempt organization, unless used in connection with the production of income subject to the tax on unrelated trade or business income\"; i4562 p. 2: \"Property used by a tax-exempt organization (other than a section 521 farmers' cooperative)\"",
+       "why": "The question covers every tax-exempt user, but the instructions carve out section 521 farmers' cooperatives. A yes answer wrongly excludes that property.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8233fd3daf58bfacc1ebed195582fbe39f59883f954a8e786e5325a3002cdaf2",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.07686,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.not179.2a1b978d3218.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, What Property Does Not Qualify?, \"Land and land improvements do not qualify as section 179 property\", \"Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property\" and Leased property; , \"Property held for investment (section 212 property)\"; , \"for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless\"; , Line 2, \"Enter the total cost of all section 179 property you placed in service during the tax year\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    },
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Part I, \"placed in service during the tax year and used predominantly (more than 50%) in your trade or business\"; p. 5, Line 6, Column (c); , \"Land and land improvements do not qualify as section 179 property\" and \"you cannot elect the section 179 deduction for the following property\"",
+      "pp. 2-3, Special rules for qualified section 179 real property, \"You can elect to treat certain qualified real property placed in service during the tax year as section 179 property\"; , \"Land and land improvements do not qualify as section 179 property\" and \"you cannot elect the section 179 deduction for the following property\""
+     ],
+     "cols_pages": [
+      2,
+      3,
+      5
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  },
+  "asset.pct": {
+   "subject_sha": "20bfb2c6e64baf49a86c22af191d2b3bbb578c4d8177f2756d6dfd6bc236afba",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer uses the property partly for investment or the production of income, such as a computer used to manage personal investments, and reports only the share used 'for this business.'",
+       "source_text": "i4562 p. 11, Column (c): 'multiply the cost or other basis of the property by the percentage of business/investment use'; p. 14: 'used ... for trade or business purposes or for the production of income'",
+       "why": "The lines need the combined business and investment percentage. The question asks only for use 'for this business', so a truthful filer leaves out investment use and understates the basis.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer converts listed property from business use to personal use partway through 2025.",
+       "source_text": "i4562 p. 14, Column (c): 'If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage ... only for the number of months you use the property in your business'",
+       "why": "The question gives the month-proration rule only for conversion from personal to business use. It leaves out the 'vice versa' case, so a filer converting the other way would not prorate by months.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "An employer's vehicle is driven by employees for personal trips, and the value of that personal use is included in the employees' wages or the employees reimburse it.",
+       "source_text": "i4562 p. 14, Column (c): 'Treat vehicles used by employees as being used 100% for business/investment purposes if the value of personal use is included in the employees' gross income, or the employees reimburse the employer for the personal use.'",
+       "why": "The lines need 100% here. A filer who truthfully measures actual business use would enter a lower figure, because the question does not mention this rule.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "A filer reports a car or other vehicle that is listed property.",
+       "source_text": "Question: 'For listed property, measure the use by the time the property is actually used ... in the most appropriate unit of time.' i4562 p. 14: 'For automobiles and other vehicles, determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... (not to include any commuting mileage) by the total number of miles'",
+       "why": "For vehicles the text requires a mileage ratio that excludes commuting miles, not a time-based allocation. The question tells the filer to use time for all listed property, which gives a different percentage, and it never says to exclude commuting.",
+       "bound": ""
+      },
+      {
+       "kind": "TYPE",
+       "situation": "A filer's percentage is fractional, for example 100% business use for 7 of 12 months after conversion (58.33%), or 6,250 business miles out of 10,000 (62.5%).",
+       "source_text": "i4562 p. 14, Column (c): 'Multiply that percentage by the number of months ... and divide the result by 12.'",
+       "why": "The text's computations produce fractional percentages. The accepted answer is a whole-number count, so the filer must round, which changes the basis for depreciation.",
+       "bound": "A percentage from 0 to 100, which may be fractional"
+      }
+     ],
+     "prompt_sha": "f6e89632d33e552402a5e5e5bc4ff2bcb90e92a929468840780a33d9209bf2fa",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.063532,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.pct.20bfb2c6e64b.1.response.txt"
+    }
+   ],
+   "type": "Count",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      11,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Column (c)",
+      "p. 11, Column (c)—Basis for depreciation, \"multiply the cost or other basis of the property by the percentage of business/investment use\"; p. 14, Column (c)—Business/investment use percentage, \"allocate the use based on the most appropriate unit of time the property is actually used (rather than merely being available for use)\" and \"If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income\""
+     ],
+     "cols_pages": [
+      11,
+      14
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  },
+  "asset.placed": {
+   "subject_sha": "e31a1bd344fc8791fd1b279ada29f929206051c3423a6d7ea4a0be51958ffa45",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer who acquired property in 2025 in a like-kind exchange or involuntary conversion, without making the election out, truthfully answers 2025. The carryover basis must instead keep the recovery schedule of the property given up.",
+       "source_text": "i4562 p. 9, Section B: \"you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted... Treat any excess basis as newly placed in service property.\"",
+       "why": "The question has no rule for exchanged or involuntarily converted property. A 2025 answer makes asset.is2025 true and asset.year return recovery year 1 for the carryover basis. The text needs the remaining schedule of the old property and a separate figure for any excess basis.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A fiscal-year filer has property whose calendar year in service differs from the tax year it falls in. One example is property placed in service in January 2026 during a tax year that began in 2025. Another is property placed in service in March 2025 during a tax year that began in 2024.",
+       "source_text": "i4562 p. 9: \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025\"; Line 17: \"placed in service in tax years beginning before 2025\"",
+       "why": "The question asks for the calendar year placed in service. The lines need the tax year in which the property was placed in service. For fiscal-year filers the two differ, so the asset is routed to the wrong line (19 versus 17) and gets the wrong recovery year.",
+       "bound": ""
+      },
+      {
+       "kind": "TYPE",
+       "situation": "A filer has residential rental or nonresidential real property placed in service before 2005 that is still being depreciated under MACRS in 2025, for example a rental building placed in service in 2000. No year on the list fits.",
+       "source_text": "i4562 p. 9: \"Generally, MACRS is used to depreciate any tangible property placed in service after 1986\"; p946 p. 33: recovery periods \"27.5 years\", \"39 years\", \"50 years\" (railroad gradings and tunnel bores)",
+       "why": "Property with 27.5-, 39- or 50-year recovery periods placed in service as early as 1987 can still produce a 2025 deduction on line 17 or line 26. The answer list stops at 2005.",
+       "bound": "Any year from 1987 to 2025, and the tax year beginning in 2025 for current-year property"
+      }
+     ],
+     "prompt_sha": "d419cdd94919f7ffe67b17edb2a77abc16e1f36a8b20c3a3af83f898e7479ff3",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09781999999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.placed.e31a1bd344fc.1.response.txt"
+    }
+   ],
+   "type": "Enum(placed_year)",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      9,
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Column (b)—Month and year placed in service; , Using the MACRS Percentage Tables, the example of the third recovery year; , \"The placed in service date for your property is the date the property is ready and available for a specific use. It is therefore not necessarily the date it is first used.\" and \"If you converted property held for personal use to use in a trade or business or for the production of income, treat the property as being placed in service on the conversion date\"; , Additions and Improvements, \"The recovery period begins on the later of the following dates\", \"The date you place the addition or improvement in service\" and \"The date you place in service the property to which you made the addition or improvement\"",
+      "p. 9, Lines 19a Through 19j, \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025\"; p. 9, Line 17, \"For tangible property placed in service in tax years beginning before 2025 and depreciated under MACRS\""
+     ],
+     "cols_pages": [
+      9,
+      11
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      32,
+      33,
+      34,
+      37,
+      39
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 37, Using the MACRS Percentage Tables"
+     ],
+     "cols_pages": [
+      32,
+      33,
+      34,
+      37,
+      39
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "asset.prior_179": {
+   "subject_sha": "42412fb61f26107fa0083c5e3601aa12433e4e9a4a4f143a2e68dcc7de12596a",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer elected a section 179 amount larger than the deduction allowed in the placed-in-service year because of the taxable-income limit, so part of it carried over and was deducted in later years.",
+       "source_text": "p946 p. 37, Figuring the Unadjusted Basis of Your Property: \"you do reduce your original basis by ... Any section 179 deduction claimed\"",
+       "why": "The question asks for the amount \"elected\" in the year placed in service, but the cited text speaks of the deduction \"claimed\". When part is carried over, a filer could reasonably give either the full elected amount or only the amount actually deducted that year. The two readings give a different unadjusted basis, and so a different MACRS deduction on line 17.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "59e28c87eabe428cac4f446216627c0554ef77b58f792a97df6c1fee3e7a4e40",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.03462,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.prior_179.42412fb61f26.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      37
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 37, Figuring the Unadjusted Basis of Your Property",
+      "p. 37, Figuring the Unadjusted Basis of Your Property, \"you do reduce your original basis by ... Any section 179 deduction claimed\""
+     ],
+     "cols_pages": [
+      37
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "asset.prior_bonus": {
+   "subject_sha": "47d837d04bd640ce512263055da5de377c6a49d354ad8de67f6e2ffbd7b64506",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A farmer elected the special depreciation allowance for specified plants (fruit or nut trees or vines) in the year they were planted or grafted, which can be several years before the plants are placed in service, so a filer answering about the placed-in-service year would report zero.",
+       "source_text": "p946 p. 37: \"However, you do reduce your original basis by other amounts, including the following. ... • Any special depreciation allowance taken on the property.\"",
+       "why": "The text reduces unadjusted basis by any special depreciation allowance taken on the property, in whatever year. The question limits the amount to the allowance claimed 'in the year you placed it in service', so an allowance taken in an earlier year is left out and unadjusted basis comes out too high.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f95156c91f8a04656b1caa4e38f646cda62c0f8f3e4da34402a9758254d67f53",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.031244,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.prior_bonus.47d837d04bd6.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      37
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 37, Figuring the Unadjusted Basis of Your Property, \"Any special depreciation allowance taken on the property\"",
+      "p. 37, Figuring the Unadjusted Basis of Your Property, \"You must apply the table rates to your property's unadjusted basis each year of the recovery period\""
+     ],
+     "cols_pages": [
+      37
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "asset.prior_conv": {
+   "subject_sha": "0fc119b5bcee450ee6ee404311be7924231e6150b88c249a9a6e60c16966d790",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "e867d056b2b934c9338995df68ab6e42850472a8b10fd0858b3a2b45cc278036",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.12242399999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.prior_conv.0fc119b5bcee.1.response.txt"
+    }
+   ],
+   "type": "Enum(macrs_convention)",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Column (e)—Convention; Line 17, \"see the instructions for line 19, column (g)\""
+     ],
+     "cols_pages": [
+      11
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 71–84, Table A-1 to Table A-5 and Table A-8 to Table A-12, \"3-, 5-, 7-, 10-, 15-, and 20-Year Property Half-Year Convention\", \"Mid-Quarter Convention Placed in Service in First Quarter\", \"Mid-Quarter Convention Placed in Service in Fourth Quarter\", \"Straight Line Method Half-Year Convention\", \"Straight Line Method Mid-Quarter Convention Placed in Service in First Quarter\", \"Table A-12. Straight Line Method Mid-Quarter Convention Placed in Service in Fourth Quarter\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "asset.quarter": {
+   "subject_sha": "7738d4426546cd96664d457006b51d7d7ce7d80f8e4a7537b1bfb9ab648e40c7",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer on a fiscal tax year (for example July 2025 to June 2026) places property in service in May 2026, which is the fourth quarter of that tax year.",
+       "source_text": "p946 p. 41: \"The first quarter in a year begins on the first day of the tax year... The fourth quarter begins on the first day of the tenth month of the tax year. A calendar year is divided into the following quarters.\"; p946 p. 34: \"placed in service during the last 3 months of the tax year\"",
+       "why": "The lines need the quarter of the filer's tax year. The question fixes calendar months of 2025, so this filer would answer April to June (q2), or could not answer for a 2026 date. The lines then leave the basis out of the last-3-months test and apply the wrong mid-quarter percentage.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer bought property for personal use in 2023 and converted it to business use in November 2025.",
+       "source_text": "i4562 p. 11, Column (b): \"If you converted property held for personal use to use in a trade or business or for the production of income, treat the property as being placed in service on the conversion date.\"",
+       "why": "Neither the question nor its help defines \"placed this property in service.\" An ordinary filer could reasonably give the purchase date instead of the conversion date, which changes the quarter and whether the basis counts toward the fourth-quarter 40% test.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "9fa39dfe76159dd0c961a5f28f7a7043acd2b60d3339d458caa28bb215179ccf",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.048128,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.quarter.7738d4426546.1.response.txt"
+    }
+   ],
+   "type": "Enum(quarter)",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      34,
+      41
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 34, Which Convention Applies?, Mid-quarter convention, \"placed in service during the last 3 months of the tax year\"",
+      "p. 41, Using the Applicable Convention, Mid-quarter convention, \"A calendar year is divided into the following quarters\""
+     ],
+     "cols_pages": [
+      34,
+      41
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    },
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Column (e)—Convention, Mid-quarter convention"
+     ],
+     "cols_pages": [
+      11
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  },
+  "asset.s179": {
+   "subject_sha": "70d34b59ec942cee987ae17ab139e7be48cb00e41621feb91fa7a3847f90b2a3",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer who places a new roof, HVAC, fire protection/alarm or security system on nonresidential real property and elects to expense it would enter zero, because the question lists only qualified improvement property as electable real property.",
+       "source_text": "i4562 (2025) p. 3: \"the term 'section 179 property' will include any qualified real property which is: • Qualified improvement property ... and • Any of the following improvements to nonresidential real property ... 1. Roofs. 2. Heating, ventilation, and air-conditioning property. 3. Fire protection and alarm systems. 4. Security systems.\"",
+       "why": "The question's qualifying list names only qualified improvement property. The other qualified section 179 real property is left out, so a truthful answer is zero where the lines need the elected amount.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A farmer who buys and elects to expense a single purpose agricultural (livestock) or horticultural structure would enter zero, because that category is missing from the question's list.",
+       "source_text": "i4562 (2025) p. 2: \"Section 179 property is property ... and is one of the following. ... • Single purpose agricultural (livestock) or horticultural structures.\"",
+       "why": "The question says \"Only section 179 property qualifies\" and gives a list that omits this category. A filer reading it would conclude the structure does not qualify.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who elects to expense equipment used mainly outside the United States would enter the elected amount, because the question does not exclude it.",
+       "source_text": "i4562 (2025) p. 2: \"Section 179 property does not include the following. ... • Property used mainly outside the United States (except for property described in section 168(g)(4)).\"; p946 p. 17: \"Property used predominantly outside the United States\"",
+       "why": "The question's zero-entry lists cover land, investment, leased, tax-exempt, governmental and foreign-person property but not foreign-use property. The amount then flows to the 179 deduction and reduces basis.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who bought machinery from a parent or other related person would treat it as \"acquired by purchase\" and enter an elected amount.",
+       "source_text": "p946 (2025) p. 17: \"You bought two industrial sewing machines from your father. ... They do not qualify as section 179 property because you and your father are related persons.\"",
+       "why": "The question's \"acquired by purchase\" reads to an ordinary filer as any purchase. Purchases from related persons are not a purchase for section 179, so a truthful answer brings in an amount the lines must not have.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose property was acquired partly by trade-in may take \"its business cost\" as the full price rather than only the cash or excess paid, and elect more than is eligible.",
+       "source_text": "i4562 (2025) p. 5, Column (b): \"If you acquired the property through a trade-in ... Include only the excess of the cost of the property over the value of the property traded in.\"; p946 p. 17: \"its cost for purposes of the section 179 deduction includes only the cash you paid.\"",
+       "why": "\"Not more than its business cost\" could be read as the full cost or as the trade-in-adjusted cost. The gate compares against column (c) basis, which can include carryover basis, so it would not catch the overstatement.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "For listed property placed in service in an earlier year, a filer may read \"the amount ... you elect to expense\" as including the election made in that earlier year, and that amount would flow unconditionally into column (i) and line 29.",
+       "source_text": "i4562 (2025) p. 3: \"You can elect to expense part or all of the cost of section 179 property ... that you placed in service during the tax year\"; p. 16, Column (i): \"Enter the amount you elect to expense\"",
+       "why": "The question names no year. `asset.after179` needs the prior election to reduce basis, but `asset.f26i` passes the same answer to line 29 and line 7 without any placed-in-service-in-2025 check. A prior-year election would then be deducted again in 2025.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "66dd12179bec893fa48b52d5fea1248a4a6efec2ae775e1c4beb076a89f67b52",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.126284,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.s179.70d34b59ec94.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 5,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      9,
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (i)—Elected section 179 cost",
+      "p. 3, Part I, \"placed in service during the tax year and used predominantly (more than 50%) in your trade or business\"; p. 5, Line 6, Column (c); , \"Land and land improvements do not qualify as section 179 property\" and \"you cannot elect the section 179 deduction for the following property\"",
+      "p. 3, Part I; p. 5, Line 6, Column (c); , What Property Does Not Qualify?",
+      "p. 5, Line 6, Column (c)—Elected cost; pp. 2-3, Section 179 property, \"Section 179 property is property that you acquire by purchase for use in the active conduct of your trade or business\", \"Storage facilities (except buildings and their structural components) used in connection with distributing petroleum or any primary product of petroleum\", \"Property held for investment (section 212 property)\" and \"for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless\"; , \"Land and land improvements do not qualify as section 179 property\" and \"you cannot elect the section 179 deduction for the following property\"",
+      "p. 7, How to figure the allowance, \"subtract from the business/investment portion of the cost or other basis of the property any credits and deductions allocable to the property ... Section 179 expense deduction\"",
+      "p. 9, Lines 19a Through 19j and Line 17; p. 4, Line 2",
+      "pp. 2-3, Special rules for qualified section 179 real property, \"You can elect to treat certain qualified real property placed in service during the tax year as section 179 property\"; , \"Land and land improvements do not qualify as section 179 property\" and \"you cannot elect the section 179 deduction for the following property\""
+     ],
+     "cols_pages": [
+      2,
+      3,
+      5,
+      7,
+      9
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "asset.screen": {
+   "subject_sha": "db04c813ccda6170161ef4a8c35f5d7bff64cd950cd8955e9839287e339946c4",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer has a fruit or nut tree or vine, either one placed in service in 2025 that must use straight line, or a specified plant planted or grafted in 2025 that they elected under section 168(k)(5) to take the special allowance on; none of the listed items covers either case, so a truthful filer answers no.",
+       "source_text": "i4562 p. 11: \"The straight line method is the only applicable method for trees and vines bearing fruits or nuts.\" i4562 p. 6: \"the special depreciation allowance only applies for the first tax year in which the plant is planted or grafted. The plant will not be treated as qualified property eligible for the special depreciation allowance in the subsequent tax year in which it is placed in service.\"",
+       "why": "The question only reaches straight line when the filer elected it, and does not mention the specified-plant allowance, which is taken in the planting year rather than the placed-in-service year. Such a tree or vine stays in the tool, which would apply the default 10-year method or the allowance in the wrong year.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer converted property held for personal use to business or income-producing use; the list covers conversion to personal use but not conversion from personal use, so the filer answers no.",
+       "source_text": "i4562 p. 11, Column (b): \"If you converted property held for personal use to use in a trade or business or for the production of income, treat the property as being placed in service on the conversion date.\" i4562 p. 14: \"your basis for depreciation is the smaller of the property's adjusted basis or its fair market value on the date of conversion.\"",
+       "why": "Converted property has its own placed-in-service date and its own basis rule (the lower of adjusted basis or fair market value). The question does not screen it out, so the tool would depreciate it from cost and the original purchase date.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "9c2f0ca9c4fe2989c1a602009342bea5dd48bb59c3c31df1156ab8faf279441d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.16072,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/asset.screen.db04c813ccda.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 8-12, Part III",
+      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
+     ],
+     "cols_pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      31,
+      37
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      17,
+      31,
+      37
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,124 @@
+{
+ "form": "oi8z",
+ "reviews": {
+  "oi8z.amount": {
+   "subject_sha": "e6b67fd45cac2bec3bbf0096aae78170417c61fb3b7c9f3045dd658d8ed6ea79",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose item belongs on another line, such as staking income (line 8v), scholarship not on a W-2 (line 8r), or a taxable 1099-G amount already entered elsewhere, truthfully gives its full amount here, so it is counted on line 8z as well as on its own line.",
+       "source_text": "i1040gi p. 92, Line 8z: \"Use line 8z to report any taxable income not reported elsewhere on your return or other schedules.\"",
+       "why": "The question asks for 'The amount of this item to include in income for 2025' and never says to leave out income reported on another line or schedule. Taxable income reported elsewhere gets counted twice.",
+       "bound": ""
+      },
+      {
+       "kind": "TYPE",
+       "situation": "A filer with a loss on a corrective distribution of excess deferrals must report a negative amount on line 8z, but the accepted answer only allows zero or more.",
+       "source_text": "i1040gi p. 92, Line 8z: \"Examples of income to report on line 8z include the following. ... Loss on certain corrective distributions of excess deferrals.\"",
+       "why": "Line 8z takes this loss as a negative figure. NonNegDollars cannot hold it, and no listed refusal covers the case.",
+       "bound": "any dollar amount, negative allowed for losses such as on corrective distributions of excess deferrals"
+      }
+     ],
+     "prompt_sha": "7a1d228d5759257cf4e11ac5fb444814e5c6995b5f3db9ea466d66e58a24dc93",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.039924,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/oi8z.amount.e6b67fd45cac.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      92,
+      93
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\"",
+      "p. 92, Line 8z, \"List the type and amount of income\"",
+      "p. 92, Line 8z, \"See Recoveries in Pub. 525 for details on how to figure the amount to report\"",
+      "p. 92, Line 8z, \"See the instructions for Schedule 2, line 17g\"; p. 93, Line 8z, \"See the Instructions for Form 5329\""
+     ],
+     "cols_pages": [
+      92,
+      93
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "oi8z.kind": {
+   "subject_sha": "5a13792a1827834f3765a62ac84064a5ae79e12805ce20153b6418377542b9fb",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose charity sold donated property within 3 years truthfully picks charitable_recapture, so oi8z.additional_tax turns on even though the text applies interest and the additional 10% tax only to the fractional-interest recapture.",
+       "source_text": "i1040gi p. 92, Line 8z: \"Recapture of a charitable contribution deduction relating to the contribution of a fractional interest in tangible personal property... Interest and an additional 10% tax apply to the amount of the recapture.\" vs. \"Recapture of a charitable contribution deduction if the charitable organization disposes of the donated property within 3 years of the contribution. See Recapture if no exempt use in Pub. 526.\" Question option: \"charitable_recapture (recapture of a charitable contribution deduction, for a fractional interest in tangible personal property or property the charity disposed of within 3 years)\"",
+       "why": "The single choice merges two recapture types, but only the fractional-interest bullet carries the interest and additional 10% tax. The gate therefore flags an additional tax for the 3-year disposition recapture, which the text does not impose.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "1faa1871f6bfba4d49c2ed268b6c8cb467a8a79a4caaa83aea1e254b40315cc4",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.05608,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/oi8z.kind.5a13792a1827.1.response.txt"
+    }
+   ],
+   "type": "Enum(other_income_kind)",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      92,
+      93
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 92, Line 8z, \"Examples of income to report on line 8z include the following\"; , Kickbacks, \"You must include kickbacks, side commissions, push money, or similar payments you receive in your income on Schedule 1 (Form 1040), line 8z; or on Schedule C (Form 1040) if from your self-employment activity\"",
+      "p. 92, Line 8z, \"Interest and an additional 10% tax apply to the amount of the recapture. See the instructions for Schedule 2, line 17g\"; p. 93, Line 8z, \"You may have to pay an additional tax if you received a taxable distribution from a Coverdell ESA or a QTP. See the Instructions for Form 5329\"",
+      "p. 92, Line 8z, \"Reimbursements or other amounts received for items deducted in an earlier year\" and \"See Recoveries in Pub. 525 for details on how to figure the amount to report\"",
+      "p. 92, Line 8z, \"See Retirement Plan Contributions in Pub. 525\" and \"See Pub. 525 to figure the taxable part, if any\" and \"Dividends on insurance policies if they exceed the total of all net premiums you paid for the contract\""
+     ],
+     "cols_pages": [
+      92,
+      93
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      34
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  }
+ }
+}

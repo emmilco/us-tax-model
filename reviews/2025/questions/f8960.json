@@ -1,0 +1,120 @@
+{
+ "form": "f8960",
+ "reviews": {
+  "f8960.allocated_taxes": {
+   "subject_sha": "b950197a7d66e34e677324f38e3493b9637efdd601529e8d94637ad6425e6805",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "An itemizer deducts foreign income taxes on Schedule A (line 6, other taxes) instead of taking a credit, and part of those taxes is attributable to net investment income.",
+       "source_text": "i8960 (2025) p. 17, Line 9b: \"Include state, local, and foreign income taxes you paid for the tax year that are attributable to NII.\" p. 18: \"Enter the amount of state, local, or foreign income taxes; state, local, and foreign real property taxes; as well as state and local personal property taxes on Form 8960, line 9b.\"",
+       "why": "Line 9b needs the allocable share of deducted foreign income taxes too. The question and help ask only for 'state/local income and property taxes ... you deduct on Schedule A'. A truthful filer therefore leaves out deducted foreign income taxes, and the line 9b amount is understated. The note to exclude credited foreign taxes suggests foreign taxes belong in the figure, but the wording never asks for the deducted ones.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "314656829ac2f042ae4ef2749309ad80115bbb7d5b206e54e5aaaa0957fb77e3",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.052948,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8960.allocated_taxes.b950197a7d66.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f8960",
+     "revision": "2025; created 2025-08-19",
+     "text_sha256": "76d992342a282067460ae60eaf8bda63925b514b721a6e8763f1174abedb59e9",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8960 (2025), Parts I–III, individual lines 1–17"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "35521c3ad7dfcd341a9de35529db4ea02c74bde6b9659da0d9388cfa46f9e4cb"
+    },
+    {
+     "doc": "i8960",
+     "revision": "2025; printed date 2026-02-04",
+     "text_sha256": "fcae098ebc1ad79343de101a66765d3b3597f664dc744de3a7588be123c900a1",
+     "pages": [
+      17,
+      18
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17–18, Line 9b, the allowable taxes allocable to net investment income",
+      "pp. 17–18, line 9b; p. 18, Line 9b—State, Local, and Foreign Income Tax, \"allocable to NII using any reasonable method\""
+     ],
+     "cols_pages": [
+      17,
+      18
+     ],
+     "cols_sha256": "d6dc1f475c511790abb02d6d6cfff554a59b40c0da1c56eb2f26af4e3cb7fa51"
+    }
+   ]
+  },
+  "f8960.prior_2i": {
+   "subject_sha": "5c50c6d589c1e513f5e45eb9f6e1534ab35ee321eb4d2bab36b938c1704118af",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer had a net excluded capital loss in 2024 (for example, a loss on property used in a non-section 1411 trade or business) and a capital loss carried into 2025, but did not figure NIIT for 2024 because their 2024 MAGI was under the threshold; the help tells them to answer No.",
+       "source_text": "i8960 p. 9: \"Generally, the annual adjustment to your capital losses carryforward is the lesser of: • The amount of your capital loss carryforward from the previous year ... or • The amount of excluded capital losses in excess of excluded capital gain in the previous year.\"",
+       "why": "Under the text, the adjustment depends on the prior year's excluded losses and carryforward, not on whether Form 8960 was actually figured that year. The instruction to answer No when no 2024 NIIT was figured drops a carryforward adjustment that the lines need.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose 2024 worksheet had -0- entered on line 2(i), because the sum of lines 2(a)–2(h) was not greater than zero, could read \"was there an amount on line 2(i)\" as Yes, since a figure was entered.",
+       "source_text": "i8960 p. 10, line 2(i)(1): \"Otherwise, enter -0- on line 2(i) and go to line 2(j)\"",
+       "why": "Reading an entered zero as \"an amount\" turns on the carryforward-adjustment gate when there is nothing to adjust. The question does not say whether a zero entry counts.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "723380c90f742b9f26fd682c7f08a38e24bf8b007fcc239924ce90d375973441",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.050184,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8960.prior_2i.5c50c6d589c1.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8960",
+     "revision": "2025; printed date 2026-02-04",
+     "text_sha256": "fcae098ebc1ad79343de101a66765d3b3597f664dc744de3a7588be123c900a1",
+     "pages": [
+      9,
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Net Gains and Losses Worksheet, line 2(h), \"Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations\"; p. 9, \"capital loss carryforwards must be adjusted\"",
+      "p. 9, \"capital loss carryforwards must be adjusted\"; p. 10, Net Gains and Losses Worksheet, line 2(h), \"Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations\""
+     ],
+     "cols_pages": [
+      9,
+      10
+     ],
+     "cols_sha256": "d6dc1f475c511790abb02d6d6cfff554a59b40c0da1c56eb2f26af4e3cb7fa51"
+    }
+   ]
+  }
+ }
+}

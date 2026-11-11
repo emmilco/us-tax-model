@@ -1,0 +1,1275 @@
+{
+ "form": "retirement",
+ "reviews": {
+  "retirement.account": {
+   "subject_sha": "2b186b111dc4ebbb7592d92e7ea0131d785e681a69b0945510940d9a76270b55",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer receives a distribution from a Roth IRA that receives SEP contributions (a Roth SEP IRA) and must choose between traditional_ira, whose wording says it 'includes SEP', and roth_ira, which mentions only 'a Roth IRA or Roth SIMPLE IRA'.",
+       "source_text": "i1040gi p. 26: \"an IRA includes a traditional IRA (which includes a traditional IRA that receives contributions from a simplified employee pension (SEP) arrangement), Roth IRA (which includes a Roth IRA that receives contributions from a SEP arrangement)\"",
+       "why": "The traditional_ira option says it 'includes SEP' without limiting this to traditional SEP IRAs, and the roth_ira option does not mention Roth SEP IRAs, so a Roth SEP holder could reasonably choose traditional_ira. That choice sets retirement.roth to false and sends the distribution down the traditional-IRA path instead of Exception 2, item 2, which changes line 4b.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "11bf714b3b334bdc26facc2a2241a2bb264c300ba73665ef9b48ab8bfddb4609",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.07882,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.account.2b186b111dc4.1.response.txt"
+    }
+   ],
+   "type": "Enum(retirement_account)",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099r",
+     "revision": "2025 (calendar-year form)",
+     "text_sha256": "97b0b54ae7c95303418077d54e349c0106cbbd5c4b5695ef684c23c39a5fda3f",
+     "pages": [
+      7,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "Instructions for Recipient, IRA/SEP/SIMPLE box; , lines 4a-4b and 5a-5b"
+     ],
+     "cols_pages": [
+      7,
+      9
+     ],
+     "cols_sha256": "af300d066f4492afc97aa90824bfc681581f64482976e6d6a705e7e94b0e4e67"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      26,
+      27,
+      28
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 26, Lines 4a and 4b, IRA Distributions",
+      "p. 27, Exception 2 (a Roth IRA distribution other than code Q needs Form 8606); , Box 7, \"The following codes identify the distribution you received\", \"Q—Qualified distribution from a Roth IRA or Roth SIMPLE IRA\"",
+      "p. 27, Exception 2, item 2"
+     ],
+     "cols_pages": [
+      26,
+      27,
+      28
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "retirement.age": {
+   "subject_sha": "6c734aa8f34fcbc09f7b9c08ac9a113fcd498f03351fffdb0529f779fe3bf0f6",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer receiving an annuity as the beneficiary of an employee who died before retiring cannot tell from the question whether to enter their own age or the employee's age.",
+       "source_text": "i1040gi p. 30, Age (or Combined Ages) at Annuity Starting Date: 'If you are the survivor of a retiree, use the retiree's age on their annuity starting date. ... If you are the beneficiary of an employee who died, see Pub. 575.'",
+       "why": "The question covers only the retiree and the retiree's survivor. A beneficiary of an employee who died could read 'your age' as their own age or treat the survivor clause as applying and enter the employee's age. Those ages can fall in different Table 1 brackets, which changes the divisor (360/310/260/210/160).",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "349556fee26628c46781af9997a642da73de3d9c6fb4eb7559395c2f03046362",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06303600000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.age.6c734aa8f34f.1.response.txt"
+    }
+   ],
+   "type": "Count",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      29,
+      30
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 29, Table 1 for Line 3 (annuity starting date after November 18, 1996)",
+      "p. 29, Table 1; p. 30, Age (or Combined Ages) at Annuity Starting Date"
+     ],
+     "cols_pages": [
+      30
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "retirement.annuity": {
+   "subject_sha": "1441f9ab58658bbabcc2cfbd6f020e8f5397637ce829c385e854654cf937f67d",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer's annuity starting date is after July 1, 1986 but before November 19, 1996, and they used the Simplified Method last year; they truthfully answer No, so the lines take box 1 less box 5 instead of Simplified Method Worksheet line 9.",
+       "source_text": "i1040gi p. 30, Simplified Method: 'You must use the Simplified Method if either of the following applies. 1. Your annuity starting date was after July 1, 1986, and you used this method last year to figure the taxable part. 2. Your annuity starting date was after November 18, 1996, and both of the following apply.'",
+       "why": "The question requires a starting date after November 18, 1996, which covers only condition 2 and drops condition 1, even though it cites both. The worksheet also expects these older annuities: Table 1 has a 'before November 19, 1996' column, and line 5 handles starting dates before 1987.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "08fc2919bdbe09641bbdf398d7ded208c79546aef68ad28557da1db5fbf4df56",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.08864,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.annuity.1441f9ab5865.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      27,
+      28,
+      29,
+      30
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 27, line 4b ('If the distribution from your IRA is fully taxable, enter the total distribution on line 4b; don't make an entry on line 4a'); p. 28, Fully Taxable and Partially Taxable Pensions and Annuities; p. 30, Rollovers",
+      "p. 28, Fully Taxable and Partially Taxable Pensions and Annuities",
+      "p. 28, Partially Taxable Pensions and Annuities; p. 29, Simplified Method Worksheet, line 9",
+      "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'",
+      "p. 30, Simplified Method, conditions 1 and 2; p. 28, Partially Taxable Pensions and Annuities; , Distribution On or After Annuity Starting Date, \"If you receive a nonperiodic payment from your annuity contract on or after the annuity starting date, you must generally include all of the payment in gross income.\"; , Survivors of retirees, \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\""
+     ],
+     "cols_pages": [
+      27,
+      28,
+      30
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p575",
+     "revision": null,
+     "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
+     "pages": [
+      16,
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      16,
+      34
+     ],
+     "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
+    }
+   ]
+  },
+  "retirement.box1": {
+   "subject_sha": "5a8fbcff66b4d5f5c4ed42124ba1c519576a21c9c96c6448aee7ff548ff91c3c",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer who also took a retirement or IRA distribution in 2023, in 2024, or in 2026 before the return's due date has those amounts left out of Form 8880 line 4, because box 1 of a 2025 Form 1099-R shows only 2025 distributions.",
+       "source_text": "f8880 p. 2, Line 4: \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions)\"",
+       "why": "retirement.sav_gross feeds f8880.line4a from this year's box 1 only. Form 8880 line 4 needs a period of about three years, plus the part of 2026 before the due date, and no other question supplies those amounts.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose box 1 includes a Roth conversion, a distribution from an IRA inherited from someone other than a spouse, a loan treated as a distribution, a corrective distribution of excess contributions, military retirement pay, or section 404(k) dividends has that amount counted on Form 8880 line 4, even though the instructions exclude it.",
+       "source_text": "f8880 p. 2, Line 4: \"Don't include any of the following. ... Distributions from your eligible retirement plan (other than a Roth IRA) rolled over or converted to your Roth IRA ... Loans from a qualified employer plan treated as a distribution ... Distributions of excess contributions or deferrals ... Distributions from a military retirement plan ... Distributions from an inherited IRA by a nonspousal beneficiary\"",
+       "why": "The question asks for all of box 1 (\"Gross distribution, Form 1099-R box 1\"), and retirement.sav_gross takes off only the amount rolled over to a non-Roth account. So these excluded kinds of distribution stay in f8880.line4a.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose 1099-R reports a disability pension received before the employer's minimum retirement age, or a corrective distribution of excess deferrals, has box 1 placed on line 5a, 5b, or both, when it belongs on line 1h.",
+       "source_text": "i1040gi p. 28, Lines 5a and 5b: \"Don't include the following payments on lines 5a and 5b. Instead, report them on line 1h. • Disability pensions received before you reach the minimum retirement age set by your employer. • Corrective distributions (including any earnings) of excess elective deferrals or other excess contributions\"",
+       "why": "Box 1 goes straight into retirement.smw1, annuity_taxable and plan_simple, and from there to lines 5a and 5b. Neither the question nor its help separates out these payments, and the listed refusals don't cover them.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c9d29c83a830e1596574221189963873c968d63bfb1ed4bedbc0573ac1479e91",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.12432399999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.box1.5a8fbcff66b4.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 7,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099r",
+     "revision": "2025 (calendar-year form)",
+     "text_sha256": "97b0b54ae7c95303418077d54e349c0106cbbd5c4b5695ef684c23c39a5fda3f",
+     "pages": [],
+     "how": "cited pages",
+     "locators": [
+      "Instructions for Recipient, Box 1"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af300d066f4492afc97aa90824bfc681581f64482976e6d6a705e7e94b0e4e67"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      27,
+      28,
+      29,
+      30
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 27, Exception 1, 'enter the part not rolled over on line 4b'",
+      "p. 27, Exception 1; p. 30, Rollovers",
+      "p. 27, Exception 2; f1099r Box 7",
+      "p. 28, Fully Taxable Pensions and Annuities ('If your pension or annuity is fully taxable, enter the total pension or annuity payments (from Form(s) 1099-R, box 1) on line 5b'); p. 29, Simplified Method Worksheet, line 9",
+      "p. 28, Fully Taxable Pensions and Annuities; p. 30, Rollovers",
+      "p. 29, Simplified Method Worksheet, line 1",
+      "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'",
+      "pp. 27-30, lines 4a and 5a",
+      "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+     ],
+     "cols_pages": [
+      27,
+      28,
+      30
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i5329",
+     "revision": "2025",
+     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    },
+    {
+     "doc": "f8880",
+     "revision": "2025; created 2025-11-04",
+     "text_sha256": "e8b37e5065850674d94eecd145d787e1789924b0c2b09bf3693992c45ba9dc94",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Line 4, \"Enter the total amount of distributions\"; \"Distributions not taxable as the result of a rollover or a trustee-to- trustee transfer\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "e082ccb481b2d0e872449d7728c290669213b8d16d4c94f281c1bb70aeaed575"
+    }
+   ]
+  },
+  "retirement.box5": {
+   "subject_sha": "92dd413375b7c50bebb2ea1859eb6f3303d96c28d7cc9a7a7446e75d0547245d",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer rolls over part of a distribution from an employer plan that includes after-tax contributions, but box 5 of the Form 1099-R is blank or understates those contributions because the payer did not report them.",
+       "source_text": "i1040gi 2025 p. 30, Rollovers: 'From this amount, subtract any contributions (usually shown in box 5) that were taxable to you when made.'",
+       "why": "The text needs the amount of contributions that were taxable to the filer when made, and says box 5 only usually shows it. The question asks only for the box 5 figure, so a filer whose contributions are not in box 5 would answer zero or too little, and the line 5b remainder would be too high.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer gets a pension that is not under the Simplified Method (for example, it falls under the General Rule) and contributed after-tax cost, but the payer left box 5 blank.",
+       "source_text": "i1040gi 2025 p. 28: 'Your payments are fully taxable if (a) you didn't contribute to the cost ... of your pension or annuity'; 'Partially Taxable Pensions and Annuities: Enter the total pension or annuity payments (from Form 1099-R, box 1) on line 5a.'",
+       "why": "retirement.show_a decides between partly taxable (line 5a) and fully taxable using box5 > 0. The text bases that choice on whether the filer contributed to the cost, not on what box 5 shows. A truthful answer of zero sends a partly taxable pension to line 5b only, with nothing on line 5a.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5a6fbe5eae8c1f554d479f384089d00557631bb2f6f31081fbcec1751258176f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.088896,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.box5.92dd413375b7.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099r",
+     "revision": "2025 (calendar-year form)",
+     "text_sha256": "97b0b54ae7c95303418077d54e349c0106cbbd5c4b5695ef684c23c39a5fda3f",
+     "pages": [],
+     "how": "cited pages",
+     "locators": [
+      "Instructions for Recipient, Box 5"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af300d066f4492afc97aa90824bfc681581f64482976e6d6a705e7e94b0e4e67"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      27,
+      28,
+      30
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 27, line 4b ('If the distribution from your IRA is fully taxable, enter the total distribution on line 4b; don't make an entry on line 4a'); p. 28, Fully Taxable and Partially Taxable Pensions and Annuities; p. 30, Rollovers",
+      "p. 30, Rollovers, 'subtract any contributions (usually shown in box 5) ... subtract the amount of the rollover'"
+     ],
+     "cols_pages": [
+      27,
+      28,
+      30
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "retirement.code": {
+   "subject_sha": "480e02aabd165320651bb7092e1e61d439eaf9f2a70c4808bc765ba6b9cf2f03",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose pre-tax money from a qualified plan, 403(b) or governmental 457(b) plan was rolled directly into a Roth IRA gets a 1099-R with code G, truthfully answers direct_rollover_G, and the tool treats it as a nontaxable direct rollover.",
+       "source_text": "f1099r p. 5, Box 2a: \"For a direct rollover, other than from a qualified plan, section 403(b) plan, or governmental section 457(b) plan to a designated Roth account in the same plan or to a Roth IRA, zero should be shown ... If you roll over a distribution ... to a designated Roth account in the same plan or to a Roth IRA, you must include on the 'Taxable amount' line of your tax return the amount shown in this box plus the amount in box 6\"; p. 9, Box 7: \"G—Direct rollover of a distribution to a qualified plan, a section 403(b) plan, a governmental section 457(b) plan, or an IRA\"",
+       "why": "The question offers \"direct_rollover_G\" for any code G. But code G also covers taxable direct rollovers into a Roth IRA or a designated Roth account. Box 2a's zero taxable amount applies only to the other cases, so the `retirement.direct` line pulls these taxable rollovers in as zero-taxable (f1040 line 5b), and no gate catches them.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "6da39fdee2ebe17f38f2f2959043732941f2d7e78bc528fae9f179d2ecfd1e36",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.103988,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.code.480e02aabd16.1.response.txt"
+    }
+   ],
+   "type": "Enum(retirement_code)",
+   "readers": 5,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099r",
+     "revision": "2025 (calendar-year form)",
+     "text_sha256": "97b0b54ae7c95303418077d54e349c0106cbbd5c4b5695ef684c23c39a5fda3f",
+     "pages": [
+      5,
+      7,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "Instructions for Recipient, Box 7",
+      "p. 5, Box 2a, \"For a direct rollover, other than from a qualified plan, section 403(b) plan, or governmental section 457(b) plan to a designated Roth account in the same plan or to a Roth IRA, zero should be shown and you must enter zero (-0-) on the “Taxable amount” line of your tax return\"; pp. 7 and 9, Box 7, \"G—Direct rollover of a distribution to a qualified plan, a section 403(b) plan, a governmental section 457(b) plan, or an IRA\""
+     ],
+     "cols_pages": [
+      5,
+      7,
+      9
+     ],
+     "cols_sha256": "af300d066f4492afc97aa90824bfc681581f64482976e6d6a705e7e94b0e4e67"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      27
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 27, Exception 2 (a Roth IRA distribution other than code Q needs Form 8606); , Box 7, \"The following codes identify the distribution you received\", \"Q—Qualified distribution from a Roth IRA or Roth SIMPLE IRA\""
+     ],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i5329",
+     "revision": "2025",
+     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
+     "pages": [
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Line 1, \"Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:\"",
+      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\", \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\"",
+      "p. 5, Line 4, \"If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%.\""
+     ],
+     "cols_pages": [
+      3,
+      5
+     ],
+     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    }
+   ]
+  },
+  "retirement.code_screen": {
+   "subject_sha": "b78e54aad5c3bc14d1ae26f9c7ce669def2a6e966f4cfa8a5bb91c64c6e780a1",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A distribution coded 2 where the stated exception does not apply to any of it, for example a payer coded separation at age 55 but the filer left service before that year; the filer answers no because the exception does not cover 'only part' of it.",
+       "source_text": "i5329 p. 1, Who Must File: \"...but box 7 of your Form 1099-R doesn't indicate an exception or the exception doesn't apply to the entire distribution.\"; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude.\"",
+       "why": "When a code 2 exception wholly fails, the Line 2 exclusion and exception number are wrong just as when it partly fails. The gate needs a yes here, but the wording asks only about an exception covering part of the distribution.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer under 59½ receives a code 7 distribution from a governmental section 457 plan (not from a rollover) and answers yes because they were under 59½, although the additional tax does not apply and the code is not wrong.",
+       "source_text": "Question: \"its code is wrong because you were under age 59½ when you received it (code 7)\"; i5329 p. 5, exception 13: \"Distributions from a section 457 plan, which aren't from a rollover from a qualified retirement plan.\"",
+       "why": "The wording treats being under 59½ as proof that code 7 is wrong. This brings in distributions that properly carry code 7 and owe no early-distribution tax, so they are refused unnecessarily.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A code 7 recipient under 59½ can read the clause either as 'answer yes whenever I was under 59½' or as 'answer yes only if I believe the code is actually wrong.'",
+       "source_text": "Question: \"or its code is wrong because you were under age 59½ when you received it (code 7)\"",
+       "why": "The two readings give different answers for the same facts. The help shown (\"Married filing separately and unsupported items are refused with citations\") does not settle which reading is meant.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "d114e1a91bd76000087dde856a1deb960b7b8a7c2c4afb337617ddf4ad783e58",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.062408,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.code_screen.b78e54aad5c3.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5329",
+     "revision": "2025",
+     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
+     "pages": [
+      1,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Who Must File, \"You received a distribution subject to the tax on early distributions from a qualified retirement plan (other than a Roth IRA) and you meet an exception to the tax on early distributions from the list shown later, but box 7 of your Form 1099-R doesn’t indicate an exception or the exception doesn’t apply to the entire distribution.\"",
+      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\", \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\""
+     ],
+     "cols_pages": [
+      1,
+      5
+     ],
+     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    }
+   ]
+  },
+  "retirement.combined_age": {
+   "subject_sha": "5c2ea0e4240e6fb23534ee0e10d1f05f973bdbe7dadd81f30b4166f08f1c2550",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A retiree whose post-1997 joint-life annuity names more than one survivor beneficiary could add every beneficiary's age, or only one of them, when answering 'your beneficiary's' age.",
+       "source_text": "i1040gi p. 30, Age (or Combined Ages) at Annuity Starting Date: \"use your combined ages on the annuity starting date ... If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary's taxable amount.\"",
+       "why": "The question assumes a single beneficiary and gives no rule for several. Adding all the beneficiaries' ages instead of the one age Pub. 575 calls for produces a different combined age, which can move the answer into a different Table 2 row and change the line 3 divisor.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a14918705e88bd0f02fd2e93883d2a0971c89de1b2c05c28e6539c8ae4457b96",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.060876,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.combined_age.5c2ea0e4240e.1.response.txt"
+    }
+   ],
+   "type": "Count",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      29,
+      30
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 29, Table 2 for Line 3",
+      "p. 29, Table 2; p. 30, Age (or Combined Ages) at Annuity Starting Date; , Survivors of retirees, \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\""
+     ],
+     "cols_pages": [
+      30
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p575",
+     "revision": null,
+     "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
+     "pages": [
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      34
+     ],
+     "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
+    }
+   ]
+  },
+  "retirement.cost": {
+   "subject_sha": "b54a82ce201d98b311cccba5ef08d363f0709388c639176a3000afc79e3ad0b2",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer is the beneficiary of an employee who died before August 21, 1996, and is entitled to the death benefit exclusion (up to $5,000).",
+       "source_text": "i1040gi p. 29, Simplified Method Worksheet, Before you begin: \"If you are the beneficiary of a deceased employee or former employee who died before August 21, 1996, include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2 below.\"",
+       "why": "Line 2 must include the death benefit exclusion on top of the net investment. The question asks only for cost, net investment or after-tax contributions, so a truthful filer would leave the exclusion out and understate line 2.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "The filer receives a survivor annuity as the beneficiary of an employee who died before retiring, not as the survivor of a retiree.",
+       "source_text": "p575 p. 34, Survivors of employees: \"you can exclude part of each annuity payment as a tax-free recovery of the employee's investment in the contract. You must figure the taxable and tax-free parts of each payment using the method that applies as if you were the employee.\"",
+       "why": "The line needs the deceased employee's investment. The question asks for \"Your cost\" and redirects only survivors of retirees to the retiree's cost, so this beneficiary could truthfully answer zero, having made no contributions of their own.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "7f8f4ea3c697fc20b5bfbcd6cd0499f7d58336201677ab37fb115b2e76e3b1fb",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053124000000000005,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.cost.b54a82ce201d.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      29,
+      30
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 29, Simplified Method Worksheet, line 2",
+      "p. 29, Simplified Method Worksheet, line 2; p. 30, Cost; , Survivors of retirees, \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\""
+     ],
+     "cols_pages": [
+      30
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p575",
+     "revision": null,
+     "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
+     "pages": [
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      34
+     ],
+     "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
+    }
+   ]
+  },
+  "retirement.early_screen": {
+   "subject_sha": "8794c31dac9c7a0f268c059ca4c3631ac5bb186c0cc394e64bacc0655fe22a1b",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "018358eb21ba1720d8fa73e6143cf5fad7f72d773e0ae8f644afea51cb94f004",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.059672,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.early_screen.8794c31dac9c.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5329",
+     "revision": "2025",
+     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\", \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    }
+   ]
+  },
+  "retirement.exc_amount": {
+   "subject_sha": "88ce2dc9c12084f85b0cd1af2d38def3552b1975a969867db861bd6d469d58c5",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer has twins, or adopts two children, and takes $10,000 from the plan within the 1-year period after the births or adoptions; the tool caps the amount at $5,000 per person, so line 2 shows $5,000 instead of $10,000.",
+       "source_text": "i5329 (2025) p. 5, exception 19: \"A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted. Attach a statement that provides the name, age, and TIN of the child or eligible adoptee.\"",
+       "why": "The $5,000 limit applies to each child's birth or adoption, not once per person. The question says the tool applies the dollar limits per person and never asks how many children were born or adopted, so the excluded amount is too small when there is more than one child.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "2421b6e2092a55f013c8b38aa0d39978201a091b12e6da4c92bae7b33e7d51ea",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.064584,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.exc_amount.88ce2dc9c120.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5329",
+     "revision": "2025",
+     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\", \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    }
+   ]
+  },
+  "retirement.exception": {
+   "subject_sha": "d6c622b63cc124b04b7cff552f2e90eeb4848e3568774a0616df4b9ec3becb38",
+   "samples": [
+    {
+     "verdict": "TYPE",
+     "findings": [
+      {
+       "kind": "TYPE",
+       "situation": "A filer whose distribution qualifies under more than one exception (for example disability 03 and medical expenses 05) has no list choice for 99, so must pick one exception code.",
+       "source_text": "i5329 p. 5, Line 2: \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\" and table row \"Enter this exception number if more than one exception applies. ... 99\"",
+       "why": "The accepted enum has only none and e01–e23 and lacks 99, and the question asks for a single exception. Form 5329 line 2 therefore cannot get the code it requires when several exceptions apply.",
+       "bound": "{none, 01–23, 99}"
+      }
+     ],
+     "prompt_sha": "1c882684e668bdaf8793e358e953bc72a3d82ac9027ab68084831794efb9141b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.055048,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.exception.d6c622b63cc1.1.response.txt"
+    }
+   ],
+   "type": "Enum(early_exception)",
+   "readers": 7,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5329",
+     "revision": "2025",
+     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 2, \"A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted.\"",
+      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\", \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\"",
+      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\", \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\", \"Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service when the separation from service occurs in or after the year you reach age 55 (age 50 for qualified public safety employees and private sector firefighters) or 25 years of service under the plan, whichever is earlier.\", \"(if from an employer plan, payments must begin after separation from service)\", \"You are considered disabled if you can furnish proof that you can’t do any substantial gainful activity because of your physical or mental condition.\" and \"Distributions due to death (doesn’t apply to modified endowment contracts).\"; , First-time homebuyer, \"you are a first-time homebuyer if you had no present interest in a main home during the 2-year period ending on the date of acquisition of the home which the distribution is being used to buy, build, or rebuild. If you are married, your spouse must also meet this no-ownership requirement.\", \"You enter into a binding contract to buy the main home\", \"You were ordered or called to active duty after September 11, 2001.\", \"of more than 179 days or for an indefinite period because you are a member of a reserve component.\", \"The distribution is from an IRA or from amounts attributable to elective deferrals under a section 401(k) or 403(b) plan or a similar arrangement.\", \"the date of the order or call to active duty and no later than the close of the active duty period.\", \"if made during the 1-year period beginning on the date on which your child was born or the date on which the legal adoption of your child was finalized\" and \"an eligible adoptee is any individual (other than the child of the taxpayer’s spouse) who has not reached age 18 or is physically or mentally incapable of self-support.\"",
+      "p. 5, Line 2, \"IRA distributions made for the purchase of a first home, up to $10,000.\"",
+      "p. 5, Line 2, \"Qualified distributions to victims of domestic abuse.\"",
+      "p. 5, Line 2, \"Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service\"",
+      "p. 5, Line 2, \"Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year.\"",
+      "p. 5, Line 2, \"meeting the unforeseeable or immediate financial needs relating to necessary personal or family emergency expenses\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    },
+    {
+     "doc": "p590b",
+     "revision": "2025",
+     "text_sha256": "24de404e77c2a3d1f0540b91ac8c28ca4d45c7fcf968de613407419eba9266f4",
+     "pages": [
+      28
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      28
+     ],
+     "cols_sha256": "464639ba13341fe9c824b6f495922126cb3d158650887bf9beb265fd951c3e77"
+    }
+   ]
+  },
+  "retirement.joint_life": {
+   "subject_sha": "3eaf3dd21edf06e72adbc0f38fcf9630f2a7979dde2902d526170e105616ab25",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "bd6700c4bac2c9ab491bea9a5f263cb0806ba6ecdd6112f872e8ca901fc8d4f8",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.037828,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.joint_life.3eaf3dd21edf.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      29
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 29, Simplified Method Worksheet, line 3",
+      "p. 29, Simplified Method Worksheet, line 3 and Table 2; , Survivors of retirees, \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p575",
+     "revision": null,
+     "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
+     "pages": [
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      34
+     ],
+     "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
+    }
+   ]
+  },
+  "retirement.last_line4": {
+   "subject_sha": "be641e28c0408a51f0a03cda1066aabced704f9d45f652778ac8ac37f082a2e1",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "c124266d988ee28becd6405e672ac03cdd0e81a75dea89b53447d22c4739bef8",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053652,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.last_line4.be641e28c040.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      29
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 29, Simplified Method Worksheet, line 4, and the note under line 2",
+      "p. 29, Simplified Method Worksheet, note under line 2; , Survivors of retirees, \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p575",
+     "revision": null,
+     "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
+     "pages": [
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      34
+     ],
+     "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
+    }
+   ]
+  },
+  "retirement.months": {
+   "subject_sha": "43443c7b40865b0f9ae9f89eecc7a163d949dd24edcc47337f8d6d0d57905676",
+   "samples": [
+    {
+     "verdict": "TYPE",
+     "findings": [
+      {
+       "kind": "TYPE",
+       "situation": "A filer types a count above 12 (for example a typo, or counting each payment rather than each month), and the tool accepts it even though line 5 only allows the months a single year's payments can cover.",
+       "source_text": "i1040gi p. 29, Simplified Method Worksheet, line 5: 'Multiply line 4 by the number of months for which this year's payments were made.'",
+       "why": "This year's payments can only cover up to 12 months, but the accepted answer is 'a whole number, zero or more, with no upper bound'. A larger number would make line 5 too big and line 9 (Form 1040 line 5b) too small.",
+       "bound": "whole number from 0 to 12"
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A pension pays monthly in arrears, so the payment received in January 2025 covers December 2024 and the December 2025 payment arrives in January 2026.",
+       "source_text": "i1040gi p. 29, line 5: 'the number of months for which this year's payments were made'; line 1: 'total pension or annuity payments from Form 1099-R, box 1'",
+       "why": "The question 'Number of months in 2025 for which payments were made' can be read as calendar months of 2025 (leaving out the December 2024 month paid in 2025, or counting December 2025 even though it was paid in 2026). It can also be read as the months covered by payments received in 2025, which is what line 5 needs to match line 1. The two readings can give different counts.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "64f28b46e3a9e94d970609fb6020bcb6422cd311912d221da66e94b68c6a197f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053876,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.months.43443c7b4086.1.response.txt"
+    }
+   ],
+   "type": "Count",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      29
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 29, Simplified Method Worksheet, line 5"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "retirement.recovered": {
+   "subject_sha": "c9d35dc528b973eb0f34612ac931b62591811c3b7265e61ac6ff1fb5746fa917",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose annuity starting date was before 1987 truthfully reports the cost they have excluded tax free in 1987 and later years, which is a positive amount, but the worksheet skips line 6 for that filer, so the line needs no amount (zero).",
+       "source_text": "i1040gi p. 29, SMW line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8.\"; line 10: \"Was your annuity starting date before 1987? Yes. STOP\"; p575 p. 12: \"If your annuity starting date is before 1987, you can continue to take your monthly exclusion for as long as you receive your annuity.\"",
+       "why": "The question \"Amount, if any, recovered tax free in years after 1986\" carries no instruction to enter zero or skip when the annuity starting date was before 1987, and its pointer to last year's line 10 does not apply to that filer. A truthful nonzero answer feeds SMW 6, then line 7 (line 2 minus line 6) and line 8 (smaller of 5 or 7). That can cut the exclusion the text says continues without a cost limit, and overstate line 5b.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a875c22cad3c88bf19c19395f7d2b34b6ff888ced02fda39faff93022d2fcb51",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06098,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.recovered.c9d35dc528b9.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      29
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 29, Simplified Method Worksheet, line 6",
+      "p. 29, Simplified Method Worksheet, line 6; , Survivors of retirees, \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\"; , Exclusion limited to cost, \"the total amount of annuity income that you can exclude over the years as a recovery of the cost can’t exceed your total cost\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p575",
+     "revision": null,
+     "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
+     "pages": [
+      12,
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      12,
+      34
+     ],
+     "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
+    }
+   ]
+  },
+  "retirement.rollover": {
+   "subject_sha": "e2f22c6300d3acaf25e576e9018d6e7724850a2992b4b6d22892285f2606652d",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer takes a distribution from a Roth IRA and rolls it into another Roth IRA within 60 days. The filer truthfully answers 0 because the question limits the count to 'an IRA other than a Roth IRA'.",
+       "source_text": "i1040gi p. 27, Exception 1: 'Enter the total distribution on line 4a if you rolled over part or all of the distribution from one: • Roth IRA to another Roth IRA, or • IRA (other than a Roth IRA) to a qualified plan or another IRA (other than a Roth IRA). Also check box 1 on line 4c.'",
+       "why": "Exception 1 also covers Roth IRA to Roth IRA rollovers, so lines 4b and 4c need the amount rolled over. The question's 'other than a Roth IRA' limit leaves it out, so line 4b is overstated and box 1 on line 4c stays unchecked.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer receives a distribution from a designated Roth account in a 401(k) and rolls it into a Roth IRA within 60 days. The filer answers 0 because the destination is a Roth account.",
+       "source_text": "p575 p. 24, Designated Roth accounts: 'You can roll over an eligible rollover distribution from a designated Roth account into another designated Roth account or a Roth IRA.' ... 'Because you rolled over the part of the distribution that could be included in gross income (income earned), none of the distribution is included in gross income.'; i1040gi p. 30: 'From that result, subtract the amount of the rollover.'",
+       "why": "A rollover from a designated Roth account to a Roth IRA is a tax-free rollover that line 5b must subtract and line 5c must flag. The question shuts out every Roth destination, so this amount is never counted.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer has a qualified plan loan offset after leaving a job and rolls the offset amount into an IRA more than 60 days later but before the return's due date. No waiver or frozen deposit applies, so the filer does not count it.",
+       "source_text": "p575 p. 23, Plan loan offset: 'if you have a qualified plan loan offset, you will have until the due date (including extensions) for your tax return for the tax year in which the offset occurs to complete your rollover.'",
+       "why": "The question allows only 60 days, a waiver or a frozen-deposit extension. It leaves out the longer deadline for qualified plan loan offsets, so a valid rollover is left off line 5b and line 5c.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8fcf5f1ed98eea40f2531e74024a4659421708cb5de6b908beb17026f02799f9",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.154256,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.rollover.e2f22c6300d3.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      27,
+      28,
+      29,
+      30
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 27, Exception 1 (IRA rollovers); p. 30, Rollovers; , Eligible rollover distribution, \"An eligible rollover distribution is any distribution of all or any part of the balance to your credit in a qualified retirement plan except the following.\" and \"A required minimum distribution (RMD)\"; , Distributions not eligible for rollover, \"Amounts that must be distributed (required minimum distributions) during a particular year aren't eligible for rollover treatment.\"; , Eligible rollover distribution, \"Any of a series of substantially equal distributions paid at least once a year over\", \"Hardship distributions.\", \"Dividends paid on employer securities.\", \"The cost of life insurance coverage.\" and \"a distribution to the plan participant’s beneficiary isn’t generally treated as an eligible rollover distribution\"; , Rollovers by nonspouse beneficiary, \"The distribution must be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive the distribution.\"; , Inherited from someone other than spouse, \"you can't roll over any amounts into or out of the inherited IRA\"; , Distributions (Withdrawals), \"a rollover from a SIMPLE IRA to a non-SIMPLE IRA can be made tax free only after a 2-year participation in the SIMPLE IRA plan\"; , Ways to get a waiver of the 60-day rollover requirement, \"There are three ways to obtain a waiver of the 60-day requirement.\" and Frozen deposits, \"The 60-day rollover period is extended by the period for which the amount is a frozen deposit\"; , \"the purchase or construction was canceled or delayed, you could generally contribute the amount of the distribution to an IRA within 120 days of the distribution and not pay income tax or the 10% additional tax on early distributions. This contribution is treated as a rollover contribution to the IRA.\"",
+      "p. 27, Exception 1; p. 30, Rollovers",
+      "p. 27, Exception 2; f1099r Box 7",
+      "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
+     ],
+     "cols_pages": [
+      27,
+      28,
+      30
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p575",
+     "revision": null,
+     "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
+     "pages": [
+      21,
+      23,
+      24
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      21,
+      23,
+      24
+     ],
+     "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
+    },
+    {
+     "doc": "p590b",
+     "revision": "2025",
+     "text_sha256": "24de404e77c2a3d1f0540b91ac8c28ca4d45c7fcf968de613407419eba9266f4",
+     "pages": [
+      5,
+      6,
+      28
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      5,
+      6,
+      28
+     ],
+     "cols_sha256": "464639ba13341fe9c824b6f495922126cb3d158650887bf9beb265fd951c3e77"
+    },
+    {
+     "doc": "p560",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "38bbfa2efb2894e2527d66cd3478f33c6ceae4b777f78674c22bec16db9809aa",
+     "pages": [
+      18
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      18
+     ],
+     "cols_sha256": "7ef279c8f34addc2ff13420e35fab4a092bf8027f53907c28a5f46d2c21da737"
+    }
+   ]
+  },
+  "retirement.sav_404k": {
+   "subject_sha": "4f0eb331da675068930c50c5d2447ec5e3e425c878624085e10e3e4603278319",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "98df3e60f9e37ecb5bd18bf52a4b53e891e77d26ff582970a2d9a1393e55d600",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.036024,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.sav_404k.4f0eb331da67.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f8880",
+     "revision": "2025; created 2025-11-04",
+     "text_sha256": "e8b37e5065850674d94eecd145d787e1789924b0c2b09bf3693992c45ba9dc94",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Line 4, \"Distributions of dividends paid on stock held by an employee stock ownership plan under section 404(k)\"",
+      "p. 2, Line 4, \"Don’t include any of the following\"; \"Distributions of dividends paid on stock held by an employee stock ownership plan under section 404(k)\"; \"Distributions from a military retirement plan (other than the federal TSP)\"; \"Distributions from an inherited IRA by a nonspousal beneficiary\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "e082ccb481b2d0e872449d7728c290669213b8d16d4c94f281c1bb70aeaed575"
+    }
+   ]
+  },
+  "retirement.sav_inherited": {
+   "subject_sha": "3907339263d621573755c811dee0f5154d8781e1b3e4cc3cd6037c184aec81b0",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "622c0dd7bffba56507b5cf48b41ac2f399eefcf3708fbee808954fa1139edd63",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.047132,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.sav_inherited.3907339263d6.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f8880",
+     "revision": "2025; created 2025-11-04",
+     "text_sha256": "e8b37e5065850674d94eecd145d787e1789924b0c2b09bf3693992c45ba9dc94",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Line 4, \"Distributions from an inherited IRA by a nonspousal beneficiary\"",
+      "p. 2, Line 4, \"Don’t include any of the following\"; \"Distributions of dividends paid on stock held by an employee stock ownership plan under section 404(k)\"; \"Distributions from a military retirement plan (other than the federal TSP)\"; \"Distributions from an inherited IRA by a nonspousal beneficiary\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "e082ccb481b2d0e872449d7728c290669213b8d16d4c94f281c1bb70aeaed575"
+    }
+   ]
+  },
+  "retirement.sav_military": {
+   "subject_sha": "df982bb9300265bf298a72ce7ef4bb64197831b882bd0901e2ca81d17a3c0819",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "5d3543a057e53837c613fdefcf37b61a29414241520d707d16f87f5f646b55c8",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.030028000000000003,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.sav_military.df982bb93002.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f8880",
+     "revision": "2025; created 2025-11-04",
+     "text_sha256": "e8b37e5065850674d94eecd145d787e1789924b0c2b09bf3693992c45ba9dc94",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Line 4, \"Distributions from a military retirement plan (other than the federal TSP)\"",
+      "p. 2, Line 4, \"Don’t include any of the following\"; \"Distributions of dividends paid on stock held by an employee stock ownership plan under section 404(k)\"; \"Distributions from a military retirement plan (other than the federal TSP)\"; \"Distributions from an inherited IRA by a nonspousal beneficiary\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "e082ccb481b2d0e872449d7728c290669213b8d16d4c94f281c1bb70aeaed575"
+    }
+   ]
+  },
+  "retirement.used_last_year": {
+   "subject_sha": "17fec968cfd32419c02c3a66d00b79bfb3bd485be1b25f772dabf741a938f55a",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "668d08a63e09539a665ae4036b09f4534b95abb660b3e8d4ce9e981e446d31c5",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.060476,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/retirement.used_last_year.17fec968cfd3.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      29
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 29, Simplified Method Worksheet, line 4, and the note under line 2",
+      "p. 29, Simplified Method Worksheet, note under line 2; , Survivors of retirees, \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p575",
+     "revision": null,
+     "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
+     "pages": [
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      34
+     ],
+     "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
+    }
+   ]
+  }
+ }
+}

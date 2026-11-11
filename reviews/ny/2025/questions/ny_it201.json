@@ -1,0 +1,1547 @@
+{
+ "form": "ny_it201",
+ "reviews": {
+  "ny_it201.ask.414h": {
+   "subject_sha": "52901bc445e5e66924ddbd27dd3f26480d550139f3400b8331e7501e4a2f08d2",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "On a married filing jointly return, only the spouse is a New York public employee with 414(h) contributions on a W-2, so the filer answers 'no' about themself.",
+       "source_text": "ny_it201i p. 8, Line 21: \"enter the amount of 414(h) retirement contributions, if shown on any federal Form W-2\"",
+       "why": "The addition covers 414(h) contributions on any W-2 included in the return, including a spouse's on a joint return. The question asks only about 'you', so it can miss a spouse's contributions.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A New York public employee has 414(h) contributions on a W-2 but does not belong to any of the listed retirement systems or programs.",
+       "source_text": "ny_it201i p. 8, Line 21: \"enter the amount ... if you are: – a member of the New York State and Local Retirement Systems ... – a member of the New York State Teachers' Retirement System; – an employee of the State or City University of New York who belongs to the Optional Retirement Program; – a member of the New York City Employees' Retirement System ... or – a member of the Manhattan and Bronx Surface Transit Operating Authority (MABSTOA) Pension Plan.\"",
+       "why": "The question ('Are you a public employee of New York State or its local governments with 414(h) retirement contributions shown on a Form W-2?') does not require membership in one of the listed systems. That condition appears only in the help text, so a filer who is not a member can still truthfully answer yes.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "065fee6882d32f4cac829f1c79b398a69828223b26ebafeeb21a3b9501bb5d23",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.058764000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.414h.52901bc445e5.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 21, \"Are you a public employee of New York State or its local governments?\"",
+      "p. 8, Line 21, \"If Yes, enter the amount of 414(h) retirement contributions, if shown on any federal Form W-2\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.529_nonqualified": {
+   "subject_sha": "200bdcc0b0faddb568e948cf0d50aa1cc66f9100e9c64dc5d517db14f350d420",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer used a NY 529 withdrawal to pay K-12 private school tuition, or moved the account to another state's 529 program, and answers no because federal 529 rules treat these as qualified, but the line needs a yes.",
+       "source_text": "ny_it201i p. 8, Line 22: \"Nonqualified withdrawals from a New York 529 college savings program include, but are not limited to: • the transfer to another state's program ... • any withdrawal used to pay tuition and related expenses in connection with enrollment or attendance at elementary or secondary public, private, or religious schools\"",
+       "why": "The question and help use the term \"nonqualified\" but do not give New York's definition. A filer who knows the federal meaning would leave out K-12 tuition, transfers to another state's plan, and pre-September 5, 2024 loan payments or Roth rollovers, which New York counts as nonqualified.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose withdrawal was made because the beneficiary died or became disabled, or who transferred funds between family members' accounts within New York's program, may answer yes, but these do not trigger the Line 22 worksheet.",
+       "source_text": "ny_it201i p. 8: \"considered nonqualified unless it is used: ... for any purpose, provided the withdrawal is the result of the death or disability of the designated beneficiary\"; \"Transfers between accounts of family members that are not disbursed in cash or in-kind within New York's program are not considered distributions\"",
+       "why": "The question does not say that these withdrawals and transfers are excluded. A filer could treat a non-education withdrawal or an account transfer as a nonqualified withdrawal and wrongly open the gate.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b03f58838b01c490ebc1f5f709ff2eb7ea0090aa18852cb9c855ba0742237ec8",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.036864,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.529_nonqualified.200bdcc0b0fa.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 22, \"Did you make a nonqualified withdrawal during 2025 from an account established under New York’s 529 college savings program?\"",
+      "p. 8, Line 22, \"If Yes, the withdrawal is a nonqualified withdrawal and you must complete the Line 22 worksheet.\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.529_owner": {
+   "subject_sha": "f8b66d7d82cbcebb9ca8d0dbd922d3587128caafd640628bfe8d610c985b18e5",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "05e87cdc1617cf388244d88dc203ba25e178605817dae05314fe190dbed451ad",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.029088,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.529_owner.f8b66d7d82cb.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Line 30, \"During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?\"",
+      "p. 10, Line 30, \"as an account owner, made contributions, enter the amount up to $5,000 ($10,000 for married taxpayers filing a joint return) on line 1 of the Line 30 worksheet\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.abode_part_year": {
+   "subject_sha": "a47b17d403fa0a248b322614e7a038e47a1cd45ab6af7facd95e15ba3ce11e48",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer kept a New York abode for all of 2025 except a stretch shorter than half a month (or for more than half of every month), so truthfully answers yes, yet every month counts as a full month and the chart amount needs no proration.",
+       "source_text": "ny_it201i p. 18, Line 59: \"(Count any period you maintained the abode for more than one-half of a month as one month.)\"",
+       "why": "The question asks only whether the abode covered part of the year. It does not apply the half-month rule, so the gate fires when the prorated months would be 12 and the chart amount stands unchanged.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer with a part-year New York abode owes use tax on an item costing $1,000 or more, on business, rental or royalty purchases, or prefers the exact calculation, so must use Form ST-141 and truthfully answers yes, although no chart amount is prorated.",
+       "source_text": "ny_it201i p. 18, Line 59: \"You must use Form ST-141 to calculate your sales and use tax liability ... if any of the following apply\" and \"multiply the tax amount from the chart by the number of months\"",
+       "why": "Proration by months applies only to the chart amount. The gate is conditioned only on owing use tax and having a part-year abode, so a yes from an ST-141 filer triggers the chart-proration case when it does not apply.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8807199fa3ddf6f2dd510f9d9b38ba3c0e56ec756b255e89aff0040b6631348f",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.036528,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.abode_part_year.a47b17d403fa.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      18
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 18, Line 59: Sales or use tax, \"If you maintained a permanent place of abode in New York State for sales and use tax purposes for only part of the year, multiply the tax amount from the chart by the number of months you maintained the permanent place of abode in New York State and divide the result by 12.\"",
+      "p. 18, Line 59: Sales or use tax, \"multiply the tax amount from the chart by the number of months you maintained the permanent place of abode in New York State and divide the result by 12\""
+     ],
+     "cols_pages": [
+      18
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.city_credits": {
+   "subject_sha": "6e2e81d231fca93413fcd1fbd9f38edf748eb0d93a8fb048626304a6ba3955b0",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "ddb77bcfab4731613878037970e82896298adfc64c3747190e3076c163c26b26",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.024687999999999998,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.city_credits.6e2e81d231fc.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Line 53, \"Can you claim the New York City unincorporated business tax (UBT) credit, the New York City accumulation distribution credit, or the part-year resident nonrefundable New York City child and dependent care credit?\"",
+      "p. 15, Line 53, \"If Yes, complete Section C of Form IT-201-ATT and enter the amount from Form IT-201-ATT, line 10, on line 53.\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.city_resident": {
+   "subject_sha": "27c7115fff146e8f717f5bf1d1de014b0234b0bff23725b319111a58a65889bf",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who lived outside New York City for all of 2025 (for example in Albany or Buffalo) truthfully answers no, and the gate treats them as a part-year New York City resident.",
+       "source_text": "ny_it201i p. 14, Line 50: \"If you were a New York City resident for only part of 2025, complete Form IT-360.1\"; ny_it201i p. 31: \"You are a New York State nonresident if you were not a resident of New York State for any part of the year\" (with New York City substituted)",
+       "why": "The gate sets part_year_city = (answer = false), and the question \"Were you ... a New York City resident ... for all of 2025\" gets the same no from full-year nonresidents of the City. Those filers owe no City resident tax and do not file Form IT-360.1, but the gate counts them as part-year City residents.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "On a joint return where only one spouse was a full-year New York City resident, the filer cannot tell whether to answer yes or no to \"you (and your spouse, on a joint return)\".",
+       "source_text": "ny_it201i p. 14, Joint returns: \"If you are married and filing a joint New York State return and only one of you was a resident of New York City for all of 2025, calculate on a separate sheet the New York City resident tax ... The spouse that was a part-year New York City resident in 2025 should: 1. Calculate their part-year New York City resident tax on Form IT-360.1\"",
+       "why": "Some filers will read the parenthetical as asking about either spouse and others as asking about both, which gives different answers. The text also treats this mixed case on its own terms (a separate-sheet calculation, with Form IT-360.1 only when the other spouse was a part-year resident), and neither yes nor no matches that treatment.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ec469ea896f34bfdd6b7364dc3ff27dfc00aaf3ba60a900ca873ca75690aa2e6",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.047308,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.city_resident.27c7115fff14.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      14,
+      31
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Line 50: Part-year New York City resident tax, \"If you were a New York City resident for only part of 2025, complete Form IT-360.1, Change of City Resident Status.\"",
+      "p. 31, New York City and Yonkers, \"substitute New York City or Yonkers in place of New York State\""
+     ],
+     "cols_pages": [
+      31
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.college_tuition": {
+   "subject_sha": "6b2f0489825c4e290ddde1334183f0e233f29e1e5663d95157510dc5e32393cb",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "23f6e42601f8eb05c06504ff6352a1d594a72faff0c77824ed755078ffde0c2d",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.019464000000000002,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.college_tuition.6b2f0489825c.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Line 68, \"Did you or your spouse or any dependents pay college tuition expenses during 2025?\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.contributions": {
+   "subject_sha": "41421a58a66b5094b8db7e70d69d2c541c2a585335cc105e08df59c479d4404b",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "dd9a0bc079dfa200b535c271bdf95d4da815ea1811073ff8c095a9efa40f14dc",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.018324,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.contributions.41421a58a66b.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Line 60, \"Do you want to make any voluntary contributions to the funds listed on Form IT-227?\"",
+      "p. 19, Line 60, \"If Yes, complete Form IT-227 and enter the amount from Part 2, line 1.\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.decedent": {
+   "subject_sha": "206d35a638a1368a9597ca0e7fda76a46d1e894b8d49ea0b2f1581cb7c02f764",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "98d4d47afe1df5e05538feeb291a2505ac1dd0f4822731c85974c5058b0e4e0a",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.024292,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.decedent.206d35a638a1.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Decedent information, \"If the taxpayer whose name is listed first on the return died after December 31, 2024, and before you filed your return, enter the date of death\"",
+      "p. 4, Decedent information, \"enter the date of death in the box labeled Taxpayer’s date of death\""
+     ],
+     "cols_pages": [
+      4
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.est_late": {
+   "subject_sha": "f7d50b75637ca81e8c8720a173e4b3ddb2225b2e0407f5ce217072a8ce4d28df",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer's estimated tax installment for one period was less than a quarter of the required annual payment, but enough tax was withheld from wages to cover that period, so nothing was underpaid for it.",
+       "source_text": "ny_it201i (2025) p. 23, Line 81: \"You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments ... We call these prepayments.\" and \"if you underpaid your estimated tax liability for any payment period.\"",
+       "why": "The question asks only whether the installment itself was 'smaller than one quarter of the year's required payment.' The text measures underpayment for a period against all prepayments, including withholding, so this filer answers yes although no period was underpaid.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer with uneven income uses the annualized income installment method, so an early installment that is smaller than one quarter of the annual required payment is still the full amount required for that period.",
+       "source_text": "ny_it201i (2025) p. 23, Line 81: \"if you underpaid your estimated tax liability for any payment period\"; \"For more information, see Form IT-2105.9\"",
+       "why": "The question treats any installment below one quarter as short. Under the text, the test is whether the liability for that payment period was underpaid, so this filer truthfully answers yes although there was no underpayment.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer must decide what 'the year's required payment' means, for example the 2025 tax shown on the return, 90% of it, or 100% or 110% of the 2024 New York tax.",
+       "source_text": "ny_it201i (2025) p. 23, Line 81: \"your 2025 prepayments must equal at least 110% of your 2024 New York income tax based on a 12-month return\"; question: \"smaller than one quarter of the year's required payment\"",
+       "why": "The question and its help never define the required annual payment. Different reasonable readings give different quarter amounts, so the same installments can lead to a yes or a no.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8b8b61dd97e1d959eaa93fbbd80689c6bae782ee77eb6ff91aa82e2e312b29e8",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.047888,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.est_late.f7d50b75637c.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Line 81, \"if you underpaid your estimated tax liability for any payment period\"",
+      "p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), \"You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year.\""
+     ],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.inflation_check": {
+   "subject_sha": "dc99a6adae43e883f1495aa24f611466b4c83729a7d8d71b5a556c59e7b8f1cb",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "0c541647078bad034b941b0b4a5e5694def48ba434bf2ba31205d6fbe906d0eb",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.023724,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.inflation_check.dc99a6adae43.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 25, \"If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25.\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.it225": {
+   "subject_sha": "ddb693ff8258fe9c873b2ebc1189615d7b73920aa1a3defcadeebc58016f3097",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A partner or S corporation shareholder whose only pass-through modifications are interest on non-New York state and local bonds (EA-113) or interest on U.S. government bonds (ES-125) would truthfully answer yes, although those amounts go on Form IT-201 lines 20 and 28 and not on Form IT-225.",
+       "source_text": "ny_it201i p. 7: \"If you have either of the addition or subtraction modifications in the chart below, relating to your partnership or S corporation income, include the amount on the corresponding line of Form IT-201. ... EA-113 ... 20 ... ES-125 ... 28. For all other additions and subtractions relating to your partnership and S corporation income, complete Form IT-225.\"",
+       "why": "The question names \"modifications passed through from a partnership, S corporation, estate or trust\" without excluding EA-113 and ES-125. A filer with only those items opens the IT-225 gate even though no IT-225 entry is needed, and the amounts may also be counted on lines 20 and 28.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "29100fffad893c2a331b57e3f909ceb0f15b626e6806416e99d7598147949b0d",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.043256,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.it225.ddb693ff8258.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      7,
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Step 4, \"See below and Form IT-225, New York State Modifications, and its instructions.\"",
+      "p. 8, Line 23, \"Use this line to report other additions that are not specifically listed on Form IT-201.\""
+     ],
+     "cols_pages": [
+      7,
+      8
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.item_c": {
+   "subject_sha": "7a2f4294aee35b9413d00c8c3757c53d2a584cb55bfaec12c0c692022654f6eb",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "88fd176d02c1cbe94b4707109953f1813715d473572b915ae78adaaf7182675e",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.020128,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.item_c.7a2f4294aee3.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Item C, \"If you can be claimed as a dependent on another taxpayer’s federal return, you must mark an X in the Yes box.\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.itemize": {
+   "subject_sha": "b000806b160da4de2dc989de78c460bbdfa036ec274e7c44eddbcc15aa55aa6c",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A married-filing-separately filer whose IT-196 itemized deduction is larger than the $8,000 standard deduction, but whose spouse takes the standard deduction on their own New York return, truthfully answers yes, so the gate marks them as itemizing even though they must take the standard deduction.",
+       "source_text": "ny_it201i p. 11, Line 34 Notes: \"If you are married and filing separate returns (filing status ), both of you must take the standard deduction unless both of you choose to itemize deductions on your New York returns.\"",
+       "why": "The question's first condition ('Is your New York itemized deduction (Form IT-196) larger than your New York standard deduction') is not limited to filers whose separately filing spouse also itemizes. A married-filing-separately filer whose spouse takes the standard deduction cannot itemize, yet answers yes.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c20575ef9e5f84fc1166f817fe44397d218260f119b6fc595bb65a04abe6174a",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.054611999999999994,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.itemize.b000806b160d.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      10,
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Line 34, \"You may take either the New York standard deduction or the New York itemized deduction.\"",
+      "p. 11, Line 34, \"To calculate your New York itemized deduction, use Form IT-196\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.late_penalty": {
+   "subject_sha": "aae55ff10c16e42ea4ee9192ce957a747e134f78bdab7e60e5ca9c56ff936c0f",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer with a valid extension who files by the extended due date but did not pay the full tax by April 15, 2026 owes interest, yet may answer no because they do not see themselves as filing or paying late.",
+       "source_text": "ny_it201i p. 24: \"If you owe a late filing penalty, late payment penalty, or interest: ... Enter the penalty and interest amount on line 82.\"; \"To avoid interest and penalty charges, you must file your return and pay the total amount you owe by April 15, 2026.\"",
+       "why": "The text needs a yes whenever any interest is owed, including interest on tax unpaid after April 15 during an extension. The question ties the answer to filing or paying 'late', so an extension filer who is on time for filing can truthfully answer no, and the gate is then wrongly left closed.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f9aa60167242817aea0e82a49c3cdadffa21868d31d977decec12b460d6c8810",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.034448,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.late_penalty.aae55ff10c16.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      24
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 24, Line 82, \"If you owe a late filing penalty, late payment penalty, or interest:\""
+     ],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.noncustodial": {
+   "subject_sha": "f52f118b00f241be94dbc242f1f1f985a1cde207eb8ff052180458e792ea58eb",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "8aa39c0ee33b3c0595ce7cb9c968cc1cbe269638f8242d92f9547f0cffd2912b",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.020548,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.noncustodial.f52f118b00f2.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Line 66, \"Did you make child support payments payable through a New York State Support Collection Unit?\"",
+      "p. 19, Line 66, \"If Yes, review the instructions for Form IT-209 to see if you qualify for this credit.\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.other_credits": {
+   "subject_sha": "17bc13afa68d2d2330907bfb72a22226c199259ddea6304711a91e3b670037f5",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "38a8851c0b1d217aa1cc344ccb99258c3affc0ad3d593f3f564e30412571d325",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.04228,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.other_credits.17bc13afa68d.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      13
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Line 42, \"If you are claiming any nonrefundable credits, complete the appropriate credit forms and Form IT-201-ATT.\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.other_taxes": {
+   "subject_sha": "604cec4d70444765aa7b2e37c78368a5d6fe94cffca7ae8e1715e48018e6790e",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose only other tax is a New York City tax, such as the City part of a lump-sum distribution tax, would truthfully answer yes, but line 45 covers only New York State other taxes.",
+       "source_text": "Question: \"Do you owe any other New York State or City tax on Form IT-201-ATT...\"; ny_it201i p. 13: \"Line 45: Net other New York State taxes ... Transfer the total amount from Form IT-201-ATT, line 30 Net other New York State taxes, to line 45.\"",
+       "why": "The cited line 45 is limited to State taxes. The question adds City taxes, which the text quoted here does not route to line 45, so City-only situations set the gate to true.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "aa1677dc0725b6d420a51ec55fe8d8d67ed53264c6dd66949f08297cfbf2bc36",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.03796,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.other_taxes.604cec4d7044.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      13
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Line 45, \"If you are subject to any other taxes, complete the appropriate forms and Part 2 of Form IT-201-ATT.\"",
+      "p. 13, Line 45: Net other New York State taxes, \"If you are subject to any other taxes, complete the appropriate forms and Part 2 of Form IT-201-ATT.\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.other_withholding": {
+   "subject_sha": "6a9df604926eae3db5f13f8a46261ede635da5cb9a7f7101c4c98edc0b1ad37e",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "8c1f2a8fe18b61fda788e3abe8668350f73d598814f1c708e275718b2e66c401",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.029811999999999998,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.other_withholding.6a9df604926e.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      21
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 21, Lines 72, 73, and 74, \"Enter on the appropriate line your total New York State, New York City, and Yonkers tax withheld from any of the following:\"",
+      "p. 21, Lines 72, 73, and 74, \"Form IT-1099-R, Summary of Federal Form 1099-R Statements\""
+     ],
+     "cols_pages": [
+      21
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.out_of_state_bond_interest": {
+   "subject_sha": "7ed23960a939fcfda72de2031b570f4f55d882bf640a18fc063fc61a2a90e806",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A partner or S corporation shareholder whose only out-of-state municipal interest comes through the entity, reported to them as modification EA-113, may answer no because they did not hold the bonds or fund shares themselves.",
+       "source_text": "ny_it201i p. 7: \"If you have either of the addition or subtraction modifications in the chart below, relating to your partnership or S corporation income, include the amount on the corresponding line of Form IT-201. ... EA-113 Interest income on state and local bonds and obligations 20\"",
+       "why": "Line 20 must also take the EA-113 amounts the entity passes through. Neither the question nor its help mentions partnership or S corporation pass-through amounts, so the gate can miss these filers.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c1d4d4510e0119018460247c2065645190d26de7df288c219ef83686852da625",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.032776,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.out_of_state_bond_interest.7ed23960a939.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 20, \"Do you have interest income from state and local bonds and obligations from states other than New York State or its local governments?\"",
+      "p. 7, Line 20, \"If Yes, enter any such interest income that you received or that was credited to you during 2025 that was not included in your federal adjusted gross income.\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.owes_use_tax": {
+   "subject_sha": "e0d4808de8396f1f26fc0db992541afbf04aae3c65b5429bd7ef099b03bda5da",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer who paid sales tax to one New York locality, then used the item in a New York locality with a higher rate where they lived at the time of purchase, owes additional local use tax but would answer no.",
+       "source_text": "ny_it201i p. 18: \"You may also owe an additional local tax if you use property or services in another locality in New York State, other than the locality to which you paid tax. You owe use tax to the second locality if you were a resident of that locality at the time of the purchase, and its rate of tax is higher than the rate of tax originally paid.\"",
+       "why": "The question asks only about purchases made without paying New York tax, so a filer who paid some New York tax would truthfully answer no. Line 59 then gets 0 when a liability is owed.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose only unpaid use tax is on a motor vehicle, vessel, snowmobile or similar item, or on purchases of a business registered for sales tax, would answer yes, and line 59 would be filled from the chart.",
+       "source_text": "Question: \"Do you owe New York sales or use tax on purchases made without paying New York tax...\"; ny_it201i p. 18: \"You may not use this line to report: • any sales and use tax on business purchases if the business is registered for sales and use tax purposes... • any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV).\"",
+       "why": "Neither the question nor its help excludes liabilities the text says must not be reported on line 59. A truthful yes on those purchases alone puts a chart amount on line 59 when the line should be 0.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8310d6927af84c16d983c6f25bba2321866dce81388aeb83d23109aac1c6af20",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.04968,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.owes_use_tax.e0d4808de839.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      18,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 18, Line 59: Sales or use tax, \"Count any period you maintained the abode for more than one-half of a month as one month.\"",
+      "p. 18, Line 59: Sales or use tax, \"You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:\"",
+      "p. 18, Line 59: Sales or use tax, \"You owe sales or compensating use tax if you:\"",
+      "p. 18, Line 59: Sales or use tax, \"multiply the tax amount from the chart by the number of months you maintained the permanent place of abode in New York State and divide the result by 12\"",
+      "p. 19, Line 59, \"If you do not owe any sales or use tax, you must enter 0 on line 59. Do not leave line 59 blank.\""
+     ],
+     "cols_pages": [
+      18,
+      19
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.prior_agi_high": {
+   "subject_sha": "865b0d462e79a9eb654b4019ee960f5aca704ddd082463b3efd371b8c64226ed",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A farmer or fisherman whose 2024 New York adjusted gross income was over $150,000 truthfully answers yes, so the line uses the 110% safe harbor, but the text keeps that filer at 100%.",
+       "source_text": "ny_it201i p. 23, Line 81: \"if your 2024 New York adjusted gross income was more than $150,000 (or $75,000 if you are married filing separately for 2025) and you are not a farmer or a fisherman, your 2025 prepayments must equal at least 110%\"; question: \"Was your 2024 New York adjusted gross income (on your 2024 return) more than $150,000 ($75,000 if you are married filing separately for 2025)?\"",
+       "why": "The question and its help ask only about the income threshold and leave out the 'not a farmer or a fisherman' condition. A truthful yes from a farmer or fisherman therefore selects the 110% column when the text requires 100%.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c3a6259592514a689345d5ae7b9ebe4c970e41bf884603de996ae72211292f70",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.029784,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.prior_agi_high.865b0d462e79.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Line 81, \"However, if your 2024 New York adjusted gross income was more than $150,000 (or $75,000 if you are married filing separately for 2025) and you are not a farmer or a fisherman, your 2025 prepayments must equal at least 110% of your 2024 New York income tax based on a 12-month return.\"",
+      "p. 23, Line 81, \"if your 2024 New York adjusted gross income was more than $150,000 (or $75,000 if you are married filing separately for 2025)\""
+     ],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.prior_full_year": {
+   "subject_sha": "242f3d2e99b057ae51b200dfecfa3f1c451f9f00b55b1b7b0bf8792056af0def",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer who was a part-year New York resident in 2024 and filed a part-year return for the 2024 calendar year could read 'covering a full 12 months' as asking about the residence period and answer no, even though the return was for a 12-month tax year.",
+       "source_text": "ny_it201i p. 23, Line 81: \"you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax based on a 12-month return.\"",
+       "why": "The text needs the 2024 return to be for a 12-month tax period, not 12 months of residence. The wording 'covering a full 12 months' does not say which period it means, so truthful filers in the same situation could give different answers and change est_below_safe_harbor.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "87ac3545e1fed982e0bd16efff3bbc0799dadee435a2c17d3f765c7668d8921a",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.034872,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.prior_full_year.242f3d2e99b0.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Line 81, \"In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax based on a 12-month return.\"",
+      "p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), \"You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year.\""
+     ],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.prior_year_tax": {
+   "subject_sha": "939d3af06267b3fe9b3c7316dfd3d73d534ebf7c886697a33c7f042cf977c1ab",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A 2024 Yonkers resident or nonresident, or a self-employed filer who owed the MCTMT, answers with only State and NYC tax, so the Yonkers tax or MCTMT is left out of the prior-year base.",
+       "source_text": "ny_it201i p. 23, Line 79: \"your New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax estimated tax\"; Line 81: \"the amount of your 2024 New York income tax\"",
+       "why": "The question names only \"New York State and City income tax\", but New York's prepayments are pooled across State, NYC, Yonkers and MCTMT. The prior-year base for the 100%/110% comparison should cover the same taxes, so the truthful answer understates it.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer with 2024 credits could give the tax before credits (for example the tax-table amount) or the net tax after credits, and these produce different safe-harbor amounts.",
+       "source_text": "ny_it201i p. 23, Line 81: \"100% of your 2024 New York income tax based on a 12-month return\"",
+       "why": "\"The tax shown on your 2024 return\" does not say which IT-201 line to use, or whether it is before or after nonrefundable and refundable credits. An ordinary filer could reasonably pick either figure.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5e3096ddd34bdc2814881033f4a7b5079b57ebd94cd5cfc0d8ed182e70ec0bff",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.041624,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.prior_year_tax.939d3af06267.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Line 81, \"In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax based on a 12-month return.\"",
+      "p. 23, Line 81, \"at least 100% of your 2024 New York income tax based on a 12-month return\"",
+      "p. 23, Line 81, \"the amount of your 2024 New York income tax\"",
+      "p. 23, Line 81, \"your 2025 prepayments must equal at least 110% of your 2024 New York income tax based on a 12-month return\"",
+      "p. 23, Line 81, \"your 2025 prepayments must equal at least 110% of your 2024 New York income tax\""
+     ],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.real_property_credit": {
+   "subject_sha": "cad7f2eb6f8768af4fcbde5e446ca93e8bfef226dec925e0d88d10a2e5a4ae76",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "c68354de750e6e04cfa6bfe6489292898a4c8defe7958e0555a9d22c83388333",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.022976,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.real_property_credit.cad7f2eb6f87.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Line 67, \"If you qualify, complete Form IT-214 and transfer the amount from Form IT-214 to Form IT-201, line 67.\"",
+      "p. 19, Line 67, \"Review the instructions for Form IT-214, Claim for Real Property Tax Credit for Homeowners and Renters, to see if you qualify for this credit.\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.resident_credit": {
+   "subject_sha": "ccf53eda66f0e3ce717b4089f718450b6be310703911589c4ddf91260d02e32a",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "720c38ccb77670dd48fbade84988bcea3c4a15d43766378dc3bf54da7ac92417",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.02164,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.resident_credit.ccf53eda66f0.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      13
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Line 41: Resident credit, \"Did you have income from sources outside New York State and pay income tax to another state, a local government of another state, the District of Columbia, or to a province of Canada?\"",
+      "p. 13, Line 41: Resident credit, \"If Yes, complete Form IT-112-R, New York State Resident Credit\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.special_accrual": {
+   "subject_sha": "b38ea3afe49f952bc81d72e6ae856a467abc99bb4373fed0b7ce49a699d21bca",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A full-year New York State resident who lived in New York City on December 31, 2024, moved to Westchester in mid-2025, stayed in New York State on January 1, 2026, and has accrued income must answer no, but the special accrual rules apply.",
+       "source_text": "ny_it201i p. 31: \"You are subject to the special accrual rules only if you have accrued income for 2025 (see below), and you were a: ... • New York City part-year resident for tax year 2025.\"",
+       "why": "A 2025 New York City part-year resident is covered whatever their status on December 31, 2024 or January 1, 2026. The question's date conditions leave out someone who moved out of the City during the year and stayed in the State.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A New York City part-year resident has income that was fixed in their 2025 City resident period but is reportable federally in their 2025 City nonresident period, so it is fixed and reported in the same tax year.",
+       "source_text": "ny_it201i p. 31: \"income that was fixed and determinable in your 2025 New York City resident period, but that income is not reportable for federal income tax purposes in your 2025 New York City resident period; or • non-New York source income* that was fixed and determinable in your 2025 New York City nonresident period...\"",
+       "why": "The question defines accrued income only as income 'fixed and determinable in one tax year but reported federally in another'. It misses accruals between the resident and nonresident periods within the same year.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who lived in Buffalo all of 2024, 2025 and 2026 and has 2025 deferred compensation payable in 2026 would truthfully answer yes, because they were a New York City nonresident on December 31, 2024 and will be a City nonresident on January 1, 2026, but the rules do not apply to them.",
+       "source_text": "Question: \"Were you a New York City nonresident on December 31, 2024, or will you be a New York State or City nonresident on January 1, 2026\"; ny_it201i p. 31: \"nonresident of New York City on December 31, 2024, but you were a full-year New York City resident for tax year 2025; or • full-year New York City resident for 2025 but you will be a New York City nonresident on January 1, 2026\"; for State residents: \"you were a nonresident of New York State on December 31, 2024; or • you will be a New York State nonresident on January 1, 2026.\"",
+       "why": "The City date tests apply only to someone who was a full-year or part-year New York City resident in 2025. As worded, the question is met by every upstate resident who never lived in the City.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who moved into New York State from another state with New York-source income fixed in 2024 but reported federally in 2025 would answer yes, but only non-New York source income counts for that prior-year accrual.",
+       "source_text": "Question: \"income fixed and determinable in one tax year but reported federally in another\"; ny_it201i p. 31: \"non-New York source income that was fixed and determinable in a tax year prior to 2025, but you are reporting that income for federal income tax purposes in tax year 2025\"",
+       "why": "The question leaves out the non-New York source limit on income accrued in a prior year, so New York-source items that do not trigger the rules are brought in.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8014351e336380286e3fcf7c77cc8da50a6ecf7d643ee4162d9607c21466e1b9",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.060231999999999994,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.special_accrual.b38ea3afe49f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      31
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 31, Special accruals, \"If you are subject to the special accrual rules, see the instructions for Form IT-225, addition modification number A-115 and subtraction modification number S-129.\"",
+      "p. 31, Special accruals, \"you may have to use special accrual rules (see below) to calculate your New York State and New York City personal income tax for 2025\""
+     ],
+     "cols_pages": [
+      31
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.special_code": {
+   "subject_sha": "878cc5da7bef18c17ca43f205e7863d513e72c09aa86ecb4974abda1dadb9d5d",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "48e5f2c68fb2f7060fa8f12bb915c6011019f52a1e73a9bb594ce18e20e52a49",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.043340000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.special_code.878cc5da7bef.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Item G, \"If you qualify for one or more of the special conditions below, enter the specified two-character code.\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.spouse_resident": {
+   "subject_sha": "93ef5c6b182c5cfade27b38282a3870da1f708e1ca968d65f7aff025e6bb98b9",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "On a joint federal return, the spouse was a full-year New York State resident but lived outside New York City (or for only part of the year in it), so the filer truthfully answers no and the helper marks the spouse as not resident.",
+       "source_text": "ny_it201i p. 4, Item A: \"One spouse is a New York State resident and the other is a nonresident or part-year resident.\"",
+       "why": "The cited exception depends only on New York State residency, but the question also requires New York City residency. A spouse who was a full-year State resident but not a City resident would be wrongly treated as falling under the separate-or-joint-as-residents exception.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "dad1d19f1f0293caa3a47109a03677a7609fb1f41d6e75f307e11c704e099b48",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.034519999999999995,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.spouse_resident.93ef5c6b182c.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Item A, \"One spouse is a New York State resident and the other is a nonresident or part-year resident.\""
+     ],
+     "cols_pages": [
+      4
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.state_resident": {
+   "subject_sha": "6b435c4c21def0b59626cc78d466fbb3dc6514fab9c10dce482a9de5397ed677",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A servicemember on active duty whose domicile is New York and who meets neither Group A nor Group B is a full-year resident, but the refusal list tells them to answer No.",
+       "source_text": "ny_it201i p. 30: \"spend 184 days or more in New York State during the tax year*; whether or not you were domiciled in New York State (unless you were in active service in the military)\" ... \"Your domicile is New York State.\"",
+       "why": "The active-service exception applies only to the 184-day permanent-place-of-abode test, not to the domicile test. A New York-domiciled servicemember is still a resident who should file IT-201, yet the question's blanket instruction sends them to No and out through the part-year gate.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A full-time undergraduate whose domicile is New York and whose only New York residence is a dorm is a full-year resident, but the refusal list tells them to answer No.",
+       "source_text": "ny_it201i p. 30: \"a residence maintained by a full-time student ... is not a permanent place of abode with respect to that student\"; \"Your domicile is New York State.\"",
+       "why": "The student-housing rule only stops the dorm from counting as a permanent place of abode. It does not undo residency by domicile, and a domiciled student who spends more than 30 days in New York cannot meet Group A, so they remain a resident.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "On a joint return where one spouse was a full-year resident and the other was a nonresident or part-year resident, the couple may choose to file jointly on IT-201, but the wording requires both spouses to be residents, so they answer No.",
+       "source_text": "ny_it201i p. 3: \"However, if you both choose to file a joint New York State return, use Form IT-201 and both spouses' income will be taxed as full-year residents of New York State.\"",
+       "why": "The text allows this mixed-residency couple to file IT-201 jointly. Because the question asks whether you and your spouse were both residents for all of 2025, these couples are gated out of a return the text allows.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ccbf4737370b28c3ab663d6cad3e6d2241388c3aef2fdf9a4417ee26999f942f",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.05516,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.state_resident.6b435c4c21de.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      3,
+      30
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, New York State full-year residents: Who must file?, \"If you were a New York State resident for only part of the year, do not file Form IT-201.\"",
+      "p. 30, Resident, \"You maintain a permanent place of abode in New York State for substantially all of the tax year and spend 184 days or more in New York State during the tax year\""
+     ],
+     "cols_pages": [
+      3,
+      30
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.use_tax_st141": {
+   "subject_sha": "ec43f6b444abcd8bf452ebfb87259a90f171f6731288b07e13d68c009ad3b6ba",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer bought untaxed items for a business that is registered for sales tax, answers yes because the purchases were 'for a business', and the gate sends that tax to the Form ST-141 / line 59 path.",
+       "source_text": "ny_it201i p. 18: \"You owe sales or use tax for purchases related to a business not registered for sales tax purposes, rental real estate, or royalty activities.\" and \"You may not use this line to report: • any sales and use tax on business purchases if the business is registered for sales and use tax purposes. You must report this tax on the business's sales tax return.\"",
+       "why": "The question says 'purchases for a business' with no 'not registered for sales tax' qualifier. Use tax on a registered business's purchases must not go on line 59 at all, but a truthful yes brings it into the ST-141 gate.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer owes unpaid use tax on an out-of-state car, boat, trailer, ATV or snowmobile costing $1,000 or more, answers yes, and that tax is routed to Form ST-141 for line 59.",
+       "source_text": "ny_it201i p. 18: \"You may not use this line to report: ... • any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV).\"",
+       "why": "The question ('an item or service costing $1,000 or more') and its help do not exclude these items. A truthful yes therefore brings in use tax the instructions bar from line 59.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "89e7903ac8f4708381846d8e26830f83a952620d654f47697f8c5721b2599a32",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.035164,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.use_tax_st141.ec43f6b444ab.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      18
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 18, Line 59: Sales or use tax, \"You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:\""
+     ],
+     "cols_pages": [
+      18
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.yonkers": {
+   "subject_sha": "fa5e5637ae6fc8c758d15327a2a2c1d65cda7128a3536257b935aa33c3d835bd",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose employer or a family member keeps a Yonkers apartment mainly for the filer's use, or who otherwise has use of Yonkers quarters someone else pays for, may truthfully answer no because they do not 'maintain' it themselves.",
+       "source_text": "ny_it201i p. 5, Item D2: \"maintained or had use of an apartment or living quarters in Yonkers ... (whether or not you personally used those living quarters for any part of the year)\"; \"or that is maintained for your primary use by another person, family member, or employer.\"",
+       "why": "The question says only 'maintain living quarters'. It leaves out 'had use of' and quarters kept for the filer's primary use by an employer or family member. Those situations require a yes that a truthful filer may not give.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A married filer filing separately whose spouse kept Yonkers quarters, while the filer did not, would truthfully answer yes.",
+       "source_text": "Question: \"Did you or your spouse maintain living quarters in Yonkers\"; ny_it201i p. 5, Item D2: \"If you or your spouse (if married filing jointly) maintained or had use of...\"",
+       "why": "The text counts the spouse's quarters only on a joint return. The question counts the spouse under every filing status, so it brings in a yes the line must not have.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8c96acc0b10e115fd0e126d212711e499717419e95d5f4eb0e7447814b9fdf0b",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.037564,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.yonkers.fa5e5637ae6f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Item D2, \"All IT-201 filers must complete item D2.\"",
+      "p. 5, Item D2, \"If you or your spouse (if married filing jointly) maintained or had use of an apartment or living quarters in Yonkers during any part of 2025\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.line75": {
+   "subject_sha": "fed52fb5ba860c20608422a15d43893b9a9ca4370d3691b98a35356c0c87a78f",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "454895fa7c90b9fc98ed32ef3abb53eb2bf29143ccf0a06805871628530d77ea",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.063404,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.line75.fed52fb5ba86.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      22,
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 22, Line 75: Total estimated tax payments and amount paid with Form IT-370, \"your 2025 estimated tax payments for New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax\"",
+      "p. 23, Line 81, \"the total amount of your 2025 prepayments (the amount of withholding and estimated tax payments you have already made or which were paid on your behalf by a partnership or S corporation for 2025)\"",
+      "p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), \"You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year.\""
+     ],
+     "cols_pages": [
+      22,
+      23
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    },
+    {
+     "doc": "ny_it201",
+     "revision": "Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12",
+     "text_sha256": "c924371c32a986a1903c9216bd60c6df8fb52f8e506e5c462851226b71e2154d",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 4, Payments and refundable credits, \"Total payments (add lines 63 through 75)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "895c4b15bba606353fd49f5779f969877e55196eda7f7b9f633f02cbd3dbbb3d"
+    }
+   ]
+  },
+  "ny_it201.line79_amount": {
+   "subject_sha": "f2324e55def5c8a42c96dafce466991795a14af3c8d7a5517da221450ae169e9",
+   "samples": [
+    {
+     "verdict": "TYPE",
+     "findings": [
+      {
+       "kind": "TYPE",
+       "situation": "A filer with a $500 overpayment on line 77 who wants a larger amount, such as a full $2,000 quarterly installment, credited to 2026 estimated tax could enter $2,000, and the accepted answer would let it through.",
+       "source_text": "ny_it201i p. 23, Line 79: \"Enter the amount of overpayment from line 77 that you want applied to ... estimated tax for 2026. The total of lines 78a through 79 should equal the amount on line 77.\"; Line 78: \"Subtract the amount on line 79 (estimated tax) from line 77.\"",
+       "why": "Line 79 is a portion of line 77, so it cannot be more than line 77. The accepted answer has no upper limit, so line 78 (line 77 minus line 79) could go negative.",
+       "bound": "0 to the amount on line 77 (inclusive)"
+      }
+     ],
+     "prompt_sha": "9678937c6e2580b517452ff1cbc48b4cd3465e89f922da18e8904ed0181d057b",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.032232,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.line79_amount.f2324e55def5.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Line 79: Estimated tax, \"Enter the amount of overpayment from line 77 that you want applied to your New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax estimated tax for 2026.\""
+     ],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  }
+ }
+}

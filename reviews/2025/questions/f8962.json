@@ -1,0 +1,251 @@
+{
+ "form": "f8962",
+ "reviews": {
+  "f8962.alien_below": {
+   "subject_sha": "da144c1cd6f89d792a538d9d0abf3e030742d72a4864d0891fb1373e2cf3822b",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whom someone else can claim as a dependent, with an enrolled lawfully present family member barred from Medicaid by immigration status, truthfully answers yes. The gate would then let them take the PTC under the alien exception, even though the exception requires that no one can claim them.",
+       "source_text": "i8962 p. 9: \"You may qualify for the PTC if your household income is less than 100% of the federal poverty line if you meet all of the following requirements. • No one can claim you as a dependent for the year.\"",
+       "why": "The question 'Was someone in your tax family who enrolled ... lawfully present ... but not eligible for Medicaid because of their immigration status?' asks only about immigration status. Yet f8962.alien_branch uses the answer as if every requirement of the exception were met. Neither the question nor the gate checks the dependent requirement or the other listed requirements.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "71d8c5c629d37aa178999c67c913504cb1043f01e0cc755e4e2d3e8e7de6f044",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.028592,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8962.alien_below.da144c1cd6f8.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Alien lawfully present in the United States, \"Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status.\"",
+      "p. 9, Line 5, \"If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under Estimated household income at least 100% of the federal poverty line next or Alien lawfully present in the United States, later.\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  },
+  "f8962.estimate_100": {
+   "subject_sha": "861a88ee085d411883dbeb95deb380b4f8cde054eb6810dc08ff588d08a32fc2",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "Only a member of the filer's tax family (a spouse or a dependent) enrolled in the Marketplace plan, and the Marketplace estimated household income of at least 100%; read literally, 'When you enrolled' leads the filer to answer no.",
+       "source_text": "i8962 p. 9: \"You or an individual in your tax family enrolled in a qualified health plan through a Marketplace. • The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line\"",
+       "why": "The exception applies when anyone in the tax family enrolled, but the question ties the estimate to the filer's own enrollment. A filer who did not enroll personally may answer no, and line 24 then loses PTC the filer is entitled to.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "4ed4f768a35cedfa7355ce91a546e1004441adea926fba85b53af7b452b3e987",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.045691999999999997,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8962.estimate_100.861a88ee085d.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      6,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Applicable taxpayer, \"Generally, you are an applicable taxpayer if your household income for 2025\"; p. 9, \"The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025.\"",
+      "p. 9, \"The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025.\"; p. 9, \"You, with intentional or reckless disregard for the facts, provided incorrect information to a Marketplace for the year of coverage.\""
+     ],
+     "cols_pages": [
+      6,
+      9
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  },
+  "f8962.fpl_table": {
+   "subject_sha": "2102ff3c1edb3dc71e8d0da5a505c7fb712a82ec16e471e3987f8674c2d950d2",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "bffb88e2029a59247be96e00b486b5221e4cfe66d7e03a451451009cdc47de3a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.021612,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8962.fpl_table.2102ff3c1edb.1.response.txt"
+    }
+   ],
+   "type": "Enum(ptc_fpl_table)",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 4, \"use the table with the higher dollar amounts for your family size.\"",
+      "p. 8, Line 4, Table 1-1, \"If your family size was more than 8 people\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  },
+  "f8962.married_in_2025": {
+   "subject_sha": "0cb7204c078fcd1ce635f1e8cbe738ed2818cef62099391d7205c25b0ea4752d",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A couple filing jointly who married in 2025, with Marketplace coverage before their first full month of marriage, but for whom no APTC was paid for anyone in the tax family during 2025, would truthfully answer yes.",
+       "source_text": "i8962 p. 13, Table 4, Q5: \"Was APTC paid for anyone in your tax family during 2025? ... No. You are not eligible to elect the alternative calculation. Do not complete Part V. ... check 'No' on line 9\"",
+       "why": "The question asks only 'Did you and your spouse marry during 2025, and was anyone in your tax family enrolled in a Marketplace plan before your first full month of marriage?' It omits the Table 4 condition that APTC was paid. A yes from these filers sends line 9 toward the alternative calculation when line 9 must be No.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Joint filers who married in 2025 and had pre-marriage coverage with APTC paid, but no excess APTC, or for whom the election does not reduce repayment, would answer yes.",
+       "source_text": "i8962 p. 13, Table 4, Q5: \"You are eligible to elect the alternative calculation for year of marriage if excess APTC was paid during 2025. Continue to Worksheet 3 ... see ... Pub. 974 to determine if electing the alternative calculation reduces your repayment amount.\"; f8962 line 9: \"do you want to use the alternative calculation for year of marriage?\"",
+       "why": "Line 9 records an election that is available only if excess APTC was paid, and the filer chooses whether to make it. The question asks only about marriage and enrollment, so a yes is taken as electing even when the filer is ineligible or would not elect.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who was still married to a former spouse on January 1, 2025, divorced, and then married the current spouse later in 2025 would truthfully answer that they married during 2025.",
+       "source_text": "i8962 p. 13, Table 4, Q1: \"Were you and your spouse each unmarried on January 1, 2025? ... No. You are not eligible to elect the alternative calculation.\"",
+       "why": "'Did you and your spouse marry during 2025' does not require that each spouse was unmarried on January 1, 2025. This filer answers yes although Table 4 makes them ineligible.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "2d80dbcfec2dc8a90e32fe259bafddfeba09fdfbbaa91fee83d53dad2301889a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.04616,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8962.married_in_2025.0cb7204c078f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      13
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Table 4, \"Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  },
+  "f8962.same_state_counted": {
+   "subject_sha": "02824684df7760e3ab42826d789d3dd3fc221e129288d8a06868df8aed2c4396",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer has two Forms 1095-A from the same state covering the same month and, as the instructions direct, used column B from only one of them, so a truthful reading of 'whose column B you counted' gives no.",
+       "source_text": "i8962 p. 16, Column (b): \"If individuals in your coverage family enrolled in separate policies in the same state, you will receive a Form 1095-A for each policy... Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"",
+       "why": "The gate cites the only-one-form rule, so it is meant to catch the case of two same-state forms covering one month. By limiting the question to forms 'whose column B you counted', a filer who followed that rule can never have two counted forms and answers no, so the gate misses the situation it exists to detect.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer with two same-state forms for a month could read 'counted' as 'looked at or received' and answer yes, or as 'added into column (b)' and answer no.",
+       "source_text": "Question: \"Of the Forms 1095-A whose column B you counted, do two from the same state show coverage in the same month?\"; i8962 p. 16: \"If you have more than one Form 1095-A showing coverage in a particular month, use the following rules to determine the amounts to enter on Form 8962, column (b)\"",
+       "why": "The text treats counting column B as entering it on Form 8962. 'Counted' is not defined in the question or its help, so the same facts can produce either answer.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer who married in 2025, with the spouses enrolled in separate same-state plans, legitimately added column B from both forms and may answer yes even though no single-form rule was broken.",
+       "source_text": "i8962 p. 15, Column (b): \"However, if you got married in December of 2025 and you and your spouse... were enrolled in separate qualified health plans, add the amounts from Form 1095-A, column B, for each plan\"; p. 16: \"See Marriage in 2025, later, if you got married during 2025.\"",
+       "why": "The question does not say whether the marriage-year case, where both same-state column B amounts are properly counted, should be answered yes. That leaves it open whether the gate fires for a correct return.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "73fa6c89b512fdd53ec93447e88370001152271264682c81c4f952f7f1b25b13",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053352,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8962.same_state_counted.02824684df77.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      15,
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"",
+      "p. 16, Column (b), \"If you have more than one Form 1095-A showing coverage in a particular month, use the following rules to determine the amounts to enter on Form 8962, column (b), for that month.\""
+     ],
+     "cols_pages": [
+      15,
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  }
+ }
+}

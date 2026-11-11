@@ -1,0 +1,669 @@
+{
+ "form": "carloan",
+ "reviews": {
+  "carloan.col_ii_input": {
+   "subject_sha": "c799f23acc0880c8ca3c546c4d94ecf6df6088a28f6df4d28e9ccfe9b0d6844b",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer uses the vehicle partly in a rental activity or a farm and deducts part of this loan's 2025 interest on Schedule E or Schedule F instead of Schedule C.",
+       "source_text": "i1040gi p. 110, line 22: \"On line 22, column (ii), enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F).\"",
+       "why": "Column (ii) needs QPVLI deducted anywhere else on the return, but the question and its gate ask only about Schedule C. Interest deducted on Schedule E or F is left out of column (ii), so column (iii) is overstated and the same interest is deducted twice.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Part of the interest the filer deducts on Schedule C is not QPVLI, for example interest on a portion of the loan that does not qualify, yet the filer reports the full Schedule C amount.",
+       "source_text": "Question: \"The part of this loan's 2025 interest you deduct on Schedule C\"; i1040gi p. 110: \"enter the amount of the QPVLI, if any, that was deducted elsewhere\"; fr-2025-24154 p. 23, Proposed § 1.163-16(g)(1): \"Independently deductible interest is limited to interest that is QPVLI\"",
+       "why": "Column (ii) should hold only the QPVLI portion of the interest deducted elsewhere, but the question asks for all of this loan's interest deducted on Schedule C. Any non-qualifying interest would be subtracted from the QPVLI total on column (iii).",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5e0ea858eb653e8bff91d8a2919d7c2d660a62d057ed44078cee72d787147eca",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053092,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/carloan.col_ii_input.c799f23acc08.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      110
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 110, Schedule 1-A, line 22, column (ii)",
+      "p. 110, Schedule 1-A, line 22, column (ii), \"enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)\"; , Line 9, Caution"
+     ],
+     "cols_pages": [
+      110
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      6
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "carloan.down": {
+   "subject_sha": "0397c158f3da93ffc1e5a72496436e253d7f2f15bf86ef353fbbd86eee9afc68",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer trades in a car that still has a loan on it, and counts the trade-in's gross value as 'other consideration you provided' along with any cash down payment.",
+       "source_text": "fr-2025-24154 p. 22, Proposed § 1.163-16(d)(6) Example 4: \"trades in a previously owned vehicle subject to an existing vehicle loan with $6,000 of negative equity. A makes a down payment of $4,000 ... incurring indebtedness of $42,000 ($40,000 plus $6,000 minus $4,000)\"; p. 21, (d)(2)(iii)(B): \"any down payment (or other consideration provided by the taxpayer at the time of the purchase transaction for an APV) is applied first against any negative equity\"",
+       "why": "The trade-in's value is already netted against its loan payoff to produce the negative equity. The question's \"or other consideration you provided\" invites the filer to also enter the trade-in's gross value. That counts it twice, can wipe out the negative equity, and overstates the qualifying debt that flows to 22(ii)/(iii).",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose purchase included a manufacturer rebate or dealer incentive applied at signing is unsure whether that amount counts as consideration 'you provided'.",
+       "source_text": "fr-2025-24154 p. 21, Proposed § 1.163-16(d)(2)(iii)(B): \"any down payment (or other consideration provided by the taxpayer at the time of the purchase transaction for an APV)\"",
+       "why": "Neither the question nor the help says whether third-party rebates or incentives shown as a down payment on the sales contract count. Filers will answer both ways, and the two answers give different nonqualifying-debt amounts.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "14daadaec8921f5895eb7775f3a7237369e89224315b5e11b4ff428d88e094b8",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06838,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/carloan.down.0397c158f3da.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "fr-2025-24154",
+     "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
+     "text_sha256": "eccaf8550a66615e5932726cb4e98cab002b31b9f13c5d4ffec11f0619af479e",
+     "pages": [
+      20,
+      21,
+      22
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B) and (d)(6) Example 4",
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B), \"any down payment ... is applied first against any negative equity and any other amounts that are not incurred for the purchase of the APV\""
+     ],
+     "cols_pages": [
+      20,
+      21,
+      22
+     ],
+     "cols_sha256": "1bb1f46bab043ddeabc4cb276a0d67fa478ae7aa38088b47ecfae848df4954c9"
+    }
+   ]
+  },
+  "carloan.financed": {
+   "subject_sha": "f15c336e2e8bc1c1558806b2237777303a7cb23610eb15b4091e809488749854",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer who refinanced a car loan could report the original purchase loan amount instead of the new loan's principal, because the question asks for the amount 'when it was taken out' and mentions a 'down payment', which only fits a purchase loan.",
+       "source_text": "fr-2025-24154 p. 22, Example 3: 'Of the $38,000 amount financed by Loan 2 ... Only $30,000 of the $38,000 balance of Loan 2 is an SPVL'; p. 21, § 1.163-16(d)(4): 'A taxpayer allocates principal and interest between the amount of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis'",
+       "why": "The lines carloan.refi_qualifying, refi_interest and sc_refi need the new loan's full principal, $38,000 in Example 3, as the denominator and as the cap. Neither the question nor its help says which loan 'this loan' means after a refinancing, and the down-payment wording points the filer to the original purchase loan, which gives a different ratio.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "410135f2fc191a99b7a419cf6f05e412086c6e84ca138503ab4961a104c137ad",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.085204,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/carloan.financed.f15c336e2e8b.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 6,
+   "brief": false,
+   "used": [
+    {
+     "doc": "fr-2025-24154",
+     "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
+     "text_sha256": "eccaf8550a66615e5932726cb4e98cab002b31b9f13c5d4ffec11f0619af479e",
+     "pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Proposed § 1.163-16(g)(1), \"Independently deductible interest is limited to interest that is QPVLI\"; pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), \"payments of interest and principal are allocated to the portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ... on a pro rata basis\"",
+      "p. 23, Proposed § 1.163-16(g)(1), \"Independently deductible interest is limited to interest that is QPVLI\"; pp. 20–22, Proposed § 1.163-16(d)(4), \"A taxpayer allocates principal and interest between the amount of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis\"",
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii) and (d)(4)",
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(4); (d)(6) Examples 3 and 4",
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), \"Only the portion of the indebtedness allocated to the indebtedness described in paragraph (d)(2)(i) of this section is an SPVL\"; p. 22, Example 4, \"Negative equity and down payment\", \"the down payment of $4,000 is allocated against the $6,000 of negative equity\"",
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), \"payments of interest and principal are allocated to the portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ... on a pro rata basis\"",
+      "pp. 20–22, Proposed § 1.163-16(d)(4) and (d)(6) Example 3",
+      "pp. 20–22, Proposed § 1.163-16(d)(4), \"A taxpayer allocates principal and interest between the amount of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis\""
+     ],
+     "cols_pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "cols_sha256": "1bb1f46bab043ddeabc4cb276a0d67fa478ae7aa38088b47ecfae848df4954c9"
+    }
+   ]
+  },
+  "carloan.interest": {
+   "subject_sha": "6bee0b4f74092d3b5768f4e2393090c7a142faf755e6f14246060bdb5cdbe408",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer who took out a car loan in 2025 and refinanced it later in 2025 may report this loan's interest as the combined interest on the original and new loans, or as only the new loan's interest, and the two readings give different amounts.",
+       "source_text": "fr-2025-24154 p. 21, Proposed § 1.163-16(d)(4): \"The amount of the new loan that is an SPVL is limited to the outstanding balance of the refinanced loan as of the date of the refinancing. A taxpayer allocates principal and interest between the amount of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis.\"",
+       "why": "carloan.refi_interest applies the new loan's qualifying ratio to the answer. If the filer combines both loans, that ratio also cuts the original loan's interest, which fully qualifies. If the filer reports only the new loan, nothing in the question says where the original loan's 2025 interest goes.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "cee65dce99152dda15f9957110f680f8637dc4ff7c70d82f01e031561edaac44",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.08158399999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/carloan.interest.6bee0b4f7409.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      110
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 110, Schedule 1-A, line 22, column (iii), \"the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)\""
+     ],
+     "cols_pages": [
+      110
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "fr-2025-24154",
+     "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
+     "text_sha256": "eccaf8550a66615e5932726cb4e98cab002b31b9f13c5d4ffec11f0619af479e",
+     "pages": [
+      20,
+      21,
+      22
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(6) Examples 1, 2 and 4",
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), \"payments of interest and principal are allocated to the portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ... on a pro rata basis\"",
+      "pp. 20–22, Proposed § 1.163-16(d)(4), \"A taxpayer allocates principal and interest between the amount of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis\""
+     ],
+     "cols_pages": [
+      20,
+      21,
+      22
+     ],
+     "cols_sha256": "1bb1f46bab043ddeabc4cb276a0d67fa478ae7aa38088b47ecfae848df4954c9"
+    }
+   ]
+  },
+  "carloan.kind": {
+   "subject_sha": "39b910ee068cd2371ea0bac623e6a0c38ac4d8a3f6c63ddad126d1861d574015",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer inherits a vehicle with the decedent's qualifying loan and then refinances it with a new loan of their own that includes cash-out proceeds.",
+       "source_text": "fr-2025-24154 p. 21, § 1.163-16(d)(5)(ii)(B)(3): \"Any refinancing of an SPVL in connection with a transfer by reason of death\"; (d)(4): \"The amount of the new loan that is an SPVL is limited to the outstanding balance of the refinanced loan as of the date of the refinancing.\"",
+       "why": "The 'refinanced' option covers only a loan that refinanced 'such a loan', meaning one 'you took out'. This filer did not take out the original loan, so a truthful answer is 'death'. The 'death' path computes the qualifying share of the whole loan, without the outstanding-balance cap the lines need for a refinancing.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer refinances a loan that was itself already a refinancing of their original qualifying purchase loan.",
+       "source_text": "fr-2025-24154 p. 21, § 1.163-16(d)(4): \"If a taxpayer refinances an SPVL (refinanced loan), the resulting indebtedness (new loan) is an SPVL ...\"",
+       "why": "'This loan refinanced such a loan' can be read as covering only a refinancing of the original purchase loan, which would leave a second refinancing with no option. Such a filer could pick 'original' and lose the cap tied to the balance at the latest refinancing, or pick 'refinanced'. The two choices give different QPVLI amounts.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "fce1230cab585ad000af4d49016db479b0199cfa968a23225b9d10afe4a2bfb6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.101228,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/carloan.kind.39b910ee068c.1.response.txt"
+    }
+   ],
+   "type": "Enum(carloan_kind)",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "fr-2025-24154",
+     "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
+     "text_sha256": "eccaf8550a66615e5932726cb4e98cab002b31b9f13c5d4ffec11f0619af479e",
+     "pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Proposed § 1.163-16(g)(1), \"Independently deductible interest is limited to interest that is QPVLI\"",
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(4), \"payments of interest and principal are allocated ... on a pro rata basis\"",
+      "pp. 20–22, Proposed § 1.163-16(d)(4) and (d)(5); , Schedule 1-A, \"Change in obligor by reason of previous obligor's death\" and \"Refinanced loan\""
+     ],
+     "cols_pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "cols_sha256": "1bb1f46bab043ddeabc4cb276a0d67fa478ae7aa38088b47ecfae848df4954c9"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      109
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      109
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "carloan.mixed": {
+   "subject_sha": "84c086d6bcb3a66b1dc4dd0cba0b3f56a9e8fb00eccb1935647c8cb0a236f6bd",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer refinanced a qualifying car loan. The new loan's principal is larger than the old loan's outstanding balance because refinance fees or closing costs were rolled in, but no cash went to the filer.",
+       "source_text": "fr-2025-24154 p. 21, Proposed § 1.163-16(d)(4): \"The amount of the new loan that is an SPVL is limited to the outstanding balance of the refinanced loan as of the date of the refinancing. A taxpayer allocates principal and interest between the amount of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis.\"",
+       "why": "The question frames non-qualifying amounts only as items outside 'the vehicle and items customarily financed with it' and 'cash paid to you'. A filer would see rolled-in refinance fees as vehicle-loan costs and answer no. Under (d)(4), any principal above the refinanced balance is outside the SPVL, so the lines need yes and a pro rata split.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer's original loan included non-qualifying amounts such as negative equity or a trailer. The filer then refinanced that loan, and the new loan was used only to pay off the old one.",
+       "source_text": "fr-2025-24154 p. 21, Proposed § 1.163-16(d)(4): \"If a taxpayer refinances an SPVL (refinanced loan), the resulting indebtedness (new loan) is an SPVL ...\"; (d)(2)(iii)(A): \"Only the portion of the indebtedness allocated to the indebtedness described in paragraph (d)(2)(i) of this section is an SPVL.\"",
+       "why": "Asked whether the new loan financed anything other than the vehicle, the filer would truthfully say no, because it only paid off the car loan. But only the SPVL portion carried over from the old loan qualifies, so the lines need yes. The question cites only (d)(2)(i)–(ii) and never directs the filer to look through a refinance to the original loan's makeup.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5f021e2540b15972517726a3615a9279ce075d44893dcc80136580a7eb096d83",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.093512,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/carloan.mixed.84c086d6bcb3.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "fr-2025-24154",
+     "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
+     "text_sha256": "eccaf8550a66615e5932726cb4e98cab002b31b9f13c5d4ffec11f0619af479e",
+     "pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Proposed § 1.163-16(g)(1), \"Independently deductible interest is limited to interest that is QPVLI\"",
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(i) and (ii); , Schedule 1-A, Loan amount",
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(6) Examples 1, 2 and 4"
+     ],
+     "cols_pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "cols_sha256": "1bb1f46bab043ddeabc4cb276a0d67fa478ae7aa38088b47ecfae848df4954c9"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      109
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      109
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "carloan.nonqualifying": {
+   "subject_sha": "990a0370265a0b3db41d53f6c80c69d4c77e6bd90b0a1aefe631c4266d7ab11b",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The loan finances a service unrelated to the vehicle (for example, a non-vehicle service contract or membership), and the filer leaves it out because the question lists only negative equity, insurance, unrelated property and cash paid to you.",
+       "source_text": "fr-2025-24154 p. 21, § 1.163-16(d)(2)(ii): \"to purchase any property or services unrelated to an APV (for example, a trailer or a boat)\"; (d)(2)(iii)(B): \"any negative equity and any other amounts that are not incurred for the purchase of the APV\"",
+       "why": "The rule covers unrelated services and any other amount not customarily financed and directly related to the vehicle. The question's closed parenthetical list names only \"unrelated property,\" so the filer understates the nonqualifying amount and overstates QPVLI.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The filer paid for an item that does not qualify, such as collision insurance, separately at the dealership rather than rolling it into the loan, and is unsure whether it counts as an amount \"in the purchase.\"",
+       "source_text": "Question: \"The total of the amounts in the purchase that do not qualify (negative equity, insurance, ...)\"; fr-2025-24154 p. 21, § 1.163-16(d)(2)(ii): \"To the extent any indebtedness is not incurred ... for the purchase of an APV ... such indebtedness is not an SPVL\"",
+       "why": "The lines need only nonqualifying amounts that were financed under the loan. \"In the purchase\" can also be read to include nonqualifying items paid outside the loan, which would inflate the nonqualifying debt.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5e2cacc145b62b74f2dd32121af4176b4b433b2a4b3a3eec0c1ea810e97e98c8",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.0721,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/carloan.nonqualifying.990a0370265a.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "fr-2025-24154",
+     "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
+     "text_sha256": "eccaf8550a66615e5932726cb4e98cab002b31b9f13c5d4ffec11f0619af479e",
+     "pages": [
+      20,
+      21,
+      22
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(ii) and (d)(6) Example 4",
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B) and (d)(6) Example 4"
+     ],
+     "cols_pages": [
+      20,
+      21,
+      22
+     ],
+     "cols_sha256": "1bb1f46bab043ddeabc4cb276a0d67fa478ae7aa38088b47ecfae848df4954c9"
+    }
+   ]
+  },
+  "carloan.refi_balance": {
+   "subject_sha": "91ecb00bb68f384f60d8663fbbf0927fbc113890226b39dc9eedd36ba2a98d8a",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "The loan being refinanced was only partly an SPVL, for example because it rolled in $6,000 of trade-in negative equity or a trailer, so its full outstanding balance at refinancing includes a portion that was never an SPVL.",
+       "source_text": "fr-2025-24154 p. 21, Proposed § 1.163-16(d)(4): \"If a taxpayer refinances an SPVL (refinanced loan) ... The amount of the new loan that is an SPVL is limited to the outstanding balance of the refinanced loan\"; p. 21, (d)(2)(ii)-(iii)(A): indebtedness \"for the repayment of negative equity on a loan secured by a trade-in vehicle ... is not an SPVL\" and \"Only the portion of the indebtedness allocated to the indebtedness described in paragraph (d)(2)(i) of this section is an SPVL\"",
+       "why": "The question asks for \"The outstanding balance of the loan this loan refinanced,\" so a truthful filer enters the whole balance, including the non-SPVL portion. The lines need only the SPVL portion of that balance, which (d)(2)(iii)(A) allocates pro rata, so the qualifying part of the new loan and the QPVLI in 22(ii) and 22(iii) are overstated.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "efcb08ceb16825ad9ce872a0e7f11b993904c4b74223351bfd8b572cde802cb8",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.063632,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/carloan.refi_balance.91ecb00bb68f.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "fr-2025-24154",
+     "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
+     "text_sha256": "eccaf8550a66615e5932726cb4e98cab002b31b9f13c5d4ffec11f0619af479e",
+     "pages": [
+      20,
+      21,
+      22
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii) and (d)(4)",
+      "pp. 20–22, Proposed § 1.163-16(d)(4) and (d)(6) Example 3",
+      "pp. 20–22, Proposed § 1.163-16(d)(4), \"The amount of the new loan that is an SPVL is limited to the outstanding balance of the refinanced loan as of the date of the refinancing\""
+     ],
+     "cols_pages": [
+      20,
+      21,
+      22
+     ],
+     "cols_sha256": "1bb1f46bab043ddeabc4cb276a0d67fa478ae7aa38088b47ecfae848df4954c9"
+    }
+   ]
+  },
+  "carloan.refi_whole": {
+   "subject_sha": "1e92cbe97b5d6c8bc46276960c09055e742594e32208cdc0cf8770c937f49c05",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "The refinanced loan rolled in negative equity from a trade-in, or financed collision or liability insurance; a filer treats these as items customarily financed with the car and answers yes, although that loan was only partly an SPVL.",
+       "source_text": "fr-2025-24154 p.21, § 1.163-16(d)(2)(ii): \"indebtedness incurred for the repayment of negative equity on a loan secured by a trade-in vehicle, to purchase collision and liability insurance ... is not incurred ... for any other items or amounts customarily financed in an APV purchase transaction ... and as a result is not an SPVL\"; p.22 Example 4",
+       "why": "The question says \"items customarily financed with it\" but does not say that negative equity and insurance are excluded. Rolled-in negative equity and dealer-sold insurance are commonly financed in practice, so a truthful yes switches off the partial-SPVL gate when it should be on.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The refinanced loan was itself a refinancing for exactly the balance it replaced, but the earlier loan it paid off was only partly an SPVL (for example, it included a trailer, negative equity or cash proceeds); the filer answers yes to both parts of the parenthetical.",
+       "source_text": "fr-2025-24154 p.21, § 1.163-16(d)(4): \"The amount of the new loan that is an SPVL is limited to the outstanding balance of the refinanced loan\"; (d)(2)(iii)(A): \"Only the portion of the indebtedness allocated to the indebtedness described in paragraph (d)(2)(i) ... is an SPVL\"",
+       "why": "The parenthetical tests only whether the refinanced loan's own balance grew. It misses a non-SPVL portion carried forward from an earlier loan in the chain, so a truthful yes hides a loan that was only partly qualifying.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The refinanced loan was itself a refinancing loan, so what it 'financed' was the payoff of a prior loan rather than the vehicle.",
+       "source_text": "Question: \"it financed only the vehicle and items customarily financed with it, and was not itself a refinancing for more than the balance it replaced\"; fr-2025-24154 p.21, § 1.163-16(d)(4)",
+       "why": "One filer could answer no because a payoff is not 'the vehicle'. Another could answer yes because the payoff traces back to the vehicle. The two readings give different gate values for the same loan.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "4bd1267358b8648af05182b6566a4369b584ed2e0be55cbe8ff18e2e11da4512",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.085772,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/carloan.refi_whole.1e92cbe97b5d.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "fr-2025-24154",
+     "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
+     "text_sha256": "eccaf8550a66615e5932726cb4e98cab002b31b9f13c5d4ffec11f0619af479e",
+     "pages": [
+      20,
+      21,
+      22
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 20–22, Proposed § 1.163-16(d)(4)",
+      "pp. 20–22, Proposed § 1.163-16(d)(4), \"If a taxpayer refinances an SPVL\""
+     ],
+     "cols_pages": [
+      20,
+      21,
+      22
+     ],
+     "cols_sha256": "1bb1f46bab043ddeabc4cb276a0d67fa478ae7aa38088b47ecfae848df4954c9"
+    }
+   ]
+  },
+  "carloan.requirements": {
+   "subject_sha": "4d9ea05af9a41a84da17a887c8579164edb5c1013a52873c3a9f11ea0400ba76",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer took over (assumed) a 2025 car loan originated by another person, not because that person died, and answers yes because the loan meets every condition the question lists.",
+       "source_text": "i1040gi p. 109: \"2. The loan was originated by you.\"",
+       "why": "The question leaves out requirement 2, so a loan the filer did not originate (and did not take over on a previous obligor's death) gets a yes and flows into QPVLI on lines 22(ii)/(iii).",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer became the obligor when the previous obligor died, and the decedent (not the filer) held the personal-use expectation when the loan was originated, so the filer truthfully answers no to 'when the loan was taken out you expected'.",
+       "source_text": "i1040gi p. 109: \"If a loan met requirements 1 through 5 at the time it was originated by a previous obligor, and you became the obligor by reason of a previous obligor's death, interest paid by you on the loan is generally QPVLI if the loan continues to be secured by a first lien\"",
+       "why": "The question tests 'you' and 'when the loan was taken out', so it misses the inherited-loan case in which the original obligor's qualification carries over to the filer.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer refinanced a qualifying 2025 purchase loan; the new loan's proceeds paid off the old loan rather than buying the vehicle.",
+       "source_text": "i1040gi p. 109: \"If your prior loan that had QPVLI is later refinanced, interest paid on the refinanced amount is generally eligible for the deduction, so long as the new loan is secured by a first lien on the APV\"",
+       "why": "The refinancing parenthetical covers only the origination date. A filer could read 'it was used to buy the vehicle' as applying to the refinancing loan itself and answer no, or as applying to the original loan and answer yes.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "160f11bc1c1e8f0d0c6e88732f05cd5ab5e58af8dafa05599d4a32c23a69ee42",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.047192,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/carloan.requirements.4d9ea05af9a4.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      109
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 109, Schedule 1-A, Qualified passenger vehicle loan interest and Applicable passenger vehicle",
+      "p. 109, Schedule 1-A, Qualified passenger vehicle loan interest, requirements 1 to 5, and Personal use; fr-2025-24154 proposed § 1.163-16(d)(3) (related party indebtedness)"
+     ],
+     "cols_pages": [
+      109
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "carloan.vehicle": {
+   "subject_sha": "71abff0ed0b6d1a606d176827208cd17529327da57356240e4def28bf702a7e4",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer inherited a vehicle, and with it the loan that the person who died originated, so the vehicle's original use began with the decedent and not with the filer.",
+       "source_text": "i1040gi p. 109: \"If a loan met requirements 1 through 5 at the time it was originated by a previous obligor, and you became the obligor by reason of a previous obligor's death, interest paid by you on the loan is generally QPVLI if the loan continues to be secured by a first lien on the purchased APV.\"",
+       "why": "The question requires the vehicle to be new with its original use starting with 'you', so this filer must truthfully answer no. The instructions still treat the interest as QPVLI, because the vehicle was an APV when the original obligor took out the loan.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "4d5d4021c68fb754ce9644080ca5a9085676ee06ce16a9ced513ef3dd7351a3e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.036836,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/carloan.vehicle.71abff0ed0b6.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      109
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 109, Schedule 1-A, Applicable passenger vehicle and Final assembly in the United States; fr-2025-24154 proposed § 1.163-16(e)(1)",
+      "p. 109, Schedule 1-A, Qualified passenger vehicle loan interest and Applicable passenger vehicle"
+     ],
+     "cols_pages": [
+      109
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,257 @@
+{
+ "form": "clcw",
+ "reviews": {
+  "clcw.prior_11": {
+   "subject_sha": "21fe653ae192f2fd92d449c5cdd37e7388d9a26ad3e38e933d0ae7befded4e85",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer who was a nonresident in 2024 and filed Form 1040-NR, then files Form 1040 for 2025, is asked only about a 2024 Form 1040 or 1040-SR. Under the help text they did file for 2024, so they may answer zero or leave the question blank instead of giving their 1040-NR adjusted gross income.",
+       "source_text": "i1040sd p. 10, Capital Loss Carryover Worksheet line 1: \"Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15\"",
+       "why": "The worksheet takes the 2024 figure from a 1040-NR as well, but the question and help name only the 1040 and 1040-SR. The 'did not file' fallback doesn't cover someone who filed a 1040-NR, so this filer is given no source for the amount.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "Spouses who filed separate 2024 returns and file jointly for 2025 are asked for 'your' 2024 line 11. They might enter one spouse's figure or add both spouses' amounts together. Adding them and running the worksheet once gives a different carryover than running it for each spouse and then adding the carryovers.",
+       "source_text": "p550 p. 103: \"If you and your spouse once filed separate returns and are now filing a joint return, combine your separate capital loss carryovers.\"",
+       "why": "The worksheet has to be done separately for each spouse's 2024 return, and only the resulting carryovers are combined. The wording doesn't tell the filer whose return to use or whether to add the two returns, so different filers can reasonably give different amounts.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "abd016cc9ca6dd91abff997de56bf100dad84f6f33457e41d2082a0ac1ee81a2",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.07968,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/clcw.prior_11.21fe653ae192.1.response.txt"
+    }
+   ],
+   "type": "Dollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sd",
+     "revision": "2025; printed date 2025-12-11",
+     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, \"(a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16\", \"if the amount on your 2024 Form 1040, 1040-SR or 1040-NR, line 15 would be less than zero if you could enter a negative amount on that line\", \"Otherwise, you don’t have any carryovers\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, \"can be deducted only on the return of the spouse who actually had the loss\"; , Joint and separate returns, \"combine your separate capital loss carryovers\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, \"Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, \"Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15. If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+    },
+    {
+     "doc": "p550",
+     "revision": "2025 returns; printed date 2026-03-05",
+     "text_sha256": "e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26",
+     "pages": [
+      103
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51"
+    }
+   ]
+  },
+  "clcw.prior_14": {
+   "subject_sha": "25c5d46df03dd19372eab4cc09e0b1988966669bbaa28bd14205fbb5a602893f",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer who filed a 2024 Form 1040-NR has no 2024 Form 1040 or 1040-SR line 14 to report, so they cannot give the deduction amount that clcw.applies and clcw.line1 need to rebuild 2024 line 15.",
+       "source_text": "i1040sd p. 10, Capital Loss Carryover Worksheet line 1: \"Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15.\"",
+       "why": "The worksheet covers 2024 Form 1040-NR filers. The question and its help ask only for line 14 of a Form 1040 or 1040-SR, so these filers have no truthful amount to enter.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b9a54254eda60e3ef5201cf5f05bb83a9ba2d01f209c2aa3caf1cf5a931084ea",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.048,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/clcw.prior_14.25c5d46df03d.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sd",
+     "revision": "2025; printed date 2025-12-11",
+     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, \"(a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16\", \"if the amount on your 2024 Form 1040, 1040-SR or 1040-NR, line 15 would be less than zero if you could enter a negative amount on that line\", \"Otherwise, you don’t have any carryovers\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, \"can be deducted only on the return of the spouse who actually had the loss\"; , Joint and separate returns, \"combine your separate capital loss carryovers\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, \"Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15. If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, \"If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+    },
+    {
+     "doc": "p550",
+     "revision": "2025 returns; printed date 2026-03-05",
+     "text_sha256": "e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26",
+     "pages": [
+      103
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51"
+    }
+   ]
+  },
+  "clcw.prior_sd15": {
+   "subject_sha": "15b0e1422e6e91eddd22930c83c99b978b481c48317c898109d77583201aff42",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who filed a joint 2024 return but files separately for 2025 enters line 15 of the joint 2024 Schedule D, which includes the spouse's long-term loss.",
+       "source_text": "i1040sd p. 10: \"If you and your spouse once filed a joint return and are filing separate returns for 2025, any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss.\"",
+       "why": "The question asks for \"The amount on line 15 of your 2024 Schedule D\" with no allocation, so the truthful joint-return figure flows into lines 9 and 13. The worksheet would then carry the other spouse's loss onto this filer's separate return.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c50e40746c588ad9fa267c9ea8c65c4f6c0d53499adf5acaaa97bd84c3937b87",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.034488000000000005,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/clcw.prior_sd15.15b0e1422e6e.1.response.txt"
+    }
+   ],
+   "type": "Dollars",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sd",
+     "revision": "2025; printed date 2025-12-11",
+     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, \"If line 15 of your 2024 Schedule D is a loss, go to line 9\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, \"if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 6, \"Enter any gain from your 2024 Schedule D, line 15\", and line 9, \"Enter the loss from your 2024 Schedule D, line 15, as a positive amount\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 6, \"Enter any gain from your 2024 Schedule D, line 15. If a loss, enter -0-\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 9, \"Enter the loss from your 2024 Schedule D, line 15, as a positive amount\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+    }
+   ]
+  },
+  "clcw.prior_sd21": {
+   "subject_sha": "03243f8a91aa14073d55fcc25fc159087132b0f0d7b4ef4fede7c7f85833ce70",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "7ad8ffa1e42baf70325ceda46fa2134ba80f072b30237f09efd7868f0e74f0d8",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.042476,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/clcw.prior_sd21.03243f8a91aa.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sd",
+     "revision": "2025; printed date 2025-12-11",
+     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+     "pages": [
+      3,
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, \"(a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16\", \"if the amount on your 2024 Form 1040, 1040-SR or 1040-NR, line 15 would be less than zero if you could enter a negative amount on that line\", \"Otherwise, you don’t have any carryovers\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 2, \"Enter the loss from your 2024 Schedule D, line 21, as a positive amount\"",
+      "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+    }
+   ]
+  },
+  "clcw.prior_sd7": {
+   "subject_sha": "0e8ad6e6d27c3eb6ffa2a8edb1153c7678a986c0c6f6ee29cbd5d2bd24322041",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who filed jointly for 2024 and files separately for 2025 would truthfully enter line 7 of the joint 2024 Schedule D, which includes the spouse's short-term gains and losses.",
+       "source_text": "i1040sd p. 10: \"If you and your spouse once filed a joint return and are filing separate returns for 2025, any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss.\" Question: \"The amount on line 7 of your 2024 Schedule D (net short-term capital gain or loss)\"",
+       "why": "The question and its help ask for the joint return's line 7 as printed and never limit it to the filer's own share. A loss that belongs to the other spouse therefore flows into worksheet lines 5 and 10 and into the carryover the filer claims.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "bd58df9d5e893fab7296f624dc2e8b4e5bc747a559043d6440c8519165331d09",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.034156,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/clcw.prior_sd7.0e8ad6e6d27c.1.response.txt"
+    }
+   ],
+   "type": "Dollars",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sd",
+     "revision": "2025; printed date 2025-12-11",
+     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, \"If line 7 of your 2024 Schedule D is a loss, go to line 5\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, \"if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 10, \"Enter any gain from your 2024 Schedule D, line 7. If a loss, enter -0-\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 5, \"Enter the loss from your 2024 Schedule D, line 7, as a positive amount\", and \"If line 7 of your 2024 Schedule D is a loss, go to line 5\"",
+      "p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 5, \"Enter the loss from your 2024 Schedule D, line 7, as a positive amount\", and line 10, \"Enter any gain from your 2024 Schedule D, line 7\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,828 @@
+{
+ "form": "f8889",
+ "reviews": {
+  "f8889.age55": {
+   "subject_sha": "dc8f69d9569d0f02602bda80e9524e53631d8dba6217131242839bf82bc93827",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "af845f0a57b3ddfdc50376f3318a145840eede7ef1f93b1f1540b249a5ca005d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.036864,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.age55.dc8f69d9569d.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Line 3, rule 6, \"If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year, you can increase the amount determined in (3) or (4) by $1,000\"; p. 5, Line 3, \"Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\"",
+      "p. 4, Line 3, rule 6, and p. 6, Line 3 Limitation Chart",
+      "p. 6, Line 3 Limitation Chart, 'If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month'",
+      "p. 7, Line 7, \"If, at the end of 2025, you were age 55 or older and married, use the Additional Contribution Amount Worksheet\"; p. 5, Line 3, \"Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\""
+     ],
+     "cols_pages": [
+      4,
+      5,
+      7
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "f8889.allocated": {
+   "subject_sha": "371e6a6c95436a0ba2aff3585de333ee582235e5fafcf2532093a6536ab037a9",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "8b509cd97d4889091a39acbb84f4dd45da00f2481352141feefe720e629a3483",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.026707999999999996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.allocated.371e6a6c9543.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 6, Step 2, \"Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)\"; p. 7, Line 6, Step 3, \"Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "f8889.allocation": {
+   "subject_sha": "10a246df7ab5797ccf493b9cb1e733bc435bbb4810461f489346f33fa0426919",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "fcd31707de3e13ba6f1ed5688b4c4c37c127cf806dd57733557d0423dfabf4d4",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.038752,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.allocation.10a246df7ab5.1.response.txt"
+    }
+   ],
+   "type": "Enum(hsa_allocation)",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      4,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Line 3, rule 1, \"Use the family coverage amount if you or your spouse had an HDHP with family coverage\"; \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan\"; p. 7, Line 6, Step 2, \"Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)\"",
+      "p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Steps 1 to 3, \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6\", \"Step 1. Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage\", \"Step 2. Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)\", \"Step 3. Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1\"",
+      "p. 7, Line 6, Step 2, \"Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)\"",
+      "p. 7, Line 6, Step 2, \"Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)\"; p. 7, Line 6, Step 3, \"Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1\""
+     ],
+     "cols_pages": [
+      4,
+      7
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "f8889.dec_coverage": {
+   "subject_sha": "358831bbf91945b44c57b9c2383b77b5d8d0b0c09343ff4cc5a195d127c8b1ce",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "eb1c6d8ec6fcab45176fd7cd4291cdc49088cbb8a36bee55dbb143e855cd36e9",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.035672,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.dec_coverage.358831bbf919.1.response.txt"
+    }
+   ],
+   "type": "Enum(hsa_coverage)",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, How To Complete Part I, Line 1 (\"If you were covered by both a self-only HDHP and a family HDHP at the same time, you are treated as having family coverage during that period\") and Line 3 rules 1, 2 and 4(b), spouse-attributed family coverage and the coverage on the first day of the last month",
+      "p. 4, Line 3, rules 2, 3 and 4(b) (the coverage on the first day of the last month, and under rule 3 an eligible individual for the entire year who did not change the type of coverage)"
+     ],
+     "cols_pages": [
+      4
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "f8889.employer_in_box1": {
+   "subject_sha": "198a3965efac3bf97ec9891a95d873e1d61d99c1fa5ca5d846e28c98d26abfdf",
+   "samples": [
+    {
+     "verdict": "TYPE",
+     "findings": [
+      {
+       "kind": "TYPE",
+       "situation": "The employer included only part of the excess in box 1, for example because it figured the excess against its own view of the limit and did not know about a qualified HSA funding distribution, the spouse's coverage or the months of eligibility, so only some of the line 11 minus line 8 amount went untaxed.",
+       "source_text": "i8889 p. 8: \"If the excess was not included in income on Form W-2, you must report it as 'Other income' on your tax return.\"",
+       "why": "The line needs the amount of excess not included in box 1. A yes/no answer can only report all or none, so a partly included excess is either reported twice or left out.",
+       "bound": "an amount from 0 up to the excess employer contributions (line 11 minus line 8), not a yes/no"
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer who made a qualified HSA funding distribution compares employer contributions to the unreduced limit and decides the employer never went over it, or that the employer's box 1 treatment already covers the excess.",
+       "source_text": "i8889 p. 8: \"If you made a qualified HSA funding distribution (line 10) during the tax year, reduce your limitation (line 8) by that distribution/ contribution before you determine whether you have excess employer contributions.\"",
+       "why": "\"Above the limit\" does not say the limit is line 8 reduced by line 10. The employer could not have known about the funding distribution, so this part of the excess is never in box 1, yet a filer could answer yes based on the employer's handling of the unreduced limit.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The filer sees employer HSA contributions reported on the W-2 in box 12 (code W) and reads that as the excess being included in the W-2 wages.",
+       "source_text": "i8889 p. 8: \"If the excess was not included in income on Form W-2, you must report it as 'Other income' on your tax return.\"",
+       "why": "Neither the question nor the help says that box 12 code W reporting is not box 1 inclusion. A filer could answer yes when box 1 actually leaves the excess out, which would drop it from Other income.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "833abe1f7c55c41a4a3b6b0e076cdf0eb3d28f1cd389655096b59a3ddccf7971",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.060296,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.employer_in_box1.198a3965efac.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Excess Employer Contributions, \"Excess employer contributions are the excess, if any, of your employer's contributions over your limitation on line 8.\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "f8889.last_month": {
+   "subject_sha": "1c01264b6829b410a3e454819a9295747d273ad06267bb552a6ed972bb843e80",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer had HDHP coverage on December 1, 2025 but was not an eligible individual that day, for example because of Medicare enrollment or other non-disregarded health coverage, and answers yes to using the rule.",
+       "source_text": "i8889 p. 2: \"You may consider yourself an 'eligible individual' for the entire year if you are an eligible individual on the 1st day of the last month of the tax year\"; \"you must be covered under a high deductible health plan (HDHP) and have no other health coverage ... you cannot be enrolled in Medicare\"",
+       "why": "The question offers the rule without stating that it is available only to someone who actually was an eligible individual on December 1, and neither the question nor its help says so. The gate checks only that some HDHP coverage existed on December 1, so a yes from an ineligible filer turns on the full-year line 3 amount the text does not allow.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer answering in late 2026 who has already left eligibility during the testing period, or expects to, reads 'which requires you to remain an eligible individual' as a condition for using the rule and answers no.",
+       "source_text": "i8889 p. 2: \"If you fail to remain an eligible individual during this period ... you will have to include in income the total contributions ... You include this amount in income in the year in which you fail to be an eligible individual.\"",
+       "why": "The text makes staying eligible a recapture consequence that is reported in the year of failure, not a condition for using the rule for 2025. The word 'requires' can be read as a condition, which would give a different line 3 amount.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a92eb2b0e3a90a685527591af427f6fcfb68fe38fd5c987b843c5200f03b87a7",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.063564,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.last_month.1c01264b6829.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      2,
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Last-month rule and Testing period; p. 4, Line 3, rule 2",
+      "p. 2, Last-month rule, \"for the entire year if you are an eligible individual\"; p. 4, Line 3, rule 2"
+     ],
+     "cols_pages": [
+      2,
+      4
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "f8889.line14a": {
+   "subject_sha": "8ac6aa70effb1adf6ed5e5c93a960ce5fba8f0e7bb18b73f41a278bc4c15093b",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer is the non-spouse designated beneficiary (or the estate) of a deceased account holder's HSA, so the account stopped being an HSA at death.",
+       "source_text": "i8889 (2025) p. 3, Death of Account Beneficiary: \"If the designated beneficiary is not the account beneficiary's surviving spouse ... the account ceases to be an HSA as of the date of death. ... On Part II, line 14a, enter the fair market value of the HSA as of the date of death.\"",
+       "why": "The question asks only for distributions \"from all of your own HSAs\", so this filer would leave out the inherited account's date-of-death value. Line 14a requires that value, and no refusal covers this case.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "The filer engaged in a prohibited transaction with an HSA in 2025, so the whole account is treated as distributed as of January 1, 2025, even though no withdrawal was made or reported in box 1 of a Form 1099-SA.",
+       "source_text": "i8889 (2025) p. 3, Deemed Distributions From HSAs: \"Your account ceases to be an HSA as of January 1, 2025, and you must include the fair market value of all assets in the account as of January 1, 2025, on line 14a.\"",
+       "why": "The question asks for distributions \"you received\" as shown in \"box 1 of your Forms 1099-SA\", so a truthful filer would leave out the deemed distribution. Line 14a must include it.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "e1ef09783f1b4f997e4f50f7a8739c52fe82ce103df09af4d687b27dd4c1900a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.062332,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.line14a.8ac6aa70effb.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      3,
+      4,
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 14a, \"Enter the total distributions your HSAs made in 2025. These amounts should be shown on Form 1099-SA, box 1\"; pp. 3-4, Rollovers, \"If you instruct the trustee of your HSA to transfer funds directly to the trustee of another of your HSAs, the transfer is not considered a rollover.\" and \"Do not include the amount transferred in ... include it as a distribution on line 14a.\""
+     ],
+     "cols_pages": [
+      3,
+      4,
+      8
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    },
+    {
+     "doc": "f8889",
+     "revision": "2025; created 2025-03-28",
+     "text_sha256": "f1ae3589453f3dd1d5277a79409bd7d0bf4772715fa8bd11d58126e6f387c0cf",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8889 (2025), line 14b, \"Distributions included on line 14a that you rolled over to another HSA\"",
+      "Form 8889 (2025), line 14c (line 14b is at most line 14a)",
+      "p. 1, Part II, \"HSA Distributions\", \"Total distributions you received in 2025 from all HSAs\" (line 14a)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "85ba6183eb2c35cf7b6d63eb6fd515be7234f5f938da39d7d000a6a7f2359d4e"
+    }
+   ]
+  },
+  "f8889.line17a": {
+   "subject_sha": "c4385f447b7920185526541ac58cdee8670f99b6dc1886a5c510da7c2275fff4",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A taxable distribution was made after the account beneficiary died, for example one reported on the decedent's final return or received by an estate or beneficiary, and the filer answers No because the question lists only disability and age 65.",
+       "source_text": "i8889 p. 9: \"The additional 20% tax does not apply to distributions made after the account beneficiary: • Dies, • Becomes disabled or • Turns age 65.\"",
+       "why": "The question and its help name only disability and turning 65 and leave out the death exception. A truthful No in this case puts line 16 straight into the 20% tax on line 17b, although the text exempts the distribution.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "153460f13a9bd7025a8660d1970b4a5d367268209b36c819fe997291fe94fadc",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.022532,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.line17a.c4385f447b79.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Exceptions to the Additional 20% Tax, \"The additional 20% tax does not apply to distributions made after the account beneficiary: • Dies, • Becomes disabled or • Turns age 65\" and \"If any of the exceptions apply to any of the distributions included on line 16, check the box on line 17a\"",
+      "p. 9, Lines 17a and 17b Additional 20% Tax, \"HSA distributions included in income (line 16) are subject to an additional 20% tax unless one of the following exceptions applies\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "f8889.line2": {
+   "subject_sha": "fa38d0de093772fd6a7754789f71ca53f5837ac15d8cf580e137081792388e90",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer contributed more than the limit for 2025, then withdrew the excess and its earnings by the due date of the return (including extensions). Answering truthfully, the filer still reports the withdrawn amount, because the question asks for all contributions made for 2025 and does not exclude excess contributions that were withdrawn.",
+       "source_text": "i5329 p. 8, Line 47: \"Enter the excess of your contributions ... from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit\"; i8889 p. 8: \"you can withdraw some or all of your excess contributions for 2025 and they will be treated as if they had not been contributed if: • You make the withdrawal by the due date, including extensions\"",
+       "why": "The question says \"HSA contributions you made for 2025 ... zero if none\" with no carve-out for withdrawn excess. Line f8889.excess_own (line 2 less line 13) then flows to Form 5329 line 47, which must leave out contributions withdrawn in time. The filer would be charged the 6% excess-contribution tax on amounts the law treats as never contributed.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "d29a01a6f9b2f1ea174f5d5a6a14194933600e08ab1cc6106344858003032cde",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.10152800000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.line2.fa38d0de0937.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f8889",
+     "revision": "2025; created 2025-03-28",
+     "text_sha256": "f1ae3589453f3dd1d5277a79409bd7d0bf4772715fa8bd11d58126e6f387c0cf",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8889 (2025), line 2; , Line 2, \"Thus, you may contribute to your 2025 HSA through April 15, 2026, or a later date if you served in a designated combat zone or contingency operation.\"; , Rollovers, \"If you instruct the trustee of your HSA to transfer funds directly to the trustee of another of your HSAs, the transfer is not considered a rollover.\" and \"Do not include the amount transferred in ... include it as a distribution on line 14a.\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "85ba6183eb2c35cf7b6d63eb6fd515be7234f5f938da39d7d000a6a7f2359d4e"
+    },
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Line 3 Limitation Chart and Worksheet",
+      "p. 8, Excess Employer Contributions, \"Excess employer contributions are the excess, if any, of your employer's contributions over your limitation on line 8.\"",
+      "p. 8, Line 13, 'Generally, enter the smaller of line 2 or line 12 on line 13 and on Schedule 1 (Form 1040), Part II, line 13'",
+      "pp. 1-2, Who Must File (you or your employer made contributions to your HSA for 2025)"
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4,
+      8
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    },
+    {
+     "doc": "i5329",
+     "revision": "2025",
+     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 47, \"Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025 from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12).\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Married Filing Separately"
+     ],
+     "cols_pages": [
+      14
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "f8889.line9": {
+   "subject_sha": "482c733a11578734e787ea9eac6460a14384466d8e0a202f4dc7e5a48fc38836",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "7419a1d3cb33b7eae127e1b5c4012c9a37017e1a916e5ac1716984741a56885d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.049083999999999996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.line9.482c733a1157.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      1,
+      2,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 9 Employer Contributions and the Employer Contribution Worksheet",
+      "pp. 1-2, Who Must File (you or your employer made contributions to your HSA for 2025)"
+     ],
+     "cols_pages": [
+      1,
+      2,
+      7
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    },
+    {
+     "doc": "f8889",
+     "revision": "2025; created 2025-03-28",
+     "text_sha256": "f1ae3589453f3dd1d5277a79409bd7d0bf4772715fa8bd11d58126e6f387c0cf",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8889 (2025), line 11"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "85ba6183eb2c35cf7b6d63eb6fd515be7234f5f938da39d7d000a6a7f2359d4e"
+    }
+   ]
+  },
+  "f8889.medical": {
+   "subject_sha": "5b5f1428eaa16517e8591da8b9a5e6d97034171c44f9af960ca49213ebe3a854",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A non-spouse designated beneficiary of a deceased account beneficiary's HSA paid medical expenses the decedent incurred before death, paying them within 1 year after the date of death; the question limits the expenses to those of you, your spouse and your dependents, so this filer would answer zero.",
+       "source_text": "i8889 p. 3, Death of Account Beneficiary: \"On Part II, line 15, for a beneficiary other than the estate, enter qualified medical expenses incurred by the account beneficiary before the date of death that the beneficiary paid within 1 year after the date of death.\"",
+       "why": "For this beneficiary, line 15 must include the decedent's pre-death expenses paid within one year after death. The question's people ('you, your spouse, your dependents…') and its 'incurred after the HSA was established' framing leave these out, so the answer is too small.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer withdrew an excess contribution after the due date of the return, including extensions, and used it to pay qualified medical expenses; answering truthfully, they count it as HSA distributions used for qualified medical expenses.",
+       "source_text": "i8889 p. 8, Line 15: \"Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.\"",
+       "why": "The question asks for the part of 2025 HSA distributions used to pay qualified medical expenses and does not exclude excess contributions withdrawn late. Line 15 must exclude that amount, so including it overstates line 15 and understates taxable line 16.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer has a deemed distribution (for example, a prohibited transaction under section 4975) and applies it to qualified medical expenses; answering truthfully, they report it as used for qualified medical expenses.",
+       "source_text": "i8889 p. 3, Deemed Distributions From HSAs: \"Any deemed distribution will not be treated as used to pay qualified medical expenses.\"",
+       "why": "The question does not exclude deemed distributions. Line 15 cannot treat them as used for qualified medical expenses.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "fcc4d748fc4611cdff73d1fe71a4d050ada745fd74ab7100453a9d9b09f40ed1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.070364,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.medical.5b5f1428eaa1.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      2,
+      3,
+      8,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 15, \"Only include on line 15 distributions from your HSA that were used to pay you for qualified medical expenses not reimbursed by insurance or other coverage and that you incurred after the HSA was established\" and \"Any person who would be a dependent except that\"; p. 9, Line 15, TIP, divorced or separated parents; p. 2, Qualified Medical Expenses, \"You cannot treat insurance premiums as qualified medical expenses unless the premiums are for:\", \"Long-term care (LTC) insurance\", \"Health care continuation coverage (such as coverage under COBRA)\" and \"Health care coverage while receiving unemployment compensation under federal or state law\"; p. 3, \"Medicare and other health care coverage if you were 65 or older (other than premiums for a Medicare supplemental policy, such as Medigap)\", \"Coverage under (2) and (3) can be for your spouse or a dependent meeting the requirement.\" and \"are under age 65, Medicare premiums for your spouse or dependents (who are age 65 or older) are generally not qualified medical expenses\""
+     ],
+     "cols_pages": [
+      2,
+      3,
+      8,
+      9
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    },
+    {
+     "doc": "f8889",
+     "revision": "2025; created 2025-03-28",
+     "text_sha256": "f1ae3589453f3dd1d5277a79409bd7d0bf4772715fa8bd11d58126e6f387c0cf",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8889 (2025), line 15"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "85ba6183eb2c35cf7b6d63eb6fd515be7234f5f938da39d7d000a6a7f2359d4e"
+    }
+   ]
+  },
+  "f8889.months_eligible": {
+   "subject_sha": "b747f2500bb68e88924be1478be491e8de58ada77d05e97f76368274d6318f5c",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer who first became an eligible individual partway through 2025 and was eligible on December 1 counts only the months they actually met the conditions (for example 1). Under the last-month rule they are considered eligible for the entire year, so the lines need 12.",
+       "source_text": "i8889 p. 2: 'You must be, or be considered, an eligible individual on the first day of a month ... (see Last-month rule next). Last-month rule. You may consider yourself an \"eligible individual\" for the entire year if you are an eligible individual on the 1st day of the last month'; i8889 p. 4, Line 3 rule 2: 'If the last-month rule ... applies, you are considered an eligible individual for the entire year'; rule 3: 'If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage, enter $4,300 ... or $8,550'",
+       "why": "The question and help ask only for months on whose first day 'every condition held'. They never mention the 'or were considered' months the last-month rule adds, which the chart's 'see the line 3 instructions' cross-reference brings in. So a truthful count of 1 leaves f8889.all_year false and gives a line 3 of $4,300 × 1 / 12 instead of the full $4,300 (and also cuts the line 7 and line 6 counts).",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ad48dfdcfa5f5e6a2787530d5f24a05d01e1328c9711b3f012c6bf20e50b8b2e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.075328,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.months_eligible.b747f2500bb6.1.response.txt"
+    }
+   ],
+   "type": "Count",
+   "readers": 6,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      2,
+      4,
+      6,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Line 3, rule 4, 'you changed your type of coverage during the year'",
+      "p. 4, Line 3, rules 3 and 4",
+      "p. 6, Line 3 Limitation Chart and Worksheet (twelve months of 2025, each counted on the first day of the month, December 1 among them)",
+      "p. 6, Line 3 Limitation Chart and Worksheet, the monthly amounts",
+      "p. 7, Line 6, Step 4, \"Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3\"",
+      "p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, \"1. $1,000 × number of months eligible ... 2. Divide line 1 by 12\"",
+      "pp. 2 and 6, Eligible Individual and the Line 3 Limitation Chart and Worksheet ('Were you an eligible individual ... on the first day of the month?')"
+     ],
+     "cols_pages": [
+      2,
+      4,
+      7
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "f8889.months_family": {
+   "subject_sha": "fe2ea6d61ca442e7d781dc6deb6bdcdd317270fd94633ab73d439bc8ba116295",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "549f26b1acfdaed95679f5a5b442cc5f632b00c765fbf31374c66bfc645fc6ba",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.047200000000000006,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.months_family.fe2ea6d61ca4.1.response.txt"
+    }
+   ],
+   "type": "Count",
+   "readers": 6,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, How To Complete Part I and Line 3 rule 1 (both eligible spouses are treated as having family coverage if either has a family HDHP); p. 6, Line 3 Limitation Chart and Worksheet, monthly coverage",
+      "p. 4, Line 3, rule 4, 'you changed your type of coverage during the year'",
+      "p. 5, Line 3, \"Note. If you are married and had family coverage at any time during the year\"",
+      "p. 6, Line 3 Limitation Chart and Worksheet (twelve months of 2025, each counted on the first day of the month, December 1 among them)",
+      "p. 6, Line 3 Limitation Chart and Worksheet, the monthly amounts",
+      "p. 7, Line 6, Step 1, \"Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage\"",
+      "p. 7, Line 6, Step 4, \"Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3\""
+     ],
+     "cols_pages": [
+      4,
+      5,
+      7
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "f8889.rollover": {
+   "subject_sha": "46a3ce4115ac3b0936d02e088e289e835b6477f3a76aa532f17fb8b7c05f55d3",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "3bde1218340921cd58f50b3cce99b1cd728ca8d40a70b25c56f1742a1895df17",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.0552,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.rollover.46a3ce4115ac.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      3,
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 14b, \"Include on line 14b any distributions your HSA made in 2025 that qualified as a rollover contribution to another HSA\"; p. 3, Rollovers, \"Generally, you must complete the rollover within 60 days after you received the distribution\", \"reinvested in another HSA of the same account beneficiary\" and \"An HSA can only receive one rollover contribution during a 1-year period.\""
+     ],
+     "cols_pages": [
+      3,
+      8
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    },
+    {
+     "doc": "f8889",
+     "revision": "2025; created 2025-03-28",
+     "text_sha256": "f1ae3589453f3dd1d5277a79409bd7d0bf4772715fa8bd11d58126e6f387c0cf",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8889 (2025), line 14b (withdrawals of excess contributions are refused by f8889.unsupported)",
+      "Form 8889 (2025), line 14b, \"Distributions included on line 14a that you rolled over to another HSA\"",
+      "Form 8889 (2025), line 14b, \"Distributions included on line 14a\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "85ba6183eb2c35cf7b6d63eb6fd515be7234f5f938da39d7d000a6a7f2359d4e"
+    }
+   ]
+  },
+  "f8889.subject_part": {
+   "subject_sha": "f69ea30d6da339225d559c64215d84dd590df14576bb203868dd68d4eb49beda",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer under 65 and not disabled reports on line 16 a taxable distribution from an HSA they inherited from a deceased account beneficiary, or a distribution made after the account beneficiary died; reading the question truthfully, they enter that amount as subject to the tax.",
+       "source_text": "i8889 p. 9: \"The additional 20% tax does not apply to distributions made after the account beneficiary: • Dies, • Becomes disabled or • Turns age 65.\"",
+       "why": "The question names only two exceptions, made before 'you' became disabled or turned 65. It leaves out the death exception and ties the test to the filer rather than the account beneficiary. Post-death distributions then flow into line 17b even though the 20% tax does not apply to them.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "33824b5da84b7d5f4199bff44703b481af2a765a5246ce555f3ab41fd1bfdab3",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.029588000000000003,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8889.subject_part.f69ea30d6da3.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Exceptions to the Additional 20% Tax",
+      "p. 9, Exceptions to the Additional 20% Tax, \"Enter on line 17b only 20% (0.20) of any amount included on line 16 that does not meet any of the exceptions\"",
+      "p. 9, Exceptions to the Additional 20% Tax, \"any amount included on line 16\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  }
+ }
+}

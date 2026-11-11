@@ -1823,10 +1823,10 @@ class CostLedger(unittest.TestCase):
             T.call_model("PUBLIC", "deepseek-flash", **kwargs)
 
     def test_every_review_kind_records_the_runs_year_and_jurisdiction(self):
-        for kind in ("transcription", "render", "classm", "completeness", "screen", "false_no", "tables"):
+        for kind in ("transcription", "render", "classm", "completeness", "screen", "false_no", "question", "tables"):
             self.call(kind=kind, subject="s")
         rows = self.rows()
-        self.assertEqual([r["kind"] for r in rows], ["transcription", "render", "classm", "completeness", "screen", "false_no", "tables"])
+        self.assertEqual([r["kind"] for r in rows], ["transcription", "render", "classm", "completeness", "screen", "false_no", "question", "tables"])
         for r in rows:
             self.assertEqual((r["year"], r["jurisdiction"]), (T.YEAR, T.jurisdiction.J))
             self.assertIsInstance(r["year"], int)
@@ -3158,6 +3158,15 @@ class GatedScreens(unittest.TestCase):
                          SR.screen_subject("div.pr", SR.screens(gated)["div.pr"], gated, {}))
         self.assertEqual(SR.screen_subject("div.pr", SR.screens(plain)["div.pr"], plain, {}),
                          __import__("hashlib").sha256(p_plain.encode()).hexdigest())
+
+    def test_the_prompt_shows_the_help_and_the_subject_ignores_it(self):
+        plain = _screen_lines(False)
+        gated = SR.screens(plain)["div.pr"]
+        before = SR.screen_subject("div.pr", gated, plain, {})
+        with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Outside scope?", "help": "Count foreign accounts too."}}):
+            prompt, _ = SR.prompt_for("div.pr", gated, plain, {})
+            self.assertIn("Help shown with it: Count foreign accounts too.", prompt)
+            self.assertEqual(SR.screen_subject("div.pr", gated, plain, {}), before)
 
     def test_a_review_recorded_before_the_gate_stays_current_and_a_reworded_screen_does_not(self):
         plain, gated = _screen_lines(False), _screen_lines(True)

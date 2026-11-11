@@ -1,0 +1,228 @@
+{
+ "form": "s1a",
+ "reviews": {
+  "s1a.carloan": {
+   "subject_sha": "81c0ed074b85c2cf3aeadf69c758c070d4b060a58396d855b4a1b9578d05da60",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "On a joint return, only the spouse took out and paid interest on a qualifying new-vehicle loan, so the filer truthfully answers no to 'Did you pay or accrue interest... on a loan taken out...'.",
+       "source_text": "i1040gi p. 109: \"You may be able to claim a deduction if you and/or your spouse paid or accrued qualified passenger vehicle loan interest\"; f1040s1a p. 2: \"Fill out Part IV only if you, or your spouse if married filing jointly, paid or accrued...\"",
+       "why": "The question asks only about 'you', but the lines need a yes when the spouse on a joint return paid or accrued QPVLI.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "The filer inherited a new vehicle and became the obligor on the deceased owner's post-2024 qualifying loan, then paid interest on it in 2025.",
+       "source_text": "i1040gi p. 109: \"If a loan met requirements 1 through 5 at the time it was originated by a previous obligor, and you became the obligor by reason of a previous obligor's death, interest paid by you on the loan is generally QPVLI\"",
+       "why": "The question asks about a loan the filer took out to buy the car, so a filer who took over an inherited loan answers no. The text still counts that interest as QPVLI.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "The filer expects to use the new vehicle mostly to commute and work as an employee, or expects family or household members to drive it most of the time, and so does not think it is 'for personal use'.",
+       "source_text": "i1040gi p. 109: \"Personal use means a use other than: • Use in any trade or business (except for the use in the trade or business of performing services as an employee)... used for personal use for more than 50% of the time by you and/or any combination of individuals with certain relationships to you\"",
+       "why": "The question and its help do not explain the technical meaning of personal use. Employee use and use by relatives or household members count as personal use, and the test is more than 50%, not exclusive use.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer bought a new car with a post-2024 loan for personal use, but the car's final assembly was outside the United States, or the loan is not secured by a first lien on it (for example, an unsecured personal loan), and the filer answers yes.",
+       "source_text": "Question: \"on a loan taken out after 2024 to buy a new car, minivan, van, SUV, pickup truck or motorcycle for personal use\"; i1040gi p. 109: \"The vehicle has undergone final assembly in the United States\" and \"Your loan is secured by a first lien on the purchased APV.\"",
+       "why": "The question leaves out several conditions the text requires: US final assembly, a first lien, gross vehicle weight rating under 14,000 pounds, manufacture for public roads, and a loan originated by the filer. A truthful yes can therefore open Part IV for interest that is not QPVLI.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f002dbab3fb4893920c46427b1e7e0e0e9a07e27a45d36bc451db191d1f3336d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.067596,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1a.carloan.81c0ed074b85.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      109
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 109, Schedule 1-A, Part IV, \"Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025\""
+     ],
+     "cols_pages": [
+      109
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1a",
+     "revision": "2025; created 2025-11-04",
+     "text_sha256": "9212bddf526545414e393e3e0d1e167b124f3753525e18b423716bf49a38bd16",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1-A (2025), line 23"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "7b00045023f5d062bee73f9176d9baf0e43f9744899b5fc6a36088fc4dbd9d4b"
+    }
+   ]
+  },
+  "s1a.overtime": {
+   "subject_sha": "ea75df0f32d5ff5d7d782d08a9d09a412745a85ec18dc1b9a37b6a74ac5f9ad9",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose only qualified overtime was reported on Form 1099-NEC box 1 or Form 1099-MISC box 3 truthfully answers no, which sets line 21 to zero even though line 14b should carry that overtime.",
+       "source_text": "i1040gi p. 106: \"You may be able to claim a deduction for qualified overtime compensation paid to you in 2025 and that is reported on Form W-2, Form 1099-NEC, or Form 1099-MISC.\"; f1040s1a line 14b: \"Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3\"",
+       "why": "The question limits itself to overtime received \"as an employee\" and sends 1099 overtime to Schedule C. But this answer alone gates Part III and line 21, and a false answer forces line 21 to zero.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "On a joint return where only the spouse received qualified overtime, the filer truthfully answers no to \"Did you receive overtime pay,\" so Part III is skipped.",
+       "source_text": "i1040gi p. 106: \"Fill out Schedule 1-A, Part III, only if: • You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025\"",
+       "why": "The question asks only about \"you\" and does not mention the spouse. The gate is met when either spouse received qualified overtime.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8ff6f92f59e7f5e80c02a160abba6e1be4cb004b8ed16ad0b1c7ede49a9c97ed",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06584799999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1a.overtime.ea75df0f32d5.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      106,
+      108
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 106, Schedule 1-A, Part III, \"Fill out Schedule 1-A, Part III, only if\"",
+      "p. 106, Schedule 1-A, Part III, \"Fill out Schedule 1-A, Part III, only if\"; p. 106, Part III No Tax on Overtime, \"If you are married, you must file a joint return with your spouse to claim this deduction\"",
+      "p. 108, Schedule 1-A, line 14b, \"Enter on Line 14b only the qualified overtime compensation amount that is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3\"; p. 106, \"Fill out Schedule 1-A, Part III, only if\""
+     ],
+     "cols_pages": [
+      106
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1a",
+     "revision": "2025; created 2025-11-04",
+     "text_sha256": "9212bddf526545414e393e3e0d1e167b124f3753525e18b423716bf49a38bd16",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1-A (2025), line 21; , \"Fill out Schedule 1-A, Part III, only if\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "7b00045023f5d062bee73f9176d9baf0e43f9744899b5fc6a36088fc4dbd9d4b"
+    }
+   ]
+  },
+  "s1a.tips": {
+   "subject_sha": "0bf80366d868e842c09aa74dade43649091f54df251df4007a40f6c8768c0a53",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose only qualified tips came from self-employment (for example, a rideshare driver or sole-proprietor tour guide paid through Form 1099-K) truthfully answers no, so line 13 is forced to zero even though Part II, line 5 should carry those tips.",
+       "source_text": "i1040gi p. 101: \"Fill out Schedule 1-A, Part II, only if: • You (and/or your spouse if filing a joint return) received qualified tips in 2025.\"; f1040s1a line 5: \"Qualified tips received in the course of a trade or business.\"",
+       "why": "The question asks only about tips received as an employee and sends non-employee tips to Schedule C. Line 13 and the Part II gate read only this answer, so trade-or-business tips on line 5 can never reach the deduction when there are no employee tips. Those tips can also come from Schedule E or F businesses, not only Schedule C.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "On a joint return where only the spouse received qualified employee tips, the filer may truthfully answer no to \"Did you receive tips\", which zeroes the deduction.",
+       "source_text": "i1040gi p. 101: \"You (and/or your spouse if filing a joint return) received qualified tips in 2025.\"; p. 104 line 4c: \"If you and/or your spouse received qualified tips as employees\"",
+       "why": "The question and its label say only \"you\" and never mention a spouse on a joint return. The gate needs a yes when either spouse received qualified tips.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "2f98438f2ef6c418359d441a92a74d6e7e29facb406e6d1ac468228fa8190055",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.08049200000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1a.tips.0bf80366d868.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      101,
+      102,
+      103,
+      104
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 101, Schedule 1-A, Part II, \"Fill out Schedule 1-A, Part II, only if\"; p. 101, Part II No Tax on Tips, \"If you are married, you must file a joint return with your spouse to claim this deduction\"",
+      "p. 104, Schedule 1-A, line 5, \"Include the qualified tips you and/or your spouse received in the course of a trade or business\"; p. 101, \"Fill out Schedule 1-A, Part II, only if\"",
+      "pp. 101-103, Schedule 1-A, Part II, \"Fill out Schedule 1-A, Part II, only if\""
+     ],
+     "cols_pages": [
+      101,
+      102,
+      103,
+      104
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1a",
+     "revision": "2025; created 2025-11-04",
+     "text_sha256": "9212bddf526545414e393e3e0d1e167b124f3753525e18b423716bf49a38bd16",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1-A (2025), line 13; , \"Fill out Schedule 1-A, Part II, only if\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "7b00045023f5d062bee73f9176d9baf0e43f9744899b5fc6a36088fc4dbd9d4b"
+    }
+   ]
+  }
+ }
+}

@@ -1,8 +1,7 @@
 # Question review: design for the owner's approval (phase 3, lane C)
 
-Status: proposal. Nothing here has run a model. The prototype `tools/transcription/question_review.py` builds and
-prices the prompts offline (`--dry-run`) and measures what the existing reviews cover (`--coverage`); it has no
-code path that calls a model.
+Status: approved by the owner on 2026-11-10 with the decisions of section 5 as recommended; built, and piloted on 40
+questions (section 6). The full pass waits for the owner's decision on the pilot's figures.
 
 ## 1. The problem, measured
 
@@ -150,8 +149,11 @@ screen and false-no reviews"):
 - Rulings are per sample, `unruled:<input>#<k>` in `reviews/<year>/questions/rulings.json` with `subject_sha`, and
   `samples.carried` handles mechanical carry. `rule.py` records severity.
 - `check_questions.py` is a check-all step (`jstep question_currency "--jurisdiction ny"`, beside
-  `screen_currency`). A unit whose subject changed is due: listed, not failed. An unruled sample fails. A record
-  whose input no longer exists is an orphan and fails. `--release` is added to `tools/release_reviews.sh`.
+  `screen_currency`). A unit whose subject changed is due: counted on the console and listed in
+  `reports/<year>/question_currency.md`, not failed. An unruled sample fails. A record whose input no longer exists
+  is an orphan and fails. `--release` is built but not called (decision 4). **Follow-up, once the first full pass is
+  ruled:** add `python3 tools/transcription/check_questions.py --release` and its `--jurisdiction ny` twin to
+  `tools/release_reviews.sh`.
 - Introducing it: when the check lands, all 606 units are due. Either the first release after it is gated on the
   full pass, or the step lists only until the first full pass has run (owner decision 4).
 - `review_yield.py` gains the `question` kind (KINDS, rulings path, the "Caught by" word "question review").
@@ -239,17 +241,30 @@ the full pass runs, whether the screen-judged questions stay in, and whether TYP
   `interview/<year>/questions.yaml` is one file shared by every lane. Its entries are per input, so concurrent
   lanes conflict only textually. Merging the lanes in sequence is enough; claims are not needed for it.
 
-## 3. The prototype
+## 3. The tool
 
-`tools/transcription/question_review.py` (self-test registered as `question_review_self_test` in
-`tools/self_tests.py`, listed under "Scripts run by hand" in `tools/README.md`):
-- `--coverage [--json PATH]`: the coverage table in section 1 and the mechanical type suspects.
-- `--dry-run [--inputs a,b] [--by-form] [--write-prompts DIR] [--json PATH]`: builds every prompt and prices it.
-  `--jurisdiction ny` does the same for New York.
-- Without either flag it refuses: the review is not approved to run.
+`tools/transcription/question_review.py` runs the review on the sampled-review machinery; `check_questions.py` is
+its standing check. Both have self-tests in `tools/self_tests.py`.
 
-Not built yet (after approval): the call path, records, `check_questions.py`, the release step, the yield kind, the
-structured subject, the size guard, and help in the screen review's prompt.
+- `question_review.py [--inputs a,b] [--samples K] [--force-rerun REASON] [--approve-cost DOLLARS] [--dry-run]`:
+  plans each selected question's samples against its records (`samples.wanted`), prices them (its own ledger fit,
+  else the screen review's), and runs them. The ledger kind is `question`.
+- `--measure [--by-form] [--write-prompts DIR] [--json PATH]` builds and prices every prompt whatever its records hold
+  (the cost tables of 2.5); `--coverage` is the coverage table of section 1. Neither calls a model.
+- Subject: the structured hash of 2.3 (`question_review.subject`): the question's line, its interview prompt, help and
+  citation, and each direct reader's line, how it reads the answer, and its English.
+- Size guard (decision 6): a question read by more than 20 lines lists its readers by label only and gets the pages of
+  its own citation (and the interview's). The six such questions now cost at most $0.22 each; the federal full pass
+  measures $40.37 (it was $41.33 with every reader's pages), New York $2.24.
+- TYPE is one verdict of the review (decision 5); the input `range` field is not built.
+- Screen help (decision 3): `screen_review.py` now shows the interview's help under the screen's question. The help is
+  not in the screen's subject (`screen_subject` builds the prompt without it, as it does without the gate condition),
+  so no screen became due: `check_screens.py` lists 0 due, federal and New York, after the change. Putting the help in
+  the subject would have made 49 of the 59 federal screens and all 6 New York screens due. The cost of this choice:
+  a change to a screen's help alone does not make its screen review due. It does make the question review of that
+  input due, since the question review's subject holds the help and it judges the screen questions too.
+- `review_yield.py` has the kind `question` (rulings in `reviews/<year>/questions/rulings.json`; "Caught by" word
+  "question review").
 
 ## 4. Limits of these measurements
 
@@ -263,6 +278,11 @@ structured subject, the size guard, and help in the screen review's prompt.
   not built.
 
 ## 5. Decisions for the owner
+
+Decided by the owner on 2026-11-10, each as recommended: (1) per question; (2) the 40-question pilot first, the full
+pass decided from its figures; (3) include the screen- and gate-judged questions, and add the help to the screen
+review's prompt, without making every screen due; (4) list due questions only, no release gate until the first full
+pass is ruled; (5) TYPE folded in, the `range` field a separate change; (6) the size guard. The questions as put:
 
 1. **Unit:** review each question on its own (606 prompts, about $43.57 for the first pass), or one prompt per
    form (about $11.40 federal), at the cost of whole-form re-review on every wording change and diluted attention?
@@ -281,3 +301,79 @@ structured subject, the size guard, and help in the screen review's prompt.
    route, f1095a uniform, Schedule A excluded income), list the readers by label only and give only the question's
    own cited pages, rather than every reader's pages (`f1040.status` alone would be a 450,000-character prompt)?
    Recommended: yes.
+
+## 6. The pilot (2026-11-10)
+
+**Sampling rule.** 40 questions in five strata, drawn from the `--measure` and `--coverage` tables of this tree with
+`random.Random(20261110)`. Within a stratum the pool is shuffled and taken at most one question per form until every
+form of the pool has one; stratum B first takes one question of each of the types Enum, Count and Dollars.
+- A: 13 federal Bool questions judged by no review: `dependent.tin`, `retirement.code_screen`, `person.tin`,
+  `f8962.married_in_2025`, `eic.same_home`, `f5695.qmid_doors`, `otjob.special_rule`, `scveh.suv`, `f8863.paid`,
+  `f8889.age55`, `refund.spouse_born`, `sales.aggregate_eligible`, `tipjob.qualified`.
+- B: 9 federal amounts, counts and choices judged by no review: `retirement.account`, `retirement.combined_age`,
+  `clcw.prior_11`, `dependent.edu_inst`, `f4952.prior_7`, `sb.ordinary_dividends`, `person.edu_mat`,
+  `f8889.subject_part`, `sc.meals_80`.
+- C: 10 federal questions judged only by the render review, each with help: `w2.box12_e`, `dependent.edu_line25`,
+  `f1095a.in_a_feb`, `f5695.line20a_i`, `person.edu_line25`, `household.home_cost`, `div.box13`,
+  `gift.public_securities`, `f2441.line14`, `ftc.all_passive`.
+- D: 5 federal Bool screens already judged by the screen review (the control): `scope.other_line16`,
+  `f5695.joint_occupancy`, `gift.special`, `refund.box8`, `sb.form5471`.
+- E: 3 New York questions judged by no review: `ny_it201.ask.special_code`, `ny_it201.ask.414h`,
+  `ny_it201.ask.itemize`.
+
+25 of the 40 (A, B, E) are never-judged questions. The dry runs estimated $2.41 federal and $0.15 New York, $2.56 in
+all, under the $3.00 gate without `--approve-cost`.
+
+**Cost.** 40 ledger rows of kind `question`, all `ok`: $2.19 (`.transcription/costs.jsonl`), $0.055 a question.
+
+**Verdicts.** MATCH 13, NARROW 11, WIDE 11, UNCLEAR 5, WRONG_FIGURE 0 (as a verdict), TYPE 0. 27 of 40 samples are
+not MATCH, with 43 findings: WIDE 22, NARROW 11, UNCLEAR 9, WRONG_FIGURE 1; 1.6 findings per non-MATCH sample and
+1.1 per sample (the screen review: 2.7 per sample).
+
+| Stratum | Samples | Not MATCH | Findings |
+|---|---|---|---|
+| A, never judged, Bool | 13 | 10 | 19 |
+| B, never judged, amounts and choices | 9 | 8 | 10 |
+| C, render-judged with help | 10 | 5 | 8 |
+| D, screen-judged (control) | 5 | 2 | 3 |
+| E, New York, never judged | 3 | 2 | 3 |
+
+**Not adjudicated.** The findings are not ruled, and no form changed. The read below is the building agent's quick
+read, not a ruling:
+- About 16 of the 43 look like real value-changing problems: for example `f8962.married_in_2025` omits the
+  Table 4 conditions (APTC paid, each spouse unmarried on January 1); `sb.ordinary_dividends`'s help tells the filer to
+  include nominee dividends while line 6 subtracts none; `tipjob.qualified` defines cash without the tokens (casino
+  chips) the text counts; `scveh.suv` drops the integral-enclosure condition of the third exception;
+  `ny_it201.ask.414h` asks only about "you" where a spouse's W-2 counts on a joint return; `f1095a.in_a_feb` asks for
+  "premiums you paid" where the line needs the enrollment premium including the APTC part.
+- About 19 look real but low: refusals worded wider than needed (`otjob.special_rule`, `gift.special`), gate wording
+  that only asks more questions (`f8863.paid`), and rare edges (USERRA make-up deferrals in `w2.box12_e`, DOT meals of
+  employees in `sc.meals_80`, a 1040-NR prior year in `clcw.prior_11`).
+- About 8 look like noise: situations refused elsewhere (married filing separately in `sb.form5471`,
+  `sb.ordinary_dividends` and `ny_it201.ask.itemize`), and misreadings of who the record is (`person.tin`'s ATIN
+  and dependent-student findings; `dependent.tin`'s pending-ITIN and student-due-date findings).
+
+**The control.** On the 5 screen-judged questions the review found 3 MATCH and 2 WIDE (`gift.special`,
+`sb.form5471`). Both WIDE findings match WIDE findings the screen review already found and its rulings accepted. The
+screen review found 11 findings on these 5; the question review found less and nothing new. This is weak evidence
+(5 samples) that the 69 screen- and gate-judged questions ($4.60) add little.
+
+**TYPE.** No TYPE finding, including on the two mechanical type suspects in the sample (`retirement.combined_age`,
+`clcw.prior_11`). The pilot says nothing yet about whether TYPE belongs in the same prompt.
+
+**Side finding.** 213 of the 581 questions of the full profile carry the same help text, "Married filing separately
+and unsupported items are refused with citations." It says nothing about the question. The UNCLEAR findings on
+`retirement.code_screen` and `otjob.special_rule` cite it. So the measure "440 of 563 carry help" in section 1
+overstates the help a filer gets.
+
+**Extrapolation.** If the strata rates held, a full pass would cost about $33 (606 × $0.055), and the never-judged
+questions would yield about 1.3 findings each. That is about 650 findings across about 410 non-MATCH samples to
+adjudicate, and about 240 of them might be value-changing at this read's rate. These figures come from 40 samples
+and one unruled read. An adjudicated subsample would firm them up before the full pass is approved.
+
+**How the records are kept.** The pilot's records are committed (`reviews/2025/questions/`,
+`reviews/ny/2025/questions/`). Their 27 unruled samples (25 federal, 2 New York) are held in the check's baseline
+(`rulings.json`, written by `check_questions.py --baseline`), so check-all stays green until they are adjudicated.
+Each baseline entry holds while its question's subject is unchanged. A change to a pilot question makes it due, and
+its baseline entry stale, which fails until the entry is removed. The full pass skips these 40 questions, since
+their subjects already have the milestone's sample.

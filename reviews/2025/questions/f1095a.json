@@ -1,0 +1,3042 @@
+{
+ "form": "f1095a",
+ "reviews": {
+  "f1095a.b_counted": {
+   "subject_sha": "fc16e574c5786d4b36b6346ec9c0efe249954a94891b17b79de3d10279e3daf7",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer married in December 2025, and the spouses (or members of their tax families) were enrolled in separate qualified health plans in the same state, so each Form 1095-A's column B must be added on line 11(b), but the question tells the filer to count only one form when another same-state form covers every month this one does.",
+       "source_text": "i8962 (2025) p. 15, Column (b): \"However, if you got married in December of 2025 and you and your spouse, or individuals in your and your spouse's tax family, were enrolled in separate qualified health plans, add the amounts from Form 1095-A, column B, for each plan (or plans) and enter the total.\"",
+       "why": "Following the one-form rule, the filer truthfully answers no for one spouse's form. The lines need both forms counted, so line 11(b) is understated.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Two Forms 1095-A from the same state partially overlap (one covers January–August, the other June–December), so neither covers every month of the other and the filer answers yes for both.",
+       "source_text": "i8962 (2025) p. 16, Column (b): \"If you have more than one Form 1095-A showing coverage in a particular month ... Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"",
+       "why": "The question says \"Count it unless another Form 1095-A from the same state ... shows coverage in every month this one does,\" so both forms count in full. The June–August column B amounts are then added twice on lines 17(b), 18(b) and onward. A single per-form yes/no cannot apply the per-month one-form rule.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "Two same-state Forms 1095-A cover exactly the same months, so each one is fully covered by the other.",
+       "source_text": "i8962 (2025) p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"",
+       "why": "The test \"another Form 1095-A from the same state, whose column B you count\" is circular. A filer could reasonably answer no for both forms (column B becomes zero) or yes for both (column B is doubled), and nothing tells them which single form to keep.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "53b85fac39eebda7134b8fa9a7b808e312af0adb5f07af9a00854612c72641ae",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.057940000000000005,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.b_counted.fc16e574c578.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      15,
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"",
+      "p. 16, Column (b), \"If you have more than one Form 1095-A showing coverage in a particular month, use the following rules to determine the amounts to enter on Form 8962, column (b), for that month.\", \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\""
+     ],
+     "cols_pages": [
+      15,
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  },
+  "f1095a.c_total": {
+   "subject_sha": "4f3314fa4bea6a55838f12693df434186611363d92454fcb65b727029a0a869f",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "d979f0d910dc796ae30807a127a620adc1fb461c61197e56d1d663a24fc1bacb",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.045796,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.c_total.4f3314fa4bea.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (f), \"If you have more than one Form 1095-A, add the amounts together and enter the total on Form 8962, line 11, column (f).\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_a_apr": {
+   "subject_sha": "affc7448a56b86449dbf0a184276549ddeb80bf34e29cc952938345e7cbca748",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "Column A for April shows -0- and the filer paid only part of April's premium by the return due date, not enough to avoid termination of coverage.",
+       "source_text": "i8962 (2025) p. 16: \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums for the month... If so, and the premiums for the month are not paid by the due date of your return (not including extensions), enter -0-\"",
+       "why": "The question says to give \"the premiums you paid\" and \"zero only if no premiums were paid for that month by that date,\" so a truthful filer enters the partial payment. The text replaces -0- only when the month's enrollment premiums are paid, so lines 15(a) and 11(a) need -0- for a partially paid month.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "Column A for April shows -0-, APTC was paid to the insurer for April, and the filer later paid their own share by the due date.",
+       "source_text": "i8962 (2025) p. 16: \"This amount is the total of your enrollment premiums for the month, including the portion paid by APTC... enter the enrollment premiums for the month on the appropriate line on Form 8962, column (a), even if your Form 1095-A shows -0-\"",
+       "why": "Column (a) needs the month's full enrollment premium, including the portion paid by APTC. The question asks for \"the premiums you paid,\" which a filer would read as their own out-of-pocket payment, so the amount reported understates column (a).",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "27ba9be23a19e31ce0b9cd46934f2d154b40c64e1918430a9c276088ebb1f3ff",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.069396,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_a_apr.affc7448a56b.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_a_aug": {
+   "subject_sha": "64f260642cd14fb86722b06d62f4391604b38d8b3cd22883ba72396efced9a12",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "Column A for August shows -0- and, by the return due date, the filer has paid only part of August's enrollment premium; the question has them enter that partial amount rather than zero.",
+       "source_text": "i8962 p. 16: \"If so, and the premiums for the month are not paid by the due date of your return (not including extensions), enter -0- ... If the enrollment premiums for the month are paid by the due date of your return ... enter the enrollment premiums for the month\"",
+       "why": "The text allows a nonzero entry only when the month's enrollment premiums are paid. The question asks for \"the premiums you paid\" and says \"zero only if no premiums were paid,\" so a partial payment becomes a nonzero amount where the text requires -0-.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "August shows -0- in column A, the filer later paid their own share of August's premium by the due date, and APTC covered the rest; a truthful answer gives the out-of-pocket amount, not the full monthly enrollment premium.",
+       "source_text": "i8962 p. 16: \"enter the enrollment premiums for the month ... This amount is the total of your enrollment premiums for the month, including the portion paid by APTC.\"",
+       "why": "The question asks for \"the premiums you paid,\" which is the filer's net payment. Line 19(a) and line 11(a) need the gross monthly enrollment premium, including the APTC-funded portion.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8e0a8acf0db7886bc52c22cbf9049d1e5554766f1d360538806adbca49853b1b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.068796,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_a_aug.64f260642cd1.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_a_dec": {
+   "subject_sha": "1050fb608d8fcb50fde7b0dca9ff8bbbe2de866b9c6f0720b8c616f59d8e93d9",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "Column A shows -0- for December and the filer later pays their own share of that month's premium by the return due date, while the rest of the enrollment premium was covered by APTC; the filer enters only the amount they personally paid.",
+       "source_text": "i8962 p. 16, Column (a): \"This amount is the total of your enrollment premiums for the month, including the portion paid by APTC.\" and \"If the enrollment premiums for the month are paid by the due date of your return ... enter the enrollment premiums for the month\"",
+       "why": "The question asks for \"the premiums you paid,\" so a truthful filer reports only their out-of-pocket amount. Column (a) needs the full enrollment premium for the month, including any part paid by APTC.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Column A shows -0- for December and the filer paid only part of that month's premium by the return due date; the question has them enter that partial amount.",
+       "source_text": "i8962 p. 16: \"You are not allowed a monthly credit amount for any month that the enrollment premiums for the month were not paid by the due date of your return ... If so, and the premiums for the month are not paid by the due date of your return ... enter -0-\"",
+       "why": "The question says \"zero only if no premiums were paid for that month by that date,\" so a partial payment produces a positive amount. The text allows a non-zero entry only when the month's enrollment premiums were paid, and otherwise requires -0-.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Column A shows -0- for December; the filer later pays the full monthly bill, which includes a portion for benefits that are not essential health benefits (or adult dental), and enters the whole payment.",
+       "source_text": "i1095a p. 2, Column A: \"Enter the total monthly enrollment premiums for the policy ... Include only the premiums allocable to essential health benefits.\"",
+       "why": "\"The premiums you paid\" takes in the full amount billed and paid. Column A enrollment premiums are limited to the part allocable to essential health benefits, plus pediatric dental.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "cfe7a29ce8bfba489b913ac17e1d447711ad572c6ff1b5c795cfec7fc0d41379",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.078676,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_a_dec.1050fb608d8f.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_a_feb": {
+   "subject_sha": "d890bbc46c08cdd59dfedb7ee2ab4868069991f05197066651fa3aa05198028d",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "February column A shows -0- because premiums were only partly paid, the shortfall was never cured by the return due date, and the filer still paid some amount; a truthful answer gives that partial amount instead of zero.",
+       "source_text": "i8962 p. 16: \"If so, and the premiums for the month are not paid by the due date of your return (not including extensions), enter -0- for the month\"; i1095a p. 2: \"For other months where the monthly premiums were not fully paid, enter a -0- for that month.\"",
+       "why": "The question says \"zero only if no premiums were paid for that month by that date\". A filer who made a partial payment would therefore enter a nonzero amount. The text requires -0- unless the month's enrollment premiums were paid in full by the return due date.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The policy on this Form 1095-A is shared with another tax family and the filer completes Part IV of Form 8962; a truthful answer gives the full column A amount, but only the allocated portion belongs on line 13(a).",
+       "source_text": "i8962 p. 16: \"If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e)\"",
+       "why": "The question asks for \"the amount in column A\" with no allocation step. The help does not list shared-policy allocation among the refusals, so the unallocated premium flows into line 13(a) and line 11(a).",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "Form 1095-A shows -0- in February column A, but the filer paid their share of February's premium by the return due date and APTC covered the rest; the filer reports only their out-of-pocket payment.",
+       "source_text": "i8962 p. 16: \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums for the month ... This amount is the total of your enrollment premiums for the month, including the portion paid by APTC.\"",
+       "why": "The question asks for \"the premiums you paid\", which a filer reads as their own payments. The lines need the full monthly enrollment premium for the policy, including the APTC-paid portion.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "657d0dc9d6a996c7d0be893ba2ba37432dedb4abe9b2a4a98f7b4adfa0cc722e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.076456,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_a_feb.d890bbc46c08.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_a_jan": {
+   "subject_sha": "950cde012902920cd257acac82ee8ce7bd343ed4cda3e26bb864a792527ebbba",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer completed Form 8962 Part IV (shared policy allocation) for this Form 1095-A, so column (a) needs only the allocated share of this policy's January premium, but the question asks for the raw column A amount.",
+       "source_text": "i8962 p. 16: \"If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e), to the monthly premiums for other policies that you did not allocate.\"",
+       "why": "Neither the question nor its help mentions the allocation percentage, and the only refusal named is married filing separately. A truthful filer enters the full column A amount where the lines need the allocated amount.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "The filer or a family member enrolled in the plan is not lawfully present in the United States, and Pub. 974 calls for a different column (a) amount.",
+       "source_text": "i8962 p. 16: \"If you or a family member isn't lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).\"",
+       "why": "The question always asks for the Form 1095-A column A figure and has no refusal or adjustment for this case.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Column A shows -0- for January and, by the return due date, the filer paid only part of that month's premium, so the coverage was still not kept from termination.",
+       "source_text": "Question: \"the premiums you paid\"; i8962 p. 16: \"If so, and the premiums for the month are not paid by the due date of your return (not including extensions), enter -0- for the month\"",
+       "why": "The text allows an amount only when the month's enrollment premiums are paid by the due date. The question's \"the premiums you paid\" brings in a partial payment where the lines need -0-.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "Column A shows -0- and the filer later paid the month's premiums by the return due date; the question asks for the amount the filer paid, but the lines need the month's full enrollment premium, including any portion paid by APTC.",
+       "source_text": "Question: \"the premiums you paid\"; i8962 p. 16: \"enter the enrollment premiums for the month on the appropriate line on Form 8962, column (a)\" and \"This amount is the total of your enrollment premiums for the month, including the portion paid by APTC.\"",
+       "why": "The filer's own out-of-pocket payment is a different figure from the month's total enrollment premium (the essential-health-benefits premium before APTC) that column (a) needs.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "0d1f869d2919fa063e832838287a52a571902e4284d4a2e9a5ce4719ce35980b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.08399599999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_a_jan.950cde012902.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_a_jul": {
+   "subject_sha": "57f257083b06688bd1835523f164b87d73aa6a36cd922c5b19a2b8b738a7601b",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "Column A shows -0- for July because the premium went unpaid, and the filer later pays their share before the return due date. The question tells them to enter only what they paid, but the line needs the full monthly enrollment premium, including the portion covered by APTC.",
+       "source_text": "i8962 p. 16: \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums for the month ... This amount is the total of your enrollment premiums for the month, including the portion paid by APTC.\"",
+       "why": "\"The premiums you paid\" leads the filer to report only their out-of-pocket payment. Form 8962 column (a) needs the whole enrollment premium for the month, which includes the APTC portion.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Column A shows -0- for July, and by the return due date the filer has paid only part of that month's premium, not enough to avoid termination. The question gives a nonzero amount, but the line needs -0-.",
+       "source_text": "i8962 p. 16: \"You are not allowed a monthly credit amount for any month that the enrollment premiums for the month were not paid by the due date of your return ... unless the amount of the premium paid for the month is sufficient to avoid termination ... enter -0- for the month\"",
+       "why": "The question says \"zero only if no premiums were paid for that month by that date,\" so a partial payment produces a positive amount. The text allows a nonzero entry only when the month's enrollment premiums are paid, not when some smaller amount is.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "d338b76d10969fcad0c3d812784b33fa2a409da1d84dd21a4f47950cbe1e4f8d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.076116,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_a_jul.57f257083b06.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_a_jun": {
+   "subject_sha": "09fd5fc7f48b6463f2d58ba5a3577160f7a558333c78819450b7f1dfc57bca55",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "Column A on the filer's Form 1095-A is zero, and the filer later paid the insurer an amount that includes premiums for benefits other than essential health benefits, such as adult dental or other non-EHB riders.",
+       "source_text": "i1095a p. 2, Column A: \"Include only the premiums allocable to essential health benefits.\" Question: \"if column A is blank or zero but you paid that month's enrollment premiums ... the premiums you paid\"",
+       "why": "Column A counts only premiums allocable to essential health benefits. Asking for \"the premiums you paid\" brings in the whole amount the filer paid, including non-EHB portions that column A and Form 8962 column (a) must leave out.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "Column A is zero for June because premiums were unpaid, and the filer then pays only their own share by the return due date, the rest being covered by APTC.",
+       "source_text": "i8962 p. 16: \"enter the enrollment premiums for the month ... This amount is the total of your enrollment premiums for the month, including the portion paid by APTC.\" Question: \"the premiums you paid\"",
+       "why": "The lines need the full monthly enrollment premium, including the portion paid by APTC. A filer reading \"the premiums you paid\" would enter only their out-of-pocket payment, which is a different and smaller figure.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "1c9854bb9f27a1e5924f9194a377a2166c3441d54ff21da5c42970031e8ba435",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.073056,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_a_jun.09fd5fc7f48b.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_a_mar": {
+   "subject_sha": "607094cb1eb1cf65fb2a81d438e5789278dfbe3fa21d7662474e41a989c008ba",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "Column A shows -0- for March because premiums were not fully paid, and by the return due date the filer has paid only part of March's premium, an amount too small to avoid termination.",
+       "source_text": "i8962 (2025) p. 16: \"If so, and the premiums for the month are not paid by the due date of your return (not including extensions), enter -0- for the month ... If the enrollment premiums for the month are paid by the due date of your return ... enter the enrollment premiums for the month\"",
+       "why": "The question tells the filer to enter 'the premiums you paid' and allows zero 'only if no premiums were paid'. A partial payment would therefore go on Form 8962 line 14(a) and into line 11(a). The text allows an amount only when that month's enrollment premiums are paid, and otherwise requires -0-.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "Column A is -0- for March, the filer pays the month's premium by the return due date, and part of the enrollment premium is APTC or another amount the filer did not pay personally.",
+       "source_text": "i8962 (2025) p. 16: \"enter the enrollment premiums for the month ... This amount is the total of your enrollment premiums for the month, including the portion paid by APTC.\" Question: \"the premiums you paid\"",
+       "why": "The lines need the month's total enrollment premium, including any portion paid by APTC. The question asks only for the amount the filer paid, which is the net out-of-pocket figure, not the gross premium.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "10e183267adb80efdfc257a14e8881775dcffdc79c8a47376339170446b31324",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.079656,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_a_mar.607094cb1eb1.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_a_may": {
+   "subject_sha": "c6d4af7eee51d5c249f2cafd5f0456b968ce7d91ca428d9d9d6deae913589e99",
+   "samples": [
+    {
+     "verdict": "WRONG_FIGURE",
+     "findings": [
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "Column A for May shows -0- because of nonpayment, and the filer later pays the May premium before the return due date. Asked for 'the premiums you paid', the filer enters only their own share and leaves out the portion covered by APTC.",
+       "source_text": "i8962 p. 16: \"If the enrollment premiums for the month are paid by the due date of your return ... enter the enrollment premiums for the month ... This amount is the total of your enrollment premiums for the month, including the portion paid by APTC.\"; i1095a p. 2, Column A: \"Include only the premiums allocable to essential health benefits.\"",
+       "why": "Lines 16(a) and 11(a) need the month's full enrollment premium, including the APTC portion and limited to essential health benefits. The question asks for the amount the filer paid, which is their net out-of-pocket payment and is a different figure.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a058bef022b44f88cd70fe869805757d66b26a31f2da18cde4ca5f54ed93785b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.07444799999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_a_may.c6d4af7eee51.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_a_nov": {
+   "subject_sha": "254dcac2b71f4467f4cc7e83b4e83ec552c1bc68063d7ef6ab954b3bc45108b9",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "Column A shows -0- for November and the filer paid only part of that month's premiums by the return due date, so the full premium was never paid.",
+       "source_text": "i8962 (2025) p. 16: \"If so, and the premiums for the month are not paid by the due date of your return (not including extensions), enter -0- for the month ... If the enrollment premiums for the month are paid by the due date of your return ... enter the enrollment premiums for the month\"",
+       "why": "The question says \"zero only if no premiums were paid for that month by that date\", so a filer who paid part of the premium enters that partial amount. The text allows an entry only when the month's enrollment premiums were paid; otherwise column (a) must be -0-.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "Column A shows -0- for November because of nonpayment, the filer later pays by the return due date, and APTC covered part of the premium.",
+       "source_text": "i8962 (2025) p. 16: \"This amount is the total of your enrollment premiums for the month, including the portion paid by APTC.\" and \"enter the enrollment premiums for the month on the appropriate line on Form 8962, column (a), even if your Form 1095-A shows -0-\"",
+       "why": "The question asks for \"the premiums you paid\", which a filer reads as their own out-of-pocket payment. Line 22(a) and line 11(a) need the full monthly enrollment premium, gross of APTC.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ac1b5f0fac5cbf59987f28c5fa9f3ae9aece2c45832f15528f8cd5d43148956c",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.071136,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_a_nov.254dcac2b71f.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_a_oct": {
+   "subject_sha": "97b6136e5ece82252337fd50418db648661b21de2de84a036425a9789f0d1b99",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer who completed Form 8962 Part IV to allocate this policy with another taxpayer needs only the allocated share of column A for October, but the question asks for the full column A amount.",
+       "source_text": "i8962 (2025) p. 16, Column (a): \"If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e), to the monthly premiums for other policies that you did not allocate.\"",
+       "why": "The question and its help never mention the Part IV allocation, and the help refuses only married filing separately and unspecified 'unsupported items'. A truthful filer therefore reports 100% of column A, and line 21(a) needs only the allocated percentage.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer or family member who is not lawfully present in the United States and is enrolled in this policy must figure column (a) under Pub. 974, not from column A as shown.",
+       "source_text": "i8962 (2025) p. 16: \"If you or a family member isn't lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).\"",
+       "why": "The wording takes the column A amount as shown with no exception for this case, so the filer gives the unadjusted amount where the line needs the Pub. 974 figure.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "Column A shows -0- for October, the filer later paid that month's premiums by the return due date, and part of the premium was covered by APTC.",
+       "source_text": "Question: \"if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return ... the premiums you paid\"; i8962 (2025) p. 16: \"enter the enrollment premiums for the month ... This amount is the total of your enrollment premiums for the month, including the portion paid by APTC.\"",
+       "why": "\"The premiums you paid\" leads the filer to enter their out-of-pocket share. The line needs the full monthly enrollment premium, which includes the portion paid by APTC.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "69b0a3918ac737d3708a98d4c5d245999858c2de1dc193a972eed2a0f449163b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.076916,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_a_oct.97b6136e5ece.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_a_sep": {
+   "subject_sha": "27a6e04f62ea88c123d82420155bf797e892d45ded32d0b080ad3e883d30331b",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "Column A shows -0- because the filer paid only part of September's premium, too little to avoid termination, and the filer had not paid the rest by the return due date; the filer enters the partial amount paid.",
+       "source_text": "i8962 (2025) p. 16: \"If so, and the premiums for the month are not paid by the due date of your return (not including extensions), enter -0- for the month on the appropriate line on Form 8962, column (a).\"",
+       "why": "The question says \"the premiums you paid; zero only if no premiums were paid for that month by that date\". A partial payment therefore produces a positive amount where the text requires -0-, and a credit the text disallows.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer shares the September policy with another tax filer and completed Part IV; the filer enters the whole column A amount instead of the share allocated to them.",
+       "source_text": "i8962 (2025) p. 16: \"If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e)\"",
+       "why": "The question asks for \"the amount in column A\" with no allocation, and the help does not say that Part IV allocation is refused. Line 20(a) therefore receives the full policy premium rather than the allocated portion.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "Column A shows -0- and the filer later paid their own share of September's premium before the return due date; they enter that out-of-pocket amount.",
+       "source_text": "i8962 (2025) p. 16: \"enter the enrollment premiums for the month ... even if your Form 1095-A shows -0-\"; \"This amount is the total of your enrollment premiums for the month, including the portion paid by APTC.\"",
+       "why": "The question asks for \"the premiums you paid\", which is the filer's own payment. The line needs the month's full enrollment premium, including the portion paid by APTC.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f33e31aa40d94a752b054ff72c30357aa322895cbf85c21307bc8a0ab7ca593e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.07303599999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_a_sep.27a6e04f62ea.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_b_apr": {
+   "subject_sha": "2a9e4a2a245e9f3346d0a3f0c15c8602e52df86a449576ffb1f74a01c402768a",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "April was the first month of a grace period: APTC was paid, but the filer did not pay April's premium by the return due date, and the Marketplace reported an SLCSP premium for April.",
+       "source_text": "i1095a p. 3, Column B: \"In a month where premiums are not fully paid and advance credit payments are made, you must report the SLCSP premium that would apply as if the enrollment premiums had been paid in full for the following situations. • It is the first month of a grace period for the enrollees.\"",
+       "why": "The question tells the filer to enter zero whenever 'that month's premiums were not paid by the due date of your return', with no exception. The text keeps the SLCSP premium for the first grace-period month, so the lines need the column B amount where the filer would enter zero.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Everyone on the policy enrolled after April 1 (not by birth, adoption, foster placement or court order), so the Marketplace correctly entered -0- in column B, and the filer paid April's premium.",
+       "source_text": "i1095a p. 2, Column B: \"If all covered individuals enroll after the first of the month, and no individual's coverage is effective on the date of the individual's birth, adoption, placement in foster care, or on the effective date of a court order, enter -0- in column B for that month.\"",
+       "why": "The question tells the filer to replace a column B zero 'for a month whose premiums were paid by the due date' with an amount from the Marketplace tool. The filer would bring in an SLCSP premium for a month whose correct value is zero.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "360de113e2fb0bee01cca48c0c164bb4243c3b2cf36b5c9a7fba8900fcbf30a4",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09954,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_b_apr.2a9e4a2a245e.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.in_b_aug": {
+   "subject_sha": "487bd1cbbf67b9ee31c203d952b6ce17cd25992e6f6f476b8ce18254449df72a",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "August is the first month of a grace period, or the premium payment threshold was met, or a state order kept coverage in force, and the filer did not pay that month's premium in full by the return due date.",
+       "source_text": "i1095a p. 3, Column B: \"In a month where premiums are not fully paid and advance credit payments are made, you must report the SLCSP premium that would apply as if the enrollment premiums had been paid in full for the following situations. • It is the first month of a grace period for the enrollees. • The monthly premium payment threshold has been met ... • A state department of insurance has issued an order prohibiting the issuer from terminating coverage\"",
+       "why": "The question tells the filer to enter zero whenever that month's premiums were not paid by the due date. It gives no exception for these months, so the filer enters zero where the lines need the SLCSP premium.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "Column B shows -0- for a month whose premiums were paid on time, and the filer reads the phrase \"or zero for a month whose premiums were paid by the due date of your return\" as an instruction to enter zero.",
+       "source_text": "Question: \"the correct applicable SLCSP premium if column B is blank, wrong (...), or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool ...)\"; i8962 p. 14: \"the SLCSP premium reported in Part III ... column B ... may be wrong, left blank, or reported as -0-. To determine your applicable SLCSP premium for each month, see Pub. 974\"",
+       "why": "\"or zero for a month whose premiums were paid\" can be read as a third answer choice (enter zero) rather than a third reason to look up the correct premium. The two readings give zero versus the correct SLCSP premium.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5c4f4d852d18b99ede6acf3c8de839d49017d3eaa3bc2859d457d0a0c42c42f7",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09542,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_b_aug.487bd1cbbf67.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.in_b_dec": {
+   "subject_sha": "0cc43b22c9eb1a428b0e91eb204b9f181d20361410d5a419c500b4cb51ffe8e7",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "Everyone on the policy enrolled after December 1 (for example, coverage effective December 15, not a birth or adoption date), so the Marketplace correctly put -0- in column B; the premiums were paid, so the filer replaces the zero with an SLCSP amount.",
+       "source_text": "i1095a p. 3 (spans p. 2–3), Column B: \"If all covered individuals enroll after the first of the month, and no individual's coverage is effective on the date of the individual's birth, adoption, placement in foster care, or on the effective date of a court order, enter -0- in column B for that month.\"",
+       "why": "The question tells the filer to give the correct premium instead of column B whenever column B is 'zero for a month whose premiums were paid'. Its zero rule only covers a blank column A, and column A here is filled. So a truthful filer enters a positive SLCSP for a month the lines need as zero.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose December premiums were paid reads 'or zero for a month whose premiums were paid by the due date of your return' as an instruction to enter zero, not as a third case where column B needs replacing.",
+       "source_text": "i8962 p. 14: \"the SLCSP premium reported in Part III, lines 21 through 32, column B, of Form 1095-A may be wrong, left blank, or reported as -0-.\"",
+       "why": "In the question, 'zero for a month...' comes right after a long parenthetical and repeats the form of the later 'zero if...' clause. A filer could read it either as 'column B shows zero' or 'enter zero'. The two readings give zero versus the correct SLCSP premium for a paid month.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c8ade3704dcc118f4dcddb74c318f7895da663f0d2c47906e075679ca606b03a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09104000000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_b_dec.0cc43b22c9eb.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.in_b_feb": {
+   "subject_sha": "63d2d0c0100495b06e3fc0193dfccf07490eff6d3c85e09ef45edb1bd2f60bcd",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "Column B on the Form 1095-A shows -0- for February, the filer paid February's premiums on time, and the correct SLCSP from the Marketplace tool is a positive amount; the filer could enter either 0 or the tool's amount depending on how they read the question.",
+       "source_text": "p974 p. 27: 'If you did not request financial assistance (APTC) and the Marketplace has an applicable SLCSP premium tool ... Part III, column B, will report -0- or be blank ... you will need to determine the SLCSP premium that applies to your coverage family for each month of coverage.'; i8962 p. 14: 'may be wrong, left blank, or reported as -0-'",
+       "why": "The question says 'or the correct applicable SLCSP premium if column B is blank, wrong ..., or zero for a month whose premiums were paid by the due date of your return'. A filer can read the last part as a further condition for looking up the correct premium. A filer can also read it as an instruction to enter zero, which would wrongly zero out a covered, paid month that the line needs at the tool's SLCSP amount.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "4a80d73f59381b82e00d29d9e34b0d8f8be9cf0e0dab992b104b2415322d415e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.08972,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_b_feb.63d2d0c01004.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.in_b_jan": {
+   "subject_sha": "84804038a41f3ccdab5fffb69a8ba87ccdba95c7a3ec5c13f452289386038b5b",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose January column B shows a correct, nonzero SLCSP premium and whose January premiums were paid on time reads the clause 'or zero for a month whose premiums were paid by the due date of your return' as telling them to enter zero for that month.",
+       "source_text": "i1095a p. 2, Column B: 'Enter the premiums for the applicable second lowest cost silver plan (SLCSP) that was used as a benchmark to compute monthly advance credit payments.'; i8962 p. 14: 'you must determine the correct applicable SLCSP premium for every month.'",
+       "why": "The question says 'the correct applicable SLCSP premium if column B is blank, wrong (...), or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool ...)'. This can be read two ways. In one reading, a zero column B for a paid month triggers a lookup with the Marketplace tool. In the other, the filer enters zero for a month whose premiums were paid. The second reading puts zero on line 12(b) and line 11(b) where the lines need the full applicable SLCSP premium.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "1a07df2f50d20ac4c1d8f1d70c61a1277b1f2915d5fa3ea71cc0d21ebbbcd89b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09204,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_b_jan.84804038a41f.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.in_b_jul": {
+   "subject_sha": "d1607060485c745d419e78f7db4654fadf547bc2d67babdb76da6e1c1e1022c6",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "July was the first month of a grace period: APTC was paid, the filer never paid July's premium, and the coverage was later ended for nonpayment.",
+       "source_text": "i1095a p. 3, Column B: \"In a month where premiums are not fully paid and advance credit payments are made, you must report the SLCSP premium that would apply as if the enrollment premiums had been paid in full for the following situations. • It is the first month of a grace period for the enrollees.\"",
+       "why": "The question tells the filer to enter zero whenever that month's premiums were not paid by the return due date. The first month of a grace period still carries the SLCSP amount, and the APTC paid for it is reconciled, so lines 18(b) and 11(b) need the column B amount, not zero. The same applies to the other listed exceptions: the payment threshold was met, or a state order barred termination.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose Form 1095-A column B shows an amount for July, and who paid July's premiums on time, reads the list of exceptions.",
+       "source_text": "Question: \"or the correct applicable SLCSP premium if column B is blank, wrong (...), or zero for a month whose premiums were paid by the due date of your return\"; i8962 p. 14: \"the SLCSP premium reported ... column B ... may be wrong, left blank, or reported as -0-.\"",
+       "why": "The clause \"or zero for a month whose premiums were paid\" can be read as an instruction to enter zero for paid months, instead of as the case where column B shows -0- and the filer should look up the correct premium. Under the first reading, a filer would enter zero where the lines need the SLCSP premium.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "7789549ae85f64188ba9ceb00ffd6bb53b352604740c49638a70b393c045ba36",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.10544,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_b_jul.d1607060485c.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.in_b_jun": {
+   "subject_sha": "758a6596073d6ab157f2ebbc0c3f34bca11ff9668208efaab2fbb7a08e059188",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "June is the first month of a grace period: APTC was paid, but the filer never paid the enrollment premium. The Form 1095-A still reports an SLCSP premium in column B for that month, yet the question tells the filer to enter zero.",
+       "source_text": "i1095a p. 3: \"In a month where premiums are not fully paid and advance credit payments are made, you must report the SLCSP premium that would apply as if the enrollment premiums had been paid in full for the following situations. • It is the first month of a grace period for the enrollees. • The monthly premium payment threshold has been met and a qualified health plan provides coverage. • A state department of insurance has issued an order prohibiting the issuer from terminating coverage...\"",
+       "why": "The question says zero 'if that month's premiums were not paid by the due date of your return' with no exception. A filer in the first grace-period month, under the payment-threshold rule or under an emergency order would therefore enter zero. The lines need the reported SLCSP premium for those months.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Everyone on the policy enrolled after June 1, not because of a birth, adoption, foster placement or court order. Column B correctly shows -0-, but the question tells the filer to look up a tool amount because column B is 'zero for a month whose premiums were paid'.",
+       "source_text": "i1095a p. 2: \"If all covered individuals enroll after the first of the month, and no individual's coverage is effective on the date of the individual's birth, adoption, placement in foster care, or on the effective date of a court order, enter -0- in column B for that month.\" Question: \"or the correct applicable SLCSP premium if column B is ... zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool...)\"",
+       "why": "The question treats any zero in column B for a paid month as missing and has the filer replace it with a looked-up premium. A correct zero, such as one for mid-month enrollment or for eligibility for other coverage, can then be replaced by a positive SLCSP amount that line 17b and line 11b must not include.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f070ddcfcf49761252c91106edfa6ad431770ee880ff9ef98a3e5ae56db861a9",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.10346,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_b_jun.758a6596073d.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.in_b_mar": {
+   "subject_sha": "ce65d7d1f92d74b82ff07b1459a07ad59b47003ca62116084d95514e93c83dda",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "APTC was paid and March was the first month of a grace period, so the March premium was never fully paid, including by the return due date; Form 1095-A column B shows the SLCSP premium, but the question tells the filer to enter zero.",
+       "source_text": "i1095a p. 3: \"In a month where premiums are not fully paid and advance credit payments are made, you must report the SLCSP premium that would apply as if the enrollment premiums had been paid in full for the following situations. • It is the first month of a grace period for the enrollees.\"",
+       "why": "The question's blanket rule of zero 'if that month's premiums were not paid by the due date of your return' overrides the column B amount the text requires for the first grace-period month. The monthly SLCSP figure on line 14(b) and the line 11(b) total would then be understated.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose March column B shows a correct SLCSP premium and whose premiums were paid on time could read the question as telling them to enter zero.",
+       "source_text": "Question: \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong (...), or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool ...)\"; i1095a p. 2-3 Column B: \"Enter the premiums for the applicable second lowest cost silver plan (SLCSP)...\"",
+       "why": "The phrase 'or zero for a month whose premiums were paid' can be read as a third alternative answer ('enter zero') rather than as a third case in which column B must be replaced. One reading gives the SLCSP premium and the other gives zero.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "01e271f6b29666ddfe66a8ffc45a3301561cad3bbc67992b822460f393424e38",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09392,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_b_mar.ce65d7d1f92d.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.in_b_may": {
+   "subject_sha": "977f990c4450deb9f9fbc1a30a834e1a8bfa47feca3f38c4cfbe35fedba16f53",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "In May the filer was in the first month of a grace period: APTC was paid, but the May premium was never paid, even by the return due date.",
+       "source_text": "i1095a p. 3, Column B: \"In a month where premiums are not fully paid and advance credit payments are made, you must report the SLCSP premium that would apply as if the enrollment premiums had been paid in full ... It is the first month of a grace period for the enrollees.\" (same for 'monthly premium payment threshold has been met' and a state insurance order during a declared emergency)",
+       "why": "The question says to enter zero whenever that month's premiums were not paid by the return due date. That leaves out the grace-period, payment-threshold and emergency-order cases, where column B carries the full applicable SLCSP premium. A truthful filer would enter $0 where the lines need the SLCSP amount.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Family members in the same state were split across two policies, each with its own Form 1095-A, and both forms show the same family-wide SLCSP in column B for May.",
+       "source_text": "i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"; i1095a p. 2: \"Enter this SLCSP premium in column B on each Form 1095-A.\"",
+       "why": "The question asks, for each Form 1095-A, for 'the amount in column B'. So the same family-wide SLCSP is entered once per form. Unless the combination keeps only one form's amount for same-state policies, line 16(b) and line 11(b) count the benchmark twice. The question gives no instruction to enter it on only one form.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "Column B shows $0 for May even though the filer paid May's premiums on time.",
+       "source_text": "Question: \"or the correct applicable SLCSP premium if column B is blank, wrong (...), or zero for a month whose premiums were paid by the due date of your return\"; p974 p. 27: \"the Marketplace will not report an applicable SLCSP premium (Part III, column B, will report -0- or be blank)\"",
+       "why": "The phrase 'or zero for a month whose premiums were paid' can be read as telling the filer to enter zero for such a month. The intended reading is that a zero in column B for a paid month must be replaced with the correct SLCSP from the Marketplace tool. The two readings give $0 versus the actual benchmark premium.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "d60845308011947663fdd03e1129ddb22baae2de834c7b899e699e832f2a8b05",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.098752,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_b_may.977f990c4450.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.in_b_nov": {
+   "subject_sha": "a9d65f8ea8032ac1d9f634ce0de7e23d604e5d2248313033a3a159b6f5f88650",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "November 2025 was the first month of a grace period: APTC was paid and the filer never paid that month's own premium, so it was still unpaid by the return due date.",
+       "source_text": "i1095a (2025) p. 3, Column B: \"In a month where premiums are not fully paid and advance credit payments are made, you must report the SLCSP premium that would apply as if the enrollment premiums had been paid in full for the following situations. • It is the first month of a grace period for the enrollees. • The monthly premium payment threshold has been met...\"",
+       "why": "The question tells the filer to enter zero whenever that month's premiums were not paid by the return due date. It does not carve out the first grace-period month, the payment-threshold month or the emergency-order month, where the SLCSP premium is still required.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Everyone on the policy was enrolled after November 1 (and not from a birth, adoption, foster placement or court-order date), so column B correctly shows -0- even though column A shows a premium that was paid.",
+       "source_text": "i1095a (2025) p. 2, Column B: \"If all covered individuals enroll after the first of the month, and no individual's coverage is effective on the date of the individual's birth, adoption, placement in foster care, or on the effective date of a court order, enter -0- in column B for that month.\" Question: \"the correct applicable SLCSP premium if column B is ... zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool...)\"",
+       "why": "The question treats a zero in column B for a paid month as something to replace with a figure from the tool. A filer would then enter an SLCSP premium for a month the lines must carry as zero, and that amount also flows into the line 33B/11(b) annual total.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "Column B shows a zero for November, and that month's premiums were paid on time.",
+       "source_text": "Question: \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong (...), or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool...)\"; i8962 (2025) p. 14: \"the SLCSP premium reported in Part III, lines 21 through 32, column B, of Form 1095-A may be wrong, left blank, or reported as -0-.\"",
+       "why": "The clause \"or zero for a month whose premiums were paid\" can be read as a third answer (enter zero) rather than a third condition for looking up the correct SLCSP premium. Under the first reading the filer enters 0 instead of the SLCSP premium the line needs.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "d0d4e0aa005d262999d1eb3885a6c0df49c9c5a5303ccaaf564889656dd216ff",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.11346,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_b_nov.a9d65f8ea803.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.in_b_oct": {
+   "subject_sha": "d87325d702d38a01e7eae7084c85ac6b74eabf1c8060baa05e76bb0425e5ff1d",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "Members of the coverage family are enrolled in two policies in the same state. Each Form 1095-A then shows the same family-wide SLCSP in column B, and the filer truthfully enters that full amount for October on each form.",
+       "source_text": "i8962 p. 15, Column (b): 'The Marketplace should have entered the same SLCSP premium, which applies to all members of your coverage family, on each Form 1095-A. Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.'; i1095a p. 2, Column B: 'Enter this SLCSP premium in column B on each Form 1095-A.'",
+       "why": "The question asks per form for 'the amount in column B' and does not tell the filer to enter it on only one form. Line 21(b) and line 11(b) would double-count the SLCSP unless something not shown here deduplicates it. Neither the help text nor the gate refuses this situation.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "October premiums were paid on time and column B on the form shows -0-, for example because no APTC was requested.",
+       "source_text": "Question: 'the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong (...), or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool ...)'; i8962 p. 14: 'the SLCSP premium reported in Part III, lines 21 through 32, column B, of Form 1095-A may be wrong, left blank, or reported as -0-. To determine your applicable SLCSP premium for each month, see Pub. 974'",
+       "why": "The phrase 'or zero for a month whose premiums were paid' can be read as an instruction to enter zero for paid months, rather than as a third case (column B shows zero) that calls for the corrected premium. The first reading gives $0 where the lines need the actual applicable SLCSP premium.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "46f29769fe0a776c707df5b5301fa86f72319e591b54eabe7ce65995cb9c47fe",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09208,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_b_oct.d87325d702d3.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.in_b_sep": {
+   "subject_sha": "496855c79bd35caf7b6824daa512feba0aac8cfb118678b9456862f5b87a4ffe",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "Column B shows -0- for September, but the filer paid that month's premium on time and was enrolled with no APTC (or the Marketplace simply left the SLCSP out), and the filer reads the clause as telling them to enter zero.",
+       "source_text": "i8962 (2025) p. 14: \"If no APTC was paid for your or your family member's coverage, the SLCSP premium reported in Part III, lines 21 through 32, column B, of Form 1095-A may be wrong, left blank, or reported as -0-. To determine your applicable SLCSP premium for each month, see Pub. 974 or ... go to HealthCare.gov/Tax-Tool/\"",
+       "why": "The question says \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong (...), or zero for a month whose premiums were paid by the due date of your return\". An ordinary filer can read \"or zero for a month whose premiums were paid\" as an instruction to enter zero, not as a third case where they must look up the correct premium. That reading would put $0 on line 20(b) or 11(b), where the lines need the applicable SLCSP premium.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ec44b3139faac5c473eaefd6457e84568565959d31359ad6b4a46dfe864a6971",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.084,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_b_sep.496855c79bd3.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.in_c_apr": {
+   "subject_sha": "f011889b85a68ab91d107ec2020bf9b5c0f50828b7925a475c4bd4b6958d42b9",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who shares a policy with another taxpayer (for example, divorced or separated during 2025, or a policy covering someone in another tax family) must complete Form 8962 Part IV, yet the question takes the full April column C amount shown on the Form 1095-A.",
+       "source_text": "i8962 (2025) p. 17, Column (f): \"If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g)\"",
+       "why": "The question asks for the column C amount 'for this Form 1095-A' and its help refuses only married filing separately. In a Part IV shared-policy allocation that is not MFS, line 15(f) and line 11(f) would therefore take the whole policy APTC instead of the share allocated to the filer.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "01b413d6a9d2229bd0f65ffed3c8385291aa5e4152e895e2c5ded067fd6856ac",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.056,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_c_apr.f011889b85a6.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Column (f), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (f).\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_c_aug": {
+   "subject_sha": "1717c6f88b1f21704e26324696c25bdcf3182d2770d848a64b69bb07c4b7a85c",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who is not married filing separately shares a Marketplace policy with another taxpayer, for example after a divorce or because a former dependent files their own return, and so must allocate the policy under Part IV; the full August column C from that 1095-A then flows into line 19(f).",
+       "source_text": "i8962 p. 17, Column (f): \"If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g)\"",
+       "why": "The question asks for the raw 'August 2025, column C' from the 1095-A, and line 19(f) adds it unchanged, so the other taxpayer's allocated share is counted on this return. The help's refusals name only married filing separately and an unspecified 'unsupported items', so a filer who is not MFS and must allocate is not clearly refused.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "e6411897a039c9db6cb553f6deba858c14344fd3a25a520d0496f4318aae9eaf",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.05334,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_c_aug.1717c6f88b1f.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Column (f), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (f).\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_c_dec": {
+   "subject_sha": "3d6235b4c72fa6ba3be812534021054b550982bffb16e4067c3e969ca0048fea",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer not filing married filing separately completes Form 8962 Part IV for a Form 1095-A policy shared with another tax family (for example, after a divorce or a marriage, or because a dependent is claimed by someone else), and enters the full December column C amount printed on that Form 1095-A.",
+       "source_text": "i8962 p. 17, Column (f): \"If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g)\"",
+       "why": "The question asks for the column C amount as shown on the form (\"December 2025, column C ... zero if blank\"), and line 23(f) adds that amount unchanged across entries. When Part IV allocation applies, line 23(f) needs only the allocated share, and the help refuses only married filing separately, not other shared-policy allocations.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "606929e6e9093cc59cf590e3b000fe43a7209162cb66826f7f4c311170975ad0",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.0513,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_c_dec.3d6235b4c72f.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Column (f), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (f).\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_c_feb": {
+   "subject_sha": "97ccb54827a934f29ed6a7725d6ed3c93bd62107644b1cc29f3cf73aa91ec7bd",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer shares a Form 1095-A policy with another tax family (for example, a divorced or separated spouse, or a policy shared with another taxpayer) and allocates the APTC in Form 8962 Part IV. A truthful answer gives the full February column C amount, and line 13(f) adds all of it, but only the filer's allocated share belongs there.",
+       "source_text": "i8962 p. 17, Column (f): \"If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g)\"",
+       "why": "The question asks for 'February 2025, column C (monthly advance payment of premium tax credit)' as printed. Line 13(f), and through the annual total line 11(f), add that raw figure across forms with no allocation percentage applied, so the unallocated share is overstated. The listed refusals cover married filing separately and 'unsupported items' but do not say that shared-policy allocation is refused.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ba68fda7640e267867d82c61073039d4cf0fc6d9f2b6375c0958b6fd320755b1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.055540000000000006,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_c_feb.97ccb54827a9.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Column (f), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (f).\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_c_jan": {
+   "subject_sha": "49fe29c9b5b46e1bedf35125bcc2acf152d98b47fd0328c3788942a7d0b92408",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer (not married filing separately) shares a policy with another tax family, for example after a 2025 divorce or legal separation, or because an enrolled individual is claimed by another taxpayer, so they must complete Form 8962 Part IV. Answering truthfully, they give the full January column C amount from the Form 1095-A, and that full amount goes into line 12(f).",
+       "source_text": "i8962 2025 p. 17, Column (f): \"If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g)\"",
+       "why": "Line 12(f) needs only the allocated share of column C when Part IV applies, but the question asks for the column C amount as printed and applies no allocation percentage. The help refuses married filing separately and 'unsupported items' in general, but it does not name shared-policy allocation, so non-MFS Part IV filers are not clearly screened out.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c2f868ccf4a1b475a45379a8706f73533226501ad225701c7967d9a886b9bb12",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.055760000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_c_jan.49fe29c9b5b4.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Column (f), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (f).\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_c_jul": {
+   "subject_sha": "ef2dbf0f6d02b17a4367c4277efbc155ad0b95a18324198dab3cdeb35a808493",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who shares a policy with another tax family must complete Form 8962 Part IV, for example after a 2025 divorce or legal separation, or because a covered individual is claimed by another taxpayer. That filer would truthfully enter the full July column C amount from the Form 1095-A, but line 18(f) needs only the share allocated to them.",
+       "source_text": "i8962 p. 17, Column (f): \"If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g)\"",
+       "why": "The question asks for the raw column C amount, and line 18(f) adds it as given with no allocation percentage applied. In a Part IV allocation case, line 18(f) and the totals that flow from it would include APTC belonging to the other taxpayer. The help refuses only married filing separately and unspecified \"unsupported items\", so this case is not clearly refused.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "0f8855ef2a2775feb30b1207037ce2da102c37cde29963618640da934fb60f1d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.05314,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_c_jul.ef2dbf0f6d02.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Column (f), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (f).\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_c_jun": {
+   "subject_sha": "fa3f2e2fd8c73bfeb548147a6cc36f39afd02688fbd76959809c63c1a088f7c5",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who shares a policy with another taxpayer, for example after a divorce or because a dependent is claimed by someone else, completes Form 8962 Part IV, but the question takes the full June column C from that Form 1095-A.",
+       "source_text": "i8962 p. 17, Column (f): \"If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g)\"",
+       "why": "The question 'June 2025, column C (monthly advance payment of premium tax credit)' asks for the unallocated column C amount, and line 17(f) adds it as given. So APTC allocated to the other taxpayer is counted on this return. The listed refusals cover only married filing separately, and they do not name the shared-policy allocation that applies to other filing statuses.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "121178aef5bdbf86d21b1107aa0233150e8d180c4786fc7e8d9d93dab4d9754f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.052000000000000005,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_c_jun.fa3f2e2fd8c7.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Column (f), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (f).\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_c_mar": {
+   "subject_sha": "f4c336fe07cf5122811ac44d290db532843ef0f20432fd36337756da13b9a074",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose Form 1095-A policy is shared with another tax family (for example, a 2025 divorce or legal separation, or a policy covering someone claimed by another taxpayer), with the APTC allocated in Form 8962 Part IV, would truthfully enter the full March column C amount, although line 14(f) may include only the share allocated to them.",
+       "source_text": "i8962 p. 17, Column (f): \"If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g)\"",
+       "why": "The question asks for the March column C amount as shown on the form, and the lines add it to 14(f) and 11(f) without applying any Part IV allocation percentage. In shared-policy cases that the married-filing-separately refusal does not cover, this overstates the filer's APTC.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8bc8de840e4d2d12d56807123ae41a5050a95a5e4f23a2cc1b419e05413c322a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.05358,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_c_mar.f4c336fe07cf.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Column (f), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (f).\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_c_may": {
+   "subject_sha": "f84c1e37f70a173fc866fe1a3a2f19543eb2e372382381225a12c578faa668ab",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose Form 1095-A policy is shared with another tax family (for example, a former spouse after a 2025 divorce, or a child someone else claims) completes Part IV and is allocated only a percentage of the policy's APTC, but truthfully enters the full May column C amount printed on the form.",
+       "source_text": "i8962 (2025) p. 17, Column (f): \"If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g)\"",
+       "why": "The question asks for the May 2025 column C amount on the form, and that unallocated figure feeds line 16(f) and, through it, line 11(f). In shared-policy cases the lines need only the allocated share. The listed refusal names only married filing separately, so it does not clearly cover allocations that arise under other filing statuses.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "70d225a5bda7226495f92bf30655308a5f8aa71164240300832fadb71243d430",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.054352,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_c_may.f84c1e37f70a.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Column (f), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (f).\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_c_nov": {
+   "subject_sha": "3100d047b2e6ef7ab57ad864a586e07c2976639ed025850b7ecea1306431e608",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose Form 1095-A covers a policy shared with someone outside their tax family, such as a former spouse after a 2025 divorce or another taxpayer's dependent, completes Part IV, yet enters the full November column C amount from that Form 1095-A.",
+       "source_text": "i8962 (2025) p. 17, Column (f): \"If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g), and combine that amount with the amounts of the monthly APTC for other policies that you did not allocate.\"",
+       "why": "The question asks for the raw amount: \"November 2025, column C (monthly advance payment of premium tax credit)\". Line 22(f) needs only the filer's allocated share of that amount, so the full column C overstates column (f) and line 11(f). The listed refusal names only married filing separately, but Part IV allocation also arises for filers who are not married filing separately.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ed41b5afd692e69aac018601bc556eb2d9fdc4120fd308b664625e085f181c21",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053360000000000005,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_c_nov.3100d047b2e6.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Column (f), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (f).\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_c_oct": {
+   "subject_sha": "a2b2e9a027202a05e551011d1ee971c41f07eaa9a3e612dd991cb0a6eaae5603",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who shares a policy with another tax family, such as a former spouse or a dependent claimed by someone else, completes Part IV, enters the full October column C from that Form 1095-A, and the tool adds it to line 21(f).",
+       "source_text": "i8962 (2025) p. 17, Column (f): \"If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g)\"",
+       "why": "The question asks for the raw Form 1095-A column C amount (\"October 2025, column C ... zero if blank\"), and line 21(f) adds those raw amounts with no allocation percentage. The refusals cover only married filing separately and \"unsupported items\", so a shared-policy allocation outside MFS (divorce, or a dependent claimed by another filer) is not clearly refused, and the APTC allocated to the other taxpayer flows into lines 11(f)/21(f) and the reconciliation that follows from them.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8779fbeb29f5e5d5c3ce67206ea3f778a37dacc560dff1910297f73361c46e54",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.05464,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_c_oct.a2b2e9a02720.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Column (f), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (f).\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.in_c_sep": {
+   "subject_sha": "cdda22e501fcac715094e7eebe3a5cf9c8ee7d945949efa45e86164459633e6a",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer must complete Part IV for this Form 1095-A because the policy was shared with another tax family, such as a 2025 divorce or legal separation, or a policy covering someone another taxpayer claims. Only the allocated share of September's column C belongs on line 20(f), but the question asks for the full column C amount.",
+       "source_text": "i8962 (2025) p. 17, Column (f): \"If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g), and combine that amount with the amounts of the monthly APTC for other policies that you did not allocate.\"",
+       "why": "Line 20(f) sums the answer directly, so a truthful answer of the full September column C amount overstates the APTC on line 20(f) for a filer who completed Part IV. The help refuses only married filing separately and unnamed 'unsupported items', so it does not clearly exclude shared-policy allocation for filers who are not married filing separately.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "18d6a6b10ecc4c73f3dfa10a6533a32ff9d6b221f79a6db67cd40c95f797f411",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.055400000000000005,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.in_c_sep.cdda22e501fc.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Column (f), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (f).\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.mo_a": {
+   "subject_sha": "8bd8e55d6a89e386824f932ebbfa80261987888a4fe2993e00e42c542a68e218",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose Form 1095-A shows -0- in column A for all 12 months, but who paid the premiums by the return due date, enters the paid amount; the tool then multiplies it by 12 into the helper that stands for Form 1095-A line 33.",
+       "source_text": "i1095a p. 2: \"Total the amounts on lines 21 through 32 and enter on line 33.\" and \"For other months where the monthly premiums were not fully paid, enter a -0- for that month.\"",
+       "why": "The question tells the filer to replace a zero column A with the premiums paid. Line f1095a.yr_a_uniform stands for the form's own line 33 total, which here would be zero, so the substituted amount brings a figure into that total that it must not contain.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "A filer whose column A shows -0- pays by the return due date and reports \"the premiums you paid\", meaning their own out-of-pocket share, but Form 8962 column (a) needs the full enrollment premium for the month, including the portion covered by APTC.",
+       "source_text": "i8962 p. 16: \"enter the enrollment premiums for the month ... even if your Form 1095-A shows -0-\" and \"This amount is the total of your enrollment premiums for the month, including the portion paid by APTC.\"",
+       "why": "\"The premiums you paid\" reads naturally as the filer's own net payments. The lines need the gross monthly enrollment premium, including any APTC share, so a truthful answer can understate column (a).",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "d28233a4047735e3ca4d21fcbb36fc3f2de6de3a6aabaaf2aafd1501289c3416",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.08838,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.mo_a.8bd8e55d6a89.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 13,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Column (a), \"If you have more than one Form 1095-A affecting a particular month, add the amounts together for that month and enter the total on the appropriate line on Form 8962, column (a).\"; p. 16, \"If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    }
+   ]
+  },
+  "f1095a.mo_b": {
+   "subject_sha": "83080edfefbe60a4016afc4a14eb1c161f4a2fcbd07ab34b8eb130b2759cd111",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer's Form 1095-A shows the same column B amount for all 12 months, so the gate routes them to this single-amount question, but they moved or their coverage family changed mid-year without telling the Marketplace, so the correct SLCSP differs by month.",
+       "source_text": "i8962 p. 14: \"you must determine the correct applicable SLCSP premium for every month. If the correct applicable SLCSP premium is not the same for every month of 2025, check “No” and continue to lines 12 through 23.\"; p. 15 Example 3: \"Mike and Susan enter $850 in Form 8962, lines 12 through 18, column (b); and $400 in lines 19 through 23, column (b).\"",
+       "why": "The gate tests only whether the printed Form 1095-A columns are uniform, not whether the corrected SLCSP is uniform. The question asks for one correct amount that is \"the same in every month\", so a truthful filer cannot give the different monthly amounts lines 12(b)–23(b) need (for example $850 for Jan–Jul and $400 for Aug–Dec), and the 12× total sent to line 11 would be wrong.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "4d92dfcc704af05e5d775feb1a3808825dd07abf550e61648675358d33d5cd9d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09836800000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.mo_b.83080edfefbe.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 13,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, \"you must determine the correct applicable SLCSP premium for every month.\"; p. 15, \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\", \"You moved during 2025\"; , Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\"; , Column B"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1095a",
+     "revision": "2025",
+     "text_sha256": "0c7b77d29524dd727e74e1c22646375c3de883dd1fa377cab2734d7afc8118b6",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "7f1839e87a1b7ba2ed60633e32a24435080afaafdd6a2438e74f44bd79f0de5c"
+    },
+    {
+     "doc": "p974",
+     "revision": "2025",
+     "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      27
+     ],
+     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
+    }
+   ]
+  },
+  "f1095a.uniform": {
+   "subject_sha": "bb4553fc0f2ce2d1ced97d52764a40aa67f7c70bf55f86d6a32f9a6fe2f9740d",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer marries mid-year (not in December), and each spouse's separate Form 1095-A shows 12 uniform months in columns A and B, but the applicable SLCSP premium for the combined coverage family changes in the month of marriage.",
+       "source_text": "i8962 p. 15, Line 11 Column (b): \"If you got married in a month other than December, your applicable SLCSP premium may not be the same for every month. If it is not the same for every month, you cannot use line 11.\"",
+       "why": "The question is asked per form, and its list of reasons column B can be wrong leaves out marriage, so the filer would truthfully answer yes for each form. Line 10 needs No because the applicable SLCSP premium is not the same every month, so monthly lines 12–23 are required.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "21c0c5f60c912579328e9eed4a50d7d5d8d48a027314bf45b2d2adb5e1c6f082",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.060236,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.uniform.bb4553fc0f2c.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 28,
+   "brief": true,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Line 10, \"Check “Yes” and continue to line 11 if all of the following apply for each qualified health plan\", \"Full-year coverage with no changes on Form 1095-A, Part III, column A or B.\", \"If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”\"; p. 15, \"Examples of changes in circumstances that may affect your applicable SLCSP premium include the following\", \"You moved during 2025\", \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  },
+  "f1095a.void": {
+   "subject_sha": "5a96ed3d679050356423c8042195e2b4436b50a27c8feee96a59f606dc173cc7",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer received an original Form 1095-A, then a CORRECTED form, then a second CORRECTED form for the same policy, and entered the first CORRECTED form.",
+       "source_text": "i8962 (2025) p. 2: \"use the information on the Form 1095-A with the “CORRECTED” box checked to figure the PTC\"; \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\"",
+       "why": "The wording and help say yes only for a form marked VOID or for \"an original\" that a later corrected form replaces. A filer holding an earlier CORRECTED form that a later corrected form has replaced would answer no, because that form is not an original, yet it is a superseded form the line must exclude.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "8c07c9a4d27b23973fa056571bb107f949b583f44250cf44928d514a494bef6a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.035476,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f1095a.void.5a96ed3d6790.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      2
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\"",
+      "p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\"; p. 2, \"If you receive a Form 1095-A with the “CORRECTED” box checked at the top of the form, use the information on the Form 1095-A with the “CORRECTED” box checked to figure the PTC and reconcile any APTC on Form 8962.\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  }
+ }
+}
