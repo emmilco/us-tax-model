@@ -23,41 +23,68 @@ import { formResolver, namedDesignations, type FormEntry } from "./form-refs.js"
 const MAIN = resolve(import.meta.dirname, "main.js");
 const ROOT = resolve(import.meta.dirname, "../..");
 
+/** A started `serve` child: its returns directory, its output so far and, once it has exited, how. */
+interface Server { proc: ChildProcess; port: number; dir: string; output: string; exit: string | null }
+const servers = new Map<number, Server>();
+
+/** What is known of the server on a port, for a failed request's message: its directory, whether it has exited, and
+ * the end of its output. */
+function serverContext(port: number): string {
+  const s = servers.get(port);
+  if (!s) return `no server started on port ${port}`;
+  const tail = s.output.trim().split("\n").slice(-20).join("\n");
+  return `server on port ${port} (pid ${s.proc.pid}, --dir ${s.dir}) ${s.exit ? `exited (${s.exit})` : "still running"}; its output:\n${tail}`;
+}
+
 interface Reply { status: number; body: any }
+// Each request opens its own connection (agent: false). With a keep-alive agent a request may be sent on an idle
+// connection the server has already closed (its keepAliveTimeout, 5 seconds, passed while this process was blocked
+// in spawnSync), and the server answers it with a reset.
 function http(port: number, method: string, path: string, opts: { host?: string; origin?: string | null; body?: unknown } = {}): Promise<Reply> {
   const host = opts.host ?? `127.0.0.1:${port}`;
   const origin = opts.origin === undefined ? (method === "GET" ? null : `http://${host}`) : opts.origin;
   const payload = opts.body === undefined ? undefined : JSON.stringify(opts.body);
   return new Promise((done, fail) => {
-    const req = request({ host: "127.0.0.1", port, method, path, headers: { Host: host, ...(origin ? { Origin: origin } : {}), ...(payload ? { "Content-Type": "application/json" } : {}) } }, (res) => {
+    const failed = (e: Error) => fail(new Error(`${method} ${path} (Host ${host}) failed: ${e.message}; ${serverContext(port)}`, { cause: e }));
+    const req = request({ host: "127.0.0.1", port, method, path, agent: false, headers: { Host: host, ...(origin ? { Origin: origin } : {}), ...(payload ? { "Content-Type": "application/json" } : {}) } }, (res) => {
       const chunks: Buffer[] = [];
       res.on("data", (c: Buffer) => chunks.push(c));
+      res.on("error", failed);
       res.on("end", () => {
+        if (!res.complete) return failed(new Error("the connection closed before the response was complete"));
         const text = Buffer.concat(chunks).toString("utf8");
         let body: unknown = text;
         try { body = JSON.parse(text); } catch { /* a static file */ }
         done({ status: res.statusCode ?? 0, body });
       });
     });
-    req.on("error", fail);
+    req.on("error", failed);
     req.end(payload);
   });
 }
 
-function startServer(dir: string): Promise<{ proc: ChildProcess; port: number }> {
+function startServer(dir: string): Promise<Server> {
   const proc = spawn(process.execPath, [MAIN, ...YEAR_ARGS, "serve", "--dir", dir, "--port", "0"], { stdio: ["ignore", "pipe", "pipe"] });
-  let out = "";
+  const server: Server = { proc, port: 0, dir, output: "", exit: null };
   return new Promise((done, fail) => {
-    proc.stdout!.on("data", (d: Buffer) => { out += d; const m = out.match(/http:\/\/127\.0\.0\.1:(\d+)\//); if (m) done({ proc, port: Number(m[1]) }); });
-    proc.stderr!.on("data", (d: Buffer) => { out += d; });
-    proc.on("exit", (code) => fail(new Error(`server exited ${code}: ${out}`)));
+    proc.stdout!.on("data", (d: Buffer) => {
+      server.output += d;
+      const m = server.output.match(/http:\/\/127\.0\.0\.1:(\d+)\//);
+      if (m && server.port === 0) { server.port = Number(m[1]); servers.set(server.port, server); done(server); }
+    });
+    proc.stderr!.on("data", (d: Buffer) => { server.output += d; });
+    proc.on("error", (e) => { server.exit = `spawn error: ${e.message}`; fail(new Error(`server for ${dir} did not start: ${e.message}`)); });
+    proc.on("exit", (code, signal) => {
+      server.exit = signal ? `signal ${signal}` : `code ${code}`;
+      fail(new Error(`server for ${dir} exited (${server.exit}) before it was serving: ${server.output}`));
+    });
   });
 }
 
 export async function serveChecks(): Promise<void> {
   const tmp = mkdtempSync(join(tmpdir(), "serve-check-"));
   let server: ChildProcess | undefined;
-  const extra: Promise<{ proc: ChildProcess; port: number }>[] = [];
+  const extra: Promise<Server>[] = [];
   let checks = 0;
   const ok = (cond: unknown, message: string) => { assert.ok(cond, message); checks++; };
   try {
@@ -86,7 +113,9 @@ export async function serveChecks(): Promise<void> {
     for (let i = 1; i < poolSize(); i++) {
       const d = join(tmp, `returns-${i}`);
       mkdirSync(d, { mode: 0o700 });
-      extra.push(startServer(d));
+      const starting = startServer(d);
+      starting.catch(() => {}); // a failed start is reported where the walks await it, not as an unhandled rejection
+      extra.push(starting);
     }
     const started = await startServer(dir);
     server = started.proc;
