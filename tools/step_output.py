@@ -5,7 +5,7 @@
     step_output.py --self-test
 
 A self-test with a row in tools/self_tests.py is run and named by that file. A self-test that a step runs
-inside itself (the comparison's planted differences, the mutation check's self-tests of its equivalence
+inside itself (the comparison's planted differences, planted answers and time limit, the mutation check's self-tests of its equivalence
 reasoning) is only a call in the step's code: with the call removed the step would print one line less and
 still pass. REQUIRED therefore lists, per step, the line each such self-test prints when it ran and found no
 problem, and check-all fails a step that exits 0 without one of them.
@@ -34,6 +34,12 @@ COMPARE = [
     ("the comparison's self-test of planted differences (plantedDifferences)",
      r"compare self-test: [1-9][0-9]* differences planted on generated returns, 0 problem\(s\)",
      "compare self-test: 16 differences planted on generated returns, 0 problem(s)"),
+    ("the comparison's self-test of the Lean evaluator's answers being the cases sent (plantedAnswers)",
+     r"compare self-test: [1-9][0-9]* answers that are not the cases sent, 0 problem\(s\)",
+     "compare self-test: 12 answers that are not the cases sent, 0 problem(s)"),
+    ("the comparison's self-test of the time limit on a process of the Lean evaluator (neverAnswering)",
+     r"compare self-test: a process that never answers was stopped at its time limit, 0 problem\(s\)",
+     "compare self-test: a process that never answers was stopped at its time limit, 0 problem(s)"),
 ]
 # engine/src/mutate.ts, runMutation. The retargeting self-test may have no pinned argument to retarget among a
 # run's mutants; it fails by itself when it should have had one.
@@ -145,15 +151,15 @@ def self_test():
     if missing("check_logs", ""):
         bad.append("a step with no required line is reported as lacking one")
     with tempfile.TemporaryDirectory() as d:
-        (Path(d) / "compare.log").write_text(COMPARE[0][2] + "\n", encoding="utf-8")
-        (Path(d) / "ny_compare.log").write_text(COMPARE[0][2] + "\n" + COMPARE[1][2] + "\n", encoding="utf-8")
+        (Path(d) / "compare.log").write_text("".join(row[2] + "\n" for row in COMPARE if row is not COMPARE[1]), encoding="utf-8")
+        (Path(d) / "ny_compare.log").write_text("".join(row[2] + "\n" for row in COMPARE), encoding="utf-8")
         (Path(d) / "citations.log").write_text("", encoding="utf-8")
         if check_logs(d, ["compare", "ny_compare", "citations"]) != ["compare"]:
             bad.append("--logs does not name exactly the step whose log lacks a line")
         said = (Path(d) / "compare.log").read_text(encoding="utf-8")
         if "check-all: step compare exited 0 without a line" not in said or COMPARE[1][1] not in said:
             bad.append("--logs does not write what is missing to the step's log")
-        if (Path(d) / "ny_compare.log").read_text(encoding="utf-8").count("\n") != 2:
+        if (Path(d) / "ny_compare.log").read_text(encoding="utf-8").count("\n") != len(COMPARE):
             bad.append("--logs wrote to the log of a step that lacks nothing")
     # The table and the steps script agree: every step with required lines is declared, and each wave is checked.
     script = STEPS.read_text(encoding="utf-8")

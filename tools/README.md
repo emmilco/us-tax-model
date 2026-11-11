@@ -109,7 +109,28 @@ the federal fixture cases are in no other run, so their New York values would be
 The New York documents take about a fifth of the federal run's evaluation time. Each report states its run's
 cases and counts the New York documents' lines apart, by kind.
 
-The step first plants differences on generated returns and stops unless each
+How the Lean evaluator is run. `taxeval` (`lean/Main.lean`) reads the canonical build once, then reads
+cases from standard input, one JSON line each (`{"id": ..., "inputs": {...}}`), and answers one line each,
+in the order read: the case's values (`{"id": ..., "values": {...}}`) or the reason it has none
+(`{"id": ..., "failed": ...}`: a line ran out of the step budget). A case's answer is a pure function of
+the build, the budget and the case (`answerCase`; the memo and the cycle markers begin empty in
+`evaluateCase`), so neither the order of the cases nor how they are grouped can change a value. The
+comparison sends its cases in batches of 50 (`BATCH_SIZE`), one process at a time. It accepts a batch's
+answer only when it is one line per case, in the cases' order, each naming its case (`readAnswers`); for
+any other answer every case of the batch counts as a case the Lean evaluator gave no values for. A process
+that ends with an error is charged to the first case it left unanswered: the answers before it stand,
+that case has no values, and the cases after it go to a new process. A process that has not ended after
+20 minutes (`BATCH_LIMIT_MINUTES`; a batch takes seconds, and the whole comparison takes less than that on
+a machine with many times more runnable work than cores) is stopped and charged in the same way, and no
+process is started after it: every later case counts as one the Lean evaluator gave no values for, so the
+step fails within the limit where it would otherwise wait for ever. To evaluate one case by hand:
+`echo '{"id":"x","inputs":{}}' | lean/.lake/build/bin/taxeval --canonical canonical/<year>`.
+
+The step first plants answers that are not the cases sent (a case not answered, answered twice or out of
+turn, an answer for a case that was not sent, a line that is no answer) and stops unless each leaves every
+case of its batch without values. It puts in the Lean evaluator's place a process that does not answer,
+with a limit of a second, and stops unless that process is stopped, its cases are left without values
+and no process is started after it. It then plants differences on generated returns and stops unless each
 is reported on its line with the planted values: for each kind of value (money, count, rate,
 Bool, enum, refusal, unknown) a differing Lean value on a computed line of that kind, one per
 field the comparison reads (a refusal's gate, form, remedy and citation); a line the Lean
@@ -193,8 +214,8 @@ Some self-tests have no row in `tools/self_tests.py`: a step runs them inside it
 call removed the step would print one line less and still pass. `tools/step_output.py` lists, per
 step, the line each of them prints when it ran and found no problem, and a step that exits 0
 without one of its lines fails, with what is missing printed under its `== <step>` line. The steps
-and their lines: `compare` and `ny_compare`, the Bool-and-enum choose self-test and the planted
-differences; `mutate` and `ny_mutate`, the six self-tests of the equivalence reasoning (retargeting,
+and their lines: `compare` and `ny_compare`, the Bool-and-enum choose self-test, the planted answers, the time limit and
+the planted differences; `mutate` and `ny_mutate`, the six self-tests of the equivalence reasoning (retargeting,
 whole-dollar parameters, unknown-guard side condition, guarded-figure dominance, premise digest,
 Bool and enum choose); `engine_differential`, the UsTaxes line cache self-test that
 `tools/engines/run.sh` runs (or the line saying that it, or the whole step, was skipped for want of
