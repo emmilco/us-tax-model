@@ -1,3 +1,134 @@
+# Night 2026-11-10/11: phase 3 fix lanes landed, display rewording, five tech-debt items
+
+**State:** `main` is pushed through `2be2a2cf` (the next commit after it holds this entry, BUG-0601, BUG-0602 and
+T-276). No release has been cut since `r2026.11.06.1`. Every lane launched in the session has landed; one read-only
+study was still running when this was written (the interview-rules catalog, below). Review spend in the session, from
+`.transcription/costs.jsonl`: $67.46 in 123 calls ($24.87 in 59 calls on `claude-opus-5-5` before the owner's switch,
+$42.59 in 64 calls on `claude-fable-5-2` after it). No open rulings; transcription, render and class M logs current.
+`canonical/` in the main checkout was rebuilt at `2be2a2cf`, so a UI server started now shows the merged wording.
+
+**Landed (first-parent, oldest first):**
+- `38f7b30c`, `d7c84578`, `3f589ccc`: lanes F (test-serve), B (question review tool, first full pass, 674 findings
+  ruled, BUG-0498 to BUG-0576) and E (umbrella gates design).
+- `5fd0fa1c`, `bbd20a86`, `cd7aa2e0`, `85c19914`, `b90c2787`, `dbc455da`: fix lanes 1, 4b, 2, 3, 4 and 5. The 45
+  value-changing findings of the question review are fixed (Schedule C; IT-201; Form 5695; carloan, s1a, otjob, s179,
+  asset, div, sales; person, retirement, dependent, f2441), and once-per-return amount and yes/no questions name the
+  spouse with one phrase, "(or, on a joint return, your spouse)". BUG-0577 to BUG-0593.
+- `bf599378`: umbrella gate U2 (`sb.foreign_any` before the four Schedule B foreign screens; 3.0 fewer questions on
+  complete full-profile returns, 111.2 to 108.2); the launch hook allows Fable for either class of agent work.
+  BUG-0594, BUG-0595 open and low.
+- `355d7302`: lane 7, `engine/src/spouse-wording.ts`: question text and line labels handed to an interactive client
+  read "you or your spouse" on a joint return and "you" otherwise; the stored conditional text shows only while
+  `f1040.status` is unanswered (it is the first or second question on every standard walk). Stored text, `canonical/`,
+  `rendered/` and reports are unchanged. The build fails on a near-miss of the phrase.
+- `131747ca`: lane 6, wording fixes from two independent source checks of the spouse edits (BUG-0596; BUG-0597 open).
+  49 one-form Form 8962 fixtures withhold `f1095a.b_counted`.
+- `e554f671`: process lane. Review tools refuse to run on stale rendered text (BUG-0599); check-all prints its step
+  times by stage (`tools/check_times.py`).
+- `ddb6bd99`: T-259. The Lean comparison runs over the general generator's returns (400, seed 7): 562 of 564 federal
+  inputs given, 0 differences in either jurisdiction; its self-test plants 16 differences (BUG-0598).
+- `2e13fd84`: T-267. The mutation check's pin digest leaves out question wording; all 81 pins re-made after each was
+  shown to match and each argument was read.
+- `abf6c558`: bookkeeping (T-259, T-267 done; T-269 to T-275; three studies under `docs/`).
+- `bdfc9a1e`: twin lane. `tools/check_twins.py` keeps the two copies of Form 8863 Part III in step, with intended
+  differences declared in `reviews/2025/twins.json` (BUG-0600).
+- `2be2a2cf`: `tools/check_year_ids.py` refuses any new id that carries a tax year (baseline `tools/year_ids.json`).
+
+**Decisions the owner made in the session (2026-11-10):** fix lanes may make structural changes where wording cannot
+fix a finding; the spouse phrase is the conditional one, shown reworded by filing status; the rule goes on Form 5695,
+IT-201 and f2441 too; lanes run their forms' reviews before committing; from mid-session all agents and review calls
+use Fable (`claude-fable-5-2`) and cost limits are lifted; lanes are replayed onto main where the BUG id checks block
+a merge; the restricted-stock-unit clause in `sales.wash_loss` stays only if sourced (it was not, and is removed); U2's
+territory wording stays, its Form 5471 and line 8 screens are widened to the gate, the nonprofit-board and deemed-owner
+cases are low bugs; independent source checks of the spouse edits; all four tech-debt items added to the queue. Then:
+work through the night on the coordinator's recommendations; goals are integrity, consistency, efficiency and
+intelligibility; do not minimize cost, remove cost that returns nothing.
+
+**Decisions taken on the owner's behalf overnight, for review (each is reversible):**
+- T-267 narrows the digest for parameter, enum, table and definition premises too (citations, titles and notes left
+  out), beyond the task row's wording-only scope. Refusal text stays in the digest.
+- T-259's self-test was widened from 3 plants on one line to 16 across the value kinds before it merged.
+- Form 8863: the twin check (the study's option A) instead of merging the text. Whether the text must exist once is
+  T-274.
+- Year-bound ids: no id renamed. A rename cannot be carried mechanically (measured), so the check against new ones was
+  built and the rename is left for adoption of the 2026 tree (T-261).
+- The `f1095a.b_counted` default is unchanged; the one-form fixtures withhold the answer instead.
+- Lane 7 also rewords the 32 line labels shown on the interview's values sheet; reports keep stored labels.
+- Lane 6 took the extra readings lane 7 flagged (s1, sli, ssb, household), so four more forms were re-reviewed.
+- The earlier Opus reviews were not rerun on Fable (no measured defect; the instruction read as forward-looking).
+- The interview-rules check was NOT widened and its templates were not fixed (T-276): widening turns main red on about
+  30 templates and the rewrites change form logic.
+
+**Open, for the owner:**
+- T-276 / BUG-0601 / BUG-0602: `interview-rules` passes for the three complete returns its seed draws; with 200
+  returns the tool reports 23 problems, and 32 question templates are affected over 1,000 returns (asked and never
+  read, reachable out of order, or left reachable at completion). This bears directly on the phase's goal. Decide
+  which rewrites to make and whether to widen the check. The catalog study writes `/tmp/f1095a/catalog.md` with a
+  tested patch per family; archive it under `docs/` when it is complete.
+- T-274: must Form 8863 Part III exist once (a build-time template, which the spec does not have), and should the
+  unrolled months of Form 8962 and Form 1095-A (2,346 lines) be planned with it?
+- T-261: is a verdict carried under a proven rename acceptable evidence; does the 2025 tree stay under change after
+  2026 is adopted; the 36 year-free names.
+- T-273: options to shorten the full tier (docs/2026-11-11_check_all_timing.md).
+- T-272: the older spouse wordings (about 26 parenthesised, 45 plain "you or your spouse", 21 "either of you") and the
+  per-person frame are not reworded for display.
+- T-275: the BUG id rule that cannot be carried out on a branch.
+- U2's umbrella question is about 640 words and its line 8 screen about 190; the owner said he would judge the length
+  when walking his return. Its gate's false-no and screen samples are due at the next release.
+- Questions left unedited as unsure by the lanes (spouse's separate prior-year carryovers on f4952, qbi, f8960, clcw;
+  `f8863.ban`; six Form 5695 "you owned / original use" questions; three IT-201 credits questions; the 8 refund
+  worksheet questions, BUG-0593; `ny_it201.ask.item_c` and 13 return-level IT-201 questions).
+- Whether the spouse rule should reach questions asked once per roster item (car loans, sales, assets, Form 1095-A).
+- T-236: the owner's walk of his own 2025 return in the UI is still the phase's test.
+
+**What was verified and what was only reported.** Verified by the coordinator for every landing: the commit's parent,
+its tree against the tree a full-tier (or, for bookkeeping, fast-tier) run passed, the merged index tree before the
+commit, and the push. Not read by the coordinator: the lanes' diffs, source pages and rulings. Independent checks
+that were run: two read-only source checks of the spouse edits (81 edits: 1 wrong, 13 awkward, all fixed in lanes 5
+and 6); the Form 8962 column (b) ruling (the project is right; the cause was the fixture default); deliberate breaks
+of the new tests in lane 7, T-259, T-267, the twin check and the year-id check. Two agent claims were found false
+and corrected: lane 5's first agent reported its render reviews current when none had run, and said its edits were
+grounded in their cited pages when 31 of 43 rested on the general joint-return rule (i1040gi p. 13). Rulings by the
+fix lanes' agents have had no independent read except Form 8962's.
+
+**Process cost that returned nothing (and what was done):**
+- Stale rendered text: three paid reviews repeated. Fixed (BUG-0599).
+- Pin digest covering wording: 35 re-pins. Fixed (T-267).
+- BUG ids: every lane replayed or held uncommitted; merges strictly one at a time. Open (T-275).
+- The full tier on every wording lane, where the hook asks only the fast tier: about ten minutes per lane run, a
+  coordinator mistake. The full tier is half wave 2 (`engine_differential` with `compare`). Open (T-273).
+- Fixture defaults that are not truthful answers manufacture reviewer value differences (24 fixtures on Form 8962,
+  fixed; `dependent.lawful`, `dependent.edu_tin_issued` not). Open (T-269).
+- Review cost estimates are priced from Opus history; Fable runs at about twice the estimate, and the gate refused an
+  approval set at its own estimate. Not fixed; pass about 2.2 times the estimate.
+- Reviews repeated because two lanes changed forms that read each other (Schedule 3, Schedule C line 5, IT-201 line
+  64). Inherent to parallel lanes with line-scoped reviews keyed to readers; order the merges, or review after merge.
+
+**Process lessons:**
+- A lane that adds BUG entries cannot merge main into itself. Either keep its work uncommitted until its turn
+  (fast-forward main under it, renumber, run, commit once) or replay its commit onto main as one new commit.
+- A merge commit may not add a BUG entry, and a `Fix` field is for form lines (it needs `Fix lines` and `Siblings
+  checked`); a tooling fix uses `Disposition`. Use `tools/new_bug.py`.
+- A lane committed on main's tip, on a tree its own full-tier run passed, merges with no second run: the merged tree
+  equals the tested tree. A lane cut from an older tip needs a run on main.
+- `carry-back` refuses files changed on both sides: check which copy the committed log was written from (the pass ids
+  in the log against the index's count) before `--prefer-worktree`. `.transcription/rerun_summary.json` is only the
+  last run's summary.
+- `tools/commit_tested.sh` wants `COMMIT_TESTED_TREE` set to the snapshot tree, not the tested tree.
+- Ask an agent to show a new test failing against a broken implementation before trusting it; and when an agent
+  reports a count it cannot explain, have it diff the two runs.
+- Treat an agent's "current", "none needed" and "grounded in the cited page" as testimony until a check or an
+  independent read confirms it.
+
+**Housekeeping left:** 21 lane worktrees under `.claude/worktrees/` (checked: every branch is merged into main and none has
+uncommitted changes) and five `backup/*` branches of replayed lanes can be removed after the owner has looked. Scratch under
+`/tmp/qfix*`, `/tmp/dedup8863`, `/tmp/yearfree`, `/tmp/f1095a`, `/tmp/twinlane` (the three studies worth keeping are
+in `docs/`). `tools/README.md` still says the full tier takes about 38 minutes (median 17). The charter still says
+"30 input ids and 93 ambiguity ids". The spouse rule is recorded in `interview/README.md`.
+
+**Next:** the owner's decisions above; then U3 and U4 umbrellas, then U1 once its false-no review is clean (T-265),
+the interview-rules rewrites he chooses (T-276), and his walk of the return (T-236).
+
 # Night 2026-11-09/10: gate wave finished, phase 1 closed, eight defects fixed
 
 **State:** `main` is pushed through the interview-layout commit below. No release has been cut since `r2026.11.06.1`.
@@ -45,24 +176,3 @@ changes accepted; Claude review spend uncapped for the night; push without askin
   older derived review files (log views, triage) that differ from main's; safe to remove.
 
 - The 51 tracked-but-ignored `.transcription/` and `.classm/` files are untracked (they stay on disk; check-all copies those folders in).
-
-# Overnight 2026-11-09: T-257, phase 0 inventory, step (c) built
-
-**State:** `main` is pushed through `182800b1`. Landed overnight (owner asleep, working from the owner's 1:05 plan):
-`e2252227` bookkeeping; `695e6ef7` T-257 (triage evaluates line-scoped sections against their own pass reply;
-refusal kept as fallback); `182800b1` phase 0 inventory (`docs/2026-11-09_consolidation_inventory.md`).
-
-**Step (c) merged (`ea25cc6a`, owner 2026-11-09):** fixtures are per-form with test-data defaults
-(`fixtures/2025/defaults.json`, `fixtures/ny/2025/defaults.json`, applied only by the test loader); 178.7 to 13.3
-inputs per case; a changed existing default needs a `Fixture-default-changed: <input> (<n> cases)` commit line
-(`tools/hooks/commit-msg`). Argon did not review it; the owner merged without that review.
-
-**Owner decisions (2026-11-09):** all morning recommendations accepted. Step (c) merged; the T-257 prompt change
-(name the condition of `shown_when` lines in line-scoped requests) is in progress; the 16 true-valued defaults
-and the 94 restated mutation-killing inputs are accepted; the safe pruning is applied (backlog plan retired,
-`README.md.orig` and `tools/structural_leaks.mjs` removed; untracking the 51 tracked-but-ignored `.transcription/`
-and `.classm/` files is deferred: `commit_tested.sh` commits the tested working-tree snapshot, which still holds
-them, so it needs a deliberate `git rm --cached` outside that flow); finished agent
-worktrees are being removed. Kept after checking: `extract_tax_table.py`, `extract_macrs_tables.py`
-(yearly table extraction), `ny_policyengine.py` (NY engine differential report), `migrate_completeness_debt.py`
-(documented in tools/README.md).

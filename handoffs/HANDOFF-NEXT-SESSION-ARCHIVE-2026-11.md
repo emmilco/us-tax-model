@@ -2,6 +2,27 @@
 
 Historical; the current entry is the top of `HANDOFF-NEXT-SESSION.md`.
 
+# Overnight 2026-11-09: T-257, phase 0 inventory, step (c) built
+
+**State:** `main` is pushed through `182800b1`. Landed overnight (owner asleep, working from the owner's 1:05 plan):
+`e2252227` bookkeeping; `695e6ef7` T-257 (triage evaluates line-scoped sections against their own pass reply;
+refusal kept as fallback); `182800b1` phase 0 inventory (`docs/2026-11-09_consolidation_inventory.md`).
+
+**Step (c) merged (`ea25cc6a`, owner 2026-11-09):** fixtures are per-form with test-data defaults
+(`fixtures/2025/defaults.json`, `fixtures/ny/2025/defaults.json`, applied only by the test loader); 178.7 to 13.3
+inputs per case; a changed existing default needs a `Fixture-default-changed: <input> (<n> cases)` commit line
+(`tools/hooks/commit-msg`). Argon did not review it; the owner merged without that review.
+
+**Owner decisions (2026-11-09):** all morning recommendations accepted. Step (c) merged; the T-257 prompt change
+(name the condition of `shown_when` lines in line-scoped requests) is in progress; the 16 true-valued defaults
+and the 94 restated mutation-killing inputs are accepted; the safe pruning is applied (backlog plan retired,
+`README.md.orig` and `tools/structural_leaks.mjs` removed; untracking the 51 tracked-but-ignored `.transcription/`
+and `.classm/` files is deferred: `commit_tested.sh` commits the tested working-tree snapshot, which still holds
+them, so it needs a deliberate `git rm --cached` outside that flow); finished agent
+worktrees are being removed. Kept after checking: `extract_tax_table.py`, `extract_macrs_tables.py`
+(yearly table extraction), `ny_policyengine.py` (NY engine differential report), `migrate_completeness_debt.py`
+(documented in tools/README.md).
+
 # Merge chain cleared, consolidation started — 2026-11-07/08
 
 **State:** `main` is pushed through `63273754` (the education lane, the last of the merge chain); the full tier is green on it.
