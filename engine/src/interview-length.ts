@@ -20,8 +20,11 @@
 // slice profile's walked fixtures. A refused return is counted under static only. An answer is "closed" when it is
 // false, zero or an empty roster.
 //
-//   interview-length [--write] [--self-test]
+//   interview-length [--write] [--self-test] [--what-if]
 //     --write       writes reports/<year>/interview_length.md, keeping the hand-written findings below its marker
+//     --what-if     today's order only, as built and with each proposed umbrella gate applied in memory
+//                   (umbrella-what-if.ts), then with the recommended ones together; with --write, writes
+//                   reports/<year>/umbrella_savings.md
 import assert from "node:assert/strict";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -36,10 +39,12 @@ import { walkedCases } from "./fixture-inputs.js";
 import { sampleReturns } from "./generate.js";
 import { gatesOf } from "./gates.js";
 import { YEAR } from "./year.js";
+import { applyUmbrellas, RECOMMENDED, UMBRELLAS, umbrellaAnswer, unGated, type Umbrella } from "./umbrella-what-if.js";
 import type { CanonicalData, Inputs } from "./types.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const REPORT = resolve(ROOT, "reports", String(YEAR), "interview_length.md");
+const WHAT_IF_REPORT = resolve(ROOT, "reports", String(YEAR), "umbrella_savings.md");
 const FREQUENCIES = resolve(ROOT, "interview", String(YEAR), "gate_frequencies.yaml");
 /** The share answering yes assumed for a question the frequency file does not name: no information. */
 const DEFAULT_SHARE = 0.5;
@@ -158,25 +163,34 @@ function context(): Ctx {
 
 interface Run { measures: Measure[]; unwalkable: Record<string, number>; errors: string[] }
 
-function runAll(ctx: Ctx): Run {
+/** One return to walk: its group, profile and answers. */
+interface Case { group: string; profile: string; id: string; answers: Answers; open?: { input: string; value: unknown } | null }
+
+/** The returns measured, in report order. */
+function casesOf(ctx: Ctx): Case[] {
   const { data, configs } = ctx;
-  const errors: string[] = [];
-  const measures: Measure[] = [];
-  const unwalkable: Record<string, number> = {};
-  const add = (group: string, profile: string, id: string, answers: Answers) => {
-    const m = measure(ctx, group, profile, id, answers, errors);
-    if (m) measures.push(m); else unwalkable[group] = (unwalkable[group] ?? 0) + 1;
-  };
+  const out: Case[] = [];
   const fromInputs = (inputs: Inputs): Answers => (k) => (k in inputs ? { value: inputs[k] } : undefined);
-  for (const c of fixtureCases("full", data)) add("Stage 5 whole returns", "full", c.id, fromInputs(c.inputs));
-  sampleReturns(data, GENERATED, SEED).forEach((inputs, i) => add("generated returns", "full", `generated.${i}`, fromInputs(inputs)));
-  add("minimal returns", "full", "every gate closed", minimalAnswers(data, configs["full"]!, "full", null));
+  for (const c of fixtureCases("full", data)) out.push({ group: "Stage 5 whole returns", profile: "full", id: c.id, answers: fromInputs(c.inputs) });
+  sampleReturns(data, GENERATED, SEED).forEach((inputs, i) => out.push({ group: "generated returns", profile: "full", id: `generated.${i}`, answers: fromInputs(inputs) }));
+  out.push({ group: "minimal returns", profile: "full", id: "every gate closed", answers: minimalAnswers(data, configs["full"]!, "full", null), open: null });
   for (const g of [...existenceGates(data).keys()].sort()) {
     const meta = inputMeta(data, g);
     const values = meta.type === "Bool" ? [true] : meta.type === "Enum" ? meta.values!.slice(1) : [];
-    for (const value of values) add("minimal returns", "full", `${g} = ${JSON.stringify(value)} alone`, minimalAnswers(data, configs["full"]!, "full", { input: g, value }));
+    for (const value of values) out.push({ group: "minimal returns", profile: "full", id: `${g} = ${JSON.stringify(value)} alone`, answers: minimalAnswers(data, configs["full"]!, "full", { input: g, value }), open: { input: g, value } });
   }
-  for (const p of SLICES) for (const c of walkedCases(p, data)) add(`${p} profile fixtures`, p, c.id, fromInputs(c.inputs));
+  for (const p of SLICES) for (const c of walkedCases(p, data)) out.push({ group: `${p} profile fixtures`, profile: p, id: c.id, answers: fromInputs(c.inputs) });
+  return out;
+}
+
+function runAll(ctx: Ctx): Run {
+  const errors: string[] = [];
+  const measures: Measure[] = [];
+  const unwalkable: Record<string, number> = {};
+  for (const c of casesOf(ctx)) {
+    const m = measure(ctx, c.group, c.profile, c.id, c.answers, errors);
+    if (m) measures.push(m); else unwalkable[c.group] = (unwalkable[c.group] ?? 0) + 1;
+  }
   return { measures, unwalkable, errors };
 }
 
@@ -279,6 +293,7 @@ export function renderReport(run: Run, gates: Set<string>, gated: Set<string>, s
 
 export async function interviewLength(args: string[] = []): Promise<number> {
   if (args.includes("--self-test")) return selfTest();
+  if (args.includes("--what-if")) return whatIf(args.includes("--write"));
   const ctx = context();
   const t0 = performance.now();
   const run = runAll(ctx);
@@ -328,6 +343,139 @@ function selfTest(): number {
   assert.equal(m.floor, clean.floor, "the floor does not");
   assert.ok(m.avoidable.includes(questionTemplate(pair.leaked)), "it is listed as avoidable");
   assert.ok(m.expected! <= clean.expected!, `the expected order avoids it (${m.expected} > ${clean.expected})`);
-  console.log(`interview-length self-test: passed (closed answers, frequency shares, orders on ${c.id}: static ${clean.asked}, floor ${clean.floor}, expected ${clean.expected}; ${pair.leaked} planted before ${pair.decider})`);
+  // What-if: the line 8 umbrella answered no asks one question in place of the line 8 questions, with the same values;
+  // answered no while a line 8 amount is non-zero, it changes the values (the run's check would fail).
+  const u = UMBRELLAS.find((x) => x.id === "s1.line8_any")!;
+  const applied = applyUmbrellas(data, configs, [u]);
+  const covered = w.events.filter((e) => u.covers.includes(questionTemplate(e.input)));
+  assert.ok(covered.length > 1 && covered.every((e) => isClosed(e.value)), "the fixture answers the line 8 questions no");
+  const no: Answers = (k, cur) => (k === u.id ? { value: false } : fromInputs(k, cur));
+  const wi = walk(applied.data, applied.configs["full"]!, no, bankOrder(applied.configs["full"]!), BOUND, () => {});
+  assert.ok(wi.status === w.status && wi.valuesKey === w.valuesKey, "the umbrella keeps the values");
+  assert.equal(wi.events.length, w.events.length - covered.length + 1, "the umbrella replaces the questions it covers");
+  const prize: Inputs = { ...c.inputs, "s1.line8i": 100000 };
+  const withPrize: Answers = (k) => (k in prize ? { value: prize[k] } : undefined);
+  const wp = walk(data, config, withPrize, bankOrder(config), BOUND, () => {});
+  const wrong = walk(applied.data, applied.configs["full"]!, (k, cur) => (k === u.id ? { value: false } : withPrize(k, cur)), bankOrder(applied.configs["full"]!), BOUND, () => {});
+  assert.ok(umbrellaAnswer(u, wp.events, isClosed) && wrong.valuesKey !== wp.valuesKey, "a wrong no changes the values");
+  console.log(`interview-length self-test: passed (closed answers, frequency shares, orders on ${c.id}: static ${clean.asked}, floor ${clean.floor}, expected ${clean.expected}; ${pair.leaked} planted before ${pair.decider}; ${u.id} asks ${wi.events.length} for ${w.events.length})`);
   return 0;
+}
+
+/** One scenario's walk of one return beside the walk as built. */
+interface Delta { c: Case; status: string; before: number; after: number; umbrellaAsked: number; umbrellaYes: number }
+
+/** Walks every return in today's order as built and under each scenario of umbrellas (each alone, then the recommended
+ * together); each scenario's walk must give the same status and values as the walk as built. */
+export function whatIfRun(ctx: Ctx, scenarios: [string, Umbrella[]][]): { results: Map<string, Delta[]>; errors: string[]; unwalkable: number } {
+  const errors: string[] = [];
+  const base: { c: Case; w: Walk }[] = [];
+  let unwalkable = 0;
+  for (const c of casesOf(ctx)) {
+    const config = ctx.configs[c.profile]!;
+    try { base.push({ c, w: walk(ctx.data, config, c.answers, bankOrder(config), BOUND, () => {}) }); } catch (e) { if (e instanceof Unanswered) unwalkable++; else throw e; }
+  }
+  const results = new Map<string, Delta[]>();
+  for (const [name, us] of scenarios) {
+    const applied = applyUmbrellas(ctx.data, ctx.configs, us);
+    const out: Delta[] = [];
+    for (const { c, w } of base) {
+      const config = applied.configs[c.profile]!;
+      // A minimal return's closed answers are probed on the data they are asked of. An umbrella is answered only on a
+      // return whose walk as built asked one of its inputs (a refused return stops asking what it does not answer).
+      const own = c.open !== undefined ? minimalAnswers(applied.data, config, "full", c.open) : c.answers;
+      const answers: Answers = (k, cur) => {
+        const u = us.find((x) => x.id === k);
+        if (!u) return own(k, cur);
+        return w.events.some((e) => u.covers.includes(questionTemplate(e.input))) ? { value: umbrellaAnswer(u, w.events, isClosed) } : undefined;
+      };
+      let o: Walk;
+      try { o = walk(applied.data, config, answers, bankOrder(config), BOUND, () => {}); } catch (e) {
+        errors.push(`${name}: ${c.group}: ${c.id}: ${e instanceof Unanswered ? `asks ${e.message}, which the return does not answer` : String(e)}`);
+        continue;
+      }
+      // A refusal names the line its gate read, which is now the gate line: compare with the gate line's name undone.
+      // A refused return is compared on its refusals only: its other targets may stay unknown, and an answered
+      // umbrella can settle more of them than the walk as built did.
+      const key = (k: string) => (w.status === "refused" ? JSON.stringify((JSON.parse(k) as { kind?: string }[]).filter((v) => v?.kind === "refusal")) : k);
+      if (o.status !== w.status || key(unGated(o.valuesKey, us)) !== key(w.valuesKey)) errors.push(`${name}: ${c.group}: ${c.id}: a different ${o.status !== w.status ? `status (${w.status} to ${o.status})` : "value"}`);
+      const ids = new Set(us.map((u) => u.id));
+      const asked = o.events.filter((e) => ids.has(e.input));
+      out.push({ c, status: w.status, before: w.events.length, after: o.events.length, umbrellaAsked: asked.length, umbrellaYes: asked.filter((e) => e.value === true).length });
+    }
+    results.set(name, out);
+  }
+  return { results, errors, unwalkable };
+}
+
+function whatIfReport(results: Map<string, Delta[]>, unwalkable: number, kept: string): string {
+  const typical = (d: Delta) => d.c.profile === "full" && d.c.group !== "minimal returns" && d.status === "complete";
+  const views: [string, (d: Delta) => boolean][] = [
+    ["Full profile, complete (Stage 5 and generated)", typical],
+    ["Minimal: every gate closed", (d) => d.c.id === "every gate closed"],
+    ["All complete returns", (d) => d.status === "complete"],
+    ["All returns, refused included", () => true],
+  ];
+  const out: string[] = [
+    "# Umbrella gates: questions saved (what-if)",
+    "",
+    "Written by `node engine/dist/main.js interview-length --what-if --write` (engine/src/interview-length.ts and",
+    "engine/src/umbrella-what-if.ts; deterministic, no model calls). Each proposed umbrella of the",
+    "umbrella gates design (2026-11-10) is put into a copy of the built data in memory (a new Bool input; a gate line",
+    "`<input>_if_<umbrella>` in place of each gated input in every reader; a roster's readers under the same `choose`), and",
+    "every return of `interview_length.md` is walked in today's order as built and with the umbrella. The umbrella is",
+    "answered yes exactly when the walk as built answered one of its inputs with something other than false, 0 or none,",
+    "which is the truthful answer for these returns; both walks reach the same status and values on every return (checked;",
+    "a difference fails the run). The forms in the repository are unchanged.",
+    "",
+    "*Saved* is questions asked as built minus questions asked with the umbrella (the umbrella question counted), as a mean",
+    "per return of the view. The returns are synthetic and answer nearly every rare question no, so the saving here is close",
+    "to the most an umbrella can save; the design weighs it by the share answering yes.",
+    "",
+    `Returns not walkable as built (skipped): ${unwalkable}.`,
+    "",
+    "| Scenario | Umbrella asked (returns) | Answered yes | " + views.map(([v]) => `${v}: saved (mean)`).join(" | ") + " | Full profile: before → after |",
+    "|---|---|---|" + views.map(() => "---|").join("") + "---|",
+  ];
+  for (const [name, ds] of results) {
+    const asked = ds.filter((d) => d.umbrellaAsked > 0).length;
+    const yes = ds.filter((d) => d.umbrellaYes > 0).length;
+    const cells = views.map(([, f]) => { const xs = ds.filter(f); return xs.length ? f1(mean(xs.map((d) => d.before - d.after))) : "-"; });
+    const t = ds.filter(typical);
+    out.push(`| ${name} | ${asked} of ${ds.length} | ${yes} | ${cells.join(" | ")} | ${f1(mean(t.map((d) => d.before)))} → ${f1(mean(t.map((d) => d.after)))} |`);
+  }
+  out.push("", "## Per return, full profile", "", "Questions asked as built, then the saving under each scenario.", "");
+  const names = [...results.keys()];
+  const first = results.get(names[0]!)!;
+  out.push(`| Return | Status | As built | ${names.join(" | ")} |`, `|---|---|---|${names.map(() => "---|").join("")}`);
+  first.forEach((d, i) => {
+    if (d.c.profile !== "full") return;
+    out.push(`| ${d.c.id} | ${d.status} | ${d.before} | ${names.map((n) => { const x = results.get(n)![i]!; return String(x.before - x.after); }).join(" | ")} |`);
+  });
+  out.push("", MARKER, kept);
+  return out.join("\n").replace(/\n+$/, "\n");
+}
+
+function whatIf(write: boolean): number {
+  const ctx = context();
+  const t0 = performance.now();
+  const scenarios: [string, Umbrella[]][] = [
+    ...UMBRELLAS.map((u): [string, Umbrella[]] => [`\`${u.id}\``, [u]]),
+    ["**recommended together**", UMBRELLAS.filter((u) => RECOMMENDED.includes(u.id))],
+  ];
+  const { results, errors, unwalkable } = whatIfRun(ctx, scenarios);
+  console.log(`  ${scenarios.length} scenarios over ${results.get(scenarios[0]![0])!.length} returns, ${((performance.now() - t0) / 1000).toFixed(1)} s`);
+  for (const [name, ds] of results) {
+    const t = ds.filter((d) => d.c.profile === "full" && d.c.group !== "minimal returns" && d.status === "complete");
+    console.log(`  ${name}: full-profile complete mean saved ${f1(mean(t.map((d) => d.before - d.after)))}`);
+  }
+  if (write) {
+    const old = existsSync(WHAT_IF_REPORT) ? readFileSync(WHAT_IF_REPORT, "utf8") : "";
+    const kept = old.includes(MARKER) ? old.slice(old.indexOf(MARKER) + MARKER.length) : "\n";
+    writeFileSync(WHAT_IF_REPORT, whatIfReport(results, unwalkable, kept));
+    console.log(`  wrote ${WHAT_IF_REPORT}`);
+  }
+  for (const e of errors) console.error(`  ${e}`);
+  console.log(`interview-length --what-if: ${errors.length} problem(s)`);
+  return errors.length ? 1 : 0;
 }
