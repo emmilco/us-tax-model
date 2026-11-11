@@ -10,7 +10,7 @@ import type { ValidateFunction } from "ajv";
 import { isMarkedLine, stableStringify } from "./util.js";
 import { entrySyntax, type InterviewData, type RosterChoice } from "./interview.js";
 import { checkInterview, checkSalesInterview } from "./interview-check.js";
-import { defaultsProblems, loadFixtureCases, walkedCases, yearDefaultsFiles } from "./fixture-inputs.js";
+import { checkedCases, consistencyProblems, defaultsProblems, loadFixtureCases, walkedCases, yearDefaultsFiles } from "./fixture-inputs.js";
 import { runChecks } from "./check.js";
 import { isStructured, parseStructured, textSummary } from "./text.js";
 import { SPOUSE_PHRASE, SPOUSE_POSSESSIVE, spousePhraseNearMisses } from "./spouse-wording.js";
@@ -438,6 +438,8 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   // tools/fixtures_year.py carries them over, which needs this build.
   // The fixtures' test-data defaults: one per input and roster, each a value the input accepts.
   if (errors.length === 0) errors.push(...defaultsProblems(data, yearDefaultsFiles()));
+  // No case takes a default that its other answers contradict, by the rules the defaults files declare.
+  if (errors.length === 0) errors.push(...consistencyProblems(data, yearDefaultsFiles(), checkedCases()));
   if (!existsSync(yearPath("fixtures"))) stats.push(`interview path checks skipped: no fixtures/${YEAR}/ yet`);
   else if (errors.length === 0) errors.push(...checkInterview(data, interview), ...checkSalesInterview(data, salesInterview, walkedCases("sales", data)), ...checkSalesInterview(data, stage4Interview, walkedCases("stage4", data)), ...checkSalesInterview(data, fullInterview, walkedCases("full", data)));
   // The New York profile walks the New York fixtures' paths (fixtures/ny/<year>/), once they exist.

@@ -12,7 +12,8 @@ Compared for each pair, as flat fields named by their path:
   - the form line (forms/<year>/<doc>.yaml): printed, label, type, shown_when, expr (structure, operands and
     the question wording expr.source), cite, refuses (gate, form, remedy, cite), ambiguity and any other key;
   - the question bank entry (interview/<year>/questions.yaml), as interview.<key> (order, help, ...);
-  - the test-data default (fixtures/<year>/defaults.json), as fixture_default.value and .reason.
+  - the test-data default (fixtures/<year>/defaults.json), as fixture_default.value, .reason and, where the
+    default has a withholding condition, .withheld.
 
 reviews/<year>/twins.json declares what is compared and every intended difference:
   sides        the two documents, and `local`, the pattern of the local ids that form the blocks

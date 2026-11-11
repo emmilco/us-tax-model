@@ -19,7 +19,8 @@
         "$w2@person[taxpayer]": [
           "migrated"
         ],
-        "person[taxpayer].w2[migrated].box1": 6175000
+        "person[taxpayer].w2[migrated].box1": 6175000,
+        "f4952.has_interest": true
       },
       "expect": {
         "f1040.line16": {

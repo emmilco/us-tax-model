@@ -1,6 +1,7 @@
 // The fixture-defaults guard (owner decision; engine/src/fixture-inputs.ts). Adding a default for a new input needs
-// only the normal tier. Changing the value of an existing default changes the inputs of every case that takes it, so
-// such a commit must carry the affected-cases report's acknowledgement in its message, one line per changed default:
+// only the normal tier. Changing the value of an existing default, or the condition under which it is withheld,
+// changes the inputs of every case that takes it, so such a commit must carry the affected-cases report's
+// acknowledgement in its message, one line per changed default:
 //
 //   Fixture-default-changed: <input template> (<n> cases)
 //
@@ -21,11 +22,18 @@ const FI = await import(resolve(ROOT, "engine/dist/fixture-inputs.js"));
 
 const ACK = /^Fixture-default-changed: (\S+) \((\d+) cases?\)\s*$/;
 
-/** The defaults whose value differs between two lists of entries (inputs present in both). */
+/** What a default resolves by: its value and the tests under which it is withheld (null when it has none). */
+const resolvesBy = (d) => ({ value: d.value, withheld_when: d.withheld?.when ?? null });
+
+/** The defaults whose value or withholding condition differs between two lists of entries (inputs present in both);
+ * `from` and `to` are the values, and `when` the old and new conditions where the condition differs. */
 export function changedDefaults(before, after) {
-  const old = new Map(before.map((d) => [d.input, d.value]));
-  return after.filter((d) => old.has(d.input) && JSON.stringify(old.get(d.input)) !== JSON.stringify(d.value))
-    .map((d) => ({ input: d.input, from: old.get(d.input), to: d.value }));
+  const old = new Map(before.map((d) => [d.input, resolvesBy(d)]));
+  const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  return after.filter((d) => old.has(d.input) && !same(old.get(d.input), resolvesBy(d))).map((d) => {
+    const [b, a] = [old.get(d.input), resolvesBy(d)];
+    return { input: d.input, from: b.value, to: a.value, ...(same(b.withheld_when, a.withheld_when) ? {} : { when: [b.withheld_when, a.withheld_when] }) };
+  });
 }
 
 /** For each changed default, the ids of the cases (taking defaults) whose resolved inputs it changes. `cases`:
@@ -82,7 +90,9 @@ function commitMsg(msgFile) {
     console.log(`Fixture defaults changed in ${y} (affected-cases report):`);
     for (const ch of changes) {
       const ids = affected.get(ch.input);
-      console.log(`  ${ch.input}: ${JSON.stringify(ch.from)} -> ${JSON.stringify(ch.to)}; ${ids.length} cases' inputs change${ids.length ? ": " + ids.slice(0, 20).join(", ") + (ids.length > 20 ? `, and ${ids.length - 20} more` : "") : ""}`);
+      const what = [JSON.stringify(ch.from) === JSON.stringify(ch.to) ? [] : [`${JSON.stringify(ch.from)} -> ${JSON.stringify(ch.to)}`],
+        ch.when ? [`withheld when ${JSON.stringify(ch.when[0])} -> ${JSON.stringify(ch.when[1])}`] : []].flat().join("; ");
+      console.log(`  ${ch.input}: ${what}; ${ids.length} cases' inputs change${ids.length ? ": " + ids.slice(0, 20).join(", ") + (ids.length > 20 ? `, and ${ids.length - 20} more` : "") : ""}`);
     }
     problems.push(...ackProblems(readFileSync(msgFile, "utf8"), affected));
   }
@@ -110,7 +120,19 @@ function selfTest() {
   assert.equal(ackProblems("x\n", affected).length, 1, "an unacknowledged change is refused");
   assert.equal(ackProblems("Fixture-default-changed: f1040.status (2 cases)", affected).length, 1, "a wrong count is refused");
   assert.equal(ackProblems("Fixture-default-changed: f1040.status (1 case)\nFixture-default-changed: person.tin (0 cases)", affected).length, 1, "acknowledging an unchanged default is refused");
-  console.log("defaults-guard self-test: changed defaults found, affected cases counted, acknowledgements checked");
+  // A withholding condition added, changed or removed is a change too; its reason is not.
+  const when = (status) => [{ input: "f1040.status", is: status }];
+  const plain = [{ input: "f1040.status", value: "single" }, { input: "$person", value: ["taxpayer"] }, { input: "person.tin", value: true }];
+  const conditional = (status, reason = "r") => plain.map((d) => d.input === "person.tin" ? { ...d, withheld: { when: when(status), reason } } : d);
+  assert.deepEqual(changedDefaults(plain, conditional("mfj")), [{ input: "person.tin", from: true, to: true, when: [null, when("mfj")] }], "an added condition is a change");
+  assert.deepEqual(changedDefaults(conditional("mfj"), conditional("hoh")).map((c) => c.input), ["person.tin"], "a changed condition is a change");
+  assert.deepEqual(changedDefaults(conditional("mfj"), plain).map((c) => c.input), ["person.tin"], "a removed condition is a change");
+  assert.deepEqual(changedDefaults(conditional("mfj"), conditional("mfj", "another reason")), [], "a condition's reason is not a change");
+  const added = changedDefaults(plain, conditional("mfj"));
+  const withheld = affectedCases(data, [...cases, { id: "e", file: "f1040.json", j: "federal", inputs: { "f1040.status": "mfj" } }, { id: "f", file: "f1040.json", j: "federal", inputs: { "f1040.status": "mfj", "person[taxpayer].tin": true } }],
+    { federal: [plain, conditional("mfj")], ny: [[], []] }, added);
+  assert.deepEqual(withheld.get("person.tin"), ["e"], "only a case in which the condition holds and which takes the default is affected");
+  console.log("defaults-guard self-test: changed values and withholding conditions found, affected cases counted, acknowledgements checked");
 }
 
 const args = process.argv.slice(2);

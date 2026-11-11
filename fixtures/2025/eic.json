@@ -3118,7 +3118,8 @@
         ],
         "dependent[child].married": true,
         "f1040.status": null,
-        "s179.line10": null
+        "s179.line10": null,
+        "household.unmarried": null
       },
       "expect": {
         "eic.limit": {

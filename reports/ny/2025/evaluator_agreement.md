@@ -27,13 +27,13 @@ The last two columns count, among them, the lines of the New York documents.
 
 | Kind | Fixture cases | Generated returns | New York lines, fixture cases | New York lines, generated returns |
 | --- | --- | --- | --- | --- |
-| bool | 376244 | 384715 | 29556 | 36830 |
+| bool | 375975 | 384715 | 29556 | 36830 |
 | count | 34021 | 41545 | 2026 | 2210 |
 | enum | 3674 | 10288 | 0 | 0 |
 | money | 519764 | 660960 | 51363 | 50598 |
 | rate | 4273 | 6758 | 0 | 0 |
 | refusal | 6480 | 135406 | 4165 | 26014 |
-| unknown | 261293 | 11763 | 9198 | 182 |
+| unknown | 261562 | 11763 | 9198 | 182 |
 | all | 1205749 | 1251435 | 96308 | 115834 |
 
 Not compared. Each of these counts as a difference and fails the run.

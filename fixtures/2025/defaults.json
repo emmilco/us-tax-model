@@ -1,6 +1,6 @@
 {
   "tax_year": 2025,
-  "note": "Test-data defaults (engine/src/fixture-inputs.ts): every input a fixture case does not state takes its template's value here; null in a case withholds one. The evaluator, the command-line program and the interview never read this file. Changing an existing value needs an acknowledged affected-cases report (tools/defaults_guard.mjs); adding one for a new input needs only the normal tier.",
+  "note": "Test-data defaults (engine/src/fixture-inputs.ts): every input a fixture case does not state takes its template's value here; null in a case withholds one. A default with \"withheld\" is left out where every test of its \"when\" holds on the case's other answers, stated or defaulted. \"consistency\" lists answers one filer cannot give together (\"never\"); the build refuses a case that takes a default against such a rule, but for what the rule lists as \"open\". The evaluator, the command-line program and the interview never read this file. Changing an existing value or withholding condition needs an acknowledged affected-cases report (tools/defaults_guard.mjs); adding a default for a new input needs only the normal tier. tools/README.md, \"Test-data defaults\".",
   "defaults": [
     {
       "input": "$asset",
@@ -402,7 +402,32 @@
     {
       "input": "dependent.edu_tin_issued",
       "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so.",
+      "withheld": {
+        "when": [
+          {
+            "input": "dependent.edu_line23",
+            "is": false
+          },
+          {
+            "input": "dependent.edu_line24",
+            "is": true
+          },
+          {
+            "input": "dependent.edu_line25",
+            "is": false
+          },
+          {
+            "input": "dependent.edu_line26",
+            "is": false
+          },
+          {
+            "input": "dependent.edu_ein",
+            "is": true
+          }
+        ],
+        "reason": "A student whose answers to Form 8863 lines 23 to 26 and whose institution's EIN allow the American opportunity credit is not asked this, and no is not a truthful answer for a student with a number; a case whose student's number was only applied for states it."
+      }
     },
     {
       "input": "dependent.eic_ssn",
@@ -426,8 +451,8 @@
     },
     {
       "input": "dependent.lawful",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+      "value": true,
+      "reason": "true: a relationship in a scenario is lawful under local law unless the scenario says it is not."
     },
     {
       "input": "dependent.married",
@@ -657,7 +682,16 @@
     {
       "input": "f1095a.b_counted",
       "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so.",
+      "withheld": {
+        "when": [
+          {
+            "count": "$f1095a",
+            "is": 1
+          }
+        ],
+        "reason": "A return's only Form 1095-A is counted, so no is not a truthful answer there; the question is asked only where there are two or more forms."
+      }
     },
     {
       "input": "f1095a.c_total",
@@ -1462,7 +1496,19 @@
     {
       "input": "household.married",
       "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so.",
+      "withheld": {
+        "when": [
+          {
+            "input": "f1040.status",
+            "in": [
+              "mfj",
+              "mfs"
+            ]
+          }
+        ],
+        "reason": "A filer who files jointly or separately is married, so no is not a truthful answer there; a joint or separate case whose scenario is a filer not married at the end of the year states it."
+      }
     },
     {
       "input": "household.qss_eligible",
@@ -1482,7 +1528,19 @@
     {
       "input": "household.unmarried",
       "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so.",
+      "withheld": {
+        "when": [
+          {
+            "input": "f1040.status",
+            "in": [
+              "single",
+              "qss"
+            ]
+          }
+        ],
+        "reason": "A single filer or a qualifying surviving spouse is unmarried, so no is not a truthful answer there; the question is asked only of a head of household."
+      }
     },
     {
       "input": "interest.amount",
@@ -2913,6 +2971,85 @@
       "input": "w2.g_governmental",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    }
+  ],
+  "consistency": [
+    {
+      "never": [
+        {
+          "input": "household.married",
+          "is": false
+        },
+        {
+          "input": "household.unmarried",
+          "is": false
+        },
+        {
+          "input": "household.spouse_died_2025",
+          "is": false
+        }
+      ],
+      "reason": "A filer whose spouse did not die in the year was either married or unmarried at its end."
+    },
+    {
+      "never": [
+        {
+          "input": "f4952.has_interest",
+          "is": false
+        },
+        {
+          "input": "f4952.line4g",
+          "not": 0
+        }
+      ],
+      "reason": "The election on Form 4952 line 4g is made by a filer with investment interest expense."
+    },
+    {
+      "never": [
+        {
+          "input": "person.born_before_2001",
+          "is": true
+        },
+        {
+          "input": "person.edu_born_2002",
+          "is": false
+        }
+      ],
+      "reason": "A person born before January 2, 2001 was born before January 2, 2002.",
+      "open": {
+        "(defaults)": "The filer of the defaults is 25 or older, and the defaults answer no to this question; withholding or changing that no changes lines of the education credit cases that read it.",
+        "stage19.mut.aoc_student_20_not_fulltime": "States a filer born on or after January 2, 2002 and takes the default yes; the truthful no changes the values of its earned income credit lines.",
+        "stage19.mut.aoc_joint_line7_unasked": "States a filer born on or after January 2, 2002 and takes the default yes; the truthful no changes the values of its earned income credit lines."
+      }
+    },
+    {
+      "never": [
+        {
+          "input": "person.born_before_2001",
+          "is": true
+        },
+        {
+          "input": "person.edu_born_2007",
+          "is": false
+        }
+      ],
+      "reason": "A person born before January 2, 2001 was born before January 2, 2007.",
+      "open": {
+        "(defaults)": "The filer of the defaults is 25 or older, and the defaults answer no to this question; withholding or changing that no changes lines of the education credit cases that read it."
+      }
+    },
+    {
+      "never": [
+        {
+          "input": "person.edu_born_2002",
+          "is": true
+        },
+        {
+          "input": "person.edu_born_2007",
+          "is": false
+        }
+      ],
+      "reason": "A person born before January 2, 2002 was born before January 2, 2007."
     }
   ]
 }

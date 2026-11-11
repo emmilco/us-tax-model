@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# Refuses a commit that changes the value of an existing fixture default (fixtures/<year>/defaults.json,
-# fixtures/ny/<year>/defaults.json) unless its message acknowledges the affected-cases report, one line per
-# changed default: "Fixture-default-changed: <input> (<n> cases)" (tools/defaults_guard.mjs prints the report).
-# Adding a default for a new input needs no acknowledgement. Enabled with the other hooks (core.hooksPath).
+# Refuses a commit that changes the value of an existing fixture default, or the condition under which it is
+# withheld (fixtures/<year>/defaults.json, fixtures/ny/<year>/defaults.json), unless its message acknowledges the
+# affected-cases report, one line per changed default: "Fixture-default-changed: <input> (<n> cases)"
+# (tools/defaults_guard.mjs prints the report). Adding a default for a new input needs no acknowledgement. Enabled
+# with the other hooks (core.hooksPath).
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 if git rev-parse -q --verify HEAD >/dev/null && git diff --cached --quiet HEAD -- 'fixtures/*defaults.json'; then exit 0; fi

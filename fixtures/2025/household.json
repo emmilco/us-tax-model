@@ -389,8 +389,7 @@
         "dependent[hm].relationship": "household_member",
         "dependent[hm].age": 40,
         "dependent[hm].qr_all_year": true,
-        "dependent[hm].supported": true,
-        "dependent[hm].lawful": null
+        "dependent[hm].supported": true
       },
       "expect": {
         "household.hoh_absence": {
@@ -1727,7 +1726,9 @@
         "dependent[child].age": 30,
         "dependent[child].spouse_relative": true,
         "dependent[child].supported": true,
-        "s179.line10": null
+        "s179.line10": null,
+        "household.married": false,
+        "household.unmarried": true
       },
       "expect": {
         "household.filing_status_conflict": {
@@ -1777,7 +1778,8 @@
         "dependent[child].relationship": "other",
         "dependent[child].age": 30,
         "dependent[child].spouse_relative": true,
-        "dependent[child].supported": true
+        "dependent[child].supported": true,
+        "household.married": false
       },
       "expect": {
         "household.filing_status_conflict": {

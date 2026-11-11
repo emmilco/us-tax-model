@@ -418,7 +418,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.line10": null,
+        "f4952.has_interest": true
       },
       "expect": {
         "f4952.election": {
@@ -993,7 +994,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.line10": null,
+        "f4952.has_interest": true
       },
       "expect": {
         "f4952.line4c": {
