@@ -1,11 +1,11 @@
 # Night 2026-11-10/11: phase 3 fix lanes landed, display rewording, five tech-debt items
 
-**State:** `main` is pushed through `e29575ff` (the next commit after it holds this entry's update, BUG-0605, BUG-0606,
-T-280 and T-281). No release has been cut since `r2026.11.06.1`. One lane is still running: T-278, a batch mode for the
-Lean binary; it merges with a full run on main when it reports. Review spend in the session, from
-`.transcription/costs.jsonl`: $81.59 in 140 calls ($24.87 in 59 calls on `claude-opus-5-5` before the owner's switch,
-$56.71 in 81 calls on `claude-fable-5-2` after it). No open rulings; transcription, render and class M logs current.
-`canonical/` in the main checkout was rebuilt at `e29575ff`, so a UI server started now shows the merged interview.
+**State:** `main` is pushed through `7e2172ad` (the next commit after it holds this entry's update). No release has
+been cut since `r2026.11.06.1`. Every lane launched in the session has landed and nothing is running. Review spend in
+the session, from `.transcription/costs.jsonl`: $81.59 in 140 calls ($24.87 in 59 calls on `claude-opus-5-5` before the
+owner's switch, $56.71 in 81 calls on `claude-fable-5-2` after it). No open rulings; transcription, render and class M
+logs current. `canonical/` in the main checkout was rebuilt at `7e2172ad`, so a UI server started now shows the merged
+interview.
 
 **Landed (first-parent, oldest first):**
 - `38f7b30c`, `d7c84578`, `3f589ccc`: lanes F (test-serve), B (question review tool, first full pass, 674 findings
@@ -43,12 +43,15 @@ $56.71 in 81 calls on `claude-fable-5-2` after it). No open rulings; transcripti
   families of the interview-rules catalog): asked-and-unread questions fall from 373 to 31 on a 2,000-return sweep, no
   open question at completion can refuse the return, and the interview-rules baseline is empty (BUG-0603; BUG-0604
   closes BUG-0487 and BUG-0601).
+- `7e2172ad`: T-278. The Lean evaluator answers a batch of cases per process; values byte-identical to the per-case
+  binary on every case. `compare` takes 114 s standalone where it took about 270; inside the full tier
+  `engine_differential` now sets wave 2 alone.
 
 **Morning of 2026-11-11, the owner present.** Three lanes had stopped at about 06:30 on a Fable usage-credit error
 with nothing changed, and were restarted. The owner then decided: the gate lane continues (it was launched overnight on
 the coordinator's recommendation); the remaining 17 interview-rules families and the widening of the check wait until
 he has read docs/2026-11-11_interview_rules_catalog.md; untruthful defaults are handled by conditional withholding
-with a build check (T-277, done); the Lean binary gets a batch mode (T-278, running); the three newly single-gated
+with a build check (T-277, done); the Lean binary gets a batch mode (T-278, done); the three newly single-gated
 inputs stay unmarked and `gated_by` is decided for all such inputs at once (T-281); a mechanical backing for the
 hand-written mutation arguments is opened as T-280, to be done before the remaining families.
 
