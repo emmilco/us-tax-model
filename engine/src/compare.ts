@@ -5,15 +5,15 @@ import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync, mkdirSync
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
-import fc from "fast-check";
 import { loadCanonical } from "./canonical.js";
 import { allTargets, evaluate } from "./eval.js";
 import { isNyDoc } from "./fixture-inputs.js";
 import { loadCases } from "./fixtures.js";
-import { nyReturnArbitrary, sampleReturns } from "./generate.js";
+import { CORPUS_SEED, CORPUS_SIZE, corpusReturns } from "./generate.js";
+import { coverageCorpus } from "./properties.js";
 import type { CanonicalData, Inputs } from "./types.js";
 import type { Value } from "./eval.js";
-import { NY_MODE, yearPath } from "./year.js";
+import { NY_MODE, YEAR, YEAR_ARGS, yearPath } from "./year.js";
 import { reportName, reportPath } from "./year.js";
 import { TYPED_CHOOSE_CASES, typedChooseData, valueText } from "./check-selftest.js";
 
@@ -22,11 +22,15 @@ const LEAN_BIN = join(ROOT, "lean", ".lake", "build", "bin", "taxeval");
 const CANON = yearPath("canonical");
 
 // The generated corpus comes from the general generator (generate.ts), which draws every declared input, so the
-// corpus follows the model. Its seed and size are those of the properties check: the branch coverage the properties
-// report lists is then the coverage of the returns compared here. At this size the number of inputs the corpus
-// varies has levelled off (doubling it adds about one input in a hundred).
-const SEED = 7;
-const GENERATED = 400;
+// corpus follows the model. It is the corpus of the properties check (generate.ts corpusReturns, which both
+// commands call): the branch coverage the properties report lists is then the coverage of the returns compared here.
+// At the default size the number of inputs the corpus varies has levelled off (doubling it adds about one input in a
+// hundred).
+//
+// Both evaluators read the whole canonical build, so each run compares the lines of every document, federal and
+// New York. On a federal case, which gives no New York answers, most New York lines are unknown; the rest (constants,
+// lines that read federal lines only, refusals that reach them) have values, and the federal fixture cases are
+// compared by no other run, so the New York lines stay in the federal run. The report counts them apart.
 
 // The reason of the Lean evaluator's unknown for a line it ran out of steps on (Eval.lean, budgetExhausted).
 const BUDGET_EXHAUSTED = "step budget exhausted";
@@ -43,12 +47,47 @@ function fixtureCases(): Case[] {
   return file.cases.map((c) => ({ id: c.id, inputs: c.inputs }));
 }
 
-/** The generated whole returns: federal returns (the inputs of the federal documents only) or, with --ny, federal
- * returns that also carry the answers of the New York documents. */
+/** The generated whole returns the comparison runs on: the corpus shared with the properties check. Federal returns
+ * (the inputs of the federal documents only) or, with `ny`, the same returns each with the answers of the New York
+ * documents. */
+export function comparedCorpus(all: CanonicalData, ny: boolean): Inputs[] {
+  return corpusReturns(all, ny);
+}
+
 function generatedCases(all: CanonicalData): Case[] {
-  const federal = { ...all, forms: all.forms.filter((d) => !isNyDoc(d)), defs: all.defs.filter((d) => !isNyDoc(d)) };
-  const corpus = NY_MODE ? fc.sample(nyReturnArbitrary(all), { seed: SEED, numRuns: GENERATED }) : sampleReturns(federal, GENERATED, SEED);
-  return corpus.map((inputs, i) => ({ id: `generated.${String(i).padStart(3, "0")}`, inputs }));
+  return comparedCorpus(all, NY_MODE).map((inputs, i) => ({ id: `generated.${String(i).padStart(3, "0")}`, inputs }));
+}
+
+// The size the corpus self-test's second process is given, to see that both commands follow PROPERTY_RUNS.
+const OVERRIDE_SIZE = 3;
+
+/** `compare --corpus-self-test`: the comparison's generated returns are the properties check's. For federal returns
+ * and for returns with New York answers, the returns this module compares (comparedCorpus) and the returns the
+ * properties report's coverage is of (properties.ts coverageCorpus) must be the same returns, as many as the shared
+ * size; a return with New York answers must carry every answer of the federal return of its index; and a second
+ * process, given another size in PROPERTY_RUNS, must find both corpora of that size, so neither command keeps a
+ * size of its own. Returns the exit status. */
+export function corpusSelfTest(): number {
+  const all = loadCanonical();
+  const problems: string[] = [];
+  const federal = comparedCorpus(all, false);
+  const withNy = comparedCorpus(all, true);
+  for (const [name, compared, covered] of [["federal", federal, coverageCorpus(all, false)], ["New York", withNy, coverageCorpus(all, true)]] as const) {
+    if (compared.length !== CORPUS_SIZE) problems.push(`${name}: the comparison has ${compared.length} generated returns, the shared size is ${CORPUS_SIZE}`);
+    if (covered.length !== CORPUS_SIZE) problems.push(`${name}: the properties check has ${covered.length} generated returns, the shared size is ${CORPUS_SIZE}`);
+    const differing = compared.findIndex((inputs, i) => JSON.stringify(inputs) !== JSON.stringify(covered[i]));
+    if (compared.length !== covered.length || differing >= 0) problems.push(`${name}: the comparison's generated returns are not the properties check's (${compared.length} and ${covered.length} returns${differing >= 0 ? `, first difference at return ${differing}` : ""})`);
+  }
+  const apart = federal.findIndex((inputs, i) => Object.entries(inputs).some(([k, v]) => JSON.stringify(withNy[i]?.[k]) !== JSON.stringify(v)));
+  if (apart >= 0) problems.push(`return ${apart} with New York answers does not carry every answer of federal return ${apart}`);
+  if (process.env["PROPERTY_RUNS"] === undefined) {
+    const proc = spawnSync(process.execPath, [process.argv[1]!, "compare", "--corpus-self-test", ...YEAR_ARGS], { encoding: "utf-8", env: { ...process.env, PROPERTY_RUNS: String(OVERRIDE_SIZE) } });
+    const want = `compare corpus self-test: ${OVERRIDE_SIZE} federal returns and ${OVERRIDE_SIZE} with New York answers`;
+    if (proc.status !== 0 || !proc.stdout.startsWith(want)) problems.push(`with PROPERTY_RUNS=${OVERRIDE_SIZE} the two commands do not both use ${OVERRIDE_SIZE} returns: ${(proc.stdout + proc.stderr).trim()}`);
+  }
+  for (const p of problems) console.error(`compare corpus self-test: ${p}`);
+  console.log(`compare corpus self-test: ${federal.length} federal returns and ${withNy.length} with New York answers (seed ${CORPUS_SEED}) are the properties check's, ${problems.length} problem(s)`);
+  return problems.length ? 1 : 0;
 }
 
 function normalize(v: Value | Record<string, unknown>): string {
@@ -85,13 +124,13 @@ function tsEvaluate(data: CanonicalData, rootLines: string[], inputs: Inputs): R
 }
 
 /** What one case's comparison found. A line is compared when both evaluators give it and the Lean evaluator
- * finished it; `kinds` counts the compared lines by the kind of the TypeScript value. A line only one evaluator
- * gives (`oneSided`) and a line the Lean evaluator ran out of steps on (`unfinished`) are not compared, and each
- * is a problem. */
-interface Comparison { problems: string[]; kinds: Record<string, number>; oneSided: number; unfinished: number }
+ * finished it; `kinds` counts the compared lines by the kind of the TypeScript value, and `nyKinds` those of them
+ * that are lines of the New York documents. A line only one evaluator gives (`oneSided`) and a line the Lean
+ * evaluator ran out of steps on (`unfinished`) are not compared, and each is a problem. */
+interface Comparison { problems: string[]; kinds: Record<string, number>; nyKinds: Record<string, number>; oneSided: number; unfinished: number }
 
 function compareValues(tsValues: Record<string, Value>, leanValues: LeanValues): Comparison {
-  const result: Comparison = { problems: [], kinds: {}, oneSided: 0, unfinished: 0 };
+  const result: Comparison = { problems: [], kinds: {}, nyKinds: {}, oneSided: 0, unfinished: 0 };
   const tsKeys = Object.keys(tsValues).sort();
   const missingInLean = tsKeys.filter((k) => !(k in leanValues));
   const missingInTs = Object.keys(leanValues).sort().filter((k) => !(k in tsValues));
@@ -107,6 +146,7 @@ function compareValues(tsValues: Record<string, Value>, leanValues: LeanValues):
     }
     const kind = tsValues[key]!.kind;
     result.kinds[kind] = (result.kinds[kind] ?? 0) + 1;
+    if (isNyDoc({ id: key })) result.nyKinds[kind] = (result.nyKinds[kind] ?? 0) + 1;
     const a = normalize(tsValues[key]!);
     const b = normalize(lean);
     if (a !== b) result.problems.push(`${key}: ts=${a} lean=${b}`);
@@ -256,6 +296,7 @@ export function compareEvaluators(): number {
   let oneSided = 0;
   let unfinished = 0;
   const kinds: Record<string, [number, number]> = {};
+  const nyKinds: Record<string, [number, number]> = {};
   const failureDetails: string[] = [];
 
   try {
@@ -275,6 +316,7 @@ export function compareEvaluators(): number {
       oneSided += found.oneSided;
       unfinished += found.unfinished;
       for (const [kind, n] of Object.entries(found.kinds)) (kinds[kind] ??= [0, 0])[index < fixtures.length ? 0 : 1] += n;
+      for (const [kind, n] of Object.entries(found.nyKinds)) (nyKinds[kind] ??= [0, 0])[index < fixtures.length ? 0 : 1] += n;
       if (found.problems.length > 0) {
         failures++;
         failureDetails.push(`${c.id}: ${found.problems.slice(0, 4).join("; ")}${found.problems.length > 4 ? ` … +${found.problems.length - 4}` : ""}`);
@@ -284,14 +326,31 @@ export function compareEvaluators(): number {
     rmSync(tmp, { recursive: true, force: true });
   }
 
-  const total = (column: 0 | 1) => Object.values(kinds).reduce((sum, n) => sum + n[column], 0);
+  const total = (column: 0 | 1, of = kinds) => Object.values(of).reduce((sum, n) => sum + n[column], 0);
   const comparedLines = total(0) + total(1);
+  const nyLines = total(0, nyKinds) + total(1, nyKinds);
+  const nyUnknown = (nyKinds["unknown"]?.[0] ?? 0) + (nyKinds["unknown"]?.[1] ?? 0);
   const report: string[] = [];
   report.push("# Evaluator agreement — TypeScript engine vs Lean reference");
   report.push("");
-  report.push(`Every fixture case and ${GENERATED} generated whole returns${NY_MODE ? " with New York answers" : ""} (\`generate.ts\` \`${NY_MODE ? "nyReturnArbitrary" : "sampleReturns"}\`, fast-check, seed ${SEED}) were evaluated`);
+  report.push(`Every fixture case and ${generated.length} generated whole returns${NY_MODE ? " with New York answers" : ""} (\`generate.ts\` \`${NY_MODE ? "nyReturnArbitrary" : "sampleReturns"}\`, fast-check, seed ${CORPUS_SEED}: the corpus of the properties check) were evaluated`);
   report.push("by both independently written evaluators; every root form line and every line of every confirmed collection entry");
   report.push("was compared (money cents, counts, rates, booleans, enums, full refusals; unknowns compared by kind).");
+  report.push("");
+  if (NY_MODE) {
+    report.push("This is the New York run. Its cases are the New York fixture cases and the generated returns of the federal run,");
+    report.push("each with the answers of the New York documents added. Both evaluators read the whole build, federal and New York");
+    report.push(`documents alike, so the lines of the federal documents are compared here too: of the ${comparedLines} values, ${nyLines} are lines of`);
+    report.push(`the New York documents (${nyUnknown} of them unknown) and ${comparedLines - nyLines} are lines of the federal documents. The federal run`);
+    report.push(`(\`compare\`, \`reports/${YEAR}/evaluator_agreement.md\`) compares every line on the federal fixture cases and on the same`);
+    report.push("generated returns without New York answers.");
+  } else {
+    report.push("This is the federal run. Its cases are the federal fixture cases and federal generated returns; none gives a New York");
+    report.push("answer. Both evaluators read the whole build, federal and New York documents alike, so the lines of the New York");
+    report.push(`documents are compared here too: ${nyLines} of the ${comparedLines} values, of which ${nyUnknown} are unknown for lack of New York answers`);
+    report.push(`and ${nyLines - nyUnknown} have a value (a constant, a figure from federal lines only, or a refusal). The New York run (\`compare --ny\`,`);
+    report.push(`\`reports/ny/${YEAR}/evaluator_agreement.md\`) compares the New York lines on cases that give New York answers.`);
+  }
   report.push("");
   report.push("| Metric | Value |");
   report.push("| --- | --- |");
@@ -305,10 +364,12 @@ export function compareEvaluators(): number {
   report.push("Line values compared, by the kind of the value. An unknown is a line with no value (an answer it needs was not");
   report.push("given, for example); the two evaluators agree that it is unknown, and its reason is not compared.");
   report.push("");
-  report.push("| Kind | Fixture cases | Generated returns |");
-  report.push("| --- | --- | --- |");
-  for (const kind of Object.keys(kinds).sort()) report.push(`| ${kind} | ${kinds[kind]![0]} | ${kinds[kind]![1]} |`);
-  report.push(`| all | ${total(0)} | ${total(1)} |`);
+  report.push("The last two columns count, among them, the lines of the New York documents.");
+  report.push("");
+  report.push("| Kind | Fixture cases | Generated returns | New York lines, fixture cases | New York lines, generated returns |");
+  report.push("| --- | --- | --- | --- | --- |");
+  for (const kind of Object.keys(kinds).sort()) report.push(`| ${kind} | ${kinds[kind]![0]} | ${kinds[kind]![1]} | ${nyKinds[kind]?.[0] ?? 0} | ${nyKinds[kind]?.[1] ?? 0} |`);
+  report.push(`| all | ${total(0)} | ${total(1)} | ${total(0, nyKinds)} | ${total(1, nyKinds)} |`);
   report.push("");
   report.push("Not compared. Each of these counts as a difference and fails the run.");
   report.push("");

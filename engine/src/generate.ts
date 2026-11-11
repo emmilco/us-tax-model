@@ -2,7 +2,8 @@
 // input of the supported slice, biased toward zeros, small amounts and the
 // boundaries the worksheets branch on. Used by the property tests, by the
 // comparison with the Lean evaluator (compare.ts) and as the seed of the
-// branch-covering inputs for class M hand-work (design 2.10).
+// branch-covering inputs for class M hand-work (design 2.10). The first two
+// share one corpus, defined at the end of this file (corpusReturns).
 //
 // Every declared root input receives a value (money inputs not modelled
 // below are zero nine times in ten), so an `unknown` in a result means the
@@ -1024,4 +1025,30 @@ export function nyReturnArbitrary(all: CanonicalData): fc.Arbitrary<Inputs> {
     }
     return out;
   });
+}
+
+// The corpus of generated returns that the properties check (properties.ts) and the comparison with the Lean
+// evaluator (compare.ts) share: both take its seed, its size and its returns from here, so the branch coverage the
+// properties report lists is the coverage of the returns the comparison compares. PROPERTY_RUNS sets the size for a
+// run of either command; each report states the seed and the number of returns it used.
+export const CORPUS_SEED = 7;
+export const CORPUS_SIZE = corpusSize(process.env["PROPERTY_RUNS"]);
+
+function corpusSize(set: string | undefined): number {
+  if (set === undefined) return 400;
+  if (!/^[1-9][0-9]*$/.test(set)) throw new Error(`PROPERTY_RUNS: expected a whole number of returns, one or more, got '${set}'`);
+  return Number(set);
+}
+
+/** The data without the New York documents. */
+export function federalDocuments(all: CanonicalData): CanonicalData {
+  const isNy = (d: FormDoc) => d.id.startsWith("ny_");
+  return { ...all, forms: all.forms.filter((d) => !isNy(d)), defs: all.defs.filter((d) => !isNy(d)) };
+}
+
+/** The shared corpus: federal returns (the inputs of the federal documents only) or, with `ny`, the same federal
+ * returns each with the answers of the New York documents (nyReturnArbitrary). */
+export function corpusReturns(all: CanonicalData, ny: boolean): Inputs[] {
+  if (ny) return fc.sample(nyReturnArbitrary(all), { seed: CORPUS_SEED, numRuns: CORPUS_SIZE });
+  return sampleReturns(federalDocuments(all), CORPUS_SIZE, CORPUS_SEED);
 }

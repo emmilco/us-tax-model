@@ -33,7 +33,7 @@ import { renderValuesSheet, renderValuesHtml, resultToJson, standingNotices } fr
 import { runConjecture, runEicConjecture } from "./conjecture.js";
 import { coverageReport, evidenceReport, testFixtures, reviewStage2, reviewStage3, reviewStage4, reviewStage5 } from "./fixtures.js";
 import { differential } from "./differential.js";
-import { compareEvaluators } from "./compare.js";
+import { compareEvaluators, corpusSelfTest } from "./compare.js";
 import { runMutation } from "./mutate.js";
 import { runProperties } from "./properties.js";
 import { classmJobs } from "./classm.js";
@@ -169,7 +169,7 @@ if (command === "review-stage5") {
 } else if (command === "differential") {
   process.exit(differential() === 0 ? 0 : 1);
 } else if (command === "compare") {
-  process.exit(compareEvaluators());
+  process.exit(process.argv.includes("--corpus-self-test") ? corpusSelfTest() : compareEvaluators());
 } else if (command === "mutate") {
   process.exit(await runMutation());
 } else if (command === "properties") {
