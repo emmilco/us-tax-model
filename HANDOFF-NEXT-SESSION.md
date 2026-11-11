@@ -1,11 +1,11 @@
 # Night 2026-11-10/11: phase 3 fix lanes landed, display rewording, five tech-debt items
 
-**State:** `main` is pushed through `2be2a2cf` (the next commit after it holds this entry, BUG-0601, BUG-0602 and
-T-276). No release has been cut since `r2026.11.06.1`. Every lane launched in the session has landed; one read-only
-study was still running when this was written (the interview-rules catalog, below). Review spend in the session, from
-`.transcription/costs.jsonl`: $67.46 in 123 calls ($24.87 in 59 calls on `claude-opus-5-5` before the owner's switch,
-$42.59 in 64 calls on `claude-fable-5-2` after it). No open rulings; transcription, render and class M logs current.
-`canonical/` in the main checkout was rebuilt at `2be2a2cf`, so a UI server started now shows the merged wording.
+**State:** `main` is pushed through `e29575ff` (the next commit after it holds this entry's update, BUG-0605, BUG-0606,
+T-280 and T-281). No release has been cut since `r2026.11.06.1`. One lane is still running: T-278, a batch mode for the
+Lean binary; it merges with a full run on main when it reports. Review spend in the session, from
+`.transcription/costs.jsonl`: $81.59 in 140 calls ($24.87 in 59 calls on `claude-opus-5-5` before the owner's switch,
+$56.71 in 81 calls on `claude-fable-5-2` after it). No open rulings; transcription, render and class M logs current.
+`canonical/` in the main checkout was rebuilt at `e29575ff`, so a UI server started now shows the merged interview.
 
 **Landed (first-parent, oldest first):**
 - `38f7b30c`, `d7c84578`, `3f589ccc`: lanes F (test-serve), B (question review tool, first full pass, 674 findings
@@ -34,6 +34,24 @@ $42.59 in 64 calls on `claude-fable-5-2` after it). No open rulings; transcripti
   differences declared in `reviews/2025/twins.json` (BUG-0600).
 - `2be2a2cf`: `tools/check_year_ids.py` refuses any new id that carries a tax year (baseline `tools/year_ids.json`).
 
+- `7710ad87`: T-269. All 626 fixture defaults audited; two that were not truthful answers withheld.
+- `bc0e582a`: T-271. One corpus definition for the Lean comparison and the properties check; `tools/step_output.py`
+  makes check-all require the line each in-step self-test prints. The New York lines stay in the federal run.
+- `1fd531f9`: T-277. Conditional withholding and consistency rules in `defaults.json`; `dependent.lawful` defaults to
+  yes; 65 per-case nulls removed. BUG-0605 and BUG-0606 open.
+- `e29575ff`: gate lane. Five conjunctions on `dependent` and Form 8962 rewritten as nested `choose` (the top four
+  families of the interview-rules catalog): asked-and-unread questions fall from 373 to 31 on a 2,000-return sweep, no
+  open question at completion can refuse the return, and the interview-rules baseline is empty (BUG-0603; BUG-0604
+  closes BUG-0487 and BUG-0601).
+
+**Morning of 2026-11-11, the owner present.** Three lanes had stopped at about 06:30 on a Fable usage-credit error
+with nothing changed, and were restarted. The owner then decided: the gate lane continues (it was launched overnight on
+the coordinator's recommendation); the remaining 17 interview-rules families and the widening of the check wait until
+he has read docs/2026-11-11_interview_rules_catalog.md; untruthful defaults are handled by conditional withholding
+with a build check (T-277, done); the Lean binary gets a batch mode (T-278, running); the three newly single-gated
+inputs stay unmarked and `gated_by` is decided for all such inputs at once (T-281); a mechanical backing for the
+hand-written mutation arguments is opened as T-280, to be done before the remaining families.
+
 **Decisions the owner made in the session (2026-11-10):** fix lanes may make structural changes where wording cannot
 fix a finding; the spouse phrase is the conditional one, shown reworded by filing status; the rule goes on Form 5695,
 IT-201 and f2441 too; lanes run their forms' reviews before committing; from mid-session all agents and review calls
@@ -56,15 +74,16 @@ intelligibility; do not minimize cost, remove cost that returns nothing.
 - Lane 7 also rewords the 32 line labels shown on the interview's values sheet; reports keep stored labels.
 - Lane 6 took the extra readings lane 7 flagged (s1, sli, ssb, household), so four more forms were re-reviewed.
 - The earlier Opus reviews were not rerun on Fable (no measured defect; the instruction read as forward-looking).
-- The interview-rules check was NOT widened and its templates were not fixed (T-276): widening turns main red on about
-  30 templates and the rewrites change form logic.
+- The interview-rules check was not widened (T-276). The top four families were then launched before the owner woke,
+  which he confirmed in the morning; the other 17 await him.
 
 **Open, for the owner:**
-- T-276 / BUG-0601 / BUG-0602: `interview-rules` passes for the three complete returns its seed draws; with 200
-  returns the tool reports 23 problems, and 32 question templates are affected over 1,000 returns (asked and never
-  read, reachable out of order, or left reachable at completion). This bears directly on the phase's goal. Decide
-  which rewrites to make and whether to widen the check. The catalog study writes `/tmp/f1095a/catalog.md` with a
-  tested patch per family; archive it under `docs/` when it is complete.
+- T-276 / BUG-0602: `interview-rules` still classes only the three complete returns its seed draws. Over 5,000
+  generated returns 70 question templates were affected (46 lines, 21 families); four families are fixed. Decide the
+  other 17 (41 lines on 13 more forms, their reviews, one fixture moving from false to unknown on an incomplete
+  state) and whether to widen the check, after T-280. Catalog and a tested patch per family:
+  docs/2026-11-11_interview_rules_catalog.md, docs/patches/2026-11-11_interview_rules/.
+- T-280: 86 hand-written mutation arguments, none checked by a machine; five were added by the gate lane.
 - T-274: must Form 8863 Part III exist once (a build-time template, which the spec does not have), and should the
   unrolled months of Form 8962 and Form 1095-A (2,346 lines) be planned with it?
 - T-261: is a verdict carried under a proven rename acceptable evidence; does the 2025 tree stay under change after
@@ -111,6 +130,10 @@ fix lanes' agents have had no independent read except Form 8962's.
   checked`); a tooling fix uses `Disposition`. Use `tools/new_bug.py`.
 - A lane committed on main's tip, on a tree its own full-tier run passed, merges with no second run: the merged tree
   equals the tested tree. A lane cut from an older tip needs a run on main.
+- Rebuild main (`npm run build`) before committing a merge that changes how fixture defaults resolve: the commit-msg
+  guard counts affected cases with the built engine, and a stale `engine/dist` makes it count 0 and refuse.
+- When two lanes regenerate the same report, take either side at the merge and commit the tree the run tested, which
+  carries the regenerated file; do not hand-merge generated numbers.
 - `carry-back` refuses files changed on both sides: check which copy the committed log was written from (the pass ids
   in the log against the index's count) before `--prefer-worktree`. `.transcription/rerun_summary.json` is only the
   last run's summary.
@@ -120,8 +143,8 @@ fix lanes' agents have had no independent read except Form 8962's.
 - Treat an agent's "current", "none needed" and "grounded in the cited page" as testimony until a check or an
   independent read confirms it.
 
-**Housekeeping left:** 21 lane worktrees under `.claude/worktrees/` (checked: every branch is merged into main and none has
-uncommitted changes) and five `backup/*` branches of replayed lanes can be removed after the owner has looked. Scratch under
+**Housekeeping left:** the lane worktrees under `.claude/worktrees/` (21 checked at 06:00: every branch merged into main,
+none with uncommitted changes; six more lanes have merged since) and five `backup/*` branches of replayed lanes can be removed after the owner has looked. Scratch under
 `/tmp/qfix*`, `/tmp/dedup8863`, `/tmp/yearfree`, `/tmp/f1095a`, `/tmp/twinlane` (the three studies worth keeping are
 in `docs/`). `tools/README.md` still says the full tier takes about 38 minutes (median 17). The charter still says
 "30 input ids and 93 ambiguity ids". The spouse rule is recorded in `interview/README.md`.
