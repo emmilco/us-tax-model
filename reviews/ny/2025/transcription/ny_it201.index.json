@@ -4,7 +4,6 @@
  "family": "claude",
  "base": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
  "head_rows": {
-  "agree / disagree / missing": "83 / 84 / 0",
   "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
@@ -23,10 +22,10 @@
   },
   {
    "key": "1",
-   "record": "9603abe26187d2610d2d51bb911736f03de60e6c6ac52cacaf55a01cf57d2ca0",
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line1z in cents, the same reference otherwise (IT-201-I p. 7, Lines 1 through 19, \"The amount entered on line 1 ... should be the same as the amount reported on federal Form 1040, line 1z\"). This pass reran the line because its third refusal gate, ny_it201.gate.spouse_nonresident, became a choice on the filing status (BUG-0466/0471 follow-up, T-264; the same conjunction in operand order); the reply's note puts the same whole-return refusals on the line. The line-scoped request gave only the pages the line and its refusals cite (an interface gap of the review, as ruled before: the p. 7 instruction and the federal line were not in its catalog). executable-triage-v2 (.transcription/triage/ny/2025/ny_it201.json): 20 of 2,287 comparisons agree; differences: 35 value (cents against whole dollars, generated returns), 497 project-refuses and 1,718 project-unknown (the project's residency and scope gates on records without the New York answers, the federal fixtures among them), 17 candidate-refuses (other forms' refusals reached through Form 1040 line 1z). Project stands.",
-   "subject_key": "97418f490f9b03eca0cdadf6c4a19d70ec46b6446a134bc4e63373481d1f7ba8"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line1z in cents. Same reference otherwise.",
+   "subject_key": "0e2f2856be6c87d738a4737fc3f4f1ed557b7edc6f2d217f27eb88aace7695f5"
   },
   {
    "key": "2",
@@ -157,27 +156,27 @@
   },
   {
    "key": "20",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
    "status": "AGREE",
-   "subject_key": "c6702418f942a337fc649d3b6f9c19fb367f6e3e553cdf76631ab14e992db0a4"
+   "subject_key": "8b81218d441156a672fb39a3a3c8d99af018a17985171e7bf16a22a3603e76ec"
   },
   {
    "key": "21",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
    "status": "AGREE",
-   "subject_key": "91af22b09aba672c9a455caf0d8b068b1c70eca04cebadf4f538cbfea82f813d"
+   "subject_key": "b886f96237b00da35cd9703ac4c0c511c41c024b8e78e5b42fdc76f26eb60e89"
   },
   {
    "key": "22",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
    "status": "AGREE",
-   "subject_key": "fee6d12ee0a1a5b1f6583ffd002062e182ac8b4ff5b15046ebefb31767bfafaf"
+   "subject_key": "6838fb379aa037cf01d566405d696780ce63c4cfd632d3857e67a85ba532bcf8"
   },
   {
    "key": "23",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
    "status": "AGREE",
-   "subject_key": "5da8e6837afbf468464691fa7fc6159a104bc7e760f858a3133ec23556cebd12"
+   "subject_key": "b8cac36d392af5413c6a602e95879f73560883947880d810bb4f2fed758171da"
   },
   {
    "key": "24",
@@ -187,10 +186,9 @@
   },
   {
    "key": "25",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
-   "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.line25 (owner decision B1): the form labels line 25 \"(from line 4)\" but IT-201-I p. 8 says only \"If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25.\" The project refuses (ny_it201.gate.line25) when line 4 is more than zero or an inflation check was included, and is zero otherwise; wherever it is not refused the reply's line 4 is also zero.",
-   "subject_key": "3f513f502301acd8d0999f72f899e6031e9c35d878611cbdbccbf4716692393a"
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
+   "status": "AGREE",
+   "subject_key": "259daef5b231994aa202ea7bbd58475cb53c4a6a60c533ab95c9b82c04556249"
   },
   {
    "key": "26",
@@ -207,9 +205,9 @@
   },
   {
    "key": "28",
-   "record": "8c3a4d6300a732c307a999d862499db70c254ac5289b52b1661aabde36909e74",
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
    "status": "AGREE",
-   "subject_key": "08178f4e7eabb071df19ef3a1eb179474c1c6f8640a1c87ad04c2d5c2b4a8d22"
+   "subject_key": "aa0c22c9852a8c53422a8265f0fb06b25f66d980579ac32b921ce5913803e811"
   },
   {
    "key": "29",
@@ -219,15 +217,15 @@
   },
   {
    "key": "30",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
    "status": "AGREE",
-   "subject_key": "4115ccfbb12db3e7e0ec7c2592f3c5bb2cabe009ce85f8900c11507ba0ab9ab8"
+   "subject_key": "9b63abf4224fe1ea762dcd8fe1aa0c12acd3f3e2460fbfe167bec94743b6eeb4"
   },
   {
    "key": "31",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
    "status": "AGREE",
-   "subject_key": "9532dcae29eabaab651e9a3084ff58673a835ad56065505b664de2aec6f91a8e"
+   "subject_key": "5f0f6e1c7d7ba5863a720a0e43d750b107b040b3945d6088e8f68b9060dbcdae"
   },
   {
    "key": "32",
@@ -591,9 +589,9 @@
   },
   {
    "key": "41",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
    "status": "AGREE",
-   "subject_key": "b19cbc6fd0920516432b23e9fb659e3c6e747e1c4595023f613de9a055da4d28"
+   "subject_key": "31f22c1a853dba333a218f81f0fa4f3ee28e8229c5cbf85809dbbb01843947de"
   },
   {
    "key": "42",
@@ -616,9 +614,9 @@
   },
   {
    "key": "45",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
    "status": "AGREE",
-   "subject_key": "0c0c3c87057c908a2b25a47e03c818d2401a3eaf325f1ec0e52c027414333676"
+   "subject_key": "73ca917b9799ad7f116d2740b4008125690e900568237edb7d4cac9dfa5da938"
   },
   {
    "key": "46",
@@ -677,9 +675,9 @@
   },
   {
    "key": "51",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
    "status": "AGREE",
-   "subject_key": "6ec206aa840dbc77e69f3d31dd49d1fd0856d6830bc26a37c886f51765a46bb9"
+   "subject_key": "5785582ba6f0c42c55f39fe5edd5063f87c7d64f69a7c8fdd55bb08abde55c6b"
   },
   {
    "key": "52",
@@ -830,9 +828,9 @@
   },
   {
    "key": "59",
-   "record": "bbcae8a5c1c4facbabfb56e07b7b6a208ddbac6d2751ec85f37ed49fcea07ced",
+   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
    "status": "AGREE",
-   "subject_key": "bec767680dee39b3c2f2dc22f788ee6deef527f670c91943f33d69b4b38fde0e"
+   "subject_key": "1f9c13dd28b58b37d39cd8f2d74f48f2bf55d02c7562ae14ea6dd4c55ef085f5"
   },
   {
    "key": "60",
@@ -1098,7 +1096,7 @@
  "subjects": {
   "C": "ec3d44ebace17d5b01c6e4e6c3fbc9045203535db2e6545ad6d3250167378a8b",
   "H (count)": "c775556cf6baebf885155f3e0e760fff74624401c1c24b030e770258031b62a5",
-  "1": "7b338bee14b842e9bfc6273e7a410753225616680a56fb5bf5a479bf3e8b31ba",
+  "1": "b69e7f8bf90a93c2298f2f5c2e75f838dd34566f817988cae5a7a87213bc8cd3",
   "2": "0ab699890c51786638b6f0c1b93f2c9a51e56b9ec03cfab26033df0c734de77c",
   "3": "69f377530fe78842ed6435d2451a374c955c9ac4c0f217290631c73ceb170a92",
   "4": "f5190222dc5ddab58aa5d89b74a4dc3d317370884faacfd2008a57428b329152",
@@ -1118,18 +1116,18 @@
   "18": "54565592a271f37c5e115a816c787c5dadc2b582917534dfd27eae600c5d37c4",
   "19": "05b98a40f529d1582546ba909de6efb73514a3ff483e36e56facd9ab865be2f9",
   "(check)": "1a6b59c6fdf31c7e7e5420d0e6c5fd77e83f07151a7c3183325eff1eabf29586",
-  "20": "99961d519248e1225d52071150e8f142d409c38acfd6e8da047b4d6ded8b6a8a",
-  "21": "2b5f736cceb9bf4e2d4c90b34fdbb495ba49de40af926d50a152e6a37fea94ff",
-  "22": "aca1944cd1a38f488eb5bca2e3fc850ea0813e5cc52d948d8c664b14cb08d798",
-  "23": "5f6e9136f6366d6a8b34269668769646ed0f64834225510e482c8bdf72923580",
+  "20": "a70fd352cffd469dd02216e53f6030c4c592d7097b582436693dbacd4607d484",
+  "21": "c452cb7f9ef191f09f292f3e97b9afa1bc936efb8bba7524856454dd236f0593",
+  "22": "52b6c31794f0fdf5e934dc00ae9ac8f2d894a2d53727983f013ce1a3eff86d80",
+  "23": "61aa6b4bda933cc879dfdd7550a3481d5042edbd63d4fbc30b03d8c20f109797",
   "24": "21c0d2dfdd9596d93a352afde0aed197eaace4975ae4b553cc352faebfc98614",
-  "25": "de58098410f407e1c01c87e3cb686ffee38e692005dbdab7ce229ce8e27d6cb2",
+  "25": "f20a8e20de22673af7a9b17cdef6edfc61df6c1488b7cc80cd568e421aa9d114",
   "26": "d1f68152b516f0bcb6ed88f676b3e6e049b95368336581ccaadc90eed3c45bfb",
   "27": "3408d939107960440ca6f29c6127ff6b3b38dcb7addc6b2f81154360af68bc35",
-  "28": "581b6c7221fb58a0c32840a593873435e47b461da699ada8cf3359e9eb6872f0",
+  "28": "7fd68f93cf749ca15ba16a6446e53452ccb6af569fc8540e28edeebc5ca718c8",
   "29": "d69a2eb963dbfdacf5f4123f9b8c2e509f18db5bf102f44d9b7e00b7febdfedb",
-  "30": "09f1cf6c47cc4b6c10b8bd6306b25342787e09159a30b9ea719655b429cc8d48",
-  "31": "4698820240520cad69161260266f113cfd5b3fd7152dc7ea1bff5e3f15a0df1c",
+  "30": "cd0a47fa35d4c3d4ac18c2496986bd0737cd83482e1ad50d48144aa73be228c0",
+  "31": "25fd35723def188075cb71b8421dc520ad0c65c8f339f83543586f24756c3db3",
   "32": "ebbcaf666cfcea9cf9853233fe4f7e1b523ff86345bf133e3fa5bcf60d74792b",
   "33": "a0c21f6f0a8e7e815639bafc8edc228d1c12f5a0edb74e134b42188ab7914b5d",
   "(table) (ny_it201.std_deduction)": "3e8b1b4b2e252ed6b695dc85b7a73edab55b2b040929199658937ce7a7fe82b2",
@@ -1185,11 +1183,11 @@
   "(40)": "541ff2a2baacad5723118b887833f960ffee4c4e103ccb553b354967396894ba",
   "(48)": "7d1b29555db02bc4bf10f99711c361c4e905e309334f3f1878f568f643c66f4f",
   "40": "e5d486e616ed39fe1552a5920f6af0aa1f29114c453ecce49e749e9e48ad7bf2",
-  "41": "dde2b80ea36c16b950dc1fbf212df0476a99ba82627637a622de2779b2fa7ce6",
+  "41": "db68b3036514ca6332f00aa780fb04e11528a5da6cb371ad5b4bf66e93057f07",
   "42": "0ec8ee41986e2fd917b337e852c5779e4c03a51cc163c205a4725cbbbe021d35",
   "43": "0768df9e4e3c2093dd64254dab9da933e92437160ff7432ed6b497a9974db3d5",
   "44": "d9c1f6421eb531382bf98ff1abee59ee6fcf03af4021fc84c869179ace2c1fde",
-  "45": "eaa1f4b99acf5bca3dd6ee22d1cf4d933b81a8a593cd5d3c769718bb5a5e08e3",
+  "45": "5e0d2901469d0eeb2614db86bbb072adb09ca472975076f6659be5dc70b87322",
   "46": "4e963942d24b2cc5816108bf07d9ea2f01f0096501b7a8b38a7f6cbda1c94eef",
   "47": "9c9560e4bd04eb5acde237110af8f7f50ba69cb9863105422764a46a810ae929",
   "(47a) (ny_it201.city_tax_table)": "bd05e12d49c8ebd491719f703f5c075b25d9ed1a27b4b062ae41b81302aca07e",
@@ -1198,7 +1196,7 @@
   "48": "4865deec6666bdd5f8e78028fcf7d0dfc553564d06102d3bddfb64cd52604965",
   "49": "1db6691ce9f81b4388b131a798061fc3bfbdbebf37bf65cbd97a99463dbe00b2",
   "50": "44018f281480785a1039b29dcf5c844b446f6a1766f8ab5be60df1ae9672b7e2",
-  "51": "c2d87b2d469173c3b43e86edc2fe70c02a6cbe705e92223b55b21d92e3cced66",
+  "51": "46d8b6f8f55f709aa6969669dc82ebc0d20b3f5338e7f0e86941cc03f481ecc6",
   "52": "c82b7d8d8e9aa1d59a34e2e84824bed2ccb3dbfa7bd53fb5c3a3b7c24ef2f339",
   "53": "c2d0dccc536ae22102e706b0aa8c87b1851dee4c48337d39c342599e0d7455f2",
   "54": "1f5ae71234b822f1433ce55adc77874d354366d3d7b7b517fbc1c509d226562f",
@@ -1222,7 +1220,7 @@
   "(chart) (ny_it201.sut.cap)": "bc3867caeff5c2ce46a56af458bf69baf597cced77741c5a77da1d6cd50bfe65",
   "(chart) (ny_it201.sut.top)": "3f337836dcc9231409008d5ffa2d8fd4efd0f392d18987ef2eb91f6b587d3fc7",
   "(chart) (ny_it201.sut.chart)": "f490093538fc554603fa13fbad139b3e32a8a2596400e226d1e3bc28d80f8fbc",
-  "59": "193df1d3a43eb245378cbde9dcd2de252860e1ddbd678b3cf84db51dcc0c65a3",
+  "59": "9ab65759cd41d1fdc722cc931fdc64908d52d54e78130aa6a7efbc0bd6d1e6e6",
   "60": "178b3aea541212cd6e1b0cd15cbe019527381140b66487bac2fd04adfdd4a50b",
   "61": "0b1b43168dba06f33619b3fe34032977426efaeca1c9b52368dfb6046db94791",
   "62": "6f15d5a82c661c9f283180e613bb2b496ada9cadd3c892cb5f65dcbf5a2ca901",

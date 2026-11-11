@@ -959,47 +959,11 @@
    "printed": "1",
    "project_expr_sha256": "4e0fde6bbd661f1105d1a536ba0f5adfd120991ae32984f69ca91d31bbaa9a97",
    "second_expr_sha256": "483e47bf835761306362f5ca228c939ae3d18344d6a248b860b93a8d0ca2d17b",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line1z in cents, the same reference otherwise (IT-201-I p. 7, Lines 1 through 19, \"The amount entered on line 1 ... should be the same as the amount reported on federal Form 1040, line 1z\"). This pass reran the line because its third refusal gate, ny_it201.gate.spouse_nonresident, became a choice on the filing status (BUG-0466/0471 follow-up, T-264; the same conjunction in operand order); the reply's note puts the same whole-return refusals on the line. The line-scoped request gave only the pages the line and its refusals cite (an interface gap of the review, as ruled before: the p. 7 instruction and the federal line were not in its catalog). executable-triage-v2 (.transcription/triage/ny/2025/ny_it201.json): 20 of 2,287 comparisons agree; differences: 35 value (cents against whole dollars, generated returns), 497 project-refuses and 1,718 project-unknown (the project's residency and scope gates on records without the New York answers, the federal fixtures among them), 17 candidate-refuses (other forms' refusals reached through Form 1040 line 1z). Project stands.",
-   "context": "d25aa091ed70df2b0cd1463601ee041ae5ec73de8b346557e892ac7f9df5710b",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line1z in cents. Same reference otherwise.",
+   "context": "6846384c78b8f823da7544b3f964e34fe13b2bab7bfe00df5e866e16251ae303",
    "date": "2026-11-10",
-   "run": "47ebd1fba45b8f990f18602fbfb6cbdeaa1d4385fb140fac5fc350ead5ae1d96",
-   "subject_key": "a08309db0c15dc34e218b7c5fa146855351c017699fd69386004f91beb4ae143",
-   "triage": {
-    "verdict": "differs",
-    "kinds": [
-     "candidate-refuses",
-     "project-refuses",
-     "project-unknown",
-     "value"
-    ],
-    "witnesses": [
-     "fixture:stage14.asset.hy_5yr@ny_it201",
-     "fixture:stage14.asset.mq_7yr@ny_it201",
-     "fixture:stage14.asset.mq_mixed@ny_it201",
-     "fixture:stage14.asset.mq_not@ny_it201",
-     "fixture:stage14.asset.bonus_100@ny_it201",
-     "fixture:stage14.asset.bonus_40_before@ny_it201",
-     "fixture:classm.w2.1.deepseek@ny_it201",
-     "fixture:stage13.refuse.joint_without_spouse@ny_it201",
-     "fixture:stage13.refuse.single_with_spouse@ny_it201",
-     "fixture:f2.t121.line13_earned_refused@ny_it201",
-     "fixture:stage15.refuse.f2441.plans_differ@ny_it201",
-     "fixture:stage15.refuse.f2441.line14_over@ny_it201",
-     "generated:20261026.0@ny_it201",
-     "generated:20261026.1@ny_it201",
-     "generated:20261026.2@ny_it201",
-     "generated:20261026.3@ny_it201",
-     "generated:20261026.4@ny_it201",
-     "generated:20261026.5@ny_it201",
-     "generated:20261026.6@ny_it201",
-     "partial:generated 20261026/1-ny_it201.ask.item_c@ny_it201",
-     "partial:generated 20261026/1-ny_it201.ask.inflation_check@ny_it201",
-     "partial:generated 20261026/1-ny_it201.ask.out_of_state_bond_interest@ny_it201",
-     "partial:generated 20261026/1-ny_it201.ask.414h@ny_it201",
-     "partial:generated 20261026/1-ny_it201.ask.529_nonqualified@ny_it201"
-    ],
-    "policy": "executable-triage-v2"
-   }
+   "run": "7e1479e36528e4669ad134206722451683c9e97da010e9a1d285227c5c923295",
+   "subject_key": "8c6ffb9201eef7da6635c2fd21251e938736e15c0804d4a33424f3ac14eca2d1"
   },
   {
    "printed": "10",
