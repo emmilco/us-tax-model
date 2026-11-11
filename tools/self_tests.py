@@ -32,6 +32,7 @@ TESTS = [
     ("pre_push_self_test", "code", False, ["bash", "tools/hooks/test_pre_push.sh"]),
     ("interview_rules_self_test", "code", True, NODE + ["interview-rules", "--self-test"]),
     ("interview_length_self_test", "code", True, NODE + ["interview-length", "--self-test"]),
+    ("spouse_wording_self_test", "code", True, NODE + ["spouse-wording", "--self-test"]),
     ("consistency_checks", "code", False, ["node", "tools/test_consistency_checks.mjs"]),
     ("defaults_guard_self_test", "code", False, ["node", "tools/defaults_guard.mjs", "--self-test"]),
     ("engine_compare_tests", "code", False, ["python3", "-I", "tools/engines/test_compare.py"]),

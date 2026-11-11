@@ -1,23 +1,26 @@
 // Tests of the web UI server (`serve`), on synthetic returns in temporary directories: the returns-directory
 // refusals, file modes, the Host and Origin checks, that the server and the CLI give the same state on the same
 // log, that a rejected answer appends nothing, roster removal and re-adding, a consistency check served as a
-// conflict, the forms a question names and their quoted purposes, and fixture interview paths replayed through the
-// server against the fixtures' expected values.
+// conflict, the forms a question names and their quoted purposes, the spouse phrase reworded as the filing status is
+// answered and corrected (questions, sheet labels and, on a constructed form, a conflict's figure labels), and fixture interview paths replayed through the server against the fixtures' expected
+// values.
 import assert from "node:assert/strict";
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
 import { chmodSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, symlinkSync, writeFileSync } from "node:fs";
-import { request } from "node:http";
+import { createServer, request } from "node:http";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { loadCanonical } from "./canonical.js";
-import { interviewView, loadInterview, replay, type Event } from "./interview.js";
+import { interviewView, loadInterview, questionTemplate, replay, type Event, type InterviewData } from "./interview.js";
+import { SPOUSE_PHRASE, SPOUSE_POSSESSIVE, STATUS_INPUT, spouseWording, type JointReturn } from "./spouse-wording.js";
+import { templateKey } from "./branches.js";
 import { renderValuesSheetText } from "./output.js";
 import { loadFixtureCases } from "./fixture-inputs.js";
 import { YEAR_ARGS } from "./year.js";
-import type { Inputs } from "./types.js";
+import type { CanonicalData, Inputs } from "./types.js";
 import { mapPool, poolSize } from "./pool.js";
-import { docNames, questionForms } from "./serve.js";
+import { createApp, docNames, questionForms } from "./serve.js";
 import { formResolver, namedDesignations, type FormEntry } from "./form-refs.js";
 
 const MAIN = resolve(import.meta.dirname, "main.js");
@@ -323,6 +326,108 @@ export async function serveChecks(): Promise<void> {
       && conflict.answers.every((a: any) => a.value === hsaInputs[a.input] && typeof a.prompt === "string" && a.prompt !== "") && conflict.figures.length === 0,
       `the conflict names the four answers it reads (the coverage answer that asks for the months, and the months), with their answers and prompts: ${JSON.stringify(conflict.answers.map((a: any) => [a.input, a.value]))}`);
     ok((await get("/api/returns/synthetic")).body.conflicts.length === 0, "a scope refusal is not a conflict");
+
+    // The spouse phrase is reworded for the return's filing status wherever question text is served (the next
+    // question, the pending and answered lists; prompt and help), from the answers of that response: the stored
+    // text while the status is unanswered, the joint reading once it is married filing jointly, the plain reading
+    // once it is corrected to single. The log holds answers only, so nothing reworded is saved.
+    const storedText = new Map<string, { prompt: string; help: string }>();
+    for (const q of config.questions) if (!storedText.has(q.input)) storedText.set(q.input, q);
+    const storedFor = (input: string) => storedText.get(questionTemplate(input))!;
+    const phrased = (text: string) => text.includes(SPOUSE_PHRASE) || text.includes(SPOUSE_POSSESSIVE);
+    /** Every question the state serves reads as its stored text reworded for `joint`; returns how many carry the phrase. */
+    const servedAs = (s: any, joint: JointReturn, label: string): number => {
+      const listed = [...s.pending, ...s.answered, ...(s.question ? [s.question] : [])];
+      for (const q of listed) {
+        assert.equal(q.prompt, spouseWording(storedFor(q.input).prompt, joint), `${label}: ${q.input} prompt`);
+        assert.equal(q.help, spouseWording(storedFor(q.input).help, joint), `${label}: ${q.input} help`);
+      }
+      return listed.filter((q) => phrased(storedFor(q.input).prompt) || phrased(storedFor(q.input).help)).length;
+    };
+    // The sheet's line labels are reworded the same way: each served label is its form line's label reworded.
+    const storedLabel = new Map(data.forms.flatMap((d) => d.lines.map((l) => [l.id, l.label] as const)));
+    const sheetLines = (s: any): any[] => [...s.sheets.federal, ...s.sheets.newYork].flatMap((sec: any) => sec.lines);
+    const labelsAs = (s: any, joint: JointReturn, label: string): number => {
+      for (const l of sheetLines(s)) assert.equal(l.label, spouseWording(storedLabel.get(templateKey(l.key))!, joint), `${label}: the sheet label of ${l.key}`);
+      return sheetLines(s).filter((l) => phrased(storedLabel.get(templateKey(l.key))!)).length;
+    };
+    let wording = (await post("/api/returns", { name: "wording" })).body;
+    const once = wording.pending.find((q: any) => q.type === "Bool" && q.prompt.includes(SPOUSE_PHRASE));
+    const possessive = wording.pending.find((q: any) => q.prompt.includes(SPOUSE_POSSESSIVE));
+    const helped = wording.pending.find((q: any) => phrased(q.help));
+    ok(once && possessive && helped && wording.pending.some((q: any) => q.input === STATUS_INPUT),
+      "a new return has the filing status and spouse-phrased questions pending (both forms of the phrase, and one in a help text)");
+    const shown = (s: any, input: string): string => { const q = [...s.pending, ...s.answered].find((x: any) => x.input === input); return `${q.prompt}\n${q.help}`; };
+    const readings = new Map<string, Set<string>>([once, possessive, helped].map((q: any) => [q.input, new Set<string>()]));
+    const read = (s: any) => { for (const [input, texts] of readings) texts.add(shown(s, input)); };
+    ok(servedAs(wording, "unknown", "status unanswered") > 0 && once.prompt === storedFor(once.input).prompt, "with the filing status unanswered the stored text is served");
+    read(wording);
+    const sheetLine = sheetLines(wording).find((l) => l.label.includes(SPOUSE_PHRASE));
+    ok(sheetLine && labelsAs(wording, "unknown", "status unanswered") > 0, "with the filing status unanswered the sheet shows a spouse-phrased label as stored");
+    const labelReadings = new Set<string>([sheetLine.label]);
+    const labelNow = (s: any): string => sheetLines(s).find((l) => l.key === sheetLine.key).label;
+    wording = (await answer("wording", STATUS_INPUT, null)).body;
+    ok(servedAs(wording, "unknown", "status help requested") > 0, "a help request on the filing status leaves the stored text");
+    wording = (await answer("wording", STATUS_INPUT, "mfj")).body;
+    ok(servedAs(wording, "joint", "status mfj") > 0 && shown(wording, once.input).includes("you or your spouse") && !phrased(shown(wording, once.input)),
+      `married filing jointly serves the joint reading: ${shown(wording, once.input).slice(0, 200)}`);
+    ok(shown(wording, possessive.input).includes("your or your spouse's"), `the possessive form's joint reading: ${shown(wording, possessive.input).slice(0, 200)}`);
+    read(wording);
+    ok(labelsAs(wording, "joint", "status mfj") > 0 && labelNow(wording) === sheetLine.label.replaceAll(SPOUSE_PHRASE, " or your spouse"), `the sheet label's joint reading: ${labelNow(wording).slice(0, 160)}`);
+    labelReadings.add(labelNow(wording));
+    wording = (await answer("wording", once.input, false)).body;
+    ok(wording.answered.some((a: any) => a.input === once.input && a.prompt === spouseWording(storedFor(once.input).prompt, "joint")), "an answered question is listed in the joint reading");
+    ok(isDeepStrictEqual((await get("/api/returns/wording")).body.answered, wording.answered), "a reload serves the same reading");
+    wording = (await answer("wording", STATUS_INPUT, "single")).body;
+    ok(servedAs(wording, "not-joint", "status single") > 0, "a corrected filing status serves the plain reading in every list");
+    ok(wording.answered.some((a: any) => a.input === once.input && a.prompt === storedFor(once.input).prompt.replaceAll(SPOUSE_PHRASE, "")), "the answered question is re-read without the phrase");
+    read(wording);
+    ok(labelsAs(wording, "not-joint", "status single") > 0 && labelNow(wording) === sheetLine.label.replaceAll(SPOUSE_PHRASE, ""), `the sheet label's plain reading: ${labelNow(wording).slice(0, 160)}`);
+    labelReadings.add(labelNow(wording));
+    ok(labelReadings.size === 3, `the sheet label of ${sheetLine.key} read three ways (stored, joint, plain)`);
+    ok([...readings.values()].every((texts) => texts.size === 3), `each question read three ways (stored, joint, plain): ${[...readings].map(([k, texts]) => `${k} ${texts.size}`).join(", ")}`);
+    const wordingLog = readFileSync(join(dir, "wording.jsonl"), "utf8").trim().split("\n").map((l) => JSON.parse(l) as Record<string, unknown>);
+    ok(wordingLog.slice(1).every((e) => isDeepStrictEqual(Object.keys(e).sort(), ["input", "value"])), "the log holds each answer's input and value, and no question text");
+
+    // A conflict's figures carry line labels, reworded like the sheet's. No built consistency check reads a figured
+    // line whose label carries the phrase, so this one is constructed: a small form served in this process, whose
+    // check reads an answer and a fixed limit labelled with the phrase.
+    const figureLabel = "Limit for you (or, on a joint return, your spouse) and your (or, on a joint return, your spouse's) dependents";
+    const probeLine = (id: string, type: string, expr: object, extra: object = {}) => ({ id: `f1040.${id}`, printed: id, label: id, type, expr, cite: null, ...extra });
+    const probeData = {
+      forms: [{ id: "f1040", kind: "form", tax_year: config.tax_year, title: "Conflict figure test", lines: [
+        probeLine("status", "Enum(filing_status)", { op: "input", source: "Filing status" }),
+        probeLine("amount", "NonNegDollars", { op: "input", source: "Amount" }),
+        probeLine("limit", "NonNegDollars", { op: "param", ref: "limit" }, { label: figureLabel }),
+        probeLine("bad", "Bool", { op: "test", gt: ["f1040.amount", "f1040.limit"] }),
+        probeLine("result", "NonNegDollars", { op: "copy", ref: "f1040.amount" }, { refuses: [{ when: "f1040.bad", form: "Amount over the limit", remedy: "Correct the amount", cite: null }] }),
+      ] }],
+      defs: [], tables: [], register: { entries: [] },
+      params: { values: { limit: { type: "NonNegDollars", value: 100 } }, enums: { filing_status: data.params.enums["filing_status"]! } },
+    } as unknown as CanonicalData;
+    const probeConfig = { tax_year: config.tax_year, targets: ["f1040.result"], initial: {}, cite: null,
+      questions: ["status", "amount"].map((id, order) => ({ input: `f1040.${id}`, prompt: id, help: "", order, cite: null })) } as unknown as InterviewData;
+    const probeDir = join(tmp, "returns-figures");
+    mkdirSync(probeDir, { mode: 0o700 });
+    const probeApp = createApp(probeData, probeConfig, probeDir, { "f1040.bad": "The amount is more than the limit." });
+    const probeServer = createServer((req, res) => probeApp(req, res, (probeServer.address() as { port: number }).port));
+    await new Promise<void>((done) => probeServer.listen(0, "127.0.0.1", () => done()));
+    try {
+      const probePort = (probeServer.address() as { port: number }).port;
+      const figureAs = async (name: string, status: string | null): Promise<any> => {
+        const events = [{ version: 1, tax_year: config.tax_year, profile: "ny" }, { input: "f1040.amount", value: 200 }, ...(status ? [{ input: STATUS_INPUT, value: status }] : [])];
+        writeFileSync(join(probeDir, `${name}.jsonl`), events.map((e) => JSON.stringify(e)).join("\n") + "\n", { mode: 0o600 });
+        const s = (await http(probePort, "GET", `/api/returns/${name}`)).body;
+        assert.equal(s.conflicts?.length, 1, `${name}: one conflict expected: ${JSON.stringify(s).slice(0, 300)}`);
+        assert.deepEqual(s.conflicts[0].answers.map((a: any) => a.input), ["f1040.amount"], `${name}: the conflict's answers`);
+        assert.equal(s.conflicts[0].figures.length, 1, `${name}: one figure expected`);
+        return s.conflicts[0].figures[0];
+      };
+      const asStored = await figureAs("unanswered", null), asJoint = await figureAs("joint", "mfj"), asPlain = await figureAs("plain", "single");
+      ok(asStored.line === "f1040.limit" && asStored.label === figureLabel, `a conflict's figure label is served as stored while the filing status is unanswered: ${asStored.label}`);
+      ok(asJoint.label === "Limit for you or your spouse and your or your spouse's dependents", `a conflict's figure label in the joint reading: ${asJoint.label}`);
+      ok(asPlain.label === "Limit for you and your dependents", `a conflict's figure label in the plain reading: ${asPlain.label}`);
+    } finally { probeServer.close(); }
 
     // Fixture interview paths replayed through the server: the federal whole returns (the federal questions; their
     // fixtures have no New York answers) and a sample of the New York cases. Each walk answers the first pending
