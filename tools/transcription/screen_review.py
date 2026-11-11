@@ -373,6 +373,8 @@ def main():
     a = ap.parse_args()
     if a.force_rerun is not None and not a.force_rerun.strip():
         ap.error("--force-rerun needs a reason")
+    import build_fresh
+    build_fresh.require(rendered=True)  # the prompt quotes each gated line's rendered English
     lines = load_lines(); mani = manifest(); sc = units(lines)
     if a.gates_only:
         sc = {k: v for k, v in sc.items() if k.startswith("gate:")}

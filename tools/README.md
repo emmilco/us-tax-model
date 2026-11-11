@@ -100,7 +100,8 @@ the working tree in `.git/check-all-worktree`, detached, so the main tree can be
 edited while it runs (`--wait` runs it in the foreground; `--tier` as above; `--status`
 lists the running runs, the check-all slots and the latest finished run, and `--status <tree>`
 shows the record of the latest run of that snapshot tree). Each run keeps its own record and
-log in `.git/check-all-bg/runs/<snapshot-tree>-<timestamp>/` (`status`, `log`, the newest 50
+log in `.git/check-all-bg/runs/<snapshot-tree>-<timestamp>/` (`status`, `log`, and the steps' wall
+times, `times`, with their summary, `times.txt`, which `status` names; the newest 50
 kept); `.git/check-all-bg/last` is a copy of the latest finished run's status and
 `.git/check-all-bg/log` a link to the latest started run's log, so a run that finishes just
 before another starts loses nothing. The snapshot is the tree
@@ -150,9 +151,18 @@ step must be placed by it. A check that runs for both jurisdictions is declared 
 (`jstep`), and its New York run is the step `ny_<name>`. The tools' self-tests and test
 suites run as two steps, `bookkeeping_self_tests` and `self_tests`
 (`tools/self_tests.py --list` names each test and its command), side by side in a worker
-pool, each failing test named. A step's output is printed when its wave ends, and
-each step's wall time is in `.git/check-all-times`, with each self-test's as
-`self_tests/<name>`. Mutation spreads its mutants
+pool, each failing test named. A step's output is printed when its wave ends, under its `== <step>` line.
+
+Wall times, in whole seconds, are written to `.git/check-all-times` (the worktree's git directory; rewritten by
+each run): each step's as `<seconds> <step>`, each self-test's as `<seconds> self_tests/<name>`, each stage's
+(`compile`, `build`, `wave1`, `wave2`, `wave3`) as `<seconds> stage:<label> <its steps>`, and the run's as
+`<seconds> run:<tier>`. When the steps end, passed or failed, the run prints their summary
+(`tools/check_times.py`, after the last step's output and before the green line): one row per stage with its wall
+time, its share of the run, and its slowest and next slowest step; then every step by wall time with its stage,
+the slowest of each stage marked with the most that shortening it alone can save; then the self-tests. Stages run
+one after another and the steps of a stage side by side, so a stage lasts as long as its slowest step and the times
+of its steps do not add up. `python3 tools/check_times.py [FILE] [--top N]` prints the summary of the last run
+of this worktree, or of a run's `times` file. Mutation spreads its mutants
 over worker threads (`MUTATE_WORKERS`, default `defaultWorkers()` of `engine/src/pool.ts`);
 `MUTATE_WORKERS=1` runs it on one.
 
@@ -173,6 +183,10 @@ whose commit's tree is not full-green. Enable both once per clone:
 `tools/transcription/rerun_all.py` plans every job before it makes any paid call, and
 enforces these rules (self-tests: `tools/transcription/test_rerun_all.py`):
 
+- **Fresh rendered text.** A run that includes render jobs is refused (exit 2), `--dry-run` included, when the
+  build is stale or `rendered/` is not what it renders to (`tools/build_fresh.py`, "Process hooks" below): a
+  render log's state and request are read from `rendered/`, so on a rendering from before an edit the plan
+  would call the log current and price nothing. `render_compare.py` refuses the same way when run directly.
 - **Once per form per round.** A job (form, review kind, model family) whose log already
   answers the current subject (`subjects.log_state` finds nothing it judged changed, the same
   test `check_logs.py` applies) is not run. `--force-rerun REASON` runs it; the reason goes
@@ -227,6 +241,17 @@ sampling and satisfies the milestone until its subject changes. Runs are guarded
 
 - **Fresh build** (`tools/build_fresh.py`): the completeness, screen, false-no and question checks and triage refuse to run when
   canonical/ is older than a model source or engine/dist older than engine/src (rebuild first).
+- **Fresh rendered text** (`tools/build_fresh.py`, `require(rendered=True)` or `--rendered`): `npm run build` writes
+  `canonical/` and not the tracked `rendered/` files; `npm run render` (and `node engine/dist/main.js render --ny`
+  for New York) and check-all write those. Every tool that reads `rendered/` for a review refuses to run, dry
+  runs included, unless the build is fresh and each rendered file is what the canonical data renders to: the render
+  review and its planner (`render_compare.py`, `rerun_all.py` with render jobs), the log check (`check_logs.py`: a
+  render log's subject is the hash of its rendered file), and the screen, false-no and question reviews and
+  their checks (their prompts and subjects quote each line's rendered English). The comparison is by content
+  (`node engine/dist/main.js render --check`, which renders in memory and writes nothing; about half a second for
+  both jurisdictions), and the refusal names the files that differ and the command that regenerates them. The
+  transcription review reads the form's YAML, class M builds the canonical data and its jobs itself, and the
+  completeness review reads `canonical/`; none of them reads `rendered/`.
 - **Bug inventory in merges** (`tools/check_bug_inventory.py --merge`, from pre-commit): a merge may not create or
   renumber a BUG entry; colliding ids are renumbered in a commit on the branch before merging.
 - **Docs conventions** (`tools/check_docs_conventions.py`, docs tier): docs/ files are dated unless living, and

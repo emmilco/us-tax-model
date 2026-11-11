@@ -207,6 +207,21 @@ class OptionalStaleLogs(unittest.TestCase):
                 self.assertTrue(check_logs.check("render", d, "RENDER_LOGS_OPTIONAL", ["f1"], families.DEFAULT, required=True))
 
 
+class RenderedTextGuard(unittest.TestCase):
+    """render_compare.py refuses, --dry-run included, when rendered/ is not what the build renders to."""
+
+    def test_the_render_review_refuses_a_rendering_from_before_an_edit(self):
+        why = "1 rendered file(s) are not what the current build renders to (rendered/2025/gift.md: differs); regenerate: X"
+        for argv in (["--dry-run"], ["--lines", "auto"], ["--from-response"], []):
+            with patch.object(R.build_fresh, "rendered_stale", return_value=("rendered text", why)), \
+                 patch.object(sys, "argv", ["render_compare.py", "--form", "gift", *argv]), \
+                 patch.object(R, "load_form", side_effect=AssertionError("the request was built from stale text")), \
+                 patch.object(R, "review_response", side_effect=AssertionError("a model was called")):
+                with self.assertRaises(SystemExit) as done:
+                    R.main()
+            self.assertEqual(done.exception.code, "stale rendered text: " + why)
+
+
 class InactiveFamilies(unittest.TestCase):
     """families.json `active`: an inactive family's model is not called without the override naming it, an
     overridden call records its reason in the cost ledger, and check_logs counts its logs as history."""

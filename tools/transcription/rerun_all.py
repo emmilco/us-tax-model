@@ -24,6 +24,9 @@ that reruns them, and recorded in the summary file with "skipped": "usage limit"
 
 Guards, applied before any paid call:
 
+- Fresh rendered text: a run that includes render jobs is refused, --dry-run included, when the build is stale or
+  rendered/ is not what it renders to (tools/build_fresh.py). A render log's state and request are read from
+  rendered/, so on a rendering from before an edit the plan would call the log current and price nothing.
 - Once per form per round: a job whose log already answers the current subject (subjects.log_state is
   None: nothing it judged has changed) is not run. --force-rerun REASON runs it; the reason is recorded
   in the summary row and, through REVIEW_RERUN_REASON, in each paid call's cost-ledger row.
@@ -59,6 +62,7 @@ TOOLS = {"transcription": ("transcribe.py", "--form"), "render": ("render_compar
 USAGE_LIMIT = re.compile(r"usage limit|hit your (?:\w+ )?limit|(?:hour|weekly|session) limit reached|"
                          r"insufficient balance|exceeded your (?:current )?quota|deepseek HTTP 402", re.I)
 import spend  # noqa: E402
+import build_fresh  # noqa: E402
 from spend import COST_GATE_USD, PRICE_SAMPLE, REASON_ENV, prices, gate  # noqa: E402,F401  (the owner's cost gate)
 LINE_SCOPED = ("transcription", "render")
 PROMPT = re.compile(r"prompt ([\d,]+) chars")
@@ -260,6 +264,12 @@ def main():
         ap.error("--whole and --lines exclude each other")
     if set(a.kinds.split(",")) - set(TOOLS):
         ap.error("unknown review kind")
+    if "render" in a.kinds.split(","):
+        # A render log's state and request are read from rendered/, which the build does not write.
+        found = build_fresh.rendered_stale()
+        if found:
+            print(f"refused: stale {found[0]}: {found[1]}", flush=True)
+            sys.exit(2)
     jobs = []
     fam = families.family_of(a.model) if a.model else families.DEFAULT
     skipped = []

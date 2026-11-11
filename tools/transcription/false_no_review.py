@@ -285,6 +285,8 @@ def main(argv=None):
     a = ap.parse_args(argv)
     if a.force_rerun is not None and not a.force_rerun.strip():
         ap.error("--force-rerun needs a reason")
+    import build_fresh
+    build_fresh.require(rendered=True)  # the prompt quotes each gated line's rendered English
     lines = load_lines()
     mani = manifest()
     units = gates.units(lines)

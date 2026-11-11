@@ -102,6 +102,7 @@ Every process rule is either enforced by a tool or marked advisory. No new prose
 | Fixture defaults are visible test data | `defaults_guard.mjs`, commit-msg hook | enforced |
 | A merge never creates or renumbers BUG entries (renumber on the branch) | `check_bug_inventory.py --merge`, pre-commit | enforced |
 | Review checks and triage read a fresh build | `tools/build_fresh.py`, called by the review checks and triage | enforced |
+| A review that reads rendered English reads what the current build renders to | `tools/build_fresh.py` (`require(rendered=True)`), called by `render_compare.py`, `rerun_all.py` (render jobs), `check_logs.py` and the screen, false-no and question reviews and checks | enforced |
 | Point-in-time docs are dated; the handoff file keeps two entries | `tools/check_docs_conventions.py`, docs tier | enforced |
 | Every paid review call is logged with year and jurisdiction | `transcribe.record_cost` refuses a row without them | enforced |
 | Verify an agent's claimed check-all status from the status record and log | none | advisory |

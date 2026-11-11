@@ -130,5 +130,5 @@ if __name__ == "__main__":
         sys.exit(self_test())
     os.chdir(ROOT)
     import build_fresh
-    build_fresh.require()
+    build_fresh.require(rendered=True)  # the subjects include each line's rendered English
     sys.exit(check(release="--release" in sys.argv, rebaseline="--baseline" in sys.argv))

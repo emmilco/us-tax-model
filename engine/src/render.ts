@@ -2,8 +2,8 @@
 // data — each line's encoded English beside its IRS label and citation —
 // plus the parameters, tables and ambiguity register.
 
-import { mkdirSync, rmSync, writeFileSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { join, relative, resolve } from "node:path";
 import { fmtMoney, fmtRate, isHelperLine, isMarkedLine, shortHash } from "./util.js";
 import { loadCanonical } from "./canonical.js";
 import type { CanonicalData, CiteFilled, Expr, FormDoc, Line, Operand, TestExpr } from "./types.js";
@@ -38,7 +38,22 @@ interface RenderCtx {
   tables: CanonicalData["tables"];
 }
 
-export function renderAll(): void {
+// `render` writes this jurisdiction's rendering; `--out DIR` names a directory other than rendered/.
+// `render --check` writes nothing: it compares the directory with what the canonical data renders to,
+// prints one line per file that differs, is missing or is not part of the rendering, and returns 1 if
+// there is any. The review tools that read rendered/ refuse to run unless the check passes
+// (tools/build_fresh.py).
+export function renderAll(args: string[] = []): number {
+  let out = OUT;
+  let check = false;
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === "--check") check = true;
+    else if (args[i] === "--out" && args[i + 1] !== undefined) out = resolve(args[++i]!);
+    else {
+      console.error(`render: unknown argument '${args[i]}' (render [--check] [--out DIR])`);
+      return 2;
+    }
+  }
   const all = loadCanonical();
   const ctx: RenderCtx = {
     forms: new Map([...all.forms, ...all.defs].map((d) => [d.id, d])),
@@ -47,19 +62,37 @@ export function renderAll(): void {
   };
   const data = ownData(all);
 
-  rmSync(OUT, { recursive: true, force: true });
-  mkdirSync(OUT, { recursive: true });
-
+  const files = new Map<string, string>();
   for (const doc of [...data.forms, ...data.defs].sort((a, b) => (a.id < b.id ? -1 : 1))) {
-    writeFileSync(join(OUT, `${doc.id}.md`), renderDoc(doc, ctx));
+    files.set(`${doc.id}.md`, renderDoc(doc, ctx));
   }
-  writeFileSync(join(OUT, "params.md"), renderParams(data.params));
+  files.set("params.md", renderParams(data.params));
   for (const table of data.tables) {
-    writeFileSync(join(OUT, `${table.id}.md`), renderTable(table, ctx));
+    files.set(`${table.id}.md`, renderTable(table, ctx));
   }
-  writeFileSync(join(OUT, "ambiguities.md"), renderRegister(data.register));
-  writeFileSync(join(OUT, "index.md"), renderIndex(data));
-  console.log(`rendered ${2 + 1 + 2 + 1 + data.forms.length + data.defs.length} files to rendered/${NY_MODE ? "ny/" : ""}${YEAR}/`);
+  files.set("ambiguities.md", renderRegister(data.register));
+  files.set("index.md", renderIndex(data));
+
+  const shown = relative(ROOT, out).startsWith("..") ? out : relative(ROOT, out);
+  if (check) {
+    const stale: string[] = [];
+    for (const [name, text] of files) {
+      const path = join(out, name);
+      if (!existsSync(path)) stale.push(`${shown}/${name}: missing`);
+      else if (readFileSync(path, "utf8") !== text) stale.push(`${shown}/${name}: differs`);
+    }
+    for (const name of existsSync(out) ? readdirSync(out).sort() : []) {
+      if (name.endsWith(".md") && !files.has(name)) stale.push(`${shown}/${name}: not part of the rendering`);
+    }
+    for (const line of stale) console.log(line);
+    if (stale.length === 0) console.log(`${shown}/ is what the canonical data renders to`);
+    return stale.length === 0 ? 0 : 1;
+  }
+  rmSync(out, { recursive: true, force: true });
+  mkdirSync(out, { recursive: true });
+  for (const [name, text] of files) writeFileSync(join(out, name), text);
+  console.log(`rendered ${2 + 1 + 2 + 1 + data.forms.length + data.defs.length} files to ${shown}/`);
+  return 0;
 }
 
 // ---------------------------------------------------------------------------

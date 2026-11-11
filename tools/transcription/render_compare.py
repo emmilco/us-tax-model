@@ -7,6 +7,9 @@ the YAML or its expression trees.
 
     python3 tools/transcription/render_compare.py --form qdcg [--model M] [--dry-run] [--from-response]
 
+It refuses to run, --dry-run included, when rendered/ is not what the current build renders to
+(tools/build_fresh.py): the build does not write rendered/, `node engine/dist/main.js render` does.
+
 Logs go to reviews/<year>/render/<form>.md (<form>.<family>.md for a model family other than
 Claude: families.py); a MISMATCH or UNCLEAR line carries "Ruling: open" until ruled with
 rule.py --kind render. Raw prompts and responses are kept under the git-ignored .transcription/
@@ -25,6 +28,7 @@ import rulings  # noqa: E402
 import subjects  # noqa: E402
 import transcribe as T  # noqa: E402
 from structured_text import summary, indent_rest, continued  # noqa: E402  (tools/, on the path through transcribe)
+import build_fresh  # noqa: E402
 
 RENDERED = str(jurisdiction.ypath("rendered", Y))
 LOGS = str(jurisdiction.ypath("reviews", Y, "render"))
@@ -584,6 +588,8 @@ def main():
     families.add_override_args(ap)
     a = ap.parse_args()
     families.apply_override(ap, a)
+    # The review sends rendered/ and records its hash as the log's subject: refuse a rendering from before an edit.
+    build_fresh.require(rendered=True)
     form_doc = load_form(a.form)
     if a.lines:
         return scoped_main(a, form_doc)

@@ -241,4 +241,7 @@ def main():
 
 
 if __name__ == "__main__":
+    # A render log's subject is the hash of its rendered file: judge it on what the current build renders to.
+    import build_fresh
+    build_fresh.require(rendered=True)
     main()
