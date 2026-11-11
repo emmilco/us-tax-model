@@ -146,11 +146,14 @@ fix lanes' agents have had no independent read except Form 8962's.
 - Treat an agent's "current", "none needed" and "grounded in the cited page" as testimony until a check or an
   independent read confirms it.
 
-**Housekeeping left:** the lane worktrees under `.claude/worktrees/` (21 checked at 06:00: every branch merged into main,
-none with uncommitted changes; six more lanes have merged since) and five `backup/*` branches of replayed lanes can be removed after the owner has looked. Scratch under
-`/tmp/qfix*`, `/tmp/dedup8863`, `/tmp/yearfree`, `/tmp/f1095a`, `/tmp/twinlane` (the three studies worth keeping are
-in `docs/`). `tools/README.md` still says the full tier takes about 38 minutes (median 17). The charter still says
-"30 input ids and 93 ambiguity ids". The spouse rule is recorded in `interview/README.md`.
+**Housekeeping, done on 2026-11-11 at the owner's word:** the 24 lane worktrees of the session and their branches are
+removed (each checked first: branch merged into main, no uncommitted change, no review data main lacks), and the six
+`backup/*` branches of replayed lanes are deleted. Two older worktrees are kept, `agent-a64a29b0e8ab56370` and
+`agent-ada089006890714fc` (lanes of earlier sessions, both merged): their ignored review logs are older than main's but
+name 3 and 20 review passes that main's current logs do not, and whether those passes are superseded was not
+established. Older local branches from before the session are untouched. The catalog's scripts are archived beside its
+patches. `tools/README.md` still says the full tier takes about 38 minutes (median 17). The charter still says "30
+input ids and 93 ambiguity ids". The spouse rule is recorded in `interview/README.md`.
 
 **Next:** the owner's decisions above; then U3 and U4 umbrellas, then U1 once its false-no review is clean (T-265),
 the interview-rules rewrites he chooses (T-276), and his walk of the return (T-236).
