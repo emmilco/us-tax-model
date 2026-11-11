@@ -361,6 +361,47 @@
   },
   {
    "printed": "14 (sc.f7206_line14)",
+   "project_expr_sha256": "066f5ee611fbf4402e5388a78f698716c4c2fa3ee5857c114397d9379943e0d7",
+   "second_expr_sha256": "56fa7ceaad855f5dea3241ae6b9f8a0686c4109947a0087af72519450de462ff",
+   "ruling": "Ruling: representation; f7206 line 14, \"Enter the smaller of line 3 or line 13\", on both sides. The project gates the line on sc.hi_uses (zero when no health insurance is established under the business, so lines 1 and 2 are not asked); the reply takes the smaller of lines 3 and 13 unconditionally, so where sc.hi_uses is No it reads sc.f7206_line1 and the long-term care entries the project does not ask. executable-triage-v2 (pass 7d11a905c40b): 1,520 agree; the 38 completed-return differences are candidate-unknown (the unasked line 1), the rest on refused or incomplete records; no completed return differs in value. Restaged by this round's wording of sc.hi_uses and sc.f7206_line1.",
+   "context": "026a2a63f26368aedec55a66688c1f1e43193da970ba74cad6bda66e9d850698",
+   "date": "2026-11-10",
+   "run": "978b2d8613e72592eb8718e392f9525cead5ae73e112bf644a6146b59a630e32",
+   "subject_key": "69865c2fae51b231c45e9fdaba5a7a169d06445c7469bacab6ea12c91ec28dee",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.refuse_ads_past_gds@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.refuse_class@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.refuse_listed_low@person[taxpayer].sc[d]",
+     "fixture:stage14.asset.refuse_s179_over@person[taxpayer].sc[d]",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@person[taxpayer].sc[desk]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a]",
+     "fixture:classm.f8960.2.deepseek@person[taxpayer].sc[biz_a]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a]",
+     "fixture:classm.person.1.deepseek@person[taxpayer].sc[biz_a]",
+     "fixture:classm.person.1.deepseek@person[taxpayer].sc[biz_b]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].hi_uses@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].hi_uses@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].sc[desk].hi_uses@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.qip-person[taxpayer].sc[desk].hi_uses@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.done-person[taxpayer].sc[desk].hi_uses@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.prior_179_bonus-person[taxpayer].sc[d].hi_uses@person[taxpayer].sc[d]",
+     "partial:mutation.t2.f8962_months_scveh3-person[taxpayer].sc[biz_b].hi_screen@person[taxpayer].sc[biz_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "14 (sc.f7206_line14)",
    "project_expr_sha256": "c6e41ab5d4c5c994958fb157359a9e4e0fe9f9b0357580327575646d430554e5",
    "second_expr_sha256": "5e698729e645e815cc7a732e17167041a02ce529eef1a1e26bc0758c76d6bbe5",
    "ruling": "Ruling: model error; the line itself matches the project's reading, but it inherits the candidate's Form 4562 terms: its Form 4562 line 25 vehicle term sums scveh.bonus_allowed, the passenger-automobile worksheet amount figured for every vehicle, instead of scveh.bonus, so for a standard-mileage vehicle it reaches the year placed in service and the project's refusal there on scveh.low_use (a standard-mileage vehicle used 50% or less takes no depreciation, so the low-use rule of i4562 p. 14, Lines 26 and 27, does not reach it) and asks miles and placed answers the project does not need (classm.clcw.2.deepseek biz_a and biz_b, classm.eic.3.deepseek refuse on sc[biz_b].scveh[car_1].low_use; classm.f4952.2.deepseek, classm.f8962.4.deepseek, classm.asset.1 unknown), and it drops the allowance of a vehicle that is not a passenger automobile (stage14.veh.suv_179, whose $38,700 allowance the project takes from scveh.bonus); same as the backlog-round ruling. f7206 line 14, \"Enter the smaller of line 3 or line 13\", gated on the screen on both sides. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 3,178 of 3,597 agree; on completed returns 6 candidate-refuses, 4 candidate-unknown (classm.f4952.2 and .deepseek); no completed value differs.",
@@ -417,6 +458,33 @@
    "ruling": "Ruling: model error; the line itself matches the project's reading, but the candidate's Form 4562 terms differ from the source: its Form 4562 line 25 vehicle term sums scveh.bonus_allowed, the passenger-automobile worksheet amount figured for every vehicle, instead of scveh.bonus, so for a standard-mileage vehicle it reaches the year placed in service and the project's refusal there on scveh.low_use (a standard-mileage vehicle used 50% or less takes no depreciation, so the low-use rule of i4562 p. 14, Lines 26 and 27, does not reach it), asks miles and placed answers the project does not need, and drops the allowance of a vehicle that is not a passenger automobile (stage14.veh.suv_179); its line 14 sums asset.bonus over every non-listed asset instead of asset.bonus_2025, so property placed in service before 2025 with a bonus_choice answer contributes an allowance (i4562 p. 5, Line 14, \"The special depreciation allowance applies only for the first year the property is placed in service\"; for example classm.sli.4, items placed in 2008 and 2019); and it asks asset.bonus_choice where the project does not (classm.asset.1, classm.s8812.3). Every completed-return refusal (scveh.low_use) and unknown below is one of those, and every completed value difference is a business with a prior-year asset counted on line 14 or with stage14.veh.suv_179; none traces to asset.not179 or scveh.employee_use. executable-triage-v2 (scratch rerun of triage.py's triage() with the witness cap lifted, /tmp/adj-bklg-asset-sc-scveh/triage/sc.json; 1,495 fixtures, 500 generated returns seed 20261026, 2,081 partial records): 2,501 of 3,248 agree; 363 candidate-refuses, 196 project-refuses, 82 value, 74 project-unknown, 32 candidate-unknown; on completed returns: 61 candidate-refuses, 10 value, 8 candidate-unknown. Completed-return value differences (project/candidate): classm.f4952.2.deepseek sc[biz_a] $65,748.94/$80,718.70; classm.f8880.2.deepseek sc[biz_a] $163,102.55/$163,142.55; classm.f8880.2 sc[biz_a] $163,102.55/$163,142.55; mutation.t2.mfj_sdtw_skip23 sc[biz_a] $65,748.94/$80,718.70; stage14.veh.suv_179 sc[haul] $70,000.00/$31,300.00; generated 138 sc[biz_a] $22,029.35/$60,662.70; generated 150 sc[biz_a] $59,916.31/$92,186.63; generated 163 sc[biz_a] $120,083.26/$120,257.90; generated 402 sc[biz_b] $39,967.22/$54,837.32; generated 449 sc[biz_a] $110,736.58/$116,450.77.",
    "context": "e5f09e83c77f890821f34e498da4c81ef409d7e1373ddfa86073c3d234f4dd5a",
    "subject_key": "d390e5cbb615a04412284568bd929bbf8860f027e1c498a633d2ada506b4d030"
+  },
+  {
+   "printed": "3 (sc.f7206_line3)",
+   "project_expr_sha256": "fb8a223783e0707808b2532613580779dc55397940d70aa2c2b145ee3b0e41b9",
+   "second_expr_sha256": "46521aaca909ccea167dc1800f23617818f62797cc7ae1f8e96fa8212b7062fd",
+   "ruling": "Ruling: representation; as the earlier ruling on this line. f7206 line 3, \"Add lines 1 and 2\", on both sides. The reply adds a shown_when on the health insurance screen (sc.hi_uses); the project shows the line, at $0 where it does not apply. executable-triage-v2 (pass 7d11a905c40b): 3,716 agree; the 22 completed-return differences are project-unknown on partials withholding a health insurance answer (the reply gives $0.00); no completed return differs in value. Restaged by this round's wording of sc.f7206_line1 and sc.hi_uses.",
+   "context": "026a2a63f26368aedec55a66688c1f1e43193da970ba74cad6bda66e9d850698",
+   "date": "2026-11-10",
+   "run": "978b2d8613e72592eb8718e392f9525cead5ae73e112bf644a6146b59a630e32",
+   "subject_key": "f34b4d2eb8c34a47eb4994dcf7ad4d24d611a0360b67ed2fbe72518d3251a948",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.sehi.refuse_ptc@person[taxpayer].sc[firm]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].hi_screen@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].hi_screen@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].sc[desk].hi_screen@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.qip-person[taxpayer].sc[desk].hi_screen@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.done-person[taxpayer].sc[desk].hi_screen@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.refuse_class-person[taxpayer].sc[desk].hi_screen@person[taxpayer].sc[desk]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "3 (sc.f7206_line3)",
@@ -606,12 +674,11 @@
    "printed": "5 (sc.ho_line5)",
    "project_expr_sha256": "6c262f80337efed20cfa893dd4a17f7bd2a05b569b04c5e5ae228bd2b432104f",
    "second_expr_sha256": "bc82987950056a74b5f94ced0520e08b4309bedecc5c58ef57b36db221bbd9be",
-   "ruling": "Ruling: finding; i1040sc p. 12, Simplified Method Worksheet, line 5, \"Enter the smaller of line 1 or line 4\". Where both compute, the reply's line 5 (the smaller of lines 1 and 4, floored at zero) is the project's; its candidate refusals and unknowns come from its line 1 terms (Form 4562 lines and sc.ho_other), as the earlier rulings. New on this pass's triage: the project's line 5 refuses on completed returns that have no home office (stage14.s179.income_limit, stage14.s179.wages_count, classm.eic.3.deepseek and the BUG-0474 fixtures built on stage14.s179.income_limit), where the reply gives $0.00: sc.ho_both_limits does not test sc.ho_uses, so a business with no home office and a reduced section 179 deduction shows the two-income-limits refusal on the worksheet's line 5, though line 30 reads line 5 only with a home office and no amount changes. Filed as BUG-0489 (low, display). executable-triage-v2 (pass 8ca5a269c0e3): 2,532 of 3,346 agree; 441 candidate-unknown, 128 candidate-refuses, 180 project-unknown, 65 project-refuses.",
-   "context": "22ad9f4642ec30a46e64cfbf4668598c0ee10f5a7385f802a9ba9e816c3d186c",
+   "ruling": "Ruling: representation; as the earlier rulings on this line. The smaller of worksheet lines 1 and 4 on both sides; the project writes it as a choose that carries the refusal where the two limits of Pub. 946 (p. 19) interact (sc.ho_both_limits), the reply as smaller_of floored at zero. executable-triage-v2 (pass 7d11a905c40b): 2,712 agree; candidate refusals and unknowns come from its line 1 terms. The 8 completed-return project-refuses are the display refusal already filed as BUG-0489 (sc.ho_both_limits does not test sc.ho_uses; line 30 reads line 5 only with a home office, so no amount changes). No completed return differs in value. Restaged by this round's question wording only.",
+   "context": "026a2a63f26368aedec55a66688c1f1e43193da970ba74cad6bda66e9d850698",
    "date": "2026-11-10",
-   "run": "e4cafb8dbf8266c87e9de450206e10e8dc9801ba19848628a552b98b47d02b62",
-   "severity": "low",
-   "subject_key": "e40cf0e345940f46493089ee3a2704aae6461c795b77d3dbb4a1a6224b3375f6",
+   "run": "978b2d8613e72592eb8718e392f9525cead5ae73e112bf644a6146b59a630e32",
+   "subject_key": "8b3921c449a5641a4ddf5fec8e82738ac81fd28d9d8a323623f5fdaa818222fd",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -625,6 +692,8 @@
      "fixture:stage14.asset.refuse_reuse_recycling@person[taxpayer].sc[desk]",
      "fixture:stage14.asset.refuse_pre_2017@person[taxpayer].sc[desk]",
      "fixture:classm.eic.3.deepseek@person[taxpayer].sc[biz_a]",
+     "fixture:classm.f4952.3@person[taxpayer].sc[biz_a]",
+     "fixture:classm.f4952.3@person[taxpayer].sc[biz_b]",
      "fixture:classm.s179.5@person[taxpayer].sc[biz_a]",
      "fixture:classm.s179.5@person[taxpayer].sc[biz_b]",
      "fixture:classm.scveh.3@person[taxpayer].sc[biz_a]",
@@ -635,16 +704,14 @@
      "fixture:stage14.s179.income_limit@person[taxpayer].sc[desk]",
      "fixture:stage14.s179.wages_count@person[taxpayer].sc[desk]",
      "fixture:bug0474.s179.wc_interest@person[taxpayer].sc[desk]",
-     "fixture:bug0474.s179.wc_interest_part@person[taxpayer].sc[desk]",
-     "fixture:bug0474.s179.interest_not_asked@person[taxpayer].sc[desk]",
      "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].statutory@person[taxpayer].sc[desk]",
      "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].passive@person[taxpayer].sc[desk]",
      "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].spouse_owned@person[taxpayer].sc[desk]",
      "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].method_other@person[taxpayer].sc[desk]",
      "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].special@person[taxpayer].sc[desk]",
      "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].inventory_other@person[taxpayer].sc[desk]",
-     "partial:classm.f4562.1-person[taxpayer].sc[biz_a].line1@person[taxpayer].sc[biz_b]",
-     "partial:classm.f4562.1-person[taxpayer].sc[biz_a].line2@person[taxpayer].sc[biz_b]"
+     "partial:classm.clcw.4.deepseek-person[taxpayer].sc[biz_a].line1@person[taxpayer].sc[biz_b]",
+     "partial:classm.clcw.4.deepseek-person[taxpayer].sc[biz_a].line2@person[taxpayer].sc[biz_b]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1198,6 +1265,38 @@
    "ruling": "Ruling: model error; the line itself matches the project's reading, but the candidate's Form 4562 terms differ from the source: its Form 4562 line 25 vehicle term sums scveh.bonus_allowed, the passenger-automobile worksheet amount figured for every vehicle, instead of scveh.bonus, so for a standard-mileage vehicle it reaches the year placed in service and the project's refusal there on scveh.low_use (a standard-mileage vehicle used 50% or less takes no depreciation, so the low-use rule of i4562 p. 14, Lines 26 and 27, does not reach it), asks miles and placed answers the project does not need, and drops the allowance of a vehicle that is not a passenger automobile (stage14.veh.suv_179); its line 14 sums asset.bonus over every non-listed asset instead of asset.bonus_2025, so property placed in service before 2025 with a bonus_choice answer contributes an allowance (i4562 p. 5, Line 14, \"The special depreciation allowance applies only for the first year the property is placed in service\"; for example classm.sli.4, items placed in 2008 and 2019); and it asks asset.bonus_choice where the project does not (classm.asset.1, classm.s8812.3). Every completed-return refusal (scveh.low_use) and unknown below is one of those, and every completed value difference is a business with a prior-year asset counted on line 14 or with stage14.veh.suv_179; none traces to asset.not179 or scveh.employee_use. executable-triage-v2 (scratch rerun of triage.py's triage() with the witness cap lifted, /tmp/adj-bklg-asset-sc-scveh/triage/sc.json; 1,495 fixtures, 500 generated returns seed 20261026, 2,081 partial records): 2,455 of 3,248 agree; 252 candidate-refuses, 202 project-refuses, 201 value, 71 project-unknown, 67 candidate-unknown; on completed returns: 44 candidate-refuses, 12 value, 6 candidate-unknown. Completed-return value differences (project/candidate): classm.f4952.2.deepseek sc[biz_a] -$28,611.94/-$43,581.70; classm.f8880.2.deepseek sc[biz_a] -$138,921.55/-$138,961.55; classm.f8880.2 sc[biz_a] -$138,921.55/-$138,961.55; classm.se.2 sc[biz_a] $76,651.30/$63,454.50; mutation.t2.mfj_sdtw_skip23 sc[biz_a] -$28,611.94/-$43,581.70; stage14.veh.suv_179 sc[haul] $161,300.00/$200,000.00; generated 138 sc[biz_a] $17,970.90/-$20,662.45; generated 150 sc[biz_a] -$36,896.82/-$69,167.14; generated 163 sc[biz_a] $129,916.69/$129,742.05; generated 402 sc[biz_b] $95,815.79/$80,945.69; generated 449 sc[biz_a] $134,907.15/$129,192.96; generated 482 sc[biz_b] -$72,201.20/-$76,596.97.",
    "context": "e5f09e83c77f890821f34e498da4c81ef409d7e1373ddfa86073c3d234f4dd5a",
    "subject_key": "ed71d7f3294ade24dd6c944a2fbdafd0d546d8fd6d570e059adab104be58640a"
+  },
+  {
+   "printed": "sc.line31_pre179",
+   "project_expr_sha256": "4c2ebc3803d7032de204f6f2bb5ea8245fc0c913a531b46b14a8ff8ef2dcd3b5",
+   "second_expr_sha256": "0fa11b9a3082b4619bb72887df65351608388c20ede329e4a2d9867ac525dc6d",
+   "ruling": "Ruling: representation; as the earlier rulings on this line. Both figure line 31 before the section 179 deduction for Pub. 946's two income limits (pp. 17-19); the project subtracts its depreciation from the asset and vehicle entries and the line 30 deduction as figured, the reply groups the expense lines and depreciation terms differently. Restaged by this round's question wording on lines 10, 11, 15, 21, 22, 23 and 26 (expr.source), which the reply carries. executable-triage-v2 (.transcription/triage/2025/sc.json, pass 7d11a905c40b; 1,767 fixtures, 500 generated returns seed 20261026, 2,270 partial records): 3,452 agree; 16 project-refuses and 289 project-unknown, all on refused or incomplete records; no completed return differs. Project stands.",
+   "context": "026a2a63f26368aedec55a66688c1f1e43193da970ba74cad6bda66e9d850698",
+   "date": "2026-11-10",
+   "run": "978b2d8613e72592eb8718e392f9525cead5ae73e112bf644a6146b59a630e32",
+   "subject_key": "b96785d48a987df2cfe42a2582d4dec3fa4ebe242d8faeeeb0057dc292286b61",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.3@person[taxpayer].sc[biz_a]",
+     "fixture:classm.f4952.3@person[taxpayer].sc[biz_b]",
+     "fixture:stage14.ho.refuse_two_businesses@person[taxpayer].sc[home]",
+     "fixture:stage14.ho.refuse_two_businesses@person[taxpayer].sc[shop]",
+     "fixture:stage14.ho.refuse_two_limits@person[taxpayer].sc[home]",
+     "fixture:stage14.refuse.statutory@person[taxpayer].sc[b]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].statutory@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].passive@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].spouse_owned@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].method_other@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].special@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].inventory_other@person[taxpayer].sc[desk]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "sc.line31_pre179",

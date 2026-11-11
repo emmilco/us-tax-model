@@ -100,6 +100,16 @@
    "subject_key": "0f62d09893a61bdd2f331c11c4e410e86a396258e715e0b0f1fbbcd32f53dd00"
   },
   {
+   "printed": "15",
+   "restated": "Input — Premiums for business insurance (not health insurance for yourself, not a reserve for self-insurance, not lost-earnings insurance, not insurance on a car, truck or van you list for this business, which its car and truck expenses already include under either the standard mileage rate or actual expenses, and not insurance on your home, because with the simplified method for business use of the home, line 30 replaces the business part of your home's expenses); zero if none",
+   "model": "The restatement excludes only health insurance for yourself, so employee health premiums could be entered here. The line 15 instructions say \"Deduct on line 14 amounts paid for employee accident and health insurance\", and the form line reads \"Insurance (other than health)\".",
+   "ruling": "Ruling: representation; as the earlier ruling on this line. i1040sc p. 8, Line 15, \"Deduct on line 14 amounts paid for employee accident and health insurance\". Employee health insurance belongs on line 14, whose question names \"accident and health plans\" for employees (sc.line14); a filer who put it on line 15 would get the same deduction, since lines 14 and 15 are read only by the line 28 total (sc.line28, sc.line28_pre179). The added exclusion of a listed vehicle's insurance (i1040sc p. 7, Line 9, \"gasoline, oil, repairs, insurance, license plates, etc.\"), which the model accepts, is this round's change. No value changes.",
+   "context": "9f88822a3179cb02215ee77e87a5db8b960e70f44877df384b77ee53cff7d0fc",
+   "date": "2026-11-10",
+   "run": "b9e72e19e785177e728bbc131869e49a341eb5799e799cc371662888d043312c",
+   "subject_key": "85596a67e75394d1d45aef054ef73c09fe09e8a3e9e245752a32e65475ce1731"
+  },
+  {
    "printed": "2 (sc.f7206_line2)",
    "restated": "Add ltc.amount over every confirmed ltc entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Form 7206 line 2 is the per-person smaller of the payments or the age-based limit, but how ltc.amount is figured is not given. The scope 'within the current person' rather than this business's plan also cannot be checked.",
@@ -144,6 +154,17 @@
    "subject_key": "a1afdd3ed706ee9ce4224ae77d70199de54672ae1d7bbf29ae16d896e8450529"
   },
   {
+   "printed": "23",
+   "restated": "Input — Business taxes and licenses: sales tax imposed on you as the seller, real estate and personal property taxes on business assets, licenses and regulatory fees paid each year (not licenses you must amortize, such as some liquor licenses, and not license plates for a car, truck or van you list for this business, which its car and truck expenses already include), the employer share of social security and Medicare taxes, federal unemployment tax, federal highway use tax, contributions to a state unemployment insurance fund or a paid family and medical leave program disability benefit fund if they are taxes under state law (not income or self-employment tax, not taxes on property you bought, and not real estate taxes on your home, which with the simplified method for business use of the home you can deduct only on Schedule A); zero if none",
+   "model": "The restatement includes the employer share of social security and Medicare taxes without the required reduction: \"Reduce your deduction by the amount shown on Form 8846, line 4.\" It also does not exclude \"Taxes assessed to pay for improvements, such as paving and sewers\".",
+   "ruling": "Ruling: finding (low; pre-existing, not introduced by this change); i1040sc p. 9, Line 23, \"Taxes assessed to pay for improvements, such as paving and sewers\" is in the do-not-deduct list and the question does not name it: recorded in BUG-0529 (sc.line23, special assessments). The Form 8846 reduction of the employer social security and Medicare taxes (\"Reduce your deduction by the amount shown on Form 8846, line 4\") is outside the tool: sc.special lists \"wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)\" and a Yes refuses through sc.screened. This round added only the listed vehicle's license plates (i1040sc p. 7, Line 9), which the model accepts.",
+   "context": "9f88822a3179cb02215ee77e87a5db8b960e70f44877df384b77ee53cff7d0fc",
+   "date": "2026-11-10",
+   "run": "b9e72e19e785177e728bbc131869e49a341eb5799e799cc371662888d043312c",
+   "severity": "low",
+   "subject_key": "c1d2c4fc03e091c988ed5aacb9d1dca48d2a72cb75f7c397b203a011c183e2c7"
+  },
+  {
    "printed": "24b",
    "restated": "Add helper \"50% of the meals subject to the 50% limit\" and helper \"80% of the meals under the hours of service limits\".",
    "model": "Only the 50% and 80% categories are provided. The instructions also say 'you can fully deduct meals and incidentals furnished or reimbursed to an employee if you properly treat the expense as wages', and likewise for amounts reported on Form 1099-NEC. These 100% meals have no place, and no refusal names them.",
@@ -182,6 +203,16 @@
    "subject_key": "92ed3a5f97abe43b9f98e52c36fabc76f20e15138a5d28dd2dd9474f58798e3f"
   },
   {
+   "printed": "26",
+   "restated": "Input — Salaries and wages of your employees for 2025 under your accounting method (with the cash method, the amounts you paid in 2025; with an accrual method, the amounts incurred for 2025) (not amounts paid to yourself, not wages deducted elsewhere, and not the part of a taxable fringe benefit, such as personal use of a car, that is depreciation or other expenses you claim elsewhere); zero if none",
+   "model": "The restatement does not reduce wages by the employment credits. The instructions say \"Enter the total salaries and wages for the tax year reduced by the amount of the following credit(s)\" (Forms 5884, 8844, 8932, 8994), and the form line reads \"Wages (less employment credits)\".",
+   "ruling": "Ruling: scope; i1040sc p. 10, Line 26, \"reduced by the amount of the following credit(s)\" (Forms 5884, 8844, 8932, 8994). Wages reduced by an employment credit are refused: sc.special lists \"wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)\", and a Yes makes sc.screened true, which refuses sc.line1. On every computed return no credit applies, so the line is total wages. The accounting-method wording added this round the model accepts.",
+   "context": "9f88822a3179cb02215ee77e87a5db8b960e70f44877df384b77ee53cff7d0fc",
+   "date": "2026-11-10",
+   "run": "b9e72e19e785177e728bbc131869e49a341eb5799e799cc371662888d043312c",
+   "subject_key": "afc9a4cb29f39ff53436986a46a6af480e853103bbe943c5121e343d826d7ae0"
+  },
+  {
    "printed": "32",
    "restated": "Input — All your investment in this business is at risk: you have no nonrecourse loans not secured by your own property, no amounts protected against loss by a guarantee or stop-loss agreement, and no amounts borrowed from someone with an interest in the business (box 32a)",
    "model": "The box 32b test omits part of the IRS condition: amounts borrowed 'from a person who has an interest in the business other than as a creditor or who is related under section 465(b)(3)(C) to a person (other than you) having such an interest'. A related-party loan would pass as at risk, while an ordinary creditor could be read as disqualifying.",
@@ -214,6 +245,16 @@
    "date": "2026-11-10",
    "run": "7dce67f3e79d8c088018757ceee5f7d3b3e824b94385a558fe7e6d68e4d45c16",
    "subject_key": "cfba7aea7794ff6f7e5519ab64a32e62a8832dca00affd6a1b5a67505a3e4447"
+  },
+  {
+   "printed": "7 (sc.f7206_line7)",
+   "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"Schedule 1, line 15 (this person's), times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
+   "model": "Form 7206 line 7 says to \"Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by the percentage on line 6\". The restatement multiplies only this person's Schedule SE line 13. On a joint return where both spouses have self-employment tax, that differs from Schedule 1 line 15.",
+   "ruling": "Ruling: ambiguity; owner's ruling (amb.2025.f7206_line15_person, T-041); restatement accepted, as the earlier rulings on this line. On a joint return Schedule 1 line 15 combines both spouses; Form 7206 is figured for the person whose business establishes the plan, and line 9 looks to \"the same trade or business\", so the project uses that person's own Schedule SE line 13. The readings agree when only one spouse is self-employed. Line 7 did not change this round; it is in scope through its rendered glossary.",
+   "context": "9f88822a3179cb02215ee77e87a5db8b960e70f44877df384b77ee53cff7d0fc",
+   "date": "2026-11-10",
+   "run": "b9e72e19e785177e728bbc131869e49a341eb5799e799cc371662888d043312c",
+   "subject_key": "380ed7f6629fe0204f6869ea8a122f894359c4623ef1886b38410c9d8b587ef0"
   },
   {
    "printed": "7 (sc.f7206_line7)",
