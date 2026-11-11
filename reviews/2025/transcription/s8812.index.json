@@ -5,7 +5,7 @@
  "base": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
  "head_rows": {
   "agree / disagree / missing": "12 / 39 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -180,17 +180,17 @@
   },
   {
    "key": "18a",
-   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "record": "5b9fea1df9b64c103540663756ba0ca1a5d8f39a2ab5ba9ea6300e6ac9524b99",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\"; line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\"; i1040s8812 p. 7, Earned Income Chart. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 763 agree; 1,049 candidate-shows-skipped, 194 project-refuses, 108 candidate-unknown, 20 project-unknown, 9 candidate-refuses (on completed returns: 1 candidate-refuses, 244 candidate-shows-skipped, 12 candidate-unknown). Same as the before-catalog-refresh ruling: the line has no shown_when, so it shows earned income after the line 12, 16a or 16b stop (project s8812.show_iia); the chart's branches match where both show. It also needs s8812.combat_pay where Part II-A is not reached (completed partials withholding it, e.g. classm.f8960.1.deepseek, classm.sd.1.deepseek; and it refuses stage5.return.refund_combat_pay_no_children, the BUG-0401 regression where line 12 stops and the project keeps every Form 1040 value: checked this round, Form 1040 line 28 $0.00 and line 24 $20,267.00); BUG-0401 reads the combat-pay answer only through s8812.show_iia, as i1040s8812 Part II-A does. Project stands.",
-   "subject_key": "08856376bd4af609e3fe0fb97516e9d2f0fd58bc32792f14423d5635a95071f5"
+   "ruling": "Ruling: model error and interface gap; i1040s8812 p. 8, Earned Income Worksheet (\"If married filing jointly, include your spouse’s amounts with yours when completing this worksheet.\"), and line 18a of Schedule 8812. Where the project shows the line and the reply gives a value, the values agree; the reply has no matching display condition, so it shows an amount where the project hides the line (candidate-shows-skipped, the display difference ruled in earlier rounds), and it declares its own refusal (s8812.h_18a_refuse, \"Outside candidate scope\", no citation) that fires on completed returns the project computes (fixture classm.f8880.1.deepseek: the project enters zero, not taking the EIC, Earned Income Worksheet line 7 zero): a refusal the source does not call for. Triage executable-triage-v2 (`.transcription/triage/2025/s8812.json`, pass 0ad8c98576d4; 1,767 fixtures, 500 generated returns seed 20261026): 465 of 1,654 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 22, \"candidate-shows-skipped\": 1126, \"candidate-unknown\": 34, \"project-unknown\": 29}; on completed returns 821 candidate-shows-skipped and 10 candidate-refuses; no value differs. The project line is retained.",
+   "subject_key": "06d81c2c26ace1b631b49bf5046569343dab635b61dbec81e85d5b103c32e939"
   },
   {
    "key": "18b",
-   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "record": "5b9fea1df9b64c103540663756ba0ca1a5d8f39a2ab5ba9ea6300e6ac9524b99",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040s8812 p. 2, line 18b; f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\"; line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,459 agree; 625 project-refuses, 33 candidate-unknown, 21 project-unknown, 5 candidate-refuses (on completed returns: 1 candidate-refuses, 12 candidate-unknown). The reply's shown_when is s8812.show_iia by reading and its value is $0 with a combat-pay refusal, the project's s8812.combat_pay gate; the differences are that refusal evaluated where triage ignores the reply's shown_when (stage5.return.refund_combat_pay_no_children, where line 12 stops) and partials withholding the answer; every project-refuses is on a refused return. Project stands.",
-   "subject_key": "69e4115f26f37e0b7eb660aaa87f68829ee98eea448f1474018e21440896ddfd"
+   "ruling": "Ruling: scope and model error; same reading as the earlier ruling on this line. f1040s8812 p. 2, lines 16a and 16b, \"stop here\"; i1040s8812 p. 8, Earned Income Worksheet, line 1b. Both sides enter zero for nontaxable combat pay with the same display condition, combat pay being refused through s8812.combat_pay; the reply's line reads its own refusal helper (s8812.h_combat_refuse through s8812.h_clwb3_refuse, \"Outside candidate scope\"), which fires on 1 completed record where the project shows zero (mutation fixture stage16.cleanup.mut.clwb_three_figured): a refusal the source does not call for. Triage executable-triage-v2 (`.transcription/triage/2025/s8812.json`, pass 0ad8c98576d4; 1,767 fixtures, 500 generated returns seed 20261026): 1,644 of 1,675 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 1, \"project-unknown\": 31}; the project-unknown are partial records withholding an answer the project needs. No value differs. The project line is retained.",
+   "subject_key": "34b647575782bd633fe118ff549a00fe0f8c7baf7acc3a20e797f228a57b8c0e"
   },
   {
    "key": "19",
@@ -271,10 +271,10 @@
   },
   {
    "key": "(CLW B 3)",
-   "record": "7465988cfb3d28832b925dfc79b9fb13af29b6d3edae767ede13628f06bd74ae",
+   "record": "5b9fea1df9b64c103540663756ba0ca1a5d8f39a2ab5ba9ea6300e6ac9524b99",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040s8812 p. 5, Credit Limit Worksheet B, line 3: \"Enter your earned income from line 7 of the Earned Income Worksheet\"; i1040s8812 p. 8, Earned Income Worksheet, line 3: \"If zero or less, stop. ... enter -0- on line 3 of Credit Limit Worksheet B\", line 2b: \"Enter any net profit or (loss) from Schedule C, line 31\", lines 5 to 7. Both sides take line 1z plus Schedule C profit, zero when that is zero or less, otherwise less Schedule 1 line 15; the reply sums person.sc_total where the project reads Schedule 1 line 3, which is defined as that same sum (forms/2025/s1.yaml, s1.line3, with its Form 461 refusal s1.ebl), and both refuse combat pay (s8812.combat_pay) and statutory employee, farm and partnership income (scope.schedule1). This reply, unlike the earlier ones on these lines (`reviews/2025/transcription/s8812.rulings.json`, model error for a missing or line-12-blind shown_when), declares shown_when s8812.clwb_complete on every Worksheet B line, and its clwb_complete includes s8812.show13, so it is the project's s8812.show_clwb (show13, Form 5695 Part I claimed, line 4 above zero) with the conjuncts flattened. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 364 of 2,272 agree; 1,313 candidate-shows-skipped, 438 project-refuses, 148 candidate-unknown, 8 candidate-refuses, 1 project-unknown; on completed returns 931 candidate-shows-skipped, 77 candidate-unknown, 2 candidate-refuses (e.g. stage14.asset.hy_5yr, $45,910.00 where the project hides the line; the unknowns are s8812.combat_pay, unanswered where the worksheet is not reached). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 0 differences on this line. Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
-   "subject_key": "dc6a48ea08c4cde4e56ed5c45f6102357ddb3ba38aa19d2bc3dea981b216130e"
+   "ruling": "Ruling: model error and interface gap; i1040s8812 p. 5, Credit Limit Worksheet B, line 3, \"Enter your earned income from line 7 of the Earned Income Worksheet\". The reply has no display condition matching the project's s8812.show_clwb, so it shows the line on returns that do not complete Worksheet B (candidate-shows-skipped, as ruled in earlier rounds), and it refuses through its own helper s8812.h_clwb3_refuse (\"Outside candidate scope\") on a completed return the project computes (mutation fixture stage16.cleanup.mut.clwb_three_figured, project $2,858.70): a refusal the source does not call for. Its expression also drops the project's Schedule 1 line 3 term from the worksheet's earned income; no recorded comparison shows a value difference from it. Triage executable-triage-v2 (`.transcription/triage/2025/s8812.json`, pass 0ad8c98576d4; 1,767 fixtures, 500 generated returns seed 20261026): 352 of 1,767 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 1, \"candidate-shows-skipped\": 1398, \"candidate-unknown\": 16, \"project-unknown\": 1}; on completed returns 934 candidate-shows-skipped and 1 candidate-refuses. The project line is retained.",
+   "subject_key": "67fd1359eac4c329b5a295b31ac1574dafb29435235517f50a65474c11697207"
   },
   {
    "key": "(CLW B 4)",
@@ -381,8 +381,8 @@
   "16a": "3d98ca73a1b6332bd82c9ceb2daebeb2aabd99efc843653de914f1feb1f74e03",
   "16b": "604e7dfab38da55e794e9583176f6265014f8329698e5cb587b1d4d1140b50e0",
   "17": "7181301d44f76fddbaafbefdf2805d932f76b3a10e49bf810a0c26b00b752009",
-  "18a": "d9a0845721ea0f1a024971ecb361a7833a6fb8bd77192926217fc39f7af8332b",
-  "18b": "0d1e3e71d94e41d0b93873ad007ac8d897a7ca6bf895a8d6fe26c9a37dfe3434",
+  "18a": "e7b2b97c4510ad8c7e9db2a91f1611666bb661c78ece3095382f49dbd5e09555",
+  "18b": "fee4c8d9edd408074fe9d2349f5eecb41270ab73c48f3f48aa60fd117ac8335b",
   "19": "7251697fc0074a19522ab5dd388541085f7e6331eb534827dabea50ee7a6ef00",
   "20": "6ae7b1fe85db2da8d829f6db09b41fdbe04de5816c29ff18420bd2679c9629a8",
   "21": "07d932ff5152faad01e426cda5d7297195ed4c742e0ed6ec5db33e1e26ec0537",
@@ -394,7 +394,7 @@
   "27": "63f0c0e751d37f801993d00a03cd3a180db9b36ed53994128ea4ffd6ed385941",
   "(CLW B 1)": "8080855abfd856eacc16271d2ce0a399b072fafd4dda7cdc6ed310262295c0a6",
   "(CLW B 2)": "6fa00c15fea3fc67cf2382a36e3dd3ec7e0b04e1ec2c2857a9030edb94387fbd",
-  "(CLW B 3)": "814000dfdbc9c08afb328b83e37dfec9657d5c6706eda96bbc3b08d2cc1e8e5b",
+  "(CLW B 3)": "af0e75b1af245fc4069629dae60126f3918c879a86caf1cb27d3cc1c33a541d9",
   "(CLW B 4)": "61efd6bc9f899c31718e5c509a6b6b35071a4745d364dca83ab7e792ca05f76e",
   "(CLW B 5)": "bfd33646b84e8e5fab5c7274d6824faca7564213b729efd411fe0048a873730e",
   "(CLW B 7)": "a49ff581228c7a4a59be5bf25f39a4c635c1251064489aaf31fcbaf092258a30",
@@ -412,6 +412,8 @@
   "s8812.clwb_complete": "25cf9c95738d00473ee009f4a9407e1fc808db3a1ebcdc3ad7e64c99960dd7b9",
   "4": "0d53bc5dc1cfa4f0daaf26549006dabfc947df56269fc2a313f5ba30eacdfee0",
   "(CLW A 4)": "02fc51c15ae9ec88dfbd177a3bef66b796e28e8bfaf42ec5ef878d6dd152cc39",
+  "18a": "8ad211a8e15777d7128605fcb605285c5eddbd15d4cbf0eb1da8a5dc908e228b",
+  "18b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "27": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "(CLW B 1)": "127301fc8ea42af98695155ffec1a3844bdb0cf332076fe8235e5d74871f0ddb",
   "(CLW B 2)": "127301fc8ea42af98695155ffec1a3844bdb0cf332076fe8235e5d74871f0ddb",

@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "b4ed89150e8053bc9ff2c0c87a1cc09929ea3c2fb2956158a134a212cf29fe46",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -63,10 +63,10 @@
   },
   {
    "key": "ira.combat_gate",
-   "record": "0ab6f13f6eea83a8033e36ddf945e9ee78d6a91aea796a050b1af148274defa3",
+   "record": "665d27379f0f1f7a3d7fc64695bde8f8ed643ff43db9ebbef5a1bf28a6a154a1",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 98, IRA Deduction Worksheet, line 8: \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i\"; combat pay matters to line 8 only when the worksheet is used (p. 95, Line 20: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"). The candidate's gate is s8812.combat_pay alone, without the contribution condition. executable-triage-v2 (`.transcription/triage/2025/ira.json`, pass 2f14fa8fede2; 1,702 fixtures, 500 generated returns seed 20261026, 69 partial records; 2,271 comparisons): 2,113 of 2,271 agree; differences 129 candidate-unknown, 20 value, 9 project-unknown; on returns the full interview completes: 62 candidate-unknown, 2 value; witnesses enumerated with the cap lifted (scratch /tmp/adj/tr/eicwork/full/ira.json). The 2 completed value differences, stage5.return.refund_combat_pay_no_children and stage8.hoh.actc.three_children.line12_stop_combat_pay, have combat pay and no traditional IRA contributions (ira.any_trad false, Schedule 1 line 20 $0): the candidate's gate is true and would refuse the IRA deduction of a return that has none; the project's is false. The 62 completed candidate-unknowns need s8812.combat_pay on returns without traditional contributions, where the project's gate is false without it and the interview does not ask it; a candidate that needs an answer the source does not need is a model error (README). The rest are on incomplete or refused records. As the earlier ruling (executable-triage-v1), whose reasoning holds for this reply. Gate-wave check: the rewrite (all of ira.any_trad and s8812.combat_pay, now a choose on ira.any_trad) gives false in HEAD and the working tree on both value witnesses (evaluated) and the same value on every completed return (1,702 fixtures and 500 generated returns evaluated in both trees); it differs only on 9 refused records, false in HEAD and unknown in the working tree. Project stands.",
-   "subject_key": "b80893a8ad3d4b6361cb53c6fe4fcde6fd30c0cace9a7b7bf6d8797d23ea0618"
+   "ruling": "Ruling: interface gap and model error; the reply's gate is s8812.combat_pay on every return, the project's is s8812.combat_pay only when a person on the return contributed to a traditional IRA (false otherwise). The reply's note says the request gave it no return-level aggregate of the person collection to make that test: interface gap. Without a traditional IRA contribution there is no IRA deduction to figure, so the combat-pay question cannot change it; on the 2 completed value differences in the recorded witnesses (fixture stage5.return.refund_combat_pay_no_children: combat pay yes, no traditional IRA contribution) the reply's gate is true and the project's false, with no IRA amount on either side. On completed returns where the interview does not ask the combat pay question the reply needs it (candidate-unknown, 71; the recorded witnesses name s8812.combat_pay with the project's value false): a need the source does not have. Triage executable-triage-v2 (`.transcription/triage/2025/ira.json`, pass 822691093399; 1,767 fixtures, 500 generated returns seed 20261026): 2,152 of 2,336 in-scope comparisons agree; differences by kind {\"candidate-unknown\": 151, \"project-unknown\": 10, \"value\": 23}; the other value differences are on refused (20) or incomplete (1) records. The project line is retained.",
+   "subject_key": "e314dafe191bf2fcebd3082402fe5e39a2a563b3c2bfd14f2cac6fd1df1c62f2"
   },
   {
    "key": "ira.excl_gate",
@@ -238,7 +238,7 @@
  },
  "__rest__": "51bd60f3e1f3c5dc4a9156da6cc70b2d7fd330e94846768242fe389be4a6c05d",
  "foreign": {
-  "ira.combat_gate": "cd938cd9c0049e1415cd9ff4774f244f27a4cf9a93d67a02019db6d71b11a778",
+  "ira.combat_gate": "c289dc6646202069a3209e5c65de4e8f83116a3ce4588fefabd1e4474be36c78",
   "ira.line20": "5c16bbd2c3580c26e60a0627c1651f2d3a296698fbdc1da90687d87346d59cb1"
  }
 }

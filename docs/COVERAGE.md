@@ -110,7 +110,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"
   - *Refused at:* `f1040.line1a`
 - **`sa.excluded_income`**: Are you excluding foreign earned income (Form 2555), American Samoa income (Form 4563) or Puerto Rico income?
-  - *The data asks or tests:* Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico? (`input`)
+  - *The data asks or tests:* Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico? (`input`)
   - *Stops the return as:* Form 2555, Form 4563 or excluded Puerto Rico income
   - *Not covered:* Form 2555 (EIC, Step 1, question 3). A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool.
     *Source:* [i1040gi] p. 40, Step 1, question 3, "Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP"
@@ -204,7 +204,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
   - *Refused at:* `eic.step2_other`, `eic.step5_line1`, `eic.clergy`, `f1040.line8`, `f1040.line10`, `s1a.line5_calc`, `s1a.line14b_calc`, `s8812.eiw_3`, `s8812.eiw_4`, `scope.ready`, `ssb.line6`
   - *Share of returns (coverage estimate):* Rental and royalty income or loss, 5.9%; Other income (Schedule 1 line 8z and similar), 4.8%; Partnership or S corporation income or loss, 3.5%; Farm income or loss, 1.1%; Sales of business property (Form 4797), 1.1%; Net operating loss deduction, 0.6%; Estate or trust income or loss, 0.4%
 - **`qbi.unsupported`**: Do you have qualified business income beyond your Schedule C businesses and section 199A dividends (a partnership, publicly traded partnership, REIT carryforward or cooperative)?
-  - *The data asks or tests:* Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)? (`input`)
+  - *The data asks or tests:* Do you (or, on a joint return, your spouse) have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you (or, on a joint return, your spouse) a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)? (`input`)
   - *Not covered:* Forms 8995 / 8995-A business or PTP path. Only section 199A dividend income without loss carryovers is supported.
     *Source:* [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4
   - *Refused at:* `qbi.eligible`
@@ -234,7 +234,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i1040s8812] p. 8, Earned Income Worksheet, line 1b
   - *Refused at:* `eic.step5_line4`, `f2441.line4`, `f2441.line5`, `f2441.line18`, `f2441.line19`, `s8812.eiw_1b`
 - **`f8959.unsupported`**: Do you have church employee income, unreported or allocated tips (Form 4137), Form 8919 wages, uncollected Medicare tax, or wages from a U.S. territory?
-  - *The data asks or tests:* Any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)? (`input`)
+  - *The data asks or tests:* Do you (or, on a joint return, your spouse) have any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)? (`input`)
   - *Not covered:* Form 8959 additional source forms. The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.
     *Source:* [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3
   - *Refused at:* `f8959.line1`, `f8959.line2`, `f8959.line3`, `f8959.line8`, `f8959.line14`, `f8959.line23`, `f8959.line19`
@@ -386,7 +386,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
   - *Refused at:* `f1040.line30`, `f5695.rce_ws2`, `f5695.eehi_ws2`, `f8863.clw5`, `s3.line8`, `s8812.clw_a2`, `s8812.clw_a4`, `scope.ready`
   - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`f8960.unsupported`**: Do you have net investment income or adjustments the tool does not take for the Net Investment Income Tax: annuities, rentals, royalties, a business or pass-through, CFC or PFIC holdings, a section 1411 net operating loss, excluded savings bond interest, or another Form 8960 adjustment?
-  - *The data asks or tests:* Any of the following?
+  - *The data asks or tests:* Do you (or, on a joint return, your spouse) have any of the following?
 
     - annuity, rental, royalty, business or pass-through income
     - a CFC or PFIC holding
@@ -621,17 +621,17 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
 ### Social Security
 
 - **`ssb.lump_sum`**: Do you want the lump-sum election for Social Security benefits paid for an earlier year?
-  - *The data asks or tests:* Do you elect to use the lump-sum election method for a social security benefit payment that was for an earlier year? (`input`)
+  - *The data asks or tests:* Do you elect to use the lump-sum election method for a social security benefit payment to you (or, on a joint return, your spouse) that was for an earlier year? (`input`)
   - *Not covered:* Lump-Sum Election (Pub. 915). The lump-sum election method is outside this tool.
     *Source:* [i1040gi] p. 31, Line 6c
   - *Refused at:* `ssb.line2`
 - **`ssb.pub915`**: Do you have Social Security benefits with a situation the Form 1040 worksheet does not cover (IRA contributions with plan coverage, repayments above benefits, Forms 2555, 4563 or 8815, excluded adoption benefits or Puerto Rico income)?
-  - *The data asks or tests:* Does any of these apply: you made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you file Form 2555, 4563 or 8815; or you exclude employer-provided adoption benefits or income from sources within Puerto Rico? (`input`)
+  - *The data asks or tests:* Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico? (`input`)
   - *Not covered:* Pub. 915 or Pub. 590-A worksheet. The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication.
     *Source:* [i1040gi] p. 31, Lines 6a and 6b, Exception
   - *Refused at:* `ssb.line2`
 - **`ssb.terror_disability`**: Are any Social Security benefits disability payments for injuries from a terrorist attack?
-  - *The data asks or tests:* Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)? (`input`)
+  - *The data asks or tests:* Are any of the social security or railroad retirement benefits on your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)? (`input`)
   - *Not covered:* Pub. 3920 (disability payments for injuries from a terrorist attack). Excluding disability payments for injuries from a terrorist attack is outside this tool.
     *Source:* [i1040gi] p. 31, Lines 6a and 6b, Disability payments
   - *Refused at:* `ssb.line2`
@@ -834,7 +834,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i1040gi] pp. 91–92, Lines 8a Through 8z
   - *Refused at:* `s1.line9`
 - **`s1.uc_unsupported`**: Did you contribute to a governmental unemployment program, or repay unemployment benefits taxed in an earlier year?
-  - *The data asks or tests:* Did you, in 2025 or any earlier year, make contributions to a governmental unemployment compensation program (including amounts withheld from your wages for it, and payments you made yourself, such as for coverage you elected as a self-employed person; not counting tax an employer paid on your wages, paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year? (`input`)
+  - *The data asks or tests:* Did you (or, on a joint return, your spouse), in 2025 or any earlier year, make contributions to a governmental unemployment compensation program (including amounts withheld from your wages for it, and payments you made yourself, such as for coverage you elected as a self-employed person; not counting tax an employer paid on your wages, paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year? (`input`)
   - *Not covered:* Unemployment compensation contributions or earlier-year repayments (Form 1099-G instructions, Pub. 525). Reducing unemployment compensation by program contributions, or repayments of amounts included in an earlier year, is outside this tool.
     *Source:* [i1040gi] p. 89, Schedule 1, line 7, Caution and the last paragraph
   - *Refused at:* `s1.line7_figured`
@@ -972,7 +972,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
   - *Refused at:* `gift.allowed`
 - **`f4952.unsupported`**: Is investment interest tied to royalties, a business, passive activities or tax-exempt income, or do you have other investment expenses?
-  - *The data asks or tests:* Is any of the interest you count as investment interest paid or accrued in 2025 (line 1), or any of your 2024 carryforward, attributable to royalties, a trade or business, a passive activity, tax-exempt income, or an activity for which you aren't at risk (Form 6198); do you have any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales? (`input`)
+  - *The data asks or tests:* Is any of the interest you count as investment interest paid or accrued in 2025 (line 1), or any of your 2024 carryforward, attributable to royalties, a trade or business, a passive activity, tax-exempt income, or an activity for which you aren't at risk (Form 6198); do you (or, on a joint return, your spouse) have any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales? (`input`)
   - *Not covered:* Form 4952 / Form 6198 / Schedule E. Allocate the interest and prepare the applicable unsupported schedule or at-risk computation.
     *Source:* [f4952] pp. 1, 3–4, Investment Interest Expense Deduction
   - *Refused at:* `f4952.line2`, `f4952.election_checked`, `f4952.line5`, `f4952.required_test`

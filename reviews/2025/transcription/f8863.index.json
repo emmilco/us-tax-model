@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "3820de89b16e07ec18b8f2948a1ba4c707e6b244b7c5f94165ef67ba0ac1f02b",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -43,10 +43,10 @@
   },
   {
    "key": "3",
-   "record": "0f30153e0376f30fa2bf7796f846f3b2f7df7fa573a3ab223dd81e436b79c539",
+   "record": "58155e17913abce7386c5a5bef9541c5d4cb740c71425ac2d3b8f704d9e9a3da",
    "status": "DISAGREE",
-   "ruling": "Ruling: interface gap (+ scope); f8863 p. 1, line 3: \"Enter the amount from Form 1040 or 1040-SR, line 11b\". The reply has no shown_when, so it shows the line on returns that do not file Form 8863 at all (no qualified expenses paid, or a filer claimed as a dependent), where the project hides it on f8863.eligible; the source prints no skip for these lines and the whole-form condition is the project's visibility, not a printed STOP: interface gap, as the earlier rounds ruled for lines 2 to 4 and for f8962's whole-form visibility. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 171 of 2,261 agree; 1,559 candidate-shows-skipped, 445 candidate-refuses, 51 project-unknown, 35 candidate-unknown; on completed returns 1,047 candidate-shows-skipped, every one a return where f8863.eligible is No; the candidate-refuses are whole-return screens (sa.excluded_income, sb.form8938, plan_screened, sb.line8 and others) that the reply reaches through Form 1040 line 11b on returns refused under the full interview. Wherever the project shows the line the values agree. Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "subject_key": "0b9fde03a9e3146eaf7254579f1c566036c1cdea4fc5096acdaf9e033a8651f6"
+   "ruling": "Ruling: interface gap (+ scope); same reading as the earlier rounds' ruling on this line. f8863 p. 1, line 3: \"Enter the amount from Form 1040 or 1040-SR, line 11b\". The reply's value is the project's (Form 1040 line 11b, with the excluded-income case refused through sa.excluded_income); only the display condition differs: the reply shows the line whenever f8863.paid is yes, the project also hides it when a person on the return claims the saver's credit (person.sav_claimed). Triage executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 5414e3b4736e; 1,767 fixtures, 500 generated returns seed 20261026): differences by kind {\"candidate-refuses\": 445, \"candidate-shows-skipped\": 1605, \"candidate-unknown\": 37, \"project-unknown\": 54}; on completed returns only candidate-shows-skipped (1,060), records where the project hides the line; triage applies only the project's shown_when, so it counts the reply's value even where the reply's own shown_when would hide it. The candidate-refuses and candidate-unknown are returns refused or incomplete elsewhere that the reply reaches by reading Form 1040 line 11b. No shown amount differs. Project stands.",
+   "subject_key": "1a771c57cfe9a21996f07a25a1d0b547df423a608d7954762b73f0d8b8ba822b"
   },
   {
    "key": "4",
@@ -120,10 +120,10 @@
   },
   {
    "key": "14",
-   "record": "0f30153e0376f30fa2bf7796f846f3b2f7df7fa573a3ab223dd81e436b79c539",
+   "record": "58155e17913abce7386c5a5bef9541c5d4cb740c71425ac2d3b8f704d9e9a3da",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation and interface gap (+ scope); f8863 p. 1, line 14: \"Enter the amount from Form 1040 or 1040-SR, line 11b\". The reply's shown_when (line 10 and line 4 above zero) carries the line 4 stop and the line 10 skip (f8863 p. 1, line 10: \"If zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19\"); triage applies only the project's shown_when (tools/transcription/triage.mjs, displayed()), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays: the 47 completed returns that file the form but stop or have line 10 $0.00 are hidden by it as well. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 107 of 2,261 agree; 1,644 candidate-shows-skipped, 424 candidate-refuses, 41 project-unknown, 37 candidate-unknown, 8 project-refuses; on completed returns 1,094 candidate-shows-skipped. Without the form the reply's line 10 is $0.00 wherever no Part III line 31 amount exists, so its shown_when hides the line; what remains is the whole-form condition (interface gap) and the dependent bar it inherits from line 10 (model error there). the candidate-refuses are whole-return screens (sa.excluded_income, sb.form8938, plan_screened, sb.line8 and others) that the reply reaches through Form 1040 line 11b on returns refused under the full interview. Values agree wherever both show. Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "subject_key": "aa789cb3df6b5878f73f300a1752b70b98a4fc26091830dcebec5a7792376c0f"
+   "ruling": "Ruling: interface gap (+ scope); same reading as the earlier rounds' ruling on this line. f8863 p. 1, line 14: \"Enter the amount from Form 1040 or 1040-SR, line 11b\". The reply's value is the project's; its display condition (f8863.paid yes, line 10 and line 4 above zero) omits the project's saver's credit condition (person.sav_claimed). Triage executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 5414e3b4736e; 1,767 fixtures, 500 generated returns seed 20261026): differences by kind {\"candidate-refuses\": 422, \"candidate-shows-skipped\": 1701, \"candidate-unknown\": 39, \"project-refuses\": 6, \"project-unknown\": 43}; on completed returns only candidate-shows-skipped (1,115), records where the project hides the line; triage applies only the project's shown_when. The candidate-refuses and candidate-unknown are returns refused or incomplete elsewhere that the reply reaches through Form 1040 line 11b; the project refusals are at its cited gates. No shown amount differs. Project stands.",
+   "subject_key": "4933dfd46def74932a05eeb362e30449176461c19a89c3cfda911fbc7a8fa8e9"
   },
   {
    "key": "15",
@@ -238,7 +238,7 @@
   "f8863.eligible": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
   "1": "f4eee641d1b52bc2adb5cc823953c9316e875d2fe0d44743201261da032c4f7b",
   "2": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
-  "3": "a4016a871ebfddee20dc19c72d05bad09b8abb0ee922ccbf090b41bd1e986b9c",
+  "3": "3751f762983fea0bc1f04dbd0c2f144c9abcdc2877c3e0ca798508b6e99b8a1f",
   "4": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
   "5": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
   "7": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
@@ -249,7 +249,7 @@
   "11": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
   "12": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
   "13": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
-  "14": "a4016a871ebfddee20dc19c72d05bad09b8abb0ee922ccbf090b41bd1e986b9c",
+  "14": "3751f762983fea0bc1f04dbd0c2f144c9abcdc2877c3e0ca798508b6e99b8a1f",
   "15": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
   "16": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
   "18": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",

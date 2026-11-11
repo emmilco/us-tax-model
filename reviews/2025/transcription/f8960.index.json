@@ -5,14 +5,14 @@
  "base": "7d74f0e3064f755a76d15839a999abd92d5111e00d37241b0883880a8844cf23",
  "head_rows": {
   "agree / disagree / missing": "22 / 3 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "86aea41a046b13353297af84d418b27c0291bc68a7f1872bd63898b6015499c7",
+   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
    "status": "AGREE",
-   "subject_key": "9d82c90492cdf1bce2d01c56e3df5da335243de98cb855d918e20c77f5e0eb61"
+   "subject_key": "cda14f54817bc7e94357a66d5d4b6872c358bc67e5a0e5854c56b821d59eb8b4"
   },
   {
    "key": "2",
@@ -22,57 +22,57 @@
   },
   {
    "key": "3",
-   "record": "86aea41a046b13353297af84d418b27c0291bc68a7f1872bd63898b6015499c7",
+   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
    "status": "AGREE",
-   "subject_key": "d998547300f859af64f6e8cb7d704e7a89a7ce1eef97b611af067a942ae60294"
+   "subject_key": "16660f58533a5aae8cb423ce63148b8ee169fba6b96a488b557b1a117359bc33"
   },
   {
    "key": "4a",
-   "record": "86aea41a046b13353297af84d418b27c0291bc68a7f1872bd63898b6015499c7",
+   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
    "status": "AGREE",
-   "subject_key": "f5e00776596fc0fac6ff0f85e57523a4e0ddbf073f0948c7fefe91118a637466"
+   "subject_key": "2bdaede958c603f1360e89c64d55ce9a7bb1f9955f6b1f98768cce3e4af97eba"
   },
   {
    "key": "4b",
-   "record": "86aea41a046b13353297af84d418b27c0291bc68a7f1872bd63898b6015499c7",
+   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
    "status": "AGREE",
-   "subject_key": "a8fb7159bfe57595f703612558ed5a36009d01791c9455b9f34f12673085839d"
+   "subject_key": "4396208aadb8b0175e0596a13a2ebb25373a9cbae821df0e992801faa85d1e53"
   },
   {
    "key": "5b",
-   "record": "86aea41a046b13353297af84d418b27c0291bc68a7f1872bd63898b6015499c7",
+   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
    "status": "AGREE",
-   "subject_key": "c3c0dd1438c88dd5be1238e5658eedde1b13e1c987560c2889242f7a0ad32e62"
+   "subject_key": "2d5f0315195d5921788582085ef1b444586d424ddc0e5234d8811d2723f8b4ba"
   },
   {
    "key": "5c",
-   "record": "86aea41a046b13353297af84d418b27c0291bc68a7f1872bd63898b6015499c7",
+   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
    "status": "AGREE",
-   "subject_key": "3d94930d55781892b93180eb68d83d0ed3f3b64d09f3cc8ac0eea239a4a668b4"
+   "subject_key": "9c692aeb2a6fdc26294abbb3460853129814bed67217174519073767bf4c36b1"
   },
   {
    "key": "6",
-   "record": "86aea41a046b13353297af84d418b27c0291bc68a7f1872bd63898b6015499c7",
+   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
    "status": "AGREE",
-   "subject_key": "a2b181fc04b76bf0336da895301cbf098ae9cf05c02fac63b528fcd2355038a8"
+   "subject_key": "668c2bb132833de767e5bd785a86e7f314d031456ffb0e4398c65e1a02d77d04"
   },
   {
    "key": "7",
-   "record": "86aea41a046b13353297af84d418b27c0291bc68a7f1872bd63898b6015499c7",
+   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
    "status": "AGREE",
-   "subject_key": "7e30478cb7501a7816ee2d3aa13ba58595c7fecf8c854516ef8f9c6cddaaec3c"
+   "subject_key": "8837140ecd5bf5f00d650b148f0c8d45d68b7687b69ed9c296be353af47b9e70"
   },
   {
    "key": "9c",
-   "record": "86aea41a046b13353297af84d418b27c0291bc68a7f1872bd63898b6015499c7",
+   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
    "status": "AGREE",
-   "subject_key": "ec69a8a8fba1bbdd833fb9d2ca5361b9c9019a5539b338393af69265dd4ad5a8"
+   "subject_key": "5f8def1e77744f53f390ad24438f96a465cba08106640f90076fc22b0f276f8b"
   },
   {
    "key": "10",
-   "record": "86aea41a046b13353297af84d418b27c0291bc68a7f1872bd63898b6015499c7",
+   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
    "status": "AGREE",
-   "subject_key": "17ee5585da8c849a570fcbed89e9f185ef0158c6410ba66d03afbb758b3fdc3b"
+   "subject_key": "199e81adaa2ea826cd25fd6fbca1b62996b612218fa6b37cfdd80a58f6616dde"
   },
   {
    "key": "4c",
@@ -131,10 +131,10 @@
   },
   {
    "key": "13",
-   "record": "86aea41a046b13353297af84d418b27c0291bc68a7f1872bd63898b6015499c7",
+   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error on the declaration; the reply reads f1040.line11, which does not resolve (invalid_model_types: \"reference 'f1040.line11' does not resolve\"); its note says the scoped catalog did not list Form 1040 line 11. i8960 p. 22, Line 13: \"If you didn't exclude any amounts from your gross income under section 911 and you don't own an interest in a CFC or PFIC, your MAGI is your AGI as reported on Form 1040 or 1040-SR.\" The project reads f1040.line11b, which copies line 11a, as the earlier rulings. Triage executable-triage-v2 (reviews/2025/transcription/triage/f8960.json; 1,638 fixtures, 500 generated returns seed 20261026, 112 partial records): 2,203 of 2,250 comparisons agree; the 47 differences are the project's line refusing or unknown on f8960.refund (12 and 12 witnesses), which the project's return does not read where it completes. Project stands.",
-   "subject_key": "24724f8d86f5445122503d19317ea530985722ad514664e6245b089bf5da639d"
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f8960.line13: \"f8960.f8960.line13: reference 'f1040.line11' does not resolve\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "e6f749044e60424def1690d5a7e5af227e6faa847166fc3a147d32bc06231749"
   },
   {
    "key": "14",
@@ -163,17 +163,17 @@
   }
  ],
  "subjects": {
-  "1": "1f3d4d7509afe41077fb91420e1edd68c539af0ccb7f3d80390d6fd227e66a65",
+  "1": "66a9764c56f96421d7176c181879811c6991942d2229a0d2ec69dda3641f52a2",
   "2": "817b512bc405f0ae99c10891f8e593c7336b4333b6182ad13bc465e61406dc13",
-  "3": "c154c449c0652502ab264341b4aeb07ad72b2e733d48469cb774be533e950416",
-  "4a": "965b8060be9e9a7e873e85a29dc3bfffa7aad03bfb5697b826b5cd49ccc12253",
-  "4b": "d69eb813b7e25194ebd8b0a2f825d73b9f93dc871c3faaa0d531afc39f859f97",
-  "5b": "c02d8c96ab6bea701f23d30d26bc89cc6fb0dae3b6c36d77b0ebb736f5fb54b6",
-  "5c": "88f17c2f7e76894c1e0a118f26cb28c5bc81de020bf72792fab088c62cf53724",
-  "6": "ed8eb379d57e6cc8c8db48ed23d1cdc19a915e3f651e3af17c1d0dc343f2d379",
-  "7": "197d7396028458b218e26692157f3d927f4294d0d27c1e99c3e7085eda30c4fb",
-  "9c": "d811166f453f7ec3ca5e0f0529f6da67c65858025175750cc8a11578737acc19",
-  "10": "49f265d9a0dbf3e857f42d1ca6a34a8c0784bc33b91856bd0f535dff43ff2c3f",
+  "3": "97077b9d013a2951e784241af0266d70c0ba4a40d57b3eb1706575c81faae81a",
+  "4a": "b84f31b6c90c9c7104176cb3a8be203856b113420b862e69c987d321df026dba",
+  "4b": "f50d45d4e157921dbe56fb4dd7ad12ba49dc6a5725f7c16f97c29e154efcdd0d",
+  "5b": "2beb24456b740acb0131ce46384b9c09325143d6d88e480cf0ffa0fea15f6405",
+  "5c": "6ce2815c316315d6b3a2a7aab2ff4b41565394790e0002669c14f715f82f38b5",
+  "6": "7e6e153a1ee874ac83755d0a24e3674e969eddb0f4ef09a9b70e35128dfb7a8e",
+  "7": "b3c720466bbb1e3d4454e8568086d2395bf7bf7885d7ec1fec47ee2742d1e856",
+  "9c": "1c80765f865960559c6d52ef4152f38c22fbb3e6cf53d53367718b9a1999a0cc",
+  "10": "652108580572752a29b6f9778941bc899c82617d010e9e41b50cad18db3adcb1",
   "4c": "a263469cfb30ee61a1ece4858f66b4a9a00802d9e0d614c6fd77f1f47b172c19",
   "5a": "29b4f3ad55d0d7d7cf3ab45efee63a23f3486b66775355bbb9df229dc3bbefcb",
   "5d": "53cceec991a8ff8ef484ba58beb7f6ab24818fbfcb93eee01c238dfb96e5e5d8",
@@ -183,7 +183,7 @@
   "9d": "cf25d42c1cccd3ca79bd0d94acee13f1db7a2b9d2a883d6417bf2d8f5780e8ec",
   "11": "a06b2c0e925a8c9c46d9939cf9bad63274525c0a0768a5f824a3df0616d5b9e3",
   "12": "877684a14759abdc6d34399c6ad2307ffefc6a5451887bbbe028912559676bc8",
-  "13": "bd75a6604a17bea865243975a3f5f6f99c86c46e166f8e0205c852d11c33933e",
+  "13": "2e8c4c78077b760c9a1a7fc8859281cf2b521b2dfeb132c512f79fefdf6615c3",
   "14": "49b709d36cb619de8a00bfb88ecc6f53fa8cc50461868ee8c9adacb5815b9fc0",
   "15": "9734c7aaabf22158ca298cc36e38c0ceea2eb5f4ca1994017daa39e7c4d64ab1",
   "16": "9c95245ace043cb960caf2614f0e135ba6e89ab758879e6b81f635bb8cd137c1",

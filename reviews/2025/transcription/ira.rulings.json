@@ -681,6 +681,45 @@
    }
   },
   {
+   "printed": "ira.combat_gate",
+   "project_expr_sha256": "60818c7dc5e84fce51cde55f435118e5921b6c03b6aec92fb6b2587b71577e4e",
+   "second_expr_sha256": "f2e1eb402b70044795dbada8ca37592989a3c8856bba9e2eec332667cded637b",
+   "ruling": "Ruling: interface gap and model error; the reply's gate is s8812.combat_pay on every return, the project's is s8812.combat_pay only when a person on the return contributed to a traditional IRA (false otherwise). The reply's note says the request gave it no return-level aggregate of the person collection to make that test: interface gap. Without a traditional IRA contribution there is no IRA deduction to figure, so the combat-pay question cannot change it; on the 2 completed value differences in the recorded witnesses (fixture stage5.return.refund_combat_pay_no_children: combat pay yes, no traditional IRA contribution) the reply's gate is true and the project's false, with no IRA amount on either side. On completed returns where the interview does not ask the combat pay question the reply needs it (candidate-unknown, 71; the recorded witnesses name s8812.combat_pay with the project's value false): a need the source does not have. Triage executable-triage-v2 (`.transcription/triage/2025/ira.json`, pass 822691093399; 1,767 fixtures, 500 generated returns seed 20261026): 2,152 of 2,336 in-scope comparisons agree; differences by kind {\"candidate-unknown\": 151, \"project-unknown\": 10, \"value\": 23}; the other value differences are on refused (20) or incomplete (1) records. The project line is retained.",
+   "context": "9f8f593982b9164411e7bce019a5d0246771c54d96022e575db70f74c4a7d29d",
+   "date": "2026-11-10",
+   "run": "1661a552af2475c30eea80b0e25ad5bde9b0e98bdf67571ffc85226a67388bc5",
+   "subject_key": "1d1fd4cfe6029c1e5c303c088f91648633f5fd9c62001bad2402c5cc39270bbe",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@ira",
+     "fixture:classm.f8889.3.deepseek@ira",
+     "fixture:classm.f8889.5.deepseek@ira",
+     "fixture:classm.f4952.2.deepseek@ira",
+     "fixture:classm.f4952.3.deepseek@ira",
+     "fixture:classm.f4952.4.deepseek@ira",
+     "fixture:classm.carloan.2@ira",
+     "fixture:classm.f8959.1@ira",
+     "fixture:classm.tax_on_amount.2@ira",
+     "fixture:stage9.eic.refuse.combat_pay@ira",
+     "fixture:stage14.eic.wsb_combat_pay@ira",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ira",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ira",
+     "fixture:stage16.cleanup.refuse.scope_credits@ira",
+     "fixture:stage15.refuse.f2441.combat_pay@ira",
+     "fixture:stage16.cleanup.refuse.f2441_line24@ira",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@ira",
+     "fixture:t264.f4952.unsupported_with_interest@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "ira.cov_gate",
    "project_expr_sha256": "f4ecbd86c683d2c62b5ab5b1677bdbcd32515a78e8fd12befb57a45b911f6e8f",
    "second_expr_sha256": "f934c8b0b702356d85c3f9fe4ace0f5b64af57fee5b1a17398e2579d18d3253c",

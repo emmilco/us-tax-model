@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "0aa1f08e60389455d6c3c7d69036cebc2452f8ec5d75a8a5c0d7b772dd24a030",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-04); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,15 +15,15 @@
   },
   {
    "key": "1",
-   "record": "0aa1f08e60389455d6c3c7d69036cebc2452f8ec5d75a8a5c0d7b772dd24a030",
+   "record": "ecbac87d7b831fd2350b834afd427ba70de84d78e17907d973e5f13f3b72bc26",
    "status": "AGREE",
-   "subject_key": "b5baa32337a7306887665923c92296f0114a79ce644b6c5367a8924077d425a3"
+   "subject_key": "e8f884ac36d9d5d45c8debb63bdb50208cf1849448dc842a6f763503e044812b"
   },
   {
    "key": "2",
-   "record": "0aa1f08e60389455d6c3c7d69036cebc2452f8ec5d75a8a5c0d7b772dd24a030",
+   "record": "5a82f3cf05708dcf1d498b53d5d6219d0b0f08bc98a19893268cbd1968dbcd63",
    "status": "AGREE",
-   "subject_key": "35c3504121fd6066f1babb7a2eebf8a50630160f1105c7a70d3b453a532966cb"
+   "subject_key": "23473efc22fcaaf0c7a6314b31b23f9544799b5bb03b2a5a8d9b473f6b2dba1a"
   },
   {
    "key": "3",
@@ -137,8 +137,8 @@
  ],
  "subjects": {
   "ssb.has_benefits": "93481a8c549c4df9d5ce12871063ca88c64c3091e445ec5c540a5cecdd71d515",
-  "1": "45def37aa3aecf4ad79cefdd2a4005e6ea916f8744e6dea254afc3e46094b96f",
-  "2": "d095b9bc8aac89a330dd5fec26f41ce3fa3595a093d7e5907468418c1b8f14af",
+  "1": "2f498a53f22315968366c4c1103fc7b7529b7e0eef36e74966f9c9e61badffbc",
+  "2": "d0782d5675163d2609b9be351edbad1841b10fa84767b20de3f4e3dd2af360dc",
   "3": "a2cdc624483dc3839e03343dd07ddfb7623427bbf7aa11fb62374dee4811a8b2",
   "4": "42300b844db21a635dc8e82a1e4d71f9b7283c6a1e2bd8fb6ec5a74033fc97ab",
   "5": "3e4a2531fb2be20399d6f85aba35256f4eca403025eb075ec52e40d16a4e1c80",
@@ -158,6 +158,8 @@
  },
  "__rest__": "f27ed8c32596d66063a07d65a0895977e0afa69acc647b72c1b05da4f85fa713",
  "foreign": {
+  "1": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "2": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "8": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
   "9": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
   "10": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",

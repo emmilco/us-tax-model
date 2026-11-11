@@ -1001,6 +1001,114 @@
       "question_phrase": "Did you make contributions (other than rollover contributions) to a traditional IRA for 2025 ... Do not count contributions made under a SEP or SIMPLE IRA plan, including those you made for yourself as a self-employed person.",
       "source_phrase": "line 11, \"Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025 to your IRA\"",
       "reason": "Worksheet line 11 takes the person's own traditional IRA contributions for 2025; SEP and SIMPLE plan contributions are deducted on Schedule 1 line 16 (p560 p. 17), which the question now excludes."
+    },
+    "consumer:sa.excluded_income@i1040gi:p40": {
+      "verdict": "same",
+      "question_phrase": "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?",
+      "source_phrase": "Step 1, question 3, \"Are you filing Form 2555 (relating to foreign earned income)?\" Yes: \"You can't take the credit.\"",
+      "reason": "The reading line refuses on a Yes; the question covers the page's Form 2555 case for either spouse on the one joint return, and its wider terms (Form 4563, Puerto Rico) only refuse more returns, never compute a credit the page denies."
+    },
+    "consumer:sa.excluded_income@i1040gi:p96": {
+      "verdict": "same",
+      "question_phrase": "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?",
+      "source_phrase": "\"If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction.\"",
+      "reason": "The gate is true only with a traditional IRA contribution, plan coverage and a Yes here, and then refuses to Pub. 590-A; the question covers the page's Form 2555 case for both spouses, and Form 4563 and Puerto Rico only widen the refusal."
+    },
+    "consumer:sa.excluded_income@i1040gi:p99": {
+      "verdict": "same",
+      "question_phrase": "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?",
+      "source_phrase": "Student Loan Interest Deduction Worksheet, line 1, \"Enter the total interest you paid in 2025 on qualified student loans\"; the worksheet's Exception (p. 98) sends filers of Form 2555 or 4563, or with excluded Puerto Rico income, to Pub. 970",
+      "reason": "The page's line 1 does not itself use the answer; the line only refuses the worksheet on a Yes, which is the Exception's case for the joint return, on which either spouse's form or exclusion applies."
+    },
+    "consumer:sa.excluded_income@i1040gi:p101": {
+      "verdict": "same",
+      "question_phrase": "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?",
+      "source_phrase": "\"If you do have excluded income from Puerto Rico, or you are filing Form 2555 or 4563, complete lines 2a through 2d\"",
+      "reason": "The page names the same three cases; the line is zero unless a Yes refuses it, and on a joint return the forms and exclusion of either spouse enter the one Schedule 1-A."
+    },
+    "consumer:sa.excluded_income@i1040sca:p11": {
+      "verdict": "same",
+      "question_phrase": "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?",
+      "source_phrase": "Other Itemized Deductions, \"Only the expenses listed next can be deducted on line 16\"; the refusal is the State and Local Tax Deduction Worksheet (p. 7) for Form 2555, Form 4563 or excluded Puerto Rico income",
+      "reason": "The page's line 16 list does not use the answer; the line refuses on a Yes because the Schedule A worksheet with excluded-income addbacks is not prepared, and the joint Schedule A takes either spouse's exclusion."
+    },
+    "consumer:sa.excluded_income@f1040sa:p1": {
+      "verdict": "same",
+      "question_phrase": "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?",
+      "source_phrase": "line 5e, \"if you completed Form 2555, Form 4563, or excluded income from Puerto Rico, see instructions\"",
+      "reason": "The page names the same three cases; the line refuses on a Yes, and the joint Schedule A is completed for both spouses."
+    },
+    "consumer:sa.excluded_income@i2441:p4": {
+      "verdict": "same",
+      "question_phrase": "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?",
+      "source_phrase": "Lines 4 and 5, earned income is line 1z \"minus any amount: a. Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\"; \"If filing jointly, figure your and your spouse's earned income separately.\"",
+      "reason": "The line refuses on a Yes rather than subtract the exclusion; the page figures each spouse's earned income, so a Form 2555 of either spouse matters, which the question now asks, and Form 4563 and Puerto Rico only widen the refusal."
+    },
+    "consumer:sa.excluded_income@i2441:p5": {
+      "verdict": "same",
+      "question_phrase": "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?",
+      "source_phrase": "Line 18, \"Enter your earned income on line 18 and your spouse's earned income on line 19\", figured as for lines 4 and 5 (less foreign earned income excluded on Form 2555)",
+      "reason": "The line refuses on a Yes rather than subtract the exclusion; both spouses' earned income is figured on the page, so either spouse's Form 2555 matters, which the question asks."
+    },
+    "consumer:sa.excluded_income@f8863:p1": {
+      "verdict": "same",
+      "question_phrase": "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?",
+      "source_phrase": "line 3, \"if you're filing Form 2555 or 4563, or you're excluding income from Puerto Rico, see Pub. 970 for the amount to enter instead\"",
+      "reason": "The page names the same three cases; the line refuses on a Yes, and on a joint return line 11b and its addbacks are the couple's."
+    },
+    "consumer:sa.excluded_income@i8863:p8": {
+      "verdict": "same",
+      "question_phrase": "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?",
+      "source_phrase": "Line 14, \"if you're filing Form 2555, or Form 4563, or are excluding income from Puerto Rico, you must include on line 14 the amount of income you excluded\"",
+      "reason": "The page names the same three cases; the line refuses on a Yes rather than add the excluded income back, and the joint return's modified AGI takes either spouse's exclusion."
+    },
+    "consumer:sa.excluded_income@i8962:p8": {
+      "verdict": "same",
+      "question_phrase": "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?",
+      "source_phrase": "Worksheet 1-1, line 3, \"Enter any amounts from Form 2555, lines 45 and 50\"",
+      "reason": "The line is zero after the screen and refuses on a Yes; the worksheet figures the modified AGI of the return, both spouses on a joint return, so either spouse's Form 2555 is the page's case, and Form 4563 and Puerto Rico only widen the refusal."
+    },
+    "consumer:s8812.combat_pay@i1040gi:p42": {
+      "verdict": "same",
+      "question_phrase": "Did you (or, on a joint return, your spouse) receive any nontaxable combat pay in 2025",
+      "source_phrase": "Step 5, worksheet line 4, \"Enter all of your nontaxable combat pay if you elect to include it in earned income.\"",
+      "reason": "The line is zero and refuses on a Yes; the EIC earned income of a joint return is both spouses', so combat pay of either is the page's case, and receiving it is a wider test than electing it that only refuses more."
+    },
+    "consumer:s8812.combat_pay@i1040gi:p95": {
+      "verdict": "same",
+      "question_phrase": "Did you (or, on a joint return, your spouse) receive any nontaxable combat pay in 2025",
+      "source_phrase": "Line 20, \"If you were a member of the U.S. Armed Forces, earned income includes any nontaxable combat pay you received.\"",
+      "reason": "The gate applies only with a traditional IRA contribution and then refuses; on a joint return either spouse's compensation can support the contributions, so combat pay received by either is what the page's rule needs."
+    },
+    "consumer:s8812.combat_pay@i2441:p4": {
+      "verdict": "same",
+      "question_phrase": "Did you (or, on a joint return, your spouse) receive any nontaxable combat pay in 2025",
+      "source_phrase": "Lines 4 and 5, \"Nontaxable combat pay if you elect to include it in earned income\"; \"If you are filing jointly and both you and your spouse received nontaxable combat pay, you can each make your own election.\"",
+      "reason": "The line refuses on a Yes; the page gives each spouse the election, so combat pay received by either spouse is its case, which the question asks."
+    },
+    "consumer:s8812.combat_pay@i2441:p5": {
+      "verdict": "same",
+      "question_phrase": "Did you (or, on a joint return, your spouse) receive any nontaxable combat pay in 2025",
+      "source_phrase": "Line 18, \"You can elect to include your nontaxable combat pay in earned income when figuring your exclusion or deduction\"; \"If you are filing jointly and both you and your spouse received nontaxable combat pay, you can each make your own election.\"",
+      "reason": "The line refuses on a Yes; the page gives each spouse the election for lines 18 and 19, so combat pay received by either spouse is its case."
+    },
+    "consumer:f8959.unsupported@f8959:p1": {
+      "verdict": "same",
+      "question_phrase": "Any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your (or, on a joint return, your spouse's) employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory",
+      "source_phrase": "Part I, lines 1 to 3, \"Medicare wages and tips from Form W-2, box 5\", \"Unreported tips from Form 4137, line 6\", \"Wages from Form 8919, line 6\"; Part III, line 14, \"Railroad retirement (RRTA) compensation and tips\"",
+      "reason": "The line refuses on a Yes because lines 2, 3 and 14 and the other listed sources are not prepared; the form's amounts on a joint return include the spouse's (i8959 p. 3, Line 2, \"If you are filing a joint return, also include the amount from line 6 of your spouse's Form 4137\"), which the question names."
+    },
+    "consumer:s1.cod_any@i1040gi:p91": {
+      "verdict": "same",
+      "question_phrase": "Was any of your (or, on a joint return, your spouse's) debt canceled or forgiven in 2025",
+      "source_phrase": "Line 8c, \"Cancellation of debt. Enter any canceled debt. Canceled debt may be shown in box 2 of Form 1099-C.\"",
+      "reason": "Line 8c of a joint return reports the canceled debt of both spouses (i1040gi p. 13, combined income on one return), and the question asks for canceled debt of either; the line is zero on a No and the amount asked next on a Yes."
+    },
+    "consumer:ssb.pub915@i1040gi:p32": {
+      "verdict": "same",
+      "question_phrase": "you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico",
+      "source_phrase": "Social Security Benefits Worksheet, \"Be sure you have read the Exception in the line 6a and 6b instructions to see if you can use this worksheet instead of a publication to find out if any of your benefits are taxable.\"",
+      "reason": "The worksheet line refuses on a Yes, the Exception's cases (p. 31) in which a publication's worksheet is used instead; the worksheet takes the joint return's benefits and income, so each case applies when it is true of either spouse, as the question says."
     }
   },
   "baseline": {

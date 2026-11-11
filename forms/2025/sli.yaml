@@ -23,7 +23,7 @@ form:
     expr:
       op: input
       source: |-
-        Total interest you paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting the amounts below; zero if none.
+        Total interest you (or, on a joint return, your spouse) paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting the amounts below; zero if none.
 
         Not counted:
         - any amount paid from tax-free qualified tuition program earnings

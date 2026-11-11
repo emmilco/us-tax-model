@@ -461,10 +461,12 @@ form:
       label: Any nontaxable combat pay (Form W-2, box 12, code Q)?
       expr:
         op: input
-        source: 'Did you receive any nontaxable combat pay in 2025 (it is generally shown in Form W-2, box 12, code Q)?'
+        source: 'Did you (or, on a joint return, your spouse) receive any nontaxable combat pay in 2025 (it is generally shown
+          in Form W-2, box 12, code Q)?'
       cite:
         doc: i1040s8812
-        locator: p. 8, Earned Income Worksheet, line 1b
+        locator: p. 8, Earned Income Worksheet, line 1b; p. 8, Earned Income Worksheet, "If married filing jointly, include
+          your spouse’s amounts with yours when completing this worksheet."
     - id: s8812.puerto_rico
       printed: (helper)
       type: Bool

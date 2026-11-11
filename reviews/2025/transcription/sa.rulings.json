@@ -3,6 +3,43 @@
  "form": "sa",
  "rulings": [
   {
+   "printed": "12",
+   "project_expr_sha256": "bae463afbde1714b984c861d1c4a9b588f9d0cc8fc23604e24864a34e5585ce3",
+   "second_expr_sha256": "7a72019f83d3b06578df79d58d83d2446c0668d2eb5a8f1b5b53c49a10755695",
+   "ruling": "Ruling: representation and scope; the reply's choose is the project's with the guards in the other order (the gift total when sa.gifts is yes, zero otherwise). Triage executable-triage-v2 (`.transcription/triage/2025/sa.json`, pass 446f7398433f; 1,767 fixtures, 500 generated returns seed 20261026): 2,532 of 2,619 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 4, \"project-refuses\": 47, \"project-unknown\": 87}, none on a completed return: every one is on a refused or incomplete record, where a refusal reaches the line on one side first or a partial record withholds an answer. No value differs. The project line is retained.",
+   "context": "562f3ed47d01a0cf8d8a29ea38399cacc5caebff92709f70c6fccdf3104a4b48",
+   "date": "2026-11-10",
+   "run": "4c1ecd0c7386569a9da381e537246b4aa1a62e07f1dcc9a5e755b3e15b9c22e3",
+   "subject_key": "6620b64fadfa95558a9d72af4170123a598f31603f11e8d2ac2d06ab0b30f842",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.clcw.4.deepseek@sa",
+     "fixture:classm.eic.6.deepseek@sa",
+     "fixture:classm.eic.7.deepseek@sa",
+     "fixture:classm.f5329.3.deepseek@sa",
+     "fixture:classm.f8959.1@sa",
+     "fixture:classm.s179.1@sa",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sa",
+     "fixture:stage16.cleanup.refuse.f1040_line16@sa",
+     "fixture:stage16.cleanup.refuse.scope_credits@sa",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@sa",
+     "fixture:t264.f4952.unsupported_with_interest@sa",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@sa",
+     "partial:classm.clcw.1.deepseek-sa.unsupported@sa",
+     "partial:classm.clcw.1.deepseek-sa.excluded_income@sa",
+     "partial:classm.eic.5.deepseek-sa.unsupported@sa",
+     "partial:classm.eic.5.deepseek-sa.excluded_income@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "16",
    "project_expr_sha256": "034c810d42025a210e16fd97df77d59c6003d41f64966096d6f89810d185b6ce",
    "second_expr_sha256": "3fe9914054750b8eacb2e7f43cbd3228bb194a81beb745f9cf0cb512fd2c6fc6",
@@ -13,11 +50,40 @@
    "printed": "16",
    "project_expr_sha256": "e289e644bc308ae6dcb7401e1a9f212715c5d8bba0237ebfe927e5d4c62a809e",
    "second_expr_sha256": "3fe9914054750b8eacb2e7f43cbd3228bb194a81beb745f9cf0cb512fd2c6fc6",
-   "ruling": "Ruling: model error; same reply and project expression as the earlier rulings; the line was reopened only because its refusal gate sa.charity_limited became a gate line behind sa.gifts. i1040sca p. 11, Line 16: \"Gambling losses (gambling losses include, but aren't limited to, the cost of nonwinning bingo, lottery, and raffle tickets) but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b.\" The project enters zero without gambling winnings and the smaller of sa.gambling_losses and Schedule 1 line 8b otherwise; the candidate always takes the smaller, so it needs sa.gambling_losses on every return though the amount is zero without winnings. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/sa.json`; 1,638 fixtures, 500 generated returns seed 20261026, 539 partial records; 2,677 comparisons): 972 agree; 1,594 candidate-unknown (184 on completed returns, all sa.gambling_losses), 67 project-refuses (the cited screens sa.unsupported, sa.charity_limited, sa.excluded_income), 44 project-unknown (withheld screen answers). Project stands.",
-   "context": "c4de6c56f21daabe96eb7ef384b44fd10407aaefa06279b68946900ad7b01563",
-   "date": "2026-11-07",
-   "run": "d5b0d361bbf15866ce5885bc06a2e17992236ef01ac8f1e85a22435eb2c801af",
-   "subject_key": "f969f57491fe588272e7bcfbfa02ade2efec3a1799886ab615e2a9bc9d1cf284"
+   "ruling": "Ruling: model error; i1040sca p. 11, Line 16, \"Gambling losses (gambling losses include, but aren't limited to, the cost of nonwinning bingo, lottery, and raffle tickets) but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b.\" Where both give a value the reply's amount is the project's (the smaller of the losses and line 8b); but the reply reads sa.gambling_losses on every return, where the project gives zero without winnings and the interview asks the losses only when there are winnings. So on returns with no gambling winnings the reply needs an answer the interview does not ask (candidate-unknown; the recorded witnesses name sa.gambling_losses with the project's value zero). Triage executable-triage-v2 (`.transcription/triage/2025/sa.json`, pass 446f7398433f; 1,767 fixtures, 500 generated returns seed 20261026): 2,181 of 2,734 in-scope comparisons agree; differences by kind {\"candidate-unknown\": 485, \"project-refuses\": 63, \"project-unknown\": 68}; on completed returns only candidate-unknown (162); the project refusals and unknowns are on refused or incomplete records (its cited screens, and partial records withholding an answer). No value differs. The project line is retained.",
+   "context": "562f3ed47d01a0cf8d8a29ea38399cacc5caebff92709f70c6fccdf3104a4b48",
+   "date": "2026-11-10",
+   "run": "4c1ecd0c7386569a9da381e537246b4aa1a62e07f1dcc9a5e755b3e15b9c22e3",
+   "subject_key": "fe8c8805c4132f8187ec5774c44bb957369724c38d886932e61be0517bfb76ee",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@sa",
+     "fixture:classm.f2441.2.deepseek@sa",
+     "fixture:classm.f2441.3.deepseek@sa",
+     "fixture:classm.f2441.4.deepseek@sa",
+     "fixture:classm.f2441.5.deepseek@sa",
+     "fixture:classm.f2441.6.deepseek@sa",
+     "fixture:classm.f8889.5.deepseek@sa",
+     "fixture:classm.eic.6.deepseek@sa",
+     "fixture:classm.f5329.3.deepseek@sa",
+     "fixture:classm.dcprov.1@sa",
+     "fixture:classm.f8606.1@sa",
+     "fixture:classm.otjob.2@sa",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sa",
+     "fixture:stage16.cleanup.refuse.f1040_line16@sa",
+     "fixture:stage16.cleanup.refuse.scope_credits@sa",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@sa",
+     "fixture:t264.f4952.unsupported_with_interest@sa",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "5e",

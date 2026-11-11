@@ -6,29 +6,29 @@
 ## (helper) — `ssb.benefits`
 
 - **Authored helper label:** Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099
-- **Encoded (NonNegDollars):** Input — Total of box 5 (net benefits) of all your Forms SSA-1099 and RRB-1099 for 2025
-- Expr: `{"op":"input","source":"Total of box 5 (net benefits) of all your Forms SSA-1099 and RRB-1099 for 2025"}`
+- **Encoded (NonNegDollars):** Input — Total of box 5 (net benefits) of all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099 for 2025
+- Expr: `{"op":"input","source":"Total of box 5 (net benefits) of all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099 for 2025"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.pub915`
 
-- **Authored helper label:** Does any of these apply: you made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you file Form 2555, 4563 or 8815; or you exclude employer-provided adoption benefits or income from sources within Puerto Rico?
-- **Encoded (Bool):** Input — Does any of these apply: you made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you file Form 2555, 4563 or 8815; or you exclude employer-provided adoption benefits or income from sources within Puerto Rico?
-- Expr: `{"op":"input","source":"Does any of these apply: you made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you file Form 2555, 4563 or 8815; or you exclude employer-provided adoption benefits or income from sources within Puerto Rico?"}`
+- **Authored helper label:** Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico?
+- **Encoded (Bool):** Input — Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico?
+- Expr: `{"op":"input","source":"Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico?"}`
 - Cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.lump_sum`
 
-- **Authored helper label:** Do you elect to use the lump-sum election method for a social security benefit payment that was for an earlier year?
-- **Encoded (Bool):** Input — Do you elect to use the lump-sum election method for a social security benefit payment that was for an earlier year?
-- Expr: `{"op":"input","source":"Do you elect to use the lump-sum election method for a social security benefit payment that was for an earlier year?"}`
+- **Authored helper label:** Do you elect to use the lump-sum election method for a social security benefit payment to you (or, on a joint return, your spouse) that was for an earlier year?
+- **Encoded (Bool):** Input — Do you elect to use the lump-sum election method for a social security benefit payment to you (or, on a joint return, your spouse) that was for an earlier year?
+- Expr: `{"op":"input","source":"Do you elect to use the lump-sum election method for a social security benefit payment to you (or, on a joint return, your spouse) that was for an earlier year?"}`
 - Cite: [i1040gi] p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.terror_disability`
 
-- **Authored helper label:** Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)?
-- **Encoded (Bool):** Input — Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)?
-- Expr: `{"op":"input","source":"Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)?"}`
+- **Authored helper label:** Are any of the social security or railroad retirement benefits on your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)?
+- **Encoded (Bool):** Input — Are any of the social security or railroad retirement benefits on your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)?
+- Expr: `{"op":"input","source":"Are any of the social security or railroad retirement benefits on your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)?"}`
 - Cite: [i1040gi] p. 31, Lines 6a and 6b, Disability payments, "In the case of the September 11 attacks, injuries eligible for coverage by the September 11 Victim Compensation Fund are treated as incurred as a direct result of the attack." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.lived_apart`

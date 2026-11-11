@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "2aa18159549a41f9135273157b0a699abdfb3be6b4e06cf349973e6ddeef99de",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "22 / 1 / 1 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -16,16 +17,15 @@
   },
   {
    "key": "5a",
-   "record": "5ecf72a5ebde61fbc4c47216389cc763b0624c030674bd856dc0f8f31a5cdceb",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; f1040sa p. 1, line 5a, \"State and local income taxes or general sales taxes. You may include either income taxes or general sales taxes on line 5a\"; i1040sca p. 2. The sales-tax election is refused by sa.unsupported (\"... or the sales-tax election?\"), which gates Schedule A, so line 5a carries income taxes only on every computed return; the restatement's \"no sales-tax election\" is the question's own first line, unchanged by the R4 restructuring (no word lost). Project stands.",
-   "subject_key": "8def08ae141f4b0f53b1e1d2721e7b2b9c2e62e7ffcaf6e0a805a8aedd88e338"
+   "record": "90e2508d1e68d7fbec76542cadbe012d0ccbb62423c2273a7857a976da5a437f",
+   "status": "MATCH",
+   "subject_key": "e449fb96acb609a2a90ce0bf3fbe781f5867cca1bc6d7cb5cc7b524bdd14aa78"
   },
   {
    "key": "5b",
-   "record": "5ecf72a5ebde61fbc4c47216389cc763b0624c030674bd856dc0f8f31a5cdceb",
+   "record": "90e2508d1e68d7fbec76542cadbe012d0ccbb62423c2273a7857a976da5a437f",
    "status": "MATCH",
-   "subject_key": "ca8f0f62dac5d3741e7553139454974633e3f342288ac26b6df04edba4158183"
+   "subject_key": "7183e6704f9434df2d66ded4f7726f6e7ae1f1610d5834be107b6d48cdab754e"
   },
   {
    "key": "5c",
@@ -65,9 +65,9 @@
   },
   {
    "key": "5d",
-   "record": "5ecf72a5ebde61fbc4c47216389cc763b0624c030674bd856dc0f8f31a5cdceb",
+   "record": "90e2508d1e68d7fbec76542cadbe012d0ccbb62423c2273a7857a976da5a437f",
    "status": "MATCH",
-   "subject_key": "d83eda7bd28151e707dbbb5b7a7407e70c396184fac9bde26180954e050bae75"
+   "subject_key": "d93264b0af1972892a759c14cded59426ddf5bcccbedb580205d348837e11d47"
   },
   {
    "key": "5e",
@@ -77,39 +77,39 @@
   },
   {
    "key": "6",
-   "record": "689cfc34460ec883055cc9c12b132859a1fcc12470405268da3558a9dfea4dd3",
+   "record": "90e2508d1e68d7fbec76542cadbe012d0ccbb62423c2273a7857a976da5a437f",
    "status": "MATCH",
-   "subject_key": "748e118d34813bcb481e20cef1f8ed3ee0df07796cd8e9484a435f5dda74e8d3"
+   "subject_key": "a736e2c760d908ef0c0b67485c15cfa5feed3e7be852db5a463a275c19f15638"
   },
   {
    "key": "8b",
-   "record": "689cfc34460ec883055cc9c12b132859a1fcc12470405268da3558a9dfea4dd3",
+   "record": "90e2508d1e68d7fbec76542cadbe012d0ccbb62423c2273a7857a976da5a437f",
    "status": "MATCH",
-   "subject_key": "33a7fa9d1fa643e1a67a22de1628156624dc91a1ff5b6901be1b0b3bf09bc8f9"
+   "subject_key": "beeb62f36cf8ac24acb53cb6c911e7308bf5ee227870bf2d79cece30f1f49d8b"
   },
   {
    "key": "8c",
-   "record": "689cfc34460ec883055cc9c12b132859a1fcc12470405268da3558a9dfea4dd3",
+   "record": "90e2508d1e68d7fbec76542cadbe012d0ccbb62423c2273a7857a976da5a437f",
    "status": "MATCH",
-   "subject_key": "aaaf7117c809072210e839724c73eb358f01fb740f9eec96e25a940d6cf984ec"
+   "subject_key": "73005bb24397d065005e9a51eaa637203c1649f46641bf28467333001cf762e6"
   },
   {
    "key": "13",
-   "record": "689cfc34460ec883055cc9c12b132859a1fcc12470405268da3558a9dfea4dd3",
+   "record": "90e2508d1e68d7fbec76542cadbe012d0ccbb62423c2273a7857a976da5a437f",
    "status": "MATCH",
-   "subject_key": "31be719bc4bd8cd8082af4f29693bf53201cdf5668a62106147a1d861ca6661b"
+   "subject_key": "9eec443a7c620aa48192190fe67156f5039f02e29294b3cc1681e3ff16d034a6"
   },
   {
    "key": "15",
-   "record": "689cfc34460ec883055cc9c12b132859a1fcc12470405268da3558a9dfea4dd3",
+   "record": "90e2508d1e68d7fbec76542cadbe012d0ccbb62423c2273a7857a976da5a437f",
    "status": "MATCH",
-   "subject_key": "fbecdf3e0b21b3d11c925d1d7a391d51557ba09b807dd868513a9ac6e08a5be3"
+   "subject_key": "989a0119325aabfe3bf0028b69ff6875f303b81915fb504444e44fbf1e557143"
   },
   {
    "key": "16",
-   "record": "689cfc34460ec883055cc9c12b132859a1fcc12470405268da3558a9dfea4dd3",
+   "record": "90e2508d1e68d7fbec76542cadbe012d0ccbb62423c2273a7857a976da5a437f",
    "status": "MATCH",
-   "subject_key": "22ccdbbad2ff7bc9c8abbece4518590544a071d21af74ec4100d870122ef90cb"
+   "subject_key": "bd5af666ceda8e5dbd0c4e74e2565e5176850d7d205f9d17de2e646d8a0541fa"
   },
   {
    "key": "7",
@@ -138,9 +138,9 @@
   },
   {
    "key": "12",
-   "record": "689cfc34460ec883055cc9c12b132859a1fcc12470405268da3558a9dfea4dd3",
+   "record": "90e2508d1e68d7fbec76542cadbe012d0ccbb62423c2273a7857a976da5a437f",
    "status": "MATCH",
-   "subject_key": "20786293fc28f32a36a2a93408a8ee63e85b2245651595490722763183256446"
+   "subject_key": "7f455455a2953c6d3fa4133fe59e230d6503d349ea2432a9aef2b1241fdc8ec4"
   },
   {
    "key": "14",
@@ -150,36 +150,36 @@
   },
   {
    "key": "17",
-   "record": "689cfc34460ec883055cc9c12b132859a1fcc12470405268da3558a9dfea4dd3",
+   "record": "90e2508d1e68d7fbec76542cadbe012d0ccbb62423c2273a7857a976da5a437f",
    "status": "MATCH",
-   "subject_key": "93f0a5482faa7648f75b4d7091e17cc98ef4f1bca6680990b480779b20ec6205"
+   "subject_key": "cfa1d19f896edab5839edf0229e3a56a6540485a3192fe14f2a302be33d45619"
   }
  ],
  "subjects": {
   "1": "bc543d18c1c8382a87fd9fde6b505b3e376a88b6670b28bba3984f94d38afe8f",
-  "5a": "f2f69af0bc697b740a40ac764b09f46f7cf84249bf260e2ab5ef730c33fd3191",
-  "5b": "57583553381fef1a1ee0e33ded0f3a76b6158e675c20c003ae9727361c5bc59a",
+  "5a": "a7b2a96554945599484d8f446398c14f5d02043ae629e20fc48bbcd134dc4a26",
+  "5b": "f9556450ed3446cc4764ae061be207916476d512f9b935c2327413e8c1e6389e",
   "5c": "b27b09ae6c5c4cee8fcb75c29e6b8737d1303a8b51aad78dab435c9d4b5aa421",
   "8a": "1c28a67e90f31c4f151d3cdb3cf2616a83042dcf7bae1c50e24481d52615b564",
   "11": "c2aab6e511f279fdf09a05e882a2075ee331c4279a3ba1a7e28e9d2105df4724",
   "2": "4c52e94111b469ad5fce0fe24cb2cd74ec38a052a03ed05e10f6bfcd6933529e",
   "3": "5e24c8422623eea02699f8e25a3375d4b4a5f93310c9c241875983aa685b0cf0",
   "4": "b0566af27490727e00272391ce682101893fd7c95b6458fecdb03fa5e2e9ca55",
-  "5d": "c934cb7f9555055754465bd7bcf8aea0421f71eb26be966d3bddbd13c798c2e3",
+  "5d": "41673cb34091dca45f2601e5b9f6d617b8da743c83324e3761ce6a11f7cd7b6c",
   "5e": "e7daa6499b8e1a3edb3981ba2fee13b425abaed672ba46f872697e8e87c4f0d9",
-  "6": "539ba00c09245d16fa37c5b290cef68a5fc71b2a93e25ea62675e85f160a1be4",
-  "8b": "05566f488e21764d11f4a6e0004d6eb10d3a9601be2dd4629910acdb6570606a",
-  "8c": "e6135e168326c32add7095c85cb0e91bd2465ac83ef4852f609e8cc68e2706db",
-  "13": "9f10b8086456b0315ac123fba0bf336accd65f36a56876ecae85f0a333015bd2",
-  "15": "6d2cf7dd5293c6a26c7cad9bcd3e26a00acffc6e9a25a7ad79afa24a3f7d1e05",
-  "16": "552f0ea7e49e59515f1f267c8b1b97cf367d4a7725c521f1f7980d54c80d06f0",
+  "6": "5ef8e71ed909db046d60f4c16b4f4baf2fb8bc6b0777ead62a65958ec26f23db",
+  "8b": "29044f401f08b877ddcf1ee18d949f6e58ffe0692b7776be1cd4649b4721d782",
+  "8c": "2f7e2b66b1ed0afff36aaa247cce7e42c6ae5e4c3497c0882a7f13e3449b1d7b",
+  "13": "f4dfc911f7cb270e7855a1bdf9b3f8965d28dbdaf2c00db39db0f3b1ce5927d7",
+  "15": "8570f324a8f501102c56bdc50a4dde2aa1aa76b63dca9712c02933dfec409790",
+  "16": "f6b6654bbb1959373fafa54453f4bce77d64454864b8d5cb08da07d0467a3454",
   "7": "df3ed48aca7b4098a0da0e4055dda563985c0d0a7d408a9850f8417184766fb3",
   "8e": "f3fb1aa906da9d35c842761860f307f0351eee53f8a7dfe30cae860ab33a4540",
   "9": "59551c58e6058836eb81aa7e7079bae6d30cf931898c086363bac3d61c09d8af",
   "10": "92b522a02b3747cf7e857a9a1c388ed33e2503712bdf226862aea42adeee02e9",
-  "12": "99eee96a61f7fd147edcda7b0c342361af7eb1d80f77849083a6c4024925ad3f",
+  "12": "e280d2d370c31d7f70676d647a6c341875c4664cd94c8e2da2a679252a60efe6",
   "14": "ed6587e1050f57de9c134cd44a28d603f3edb8f0ff70be9f65fa37cb5b66a87e",
-  "17": "e91ca8edc48acf4cbed4ed622292fefa2d28727c4dccdfe8ae5114a77b4fa112"
+  "17": "9069977adc753040c6aba18952faa869a9724387ea6de399246b271563a7aee9"
  },
  "__rest__": "ac772d777e129a58b4d78fdc4d9997382ee870e6cbf12e65c65dde7b7e719585"
 }

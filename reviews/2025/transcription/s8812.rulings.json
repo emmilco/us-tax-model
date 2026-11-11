@@ -985,6 +985,42 @@
   {
    "printed": "(CLW B 3)",
    "project_expr_sha256": "edcd25cb005c70a91b20579bda7f10ad98db34d41739955f091ad3dc68de20f8",
+   "second_expr_sha256": "cf3d94a75870519bd78834956f71a31aa4f90f0ae3f63da6018bde8463929ec9",
+   "ruling": "Ruling: model error and interface gap; i1040s8812 p. 5, Credit Limit Worksheet B, line 3, \"Enter your earned income from line 7 of the Earned Income Worksheet\". The reply has no display condition matching the project's s8812.show_clwb, so it shows the line on returns that do not complete Worksheet B (candidate-shows-skipped, as ruled in earlier rounds), and it refuses through its own helper s8812.h_clwb3_refuse (\"Outside candidate scope\") on a completed return the project computes (mutation fixture stage16.cleanup.mut.clwb_three_figured, project $2,858.70): a refusal the source does not call for. Its expression also drops the project's Schedule 1 line 3 term from the worksheet's earned income; no recorded comparison shows a value difference from it. Triage executable-triage-v2 (`.transcription/triage/2025/s8812.json`, pass 0ad8c98576d4; 1,767 fixtures, 500 generated returns seed 20261026): 352 of 1,767 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 1, \"candidate-shows-skipped\": 1398, \"candidate-unknown\": 16, \"project-unknown\": 1}; on completed returns 934 candidate-shows-skipped and 1 candidate-refuses. The project line is retained.",
+   "context": "33ab9ce984ec5ce470563bd1bca33a4f30b001b0cb41b65d704b5534665e5fe5",
+   "date": "2026-11-10",
+   "run": "f326c1fdabe74c677084208d096a2447b44d2e03ac332802a26ca3260fede4ab",
+   "subject_key": "50d055b6b6d29de2f86f9cbbce65194e4df6bcffa197c6206764863da2df78a8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@s8812",
+     "fixture:classm.f2441.2.deepseek@s8812",
+     "fixture:classm.f2441.3.deepseek@s8812",
+     "fixture:classm.f2441.4.deepseek@s8812",
+     "fixture:classm.f2441.5.deepseek@s8812",
+     "fixture:classm.f2441.6.deepseek@s8812",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@s8812",
+     "fixture:stage16.cleanup.refuse.f1040_line16@s8812",
+     "fixture:stage16.cleanup.refuse.scope_credits@s8812",
+     "fixture:stage16.cleanup.refuse.f2441_line24@s8812",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@s8812",
+     "fixture:t264.f4952.unsupported_with_interest@s8812",
+     "fixture:mutation.t2.scveh.mq_prior_car_q4@s8812",
+     "fixture:stage16.cleanup.mut.clwb_three_figured@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW B 3)",
+   "project_expr_sha256": "edcd25cb005c70a91b20579bda7f10ad98db34d41739955f091ad3dc68de20f8",
    "second_expr_sha256": "e7ae7bb5d49fd45ea9af1b801c80f6ca10c95e432f68e66010d8877bf3d234ba",
    "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 3. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 340 agree; 1,317 candidate-shows-skipped, 455 project-refuses, 28 candidate-unknown, 3 project-unknown (on completed returns: 299 candidate-shows-skipped). No shown_when, so it shows the line on returns that do not complete Worksheet B (project s8812.show_clwb), the before-catalog-refresh disagreement; the type error of the earlier reply is gone. Project stands.",
    "context": "447723dc90122787630160ba19eb74770dc453f33ad046b98d96a4a6ecf4ea83",
@@ -1781,6 +1817,52 @@
   {
    "printed": "18a",
    "project_expr_sha256": "560bb07730bd616a44f60e3a82da7cf84519ef147a08e9e1e6a72892bab1b09b",
+   "second_expr_sha256": "bca9a66e9689d79c3084b17f135b8b4ac80da9d9a1d13831fde0484c8bb1bfbf",
+   "ruling": "Ruling: model error and interface gap; i1040s8812 p. 8, Earned Income Worksheet (\"If married filing jointly, include your spouse’s amounts with yours when completing this worksheet.\"), and line 18a of Schedule 8812. Where the project shows the line and the reply gives a value, the values agree; the reply has no matching display condition, so it shows an amount where the project hides the line (candidate-shows-skipped, the display difference ruled in earlier rounds), and it declares its own refusal (s8812.h_18a_refuse, \"Outside candidate scope\", no citation) that fires on completed returns the project computes (fixture classm.f8880.1.deepseek: the project enters zero, not taking the EIC, Earned Income Worksheet line 7 zero): a refusal the source does not call for. Triage executable-triage-v2 (`.transcription/triage/2025/s8812.json`, pass 0ad8c98576d4; 1,767 fixtures, 500 generated returns seed 20261026): 465 of 1,654 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 22, \"candidate-shows-skipped\": 1126, \"candidate-unknown\": 34, \"project-unknown\": 29}; on completed returns 821 candidate-shows-skipped and 10 candidate-refuses; no value differs. The project line is retained.",
+   "context": "33ab9ce984ec5ce470563bd1bca33a4f30b001b0cb41b65d704b5534665e5fe5",
+   "date": "2026-11-10",
+   "run": "f326c1fdabe74c677084208d096a2447b44d2e03ac332802a26ca3260fede4ab",
+   "subject_key": "4628d6e7ea65500623fbbee4c682a16db85053adbf5a98bbfe0876d03ddb3805",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f2441.1.deepseek@s8812",
+     "fixture:classm.f2441.2.deepseek@s8812",
+     "fixture:classm.f2441.3.deepseek@s8812",
+     "fixture:classm.f2441.4.deepseek@s8812",
+     "fixture:classm.f2441.5.deepseek@s8812",
+     "fixture:classm.f2441.6.deepseek@s8812",
+     "fixture:classm.f8889.4.deepseek@s8812",
+     "fixture:classm.f4952.2.deepseek@s8812",
+     "fixture:classm.f4952.3.deepseek@s8812",
+     "fixture:classm.f8960.2.deepseek@s8812",
+     "fixture:classm.g28.1.deepseek@s8812",
+     "fixture:classm.sd.1.deepseek@s8812",
+     "fixture:classm.sd.2.deepseek@s8812",
+     "fixture:classm.f8880.1.deepseek@s8812",
+     "fixture:classm.s8812.1.deepseek@s8812",
+     "fixture:classm.carloan.3@s8812",
+     "fixture:classm.f4952.1@s8812",
+     "fixture:classm.f8880.1@s8812",
+     "fixture:classm.ira.3@s8812",
+     "fixture:classm.eic.2@s8812",
+     "fixture:classm.f8889.4@s8812",
+     "fixture:classm.gift.1@s8812",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "18a",
+   "project_expr_sha256": "560bb07730bd616a44f60e3a82da7cf84519ef147a08e9e1e6a72892bab1b09b",
    "second_expr_sha256": "eae466bdf5193d72eba9892716a16feaefd1a9798caff011db32509b02ad87be",
    "ruling": "Ruling: model error; the candidate shows line 18a when Part II-A is not reached. f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\"; line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\". executable-triage-v2 (`../triage/s8812.json`; 1,374 fixtures, 500 generated returns seed 20261026, 80 partial records from 40 bases; 1,954 comparisons; completed witnesses read with the witness cap lifted, T-083): 896 of 1,954 agree; 954 candidate-shows-skipped (546 completed, 205 incomplete, 203 refused; witnesses classm.f2441.1.deepseek, candidate $50,000.00, and classm.f2441.2.deepseek, $85,000.00, project hidden by s8812.show_iia); no value difference. 89 candidate-unknown (84 incomplete, 5 refused; f1040.tax_exempt_interest and s8812.combat_pay), 7 candidate-refuses and 8 project-refuses (all refused returns; cited screens: s8812.combat_pay, scope.other_line16, sa.dependent, scope.other_income on the candidate side; sb.line8, person.se_screened, f8889 unsupported, retirement special on the project side): scope. On the branches it reaches the candidate is i1040s8812 p. 7, Earned Income Chart, as the project encodes it; its Earned Income Worksheet branch drops the project's no-op floor (line 3 is positive there).",
    "context": "9ca55757785d0291ecb6969f5e58cbd57cc7f9833aaafc932366b9291f65968d",
@@ -1807,6 +1889,33 @@
    "second_expr_sha256": "dcd1ef555339b438b58e45121679acf168e8b82a6d78b0770a2f5d6e870d8628",
    "ruling": "Ruling: equivalent; project retained after a fix. Taking the EIC, both use Worksheet B line 4b for a return with a Schedule C and Step 5 earned income otherwise. Not taking the EIC, both use the Earned Income Worksheet (i1040s8812 p. 8), and since BUG-0055 both enter zero when line 3 is zero or less; the second's further subtraction (eic.step5_line2) is the Medicaid waiver amount of line 4, refused in the project through scope.schedule1, and its line 2a statutory employee term is refused through sc.statutory.",
    "subject_key": "33883190e8b021ee6f475f593a548b283823a97b81c6e1fee844cf1e45b7814e"
+  },
+  {
+   "printed": "18b",
+   "project_expr_sha256": "e304a076f1d7f768c30832a2c463fc25a70b3df8b3fdb373821cbd01621ba2ab",
+   "second_expr_sha256": "0a866daf7eae6aa49b08c2449bdc0911450ea7bc42b178156334cfd587202620",
+   "ruling": "Ruling: scope and model error; same reading as the earlier ruling on this line. f1040s8812 p. 2, lines 16a and 16b, \"stop here\"; i1040s8812 p. 8, Earned Income Worksheet, line 1b. Both sides enter zero for nontaxable combat pay with the same display condition, combat pay being refused through s8812.combat_pay; the reply's line reads its own refusal helper (s8812.h_combat_refuse through s8812.h_clwb3_refuse, \"Outside candidate scope\"), which fires on 1 completed record where the project shows zero (mutation fixture stage16.cleanup.mut.clwb_three_figured): a refusal the source does not call for. Triage executable-triage-v2 (`.transcription/triage/2025/s8812.json`, pass 0ad8c98576d4; 1,767 fixtures, 500 generated returns seed 20261026): 1,644 of 1,675 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 1, \"project-unknown\": 31}; the project-unknown are partial records withholding an answer the project needs. No value differs. The project line is retained.",
+   "context": "33ab9ce984ec5ce470563bd1bca33a4f30b001b0cb41b65d704b5534665e5fe5",
+   "date": "2026-11-10",
+   "run": "f326c1fdabe74c677084208d096a2447b44d2e03ac332802a26ca3260fede4ab",
+   "subject_key": "644ed2a2a82775b919a5515cbbfaea281d69c227eaa0bd6e3a05bdfab4808bf5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@s8812",
+     "fixture:classm.f2441.2.deepseek@s8812",
+     "fixture:classm.f2441.3.deepseek@s8812",
+     "fixture:classm.f2441.4.deepseek@s8812",
+     "fixture:classm.f2441.5.deepseek@s8812",
+     "fixture:classm.f2441.6.deepseek@s8812",
+     "fixture:stage16.cleanup.mut.clwb_three_figured@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "18b",

@@ -730,7 +730,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040] Form 1040 (2025), line 25d (2025; created 2025-09-05; 3d31c226)
   26  2025 estimated tax payments and amount applied from 2024 return
       = $0
-      cite: [f1040] Form 1040 (2025), line 26 (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), line 26; i1040gi p. 39, Line 26, "If you or your spouse paid separate estimated tax but you are now filing a joint return, add the amounts you each paid" (2025; created 2025-09-05; 3d31c226)
   27a Earned income credit (EIC)
       = $0
       cite: [i1040gi] pp. 40–48, Lines 27a, 27b, and 27c—Earned Income Credit (EIC), Worksheet A line 6, "Enter this amount on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-02-25; 482e9c48)
@@ -1113,7 +1113,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) The amount on line 7 of your 2024 Form 4952
       = $0
       cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
-  (helper) Is any of the interest you count as investment interest paid or accrued in 2025 (line 1), or any of your 2024 carryforward, attributable to royalties, a trade or business, a passive activity, tax-exempt income, or an activity for which you aren't at risk (Form 6198); do you have any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?
+  (helper) Is any of the interest you count as investment interest paid or accrued in 2025 (line 1), or any of your 2024 carryforward, attributable to royalties, a trade or business, a passive activity, tax-exempt income, or an activity for which you aren't at risk (Form 6198); do you (or, on a joint return, your spouse) have any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction; p. 4, Line 8, "if any part of the interest expense is attributable to royalties, enter that part on Schedule E (Form 1040)" and "If any of your deductible investment interest expense is attributable to an activity for which you aren’t at risk, you must also use Form 6198" (2025; created 2025-05-28; 5113c166)
   (helper) Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?
@@ -1931,7 +1931,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8880] Form 8880 (2025), line 12 (2025; created 2025-11-04; ba2b2877)
 
 == Form 8959 — Additional Medicare Tax on wages and self-employment income ==
-  (helper) Any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
+  (helper) Do you (or, on a joint return, your spouse) have any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
       = false
       cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
   (helper) Year parameter sales.zero
@@ -2022,7 +2022,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8959] p. 1, Part V, line 24, "Total Additional Medicare Tax withholding. Add lines 22 and 23"; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
 
 == Form 8960 — wage, interest, dividend and securities slice ==
-  (helper) Any of the following?
+  (helper) Do you (or, on a joint return, your spouse) have any of the following?
 
       - annuity, rental, royalty, business or pass-through income
       - a CFC or PFIC holding
@@ -2231,7 +2231,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: confirmed roster $f1095a:
   (gate) The Marketplace estimated household income of at least 100% of the poverty line, without misreporting
       = false
-      cite: [i8962] p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025."; p. 9, "You, with intentional or reckless disregard for the facts, provided incorrect information to a Marketplace for the year of coverage." (2025; f4ac86ad)
+      cite: [i8962] p. 9, "You or an individual in your tax family enrolled in a qualified health plan through a Marketplace."; p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025."; p. 2, "your tax family (yourself, your spouse, and your dependents)"; p. 3, Tax family, "Your spouse if filing jointly and your spouse can’t be claimed as a dependent on someone else’s 2025 tax return"; p. 9, "You, with intentional or reckless disregard for the facts, provided incorrect information to a Marketplace for the year of coverage." (2025; f4ac86ad)
   (helper) You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)
       = true
       cite: [i8962] p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025." (2025; f4ac86ad)
@@ -5242,7 +5242,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements
       = $300
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
-  (helper) Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?
+  (helper) Do you (or, on a joint return, your spouse) have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you (or, on a joint return, your spouse) a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?
       = false
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
       note: Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
@@ -5559,7 +5559,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Amount of a 2025 overpayment of unemployment compensation you repaid in 2025
       = $0
       cite: [i1040gi] p. 89, Schedule 1, line 7, 'If you received an overpayment of unemployment compensation in 2025, subtract the amount you repaid from the total amount you received' (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Did you, in 2025 or any earlier year, make contributions to a governmental unemployment compensation program (including amounts withheld from your wages for it, and payments you made yourself, such as for coverage you elected as a self-employed person; not counting tax an employer paid on your wages, paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year?
+  (helper) Did you (or, on a joint return, your spouse), in 2025 or any earlier year, make contributions to a governmental unemployment compensation program (including amounts withheld from your wages for it, and payments you made yourself, such as for coverage you elected as a self-employed person; not counting tax an employer paid on your wages, paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year?
       = false
       cite: [i1040gi] p. 89, Schedule 1, line 7, contributions to a governmental unemployment compensation program and repayments of more than $3,000 included in income in an earlier year (Pub. 525); p. 89, "If you made contributions to a governmental unemployment compensation program and you aren't itemizing deductions, reduce the amount you report on line 7 by those contributions." (2025; printed date 2026-02-25; 482e9c48)
   (helper) Unemployment compensation less the amount of a 2025 overpayment repaid
@@ -5678,7 +5678,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [p4681] p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies" (2025; d87305a0)
   (helper) Canceled nonbusiness debt (Form 1099-C box 2, and any canceled nonbusiness debt with no Form 1099-C)
       = $0
-      cite: [p4681] p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies"; f1099c p. 4, Instructions for Debtor, "Box 2. Shows the amount of debt either actually or deemed discharged" (2025; d87305a0)
+      cite: [p4681] p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies"; p. 4, Persons who each receive a Form 1099-C showing the full amount of debt, "If you and another person were jointly and severally liable for a canceled debt, each of you may get a Form 1099-C showing the entire amount of the canceled debt"; f1099c p. 4, Instructions for Debtor, "Box 2. Shows the amount of debt either actually or deemed discharged" (2025; d87305a0)
   (helper) Any canceled nonbusiness debt
       = false
       cite: [i1040gi] p. 91, Line 8c (2025; printed date 2026-02-25; 482e9c48)
@@ -6521,7 +6521,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["f8962.any",{"const":false}],"op":"test"}
   10  Amount paid with request for extension to file (see instructions)
       = $0
-      cite: [f1040s3] Schedule 3 (2025), line 10; i1040gi p. 117, Line 10, "enter the amount of the payment or any amount you paid with Form 4868", "If you paid a fee when making your payment, don’t include on line 10 the fee you were charged" and "Also, include any amounts paid with Form 2350" (2025; created 2025-11-17; 008cfd3f)
+      cite: [f1040s3] Schedule 3 (2025), line 10; i1040gi p. 117, Line 10, "enter the amount of the payment or any amount you paid with Form 4868", "If you paid a fee when making your payment, don’t include on line 10 the fee you were charged" and "Also, include any amounts paid with Form 2350"; f4868 p. 2, "If you and your spouse each filed a separate Form 4868 but later file a joint return for 2025, enter the total paid with both Forms 4868 on the appropriate line of your joint return" (2025; created 2025-11-17; 008cfd3f)
   11  Excess social security and tier 1 RRTA tax withheld
       = $0
       cite: [i1040gi] p. 117, Line 11, Excess Social Security and Tier 1 RRTA Tax Withheld, "Figure this amount separately for you and your spouse" (2025; printed date 2026-02-25; 482e9c48)
@@ -6611,7 +6611,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040s8812] Schedule 8812 (2025), line 16b, "If zero, stop here; you cannot claim the additional child tax credit" (2025; created 2025-07-30; 6936462d)
   (helper) Any nontaxable combat pay (Form W-2, box 12, code Q)?
       = false
-      cite: [i1040s8812] p. 8, Earned Income Worksheet, line 1b (2025; printed date 2026-01-23; bb9788cd)
+      cite: [i1040s8812] p. 8, Earned Income Worksheet, line 1b; p. 8, Earned Income Worksheet, "If married filing jointly, include your spouse’s amounts with yours when completing this worksheet." (2025; printed date 2026-01-23; bb9788cd)
   (helper) Bona fide resident of Puerto Rico (you, or your spouse on a joint return)?
       = false
       cite: [f1040s8812] Schedule 8812 (2025), after line 20, "If you are a bona fide resident of Puerto Rico, go to line 21" (2025; created 2025-07-30; 6936462d)
@@ -6761,7 +6761,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040sca] p. 10, Limit on the amount you can deduct, "See Pub. 526 to figure the amount of your deduction if any of the following applies"; p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; b0999b12)
       note: taken: {"eq":["sa.gifts",{"const":true}],"op":"test"}
-  (helper) Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?
+  (helper) Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   (helper) Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
@@ -7833,13 +7833,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099
       = $0
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Does any of these apply: you made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you file Form 2555, 4563 or 8815; or you exclude employer-provided adoption benefits or income from sources within Puerto Rico?
+  (helper) Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico?
       = false
       cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Do you elect to use the lump-sum election method for a social security benefit payment that was for an earlier year?
+  (helper) Do you elect to use the lump-sum election method for a social security benefit payment to you (or, on a joint return, your spouse) that was for an earlier year?
       = false
       cite: [i1040gi] p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)?
+  (helper) Are any of the social security or railroad retirement benefits on your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)?
       = false
       cite: [i1040gi] p. 31, Lines 6a and 6b, Disability payments, "In the case of the September 11 attacks, injuries eligible for coverage by the September 11 Victim Compensation Fund are treated as incurred as a direct result of the attack." (2025; printed date 2026-02-25; 482e9c48)
   (helper) If you are married filing separately: did you live apart from your spouse for all of 2025?

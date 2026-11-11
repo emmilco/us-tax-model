@@ -4,8 +4,7 @@
  "family": "claude",
  "base": "1360a1bcf95e5c405a63edc9d74ccbe052a1547147428fa3160de9d74b834a8f",
  "head_rows": {
-  "match / mismatch / unclear / missing": "93 / 2 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -545,15 +544,16 @@
   },
   {
    "key": "24",
-   "record": "a7ada0de6d5c03737c7dcbc4b3d7d3494e1c415c45f313b7371f3a004beefb6c",
-   "status": "MATCH",
-   "subject_key": "74b270fbc6c6b311777ab42f4d7b9b32183bad2ee48688893a2ce856013f9839"
+   "record": "0591efde45f0c48b1a5a2d15d255b1ac447ab6a356e22f66bd91fa66edee3e1e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; screen s3.mfs, as the earlier rulings on this line. i8962 p. 16, Not an applicable taxpayer, \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC. You must repay some or all of the APTC entered on line 11, column (f). To complete the rest of the form, skip lines 12 through 23, enter -0- on line 24\". No married filing separately return is completed: gate s3.mfs (forms/2025/s3.yaml, f1040.status equal to mfs) is a refusal of scope.ready (forms/2025/scope.yaml), Exception 2 included, so the applicable-taxpayer helper never meets a married filing separately filer and the restatement is faithful to the project line. The render review does not show the return-wide refusal. The reviewer does not raise the reworded question f8962.estimate_100 (enrollment by anyone in the tax family), which is the only change to this line's readers.",
+   "subject_key": "c9a5d6682ff9004e391b5dcb024cbd52e166fdc71851d966ff9c98a242e14ac0"
   },
   {
    "key": "25",
-   "record": "a7ada0de6d5c03737c7dcbc4b3d7d3494e1c415c45f313b7371f3a004beefb6c",
+   "record": "0591efde45f0c48b1a5a2d15d255b1ac447ab6a356e22f66bd91fa66edee3e1e",
    "status": "MATCH",
-   "subject_key": "7ab5731169892cbaf3816180f1ca22559dcc9d1a30e67a81b542e2dc51cfd5a9"
+   "subject_key": "b6c077723934885749e9f566e96f214a83f41ae03a72353d35b0ab6effa3683d"
   },
   {
    "key": "26",
@@ -671,8 +671,8 @@
   "23(d)": "d60a79c9287e2b12c97a5ce5b933a1fdfc858d39dc654b7c01b555b55810d169",
   "23(e)": "9b3ddb6cb5e26795ecf791de22e0f95b80ff155a724769cf8028876acc89b179",
   "23(f)": "89e4610491a1f8c60d22e2aedf43e35aa691775c09e0129a28a8c45ad2eaf5fc",
-  "24": "388d937e35260ddc37f85468ff70c08c3cf827e031c9ec64d84e442bee20c8cf",
-  "25": "09ba7cbcad5bb35923545b9beeb4dc174b513d2083c925a927d8edd8b594d345",
+  "24": "061db55dcb255ab8a5381626b29d2cc2e58f44fe47272c66bf31b20a02374262",
+  "25": "f2e9c556675fa32f0ef3f8ddd5ff1d193a1266832c37a08408f7c0f1c3637f2e",
   "26": "f908d298d2a728189fadc68a84e90d0d391cfd93298ba1692c91ce42f60de497",
   "27": "516f26dedb1b35a72fa7e2ce05bf3c23cd36393a850ca42f81d4d40bbbb111c0",
   "28": "d296a338cce6f665028306b24638d3422f6c32c1ce57956c338e85adc10d0477",

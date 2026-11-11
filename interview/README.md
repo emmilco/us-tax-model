@@ -223,3 +223,18 @@ Wording says what to answer, not how to type it: the build fails when a filled p
 help states entry syntax (`entrySyntax` in `interview.ts`: cents, integer, whole number,
 true or false, JSON, null, a list literal such as `[]`, entry keys). Each client states
 entry syntax itself, the CLI in the question's `entry` hint and the page in its widgets.
+
+A joint return combines both spouses' items, and a filer reading a bare "you" answers for
+themselves only. So an amount or yes/no question asked once per return (its form has no
+`collection` block), whose "you" would lead a joint filer to leave out the spouse's item
+when that item counts on a joint return, names the spouse. Spouse wording that is added or
+changed uses exactly one phrase, "(or, on a joint return, your spouse)", or its possessive
+form, "your (or, on a joint return, your spouse's)", in lower case and not split by other
+words. The interview has no wording that varies with filing status; the conditional form
+stays true for a filer who is not filing jointly. Spouse wording in another form that is
+already correct stays as it is until the question is next changed.
+The rule does not apply to a question asked per person, per dependent or per roster entry; a
+question reached only by filers who are not filing jointly; a question about the return or
+the household itself; or a question where naming the spouse would change what the form line
+means (a line the form asks about the taxpayer only). Each use is grounded in the source the
+question cites: the spouse's item counts on the joint return.

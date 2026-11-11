@@ -348,7 +348,7 @@
 ## (gate) — `ira.excl_gate`
 
 - **Authored helper label:** Traditional IRA contributions, someone covered by a retirement plan, and Form 2555 or 4563 or income excluded as a bona fide resident of Puerto Rico
-- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "You (or, on a joint return, your spouse) were covered by a retirement plan (Yes on line 1a or 1b)" = true and sa helper "Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?" = true
+- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "You (or, on a joint return, your spouse) were covered by a retirement plan (Yes on line 1a or 1b)" = true and sa helper "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?" = true
 - Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"eq":["ira.anyone_covered",{"const":true}],"op":"test"},{"eq":["sa.excluded_income",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 96, Were You Covered by a Retirement Plan?, "If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
