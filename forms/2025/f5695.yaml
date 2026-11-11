@@ -23,43 +23,58 @@ form:
       locator: Form 5695 (2025), lines 5b, 11, 18b to 20d, 22d to 26c, 29h and 32
   - id: f5695.part1_any
     printed: (helper)
-    label: Any residential clean energy costs for 2025 (counted when the original installation is completed), or a
-      carryforward from 2024
+    label: Any residential clean energy costs for 2025 (counted when the original installation is completed, or for a
+      constructed or reconstructed home when its original use begins), or a carryforward from 2024
     type: Bool
     expr:
       op: input
-      source: Did you have 2025 costs for solar electric, solar water heating, small wind energy, geothermal heat pump,
-        battery storage or fuel cell property for a home in the United States, or do you have a residential clean energy
-        credit carryforward from line 16 of your 2024 Form 5695? A cost of an item counts in 2025 when its original
-        installation is completed in 2025, whenever you paid it; an item installed after 2025 does not qualify.
+      source: Did you (or, on a joint return, your spouse) have 2025 costs for solar electric, solar water heating,
+        small wind energy, geothermal heat pump, battery storage or fuel cell property for a home in the United States,
+        or do you have a residential clean energy credit carryforward from line 16 of your 2024 Form 5695? Include your
+        proportionate share of such costs paid by the condominium management association of a condominium you own, or by
+        a cooperative housing corporation in which you are a tenant-stockholder. A cost of an item counts in 2025 when
+        its original installation is completed in 2025, whenever it was paid; but a cost connected with constructing or
+        reconstructing a home counts when your original use of that home begins (for example, solar panels installed in
+        2024 on a newly built home you first lived in in 2025 count in 2025). An item installed after 2025 does not
+        qualify.
     cite:
       doc: i5695
       locator: p. 2, Residential Clean Energy Credit (Part I), "You may be able to take a credit of 30% of your costs of
         qualified solar electric property, solar water heating property, small wind energy property, geothermal heat pump
-        property, battery storage technology, and fuel cell property"; p. 1, Purpose of Form, "Also use Form 5695 to take
+        property, battery storage technology, and fuel cell property"; p. 2, Joint occupancy, "These rules don't apply to married individuals filing a joint
+        return"; p. 1, Purpose of Form, "Also use Form 5695 to take
         any residential clean energy credit carryforward from 2024"; p. 1, Costs, "For purposes of both credits, costs are
-        treated as being paid when the original installation of the item is completed"; p. 1, Termination of credits, "You
-        can’t claim residential clean energy credits for expenditures made after December 31, 2025"
+        treated as being paid when the original installation of the item is completed", "For purposes of the
+        residential clean energy credit only, costs connected with the construction of a home are treated as being
+        paid when your original use of the constructed home begins"; p. 2, Association or cooperative costs, "you
+        are treated as having paid your proportionate share of any costs of such association or corporation"; p. 1,
+        Termination of credits, "You can’t claim residential clean energy credits for expenditures made after December
+        31, 2025"
   - id: f5695.part2_any
     printed: (helper)
     label: Any energy efficient home improvement costs for 2025 (counted when the original installation is completed)
     type: Bool
     expr:
       op: input
-      source: Did you have 2025 costs for insulation or air sealing, exterior doors, exterior windows or skylights, central
-        air conditioners, natural gas, propane or oil water heaters, furnaces or hot water boilers, electric or natural gas
-        heat pumps or heat pump water heaters, biomass stoves or boilers, panelboards, subpanelboards, branch circuits or
-        feeders, or a home energy audit, for a home in the United States? A cost of an item counts in 2025 when its original
-        installation is completed in 2025 (for a cost connected with the reconstruction of your home, when your original
-        use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+      source: Did you (or, on a joint return, your spouse) have 2025 costs for insulation or air sealing, exterior
+        doors, exterior windows or skylights, central air conditioners, natural gas, propane or oil water heaters,
+        furnaces or hot water boilers, electric or natural gas heat pumps or heat pump water heaters, biomass stoves or
+        boilers, panelboards, subpanelboards, branch circuits or feeders, or a home energy audit, for a home in the
+        United States? Include your proportionate share of such costs paid by the condominium management association of
+        a condominium you own, or by a cooperative housing corporation in which you are a tenant-stockholder. A cost of
+        an item counts in 2025 when its original installation is completed in 2025 (for a cost connected with the
+        reconstruction of your home, when your original use of the reconstructed home begins), whenever it was paid; an
+        item installed after 2025 does not qualify.
     cite:
       doc: i5695
       locator: p. 2, Energy Efficient Home Improvement Credit (Part II), "You may be able to take a credit equal to 30% of
-        the sum of"; p. 1, Reminders, "A 30% credit, up to a maximum of $1,200, may be allowed for"; p. 1, Costs, "For
+        the sum of"; p. 3, Married taxpayers with more than one home, "If you are filing a
+        joint return, figure your energy efficient home improvement credit as follows"; p. 1, Reminders, "A 30% credit, up to a maximum of $1,200, may be allowed for"; p. 1, Costs, "For
         purposes of both credits, costs are treated as being paid when the original installation of the item is completed,
         or, in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed
-        home begins"; p. 1, Termination of credits, "You can’t claim energy efficient home improvement credits for expenditures
-        or property placed in service after December 31, 2025"
+        home begins"; p. 2, Association or cooperative costs, "you are treated as having paid your proportionate
+        share of any costs of such association or corporation"; p. 1, Termination of credits, "You can’t claim energy
+        efficient home improvement credits for expenditures or property placed in service after December 31, 2025"
   - id: f5695.business_use
     printed: (helper)
     label: Is any item whose cost is entered on Form 5695 used less than 80% for nonbusiness purposes?
@@ -96,7 +111,7 @@ form:
     expr:
       op: input
       source: |-
-        Qualified solar electric property costs you paid for a home in the United States (it need not be your main home), including labor (net of subsidies and rebates; see help; zero if none).
+        Qualified solar electric property costs you (or, on a joint return, your spouse) paid for a home in the United States (it need not be your main home), including labor (net of subsidies and rebates; see help; zero if none).
 
         Solar roofing tiles and solar roofing shingles qualify; structural components such as a roof's decking or rafters, which serve only a roofing or structural function, do not.
 
@@ -126,7 +141,7 @@ form:
     expr:
       op: input
       source: |-
-        Qualified solar water heating property costs you paid for a home in the United States (it need not be your main home), including labor (net of subsidies and rebates; see help; zero if none).
+        Qualified solar water heating property costs you (or, on a joint return, your spouse) paid for a home in the United States (it need not be your main home), including labor (net of subsidies and rebates; see help; zero if none).
 
         At least half of the energy it uses to heat water must come from the sun, and it must be certified by the Solar Rating Certification Corporation or a comparable entity endorsed by your state.
 
@@ -145,7 +160,7 @@ form:
     expr:
       op: input
       source: |-
-        Qualified small wind energy property costs you paid for a home in the United States (it need not be your main home), including labor (net of subsidies and rebates; see help; zero if none).
+        Qualified small wind energy property costs you (or, on a joint return, your spouse) paid for a home in the United States (it need not be your main home), including labor (net of subsidies and rebates; see help; zero if none).
 
         Costs allocable to a swimming pool, hot tub or any other energy storage medium that has a function other than storage do not qualify
     cite:
@@ -160,7 +175,7 @@ form:
     expr:
       op: input
       source: |-
-        Qualified geothermal heat pump property costs you paid for a home in the United States (it need not be your main home), including labor (net of subsidies and rebates; see help; zero if none).
+        Qualified geothermal heat pump property costs you (or, on a joint return, your spouse) paid for a home in the United States (it need not be your main home), including labor (net of subsidies and rebates; see help; zero if none).
 
         It must meet the Energy Star requirements in effect at the time of purchase.
 
@@ -178,16 +193,23 @@ form:
     type: Bool
     expr:
       op: input
-      source: Did you have 2025 costs for battery storage technology installed in connection with your home in the United
-        States that has a capacity of at least 3 kilowatt hours? A cost counts in 2025 when the original installation is
-        completed in 2025, whenever you paid it; a battery installed after 2025 does not qualify. (Answer No if you had none;
-        a battery of less than 3 kilowatt hours cannot be claimed.)
+      source: Did you (or, on a joint return, your spouse) have 2025 costs for battery storage technology installed in
+        connection with your home in the United States that has a capacity of at least 3 kilowatt hours (including your
+        proportionate share of such costs paid by a condominium management association or cooperative housing
+        corporation)? A cost counts in 2025 when the original installation is completed in 2025, whenever it was paid;
+        but a cost connected with constructing or reconstructing a home counts when your original use of that home
+        begins (for example, a battery installed in 2024 in a newly built home you first lived in in 2025 counts in
+        2025). A battery installed after 2025 does not qualify. (Answer No if there were none; a battery of less than 3
+        kilowatt hours cannot be claimed.)
     cite:
       doc: i5695
       locator: p. 4, Lines 5a and 5b, "To qualify for the credit, the qualified battery storage technology must have a
         capacity of at least 3 kilowatt hours"; p. 2, Qualified battery storage technology costs, "installed in connection
         with your home located in the United States"; p. 1, Costs, "costs are treated as being paid when the original
-        installation of the item is completed"
+        installation of the item is completed", "For purposes of the residential clean energy credit only, costs
+        connected with the construction of a home are treated as being paid when your original use of the
+        constructed home begins"; p. 2, Association or cooperative costs, "you are treated as having paid your
+        proportionate share of any costs of such association or corporation"
     ambiguity: amb.2025.f5695_battery_second_home
   - id: f5695.battery_cost
     printed: (helper)
@@ -196,7 +218,7 @@ form:
     expr:
       op: input
       source: |-
-        Qualified battery storage technology costs you paid (capacity of at least 3 kilowatt hours), including labor (net of subsidies and rebates; see help).
+        Qualified battery storage technology costs you (or, on a joint return, your spouse) paid (capacity of at least 3 kilowatt hours), including labor (net of subsidies and rebates; see help).
 
         Costs allocable to a swimming pool, hot tub or any other energy storage medium that has a function other than storage do not qualify
     cite:
@@ -286,8 +308,8 @@ form:
     type: Bool
     expr:
       op: input
-      source: Was qualified fuel cell property installed on, or in connection with, your main home located in the United
-        States in 2025? (Answer No if you had none.)
+      source: Was qualified fuel cell property installed on, or in connection with, your (or, on a joint return, your
+        spouse's) main home located in the United States in 2025? (Answer No if there was none.)
     cite:
       doc: i5695
       locator: p. 4, Lines 7a Through 7c, "Any qualified fuel cell property costs must have been for your main home located
@@ -704,8 +726,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: The cost of the most expensive exterior door you bought that meets the applicable Energy Star requirements,
-        not counting labor (net of subsidies and rebates; see help; zero if none)
+      source: The cost of the most expensive exterior door you (or, on a joint return, your spouse) bought that meets
+        the applicable Energy Star requirements, not counting labor (net of subsidies and rebates; see help; zero if
+        none)
     cite:
       doc: i5695
       locator: p. 6, Lines 19a Through 19h, "Line 19a. Enter the amount you paid for the most expensive exterior door that
@@ -922,12 +945,15 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: The cost of the most expensive exterior window or skylight that meets the Energy Star certification
-        requirements, not counting labor (net of subsidies and rebates; see help; zero if none)
+      source: The cost of the most expensive exterior window or skylight that meets the Energy Star most efficient
+        certification requirements (the Energy Star Most Efficient designation, not only the ordinary Energy Star
+        label), not counting labor (net of subsidies and rebates; see help; zero if none)
     cite:
       doc: i5695
       locator: p. 6, Lines 20a Through 20d, "Line 20a. Enter the QMID and amounts you paid for the four most expensive
-        exterior windows and skylights that meet Energy Star certification requirements on lines (i) through (iv)"
+        exterior windows and skylights that meet Energy Star certification requirements on lines (i) through (iv)";
+        fs-2025-01 p. 3, Energy Efficient Home Improvement Credit - Energy efficiency requirements, A1, Exterior windows
+        and skylights, "must meet Energy Star most efficient certification requirements"
   - id: f5695.line20a_ii
     printed: 20a (ii)
     label: Enter the Qualified Manufacturer Identification Number(s) and cost(s) of the four most expensive window(s)/
@@ -935,12 +961,15 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: The cost of the second most expensive exterior window or skylight that meets the Energy Star certification
-        requirements, not counting labor (net of subsidies and rebates; see help; zero if none)
+      source: The cost of the second most expensive exterior window or skylight that meets the Energy Star most
+        efficient certification requirements (the Energy Star Most Efficient designation, not only the ordinary Energy
+        Star label), not counting labor (net of subsidies and rebates; see help; zero if none)
     cite:
       doc: i5695
       locator: p. 6, Lines 20a Through 20d, "Line 20a. Enter the QMID and amounts you paid for the four most expensive
-        exterior windows and skylights"
+        exterior windows and skylights";
+        fs-2025-01 p. 3, Energy Efficient Home Improvement Credit - Energy efficiency requirements, A1, Exterior windows
+        and skylights, "must meet Energy Star most efficient certification requirements"
   - id: f5695.line20a_iii
     printed: 20a (iii)
     label: Enter the Qualified Manufacturer Identification Number(s) and cost(s) of the four most expensive window(s)/
@@ -948,12 +977,15 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: The cost of the third most expensive exterior window or skylight that meets the Energy Star certification
-        requirements, not counting labor (net of subsidies and rebates; see help; zero if none)
+      source: The cost of the third most expensive exterior window or skylight that meets the Energy Star most efficient
+        certification requirements (the Energy Star Most Efficient designation, not only the ordinary Energy Star
+        label), not counting labor (net of subsidies and rebates; see help; zero if none)
     cite:
       doc: i5695
       locator: p. 6, Lines 20a Through 20d, "Line 20a. Enter the QMID and amounts you paid for the four most expensive
-        exterior windows and skylights"
+        exterior windows and skylights";
+        fs-2025-01 p. 3, Energy Efficient Home Improvement Credit - Energy efficiency requirements, A1, Exterior windows
+        and skylights, "must meet Energy Star most efficient certification requirements"
   - id: f5695.line20a_iv
     printed: 20a (iv)
     label: Enter the Qualified Manufacturer Identification Number(s) and cost(s) of the four most expensive window(s)/
@@ -961,12 +993,15 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: The cost of the fourth most expensive exterior window or skylight that meets the Energy Star certification
-        requirements, not counting labor (net of subsidies and rebates; see help; zero if none)
+      source: The cost of the fourth most expensive exterior window or skylight that meets the Energy Star most
+        efficient certification requirements (the Energy Star Most Efficient designation, not only the ordinary Energy
+        Star label), not counting labor (net of subsidies and rebates; see help; zero if none)
     cite:
       doc: i5695
       locator: p. 6, Lines 20a Through 20d, "Line 20a. Enter the QMID and amounts you paid for the four most expensive
-        exterior windows and skylights"
+        exterior windows and skylights";
+        fs-2025-01 p. 3, Energy Efficient Home Improvement Credit - Energy efficiency requirements, A1, Exterior windows
+        and skylights, "must meet Energy Star most efficient certification requirements"
   - id: f5695.line20b
     printed: 20b
     label: Enter the cost of all other exterior windows and skylights. If none, enter -0-
@@ -1097,11 +1132,11 @@ form:
     type: Bool
     expr:
       op: input
-      source: Did you incur costs for qualified energy property (central air conditioners; natural gas, propane or oil water
-        heaters, furnaces or hot water boilers; panelboards, subpanelboards, branch circuits or feeders; electric or
-        natural gas heat pumps or heat pump water heaters; biomass stoves or boilers) installed on or in connection with a
-        home located in the United States that you use as a residence (it may be a second home or a home you rent)?
-        (Answer No if you have none.)
+      source: Did you (or, on a joint return, your spouse) incur costs for qualified energy property (central air
+        conditioners; natural gas, propane or oil water heaters, furnaces or hot water boilers; panelboards,
+        subpanelboards, branch circuits or feeders; electric or natural gas heat pumps or heat pump water heaters;
+        biomass stoves or boilers) installed on or in connection with a home located in the United States that you use
+        as a residence (it may be a second home or a home you rent)? (Answer No if there are none.)
     cite:
       doc: f5695
       locator: Form 5695 (2025), line 21a; i5695 p. 3, Section B—Residential Energy Property Expenditures, "costs of new
@@ -1635,12 +1670,12 @@ form:
     type: Bool
     expr:
       op: input
-      source: Did you install improvements or replacements of panelboards, subpanelboards, branch circuits or feeders
-        (enabling property) to enable the installation and use of separate enabled property (windows or skylights on line
-        20a, a central air conditioner on line 22a, a water heater on line 23a, a furnace or hot water boiler on line 24a, a
-        heat pump on line 29a, a heat pump water heater on line 29c, or a biomass stove or boiler on line 29e), and were both
-        installed in 2025? (If one was installed in 2024 and the other in 2025, you may choose to treat both as installed in
-        2025. Answer No if you have none.)
+      source: Did you (or, on a joint return, your spouse) install improvements or replacements of panelboards,
+        subpanelboards, branch circuits or feeders (enabling property) to enable the installation and use of separate
+        enabled property (windows or skylights on line 20a, a central air conditioner on line 22a, a water heater on
+        line 23a, a furnace or hot water boiler on line 24a, a heat pump on line 29a, a heat pump water heater on line
+        29c, or a biomass stove or boiler on line 29e), and were both installed in 2025? (If one was installed in 2024
+        and the other in 2025, you may choose to treat both as installed in 2025. Answer No if there are none.)
     cite:
       doc: i5695
       locator: p. 6, Lines 25a Through 25e, "both the enabling property and the enabled property must be installed in 2025",
@@ -1773,13 +1808,14 @@ form:
     type: Bool
     expr:
       op: input
-      source: Did you incur costs in 2025 for a home energy audit that included an inspection of your main home located in
-        the United States (owned or rented) and a written report prepared by a Qualified Home Energy Auditor, or under the
-        supervision of one, certified by a Qualified Certification Program at the time of the audit? The written report must
-        identify the most significant and cost-effective energy efficiency improvements for the home, with an estimate of the
-        energy and cost savings of each, and must include the auditor's name and employer identification number (EIN) or
-        other taxpayer identifying number, an attestation that the auditor is certified by a Qualified Certification Program,
-        and the name of that program. (Answer No if you had none, or if the report lacks any of these.)
+      source: Did you (or, on a joint return, your spouse) incur costs in 2025 for a home energy audit that included an
+        inspection of your main home located in the United States (owned or rented) and a written report prepared by a
+        Qualified Home Energy Auditor, or under the supervision of one, certified by a Qualified Certification Program
+        at the time of the audit? The written report must identify the most significant and cost-effective energy
+        efficiency improvements for the home, with an estimate of the energy and cost savings of each, and must include
+        the auditor's name and employer identification number (EIN) or other taxpayer identifying number, an attestation
+        that the auditor is certified by a Qualified Certification Program, and the name of that program. (Answer No if
+        there were none, or if the report lacks any of these.)
     cite:
       doc: i5695
       locator: 'p. 7, Lines 26a Through 26c, "Line 26a. To qualify for the credit, a home energy audit must have included an
@@ -1795,7 +1831,8 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: The cost of the home energy audits you paid in 2025 (net of subsidies and rebates; see help)
+      source: The cost of the home energy audits you (or, on a joint return, your spouse) paid in 2025 (net of subsidies
+        and rebates; see help)
     cite:
       doc: i5695
       locator: p. 7, Lines 26a Through 26c, "Line 26b. Enter the amounts you paid for home energy audits in 2025"

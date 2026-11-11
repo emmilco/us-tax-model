@@ -4,29 +4,29 @@
  "family": "claude",
  "base": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
+  "agree / disagree / missing": "7 / 26 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "f5695.claiming_part1",
-   "record": "a0de86380e7ff60d859cd10521021dd2caa44540036ac7dfacf61efb875f1e11",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as the earlier rulings on this line. i1040s8812, Credit Limit Worksheet B is completed only if \"You are claiming one or more of the following credits ... c. Residential clean energy credit, Form 5695, Part I.\" The reply's test (line 13 above zero) is the project's on every return with Part I, but it figures line 13 on every return, so it needs the Part I screens (f5695.business_use, f5695.construction_later) of filers who have no Part I costs, which the interview asks only after f5695.part1_any is Yes (the project tests part1_any first, BUG-0471). The rewording of part1_any (BUG-0478: a cost counts when the installation is completed) changes no value. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 4f7f20ef6cb8; 1,744 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,247 of 3,891 agree; 530 candidate-unknown, 35 candidate-refuses, 31 project-unknown, 48 value; completed-return witnesses: candidate-unknown on class M returns with no Part I (classm.f4952.1.deepseek, classm.s3.3.deepseek; project false) and one candidate refusal at its construction gate (a generated return with part1_any No); the value witnesses are refused returns (classm.dcprov.1, mutation.t2.qss_s1a_car). Project stands.",
-   "subject_key": "3ba525b05e02e18382139f10bfdd4594037b1cfb01ba698fd89b9971563b18db"
+   "ruling": "Ruling: representation; as the earlier rulings on this line. i1040s8812 p. 4, Credit Limit Worksheet B is completed only if \"You are claiming one or more of the following credits ... c. Residential clean energy credit, Form 5695, Part I.\" The reply tests f5695.part1_any and line 13 above zero with an `all` where the project chooses on f5695.part1_any first; on every record where f5695.part1_any is answered the two give the same value. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,792 of 3,819 agree; 27 project-unknown, all partial records withholding f5695.part1_any on incomplete or refused returns (the `all` short-circuits on line 13 = $0); none on a completed return. The rewording of part1_any (BUG-0552, BUG-0553) changes no value. Project stands.",
+   "subject_key": "25cc7e761600f5ea5ddec76ce21da69844efa4a6c86941524966a62a9f7d86a0"
   },
   {
    "key": "5b",
-   "record": "a0de86380e7ff60d859cd10521021dd2caa44540036ac7dfacf61efb875f1e11",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5695 p. 4, Lines 5a and 5b: \"If you check the “No” box, you can't include any battery storage technology costs on line 5b.\" The reply's value is the project's (the battery cost when 5a is Yes, zero otherwise) and its shown_when on 5a is the representation the earlier rulings accepted; but it attaches the business-use and construction screens (f5695.business_use, f5695.construction_later) to line 5b itself, so it needs them, or refuses, on returns where 5a is No, where the interview does not ask them; the project refuses those cases at line 6a, where Part I costs are summed. executable-triage-v2 (pass 4f7f20ef6cb8): 3,798 of 3,891 agree; 67 candidate-unknown and 26 candidate-refuses, the completed-return ones all with project $0.00 (part1_any or 5a No). Project stands.",
-   "subject_key": "f106203338d8adbe1cad8744510b50b300d6c77fd89de4ae353147fff19df1e9"
+   "ruling": "Ruling: representation; i5695 p. 4, Lines 5a and 5b: \"If you check the “No” box, you can't include any battery storage technology costs on line 5b.\" The reply's value is the project's and it adds a display condition on 5a. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,819 of 3,819 agree. The rewording of line 5a (BUG-0552, BUG-0553) changes no value. Project stands.",
+   "subject_key": "8c419b1ca896b4f0b6ac4a54e84fa46d55d27dfa271be362ba52a7d85ede0835"
   },
   {
    "key": "6a",
-   "record": "98ce3b998bd3a227f4616d4dd52ca7f4f63ec7ecf186e6b13a9d241596d0c5aa",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; f5695 p. 1, line 6a: \"Add lines 1 through 5b\". The candidate adds lines 1 and 2 in a helper and then lines 3, 4 and 5b; the sum is the same. Its refusal notes (business use, construction costs whose original use begins in another year) restate f5695.business_use and f5695.construction_later, which the project refuses on the same line. Triage executable-triage-v2 (`../triage/f5695.json`, structured-text round; 1,638 fixtures, 500 generated returns seed 20261026, 1,425 partial records): 3,563 of 3,563 agree.",
-   "subject_key": "8cec3171488024151fc893381a14497e67e112a391861a2e7de6e6fc0dec26f2"
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "status": "AGREE",
+   "subject_key": "f625431b92691795995f4dc1b2f5753a8ff91295e0452c26bd987dad2e86e38c"
   },
   {
    "key": "6b",
@@ -37,10 +37,10 @@
   },
   {
    "key": "11",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the candidate adds a shown_when that hides the line where the form says to skip it (f5695 p. 1, line 7a; fuel cell property (line 7a Yes) is refused at f5695.line7a, so line 11 is $0 on every computed return); the project shows the line without one, and on every record its shown amount is $0 where the candidate hides the line, which the v3 shown_when note and the README's skipped-line rule accept (zero entered where a later line reads it as blank). Values otherwise identical. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,703 of 3,703 agree.",
-   "subject_key": "b67fb6a6ce38512f85a5fcd40adb0ca287a3d3932e4e2fa3f612f6596dc888d3"
+   "ruling": "Ruling: representation; the candidate adds a shown_when that hides the line where the form says to skip it (f5695 p. 1, line 7a; fuel cell property (line 7a Yes) is refused, so line 11 is $0 on every computed return); the project shows the line without one, and its shown amount is $0 where the candidate hides it. Values identical. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,819 of 3,819 agree. Project stands.",
+   "subject_key": "24f8c52531265dc0d58708ff16f58a0ab8b0b91eb3cdd5628aed66ec09cc9a7c"
   },
   {
    "key": "13",
@@ -77,10 +77,10 @@
   },
   {
    "key": "19c",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the candidate adds a shown_when that hides the line where the form says to skip it (f5695 p. 2, line 17c, \"Do not complete Part II, Section A\"); the project shows the line without one, and on every record its shown amount is $0 where the candidate hides the line, which the v3 shown_when note and the README's skipped-line rule accept (zero entered where a later line reads it as blank). Values otherwise identical. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,703 of 3,703 agree. The backlog-round QMID refusal difference is gone.",
-   "subject_key": "99e6d3f0282008159b9f0ab573698cdfd16ada8dfac8ea971d722e4e5a64fffd"
+   "ruling": "Ruling: model error; as the earlier rulings on this line. i5695 p. 5, Part II, \"you must provide a valid QMID for each item\"; f5695 p. 2, line 17c, \"Do not complete Part II, Section A\". The reply zeroes the line when the door QMID is missing or Section A may not be completed, where the project refuses the return (f5695.doors_no_qmid, f5695.sec_a_new_home), and it needs f5695.qmid_doors on returns that do not claim Section A, where the interview does not ask it. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,598 of 3,819 agree; 161 candidate-unknown, 16 project-unknown, 44 value. The value differences are on incomplete or refused returns (QMID No: stage15.refuse.f5695.qmid_doors_windows_ac $250.00 vs $0.00, refused); on completed returns 39 candidate-unknown (f5695.qmid_doors not asked; project $0.00) and 9 project-unknown, partial records of returns without Part II withholding a Section A answer the interview never asks there; no completed value differs. Project stands.",
+   "subject_key": "383cea5fe9c39ebaf1bf98707a655ade6826372e7aee738bd682d725d67ebbaa"
   },
   {
    "key": "19f",
@@ -98,17 +98,17 @@
   },
   {
    "key": "19h",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\" (owner decision 7, Stage 15: an item without one is refused). The candidate gates the line on f5695.qmid_doors whatever the door cost, so it needs the QMID answer of filers with no door cost (classm.f5695.1 and .deepseek, classm.f5695.7 and .deepseek: project $0.00, candidate unknown), and line 17e of returns without Part II (partials of classm.f8960.1.deepseek); the project asks the QMID only of an item with a cost. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,598 of 3,703 agree; on completed returns 54 candidate-unknown; no completed value differs.",
-   "subject_key": "a7a236490f6bf0c0ba482e2cfd47087b0588ef6e73eaa84678dbb590693ce396"
+   "ruling": "Ruling: model error; as for line 19c. i5695 p. 5, Part II, \"you must provide a valid QMID for each item\"; i5695 p. 5, Line 17e, \"You cannot claim the credit for expenses related to the construction of a new home\". The reply gates the line on f5695.qmid_doors and line 17e, so it needs them where the interview does not ask them and zeroes where the project refuses. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,699 of 3,819 agree; 111 candidate-unknown, 7 project-unknown, 1 project-refuses, 1 value; the refusal, the value and the project-unknowns are on refused returns; on completed returns 19 candidate-unknown (project $0.00). Project stands.",
+   "subject_key": "14d9041f319cd57ccf94d5e11e9bcb335694e5839f9691102a294bff7f24186f"
   },
   {
    "key": "20c",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the candidate adds a shown_when that hides the line where the form says to skip it (f5695 p. 2, line 17c, \"Do not complete Part II, Section A\"); the project shows the line without one, and on every record its shown amount is $0 where the candidate hides the line, which the v3 shown_when note and the README's skipped-line rule accept (zero entered where a later line reads it as blank). Values otherwise identical. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,703 of 3,703 agree.",
-   "subject_key": "31f2cc8ec2c2f0ded68e549b794639394996ef4a66447be6729d52a7d8c2301e"
+   "ruling": "Ruling: model error; as for line 19c, with f5695.qmid_windows. i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". The reply zeroes line 20c when the window QMID is missing, where the project refuses the return (f5695.windows_no_qmid), and needs f5695.qmid_windows where the interview does not ask it. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,582 of 3,819 agree; 155 candidate-unknown, 80 project-unknown, 2 value; both value differences on refused returns (stage15.refuse.f5695.qmid_doors_windows_ac $2,200.00 vs $0.00; generated 152); on completed returns 41 candidate-unknown (project $0.00) and 45 project-unknown, partial records of returns without Part II (for example stage14.asset.hy_5yr withholding f5695.line20a_i), an answer the interview never asks there; the line is not evaluated on those returns' printed sheets. No completed value differs; the Most Efficient rewording of lines 20a(i) to (iv) (BUG-0498) changes no value. Project stands.",
+   "subject_key": "120df18f66ede9058f1c7887698a008ded29b41e0eb178cef0ae90a2a7b8c29a"
   },
   {
    "key": "20d",
@@ -126,10 +126,10 @@
   },
   {
    "key": "22d",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". The candidate gates the line on f5695.qmid_ac whatever the cost (classm.f5695.1 and .deepseek: project $0.00, candidate unknown) and needs f5695.b_new_home of returns without Part II (partials of classm.f8960.1.deepseek, classm.sd.1.deepseek); generated 360 (part2_any No, joint_occupancy Yes supplied) it refuses. On a return without Part II (f5695.part2_any No) every Part II amount is $0 and the interview asks none of the Part II questions; the project's lines, guarded on f5695.part2_any or on cost lines that are $0 (credits-misc PENDING-2), do not read them. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,510 of 3,703 agree; on completed returns 18 candidate-unknown, 1 candidate-refuses.",
-   "subject_key": "dd3c0effb655bc81191d2ff56213a7896a06da3a173a0350af73bf14315c822d"
+   "ruling": "Ruling: model error; as the earlier rulings on this line. f5695 p. 3, line 21b, \"Skip lines 22 through 25 and line 29\"; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". The reply gates the line on f5695.b_new_home and f5695.qmid_ac, so it needs them on returns without Section B, where the interview does not ask them, and zeroes or refuses where the project refuses. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,512 of 3,819 agree; 290 candidate-unknown, 13 candidate-refuses, 4 project-refuses; all refusals on refused returns; on completed returns 80 candidate-unknown (project $0.00). Project stands.",
+   "subject_key": "8aa0e688a0f90b881ab62c844b71e8bcce760d7cfd0444b0bee962f9b6fe1993"
   },
   {
    "key": "23c",
@@ -140,10 +140,10 @@
   },
   {
    "key": "23d",
-   "record": "f651dc83380e097e7d905bd2a2d52d90d6e04465dc97333cf37cbf63854ffedd",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error (+ scope); f5695 p. 3, line 21b: \"If you checked the “No” box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26.\"; i5695 p. 5, Part II, \"Caution: To qualify for the energy efficient home improvement credit for specified property, you must provide a valid QMID for each item.\" The candidate zeroes the line for a missing QMID, a new home, business use or joint occupancy where the project refuses (f5695.wh_no_qmid; f5695.sec_b_new_home, i5695 p. 1, \"The energy efficient home improvement credit (Part II) is only available for existing homes\"; owner decision 7), and its guards read f5695.b_new_home, business_use and joint_occupancy on returns where they are not asked. On a return without Part II (f5695.part2_any No) or with line 21a or 21b No every Section B amount is $0 and the interview asks none of the Section B questions; the project's lines, guarded on lines 21a and 21b or on cost lines that are $0, do not read them. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 3d43c227c169, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 1,552 partial records from 40 bases; 3,754 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 3,502 of 3,754 agree; 203 candidate-unknown, 46 candidate-refuses, 3 project-refuses; on completed returns 93 candidate-unknown (f5695.b_new_home 63, business_use 15, joint_occupancy 15; e.g. classm.f5695.2 and .deepseek: line 21a No, project $0.00) and 1 candidate-refuses (generated 360: part2_any No, joint_occupancy Yes supplied). The refusals on both sides are on refused returns. Gate wave (BUG-0471): f5695.wh_no_qmid is now a choose on f5695.wh_costs then f5695.wh_qmid_missing, the HEAD `all` in its operand order; the line is the same in HEAD and the working tree on every completed fixture and generated return (stage15.refuse.f5695.qmid_wh_furnace_enabling_hp refuses at f5695.wh_no_qmid in both). Same ruling as the refresh round. Project stands.",
-   "subject_key": "e0dc75af86dd43ceac4003fc42ad3eb59c1e420d642f604d0f7d85cf8e888965"
+   "ruling": "Ruling: model error; as for line 22d, with f5695.qmid_wh. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,553 of 3,819 agree; 250 candidate-unknown, 13 candidate-refuses, 3 project-refuses; all refusals on refused returns; on completed returns 80 candidate-unknown (project $0.00). Project stands.",
+   "subject_key": "f4f38d46d7a487e1fc9d4830c2f1177a79271081ab828462fb6818a0e14f5864"
   },
   {
    "key": "24c",
@@ -154,24 +154,24 @@
   },
   {
    "key": "24d",
-   "record": "f651dc83380e097e7d905bd2a2d52d90d6e04465dc97333cf37cbf63854ffedd",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error (+ scope); as line 23d, with f5695.qmid_furnace and f5695.furnace_no_qmid: f5695 p. 3, line 21b, \"Skip lines 22 through 25 and line 29\"; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". On a return without Part II (f5695.part2_any No) or with line 21a or 21b No every Section B amount is $0 and the interview asks none of the Section B questions; the project's lines, guarded on lines 21a and 21b or on cost lines that are $0, do not read them. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 3d43c227c169, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 1,552 partial records from 40 bases; 3,754 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 3,503 of 3,754 agree; 203 candidate-unknown, 46 candidate-refuses, 2 project-refuses; on completed returns 93 candidate-unknown (f5695.b_new_home 63, business_use 15, joint_occupancy 15; project $0.00) and 1 candidate-refuses (generated 360: part2_any No, joint_occupancy Yes supplied). The refusals on both sides are on refused returns. Gate wave (BUG-0471): f5695.furnace_no_qmid is a choose on f5695.furnace_costs then f5695.furnace_qmid_missing, the HEAD `all`'s truth table; the line is the same in HEAD and the working tree on every completed fixture and generated return. Project stands.",
-   "subject_key": "121f5b2db5f4bd58e2927eb5ff725ed44cde519e7047a54e6e4487e24cea2d34"
+   "ruling": "Ruling: model error; as for line 22d, with f5695.qmid_furnace. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,514 of 3,819 agree; 289 candidate-unknown, 13 candidate-refuses, 3 project-refuses; all refusals on refused returns; on completed returns 80 candidate-unknown (project $0.00). Project stands.",
+   "subject_key": "2eab0f224e3cd534e7e9c4404dc0e503c514bc4271d777df26ca8a0fd2bf7ccc"
   },
   {
    "key": "25e",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as for line 22d: the candidate needs f5695.b_new_home of returns without Part II (partials of classm.f8960.1.deepseek, classm.sd.1.deepseek, classm.u1250.2.deepseek, classm.clcw26.4.deepseek, classm.f8880.2.deepseek, classm.f1040.2.deepseek: project $0.00, candidate unknown) and refuses on generated 360. On a return without Part II (f5695.part2_any No) every Part II amount is $0 and the interview asks none of the Part II questions; the project's lines, guarded on f5695.part2_any or on cost lines that are $0 (credits-misc PENDING-2), do not read them. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,611 of 3,703 agree; on completed returns 8 candidate-unknown, 1 candidate-refuses.",
-   "subject_key": "4273210253d45b212c7614f21241ed80b59db79dbad2bc038a057911db139759"
+   "ruling": "Ruling: model error; as for line 22d, with f5695.qmid_enabling and line 25a. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,658 of 3,819 agree; 147 candidate-unknown, 13 candidate-refuses, 1 project-refuses; all refusals on refused returns; on completed returns 66 candidate-unknown (project $0.00). Project stands.",
+   "subject_key": "0cd9a9e8a40a59976a03ac21c4a663f1e7f5c68873e1f1abf717ac78500b13a9"
   },
   {
    "key": "26c",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f5695 p. 3, line 26c, \"Multiply line 26b by 30% (0.30). Enter the smaller of that amount or $150\"; the candidate's choose on line 26a is the project's. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,703 of 3,703 agree.",
-   "subject_key": "721539cdcb5f4f556de00bf42eaa0b9f2116e1e35f60aec74acd555827ee246c"
+   "ruling": "Ruling: representation; f5695 p. 4, line 26a: \"If you checked the “No” box, you cannot claim the home energy audit credit. Stop. Go to line 27.\" The reply's value is the project's and it adds a display condition on 26a. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,819 of 3,819 agree. Project stands.",
+   "subject_key": "33426ab00c1b8fbec117975b6057091621cac8f40a16f89bd4ec5067f1557589"
   },
   {
    "key": "27",
@@ -194,16 +194,16 @@
   },
   {
    "key": "29h",
-   "record": "f651dc83380e097e7d905bd2a2d52d90d6e04465dc97333cf37cbf63854ffedd",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error (+ scope); as line 23d, with f5695.qmid_hp and f5695.hp_no_qmid: f5695 p. 3, line 21b, \"Skip lines 22 through 25 and line 29\"; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". On a return without Part II (f5695.part2_any No) or with line 21a or 21b No every Section B amount is $0 and the interview asks none of the Section B questions; the project's lines, guarded on lines 21a and 21b or on cost lines that are $0, do not read them. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 3d43c227c169, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 1,552 partial records from 40 bases; 3,754 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 3,504 of 3,754 agree; 203 candidate-unknown, 46 candidate-refuses, 1 project-refuses; on completed returns 93 candidate-unknown (f5695.b_new_home 63, business_use 15, joint_occupancy 15; project $0.00) and 1 candidate-refuses (generated 360: part2_any No, joint_occupancy Yes supplied). The refusals on both sides are on refused returns. Gate wave (BUG-0471): f5695.hp_no_qmid is a choose on f5695.hp_costs then f5695.hp_qmid_missing, the HEAD `all`'s truth table; the line is the same in HEAD and the working tree on every completed fixture and generated return. Project stands.",
-   "subject_key": "4bf56e4cff2173d16ccb087eb1bea8115b8d2e2a929cc147fbdd40613a27264c"
+   "ruling": "Ruling: model error; as for line 22d, with f5695.qmid_hp. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,605 of 3,819 agree; 200 candidate-unknown, 13 candidate-refuses, 1 project-refuses; all refusals on refused returns; on completed returns 78 candidate-unknown (project $0.00). Project stands.",
+   "subject_key": "4c33e620d803b7ee4f7049b08473ababfd519331c867bdc1ae9f5bc51ca977af"
   },
   {
    "key": "30",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "AGREE",
-   "subject_key": "5f54601f06d25ddd87efa8e039566c328e7545f38b9183c79bd6cd82c0579741"
+   "subject_key": "79dedb444cf575af9a5e5ed31036c221d1b60e152b52485c8590049a1145b931"
   },
   {
    "key": "31",
@@ -213,70 +213,80 @@
   },
   {
    "key": "32",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; same as the backlog-round ruling. f5695 p. 4, line 32, \"Enter the smaller of line 30 or line 31\". On a return without Part II (f5695.part2_any No) every Part II amount is $0 and the interview asks none of the Part II questions; the project's lines, guarded on f5695.part2_any or on cost lines that are $0 (credits-misc PENDING-2), do not read them; the candidate's unguarded line 32 is unknown or refuses there (classm.f4952.1.deepseek, classm.s3.1.deepseek, classm.f8962.2.deepseek on f5695.business_use; classm.f4952.2.deepseek on separate_homes; generated 360 refuses). Where Part II is completed the amounts are the project's. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 1,072 of 3,703 agree; on completed returns 526 candidate-unknown, 1 candidate-refuses.",
-   "subject_key": "3c0926c285e5bb6201b71015f7e75362c401943ab9092b924ac9e69d68f5cca7"
+   "ruling": "Ruling: model error; as the earlier ruling on this line. f5695 p. 4, line 32, \"Enter the smaller of line 30 or line 31\". On a return without Part II (f5695.part2_any No) every Part II amount is $0 and the interview asks none of the Part II questions; the project guards the line on f5695.part2_any; the reply's unguarded line 32 is unknown or refuses there. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 1,860 of 3,819 agree; 1,132 candidate-refuses, 804 candidate-unknown, 6 project-refuses, 17 project-unknown; on completed returns 476 candidate-unknown (f5695.business_use and other Part II answers not asked; project $0.00) and 1 candidate-refuses; the project's refusals and unknowns are on refused or incomplete returns. Where Part II is completed the amounts are the project's. Project stands.",
+   "subject_key": "df4028c0cb2fadbc91612cd44ee98248a0bd633a68c80ce8f7f755e9879266d4"
   },
   {
    "key": "32a",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; minor, a Boolean on which no amount depends. Same as the backlog-round ruling. i5695 p. 7, Lines 32a and 32b, \"Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\". The candidate copies f5695.joint_occupancy, asked only with Part II. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 2,453 of 3,703 agree; on completed returns 143 candidate-unknown, 1 candidate-refuses (generated 360).",
-   "subject_key": "bf887c3a86a9d1a278a6501deb3d5ba6b2b71a5eb34e4e347c99b3c560d08b28"
+   "ruling": "Ruling: model error; minor, a Boolean on which no amount depends; as the earlier rulings on this line. i5695 p. 7, Lines 32a and 32b, \"Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\". The reply copies f5695.joint_occupancy, asked only with Part II. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,462 of 3,819 agree; 337 candidate-unknown, 20 value; the value differences are records that supply joint_occupancy Yes with part2_any No (an answer the interview never asks there; 19 refused, 1 completed). Project stands.",
+   "subject_key": "c9be2237eafc319a2082b7651899693a5e198829305b73b89989c34b9fb926b4"
   },
   {
    "key": "32b",
-   "record": "f651dc83380e097e7d905bd2a2d52d90d6e04465dc97333cf37cbf63854ffedd",
+   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; minor, a Boolean on which no amount depends. i5695 p. 7, Lines 32a and 32b: \"Line 32b. Occupants of a condominium or cooperative who are claiming a fractional share of the qualified energy efficiency improvements or residential energy property costs must check the box on line 32b.\" The box goes with a Part II claim; the candidate checks it on the condominium answer alone, and needs that answer on returns without Part II, where the interview does not ask it (its question reads \"... and include in Part II a fractional share ...\"). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 3d43c227c169, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 1,552 partial records from 40 bases; 3,754 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 3,298 of 3,754 agree; 404 candidate-unknown, 28 project-unknown, 24 value; on completed returns 178 candidate-unknown (f5695.condo, project No) and 4 value: classm.sd.2, classm.sd.2.deepseek, mutation.t2.no_carloan_part4_b and generated 294, records that supply f5695.condo Yes with f5695.part2_any No (an answer the interview never asks there): project No, candidate Yes. Checked in both trees on classm.sd.2, classm.sd.2.deepseek and mutation.t2.no_carloan_part4_b: line 32b No, line 32 $0.00 in HEAD and in the working tree; the rewritten choose (part2_any, then f5695.condo, else household.no) has the HEAD `all`'s truth table. The 20 other values are on refused returns. Same ruling as the earlier rounds. Project stands.",
-   "subject_key": "ec9c1d7ffa4c110c8c244b8f8fecce6490a0d0313a0818ee1e9ad2a6753a2e1e"
+   "ruling": "Ruling: model error; minor, a Boolean on which no amount depends; as the earlier rulings on this line. i5695 p. 7, Lines 32a and 32b: \"Line 32b. Occupants of a condominium or cooperative who are claiming a fractional share of the qualified energy efficiency improvements or residential energy property costs must check the box on line 32b.\" The box goes with a Part II claim; the reply checks it on the condominium answer alone and needs that answer on returns without Part II, where the interview does not ask it. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,355 of 3,819 agree; 423 candidate-unknown, 28 project-unknown, 13 value; the value differences are records that supply f5695.condo Yes with f5695.part2_any No (for example classm.sd.2.deepseek, completed: project No, candidate Yes), an answer the interview never asks there; line 32 is $0.00 on them. The association-share wording added to part2_any (BUG-0553) makes the share part of the Yes answer, consistent with the project's guard. Project stands.",
+   "subject_key": "c255a197cae8a6af484118abbedae5bf633df4c6cf5ecacd10a5fce10e01b573"
   }
  ],
  "subjects": {
-  "f5695.claiming_part1": "a00a9164f2d81befcaf914498c3f3d33d2848f9ba7ece6ad1cdf68e495852ef9",
-  "5b": "625720b0b2691ca1bfca85bbbfefeea8fb5baf63df4bd5b21eb6580e2ea9c33d",
-  "6a": "05edf212a8c95f10124933099ba155546db99a8a80139b4d4fa000a291553ec1",
+  "f5695.claiming_part1": "3be6a0fd12f5280b24414717bde5781e191bf8fb136fb0bc25d75db2f4a8510b",
+  "5b": "4877c2b17faf66a5411a82ef3c12dbb38b05316b22da58c42f3ce47b95e9cd94",
+  "6a": "602a79287960ef1a5b081519f7524af54364608dd33b17dd1497dab546e35e93",
   "6b": "033dda84713fe99afcb352106c331342fe2469475865231043196d95777ddbd5",
-  "11": "13153d1a5694d4c7116ce1ed883999ac3ee9e066aaa544187844c704016cbad9",
+  "11": "24d6e9f296e5431e0f6011ca7b7dd2615daa98b09d2421fb56c25d14bba2850f",
   "13": "c2102d7c949ad0b66ef6a2349725a2dcca14e8175ca8129e343a902bb227312f",
   "14": "168427c5fcbccc3b91e12cd5203c44e6721d79380f4c353b78e192924deb9ddc",
   "15": "07cddd6a6ade0f4436071f1f0b91e81ded007249c4d3ed5ea937b2d158d3633f",
   "16": "6e1f471dd878e5120de00782c2b04d157b3c1b698bd3810cde665d0afdad9405",
   "18b": "e18c290fc3247e387ac1ae52607b5592fd021c183247a48d5e9f990fbf844a6e",
-  "19c": "152adfa2f503052a9bdce120f3acc8ad41025bf449ddd300cb506ce3a67ec459",
+  "19c": "29fbdffefa5d5b60f469ce48b3f413e90dcfbf641b3489c024a66b853b1dfc39",
   "19f": "1f18357a597c447f4126e559c4b7f3a3c055cd3a724c112d880d67f6533bdd02",
   "19g": "8c64ecf5dfe473b274f016fdb7eb2fa67d3edb02b67522370dc31baceefb1de2",
-  "19h": "d692844d1b58b1b25909b211e148f53f421953cc1afa1683671b0e4077b98f6e",
-  "20c": "e31a71f5c40d1a5bed6bc36db872634a72be67d065e812735f9d24b54945c325",
+  "19h": "f53b1dcab391c8b78199edf6d37d8d2d8b010c79b5a92efdcd990ba544d5857d",
+  "20c": "2856aedfabe459397c61e74917b19e1af7cc16fdbe873b579511489622cbffbf",
   "20d": "0f972394723c78d099b3e105f66f2421647c6b844f9d671ced63a24bfa01c67d",
   "22c": "51db5aa7a885d360a9d267e8bd7906aa7c2bc63bcbbe8cd37d2a04b6f2134688",
-  "22d": "745f3453822b6811db31fbea16c3fbed4b0089723bebfc931a4d2506f7f6d95f",
+  "22d": "e80c40a7ac6620418b7ca205d902b5aa7168772fbf3ccd57bf5c554ae91592c5",
   "23c": "bc942f5f8a8a73edebf2547c69a19f9945ceaad5038c44a4875f8f5fe0a5b657",
-  "23d": "ae2b8042efbde0317462a623ce26aa4fa7c09b1065323412c6469b6ce4ab0391",
+  "23d": "f2e9d2ee82d31137eb52205cf41184518f92fee715a37933b7a03d99da39c1c5",
   "24c": "f2d3d57b2af9ee0bbd787183cb4034229554df807e666532add2974f819aebe0",
-  "24d": "cbaf44e2e6dc72036248d9569e1537d18794c10e13e3bc6bb61d6aa01fc6ef5d",
-  "25e": "4355d45fed056e1acb34f4d51db4a7c8fe39f0d207830899ccb0a3dbdf2b0290",
-  "26c": "3460775e7da0bb500200616f85a60993ce5016129ab7bdc550c01f20adc2b557",
+  "24d": "27e13a38fe445e627cea06f82f1eaba57d1dceaf8478646381015f4ce6a17034",
+  "25e": "cdf034466413acd96417d9fa0049f31529d1ed70435feb4b0f2568e79a60cde9",
+  "26c": "c6b42cef3a6c90c643463c5be7c4623dd89da8543bc03883f8f0ceb80e76f63c",
   "27": "ba37ce34b486adbd5d0faaf2c5c092a547042fa4cd731c284824a036921d660a",
   "28": "395d7c34a09b2fc1ae73116a364da14c606591ddd09c19c3bf5f161166887e51",
   "29g": "8f0a91e5a9b87ab2c9d40e587dd9c5de32c025f67f6f5b5d63d93b14dfd2db63",
-  "29h": "59c562ce0a6e08168eb4fbbbd1a2b8011aa7ee94e314eeea2aa645ab65a92b3d",
-  "30": "318a7c187c25069118e641b889e5d0f242177971948e0f834c7ad11bfd184338",
+  "29h": "494a190df11c119e4e5c9a12434922684a47c22c049f3a5203281fe5eac1b6ad",
+  "30": "d48f37676851031081d6999705d330af2e60f72692b8b0d9222a515a0b2cf1a4",
   "31": "55649795697461f80a9b70dd1957cf067e50a0ee9b83acb77198b52daba0f637",
-  "32": "671f0cace9f735137fb9cc28a686e4daba94bf467001e5b57c6d1e5d78f74300",
-  "32a": "75c7b387a7c8db95f00b48f47598b6be13167c4d3274152444566938aa9d448f",
-  "32b": "4f49cc62bfecdeb503dcbc888bc630df4a2a4494a8ce40c863de77b1f46b2e52"
+  "32": "64af264916beff747a1849d812e8557b3548b4d9c16a81a849bad47a899d7ce5",
+  "32a": "bb17e5b3658ddec1501abb1fb7ab8be789fb4a3f2ab61ddb5d1ec7d2f063720e",
+  "32b": "95f632dbb6a054f703bcee9906052361f278290a08aa400a9a7daebb0bbae849"
  },
  "__rest__": "9eb53ebd84be121b2dff181a4acb827ff5c29d9dd96cbbe8f7ecc67c12520537",
  "foreign": {
   "f5695.claiming_part1": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "5b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "6a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "11": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "19c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "19h": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "20c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "22d": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "23d": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "24c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "24d": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "25e": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "26c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "29h": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "30": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "32": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "32a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "32b": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a"
  }
 }

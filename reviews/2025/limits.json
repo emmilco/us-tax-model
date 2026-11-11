@@ -118,6 +118,13 @@
   },
   "limit:p969:p7:21d3967d": {
    "not_applicable": "the limit on a qualified HSA funding distribution: such distributions are refused by f8889.unsupported (Form 8889 line 10); Pub. 969 p. 7 is cited only for retroactive Medicare coverage (f8889.coverage_year)."
+  },
+  "limit:fs-2025-01:p3:2f866a9a": {
+   "enforced_by": [
+    "f5695.hp_capped",
+    "f5695.line29h"
+   ],
+   "reason": "The aggregate $2,000 limit for heat pumps, heat pump water heaters and biomass stoves or boilers is Form 5695 line 29h, \"Do not enter more than $2,000\": f5695.hp_capped is the smaller of line 29g times 30% and $2,000, read by f5695.line29h. The tool files one Form 5695 per return (spouses with separate main homes are refused, f5695.separate_homes_joint), so the limit is applied once per form as the line directs."
   }
  },
  "baseline": {
