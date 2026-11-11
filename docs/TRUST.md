@@ -78,7 +78,7 @@ determinism, but as its own docstring says, their force comes from the definitio
 total, not from the proofs, and they say nothing about acyclicity (a cycle gives an error value at evaluation time). Both evaluators run over every fixture and over 400 generated whole returns (the
 generator and corpus of the properties check, `engine/src/generate.ts`);
 `reports/2025/evaluator_agreement.md` reports 2,168 cases, 6,114,183 line values compared, 0
-differences, and counts the values by kind (an unknown is compared by kind only). **Guarantees:** the proved atom properties hold, and two independently written evaluators
+differences, and counts the values by kind (an unknown is compared by kind only). That is the federal run: its cases give no New York answers, so the New York documents' lines it compares are mostly unknown; `reports/ny/2025/evaluator_agreement.md` is the run on New York fixtures and on the same generated returns with New York answers, and each report counts the New York lines apart. **Guarantees:** the proved atom properties hold, and two independently written evaluators
 of the same data compute the same values. **Does not guarantee:** that the TypeScript evaluator is
 formally verified (it is not), or anything about whether
 the data matches the IRS text. Both evaluators read the same files, so agreement shows the evaluators

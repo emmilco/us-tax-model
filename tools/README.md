@@ -87,9 +87,29 @@ The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast
 `compare` and `ny_compare` (`engine/src/compare.ts`) run the TypeScript and the Lean evaluator
 over every fixture case and over generated whole returns, and fail on any line value that
 differs. The generated returns come from the general generator (`engine/src/generate.ts`:
-`sampleReturns`, and `nyReturnArbitrary` for `--ny`) with the seed and size of the
-`properties` step, so they follow the declared inputs and their branch coverage is the one
-`properties.md` lists. The step first plants differences on generated returns and stops unless each
+`sampleReturns`, and `nyReturnArbitrary` for `--ny`) and are the corpus of the `properties`
+step: both commands take the returns, the seed and the size from one definition
+(`corpusReturns`, `CORPUS_SEED`, `CORPUS_SIZE`), so they follow the declared inputs and their
+branch coverage is the one `properties.md` lists. `PROPERTY_RUNS=<n>` sets the size for a run of
+either command (400 without it; check-all sets none); each report states the seed and the number of
+returns it used, so two reports written under different sizes say so themselves. The self-test
+`compare --corpus-self-test` (`compare_corpus_self_test`) fails unless the returns the comparison
+compares are the returns the properties report's coverage is of, for both jurisdictions, unless a
+return with New York answers carries every answer of the federal return of its index, and unless both
+commands follow `PROPERTY_RUNS`.
+
+What each run covers. Both evaluators read the whole canonical build, so each run compares
+the lines of every document, federal and New York. `compare` runs on the federal fixture cases
+and the federal generated returns, none of which gives a New York answer: there most New York
+lines are unknown (compared by kind only) and the rest have values that need no New York answer
+(constants, figures from federal lines, refusals). `ny_compare` runs on the New York fixture
+cases and on the same generated returns with New York answers added, and so compares the New
+York lines with answers and the federal lines again. The New York lines stay in the federal run:
+the federal fixture cases are in no other run, so their New York values would be compared nowhere.
+The New York documents take about a fifth of the federal run's evaluation time. Each report states its run's
+cases and counts the New York documents' lines apart, by kind.
+
+The step first plants differences on generated returns and stops unless each
 is reported on its line with the planted values: for each kind of value (money, count, rate,
 Bool, enum, refusal, unknown) a differing Lean value on a computed line of that kind, one per
 field the comparison reads (a refusal's gate, form, remedy and citation); a line the Lean
@@ -168,6 +188,20 @@ step must be placed by it. A check that runs for both jurisdictions is declared 
 suites run as two steps, `bookkeeping_self_tests` and `self_tests`
 (`tools/self_tests.py --list` names each test and its command), side by side in a worker
 pool, each failing test named. A step's output is printed when its wave ends, under its `== <step>` line.
+
+Some self-tests have no row in `tools/self_tests.py`: a step runs them inside itself, and with the
+call removed the step would print one line less and still pass. `tools/step_output.py` lists, per
+step, the line each of them prints when it ran and found no problem, and a step that exits 0
+without one of its lines fails, with what is missing printed under its `== <step>` line. The steps
+and their lines: `compare` and `ny_compare`, the Bool-and-enum choose self-test and the planted
+differences; `mutate` and `ny_mutate`, the six self-tests of the equivalence reasoning (retargeting,
+whole-dollar parameters, unknown-guard side condition, guarded-figure dominance, premise digest,
+Bool and enum choose); `engine_differential`, the UsTaxes line cache self-test that
+`tools/engines/run.sh` runs (or the line saying that it, or the whole step, was skipped for want of
+the engines); `bookkeeping_self_tests`, the tier path rule's self-test that `hooks/test_green.sh`
+runs. A self-test added inside a step needs a row there. `step_output.py --self-test` (a check-all
+step) checks the matching on constructed logs, that every step with required lines is declared in
+`tools/check_all_steps.sh`, and that its `wave` runs the check.
 
 Wall times, in whole seconds, are written to `.git/check-all-times` (the worktree's git directory; rewritten by
 each run): each step's as `<seconds> <step>`, each self-test's as `<seconds> self_tests/<name>`, each stage's

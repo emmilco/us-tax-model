@@ -9,15 +9,21 @@ import { join, resolve } from "node:path";
 import { loadCanonical } from "./canonical.js";
 import { evaluate, evaluateAll } from "./eval.js";
 import type { EvalResult, Value } from "./eval.js";
-import { nyReturnArbitrary, returnArbitrary, sampleReturns, screenInstances } from "./generate.js";
+import { CORPUS_SEED, CORPUS_SIZE, corpusReturns, federalDocuments, nyReturnArbitrary, returnArbitrary, screenInstances } from "./generate.js";
 import { loadInterview } from "./interview.js";
 import { branchKeys } from "./branches.js";
 import type { CanonicalData, Expr, Inputs, TestExpr } from "./types.js";
 import { NY_MODE, YEAR, reportName, reportPath, yearPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
-const SEED = 7;
-const RUNS = Number(process.env["PROPERTY_RUNS"] ?? 400);
+// The seed and the number of generated returns: those of the corpus shared with the comparison (generate.ts).
+const SEED = CORPUS_SEED;
+const RUNS = CORPUS_SIZE;
+
+/** The generated returns whose branch coverage the report lists: the shared corpus. */
+export function coverageCorpus(all: CanonicalData, ny: boolean): Inputs[] {
+  return corpusReturns(all, ny);
+}
 
 interface Verdict { applicable: boolean; ok: boolean; detail?: string }
 
@@ -214,7 +220,7 @@ function runNyProperties(): number {
   const all = loadCanonical();
   const arb = nyReturnArbitrary(all);
   const results = refusalProperties(all, arb);
-  const corpus = fc.sample(arb, { seed: SEED, numRuns: RUNS });
+  const corpus = coverageCorpus(all, true);
   const coverage = { ...branchCoverage(all, corpus, all.forms.filter((d) => d.id.startsWith("ny_"))), corpus: corpus.length };
   return report(results, `The refusal properties of spec 6.3 checked over ${RUNS} generated returns with New York answers (fast-check, seed ${SEED}, every filing status): a generated federal return and the answers of the New York documents (\`generate.ts\` \`nyReturnArbitrary\`), every federal and New York line evaluated. "Applicable" counts the cases where the property's premise held. A failure is reported with the smallest counterexample fast-check found. The branch coverage below is of the New York documents.`, coverage, reportPath("properties.md"), reportName("properties.md"));
 }
@@ -225,7 +231,7 @@ export function runProperties(): number {
   // question of these returns, so they are left out (no federal line reads a New York line). `properties --ny`
   // checks the refusal properties with them.
   const all = loadCanonical();
-  const data = { ...all, forms: all.forms.filter((d) => !d.id.startsWith("ny_")), defs: all.defs.filter((d) => !d.id.startsWith("ny_")) };
+  const data = federalDocuments(all);
   const arb = returnArbitrary(data);
   const results: PropertyResult[] = [];
 
@@ -447,7 +453,7 @@ export function runProperties(): number {
 
   // Branch coverage of the generated corpus: which choose guards and
   // arithmetic sides the generator reaches. Informational; feeds class M.
-  const corpus = sampleReturns(data, RUNS, SEED);
+  const corpus = coverageCorpus(all, false);
   const coverage = { ...branchCoverage(data, corpus, data.forms), corpus: corpus.length };
   return report(results, `Properties of spec 6.3 checked over ${RUNS} generated returns (fast-check, seed ${SEED}, every filing status). "Applicable" counts the cases where the property's premise held and its values were computed; a refusal or an unknown makes a case inapplicable. A failure is reported with the smallest counterexample fast-check found.`, coverage, yearPath("reports", "properties.md"), `reports/${YEAR}/properties.md`);
 }

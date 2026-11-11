@@ -14,7 +14,9 @@
 # writes the evidence report and review packets and runs human_review, which copies
 # reports/<year>/engine_differential.json that engine_differential (wave 2) rewrites.
 # Nothing checks these rules; a new step must be placed by them. A failing step fails
-# the run after its wave.
+# the run after its wave. So does a step that exits 0 without a line tools/step_output.py
+# requires of it: the line of each self-test the step runs inside itself, which would
+# otherwise go unnoticed if its call were removed.
 #
 # Wall times, in whole seconds, go to .git/check-all-times (not tracked; rewritten by each run): each step's
 # as "<seconds> <step>", each self-test's as "<seconds> self_tests/<name>", each stage's (compile, build,
@@ -95,15 +97,23 @@ jstep() {
 }
 
 # wave LABEL: wait for the steps started since the last wave (the stage LABEL), record the stage's wall
-# time and its steps, print their logs in order, and stop the run if any failed.
+# time and its steps, fail each step that passed without a line required of it (tools/step_output.py writes
+# what is missing to the step's log), print the logs in order, and stop the run if any step failed.
 wave() {
-  local i failed=() label="$1" joined
+  local i failed=() passed=() label="$1" joined lacking
   [ "${#pids[@]}" -gt 0 ] || return 0
   for i in "${!pids[@]}"; do
-    wait "${pids[$i]}" || failed+=("${names[$i]}")
+    if wait "${pids[$i]}"; then passed+=("${names[$i]}"); else failed+=("${names[$i]}"); fi
   done
   joined="${names[*]}"
   echo "$(( $(date +%s) - stage_t0 )) stage:$label ${joined// /,}" >> "$times"
+  if lacking="$(python3 tools/step_output.py --logs "$logs" ${passed[@]+"${passed[@]}"})"; then
+    # shellcheck disable=SC2206
+    failed+=($lacking)
+  else
+    echo "check-all: tools/step_output.py did not run; the steps' required lines are unchecked" >&2
+    failed+=(step_output)
+  fi
   for i in "${!names[@]}"; do
     echo "== ${names[$i]}"
     cat "$logs/${names[$i]}.log"
