@@ -3964,7 +3964,7 @@ form:
       cite:
         doc: f8863
         locator: p. 2, Part III, line 23, "Has the American opportunity credit been claimed for this student for any 4 prior tax
-          years?"
+          years?"; i8863 p. 8, Line 23
     - id: person.edu_show24
       printed: (helper)
       label: Line 24 is reached (line 23 did not stop)
@@ -3999,7 +3999,7 @@ form:
         doc: f8863
         locator: p. 2, Part III, line 24, "Was the student enrolled at least half-time for at least one academic period that began
           or is treated as having begun in 2025 at an eligible educational institution in a program leading toward a postsecondary
-          degree, certificate, or other recognized postsecondary educational credential?"
+          degree, certificate, or other recognized postsecondary educational credential?"; i8863 p. 8, Line 24
     - id: person.edu_show25
       printed: (helper)
       label: Line 25 is reached (line 24 did not stop)
@@ -4029,7 +4029,7 @@ form:
           (4 years of academic credit, not counting credit awarded solely for proficiency examinations)?
       cite:
         doc: f8863
-        locator: p. 2, Part III, line 25, "Did the student complete the first 4 years of postsecondary education before 2025?"
+        locator: p. 2, Part III, line 25, "Did the student complete the first 4 years of postsecondary education before 2025?"; i8863 p. 8, Line 25
     - id: person.edu_show26
       printed: (helper)
       label: Line 26 is reached (line 25 did not stop)
@@ -4060,7 +4060,7 @@ form:
       cite:
         doc: f8863
         locator: p. 2, Part III, line 26, "Was the student convicted, before the end of 2025, of a felony for possession or distribution
-          of a controlled substance?"
+          of a controlled substance?"; i8863 p. 8, Line 26
     - id: person.edu_ein
       printed: (gate)
       label: The institution's employer identification number (EIN) is available
@@ -4287,7 +4287,7 @@ form:
           then: person.zero
       cite:
         doc: f8863
-        locator: p. 2, Part III, line 27, "Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000"
+        locator: p. 2, Part III, line 27, "Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000"; i8863 p. 9, Line 27
       refuses:
       - when: person.edu_over_refused
         form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
@@ -4453,8 +4453,8 @@ form:
           amounts from all Parts III, line 31, on Part II, line 10"; i8863 p. 9, Line 31
       refuses:
       - when: person.edu_llc_tin_refused
-        form: Lifetime learning credit for a student whose ITIN or ATIN was only applied for
-        remedy: The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.
+        form: Lifetime learning credit for a student whose ITIN was only applied for
+        remedy: The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.
         cite:
           doc: i8863
           locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)."; p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return."

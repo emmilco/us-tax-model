@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "104",
   "agree / disagree / missing": "55 / 49 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -677,10 +677,10 @@
   },
   {
    "key": "31",
-   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
+   "record": "84973143d088ae0123f0437e5d75ffea614b966eebd3b2c563d7f0f5ce6fc9ec",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f8863 p. 2, line 31; i8863 p. 3. As the prior rulings on this line: the reply has the education lines read person.edu_a2025 and person.edu_over for every person, with no f8863.paid gate, so it is unknown on returns with no education credit where the project hides the line; and it requires an issued TIN for the American opportunity credit, against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\". executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 3,635 of 4,595 agree; 956 candidate-unknown (251 on completed returns), 1 candidate-refuses, 1 project-refuses and 2 project-unknown on incomplete or refused returns; no value difference. No change to the data.",
-   "subject_key": "4b78e8b70960e066b43f7bd73145add32baa339c55a4a74e91ce3f5d1806421d"
+   "ruling": "Ruling: model error; f8863 p. 2, line 31; i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\" The line was reviewed again because its first refusal's text now names the ITIN only (a person on the return cannot have an ATIN); the expression is unchanged. As the prior rulings on this line: the reply has the education lines read person.edu and person.edu_over for every person, with no f8863.paid gate, so it is unknown on returns with no education credit where the project hides the line; and its student gate requires person.tin and does not accept person.itin_applied, against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\". Its amount (expenses required to be paid to the institution less lines 2a to 2c, floored at zero) is the project's. executable-triage-v2 (pass b74551c40ad9; 1,768 fixtures, 500 generated returns seed 20261026, 1,725 partial records; 4,643 comparisons): 3,551 of 4,643 agree; 1,089 candidate-unknown (314 on completed returns), 1 candidate-refuses (stage19.refuse.period_over_person, refused on the reply's own edu_over declaration where the project hides the line), 1 project-refuses (f1.t113.person_llc_itin_applied, refused by the project at person.edu_llc_tin_refused where the reply gives $0.00 by excluding the student) and 1 project-unknown (mutation.t4.dependent_edu_paid_unanswered_no_1098t, an incomplete return); no value difference on a completed return. No change to the data.",
+   "subject_key": "623f2bc25780a47b34360da59c06a6a125088ad825f8fd096cf38a0fc56e59b9"
   }
  ],
  "subjects": {
@@ -787,7 +787,7 @@
   "28": "ec751c6c023ab6381f423d036d568f2300974cdce69a159f0d5cbd1dd96e6fff",
   "29": "cefcef47fbeb630d340a173a8641d5ea164cdb059600a4e57eef2a0767a95751",
   "30": "d54128c44638894532398a897bb36908025a98429c1f57b35f9765a9ed66007c",
-  "31": "ed2ab7fe08586f0b2bcea751bdb7ea24c45679d64740671eebea060f8ad10fc7"
+  "31": "3848ef9cd47bee42a46d2da9092ed1b32ac98217862c1f0ac5103d4b8a172b0f"
  },
  "__rest__": "d28e22d3400268c696f00ac5cb2cb4acf80222dd6ee55c48f68bb684d57f0110",
  "foreign": {

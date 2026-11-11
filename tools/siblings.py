@@ -4,7 +4,8 @@
 A fix-sibling is another line or question that shares the changed rule but was not changed:
 a reader of the same input or gate (through helper lines), a predicate testing the same enum
 value, a line or question whose citation anchors the same (document, page, heading), or, for
-a Form 8863 Part III line (person.edu* or dependent.edu*), its twin in the other student block. The
+a line the form data states twice (Form 8863 Part III: person.edu* and dependent.edu*), its twin, as
+tools/check_twins.py pairs them. The
 2026-10-29 root-cause analysis (P3) found nine bugs where the reported instance was fixed and
 its siblings were not.
 
@@ -30,11 +31,13 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
 import citations  # noqa: E402
+import check_twins  # noqa: E402
 
 CANON = ROOT / "canonical" / Y
 BUGS = Path(os.environ.get("SIBLINGS_BUGS", ROOT / "BUG_INVENTORY.md"))
 ENTRY_RE = re.compile(r"^## (BUG-(\d{4})) — (.*)$", re.M)
 REQUIRED_FROM = 290
+TWINS = check_twins.read_config()
 
 
 def load_docs():
@@ -106,17 +109,11 @@ def leaves(docs, ids, target, seen=None):
     return out or {target}
 
 
-# Form 8863 Part III is written twice, for a filer or spouse (person.edu*) and for a dependent
-# (dependent.edu*), line for line; a change to one block is checked on its twin in the other.
-EDU_TWIN = re.compile(r"^(person|dependent)\.(edu(?:_\w+)?)$")
-
-
 def edu_twin(ids, target):
-    """The same Form 8863 Part III line in the other student block, if it has one."""
-    m = EDU_TWIN.match(target)
-    if not m:
-        return None
-    twin = f"{'dependent' if m.group(1) == 'person' else 'person'}.{m.group(2)}"
+    """The line stated a second time for the other kind of student, if `target` has one: Form 8863 Part III is
+    written for a person on the return (person.edu*) and for a dependent (dependent.edu*). The pairing is the one
+    tools/check_twins.py compares (reviews/<year>/twins.json), which keeps the two statements in step."""
+    twin = check_twins.twin_of(target, TWINS)
     return twin if twin in ids else None
 
 

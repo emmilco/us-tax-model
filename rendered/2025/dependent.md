@@ -1011,13 +1011,13 @@
 ## (helper) — `dependent.edu_student_edu`
 
 - **Authored helper label:** Your dependent: a student with qualified expenses, a TIN by the due date and a Form 1098-T (or an exception)
-- **Encoded (Bool):** Choose — [helper "Qualified education expenses paid in 2025 for this dependent" = true → helper "A student with qualified expenses: a TIN by the due date and a Form 1098-T (or an exception)"] [helper "Qualified education expenses paid in 2025 for this dependent" = false → helper "Year parameter edu.no (false)"]
+- **Encoded (Bool):** Choose — [helper "Qualified education expenses paid in 2025 for this dependent" = true → helper "A student with qualified expenses: an SSN, ITIN or ATIN (or an ITIN or ATIN applied for by the due date), and a Form 1098-T (or an exception)"] [helper "Qualified education expenses paid in 2025 for this dependent" = false → helper "Year parameter edu.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["dependent.edu",{"const":true}],"op":"test"},"then":"dependent.edu_student_tin"},{"guard":{"eq":["dependent.edu",{"const":false}],"op":"test"},"then":"dependent.edu_no"}],"op":"choose"}`
 - Cite: [i8863] p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution." (2025; sha256 195cfd5e)
 
 ## (helper) — `dependent.edu_student_tin`
 
-- **Authored helper label:** A student with qualified expenses: a TIN by the due date and a Form 1098-T (or an exception)
+- **Authored helper label:** A student with qualified expenses: an SSN, ITIN or ATIN (or an ITIN or ATIN applied for by the due date), and a Form 1098-T (or an exception)
 - **Encoded (Bool):** Choose — [helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true → helper "The student received a 2025 Form 1098-T from the institution, or an exception applies"] [helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = false → helper "Year parameter edu.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["dependent.tin",{"const":true}],"op":"test"},"then":"dependent.edu_1098t"},{"guard":{"eq":["dependent.tin",{"const":false}],"op":"test"},"then":"dependent.edu_no"}],"op":"choose"}`
 - Cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)." (2025; sha256 195cfd5e)

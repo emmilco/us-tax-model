@@ -1,0 +1,196 @@
+{
+ "description": "Lines the form data states twice, and how the two statements may differ (tools/check_twins.py). Form 8863 Part III is written for a person on the return (person.edu*) and for a dependent (dependent.edu*); `readers` are the Form 8863 lines that sum each block. `differences` lists every field in which a pair differs on purpose, with both values; `one_sided` lists the block ids that have no twin. Everything not listed must be the same on both sides.",
+ "sides": [
+  "person",
+  "dependent"
+ ],
+ "local": "edu(_\\w+)?",
+ "readers": [
+  {
+   "pair": "f8863.aoc",
+   "person": "f8863.aoc_person",
+   "dependent": "f8863.aoc_dep"
+  },
+  {
+   "pair": "f8863.llc",
+   "person": "f8863.llc_person",
+   "dependent": "f8863.llc_dep"
+  }
+ ],
+ "one_sided": {
+  "person.edu_student_itin": {
+   "reason": "A person's number is asked as two inputs, issued (person.tin) and ITIN applied for (person.itin_applied), so the person's chain has this step for the second; dependent.tin is one input covering both.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  "person.edu_born_2007": {
+   "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
+   "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
+  },
+  "person.edu_born_2002": {
+   "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
+   "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
+  },
+  "person.edu_fulltime": {
+   "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
+   "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
+  },
+  "person.edu_half_support": {
+   "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
+   "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
+  },
+  "person.edu_parent": {
+   "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
+   "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
+  },
+  "person.edu_kid_age": {
+   "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
+   "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
+  },
+  "person.edu_kid_18": {
+   "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
+   "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
+  },
+  "person.edu_kid_18_support": {
+   "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
+   "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
+  },
+  "person.edu_kid_student_age": {
+   "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
+   "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
+  },
+  "person.edu_kid_support": {
+   "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
+   "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
+  },
+  "person.edu_kid_fulltime": {
+   "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
+   "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
+  },
+  "person.edu_kid": {
+   "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
+   "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
+  },
+  "dependent.edu_student_claimed": {
+   "reason": "Only the person who claims a student as a dependent can claim the credit for that student, so the dependent's chain tests dependent.claimed; a person on the return is not a claimed dependent of the return.",
+   "source": "i8863 p. 2, Who can claim a dependent’s expenses, \"If a student is claimed as a dependent on another person’s tax return, all qualified education expenses of the student are treated as having been paid by that person. Therefore, only that person can claim an education credit for the student.\""
+  },
+  "dependent.edu_tin_issued": {
+   "reason": "dependent.tin counts a number applied for as well as one issued, so whether it was issued by the due date, which the lifetime learning credit needs, is asked separately; for a person on the return that is person.tin.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\"; p. 3, Table 1, \"Students must have been issued a TIN by the due date of their 2025 return (including extensions)\""
+  }
+ },
+ "differences": [
+  {
+   "pair": "edu",
+   "field": "label",
+   "person": "Qualified education expenses paid in 2025 for this person",
+   "dependent": "Qualified education expenses paid in 2025 for this dependent",
+   "reason": "The wording names whom the line is asked about: a person on the return on one side, a dependent on the other.",
+   "source": "f8863 p. 2, Part III, \"Complete Part III for each student for whom you’re claiming either the American opportunity credit or lifetime learning credit.\""
+  },
+  {
+   "pair": "edu",
+   "field": "expr.source",
+   "person": "Did anyone pay qualified education expenses in 2025 for this person at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?",
+   "dependent": "Did anyone pay qualified education expenses in 2025 for this dependent at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?",
+   "reason": "The wording names whom the line is asked about: a person on the return on one side, a dependent on the other.",
+   "source": "f8863 p. 2, Part III, \"Complete Part III for each student for whom you’re claiming either the American opportunity credit or lifetime learning credit.\""
+  },
+  {
+   "pair": "edu_student",
+   "field": "label",
+   "person": "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)",
+   "dependent": "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent",
+   "reason": "A dependent is a student of this return only if claimed as a dependent; a person on the return has no such condition, so the dependent's chain has one more step and its label names it.",
+   "source": "i8863 p. 2, Who can claim a dependent’s expenses, \"If a student is claimed as a dependent on another person’s tax return, all qualified education expenses of the student are treated as having been paid by that person. Therefore, only that person can claim an education credit for the student.\""
+  },
+  {
+   "pair": "edu_student",
+   "field": "expr.alternatives[0].then",
+   "person": "person.edu_student_edu",
+   "dependent": "dependent.edu_student_claimed",
+   "reason": "The dependent's chain goes through the extra step dependent.edu_student_claimed (dependent.claimed) before the step both sides share.",
+   "source": "i8863 p. 2, Who can claim a dependent’s expenses, \"If a student is claimed as a dependent on another person’s tax return, all qualified education expenses of the student are treated as having been paid by that person. Therefore, only that person can claim an education credit for the student.\""
+  },
+  {
+   "pair": "edu_student",
+   "field": "cite.locator",
+   "person": "p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\"",
+   "dependent": "p. 2, Who can claim a dependent’s expenses, \"If a student is claimed as a dependent on another person’s tax return, all qualified education expenses of the student are treated as having been paid by that person. Therefore, only that person can claim an education credit for the student.\"",
+   "reason": "Each side cites the condition its chain adds first: the dependent side the claimed-dependent rule that its next step tests, the person side the TIN rule tested further down both chains.",
+   "source": "i8863 p. 2, Who can claim a dependent’s expenses, \"If a student is claimed as a dependent on another person’s tax return, all qualified education expenses of the student are treated as having been paid by that person. Therefore, only that person can claim an education credit for the student.\"; i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_student_edu",
+   "field": "label",
+   "person": "With education expenses paid: this person was a student with qualified expenses, has a TIN by the due date and a Form 1098-T (or an exception)",
+   "dependent": "Your dependent: a student with qualified expenses, a TIN by the due date and a Form 1098-T (or an exception)",
+   "reason": "The wording names whom the line is asked about: a person on the return on one side, a dependent on the other. The dependent's label leaves out the claimed-dependent condition, which the step before it has already tested.",
+   "source": "i8863 p. 2, Who can claim a dependent’s expenses, \"If a student is claimed as a dependent on another person’s tax return, all qualified education expenses of the student are treated as having been paid by that person. Therefore, only that person can claim an education credit for the student.\""
+  },
+  {
+   "pair": "edu_student_tin",
+   "field": "label",
+   "person": "A student with qualified expenses: an SSN or ITIN (or an ITIN applied for by the due date), and a Form 1098-T (or an exception)",
+   "dependent": "A student with qualified expenses: an SSN, ITIN or ATIN (or an ITIN or ATIN applied for by the due date), and a Form 1098-T (or an exception)",
+   "reason": "Each label states what the side's TIN line tests: person.tin is an SSN or ITIN issued by the due date, with an ITIN applied for asked separately (person.itin_applied); dependent.tin is one question that already counts an SSN, ITIN or ATIN issued or an ITIN or ATIN applied for. Only a dependent can have an ATIN.",
+   "source": "i1040gi p. 20, Adoption taxpayer identification numbers (ATINs), \"If you have a dependent who was placed with you for legal adoption and you don’t know the dependent’s SSN, you must get an ATIN for the dependent from the IRS.\"; p970 p. 11, \"You weren’t issued an SSN (or ITIN) by the due date of your 2025 return (including extensions).\" and \"a student who wasn’t issued an SSN, ATIN, or ITIN by the due date of your return (including extensions)\""
+  },
+  {
+   "pair": "edu_student_tin",
+   "field": "expr.alternatives[1].then",
+   "person": "person.edu_student_itin",
+   "dependent": "dependent.edu_no",
+   "reason": "A person without an issued SSN or ITIN is next asked whether an ITIN was applied for (the person-only step person.edu_student_itin); dependent.tin already includes a number applied for, so the dependent's chain ends there.",
+   "source": "p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return.\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "label",
+   "person": "A lifetime learning credit student whose ITIN was only applied for by the due date of the return",
+   "dependent": "A lifetime learning credit student whose ITIN or ATIN was only applied for by the due date of the return",
+   "reason": "A number only applied for is an ITIN for a person on the return and an ITIN or ATIN for a dependent: an ATIN is issued only for a dependent placed for adoption.",
+   "source": "i1040gi p. 20, Adoption taxpayer identification numbers (ATINs), \"If you have a dependent who was placed with you for legal adoption and you don’t know the dependent’s SSN, you must get an ATIN for the dependent from the IRS.\"; p970 p. 11, \"You weren’t issued an SSN (or ITIN) by the due date of your 2025 return (including extensions).\" and \"a student who wasn’t issued an SSN, ATIN, or ITIN by the due date of your return (including extensions)\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.all[1].eq[0]",
+   "person": "person.tin",
+   "dependent": "dependent.edu_tin_issued",
+   "reason": "Whether the number was issued by the due date is person.tin itself for a person on the return; dependent.tin also counts a number applied for, so the dependent side asks issued separately (the dependent-only input dependent.edu_tin_issued).",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_line31",
+   "field": "refuses[0].form",
+   "person": "Lifetime learning credit for a student whose ITIN was only applied for",
+   "dependent": "Lifetime learning credit for a student whose ITIN or ATIN was only applied for",
+   "reason": "The refusal names the numbers that can have been only applied for: an ITIN for a person on the return, an ITIN or ATIN for a dependent.",
+   "source": "i1040gi p. 20, Adoption taxpayer identification numbers (ATINs), \"If you have a dependent who was placed with you for legal adoption and you don’t know the dependent’s SSN, you must get an ATIN for the dependent from the IRS.\"; p970 p. 11, \"You weren’t issued an SSN (or ITIN) by the due date of your 2025 return (including extensions).\" and \"a student who wasn’t issued an SSN, ATIN, or ITIN by the due date of your return (including extensions)\""
+  },
+  {
+   "pair": "edu_line31",
+   "field": "refuses[0].remedy",
+   "person": "The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.",
+   "dependent": "The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.",
+   "reason": "The remedy names the numbers that can have been only applied for: an ITIN for a person on the return, an ITIN or ATIN for a dependent.",
+   "source": "i1040gi p. 20, Adoption taxpayer identification numbers (ATINs), \"If you have a dependent who was placed with you for legal adoption and you don’t know the dependent’s SSN, you must get an ATIN for the dependent from the IRS.\"; p970 p. 11, \"You weren’t issued an SSN (or ITIN) by the due date of your 2025 return (including extensions).\" and \"a student who wasn’t issued an SSN, ATIN, or ITIN by the due date of your return (including extensions)\""
+  },
+  {
+   "pair": "f8863.aoc",
+   "field": "label",
+   "person": "Part III line 30 of you and your spouse",
+   "dependent": "Part III line 30 of the dependents you claim",
+   "reason": "The label names the collection the line sums line 30 over.",
+   "source": "f8863 p. 1, Part I, line 1, \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 30\""
+  },
+  {
+   "pair": "f8863.llc",
+   "field": "label",
+   "person": "Part III line 31 of you and your spouse",
+   "dependent": "Part III line 31 of the dependents you claim",
+   "reason": "The label names the collection the line sums line 31 over.",
+   "source": "f8863 p. 1, Part II, line 10, \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 31.\""
+  }
+ ]
+}

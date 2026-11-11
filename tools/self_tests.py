@@ -55,6 +55,7 @@ TESTS = [
     ("signs_self_test", "code", True, ["python3", "tools/check_signs.py", "--self-test"]),
     ("consumers_self_test", "code", True, ["python3", "tools/check_consumers.py", "--self-test"]),
     ("limits_self_test", "code", True, ["python3", "tools/check_limits.py", "--self-test"]),
+    ("twins_self_test", "code", True, ["python3", "tools/check_twins.py", "--self-test"]),
     ("completeness_self_test", "code", True, ["python3", "tools/transcription/check_completeness.py", "--self-test"]),
     ("ny_predict_self_test", "code", False, ["python3", "tools/ny_predict.py", "--self-test"]),
     ("review_yield_tests", "code", False, ["python3", "tools/transcription/test_review_yield.py"]),

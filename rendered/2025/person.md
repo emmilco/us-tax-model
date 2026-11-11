@@ -1790,7 +1790,7 @@
 - **Encoded (Bool):** Input — Has the American opportunity credit been claimed (by you or anyone else) for this student for any 4 tax years before 2025?
 - **Shown on the values sheet only when:** An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception) (`person.edu_student`)
 - Expr: `{"op":"input","source":"Has the American opportunity credit been claimed (by you or anyone else) for this student for any 4 tax years before 2025?"}`
-- Cite: [f8863] p. 2, Part III, line 23, "Has the American opportunity credit been claimed for this student for any 4 prior tax years?" (2025; sha256 a251a1cf)
+- Cite: [f8863] p. 2, Part III, line 23, "Has the American opportunity credit been claimed for this student for any 4 prior tax years?"; i8863 p. 8, Line 23 (2025; sha256 a251a1cf)
 
 ## (helper) — `person.edu_show24`
 
@@ -1805,7 +1805,7 @@
 - **Encoded (Bool):** Input — Was the student enrolled at least half-time (Form 1098-T box 8) for at least one academic period that began in 2025, or in the first 3 months of 2026 if paid for in 2025, at an eligible educational institution, in a program leading toward a postsecondary degree, certificate or other recognized postsecondary educational credential?
 - **Shown on the values sheet only when:** Line 24 is reached (line 23 did not stop) (`person.edu_show24`)
 - Expr: `{"op":"input","source":"Was the student enrolled at least half-time (Form 1098-T box 8) for at least one academic period that began in 2025, or in the first 3 months of 2026 if paid for in 2025, at an eligible educational institution, in a program leading toward a postsecondary degree, certificate or other recognized postsecondary educational credential?"}`
-- Cite: [f8863] p. 2, Part III, line 24, "Was the student enrolled at least half-time for at least one academic period that began or is treated as having begun in 2025 at an eligible educational institution in a program leading toward a postsecondary degree, certificate, or other recognized postsecondary educational credential?" (2025; sha256 a251a1cf)
+- Cite: [f8863] p. 2, Part III, line 24, "Was the student enrolled at least half-time for at least one academic period that began or is treated as having begun in 2025 at an eligible educational institution in a program leading toward a postsecondary degree, certificate, or other recognized postsecondary educational credential?"; i8863 p. 8, Line 24 (2025; sha256 a251a1cf)
 
 ## (helper) — `person.edu_show25`
 
@@ -1820,7 +1820,7 @@
 - **Encoded (Bool):** Input — Did the student complete the first 4 years of postsecondary education before 2025, as determined by the institution (4 years of academic credit, not counting credit awarded solely for proficiency examinations)?
 - **Shown on the values sheet only when:** Line 25 is reached (line 24 did not stop) (`person.edu_show25`)
 - Expr: `{"op":"input","source":"Did the student complete the first 4 years of postsecondary education before 2025, as determined by the institution (4 years of academic credit, not counting credit awarded solely for proficiency examinations)?"}`
-- Cite: [f8863] p. 2, Part III, line 25, "Did the student complete the first 4 years of postsecondary education before 2025?" (2025; sha256 a251a1cf)
+- Cite: [f8863] p. 2, Part III, line 25, "Did the student complete the first 4 years of postsecondary education before 2025?"; i8863 p. 8, Line 25 (2025; sha256 a251a1cf)
 
 ## (helper) — `person.edu_show26`
 
@@ -1835,7 +1835,7 @@
 - **Encoded (Bool):** Input — Was the student convicted, before the end of 2025, of a federal or state felony for possession or distribution of a controlled substance?
 - **Shown on the values sheet only when:** Line 26 is reached (line 25 did not stop) (`person.edu_show26`)
 - Expr: `{"op":"input","source":"Was the student convicted, before the end of 2025, of a federal or state felony for possession or distribution of a controlled substance?"}`
-- Cite: [f8863] p. 2, Part III, line 26, "Was the student convicted, before the end of 2025, of a felony for possession or distribution of a controlled substance?" (2025; sha256 a251a1cf)
+- Cite: [f8863] p. 2, Part III, line 26, "Was the student convicted, before the end of 2025, of a felony for possession or distribution of a controlled substance?"; i8863 p. 8, Line 26 (2025; sha256 a251a1cf)
 
 ## (gate) — `person.edu_ein`
 
@@ -1915,7 +1915,7 @@
 - **Refusal:** when person.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
 - **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available (`person.edu_aoc`)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.edu_aoc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"person.edu_adj","inst":"person.edu_inst","mat":"person.edu_mat"},"def":"aqee","line":"line27"}},{"guard":{"eq":["person.edu_aoc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
-- Cite: [f8863] p. 2, Part III, line 27, "Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000" (2025; sha256 a251a1cf)
+- Cite: [f8863] p. 2, Part III, line 27, "Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000"; i8863 p. 9, Line 27 (2025; sha256 a251a1cf)
 
 ## 28 — `person.edu_line28`
 
@@ -1948,7 +1948,7 @@
 
 - **Authored helper label:** Adjusted qualified education expenses for the lifetime learning credit
 - **Encoded (NonNegDollars):** Choose — [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = true → "ws4_llc" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = line zero] [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = false → line zero]
-- **Refusal:** when person.edu_llc_tin_refused is true, cannot complete Lifetime learning credit for a student whose ITIN or ATIN was only applied for. The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student. Cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)."; p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (2025; sha256 195cfd5e)
+- **Refusal:** when person.edu_llc_tin_refused is true, cannot complete Lifetime learning credit for a student whose ITIN was only applied for. The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student. Cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)."; p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (2025; sha256 195cfd5e)
 - **Refusal:** when person.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
 - **Shown on the values sheet only when:** A lifetime learning credit student: an eligible student who is not an American opportunity credit student (`person.edu_llc`)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.edu_llc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"person.edu_adj","inst":"person.edu_inst","mat":"person.zero"},"def":"aqee","line":"ws4_llc"}},{"guard":{"eq":["person.edu_llc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`

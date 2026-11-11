@@ -2,6 +2,9 @@
  "rulings": {
   "operands:dependent.edu_line28": {
    "reason": "Bound per student to the aqee definition's line 28 (Subtract $2,000 from line 27), whose operand is that definition's line 27; the resolver sees the binding, not the definition's line."
+  },
+  "operands:person.edu_line28": {
+   "reason": "Bound per student to the aqee definition's line 28 (Subtract $2,000 from line 27), whose operand is that definition's line 27; the resolver sees the binding, not the definition's line."
   }
  },
  "baseline": {
@@ -13,7 +16,6 @@
   "operands:ira.line4": "a1f3e3eaa104c4c9",
   "operands:line3": "c01c5e2b469719ff",
   "operands:line8d": "7a864155ac3fe5af",
-  "operands:person.edu_line28": "9bb68cdadf8e4c17",
   "operands:s1.line1": "37a7e8c504529720",
   "operands:s1.line10": "d8e615b6e4828517",
   "operands:s1.line20": "a0209c7364cc8f73",

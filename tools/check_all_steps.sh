@@ -176,6 +176,8 @@ jstep false_no_currency "--jurisdiction ny" python3 tools/transcription/check_fa
 jstep question_currency "--jurisdiction ny" python3 tools/transcription/check_questions.py
 jstep consumers "--jurisdiction ny" python3 tools/check_consumers.py
 jstep limits "--jurisdiction ny" python3 tools/check_limits.py
+# Lines stated twice (Form 8863 Part III, for a person and for a dependent) agree except where reviews/<year>/twins.json says.
+step twins python3 tools/check_twins.py "$@"
 jstep completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py
 # New York only: its tax table.
 step ny_tax_table python3 tools/extract_ny_tax_table.py --check "$@"
