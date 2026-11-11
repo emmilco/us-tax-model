@@ -27,6 +27,18 @@
    "subject_key": "4f2509f92da9cfd574d18f2e1e365c7ad785e165f96af2986c6e4f4991a2ca72"
   },
   {
+   "case": "classm.f8962.3",
+   "printed": "4",
+   "project": "$20,440.00",
+   "model": "$15,060.00",
+   "ruling": "Ruling: model error; i8962 p. 8, Table 1-1, Federal Poverty Line for the 48 Contiguous States and the District of Columbia, \"IF your family size* from Form 8962, line 1, was . . . THEN enter the amount below on Form 8962, line 4\": the row for a family of 1 is $15,060 and the row for a family of 2 is $20,440. Line 1 is 2 on this case (both sides agree) and the table is the contiguous-states one (f8962.fpl_table), so line 4 is $20,440, the project's value. The model's $15,060 is the row for a family of 1, and its work says only \"placeholder\". Line 5 and every later line of the case agree. The fixture expectation is the model's value; dropped.",
+   "drop": true,
+   "context": "b755a04ea10bf3ff8cef14abca282127ade82036597064c1c66b277f901d3657",
+   "date": "2026-11-11",
+   "run": "602d3375802c7266af0e626637721f8a1da2905590baf8afafee6f582488f715",
+   "subject_key": "b13ce5065d7054c7564dd6d0882554b4f64efc5719e1f108780d0846012d470b"
+  },
+  {
    "case": "classm.f8962.5",
    "printed": "11(c)",
    "project": "$2,166.00",

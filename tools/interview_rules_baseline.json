@@ -2,9 +2,5 @@
  "about": "Lists interview-rules holds by input template (engine/src/interview-rules.ts), each with a reason, until the gate wave fixes its cause. early_completion: inputs left reachable and unanswered when the interview reports a return complete. order_dependent_reach: inputs reachable at an incomplete state of a complete return that its bank-order walk never asks (an order-dependent leak). walked_unused: inputs the bank-order walk asks that the complete return's evaluation does not read (a pruning opportunity; reports/2025/interview_pruning.md). A template not listed fails the check, and a listed template no longer seen fails until it is removed, so each list may only shrink. Most entries are conjunctions to rewrite as nested choose.",
  "early_completion": {},
  "order_dependent_reach": {},
- "walked_unused": {
-  "f1095a.c_total": "BUG-0487: read through f1095a.line33c by the Form 8962 lines that f8962.applicable and f8962.alien_branch (conjunctions on line 5) decide later in bank order; first seen on full: generated returns: generated.4",
-  "f8962.alien_below": "BUG-0487: an operand of f8962.alien_branch, all(f8962.any, line 5 below 100, alien_below), which line 5 decides later in bank order; first seen on full: generated returns: generated.4",
-  "f8962.estimate_100": "BUG-0487: an operand of f8962.applicable, any(line 5 at least 100, all(aptc, estimate_100)), which line 5 decides later in bank order; first seen on full: generated returns: generated.4"
- }
+ "walked_unused": {}
 }

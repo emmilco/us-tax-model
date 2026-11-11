@@ -22,13 +22,13 @@ questions in the group that the order does not ask.
 | Returns | Complete | Refused | Not walkable | Static asked (mean) | Static max | Closed answers (mean, share) | Floor (mean) | Expected order (mean) | Saved at floor | Saved by expected |
 |---|---|---|---|---|---|---|---|---|---|---|
 | Stage 5 whole returns | 9 | 2 | 0 | 91.1 | 116 | 74.1 (81%) | 91.1 | 91.1 | 0% | 0% |
-| generated returns | 3 | 9 | 0 | 159.3 | 261 | 106.7 (67%) | 158.3 | 159.3 | 1% | 0% |
+| generated returns | 3 | 9 | 0 | 158.3 | 258 | 106.3 (67%) | 158.3 | 158.3 | 0% | 0% |
 | minimal returns | 7 | 0 | 0 | 79.1 | 83 | 75.6 (95%) | 79.1 | 79.1 | 0% | 0% |
 | social-security profile fixtures | 16 | 5 | 0 | 11.3 | 13 | 6.3 (55%) | 11.3 | 11.3 | 0% | 0% |
-| sales profile fixtures | 58 | 14 | 0 | 62.6 | 110 | 54.2 (86%) | 62.6 | 62.6 | 0% | 0% |
+| sales profile fixtures | 58 | 14 | 0 | 62.7 | 110 | 54.2 (86%) | 62.7 | 62.7 | 0% | 0% |
 | stage4 profile fixtures | 69 | 62 | 0 | 73.5 | 112 | 64.6 (88%) | 73.4 | 73.5 | 0% | 0% |
-| **full profile, Stage 5 and generated** | 12 | 11 | 0 | 108.2 | 261 | 82.3 (76%) | 107.9 | 108.2 | 0% | 0% |
-| **all** | 162 | 92 | 0 | 66.3 | 261 | 56.9 (86%) | 66.2 | 66.3 | 0% | 0% |
+| **full profile, Stage 5 and generated** | 12 | 11 | 0 | 107.9 | 258 | 82.2 (76%) | 107.9 | 107.9 | 0% | 0% |
+| **all** | 162 | 92 | 0 | 66.3 | 258 | 56.9 (86%) | 66.2 | 66.3 | 0% | 0% |
 
 ## Closed answers no order avoids (missing-gate candidates)
 
@@ -126,9 +126,6 @@ better order (or a nested `choose`) would not ask. On the full profile these are
 |---|---|
 | `dependent.parent_home_paid` | 6 |
 | `person.blind` | 4 |
-| `f1095a.c_total` | 1 |
-| `f8962.alien_below` | 1 |
-| `f8962.estimate_100` | 1 |
 
 ## Per return
 
@@ -153,16 +150,16 @@ better order (or a nested `choose`) would not ask. On the full profile these are
 | Return | Status | Static | Closed | Floor | Expected |
 |---|---|---|---|---|---|
 | generated.0 | complete | 112 | 90 | 112 | 112 |
-| generated.1 | refused | 104 | 73 | - | - |
+| generated.1 | refused | 101 | 72 | - | - |
 | generated.2 | refused | 130 | 83 | - | - |
 | generated.3 | refused | 139 | 102 | - | - |
-| generated.4 | complete | 261 | 144 | 258 | 261 |
-| generated.5 | refused | 76 | 42 | - | - |
+| generated.4 | complete | 258 | 143 | 258 | 258 |
+| generated.5 | refused | 75 | 42 | - | - |
 | generated.6 | complete | 105 | 86 | 105 | 105 |
 | generated.7 | refused | 77 | 55 | - | - |
 | generated.8 | refused | 149 | 104 | - | - |
 | generated.9 | refused | 101 | 72 | - | - |
-| generated.10 | refused | 256 | 182 | - | - |
+| generated.10 | refused | 216 | 147 | - | - |
 | generated.11 | refused | 123 | 82 | - | - |
 
 ### minimal returns
@@ -278,7 +275,7 @@ better order (or a nested `choose`) would not ask. On the full profile these are
 | sales.select.loss_no_dividend | complete | 61 | 53 | 61 | 61 |
 | sales.netting | complete | 67 | 54 | 67 | 67 |
 | sales.mixed_columns | complete | 110 | 59 | 110 | 110 |
-| sales.select.sdtw.election | complete | 63 | 53 | 63 | 63 |
+| sales.select.sdtw.election | complete | 65 | 54 | 65 | 65 |
 
 ### stage4 profile fixtures
 
@@ -299,7 +296,7 @@ better order (or a nested `choose`) would not ask. On the full profile these are
 | stage4.f4952.line4a_taxable_interest_and_dividends | complete | 80 | 68 | 80 | 80 |
 | stage4.refuse.4952.unsupported | refused | 62 | 54 | - | - |
 | stage4.refuse.4952.alternative_allocation | refused | 63 | 55 | - | - |
-| stage4.refuse.4952.election | refused | 62 | 56 | - | - |
+| stage4.refuse.4952.election | refused | 64 | 57 | - | - |
 | stage4.refuse.4952.bad_dividends | refused | 73 | 64 | - | - |
 | stage4.refuse.4952.unsupported_with_carryover | refused | 62 | 54 | - | - |
 | stage4.interest.short_term | complete | 70 | 60 | 70 | 70 |
@@ -417,6 +414,7 @@ better order (or a nested `choose`) would not ask. On the full profile these are
 | stage4.feeders.shortloss | complete | 81 | 67 | 81 | 81 |
 
 <!-- Hand-written findings below this line are kept when the tool rewrites the report. -->
+
 
 
 

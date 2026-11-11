@@ -1239,24 +1239,20 @@ form:
       type: Bool
       label: Qualifying relative (Step 4)
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.qr_relationship
-              - const: true
-          - op: test
+            - dependent.qr_relationship
+            - const: true
+          then: dependent.qr_from_child
+        - guard:
+            op: test
             eq:
-              - dependent.qualifying_child
-              - const: false
-          - op: test
-            eq:
-              - dependent.qr_income
-              - const: true
-          - op: test
-            eq:
-              - dependent.supported
-              - const: true
+            - dependent.qr_relationship
+            - const: false
+          then: dependent.no
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?"
@@ -1499,28 +1495,20 @@ form:
       type: Bool
       label: Dependent for the credit for other dependents (Steps 3 and 5)
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.claimed
-              - const: true
-          - op: test
+            - dependent.claimed
+            - const: true
+          then: dependent.odc_from_tin
+        - guard:
+            op: test
             eq:
-              - dependent.tin
-              - const: true
-          - op: test
-            eq:
-              - dependent.citizen
-              - const: true
-          - op: test
-            eq:
-              - dependent.ctc_child
-              - const: false
-          - op: test
-            eq:
-              - household.all_tin
-              - const: true
+            - dependent.claimed
+            - const: false
+          then: dependent.no
       cite:
         doc: i1040gi
         locator: p. 18, Step 3, question 3, and p. 19, Step 5
@@ -3195,6 +3183,120 @@ form:
       cite:
         doc: i1040gi
         locator: pp. 17–19, Who Qualifies as Your Dependent
+    - id: dependent.odc_from_tin
+      printed: (helper)
+      label: 'Credit for other dependents tests (Steps 3 and 5) from the SSN, ITIN or ATIN test on: this person''s number, citizenship, not a
+        qualifying child for the child tax credit, and an SSN or ITIN for you, and your spouse if filing jointly'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.tin
+            - const: true
+          then: dependent.odc_from_citizen
+        - guard:
+            op: test
+            eq:
+            - dependent.tin
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 3, and p. 19, Step 5
+    - id: dependent.odc_from_citizen
+      printed: (helper)
+      label: 'Credit for other dependents tests (Steps 3 and 5) from the citizenship test on: citizenship, not a qualifying child for the
+        child tax credit, and an SSN or ITIN for you, and your spouse if filing jointly'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.citizen
+            - const: true
+          then: dependent.odc_from_ctc
+        - guard:
+            op: test
+            eq:
+            - dependent.citizen
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 3, and p. 19, Step 5
+    - id: dependent.odc_from_ctc
+      printed: (helper)
+      label: 'Credit for other dependents tests (Steps 3 and 5) from the child tax credit test on: not a qualifying child for the child
+        tax credit, and an SSN or ITIN for you, and your spouse if filing jointly'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.ctc_child
+            - const: false
+          then: household.all_tin
+        - guard:
+            op: test
+            eq:
+            - dependent.ctc_child
+            - const: true
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 3, and p. 19, Step 5
+    - id: dependent.qr_from_child
+      printed: (helper)
+      label: 'Qualifying relative tests (Step 4) from the qualifying child test on: not a qualifying child, gross income and
+        support'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.qualifying_child
+            - const: false
+          then: dependent.qr_from_income
+        - guard:
+            op: test
+            eq:
+            - dependent.qualifying_child
+            - const: true
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?"
+    - id: dependent.qr_from_income
+      printed: (helper)
+      label: 'Qualifying relative tests (Step 4) from the gross income test on: gross income and support'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.qr_income
+            - const: true
+          then: dependent.supported
+        - guard:
+            op: test
+            eq:
+            - dependent.qr_income
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?"
     # --- end Stage 19 ---
   collection:
     cite:

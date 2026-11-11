@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "1360a1bcf95e5c405a63edc9d74ccbe052a1547147428fa3160de9d74b834a8f",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -544,16 +544,16 @@
   },
   {
    "key": "24",
-   "record": "0591efde45f0c48b1a5a2d15d255b1ac447ab6a356e22f66bd91fa66edee3e1e",
+   "record": "59b11802be1730cb2f9bc142c57be33af009b9552e2f46729343e94d209d49a2",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; screen s3.mfs, as the earlier rulings on this line. i8962 p. 16, Not an applicable taxpayer, \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC. You must repay some or all of the APTC entered on line 11, column (f). To complete the rest of the form, skip lines 12 through 23, enter -0- on line 24\". No married filing separately return is completed: gate s3.mfs (forms/2025/s3.yaml, f1040.status equal to mfs) is a refusal of scope.ready (forms/2025/scope.yaml), Exception 2 included, so the applicable-taxpayer helper never meets a married filing separately filer and the restatement is faithful to the project line. The render review does not show the return-wide refusal. The reviewer does not raise the reworded question f8962.estimate_100 (enrollment by anyone in the tax family), which is the only change to this line's readers.",
-   "subject_key": "c9a5d6682ff9004e391b5dcb024cbd52e166fdc71851d966ff9c98a242e14ac0"
+   "ruling": "Ruling: scope; screen s3.mfs, as the earlier rulings on this line. i8962 p. 16, Not an applicable taxpayer, \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC. You must repay some or all of the APTC entered on line 11, column (f). To complete the rest of the form, skip lines 12 through 23, enter -0- on line 24\". No married filing separately return is completed: gate s3.mfs (forms/2025/s3.yaml, f1040.status equal to mfs) is a refusal of scope.ready (forms/2025/scope.yaml), Exception 2 included, so the applicable-taxpayer helper never meets a married filing separately filer and the restatement is faithful to the project line. The render review does not show the return-wide refusal. Re-checked this round: stage18.married_in_2025_single evaluates to line 24 $3,560, and with f1040.status set to mfs (constructed by the adjudicator from the fixture, not a fixture) to a refusal at scope.ready and Form 1040 line 37 with gate s3.mfs. The line was reviewed again because the applicable-taxpayer helper it chooses on is now a nested choose (line 5 at least 100; else advance payments and the Marketplace estimate; BUG-0604), with the same value on every complete return; the reviewer raises nothing about that change, and reads the helper's two limbs (line 5 and the Marketplace estimate exception) as they are.",
+   "subject_key": "c6871383522aaf82acc81100f7384f1d35fb95a4101f31624da24844f1c48d4c"
   },
   {
    "key": "25",
-   "record": "0591efde45f0c48b1a5a2d15d255b1ac447ab6a356e22f66bd91fa66edee3e1e",
+   "record": "59b11802be1730cb2f9bc142c57be33af009b9552e2f46729343e94d209d49a2",
    "status": "MATCH",
-   "subject_key": "b6c077723934885749e9f566e96f214a83f41ae03a72353d35b0ab6effa3683d"
+   "subject_key": "013dca74bfa2010639f7e7c3a702242624228331a7f1c6d11bc3484ea865b418"
   },
   {
    "key": "26",
@@ -576,9 +576,9 @@
   },
   {
    "key": "29",
-   "record": "1360a1bcf95e5c405a63edc9d74ccbe052a1547147428fa3160de9d74b834a8f",
+   "record": "59b11802be1730cb2f9bc142c57be33af009b9552e2f46729343e94d209d49a2",
    "status": "MATCH",
-   "subject_key": "8d7f10f861db3459736fd428020f3dfdc1ca930b58aae3d56f09b9560220115d"
+   "subject_key": "1b90b91544cb67cd4fed7f74cafed742a90580bba11dccda7bd2cef288104ff2"
   }
  ],
  "subjects": {
@@ -671,12 +671,12 @@
   "23(d)": "d60a79c9287e2b12c97a5ce5b933a1fdfc858d39dc654b7c01b555b55810d169",
   "23(e)": "9b3ddb6cb5e26795ecf791de22e0f95b80ff155a724769cf8028876acc89b179",
   "23(f)": "89e4610491a1f8c60d22e2aedf43e35aa691775c09e0129a28a8c45ad2eaf5fc",
-  "24": "061db55dcb255ab8a5381626b29d2cc2e58f44fe47272c66bf31b20a02374262",
-  "25": "f2e9c556675fa32f0ef3f8ddd5ff1d193a1266832c37a08408f7c0f1c3637f2e",
+  "24": "549495888ce1ee63b828ba63a05386ef10d87f5be965405989eda871ec32b85d",
+  "25": "dfdf040b877bee87d088076fa09c5c286e7658c46d7595da6e50824f96c21404",
   "26": "f908d298d2a728189fadc68a84e90d0d391cfd93298ba1692c91ce42f60de497",
   "27": "516f26dedb1b35a72fa7e2ce05bf3c23cd36393a850ca42f81d4d40bbbb111c0",
   "28": "d296a338cce6f665028306b24638d3422f6c32c1ce57956c338e85adc10d0477",
-  "29": "989e87485ea7596e38d1b3da18ce0f27555b7ff0d5d8a28cce437925d0524058"
+  "29": "bed65ae3a17d76cdf3b8575d6854e0976d32f22e88198941bc6b6b688341dd78"
  },
  "__rest__": "bbf9231ea594b4ca18f930080ba4c130f70e9456ea47dba166de042c37d6f5e3"
 }
