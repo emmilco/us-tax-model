@@ -300,7 +300,9 @@ form:
     type: Count
     expr:
       op: input
-      source: Number of months in 2025 for which payments were made
+      source: Number of months for which this year's payments were made (at most 12) — the months covered by the payments
+        included in box 1 of this Form 1099-R, not the calendar months of 2025 since the payments began; for example, a
+        pension paid monthly in arrears that began in July, with five payments in 2025 for July through November, is 5
     cite:
       doc: i1040gi
       locator: p. 29, Simplified Method Worksheet, line 5
@@ -1367,14 +1369,17 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Is either of these true of this distribution: the exception that code 2 shows covers only part of it; or its
-        code is wrong because you were under age 59½ when you received it (code 7) or you are not the beneficiary of a person
-        who died (code 4)?'
+      source: 'Is either of these true of this distribution: it has code 2 and the exception that code 2 shows does not apply
+        to all of it (it applies to only part of the distribution, or to none of it); or its code is wrong: code 7 although
+        you were under age 59½ when you received it (other than a distribution from a section 457 plan that is not from a
+        rollover from a qualified retirement plan), or code 4 although you are not the beneficiary of a
+        person who died?'
     cite:
       doc: i5329
       locator: p. 1, Who Must File, "You received a distribution subject to the tax on early distributions from a qualified
         retirement plan (other than a Roth IRA) and you meet an exception to the tax on early distributions from the list shown
-        later, but box 7 of your Form 1099-R doesn’t indicate an exception or the exception doesn’t apply to the entire distribution."
+        later, but box 7 of your Form 1099-R doesn’t indicate an exception or the exception doesn’t apply to the entire distribution.";
+        p. 5, Line 2, exception 13, "Distributions from a section 457 plan, which aren’t from a rollover from a qualified retirement plan."
   - id: retirement.screen_refused
     printed: (gate)
     label: This Form 1099-R needs Form 5329 parts or codes this tool does not compute

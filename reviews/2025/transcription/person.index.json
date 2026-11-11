@@ -5,7 +5,7 @@
  "base": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
  "head_rows": {
   "printed lines compared": "104",
-  "agree / disagree / missing": "54 / 50 / 0",
+  "agree / disagree / missing": "55 / 49 / 0",
   "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
@@ -24,10 +24,10 @@
   },
   {
    "key": "person.tin_or_itin_applied",
-   "record": "5f9195fa5d9341bc2c5164857284b8c1ab86b3c4354b9303b2ae3e525f4ef7cb",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 17, Before you begin: \"If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN issued on or before the due date of your 2025 return (including extensions)\"; p. 19, Step 5, question 1, \"(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)\". This pass re-reviews the gate-wave rewrite (BUG-0466/0471: the all/any test became a nested choose in the original operand order): the project chooses on person.tin (yes: yes; no: person.itin_applied); the reply is the former test, any of itin_applied and tin. They agree on every definite answer; person.itin_applied, by its wording, concerns only a person who answers tin no (\"If you have neither ...\"). executable-triage-v2 (`.transcription/triage/2025/person.json`, pass 255df0dabf5f; 1,702 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,518 comparisons): 4,518 of 4,518 agree; no difference (observed equivalence on that sample). The helper feeds household.tin_count and household.all_tin. Project stands.",
-   "subject_key": "a50cbb38de788ca0bc4b09f72ebbe4b91b5f9b08396d092a8b575dbffbad5f8e"
+   "ruling": "Ruling: representation; i1040gi p. 19, Step 5, question 1, \"(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)\". The trees differ in form only. executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 4,595 of 4,595 agree. This round rewords person.itin_applied to ask whether the person has applied or is applying (BUG-0543); the line's expression is unchanged. No change to the data.",
+   "subject_key": "b8f219d2e33bca18a87a3ebe6374e5138d72a1240e922fa2b9770fc9f1cd20e3"
   },
   {
    "key": "person.work_ssn_or_tin",
@@ -38,10 +38,10 @@
   },
   {
    "key": "person.educator_deduction",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; same line and candidate as the refresh-round ruling. i1040gi p. 93, Line 11, \"If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025.\" The reply asks person.eligible_educator of filers with no educator expenses; the project skips it when the expense is zero. No amount differs. The round-2 wording of person.educator_expenses (computer equipment and protective equipment, i1040gi p. 93) is not at issue. Project stands. (carried over from reviews/2025/transcription/person.md at 5d8c6fd8, review of 2026-11-03)",
-   "subject_key": "7f12c5907419064a77664ca94fa1c35d745103b12eb73d0e928bc5c40355111f"
+   "ruling": "Ruling: model error; i1040gi p. 93, Line 11, \"If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025.\" As the earlier rulings: the reply asks person.eligible_educator of filers with no educator expenses; the project skips it when the expense is zero. executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 3,754 of 4,595 agree; 816 candidate-unknown (198 on completed returns), 25 project-unknown on incomplete or refused returns; no value difference. This round narrows the wording of person.educator_expenses (courses related to the curriculum or students taught, BUG-0544); the expression is unchanged. No change to the data.",
+   "subject_key": "4f7c37404b80fe76aa0a4b48430d96ba83a3d78f6182652c72eca723b91df35e"
   },
   {
    "key": "person.hsa_forms",
@@ -343,9 +343,9 @@
   },
   {
    "key": "person.sav_line1",
-   "record": "5f9195fa5d9341bc2c5164857284b8c1ab86b3c4354b9303b2ae3e525f4ef7cb",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "AGREE",
-   "subject_key": "14af596c314319c7c2517b88ce94138239b872dd05116483631be3cf2926d132"
+   "subject_key": "f8e521eb15d7eb1d1d9e8049387f079094c3d651a000b8957ac1788ae8cfcaf2"
   },
   {
    "key": "person.sav_line2",
@@ -356,10 +356,9 @@
   },
   {
    "key": "person.ira_contrib",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 95, Line 20, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction.\". The reply asks person.ira_excess and person.ira_trad of persons the project does not ask them of. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reused from the prior ruling (`.transcription/archive/before-catalog-refresh-2026-11-03/`), re-checked: project line unchanged; counts below supersede any in the reused text. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 3,120 of 5,033 agree; 1,884 candidate-unknown, 28 project-unknown, 1 value; on returns the full interview completes: 209 candidate-unknown. Project stands. (carried over from reviews/2025/transcription/person.md at 5d8c6fd8, review of 2026-11-03)",
-   "subject_key": "2c156811decfd8d203af9af4eec1408cd4caad32f59b7eddaf8ae223a0fafdb6"
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
+   "status": "AGREE",
+   "subject_key": "795f84a8a6326a51317489d9cef07d10d50836d7c2c76190bf09d86ef8f4df5a"
   },
   {
    "key": "person.ira_cov",
@@ -391,38 +390,38 @@
   },
   {
    "key": "person.ira_deduction",
-   "record": "b8583238ce55bc0c87dd6cc46b6b3af6777bf4ee321a35251dd1094acd13a1e2",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: interface gap; i1040gi p. 98, IRA Deduction Worksheet: \"On line 12a, enter the smallest of line 7a, 10, or 11a. On line 12b, enter the smallest of line 7b, 10, or 11b. This is the most you can deduct.\" The reply defines this person's deduction through the published worksheet lines ira.line12a (you) and ira.line12b (spouse), through its helper person.h_ira_line12: the same quantity as the project's person.ira_line12. But in the project ira.line12a and ira.line12b are the sums of person.ira_deduction by role (forms/2025/ira.yaml), and the published interface gave them only as printed lines, without that derivation, so the reply closes a cycle when executed in the project's graph: every candidate-unknown is \"cycle at person[...].h_ira_line12\" (stage14.asset.hy_5yr, completed, project $0.00). The project refusals are cited IRA screens on refused returns (stage16.refuse.ira.both_kinds). The project line is unchanged; this is the T-150 sibling refresh of the BUG-0472 change to scope.other_income, whose citation shares the i8606 p. 9 Line 1 anchor these lines read through. executable-triage-v2 (`.transcription/triage/2025/person.json`, pass 362d8eaad206; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,872 comparisons): 62 of 4,872 agree; differences {\"candidate-unknown\": 4791, \"project-refuses\": 19}; on completed returns {\"candidate-unknown\": 2436}; no value differs. Project stands.",
-   "subject_key": "36e75ff9b0300474b3706286355689ce13148084221391b0f6e77ca9e646803f"
+   "ruling": "Ruling: model error; i1040gi p. 98, \"On line 12a, enter the smallest of line 7a, 10, or 11a\". The reply's declarations form a cycle at person.ira_deduction, so it evaluates to unknown wherever the line is reached. executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 60 of 4,595 agree; 4,516 candidate-unknown (1,943 on completed returns, the cycle), 19 project-refuses on refused returns; no value difference. No change to the data.",
+   "subject_key": "7f1fdd74f3515c3cc766549a9ab543d29e9a19e23459055167fc067f804d4726"
   },
   {
    "key": "person.ira_nondeductible",
-   "record": "b8583238ce55bc0c87dd6cc46b6b3af6777bf4ee321a35251dd1094acd13a1e2",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: interface gap; i8606 p. 9, Line 1, as the prior rulings: subtract worksheet line 12 \"from the smaller of line 10 or line 11 of the worksheet\". The reply is that formula on the published worksheet lines. The reply defines this person's deduction through the published worksheet lines ira.line12a (you) and ira.line12b (spouse), through its helper person.h_ira_line12: the same quantity as the project's person.ira_line12. But in the project ira.line12a and ira.line12b are the sums of person.ira_deduction by role (forms/2025/ira.yaml), and the published interface gave them only as printed lines, without that derivation, so the reply closes a cycle when executed in the project's graph: every candidate-unknown is \"cycle at person[...].h_ira_line12\" (stage14.asset.hy_5yr, completed, project $0.00). The candidate refusals are other forms' cited screens reached through ira.line10 for persons with no traditional contribution, on refused returns (stage14.asset.refuse_qip_2017), where the project gives zero; the project refusals are the cited IRA screens on refused returns (stage16.refuse.ira.*). The project line is unchanged; this is the T-150 sibling refresh of the BUG-0472 change to scope.other_income, whose citation shares the i8606 p. 9 Line 1 anchor these lines read through. executable-triage-v2 (`.transcription/triage/2025/person.json`, pass 362d8eaad206; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,872 comparisons): 58 of 4,872 agree; differences {\"candidate-refuses\": 377, \"candidate-unknown\": 4421, \"project-refuses\": 16}; on completed returns {\"candidate-unknown\": 2436}; no value differs. Project stands.",
-   "subject_key": "dae8464ec4573734978a6039f9bcc5355f1beab4960f825dd8f7d8a739adc073"
+   "ruling": "Ruling: model error; i8606 p. 2, Who Must File, \"You made nondeductible contributions to a traditional IRA for 2025\". The reply's person.ira_deduction cycle makes this line unknown, and it refuses on screens the source does not apply here, as in the earlier rulings. executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 56 of 4,595 agree; 4,146 candidate-unknown (1,943 on completed returns), 377 candidate-refuses and 16 project-refuses on refused returns; no value difference. No change to the data.",
+   "subject_key": "6663c09b0502153e556250979f8f116f98b9747ff04ed9e8595fa8ab771e27e3"
   },
   {
    "key": "person.ira_files_8606",
-   "record": "b8583238ce55bc0c87dd6cc46b6b3af6777bf4ee321a35251dd1094acd13a1e2",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: interface gap; i8606 p. 2, Who Must File: \"You made nondeductible contributions to a traditional IRA for 2025\" and the distribution-with-basis test. The project line is the first test (person.ira_nondeductible above zero); a distribution with basis from nondeductible contributions is screened per distribution at retirement.special (\"nondeductible contributions to any traditional IRA\"), as the prior rulings found. The reply's nondeductible amount is built on ira.line12a/b. The reply defines this person's deduction through the published worksheet lines ira.line12a (you) and ira.line12b (spouse), through its helper person.h_ira_line12: the same quantity as the project's person.ira_line12. But in the project ira.line12a and ira.line12b are the sums of person.ira_deduction by role (forms/2025/ira.yaml), and the published interface gave them only as printed lines, without that derivation, so the reply closes a cycle when executed in the project's graph: every candidate-unknown is \"cycle at person[...].h_ira_line12\" (stage14.asset.hy_5yr, completed, project $0.00). Candidate refusals are asset screens reached through ira.line10 on refused returns (stage14.asset.refuse_qip_2017); project refusals are the cited IRA screens (stage16.refuse.ira.*). The project line is unchanged; this is the T-150 sibling refresh of the BUG-0472 change to scope.other_income, whose citation shares the i8606 p. 9 Line 1 anchor these lines read through. executable-triage-v2 (`.transcription/triage/2025/person.json`, pass 362d8eaad206; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,872 comparisons): 58 of 4,872 agree; differences {\"candidate-refuses\": 377, \"candidate-unknown\": 4421, \"project-refuses\": 16}; on completed returns {\"candidate-unknown\": 2436}; no value differs. Project stands.",
-   "subject_key": "8fc97f68c0455ad9b36db0461b0d5e6885eb30f731007bc771c4636099e3af66"
+   "ruling": "Ruling: model error; i8606 p. 2, Who Must File. The difference is that of person.ira_nondeductible (the reply's person.ira_deduction cycle). executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 56 of 4,595 agree; 4,146 candidate-unknown (1,943 on completed returns), 377 candidate-refuses and 16 project-refuses on refused returns; no value difference. No change to the data.",
+   "subject_key": "1dfee9624f90a7ad23591818765ec7d5458ec7fb2482b636dd505a8c994272fc"
   },
   {
    "key": "person.ira_8606_line2",
-   "record": "b8583238ce55bc0c87dd6cc46b6b3af6777bf4ee321a35251dd1094acd13a1e2",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i8606 p. 9, Line 2: \"Generally, if this is the first year you are required to file Form 8606, enter -0-. Otherwise, use the Total Basis Chart to find the amount to enter on line 2.\" Line 2 belongs to a Form 8606 filer. The project asks person.ira_basis only when the person files Form 8606 (person.ira_files_8606) and enters zero otherwise; the reply is person.ira_basis for every person with a refusal on person.ira_basis_adjusted, so it needs those answers of persons who file no Form 8606 (classm.f4952.1.deepseek, completed: unknown on ira_basis_adjusted, project $0.00). An answer the source does not need is a model error (README), as the prior rulings. The project-unknown records are refused or incomplete fixtures that never answered person.sav_trad (stage9.eic.refuse.f1040_line16.separated_spouses, stage16.cleanup.refuse.f4952_unsupported); whether a nondeductible contribution was made decides whether line 2 is reached. The project refusals are the cited IRA screens (stage16.refuse.ira.*). The project line is unchanged; this is the T-150 sibling refresh of the BUG-0472 change to scope.other_income, whose citation shares the i8606 p. 9 Line 1 anchor these lines read through. executable-triage-v2 (`.transcription/triage/2025/person.json`, pass 362d8eaad206; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,872 comparisons): 4,058 of 4,872 agree; differences {\"candidate-unknown\": 758, \"project-refuses\": 17, \"project-unknown\": 39}; on completed returns {\"candidate-unknown\": 224}; no value differs. Project stands.",
-   "subject_key": "f69ba66486677c76c895479dd61e6ae0087d3f45b5d5408e791b6fe40c3e3917"
+   "ruling": "Ruling: model error; Form 8606 (2025), line 2, \"Enter your total basis in traditional IRAs\". The reply reads person.ira_basis_adjusted of persons the project does not ask it of. executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 3,664 of 4,595 agree; 879 candidate-unknown (217 on completed returns), 17 project-refuses and 35 project-unknown on incomplete or refused returns; no value difference. No change to the data.",
+   "subject_key": "528c025ffb4a4583dd12ec55df96871bf80194d9eb82a7dd022de94556873ed2"
   },
   {
    "key": "person.ira_dist_gate",
-   "record": "b8583238ce55bc0c87dd6cc46b6b3af6777bf4ee321a35251dd1094acd13a1e2",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; Form 8606 (2025), Part I, \"In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?\" (a question of Part I, which a person completes for nondeductible contributions: i8606 p. 2, Who Must File). The project chooses on person.ira_has, then person.ira_files_8606, then person.ira_dist. The reply tests person.ira_dist with a basis above zero, so it asks the distribution question of persons who file no Form 8606 (classm.f4952.1.deepseek, completed: unknown, project no). An answer the source does not need is a model error (README), as the prior ruling. The candidate refusals are its own declared refusal (person.sep_excess) on refused returns (classm.dependent.3.deepseek); the project refusals are the cited IRA screens on refused returns (stage16.refuse.ira.*); the project-unknown records withhold person.sav_trad, which the choose needs first. The project line is unchanged; this is the T-150 sibling refresh of the BUG-0472 change to scope.other_income, whose citation shares the i8606 p. 9 Line 1 anchor these lines read through. executable-triage-v2 (`.transcription/triage/2025/person.json`, pass 362d8eaad206; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,872 comparisons): 4,094 of 4,872 agree; differences {\"candidate-refuses\": 16, \"candidate-unknown\": 718, \"project-refuses\": 17, \"project-unknown\": 27}; on completed returns {\"candidate-unknown\": 207}; no value differs. Project stands.",
-   "subject_key": "8416d775249ea9fd7700477fcc0382928db1b35efb4d3ae511da06a0deb90370"
+   "ruling": "Ruling: model error; Form 8606 (2025), Part I, \"In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?\"; i8606 p. 2, Who Must File. The reply's person.ira_deduction cycle makes the gate unknown, and it refuses on screens the source does not apply here. executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 3,340 of 4,595 agree; 843 candidate-unknown (205 on completed returns), 377 candidate-refuses, 16 project-refuses and 19 project-unknown on incomplete or refused returns; no value difference. No change to the data.",
+   "subject_key": "d3c5936128319c0b5b5bae4a1d079901bc0a402d530bebfa038933a3aafdd77a"
   },
   {
    "key": "person.ira_8606_line14",
@@ -433,10 +432,10 @@
   },
   {
    "key": "person.ira_ssb",
-   "record": "5f9195fa5d9341bc2c5164857284b8c1ab86b3c4354b9303b2ae3e525f4ef7cb",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: interface gap; i1040gi p. 98, line 12: \"enter the smallest of line 7a, 10, or 11a\"; amb.2025.ira_ssb_copy (the Social Security Benefits Worksheet copy of the deduction). The reply's note says the pages do not define this interface and takes this person's worksheet line 12, which it reads from the published ira.line12a/b; in the project those are the sums of person.ira_deduction, so executed in the project's graph the reply is circular (see person.ira_deduction): every candidate-unknown is \"cycle at person[...].ira_deduction\" (stage14.asset.hy_5yr, completed, project $0.00). The project refusals are the cited IRA screens on refused returns (stage16.refuse.ira.*). No value differs. The project line is unchanged in this wave. executable-triage-v2 (`.transcription/triage/2025/person.json`, pass 255df0dabf5f; 1,702 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,518 comparisons): 59 of 4,518 agree; 4,442 candidate-unknown, 17 project-refuses; on returns the full interview completes: 1,920 candidate-unknown, no value difference. Project stands.",
-   "subject_key": "27836672d893132e8d8c9bf1d155e4cf488511306b252aefb939a81ad7754d42"
+   "ruling": "Ruling: model error; i1040gi p. 97, the no-coverage path of the IRA Deduction Worksheet (amb.2025.ira_ssb_copy, owner decision 7), and p. 98, line 12. The reply reads person.ira_work_plan where the project does not ask it and refuses on its own screens (18 candidate-refuses on completed returns). executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 3,326 of 4,595 agree; 922 candidate-unknown (209 completed), 334 candidate-refuses (18 completed), 13 project-refuses on refused returns; no value difference. No change to the data.",
+   "subject_key": "7e70024e8765cfdf0962e0bb568ac7303f55fd9311209991adb7b2070351b777"
   },
   {
    "key": "person.ira_se",
@@ -650,46 +649,46 @@
   },
   {
    "key": "27",
-   "record": "5f9195fa5d9341bc2c5164857284b8c1ab86b3c4354b9303b2ae3e525f4ef7cb",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f8863 p. 2, line 27, \"Adjusted qualified education expenses (see instructions). Don't enter more than $4,000\"; p970 p. 11. As the prior rulings on these lines (owner decision T-113): the reply requires an issued TIN (person.tin), against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return.\"; and it reads person.edu for every person with no f8863.paid gate, so it is unknown where the project hides the line (classm.f4952.1.deepseek, classm.g28.1.deepseek, classm.sd.1.deepseek, completed). The project-unknown records withhold an answer the line needs: edu_1098t (mutation.t3.person_edu_1098t_unanswered), f8863.paid (mutation.t4.dependent_edu_paid_unanswered_no_1098t), or the spouse's TIN, which the project's American opportunity test reads for the filers (partial of classm.f8889.4.deepseek; identical in the HEAD and current trees). The project line is unchanged in this wave; its value on classm.person.1 and on classm.f8889.4.deepseek with the spouse's TIN withheld was evaluated in both trees: identical. Value witnesses (completed): f1.t113.person_aoc_itin_applied and classm.person.1, an American opportunity student whose ITIN was applied for (person.tin no, itin_applied yes): project $4,000.00, reply $0.00. executable-triage-v2 (`.transcription/triage/2025/person.json`, pass 255df0dabf5f; 1,702 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,518 comparisons): 3,636 of 4,518 agree; 877 candidate-unknown, 3 project-unknown, 2 value; on returns the full interview completes: 253 candidate-unknown, 2 value. Project stands.",
-   "subject_key": "de78e1795138e22e5aabcb24b54d751cf0f7faf2db2ffa1a52cb748d67fdce48"
+   "ruling": "Ruling: model error; f8863 p. 2, line 27; i8863 p. 3. As the prior rulings on this line: the reply has the education lines read person.edu_a2025 and person.edu_over for every person, with no f8863.paid gate, so it is unknown on returns with no education credit where the project hides the line; and it requires an issued TIN for the American opportunity credit, against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\". executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 3,642 of 4,595 agree; on completed returns 251 candidate-unknown and 2 value (classm.person.1 and f1.t113.person_aoc_itin_applied: project $4,000.00, reply 0, a student whose ITIN was applied for); 3 project-unknown on incomplete returns. No change to the data.",
+   "subject_key": "1be646043ceed02feae3dd3622906a7d842b44db381096562ea33a51f69caa20"
   },
   {
    "key": "28",
-   "record": "5f9195fa5d9341bc2c5164857284b8c1ab86b3c4354b9303b2ae3e525f4ef7cb",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f8863 p. 2, line 28, \"Subtract $2,000 from line 27. If zero or less, enter -0-\"; p970 p. 11. The reply's line 28 is its line 27 less $2,000, floored, the project's formula; the differences are inherited from line 27. As the prior rulings on these lines (owner decision T-113): the reply requires an issued TIN (person.tin), against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return.\"; and it reads person.edu for every person with no f8863.paid gate, so it is unknown where the project hides the line (classm.f4952.1.deepseek, classm.g28.1.deepseek, classm.sd.1.deepseek, completed). The project-unknown records withhold an answer the line needs: edu_1098t (mutation.t3.person_edu_1098t_unanswered), f8863.paid (mutation.t4.dependent_edu_paid_unanswered_no_1098t), or the spouse's TIN, which the project's American opportunity test reads for the filers (partial of classm.f8889.4.deepseek; identical in the HEAD and current trees). The project line is unchanged in this wave; its value on classm.person.1 and on classm.f8889.4.deepseek with the spouse's TIN withheld was evaluated in both trees: identical. Value witnesses (completed): f1.t113.person_aoc_itin_applied and classm.person.1 (ITIN applied for): project $2,000.00, reply $0.00. executable-triage-v2 (`.transcription/triage/2025/person.json`, pass 255df0dabf5f; 1,702 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,518 comparisons): 3,636 of 4,518 agree; 877 candidate-unknown, 3 project-unknown, 2 value; on returns the full interview completes: 253 candidate-unknown, 2 value. Project stands.",
-   "subject_key": "779eaeef6bede13a31a8c11c48c912b35f9717bd76ab08c4b87db89f09723fc5"
+   "ruling": "Ruling: model error; f8863 p. 2, line 28. As the prior rulings on this line: the reply has the education lines read person.edu_a2025 and person.edu_over for every person, with no f8863.paid gate, so it is unknown on returns with no education credit where the project hides the line; and it requires an issued TIN for the American opportunity credit, against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\". executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 3,642 of 4,595 agree; on completed returns 251 candidate-unknown and 2 value (the same two ITIN-applied fixtures as line 27); 3 project-unknown on incomplete returns. No change to the data.",
+   "subject_key": "51f7104c3d8745f5741de82cbb43b7c85efb166591040e52710b603cc7b97872"
   },
   {
    "key": "29",
-   "record": "5f9195fa5d9341bc2c5164857284b8c1ab86b3c4354b9303b2ae3e525f4ef7cb",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f8863 p. 2, line 29, \"Multiply line 28 by 25% (0.25)\"; p970 p. 11. The reply's line 29 is 25% of its line 28, the project's formula; the differences are inherited from line 27. As the prior rulings on these lines (owner decision T-113): the reply requires an issued TIN (person.tin), against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return.\"; and it reads person.edu for every person with no f8863.paid gate, so it is unknown where the project hides the line (classm.f4952.1.deepseek, classm.g28.1.deepseek, classm.sd.1.deepseek, completed). The project-unknown records withhold an answer the line needs: edu_1098t (mutation.t3.person_edu_1098t_unanswered), f8863.paid (mutation.t4.dependent_edu_paid_unanswered_no_1098t), or the spouse's TIN, which the project's American opportunity test reads for the filers (partial of classm.f8889.4.deepseek; identical in the HEAD and current trees). The project line is unchanged in this wave; its value on classm.person.1 and on classm.f8889.4.deepseek with the spouse's TIN withheld was evaluated in both trees: identical. Value witnesses (completed): f1.t113.person_aoc_itin_applied and classm.person.1 (ITIN applied for): project $500.00, reply $0.00. executable-triage-v2 (`.transcription/triage/2025/person.json`, pass 255df0dabf5f; 1,702 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,518 comparisons): 3,636 of 4,518 agree; 877 candidate-unknown, 3 project-unknown, 2 value; on returns the full interview completes: 253 candidate-unknown, 2 value. Project stands.",
-   "subject_key": "809fe7d3c9385c10ee1569b4bed5932d620b3f454b2d513a06bd7082d22b2bc0"
+   "ruling": "Ruling: model error; f8863 p. 2, line 29. As the prior rulings on this line: the reply has the education lines read person.edu_a2025 and person.edu_over for every person, with no f8863.paid gate, so it is unknown on returns with no education credit where the project hides the line; and it requires an issued TIN for the American opportunity credit, against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\". executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 3,642 of 4,595 agree; on completed returns 251 candidate-unknown and 2 value (the same two ITIN-applied fixtures as line 27); 3 project-unknown on incomplete returns. No change to the data.",
+   "subject_key": "27100d2d11f26e4d83bedb82f0bdc0898cbf06b89121372e13192dc07523967c"
   },
   {
    "key": "30",
-   "record": "5f9195fa5d9341bc2c5164857284b8c1ab86b3c4354b9303b2ae3e525f4ef7cb",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f8863 p. 2, line 30, \"If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29 and enter the result. Skip line 31.\"; p970 p. 11. The reply's line 30 is that rule on its own lines 27 to 29; the differences are inherited from line 27. As the prior rulings on these lines (owner decision T-113): the reply requires an issued TIN (person.tin), against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return.\"; and it reads person.edu for every person with no f8863.paid gate, so it is unknown where the project hides the line (classm.f4952.1.deepseek, classm.g28.1.deepseek, classm.sd.1.deepseek, completed). The project-unknown records withhold an answer the line needs: edu_1098t (mutation.t3.person_edu_1098t_unanswered), f8863.paid (mutation.t4.dependent_edu_paid_unanswered_no_1098t), or the spouse's TIN, which the project's American opportunity test reads for the filers (partial of classm.f8889.4.deepseek; identical in the HEAD and current trees). The project line is unchanged in this wave; its value on classm.person.1 and on classm.f8889.4.deepseek with the spouse's TIN withheld was evaluated in both trees: identical. Value witnesses (completed): f1.t113.person_aoc_itin_applied and classm.person.1 (ITIN applied for): project $2,500.00, reply $0.00. executable-triage-v2 (`.transcription/triage/2025/person.json`, pass 255df0dabf5f; 1,702 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,518 comparisons): 3,636 of 4,518 agree; 877 candidate-unknown, 3 project-unknown, 2 value; on returns the full interview completes: 253 candidate-unknown, 2 value. Project stands.",
-   "subject_key": "1174b0c2194530492c3e641a64caeadb2d14cce9f274d4e3a77d8f4992cfc006"
+   "ruling": "Ruling: model error; f8863 p. 2, line 30; i8863 p. 3. As the prior rulings on this line: the reply has the education lines read person.edu_a2025 and person.edu_over for every person, with no f8863.paid gate, so it is unknown on returns with no education credit where the project hides the line; and it requires an issued TIN for the American opportunity credit, against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\". executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 3,642 of 4,595 agree; on completed returns 251 candidate-unknown and 2 value (the same two ITIN-applied fixtures as line 27); 3 project-unknown on incomplete returns. No change to the data.",
+   "subject_key": "1fc7e2c2bd153a692665e3e41a1c48dc93cd449a772197c88e0d3c668540d287"
   },
   {
    "key": "31",
-   "record": "5f9195fa5d9341bc2c5164857284b8c1ab86b3c4354b9303b2ae3e525f4ef7cb",
+   "record": "6ad6f8dbf3ea0456b2d67d86902b5e9ac20221b0adb7c9d65823a85d3801b65e",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f8863 p. 2, line 31; i8863 p. 3, Who cannot claim a credit. As the prior rulings on this line: the reply reads person.edu of every person with no f8863.paid gate, so it is unknown where the project hides the line (classm.f4952.1.deepseek, classm.g28.1.deepseek, completed), and it requires an issued TIN; f1.t113.person_llc_itin_applied (a lifetime learning student whose ITIN was applied for) is refused by the project at person.edu_llc_tin_refused, as the owner decided (T-113), where the reply gives $0.00. The project-unknown records withhold f8863.paid (mutation.t4.dependent_edu_paid_unanswered_no_1098t) or the spouse's TIN (partial of classm.f8889.4.deepseek). No value differs. The project line is unchanged in this wave. executable-triage-v2 (`.transcription/triage/2025/person.json`, pass 255df0dabf5f; 1,702 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,518 comparisons): 3,638 of 4,518 agree; 877 candidate-unknown, 2 project-unknown, 1 project-refuses; on returns the full interview completes: 253 candidate-unknown, no value difference. Project stands.",
-   "subject_key": "d2901124fa1c59dc2fe5d21bf5393dc884e258b52619916dcb60ac56884c51be"
+   "ruling": "Ruling: model error; f8863 p. 2, line 31; i8863 p. 3. As the prior rulings on this line: the reply has the education lines read person.edu_a2025 and person.edu_over for every person, with no f8863.paid gate, so it is unknown on returns with no education credit where the project hides the line; and it requires an issued TIN for the American opportunity credit, against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\". executable-triage-v2 (pass 5909c02fb1f9; 1,767 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,595 comparisons): 3,635 of 4,595 agree; 956 candidate-unknown (251 on completed returns), 1 candidate-refuses, 1 project-refuses and 2 project-unknown on incomplete or refused returns; no value difference. No change to the data.",
+   "subject_key": "4b78e8b70960e066b43f7bd73145add32baa339c55a4a74e91ce3f5d1806421d"
   }
  ],
  "subjects": {
   "person.one": "b8c3fe457df27c28a5b9ceba67c044ce1bd837e2947d16ac68c022571c49a8d8",
   "person.age65_box": "070324378ae1c306c9de2c56d6d084f92f7dc61936140f6c4a33a066ede4b13a",
-  "person.tin_or_itin_applied": "b0b43e2547cefb96cd9a526890539c97451c91fb221ebe4a1304e54814be6742",
+  "person.tin_or_itin_applied": "3a27a0aa3fba92e62297d7cee149cc852afe6b7e6a90979944c3beeb605b9072",
   "person.work_ssn_or_tin": "f92cfd496aa340dba4812e15a6ce42e628d252df4b1c1324f6a524ec09aa4d59",
-  "person.educator_deduction": "91e8af5d7ad2bbfe890a66e9517ea95f2a6d84882017c13a0964e8678b3ef417",
+  "person.educator_deduction": "f291a0b9defa8959115bf23ed0cd459be20e71bd9fcca8ea182cdf26c747a30d",
   "person.hsa_forms": "16f71fc60325994fcbadd912163258f6fbb15ad6fce56ad795df618b99432413",
   "person.hsa_split": "04bd0457964ad10200391ff5f7fe0ce64c254acb5289587f2c996e15e04a1d22",
   "person.hsa_agreed": "d6c6cc72d7f021042ab4eaffa5da8ba28547d71235cc8421d8debed2e21a328a",
@@ -737,20 +736,20 @@
   "person.dc_earned": "72b7cad2854b242465449c6d7dc2b4edb63dc04d2880670c8477b7805cdce9db",
   "person.dc_earned_b": "5ad9fc16ae7288d8f2946da26705b4765218007c92fd4bdca3c3035efb60eb76",
   "person.sav_ineligible": "74fa2844c3a85831f8ec779620b766f8b2b521ff11d2bb738df0ef22ca187c09",
-  "person.sav_line1": "57449220daf0dd7a9e35f58034c0cfa5726f172d624391677d525f1f9e7a2383",
+  "person.sav_line1": "dd7b709dd2ad76a1342a3ae95fe5548a9aba1f72be36147d986c83267b72c196",
   "person.sav_line2": "dbb70dcc2da3e5e4545d6761f0e6dc0bec3c5f6362b1315fd77754dd40a2d90f",
-  "person.ira_contrib": "7c59ac728402944b1c00685eb915f645a27d44cd12a8dbcf9dfe449d95674ba9",
+  "person.ira_contrib": "6ffc44bb3c2a6ebc94672b92b97603cb46e852398856d5ab12c3abfe0bddb759",
   "person.ira_cov": "75f6bdba7a3c60597744b7e8478ce75353c1f7c2d4fb77b083756dec82d91e4d",
   "person.ira_line2": "63d404c777e7ce7e22328b537d38ede889448222079d6a8b8b12257e0cb21944",
   "person.ira_line6": "8394c4a531f5e7def74994a27b4b35e4fc26f72c7dfcfdaf8f3fa4a8bbdd7a73",
   "person.ira_line7": "940d3dfd662d1caf11dfb9bd41e85912aabb56b798efd8bfcdd65dbb3dcc7af0",
-  "person.ira_deduction": "5d8623ea34a4cbd5c177d4cad9252d7a63ed981fddd7d0fb56b70543d8e47a05",
-  "person.ira_nondeductible": "4bc75c53c5960b1e860c97d41f77067762b46e388405697cf1ff10ef188887cf",
-  "person.ira_files_8606": "8f58d13c8639e1cd156f1d070f9f70c588c917621f735b81ee0b6075f9526c32",
-  "person.ira_8606_line2": "21b92a541ac9adc799f1e79e78a21b3be1b6f5e17841b8cff7f31b4d2d6471da",
-  "person.ira_dist_gate": "f338143ff28c24874650ac10e019a64850f1876245c768062de28f273754b721",
+  "person.ira_deduction": "dc8b9641c4242a9631ae3978890156775ce924a2ac92f5de252e8dc69f787339",
+  "person.ira_nondeductible": "2b3d00101b59a2102b42b416d3c2e3411943de4310465f0e8d8db929835dfb0a",
+  "person.ira_files_8606": "561ba9e414d6baab73b261cfb1fe4b82de81bf7ad39af4dc5875604350fceeb7",
+  "person.ira_8606_line2": "66dd1b9b97a0037bc5f508e03d6a68ad4824fb6e3c8e0496851c6dbfae791f81",
+  "person.ira_dist_gate": "1353aa294a7a1dc4b1d01268ac1b5b5a40ceee72119267f4f541f7bf610f1c1b",
   "person.ira_8606_line14": "47c89972f50bf49fc1746168b164510319590ea9e1dcc1d1c82092b28218a51a",
-  "person.ira_ssb": "8c3821d07eb2f38f6e0ef9ad3e09e52f06ef9f64e22ac8c25bd2d3ee96b17259",
+  "person.ira_ssb": "23a1eda230e8d1c4fd760452e048a53e83bb947975403fcd7b0316596daa3887",
   "person.ira_se": "e688c614b69b7f852f8a8ea1f22247909367e4a9ffbede76925cd667cc239a1d",
   "person.edu_kid": "197e62c2b087dcd7cb198c59855f228eb69ee99f59a394b2503ea774af9915fc",
   "person.x_l1": "8918e95355b7587c0094978375825c55dd25c581cfa70928c887960e7353036a",
@@ -784,11 +783,11 @@
   "Step 7": "26ce600bf7bf778ee85d194926bb0780dbe1e0277f3fe46972a2ca9409dc51a3",
   "Step 8": "fe42055f98306dd8e3f897a84f7c697179702d5b580f74f25a17881ee5cfb590",
   "Step 21": "9ffcf25cdd3c05e804f113dc4829fe6830c892c9f27958844f9fcb077134c932",
-  "27": "a5e00865c068a0fbb88110d70987dbf005c40f56f72ccb7d0412a00251dae759",
-  "28": "24870e0bf07dbf44b9c355650abf594228adec5774c7518d499a04fb6f7a28be",
-  "29": "79605cec8327534e243522945ad8c41774d3d546f5cb40355d321d3bf66806e5",
-  "30": "d7e38f992915805fe78d7ffad6eb2a6014884cb66c30cd3ab1e20e49faa23ee4",
-  "31": "bb63a12becc73f38583e2af79c515741936e5dbc9d0d620e0cfe509de38eb169"
+  "27": "cb8393abba3efa6adc38e31a3d5afe0e2c2eee0a96d06d04f8157b9e4f28fdd7",
+  "28": "ec751c6c023ab6381f423d036d568f2300974cdce69a159f0d5cbd1dd96e6fff",
+  "29": "cefcef47fbeb630d340a173a8641d5ea164cdb059600a4e57eef2a0767a95751",
+  "30": "d54128c44638894532398a897bb36908025a98429c1f57b35f9765a9ed66007c",
+  "31": "ed2ab7fe08586f0b2bcea751bdb7ea24c45679d64740671eebea060f8ad10fc7"
  },
  "__rest__": "d28e22d3400268c696f00ac5cb2cb4acf80222dd6ee55c48f68bb684d57f0110",
  "foreign": {

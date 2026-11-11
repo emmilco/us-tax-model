@@ -983,6 +983,24 @@
       "question_phrase": "an SSN valid for employment, issued before the due date of your 2025 return (including extensions)? If your card says \"Valid for Work Only With DHS Authorization\", answer yes only if the DHS authorization is valid",
       "source_phrase": "Schedule 1-A, Part III, \"Fill out Schedule 1-A, Part III, only if: ... You have a valid social security number (SSN)\"",
       "reason": "Part III's valid SSN is defined on p. 108 as one valid for employment and issued before the due date, with p. 104's DHS limit by reference, which is the question's wording."
+    },
+    "consumer:dependent.dc_under13@i2441:p1": {
+      "verdict": "same",
+      "question_phrase": "Was any of this child's 2025 care that you are claiming provided before their 13th birthday?",
+      "source_phrase": "If the child turned 13 during the year, the child is a qualifying person for the part of the year they were under age 13.",
+      "reason": "dependent.dc_child needs the child to have been under 13 for some of the claimed care, which is what the question asks, keyed on when the care was provided."
+    },
+    "consumer:f2441.care@i2441:p3": {
+      "verdict": "same",
+      "question_phrase": "did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person so that you (and your spouse) could work or look for work? A qualifying person is your child under age 13; your spouse who was not able to care for themselves; or any other person who was not able to care for themselves",
+      "source_phrase": "Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier.\"",
+      "reason": "dependent.dc_qp reads the answer only as whether the filer has care expenses for a qualifying person under the p. 1 list the question now restates; the per-person tests (dependent.claimed, dc_child, dc_disabled_qp) decide which entries are listed on line 2."
+    },
+    "consumer:person.sav_trad@i1040gi:p98": {
+      "verdict": "same",
+      "question_phrase": "Did you make contributions (other than rollover contributions) to a traditional IRA for 2025 ... Do not count contributions made under a SEP or SIMPLE IRA plan, including those you made for yourself as a self-employed person.",
+      "source_phrase": "line 11, \"Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025 to your IRA\"",
+      "reason": "Worksheet line 11 takes the person's own traditional IRA contributions for 2025; SEP and SIMPLE plan contributions are deducted on Schedule 1 line 16 (p560 p. 17), which the question now excludes."
     }
   },
   "baseline": {
@@ -1198,7 +1216,6 @@
     "consumer:retirement.code@i1040gi:p27": "7fcc0a57df11fa9a",
     "consumer:retirement.code@i5329:p3": "7fcc0a57df11fa9a",
     "consumer:retirement.code@i5329:p5": "7fcc0a57df11fa9a",
-    "consumer:retirement.code_screen@i5329:p5": "eb1fe077c1a2f51b",
     "consumer:s1.alimony_unsupported@i1040gi:p89": "c12a8e4b73109ab3",
     "consumer:s1.cod_any@i1040gi:p91": "aeef6f520df8c4e3",
     "consumer:s1.cod_unsupported@p525:p20": "87179fa8a7fdb63a",

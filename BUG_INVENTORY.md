@@ -7521,3 +7521,22 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Regression predictions:** wording; no value changes.
 - **Validation:** every existing fixture passes.
 - **Tags:** question-review; wording; amount-affecting; fixed
+
+## BUG-0590 — Question-review fixes for eight value-changing findings on person, retirement, dependent and f2441
+
+- **Date:** 2026-11-10
+- **Caught by:** the question review's value-changing findings on person, retirement, dependent and f2441 (phase 3 fix lane 4).
+- **Symptom:** these entries stand open although their value-changing findings are fixed: BUG-0499 (retirement.code_screen), BUG-0533 (f2441.care), BUG-0543 (person.itin_applied), BUG-0544 (person.educator_expenses), BUG-0545 (person.sav_trad), BUG-0557 (retirement.months), BUG-0566 (dependent.dc_under13) and BUG-0567 (dependent.lawful).
+- **Root cause:** the inventory is append-only, so a fix landing after its entry is recorded in a new entry.
+- **Where:** `forms/2025/person.yaml`, `forms/2025/retirement.yaml`, `forms/2025/dependent.yaml`, `forms/2025/f2441.yaml`, `interview/2025/questions.yaml`.
+- **Fix:**
+  - BUG-0499: `retirement.code_screen` asks whether the code 2 exception "does not apply to all of it (it applies to only part of the distribution, or to none of it)"; the code 7 clause excepts a distribution from a section 457 plan that is not from a rollover from a qualified retirement plan (i5329 p. 5, exception 13), which also closes the over-refusal low.
+  - BUG-0533: `f2441.care` defines a qualifying person as i2441 p. 1 does, including a person you could claim as a dependent except for gross income of $5,200 or more, a joint return, or your being claimable as a dependent. A Yes for such a person now reaches `f2441.nondependent`, whose gate refuses, instead of a computed return without the credit.
+  - BUG-0543: `person.itin_applied` asks "have you applied, or are you applying" and says to answer Yes when applying with this return (for example with Form W-7).
+  - BUG-0544: `person.educator_expenses` limits professional development courses to those "related to the curriculum you teach or to the students you teach" (i1040gi p. 93).
+  - BUG-0545: `person.sav_trad` (question and help) and `person.ira_trad` exclude contributions made under a SEP or SIMPLE IRA plan, by an employer or by a self-employed person for themselves (p560 p. 17, deducted on Schedule 1 line 16).
+  - BUG-0557: `retirement.months` asks for the months covered by the payments in box 1, with the in-arrears example, and states "at most 12" (also the BUG-0558 months-range low, wording only).
+  - BUG-0566: `dependent.dc_under13` asks whether any of the claimed care was provided before the 13th birthday, regardless of when it was paid.
+  - BUG-0567: `dependent.lawful` asks whether the relationship was lawful under local law throughout 2025 and to answer No only if it violated local law at any time during 2025 (also the BUG-0568 lawful low).
+  Spouse rule (owner decision, conditional phrasing "(or, on a joint return, your spouse)"): `f2441.nondependent`, `f2441.prior_year`, `f2441.line13`, `f2441.line14`, `f2441.employer_care` and `f2441.plan_max` now name the spouse; the `f2441.line13` and `f2441.plan_max` items of BUG-0534 are fixed by the same edit. No fixture changes.
+- **Tags:** record-drift; closes-earlier-entry; caught-by-question-review

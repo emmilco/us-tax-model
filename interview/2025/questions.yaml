@@ -2415,9 +2415,11 @@ bank:
       interest was paid. Answer Yes only if this person is actually claimed on someone else's 2025 return.
   - input: person.sav_trad
     order: 22
-    help: Contributions to a traditional IRA (including a SEP IRA you contribute to yourself, but not employer contributions
-      to a SEP or SIMPLE IRA) for 2025, which may be made until April 15, 2026. They count for the IRA deduction
-      (Schedule 1, line 20), Form 8606 and the saver's credit.
+    help: Contributions to a traditional IRA for 2025, which may be made until April 15, 2026. They count for the IRA
+      deduction (Schedule 1, line 20), Form 8606 and the saver's credit. Contributions under a SEP or SIMPLE IRA plan,
+      whether your employer made them or you made them for yourself as a self-employed person, are not counted here; a
+      self-employed person's contributions for themselves are asked with their SEP or SIMPLE plan and deducted on
+      Schedule 1, line 16.
   - input: person.ira_trad
     order: 22
     help: Form 5498 or a statement from the IRA trustee, sent by June 1, 2026, shows the contributions to your traditional IRA

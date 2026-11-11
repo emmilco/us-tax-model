@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "fcf25eb148a54b794b29ec94b05b000c0b9cba830d5fa7651f7b18afc1788d13",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -29,17 +29,17 @@
   },
   {
    "key": "retirement.taxable",
-   "record": "3c0e927388264e3f2280b9859036c176239cef674ffe3a5b6af92e3a860520b7",
+   "record": "fbeb28ceea447ca8a7a874973648a56fb48e510f5c196f1bfe271b171945febe",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error and scope; i1040gi p. 28, Fully Taxable Pensions and Annuities: \"Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025.\" For a plan annuity the reply always takes its Simplified Method Worksheet line 9; the project takes box 1 when worksheet line 7 (cost less the amount recovered, signed) is zero or less and line 9 otherwise. Where the amount recovered exceeds the cost, lines 7 and 8 are negative and the reply's line 9 exceeds box 1: the refresh-round ruling's point (the round-3 reply refused there, by an h_recovered_over gate this reply no longer declares). The code G branch (box 1 rolled over) is back. Elsewhere (plan without annuity: box 1 less box 5 less the rollover; traditional IRA: box 1 less the rollover; Roth IRA: zero, other than code Q refused by its h_roth_nonq as by the project's cited bad_code) the reply is the project's. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,198 agree; on completed returns 2 value differences, both with line 7 negative (generated 229 r1: project $28,082.59, reply $54,722.79; generated 395 r2: box 1 $0.00, reply $22,738.41); the rest are the project's cited refusals and unknowns on partial records, and 2 value differences on refused or incomplete returns. Project stands.",
-   "subject_key": "23206cc43fd11a90c2feea6ab0c2e3cf1797a3abfd8b337b6d5cf62781699751"
+   "ruling": "Ruling: model error; i1040gi, Rollovers, \"Use lines 5a and 5b to report a rollover, including a direct rollover ... Enter on line 5a the distribution from Form 1099-R, box 1. From this amount, subtract\"; p. 28, Fully Taxable Pensions and Annuities, \"Your payments are fully taxable if ... you got your entire cost back tax free before 2025\"; p. 29, Simplified Method Worksheet. executable-triage-v2 (pass e49be5c41831; 1,767 fixtures, 500 generated returns seed 20261026, 1,114 partial records; 2,663 comparisons): 2,309 of 2,663 agree; on completed returns 36 value, 13 candidate-unknown. Value witnesses read: classm.aqee.1, classm.aqee.1.deepseek, classm.eic.4.deepseek, classm.f8962.1.gpt and stage10.plan.direct_rollover are code G direct rollovers, where the reply taxes box 1 less an amount rolled over that the project does not ask for a code G entry (project 0, reply $45,285.00); stage10.smw.recovered_exceeds_cost has the cost already recovered, where the reply lets worksheet line 8 go negative (-$9,000.00) and taxes more than box 1 (reply $21,000.00, project $12,000.00, the box 1 amount). Both are the reply's errors, as in the earlier rounds on this line. The project line is unchanged by this round's edits (question wording only). No change to the data.",
+   "subject_key": "266caa76bd52e963858257391abe613bddba963b5888cd86b1322e79fd7ab154"
   },
   {
    "key": "retirement.amount_a",
-   "record": "3c0e927388264e3f2280b9859036c176239cef674ffe3a5b6af92e3a860520b7",
+   "record": "fbeb28ceea447ca8a7a874973648a56fb48e510f5c196f1bfe271b171945febe",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error and scope; i1040gi p. 28: \"If your pension or annuity is fully taxable, enter the total pension or annuity payments (from Form(s) 1099-R, box 1) on line 5b; don’t make an entry on line 5a.\" The reply enters box 1 on line 5a for every plan annuity (its h_show_a includes the Simplified Method test), also one that is fully taxable because it has no cost or its cost has been recovered: the earlier rulings' point (refresh round, generated 314 r2; round 3, generated 229 r1). The round-3 point on code G is gone: a code G entry has a line 5a entry, and one with box 1 $0.00 gives $0.00 on either side. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,081 agree; on completed returns 2 value differences, both plan annuities with no cost left (generated 229 r1, amount recovered above cost: project none, reply $28,082.59; generated 314 r2, code 4, cost $0: reply $46,209.90); the rest are the project's cited refusals and unknowns on partial records, and on refused or incomplete returns 6 value differences and 36 candidate-unknown. Project stands.",
-   "subject_key": "70b1460d800a72fabb076fa02bb69ecbe3f13f8ac2fc0601687be9d0e0b47515"
+   "ruling": "Ruling: model error; i1040gi p. 28, \"If your pension or annuity is fully taxable, enter the total pension or annuity payments (from Form(s) 1099-R, box 1) on line 5b; don't make an entry on line 5a.\" executable-triage-v2 (pass e49be5c41831; 1,767 fixtures, 500 generated returns seed 20261026, 1,114 partial records; 2,663 comparisons): 2,209 of 2,663 agree; on completed returns 65 value, 5 candidate-unknown. Value witnesses read: the code G direct rollovers (classm.aqee.1 and its family variants, classm.eic.4.deepseek, classm.f8962.1.gpt, stage10.plan.direct_rollover), where the reply makes no line 5a entry for a rolled-over plan distribution the project reports on line 5a (i1040gi, Rollovers, \"Enter on line 5a the distribution from Form 1099-R, box 1\"), and stage10.smw.cost_recovered, the same fully-taxable-annuity point as the earlier rulings on this line. No change to the data.",
+   "subject_key": "375a1b76472e076ba9e269d679854536492f7082e7828b10199abd2e91c29f7e"
   },
   {
    "key": "retirement.sav_amount",
@@ -50,45 +50,45 @@
   },
   {
    "key": "retirement.l1",
-   "record": "3c0e927388264e3f2280b9859036c176239cef674ffe3a5b6af92e3a860520b7",
+   "record": "fbeb28ceea447ca8a7a874973648a56fb48e510f5c196f1bfe271b171945febe",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity, model error and scope; i5329 p. 3, Line 1: \"Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from: • A qualified retirement plan ...\" (amb.2025.f5329_line1_codes, owner decision D8(a): codes 1 and S only). As the round-3 ruling: the reply puts codes 1, 2, 3 and S on line 1, the register's reading 2 (it excludes codes 2 and 3 in full on line 2, so the tax is the same), and its line 1 refuses on retirement.early_screen and code_screen for every entry (retirement.early_screen is asked only for code 1 and S entries, code_screen only for codes 2, 4 and 7). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,523 agree; on completed returns 78 candidate-unknown (the unasked screens, e.g. classm.f8962.2.deepseek r1, code 7, early_screen) and 2 value differences, both code 2 (generated 175 r1, plan, $0.00 against $52,095.29; generated 348 r1, traditional IRA, $0.00 against $4,784.11); 4 candidate refusals and 13 value differences on refused or incomplete returns. Project stands.",
-   "subject_key": "373bfb0ce3b94c55cf0ce54c1a5f48b1628864d71c8c73bbbeb9ba60343869e0"
+   "ruling": "Ruling: model error and scope; i5329 p. 3, Line 1, as in the earlier rulings on this line (amb.2025.f5329_line1_codes). executable-triage-v2 (pass e49be5c41831; 1,767 fixtures, 500 generated returns seed 20261026, 1,114 partial records; 2,663 comparisons): 1,909 of 2,663 agree; 733 candidate-unknown (96 on completed returns: the reply reads retirement.early_screen on entries where it is not asked), 20 project-refuses on refused returns, 1 project-unknown; no value difference. No change to the data.",
+   "subject_key": "5c2306a6f9892d8d3b276b839c0cfc1c002b36d65a773d33eccba27e4939f8bc"
   },
   {
    "key": "retirement.l2",
-   "record": "3c0e927388264e3f2280b9859036c176239cef674ffe3a5b6af92e3a860520b7",
+   "record": "fbeb28ceea447ca8a7a874973648a56fb48e510f5c196f1bfe271b171945febe",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity, model error and scope; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude.\" As the round-3 ruling: with codes 2 and 3 on line 1 (amb.2025.f5329_line1_codes reading 2, see retirement.l1) the reply excludes the whole line 1 amount for those codes on line 2, so the tax agrees; for code 1 and S it takes the smaller of the excepted amount and line 1, as the project. It carries line 1's screen refusals, now only on code 2 and 3 entries (other codes give zero without reading line 1). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,223 agree; on completed returns 25 candidate-unknown (retirement.early_screen on code 2 entries, e.g. classm.ira.2 r1) and 2 value differences, generated 175 r1 and 348 r1 (code 2, $0.00 against $52,095.29 and $4,784.11); 1 candidate refusal and 12 value differences on refused or incomplete returns. Project stands.",
-   "subject_key": "bd3d670c2590a54368db91052a03f434b62166cc16479cf17c7eb0efbf3fc586"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2. executable-triage-v2 (pass e49be5c41831; 1,767 fixtures, 500 generated returns seed 20261026, 1,114 partial records; 2,663 comparisons): 1,909 of 2,663 agree; 752 candidate-unknown (109 on completed returns: the reply reads retirement.early_screen where it is not asked), 1 candidate-refuses and 1 project-unknown on refused returns; no value difference. No change to the data.",
+   "subject_key": "0cc6c653111e6836a85c02e528fadb902399db2d2e297e116f091051f937de41"
   },
   {
    "key": "retirement.l2_e05",
-   "record": "3c0e927388264e3f2280b9859036c176239cef674ffe3a5b6af92e3a860520b7",
+   "record": "fbeb28ceea447ca8a7a874973648a56fb48e510f5c196f1bfe271b171945febe",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\" The reply tests retirement.exception before the code (exception 05, then line 2), so it needs the exception answer on every entry, where the project asks it only of code 1 and S entries (retirement.early_screen is asked only for code 1 and S entries, retirement.code_screen only for codes 2, 4 and 7, and retirement.exception only for code 1 and S entries; decision D3(a), the cited screens of retirement.screen_refused); and its line 2 carries line 1's screen refusals. Values agree where both compute. This is the refresh-round ruling's point, which the round-3 reply had fixed (ruled representation then). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,576 agree, no value difference; 75 completed candidate-unknown on retirement.exception (e.g. classm.f8962.2.deepseek r1, code 7); the rest candidate-unknown on refused or incomplete returns. Project stands.",
-   "subject_key": "118c34bbbeeeaaeba4a9dbc74b593c4eebade2efc8d71673159d46f3456d4011"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2, exceptions table. executable-triage-v2 (pass e49be5c41831; 1,767 fixtures, 500 generated returns seed 20261026, 1,114 partial records; 2,663 comparisons): 2,109 of 2,663 agree; 554 candidate-unknown (73 on completed returns: the reply reads retirement.exception on entries where it is not asked); no value difference. No change to the data.",
+   "subject_key": "eaa1ff7cc14879bacd19ccf8f37339a94b3f5a0f35b9be3448d4533bc7f598eb"
   },
   {
    "key": "retirement.l2_e09",
-   "record": "3c0e927388264e3f2280b9859036c176239cef674ffe3a5b6af92e3a860520b7",
+   "record": "fbeb28ceea447ca8a7a874973648a56fb48e510f5c196f1bfe271b171945febe",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\" The reply tests retirement.exception before the code (exception 09, then line 2), so it needs the exception answer on every entry, where the project asks it only of code 1 and S entries (retirement.early_screen is asked only for code 1 and S entries, retirement.code_screen only for codes 2, 4 and 7, and retirement.exception only for code 1 and S entries; decision D3(a), the cited screens of retirement.screen_refused); and its line 2 carries line 1's screen refusals. Values agree where both compute. This is the refresh-round ruling's point, which the round-3 reply had fixed (ruled representation then). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,574 agree, no value difference; 75 completed candidate-unknown on retirement.exception (e.g. classm.f8962.2.deepseek r1, code 7); the rest candidate-unknown on refused or incomplete returns. Project stands.",
-   "subject_key": "bb54e8fbaeecd18b408cacd85e942972e7f02237ae3380befa53fef1446f99e8"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2, exceptions table. executable-triage-v2 (pass e49be5c41831; 1,767 fixtures, 500 generated returns seed 20261026, 1,114 partial records; 2,663 comparisons): 2,054 of 2,663 agree; 609 candidate-unknown (74 on completed returns: the reply reads retirement.exception where it is not asked); no value difference. No change to the data.",
+   "subject_key": "c945b23a3fe670ab1ceb657efc048cc2bcfe07604c8b210944335bdb55c5854b"
   },
   {
    "key": "retirement.l2_e19",
-   "record": "3c0e927388264e3f2280b9859036c176239cef674ffe3a5b6af92e3a860520b7",
+   "record": "fbeb28ceea447ca8a7a874973648a56fb48e510f5c196f1bfe271b171945febe",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\" The reply tests retirement.exception before the code (exception 19, then line 2), so it needs the exception answer on every entry, where the project asks it only of code 1 and S entries (retirement.early_screen is asked only for code 1 and S entries, retirement.code_screen only for codes 2, 4 and 7, and retirement.exception only for code 1 and S entries; decision D3(a), the cited screens of retirement.screen_refused); and its line 2 carries line 1's screen refusals. Values agree where both compute. This is the refresh-round ruling's point, which the round-3 reply had fixed (ruled representation then). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,576 agree, no value difference; 75 completed candidate-unknown on retirement.exception (e.g. classm.f8962.2.deepseek r1, code 7); the rest candidate-unknown on refused or incomplete returns. Project stands.",
-   "subject_key": "7c6a46d4ac9d45edf52f9ffc96b2e9348f43465507f48c8081483bd3daf65303"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2, exceptions table. executable-triage-v2 (pass e49be5c41831; 1,767 fixtures, 500 generated returns seed 20261026, 1,114 partial records; 2,663 comparisons): 2,058 of 2,663 agree; 605 candidate-unknown (74 on completed returns: the reply reads retirement.exception where it is not asked); no value difference. No change to the data.",
+   "subject_key": "c322653224cc76265a8bd25dca314426327ef589d688d2dedad7b80cad46bce2"
   },
   {
    "key": "retirement.l2_e22",
-   "record": "3c0e927388264e3f2280b9859036c176239cef674ffe3a5b6af92e3a860520b7",
+   "record": "fbeb28ceea447ca8a7a874973648a56fb48e510f5c196f1bfe271b171945febe",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\" The reply tests retirement.exception before the code (exception 22, then line 2), so it needs the exception answer on every entry, where the project asks it only of code 1 and S entries (retirement.early_screen is asked only for code 1 and S entries, retirement.code_screen only for codes 2, 4 and 7, and retirement.exception only for code 1 and S entries; decision D3(a), the cited screens of retirement.screen_refused); and its line 2 carries line 1's screen refusals. Values agree where both compute. This is the refresh-round ruling's point, which the round-3 reply had fixed (ruled representation then). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,576 agree, no value difference; 75 completed candidate-unknown on retirement.exception (e.g. classm.f8962.2.deepseek r1, code 7); the rest candidate-unknown on refused or incomplete returns. Project stands.",
-   "subject_key": "2eb62dedd206ecfbf8025e1a40019c7189b0c5812833f7361f8a06b6248472ba"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2, exceptions table. executable-triage-v2 (pass e49be5c41831; 1,767 fixtures, 500 generated returns seed 20261026, 1,114 partial records; 2,663 comparisons): 2,104 of 2,663 agree; 558 candidate-unknown (76 on completed returns: the reply reads retirement.exception where it is not asked), 1 project-unknown on a refused return; no value difference. No change to the data.",
+   "subject_key": "c57429e7d71b984f778dbdcdb2f97804c58727ed5138e7b160e699eeda0ab83d"
   },
   {
    "key": "retirement.is_e23",
@@ -99,24 +99,24 @@
   },
   {
    "key": "retirement.l2_e23",
-   "record": "3c0e927388264e3f2280b9859036c176239cef674ffe3a5b6af92e3a860520b7",
+   "record": "fbeb28ceea447ca8a7a874973648a56fb48e510f5c196f1bfe271b171945febe",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\" Through retirement.is_e23 the reply tests the code before exception 23, as the round-3 reply did, but includes codes 2 and 3, so on code 2 and 3 entries it needs retirement.exception (and, through line 2, retirement.early_screen), where the project asks it only of code 1 and S entries (retirement.early_screen is asked only for code 1 and S entries, retirement.code_screen only for codes 2, 4 and 7, and retirement.exception only for code 1 and S entries; decision D3(a), the cited screens of retirement.screen_refused). Values agree where both compute. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,272 agree, no value difference; 25 completed candidate-unknown (e.g. classm.ira.2 r1, code 2), the rest on refused or incomplete returns. Project stands.",
-   "subject_key": "569c1c0115a9149e820ea26003ae0f219c07e942bf70c38c5164480cdd74c166"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2, exceptions table. executable-triage-v2 (pass e49be5c41831; 1,767 fixtures, 500 generated returns seed 20261026, 1,114 partial records; 2,663 comparisons): 2,106 of 2,663 agree; 557 candidate-unknown (75 on completed returns: the reply reads retirement.exception where it is not asked); no value difference. No change to the data.",
+   "subject_key": "517d0e6543e51ea22db4763919172235ba56fba69bf753175f45b3e44b9c70e1"
   },
   {
    "key": "retirement.l1_s",
-   "record": "3c0e927388264e3f2280b9859036c176239cef674ffe3a5b6af92e3a860520b7",
+   "record": "fbeb28ceea447ca8a7a874973648a56fb48e510f5c196f1bfe271b171945febe",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i5329 p. 5, Line 4: \"you must multiply that amount by 25% instead of 10%\" (a SIMPLE IRA distribution within 2 years). As the round-3 ruling: for a code S entry the reply's share is its line 1, the taxable amount, as the project's; for other codes zero. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,388 agree, nothing on completed returns; the project's cited retirement.bad_code refusal (fixture stage21.refuse.bad_code_screen_unasked) and 1 candidate-unknown on an incomplete partial record (stage21.mut.simple_e23_within_cap withholding retirement.code_screen, which the project does not ask of code S); the reply's line 1 screens are ruled on retirement.l1. Project stands.",
-   "subject_key": "6b19f2c8d50277ebcdb8388a804ef9a6ce6012def32d52108ee33838a154fbd9"
+   "ruling": "Ruling: model error and scope; i5329 p. 5, Line 4, code S distributions. executable-triage-v2 (pass e49be5c41831; 1,767 fixtures, 500 generated returns seed 20261026, 1,114 partial records; 2,663 comparisons): 2,641 of 2,663 agree; 2 candidate-unknown (1 on a completed return: the reply reads retirement.code_screen on a code S entry, where it is not asked), 20 project-refuses on refused returns; no value difference. No change to the data.",
+   "subject_key": "c4a45d66306e1297a46f9ad1186b5fdeca3650579fb4a82ebb9f39c3c5b75c5e"
   },
   {
    "key": "retirement.l2_s",
-   "record": "3c0e927388264e3f2280b9859036c176239cef674ffe3a5b6af92e3a860520b7",
+   "record": "fbeb28ceea447ca8a7a874973648a56fb48e510f5c196f1bfe271b171945febe",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i5329 p. 5, Line 4 (25% for a code S distribution in the first 2 years); i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\" As the round-3 ruling: for a code S entry the reply's share is its line 2 (the smaller of the excepted amount and line 1), as the project's; for other codes zero. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,389 agree; the one difference is candidate-unknown on an incomplete partial record (stage21.mut.simple_e23_within_cap withholding retirement.code_screen, which the project does not ask of code S); the reply's line 1 screens are ruled on retirement.l1. Project stands.",
-   "subject_key": "e4e810e60d7f704230144780236a1b0bbf9e80416fb8298f519a3a03de426724"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 4. executable-triage-v2 (pass e49be5c41831; 1,767 fixtures, 500 generated returns seed 20261026, 1,114 partial records; 2,663 comparisons): 2,658 of 2,663 agree; 5 candidate-unknown (1 on a completed return: the reply reads retirement.code_screen on a code S entry, where it is not asked); no value difference. No change to the data.",
+   "subject_key": "78fb747eb00bf8c644e86f5fcc5ace8acb5b39c796242d86d3a5d49d4776b194"
   },
   {
    "key": "(SMW 1)",
@@ -141,10 +141,10 @@
   },
   {
    "key": "(SMW 5)",
-   "record": "3c0e927388264e3f2280b9859036c176239cef674ffe3a5b6af92e3a860520b7",
+   "record": "fbeb28ceea447ca8a7a874973648a56fb48e510f5c196f1bfe271b171945febe",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; repeats the round-3 ruling: same reply and project expressions, the current project line and the source pages checked again. i1040gi p. 30, Simplified Method: \"If you must use the Simplified Method, complete the Simplified Method Worksheet in these instructions to figure the taxable part of your pension or annuity.\" i1040gi p. 28, Fully Taxable Pensions and Annuities: \"Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025.\" i1040gi p. 29, Simplified Method Worksheet. The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the value matches where both show it. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,503 agree; on completed returns 2 candidate-shows-skipped and 50 candidate-unknown (values the reply's display condition shows on entries the project hides, e.g. plan annuities with no cost, or worksheet answers the interview does not ask there); the rest the same kinds and project-unknown partial records on refused or incomplete returns. Project stands.",
-   "subject_key": "f4221315008c3797a98487ea82222475d55ae6fc8fea72b1a367a9ac7f8c2418"
+   "ruling": "Ruling: model error; repeats the earlier rulings on this line. i1040gi p. 29, Simplified Method Worksheet, line 5, \"Multiply line 4 by the number of months for which this year's payments were made\"; i1040gi p. 28, Fully Taxable Pensions and Annuities. The reply shows the worksheet for every plan annuity and reads retirement.used_last_year where the project does not ask it. executable-triage-v2 (pass e49be5c41831; 1,767 fixtures, 500 generated returns seed 20261026, 1,114 partial records; 2,663 comparisons): 2,126 of 2,663 agree; 500 candidate-unknown, 6 candidate-shows-skipped, 31 project-unknown; no value difference. The project line is unchanged by this round (retirement.months is reworded only). No change to the data.",
+   "subject_key": "2ab16cc0b296e360f18cf5def5306f7eaedf8344e69d9df7fa499f07a211b921"
   },
   {
    "key": "(SMW 6)",
@@ -193,23 +193,23 @@
   "retirement.one": "76b9f2cffa363962328538b47981396fbfe500bba0758d5db5018ea61d1d0a64",
   "retirement.is_ira": "346a3e8d9e9bd5fd570df6652d6d72eac3cf20ec1a8149eb316e81b972dcde84",
   "retirement.has_rollover": "74b8952c5d70feae591b1c9976d73d6f2bd80af2b698c9a22308c6da6037e57a",
-  "retirement.taxable": "513c7cada25dec37790cc5804d5e448acfdb58adf5051f4631d277114c56cc97",
-  "retirement.amount_a": "9f8b347361ed02a4c7ab7279da5bcf8d3b9c5804e31d3a57786d516cf1f33a66",
+  "retirement.taxable": "cb85089cacfe8031f53b737a30e7a59bab74cb00d2cd467c3f0c10d3fcfa006c",
+  "retirement.amount_a": "a1055d005f0440d1ba0ee7d5f668a3cedbf8aa8bf294e7a3f3be6620b3a7fa8d",
   "retirement.sav_amount": "6d8231061e14a32c331f056df4eacc7da4459486f4c652fe65670dd2fbf0ca8b",
-  "retirement.l1": "05de04c368ffa3557e0c731b3923e7582ef7b0ab19fd41c20dc30fdf26475ef4",
-  "retirement.l2": "a4e995f0b898825594a9a5b3653a765b2942b8d41e4fd20051dba6289fe9f561",
-  "retirement.l2_e05": "54e7a8afe46a8429ce1efff5f2e43648136fd4ff52a84502c781957e6d4dcc6d",
-  "retirement.l2_e09": "309450be3868c1c40628a32e592a69b3a6438a47198458771e8f7afa96a84728",
-  "retirement.l2_e19": "8b46010cff7b4df3ca3264eb648f22b01be1d7b234e134bff35ac36520b0597b",
-  "retirement.l2_e22": "becadc7eba4b0e226f9d5b164be1223020d58c439b177e6760265c3b1c66acad",
+  "retirement.l1": "827209dde98b1f9a14d0c5e1590619222a567d2fc414c99a39b42c4b4c194202",
+  "retirement.l2": "72a98f1b1c8b4f1242b5a93838d248f505638fdc76bad394d85a23aa17d5d139",
+  "retirement.l2_e05": "b5222937432fcf0c944bf3b841cc695868b6eb2b2a2b9c7818ed007eddbd657f",
+  "retirement.l2_e09": "b4cfe6743d1850618ac3e850625f0b721625c419ce606ce8d458fa74b19c14bf",
+  "retirement.l2_e19": "77d4cb22878d2d3cdc18cb34b9b0cfbd32d7c14b132445e0b2270d2000be4b30",
+  "retirement.l2_e22": "1841f895ba9a381baa97d40301887696ee1007afe715970a8c00644bb1b41207",
   "retirement.is_e23": "d7026551843db7349d62b187ebdb7eb262f1ddd4f11baade3a052fa8c16388ff",
-  "retirement.l2_e23": "ea82768ac2c5bed5ef37beab8b4a20bdac0575b40a8121acfe1c6a16f7222cfd",
-  "retirement.l1_s": "3412c86cdbab602e8e51fe6d8ede656bc2c3bd0b23c1106cd26ac391a563530c",
-  "retirement.l2_s": "4e71966bb8ebcc7e33c2ec0d8ab2923ac3d00617b2613a91719c47c2c2110e44",
+  "retirement.l2_e23": "8424b484e98b2847413da94cd756af20439d34ea910bb43735571cdd6e5af375",
+  "retirement.l1_s": "aea753f4e77cf322994d0989b564ef4127c2132b49e326531a1074eb98c2cf4e",
+  "retirement.l2_s": "9acb161be7ad1dda5bf83b19614cc5b3c013ac4ae15e66d15b3cdca94d77c4cb",
   "(SMW 1)": "721fed1def417f7a76f27b5bd3eb0d1c63e665991392d4d09038214e88504add",
   "(SMW 2)": "705919f4f24548b46adccdff00f68519726623f5576a1e8b651910b9843dd004",
   "(SMW 4)": "a9c7a3dd265966773138d13f04a7dce3056fed473aea48d6e2215cf839621edd",
-  "(SMW 5)": "cd5892106c7336b0cb44655449ceb51c2682eef536faa1c87ee8a051572ecbdd",
+  "(SMW 5)": "2f5e06103fb18d5a407077b23b17b8de412d9266d99efae0764ebecd2e7509a9",
   "(SMW 6)": "38e18e7f3d4cb4eedaca75504a0d06d756e61ad40f86bec33017226b913d5143",
   "(SMW 7)": "9e045358dc36411778545377d80217180e13098eca4813e237d3024e9622be9b",
   "(SMW 8)": "b084036361dd9f59b39451906c9c76bb63510030ce32640d032563e80c430d05",

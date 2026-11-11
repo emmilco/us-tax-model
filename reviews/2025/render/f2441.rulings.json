@@ -19,6 +19,16 @@
   },
   {
    "printed": "16",
+   "restated": "Add helper \"Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before excluding any benefits)\" and helper \"Qualified care expenses incurred in 2025 not already counted in the per-person care amounts\".",
+   "model": "Line 16 asks for \"the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn't matter when the expenses were paid.\" The restatement adds expenses paid in 2025 to other 2025 expenses whenever paid, which fits. But its input leaves out the value of care your employer furnished itself, and no refusal covers line 16. The text does not say whether that value counts as an expense incurred, and it affects lines 17 and 26.",
+   "ruling": "Ruling: scope; amb.2025.dc_employer_care_value. The restatement is right that f2441.paid_2026 leaves out the value of care the employer furnished itself, and that the instructions do not say whether that value is an expense incurred. The reviewer's \"no refusal covers line 16\" is wrong: line 17 refuses when the employer furnished the care and line 16 is less than line 15 (f2441.employer_care_l16, i2441 p. 5, Line 16), and f2441.employer_care_gate refuses employer-furnished care alongside paid expenses (i2441 p. 3, Columns (a) and (b)). No change to the data.",
+   "context": "7eebd63940fa2b712bdbd3988dd9d76979d96cf03c9eb29782d063a6f182b9de",
+   "date": "2026-11-10",
+   "run": "75bec387ea1c2a23ff30897f6938fc517c237aff06e6009b48c97c8019e44515",
+   "subject_key": "0eed1c04746be3a8ffb2acefbc868f172a57c1e75b91cb23ac9568f3ae8c3cb2"
+  },
+  {
+   "printed": "16",
    "restated": "Add helper \"Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before excluding any benefits)\" and helper \"Qualified expenses for care of the qualifying persons in 2025 that you paid, or will pay, in 2026\".",
    "model": "Line 16 is \"the total of all qualified expenses incurred in 2025 ... It doesn't matter when the expenses were paid.\" The restatement adds only 2025 expenses paid in 2025 and those paid in 2026. It leaves out 2025 care that was prepaid in 2024.",
    "ruling": "Ruling: project retained (representation), as the prior ruling. The helper \"Total of the qualified expenses incurred and paid in 2025\" is the sum of each person's column (d), dependent.dc_paid, which asks for 2025 care prepaid in 2024 (\"Include care you prepaid in 2024 for 2025\"), as the publication directs (p503 p. 10, Expenses prepaid in an earlier year, \"you can count the prepaid expenses only in the year the care is received\"); f2441.paid_2026 adds 2025 care paid in 2026. So the line is all care incurred in 2025 whenever paid (i2441 p. 5, Line 16, \"It doesn't matter when the expenses were paid\"). No change.",
@@ -142,6 +152,26 @@
    "subject_key": "fa32cc06ab5261181d17d3426a355c4085bbce8fe0ffd29d9b26a7794fd09513"
   },
   {
+   "printed": "2 (box)",
+   "restated": "helper \"Number of qualifying persons\" > 3 (dc.providers_listed)",
+   "model": "The count only includes confirmed dependents, so a disabled spouse never counts and no refusal names that case. The instructions list as a qualifying person \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year,\" and such a spouse can push the count above three.",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",
+   "context": "825c793ad5dd564e0af7b3eccb2c6ef6bc1f86b68008261c28de9b6e6b5c388e",
+   "date": "2026-11-10",
+   "run": "b4b82a09760ed475ed2a8ec43b7bfbb812af0c13edb34ffd1003fce4eea02fd6",
+   "subject_key": "d86bfa77e7f2fe1509c6bb167f23766ef4c4bc03b466cb6981d052bfe7d3ec55"
+  },
+  {
+   "printed": "21",
+   "restated": "Enter the smaller of helper \"Year parameter dc.exclusion_max ($5,000)\" or helper \"The maximum amount your dependent care plan allows to be excluded for 2025\".",
+   "model": "The program always starts from $5,000, but the form says \"Enter $5,000 ($2,500 if married filing separately and you were required to enter your spouse's earned income on line 19).\" No refusal names the $2,500 case.",
+   "ruling": "Ruling: scope; f2441 p. 2, line 21, \"Enter $5,000 ($2,500 if married filing separately and you were required to enter your spouse's earned income on line 19)\". The project refuses every married filing separately return (s3.mfs in scope.ready, and on lines 11 and 26, whose refusal names \"lines 19 and 21\"; owner decision 5), so the $2,500 case never arises; as the transcription ruling on this line. No change to the data.",
+   "context": "825c793ad5dd564e0af7b3eccb2c6ef6bc1f86b68008261c28de9b6e6b5c388e",
+   "date": "2026-11-10",
+   "run": "b4b82a09760ed475ed2a8ec43b7bfbb812af0c13edb34ffd1003fce4eea02fd6",
+   "subject_key": "1b2ded6759474f4a6a13a91b10dc29b54f29cf6b3cf0cea9d7fd9f5c9e6fde8e"
+  },
+  {
    "printed": "22",
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "Line 22 asks \"Is any amount on line 12 or 13 from your sole proprietorship or partnership? ... Yes. Enter the amount here\". The restatement always enters $0 and no refusal names the Yes case.",
@@ -169,6 +199,36 @@
    "model": "The form says \"Is any amount on line 12 or 13 from your sole proprietorship or partnership? ... Yes. Enter the amount here.\" The restatement always enters $0, and there is no refusal for sole proprietorship or partnership benefits, even though line 12 includes them.",
    "ruling": "Ruling: project retained (scope), as the prior ruling. Both Yes cases are refused on other lines, so the answer is always No and line 22 is zero (f2441 p. 2, line 22, \"Is any amount on line 12 or 13 from your sole proprietorship or partnership? No. Enter -0-\"): benefits from your own sole proprietorship by the Schedule C screen (sc.special, \"contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)\"), a partnership by the Schedule 1 screen (scope.schedule1, \"partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\"), and any benefit not shown in Form W-2 box 10 by scope.other_income. No change.",
    "subject_key": "f8d21be2a6d7fbb0e07b5ed8eeed7f606f622a49951c380a180ff74d67f70ec7"
+  },
+  {
+   "printed": "27",
+   "restated": "Enter the amount from helper \"$3,000 if you had one qualifying person, $6,000 if you had two or more\".",
+   "model": "The $3,000/$6,000 choice uses a count of dependents only, so a disabled spouse does not count toward \"two or more qualifying persons.\" The instructions include \"Your disabled spouse\" as a qualifying person, and no refusal names this case.",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",
+   "context": "825c793ad5dd564e0af7b3eccb2c6ef6bc1f86b68008261c28de9b6e6b5c388e",
+   "date": "2026-11-10",
+   "run": "b4b82a09760ed475ed2a8ec43b7bfbb812af0c13edb34ffd1003fce4eea02fd6",
+   "subject_key": "bb0f1a9e9ff5184020b5724d75f865965c07308d8963a46bac2d9a6b54835948"
+  },
+  {
+   "printed": "3",
+   "restated": "Choose — [helper \"Did you receive dependent care benefits?\" = true → line 31] [helper \"Did you receive dependent care benefits?\" = false → helper \"Line 3 without Part III. Add the amounts in column (d) of line 2, not more than $3,000 for one qualifying person or $6,000 for two or more\"]",
+   "model": "The Part III branch (line 31) and the min(column (d) total, $3,000/$6,000) branch match the form. But the column (d) total and the one-or-two-person limit only count dependents, which leaves out \"Your disabled spouse who wasn't physically or mentally able to care for themselves.\" No refusal names this case.",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",
+   "context": "825c793ad5dd564e0af7b3eccb2c6ef6bc1f86b68008261c28de9b6e6b5c388e",
+   "date": "2026-11-10",
+   "run": "b4b82a09760ed475ed2a8ec43b7bfbb812af0c13edb34ffd1003fce4eea02fd6",
+   "subject_key": "9254b18a74075ae9110a6f5488efd7f216d97e3f1399bc645487a2d29dcf0557"
+  },
+  {
+   "printed": "30",
+   "restated": "Subtract line 28 from helper \"Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before excluding any benefits)\". If zero or less, enter -0-.",
+   "model": "Subtracting line 28 from the column (d) total, with a floor of zero, fits \"Don't include in column (d) any benefits shown on line 28.\" But the column (d) total omits expenses for a disabled spouse (\"Your disabled spouse ... lived with you for more than half the year\"), and no refusal names this case.",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",
+   "context": "825c793ad5dd564e0af7b3eccb2c6ef6bc1f86b68008261c28de9b6e6b5c388e",
+   "date": "2026-11-10",
+   "run": "b4b82a09760ed475ed2a8ec43b7bfbb812af0c13edb34ffd1003fce4eea02fd6",
+   "subject_key": "a94e354ce38f8b98e748675a1d5bfcb155d3ad4bd6a19106923c5c599f0d335d"
   },
   {
    "printed": "4",
