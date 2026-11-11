@@ -17,6 +17,38 @@
    "subject_key": "2c9af7d7c3528952295af45db858993694c164f191c6af9da5471d0b9a441fef"
   },
   {
+   "printed": "qbi.eligible",
+   "project_expr_sha256": "cf6ef81da51e57f972ea5d89200516dbcd25bb1a79d076b1b226901d074f92a6",
+   "second_expr_sha256": "8e43bd4b72d2ddc02364a776e8d0809aab64b5047b195f8fb5b1ceb43db3ae28",
+   "ruling": "Ruling: model error; the reply takes the input qbi.dividends on every return, where the project reads it only when ordinary dividends are above zero (zero otherwise), because the interview asks the section 199A dividend amount only after dividends are entered (f1099div p. 5, Box 5, \"Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\": box 5 is part of box 1a, so without ordinary dividends there is none). On a return with no dividends the reply therefore needs an answer the interview does not ask. Triage executable-triage-v2 (`.transcription/triage/2025/qbi.json`, pass f8a472cd57e9; 1,767 fixtures, 500 generated returns seed 20261026): 2,207 of 2,355 in-scope comparisons agree; differences by kind {\"candidate-unknown\": 134, \"project-unknown\": 14}; on completed returns 97 candidate-unknown (the recorded witnesses name qbi.dividends, with the project's value zero); the project-unknown are partial records that withhold an answer the project needs. No value differs where both give one. The project line is retained.",
+   "context": "cad3ceda97708a82a66d6e911a6d0b3567a53b430162aea0ca47dfcf8df6b079",
+   "date": "2026-11-10",
+   "run": "611fc2b429c856cf464093db3c5200f62d11f79f1f3767229f675fe815c0b3b2",
+   "subject_key": "169abce05a81ed3f6e736d3dc53849a05ccd8c27eabc98df45770e5c4d94fd32",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@qbi",
+     "fixture:classm.f8889.4.deepseek@qbi",
+     "fixture:classm.sa.1.deepseek@qbi",
+     "fixture:classm.sa.2.deepseek@qbi",
+     "fixture:classm.sa.3.deepseek@qbi",
+     "fixture:classm.sa.4.deepseek@qbi",
+     "fixture:classm.sa.6.deepseek@qbi",
+     "fixture:classm.f2441.1@qbi",
+     "fixture:classm.f8889.3@qbi",
+     "fixture:classm.f8889.4@qbi",
+     "fixture:classm.gift.1@qbi",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@qbi"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "qbi.net_capital_gain",
    "project_expr_sha256": "b796702e6626706e94187db20ddeddc5eaa5fbfcc31489cd9ac5f088f644caf5",
    "second_expr_sha256": "890766b1132a65ae39e4ddcd25ef8d9c0e993247326a5abeb91bd8b2088e1a4a",

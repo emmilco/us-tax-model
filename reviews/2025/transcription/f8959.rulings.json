@@ -3,12 +3,124 @@
  "form": "f8959",
  "rulings": [
   {
+   "printed": "1",
+   "project_expr_sha256": "cebec1125cfe5a938dbd49418f4c1a4c1417e59edb5cffdb0f2db3575352747b",
+   "second_expr_sha256": "100dca9a8485ad4b5812130839baa288cfa5937e252a0b384fdc4914e5e69041",
+   "ruling": "Ruling: interface gap; the value is the project's on both sides and only the display condition differs (the request labels shown_when Optional, T-163): the reply shows the line only when line 1 is more than zero, the project shows it on every return, where it is zero without Medicare wages (i8959 p. 3, Part I, \"If you (and your spouse if filing a joint return) didn’t have Medicare wages, skip Part I and go to Part II.\"). A zero line shown or left blank changes no amount. Triage executable-triage-v2 (`.transcription/triage/2025/f8959.json`, pass 9dd1d982ec65; 1,767 fixtures, 500 generated returns seed 20261026, 40 partial records): agrees on all 2,259 in-scope comparisons. The project line is retained.",
+   "context": "86846a62f5d965c09a4051a42397de203468749490ed587e47dae8cb6219e17c",
+   "date": "2026-11-11",
+   "run": "a6287ab0c1e2957aafa2423730df65eabd052f70d25db98af94c762e1c2adb7a",
+   "subject_key": "b46c12b6e5a5238baef2a4c0975e3a14496f779c2c49ce7d45db95fa79f7ee69",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "14",
+   "project_expr_sha256": "b16766589c75d0bdfed71b5b1922cab41bdf9521d17e2f0441dab71abfcd5bf5",
+   "second_expr_sha256": "d73a96ecbac9b06f4b4ee2d8ce8f09ef9714ade659d3ec7dcd4c84c73a56a052",
+   "ruling": "Ruling: interface gap; the value is the project's on both sides and only the display condition differs (the request labels shown_when Optional, T-163): both sides enter zero, RRTA compensation being outside the tool and refused through f8959.unsupported; the reply shows the line only when that screen is answered yes (the returns the project refuses), the project shows the zero on every return. No amount differs. Triage executable-triage-v2 (`.transcription/triage/2025/f8959.json`, pass 9dd1d982ec65; 1,767 fixtures, 500 generated returns seed 20261026, 40 partial records): agrees on all 2,278 in-scope comparisons. The project line is retained.",
+   "context": "86846a62f5d965c09a4051a42397de203468749490ed587e47dae8cb6219e17c",
+   "date": "2026-11-11",
+   "run": "a6287ab0c1e2957aafa2423730df65eabd052f70d25db98af94c762e1c2adb7a",
+   "subject_key": "c3de15260d097a3c547c2eebcab59ca65bbaeccf0c1ce96410f937b163b1fe56",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "15",
    "project_expr_sha256": "3d204cc405d4cdf75f5147c2c37f6185b09404f75fbbe20a6febc27856e1e972",
    "second_expr_sha256": "d9befdb182a205419e2f0304de72344e7acb781b846879a693a95d42b7bdd1c0",
    "ruling": "Ruling: representation; f8959 p.1 lines5/9/15 print the identical filing-status threshold table. Copying line5 and reading medicare.threshold directly have the same published type and filing-status amounts. No tax-value difference.",
    "context": "888149479c2e498bea4bb948c3cd5620f3f956471f9be2e7691160cd522fde42",
    "subject_key": "89cd5bb1b2cb33f42bc1751fd380723b85a77a28938263db589d8f7d2516ac8b"
+  },
+  {
+   "printed": "19",
+   "project_expr_sha256": "0cc0f5376d5cba76c3552d9f82723c7edd9e54e0eb747ed5691e3f65b4eb7978",
+   "second_expr_sha256": "e053647564a3e1b2e968a46423e125459a9f9e03ba4626bcbac18238fc441d9a",
+   "ruling": "Ruling: interface gap; the value is the project's on both sides and only the display condition differs (the request labels shown_when Optional, T-163): the reply shows the line only when line 1 is more than zero, the project shows it on every return, where it is zero without Medicare wages (i8959 p. 3, Part I, \"If you (and your spouse if filing a joint return) didn’t have Medicare wages, skip Part I and go to Part II.\"). A zero line shown or left blank changes no amount. Triage executable-triage-v2 (`.transcription/triage/2025/f8959.json`, pass 9dd1d982ec65; 1,767 fixtures, 500 generated returns seed 20261026, 40 partial records): agrees on all 2,259 in-scope comparisons. The project line is retained.",
+   "context": "86846a62f5d965c09a4051a42397de203468749490ed587e47dae8cb6219e17c",
+   "date": "2026-11-11",
+   "run": "a6287ab0c1e2957aafa2423730df65eabd052f70d25db98af94c762e1c2adb7a",
+   "subject_key": "11a467e6e45fc91ea69457b0a5512fbcd28daf6d8bd638e057b61b83b5bfa0d9",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2",
+   "project_expr_sha256": "b16766589c75d0bdfed71b5b1922cab41bdf9521d17e2f0441dab71abfcd5bf5",
+   "second_expr_sha256": "d73a96ecbac9b06f4b4ee2d8ce8f09ef9714ade659d3ec7dcd4c84c73a56a052",
+   "ruling": "Ruling: interface gap; the value is the project's on both sides and only the display condition differs (the request labels shown_when Optional, T-163): both sides enter zero, Form 4137 tips being outside the tool and refused through f8959.unsupported; the reply shows the line only when that screen is answered yes (the returns the project refuses), the project shows the zero on every return. No amount differs. Triage executable-triage-v2 (`.transcription/triage/2025/f8959.json`, pass 9dd1d982ec65; 1,767 fixtures, 500 generated returns seed 20261026, 40 partial records): agrees on all 2,278 in-scope comparisons. The project line is retained.",
+   "context": "86846a62f5d965c09a4051a42397de203468749490ed587e47dae8cb6219e17c",
+   "date": "2026-11-11",
+   "run": "a6287ab0c1e2957aafa2423730df65eabd052f70d25db98af94c762e1c2adb7a",
+   "subject_key": "3204607dbeb50245293ad65aa87b2230d30e2f0c478d6bb3fb8be8fabb80ba28",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "23",
+   "project_expr_sha256": "b16766589c75d0bdfed71b5b1922cab41bdf9521d17e2f0441dab71abfcd5bf5",
+   "second_expr_sha256": "d73a96ecbac9b06f4b4ee2d8ce8f09ef9714ade659d3ec7dcd4c84c73a56a052",
+   "ruling": "Ruling: interface gap; the value is the project's on both sides and only the display condition differs (the request labels shown_when Optional, T-163): both sides enter zero, Additional Medicare Tax withheld on RRTA compensation being outside the tool and refused through f8959.unsupported; the reply shows the line only when that screen is answered yes (the returns the project refuses), the project shows the zero on every return. No amount differs. Triage executable-triage-v2 (`.transcription/triage/2025/f8959.json`, pass 9dd1d982ec65; 1,767 fixtures, 500 generated returns seed 20261026, 40 partial records): agrees on all 2,278 in-scope comparisons. The project line is retained.",
+   "context": "86846a62f5d965c09a4051a42397de203468749490ed587e47dae8cb6219e17c",
+   "date": "2026-11-11",
+   "run": "a6287ab0c1e2957aafa2423730df65eabd052f70d25db98af94c762e1c2adb7a",
+   "subject_key": "f135feff5963a83b5c451cab0c9eac4ee4a4b64f41469eba30ed7cabbae19333",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3",
+   "project_expr_sha256": "b16766589c75d0bdfed71b5b1922cab41bdf9521d17e2f0441dab71abfcd5bf5",
+   "second_expr_sha256": "d73a96ecbac9b06f4b4ee2d8ce8f09ef9714ade659d3ec7dcd4c84c73a56a052",
+   "ruling": "Ruling: interface gap; the value is the project's on both sides and only the display condition differs (the request labels shown_when Optional, T-163): both sides enter zero, Form 8919 wages being outside the tool and refused through f8959.unsupported; the reply shows the line only when that screen is answered yes (the returns the project refuses), the project shows the zero on every return. No amount differs. Triage executable-triage-v2 (`.transcription/triage/2025/f8959.json`, pass 9dd1d982ec65; 1,767 fixtures, 500 generated returns seed 20261026, 40 partial records): agrees on all 2,278 in-scope comparisons. The project line is retained.",
+   "context": "86846a62f5d965c09a4051a42397de203468749490ed587e47dae8cb6219e17c",
+   "date": "2026-11-11",
+   "run": "a6287ab0c1e2957aafa2423730df65eabd052f70d25db98af94c762e1c2adb7a",
+   "subject_key": "d4cb790acfd4b59369c360a045d1a2b8aea2f911de13f5b0e02ef5684f739926",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "1a84b6c77f31847550d0285775048eaa1878d758d0a32f873a72e163dfb3dc2d",
+   "second_expr_sha256": "22a991ebfd779f5620831434f70ded96e57b6a85a41324532b136d89f6e9c13e",
+   "ruling": "Ruling: interface gap; the value is the project's on both sides and only the display condition differs (the request labels shown_when Optional, T-163): the reply shows the line only when line 8 is more than zero, the project shows it on every return, where it is zero without self-employment income (i8959 p. 3, Part II, \"If you (and your spouse if filing a joint return) didn’t have self-employment income, skip Part II and go to Part III.\"). A zero line shown or left blank changes no amount. Triage executable-triage-v2 (`.transcription/triage/2025/f8959.json`, pass 9dd1d982ec65; 1,767 fixtures, 500 generated returns seed 20261026, 40 partial records): agrees on all 2,192 in-scope comparisons. The project line is retained.",
+   "context": "86846a62f5d965c09a4051a42397de203468749490ed587e47dae8cb6219e17c",
+   "date": "2026-11-11",
+   "run": "a6287ab0c1e2957aafa2423730df65eabd052f70d25db98af94c762e1c2adb7a",
+   "subject_key": "a3696e7904fc0f616c216a93bba5c4839eea3abc9afecdd198b4e034ade7f72e",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "9",

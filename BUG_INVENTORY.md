@@ -7540,3 +7540,38 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
   - BUG-0567: `dependent.lawful` asks whether the relationship was lawful under local law throughout 2025 and to answer No only if it violated local law at any time during 2025 (also the BUG-0568 lawful low).
   Spouse rule (owner decision, conditional phrasing "(or, on a joint return, your spouse)"): `f2441.nondependent`, `f2441.prior_year`, `f2441.line13`, `f2441.line14`, `f2441.employer_care` and `f2441.plan_max` now name the spouse; the `f2441.line13` and `f2441.plan_max` items of BUG-0534 are fixed by the same edit. No fixture changes.
 - **Tags:** record-drift; closes-earlier-entry; caught-by-question-review
+
+## BUG-0591 — BUG-0538 is fixed: the Schedule 1 canceled-debt and unemployment questions name the spouse on a joint return
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0538
+- **Caught by:** BUG-0538, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** i1040gi p. 13, Married Filing Jointly, "A married couple filing jointly report their combined income and deduct their combined allowable expenses on one return."; i1040gi p. 89, Schedule 1, line 7; p4681 p. 4, Form 1099-C Reference Guide.
+- **Symptom:** as recorded in BUG-0538.
+- **Fix:** both questions use the interview's spouse phrasing (interview/README.md, Question data). `s1.cod_any`: "Was any of your (or, on a joint return, your spouse's) debt canceled or forgiven in 2025 ...". `s1.uc_paid`: "Unemployment compensation paid to you (or, on a joint return, your spouse) in 2025: the total of box 1 of your (or, on a joint return, your spouse's) Forms 1099-G (if box 1 is wrong, the amount actually paid)". The same phrasing is applied to their siblings `s1.cod_amount`, `s1.cod_unsupported`, `s1.uc_repaid` and `s1.uc_unsupported`; `s1.cod_amount` also says that a debt both spouses owed is counted once even if each received a Form 1099-C for the whole amount (p4681 p. 4, "If you and another person were jointly and severally liable for a canceled debt, each of you may get a Form 1099-C showing the entire amount of the canceled debt").
+- **Fix lines:** `s1.cod_any`, `s1.uc_paid`
+- **Siblings checked:** `s1.cod_amount`, `s1.uc_repaid`, `s1.uc_unsupported` (same anchor; spouse phrasing applied), `s1.line8c`, `s1.has_uc`, `s1.line7_figured` (computed readers; no wording, no change)
+- **Regression predictions:** wording only; no recorded value changes.
+- **Validation:** every federal and New York fixture passes; the s1 reviews made due by the wording change are rerun and ruled.
+- **Tags:** wording; spouse-omitted; fixed
+
+## BUG-0592 — BUG-0561 is fixed: the Marketplace estimate question covers enrollment by anyone in the tax family
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0561
+- **Caught by:** BUG-0561, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** i8962 p. 9, "You or an individual in your tax family enrolled in a qualified health plan through a Marketplace."; i8962 p. 2, "your tax family (yourself, your spouse, and your dependents)"; i8962 p. 3, Tax family, "Your spouse if filing jointly and your spouse can’t be claimed as a dependent on someone else’s 2025 tax return".
+- **Symptom:** as recorded in BUG-0561.
+- **Fix:** `f8962.estimate_100` now asks "When you or an individual in your tax family (yourself, your spouse if filing jointly, and your dependents) enrolled in a Marketplace plan for 2025, did the Marketplace estimate ...", in the words of the Form 8962 instructions, and cites these passages. The misreporting sentence ("Answer no if you, with intentional or reckless disregard ...") is unchanged.
+- **Fix lines:** `f8962.estimate_100`
+- **Siblings checked:** `f8962.applicable` (computed reader; no wording, no change)
+- **Regression predictions:** wording and citation; no recorded value changes.
+- **Validation:** every federal and New York fixture passes; the f8962 reviews made due by the wording change are rerun and ruled.
+- **Tags:** wording; question-narrow; fixed
+
+## BUG-0593 — A joint 2025 return after separate 2024 returns runs a combined state refund through one 2024 return's figures
+
+- **Caught by:** source check of the spouse wording on `refund.received`, 2026-11-10.
+- **Symptom:** `refund.received` asks for the state and local income tax refunds of both spouses on a joint return. The State and Local Income Tax Refund Worksheet then asks for one 2024 return's figures ("your 2024 Schedule A, line 5d", line 5e and line 17, and "the filing status claimed on your 2024 Form 1040 or 1040-SR"). A couple filing jointly for 2025 who filed separate 2024 returns (married filing separately, or each single before marrying) has two 2024 returns; the combined refund is limited and tested against whichever one they enter. No gate refuses the case: `refund.exc_who` covers only a refund from a jointly filed state return when the 2025 return is not joint with the same person, and `refund.not_2024` only other years and late estimated payments. The taxable refund on Schedule 1 line 1 can be wrong in either direction.
+- **Source:** i1040gi p. 88, Line 1; p. 89, Exception, items 1 to 9; p. 90, State and Local Income Tax Refund Worksheet, lines 1, 2, 4 and 5.
+- **Status:** open

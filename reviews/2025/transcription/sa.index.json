@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "df1e8eb5b36b5cd459a5275254aff4535d5fbd710d888ac8f204b2f6fce59b2d",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-09); see Line-scoped reviews"
+  "agree / disagree / missing": "18 / 5 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -60,9 +61,9 @@
   },
   {
    "key": "5d",
-   "record": "628dfc1912e210f4ee02d36ddf045eed7b2a371a0f8bfb36ef7fc92a4d15b920",
+   "record": "85baf31a6b63536d26571b766ccce5dc06be9133f3b702d1e02ffa8cb1a322fa",
    "status": "AGREE",
-   "subject_key": "9cc54210a15178cf4f67c854e2a4c6edc8e21f1926bce77de5fe934804ddc5f0"
+   "subject_key": "c3b6ef205c6924dd69360d8592555cbac99bc7992d6d89d74bef07f0d618ebd3"
   },
   {
    "key": "5e",
@@ -72,40 +73,40 @@
   },
   {
    "key": "6",
-   "record": "8d62c30c16dac5d5f57c899badd9507b6a369f285c8869adbb78e2f543f86819",
+   "record": "85baf31a6b63536d26571b766ccce5dc06be9133f3b702d1e02ffa8cb1a322fa",
    "status": "AGREE",
-   "subject_key": "b02e3577a01933032ed2ccf48df6aab68531556a953f88c6335416e2ffbce67c"
+   "subject_key": "5de4d69658d4678f219548646cbf38b848934f4e24cda34c2b86bef4d52f917c"
   },
   {
    "key": "8b",
-   "record": "8d62c30c16dac5d5f57c899badd9507b6a369f285c8869adbb78e2f543f86819",
+   "record": "85baf31a6b63536d26571b766ccce5dc06be9133f3b702d1e02ffa8cb1a322fa",
    "status": "AGREE",
-   "subject_key": "1cb031dfa44e4f477a235f2775cc34484c38a2b7c2d8283b2b4fcd21d91cf5d2"
+   "subject_key": "31a66bb973b19588883681b12a9008d002d6d5f8baddf28404689b5309e904cb"
   },
   {
    "key": "8c",
-   "record": "8d62c30c16dac5d5f57c899badd9507b6a369f285c8869adbb78e2f543f86819",
+   "record": "85baf31a6b63536d26571b766ccce5dc06be9133f3b702d1e02ffa8cb1a322fa",
    "status": "AGREE",
-   "subject_key": "9ac7586031367bf53c78d66b475dc494e1d2d084d8d6e8f70e7fa48cd3be3c46"
+   "subject_key": "23650c85ac68327ad7a375f450b0446197d0028368239dd1dbffd4aae7e6f633"
   },
   {
    "key": "13",
-   "record": "8d62c30c16dac5d5f57c899badd9507b6a369f285c8869adbb78e2f543f86819",
+   "record": "85baf31a6b63536d26571b766ccce5dc06be9133f3b702d1e02ffa8cb1a322fa",
    "status": "AGREE",
-   "subject_key": "a1b2b40050e3c06613fc2a33fdc48021449f1fee6d778c4ee8f33dfb10c1544a"
+   "subject_key": "321948acc42c679f13b985cbc87415dcbec3721667c9bdd445dfcc307096eaa0"
   },
   {
    "key": "15",
-   "record": "8d62c30c16dac5d5f57c899badd9507b6a369f285c8869adbb78e2f543f86819",
+   "record": "85baf31a6b63536d26571b766ccce5dc06be9133f3b702d1e02ffa8cb1a322fa",
    "status": "AGREE",
-   "subject_key": "0d1d6c222ef56b7fbed53d1dd902f92489e0edd106f8e5df39ce1b19a3bcfb99"
+   "subject_key": "5f04a2887f51d64d23b52fe13c957afb9513571522879bdf4c742502abe293ca"
   },
   {
    "key": "16",
-   "record": "8d62c30c16dac5d5f57c899badd9507b6a369f285c8869adbb78e2f543f86819",
+   "record": "85baf31a6b63536d26571b766ccce5dc06be9133f3b702d1e02ffa8cb1a322fa",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; same reply and project expression as the earlier rulings; the line was reopened only because its refusal gate sa.charity_limited became a gate line behind sa.gifts. i1040sca p. 11, Line 16: \"Gambling losses (gambling losses include, but aren't limited to, the cost of nonwinning bingo, lottery, and raffle tickets) but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b.\" The project enters zero without gambling winnings and the smaller of sa.gambling_losses and Schedule 1 line 8b otherwise; the candidate always takes the smaller, so it needs sa.gambling_losses on every return though the amount is zero without winnings. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/sa.json`; 1,638 fixtures, 500 generated returns seed 20261026, 539 partial records; 2,677 comparisons): 972 agree; 1,594 candidate-unknown (184 on completed returns, all sa.gambling_losses), 67 project-refuses (the cited screens sa.unsupported, sa.charity_limited, sa.excluded_income), 44 project-unknown (withheld screen answers). Project stands.",
-   "subject_key": "c0a1ced6e8c959c245a8a27bc9c2d3e7730011ee2f34e792e62910e55c8f96d8"
+   "ruling": "Ruling: model error; i1040sca p. 11, Line 16, \"Gambling losses (gambling losses include, but aren't limited to, the cost of nonwinning bingo, lottery, and raffle tickets) but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b.\" Where both give a value the reply's amount is the project's (the smaller of the losses and line 8b); but the reply reads sa.gambling_losses on every return, where the project gives zero without winnings and the interview asks the losses only when there are winnings. So on returns with no gambling winnings the reply needs an answer the interview does not ask (candidate-unknown; the recorded witnesses name sa.gambling_losses with the project's value zero). Triage executable-triage-v2 (`.transcription/triage/2025/sa.json`, pass 446f7398433f; 1,767 fixtures, 500 generated returns seed 20261026): 2,181 of 2,734 in-scope comparisons agree; differences by kind {\"candidate-unknown\": 485, \"project-refuses\": 63, \"project-unknown\": 68}; on completed returns only candidate-unknown (162); the project refusals and unknowns are on refused or incomplete records (its cited screens, and partial records withholding an answer). No value differs. The project line is retained.",
+   "subject_key": "fb8870ef1d3d0d752438ffbee43d2d57cc55ce752709985c129f0cc59dc44e6b"
   },
   {
    "key": "7",
@@ -133,9 +134,10 @@
   },
   {
    "key": "12",
-   "record": "8d62c30c16dac5d5f57c899badd9507b6a369f285c8869adbb78e2f543f86819",
-   "status": "AGREE",
-   "subject_key": "8e7022c6d5ea45596bf49f21675dc5265adddc24ee8626e93df29f555ee43eb6"
+   "record": "85baf31a6b63536d26571b766ccce5dc06be9133f3b702d1e02ffa8cb1a322fa",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation and scope; the reply's choose is the project's with the guards in the other order (the gift total when sa.gifts is yes, zero otherwise). Triage executable-triage-v2 (`.transcription/triage/2025/sa.json`, pass 446f7398433f; 1,767 fixtures, 500 generated returns seed 20261026): 2,532 of 2,619 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 4, \"project-refuses\": 47, \"project-unknown\": 87}, none on a completed return: every one is on a refused or incomplete record, where a refusal reaches the line on one side first or a partial record withholds an answer. No value differs. The project line is retained.",
+   "subject_key": "7c061a0f46af81d51385c5f9ce3a8469530f3f6e0b3f8b6fb2b869bbd9758dac"
   },
   {
    "key": "14",
@@ -145,9 +147,9 @@
   },
   {
    "key": "17",
-   "record": "8d62c30c16dac5d5f57c899badd9507b6a369f285c8869adbb78e2f543f86819",
+   "record": "85baf31a6b63536d26571b766ccce5dc06be9133f3b702d1e02ffa8cb1a322fa",
    "status": "AGREE",
-   "subject_key": "0bd8fb70ac3b641db054433aef23d561d0329928cfb3cb42f57434298ee1a736"
+   "subject_key": "c34af7fbdd869ba84a70d42ca9fbc69b1767553bebd931b6c4cc30af9c7911d7"
   }
  ],
  "subjects": {
@@ -159,21 +161,21 @@
   "2": "6ed9e8826b6917afade8428ad8ba0ef06fdbb723500482b53bce904f69e95014",
   "3": "4606a9bdca74892e9959452bafe144fe3a9c24d25b48c83ee961469221a4b4c3",
   "4": "d6e7773c6a0320691ca4144299791249ce57839562905a9d2bf42783fba57b83",
-  "5d": "e982db8b9a85a024643b90e1fd4ff9aa0bae6b0ae062976ded4ca6ac6ad90608",
+  "5d": "3acfb4c71c7d1f71501a2c4be7815fb6b1c1eec1757330257cf1d0c890f9191d",
   "5e": "0762d68e00b9d72f8d0f0038205ed4ce3626ba29164c5743fb3d673cc4d286ef",
-  "6": "cad5a8bc0186e5a8328d9258c8a59cf3c753e62139bbfa95bd1401f678c6ae9f",
-  "8b": "f37ae7398aeaf36cf6ae9c174f25eddea2a86520a9ebae710e9409ebdd492e16",
-  "8c": "f3927965feffe5c4d545a8d22aa875f48c50dca2d93ac46b48927ae119914afc",
-  "13": "5ec0b95d053f64618438ffa170eb5d773bc79cca124dbc1894ba8cf15c5eb177",
-  "15": "c6bb971dc7274078a55bc63751971df545fef2da4dc66bef5bc451a43efaf514",
-  "16": "80d2c5b8b5ff902688a6bcd2e62b2e8cb6714f9bd7a33369a99c44e1cd7f783d",
+  "6": "301744bc2eb94495842ecc2c80214da154dde8faa2d1096a9c82d42d3b5e595e",
+  "8b": "6660a6b914fc4760aa7db86ff11d9669ad1f9db62c64e50e386eb6d89ec0c4e5",
+  "8c": "5c90d1ec18ea66c7f010d8e8abc63553f84acc5e9c99d1ef58030c6bd2e2156e",
+  "13": "7f0cf823cffd007e0cec35ed9a2a2474d91a9ced68d9a7a9bfff03bb74ac59da",
+  "15": "50c7f045be9effa39289ceab6144c035c7fd4d6339d50986b07c40f76ff39750",
+  "16": "458e556098e6c0993ee65a29e05ed26322fc564d363b39ed75982a658aeaa11f",
   "7": "f01dc441865ba4d227e6810328f38376b883f341b25679842cfe8a31fbf9aee0",
   "8e": "5f6bb65fc20292add3f19c02137e4eab05e81a61f2a1e8da6bec29434b678658",
   "9": "6afefd4a342b5f5749c93d7aab8c5b7494cd95445e619cb164a79b29df97b69b",
   "10": "320b71964696452137d0967c5995c1f6bc29fe3f800b4d8feff670ecdcf79f8a",
-  "12": "1bee613c59581de9dd126ac727c3517b6454fa12b56b5e4a76c0ec394a275b76",
+  "12": "1e81bf6e569e9b83abd937a870ace6dad7fbcbafbed7cc4a62f20ffb2da11e14",
   "14": "d6f3486eacb02f6ccf83c804d55d314bc5451cf021becb040590566561e4e551",
-  "17": "f96a5dc36b9b3f79c767e4f47dc7def6aa85ad8444e5ae9d391c13b1faa7f15e"
+  "17": "ddd23b45f790dd8727dbefa714310bf5112a285a1a8143900d3adad275f9a234"
  },
  "__rest__": "4ab44412ed063c2bc602f385d7b58b759dbf415cd3a4e78f694db4b2cde08b0a",
  "foreign": {

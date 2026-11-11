@@ -651,13 +651,17 @@ form:
     type: Bool
     expr:
       op: input
-      source: When you enrolled, did the Marketplace estimate that your household income for 2025 would be at least 100% of
-        the federal poverty line for your family size? Answer no if you, with intentional or reckless disregard for the
+      source: When you or an individual in your tax family (yourself, your spouse if filing jointly, and your dependents) enrolled in a
+        Marketplace plan for 2025, did the Marketplace estimate that your household income for 2025 would be at least 100%
+        of the federal poverty line for your family size? Answer no if you, with intentional or reckless disregard for the
         facts, provided incorrect information to a Marketplace for 2025.
     cite:
       doc: i8962
-      locator: p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100%
-        of the federal poverty line for your family size for 2025."; p. 9, "You, with intentional or reckless disregard
+      locator: p. 9, "You or an individual in your tax family enrolled in a qualified health plan through a Marketplace."; p.
+        9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the
+        federal poverty line for your family size for 2025."; p. 2, "your tax family (yourself, your spouse, and your
+        dependents)"; p. 3, Tax family, "Your spouse if filing jointly and your spouse can’t be claimed as a dependent on
+        someone else’s 2025 tax return"; p. 9, "You, with intentional or reckless disregard
         for the facts, provided incorrect information to a Marketplace for the year of coverage."
   - id: f8962.applicable
     printed: (helper)

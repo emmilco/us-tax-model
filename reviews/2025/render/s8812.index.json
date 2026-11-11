@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "a9080a227ba460fd5065b66e6e3b6107f25675a33105f86f392bb93c4fd06b9f",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "49 / 0 / 1 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -93,9 +94,9 @@
   },
   {
    "key": "12",
-   "record": "a9080a227ba460fd5065b66e6e3b6107f25675a33105f86f392bb93c4fd06b9f",
+   "record": "41a2ac5646dc51a4764852d35bf873047be8b5f5914b62a195ebdddd8fa9c7e3",
    "status": "MATCH",
-   "subject_key": "b01e52723df150a7e2ab591b7f07c95cca79e39dc9ae0739904c297979f84124"
+   "subject_key": "32087baca8691c73d7628e8ace8cb507c0fad17faa526ce04e5c293c250e5db2"
   },
   {
    "key": "(CLW A 1)",
@@ -159,16 +160,15 @@
   },
   {
    "key": "18a",
-   "record": "a9080a227ba460fd5065b66e6e3b6107f25675a33105f86f392bb93c4fd06b9f",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: scope; i1040s8812 p. 7, Earned Income Chart, first row: a filer with net earnings from self-employment who will \"use either optional method to figure those net earnings\" uses \"the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC)\". The optional methods are refused upstream through person.se_screen (\"electing an optional method (Schedule SE Part II)\"), so that row never applies to a return the tool completes; the rendered English shows only line 18a's own operands. The model found the EIC and non-EIC branches to match. Re-checked this round: person.se_screen still names \"electing an optional method (Schedule SE Part II)\", and BUG-0401 changed only s8812.from_part_iia and s8812.part_iib_result (the combat-pay gate read through s8812.show_iia), not these lines. Project stands on the English.",
-   "subject_key": "bbeac03be7f9e7729e1713013dd736437d42e03834c616cf1608e73349efadad"
+   "record": "41a2ac5646dc51a4764852d35bf873047be8b5f5914b62a195ebdddd8fa9c7e3",
+   "status": "MATCH",
+   "subject_key": "765188ea6d8b7c45e2969778c752a2479fddb9d629f37d928b3745ae5f74637e"
   },
   {
    "key": "18b",
-   "record": "a9080a227ba460fd5065b66e6e3b6107f25675a33105f86f392bb93c4fd06b9f",
+   "record": "41a2ac5646dc51a4764852d35bf873047be8b5f5914b62a195ebdddd8fa9c7e3",
    "status": "MATCH",
-   "subject_key": "ee5a899cdd1850d8989e4db6bc79fa8681ecba40a241f617333813cd034e39f6"
+   "subject_key": "8c8ef685cff7e964f09ba5030e33fef3fa3291a76060e7044bda544b3f0e27b4"
   },
   {
    "key": "19",
@@ -239,9 +239,9 @@
   },
   {
    "key": "(CLW B 3)",
-   "record": "a9080a227ba460fd5065b66e6e3b6107f25675a33105f86f392bb93c4fd06b9f",
+   "record": "41a2ac5646dc51a4764852d35bf873047be8b5f5914b62a195ebdddd8fa9c7e3",
    "status": "MATCH",
-   "subject_key": "d34f7ae65717993d7892b55a6bf9bf508cb753718a00bfa5789533fd8c413224"
+   "subject_key": "5a7a9f5f381701312e6bb6936003a45ed462dae9644d9df0f35de0e24ccee99b"
   },
   {
    "key": "(CLW B 4)",
@@ -325,7 +325,7 @@
   "9": "b28611934fe6e9a3a9601b44af827b24519b9b8a81a30fd5e1714415b867e2d2",
   "10": "450eb335ab8c83874426d412fd1b37bee195fdfb7a92bf920d4f372add1b55f2",
   "11": "cdea0715f73ae09ee5b980fa7cb70ca49d017870ae895fe6e2648660aabf674e",
-  "12": "346f06b2c700a442b3300b4a584d05c91258d2403609b7e24fa21db4b914b777",
+  "12": "d82202b6e62f0092c5f00e42ff602261821d3e574e92362df5626efca077103b",
   "(CLW A 1)": "e6b54d520041d1f70fcc4f4256eb0c6e2b1f0a7417f26bd2d34796bd3954e62e",
   "(CLW A 2)": "375c701db3a6cf556b6ff2bd054953dd1b69b425d3e3c4c6177ad650f3536db8",
   "(CLW A 3)": "ef46ad567c122dcf49dd97a13660c57e4627c844026b2c3e2641e321d7ebb808",
@@ -336,8 +336,8 @@
   "16a": "2a3764402f20cd2711f331452596dde7e717d6bbbc9dcb2f355e3bb2ebcae1e9",
   "16b": "aced70e4ce069173be68ac1bcda9cfa2a18dc01372d6550f2791d20a21a52631",
   "17": "f3c95fb070d1d064b5bdcec6ccf1293d1e6a66134bbf753323849bf3c48e1f12",
-  "18a": "60a46fb52514a87cd6459a809dc168d5b7f819b8109822a669a59f93d8fc1a81",
-  "18b": "108d10bb3d6e99a0985e86ce024e04a78ae8c402ee7d6941f3ed19139e55945a",
+  "18a": "1c35d00bb0baefbee3e9f14fa0567a9c80e6995695cc3fc2e77bdb0eebb94baf",
+  "18b": "a5e03d456fc9f950ba9ff034d5bedf6c722ddd3c946cc92506b839b3478f8a51",
   "19": "a938c3653c318b4599c17535bb4172fffef69ab0b343c9e35d39a443021fb2de",
   "20": "2d5f4d43c74f4dec083951ee2fbb37c26bbc6ad3fc7a8996d43e1e2f5e9f4430",
   "21": "2a0861477943d3919fb36cc8302b430bb50c217b1c6eb61c248b12a3cde420fc",
@@ -349,7 +349,7 @@
   "27": "97b7ec92d5711b024a3b9a6ea7cb99368821c1593111b04d0c9b4f199360db3e",
   "(CLW B 1)": "b54d8e122f1e97c5b01b6024c022230d3307378227b88e062d62637d3e5e752d",
   "(CLW B 2)": "6a43c2ca6c9c89328924c89584effd381fdcb003bc6dc3c2aacc8f0506ca48dc",
-  "(CLW B 3)": "2b89fd64291f94510fb024018cfbffd184b466bdc4f9f8fdcef3e1c645e25c12",
+  "(CLW B 3)": "19bfe577b0d5decb60eaa7297db260ac232aa737455d383fc2906d0e2cdf0175",
   "(CLW B 4)": "6d2914689f1d7f763b9e2624927615dbf240de7a0a7e089d5affc1e06b01434d",
   "(CLW B 5)": "a7382350b2f71959a8d4f3df0ffb7cf38fa61054dd46593a1a86a0597505538d",
   "(CLW B 7)": "710ceede7f3375afc12ae52b6b952c86c78a0eff79509bc82794ba7f4da3cab7",

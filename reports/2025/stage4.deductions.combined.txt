@@ -198,7 +198,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Do you have investment interest expense disallowed in 2024 and carried forward (line 7 of your 2024 Form 4952)?
       = false
       cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
-  (helper) Is any of the interest you count as investment interest paid or accrued in 2025 (line 1), or any of your 2024 carryforward, attributable to royalties, a trade or business, a passive activity, tax-exempt income, or an activity for which you aren't at risk (Form 6198); do you have any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?
+  (helper) Is any of the interest you count as investment interest paid or accrued in 2025 (line 1), or any of your 2024 carryforward, attributable to royalties, a trade or business, a passive activity, tax-exempt income, or an activity for which you aren't at risk (Form 6198); do you (or, on a joint return, your spouse) have any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction; p. 4, Line 8, "if any part of the interest expense is attributable to royalties, enter that part on Schedule E (Form 1040)" and "If any of your deductible investment interest expense is attributable to an activity for which you aren’t at risk, you must also use Form 6198" (2025; created 2025-05-28; 5113c166)
   (helper) Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?
@@ -266,7 +266,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["f4952.used",{"const":true}],"op":"test"}
 
 == Form 8959 — Additional Medicare Tax on wages and self-employment income ==
-  (helper) Any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
+  (helper) Do you (or, on a joint return, your spouse) have any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
       = false
       cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
   (helper) Year parameter sales.zero
@@ -879,7 +879,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
 
 == Qualified business income and section 199A dividends — amounts and the choice of Form 8995 ==
-  (helper) Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?
+  (helper) Do you (or, on a joint return, your spouse) have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you (or, on a joint return, your spouse) a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?
       = false
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
       note: Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
@@ -1225,7 +1225,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040sca] p. 10, Limit on the amount you can deduct, "See Pub. 526 to figure the amount of your deduction if any of the following applies"; p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; b0999b12)
       note: taken: {"eq":["sa.gifts",{"const":true}],"op":"test"}
-  (helper) Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?
+  (helper) Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   (helper) Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)

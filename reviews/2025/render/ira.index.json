@@ -5,7 +5,7 @@
  "base": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
  "head_rows": {
   "match / mismatch / unclear / missing": "17 / 4 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -122,15 +122,15 @@
   },
   {
    "key": "12a",
-   "record": "e36b57d13a8b6a3836078ad0b783a29c2fe54f340adba7b70deada03baacb38f",
+   "record": "5886cfe324931c66faf35ad4f7b8ceff0b48cf143ab0e3eee503038f78ae930d",
    "status": "MATCH",
-   "subject_key": "4311c2995594d86e9c17d32d4a40dc7bb8f636c3f2a923c086262b1715a6da6f"
+   "subject_key": "15888b505df0badb4a79e37bc17d1faae170a2ede9e0234723044049802f429d"
   },
   {
    "key": "12b",
-   "record": "e36b57d13a8b6a3836078ad0b783a29c2fe54f340adba7b70deada03baacb38f",
+   "record": "5886cfe324931c66faf35ad4f7b8ceff0b48cf143ab0e3eee503038f78ae930d",
    "status": "MATCH",
-   "subject_key": "b0b68b29e12e1e93eafcdf46618b2043101d630942ca9d104cc13d5567e0f4c7"
+   "subject_key": "f69b3701639022231bae8ec6e204cb38a1e4bbbcc4107be0c6880977c0430f8c"
   },
   {
    "key": "(screen) (ira.deduct_less)",
@@ -158,8 +158,8 @@
   "(screen) (ira.se_capital)": "dae8086074c34029941c504a1fbf3e1a570ac6f3bf29c842880ce83e0c215a47",
   "11a": "a2330bb4d0b76c1402650572ba3345913bbd9dba1bf36d7449b40468656bde1e",
   "11b": "2cce555dc6a35cf66f1b1f9a4f067486f524dda968590ad3a62e4bb147027e48",
-  "12a": "d4f2c7a6fb22393562f2bd6b26c0abe6328cddd656e7e98448146749d85d405d",
-  "12b": "52b3cd09e06ac53ecaef09280b93e49de081dd313e5917e84c723ec794a8fff6",
+  "12a": "661c968a49aba29db66c401f86ebf2f64a9c284c09609d3c0a37387e8224ca68",
+  "12b": "ecfe777ac95e8914bdfc80e0fd9c7fde17f170af58d9c6dbe82dee54f6a3d08a",
   "(screen) (ira.deduct_less)": "b4240e555b0ceac4d5954d9f838e2de758a9b775e15598e46e6cec0f3a36258f"
  },
  "__rest__": "17123d13dc65bd705a2a042799aea875ab0ac42f5ea45f1e031b5a4f0e7383c6"

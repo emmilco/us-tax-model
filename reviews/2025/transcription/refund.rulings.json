@@ -129,6 +129,41 @@
   {
    "printed": "refund.taxable",
    "project_expr_sha256": "bdcdede77fadf132ddea8e8a6676468c471bae362ca38722910ba13122b9e9da",
+   "second_expr_sha256": "588cdebb05b8b0ff1c164137623b64bd3a34460dc97d42c3c7d1230886b4271d",
+   "ruling": "Ruling: representation and scope; same reading as the earlier rulings on this line. i1040gi p. 88, Line 1, TIP: \"None of your refund is taxable if, in the year you paid the tax, you either (a) didn’t itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes\". The reply gives zero without a refund (refund.received not above zero), zero when the 2024 tax was not deducted on Schedule A, and worksheet line 9 otherwise; the project gives zero or line 9 on the same two answers and reads the line only through refund.has. Triage executable-triage-v2 (`.transcription/triage/2025/refund.json`, pass 2ea8878f1733; 1,767 fixtures, 500 generated returns seed 20261026): 2,399 of 2,902 in-scope comparisons agree; differences by kind {\"candidate-unknown\": 44, \"project-unknown\": 459, \"project-refuses\": 2}; on completed returns only project-unknown (218), on returns with no refund (refund.has false; the recorded witnesses show the reply's zero and the project waiting on refund.box8, a question the interview does not ask without a refund), where nothing reads the line; the candidate-unknown are on refused or incomplete returns, and the project refusals are at its cited screens. No value differs where both give one. The project line is retained.",
+   "context": "7fd002f37346f1d92955aed42f8e139e1cfbf99d8113e527a979a2ee9c20733b",
+   "date": "2026-11-10",
+   "run": "2a39af3895076970055440f462a3985f482f3ac06918a8c4f0840b5acc626d0e",
+   "subject_key": "6b9d21fe1ce4595baedbea5bc0d8e6575fca796a43ef881ad1faa82360c4df33",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@refund",
+     "fixture:classm.f2441.2.deepseek@refund",
+     "fixture:classm.f2441.3.deepseek@refund",
+     "fixture:classm.f2441.4.deepseek@refund",
+     "fixture:classm.f2441.5.deepseek@refund",
+     "fixture:classm.f2441.6.deepseek@refund",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@refund",
+     "fixture:t264.f4952.unsupported_with_interest@refund",
+     "fixture:stage16.cleanup.refuse.f8889.screen_no_amounts@refund",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@refund",
+     "fixture:stage16.refuse.refund.box8@refund",
+     "fixture:stage16.refuse.refund.not_2024@refund",
+     "partial:stage14.asset.hy_5yr-refund.received@refund",
+     "partial:stage14.asset.bonus_100-refund.received@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "refund.taxable",
+   "project_expr_sha256": "bdcdede77fadf132ddea8e8a6676468c471bae362ca38722910ba13122b9e9da",
    "second_expr_sha256": "bc0d169057c6ae2f5b4fb3e72d523e7a90876772798ccd77971dd5c0d71b7a64",
    "ruling": "Ruling: representation and scope; i1040gi p. 88, Line 1, TIP: \"None of your refund is taxable if, in the year you paid the tax, you either (a) didn’t itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes\"; f1099g p. 5, Box 8: \"If taxable, report the amount in box 2 on Schedule C or F (Form 1040), as appropriate\". executable-triage-v2 (`reviews/2025/transcription/triage/refund.json`; 1,382 fixtures, 500 generated returns seed 20261026, 640 partial records from 40 bases; 2,522 comparisons; every witness enumerated by an uncapped scratch rerun of tools/transcription/triage.mjs, the record keeps 6 per kind): 1,242 of 2,522 agree; 1,239 project-unknown (524 completed), 40 candidate-unknown (none completed), 1 project-refuses. The candidate gives zero without a refund, zero when the 2024 tax was not deducted on Schedule A (itemized and no sales-tax election), and line 9 otherwise, the project's choice on refund.worksheet; it places the box 8 and other-year gates on its not-deducted branch and all four exception gates on line 1, so every refund meets box 8 and refund.not_2024 on both sides and exc_tax/exc_who only where the worksheet is used, as the project does. All 1,239 project-unknown records are returns with no refund (candidate refund.has false, $0.00): 1,119 fixtures (476 completed, for example classm.f2441.1.deepseek) and 120 partial records withholding refund.box8, refund.not_2024 or refund.itemized (48 completed); the project's line reads the box 8 gate there, but s1.line1 reads refund.taxable only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), and every partial base of the bank has no refund (refund.has false), so the line is never read on them. The 40 candidate-unknown records withhold refund.received, which s1.line1 needs through refund.has on both sides. The project-refuses record (stage16.refuse.refund.line5e_bad, candidate $3,000.00) is the cited impossible-entry screen refund.line5e_bad (i1040sca p. 7, Line 5e, \"enter the smaller of line 5d or $40,000\"): scope. The reworded gates (BUG-0230 refund.not_2024, BUG-0251 refund.box8) change no expression; no completed return differs. Project stands.",
    "context": "f836dbd61848900a265779fe47801acd1946646e228fb3b02d7361ef8d7c40a0",

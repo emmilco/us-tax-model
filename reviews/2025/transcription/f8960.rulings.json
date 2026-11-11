@@ -14,11 +14,11 @@
    "printed": "13",
    "project_expr_sha256": "8226bf0bdc81e1373428f18139c0fa0e26bd9954d28b8a726957a54dd7b68fa2",
    "second_expr_sha256": "808011687bd92948b28dc5379545ff8a59d3374c4ad8fc1f5b10d0f40c9e1416",
-   "ruling": "Ruling: model error on the declaration; the reply reads f1040.line11, which does not resolve (invalid_model_types: \"reference 'f1040.line11' does not resolve\"); its note says the scoped catalog did not list Form 1040 line 11. i8960 p. 22, Line 13: \"If you didn't exclude any amounts from your gross income under section 911 and you don't own an interest in a CFC or PFIC, your MAGI is your AGI as reported on Form 1040 or 1040-SR.\" The project reads f1040.line11b, which copies line 11a, as the earlier rulings. Triage executable-triage-v2 (reviews/2025/transcription/triage/f8960.json; 1,638 fixtures, 500 generated returns seed 20261026, 112 partial records): 2,203 of 2,250 comparisons agree; the 47 differences are the project's line refusing or unknown on f8960.refund (12 and 12 witnesses), which the project's return does not read where it completes. Project stands.",
-   "context": "36c6ef1f9232c4d74cba05c987373858e5f60c42adf0154387ab5823ae8522cc",
-   "date": "2026-11-07",
-   "run": "53ba1474ded783d6002b8bac5b23701e10d4e56f8f977cdf8ee927d2d02bdc84",
-   "subject_key": "6c7a7b7089e23728663d0c35f478b90042a6a56db3d324f7875057d1c156218f"
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f8960.line13: \"f8960.f8960.line13: reference 'f1040.line11' does not resolve\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "023ecd5dcf908c992fc3b675856dc8ebf37c8454c4f6829b83e370c071da9cfa",
+   "date": "2026-11-10",
+   "run": "d972db1033d0e3fdb183bcded413e2022f50ede718c953552ec6e44ae630c905",
+   "subject_key": "6fdd40e8a2bc7608c46b3d5eb8b311fe735a3c67ec21c63ea84c5a27de393054"
   },
   {
    "printed": "13",

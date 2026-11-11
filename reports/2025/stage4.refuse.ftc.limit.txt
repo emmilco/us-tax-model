@@ -216,7 +216,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["f4952.used",{"const":false}],"op":"test"}
 
 == Form 8959 — Additional Medicare Tax on wages and self-employment income ==
-  (helper) Any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
+  (helper) Do you (or, on a joint return, your spouse) have any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
       = false
       cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
   (helper) Year parameter sales.zero
@@ -1062,7 +1062,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040sca] p. 10, Limit on the amount you can deduct, "See Pub. 526 to figure the amount of your deduction if any of the following applies"; p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; b0999b12)
       note: taken: {"eq":["sa.gifts",{"const":false}],"op":"test"}
-  (helper) Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?
+  (helper) Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   (helper) Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)

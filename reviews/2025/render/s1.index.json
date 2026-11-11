@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,21 +15,21 @@
   },
   {
    "key": "7",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "847c241576bf5cb517c2aaa90e0e2ad882900fb7f179b55dbd4e22fec83e76b6",
    "status": "MATCH",
-   "subject_key": "0de08a3cb810713ab1b3964f893a59a51f109558174f073da5c286e294f02ca1"
+   "subject_key": "8bdafc74a2e4e45e38ff01009f2a78cc13d33bd56687c98dcc0f31f009994805"
   },
   {
    "key": "7 (box)",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "847c241576bf5cb517c2aaa90e0e2ad882900fb7f179b55dbd4e22fec83e76b6",
    "status": "MATCH",
-   "subject_key": "ebc007ae9c75124851378c4f93d1068c6fa91acadb5aa967ad7aa1e338b68fd0"
+   "subject_key": "da90b1d688cfbacf91e3ac1430028e4705fea72a7bc8e2e41ddb04f2d5983014"
   },
   {
    "key": "7 (amount repaid)",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "847c241576bf5cb517c2aaa90e0e2ad882900fb7f179b55dbd4e22fec83e76b6",
    "status": "MATCH",
-   "subject_key": "df5b7624675a0f12fe0457b2746fc532bc2256b856bf802f54d585702010dd91"
+   "subject_key": "d7ac07cb9575c271a938f3c85089bd39b8f34b6cb06368773426c1802e50d236"
   },
   {
    "key": "3",
@@ -39,9 +39,9 @@
   },
   {
    "key": "8b",
-   "record": "57aeebda4f3e33a2c3fb62f5e47fc6a1a94d3fd146151d3d0b991e339ff35ef5",
+   "record": "d1cca99ab3dd9a725027ec47e9ae242e200ddbd81fe4adb757154e79a33b5a82",
    "status": "MATCH",
-   "subject_key": "2088dc230ec7679aef1a2290aa1a56328a4654cb51904551552bcbb0cd511f29"
+   "subject_key": "7217b4012259b0ea6c4c75a1ace4d2fc9d3643c8a5befc073a8508469baccf68"
   },
   {
    "key": "8g",
@@ -81,15 +81,15 @@
   },
   {
    "key": "2a",
-   "record": "f15a32a3a6a09673fe72541e5de476e3dddfbbf929cc7faf6c2995a7a167ab70",
+   "record": "847c241576bf5cb517c2aaa90e0e2ad882900fb7f179b55dbd4e22fec83e76b6",
    "status": "MATCH",
-   "subject_key": "c263eb69d5b4946f7c14b643e57667e4948aff73ea18891b4df75af1905939f1"
+   "subject_key": "ee622954dec0e8daf49dbaaff4ca2aee43b62965508212ac593be155ff136592"
   },
   {
    "key": "8c",
-   "record": "f15a32a3a6a09673fe72541e5de476e3dddfbbf929cc7faf6c2995a7a167ab70",
+   "record": "d1cca99ab3dd9a725027ec47e9ae242e200ddbd81fe4adb757154e79a33b5a82",
    "status": "MATCH",
-   "subject_key": "b64b5f28330f95a7ea159f4cd86caffd6c11d81fcf4673aa5a1bf04c975cb6e7"
+   "subject_key": "d6ab09cdf192952b0049b11d0a2a9e40026821353115ffab6ad635c59c1cf745"
   },
   {
    "key": "8f",
@@ -99,9 +99,9 @@
   },
   {
    "key": "9",
-   "record": "f15a32a3a6a09673fe72541e5de476e3dddfbbf929cc7faf6c2995a7a167ab70",
+   "record": "847c241576bf5cb517c2aaa90e0e2ad882900fb7f179b55dbd4e22fec83e76b6",
    "status": "MATCH",
-   "subject_key": "2c3c49ba2d72956a19e25ed74b7e7163778df4c4a27990b790737b0fdf5f44fe"
+   "subject_key": "d1495a3964ad4394c8abc18bb2e0ea58e480ae06b558f798c5050dfa326422ad"
   },
   {
    "key": "10",
@@ -148,9 +148,9 @@
   },
   {
    "key": "19a",
-   "record": "f15a32a3a6a09673fe72541e5de476e3dddfbbf929cc7faf6c2995a7a167ab70",
+   "record": "d1cca99ab3dd9a725027ec47e9ae242e200ddbd81fe4adb757154e79a33b5a82",
    "status": "MATCH",
-   "subject_key": "65b189128cad5496a2e5f83cc55dc70b7bb590e4ebeaca0651baf1b2ba367796"
+   "subject_key": "c23732ca454c06cb9bbcfefb4b82d90d3f80ef911ad1ab0fe4a3d60f10794962"
   },
   {
    "key": "20",
@@ -187,21 +187,21 @@
  ],
  "subjects": {
   "1": "3cf027355da75e3c1f9ff97b91bfd36372ca9ab6e610480bc31bdbad6d856ef1",
-  "7": "d23cac3fd35a6e5c74c7ffdb8f6ed2a696ff014771f7c92a10935588a91d6d51",
-  "7 (box)": "cfa288e2100e3813f7e9936325f2459f2d5aae2719904140e13654637972b0a7",
-  "7 (amount repaid)": "50dca390cec3a553681e83bce8aae15fcfb84e11f571e67f6bcdce2e63fd6742",
+  "7": "7764bc3e608ebe0342b1a9c2cd10931115c47f9c1ba29d5c6d94e6a01a4c7939",
+  "7 (box)": "09b7c34093b1ada499b0dd9b024a5725401b1b3c053bf7a088ca9b4b4fe0fa61",
+  "7 (amount repaid)": "684c11973a74fbcaca801a35d11dedc198af1f3f9c8045e0b24173854c36a5a6",
   "3": "bc3ec168d14d2a8cd64d175e37c7e910d8a5af268c316d775da646c4dd01ddcd",
-  "8b": "3e05d2795161ffd3e08c6d748cc516d353d644baa3526f72d88d8cae12c3fcbf",
+  "8b": "e7e0ba6233104cb4b7536d1474b853a4ab5fbfd9b02a83c94960a92006c2b889",
   "8g": "a3571d84edee2cfb3de333815f5d20985387df2f1636b2e1b6e1aac16cd49204",
   "8h": "9ed043904bf99e07ffdba67546672e89dcf24deb3424681bd8a7dc67942ad15e",
   "8i": "c68f1e8a3ff60d5244459d36d21b0b62e65c8c933467f51dea16aa0ae2b8407d",
   "8j": "29a9416344de32f83f0e9092659845581207319a988464bfe47bd71bcf5eb305",
   "8r": "97662a747727caf31391c45b947c97f49ba69e76d0f9c4043b5d7c40354a9f7d",
   "8z": "716e4f6692a25b41948e6fdbe805ecff692e5452aeffbfaba8b32f5e0f42e407",
-  "2a": "4a10d6f1f0d1e84a1163eb6cf950895f4668a789194a38c2f17635530e4d4da6",
-  "8c": "80adfd672aa8bb986148f7d5c9a17bef372ee3b0c00f669b24440bdf6e75ffd4",
+  "2a": "1d3e5712e710574448b76ec9f757d4cbebfb560ec82df42640ef38f1a791946a",
+  "8c": "dcaba94d243d4217769ee73f7d94f7cf97ed3c2c6c84bd98ea846c8a9dca6cd5",
   "8f": "61cd1ea00f9720c8fa0491e4eabe0184235cd502525725831f06f21d546abb4a",
-  "9": "dde89809ce8bad85e766e1cf4963bb04bda3013b8e040b530ddf16dd98fc1302",
+  "9": "fcfc71009176baa07e61cf154891a27f5729cce29e90e2bd064e50c471079cd1",
   "10": "d6214796af17b99dfca44131888035ff71b7c5e63bc3d2a2cae51af7939a196c",
   "11": "444b97633e80dc22f7362c42b60b247a91d3290a3d4917b7429f07dec9ebf99d",
   "13": "d28511b7f2c281e110c89fdb0b05daddf7fd81c5cd68febefceddfd95320e99c",
@@ -209,7 +209,7 @@
   "16": "aef86069282bbaabff9f8a9daed19f8276dbdddcce570580486b1dcecd2b8871",
   "17": "bf48e84e65b403942498520eeb97e8bffef5b0d9e4a871749fcad25441a36591",
   "18": "68468ce4276ba46f7520091bb4beb4cca084d19d6b0ceb9bbba6fc637e9593ac",
-  "19a": "36620465c8c2c92815455755333a427d0ec30ef08594be3b2c91244d9acc5a37",
+  "19a": "de4c3a1c81dadb34cb22687dde7c50aba94ef2bc8371d0f9ebc96a05a66b1279",
   "20": "f5fe786e81fd42f622503e89aab81fb0d7d0dd71d81f7ef1bb4a2c0c276a41cc",
   "21": "6a9e1286ec5d1c79200191fa27ea65aad3e34c1557b4f969476844c8c2b25dbf",
   "24a": "d0fbed7869157afc41a042ee4e71347d6896026dbf9429c2d32eb412db42a286",

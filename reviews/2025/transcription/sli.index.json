@@ -4,21 +4,21 @@
  "family": "claude",
  "base": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "sli.deduction",
-   "record": "fb11e5a5d6510584fdedfada71cf0a6514cca3fc22a0af175275174060d01378",
+   "record": "eac17c56bd249c5bcfa4c3df56b72cc16a7de4c88e1f1e8de8473c05cadb8b83",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; same reply and project as the round-2 and round-3 rulings. i1040gi p. 98, Line 21: \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's ... 2025 tax return.\" The reply refuses on sa.dependent (who can be claimed) where the source and the project (sli.claimed_count, person.sav_claimed) test being claimed. Triage executable-triage-v2 (reviews/2025/transcription/triage/sli.json; 1,638 fixtures, 500 generated returns seed 20261026, 40 partial records): the candidate declaration is invalid on this pass's scoped interface (candidate-invalid on all 2,178 records), so no value is compared. The R3 restructuring of sli.interest kept its words (word check: none lost). Project stands.",
-   "subject_key": "e070beaa6e513256952049a96506d207997bc1d5068872610ff657eacd7fa268"
+   "ruling": "Ruling: model error; same point as the earlier rulings on this line. i1040gi p. 98, Line 21, among the conditions for the deduction: \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's\" 2025 tax return. The reply gives worksheet line 9 on every return not married filing separately and has no test that the filer or the spouse is claimed as a dependent (its note says it found no input that asks it; the project reads person.sav_claimed). On completed returns where a person on the return is claimed the project enters zero and the reply the worksheet amount: 4 completed value differences, the recorded witnesses mutation.t2.sli.qss_divisor ($2,045.00 against $0.00; person[taxpayer].sav_claimed yes), stage11.sli.claimed, stage11.sli.spouse_claimed and stage16.sd.line17_no_skips_19. Triage executable-triage-v2 (`.transcription/triage/2025/sli.json`, pass e9feb0fa0109; 1,767 fixtures, 500 generated returns seed 20261026): 1,844 of 1,893 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 381, \"candidate-unknown\": 36, \"project-unknown\": 8, \"value\": 5}; the candidate refusals are on its sa.excluded_income declaration and on refusals reaching the line from other forms, the fifth value difference is on a refused record. The project line is retained.",
+   "subject_key": "65f310c907fb6ab8b73413321be4462ba7461e86ed1d6dfa3517ea7eefb8eda8"
   },
   {
    "key": "1",
-   "record": "fb11e5a5d6510584fdedfada71cf0a6514cca3fc22a0af175275174060d01378",
+   "record": "eac17c56bd249c5bcfa4c3df56b72cc16a7de4c88e1f1e8de8473c05cadb8b83",
    "status": "AGREE",
-   "subject_key": "19e4c2e0adf1a00b0cf28fe992c2365c2131fe29e9e6d694ac4ff33ce616a365"
+   "subject_key": "53c6d13b450a2a455fa7e1079d16272a571e79ab74c722e921a840006be2f61d"
   },
   {
    "key": "2",
@@ -68,8 +68,8 @@
   }
  ],
  "subjects": {
-  "sli.deduction": "e510e998d17fa197cdf50db53efa20d06379788a84dcbfc8776a2fd9176bb10f",
-  "1": "14f6e6e5ef6247b19ad2cc842ee75ae62cc347165052596c02dafcd1794de6d7",
+  "sli.deduction": "e780e6be7f573bf26b79a3ddec0c5b6a617c29f671e28910f350b777ff798799",
+  "1": "e44b9b83cfda522bc6c17cc944a5a8492c2c7826a292fa851c594e3adec8e388",
   "2": "03b76842d0b2c01ed25446bb350441f94e4e87fe6f19ca18a3ea8ee9d0f06a4d",
   "3": "3a2f5cd698d5de7f0de48e3a76ddcbbd07c2f0b49b90c745ef539cc95ad9986d",
   "4": "7525f5f108db9d3ec62d4c245aeea6b7186ca4e6c389a61b6e16750c48e330f2",
@@ -81,6 +81,6 @@
  "__rest__": "cdbf85c374e333f356e978a01b3319b841c43b9a1e74b210b748829916056fb7",
  "foreign": {
   "sli.deduction": "5e71e09486b3638eef1ca7ad68c53ea93594179c3192bf31e4e4b3916035bc7d",
-  "1": "858fe29eeecfc7e735a4186d6ac0601622fb726b32d175e564be98b0c47a1478"
+  "1": "d1408b4be3e38b6eb6df9edf6bc2fa06e821d29dc7dd063be4e4ed86653ee737"
  }
 }

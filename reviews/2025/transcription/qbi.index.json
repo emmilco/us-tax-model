@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "eff62ea2b6448f2908312be12f5a06c3f61bcc70b33c71bea09d681208069cf2",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "agree / disagree / missing": "2 / 4 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,9 +16,10 @@
   },
   {
    "key": "qbi.eligible",
-   "record": "34aa68ea7c48f6994a99c017ce621acc944a207c9d802a2e45bac2d403af1b65",
-   "status": "AGREE",
-   "subject_key": "0d4317176e95c2c021d0a5866a06199afd406b61393e8cd9206eef21746ce42c"
+   "record": "f653455ecaff26b4cc6851c77f4c94c006ee5b6e076dc66a4246c2c8e3c86077",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply takes the input qbi.dividends on every return, where the project reads it only when ordinary dividends are above zero (zero otherwise), because the interview asks the section 199A dividend amount only after dividends are entered (f1099div p. 5, Box 5, \"Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\": box 5 is part of box 1a, so without ordinary dividends there is none). On a return with no dividends the reply therefore needs an answer the interview does not ask. Triage executable-triage-v2 (`.transcription/triage/2025/qbi.json`, pass f8a472cd57e9; 1,767 fixtures, 500 generated returns seed 20261026): 2,207 of 2,355 in-scope comparisons agree; differences by kind {\"candidate-unknown\": 134, \"project-unknown\": 14}; on completed returns 97 candidate-unknown (the recorded witnesses name qbi.dividends, with the project's value zero); the project-unknown are partial records that withhold an answer the project needs. No value differs where both give one. The project line is retained.",
+   "subject_key": "cc6d14dd8033d816446ab1ac2215b9b2413a0dc8617e3251fadf33568ce975fb"
   },
   {
    "key": "qbi.taxable_before",
@@ -49,7 +51,7 @@
  ],
  "subjects": {
   "qbi.zero": "d351e905679017dd4f47fae49b296df613ed439c812435776e137e37960346b9",
-  "qbi.eligible": "9b7e22d855a63c8f95d7331310fe85280374f4e6ceb576fd806d13ac4095fcec",
+  "qbi.eligible": "2006142228aeb6c15d353fb7489b90ac5a69fbd3de6a2a334897b190092840a8",
   "qbi.taxable_before": "b83f0cad61a74d71f14d043cea5f54ced08d9f944f7c5fa4e5bb4d6b5a4302f0",
   "qbi.net_capital_gain": "7a116174b72815c5db82b7c6151c282b32fc369ff97504259084e21f7e00f4e4",
   "qbi.deduction": "8ad77c43b32b60307aca48df5f4cf13e85a666d68b12b6eb9508b6cadcb82f65",

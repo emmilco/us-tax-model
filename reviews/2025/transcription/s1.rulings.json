@@ -118,9 +118,11 @@
    "printed": "7",
    "project_expr_sha256": "c16bd3ee8833eae83d3b019235d8f185bf9eb092e5ae004ed3c9026041e936c6",
    "second_expr_sha256": "9feb66b1dd1fc717936d8a83d341f28b59398d5116234859e501c6ea98245a91",
-   "ruling": "Ruling: model error; i1040gi p. 89, Line 7: \"You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025. Report this amount on line 7\", reduced by contributions (\"If you made contributions to a governmental unemployment compensation program and you aren't itemizing deductions, reduce the amount you report on line 7 by those contributions\") and by 2025 overpayments repaid. With no compensation paid in 2025, line 7 is zero and neither s1.uc_repaid nor the s1.uc_unsupported screen is needed; the project asks both only when s1.has_uc (s1.uc_paid above zero). The candidate drops that guard and declares the screen on every return. executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 1,281 agree; 1,348 candidate-unknown, 46 candidate-refuses (on completed returns: 9 candidate-refuses, 155 candidate-unknown). The reply drops the s1.has_uc guard, so it needs s1.uc_unsupported and s1.uc_repaid (or refuses on the screen) on returns without unemployment compensation, project $0.00 in every witness. Same reply and project as the bklg ruling, which stands. Project stands.",
-   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf",
-   "subject_key": "6067d3558724269babcd67d0ad4ed154bfc2eeac9d37232a01de979c8a4b38af",
+   "ruling": "Ruling: model error; i1040gi p. 89, Schedule 1, line 7: \"If you received an overpayment of unemployment compensation in 2025, subtract the amount you repaid from the total amount you received\". Where both give a value the reply's amount is the project's (unemployment compensation paid less the 2025 repayment, floored at zero); but the reply subtracts s1.uc_repaid and declares its refusal on s1.uc_unsupported on every return, where the project reads the repayment only when compensation was paid and the interview asks the repayment and the screen only then. So on returns with no unemployment compensation the reply needs answers the interview does not ask (candidate-unknown; the recorded witnesses name s1.uc_unsupported), and on records that answer the screen yes without compensation, which the interview cannot produce, it refuses. Triage executable-triage-v2 (`.transcription/triage/2025/s1.json`, pass b317ac242aaa; 1,767 fixtures, 500 generated returns seed 20261026): 2,427 of 2,897 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 11, \"candidate-unknown\": 470}; on completed returns 172 candidate-unknown and 2 candidate-refuses, each with the project's value zero; no value differs. The project line is retained.",
+   "context": "4beb2bae40dcb67d421e328eef6a21b8ff7c2c8459a95d0f4afb59dac3f444fc",
+   "date": "2026-11-10",
+   "run": "9bfdc3ac705cdc666e2a689604d5a521e83804f0b16d0e4b4b00b5998d3a28f6",
+   "subject_key": "4e343a9b4badb95f260b58265c82134a43f40cbbbc0de276065b7ca9008e398a",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -134,12 +136,12 @@
      "fixture:classm.f2441.4.deepseek@s1",
      "fixture:classm.f2441.5.deepseek@s1",
      "fixture:classm.f2441.6.deepseek@s1",
-     "fixture:classm.dependent.3.deepseek@s1",
      "fixture:classm.f1040.6.deepseek@s1",
      "fixture:classm.otjob.3@s1",
-     "fixture:classm.s1.3@s1",
-     "fixture:classm.s1a.1@s1",
-     "fixture:classm.f1040.6@s1"
+     "fixture:classm.f1040.6@s1",
+     "fixture:mutation.t2.qss_s1a_tips_ot_car@s1",
+     "fixture:mutation.t2.s1a.mfs_ssn_unanswered@s1",
+     "generated:20261026.11@s1"
     ],
     "policy": "executable-triage-v2"
    }
@@ -148,9 +150,11 @@
    "printed": "7 (amount repaid)",
    "project_expr_sha256": "bdf17235cd12ddb660a3fb20dfa11271632c789887db9e2fbad697eb21d50ba0",
    "second_expr_sha256": "63c5a2fa0c0265906e0853b982b9dee953cb052020b7ca5c80769a136ab50126",
-   "ruling": "Ruling: representation; f1040s1 line 7, the repaid amount entry; i1040gi p. 89, Line 7. executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 2,675 agree. Both copy s1.uc_repaid; the reply shows it only when the line 7 box is checked, the project always (with $0 when nothing was repaid), so no shown amount differs. Project stands.",
-   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf",
-   "subject_key": "411c2bd22209cf1bf559b759ca97dfe84f30c49fbb0cc63133b15cffa5475119",
+   "ruling": "Ruling: representation; the reply shows the repayment entry only when the line 7 box applies, the project always shows s1.uc_repaid; the value is the same input on both sides (i1040gi p. 89, Schedule 1, line 7, \"enter the amount you repaid in the entry space\"). Triage executable-triage-v2 (`.transcription/triage/2025/s1.json`, pass b317ac242aaa; 1,767 fixtures, 500 generated returns seed 20261026): agrees on all 2,913 in-scope comparisons. The project line is retained.",
+   "context": "4beb2bae40dcb67d421e328eef6a21b8ff7c2c8459a95d0f4afb59dac3f444fc",
+   "date": "2026-11-10",
+   "run": "9bfdc3ac705cdc666e2a689604d5a521e83804f0b16d0e4b4b00b5998d3a28f6",
+   "subject_key": "e2467fbde084df3e35623e614a8481a3d845b7166633b7a2b1599d018ed9550a",
    "triage": {
     "verdict": "agrees on sample",
     "kinds": [],
@@ -176,11 +180,21 @@
    "printed": "8c",
    "project_expr_sha256": "9bd13b80e005cfb36f3673e9c79b51a86a367bfce0b72e48e64b32ac4db5bec5",
    "second_expr_sha256": "fd2f662203a49c204a20e37a5fe71913684763a1f392034ad461091d64a3e5cc",
-   "ruling": "Ruling: model error; i1040gi p. 91, Line 8c: \"Enter any canceled debt. Canceled debt may be shown in box 2 of Form 1099-C. However, part or all of your income from cancellation of debt may be nontaxable. See Pub. 4681\". R4 reran this line because a question it reads was restructured into a question and lists (the word check loses no word). The reply's expression is identical to the one ruled before: it reads the s1.cod_unsupported refusal whenever canceled debt is answered yes, where the project asks the screen only with an amount above zero (s1.cod_refused; amb.2025.cod_fully_taxable); the two differences are incomplete fixtures with canceled debt answered yes and zero (stage16.regress.s1.cod_yes_zero, mutation.t2.s1.cod_none_with_alimony). executable-triage-v2 on this pass's reply (`.transcription/s1.lines-53848595d961.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 586 partial records; 2,724 comparisons): 2,722 of 2,724 agree; differences on returns the full interview completes: none; no completed-return value difference. Project stands.",
-   "context": "f97e19d520bd32aad58f507b96a5dca647023589770079d609656d6d582cfd8d",
-   "date": "2026-11-07",
-   "run": "88d1d447faf6596c37092e2bdd45a34712d71b3508fd4920e7ba8d122713df71",
-   "subject_key": "cf6393d997f3ba0c5339de5b38ef93f533799cab087953fdec68da2a293a7673"
+   "ruling": "Ruling: representation; i1040gi p. 91, Line 8c, and p4681 p. 4, \"you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies\". Both give zero when no debt was canceled and the canceled nonbusiness debt otherwise; the project floors s1.cod_amount at zero, which cannot change a nonnegative amount, as ruled before on this line. Triage executable-triage-v2 (`.transcription/triage/2025/s1.json`, pass 554ad15530c9; 1,767 fixtures, 500 generated returns seed 20261026, 616 partial records): 2,910 of 2,911 in-scope comparisons agree; the one difference is a candidate-unknown on an incomplete mutation record (mutation.t2.s1.cod_none_with_alimony) where the reply's refusal declaration reads s1.cod_unsupported, unanswered there; no completed-return difference. The reply does not raise the reworded amount question (a debt both spouses owed counted once). The project line is retained.",
+   "context": "75848d3346a239fa8cf2f4317d582bc65212905d91ed3591ba8e936e7cf9b706",
+   "date": "2026-11-11",
+   "run": "e2633e03ecaafc061be287d257667183b1d4756f752453725153d29c732db672",
+   "subject_key": "d0b79dc02227f2f430ab08e31351226a0a5af838b97a7617385968d033f4d6a0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:mutation.t2.s1.cod_none_with_alimony@s1"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "8z",
@@ -194,24 +208,15 @@
    "printed": "s1.has_gambling",
    "project_expr_sha256": "9a6e1a079d3b026e27f86a34d532459f5d2448455e748ae3caac9dfa5116e7e8",
    "second_expr_sha256": "9f69267fc224c9a57ad5108cc0d94bd205b5390b3665bcef162c404dbdb334b2",
-   "ruling": "Ruling: model error; i1040gi p. 91, Line 8b: \"Enter gambling winnings not attributable to a trade or business\"; p525 p. 33, Gambling winnings: \"If you're in the trade or business of gambling, use Schedule C (Form 1040)\". The test itself is the project's (line 8b is a copy of s1.gambling_winnings, so line 8b above zero and winnings above zero are the same test), but the reply's line 8b declares `refuses: [s1.gambling_pro]` with no guard, so its test needs the professional-gambler answer on every return; the source and the project need it only when there are winnings (gate s1.gambling_business = has_gambling and gambling_pro). A candidate that needs an answer the source does not need is a model error (README). executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 1,125 agree; 1,549 candidate-unknown, 1 candidate-refuses (on completed returns: 154 candidate-unknown). The test is the project's (line 8b copies s1.gambling_winnings), but the reply's line 8b declares the s1.gambling_pro refusal with no guard, so it needs the professional-gambler answer on every return; every difference is candidate-unknown or candidate-refuses on s1.gambling_pro with the project false (classm.f4952.1.deepseek, classm.s3.1.deepseek and others). Same reply and project as the bklg ruling, which stands. Project stands.",
-   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf",
-   "subject_key": "82de8e10933d04fc4f72145bdff999dd97b5dcb90b93a6f6585529683462f3b7",
+   "ruling": "Ruling: representation; the reply tests line 8b above zero, the project tests s1.gambling_winnings above zero; line 8b is that input (i1040gi p. 91, Line 8b, \"Enter gambling winnings not attributable to a trade or business\"). Triage executable-triage-v2 (`.transcription/triage/2025/s1.json`, pass b317ac242aaa; 1,767 fixtures, 500 generated returns seed 20261026): agrees on all 2,913 in-scope comparisons. The project line is retained.",
+   "context": "4beb2bae40dcb67d421e328eef6a21b8ff7c2c8459a95d0f4afb59dac3f444fc",
+   "date": "2026-11-10",
+   "run": "9bfdc3ac705cdc666e2a689604d5a521e83804f0b16d0e4b4b00b5998d3a28f6",
+   "subject_key": "7b91f7e5d0267d7a3f105a8237489218902cac6817bae74948f1fd78cf89b419",
    "triage": {
-    "verdict": "differs",
-    "kinds": [
-     "candidate-refuses",
-     "candidate-unknown"
-    ],
-    "witnesses": [
-     "fixture:classm.f2441.1.deepseek@s1",
-     "fixture:classm.f2441.2.deepseek@s1",
-     "fixture:classm.f2441.3.deepseek@s1",
-     "fixture:classm.f2441.4.deepseek@s1",
-     "fixture:classm.f2441.5.deepseek@s1",
-     "fixture:classm.f2441.6.deepseek@s1",
-     "fixture:stage16.refuse.s1.gambling_business@s1"
-    ],
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
     "policy": "executable-triage-v2"
    }
   }

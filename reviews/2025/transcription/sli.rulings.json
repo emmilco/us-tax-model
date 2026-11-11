@@ -41,11 +41,46 @@
    "printed": "sli.deduction",
    "project_expr_sha256": "8ed365790d97799ffbe4db36d9f45a7f99d3871c1c52a7f2da5f0cd2a9aa86b3",
    "second_expr_sha256": "63a0dfab6eab45fc93a662c2ef3475c02f3599ac62cf5cd6ebe78358f0a9fa90",
-   "ruling": "Ruling: model error; same reply and project as the round-2 and round-3 rulings. i1040gi p. 98, Line 21: \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's ... 2025 tax return.\" The reply refuses on sa.dependent (who can be claimed) where the source and the project (sli.claimed_count, person.sav_claimed) test being claimed. Triage executable-triage-v2 (reviews/2025/transcription/triage/sli.json; 1,638 fixtures, 500 generated returns seed 20261026, 40 partial records): the candidate declaration is invalid on this pass's scoped interface (candidate-invalid on all 2,178 records), so no value is compared. The R3 restructuring of sli.interest kept its words (word check: none lost). Project stands.",
-   "context": "6500b0cc24adc139d0c6a295985e228989e01bea2fe94cfcef6ae0663c69b389",
-   "date": "2026-11-07",
-   "run": "cceddb0c89287a32d1b08d45ab9eaa20ee0a8e245ec8fc64c0a323a96a549e22",
-   "subject_key": "15109bcec31790cc953e660a5156a0fa4d07fed4e6ad0d8666eaebfb7a7a3d8f"
+   "ruling": "Ruling: model error; same point as the earlier rulings on this line. i1040gi p. 98, Line 21, among the conditions for the deduction: \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's\" 2025 tax return. The reply gives worksheet line 9 on every return not married filing separately and has no test that the filer or the spouse is claimed as a dependent (its note says it found no input that asks it; the project reads person.sav_claimed). On completed returns where a person on the return is claimed the project enters zero and the reply the worksheet amount: 4 completed value differences, the recorded witnesses mutation.t2.sli.qss_divisor ($2,045.00 against $0.00; person[taxpayer].sav_claimed yes), stage11.sli.claimed, stage11.sli.spouse_claimed and stage16.sd.line17_no_skips_19. Triage executable-triage-v2 (`.transcription/triage/2025/sli.json`, pass e9feb0fa0109; 1,767 fixtures, 500 generated returns seed 20261026): 1,844 of 1,893 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 381, \"candidate-unknown\": 36, \"project-unknown\": 8, \"value\": 5}; the candidate refusals are on its sa.excluded_income declaration and on refusals reaching the line from other forms, the fifth value difference is on a refused record. The project line is retained.",
+   "context": "af82d049075c79160b9a03ebedc1b94d802a3dc413e0ed582c0fb76a73d083f3",
+   "date": "2026-11-10",
+   "run": "94c79faeda608c643131c354b13e9d8aedb4f8a64d814bad3caf5ae5b5a9fe77",
+   "subject_key": "1599e24785812a315f4c12eb3357c9e13e58e855546cce4442cabf87e9455d75",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@sli",
+     "fixture:stage14.asset.refuse_ads_past_gds@sli",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@sli",
+     "fixture:stage14.asset.refuse_class@sli",
+     "fixture:stage14.asset.refuse_listed_low@sli",
+     "fixture:stage14.asset.refuse_s179_over@sli",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@sli",
+     "fixture:classm.f8889.1.deepseek@sli",
+     "fixture:classm.f8889.3.deepseek@sli",
+     "fixture:classm.f8889.4.deepseek@sli",
+     "fixture:classm.f8889.5.deepseek@sli",
+     "fixture:classm.dependent.5.deepseek@sli",
+     "fixture:classm.asset.3@sli",
+     "fixture:classm.sales.2@sli",
+     "fixture:classm.scveh.2@sli",
+     "fixture:classm.dependent.3@sli",
+     "fixture:mutation.t2.sli.qss_divisor@sli",
+     "fixture:mutation.t2.sli.hoh_divisor@sli",
+     "fixture:stage16.sd.line17_no_skips_19@sli",
+     "fixture:stage11.sli.claimed@sli",
+     "fixture:stage11.sli.spouse_claimed@sli",
+     "partial:classm.f1095a.1.deepseek-sli.interest@sli",
+     "partial:classm.eic.8.deepseek-sli.interest@sli"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

@@ -189,7 +189,7 @@
 ## (helper) — `eic.step1_foreign`
 
 - **Authored helper label:** Step 1, question 3. Not filing Form 2555 (foreign earned income)
-- **Encoded (Bool):** sa helper "Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?" = false
+- **Encoded (Bool):** sa helper "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?" = false
 - **Refusal:** when sa.excluded_income is true, cannot complete Form 2555 (EIC, Step 1, question 3). A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool. Cite: [i1040gi] p. 40, Step 1, question 3, "Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"eq":["sa.excluded_income",{"const":false}],"op":"test"}`
 - Cite: [i1040gi] p. 40, Step 1, question 3 (2025; printed date 2026-02-25; sha256 482e9c48)

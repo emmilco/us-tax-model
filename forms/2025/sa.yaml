@@ -107,10 +107,10 @@ form:
     - id: sa.excluded_income
       printed: (helper)
       type: Bool
-      label: 'Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?'
+      label: 'Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?'
       expr:
         op: input
-        source: 'Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?'
+        source: 'Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?'
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
@@ -308,7 +308,7 @@ form:
       expr:
         op: input
         source: |-
-          State/local income taxes paid, including withholding; no sales-tax election.
+          State/local income taxes you (or, on a joint return, your spouse) paid, including withholding; no sales-tax election.
 
           Include state and local income taxes withheld in 2025 (but not withholding you deducted on another form, such as Schedule C), estimated payments made in 2025 (including a prior-year refund credited to 2025), and taxes paid in 2025 for a prior year, but not penalties or interest.
 
@@ -348,7 +348,7 @@ form:
       expr:
         op: input
         source: |-
-          Deductible state/local real estate taxes on real estate you own that was not used for business, only if the taxes are assessed uniformly at a like rate on all real property in the community and used for general community or governmental purposes.
+          Deductible state/local real estate taxes on real estate you (or, on a joint return, your spouse) own that was not used for business, only if the taxes are assessed uniformly at a like rate on all real property in the community and used for general community or governmental purposes.
 
           Leave out:
           - foreign real estate taxes

@@ -11,7 +11,7 @@ form:
       printed: (helper)
       type: Bool
       label: |-
-        Any of the following?
+        Do you (or, on a joint return, your spouse) have any of the following?
 
         - annuity, rental, royalty, business or pass-through income
         - a CFC or PFIC holding
@@ -29,7 +29,7 @@ form:
       expr:
         op: input
         source: |-
-          Any of the following?
+          Do you (or, on a joint return, your spouse) have any of the following?
 
           - annuity, rental, royalty, business or pass-through income
           - a CFC or PFIC holding

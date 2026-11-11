@@ -715,8 +715,8 @@ form:
       type: NonNegDollars
       expr:
         op: input
-        source: Federal income tax withheld shown on your Forms 1099 (supplied total of box 4 of Forms 1099-R, 1099-INT,
-          1099-DIV, 1099-G and other Forms 1099, box 6 of Form SSA-1099 and box 10 of Form RRB-1099)
+        source: Federal income tax withheld shown on your (or, on a joint return, your spouse's) Forms 1099 (supplied total
+          of box 4 of Forms 1099-R, 1099-INT, 1099-DIV, 1099-G and other Forms 1099, box 6 of Form SSA-1099 and box 10 of Form RRB-1099)
       cite:
         doc: i1040gi
         locator: p. 39, Line 25b, "This should be shown in box 4 of Form 1099, box 6, of Form SSA-1099, or box 10 of Form RRB-1099"
@@ -726,8 +726,8 @@ form:
       type: NonNegDollars
       expr:
         op: input
-        source: Federal income tax withheld shown on your Forms W-2G (box 4), Schedules K-1, and Forms 1042-S, 8805 and 8288-A
-          (supplied total; not Additional Medicare Tax, which Form 8959 figures)
+        source: Federal income tax withheld shown on your (or, on a joint return, your spouse's) Forms W-2G (box 4), Schedules
+          K-1, and Forms 1042-S, 8805 and 8288-A (supplied total; not Additional Medicare Tax, which Form 8959 figures)
       cite:
         doc: i1040gi
         locator: p. 39, Line 25c—Other Forms, "Federal income tax withheld on your Form(s) W-2G"; "Federal income tax withheld
@@ -764,10 +764,12 @@ form:
       type: NonNegDollars
       expr:
         op: input
-        source: 2025 estimated tax payments and amount applied from your 2024 return (supplied total)
+        source: 2025 estimated tax payments you (or, on a joint return, your spouse) made and amount applied from your (or, on
+          a joint return, your spouse's) 2024 return (supplied total)
       cite:
         doc: f1040
-        locator: Form 1040 (2025), line 26
+        locator: Form 1040 (2025), line 26; i1040gi p. 39, Line 26, "If you or your spouse paid separate estimated tax but
+          you are now filing a joint return, add the amounts you each paid"
     - id: f1040.line27a
       printed: 27a
       label: Earned income credit (EIC)

@@ -24,8 +24,8 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: 'State or local income tax refunds, credits or offsets you received in 2025: the total of box 2 of your Forms
-        1099-G (or a similar statement), including any part you chose to apply to your 2025 estimated state or local income
+      source: 'State or local income tax refunds, credits or offsets you (or, on a joint return, your spouse) received in 2025:
+        the total of box 2 of your (or, on a joint return, your spouse''s) Forms 1099-G (or a similar statement), including any part you chose to apply to your 2025 estimated state or local income
         tax and any part offset against a debt, and any refund for which you received no Form 1099-G; zero if none'
     cite:
       doc: i1040gi
@@ -67,8 +67,8 @@ form:
     type: Bool
     expr:
       op: input
-      source: Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024
-        state or local income tax in 2025 (for example a last estimated payment in January 2025, a payment with an extension,
+      source: Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you (or, on a joint
+        return, your spouse) pay any of your 2024 state or local income tax in 2025 (for example a last estimated payment in January 2025, a payment with an extension,
         or a balance due) or before 2024 (for example a 2024 estimated payment made in December 2023)?
     cite:
       doc: i1040gi
