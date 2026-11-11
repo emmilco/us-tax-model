@@ -1,0 +1,141 @@
+{
+ "form": "interest",
+ "reviews": {
+  "interest.amount": {
+   "subject_sha": "86c9037915203d9f89005c36997993335e8aea9f9170bc10b322a10d7e1be0ec",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer holds a tax-exempt municipal bond bought at a market discount and has accrued market discount includible in income, and leaves it out because the question says to exclude tax-exempt interest.",
+       "source_text": "i1040sb p. 1: \"The market discount on a tax-exempt bond is taxable interest income and not tax-exempt interest.\" Also: \"include any accrued market discount that is includible in income and any gain on a contingent payment debt instrument that is includible in income as interest income.\"",
+       "why": "The instruction \"exclude tax-exempt interest\" leads a filer to drop market discount from a tax-exempt payer, and the help never mentions accrued market discount or contingent payment debt instrument gain. Both lines need these amounts.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer gets a Form 1099-INT that includes interest received as a nominee, accrued interest paid to a bond seller, or interest later reduced by an elected amortizable bond premium, and enters the full amount from the form.",
+       "source_text": "Question: \"Taxable interest from this payer, including Treasury interest\"; i1040sb pp. 1–2: \"Subtract this amount from the subtotal and enter the result on line 2\" (also applies to \"Accrued Interest,\" \"OID Adjustment,\" \"ABP Adjustment\").",
+       "why": "Line 2 must be the subtotal minus the nominee, accrued interest, OID and ABP amounts. Summing the amounts as shown on the forms puts interest that is not the filer's into sb.line2.",
+       "bound": ""
+      },
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "Any filer with a nominee distribution, accrued interest, OID adjustment or ABP adjustment, where one per-payer figure feeds both the pre-adjustment helper and line 2.",
+       "source_text": "sb.interest_total: \"before any Schedule B adjustment\" (i1040sb p. 1, \"report the total on line 1\"); sb.line2: \"Total taxable interest\" after \"Subtract this amount from the subtotal and enter the result on line 2\" (i1040sb p. 1).",
+       "why": "Line 1 needs the gross amount reported by the payer and line 2 needs the amount after adjustments. The question returns a single figure, so whichever one the filer gives, one of the two lines is wrong.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A nominee or bond purchaser who received a Form 1099-INT naming them is asked for \"taxable interest from this payer.\"",
+       "source_text": "Question: \"Taxable interest from this payer\"; i1040sb p. 1: \"interest you received as a nominee (that is, in your name, but the interest actually belongs to someone else), report the total on line 1.\"",
+       "why": "One filer reasonably enters the amount on the form. Another reasonably enters only the part that is taxable to them. The two answers give different totals.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "06832771a524cbe09e069ed2d0396b8a2ed1afa532f3fbfd7df9cc2d73600f17",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06618,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/interest.amount.86c903791520.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sb",
+     "revision": "TY2025; printed April 23, 2025",
+     "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Line 1, \"Report on line 1 all of your taxable interest\"",
+      "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\"",
+      "pp. 1–3, interest, dividends and foreign accounts/trusts"
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+    }
+   ]
+  },
+  "interest.penalty": {
+   "subject_sha": "d82211416603a14e638d0b1faa89256f0d11c5f05e5616169c1c3330bffe418d",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "4e19518b50bafbdce6cb4387e6ecc32344382ad8d2b4d11205cf4c6cbe7ae7fb",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.041644,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/interest.penalty.d82211416603.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      95
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 95, Line 18, \"The Form 1099-INT or Form 1099-OID you received will show the amount of any penalty you were charged\"; , Instructions for Recipient, \"Box 2. Shows interest or principal forfeited because of early withdrawal of time savings. You may deduct this amount to figure your adjusted gross income on your income tax return\""
+     ],
+     "cols_pages": [
+      95
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 18; , Line 18, \"The Form 1099-INT or Form 1099-OID you received will show the amount of any penalty you were charged\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "f1099int",
+     "revision": "January 2024 (continuous-use form)",
+     "text_sha256": "c4514fa301d16db6abe795e8493b92425cffbf37ac4c39a754b06be677f4a115",
+     "pages": [
+      5
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "b47750922f8b8b3274e9efb422b49fb83b89ea5ce9f68e24fb860381516355a2"
+    }
+   ]
+  }
+ }
+}

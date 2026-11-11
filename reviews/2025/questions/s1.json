@@ -1,0 +1,1091 @@
+{
+ "form": "s1",
+ "reviews": {
+  "s1.alimony": {
+   "subject_sha": "01a205163b57149e8e20de77bff8852d21f59753d4d1530113e08cbb5f4fbe70",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "09baf21de9eeb80bead97d5542329eb1b18fe80affec412472001f4d8d1808a6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.076992,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.alimony.01a205163b57.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      89,
+      95
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 89, Line 2a, \"Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018\"; p. 95, Line 19a, \"You can't take a deduction for alimony payments you made to or for your spouse if you entered into your divorce or separation agreement after December 31, 2018\"; , Certain Rules for Instruments Executed or Modified After 2018, \"if the modification expressly states that the alimony isn’t deductible to the payer or includible in the income of the recipient\", and Example 2, \"the modification expressly provided that the post-2018 alimony rules apply\" and \"The alimony payments made in January 2025 through May 2025 are includible in the recipient’s income and deductible from the payer’s income.\""
+     ],
+     "cols_pages": [
+      89,
+      95
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 19a; , Line 19a",
+      "Schedule 1 (2025), line 2a; , Line 2a, \"Alimony received is not included in your income if you entered into a divorce or separation agreement after December 31, 2018\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "p504",
+     "revision": "2025",
+     "text_sha256": "ab5181b8bd02383ed4b695d9d83000d78ca95964cb0345629815c6e68a309da1",
+     "pages": [
+      16
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "0d985ad253efcd055a01931d1edec50db41ac80ff214206dbb1d969cbaf7fd65"
+    }
+   ]
+  },
+  "s1.alimony_paid": {
+   "subject_sha": "2011457fddc3d61887858b9036e07c14037bd11928db782cb162c540c50f0cb5",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "The filer's pre-2019 decree requires cash payments that continue after the recipient spouse's death, or that a payment due at death replaces. The filer includes them because nothing in the question rules them out.",
+       "source_text": "p504 p. 14: 'There is no liability to make any payment (in cash or property) after the death of the recipient spouse.'; p504 p. 15: 'If any part of payments you make must continue to be made for any period after your spouse's death, that part of your payments isn't alimony whether made before or after the death.' and Substitute payments: 'the otherwise qualifying payments aren't alimony.'",
+       "why": "The question's exclusions list child support, property settlements, community income, the payer's property, designated non-alimony, joint returns, same household and post-2018 changes. It never excludes payments that survive the recipient's death or substitute payments. The listed later screens cover only more than one agreement, recapture and child support, so these non-alimony amounts reach line 19a.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The filer must pay the mortgage or real estate taxes on a home owned jointly with the spouse, and the question doesn't say whether that counts as 'payments to keep up ... your property' or as payments to a third party for the spouse.",
+       "source_text": "p504 p. 13: 'If your divorce or separation instrument states that you must pay expenses for a home owned by you and your spouse or former spouse, some of your payments may be alimony. See Table 4.'; p504 p. 14 Table 4: mortgage payments on a jointly owned home → 'half of the total payments'; real estate taxes held as tenants by the entirety or in joint tenancy → 'none of the payments'",
+       "why": "For a jointly owned home, one filer may leave out all of these payments as upkeep of their own property, while another includes all of them as housing costs paid for the spouse. Under Table 4 the correct amount is often half, or none, depending on the expense and how title is held.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "7d01fcf3c0d03ff893a3773c2442bced9a3baf38d35dfce97c174c11c33f2c48",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09720400000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.alimony_paid.2011457fddc3.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      95
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 95, Line 19a, \"If you made payments to or for your spouse or former spouse under a divorce or separation agreement entered into on or before December 31, 2018, you may be able to take this deduction\"; , Certain Rules for Instruments Executed or Modified After 2018, \"if the modification expressly states that the alimony isn’t deductible to the payer or includible in the income of the recipient\", and Example 2, \"the modification expressly provided that the post-2018 alimony rules apply\"; , \"The instrument doesn’t designate the payment as not alimony\", Payments designated as not alimony, \"You do this by including a provision in your divorce or separation instrument that states the payments aren’t deductible as alimony by you and are excludable from your spouse’s income\", \"is alimony if the spouses don’t file a joint return with each other\", and Spouses can’t be members of the same household, \"Payments to your spouse while you’re members of the same household aren’t alimony if you’re legally separated under a decree of divorce or separate maintenance\" and \"A home you formerly shared is considered one household, even if you physically separate yourselves in the home\"; , \"You aren’t treated as members of the same household if one of you is preparing to leave the household and does leave no later than 1 month after the date of the payment\"; , Payments to a third party, \"Cash payments, checks, or money orders to a third party on behalf of your spouse under the terms of your divorce or separation instrument can be alimony, if they otherwise qualify\", \"These include payments for your spouse’s medical expenses, housing costs (rent, utilities, etc.), taxes, tuition, etc.\", and Life insurance premiums, \"Alimony includes premiums you must pay under your divorce or separation instrument for insurance on your life to the extent your spouse owns the policy\"; , \"cash payments made to a third party at the written request of your spouse may qualify as alimony if all the following requirements are met\""
+     ],
+     "cols_pages": [
+      95
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p504",
+     "revision": "2025",
+     "text_sha256": "ab5181b8bd02383ed4b695d9d83000d78ca95964cb0345629815c6e68a309da1",
+     "pages": [
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 12, Alimony, \"Enter your total payments on line 19a\"",
+      "p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony"
+     ],
+     "cols_pages": [
+      12,
+      13,
+      15,
+      16
+     ],
+     "cols_sha256": "0d985ad253efcd055a01931d1edec50db41ac80ff214206dbb1d969cbaf7fd65"
+    }
+   ]
+  },
+  "s1.alimony_received": {
+   "subject_sha": "d868b27f048b15c2341663b61a767b0dd0f119dbb243a1be67e820a87d73995c",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "Under the filer's pre-2019 decree, the payer must keep paying the filer or the filer's estate $20,000 a year even after the filer dies. The filer reads 'alimony or separate maintenance you received', finds nothing on the exclusion list that applies, and includes the $20,000.",
+       "source_text": "p504 p. 15: \"If any part of payments you make must continue to be made for any period after your spouse's death, that part of your payments isn't alimony whether made before or after the death.\" Also p. 15, Substitute payments: \"the otherwise qualifying payments aren't alimony\"",
+       "why": "The question's 'Do not include' list leaves out the rule that payments continuing after the recipient's death aren't alimony, and also leaves out substitute payments. So the filer includes amounts that line 2a must not have. The later screen named on the helper covers only multiple agreements, recapture and child support, not this rule.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The instrument requires the payer to pay all the mortgage on a home the payer and the filer own together. The filer can't tell whether to include all of it, none of it (as 'payments to keep up ... the payer's property'), or half.",
+       "source_text": "p504 p. 14, Table 4: mortgage payments on a jointly owned home → \"half of the total payments\" are alimony; real estate taxes held as tenants by the entirety or in joint tenancy → \"none of the payments\"",
+       "why": "The question lists third-party payments for 'rent, utilities' and excludes upkeep of 'the payer's property', but doesn't cover jointly owned homes. Reasonable readers would enter different amounts when the text calls for exactly half, or none.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ef35cfd4839122fb3e8914aed595ea438cdee3d5e6127b3be94648c589bf3c63",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09517600000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.alimony_received.d868b27f048b.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      89
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 89, Line 2a, \"Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018, unless that agreement was changed after December 31, 2018, to expressly provide that alimony received isn't included in your income\"; , Certain Rules for Instruments Executed or Modified After 2018, \"if the modification expressly states that the alimony isn’t deductible to the payer or includible in the income of the recipient\", and Example 2, \"the modification expressly provided that the post-2018 alimony rules apply\"; , \"The instrument doesn’t designate the payment as not alimony\", Payments designated as not alimony, \"You do this by including a provision in your divorce or separation instrument that states the payments aren’t deductible as alimony by you and are excludable from your spouse’s income\", \"is alimony if the spouses don’t file a joint return with each other\", and Spouses can’t be members of the same household, \"Payments to your spouse while you’re members of the same household aren’t alimony if you’re legally separated under a decree of divorce or separate maintenance\" and \"A home you formerly shared is considered one household, even if you physically separate yourselves in the home\"; , \"You aren’t treated as members of the same household if one of you is preparing to leave the household and does leave no later than 1 month after the date of the payment\"; , Payments to a third party, \"Cash payments, checks, or money orders to a third party on behalf of your spouse under the terms of your divorce or separation instrument can be alimony, if they otherwise qualify\", \"These include payments for your spouse’s medical expenses, housing costs (rent, utilities, etc.), taxes, tuition, etc.\", and Life insurance premiums, \"Alimony includes premiums you must pay under your divorce or separation instrument for insurance on your life to the extent your spouse owns the policy\"; , \"cash payments made to a third party at the written request of your spouse may qualify as alimony if all the following requirements are met\"",
+      "p. 89, Line 2a; Line 2b, \"Attach a statement listing the month and year of the other agreements\""
+     ],
+     "cols_pages": [
+      89
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p504",
+     "revision": "2025",
+     "text_sha256": "ab5181b8bd02383ed4b695d9d83000d78ca95964cb0345629815c6e68a309da1",
+     "pages": [
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony"
+     ],
+     "cols_pages": [
+      12,
+      13,
+      15,
+      16
+     ],
+     "cols_sha256": "0d985ad253efcd055a01931d1edec50db41ac80ff214206dbb1d969cbaf7fd65"
+    }
+   ]
+  },
+  "s1.cod_amount": {
+   "subject_sha": "cd740bea71415d962892a3f18eb2bab1e79cda8bb79be1cdc014ddc2ab6e2409",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose nonbusiness debt is actually discharged in 2025, but whose creditor issued the Form 1099-C in an earlier year when an identifiable event occurred, received no 2025 Form 1099-C for it.",
+       "source_text": "f1099c p. 4, Instructions for Debtor: \"If an identifiable event has occurred but the debt has not actually been discharged, then include any discharged debt in your income in the year that it is actually discharged\"",
+       "why": "The question asks for box 2 of 'your Forms 1099-C' plus debt for which you 'received no Form 1099-C'. This filer did receive a Form 1099-C, in a prior year, so a truthful answer likely leaves out a debt that line 8c needs for 2025.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer receives a 2025 Form 1099-C for an identifiable event, such as code C or G, but the debt has not actually been discharged in 2025.",
+       "source_text": "f1099c p. 4: \"Box 2. Shows the amount of debt either actually or deemed discharged\"; \"include any discharged debt in your income in the year that it is actually discharged\"; question: \"the total of box 2 of your Forms 1099-C\"",
+       "why": "The question takes the whole box 2 amount, which can include deemed discharges that belong in a later year. That brings in an amount line 8c must not include for 2025.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The question gives no tax year, so a filer may count 1099-C forms or cancellations from a year other than 2025.",
+       "source_text": "p4681 p. 6: \"You received a 2025 Form 1099-C from the credit card lender\"; question: \"the total of box 2 of your Forms 1099-C, plus any canceled nonbusiness debt for which you received no Form 1099-C\"",
+       "why": "Without a year, 'your Forms 1099-C' and 'any canceled nonbusiness debt' can reasonably be read to cover other years. That reading changes the amount carried to line 8c.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a03198c7282c2d35964a084a5c710bbfbc1047479ea0f63daa20d7993ea952e0",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.104996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.cod_amount.cd740bea7141.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p4681",
+     "revision": "2025",
+     "text_sha256": "c280f0029d95f9f4186840c73600efd2af4bd3370a86a31fb4f2a9391887b2b6",
+     "pages": [
+      3,
+      4,
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions",
+      "p. 4, Form 1099-C Reference Guide, \"Even if you didn't receive a Form 1099-C, you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies\"; , Instructions for Debtor, \"Box 2. Shows the amount of debt either actually or deemed discharged\""
+     ],
+     "cols_pages": [
+      3,
+      4,
+      6
+     ],
+     "cols_sha256": "21875d96efa2d4d7885584db3cf06d5830154aeff1eaf3370efad4fab5cc3a17"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      20
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 20, Canceled Debts, \"If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040), line 8c\""
+     ],
+     "cols_pages": [
+      20
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 91, Line 8c"
+     ],
+     "cols_pages": [
+      91
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1099c",
+     "revision": "Rev. April 2025",
+     "text_sha256": "60446f8d9e487c481afdd7c557328e8da5f2c9b92be7af36e85ed179749b585e",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      4
+     ],
+     "cols_sha256": "4f1baa6be9f3cb758ced191d5ce82f9dd3fb0fe749e43ad151108b3936d71ade"
+    }
+   ]
+  },
+  "s1.cod_any": {
+   "subject_sha": "59e1409fa7c3e4d079a6fafa1034fcbb36e64ae4c8813f8e053344b33ff22211",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A lender reduced the principal of the filer's loan in 2025 because they paid it off early, or as part of a loan modification, and the filer answers no because they don't see a discount or workout as a debt being 'canceled or forgiven.'",
+       "source_text": "p4681 p. 4: \"If a lender discounts (reduces) the principal balance of a loan because you pay it off early, or agrees to a loan modification (a 'workout') that includes a reduction in the principal balance of a loan, the amount of the discount or the amount of principal reduction is canceled debt.\"",
+       "why": "The question and its help give only Form 1099-C and outright forgiveness as examples. Line 8c still needs a yes for early-payoff discounts and principal reductions in a workout, which a filer would not naturally call forgiveness.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "Someone else (for example, an employer program) paid off the filer's student loan in 2025, and the filer answers no because the loan was repaid rather than canceled or forgiven.",
+       "source_text": "p4681 p. 4: \"if you are responsible for making loan payments, and the loan is canceled or repaid by someone else, you must include the amount that was canceled or paid on your behalf in your gross income\"",
+       "why": "The wording covers only debt that was canceled or forgiven. The tax text also counts a debt repaid by a third party as income of this kind.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "On a joint return, only the spouse's debt was canceled in 2025, and the filer answers no because the question asks about 'your debt.'",
+       "source_text": "i1040gi p. 91, Line 8c: \"Cancellation of debt. Enter any canceled debt.\"",
+       "why": "Line 8c on a joint return includes canceled debt of both spouses. The wording 'your debt' does not tell the filer to include the spouse's debt.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose only canceled debt is a business debt (Schedule C/E/F), a nonrecourse debt ended by foreclosure or abandonment, a debt forgiven as a gift or inheritance, or a debt owed to their own corporation answers yes, which sends the amount to line 8c.",
+       "source_text": "p4681 p. 4: \"if the debt is nonrecourse ... you don't have cancellation of debt income\"; \"you don't have income from canceled debt if the debt is canceled as a gift, bequest, devise, or inheritance\"; \"the canceled debt is a constructive distribution\"",
+       "why": "The question asks about 'any of your debt' with no limits. The help mentions nonbusiness debt but never says to answer no for business debt or for these cases, so a truthful yes brings in amounts that belong elsewhere or are not cancellation-of-debt income at all.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer who received a 2025 Form 1099-C for a debt that was business-related or excluded (for example, insolvency) cannot tell whether to answer yes, since the help defines 'nonbusiness debt' but the question never uses that term.",
+       "source_text": "p4681 p. 4: \"Unless you meet one of the exceptions or exclusions discussed later, the amount of the debt that has been canceled is ordinary income and must be reported on the appropriate form\"",
+       "why": "One reading is 'any debt canceled' (yes). Another, prompted by the help, is 'nonbusiness, taxable debt only' (possibly no). The two readings put different amounts on line 8c.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "512eb3e48a63f81c9afd77753034245787d0eec98edf31846ae82ea26d9da1c1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.076992,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.cod_any.59e1409fa7c3.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p4681",
+     "revision": "2025",
+     "text_sha256": "c280f0029d95f9f4186840c73600efd2af4bd3370a86a31fb4f2a9391887b2b6",
+     "pages": [
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Form 1099-C Reference Guide, \"Even if you didn't receive a Form 1099-C, you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies\""
+     ],
+     "cols_pages": [
+      4
+     ],
+     "cols_sha256": "21875d96efa2d4d7885584db3cf06d5830154aeff1eaf3370efad4fab5cc3a17"
+    },
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 8c; , Line 8c, \"Canceled debt may be shown in box 2 of Form 1099-C. However, part or all of your income from cancellation of debt may be nontaxable\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      91
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "s1.gambling_pro": {
+   "subject_sha": "f0ea3335d1807459a660ac4de93db9aea7031b0844a9ba1c602e2dbe918f47f3",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "On a joint return, one spouse gambles as a trade or business and the other has only casual gambling winnings (for example, a lottery prize or fantasy sports winnings); the filer truthfully answers yes because the spouse is a professional, so the gate marks the household's gambling winnings as a professional gambler's winnings.",
+       "source_text": "Question: \"Are you (or, on a joint return, your spouse) in the trade or business of gambling (a professional gambler)?\"; p525 (2025) p. 33: \"You must include your gambling winnings in your income on Schedule 1 (Form 1040), line 8b... If you itemize your deductions on Schedule A (Form 1040), you can deduct gambling losses... If you're in the trade or business of gambling, use Schedule C (Form 1040).\"",
+       "why": "Schedule C treatment applies only to the winnings of the person who is in the trade or business of gambling. The non-professional spouse's winnings belong on Schedule 1, line 8b, with any losses on Schedule A. The question asks about either spouse, so one spouse's professional status turns on the professional-gambler treatment for all of the household's gambling winnings.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "346740c3b74d55c337973c2e504c2b0584d9c0903569fdc29a43640e06e5af8d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.037736,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.gambling_pro.f0ea3335d180.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      33
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 33, Gambling winnings, \"If you’re in the trade or business of gambling, use Schedule C (Form 1040)\"",
+      "p. 33, Gambling winnings, \"If you’re in the trade or business of gambling, use Schedule C (Form 1040). For tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings\""
+     ],
+     "cols_pages": [
+      33
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "s1.gambling_winnings": {
+   "subject_sha": "e52af325b888bd0afb6a3a81b0d15e4bb67a57618656b998747e426439cd112e",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A professional gambler gets Forms W-2G for winnings from their gambling trade or business, follows the help's 'Include every Form W-2G box 1 amount', and enters those amounts here.",
+       "source_text": "p525 p. 33: \"If you're in the trade or business of gambling, use Schedule C (Form 1040).\"; i1040gi p. 91, Line 8b: \"Enter gambling winnings not attributable to a trade or business.\"",
+       "why": "The help says to include every W-2G box 1 amount with no exception. Business winnings then land on line 8b and also raise the Schedule A line 16 loss limit, when they belong on Schedule C.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer won a car in a sweepstakes or contest that is not gambling, and includes its fair market value because the question lists 'the fair market value of noncash prizes such as cars'.",
+       "source_text": "i1040gi p. 91, Line 8i: \"Prizes and awards. Enter prizes and awards\"; p525 p. 33: \"Winnings from lotteries and raffles are gambling winnings. In addition to cash winnings, you must include in your income the FMV of bonds, cars, houses, and other noncash prizes.\"",
+       "why": "The question does not limit noncash prizes to gambling, lottery or raffle prizes. Non-gambling prizes belong on line 8i, and counting them here also raises the gambling-loss limit.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer gets a government oil and gas lease through a lottery and enters its full fair market value as a noncash prize.",
+       "source_text": "p525 p. 33: \"However, the difference between the FMV and the cost of an oil and gas lease obtained from the government through a lottery isn't includible in income.\"",
+       "why": "The question asks for the full fair market value of noncash prizes with no exception. The text excludes the FMV-over-cost part of such a lease.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "4e078060e5de930679b773899e705d0c702f24bca3206412e107bb5b4b4d6908",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.074152,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.gambling_winnings.e52af325b888.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 91, Line 8b",
+      "p. 91, Line 8b, \"Enter gambling winnings not attributable to a trade or business. Gambling winnings include lotteries, raffles, a lump-sum payment from the sale of a right to receive future lottery payments, etc.\"; , Gambling winnings, \"Winnings from fantasy sports leagues are gambling winnings\" and \"Include the amount from box 1 on Schedule 1 (Form 1040), line 8b\""
+     ],
+     "cols_pages": [
+      91
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 8b; , Line 8b, \"Enter gambling winnings not attributable to a trade or business\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      33
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 33, Gambling winnings, \"For tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings\""
+     ],
+     "cols_pages": [
+      33
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "s1.jury_to_employer": {
+   "subject_sha": "4d8a7ffc3e668d2d01cf2b0e0870e2ede1441f0eb47549f096103d95e8bdd561",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "7a142414c3726fc94f1caa399f992a881cedc04ef67dac44c20fcf5bb1f57a58",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.046228000000000005,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.jury_to_employer.4d8a7ffc3e66.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91,
+      99
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 91, Line 8h, \"Enter any jury duty pay and see the instructions for line 24a\"; p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury\"",
+      "p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury\"; , Jury duty, \"you can deduct the amount turned over to your employer as an adjustment to income\""
+     ],
+     "cols_pages": [
+      91
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      34
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "s1.line8g": {
+   "subject_sha": "d8009b7c0d5744b70607f1db2f53c892c1a73e512050c0cae7413026bd2c9ea1",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "An Alaska parent applied for a dependent child's dividend and had it deposited into the parent's own account, so the parent could reasonably count the child's dividend as 'paid to you'.",
+       "source_text": "p525 (2025) p. 31: \"If you received a payment from Alaska's mineral income fund (Alaska Permanent Fund dividend), report it as income on Schedule 1 (Form 1040), line 8g. ... The state of Alaska sends each recipient a document that shows the amount of the payment with the check.\"",
+       "why": "The text ties line 8g to the recipient named on the state's document, which is the child, not the parent. The question's 'paid to you (and ... your spouse)' does not say to leave out dividends of children or other dependents, even when the payment went to the parent's account. A filer could read it either way and enter different amounts on line 8g, which flows into line 9.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "e55226e4139ee9fe4203c6601da46dd052101c4fcaea7ea96122eb0ab1d56dc6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.064648,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.line8g.d8009b7c0d57.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 8g; , Alaska Permanent Fund dividend, \"report it as income on Schedule 1 (Form 1040), line 8g\"",
+      "Schedule 1 (2025), line 9 (lines 8a, 8d, 8e, 8k to 8q and 8s to 8v are refused by s1.line8_other)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91,
+      92
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 91–92, Lines 8a Through 8z"
+     ],
+     "cols_pages": [
+      91,
+      92
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      31
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      31
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "s1.line8h": {
+   "subject_sha": "52f7ad804a621f495eb42b0e80651b017f96b9da1adce30ac79678c98ed6881c",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "e2d643a5cdaf68c12a545786f3e977a9026bbef6d7ece07e118412af8c08a79b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.064948,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.line8h.52f7ad804a62.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91,
+      92,
+      99
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 91, Line 8h, \"Enter any jury duty pay and see the instructions for line 24a\"; , Jury duty, \"Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h\"",
+      "p. 91, Line 8h, \"Enter any jury duty pay and see the instructions for line 24a\"; p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury\"",
+      "p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer\"",
+      "pp. 91–92, Lines 8a Through 8z"
+     ],
+     "cols_pages": [
+      91,
+      92
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 9 (lines 8a, 8d, 8e, 8k to 8q and 8s to 8v are refused by s1.line8_other)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      34
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "s1.line8i": {
+   "subject_sha": "16db0809ab0614ac991f9411990f76cbdbdcda6d965f712f4774c731f250124a",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who wins prize money in the course of a trade or business (for example a self-employed professional competitor whose tournament winnings are already on Schedule C) would truthfully include those winnings here, because the question excludes only gambling winnings, wages and Olympic amounts.",
+       "source_text": "f1040s1 (2025) p.1, line 3 'Business income or (loss). Attach Schedule C'; i1040gi p.92, Line 8z 'report any taxable income not reported elsewhere on your return'",
+       "why": "The question asks for 'Prizes and awards you ... received in 2025 that are not gambling winnings, not wages from an employer and not Olympic or Paralympic medals', so business prizes already counted on Schedule C line 3 would also enter line 8i and line 9, which counts them twice.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A salesperson whose prize points were made available in 2025 but redeemed in 2026 could read 'received in 2025' as the redemption year and leave them out, or count points redeemed in 2025 that were made available in 2024.",
+       "source_text": "p525 p.35, Prize points: 'The prize points are taxable in the year they’re paid or made available to you, rather than in the year you redeem them for merchandise.'",
+       "why": "The word 'received' does not say which event sets the year for prize points, and the two readings give different 2025 amounts.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5ffb504a60b27453a43c70d61b5117c48e70ef442688363e6a8761f9ed59fedc",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.07788,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.line8i.16db0809ab06.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91,
+      92
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 91, Line 8i, \"Enter prizes and awards but see the instructions for line 8m\"; , Prizes and awards, \"If you refuse to accept a prize, don’t include its value in your income. Prizes and awards in goods or services must be included in your income at their FMV\"",
+      "pp. 91–92, Lines 8a Through 8z"
+     ],
+     "cols_pages": [
+      91,
+      92
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 9 (lines 8a, 8d, 8e, 8k to 8q and 8s to 8v are refused by s1.line8_other)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      35
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      35
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "s1.line8j": {
+   "subject_sha": "8d2e5436c47b65e8b6bded8f2a7ad488aaf6fad1caac46e52e0ee07c2c539ef4",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer rents out personal property (for example, occasionally renting out a boat) without a profit motive, so the rental is an activity not engaged in for profit; the question's carve-out 'not the rental of personal property' tells the filer to leave this income out, even though line 8j needs it.",
+       "source_text": "i1040gi p. 91, Line 8l: 'Income from the rental of personal property if you engaged in the rental for profit but were not in the business of renting such property'; p525 p. 31: 'You must include on your return income from an activity, even if you don't expect to make a profit from that activity... Enter this income on Schedule 1 (Form 1040), line 8j.'",
+       "why": "Line 8l covers only personal-property rentals engaged in for profit, so a rental not engaged in for profit is income from an activity not engaged in for profit and belongs on line 8j. The question's blanket exclusion of 'the rental of personal property' drops it, and no other listed input picks it up.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c9f82373bec3760769bf993c76b6f1d33522d7973db2f3119e1739b6b4169f38",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.067188,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.line8j.8d2e5436c47b.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91,
+      92
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 91, Line 8j, \"Activity not engaged in for profit income. See Pub. 525\"; , Activity not for profit, \"An example of this type of activity is a hobby or a farm you operate mostly for recreation and pleasure. Enter this income on Schedule 1 (Form 1040), line 8j\"",
+      "pp. 91–92, Lines 8a Through 8z"
+     ],
+     "cols_pages": [
+      91,
+      92
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 9 (lines 8a, 8d, 8e, 8k to 8q and 8s to 8v are refused by s1.line8_other)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      31
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      31
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "s1.line8r": {
+   "subject_sha": "07296a75e8d938ec7b6eb882037ad5280801fd5d376731ae4f13386570392198",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "3bc7b5e232b78154a62229e5059511ca48ee5d8382645ba33eaaff7848281dd4",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.044000000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.line8r.07296a75e8d9.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91,
+      92
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 92, Line 8r, \"Enter the amount of scholarship and fellowship grants not reported on Form W-2. However, if you were a degree candidate, include on line 8r only the amounts you used for expenses other than tuition and course-related expenses. For example, amounts used for room, board, and travel must be reported on line 8r\"",
+      "pp. 91–92, Lines 8a Through 8z"
+     ],
+     "cols_pages": [
+      91,
+      92
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 9 (lines 8a, 8d, 8e, 8k to 8q and 8s to 8v are refused by s1.line8_other)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    }
+   ]
+  },
+  "s1.uc_paid": {
+   "subject_sha": "8dbcde415985523eee6dafcf5b90ac23fa28e037ad9ad602923f26a5f49c4dbd",
+   "samples": [
+    {
+     "verdict": "WRONG_FIGURE",
+     "findings": [
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "A filer who contributed to a governmental unemployment compensation program and does not itemize truthfully enters the full box 1 total, and line 7 is figured with no reduction for those contributions.",
+       "source_text": "i1040gi p. 89, line 7: 'If you made contributions to a governmental unemployment compensation program and you aren't itemizing deductions, reduce the amount you report on line 7 by those contributions. If you are itemizing deductions, see the instructions on Form 1099-G.'",
+       "why": "The question asks for the gross amount paid ('the total of box 1 of your Forms 1099-G'). Line 7 needs that amount after the contribution reduction. s1.line7_figured subtracts only the overpayment repaid, so the contribution adjustment is never applied, and the help does not refuse this case.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "On a joint return where both spouses received unemployment compensation, a filer may enter only the amount on the Forms 1099-G issued in their own name.",
+       "source_text": "Question: 'Unemployment compensation paid to you in 2025: the total of box 1 of your Forms 1099-G'; i1040gi p. 89: 'the total unemployment compensation paid to you in 2025. Report this amount on line 7.'",
+       "why": "Line 7 on a joint return needs both spouses' unemployment compensation. A filer can read 'paid to you' and 'your Forms 1099-G' as covering only themselves, and the help refuses only married filing separately, not this case.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "d16c6240a15d2090e942f4cc65cdeee568ff3be8ba69921663f70803d1612574",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.044724,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.uc_paid.8dbcde415985.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      89
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 89, Schedule 1, line 7",
+      "p. 89, Schedule 1, line 7, 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025' and 'If the amount reported in box 1 of your Form(s) 1099-G is incorrect, report on line 7 only the actual amount'",
+      "p. 89, Schedule 1, line 7, 'subtract the amount you repaid from the total amount you received. Enter the result on line 7'",
+      "p. 89, Schedule 1, line 7, Caution and the last paragraph"
+     ],
+     "cols_pages": [
+      89
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "s1.uc_repaid": {
+   "subject_sha": "71ce875ed8bbaac94f19fbd4823671c583f65ff315562a1cd0fb88a90debaf94",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "fef91b8085a14da8652f143a6b1b99f628701a011980e88bb4c761ea92bc8d00",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.042204,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/s1.uc_repaid.71ce875ed8bb.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      89
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 89, Schedule 1, line 7, 'If you received an overpayment of unemployment compensation in 2025, subtract the amount you repaid from the total amount you received'",
+      "p. 89, Schedule 1, line 7, 'subtract the amount you repaid from the total amount you received. Enter the result on line 7'",
+      "p. 89, Schedule 1, line 7, Caution and the last paragraph"
+     ],
+     "cols_pages": [
+      89
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 7, 'If you repaid a 2025 overpayment (see instructions), check here'",
+      "Schedule 1 (2025), line 7, 'enter amount repaid'"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    }
+   ]
+  }
+ }
+}

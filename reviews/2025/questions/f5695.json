@@ -1,0 +1,3187 @@
+{
+ "form": "f5695",
+ "reviews": {
+  "f5695.b_new_home": {
+   "subject_sha": "cfa0068cafa01b3c1814531b759b5733f8fa1678821546357dd488cc933e2aa0",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "bd52cbdf61b3d6afbf6ec53bd6b75ca95690c405f70fb12ac63bad6c5d571b0c",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.033844,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.b_new_home.cfa0068cafa0.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Costs, \"The energy efficient home improvement credit (Part II) is only available for existing homes\"",
+      "p. 1, Costs, \"The energy efficient home improvement credit (Part II) is only available for existing homes\"; , Energy Efficient Home Improvement Credit - Qualifying residence, \"A taxpayer can claim the credit only for qualifying expenditures incurred for an existing home, or for an addition to or renovation of an existing home, but not for a newly constructed home\""
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "fs-2025-01",
+     "revision": "FS-2025-01, January 2025",
+     "text_sha256": "d756eeebafecde7e6c890e3535d2457fe2558840a297b51fb19f4412bba82458",
+     "pages": [
+      5
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "07b360f96e1336830dee0cc87fc4c3c3a9ff8e15bdc2ae55eddc0fda4a05835e"
+    }
+   ]
+  },
+  "f5695.battery_cost": {
+   "subject_sha": "28dd5f0311e6a317efbd2af691e129a80764733f9632548c8407a2d1d233c4da",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer installs a battery of 3 kWh or more at a home they own outside the United States, such as a vacation home abroad, and enters that cost because neither the question nor its help mentions where the home must be.",
+       "source_text": "i5695 (2025) p. 2: \"Qualified battery storage technology costs are costs for battery storage technology that is installed in connection with your home located in the United States and has a capacity of at least 3 kilowatt hours.\" Question: \"Qualified battery storage technology costs you paid (capacity of at least 3 kilowatt hours), including labor\"",
+       "why": "The question and help limit the cost only by capacity, labor, rebates and financing, so a truthful answer can include a battery at a foreign home. Line 5a gates only on capacity, so the foreign-home cost reaches line 5b.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b269f6daafb4b1a2c867e4bd211b02d618dfd9bef45d1b89d8ade790ce49fb5f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.0375,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.battery_cost.28dd5f0311e6.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      2,
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Lines 5a and 5b, \"If you check the ... No ... box, you can't include any battery storage technology costs on line 5b\"",
+      "p. 4, Lines 5a and 5b, \"enter the amounts you paid for qualified battery storage technology on line 5b\"; p. 2, Caution, \"Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function other than the function of such storage don’t qualify for the residential clean energy credit\""
+     ],
+     "cols_pages": [
+      2,
+      4
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  },
+  "f5695.condo": {
+   "subject_sha": "9b36e58780deeaa93f53e20c852b64ca576bca973fa2337ca173530d471109d6",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "a31d4a50d5981141caa7955b3c0a33802af2c505050a6123261b99d2989be063",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.020024,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.condo.9b36e58780de.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Lines 32a and 32b, \"Line 32b. Occupants of a condominium or cooperative who are claiming a fractional share of the qualified energy efficiency improvements or residential energy property costs must check the box on line 32b\"",
+      "p. 7, Lines 32a and 32b, \"must check the box on line 32b\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  },
+  "f5695.joint_occupancy": {
+   "subject_sha": "e25d20a9eb72ffe045b33e6d9b288ea23eb9a1be9bc211ec72242458460969f7",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "4be16780fcf2844ba459148f2e10da167b0bf5f9cf2d75b218608c7fe05bcf2d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.058148,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.joint_occupancy.e25d20a9eb72.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      3,
+      6,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Joint occupancy, \"If the aggregate credit that would be allowed to all occupants for any item of property exceeds the credit limit below, then you must figure your allocable share of the credit from each property\"",
+      "p. 3, Joint occupancy, \"If you occupied your home jointly with someone, each occupant must complete their own Form 5695\" and \"If the aggregate credit that would be allowed to all occupants for any item of property exceeds the credit limit below, then you must figure your allocable share of the credit from each property\"; p. 3, Joint ownership of qualified property, \"You figure your credit on the part of the cost you paid\"; p. 3, Section B—Residential Energy Property Expenditures, \"installed on or in connection with a home that you used during 2025\"; p. 6, Lines 21a Through 21c, \"Enter the full address of each home where you installed qualified energy property\"",
+      "p. 7, Lines 32a and 32b, \"Line 32a. Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\""
+     ],
+     "cols_pages": [
+      3,
+      6,
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  },
+  "f5695.line1": {
+   "subject_sha": "1d5a4cc60a0c177612b5f0178d48a7f9f80b971d254602bdf669e81a9691e8fb",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer's solar system was installed in 2024 on a newly built home they first moved into in 2025, so the cost counts in 2025, but the help tells them it counts only in the year installation was completed.",
+       "source_text": "i5695 p. 1, Costs: \"For purposes of the residential clean energy credit only, costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins\" (also reconstruction: \"when your original use of the reconstructed home begins\")",
+       "why": "The help states only the completed-installation timing rule. It leaves out the new-construction and reconstruction rule, so these 2025 costs would be left off line 1.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer completes installation in 2025 on a home under construction that they do not begin using until 2026, and enters the cost under the help's rule even though it belongs to a later year.",
+       "source_text": "i5695 p. 1, Costs: \"costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins\"; help: \"A cost counts in 2025 when the original installation is completed.\"",
+       "why": "Under the help's timing rule, construction-related costs that are treated as paid in another year get pulled into 2025.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer uses the solar property 40% for business (for example, a home office or business use of part of the home) and enters the full cost.",
+       "source_text": "i5695 p. 1, Costs: \"If less than 80% of the use of an item is for nonbusiness purposes, only that portion of the costs that is allocable to the nonbusiness use can be used to determine either credit.\"",
+       "why": "Neither the question nor the help mentions the business-use allocation, so a truthful filer reports the gross cost instead of the nonbusiness portion.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer installs solar panels on a rental house or other property they own in the U.S. but never lived in, and includes that cost because the question says the home 'need not be your main home.'",
+       "source_text": "i5695 p. 1, Home: \"A home is where you lived in 2025\"; p. 2: \"more than one home that you used as a residence during 2025\"; question: \"for a home in the United States (it need not be your main home)\"",
+       "why": "The question never requires that the filer lived in or used the home as a residence. An ordinary reader would count any dwelling they own, including properties the credit does not cover.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "34baaac43bc4fc67f2fee342e2d7c0ac186242bcdd1abcab1de8bd7cd2527278",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.091244,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line1.1d5a4cc60a0c.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      1,
+      2,
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Costs, \"costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins\"",
+      "p. 1, Costs, \"only that portion of the costs that is allocable to the nonbusiness use can be used to determine either credit\"",
+      "p. 4, Line 1, \"Enter the amounts you paid for qualified solar electric property\"; p. 2, Qualified solar electric property costs, \"The home doesn't have to be your main home\"; p. 2, Caution, \"If you received a subsidy from a public utility for the purchase or installation of an energy conservation product and that subsidy wasn't included in your gross income, you must reduce your cost for the product by the amount of that subsidy before you figure your credit\"; p. 2, Qualified solar electric property costs, \"These solar roofing tiles and solar roofing shingles can qualify for the credit. This is in contrast to structural components such as a roof's decking or rafters that serve only a roofing or structural function and thus do not qualify for the credit\"; p. 2, Caution, \"Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function other than the function of such storage don’t qualify for the residential clean energy credit\"; p. 2, Association or cooperative costs, \"you are treated as having paid your proportionate share of any costs of such association or corporation\"; , Residential Clean Energy Property Credit - General questions, \"Rebates generally represent a reduction in the purchase price or cost of property, so the tax credit amount must be reduced by the amount of the rebate\", \"Generally, a taxpayer is not required to reduce the purchase price or cost of property acquired with a governmental energy-efficiency incentive unless that incentive qualifies as a rebate under federal income tax law\"; , Residential Clean Energy Property Credit - General questions, \"Financing costs such as interest, as well as other miscellaneous costs such as origination fees and the cost of an extended warranty, are not eligible expenditures\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      4
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 6a"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    },
+    {
+     "doc": "fs-2025-01",
+     "revision": "FS-2025-01, January 2025",
+     "text_sha256": "d756eeebafecde7e6c890e3535d2457fe2558840a297b51fb19f4412bba82458",
+     "pages": [
+      16
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "07b360f96e1336830dee0cc87fc4c3c3a9ff8e15bdc2ae55eddc0fda4a05835e"
+    }
+   ]
+  },
+  "f5695.line12": {
+   "subject_sha": "c2021a3d598910c097412378bb1ff52959cecbde61b9664eab662c11865497a2",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "193ad558db2dd969a630c20eff9ba5dcef2b8521ece986c311b9ff218231754a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.041608,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line12.c2021a3d5989.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 12; , Purpose of Form, \"Also use Form 5695 to take any residential clean energy credit carryforward from 2024\"",
+      "Form 5695 (2025), line 13"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    },
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      1
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  },
+  "f5695.line17a": {
+   "subject_sha": "b3b1c36b8e97e75c43d1f50e79c7350769bfb14ad871b8987effbf42e347953f",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A married couple filing jointly who owned and lived apart in separate main homes, each with qualifying improvements, is told to answer and enter Part II costs for only one home, so the other spouse's home and improvements are dropped.",
+       "source_text": "i5695 p. 3, Married taxpayers with more than one home: \"If both you and your spouse owned and lived apart in separate main homes, the limit on the amount of the credit applies to each of you separately... Complete lines 17a through 30 of a separate Form 5695 for each main home... enter the combined amount on line 30 of one of the forms.\"",
+       "why": "The question says \"You can claim this credit for only one main home; if you had more than one main home in 2025 ..., answer, and enter the Part II costs, for one of them only.\" The text instead lets spouses with separate main homes each claim on their own main home, with a separate limit for each, so the lines leave out the second home's Section A credit.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "bd2ed50c6f00aa589b1c1b770a33c594f03c985128712da9c2029a22f841506f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09303600000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line17a.b3b1c36b8e97.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      1,
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Lines 17a Through 17e, \"Line 17a. To qualify for the credit, any qualified energy efficiency improvements must have been for your main home located in the United States\"; p. 3, Section A—Qualified Energy Efficiency Improvements, \"installed on or in your main home that you owned during 2025 located in the United States\"; p. 5, Line 17d, \"You can only claim the energy efficient home improvement credit on one main home\"; p. 1, Main home, \"You may only have one main home at a time\""
+     ],
+     "cols_pages": [
+      1,
+      3,
+      5
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 17c, \"If you checked the ... No ... box for line 17a, 17b, or 17c, you cannot claim the energy efficient home improvement credit. Do not complete Part II, Section A\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line17b": {
+   "subject_sha": "27190b4af73eb4b1ce358d40009e685bd21dcacd438afb16af98f969b957c5c8",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "b16a756f93f47099d367b3210ca41bdacf93b01ba238e4319ae11ce3bf06ae2a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.046908,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line17b.27190b4af73e.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Lines 17a Through 17e, \"Line 17b. To qualify for the credit, you must be the original user of the qualified energy efficiency improvements\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 17c, \"If you checked the ... No ... box for line 17a, 17b, or 17c, you cannot claim the energy efficient home improvement credit. Do not complete Part II, Section A\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line17c": {
+   "subject_sha": "e988591a478de93394200a6d511642e679b34e0e5ff0b94d560ee1d41bfb19dd",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "a041996057130fbe1ecc1a121b3b3fb9fe2bedfeb416ac24df934b46b0dfabc4",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.044444000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line17c.e988591a478d.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Lines 17a Through 17e, \"Line 17c. To qualify for the credit, the components must be reasonably expected to remain in use for at least 5 years on your main home located in the United States\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 17c, \"If you checked the ... No ... box for line 17a, 17b, or 17c, you cannot claim the energy efficient home improvement credit. Do not complete Part II, Section A\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line17e": {
+   "subject_sha": "28f4e1c71b5b08c311a190563853ca6343fa133566b70c15999dd024ffad5685",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "380746041ab274475d30201bf4677d8e59d38b2ff31b9a055659ef065210668b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.060756000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line17e.28f4e1c71b5b.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Lines 17a Through 17e, \"Line 17e. You cannot claim the credit for expenses related to the construction of a new home\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 17e, \"If you checked the ... Yes ... box, you can only claim the energy efficient home improvement credit for qualifying improvements that were not related to the construction of the home\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line18a": {
+   "subject_sha": "2933302234b79569c72afd5b7736c37dd99fe3b2e57c4107cf6a053e218ef9ef",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who shares a home with a co-occupant, or who split the cost of insulation with a neighbor, enters the full cost of the insulation rather than only the part they paid.",
+       "source_text": "i5695 p. 3, Joint occupancy: \"To figure the credit, enter the amounts you paid for the items on lines 18a...\"; Joint ownership: \"You figure your credit on the part of the cost you paid.\"",
+       "why": "The question asks for \"The cost of insulation material or system ... of your home\" and its help only addresses the condo/co-op share. A truthful answer can therefore include amounts other occupants or a neighbor paid, which line 18a must leave out.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who answered Yes on line 17e (some improvements related to building the home) includes insulation costs tied to the construction of the main home, which the wording never tells them to leave out.",
+       "source_text": "f5695 p. 2, line 17e: \"Do not include expenses related to the construction of your main home, even if the improvements were made after you moved into the home.\"; i5695 p. 5: \"You cannot claim the credit for expenses related to the construction of a new home.\"",
+       "why": "The question and its help speak only of reconstruction timing and give no exclusion for new-construction costs. Construction-related insulation can therefore reach line 18a when the form still lets the filer claim non-construction improvements.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "837b5d31c002e44f4a740f1138c379e79ed3b4b06328901b29a8cc86b31a4446",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09084800000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line18a.2933302234b7.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Lines 18a and 18b, \"Line 18a. Enter the amounts you paid for any insulation material or air sealing material or system\"; p. 5, Lines 18a and 18b, \"Don't include on lines 18a, 19a, 19d, 19e, 20a, and 20b any amounts paid for the onsite preparation, assembly, or original installation of the components\"; p. 3, Subsidized energy financing, \"Any amounts provided for by subsidized energy financing can't be used to figure the energy efficient home improvement credit\"; , Energy Efficient Home Improvement Credit - General questions, \"Rebates generally represent a reduction in the purchase price or cost of property, so the tax credit amount must be reduced by the amount of the rebate\", \"A taxpayer may not claim a credit for the amount of the subsidy that is used to purchase or install qualifying property\"; , Energy Efficient Home Improvement Credit - General questions, \"Financing costs such as interest are not eligible expenditures for purposes of the credit\""
+     ],
+     "cols_pages": [
+      3,
+      5
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 18b, \"Multiply line 18a by 30% (0.30)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    },
+    {
+     "doc": "fs-2025-01",
+     "revision": "FS-2025-01, January 2025",
+     "text_sha256": "d756eeebafecde7e6c890e3535d2457fe2558840a297b51fb19f4412bba82458",
+     "pages": [
+      11,
+      12
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "07b360f96e1336830dee0cc87fc4c3c3a9ff8e15bdc2ae55eddc0fda4a05835e"
+    }
+   ]
+  },
+  "f5695.line19a": {
+   "subject_sha": "a1cd39a6bb98ceb1350ad5275d9a36c35cc180fba4e0b6ee82ff6f82cbd6c42a",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer's most expensive qualifying exterior door was bought and installed as part of building their new main home in 2025, after they moved in, and they enter its cost because the question does not exclude it.",
+       "source_text": "f5695 (2025) p. 2, line 17e: \"you can only claim the energy efficient home improvement credit for qualifying improvements that were not related to the construction of the home. Do not include expenses related to the construction of your main home, even if the improvements were made after you moved into the home.\"",
+       "why": "The question asks for \"The cost of the most expensive exterior door you bought that meets the applicable Energy Star requirements\" and never excludes doors related to construction of the main home. Its help mentions only reconstruction, and only for timing, so a truthful answer can include a cost the line must not have. The 17e yes/no does not stop entry; it only tells the filer what to leave out.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer bought two qualifying doors, and a utility subsidy or rebate on the pricier one makes its net cost lower than the other door's cost.",
+       "source_text": "f5695 (2025) p. 2, line 19a: \"Enter the cost of the most expensive door you bought\"; question: \"(net of subsidies and rebates; see help; zero if none)\"",
+       "why": "The question can be read as ranking doors by gross price and then entering that door's net cost, or as entering the highest net cost. Because 19c caps each door separately at $250 and the next doors go to 19d, the two readings give different 19a amounts and can change the credit.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "344f5f03024a73ccc9c4a1c7feeb30c8e73a4661db4fa0cdfec6510031f82210",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.065024,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line19a.a1cd39a6bb98.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 19a Through 19h, \"Line 19a. Enter the amount you paid for the most expensive exterior door that meets the Energy Star program requirements\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 19c, \"Multiply line 19a by 30% (0.30)\"",
+      "p. 2, Part II, \"Exterior doors that meet the applicable Energy Star requirements\", \"Enter the cost of the most expensive door you bought\" (line 19a), \"Add lines 19d and 19e\" (line 19f)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line19d_i": {
+   "subject_sha": "cbad5502df8c84ab8b6620f24c3dd645545b634858fb6d2d94ed54834386c059",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose second most expensive Energy Star door was installed as part of building the main home would truthfully enter its cost, because neither the question nor its help excludes construction-related doors.",
+       "source_text": "f5695 (2025) p. 2, line 17e: \"you can only claim the energy efficient home improvement credit for qualifying improvements that were not related to the construction of the home. Do not include expenses related to the construction of your main home, even if the improvements were made after you moved into the home.\"",
+       "why": "The question asks for 'the second most expensive qualifying exterior door' and the help only mentions reconstruction timing. Answering 'Yes' on line 17e does not stop line 19d, so construction-related door costs would flow into line 19f, which must exclude them.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer may not know that 'qualifying' means the door meets the applicable Energy Star requirements, so they could count a non-Energy Star door, or rank doors to include one, and report the wrong cost.",
+       "source_text": "f5695 (2025) p. 2, line 19: \"Exterior doors that meet the applicable Energy Star requirements\"; i5695 (2025) p. 6, Line 19a: \"the most expensive exterior door that meets the Energy Star program requirements\"",
+       "why": "Neither the question nor its help defines 'qualifying exterior door.' Without the Energy Star condition, an ordinary filer could pick a different second-ranked door and enter a different amount.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "3f93603ae5981ac3aaa167e7351e245901986630d5abb2976f178c1737de7407",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.063392,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line19d_i.cbad5502df8c.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 19a Through 19h, \"Line 19d. Enter the QMID(s) and amount(s) you paid for the two next most expensive qualifying exterior doors in 2025\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 19f"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line19d_ii": {
+   "subject_sha": "9578d762db70253685b55b1098407997bdbac1954a8e29be8cd0afc39e57f88a",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "567b039d9d28faef5ababae871180af0193353f5b52f27f088ce661da0ee322d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.050236,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line19d_ii.9578d762db70.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 19a Through 19h, \"Line 19d. Enter the QMID(s) and amount(s) you paid for the two next most expensive qualifying exterior doors in 2025\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 19f"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line19e": {
+   "subject_sha": "23b05aed9010dba557c488665b7e5b92075e22aa8ed43bcd095934459e041f5b",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who bought four Energy Star doors reads 'all other qualifying exterior doors' without being told which doors to leave out, and enters the cost of all four, including the doors already reported on lines 19a and 19d.",
+       "source_text": "Question: 'The cost of all other qualifying exterior doors'; f5695 (2025) p.2: '19a Enter the cost of the most expensive door you bought ... 19d ... two next most expensive door(s) ... 19e Enter the cost of all other qualifying exterior doors'",
+       "why": "Line 19e needs only the doors beyond the three on 19a and 19d (and line 19a's door is subject to its own $250 cap). Neither the question nor its help says 'other than' which doors, so the costs on 19a and 19d can be counted again on line 19f.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose qualifying doors were installed as part of building their main home includes those door costs, because the help gives a timing rule for reconstruction but never excludes construction-related costs.",
+       "source_text": "f5695 (2025) p.2, line 17e: 'Do not include expenses related to the construction of your main home, even if the improvements were made after you moved into the home.'",
+       "why": "The help does not tell the filer to exclude costs related to constructing the main home. Its wording 'costs connected with the reconstruction of your home' may even suggest such costs belong, so a truthful answer can bring amounts line 19f must not have.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "92d8f702a6c3d930451d365231c42224c950cff596374addfb8e74ba19e03f4f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.064312,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line19e.23b05aed9010.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 19a Through 19h, \"Line 19e. Enter the amounts paid for all other qualifying exterior doors in 2025\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 19f"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line2": {
+   "subject_sha": "32c1da8bddf9b5afabb452f529a7658e77df2b0ce4e5590503dd435a0818339d",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose newly built or reconstructed home had solar water heating installed in 2024 but who began using the home in 2025 would enter zero, because the help says a cost counts when the original installation is completed.",
+       "source_text": "i5695 (2025) p. 1, Costs: \"in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed home begins. For purposes of the residential clean energy credit only, costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins.\"",
+       "why": "For construction and reconstruction, the year is set by when the filer's original use begins, not when installation is completed. The help gives only the installation-completed rule, so these 2025 costs are left out.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who finished a new home with solar water heating in 2025 but did not begin using it until 2026 would include the cost under the help's installation-completed rule.",
+       "source_text": "Question help: \"A cost counts in 2025 when the original installation is completed.\" i5695 (2025) p. 1: \"costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins.\"",
+       "why": "Under the construction rule, these costs are paid in 2026, when original use begins, so they do not belong on the 2025 line.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who uses the solar water heater 40% for business (for example, a home business) would enter the full cost.",
+       "source_text": "i5695 (2025) p. 1, Costs: \"If less than 80% of the use of an item is for nonbusiness purposes, only that portion of the costs that is allocable to the nonbusiness use can be used to determine either credit.\"",
+       "why": "Neither the question nor the help asks for the business-use allocation, so the full cost is entered when only the nonbusiness portion qualifies.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who installed solar water heating on a U.S. rental property they never lived in would enter the cost, because the question says only that it need not be their main home.",
+       "source_text": "Question: \"for a home in the United States (it need not be your main home)\"; i5695 (2025) p. 1: \"A home is where you lived in 2025\"; p. 2: \"more than one home that you used as a residence during 2025\"",
+       "why": "The text limits a qualifying home to one the filer lived in or used as a residence in 2025. The question's wording covers any U.S. dwelling the filer paid for.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c7c7fe894af07e79370d8511d2084e2aec9296f77b2ef350794c58a9de956eca",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.083512,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line2.32c1da8bddf9.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      1,
+      2,
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Costs, \"costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins\"",
+      "p. 1, Costs, \"only that portion of the costs that is allocable to the nonbusiness use can be used to determine either credit\"",
+      "p. 4, Line 2, \"Enter the amounts you paid for qualified solar water heating property\"; p. 2, Qualified solar water heating property costs, \"if at least half of the energy used by the solar water heating property for such purpose is derived from the sun\"; p. 2, Caution, \"Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function other than the function of such storage don’t qualify for the residential clean energy credit\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      4
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 6a"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line20a_i": {
+   "subject_sha": "8a4b57e3a5278d1cd3683a0ec8cca500a167d924e5aa0d9e8297d74bbef5bf87",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who built a new main home in 2025 (or whose window costs were part of its construction) would truthfully enter the cost of an Energy Star window installed as part of that construction, because nothing in the question or help excludes construction costs.",
+       "source_text": "f5695 (2025) p.2, line 17e: \"If you checked the 'Yes' box, you can only claim the energy efficient home improvement credit for qualifying improvements that were not related to the construction of the home. Do not include expenses related to the construction of your main home, even if the improvements were made after you moved into the home.\"",
+       "why": "Line 17e does not stop the credit. It only tells the filer to leave construction-related costs out of the lines that follow. The question never says this, so construction-related window costs flow into line 20c. The help's only reference to construction is about the timing of reconstruction costs, which may even suggest that construction costs belong.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who bought a window that carries the standard Energy Star label but not the Energy Star Most Efficient designation would enter its cost, even though line 20b, which is added with 20a on line 20c, counts only Most Efficient windows and skylights.",
+       "source_text": "i5695 (2025) p.6, Line 20b: \"all other exterior windows and skylights that meet Energy Star most efficient certification requirements\"; question: \"meets the Energy Star certification requirements\"",
+       "why": "Line 20c adds lines 20a and 20b as one category of qualifying windows and skylights, and the 20b instruction says that category is Energy Star Most Efficient. The question asks only for plain Energy Star certification, so it brings in windows that meet the lower standard.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ebd733b1ed9a6b01c550c2cfaf22bdddaf170215a7ddb703f1a43ec511caf279",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.071272,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line20a_i.8a4b57e3a527.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 20a Through 20d, \"Line 20a. Enter the QMID and amounts you paid for the four most expensive exterior windows and skylights that meet Energy Star certification requirements on lines (i) through (iv)\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 20c"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line20a_ii": {
+   "subject_sha": "d5729284992ec6083bf5ff028f73c2eb1cd881d27bfc0746c5da0bb11826cb11",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose qualifying windows were part of building their new main home answers with the window's cost, because nothing in the question or its help excludes construction-related improvements.",
+       "source_text": "f5695 (2025) p. 2, line 17e: \"If you checked the 'Yes' box, you can only claim the energy efficient home improvement credit for qualifying improvements that were not related to the construction of the home. Do not include expenses related to the construction of your main home, even if the improvements were made after you moved into the home.\"",
+       "why": "The question asks for 'The cost of the second most expensive exterior window or skylight that meets the Energy Star certification requirements'. A truthful answer therefore includes construction-related windows that line 20c must exclude. The help mentions only reconstruction timing, not this exclusion.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ff5ab51821d929d08e375a781047bbe7268b7c084e88511d92c9a7841eaff973",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.059663999999999995,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line20a_ii.d5729284992e.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 20a Through 20d, \"Line 20a. Enter the QMID and amounts you paid for the four most expensive exterior windows and skylights\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 20c"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line20a_iii": {
+   "subject_sha": "b85d92d2e63ea384434b58bb9e966c3d406378e88d4e40bcfcfd1ffdc590982c",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer installs a window that has the regular Energy Star certification but not the Energy Star Most Efficient certification, and enters its cost because the question asks only for one that 'meets the Energy Star certification requirements'.",
+       "source_text": "i5695 (2025) p. 6, Line 20b: 'all other exterior windows and skylights that meet Energy Star most efficient certification requirements'; question: 'exterior window or skylight that meets the Energy Star certification requirements'",
+       "why": "Only windows and skylights meeting the Energy Star Most Efficient requirements qualify for line 20c (IRC 25C(c)(2)(B)). The question's broader wording brings in windows with ordinary Energy Star certification, which do not qualify.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose qualifying windows were installed as part of building the main home enters their cost, because neither the question nor its help excludes construction-related costs.",
+       "source_text": "f5695 (2025) p. 2, line 17e: 'Do not include expenses related to the construction of your main home, even if the improvements were made after you moved into the home.'",
+       "why": "Line 17e does not stop the filer from continuing when the answer is Yes. It only tells the filer to leave out construction-related costs. The question never says this, so those window costs would flow into line 20c.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "43d5a21e8bdb70c2948a6dc637e898734d0109f4157b903f401c4e3f54c7a0c9",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.067604,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line20a_iii.b85d92d2e63e.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 20a Through 20d, \"Line 20a. Enter the QMID and amounts you paid for the four most expensive exterior windows and skylights\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 20c"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line20a_iv": {
+   "subject_sha": "fc6026ecd29eed814027b35c219cb726355d2d1d6af2ff90ee199d3f8d1c1e3b",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer installs an exterior window that carries ordinary Energy Star certification but does not meet the Energy Star Most Efficient requirements, and enters its cost here.",
+       "source_text": "Question: 'exterior window or skylight that meets the Energy Star certification requirements'; i5695 (2025) p. 6, Line 20b: 'all other exterior windows and skylights that meet Energy Star most efficient certification requirements'",
+       "why": "The instructions require windows and skylights to meet the Energy Star Most Efficient criteria. The question asks only for basic Energy Star certification, so a filer can report a window that does not qualify, and line 20c then includes its cost.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "770434172f10cce4136a0d5ea57005477a741b8872914e9096bc86edb5457475",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.05778,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line20a_iv.fc6026ecd29e.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 20a Through 20d, \"Line 20a. Enter the QMID and amounts you paid for the four most expensive exterior windows and skylights\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 20c"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line20b": {
+   "subject_sha": "93eb5b31d97a8c6cc47a64d0f51ad9d2b29c0d494a229dec419228e9995c035a",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer installed qualifying windows as part of building their main home and enters their cost, because neither the question nor its help says to leave out construction-related costs.",
+       "source_text": "f5695 (2025) p.2, line 17e: \"you can only claim the energy efficient home improvement credit for qualifying improvements that were not related to the construction of the home. Do not include expenses related to the construction of your main home, even if the improvements were made after you moved into the home.\"",
+       "why": "Answering Yes on 17e does not stop the filer from going on. The construction-related windows therefore have to be left out of line 20b, but the question asks for the cost of all qualifying windows and its help only mentions timing for reconstruction. A truthful answer brings in costs that line 20c must not include.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer who installed six qualifying windows reads \"all other exterior windows and skylights\" with nothing to say what they are other than, and enters the cost of all six instead of the two not reported on line 20a.",
+       "source_text": "i5695 (2025) p.6: \"Line 20a. Enter the QMID and amounts you paid for the four most expensive exterior windows and skylights ... Line 20b. Enter the amount you paid for all other exterior windows and skylights\"; question: \"The cost of all other exterior windows and skylights that meet the Energy Star most efficient certification requirements\"",
+       "why": "Neither the question nor its help names the four most expensive items reported on line 20a as the ones to leave out. A filer can reasonably read \"all other\" as all windows other than doors or other components. If so, the four windows from line 20a are counted twice when line 20c adds lines 20a and 20b.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5e2bf2fdb7224feb7c42f7b2eb67d6ed66e5abfbab43346c2697291254561dd0",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06742000000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line20b.93eb5b31d97a.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 20a Through 20d, \"Line 20b. Enter the amount you paid for all other exterior windows and skylights that meet Energy Star most efficient certification requirements\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 20c"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line21a": {
+   "subject_sha": "25bd4b2eee0fcdeaa84d97d3803b515491abaecf8285be41673b1e8d0c8b1280",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer installed a heat pump in 2025 in a home they lived in during 2025, then sold it or moved out before filing in 2026, and truthfully answers No because they no longer use it as a residence.",
+       "source_text": "i5695 p. 3, Section B: \"costs of new qualified energy property that is installed on or in connection with a home that you used during 2025 located in the United States\"",
+       "why": "The question asks about a home \"that you use as a residence\" in the present tense and never names 2025. A filer who no longer lives in the home can read it as excluding that home, which drops costs that qualify under the instructions' \"used during 2025\" test.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "85b39d7fff6201de83b77ef4cb70442394f345edcd2b0bac635d558fe8ecff5e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.074512,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line21a.25bd4b2eee0f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 21a; , Section B—Residential Energy Property Expenditures, \"costs of new qualified energy property that is installed on or in connection with a home that you used during 2025 located in the United States\"; , Energy Efficient Home Improvement Credit - Qualifying residence, \"such property may be installed in the taxpayer’s second home\"",
+      "Form 5695 (2025), line 21b, \"If you checked the ... No ... box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    },
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      3
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "fs-2025-01",
+     "revision": "FS-2025-01, January 2025",
+     "text_sha256": "d756eeebafecde7e6c890e3535d2457fe2558840a297b51fb19f4412bba82458",
+     "pages": [
+      5
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "07b360f96e1336830dee0cc87fc4c3c3a9ff8e15bdc2ae55eddc0fda4a05835e"
+    }
+   ]
+  },
+  "f5695.line21b": {
+   "subject_sha": "f252133578f9fcf9acc2525cf7f4cb28476209b4f507130e4a2d66fbec3d70ec",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "dfcc9b7c88f8a0feccfbcb345312c2ffe3ddb15ca447925f2dc909321f5f6c91",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053048,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line21b.f252133578f9.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Section B—Residential Energy Property Expenditures Lines 21a Through 21c, \"Line 21b. To qualify for the credit, the qualified energy property must have been originally placed in service by you\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 21b, \"If you checked the ... No ... box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line22a": {
+   "subject_sha": "4f0fb5f229523b3a1e089cb163229e23e0aab48bcaf31202648d216f9fef1134",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "549fa21c4650cfe30db2c5839ac986ecaf2df71cf1bb8e4b2674bd8d4349dace",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.057696,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line22a.4f0fb5f22952.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 22a Through 22d, \"Line 22a. Enter the QMID and amount you paid for the most expensive central air conditioner\"; p. 6, Tip, \"Include on lines 22a, 22b, 23a, 23b, 24a, 24b, 25c, and 29a through 29f any labor costs\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 22c"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line22b": {
+   "subject_sha": "5a8e70d7cffcfbcf99ae1f371f5dd2af9c216afecd37390ad18b8d5b232a3862",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "cdbc24d1c2b0ee8ad8b0b62fd2283c0191341a94e9051464c09d333b86b2ba05",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053752,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line22b.5a8e70d7cffc.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 22a Through 22d, \"Line 22b. Enter the amounts you paid for all other central air conditioners\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 22c"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line23a_i": {
+   "subject_sha": "a1de58afb5552878cb312439dffebbfbd54b4ab26d71bc7133ae0c3b6c8026ef",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "001b1b602dd52e1beeb34f9d482916bfd5a9529141d9638aa28dce7cc6753e26",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.050707999999999996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line23a_i.a1de58afb555.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 23a Through 23d, \"Line 23a. Enter the QMID and amounts you paid for the two most expensive natural gas, propane, or oil water heaters\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 23c"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line23a_ii": {
+   "subject_sha": "a92df14896eceee7d5577dd88c233b014bde777f5b65f687ed9ad01a5b94f611",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "836b1ab2a0c834aace97602be7883094dffe63f9587e27e39c9f00e6e06c98c6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053796,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line23a_ii.a92df14896ec.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 23a Through 23d, \"Line 23a. Enter the QMID and amounts you paid for the two most expensive natural gas, propane, or oil water heaters\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 23c"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line23b": {
+   "subject_sha": "fcbccb02821b5c82e688df95f9d5c5fe237943fc822ffcc01ec41cbc408c4623",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer installs a third gas water heater in 2025 that is not in the highest CEE efficiency tier and enters its cost, because the question only asks for 'all other such water heaters'.",
+       "source_text": "i5695 (2025) p. 6, Line 23b: \"Enter the amounts you paid for all other natural gas, propane, or oil water heaters that achieve the highest efficiency tier established by the CEE that is in effect as of the beginning of the calendar year in which the property is placed in service.\"",
+       "why": "Neither the question nor its help states the CEE highest-tier requirement. A truthful answer can therefore include water heaters that do not qualify, and line 23c would then add costs the credit does not allow.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer installs a natural gas heat pump water heater and includes it here as a 'such water heater', while it is also entered on line 29c or 29d.",
+       "source_text": "f5695 (2025) p. 4, line 29d: \"Enter the cost of all other electric or natural gas heat pump water heaters\"; question: \"The cost of all other such water heaters\"",
+       "why": "The question does not say that heat pump water heaters belong on line 29 and must be left out here. A gas-fired heat pump water heater could be counted both in 23c and in 29g.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer reads 'such water heaters' without a stated antecedent and cannot tell whether it means only natural gas, propane, or oil units or any water heater.",
+       "source_text": "Question: \"The cost of all other such water heaters, including labor\"; f5695 (2025) p. 3, line 23b: \"Enter the cost of all other natural gas, propane, or oil water heaters\"",
+       "why": "The question names no fuel type, so one filer could enter only fossil-fuel units and another could also include electric units. These two readings give different amounts.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "422e8b0b6a944f9ed0e795f73c6270aed9a9b7889dcb15e5072124472acc7d06",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.064996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line23b.fcbccb02821b.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 23a Through 23d, \"Line 23b. Enter the amounts you paid for all other natural gas, propane, or oil water heaters\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 23c"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line24a": {
+   "subject_sha": "d74a90b95dcf2448b1ed0afc4fd839f9eb431a5309369a425c07200bb9b77a1e",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "0028058d768a2e808da73f124580ed601543cef8164772ca140340c0723d0d03",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053564,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line24a.d74a90b95dcf.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 24a Through 24d, \"Line 24a. Enter the QMID and amount you paid for the most expensive natural gas, propane, or oil furnace or hot water boilers\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 24c"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line24b": {
+   "subject_sha": "435c2b60c730e19cc9cb1e51671a7ed5f25d6e1b5a7bc82e19ee9c69f647f52d",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer installed in 2025 a second natural gas furnace that is not in the CEE highest efficiency tier, or an oil boiler not rated for 20% eligible-fuel blends, and includes its cost because the question asks for 'all other such furnaces and hot water boilers' without stating the qualifying criteria.",
+       "source_text": "i5695 (2025) p. 6, Line 24b: 'Enter the amounts you paid for all other natural gas, propane, or oil furnace or hot water boilers that achieve the highest efficiency tier established by the CEE that is in effect as of the beginning of the calendar year in which the property is placed in service. In addition, oil furnaces and hot water boilers must meet the 2021 Energy Star efficiency criteria and be rated by the manufacturer for use with fuel blends at least 20% of the volume of which consists of an eligible fuel.'",
+       "why": "The question ('The cost of all other such furnaces and hot water boilers') and its label ('all other natural gas, propane, or oil furnace or hot water boilers') do not state the CEE highest-tier requirement. Neither do they state the Energy Star 2021 and 20% eligible-fuel requirements for oil units, and the help does not mention them either. A truthful answer can therefore include non-qualifying units that line 24c must not include.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "2920ca95861c00bd4f188c9e858ebfc53177ea15ce6a91fc2da6bb7b3757553e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.062808,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line24b.435c2b60c730.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 24a Through 24d, \"Line 24b. Enter the amounts you paid for all other natural gas, propane, or oil furnace or hot water boilers\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 24c"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line25a": {
+   "subject_sha": "1eeda866c02d4afb39b41f7cdd894c334d3775e2813648485342b2b1a8691732",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "965acd0f2cbcd99f2d8f51eab01651b90586751156feee455f660588dcea4acc",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.066272,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line25a.1eeda866c02d.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      6,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 25a Through 25e, \"both the enabling property and the enabled property must be installed in 2025\", \"If the enabling property and the enabled property were installed in consecutive tax years, then you can treat both as having been installed in the later of the tax year\"; pp. 6-7, Line 25b, \"Enter the code for the type(s) of enabled property from the following list\""
+     ],
+     "cols_pages": [
+      6,
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 25a, \"If you checked the ... No ... box, you cannot claim the credit for enabling property. Skip lines 25b through 25e\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line25c": {
+   "subject_sha": "30484da37fd16a8e1e75c647b73f2b34e9ab4e434bf614954a439bb05d4bef22",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "04156b0cacd002cc64e87e841e7f7e8fb0efb69f960bdc7177bdd68b5f8cf19b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06304399999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line25c.30484da37fd1.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      5,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Part II Energy Efficient Home Improvement Credit, \"To qualify for the energy efficient home improvement credit for specified property, you must provide a valid QMID for each item\"",
+      "p. 7, Line 25c, \"Enter the amounts you paid for improvements to or replacement of panelboards, subpanelboards, branch circuits, or feeders that were installed in a manner consistent with the National Electric Code, have a load capacity of at least 200 amps\""
+     ],
+     "cols_pages": [
+      5,
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 25e, \"Multiply line 25c by 30% (0.30)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line26a": {
+   "subject_sha": "6c762e90cbbb75f568b2528b5c1c34c073c3e7ecfca6895e9702e95ef44f39a3",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer had the audit done and billed in late 2024 but paid for it in 2025; a truthful answer to 'incur costs in 2025' is No, yet the credit is based on amounts paid in 2025.",
+       "source_text": "i5695 (2025) p. 7, Line 26b: \"Enter the amounts you paid for home energy audits in 2025.\"",
+       "why": "The question ties the year to when the cost was incurred, but the credit counts payments made in 2025. A filer whose cost arose in 2024 and was paid in 2025 would answer No and lose the line 26c credit the text allows.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f92f8b8fd53e667ecc7d1054488d8e6b1f2e7f35eb1fbb0d5136bd76b71573cf",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.069812,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line26a.6c762e90cbbb.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      3,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Lines 26a Through 26c, \"Line 26a. To qualify for the credit, a home energy audit must have included an inspection of your main home located in the United States and a written report prepared by a Qualified Home Energy Auditor\"; p. 3, Home energy audits, \"Identifies the most significant and cost-effective energy efficiency improvements for the home, including an estimate of the energy and cost savings for each improvement\" and \"The written report must include the following: 1. The Qualified Home Energy Auditor’s name and employer identification number (EIN) or other type of relevant taxpayer identifying number (TIN); 2. An attestation that the Qualified Home Energy Auditor is certified by a Qualified Certification Program; and 3. The name of the Qualified Certification Program\""
+     ],
+     "cols_pages": [
+      3,
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), lines 26a and 26c, \"If you checked the ... No ... box, you cannot claim the home energy audit credit\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line26b": {
+   "subject_sha": "bca64922154ad8b960c4551527f0ae8e897f911ccced09ac3ba07acb8b8295f0",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer paid in 2025 for one qualifying audit of their main home and a second audit that does not qualify, such as one of a vacation home or one not done by or under a Qualified Home Energy Auditor, and truthfully enters both costs.",
+       "source_text": "Question: 'The cost of the home energy audits you paid in 2025'; i5695 (2025) p. 7: 'a home energy audit must have included an inspection of your main home located in the United States and a written report prepared by a Qualified Home Energy Auditor or under the supervision of a Qualified Home Energy Auditor' and 'Home energy audits must be performed by a Qualified Home Energy Auditor or under the supervision of a Qualified Home Energy Auditor. The Qualified Home Energy Auditor must be certified by a Qualified Certification Program at the time of the home energy audit.'",
+       "why": "The line 26a gate is a single yes for the filer as a whole, so it does not screen out each non-qualifying audit. The question and its help never limit the amount to audits of the main home, with a written report, by a certified Qualified Home Energy Auditor, so costs of non-qualifying audits flow into line 26c.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ecbc72cbdf0d83af267b9d74bab75ff38f535bf969039cd1492240f6363c0c7e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.057375999999999996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line26b.bca64922154a.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Lines 26a Through 26c, \"Line 26b. Enter the amounts you paid for home energy audits in 2025\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 26c, \"Multiply line 26b by 30% (0.30)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line29a": {
+   "subject_sha": "21519d898f91c83956024cf4900a94965d82746090dab55d935c25fa09db9d5e",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who installed a qualifying geothermal (ground-source) heat pump in 2025, which is an electric heat pump that can meet a CEE tier, would truthfully enter its cost here even though that cost belongs on Part I, line 4.",
+       "source_text": "Question: 'The cost of the most expensive electric or natural gas heat pump that achieves the highest efficiency tier established by the CEE...'; f5695 (2025) p. 1, line 4: 'Qualified geothermal heat pump property costs'",
+       "why": "Nothing in the wording or help excludes geothermal heat pump property. Its cost can therefore reach line 29g as well as line 4 of the residential clean energy credit, so the same cost is counted twice.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "9484d6ca59d761236880c8749013ff7c6650475a255c95aea7f809407497230d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.062848,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line29a.21519d898f91.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Lines 29a Through 29h, \"Line 29a. Enter the QMID and amount you paid for the most expensive electric or natural gas heat pump\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 29g"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line29b": {
+   "subject_sha": "2484f5112ed2a7244895b4299eaaf41bd4651e30df0d5d8ffdb94500e60b956d",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer installed a second electric heat pump in 2025 that does not reach the highest CEE efficiency tier and reports its cost, since neither the question nor its help says what makes a heat pump 'such'.",
+       "source_text": "i5695 (2025) p. 7, Line 29b: \"Enter the amounts you paid for all other electric or natural gas heat pumps that achieve the highest efficiency tier established by the CEE that is in effect as of the beginning of the calendar year in which the property is placed in service.\"",
+       "why": "Line 29b, and so line 29g, counts only heat pumps that meet the highest CEE tier in effect at the start of the year placed in service. The question's 'such heat pumps' does not state this, so a truthful answer can include heat pumps that do not qualify.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who installed a geothermal heat pump, already reported on Part I line 4, includes its cost here because the question says only 'heat pumps' and does not limit it to electric or natural gas units.",
+       "source_text": "f5695 (2025) p. 1, line 4: \"Qualified geothermal heat pump property costs\"; f5695 p. 4, line 29b: \"Enter the cost of all other electric or natural gas heat pumps.\"",
+       "why": "The question's wording leaves out 'electric or natural gas,' so geothermal heat pump costs can enter line 29g. Those costs belong on line 4, so they would be counted twice.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer with two qualifying heat pumps may not know whether 'all other' means everything except the single most expensive unit reported on line 29a, and may enter the total cost of both.",
+       "source_text": "i5695 (2025) p. 7, Line 29a: \"Enter the QMID and amount you paid for the most expensive electric or natural gas heat pump\"; Line 29b: \"all other electric or natural gas heat pumps\"",
+       "why": "The question and its help never say that the most expensive unit belongs on line 29a and must be left out here. A filer could count it again, and line 29g, which adds 29a and 29b, would then include it twice.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "60ffe3088f3bb77e949fc9a359bfbcc8c1075f2ed8f2155a41ec39b7df3d69e1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.066336,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line29b.2484f5112ed2.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Lines 29a Through 29h, \"Line 29b. Enter the amounts you paid for all other electric or natural gas heat pumps\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 29g"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line29c": {
+   "subject_sha": "ad7c6505c3eda1890001de03cba08701201b29f50c1383d1181a1336fd87cfc1",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "79c2cb859d52cd5bb4550a4239fc933ce142cf2afaeade1ece3a507ab296043a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.055904,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line29c.ad7c6505c3ed.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Lines 29a Through 29h, \"Line 29c. Enter the QMID and amount you paid for the most expensive electric or natural gas heat pump water heater\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 29g"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line29d": {
+   "subject_sha": "060706a62f1f4e20e6e1eb6b5b13074940d7edd70a12c8686241c351e76d3cfc",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer installed a second electric heat pump water heater in 2025 that does not meet the CEE highest efficiency tier, and enters its cost because neither the question nor its help states that efficiency requirement.",
+       "source_text": "i5695 (2025) p. 7, Line 29d: \"Enter the amounts you paid for all other electric or natural gas heat pump water heaters that achieve the highest efficiency tier established by the CEE that is in effect as of the beginning of the calendar year in which the property is placed in service.\" Question: \"The cost of all other such heat pump water heaters\"",
+       "why": "\"Such\" is never defined in the question or the help, and the help lists only timing, labor and cost reductions. A truthful answer can therefore include water heaters that do not qualify, which inflates line 29g.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer with two qualifying heat pump water heaters enters both costs, including the most expensive unit already reported on line 29c, because the question does not say what the water heaters are \"other\" than.",
+       "source_text": "f5695 (2025) p. 4, line 29c: \"Enter the Qualified Manufacturer Identification Number and cost of the most expensive electric or natural gas heat pump water heater\"; line 29d: \"cost of all other electric or natural gas heat pump water heaters\"; line 29g: \"Add lines 29a through 29f\". Question: \"The cost of all other such heat pump water heaters\"",
+       "why": "The question and help never say that the most expensive unit reported on line 29c is excluded. Including it counts that cost twice in line 29g.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "2d23e3564f1a8c48b1fb23068dad7142785c7eeda9797a1821d745d358825c8d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.060092000000000007,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line29d.060706a62f1f.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Lines 29a Through 29h, \"Line 29d. Enter the amounts you paid for all other electric or natural gas heat pump water heaters\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 29g"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line29e": {
+   "subject_sha": "543908742be57f96e951fbf3de2ec16ad86a19eb9558c38cf7cf6c33c81ff5d6",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "2cae86243554dbbdaf526bb91eb5affb33f7d4dafe2e658cc7ef0a19f683184f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.050984,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line29e.543908742be5.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Lines 29a Through 29h, \"Line 29e. Enter the QMID and amount you paid for the most expensive biomass stove or biomass boiler that has a thermal efficiency rating of at least 75%\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 29g"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line29f": {
+   "subject_sha": "4a0835a83acd0231d26a3b1b4de12d3e6b759be9e078d926489b0b3a050fffe9",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer installed a second biomass stove in 2025 with a thermal efficiency rating below 75% and includes its cost because the question never states the efficiency requirement.",
+       "source_text": "i5695 (2025) p. 7, Line 29f: \"Enter the amounts you paid for all other biomass stoves and biomass boilers that have a thermal efficiency rating of at least 75% (measured by the higher heating value of the fuel).\"",
+       "why": "The question says \"all other such biomass stoves and biomass boilers,\" but neither it nor its help says what \"such\" refers to or states the 75% thermal efficiency threshold. A truthful answer can therefore include non-qualifying units that line 29g must not add.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer with two qualifying biomass stoves enters the cost of both, including the most expensive one already reported on line 29e, because the question does not say \"other\" than what.",
+       "source_text": "Question: \"The cost of all other such biomass stoves and biomass boilers\"; i5695 (2025) p. 7: \"Line 29e. Enter the QMID and amount you paid for the most expensive biomass stove or biomass boiler... Line 29f. Enter the amounts you paid for all other biomass stoves and biomass boilers\"; f5695 line 29g: \"Add lines 29a through 29f\"",
+       "why": "The question and help never say to exclude the most expensive stove or boiler entered on line 29e. Its cost can then be counted twice in the line 29g sum.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ec342ceeebf4f971cdcf5f835e78bdddfc2156ede92e7fd144d526a2baae1445",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.060516,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line29f.4a0835a83acd.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Lines 29a Through 29h, \"Line 29f. Enter the amounts you paid for all other biomass stoves and biomass boilers\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 29g"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line3": {
+   "subject_sha": "e57557019c33807b9a2e7c6fc941558e751c012b02b7037e913445c19761d31f",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer's newly built home had its wind turbine installed in 2024, and the filer first moved in during 2025; the filer answers zero because the installation was completed in 2024.",
+       "source_text": "i5695 p. 1, Costs: \"For purposes of the residential clean energy credit only, costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins\"; for reconstruction, costs are paid \"when your original use of the reconstructed home begins\"",
+       "why": "The help gives only the installation-completed timing rule. It leaves out the construction and reconstruction rule, under which these costs count in 2025, the year the filer's original use begins. A truthful answer therefore omits them. In the reverse case (installed in 2025, moved in during 2026), the filer would wrongly include them.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer installs a small wind turbine at a home where 30% of the use is business use, for example a home-based business, and enters the full cost.",
+       "source_text": "i5695 p. 1, Costs: \"If less than 80% of the use of an item is for nonbusiness purposes, only that portion of the costs that is allocable to the nonbusiness use can be used to determine either credit.\"",
+       "why": "The question and help never mention limiting the cost to the nonbusiness portion. A truthful answer brings in the business-use share, which line 6a must not include.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer installs a wind turbine on a U.S. rental property or other house the filer never lived in during 2025 and includes the cost because the question says the home 'need not be your main home'.",
+       "source_text": "Question: \"a home in the United States (it need not be your main home)\"; i5695 p. 1, Home: \"A home is where you lived in 2025\"",
+       "why": "The question allows any U.S. home that is not the main home but does not say the filer must have lived there. A truthful answer can therefore include property at a dwelling the filer did not use as a residence.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a614fe6a65b38cad10c72f6b877dc7c19837ee380436c2cc1bb8830fd844b7e6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.09129999999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line3.e57557019c33.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Costs, \"costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins\"",
+      "p. 1, Costs, \"only that portion of the costs that is allocable to the nonbusiness use can be used to determine either credit\"",
+      "p. 4, Line 3, \"Enter the amounts you paid for qualified small wind energy property\"; pp. 2-3, Qualified small wind energy property costs, \"property that uses a wind turbine to generate electricity\"; p. 2, Caution, \"Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function other than the function of such storage don’t qualify for the residential clean energy credit\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 6a"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line4": {
+   "subject_sha": "1c06b0c9d2fd53f16620c9310464951e528eaaf6014e71f542ad08a2ba6d01c1",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer's geothermal heat pump was installed during construction of a new home in 2024, and the filer first lived in the home in 2025. The help's timing rule makes the filer leave out a cost that line 4 needs for 2025.",
+       "source_text": "i5695 p.1, Costs: \"For purposes of the residential clean energy credit only, costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins.\" Reconstruction is treated the same way: \"when your original use of the reconstructed home begins.\"",
+       "why": "The help says only \"A cost counts in 2025 when the original installation is completed.\" It leaves out the rule that construction and reconstruction costs count when the filer first uses the home, so these costs fall out of 2025.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer's geothermal system in a newly built home was finished in 2025, but the filer first lives there in 2026. The help makes the filer report it for 2025.",
+       "source_text": "i5695 p.1, Costs: \"costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins.\"",
+       "why": "Because the help times every cost by installation completion, the filer brings in a cost that the text treats as paid in a later year.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer installs a geothermal heat pump at a US property they own but never live in, such as a rental, and enters its cost.",
+       "source_text": "Question: \"a home in the United States (it need not be your main home)\". i5695 p.1: \"A home is where you lived in 2025\"; p.2: \"more than one home that you used as a residence during 2025\".",
+       "why": "The question only excludes a main-home requirement and never says the filer must have lived in the home. Costs for property the filer did not use as a residence get included.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer's geothermal system is used 40% for a home business, and the filer enters the full cost.",
+       "source_text": "i5695 p.1, Costs: \"If less than 80% of the use of an item is for nonbusiness purposes, only that portion of the costs that is allocable to the nonbusiness use can be used to determine either credit.\"",
+       "why": "Neither the question nor the help mentions the business-use allocation. A truthful answer would include the business-use portion that line 4 must exclude.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "0d65d60e0dc29e0602e70398b126868e1038b06513f6579d39e15d157d0e0169",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.08448,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line4.1c06b0c9d2fd.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      1,
+      2,
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Costs, \"costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins\"",
+      "p. 1, Costs, \"only that portion of the costs that is allocable to the nonbusiness use can be used to determine either credit\"",
+      "p. 4, Line 4, \"Enter the amounts you paid for qualified geothermal heat pump property\"; p. 2, Qualified geothermal heat pump property costs, \"must meet the requirements of the Energy Star program that are in effect at the time of purchase\"; p. 2, Caution, \"Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function other than the function of such storage don’t qualify for the residential clean energy credit\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      4
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 6a"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    }
+   ]
+  },
+  "f5695.line5a": {
+   "subject_sha": "e5894069e5f28c60d5f06ed37cb7ea21537b958d65c55a021981b28036595707",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A battery of at least 3 kWh was installed during construction or reconstruction of the filer's home and finished before 2025, but the filer's original use of that home began in 2025, so the cost counts in 2025; the question's timing rule makes the filer answer No.",
+       "source_text": "i5695 p. 1, Costs: \"or, in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed home begins. For purposes of the residential clean energy credit only, costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins.\"",
+       "why": "The question says a cost counts in 2025 only \"when the original installation is completed in 2025.\" It leaves out the construction and reconstruction rule, which treats such costs as paid in 2025 when the filer's original use of the home begins in 2025, so line 5b would wrongly be zero.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A battery is installed in 2025 in a home under construction or reconstruction, and the filer's original use of that home begins after 2025, but the filer answers Yes because installation was completed in 2025.",
+       "source_text": "Question: \"A cost counts in 2025 when the original installation is completed in 2025, whenever you paid it\"; i5695 p. 1, Costs: \"costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins\"; p. 1: \"You can't claim residential clean energy credits for expenditures made after December 31, 2025.\"",
+       "why": "Under the construction and reconstruction rule these costs are treated as paid after 2025, so they don't belong on the 2025 line 5b and can't be claimed at all. The question's installation-date rule still brings them in.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "235289ea1c0c4c35c5118ad9a4f56ef4029563a07cdc77e29e28d9aed3fa333a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.057016,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.line5a.e5894069e5f2.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      1,
+      2,
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Lines 5a and 5b, \"If you check the ... No ... box, you can't include any battery storage technology costs on line 5b\"",
+      "p. 4, Lines 5a and 5b, \"To qualify for the credit, the qualified battery storage technology must have a capacity of at least 3 kilowatt hours\"; p. 2, Qualified battery storage technology costs, \"installed in connection with your home located in the United States\"; p. 1, Costs, \"costs are treated as being paid when the original installation of the item is completed\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      4
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  },
+  "f5695.part1_any": {
+   "subject_sha": "afc16222fab2320ee8c2edd85f72805197b64ff308466221b561b733b281fe34",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer had solar property installed on a newly built home in 2024 but first moved in during 2025, so the instructions treat the costs as paid in 2025; under the question's rule (installation completed in 2024) the filer would answer No.",
+       "source_text": "i5695 (2025) p. 1, Costs: \"For purposes of the residential clean energy credit only, costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins.\" The same applies to reconstruction: \"when your original use of the reconstructed home begins.\"",
+       "why": "The question says a cost counts \"when its original installation is completed\" and leaves out the construction and reconstruction rule. A filer in this situation truthfully answers No, so Schedule 3 line 5a is forced to zero and the credit is lost.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A condominium owner or cooperative tenant-stockholder whose association or corporation paid for qualifying solar or battery property in 2025 may answer No because they paid nothing directly.",
+       "source_text": "i5695 (2025) p. 2, Association or cooperative costs: \"you are treated as having paid your proportionate share of any costs of such association or corporation.\"",
+       "why": "The question asks only whether \"you\" had 2025 costs, and the help does not mention the proportionate share of association or cooperative costs. An ordinary filer could truthfully answer No and lose the Part I credit.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b5d84861fe03fac8ae373561deb945b64ee2aa147e2cd44442858e72917007e7",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.062383999999999995,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.part1_any.afc16222fab2.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Residential Clean Energy Credit (Part I), \"You may be able to take a credit of 30% of your costs of qualified solar electric property, solar water heating property, small wind energy property, geothermal heat pump property, battery storage technology, and fuel cell property\"; p. 1, Purpose of Form, \"Also use Form 5695 to take any residential clean energy credit carryforward from 2024\"; p. 1, Costs, \"For purposes of both credits, costs are treated as being paid when the original installation of the item is completed\"; p. 1, Termination of credits, \"You can’t claim residential clean energy credits for expenditures made after December 31, 2025\""
+     ],
+     "cols_pages": [
+      1,
+      2
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "i1040s8812",
+     "revision": "2025; printed date 2026-01-23",
+     "text_sha256": "fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765",
+     "pages": [
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Credit Limit Worksheet A, \"You are claiming one or more of the following credits\", \"Residential clean energy credit, Form 5695, Part I\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45"
+    },
+    {
+     "doc": "f1040s3",
+     "revision": "2025; created 2025-11-17",
+     "text_sha256": "43c7ba36b506a538179465978807938c64bde632d7e1bff225bb6b13b19f37bd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 3 (2025), line 5a (zero when Form 5695 Part I is not completed)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "1ae44325c8d22211a6eadd11b393254317542704e5fed0fb419e41690210fc48"
+    }
+   ]
+  },
+  "f5695.part2_any": {
+   "subject_sha": "399e7703a22b8e00cbea4db1d201f9ccf0ea14b8570cbb0d6159fc09278c83aa",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A condominium owner or cooperative tenant-stockholder whose association or cooperative installed qualifying windows, insulation or a furnace in 2025 may answer no, because the association rather than the filer contracted and paid. The gate then forces line 32 and Schedule 3 line 5b to zero.",
+       "source_text": "i5695 p. 2: \"If you are a member of a condominium management association for a condominium you own or a tenant-stockholder in a cooperative housing corporation, you are treated as having paid your proportionate share of any costs of such association or corporation.\"; f5695 line 32b: \"If you live in a condominium or cooperative and have a fractional share of the qualified energy efficiency improvements or residential energy property expenditures, check here\"",
+       "why": "The question asks only whether \"you\" had 2025 costs, and its help does not say that a proportionate share of association or cooperative costs counts as your cost. A truthful no from such an owner drops a credit, and a line 32b check, that the text allows.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose only 2025 costs are for the construction of a new home, or for doors, windows or insulation at a home that is not their main home, answers yes. Line 32 then stays at zero, but the line 32a or 32b checkbox can be checked even though no credit is claimed.",
+       "source_text": "Question: \"Did you have 2025 costs for insulation ... exterior doors, exterior windows ... for a home in the United States?\"; i5695 p. 1: \"The energy efficient home improvement credit (Part II) is only available for existing homes.\"; i5695 p. 7: \"Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\"",
+       "why": "The question admits costs that are not claimable, including new construction and non-main-home Section A items. Line 32a requires the box only for joint occupants who are claiming the credit, and line 32b only for occupants claiming a fractional share, so a yes driven by non-qualifying costs can set those checkboxes wrongly.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer paid in 2025 for a home energy audit that was performed in late 2024, or performed an audit in 2025 but paid for it in 2026. The question's only timing rule refers to completion of installation, which does not fit an audit.",
+       "source_text": "i5695 p. 2: \"3. The amount paid or incurred for home energy audits during 2025.\"; i5695 p. 7, Line 26b: \"Enter the amounts you paid for home energy audits in 2025.\"; Question: \"A cost of an item counts in 2025 when its original installation is completed in 2025 ... whenever you paid it\"",
+       "why": "Applying the question's \"whenever you paid it\" installation rule to an audit could lead to a different answer than the text's paid-or-incurred-in-2025 rule for audits, which changes whether the gate opens.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b4435296445215fc443da0e36f07b06317b8ff50a81ab56d45411ce68348ce29",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.1056,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.part2_any.399e7703a22b.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      1,
+      2,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Energy Efficient Home Improvement Credit (Part II), \"You may be able to take a credit equal to 30% of the sum of\"; p. 1, Reminders, \"A 30% credit, up to a maximum of $1,200, may be allowed for\"; p. 1, Costs, \"For purposes of both credits, costs are treated as being paid when the original installation of the item is completed, or, in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed home begins\"; p. 1, Termination of credits, \"You can’t claim energy efficient home improvement credits for expenditures or property placed in service after December 31, 2025\"",
+      "p. 7, Lines 32a and 32b, \"Line 32a. Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\"",
+      "p. 7, Lines 32a and 32b, \"must check the box on line 32b\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      7
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    },
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 32 (zero when Part II is not completed)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    },
+    {
+     "doc": "f1040s3",
+     "revision": "2025; created 2025-11-17",
+     "text_sha256": "43c7ba36b506a538179465978807938c64bde632d7e1bff225bb6b13b19f37bd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 3 (2025), line 5b (zero when Form 5695 Part II is not completed)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "1ae44325c8d22211a6eadd11b393254317542704e5fed0fb419e41690210fc48"
+    }
+   ]
+  },
+  "f5695.qmid_ac": {
+   "subject_sha": "b53e3afa5b555bbc535fb0b7824a598455c6d98a8727e87a59abd770956104a1",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "a1977fe5897c5f3d0f390096309f6a677b113118a366fb3515b5286fe8d1ddf6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.037024,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.qmid_ac.b53e3afa5b55.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Section B—Residential Energy Property Expenditures, \"For qualified energy property installed in 2025, a valid QMID must be reported on the applicable line(s)\"",
+      "p. 5, Part II Energy Efficient Home Improvement Credit, \"To qualify for the energy efficient home improvement credit for specified property, you must provide a valid QMID for each item\""
+     ],
+     "cols_pages": [
+      3,
+      5
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  },
+  "f5695.qmid_doors": {
+   "subject_sha": "48ab20e21c52ef6fc77f616ee6ebb0d9dd901b84d8b73229e2efd37fbca7a82f",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "3e6a5c92baef4917a87fba4436be61d5281193b16b50e655add74cb1f9a84a34",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.035568,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.qmid_doors.48ab20e21c52.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Section A—Qualified Energy Efficiency Improvements, \"For exterior doors, windows, and skylights installed in 2025, a valid QMID must be reported on the applicable line(s)\"",
+      "p. 5, Part II Energy Efficient Home Improvement Credit, \"To qualify for the energy efficient home improvement credit for specified property, you must provide a valid QMID for each item\""
+     ],
+     "cols_pages": [
+      3,
+      5
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  },
+  "f5695.qmid_enabling": {
+   "subject_sha": "35b85d6a2fb72d191e217022e624f7d4e7e1104e36533a6dda4912b8ec514a14",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer entered on line 25c the cost of enabling property that, under the line 25a instructions, was installed in 2024 and has no QMID. Read literally, the question ('each item of enabling property whose cost you entered') makes them answer No, but the help ('each item installed in 2025 needs a valid one') suggests Yes.",
+       "source_text": "f5695 (2025) p.3 line 25a: \"(See instructions if some of the property was installed in 2024.)\"; i5695 (2025) p.3: \"For qualified energy property installed in 2025, a valid QMID must be reported on the applicable line(s).\"",
+       "why": "The QMID requirement applies only to property installed in 2025. The question covers every item entered on 25c while the help limits it to 2025 installs, so a filer with 2024-installed enabling property could answer either way. A No answer would wrongly refuse the return.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "32fcfdff87b501c225aeb6b4dd9b0cf59207aa5f16682efcd705e95280848b1e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.068936,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.qmid_enabling.35b85d6a2fb7.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f5695",
+     "revision": "2025; created 2025-03-20",
+     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 5695 (2025), line 25d; , Section B—Residential Energy Property Expenditures, \"For qualified energy property installed in 2025, a valid QMID must be reported on the applicable line(s)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
+    },
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Part II Energy Efficient Home Improvement Credit, \"To qualify for the energy efficient home improvement credit for specified property, you must provide a valid QMID for each item\""
+     ],
+     "cols_pages": [
+      3,
+      5
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  },
+  "f5695.qmid_furnace": {
+   "subject_sha": "0cd44f26f419d08eb4997f8166ca98611e43eb9daf50e023f12a9ffe2099bc6d",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "5515c4b397657969287290c7fcc7aea434d6c30ae39cac62aeccf4b951cb87c4",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.040852,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.qmid_furnace.0cd44f26f419.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Section B—Residential Energy Property Expenditures, \"For qualified energy property installed in 2025, a valid QMID must be reported on the applicable line(s)\"",
+      "p. 5, Part II Energy Efficient Home Improvement Credit, \"To qualify for the energy efficient home improvement credit for specified property, you must provide a valid QMID for each item\""
+     ],
+     "cols_pages": [
+      3,
+      5
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  },
+  "f5695.qmid_hp": {
+   "subject_sha": "859d7baead3485aff098f196edb78cd89422e0da8b3ddb12dbad844daa95dd91",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "dbb1137c5b7cbd051ef41c6295e0d845ea231f528d5bea77d66866cb8ae22f08",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.036992,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.qmid_hp.859d7baead34.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Section B—Residential Energy Property Expenditures, \"For qualified energy property installed in 2025, a valid QMID must be reported on the applicable line(s)\"",
+      "p. 5, Part II Energy Efficient Home Improvement Credit, \"To qualify for the energy efficient home improvement credit for specified property, you must provide a valid QMID for each item\""
+     ],
+     "cols_pages": [
+      3,
+      5
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  },
+  "f5695.qmid_wh": {
+   "subject_sha": "6b6acaa801273d5f50f9b4ebcccd0819d811944b66ff3d08041465d8471ef8df",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "b3ed68c7ef0a26f29565da568276407e3e786be3d4c064a2eae9bc97aa9875a1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.038192000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.qmid_wh.6b6acaa80127.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Section B—Residential Energy Property Expenditures, \"For qualified energy property installed in 2025, a valid QMID must be reported on the applicable line(s)\"",
+      "p. 5, Part II Energy Efficient Home Improvement Credit, \"To qualify for the energy efficient home improvement credit for specified property, you must provide a valid QMID for each item\""
+     ],
+     "cols_pages": [
+      3,
+      5
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  },
+  "f5695.qmid_windows": {
+   "subject_sha": "03497e79e845b6f0173cebad9830a09fb85cb854a0e1f55b1afe5fbbb454725e",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "4ed6c5cac5f01b37af687e939cc46d83f2b2f78f1c4f616d8c2ee7f707fcd437",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.034640000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.qmid_windows.03497e79e845.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Section A—Qualified Energy Efficiency Improvements, \"For exterior doors, windows, and skylights installed in 2025, a valid QMID must be reported on the applicable line(s)\"",
+      "p. 5, Part II Energy Efficient Home Improvement Credit, \"To qualify for the energy efficient home improvement credit for specified property, you must provide a valid QMID for each item\""
+     ],
+     "cols_pages": [
+      3,
+      5
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  },
+  "f5695.separate_homes": {
+   "subject_sha": "ba4e025f94f27dd8f4f1b79dc991d855908dadd462f813101b4116d50f0fa345",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "c86ff791b25a0f35ff2b7d0f61f2f8e6b149835cc832b39f3a951bb028446306",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.024356,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f5695.separate_homes.ba4e025f94f2.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i5695",
+     "revision": "2025",
+     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Married taxpayers with more than one home, \"If both you and your spouse owned and lived apart in separate main homes, the limit on the amount of the credit applies to each of you separately\"",
+      "p. 3, Married taxpayers with more than one home, \"If you are filing a joint return, figure your energy efficient home improvement credit as follows\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
+    }
+   ]
+  }
+ }
+}

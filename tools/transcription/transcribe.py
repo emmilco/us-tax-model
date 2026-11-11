@@ -1662,6 +1662,7 @@ RERUN_REASON_ENV = "REVIEW_RERUN_REASON"  # a forced rerun's reason, recorded in
 PRICES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "prices.json")
 TOOL_KINDS = {"transcribe.py": "transcription", "render_compare.py": "render", "classm.py": "classm",
               "completeness_review.py": "completeness", "screen_review.py": "screen", "false_no_review.py": "false_no",
+              "question_review.py": "question",
               "transcribe_tables.py": "tables", "transport_check.py": "transport-check"}
 
 

@@ -1,0 +1,628 @@
+{
+ "form": "refund",
+ "reviews": {
+  "refund.box8": {
+   "subject_sha": "d04d220b984891f1791b1838b99eec57d6751d6ef58e85c4114337d4aacdefa7",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "1097847439de7cffbd0ef9c362210c8de7f230b72df43a376a6e9a9047018d23",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.034132,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.box8.d04d220b9848.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099g",
+     "revision": "Rev. March 2024 (continuous-use form for calendar year 2025; the December 2026 revision is first used for 2026)",
+     "text_sha256": "c3505294585e00ec5e957f73aa97dee32ad4b6916cd3eb48fef7f3c79f123270",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 5, Instructions for Recipient, \"Box 8. If this box is checked, the amount in box 2 is attributable to an income tax that applies exclusively to income from a trade or business\"",
+      "p. 5, Instructions for Recipient, \"Box 8. If this box is checked, the amount in box 2 is attributable to an income tax that applies exclusively to income from a trade or business\" and \"If taxable, report the amount in box 2 on Schedule C or F (Form 1040), as appropriate\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "49cc781de5cf6d881cc347361880de4b4b20fca0f13397bc94c94e84a20cff6d"
+    }
+   ]
+  },
+  "refund.itemized": {
+   "subject_sha": "547e9e4ec9622192ec261d504889fe0202aaab5d30405ebea3ac91d8e683af56",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "c1585ad41625f8baa8a43d92e8ef8ba563a55a9bb999f733cff942cc37cb7bbc",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.039508,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.itemized.547e9e4ec962.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      88
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 88, Line 1, \"If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet\"",
+      "p. 88, Line 1, \"None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn’t itemize deductions\"; , Deductions not itemized, \"If you didn’t itemize deductions for the year for which you received the recovery of an expense that was deductible only if you itemized, don’t include any of the recovery amount in your income\""
+     ],
+     "cols_pages": [
+      88
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      24
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "refund.line17_2024": {
+   "subject_sha": "7320090f0b78fea2d61b4f9fca9a2c319f34d7621bc05073dc471a41ef14b0c8",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "7ac5f6e4bbc94ee57234050600fe4caee66e0aefca47db7da317a2a65af82dd2",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.032672,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.line17_2024.7320090f0b78.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 4",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 4, \"Enter your total itemized deductions from your 2024 Schedule A, line 17\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "refund.line5d_2024": {
+   "subject_sha": "45712544fd7529fce5e2421a1f89af02461d6743d5de4c059dee4ceb04d418ca",
+   "samples": [
+    {
+     "verdict": "WRONG_FIGURE",
+     "findings": [
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "Take a filer whose 2024 Schedule A, line 5d was $9,000: $2,000 of state income tax on line 5a plus $7,000 of real estate tax on line 5b. In 2025 the filer receives a $3,000 state income tax refund. The tool caps line 1 at the $9,000 total instead of the $2,000 of income taxes.",
+       "source_text": "i1040gi p. 90, Worksheet line 1: \"But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\"; question: \"The amount on your 2024 Schedule A, line 5d (your state and local income or general sales taxes, real estate taxes and personal property taxes, added together)\"",
+       "why": "Line 1 caps the refund at the income-tax part of line 5d, which is the line 5a amount, and only when income tax rather than sales tax was elected. The question gives the whole line 5d total, including real estate and personal property taxes, so the cap is too high. For a filer who elected sales tax, the cap should be zero (\"None of your refund is taxable if ... you ... elected to deduct state and local general sales taxes\", i1040gi p. 88), but the tool uses the line 5d total. These cases also fall under Exception 4 (i1040gi p. 89), which sends the filer to Pub. 525. No refusal for that exception is listed here, so the tool still applies the wrong cap.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "9f68d32f8f386bb5e7eff1c70bc9792e10f0e14668c0514b3e10786717c51af5",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.093364,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.line5d_2024.45712544fd75.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      88,
+      89,
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, \"Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, \"your state and local income taxes shown on your 2024 Schedule A, line 5d\", and line 2, \"(generally, this is the amount reported on your 2024 Schedule A, line 5d)\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, \"Is the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, \"No. Enter the amount from line 1 on line 3 and go to line 4. Yes. Subtract the amount on your 2024 Schedule A, line 5e\" (zero on No, so that line 3 is line 1)",
+      "pp. 88–89, Line 1, \"Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies\", items 3, 4, 6 and 7",
+      "pp. 88–89, Line 1, \"Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies\", items 8 and 9; , Itemized Deduction Recoveries, \"if you’re a nonresident alien\""
+     ],
+     "cols_pages": [
+      88,
+      89
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 5e, \"enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      24
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "refund.line5e_2024": {
+   "subject_sha": "529ab2e0de19b8f6dca30039e3f74ec6fe088a0a1fac779f8f0eb14d26086066",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "6ec5c5d20415f6b351b3a23b6f8c66a6ced9afd60492dbb35f6b8c4eb0439a35",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.036608,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.line5e_2024.529ab2e0de19.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, \"Is the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, \"No. Enter the amount from line 1 on line 3 and go to line 4. Yes. Subtract the amount on your 2024 Schedule A, line 5e\" (zero on No, so that line 3 is line 1)",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, \"more than the amount on your 2024 Schedule A, line 5e\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 5e, \"enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    }
+   ]
+  },
+  "refund.mfs_spouse_itemized": {
+   "subject_sha": "f62432b890dc3e42cc27ac06558958c7335221e8845ae4ada27725aa895919bf",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "20caf3d00765291351af91936527f6b700da0b602c1767cf096686c6d982b6aa",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.017212,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.mfs_spouse_itemized.f62432b890dc.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, Note, \"If the filing status on your 2024 Form 1040 or 1040-SR was married filing separately and your spouse itemized deductions in 2024\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, Note, \"If the filing status on your 2024 Form 1040 or 1040-SR was married filing separately and your spouse itemized deductions in 2024, skip lines 5 through 7, enter the amount from line 4 on line 8, and go to line 9\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "refund.received": {
+   "subject_sha": "ffa64b26bfeedc6e5f6540fb72891ef9cb3814338c99ccfd030fa7eff36f1476",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer receives a Form 1099-G with box 8 checked, so the box 2 refund is of a tax that applies only to trade or business income, and the question tells them to include that box 2 amount in the total that feeds Schedule 1, line 1.",
+       "source_text": "f1099g p. 5: \"Box 8. If this box is checked, the amount in box 2 is attributable to an income tax that applies exclusively to income from a trade or business ... If taxable, report the amount in box 2 on Schedule C or F (Form 1040), as appropriate.\" Question: \"the total of box 2 of your Forms 1099-G (or a similar statement)\"",
+       "why": "The box 8 amount belongs on Schedule C or F, not on Schedule 1, line 1. The question does not tell the filer to leave it out, so it flows through worksheet line 1 to s1.line1 and may also be reported on Schedule C or F.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer receives a state income tax refund in 2025 for tax year 2022 or 2023 (Form 1099-G box 3 shows a year other than 2024), and the question has them include it in the amount the worksheet tests against their 2024 Schedule A.",
+       "source_text": "i1040gi p. 88: \"If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet\"; p. 89 Exception 1: \"You received a refund in 2025 that is for a tax year other than 2024.\" Question: \"State or local income tax refunds, credits or offsets you received in 2025\"",
+       "why": "Worksheet line 1 is meant only for a refund of 2024 tax, limited by the 2024 Schedule A, line 5d. The question counts refunds for any tax year, and no listed refusal sends other-year refunds to Pub. 525.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer receives a refund from a jointly filed 2024 state return but is not filing a joint 2025 Form 1040 with the same person, and enters the full box 2 amount.",
+       "source_text": "i1040gi p. 89 Exception 9: \"You received a refund because of a jointly filed state or local income tax return, but you aren’t filing a joint 2025 Form 1040 or 1040-SR with the same person\"; p525 p. 24: \"any refund ... must be allocated to the person that paid the expense\"",
+       "why": "The worksheet needs only the filer's allocated share of the refund. The question asks for the whole box 2 total, and no listed refusal handles this case.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "aa77f387c8c4bfd851cab69c715c6ab8bf52cb78f455c9255f6f109cd171c34f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.08848400000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.received.ffa64b26bfee.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      88,
+      89,
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 88, Line 1, \"If you received a refund, credit, or offset of state or local income taxes in 2025\"",
+      "p. 88, Line 1, \"If you received a refund, credit, or offset of state or local income taxes in 2025, you may be required to report this amount\", \"Report any taxable refund you received even if you didn’t receive Form 1099-G\" and \"If you chose to apply part or all of the refund to your 2025 estimated state or local income tax, the amount applied is treated as received in 2025\"; , Instructions for Recipient, \"Box 2. Shows refunds, credits, or offsets of state or local income tax you received\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, \"Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\"",
+      "pp. 88–89, Line 1, \"Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies\", items 3, 4, 6 and 7",
+      "pp. 88–89, Line 1, \"Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies\", items 8 and 9; , Itemized Deduction Recoveries, \"if you’re a nonresident alien\""
+     ],
+     "cols_pages": [
+      88,
+      89
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1099g",
+     "revision": "Rev. March 2024 (continuous-use form for calendar year 2025; the December 2026 revision is first used for 2026)",
+     "text_sha256": "c3505294585e00ec5e957f73aa97dee32ad4b6916cd3eb48fef7f3c79f123270",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "49cc781de5cf6d881cc347361880de4b4b20fca0f13397bc94c94e84a20cff6d"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      24
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "refund.sales": {
+   "subject_sha": "92337aa2f27ee433ee5e448d2b6dd5c6b6c896955f583741b4bbb906de6c84a9",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "b5d839d0d5253c02c7844767e6867c90f532c90832d058c1466bb8bc1f4860d4",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.051216,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.sales.92337aa2f27e.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      88
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 88, Line 1, \"If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet\"",
+      "p. 88, Line 1, \"or (b) elected to deduct state and local general sales taxes instead of state and local income taxes\"; , State tax refund, \"Because you didn’t choose to deduct the state income tax, you don’t include the state income tax refund in income\""
+     ],
+     "cols_pages": [
+      88
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      24
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "refund.spouse_blind": {
+   "subject_sha": "4970853015dc0e035ff92d9320ef0a1b125f5d5d32eb4739f9fca3c966716f80",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "8efef3e1c4243e3d6db0d97972a8efcee13fba021e9b8fd6bb99de74dfcd0161",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.044596000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.spouse_blind.4970853015dc.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, \"Multiply the number of boxes checked by $1,550\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, \"Spouse is blind\" and \"If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "refund.spouse_born": {
+   "subject_sha": "3ada2092112223ddc5f2de611f93468870c0355c62e4b8df261ffbed954a4abd",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "88aaf6603aadb083c3a31c75fdc9aa0724252ad42015fecee52b21ec54a5eeb8",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.025155999999999998,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.spouse_born.3ada20921122.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, \"Multiply the number of boxes checked by $1,550\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, \"Spouse was born before January 2, 1960\" and \"If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "refund.status": {
+   "subject_sha": "ad2a752acf4828666c0d0be21e465044f7c414d5eb2ca8374db35a63690906cd",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "9b19a20fe87c99ebfaf98794bdcef2bf75b80afc0641d62ac94b7a253589a131",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.051112,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.status.ad2a752acf48.1.response.txt"
+    }
+   ],
+   "type": "Enum(filing_status)",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      33,
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 5",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 5, \"Enter the amount shown below for the filing status claimed on your 2024 Form 1040 or 1040-SR\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, \"If your filing status is married filing separately, you can check the boxes for your spouse only if\"; p. 33, Line 12d, \"If you or your spouse (if you are married and filing a joint return)\" and \"Don’t check any boxes for your spouse if your filing status is head of household\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, \"Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 8; Note, \"skip lines 5 through 7, enter the amount from line 4 on line 8, and go to line 9\""
+     ],
+     "cols_pages": [
+      33
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "refund.you_blind": {
+   "subject_sha": "3e11c651127182a223f354ccf3205cbf28679188822d21ccbd9271f17d0c2451",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "4530f5d9588d7df980e7cc0e4dd4e29424fcc35e0802938237d671f19ad841b5",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.024248,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.you_blind.3e11c6511271.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, \"Multiply the number of boxes checked by $1,550\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, \"You are blind\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "refund.you_born": {
+   "subject_sha": "1cfcf9a0274537c14b5878d6d1cfa08de7be03afde7f5027d182c704f524a012",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "d4f2a7aae31d920eb144278dfb7b4b81f42771717161f2520c834b273f59789c",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.024276,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.you_born.1cfcf9a02745.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, \"Multiply the number of boxes checked by $1,550\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, \"You were born before January 2, 1960\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  }
+ }
+}

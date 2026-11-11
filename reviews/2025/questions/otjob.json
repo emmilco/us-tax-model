@@ -1,0 +1,269 @@
+{
+ "form": "otjob",
+ "reviews": {
+  "otjob.flsa": {
+   "subject_sha": "4977e38b667966b683a40e8a750aab032cd0e63866e706f26f86ab917e5b01a7",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer was non-exempt (FLSA-eligible) for part of 2025 and was paid section 7 overtime then, but this employer reclassified them as exempt later in the year (for example after a promotion to a salaried manager role).",
+       "source_text": "i1040gi p. 106: \"Qualified overtime compensation means overtime compensation that is paid to you as required under section 7 of the Fair Labor Standards Act ... you must (among other requirements) be covered by and not exempt from the FLSA (an FLSA-eligible employee).\"",
+       "why": "The question \"Were you an FLSA-eligible employee of this employer\" gives no time frame, so the filer could read it as 'at any time in 2025' (yes) or as their current or year-end status (no). A 'no' sends line 1(b) to zero and drops overtime that was required under section 7 while the filer was eligible.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b515b1db810cd413076e6da016e8ad8d1c96e0b1614ef74b31c1ef3611e736ef",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.054284,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/otjob.flsa.4977e38b6679.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      106,
+      107,
+      108
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 106, Schedule 1-A, Qualified overtime compensation, \"you must (among other requirements) be covered by and not exempt from the FLSA (an FLSA-eligible employee)\" and \"Ask your employer or other service recipients whether you are an FLSA-eligible employee\"",
+      "p. 107, Schedule 1-A, method 5 (\"you can use a reasonable method\"), the adjustment for underestimating, and other overtime rules in section 7 of the FLSA",
+      "p. 108, Qualified Overtime Compensation From More Than One Employer Worksheet, column (b); p. 108, line 14a, including qualified overtime not included in box 1 (for example overtime deferred under a qualified retirement plan)"
+     ],
+     "cols_pages": [
+      106,
+      107
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "otjob.method": {
+   "subject_sha": "831a2dfc9bf56fa69d258fd4a9dd421ce761291b00c46f5a177d174fed9e9f64",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer is paid double time, or time-and-a-half, for hours that are not over 40 in the workweek (state daily overtime, weekend or holiday rates), and the statement's overtime total includes that pay; the filer truthfully picks total_double, premium_double or total_time_and_half.",
+       "source_text": "i1040gi p. 106: 'Extra pay for certain weekends or holidays is generally not qualified overtime compensation if the employee doesn't work more than 40 hours in the workweek'; n-25-69 p. 23 (C)/(D): 'for hours worked in excess of 40 hours in a workweek'",
+       "why": "The options say only 'overtime paid at double time' and 'overtime hours paid at time-and-a-half'. They never limit these to FLSA hours over 40 in a workweek. So the method chosen applies the fraction to pay that is not FLSA-required overtime, and non-qualified premium pay reaches column (b).",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "One employer pays some overtime hours at time-and-a-half and others at double time, and the statement shows a single overtime total or premium line covering both.",
+       "source_text": "i1040gi p. 107, method 4: 'multiply the total amount by the appropriate fraction'; n-25-69 p. 24 (D): 'an appropriately smaller fraction'",
+       "why": "The filer can choose only one option. Reading the statement as 'paid at time-and-a-half' (divide by 3) or as 'double time' (multiply by 1/4 or 1/2) gives different amounts. Nothing tells the filer that a mixed-rate total belongs under 'other'.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A double-time worker's pay stub has a line labeled 'overtime premium' showing the full extra 1x pay above the regular rate.",
+       "source_text": "i1040gi p. 106: 'This \"half\" portion may be described by employers on various forms and statements as \"overtime premium\" or \"FLSA Overtime Premium\"'; p. 107 Example 2: '$10,000 of the overtime pay was the premium amount'",
+       "why": "The 'premium' option's text, 'a statement shows ... the FLSA Overtime Premium', matches the stub's label, so the filer could pick 'premium' (no fraction applied) rather than 'premium_double' (multiply by one-half). That choice doubles the amount.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a497ce69f1b6d72a2f9dd683e6563ce865b767701157c97645d2c5f181008627",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.085584,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/otjob.method.831a2dfc9bf5.1.response.txt"
+    }
+   ],
+   "type": "Enum(overtime_method)",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      106,
+      107
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 107, Schedule 1-A, method 5 (\"you can use a reasonable method\"), the adjustment for underestimating, and other overtime rules in section 7 of the FLSA",
+      "pp. 106-107, Schedule 1-A, \"Determining the amount of qualified overtime compensation for 2025,\" the employer's separate accounting and methods 1 to 5; n-25-69 Section III.B.2, methods (A) to (G)",
+      "pp. 106-107, Schedule 1-A, methods 1 to 4"
+     ],
+     "cols_pages": [
+      106,
+      107
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "n-25-69",
+     "revision": "Notice 2025-69 (no issue date printed; listed on the IRS Working Families Tax Cuts notices page)",
+     "text_sha256": "db4956dc478de4c17765edab63a894790718c0e4ba40b904619278f4f63e2667",
+     "pages": [
+      22,
+      23,
+      24,
+      25
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 22–25, Section III.B.2, methods (E), (F) and (G)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "9afd51bcb4f5c6848ae5924fcb83f65748da9857f0238574cec9e7a0df2d1837"
+    }
+   ]
+  },
+  "otjob.special_rule": {
+   "subject_sha": "5d88d900be671f53b879f9d11c73ce6ac13ebc992a849bd8cb8306118b6a5211",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer works at a hospital or residential care facility that pays overtime on the ordinary 40-hour workweek and has no 8-and-80 arrangement under section 7(j); the filer may answer yes because the question lists '7(j) hospitals and residential care facilities', and the tool refuses a case the general methods cover.",
+       "source_text": "n-25-69 p. 25, method (G): \"If an individual's employer satisfies the requirements under 29 USC § 207 by operation of another subsection of the FLSA other than 29 USC § 207(a) ... the individual must compute the amount of overtime compensation by operation of the different overtime rules ... that apply to the individual\"",
+       "why": "Method (G) applies only when the employer actually meets section 207 through the other subsection. The question asks whether the employer is 'covered by' such a rule and names whole categories of employer, so it brings in employers who could use the rule but pay under the general 7(a) rule.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer works in a non-sworn civilian role (for example, clerical or IT) at a police or fire department, so the employer uses section 7(k) for other staff but pays this filer under the general 40-hour rule; the filer answers yes truthfully and is refused.",
+       "source_text": "n-25-69 p. 25: \"the different overtime rules used in the relevant provision of 29 USC § 207 that apply to the individual\"; question: \"Is this employer covered by an FLSA overtime rule other than the general rule in section 7(a)...?\"",
+       "why": "The notice ties method (G) to the rule that applies to the individual's own overtime. The question asks about the employer as a whole, so a yes can come from rules that apply only to other employees.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer is paid under another section 7 rule that the question does not name, such as a 7(i) commissioned retail exemption or a 7(f) fixed-salary (Belo) plan, and may answer no because only 7(k), 7(o) and 7(j) are listed.",
+       "source_text": "n-25-69 p. 25: \"another subsection of the FLSA other than 29 USC § 207(a) (including but not limited to ...)\"",
+       "why": "Ordinary filers will not know which subsection governs their pay. The listed examples can be read as the full list, and the help text ('Married filing separately and unsupported items are refused with citations') does not explain the question, so readers can give different answers for the same facts.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "1266a2df69a6aa1c360e6dd193bf52fe9e6bf4ce68e1e09a95940c79ac111018",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.057948,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/otjob.special_rule.5d88d900be67.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "n-25-69",
+     "revision": "Notice 2025-69 (no issue date printed; listed on the IRS Working Families Tax Cuts notices page)",
+     "text_sha256": "db4956dc478de4c17765edab63a894790718c0e4ba40b904619278f4f63e2667",
+     "pages": [
+      22,
+      23,
+      24,
+      25
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 22–25, Section III.B.2, method (G)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "9afd51bcb4f5c6848ae5924fcb83f65748da9857f0238574cec9e7a0df2d1837"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      107
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 107, Schedule 1-A, method 5 (\"you can use a reasonable method\"), the adjustment for underestimating, and other overtime rules in section 7 of the FLSA"
+     ],
+     "cols_pages": [
+      107
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "otjob.statement": {
+   "subject_sha": "749953cd784e7df3e4c3259a2f42b22e221af458d73f74ec1c64768cea5eb4e5",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "962df9e28cd20b3ff722dff073570a61add2b8860d6e973710b9df25f639c3e6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.08118,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/otjob.statement.749953cd784e.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      106,
+      107
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 107, Schedule 1-A, method 4 and Example 3; n-25-69 Section III.B.2, method (D), \"the appropriate fraction is one-fourth\"",
+      "pp. 106-107, Schedule 1-A, method 3 and Example 2; n-25-69 Section III.B.2, method (C), \"the appropriate fraction is one-half\"",
+      "pp. 106-107, Schedule 1-A, methods 1 to 4",
+      "pp. 106-107, Schedule 1-A, methods 1 to 4; p. 106, Amounts that are not qualified overtime compensation, \"Extra pay for certain weekends or holidays is generally not qualified overtime compensation if the employee doesn’t work more than 40 hours in the workweek\" and \"Qualified overtime compensation doesn’t include any amount you receive as a qualified tip\"; n-25-69 Section III.B.2, methods (A) to (D), \"receives a statement covering the entire 2025 tax year\"",
+      "pp. 106–107, Schedule 1-A, method 2, \"you can divide the total amount by three (3)\""
+     ],
+     "cols_pages": [
+      106,
+      107
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "n-25-69",
+     "revision": "Notice 2025-69 (no issue date printed; listed on the IRS Working Families Tax Cuts notices page)",
+     "text_sha256": "db4956dc478de4c17765edab63a894790718c0e4ba40b904619278f4f63e2667",
+     "pages": [
+      22,
+      23,
+      24,
+      25
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 22–25, Section III.B.2, method (C), \"if overtime is paid at a rate of two times the regular rate, the appropriate fraction is one-half\"",
+      "pp. 22–25, Section III.B.2, method (D), \"if overtime is paid at a rate of two times the regular rate, the appropriate fraction is one-fourth\"",
+      "pp. 22–25, Section III.B.2, methods (E), (F) and (G)"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "9afd51bcb4f5c6848ae5924fcb83f65748da9857f0238574cec9e7a0df2d1837"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,520 @@
+{
+ "form": "div",
+ "reviews": {
+  "div.basis_reconciled": {
+   "subject_sha": "4dd2137270525004b2b1095c28dd5ee79839c753038982532337eee8a4e0d332",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose box 3 distribution exceeded basis has reduced basis to zero but has not reported the excess as capital gain, and still answers yes.",
+       "source_text": "f1099div p. 5, Box 3: \"To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain.\"",
+       "why": "The question \"have basis reductions been applied to records with no distribution exceeding basis?\" asks only about basis reductions. The line would show box 3 as reconciled even though the excess still has to be reported as capital gain.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer has one box 3 distribution that exceeded basis and others whose basis reductions were applied, and could answer either yes or no.",
+       "source_text": "f1099div p. 5, Box 3: \"the distribution reduces your basis ... Any amount received in excess of your basis is taxable to you as capital gain.\"",
+       "why": "The phrase \"records with no distribution exceeding basis\" has two readings. It could limit the question to records where no distribution exceeded basis, which gives yes. It could also ask the filer to confirm that no distribution exceeded basis, which gives no. \"Records\" is also unclear: it could mean the filer's own basis records or the payer's.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "7eea673bf32b6b5c44086086453c706ad8cb52133a269c4f6be807a1f61f88d7",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.054452,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/div.basis_reconciled.4dd213727052.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099div",
+     "revision": "January 2024 (continuous-use form)",
+     "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [
+      "Instructions for Recipient, boxes 1–16",
+      "p. 5, Instructions for Recipient, \"Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
+    }
+   ]
+  },
+  "div.box10": {
+   "subject_sha": "e3999bd548fe1f2d90054f1964d1a25973790567dfd8ce52ce8d1e1927c9d492",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "e0e3bae7aff844cb4ac8f69601c0396e2441768a151ea13c2dcfa963825786b3",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.045708,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/div.box10.e3999bd548fe.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099div",
+     "revision": "January 2024 (continuous-use form)",
+     "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [
+      "Instructions for Recipient, boxes 1–16",
+      "p. 5, Instructions for Recipient, \"Boxes 9 and 10. Show cash and noncash liquidation distributions\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
+    }
+   ]
+  },
+  "div.box12": {
+   "subject_sha": "d61c0dd2a0bb2f7d9f3c56ef95c713cfb623ec357a9eb9a311af1f699d379baa",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer owns a share of a municipal bond fund account, such as one held jointly with a parent, and its exempt-interest dividends are reported on a Form 1099-DIV issued in the other person's name, so none of the filer's own Forms 1099-DIV show that amount in box 12.",
+       "source_text": "f1099div p. 5, Nominees: \"If this form includes amounts belonging to another person, you are considered a nominee recipient. You must file Form 1099-DIV ... for each of the other owners to show their share of the income\"; Box 12: \"Shows exempt-interest dividends from a mutual fund or other RIC paid to you\"",
+       "why": "Line 2a needs the exempt-interest dividends that belong to the filer. The question asks only for the box 12 total of 'all your Forms 1099-DIV', so the filer's share reported in someone else's name, or received with no form at all, is left out. The gate asks about both cases, but this amount question does not.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer's Form 1099-DIV box 12 includes exempt-interest dividends that belong to another person (not the spouse), for whom the filer is a nominee.",
+       "source_text": "Question: \"Exempt-interest dividends, box 12 (total of all your Forms 1099-DIV ...)\"; f1099div p. 5: \"If this form includes amounts belonging to another person, you are considered a nominee recipient ... A spouse is not required to file a nominee return to show amounts owned by the other spouse.\"",
+       "why": "A truthful answer copies the full box 12 total, including the other owner's share. That share is the other person's income and must not be on the filer's line 2a. The question gives no instruction to subtract it, and no refusal covers this case.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c4487856be1390863a51a6cd2da6c316a4ff09461f22dbb750e0d9c2b62e3184",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.0599,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/div.box12.d61c0dd2a0bb.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099div",
+     "revision": "January 2024 (continuous-use form)",
+     "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [
+      "Instructions for Recipient, Box 12 (\"Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year. See the Instructions for Form 1040 for where to report\") and Box 13 (\"This amount is included in box 12\")",
+      "p. 5, Instructions for Recipient, \"Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
+    }
+   ]
+  },
+  "div.box13": {
+   "subject_sha": "971778cb1e602a4deaf5d108383a6e59bfa798b11763134c22fac7fa0eb12b92",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "b9bd91a3bca39d23e40d34c078a26b0765e4c6aa3381c89d7064d9491764a608",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.045272,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/div.box13.971778cb1e60.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099div",
+     "revision": "January 2024 (continuous-use form)",
+     "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [
+      "Instructions for Recipient, boxes 1–16",
+      "p. 5, Instructions for Recipient, \"Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
+    }
+   ]
+  },
+  "div.box2b": {
+   "subject_sha": "898fc2a446e09b18d3ef1cf15c33a744ef676e2453d1208fba80ccb63ade3d86",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "d7bfa0e72d84e61a71bcb0cb391aea3b135d0a8b8c36c24cec214fc706335c82",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.045840000000000006,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/div.box2b.898fc2a446e0.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099div",
+     "revision": "January 2024 (continuous-use form)",
+     "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [
+      "Instructions for Recipient, boxes 1–16",
+      "p. 5, Instructions for Recipient, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain from certain depreciable real property\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
+    }
+   ]
+  },
+  "div.box2c": {
+   "subject_sha": "11a16dda695ba639eadde34eb988c7d6b79a7cbf41956070a8fa943fcc9fdfa3",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "73df820586f18ef301edfbae865b0a1e29e0c6ba0ba4389e6414bc736c518a99",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.037932,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/div.box2c.11a16dda695b.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099div",
+     "revision": "January 2024 (continuous-use form)",
+     "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [
+      "Instructions for Recipient, boxes 1–16",
+      "p. 5, Instructions for Recipient, \"Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
+    }
+   ]
+  },
+  "div.box2d": {
+   "subject_sha": "884a3016bbecd8af10a529ceb9a5a75bea99a5f7db73a5ea61ba547da606d0b8",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer is a nominee recipient whose Form 1099-DIV box 2d includes collectibles gain belonging to another owner (not a spouse), and enters the full box 2d amount as the help instructs.",
+       "source_text": "Question help: \"Enter the amounts of all your and your spouse's Forms 1099-DIV combined.\" f1099div p. 5, Instructions for Recipient: \"Nominees. If this form includes amounts belonging to another person, you are considered a nominee recipient. You must file Form 1099-DIV ... for each of the other owners to show their share of the income\"",
+       "why": "The help asks for the full box 2d amount, so a nominee's answer includes another owner's share of collectibles gain. That share flows into 28% Rate Gain Worksheet line 4, but the worksheet should count only the filer's and spouse's own gain.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "25308ce26a32d465bb5c582028bd32f7cb28221e4fdee3c6663473711ec35741",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.048991999999999994,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/div.box2d.884a3016bbec.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099div",
+     "revision": "January 2024 (continuous-use form)",
+     "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [
+      "Instructions for Recipient, boxes 1–16",
+      "p. 5, Instructions for Recipient, \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
+    }
+   ]
+  },
+  "div.box2e": {
+   "subject_sha": "79a57de97f57e97bcf4112df9ba27f7b94c21228ea26969f44fc6368c39331c5",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "ccb5b826177e54ded8cfa66a1bb30f43e99c29b6e27b4e73ca2074ab90e9bf50",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.035928,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/div.box2e.79a57de97f57.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099div",
+     "revision": "January 2024 (continuous-use form)",
+     "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [
+      "Instructions for Recipient, boxes 1–16",
+      "p. 5, Instructions for Recipient, \"Box 2e. Shows the portion of the amount in box 1a that is section 897 gain attributable to disposition of U.S. real property interests (USRPI)\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
+    }
+   ]
+  },
+  "div.box2f": {
+   "subject_sha": "64f572142f844668ced2c121fa911fa017a5ea4383bede7b18f9c25b36617ed5",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "ec218f4dda344cd46f0521693843e66f03d5c2bb42aba681161173f5e4385f30",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.037020000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/div.box2f.64f572142f84.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099div",
+     "revision": "January 2024 (continuous-use form)",
+     "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [
+      "Instructions for Recipient, boxes 1–16",
+      "p. 5, Instructions for Recipient, \"Box 2f. Shows the portion of the amount in box 2a that is section 897 gain attributable to disposition of USRPI\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
+    }
+   ]
+  },
+  "div.box3": {
+   "subject_sha": "70e333e7b5d3866459c6350c67e4e268891f4b0885b2aa233502181b0281a6d6",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer receives a return-of-capital distribution with no Form 1099-DIV (for example a foreign company distribution or one paid on an account held in someone else's name) or receives no form at all, and answers zero because the help says to enter the amounts from 'your and your spouse's Forms 1099-DIV'.",
+       "source_text": "f1099div p. 5: 'Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain.'",
+       "why": "The gate counts nondividend distributions 'with or without a Form 1099-DIV' and owned amounts paid in someone else's name. The help limits the amount to the filer's own Forms 1099-DIV, so a return of capital the filer actually received is left out of the line.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer is the nominee recipient on a Form 1099-DIV whose box 3 includes another owner's share, and enters the full box 3 amount as the help directs.",
+       "source_text": "f1099div p. 5, Nominees: 'If this form includes amounts belonging to another person, you are considered a nominee recipient. You must file Form 1099-DIV ... for each of the other owners to show their share'",
+       "why": "The help says to combine the amounts on the filer's forms but does not say to subtract amounts belonging to other people. Another owner's return of capital would then be treated as reducing the filer's basis or as the filer's capital gain.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f7a1c64d427c514af3e626de407d38a6e7c471f7bf48eaeb13b3f7b2c7dbc7f2",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.062892,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/div.box3.70e333e7b5d3.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099div",
+     "revision": "January 2024 (continuous-use form)",
+     "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [
+      "Instructions for Recipient, boxes 1–16",
+      "p. 5, Instructions for Recipient, \"Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
+    }
+   ]
+  },
+  "div.box9": {
+   "subject_sha": "fd518926fe101fce106f2b487fd8d0bdc6ee38f04069af4fb84510c34c91d658",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "cdbe3491b175965029cd6bb01c63cddf0d06209a06b02790cc76f7c6940e01fd",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.040852,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/div.box9.fd518926fe10.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1099div",
+     "revision": "January 2024 (continuous-use form)",
+     "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [
+      "Instructions for Recipient, boxes 1–16",
+      "p. 5, Instructions for Recipient, \"Boxes 9 and 10. Show cash and noncash liquidation distributions\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
+    }
+   ]
+  }
+ }
+}

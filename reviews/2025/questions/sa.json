@@ -1,0 +1,639 @@
+{
+ "form": "sa",
+ "reviews": {
+  "sa.elect_itemize": {
+   "subject_sha": "945f9d5367eeb0601366d57f8fd9623614378239d23b559ba82ba2da3132d885",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "e1221168204a9e57cc9225cf0048eb990eff95c9bd1d97840b50b49bf15ab789",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.03062,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sa.elect_itemize.945f9d5367ee.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sa",
+     "revision": "2025; created 2025-11-20",
+     "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule A (2025), lines 1–18",
+      "p. 1, Total Itemized Deductions, line 18, \"If you elect to itemize deductions even though they are less than your standard deduction, check this box\"; , Line 12e Standard Deduction or Itemized Deductions, \"In most cases, your federal income tax will be less if you take the larger of your standard deduction or itemized deductions\", \"If you checked the box on line 12b, your standard deduction is zero\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      34
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "sa.gambling_losses": {
+   "subject_sha": "26dc09b1f676e94abf8dbd8b0f77760c55230a8917b905ff69086f0b3f720595",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who is in the trade or business of gambling would truthfully enter all gambling losses, including those already deducted on Schedule C, and line 16 would deduct them again on Schedule A.",
+       "source_text": "p525 p. 33: \"If you're in the trade or business of gambling, use Schedule C (Form 1040). For tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings.\"; question: \"Your gambling losses during 2025 ... in full\"",
+       "why": "Neither the question nor its help excludes professional gambling losses that are reported on Schedule C. Those losses would be counted twice, once on Schedule C and again on Schedule A line 16.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "9e3c7f5f601b6f97891ca2aba9ab0dc6ca850b5d9aacddcc15ecc4092add722f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.036844,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sa.gambling_losses.26dc09b1f676.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Other Itemized Deductions, \"Gambling losses (gambling losses include, but aren't limited to, the cost of nonwinning bingo, lottery, and raffle tickets)\"",
+      "p. 11, Other Itemized Deductions, \"but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b\"; , Gambling winnings, \"If you itemize your deductions on Schedule A (Form 1040), you can deduct gambling losses you had during the year, but only up to the amount of your winnings\""
+     ],
+     "cols_pages": [
+      11
+     ],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      33
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      33
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "sa.line1": {
+   "subject_sha": "5a1489182101a33d11a9c9efc664f394fd074f518eb38ad2c31aa1fc51561874",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer paid medical bills for a parent they supported but could not claim as a dependent only because the filer (or the filer's spouse, on a joint return) can be claimed as a dependent on someone else's 2025 return; the question's list of people does not include that parent, so the filer leaves those bills out.",
+       "source_text": "i1040sca p. 2, Whose medical and dental expenses can you include: \"Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.\"",
+       "why": "The question's list stops at the gross-income and joint-return exceptions and leaves out this fifth category, so expenses that line 1 needs are not included.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "072933e3ba9ab9e473216501b2bc4a0f911345ff165280aee2c476a381c17504",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.082048,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sa.line1.5a1489182101.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Medical and Dental Expenses, \"If you received a distribution from a health savings account or a medical savings account in 2025, see Pub. 969 to figure your deduction\", \"Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return\", \"You can't include insurance premiums paid by making a pretax reduction to your employee compensation\", \"If you are a retired public safety officer, you can't include any premiums you paid to the extent they were paid for with a tax-free distribution from your retirement plan\", \"If you paid someone to do both nursing and housework, you can deduct only the cost of the nursing help\", \"Hospital care (including meals and lodging), clinic costs, and lab fees\", \"Lodging expenses (but not meals) while away from home to receive medical care\"; p. 2, \"Don't deduct more than $50 a night for each person who meets the requirements in Pub. 502 under Lodging\", \"Limit on long-term care premiums you can include. The amount you can include for qualified long-term care insurance contracts (as defined in Pub. 502) depends on the age at the end of 2025 of the person for whom the premiums were paid\", Line 1 Medical and Dental Expenses, \"Enter the total of your medical and dental expenses after you reduce these expenses by any payments received from insurance or other sources\", \"If advance payments of the premium tax credit were made or you think you may be eligible to claim a premium tax credit, fill out Form 8962 before filling out Schedule A, line 1\", \"self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the amount on line 17\", \"You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them\", \"Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents\", \"Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return\", \"You can't deduct any premiums attributable to this individual unless this individual is a person described under Whose medical and dental expenses can you include, earlier\", \"However, if you had family coverage when you added this individual to your policy and your premiums didn't increase, you can enter on line 1 the full amount of your medical and dental insurance premiums\", \"If you received a reimbursement in 2025 for prior year medical or dental expenses, don't reduce your 2025 expenses by this amount\", \"don’t include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2\", \"Also, don't include any other medical and dental expenses paid by the plan unless the amount paid is included in box 1 of your Form(s) W-2\"; , Premium Tax Credit, \"You can’t include in medical expenses the amount of health insurance premiums paid by or through the premium tax credit\", \"You also can’t include in medical expenses any amount of advance payments of the premium tax credit made that you did not have to pay back\", \"However, any amount of advance payments of the premium tax credit that you did have to pay back can be included in medical expenses\", \"You are treated as paying $5,100 ($8,700 less the allowed premium tax credit of $3,600)\"; , \"You cannot deduct the portion of your health insurance premium on your tax return that is paid for by the PTC or APTC (after you determine how much of any excess APTC you must repay)\"; , \"You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your HSA\"; , \"You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your Archer MSA\""
+     ],
+     "cols_pages": [
+      1,
+      2
+     ],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    },
+    {
+     "doc": "f1040sa",
+     "revision": "2025; created 2025-11-20",
+     "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Medical and Dental Expenses, line 4, \"Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+    },
+    {
+     "doc": "p502",
+     "revision": null,
+     "text_sha256": "a85451b60db3f8c4d2be78bf08975f2ba8bd5c56093a86b24e5ae4ed5051d40b",
+     "pages": [
+      12
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      12
+     ],
+     "cols_sha256": "71bbda10a232ac104b7a59173c2901b409cd010f035f28e9bb615cab6db21c08"
+    },
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      2
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "p969",
+     "revision": "2025",
+     "text_sha256": "0491c6445304fc8c1b7ae3097b8a3ea30260bb35f706da40900d06416502b9c8",
+     "pages": [
+      9,
+      13
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      9,
+      13
+     ],
+     "cols_sha256": "f643ce7086d88eabd1d8006ab0b5609f775af36b9b8a5b74637e1f366d8c29c3"
+    }
+   ]
+  },
+  "sa.line11": {
+   "subject_sha": "d91d6d85887e936619c19b22dd424b5439347c12349077de585d9a491ac3cbd2",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "A filer whose cash gifts exceed the AGI-based limit (e.g., more than 30% or 60% of Form 1040 line 11b) enters the full pre-limit total, but line 11 needs only the deductible, limited amount.",
+       "source_text": "i1040sca p. 10, Line 11: \"Enter on line 11 the total value of gifts you made in cash or by check ... unless a limit on deducting gifts applies to you\"; \"Only enter on line 11 the deductible value of gifts you made in cash or by check.\" Question: \"Deductible cash/check charitable gifts before income limits\"",
+       "why": "Line 11 takes the amount after the income limits. The question explicitly asks for the amount before them, and nothing downstream applies the limit before the answer is used as line 11.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who paid a charity and received a state or local tax credit, or who paid nondeductible items such as political contributions, raffle tickets, tuition, athletic-seating rights, club dues, or gifts to individuals, includes them because the help says only 'Charitable gifts by cash or check ... after subtracting benefits you received.'",
+       "source_text": "i1040sca p. 10, Amounts You Can't Deduct: \"Certain contributions to charitable organizations to the extent that you receive a state or local tax credit in return\"; \"An amount paid to or for the benefit of a college or university in exchange for the right to purchase tickets to an athletic event\"; \"Political contributions\"; \"Cost of raffle, bingo, or lottery tickets\"; \"Cost of tuition\"",
+       "why": "The help names only the subtraction for benefits received. It does not exclude tax-credit-reduced amounts or the listed nondeductible payments, so a truthful answer can include amounts line 11 must not have.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who made cash gifts with no bank record or written charity record, or a gift of $250 or more with no contemporaneous written acknowledgment, includes them because the help never mentions substantiation.",
+       "source_text": "i1040sca p. 10, Recordkeeping: \"For any contribution made in cash, regardless of the amount, you must maintain ... a bank record ... or a written record from the charity\"; \"For contributions of $250 or more, you must also have a contemporaneous written acknowledgment\"",
+       "why": "The label says 'after ... required substantiation,' but the help shown does not tell the filer to leave out unsubstantiated gifts. A filer reading the help would include them.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer includes travel costs, such as meals and lodging away from home while volunteering, on a trip with a significant element of personal pleasure, because the help says to include 'out-of-pocket costs of volunteer work.'",
+       "source_text": "i1040sca p. 10: \"Travel expenses (including meals and lodging) while away from home performing donated services, unless there was no significant element of personal pleasure, recreation, or vacation in the travel.\"",
+       "why": "The help invites all out-of-pocket volunteer costs without this exclusion.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer who gave by credit/debit card or payroll deduction may read 'by cash or check' as excluding those gifts and report them elsewhere or omit them.",
+       "source_text": "Question help: \"Charitable gifts by cash or check in 2025\"; gate: \"money given to a charity by cash, check, card or payroll deduction\"; i1040sca p. 10: \"a bank record (such as a canceled check or credit card statement)\"; \"If you made contributions through payroll deduction\"",
+       "why": "Line 11 covers card and payroll-deduction gifts. The literal 'cash or check' wording can reasonably be read either way, which changes the amount entered.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "14429e5b330914f662a24bc660b00a009af8fe2b9041ca4622c7f4394531ab50",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.072288,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sa.line11.d91d6d85887e.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sa",
+     "revision": "2025; created 2025-11-20",
+     "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule A (2025), lines 1–18",
+      "p. 1, Gifts to Charity, line 11, \"Gifts by cash or check\"; , Line 11, \"Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+    },
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      10
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    }
+   ]
+  },
+  "sa.line5a": {
+   "subject_sha": "3ad21baefaed3eb961cca8198ad1ae218caffb3ba8c623be627df91121dafced",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "6d245dfb3ad1fccefdba3a26a3c847114fa18fe76a5b0fe3dd116869db799867",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.050828,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sa.line5a.3ad21baefaed.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      3,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, U.S. territory taxes, \"Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c\", \"However, don't include any U.S. territory taxes you paid that are allocable to excluded income\", \"You may want to take a credit for U.S. territory tax instead of a deduction\", Line 5a, \"don't include on line 5a any withheld taxes you deducted on other forms, such as Schedule C, E, or F\", \"State and local estimated tax payments made during 2025, including any part of a prior year refund that you chose to have credited to your 2025 state or local income taxes\", \"State and local income taxes paid in 2025 for a prior year, such as taxes paid with your 2024 state or local income tax return. Don't include penalties or interest.\", \"Mandatory contributions you made to the California, New Jersey, or New York Nonoccupational Disability Benefit Fund\", \"Mandatory contributions to the Alaska, California, New Jersey, or Pennsylvania state unemployment fund\", \"Mandatory contributions to state family leave programs\", \"Refund of or credit for prior year state and local income taxes you actually received in 2025\", Safe harbor for certain charitable contributions made in exchange for a state or local tax credit, \"If you meet these conditions and to the extent you apply the state or local tax credit to this or a prior year's state or local tax liability, you may include this amount on line 5a, 5b, or 5c, whichever is appropriate\"; p. 7, Line 6, \"Don't include taxes you paid to a U.S. territory on this line; instead, include U.S. territory taxes on the appropriate state and local tax line\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    },
+    {
+     "doc": "f1040sa",
+     "revision": "2025; created 2025-11-20",
+     "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Taxes You Paid, line 5d, \"d Add lines 5a through 5c\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+    }
+   ]
+  },
+  "sa.line5b": {
+   "subject_sha": "fb08adf9a49eb24fbfc483073f9b3e8899dbdc26690737088a3a5d8eb21fac6c",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer made a cash gift to a section 170(c) charity, received a state or local tax credit for it, and applied that credit against their 2025 real estate tax bill, so less real estate tax was paid out of pocket.",
+       "source_text": "i1040sca p. 3: \"If you meet these conditions and to the extent you apply the state or local tax credit to this or a prior year's state or local tax liability, you may include this amount on line 5a, 5b, or 5c, whichever is appropriate.\"",
+       "why": "The question and its help ask only for real estate taxes the filer paid and never mention this safe harbor. A filer answering truthfully would leave out the part of the tax satisfied by the credit, which the text allows on line 5b and line 5d needs.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "6bc60fea770f50720ac383aaff526aa6d90b718e2726722ce20fa86e14c79b77",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.051212,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sa.line5b.fb08adf9a49e.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      3,
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, U.S. territory taxes, \"Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c\", \"However, don't include any U.S. territory taxes you paid that are allocable to excluded income\"; p. 6, Line 5b, \"Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025\", \"State or local law determines whether and when a property tax is assessed, which is generally when the taxpayer becomes liable for the property tax imposed\", \"Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business, but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes\", \"Foreign taxes you paid on real estate\", \"Itemized charges for services to specific property or persons\", \"Charges for improvements that tend to increase the value of your property\", \"However, a charge is deductible if it is used only to maintain an existing public facility in service\", \"If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025\", \"any real estate tax charged to the buyer should be shown on your settlement statement and in box 6 of any Form 1099-S you received\", \"This amount is considered a refund of real estate taxes\", \"If you received a refund or rebate in 2025 of real estate taxes you paid in 2025, reduce your deduction by the amount of the refund or rebate\", \"If you received a refund or rebate in 2025 of real estate taxes you paid in an earlier year, don't reduce your deduction by this amount\""
+     ],
+     "cols_pages": [
+      3,
+      6
+     ],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    },
+    {
+     "doc": "f1040sa",
+     "revision": "2025; created 2025-11-20",
+     "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Taxes You Paid, line 5d, \"d Add lines 5a through 5c\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+    }
+   ]
+  },
+  "sa.line5c": {
+   "subject_sha": "d2b5c96a13d89c6942a9c5c733f2933902ec3f347372ee8eff465d86bc9631c8",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer made a cash gift to a section 170(c) charity, received a state or local tax credit in return, and applied that credit against a value-based yearly personal property tax liability. The disallowed charitable amount is a payment that belongs on line 5c.",
+       "source_text": "i1040sca p. 3: \"If you meet these conditions and to the extent you apply the state or local tax credit to this or a prior year's state or local tax liability, you may include this amount on line 5a, 5b, or 5c, whichever is appropriate.\"",
+       "why": "The question and its help ask only for personal property taxes the filer paid. A filer answering truthfully would leave out the charitable-contribution amount that the safe harbor treats as a payment of personal property tax, so line 5d would be too low.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "f3d2ca3d90bae9cff83bd79fbc54c64710a652fbb4dc8411f702dfc090ab9555",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.057168000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sa.line5c.d2b5c96a13d8.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      3,
+      6,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, U.S. territory taxes, \"Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c\", \"However, don't include any U.S. territory taxes you paid that are allocable to excluded income\"; p. 6, Line 5c, \"Enter on line 5c the state and local personal property taxes you paid, but only if the taxes were based on value alone and were imposed on a yearly basis\", \"You can deduct only the part of the fee that was based on the car's value\"; p. 7, \"Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025\""
+     ],
+     "cols_pages": [
+      3,
+      6
+     ],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    },
+    {
+     "doc": "f1040sa",
+     "revision": "2025; created 2025-11-20",
+     "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Taxes You Paid, line 5d, \"d Add lines 5a through 5c\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+    }
+   ]
+  },
+  "sa.line8a": {
+   "subject_sha": "a601bc40b1a1dfd8ca5f79121cf2c69687abb396bf773a3e48761abed39a567d",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose Form 1098 mortgage interest is subject to the debt or use limits (for example, mortgage debt above the limit, or a loan not used to buy, build, or improve the home) must still enter the limited, deductible portion on line 8a, but the question only asks for interest 'when no debt or use limit applies'.",
+       "source_text": "f1040sa 2025 p.1, line 8a: \"Home mortgage interest and points reported to you on Form 1098. See instructions if limited\"; line 8: \"If you didn't use all of your home mortgage loan(s) to buy, build, or improve your home, see instructions and check this box\"",
+       "why": "Line 8a covers limited filers too; they enter the deductible amount figured under the instructions. The question excludes them, so a truthful limited filer gives zero or nothing, and line 8e loses their deductible Form 1098 interest. No gate or refusal is listed that sends these filers elsewhere.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose interest is limited reads 'after confirming the debt/use limits do not apply' together with 'Zero if none'. One reading is to enter zero. Another is to enter the full Form 1098 amount anyway. A third is to enter the limited amount.",
+       "source_text": "Question help: \"Home mortgage interest and points reported to you on Form 1098, when no debt or use limit applies. Zero if none.\" vs. f1040sa 2025 p.1, line 8a: \"See instructions if limited\"",
+       "why": "The wording does not say what to enter when a limit does apply. Reasonable filers would give different values: zero, the full amount, or the limited amount.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "044427e324347bf5d456fa906b04ccde0409637ec3b4bbc853a4ccd293f1ab54",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.033348,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sa.line8a.a601bc40b1a1.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sa",
+     "revision": "2025; created 2025-11-20",
+     "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule A (2025), lines 1–18",
+      "p. 1, Interest You Paid, line 8e, \"e Add lines 8a through 8c\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+    }
+   ]
+  },
+  "sa.spouse_extra": {
+   "subject_sha": "3c96b74638d4c8c22e02b426a3f7a3b91390717fe7a3e618e55352ce4179fe7e",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A married-filing-separately filer's spouse was born in 1960, had no income, isn't filing and can't be claimed as a dependent, but died in 2025 before reaching age 65; the filer may answer yes, but the line must not allow the age box.",
+       "source_text": "i1040gi 2025 p. 33, Line 12d: \"If your spouse was born before January 2, 1961, but died in 2025 before reaching age 65, don't check the box that says 'Spouse was born before January 2, 1961.'\"",
+       "why": "The question asks \"claiming age or blindness boxes for your spouse\" but does not give the qualifying test or the death rule. A filer going by year of birth would answer yes when the spouse does not qualify.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose spouse turned 65 in 2026, or whose spouse has impaired vision but was not legally blind at the end of 2025, cannot tell from the wording or help whether the spouse qualifies for an 'age or blindness box'.",
+       "source_text": "i1040gi 2025 p. 33, Line 12d: \"your spouse was born before January 2, 1961, or was blind at the end of 2025\"",
+       "why": "The question and help say only \"age or blindness boxes\". They omit the born-before-January 2, 1961 date and the end-of-2025 blindness test, so filers may apply different age or vision standards and give different answers.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "74753ad3ebb66253a3ad2b55a03f324b440faae11a0c81143d52f214126f6862",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.044927999999999996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sa.spouse_extra.3c96b74638d4.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sa",
+     "revision": "2025; created 2025-11-20",
+     "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule A (2025), lines 1–18"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      33
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 33, Line 12d, \"If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return\""
+     ],
+     "cols_pages": [
+      33
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "sa.spouse_itemizes": {
+   "subject_sha": "2f6c7c3a425f57813a8e36976c8fd1c02e3a136227cfcf33e9c9ce32ae62d807",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "acb18ae4ab4b66c037a8481bda5a01ab5124f6d96125518ee126c1c1f892e91e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.035396000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sa.spouse_itemizes.2f6c7c3a425f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sa",
+     "revision": "2025; created 2025-11-20",
+     "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule A (2025), lines 1–18"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      34
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 34, Line 12e, Exception 2"
+     ],
+     "cols_pages": [
+      34
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  }
+ }
+}

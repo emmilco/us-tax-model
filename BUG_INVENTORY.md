@@ -6730,3 +6730,612 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** the completeness ruling unruled:f4562#1.3 still classed the point a real gap under BUG-0402 after the fix landed, so BUG-0402 listed an item that was already resolved.
 - **Disposition:** fixed: the ruling is now out of scope (gate asset.screened). BUG-0402's other items are unchanged.
 - **Tags:** completeness; ruling correction; fixed
+
+## BUG-0498 — The Form 5695 window questions (lines 20a(i) to (iv)) admit windows that meet only the basic Energy Star requirements
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, f5695.line20a_i#1 (finding 1), 2026-11-10.
+- **Source:** fs-2025-01, Energy Efficient Home Improvement Credit - Energy efficiency requirements, A1: "Exterior windows and skylights: must meet Energy Star most efficient certification requirements."; i5695 p. 6, Line 20b, "all other exterior windows and skylights that meet Energy Star most efficient certification requirements". (i5695 p. 6, Line 20a itself says only "meet Energy Star certification requirements".)
+- **Symptom:** `f5695.line20a_i` to `f5695.line20a_iv` ask for the cost of a window or skylight "that meets the Energy Star certification requirements". A filer whose window carries the ordinary Energy Star label but not the Most Efficient designation enters its cost, which flows through line 20c into the 30% credit (up to the $600 window limit). `f5695.qmid_windows` asks only for the manufacturer's four-character QMID, which such a window can carry, so it does not screen the case.
+- **Where:** `forms/2025/f5695.yaml`, `f5695.line20a_i`, `f5695.line20a_ii`, `f5695.line20a_iii`, `f5695.line20a_iv` (read by `f5695.line20c`).
+- **Fix sketch:** ask for windows and skylights that meet the Energy Star Most Efficient certification requirements, citing fs-2025-01 A1 beside i5695 line 20a; line 20b already says so.
+- **Status:** open
+- **Tags:** question-incomplete; caught-by-question-review; open
+
+## BUG-0499 — The code-screen question does not catch a code 2 exception that applies to none of the distribution
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, retirement.code_screen#1 (findings 0 to 2), 2026-11-10.
+- **Source:** i5329 p. 1, Who Must File, "but box 7 of your Form 1099-R doesn't indicate an exception or the exception doesn't apply to the entire distribution"; i5329 p. 5, Line 2, exception 13, "Distributions from a section 457 plan, which aren't from a rollover from a qualified retirement plan."
+- **Symptom:** `retirement.code_screen` asks whether "the exception that code 2 shows covers only part of it". When the code 2 exception applies to none of the distribution (for example, the payer coded separation from service at 55 but the filer left service in an earlier year), a literal reader answers No, and the tool treats the distribution as excepted: `retirement.early` is true only for codes 1 and S, so no additional 10% tax is computed (value-changing). Two lows on the same question: the clause "its code is wrong because you were under age 59½ when you received it (code 7)" treats age alone as proof that code 7 is wrong, so a correctly coded 7 distribution under 59½ (a governmental 457(b) distribution, exception 13) draws Yes and is refused; and the clause can be read either as "yes whenever I was under 59½" or "yes only if the code is wrong". Both lows only refuse (`retirement.screen_refused`).
+- **Where:** `forms/2025/retirement.yaml`, `retirement.code_screen` (read by `retirement.screen_refused`).
+- **Fix sketch:** ask whether the code 2 exception "does not apply to all of it" (covering none and part); reword the code 7 clause to ask whether code 7 is wrong (an early distribution with no exception), not whether the filer was under 59½.
+- **Status:** open
+- **Tags:** question-incomplete; caught-by-question-review; open
+
+## BUG-0500 — The 80% meals question counts only the filer's own DOT duty periods, not employees'
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, sc.meals_80#1 (finding 0), 2026-11-10.
+- **Source:** i1040sc p. 10, Line 24b, "for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80% for business meals consumed during or incident to any period of duty for which those limits are in effect".
+- **Symptom:** `sc.meals_80` asks for meals consumed during a period of duty "for which you were subject to" the hours of service limits. A sole proprietor whose employee drivers are subject to the limits, and whose business reimburses their duty meals under an accountable plan (not as wages), leaves those meals out or enters them at 50%, so line 24b is understated. `sc.meals_50` also names only meals "while you travel away from home", so employees' reimbursed travel meals have no clear question at all; check this when fixing.
+- **Where:** `forms/2025/sc.yaml`, `sc.meals_80` (read by `sc.meals_80_ded`, line 24b); `sc.meals_50` for the employee-travel gap.
+- **Fix sketch:** ask for meals consumed by you or your employees during or incident to a period of duty under the DOT hours of service limits; say where employees' reimbursed travel meals go.
+- **Status:** open
+- **Tags:** question-incomplete; caught-by-question-review; open
+
+## BUG-0501 — The New York 414(h) question asks only about the filer, not the spouse on a joint return
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, ny_it201.ask.414h#1 (findings 0 and 1), 2026-11-10.
+- **Source:** IT-201-I p. 8, Line 21, "enter the amount of 414(h) retirement contributions, if shown on any federal Form W-2, Wage and tax statement if you are: – a member of the New York State and Local Retirement Systems ...".
+- **Symptom:** `ny_it201.ask.414h` asks "Are you a public employee of New York State or its local governments with 414(h) retirement contributions shown on a Form W-2?". On a joint return where only the spouse is a member of a listed system, the filer answers No; `ny_it201.line21` is then zero (the tool computes no addition; Yes refuses through `ny_it201.gate.line21`), so New York AGI omits the addition (value-changing). A low on the same question: membership in one of the listed retirement systems appears only in the help, so a public employee who is not a member answers Yes and is refused (safe).
+- **Where:** `forms/ny/2025/ny_it201.yaml`, `ny_it201.ask.414h` (read by `ny_it201.gate.line21`, the refusal on `ny_it201.line21`).
+- **Fix sketch:** ask whether you or your spouse (on a joint return) is a member of one of the listed systems with 414(h) contributions on a Form W-2.
+- **Status:** open
+- **Tags:** question-incomplete; caught-by-question-review; ny; open
+
+## BUG-0502 — The capital loss carryover questions name only a 2024 Form 1040 or 1040-SR, not a 1040-NR (low)
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, clcw.prior_11#1 (finding 0), 2026-11-10.
+- **Source:** i1040sd p. 10, Capital Loss Carryover Worksheet, line 1, "Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15".
+- **Symptom:** `clcw.prior_11` (and `clcw.prior_14`, same wording) ask for a line of the 2024 Form 1040 or 1040-SR; its help covers a filer who did not file. A filer who filed a 2024 Form 1040-NR is not told to use it. Rare, and an honest filer would likely use the 1040-NR's matching lines; recorded for the form's next wording change.
+- **Where:** `forms/2025/clcw.yaml`, `clcw.prior_11`, `clcw.prior_14`; interview help.
+- **Fix sketch:** name the 1040-NR beside the 1040 and 1040-SR, with its line numbers.
+- **Status:** open
+- **Tags:** wording; low; caught-by-question-review; open
+
+## BUG-0503 — Education credit question wording: fees required for attendance, an exclusion list given by reference, and 'at a college' in the gate (lows)
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, dependent.edu_inst#1 (finding 0), person.edu_mat#1 (finding 0), f8863.paid#1 (finding 0), 2026-11-10.
+- **Source:** i8863 p. 4, Qualified Education Expenses, "tuition and fees required for the student's enrollment or attendance" and "nonacademic fees ... only if the fee must be paid to the institution as a condition of enrollment or attendance"; i8863 p. 2, Table 1, course materials "whether or not the materials are bought at the educational institution".
+- **Symptom:** Three wording lows, recorded for the next change of these questions. (1) `dependent.edu_inst` and `person.edu_inst` list "required enrollment fees" without "or attendance" and do not say that mandatory nonacademic fees paid to the institution count; most filers would include a fee every enrolled student must pay. (2) `person.edu_mat` and `dependent.edu_mat` apply "the same exclusions as for the expenses paid to the institution" without restating them; the list is in the preceding question. (3) `f8863.paid` asks about expenses paid "at a college, university, vocational school or other postsecondary school (for tuition, required fees or course materials)", which can be read as paid to the school; the parenthetical names course materials, so few filers would answer No.
+- **Where:** `forms/2025/dependent.yaml` and `forms/2025/person.yaml` (`edu_inst`, `edu_mat`); `forms/2025/f8863.yaml` (`f8863.paid`).
+- **Fix sketch:** add "or attendance, including mandatory student activity, athletic or lab fees paid to the institution"; restate the exclusions in edu_mat; say "for a student at" in f8863.paid and that materials bought elsewhere count.
+- **Status:** open
+- **Tags:** wording; low; caught-by-question-review; open
+
+## BUG-0504 — The year-of-marriage question omits Table 4's other conditions, so it refuses some ineligible filers (low)
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, f8962.married_in_2025#1 (findings 0 to 2), 2026-11-10.
+- **Source:** i8962 p. 13, Table 4, questions 1 ("Were you and your spouse each unmarried on January 1, 2025?") and 5 ("Was APTC paid for anyone in your tax family during 2025?"), and "eligible to elect ... if excess APTC was paid".
+- **Symptom:** `f8962.married_in_2025` asks only about a 2025 marriage and pre-marriage enrollment. Joint filers with no APTC paid, with no excess APTC, or one of whom was married to someone else on January 1 answer Yes; `f8962.marriage` then refuses line 24 (Form 8962 Part V) although line 9 is No for them. Over-refusal only; no value is wrong.
+- **Where:** `forms/2025/f8962.yaml`, `f8962.married_in_2025` (read by `f8962.marriage` and the refusal on `f8962.line24`).
+- **Fix sketch:** add Table 4 questions 1 and 5 (and excess APTC) to the question, or ask them separately before refusing.
+- **Status:** open
+- **Tags:** wording; refusal; low; caught-by-question-review; open
+
+## BUG-0505 — The all-passive question's help omits high-taxed income and export financing interest (low)
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, ftc.all_passive#1 (finding 0), 2026-11-10.
+- **Source:** i1116 p. 1, election, "However, for this purpose, passive income also includes (a) income subject to the special rule for high-taxed income, described later; and (b) certain export financing interest."
+- **Symptom:** `ftc.all_passive`'s help says passive income is "mostly interest and dividends" and does not say these two kinds count for the election. A filer with high-taxed interest may answer No, which refuses (`ftc.needs1116`) a return that could take the small-tax election. Over-refusal only.
+- **Where:** `forms/2025/ftc.yaml`, `ftc.all_passive`; interview help.
+- **Fix sketch:** add the two inclusions to the help.
+- **Status:** open
+- **Tags:** wording; refusal; low; caught-by-question-review; open
+
+## BUG-0506 — The gift questions do not place 'certain other securities' in Section A, and gift.special counts value rather than the reduced deduction (low)
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, gift.public_securities#1 (finding 0), gift.special#1 (findings 0 and 1), 2026-11-10.
+- **Source:** i8283 p. 3, Section A, item 2.d, "Certain other securities even though the securities do not meet any of the criteria described in paragraphs 2.a through 2.c above"; i8283 p. 1, "Make any required reductions to the amount of the contributions before you determine if you must file Form 8283."
+- **Symptom:** `gift.public_securities` admits only the three tests a to c and tells the filer to answer No otherwise, so 2.d securities over $5,000 are refused through `gift.section_b`; `gift.special` refuses the same securities and property "worth more than $5,000" whose reduced deduction is $5,000 or less. All refuse cases Section A would handle; no value is wrong. The screen review accepted the two gift.special points as safe (screen ruling unruled:gift.special#1).
+- **Where:** `forms/2025/gift.yaml`, `gift.public_securities`, `gift.special`.
+- **Fix sketch:** at the next change of these questions, name 2.d securities and measure the $5,000 test on the deduction after reductions.
+- **Status:** open
+- **Tags:** wording; refusal; low; caught-by-question-review; open
+
+## BUG-0507 — The FLSA special-rule question asks about the employer, not the rule applied to the filer's overtime (low)
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, otjob.special_rule#1 (findings 0 to 2), 2026-11-10.
+- **Source:** Notice 2025-69 p. 25, method (G), "If an individual's employer satisfies the requirements under 29 USC § 207 by operation of another subsection of the FLSA other than 29 USC § 207(a) ... the different overtime rules ... that apply to the individual".
+- **Symptom:** `otjob.special_rule` asks whether "this employer [is] covered by" another section 7 rule and names whole categories (7(j) hospitals, 7(k) agencies). A filer paid under the general 7(a) rule at such an employer answers Yes and is refused (`otjob.refused`). The examples can also be read as the full list, so a filer under another subsection (7(i), 7(f)) may answer No. The help is the generic refusal sentence. Over-refusal for the first; the second is rare.
+- **Where:** `forms/2025/otjob.yaml`, `otjob.special_rule`; interview help.
+- **Fix sketch:** ask whether your own overtime is figured under a section 7 rule other than 7(a), and give help listing the subsections.
+- **Status:** open
+- **Tags:** wording; refusal; low; caught-by-question-review; open
+
+## BUG-0508 — The combined-ages question assumes one beneficiary (low)
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, retirement.combined_age#1 (finding 0), 2026-11-10.
+- **Source:** i1040gi p. 30, Age (or Combined Ages) at Annuity Starting Date, "If there is more than one beneficiary, see Pub. 575 or Pub. 721".
+- **Symptom:** `retirement.combined_age` asks for "your beneficiary's" age with no rule for a joint and survivor annuity with more than one survivor annuitant. `retirement.special` refuses "an annuity that is shared among more than one beneficiary", which a filer may or may not read as covering this. Vanishingly rare.
+- **Where:** `forms/2025/retirement.yaml`, `retirement.combined_age`.
+- **Fix sketch:** say that an annuity with more than one survivor beneficiary is refused (retirement.special), or give Pub. 575's rule.
+- **Status:** open
+- **Tags:** wording; low; caught-by-question-review; open
+
+## BUG-0509 — The aggregate-eligibility question's 'no corrections' is unexplained (low)
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, sales.aggregate_eligible#1 (finding 0), 2026-11-10.
+- **Source:** i1040sd p. 10, lines 1a and 8a, "You don't need to make any adjustments to the basis or type of gain or loss reported on Form 1099-B ... or to your gain or loss."
+- **Symptom:** `sales.aggregate_eligible` lists "no corrections" with no help; a filer with a corrected Form 1099-B that needs no adjustment may answer No, which refuses the aggregate route (`sales.bad_aggregate`, "Use the detail route"). The detail route gives the same gain; no value is wrong.
+- **Where:** `forms/2025/sales.yaml`, `sales.aggregate_eligible`; interview (no help).
+- **Fix sketch:** replace "no corrections" with "no adjustments needed to the basis, the type of gain or loss, or the gain or loss", and add help.
+- **Status:** open
+- **Tags:** wording; refusal; low; caught-by-question-review; open
+
+## BUG-0510 — The SUV question drops the integral-enclosure condition of the third exception (low)
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, scveh.suv#1 (finding 0), 2026-11-10.
+- **Source:** i4562 p. 16, "That has an integral enclosure fully enclosing the driver compartment and load carrying device, does not have seating rearward of the driver's seat, and has no body section protruding more than 30 inches ahead of the leading edge of the windshield."
+- **Symptom:** `scveh.suv`'s third exception reads "one with no seating behind the driver and no body section more than 30 inches ahead of the windshield", without the integral enclosure. A passenger vehicle of 6,000 to 14,000 pounds without that enclosure, no rear seat and a short nose is answered No and escapes the $31,300 check in `scveh.s179_bad`. Such a vehicle is vanishingly rare, but the condition is a transcription omission.
+- **Where:** `forms/2025/scveh.yaml`, `scveh.suv` (read by `scveh.s179_bad`).
+- **Fix sketch:** restore "has an integral enclosure fully enclosing the driver compartment and load carrying device".
+- **Status:** open
+- **Tags:** wording; transcription; low; caught-by-question-review; open
+
+## BUG-0511 — The qualified-tips question's cash medium omits tokens such as casino chips (low)
+
+- **Date:** 2026-11-10
+- **Caught by:** question review pilot, tipjob.qualified#1 (finding 0), 2026-11-10.
+- **Source:** i1040gi p. 102, "paid in a cash medium, including by cash, check, credit card, debit card, gift card, tangible or intangible tokens that are readily exchangeable for a fixed amount (for example, casino chips)".
+- **Symptom:** `tipjob.qualified` defines cash as "cash (including by check, card or app)". A gambling dealer whose tips are chips answers No, and `tipjob.mixed` refuses the employer's tips. Over-refusal only, but for a common tipped occupation.
+- **Where:** `forms/2025/tipjob.yaml`, `tipjob.qualified`.
+- **Fix sketch:** add gift cards and tokens readily exchangeable for a fixed amount (for example casino chips) to the cash medium.
+- **Status:** open
+- **Tags:** wording; refusal; low; caught-by-question-review; open
+
+## BUG-0512 — carloan.down invites a trade-in's gross value as consideration besides its negative equity
+
+- **Caught by:** question review, carloan.down#1, 2026-11-10.
+- **Symptom:** The question asks for "any down payment or other consideration you provided". A filer trading in a car with a loan enters the trade-in value as consideration although negative equity already nets it; carloan.nonqualifying_debt falls (to zero at worst) and the qualifying part of the loan and 22(iii) are overstated.
+- **Source:** fr-2025-24154 § 1.163-16(d)(8) (negative equity is debt in excess of the trade-in value) and (d)(2)(iii)(B); (d)(6) Example 4.
+- **Status:** open
+
+## BUG-0513 — carloan.refi_whole does not name the items that are not customarily financed
+
+- **Caught by:** question review, carloan.refi_whole#1, 2026-11-10.
+- **Symptom:** The question says only "items customarily financed with it"; a filer whose refinanced loan rolled in negative equity or collision insurance answers Yes, carloan.refi_nested stays false, and carloan.refi_qualifying counts the whole old balance as SPVL. carloan.mixed lists these exclusions; refi_whole does not.
+- **Source:** fr-2025-24154 § 1.163-16(d)(2)(ii), negative equity and collision and liability insurance are not an SPVL; (d)(4).
+- **Status:** open
+
+## BUG-0514 — carloan.requirements and carloan.vehicle test the current loan and filer on the refinanced and death paths
+
+- **Caught by:** question review, carloan.requirements#1, 2026-11-10.
+- **Symptom:** On a refinancing entry "it was used to buy the vehicle" is false of the new loan, so an honest No makes carloan.eligible false and 22(iii) zero. On an inherited loan, "you expected" (requirements) and "original use starting with you" (vehicle) are false for the heir, with the same result. The tests should apply to the loan as originated (the refinanced loan, or the decedent's loan).
+- **Source:** i1040gi p. 109, Refinanced loan ("interest paid on the refinanced amount is generally eligible ... so long as the new loan is secured by a first lien") and change in obligor by reason of death ("If a loan met requirements 1 through 5 at the time it was originated by a previous obligor").
+- **Status:** open
+
+## BUG-0515 — carloan: low wording gaps (rebates, chains of refinancing, services and 'in the purchase', assumed loans)
+
+- **Caught by:** question review, carloan.kind#1, 2026-11-10.
+- **Symptom:** Lows on carloan.down (a rebate as consideration), carloan.kind (inherited then refinanced; a second refinancing), carloan.nonqualifying (services not named; 'in the purchase' vs financed), carloan.refi_whole (a three-loan chain; a payoff loan read as not financing the vehicle, which only refuses) and carloan.requirements (an assumed loan; requirement 2 'originated by you' not stated). Each is rare or only over-refuses.
+- **Source:** fr-2025-24154 § 1.163-16(d)(2)(ii), (d)(2)(iii)(B), (d)(4), (d)(5); i1040gi p. 109 requirement 2.
+- **Status:** open
+
+## BUG-0516 — div.basis_reconciled's wording lets a filer whose box 3 distribution exceeded basis answer Yes
+
+- **Caught by:** question review, div.basis_reconciled#1, 2026-11-10.
+- **Symptom:** "For box 3, have basis reductions been applied to records with no distribution exceeding basis?" reads either as a scope limit (Yes) or as asserting none exceeded basis (No). A Yes from a filer whose distribution exceeded basis skips div.unsupported, and the excess capital gain is reported nowhere. The question should ask plainly whether any box 3 distribution exceeded the remaining basis.
+- **Source:** f1099div p. 5, Box 3, "Any amount received in excess of your basis is taxable to you as capital gain."
+- **Status:** open
+
+## BUG-0517 — div amount questions name only Forms 1099-DIV while div.any counts amounts with no form or paid in another's name
+
+- **Caught by:** question review, div.box12#1, 2026-11-10.
+- **Symptom:** div.any counts "dividends that belong to you but were paid in someone else's name" and amounts "received without any form", but div.box12 asks for "all your Forms 1099-DIV" and div.box3's help for "your and your spouse's Forms 1099-DIV". Such amounts are left out; box 12 affects the social security worksheet and modified AGI, box 3 only a screen. Rare.
+- **Source:** f1099div p. 5, Box 3, Box 12, Nominees.
+- **Status:** open
+
+## BUG-0518 — sd.carryover asks what the 2024 Schedule D showed, not what a correct one would show
+
+- **Caught by:** question review, sd.carryover#1, 2026-11-10.
+- **Symptom:** A filer with a 2024 capital loss who filed no 2024 return or Schedule D answers No and loses the carryover; clcw.figures_notice, which explains the rule, shows only after a Yes. Rare.
+- **Source:** p550 p. 102, "whether or not you claimed it and whether or not you filed a return for the current year".
+- **Status:** open
+
+## BUG-0519 — household: low wording gaps on marriage and community property questions
+
+- **Caught by:** question review, household.spouse_died_2025#1, 2026-11-10.
+- **Symptom:** household.cp_married (a spouse living outside the state; over-refusal); household.married (divorce to remarry; over-refusal); household.spouse_died_2025 (remarriage and divorce in 2025, vanishingly rare; an ex-spouse's death, over-refusal; help naming only single and head of household while the question also reaches joint filers, a No then refuses); household.unmarried (divorce to remarry, vanishingly rare; civil unions not addressed, over-refusal; a continuing prior-year nonresident-spouse election, rare).
+- **Source:** p501 p. 6, Divorce and remarriage, Definition of marriage; i1040gi pp. 13-14.
+- **Status:** open
+
+## BUG-0520 — ira.special defines deferred compensation income only by the boxes it should be shown in
+
+- **Caught by:** question review, ira.special#1, 2026-11-10.
+- **Symptom:** Nonqualified deferred compensation in W-2 box 1 that the employer did not show in box 11 or code Z escapes the screen; compensation on the IRA worksheet is overstated, which matters only when compensation limits the deduction.
+- **Source:** i1040gi p. 95, Line 20, item 5.
+- **Status:** open
+
+## BUG-0521 — ny_it2.state_withheld does not say to use the corrected W-2c figure
+
+- **Caught by:** question review, ny_it2.state_withheld#1, 2026-11-10.
+- **Symptom:** A W-2c shows previously reported and correct columns; the help names only "Box 17 of the Form W-2". Rare.
+- **Source:** ny_it2 p. 2, Corrected (W-2c), "Enter the corrected information from the W-2c".
+- **Status:** open
+
+## BUG-0522 — sc.hi_uses does not name dental, vision, long-term care or Medicare premiums
+
+- **Caught by:** question review, sc.hi_uses#1, 2026-11-10.
+- **Symptom:** A No makes sc.f7206_line14 zero. A filer whose only premiums are dental, vision, qualified long-term care or voluntary Medicare (Part B) answers No to "Did you pay for health insurance ... established under this business", losing the deduction.
+- **Source:** i1040gi p. 94, line 17 ("includes medical, dental, and vision insurance and qualified long-term care insurance"); p. 95 (Medicare premiums).
+- **Status:** open
+
+## BUG-0523 — sc.f7206_line1 asks for premiums paid in 2025 without limiting them to 2025 coverage
+
+- **Caught by:** question review, sc.f7206_line1#1, 2026-11-10.
+- **Symptom:** Premiums billed a month ahead put a December 2025 payment for January 2026 coverage into line 1.
+- **Source:** f7206 (2025) line 1, "the total amount paid in 2025 for health insurance coverage ... for 2025".
+- **Status:** open
+
+## BUG-0524 — Schedule C expense questions ask what was paid; accrual-method filers need the amounts for the tax year
+
+- **Caught by:** question review, sc.line10#1, 2026-11-10.
+- **Symptom:** sc.line10 ("you paid"), sc.line11 ("Payments") and sc.line26 ("paid ... in 2025") give an accrual-method filer cash payments rather than expenses incurred for 2025. Accrual is supported (sc.method_other refuses only other methods). Other expense questions may share the wording.
+- **Source:** i1040sc p. 7, Lines 10 and 11 ("for the tax year"); p. 10, Line 26; f1040sc line F.
+- **Status:** open
+
+## BUG-0525 — sc.line21 does not exclude vehicle repairs, which line 9 already counts
+
+- **Caught by:** question review, sc.line21#1, 2026-11-10.
+- **Symptom:** sc.line9 sums scveh.line9, whose actual-expense question names repairs and whose standard mileage rate includes them; sc.line21 excludes home repairs but not vehicle repairs, so they are counted twice in sc.line28.
+- **Source:** f1040sc line 9; i1040sc p. 8, Line 21.
+- **Status:** open
+
+## BUG-0526 — sc.line22 does not exclude materials and supplies counted in Part III
+
+- **Caught by:** question review, sc.line22#1, 2026-11-10.
+- **Symptom:** The form line is "Supplies (not included in Part III)" and sc.line38 asks "Materials and supplies used in producing goods for sale"; sc.line22's question has no Part III exclusion, so a producer deducts the same materials on line 22 and through cost of goods sold.
+- **Source:** f1040sc line 22 and Part III line 38.
+- **Status:** open
+
+## BUG-0527 — Daycare children's food is routed to the 50% meals amount; Pub. 587 allows 100%
+
+- **Caught by:** question review, sc.meals_50#1, 2026-11-10.
+- **Symptom:** sc.meals_50's help ("For food reimbursed under a food program of the Department of Agriculture, include only the cost above the reimbursement") puts daycare food in the 50% amount, and sc.meals_100 has no category for it; the standard meal and snack rates are not mentioned.
+- **Source:** p587 p. 13, Meals, "You can deduct as a business expense 100% of the actual cost of food consumed by your daycare recipients"; i1040sc p. 10, Daycare providers.
+- **Status:** open
+
+## BUG-0528 — sc.meals_50 asks only for meals while you travel; employees' travel meals are left out
+
+- **Caught by:** question review, sc.meals_50#1, 2026-11-10.
+- **Symptom:** Employees' business travel meals reimbursed under an accountable plan (not as wages) are 50% meals, but the question names only meals "while you travel" and meals with business contacts, and sc.meals_100 takes only meals treated as wages. Same pattern as BUG-0500 (sc.meals_80).
+- **Source:** i1040sc p. 9, Line 24b, "This includes expenses for meals while traveling away from home for business"; p. 10, Amount of deduction.
+- **Status:** open
+
+## BUG-0529 — Schedule C expense and cost of goods sold questions: low wording gaps
+
+- **Caught by:** question review, sc.line17#1, 2026-11-10.
+- **Symptom:** Lows on sc.line10 (sale commissions to capitalize; no year), sc.line11 ('such as' list closed), sc.line15 (employee health premiums), sc.line16b (capitalized interest), sc.line17 (deficiency-resolution costs; capitalized fees), sc.line19 (contribution limits; year), sc.line2 (point-of-sale discounts; non-sale refunds), sc.line22 (office supplies; supplies deducted earlier), sc.line23 (special assessments), sc.line24a (lodging taxes bullet), sc.line35 (fiscal year), sc.line36 (no year), sc.line39 (other than lines 35-38 and Part II), sc.line41 (valuation), sc.line6 (finance reserve income), sc.line8 (no year), sc.meals_100 (party entertainment on line 24b, presentation). Each is rare, presentation, or a misreading unlikely after the preceding questions.
+- **Source:** i1040sc pp. 6-10 and 15, the cited line instructions.
+- **Status:** open
+
+## BUG-0530 — Schedule C screens: over-refusals and rare gaps
+
+- **Caught by:** question review, sc.passive#1, 2026-11-10.
+- **Symptom:** Over-refusals: sc.at_risk (qualified nonrecourse real property financing), sc.passive (spouse's hours; rental exceptions), sc.special (chapter 11 as creditor or closed), sc.tips_ot (a loss business). Rare gaps: sc.method_other (a prior-year section 481(a) adjustment; short-history gross receipts), sc.spouse_owned (de facto partnership with a spouse; income tax unchanged), sc.statutory (notary fees mixed with other receipts), sc.ho_uses (daycare non-exclusive use; the deduction is elective).
+- **Source:** i1040sc pp. 2, 4-5, 10, 14-15.
+- **Status:** open
+
+## BUG-0531 — The EIC US-home question's military sentence names only 'you' and does not define extended active duty (low)
+
+- **Caught by:** question review, eic.us_home#1, 2026-11-10.
+- **Symptom:** `eic.us_home` asks whether your main home "and your spouse's if filing a joint return" was in the United States, but its military sentence says "If you were on extended active military duty". A joint filer whose spouse was deployed abroad may answer No and lose the no-qualifying-child EIC (eic.step4_home -> eic.no). 'Extended' (ordered for more than 90 days or indefinitely) is not defined. Rare; the help is the generic refusal sentence.
+- **Source:** i1040gi p. 44, Members of the military, "If you were on extended active duty outside the United States, your main home is considered to be in the United States during that duty period. Extended active duty is military duty ordered for an indefinite period or for a period of more than 90 days."
+- **Status:** open
+
+## BUG-0532 — The Form 1095-A VOID question names only an original as superseded, not an earlier corrected form (low)
+
+- **Caught by:** question review, f1095a.void#1, 2026-11-10.
+- **Symptom:** `f1095a.void` asks whether the form is VOID or "an original" that a later VOID or CORRECTED form supersedes. An earlier CORRECTED form replaced by a second CORRECTED form is not named, though the same question's "Do not enter a void or replaced form" covers it. Rare.
+- **Source:** i8962 p. 2, "use the information on the Form 1095-A with the 'CORRECTED' box checked" and "Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A".
+- **Status:** open
+
+## BUG-0533 — The care-expenses question limits qualifying persons to 'a dependent or spouse', so a nondependent disabled person's care computes with no credit
+
+- **Caught by:** question review, f2441.care#1 (finding 0), 2026-11-10.
+- **Symptom:** `f2441.care` asks about care of "your child under age 13, or a dependent or spouse who was not able to care for themselves". A filer caring for a disabled person they could claim as a dependent except for gross income of $5,200 or more, a joint return, or being a dependent themselves answers No; Form 2441 is not filed and the return computes with no credit. A Yes would reach `f2441.nondependent`, whose gate `f2441.nondependent_gate` refuses, so the narrow wording turns a refusal into a computed return without the credit.
+- **Source:** i2441 p. 1, Qualifying Person(s), "Any disabled person who wasn't physically or mentally able to care for themselves, lived with you for more than half the year, and either: whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. ... filed a joint return, or c. You ... could be claimed as a dependent".
+- **Status:** open
+
+## BUG-0534 — Form 2441 question wording: benefits outside box 10, employer care outside a plan, the spouse's grace-period carryforward and plan maximum, and a spouse who died before a remarriage (lows)
+
+- **Caught by:** question review, f2441.benefits#1 (finding 1), f2441.employer_care#1, f2441.line13#1, f2441.plan_max#1, f2441.spouse_died#1, 2026-11-10.
+- **Symptom:** `f2441.benefits` and line 12 take only W-2 box 10 (an employer's unreported benefit is missed; employer error, rare). `f2441.employer_care` drops "covered by your employer's dependent care plan" (a Yes only refuses). `f2441.line13` ("your employer's plan let you") and `f2441.plan_max` ("your dependent care plan") do not name the spouse on a joint return, unlike `f2441.benefits`; the $person help's "entered once, for you and your spouse combined" mitigates, and plans below $5,000 are rare. `f2441.spouse_died` does not tie the death to the spouse on the joint return; a Yes only refuses (f2441.spouse_died_gate).
+- **Source:** i2441 p. 1, Dependent Care Benefits ("should be shown in box 10"); p. 3, Columns (a) and (b); p. 5, Lines 13 and 21; p503 p. 11, Surviving spouse.
+- **Status:** open
+
+## BUG-0535 — The excess-employer-contribution question is yes/no, so an excess partly included in W-2 box 1 cannot be given (low)
+
+- **Caught by:** question review, f8889.employer_in_box1#1 (finding 0), 2026-11-10.
+- **Symptom:** `f8889.employer_in_box1` is a Bool: all or none of the excess employer HSA contribution is in box 1. An excess the employer partly included is either reported twice or left out of other income. Rare.
+- **Source:** i8889 p. 8, Excess Employer Contributions, "If the excess was not included in income on Form W-2, you must report it as 'Other income' on your tax return."
+- **Status:** open
+
+## BUG-0536 — The overtime method and amount questions count overtime for hours not over 40 in the workweek (state daily overtime)
+
+- **Caught by:** question review, otjob.method#1 (finding 0), 2026-11-10.
+- **Symptom:** `otjob.method`'s options take "overtime hours paid at time-and-a-half" or "at double time", and `otjob.statement` leaves out only weekend or holiday pay in a workweek of 40 hours or less. Overtime paid under state law for hours that are not over 40 in the workweek (daily overtime, for example three 12-hour shifts) is in the statement's total, and the fraction is applied to it. An FLSA-eligible 7(a) employee's Schedule 1-A overtime deduction is overstated; the return computes.
+- **Source:** i1040gi p. 106, Amounts that are not qualified overtime compensation, Premium pay, "Some employers under a collective bargaining agreement and/or under state law provide more pay than section 7 of the FLSA requires"; n-25-69 p. 23, methods (C) and (D), "for hours worked in excess of 40 hours in a workweek".
+- **Status:** open
+
+## BUG-0537 — Overtime question wording: no period for FLSA eligibility, mixed-rate totals, and the 'premium' label (lows)
+
+- **Caught by:** question review, otjob.flsa#1, otjob.method#1 (findings 1 and 2), 2026-11-10.
+- **Symptom:** `otjob.flsa` gives no period, so a filer reclassified exempt during 2025 might answer No (under-deduction; rare reading). `otjob.method` has no option for a single total mixing time-and-a-half and double time (the error is bounded by the two fractions; 'other' refuses). A double-time worker whose stub labels the extra 1x pay 'overtime premium' might pick premium rather than premium_double, though premium_double names double time. The help of all three is the generic refusal sentence.
+- **Source:** i1040gi pp. 106-107, Qualified overtime compensation and methods 1 to 5.
+- **Status:** open
+
+## BUG-0538 — Schedule 1 canceled-debt and unemployment questions do not name the spouse on a joint return (low)
+
+- **Caught by:** question review, s1.cod_any#1 (finding 2), s1.uc_paid#1 (finding 1), 2026-11-10.
+- **Symptom:** `s1.cod_any` ("any of your debt") and `s1.uc_paid` ("paid to you ... your Forms 1099-G") do not say "(and, on a joint return, your spouse)" as `s1.line8g`, `s1.line8i` and `s1.line8j` do. A joint filer could leave out the spouse's canceled debt or unemployment compensation. The $person help ("Amounts that are not asked person by person ... are entered once, for you and your spouse combined") mitigates.
+- **Source:** i1040gi p. 89, Line 7; p. 91, Line 8c.
+- **Status:** open
+
+## BUG-0539 — Schedule 1 other-income question wording: canceled debt timing and discounts, a government oil and gas lease, a child's Alaska dividend, business prizes and prize points, and a not-for-profit personal-property rental (lows)
+
+- **Caught by:** question review, s1.cod_amount#1 (findings 0 and 1), s1.cod_any#1 (finding 0), s1.gambling_winnings#1 (finding 2), s1.line8g#1, s1.line8i#1, s1.line8j#1, 2026-11-10.
+- **Symptom:** `s1.cod_amount` does not cover a debt discharged in 2025 whose Form 1099-C came in an earlier year, and takes the whole box 2 of an identifiable-event form not yet discharged. `s1.cod_any`'s examples do not name early-payoff discounts or workout principal reductions. `s1.gambling_winnings` has no exception for a government oil and gas lease won by lottery. `s1.line8g` does not say a child's dividend paid into the parent's account is the child's. `s1.line8i` does not exclude prizes already on Schedule C and does not say prize points count when made available. `s1.line8j` excludes all personal-property rentals, so a not-for-profit rental (line 8j income) is refused through scope.schedule1 (over-refusal). Each is rare.
+- **Source:** f1099c p. 4, Instructions for Debtor; p4681 p. 4, Form 1099-C Reference Guide; p525 p. 31 (Alaska Permanent Fund dividend; Activity not for profit), p. 33 (oil and gas lease), p. 35 (Prize points); i1040gi p. 91, Lines 8j and 8l.
+- **Status:** open
+
+## BUG-0540 — Foreign tax credit election questions: the carryover phrase and the eligibility rules can draw a No that only refuses (lows)
+
+- **Caught by:** question review, ftc.elect#1 (finding 1), ftc.eligible#1 (findings 0 and 1), 2026-11-10.
+- **Symptom:** Three wording lows on the small-tax election, each a No that makes ftc.needs1116 true and refuses ftc.credit ('Form 1116'). (1) ftc.elect's 'with no carryover to or from this election year' can be read as a condition (no carryover exists) rather than a consequence accepted. (2) ftc.eligible asks whether creditability and holding-period rules were 'satisfied'; a filer with one dividend failing the holding period (already left out of ftc.taxes) answers No. (3) 'required foreign-tax reduction rules ... satisfied' can be read as pass/fail, though the reduction is applied in ftc.taxes. Over-refusal only; related to BUG-0505.
+- **Source:** i1116 pp. 1-2, election, 'You can't carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies'; i1116 p. 2, non-creditable taxes (holding period); 'You are still required to reduce the taxes available for credit by any amount you would have entered on line 12'.
+- **Status:** open
+
+## BUG-0541 — Section 199A dividends: the help names the holding-period requirement without stating it (low)
+
+- **Caught by:** question review, qbi.dividends#1 (finding 0), 2026-11-10.
+- **Symptom:** qbi.dividends asks for box 5 'after confirming holding-period and related-payment requirements' and the help does not state the more-than-45-day rule or say to enter only the qualifying part. The natural reading enters the qualifying part; a filer who does not know the rule, or reads it as all-or-nothing, can overstate Form 8995 line 6 for fund shares sold within 45 days. Rare.
+- **Source:** i8995 p. 3, 'Qualified REIT dividends include any dividends you received from a REIT held for more than 45 days and for which the payment isn't obligated to someone else'.
+- **Status:** open
+
+## BUG-0542 — Section 179 carryover question asks only for 2024 Form 4562 line 13, missing a carryover with no 2024 form
+
+- **Caught by:** question review, s179.line10#1 (finding 0), 2026-11-10.
+- **Symptom:** s179.line10 asks for 'The carryover of disallowed section 179 deduction from line 13 of your ... 2024 Form 4562 (zero if none)'. A filer with a carryover from 2023 or earlier who claimed no section 179 deduction in 2024 (for example no 2024 business income) was not required to file a 2024 Form 4562, answers zero, and s179.line12 loses a carryover the 2025 deduction can use (value-changing). Rare.
+- **Source:** i4562 (2025) p. 5, Line 10, 'The carryover of disallowed deduction from 2024 is the amount of section 179 property, if any, you elected to expense in previous years that was not allowed as a deduction because of the business income limitation. If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562'; p. 1, Who Must File, 'A section 179 expense deduction (which may include a carryover from a previous year)'.
+- **Status:** open
+
+## BUG-0543 — ITIN question asks 'have you applied', missing a filer applying with Form W-7 attached to this return
+
+- **Caught by:** question review, person.itin_applied#1 (finding 1), 2026-11-10.
+- **Symptom:** person.itin_applied asks 'have you applied for an ITIN ... on or before the due date'. A filer attaching Form W-7 to this return (the usual route for a first ITIN) has not yet applied when answering and may say No; person.tin_or_itin_applied is then false, household.all_tin is false and the credit for other dependents is not computed (value-changing). The same answer drops the person as an American opportunity credit student.
+- **Source:** i1040gi (2025) p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)".
+- **Status:** open
+
+## BUG-0544 — Educator expenses: professional development courses are not limited to the curriculum or students taught
+
+- **Caught by:** question review, person.educator_expenses#1 (finding 1), 2026-11-10.
+- **Symptom:** person.educator_expenses lists 'professional development courses' without the condition that they relate to the curriculum or students the educator teaches. A K-12 teacher with an unrelated course and under $300 of other qualified expenses includes it, and Schedule 1 line 11 is overstated (value-changing, at most $300 a person).
+- **Source:** i1040gi p. 93, Line 11, 'Qualified expenses include ordinary and necessary expenses paid: For professional development courses you have taken related to the curriculum you teach or to the students you teach'.
+- **Status:** open
+
+## BUG-0545 — Traditional IRA contribution help invites a self-employed person's own SEP contributions, which are deducted on line 16
+
+- **Caught by:** question review, person.sav_trad#1 (finding 0), 2026-11-10.
+- **Symptom:** person.sav_trad's help says to include 'a SEP IRA you contribute to yourself, but not employer contributions to a SEP or SIMPLE IRA'. A sole proprietor's contributions for themselves are employer contributions deducted on Schedule 1 line 16 (person.sep_contrib), but the filer does not see them as an employer's and answers Yes, so the same amount can reach the IRA deduction worksheet line 11 (Schedule 1 line 20) and Form 8880 line 1 (value-changing).
+- **Source:** p560 p. 17, 'Sole proprietors and partners deduct contributions for themselves on line 16 of Schedule 1'; i1040gi p. 98, IRA Deduction Worksheet line 11, 'traditional IRA contributions made ... for 2025 to your IRA'.
+- **Status:** open
+
+## BUG-0546 — Education credit questions of the person record: wording lows (assistance period, half-support definitions, the over-covered period, the 1098-T exception, outside course materials)
+
+- **Caught by:** question review, person.edu#1 (finding 2), person.edu_1098t#1 (finding 1), person.edu_a2025#1 (finding 0), person.edu_half_support#1 (findings 0 to 3), person.edu_over#1 (findings 1 to 3), 2026-11-10.
+- **Symptom:** Lows recorded for the next change of these questions (related to BUG-0503). (1) person.edu gate: a filer whose only payment is outside course materials may answer No. (2) person.edu_1098t applies 'you can show the enrollment and the payments' only to the not-furnished branch. (3) person.edu_a2025's 'this student's 2025 expenses' can be read as 2025 periods, leaving out 2025 assistance for a prepaid early-2026 term. (4) person.edu_half_support omits the 30% cap for capital-intensive businesses, the exclusion of corporate distributions, fair market value for lodging and the 5-month full-time student test; each matters only near the half-support line. (5) person.edu_over compares with expenses 'that had to be paid' (not those paid in 2025), uses the institution-paid definition for AOC students and has no time frame; the last two only refuse.
+- **Source:** i8863 (2025) p. 1, Form 1098-T exception; p. 2, Table 1, AOC course materials; p. 4, tax-free educational assistance; p. 7, Line 7, Earned income, Support and Full-time student; p. 9, Adjusted Qualified Education Expenses Worksheet lines 1 and 2a.
+- **Status:** open
+
+## BUG-0547 — IRA and Roth contribution questions: wording lows (basis, distributions, excess, deadlines, repayments, returned Roth contributions)
+
+- **Caught by:** question review, person.ira_basis#1 (finding 1), person.ira_basis_adjusted#1 (finding 0), person.ira_dist#1 (finding 0), person.ira_excess#1 (findings 0 and 1), person.ira_trad#1 (findings 0 and 1), person.sav_roth#1 (findings 0 and 1), 2026-11-10.
+- **Symptom:** Lows: (1) person.ira_basis says zero if 'the first year you file Form 8606', not the first year it is required. (2) person.ira_basis_adjusted gives no time frame for a return of excess or a divorce transfer (Yes refuses). (3) person.ira_dist excludes rollovers without the carve-back for repayments treated as rollovers. (4) person.ira_excess asks only about 'your contributions' (not an employer's or an improper rollover) and a non-working spouse may read 'more than your taxable compensation' literally (Yes refuses). (5) person.ira_trad fixes April 15, 2026 (not a postponed due date) and does not exclude reservist repayments. (6) person.sav_roth does not exclude repayments of birth, disaster or emergency distributions, nor Roth contributions returned by the due date (person.ira_trad does). Each is rare or only refuses.
+- **Source:** i8606 p. 9, Line 2; f8606 Part I, distributions 'include certain 2025 retirement plan distribution repayments treated as rollovers'; i8606 p. 5, Note on repayments; p590a p. 35, Excess Contributions; i1040gi pp. 95 and 98, Line 20 and IRA Deduction Worksheet line 11.
+- **Status:** open
+
+## BUG-0548 — Self-employed SEP and SIMPLE and elective-deferral questions: wording lows (coverage, excess carryover, screen breadth, catch-up eligibility, the excess-deferral help)
+
+- **Caught by:** question review, person.plan#1 (finding 0), person.plan_screen#1 (findings 0, 2 and 3), person.sav_excess#1 (findings 0 and 2), person.sep_contrib#1 (finding 0), person.simple_age#1 (findings 1 and 2), 2026-11-10.
+- **Symptom:** Lows: (1) person.plan follows contributions for yourself, while i1040gi treats a self-employed person who 'had' a SEP or SIMPLE as covered. (2) A prior-year SEP excess contributions carryover is asked nowhere (person.plan_screen, person.sep_contrib), so the deduction omits it. (3) person.plan_screen's 'elective deferrals to any other plan' and 'more than one plan' catch an unrelated employer's 401(k) for a SEP-only filer (Yes refuses). (4) person.sav_excess totals code G 457(b) amounts against the 401(k) limit (Yes refuses), and its help ('Your plan administrator tells you') can mislead a filer with two unrelated employers. (5) person.simple_age sets the catch-up cap by age alone, without plan permission; the cap only bounds person.simple_excess. Each is rare or only refuses.
+- **Source:** i1040gi p. 96, covered by a plan; p560 p. 11, SEP deduction 'including any excess contributions carryover'; p560 pp. 10 and 16; iw2w3 p. 20, Code G.
+- **Status:** open
+
+## BUG-0549 — Person record wording lows: blindness statement, SSN issued on the due date, births counted for earlier-year distributions
+
+- **Caught by:** question review, person.blind#1 (finding 0), person.work_ssn#1 (finding 0), person.x_births#1 (finding 2), 2026-11-10.
+- **Symptom:** Lows: (1) person.blind's contact-lens paragraph says 'answer yes' without the certified-statement condition the preceding paragraph imposes. (2) person.work_ssn says 'issued before the due date' where the EIC text says 'on or before'. (3) person.x_births gives no year, so a child whose distribution was taken in an earlier year can be counted, raising person.x_cap19. Each is vanishingly rare.
+- **Source:** i1040gi p. 33, Blindness; i1040gi p. 40, Step 1, question 2; p590b p. 28, Qualified birth or adoption distribution.
+- **Status:** open
+
+## BUG-0550 — New York 529 question does not give New York's meaning of a nonqualified withdrawal (K-12 tuition, transfers out)
+
+- **Caught by:** question review, ny_it201.ask.529_nonqualified#1 (findings 0 and 1), 2026-11-10.
+- **Symptom:** ny_it201.ask.529_nonqualified asks about a 'nonqualified withdrawal' with no definition. New York counts K-12 tuition withdrawals and transfers to another state's program as nonqualified though they are qualified federally; a filer who used a New York 529 for K-12 tuition answers No and ny_it201.line22 stays zero, omitting the addition (value-changing; Yes refuses through ny_it201.gate.line22). A low on the same question: withdrawals on the beneficiary's death or disability and in-program family transfers are not nonqualified, and a Yes for them only refuses.
+- **Source:** IT-201-I (2025) p. 8, Line 22, 'Nonqualified withdrawals from a New York 529 college savings program include, but are not limited to: the transfer to another state's program ... any withdrawal used to pay tuition and related expenses in connection with enrollment or attendance at elementary or secondary public, private, or religious schools'.
+- **Status:** open
+
+## BUG-0551 — New York IT-201 screen wording lows (residency carve-outs, estimated tax questions, use tax, Yonkers)
+
+- **Caught by:** question review, ny_it201.ask.abode_part_year#1 (finding 0), ny_it201.ask.est_late#1 (findings 0 to 2), ny_it201.ask.owes_use_tax#1 (finding 0), ny_it201.ask.prior_agi_high#1 (finding 0), ny_it201.ask.prior_full_year#1 (finding 0), ny_it201.ask.prior_year_tax#1 (findings 0 and 1), ny_it201.ask.state_resident#1 (findings 0 and 1), ny_it201.ask.use_tax_st141#1 (findings 0 and 1), ny_it201.ask.yonkers#1 (finding 0), 2026-11-10.
+- **Symptom:** Lows, most only refusing more: state_resident tells New York-domiciled servicemembers and dorm students to answer No (they are residents by domicile); abode_part_year ignores the half-month rule; est_late counts withholding-covered or annualized installments as short and leaves 'required payment' undefined (every other reading only refuses more); prior_agi_high omits the farmer/fisherman exception (noted on ny_it201.safe_harbor); prior_full_year can be read as residence months; use_tax_st141 brings in registered-business and vehicle purchases that belong off line 59. Rare value cases: prior_year_tax omits 2024 Yonkers and MCTMT and does not name the line (before or after credits); owes_use_tax omits additional local use tax where a lower New York rate was paid; yonkers asks only 'maintain', not 'had use of' quarters kept for the filer by an employer or family member.
+- **Source:** IT-201-I (2025) p. 5, Item D2; p. 18, Line 59; p. 23, Lines 79 and 81; p. 30, residency (Groups A and B, military, student housing).
+- **Status:** open
+
+## BUG-0552 — Form 5695 Part I questions give only the installation timing rule; a new home's 2024-installed property first used in 2025 is left out
+
+- **Caught by:** question review, f5695.part1_any#1 (also f5695.line1#1, line2#1, line3#1, line4#1, line5a#1), 2026-11-10.
+- **Symptom:** f5695.part1_any and lines 1-4 and 5a tell the filer that a cost counts in 2025 when its original installation is completed. A filer whose solar, wind, geothermal or battery property was installed during construction of a home in 2024, and who first used the home in 2025, answers No or zero, and the Part I credit (Schedule 3 line 5a) is lost. f5695.construction_later catches only the reverse case (original use after 2025).
+- **Source:** i5695 p. 1, Costs: "For purposes of the residential clean energy credit only, costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins" (reconstruction likewise).
+- **Status:** open
+
+## BUG-0553 — Form 5695 part1_any and part2_any gates do not count a condominium or cooperative's proportionate share
+
+- **Caught by:** question review, f5695.part1_any#1 (also f5695.part2_any#1), 2026-11-10.
+- **Symptom:** The gates ask whether you 'had 2025 costs'. A condominium owner or cooperative tenant-stockholder whose association paid for qualifying property can answer No; Schedule 3 line 5a or 5b is then zero. The per-line help (and f5695.condo) cover the share, but they are reached only after a Yes.
+- **Source:** i5695 p. 2, Association or cooperative costs: "you are treated as having paid your proportionate share of any costs of such association or corporation."
+- **Status:** open
+
+## BUG-0554 — Form 5695 'all other' and 'such' questions rely on the preceding question for their criteria and exclusions
+
+- **Caught by:** question review, f5695.line29b#1 (also line19d_i, line19e, line20b, line23b, line24b, line29d, line29f), 2026-11-10.
+- **Symptom:** Lines 19d(i), 19e, 20b, 23b, 24b, 29b, 29d and 29f say 'qualifying', 'such' or 'all other' without restating the efficiency criterion (CEE highest tier, Energy Star, 75% thermal efficiency, fuel type) or which items already entered to leave out. In interview order the meaning is plain; read alone, a filer can include non-qualifying units or count the most expensive unit twice.
+- **Source:** i5695 pp. 6-7, lines 19-29 (e.g. line 29b, "all other electric or natural gas heat pumps that achieve the highest efficiency tier established by the CEE").
+- **Status:** open
+
+## BUG-0555 — Form 5695 Part II wording lows: audit timing and scope, present-tense residence, door ranking, category overlap, enabling-property QMID
+
+- **Caught by:** question review, f5695.line26a#1 (also line26b, part2_any, line21a, line19a, line23b, line29a, qmid_enabling), 2026-11-10.
+- **Symptom:** Rare or refusal-only divergences: line 26a asks costs 'incurred' in 2025 where 26b counts amounts paid, and 26b does not exclude a second non-qualifying audit (credit capped at $150); part2_any's installation timing rule does not fit an audit; line 21a's 'use as a residence' (the form's own wording) can exclude a home sold before filing; line 19a's gross-or-net ranking can swap the $250-capped door; a gas heat pump water heater (line 23b) or a geothermal heat pump on line 4 (line 29a) is not excluded in words; qmid_enabling covers 2024-installed enabling property, where a No only refuses.
+- **Source:** i5695 pp. 2-7 (audit 'paid or incurred during 2025'; Section B 'a home that you used during 2025'; QMID 'For qualified energy property installed in 2025').
+- **Status:** open
+
+## BUG-0556 — Schedule 1-A tips, overtime and car loan gates ask only about 'you' on a joint return
+
+- **Caught by:** question review, s1a.tips#1 (also s1a.overtime#1, s1a.carloan#1), 2026-11-10.
+- **Symptom:** On a joint return where only the spouse received qualified tips or overtime, or only the spouse paid qualifying car loan interest, the filer can truthfully answer No to s1a.tips, s1a.overtime or s1a.carloan; Schedule 1-A lines 13, 21 or 30 are then zero and the deduction is lost.
+- **Source:** i1040gi p. 101 "You (and/or your spouse if filing a joint return) received qualified tips"; p. 106 (overtime); p. 109 "you and/or your spouse paid or accrued qualified passenger vehicle loan interest".
+- **Status:** open
+
+## BUG-0557 — retirement.months asks months 'in 2025' where the Simplified Method needs the months this year's payments cover
+
+- **Caught by:** question review, retirement.months#1, 2026-11-10.
+- **Symptom:** For a pension paid in arrears in its first (or last) year, the calendar reading counts a month whose payment is not in box 1 (e.g. a July start: 6 calendar months, 5 payments). Line 5 of the Simplified Method Worksheet is then too large and Form 1040 line 5b too small by one month's exclusion.
+- **Source:** i1040gi p. 29, Simplified Method Worksheet line 5, "Multiply line 4 by the number of months for which this year's payments were made."
+- **Status:** open
+
+## BUG-0558 — retirement question lows: box 5 omission, months range, Roth-to-Roth rollover box
+
+- **Caught by:** question review, retirement.box5#1 (also retirement.months#1, retirement.rollover#1), 2026-11-10.
+- **Symptom:** retirement.box5 takes the box 5 figure where a payer may omit after-tax contributions (payer error, rare); retirement.months has no upper bound of 12; a code Q Roth IRA to Roth IRA rollover is not counted, which leaves only the line 4c rollover box unchecked (the taxable amount is zero either way).
+- **Source:** i1040gi p. 30 (contributions 'usually shown in box 5'); p. 29 line 5; p. 27 Exception 1.
+- **Status:** open
+
+## BUG-0559 — Schedule C vehicle question lows (line 43 date, binding-contract acquisition, shared vehicles, rare basis and fiscal-year cases, refusal-only bonus wording)
+
+- **Caught by:** question review, scveh.placed_date#1 (also scveh.after_jan19, bonus_same, cost, miles_business, miles_other, prior_179, quarter, screen), 2026-11-10.
+- **Symptom:** scveh.placed_date (printed line 43) holds a year where the form asks month/day/year (presentation). Rare value cases: after_jan19 omits the written-binding-contract rule; a vehicle used in two of the filer's businesses has no rule for the other business's miles; a 2019+ vehicle with an unreduced vehicle-credit basis; the 100%-use section 179 on the 2019 post-recovery path; fiscal-year quarters; an earlier year with qualified business use under 50% but business-ish use over. bonus_same's two readings only refuse.
+- **Source:** f1040sc line 43; i4562 pp. 13-16; p946 pp. 41, 61; p463 p. 25.
+- **Status:** open
+
+## BUG-0560 — f8960.prior_2i help ties the carryforward adjustment to having figured 2024 NIIT; a zero line 2(i) is not addressed
+
+- **Caught by:** question review, f8960.prior_2i#1, 2026-11-10.
+- **Symptom:** The help says to answer No if 2024 NIIT was not figured, but the adjustment follows from a 2024 net excluded capital loss whether or not Form 8960 was filed (vanishingly rare). A filer reading an entered -0- as 'an amount' answers Yes, which only refuses.
+- **Source:** i8960 p. 9, "Starting in 2014, capital loss carryforwards must be adjusted if any sum of all capital gain or loss amounts excluded from NII on lines 5b and 5c was a net loss"; p. 10, line 2(i).
+- **Status:** open
+
+## BUG-0561 — f8962.estimate_100 ties the Marketplace estimate to 'when you enrolled'
+
+- **Caught by:** question review, f8962.estimate_100#1, 2026-11-10.
+- **Symptom:** When only a spouse or dependent enrolled, a filer below 100% of the poverty line reading 'you' literally can answer No and lose the PTC the estimate exception allows. Narrow.
+- **Source:** i8962 p. 9, "You or an individual in your tax family enrolled"; "The Marketplace estimated at the time of enrollment that your household income would be at least 100%".
+- **Status:** open
+
+## BUG-0562 — dcprov.paid does not say a provider the employer hired counts as employer-furnished care
+
+- **Caught by:** question review, dcprov.paid#1, 2026-11-10.
+- **Symptom:** A filer whose employer hired a provider may enter the employer's payments where column (e) needs -0-. Column (e) (f2441.line1_paid) is read by no computation: presentation only.
+- **Source:** i2441 p. 3, Columns (a) and (b): employer-furnished care "(either at your workplace or by hiring a care provider)"; a third party "not hired by your employer" paid on your behalf is included.
+- **Status:** open
+
+## BUG-0563 — sli.interest's 'for that year' does not name the year the loan was taken out
+
+- **Caught by:** question review, sli.interest#1, 2026-11-10.
+- **Symptom:** The dependent bullet says 'a person you could have claimed as a dependent for that year'; the only year named is 2025. A filer whose child's status differs between the loan year and 2025 could include or leave out interest wrongly. Rare.
+- **Source:** i1040gi p. 99, "Any person you could have claimed as a dependent for the year the loan was taken out except that".
+- **Status:** open
+
+## BUG-0564 — The acquisition-date question for the 100% special allowance ignores written binding contracts entered into before January 20, 2025
+
+- **Caught by:** question review, asset.after_jan19#1, 2026-11-10.
+- **Symptom:** asset.after_jan19 asks only "Did you acquire this property after January 19, 2025?". Property acquired under a written binding contract entered into before January 20, 2025 is treated as acquired before that date for the special allowance, so it gets 40%, not 100%. A filer who ordered equipment in 2024 and took delivery in 2025 answers Yes and asset.bonus_fullcase gives 100%. No screen asks about the contract date.
+- **Source:** P.L. 119-21 sec. 70301 (acquisition date for the 100% allowance; written binding contract rule), not archived; i4562 p. 5, Line 14, "certain qualified property acquired after January 19, 2025"; p946 p. 23.
+- **Status:** open
+
+## BUG-0565 — Form 4562 asset question wording lows: listed property definition, unadjusted basis, whole-percent use, calendar-year quarters, and a 521 cooperative (low)
+
+- **Caught by:** question review, asset.listed#1, asset.cost#1, asset.not179#1, asset.pct#1, asset.placed#1, asset.quarter#1, 2026-11-10.
+- **Symptom:** Wording lows, recorded for the next change of these questions. (1) asset.listed omits peripherals and the operator-owned establishment condition for pre-2018 computers (no 2025 depreciation remains on them), applies the exclusive-business-use exception to all entertainment property (only the line changes), and its camera example may be read as requiring entertainment use. (2) asset.cost does not say the basis is unadjusted for prior depreciation. (3) asset.not179 does not except a section 521 farmers' cooperative. (4) asset.pct takes a whole percent, so a fractional percentage rounds. (5) asset.placed and asset.quarter assume a calendar tax year. (6) asset.quarter does not restate that a converted asset is placed in service on the conversion date (asset.placed says it).
+- **Source:** i4562 p. 3 (listed property and exceptions), p. 2 (section 179 exclusions), pp. 11, 14 (columns (b), (c), (d)); p946 p. 41 (quarters of the tax year).
+- **Status:** open
+
+## BUG-0566 — The under-13 care question keys on when care was paid, not when it was provided
+
+- **Caught by:** question review, dependent.dc_under13#1, 2026-11-10.
+- **Symptom:** dependent.dc_under13 asks "Was this child under age 13 for part of 2025, when you paid for their care?". The qualifying-person test turns on the age when the care was provided. A child who turned 13 early in 2025 and whose pre-birthday care was all paid after the birthday gets No; dependent.dc_child is false and the credit for that care is lost.
+- **Source:** p503 p. 3, "Your qualifying child who is your dependent and who was under age 13 when the care was provided" and Person qualifying for part of year; i2441 p. 5, Line 16, "It doesn't matter when the expenses were paid".
+- **Status:** open
+
+## BUG-0567 — The local-law question is a double negative, so a lawful relationship can be answered No
+
+- **Caught by:** question review, dependent.lawful#1, 2026-11-10.
+- **Symptom:** dependent.lawful asks "Did your relationship with this person not violate local law?". A filer meaning "it did not violate" can answer No, which makes dependent.qr_other_relation false and drops a member-of-household qualifying relative (and the credit for other dependents). The question also gives no time frame ("at any time during the year").
+- **Source:** i1040gi p. 19, Step 4, "if your relationship didn't violate local law"; p501 p. 19, Local law violated, "at any time during the year".
+- **Status:** open
+
+## BUG-0568 — Dependent question wording lows: over-refusing wide readings and rare omitted cases (low)
+
+- **Caught by:** question review, dependent.absence_no_return#1, dependent.citizen#1, dependent.gross_income#1, dependent.joint_return#1, dependent.kidnapped#1, dependent.lawful#1 (finding 0), dependent.months#1, dependent.other_claimant#1, dependent.part_year_home#1, dependent.placed#1, dependent.ptc_files#1, dependent.ptc_magi#1, dependent.relationship#1, dependent.work_ssn#1, 2026-11-10.
+- **Symptom:** Lows, recorded for the next change of these questions. Over-refusals: absence_no_return asks whether any non-qualifying absence was counted, not whether the result depends on one (household.hoh_absence refuses); joint_return's 'includes this person' can be read as a return listing the person (refused through dependent.married); kidnapped omits the residency, return and age-18 conditions (every Yes refuses); other_claimant omits 'other than your spouse if filing jointly' and joins the dependent and EIC rules (qc_tiebreak and eic_tiebreak refuse). Rare omissions: citizen's 'adopted child' does not say it includes a child placed for adoption; gross_income omits miscellaneous business income, net sales and which scholarship part counts; lawful has no time frame; months says '0 otherwise' for a non-qualifying-child born, died or placed in 2025 and its Count has no upper bound of 12; part_year_home's two measures for a person both born and placed; placed relies on the relationship question for 'eligible foster child'; ptc_files gives only the under-65, not-blind figures; ptc_magi does not name Form 2555 lines 45 and 50; relationship's in_law is not limited to the six listed in-laws; work_ssn gives no date for the DHS authorization test.
+- **Source:** i1040gi pp. 14-22 (Steps 1-5, exceptions); p501 pp. 9, 13, 15, 18-19; i8962 p. 8, Worksheet 1-2.
+- **Status:** open
+
+## BUG-0569 — Education questions: the Form 1098-T date disagrees with its recorded reading, and the excess-assistance and 2a wording (low)
+
+- **Caught by:** question review, dependent.edu_1098t#1, dependent.edu_a2025#1, dependent.edu_over#1, 2026-11-10.
+- **Symptom:** Lows. (1) dependent.edu_1098t (and person.edu_1098t, which shares the help) says "after February 2, 2026" although amb.2025.edu_1098t_date chose the i8863 date "After January 31, 2026"; the question also attaches the enrollment and payment proof only to the not-furnished exception. (2) dependent.edu_a2025's "this student's 2025 expenses" can be read as expenses for 2025 terms rather than those entered for 2025. (3) dependent.edu_over compares against the period's expenses without the 2025-payment limit, uses the institution-paid definition for American opportunity students, and puts no timing limit on assistance, refunds or period; the wide readings refuse (edu_over_refused).
+- **Source:** i8863 p. 1, Form 1098-T requirement; p. 4, Tax-free educational assistance; p. 9, Adjusted Qualified Education Expenses Worksheet.
+- **Status:** open
+
+## BUG-0570 — Form 1040 refund election amounts are not bounded by line 34, and the qualified-dividends question carries builder wording (low)
+
+- **Caught by:** question review, f1040.line35a#1, f1040.line36#1, f1040.line3a#1, 2026-11-10.
+- **Symptom:** f1040.line35a and f1040.line36 accept any non-negative amount; nothing checks that they are parts of line 34 (no line reads them). f1040.line3a says "after the line 3a exceptions" without listing them and adds "Supplied as a subtotal; qualification checks are outside this stage", which is builder wording.
+- **Source:** Form 1040 (2025), lines 34, 35a, 36; i1040gi p. 26, Line 3a.
+- **Status:** open
+
+## BUG-0571 — The investment interest carryover question does not name a spouse's separate 2024 return (low)
+
+- **Caught by:** question review, f4952.carryover#1, 2026-11-10.
+- **Symptom:** f4952.carryover asks about "your 2024 Form 4952"; its gate f4952.has_interest says "by either of you, on a joint or separate return". A joint filer whose spouse filed separately in 2024 with a carryover may answer No and lose line 2.
+- **Source:** f4952 p. 1, Part I, line 2.
+- **Status:** open
+
+## BUG-0572 — The AOC ban question excepts only a Form 8862 filed for 2024 (low)
+
+- **Caught by:** question review, f8863.ban#1, 2026-11-10.
+- **Symptom:** f8863.ban says Form 8862 is not required "if you filed Form 8862 for 2024 and the credit was allowed". Form 8862 is required only for the next year the credit is claimed after a denial, so a filer who filed it for an earlier year answers Yes and is refused (f8863.ban_refused). Over-refusal.
+- **Source:** i8863 p. 1, "you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit".
+- **Status:** open
+
+## BUG-0573 — Schedule A charitable cash and gambling loss question wording (low)
+
+- **Caught by:** question review, sa.line11#1, sa.gambling_losses#1, 2026-11-10.
+- **Symptom:** Lows. sa.line11 ("Deductible cash/check charitable gifts ... after benefits received and required substantiation") lists neither the amounts that can't be deducted (raffle tickets, political contributions, tuition, the state or local tax credit reduction), nor the recordkeeping rules, nor the travel-with-pleasure exclusion, and says "cash or check" where card and payroll gifts count. sa.gambling_losses does not exclude a professional gambler's Schedule C losses.
+- **Source:** i1040sca p. 10, Line 11, Amounts You Can't Deduct and Recordkeeping; p525 p. 33.
+- **Status:** open
+
+## BUG-0574 — The wash-sale question's closed list of triggers omits stock acquired as compensation (RSU vests, bonus awards)
+
+- **Caught by:** question review, sales.wash_loss#1, 2026-11-10.
+- **Symptom:** sales.wash_loss defines a wash sale as buying substantially identical stock, acquiring it in a fully taxable trade, acquiring a contract or option, or acquiring it for an IRA, within 30 days. Stock received as a bonus award or by an RSU vest within 30 days of a loss sale also makes the loss nondeductible. An employee selling company stock at a loss near a vest enters 0 (or corrects the broker's amount down) and deducts a disallowed loss.
+- **Source:** p550 p. 87, Wash Sales, Example 2, "If you receive another bonus award of substantially identical stock within 30 days of the sale, you cannot deduct your loss on the sale."
+- **Status:** open
+
+## BUG-0575 — Sales question wording: broker-report basis not tied to box 1e, and securities futures contracts in the wash-sale question (low)
+
+- **Caught by:** question review, sales.reported_basis#1, sales.wash_loss#1 (finding 2), 2026-11-10.
+- **Symptom:** sales.reported_basis asks for the "Basis shown on broker report" without naming Form 1099-B box 1e; a filer entering a supplemental adjusted basis gets the same gain but column (e) and code B do not match the form. sales.wash_loss does not say that a loss on a securities futures contract to sell follows the short-sale rule.
+- **Source:** i8949 pp. 7-8, column (e) and code B; p550 pp. 87-88.
+- **Status:** open
+
+## BUG-0576 — The Schedule B foreign account question gives no definition of a foreign financial account (low)
+
+- **Caught by:** question review, sb.line7a#1, 2026-11-10.
+- **Symptom:** sb.line7a asks only "Any financial interest in or signature authority over a foreign financial account during 2025?". It does not say that cash-value insurance, annuities and fund shares count, that location (not the bank's nationality) decides, or that the FBAR signature-authority exceptions are ignored. The answer feeds only Part III and line 7a; no tax amount changes.
+- **Source:** i1040sb pp. 2-3, Line 7a.
+- **Status:** open

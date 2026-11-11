@@ -205,23 +205,27 @@ and the column. `node engine/dist/main.js conjecture` checks every cell against
 the credit formula built from Rev. Proc. 2024-40 section 3.06(1); see
 `reports/2025/eic_table_conjecture.md`.
 
-## Sampled completeness, screen and false-no reviews
+## Sampled completeness, screen, false-no and question reviews
 
-`completeness_review.py` and `check_completeness.py`, `screen_review.py` and `check_screens.py`, and
-`false_no_review.py` and `check_false_no.py` keep sampled reviews (`tools/transcription/samples.py`). A form's (or screen's) subject is the hash of its review prompt without the
+`completeness_review.py` and `check_completeness.py`, `screen_review.py` and `check_screens.py`,
+`false_no_review.py` and `check_false_no.py`, and `question_review.py` and `check_questions.py` keep sampled reviews (`tools/transcription/samples.py`). A form's (or screen's) subject is the hash of its review prompt without the
 reviewer's system prompt; its record holds the samples run on that subject, and the union of their findings is ruled
-once. Screen and false-no rulings are per sample (`unruled:<unit>#<k>`); a sample carries a ruling only when its
+once. Screen, false-no and question rulings are per sample (`unruled:<unit>#<k>`); a sample carries a ruling only when its
 verdict and findings equal a ruled sample's. A claim equal to a ruled claim of the same form and
 subject (item and normalised quote) carries that ruling. Between releases a form whose subject changed is due:
-listed by check-all, not failed. `--release` of the three checks is the release gate (`tools/release_reviews.sh`): it fails while any subject is
-due or short of `SAMPLES_PER_MILESTONE` samples. A record marked `grandfathered` holds one review made before
+listed by check-all, not failed. `--release` of the completeness, screen and false-no checks is the release gate
+(`tools/release_reviews.sh`): it fails while any subject is due or short of `SAMPLES_PER_MILESTONE` samples.
+`check_questions.py` lists due questions (a count on the console, the list in `reports/<year>/question_currency.md`)
+and fails on unruled samples and orphans; its `--release` mode joins the release gate once the first full pass is
+ruled (owner decision 2026-11-10). A question's subject is its line, interview wording and help, and its direct
+readers' lines and English (`question_review.subject`); a screen's subject leaves out the help its prompt shows. A record marked `grandfathered` holds one review made before
 sampling and satisfies the milestone until its subject changes. Runs are guarded: samples beyond the milestone need
 `--force-rerun REASON`, and an estimate above the owner's $3.00 gate needs `--approve-cost` (`spend.py`, shared with
 `rerun_all.py`).
 
 ## Process hooks
 
-- **Fresh build** (`tools/build_fresh.py`): the completeness, screen and false-no checks and triage refuse to run when
+- **Fresh build** (`tools/build_fresh.py`): the completeness, screen, false-no and question checks and triage refuse to run when
   canonical/ is older than a model source or engine/dist older than engine/src (rebuild first).
 - **Bug inventory in merges** (`tools/check_bug_inventory.py --merge`, from pre-commit): a merge may not create or
   renumber a BUG entry; colliding ids are renumbered in a commit on the branch before merging.
@@ -264,6 +268,6 @@ that year's table from its archived source, and the check-all step named beside 
 | `new_bug.py`, `task_row.py` | Append a `BUG_INVENTORY.md` entry; add or update a `TASKS.md` row (tested by `test_bookkeeping_tools.py`) |
 | `ocr_audit.py` | An image-grounded audit of the archived text layers (Tesseract), for a person to adjudicate; not a gate |
 | `extraction/page_review.py` | Local HTML pages of each archived page beside the project's reading of it, for a person to judge |
-| `transcription/question_review.py` | Prototype of the question review: builds and prices every question's review prompt (`--dry-run`) and lists which existing reviews judge each input's wording (`--coverage`); calls no model |
+| `transcription/question_review.py` | The question review (section "Sampled completeness, screen, false-no and question reviews"); also prices every question's prompt without a call (`--measure`) and lists which existing reviews judge each input's wording (`--coverage`) |
 | `transcription/migrate_line_subjects.py` | Rewrites transcription logs' line-subject tables (`transcription/README.md`; tested by `test_review_tools.py`) |
 | `human_review/test_browser.mjs`, `../ui/test_browser.mjs` | Browser smoke tests of the review packet and the web UI, against a separately launched headless Chrome |

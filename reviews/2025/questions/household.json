@@ -1,0 +1,564 @@
+{
+ "form": "household",
+ "reviews": {
+  "household.community_property": {
+   "subject_sha": "7cf151129672339582d36b423c3ea72cb69302f774b5d25fcb8f7f6c4259911e",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A married filer filing as head of household lived in Texas during 2025, but the spouse lived all year in a non-community-property state (common, since a HOH spouse must have lived apart for the last six months). The filer truthfully answers yes, and household.hoh_cp_married flags them for refusal.",
+       "source_text": "i1040gi p. 23: \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income.\"",
+       "why": "The text's condition is that you and your spouse lived in a community property state. The question asks only whether \"you\" lived in one, so it brings in married filers whose spouse never lived there.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer lived in Arizona from January to March 2025 while single, then moved to Ohio and married there in November. They truthfully answer yes, and household.hoh_cp_married (married at end of 2025 and the answer is yes) flags them.",
+       "source_text": "Question: \"Did you live in a community property state ... at any time in 2025?\"; i1040gi p. 23: \"If you and your spouse lived in a community property state...\"",
+       "why": "Community income arises only while the spouses were married and living in the community property state. 'At any time in 2025' also counts residence there before the marriage. Unlike cp_not_joint, hoh_cp_married has no 'while married' limit.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "cfa0786fba22abf43d409b01990ee711eb273f5e2c56c96c5d41d65dab021a7e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.042064000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/household.community_property.7cf151129672.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Community Property States, \"Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin\"",
+      "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income\"",
+      "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555.\"",
+      "p. 23, Community Property States, Nevada, Washington, and California domestic partners, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555\""
+     ],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "household.cp_married": {
+   "subject_sha": "b38c1ae3765658466eb55a047ce6638f39dc9fb64e9341087adef7ef33e37a79",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose spouse died in 2025 while both lived in a community property state, and who is not filing jointly, answers No because the marriage ended by death, not by divorce or legal separation.",
+       "source_text": "i1040gi p. 23, Community Property States: \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income.\"",
+       "why": "The text's condition covers any part of 2025 spent married and living in a community property state, however the marriage ended. The wording 'before a divorce or legal separation' tells a widowed filer the question is not about them, so the line gets No when it needs Yes.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A registered domestic partner in Nevada, Washington or California truthfully answers No because they were never married, although community income rules apply to them.",
+       "source_text": "i1040gi p. 23: \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555.\"",
+       "why": "The question asks only about marriage, so a registered domestic partner gives No. The text still requires a Form 8958/Pub. 555 community income split, which is the situation this line exists to refuse.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who lived in a community property state while married to a spouse who lived in a non-community-property state answers Yes.",
+       "source_text": "Question: \"Were you married at any time during 2025 ... while you lived in a community property state\"; i1040gi p. 23: \"If you and your spouse lived in a community property state\"",
+       "why": "The text's condition requires that both spouses lived in a community property state. The question asks only where the filer lived, so it brings in Yes answers the text's condition does not cover.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "e1f6bde16e0cef0ce9f2b1c52ba5177f8564c15d0cfaaf708a11ad34f57210ba",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.047564,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/household.cp_married.b38c1ae37656.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555.\""
+     ],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "household.credit_disallowed": {
+   "subject_sha": "7ee3133bb7c2bb85e5e8d2fe6fc139e8b80609a3580a8bb8b99d2fa1e46cd4a9",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "c78c04b81235414d5380cef4b8bc70869f6ed2c3e97a3d400b8938820502b69b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.053868,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/household.credit_disallowed.7ee3133bb7c2.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      39,
+      43
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 39, Form 8862, who must file, \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit\"; p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\"",
+      "p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\" and \"don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud\"; p. 39, Form 8862, who must file, \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit (refundable or nonrefundable depending on the tax year), additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced for any reason other than a math or clerical error\"; , Form 8862 may be required, \"If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\""
+     ],
+     "cols_pages": [
+      39,
+      43
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i1040s8812",
+     "revision": "2025; printed date 2026-01-23",
+     "text_sha256": "fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765",
+     "pages": [
+      2
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45"
+    }
+   ]
+  },
+  "household.home_cost": {
+   "subject_sha": "8312942cc491bd2f063321146ceb3cb88624dc863a00461fc91f08ef1ef2f43a",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "4acb33d83d6d18afb8dae288acc43d2289ffaff99b25c8f530fdb5aeb93f3d3e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.054688,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/household.home_cost.8312942cc491.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Head of Household, Test 2, \"You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year\"",
+      "p. 14, Head of Household, Test 2; p. 15, \"Keeping up a home. To find out what is included in the cost of keeping up a home, see Pub. 501.\"; , Keeping Up a Home, \"Costs you include. Include in the cost of keeping up a home expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home.\" , \"Costs you don’t include. Don’t include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation. Also don’t include the value of your services or those of a member of your household.\" , Note, \"Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you.\"; , Note, \"if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided for that person\""
+     ],
+     "cols_pages": [
+      14,
+      15
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Temporary absences, \"You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances\" and \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "household.married": {
+   "subject_sha": "71cca2a34ca2ee4b077638f9d5af7e42056805d77a1509f9b0e383873ed2e61e",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A couple obtained a final divorce in 2025 only to file as unmarried, intending to remarry each other in 2026, and did remarry in 2026.",
+       "source_text": "p501 p. 6, Divorce and remarriage: \"you and your spouse must file as married individuals in both years.\"",
+       "why": "The question tells the filer to \"Answer No if, by December 31, you were divorced under a final decree.\" Its remarriage note only covers choosing a filing status, so the filer truthfully answers No. The lines need married here, and filing_status_conflict then wrongly flags a correct married filing jointly return through joint_unmarried.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer's spouse died during 2025, and the filer did not remarry; for example, the filer lived apart from the spouse and files head of household, or is 55 or older with family HDHP coverage.",
+       "source_text": "p501 p. 6, Spouse died during the year: \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\"",
+       "why": "The question asks only about marriage at year end and sets the death case aside, so a surviving spouse answers No. Then eic.married_rules skips the married head of household test, and f8889.age55_unmarried counts the $1,000 on line 3 instead of line 7, where the text treats the person as married for the whole year.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "21a9f13496aacba655fb6bdd8b9a5fafed400ba6ba016b9ac665339b9221c1cd",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.10654,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/household.married.71cca2a34ca2.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 7,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      13,
+      23,
+      41
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Single, \"But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box.\"; p. 13, Married Filing Jointly, \"You were married at the end of 2025\"; p. 13, \"Your spouse died in 2025 and you didn’t remarry in 2025.\"",
+      "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income\"",
+      "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555.\"",
+      "p. 41, Step 3, question 3, and Step 4, question 1, \"Are you a married taxpayer whose filing status is married filing separately or head of household?\"",
+      "p. 41, Step 3, question 3, and Step 4, question 1, \"Are you a married taxpayer whose filing status is married filing separately or head of household?\"; , Line 3, rule 6, \"If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year\"; , Marital Status, \"State law governs whether you are married or legally separated under a divorce or separate maintenance decree.\"; , Definition of marriage, \"Individuals who have entered into a registered domestic partnership, civil union, or other similar relationship\"; , Considered married, \"You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began.\"; , Divorce and remarriage, \"you and your spouse must file as married individuals in both years.\"; , Annulled marriages, \"you are considered unmarried even if you filed joint returns for earlier years.\""
+     ],
+     "cols_pages": [
+      13,
+      23,
+      41
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      4,
+      5,
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 3, \"Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\"; p. 4, Line 3, rule 2, \"If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year\"",
+      "p. 6, Line 3 Limitation Chart, 'If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month'"
+     ],
+     "cols_pages": [
+      4,
+      5
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      6
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "household.qss_eligible": {
+   "subject_sha": "83724430adfba6ce5e1a1e843b19881318b290d4dcadd5a6828f4e27cbca8d0c",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "4cd1cd1e894ac0936f224a98bf011c043fff1337a504c05c86471c2a805d9444",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.060835999999999994,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/household.qss_eligible.83724430adfb.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Qualifying Surviving Spouse, \"You can check the “Qualifying surviving spouse” box in the Filing Status section on page 1 of Form 1040 or 1040-SR and use joint return tax rates for 2025 if all of the following apply. 1. Your spouse died in 2023 or 2024 and you didn’t remarry before the end of 2025. 2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent except that, for 2025: a. The child had gross income of $5,200 or more, b. The child filed a joint return, or c. You could be claimed as a dependent on someone else’s return.\" and \"3. This child lived in your home for all of 2025. If the child didn’t live with you for the required time, see Exception to time lived with you, later. 4. You paid over half the cost of keeping up your home. 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn’t actually do so.\"; \"If your spouse died in 2025, you can't file as qualifying surviving spouse\"; \"An adopted child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption\"; Exception to time lived with you, \"Temporary absences by you or the child for special circumstances, such as school, vacation, business, medical care, military service, or detention in a juvenile facility, count as time lived in the home\" and \"A child is considered to have lived with you for all of 2025 if the child was born or died in 2025 and your home was the child’s home for the entire time the child was alive\"; , Note, \"Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you.\"; , Qualifying Surviving Spouse, \"4. This child lived in your home all year, except for temporary absences. See Temporary absences, earlier, under Head of Household.\"; , Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\"; , \"Also don’t include the value of your services or those of a member of your household.\"; , Note, \"if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided for that person\"; , Kidnapped child, \"You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped.\"",
+      "p. 15, Qualifying Surviving Spouse, \"use joint return tax rates for 2025 if all of the following apply\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      9,
+      11
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      11
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "household.rdp": {
+   "subject_sha": "06f6032376c5bd2c8c42f1f193b5666433de8748ea622c26129307f72f351e4e",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "e634e3dfa9b840baf56e7e384b7a709c428d2225da92186076b1486f89dabbcd",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.029755999999999998,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/household.rdp.06f6032376c5.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Community Property States, Nevada, Washington, and California domestic partners, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner\"",
+      "p. 23, Community Property States, Nevada, Washington, and California domestic partners, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555\""
+     ],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "household.spouse_died_2025": {
+   "subject_sha": "502f88376a9582599ff07dc19f7cd530a1d49628ab825a02557df85750a6394f",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose spouse died in 2025 remarried later in 2025 and was divorced from the new spouse by December 31, 2025, then claims married filing jointly. A truthful Yes satisfies the death-in-2025 path even though remarriage bars a joint return with the deceased spouse.",
+       "source_text": "i1040gi p. 13: \"Your spouse died in 2025 and you didn't remarry in 2025.\"; p501 p. 6: \"If you remarried before the end of the tax year, you can file a joint return with your new spouse. Your deceased spouse's filing status is married filing separately for that year.\"",
+       "why": "The question asks only whether the spouse died in 2025, so its Yes covers more filers than the joint-return condition, which also requires no remarriage in 2025. Filers who remarried and are no longer married at year end get the joint return allowed wrongly.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose divorce became final earlier in 2025, and whose former spouse then died later in 2025, could read 'your spouse' as including the ex-spouse and answer Yes.",
+       "source_text": "Question: \"Did your spouse die in 2025?\"; p501 p. 6: \"If you are divorced under a final decree by the last day of the year, you are considered unmarried for the whole year.\"",
+       "why": "If the filer counts the former spouse, the Yes is refused and blocks a valid single or head of household return. The wording does not say the person must still have been the filer's spouse when they died.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer who chose married filing jointly reads help that says the question is asked only for single or head of household and that a Yes is refused, even though the joint-return path needs a Yes.",
+       "source_text": "Help: \"Asked when your filing status is single or head of household; a Yes is refused\"; question: \"(Asked when ... filing jointly although not married at the end of 2025.)\"; i1040gi p. 13: \"Your spouse died in 2025 and you didn't remarry in 2025.\"",
+       "why": "The help and the question describe when the question is asked in conflicting ways. A widowed joint filer may answer No to avoid the stated refusal, and that No would disqualify the joint return they are allowed to file.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "73b9aae53249b5d8d03e2462a353e8a2ebd913e94308c315b7a91aec853fe091",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.071476,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/household.spouse_died_2025.502f88376a95.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      13
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Single, \"But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box.\"; p. 13, Married Filing Jointly, \"You were married at the end of 2025\"; p. 13, \"Your spouse died in 2025 and you didn’t remarry in 2025.\"",
+      "p. 13, Single, \"You were widowed before January 1, 2025, and didn’t remarry before the end of 2025\"; p. 13, Married Filing Jointly, \"Your spouse died in 2025 and you didn’t remarry in 2025.\"; , Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\""
+     ],
+     "cols_pages": [
+      13
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "household.unmarried": {
+   "subject_sha": "bc4c729f3a4b3e68a56940e25350f2b200a52bd4034606d89ed0369eb589567d",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A couple divorced under a final decree in late 2025 only so they could file as unmarried, and they intend to and do remarry each other in 2026; the filer truthfully answers that they were unmarried at the end of 2025.",
+       "source_text": "p501 p. 6, Divorce and remarriage: \"If you obtain a divorce for the sole purpose of filing tax returns as unmarried individuals, and at the time of divorce you intend to and do, in fact, remarry each other in the next tax year, you and your spouse must file as married individuals in both years.\"",
+       "why": "The question asks only whether the filer was unmarried at year end and does not mention this rule. The truthful answer is Yes, but the text treats the filer as married, so household.hoh_eligible must not be true.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer in a registered domestic partnership or civil union, which is not denominated as a marriage under state law, is asked whether they were 'unmarried' at the end of 2025.",
+       "source_text": "p501 p. 6, Definition of marriage: \"Individuals who have entered into a registered domestic partnership, civil union, or other similar relationship that isn't denominated as a marriage ... aren't lawfully married for federal tax purposes\"",
+       "why": "The question does not say how such relationships are treated. An ordinary partner could reasonably answer No, seeing the partnership as a marriage, or Yes, seeing themselves as legally unmarried. The text requires Yes.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The filer's spouse was a nonresident alien during 2025, and the couple made the choice to treat the spouse as a resident in a prior year; that choice is still in effect, but no new election was made for 2025.",
+       "source_text": "i1040gi p. 14: \"Also check the box and enter their name if you and your nonresident spouse made the choice to be treated as residents in a prior year and the choice remains in effect\"; p501 p. 9: \"You are considered married if you choose to treat your spouse as a resident alien.\"",
+       "why": "The wording 'you did not elect to treat your spouse as a resident alien' can be read as asking only about an election for 2025. On that reading the filer answers Yes, while a continuing prior-year choice makes them considered married.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "e667e098ae51253af1bff1b358514cf013b231bd7b487c6dbaafd0ead5f4bb86",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.12032799999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/household.unmarried.bc4c729f3a4b.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      14,
+      15,
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Head of Household, \"Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies\"",
+      "p. 14, Head of Household, \"You are considered unmarried for this purpose if any of the following applies\" through \"the election to treat the alien spouse as a resident alien is not made\"; p. 15, Married persons who live apart, \"Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply\" through \"under the rule for Children of divorced or separated parents\"; p. 14, Exception to time lived with you, \"Temporary absences by you or the other person for special circumstances\"; p. 15, Exception to time lived with you, \"If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive\" through \"for more than half the time since the person was adopted or placed with you in 2025\"; , Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\"; , Considered Unmarried, \"Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later.\"; , Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\"",
+      "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\""
+     ],
+     "cols_pages": [
+      14,
+      15,
+      23
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      6,
+      8,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\"",
+      "p. 9, Temporary absences, \"You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances\" and \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\""
+     ],
+     "cols_pages": [
+      6,
+      8
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  }
+ }
+}

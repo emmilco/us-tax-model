@@ -1,0 +1,193 @@
+{
+ "form": "f4952",
+ "reviews": {
+  "f4952.carryover": {
+   "subject_sha": "89d2d0930beee9acd7c6f5c76c6b49f492779301f2708ec60fb8b01aa6695cc1",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A couple files jointly for 2025, but the spouse filed a separate 2024 return whose Form 4952 shows an amount on line 7, and the filer reads \"Do you have ... your 2024 Form 4952\" as asking only about their own return.",
+       "source_text": "f4952 p. 1, Part I, line 2: \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+       "why": "The joint 2025 Form 4952 line 2 must include the spouse's 2024 carryforward. The gate explicitly says \"by either of you, on a joint or separate return,\" but this question says only \"you\" and \"your 2024 Form 4952\" and never mentions the spouse, so the filer may truthfully answer no.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer's investment interest was first disallowed in 2022 and carried through 2024 Form 4952 lines 2 and 7 into 2025, and the filer is unsure whether that counts as \"disallowed in 2024.\"",
+       "source_text": "f4952 p. 1, line 7: \"Disallowed investment interest expense to be carried forward\"; line 2: \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+       "why": "\"Investment interest expense that was disallowed in 2024\" can be read as only interest first disallowed in 2024, which would exclude older carryforwards that 2024 line 7 includes. The parenthetical reference to line 7 points the other way. The two readings give different yes/no answers for line 2.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "982ed412416eaa2b7c90397bdbed675aac73caa9cf6fa412552570328b1ce75d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.066476,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f4952.carryover.89d2d0930bee.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f4952",
+     "revision": "2025; created 2025-05-28",
+     "text_sha256": "efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+      "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"; p. 3, Who Must File, \"You don’t have any carryover of disallowed investment interest expense from 2024\""
+     ],
+     "cols_pages": [
+      3,
+      4
+     ],
+     "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
+    }
+   ]
+  },
+  "f4952.line1": {
+   "subject_sha": "fd973d20654ea485fb390f88e35b264d11579fb1e8db1bb9d3e31028e063b013",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose only investment interest, or part of it, is reported on a Schedule K-1 from a partnership or S corporation reads the question as asking about interest they paid on their own loans, and leaves the K-1 amount out.",
+       "source_text": "f4952 p. 3, Line 1: \"Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation.\"",
+       "why": "The question asks only about interest on \"a loan or the part of a loan\" and never mentions K-1 amounts, so a truthful answer can leave out K-1 investment interest that line 1 must include. The gate lists K-1 interest, but the amount question does not ask for it.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "18064eacf3082df2879c98b878e3b14ebfcbf04c0bd693386a64448990c0d9b1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.048484,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f4952.line1.fd973d20654e.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f4952",
+     "revision": "2025; created 2025-05-28",
+     "text_sha256": "efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 3, Who Must File, \"you must file Form 4952 to claim a deduction for your investment interest expense\"; p. 3, Line 1, \"Enter the investment interest expense paid or accrued during the tax year, regardless of when you incurred the indebtedness\"",
+      "pp. 1, 3–4, Investment Interest Expense Deduction; p. 3, Allocation of Interest Expense, \"If you paid or accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the interest.\"; p. 3, Line 1, \"Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment (as defined later).\", \"Personal interest under section 163(h), including qualified residence interest.\", \"Any interest expense that is capitalized, such as construction interest subject to section 263A.\" and \"Interest expense, disallowed under section 264, on indebtedness with respect to life insurance, endowment, or annuity contracts issued after June 8, 1997\""
+     ],
+     "cols_pages": [
+      3,
+      4
+     ],
+     "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
+    }
+   ]
+  },
+  "f4952.line4g": {
+   "subject_sha": "69c2e734e536ae594c7d421954abcf1be58ec38282e8c9b2fe1ba4fe8299aec7",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "da09b3b0a91a16eed195b92aa35fe9c34f78c5c83141ad56eb943d7dfd4c8c37",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.045152,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f4952.line4g.69c2e734e536.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f4952",
+     "revision": "2025; created 2025-05-28",
+     "text_sha256": "efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 4, Line 4g, \"To make the election, enter on line 4g the amount you elect to include in investment income\"",
+      "pp. 1, 3–4, Investment Interest Expense Deduction",
+      "pp. 1, 3–4, Investment Interest Expense Deduction; p. 4, \"Generally, you must make this election on a timely filed return, including extensions.\" and \"However, if you timely filed your return without making the election, you can make the election on an amended return filed within 6 months of the due date of your return (excluding extensions).\" and \"Write “Filed pursuant to section 301.9100-2” on the amended return and file it at the same place you filed the original return.\""
+     ],
+     "cols_pages": [
+      3,
+      4
+     ],
+     "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
+    }
+   ]
+  },
+  "f4952.prior_7": {
+   "subject_sha": "3e61a408ee7a2245c0af20b58766c5ba59a178b61826e65c2541b96a18e06784",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "9a59a07441a7909251f1c8998313d009188ed7da020aead4bc725bc5f3b8a1b1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.034788,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f4952.prior_7.3e61a408ee7a.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f4952",
+     "revision": "2025; created 2025-05-28",
+     "text_sha256": "efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+      "pp. 1, 3–4, Investment Interest Expense Deduction"
+     ],
+     "cols_pages": [
+      3,
+      4
+     ],
+     "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "form": "sli",
+ "reviews": {
+  "sli.interest": {
+   "subject_sha": "d6c7c93dfdea4c0901c0e7d97d346d89106c79752b5d7368958666fc84de6add",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer took out a loan years ago for a child whom the filer could not have claimed in the year the loan was taken out, but could have claimed in 2025 except that the child had gross income of at least the exemption amount, and must decide whether that interest counts.",
+       "source_text": "i1040gi p. 99: '3. Any person you could have claimed as a dependent for the year the loan was taken out except that: ...'",
+       "why": "The question says 'a person you could have claimed as a dependent for that year' without naming the year, and the only year it names elsewhere is 2025, so a filer could read 'that year' as 2025. Under that reading the filer would include interest the text excludes, or leave out interest it includes, which changes line 1.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a5d541c6c851e7f3ad80179b10f0a41d7217135e976f6d4f3f9f350e7d974389",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.055512000000000006,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sli.interest.d6c7c93dfdea.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      98,
+      99
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 98, Schedule 1, line 21",
+      "p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' and 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses; , Student loan repayment assistance, \"You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs\" and \"The National Health Service Corps (NHSC) Loan Repayment Program\"",
+      "p. 98, Schedule 1, line 21, Exception",
+      "p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 1"
+     ],
+     "cols_pages": [
+      98
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p4681",
+     "revision": "2025",
+     "text_sha256": "c280f0029d95f9f4186840c73600efd2af4bd3370a86a31fb4f2a9391887b2b6",
+     "pages": [
+      5
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "21875d96efa2d4d7885584db3cf06d5830154aeff1eaf3370efad4fab5cc3a17"
+    }
+   ]
+  }
+ }
+}

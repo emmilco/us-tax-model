@@ -155,6 +155,8 @@ jstep operands "--jurisdiction ny" python3 tools/check_operands.py
 jstep signs "--jurisdiction ny" python3 tools/check_signs.py
 jstep screen_currency "--jurisdiction ny" python3 tools/transcription/check_screens.py
 jstep false_no_currency "--jurisdiction ny" python3 tools/transcription/check_false_no.py
+# Lists the questions due for the question review; fails on unruled samples and orphans (no release gate yet).
+jstep question_currency "--jurisdiction ny" python3 tools/transcription/check_questions.py
 jstep consumers "--jurisdiction ny" python3 tools/check_consumers.py
 jstep limits "--jurisdiction ny" python3 tools/check_limits.py
 jstep completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py

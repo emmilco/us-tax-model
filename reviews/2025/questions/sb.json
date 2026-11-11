@@ -1,0 +1,178 @@
+{
+ "form": "sb",
+ "reviews": {
+  "sb.form5471": {
+   "subject_sha": "08483c5408c3703e93420d858d55ed2c324838b2d9bd17be08e66bc2c90b00df",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A married filer filing a separate return answers yes only because the spouse, not the filer, was an officer or director of a foreign corporation in 2025, so this return is refused although the TIP's condition is not met for it.",
+       "source_text": "i1040sb p. 2, Part II TIP: \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\"; question: \"were you (or your spouse) an officer or director of a foreign corporation\"",
+       "why": "The TIP's gate is about the filer of the return. On a separate return the spouse's officer or director position is not the filer's and is not attributed to the filer, yet the question's wording makes a truthful answer yes. On a joint return 'you' covers both spouses, so the extra wording is right only there.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "4f23f51c527ccc2000e5233962e9f808f46c64dd720969b8243989468385bb42",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.045272,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sb.form5471.08483c5408c3.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sb",
+     "revision": "TY2025; printed April 23, 2025",
+     "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+    }
+   ]
+  },
+  "sb.line7a": {
+   "subject_sha": "2f0230a982605e373a3c83da02cd25485f4ee9015606707822e88e44ca50f1b9",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose only foreign holding is a cash-value whole life insurance policy, a cash-value annuity, or shares in a foreign mutual fund answers no, because the question does not say these count as a financial account.",
+       "source_text": "i1040sb p. 2: \"A financial account also includes a commodity futures or options account, an insurance policy with a cash value (such as a whole life insurance policy), an annuity policy with a cash value, and shares in a mutual fund or similar pooled fund\"",
+       "why": "Line 7a needs a yes for these holdings, but an ordinary filer reading only 'foreign financial account' would not count an insurance policy, annuity or fund shares, so Part III is not triggered when it should be.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer with an account at an overseas branch of a U.S. bank answers no, because the bank is American.",
+       "source_text": "i1040sb p. 3: \"an account maintained with a branch of a U.S. bank that is physically located outside of the United States is a foreign financial account\"",
+       "why": "Under the text, the account's physical location decides whether it is foreign, not the bank's nationality. The question gives no guidance on this, so a filer is likely to answer no when the line needs yes.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer with signature authority that falls under a FinCEN Form 114 exception (for example, an employee of a regulated entity) answers no, relying on the FBAR rules.",
+       "source_text": "i1040sb p. 3: \"See the FinCEN Form 114 instructions for exceptions. Don't consider the exceptions relating to signature authority in answering Question 1 on line 7a.\"",
+       "why": "Line 7a requires yes even when an FBAR signature-authority exception applies, and the question does not tell the filer to disregard those exceptions.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose only such account is at a U.S. branch of a foreign bank answers yes, because the bank is foreign.",
+       "source_text": "Question: \"Any financial interest in or signature authority over a foreign financial account during 2025?\"; i1040sb p. 3: \"An account maintained with a branch of a foreign bank that is physically located in the United States isn't a foreign financial account.\"",
+       "why": "A truthful yes based on the bank's nationality triggers Part III, but the text says this account is not a foreign financial account.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "3f6ae9e5ab2512fc43afe1cdc5fb05c9ce52d858d0feb95fc68e0963f054871f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.054728,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sb.line7a.2f0230a98260.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sb",
+     "revision": "TY2025; printed April 23, 2025",
+     "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "pp. 1–3, interest, dividends and foreign accounts/trusts"
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+    }
+   ]
+  },
+  "sb.ordinary_dividends": {
+   "subject_sha": "0b009ed23adc2448ce16259e949c406cd1b408f906a6e9d913cda556b58216a1",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose Form 1099-DIV includes dividends received as a nominee answers with the total including those amounts, as the help tells them to, and that total flows unreduced to Schedule B line 6.",
+       "source_text": "i1040sb p. 2, Line 5, Nominees: \"report the total on line 5... Below this subtotal, enter 'Nominee Distribution' and show the total ordinary dividends you received as a nominee. Subtract this amount from the subtotal and enter the result on line 6.\"",
+       "why": "The help says to include \"dividends that belong to someone else (as a nominee)\", but sb.line6 takes the answer directly with no nominee subtraction. Line 6 therefore includes dividends that belong to another person, when it should hold the line 5 subtotal minus the nominee distribution.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A married filer filing separately follows the help and includes Forms 1099-DIV issued in the spouse's name, so the spouse's dividends are counted on the filer's own Schedule B.",
+       "source_text": "i1040sb p. 2, Line 5: \"Report on line 5 all of your ordinary dividends.\"",
+       "why": "The help says \"in your or your spouse's name\" with no limit to joint returns. Only the gate's help limits spouse amounts to \"On a joint return\", so a separate filer would report dividends that are not theirs.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b5112a6c331bc9fcc95f926edc8b32395592829583999a071344387aa63b3a39",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.060587999999999996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/sb.ordinary_dividends.0b009ed23adc.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sb",
+     "revision": "TY2025; printed April 23, 2025",
+     "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Line 5, \"Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements\"",
+      "pp. 1–3, interest, dividends and foreign accounts/trusts"
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+    }
+   ]
+  }
+ }
+}

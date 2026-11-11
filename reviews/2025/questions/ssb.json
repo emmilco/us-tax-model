@@ -1,0 +1,107 @@
+{
+ "form": "ssb",
+ "reviews": {
+  "ssb.benefits": {
+   "subject_sha": "3a111f119b8cabfd79d6a446c40782743f7efcaf5a579ae71f43ebb7875967ad",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer receiving SSDI for injuries caused directly by a terrorist attack, such as the September 11 firefighter in the instructions' example, has box 5 of their SSA-1099 showing all benefits, including the excludable part.",
+       "source_text": "i1040gi p. 31: \"Don't include in your income any disability payments (including Social Security Disability Insurance (SSDI) payments) you receive for injuries incurred as a direct result of a terrorist attack ... If these payments are incorrectly reported as taxable on Form SSA-1099, don't include the nontaxable portion of income on your tax return ... you can exclude only 4 months ... ($6,000). You must report the remaining $12,000 on line 6a.\"",
+       "why": "The question asks for the plain \"Total of box 5 (net benefits) of all your Forms SSA-1099 and RRB-1099\". A truthful answer would be $18,000 in the example, but worksheet line 1 and line 6a must hold only the $12,000 that is not excluded. Nothing in the help or the listed refusals removes the excludable portion.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A married couple filing jointly where both spouses received Forms SSA-1099 or RRB-1099.",
+       "source_text": "i1040gi p. 32, worksheet line 8: \"Married filing jointly, enter $32,000\"; line 1: \"Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099\"",
+       "why": "On a joint return, line 1 must include both spouses' box 5 amounts. An ordinary filer answering a question addressed to \"your\" forms could reasonably enter only their own forms. Nothing in the help says to include the spouse's forms.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5997bacd3c97b14325db5f372d98e84698f225ddcd7bb2c4320fa29538d0ddf4",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.054556,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/ssb.benefits.3a111f119b8c.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      31,
+      32
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 32, Social Security Benefits Worksheet, line 1",
+      "p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b"
+     ],
+     "cols_pages": [
+      31
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "ssb.lived_apart": {
+   "subject_sha": "3ca9e7c3e13b6e5d3041c456c3b5058d2bd44c20af4fe54c66ed7676c81a5dfb",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A single, head of household, qualifying surviving spouse, or joint filer must still give a yes or no, and could reasonably answer either 'yes' (no spouse lived with them) or 'no' (not applicable); the helpers ssb.mfs_base and ssb.mfs_adjust use that answer without checking filing status.",
+       "source_text": "i1040gi p. 32, line 8: \"Single, head of household, qualifying surviving spouse, or married filing separately and you lived apart from your spouse for all of 2025, enter $25,000\"; question: \"If you are married filing separately: did you live apart from your spouse for all of 2025?\"",
+       "why": "The question only applies to married filing separately filers, but it accepts only yes or no and gives no 'not applicable' choice. A non-MFS filer's answer therefore changes which $25,000 and $9,000 helper amounts are produced. If lines 8 and 10 combine these helpers with the filing-status amounts, the result could be wrong or counted twice. The help text, which says married filing separately is refused, adds to the confusion for MFS filers.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "7954670bf74f972e6e8032ffb9dd676acb7d6e549e6797e71497bbb4ef6923e8",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.04846400000000001,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/ssb.lived_apart.3ca9e7c3e13b.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      31,
+      32
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 31, Line 6d",
+      "p. 31, Line 6d; p. 32, worksheet, Before you begin and line 8",
+      "p. 32, line 10",
+      "p. 32, line 8",
+      "p. 32, line 8, third bullet"
+     ],
+     "cols_pages": [
+      31
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  }
+ }
+}

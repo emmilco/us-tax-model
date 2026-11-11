@@ -1,0 +1,107 @@
+{
+ "form": "f8863",
+ "reviews": {
+  "f8863.ban": {
+   "subject_sha": "654316c623f944716dc5bb57ae1245d2dd184803d07f69ff439b8b5868e89a3a",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer's credit was reduced for 2019, they attached Form 8862 to their 2021 return and the credit was allowed, they did not claim it for 2024, and now they claim it for 2025.",
+       "source_text": "i8863 p. 1: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit.\"",
+       "why": "Form 8862 belongs only on the next return that claims the credit after the denial (here 2021), so it is not required for 2025. The question's only exception is a Form 8862 filed for 2024 and allowed, so this filer truthfully answers yes and is refused.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "6974aacd6e5031f3eb00d059512f0aba2bcd8200df9e7e4b16580c0bf7b7f3ba",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.042448,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8863.ban.654316c623f9.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Form 8862 may be required, \"If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.\"",
+      "p. 3, American Opportunity Credit, \"Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "f8863.paid": {
+   "subject_sha": "7ba15b303f2477956dcb3f28ac0c3acbf055a6db6ee86ebb00e2bcb67913190a",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A student's tuition is fully covered by a scholarship, but the student paid in 2025 for required textbooks bought from an online bookseller rather than from the school, so a filer reading 'paid ... at a college' as 'paid to the school' answers no.",
+       "source_text": "i8863 (2025) p. 2, Table 1, American opportunity credit qualified expenses: \"course materials that the student needs for a course of study whether or not the materials are bought at the educational institution\"",
+       "why": "The question ties the payment to the school ('at a college, university, vocational school or other postsecondary school'), which suggests that course materials bought elsewhere don't count. Under the American opportunity credit they do count, so the gate can wrongly stop a filer who has a credit.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer paid tuition in December 2025 for a semester that begins in August 2026, and answers yes because qualified expenses were paid in 2025.",
+       "source_text": "i8863 (2025) p. 2, Who Can Claim an Education Credit: \"the credits are based on the amount of adjusted qualified education expenses paid for the student in 2025 for academic periods beginning in 2025 or beginning in the first 3 months of 2026.\"",
+       "why": "The question asks only whether expenses were paid in 2025. It does not limit them to academic periods beginning in 2025 or in January through March 2026, so expenses prepaid for later periods pass the gate even though they don't count for 2025.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "0e0a155838dc0855c6bf5503764917a489a63d899f1b9d22d773b49abfe59f17",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06472,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8863.paid.7ba15b303f24.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      2,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Who Can Claim an Education Credit, \"You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution.\"",
+      "p. 2, Who can claim a dependent’s expenses, \"If a student is claimed as a dependent on another person’s tax return, all qualified education expenses of the student are treated as having been paid by that person. Therefore, only that person can claim an education credit for the student.\"",
+      "p. 3, Who cannot claim a credit, \"1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\"",
+      "p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  }
+ }
+}
