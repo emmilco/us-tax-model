@@ -75,9 +75,10 @@ their operands. It reads the JSON untyped and defaults
 a missing field; the build's schema validation rejects data with a missing required field first. It is total by construction: each call spends from a step budget, so it always returns, and an
 exhausted budget is an error value, never a number. `EvalProps.lean` states termination and
 determinism, but as its own docstring says, their force comes from the definition being accepted as
-total, not from the proofs, and they say nothing about acyclicity (a cycle gives an error value at evaluation time). Both evaluators run over every fixture and over 400 generated inputs;
-`reports/2025/evaluator_agreement.md` reports 1,994 cases, 4,470,945 line values compared, 0
-differences. **Guarantees:** the proved atom properties hold, and two independently written evaluators
+total, not from the proofs, and they say nothing about acyclicity (a cycle gives an error value at evaluation time). Both evaluators run over every fixture and over 400 generated whole returns (the
+generator and corpus of the properties check, `engine/src/generate.ts`);
+`reports/2025/evaluator_agreement.md` reports 2,168 cases, 6,114,183 line values compared, 0
+differences, and counts the values by kind (an unknown is compared by kind only). **Guarantees:** the proved atom properties hold, and two independently written evaluators
 of the same data compute the same values. **Does not guarantee:** that the TypeScript evaluator is
 formally verified (it is not), or anything about whether
 the data matches the IRS text. Both evaluators read the same files, so agreement shows the evaluators

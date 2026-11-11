@@ -1,7 +1,8 @@
 // Generated whole-return inputs: a fast-check arbitrary over every declared
 // input of the supported slice, biased toward zeros, small amounts and the
-// boundaries the worksheets branch on. Used by the property tests and as the
-// seed of the branch-covering inputs for class M hand-work (design 2.10).
+// boundaries the worksheets branch on. Used by the property tests, by the
+// comparison with the Lean evaluator (compare.ts) and as the seed of the
+// branch-covering inputs for class M hand-work (design 2.10).
 //
 // Every declared root input receives a value (money inputs not modelled
 // below are zero nine times in ten), so an `unknown` in a result means the

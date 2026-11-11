@@ -84,6 +84,22 @@ The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast
   bookkeeping and green-record tools),
   about 3 minutes, nearly all of it the build.
 
+`compare` and `ny_compare` (`engine/src/compare.ts`) run the TypeScript and the Lean evaluator
+over every fixture case and over generated whole returns, and fail on any line value that
+differs. The generated returns come from the general generator (`engine/src/generate.ts`:
+`sampleReturns`, and `nyReturnArbitrary` for `--ny`) with the seed and size of the
+`properties` step, so they follow the declared inputs and their branch coverage is the one
+`properties.md` lists. The step first plants differences on generated returns and stops unless each
+is reported on its line with the planted values: for each kind of value (money, count, rate,
+Bool, enum, refusal, unknown) a differing Lean value on a computed line of that kind, one per
+field the comparison reads (a refusal's gate, form, remedy and citation); a line the Lean
+evaluator ran out of steps on, where the TypeScript value is an amount and where it is unknown;
+a line removed from the Lean values and a line only they have; and an answer changed for the
+Lean evaluator only. `evaluator_agreement.md` counts the compared
+values by kind, fixtures apart from generated returns, and what was not compared, by reason:
+a case the Lean evaluator gave no values for, a line only one evaluator gave, a line the Lean
+evaluator ran out of steps on. Each of those fails the step.
+
 A full-green tree is also fast- and docs-green, and a fast-green tree is docs-green.
 Which tier a commit needs is decided from the paths it changes against its parent
 (`tools/tier_paths.py`): **full** if it changes a path in `tools/full_paths.txt` (the
