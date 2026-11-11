@@ -52,7 +52,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | s8812.md | form | 92 |
 | sa.md | form | 66 |
 | sales.md | form | 29 |
-| sb.md | form | 18 |
+| sb.md | form | 24 |
 | sc.md | form | 152 |
 | scope.md | form | 5 |
 | scveh.md | form | 149 |

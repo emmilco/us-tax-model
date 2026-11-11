@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "e7e819909c6f6e33764ab0d991705d0e9013e6a66417745b89b4e1a75e39de3e",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -16,15 +16,15 @@
   },
   {
    "key": "2",
-   "record": "f9626fa84e2649a89c8e1d06e7119c516d8a420c62573e686b1f775bebb583f1",
+   "record": "e3e2bb5432cabff8fac4f1df1e48d2150c826635ea567c179c517e1e52be5c3c",
    "status": "AGREE",
-   "subject_key": "557f43cb325979c12a5daf4dce51d7afe45574ec5f941faf9c10859cb45d99bc"
+   "subject_key": "718c207ba04ad99d3e5b66000ef056017ece0c2ed55da6982fec789ec030e36b"
   },
   {
    "key": "3",
-   "record": "f9626fa84e2649a89c8e1d06e7119c516d8a420c62573e686b1f775bebb583f1",
+   "record": "e3e2bb5432cabff8fac4f1df1e48d2150c826635ea567c179c517e1e52be5c3c",
    "status": "AGREE",
-   "subject_key": "18000aa66712f56798a6d4c15d40478b1c33df200f3edb76e45b3505c6d822df"
+   "subject_key": "579691fe76d298df5aae1dbfc3422fb63034d5aeed577d918011d5bb0d1f3421"
   },
   {
    "key": "4",
@@ -34,18 +34,18 @@
   },
   {
    "key": "6",
-   "record": "f9626fa84e2649a89c8e1d06e7119c516d8a420c62573e686b1f775bebb583f1",
+   "record": "e3e2bb5432cabff8fac4f1df1e48d2150c826635ea567c179c517e1e52be5c3c",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the candidate reads sb.ordinary_dividends whatever the filer received dividends or other distributions (div.any), so it needs that answer where the source does not: i1040sb p. 2, Line 5, \"Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements\": a filer who received no dividends has none to report. The project reads the gate line sb.ordinary_dividends_if_dividends, which takes sb.ordinary_dividends when the filer received dividends or other distributions (div.any) holds and zero otherwise; the interview asks sb.ordinary_dividends only then (gated_by sb.ordinary_dividends_if_dividends), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
-   "subject_key": "8d72b42202329aa1849bdd7b1fbcc26cb7c7bfc4a9239dc5380bcb87ffcf3595"
+   "ruling": "Ruling: model error; the candidate copies sb.ordinary_dividends whether or not the filer received dividends or other distributions (div.any), so it needs that answer where the source does not: i1040sb p. 2, Line 5, \"Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements\": a filer who received no dividends has none to report. The project copies the gate line sb.ordinary_dividends_if_dividends, which takes sb.ordinary_dividends when div.any holds and zero otherwise; the interview asks sb.ordinary_dividends only then (gated_by), so on every return the interview can produce the two agree. The line was rescoped because the wording of the foreign screens its refusal gates read changed (the spouse phrase); its expression is unchanged. Ruled by reading.",
+   "subject_key": "b95c94af4698b0793f6542ee128fd6b992789deb4860c138bf64a01d8fca8881"
   }
  ],
  "subjects": {
   "sb.ordinary_dividends_if_dividends": "b1d271d8d849b7c1efeca53defa98c7bd54ccc1decc43a9cac93006238a8ca45",
-  "2": "c2b650684ceb34df8615b05b853364172e30d7ba59937c04127f531c8ed61b4a",
-  "3": "1c76ab65b96979369ebb8017a12a4cece2ea2d7eb8d0c715b871937b0071643c",
+  "2": "96138909dbc08cd9658187b65e311d6f1d916033816723098989e04d93f9d0af",
+  "3": "bca8affff094eedc84499c9ad821f5813fb01cfca9744cc45bc86d839e9daabd",
   "4": "d225f28e9701cf230747bff686459225d04bd398ce08e2040a616fb8958167c4",
-  "6": "e809b51c44b136b040bc80da353c594902708b11e4cef581dd48ab7d213290ce"
+  "6": "148261733c2f5a17e8da4d9a446171754c28564120f8f060f6a1a82605733c39"
  },
  "__rest__": "013e58d3d274e971cd170d48794200b98ac690d600b9af1e38e8133de7ae11db",
  "foreign": {

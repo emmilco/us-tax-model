@@ -10,7 +10,7 @@
   {"theme": "Other income", "covered": "State tax refunds, alimony, gambling winnings, prizes, canceled debt and jury duty pay", "refused": [{"label": "Other income the tool does not list", "categories": ["other_income"], "upper_bound": "the IRS count includes the kinds of other income the tool does handle"}]},
   {"theme": "Deductions", "covered": "The standard deduction or itemized deductions, and the 2025 deductions for tips, overtime, car loan interest and seniors", "refused": []},
   {"theme": "Credits", "covered": "The child tax credit, the earned income credit, and the child and dependent care, education, saver's, home energy and premium tax credits", "refused": [{"label": "Other credits, such as the adoption, clean vehicle, elderly or disabled, or business credits", "categories": ["other_nonrefundable"]}]},
-  {"theme": "Foreign", "covered": "Foreign tax on investment income, within the small-amount election", "refused": [{"label": "Foreign accounts or assets that require an FBAR or Form 8938", "gates": ["sb.fbar_required", "sb.form8938"]}]}
+  {"theme": "Foreign", "covered": "Foreign tax on investment income, within the small-amount election", "refused": [{"label": "Foreign accounts or assets that require an FBAR or Form 8938", "gates": ["sb.fbar_required_if_foreign", "sb.form8938_if_foreign"]}]}
  ],
  "topics": {
   "everyone": {"title": "Filing status, residency, wages, accounts and other taxes", "parts": [{"id": "status", "title": "Filing status and residency"}, {"id": "income", "title": "Income, wages and accounts"}, {"id": "taxes", "title": "Taxes and credits"}]},
@@ -52,10 +52,10 @@
   {"gate": "person.sav_excess_gate", "topic": "everyone", "part": "income", "kind": "situation", "question": "Were your elective deferrals above the 2025 limit?"},
   {"gate": "person.sav_able", "topic": "everyone", "part": "income", "kind": "situation", "question": "For the saver's credit: did you contribute to your own ABLE account, or receive an ABLE distribution?"},
   {"gate": "person.x_other", "topic": "everyone", "part": "income", "kind": "situation", "question": "Do you have a taxable Coverdell, 529 or ABLE distribution, earlier-year excess contributions still in an account, or a required minimum distribution you missed?"},
-  {"gate": "sb.fbar_required", "topic": "everyone", "part": "income", "kind": "situation", "question": "Must you file an FBAR (FinCEN Form 114) for foreign accounts?"},
-  {"gate": "sb.form8938", "topic": "everyone", "part": "income", "kind": "situation", "question": "Must you file Form 8938 for specified foreign financial assets?"},
-  {"gate": "sb.line8", "topic": "everyone", "part": "income", "kind": "situation", "question": "Did you receive a distribution from a foreign trust, or were you its grantor or a transferor to it?"},
-  {"gate": "sb.form5471", "topic": "everyone", "part": "income", "kind": "situation", "question": "Were you an officer or director of a foreign corporation, or a 10% owner of one (Form 5471)?"},
+  {"gate": "sb.fbar_required_if_foreign", "topic": "everyone", "part": "income", "kind": "situation", "question": "Must you file an FBAR (FinCEN Form 114) for foreign accounts?"},
+  {"gate": "sb.form8938_if_foreign", "topic": "everyone", "part": "income", "kind": "situation", "question": "Must you file Form 8938 for specified foreign financial assets?"},
+  {"gate": "sb.line8_if_foreign", "topic": "everyone", "part": "income", "kind": "situation", "question": "Did you receive a distribution from a foreign trust, or were you its grantor or a transferor to it?"},
+  {"gate": "sb.form5471_if_foreign", "topic": "everyone", "part": "income", "kind": "situation", "question": "Were you an officer or director of a foreign corporation, or a 10% owner of one (Form 5471)?"},
   {"gate": "ftc.needs1116", "topic": "everyone", "part": "income", "kind": "situation", "question": "Do you have foreign tax that needs Form 1116 (over the small-amount limit, not all passive income, or not all reported on a payee statement)?"},
   {"gate": "w2.box10_bad", "topic": "everyone", "part": "income", "kind": "entry"},
   {"gate": "w2.g_bad", "topic": "everyone", "part": "income", "kind": "entry"},

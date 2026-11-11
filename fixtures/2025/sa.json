@@ -1739,6 +1739,7 @@
       "evidence_note": "Simultaneous refusals (precedence), with every answer of stage16.refund.f7 given: Yes to the Schedule A charitable limitation screen and Yes to Form 8938. Adjusted gross income, and so Schedule A line 4, refuses for Form 8938; Schedule A line 17 checks its own entries before its operands, so it refuses for the charitable limitation. The refused value is the evaluator's.",
       "inputs": {
         "sa.gifts": true,
+        "sb.foreign_any": true,
         "sb.form8938": true,
         "sa.charity_limited": true,
         "f1040.line26": 200000,
@@ -1774,6 +1775,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Simultaneous refusals (precedence), with every answer of stage16.refund.f7 given: Yes to the excluded-income screen and Yes to Form 8938. Adjusted gross income, and so Schedule A line 4, refuses for Form 8938; Schedule A line 17 checks its own entries before its operands, so it refuses for excluded income (its SALT worksheet entry). The refused value is the evaluator's.",
       "inputs": {
+        "sb.foreign_any": true,
         "sb.form8938": true,
         "sa.excluded_income": true,
         "f1040.line26": 200000,

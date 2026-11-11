@@ -51,7 +51,7 @@ function generatedCases(data: CanonicalData, n: number): Case[] {
       "sd.distributions": line7a,
       "$sales": [], "sd.other_forms": false, "sd.carryover": false,
       "qbi.dividends":0,"div.box2b":0,"div.box2c":0,"div.box2d":0,"div.box2e":0,"div.box2f":0,"div.box3":0,"div.box9":0,"div.box10":0,"div.box13":0,"div.basis_reconciled":true, "f4952.has_interest": false, "f4952.line1": 0, "f4952.line4g": 0,
-      "f4952.carryover": false, "f4952.unsupported": false, "f4952.alternative_allocation": false, "$interest": [], "sb.ordinary_dividends": line3a, "sb.unsupported": false, "sb.line7a": false, "sb.fbar_required": false, "sb.form8938": false, "sb.line8": false,
+      "f4952.carryover": false, "f4952.unsupported": false, "f4952.alternative_allocation": false, "$interest": [], "sb.ordinary_dividends": line3a, "sb.unsupported": false, "sb.line7a": false, "sb.fbar_required": false, "sb.form8938": false, "sb.line8": false, "sb.foreign_any": false,
     };
     inputs["$person"] = ["taxpayer"];
     inputs["person[taxpayer].role"] = "taxpayer";
