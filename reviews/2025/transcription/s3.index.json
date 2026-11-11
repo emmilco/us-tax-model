@@ -41,17 +41,17 @@
   },
   {
    "key": "5a",
-   "record": "e59939654fd30fa86381b5467cfdf6efaf5d0e50d317242961b62615c8daba68",
+   "record": "34c2b27439ee0bba34d82a24b34e08684114f44463a72f7f962305d3e2a70eea",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as the earlier rulings on this line. f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\". The project takes Form 5695 line 15 when f5695.part1_any is Yes and $0 otherwise; the reply copies f5695.line15 on every return, so it needs Part I answers (f5695.business_use, f5695.construction_later) the interview asks only after a Yes, or refuses at Part I gates the project never reaches. The rewording of part1_any and line 5a (BUG-0478) changes no value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass e90286e5d5fa; 1,744 fixtures, 500 generated returns seed 20261026, 111 partial records): 1,232 of 2,364 agree; 856 candidate-refuses and 276 candidate-unknown; on completed returns candidate-unknown on returns with no Part I (classm.f4952.1.deepseek, classm.s3.3.deepseek; project $0.00) and one candidate refusal (a generated return with no Part I); no value differs. Project stands.",
-   "subject_key": "8a510689defadf1b27344c9631aa7f9771eec3310c40d766180197c56bf082a0"
+   "ruling": "Ruling: model error; as the earlier rulings on this line. f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\". The project takes Form 5695 line 15 when f5695.part1_any is Yes and $0 otherwise; the reply copies f5695.line15 on every return, so it needs Part I answers (f5695.business_use, f5695.construction_later) the interview asks only after a Yes, or refuses at Part I gates the project never reaches. The rewording of part1_any and line 5a (BUG-0552, BUG-0553) changes no value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 22db672af71d; 1,767 fixtures, 500 generated returns seed 20261026, 105 partial records): 1,243 of 2,372 agree; 856 candidate-refuses and 273 candidate-unknown; on completed returns 119 candidate-unknown on returns with no Part I (project $0.00) and 1 candidate refusal; no value differs. Project stands.",
+   "subject_key": "29b6b869e2266a381fba004c5a363bec9a9511ec911f7a00d0ece72139f3ed1d"
   },
   {
    "key": "5b",
-   "record": "3a3428d8c2897a5875014e906a1fd431d37538446659c067a71770040715f19a",
+   "record": "34c2b27439ee0bba34d82a24b34e08684114f44463a72f7f962305d3e2a70eea",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040s3 line 5b, \"Energy efficient home improvement credit from Form 5695, line 32\". The project takes Form 5695 line 32 when f5695.part2_any is Yes and $0 otherwise; the reply copies f5695.line32 on every return. executable-triage-v2 (`.transcription/triage/2025/s3.json`; 1,702 fixtures, 500 generated returns seed 20261026, 111 partial records): 2,307 of 2,307 comparisons agree, with no refusal or unknown difference: Form 5695 line 32 is itself $0 without Part II property and needs no further answer there, so the guard and the copy give the same amount on every sampled record. The earlier model-error ruling on this line (candidate-unknown on filers without property) no longer reproduces. Project stands.",
-   "subject_key": "29d7dd66528cca96c2173defda3ad28d4eb9bcab1016675a4a5e784fc63cf3f7"
+   "ruling": "Ruling: representation; f1040s3 line 5b, \"Energy efficient home improvement credit from Form 5695, line 32\". The project takes Form 5695 line 32 when f5695.part2_any is Yes and $0 otherwise; the reply copies f5695.line32 on every return. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 22db672af71d; 1,767 fixtures, 500 generated returns seed 20261026, 105 partial records): 2,372 of 2,372 agree. Project stands.",
+   "subject_key": "caa80390e5c9cfe2528bd1efaa49690068852173a330319b290a22bdd25491fc"
   },
   {
    "key": "8",
@@ -94,8 +94,8 @@
  },
  "__rest__": "8c4455c31080bf1b56e8381468347998cd07ecbe53b3dadcaf427571c0240a42",
  "foreign": {
-  "5a": "c26857f85dc656e015204fb6342cd2957b4f3ea067c5252b6c1f9a7da3ebc54f",
-  "5b": "cec84514a148b1ca8fc6d3219f953e45d64e7e8f0f5fead8f72d40b26c2061d4",
+  "5a": "1fb1dbe16a5721f253b8d6d141e69490fbb36ffb6e0b939cd06b2935161319b9",
+  "5b": "a89f97d236069bb19791b578a8a6fbd9ebbcfd56bfa85b4075e20969aac6cca3",
   "8": "fabf9f1e3d5aaf82948b5ca22fb205d131bfa4bdec60a9137731753e84d1adf0",
   "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
  }
