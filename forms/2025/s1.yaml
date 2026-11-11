@@ -704,8 +704,7 @@ form:
     expr:
       op: input
       source: 'Canceled nonbusiness debt: the total of box 2 of your (or, on a joint return, your spouse''s) Forms 1099-C,
-        plus any canceled nonbusiness debt for which you received no Form 1099-C; count a debt you both owed once, even if
-        each of you received a Form 1099-C for the whole amount; zero if none'
+        plus any canceled nonbusiness debt for which you received no Form 1099-C; zero if none. On a joint return, count a debt both spouses owed once, even if each received a Form 1099-C for the whole amount'
     cite:
       doc: p4681
       locator: p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt
@@ -728,8 +727,7 @@ form:
   - id: s1.cod_unsupported
     printed: (gate)
     label: 'Does any of these apply to a canceled debt: an exception or exclusion (Form 982), a business, rental or farm debt,
-      a foreclosure, repossession or abandonment, deductible interest or other deductible debt, a debt you were not personally liable for, or a debt
-      owed jointly with someone other than your spouse on this return?'
+      a foreclosure, repossession or abandonment, deductible interest or other deductible debt, a debt you were not personally liable for, or a debt owed jointly with someone who is not on this return?'
     type: Bool
     expr:
       op: input
@@ -742,7 +740,7 @@ form:
         - it was canceled in connection with a foreclosure, repossession or abandonment of property (Form 1099-C box 7, or a Form 1099-A)
         - it includes interest (Form 1099-C box 3) or any other amount (for example an unpaid medical bill) that would have been deductible if you had paid it
         - you (or, on a joint return, your spouse) were not personally liable for it (box 5)
-        - you and someone other than your spouse on this return were both liable for it
+        - you (or, on a joint return, your spouse) were liable for it together with someone who is not on this return
     cite:
       doc: p4681
       locator: p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled

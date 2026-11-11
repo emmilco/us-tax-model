@@ -560,14 +560,10 @@ form:
       type: Bool
       gated_by: household.credit_disallowed_if_claimed
       label: Was your (or, on a joint return, your spouse's) EIC for a year after 1996, or child tax credit, additional child tax credit
-        or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or is
-        either of you in a 2- or 10-year disallowance period?
+        or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or are you (or, on a joint return, your spouse) in a 2- or 10-year disallowance period?
       expr:
         op: input
-        source: Was the earned income credit of you (or, on a joint return, your spouse) for any year after 1996, or the child
-          tax credit, additional child tax credit or credit for other dependents of either of you for any year after 2015,
-          reduced or disallowed for any reason other than a math or clerical error, or is either of you in a 2- or 10-year
-          period during which you can't take one of these credits because an earlier claim was found to be reckless,
+        source: Was your (or, on a joint return, your spouse's) earned income credit for any year after 1996, or child tax credit, additional child tax credit or credit for other dependents for any year after 2015, reduced or disallowed for any reason other than a math or clerical error, or are you (or, on a joint return, your spouse) in a 2- or 10-year period during which one of these credits can't be taken because an earlier claim was found to be reckless,
           intentional or fraudulent?
       cite:
         doc: i1040gi

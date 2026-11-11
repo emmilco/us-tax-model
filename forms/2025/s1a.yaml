@@ -110,7 +110,7 @@ form:
       op: input
       source: Did you (or, on a joint return, your spouse) receive tips as an employee in 2025 in an occupation on the IRS
         list of occupations that customarily and regularly received tips (IRS.gov/TippedOccupations) that you want to
-        deduct on Schedule 1-A, Part II? Answer Yes if either of you did. (Tips received as a non-employee, in your own
+        deduct on Schedule 1-A, Part II? (Tips received as a non-employee, in your own
         trade or business, are asked about with Schedule C.)
     cite:
       doc: i1040gi
@@ -885,8 +885,8 @@ form:
     expr:
       op: input
       source: Did you (or, on a joint return, your spouse) receive overtime pay as an employee in 2025 that you want to
-        deduct on Schedule 1-A, Part III (the FLSA Overtime Premium, generally the "half" of time-and-a-half)? Answer Yes
-        if either of you did. (Overtime reported on Form 1099-NEC or 1099-MISC is asked about with Schedule C.)
+        deduct on Schedule 1-A, Part III (the FLSA Overtime Premium, generally the "half" of time-and-a-half)?
+        (Overtime reported on Form 1099-NEC or 1099-MISC is asked about with Schedule C.)
     cite:
       doc: i1040gi
       locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if", "You (and/or your spouse if
@@ -1523,7 +1523,7 @@ form:
       op: input
       source: Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan taken out after 2024 to
         buy a new car, minivan, van, SUV, pickup truck or motorcycle for personal use that you want to deduct on Schedule
-        1-A, Part IV? Answer Yes if either of you did.
+        1-A, Part IV?
     cite:
       doc: i1040gi
       locator: p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025",

@@ -272,7 +272,7 @@ Findings: 265; ruled 265; in the baseline to be worked off 0.
 | unruled | `w2.box7#1` | verdict UNCLEAR with 1 finding(s); adjudicate and rule with subject_sha 27f2a9b75794 | ruled: No defect: the two readings give the same values in every reader. |
 | unruled | `w2.g_elective#1` | verdict WIDE with 1 finding(s); adjudicate and rule with subject_sha 401e6411722a | ruled: No defect: year-designated box 12 entries are refused. |
 
-## Due at the next full pass (143)
+## Due at the next full pass (145)
 
 - `asset.after_jan19` (asset): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs asset.after_jan19
 - `carloan.down` (carloan): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs carloan.down
@@ -306,6 +306,7 @@ Findings: 265; ruled 265; in the baseline to be worked off 0.
 - `f5695.business_use` (f5695): never reviewed; run question_review.py --inputs f5695.business_use
 - `f5695.construction_later` (f5695): never reviewed; run question_review.py --inputs f5695.construction_later
 - `f5695.line1` (f5695): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f5695.line1
+- `f5695.line12` (f5695): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f5695.line12
 - `f5695.line19a` (f5695): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f5695.line19a
 - `f5695.line2` (f5695): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f5695.line2
 - `f5695.line20a_i` (f5695): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f5695.line20a_i
@@ -334,6 +335,7 @@ Findings: 265; ruled 265; in the baseline to be worked off 0.
 - `ftc.all_passive` (ftc): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ftc.all_passive
 - `ftc.statements` (ftc): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ftc.statements
 - `ftc.taxes` (ftc): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ftc.taxes
+- `household.credit_disallowed` (household): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs household.credit_disallowed
 - `interest.amount` (interest): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs interest.amount
 - `otjob.method` (otjob): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs otjob.method
 - `otjob.statement` (otjob): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs otjob.statement

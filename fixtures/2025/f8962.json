@@ -66,6 +66,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 50000,
         "f1095a[m].mo_b": 45000,
@@ -172,6 +173,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 40000,
         "f1095a[m].mo_b": 42000,
@@ -278,6 +280,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 60000,
         "f1095a[m].mo_b": 55000,
@@ -392,6 +395,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 70000,
         "f1095a[m].mo_b": 65000,
@@ -513,6 +517,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "dependent[k0].age": 6,
         "dependent[k0].months": 12,
         "dependent[k1].age": 9,
@@ -642,6 +647,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "dependent[k0].age": 5,
         "dependent[k0].months": 12,
         "dependent[k1].age": 8,
@@ -760,6 +766,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 45000,
         "f1095a[m].mo_b": 43000,
@@ -867,6 +874,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 45000,
         "f1095a[m].mo_b": 43000,
@@ -965,6 +973,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_apr": 48000,
         "f1095a[m].in_b_apr": 46000,
         "f1095a[m].in_c_apr": 30000,
@@ -1325,6 +1334,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000,
         "f1095a[m].in_b_jan": 85000,
         "f1095a[m].in_c_jan": 50000,
@@ -2352,6 +2362,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 65000,
         "f1095a[m].mo_b": 64000,
@@ -2465,6 +2476,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "dependent[k0].age": 10,
         "dependent[k0].months": 12,
         "f1095a[m].uniform": true,
@@ -2592,6 +2604,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "dependent[k0].age": 17,
         "dependent[k0].months": 12,
         "dependent[k0].ptc_files": true,
@@ -2707,6 +2720,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1040.tax_exempt_interest": 120000,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 52000,
@@ -2814,6 +2828,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 38000,
         "f1095a[m].mo_b": 40000
@@ -2923,6 +2938,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 60000,
         "f1095a[m].mo_b": 58000,
@@ -3029,6 +3045,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 80000,
         "f1095a[m].mo_b": 78000,
@@ -3159,6 +3176,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "dependent[k0].age": 2,
         "dependent[k0].months": 12,
         "dependent[k1].age": 4,
@@ -3275,6 +3293,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f8962.alloc": true,
         "s179.line10": null
       },
@@ -3341,6 +3360,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f8962.other": true,
         "s179.line10": null
       },
@@ -3403,6 +3423,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f8962.other": true,
         "s179.line10": null
       },
@@ -3467,6 +3488,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].void": true,
         "s179.line10": null
       },
@@ -3531,6 +3553,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f8962.premium_adjust": true,
         "s179.line10": null
       },
@@ -3594,6 +3617,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 50000,
         "f1095a[m].mo_b": 45000,
@@ -3645,6 +3669,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "dependent[k0].age": 5,
         "dependent[k0].months": 12,
         "dependent[k1].age": 8,
@@ -3820,6 +3845,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "dependent[k0].age": 17,
         "dependent[k0].months": 12,
         "dependent[k0].ptc_files": true,
@@ -4018,6 +4044,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "dependent[k0].age": 1,
         "dependent[k0].months": 12,
         "dependent[k1].age": 2,
@@ -4131,6 +4158,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "dependent[k0].age": 1,
         "dependent[k0].months": 12,
         "dependent[k1].age": 2,
@@ -4219,6 +4247,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 45000,
         "f1095a[m].mo_b": 43000
@@ -4352,6 +4381,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f8962.alien_below": true,
         "s179.line10": null
       },
@@ -4583,6 +4613,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000,
         "f1095a[m].in_b_jan": 85000,
         "f1095a[m].in_a_feb": 90000,
@@ -4636,6 +4667,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].uniform": true,
         "f1095a[m].mo_a": 50000,
         "s179.line10": null
@@ -4748,6 +4780,7 @@
         "$f1095a": [
           "mkt_a"
         ],
+        "f1095a[mkt_a].b_counted": null,
         "f1095a[mkt_a].in_a_nov": 105200,
         "f1095a[mkt_a].in_b_nov": 74500,
         "f1095a[mkt_a].in_a_dec": 105200,
@@ -4829,6 +4862,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 48000,
         "f1095a[m].in_b_jan": 46000,
         "f1095a[m].in_c_jan": 30000,
@@ -5134,6 +5168,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_feb": 48000,
         "f1095a[m].in_b_feb": 46000,
         "f1095a[m].in_c_feb": 30000,
@@ -5452,6 +5487,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000
       },
       "expect": {
@@ -5497,6 +5533,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000,
         "f1095a[m].in_b_jan": 85000,
         "f1095a[m].in_a_feb": 90000
@@ -5544,6 +5581,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000,
         "f1095a[m].in_b_jan": 85000,
         "f1095a[m].in_a_feb": 90000,
@@ -5595,6 +5633,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000,
         "f1095a[m].in_b_jan": 85000,
         "f1095a[m].in_a_feb": 90000,
@@ -5648,6 +5687,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000,
         "f1095a[m].in_b_jan": 85000,
         "f1095a[m].in_a_feb": 90000,
@@ -5703,6 +5743,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000,
         "f1095a[m].in_b_jan": 85000,
         "f1095a[m].in_a_feb": 90000,
@@ -5760,6 +5801,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000,
         "f1095a[m].in_b_jan": 85000,
         "f1095a[m].in_a_feb": 90000,
@@ -5819,6 +5861,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000,
         "f1095a[m].in_b_jan": 85000,
         "f1095a[m].in_a_feb": 90000,
@@ -5880,6 +5923,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000,
         "f1095a[m].in_b_jan": 85000,
         "f1095a[m].in_a_feb": 90000,
@@ -5943,6 +5987,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000,
         "f1095a[m].in_b_jan": 85000,
         "f1095a[m].in_a_feb": 90000,
@@ -6008,6 +6053,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f1095a[m].in_a_jan": 90000,
         "f1095a[m].in_b_jan": 85000,
         "f1095a[m].in_a_feb": 90000,
@@ -6060,6 +6106,7 @@
         "$f1095a": [
           "m"
         ],
+        "f1095a[m].b_counted": null,
         "f8962.alien_below": true
       },
       "expect": {

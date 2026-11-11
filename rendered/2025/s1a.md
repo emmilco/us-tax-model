@@ -63,8 +63,8 @@
 ## (helper) — `s1a.tips`
 
 - **Authored helper label:** Did you (or, on a joint return, your spouse) receive qualified tips as an employee in 2025 that you want to deduct?
-- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) receive tips as an employee in 2025 in an occupation on the IRS list of occupations that customarily and regularly received tips (IRS.gov/TippedOccupations) that you want to deduct on Schedule 1-A, Part II? Answer Yes if either of you did. (Tips received as a non-employee, in your own trade or business, are asked about with Schedule C.)
-- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) receive tips as an employee in 2025 in an occupation on the IRS list of occupations that customarily and regularly received tips (IRS.gov/TippedOccupations) that you want to deduct on Schedule 1-A, Part II? Answer Yes if either of you did. (Tips received as a non-employee, in your own trade or business, are asked about with Schedule C.)"}`
+- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) receive tips as an employee in 2025 in an occupation on the IRS list of occupations that customarily and regularly received tips (IRS.gov/TippedOccupations) that you want to deduct on Schedule 1-A, Part II? (Tips received as a non-employee, in your own trade or business, are asked about with Schedule C.)
+- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) receive tips as an employee in 2025 in an occupation on the IRS list of occupations that customarily and regularly received tips (IRS.gov/TippedOccupations) that you want to deduct on Schedule 1-A, Part II? (Tips received as a non-employee, in your own trade or business, are asked about with Schedule C.)"}`
 - Cite: [i1040gi] pp. 101-103, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if", "You (and/or your spouse if filing a joint return) received qualified tips" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.tip_employers`
@@ -347,8 +347,8 @@
 ## (helper) — `s1a.overtime`
 
 - **Authored helper label:** Did you (or, on a joint return, your spouse) receive qualified overtime compensation in 2025 that you want to deduct?
-- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) receive overtime pay as an employee in 2025 that you want to deduct on Schedule 1-A, Part III (the FLSA Overtime Premium, generally the "half" of time-and-a-half)? Answer Yes if either of you did. (Overtime reported on Form 1099-NEC or 1099-MISC is asked about with Schedule C.)
-- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) receive overtime pay as an employee in 2025 that you want to deduct on Schedule 1-A, Part III (the FLSA Overtime Premium, generally the \"half\" of time-and-a-half)? Answer Yes if either of you did. (Overtime reported on Form 1099-NEC or 1099-MISC is asked about with Schedule C.)"}`
+- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) receive overtime pay as an employee in 2025 that you want to deduct on Schedule 1-A, Part III (the FLSA Overtime Premium, generally the "half" of time-and-a-half)? (Overtime reported on Form 1099-NEC or 1099-MISC is asked about with Schedule C.)
+- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) receive overtime pay as an employee in 2025 that you want to deduct on Schedule 1-A, Part III (the FLSA Overtime Premium, generally the \"half\" of time-and-a-half)? (Overtime reported on Form 1099-NEC or 1099-MISC is asked about with Schedule C.)"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if", "You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.ot_ssn_count`
@@ -567,8 +567,8 @@
 ## (helper) — `s1a.carloan`
 
 - **Authored helper label:** Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?
-- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan taken out after 2024 to buy a new car, minivan, van, SUV, pickup truck or motorcycle for personal use that you want to deduct on Schedule 1-A, Part IV? Answer Yes if either of you did.
-- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan taken out after 2024 to buy a new car, minivan, van, SUV, pickup truck or motorcycle for personal use that you want to deduct on Schedule 1-A, Part IV? Answer Yes if either of you did."}`
+- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan taken out after 2024 to buy a new car, minivan, van, SUV, pickup truck or motorcycle for personal use that you want to deduct on Schedule 1-A, Part IV?
+- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan taken out after 2024 to buy a new car, minivan, van, SUV, pickup truck or motorcycle for personal use that you want to deduct on Schedule 1-A, Part IV?"}`
 - Cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025", "if you and/or your spouse paid or accrued qualified passenger vehicle loan interest" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line23_total`

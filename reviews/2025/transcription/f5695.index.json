@@ -4,16 +4,15 @@
  "family": "claude",
  "base": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
  "head_rows": {
-  "agree / disagree / missing": "7 / 26 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "f5695.claiming_part1",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "876d0e1670586eb6e35382d23c8acb8edf5dd1835401a2cd80279beab4bfc96e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as the earlier rulings on this line. i1040s8812 p. 4, Credit Limit Worksheet B is completed only if \"You are claiming one or more of the following credits ... c. Residential clean energy credit, Form 5695, Part I.\" The reply tests f5695.part1_any and line 13 above zero with an `all` where the project chooses on f5695.part1_any first; on every record where f5695.part1_any is answered the two give the same value. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,792 of 3,819 agree; 27 project-unknown, all partial records withholding f5695.part1_any on incomplete or refused returns (the `all` short-circuits on line 13 = $0); none on a completed return. The rewording of part1_any (BUG-0552, BUG-0553) changes no value. Project stands.",
-   "subject_key": "25cc7e761600f5ea5ddec76ce21da69844efa4a6c86941524966a62a9f7d86a0"
+   "ruling": "Ruling: ambiguity; project retained under amb.2025.clwb_claiming_part1. i1040s8812 p. 4, Credit Limit Worksheet A, \"Complete Credit Limit Worksheet B only if you meet all the following\", \"You are claiming one or more of the following credits\", \"Residential clean energy credit, Form 5695, Part I\". The text does not say when the credit counts as claimed; the register's chosen reading is Part I completed with line 13 more than zero. The reply takes Part I being completed (f5695.part1_any Yes) alone, and its note says the reading by line 13 or line 15 \"is not determined by the text\". Re-reviewed because f5695.part1_any was reworded so that the one spouse phrase governs the 2024 carryforward as well as the costs, and f5695.line12 now counts a spouse's own 2024 carryforward on a joint return (wording only; no expression changed). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 4119f349996b; 1,767 fixtures, 500 generated returns seed 20261026, 1,647 partial records): 3,882 of 3,914 comparisons agree; differences by kind {\"project-refuses\": 8, \"project-unknown\": 18, \"value\": 6}; on completed returns 3 value (classm.s3.4.deepseek, classm.s3.4 and stage15.mut.f5695_part1_one_cent: project false, candidate true; on the first and the last, traced, f5695.part1_any is Yes and line 13 is $0). The line is a helper that selects the credit limit worksheet; whether any amount differs on those three records under the reply's reading was not traced. No change to the data.",
+   "subject_key": "71cb76c5057655d6399f06f9245b426326a0fbdfa563584e9f0552b66a47127a"
   },
   {
    "key": "5b",
@@ -44,9 +43,10 @@
   },
   {
    "key": "13",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
-   "status": "AGREE",
-   "subject_key": "65f1f38e3fde8a2316080b7d4d800755e4abbd91e2a429dd05a5b6742dfb1590"
+   "record": "876d0e1670586eb6e35382d23c8acb8edf5dd1835401a2cd80279beab4bfc96e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f5695 (2025), line 13, \"Add lines 6b, 11, and 12\". The same sum of the same three lines; the reply shows the line only when f5695.part1_any is Yes, and the project declares no display condition on it. Re-reviewed because f5695.line12, which this line adds, now counts a spouse's own 2024 carryforward on a joint return (wording only; the line is still one amount, so a total of two carryforwards is summed as before). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 4119f349996b; 1,767 fixtures, 500 generated returns seed 20261026, 1,647 partial records): 3,914 of 3,914 comparisons agree; no differences. Observed equivalence on that sample, not proof. No change to the data.",
+   "subject_key": "c62e79a39001ab18af8577ebd391781738fe9bee460f2cd6db583cf66433ff58"
   },
   {
    "key": "14",
@@ -234,12 +234,12 @@
   }
  ],
  "subjects": {
-  "f5695.claiming_part1": "3be6a0fd12f5280b24414717bde5781e191bf8fb136fb0bc25d75db2f4a8510b",
+  "f5695.claiming_part1": "57109a0aab2b7106b34e89c1c271910c85916a5d477d0279cc8e4ceacd9cad5b",
   "5b": "4877c2b17faf66a5411a82ef3c12dbb38b05316b22da58c42f3ce47b95e9cd94",
   "6a": "602a79287960ef1a5b081519f7524af54364608dd33b17dd1497dab546e35e93",
   "6b": "033dda84713fe99afcb352106c331342fe2469475865231043196d95777ddbd5",
   "11": "24d6e9f296e5431e0f6011ca7b7dd2615daa98b09d2421fb56c25d14bba2850f",
-  "13": "c2102d7c949ad0b66ef6a2349725a2dcca14e8175ca8129e343a902bb227312f",
+  "13": "895a3467d5031755ed80a0ceac228723d99deb6c0c6d796f228f06995ec2e3b3",
   "14": "168427c5fcbccc3b91e12cd5203c44e6721d79380f4c353b78e192924deb9ddc",
   "15": "07cddd6a6ade0f4436071f1f0b91e81ded007249c4d3ed5ea937b2d158d3633f",
   "16": "6e1f471dd878e5120de00782c2b04d157b3c1b698bd3810cde665d0afdad9405",
@@ -274,6 +274,7 @@
   "5b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "6a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "11": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "13": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "19c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "19h": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "20c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",

@@ -5,7 +5,7 @@
  "base": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
  "head_rows": {
   "agree / disagree / missing": "21 / 6 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -79,10 +79,10 @@
   },
   {
    "key": "8c",
-   "record": "b3b79c6e43f54c5933e68ca7b16a2668e64b7fd966bc7391050b6a1528c3002d",
+   "record": "293dd4d5dd0c244c9871c1be1c248927e19db2ba38c9f3cb1f39b78e9efaf26e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 91, Line 8c, and p4681 p. 4, \"you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies\". Both give zero when no debt was canceled and the canceled nonbusiness debt otherwise; the project floors s1.cod_amount at zero, which cannot change a nonnegative amount, as ruled before on this line. Triage executable-triage-v2 (`.transcription/triage/2025/s1.json`, pass 554ad15530c9; 1,767 fixtures, 500 generated returns seed 20261026, 616 partial records): 2,910 of 2,911 in-scope comparisons agree; the one difference is a candidate-unknown on an incomplete mutation record (mutation.t2.s1.cod_none_with_alimony) where the reply's refusal declaration reads s1.cod_unsupported, unanswered there; no completed-return difference. The reply does not raise the reworded amount question (a debt both spouses owed counted once). The project line is retained.",
-   "subject_key": "c356c7a3031b49f0fd99e66bb865612cc8cf64261ed2c6f3a17dc81c3c892fe2"
+   "ruling": "Ruling: representation; i1040gi p. 91, Line 8c, and p4681 p. 4, \"you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies\". Both give zero when no debt was canceled and the canceled nonbusiness debt otherwise; the project floors s1.cod_amount at zero, which cannot change a nonnegative amount, as ruled before on this line. Re-reviewed because s1.cod_amount, which this line reads, was reworded (the sentence on a debt both spouses owed is now a conditional one, \"On a joint return, count a debt both spouses owed once, even if each received a Form 1099-C for the whole amount\"), and s1.cod_unsupported with it; wording only, no expression changed. The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1.json`, pass 6eb0adfaa652; 1,767 fixtures, 500 generated returns seed 20261026, 646 partial records): 2,912 of 2,913 comparisons agree; the one difference is a candidate-unknown on an incomplete record; no completed-return difference. The project line is retained.",
+   "subject_key": "b0622f3731797caaf801a62fc8d9577b80b510e89ba70af6f8e2530ab5c48b7e"
   },
   {
    "key": "8f",
@@ -189,7 +189,7 @@
   "8b": "d9354a3723dd0e3d5a892ffd25196dd0e7eb9f88926ffa6206874ebf39612682",
   "8z": "630e42eaae09bcc1f9c3a94b62627ca12df3047d675eedcd4e7443f1360b1dcb",
   "2a": "73f917bb0d55338d2a6290e8224d39fb8546bb74882c2d6504b8b11124e6920a",
-  "8c": "413e89d528154025a50ffb8c258fabb76ed142c19f1cfbd300b00680e5f09811",
+  "8c": "cd3eb2275592cfa79fd45d7f97cc301f7031d9b18f9b6ce065b0936d54bfadca",
   "8f": "dee58c3a3a2e9d420ebd44edc73fd91c3b2398b04d3f339930e9912c50bae6cb",
   "9": "d07b77234274dceb7137636cb0fad15675bf76e3365d8fac08d641d46eb1bfd1",
   "10": "6c36a2439085118e58153a4eedf06b6b3556c61da0268e00e54e72c18962a6d9",

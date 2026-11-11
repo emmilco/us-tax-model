@@ -20,6 +20,22 @@
   },
   {
    "printed": "13",
+   "project_expr_sha256": "1a3beec3a06957eb1f52bfb0458991afe326b01017f8ff7156557a89ffeb574a",
+   "second_expr_sha256": "ee27cb73e1cc96541000aab92edd7dea6d3bf8e3677334774503cf40d05a6bf5",
+   "ruling": "Ruling: representation; f5695 (2025), line 13, \"Add lines 6b, 11, and 12\". The same sum of the same three lines; the reply shows the line only when f5695.part1_any is Yes, and the project declares no display condition on it. Re-reviewed because f5695.line12, which this line adds, now counts a spouse's own 2024 carryforward on a joint return (wording only; the line is still one amount, so a total of two carryforwards is summed as before). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 4119f349996b; 1,767 fixtures, 500 generated returns seed 20261026, 1,647 partial records): 3,914 of 3,914 comparisons agree; no differences. Observed equivalence on that sample, not proof. No change to the data.",
+   "context": "bc071539346e2e3945260e2f15c28b61679eecfc16e26254249a263458703acc",
+   "date": "2026-11-11",
+   "run": "fd0ae22c19b4b5e8145820cda6d1240e514aec2b846e6704aed9a39de6f2b4c8",
+   "subject_key": "af03b64ac0861ed70d336bd2ac10b95d1ce621b24ce865b0cc67671a3eeb66e6",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "13",
    "project_expr_sha256": "6e0b399f85505beb6d26d7a039297d93425d7344d7499ee59c35bf1311708b7b",
    "second_expr_sha256": "9b10f885aa72d0f031ef7cba87e63085ff45a67c24dcb2f6c19066760e1acdca",
    "ruling": "Ruling: representation and scope; i5695 p. 1, Purpose of Form (Part I figures the residential clean energy credit). executable-triage-v2 (`reviews/2025/transcription/triage/f5695.json`; 1,382 fixtures, 500 generated returns seed 20261026, 1,970 partial records; 3,852 comparisons; full witness lists rebuilt with the cap lifted): 2,457 of 3,852 agree; 1,221 project-unknown (509 on completed returns), 94 project-refuses, 47 value (all refused), 33 candidate-unknown (partials withholding part1_any, none completed). The candidate zeroes line 13 when f5695.part1_any is No; the project's line reads Part I answers the interview does not ask then. All 509 completed project-unknowns are on returns with part1_any false (350 fixtures; 159 partials, 41 of them from Part-II-only bases withholding a Part I answer), and the 47 value differences are fixture records that supply Part I amounts with part1_any false (classm.dcprov.1: $485.70 vs $0.00), which the interview cannot produce. Project refusals are its cited gates on refused returns. Same as Stage 19 round 2.",
@@ -1338,6 +1354,45 @@
      "partial:stage14.asset.qip-f5695.part1_any@f5695",
      "partial:stage14.asset.done-f5695.part1_any@f5695",
      "partial:stage14.asset.refuse_class-f5695.part1_any@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f5695.claiming_part1",
+   "project_expr_sha256": "0357de3a8b29e7ba0b3a8e3be80685a305a15ff27d502539ab5c4a0156e63903",
+   "second_expr_sha256": "cda6117763512d7a744ba4d646e6c749fa38cd795f19735db7cda50da427e37f",
+   "ruling": "Ruling: ambiguity; project retained under amb.2025.clwb_claiming_part1. i1040s8812 p. 4, Credit Limit Worksheet A, \"Complete Credit Limit Worksheet B only if you meet all the following\", \"You are claiming one or more of the following credits\", \"Residential clean energy credit, Form 5695, Part I\". The text does not say when the credit counts as claimed; the register's chosen reading is Part I completed with line 13 more than zero. The reply takes Part I being completed (f5695.part1_any Yes) alone, and its note says the reading by line 13 or line 15 \"is not determined by the text\". Re-reviewed because f5695.part1_any was reworded so that the one spouse phrase governs the 2024 carryforward as well as the costs, and f5695.line12 now counts a spouse's own 2024 carryforward on a joint return (wording only; no expression changed). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 4119f349996b; 1,767 fixtures, 500 generated returns seed 20261026, 1,647 partial records): 3,882 of 3,914 comparisons agree; differences by kind {\"project-refuses\": 8, \"project-unknown\": 18, \"value\": 6}; on completed returns 3 value (classm.s3.4.deepseek, classm.s3.4 and stage15.mut.f5695_part1_one_cent: project false, candidate true; on the first and the last, traced, f5695.part1_any is Yes and line 13 is $0). The line is a helper that selects the credit limit worksheet; whether any amount differs on those three records under the reply's reading was not traced. No change to the data.",
+   "context": "bc071539346e2e3945260e2f15c28b61679eecfc16e26254249a263458703acc",
+   "date": "2026-11-11",
+   "run": "fd0ae22c19b4b5e8145820cda6d1240e514aec2b846e6704aed9a39de6f2b4c8",
+   "subject_key": "43f8e54e7f95ff04a677b71b8de3fecc24f00406e1a8eb8c6ddab36867e7fe1e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.clcw26.3.deepseek@f5695",
+     "fixture:classm.s3.4.deepseek@f5695",
+     "fixture:classm.s179.6@f5695",
+     "fixture:classm.s3.4@f5695",
+     "fixture:classm.sli.1@f5695",
+     "fixture:classm.ssb.1@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part1@f5695",
+     "fixture:stage15.refuse.f5695.construction_later@f5695",
+     "fixture:stage15.refuse.f5695.fuel_cell@f5695",
+     "fixture:stage15.mut.f5695_part1_one_cent@f5695",
+     "fixture:mutation.t2.mfj_no_overtime_part3@f5695",
+     "fixture:mutation.t2.s1a.line13_magi_first@f5695",
+     "partial:classm.f5695.4.deepseek-f5695.business_use@f5695",
+     "partial:classm.f5695.4.deepseek-f5695.construction_later@f5695",
+     "partial:classm.f5695.4.deepseek-f5695.line1@f5695",
+     "partial:classm.f5695.4.deepseek-f5695.line2@f5695",
+     "partial:classm.f5695.4.deepseek-f5695.line3@f5695",
+     "partial:classm.f5695.4.deepseek-f5695.line4@f5695"
     ],
     "policy": "executable-triage-v2"
    }

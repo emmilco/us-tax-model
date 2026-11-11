@@ -675,8 +675,7 @@ bank:
   - input: household.credit_disallowed
     order: 20
     help: Asked only when this return claims the earned income credit, the child tax credit, the additional child tax credit or
-      the credit for other dependents. It covers a credit on any earlier return either of you filed, including a joint return
-      with someone else. Any reduction or denial counts, by notice, letter, audit or court decision (the earned income credit
+      the credit for other dependents. It covers a credit on any earlier return, including a joint return filed with someone else. Any reduction or denial counts, by notice, letter, audit or court decision (the earned income credit
       for any year after 1996; the other three credits for any year after 2015), including a refund issued smaller than
       claimed, or without the credit, after the IRS asked you to show you qualified; only a math or clerical error does not.
       If you are not sure, answer Yes. A Yes refuses the earned income credit and Schedule 8812, since Form 8862 and the
@@ -1180,8 +1179,7 @@ bank:
   - input: s1.alimony
     order: 10
     help: Alimony is a payment in cash to or for a spouse or former spouse under a divorce or separation instrument; child
-      support, noncash property settlements and voluntary payments are not alimony (Pub. 504). Payments between you and
-      your spouse on this joint return are not alimony.
+      support, noncash property settlements and voluntary payments are not alimony (Pub. 504). On a joint return, payments between the two spouses are not alimony.
   - input: s1.alimony_received
     order: 10
     help: If the agreement was changed after 2018 to expressly provide that the post-2018 rules apply, include only the
@@ -1613,7 +1611,7 @@ bank:
     order: 12
   - input: f5695.part1_any
     order: 24
-    help: Answer Yes also if your only Part I amount is a carryforward from 2024.
+    help: Answer Yes also if the only Part I amount is a carryforward from 2024.
   - input: f5695.part2_any
     order: 24
     help: There is no carryforward of this credit from an earlier year.

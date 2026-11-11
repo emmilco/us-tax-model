@@ -66,11 +66,11 @@
    "printed": "5a",
    "project_expr_sha256": "ef1869d938335d35c45e21f30a36ab75805cb81e67dab5ef3fa33544fb4f43f1",
    "second_expr_sha256": "5aa8d1da485215be04dcacfe02731bf68c11c81aaf3ef8dba1bc6560196ef485",
-   "ruling": "Ruling: model error; as the earlier rulings on this line. f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\". The project takes Form 5695 line 15 when f5695.part1_any is Yes and $0 otherwise; the reply copies f5695.line15 on every return, so it needs Part I answers (f5695.business_use, f5695.construction_later) the interview asks only after a Yes, or refuses at Part I gates the project never reaches. The rewording of part1_any and line 5a (BUG-0552, BUG-0553) changes no value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 22db672af71d; 1,767 fixtures, 500 generated returns seed 20261026, 105 partial records): 1,243 of 2,372 agree; 856 candidate-refuses and 273 candidate-unknown; on completed returns 119 candidate-unknown on returns with no Part I (project $0.00) and 1 candidate refusal; no value differs. Project stands.",
-   "context": "f36bddfbba1923efa693db4f5be30c8e39d466740f4075d782618a1dfd68d880",
-   "date": "2026-11-10",
-   "run": "cfe01c6fe2bdb4741bfaec4ceb4988e5b90aaa190822ad293213895d066a7f7d",
-   "subject_key": "7bba01fb3700b0cc990598c20989a120e32f2d45483904512f375d4dcf97ac96",
+   "ruling": "Ruling: model error; as the earlier rulings on this line. f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\". The project takes Form 5695 line 15 when f5695.part1_any is Yes and $0 otherwise; the reply copies f5695.line15 on every return, so it needs Part I answers (f5695.business_use, f5695.construction_later) the interview asks only after a Yes, or refuses at Part I gates the project never reaches. The rewording of part1_any and line 5a (BUG-0552, BUG-0553) changes no value. Re-reviewed because f5695.part1_any, which this line reads, was reworded so that the one spouse phrase governs the 2024 carryforward as well as the costs (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 56fd9caa95a1; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,240 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 859, \"candidate-unknown\": 288}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 119} (the candidate refuses at f5695.construction_later on 1; the candidate is unknown for f5695.business_use, f5695.construction_later on 119). The other differences are on refused or incomplete returns. No change to the data.",
+   "context": "4e30693d67cc9b378f0c757724bdfa94077e46803b293f8aa7aaaeaaf80c5d07",
+   "date": "2026-11-11",
+   "run": "637cec1a0ef61b8a90dd3e4de3e6c8f1b601434c30cc4ca9e5a7fb66465706e9",
+   "subject_key": "39669932ba00583ba7147bb58b1995b4be74ebbfde5eec0c84a704a4f9a7e166",
    "triage": {
     "verdict": "differs",
     "kinds": [

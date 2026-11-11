@@ -4,21 +4,21 @@
  "family": "claude",
  "base": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "sli.deduction",
-   "record": "eac17c56bd249c5bcfa4c3df56b72cc16a7de4c88e1f1e8de8473c05cadb8b83",
+   "record": "651a1ca18f10ca9f39136c6d23e50127d613f2694079b6e4e15fe7f9ed598437",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; same point as the earlier rulings on this line. i1040gi p. 98, Line 21, among the conditions for the deduction: \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's\" 2025 tax return. The reply gives worksheet line 9 on every return not married filing separately and has no test that the filer or the spouse is claimed as a dependent (its note says it found no input that asks it; the project reads person.sav_claimed). On completed returns where a person on the return is claimed the project enters zero and the reply the worksheet amount: 4 completed value differences, the recorded witnesses mutation.t2.sli.qss_divisor ($2,045.00 against $0.00; person[taxpayer].sav_claimed yes), stage11.sli.claimed, stage11.sli.spouse_claimed and stage16.sd.line17_no_skips_19. Triage executable-triage-v2 (`.transcription/triage/2025/sli.json`, pass e9feb0fa0109; 1,767 fixtures, 500 generated returns seed 20261026): 1,844 of 1,893 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 381, \"candidate-unknown\": 36, \"project-unknown\": 8, \"value\": 5}; the candidate refusals are on its sa.excluded_income declaration and on refusals reaching the line from other forms, the fifth value difference is on a refused record. The project line is retained.",
-   "subject_key": "65f310c907fb6ab8b73413321be4462ba7461e86ed1d6dfa3517ea7eefb8eda8"
+   "ruling": "Ruling: interface gap; i1040gi p. 98, Schedule 1, line 21 (the conditions for the deduction). The reply's two tests are the project's (a filing status other than married filing separately; no one on the return claimed as a dependent, person.sav_claimed) and it gives worksheet line 9 as the project does. It lacks the project's first alternative, $0 when no interest was paid (sli.interest zero), so it reads person.sav_claimed on returns with no student loan interest. The earlier rulings on this line found earlier replies to lack the dependent test; this reply has it. Re-reviewed because sli.interest was reworded (the older \"(or your spouse if filing jointly)\" in the eligible-student list is now the one spouse phrase; wording only, no expression changed). executable-triage-v2 (`.transcription/triage/2025/sli.json`, pass 970c08bc396c; 1,767 fixtures, 500 generated returns seed 20261026, 40 partial records): 1,759 of 2,307 comparisons agree; differences by kind {\"candidate-refuses\": 331, \"candidate-unknown\": 208, \"project-unknown\": 9}; on completed returns 101 candidate-unknown (on the six the record lists the project is $0 and the reply is unknown for person.sav_claimed); no value difference. The other differences are on refused or incomplete returns. No change to the data.",
+   "subject_key": "203ea5714cd5530bc6a8a3455e1c8a1b99bad4b4f1ee33ee5697cccef8b01ab3"
   },
   {
    "key": "1",
-   "record": "eac17c56bd249c5bcfa4c3df56b72cc16a7de4c88e1f1e8de8473c05cadb8b83",
+   "record": "651a1ca18f10ca9f39136c6d23e50127d613f2694079b6e4e15fe7f9ed598437",
    "status": "AGREE",
-   "subject_key": "53c6d13b450a2a455fa7e1079d16272a571e79ab74c722e921a840006be2f61d"
+   "subject_key": "1657986165797c0b39c15f1f121a48f5734c5a61a8a692e91975b5489f118b19"
   },
   {
    "key": "2",
@@ -68,8 +68,8 @@
   }
  ],
  "subjects": {
-  "sli.deduction": "e780e6be7f573bf26b79a3ddec0c5b6a617c29f671e28910f350b777ff798799",
-  "1": "e44b9b83cfda522bc6c17cc944a5a8492c2c7826a292fa851c594e3adec8e388",
+  "sli.deduction": "2c8ec2105a8d6399fd99cd2be769be01a87e6c925c7040a7a7bb53531755097c",
+  "1": "47317c0241444d2cff59f25e5257145ab7923fd69b054f9f4d09721fc234631e",
   "2": "03b76842d0b2c01ed25446bb350441f94e4e87fe6f19ca18a3ea8ee9d0f06a4d",
   "3": "3a2f5cd698d5de7f0de48e3a76ddcbbd07c2f0b49b90c745ef539cc95ad9986d",
   "4": "7525f5f108db9d3ec62d4c245aeea6b7186ca4e6c389a61b6e16750c48e330f2",

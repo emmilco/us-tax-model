@@ -3,6 +3,16 @@
  "form": "household",
  "rulings": [
   {
+   "printed": "ctc_disallowed_claim",
+   "restated": "s8812 line 8 > s8812 line 11 and helper \"Whether an earlier earned income credit, child tax credit, additional child tax credit or credit for other dependents was reduced or disallowed (or a disallowance period applies), asked only when the return claims one of these credits (false otherwise, where Form 8862 does not apply)\" = true",
+   "model": "The text supports requiring Form 8862 when CTC/ODC is claimed after a prior denial or reduction. But the pages given do not include the Schedule 8812 line 12 text showing that line 8 being more than line 11 is the test for a CTC/ODC being figured, so that condition cannot be verified.",
+   "ruling": "Ruling: interface gap; f1040s8812 p. 1, line 12, \"Is the amount on line 8 more than the amount on line 11?\", \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit.\" The line-scoped request (rerun because household.credit_disallowed, which this line reads, was reworded; no expression changed) gave only the pages this line's citations name, and the Schedule 8812 face was not among them, so the reviewer could not verify that line 8 more than line 11 is the test of a credit being figured; it is, by the text quoted. The reviewer found the Form 8862 condition supported. Project stands.",
+   "context": "3daf2ca8cda0f21e6ac08b89a391232cc3c53a952713d6730cfc8a99993785a2",
+   "date": "2026-11-11",
+   "run": "961991a37e094a107770b18b1fbf3d3d66658473ce53d7cca8791f446cf5e324",
+   "subject_key": "cefe2dac632ef3ef425fafeebca58dbf3750b2307d7db28de84a97a0870221b9"
+  },
+  {
    "printed": "filing_status_conflict",
    "restated": "(f1040 line Filing Status = 'single' and helper \"Were you married at the end of 2025?\" = true or f1040 line Filing Status = 'mfj' and helper \"Were you married at the end of 2025?\" = false and helper \"Did your spouse die in 2025?\" = false)",
    "model": "It flags only single-while-married and joint-while-unmarried. It does not flag married filing separately when you were not married at year end, but the instructions say 'Check the \"Married filing separately\" box ... if you are married at the end of 2025 and file a separate return.'",

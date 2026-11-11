@@ -180,11 +180,11 @@
    "printed": "8c",
    "project_expr_sha256": "9bd13b80e005cfb36f3673e9c79b51a86a367bfce0b72e48e64b32ac4db5bec5",
    "second_expr_sha256": "fd2f662203a49c204a20e37a5fe71913684763a1f392034ad461091d64a3e5cc",
-   "ruling": "Ruling: representation; i1040gi p. 91, Line 8c, and p4681 p. 4, \"you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies\". Both give zero when no debt was canceled and the canceled nonbusiness debt otherwise; the project floors s1.cod_amount at zero, which cannot change a nonnegative amount, as ruled before on this line. Triage executable-triage-v2 (`.transcription/triage/2025/s1.json`, pass 554ad15530c9; 1,767 fixtures, 500 generated returns seed 20261026, 616 partial records): 2,910 of 2,911 in-scope comparisons agree; the one difference is a candidate-unknown on an incomplete mutation record (mutation.t2.s1.cod_none_with_alimony) where the reply's refusal declaration reads s1.cod_unsupported, unanswered there; no completed-return difference. The reply does not raise the reworded amount question (a debt both spouses owed counted once). The project line is retained.",
-   "context": "75848d3346a239fa8cf2f4317d582bc65212905d91ed3591ba8e936e7cf9b706",
+   "ruling": "Ruling: representation; i1040gi p. 91, Line 8c, and p4681 p. 4, \"you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies\". Both give zero when no debt was canceled and the canceled nonbusiness debt otherwise; the project floors s1.cod_amount at zero, which cannot change a nonnegative amount, as ruled before on this line. Re-reviewed because s1.cod_amount, which this line reads, was reworded (the sentence on a debt both spouses owed is now a conditional one, \"On a joint return, count a debt both spouses owed once, even if each received a Form 1099-C for the whole amount\"), and s1.cod_unsupported with it; wording only, no expression changed. The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1.json`, pass 6eb0adfaa652; 1,767 fixtures, 500 generated returns seed 20261026, 646 partial records): 2,912 of 2,913 comparisons agree; the one difference is a candidate-unknown on an incomplete record; no completed-return difference. The project line is retained.",
+   "context": "62e8eae617c23627bb5b710e407700f041a2a765aceb3151cfd5575238fac478",
    "date": "2026-11-11",
-   "run": "e2633e03ecaafc061be287d257667183b1d4756f752453725153d29c732db672",
-   "subject_key": "d0b79dc02227f2f430ab08e31351226a0a5af838b97a7617385968d033f4d6a0",
+   "run": "6a68af1aa300b1ba42387dc0fc234c5fc6cc5efc2f25063c89304b29d909264d",
+   "subject_key": "077d3b4143ea196fdc6b27b6172831ffaad1c55cf68b3c4f6178b326a86673db",
    "triage": {
     "verdict": "differs",
     "kinds": [

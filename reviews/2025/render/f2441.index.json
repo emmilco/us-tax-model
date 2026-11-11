@@ -4,29 +4,29 @@
  "family": "claude",
  "base": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
  "head_rows": {
-  "match / mismatch / unclear / missing": "26 / 10 / 0 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "25 / 11 / 0 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1 (box)",
-   "record": "14e7a332a0a51ec9312c71a740cef9a5ad4a7df8a81feb3321c8ed8b9ceb3760",
+   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
    "status": "MATCH",
-   "subject_key": "b367280b03a373417dcb1ba01eb2fed04f0be28358910c7c49d4c67246b7d0fa"
+   "subject_key": "45891a3be2401e5fe13af1fe6f36b75f2bf8dc16233cce02033d42ffa086ae35"
   },
   {
    "key": "2 (box)",
-   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",
-   "subject_key": "81c3016b3d1e32b219739b80dbb4733289426997883b4bf64a170e2a6773e9fa"
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
+   "subject_key": "17bdefbbbbffcb00d486ea1d1fd98b5313e10bfcb4cb800090dff62091430c08"
   },
   {
    "key": "3",
-   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",
-   "subject_key": "813b82f9ec0f1a6d6157738cbb81081975d2f8f53533cd278456df51681dc2d8"
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
+   "subject_key": "b3825b49e32ca6b39a9f30bd395c3f0d324d4475fbabb19d625e2e1a486db356"
   },
   {
    "key": "4",
@@ -117,27 +117,28 @@
   },
   {
    "key": "13",
-   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
    "status": "MATCH",
-   "subject_key": "d08e73e75229bf89b6cff718e12dfc7ea7eb36b9821e62c7b925a37d8d865be6"
+   "subject_key": "934c4f06e0b95bdf5683959c302333b29f5a18f3d78686cc9ef527825091b487"
   },
   {
    "key": "14",
-   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
    "status": "MATCH",
-   "subject_key": "e3a15cc9b1dea489ceb319d64eeab284604676fed9b1f04277a6b190fc4c2ca6"
+   "subject_key": "32be0a4f3bd14986ebc13e3cf51e2c9752079c90d70483a32af6000d6239e4a8"
   },
   {
    "key": "15",
-   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
    "status": "MATCH",
-   "subject_key": "23f2f31b638e00e7681fcfb9dd6dbb75dcba26244f6bc0da92176d324a77e6b7"
+   "subject_key": "aa2ddaa42ea27dd689c55fc54aaa490b3707a52401c4919c1f992a05156ac291"
   },
   {
    "key": "16",
-   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
-   "status": "MATCH",
-   "subject_key": "8ab512bae1eaea396a7c5206b5b5ecf3d250a3260e224f9bf448a3aa41bdae24"
+   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. The reviewer accepts adding expenses incurred and paid in 2025 to expenses incurred in 2025 and not yet counted (i2441 p. 5, Line 16, \"It doesn't matter when the expenses were paid\"). Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
+   "subject_key": "be3a493fd28dcbcb346c077eb60c82062ef8d933704ee5fab747a878325fcad2"
   },
   {
    "key": "17",
@@ -192,9 +193,9 @@
   },
   {
    "key": "25",
-   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
    "status": "MATCH",
-   "subject_key": "c8a7a26ea6d285e3b95e422e7b6c39bdedf2da43eb684356bf202144ce662185"
+   "subject_key": "8407be704b11e78b0146d46178f4fe777f9cb8c06ca35378b9cdd7ec17e79250"
   },
   {
    "key": "26",
@@ -204,10 +205,10 @@
   },
   {
    "key": "27",
-   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",
-   "subject_key": "48f17cf8735586b8767852729f068ee21fe8b76017099fcae35c08b9c62b6076"
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
+   "subject_key": "7dabaf59ee30a775d4bc0776a00c83d68f782368a486bc77b1a7f42e7e1e36af"
   },
   {
    "key": "28",
@@ -223,10 +224,10 @@
   },
   {
    "key": "30",
-   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",
-   "subject_key": "565afe4614ef116c9208f54d488e3b71cb3cfea983a16235f9ccb9cc09de05cb"
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
+   "subject_key": "699d9edf9321a22bf6492b561cb8338106f35c7a6a2977f96c450cabc041bcd4"
   },
   {
    "key": "31",
@@ -236,9 +237,9 @@
   }
  ],
  "subjects": {
-  "1 (box)": "bff3d468afa95d7c6882054f447ef997ea68a0203fe0d90f4f0278e59156eade",
-  "2 (box)": "37d3860625019eff0959b7f470f8c13a929825e76d67623b61647b92f63949b4",
-  "3": "13d120769fa84354183ef458d07d925c7a69799284333acfc8ab13f9b06ca591",
+  "1 (box)": "63cf86b36d046aba6c7c9f36f44970ad94918a778daac88083d22cd4525f90e1",
+  "2 (box)": "5b057614073d8e64ced1ddaaa667a008792472c84118826a607269177716df9a",
+  "3": "d270d5ecc58ef1fbc4274094265a6ba837a8acea4f517c1b55f65c0bbc63b09a",
   "4": "65ad69c5e8c90589973e31b7331b7e54b7eeec0da4a9da21fb99ebc46d650886",
   "5": "7e9d36ccd0386049fe2332050fc622ba6bc809c0427cdb1daf10a1670ee6bda0",
   "6": "34f0d934a032cf5160050a88a7c21ff9f4b54c02714966c2a6fce32c9aca03fb",
@@ -253,10 +254,10 @@
   "10": "beb1d772c6355612bcb2d8cd668139efb1b99702b069e88d72a3b14454819f9a",
   "11": "61112cd04e10bd07071fb4cfb9ebbc42d409edcd4da7bc3f3b25aa399737cc64",
   "12": "27e355e131fd547c722f8fb844c74991cf94a00904e11f73c5ac7c019c88e90f",
-  "13": "6d19999b2d5e32db7dc028d67009d1281eac5956f0f371cbc35ea53251dec021",
-  "14": "fd6809740f98f841ec8a4f18f3594f5d04078168283971aaaba07ab7be041c2f",
-  "15": "2a1307982433af827c009c79e3cd536228c7ac72553814672c56cded0ca56382",
-  "16": "7f44d90c408b59e9b31b01fdc87f0677f84f3fb0aed32d9b8ff8d76cee3eba7b",
+  "13": "9c59410597dd8251a1404a58864e53ac6f836e19d99949e1d1b3681c5da3828f",
+  "14": "1a98d03c2e93e7b622ce07eb9d77306990a1d55aee6b5f4ddce7e75e1e947429",
+  "15": "d75c604b72e6811ff1647da5d3ca0c5dbcd75443bb772c0654e910980de44649",
+  "16": "79e3bc1d7e81d608dd892e6c11eadf054e31e915b41a1e51088751f584f41bbb",
   "17": "1ca42929dcfa0a2729c6887d392128267e4850482de2b5ba0e03f1b9a0064877",
   "18": "0173f358a0769e400ef832f67d5fed47d84f265a613c786cb44d02824177e752",
   "19": "4fa05799b9419a9cd11d34fcdd78f0367c16e4205211c290d41584406a2b8949",
@@ -265,12 +266,12 @@
   "22": "b915b927da69a12457c6002e5f4945115d7ede5473d998b24281b6acff79954e",
   "23": "e74db98f2ed34dedf19a98f08d8d1d1e292d34c7d1b2dbbc5c1e396eb43b78f7",
   "24": "c4455d17f0737c3ab5cbad5a5d0a496bfb08d4d0b51305717e5efdeb09ad5f19",
-  "25": "ae8218569f2cf8ebdbd0d039a469c576f54870b28c4c92753ad2c73344b846b6",
+  "25": "b3349d87b149af32bf0a4819625b73b5268559fb9c4e2ded7436a04d31bc1b22",
   "26": "90b1ba6674d128d79ba05341a50c2bb64366e6734e0df6a88c9f9dd10beea6b4",
-  "27": "50786952bf6d158a3a17d42fbb939f0983c9b79465502f8a4e1ea865ad14fa96",
+  "27": "62850ea6996a5c274e58179cc2d6748dbfe4691a16c4062416aa316ed632deb8",
   "28": "208f72b6ca518d77c27979fd4088f6e51a4a18aeb44779a921cd4d572a31dbcd",
   "29": "b6d8757189cc5ba3f8e0410f2083b76e555b3c635eb498aa1810ec854604c0ff",
-  "30": "11bffc1ea1a9b3470aa2459992137931e599b30989506727e7e69d4b86d8d118",
+  "30": "b44338fbf902697749023b9803443cd71117d70013b9be10d7c594dce214f389",
   "31": "9bfe370e903a66d4b98337a63a9ce2fa854b3e0e155cfbbd12dd477da41513cc"
  },
  "__rest__": "bb4b29bcc2aa36444c7a09d3b0883307635faecc1234ab9c0d9ed9d55d114f4d"
