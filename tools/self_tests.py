@@ -44,6 +44,7 @@ TESTS = [
     ("check_source_titles_self_test", "code", False, ["python3", "tools/check_source_titles.py", "--self-test"]),
     ("worktree_data_self_test", "code", False, ["python3", "tools/worktree_data.py", "--self-test"]),
     ("check_slot_self_test", "code", False, ["python3", "tools/check_slot.py", "--self-test"]),
+    ("check_times_self_test", "code", False, ["python3", "tools/check_times.py", "--self-test"]),
     ("year_carry_self_test", "code", False, ["python3", "tools/transcription/year_carry.py", "--self-test"]),
     ("citations_self_test", "code", True, ["python3", "tools/citations.py", "--self-test"]),
     ("year_diff_self_test", "code", True, ["python3", "tools/year_diff.py", "--self-test"]),

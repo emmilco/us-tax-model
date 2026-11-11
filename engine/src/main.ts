@@ -3,6 +3,7 @@
 //
 //   node engine/dist/main.js build                 build + check the data
 //   node engine/dist/main.js render                render worksheets for review
+//   node engine/dist/main.js render --check        fail unless rendered/ is what the canonical data renders to
 //   node engine/dist/main.js eval --inputs F [--json]
 //                                                  evaluate a return from inputs
 //   node engine/dist/main.js eval --batch F        evaluate many returns ([{id, inputs}]) as JSON
@@ -81,7 +82,7 @@ if (command === "review-stage5") {
   }
   console.log("\nbuild OK");
 } else if (command === "render") {
-  renderAll();
+  process.exit(renderAll(process.argv.slice(3)));
 } else if (command === "eval") {
   const args = process.argv.slice(3);
   let inputsPath: string | null = null;

@@ -14,8 +14,13 @@
 # writes the evidence report and review packets and runs human_review, which copies
 # reports/<year>/engine_differential.json that engine_differential (wave 2) rewrites.
 # Nothing checks these rules; a new step must be placed by them. A failing step fails
-# the run after its wave. Each step's wall time, in seconds, goes to
-# .git/check-all-times (not tracked); each self-test's, as self_tests/<name>.
+# the run after its wave.
+#
+# Wall times, in whole seconds, go to .git/check-all-times (not tracked; rewritten by each run): each step's
+# as "<seconds> <step>", each self-test's as "<seconds> self_tests/<name>", each stage's (compile, build,
+# wave1 to wave3) as "<seconds> stage:<label> <its steps>", and the run's as "<seconds> run:<tier>". When the
+# run ends, passed or failed, tools/check_times.py prints the summary of that file: the stages, which run
+# one after another, and the steps by time, each with its stage, since the steps of a stage run side by side.
 #
 # A check that runs for both jurisdictions is declared once, with jstep: its New York
 # run is the step ny_<name>, the same command with the New York flag.
@@ -57,14 +62,24 @@ node=(node engine/dist/main.js)
 times="$(git rev-parse --git-path check-all-times)"
 : > "$times"
 logs="$(mktemp -d)"
-trap 'rm -rf "$logs"' EXIT
+run_t0=$(date +%s)
+# finish: on exit, however the run ends, record the run's time and print the summary of the times.
+finish() {
+  echo "$(( $(date +%s) - run_t0 )) run:$tier" >> "$times"
+  echo
+  python3 tools/check_times.py "$times" || true
+  rm -rf "$logs"
+}
+trap finish EXIT
 names=()
 pids=()
+stage_t0=0
 
 # step NAME COMMAND...: start COMMAND in the background, logging to its own file, when NAME is in the tier.
 step() {
   local name="$1"; shift
   in_tier "$name" || return 0
+  [ "${#pids[@]}" -gt 0 ] || stage_t0=$(date +%s)
   ( t0=$(date +%s); rc=0; "$@" > "$logs/$name.log" 2>&1 || rc=$?
     echo "$(( $(date +%s) - t0 )) $name" >> "$times"; exit "$rc" ) &
   names+=("$name"); pids+=("$!")
@@ -79,14 +94,16 @@ jstep() {
   step "ny_$name" "$@" $ny ${run_args[@]+"${run_args[@]}"}
 }
 
-# wave: wait for the steps started since the last wave, print their logs in order,
-# and stop the run if any failed.
+# wave LABEL: wait for the steps started since the last wave (the stage LABEL), record the stage's wall
+# time and its steps, print their logs in order, and stop the run if any failed.
 wave() {
-  local i failed=()
+  local i failed=() label="$1" joined
   [ "${#pids[@]}" -gt 0 ] || return 0
   for i in "${!pids[@]}"; do
     wait "${pids[$i]}" || failed+=("${names[$i]}")
   done
+  joined="${names[*]}"
+  echo "$(( $(date +%s) - stage_t0 )) stage:$label ${joined// /,}" >> "$times"
   for i in "${!names[@]}"; do
     echo "== ${names[$i]}"
     cat "$logs/${names[$i]}.log"
@@ -116,13 +133,13 @@ review_packets() {
 }
 
 step compile npm run compile --silent
-wave
+wave compile
 
 if [ "$tier" = docs ]; then step build "${node[@]}" build "$@"; else step build build_and_render "$@"; fi
 step check_self_test "${node[@]}" check-self-test
 # The Lean evaluator, for compare and ny_compare.
 step lean_build lean_build
-wave
+wave build
 
 # The tools' self-tests and test suites, in a worker pool; the bookkeeping group is the docs tier's.
 step bookkeeping_self_tests python3 tools/self_tests.py --group bookkeeping --times "$times" "$@"
@@ -162,7 +179,7 @@ jstep limits "--jurisdiction ny" python3 tools/check_limits.py
 jstep completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py
 # New York only: its tax table.
 step ny_tax_table python3 tools/extract_ny_tax_table.py --check "$@"
-wave
+wave wave1
 
 step conjecture "${node[@]}" conjecture "$@"
 jstep test_fixtures --ny "${node[@]}" test-fixtures
@@ -183,7 +200,7 @@ step engine_differential tools/engines/run.sh "$@"
 # New York mutants are killed only by the New York fixtures (the federal run takes federal mutants only).
 jstep mutate --ny "${node[@]}" mutate
 jstep compare --ny "${node[@]}" compare
-wave
+wave wave2
 
 evidence_args=()
 if [ "$tier" = fast ]; then
@@ -193,4 +210,4 @@ step evidence "${node[@]}" evidence ${evidence_args[@]+"${evidence_args[@]}"} "$
 step review_packets review_packets "$@"
 # The human-review tooling: reading, saved verdict, signed log and evidence report, in a sandbox.
 step human_review python3 tools/human_review/test_review.py "$@"
-wave
+wave wave3

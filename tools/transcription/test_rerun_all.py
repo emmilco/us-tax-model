@@ -173,8 +173,9 @@ class Guards(unittest.TestCase):
         self.ledger = ledger(os.path.join(self.temp.name, "costs.jsonl"))
         self.calls, self.dry_calls = [], []
 
-    def main(self, states, extra=(), dry_out=None, kinds="transcription"):
-        """Run rerun_all over the forms of `states` ({form: answered() result}); `dry_out(cmd)` answers dry runs."""
+    def main(self, states, extra=(), dry_out=None, kinds="transcription", stale=None):
+        """Run rerun_all over the forms of `states` ({form: answered() result}); `dry_out(cmd)` answers dry runs;
+        `stale` is what build_fresh.rendered_stale() finds."""
         summary = os.path.join(self.temp.name, "summary.json")
 
         def run(cmd, **kw):
@@ -190,6 +191,7 @@ class Guards(unittest.TestCase):
         out = io.StringIO()
         with patch.object(sys, "argv", argv), patch.object(RA, "forms_for", return_value=sorted(states)), \
                 patch.object(RA, "answered", side_effect=lambda k, f, fam: states[f]), \
+                patch.object(RA.build_fresh, "rendered_stale", return_value=stale), \
                 patch.object(RA.subprocess, "run", side_effect=run), contextlib.redirect_stdout(out):
             with self.assertRaises(SystemExit) as done:
                 RA.main()
@@ -210,6 +212,25 @@ class Guards(unittest.TestCase):
             with self.assertRaises(SystemExit) as done:
                 RA.main()
         self.assertEqual(done.exception.code, 2)
+
+    def test_render_jobs_are_refused_on_a_rendering_from_before_an_edit(self):
+        # The trap: the form was edited and built, rendered/ was not regenerated, so the render log's subject (the
+        # hash of the rendered file) is unchanged and the log looks current.
+        stale = ("rendered text", "1 rendered file(s) are not what the current build renders to (rendered/2025/a.md: "
+                 "differs), so a review would read text from before the last edit; regenerate: node engine/dist/main.js render")
+        for extra in (("--dry-run",), ()):
+            code, out, rows = self.main({"a": None}, kinds="render", extra=extra, stale=stale)
+            self.assertEqual(code, 2)
+            self.assertIn("refused: stale rendered text: 1 rendered file(s) are not what the current build renders to", out)
+            self.assertIn("regenerate: node engine/dist/main.js render", out)
+            self.assertNotIn("already answers the current subject", out)   # nothing is planned or priced
+            self.assertEqual((self.calls, self.dry_calls, rows), ([], [], None))
+        code, out, rows = self.main({"a": None}, kinds="transcription,render", extra=("--dry-run",), stale=stale)
+        self.assertEqual(code, 2)                                           # refused whole when a render job is among them
+        code, out, rows = self.main({"a": None}, extra=("--dry-run",), stale=stale)
+        self.assertEqual(code, 0)                                           # a transcription review reads the form, not rendered/
+        code, out, rows = self.main({"a": "the rendered English of a changed"}, kinds="render", extra=("--dry-run",))
+        self.assertEqual((code, self.dry_calls), (0, [("a", "auto")]))      # a fresh rendering is planned as before
 
     def test_line_scoped_by_default_and_whole_when_the_tool_refuses_or_when_asked(self):
         def refuse_dependent(cmd):

@@ -19,7 +19,8 @@
 # clone's list of green trees for its tier, which both hooks read, and
 # tools/commit_tested.sh commits that tree, from the worktree that started the run.
 # One run at a time per clone. Each run keeps its own record under .git/check-all-bg/runs/
-# <snapshot-tree>-<timestamp>/ (status, log), the newest 50 kept; `last` (a copy of the latest
+# <snapshot-tree>-<timestamp>/ (status, log, and the steps' wall times as tools/check_all_steps.sh
+# records them, `times`, with their summary, `times.txt`: tools/check_times.py), the newest 50 kept; `last` (a copy of the latest
 # finished run's status) and `log` (a link to the latest started run's log) follow the newest, so
 # a run that finishes just before another starts loses nothing. Across the machine at most
 # CHECK_ALL_MAX_RUNS check-all runs (this and tools/check_all.sh, in any worktree) execute at
@@ -135,16 +136,24 @@ prune() {
 
 # run BASE TREE SNAP [check-all args]: test the snapshot and write its record in $RUN_DIR and $state/last.
 run() {
-  local base="$1" tree="$2" snap="$3" rc tested="" result tier
+  local base="$1" tree="$2" snap="$3" rc tested="" result tier times
   shift 3
   tier="$(tier_of "$@")"
   trap 'rm -rf "$lock"' EXIT
   echo "check-all-bg: snapshot tree $tree (on $base), $tier tier, started $(date '+%Y-%m-%d %H:%M:%S')"
   prepare "$snap" "$base"
+  # The steps' times are written in the snapshot worktree's git directory; an earlier run's are removed
+  # so that a run stopped before its steps records none.
+  times="$(cd "$wt" && cd "$(dirname "$(git rev-parse --git-path check-all-times)")" && pwd)/check-all-times"
+  rm -f "$times"
   set +e
   (cd "$wt" && tools/check_all.sh "$@")
   rc=$?
   set -e
+  if [ -s "$times" ]; then
+    cp "$times" "$RUN_DIR/times"
+    (cd "$wt" && python3 tools/check_times.py "$RUN_DIR/times") > "$RUN_DIR/times.txt" || true
+  fi
   if [ "$rc" -eq 0 ]; then
     tested="$(cd "$wt" && . tools/green.sh && m="$(marker_of "$tier")" && { [ -s "$m" ] && cat "$m" || true; })"
   fi
@@ -159,6 +168,7 @@ run() {
     echo "tested=$tested"
     echo "finished=$(date '+%Y-%m-%d %H:%M:%S')"
     echo "log=$RUN_DIR/log"
+    if [ -s "$RUN_DIR/times.txt" ]; then echo "times=$RUN_DIR/times.txt"; fi
   } > "$RUN_DIR/status"
   cp "$RUN_DIR/status" "$state/last.tmp"
   mv "$state/last.tmp" "$state/last"

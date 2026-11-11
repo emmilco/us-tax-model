@@ -123,5 +123,5 @@ def check(rebaseline=False, release=False):
 if __name__ == "__main__":
     os.chdir(ROOT)
     import build_fresh
-    build_fresh.require()
+    build_fresh.require(rendered=True)  # the subjects include each line's rendered English
     sys.exit(check(rebaseline="--baseline" in sys.argv, release="--release" in sys.argv))

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Self-test for the per-run records of tools/check_all_bg.sh, in a temporary repository with a stub
-# check-all: each run keeps its own record and log (runs/<tree>-<timestamp>/), `last` and `log` follow
+# check-all: each run keeps its own record, log and step times (runs/<tree>-<timestamp>/), `last` and `log` follow
 # the newest, --status [TREE] reads them, only the newest 50 run directories are kept, a background
 # run waits for a check-all slot while another holds it, and tools/commit_tested.sh can name the
 # tree it commits. (The slot lock itself: tools/check_slot.py --self-test.)
@@ -15,7 +15,7 @@ git init -q
 git config user.email test@example.com
 git config user.name test
 mkdir -p tools
-cp "$ROOT/tools/green.sh" "$ROOT/tools/check_all_bg.sh" "$ROOT/tools/check_slot.py" tools/
+cp "$ROOT/tools/green.sh" "$ROOT/tools/check_all_bg.sh" "$ROOT/tools/check_slot.py" "$ROOT/tools/check_times.py" tools/
 cat > tools/worktree_data.py <<'PY'
 import sys
 sys.exit(0)
@@ -27,6 +27,9 @@ set -euo pipefail
 tree="$(worktree_tree)"
 echo "$tree" > "$(marker_of full)"
 record_green "$tree" full
+times="$(git rev-parse --git-path check-all-times)"
+[ ! -e "$times" ] || { echo "an earlier run's times were left in place" >&2; exit 1; }
+printf '%s\n' "3 compile" "3 stage:compile compile" "4 run:full" > "$times"
 echo "stub check-all ok"
 SH
 chmod +x tools/*.sh tools/check_slot.py
@@ -50,6 +53,9 @@ t1="$(get "$(ls -1d "$state"/runs/*/ | head -n 1)status" snapshot)"
 for d in "$state"/runs/*/; do
   [ -s "${d}status" ] && [ -s "${d}log" ] || fail "run directory ${d} lacks its status or log"
   grep -q 'stub check-all ok' "${d}log" || fail "the log of ${d} lacks the run's output"
+  grep -qx '3 compile' "${d}times" || fail "run directory ${d} lacks the steps' times"
+  grep -q '^check-all times (full tier): 4 s' "${d}times.txt" || fail "run directory ${d} lacks the summary of its times"
+  [ "$(get "${d}status" times)" = "$(get "${d}status" log | sed 's/log$/times.txt/')" ] || fail "the record of ${d} does not name its times"
 done
 newest="$(ls -1dt "$state"/runs/*/ | head -n 1)"
 cmp -s "$state/last" "${newest}status" || fail "last is not the newest run's record"

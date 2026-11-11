@@ -31,7 +31,8 @@ no tools, logged in the cost ledger as kind `question` (transcribe.call_model). 
 
 --measure builds and prices every selected unit's prompt whatever its records hold; --by-form also prices one prompt
 per form. --coverage lists, per input, which existing reviews see its wording and whether they judge it. Neither
-calls a model. Every mode reads canonical/ (the interview profiles) and rendered/, so build and render first.
+calls a model. Every mode reads canonical/ (the interview profiles) and rendered/, and refuses to run unless both are what the
+sources build and render to (tools/build_fresh.py).
 """
 import argparse
 import datetime
@@ -699,6 +700,8 @@ def main(argv=None):
         return self_test()
     if a.force_rerun is not None and not a.force_rerun.strip():
         ap.error("--force-rerun needs a reason")
+    import build_fresh
+    build_fresh.require(rendered=True)  # every mode reads canonical/ and each reader's rendered English
     ctx = Ctx.load()
     if not (a.measure or a.coverage):
         return review(a, ctx)
