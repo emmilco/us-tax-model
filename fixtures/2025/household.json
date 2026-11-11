@@ -389,7 +389,8 @@
         "dependent[hm].relationship": "household_member",
         "dependent[hm].age": 40,
         "dependent[hm].qr_all_year": true,
-        "dependent[hm].supported": true
+        "dependent[hm].supported": true,
+        "dependent[hm].lawful": null
       },
       "expect": {
         "household.hoh_absence": {

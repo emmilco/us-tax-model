@@ -18,13 +18,13 @@ given, for example); the two evaluators agree that it is unknown, and its reason
 
 | Kind | Fixture cases | Generated returns |
 | --- | --- | --- |
-| bool | 1216412 | 354029 |
+| bool | 1216390 | 354029 |
 | count | 161405 | 41545 |
 | enum | 19679 | 10288 |
 | money | 2553317 | 629458 |
 | rate | 24531 | 6758 |
 | refusal | 207326 | 131319 |
-| unknown | 683912 | 74204 |
+| unknown | 683934 | 74204 |
 | all | 4866582 | 1247601 |
 
 Not compared. Each of these counts as a difference and fails the run.
