@@ -39,16 +39,22 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Does this loan meet all of these: it was originated after December 31, 2024 (for a refinancing, the loan
-        it refinanced was); it was used to buy the vehicle (lease payments do not qualify); it is secured by a first lien
-        on the vehicle; it is not owed to a person related to you (Internal Revenue Code section 267(b) or 707(b)(1));
-        and when the loan was taken out you expected the vehicle to be used more than 50% of the time for personal use
-        (not in a trade or business other than as an employee, and not to produce income) by you or certain relatives
-        or members of your household?'
+      source: 'Does this loan meet all of these: it was originated after December 31, 2024; it was used to buy the vehicle
+        (lease payments do not qualify); it is secured by a first lien on the vehicle; it is not owed to a person related
+        to you (Internal Revenue Code section 267(b) or 707(b)(1)); and when the loan was taken out you expected the
+        vehicle to be used more than 50% of the time for personal use (not in a trade or business other than as an
+        employee, and not to produce income) by you or certain relatives or members of your household? For a
+        refinancing, answer the date, purchase and personal-use tests for the loan it refinanced (this loan paid off that
+        loan rather than buying the vehicle), and the first-lien test for this loan. For a loan you took over when a
+        previous borrower died, answer the date, purchase and personal-use tests for the loan as that borrower took it out
+        (that borrower''s expected use), and the first-lien test for the loan now.'
     cite:
       doc: i1040gi
       locator: p. 109, Schedule 1-A, Qualified passenger vehicle loan interest, requirements 1 to 5, and Personal use;
-        fr-2025-24154 proposed § 1.163-16(d)(3) (related party indebtedness)
+        Refinanced loan, "so long as the new loan is secured by a first lien on the APV with respect to which the
+        refinanced loan was incurred"; Change in obligor by reason of previous obligor's death, "If a loan met
+        requirements 1 through 5 at the time it was originated by a previous obligor"; fr-2025-24154 proposed §
+        1.163-16(d)(3) (related party indebtedness)
   - id: carloan.vehicle
     printed: (helper)
     label: Is the vehicle an applicable passenger vehicle?
@@ -135,10 +141,15 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: Any down payment or other consideration you provided when you bought the vehicle (zero if none)
+      source: Any down payment or other consideration you provided when you bought the vehicle (zero if none). For a
+        vehicle you traded in, count only its equity, its trade-in value less any loan on it paid off in the purchase,
+        and zero if that loan was more than the trade-in value (the excess is the negative equity, which the trade-in
+        value has already reduced)
     cite:
       doc: fr-2025-24154
-      locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B), "any down payment ... is applied first against any negative equity and
+      locator: p. 19, Proposed § 1.163-16(b)(8), "existing indebtedness on a vehicle traded in as part of a purchase
+        transaction for an APV, to the extent such indebtedness exceeds the vehicle's trade-in value specified by the
+        contract for the purchase of the APV"; pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B), "any down payment ... is applied first against any negative equity and
         any other amounts that are not incurred for the purchase of the APV"
   - id: carloan.nonqualifying_debt
     printed: (helper)
@@ -181,11 +192,17 @@ form:
     type: Bool
     expr:
       op: input
-      source: Was all of the loan this loan refinanced a qualifying vehicle loan (it financed only the vehicle and items
-        customarily financed with it, and was not itself a refinancing for more than the balance it replaced)?
+      source: Was all of the loan this loan refinanced a qualifying vehicle loan? It must have financed only the vehicle
+        and items customarily financed with it and directly related to it (such as a service plan, extended warranty,
+        sales tax and vehicle fees), and not negative equity on a vehicle traded in, collision or liability insurance, a
+        trailer or other unrelated property, or cash paid to you; and it must not itself have been a refinancing for
+        more than the balance it replaced. Answer No if any part of it financed one of those other amounts.
     cite:
       doc: fr-2025-24154
-      locator: pp. 20–22, Proposed § 1.163-16(d)(4), "If a taxpayer refinances an SPVL"
+      locator: pp. 20–22, Proposed § 1.163-16(d)(4), "If a taxpayer refinances an SPVL"; (d)(2)(i) and (ii),
+        "repayment of negative equity on a loan secured by a trade-in vehicle, to purchase collision and liability
+        insurance, or to purchase any property or services unrelated to an APV (for example, a trailer or a boat) is not
+        incurred by a taxpayer for the purchase of an APV"
   - id: carloan.refi_qualifying
     printed: (helper)
     label: Part of the new loan that is a specified passenger vehicle loan

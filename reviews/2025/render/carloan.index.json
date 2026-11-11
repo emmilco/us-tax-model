@@ -3,17 +3,27 @@
  "form": "carloan",
  "family": "claude",
  "base": "c029dfdc004ef9f10c45392476fe7bc868d15a0c95d13b9b57c09f61098a947a",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "22(ii)",
-   "record": "c029dfdc004ef9f10c45392476fe7bc868d15a0c95d13b9b57c09f61098a947a",
+   "record": "ed81c90ce7621f01452ab82987513eec7eff4c86ceb96111ec2cefa09e44d907",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040gi p. 110, Schedule 1-A, Line 22: \"On line 22, column (ii), enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F).\" The objection (Schedules E and F left out, no refusal named) is answered by a cited scope screen: scope.schedule1 asks about \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F)\" and refuses Form 1040 lines 8 and 10 when true (forms/2025/scope.yaml; f1040.line8, f1040.line10), so on every completed return Schedule C is the only place the interest can be deducted elsewhere; the form note says \"Schedules E and F are refused\". Same ruling as the archived rounds; the rendering is new (column (ii) is now the QPVLI part of the Schedule C interest, BUG-0175) and states that correctly (\"The QPVLI part of the Schedule C interest, by how you came to owe the loan\", fr-2025-24154 p. 23, proposed § 1.163-16(g)(1): \"Independently deductible interest is limited to interest that is QPVLI ... and that is otherwise deductible by the taxpayer as a different type of interest\"; (g)(2): the QPVLI \"is reduced to the extent that the taxpayer deducts that independently deductible interest as non-QPVLI\"). Not a model error (the source does name E and F)."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Schedules E and F are outside the tool (scope.schedule1 refuses Form 1040 lines 8 and 10 whenever either applies), so the only place on the return QPVLI can be deducted is Schedule C; the question asks for the part of this loan's interest deducted there, which is QPVLI deducted elsewhere when the loan qualifies.",
+   "subject_key": "136755c8f386279390452c9b1ac934490900386dfb6b6e583ea9db126f438746"
   },
   {
    "key": "22(iii)",
-   "record": "c029dfdc004ef9f10c45392476fe7bc868d15a0c95d13b9b57c09f61098a947a",
-   "status": "MATCH"
+   "record": "ed81c90ce7621f01452ab82987513eec7eff4c86ceb96111ec2cefa09e44d907",
+   "status": "MATCH",
+   "subject_key": "13a956ff013a3ba46967f8bba7c9b3a6f4a4c4995a25e3ff7e020e0702456d68"
   }
- ]
+ ],
+ "subjects": {
+  "22(ii)": "be67d2f39d44a43f0dd91ddbc09b37c5ceec6a55d303ff0e12c16a9b01c78d14",
+  "22(iii)": "57d67ec968e5bb650e5c26a5a9dc44a76851b291d74b0bcd0fcfe4c1aeedff69"
+ },
+ "__rest__": "a76106e6a173443cc0a1a4e7ca9894b5b732da1413856ef3d1613599c9a19b2b"
 }

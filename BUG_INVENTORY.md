@@ -7395,3 +7395,129 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Regression predictions:** wording, help and citations; no recorded value changes and no change in which returns are refused.
 - **Validation:** fixtures 1767/1767 pass after the rebuild. Reviews (Claude, line-scoped, $1.32 in 4 calls): f5695 transcription (17 lines: 15 disagreements, all ruled model error or representation as in the earlier rounds; project stands) and render (33 match), s3 transcription (2 disagreements, 5a model error, 5b representation) and render (2 match). The f5695 question review falls due at its next pass.
 - **Tags:** question-incomplete; caught-by-question-review; wording; fixed
+
+## BUG-0581 — BUG-0512 is fixed: the down payment question counts a trade-in only by its equity
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0512
+- **Caught by:** BUG-0512, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** fr-2025-24154 p. 19, Proposed § 1.163-16(b)(8), negative equity is trade-in debt "to the extent such indebtedness exceeds the vehicle's trade-in value specified by the contract for the purchase of the APV"; pp. 20–22, (d)(2)(iii)(B) and (d)(6) Example 4.
+- **Symptom:** as recorded in BUG-0512.
+- **Fix:** wording. `carloan.down` adds: for a vehicle traded in, count only its equity (its trade-in value less any loan on it paid off in the purchase), and zero if that loan was more than the trade-in value, because the negative equity is already net of the trade-in value. Its citation adds (b)(8).
+- **Fix lines:** `carloan.down`
+- **Siblings checked:** `carloan.nonqualifying`, `carloan.nonqualifying_debt`, `carloan.mixed_qualifying` (readers; no expression changes)
+- **Regression predictions:** wording; no value changes.
+- **Validation:** every existing fixture passes. No witness fixture: the fix changes only what an honest filer enters.
+- **Tags:** question-review; wording; amount-affecting; fixed
+
+## BUG-0582 — BUG-0513 is fixed: the refinanced-loan question names the amounts that are not customarily financed
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0513
+- **Caught by:** BUG-0513, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** fr-2025-24154 pp. 20–22, Proposed § 1.163-16(d)(2)(i) and (ii), "indebtedness incurred for the repayment of negative equity on a loan secured by a trade-in vehicle, to purchase collision and liability insurance, or to purchase any property or services unrelated to an APV (for example, a trailer or a boat) is not incurred by a taxpayer for the purchase of an APV"; (d)(4).
+- **Symptom:** as recorded in BUG-0513.
+- **Fix:** wording. `carloan.refi_whole` lists the customarily financed items (service plan, extended warranty, sales tax, vehicle fees) and the excluded ones (negative equity on a trade-in, collision or liability insurance, a trailer or other unrelated property, cash paid to the borrower), as `carloan.mixed` does, and says to answer No if any part of the refinanced loan financed one of them. A No refuses through `carloan.refi_nested`, as before.
+- **Fix lines:** `carloan.refi_whole`
+- **Siblings checked:** `carloan.refi_nested`, `carloan.refi_qualifying` (readers; no expression changes)
+- **Regression predictions:** wording; no value changes. A filer whose refinanced loan rolled in negative equity or insurance now answers No and is refused rather than overstating line 22(iii).
+- **Validation:** every existing fixture passes.
+- **Tags:** question-review; wording; amount-affecting; fixed
+
+## BUG-0583 — BUG-0514 is fixed for the loan requirements: they apply to the refinanced loan and to the decedent's loan
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0514, the `carloan.requirements` part; the `carloan.vehicle` part stays open
+- **Caught by:** BUG-0514, recorded open; this entry records the fix because the inventory is append-only.
+- **Source:** i1040gi p. 109, Refinanced loan, "so long as the new loan is secured by a first lien on the APV with respect to which the refinanced loan was incurred"; Change in obligor by reason of previous obligor's death, "If a loan met requirements 1 through 5 at the time it was originated by a previous obligor".
+- **Symptom:** as recorded in BUG-0514.
+- **Fix:** wording. `carloan.requirements` keeps its five tests and adds: for a refinancing, answer the date, purchase and personal-use tests for the loan it refinanced (the new loan paid off that loan rather than buying the vehicle) and the first-lien test for this loan; for a loan taken over when a previous borrower died, answer the date, purchase and personal-use tests for the loan as that borrower took it out (that borrower's expected use) and the first-lien test for the loan now. The death case was a low in the same question and the same edit. `carloan.vehicle`'s "original use starting with you" for an heir, a low in another question, is not changed and remains open under BUG-0514.
+- **Fix lines:** `carloan.requirements`
+- **Siblings checked:** `carloan.eligible`, `carloan.vehicle`, `carloan.kind` (no expression changes)
+- **Regression predictions:** wording; no value changes.
+- **Validation:** every existing fixture passes.
+- **Tags:** question-review; wording; amount-affecting; fixed
+
+## BUG-0584 — BUG-0556 is fixed: the Schedule 1-A tips, overtime and car loan gates ask about the spouse on a joint return
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0556
+- **Caught by:** BUG-0556, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** i1040gi p. 101, "You (and/or your spouse if filing a joint return) received qualified tips"; p. 106, "You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025"; p. 109, "if you and/or your spouse paid or accrued qualified passenger vehicle loan interest".
+- **Symptom:** as recorded in BUG-0556.
+- **Fix:** wording. `s1a.tips`, `s1a.overtime` and `s1a.carloan` ask "Did you (or, on a joint return, your spouse) ..." and add "Answer Yes if either of you did."; their labels and citations follow.
+- **Fix lines:** `s1a.tips`, `s1a.overtime`, `s1a.carloan`
+- **Siblings checked:** `$tipjob`, `$otjob` (per person, already worded for either spouse), `$carloan`; `s1a.line13`, `s1a.line21`, `s1a.line23`, `s1a.line30`, `s1a.part2`, `s1a.part3`, `s1a.part4` (generated; readers of the gates, no change)
+- **Regression predictions:** wording; no value changes.
+- **Validation:** every existing fixture passes.
+- **Tags:** question-review; wording; spouse; amount-affecting; fixed
+
+## BUG-0585 — BUG-0536 is fixed: the overtime method and amount questions count only hours over 40 in a workweek
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0536
+- **Caught by:** BUG-0536, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** i1040gi p. 106, Amounts that are not qualified overtime compensation, Premium pay, "Some employers under a collective bargaining agreement and/or under state law provide more pay than section 7 of the FLSA requires"; n-25-69 pp. 22–23, methods (A) to (D), "for hours worked in excess of 40 hours in a workweek".
+- **Symptom:** as recorded in BUG-0536.
+- **Fix:** wording. `otjob.method` counts only overtime for hours over 40 in a workweek in each option, and sends to `other` (refused, as before) a statement whose overtime amount includes overtime for hours not over 40 in the workweek, such as daily overtime under state law or a union contract, that cannot be separated out. `otjob.statement` counts only hours over 40 in a workweek and excludes overtime paid for hours not over 40 in the workweek (for example three 12-hour shifts in a 36-hour workweek).
+- **Fix lines:** `otjob.method`, `otjob.statement`
+- **Siblings checked:** `otjob.refused` (reads `otjob.method`; no expression change); `otjob.by_half`, `otjob.by_quarter`, `otjob.by_third`, `otjob.figured` (generated; readers of the two answers, no change)
+- **Regression predictions:** wording; no value changes. A filer whose statement mixes daily overtime with weekly overtime now chooses `other` and is refused rather than overstating line 14.
+- **Validation:** every existing fixture passes.
+- **Tags:** question-review; wording; amount-affecting; fixed
+
+## BUG-0586 — BUG-0542 is fixed: the section 179 carryover question covers a carryover with no 2024 Form 4562
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0542
+- **Caught by:** BUG-0542, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** i4562 p. 5, Line 10, "The carryover of disallowed deduction from 2024 is the amount of section 179 property, if any, you elected to expense in previous years that was not allowed as a deduction because of the business income limitation"; p. 1, Who Must File, "A section 179 expense deduction (which may include a carryover from a previous year)".
+- **Symptom:** as recorded in BUG-0542.
+- **Fix:** wording. `s179.line10` adds: if no 2024 Form 4562 was filed (it is required only when a deduction is claimed), use line 13 of the last Form 4562 filed, because a disallowed section 179 cost carries over until it is deducted. The owner's choice of the printed 2024 line 13 where a 2024 form was filed is unchanged.
+- **Fix lines:** `s179.line10`
+- **Siblings checked:** `s179.line12`, `s179.has179` (no expression changes); `s179.line9_10`, `s179.mfs`, `s179.orphan`, `sc.ho_s179_max` (generated; readers of line 10, no change)
+- **Regression predictions:** wording; no value changes.
+- **Validation:** every existing fixture passes.
+- **Tags:** question-review; wording; amount-affecting; fixed
+
+## BUG-0587 — BUG-0564 is fixed: the acquisition-date question applies the written binding contract rule
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0564
+- **Caught by:** BUG-0564, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** plaw-119-21 sec. 70301(c)(4) (139 Stat. 190), "property shall not be treated as acquired after the date on which a written binding contract is entered into for such acquisition". BUG-0564 recorded the statute as not archived; it is archived as `plaw-119-21`.
+- **Symptom:** as recorded in BUG-0564.
+- **Fix:** wording. `asset.after_jan19` says that property acquired under a written binding contract is treated as acquired no later than the contract date, and to answer No when a written binding contract to acquire it was entered into before January 20, 2025, even if the property was received later. Its citation adds the statute.
+- **Fix lines:** `asset.after_jan19`
+- **Siblings checked:** `asset.bonus_fullcase` (the reader; no expression change)
+- **Regression predictions:** wording; no value changes.
+- **Validation:** every existing fixture passes.
+- **Tags:** question-review; wording; amount-affecting; fixed
+
+## BUG-0588 — BUG-0516 is fixed: the return-of-capital question asks plainly whether any distribution exceeded basis
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0516
+- **Caught by:** BUG-0516, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** f1099div p. 5, Instructions for Recipient, Box 3, "To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain".
+- **Symptom:** as recorded in BUG-0516.
+- **Fix:** wording, same polarity. `div.basis_reconciled` asks whether every box 3 nondividend distribution received in 2025 was no more than the remaining basis in the shares it was paid on (cost or other basis less earlier returns of capital), and says to answer No if any was more, for example because the basis was already zero, since the excess is a capital gain the tool does not report. A Yes still means no excess; a No still refuses through `div.unsupported`. Its label and citation follow.
+- **Fix lines:** `div.basis_reconciled`
+- **Siblings checked:** `div.basis_reconciled_if_return_of_capital`, `div.unsupported` (no expression changes)
+- **Regression predictions:** wording; no value changes; the fixtures answering Yes have no distribution above basis.
+- **Validation:** every existing fixture passes.
+- **Tags:** question-review; wording; amount-affecting; fixed
+
+## BUG-0589 — BUG-0574 is fixed: the wash-sale question counts stock received as pay
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0574
+- **Caught by:** BUG-0574, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** p550 pp. 86–87, Wash Sales, Example 2, "If you receive another bonus award of substantially identical stock within 30 days of the sale, you cannot deduct your loss on the sale."
+- **Symptom:** as recorded in BUG-0574.
+- **Fix:** wording. `sales.wash_loss` adds to the list of acquisitions within 30 days: receiving substantially identical stock as pay for your work, such as a bonus award of your employer's stock. Restricted stock units are not named: no archived source applies the wash sale rule to them (the publication's example names only a bonus award). The label says "bought or otherwise acquired". Its citation adds Example 2.
+- **Fix lines:** `sales.wash_loss`
+- **Siblings checked:** `sales.wash_over`, `sales.wash_bad` (no expression changes); `sales.w` (generated; no change)
+- **Regression predictions:** wording; no value changes.
+- **Validation:** every existing fixture passes.
+- **Tags:** question-review; wording; amount-affecting; fixed

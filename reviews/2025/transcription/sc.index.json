@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -256,10 +256,10 @@
   },
   {
    "key": "5 (sc.ho_line5)",
-   "record": "4a2cb5cdca35ec2404ae11f7c02ca1c2a1a5807b7b5d3fb605db7c252400405a",
+   "record": "0261f1636d761ffc546107ba80ecd3cf5d851f03034ba348786cf6813bf88026",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as the earlier rulings on this line. The smaller of worksheet lines 1 and 4 on both sides; the project writes it as a choose that carries the refusal where the two limits of Pub. 946 (p. 19) interact (sc.ho_both_limits), the reply as smaller_of floored at zero. executable-triage-v2 (pass 7d11a905c40b): 2,712 agree; candidate refusals and unknowns come from its line 1 terms. The 8 completed-return project-refuses are the display refusal already filed as BUG-0489 (sc.ho_both_limits does not test sc.ho_uses; line 30 reads line 5 only with a home office, so no amount changes). No completed return differs in value. Restaged by this round's question wording only.",
-   "subject_key": "e5a67f82a5bbafa79b6670ae26055a98dc76dbb8e06cdc2ef8e0050ce82c35ab"
+   "ruling": "Ruling: representation; as the earlier rulings on this line. The smaller of worksheet lines 1 and 4 on both sides; the project writes it as a choose that carries the refusal where the two limits of Pub. 946 (p. 19) interact (sc.ho_both_limits), the reply as smaller_of floored at zero through a helper (sc.h_ho_smaller). executable-triage-v2 (.transcription/triage/2025/sc.json, pass 522f3f534b91; 1,767 fixtures, 500 generated returns seed 20261026, 2,103 partial records): 2,265 of 3,148 agree; 156 candidate-refuses, 528 candidate-unknown, 31 project-refuses, 168 project-unknown; on completed returns 69 candidate-unknown and 8 project-refuses, no value difference. The completed candidate-unknown witnesses listed are a cycle at the reply's helper: worksheet line 1 is Schedule C line 29, which takes the section 179 deduction allowed, and that deduction's business income limit takes line 30, which is this line; the project's choose is what breaks that dependence. The completed project-refuses listed are sc.ho_both_limits on a business with no home office, the display refusal already filed as BUG-0489 (line 30 reads line 5 only with a home office, so no amount changes). Restaged by the wording of s179.line10 only (expr.source); no expression changed. Project stands.",
+   "subject_key": "f3a4919bd8c93538ff4fec278e231d73c1055afa327142d9d648f2a83a727d57"
   },
   {
    "key": "30",
@@ -433,7 +433,7 @@
   "3 (sc.line3)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "24b": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "28": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "5 (sc.ho_line5)": "5457a77866ed383628b777cb114e19d04fb993540a3573c354370d275a02d44f",
+  "5 (sc.ho_line5)": "0be0750073a2bfc107473c68299ae8855d8bfc9c58b53b387177ad8cca729683",
   "3 (sc.f7206_line3)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "14 (sc.f7206_line14)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
  }

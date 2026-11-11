@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "99f72119c345281a91a3d2af0f9df6c0b4f6c11e38951868a2fbb2c7d2e56e6b",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -70,10 +70,10 @@
   },
   {
    "key": "14",
-   "record": "c5a29f6ba9588fcf1793cefebbee7ffd2bfe734beced30df19bf73b70055b74e",
+   "record": "c7bcafdbf738d094e9893341f5cd97ea342eb9c5460af659b50be4385347813f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained, as the earlier rulings. i4562 p. 5, Line 14. The special allowance is figured identically; the project figures each per-asset amount and selects 2025 property where the totals are taken (asset.bonus_2025 and the where-filters of the sc sums); the reply zeroes the same amounts on the asset. Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 1,289 of 1,403 comparisons agree; on completed returns 13 candidate-unknown, where the reply asks asset.bonus_same of property with no allowance elected (i4562 p. 7, Election out); the rest on refused or incomplete returns (the reply's h_outside refusal is the project's asset.outside). Project stands.",
-   "subject_key": "fd8ba2f06f9cfee6612a907a05d1ad0b110c85eb97e29ac8f0c47de3bce2beeb"
+   "ruling": "Ruling: representation; project retained, as the earlier rulings. i4562 p. 5, Line 14. Both give 100% of the business basis less section 179 for full with asset.after_jan19 true, 40% for forty, and 40% for full with asset.after_jan19 false, and zero for none; the reply's business basis (asset.cost times asset.pct over 100, two places) is the project's (c), asset.pct being a whole percent. The reply also zeroes the amount for property not placed in service in 2025 or outside the tool's classes; the project figures each per-asset amount and selects 2025 property where the totals are taken (asset.bonus_2025 and the where-filters of the sc sums), and refuses outside classes through asset.outside. This round changed only the wording of asset.after_jan19 (the written binding contract rule), not an expression. Project stands.",
+   "subject_key": "7dd94396f84826891feca4c52904e9fa9568d8b6fc85299aaa7c1c3d42f7bac7"
   },
   {
    "key": "25",
@@ -128,7 +128,7 @@
   "asset.dep_prior": "e692c831a4e43902d96b999dc35c0146f11f71c7fd2facced0547ac5068a1f53",
   "(d)": "bf97394c0e6baab938fcd0e3d20a43fbde9be75543375088439981eb869fffbd",
   "(c)": "bc9de339fc485275d7156c04bee4569a5fba391be6c61599d5ddb69a0b588fff",
-  "14": "f0b3ee6fdcdf3f0510b462afe146a14650fd5a3f89dfa400e47bc1c7bed13afb",
+  "14": "7cafe0cc6d1fadfba05854fd3439020f250fd0eb4e3f1fa371a0e348f89c58da",
   "25": "c3374b29da3a96e431ad058ca8283ba635ecbc9a69df93eee721097b0c55b469",
   "26(i)": "bfa4f5427351d355d49391efa8d6a1f51bbb645321ca6d40f03a8963fac8ea36",
   "19(c)": "e50cd4ebbf48a226e858fe9d5772e30f2adf8b6f32684123b987276d9325d2ae",

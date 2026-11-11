@@ -113,6 +113,16 @@
   {
    "printed": "(g)",
    "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "Netting the code B and code W amounts matches the text ('enter the net adjustment in column (g)'), and the code W amount and the B sign follow the text. But code B applies only when the box is A or D, while the text also covers digital-asset boxes G and J: 'If this transaction is reported on Part I with box A or box G checked at the top or ... on Part II with box D or box J checked at the top, enter the basis shown on Form 1099-B or Form 1099-DA ... in column (e) ... Correct the error by entering an adjustment in column (g).' A box G or J code B row gets $0 here, and no refusal names that case.",
+   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\". The code B part is gated on boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G). This round changed only the wording of sales.wash_loss. Project stands on the English.",
+   "context": "13ec80d4f00af09ddde4205c7b02701bba95446d470b8f80072294717e9f816c",
+   "date": "2026-11-10",
+   "run": "834f619e352ecca7df7be993bddccb31378a6443afe9e18204b7cba40cc8f702",
+   "subject_key": "011c35b445a6b2f6d836e07bd2466e3eae04ad8935d8165e50153dc2b421198c"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
    "model": "The basis-correction adjustment is limited to boxes A and D, so a box G or J transaction with code B gets $0, where the IRS says to \"Correct the error by entering an adjustment in column (g)\" from the Worksheet for Basis Adjustments. The sign of the adjustment (reported minus correct) and the W amount (\"enter the correct amount of the nondeductible loss as a positive number\") match. However, a code entered as \"other\" adds no amount and no refusal is listed, although the IRS says to \"enter the net adjustment in column (g)\" for all codes.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Boxes G and J are refused with every digital-asset box (see column (e)), so the basis correction's A/D condition is the whole supported case; a code entered as 'other' is refused by sales.bad_code at sales.one ('Only applicable B and W adjustments are supported'), and that refusal reaches every Schedule D total (checked: code other gives sd.line15 refused on sales.bad_code). The row's own column (g) is still figured and reaches no Schedule D line. No change to the data.",
    "subject_key": "473e2c13eca2734f8f3ab149e90d294c1b7f10ff1c392750b236ab498992f58f"
@@ -197,6 +207,16 @@
    "ruling": "Ruling: scope; i8949 p. 8, code B; i8949 pp. 7–11, columns (f) and (g). Boxes G and J are refused with every digital-asset box (see column (e)), so the A/D condition of the basis correction is the whole supported case. Codes other than B and W are refused: sales.one refuses when sales.bad_code (\"Only applicable B and W adjustments are supported\"), and the refusal reaches the Schedule D totals and Form 1040 (checked: sales.refuse.code gives sd.line15, f1040.line7a and f1040.line16 refused on sales.bad_code while the row's own column (g) shows $0.00). Project stands on the English.",
    "context": "d829736289280eae82c0ce4298c24619149d4c3aecf982a3a88c5bc6e9052566",
    "subject_key": "473e2c13eca2734f8f3ab149e90d294c1b7f10ff1c392750b236ab498992f58f"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "The signed code B amount (reported minus correct basis) and the positive code W amount, netted, agree with the worksheet and code W text, but the code B correction is applied only for boxes A and D. The IRS says \"If this transaction is reported on Part I with box A or box G checked at the top or if this transaction is reported on Part II with box D or box J checked ... Correct the error by entering an adjustment in column (g)\", so a box G or J sale with code B gets $0 here instead of the adjustment, unless G–L are refused on a line not shown.",
+   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\". The code B part is gated on boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G). The reply itself allows for this (\"unless G–L are refused on a line not shown\"). This round changed only the wording of sales.wash_loss. Project stands on the English.",
+   "context": "89b8fdeb11407c2b6b9c62423d4647989721c4953c2bea50a134f71cbbb5e39f",
+   "date": "2026-11-10",
+   "run": "3232754ad86e3d2ea9ec8ac105f87444c25970a515ac619e029b1716b216fd2c",
+   "subject_key": "5254acf3802641dd0e341f74a48b225cce2b43eda724ec742b12e33c00c6263a"
   },
   {
    "printed": "(g)",

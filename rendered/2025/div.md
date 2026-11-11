@@ -75,10 +75,10 @@
 
 ## (helper) — `div.basis_reconciled`
 
-- **Authored helper label:** For box 3, have basis reductions been applied to records with no distribution exceeding basis?
-- **Encoded (Bool):** Input — For box 3, have basis reductions been applied to records with no distribution exceeding basis?
-- Expr: `{"op":"input","source":"For box 3, have basis reductions been applied to records with no distribution exceeding basis?"}`
-- Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
+- **Authored helper label:** Was every nondividend distribution (box 3) no more than the remaining basis in the shares it was paid on?
+- **Encoded (Bool):** Input — Was every nondividend distribution (Form 1099-DIV box 3, a return of capital) that you (or, on a joint return, your spouse) received in 2025 no more than the remaining basis in the shares it was paid on (their cost or other basis, already reduced by any earlier returns of capital)? Answer No if any distribution was more than that remaining basis, for example because earlier returns of capital had already reduced the basis to zero; the part above the basis is a taxable capital gain, which this tool does not report.
+- Expr: `{"op":"input","source":"Was every nondividend distribution (Form 1099-DIV box 3, a return of capital) that you (or, on a joint return, your spouse) received in 2025 no more than the remaining basis in the shares it was paid on (their cost or other basis, already reduced by any earlier returns of capital)? Answer No if any distribution was more than that remaining basis, for example because earlier returns of capital had already reduced the basis to zero; the part above the basis is a taxable capital gain, which this tool does not report."}`
+- Cite: [f1099div] p. 5, Instructions for Recipient, Box 3, "To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.box1a`
 
@@ -295,6 +295,6 @@
 ## (helper) — `div.basis_reconciled_if_return_of_capital`
 
 - **Authored helper label:** For box 3, basis reductions applied, when nondividend distributions (box 3) are above zero; false otherwise
-- **Encoded (Bool):** Choose — [helper "Nondividend distributions (box 3) are above zero" = true → helper "For box 3, have basis reductions been applied to records with no distribution exceeding basis?"] [helper "Nondividend distributions (box 3) are above zero" = false → helper "No answer needed without nondividend distributions (box 3)"]
+- **Encoded (Bool):** Choose — [helper "Nondividend distributions (box 3) are above zero" = true → helper "Was every nondividend distribution (box 3) no more than the remaining basis in the shares it was paid on?"] [helper "Nondividend distributions (box 3) are above zero" = false → helper "No answer needed without nondividend distributions (box 3)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["div.has_return_of_capital",{"const":true}],"op":"test"},"then":"div.basis_reconciled"},{"guard":{"eq":["div.has_return_of_capital",{"const":false}],"op":"test"},"then":"div.no"}],"op":"choose"}`
 - Cite: [f1099div] p. 5, Instructions for Recipient, "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable" (January 2024 (continuous-use form); sha256 4ea1de80)

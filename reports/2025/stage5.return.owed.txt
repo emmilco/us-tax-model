@@ -151,9 +151,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Specified private activity bond interest dividends, box 13
       = $0
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
-  (helper) For box 3, have basis reductions been applied to records with no distribution exceeding basis?
+  (helper) Was every nondividend distribution (box 3) no more than the remaining basis in the shares it was paid on?
       = false
-      cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
+      cite: [f1099div] p. 5, Instructions for Recipient, Box 3, "To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain" (January 2024 (continuous-use form); 4ea1de80)
   (helper) Amount from sb.ordinary_dividends_if_dividends
       = $2,000
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
@@ -5892,7 +5892,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i4562] p. 5, Line 5, "If line 5 is zero, you cannot elect to expense any section 179 property. In this case, skip lines 6 through 11" (2025; 5c1c95b7)
   10  Carryover of disallowed deduction from line 13 of your 2024 Form 4562
       = $0
-      cite: [i4562] p. 5, Line 10, "If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562" (owner: the printed amount) (2025; 5c1c95b7)
+      cite: [i4562] p. 5, Line 10, "The carryover of disallowed deduction from 2024 is the amount of section 179 property, if any, you elected to expense in previous years that was not allowed as a deduction because of the business income limitation" and "If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562" (owner: the printed amount) (2025; 5c1c95b7)
   (helper) Net profit or loss of the businesses, figured without the section 179 deduction
       = $0
       cite: [i4562] p. 5, Line 11, Individuals, "the total taxable income from any trade or business you actively conducted, computed without regard to any section 179 expense deduction, the deduction for one-half of self-employment taxes" (2025; 5c1c95b7)
@@ -5993,9 +5993,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   3   Add lines 1 and 2e
       = $123,200
       cite: [f1040s1a] Schedule 1-A (2025), line 3 (2025; created 2025-11-04; 64f97b38)
-  (helper) Did you receive qualified tips as an employee in 2025 that you want to deduct?
+  (helper) Did you (or, on a joint return, your spouse) receive qualified tips as an employee in 2025 that you want to deduct?
       = false
-      cite: [i1040gi] pp. 101-103, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] pp. 101-103, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if", "You (and/or your spouse if filing a joint return) received qualified tips" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Number of employers on the Qualified Tips From More Than One Employer Worksheet
       = 0
       cite: [i1040gi] p. 104, Schedule 1-A, line 4c (2025; printed date 2026-02-25; 482e9c48)
@@ -6137,9 +6137,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f1040s1a] Schedule 1-A (2025), line 13; i1040gi p. 101, "Fill out Schedule 1-A, Part II, only if" (2025; created 2025-11-04; 64f97b38)
       note: taken: {"eq":["s1a.tips",{"const":false}],"op":"test"}
-  (helper) Did you receive qualified overtime compensation in 2025 that you want to deduct?
+  (helper) Did you (or, on a joint return, your spouse) receive qualified overtime compensation in 2025 that you want to deduct?
       = false
-      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if", "You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Number of people with a valid SSN who received qualified overtime compensation
       = 0
       cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if" and "If you are married filing jointly, the spouse who received the qualified overtime compensation must have a valid SSN" (2025; printed date 2026-02-25; 482e9c48)
@@ -6249,9 +6249,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f1040s1a] Schedule 1-A (2025), line 21; i1040gi p. 106, "Fill out Schedule 1-A, Part III, only if" (2025; created 2025-11-04; 64f97b38)
       note: taken: {"eq":["s1a.overtime",{"const":false}],"op":"test"}
-  (helper) Did you pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?
+  (helper) Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?
       = false
-      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025", "if you and/or your spouse paid or accrued qualified passenger vehicle loan interest" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Add lines 22a and 22b, column (iii), and any further loans on the attached statement
       = $0
       cite: [i1040gi] p. 110, Schedule 1-A, line 22, "If you need to report more than two VINs, attach a statement" (2025; printed date 2026-02-25; 482e9c48)

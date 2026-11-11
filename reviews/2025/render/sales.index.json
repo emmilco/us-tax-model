@@ -16,10 +16,10 @@
   },
   {
    "key": "(g)",
-   "record": "4581e03a9051ecd3347aa417d39c6dd477974c8f3091031ccfe167b30a07875b",
+   "record": "c6f96fe303de12e800d40c8dadc145a4747704d5e3bf52e3d5ee127bcc447a0a",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\". The code B part is gated on boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G). Project stands on the English.",
-   "subject_key": "96f6dc0be45b45f5439faecdd3fb77ea29fcaffee4a6b7607a9bdfcc6305fee4"
+   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\". The code B part is gated on boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G). The reply itself allows for this (\"unless G–L are refused on a line not shown\"). This round changed only the wording of sales.wash_loss. Project stands on the English.",
+   "subject_key": "a83548439bcee21b93fbf817295838e243bd90e7e04f42fbe6bd80146f587a58"
   },
   {
    "key": "(h)",
@@ -30,7 +30,7 @@
  ],
  "subjects": {
   "(e)": "35b4dd45acfb89238962c5f6cf689bca4b8ca5756c6cb69685d5cb4d95ea73f6",
-  "(g)": "d3c26f2db9f248ea04d8e1654f48f79cc778de9abf437a07a01ef943850c5b49",
+  "(g)": "142c27a1c83ffc50cd8ab30672ec3e17ef3ba8ffd47c6d0b20ce3a94782ba207",
   "(h)": "2478528525171d6f13225a6f4ef4eec3f9b7fa92f6869221628e8b2282792bf9"
  },
  "__rest__": "173d9d26e48e7de243e42df8a66476933ccaf441a5d2d8dd3a5d3a9677bc158c"

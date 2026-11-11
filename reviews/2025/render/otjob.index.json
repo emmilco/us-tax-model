@@ -4,18 +4,18 @@
  "family": "claude",
  "base": "a5e13d89e2cba4ade6c8a46db0f9ba67fe10b96a0e7525153f118078cfdd6bfc",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-04); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1(b)",
-   "record": "563cdcef6c2c9c5a040bb3168043dd0aca77e47874a21dba0c803bbde483b2ca",
+   "record": "87345724bbfee459fd8cefed0cdb93ebb1c9e0e5e025ec752067b7ea6e5d35e3",
    "status": "MATCH",
-   "subject_key": "ae7734809d2aeb2d1064264ee0cf02b361acf8bcfa0485e91f6d25fb1c26307f"
+   "subject_key": "8b04fec5db636b5105d7a8ec9a5e38ef7a33bb83a269ccb02ebdd2f779940102"
   }
  ],
  "subjects": {
-  "1(b)": "a8322f22511cef38197b67220aa7ab0402ecad234c81556e2849582bccb470d7"
+  "1(b)": "8bc4f7997f663451a072fa7db527059154c82947eb4ad8c74e7ac6231deaa0be"
  },
  "__rest__": "f07c6baaff7adbcac4cab13c35e31d4096b1b8e3b07ebb63065b80d476899bec"
 }

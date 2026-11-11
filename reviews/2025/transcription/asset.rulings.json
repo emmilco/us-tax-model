@@ -150,6 +150,16 @@
   {
    "printed": "14",
    "project_expr_sha256": "daf211ddf6ef5c501d2059a43ad6ccaa3780416584536063a650dd89dc487027",
+   "second_expr_sha256": "e04c3260183858954dee9728983bc67e5bf48177eb88db41b8e2977b4f346458",
+   "ruling": "Ruling: representation; project retained, as the earlier rulings. i4562 p. 5, Line 14. Both give 100% of the business basis less section 179 for full with asset.after_jan19 true, 40% for forty, and 40% for full with asset.after_jan19 false, and zero for none; the reply's business basis (asset.cost times asset.pct over 100, two places) is the project's (c), asset.pct being a whole percent. The reply also zeroes the amount for property not placed in service in 2025 or outside the tool's classes; the project figures each per-asset amount and selects 2025 property where the totals are taken (asset.bonus_2025 and the where-filters of the sc sums), and refuses outside classes through asset.outside. This round changed only the wording of asset.after_jan19 (the written binding contract rule), not an expression. Project stands.",
+   "context": "84b4f3a2b9708d20b9a6d1ebb3288543f666450ca30c203802ebcb32460b29f5",
+   "date": "2026-11-10",
+   "run": "812242b714c056e3861b0c2a956f269bd0be896c4d94c1b23597d6cab9e55019",
+   "subject_key": "60eed1ccc5fd2260728988fb6a9f603c905e264a2613ed4432e2ae997c198a76"
+  },
+  {
+   "printed": "14",
+   "project_expr_sha256": "daf211ddf6ef5c501d2059a43ad6ccaa3780416584536063a650dd89dc487027",
    "second_expr_sha256": "e99174291f4693ed5686c8a13c3a2fa4a126778ae5554e5676a53f8d363f023a",
    "ruling": "Ruling: representation; project retained, as the earlier rulings. i4562 p. 5, Line 14. The special allowance is figured identically; the project figures each per-asset amount and selects 2025 property where the totals are taken (asset.bonus_2025 and the where-filters of the sc sums); the reply zeroes the same amounts on the asset. Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 1,289 of 1,403 comparisons agree; on completed returns 13 candidate-unknown, where the reply asks asset.bonus_same of property with no allowance elected (i4562 p. 7, Election out); the rest on refused or incomplete returns (the reply's h_outside refusal is the project's asset.outside). Project stands.",
    "context": "b16377fc1bad382bc12483b516e01f48055ac1c7020bcdc5f34f23610aab1255",
