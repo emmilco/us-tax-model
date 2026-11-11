@@ -1,0 +1,346 @@
+diff --git a/forms/2025/dependent.yaml b/forms/2025/dependent.yaml
+index 3a68c22..49098fd 100644
+--- a/forms/2025/dependent.yaml
++++ b/forms/2025/dependent.yaml
+@@ -1639,44 +1639,20 @@ form:
+       type: Bool
+       label: A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form)
+       expr:
+-        op: test
+-        any:
+-          - op: test
+-            all:
+-              - op: test
+-                eq:
+-                  - dependent.claimed
+-                  - const: true
+-              - op: test
+-                ne:
+-                  - dependent.relationship
+-                  - const: household_member
+-              - op: test
+-                ne:
+-                  - dependent.relationship
+-                  - const: sibling_descendant
+-              - op: test
+-                ne:
+-                  - dependent.relationship
+-                  - const: other
+-              - op: test
+-                eq:
+-                  - dependent.hoh_lived_half
+-                  - const: true
+-          - op: test
+-            all:
+-              - op: test
+-                eq:
+-                  - dependent.qualifying_child
+-                  - const: true
+-              - op: test
+-                eq:
+-                  - dependent.married
+-                  - const: false
+-              - op: test
+-                eq:
+-                  - dependent.lived_half
+-                  - const: true
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1
++            - const: true
++          then: dependent.hoh_test2_lived_test1
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1
++            - const: false
++          then: dependent.hoh_test2_lived_test2
+       cite:
+         doc: i1040gi
+         locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
+@@ -1707,16 +1683,20 @@ form:
+       type: Bool
+       label: A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting only absences head of household counts (the home-cost condition of Test 2 is tested on the household form)
+       expr:
+-        op: test
+-        all:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - dependent.hoh_test2_lived
+-              - const: true
+-          - op: test
++            - dependent.hoh_test2_lived
++            - const: true
++          then: dependent.hoh_test2_test2
++        - guard:
++            op: test
+             eq:
+-              - dependent.absence_no_return
+-              - const: false
++            - dependent.hoh_test2_lived
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i1040gi
+         locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year); p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+@@ -1725,20 +1705,20 @@ form:
+       type: Bool
+       label: Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)
+       expr:
+-        op: test
+-        all:
+-          - op: test
+-            eq:
+-              - dependent.relationship
+-              - const: parent
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - dependent.claimed
+-              - const: true
+-          - op: test
++            - dependent.hoh_test1_test1
++            - const: true
++          then: dependent.hoh_test1_from2
++        - guard:
++            op: test
+             eq:
+-              - dependent.parent_home_paid
+-              - const: true
++            - dependent.hoh_test1_test1
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i1040gi
+         locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
+@@ -3196,6 +3176,220 @@ form:
+         doc: i1040gi
+         locator: pp. 17–19, Who Qualifies as Your Dependent
+     # --- end Stage 19 ---
++    - id: dependent.hoh_test2_test2
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting only absences head of household counts (the home-cost condition of Test 2 is tested on the household form): condition 2"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - dependent.absence_no_return
++        - const: false
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year); p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
++    - id: dependent.hoh_test1_test1
++      printed: (helper)
++      label: "Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2): condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - dependent.relationship
++        - const: parent
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
++    - id: dependent.hoh_test1_from2
++      printed: (helper)
++      label: "Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2): conditions 2 to 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.claimed
++            - const: true
++          then: dependent.parent_home_paid
++        - guard:
++            op: test
++            eq:
++            - dependent.claimed
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
++    - id: dependent.hoh_test2_lived_test1
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.claimed
++            - const: true
++          then: dependent.hoh_test2_lived_test1_from2
++        - guard:
++            op: test
++            eq:
++            - dependent.claimed
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test2
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 2"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.qualifying_child
++            - const: true
++          then: dependent.hoh_test2_lived_test2_from2
++        - guard:
++            op: test
++            eq:
++            - dependent.qualifying_child
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test1_test2
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1: condition 2"
++      type: Bool
++      expr:
++        op: test
++        ne:
++        - dependent.relationship
++        - const: household_member
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test1_test3
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1: condition 3"
++      type: Bool
++      expr:
++        op: test
++        ne:
++        - dependent.relationship
++        - const: sibling_descendant
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test1_test4
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1: condition 4"
++      type: Bool
++      expr:
++        op: test
++        ne:
++        - dependent.relationship
++        - const: other
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test1_from4
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1: conditions 4 to 5"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1_test4
++            - const: true
++          then: dependent.hoh_lived_half
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1_test4
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test1_from3
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1: conditions 3 to 5"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1_test3
++            - const: true
++          then: dependent.hoh_test2_lived_test1_from4
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1_test3
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test1_from2
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1: conditions 2 to 5"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1_test2
++            - const: true
++          then: dependent.hoh_test2_lived_test1_from3
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1_test2
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test2_from2
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 2: conditions 2 to 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.married
++            - const: false
++          then: dependent.lived_half
++        - guard:
++            op: test
++            eq:
++            - dependent.married
++            - const: true
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
+   collection:
+     cite:
+       doc: f1040

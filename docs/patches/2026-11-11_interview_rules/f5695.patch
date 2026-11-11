@@ -1,0 +1,462 @@
+diff --git a/forms/2025/f5695.yaml b/forms/2025/f5695.yaml
+index 68dfae2..f1a81fc 100644
+--- a/forms/2025/f5695.yaml
++++ b/forms/2025/f5695.yaml
+@@ -583,20 +583,20 @@ form:
+     label: Lines 17a, 17b and 17c are all Yes (Section A is completed)
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f5695.line17a
+-        - const: true
+-      - op: test
+-        eq:
+-        - f5695.line17b
+-        - const: true
+-      - op: test
+-        eq:
+-        - f5695.line17c
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.line17a
++          - const: true
++        then: f5695.sec_a_claimed_from2
++      - guard:
++          op: test
++          eq:
++          - f5695.line17a
++          - const: false
++        then: f5695.no
+     cite:
+       doc: f5695
+       locator: Form 5695 (2025), line 17c, "If you checked the ... No ... box for line 17a, 17b, or 17c, you cannot claim
+@@ -620,16 +620,20 @@ form:
+     label: Section A is completed and line 17e is Yes
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f5695.sec_a_claimed
+-        - const: true
+-      - op: test
+-        eq:
+-        - f5695.line17e
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.sec_a_claimed
++          - const: true
++        then: f5695.line17e
++      - guard:
++          op: test
++          eq:
++          - f5695.sec_a_claimed
++          - const: false
++        then: f5695.no
+     cite:
+       doc: f5695
+       locator: Form 5695 (2025), line 17e, "If you checked the ... Yes ... box, you can only claim the energy efficient home
+@@ -884,16 +888,20 @@ form:
+     label: Exterior door costs entered without a valid QMID for each door
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        gt:
+-        - f5695.doors_cost
+-        - param: sales.zero
+-      - op: test
+-        eq:
+-        - f5695.qmid_doors
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.doors_no_qmid_test1
++          - const: true
++        then: f5695.doors_no_qmid_test2
++      - guard:
++          op: test
++          eq:
++          - f5695.doors_no_qmid_test1
++          - const: false
++        then: f5695.no
+     cite:
+       doc: i5695
+       locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+@@ -1070,16 +1078,20 @@ form:
+     label: Window and skylight costs entered without a valid QMID for each item
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        gt:
+-        - f5695.line20c
+-        - param: sales.zero
+-      - op: test
+-        eq:
+-        - f5695.qmid_windows
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.windows_no_qmid_test1
++          - const: true
++        then: f5695.windows_no_qmid_test2
++      - guard:
++          op: test
++          eq:
++          - f5695.windows_no_qmid_test1
++          - const: false
++        then: f5695.no
+     cite:
+       doc: i5695
+       locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+@@ -1163,16 +1175,20 @@ form:
+     label: Lines 21a and 21b are both Yes
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f5695.line21a
+-        - const: true
+-      - op: test
+-        eq:
+-        - f5695.line21b
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.line21a
++          - const: true
++        then: f5695.line21b
++      - guard:
++          op: test
++          eq:
++          - f5695.line21a
++          - const: false
++        then: f5695.no
+     cite:
+       doc: f5695
+       locator: Form 5695 (2025), line 21b, "If you checked the ... No ... box for line 21a or 21b, you cannot claim the credit
+@@ -1196,16 +1212,20 @@ form:
+     label: Section B is completed for property installed in connection with the construction of a new home
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f5695.sec_b_claimed
+-        - const: true
+-      - op: test
+-        eq:
+-        - f5695.b_new_home
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.sec_b_claimed
++          - const: true
++        then: f5695.b_new_home
++      - guard:
++          op: test
++          eq:
++          - f5695.sec_b_claimed
++          - const: false
++        then: f5695.no
+     cite:
+       doc: i5695
+       locator: p. 1, Costs, "The energy efficient home improvement credit (Part II) is only available for existing homes"
+@@ -1284,16 +1304,20 @@ form:
+     label: Central air conditioner costs entered without a valid QMID for each item
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        gt:
+-        - f5695.line22c
+-        - param: sales.zero
+-      - op: test
+-        eq:
+-        - f5695.qmid_ac
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.ac_no_qmid_test1
++          - const: true
++        then: f5695.ac_no_qmid_test2
++      - guard:
++          op: test
++          eq:
++          - f5695.ac_no_qmid_test1
++          - const: false
++        then: f5695.no
+     cite:
+       doc: i5695
+       locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+@@ -1689,16 +1713,20 @@ form:
+     label: Lines 21a, 21b and 25a are all Yes
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f5695.sec_b_claimed
+-        - const: true
+-      - op: test
+-        eq:
+-        - f5695.line25a
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.sec_b_claimed
++          - const: true
++        then: f5695.line25a
++      - guard:
++          op: test
++          eq:
++          - f5695.sec_b_claimed
++          - const: false
++        then: f5695.no
+     cite:
+       doc: f5695
+       locator: Form 5695 (2025), line 25a, "If you checked the ... No ... box, you cannot claim the credit for enabling
+@@ -1746,16 +1774,20 @@ form:
+     label: Enabling property costs entered without a valid QMID for each item
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        gt:
+-        - f5695.line25c
+-        - param: sales.zero
+-      - op: test
+-        eq:
+-        - f5695.qmid_enabling
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.enabling_no_qmid_test1
++          - const: true
++        then: f5695.enabling_no_qmid_test2
++      - guard:
++          op: test
++          eq:
++          - f5695.enabling_no_qmid_test1
++          - const: false
++        then: f5695.no
+     cite:
+       doc: i5695
+       locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+@@ -2190,16 +2222,20 @@ form:
+     label: Married filing jointly with separate main homes
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f1040.status
+-        - const: mfj
+-      - op: test
+-        eq:
+-        - f5695.separate_homes
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.separate_homes_joint_test1
++          - const: true
++        then: f5695.separate_homes
++      - guard:
++          op: test
++          eq:
++          - f5695.separate_homes_joint_test1
++          - const: false
++        then: f5695.no
+     cite:
+       doc: i5695
+       locator: p. 3, Married taxpayers with more than one home, "If you are filing a joint return, figure your energy
+@@ -2407,3 +2443,143 @@ form:
+     cite:
+       doc: i5695
+       locator: p. 7, Lines 32a and 32b, "must check the box on line 32b"
++  - id: f5695.sec_a_claimed_from2
++    printed: (helper)
++    label: "Lines 17a, 17b and 17c are all Yes (Section A is completed): conditions 2 to 3"
++    type: Bool
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.line17b
++          - const: true
++        then: f5695.line17c
++      - guard:
++          op: test
++          eq:
++          - f5695.line17b
++          - const: false
++        then: f5695.no
++    cite:
++      doc: f5695
++      locator: Form 5695 (2025), line 17c, "If you checked the ... No ... box for line 17a, 17b, or 17c, you cannot claim
++        the energy efficient home improvement credit. Do not complete Part II, Section A"
++  - id: f5695.separate_homes_joint_test1
++    printed: (helper)
++    label: "Married filing jointly with separate main homes: condition 1"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f1040.status
++      - const: mfj
++    cite:
++      doc: i5695
++      locator: p. 3, Married taxpayers with more than one home, "If you are filing a joint return, figure your energy
++        efficient home improvement credit as follows"
++  - id: f5695.ac_no_qmid_test1
++    printed: (helper)
++    label: "Central air conditioner costs entered without a valid QMID for each item: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - f5695.line22c
++      - param: sales.zero
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.ac_no_qmid_test2
++    printed: (helper)
++    label: "Central air conditioner costs entered without a valid QMID for each item: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f5695.qmid_ac
++      - const: false
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.doors_no_qmid_test1
++    printed: (helper)
++    label: "Exterior door costs entered without a valid QMID for each door: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - f5695.doors_cost
++      - param: sales.zero
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.doors_no_qmid_test2
++    printed: (helper)
++    label: "Exterior door costs entered without a valid QMID for each door: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f5695.qmid_doors
++      - const: false
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.windows_no_qmid_test1
++    printed: (helper)
++    label: "Window and skylight costs entered without a valid QMID for each item: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - f5695.line20c
++      - param: sales.zero
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.windows_no_qmid_test2
++    printed: (helper)
++    label: "Window and skylight costs entered without a valid QMID for each item: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f5695.qmid_windows
++      - const: false
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.enabling_no_qmid_test1
++    printed: (helper)
++    label: "Enabling property costs entered without a valid QMID for each item: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - f5695.line25c
++      - param: sales.zero
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.enabling_no_qmid_test2
++    printed: (helper)
++    label: "Enabling property costs entered without a valid QMID for each item: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f5695.qmid_enabling
++      - const: false
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"

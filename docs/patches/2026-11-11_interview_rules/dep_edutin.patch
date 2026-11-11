@@ -1,0 +1,110 @@
+diff --git a/forms/2025/dependent.yaml b/forms/2025/dependent.yaml
+index 3a68c22..dafe803 100644
+--- a/forms/2025/dependent.yaml
++++ b/forms/2025/dependent.yaml
+@@ -2924,16 +2924,20 @@ form:
+       label: A lifetime learning credit student whose ITIN or ATIN was only applied for by the due date of the return
+       type: Bool
+       expr:
+-        op: test
+-        all:
+-        - op: test
+-          eq:
+-          - dependent.edu_llc
+-          - const: true
+-        - op: test
+-          eq:
+-          - dependent.edu_tin_issued
+-          - const: false
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.edu_llc
++            - const: true
++          then: dependent.edu_llc_tin_refused_test2
++        - guard:
++            op: test
++            eq:
++            - dependent.edu_llc
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i8863
+         locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
+@@ -3196,6 +3200,19 @@ form:
+         doc: i1040gi
+         locator: pp. 17–19, Who Qualifies as Your Dependent
+     # --- end Stage 19 ---
++    - id: dependent.edu_llc_tin_refused_test2
++      printed: (helper)
++      label: "A lifetime learning credit student whose ITIN or ATIN was only applied for by the due date of the return: condition 2"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - dependent.edu_tin_issued
++        - const: false
++      cite:
++        doc: i8863
++        locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
++          return (including extensions)."
+   collection:
+     cite:
+       doc: f1040
+diff --git a/forms/2025/person.yaml b/forms/2025/person.yaml
+index 4bcffb1..1508eb4 100644
+--- a/forms/2025/person.yaml
++++ b/forms/2025/person.yaml
+@@ -4245,16 +4245,20 @@ form:
+       label: A lifetime learning credit student whose ITIN was only applied for by the due date of the return
+       type: Bool
+       expr:
+-        op: test
+-        all:
+-        - op: test
+-          eq:
+-          - person.edu_llc
+-          - const: true
+-        - op: test
+-          eq:
+-          - person.tin
+-          - const: false
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - person.edu_llc
++            - const: true
++          then: person.edu_llc_tin_refused_test2
++        - guard:
++            op: test
++            eq:
++            - person.edu_llc
++            - const: false
++          then: person.no
+       cite:
+         doc: i8863
+         locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
+@@ -4697,6 +4701,19 @@ form:
+           apply to you."
+       ambiguity: amb.2025.edu_age_rule
+     # --- end Stage 19 ---
++    - id: person.edu_llc_tin_refused_test2
++      printed: (helper)
++      label: "A lifetime learning credit student whose ITIN was only applied for by the due date of the return: condition 2"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - person.tin
++        - const: false
++      cite:
++        doc: i8863
++        locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
++          return (including extensions)."
+   # --- Stage 21: Form 5329 (generated) ---
+     - id: person.x_l1
+       printed: (helper)

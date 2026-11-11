@@ -1,0 +1,78 @@
+diff --git a/forms/2025/dependent.yaml b/forms/2025/dependent.yaml
+index 3a68c22..5c63a6e 100644
+--- a/forms/2025/dependent.yaml
++++ b/forms/2025/dependent.yaml
+@@ -1725,20 +1725,20 @@ form:
+       type: Bool
+       label: Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)
+       expr:
+-        op: test
+-        all:
+-          - op: test
+-            eq:
+-              - dependent.relationship
+-              - const: parent
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - dependent.claimed
+-              - const: true
+-          - op: test
++            - dependent.hoh_test1_test1
++            - const: true
++          then: dependent.hoh_test1_from2
++        - guard:
++            op: test
+             eq:
+-              - dependent.parent_home_paid
+-              - const: true
++            - dependent.hoh_test1_test1
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i1040gi
+         locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
+@@ -3196,6 +3196,40 @@ form:
+         doc: i1040gi
+         locator: pp. 17–19, Who Qualifies as Your Dependent
+     # --- end Stage 19 ---
++    - id: dependent.hoh_test1_test1
++      printed: (helper)
++      label: "Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2): condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - dependent.relationship
++        - const: parent
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
++    - id: dependent.hoh_test1_from2
++      printed: (helper)
++      label: "Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2): conditions 2 to 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.claimed
++            - const: true
++          then: dependent.parent_home_paid
++        - guard:
++            op: test
++            eq:
++            - dependent.claimed
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
+   collection:
+     cite:
+       doc: f1040

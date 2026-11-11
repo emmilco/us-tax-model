@@ -1,0 +1,396 @@
+diff --git a/forms/2025/retirement.yaml b/forms/2025/retirement.yaml
+index 5ad35e3..05f9247 100644
+--- a/forms/2025/retirement.yaml
++++ b/forms/2025/retirement.yaml
+@@ -1465,16 +1465,20 @@ form:
+     label: An exception applies
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.early
+-        - const: true
+-      - op: test
+-        ne:
+-        - retirement.exception
+-        - const: none
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.early
++          - const: true
++        then: retirement.has_exception_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.early
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+@@ -1504,50 +1508,20 @@ form:
+     label: An exception that does not apply to this kind of account
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.has_exception
+-        - const: true
+-      - op: test
+-        any:
+-        - op: test
+-          all:
+-          - op: test
+-            eq:
+-            - retirement.is_ira
+-            - const: true
+-          - op: test
+-            any:
+-            - op: test
+-              eq:
+-              - retirement.exception
+-              - const: e01
+-            - op: test
+-              eq:
+-              - retirement.exception
+-              - const: e06
+-        - op: test
+-          all:
+-          - op: test
+-            eq:
+-            - retirement.is_ira
+-            - const: false
+-          - op: test
+-            any:
+-            - op: test
+-              eq:
+-              - retirement.exception
+-              - const: e07
+-            - op: test
+-              eq:
+-              - retirement.exception
+-              - const: e08
+-            - op: test
+-              eq:
+-              - retirement.exception
+-              - const: e09
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: true
++        then: retirement.wrong_kind_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation
+@@ -1625,16 +1599,20 @@ form:
+     label: Exception 05
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.has_exception
+-        - const: true
+-      - op: test
+-        eq:
+-        - retirement.exception
+-        - const: e05
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: true
++        then: retirement.is_e05_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses
+@@ -1667,16 +1645,20 @@ form:
+     label: Exception 09
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.has_exception
+-        - const: true
+-      - op: test
+-        eq:
+-        - retirement.exception
+-        - const: e09
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: true
++        then: retirement.is_e09_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "IRA distributions made for the purchase of a first home, up to $10,000."
+@@ -1707,16 +1689,20 @@ form:
+     label: Exception 19
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.has_exception
+-        - const: true
+-      - op: test
+-        eq:
+-        - retirement.exception
+-        - const: e19
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: true
++        then: retirement.is_e19_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution
+@@ -1749,16 +1735,20 @@ form:
+     label: Exception 22
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.has_exception
+-        - const: true
+-      - op: test
+-        eq:
+-        - retirement.exception
+-        - const: e22
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: true
++        then: retirement.is_e22_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "Qualified distributions to victims of domestic abuse."
+@@ -1789,16 +1779,20 @@ form:
+     label: Exception 23
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.has_exception
+-        - const: true
+-      - op: test
+-        eq:
+-        - retirement.exception
+-        - const: e23
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: true
++        then: retirement.is_e23_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "meeting the unforeseeable or immediate financial needs relating to necessary personal or family
+@@ -1885,6 +1879,140 @@ form:
+       doc: i5329
+       locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the
+         date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
++  - id: retirement.no
++    printed: (helper)
++    label: Year parameter household.no (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
++        exception number (01–23). If more than one exception applies, enter 99."
++  - id: retirement.has_exception_test2
++    printed: (helper)
++    label: "An exception applies: condition 2"
++    type: Bool
++    expr:
++      op: test
++      ne:
++      - retirement.exception
++      - const: none
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
++        exception number (01–23). If more than one exception applies, enter 99."
++  - id: retirement.is_e05_test2
++    printed: (helper)
++    label: "Exception 05: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - retirement.exception
++      - const: e05
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses
++        during the year minus 7.5% of your adjusted gross income (AGI) for the year."
++  - id: retirement.is_e09_test2
++    printed: (helper)
++    label: "Exception 09: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - retirement.exception
++      - const: e09
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "IRA distributions made for the purchase of a first home, up to $10,000."
++  - id: retirement.is_e19_test2
++    printed: (helper)
++    label: "Exception 19: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - retirement.exception
++      - const: e19
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution
++        of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted."
++  - id: retirement.is_e22_test2
++    printed: (helper)
++    label: "Exception 22: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - retirement.exception
++      - const: e22
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "Qualified distributions to victims of domestic abuse."
++  - id: retirement.is_e23_test2
++    printed: (helper)
++    label: "Exception 23: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - retirement.exception
++      - const: e23
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "meeting the unforeseeable or immediate financial needs relating to necessary personal or family
++        emergency expenses"
++  - id: retirement.wrong_kind_test2
++    printed: (helper)
++    label: "An exception that does not apply to this kind of account: condition 2"
++    type: Bool
++    expr:
++      op: test
++      any:
++      - op: test
++        all:
++        - op: test
++          eq:
++          - retirement.is_ira
++          - const: true
++        - op: test
++          any:
++          - op: test
++            eq:
++            - retirement.exception
++            - const: e01
++          - op: test
++            eq:
++            - retirement.exception
++            - const: e06
++      - op: test
++        all:
++        - op: test
++          eq:
++          - retirement.is_ira
++          - const: false
++        - op: test
++          any:
++          - op: test
++            eq:
++            - retirement.exception
++            - const: e07
++          - op: test
++            eq:
++            - retirement.exception
++            - const: e08
++          - op: test
++            eq:
++            - retirement.exception
++            - const: e09
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation
++        from service"
+ # --- end Stage 21 ---
+   collection:
+     parent: person

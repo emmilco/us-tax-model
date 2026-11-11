@@ -1,0 +1,92 @@
+diff --git a/forms/2025/eic.yaml b/forms/2025/eic.yaml
+index 91993cd..ff5f87e 100644
+--- a/forms/2025/eic.yaml
++++ b/forms/2025/eic.yaml
+@@ -656,20 +656,20 @@ form:
+       type: Bool
+       label: 'Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025'
+       expr:
+-        op: test
+-        any:
+-        - op: test
+-          eq:
+-          - eic.married_rules
+-          - const: false
+-        - op: test
+-          eq:
+-          - eic.same_home
+-          - const: false
+-        - op: test
+-          eq:
+-          - eic.legally_separated
+-          - const: true
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - eic.married_rules
++            - const: false
++          then: eic.step3_married_test1
++        - guard:
++            op: test
++            eq:
++            - eic.married_rules
++            - const: true
++          then: eic.step3_married_from2
+       cite:
+         doc: i1040gi
+         locator: p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5
+@@ -2138,3 +2138,52 @@ form:
+       cite:
+         doc: i1040gi
+         locator: p. 46, Worksheet A, line 2 ("Check the box on Form 1040 or 1040-SR, line 27c")
++    - id: eic.step3_married_test2
++      printed: (helper)
++      label: "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025: condition 2"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - eic.same_home
++        - const: false
++      cite:
++        doc: i1040gi
++        locator: p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5
++          ("No. STOP")
++    - id: eic.step3_married_from2
++      printed: (helper)
++      label: "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025: conditions 2 to 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - eic.same_home
++            - const: false
++          then: eic.step3_married_test2
++        - guard:
++            op: test
++            eq:
++            - eic.same_home
++            - const: true
++          then: eic.legally_separated
++      cite:
++        doc: i1040gi
++        locator: p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5
++          ("No. STOP")
++    - id: eic.step3_married_test1
++      printed: (helper)
++      label: "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025: condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - eic.married_rules
++        - const: false
++      cite:
++        doc: i1040gi
++        locator: p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5
++          ("No. STOP")

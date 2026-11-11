@@ -1,0 +1,52 @@
+diff --git a/forms/2025/carloan.yaml b/forms/2025/carloan.yaml
+index d89096d..5975d67 100644
+--- a/forms/2025/carloan.yaml
++++ b/forms/2025/carloan.yaml
+@@ -75,16 +75,20 @@ form:
+     label: The loan and the vehicle qualify
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - carloan.requirements
+-        - const: true
+-      - op: test
+-        eq:
+-        - carloan.vehicle
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - carloan.requirements
++          - const: true
++        then: carloan.vehicle
++      - guard:
++          op: test
++          eq:
++          - carloan.requirements
++          - const: false
++        then: carloan.no
+     cite:
+       doc: i1040gi
+       locator: p. 109, Schedule 1-A, Qualified passenger vehicle loan interest and Applicable passenger vehicle
+@@ -486,6 +490,16 @@ form:
+       doc: i1040gi
+       locator: p. 110, Schedule 1-A, line 22, column (iii), "the total amount of the QPVLI paid or accrued on the loan during
+         the taxable year minus the amount on line 22, column (ii)"
++  - id: carloan.no
++    printed: (helper)
++    label: Year parameter household.no (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i1040gi
++      locator: p. 109, Schedule 1-A, Qualified passenger vehicle loan interest and Applicable passenger vehicle
+   collection:
+     cite:
+       doc: i1040gi

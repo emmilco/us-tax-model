@@ -1,0 +1,52 @@
+diff --git a/forms/2025/dependent.yaml b/forms/2025/dependent.yaml
+index 3a68c22..ab87bea 100644
+--- a/forms/2025/dependent.yaml
++++ b/forms/2025/dependent.yaml
+@@ -1199,16 +1199,20 @@ form:
+       type: Bool
+       label: Permanently and totally disabled with gross income at or over the limit
+       expr:
+-        op: test
+-        all:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - dependent.disabled
+-              - const: true
+-          - op: test
++            - dependent.disabled
++            - const: true
++          then: dependent.income_exception_test2
++        - guard:
++            op: test
+             eq:
+-              - dependent.qr_income
+-              - const: false
++            - dependent.disabled
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i1040gi
+         locator: p. 19, Step 4, "If the person was permanently and totally disabled, see Exception to gross income test"
+@@ -3196,6 +3200,18 @@ form:
+         doc: i1040gi
+         locator: pp. 17–19, Who Qualifies as Your Dependent
+     # --- end Stage 19 ---
++    - id: dependent.income_exception_test2
++      printed: (helper)
++      label: "Permanently and totally disabled with gross income at or over the limit: condition 2"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - dependent.qr_income
++        - const: false
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "If the person was permanently and totally disabled, see Exception to gross income test"
+   collection:
+     cite:
+       doc: f1040

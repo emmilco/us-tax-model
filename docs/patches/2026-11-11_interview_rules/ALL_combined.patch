@@ -1,0 +1,3153 @@
+diff --git a/forms/2025/asset.yaml b/forms/2025/asset.yaml
+index 6f87d8d..afe2dca 100644
+--- a/forms/2025/asset.yaml
++++ b/forms/2025/asset.yaml
+@@ -592,26 +592,20 @@ form:
+       or it is not section 179 property
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        gt:
+-        - asset.s179
+-        - asset.zero
+-      - op: test
+-        any:
+-        - op: test
+-          gt:
+-          - asset.s179
+-          - asset.basis
+-        - op: test
+-          eq:
+-          - asset.over_half
+-          - const: false
+-        - op: test
++      op: choose
++      alternatives:
++      - guard:
++          op: test
+           eq:
+-          - asset.not179
++          - asset.s179_bad_test1
+           - const: true
++        then: asset.s179_bad_test2
++      - guard:
++          op: test
++          eq:
++          - asset.s179_bad_test1
++          - const: false
++        then: asset.no
+     cite:
+       doc: i4562
+       locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
+@@ -1320,6 +1314,108 @@ form:
+       doc: i4562
+       locator: p. 15, Column (h)—Depreciation deduction, "For property used more than 50% in a qualified business use (line
+         26) ... figure column (h) by following the instructions for line 19, column (g)"
++  - id: asset.no
++    printed: (helper)
++    label: Year parameter household.no (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i4562
++      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
++        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
++        and "you cannot elect the section 179 deduction for the following property"
++  - id: asset.s179_bad_test1
++    printed: (helper)
++    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - asset.s179
++      - asset.zero
++    cite:
++      doc: i4562
++      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
++        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
++        and "you cannot elect the section 179 deduction for the following property"
++  - id: asset.s179_bad_test2
++    printed: (helper)
++    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 2"
++    type: Bool
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - asset.s179_bad_test2_test1
++          - const: true
++        then: asset.s179_bad_test2_test1
++      - guard:
++          op: test
++          eq:
++          - asset.s179_bad_test2_test1
++          - const: false
++        then: asset.s179_bad_test2_from2
++    cite:
++      doc: i4562
++      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
++        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
++        and "you cannot elect the section 179 deduction for the following property"
++  - id: asset.s179_bad_test2_test1
++    printed: (helper)
++    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 2: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - asset.s179
++      - asset.basis
++    cite:
++      doc: i4562
++      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
++        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
++        and "you cannot elect the section 179 deduction for the following property"
++  - id: asset.s179_bad_test2_test2
++    printed: (helper)
++    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 2: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - asset.over_half
++      - const: false
++    cite:
++      doc: i4562
++      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
++        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
++        and "you cannot elect the section 179 deduction for the following property"
++  - id: asset.s179_bad_test2_from2
++    printed: (helper)
++    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 2: conditions 2 to 3"
++    type: Bool
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - asset.over_half
++          - const: false
++        then: asset.s179_bad_test2_test2
++      - guard:
++          op: test
++          eq:
++          - asset.over_half
++          - const: true
++        then: asset.not179
++    cite:
++      doc: i4562
++      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
++        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
++        and "you cannot elect the section 179 deduction for the following property"
+   collection:
+     parent: sc
+     cite:
+diff --git a/forms/2025/carloan.yaml b/forms/2025/carloan.yaml
+index d89096d..5975d67 100644
+--- a/forms/2025/carloan.yaml
++++ b/forms/2025/carloan.yaml
+@@ -75,16 +75,20 @@ form:
+     label: The loan and the vehicle qualify
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - carloan.requirements
+-        - const: true
+-      - op: test
+-        eq:
+-        - carloan.vehicle
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - carloan.requirements
++          - const: true
++        then: carloan.vehicle
++      - guard:
++          op: test
++          eq:
++          - carloan.requirements
++          - const: false
++        then: carloan.no
+     cite:
+       doc: i1040gi
+       locator: p. 109, Schedule 1-A, Qualified passenger vehicle loan interest and Applicable passenger vehicle
+@@ -486,6 +490,16 @@ form:
+       doc: i1040gi
+       locator: p. 110, Schedule 1-A, line 22, column (iii), "the total amount of the QPVLI paid or accrued on the loan during
+         the taxable year minus the amount on line 22, column (ii)"
++  - id: carloan.no
++    printed: (helper)
++    label: Year parameter household.no (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i1040gi
++      locator: p. 109, Schedule 1-A, Qualified passenger vehicle loan interest and Applicable passenger vehicle
+   collection:
+     cite:
+       doc: i1040gi
+diff --git a/forms/2025/dependent.yaml b/forms/2025/dependent.yaml
+index 3a68c22..1ca95ec 100644
+--- a/forms/2025/dependent.yaml
++++ b/forms/2025/dependent.yaml
+@@ -1014,22 +1014,20 @@ form:
+       label: 'A household member: lived with you all year, or a relative of your spouse on a joint return'
+       type: Bool
+       expr:
+-        op: test
+-        any:
+-        - op: test
+-          all:
+-          - op: test
+-            eq:
+-            - f1040.status
+-            - const: mfj
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-            - dependent.spouse_relative
++            - dependent.qr_household_member_test1
+             - const: true
+-        - op: test
+-          eq:
+-          - dependent.qr_all_year
+-          - const: true
++          then: dependent.qr_household_member_test1
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_household_member_test1
++            - const: false
++          then: dependent.qr_all_year
+       cite:
+         doc: i1040gi
+         locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
+@@ -1041,28 +1039,20 @@ form:
+         law, or a relative of your spouse on a joint return'
+       type: Bool
+       expr:
+-        op: test
+-        any:
+-        - op: test
+-          all:
+-          - op: test
+-            eq:
+-            - f1040.status
+-            - const: mfj
+-          - op: test
+-            eq:
+-            - dependent.spouse_relative
+-            - const: true
+-        - op: test
+-          all:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-            - dependent.qr_all_year
++            - dependent.qr_other_relation_test1
+             - const: true
+-          - op: test
++          then: dependent.qr_other_relation_test1
++        - guard:
++            op: test
+             eq:
+-            - dependent.lawful
+-            - const: true
++            - dependent.qr_other_relation_test1
++            - const: false
++          then: dependent.qr_other_relation_test2
+       cite:
+         doc: i1040gi
+         locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
+@@ -1199,16 +1189,20 @@ form:
+       type: Bool
+       label: Permanently and totally disabled with gross income at or over the limit
+       expr:
+-        op: test
+-        all:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - dependent.disabled
+-              - const: true
+-          - op: test
++            - dependent.disabled
++            - const: true
++          then: dependent.income_exception_test2
++        - guard:
++            op: test
+             eq:
+-              - dependent.qr_income
+-              - const: false
++            - dependent.disabled
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i1040gi
+         locator: p. 19, Step 4, "If the person was permanently and totally disabled, see Exception to gross income test"
+@@ -1239,24 +1233,20 @@ form:
+       type: Bool
+       label: Qualifying relative (Step 4)
+       expr:
+-        op: test
+-        all:
+-          - op: test
+-            eq:
+-              - dependent.qr_relationship
+-              - const: true
+-          - op: test
+-            eq:
+-              - dependent.qualifying_child
+-              - const: false
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - dependent.qr_income
+-              - const: true
+-          - op: test
++            - dependent.qr_relationship
++            - const: true
++          then: dependent.qualifying_relative_from2
++        - guard:
++            op: test
+             eq:
+-              - dependent.supported
+-              - const: true
++            - dependent.qr_relationship
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i1040gi
+         locator: p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?"
+@@ -1499,28 +1489,20 @@ form:
+       type: Bool
+       label: Dependent for the credit for other dependents (Steps 3 and 5)
+       expr:
+-        op: test
+-        all:
+-          - op: test
+-            eq:
+-              - dependent.claimed
+-              - const: true
+-          - op: test
+-            eq:
+-              - dependent.tin
+-              - const: true
+-          - op: test
+-            eq:
+-              - dependent.citizen
+-              - const: true
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - dependent.ctc_child
+-              - const: false
+-          - op: test
++            - dependent.claimed
++            - const: true
++          then: dependent.odc_person_from2
++        - guard:
++            op: test
+             eq:
+-              - household.all_tin
+-              - const: true
++            - dependent.claimed
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i1040gi
+         locator: p. 18, Step 3, question 3, and p. 19, Step 5
+@@ -1639,44 +1621,20 @@ form:
+       type: Bool
+       label: A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form)
+       expr:
+-        op: test
+-        any:
+-          - op: test
+-            all:
+-              - op: test
+-                eq:
+-                  - dependent.claimed
+-                  - const: true
+-              - op: test
+-                ne:
+-                  - dependent.relationship
+-                  - const: household_member
+-              - op: test
+-                ne:
+-                  - dependent.relationship
+-                  - const: sibling_descendant
+-              - op: test
+-                ne:
+-                  - dependent.relationship
+-                  - const: other
+-              - op: test
+-                eq:
+-                  - dependent.hoh_lived_half
+-                  - const: true
+-          - op: test
+-            all:
+-              - op: test
+-                eq:
+-                  - dependent.qualifying_child
+-                  - const: true
+-              - op: test
+-                eq:
+-                  - dependent.married
+-                  - const: false
+-              - op: test
+-                eq:
+-                  - dependent.lived_half
+-                  - const: true
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1
++            - const: true
++          then: dependent.hoh_test2_lived_test1
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1
++            - const: false
++          then: dependent.hoh_test2_lived_test2
+       cite:
+         doc: i1040gi
+         locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
+@@ -1707,16 +1665,20 @@ form:
+       type: Bool
+       label: A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting only absences head of household counts (the home-cost condition of Test 2 is tested on the household form)
+       expr:
+-        op: test
+-        all:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - dependent.hoh_test2_lived
+-              - const: true
+-          - op: test
++            - dependent.hoh_test2_lived
++            - const: true
++          then: dependent.hoh_test2_test2
++        - guard:
++            op: test
+             eq:
+-              - dependent.absence_no_return
+-              - const: false
++            - dependent.hoh_test2_lived
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i1040gi
+         locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year); p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+@@ -1725,20 +1687,20 @@ form:
+       type: Bool
+       label: Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)
+       expr:
+-        op: test
+-        all:
+-          - op: test
+-            eq:
+-              - dependent.relationship
+-              - const: parent
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - dependent.claimed
+-              - const: true
+-          - op: test
++            - dependent.hoh_test1_test1
++            - const: true
++          then: dependent.hoh_test1_from2
++        - guard:
++            op: test
+             eq:
+-              - dependent.parent_home_paid
+-              - const: true
++            - dependent.hoh_test1_test1
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i1040gi
+         locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
+@@ -2924,16 +2886,20 @@ form:
+       label: A lifetime learning credit student whose ITIN or ATIN was only applied for by the due date of the return
+       type: Bool
+       expr:
+-        op: test
+-        all:
+-        - op: test
+-          eq:
+-          - dependent.edu_llc
+-          - const: true
+-        - op: test
+-          eq:
+-          - dependent.edu_tin_issued
+-          - const: false
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.edu_llc
++            - const: true
++          then: dependent.edu_llc_tin_refused_test2
++        - guard:
++            op: test
++            eq:
++            - dependent.edu_llc
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i8863
+         locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
+@@ -3196,6 +3162,455 @@ form:
+         doc: i1040gi
+         locator: pp. 17–19, Who Qualifies as Your Dependent
+     # --- end Stage 19 ---
++    - id: dependent.odc_person_from4
++      printed: (helper)
++      label: "Dependent for the credit for other dependents (Steps 3 and 5): conditions 4 to 5"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.ctc_child
++            - const: false
++          then: household.all_tin
++        - guard:
++            op: test
++            eq:
++            - dependent.ctc_child
++            - const: true
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 18, Step 3, question 3, and p. 19, Step 5
++    - id: dependent.odc_person_from3
++      printed: (helper)
++      label: "Dependent for the credit for other dependents (Steps 3 and 5): conditions 3 to 5"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.citizen
++            - const: true
++          then: dependent.odc_person_from4
++        - guard:
++            op: test
++            eq:
++            - dependent.citizen
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 18, Step 3, question 3, and p. 19, Step 5
++    - id: dependent.odc_person_from2
++      printed: (helper)
++      label: "Dependent for the credit for other dependents (Steps 3 and 5): conditions 2 to 5"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.tin
++            - const: true
++          then: dependent.odc_person_from3
++        - guard:
++            op: test
++            eq:
++            - dependent.tin
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 18, Step 3, question 3, and p. 19, Step 5
++    - id: dependent.qualifying_relative_from3
++      printed: (helper)
++      label: "Qualifying relative (Step 4): conditions 3 to 4"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_income
++            - const: true
++          then: dependent.supported
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_income
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?"
++    - id: dependent.qualifying_relative_from2
++      printed: (helper)
++      label: "Qualifying relative (Step 4): conditions 2 to 4"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.qualifying_child
++            - const: false
++          then: dependent.qualifying_relative_from3
++        - guard:
++            op: test
++            eq:
++            - dependent.qualifying_child
++            - const: true
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?"
++    - id: dependent.income_exception_test2
++      printed: (helper)
++      label: "Permanently and totally disabled with gross income at or over the limit: condition 2"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - dependent.qr_income
++        - const: false
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "If the person was permanently and totally disabled, see Exception to gross income test"
++    - id: dependent.qr_other_relation_test1
++      printed: (helper)
++      label: "A descendant of a sibling or another person: lived with you all year and the relationship did not violate local law, or a relative of your spouse on a joint return: condition 1"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_other_relation_test1_test1
++            - const: true
++          then: dependent.spouse_relative
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_other_relation_test1_test1
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
++          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
++          can be related to either you or your spouse."
++    - id: dependent.qr_other_relation_test2
++      printed: (helper)
++      label: "A descendant of a sibling or another person: lived with you all year and the relationship did not violate local law, or a relative of your spouse on a joint return: condition 2"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_all_year
++            - const: true
++          then: dependent.lawful
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_all_year
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
++          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
++          can be related to either you or your spouse."
++    - id: dependent.qr_household_member_test1
++      printed: (helper)
++      label: "A household member: lived with you all year, or a relative of your spouse on a joint return: condition 1"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_household_member_test1_test1
++            - const: true
++          then: dependent.spouse_relative
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_household_member_test1_test1
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
++          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
++          can be related to either you or your spouse."
++    - id: dependent.hoh_test2_test2
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting only absences head of household counts (the home-cost condition of Test 2 is tested on the household form): condition 2"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - dependent.absence_no_return
++        - const: false
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year); p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
++    - id: dependent.hoh_test1_test1
++      printed: (helper)
++      label: "Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2): condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - dependent.relationship
++        - const: parent
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
++    - id: dependent.hoh_test1_from2
++      printed: (helper)
++      label: "Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2): conditions 2 to 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.claimed
++            - const: true
++          then: dependent.parent_home_paid
++        - guard:
++            op: test
++            eq:
++            - dependent.claimed
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
++    - id: dependent.hoh_test2_lived_test1
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.claimed
++            - const: true
++          then: dependent.hoh_test2_lived_test1_from2
++        - guard:
++            op: test
++            eq:
++            - dependent.claimed
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test2
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 2"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.qualifying_child
++            - const: true
++          then: dependent.hoh_test2_lived_test2_from2
++        - guard:
++            op: test
++            eq:
++            - dependent.qualifying_child
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.edu_llc_tin_refused_test2
++      printed: (helper)
++      label: "A lifetime learning credit student whose ITIN or ATIN was only applied for by the due date of the return: condition 2"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - dependent.edu_tin_issued
++        - const: false
++      cite:
++        doc: i8863
++        locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
++          return (including extensions)."
++    - id: dependent.qr_other_relation_test1_test1
++      printed: (helper)
++      label: "A descendant of a sibling or another person: lived with you all year and the relationship did not violate local law, or a relative of your spouse on a joint return: condition 1: condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - f1040.status
++        - const: mfj
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
++          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
++          can be related to either you or your spouse."
++    - id: dependent.qr_household_member_test1_test1
++      printed: (helper)
++      label: "A household member: lived with you all year, or a relative of your spouse on a joint return: condition 1: condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - f1040.status
++        - const: mfj
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
++          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
++          can be related to either you or your spouse."
++    - id: dependent.hoh_test2_lived_test1_test2
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1: condition 2"
++      type: Bool
++      expr:
++        op: test
++        ne:
++        - dependent.relationship
++        - const: household_member
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test1_test3
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1: condition 3"
++      type: Bool
++      expr:
++        op: test
++        ne:
++        - dependent.relationship
++        - const: sibling_descendant
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test1_test4
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1: condition 4"
++      type: Bool
++      expr:
++        op: test
++        ne:
++        - dependent.relationship
++        - const: other
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test1_from4
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1: conditions 4 to 5"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1_test4
++            - const: true
++          then: dependent.hoh_lived_half
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1_test4
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test1_from3
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1: conditions 3 to 5"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1_test3
++            - const: true
++          then: dependent.hoh_test2_lived_test1_from4
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1_test3
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test1_from2
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 1: conditions 2 to 5"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1_test2
++            - const: true
++          then: dependent.hoh_test2_lived_test1_from3
++        - guard:
++            op: test
++            eq:
++            - dependent.hoh_test2_lived_test1_test2
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
++    - id: dependent.hoh_test2_lived_test2_from2
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form): condition 2: conditions 2 to 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.married
++            - const: false
++          then: dependent.lived_half
++        - guard:
++            op: test
++            eq:
++            - dependent.married
++            - const: true
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
+   collection:
+     cite:
+       doc: f1040
+diff --git a/forms/2025/eic.yaml b/forms/2025/eic.yaml
+index 91993cd..a89ffa8 100644
+--- a/forms/2025/eic.yaml
++++ b/forms/2025/eic.yaml
+@@ -33,15 +33,9 @@ form:
+         field: person.one
+         where:
+           op: test
+-          all:
+-          - op: test
+-            eq:
+-            - person.born_before_2001
+-            - const: true
+-          - op: test
+-            eq:
+-            - person.born_after_1960
+-            - const: true
++          eq:
++          - person.eic_age_range
++          - const: true
+       cite:
+         doc: i1040gi
+         locator: p. 41, Step 4, question 2, "Were you, or your spouse if filing a joint return, at least age 25 but under
+@@ -656,20 +650,20 @@ form:
+       type: Bool
+       label: 'Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025'
+       expr:
+-        op: test
+-        any:
+-        - op: test
+-          eq:
+-          - eic.married_rules
+-          - const: false
+-        - op: test
+-          eq:
+-          - eic.same_home
+-          - const: false
+-        - op: test
+-          eq:
+-          - eic.legally_separated
+-          - const: true
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - eic.married_rules
++            - const: false
++          then: eic.step3_married_test1
++        - guard:
++            op: test
++            eq:
++            - eic.married_rules
++            - const: true
++          then: eic.step3_married_from2
+       cite:
+         doc: i1040gi
+         locator: p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5
+@@ -2138,3 +2132,52 @@ form:
+       cite:
+         doc: i1040gi
+         locator: p. 46, Worksheet A, line 2 ("Check the box on Form 1040 or 1040-SR, line 27c")
++    - id: eic.step3_married_test2
++      printed: (helper)
++      label: "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025: condition 2"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - eic.same_home
++        - const: false
++      cite:
++        doc: i1040gi
++        locator: p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5
++          ("No. STOP")
++    - id: eic.step3_married_from2
++      printed: (helper)
++      label: "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025: conditions 2 to 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - eic.same_home
++            - const: false
++          then: eic.step3_married_test2
++        - guard:
++            op: test
++            eq:
++            - eic.same_home
++            - const: true
++          then: eic.legally_separated
++      cite:
++        doc: i1040gi
++        locator: p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5
++          ("No. STOP")
++    - id: eic.step3_married_test1
++      printed: (helper)
++      label: "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025: condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - eic.married_rules
++        - const: false
++      cite:
++        doc: i1040gi
++        locator: p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5
++          ("No. STOP")
+diff --git a/forms/2025/f1040.yaml b/forms/2025/f1040.yaml
+index 41eb71b..47d5dad 100644
+--- a/forms/2025/f1040.yaml
++++ b/forms/2025/f1040.yaml
+@@ -281,16 +281,20 @@ form:
+       label: If you are married filing separately and lived apart from your spouse the entire year, check here
+       type: Bool
+       expr:
+-        op: test
+-        all:
+-        - op: test
+-          eq:
+-          - f1040.status
+-          - const: mfs
+-        - op: test
+-          eq:
+-          - ssb.lived_apart
+-          - const: true
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - f1040.line6d_test1
++            - const: true
++          then: ssb.lived_apart
++        - guard:
++            op: test
++            eq:
++            - f1040.line6d_test1
++            - const: false
++          then: f1040.no
+       cite:
+         doc: i1040gi
+         locator: p. 31, Line 6d
+@@ -974,3 +978,25 @@ form:
+       cite:
+         doc: i1040gi
+         locator: 'p. 25, Line 3a, "Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b"'
++    - id: f1040.no
++      printed: (helper)
++      label: Year parameter household.no (false)
++      type: Bool
++      expr:
++        op: param
++        ref: household.no
++      cite:
++        doc: i1040gi
++        locator: p. 31, Line 6d
++    - id: f1040.line6d_test1
++      printed: (helper)
++      label: "If you are married filing separately and lived apart from your spouse the entire year, check here: condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - f1040.status
++        - const: mfs
++      cite:
++        doc: i1040gi
++        locator: p. 31, Line 6d
+diff --git a/forms/2025/f2441.yaml b/forms/2025/f2441.yaml
+index aca4e32..5ef7da7 100644
+--- a/forms/2025/f2441.yaml
++++ b/forms/2025/f2441.yaml
+@@ -128,16 +128,20 @@ form:
+       type: Bool
+       label: Care expenses for a qualifying person who is not your dependent
+       expr:
+-        op: test
+-        all:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - f2441.care
+-              - const: true
+-          - op: test
++            - f2441.care
++            - const: true
++          then: f2441.nondependent
++        - guard:
++            op: test
+             eq:
+-              - f2441.nondependent
+-              - const: true
++            - f2441.care
++            - const: false
++          then: f2441.no
+       cite:
+         doc: i2441
+         locator: 'p. 1, Qualifying Person(s), "or could claim as a dependent except"'
+diff --git a/forms/2025/f5695.yaml b/forms/2025/f5695.yaml
+index 68dfae2..f1a81fc 100644
+--- a/forms/2025/f5695.yaml
++++ b/forms/2025/f5695.yaml
+@@ -583,20 +583,20 @@ form:
+     label: Lines 17a, 17b and 17c are all Yes (Section A is completed)
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f5695.line17a
+-        - const: true
+-      - op: test
+-        eq:
+-        - f5695.line17b
+-        - const: true
+-      - op: test
+-        eq:
+-        - f5695.line17c
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.line17a
++          - const: true
++        then: f5695.sec_a_claimed_from2
++      - guard:
++          op: test
++          eq:
++          - f5695.line17a
++          - const: false
++        then: f5695.no
+     cite:
+       doc: f5695
+       locator: Form 5695 (2025), line 17c, "If you checked the ... No ... box for line 17a, 17b, or 17c, you cannot claim
+@@ -620,16 +620,20 @@ form:
+     label: Section A is completed and line 17e is Yes
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f5695.sec_a_claimed
+-        - const: true
+-      - op: test
+-        eq:
+-        - f5695.line17e
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.sec_a_claimed
++          - const: true
++        then: f5695.line17e
++      - guard:
++          op: test
++          eq:
++          - f5695.sec_a_claimed
++          - const: false
++        then: f5695.no
+     cite:
+       doc: f5695
+       locator: Form 5695 (2025), line 17e, "If you checked the ... Yes ... box, you can only claim the energy efficient home
+@@ -884,16 +888,20 @@ form:
+     label: Exterior door costs entered without a valid QMID for each door
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        gt:
+-        - f5695.doors_cost
+-        - param: sales.zero
+-      - op: test
+-        eq:
+-        - f5695.qmid_doors
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.doors_no_qmid_test1
++          - const: true
++        then: f5695.doors_no_qmid_test2
++      - guard:
++          op: test
++          eq:
++          - f5695.doors_no_qmid_test1
++          - const: false
++        then: f5695.no
+     cite:
+       doc: i5695
+       locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+@@ -1070,16 +1078,20 @@ form:
+     label: Window and skylight costs entered without a valid QMID for each item
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        gt:
+-        - f5695.line20c
+-        - param: sales.zero
+-      - op: test
+-        eq:
+-        - f5695.qmid_windows
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.windows_no_qmid_test1
++          - const: true
++        then: f5695.windows_no_qmid_test2
++      - guard:
++          op: test
++          eq:
++          - f5695.windows_no_qmid_test1
++          - const: false
++        then: f5695.no
+     cite:
+       doc: i5695
+       locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+@@ -1163,16 +1175,20 @@ form:
+     label: Lines 21a and 21b are both Yes
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f5695.line21a
+-        - const: true
+-      - op: test
+-        eq:
+-        - f5695.line21b
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.line21a
++          - const: true
++        then: f5695.line21b
++      - guard:
++          op: test
++          eq:
++          - f5695.line21a
++          - const: false
++        then: f5695.no
+     cite:
+       doc: f5695
+       locator: Form 5695 (2025), line 21b, "If you checked the ... No ... box for line 21a or 21b, you cannot claim the credit
+@@ -1196,16 +1212,20 @@ form:
+     label: Section B is completed for property installed in connection with the construction of a new home
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f5695.sec_b_claimed
+-        - const: true
+-      - op: test
+-        eq:
+-        - f5695.b_new_home
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.sec_b_claimed
++          - const: true
++        then: f5695.b_new_home
++      - guard:
++          op: test
++          eq:
++          - f5695.sec_b_claimed
++          - const: false
++        then: f5695.no
+     cite:
+       doc: i5695
+       locator: p. 1, Costs, "The energy efficient home improvement credit (Part II) is only available for existing homes"
+@@ -1284,16 +1304,20 @@ form:
+     label: Central air conditioner costs entered without a valid QMID for each item
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        gt:
+-        - f5695.line22c
+-        - param: sales.zero
+-      - op: test
+-        eq:
+-        - f5695.qmid_ac
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.ac_no_qmid_test1
++          - const: true
++        then: f5695.ac_no_qmid_test2
++      - guard:
++          op: test
++          eq:
++          - f5695.ac_no_qmid_test1
++          - const: false
++        then: f5695.no
+     cite:
+       doc: i5695
+       locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+@@ -1689,16 +1713,20 @@ form:
+     label: Lines 21a, 21b and 25a are all Yes
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f5695.sec_b_claimed
+-        - const: true
+-      - op: test
+-        eq:
+-        - f5695.line25a
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.sec_b_claimed
++          - const: true
++        then: f5695.line25a
++      - guard:
++          op: test
++          eq:
++          - f5695.sec_b_claimed
++          - const: false
++        then: f5695.no
+     cite:
+       doc: f5695
+       locator: Form 5695 (2025), line 25a, "If you checked the ... No ... box, you cannot claim the credit for enabling
+@@ -1746,16 +1774,20 @@ form:
+     label: Enabling property costs entered without a valid QMID for each item
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        gt:
+-        - f5695.line25c
+-        - param: sales.zero
+-      - op: test
+-        eq:
+-        - f5695.qmid_enabling
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.enabling_no_qmid_test1
++          - const: true
++        then: f5695.enabling_no_qmid_test2
++      - guard:
++          op: test
++          eq:
++          - f5695.enabling_no_qmid_test1
++          - const: false
++        then: f5695.no
+     cite:
+       doc: i5695
+       locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+@@ -2190,16 +2222,20 @@ form:
+     label: Married filing jointly with separate main homes
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f1040.status
+-        - const: mfj
+-      - op: test
+-        eq:
+-        - f5695.separate_homes
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.separate_homes_joint_test1
++          - const: true
++        then: f5695.separate_homes
++      - guard:
++          op: test
++          eq:
++          - f5695.separate_homes_joint_test1
++          - const: false
++        then: f5695.no
+     cite:
+       doc: i5695
+       locator: p. 3, Married taxpayers with more than one home, "If you are filing a joint return, figure your energy
+@@ -2407,3 +2443,143 @@ form:
+     cite:
+       doc: i5695
+       locator: p. 7, Lines 32a and 32b, "must check the box on line 32b"
++  - id: f5695.sec_a_claimed_from2
++    printed: (helper)
++    label: "Lines 17a, 17b and 17c are all Yes (Section A is completed): conditions 2 to 3"
++    type: Bool
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f5695.line17b
++          - const: true
++        then: f5695.line17c
++      - guard:
++          op: test
++          eq:
++          - f5695.line17b
++          - const: false
++        then: f5695.no
++    cite:
++      doc: f5695
++      locator: Form 5695 (2025), line 17c, "If you checked the ... No ... box for line 17a, 17b, or 17c, you cannot claim
++        the energy efficient home improvement credit. Do not complete Part II, Section A"
++  - id: f5695.separate_homes_joint_test1
++    printed: (helper)
++    label: "Married filing jointly with separate main homes: condition 1"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f1040.status
++      - const: mfj
++    cite:
++      doc: i5695
++      locator: p. 3, Married taxpayers with more than one home, "If you are filing a joint return, figure your energy
++        efficient home improvement credit as follows"
++  - id: f5695.ac_no_qmid_test1
++    printed: (helper)
++    label: "Central air conditioner costs entered without a valid QMID for each item: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - f5695.line22c
++      - param: sales.zero
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.ac_no_qmid_test2
++    printed: (helper)
++    label: "Central air conditioner costs entered without a valid QMID for each item: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f5695.qmid_ac
++      - const: false
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.doors_no_qmid_test1
++    printed: (helper)
++    label: "Exterior door costs entered without a valid QMID for each door: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - f5695.doors_cost
++      - param: sales.zero
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.doors_no_qmid_test2
++    printed: (helper)
++    label: "Exterior door costs entered without a valid QMID for each door: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f5695.qmid_doors
++      - const: false
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.windows_no_qmid_test1
++    printed: (helper)
++    label: "Window and skylight costs entered without a valid QMID for each item: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - f5695.line20c
++      - param: sales.zero
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.windows_no_qmid_test2
++    printed: (helper)
++    label: "Window and skylight costs entered without a valid QMID for each item: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f5695.qmid_windows
++      - const: false
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.enabling_no_qmid_test1
++    printed: (helper)
++    label: "Enabling property costs entered without a valid QMID for each item: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - f5695.line25c
++      - param: sales.zero
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
++  - id: f5695.enabling_no_qmid_test2
++    printed: (helper)
++    label: "Enabling property costs entered without a valid QMID for each item: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f5695.qmid_enabling
++      - const: false
++    cite:
++      doc: i5695
++      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
++        credit for specified property, you must provide a valid QMID for each item"
+diff --git a/forms/2025/f8889.yaml b/forms/2025/f8889.yaml
+index 58c2716..1c4ea9a 100644
+--- a/forms/2025/f8889.yaml
++++ b/forms/2025/f8889.yaml
+@@ -315,16 +315,20 @@ form:
+     label: 'Married at the end of 2025 and treated as having family coverage at any time during 2025'
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - household.married
+-        - const: true
+-      - op: test
+-        eq:
+-        - f8889.family_any_time
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - household.married
++          - const: true
++        then: f8889.family_any_time
++      - guard:
++          op: test
++          eq:
++          - household.married
++          - const: false
++        then: f8889.no
+     cite:
+       doc: i8889
+       locator: 'p. 5, Line 3, "Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+@@ -1527,16 +1531,20 @@ form:
+     label: Employer contributions above the limit that are not included in Form W-2 box 1
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        gt:
+-        - f8889.line11
+-        - f8889.line8
+-      - op: test
+-        eq:
+-        - f8889.employer_in_box1
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f8889.excess_test1
++          - const: true
++        then: f8889.excess_test2
++      - guard:
++          op: test
++          eq:
++          - f8889.excess_test1
++          - const: false
++        then: f8889.no
+     cite:
+       doc: i8889
+       locator: 'p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer''s contributions over your limitation on line 8."'
+@@ -1957,6 +1965,40 @@ form:
+     cite:
+       doc: f8889
+       locator: Form 8889 (2025), line 17b
++  - id: f8889.no
++    printed: (helper)
++    label: Year parameter household.no (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i8889
++      locator: 'p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer''s contributions over your limitation on line 8."'
++  - id: f8889.excess_test1
++    printed: (helper)
++    label: "Employer contributions above the limit that are not included in Form W-2 box 1: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - f8889.line11
++      - f8889.line8
++    cite:
++      doc: i8889
++      locator: 'p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer''s contributions over your limitation on line 8."'
++  - id: f8889.excess_test2
++    printed: (helper)
++    label: "Employer contributions above the limit that are not included in Form W-2 box 1: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f8889.employer_in_box1
++      - const: false
++    cite:
++      doc: i8889
++      locator: 'p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer''s contributions over your limitation on line 8."'
+   collection:
+     parent: person
+     cite:
+diff --git a/forms/2025/f8962.yaml b/forms/2025/f8962.yaml
+index 955b90b..23d7141 100644
+--- a/forms/2025/f8962.yaml
++++ b/forms/2025/f8962.yaml
+@@ -274,134 +274,20 @@ form:
+       taxpayer'
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f8962.show_applicable
+-        - const: true
+-      - op: test
+-        any:
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line12a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line12b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line13a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line13b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line14a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line14b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line15a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line15b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line16a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line16b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line17a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line17b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line18a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line18b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line19a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line19b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line20a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line20b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line21a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line21b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line22a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line22b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line23a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line23b
+-            - const: 0
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f8962.show_applicable
++          - const: true
++        then: f8962.b_zero_test2
++      - guard:
++          op: test
++          eq:
++          - f8962.show_applicable
++          - const: false
++        then: f8962.no
+     cite:
+       doc: p974
+       locator: p. 6, "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled
+@@ -668,23 +554,20 @@ form:
+     label: You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)
+     type: Bool
+     expr:
+-      op: test
+-      any:
+-      - op: test
+-        ge:
+-        - f8962.line5
+-        - const: 100
+-          type: Count
+-      - op: test
+-        all:
+-        - op: test
++      op: choose
++      alternatives:
++      - guard:
++          op: test
+           eq:
+-          - f8962.aptc
++          - f8962.applicable_test1
+           - const: true
+-        - op: test
++        then: f8962.applicable_test1
++      - guard:
++          op: test
+           eq:
+-          - f8962.estimate_100
+-          - const: true
++          - f8962.applicable_test1
++          - const: false
++        then: f8962.applicable_test2
+     cite:
+       doc: i8962
+       locator: p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p.
+@@ -751,21 +634,20 @@ form:
+     label: A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f8962.any
+-        - const: true
+-      - op: test
+-        lt:
+-        - f8962.line5
+-        - const: 100
+-          type: Count
+-      - op: test
+-        eq:
+-        - f8962.alien_below
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f8962.any
++          - const: true
++        then: f8962.alien_branch_from2
++      - guard:
++          op: test
++          eq:
++          - f8962.any
++          - const: false
++        then: f8962.no
+     cite:
+       doc: i8962
+       locator: p. 9, Line 5, "If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under
+@@ -2856,3 +2738,218 @@ form:
+       doc: f8962
+       locator: p. 1, Part III, line 29, "Excess advance PTC repayment. Enter the smaller of line 27 or line 28 here and on
+         Schedule 2 (Form 1040), line 1a"
++  - id: f8962.b_zero_test2
++    printed: (helper)
++    label: "A month of lines 12 to 23 with enrollment premiums in column (a) and zero in column (b), for an applicable taxpayer: condition 2"
++    type: Bool
++    expr:
++      op: test
++      any:
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line12a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line12b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line13a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line13b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line14a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line14b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line15a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line15b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line16a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line16b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line17a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line17b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line18a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line18b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line19a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line19b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line20a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line20b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line21a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line21b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line22a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line22b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line23a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line23b
++          - const: 0
++    cite:
++      doc: p974
++      locator: p. 6, "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled
++        in a qualified health plan on the first day of that month.", "The applicable SLCSP premium is the second lowest cost
++        silver plan premium offered through the Marketplace where you reside that applies to your coverage family",
++        "may report your applicable SLCSP premium as -0-", "In either case, you must determine your correct applicable SLCSP
++        premium."; i8962 p. 16, Column (b), "Enter on lines 12 through 23, column (b), the amount of the monthly applicable
++        SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month"; i8962 p. 17, "credit
++        amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962,
++        column (b)"
++  - id: f8962.applicable_test1
++    printed: (helper)
++    label: "You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception): condition 1"
++    type: Bool
++    expr:
++      op: test
++      ge:
++      - f8962.line5
++      - const: 100
++        type: Count
++    cite:
++      doc: i8962
++      locator: p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p.
++        9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal
++        poverty line for your family size for 2025."
++  - id: f8962.applicable_test2
++    printed: (helper)
++    label: "You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception): condition 2"
++    type: Bool
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f8962.aptc
++          - const: true
++        then: f8962.estimate_100
++      - guard:
++          op: test
++          eq:
++          - f8962.aptc
++          - const: false
++        then: f8962.no
++    cite:
++      doc: i8962
++      locator: p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p.
++        9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal
++        poverty line for your family size for 2025."
++  - id: f8962.alien_branch_test2
++    printed: (helper)
++    label: "A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception: condition 2"
++    type: Bool
++    expr:
++      op: test
++      lt:
++      - f8962.line5
++      - const: 100
++        type: Count
++    cite:
++      doc: i8962
++      locator: p. 9, Line 5, "If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under
++        Estimated household income at least 100% of the federal poverty line next or Alien lawfully present in the United
++        States, later."
++  - id: f8962.alien_branch_from2
++    printed: (helper)
++    label: "A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception: conditions 2 to 3"
++    type: Bool
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f8962.alien_branch_test2
++          - const: true
++        then: f8962.alien_below
++      - guard:
++          op: test
++          eq:
++          - f8962.alien_branch_test2
++          - const: false
++        then: f8962.no
++    cite:
++      doc: i8962
++      locator: p. 9, Line 5, "If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under
++        Estimated household income at least 100% of the federal poverty line next or Alien lawfully present in the United
++        States, later."
+diff --git a/forms/2025/person.yaml b/forms/2025/person.yaml
+index 4bcffb1..8da96ac 100644
+--- a/forms/2025/person.yaml
++++ b/forms/2025/person.yaml
+@@ -2192,26 +2192,20 @@ form:
+         is asked only if someone can claim you or your spouse as a dependent)
+       type: Bool
+       expr:
+-        op: test
+-        any:
+-        - op: test
+-          eq:
+-          - person.sav_born
+-          - const: false
+-        - op: test
+-          eq:
+-          - person.sav_student
+-          - const: true
+-        - op: test
+-          all:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-            - sa.dependent
+-            - const: true
+-          - op: test
++            - person.sav_born
++            - const: false
++          then: person.sav_ineligible_test1
++        - guard:
++            op: test
+             eq:
+-            - person.sav_claimed
++            - person.sav_born
+             - const: true
++          then: person.sav_ineligible_from2
+       cite:
+         doc: f8880
+         locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+@@ -4245,16 +4239,20 @@ form:
+       label: A lifetime learning credit student whose ITIN was only applied for by the due date of the return
+       type: Bool
+       expr:
+-        op: test
+-        all:
+-        - op: test
+-          eq:
+-          - person.edu_llc
+-          - const: true
+-        - op: test
+-          eq:
+-          - person.tin
+-          - const: false
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - person.edu_llc
++            - const: true
++          then: person.edu_llc_tin_refused_test2
++        - guard:
++            op: test
++            eq:
++            - person.edu_llc
++            - const: false
++          then: person.no
+       cite:
+         doc: i8863
+         locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
+@@ -4697,6 +4695,78 @@ form:
+           apply to you."
+       ambiguity: amb.2025.edu_age_rule
+     # --- end Stage 19 ---
++    - id: person.edu_llc_tin_refused_test2
++      printed: (helper)
++      label: "A lifetime learning credit student whose ITIN was only applied for by the due date of the return: condition 2"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - person.tin
++        - const: false
++      cite:
++        doc: i8863
++        locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
++          return (including extensions)."
++    - id: person.sav_ineligible_test3
++      printed: (helper)
++      label: "Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student (the dependent question is asked only if someone can claim you or your spouse as a dependent): condition 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - sa.dependent
++            - const: true
++          then: person.sav_claimed
++        - guard:
++            op: test
++            eq:
++            - sa.dependent
++            - const: false
++          then: person.no
++      cite:
++        doc: f8880
++        locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
++          born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
++    - id: person.sav_ineligible_from2
++      printed: (helper)
++      label: "Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student (the dependent question is asked only if someone can claim you or your spouse as a dependent): conditions 2 to 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - person.sav_student
++            - const: true
++          then: person.sav_student
++        - guard:
++            op: test
++            eq:
++            - person.sav_student
++            - const: false
++          then: person.sav_ineligible_test3
++      cite:
++        doc: f8880
++        locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
++          born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
++    - id: person.sav_ineligible_test1
++      printed: (helper)
++      label: "Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student (the dependent question is asked only if someone can claim you or your spouse as a dependent): condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - person.sav_born
++        - const: false
++      cite:
++        doc: f8880
++        locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
++          born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
+   # --- Stage 21: Form 5329 (generated) ---
+     - id: person.x_l1
+       printed: (helper)
+@@ -5284,6 +5354,74 @@ form:
+       cite:
+         doc: i1040gi
+         locator: 'p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN"'
++    - id: person.own_died_before_65
++      printed: (helper)
++      label: Your entry, if you were born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - person.role
++            - const: taxpayer
++          then: person.died_before_65
++        - guard:
++            op: test
++            eq:
++            - person.role
++            - const: spouse
++          then: person.no
++      cite:
++        doc: i1040gi
++        locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
++    - id: person.spouse_died_before_65
++      printed: (helper)
++      label: Your spouse's entry, if your spouse was born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - person.role
++            - const: taxpayer
++          then: person.no
++        - guard:
++            op: test
++            eq:
++            - person.role
++            - const: spouse
++          then: person.died_before_65
++      cite:
++        doc: i1040gi
++        locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
++    - id: person.eic_age_range
++      printed: (helper)
++      label: Born after December 31, 1960, and before January 2, 2001
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - person.born_before_2001
++            - const: true
++          then: person.born_after_1960
++        - guard:
++            op: test
++            eq:
++            - person.born_before_2001
++            - const: false
++          then: person.no
++      cite:
++        doc: i1040gi
++        locator: p. 41, Step 4, question 2, "Were you, or your spouse if filing a joint return, at least age 25 but under
++          age 65 at the end of 2025? (Check 'Yes' if you, or your spouse if filing a joint return, were born after December
++          31, 1960, and before January 2, 2001.)"
+   # --- end Stage 21 ---
+   collection:
+     cite:
+diff --git a/forms/2025/retirement.yaml b/forms/2025/retirement.yaml
+index 5ad35e3..05f9247 100644
+--- a/forms/2025/retirement.yaml
++++ b/forms/2025/retirement.yaml
+@@ -1465,16 +1465,20 @@ form:
+     label: An exception applies
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.early
+-        - const: true
+-      - op: test
+-        ne:
+-        - retirement.exception
+-        - const: none
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.early
++          - const: true
++        then: retirement.has_exception_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.early
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+@@ -1504,50 +1508,20 @@ form:
+     label: An exception that does not apply to this kind of account
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.has_exception
+-        - const: true
+-      - op: test
+-        any:
+-        - op: test
+-          all:
+-          - op: test
+-            eq:
+-            - retirement.is_ira
+-            - const: true
+-          - op: test
+-            any:
+-            - op: test
+-              eq:
+-              - retirement.exception
+-              - const: e01
+-            - op: test
+-              eq:
+-              - retirement.exception
+-              - const: e06
+-        - op: test
+-          all:
+-          - op: test
+-            eq:
+-            - retirement.is_ira
+-            - const: false
+-          - op: test
+-            any:
+-            - op: test
+-              eq:
+-              - retirement.exception
+-              - const: e07
+-            - op: test
+-              eq:
+-              - retirement.exception
+-              - const: e08
+-            - op: test
+-              eq:
+-              - retirement.exception
+-              - const: e09
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: true
++        then: retirement.wrong_kind_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation
+@@ -1625,16 +1599,20 @@ form:
+     label: Exception 05
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.has_exception
+-        - const: true
+-      - op: test
+-        eq:
+-        - retirement.exception
+-        - const: e05
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: true
++        then: retirement.is_e05_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses
+@@ -1667,16 +1645,20 @@ form:
+     label: Exception 09
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.has_exception
+-        - const: true
+-      - op: test
+-        eq:
+-        - retirement.exception
+-        - const: e09
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: true
++        then: retirement.is_e09_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "IRA distributions made for the purchase of a first home, up to $10,000."
+@@ -1707,16 +1689,20 @@ form:
+     label: Exception 19
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.has_exception
+-        - const: true
+-      - op: test
+-        eq:
+-        - retirement.exception
+-        - const: e19
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: true
++        then: retirement.is_e19_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution
+@@ -1749,16 +1735,20 @@ form:
+     label: Exception 22
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.has_exception
+-        - const: true
+-      - op: test
+-        eq:
+-        - retirement.exception
+-        - const: e22
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: true
++        then: retirement.is_e22_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "Qualified distributions to victims of domestic abuse."
+@@ -1789,16 +1779,20 @@ form:
+     label: Exception 23
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - retirement.has_exception
+-        - const: true
+-      - op: test
+-        eq:
+-        - retirement.exception
+-        - const: e23
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: true
++        then: retirement.is_e23_test2
++      - guard:
++          op: test
++          eq:
++          - retirement.has_exception
++          - const: false
++        then: retirement.no
+     cite:
+       doc: i5329
+       locator: p. 5, Line 2, "meeting the unforeseeable or immediate financial needs relating to necessary personal or family
+@@ -1885,6 +1879,140 @@ form:
+       doc: i5329
+       locator: p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the
+         date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%."
++  - id: retirement.no
++    printed: (helper)
++    label: Year parameter household.no (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
++        exception number (01–23). If more than one exception applies, enter 99."
++  - id: retirement.has_exception_test2
++    printed: (helper)
++    label: "An exception applies: condition 2"
++    type: Bool
++    expr:
++      op: test
++      ne:
++      - retirement.exception
++      - const: none
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
++        exception number (01–23). If more than one exception applies, enter 99."
++  - id: retirement.is_e05_test2
++    printed: (helper)
++    label: "Exception 05: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - retirement.exception
++      - const: e05
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses
++        during the year minus 7.5% of your adjusted gross income (AGI) for the year."
++  - id: retirement.is_e09_test2
++    printed: (helper)
++    label: "Exception 09: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - retirement.exception
++      - const: e09
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "IRA distributions made for the purchase of a first home, up to $10,000."
++  - id: retirement.is_e19_test2
++    printed: (helper)
++    label: "Exception 19: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - retirement.exception
++      - const: e19
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution
++        of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted."
++  - id: retirement.is_e22_test2
++    printed: (helper)
++    label: "Exception 22: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - retirement.exception
++      - const: e22
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "Qualified distributions to victims of domestic abuse."
++  - id: retirement.is_e23_test2
++    printed: (helper)
++    label: "Exception 23: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - retirement.exception
++      - const: e23
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "meeting the unforeseeable or immediate financial needs relating to necessary personal or family
++        emergency expenses"
++  - id: retirement.wrong_kind_test2
++    printed: (helper)
++    label: "An exception that does not apply to this kind of account: condition 2"
++    type: Bool
++    expr:
++      op: test
++      any:
++      - op: test
++        all:
++        - op: test
++          eq:
++          - retirement.is_ira
++          - const: true
++        - op: test
++          any:
++          - op: test
++            eq:
++            - retirement.exception
++            - const: e01
++          - op: test
++            eq:
++            - retirement.exception
++            - const: e06
++      - op: test
++        all:
++        - op: test
++          eq:
++          - retirement.is_ira
++          - const: false
++        - op: test
++          any:
++          - op: test
++            eq:
++            - retirement.exception
++            - const: e07
++          - op: test
++            eq:
++            - retirement.exception
++            - const: e08
++          - op: test
++            eq:
++            - retirement.exception
++            - const: e09
++    cite:
++      doc: i5329
++      locator: p. 5, Line 2, "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation
++        from service"
+ # --- end Stage 21 ---
+   collection:
+     parent: person
+diff --git a/forms/2025/s1a.yaml b/forms/2025/s1a.yaml
+index e125e75..bc6cd03 100644
+--- a/forms/2025/s1a.yaml
++++ b/forms/2025/s1a.yaml
+@@ -2230,15 +2230,9 @@ form:
+       field: person.one
+       where:
+         op: test
+-        all:
+-        - op: test
+-          eq:
+-          - person.role
+-          - const: taxpayer
+-        - op: test
+-          eq:
+-          - person.died_before_65
+-          - const: true
++        eq:
++        - person.own_died_before_65
++        - const: true
+     cite:
+       doc: i1040gi
+       locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
+@@ -2399,15 +2393,9 @@ form:
+       field: person.one
+       where:
+         op: test
+-        all:
+-        - op: test
+-          eq:
+-          - person.role
+-          - const: spouse
+-        - op: test
+-          eq:
+-          - person.died_before_65
+-          - const: true
++        eq:
++        - person.spouse_died_before_65
++        - const: true
+     cite:
+       doc: i1040gi
+       locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
+diff --git a/forms/2025/sa.yaml b/forms/2025/sa.yaml
+index fc418b5..d1b9a9c 100644
+--- a/forms/2025/sa.yaml
++++ b/forms/2025/sa.yaml
+@@ -1189,20 +1189,20 @@ form:
+       type: Bool
+       label: Itemize if elected, required, or itemized total exceeds standard
+       expr:
+-        op: test
+-        any:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - sa.elect_itemize
+-              - const: true
+-          - op: test
++            - sa.elect_itemize
++            - const: true
++          then: sa.elect_itemize
++        - guard:
++            op: test
+             eq:
+-              - sa.mfs_spouse_itemizes
+-              - const: true
+-          - op: test
+-            gt:
+-              - sa.line17
+-              - sa.standard
++            - sa.elect_itemize
++            - const: false
++          then: sa.itemizes_from2
+       cite:
+         doc: f1040sa
+         locator: p. 1, Total Itemized Deductions, line 18, "If you elect to itemize deductions even though they are
+@@ -1261,3 +1261,43 @@ form:
+       cite:
+         doc: i1040gi
+         locator: p. 34, Line 12e, Exception 2
++    - id: sa.itemizes_test3
++      printed: (helper)
++      label: "Itemize if elected, required, or itemized total exceeds standard: condition 3"
++      type: Bool
++      expr:
++        op: test
++        gt:
++        - sa.line17
++        - sa.standard
++      cite:
++        doc: f1040sa
++        locator: p. 1, Total Itemized Deductions, line 18, "If you elect to itemize deductions even though they are
++          less than your standard deduction, check this box"; i1040gi p. 34, Line 12e Standard Deduction or Itemized
++          Deductions, "In most cases, your federal income tax will be less if you take the larger of your standard
++          deduction or itemized deductions", "If you checked the box on line 12b, your standard deduction is zero"
++    - id: sa.itemizes_from2
++      printed: (helper)
++      label: "Itemize if elected, required, or itemized total exceeds standard: conditions 2 to 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - sa.mfs_spouse_itemizes
++            - const: true
++          then: sa.mfs_spouse_itemizes
++        - guard:
++            op: test
++            eq:
++            - sa.mfs_spouse_itemizes
++            - const: false
++          then: sa.itemizes_test3
++      cite:
++        doc: f1040sa
++        locator: p. 1, Total Itemized Deductions, line 18, "If you elect to itemize deductions even though they are
++          less than your standard deduction, check this box"; i1040gi p. 34, Line 12e Standard Deduction or Itemized
++          Deductions, "In most cases, your federal income tax will be less if you take the larger of your standard
++          deduction or itemized deductions", "If you checked the box on line 12b, your standard deduction is zero"
+diff --git a/forms/2025/scveh.yaml b/forms/2025/scveh.yaml
+index ba01d73..e465991 100644
+--- a/forms/2025/scveh.yaml
++++ b/forms/2025/scveh.yaml
+@@ -376,16 +376,20 @@ form:
+     label: Owned and on actual expenses
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - scveh.method
+-        - const: actual
+-      - op: test
+-        eq:
+-        - scveh.owned
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - scveh.is_actual_owned_test1
++          - const: true
++        then: scveh.owned
++      - guard:
++          op: test
++          eq:
++          - scveh.is_actual_owned_test1
++          - const: false
++        then: scveh.no
+     cite:
+       doc: i1040sc
+       locator: p. 7, Line 9, "Show depreciation on line 13 and rent or lease payments on line 20a"
+@@ -413,16 +417,20 @@ form:
+     label: Leased and on actual expenses
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - scveh.method
+-        - const: actual
+-      - op: test
+-        eq:
+-        - scveh.owned
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - scveh.is_actual_leased_test1
++          - const: true
++        then: scveh.is_actual_leased_test2
++      - guard:
++          op: test
++          eq:
++          - scveh.is_actual_leased_test1
++          - const: false
++        then: scveh.no
+     cite:
+       doc: i1040sc
+       locator: p. 7, Line 9
+@@ -2296,6 +2304,52 @@ form:
+     cite:
+       doc: p946
+       locator: p. 34, Which Convention Applies?, Mid-quarter convention, Caution
++  - id: scveh.no
++    printed: (helper)
++    label: Year parameter household.no (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i1040sc
++      locator: p. 7, Line 9, "Show depreciation on line 13 and rent or lease payments on line 20a"
++  - id: scveh.is_actual_owned_test1
++    printed: (helper)
++    label: "Owned and on actual expenses: condition 1"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - scveh.method
++      - const: actual
++    cite:
++      doc: i1040sc
++      locator: p. 7, Line 9, "Show depreciation on line 13 and rent or lease payments on line 20a"
++  - id: scveh.is_actual_leased_test1
++    printed: (helper)
++    label: "Leased and on actual expenses: condition 1"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - scveh.method
++      - const: actual
++    cite:
++      doc: i1040sc
++      locator: p. 7, Line 9
++  - id: scveh.is_actual_leased_test2
++    printed: (helper)
++    label: "Leased and on actual expenses: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - scveh.owned
++      - const: false
++    cite:
++      doc: i1040sc
++      locator: p. 7, Line 9
+   collection:
+     parent: sc
+     cite:
+diff --git a/forms/2025/ssb.yaml b/forms/2025/ssb.yaml
+index c5ddc09..aabf56c 100644
+--- a/forms/2025/ssb.yaml
++++ b/forms/2025/ssb.yaml
+@@ -575,16 +575,20 @@ form:
+     label: Married filing separately and lived with your spouse at any time in 2025
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f1040.status
+-        - const: mfs
+-      - op: test
+-        eq:
+-        - ssb.lived_apart
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - ssb.mfs_together_test1
++          - const: true
++        then: ssb.mfs_together_test2
++      - guard:
++          op: test
++          eq:
++          - ssb.mfs_together_test1
++          - const: false
++        then: ssb.no
+     cite:
+       doc: i1040gi
+       locator: p. 32, line 8, third bullet
+@@ -683,3 +687,37 @@ form:
+     cite:
+       doc: i1040gi
+       locator: p. 32, Social Security Benefits Worksheet, line 18 (with no benefits, none are taxable)
++  - id: ssb.no
++    printed: (helper)
++    label: Year parameter household.no (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i1040gi
++      locator: p. 32, line 8, third bullet
++  - id: ssb.mfs_together_test1
++    printed: (helper)
++    label: "Married filing separately and lived with your spouse at any time in 2025: condition 1"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f1040.status
++      - const: mfs
++    cite:
++      doc: i1040gi
++      locator: p. 32, line 8, third bullet
++  - id: ssb.mfs_together_test2
++    printed: (helper)
++    label: "Married filing separately and lived with your spouse at any time in 2025: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - ssb.lived_apart
++      - const: false
++    cite:
++      doc: i1040gi
++      locator: p. 32, line 8, third bullet

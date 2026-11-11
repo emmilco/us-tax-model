@@ -1,0 +1,134 @@
+diff --git a/forms/2025/f1040.yaml b/forms/2025/f1040.yaml
+index 41eb71b..47d5dad 100644
+--- a/forms/2025/f1040.yaml
++++ b/forms/2025/f1040.yaml
+@@ -281,16 +281,20 @@ form:
+       label: If you are married filing separately and lived apart from your spouse the entire year, check here
+       type: Bool
+       expr:
+-        op: test
+-        all:
+-        - op: test
+-          eq:
+-          - f1040.status
+-          - const: mfs
+-        - op: test
+-          eq:
+-          - ssb.lived_apart
+-          - const: true
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - f1040.line6d_test1
++            - const: true
++          then: ssb.lived_apart
++        - guard:
++            op: test
++            eq:
++            - f1040.line6d_test1
++            - const: false
++          then: f1040.no
+       cite:
+         doc: i1040gi
+         locator: p. 31, Line 6d
+@@ -974,3 +978,25 @@ form:
+       cite:
+         doc: i1040gi
+         locator: 'p. 25, Line 3a, "Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b"'
++    - id: f1040.no
++      printed: (helper)
++      label: Year parameter household.no (false)
++      type: Bool
++      expr:
++        op: param
++        ref: household.no
++      cite:
++        doc: i1040gi
++        locator: p. 31, Line 6d
++    - id: f1040.line6d_test1
++      printed: (helper)
++      label: "If you are married filing separately and lived apart from your spouse the entire year, check here: condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - f1040.status
++        - const: mfs
++      cite:
++        doc: i1040gi
++        locator: p. 31, Line 6d
+diff --git a/forms/2025/ssb.yaml b/forms/2025/ssb.yaml
+index c5ddc09..aabf56c 100644
+--- a/forms/2025/ssb.yaml
++++ b/forms/2025/ssb.yaml
+@@ -575,16 +575,20 @@ form:
+     label: Married filing separately and lived with your spouse at any time in 2025
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f1040.status
+-        - const: mfs
+-      - op: test
+-        eq:
+-        - ssb.lived_apart
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - ssb.mfs_together_test1
++          - const: true
++        then: ssb.mfs_together_test2
++      - guard:
++          op: test
++          eq:
++          - ssb.mfs_together_test1
++          - const: false
++        then: ssb.no
+     cite:
+       doc: i1040gi
+       locator: p. 32, line 8, third bullet
+@@ -683,3 +687,37 @@ form:
+     cite:
+       doc: i1040gi
+       locator: p. 32, Social Security Benefits Worksheet, line 18 (with no benefits, none are taxable)
++  - id: ssb.no
++    printed: (helper)
++    label: Year parameter household.no (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i1040gi
++      locator: p. 32, line 8, third bullet
++  - id: ssb.mfs_together_test1
++    printed: (helper)
++    label: "Married filing separately and lived with your spouse at any time in 2025: condition 1"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f1040.status
++      - const: mfs
++    cite:
++      doc: i1040gi
++      locator: p. 32, line 8, third bullet
++  - id: ssb.mfs_together_test2
++    printed: (helper)
++    label: "Married filing separately and lived with your spouse at any time in 2025: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - ssb.lived_apart
++      - const: false
++    cite:
++      doc: i1040gi
++      locator: p. 32, line 8, third bullet

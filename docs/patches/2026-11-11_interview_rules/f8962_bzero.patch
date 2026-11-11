@@ -1,0 +1,294 @@
+diff --git a/forms/2025/f8962.yaml b/forms/2025/f8962.yaml
+index 955b90b..db1e54b 100644
+--- a/forms/2025/f8962.yaml
++++ b/forms/2025/f8962.yaml
+@@ -274,134 +274,20 @@ form:
+       taxpayer'
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f8962.show_applicable
+-        - const: true
+-      - op: test
+-        any:
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line12a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line12b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line13a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line13b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line14a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line14b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line15a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line15b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line16a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line16b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line17a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line17b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line18a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line18b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line19a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line19b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line20a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line20b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line21a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line21b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line22a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line22b
+-            - const: 0
+-        - op: test
+-          all:
+-          - op: test
+-            gt:
+-            - f8962.line23a
+-            - const: 0
+-          - op: test
+-            eq:
+-            - f8962.line23b
+-            - const: 0
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f8962.show_applicable
++          - const: true
++        then: f8962.b_zero_test2
++      - guard:
++          op: test
++          eq:
++          - f8962.show_applicable
++          - const: false
++        then: f8962.no
+     cite:
+       doc: p974
+       locator: p. 6, "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled
+@@ -2856,3 +2742,140 @@ form:
+       doc: f8962
+       locator: p. 1, Part III, line 29, "Excess advance PTC repayment. Enter the smaller of line 27 or line 28 here and on
+         Schedule 2 (Form 1040), line 1a"
++  - id: f8962.b_zero_test2
++    printed: (helper)
++    label: "A month of lines 12 to 23 with enrollment premiums in column (a) and zero in column (b), for an applicable taxpayer: condition 2"
++    type: Bool
++    expr:
++      op: test
++      any:
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line12a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line12b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line13a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line13b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line14a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line14b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line15a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line15b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line16a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line16b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line17a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line17b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line18a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line18b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line19a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line19b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line20a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line20b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line21a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line21b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line22a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line22b
++          - const: 0
++      - op: test
++        all:
++        - op: test
++          gt:
++          - f8962.line23a
++          - const: 0
++        - op: test
++          eq:
++          - f8962.line23b
++          - const: 0
++    cite:
++      doc: p974
++      locator: p. 6, "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled
++        in a qualified health plan on the first day of that month.", "The applicable SLCSP premium is the second lowest cost
++        silver plan premium offered through the Marketplace where you reside that applies to your coverage family",
++        "may report your applicable SLCSP premium as -0-", "In either case, you must determine your correct applicable SLCSP
++        premium."; i8962 p. 16, Column (b), "Enter on lines 12 through 23, column (b), the amount of the monthly applicable
++        SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month"; i8962 p. 17, "credit
++        amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962,
++        column (b)"

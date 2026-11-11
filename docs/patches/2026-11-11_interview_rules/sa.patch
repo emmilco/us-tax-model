@@ -1,0 +1,81 @@
+diff --git a/forms/2025/sa.yaml b/forms/2025/sa.yaml
+index fc418b5..d1b9a9c 100644
+--- a/forms/2025/sa.yaml
++++ b/forms/2025/sa.yaml
+@@ -1189,20 +1189,20 @@ form:
+       type: Bool
+       label: Itemize if elected, required, or itemized total exceeds standard
+       expr:
+-        op: test
+-        any:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - sa.elect_itemize
+-              - const: true
+-          - op: test
++            - sa.elect_itemize
++            - const: true
++          then: sa.elect_itemize
++        - guard:
++            op: test
+             eq:
+-              - sa.mfs_spouse_itemizes
+-              - const: true
+-          - op: test
+-            gt:
+-              - sa.line17
+-              - sa.standard
++            - sa.elect_itemize
++            - const: false
++          then: sa.itemizes_from2
+       cite:
+         doc: f1040sa
+         locator: p. 1, Total Itemized Deductions, line 18, "If you elect to itemize deductions even though they are
+@@ -1261,3 +1261,43 @@ form:
+       cite:
+         doc: i1040gi
+         locator: p. 34, Line 12e, Exception 2
++    - id: sa.itemizes_test3
++      printed: (helper)
++      label: "Itemize if elected, required, or itemized total exceeds standard: condition 3"
++      type: Bool
++      expr:
++        op: test
++        gt:
++        - sa.line17
++        - sa.standard
++      cite:
++        doc: f1040sa
++        locator: p. 1, Total Itemized Deductions, line 18, "If you elect to itemize deductions even though they are
++          less than your standard deduction, check this box"; i1040gi p. 34, Line 12e Standard Deduction or Itemized
++          Deductions, "In most cases, your federal income tax will be less if you take the larger of your standard
++          deduction or itemized deductions", "If you checked the box on line 12b, your standard deduction is zero"
++    - id: sa.itemizes_from2
++      printed: (helper)
++      label: "Itemize if elected, required, or itemized total exceeds standard: conditions 2 to 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - sa.mfs_spouse_itemizes
++            - const: true
++          then: sa.mfs_spouse_itemizes
++        - guard:
++            op: test
++            eq:
++            - sa.mfs_spouse_itemizes
++            - const: false
++          then: sa.itemizes_test3
++      cite:
++        doc: f1040sa
++        locator: p. 1, Total Itemized Deductions, line 18, "If you elect to itemize deductions even though they are
++          less than your standard deduction, check this box"; i1040gi p. 34, Line 12e Standard Deduction or Itemized
++          Deductions, "In most cases, your federal income tax will be less if you take the larger of your standard
++          deduction or itemized deductions", "If you checked the box on line 12b, your standard deduction is zero"

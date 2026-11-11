@@ -1,0 +1,32 @@
+diff --git a/engine/src/interview-rules.ts b/engine/src/interview-rules.ts
+index 7c047b1..0514f31 100644
+--- a/engine/src/interview-rules.ts
++++ b/engine/src/interview-rules.ts
+@@ -63,6 +63,18 @@ const RANDOM_EVERY = Number(process.env["INTERVIEW_RULES_RANDOM_EVERY"] ?? 3);
+ /** Random traversals per chosen walk, each with its own seed. */
+ const RANDOM_SEEDS = Number(process.env["INTERVIEW_RULES_SEEDS"] ?? 5);
+ export const SEED = 11;
++/** Scratch widening: with INTERVIEW_RULES_COMPLETE=K, the federal generated returns are the first K of a pool of
++ * INTERVIEW_RULES_POOL (same seed) whose stated answers evaluate to a complete return. */
++const COMPLETE = Number(process.env["INTERVIEW_RULES_COMPLETE"] ?? 0);
++const POOL = Number(process.env["INTERVIEW_RULES_POOL"] ?? 2000);
++function completeReturns(data: CanonicalData, config: InterviewData, k: number): Case[] {
++  const out: Case[] = [];
++  for (const [i, inputs] of sampleReturns(data, POOL, SEED).entries()) {
++    if (out.length >= k) break;
++    if (interviewStatus(data, config, inputs).status === "complete") out.push({ id: `generated.${i}`, inputs });
++  }
++  return out;
++}
+ const BASELINE = resolve(import.meta.dirname, "../..", "tools", "interview_rules_baseline.json");
+ const PRUNING = resolve(import.meta.dirname, "../..", "reports", String(YEAR), "interview_pruning.md");
+ /** The held lists, each keyed by input template with a reason. */
+@@ -434,7 +446,7 @@ export async function interviewRules(args: string[] = []): Promise<number> {
+   const groups: { name: string; profile: "full" | "ny"; cases: Case[]; generated: boolean }[] = await timed("generate returns", () => [
+     { name: "full: Stage 5 fixtures", profile: "full", cases: fixtureCases("full", data), generated: false },
+     { name: "ny: New York fixtures", profile: "ny", cases: fixtureCases("ny", data), generated: false },
+-    { name: "full: generated returns", profile: "full", cases: sampleReturns(data, GENERATED, SEED).map((inputs, i) => ({ id: `generated.${i}`, inputs })), generated: true },
++    { name: "full: generated returns", profile: "full", cases: COMPLETE ? completeReturns(data, configs.full, COMPLETE) : sampleReturns(data, GENERATED, SEED).map((inputs, i) => ({ id: `generated.${i}`, inputs })), generated: true },
+     { name: "ny: generated returns", profile: "ny", cases: fc.sample(nyReturnArbitrary(data), { seed: SEED, numRuns: GENERATED }).map((inputs, i) => ({ id: `ny.generated.${i}`, inputs })), generated: true },
+   ]);
+ 

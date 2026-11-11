@@ -1,0 +1,108 @@
+diff --git a/forms/2025/person.yaml b/forms/2025/person.yaml
+index 4bcffb1..7828644 100644
+--- a/forms/2025/person.yaml
++++ b/forms/2025/person.yaml
+@@ -2192,26 +2192,20 @@ form:
+         is asked only if someone can claim you or your spouse as a dependent)
+       type: Bool
+       expr:
+-        op: test
+-        any:
+-        - op: test
+-          eq:
+-          - person.sav_born
+-          - const: false
+-        - op: test
+-          eq:
+-          - person.sav_student
+-          - const: true
+-        - op: test
+-          all:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-            - sa.dependent
+-            - const: true
+-          - op: test
++            - person.sav_born
++            - const: false
++          then: person.sav_ineligible_test1
++        - guard:
++            op: test
+             eq:
+-            - person.sav_claimed
++            - person.sav_born
+             - const: true
++          then: person.sav_ineligible_from2
+       cite:
+         doc: f8880
+         locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+@@ -4697,6 +4691,65 @@ form:
+           apply to you."
+       ambiguity: amb.2025.edu_age_rule
+     # --- end Stage 19 ---
++    - id: person.sav_ineligible_test3
++      printed: (helper)
++      label: "Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student (the dependent question is asked only if someone can claim you or your spouse as a dependent): condition 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - sa.dependent
++            - const: true
++          then: person.sav_claimed
++        - guard:
++            op: test
++            eq:
++            - sa.dependent
++            - const: false
++          then: person.no
++      cite:
++        doc: f8880
++        locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
++          born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
++    - id: person.sav_ineligible_from2
++      printed: (helper)
++      label: "Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student (the dependent question is asked only if someone can claim you or your spouse as a dependent): conditions 2 to 3"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - person.sav_student
++            - const: true
++          then: person.sav_student
++        - guard:
++            op: test
++            eq:
++            - person.sav_student
++            - const: false
++          then: person.sav_ineligible_test3
++      cite:
++        doc: f8880
++        locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
++          born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
++    - id: person.sav_ineligible_test1
++      printed: (helper)
++      label: "Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student (the dependent question is asked only if someone can claim you or your spouse as a dependent): condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - person.sav_born
++        - const: false
++      cite:
++        doc: f8880
++        locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
++          born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
+   # --- Stage 21: Form 5329 (generated) ---
+     - id: person.x_l1
+       printed: (helper)

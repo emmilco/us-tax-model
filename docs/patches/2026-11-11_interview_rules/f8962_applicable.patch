@@ -1,0 +1,157 @@
+diff --git a/forms/2025/f8962.yaml b/forms/2025/f8962.yaml
+index 955b90b..3fb5583 100644
+--- a/forms/2025/f8962.yaml
++++ b/forms/2025/f8962.yaml
+@@ -668,23 +668,20 @@ form:
+     label: You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)
+     type: Bool
+     expr:
+-      op: test
+-      any:
+-      - op: test
+-        ge:
+-        - f8962.line5
+-        - const: 100
+-          type: Count
+-      - op: test
+-        all:
+-        - op: test
++      op: choose
++      alternatives:
++      - guard:
++          op: test
+           eq:
+-          - f8962.aptc
++          - f8962.applicable_test1
+           - const: true
+-        - op: test
++        then: f8962.applicable_test1
++      - guard:
++          op: test
+           eq:
+-          - f8962.estimate_100
+-          - const: true
++          - f8962.applicable_test1
++          - const: false
++        then: f8962.applicable_test2
+     cite:
+       doc: i8962
+       locator: p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p.
+@@ -751,21 +748,20 @@ form:
+     label: A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f8962.any
+-        - const: true
+-      - op: test
+-        lt:
+-        - f8962.line5
+-        - const: 100
+-          type: Count
+-      - op: test
+-        eq:
+-        - f8962.alien_below
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f8962.any
++          - const: true
++        then: f8962.alien_branch_from2
++      - guard:
++          op: test
++          eq:
++          - f8962.any
++          - const: false
++        then: f8962.no
+     cite:
+       doc: i8962
+       locator: p. 9, Line 5, "If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under
+@@ -2856,3 +2852,81 @@ form:
+       doc: f8962
+       locator: p. 1, Part III, line 29, "Excess advance PTC repayment. Enter the smaller of line 27 or line 28 here and on
+         Schedule 2 (Form 1040), line 1a"
++  - id: f8962.applicable_test1
++    printed: (helper)
++    label: "You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception): condition 1"
++    type: Bool
++    expr:
++      op: test
++      ge:
++      - f8962.line5
++      - const: 100
++        type: Count
++    cite:
++      doc: i8962
++      locator: p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p.
++        9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal
++        poverty line for your family size for 2025."
++  - id: f8962.applicable_test2
++    printed: (helper)
++    label: "You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception): condition 2"
++    type: Bool
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f8962.aptc
++          - const: true
++        then: f8962.estimate_100
++      - guard:
++          op: test
++          eq:
++          - f8962.aptc
++          - const: false
++        then: f8962.no
++    cite:
++      doc: i8962
++      locator: p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p.
++        9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal
++        poverty line for your family size for 2025."
++  - id: f8962.alien_branch_test2
++    printed: (helper)
++    label: "A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception: condition 2"
++    type: Bool
++    expr:
++      op: test
++      lt:
++      - f8962.line5
++      - const: 100
++        type: Count
++    cite:
++      doc: i8962
++      locator: p. 9, Line 5, "If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under
++        Estimated household income at least 100% of the federal poverty line next or Alien lawfully present in the United
++        States, later."
++  - id: f8962.alien_branch_from2
++    printed: (helper)
++    label: "A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception: conditions 2 to 3"
++    type: Bool
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f8962.alien_branch_test2
++          - const: true
++        then: f8962.alien_below
++      - guard:
++          op: test
++          eq:
++          - f8962.alien_branch_test2
++          - const: false
++        then: f8962.no
++    cite:
++      doc: i8962
++      locator: p. 9, Line 5, "If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under
++        Estimated household income at least 100% of the federal poverty line next or Alien lawfully present in the United
++        States, later."

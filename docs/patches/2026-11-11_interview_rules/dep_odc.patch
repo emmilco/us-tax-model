@@ -1,0 +1,118 @@
+diff --git a/forms/2025/dependent.yaml b/forms/2025/dependent.yaml
+index 3a68c22..4b38d8e 100644
+--- a/forms/2025/dependent.yaml
++++ b/forms/2025/dependent.yaml
+@@ -1499,28 +1499,20 @@ form:
+       type: Bool
+       label: Dependent for the credit for other dependents (Steps 3 and 5)
+       expr:
+-        op: test
+-        all:
+-          - op: test
+-            eq:
+-              - dependent.claimed
+-              - const: true
+-          - op: test
+-            eq:
+-              - dependent.tin
+-              - const: true
+-          - op: test
+-            eq:
+-              - dependent.citizen
+-              - const: true
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - dependent.ctc_child
+-              - const: false
+-          - op: test
++            - dependent.claimed
++            - const: true
++          then: dependent.odc_person_from2
++        - guard:
++            op: test
+             eq:
+-              - household.all_tin
+-              - const: true
++            - dependent.claimed
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i1040gi
+         locator: p. 18, Step 3, question 3, and p. 19, Step 5
+@@ -3196,6 +3188,72 @@ form:
+         doc: i1040gi
+         locator: pp. 17–19, Who Qualifies as Your Dependent
+     # --- end Stage 19 ---
++    - id: dependent.odc_person_from4
++      printed: (helper)
++      label: "Dependent for the credit for other dependents (Steps 3 and 5): conditions 4 to 5"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.ctc_child
++            - const: false
++          then: household.all_tin
++        - guard:
++            op: test
++            eq:
++            - dependent.ctc_child
++            - const: true
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 18, Step 3, question 3, and p. 19, Step 5
++    - id: dependent.odc_person_from3
++      printed: (helper)
++      label: "Dependent for the credit for other dependents (Steps 3 and 5): conditions 3 to 5"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.citizen
++            - const: true
++          then: dependent.odc_person_from4
++        - guard:
++            op: test
++            eq:
++            - dependent.citizen
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 18, Step 3, question 3, and p. 19, Step 5
++    - id: dependent.odc_person_from2
++      printed: (helper)
++      label: "Dependent for the credit for other dependents (Steps 3 and 5): conditions 2 to 5"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.tin
++            - const: true
++          then: dependent.odc_person_from3
++        - guard:
++            op: test
++            eq:
++            - dependent.tin
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 18, Step 3, question 3, and p. 19, Step 5
+   collection:
+     cite:
+       doc: f1040

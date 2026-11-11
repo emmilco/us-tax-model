@@ -1,0 +1,92 @@
+diff --git a/forms/2025/dependent.yaml b/forms/2025/dependent.yaml
+index 3a68c22..2da813b 100644
+--- a/forms/2025/dependent.yaml
++++ b/forms/2025/dependent.yaml
+@@ -1239,24 +1239,20 @@ form:
+       type: Bool
+       label: Qualifying relative (Step 4)
+       expr:
+-        op: test
+-        all:
+-          - op: test
+-            eq:
+-              - dependent.qr_relationship
+-              - const: true
+-          - op: test
+-            eq:
+-              - dependent.qualifying_child
+-              - const: false
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - dependent.qr_income
+-              - const: true
+-          - op: test
++            - dependent.qr_relationship
++            - const: true
++          then: dependent.qualifying_relative_from2
++        - guard:
++            op: test
+             eq:
+-              - dependent.supported
+-              - const: true
++            - dependent.qr_relationship
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i1040gi
+         locator: p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?"
+@@ -3196,6 +3192,50 @@ form:
+         doc: i1040gi
+         locator: pp. 17–19, Who Qualifies as Your Dependent
+     # --- end Stage 19 ---
++    - id: dependent.qualifying_relative_from3
++      printed: (helper)
++      label: "Qualifying relative (Step 4): conditions 3 to 4"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_income
++            - const: true
++          then: dependent.supported
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_income
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?"
++    - id: dependent.qualifying_relative_from2
++      printed: (helper)
++      label: "Qualifying relative (Step 4): conditions 2 to 4"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.qualifying_child
++            - const: false
++          then: dependent.qualifying_relative_from3
++        - guard:
++            op: test
++            eq:
++            - dependent.qualifying_child
++            - const: true
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?"
+   collection:
+     cite:
+       doc: f1040

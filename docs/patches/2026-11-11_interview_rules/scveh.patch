@@ -1,0 +1,119 @@
+diff --git a/forms/2025/scveh.yaml b/forms/2025/scveh.yaml
+index ba01d73..e465991 100644
+--- a/forms/2025/scveh.yaml
++++ b/forms/2025/scveh.yaml
+@@ -376,16 +376,20 @@ form:
+     label: Owned and on actual expenses
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - scveh.method
+-        - const: actual
+-      - op: test
+-        eq:
+-        - scveh.owned
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - scveh.is_actual_owned_test1
++          - const: true
++        then: scveh.owned
++      - guard:
++          op: test
++          eq:
++          - scveh.is_actual_owned_test1
++          - const: false
++        then: scveh.no
+     cite:
+       doc: i1040sc
+       locator: p. 7, Line 9, "Show depreciation on line 13 and rent or lease payments on line 20a"
+@@ -413,16 +417,20 @@ form:
+     label: Leased and on actual expenses
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - scveh.method
+-        - const: actual
+-      - op: test
+-        eq:
+-        - scveh.owned
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - scveh.is_actual_leased_test1
++          - const: true
++        then: scveh.is_actual_leased_test2
++      - guard:
++          op: test
++          eq:
++          - scveh.is_actual_leased_test1
++          - const: false
++        then: scveh.no
+     cite:
+       doc: i1040sc
+       locator: p. 7, Line 9
+@@ -2296,6 +2304,52 @@ form:
+     cite:
+       doc: p946
+       locator: p. 34, Which Convention Applies?, Mid-quarter convention, Caution
++  - id: scveh.no
++    printed: (helper)
++    label: Year parameter household.no (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i1040sc
++      locator: p. 7, Line 9, "Show depreciation on line 13 and rent or lease payments on line 20a"
++  - id: scveh.is_actual_owned_test1
++    printed: (helper)
++    label: "Owned and on actual expenses: condition 1"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - scveh.method
++      - const: actual
++    cite:
++      doc: i1040sc
++      locator: p. 7, Line 9, "Show depreciation on line 13 and rent or lease payments on line 20a"
++  - id: scveh.is_actual_leased_test1
++    printed: (helper)
++    label: "Leased and on actual expenses: condition 1"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - scveh.method
++      - const: actual
++    cite:
++      doc: i1040sc
++      locator: p. 7, Line 9
++  - id: scveh.is_actual_leased_test2
++    printed: (helper)
++    label: "Leased and on actual expenses: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - scveh.owned
++      - const: false
++    cite:
++      doc: i1040sc
++      locator: p. 7, Line 9
+   collection:
+     parent: sc
+     cite:

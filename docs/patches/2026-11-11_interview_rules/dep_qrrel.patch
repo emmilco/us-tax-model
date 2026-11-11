@@ -1,0 +1,186 @@
+diff --git a/forms/2025/dependent.yaml b/forms/2025/dependent.yaml
+index 3a68c22..9af8c15 100644
+--- a/forms/2025/dependent.yaml
++++ b/forms/2025/dependent.yaml
+@@ -1014,22 +1014,20 @@ form:
+       label: 'A household member: lived with you all year, or a relative of your spouse on a joint return'
+       type: Bool
+       expr:
+-        op: test
+-        any:
+-        - op: test
+-          all:
+-          - op: test
+-            eq:
+-            - f1040.status
+-            - const: mfj
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-            - dependent.spouse_relative
++            - dependent.qr_household_member_test1
+             - const: true
+-        - op: test
+-          eq:
+-          - dependent.qr_all_year
+-          - const: true
++          then: dependent.qr_household_member_test1
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_household_member_test1
++            - const: false
++          then: dependent.qr_all_year
+       cite:
+         doc: i1040gi
+         locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
+@@ -1041,28 +1039,20 @@ form:
+         law, or a relative of your spouse on a joint return'
+       type: Bool
+       expr:
+-        op: test
+-        any:
+-        - op: test
+-          all:
+-          - op: test
+-            eq:
+-            - f1040.status
+-            - const: mfj
+-          - op: test
+-            eq:
+-            - dependent.spouse_relative
+-            - const: true
+-        - op: test
+-          all:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-            - dependent.qr_all_year
++            - dependent.qr_other_relation_test1
+             - const: true
+-          - op: test
++          then: dependent.qr_other_relation_test1
++        - guard:
++            op: test
+             eq:
+-            - dependent.lawful
+-            - const: true
++            - dependent.qr_other_relation_test1
++            - const: false
++          then: dependent.qr_other_relation_test2
+       cite:
+         doc: i1040gi
+         locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
+@@ -3196,6 +3186,106 @@ form:
+         doc: i1040gi
+         locator: pp. 17–19, Who Qualifies as Your Dependent
+     # --- end Stage 19 ---
++    - id: dependent.qr_other_relation_test1
++      printed: (helper)
++      label: "A descendant of a sibling or another person: lived with you all year and the relationship did not violate local law, or a relative of your spouse on a joint return: condition 1"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_other_relation_test1_test1
++            - const: true
++          then: dependent.spouse_relative
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_other_relation_test1_test1
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
++          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
++          can be related to either you or your spouse."
++    - id: dependent.qr_other_relation_test2
++      printed: (helper)
++      label: "A descendant of a sibling or another person: lived with you all year and the relationship did not violate local law, or a relative of your spouse on a joint return: condition 2"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_all_year
++            - const: true
++          then: dependent.lawful
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_all_year
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
++          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
++          can be related to either you or your spouse."
++    - id: dependent.qr_household_member_test1
++      printed: (helper)
++      label: "A household member: lived with you all year, or a relative of your spouse on a joint return: condition 1"
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_household_member_test1_test1
++            - const: true
++          then: dependent.spouse_relative
++        - guard:
++            op: test
++            eq:
++            - dependent.qr_household_member_test1_test1
++            - const: false
++          then: dependent.no
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
++          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
++          can be related to either you or your spouse."
++    - id: dependent.qr_other_relation_test1_test1
++      printed: (helper)
++      label: "A descendant of a sibling or another person: lived with you all year and the relationship did not violate local law, or a relative of your spouse on a joint return: condition 1: condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - f1040.status
++        - const: mfj
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
++          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
++          can be related to either you or your spouse."
++    - id: dependent.qr_household_member_test1_test1
++      printed: (helper)
++      label: "A household member: lived with you all year, or a relative of your spouse on a joint return: condition 1: condition 1"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - f1040.status
++        - const: mfj
++      cite:
++        doc: i1040gi
++        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
++          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
++          can be related to either you or your spouse."
+   collection:
+     cite:
+       doc: f1040

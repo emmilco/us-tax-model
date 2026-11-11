@@ -1,0 +1,52 @@
+diff --git a/forms/2025/dependent.yaml b/forms/2025/dependent.yaml
+index 3a68c22..987f9e1 100644
+--- a/forms/2025/dependent.yaml
++++ b/forms/2025/dependent.yaml
+@@ -1707,16 +1707,20 @@ form:
+       type: Bool
+       label: A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting only absences head of household counts (the home-cost condition of Test 2 is tested on the household form)
+       expr:
+-        op: test
+-        all:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - dependent.hoh_test2_lived
+-              - const: true
+-          - op: test
++            - dependent.hoh_test2_lived
++            - const: true
++          then: dependent.hoh_test2_test2
++        - guard:
++            op: test
+             eq:
+-              - dependent.absence_no_return
+-              - const: false
++            - dependent.hoh_test2_lived
++            - const: false
++          then: dependent.no
+       cite:
+         doc: i1040gi
+         locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year); p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+@@ -3196,6 +3200,18 @@ form:
+         doc: i1040gi
+         locator: pp. 17–19, Who Qualifies as Your Dependent
+     # --- end Stage 19 ---
++    - id: dependent.hoh_test2_test2
++      printed: (helper)
++      label: "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting only absences head of household counts (the home-cost condition of Test 2 is tested on the household form): condition 2"
++      type: Bool
++      expr:
++        op: test
++        eq:
++        - dependent.absence_no_return
++        - const: false
++      cite:
++        doc: i1040gi
++        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year); p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+   collection:
+     cite:
+       doc: f1040

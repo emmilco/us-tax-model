@@ -1,0 +1,138 @@
+diff --git a/forms/2025/f8889.yaml b/forms/2025/f8889.yaml
+index 58c2716..08d9266 100644
+--- a/forms/2025/f8889.yaml
++++ b/forms/2025/f8889.yaml
+@@ -315,16 +315,20 @@ form:
+     label: 'Married at the end of 2025 and treated as having family coverage at any time during 2025'
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - household.married
+-        - const: true
+-      - op: test
+-        eq:
+-        - f8889.family_any_time
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - household.married
++          - const: true
++        then: f8889.family_any_time
++      - guard:
++          op: test
++          eq:
++          - household.married
++          - const: false
++        then: f8889.no
+     cite:
+       doc: i8889
+       locator: 'p. 5, Line 3, "Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+@@ -1321,16 +1325,20 @@ form:
+     label: 'Spouses with separate HSAs, treated as having family coverage at any time during 2025'
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        eq:
+-        - f8889.married_family
+-        - const: true
+-      - op: test
+-        eq:
+-        - household.hsa_both
+-        - const: true
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f8889.married_family
++          - const: true
++        then: household.hsa_both
++      - guard:
++          op: test
++          eq:
++          - f8889.married_family
++          - const: false
++        then: f8889.no
+     cite:
+       doc: i8889
+       locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025'
+@@ -1527,16 +1535,20 @@ form:
+     label: Employer contributions above the limit that are not included in Form W-2 box 1
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        gt:
+-        - f8889.line11
+-        - f8889.line8
+-      - op: test
+-        eq:
+-        - f8889.employer_in_box1
+-        - const: false
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - f8889.excess_test1
++          - const: true
++        then: f8889.excess_test2
++      - guard:
++          op: test
++          eq:
++          - f8889.excess_test1
++          - const: false
++        then: f8889.no
+     cite:
+       doc: i8889
+       locator: 'p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer''s contributions over your limitation on line 8."'
+@@ -1957,6 +1969,40 @@ form:
+     cite:
+       doc: f8889
+       locator: Form 8889 (2025), line 17b
++  - id: f8889.no
++    printed: (helper)
++    label: Year parameter household.no (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i8889
++      locator: 'p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer''s contributions over your limitation on line 8."'
++  - id: f8889.excess_test1
++    printed: (helper)
++    label: "Employer contributions above the limit that are not included in Form W-2 box 1: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - f8889.line11
++      - f8889.line8
++    cite:
++      doc: i8889
++      locator: 'p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer''s contributions over your limitation on line 8."'
++  - id: f8889.excess_test2
++    printed: (helper)
++    label: "Employer contributions above the limit that are not included in Form W-2 box 1: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - f8889.employer_in_box1
++      - const: false
++    cite:
++      doc: i8889
++      locator: 'p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer''s contributions over your limitation on line 8."'
+   collection:
+     parent: person
+     cite:

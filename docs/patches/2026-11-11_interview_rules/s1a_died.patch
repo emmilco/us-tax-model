@@ -1,0 +1,97 @@
+diff --git a/forms/2025/person.yaml b/forms/2025/person.yaml
+index 4bcffb1..1546198 100644
+--- a/forms/2025/person.yaml
++++ b/forms/2025/person.yaml
+@@ -5284,6 +5284,50 @@ form:
+       cite:
+         doc: i1040gi
+         locator: 'p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN"'
++    - id: person.own_died_before_65
++      printed: (helper)
++      label: Your entry, if you were born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - person.role
++            - const: taxpayer
++          then: person.died_before_65
++        - guard:
++            op: test
++            eq:
++            - person.role
++            - const: spouse
++          then: person.no
++      cite:
++        doc: i1040gi
++        locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
++    - id: person.spouse_died_before_65
++      printed: (helper)
++      label: Your spouse's entry, if your spouse was born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - person.role
++            - const: taxpayer
++          then: person.no
++        - guard:
++            op: test
++            eq:
++            - person.role
++            - const: spouse
++          then: person.died_before_65
++      cite:
++        doc: i1040gi
++        locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
+   # --- end Stage 21 ---
+   collection:
+     cite:
+diff --git a/forms/2025/s1a.yaml b/forms/2025/s1a.yaml
+index e125e75..bc6cd03 100644
+--- a/forms/2025/s1a.yaml
++++ b/forms/2025/s1a.yaml
+@@ -2230,15 +2230,9 @@ form:
+       field: person.one
+       where:
+         op: test
+-        all:
+-        - op: test
+-          eq:
+-          - person.role
+-          - const: taxpayer
+-        - op: test
+-          eq:
+-          - person.died_before_65
+-          - const: true
++        eq:
++        - person.own_died_before_65
++        - const: true
+     cite:
+       doc: i1040gi
+       locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
+@@ -2399,15 +2393,9 @@ form:
+       field: person.one
+       where:
+         op: test
+-        all:
+-        - op: test
+-          eq:
+-          - person.role
+-          - const: spouse
+-        - op: test
+-          eq:
+-          - person.died_before_65
+-          - const: true
++        eq:
++        - person.spouse_died_before_65
++        - const: true
+     cite:
+       doc: i1040gi
+       locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"

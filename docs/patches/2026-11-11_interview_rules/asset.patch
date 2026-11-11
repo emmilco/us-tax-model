@@ -1,0 +1,152 @@
+diff --git a/forms/2025/asset.yaml b/forms/2025/asset.yaml
+index 6f87d8d..afe2dca 100644
+--- a/forms/2025/asset.yaml
++++ b/forms/2025/asset.yaml
+@@ -592,26 +592,20 @@ form:
+       or it is not section 179 property
+     type: Bool
+     expr:
+-      op: test
+-      all:
+-      - op: test
+-        gt:
+-        - asset.s179
+-        - asset.zero
+-      - op: test
+-        any:
+-        - op: test
+-          gt:
+-          - asset.s179
+-          - asset.basis
+-        - op: test
+-          eq:
+-          - asset.over_half
+-          - const: false
+-        - op: test
++      op: choose
++      alternatives:
++      - guard:
++          op: test
+           eq:
+-          - asset.not179
++          - asset.s179_bad_test1
+           - const: true
++        then: asset.s179_bad_test2
++      - guard:
++          op: test
++          eq:
++          - asset.s179_bad_test1
++          - const: false
++        then: asset.no
+     cite:
+       doc: i4562
+       locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
+@@ -1320,6 +1314,108 @@ form:
+       doc: i4562
+       locator: p. 15, Column (h)—Depreciation deduction, "For property used more than 50% in a qualified business use (line
+         26) ... figure column (h) by following the instructions for line 19, column (g)"
++  - id: asset.no
++    printed: (helper)
++    label: Year parameter household.no (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i4562
++      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
++        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
++        and "you cannot elect the section 179 deduction for the following property"
++  - id: asset.s179_bad_test1
++    printed: (helper)
++    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - asset.s179
++      - asset.zero
++    cite:
++      doc: i4562
++      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
++        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
++        and "you cannot elect the section 179 deduction for the following property"
++  - id: asset.s179_bad_test2
++    printed: (helper)
++    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 2"
++    type: Bool
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - asset.s179_bad_test2_test1
++          - const: true
++        then: asset.s179_bad_test2_test1
++      - guard:
++          op: test
++          eq:
++          - asset.s179_bad_test2_test1
++          - const: false
++        then: asset.s179_bad_test2_from2
++    cite:
++      doc: i4562
++      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
++        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
++        and "you cannot elect the section 179 deduction for the following property"
++  - id: asset.s179_bad_test2_test1
++    printed: (helper)
++    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 2: condition 1"
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - asset.s179
++      - asset.basis
++    cite:
++      doc: i4562
++      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
++        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
++        and "you cannot elect the section 179 deduction for the following property"
++  - id: asset.s179_bad_test2_test2
++    printed: (helper)
++    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 2: condition 2"
++    type: Bool
++    expr:
++      op: test
++      eq:
++      - asset.over_half
++      - const: false
++    cite:
++      doc: i4562
++      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
++        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
++        and "you cannot elect the section 179 deduction for the following property"
++  - id: asset.s179_bad_test2_from2
++    printed: (helper)
++    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 2: conditions 2 to 3"
++    type: Bool
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - asset.over_half
++          - const: false
++        then: asset.s179_bad_test2_test2
++      - guard:
++          op: test
++          eq:
++          - asset.over_half
++          - const: true
++        then: asset.not179
++    cite:
++      doc: i4562
++      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
++        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
++        and "you cannot elect the section 179 deduction for the following property"
+   collection:
+     parent: sc
+     cite:

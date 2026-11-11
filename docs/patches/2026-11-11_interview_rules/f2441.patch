@@ -1,0 +1,33 @@
+diff --git a/forms/2025/f2441.yaml b/forms/2025/f2441.yaml
+index aca4e32..5ef7da7 100644
+--- a/forms/2025/f2441.yaml
++++ b/forms/2025/f2441.yaml
+@@ -128,16 +128,20 @@ form:
+       type: Bool
+       label: Care expenses for a qualifying person who is not your dependent
+       expr:
+-        op: test
+-        all:
+-          - op: test
++        op: choose
++        alternatives:
++        - guard:
++            op: test
+             eq:
+-              - f2441.care
+-              - const: true
+-          - op: test
++            - f2441.care
++            - const: true
++          then: f2441.nondependent
++        - guard:
++            op: test
+             eq:
+-              - f2441.nondependent
+-              - const: true
++            - f2441.care
++            - const: false
++          then: f2441.no
+       cite:
+         doc: i2441
+         locator: 'p. 1, Qualifying Person(s), "or could claim as a dependent except"'
