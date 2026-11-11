@@ -6,6 +6,7 @@ import { loadCanonical, CANON_DIR } from "./canonical.js";
 import { templateKey } from "./branches.js";
 import { evaluate, validateInputs, type Value } from "./eval.js";
 import { renderValuesSheetText, resultToJson, valuesSheet } from "./output.js";
+import { jointReturn, shownQuestion, shownSheet } from "./spouse-wording.js";
 import type { CanonicalData, CiteFilled, Inputs } from "./types.js";
 
 export interface InterviewData {
@@ -69,17 +70,20 @@ export interface Question { input: string; prompt: string; help: string; order: 
 export interface JsonDerivation { value: Value; op: string; cite: CiteFilled | null; operands: { ref: string; value: Value }[]; guardsNotTaken: { guard: string; value: Value }[]; notes: string[] }
 /** The interview's state, with the values sheet as data (`interviewState` prints it as text). `question` is the next
  * question while the return is incomplete; `pending` is every question still reachable, in asking order, which
- * continues after a refusal because a later answer may clear it. */
+ * continues after a refusal because a later answer may clear it. Each question's prompt and help, and each sheet
+ * line's label, are as shown to the filer: the spouse phrase reworded from these inputs' filing status
+ * (spouse-wording.ts). */
 export function interviewView(data: CanonicalData, config: InterviewData, inputs: Inputs) {
   const result = evaluate(data, inputs, config.targets);
   const targetValues = config.targets.map(t => result.values.get(t)!);
   const refused = targetValues.find(v => v.kind === "refusal");
   const needed = new Set<string>();
   for (const der of result.derivations.values()) if (der.value.kind === "unknown" && der.value.input) needed.add(der.value.input);
+  const joint = jointReturn(inputs);
   const pending: Question[] = [...needed].map(key => {
     const q = questionFor(config, questionTemplate(key));
     if (!q) throw new Error(`no question for reachable input ${key}`);
-    return { ...q, input: key, helpRequested: inputs[key] === null, entry: entryHint(data, key, q.choices, q.value_labels) };
+    return { ...shownQuestion(q, joint), input: key, helpRequested: inputs[key] === null, entry: entryHint(data, key, q.choices, q.value_labels) };
   }).sort((a,b) => a.order - b.order || a.input.localeCompare(b.input));
   const complete = targetValues.every(v => v.kind !== "unknown" && v.kind !== "refusal");
   return { status: refused ? "refused" : complete ? "complete" : "incomplete", refusal: refused ?? null,
@@ -89,7 +93,7 @@ export function interviewView(data: CanonicalData, config: InterviewData, inputs
     scope: config.targets.includes("ny_it201.line80") ? "New York Form IT-201 for a full-year New York City resident on the New York standard deduction, computed from the whole federal return, with cited refusals for New York items this tool does not compute. No filing or transmission." : config.targets.includes("f1040.line37") ? "Whole return: Form 1040 lines 1a–37 computed end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them). No filing or transmission." : config.targets.includes("scope.ready") ? "Stage 4 form slices with eligibility/valuation screening and allocation inputs; AGI and taxable income are computed for the single-person slice. Not a complete return." : config.targets.includes("f1040.line7a") ? "Stage 3 securities sales, Schedule D, and tax-method selection; AGI and taxable income are computed. Not a complete return." : "Stage 2 Social Security credit and supplied Schedule 3 Part II subtotals; not a complete return. Other forms are not prepared.",
     notices: config.targets.includes("ny_it201.line80") ? "Not tax or legal advice. You are responsible for the return. Published IRS and New York State instructions are not the law itself. Not affiliated with or endorsed by the IRS or the New York State Department of Taxation and Finance." : "Not tax or legal advice. You are responsible for the return. Published IRS instructions are not the law itself. Not affiliated with or endorsed by the IRS.",
     values: JSON.parse(resultToJson(result)).values as Record<string, JsonDerivation>,
-    sheet: valuesSheet(data, result, data.forms.map(f=>f.id)) };
+    sheet: shownSheet(valuesSheet(data, result, data.forms.map(f=>f.id)), joint) };
 }
 /** What a caller that only steps through or compares states reads: status, refusal, the next question's input, the
  * reachable inputs and, as the function `valuesKey`, computed on demand, the derivations of `interviewView`'s `values` serialized in key order, so two

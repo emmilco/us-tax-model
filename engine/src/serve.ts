@@ -4,7 +4,8 @@
 //
 //   GET  /api/returns                 the return logs in the returns directory, and each source document's title
 //   POST /api/returns {name}          starts a log <name>.jsonl (mode 0600; an existing name is refused)
-//   GET  /api/returns/:name           the return's state; each question carries `forms`, the forms its prompt and
+//   GET  /api/returns/:name           the return's state; question text and line labels are as shown to the filer (the
+//                                     spouse phrase reworded for the filing status answered); each question carries `forms`, the forms its prompt and
 //                                     help name that the catalogs hold, with designation, title and purpose; and
 //                                     `conflicts`, each refusal whose gate is a consistency check
 //                                     (interview/<year>/conflict_checks.yaml) with its explanation and the answers and
@@ -22,6 +23,7 @@ import { isDeepStrictEqual } from "node:util";
 import { CANON_DIR, loadCanonical } from "./canonical.js";
 import { applyAnswer, inputMeta, interviewView, loadInterview, questionTemplate, replay, type Event, type InterviewData, type JsonDerivation } from "./interview.js";
 import { templateKey } from "./branches.js";
+import { jointReturn, shownQuestion, spouseWording } from "./spouse-wording.js";
 import { standingNotices, type SheetSection } from "./output.js";
 import { formResolver, type FormEntry, type FormRef, type Purpose } from "./form-refs.js";
 import type { CanonicalData } from "./types.js";
@@ -153,12 +155,16 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
   };
 
   /** The state the page shows: the interview view, each pending question with what its answer is, the answered
-   * questions in the order first answered, the federal and New York sheets, and the lines the last answer changed. */
+   * questions in the order first answered, the federal and New York sheets, and the lines the last answer changed.
+   * The answered questions' prompts and help, and a conflict's figure labels, are reworded for the return's filing
+   * status as the pending questions and the sheet's labels are (spouse-wording.ts), from the same answers, so
+   * every list reads alike. */
   const state = (name: string, events: Event[], view: ReturnType<typeof interviewView>, previous: ReturnType<typeof interviewView> | null) => {
     const inputs = replay(config, events);
     const firstAnswered: string[] = [];
     for (const e of events.slice(1)) if (!firstAnswered.includes(e.input!)) firstAnswered.push(e.input!);
-    const question = (key: string) => config.questions.find((q) => q.input === questionTemplate(key))!;
+    const joint = jointReturn(inputs);
+    const question = (key: string) => shownQuestion(config.questions.find((q) => q.input === questionTemplate(key))!, joint);
     const answered = firstAnswered.filter((key) => key in inputs).map((key) => {
       const q = question(key);
       return { input: key, value: inputs[key], prompt: q.prompt, help: q.help, order: q.order, cite: q.cite,
@@ -182,7 +188,7 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
           answers: reads.inputs.flatMap((key) => answered.filter((a) => a.input === key)),
           figures: reads.figures.map((line) => {
             const l = lineById.get(templateKey(line));
-            return { line, printed: l?.printed ?? "", label: l?.label.split("\n")[0] ?? line, value: view.values[line]!.value };
+            return { line, printed: l?.printed ?? "", label: l ? spouseWording(l.label, joint).split("\n")[0]! : line, value: view.values[line]!.value };
           }),
         };
       });

@@ -13,6 +13,7 @@ import { checkInterview, checkSalesInterview } from "./interview-check.js";
 import { defaultsProblems, loadFixtureCases, walkedCases, yearDefaultsFiles } from "./fixture-inputs.js";
 import { runChecks } from "./check.js";
 import { isStructured, parseStructured, textSummary } from "./text.js";
+import { SPOUSE_PHRASE, SPOUSE_POSSESSIVE, spousePhraseNearMisses } from "./spouse-wording.js";
 import { YEAR, nyPath, yearPath } from "./year.js";
 import type {
   CanonicalData,
@@ -246,6 +247,10 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   }
   const bankByInput = new Map(bank.questions.map((q) => [q.input, q]));
   if (bankByInput.size !== bank.questions.length) errors.push("question bank: duplicate inputs");
+  // A line's label is reworded on the interview's values sheet as a question is, so it is held to the same exact forms.
+  for (const doc of [...forms, ...defs]) for (const line of doc.lines) {
+    for (const miss of spousePhraseNearMisses(line.label)) errors.push(`line ${line.id}: the label has a near-miss of the spouse phrase ("${miss}"); write exactly "you${SPOUSE_PHRASE}" or "${SPOUSE_POSSESSIVE}"`);
+  }
   const resolveQuestion = (q: BankQuestion): InterviewData["questions"][number] | null => {
     const where = `question ${q.input}`;
     let derivedPrompt: string | undefined;
@@ -271,6 +276,8 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       const syntax = entrySyntax(text);
       if (syntax) errors.push(`${where}: the ${field} states entry syntax (${syntax}); say what to answer, not how to type it`);
       for (const p of parseStructured(text).problems) errors.push(`${where}: the ${field}'s structured text ${p}`);
+      // Only the two exact forms of the spouse phrase are reworded for the filer's return; anything close would be shown as stored.
+      for (const miss of spousePhraseNearMisses(text)) errors.push(`${where}: the ${field} has a near-miss of the spouse phrase ("${miss}"); write exactly "you${SPOUSE_PHRASE}" or "${SPOUSE_POSSESSIVE}"`);
     }
     if (q.choices !== undefined) {
       const ok = q.input.startsWith("$") && Array.isArray(q.choices) && q.choices.length >= 2 && q.choices.every((c) =>

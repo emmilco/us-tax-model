@@ -45,7 +45,9 @@ hint for typing the answer as `--value` JSON from the input's type, and `choices
 roster with a fixed set of answers, such as `$person`), the
 `pending` questions (every question still reachable, in asking order, in the same form),
 the `refusal` if any, `reachableInputs`, the profile's `scope` sentence, the standing
-`notices`, the `values` with derivations, and a text `sheet`. `question` is null once the
+`notices`, the `values` with derivations, and a text `sheet`. A question's `prompt` and
+`help` are as shown to the filer: the spouse phrase is reworded for the filing status
+answered ("The spouse phrase as shown", under Question data). `question` is null once the
 return is complete or refused; `pending` continues after a refusal, because on an
 incomplete return a later answer may clear it. A refusal is final only when nothing is
 pending.
@@ -215,7 +217,8 @@ A long question is written as structured text (`engine/src/text.ts`): a line's `
 subset, which the build checks. The first line is the question; then one-line paragraphs separated by
 blank lines, a heading (a short line ending in ":") directly above a list, `- ` bullets and `  - ` nested
 bullets (one level). Text without a line break is plain text, shown unchanged everywhere. The authored text
-is canonical and already reads as plain text: the CLI's JSON carries it as it is, the values sheet,
+is canonical and already reads as plain text: the CLI's JSON carries it as it is (but for the spouse
+phrase, reworded as shown; see "The spouse phrase as shown"), the values sheet,
 `rendered/` and the review prompts indent its continuation lines, a reference to a structured label names
 its first line, and the page renders the blocks as HTML.
 
@@ -230,11 +233,63 @@ themselves only. So an amount or yes/no question asked once per return (its form
 when that item counts on a joint return, names the spouse. Spouse wording that is added or
 changed uses exactly one phrase, "(or, on a joint return, your spouse)", or its possessive
 form, "your (or, on a joint return, your spouse's)", in lower case and not split by other
-words. The interview has no wording that varies with filing status; the conditional form
-stays true for a filer who is not filing jointly. Spouse wording in another form that is
+words. The stored wording does not vary with filing status, and the conditional form stays
+true for a filer who is not filing jointly; the phrase is reworded for the filer's own return
+only when a question is shown (next section). Spouse wording in another form that is
 already correct stays as it is until the question is next changed.
 The rule does not apply to a question asked per person, per dependent or per roster entry; a
 question reached only by filers who are not filing jointly; a question about the return or
 the household itself; or a question where naming the spouse would change what the form line
 means (a line the form asks about the taxpayer only). Each use is grounded in the source the
 question cites: the spouse's item counts on the joint return.
+
+### The spouse phrase as shown
+
+A filer reads the phrase in the form that fits their return. When a question is handed to a
+client its prompt and help are reworded from the return's filing-status answer
+(`f1040.status`) at that moment (`engine/src/spouse-wording.ts`, one function,
+`spouseWording`):
+
+| Filing status answered | "you (or, on a joint return, your spouse)" | "your (or, on a joint return, your spouse's)" |
+|---|---|---|
+| married filing jointly | "you or your spouse" | "your or your spouse's" |
+| single, head of household, qualifying surviving spouse, married filing separately | "you" | "your" |
+| not yet answered (or help requested on it) | as stored | as stored |
+
+Married filing separately is read as no spouse on the return: the spouse's items are not on a
+separate return (and the tool refuses that status). The replacement is exact, on the built
+text: the phrase with the space before it, and the possessive form with its "your". Every
+occurrence in a text is reworded. No other wording is touched: "(and, on a joint return, your
+spouse)", "(or your spouse, if filing jointly)", "you or your spouse" and the per-person frame
+"For this person (you, or your spouse on a joint return) — " are shown as stored.
+
+Where it applies: `interviewView` (`interview.ts`) rewords the next `question` and every
+`pending` question, so the CLI's JSON and the server's state carry the text as shown, and the
+server (`serve.ts`) rewords the `answered` questions (and through them a conflict's
+`answers`) the same way. The page has no rewording of its own. Each response is reworded
+from the answers it is computed from and nothing reworded is saved (the log holds inputs and
+values only), so a corrected filing status changes every list on the next response.
+
+Where it does not apply: the stored text. `canonical/`, `rendered/`, the review prompts, the
+fixtures and the question bank carry the conditional phrase, so the reviews, which are keyed
+to the built text, are unaffected by how a question is shown. The forms a question names are
+found in its stored wording.
+
+A form line's `label` that carries the phrase is reworded the same way where the interview
+shows it: on the values sheet of `interviewView` (the page's "Your return so far" and a
+line's derivation, and the CLI interview's text `sheet`) and in a conflict's `figures`
+(`shownSheet`; `serve.ts`). `valuesSheet` itself (`output.ts`) is not reworded, so `eval`
+and the values sheets under `reports/` print the stored labels. A label with a near-miss of
+the phrase fails the build, naming the line.
+
+Because only the two exact forms are reworded, a prompt or help that holds a near-miss of the
+phrase fails the build, naming the question (`spousePhraseNearMisses`): the words "or, on a
+joint return, your spouse" in that order with other capitalisation, punctuation or spacing, a
+curly apostrophe, another or no preposition or article before "joint return", no space before
+the parenthesis, or a possessive without its "your". Spouse wording in another word order
+("or your spouse, on a joint return") is not a near-miss; it is shown as stored.
+`spouse-wording --self-test` (in `check-all`) tests the rewording, the status reading (every
+value of the `filing_status` enum is read as joint or not) and the near-miss rule on
+constructed texts, and that every built question parses as structured text in both readings;
+`test-serve` tests one return read three ways as the filing status goes from unanswered to
+married filing jointly to single.
