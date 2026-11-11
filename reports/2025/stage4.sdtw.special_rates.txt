@@ -1474,15 +1474,22 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Total ordinary dividends, Form 1099-DIV box 1a
       = $0
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
-  (helper) Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions; this tool does not determine foreign account values or exceptions.
+  (gate) At any time in 2025, did you (or, on a joint return, your spouse) have a foreign account, any other foreign financial asset, a connection to a foreign trust, or a role in a foreign corporation? Count an account or asset you had for only part of the year, including one closed, emptied or sold during 2025, and count it whatever its value. Count what you hold directly or indirectly: through an agent or nominee, a single-member LLC or other disregarded entity, a trust you are treated as owning (such as a revocable living trust), or a corporation, partnership or other entity in which you own more than 50% of the value, the voting power, the profits or the capital, directly or through other companies, partnerships or trusts. Answer Yes if any of these applies to you (or, on a joint return, your spouse):
+
+      - a financial interest in, or signature authority over, an account located outside the United States: a bank, savings, checking, deposit, brokerage, securities, mutual fund, pension or retirement, or commodity futures or options account, or an insurance or annuity policy with a cash value (an account at a branch of a US bank located abroad counts, and so does a cash-value policy issued by an insurer organized outside the United States, even if you bought it or pay for it from the United States)
+      - signature authority means you could direct the institution to move the account's assets, alone or together with someone else, even with no money of your own in it, such as an account of your employer, a relative, a business or an organization
+      - a financial interest also includes an account of a trust in which you have more than a 50% present beneficial interest
+      - an account with a financial institution organized in a US territory (such as Puerto Rico or Guam), or any other account or balance with a business outside the United States that holds money or assets for customers, such as an online payment, mobile-money, cryptocurrency exchange, online betting or gaming, precious-metals custody, or prepaid or stored-value account
+      - held outside an account at a US financial institution, counting a company, partnership or other entity organized in Puerto Rico, Guam or another US territory as foreign: stock, bonds or other securities issued by a non-US company or person; an interest in a foreign partnership, company, estate or other entity; a foreign pension or deferred compensation plan; a swap, option or other contract with a foreign counterparty; a loan you made to, or other debt owed to you by, someone who is not a US citizen or resident, or a foreign company or government, even if they live or operate in the United States (including a personal loan to a relative or friend abroad); or being an heir or beneficiary of an estate probated or administered outside the United States, or of someone who lived or died outside the United States, even if nothing has been paid to you yet
+      - any of the above held by a child whose interest and dividends you report on your return (Form 8814)
+      - a distribution from a foreign trust, including money or property that reached you through another person or company (a loan of cash or marketable securities counts, and so does free or below-market use of a home, car or other property the trust owns); being the grantor of, or a transferor to, a foreign trust that existed at any time during 2025, even one created or funded in an earlier year (a transferor is anyone who gave, sold, lent or otherwise transferred money or property to the trust, directly or through another person, in 2025 or any earlier year); or being a beneficiary of a foreign trust
+      - a foreign foundation (such as a Stiftung or Anstalt), a waqf or another arrangement that holds property for beneficiaries counts as a trust; a trust counts as foreign if a court outside the 50 states and the District of Columbia (including one in Puerto Rico, Guam or another US territory) supervises it, or if any trustee or anyone who controls a substantial trust decision is not a US citizen or resident (such as a relative abroad), even if the trust was set up under US law or has a US address; if you are not sure whether an arrangement is a trust or whether a trust is foreign, answer Yes
+      - being an officer, director, managing director or manager of a foreign corporation or other company, whatever it is called (such as a Ltd, plc, GmbH, AG, SA, SARL or BV), that is organized outside the 50 states and the District of Columbia, including in Puerto Rico, Guam or another US territory (such as an employer's subsidiary there); or owning 10% or more of the total value, or of the combined voting power, of a foreign corporation's stock, counting shares owned by your spouse, children, grandchildren or parents and by partnerships, corporations, trusts or estates you have an interest in, and shares any of you could acquire through options or warrants
       = false
-      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
-  (helper) Are you required to file Form 8938 for specified foreign financial assets?
+      cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans (2025; created 2025-04-23; dd1ec371)
+  (helper) No foreign account, asset, trust or corporation question without a foreign connection
       = false
-      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
-  8   During 2025, did you receive a distribution from a foreign trust (a loan of cash or marketable securities counts), or were you the grantor of, or a transferor to, a foreign trust that existed at any time during 2025?
-      = false
-      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, "a loan of cash or marketable securities is generally considered to be a distribution"; "If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520." (TY2025; printed April 23, 2025; b92f31ec)
+      cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust" (2025; created 2025-04-23; dd1ec371)
   (helper) Year parameter sales.zero
       = $0
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
@@ -1499,9 +1506,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   6   Amount from sb.ordinary_dividends_if_dividends
       = $0
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
-  (helper) In 2025, were you (or your spouse) an officer or director of a foreign corporation, or did you (or your spouse) own 10% or more of the total value of a foreign corporation's stock, or of the combined voting power of all classes of a foreign corporation's stock with voting rights?
-      = false
-      cite: [i1040sb] p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation", "You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights" (TY2025; printed April 23, 2025; b92f31ec)
   (helper) Taxable interest from all payers, before any Schedule B adjustment
       = $0
       cite: [i1040sb] p. 1, Line 1, "Report on line 1 all of your taxable interest" (TY2025; printed April 23, 2025; b92f31ec)
@@ -1517,6 +1521,22 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
       note: taken: {"eq":["sb.has_income",{"const":true}],"op":"test"}
+  (helper) FinCEN Form 114 (FBAR) required, when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise
+      = false
+      cite: [i1040sb] p. 3, Line 7a—Question 2, "See FinCEN Form 114 and its instructions at FINCEN.gov to determine whether you must file the form"; fincen114 p. 4, Who Must File an FBAR, "A United States person that has a financial interest in or signature authority over foreign financial accounts must file an FBAR if the aggregate value of the foreign financial accounts exceeds $10,000 at any time during the calendar year" (TY2025; printed April 23, 2025; b92f31ec)
+      note: taken: {"eq":["sb.foreign_any",{"const":false}],"op":"test"}
+  (helper) Form 8938 required, when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise
+      = false
+      cite: [i1040sb] p. 2, Part III. Foreign Accounts and Trusts, "Statement of Specified Foreign Financial Assets, with your income tax return"; i8938 pp. 7–8, Specified Foreign Financial Assets (TY2025; printed April 23, 2025; b92f31ec)
+      note: taken: {"eq":["sb.foreign_any",{"const":false}],"op":"test"}
+  (helper) Schedule B line 8 (a foreign trust distribution, or the grantor of or a transferor to a foreign trust), when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise
+      = false
+      cite: [i1040sb] p. 3, Line 8, "If you received a distribution from a foreign trust, you must provide additional information", "If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520" (TY2025; printed April 23, 2025; b92f31ec)
+      note: taken: {"eq":["sb.foreign_any",{"const":false}],"op":"test"}
+  (helper) Form 5471 officer, director or 10% shareholder of a foreign corporation, when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise
+      = false
+      cite: [i1040sb] p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation" (TY2025; printed April 23, 2025; b92f31ec)
+      note: taken: {"eq":["sb.foreign_any",{"const":false}],"op":"test"}
 
 == Proof-of-concept scope screening ==
   (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately, including any of the following?
@@ -2101,6 +2121,14 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f1040.line1e: chose $0 (guard 1)
       not taken: guard 0 = false
   sb.unsupported_if_income: chose false (guard 0)
+  sb.form5471_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
+  sb.fbar_required_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
+  sb.form8938_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
+  sb.line8_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
   ssb.line18: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.line1: chose $0 (guard 0)
@@ -2301,12 +2329,17 @@ Derivations:
   f1040.line1z: sum(f1040.line1a = $215,750; f1040.line1e = $0)
   sb.has_income: test(sb.interest_total = $0; 0 = $0; sb.ordinary_dividends_if_dividends = $0; 0 = $0; sd.distributions_if_dividends = $100,000; 0 = $0)
   sb.unsupported_if_income: choose(sb.has_income = true; true = true; sb.unsupported = false)
-  sb.line2: sum_over(sb.unsupported_if_income = false; sb.form5471 = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
+  sb.foreign_no: param(#sb.foreign_no = false)
+  sb.form5471_if_foreign: choose(sb.foreign_any = false; true = true; sb.foreign_any = false; false = false; sb.foreign_no = false)
+  sb.fbar_required_if_foreign: choose(sb.foreign_any = false; true = true; sb.foreign_any = false; false = false; sb.foreign_no = false)
+  sb.form8938_if_foreign: choose(sb.foreign_any = false; true = true; sb.foreign_any = false; false = false; sb.foreign_no = false)
+  sb.line8_if_foreign: choose(sb.foreign_any = false; true = true; sb.foreign_any = false; false = false; sb.foreign_no = false)
+  sb.line2: sum_over(sb.unsupported_if_income = false; sb.form5471_if_foreign = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false)
   sb.zero: param(#sales.zero = $0)
-  sb.line3: copy(sb.unsupported_if_income = false; sb.form5471 = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.zero = $0)
+  sb.line3: copy(sb.unsupported_if_income = false; sb.form5471_if_foreign = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.zero = $0)
   sb.line4: subtract(sb.line2 = $0; sb.line3 = $0)
   f1040.line2b: copy(sb.line4 = $0)
-  sb.line6: copy(sb.unsupported_if_income = false; sb.form5471 = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends_if_dividends = $0)
+  sb.line6: copy(sb.unsupported_if_income = false; sb.form5471_if_foreign = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.ordinary_dividends_if_dividends = $0)
   f1040.line3b: copy(sb.line6 = $0)
   f1040.line4b: sum_over(person[taxpayer].ira_taxable = $0)
   f1040.line5b: sum_over(person[taxpayer].plan_taxable = $0)

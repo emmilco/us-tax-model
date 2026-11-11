@@ -237,7 +237,7 @@ sampling and satisfies the milestone until its subject changes. Runs are guarded
   `tools/claims.py claim <form> --reason TEXT` claims before work starts; `list` shows the claims.
 - **Claude Code hooks** (`tools/claude_hooks/`): `bash_guard.py` refuses `pgrep -f` waits and hand copies into review data; `agents.py` refuses an agent
   launch without an explicit model or without `Class:`, `Year:` and `Jurisdiction:` in its brief (mechanical on Sonnet,
-  judgment on Opus), and writes and completes the run's row in `research/costs/agent_runs.jsonl`. They are enabled per
+  judgment on Opus; Fable is allowed for either class), and writes and completes the run's row in `research/costs/agent_runs.jsonl`. They are enabled per
   clone by `.claude/settings.json` (git-excluded), which holds the following. Each command ends in `|| true`: a deny is
   printed as JSON, and a missing or broken script (python exits 2, which a PreToolUse hook reads as a block) must not
   stop every call.

@@ -328,6 +328,13 @@ bank:
       The loss entered cannot be more than the loss on this sale (column (e) less column (d), after any code B basis correction).
   - input: sb.unsupported
     order: 10
+  - input: sb.foreign_any
+    order: 10
+    help: 'If you are not sure, answer Yes. Answer Yes even if the account or asset was small, you closed it early in
+      2025, it held no money of your own, or you think you do not have to file anything for it. A Yes here does not
+      stop this tool from preparing your return: the next questions ask about FinCEN Form 114 (FBAR), Form 8938, a
+      foreign trust (Form 3520) and Form 5471, and only a Yes to one of those means this tool cannot prepare it. On a joint
+      return, answer for you and your spouse together.'
   - input: sb.form5471
     order: 10
     help: Yes refuses the return; this tool does not prepare Form 5471.

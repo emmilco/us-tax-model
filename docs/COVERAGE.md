@@ -263,23 +263,23 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
   - *Not covered:* Form 5329 Parts II, III, IV, V, VI, VIII or IX, or an earlier-year excess in Part VII. Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess, and missed required minimum distributions need Form 5329 parts this tool does not prepare.
     *Source:* [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."
   - *Refused at:* `f5329.l4`, `f5329.l49`
-- **`sb.fbar_required`**: Must you file an FBAR (FinCEN Form 114) for foreign accounts?
-  - *The data asks or tests:* Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions; this tool does not determine foreign account values or exceptions. (`input`)
+- **`sb.fbar_required_if_foreign`**: Must you file an FBAR (FinCEN Form 114) for foreign accounts?
+  - *The data asks or tests:* FinCEN Form 114 (FBAR) required, when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise (`choose`)
   - *Not covered:* FinCEN Form 114 (FBAR). Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures.
     *Source:* [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts
   - *Refused at:* `sb.line2`, `sb.line3`, `sb.line6`
-- **`sb.form8938`**: Must you file Form 8938 for specified foreign financial assets?
-  - *The data asks or tests:* Are you required to file Form 8938 for specified foreign financial assets? (`input`)
+- **`sb.form8938_if_foreign`**: Must you file Form 8938 for specified foreign financial assets?
+  - *The data asks or tests:* Form 8938 required, when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise (`choose`)
   - *Not covered:* Form 8938. Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938.
     *Source:* [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts
   - *Refused at:* `sb.line2`, `sb.line3`, `sb.line6`
-- **`sb.line8`**: Did you receive a distribution from a foreign trust, or were you its grantor or a transferor to it?
-  - *The data asks or tests:* During 2025, did you receive a distribution from a foreign trust (a loan of cash or marketable securities counts), or were you the grantor of, or a transferor to, a foreign trust that existed at any time during 2025? (`input`)
+- **`sb.line8_if_foreign`**: Did you receive a distribution from a foreign trust, or were you its grantor or a transferor to it?
+  - *The data asks or tests:* Schedule B line 8 (a foreign trust distribution, or the grantor of or a transferor to a foreign trust), when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise (`choose`)
   - *Not covered:* Form 3520 / Form 3520-A. Review and prepare the required foreign-trust information returns; this path is outside scope.
     *Source:* [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts
   - *Refused at:* `sb.line2`, `sb.line3`, `sb.line6`
-- **`sb.form5471`**: Were you an officer or director of a foreign corporation, or a 10% owner of one (Form 5471)?
-  - *The data asks or tests:* In 2025, were you (or your spouse) an officer or director of a foreign corporation, or did you (or your spouse) own 10% or more of the total value of a foreign corporation's stock, or of the combined voting power of all classes of a foreign corporation's stock with voting rights? (`input`)
+- **`sb.form5471_if_foreign`**: Were you an officer or director of a foreign corporation, or a 10% owner of one (Form 5471)?
+  - *The data asks or tests:* Form 5471 officer, director or 10% shareholder of a foreign corporation, when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise (`choose`)
   - *Not covered:* Form 5471. You may have to file Form 5471 for a foreign corporation; this tool does not prepare it.
     *Source:* [i1040sb] p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation", "You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights"
   - *Refused at:* `sb.line2`, `sb.line3`, `sb.line6`

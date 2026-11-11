@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
 """Claude Code hooks on agent launches: the brief states model and class, mechanical work runs on Sonnet and judgment
-on Opus, and every run gets its row in research/costs/agent_runs.jsonl (checked by tools/check_agent_runs.py).
+on Opus (Fable may run either class), and every run gets its row in research/costs/agent_runs.jsonl (checked by tools/check_agent_runs.py).
 
 - PreToolUse on Agent: refuses a launch without an explicit `model`, or whose prompt lacks the lines
   `Class: mechanical|judgment`, `Year: <tax year>` and `Jurisdiction: us|ny`; refuses mechanical work on a model other
-  than Sonnet and judgment work on a model other than Opus.
+  than Sonnet and judgment work on a model other than Opus; Fable is allowed for both classes.
 - PostToolUse on Agent: appends the run's ledger row (date, description, model, class, year, jurisdiction, agent_id).
 - SubagentStop: totals the token usage, tool uses and duration in the agent's transcript into its row.
 
@@ -24,6 +24,7 @@ FIELDS = {"class": re.compile(r"\bClass:\**\s*(mechanical|judgment)\b", re.I),
           "year": re.compile(r"\bYear:\**\s*(\d{4})\b", re.I),
           "jurisdiction": re.compile(r"\bJurisdiction:\**\s*(us|ny)\b", re.I)}
 FAMILY = {"mechanical": "sonnet", "judgment": "opus"}
+ANY_CLASS = ("fable",)  # models allowed for either class
 
 
 def ledger():
@@ -51,7 +52,7 @@ def refusal(tool_input):
     if missing:
         problems.append("the brief lacks the line(s) " + ", ".join(f"`{k.capitalize()}:`" for k in missing)
                         + " (Class: mechanical|judgment, Year: <tax year>, Jurisdiction: us|ny)")
-    if model and "class" in got and FAMILY[got["class"]] not in model:
+    if model and "class" in got and FAMILY[got["class"]] not in model and not any(m in model for m in ANY_CLASS):
         problems.append(f"{got['class']} work runs on {FAMILY[got['class']]}, not {model}")
     if not problems:
         return None
@@ -148,7 +149,10 @@ def self_test():
              ({"model": "opus", "prompt": "Model: x. Class: judgment. Year: 2025. Jurisdiction: us."}, None),
              ({"model": "opus", "prompt": "Class: judgment. Jurisdiction: us."}, "`Year:`"),
              ({"model": "opus", "prompt": "**Class:** judgment\n**Year:** 2025\n**Jurisdiction:** ny"}, None),
-             ({"model": "sonnet", "prompt": "Class: judgment\nYear: 2025\nJurisdiction: us"}, "judgment work runs on opus")]
+             ({"model": "sonnet", "prompt": "Class: judgment\nYear: 2025\nJurisdiction: us"}, "judgment work runs on opus"),
+             ({"model": "fable", "prompt": "Class: judgment\nYear: 2025\nJurisdiction: us"}, None),
+             ({"model": "fable", "prompt": ok}, None),
+             ({"model": "fable", "prompt": "Class: judgment. Jurisdiction: us."}, "`Year:`")]
     for ti, want in cases:
         got = refusal(ti)
         if (want is None) != (got is None) or (want and want not in got):

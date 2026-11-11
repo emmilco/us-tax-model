@@ -88,13 +88,13 @@ const DEFAULT_TRUE_PERCENT = 10;
 // leaves the random stream, and so every earlier generated return, unchanged. Schedule 1 line 1 (no state or local
 // income tax refund and no other recovery); line 8 (gambling, Alaska Permanent Fund dividends, jury duty pay, prizes,
 // hobby income, scholarships and its screen), line 24a and gambling losses on Schedule A line 16. The Form 5471 screen
-// (no), and the dividends question (set from the amounts it gates, in buildInputs).
+// (no), and the dividends and foreign questions (set from the answers they gate, in buildInputs).
 const NOT_DRAWN = new Set([
   "refund.received", "refund.box8", "refund.not_2024", "refund.itemized", "refund.sales",
   "refund.exc_tax", "refund.exc_who", "refund.line5d_2024", "refund.line5e_2024", "refund.line17_2024",
   "refund.mfs_spouse_itemized", "refund.you_born", "refund.you_blind", "refund.spouse_born", "refund.spouse_blind",
   "s1.line8_other", "s1.gambling_winnings", "s1.gambling_pro", "s1.line8g", "s1.line8h", "s1.line8i", "s1.line8j", "s1.line8r",
-  "s1.jury_to_employer", "sa.gambling_losses", "div.any", "sb.form5471",
+  "s1.jury_to_employer", "sa.gambling_losses", "div.any", "sb.form5471", "sb.foreign_any",
 ]);
 
 // Root inputs that draw nothing: they keep their default (false or zero), so the random stream does not
@@ -121,9 +121,10 @@ const MODELLED = new Set([
 ]);
 
 // Form 5329's per-person answers and Form 8889's box 1 answer (Stage 21): set by `putEarly` after every other draw, so
-// neither the random stream nor the derived streams (which hash the answers given before them) see them.
+// neither the random stream nor the derived streams (which hash the answers given before them) see them. The foreign
+// question is likewise left unset until it is answered from its screens at the end of buildInputs.
 const EARLY_ROOTS = ["x_other", "x_prior09", "x_births", "x_hsa_value"].map((k) => `person[taxpayer].${k}`).concat(`${HSA}.employer_in_box1`);
-const EARLY_SET = new Set(EARLY_ROOTS);
+const EARLY_SET = new Set([...EARLY_ROOTS, "sb.foreign_any"]);
 
 // Inputs given their "no" or zero answer on every generated return, or an answer derived from other draws, and drawn
 // from no arbitrary, so the random stream is the same as without them: alimony, canceled debt and HSA distributions
@@ -737,6 +738,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   for (const k of (inputs["$dependent"] as string[] | undefined) ?? []) Object.assign(inputs, { [`dependent[${k}].born_died`]: false, [`dependent[${k}].placed`]: false });
   // The dividends question agrees with the amounts it gates, set last for the same reason.
   inputs["div.any"] = DIV_ANY_GATED.some((k) => inputs[k] !== 0);
+  // The foreign question is yes exactly when one of the screens it gates is answered yes, set last for the same reason.
+  inputs["sb.foreign_any"] = FOREIGN_ANY_GATED.some((k) => inputs[k] === true);
   // The charitable-gifts and investment-interest gates: yes whenever an answer they gate is not none, so every drawn
   // answer is read. Set last, so no stream sees them.
   inputs["sa.gifts"] = (inputs["sa.line11"] as number) > 0 || ((inputs["$gift"] as string[] | undefined) ?? []).length > 0 || inputs["sa.charity_limited"] === true;
@@ -746,6 +749,9 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
 
 /** The amounts `div.any` gates directly (Form 1099-DIV boxes 1a, 2a, 3, 9, 10, 12 and 13). */
 const DIV_ANY_GATED = ["sb.ordinary_dividends", "sd.distributions", ...["3", "9", "10", "12", "13"].map((b) => `div.box${b}`)];
+
+/** The screens `sb.foreign_any` gates (FinCEN Form 114, Form 8938, Schedule B line 8 and Form 5471). */
+const FOREIGN_ANY_GATED = ["sb.fbar_required", "sb.form8938", "sb.line8", "sb.form5471"];
 
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 

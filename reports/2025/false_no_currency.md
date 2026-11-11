@@ -21,3 +21,4 @@ Findings: 9; ruled 9; in the baseline to be worked off 0.
 - `gate:div.has_return_of_capital`: the condition's wording, the gated lines or their citations changed since its samples; run false_no_review.py --gates gate:div.has_return_of_capital
 - `gate:ftc.has_tax`: the condition's wording, the gated lines or their citations changed since its samples; run false_no_review.py --gates gate:ftc.has_tax
 - `gate:sa.gifts`: the condition's wording, the gated lines or their citations changed since its samples; run false_no_review.py --gates gate:sa.gifts
+- `gate:sb.foreign_any`: the condition's wording, the gated lines or their citations changed since its samples; run false_no_review.py --gates gate:sb.foreign_any

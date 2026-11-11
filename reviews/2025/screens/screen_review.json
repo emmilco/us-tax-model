@@ -2993,6 +2993,120 @@
   ]
  },
  {
+  "screen": "gate:sb.foreign_any",
+  "subject_sha": "911b86c7b6b12d8a1726ff06d4efaa521acc935128d1ba98b5e9720211aa5db6",
+  "samples": [
+   {
+    "verdict": "COVERS",
+    "findings": [
+     {
+      "kind": "WIDE",
+      "situation": "A filer whose only foreign item is a small account, such as a $500 foreign bank account or an account at a Puerto Rico bank worth a few thousand dollars, answers yes, yet none of the gated lines has an amount.",
+      "irs_text": "fincen114 p. 4: 'must file an FBAR if the aggregate value of the foreign financial accounts exceeds $10,000 at any time during the calendar year'; fincen114 p. 5: 'the United States includes ... the Commonwealth of Puerto Rico, Guam'",
+      "why": "The gate asks about any foreign account of any value, including accounts in US territories. Such a filer gets FBAR, Form 8938, Form 5471 and line 8 answers that are all no, but the gate still asks the questions."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer who owns under 10% of a foreign corporation only through the attribution of family members' shares or options counted by the gate, and is not an officer or director, answers yes.",
+      "irs_text": "i1040sb p. 2: 'You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation's stock, or (b) combined voting power'",
+      "why": "The gate counts shares held by relatives, entities and options, which is broader than the 10% test cited in the Schedule B instructions. Without any other foreign asset, every gated line is no."
+     }
+    ],
+    "prompt_sha": "7514c7cc69c2a37b61122907de9919fbbb6f2c3725decea0fcbb4f223a8688fc",
+    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
+    "cost": 0.11122000000000001,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-10",
+    "response": ".transcription/screens/gate_sb.foreign_any.911b86c7b6b1.1.response.txt"
+   }
+  ],
+  "kind": "gate",
+  "condition": "sb.foreign_any",
+  "lines": [
+   "sb.fbar_required_if_foreign",
+   "sb.form5471_if_foreign",
+   "sb.form8938_if_foreign",
+   "sb.line8_if_foreign"
+  ],
+  "inputs": [
+   "sb.fbar_required",
+   "sb.form5471",
+   "sb.form8938",
+   "sb.line8"
+  ],
+  "used": [
+   {
+    "doc": "f1040sb",
+    "revision": "2025; created 2025-04-23",
+    "text_sha256": "8186516d0d5e8418307b784e80f53618eb16a45b8a123a7058e358fcca68ebb6",
+    "pages": [
+     1
+    ],
+    "how": "whole document",
+    "locators": [
+     "Part III, Foreign Accounts and Trusts, \"You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust\"; , Part III, lines 7a and 8; , Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; , Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans"
+    ],
+    "cols_pages": [],
+    "cols_sha256": "df11693629afb7112b9883e2927694d80b0373e3dc65cfb1631fe3229a99650f"
+   },
+   {
+    "doc": "i1040sb",
+    "revision": "TY2025; printed April 23, 2025",
+    "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+    "pages": [
+     1,
+     2,
+     3
+    ],
+    "how": "whole document",
+    "locators": [
+     "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\"",
+     "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\"",
+     "p. 2, Part III. Foreign Accounts and Trusts, \"Statement of Specified Foreign Financial Assets, with your income tax return\"; , Specified Foreign Financial Assets",
+     "p. 3, Line 7a—Question 2, \"See FinCEN Form 114 and its instructions at FINCEN.gov to determine whether you must file the form\"; , Who Must File an FBAR, \"A United States person that has a financial interest in or signature authority over foreign financial accounts must file an FBAR if the aggregate value of the foreign financial accounts exceeds $10,000 at any time during the calendar year\"",
+     "p. 3, Line 8, \"If you received a distribution from a foreign trust, you must provide additional information\", \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520\"",
+     "pp. 1–3, interest, dividends and foreign accounts/trusts",
+     "pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, \"a loan of cash or marketable securities is generally considered to be a distribution\"; \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520.\""
+    ],
+    "cols_pages": [
+     1,
+     2,
+     3
+    ],
+    "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+   },
+   {
+    "doc": "fincen114",
+    "revision": "Release Date January 2017 (v1.4), the version FinCEN links as the FBAR line item filing instructions (no later printed edition on the FinCEN FBAR page)",
+    "text_sha256": "d02d203fae0233099e880f329a2cb62e2d9e421e05b9684d4ff57ee487aeae79",
+    "pages": [
+     4,
+     5
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [],
+    "cols_sha256": "9dae16399f902265194e429707a89bdd56f6d073c3b2e8a20406adb270fa2621"
+   },
+   {
+    "doc": "i8938",
+    "revision": "November 2021 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+    "text_sha256": "a8e2b7faaddaed66219b50201f6973c6a43930fd6684ff318546e714398767a7",
+    "pages": [
+     7,
+     8
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     7,
+     8
+    ],
+    "cols_sha256": "34ce0e00d160350c359f8a06e1075ab0d2a0e3768c8897b767c87e69198873cf"
+   }
+  ]
+ },
+ {
   "screen": "gate:sb.has_income",
   "kind": "gate",
   "condition": "sb.has_income",
@@ -5437,7 +5551,27 @@
  },
  {
   "screen": "sb.fbar_required",
-  "question": "Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions; this tool does not determine foreign account values or exceptions.",
+  "subject_sha": "551027c2f51bfeae8f359f59ad30ff039768212fbd341d39df9997466dcf117f",
+  "samples": [
+   {
+    "verdict": "UNCLEAR",
+    "findings": [
+     {
+      "kind": "UNCLEAR",
+      "situation": "A filer whose foreign accounts together exceeded $10,000 at some point in 2025 but were closed or emptied before the filer answers (or who first passed $10,000 in 2026) cannot tell which year's FBAR requirement the present-tense question means.",
+      "irs_text": "i1040sb p. 3, Line 7a—Question 2: \"A U.S. person that has a financial interest in or signature authority over foreign financial accounts must file the form if the aggregate value of foreign financial accounts exceeds $10,000 at any time during 2025.\"",
+      "why": "The question asks \"Are you ... required to file FinCEN Form 114 (FBAR)?\" without naming calendar year 2025, unlike the gate question, which says \"At any time in 2025\". A filer who reads it as their current situation could answer NO although line 7a Question 2 and the line 7b country list apply, or YES for a requirement that arises only for 2026."
+     }
+    ],
+    "prompt_sha": "87610182b008e6b534bdcab1f6b27820b4b281032f0db98e56c5f398d534a318",
+    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
+    "cost": 0.148512,
+    "model": "claude-fable-5-2",
+    "date": "2026-11-10",
+    "response": ".transcription/screens/sb.fbar_required.551027c2f51b.1.response.txt"
+   }
+  ],
+  "question": "Are you (or, on a joint return, your spouse) required to file FinCEN Form 114 (FBAR)? Determine under its instructions; this tool does not determine foreign account values or exceptions.",
   "lines": [
    "sb.line2",
    "sb.line3",
@@ -5464,102 +5598,50 @@
      3
     ],
     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
-   }
-  ],
-  "subject_sha": "b03c8fb0bc7882e62829c6840e6d8724571ede52b112175871140b0cce16163b",
-  "grandfathered": true,
-  "samples": [
-   {
-    "verdict": "NARROW",
-    "findings": [
-     {
-      "kind": "NARROW",
-      "situation": "A filer whose aggregate foreign account value never exceeded $10,000, or who is exempt from FBAR filing, still had a financial interest in or signature authority over a foreign financial account; this filer truthfully answers NO.",
-      "irs_text": "i1040sb p.2: 'Check the \"Yes\" box if at any time during 2025 you had a financial interest in or signature authority over a financial account located in a foreign country... Check the \"Yes\" box even if you aren't required to file FinCEN Form 114.' p.3: 'Don't consider the exceptions relating to signature authority in answering Question 1 on line 7a.'",
-      "why": "The refusal exists because the tool does not handle the Schedule B foreign-account disclosures. Part III Question 1 is triggered by having the account, not by an FBAR filing requirement, so asking only about the FBAR requirement lets these filers through with Part III unanswered."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "A filer who received a distribution from a foreign trust, or was a grantor of or transferor to one, and has no FBAR filing requirement answers NO.",
-      "irs_text": "i1040sb p.1: 'Use Schedule B ... if ... you received a distribution from, or were a grantor of, or transferor to, a foreign trust.' p.3, Line 8: 'If you received a distribution from a foreign trust, you must provide additional information.'",
-      "why": "The refusal says foreign-account and trust disclosures are outside the tool, but the question asks only about FBAR, so line 8 foreign-trust situations are not screened."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "A filer who cashed post-1989 series EE or I savings bonds and paid qualified higher education expenses can claim a line 3 exclusion, has no FBAR requirement, and answers NO.",
-      "irs_text": "i1040sb p.2, Line 3: 'If, during 2025, you cashed series EE or I U.S. savings bonds issued after 1989 and you paid qualified higher education expenses ... you may be able to exclude part or all of the interest on those bonds. See Form 8815'",
-      "why": "The tool fixes line 3 at zero, and the only screen gating line 3 is the FBAR question, which has nothing to do with the Form 8815 exclusion."
-     },
-     {
-      "kind": "WIDE",
-      "situation": "A filer required to file an FBAR who has ordinary domestic interest and dividends answers YES, and lines 2, 3 and 6 are refused even though the tool's sums of interest and box 1a dividends would be correct.",
-      "irs_text": "Question: 'Are you required to file FinCEN Form 114 (FBAR)?' i1040sb p.3, Line 7b: 'If you are required to file FinCEN Form 114, list the name(s) of the foreign country or countries in the space provided on line 7b.'",
-      "why": "The FBAR requirement affects only the Part III disclosures (lines 7a/7b). It does not change how the line 2 interest total, the line 3 exclusion, or the line 6 dividend total is computed, so refusing these amount lines is broader than the IRS text requires."
-     }
-    ],
-    "prompt_sha": "b03c8fb0bc7882e62829c6840e6d8724571ede52b112175871140b0cce16163b",
-    "cost": 0.072264,
-    "model": "claude-opus-5-5",
-    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "response": ".transcription/screens/sb.fbar_required.response.txt"
    }
   ]
  },
  {
   "screen": "sb.form5471",
-  "question": "In 2025, were you (or your spouse) an officer or director of a foreign corporation, or did you (or your spouse) own 10% or more of the total value of a foreign corporation's stock, or of the combined voting power of all classes of a foreign corporation's stock with voting rights?",
-  "lines": [
-   "sb.line2",
-   "sb.line3",
-   "sb.line6"
-  ],
-  "used": [
-   {
-    "doc": "i1040sb",
-    "revision": "TY2025; printed April 23, 2025",
-    "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
-    "pages": [
-     1,
-     2,
-     3
-    ],
-    "how": "whole document",
-    "locators": [
-     "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\"",
-     "pp. 1–3, interest, dividends and foreign accounts/trusts"
-    ],
-    "cols_pages": [
-     1,
-     2,
-     3
-    ],
-    "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
-   }
-  ],
-  "subject_sha": "64178532ea4501b6b5e58a1a66af8b154bcb59d83e4e40a45d7035ade0b0b497",
-  "grandfathered": true,
+  "subject_sha": "391ee0b9eca9db9f6c52b828d790ece544bdceaa24de4497603d352f9890e357",
   "samples": [
    {
     "verdict": "WIDE",
     "findings": [
      {
       "kind": "WIDE",
-      "situation": "A head-of-household filer who is still legally married but living apart has a spouse who was an officer or director of a foreign corporation, or who owned 10% or more of one, while the filer had no such role or ownership.",
-      "irs_text": "i1040sb p. 2, Part II TIP: \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation. You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation's stock, or (b) combined voting power...\"; question: \"were you (or your spouse) an officer or director of a foreign corporation, or did you (or your spouse) own 10% or more...\"",
-      "why": "The IRS tip applies only to the filer (\"you\"), but the question also asks about the spouse, so this filer must answer YES. That refuses lines 2, 3 and 6, which the tool would otherwise compute correctly from the filer's own interest and dividend entries. This happens on a separate head-of-household return, not on a joint return."
+      "situation": "A filer employed in 2025 as a mid-level manager (for example a sales or store manager) of a foreign company, who was neither an officer nor a director and owned no stock, reads 'managing director or manager' and answers YES.",
+      "irs_text": "i1040sb p. 2, Part II TIP: \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation.\"",
+      "why": "The question says \"an officer, director, managing director or manager of a foreign corporation or other company\", while the IRS text names only officers and directors. An ordinary managerial employee is refused although the tool computes lines 2, 3 and 6 correctly for them."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer who was a manager or officer of a foreign entity that is not a corporation (for example a foreign LLC or partnership-type company taxed as a partnership) answers YES.",
+      "irs_text": "i1040sb p. 2, Part II TIP: \"an officer or director of a foreign corporation\" and \"10% or more of the total (a) value of a foreign corporation's stock\"",
+      "why": "The question says \"a foreign corporation or other company, whatever it is called\", which takes in entities that are not corporations. The IRS text ties Form 5471 only to a foreign corporation."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer who owns no stock personally but has a small interest in a partnership, corporation, trust or estate that holds 10% of a foreign corporation counts all of that entity's shares and answers YES.",
+      "irs_text": "i1040sb p. 2, Part II TIP: \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation's stock, or (b) combined voting power of all classes of a foreign corporation's stock with voting rights.\"",
+      "why": "The question says \"counting shares owned by ... partnerships, corporations, trusts or estates you have an interest in\", with no proportionality or minimum interest. The IRS text speaks only of stock \"you owned\", so a filer with a trivial stake in such an entity is refused."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "A filer who was an officer or director of a corporation organized in Puerto Rico, Guam or another US territory cannot tell from the IRS text whether that is a \"foreign corporation\".",
+      "irs_text": "i1040sb p. 2, Part II TIP: \"an officer or director of a foreign corporation ... For details, see Form 5471 and its instructions\"",
+      "why": "The question treats companies \"organized outside the 50 states and the District of Columbia, including in Puerto Rico, Guam or another US territory\" as foreign. The supplied text does not define \"foreign corporation\", so this may be correct or over-inclusive."
      }
     ],
-    "prompt_sha": "64178532ea4501b6b5e58a1a66af8b154bcb59d83e4e40a45d7035ade0b0b497",
-    "cost": 0.0627,
-    "model": "claude-opus-5-5",
+    "prompt_sha": "8a0402a305bf52c9f298f1e1401d130954db9c54e75f7e3c816f6c3552df75eb",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "response": ".transcription/screens/sb.form5471.response.txt"
+    "cost": 0.17552,
+    "model": "claude-fable-5-2",
+    "date": "2026-11-10",
+    "response": ".transcription/screens/sb.form5471.391ee0b9eca9.1.response.txt"
    }
-  ]
- },
- {
-  "screen": "sb.form8938",
-  "question": "Are you required to file Form 8938 for specified foreign financial assets?",
+  ],
+  "question": "In 2025, were you (or, on a joint return, your spouse) an officer, director, managing director or manager of a foreign corporation or other company, whatever it is called, that is organized outside the 50 states and the District of Columbia, including in Puerto Rico, Guam or another US territory, or did you (or, on a joint return, your spouse) own 10% or more of the total value of a foreign corporation's stock, or of the combined voting power of all classes of a foreign corporation's stock with voting rights, counting shares owned by your spouse, children, grandchildren or parents and by partnerships, corporations, trusts or estates you have an interest in, and shares any of you could acquire through options or warrants?",
   "lines": [
    "sb.line2",
    "sb.line3",
@@ -5587,55 +5669,89 @@
     ],
     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
    }
+  ]
+ },
+ {
+  "screen": "sb.form8938",
+  "subject_sha": "ccf475f20848b9e8ec57318f8b777d124dd26a405d87eb881e5242bea7816a94",
+  "samples": [
+   {
+    "verdict": "UNCLEAR",
+    "findings": [
+     {
+      "kind": "UNCLEAR",
+      "situation": "A filer holds foreign financial assets (for example, directly held foreign stock or a foreign pension, or accounts for which no FBAR is due) and must decide whether Form 8938 is 'required', but the question gives no filing thresholds, no definition of 'specified foreign financial assets', and no 'if unsure, answer Yes' help.",
+      "irs_text": "i1040sb p. 2, Part III TIP: \"Regardless of whether you are required to file FinCEN Form 114 (FBAR), you may be required to file Form 8938, Statement of Specified Foreign Financial Assets, with your income tax return. Failure to file Form 8938 may result in penalties and extension of the statute of limitations. See IRS.gov/Form8938 for more information.\"",
+      "why": "The wording asks for a legal conclusion that the filer can only reach from the Form 8938 instructions, so a filer who actually must file could in good faith answer NO (for instance, by assuming no FBAR means no Form 8938). The tool would then compute the Schedule B lines and produce a return without the required Form 8938."
+     }
+    ],
+    "prompt_sha": "658dd78579f7b5195292860ceb3a360fc39f8b2d06ddcf8e02eacefc5e513c4b",
+    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
+    "cost": 0.12005600000000001,
+    "model": "claude-fable-5-2",
+    "date": "2026-11-10",
+    "response": ".transcription/screens/sb.form8938.ccf475f20848.1.response.txt"
+   }
   ],
-  "subject_sha": "2207e9abd2f149f53dd8ef27791a9d61bcbc7717e95bc35db1962aa95601be01",
-  "grandfathered": true,
+  "question": "Are you (or, on a joint return, your spouse) required to file Form 8938 for specified foreign financial assets?",
+  "lines": [
+   "sb.line2",
+   "sb.line3",
+   "sb.line6"
+  ],
+  "used": [
+   {
+    "doc": "i1040sb",
+    "revision": "TY2025; printed April 23, 2025",
+    "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+    "pages": [
+     1,
+     2,
+     3
+    ],
+    "how": "whole document",
+    "locators": [
+     "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\"",
+     "pp. 1–3, interest, dividends and foreign accounts/trusts"
+    ],
+    "cols_pages": [
+     1,
+     2,
+     3
+    ],
+    "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+   }
+  ]
+ },
+ {
+  "screen": "sb.line8",
+  "subject_sha": "ae4c972755020a5b68fc97bc0d6ab4f6af2168eb53488a493e0ee093b3562fce",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer cashed post-1989 series EE or I savings bonds and paid qualified higher education expenses, so part or all of the interest is excludable, but the filer has no Form 8938 requirement.",
-      "irs_text": "Line 3. If, during 2025, you cashed series EE or I U.S. savings bonds issued after 1989 and you paid qualified higher education expenses ... you may be able to exclude part or all of the interest on those bonds. See Form 8815 (i1040sb p. 2)",
-      "why": "The tool sets line 3 from a zero parameter, so the exclusion is lost. A question about Form 8938 never asks about the Form 8815 exclusion, so this filer truthfully answers NO."
+      "situation": "A filer who is treated as the owner of a foreign trust under the grantor trust rules without having created or funded it (for example, a beneficiary with an unrestricted power to withdraw trust property) and who received no distribution, loan or use of trust property in 2025.",
+      "irs_text": "i1040sb p. 3, Line 8: \"If you were treated as the owner of a foreign trust under the grantor trust rules, you are also responsible for ensuring that the foreign trust files Form 3520-A.\"",
+      "why": "The question asks only about receiving a distribution or being the grantor of, or a transferor to, the trust, so a deemed owner who is neither can truthfully answer No. The tool then computes the lines without the Form 3520 / Form 3520-A refusal that the line 8 text points to for trust owners."
      },
      {
-      "kind": "NARROW",
-      "situation": "A filer received interest as a nominee and must subtract the nominee distribution from the line 1 subtotal before entering line 2, but has no Form 8938 requirement.",
-      "irs_text": "Below this subtotal, enter “Nominee Distribution” and show the total interest you received as a nominee. Subtract this amount from the subtotal and enter the result on line 2. (i1040sb p. 1)",
-      "why": "Line 2 is computed as the plain sum of the interest entries with no subtraction. Nominee status has nothing to do with Form 8938, so the filer answers NO."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "A filer must reduce line 1 interest for accrued interest paid on a purchased bond, an OID adjustment, or an amortizable bond premium adjustment, but has no Form 8938 requirement.",
-      "irs_text": "follow the rules earlier under Nominees ... identify the amount to be subtracted as “Accrued Interest.” ... “OID Adjustment.” ... “ABP Adjustment.” (i1040sb p. 2)",
-      "why": "The tool's line 2 sums the entries and makes none of these subtractions. The Form 8938 question gives the filer no reason to answer YES in these cases."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "A filer received ordinary dividends as a nominee and must subtract the nominee distribution from the line 5 subtotal to get line 6, but has no Form 8938 requirement.",
-      "irs_text": "Below this subtotal, enter “Nominee Distribution” and show the total ordinary dividends you received as a nominee. Subtract this amount from the subtotal and enter the result on line 6. (i1040sb p. 2)",
-      "why": "The tool takes line 6 from the box 1a total with no nominee subtraction. Nominee dividends are not covered by the Form 8938 wording, so the filer answers NO."
-     },
-     {
-      "kind": "WIDE",
-      "situation": "A filer must file Form 8938 because of foreign assets but has only ordinary domestic interest and dividends with no adjustments, so the tool would compute lines 2, 3 and 6 correctly.",
-      "irs_text": "Question: “Are you required to file Form 8938 for specified foreign financial assets?” IRS: “Regardless of whether you are required to file FinCEN Form 114 (FBAR), you may be required to file Form 8938 ... with your income tax return.” (i1040sb p. 2, Part III tip)",
-      "why": "In the cited text, Form 8938 is a separate disclosure under Part III and does not change the amounts on lines 2, 3 or 6. Answering YES therefore refuses lines the tool computes correctly."
+      "kind": "UNCLEAR",
+      "situation": "A filer who received a distribution from, or funded, a trust whose trustee is a bank or trust company rather than an individual, or that has one non-US co-trustee who cannot control any substantial decision.",
+      "irs_text": "i1040sb p. 3, Line 8: \"If you received a distribution from a foreign trust, you must provide additional information.\" (the supplied text does not define when a trust is foreign)",
+      "why": "The wording \"any trustee or anyone who controls a substantial trust decision is not a US citizen or resident\" does not fit a corporate trustee, so a filer could read a US trust company either way. Read literally, it also treats a trust as foreign because of a single non-US trustee with no controlling power, which may be wider than the rule."
      }
     ],
-    "prompt_sha": "2207e9abd2f149f53dd8ef27791a9d61bcbc7717e95bc35db1962aa95601be01",
-    "cost": 0.064576,
-    "model": "claude-opus-5-5",
+    "prompt_sha": "1d5394bdb4075647cd815de47c5d72203ba8337aa023eaf15274cff82d62c6ed",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "response": ".transcription/screens/sb.form8938.response.txt"
+    "cost": 0.153,
+    "model": "claude-fable-5-2",
+    "date": "2026-11-10",
+    "response": ".transcription/screens/sb.line8.ae4c97275502.1.response.txt"
    }
-  ]
- },
- {
-  "screen": "sb.line8",
-  "question": "During 2025, did you receive a distribution from a foreign trust (a loan of cash or marketable securities counts), or were you the grantor of, or a transferor to, a foreign trust that existed at any time during 2025?",
+  ],
+  "question": "During 2025, did you (or, on a joint return, your spouse) receive a distribution from a foreign trust, including money or property that reached you through another person or company (a loan of cash or marketable securities counts, and so does free or below-market use of a home, car or other property the trust owns), or were you (or, on a joint return, your spouse) the grantor of, or a transferor to, a foreign trust that existed at any time during 2025, even one created or funded in an earlier year (a transferor is anyone who gave, sold, lent or otherwise transferred money or property to the trust, directly or through another person, in 2025 or any earlier year)? A foreign foundation, a waqf or another arrangement that holds property for beneficiaries counts as a trust; a trust counts as foreign if a court outside the 50 states and the District of Columbia (including one in Puerto Rico, Guam or another US territory) supervises it, or if any trustee or anyone who controls a substantial trust decision is not a US citizen or resident, even if the trust was set up under US law or has a US address; if you are not sure whether an arrangement is a trust or whether a trust is foreign, answer Yes.",
   "lines": [
    "sb.line2",
    "sb.line3",
@@ -5663,50 +5779,6 @@
      3
     ],
     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
-   }
-  ],
-  "subject_sha": "838c002bbaa3962ebebd755f1e4c2704183af720e13dbc11747c6d604bf9009d",
-  "grandfathered": true,
-  "samples": [
-   {
-    "verdict": "NARROW",
-    "findings": [
-     {
-      "kind": "NARROW",
-      "situation": "A filer cashed post-1989 series EE or I savings bonds and paid qualified higher education expenses. The filer has no foreign trust, so they answer NO, and the tool sets line 3 to zero instead of computing the Form 8815 exclusion.",
-      "irs_text": "i1040sb p. 2, Line 3: \"If, during 2025, you cashed series EE or I U.S. savings bonds issued after 1989 and you paid qualified higher education expenses ... you may be able to exclude part or all of the interest on those bonds. See Form 8815\"",
-      "why": "The question asks only about foreign trusts, so nothing prompts this filer to answer YES. Line 3 is computed as a fixed zero, so the exclusion the IRS text describes is never computed or refused."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "A filer received interest reported on Form 1099-INT or 1099-OID as a nominee, or has an accrued-interest, OID, or amortizable bond premium adjustment. The filer answers NO, and the tool adds the gross interest amounts without subtracting the adjustment.",
-      "irs_text": "i1040sb p. 1, Nominees: \"Below this subtotal, enter 'Nominee Distribution' and show the total interest you received as a nominee. Subtract this amount from the subtotal and enter the result on line 2.\" p. 2: \"identify the amount to be subtracted as 'Accrued Interest' ... 'OID Adjustment' ... 'ABP Adjustment.'\"",
-      "why": "Line 2 is computed as the sum of the interest entries, with no subtraction step. The foreign-trust question gives these filers no reason to answer YES."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "A filer received ordinary dividends as a nominee. The filer answers NO, and the tool enters the full Form 1099-DIV box 1a total on line 6 instead of subtracting the nominee distribution.",
-      "irs_text": "i1040sb p. 2, Line 5 Nominees: \"enter 'Nominee Distribution' and show the total ordinary dividends you received as a nominee. Subtract this amount from the subtotal and enter the result on line 6.\"",
-      "why": "The line 6 helper takes the box 1a total, so the nominee subtraction is never applied. The question does not reach this case."
-     },
-     {
-      "kind": "WIDE",
-      "situation": "A filer was the grantor of a foreign trust, or received a distribution from one, and has only ordinary Form 1099-INT interest and Form 1099-DIV dividends. The filer answers YES, and lines 2, 3 and 6 are refused even though the tool would compute them correctly.",
-      "irs_text": "Question: \"did you receive a distribution from a foreign trust ... or were you the grantor of, or a transferor to, a foreign trust\"; i1040sb p. 3, Line 8: \"you must provide additional information ... you may have to file Form 3520. Don't attach Form 3520 to Form 1040\"",
-      "why": "The IRS text for line 8 imposes separate information-return duties (Form 3520 and Form 3520-A). It does not change how lines 2, 3 or 6 are computed, so refusing those lines is broader than needed."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "A filer received a loan from a foreign trust that falls within an exception to distribution treatment. Such a filer could read \"a loan of cash or marketable securities counts\" as requiring YES, or could rely on the IRS exceptions and answer NO.",
-      "irs_text": "i1040sb p. 3, Line 8: \"a loan of cash or marketable securities is generally considered to be a distribution. See the Instructions for Form 3520\"",
-      "why": "The question says that such a loan \"counts\" with no qualification, while the IRS text says \"generally\" and points to exceptions. Filers with an excepted loan could reasonably answer either way."
-     }
-    ],
-    "prompt_sha": "838c002bbaa3962ebebd755f1e4c2704183af720e13dbc11747c6d604bf9009d",
-    "cost": 0.07328000000000001,
-    "model": "claude-opus-5-5",
-    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "response": ".transcription/screens/sb.line8.response.txt"
    }
   ]
  },

@@ -214,6 +214,45 @@
    "class": "no gate defect; one finding designed out, one wording point accepted (low)",
    "reason": "(1) a partner or S corporation shareholder whose K-1 reports the entity's interest on operating cash: designed out; an interest in a partnership or S corporation is refused by scope.schedule1 ('partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)'), so only Schedule C businesses reach line 11, and their working capital is the filer's own. (2) an operating reserve held in Treasury bills or a money market fund: low; the help (interview/questions-2025.yaml, s179.wc_interest) says working capital is money held for the business's operating needs 'in any kind of account', with the account types as examples, however titled. The previous review of this gate (before the help named the account types) also raised a carryover with no 2025 property: s179.has179 reads lines 9 and 10 added together, so it is asked (fixture bug0474.s179.wc_interest_carryover_only).",
    "subject_sha": "75a0f92e642f372a526b903a715a88695a98fa8ca29bd9eb105ca4621b78b28d"
+  },
+  "unruled:gate:sb.foreign_any#1": {
+   "reason": "No fix in this round. This sample follows a wording fix: the sample before it, on the question with the conditional spouse phrase, found that a trust supervised by a court in a US territory, and a loan to or contract with a company organized in a US territory (i8938 p. 7, 'a person organized under the laws of a U.S. possession'), were read as not foreign; the trust test now names the 50 states and the District of Columbia with the territories outside, and the directly held assets bullet counts an entity organized in a territory as foreign. This sample repeats neither. Two medium findings are left as residuals for the owner, three are low.",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "A married filer filing separately under community property law whose spouse alone holds the foreign asset: i8938 p. 7 gives the filer an interest when income from the asset is reported on the filer's own return. The spouse wording is the owner's single phrasing, '(or, on a joint return, your spouse)', and on a separate return it names the filer only; the question's 'directly or indirectly' cases do not name community property. Listed for the owner; not changed here."
+    },
+    {
+     "n": 1,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "An unpaid board member or officer of an incorporated foreign charity, association or club: i1040sb p. 2 TIP says 'an officer or director of a foreign corporation' and no more. The gate already adds managing director, manager and 'other company, whatever it is called'; the gated question, sb.form5471, uses the TIP's own words, so a filer who does not see the body as a corporation answers it no as well and the gate drops no refusal the screen would make. Accepted by the owner as low; BUG-0594."
+    },
+    {
+     "n": 2,
+     "severity": "low",
+     "class": "accepted (low)",
+     "evidence": "Shares in a foreign housing or property-holding company: within 'stock ... issued by a non-US company' and 'an interest in a foreign partnership, company, estate or other entity'; the use the entity's property is put to is not named. Waits for the form's next substantive change."
+    },
+    {
+     "n": 3,
+     "severity": "low",
+     "class": "accepted (low)",
+     "evidence": "Family support paid out of a foreign trust or foundation: the trust bullet names money or property that reached the filer through another person, free use of a home the trust owns, foundations, and 'if you are not sure ... answer Yes'. Waits for the form's next substantive change."
+    },
+    {
+     "n": 4,
+     "severity": "low",
+     "class": "accepted (low)",
+     "evidence": "The question's length and the order of its bullets: not a gap in what the question covers; the owner reviewed the length and keeps the question as one. Recorded only."
+    }
+   ],
+   "bugs": [
+    "BUG-0594"
+   ],
+   "subject_sha": "a2162ef06792dd67e929f388f41a09fb8c3e1e2ceb8951956e342836b8be9b1e"
   }
  },
  "baseline": {}

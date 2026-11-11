@@ -1130,6 +1130,14 @@ params:
         doc: i1040sb
         locator: 'p. 1, General Instructions, "You received interest from a seller-financed mortgage", "You received
           interest or ordinary dividends as a nominee"'
+    sb.foreign_no:
+      value: false
+      type: Bool
+      cite:
+        doc: f1040sb
+        locator: 'Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of
+          taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or
+          were a grantor of, or a transferor to, a foreign trust"'
     sales.one:
       value: 1
       type: Count

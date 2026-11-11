@@ -888,18 +888,6 @@
       "source_phrase": "Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements",
       "reason": "Read by the box 1a gate line: every ordinary dividend line 5 reports is a dividend the question counts (with or without a form, nominee amounts included), so a no means line 5 is empty."
     },
-    "consumer:sb.form5471@i1040sb:p1": {
-      "verdict": "same",
-      "question_phrase": "an officer or director of a foreign corporation, or ... own 10% or more of the total value of a foreign corporation's stock, or of the combined voting power",
-      "source_phrase": "Report on line 1 all of your taxable interest",
-      "reason": "Line 2 reads the question only as a refusal gate; the interest rule on this page sets no definition of it, and the question is worded as the Part II TIP (p. 2) states the Form 5471 trigger."
-    },
-    "consumer:sb.form5471@i1040sb:p3": {
-      "verdict": "same",
-      "question_phrase": "an officer or director of a foreign corporation, or ... own 10% or more of the total value of a foreign corporation's stock, or of the combined voting power",
-      "source_phrase": "Line 7a—Question 1 ... financial interest in or signature authority over a financial account located in a foreign country",
-      "reason": "Line 2 reads the question only as a refusal gate; the foreign account and trust rules on this page set no definition of it, and the question is worded as the Part II TIP (p. 2) states the Form 5471 trigger."
-    },
     "consumer:f8889.months_family@i8889:p7": {
       "verdict": "same",
       "question_phrase": "Of those eligible months, the number in which you had or were treated as having family (not self-only) high-deductible health plan coverage on the first day of the month",
@@ -1109,6 +1097,24 @@
       "question_phrase": "you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico",
       "source_phrase": "Social Security Benefits Worksheet, \"Be sure you have read the Exception in the line 6a and 6b instructions to see if you can use this worksheet instead of a publication to find out if any of your benefits are taxable.\"",
       "reason": "The worksheet line refuses on a Yes, the Exception's cases (p. 31) in which a publication's worksheet is used instead; the worksheet takes the joint return's benefits and income, so each case applies when it is true of either spouse, as the question says."
+    },
+    "consumer:sb.fbar_required@fincen114:p4": {
+      "verdict": "same",
+      "question_phrase": "Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions",
+      "source_phrase": "A United States person that has a financial interest in or signature authority over foreign financial accounts must file an FBAR if the aggregate value of the foreign financial accounts exceeds $10,000",
+      "reason": "The gate line reads the question unchanged as its yes branch; the page states the very filing requirement the question asks the filer to determine, so the question means what the page defines."
+    },
+    "consumer:sb.form8938@i8938:p7": {
+      "verdict": "same",
+      "question_phrase": "Are you required to file Form 8938 for specified foreign financial assets?",
+      "source_phrase": "Specified foreign financial assets include the following assets. 1. Financial accounts maintained by a foreign financial institution",
+      "reason": "The gate line reads the question unchanged as its yes branch; the page defines the specified foreign financial assets the question names, and the requirement to file stays the filer's determination as before."
+    },
+    "consumer:sb.form8938@i8938:p8": {
+      "verdict": "same",
+      "question_phrase": "Are you required to file Form 8938 for specified foreign financial assets?",
+      "source_phrase": "Interests in Foreign Estates and Foreign Trusts; Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans",
+      "reason": "The gate line reads the question unchanged as its yes branch; the page sets out which interests in foreign estates, trusts, pensions and disregarded entities are specified foreign financial assets, the assets the question names."
     }
   },
   "baseline": {

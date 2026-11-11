@@ -21,6 +21,9 @@ verification system.
     each review, and transcription and render are line-scoped unless the tool refuses or `--whole`.
   - Mechanical agent work (applying rulings, bug-entry formatting, input ripple, bookkeeping)
     runs on Sonnet; judgment (adjudication, source reading, design) on Opus.
+    Fable (`claude-fable-5-2`) may run either class, and the launch hook allows it (owner decision
+    2026-11-10). Use it for agents and for review calls (`--model claude-fable-5-2`) only when the
+    owner says so for the session; the defaults above hold otherwise.
   - One review per form per round, run after all of that form's fixes in the round
     have landed; a round whose reviews find only lows starts no further round (the
     lows wait for the form's next substantive change). Enforced in `rerun_all.py` for transcription,

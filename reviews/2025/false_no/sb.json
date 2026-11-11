@@ -1,6 +1,156 @@
 {
  "form": "sb",
  "reviews": {
+  "gate:sb.foreign_any": {
+   "subject_sha": "a2162ef06792dd67e929f388f41a09fb8c3e1e2ceb8951956e342836b8be9b1e",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married filer filing separately in a community property state (or country) whose spouse holds a foreign bank or brokerage account, foreign shares or a foreign pension in the spouse's sole name. Half of the income from it is reported on the filer's own separate return.",
+       "why_no": "The gate says 'you (or, on a joint return, your spouse)'. On a separate return the filer reads this as excluding everything in the spouse's name, and none of the 'directly or indirectly' examples (agent, nominee, disregarded entity, grantor trust, over-50% entity) mentions a spouse or community property.",
+       "line": "sb.form8938_if_foreign",
+       "irs_text": "i8938 p. 7, Interests in Specified Foreign Financial Assets: 'You have an interest in a specified foreign financial asset if any income, gains, losses, deductions, credits, gross proceeds, or distributions from holding or disposing of the asset are or would be required to be reported, included, or otherwise reflected on your income tax return.'",
+       "severity": "medium",
+       "fix": "Add a bullet: 'an account or asset in someone else's name (such as your spouse's on a separate return, including under community property law) if any of its income, gains or proceeds are or would be reported on your return'. Alternatively, when the filing status is married filing separately, ask about the spouse's foreign accounts and assets as well."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer (or spouse) who sits unpaid on the board of a foreign charity, church, school, sports club, professional association or condominium or housing association that is legally incorporated abroad, or who is its company secretary, treasurer or supervisory-board member. They own no shares and have no signing power over its bank account.",
+       "why_no": "The bullet says 'officer, director, managing director or manager of a foreign corporation or other company' and its examples are all commercial forms (Ltd, plc, GmbH, AG, SA, SARL, BV) or 'an employer's subsidiary'. A volunteer trustee or board member of a nonprofit or association does not see it as a 'corporation or company' or see the seat as a 'role in a foreign corporation'.",
+       "line": "sb.form5471_if_foreign",
+       "irs_text": "i1040sb p. 2, Part II. Ordinary Dividends, TIP: 'You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation.'",
+       "severity": "medium",
+       "fix": "Extend the bullet: '...officer, director, board or supervisory-board member, trustee, secretary, treasurer or manager of any incorporated body organized outside the 50 states and DC, whether paid or unpaid, including a nonprofit, charity, association, club, cooperative or building or owners' company'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who owns a home or holiday flat abroad through shares in a foreign housing company or cooperative, or through a property-holding entity (such as a French SCI or a Finnish or Swedish housing company). They hold no foreign bank account.",
+       "why_no": "They see it as owning real estate, which they know is not a 'financial asset'. The words 'stock ... issued by a non-US company' and 'an interest in a foreign partnership, company, estate or other entity' read to them as investments, not their apartment.",
+       "line": "sb.form8938_if_foreign",
+       "irs_text": "i8938 p. 7: 'Any interest in a foreign entity'; 'Stock issued by a foreign corporation'; 'Stock is not considered used or held for use in the conduct of a trade or business.'",
+       "severity": "low",
+       "fix": "Add to the fifth bullet: 'including shares or a membership in a foreign company, cooperative or partnership that owns real estate you use, such as a housing company or property-holding company'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who in 2025 received money from relatives abroad that was in fact paid out of a family trust, foundation or similar holding arrangement, or who lives rent-free in a home such an arrangement owns.",
+       "why_no": "They see a gift or family support from a person. The trust bullet is framed as 'a distribution from a foreign trust' and 'being a beneficiary', neither of which they think describes them.",
+       "line": "sb.line8_if_foreign",
+       "irs_text": "i1040sb p. 3, Line 8: 'If you received a distribution from a foreign trust, you must provide additional information. For this purpose, a loan of cash or marketable securities is generally considered to be a distribution.'",
+       "severity": "low",
+       "fix": "Add: 'Answer Yes if money, property or the use of property you received from someone abroad (even if described as a gift, allowance or inheritance) came, or may have come, from a trust, foundation or family holding arrangement.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer whose only foreign connection is one that the headline does not suggest: a personal loan to a relative abroad, a cash-value policy from a non-US insurer bought in the United States, a Puerto Rico or Guam company interest, or a balance in an overseas payment or betting app.",
+       "why_no": "The question is one very long sentence block headed 'foreign account, any other foreign financial asset, a connection to a foreign trust, or a role in a foreign corporation'. A filer who skims the headline and the first bullets answers No before reaching the later bullets. The fifth bullet opens with 'held outside an account at a US financial institution, counting ...' ahead of its subject and is hard to parse.",
+       "line": "sb.form8938_if_foreign",
+       "irs_text": "i8938 p. 7: 'A note, bond, debenture, or other form of indebtedness issued by a foreign person'; 'stock or securities issued by a person organized under the laws of a U.S. possession'",
+       "severity": "low",
+       "fix": "Split the gate into separate yes/no questions (accounts and signature authority; other accounts and balances; directly held foreign securities, entities, loans and estates; trusts; corporate roles and 10% ownership) and treat the gate as true if any is Yes. Reword the fifth bullet to start with the nouns: 'Any of these, unless held in an account at a US financial institution: ...'."
+      }
+     ],
+     "prompt_sha": "3f8c5466bdd7976394d2e98de2e86b67beb1b09812f6c6c42b845b440febab84",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-fable-5-2",
+     "cost": 0.6185039999999999,
+     "date": "2026-11-10",
+     "response": ".transcription/false_no/gate_sb.foreign_any.a2162ef06792.1.response.txt"
+    }
+   ],
+   "condition": "sb.foreign_any",
+   "lines": [
+    "sb.fbar_required_if_foreign",
+    "sb.form5471_if_foreign",
+    "sb.form8938_if_foreign",
+    "sb.line8_if_foreign"
+   ],
+   "inputs": [
+    "sb.fbar_required",
+    "sb.form5471",
+    "sb.form8938",
+    "sb.line8"
+   ],
+   "used": [
+    {
+     "doc": "f1040sb",
+     "revision": "2025; created 2025-04-23",
+     "text_sha256": "8186516d0d5e8418307b784e80f53618eb16a45b8a123a7058e358fcca68ebb6",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Part III, Foreign Accounts and Trusts, \"You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust\"; , Part III, lines 7a and 8; , Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; , Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "df11693629afb7112b9883e2927694d80b0373e3dc65cfb1631fe3229a99650f"
+    },
+    {
+     "doc": "i1040sb",
+     "revision": "TY2025; printed April 23, 2025",
+     "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\"",
+      "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\"",
+      "p. 2, Part III. Foreign Accounts and Trusts, \"Statement of Specified Foreign Financial Assets, with your income tax return\"; , Specified Foreign Financial Assets",
+      "p. 3, Line 7a—Question 2, \"See FinCEN Form 114 and its instructions at FINCEN.gov to determine whether you must file the form\"; , Who Must File an FBAR, \"A United States person that has a financial interest in or signature authority over foreign financial accounts must file an FBAR if the aggregate value of the foreign financial accounts exceeds $10,000 at any time during the calendar year\"",
+      "p. 3, Line 8, \"If you received a distribution from a foreign trust, you must provide additional information\", \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520\"",
+      "pp. 1–3, interest, dividends and foreign accounts/trusts",
+      "pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, \"a loan of cash or marketable securities is generally considered to be a distribution\"; \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+    },
+    {
+     "doc": "fincen114",
+     "revision": "Release Date January 2017 (v1.4), the version FinCEN links as the FBAR line item filing instructions (no later printed edition on the FinCEN FBAR page)",
+     "text_sha256": "d02d203fae0233099e880f329a2cb62e2d9e421e05b9684d4ff57ee487aeae79",
+     "pages": [
+      4,
+      5
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "9dae16399f902265194e429707a89bdd56f6d073c3b2e8a20406adb270fa2621"
+    },
+    {
+     "doc": "i8938",
+     "revision": "November 2021 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+     "text_sha256": "a8e2b7faaddaed66219b50201f6973c6a43930fd6684ff318546e714398767a7",
+     "pages": [
+      7,
+      8
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      7,
+      8
+     ],
+     "cols_sha256": "34ce0e00d160350c359f8a06e1075ab0d2a0e3768c8897b767c87e69198873cf"
+    }
+   ]
+  },
   "gate:sb.has_income": {
    "subject_sha": "ce534a6d7b965f4e73ce8667e089c1fd4b5a0dc078cc41e50364233e2a240114",
    "grandfathered": true,
