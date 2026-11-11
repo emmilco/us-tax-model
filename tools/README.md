@@ -256,6 +256,19 @@ sampling and satisfies the milestone until its subject changes. Runs are guarded
   renumber a BUG entry; colliding ids are renumbered in a commit on the branch before merging.
 - **Docs conventions** (`tools/check_docs_conventions.py`, docs tier): docs/ files are dated unless living, and
   HANDOFF-NEXT-SESSION.md keeps two entries.
+- **Year-free ids** (`tools/check_year_ids.py`, step `year_ids`; spec 4.3): reads every document, line, parameter,
+  enum and table id of the year's canonical build, both jurisdictions, and fails on an id that carries a year unless
+  `tools/year_ids.json` lists it for that tax year. An id carries a year when it holds four digits from 1900 to 2099
+  with no digit beside them (`died_2025`, `is2025`, `edu_a2026`, `born_before_2001`) or, for an id with no dot, ends
+  in the two digits of the tax year or a year next to it (`clcw26`). Not a year, by rule: a number outside that range
+  or of another length (Form 2441, Form 1040, an amount of 5000), four digits written as a reference after `f`, `form`,
+  `line`, `section` or `pub` (`line2025`), and two digits in a dotted id (`line25`, `rate25`). A line id is examined
+  after its document's id, so a document is listed once and its lines are not. Each listed id has its `kind` and its
+  `class` (what the year means: `this_year`, `next_year`, `prior_year`, `offset`, `misnomer`), which the check
+  compares with the build; a listed id that is gone or carries no year fails until its entry is removed, so the list
+  only shrinks. A tax year with no list refuses every such id. An id the rules take for a year whose number is not
+  one is recorded under `look_alikes` with what the number is. The list holds no replacement names. `--self-test`
+  (`year_ids_self_test`) plants ids of each shape and the look-alikes.
 - **Form claims** (`tools/claims.py`): two lanes never edit the same form at once. `tools/hooks/pre-commit` refuses a
   commit that changes a form another branch holds, or adds an input id while another branch holds `inputs`; a commit on
   a lane's branch claims what it changes, and `tools/hooks/post-commit` releases a branch's claims when it is merged.

@@ -202,6 +202,8 @@ Each line of a form or worksheet is one record:
 
 A form definition is a list of lines in printed order, plus the form's identity, tax year and revision.
 
+An id carries no year. This holds for the ids of documents, lines, parameters, enums and tables alike: an id that names a year would have to be renamed, with everything keyed to it, each time a tax year is adopted. The ids that carry a year today are listed in `tools/year_ids.json`, each with what its year means; they are renamed when the next tax year is adopted, and the list only shrinks. `tools/check_year_ids.py` (in check-all) refuses any other id that carries a year and states what counts as one. The rule does not cover an ambiguity id (`amb.<year>.<slug>`), whose year is the edition of the register that recorded the entry, or an enum value: a calendar year that is a fact, such as the year a property was placed in service, is a value, not part of an id.
+
 ### 4.4 Collections and instances
 
 Forms that occur in multiples (Form W-2, Form 1099-INT, Form 1099-DIV, Form 8949 rows) are keyed collections. Aggregation across them is always an explicit `sum_over`. Pagination is a presentation matter and is not modelled.
