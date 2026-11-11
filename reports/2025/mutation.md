@@ -9,7 +9,7 @@ the fixture test compares).
 | --- | --- |
 | Mutants | 5725 |
 | Killed by the checker | 1433 |
-| Killed by fixtures | 3971 (47 only by class M cases) |
+| Killed by fixtures | 3971 (46 only by class M cases) |
 | Surviving | 321 (313 provably equivalent on every input; 8 equivalent on answered inputs only) |
 | Mutation score (raw) | 94.4% |
 | Mutation score (mutants provably equivalent on every input excluded) | 99.9% |
@@ -42,7 +42,6 @@ keep it (or a stage fixture with the same facts and source-predicted values) amo
 | operand.f8962.f8962.marriage.no.then4 | replace an operand | f8962.f8962.marriage | classm.f8962.4.deepseek |
 | operand.f8962.f8962.alien_branch.line5.all.1.lt.0 | replace an operand | f8962.f8962.alien_branch | classm.s3.2.deepseek |
 | operand.household.household.cp_not_joint.no.then1 | replace an operand | household.household.cp_not_joint | classm.f8960.2.deepseek |
-| operand.household.household.cp_marriage_ended.cp_not_joint.then2 | replace an operand | household.household.cp_marriage_ended | classm.f8960.3.deepseek |
 | operand.household.household.cp_marriage_ended.cp_not_joint.then3 | replace an operand | household.household.cp_marriage_ended | classm.f2441.4.deepseek |
 | operand.household.household.cp_marriage_ended.cp_not_joint.then4 | replace an operand | household.household.cp_marriage_ended | classm.f8962.4.deepseek |
 | operand.person.person.tin_or_itin_applied.tin.then0 | replace an operand | person.person.tin_or_itin_applied | classm.s3.2.deepseek |

@@ -2626,7 +2626,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 14, Head of Household, Test 2; p. 15, "Keeping up a home. To find out what is included in the cost of keeping up a home, see Pub. 501."; p501 p. 9, Keeping Up a Home, "Costs you include. Include in the cost of keeping up a home expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home." p501 p. 9, "Costs you don’t include. Don’t include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation. Also don’t include the value of your services or those of a member of your household." p501 p. 9, Note, "Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you."; p501 p. 9, Note, "if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided for that person" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?
-      = false
+      = UNKNOWN (no input supplied for household.unmarried)
       cite: [i1040gi] p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025; printed date 2026-02-25; 482e9c48)
   (helper) Were you married at the end of 2025?
       = false
@@ -2699,9 +2699,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [p501] p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025 returns; PDF created 2026-02-04; 288b62a4)
   (gate) Head of household turns on a person who lived with you more than half the year only by counting an absence head of household does not count
-      = false
+      = UNKNOWN (no input supplied for household.unmarried)
       cite: [p501] p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025 returns; PDF created 2026-02-04; 288b62a4)
-      note: taken: {"eq":["household.unmarried",{"const":false}],"op":"test"}
+      note: guard incomplete; possible: #0 bool, #1 bool
   (helper) Test 1 met
       = false
       cite: [i1040gi] p. 14, Head of Household, Test 1 (2025; printed date 2026-02-25; 482e9c48)
@@ -2713,7 +2713,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["household.home_cost",{"const":false}],"op":"test"}
   (helper) Unmarried or considered unmarried, and Test 1 or Test 2 applies
-      = false
+      = UNKNOWN (no input supplied for household.unmarried)
       cite: [i1040gi] p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies" (2025; printed date 2026-02-25; 482e9c48)
   (gate) Head of household checked without meeting its tests
       = false
@@ -8306,8 +8306,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   household.hoh_absence_from_test1: chose false (guard 1)
       not taken: guard 0 = false
   household.hoh_absence_from_test2: chose false (guard 0)
-  household.hoh_absence: chose false (guard 1)
-      not taken: guard 0 = false
+  household.hoh_absence: chose UNKNOWN (no input supplied for household.unmarried)
   household.test2_met: chose false (guard 1)
       not taken: guard 0 = false
   household.cp_unmarried: chose false (guard 1)
@@ -9773,10 +9772,10 @@ Derivations:
   household.no_test2_persons: test(household.test2_persons = 0; 0 = 0)
   household.any_test2_absence: test(household.test2_absence_persons = 0; 0 = 0)
   household.hoh_absence_from_test2: choose(household.no_test2_persons = true; true = true; household.any_test2_absence = false)
-  household.hoh_absence: choose(household.unmarried = false; true = true; household.unmarried = false; false = false; household.no = false)
+  household.hoh_absence: choose(household.unmarried = UNKNOWN (no input supplied for household.unmarried); true = true; household.hoh_absence_from_test1 = false; household.unmarried = UNKNOWN (no input supplied for household.unmarried); false = false; household.no = false)
   household.any_test2_person: test(household.test2_persons = 0; 0 = 0)
   household.test2_met: choose(household.home_cost = false; true = true; household.home_cost = false; false = false; household.no = false)
-  household.hoh_eligible: test(household.hoh_absence = false; household.hoh_community_property = false; household.unmarried = false; true = true)
+  household.hoh_eligible: gate(household.hoh_absence = UNKNOWN (no input supplied for household.unmarried))
   household.cp_unmarried: choose(household.married = false; true = true; household.married = false; false = false; household.cp_married = false)
   household.no_spouse_died: test(household.spouse_died_2025 = false; false = false)
   household.joint_unmarried: choose(household.married = false; true = true; household.married = false; false = false; household.no_spouse_died = true)

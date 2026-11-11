@@ -755,7 +755,8 @@
         "person[taxpayer].w2[a].box3": 10000000,
         "person[taxpayer].w2[a].box4": 620000,
         "person[taxpayer].w2[b].box3": 10000000,
-        "person[taxpayer].w2[b].box4": 620000
+        "person[taxpayer].w2[b].box4": 620000,
+        "household.unmarried": true
       },
       "expect": {
         "s3.line11": {

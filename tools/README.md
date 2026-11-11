@@ -315,6 +315,77 @@ sampling and satisfies the milestone until its subject changes. Runs are guarded
 `--force-rerun REASON`, and an estimate above the owner's $3.00 gate needs `--approve-cost` (`spend.py`, shared with
 `rerun_all.py`).
 
+## Test-data defaults
+
+A hand-authored fixture case states only the answers that make its scenario. `fixtures/<year>/defaults.json` (and,
+for the New York cases, also `fixtures/ny/<year>/defaults.json`) gives every other input and every roster one value
+with its reason. `engine/src/fixture-inputs.ts` (`resolveInputs`) is the only place the defaults are applied; Python
+tools read cases through `tools/fixture_inputs.py`, which calls that resolver (`main.js fixture-inputs`), so every
+tool evaluates a case on the same inputs. The evaluator, the command-line program and the interview never read the
+defaults, and the class M and mutation files take none.
+
+A default is sound when it is what a filer in the case's situation would truthfully answer. Where it is not, the
+project's own line usually does not read it, but a model's transcription of the form may, and its value then differs
+from the project's on every case that takes the default.
+
+**Resolution order.** (1) Parameter-relative inputs become amounts. (2) Every input the case does not state takes its
+default, entry by entry for the collections the case lists. (3) A default with a withholding condition is left out
+where the condition holds; every condition is read on the inputs as they stand after step 2. (4) An input the case
+states as `null` is left out. An input left out is unknown to the evaluator.
+
+**Conditional withholding.** A default that is untruthful in a situation another answer identifies says so beside
+its value:
+
+```json
+{ "input": "household.married", "value": false, "reason": "...",
+  "withheld": { "when": [{ "input": "f1040.status", "in": ["mfj", "mfs"] }],
+                "reason": "A filer who files jointly or separately is married, ..." } }
+```
+
+`when` is a list of tests that must all hold. A test reads one answer, stated or defaulted, and compares it with
+constants: `{"input": <input>, "is": <value>}`, `"in": [<values>]` or `"not": <value>`, or
+`{"count": "$<collection>", ...}` for the number of entries a roster lists. For a default of a collection's input, a
+test reads a top-level form's input or an input of the same entry (or of an entry enclosing it), and a count reads a
+top-level roster or the roster the entry is in. A test on an answer the case leaves unknown does not hold, and a
+condition never removes an answer the case states. A condition reads only inputs whose own default is unconditional,
+so the order in which conditions are read cannot matter. The build refuses a condition that names an unknown input
+or roster, compares with a value the answer cannot take, tests one answer twice, reads an entry it cannot be read
+beside, reads its own input or an input whose default is conditional, or holds in no case.
+
+**Consistency rules.** `consistency` in a defaults file lists answers that one filer cannot give together, each with
+its reason, in the same tests:
+
+```json
+{ "never": [{ "input": "f4952.has_interest", "is": false }, { "input": "f4952.line4g", "not": 0 }],
+  "reason": "The election on Form 4952 line 4g is made by a filer with investment interest expense." }
+```
+
+The build refuses a case in which every test of a rule holds and at least one of the answers read is a default the
+case took (a case that states all of them is a scenario, and is not refused), and it refuses defaults that break a
+rule by themselves. A rule on a collection's inputs is read entry by entry. `open` on a rule lists what is known to
+break it and stays, each with its reason: a case id, or `(defaults)` for the defaults themselves, in which case an
+entry that takes every answer the rule reads from the defaults is not reported again. An open entry that no longer
+breaks its rule is refused. The rules state only what cannot be true of one filer; they do not re-derive the forms.
+
+**State, withhold or leave.**
+
+- Leave the default where it is the truthful answer in the case's situation.
+- State the answer where the scenario means one, including an answer equal to the default that the case's result
+  rests on: a case whose student's number was only applied for states that no.
+- Withhold in the case (`null`) where the scenario is that the question is unanswered.
+- Withhold in the defaults (a condition) where the default is untruthful for every case in a situation another
+  answer identifies; a case in that situation that needs the answer states it.
+- Do not withhold a default only because the project does not read it there. A review's transcription may read it,
+  and an unknown in its place hides a real disagreement (`docs/2026-11-11_test_data_defaults_audit.md`).
+
+**Guards.** The build checks every input and roster has exactly one default of a value it accepts, every condition
+and rule is well formed, and no case breaks a rule (`defaultsProblems`, `consistencyProblems`); `check-self-test`
+plants each malformed condition and each kind of violation. A commit that changes an existing default's value or
+its withholding condition needs one line per default in its message, `Fixture-default-changed: <input> (<n> cases)`,
+with the number of cases whose inputs change as `tools/defaults_guard.mjs` counts them (`tools/hooks/commit-msg`); a
+default for a new input needs none. `tools/fixtures_year.py` carries the defaults file to a new year with its
+conditions and rules, less the open entries of cases it drops.
+
 ## Process hooks
 
 - **Fresh build** (`tools/build_fresh.py`): the completeness, screen, false-no and question checks and triage refuse to run when

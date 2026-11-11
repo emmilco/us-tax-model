@@ -37,7 +37,8 @@
         "dependent[k0].edu_1098t": true,
         "dependent[k0].edu_inst": 430000,
         "dependent[k0].edu_line24": true,
-        "dependent[k0].edu_ein": true
+        "dependent[k0].edu_ein": true,
+        "dependent[k0].edu_tin_issued": false
       },
       "expect": {
         "dependent[k0].edu_line27": {
@@ -115,8 +116,7 @@
         "dependent[k0].edu_1098t": true,
         "dependent[k0].edu_inst": 430000,
         "dependent[k0].edu_line24": true,
-        "dependent[k0].edu_ein": true,
-        "dependent[k0].edu_tin_issued": null
+        "dependent[k0].edu_ein": true
       },
       "expect": {
         "dependent[k0].edu_line27": {
@@ -434,8 +434,7 @@
         "dependent[k0].edu_inst": 500000,
         "dependent[k0].edu_a2025": 500000,
         "dependent[k0].edu_line24": true,
-        "dependent[k0].edu_ein": true,
-        "dependent[k0].edu_tin_issued": null
+        "dependent[k0].edu_ein": true
       },
       "expect": {
         "dependent[k0].edu_line27": {
@@ -493,7 +492,6 @@
         "dependent[k0].edu_a2025": 100000,
         "dependent[k0].edu_line24": true,
         "dependent[k0].edu_ein": true,
-        "dependent[k0].edu_tin_issued": null,
         "person[taxpayer].edu_born_2007": true,
         "person[taxpayer].edu_born_2002": true,
         "person[taxpayer].edu_parent": null,
@@ -554,7 +552,6 @@
         "dependent[k0].edu_a2025": 100000,
         "dependent[k0].edu_line24": true,
         "dependent[k0].edu_ein": true,
-        "dependent[k0].edu_tin_issued": null,
         "person[taxpayer].edu_born_2007": true,
         "person[taxpayer].edu_born_2002": true
       },
@@ -1276,7 +1273,6 @@
         "dependent[son].edu_mat": 35000,
         "dependent[son].months": 12,
         "dependent[son].student": true,
-        "dependent[son].edu_tin_issued": null,
         "f1040.status": "mfj",
         "f8863.paid": true,
         "household.married": true,
@@ -1701,7 +1697,6 @@
         "dependent[son].edu_inst": 400000,
         "dependent[son].edu_line24": true,
         "dependent[son].months": 12,
-        "dependent[son].edu_tin_issued": null,
         "f1040.status": "mfj",
         "f8863.paid": true,
         "household.married": true,

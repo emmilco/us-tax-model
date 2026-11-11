@@ -1224,7 +1224,6 @@
         "dependent[all_year].qr_all_year": true,
         "dependent[all_year].months": 12,
         "dependent[all_year].supported": true,
-        "dependent[all_year].lawful": null,
         "dependent[eleven_months].relationship": "other",
         "dependent[eleven_months].age": 30,
         "dependent[disabled].age": 35,
@@ -5996,8 +5995,7 @@
         "dependent[child].qr_all_year": true,
         "dependent[child].supported": true,
         "dependent[child].other_claimant": true,
-        "dependent[child].other_nontaxpayer": true,
-        "dependent[child].lawful": null
+        "dependent[child].other_nontaxpayer": true
       },
       "expect": {
         "dependent[child].qualifying_child": {
@@ -6444,8 +6442,7 @@
         "dependent[uncle].spouse_relative": true,
         "dependent[uncle].qr_all_year": null,
         "dependent[uncle].gross_income": 400000,
-        "dependent[uncle].supported": true,
-        "dependent[uncle].lawful": null
+        "dependent[uncle].supported": true
       },
       "expect": {
         "dependent[uncle].qr_relationship": {
@@ -6478,8 +6475,7 @@
         "dependent[kid].age": 10,
         "dependent[kid].months": 12,
         "dependent[kid].kidnapped": true,
-        "dependent[kid].us_half": false,
-        "dependent[kid].lawful": null
+        "dependent[kid].us_half": false
       },
       "expect": {
         "dependent[kid].eic_child": {
@@ -6511,8 +6507,7 @@
         "dependent[kid].relationship": "household_member",
         "dependent[kid].age": 10,
         "dependent[kid].months": 12,
-        "dependent[kid].other_claimant": true,
-        "dependent[kid].lawful": null
+        "dependent[kid].other_claimant": true
       },
       "expect": {
         "dependent[kid].eic_child": {
@@ -6585,8 +6580,7 @@
         "dependent[kid].months": 12,
         "dependent[kid].kidnapped": true,
         "dependent[kid].us_half": false,
-        "dependent[kid].other_claimant": null,
-        "dependent[kid].lawful": null
+        "dependent[kid].other_claimant": null
       },
       "expect": {
         "dependent[kid].kidnap_eic": {

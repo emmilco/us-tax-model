@@ -254,6 +254,11 @@ def main():
     if (src / "defaults.json").exists():
         d = json.loads((src / "defaults.json").read_text(encoding="utf-8"))
         d["tax_year"] = t
+        # A consistency rule's open list names cases; one that names a dropped case would be refused by the build.
+        gone = {cid for _, cid in dropped}
+        for rule in d.get("consistency", []):
+            if "open" in rule:
+                rule["open"] = {cid: why for cid, why in rule["open"].items() if cid not in gone}
         (dst / "defaults.json").write_text(json.dumps(d, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     docs = sorted({line.split(".")[0] for line in work_lines})

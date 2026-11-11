@@ -1,6 +1,6 @@
 {
   "tax_year": 2025,
-  "note": "Test-data defaults (engine/src/fixture-inputs.ts): every input a fixture case does not state takes its template's value here; null in a case withholds one. The evaluator, the command-line program and the interview never read this file. Changing an existing value needs an acknowledged affected-cases report (tools/defaults_guard.mjs); adding one for a new input needs only the normal tier. The New York fixtures take the federal defaults as well as these.",
+  "note": "Test-data defaults (engine/src/fixture-inputs.ts): every input a fixture case does not state takes its template's value here; null in a case withholds one. A default with \"withheld\" is left out where every test of its \"when\" holds on the case's other answers, stated or defaulted. \"consistency\" lists answers one filer cannot give together (\"never\"); the build refuses a case that takes a default against such a rule, but for what the rule lists as \"open\". The evaluator, the command-line program and the interview never read this file. Changing an existing value or withholding condition needs an acknowledged affected-cases report (tools/defaults_guard.mjs); adding a default for a new input needs only the normal tier. tools/README.md, \"Test-data defaults\". The New York fixtures take the federal defaults as well as these.",
   "defaults": [
     {
       "input": "$ny_it2",

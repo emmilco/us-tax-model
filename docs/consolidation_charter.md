@@ -57,7 +57,10 @@ Standing rules of the model and the interview (the formal gates design, 11-06):
   baseline of held templates.
 - **Guards:**
   - A new input's default needs the normal tier.
-  - A changed existing default needs `Fixture-default-changed:` lines in the commit message.
+  - A changed existing default (its value, or the condition under which it is withheld) needs
+    `Fixture-default-changed:` lines in the commit message.
+  - A case may not take a default that its other answers contradict by a consistency rule of the defaults file
+    (`tools/README.md`, "Test-data defaults").
   - A changed held leak or held asked-unread template must shrink the baseline, never grow it.
 - **Generated review output** (88% of churned lines were committed review output later regenerated): review logs
   become content-addressed by subject hash, so an unchanged subject never rewrites a file (owner, 2026-11-09). This
@@ -100,6 +103,7 @@ Every process rule is either enforced by a tool or marked advisory. No new prose
 | Mechanical agent work runs on Sonnet | `tools/claude_hooks/agents.py` (Claude Code hooks) | enforced: a launch needs a model and `Class:`, `Year:`, `Jurisdiction:` in its brief; the `agent_runs.jsonl` row is written at launch and completed with usage at the end |
 | Two lanes never edit the same form at once | `tools/claims.py`, checked by `pre-commit` (owner, 2026-11-10) | enforced at commit; a merge releases the merged branch's claims; `inputs` is one claim |
 | Fixture defaults are visible test data | `defaults_guard.mjs`, commit-msg hook | enforced |
+| No case takes a default its other answers contradict | consistency rules in `fixtures/<year>/defaults.json`, checked by the build (`consistencyProblems`) | enforced for the declared rules; known violations are listed as `open` with their reasons |
 | A merge never creates or renumbers BUG entries (renumber on the branch) | `check_bug_inventory.py --merge`, pre-commit | enforced |
 | Review checks and triage read a fresh build | `tools/build_fresh.py`, called by the review checks and triage | enforced |
 | A review that reads rendered English reads what the current build renders to | `tools/build_fresh.py` (`require(rendered=True)`), called by `render_compare.py`, `rerun_all.py` (render jobs), `check_logs.py` and the screen, false-no and question reviews and checks | enforced |

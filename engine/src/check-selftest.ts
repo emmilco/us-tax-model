@@ -7,6 +7,8 @@ import { gateProblems } from "./gates.js";
 import { evaluate } from "./eval.js";
 import type { CanonicalData, Line, RegisterEntry, TableDoc } from "./types.js";
 import { flatText, indentRest, parseStructured, textSummary } from "./text.js";
+import { DEFAULTS_ALONE, consistencyProblems, defaultsProblems, resolveInputs, tableOf } from "./fixture-inputs.js";
+import type { CheckedCase, DefaultEntry, DefaultsFile, Rule, Test } from "./fixture-inputs.js";
 
 function table(bands: { at_least: number; less_than: number; tax: number[] }[]): TableDoc {
   return { id: "t", kind: "tax_table", title: "t", tax_year: 2025, cite: null as never, columns: [{ key: "a", statuses: [] }, { key: "b", statuses: [] }], bands };
@@ -99,6 +101,115 @@ export function valueText(v: { kind: string; [k: string]: unknown }): string {
   if (v.kind === "unknown") return "unknown";
   if (v.kind === "money") return `money:${String(v["cents"])}`;
   return `${v.kind}:${String(v["value"])}`;
+}
+
+/** The fixtures' test-data defaults (fixture-inputs.ts) on a small document set: a form `h`, a collection `p` and a
+ * collection `w` within each entry of `p` (and a second collection `q`, a New York form `ny_n`). Conditional withholding resolves as documented, each malformed condition
+ * is named, and each kind of consistency violation is found. Returns the number of cases. */
+function defaultsSelfTest(): number {
+  const input = (id: string, type: string) => ({ id, printed: "1", label: id, type, expr: { op: "input", source: `${id}?` }, cite: null });
+  const forms = [
+    { id: "h", kind: "form", tax_year: 2025, title: "h", lines: [input("h.status", "Enum(st)"), input("h.married", "Bool"), input("h.unmarried", "Bool"), input("h.gate", "Bool"), input("h.amount", "NonNegDollars")] },
+    { id: "p", kind: "form", tax_year: 2025, title: "p", collection: { cite: null }, lines: [input("p.a", "Bool"), input("p.b", "Bool"), input("p.c", "Bool")] },
+    { id: "w", kind: "form", tax_year: 2025, title: "w", collection: { parent: "p", cite: null }, lines: [input("w.x", "Bool")] },
+    { id: "q", kind: "form", tax_year: 2025, title: "q", collection: { cite: null }, lines: [input("q.z", "Bool")] },
+    { id: "ny_n", kind: "form", tax_year: 2025, title: "n", lines: [input("ny_n.q", "Bool")] },
+  ];
+  const data = { forms, defs: [], tables: [], params: { tax_year: 2025, enums: { st: { values: ["single", "joint", "sep", "hoh"] } }, values: {} }, register: { tax_year: 2025, entries: [] } } as unknown as CanonicalData;
+  const base: [string, unknown][] = [["h.status", "single"], ["h.married", false], ["h.unmarried", false], ["h.gate", false], ["h.amount", 0], ["$p", ["one"]], ["p.a", false], ["p.b", false], ["p.c", false], ["$w", []], ["w.x", false], ["$q", []], ["q.z", false]];
+  const file = (withheld: Record<string, Test[]> = {}, consistency?: Rule[]): DefaultsFile => ({ tax_year: 2025, ...(consistency ? { consistency } : {}),
+    defaults: base.map(([i, value]): DefaultEntry => ({ input: i, value, reason: "r", ...(withheld[i] ? { withheld: { when: withheld[i], reason: "r" } } : {}) })) });
+  const ny: DefaultsFile = { tax_year: 2025, defaults: [{ input: "ny_n.q", value: false, reason: "r" }] };
+  let n = 0;
+
+  // Resolution: a default is withheld where its condition holds on the stated and defaulted answers, and only there.
+  const when = {
+    "h.married": [{ input: "h.status", in: ["joint", "sep"] }], "h.unmarried": [{ input: "h.status", not: "hoh" }],
+    "p.b": [{ count: "$p", is: 1 }], "p.c": [{ input: "p.a", is: true }, { input: "h.gate", is: false }], "w.x": [{ input: "p.a", is: true }, { count: "$w", is: 2 }],
+  };
+  const table = tableOf(file(when));
+  const resolved = (inputs: Record<string, unknown>) => resolveInputs(inputs, data, "self-test", "federal", table);
+  const absent: [string, Record<string, unknown>, string[], string[]][] = [
+    ["nothing stated", {}, ["h.unmarried", "p[one].b"], ["h.married", "p[one].c"]],
+    ["a membership test on a stated answer", { "h.status": "joint" }, ["h.married", "h.unmarried"], []],
+    ["a stated answer is never withheld", { "h.status": "sep", "h.married": false, "h.unmarried": true }, [], ["h.married", "h.unmarried"]],
+    ["a test on an unknown answer does not hold", { "h.status": null }, ["h.status"], ["h.married", "h.unmarried"]],
+    ["'not' on a known answer", { "h.status": "hoh" }, [], ["h.married", "h.unmarried"]],
+    ["a count of the entry's own roster", { "$p": ["a", "b"] }, [], ["p[a].b", "p[b].b"]],
+    ["tests on the same entry and on a top-level answer", { "$p": ["a", "b"], "p[a].a": true }, ["p[a].c"], ["p[b].c"]],
+    ["all the tests must hold", { "p[one].a": true, "h.gate": true }, [], ["p[one].c"]],
+    ["a test on the enclosing entry and a count of the nested roster", { "$p": ["a", "b"], "p[a].a": true, "$w@p[a]": ["x", "y"], "$w@p[b]": ["x", "y"] }, ["p[a].w[x].x", "p[a].w[y].x"], ["p[b].w[x].x", "p[b].w[y].x"]],
+    ["the nested count is read per enclosing entry", { "p[one].a": true, "$w@p[one]": ["x"] }, [], ["p[one].w[x].x"]],
+  ];
+  for (const [name, inputs, gone, kept] of absent) {
+    const out = resolved(inputs);
+    for (const k of gone) assert.ok(!(k in out), `defaults: ${name}: ${k} should be left out`);
+    for (const k of kept) assert.ok(k in out, `defaults: ${name}: ${k} should be given`);
+    n++;
+  }
+
+  // Validation: each malformed condition or rule is named; the well-formed file has no problem.
+  const problems = (f: DefaultsFile) => defaultsProblems(data, { federal: f, ny }).join("\n");
+  assert.equal(problems(file(when, [{ never: [{ input: "p.a", is: true }, { input: "w.x", is: true }, { input: "h.gate", is: false }], reason: "r", open: { "some.case": "r" } }])), "");
+  const bad: [string, DefaultsFile, RegExp][] = [
+    ["an unknown input", file({ "h.married": [{ input: "h.nope", is: true }] }), /h\.married withheld: the test on h\.nope: h\.nope is not a declared input/],
+    ["a roster named as an input", file({ "h.married": [{ input: "$p", is: 1 }] }), /\$p is not a declared input/],
+    ["an input named as a count", file({ "h.married": [{ count: "p.a", is: 1 }] }), /p\.a is not a declared roster/],
+    ["the default's own input", file({ "h.married": [{ input: "h.married", is: true }] }), /reads the default's own input/],
+    ["an input whose default is conditional", file({ "h.married": [{ input: "h.status", is: "joint" }], "h.unmarried": [{ input: "h.married", is: true }] }), /h\.unmarried withheld: the test on h\.married reads an input whose own default is conditional, which is resolved later/],
+    ["a value the enum does not have", file({ "h.married": [{ input: "h.status", in: ["joint", "widowed"] }] }), /"widowed": not a value of Enum\(st\); the test can never hold/],
+    ["a value of the wrong type", file({ "h.married": [{ input: "h.gate", is: 1 }] }), /1: not a Bool; the test can never hold/],
+    ["a count that is not a whole number", file({ "p.b": [{ count: "$p", is: -1 }] }), /a count is a whole number, 0 or more/],
+    ["an answer tested twice", file({ "h.married": [{ input: "h.status", is: "joint" }, { input: "h.status", is: "sep" }] }), /is the second on that answer/],
+    ["a count of 0 of the entry's own roster", file({ "p.b": [{ count: "$p", is: 0 }] }), /can never hold: the roster lists the entry itself/],
+    ["an empty membership list", file({ "h.married": [{ input: "h.status", in: [] }] }), /"in" is a list of distinct values/],
+    ["two comparisons in one test", file({ "h.married": [{ input: "h.status", is: "joint", not: "sep" }] }), /needs exactly one of "is", "in" and "not"/],
+    ["no tests", file({ "h.married": [] }), /a condition is a list of at least one test/],
+    ["an entry's answer read from a top-level default", file({ "h.married": [{ input: "p.a", is: true }] }), /reads an entry of p, which h\.married cannot be read beside/],
+    ["a nested entry's answer read from the enclosing entry", file({ "p.b": [{ input: "w.x", is: true }] }), /reads an entry of w, which p\.b cannot be read beside/],
+    ["a New York answer read from the federal defaults", file({ "h.married": [{ input: "ny_n.q", is: true }] }), /reads a New York answer from the federal defaults/],
+    ["a roster's default withheld", file({ "$p": [{ input: "h.gate", is: true }] }), /\$p: a roster's default cannot be withheld/],
+    ["a rule of one test", file({}, [{ never: [{ input: "h.gate", is: true }], reason: "r" }]), /consistency rule 1 needs at least two tests/],
+    ["a rule without a reason", file({}, [{ never: [{ input: "h.gate", is: true }, { input: "h.amount", not: 0 }], reason: "" }]), /consistency rule 1 holds "never" \(the tests\), a one-line "reason"/],
+    ["a rule whose open list is not reasons", file({}, [{ never: [{ input: "h.gate", is: true }, { input: "h.amount", not: 0 }], reason: "r", open: { c: "" } }]), /"open" maps a case id to a one-line reason/],
+    ["a rule across two entries that are not nested", file({}, [{ never: [{ input: "p.a", is: true }, { input: "q.z", is: true }], reason: "r" }]), /consistency rule 1: the test on q\.z reads an entry of q, which the rule's other tests cannot be read beside/],
+  ];
+  for (const [name, f, re] of bad) { assert.match(problems(f), re, `defaults: not refused: ${name}`); n++; }
+  const withReason = file(when);
+  (withReason.defaults.find((d) => d.input === "h.married")!.withheld as { reason?: string }).reason = "";
+  assert.match(problems(withReason), /h\.married: "withheld" holds "when" \(the tests\) and a one-line "reason"/);
+  n++;
+
+  // Consistency: a planted violation of each kind is found; what is stated on purpose, listed as open, or not read is not.
+  const pair: Rule = { never: [{ input: "h.married", is: false }, { input: "h.unmarried", is: false }], reason: "married or unmarried." };
+  const gate: Rule = { never: [{ input: "h.gate", is: false }, { input: "h.amount", not: 0 }], reason: "an amount needs its gate." };
+  const group: Rule = { never: [{ input: "p.a", is: true }, { input: "p.b", is: false }, { input: "p.c", is: false }], reason: "a means b or c." };
+  const alone: Rule = { never: [{ input: "p.a", is: false }, { input: "p.c", is: false }], reason: "a or c." };
+  const kase = (id: string, inputs: Record<string, unknown>, f = "h.json"): CheckedCase => ({ id, file: f, j: "federal", inputs });
+  const found = (rules: Rule[], cases: CheckedCase[], withheld: Record<string, Test[]> = {}) => consistencyProblems(data, { federal: file(withheld, rules), ny: null }, cases).join("\n");
+  const unmarriedSingle = { "h.unmarried": [{ input: "h.status", is: "single" }] };
+  const planted: [string, string, RegExp | null][] = [
+    ["a pair: one stated, one a default", found([pair], [kase("c1", { "h.status": "joint", "h.married": false })], unmarriedSingle), /^c1: takes the default of h\.unmarried \(false\) against h\.married false; .*consistency rule 1: married or unmarried\./],
+    ["a pair: both defaults, where a condition did not hold", found([pair], [kase("c1", { "h.status": null }), kase("c2", {})], unmarriedSingle), /^c1: takes the default of h\.married \(false\) and h\.unmarried \(false\) against its other defaults/],
+    ["a pair: both stated is a scenario, not a default", found([pair], [kase("c1", { "h.status": "hoh", "h.married": false, "h.unmarried": false }), kase("c2", {})], unmarriedSingle), null],
+    ["a gate: the amount stated, the gate a default", found([gate], [kase("c1", { "h.amount": 5 })]), /^c1: takes the default of h\.gate \(false\) against h\.amount 5; .*an amount needs its gate\./],
+    ["a gate: answered in the case", found([gate], [kase("c1", { "h.amount": 5, "h.gate": true }), kase("c2", { "h.amount": 0 })]), null],
+    ["a group, read entry by entry", found([group], [kase("c1", { "$p": ["x", "y"], "p[y].a": true })]), /^c1: takes the default of p\[y\]\.b \(false\) and p\[y\]\.c \(false\) against p\[y\]\.a true/],
+    ["a case that takes no defaults is not read", found([gate], [kase("c1", { "h.amount": 5 }, "mutation.json")]), null],
+    ["a case listed as open", found([{ ...gate, open: { c1: "known." } }], [kase("c1", { "h.amount": 5 })]), null],
+    ["an open case that does not break the rule", found([{ ...gate, open: { c1: "known." } }], [kase("c1", {})]), /consistency rule 1: lists c1 as open, but no such case breaks the rule/],
+    ["the defaults alone", found([alone], []), /consistency rule 1: the defaults alone break it \(p\.a, p\.c\): a or c\./],
+    ["the defaults alone, listed as open; an entry of defaults only is not counted again", found([{ ...alone, open: { [DEFAULTS_ALONE]: "known." } }], [kase("c1", {})]), null],
+    ["the defaults alone, open; a case that states one of the answers", found([{ ...alone, open: { [DEFAULTS_ALONE]: "known." } }], [kase("c1", { "p[one].a": false })]), /^c1: takes the default of p\[one\]\.c \(false\) against p\[one\]\.a false/],
+    ["the defaults listed as open when they break nothing", found([{ ...gate, open: { [DEFAULTS_ALONE]: "known." } }], []), /lists \(defaults\) as open, but the defaults alone do not break the rule/],
+    ["a withholding condition that holds in no case", found([], [kase("c1", { "h.status": "joint" })], unmarriedSingle), /^h\.unmarried: its withholding condition holds in no case that takes the default/],
+    ["a withholding condition that holds in a case", found([], [kase("c1", {})], unmarriedSingle), null],
+  ];
+  for (const [name, got, re] of planted) {
+    if (re === null) assert.equal(got, "", `defaults: wrongly refused: ${name}`); else assert.match(got, re, `defaults: not found: ${name}`);
+    n++;
+  }
+  return n;
 }
 
 export function runCheckSelfTest(): void {
@@ -225,5 +336,6 @@ export function runCheckSelfTest(): void {
   ];
   for (const [text, re] of bad) assert.match(parseStructured(text).problems.join("\n"), re, `not flagged: ${JSON.stringify(text)}`);
   assert.deepEqual(parseStructured("Q?\n\n- employer_reported, an enum value").problems, []);
+  console.log(`defaults self-test: ${defaultsSelfTest()} cases passed (conditional withholding, condition and rule validation, consistency violations)`);
   console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3 + typedCount + 10 + bad.length} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions, Bool and enum choose, structured text)`);
 }

@@ -58,6 +58,14 @@ MUTATE = [
      "mutation: Bool and enum choose reasoning self-test: 0 problems"),
 ]
 REQUIRED = {
+    # engine/src/check-selftest.ts, runCheckSelfTest.
+    "check_self_test": [
+        ("the self-test of the fixtures' test-data defaults (defaultsSelfTest)",
+         r"defaults self-test: [1-9][0-9]* cases passed \(conditional withholding, condition and rule validation, "
+         r"consistency violations\)",
+         "defaults self-test: 47 cases passed (conditional withholding, condition and rule validation, consistency "
+         "violations)"),
+    ],
     "compare": COMPARE,
     "ny_compare": COMPARE,
     "mutate": MUTATE,
