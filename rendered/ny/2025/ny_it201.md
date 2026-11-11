@@ -28,9 +28,9 @@
 
 ## (question) — `ny_it201.ask.special_accrual`
 
-- **Authored helper label:** Were you (or, on a joint return, your spouse) a New York City nonresident on December 31, 2024, or will you (or, on a joint return, your spouse) be a New York State or City nonresident on January 1, 2026, and does that person have income fixed and determinable in one tax year but reported federally in another (accrued income)?
-- **Encoded (Bool):** Input — Were you (or, on a joint return, your spouse) a New York City nonresident on December 31, 2024, or will you (or, on a joint return, your spouse) be a New York State or City nonresident on January 1, 2026, and does that person have income fixed and determinable in one tax year but reported federally in another (accrued income)?
-- Expr: `{"op":"input","source":"Were you (or, on a joint return, your spouse) a New York City nonresident on December 31, 2024, or will you (or, on a joint return, your spouse) be a New York State or City nonresident on January 1, 2026, and does that person have income fixed and determinable in one tax year but reported federally in another (accrued income)?"}`
+- **Authored helper label:** Does this apply to you (or, on a joint return, your spouse): the person was a New York City nonresident on December 31, 2024, or will be a New York State or City nonresident on January 1, 2026, and has income fixed and determinable in one tax year but reported federally in another (accrued income)?
+- **Encoded (Bool):** Input — Does this apply to you (or, on a joint return, your spouse): the person was a New York City nonresident on December 31, 2024, or will be a New York State or City nonresident on January 1, 2026, and has income fixed and determinable in one tax year but reported federally in another (accrued income)?
+- Expr: `{"op":"input","source":"Does this apply to you (or, on a joint return, your spouse): the person was a New York City nonresident on December 31, 2024, or will be a New York State or City nonresident on January 1, 2026, and has income fixed and determinable in one tax year but reported federally in another (accrued income)?"}`
 - Cite: [ny_it201i] p. 31, Special accruals, "you may have to use special accrual rules (see below) to calculate your New York State and New York City personal income tax for 2025" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.yonkers`
@@ -42,9 +42,9 @@
 
 ## (question) — `ny_it201.ask.special_code`
 
-- **Authored helper label:** Does any New York special condition code apply to you (or, on a joint return, your spouse) (item G: for example A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1)?
-- **Encoded (Bool):** Input — Does any New York special condition code apply to you (or, on a joint return, your spouse) (item G: for example A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1)?
-- Expr: `{"op":"input","source":"Does any New York special condition code apply to you (or, on a joint return, your spouse) (item G: for example A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1)?"}`
+- **Authored helper label:** Does any New York special condition code (item G) apply to you (or, on a joint return, your spouse)? Examples: A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1.
+- **Encoded (Bool):** Input — Does any New York special condition code (item G) apply to you (or, on a joint return, your spouse)? Examples: A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1.
+- Expr: `{"op":"input","source":"Does any New York special condition code (item G) apply to you (or, on a joint return, your spouse)? Examples: A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1."}`
 - Cite: [ny_it201i] p. 5, Item G, "If you qualify for one or more of the special conditions below, enter the specified two-character code." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.decedent`
@@ -123,7 +123,7 @@
 
   Answer Yes for a withdrawal used for elementary or secondary school tuition, or for a transfer to another state's 529 program: New York treats these as nonqualified although they are qualified federally. A transfer between family members' accounts within New York's program, not paid out, is not a withdrawal.
 - Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) make a withdrawal during 2025 from an account under New York's 529 college savings program that is nonqualified for New York?\n\nA withdrawal is nonqualified for New York unless it was used:\n- for the beneficiary's qualified higher education expenses at an eligible college or other post-secondary institution\n- for the beneficiary's qualified postsecondary credentialing expenses at an eligible educational institution, on or after July 4, 2025\n- to pay principal or interest on a qualified education loan of the beneficiary or the beneficiary's sibling\n- for a rollover to a Roth IRA or to an ABLE account\n- for any purpose, if the withdrawal is the result of the beneficiary's death or disability\n\nAnswer Yes for a withdrawal used for elementary or secondary school tuition, or for a transfer to another state's 529 program: New York treats these as nonqualified although they are qualified federally. A transfer between family members' accounts within New York's program, not paid out, is not a withdrawal."}`
-- Cite: [ny_it201i] p. 8, Line 22, "Did you make a nonqualified withdrawal during 2025 from an account established under New York’s 529 college savings program?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+- Cite: [ny_it201i] p. 8, Line 22, "Did you make a nonqualified withdrawal during 2025 from an account established under New York’s 529 college savings program?"; ny_it225i p. 8, A-103, "If you are filing a joint return, include the applicable amounts from all existing accounts owned by you and your spouse" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.it225`
 
@@ -172,7 +172,7 @@
 - **Authored helper label:** Did you (or, on a joint return, your spouse) have income from sources outside New York State and pay income tax on it to another state, a local government of another state, the District of Columbia or a province of Canada?
 - **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) have income from sources outside New York State and pay income tax on it to another state, a local government of another state, the District of Columbia or a province of Canada?
 - Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) have income from sources outside New York State and pay income tax on it to another state, a local government of another state, the District of Columbia or a province of Canada?"}`
-- Cite: [ny_it201i] p. 13, Line 41: Resident credit, "Did you have income from sources outside New York State and pay income tax to another state, a local government of another state, the District of Columbia, or to a province of Canada?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+- Cite: [ny_it201i] p. 13, Line 41: Resident credit, "Did you have income from sources outside New York State and pay income tax to another state, a local government of another state, the District of Columbia, or to a province of Canada?"; ny_it112ri p. 2, Column A, "include in column A the amounts for both spouses, even if the income of only one spouse was sourced to and taxed by the other taxing authority" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.other_credits`
 
@@ -338,7 +338,7 @@
 ## (gate) — `ny_it201.gate.special_accrual`
 
 - **Authored helper label:** Special accrual rules apply
-- **Encoded (Bool):** helper "Were you (or, on a joint return, your spouse) a New York City nonresident on December 31, 2024, or will you (or, on a joint return, your spouse) be a New York State or City nonresident on January 1, 2026, and does that person have income fixed and determinable in one tax year but reported federally in another (accrued income)?" = true
+- **Encoded (Bool):** helper "Does this apply to you (or, on a joint return, your spouse): the person was a New York City nonresident on December 31, 2024, or will be a New York State or City nonresident on January 1, 2026, and has income fixed and determinable in one tax year but reported federally in another (accrued income)?" = true
 - Expr: `{"eq":["ny_it201.ask.special_accrual",{"const":true}],"op":"test"}`
 - Cite: [ny_it201i] p. 31, Special accruals, "If you are subject to the special accrual rules, see the instructions for Form IT-225, addition modification number A-115 and subtraction modification number S-129." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -352,7 +352,7 @@
 ## (gate) — `ny_it201.gate.special_code`
 
 - **Authored helper label:** A special condition code applies
-- **Encoded (Bool):** helper "Does any New York special condition code apply to you (or, on a joint return, your spouse) (item G: for example A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1)?" = true
+- **Encoded (Bool):** helper "Does any New York special condition code (item G) apply to you (or, on a joint return, your spouse)? Examples: A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1." = true
 - Expr: `{"eq":["ny_it201.ask.special_code",{"const":true}],"op":"test"}`
 - Cite: [ny_it201i] p. 5, Item G, "If you qualify for one or more of the special conditions below, enter the specified two-character code." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 

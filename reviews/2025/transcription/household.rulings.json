@@ -139,6 +139,45 @@
   {
    "printed": "household.ctc_disallowed_claim",
    "project_expr_sha256": "684afea5fdbe3fa7d2c22e7b862e75adfc797ca6ac2cd86f8b85fe2ac3c933d8",
+   "second_expr_sha256": "29ebde93501ba7170a190ebb2617aeeb7b78b336371de8f5ab911650d430b8da",
+   "ruling": "Ruling: model error; i1040s8812 p. 2, Form 8862 may be required, \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\". As the earlier rulings on this line found of earlier replies, the reply reads household.credit_disallowed on returns where the project does not: the project asks it only when the return claims one of the credits (household.credit_disallowed_if_claimed), and the reply tests the answer first, with a claim test of its own (a count of dependents). Its note says the pages do not define this interface. Re-reviewed because household.credit_disallowed was reworded so that it reads correctly with and without the spouse phrase (wording only; no expression changed). executable-triage-v2 (`.transcription/triage/2025/household.json`, pass 219699d4eb98; 1,767 fixtures, 500 generated returns seed 20261026, 226 partial records): 1,842 of 2,493 comparisons agree; differences by kind {\"candidate-unknown\": 7, \"project-refuses\": 556, \"project-unknown\": 88}; on completed returns 5 candidate-unknown, each for household.credit_disallowed where the project is false (for example classm.s8812.4.deepseek); no value difference. The other differences are on refused or incomplete returns. No change to the data.",
+   "context": "2fef7e2ff277d466e5c9d5cd9a756a3ddccd6c58393c70e1b4422c30cf6f988b",
+   "date": "2026-11-11",
+   "run": "e94cb91230d4e098de6a0ff2555fb8bf3d6c95227715b7d797db12e72c43b796",
+   "subject_key": "59c25c5ae9fc19be15db769530f780d9a75d4e60abe50e43379b2dc6544c28bc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@household",
+     "fixture:stage14.asset.refuse_ads_past_gds@household",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@household",
+     "fixture:stage14.asset.refuse_class@household",
+     "fixture:stage14.asset.refuse_listed_low@household",
+     "fixture:stage14.asset.refuse_s179_over@household",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@household",
+     "fixture:classm.f2441.2.deepseek@household",
+     "fixture:classm.f8889.3.deepseek@household",
+     "fixture:classm.f8889.4.deepseek@household",
+     "fixture:classm.f8889.5.deepseek@household",
+     "fixture:classm.s8812.4.deepseek@household",
+     "fixture:classm.retirement.2.deepseek@household",
+     "fixture:classm.s1.6@household",
+     "fixture:classm.dependent.5@household",
+     "fixture:classm.s8812.4@household",
+     "fixture:classm.clcw26.4@household",
+     "fixture:classm.sa.2@household"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "household.ctc_disallowed_claim",
+   "project_expr_sha256": "684afea5fdbe3fa7d2c22e7b862e75adfc797ca6ac2cd86f8b85fe2ac3c933d8",
    "second_expr_sha256": "cc2a9a7cc08a724a93c974fd59329c6f823b34d2fd6532c699dddd12d9151747",
    "ruling": "Ruling: model error; i1040s8812 p. 2, Form 8862 may be required, \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\". As ruled before (T-101): the reply copies household.credit_disallowed, true whenever the answer is Yes also on a return that claims none of the credits (f2.t101.credit_disallowed_eic_zero: project false, reply true), and it needs the answer where the project does not ask it (classm.s8812.4.deepseek). Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/household.json; 1,747 fixtures, 500 generated returns seed 20261026, 247 partial records): 1,717 of 2,520 comparisons agree; differences {\"candidate-unknown\": 98, \"project-refuses\": 629, \"project-unknown\": 74, \"value\": 2}; on completed returns {\"candidate-unknown\": 73, \"value\": 1}.",
    "context": "122b1e22d2926a1d8080f188877d9eb30e3931f99d94e107928fd83bc0c1d505",
@@ -363,6 +402,45 @@
    "ruling": "Ruling: model error; i1040gi p. 43, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed ...\" (the form goes with a claim of the credit). The candidate copies household.credit_disallowed, so the earned income credit refuses on a Yes answer also when Steps 1 to 5 are not passed and no credit is claimed (f2.t101.credit_disallowed_no_credit_claimed, completed: project false, candidate true; audit.s8812.credit_disallowed, refused), and it needs the answer where eic.eligible is false. The project-refuses differences are refused records on which eic.eligible refuses. The package's narrowing (PENDING-9, T-101) matches the source. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 2,255 of 2,284 agree; 21 candidate-unknown, 6 project-refuses, 2 value; on returns the full interview completes: 2 candidate-unknown, 1 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 2 candidate-unknown household.credit_disallowed (for example classm.f8962.3.deepseek without household.credit_disallowed, household); 1 value (for example f2.t101.credit_disallowed_no_credit_claimed, household). Project stands.",
    "context": "5b3ad023b8158dd828f19e76a88fc32de3950137e88089d97c1f217572bbfa8c",
    "subject_key": "62b5ae5f1a4d4361adb5b2d1a8a16f5f5fb254af36aea0dfbd8c3dedaa50554c"
+  },
+  {
+   "printed": "household.eic_disallowed_claim",
+   "project_expr_sha256": "bd2646fb905574b228d50ec02a822a3c3526e372bd42a0bdcbc699357e0a577d",
+   "second_expr_sha256": "43b716591821d68ca1d63aab720f8f57ac8e2a67c735fdcc069a4ebf7712528f",
+   "ruling": "Ruling: model error; i1040gi p. 43, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed\" (the form goes with a claim of the credit). The one completed value witness is the one of the earlier rulings on this line, f2.t101.credit_disallowed_eic_zero (project false, reply true): the reply tests the answer with eic.eligible, which its note says is \"assumed to mean that the filer meets the EIC steps\" and is used \"rather than the credit amount\", so it is true on a Yes answer where no earned income credit is claimed. Re-reviewed because household.credit_disallowed was reworded so that it reads correctly with and without the spouse phrase (wording only; no expression changed). executable-triage-v2 (`.transcription/triage/2025/household.json`, pass 219699d4eb98; 1,767 fixtures, 500 generated returns seed 20261026, 226 partial records): 1,952 of 2,493 comparisons agree; differences by kind {\"candidate-unknown\": 4, \"project-refuses\": 458, \"project-unknown\": 78, \"value\": 1}; on completed returns 1 value (above) and 1 candidate-unknown for household.credit_disallowed where the project is false (classm.person.22). The other differences are on refused or incomplete returns. No change to the data.",
+   "context": "2fef7e2ff277d466e5c9d5cd9a756a3ddccd6c58393c70e1b4422c30cf6f988b",
+   "date": "2026-11-11",
+   "run": "e94cb91230d4e098de6a0ff2555fb8bf3d6c95227715b7d797db12e72c43b796",
+   "subject_key": "7329246785c300bf990b730c77153d1cfc6f09087f5c306c04abe12a5f440594",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@household",
+     "fixture:stage14.asset.refuse_ads_past_gds@household",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@household",
+     "fixture:stage14.asset.refuse_class@household",
+     "fixture:stage14.asset.refuse_listed_low@household",
+     "fixture:stage14.asset.refuse_s179_over@household",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@household",
+     "fixture:classm.f8889.3.deepseek@household",
+     "fixture:classm.f8889.4.deepseek@household",
+     "fixture:classm.f8889.5.deepseek@household",
+     "fixture:classm.carloan.3@household",
+     "fixture:classm.f8889.3@household",
+     "fixture:classm.person.22@household",
+     "fixture:f2.t101.credit_disallowed_eic_zero@household",
+     "partial:classm.f1040.4.deepseek-household.credit_disallowed@household",
+     "partial:classm.f8863.4.deepseek-household.credit_disallowed@household",
+     "partial:classm.f8962.4.gpt-household.credit_disallowed@household"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "household.eic_disallowed_claim",

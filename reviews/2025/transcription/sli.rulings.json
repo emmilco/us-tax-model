@@ -40,6 +40,45 @@
   {
    "printed": "sli.deduction",
    "project_expr_sha256": "8ed365790d97799ffbe4db36d9f45a7f99d3871c1c52a7f2da5f0cd2a9aa86b3",
+   "second_expr_sha256": "1137a678970eadb73b7025c03c5595bc946097f1e9ec5756a35bea18bb9293fb",
+   "ruling": "Ruling: interface gap; i1040gi p. 98, Schedule 1, line 21 (the conditions for the deduction). The reply's two tests are the project's (a filing status other than married filing separately; no one on the return claimed as a dependent, person.sav_claimed) and it gives worksheet line 9 as the project does. It lacks the project's first alternative, $0 when no interest was paid (sli.interest zero), so it reads person.sav_claimed on returns with no student loan interest. The earlier rulings on this line found earlier replies to lack the dependent test; this reply has it. Re-reviewed because sli.interest was reworded (the older \"(or your spouse if filing jointly)\" in the eligible-student list is now the one spouse phrase; wording only, no expression changed). executable-triage-v2 (`.transcription/triage/2025/sli.json`, pass 970c08bc396c; 1,767 fixtures, 500 generated returns seed 20261026, 40 partial records): 1,759 of 2,307 comparisons agree; differences by kind {\"candidate-refuses\": 331, \"candidate-unknown\": 208, \"project-unknown\": 9}; on completed returns 101 candidate-unknown (on the six the record lists the project is $0 and the reply is unknown for person.sav_claimed); no value difference. The other differences are on refused or incomplete returns. No change to the data.",
+   "context": "734373f8ca3557eaabd6ce65be8cba3a1bc7ba67d8c10aa29083ecfeaf391693",
+   "date": "2026-11-11",
+   "run": "54a147eddcbe6de8ed8567e6a9463e65b264a94b6006622b2c74f9ab67ab5e88",
+   "subject_key": "21f3906b967d0a4c28c0c3c4f7b6ebbc2ca5d2e84bb7127fec2eb3fb8eac751a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@sli",
+     "fixture:stage14.asset.refuse_ads_past_gds@sli",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@sli",
+     "fixture:stage14.asset.refuse_class@sli",
+     "fixture:stage14.asset.refuse_listed_low@sli",
+     "fixture:stage14.asset.refuse_s179_over@sli",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@sli",
+     "fixture:classm.f2441.1.deepseek@sli",
+     "fixture:classm.f2441.2.deepseek@sli",
+     "fixture:classm.f2441.3.deepseek@sli",
+     "fixture:classm.f2441.4.deepseek@sli",
+     "fixture:classm.f2441.5.deepseek@sli",
+     "fixture:classm.dependent.5.deepseek@sli",
+     "fixture:classm.sales.2@sli",
+     "fixture:classm.scveh.2@sli",
+     "fixture:classm.dependent.3@sli",
+     "partial:classm.f1095a.1.deepseek-sli.interest@sli",
+     "partial:classm.f1040.6.deepseek-sli.interest@sli"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "sli.deduction",
+   "project_expr_sha256": "8ed365790d97799ffbe4db36d9f45a7f99d3871c1c52a7f2da5f0cd2a9aa86b3",
    "second_expr_sha256": "63a0dfab6eab45fc93a662c2ef3475c02f3599ac62cf5cd6ebe78358f0a9fa90",
    "ruling": "Ruling: model error; same point as the earlier rulings on this line. i1040gi p. 98, Line 21, among the conditions for the deduction: \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's\" 2025 tax return. The reply gives worksheet line 9 on every return not married filing separately and has no test that the filer or the spouse is claimed as a dependent (its note says it found no input that asks it; the project reads person.sav_claimed). On completed returns where a person on the return is claimed the project enters zero and the reply the worksheet amount: 4 completed value differences, the recorded witnesses mutation.t2.sli.qss_divisor ($2,045.00 against $0.00; person[taxpayer].sav_claimed yes), stage11.sli.claimed, stage11.sli.spouse_claimed and stage16.sd.line17_no_skips_19. Triage executable-triage-v2 (`.transcription/triage/2025/sli.json`, pass e9feb0fa0109; 1,767 fixtures, 500 generated returns seed 20261026): 1,844 of 1,893 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 381, \"candidate-unknown\": 36, \"project-unknown\": 8, \"value\": 5}; the candidate refusals are on its sa.excluded_income declaration and on refusals reaching the line from other forms, the fifth value difference is on a refused record. The project line is retained.",
    "context": "af82d049075c79160b9a03ebedc1b94d802a3dc413e0ed582c0fb76a73d083f3",

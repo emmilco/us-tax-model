@@ -63,6 +63,12 @@
     "ny_it201.gate.it270"
    ],
    "reason": "The partial credit up to $5,000 above the threshold; the screen's bound is the highest threshold plus $5,000 (ny.it270.max_threshold_plus), so no case with a partial credit passes it."
+  },
+  "limit:ny_it112ri:p2:8de7fd3e": {
+   "enforced_by": [
+    "ny_it201.gate.resident_credit"
+   ],
+   "reason": "The limit of the resident credit (Form IT-112-R, column B, line 22 against the other state's total income); the resident credit on line 41 is refused, not computed. The page is cited for its Column A sentence on a joint return."
   }
  },
  "baseline": {}

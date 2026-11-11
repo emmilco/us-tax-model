@@ -5,7 +5,7 @@
  "base": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
  "head_rows": {
   "agree / disagree / missing": "6 / 13 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -82,17 +82,17 @@
   },
   {
    "key": "household.ctc_disallowed_claim",
-   "record": "681888e6a560346c4808ec9f04baf93c9b90bb2dc5ac77384c5d81d95274879d",
+   "record": "6dafaa100a37fbe6f15aab64bc50b94e2a3405675f81c4942f59510ffd113bc9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040s8812 p. 2, Form 8862 may be required, \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\". As ruled before (T-101): the reply copies household.credit_disallowed, true whenever the answer is Yes also on a return that claims none of the credits (f2.t101.credit_disallowed_eic_zero: project false, reply true), and it needs the answer where the project does not ask it (classm.s8812.4.deepseek). Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/household.json; 1,747 fixtures, 500 generated returns seed 20261026, 247 partial records): 1,717 of 2,520 comparisons agree; differences {\"candidate-unknown\": 98, \"project-refuses\": 629, \"project-unknown\": 74, \"value\": 2}; on completed returns {\"candidate-unknown\": 73, \"value\": 1}.",
-   "subject_key": "9c5107eeae5ea9492b03df1f25c99646b3256ccd6a375641fa267f3d31318fac"
+   "ruling": "Ruling: model error; i1040s8812 p. 2, Form 8862 may be required, \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\". As the earlier rulings on this line found of earlier replies, the reply reads household.credit_disallowed on returns where the project does not: the project asks it only when the return claims one of the credits (household.credit_disallowed_if_claimed), and the reply tests the answer first, with a claim test of its own (a count of dependents). Its note says the pages do not define this interface. Re-reviewed because household.credit_disallowed was reworded so that it reads correctly with and without the spouse phrase (wording only; no expression changed). executable-triage-v2 (`.transcription/triage/2025/household.json`, pass 219699d4eb98; 1,767 fixtures, 500 generated returns seed 20261026, 226 partial records): 1,842 of 2,493 comparisons agree; differences by kind {\"candidate-unknown\": 7, \"project-refuses\": 556, \"project-unknown\": 88}; on completed returns 5 candidate-unknown, each for household.credit_disallowed where the project is false (for example classm.s8812.4.deepseek); no value difference. The other differences are on refused or incomplete returns. No change to the data.",
+   "subject_key": "ab82ffccea9ab83d69e93636650b07d7b2b6efdb0a1b8c0df8597b80ea0194ae"
   },
   {
    "key": "household.eic_disallowed_claim",
-   "record": "681888e6a560346c4808ec9f04baf93c9b90bb2dc5ac77384c5d81d95274879d",
+   "record": "6dafaa100a37fbe6f15aab64bc50b94e2a3405675f81c4942f59510ffd113bc9",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 43, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed\" (the form goes with a claim of the credit). As ruled before (T-101): the reply copies household.credit_disallowed, so it is true on a Yes answer also when no credit is claimed (f2.t101.credit_disallowed_eic_zero: project false, reply true), and it needs the answer where eic.eligible is false and the project does not ask it (classm.s8812.4.deepseek). Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/household.json; 1,747 fixtures, 500 generated returns seed 20261026, 247 partial records): 1,804 of 2,520 comparisons agree; differences {\"candidate-unknown\": 104, \"project-refuses\": 540, \"project-unknown\": 70, \"value\": 2}; on completed returns {\"candidate-unknown\": 73, \"value\": 1}.",
-   "subject_key": "574841cdf5b0e954d4f6ed0530d49a0b2ef43ec540ac612508413096727be72c"
+   "ruling": "Ruling: model error; i1040gi p. 43, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed\" (the form goes with a claim of the credit). The one completed value witness is the one of the earlier rulings on this line, f2.t101.credit_disallowed_eic_zero (project false, reply true): the reply tests the answer with eic.eligible, which its note says is \"assumed to mean that the filer meets the EIC steps\" and is used \"rather than the credit amount\", so it is true on a Yes answer where no earned income credit is claimed. Re-reviewed because household.credit_disallowed was reworded so that it reads correctly with and without the spouse phrase (wording only; no expression changed). executable-triage-v2 (`.transcription/triage/2025/household.json`, pass 219699d4eb98; 1,767 fixtures, 500 generated returns seed 20261026, 226 partial records): 1,952 of 2,493 comparisons agree; differences by kind {\"candidate-unknown\": 4, \"project-refuses\": 458, \"project-unknown\": 78, \"value\": 1}; on completed returns 1 value (above) and 1 candidate-unknown for household.credit_disallowed where the project is false (classm.person.22). The other differences are on refused or incomplete returns. No change to the data.",
+   "subject_key": "5c6a30693cf5f1a5d4f8bfa608babb1c3a208a52db00eec8b581e4cba7934ea7"
   },
   {
    "key": "household.hoh_fails",
@@ -148,8 +148,8 @@
   "household.all_tin": "6b25655a24d31a921994b15670c89225170df6dfc18e6349997761c46ae9ad24",
   "household.ctc_ssn": "31672d6fa2a177128b0a60037e4b19d7013d8303b69fa0390739a85751c703e7",
   "household.taxpayer_work_ssn": "3cf01354a8ba1896a5b3b46b1cfbfc4f2dcbb8cd6b40afeee98735599ebc1f3e",
-  "household.ctc_disallowed_claim": "4f6aa4fba134278d8a6d5af62c855bb567df8a2d29494e026c5e6b5cb0dcc3c3",
-  "household.eic_disallowed_claim": "db27aa04d8a35d9c40bf4e7baff1a3c5807e3d9a6624a6ca5ab2112a65db7dc9",
+  "household.ctc_disallowed_claim": "ee3b3554dd5ac6ccdd4664421c2c2092138a851d7d7937b4db24eb21ddf724ba",
+  "household.eic_disallowed_claim": "77b822135b27ab6e7b5c950dad556162237369336af8b5aa9426e04536558108",
   "household.hoh_fails": "6e417aa74e1c13c8bb72caad6e5d86fcfb6fd67cb08f8475bc8b1fa7cf6968d3",
   "household.qss_fails": "49db0cd4d57e1d8f68ff7615a282d68a1900f30e202c0c01e4293d18fbb0dbb1",
   "household.widowed_2025": "9720fa9b74de62c288a58c2b3284b534822533ec3f2ee7898e033b3d6db5e6f1",

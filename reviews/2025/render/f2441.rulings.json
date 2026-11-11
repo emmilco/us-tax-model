@@ -20,6 +20,16 @@
   {
    "printed": "16",
    "restated": "Add helper \"Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before excluding any benefits)\" and helper \"Qualified care expenses incurred in 2025 not already counted in the per-person care amounts\".",
+   "model": "Adding expenses incurred and paid in 2025 to other expenses incurred in 2025 regardless of payment fits 'It doesn't matter when the expenses were paid'. But the per-person total covers only dependents, while the IRS says 'the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s)', which include 'Your disabled spouse', and no refusal names that case.",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. The reviewer accepts adding expenses incurred and paid in 2025 to expenses incurred in 2025 and not yet counted (i2441 p. 5, Line 16, \"It doesn't matter when the expenses were paid\"). Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
+   "context": "833cfc54c5db9901e07e254d91ceeac9e77ec4b342314ef1efc46041b2ba72d0",
+   "date": "2026-11-11",
+   "run": "84274676f797215999304da1b422ca556f4c1b4ba524b27b51747a57c58abf7d",
+   "subject_key": "f0f10a94f5bad04636861941aa94b86c6cb32981eba4e792f82661dd21b5f0a4"
+  },
+  {
+   "printed": "16",
+   "restated": "Add helper \"Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before excluding any benefits)\" and helper \"Qualified care expenses incurred in 2025 not already counted in the per-person care amounts\".",
    "model": "Line 16 asks for \"the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn't matter when the expenses were paid.\" The restatement adds expenses paid in 2025 to other 2025 expenses whenever paid, which fits. But its input leaves out the value of care your employer furnished itself, and no refusal covers line 16. The text does not say whether that value counts as an expense incurred, and it affects lines 17 and 26.",
    "ruling": "Ruling: scope; amb.2025.dc_employer_care_value. The restatement is right that f2441.paid_2026 leaves out the value of care the employer furnished itself, and that the instructions do not say whether that value is an expense incurred. The reviewer's \"no refusal covers line 16\" is wrong: line 17 refuses when the employer furnished the care and line 16 is less than line 15 (f2441.employer_care_l16, i2441 p. 5, Line 16), and f2441.employer_care_gate refuses employer-furnished care alongside paid expenses (i2441 p. 3, Columns (a) and (b)). No change to the data.",
    "context": "7eebd63940fa2b712bdbd3988dd9d76979d96cf03c9eb29782d063a6f182b9de",
@@ -162,6 +172,16 @@
    "subject_key": "d86bfa77e7f2fe1509c6bb167f23766ef4c4bc03b466cb6981d052bfe7d3ec55"
   },
   {
+   "printed": "2 (box)",
+   "restated": "helper \"Number of qualifying persons\" > 3 (dc.providers_listed)",
+   "model": "The more-than-three test matches, but the count covers only persons who are 'your dependent', and no refusal covers a spouse. The IRS also lists 'Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year', so the count can be one short.",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
+   "context": "833cfc54c5db9901e07e254d91ceeac9e77ec4b342314ef1efc46041b2ba72d0",
+   "date": "2026-11-11",
+   "run": "84274676f797215999304da1b422ca556f4c1b4ba524b27b51747a57c58abf7d",
+   "subject_key": "c1dfb5640dec5c4278f0730de0d0471639f3a37f742a6849a344fa92fc07ec9e"
+  },
+  {
    "printed": "21",
    "restated": "Enter the smaller of helper \"Year parameter dc.exclusion_max ($5,000)\" or helper \"The maximum amount your dependent care plan allows to be excluded for 2025\".",
    "model": "The program always starts from $5,000, but the form says \"Enter $5,000 ($2,500 if married filing separately and you were required to enter your spouse's earned income on line 19).\" No refusal names the $2,500 case.",
@@ -211,6 +231,16 @@
    "subject_key": "bb0f1a9e9ff5184020b5724d75f865965c07308d8963a46bac2d9a6b54835948"
   },
   {
+   "printed": "27",
+   "restated": "Enter the amount from helper \"$3,000 if you had one qualifying person, $6,000 if you had two or more\".",
+   "model": "The form says 'Enter $3,000 ($6,000 if two or more qualifying persons)', but the count of qualifying persons covers only dependents. A filer with one qualifying child and a disabled spouse ('Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year') would get $3,000 instead of $6,000, with no refusal.",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
+   "context": "833cfc54c5db9901e07e254d91ceeac9e77ec4b342314ef1efc46041b2ba72d0",
+   "date": "2026-11-11",
+   "run": "84274676f797215999304da1b422ca556f4c1b4ba524b27b51747a57c58abf7d",
+   "subject_key": "1901483d3bab508b15f8002a2f62542e5b6622c61ec1dcf252c3fc00e4ed3edc"
+  },
+  {
    "printed": "3",
    "restated": "Choose — [helper \"Did you receive dependent care benefits?\" = true → line 31] [helper \"Did you receive dependent care benefits?\" = false → helper \"Line 3 without Part III. Add the amounts in column (d) of line 2, not more than $3,000 for one qualifying person or $6,000 for two or more\"]",
    "model": "The Part III branch (line 31) and the min(column (d) total, $3,000/$6,000) branch match the form. But the column (d) total and the one-or-two-person limit only count dependents, which leaves out \"Your disabled spouse who wasn't physically or mentally able to care for themselves.\" No refusal names this case.",
@@ -221,6 +251,16 @@
    "subject_key": "9254b18a74075ae9110a6f5488efd7f216d97e3f1399bc645487a2d29dcf0557"
   },
   {
+   "printed": "3",
+   "restated": "Choose — [helper \"Did you receive dependent care benefits?\" = true → line 31] [helper \"Did you receive dependent care benefits?\" = false → helper \"Line 3 without Part III. Add the amounts in column (d) of line 2, not more than $3,000 for one qualifying person or $6,000 for two or more\"]",
+   "model": "The structure matches (line 31 if Part III was completed, otherwise column (d) total capped at $3,000/$6,000). But the column (d) total and the count behind the cap cover only dependents, with no refusal for the IRS's 'Your disabled spouse who wasn't physically or mentally able to care for themselves', so both the total and 'had two or more persons' can be understated.",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
+   "context": "833cfc54c5db9901e07e254d91ceeac9e77ec4b342314ef1efc46041b2ba72d0",
+   "date": "2026-11-11",
+   "run": "84274676f797215999304da1b422ca556f4c1b4ba524b27b51747a57c58abf7d",
+   "subject_key": "436486239f7089dc3a1cecbfd55bd62870936d05444db66efd265df0dadf5f3e"
+  },
+  {
    "printed": "30",
    "restated": "Subtract line 28 from helper \"Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before excluding any benefits)\". If zero or less, enter -0-.",
    "model": "Subtracting line 28 from the column (d) total, with a floor of zero, fits \"Don't include in column (d) any benefits shown on line 28.\" But the column (d) total omits expenses for a disabled spouse (\"Your disabled spouse ... lived with you for more than half the year\"), and no refusal names this case.",
@@ -229,6 +269,16 @@
    "date": "2026-11-10",
    "run": "b4b82a09760ed475ed2a8ec43b7bfbb812af0c13edb34ffd1003fce4eea02fd6",
    "subject_key": "a94e354ce38f8b98e748675a1d5bfcb155d3ad4bd6a19106923c5c599f0d335d"
+  },
+  {
+   "printed": "30",
+   "restated": "Subtract line 28 from helper \"Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before excluding any benefits)\". If zero or less, enter -0-.",
+   "model": "Subtracting line 28 from the pre-benefit column (d) total is a fair reading of 'Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d)'. But that total covers only dependents and omits expenses for the IRS's qualifying person 'Your disabled spouse', with no refusal naming the case.",
+   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
+   "context": "833cfc54c5db9901e07e254d91ceeac9e77ec4b342314ef1efc46041b2ba72d0",
+   "date": "2026-11-11",
+   "run": "84274676f797215999304da1b422ca556f4c1b4ba524b27b51747a57c58abf7d",
+   "subject_key": "3dfb8807b662eb8d28430f4f2625bc28afc78a488c0014e529325da07ece6b58"
   },
   {
    "printed": "4",

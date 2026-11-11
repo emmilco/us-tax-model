@@ -626,7 +626,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 31, Line 6c
   - *Refused at:* `ssb.line2`
 - **`ssb.pub915`**: Do you have Social Security benefits with a situation the Form 1040 worksheet does not cover (IRA contributions with plan coverage, repayments above benefits, Forms 2555, 4563 or 8815, excluded adoption benefits or Puerto Rico income)?
-  - *The data asks or tests:* Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico? (`input`)
+  - *The data asks or tests:* Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you (or, on a joint return, your spouse) were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico? (`input`)
   - *Not covered:* Pub. 915 or Pub. 590-A worksheet. The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication.
     *Source:* [i1040gi] p. 31, Lines 6a and 6b, Exception
   - *Refused at:* `ssb.line2`
@@ -819,7 +819,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [p504] p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony
   - *Refused at:* `s1.alimony_refused`, `s1.paid_refused`
 - **`s1.cod_unsupported`**: Is a canceled debt excluded or excepted (Form 982), a business, rental or farm debt, from a foreclosure or repossession, or another special case?
-  - *The data asks or tests:* Does any of these apply to a canceled debt: an exception or exclusion (Form 982), a business, rental or farm debt, a foreclosure, repossession or abandonment, deductible interest or other deductible debt, a debt you were not personally liable for, or a debt owed jointly with someone other than your spouse on this return? (`input`)
+  - *The data asks or tests:* Does any of these apply to a canceled debt: an exception or exclusion (Form 982), a business, rental or farm debt, a foreclosure, repossession or abandonment, deductible interest or other deductible debt, a debt you were not personally liable for, or a debt owed jointly with someone who is not on this return? (`input`)
   - *Not covered:* Form 982, Pub. 4681 exceptions, business or farm debt, foreclosures and repossessions. Canceled debt that is excluded from income or excepted, business, rental or farm debt, debt canceled in a foreclosure, repossession or abandonment, deductible interest, nonrecourse debt and debt owed jointly with another person are outside this tool; only fully taxable canceled nonbusiness debt is computed.
     *Source:* [p4681] p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions
   - *Refused at:* `s1.cod_refused`

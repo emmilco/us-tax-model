@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "4173fb9721d1eeab7c41ccad8eb8aefbaa512b83bfd0019caa0f87b35f75b056",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -69,21 +69,21 @@
   },
   {
    "key": "12",
-   "record": "4173fb9721d1eeab7c41ccad8eb8aefbaa512b83bfd0019caa0f87b35f75b056",
+   "record": "810fe5e7ac2dd5d76668e7d80f3d053d812bdea3495bd1e7571e33e8a41b0f53",
    "status": "MATCH",
-   "subject_key": "2b0d019985b62a844835d3b7796bf51106ebf4e2f6821068ec7aca1fa947c738"
+   "subject_key": "4cc45901dcfd8566af4cb55045520debd447893d96ead469e68a4eb4aa589f86"
   },
   {
    "key": "13",
-   "record": "4173fb9721d1eeab7c41ccad8eb8aefbaa512b83bfd0019caa0f87b35f75b056",
+   "record": "810fe5e7ac2dd5d76668e7d80f3d053d812bdea3495bd1e7571e33e8a41b0f53",
    "status": "MATCH",
-   "subject_key": "5f21e7120b3e9cf9a65462358b107d3516ba38df53b981652749eccd55a06665"
+   "subject_key": "8638b252e7fa9627a29e85be4e7ee65685e61687906ae43f4b3f275410527741"
   },
   {
    "key": "14",
-   "record": "ba01953f92a2cfde67d3d72a818c652d3691a971caa3249e5be0e8e278088617",
+   "record": "810fe5e7ac2dd5d76668e7d80f3d053d812bdea3495bd1e7571e33e8a41b0f53",
    "status": "MATCH",
-   "subject_key": "057580d82f17be43ad9a10994c54622f4f687bd4fe55a18916c5e6e7e52def8a"
+   "subject_key": "3a4b972b540acea505a824eab897a19bd85ba425659df2e2f461c8eb04f019ae"
   },
   {
    "key": "15",
@@ -451,9 +451,9 @@
   "6b": "1f1a30f59fb02c8957983b63a52a56cf47edfd45fe0c4aef04b07974a78fd11f",
   "7a": "bab15e18f950e89078f41b9bde5f0629ffbd18c53b3b3e4678c197ca0c6ac6ff",
   "11": "6b14a953bf2b8e72c7c061e32f3b730407e7ae65bcef1832f162e3c01132d56f",
-  "12": "4e7eda0bb20b6cbb6c281453c3d09db1318f7ee71b798c6764aa1efc4167735c",
-  "13": "9e14ab21edcfc5a6df525f4d6a5ea55ce89c86e5e64630af84cdd23a0aae671c",
-  "14": "f0753d6f4fdd74bc9a9c56ed6f4eb976effb439bbf4eb09f33f6deaa0b847e2f",
+  "12": "8db4aae7028eea782e08315bfdf1a1624d9438e49ccef17004aec402b2ff2014",
+  "13": "74f96d451c1bc45f6e60e9d456ff36f37470e2b08a6b2d26e709137d8c78f9de",
+  "14": "1e2621fa951db3bf4bb30ea77f943eb895fd74120b6fab928b900cdb484897e0",
   "15": "2578d786a18122f796bdaf1d06ce233328ce2ae33e151814a6e38a7282d14e6f",
   "16": "34c675cb0351b4eda86e0e1166e63342febd160b2ccc04c33a441b3819a4d306",
   "17a": "68d8223be5604680b6bbea2c4505413e640d82385c6959097649edaf8b00a81e",

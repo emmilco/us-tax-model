@@ -949,11 +949,26 @@
    "printed": "1",
    "project_expr_sha256": "4e0fde6bbd661f1105d1a536ba0f5adfd120991ae32984f69ca91d31bbaa9a97",
    "second_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
-   "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" R4 reran this line because its refusals read ny_it201.ask.state_resident, restructured into a question and a list (no word lost). The line-scoped request gave only the pages the line and its refusals cite (IT-201-I pp. 3-5, 13-14, 30-31; line 1 cites only the form page), so neither the p. 7 instruction nor federal Form 1040 line 1z was in the request, and the reply entered a zero stand-in, which its note says is not a computation; it differs wherever there are wages (35 value differences, all on refused records; on the federal fixtures, which carry no New York answers, the project is unknown or refuses at the residency gates). The project's line follows p. 7, rounded by amb.ny.2025.whole_dollars, as the prior ruling. executable-triage-v2 on this pass's reply (`.transcription/ny_it201.lines-6b86b273ff34.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 40 partial records; 2,178 comparisons): 0 of 2,178 agree; differences on returns the full interview completes: 120 project-refuses, 244 project-unknown; no completed-return value difference. Project stands; the citation gap is BUG-0439.",
-   "context": "3b0f2a11a66a76fa251dfb3ea8e6b2a486f0998c39c4376523a196125d9dc711",
-   "date": "2026-11-07",
-   "run": "7be06673bafb8bbf29c81a33f0b9c85f2aad01bb7da7091b1f6dc372c19c6ea3",
-   "subject_key": "30f5213e015801a1f8233a198e7bf2c13db5489d292b4bad2afe5fa0119d635a"
+   "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" The line-scoped request (rerun because line 1's refusals read ny_it201.ask.special_accrual and ny_it201.ask.special_code, reworded to carry the spouse phrase once; no expression changed) gave only the pages the line and its refusals cite, and line 1 cites only the form page, so neither the p. 7 instruction nor federal Form 1040 line 1z was in the request, as in the earlier rounds on this line. The reply again enters a zero stand-in, the expression ruled before, and this time refuses the line on every return through a helper of its own (ny_it201.h_line1_undetermined); its note says the amount cannot be transcribed from what was supplied and that the line should become a copy of Form 1040 line 1z once that line is in the catalog. The project's line follows p. 7, rounded by amb.ny.2025.whole_dollars. executable-triage-v2 (`.transcription/triage/ny/2025/ny_it201.json`, pass 810b507853ae; 1,767 fixtures, 500 generated returns seed 20261026, 40 partial records): 499 of 2,307 comparisons agree; the 1,808 differences are all candidate refusals (1,029 on completed returns, 123 on incomplete and 656 on refused ones); on the six completed witnesses the record lists the candidate refuses at that helper and the project is unknown for ny_it201.ask.state_resident, a New York answer those records do not carry. No value difference. Project stands; the citation gap is BUG-0439.",
+   "context": "58f48dd9deb26eeb3e0270699069bd6ef991f5b0665dfeaa122b27a2992fd4d2",
+   "date": "2026-11-11",
+   "run": "a8e9f636400e6ba05b597ac12999aabb8684dddc90d09d2ba5347193da85132f",
+   "subject_key": "daf01409872139aeaf338b2ed2729797f0f93a06645fa101079d2db5c587c7e8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@ny_it201",
+     "fixture:stage14.asset.mq_7yr@ny_it201",
+     "fixture:stage14.asset.mq_mixed@ny_it201",
+     "fixture:stage14.asset.mq_not@ny_it201",
+     "fixture:stage14.asset.bonus_100@ny_it201",
+     "fixture:stage14.asset.bonus_40_before@ny_it201"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "1",

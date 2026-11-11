@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
  "head_rows": {
-  "line-scoped reviews": "4 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,10 +22,10 @@
   },
   {
    "key": "1",
-   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
+   "record": "0dd2a9647c478c680654a0ae8e67d8d13dd63c39abbee6818461a627844be45e",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line1z in cents. Same reference otherwise.",
-   "subject_key": "0e2f2856be6c87d738a4737fc3f4f1ed557b7edc6f2d217f27eb88aace7695f5"
+   "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" The line-scoped request (rerun because line 1's refusals read ny_it201.ask.special_accrual and ny_it201.ask.special_code, reworded to carry the spouse phrase once; no expression changed) gave only the pages the line and its refusals cite, and line 1 cites only the form page, so neither the p. 7 instruction nor federal Form 1040 line 1z was in the request, as in the earlier rounds on this line. The reply again enters a zero stand-in, the expression ruled before, and this time refuses the line on every return through a helper of its own (ny_it201.h_line1_undetermined); its note says the amount cannot be transcribed from what was supplied and that the line should become a copy of Form 1040 line 1z once that line is in the catalog. The project's line follows p. 7, rounded by amb.ny.2025.whole_dollars. executable-triage-v2 (`.transcription/triage/ny/2025/ny_it201.json`, pass 810b507853ae; 1,767 fixtures, 500 generated returns seed 20261026, 40 partial records): 499 of 2,307 comparisons agree; the 1,808 differences are all candidate refusals (1,029 on completed returns, 123 on incomplete and 656 on refused ones); on the six completed witnesses the record lists the candidate refuses at that helper and the project is unknown for ny_it201.ask.state_resident, a New York answer those records do not carry. No value difference. Project stands; the citation gap is BUG-0439.",
+   "subject_key": "7fa27b7d93825df4196c48c3ef36b1e961d78bdd64355b157c384639941025a6"
   },
   {
    "key": "2",
@@ -860,9 +860,9 @@
   },
   {
    "key": "64",
-   "record": "1303cb6521e3f40ca68bf6428779c54422474fe8a381da93ca8d52838cc5a7ab",
+   "record": "0dd2a9647c478c680654a0ae8e67d8d13dd63c39abbee6818461a627844be45e",
    "status": "AGREE",
-   "subject_key": "afd9d6af0c9f41be850604eba4ca65a6878316e95ec6bf0484e499f210adbb54"
+   "subject_key": "b696dbf9502c4bdc8b798e940eedb85aaaa602d311992920844e48ea597dc3c7"
   },
   {
    "key": "65",
@@ -1096,7 +1096,7 @@
  "subjects": {
   "C": "ec3d44ebace17d5b01c6e4e6c3fbc9045203535db2e6545ad6d3250167378a8b",
   "H (count)": "c775556cf6baebf885155f3e0e760fff74624401c1c24b030e770258031b62a5",
-  "1": "b69e7f8bf90a93c2298f2f5c2e75f838dd34566f817988cae5a7a87213bc8cd3",
+  "1": "e98bc1b62ab9df775f68ea6d70126b5fe984152c1e26fa291bffeb72e059ec8e",
   "2": "0ab699890c51786638b6f0c1b93f2c9a51e56b9ec03cfab26033df0c734de77c",
   "3": "69f377530fe78842ed6435d2451a374c955c9ac4c0f217290631c73ceb170a92",
   "4": "f5190222dc5ddab58aa5d89b74a4dc3d317370884faacfd2008a57428b329152",
@@ -1395,7 +1395,7 @@
   "61": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "62": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "63": "ae083ca1e053beaf072d860c3f4538073c2ec04c5212631a92f5ddb1c98f9c68",
-  "64": "f4fdd2b0c6726c0eab39fcb4fd60395e4719e74e2dcdd6a10dd341972eb182df",
+  "64": "eda96be4f05bb395b875b5f7216847ba16d303084c487595b3b2726f079ae0f9",
   "65": "dcd9172040fa80b96b5cfdea5d56ff709411c35bd1952db1164291b1e4a20b1b",
   "66": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "67": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",

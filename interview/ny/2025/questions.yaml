@@ -53,8 +53,8 @@ bank:
       taxed by New York; this tool does not compute that addition.
   - input: ny_it201.ask.414h
     order: 1010
-    help: On a joint return, count your spouse's Forms W-2 as well as your own. Members of these New York public
-      retirement systems add back 414(h) contributions shown on Form W-2; this tool does not compute that addition.
+    help: Members of these New York public retirement systems add back 414(h) contributions shown on Form W-2; this
+      tool does not compute that addition.
   - input: ny_it201.ask.529_nonqualified
     order: 1011
     help: New York's list of qualified uses is narrower than the federal one, so a withdrawal that is tax-free

@@ -30,7 +30,7 @@ form:
       op: input
       source: Did you (or, on a joint return, your spouse) have 2025 costs for solar electric, solar water heating,
         small wind energy, geothermal heat pump, battery storage or fuel cell property for a home in the United States,
-        or do you have a residential clean energy credit carryforward from line 16 of your 2024 Form 5695? Include your
+        or a residential clean energy credit carryforward from line 16 of a 2024 Form 5695? Include your
         proportionate share of such costs paid by the condominium management association of a condominium you own, or by
         a cooperative housing corporation in which you are a tenant-stockholder. A cost of an item counts in 2025 when
         its original installation is completed in 2025, whenever it was paid; but a cost connected with constructing or
@@ -118,7 +118,7 @@ form:
         Costs allocable to a swimming pool, hot tub or any other energy storage medium that has a function other than storage do not qualify
     cite:
       doc: i5695
-      locator: p. 4, Line 1, "Enter the amounts you paid for qualified solar electric property"; p. 2, Qualified solar
+      locator: p. 4, Line 1, "Enter the amounts you paid for qualified solar electric property"; p. 2, Joint occupancy, "These rules don't apply to married individuals filing a joint return"; p. 2, Qualified solar
         electric property costs, "The home doesn't have to be your main home"; p. 2, Caution, "If you received a subsidy
         from a public utility for the purchase or installation of an energy conservation product and that subsidy wasn't
         included in your gross income, you must reduce your cost for the product by the amount of that subsidy before you
@@ -148,7 +148,7 @@ form:
         Costs allocable to a swimming pool, hot tub or any other energy storage medium that has a function other than storage do not qualify
     cite:
       doc: i5695
-      locator: p. 4, Line 2, "Enter the amounts you paid for qualified solar water heating property"; p. 2, Qualified solar
+      locator: p. 4, Line 2, "Enter the amounts you paid for qualified solar water heating property"; p. 2, Joint occupancy, "These rules don't apply to married individuals filing a joint return"; p. 2, Qualified solar
         water heating property costs, "if at least half of the energy used by the solar water heating property for such
         purpose is derived from the sun"; p. 2, Caution, "Costs allocable to a swimming pool, hot tub, or any other energy storage
         medium that has a function other than the function of such storage don’t qualify for the residential clean energy
@@ -165,7 +165,7 @@ form:
         Costs allocable to a swimming pool, hot tub or any other energy storage medium that has a function other than storage do not qualify
     cite:
       doc: i5695
-      locator: p. 4, Line 3, "Enter the amounts you paid for qualified small wind energy property"; pp. 2-3, Qualified
+      locator: p. 4, Line 3, "Enter the amounts you paid for qualified small wind energy property"; p. 2, Joint occupancy, "These rules don't apply to married individuals filing a joint return"; pp. 2-3, Qualified
         small wind energy property costs, "property that uses a wind turbine to generate electricity"; p. 2, Caution, "Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function
         other than the function of such storage don’t qualify for the residential clean energy credit"
   - id: f5695.line4
@@ -182,7 +182,7 @@ form:
         Costs allocable to a swimming pool, hot tub or any other energy storage medium that has a function other than storage do not qualify
     cite:
       doc: i5695
-      locator: p. 4, Line 4, "Enter the amounts you paid for qualified geothermal heat pump property"; p. 2, Qualified
+      locator: p. 4, Line 4, "Enter the amounts you paid for qualified geothermal heat pump property"; p. 2, Joint occupancy, "These rules don't apply to married individuals filing a joint return"; p. 2, Qualified
         geothermal heat pump property costs, "must meet the requirements of the Energy Star program that are in effect at
         the time of purchase"; p. 2, Caution, "Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function
         other than the function of such storage don’t qualify for the residential clean energy credit"
@@ -204,7 +204,7 @@ form:
     cite:
       doc: i5695
       locator: p. 4, Lines 5a and 5b, "To qualify for the credit, the qualified battery storage technology must have a
-        capacity of at least 3 kilowatt hours"; p. 2, Qualified battery storage technology costs, "installed in connection
+        capacity of at least 3 kilowatt hours"; p. 2, Joint occupancy, "These rules don't apply to married individuals filing a joint return"; p. 2, Qualified battery storage technology costs, "installed in connection
         with your home located in the United States"; p. 1, Costs, "costs are treated as being paid when the original
         installation of the item is completed", "For purposes of the residential clean energy credit only, costs
         connected with the construction of a home are treated as being paid when your original use of the
@@ -223,7 +223,7 @@ form:
         Costs allocable to a swimming pool, hot tub or any other energy storage medium that has a function other than storage do not qualify
     cite:
       doc: i5695
-      locator: p. 4, Lines 5a and 5b, "enter the amounts you paid for qualified battery storage technology on line 5b"; p. 2, Caution, "Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function
+      locator: p. 4, Lines 5a and 5b, "enter the amounts you paid for qualified battery storage technology on line 5b"; p. 2, Joint occupancy, "These rules don't apply to married individuals filing a joint return"; p. 2, Caution, "Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function
         other than the function of such storage don’t qualify for the residential clean energy credit"
   - id: f5695.line5b
     printed: 5b
@@ -341,12 +341,14 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: The residential clean energy credit carryforward from 2024, the amount on line 16 of your 2024 Form 5695
-        (zero if none)
+      source: The residential clean energy credit carryforward from 2024, the amount on line 16 of your (or, on a joint
+        return, your spouse's) 2024 Form 5695, or the total of those amounts if there is more than one such form (zero
+        if none)
     cite:
       doc: f5695
       locator: Form 5695 (2025), line 12; i5695 p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean
-        energy credit carryforward from 2024"
+        energy credit carryforward from 2024"; i1040gi p. 13, Married Filing Jointly, "A married couple filing jointly
+        report their combined income and deduct their combined allowable expenses on one return"
   - id: f5695.line13
     printed: "13"
     label: Add lines 6b, 11, and 12

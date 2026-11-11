@@ -19,15 +19,13 @@ form:
       locator: p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b
   - id: ssb.pub915
     printed: (helper)
-    label: 'Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you or your spouse
-      were covered by a retirement plan at work or through self-employment; your social security repayments in 2025
+    label: 'Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you (or, on a joint return, your spouse) were covered by a retirement plan at work or through self-employment; your social security repayments in 2025
       (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided
       adoption benefits or income from sources within Puerto Rico?'
     type: Bool
     expr:
       op: input
-      source: 'Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you or your spouse
-        were covered by a retirement plan at work or through self-employment; your social security repayments in
+      source: 'Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you (or, on a joint return, your spouse) were covered by a retirement plan at work or through self-employment; your social security repayments in
         2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided
         adoption benefits or income from sources within Puerto Rico?'
     cite:

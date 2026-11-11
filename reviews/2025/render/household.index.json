@@ -5,8 +5,8 @@
  "base": "ce620459cc556d041469f29727d04cdc79561880edb04933ff505533e5509a56",
  "head_rows": {
   "lines judged": "64",
-  "match / mismatch / unclear / missing": "63 / 1 / 0 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-09); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "62 / 1 / 1 / 0",
+  "line-scoped reviews": "5 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -185,9 +185,9 @@
   },
   {
    "key": "credit_disallowed",
-   "record": "92140a3e23f4c3b078b1ec479d5e8a88c9d0431ec2dddea36c87b42bb094a29c",
+   "record": "e3bbb0f12b6d9f510bb3353601966d072aac83f16dcc2fbe7eb76ed974d27d06",
    "status": "MATCH",
-   "subject_key": "5261ee8ffa0f2f4ce41dc9a0a7e6384fdfe8702180d0473b09f520bfecdb033f"
+   "subject_key": "966e9f7c760fb5855a53ca7d6588e062eafeffd7daf285bb4bc15ffd55072589"
   },
   {
    "key": "no",
@@ -215,21 +215,22 @@
   },
   {
    "key": "credit_disallowed_if_claimed",
-   "record": "16df2d06fbdf0273694ac37518009c8255b260cbeb8ef591d9b6d4615f36c8ca",
+   "record": "e3bbb0f12b6d9f510bb3353601966d072aac83f16dcc2fbe7eb76ed974d27d06",
    "status": "MATCH",
-   "subject_key": "a3380320923e50d07e50a63860e92b017443e38a5f83dc13a0a8c36a845a8ee0"
+   "subject_key": "ddbac21d4b5292affaaeff6312824b4e2aef0157be4f0dd5cad51aafa7559e3e"
   },
   {
    "key": "ctc_disallowed_claim",
-   "record": "16df2d06fbdf0273694ac37518009c8255b260cbeb8ef591d9b6d4615f36c8ca",
-   "status": "MATCH",
-   "subject_key": "479b8fc37c8a71feafaba3f6c92a339dd3968dbc0f72c6bd85135e5b8620f3e2"
+   "record": "e3bbb0f12b6d9f510bb3353601966d072aac83f16dcc2fbe7eb76ed974d27d06",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: interface gap; f1040s8812 p. 1, line 12, \"Is the amount on line 8 more than the amount on line 11?\", \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit.\" The line-scoped request (rerun because household.credit_disallowed, which this line reads, was reworded; no expression changed) gave only the pages this line's citations name, and the Schedule 8812 face was not among them, so the reviewer could not verify that line 8 more than line 11 is the test of a credit being figured; it is, by the text quoted. The reviewer found the Form 8862 condition supported. Project stands.",
+   "subject_key": "e68a864055d950eb427dca986f98efd55391201aa771c8628077598112514864"
   },
   {
    "key": "eic_disallowed_claim",
-   "record": "16df2d06fbdf0273694ac37518009c8255b260cbeb8ef591d9b6d4615f36c8ca",
+   "record": "e3bbb0f12b6d9f510bb3353601966d072aac83f16dcc2fbe7eb76ed974d27d06",
    "status": "MATCH",
-   "subject_key": "341076114ff3828f200aef00eb0f15fa6b22b514830e268faa9c58af74c47188"
+   "subject_key": "ca12fa056c4b7c36a584fdbb4969a9d62d1a52b1a78bc761a120176c84987f74"
   },
   {
    "key": "test1_persons",
@@ -425,14 +426,14 @@
   "community_property": "b9aff9b390e2a39a45d6d12d52893607f842b1ed5bef3be8d1561f5b1cd099b3",
   "hoh_cp_married": "38913d34e97b1a49c5138b008508afdab06a05de435a6cd4275aa946a670a6a7",
   "hoh_community_property": "ad52aa0f10b880249233b55f11c405e7c7a27d12a45f355be8d2bf1056ef915f",
-  "credit_disallowed": "989dc700b136c7dd4a99e966063cb8c6ffc7c021dce2fde70b2e601395506ae8",
+  "credit_disallowed": "b33e31b7c6d7d6e5e20e2106f11d5b684203fe9ff3af0be627e4874428f21912",
   "no": "862ec62b4d8d1425bef39d73175d5475dc393df0e53f24087769a96a2f481bc5",
   "eic_above_zero": "ba8cc62641f042b53a3e8556e037fcff9cb04f69869ee89aa107eea31fdbe42f",
   "eic_claimed": "472baf74f6ab93118321b78d8a272026dbcd847d19833768a300cdd189ef8b07",
   "claims_8862_credit": "8abcb4b35afc133d6a4f2952c3d7fa264a53eb4d080bfbd3afb41cc618920f6c",
-  "credit_disallowed_if_claimed": "bcb5d7482711ff551bdc48062745ad7ec0253ce750ed43effeb3b25897a177b3",
-  "ctc_disallowed_claim": "ff0a4426a96732faca61875426cd70a142d6ed45de77395a933dbf27b25a8e21",
-  "eic_disallowed_claim": "68941b7b335d727ca6facfa551bc70e57e0c23c724dc811377ae1b4c6eecafd0",
+  "credit_disallowed_if_claimed": "47fcc4508e71ccb730093ac17c1615c477dad630bc104c62da12588b8a0ee59e",
+  "ctc_disallowed_claim": "b516886df79b8f7031c43a3deed17fd798d634a1094ff70c8c6f8246241ef8a2",
+  "eic_disallowed_claim": "3bfb2f3fce2b97889d5f800e7eca4586faf8329a69ef558962481c57037d0aed",
   "test1_persons": "61eba99c99a2954329aae0987e04656665117574a385f2411b3d8a05bbd064b6",
   "test2_persons": "1d35fdd798dd9a81ca48f308819882a59628f8aa6ff5b53f9d8cc9ca342486f5",
   "test2_absence_persons": "e3a1d693ed3c732ef3d443dfe9d56839b0bd3174ead47afc92e93275b833d8ea",

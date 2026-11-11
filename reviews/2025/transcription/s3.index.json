@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "0fec04d10eb3917399737bc1bf3b0259c9537423ae7abd972872b60f667ab5b9",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -41,10 +41,10 @@
   },
   {
    "key": "5a",
-   "record": "34c2b27439ee0bba34d82a24b34e08684114f44463a72f7f962305d3e2a70eea",
+   "record": "a3bad5eb625e42177f44455af221463a228ab32f34697874ee48cd29cceba844",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as the earlier rulings on this line. f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\". The project takes Form 5695 line 15 when f5695.part1_any is Yes and $0 otherwise; the reply copies f5695.line15 on every return, so it needs Part I answers (f5695.business_use, f5695.construction_later) the interview asks only after a Yes, or refuses at Part I gates the project never reaches. The rewording of part1_any and line 5a (BUG-0552, BUG-0553) changes no value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 22db672af71d; 1,767 fixtures, 500 generated returns seed 20261026, 105 partial records): 1,243 of 2,372 agree; 856 candidate-refuses and 273 candidate-unknown; on completed returns 119 candidate-unknown on returns with no Part I (project $0.00) and 1 candidate refusal; no value differs. Project stands.",
-   "subject_key": "29b6b869e2266a381fba004c5a363bec9a9511ec911f7a00d0ece72139f3ed1d"
+   "ruling": "Ruling: model error; as the earlier rulings on this line. f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\". The project takes Form 5695 line 15 when f5695.part1_any is Yes and $0 otherwise; the reply copies f5695.line15 on every return, so it needs Part I answers (f5695.business_use, f5695.construction_later) the interview asks only after a Yes, or refuses at Part I gates the project never reaches. The rewording of part1_any and line 5a (BUG-0552, BUG-0553) changes no value. Re-reviewed because f5695.part1_any, which this line reads, was reworded so that the one spouse phrase governs the 2024 carryforward as well as the costs (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 56fd9caa95a1; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,240 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 859, \"candidate-unknown\": 288}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 119} (the candidate refuses at f5695.construction_later on 1; the candidate is unknown for f5695.business_use, f5695.construction_later on 119). The other differences are on refused or incomplete returns. No change to the data.",
+   "subject_key": "f810a6ec1861bed862882597a6cac4ca3800aa3d43207774331142fe5d0aa6d1"
   },
   {
    "key": "5b",
@@ -94,7 +94,7 @@
  },
  "__rest__": "8c4455c31080bf1b56e8381468347998cd07ecbe53b3dadcaf427571c0240a42",
  "foreign": {
-  "5a": "1fb1dbe16a5721f253b8d6d141e69490fbb36ffb6e0b939cd06b2935161319b9",
+  "5a": "c796e5e0ddb7c5c1151b1f2a719e389817bde5a159095a14d7bc6a96bc7cc561",
   "5b": "a89f97d236069bb19791b578a8a6fbd9ebbcfd56bfa85b4075e20969aac6cca3",
   "8": "fabf9f1e3d5aaf82948b5ca22fb205d131bfa4bdec60a9137731753e84d1adf0",
   "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"

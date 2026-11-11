@@ -39,9 +39,9 @@ form:
       cite: { doc: ny_it201i, locator: 'p. 31, New York City and Yonkers, "substitute New York City or Yonkers in place of New York State"' }
     - id: ny_it201.ask.special_accrual
       printed: '(question)'
-      label: 'Were you (or, on a joint return, your spouse) a New York City nonresident on December 31, 2024, or will you (or, on a joint return, your spouse) be a New York State or City nonresident on January 1, 2026, and does that person have income fixed and determinable in one tax year but reported federally in another (accrued income)?'
+      label: 'Does this apply to you (or, on a joint return, your spouse): the person was a New York City nonresident on December 31, 2024, or will be a New York State or City nonresident on January 1, 2026, and has income fixed and determinable in one tax year but reported federally in another (accrued income)?'
       type: Bool
-      expr: { op: input, source: 'Were you (or, on a joint return, your spouse) a New York City nonresident on December 31, 2024, or will you (or, on a joint return, your spouse) be a New York State or City nonresident on January 1, 2026, and does that person have income fixed and determinable in one tax year but reported federally in another (accrued income)?' }
+      expr: { op: input, source: 'Does this apply to you (or, on a joint return, your spouse): the person was a New York City nonresident on December 31, 2024, or will be a New York State or City nonresident on January 1, 2026, and has income fixed and determinable in one tax year but reported federally in another (accrued income)?' }
       cite: { doc: ny_it201i, locator: 'p. 31, Special accruals, "you may have to use special accrual rules (see below) to calculate your New York State and New York City personal income tax for 2025"' }
     - id: ny_it201.ask.yonkers
       printed: '(question)'
@@ -51,9 +51,9 @@ form:
       cite: { doc: ny_it201i, locator: 'p. 5, Item D2, "All IT-201 filers must complete item D2."' }
     - id: ny_it201.ask.special_code
       printed: '(question)'
-      label: 'Does any New York special condition code apply to you (or, on a joint return, your spouse) (item G: for example A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1)?'
+      label: 'Does any New York special condition code (item G) apply to you (or, on a joint return, your spouse)? Examples: A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1.'
       type: Bool
-      expr: { op: input, source: 'Does any New York special condition code apply to you (or, on a joint return, your spouse) (item G: for example A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1)?' }
+      expr: { op: input, source: 'Does any New York special condition code (item G) apply to you (or, on a joint return, your spouse)? Examples: A6 Build America Bond interest, C7 combat zone, D9 death of spouse, E3 or E4 an extension, C2 an installment payment agreement, M4 to M9 a military residence election, Y1.' }
       cite: { doc: ny_it201i, locator: 'p. 5, Item G, "If you qualify for one or more of the special conditions below, enter the specified two-character code."' }
     - id: ny_it201.ask.decedent
       printed: '(question)'
@@ -134,7 +134,7 @@ form:
           - for any purpose, if the withdrawal is the result of the beneficiary's death or disability
 
           Answer Yes for a withdrawal used for elementary or secondary school tuition, or for a transfer to another state's 529 program: New York treats these as nonqualified although they are qualified federally. A transfer between family members' accounts within New York's program, not paid out, is not a withdrawal.
-      cite: { doc: ny_it201i, locator: 'p. 8, Line 22, "Did you make a nonqualified withdrawal during 2025 from an account established under New York’s 529 college savings program?"' }
+      cite: { doc: ny_it201i, locator: 'p. 8, Line 22, "Did you make a nonqualified withdrawal during 2025 from an account established under New York’s 529 college savings program?"; ny_it225i p. 8, A-103, "If you are filing a joint return, include the applicable amounts from all existing accounts owned by you and your spouse"' }
     - id: ny_it201.ask.it225
       printed: '(question)'
       label: 'Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?'
@@ -179,7 +179,7 @@ form:
       label: 'Did you (or, on a joint return, your spouse) have income from sources outside New York State and pay income tax on it to another state, a local government of another state, the District of Columbia or a province of Canada?'
       type: Bool
       expr: { op: input, source: 'Did you (or, on a joint return, your spouse) have income from sources outside New York State and pay income tax on it to another state, a local government of another state, the District of Columbia or a province of Canada?' }
-      cite: { doc: ny_it201i, locator: 'p. 13, Line 41: Resident credit, "Did you have income from sources outside New York State and pay income tax to another state, a local government of another state, the District of Columbia, or to a province of Canada?"' }
+      cite: { doc: ny_it201i, locator: 'p. 13, Line 41: Resident credit, "Did you have income from sources outside New York State and pay income tax to another state, a local government of another state, the District of Columbia, or to a province of Canada?"; ny_it112ri p. 2, Column A, "include in column A the amounts for both spouses, even if the income of only one spouse was sourced to and taxed by the other taxing authority"' }
     - id: ny_it201.ask.other_credits
       printed: '(question)'
       label: 'Are you claiming any other New York State nonrefundable or refundable credit on Form IT-201-ATT (for example long-term care insurance, investment, solar energy, farmers'' school tax or claim of right)?'

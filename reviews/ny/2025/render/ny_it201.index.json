@@ -4,8 +4,7 @@
  "family": "claude",
  "base": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
  "head_rows": {
-  "match / mismatch / unclear / missing": "162 / 6 / 0 / 0",
-  "line-scoped reviews": "6 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "7 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,9 +21,10 @@
   },
   {
    "key": "1",
-   "record": "f1f5223c0e7d85cfdd2fce9fb9107b64c3110901ff5c959979706b79033ed3a0",
-   "status": "MATCH",
-   "subject_key": "efaee75ace831d63253ee0c10ad3504f3961c620faebd7fd75594d0f70347924"
+   "record": "1536c80e0c1ab032237b7160f92258739a89891f38b7b5acd079e9f1980b0dbc",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" The line-scoped request (rerun because line 1's refusals read ny_it201.ask.special_accrual and ny_it201.ask.special_code, reworded to carry the spouse phrase once; no expression changed) gave only the pages its citations name, and line 1 cites only the form page, so p. 7 was not given; the restatement follows it, rounded half up by amb.ny.2025.whole_dollars (IT-201-I p. 2, whole dollars). The model found the rounding and the refusals consistent with the text. Citation gap: BUG-0439, as ruled on this line before. Project stands.",
+   "subject_key": "edf4283c943045495aa2322db176442124963d7a3feb3ee6450638e06f3b241e"
   },
   {
    "key": "2",
@@ -158,9 +158,9 @@
   },
   {
    "key": "22",
-   "record": "d8558a0e12a699f1af01c30fb4fdfe3cdc7ce8356f58989f060ac2a434305b59",
+   "record": "1536c80e0c1ab032237b7160f92258739a89891f38b7b5acd079e9f1980b0dbc",
    "status": "MATCH",
-   "subject_key": "da684d1acc129d2941ee621564b0fd6ac924cbcb608a616a54bc275c69427472"
+   "subject_key": "18d860df16a740c28078e4a536be3b73aa67d7c6a581cad87d589f03a2430aa5"
   },
   {
    "key": "23",
@@ -548,9 +548,9 @@
   },
   {
    "key": "41",
-   "record": "f1f5223c0e7d85cfdd2fce9fb9107b64c3110901ff5c959979706b79033ed3a0",
+   "record": "1536c80e0c1ab032237b7160f92258739a89891f38b7b5acd079e9f1980b0dbc",
    "status": "MATCH",
-   "subject_key": "3d609dda4cad2634bee54dd268063fba91f1d2422c6f9e4674a098d582025021"
+   "subject_key": "1f207d5ebf7e59b87a368672d2b3744f6f06116c575238c8bf0bfda1836f11da"
   },
   {
    "key": "42",
@@ -1026,7 +1026,7 @@
  "subjects": {
   "C": "2f4cfc9d431b0aebac77b25abb69510a4a1c812968120d5bfa95309f7b5a70d8",
   "H (count)": "0c8c87a494445eedac6b11398976eaa3cc695158ad2d7d62ac07fde93f319b62",
-  "1": "c646a4497a4e77438c2b55b174fd68924bdd8f66cf68d68899d2b3d08e9d5948",
+  "1": "919d6d7f6700da6e3dd75892d7b4d0af8898facd681d9dc608d6d261ef1d9af7",
   "2": "41a22296c262da3dae545c48ee34e0f1f178cb656d50b89b46b262cac4e8812b",
   "3": "ec9f1eece2ab7d441953cd351e87aea12bb92fc22ece65ed1f45d255fdff67fe",
   "4": "e1d3337da945c87972767038058bedf0ab6eef7a7fc10340c3622f29f03e99ff",
@@ -1048,7 +1048,7 @@
   "(check)": "e7b435db21cbeac2bafd631ffe088b75c31a59e2a427e92c2a1bebb82a0f9b6f",
   "20": "7d2dc6415d05d2297f04607d834fd6ea24e5413339a1a17d7c3e73765a6558a7",
   "21": "288c8973fc009686e39b0f243eac663f0f39f53fd9bc73cd3095bf5ad1bb5b53",
-  "22": "b116401efb5e13d57fb3ecd81c4df57d26353b6e8f63250ce061d6393ee4ec50",
+  "22": "a4140013dac33d7bff51d9bcf2203bbe0b053504ee4a66ec94d121d919ecee50",
   "23": "b3c38c1fd770b2eec0b797c1a06e2b68e129d6f22b6d6318df12d2be08bf2481",
   "24": "8c9a6ce3ad8284582054a2a18d11a3530b7d42fd1eceb4ffc225cf6f95bb5315",
   "25": "c282ecca28617c3bd96bd4a7033d60597ec53f78e951a7326017524563fef469",
@@ -1113,7 +1113,7 @@
   "(40)": "5b7b0c67337989723dbdc71cc86b9847b5ed126547cbde9341d020162b85c8bc",
   "(48)": "be511286c5c784fd8d72020f389fccbbb129504aed32cb20b32446ec3aac31cc",
   "40": "e4964f3319baf2c14ebf16bf74edbe8f23a19839eb9dbcbb0a9849d016fc1245",
-  "41": "5f260829cb0296d1c3238c8f074b3c127e51b172e670911f6323bdfc039fd6d3",
+  "41": "185247ce6f2ec8c2451df0e33eed2cf73dbe399cf3d1515151f0372fa8040793",
   "42": "38e7e54fbb206e02ea396710bf968ace785c38da186476e2966f9dfa145165a6",
   "43": "0ce88c0c67a3d1a4c17d47409bdb3950bae1670b9c7809c9044bf8a22d001994",
   "44": "3cd7a1684f99ef0f7b695ee4ef8035b18d064b2baec6f51ddfcd4495b1b6b0b3",

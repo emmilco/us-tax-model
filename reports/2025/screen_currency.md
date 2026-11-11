@@ -70,5 +70,6 @@ Findings: 43; ruled 43; in the baseline to be worked off 0.
 - `ssb.terror_disability`: question, gated lines or their citations changed since its samples; run screen_review.py --screens ssb.terror_disability
 - `gate:div.has_return_of_capital`: the condition's wording, the gated lines or their citations changed since its samples; run screen_review.py --screens gate:div.has_return_of_capital
 - `gate:ftc.has_tax`: the condition's wording, the gated lines or their citations changed since its samples; run screen_review.py --screens gate:ftc.has_tax
+- `gate:household.claims_8862_credit`: the condition's wording, the gated lines or their citations changed since its samples; run screen_review.py --screens gate:household.claims_8862_credit
 - `gate:sa.gifts`: the condition's wording, the gated lines or their citations changed since its samples; run screen_review.py --screens gate:sa.gifts
 - `gate:sb.foreign_any`: the condition's wording, the gated lines or their citations changed since its samples; run screen_review.py --screens gate:sb.foreign_any
