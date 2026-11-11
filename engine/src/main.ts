@@ -66,7 +66,8 @@ if (command === "review-stage5") {
 } else if (command === "serve") {
   await runServe(process.argv.slice(3));
 } else if (command === "test-serve") {
-  await serveChecks();
+  try { await serveChecks(); }
+  catch (e) { console.error(`test-serve FAILED: ${e instanceof Error ? e.stack ?? e.message : String(e)}`); process.exit(1); }
 } else if (command === "build") {
   const { errors, stats } = runBuild();
   for (const line of stats) console.log(line);
