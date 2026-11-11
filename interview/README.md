@@ -212,6 +212,13 @@ as a selector. An enum input may give `value_labels`, a label for each value of 
 distinct label per value; the page's selector, its answered list and the CLI's entry hint
 show the labels.
 
+The Form 8863 Part III questions exist twice, as `person.edu*` and `dependent.edu*` lines with a bank entry
+each, because a student is a person on the return or a dependent. The two statements are kept the same:
+a change to the wording, help, order or citation of one is made to its twin in the same commit, by a lane
+that has claimed both `person` and `dependent`, and `tools/check_twins.py` (check-all) fails on any
+difference not declared with its reason in `reviews/2025/twins.json`. `check_twins.py --sync-from person`
+shows the copy and `--write` makes it (tools/README.md, "Twin lines").
+
 A long question is written as structured text (`engine/src/text.ts`): a line's `label`, an input's
 `source`, a `note`, and a bank `prompt` or `help` may hold line breaks, and then only a small Markdown
 subset, which the build checks. The first line is the question; then one-line paragraphs separated by

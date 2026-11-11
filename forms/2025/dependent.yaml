@@ -2399,7 +2399,7 @@ form:
           a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution."
     - id: dependent.edu_student_tin
       printed: (helper)
-      label: 'A student with qualified expenses: a TIN by the due date and a Form 1098-T (or an exception)'
+      label: 'A student with qualified expenses: an SSN, ITIN or ATIN (or an ITIN or ATIN applied for by the due date), and a Form 1098-T (or an exception)'
       type: Bool
       expr:
         op: choose

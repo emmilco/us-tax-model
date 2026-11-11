@@ -565,6 +565,37 @@
   },
   {
    "printed": "31",
+   "project_expr_sha256": "cd861a938c75be8f34f42fa0087675be357bf8ac48865dd20cdea4ff2ca5ecc1",
+   "second_expr_sha256": "4b749b19315a5611ffa1e4f3e0cdbd34a120959ae10f94c05348ba5f64eed89d",
+   "ruling": "Ruling: model error; f8863 p. 2, line 31; i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\" The line was reviewed again because its first refusal's text now names the ITIN only (a person on the return cannot have an ATIN); the expression is unchanged. As the prior rulings on this line: the reply has the education lines read person.edu and person.edu_over for every person, with no f8863.paid gate, so it is unknown on returns with no education credit where the project hides the line; and its student gate requires person.tin and does not accept person.itin_applied, against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\". Its amount (expenses required to be paid to the institution less lines 2a to 2c, floored at zero) is the project's. executable-triage-v2 (pass b74551c40ad9; 1,768 fixtures, 500 generated returns seed 20261026, 1,725 partial records; 4,643 comparisons): 3,551 of 4,643 agree; 1,089 candidate-unknown (314 on completed returns), 1 candidate-refuses (stage19.refuse.period_over_person, refused on the reply's own edu_over declaration where the project hides the line), 1 project-refuses (f1.t113.person_llc_itin_applied, refused by the project at person.edu_llc_tin_refused where the reply gives $0.00 by excluding the student) and 1 project-unknown (mutation.t4.dependent_edu_paid_unanswered_no_1098t, an incomplete return); no value difference on a completed return. No change to the data.",
+   "context": "dcf9059c0f5b9f43e254d19b8213b61d5e4a1459a72d869294a7ab7a221b002d",
+   "date": "2026-11-11",
+   "run": "54e70a29a936e4b7281d13bcf90bdc0e01e4742ca5cbda6ae2c4d72fe906f8c0",
+   "subject_key": "6ed48de7e08fd4ced04dbb01ecd197a216a018b11570e1612e744901aed58ac7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:mutation.t4.dependent_edu_paid_unanswered_no_1098t@person[taxpayer]",
+     "fixture:f1.t113.person_llc_itin_applied@person[taxpayer]",
+     "fixture:stage19.refuse.period_over_person@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "31",
    "project_expr_sha256": "e80ed39310b11f71e6ed80939f9be6f618f95328cb8040537bc88f176ab6a8d3",
    "second_expr_sha256": "86e17a10c1c9abc82dcdf977d3bcd3ba0b9e4916a6167aa10cff58fbc259f934",
    "ruling": "Ruling: model error; f8863 p. 2, line 31; i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\". This pass reviews the American opportunity credit test (edu_aoc) rewritten from one all-test into a nested choice in the form's order (lines 23 to 26, then the filers' TINs, then the EIN; BUG-0460), which changes no value on a complete return. As the prior rulings: the reply reads person.edu_over for every person (no f8863.paid gate), so it is unknown on returns with no education credit where the project hides the line; and it requires an issued TIN, against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return.\" (owner decision T-113). Off completed returns: f1.t113.person_llc_itin_applied (a lifetime learning credit student whose ITIN was only applied for) is refused by the project at person.edu_llc_tin_refused, as the owner decided (T-113), and the reply computes $0.00 by excluding the student (scope: a cited refusal); stage19.refuse.period_over_person and mutation.t3.person_edu_1098t_unanswered are refused by the reply on its own edu_over declaration where the project hides the line or is unknown. The amount (institution-paid expenses less lines 2a to 2c, floored at zero) is the project's aqee ws4_llc. executable-triage-v2 on this pass's reply (`.transcription/person.lines-01b5c635c5d7.response.txt`, merged over the whole review's reply; a scratch run of triage.mjs with the witness cap lifted, since triage.py evaluates the whole review's reply; 1,640 fixtures; 500 generated returns seed 20261026; 1,420 partial records; 4,399 comparisons): 1,835 of 4,399 agree; 2,561 candidate-unknown, 2 candidate-refuses, 1 project-refuses; on returns the full interview completes: 289 candidate-unknown person.edu_over; no completed-return value difference. Project stands.",

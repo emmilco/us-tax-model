@@ -304,6 +304,26 @@ sampling and satisfies the milestone until its subject changes. Runs are guarded
   commit that changes a form another branch holds, or adds an input id while another branch holds `inputs`; a commit on
   a lane's branch claims what it changes, and `tools/hooks/post-commit` releases a branch's claims when it is merged.
   `tools/claims.py claim <form> --reason TEXT` claims before work starts; `list` shows the claims.
+- **Twin lines** (`tools/check_twins.py`, check-all step `twins`, fast and full tiers): Form 8863 Part III is stated twice
+  in the form data, for a person on the return (`person.edu*` in `person.yaml`) and for a dependent (`dependent.edu*` in
+  `dependent.yaml`), because no line can range over both collections. The check pairs the two blocks by local id and
+  compares each pair field by field (the form line: printed marker, label, type, `shown_when`, the whole expression with
+  its operands and question wording, citation, refusals and their gates; the question bank entry; the test-data
+  default), after normalizing only a reference to the side's own document and, for the Form 8863 lines that sum each
+  block (`readers`), the collection summed. `reviews/<year>/twins.json` declares the blocks, the reader pairs, every
+  field that differs on purpose (`differences`: pair, field, both sides' values or `{"pattern": REGEX}`, `null` for a
+  field one side lacks, a reason and its source) and every id with no twin (`one_sided`, with reason and source). The
+  check fails, naming the pair, the field and both texts, on an undeclared difference, on a declared difference that
+  is gone or whose values changed, on an id without a twin that is not declared, and on a declared one-sided id that
+  is gone or has gained a twin. So a change to a twin line is made on both sides in the same commit, or declared with
+  its reason; a lane that edits one side claims both forms (`tools/claims.py claim person dependent`).
+  `check_twins.py --sync-from person` (or `dependent`) shows, for each undeclared difference, the change that copies
+  that side's field to the other, and `--write` makes it (`--pair NAME` limits it); it copies whole top-level fields
+  as text, never a field that holds a declared difference, never a whole line or a test-data default, and writes
+  nothing unless the result parses and differs from the data only in the copied fields. A new id matching the blocks'
+  pattern is covered at once; a Part III line named outside the pattern (`local` in the file) is not seen.
+  `tools/siblings.py` lists a line's twin among its fix-siblings from the same file. `--self-test` plants each kind of
+  drift on a copy of the year's data.
 - **Claude Code hooks** (`tools/claude_hooks/`): `bash_guard.py` refuses `pgrep -f` waits and hand copies into review data; `agents.py` refuses an agent
   launch without an explicit model or without `Class:`, `Year:` and `Jurisdiction:` in its brief (mechanical on Sonnet,
   judgment on Opus; Fable is allowed for either class), and writes and completes the run's row in `research/costs/agent_runs.jsonl`. They are enabled per

@@ -65,8 +65,8 @@
         "person[taxpayer].edu_line31": {
           "kind": "refusal",
           "gate": "person[taxpayer].edu_llc_tin_refused",
-          "form": "Lifetime learning credit for a student whose ITIN or ATIN was only applied for",
-          "remedy": "The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.",
+          "form": "Lifetime learning credit for a student whose ITIN was only applied for",
+          "remedy": "The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.",
           "cite": {
             "doc": "i8863",
             "locator": "p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\"; p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return.\"",
@@ -78,8 +78,8 @@
         "f8863.line10": {
           "kind": "refusal",
           "gate": "person[taxpayer].edu_llc_tin_refused",
-          "form": "Lifetime learning credit for a student whose ITIN or ATIN was only applied for",
-          "remedy": "The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.",
+          "form": "Lifetime learning credit for a student whose ITIN was only applied for",
+          "remedy": "The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.",
           "cite": {
             "doc": "i8863",
             "locator": "p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\"; p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return.\"",
