@@ -1,0 +1,62 @@
+{
+ "description": [
+  "The ids that carry a year, per tax year (spec 4.3; read by tools/check_year_ids.py, which says what counts).",
+  "No entry is added: a new id gets a year-free name. An entry is removed when its id is renamed, which is",
+  "done when the next tax year is adopted.",
+  "kind: document, input, computed, param, enum or table, as the build shows it (computed+param: a parameter and",
+  "its helper line of the same name).",
+  "class: what the year in the id means, which decides the year-free name it should get.",
+  "The replacement names are the owner's decision and are not recorded here.",
+  "look_alikes: ids the check takes for year-bearing whose number is not a year, each with what the number is."
+ ],
+ "classes": {
+  "this_year": "the tax year itself",
+  "next_year": "the year after the tax year",
+  "prior_year": "the year before the tax year",
+  "offset": "a year at a fixed distance from the tax year (a birth-year cutoff, the end of a recovery period)",
+  "misnomer": "the year in the id is not what the line is about"
+ },
+ "years": {
+  "2025": {
+   "ids": {
+    "asset.bonus_2025": {"kind": "computed", "class": "this_year"},
+    "asset.cost179_2025": {"kind": "computed", "class": "this_year"},
+    "asset.dep_2025": {"kind": "computed", "class": "this_year"},
+    "asset.is2025": {"kind": "computed", "class": "this_year"},
+    "asset.macrs2025": {"kind": "computed", "class": "this_year"},
+    "asset.mq_q4_2025": {"kind": "computed", "class": "this_year"},
+    "asset.on_26_2025": {"kind": "computed", "class": "this_year"},
+    "asset.s179_2025": {"kind": "computed", "class": "this_year"},
+    "clcw26": {"kind": "document", "class": "next_year"},
+    "dependent.edu_a2025": {"kind": "input", "class": "this_year"},
+    "dependent.edu_a2026": {"kind": "input", "class": "next_year"},
+    "eic.died_2025": {"kind": "input", "class": "this_year"},
+    "f2441.paid_2026": {"kind": "input", "class": "misnomer"},
+    "f8880.dist_2025": {"kind": "computed", "class": "this_year"},
+    "f8962.married_in_2025": {"kind": "input", "class": "this_year"},
+    "household.spouse_died_2025": {"kind": "input", "class": "this_year"},
+    "household.widowed_2025": {"kind": "computed", "class": "this_year"},
+    "person.born_after_1960": {"kind": "input", "class": "offset"},
+    "person.born_before_2001": {"kind": "input", "class": "offset"},
+    "person.edu_a2025": {"kind": "input", "class": "this_year"},
+    "person.edu_a2026": {"kind": "input", "class": "next_year"},
+    "person.edu_born_2002": {"kind": "input", "class": "offset"},
+    "person.edu_born_2007": {"kind": "input", "class": "offset"},
+    "refund.line17_2024": {"kind": "input", "class": "prior_year"},
+    "refund.line5d_2024": {"kind": "input", "class": "prior_year"},
+    "refund.line5e_2024": {"kind": "input", "class": "prior_year"},
+    "refund.not_2024": {"kind": "input", "class": "prior_year"},
+    "scveh.bonus_2025": {"kind": "computed", "class": "this_year"},
+    "scveh.is2019": {"kind": "computed", "class": "offset"},
+    "scveh.is2025": {"kind": "computed", "class": "this_year"},
+    "scveh.lim_2025": {"kind": "computed", "class": "this_year"},
+    "scveh.line10_2025": {"kind": "computed", "class": "this_year"},
+    "scveh.line19_2025": {"kind": "computed", "class": "this_year"},
+    "scveh.s179_2025": {"kind": "computed", "class": "this_year"},
+    "scveh.s179_2025_o": {"kind": "computed", "class": "this_year"},
+    "scveh.s179_2025_ok": {"kind": "computed", "class": "this_year"}
+   },
+   "look_alikes": {}
+  }
+ }
+}

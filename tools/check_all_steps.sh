@@ -179,6 +179,8 @@ jstep limits "--jurisdiction ny" python3 tools/check_limits.py
 # Lines stated twice (Form 8863 Part III, for a person and for a dependent) agree except where reviews/<year>/twins.json says.
 step twins python3 tools/check_twins.py "$@"
 jstep completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py
+# No id of either jurisdiction's build carries a year, but for the ids listed in tools/year_ids.json (spec 4.3).
+step year_ids python3 tools/check_year_ids.py "$@"
 # New York only: its tax table.
 step ny_tax_table python3 tools/extract_ny_tax_table.py --check "$@"
 wave wave1
