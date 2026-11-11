@@ -123,16 +123,20 @@ form:
     - id: div.basis_reconciled
       printed: (helper)
       type: Bool
-      label: For box 3, have basis reductions been applied to records with no distribution exceeding
-        basis?
+      label: Was every nondividend distribution (box 3) no more than the remaining basis in the shares it was paid on?
       gated_by: div.basis_reconciled_if_return_of_capital
       expr:
         op: input
-        source: For box 3, have basis reductions been applied to records with no distribution exceeding
-          basis?
+        source: Was every nondividend distribution (Form 1099-DIV box 3, a return of capital) that you (or, on a joint
+          return, your spouse) received in 2025 no more than the remaining basis in the shares it was paid on (their cost
+          or other basis, already reduced by any earlier returns of capital)? Answer No if any distribution was more than
+          that remaining basis, for example because earlier returns of capital had already reduced the basis to zero; the
+          part above the basis is a taxable capital gain, which this tool does not report.
       cite:
         doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
+        locator: p. 5, Instructions for Recipient, Box 3, "To the extent of your cost (or other basis) in the stock, the
+          distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to
+          you as capital gain"
     - id: div.box1a
       printed: (helper)
       display: 'Form 1099-DIV box 1a shown on the values sheet as the ordinary dividends it carries to Schedule B.'

@@ -41,6 +41,16 @@
    "subject_key": "6eeeb40181277e2dc14befb61620c89478361e216ba6b21136004d1995db701f"
   },
   {
+   "printed": "14",
+   "restated": "Choose — [helper \"Special depreciation allowance for this class of property\" = 'full' → helper \"The allowance when it is claimed: 100% if acquired after January 19, 2025; 40% if acquired after September 27, 2017 and before January 20, 2025\"] [helper \"Special depreciation allowance for this class of property\" = 'forty' → helper \"40% special allowance\"] [helper \"Special depreciation allowance for this class of property\" = 'none' → helper \"Zero\"]",
+   "model": "The 40% branches ignore the IRS exception that 'Property with a long production period and certain aircraft acquired after September 27, 2017, and before January 20, 2025, is eligible for a special depreciation allowance of 60%' (and the 40% election is '60% for property with a long production period and certain aircraft'), and nothing refuses those cases. The basis also subtracts only section 179, while the IRS says 'subtract from the business/investment portion of the cost or other basis of the property any credits and deductions allocable to the property' (e.g., disabled access credit, section 50(c) adjustment, section 181 deduction).",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Both objections are answered by asset.screen, which refuses the property before any allowance is figured (asset.screened, refused at asset.cost): its list includes \"property with a long production period, an aircraft, or qualified production property\", so the 60% cases of i4562 p. 5, Line 14 never reach line 14, and \"its basis is reduced by a credit or deduction other than the section 179 deduction and the special depreciation allowance\" (the disabled access credit and the other credits named there), so the basis the allowance is figured on is cost times business use less section 179 on every accepted property. This round changed only the wording of asset.after_jan19 (the written binding contract rule, P.L. 119-21 sec. 70301(c)(4)), not an expression. Project stands.",
+   "context": "bd29fd3510df6bb84b224a39c80e8deab4d375f04a87744afb2c749cf26f0259",
+   "date": "2026-11-10",
+   "run": "e75eec27bdae25a8b2345e6094b72db5b2d7ba9e26ac2ebcfea9632fc395280f",
+   "subject_key": "b160a54991adec107dc902e2daa18498640f3031e5fbf95eee76b53eb15e5dec"
+  },
+  {
    "printed": "17",
    "restated": "Choose — [helper \"The recovery period ended before 2025\" = false → helper \"MACRS depreciation for 2025\"] [helper \"The recovery period ended before 2025\" = true → helper \"Zero\"]",
    "model": "Line 17 is 'For tangible property placed in service in tax years beginning before 2025', and Part V covers depreciation on listed property 'regardless of the tax year the property was placed in service'. The restatement does not depend on placement before 2025 or on listed status, so 2025 property or listed property would also produce a line 17 amount.",

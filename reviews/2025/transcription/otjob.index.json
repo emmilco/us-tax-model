@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "4a655ab703db7d320deaf879dc721983661d850c2c11d697ce75181736b8d049",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-04); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,15 +15,15 @@
   },
   {
    "key": "1(b)",
-   "record": "0ba60b3e9b489f9df527c420f63b4701a374d9f6353dbde2478a815982acdc0b",
+   "record": "03296a1f0d7a60ffdfafe732774228ab28afce3d9a69a7e49a3447a1ae5e3e91",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; same line and candidate as the refresh-round ruling. i1040gi pp. 106-108 (Schedule 1-A, Part III) and Notice 2025-69 section III.B.2 give the employer-reported or premium amount and the one-third, one-half and one-quarter conversions. Both give zero when otjob.flsa is false, the statement amount for employer_reported and premium, the three fractions for the double-time and time-and-a-half totals, and zero for method other (which otjob.h_refused refuses in both). The reply flattens the FLSA and method guards into one choice; no return differs. Project stands.",
-   "subject_key": "9aa9f5963f5f97c37d652bf1c4caff22e2421dd64779a4d473acee7c76ef391e"
+   "ruling": "Ruling: equivalent; project retained. i1040gi pp. 106-107 (Schedule 1-A, Part III, methods 1 to 4) and Notice 2025-69 section III.B.2, methods (A) to (D), give the employer-reported or premium amount as is and the one-third, one-half and one-quarter conversions. Both give zero when otjob.flsa is false, the statement amount for employer_reported and premium, the statement times s1a.ot_third for total_time_and_half, s1a.ot_half for premium_double and s1a.ot_quarter for total_double, and zero for other (refused by otjob.refused before the line is used). The second tests otjob.flsa inside each method guard instead of first; the guards cover the same cases with the same values. This round changed only the wording of otjob.method and otjob.statement (hours over 40 in a workweek), not an expression.",
+   "subject_key": "28b624ea3ad7b0aa46c818a41a1630bc113baf0e8dd561842bc71671aebf56b0"
   }
  ],
  "subjects": {
   "otjob.one": "e7838e18a06ea1557e24647d8e8d5758f1dfb5aa7312dbe9c799c9bf240c2849",
-  "1(b)": "2ebb919e0e5b2f7a2d30ef1013c4ef754f808c522d781c87dd475cda5265d0a6"
+  "1(b)": "4a7dc30e871000fb46bb831f64006fa53c107ff125cbeefcd392013c330e8bb4"
  },
  "__rest__": "5f0e2ac2178da2fba490ba4af97d9a79fe7483433bb4466a6d27d9210dcf2cad",
  "foreign": {

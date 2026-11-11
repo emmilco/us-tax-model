@@ -343,7 +343,7 @@ form:
     - id: sales.wash_loss
       printed: (helper)
       label: Correct nondeductible wash-sale loss (a loss on stock or securities with substantially identical stock or
-        securities bought within 30 days before or after the sale, or, for a loss on a short sale, substantially identical
+        securities bought or otherwise acquired within 30 days before or after the sale, or, for a loss on a short sale, substantially identical
         stock or securities sold or sold short again within 30 days before or after the short sale is complete, or, for a residual interest in a REMIC, any REMIC residual interest or comparable taxable mortgage pool interest acquired within 6 months before or after the sale); positive cents, including losses not reported by
         broker; not more than the loss on this sale
       type: NonNegDollars
@@ -358,6 +358,7 @@ form:
             - acquire them in a fully taxable trade
             - acquire a contract or option to buy them
             - acquire substantially identical stock or securities for your IRA or Roth IRA
+            - receive substantially identical stock as pay for your work, such as a bonus award of your employer's stock
           - It is also a wash sale if your spouse or a corporation you control buys substantially identical stock.
           - A loss on a short sale is a wash sale if you sell, or enter into another short sale of, substantially identical stock or securities within 30 days before or after the date the short sale is complete.
           - A short sale is complete when you deliver the property to close it; but if, on the date you entered into it, you owned stock or securities identical to those sold short (or had a contract or option to acquire them) and you later deliver them to close it, it is complete on the date you entered into it.
@@ -382,7 +383,8 @@ form:
           substantially identical stock, you also have a wash sale."; p550 p. 87, Options and futures contracts, "They do
           not apply to losses from sales or trades of commodity futures contracts and foreign currencies." and More or
           less stock bought than sold, "You do this by matching the shares bought with an equal number of the shares
-          sold."; p550 pp. 87–88, Short sales, "The wash sale rules apply to a loss realized on a short sale if you sell, or
+          sold."; p550 pp. 86–87, Wash Sales, Example 2, "If you receive another bonus award of substantially identical
+          stock within 30 days of the sale, you cannot deduct your loss on the sale."; p550 pp. 87–88, Short sales, "The wash sale rules apply to a loss realized on a short sale if you sell, or
           enter into another short sale of, substantially identical stock or securities within a period beginning 30 days
           before the date the short sale is complete and ending 30 days after that date.", "a short sale is considered
           complete on the date the short sale is entered into if" and "Otherwise, a short sale is not considered complete

@@ -35,12 +35,61 @@
   {
    "printed": "(g)",
    "project_expr_sha256": "17936dd7b4e3f8c13d9755c0c103c81f64c570421914a824a59f42de9caccd39",
+   "second_expr_sha256": "77241e439c794c884e7bf45bd143fccbbf08c277ee22f3bf71d5633601691276",
+   "ruling": "Ruling: representation and scope; same reply and project as the earlier rulings. i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\"; i8949 p. 10, code W. Values: reported less correct basis for code B or BW on boxes A and D, plus the wash-sale loss for W or BW, as the project. The reply adds boxes G and J (refused with every digital-asset box by sales.digital at sales.one) and a sales.route detail condition: a Schedule D aggregate transaction with any code is refused by sales.bad_aggregate, so the condition changes no supported return. This round changed only the wording of sales.wash_loss (stock received as pay), not an expression. Project stands.",
+   "context": "5a54372cdb68ed338c76b029cad801c5dda62ca4861c2983bc0e8a397cda2edd",
+   "date": "2026-11-10",
+   "run": "5aafc65aa7532b893ed085f4c5cbf22bffbf800ee123de36d3e41e354640b11b",
+   "subject_key": "f40f7d016b593e7124dcb6ffb9dc90ce071ee24e4f58a121728f5bc1eb90f9f4"
+  },
+  {
+   "printed": "(g)",
+   "project_expr_sha256": "17936dd7b4e3f8c13d9755c0c103c81f64c570421914a824a59f42de9caccd39",
    "second_expr_sha256": "8b31f2e28cccf9b95479f868170f38c6a0794c044644b0c1a08872ebf962e5df",
    "ruling": "Ruling: representation and scope; i8949 p. 8, code B, and p. 10, code W. Values: reported less correct basis for code B or BW on boxes A and D, plus the wash-sale loss for W or BW, as the project. The reply adds boxes G and J (refused by sales.digital) and declares its own gates (h_aggregate_bad, h_other_code, special), which the project has as sales.bad_aggregate, sales.bad_code and sales.special. Triage executable-triage-v2 (reviews/2025/transcription/triage/sales.json; 1,638 fixtures, 500 generated returns seed 20261026, 476 partial records): 1,627 of 1,765 comparisons agree; 16 candidate-refuses, 119 candidate-unknown and 3 project-unknown, all on refused or incomplete returns; no completed return differs (the round-3 h_wash_excess refusals do not recur). Project stands.",
    "context": "c072a072b713b71d138008949d09460811774a0ac4fc67f8919a357349b2592f",
    "date": "2026-11-07",
    "run": "d3c83a6aff7412bdb68fd5aac381b833749cb5a678f6277215c79542ef66f0ac",
    "subject_key": "663412544c78380434c85f7052ac816cc2a9607d9f1c3723351adf4b24a90c40"
+  },
+  {
+   "printed": "(g)",
+   "project_expr_sha256": "17936dd7b4e3f8c13d9755c0c103c81f64c570421914a824a59f42de9caccd39",
+   "second_expr_sha256": "d9ce5993987a3f9524154be7aa87fbf0645d103b13d1340ccec7dd9affea979c",
+   "ruling": "Ruling: representation and scope; same reply and project as the earlier rulings. i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\"; i8949 p. 10, code W. Values: reported less correct basis for code B or BW on boxes A and D, plus the wash-sale loss for W or BW, as the project. The reply adds boxes G and J (refused with every digital-asset box by sales.digital at sales.one), a sales.route detail condition (a Schedule D aggregate transaction with any code is refused by sales.bad_aggregate, so the condition changes no supported return) and its own refusals for other codes and adjusted aggregates. executable-triage-v2 (.transcription/triage/2025/sales.json, pass 8c6004669339; 1,767 fixtures, 500 generated returns seed 20261026, 466 partial records): 1,698 of 1,833 agree; 9 candidate-refuses, 120 candidate-unknown, 6 project-unknown, all on refused or incomplete returns; no completed return differs. This round changed only the wording of sales.wash_loss (stock received as pay, a bonus award), not an expression. Project stands.",
+   "context": "dc56cfee676b0d7265177b5d4e530bb63afed1bb936490368add13b5be97472d",
+   "date": "2026-11-10",
+   "run": "232178bf8526c6a6b95ed0cb421281880a35f1d18262c6e9915ceb9429156ca8",
+   "subject_key": "025ce3d98706dc99324de6e7224964168dd9f78d5289592df6dd9819bcf3494f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:mutation.t2.person.simple_nonelective_excess@sales[s1]",
+     "fixture:bug0476.sales.market_discount_code_d@sales[a]",
+     "fixture:sales.refuse.special@sales[a]",
+     "fixture:sales.refuse.code@sales[a]",
+     "fixture:sales.refuse.aggregate.adjustment@sales[a]",
+     "fixture:stage21.f1.special_withheld@sales[s1]",
+     "fixture:stage21.f1.special_null@sales[s1]",
+     "generated:20261026.43@sales[s1]",
+     "partial:stage12.car.mixed_sc_interest_prorated-sales[s1].route@sales[s1]",
+     "partial:stage12.car.mixed_sc_interest_prorated-sales[s1].special@sales[s1]",
+     "partial:classm.g28.2.deepseek-sales[s1].route@sales[s1]",
+     "partial:classm.g28.2.deepseek-sales[s1].special@sales[s1]",
+     "partial:classm.f1040.6.deepseek-sales[s1].box@sales[s1]",
+     "partial:classm.f1040.6.deepseek-sales[s1].proceeds@sales[s1]",
+     "partial:classm.f1040.6.deepseek-sales[s1].correct_basis@sales[s1]",
+     "partial:classm.sa.1.deepseek-sales[s3].box@sales[s3]",
+     "partial:classm.sa.1.deepseek-sales[s3].proceeds@sales[s3]",
+     "partial:classm.sa.1.deepseek-sales[s3].correct_basis@sales[s3]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(g)",

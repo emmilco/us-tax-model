@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "e5e59509b9ae4437c5913d7df2f1aec76efdbf21356bbdc72ea0383125cb0c54",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -69,9 +69,9 @@
   },
   {
    "key": "basis_reconciled",
-   "record": "e5e59509b9ae4437c5913d7df2f1aec76efdbf21356bbdc72ea0383125cb0c54",
+   "record": "25b447d37a964971495325b8f3f08797815dacd76fd49b6543c2604278fea9b0",
    "status": "MATCH",
-   "subject_key": "5019bd1a281d07f1b18186589f44513396efe6e555a775aa57585aeaaa990f40"
+   "subject_key": "bc0f4668d2d188e5e80abd01611215b9ebdf595e21fa1995cdba9a0e2a117d1b"
   },
   {
    "key": "box1a",
@@ -111,9 +111,9 @@
   },
   {
    "key": "unsupported",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "25b447d37a964971495325b8f3f08797815dacd76fd49b6543c2604278fea9b0",
    "status": "MATCH",
-   "subject_key": "22275a93660b501835b0e724c71383818ea0ca6184addcf2404c92085e14bb28"
+   "subject_key": "47bc3a274fcd195d5c25a19c42149614d9db77c87d490a39d27f84b9a0020052"
   },
   {
    "key": "bad_special",
@@ -237,9 +237,9 @@
   },
   {
    "key": "basis_reconciled_if_return_of_capital",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "25b447d37a964971495325b8f3f08797815dacd76fd49b6543c2604278fea9b0",
    "status": "MATCH",
-   "subject_key": "0c9791083b6aa15d7b363c9bcd58acec160bc1127951054f90000493a592d5f9"
+   "subject_key": "a14901b0315c7e4c89c2e2568bde0c8d3f75d2d7eb4d3f2b77cd40381c8d93fd"
   }
  ],
  "subjects": {
@@ -253,14 +253,14 @@
   "box10": "7ec74a0d1a27054678588be8f5bf9738e101e162c05eaa736254a8c6757f7625",
   "box12": "c44a263712c56dc638fc6fd0d9cbce69558783a492154d3345eb18595528d2e6",
   "box13": "184ff288b4b9d7fe14588a16572d762bc3cb7bfc2f8a1dfa8fa37a01b6d2faa5",
-  "basis_reconciled": "bc9ddebd4a68e1092b9e8f28bf92c8ae35f71aec15f61dd6eca2454e1fe83dba",
+  "basis_reconciled": "9eb732c2bbcbab7c637fa80c79bc52d8ef418ffed68cd0eb4a56b0f40ead041c",
   "box1a": "c2ca6a18c1f899686e4a4b355ff907977cf334ee2f801df782df55295cb0856c",
   "box1b": "0e7b7fec792f5764cc28b07d9330d43209f75400bf712a71f8a40b1c0eb68d58",
   "box2a": "5a1ed9c77232175bac9afb483c02ec3e66c79a3df2bfa1745aad5418d70d6841",
   "box5": "8fd5282ce32ec47c7ac709abf5d672d08577dc833de40390585d4f1299554c66",
   "section1202": "6b00f5ce1417288f84206cd1427b951e737f4fa1de00dd4d58e754cebddc4b25",
   "amt": "53f7de60dd06c05757c33966960523a74dc66290c0da7ee42d0ca06ec9e30c86",
-  "unsupported": "e65dd4d5cf8c0cd583e2e07b468c2f5ba702c09c6456dc46805919a601b81775",
+  "unsupported": "0f9d03b44cbbd7fcdcf5644d21b823f8f527b295df403bee0d182e1b44c1812f",
   "bad_special": "0d2b26e1982c3ec085af815b03fc7db7b65d7ecfff6afb2a44bae484290a5a88",
   "screen": "5ed163c00b4965b8019f9ffea9148f90185cfd840659bfe2882f524ec22d6c99",
   "bad_components": "78a765130805bb1c24ec4c9ed5b02bd461bafed00e929832e0d9f9b391ed1c0e",
@@ -281,7 +281,7 @@
   "box10_if_dividends": "2f5a7042c5bd9c193d85a8e12688d7ed01f64b7d7fdb23ef8d318c001b2a4194",
   "box12_if_dividends": "36a77b3b763ca983d7348a792268309d5fba94dad3f2fe2862b33eff4046f496",
   "box13_if_dividends": "cc1bbd38fb0b42bea0647bef3c964a4d0f7de3552c9f0366a998f3d9422c661b",
-  "basis_reconciled_if_return_of_capital": "c425142b472a319bccecf8bbcfe23aa4b8f08eacf0a1bb0566f25e529b1a0444"
+  "basis_reconciled_if_return_of_capital": "b83f9fd9363de7eaf10a0cdb84fd4f025f3c720773360ad280d0da9bfec6adab"
  },
  "__rest__": "a85f53df7da43a251cbe59da94288581f632b3d79e337c9ee2ba4785671b029b"
 }

@@ -319,9 +319,9 @@
 ## (helper) — `asset.after_jan19`
 
 - **Authored helper label:** Acquired after January 19, 2025
-- **Encoded (Bool):** Input — Did you acquire this property after January 19, 2025? (Property acquired before September 28, 2017 is screened out above.)
-- Expr: `{"op":"input","source":"Did you acquire this property after January 19, 2025? (Property acquired before September 28, 2017 is screened out above.)"}`
-- Cite: [i4562] p. 5, Line 14, Certain qualified property acquired after January 19, 2025, and Certain qualified property acquired after September 27, 2017, and before January 20, 2025 (2025; sha256 5c1c95b7)
+- **Encoded (Bool):** Input — Did you acquire this property after January 19, 2025? Property acquired under a written binding contract is treated as acquired no later than the date the contract was entered into, so answer No if you entered into a written binding contract to acquire it before January 20, 2025, even if you received it later. (Property acquired before September 28, 2017 is screened out above.)
+- Expr: `{"op":"input","source":"Did you acquire this property after January 19, 2025? Property acquired under a written binding contract is treated as acquired no later than the date the contract was entered into, so answer No if you entered into a written binding contract to acquire it before January 20, 2025, even if you received it later. (Property acquired before September 28, 2017 is screened out above.)"}`
+- Cite: [i4562] p. 5, Line 14, Certain qualified property acquired after January 19, 2025, and Certain qualified property acquired after September 27, 2017, and before January 20, 2025; plaw-119-21 sec. 70301(c)(4) (139 Stat. 190), "property shall not be treated as acquired after the date on which a written binding contract is entered into for such acquisition" (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.bonus_choice`
 

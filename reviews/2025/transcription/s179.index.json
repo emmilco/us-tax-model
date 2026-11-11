@@ -47,9 +47,9 @@
   },
   {
    "key": "5",
-   "record": "69253543bf677080f444696f01cadb2575cae75dffbcd938cf6a5624d817eb98",
+   "record": "9af0380eefec0fdce2f706f7dcd529c4a9308990c67cb882b3b45c1dedd63bb8",
    "status": "AGREE",
-   "subject_key": "43000ecfca10c9c3f11b1f019e767157321b5aba600625f909eb3c890c523062"
+   "subject_key": "8c3963c874f6ed9cbaec32f02db4824b0111073edc22323851c672eb1953a7bc"
   },
   {
    "key": "6(c)",
@@ -77,22 +77,22 @@
   },
   {
    "key": "11",
-   "record": "bc3232b9560811e8689db135a70afe97f6fbfd23f4915b4432b9f49e6e8e11a5",
+   "record": "9af0380eefec0fdce2f706f7dcd529c4a9308990c67cb882b3b45c1dedd63bb8",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (s179.h_sc_income: \"s179.s179.h_sc_income: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
-   "subject_key": "defce37efa6a00ffa7cc08c2ac8bc83dbbb5bdfce1c9bec08fcc66dda92bd3ca"
+   "ruling": "Ruling: representation; project retained. i4562 p. 5, Line 11, Individuals, and p946 p. 19, \"Interest from working capital of your trade or business\". Both take the smaller of line 5 and the business income (Schedule C income before section 179, Form 1040 line 1a and the working-capital interest), not less than zero. The project asks s179.wc_interest only where it can matter (s179.wc_interest_if_limited: a section 179 deduction is figured, the business income before it is less than line 5, and line 2b is above zero) and uses zero otherwise; the second reads the answer on every return. Where the business income is at least line 5, line 11 is line 5 on both; where line 2b is zero the interest is zero on both; where no deduction is figured (lines 9 and 10 zero) line 12 is zero on both, as ruled when BUG-0474 was fixed (BUG-0482). Re-reviewed because this round reworded s179.line10 (a carryover with no 2024 Form 4562, BUG-0542); no expression changed. Project stands.",
+   "subject_key": "f4eab0d781eeb362c45c93224d655bf8858591a514e92a7a3755808379137965"
   },
   {
    "key": "12",
-   "record": "69253543bf677080f444696f01cadb2575cae75dffbcd938cf6a5624d817eb98",
+   "record": "9af0380eefec0fdce2f706f7dcd529c4a9308990c67cb882b3b45c1dedd63bb8",
    "status": "AGREE",
-   "subject_key": "d7910702cce1e594e9d5b35de3f32d87230746ad2f936beefbfac0b5f2a41604"
+   "subject_key": "5c86afc039baac0509b9c09dd65fde7ef2974bb372f7b983670331501f0bb45c"
   },
   {
    "key": "13",
-   "record": "69253543bf677080f444696f01cadb2575cae75dffbcd938cf6a5624d817eb98",
+   "record": "9af0380eefec0fdce2f706f7dcd529c4a9308990c67cb882b3b45c1dedd63bb8",
    "status": "AGREE",
-   "subject_key": "1134566012fb63c16c3d4b31990daca3ba0db81a0a3433461e5eefb16d7d09ff"
+   "subject_key": "59b63fbe92a66c62420d9385e18a95e02e08e37bf499e698cf62f392806187a8"
   }
  ],
  "subjects": {
@@ -102,17 +102,20 @@
   "1": "8bcb543cf34e50fa8b564b219dca661bea6e48c145d96ba2276caf00b7a77f8f",
   "3": "e127292be1b20414f12dc61bfed1e5c858032f946ec9d3aa7506b6b1afb0f390",
   "4": "7f101e4d6c80b3ddc0c384dc0d9561aad2b0030fa6fb998a1c509affd443b5c8",
-  "5": "038647c5b5141bd6d22b029ca077c7db28a0df28beee6ee8499fe36b491df18c",
+  "5": "c12e7e25ff4b45df5ef7d5ee3d0a1846094b7c697af2cd223e76cf894e08f6e1",
   "6(c)": "6e0a22a20a4ccf75770e91feca5f3cbf56138771975bc4832babf0fbb3bd91b6",
   "7": "7a7e76e9751b1729281c937f6bc87491cf0a4f0fb89b9fe2bad21b78c7eb66e9",
   "8": "83bef42d501af77dfa5d10da200432c87f7608a4b7afbfe3c06c556148007ef6",
   "9": "8ac1804bd8ba1a9fdbb602de52592b07bf8410d757cef839ac12d4b6d89af932",
-  "11": "0eaaef1efb52c1ecfacfc0b08bde388f9554b7a43535d31654ab0918ee50bedf",
-  "12": "4c79b4cf046514c5698e0e6f6d5213a128b17e61d4977277238bb12961ebe45a",
-  "13": "ce0f9e7187254c449da0fc3d425ff018df883dcd328ef982a202d04e0ab360a1"
+  "11": "a794fb767d8a99e36abf26a16e162424759fffd3533b410c432082c35d7e6e63",
+  "12": "4e48e4b8758010656b5626da6f7a2e0aea4d5f42e0866457dc4e69d51e37ee93",
+  "13": "6f01f747e1e7c575f61da87d8a5620abbf94c04ee19a4dfc6505a024159b9b8f"
  },
  "__rest__": "ae6356cbe430ddb4762dd5706a6fb640c2faf0f6d308bb93cf20787947dd2675",
  "foreign": {
-  "11": "fe5c888c6461325e76552b02767fafc465dc9deceadb836e3cae89a6a5e3b2fb"
+  "5": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
+  "11": "fe5c888c6461325e76552b02767fafc465dc9deceadb836e3cae89a6a5e3b2fb",
+  "12": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "13": "99af34d66890a568cb5635122faf427212bbb7033f94ee0c4152f6fe8fea6cbf"
  }
 }

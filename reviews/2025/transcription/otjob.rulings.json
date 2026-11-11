@@ -6,11 +6,11 @@
    "printed": "1(b)",
    "project_expr_sha256": "fedd988740ee33a468bfbca85587d911f6a7f348d64a5bcccb54fd8300c35bc4",
    "second_expr_sha256": "9c3e50842d9d1f89a2dcb0233067daa8bfd063996d340ec24b7e8831003c6b25",
-   "ruling": "Ruling: representation; same line and candidate as the refresh-round ruling. i1040gi pp. 106-108 (Schedule 1-A, Part III) and Notice 2025-69 section III.B.2 give the employer-reported or premium amount and the one-third, one-half and one-quarter conversions. Both give zero when otjob.flsa is false, the statement amount for employer_reported and premium, the three fractions for the double-time and time-and-a-half totals, and zero for method other (which otjob.h_refused refuses in both). The reply flattens the FLSA and method guards into one choice; no return differs. Project stands.",
-   "context": "e09599ae90f1bf0ea29b7e6f7e252002ac553a7cd8ed4e34ada96c7e09c85f62",
-   "date": "2026-11-04",
-   "run": "c84a716cf75e31f669dea35ddd5c7994ea038e9d00c195cec60492fcaf4dc18e",
-   "subject_key": "1e1a34a6093269b31c0f58fbe5f26cfde4650a45b44524c53d21241b8d8a1482"
+   "ruling": "Ruling: equivalent; project retained. i1040gi pp. 106-107 (Schedule 1-A, Part III, methods 1 to 4) and Notice 2025-69 section III.B.2, methods (A) to (D), give the employer-reported or premium amount as is and the one-third, one-half and one-quarter conversions. Both give zero when otjob.flsa is false, the statement amount for employer_reported and premium, the statement times s1a.ot_third for total_time_and_half, s1a.ot_half for premium_double and s1a.ot_quarter for total_double, and zero for other (refused by otjob.refused before the line is used). The second tests otjob.flsa inside each method guard instead of first; the guards cover the same cases with the same values. This round changed only the wording of otjob.method and otjob.statement (hours over 40 in a workweek), not an expression.",
+   "context": "4bac8b90ea80c366bd59d37b7d088b72d62270d7ad47565d65f38ece9cb0ca1e",
+   "date": "2026-11-10",
+   "run": "1b23b24a096172583ddb170821579c2e728dc0b75c8c5334206138e4a4137a6c",
+   "subject_key": "7aaa2df0656b1b5f152b4c290659bb26ed67b8c9e15e73e5756be8284f695064"
   }
  ]
 }

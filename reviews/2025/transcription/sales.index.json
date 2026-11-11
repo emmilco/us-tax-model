@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "9d3118026893a1c312a9f2d8f6ed48ff9175923e1c54b7d5ae7765d55be6842d",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,10 +22,10 @@
   },
   {
    "key": "(g)",
-   "record": "448b05f8c9fd8a4f57e9e9d0e274c93a894b0c9c9ed737211924a9643c08927a",
+   "record": "0ebe531deb8f1b067cf266a5379257131dd1d8b9b20484a02370c182ecc88d08",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error and scope; i8949 p. 8, code B, and p. 10, code W, \"enter the amount of the nondeductible loss as a positive number in column (g)\". Values on the supported case are the project's (reported less correct basis for code B or BW on boxes A and D, plus the wash-sale loss for W or BW); boxes G and J are refused with every digital-asset box (sales.digital) and codes other than B and W at sales.bad_code, as the earlier rulings. The reply's own consistency gate (sales.h_wash_exceeds) refuses completed returns the project computes, where the wash-sale loss is no more than the loss on the sale: sales.adjust.A.W, sales.adjust.D.W, sales.adjust.A.W.equal_loss (project column (g) $500.00, $500.00, $200.00); the project refuses only a wash-sale loss above the loss after any code B correction (sales.wash_bad, and the sales.wash_loss question, \"The loss entered cannot be more than the loss on this sale\"). The reworded sales.code (BUG-0476, codes D and O) changes no value. executable-triage-v2 (`.transcription/triage/2025/sales.json`, pass 482b0f4853ea): 1,745 of 1,822 agree; 61 candidate-unknown, 7 candidate-refuses (3 on completed returns, above), 9 project-unknown. Project stands.",
-   "subject_key": "2e52f8a3ebabf455d94f4f2fcfd7bdf81cbcb92b7072fef1e5d3c86df5c95782"
+   "ruling": "Ruling: representation and scope; same reply and project as the earlier rulings. i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\"; i8949 p. 10, code W. Values: reported less correct basis for code B or BW on boxes A and D, plus the wash-sale loss for W or BW, as the project. The reply adds boxes G and J (refused with every digital-asset box by sales.digital at sales.one), a sales.route detail condition (a Schedule D aggregate transaction with any code is refused by sales.bad_aggregate, so the condition changes no supported return) and its own refusals for other codes and adjusted aggregates. executable-triage-v2 (.transcription/triage/2025/sales.json, pass 8c6004669339; 1,767 fixtures, 500 generated returns seed 20261026, 466 partial records): 1,698 of 1,833 agree; 9 candidate-refuses, 120 candidate-unknown, 6 project-unknown, all on refused or incomplete returns; no completed return differs. This round changed only the wording of sales.wash_loss (stock received as pay, a bonus award), not an expression. Project stands.",
+   "subject_key": "469470f324a5599f3d03a5942e5ef4422485666e877824bfd89fbaa6f3561fcd"
   },
   {
    "key": "(h)",
@@ -38,7 +38,7 @@
  "subjects": {
   "sales.one": "b984b4d36b5a94f6ebef0efa995a417e9e68b981e7a9166d583c36d0f306c4c1",
   "(e)": "b7f290bb5c1dd9dbd25b593ae9a7e0244a1e684e986b47849a9572b164e73d0d",
-  "(g)": "e2c67e71729c662f54d1b1b680c065dddd78f671edc0101a383f7a067bb801e5",
+  "(g)": "8c5e7c4b6c15b66814b237d3abf17b798ce115d648da208cc89d28bca8ade4f7",
   "(h)": "99ee2a26d2615b358c59742db7fe5cb7211304df3fd2300bdc0b375bc504b241"
  },
  "__rest__": "d66e458afa5745f8eec417fb8e25dc768244f7e1dca0d2d0114dfbf47d7cba76",

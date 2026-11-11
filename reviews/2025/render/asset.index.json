@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "29fb98fc5ef41cf40f29429a9231b56dba6721ca4d69be28a6cf0bdc6a0e9d8e",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "13 / 2 / 0 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -52,9 +53,10 @@
   },
   {
    "key": "14",
-   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
-   "status": "MATCH",
-   "subject_key": "09a70f81e97595b1a526ba312c20abf784cb9475f39d8fa75deb5818cf386b77"
+   "record": "a72da620652921c00bed4d571f76549ba675d9dd301a77009fe177798d178018",
+   "status": "MISMATCH",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Both objections are answered by asset.screen, which refuses the property before any allowance is figured (asset.screened, refused at asset.cost): its list includes \"property with a long production period, an aircraft, or qualified production property\", so the 60% cases of i4562 p. 5, Line 14 never reach line 14, and \"its basis is reduced by a credit or deduction other than the section 179 deduction and the special depreciation allowance\" (the disabled access credit and the other credits named there), so the basis the allowance is figured on is cost times business use less section 179 on every accepted property. This round changed only the wording of asset.after_jan19 (the written binding contract rule, P.L. 119-21 sec. 70301(c)(4)), not an expression. Project stands.",
+   "subject_key": "7a91219263ee0b54010ac1d5799160151eac588f43e7d1a49d0eab4f7fb9645d"
   },
   {
    "key": "25",
@@ -107,7 +109,7 @@
   "(c)": "d73586c607b01c97ecdfab67f565e7b67aaf3ed18e11df61d97bab267ebb8f74",
   "6(c)": "084dddb1873a0f47ceb66432c36955190ec9664cc738b5f474619c191e8ecce7",
   "(screen) (asset.bonus_same)": "2f34e9e3885fb3fa0b0ec17dc96999e5445e98b80c54ddbaaa89064cca8fe4ea",
-  "14": "27d44495cfd6497c4dfdcdc5e24b593b76bb784200fd9031e9e335cfeb45e781",
+  "14": "3a16970b01165cd92c9d603c7372bd275326d51166731ad46b543f6dcb7ac6a1",
   "25": "4b426ebe7b78071c2a8116ed219a8177a4e50a5d5cd1964666a8cbc004017fea",
   "26(i)": "972bf999bb72cb2de985955f855b6d9c9bae4e980b417a580fd7fd6d51ef6d5a",
   "19(c)": "5b66752b589f0971467311e10fed998f21c63678fcf35bcdfbd9884586abec92",

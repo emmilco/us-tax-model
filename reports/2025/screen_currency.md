@@ -66,3 +66,4 @@ Findings: 56; ruled 56; in the baseline to be worked off 0.
 ## Due at the next release
 
 - `f5695.line7a`: question, gated lines or their citations changed since its samples; run screen_review.py --screens f5695.line7a
+- `gate:div.has_return_of_capital`: the condition's wording, the gated lines or their citations changed since its samples; run screen_review.py --screens gate:div.has_return_of_capital

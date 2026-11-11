@@ -931,23 +931,23 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter sales.zero
       = $0
       cite: [f1040s1a] Schedule 1-A (2025) (2025; created 2025-11-04; 64f97b38)
-  (helper) Did you receive qualified tips as an employee in 2025 that you want to deduct?
+  (helper) Did you (or, on a joint return, your spouse) receive qualified tips as an employee in 2025 that you want to deduct?
       = UNKNOWN (no input supplied for s1a.tips)
-      cite: [i1040gi] pp. 101-103, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] pp. 101-103, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if", "You (and/or your spouse if filing a joint return) received qualified tips" (2025; printed date 2026-02-25; 482e9c48)
   13  Qualified tips deduction. Subtract line 12 from line 7. If zero or less, enter -0-
       = UNKNOWN (no input supplied for s1a.tips)
       cite: [f1040s1a] Schedule 1-A (2025), line 13; i1040gi p. 101, "Fill out Schedule 1-A, Part II, only if" (2025; created 2025-11-04; 64f97b38)
       note: guard incomplete; possible: #0 money, #1 unknown
-  (helper) Did you receive qualified overtime compensation in 2025 that you want to deduct?
+  (helper) Did you (or, on a joint return, your spouse) receive qualified overtime compensation in 2025 that you want to deduct?
       = UNKNOWN (no input supplied for s1a.overtime)
-      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if", "You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025" (2025; printed date 2026-02-25; 482e9c48)
   21  Qualified overtime compensation deduction. Subtract line 20 from line 15. If zero or less, enter -0-
       = UNKNOWN (no input supplied for s1a.overtime)
       cite: [f1040s1a] Schedule 1-A (2025), line 21; i1040gi p. 106, "Fill out Schedule 1-A, Part III, only if" (2025; created 2025-11-04; 64f97b38)
       note: guard incomplete; possible: #0 money, #1 unknown
-  (helper) Did you pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?
+  (helper) Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?
       = UNKNOWN (no input supplied for s1a.carloan)
-      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025", "if you and/or your spouse paid or accrued qualified passenger vehicle loan interest" (2025; printed date 2026-02-25; 482e9c48)
   30  Qualified passenger vehicle loan interest deduction. Subtract line 29 from line 24. If zero or less, enter -0-
       = UNKNOWN (no input supplied for s1a.carloan)
       cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)

@@ -104,16 +104,18 @@ form:
       locator: Schedule 1-A (2025), line 3
   - id: s1a.tips
     printed: (helper)
-    label: Did you receive qualified tips as an employee in 2025 that you want to deduct?
+    label: Did you (or, on a joint return, your spouse) receive qualified tips as an employee in 2025 that you want to deduct?
     type: Bool
     expr:
       op: input
-      source: Did you receive tips as an employee in 2025 in an occupation on the IRS list of occupations that customarily
-        and regularly received tips (IRS.gov/TippedOccupations) that you want to deduct on Schedule 1-A, Part II? (Tips received
-        as a non-employee, in your own trade or business, are asked about with Schedule C.)
+      source: Did you (or, on a joint return, your spouse) receive tips as an employee in 2025 in an occupation on the IRS
+        list of occupations that customarily and regularly received tips (IRS.gov/TippedOccupations) that you want to
+        deduct on Schedule 1-A, Part II? Answer Yes if either of you did. (Tips received as a non-employee, in your own
+        trade or business, are asked about with Schedule C.)
     cite:
       doc: i1040gi
-      locator: pp. 101-103, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"
+      locator: pp. 101-103, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if", "You (and/or your spouse if
+        filing a joint return) received qualified tips"
   - id: s1a.tip_employers
     printed: (helper)
     label: Number of employers on the Qualified Tips From More Than One Employer Worksheet
@@ -878,16 +880,17 @@ form:
           of a trade or business"; p. 101, "Fill out Schedule 1-A, Part II, only if"
   - id: s1a.overtime
     printed: (helper)
-    label: Did you receive qualified overtime compensation in 2025 that you want to deduct?
+    label: Did you (or, on a joint return, your spouse) receive qualified overtime compensation in 2025 that you want to deduct?
     type: Bool
     expr:
       op: input
-      source: Did you receive overtime pay as an employee in 2025 that you want to deduct on Schedule 1-A, Part III (the FLSA
-        Overtime Premium, generally the "half" of time-and-a-half)? (Overtime reported to you on Form 1099-NEC or 1099-MISC
-        is asked about with Schedule C.)
+      source: Did you (or, on a joint return, your spouse) receive overtime pay as an employee in 2025 that you want to
+        deduct on Schedule 1-A, Part III (the FLSA Overtime Premium, generally the "half" of time-and-a-half)? Answer Yes
+        if either of you did. (Overtime reported on Form 1099-NEC or 1099-MISC is asked about with Schedule C.)
     cite:
       doc: i1040gi
-      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"
+      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if", "You (and/or your spouse if
+        filing a joint return) received qualified overtime compensation in 2025"
   - id: s1a.ot_ssn_count
     printed: (helper)
     label: 'Number of people with a valid SSN who received qualified overtime compensation'
@@ -1514,15 +1517,17 @@ form:
           is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"; p. 106, "Fill out Schedule 1-A, Part III, only if"
   - id: s1a.carloan
     printed: (helper)
-    label: Did you pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?
+    label: Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?
     type: Bool
     expr:
       op: input
-      source: Did you pay or accrue interest in 2025 on a loan taken out after 2024 to buy a new car, minivan, van, SUV, pickup
-        truck or motorcycle for personal use that you want to deduct on Schedule 1-A, Part IV?
+      source: Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan taken out after 2024 to
+        buy a new car, minivan, van, SUV, pickup truck or motorcycle for personal use that you want to deduct on Schedule
+        1-A, Part IV? Answer Yes if either of you did.
     cite:
       doc: i1040gi
-      locator: p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025"
+      locator: p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025",
+        "if you and/or your spouse paid or accrued qualified passenger vehicle loan interest"
   - id: s1a.line23_total
     printed: (helper)
     label: Add lines 22a and 22b, column (iii), and any further loans on the attached statement
