@@ -588,12 +588,12 @@
 ## (helper) — `dependent.qualifying_relative`
 
 - **Authored helper label:** Qualifying relative (Step 4)
-- **Encoded (Bool):** helper "A relative listed in Step 4, or any other person who lived with you all year" = true and helper "Qualifying child (Step 1)" = false and helper "Gross income under $5,200" = true and helper "You provided over half of this person's support?" = true
+- **Encoded (Bool):** Choose — [helper "A relative listed in Step 4, or any other person who lived with you all year" = true → helper "Qualifying relative tests (Step 4) from the qualifying child test on: not a qualifying child, gross income and support"] [helper "A relative listed in Step 4, or any other person who lived with you all year" = false → helper "Year parameter household.no (false)"]
 - **Refusal:** when dependent.multiple_support is true, cannot complete Multiple support agreements. A person claimed under a multiple support agreement is outside this tool. Cite: [i1040gi] p. 20, Multiple support agreements (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when dependent.income_exception is true, cannot complete Exception to gross income test. The sheltered-workshop exception to the gross income test for a disabled person is outside this tool. Cite: [i1040gi] pp. 19–20, Exception to gross income test (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when dependent.married is true, cannot complete Married person rules. A married dependent is outside this tool; see Married person in the instructions. Cite: [i1040gi] p. 21, Married person (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when dependent.qr_kidnapped is true, cannot complete Kidnapped child (Pub. 501). A child presumed kidnapped by someone who isn't a family member may be your qualifying relative under part-year rules this tool does not apply. Cite: [p501] p. 18, Kidnapped child, "You can treat a child as your qualifying relative even if the child has been kidnapped, but the following statements must be true." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
-- Expr: `{"all":[{"eq":["dependent.qr_relationship",{"const":true}],"op":"test"},{"eq":["dependent.qualifying_child",{"const":false}],"op":"test"},{"eq":["dependent.qr_income",{"const":true}],"op":"test"},{"eq":["dependent.supported",{"const":true}],"op":"test"}],"op":"test"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qr_relationship",{"const":true}],"op":"test"},"then":"dependent.qr_from_child"},{"guard":{"eq":["dependent.qr_relationship",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.qr_dependent_resident`
@@ -670,8 +670,8 @@
 ## (helper) — `dependent.odc_person`
 
 - **Authored helper label:** Dependent for the credit for other dependents (Steps 3 and 5)
-- **Encoded (Bool):** helper "Your dependent" = true and helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true and helper "U.S. citizen, U.S. national or U.S. resident alien?" = true and helper "Qualifying child for the child tax credit (Step 3)" = false and household helper "You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN" = true
-- Expr: `{"all":[{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.tin",{"const":true}],"op":"test"},{"eq":["dependent.citizen",{"const":true}],"op":"test"},{"eq":["dependent.ctc_child",{"const":false}],"op":"test"},{"eq":["household.all_tin",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Your dependent" = true → helper "Credit for other dependents tests (Steps 3 and 5) from the SSN, ITIN or ATIN test on: this person's number, citizenship, not a qualifying child for the child tax credit, and an SSN or ITIN for you, and your spouse if filing jointly"] [helper "Your dependent" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.claimed",{"const":true}],"op":"test"},"then":"dependent.odc_from_tin"},{"guard":{"eq":["dependent.claimed",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 18, Step 3, question 3, and p. 19, Step 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.ctc_per_child`
@@ -1314,3 +1314,38 @@
 - **Encoded (Bool):** Choose — [helper "Qualifying child who is your dependent (Step 2)" = true → helper "Qualifying child who is your dependent (Step 2)"] [helper "Qualifying child who is your dependent (Step 2)" = false → helper "Qualifying relative who is your dependent (Step 4, questions 2 and 5)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["dependent.qc_dependent",{"const":true}],"op":"test"},"then":"dependent.qc_dependent"},{"guard":{"eq":["dependent.qc_dependent",{"const":false}],"op":"test"},"then":"dependent.qr_dependent"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 17–19, Who Qualifies as Your Dependent (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.odc_from_tin`
+
+- **Authored helper label:** Credit for other dependents tests (Steps 3 and 5) from the SSN, ITIN or ATIN test on: this person's number, citizenship, not a qualifying child for the child tax credit, and an SSN or ITIN for you, and your spouse if filing jointly
+- **Encoded (Bool):** Choose — [helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true → helper "Credit for other dependents tests (Steps 3 and 5) from the citizenship test on: citizenship, not a qualifying child for the child tax credit, and an SSN or ITIN for you, and your spouse if filing jointly"] [helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.tin",{"const":true}],"op":"test"},"then":"dependent.odc_from_citizen"},{"guard":{"eq":["dependent.tin",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 18, Step 3, question 3, and p. 19, Step 5 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.odc_from_citizen`
+
+- **Authored helper label:** Credit for other dependents tests (Steps 3 and 5) from the citizenship test on: citizenship, not a qualifying child for the child tax credit, and an SSN or ITIN for you, and your spouse if filing jointly
+- **Encoded (Bool):** Choose — [helper "U.S. citizen, U.S. national or U.S. resident alien?" = true → helper "Credit for other dependents tests (Steps 3 and 5) from the child tax credit test on: not a qualifying child for the child tax credit, and an SSN or ITIN for you, and your spouse if filing jointly"] [helper "U.S. citizen, U.S. national or U.S. resident alien?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.citizen",{"const":true}],"op":"test"},"then":"dependent.odc_from_ctc"},{"guard":{"eq":["dependent.citizen",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 18, Step 3, question 3, and p. 19, Step 5 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.odc_from_ctc`
+
+- **Authored helper label:** Credit for other dependents tests (Steps 3 and 5) from the child tax credit test on: not a qualifying child for the child tax credit, and an SSN or ITIN for you, and your spouse if filing jointly
+- **Encoded (Bool):** Choose — [helper "Qualifying child for the child tax credit (Step 3)" = false → household helper "You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN"] [helper "Qualifying child for the child tax credit (Step 3)" = true → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.ctc_child",{"const":false}],"op":"test"},"then":"household.all_tin"},{"guard":{"eq":["dependent.ctc_child",{"const":true}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 18, Step 3, question 3, and p. 19, Step 5 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qr_from_child`
+
+- **Authored helper label:** Qualifying relative tests (Step 4) from the qualifying child test on: not a qualifying child, gross income and support
+- **Encoded (Bool):** Choose — [helper "Qualifying child (Step 1)" = false → helper "Qualifying relative tests (Step 4) from the gross income test on: gross income and support"] [helper "Qualifying child (Step 1)" = true → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qualifying_child",{"const":false}],"op":"test"},"then":"dependent.qr_from_income"},{"guard":{"eq":["dependent.qualifying_child",{"const":true}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qr_from_income`
+
+- **Authored helper label:** Qualifying relative tests (Step 4) from the gross income test on: gross income and support
+- **Encoded (Bool):** Choose — [helper "Gross income under $5,200" = true → helper "You provided over half of this person's support?"] [helper "Gross income under $5,200" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qr_income",{"const":true}],"op":"test"},"then":"dependent.supported"},{"guard":{"eq":["dependent.qr_income",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?" (2025; printed date 2026-02-25; sha256 482e9c48)

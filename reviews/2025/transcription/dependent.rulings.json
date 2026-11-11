@@ -461,6 +461,49 @@
    "subject_key": "8695b9e8833d302c4d880de076d097562187dcc742a2764af8337153394cfbd4"
   },
   {
+   "printed": "2(c)",
+   "project_expr_sha256": "f8e3bb73da29fe016312adb2d49948c279683ba3e0ac9dc04e30eaec43accbf1",
+   "second_expr_sha256": "10d00f472c0d2138ecd179044021dfadb77baa6af04ac10735076cf5834b8ef1",
+   "ruling": "Ruling: model error; i2441 p. 3, Column (c): \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\". The reply's box is the age and disability test alone (14 or over, or 13 with dependent.dc_over12_care, and dependent.dc_incapable), without the qualifying-person test the project's box carries, so it wants dependent.dc_incapable where the project does not read it and gives an answer on records where the project hides the box. No value differs on any record. Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 4,464 of 5,462 agree; differences: 782 candidate-unknown, 132 candidate-shows-skipped, 81 project-unknown, 3 project-refuses; on completed returns: 82 candidate-unknown, 73 candidate-shows-skipped; on completed returns the reply waits on: dependent.dc_incapable 81, dependent.dc_over12_care 1. The project's refusals are its cited screens on refused returns (None 3); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (? 81). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "61c70683e00eb162d5174984773b6b45d849605ddd8c31eb4abe8c5ae875a5ff",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8889.3.deepseek@dependent[dep_b]",
+     "fixture:classm.f8889.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f8889.5.deepseek@dependent[dep_a]",
+     "fixture:classm.f4952.1.deepseek@dependent[dep_b]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.2.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.2.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.2.deepseek@dependent[dep_b]",
+     "fixture:classm.s179.1@dependent[dep_a]",
+     "fixture:classm.sb.1@dependent[dep_a]",
+     "fixture:classm.sd.2@dependent[dep_b]",
+     "fixture:classm.dependent.1@dependent[dep_c]",
+     "fixture:stage15.mut.dc_parent_part_year_born_died_unanswered@dependent[parent]",
+     "fixture:stage15.refuse.dependent.dc_no_tin@dependent[a]",
+     "fixture:mutation.t2.no_carloan_part4_b@dependent[dep_b]",
+     "generated:20261026.10@dependent[dep_b]",
+     "generated:20261026.23@dependent[dep_b]",
+     "generated:20261026.74@dependent[dep_b]",
+     "generated:20261026.182@dependent[dep_a]",
+     "partial:classm.f2441.1.deepseek-dependent[a].relationship@dependent[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "2(d)",
    "project_expr_sha256": "e52f22d72daafb9f22f3d8796576cd2243a582add0f1058738bf5e91b38733e6",
    "second_expr_sha256": "03866f9c1cad9e80168afd6608bda58b6d05c1535842aec0fbe285fab1d5eb1f",
@@ -739,6 +782,43 @@
   {
    "printed": "2(d)",
    "project_expr_sha256": "e52f22d72daafb9f22f3d8796576cd2243a582add0f1058738bf5e91b38733e6",
+   "second_expr_sha256": "a06f40c09b432f5fd1289c8f04447dc16f2a767e477784a22db54dadf0517067",
+   "ruling": "Ruling: representation; project retained. The project copies the person's qualified expenses and applies the qualifying-person test where column (d) is summed (f2441.paid_total, where dependent.dc_qp); the reply zeroes the column for a person who is not a qualifying person (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"). No value differs on any record; the reply's unknowns and refusals are those of its dependent.dc_qp and dependency test. Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 3,746 of 5,462 agree; differences: 1,631 candidate-unknown, 82 candidate-refuses, 2 project-unknown, 1 project-refuses; on completed returns: 184 candidate-unknown, 4 candidate-refuses; on completed returns the reply waits on: dependent.dc_incapable 75, dependent.multiple_support 70, dependent.kidnapped 31, dependent.lawful 4, dependent.dc_paid 4. The project's refusals are its cited screens on refused returns (None 1); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (? 2). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "d223a3b65a4acb3a271b330b068cf1b82896cb236391d1b5495a2732b6606b75",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage15.refuse.dependent.dc_no_tin@dependent[a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].age@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].tin@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2(d)",
+   "project_expr_sha256": "e52f22d72daafb9f22f3d8796576cd2243a582add0f1058738bf5e91b38733e6",
    "second_expr_sha256": "b1dacdf7515f5544ae53feab9aec3a5ef5457e42302d18fb4b6f31944475bb37",
    "ruling": "Ruling: model error; i2441 p. 3, Column (d); p. 1, Qualifying Person(s). Column (d) inherits the reply's dc_qp: 203 completed candidate-unknowns (dc_incapable, dc_paid, kidnapped, lawful asked where no care was paid and the project hides the column). No completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,565 fixtures, 500 generated returns seed 20261026, 2,667 partial records; 8,578 comparisons): 6,844 of 8,578 agree; 1,517 candidate-unknown, 206 candidate-refuses, 8 project-unknown, 2 project-refuses, 1 value; on returns the full interview completes: 203 candidate-unknown. Project stands.",
    "context": "f131fa2af6ea55b908ae1eb5e43cb28f2809c1f72dba0693c4744a0e915aaff2",
@@ -859,6 +939,54 @@
    "second_expr_sha256": "f1bb87f8f0b8a7b557018e455e4a36014f56a6ebebeda7e77aef0513a151c4b8",
    "ruling": "Ruling: representation; project retained. The project copies the person's qualified expenses and applies the qualifying-person test where column (d) is summed (f2441.paid_total, 'where dependent.dc_qp'); the second zeroes the column for a person who is not a qualifying person (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"). The total is the same; the benefits reading is the register's (amb.2025.dc_line30).",
    "subject_key": "3eeb24ffbff2f96c8050bcea975020930d07a1cc5c49034449e12e6b1a1b958a"
+  },
+  {
+   "printed": "27",
+   "project_expr_sha256": "1748794600a8bc1f1f6925e782c7701202c8ca2e47a850e31fdb99c5088a1638",
+   "second_expr_sha256": "e35f4a3a44359b5a0e21faf2878ba29fa837a29d85accd9b3cb92f22fab73335",
+   "ruling": "Ruling: model error; f8863 p. 2, Part III, line 27, \"Adjusted qualified education expenses (see instructions). Don't enter more than $4,000\"; p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return.\" (owner decision T-113 keeps that deeming). As ruled on this line before: the reply requires an issued TIN for the American opportunity credit, so on f1.t113.dep_aoc_applied k0 (the ATIN applied for) it gives $0.00 where the project gives the credit base, the one value difference; and it reads dependent.edu for every entry with no f8863.paid test, so on completed returns it is unknown where the project hides the line (dependent.edu 360) or wants dependent.edu_tin_issued (10). Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 3,399 of 5,462 agree; differences: 1,960 candidate-unknown, 86 project-unknown, 8 candidate-refuses, 8 project-refuses, 1 value; on completed returns: 370 candidate-unknown, 1 value; on completed returns the reply waits on: dependent.edu 360, dependent.edu_tin_issued 10. The project's refusals are its cited screens on refused returns (None 8); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (? 86). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "0813ba63ff5058be7765fba3ef44efb8972e2c747b668f001d16cb796648de4b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.asset.4@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage19.refuse.period_over_dependent@dependent[daughter]",
+     "fixture:f1.t113.dep_aoc_applied@dependent[k0]",
+     "generated:20261026.68@dependent[dep_a]",
+     "generated:20261026.72@dependent[dep_b]",
+     "generated:20261026.111@dependent[dep_a]",
+     "generated:20261026.151@dependent[dep_a]",
+     "generated:20261026.220@dependent[dep_b]",
+     "generated:20261026.237@dependent[dep_c]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].kidnapped@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "27",
@@ -1370,6 +1498,54 @@
   },
   {
    "printed": "28",
+   "project_expr_sha256": "bf02ef167b81bb1b0b34047a8388ab75637b5d67d0a20351258340e325c6c053",
+   "second_expr_sha256": "f44d88ab3ed06d475d48b748f39eb415f3a55f73a8e5a329587b7e06eca893f5",
+   "ruling": "Ruling: model error; f8863 p. 2, line 28: the reply's expression is the project's (line 27 less $2,000, not below zero); the differences are those of line 27, which it reads. p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return.\" (owner decision T-113 keeps that deeming). As ruled on this line before: the reply requires an issued TIN for the American opportunity credit, so on f1.t113.dep_aoc_applied k0 (the ATIN applied for) it gives $0.00 where the project gives the credit base, the one value difference; and it reads dependent.edu for every entry with no f8863.paid test, so on completed returns it is unknown where the project hides the line (dependent.edu 360) or wants dependent.edu_tin_issued (10). Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 3,399 of 5,462 agree; differences: 1,960 candidate-unknown, 86 project-unknown, 8 candidate-refuses, 8 project-refuses, 1 value; on completed returns: 370 candidate-unknown, 1 value; on completed returns the reply waits on: dependent.edu 360, dependent.edu_tin_issued 10. The project's refusals are its cited screens on refused returns (None 8); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (? 86). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "177e447daa464de495221f8a8051b8f64015fb9f948998d476b165651b78f407",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.asset.4@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage19.refuse.period_over_dependent@dependent[daughter]",
+     "fixture:f1.t113.dep_aoc_applied@dependent[k0]",
+     "generated:20261026.68@dependent[dep_a]",
+     "generated:20261026.72@dependent[dep_b]",
+     "generated:20261026.111@dependent[dep_a]",
+     "generated:20261026.151@dependent[dep_a]",
+     "generated:20261026.220@dependent[dep_b]",
+     "generated:20261026.237@dependent[dep_c]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].kidnapped@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "28",
    "project_expr_sha256": "f468afdc496b2f626a82d17f73f1044224b78405502b0219b9a43409e0b3a1e7",
    "second_expr_sha256": "f44d88ab3ed06d475d48b748f39eb415f3a55f73a8e5a329587b7e06eca893f5",
    "ruling": "Ruling: model error; f8863 p. 2, line 28; p970 p. 11; i1040gi p. 21. This review was rerun whole (dependent has partial-input cases) because the American opportunity credit test was rewritten as a nested choice in the form's order (BUG-0460); this line's project expression is unchanged unless it reads that test. The reply puts dependent.married, dependent.divorced_rule and dependent.multiple_support as refusal gates on its dependent.claimed for every entry, so it refuses, or needs the answer for, a qualifying child, whose dependency has no support test of the filer: model error, i1040gi p. 21, Multiple support agreements: \"If no one person contributed over half of the support of your relative (or a person who lived with you all year as a member of your household) but you and another person(s) provided more than half of your relative's support, special rules may apply\" (the project refuses it on the qualifying-relative line only). On a completed return: generated 126 dep_b, a qualifying child (the project's qc_dependent yes), is refused by the reply at multiple_support. As the person form's ruling: the reply reads dependent.edu_over for every entry (no f8863.paid gate), so it is unknown where the project hides the line (1078 completed records, for example classm.f8889.1.deepseek dep_a), and it requires an issued TIN, against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return.\" (owner decision T-113): f1.t113.dep_aoc_applied k0 (off completed returns) gives $0.00 where the project gives $2,000.00. The other off-completed differences are the reply's refusals on its dependent.claimed gates (divorced_rule, married, multiple_support) and the project's cited screens. The worksheet arithmetic is the project's aqee definition. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; every witness enumerated by a scratch run of triage.mjs with the witness cap lifted, recorded triage file as written by triage.py; 1,640 fixtures, 500 generated returns seed 20261026, 2,167 partial records; 7,218 comparisons): 3,247 agree; 3,739 candidate-unknown, 189 candidate-refuses, 42 project-refuses, 1 value; on returns the full interview completes: 1,080 candidate-unknown, 1 candidate-refuses. Project stands.",
@@ -1393,6 +1569,54 @@
    "ruling": "Ruling: model error; i8863 p. 2, Who Can Claim an Education Credit: \"You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student\"; i8863 p. 3, item 5: \"Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)\" (amb.2025.edu_filer_tin). Its American opportunity test (dependent.h_edu_aoc: claimed, edu, edu_1098t, the student's TIN, lines 23 to 26, edu_ein) still has no filer-TIN test and no f8863.paid test. Rerun on this reply, the constructed witness stage19.example.jack_kay with person[spouse].tin and itin_applied no gives line 30 $2,500.00 where the project gives line 30 $0.00 and line 31 $4,300.00. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,390 fixtures, 500 generated returns seed 20261026, 2,487 partial records; 7,463 comparisons): 3,326 of 7,463 agree; 3,810 candidate-unknown, 323 candidate-refuses, 3 project-refuses, 1 project-unknown; on returns the full interview completes: 1,100 candidate-unknown, 83 candidate-refuses. Every completed-return difference was enumerated with the witness cap lifted (triage.mjs run directly; scratch /tmp/adj-fixr2-dependent-household/dependent.full.json, causes assigned by /tmp/adj-fixr2-dependent-household/classify.py, none unassigned; the uncapped rerun reproduces the recorded counts exactly): (a) 83 candidate-refuses: dependent.multiple_support refused on a qualifying child, all classm.s3.4 dep_a (a child aged 2, 12 months, multiple_support yes; the fixtures classm.s3.4 and classm.s3.4.deepseek and 81 partial records of classm.s3.4); the project claims the child (multiple support is refused only on dependent.qualifying_relative) (the project hides the line); (b) 1,100 candidate-unknown dependent.edu on returns with f8863.paid no, where the project hides the line and does not ask it (for example classm.f2441.1.deepseek a). Lines 28 to 30 are unchanged from round 3 and inherit line 27. Project stands.",
    "context": "b1bf97d1fc9069ccd49812a2369692172ec137605b1b7f7436c667dd2ca4f4b0",
    "subject_key": "4d2345c02330882e264f9488e9129d134140528cf2d98233559755b999e7b413"
+  },
+  {
+   "printed": "29",
+   "project_expr_sha256": "0670492606ec0167875dd588b368f926c9c507ea5ad436b2950be40229153192",
+   "second_expr_sha256": "bd7a465eeba8148388921a59e7853bf42f6cfef0d6f4766c0e7e6447a064e8f7",
+   "ruling": "Ruling: model error; f8863 p. 2, line 29: the reply's expression is the project's (25% of line 28); the differences are those of line 27, which it reads. p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return.\" (owner decision T-113 keeps that deeming). As ruled on this line before: the reply requires an issued TIN for the American opportunity credit, so on f1.t113.dep_aoc_applied k0 (the ATIN applied for) it gives $0.00 where the project gives the credit base, the one value difference; and it reads dependent.edu for every entry with no f8863.paid test, so on completed returns it is unknown where the project hides the line (dependent.edu 360) or wants dependent.edu_tin_issued (10). Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 3,399 of 5,462 agree; differences: 1,960 candidate-unknown, 86 project-unknown, 8 candidate-refuses, 8 project-refuses, 1 value; on completed returns: 370 candidate-unknown, 1 value; on completed returns the reply waits on: dependent.edu 360, dependent.edu_tin_issued 10. The project's refusals are its cited screens on refused returns (None 8); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (? 86). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "3d65d8f6a56c430831ca61b682ec9e77b22c21c63cbe6316d3f01f5bd0ee84b6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.asset.4@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage19.refuse.period_over_dependent@dependent[daughter]",
+     "fixture:f1.t113.dep_aoc_applied@dependent[k0]",
+     "generated:20261026.68@dependent[dep_a]",
+     "generated:20261026.72@dependent[dep_b]",
+     "generated:20261026.111@dependent[dep_a]",
+     "generated:20261026.151@dependent[dep_a]",
+     "generated:20261026.220@dependent[dep_b]",
+     "generated:20261026.237@dependent[dep_c]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].kidnapped@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "29",
@@ -1643,6 +1867,54 @@
   },
   {
    "printed": "30",
+   "project_expr_sha256": "7ec0b0270fad3e309eb9c592f2277fc154fda383e1b75b2840720bd23b56c458",
+   "second_expr_sha256": "6ca58ee473cdd3589a32c7b4a07677cf3db9fbf76df6536691b6b339f8d9ff05",
+   "ruling": "Ruling: model error; f8863 p. 2, line 30: the reply's expression is the project's (line 27 when line 28 is zero, else $2,000 plus line 29); the differences are those of line 27, which it reads. p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return.\" (owner decision T-113 keeps that deeming). As ruled on this line before: the reply requires an issued TIN for the American opportunity credit, so on f1.t113.dep_aoc_applied k0 (the ATIN applied for) it gives $0.00 where the project gives the credit base, the one value difference; and it reads dependent.edu for every entry with no f8863.paid test, so on completed returns it is unknown where the project hides the line (dependent.edu 360) or wants dependent.edu_tin_issued (10). Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 3,399 of 5,462 agree; differences: 1,960 candidate-unknown, 86 project-unknown, 8 candidate-refuses, 8 project-refuses, 1 value; on completed returns: 370 candidate-unknown, 1 value; on completed returns the reply waits on: dependent.edu 360, dependent.edu_tin_issued 10. The project's refusals are its cited screens on refused returns (None 8); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (? 86). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "ea4c69797eec070a5a29d3be1d525a6e687d190e41d880b70f7fc90e96ab31f2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.asset.4@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage19.refuse.period_over_dependent@dependent[daughter]",
+     "fixture:f1.t113.dep_aoc_applied@dependent[k0]",
+     "generated:20261026.68@dependent[dep_a]",
+     "generated:20261026.72@dependent[dep_b]",
+     "generated:20261026.111@dependent[dep_a]",
+     "generated:20261026.151@dependent[dep_a]",
+     "generated:20261026.220@dependent[dep_b]",
+     "generated:20261026.237@dependent[dep_c]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].kidnapped@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "30",
    "project_expr_sha256": "a9853e600087b9477905ccbe0ea34093d169aa95ac6235851c8371fd7fe9283e",
    "second_expr_sha256": "51d46636b2c2883d2990653d38de324e1fdae6b9fd9eb63193d00f7487244990",
    "ruling": "Ruling: model error; i8863 p. 2, Who Can Claim an Education Credit: \"You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student\"; i8863 p. 3, item 5: \"Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)\" (amb.2025.edu_filer_tin). executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,411 fixtures, 500 generated returns seed 20261026, 2,809 partial records; 8,275 comparisons): 4,819 of 8,275 agree; 3,202 candidate-unknown, 247 candidate-refuses, 6 project-refuses, 1 project-unknown; on returns the full interview completes: 758 candidate-unknown. Its American opportunity test (dependent.h_edu_aoc_ok: claimed, edu, edu_1098t, the student's TIN, lines 23 to 26, edu_ein) has no filer-TIN test under the chosen reading of amb.2025.edu_filer_tin and no f8863.paid test. Rerun on this reply (scratch cand_eval.py), stage19.example.jack_kay with person[spouse].tin and itin_applied no: dependent[k0] line 27 $4,000.00 and line 30 $2,500.00 where the project gives line 27 hidden, line 30 $0.00 and line 31 $4,300.00 (with the TINs both give line 30 $2,500.00). Lines 28 to 30 apply the worksheet arithmetic to the reply's line 27 and inherit it. Every completed-return difference was enumerated with the witness cap lifted (triage.mjs run directly; scratch `adj-t091r2-dep-transcription/dependent.full.json`, causes assigned by `classify2.py`, none unassigned; the uncapped rerun reproduces the recorded counts exactly): (a) 741 candidate-unknown dependent.edu on returns with f8863.paid no, where the project hides the line and does not ask it (69 fixtures and 672 partial records; for example classm.f4952.1.deepseek dep_a); (b) 2 candidate-unknown dependent.lawful on classm.clcw26.2 and .deepseek dep_b, a household_member whose fixture predates that question: the reply asks lawful of a household_member, whose relationship answer already states the local-law condition (an answer the source does not need); (c) 15 candidate-unknown partial records (11 joint_return, 3 kidnapped, 1 edu_over of classm.s3.2 dep_a). Off completed returns: 247 candidate-refuses (other_claimant, divorced_rule, kidnapped and multiple_support declared on the reply's claim helpers, and h_edu_over on stage19.refuse.period_over_dependent), all on returns the project refuses; 6 project-refuses (edu_over_refused). Project stands.",
@@ -1852,6 +2124,52 @@
    "ruling": "Ruling: model error; i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)\"; p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\"; i8863 p. 9, Line 31. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/dependent.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,946 partial records from 40 bases; 9,011 comparisons): 4,652 of 9,011 agree; 4,162 candidate-unknown, 189 candidate-refuses, 6 project-refuses, 2 value; on completed returns: 1,294 candidate-unknown, 2 candidate-refuses. As line 27 (edu_over asked of every entry: 1,290 completed differences); the 2 values are on refused returns (generated 47 and 470, dependent.tin no). Project stands.",
    "context": "1691af1661a7c24efd8b611c11cc0d79e1ebe71d9873d2e8e1df411c70d41afb",
    "subject_key": "407421b6b4827c2d4db7e0e48fd7409712bd02d18e2a0c880a7ac714431d00a6"
+  },
+  {
+   "printed": "31",
+   "project_expr_sha256": "44a13ee462a9aa48a0207577fae9a3ce484c8e78537e6d2e161373bc794fb91a",
+   "second_expr_sha256": "a4b14d446799b7ea8ce092d8fb0d33966caff415397ed22da16136e6e7ec5386",
+   "ruling": "Ruling: model error; f8863 p. 2, line 31; i8863 p. 3, Who cannot claim a credit; i1040gi p. 21, Multiple support agreements, \"If no one person contributed over half of the support of your relative (or a person who lived with you all year as a member of your household) but you and another person(s) provided more than half of your relative's support, special rules may apply\"; i1040gi p. 17, Step 1 (a qualifying child is tested on relationship, age, own support, joint return and residency; no support test of yours). As ruled on this line before: the reply reads dependent.edu for every entry with no f8863.paid test (unknown on 360 completed records where the project hides the line), requires an issued TIN (dependent.edu_tin_issued 10), and inherits its dependency test's screens (dependent.kidnapped 1). No value differs on any record. The one project refusal on a completed return is stage19.mut.claimed_filer_llc daughter, at the project's cited gate dependent.edu_llc_tin_refused. Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 3,393 of 5,462 agree; differences: 1,966 candidate-unknown, 85 project-unknown, 11 project-refuses, 7 candidate-refuses; on completed returns: 371 candidate-unknown, 1 project-refuses; on completed returns the reply waits on: dependent.edu 360, dependent.edu_tin_issued 10, dependent.kidnapped 1. The project's refusals are its cited screens on refused returns (None 8, edu_llc_tin_refused 3); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (? 85). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "b0c18b77612e28de0026a0baf02afb58105ad96d360b63b85dd2b801ecdf20f6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.asset.4@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:f1.t113.dep_llc_applied@dependent[daughter]",
+     "fixture:stage19.mut.classm_f5329_3_dependent_no_ein@dependent[dep_a]",
+     "fixture:stage19.mut.claimed_filer_llc@dependent[daughter]",
+     "generated:20261026.68@dependent[dep_a]",
+     "generated:20261026.72@dependent[dep_b]",
+     "generated:20261026.111@dependent[dep_a]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].kidnapped@dependent[dep_a]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].other_claimant@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "31",
@@ -2431,6 +2749,55 @@
   },
   {
    "printed": "dependent.actc_amount",
+   "project_expr_sha256": "850117f4440eb5003b248d21b2feb9a8e0b4377234262c51f093ce0af6ae01c6",
+   "second_expr_sha256": "f91f36c52d641a9768d5e028355de8f52d36583538fdee6740768aaee7fa77e1",
+   "ruling": "Ruling: model error (+ scope); as dependent.ctc_child, which this line reads. The child tax credit tests are the project's (the filer's side read from household.ctc_ssn); the differences are inherited from the reply's dependency test. The reply reads dependent.multiple_support and dependent.kidnapped for every entry (and dependent.lawful for every entry that is not a listed relative), so on completed returns it needs an answer the interview does not ask of that person or refuses a person the project claims (t091.kidnapped.age19 parent, f1.kidnapped.returned_11 child, generated 126 and 369 dep_b): model error, as ruled before; the project asks the multiple-support and kidnapping questions only where its qualifying-relative or residency test reads them. The 2 value differences are on refused returns (generated 332 dep_b and 338 dep_a, project no and reply yes), two of the value witnesses of dependent.claimed, ruled scope there (a filer who can be claimed as a dependent on a joint return); they were not traced line by line. Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 4,839 of 5,462 agree; differences: 352 candidate-unknown, 212 project-unknown, 30 project-refuses, 27 candidate-refuses, 2 value; on completed returns: 61 candidate-unknown, 4 candidate-refuses; on completed returns the reply waits on: dependent.multiple_support 61. The project's refusals are its cited screens on refused returns (qc_tiebreak 30); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (other_claimant 59, relationship 35, married 30, divorced_rule 30, age 12 and others). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "6a69df8381a2096d7db1e89eaecc7f00c5a3fab2c53dc96d75b5d92baf1b7b96",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_a]",
+     "fixture:classm.s3.1.deepseek@dependent[dep_c]",
+     "fixture:classm.s3.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.retirement.2@dependent[dep_a]",
+     "fixture:classm.s179.2@dependent[dep_a]",
+     "fixture:classm.clcw26.1@dependent[dep_b]",
+     "fixture:classm.sa.1@dependent[dep_a]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.multiple_support@dependent[parent]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:t091.kidnapped.age19@dependent[parent]",
+     "fixture:f1.kidnapped.returned_11@dependent[child]",
+     "fixture:stage9.mut.kidnapped_household_child_not_eic@dependent[kid]",
+     "fixture:stage9.mut.household_child_other_claimant_not_eic@dependent[kid]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "generated:20261026.332@dependent[dep_b]",
+     "generated:20261026.338@dependent[dep_a]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_a].relationship@dependent[dep_a]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_a].married@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.actc_amount",
    "project_expr_sha256": "b71ecadb852440abdd0d74350108752127de10aa610eaa5248fdc96c4e9d0bb9",
    "second_expr_sha256": "b7ea40b367194b562bc3072f09f634076557ff859e172020268220725869fa71",
    "ruling": "Ruling: scope and representation; project retained. The second transcription folds the qualifying-child, dependency and credit tests into each line; it also lets the rule for children of divorced or separated parents stand in for residency and omits the 'you can be claimed as a dependent' condition (`sa.dependent`), both refused in scope (`dependent.divorced_rule` refuses the entry; `sa.dependent` refuses the standard deduction). Compared by sampling 40,000 inputs per line with every refusal trigger false and consistent answers (only a married person files a joint return; over half of a person's support cannot come from both the person and you): no difference on the child tax credit lines; the remaining differences on odc_person, odc_amount and hoh_test2 all come from the second treating `sibling_descendant` as a Step 4 relative, which the enum defines as any other descendant of a sibling (a Step 4 relative only as a household member who lived with you all year; i1040gi p. 19 lists only a son or daughter of a sibling, which is `sibling`), and from `other` living with you all year, which the all-year household bullet admits. No change.",
@@ -2478,6 +2845,59 @@
      "generated:20261026.126@dependent[dep_b]",
      "generated:20261026.151@dependent[dep_a]",
      "generated:20261026.161@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.claimed",
+   "project_expr_sha256": "2b257b7d34a5eaa57eaa7bfdf551958156b9d672af991201b32ff5cd42361524",
+   "second_expr_sha256": "f23dfe2b420c0612d1452510c4b58c074166d73b28a04c2da3101d96754bbcba",
+   "ruling": "Ruling: model error (+ scope); i1040gi p. 21, Multiple support agreements, \"If no one person contributed over half of the support of your relative (or a person who lived with you all year as a member of your household) but you and another person(s) provided more than half of your relative's support, special rules may apply\"; i1040gi p. 17, Step 1 (a qualifying child is tested on relationship, age, own support, joint return and residency; no support test of yours). This reply reaches the member-of-household relative (dependent.qr_all_year with dependent.lawful), which earlier replies did not; what remains is where it puts its screens. The reply reads dependent.multiple_support and dependent.kidnapped for every entry (and dependent.lawful for every entry that is not a listed relative), so on completed returns it needs an answer the interview does not ask of that person or refuses a person the project claims (t091.kidnapped.age19 parent, f1.kidnapped.returned_11 child, generated 126 and 369 dep_b): model error, as ruled before; the project asks the multiple-support and kidnapping questions only where its qualifying-relative or residency test reads them. No value differs on a completed return. The value differences are on refused returns where the filer can be claimed as a dependent (sa.dependent yes) on a joint return: the reply follows Step 4, question 4 (i1040gi p. 19, \"Are you filing a joint return for 2025? Yes. You can claim this person as a dependent\") and does not ask question 5, the project claims no dependent, and every such return is refused at Form 1040 line 12e (gate sa.dependent), so the difference reaches no completed return: scope. Read: classm.sa.5.deepseek and classm.sa.6 dep_b (evaluated: sa.dependent yes, qualifying_relative yes, claimed no, line 12e refused at sa.dependent) and generated 215 dep_a (derivation printed: the same); generated 332 and 338 were not traced. Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 4,360 of 5,462 agree; differences: 760 candidate-unknown, 172 project-refuses, 147 project-unknown, 16 candidate-refuses, 7 value; on completed returns: 156 candidate-unknown, 4 candidate-refuses; on completed returns the reply waits on: dependent.multiple_support 70, dependent.lawful 51, dependent.kidnapped 34, dependent.spouse_relative 1. The project's refusals are its cited screens on refused returns (claimed_no_tin 142, qc_tiebreak 26, income_exception 4); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (tin 46, age 34, other_claimant 22, relationship 11, disabled 8 and others). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "10e16c3f93acc1439bcf8b56f9d98bb51cbc2831fca7e695fa2992b243366f25",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_b]",
+     "fixture:classm.asset.4@dependent[dep_c]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.f8959.2@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.sa.6@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:t091.kidnapped.age19@dependent[parent]",
+     "generated:20261026.215@dependent[dep_a]",
+     "generated:20261026.332@dependent[dep_a]",
+     "generated:20261026.332@dependent[dep_b]",
+     "generated:20261026.332@dependent[dep_c]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_a].age@dependent[dep_a]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_a].disabled@dependent[dep_a]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_a].tin@dependent[dep_a]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_a].other_claimant@dependent[dep_a]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_b].relationship@dependent[dep_b]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_b].age@dependent[dep_b]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -3181,6 +3601,55 @@
   {
    "printed": "dependent.ctc_amount",
    "project_expr_sha256": "930677938c960a33634298253314337b5da38938d372de802b014eb650e6317f",
+   "second_expr_sha256": "781b7279bc5153ba3fba2703f8016e580cd4d52d51b3720df2d7b969d1711ad2",
+   "ruling": "Ruling: model error (+ scope); as dependent.ctc_child, which this line reads. The child tax credit tests are the project's (the filer's side read from household.ctc_ssn); the differences are inherited from the reply's dependency test. The reply reads dependent.multiple_support and dependent.kidnapped for every entry (and dependent.lawful for every entry that is not a listed relative), so on completed returns it needs an answer the interview does not ask of that person or refuses a person the project claims (t091.kidnapped.age19 parent, f1.kidnapped.returned_11 child, generated 126 and 369 dep_b): model error, as ruled before; the project asks the multiple-support and kidnapping questions only where its qualifying-relative or residency test reads them. The 2 value differences are on refused returns (generated 332 dep_b and 338 dep_a, project no and reply yes), two of the value witnesses of dependent.claimed, ruled scope there (a filer who can be claimed as a dependent on a joint return); they were not traced line by line. Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 4,839 of 5,462 agree; differences: 352 candidate-unknown, 212 project-unknown, 30 project-refuses, 27 candidate-refuses, 2 value; on completed returns: 61 candidate-unknown, 4 candidate-refuses; on completed returns the reply waits on: dependent.multiple_support 61. The project's refusals are its cited screens on refused returns (qc_tiebreak 30); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (other_claimant 59, relationship 35, married 30, divorced_rule 30, age 12 and others). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "7d4a00ae08df63e87137dc1b7b1c0d186d1878a5c11c6fe7ed3bda7615e6184a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_a]",
+     "fixture:classm.s3.1.deepseek@dependent[dep_c]",
+     "fixture:classm.s3.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.retirement.2@dependent[dep_a]",
+     "fixture:classm.s179.2@dependent[dep_a]",
+     "fixture:classm.clcw26.1@dependent[dep_b]",
+     "fixture:classm.sa.1@dependent[dep_a]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.multiple_support@dependent[parent]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:t091.kidnapped.age19@dependent[parent]",
+     "fixture:f1.kidnapped.returned_11@dependent[child]",
+     "fixture:stage9.mut.kidnapped_household_child_not_eic@dependent[kid]",
+     "fixture:stage9.mut.household_child_other_claimant_not_eic@dependent[kid]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "generated:20261026.332@dependent[dep_b]",
+     "generated:20261026.338@dependent[dep_a]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_a].relationship@dependent[dep_a]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_a].married@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.ctc_amount",
+   "project_expr_sha256": "930677938c960a33634298253314337b5da38938d372de802b014eb650e6317f",
    "second_expr_sha256": "cee870a379d72954a71d60413c6ddeea554f8ba484fe3ed6e2c1453900c7d344",
    "ruling": "Ruling: model error; f1040s8812 p. 1, line 5, \"Multiply line 4 by $2,200\"; i1040gi p. 18, Step 3; i1040gi p. 21, Multiple support agreements, and p. 17, Step 1 (a qualifying child is tested on relationship, age, own support, joint return and residency; no support test of yours). As ruled before, the reply places the qualifying-relative screens on a qualifying child. Re-reviewed whole (dependent has partial-input cases) because the dependent test (dependent.claimed and dependent.claimed_no_tin through dependent.meets_tests, the SSN gate on dependent.tin first) and the kidnapped-child gates (dependent.kidnap_eic with the EIC relationship test first, dependent.kidnap_residency with the months test first, dependent.qr_kidnapped with the age test first) were rewritten as nested choices (BUG-0466/0471 follow-up, T-264), which change no completed value; the reply is of the kind ruled before on this line. Project-unknown records new in this round withhold the first operand of a rewritten choice (the trade-off the owner accepted in BUG-0471). executable-triage-v2 (.transcription/triage/2025/dependent.json; 1,747 fixtures, 500 generated returns seed 20261026, 1,541 partial records): 4,518 of 4,815 comparisons agree; differences {\"candidate-refuses\": 16, \"project-refuses\": 29, \"project-unknown\": 252}; on completed returns none.",
    "context": "4c260c5cb93d39e052aba7f3405d04943992a068b093246e1b8577b2ce604200",
@@ -3669,6 +4138,55 @@
    }
   },
   {
+   "printed": "dependent.ctc_child",
+   "project_expr_sha256": "a00f7c4a5dbd76f578d247aff80f697ca78a88e1b166d2c99c9a8709b22f6c57",
+   "second_expr_sha256": "fc17ca26a936cd8bb457c6796f0c21469767dff14efa1000b66d15f57202f489",
+   "ruling": "Ruling: model error (+ scope); i1040gi p. 18, Step 3, questions 1 to 4. The child tax credit tests are the project's (the filer's side read from household.ctc_ssn); the differences are inherited from the reply's dependency test. The reply reads dependent.multiple_support and dependent.kidnapped for every entry (and dependent.lawful for every entry that is not a listed relative), so on completed returns it needs an answer the interview does not ask of that person or refuses a person the project claims (t091.kidnapped.age19 parent, f1.kidnapped.returned_11 child, generated 126 and 369 dep_b): model error, as ruled before; the project asks the multiple-support and kidnapping questions only where its qualifying-relative or residency test reads them. The 2 value differences are on refused returns (generated 332 dep_b and 338 dep_a, project no and reply yes), two of the value witnesses of dependent.claimed, ruled scope there (a filer who can be claimed as a dependent on a joint return); they were not traced line by line. Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 4,839 of 5,462 agree; differences: 352 candidate-unknown, 212 project-unknown, 30 project-refuses, 27 candidate-refuses, 2 value; on completed returns: 61 candidate-unknown, 4 candidate-refuses; on completed returns the reply waits on: dependent.multiple_support 61. The project's refusals are its cited screens on refused returns (qc_tiebreak 30); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (other_claimant 59, relationship 35, married 30, divorced_rule 30, age 12 and others). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "a52f6abd10604757695712c757fa081507daba232640c5e3770b06b88fea0fd0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_a]",
+     "fixture:classm.s3.1.deepseek@dependent[dep_c]",
+     "fixture:classm.s3.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.retirement.2@dependent[dep_a]",
+     "fixture:classm.s179.2@dependent[dep_a]",
+     "fixture:classm.clcw26.1@dependent[dep_b]",
+     "fixture:classm.sa.1@dependent[dep_a]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.multiple_support@dependent[parent]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:t091.kidnapped.age19@dependent[parent]",
+     "fixture:f1.kidnapped.returned_11@dependent[child]",
+     "fixture:stage9.mut.kidnapped_household_child_not_eic@dependent[kid]",
+     "fixture:stage9.mut.household_child_other_claimant_not_eic@dependent[kid]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "generated:20261026.332@dependent[dep_b]",
+     "generated:20261026.338@dependent[dep_a]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_a].relationship@dependent[dep_a]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_a].married@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "dependent.dc_count",
    "project_expr_sha256": "63a9c459afcb64ea1ce4e93df3368655c636b9ed8c3015ad5212f63a1e328dbe",
    "second_expr_sha256": "170de30f9ea418d508ec9417b6ab9a05fa0e912826d0597b031ed84ffac6a5d9",
@@ -3974,6 +4492,50 @@
    "second_expr_sha256": "de19b83ba261354014cf5c98b80623945628785f669cca716bd91414584c4214",
    "ruling": "Ruling: representation; project retained. Both: care expenses (f2441.care), your dependent, and a qualifying child under 13 (or one who turned 13 and was under 13 when the care was paid) or a person not able to care for themselves who lived with you more than half the year (i2441 p. 1, Qualifying Person(s)); the project's dependent line now carries the TIN refusal (dependent.claimed_no_tin), which the second writes as a guard.",
    "subject_key": "e4e954c87987beeba0c38390507590edf45944ac394e92eb76b21671896e0d6c"
+  },
+  {
+   "printed": "dependent.dc_qp",
+   "project_expr_sha256": "673c14883bb6f1aba30ceb95efcc11978ebba055815d3426cf5e9947ca23f017",
+   "second_expr_sha256": "a6455095244db41fcd7bdc7ccba3e10fd79f79e7dbd12ca6daa4edfa227d40d0",
+   "ruling": "Ruling: model error; i2441 p. 1, Qualifying Person(s), and p. 3, Line 2. As ruled on this line before, the reply's predicate leaves the care prerequisite to its callers (its note: the cases \"asked at the Form 2441 level\" are outside it): every value difference traced by source (209 on completed, 161 on refused and 27 on incomplete returns from fixtures and generated returns) has f2441.care no, project no and reply yes, and reaches no amount, since Form 2441 is not prepared; the other value differences are partial records of those returns. It also inherits its dependency test's screens, so on completed returns it wants dependent.multiple_support, dependent.kidnapped or dependent.lawful, and dependent.dc_incapable where the project does not read it. Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 2,689 of 5,462 agree; differences: 1,542 candidate-unknown, 1,146 value, 82 candidate-refuses, 2 project-unknown, 1 project-refuses; on completed returns: 499 value, 180 candidate-unknown, 4 candidate-refuses; on completed returns the reply waits on: dependent.dc_incapable 75, dependent.multiple_support 70, dependent.kidnapped 31, dependent.lawful 4. The project's refusals are its cited screens on refused returns (claimed_no_tin 1); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (age 1, tin 1). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "ebdec3aaa49d6e1e5d6570d85d01078e37417d3dd05347884db0d661237ae269",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.g28.1.deepseek@dependent[dep_c]",
+     "fixture:classm.g28.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sd.1.deepseek@dependent[dep_c]",
+     "fixture:classm.u1250.1.deepseek@dependent[dep_c]",
+     "fixture:classm.clcw26.1.deepseek@dependent[dep_c]",
+     "fixture:classm.clcw26.2.deepseek@dependent[dep_c]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage15.refuse.dependent.dc_no_tin@dependent[a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].age@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].tin@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "dependent.dc_qp",
@@ -4608,6 +5170,52 @@
    }
   },
   {
+   "printed": "dependent.eic_child",
+   "project_expr_sha256": "60d9b35fd2caae0bf179fe6b00b6704338a78c65ba57d8e82227fa3939445dc6",
+   "second_expr_sha256": "d9985a290036c1aec21e54b0c7c88521980666b5c21f973b90c1d53ba120e9a2",
+   "ruling": "Ruling: scope; i1040gi p. 41, Step 3 (relationship, age, joint return and United States residency); i1040gi p. 21, Kidnapped child, \"(Pub. 596 for the EIC)\". No value differs on any record. The reply's test is the project's four tests with the kidnapped child refused for every entry (its note: \"The married-child rule and the kidnapped-child rule (Pub. 596) are refused\"), where the project's kidnapped-child gate asks the relationship test first (dependent.kidnap_eic); so on completed returns the reply wants dependent.kidnapped (22) or refuses at it (2) where the project does not read it. Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 5,166 of 5,462 agree; differences: 190 candidate-unknown, 83 project-unknown, 14 candidate-refuses, 9 project-refuses; on completed returns: 22 candidate-unknown, 2 candidate-refuses; on completed returns the reply waits on: dependent.kidnapped 22. The project's refusals are its cited screens on refused returns (eic_tiebreak 9); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (other_claimant 60, relationship 15, age 4, younger 2, joint_return 2). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "03d0fdb0eca5970e079128718209312a9ce39941c173e0b15efe02893a3c4819",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f8889.5.deepseek@dependent[dep_a]",
+     "fixture:classm.f8962.2.deepseek@dependent[dep_a]",
+     "fixture:classm.f8880.2.deepseek@dependent[dep_a]",
+     "fixture:classm.f8880.2.deepseek@dependent[dep_b]",
+     "fixture:classm.f5695.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.s179.2@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:t091.kidnapped.age19@dependent[parent]",
+     "fixture:f1.t153.friend_child_taxpayer@dependent[child]",
+     "fixture:f1.t153.own_child_nontaxpayer_other@dependent[child]",
+     "fixture:stage9.eic.refuse.child_of_another@dependent[child]",
+     "generated:20261026.195@dependent[dep_a]",
+     "partial:classm.f2441.1.deepseek-dependent[a].other_claimant@dependent[a]",
+     "partial:classm.f2441.5.deepseek-dependent[a].other_claimant@dependent[a]",
+     "partial:classm.f2441.5.deepseek-dependent[b].other_claimant@dependent[b]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_a].other_claimant@dependent[dep_a]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_b].other_claimant@dependent[dep_b]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_c].relationship@dependent[dep_c]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "dependent.eic_ssn_child",
    "project_expr_sha256": "0e7fa45efcecdfe798e90c00a9d45ab910799ed79c51a49e1808c59fe58e278e",
    "second_expr_sha256": "3b713e43b249ba33728e2189aa1f94e9ec91a06e61de71d6bcaf13b8976df688",
@@ -4731,6 +5339,52 @@
      "fixture:stage21.d3.kidnapped_child_refused@dependent[child]",
      "partial:classm.sa.2.deepseek-dependent[dep_a].kidnapped@dependent[dep_a]",
      "partial:classm.sa.2.deepseek-dependent[dep_a].other_claimant@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.eic_ssn_child",
+   "project_expr_sha256": "0e7fa45efcecdfe798e90c00a9d45ab910799ed79c51a49e1808c59fe58e278e",
+   "second_expr_sha256": "c7076a686b293e5e0f493d28f2e46e3c3329b5d02b77486610316dc2ce8ba29a",
+   "ruling": "Ruling: scope; i1040gi p. 41, Step 3, as dependent.eic_child, which this line reads: the reply refuses the kidnapped child for every entry, the project only where its EIC residency test reads the answer. No value differs on any record. Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 5,152 of 5,462 agree; differences: 190 candidate-unknown, 97 project-unknown, 14 candidate-refuses, 9 project-refuses; on completed returns: 22 candidate-unknown, 2 candidate-refuses; on completed returns the reply waits on: dependent.kidnapped 22. The project's refusals are its cited screens on refused returns (eic_tiebreak 9); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (other_claimant 60, relationship 17, age 6, younger 4, joint_return 4 and others). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "da4f192a3e3f1489b82de0e8a97f49d261d493a53ae8926df1bfc967fdf10351",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f8889.5.deepseek@dependent[dep_a]",
+     "fixture:classm.f8962.2.deepseek@dependent[dep_a]",
+     "fixture:classm.f8880.2.deepseek@dependent[dep_a]",
+     "fixture:classm.f8880.2.deepseek@dependent[dep_b]",
+     "fixture:classm.f5695.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.s179.2@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:t091.kidnapped.age19@dependent[parent]",
+     "fixture:f1.t153.friend_child_taxpayer@dependent[child]",
+     "fixture:f1.t153.own_child_nontaxpayer_other@dependent[child]",
+     "fixture:stage9.eic.refuse.child_of_another@dependent[child]",
+     "generated:20261026.195@dependent[dep_a]",
+     "partial:classm.f2441.1.deepseek-dependent[a].other_claimant@dependent[a]",
+     "partial:classm.f2441.5.deepseek-dependent[a].other_claimant@dependent[a]",
+     "partial:classm.f2441.5.deepseek-dependent[b].other_claimant@dependent[b]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_a].other_claimant@dependent[dep_a]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_b].relationship@dependent[dep_b]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_b].age@dependent[dep_b]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -4981,6 +5635,51 @@
      "generated:20261026.441@dependent[dep_b]",
      "partial:classm.f8880.2.deepseek-dependent[dep_b].spouse_relative@dependent[dep_b]",
      "partial:classm.asset.1-dependent[dep_c].spouse_relative@dependent[dep_c]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.hoh_absence",
+   "project_expr_sha256": "4e90affeaa979b9b74da9ef9e918adcc7409f6d5a9fd1314161860e24f23b480",
+   "second_expr_sha256": "e5e4b5927420ef99b175b8b09d1d9baa2f20b60d4785b9d22cfe7c101c08308b",
+   "ruling": "Ruling: model error; p501 p. 9, Temporary absences: \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\" The reply's line only flags the situation (its note: \"The pages do not say how to recount the time otherwise, so this line only flags the situation\") and inherits its dependency test, which reads dependent.kidnapped and dependent.multiple_support for every entry: model error, as ruled before on this line. No value differs on any record. On completed returns: the reply wants dependent.months where the project does not read it (11) and refuses f1.kidnapped.returned_11 child at dependent.kidnapped; the project refuses t091.kidnapped.age19 parent at its kidnapped-child residency gate, and is unknown on 4 records (mutation.t2.f8962_months_asset3 dep_b and three partial records withholding dependent.months). Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 4,509 of 5,462 agree; differences: 640 project-unknown, 195 project-refuses, 113 candidate-unknown, 5 candidate-refuses; on completed returns: 11 candidate-unknown, 4 project-unknown, 1 candidate-refuses, 1 project-refuses; on completed returns the reply waits on: dependent.months 11. The project's refusals are its cited screens on refused returns (claimed_no_tin 142, qc_tiebreak 30, married 8, income_exception 4, multiple_support 4 and others); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (born_died 172, other_claimant 52, relationship 48, married 45, divorced_rule 45 and others). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "adfe60052c8a87a926951286d69148aa1ff68f536e828c022468e3c463e8a029",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f8889.5.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f1095a.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8962.2.deepseek@dependent[dep_a]",
+     "fixture:classm.f8880.2.deepseek@dependent[dep_b]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.retirement.4.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_b]",
+     "fixture:classm.f1095a.1.gpt@dependent[dep_a]",
+     "fixture:classm.asset.4@dependent[dep_c]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.retirement.2@dependent[dep_a]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:f1.kidnapped.returned_11@dependent[child]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].other_claimant@dependent[dep_a]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].divorced_rule@dependent[dep_a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -5446,6 +6145,52 @@
   },
   {
    "printed": "dependent.hoh_test1",
+   "project_expr_sha256": "c488294feada93e6b01cb87a1442097d2a4db8100b069917b6590102c98b74d4",
+   "second_expr_sha256": "2a8bd261a3abb1eb6833b67d5a691198254cd27d031f471f24aae59d03b3ad4f",
+   "ruling": "Ruling: scope; i1040gi p. 14, Head of Household, Test 1: \"You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent, except under a multiple support agreement\". The reply's line is the project's (relationship parent, your dependent, dependent.parent_home_paid), read through its own dependency test. No value differs on a completed return; there the reply wants dependent.kidnapped on classm.f8962.6 dep_a and one partial record and refuses t091.kidnapped.age19 parent. The one value difference is generated 332 dep_a, a refused joint return of a filer who can be claimed as a dependent (ruled scope on dependent.claimed). Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 5,186 of 5,462 agree; differences: 152 project-refuses, 111 project-unknown, 8 candidate-refuses, 4 candidate-unknown, 1 value; on completed returns: 2 candidate-unknown, 1 candidate-refuses; on completed returns the reply waits on: dependent.kidnapped 2. The project's refusals are its cited screens on refused returns (claimed_no_tin 142, qc_tiebreak 4, married 3, income_exception 1, multiple_support 1 and others); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (tin 81, relationship 7, age 4, other_claimant 3, citizen 2 and others). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "8201f23851ac3ae6fe1e768da7a4b764308792f8795fe8a2615cfb2bceeb8284",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_c]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_b]",
+     "fixture:classm.asset.4@dependent[dep_c]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.f8959.2@dependent[dep_a]",
+     "fixture:classm.s179.2@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.clcw26.1@dependent[dep_a]",
+     "fixture:classm.f8962.6@dependent[dep_a]",
+     "fixture:classm.sa.6@dependent[dep_b]",
+     "fixture:t091.kidnapped.age19@dependent[parent]",
+     "generated:20261026.332@dependent[dep_a]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].kidnapped@dependent[dep_a]",
+     "partial:classm.f8962.1.gpt-dependent[dep_b].kidnapped@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.hoh_test1",
    "project_expr_sha256": "ec4130398a5623b6494d61d723085d36df7461416e01b3d70197252d2291ac42",
    "second_expr_sha256": "006663a8d0d2152a37718f72b02fddf45a626731bc23e86caaeb087b91226f30",
    "ruling": "Ruling: representation; project retained. As in the earlier review, the second transcription adds 'did not live with you more than half the year' to Test 1; i1040gi p. 14, Head of Household, Test 1: \"Your parent didn't have to live with you.\" Sampling 40,000 inputs per line with every refusal trigger false (`dependent.other_claimant`, `.divorced_rule`, `.multiple_support`, `.married`, `.income_exception`, `sa.dependent`) and consistent answers (only a married person files a joint return; over half of a person's support cannot come from both the person and you) (Stage 15 re-run): every difference is a parent who lived with you more than half the year, supported by you, with `dependent.parent_home_paid` answered yes; such a parent qualifies the filer through Test 2, item 1 (\"Any person whom you can claim as a dependent\"; hoh_test2 admits them), so head of household eligibility is the same. No change.",
@@ -5606,6 +6351,58 @@
    "second_expr_sha256": "f03bda6c7f90f5479231ee86a964ea038d417dc6c4186aee064c7516e276c74e",
    "ruling": "Ruling: scope and representation; project retained. The second transcription folds the qualifying-child, dependency and credit tests into each line; it also lets the rule for children of divorced or separated parents stand in for residency and omits the 'you can be claimed as a dependent' condition (`sa.dependent`), both refused in scope (`dependent.divorced_rule` refuses the entry; `sa.dependent` refuses the standard deduction). Compared by sampling 40,000 inputs per line with every refusal trigger false and consistent answers (only a married person files a joint return; over half of a person's support cannot come from both the person and you): no difference on the child tax credit lines; the remaining differences on odc_person, odc_amount and hoh_test2 all come from the second treating `sibling_descendant` as a Step 4 relative, which the enum defines as any other descendant of a sibling (a Step 4 relative only as a household member who lived with you all year; i1040gi p. 19 lists only a son or daughter of a sibling, which is `sibling`), and from `other` living with you all year, which the all-year household bullet admits. No change. Stage 13 re-run: the second transcription now applies the joint-return identification rules as the project does (household.ctc_ssn, household.all_tin, household.all_work_ssn; i1040gi p. 17, Before you begin, and p. 40, Step 1, question 2).",
    "subject_key": "8ce477fa3f3eed606c169c0011d5fba3caf6e509e37eca5d8ffd085f1989b52d"
+  },
+  {
+   "printed": "dependent.hoh_test2",
+   "project_expr_sha256": "3c362020d22088a16925a0a32d00299ac3309bff16ebf5fbe48b27c396490f8c",
+   "second_expr_sha256": "7fa1e2a92396b5604d19090694b937226ef6e528182eac80496165476baee035",
+   "ruling": "Ruling: model error; p501 p. 9, Death or birth, \"Your qualifying child or qualifying relative who lived with you for more than half the part of the year they were alive\"; p501 p. 9, Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence.\" As ruled on this line before: the reply does not take an absence with no expected return out of the time lived with you (its dependent.hoh_absence only flags it), so on t091r.absence.second_child_clean child (12 months, dependent.absence_no_return yes) it answers yes where the project answers no, the one value difference on a completed return; the other 5 value differences are on refused returns (t091.absence.hoh_refused child and stage8.mut.hoh_married_child_absence kid, both 12 months with dependent.absence_no_return yes, the same absence reading; generated 215 dep_a and 332 dep_a and dep_c, value witnesses of dependent.claimed, ruled scope there). On completed returns the project is unknown on 37 records (13 fixtures and 24 partial records) where dependent.absence_no_return is unanswered on a return completed without it, and the reply wants dependent.months (11) or dependent.kidnapped (4). Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 4,808 of 5,462 agree; differences: 300 project-unknown, 195 project-refuses, 148 candidate-unknown, 6 value, 5 candidate-refuses; on completed returns: 37 project-unknown, 15 candidate-unknown, 1 candidate-refuses, 1 project-refuses, 1 value; on completed returns the reply waits on: dependent.months 11, dependent.kidnapped 4. The project's refusals are its cited screens on refused returns (claimed_no_tin 142, qc_tiebreak 30, married 8, income_exception 4, multiple_support 4 and others); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (absence_no_return 198, other_claimant 40, tin 21, age 18, relationship 5 and others). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "24cae55ad978dc2aae89d7b6293015d0693907d91e7034d842d1df9070176c0e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f8889.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f8889.5.deepseek@dependent[dep_a]",
+     "fixture:classm.f4952.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.2.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8962.2.deepseek@dependent[dep_a]",
+     "fixture:classm.f8880.2.deepseek@dependent[dep_b]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_b]",
+     "fixture:classm.asset.4@dependent[dep_c]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:f1.kidnapped.returned_11@dependent[child]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:t091.absence.hoh_refused@dependent[child]",
+     "fixture:t091r.absence.second_child_clean@dependent[child]",
+     "fixture:stage8.mut.hoh_married_child_absence@dependent[kid]",
+     "generated:20261026.215@dependent[dep_a]",
+     "generated:20261026.332@dependent[dep_a]",
+     "generated:20261026.332@dependent[dep_c]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].other_claimant@dependent[dep_a]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].divorced_rule@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "dependent.hoh_test2",
@@ -6431,6 +7228,56 @@
    "subject_key": "5758deade704365d278782efdae8f0dd133d6ed49012c8837a73169fd7fb3493"
   },
   {
+   "printed": "dependent.odc_amount",
+   "project_expr_sha256": "ebcef3fabdbb3ebd92983afc430c4f49b5f562dc1ec3c4723cc2fb51104e9ff7",
+   "second_expr_sha256": "870e3553fa57ad9b5932006f21b4f84db602dc751bd1186053405fa844e6b24e",
+   "ruling": "Ruling: model error (+ scope); as dependent.odc_person, which this line reads ($500 for each such dependent; i1040gi p. 18, Step 3, question 3, and p. 19, Step 5): the differences are inherited from the reply's dependent.claimed. The reply reads dependent.multiple_support and dependent.kidnapped for every entry (and dependent.lawful for every entry that is not a listed relative), so on completed returns it needs an answer the interview does not ask of that person or refuses a person the project claims (t091.kidnapped.age19 parent, f1.kidnapped.returned_11 child, generated 126 and 369 dep_b): model error, as ruled before; the project asks the multiple-support and kidnapping questions only where its qualifying-relative or residency test reads them. The 3 value differences are the joint returns of a filer who can be claimed as a dependent (sa.dependent yes), refused at Form 1040 line 12e, ruled scope on dependent.claimed. Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 4,465 of 5,462 agree; differences: 643 candidate-unknown, 172 project-refuses, 163 project-unknown, 16 candidate-refuses, 3 value; on completed returns: 156 candidate-unknown, 4 candidate-refuses; on completed returns the reply waits on: dependent.multiple_support 70, dependent.lawful 51, dependent.kidnapped 34, dependent.spouse_relative 1. The project's refusals are its cited screens on refused returns (claimed_no_tin 142, qc_tiebreak 26, income_exception 4); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (age 37, other_claimant 25, relationship 15, tin 14, disabled 9 and others). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "7fa99152905de225766bf150ed544f550056e690369edfbff203c930130d5328",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f8889.5.deepseek@dependent[dep_a]",
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.clcw26.2.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.asset.4@dependent[dep_c]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.f8959.2@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:t091.kidnapped.age19@dependent[parent]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "generated:20261026.215@dependent[dep_a]",
+     "generated:20261026.332@dependent[dep_a]",
+     "generated:20261026.332@dependent[dep_c]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].relationship@dependent[dep_b]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].age@dependent[dep_b]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].younger@dependent[dep_b]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].months@dependent[dep_b]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].self_support@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "dependent.odc_person",
    "project_expr_sha256": "09c48d11654f27014f865806708c62642a7879b6d41d21745af4516a8455fd44",
    "second_expr_sha256": "1952503d4497b282d0c81355ad299a949c63c3306e90fa206bf32a94ae8cbcc8",
@@ -6695,6 +7542,56 @@
   },
   {
    "printed": "dependent.odc_person",
+   "project_expr_sha256": "7936bee4789d37aebe18ee87f65181ebd4b4992b08286f3cb0a5e4f66a04ccd5",
+   "second_expr_sha256": "fdce9d7ccf1df029916ab7aa87a40750944684bde827302c6ba7b11e64217ac2",
+   "ruling": "Ruling: model error (+ scope); i1040gi p. 18, Step 3, question 3, and p. 19, Step 5. The reply's test has the project's operands: your dependent, the person's SSN, ITIN or ATIN, citizenship, not a qualifying child for the child tax credit, and the filer's SSN or ITIN read from household.all_tin (its note: \"applied to every other dependent\"), which is what the rewritten chain reads in that order; on every completed record where neither side waits on an answer the two agree, so the review shows no difference between the rewritten line and the instructions. The differences are inherited from the reply's dependent.claimed, which this line reads. The reply reads dependent.multiple_support and dependent.kidnapped for every entry (and dependent.lawful for every entry that is not a listed relative), so on completed returns it needs an answer the interview does not ask of that person or refuses a person the project claims (t091.kidnapped.age19 parent, f1.kidnapped.returned_11 child, generated 126 and 369 dep_b): model error, as ruled before; the project asks the multiple-support and kidnapping questions only where its qualifying-relative or residency test reads them. The 3 value differences are on refused returns where the filer can be claimed as a dependent (sa.dependent yes) on a joint return: the reply follows Step 4, question 4 (i1040gi p. 19, \"Are you filing a joint return for 2025? Yes. You can claim this person as a dependent\") and does not ask question 5, the project claims no dependent, and every such return is refused at Form 1040 line 12e (gate sa.dependent), so the difference reaches no completed return: scope. Read: classm.sa.5.deepseek and classm.sa.6 dep_b (evaluated: sa.dependent yes, qualifying_relative yes, claimed no, line 12e refused at sa.dependent) and generated 215 dep_a (derivation printed: the same); generated 332 and 338 were not traced. The project's unknowns include the records on which the chain now waits for dependent.claimed before reading the later tests (the trade-off the owner accepted in BUG-0471); none is on a completed return. Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 4,465 of 5,462 agree; differences: 643 candidate-unknown, 172 project-refuses, 163 project-unknown, 16 candidate-refuses, 3 value; on completed returns: 156 candidate-unknown, 4 candidate-refuses; on completed returns the reply waits on: dependent.multiple_support 70, dependent.lawful 51, dependent.kidnapped 34, dependent.spouse_relative 1. The project's refusals are its cited screens on refused returns (claimed_no_tin 142, qc_tiebreak 26, income_exception 4); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (age 37, other_claimant 25, relationship 15, tin 14, disabled 9 and others). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "25c54db6ef19c4a1878bc04636f91838c4f9f1a7f3715e553e69e5d01ca8cab5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f8889.5.deepseek@dependent[dep_a]",
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.clcw26.2.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.asset.4@dependent[dep_c]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.f8959.2@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:t091.kidnapped.age19@dependent[parent]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "generated:20261026.215@dependent[dep_a]",
+     "generated:20261026.332@dependent[dep_a]",
+     "generated:20261026.332@dependent[dep_c]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].relationship@dependent[dep_b]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].age@dependent[dep_b]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].younger@dependent[dep_b]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].months@dependent[dep_b]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].self_support@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.odc_person",
    "project_expr_sha256": "7c405ba125952dad8dc1958f3d5c7c4747b4809a09f8887e8c26c5bf12f37161",
    "second_expr_sha256": "1907b8c105735ad6dc46d22121ad8280c4aceccac21d0e37697660729063029e",
    "ruling": "Ruling: model error; i1040gi (2025) p.19 Step4 and the supplied relationship enum allow lawful all-year other/sibling_descendant household members to qualify when the remaining QR tests pass. The reply excludes both categories instead of testing all-year residence; its note assumes they would have been entered as household_member. That assumption contradicts the declared enum meanings. The older disabled distant-relative witness in .transcription/partial-input-remaining-source-witnesses.json demonstrates the inherited dependency rejection. Passing the ten child-age partial cases does not certify this separate relationship branch.",
@@ -6882,6 +7779,40 @@
    "second_expr_sha256": "e28365fffe8d87b50c657f075a96e5b035c402ed8ce440c297a7be698d9916a1",
    "ruling": "Ruling: representation; project retained. Both test your dependent, the TIN, U.S. citizenship and not a child tax credit child (i1040gi p. 18, Step 3, question 3, and p. 19, Step 5); the project also carries the filer's SSN or ITIN (household.all_tin, Step 5, question 1, p. 19) on this line, where the second leaves it to the household lines.",
    "subject_key": "07e9dd3edcf253908ad92c1ea324ccde9b10ea2d5580d1c5ab40e0619427e7b2"
+  },
+  {
+   "printed": "dependent.ptc_magi_counted",
+   "project_expr_sha256": "e96c25271fbebdb0e2f7878998a92523f015095d05c1a7562f710fcfe1a02e63",
+   "second_expr_sha256": "0994ae6a861789b63dda6469f37258899ff880e65514059ce2d1f95ea4747e24",
+   "ruling": "Ruling: representation; project retained. i8962 p. 8, Line 2b, \"Enter on line 2b the combined modified AGI for your dependents who are required to file an income tax return because their income meets the income tax return filing threshold\". The project tests the filing requirement on this line and the dependency where line 2b is summed (f8962.line2b, where dependent.claimed); the reply tests both here. The one value difference, stage18.mut.unclaimed_relative k1 (a parent with gross income $30,000, not a dependent: project $30,000.00 on the helper, reply $0.00), reaches line 2b on neither side. On completed returns the project is unknown on 135 records (17 fixtures and 118 partial records) where dependent.ptc_files is unanswered on a return completed without it, and the reply refuses at its dependency screens (t091.kidnapped.age19, f1.kidnapped.returned_11, generated 126 and 369). Re-reviewed whole (dependent has partial-input cases) because dependent.odc_person and dependent.qualifying_relative were rewritten as nested choices in their operands' order (BUG-0603), which changes no value on a complete return (3,000 generated returns and every fixture compared with the earlier expressions); the reply is a new one (claude-fable-5-2). executable-triage-v2 (`.transcription/triage/2025/dependent.json`, whole-form reply; 1,764 fixtures, 500 generated returns seed 20261026, 1,701 partial records; every witness listed by a scratch rerun with the witness cap lifted): 4,973 of 5,462 agree; differences: 404 project-unknown, 84 candidate-refuses, 1 value; on completed returns: 135 project-unknown, 4 candidate-refuses, 1 value; on completed returns the reply waits on: nothing. The project's refusals are its cited screens on refused returns (none); its unknowns are partial or incomplete records that withhold an answer the interview asks before the line is decided (ptc_files 404). No change to the data.",
+   "context": "7780738682ad4b6e039d0da2927d6c9f13c132883d6e3d9b9e76453af75b8440",
+   "date": "2026-11-11",
+   "run": "4160f9f1ae9011c0ba7328d75cf39b08221a49f648e29ebe3de28370f4e60f95",
+   "subject_key": "7e9559c398b39208feaac31a57060c1edcf4876f3725bcf6ae19cc6f0931925d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f4952.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.2.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.3.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1@dependent[dep_a]",
+     "fixture:classm.s179.7@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage18.mut.unclaimed_relative@dependent[k1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "dependent.ptc_magi_counted",

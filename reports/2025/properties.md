@@ -25,7 +25,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 323; cases with a line that has both a refused and an unknown operand (the order this property guards): 232; cases with a choose stopped at an unknown guard: 391, of which 14 have one refused on every way it can still resolve.
+- Cases with a refused operand somewhere: 323; cases with a line that has both a refused and an unknown operand (the order this property guards): 233; cases with a choose stopped at an unknown guard: 391, of which 14 have one refused on every way it can still resolve.
 
 ## tax_monotone
 
@@ -41,7 +41,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-3282 of 3716 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+3322 of 3758 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.qip_early:true
@@ -206,6 +206,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f8962.alien_below:true
 - f8962.alien_branch:true
 - f8962.line9:true
+- f8962.alien_from_income:true
+- f8962.b_zero_month:true
 - ftc.no:true
 - gift.no:true
 - household.roster_ok:false

@@ -2194,6 +2194,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) A month of lines 12 to 23 with enrollment premiums in column (a) and zero in column (b), for an applicable taxpayer
       = false
       cite: [p974] p. 6, "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled in a qualified health plan on the first day of that month.", "The applicable SLCSP premium is the second lowest cost silver plan premium offered through the Marketplace where you reside that applies to your coverage family", "may report your applicable SLCSP premium as -0-", "In either case, you must determine your correct applicable SLCSP premium."; i8962 p. 16, Column (b), "Enter on lines 12 through 23, column (b), the amount of the monthly applicable SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month"; i8962 p. 17, "credit amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962, column (b)" (2025; e17265a7)
+      note: taken: {"eq":["f8962.show_applicable",{"const":false}],"op":"test"}
   (gate) Did you count column B on two Forms 1095-A from the same state that show coverage in the same month?
       = false
       cite: [i8962] p. 16, Column (b), "If you have more than one Form 1095-A showing coverage in a particular month, use the following rules to determine the amounts to enter on Form 8962, column (b), for that month." (2025; f4ac86ad)
@@ -2235,7 +2236,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)
       = true
       cite: [i8962] p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025." (2025; f4ac86ad)
-      note: Interpretation amb.2025.ptc_not_applicable: The first (f8962.line24 is zero when f8962.applicable is false). A taxpayer who is "not eligible to take the PTC" is allowed none; the columns that would figure it read the skipped lines 7 and 8. Owner's decision D7(a), 2026-10-28. (i8962, p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9.")
+      note: taken: {"eq":["f8962.income_100",{"const":true}],"op":"test"}; Interpretation amb.2025.ptc_not_applicable: The first (f8962.line24 is zero when f8962.applicable is false). A taxpayer who is "not eligible to take the PTC" is allowed none; the columns that would figure it read the skipped lines 7 and 8. Owner's decision D7(a), 2026-10-28. (i8962, p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9.")
   (helper) Lines 7 and 8 are used (a Form 1095-A and an applicable taxpayer)
       = false
       cite: [i8962] p. 10, "If you meet all of the requirements under either Estimated household income at least 100% of the federal poverty line or Alien lawfully present in the United States, earlier, continue to line 7." (2025; f4ac86ad)
@@ -2248,6 +2249,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception
       = false
       cite: [i8962] p. 9, Line 5, "If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under Estimated household income at least 100% of the federal poverty line next or Alien lawfully present in the United States, later." (2025; f4ac86ad)
+      note: taken: {"eq":["f8962.any",{"const":false}],"op":"test"}
   (helper) Forms 1095-A without full-year coverage and unchanged columns A and B
       = 0
       cite: [i8962] p. 14, Line 10, "Check “Yes” and continue to line 11 if all of the following apply for each qualified health plan", "Full-year coverage with no changes on Form 1095-A, Part III, column A or B." (2025; f4ac86ad)
@@ -2358,6 +2360,20 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Line 28 is used (Part III, and line 5 below 400)
       = false
       cite: [i8962] p. 18, Line 28, "If your entry on Form 8962, line 5, is 400 or more, there is no repayment limitation." (2025; f4ac86ad)
+  (helper) Household income at least 100% of the federal poverty line (line 5 at least 100)
+      = true
+      cite: [i8962] p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025." (2025; f4ac86ad)
+  (helper) Advance payments and the Marketplace estimate exception
+      = false
+      cite: [i8962] p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025." (2025; f4ac86ad)
+      note: taken: {"eq":["f8962.aptc",{"const":false}],"op":"test"}
+  (helper) Household income below 100% of the poverty line and the lawfully present alien exception
+      = false
+      cite: [i8962] p. 9, Line 5, "If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under Estimated household income at least 100% of the federal poverty line next or Alien lawfully present in the United States, later." (2025; f4ac86ad)
+      note: taken: {"eq":["f8962.income_100",{"const":true}],"op":"test"}
+  (helper) A month of lines 12 to 23 with enrollment premiums in column (a) and zero in column (b)
+      = false
+      cite: [p974] p. 6, "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled in a qualified health plan on the first day of that month.", "The applicable SLCSP premium is the second lowest cost silver plan premium offered through the Marketplace where you reside that applies to your coverage family", "may report your applicable SLCSP premium as -0-", "In either case, you must determine your correct applicable SLCSP premium."; i8962 p. 16, Column (b), "Enter on lines 12 through 23, column (b), the amount of the monthly applicable SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month"; i8962 p. 17, "credit amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962, column (b)" (2025; e17265a7)
 
 == Form 8995 — Qualified Business Income Deduction Simplified Computation ==
   2   Total qualified business income or (loss). Combine lines 1i through 1v, column (c)
@@ -8276,6 +8292,11 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   f8962.marriage: chose false (guard 1)
       not taken: guard 0 = false
+  f8962.b_zero: chose false (guard 1)
+      not taken: guard 0 = false
+  f8962.applicable: chose true (guard 0)
+  f8962.alien_branch: chose false (guard 1)
+      not taken: guard 0 = false
   f8962.allowed: chose $0 (guard 0)
   f8962.line24: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -8284,6 +8305,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
       not taken: guard 1 = false
       not taken: guard 2 = false
+  f8962.estimate_exception: chose false (guard 1)
+      not taken: guard 0 = false
+  f8962.alien_from_income: chose false (guard 1)
+      not taken: guard 0 = false
   f8995.line16: chose $0 (guard 1)
       not taken: guard 0 = false
   ftc.all_passive_if_tax: chose false (guard 1)
@@ -9607,7 +9632,7 @@ Derivations:
   f8962.marriage: choose(f1040.status = single; "mfj" = mfj; f1040.status = single; "single" = single; f8962.no = false)
   f8962.void_form: test(f8962.void_forms = 0; 0 = 0)
   f8962.show_applicable: test(f8962.any = false; true = true)
-  f8962.b_zero: test(f8962.show_applicable = false; true = true)
+  f8962.b_zero: choose(f8962.show_applicable = false; true = true; f8962.show_applicable = false; false = false; f8962.no = false)
   f8962.two_counted: test(f8962.forms = 0; 1 = 1; f8962.b_zero = false; true = true)
   f8962.line1: sum(household.persons = 1; f8962.deps = 0)
   f8962.ws1_1: copy(f1040.line11a = $123,200)
@@ -9621,9 +9646,10 @@ Derivations:
   f8962.line4: keyed_lookup(f8962.big_family = false; f8962.fpl_table = contiguous; f8962.line1 = 1)
   f8962.line5: percent_floor(f8962.line3 = $123,200; f8962.line4 = $15,060)
   f8962.aptc: test(f8962.aptc_total = $0; 0 = $0)
-  f8962.applicable: test(f8962.line5 = 401; 100 = 100)
+  f8962.income_100: test(f8962.line5 = 401; 100 = 100)
+  f8962.applicable: choose(f8962.income_100 = true; true = true; f8962.income_100 = true)
   f8962.filing: test(f8962.any = false; true = true)
-  f8962.alien_branch: test(f8962.any = false; true = true)
+  f8962.alien_branch: choose(f8962.any = false; true = true; f8962.any = false; false = false; f8962.no = false)
   f8962.line7: keyed_lookup(f8962.line5 = 401)
   f8962.line8a: multiply_rate(f8962.line3 = $123,200; f8962.line7 = 850/10000)
   f8962.line8b: multiply_rate(f8962.line8a = $10,472; #ptc.twelfth = 1/12)
@@ -9710,6 +9736,9 @@ Derivations:
   f8962.show_28: test(f8962.excess = false; true = true)
   f8962.line28: choose(f8962.line5 = 401; 0 = 0; f8962.line5 = 401; 200 = 200; f8962.line5 = 401; 200 = 200; f8962.line5 = 401; 300 = 300; f8962.line5 = 401; 300 = 300; f8962.line5 = 401; 400 = 400; f8962.line5 = 401; 400 = 400; f8962.line27 = $0)
   f8962.line29: smaller_of(f8962.line27 = $0; f8962.line28 = $0)
+  f8962.estimate_exception: choose(f8962.aptc = false; true = true; f8962.aptc = false; false = false; f8962.no = false)
+  f8962.alien_from_income: choose(f8962.income_100 = true; false = false; f8962.income_100 = true; true = true; f8962.no = false)
+  f8962.b_zero_month: test(f8962.line12a = $0; 0 = $0; f8962.line13a = $0; 0 = $0; f8962.line14a = $0; 0 = $0; f8962.line15a = $0; 0 = $0; f8962.line16a = $0; 0 = $0; f8962.line17a = $0; 0 = $0; f8962.line18a = $0; 0 = $0; f8962.line19a = $0; 0 = $0; f8962.line20a = $0; 0 = $0; f8962.line21a = $0; 0 = $0; f8962.line22a = $0; 0 = $0; f8962.line23a = $0; 0 = $0)
   f8995.line7: copy(qbi.zero = $0)
   f8995.loss: test(f8995.line4_sum = $0; #sales.zero = $0)
   f8995.line16: choose(f8995.loss = false; true = true; f8995.loss = false; false = false; qbi.zero = $0)

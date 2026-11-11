@@ -1,6 +1,6 @@
 # Evidence coverage per line
 
-**Scoreboard.** Share of computed lines with at least one outside-family assertion: 558 of 2441 (22.9%). H (human source reading): 0, B (human worked values): 0, second-family M: 445, E: 222.
+**Scoreboard.** Share of computed lines with at least one outside-family assertion: 558 of 2450 (22.8%). H (human source reading): 0, B (human worked values): 0, second-family M: 445, E: 222.
 
 A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion is a signed human source reading (H), a class B fixture (human worked values), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule below. The sub-counts overlap: a line with several kinds counts once in the share. H checks the encoded rule against IRS text; B and M check worked values. Second-family transcription and render readings are reported separately in second_family.md and do not yet enter this scoreboard. Class A, Claude-family M, C and R do not move it.
 
@@ -326,9 +326,9 @@ Unasserted lines: dcprov.one
 | dependent.dc_qp | — | — | — | — | — | — | 4 |
 | dependent.dc_count | — | — | — | — | — | — | — |
 | dependent.dc_paid | — | — | — | via dependent.dc_line2d: 5 | — | — | — |
-| dependent.dc_line2d | — | — | — | 14 | — | — | — |
+| dependent.dc_line2d | — | — | — | 11 | — | — | — |
 | dependent.dc_over12_care | — | — | — | — | — | — | — |
-| dependent.dc_line2c | — | — | — | 14 | — | — | 4 |
+| dependent.dc_line2c | — | — | — | 11 | — | — | 4 |
 | dependent.ptc_files | — | — | — | — | — | — | — |
 | dependent.ptc_magi | — | — | — | — | — | — | — |
 | dependent.ptc_magi_counted | — | — | — | — | — | — | — |
@@ -375,8 +375,13 @@ Unasserted lines: dcprov.one
 | dependent.under_7_months | — | — | — | — | — | — | — |
 | dependent.under_19_kidnap | — | — | — | — | — | — | — |
 | dependent.meets_tests | — | — | — | — | — | — | — |
+| dependent.odc_from_tin | — | — | — | — | — | — | — |
+| dependent.odc_from_citizen | — | — | — | — | — | — | — |
+| dependent.odc_from_ctc | — | — | — | — | — | — | — |
+| dependent.qr_from_child | — | — | — | — | — | — | — |
+| dependent.qr_from_income | — | — | — | — | — | — | — |
 
-Unasserted lines: dependent.hoh_part_year, dependent.hoh_part_year_relative, dependent.born_died_or_placed, dependent.hoh_lived_half, dependent.one, dependent.zero, dependent.under_19, dependent.under_24, dependent.qc_age_younger, dependent.qc_age_19, dependent.qc_age_student, dependent.kidnap_residency, dependent.no, dependent.qc_tests, dependent.qc_from_age, dependent.qc_from_support, dependent.qc_from_joint, dependent.qc_dependent_resident, dependent.filer_not_dependent, dependent.qr_listed_relative, dependent.qr_household_member, dependent.qr_other_relation, dependent.qr_dependent_resident, dependent.ctc_from_tin, dependent.ctc_from_citizen, dependent.ctc_from_age, dependent.ctc_from_work_ssn, dependent.ctc_per_child, dependent.odc_per_dependent, dependent.actc_per_child, dependent.tiebreak_other, dependent.qc_tiebreak, dependent.eic_child_tests, dependent.eic_child_from_age, dependent.eic_child_from_joint, dependent.eic_tiebreak, dependent.kidnap_eic_kidnapped, dependent.not_us_half, dependent.eic_ssn_child, dependent.dc_age13, dependent.dc_disabled_qp, dependent.dc_count, dependent.ptc_magi_counted, dependent.edu_student_claimed, dependent.edu_student_edu, dependent.edu_student_tin, dependent.edu_adj_sum, dependent.edu_adj, dependent.edu_has_adj, dependent.edu_over_if_adj, dependent.edu_no, dependent.edu_aoc23, dependent.edu_aoc24, dependent.edu_aoc25, dependent.edu_aoc26, dependent.edu_aoc_tin, dependent.edu_llc_tin_refused, dependent.under_7_months, dependent.under_19_kidnap, dependent.meets_tests
+Unasserted lines: dependent.hoh_part_year, dependent.hoh_part_year_relative, dependent.born_died_or_placed, dependent.hoh_lived_half, dependent.one, dependent.zero, dependent.under_19, dependent.under_24, dependent.qc_age_younger, dependent.qc_age_19, dependent.qc_age_student, dependent.kidnap_residency, dependent.no, dependent.qc_tests, dependent.qc_from_age, dependent.qc_from_support, dependent.qc_from_joint, dependent.qc_dependent_resident, dependent.filer_not_dependent, dependent.qr_listed_relative, dependent.qr_household_member, dependent.qr_other_relation, dependent.qr_dependent_resident, dependent.ctc_from_tin, dependent.ctc_from_citizen, dependent.ctc_from_age, dependent.ctc_from_work_ssn, dependent.ctc_per_child, dependent.odc_per_dependent, dependent.actc_per_child, dependent.tiebreak_other, dependent.qc_tiebreak, dependent.eic_child_tests, dependent.eic_child_from_age, dependent.eic_child_from_joint, dependent.eic_tiebreak, dependent.kidnap_eic_kidnapped, dependent.not_us_half, dependent.eic_ssn_child, dependent.dc_age13, dependent.dc_disabled_qp, dependent.dc_count, dependent.ptc_magi_counted, dependent.edu_student_claimed, dependent.edu_student_edu, dependent.edu_student_tin, dependent.edu_adj_sum, dependent.edu_adj, dependent.edu_has_adj, dependent.edu_over_if_adj, dependent.edu_no, dependent.edu_aoc23, dependent.edu_aoc24, dependent.edu_aoc25, dependent.edu_aoc26, dependent.edu_aoc_tin, dependent.edu_llc_tin_refused, dependent.under_7_months, dependent.under_19_kidnap, dependent.meets_tests, dependent.odc_from_tin, dependent.odc_from_citizen, dependent.odc_from_ctc, dependent.qr_from_child, dependent.qr_from_income
 
 ## Form 1099-DIV — distribution components and scope screening
 
@@ -1375,19 +1380,19 @@ Unasserted lines: f8960.used, f8960.line16_figured, f8960.allocation_over_5e, f8
 | f8962.b_zero | — | — | — | — | — | — | 11 |
 | f8962.same_state_counted | — | — | — | — | — | — | — |
 | f8962.deps | — | — | — | — | — | — | 1 (stage18.mut.unclaimed_relative) |
-| f8962.line1 | — | — | — | 17 | — | — | 22 |
+| f8962.line1 | — | — | — | 16 | — | — | 22 |
 | f8962.ws1_1 | — | — | — | — | — | — | — |
 | f8962.ws1_2 | — | — | — | — | — | — | — |
 | f8962.ws1_3 | — | — | — | — | — | — | 1 (stage18.refuse.form_2555) |
 | f8962.ws1_4 | — | — | — | — | — | — | — |
-| f8962.line2a | — | — | — | 17 | — | — | 21 |
-| f8962.line2b | — | — | — | 17 | — | — | 2 (stage18.blind.p15, stage18.mut.unclaimed_relative) |
+| f8962.line2a | — | — | — | 16 | — | — | 21 |
+| f8962.line2b | — | — | — | 16 | — | — | 2 (stage18.blind.p15, stage18.mut.unclaimed_relative) |
 | f8962.income_total | — | — | — | — | — | — | — |
-| f8962.line3 | — | — | — | 17 | — | PE: 129 compared (129 nonzero), 2 excluded | 21 |
+| f8962.line3 | — | — | — | 16 | — | PE: 129 compared (129 nonzero), 2 excluded | 21 |
 | f8962.fpl_table | — | — | — | — | — | — | — |
 | f8962.big_family | — | — | — | — | — | — | 1 (stage18.mut.family_of_20) |
-| f8962.line4 | — | — | — | 17 | — | — | 22 |
-| f8962.line5 | — | — | — | 17 | — | — | 21 |
+| f8962.line4 | — | — | — | 15 | — | — | 22 |
+| f8962.line5 | — | — | — | 16 | — | — | 21 |
 | f8962.aptc | — | — | — | — | — | — | 1 (stage18.mut.below_100_no_advance) |
 | f8962.aptc_total | — | — | — | via f8962.line11f: 7 | — | — | — |
 | f8962.estimate_100 | — | — | — | — | — | — | — |
@@ -1399,96 +1404,96 @@ Unasserted lines: f8960.used, f8960.line16_figured, f8960.allocation_over_5e, f8
 | f8962.line7 | — | — | — | 13 | — | — | 19 |
 | f8962.line8a | — | — | — | 13; via f8962.line11c: 5 | — | PE: 125 compared (103 nonzero), 7 excluded; UsTaxes below rule: 36 compared (36 nonzero), 73 excluded | 19 |
 | f8962.line8b | — | — | — | 13; via f8962.line12c: 1 (classm.f8962.2.deepseek); via f8962.line13c: 1 (classm.f8962.2.deepseek); via f8962.line14c: 1 (classm.f8962.2.deepseek); via f8962.line15c: 1 (classm.f8962.2.deepseek); via f8962.line16c: 1 (classm.f8962.2.deepseek); via f8962.line17c: 1 (classm.f8962.2.deepseek); via f8962.line18c: 1 (classm.f8962.2.deepseek); via f8962.line19c: 1 (classm.f8962.2.deepseek); via f8962.line20c: 1 (classm.f8962.2.deepseek); via f8962.line21c: 1 (classm.f8962.2.deepseek); via f8962.line22c: 2 (classm.f8962.2.deepseek, classm.f8962.4.deepseek); via f8962.line23c: 2 (classm.f8962.2.deepseek, classm.f8962.4.deepseek) | — | — | 19 |
-| f8962.line9 | — | — | — | 17 | — | — | 2 (stage18.refuse.allocation, stage18.refuse.year_of_marriage) |
+| f8962.line9 | — | — | — | 16 | — | — | 2 (stage18.refuse.allocation, stage18.refuse.year_of_marriage) |
 | f8962.nonuniform | — | — | — | — | — | — | — |
-| f8962.line10 | — | — | — | 17 | — | — | 25 |
+| f8962.line10 | — | — | — | 16 | — | — | 25 |
 | f8962.show_annual | 1 (stage4.official.medicare_example5) | — | — | — | — | — | 1 (stage18.blind.p14) |
 | f8962.show_annual_calc | 1 (stage4.official.medicare_example5) | — | — | — | — | — | 1 (stage18.blind.p8) |
-| f8962.line11a | — | — | — | 12 | — | — | 16 |
-| f8962.line11b | — | — | — | 12 | — | — | 16 |
-| f8962.line11c | — | — | — | 9 | — | — | 16 |
-| f8962.line11d | — | — | — | 9 | — | PE: 114 compared (60 nonzero), 18 excluded | 16 |
-| f8962.line11e | — | — | — | 9 | — | PE: 114 compared (60 nonzero), 18 excluded; UsTaxes below rule: 36 compared (11 nonzero), 73 excluded | 16 |
-| f8962.line11f | — | — | — | 13 | — | — | 17 |
+| f8962.line11a | — | — | — | 11 | — | — | 16 |
+| f8962.line11b | — | — | — | 11 | — | — | 16 |
+| f8962.line11c | — | — | — | 8 | — | — | 16 |
+| f8962.line11d | — | — | — | 8 | — | PE: 114 compared (60 nonzero), 18 excluded | 16 |
+| f8962.line11e | — | — | — | 8 | — | PE: 114 compared (60 nonzero), 18 excluded; UsTaxes below rule: 36 compared (11 nonzero), 73 excluded | 16 |
+| f8962.line11f | — | — | — | 12 | — | — | 17 |
 | f8962.show_jan | — | — | — | — | — | — | 5 |
 | f8962.show_jan_calc | — | — | — | — | — | — | 3 |
-| f8962.line12a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line12b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line12c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line12d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line12e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
+| f8962.line12a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line12b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
+| f8962.line12c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 3 |
+| f8962.line12d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 3 |
+| f8962.line12e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 3 |
 | f8962.line12f | — | — | — | 3 | — | — | 3 |
 | f8962.show_feb | — | — | — | — | — | — | 4 |
 | f8962.show_feb_calc | — | — | — | — | — | — | 3 |
-| f8962.line13a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line13b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line13c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line13d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line13e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
+| f8962.line13a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line13b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
+| f8962.line13c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 3 |
+| f8962.line13d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 3 |
+| f8962.line13e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 3 |
 | f8962.line13f | — | — | — | 3 | — | — | 3 |
 | f8962.show_mar | — | — | — | — | — | — | 4 |
 | f8962.show_mar_calc | — | — | — | — | — | — | 3 |
-| f8962.line14a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line14b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line14c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line14d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line14e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
+| f8962.line14a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line14b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
+| f8962.line14c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 3 |
+| f8962.line14d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 3 |
+| f8962.line14e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 3 |
 | f8962.line14f | — | — | — | 3 | — | — | 3 |
 | f8962.show_apr | — | — | — | — | — | — | 5 |
 | f8962.show_apr_calc | — | — | — | — | — | — | 3 |
-| f8962.line15a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line15b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line15c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line15d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line15e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line15a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line15b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
+| f8962.line15c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line15d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line15e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
 | f8962.line15f | — | — | — | 3 | — | — | 4 |
 | f8962.show_may | — | — | — | — | — | — | 4 |
 | f8962.show_may_calc | — | — | — | — | — | — | 3 |
-| f8962.line16a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line16b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line16c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line16d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line16e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line16a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line16b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
+| f8962.line16c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line16d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line16e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
 | f8962.line16f | — | — | — | 3 | — | — | 4 |
 | f8962.show_jun | — | — | — | — | — | — | 3 |
 | f8962.show_jun_calc | — | — | — | — | — | — | 2 (stage18.mut.alternate_months_odd, stage18.mut.alternate_months_even) |
-| f8962.line17a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line17b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line17c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line17d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line17e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line17a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line17b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
+| f8962.line17c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line17d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line17e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
 | f8962.line17f | — | — | — | 3 | — | — | 4 |
 | f8962.show_jul | — | — | — | — | — | — | 3 |
 | f8962.show_jul_calc | — | — | — | — | — | — | 2 (stage18.mut.alternate_months_odd, stage18.mut.alternate_months_even) |
-| f8962.line18a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line18b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 7 |
-| f8962.line18c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line18d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line18e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line18a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
+| f8962.line18b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 7 |
+| f8962.line18c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line18d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line18e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
 | f8962.line18f | — | — | — | 3 | — | — | 4 |
 | f8962.show_aug | — | — | — | — | — | — | 4 |
 | f8962.show_aug_calc | — | — | — | — | — | — | 3 |
-| f8962.line19a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line19b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line19c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line19d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line19e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line19a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
+| f8962.line19b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
+| f8962.line19c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line19d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line19e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
 | f8962.line19f | — | — | — | 3 | — | — | 4 |
 | f8962.show_sep | — | — | — | — | — | — | 3 |
 | f8962.show_sep_calc | — | — | — | — | — | — | 2 (stage18.mut.alternate_months_odd, stage18.mut.alternate_months_even) |
-| f8962.line20a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line20b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 6 |
-| f8962.line20c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line20d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line20e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line20a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
+| f8962.line20b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 6 |
+| f8962.line20c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line20d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line20e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
 | f8962.line20f | — | — | — | 3 | — | — | 4 |
 | f8962.show_oct | — | — | — | — | — | — | 4 |
 | f8962.show_oct_calc | — | — | — | — | — | — | 3 |
-| f8962.line21a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line21b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 6 |
-| f8962.line21c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line21d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line21e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line21a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 5 |
+| f8962.line21b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 6 |
+| f8962.line21c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line21d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
+| f8962.line21e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.1) | — | — | 4 |
 | f8962.line21f | — | — | — | 3 | — | — | 4 |
 | f8962.show_nov | — | — | — | — | — | — | 4 |
 | f8962.show_nov_calc | — | — | — | — | — | — | 3 |
@@ -1510,7 +1515,7 @@ Unasserted lines: f8960.used, f8960.line16_figured, f8960.allocation_over_5e, f8
 | f8962.monthly_f | — | — | — | — | — | — | — |
 | f8962.allowed | — | — | — | — | — | — | — |
 | f8962.line24 | — | — | — | 15 | — | — | 36 |
-| f8962.line25 | — | — | — | 17 | — | UsTaxes below rule: 36 compared (26 nonzero), 73 excluded | 35 |
+| f8962.line25 | — | — | — | 16 | — | UsTaxes below rule: 36 compared (26 nonzero), 73 excluded | 35 |
 | f8962.net | — | — | — | — | — | — | 5 |
 | f8962.line26 | — | — | — | 4 | — | PE below rule: 29 compared (18 nonzero), 103 excluded; UsTaxes below rule: 36 compared (6 nonzero), 73 excluded | 21 |
 | f8962.excess | — | — | — | — | — | — | 4 |
@@ -1519,10 +1524,14 @@ Unasserted lines: f8960.used, f8960.line16_figured, f8960.allocation_over_5e, f8
 | f8962.repay_300 | — | — | — | — | — | — | — |
 | f8962.repay_400 | — | — | — | — | — | — | — |
 | f8962.show_28 | — | — | — | — | — | — | 2 (stage18.blind.p4, stage18.blind.p10) |
-| f8962.line28 | — | — | — | 9 | — | — | 4 |
-| f8962.line29 | — | — | — | 12 | — | UsTaxes below rule: 36 compared (25 nonzero), 73 excluded | 5 |
+| f8962.line28 | — | — | — | 8 | — | — | 4 |
+| f8962.line29 | — | — | — | 11 | — | UsTaxes below rule: 36 compared (25 nonzero), 73 excluded | 5 |
+| f8962.income_100 | — | — | — | — | — | — | — |
+| f8962.estimate_exception | — | — | — | — | — | — | — |
+| f8962.alien_from_income | — | — | — | — | — | — | — |
+| f8962.b_zero_month | — | — | — | — | — | — | — |
 
-Unasserted lines: f8962.zero, f8962.forms, f8962.any, f8962.no, f8962.void_forms, f8962.void_form, f8962.ws1_1, f8962.ws1_2, f8962.ws1_4, f8962.income_total, f8962.nonuniform, f8962.monthly_e, f8962.monthly_f, f8962.allowed, f8962.repay_200, f8962.repay_300, f8962.repay_400
+Unasserted lines: f8962.zero, f8962.forms, f8962.any, f8962.no, f8962.void_forms, f8962.void_form, f8962.ws1_1, f8962.ws1_2, f8962.ws1_4, f8962.income_total, f8962.nonuniform, f8962.monthly_e, f8962.monthly_f, f8962.allowed, f8962.repay_200, f8962.repay_300, f8962.repay_400, f8962.income_100, f8962.estimate_exception, f8962.alien_from_income, f8962.b_zero_month
 
 ## Form 8995 — Qualified Business Income Deduction Simplified Computation
 
@@ -4192,7 +4201,7 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 1704. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 1713. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 
 Input lines never supplied by any fixture: ny_it2.state_withheld, ny_it2.yonkers_withheld, ny_it2.city_withheld, ny_it201.ask.state_resident, ny_it201.ask.city_resident, ny_it201.ask.special_accrual, ny_it201.ask.yonkers, ny_it201.ask.special_code, ny_it201.ask.decedent, ny_it201.ask.item_c, ny_it201.ask.inflation_check, ny_it201.ask.out_of_state_bond_interest, ny_it201.ask.414h, ny_it201.ask.529_nonqualified, ny_it201.ask.it225, ny_it201.ask.gov_pension, ny_it201.ask.us_obligation_interest, ny_it201.ask.pension_exclusion, ny_it201.ask.529_owner, ny_it201.ask.itemize, ny_it201.ask.resident_credit, ny_it201.ask.other_credits, ny_it201.ask.other_taxes, ny_it201.ask.city_credits, ny_it201.ask.mctmt, ny_it201.ask.owes_use_tax, ny_it201.ask.use_tax_st141, ny_it201.ask.contributions, ny_it201.ask.dependent_care, ny_it201.ask.noncustodial, ny_it201.ask.real_property_credit, ny_it201.ask.college_tuition, ny_it201.ask.other_withholding, ny_it201.ask.refund_529, ny_it201.ask.late_penalty, ny_it201.ask.prior_agi_high, ny_it201.ask.abode_part_year, ny_it201.ask.prior_full_year, ny_it201.ask.est_late, ny_it201.ask.spouse_resident, ny_it201.ask.prior_year_tax, ny_it201.line75, ny_it201.line79_amount.
 Asserted keys not matching a line id: dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line27, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line29, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28_zero, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line30, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line27, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line29, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28_zero, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line30, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax

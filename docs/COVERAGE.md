@@ -1187,7 +1187,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i8962] p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?"
   - *Refused at:* `f8962.line24`, `f8962.line25`
 - **`f8962.alien_branch`**: Is a lawfully present alien with household income below 100% of the poverty line enrolled in Marketplace coverage?
-  - *The data asks or tests:* A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception (`test`)
+  - *The data asks or tests:* A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception (`choose`)
   - *Not covered:* Form 8962 for a lawfully present alien below 100% of the federal poverty line. A lawfully present alien not eligible for Medicaid because of immigration status, with household income below 100% of the poverty line, can be an applicable taxpayer, which this tool does not prepare.
     *Source:* [i8962] p. 9, Alien lawfully present in the United States, "Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status."
   - *Refused at:* `f8962.line24`, `f8962.line25`

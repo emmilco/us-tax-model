@@ -274,134 +274,20 @@ form:
       taxpayer'
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        eq:
-        - f8962.show_applicable
-        - const: true
-      - op: test
-        any:
-        - op: test
-          all:
-          - op: test
-            gt:
-            - f8962.line12a
-            - const: 0
-          - op: test
-            eq:
-            - f8962.line12b
-            - const: 0
-        - op: test
-          all:
-          - op: test
-            gt:
-            - f8962.line13a
-            - const: 0
-          - op: test
-            eq:
-            - f8962.line13b
-            - const: 0
-        - op: test
-          all:
-          - op: test
-            gt:
-            - f8962.line14a
-            - const: 0
-          - op: test
-            eq:
-            - f8962.line14b
-            - const: 0
-        - op: test
-          all:
-          - op: test
-            gt:
-            - f8962.line15a
-            - const: 0
-          - op: test
-            eq:
-            - f8962.line15b
-            - const: 0
-        - op: test
-          all:
-          - op: test
-            gt:
-            - f8962.line16a
-            - const: 0
-          - op: test
-            eq:
-            - f8962.line16b
-            - const: 0
-        - op: test
-          all:
-          - op: test
-            gt:
-            - f8962.line17a
-            - const: 0
-          - op: test
-            eq:
-            - f8962.line17b
-            - const: 0
-        - op: test
-          all:
-          - op: test
-            gt:
-            - f8962.line18a
-            - const: 0
-          - op: test
-            eq:
-            - f8962.line18b
-            - const: 0
-        - op: test
-          all:
-          - op: test
-            gt:
-            - f8962.line19a
-            - const: 0
-          - op: test
-            eq:
-            - f8962.line19b
-            - const: 0
-        - op: test
-          all:
-          - op: test
-            gt:
-            - f8962.line20a
-            - const: 0
-          - op: test
-            eq:
-            - f8962.line20b
-            - const: 0
-        - op: test
-          all:
-          - op: test
-            gt:
-            - f8962.line21a
-            - const: 0
-          - op: test
-            eq:
-            - f8962.line21b
-            - const: 0
-        - op: test
-          all:
-          - op: test
-            gt:
-            - f8962.line22a
-            - const: 0
-          - op: test
-            eq:
-            - f8962.line22b
-            - const: 0
-        - op: test
-          all:
-          - op: test
-            gt:
-            - f8962.line23a
-            - const: 0
-          - op: test
-            eq:
-            - f8962.line23b
-            - const: 0
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.show_applicable
+          - const: true
+        then: f8962.b_zero_month
+      - guard:
+          op: test
+          eq:
+          - f8962.show_applicable
+          - const: false
+        then: f8962.no
     cite:
       doc: p974
       locator: p. 6, "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled
@@ -668,23 +554,20 @@ form:
     label: You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)
     type: Bool
     expr:
-      op: test
-      any:
-      - op: test
-        ge:
-        - f8962.line5
-        - const: 100
-          type: Count
-      - op: test
-        all:
-        - op: test
+      op: choose
+      alternatives:
+      - guard:
+          op: test
           eq:
-          - f8962.aptc
+          - f8962.income_100
           - const: true
-        - op: test
+        then: f8962.income_100
+      - guard:
+          op: test
           eq:
-          - f8962.estimate_100
-          - const: true
+          - f8962.income_100
+          - const: false
+        then: f8962.estimate_exception
     cite:
       doc: i8962
       locator: p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p.
@@ -751,21 +634,20 @@ form:
     label: A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        eq:
-        - f8962.any
-        - const: true
-      - op: test
-        lt:
-        - f8962.line5
-        - const: 100
-          type: Count
-      - op: test
-        eq:
-        - f8962.alien_below
-        - const: true
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.any
+          - const: true
+        then: f8962.alien_from_income
+      - guard:
+          op: test
+          eq:
+          - f8962.any
+          - const: false
+        then: f8962.no
     cite:
       doc: i8962
       locator: p. 9, Line 5, "If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under
@@ -2856,3 +2738,203 @@ form:
       doc: f8962
       locator: p. 1, Part III, line 29, "Excess advance PTC repayment. Enter the smaller of line 27 or line 28 here and on
         Schedule 2 (Form 1040), line 1a"
+  - id: f8962.income_100
+    printed: (helper)
+    label: Household income at least 100% of the federal poverty line (line 5 at least 100)
+    type: Bool
+    expr:
+      op: test
+      ge:
+      - f8962.line5
+      - const: 100
+        type: Count
+    cite:
+      doc: i8962
+      locator: p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p.
+        9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal
+        poverty line for your family size for 2025."
+  - id: f8962.estimate_exception
+    printed: (helper)
+    label: Advance payments and the Marketplace estimate exception
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.aptc
+          - const: true
+        then: f8962.estimate_100
+      - guard:
+          op: test
+          eq:
+          - f8962.aptc
+          - const: false
+        then: f8962.no
+    cite:
+      doc: i8962
+      locator: p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p.
+        9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal
+        poverty line for your family size for 2025."
+  - id: f8962.alien_from_income
+    printed: (helper)
+    label: Household income below 100% of the poverty line and the lawfully present alien exception
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.income_100
+          - const: false
+        then: f8962.alien_below
+      - guard:
+          op: test
+          eq:
+          - f8962.income_100
+          - const: true
+        then: f8962.no
+    cite:
+      doc: i8962
+      locator: p. 9, Line 5, "If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under
+        Estimated household income at least 100% of the federal poverty line next or Alien lawfully present in the United
+        States, later."
+  - id: f8962.b_zero_month
+    printed: (helper)
+    label: A month of lines 12 to 23 with enrollment premiums in column (a) and zero in column (b)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        all:
+        - op: test
+          gt:
+          - f8962.line12a
+          - const: 0
+        - op: test
+          eq:
+          - f8962.line12b
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          gt:
+          - f8962.line13a
+          - const: 0
+        - op: test
+          eq:
+          - f8962.line13b
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          gt:
+          - f8962.line14a
+          - const: 0
+        - op: test
+          eq:
+          - f8962.line14b
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          gt:
+          - f8962.line15a
+          - const: 0
+        - op: test
+          eq:
+          - f8962.line15b
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          gt:
+          - f8962.line16a
+          - const: 0
+        - op: test
+          eq:
+          - f8962.line16b
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          gt:
+          - f8962.line17a
+          - const: 0
+        - op: test
+          eq:
+          - f8962.line17b
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          gt:
+          - f8962.line18a
+          - const: 0
+        - op: test
+          eq:
+          - f8962.line18b
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          gt:
+          - f8962.line19a
+          - const: 0
+        - op: test
+          eq:
+          - f8962.line19b
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          gt:
+          - f8962.line20a
+          - const: 0
+        - op: test
+          eq:
+          - f8962.line20b
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          gt:
+          - f8962.line21a
+          - const: 0
+        - op: test
+          eq:
+          - f8962.line21b
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          gt:
+          - f8962.line22a
+          - const: 0
+        - op: test
+          eq:
+          - f8962.line22b
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          gt:
+          - f8962.line23a
+          - const: 0
+        - op: test
+          eq:
+          - f8962.line23b
+          - const: 0
+    cite:
+      doc: p974
+      locator: p. 6, "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled
+        in a qualified health plan on the first day of that month.", "The applicable SLCSP premium is the second lowest cost
+        silver plan premium offered through the Marketplace where you reside that applies to your coverage family",
+        "may report your applicable SLCSP premium as -0-", "In either case, you must determine your correct applicable SLCSP
+        premium."; i8962 p. 16, Column (b), "Enter on lines 12 through 23, column (b), the amount of the monthly applicable
+        SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month"; i8962 p. 17, "credit
+        amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962,
+        column (b)"

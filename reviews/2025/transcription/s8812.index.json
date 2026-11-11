@@ -5,7 +5,7 @@
  "base": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
  "head_rows": {
   "agree / disagree / missing": "12 / 39 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -66,9 +66,9 @@
   },
   {
    "key": "6",
-   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "record": "3229ee5646424fdaa0ff4692422312d35ee8c86df17d65110154af312c2b2684",
    "status": "AGREE",
-   "subject_key": "8038f9bf87fd049b5b0a94849c8deade900ec49b93a600f4ac681258713693bd"
+   "subject_key": "d2cff230d2d040b9ec4fb6288504878833e25b48bbf2f7339fd95b32b957271b"
   },
   {
    "key": "7",
@@ -411,6 +411,7 @@
  "foreign": {
   "s8812.clwb_complete": "25cf9c95738d00473ee009f4a9407e1fc808db3a1ebcdc3ad7e64c99960dd7b9",
   "4": "0d53bc5dc1cfa4f0daaf26549006dabfc947df56269fc2a313f5ba30eacdfee0",
+  "6": "e5f15ec8384c902cbb90f2bbbb7a45114137186470f38670f9a39136c31a792e",
   "(CLW A 4)": "02fc51c15ae9ec88dfbd177a3bef66b796e28e8bfaf42ec5ef878d6dd152cc39",
   "18a": "8ad211a8e15777d7128605fcb605285c5eddbd15d4cbf0eb1da8a5dc908e228b",
   "18b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

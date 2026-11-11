@@ -10,7 +10,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | clcw.md | worksheet | 33 |
 | clcw26.md | worksheet | 28 |
 | dcprov.md | worksheet | 6 |
-| dependent.md | worksheet | 154 |
+| dependent.md | worksheet | 159 |
 | div.md | form | 39 |
 | eic.md | worksheet | 103 |
 | f1040.md | form | 66 |
@@ -26,7 +26,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | f8889.md | form | 113 |
 | f8959.md | form | 26 |
 | f8960.md | form | 36 |
-| f8962.md | form | 161 |
+| f8962.md | form | 165 |
 | f8995.md | form | 18 |
 | f8995a.md | form | 14 |
 | ftc.md | form | 17 |

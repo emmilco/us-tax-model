@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "b32b431555d8278cb8c5c645963f5963e5589272d14045c69d59e728d9f0682d",
  "head_rows": {
-  "match / mismatch / unclear / missing": "1 / 10 / 0 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-11); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "6 / 5 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-11); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -17,9 +17,9 @@
   },
   {
    "key": "2(c)",
-   "record": "94786dcde21ad51672620a42f85cf40551dc493b19eba576769292feb975d17f",
+   "record": "271b6951111336b159002a81b5351fee29194936008ee5b8cc3f8852af1778df",
    "status": "MATCH",
-   "subject_key": "10dfb907c141d8efaac040558000028b0a2bbfb9c9a6757d731e7fe2bb17f1ba"
+   "subject_key": "83d72957dac5f658f1017289f01f2e35e74c3385f45c46c75f163593a4efc76f"
   },
   {
    "key": "23",
@@ -51,52 +51,47 @@
   },
   {
    "key": "27",
-   "record": "4ee5a5dfc96ce0b6e078f7c2235c3e56799cdea8a0efc10092dec0fb47244504",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29). i8863 p. 1: \"After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T\"; p970 p. 2, Reminders: \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.\" The register chooses Pub. 970, which the reviewer was not given. The model agrees with the line's amount (worksheet line 1 less line 3, floored, capped at $4,000, gated by lines 23 to 26, the TINs and the EIN); its only objection is the date in the eligible-student gate (dependent.edu_1098t), unchanged in this round. The line was reviewed again because the label of the helper dependent.edu_student_tin now names what dependent.tin counts (an SSN, ITIN or ATIN, or an ITIN or ATIN applied for by the due date); the model raises nothing about it. The same objection was ruled the same way on this line before (this log, the earlier rulings). Project stands.",
-   "subject_key": "ec6dd5ea2fb1954a1126685f0f06e952036b62b80654ddc2b757516d46228909"
+   "record": "271b6951111336b159002a81b5351fee29194936008ee5b8cc3f8852af1778df",
+   "status": "MATCH",
+   "subject_key": "f4cb5a1cc6fc2899c1b1f8429f4e9c7303a1af49aaf40881488dc8f53c238d7e"
   },
   {
    "key": "28",
-   "record": "4ee5a5dfc96ce0b6e078f7c2235c3e56799cdea8a0efc10092dec0fb47244504",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29). i8863 p. 1: \"After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T\"; p970 p. 2, Reminders: \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.\" The register chooses Pub. 970, which the reviewer was not given. The model agrees with the line's arithmetic (\"Subtract $2,000 from line 27. If zero or less, enter -0-\"); its only objection is the date in the eligible-student gate (dependent.edu_1098t), unchanged in this round. The line was reviewed again because the label of the helper dependent.edu_student_tin now names what dependent.tin counts (an SSN, ITIN or ATIN, or an ITIN or ATIN applied for by the due date); the model raises nothing about it. The same objection was ruled the same way on this line before (this log, the earlier rulings). Project stands.",
-   "subject_key": "c68f871dc3897f422b737d855b6eba3d7c0134c09914a21ccfc3053d5b4bd639"
+   "record": "271b6951111336b159002a81b5351fee29194936008ee5b8cc3f8852af1778df",
+   "status": "MATCH",
+   "subject_key": "5cc6a4d553f1b0cb9fff35d42879cdfaec6d1e7d40a23b185da71e4728f2587e"
   },
   {
    "key": "29",
-   "record": "4ee5a5dfc96ce0b6e078f7c2235c3e56799cdea8a0efc10092dec0fb47244504",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29). i8863 p. 1: \"After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T\"; p970 p. 2, Reminders: \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.\" The register chooses Pub. 970, which the reviewer was not given. The model agrees with the line's arithmetic (\"Multiply line 28 by 25% (0.25)\"); its only objection is the date in the eligible-student gate (dependent.edu_1098t), unchanged in this round. The line was reviewed again because the label of the helper dependent.edu_student_tin now names what dependent.tin counts (an SSN, ITIN or ATIN, or an ITIN or ATIN applied for by the due date); the model raises nothing about it. The same objection was ruled the same way on this line before (this log, the earlier rulings). Project stands.",
-   "subject_key": "be04e0db5293e8690e74f0430fa0f3db3c5c714dd2f53b1f5a82de096bfdf7f9"
+   "record": "271b6951111336b159002a81b5351fee29194936008ee5b8cc3f8852af1778df",
+   "status": "MATCH",
+   "subject_key": "29bf26d6190f19cd3d24079ed9f40f65f1d67460466fff56b0d65a0e6ba5c162"
   },
   {
    "key": "30",
-   "record": "4ee5a5dfc96ce0b6e078f7c2235c3e56799cdea8a0efc10092dec0fb47244504",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29). i8863 p. 1: \"After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T\"; p970 p. 2, Reminders: \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.\" The register chooses Pub. 970, which the reviewer was not given. The model agrees with the line's arithmetic (\"If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29\"); its only objection is the date in the eligible-student gate (dependent.edu_1098t), unchanged in this round. The line was reviewed again because the label of the helper dependent.edu_student_tin now names what dependent.tin counts (an SSN, ITIN or ATIN, or an ITIN or ATIN applied for by the due date); the model raises nothing about it. The same objection was ruled the same way on this line before (this log, the earlier rulings). Project stands.",
-   "subject_key": "b62b56db0311437c5cdfbb5b993086e52d5034fd2de9b5e67c7ebcf6a238021e"
+   "record": "271b6951111336b159002a81b5351fee29194936008ee5b8cc3f8852af1778df",
+   "status": "MATCH",
+   "subject_key": "c989cf52300eacb6b9780d9a0dd8eb727c9a4ebc994598cc79f4f539d8a6d3ff"
   },
   {
    "key": "31",
-   "record": "4ee5a5dfc96ce0b6e078f7c2235c3e56799cdea8a0efc10092dec0fb47244504",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29). i8863 p. 1: \"After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T\"; p970 p. 2, Reminders: \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.\" The register chooses Pub. 970, which the reviewer was not given. The model agrees with the line's amount (expenses required to be paid to the institution less worksheet line 3, floored, for a student not taking the American opportunity credit, with the applied-for-TIN and per-period cases refused); its only objection is the date in the eligible-student gate (dependent.edu_1098t), unchanged in this round. The line was reviewed again because the label of the helper dependent.edu_student_tin now names what dependent.tin counts (an SSN, ITIN or ATIN, or an ITIN or ATIN applied for by the due date); the model raises nothing about it. The same objection was ruled the same way on this line before (this log, the earlier rulings). Project stands.",
-   "subject_key": "6ac98c458e12ea2cffae5caada69314ede7475a15f3b41ac654faca134cf847e"
+   "record": "271b6951111336b159002a81b5351fee29194936008ee5b8cc3f8852af1778df",
+   "status": "MATCH",
+   "subject_key": "889b67a15f402c208677983b2e12a9463fa1a5682a00f2d674a149dcd448a9fd"
   }
  ],
  "subjects": {
   "2(d)": "f7e42973fe29ad72d98658d96dce0d09b8c81ec36865f67aa53f5dff8f10cf63",
-  "2(c)": "e46d78fca76ab2b0690ea9b4f270310406715073562c36901b1a3bf9de2df426",
+  "2(c)": "d94797db4ec7c1864f166739d0362814d067e59c4dc9c06409eaa1eae28fda52",
   "23": "6ef859612fc9225528754b68254a0f904c73e2d5cbe8172eadcfd9a024d89b7e",
   "24": "950b5911626062d8b6e371390ffa4abaa869d4f8ae8879b4c770300013e47632",
   "25": "d478c5d661e7a967987ef96c88fb3d604b3cdf01a1cfcb6e3ba0e9ef25c1fcb4",
   "26": "411783735e8d1485648d29199c6cec2a0dcf0678979c53de8767046ed22d7ea8",
-  "27": "9bc2374a215c3c8c0308eb2590f0fc0a045434105f3e0aa043431dd7de618ad8",
-  "28": "b1e0c3c1c5a01587347722f6ab121198bb91c440ab5cad22715034e63431543b",
-  "29": "54c631f0c79b339c9a1ebf918c2aac9a32e8af5e64606d7a03f07a781022f274",
-  "30": "4dc37fc7d9ad06e2875db9fc43764ee20953e9e815e0e1463e0720e60915b668",
-  "31": "1a64751b2cf48eae7001e309f04e4413aa75a95d456ec422ea7aea49a88a4354"
+  "27": "b226f2310394d635f31198cbb1030ee3689dbcc8414ca17ba6ecdf7ca6ab75d4",
+  "28": "1a8d129f58cc32e63078aefb62a4d80e7a5ff192f2f17a4c82eed25e6e6c3903",
+  "29": "4fc7568ee1db0bf12886d12bb62aee8b021fb7ddd02d78fa9c89f0fff9e84d34",
+  "30": "9b104552552eef305c4b8848b4eb7afc6cb40ded0ccf9324a5846d839bc27057",
+  "31": "0d5bac5c5a5e5a4d6890d2891464a11743c01bf058122ca00715547ab7d3b98c"
  },
  "__rest__": "85c13429612c31523d60858f9c1f8860027800b8a1a07fdceb234a74b1f8f973"
 }
