@@ -2,21 +2,43 @@
  "form": "person",
  "reviews": {
   "person.age65": {
-   "subject_sha": "de3653e891324dc57ade8efbbcebf4d2ba2d5f17b3a7f66b07b6a4393a8d6d1c",
+   "subject_sha": "3cd6378cea29c25284b03c84e8cf08a2756cebeac335c1f5febce3a4981e3361",
    "samples": [
     {
-     "verdict": "MATCH",
-     "findings": [],
-     "prompt_sha": "8f1acafc01c58a68a025a25d9d064de4e4195e7b06fb059de6a4c958067664e9",
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A married-filing-separately filer whose spouse was born before January 2, 1961, had no income, isn't filing a return and can't be claimed as a dependent may check the spouse's age box, but the question limits the person to 'you, or your spouse on a joint return'.",
+       "source_text": "i1040gi p. 33, Line 12d: \"If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return.\"",
+       "why": "The wording tells a separate filer the question does not apply to their spouse, so the spouse's yes that the age box and the standard deduction chart (the 3 and 4 box rows for married filing separately) allow is never given.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A person born before January 2, 1961 who died in 2025 before reaching 65 is under age 65 for Schedule R, but the truthful yes leaves them out of the under-65 count in `s3.under65s`.",
+       "source_text": "i1040sr p. 1, Age 65, Death of taxpayer: \"However, if the taxpayer died on February 12, 2025, the taxpayer isn't considered age 65 at the time of death or at the end of 2025.\"",
+       "why": "`s3.under65s` counts only entries answered no, and the question asks only for the birth date, so this under-65 person is missed.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A person born before January 2, 1961 who died in 2025 before reaching 65 truthfully answers yes to \"Were you born before January 2, 1961?\", and that raw yes feeds `person.senior_work_ssn` (Schedule 1-A lines 36a/36b), `s3.seniors` and `sa.age65_count` with no death check.",
+       "source_text": "i1040gi p. 110, Part V: \"If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors.\" i1040gi p. 33, Line 12d: \"If your spouse was born before January 2, 1961, but died in 2025 before reaching age 65, don't check the box\".",
+       "why": "Only `person.age65_box` applies the died-before-65 exclusion; the other lines take the birth-date yes as given, so the decedent is allowed the $6,000 senior deduction, counted as 65 or older for Schedule R, and counted in the standard deduction box total.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a389d47282e4978f6bd081b8dbdfa3f6fa35bebffaaf7f9028164f142bdb626c",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
-     "model": "claude-opus-5-5",
-     "cost": 0.060568,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/person.age65.de3653e89132.1.response.txt"
+     "model": "claude-fable-5-2",
+     "cost": 0.19312,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/person.age65.3cd6378cea29.1.response.txt"
     }
    ],
    "type": "Bool",
-   "readers": 3,
+   "readers": 5,
    "brief": false,
    "used": [
     {
@@ -55,6 +77,22 @@
       110
      ],
      "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i1040sr",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "8e01e7e4db0054efbeac87d4246ad14425e599b9e93a4d73ba6eda964726880c",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Qualified Individual, \"You were age 65 or older at the end of 2025\" and \"You were under age 65 (discussed later) at the end of 2025\""
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "9b45d1c5b76440d18a3d1118b274368669e683ced562a0d8b208e92b856a84db"
     }
    ]
   },

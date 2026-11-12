@@ -125,6 +125,42 @@
     "f5695.line29h"
    ],
    "reason": "The aggregate $2,000 limit for heat pumps, heat pump water heaters and biomass stoves or boilers is Form 5695 line 29h, \"Do not enter more than $2,000\": f5695.hp_capped is the smaller of line 29g times 30% and $2,000, read by f5695.line29h. The tool files one Form 5695 per return (spouses with separate main homes are refused, f5695.separate_homes_joint), so the limit is applied once per form as the line directs."
+  },
+  "limit:f8396:p2:05dfed64": {
+   "not_applicable": "a rule of Form 8396 for a reissued mortgage credit certificate; the tool does not prepare Form 8396 and refuses every holder of a certificate (s3.mcc)"
+  },
+  "limit:f8396:p2:3650ce50": {
+   "not_applicable": "a rule of Form 8396 for a reissued mortgage credit certificate; the tool does not prepare Form 8396 and refuses every holder of a certificate (s3.mcc)"
+  },
+  "limit:i1040gi:p115:df7fc068": {
+   "enforced_by": [
+    "ftc.needs1116"
+   ],
+   "reason": "The $300 ($600 on a joint return) limit of the election to claim the foreign tax credit without Form 1116: ftc.needs1116 compares the foreign taxes entered with the year parameter ftc.limit and refuses above it."
+  },
+  "limit:i1040sr:p3:87604d58": {
+   "not_applicable": "a rule of Schedule R for figuring the credit; the tool does not prepare Schedule R and refuses a return on which the credit is wanted (s3.elderly_credit_if_asked)"
+  },
+  "limit:i1040sr:p3:a79bf32e": {
+   "not_applicable": "a rule of Schedule R for figuring the credit; the tool does not prepare Schedule R and refuses a return on which the credit is wanted (s3.elderly_credit_if_asked)"
+  },
+  "limit:i1040sr:p3:672c2740": {
+   "not_applicable": "a rule of Schedule R for figuring the credit; the tool does not prepare Schedule R and refuses a return on which the credit is wanted (s3.elderly_credit_if_asked)"
+  },
+  "limit:i8912:p3:7d110fdb": {
+   "not_applicable": "a rule of Form 8912 for figuring the bond credit; the tool does not prepare Form 8912 and refuses a holder of a tax credit bond (s3.credit_bond, s3.docs, s3.prior_bond_credit)"
+  },
+  "limit:i8936:p1:433b3647": {
+   "not_applicable": "a condition of the clean vehicle credit figured on Form 8936; the tool does not prepare Form 8936 and refuses a dealer transfer or a wish to claim the credit (s3.ev_dealer_if_ev, s3.ev_credit_if_bought)"
+  },
+  "limit:i8936:p2:38eb4646": {
+   "not_applicable": "a condition of the clean vehicle credit figured on Form 8936; the tool does not prepare Form 8936 and refuses a dealer transfer or a wish to claim the credit (s3.ev_dealer_if_ev, s3.ev_credit_if_bought)"
+  },
+  "limit:i8936:p2:08a7d362": {
+   "not_applicable": "a condition of the clean vehicle credit figured on Form 8936; the tool does not prepare Form 8936 and refuses a dealer transfer or a wish to claim the credit (s3.ev_dealer_if_ev, s3.ev_credit_if_bought)"
+  },
+  "limit:p525:p36:ca8f2c0b": {
+   "not_applicable": "a rule of Pub. 525 on the page that gives the repayment rule; the tool figures neither the repayment deduction nor the credit and refuses a repayment over $3,000 (s3.repaid_income); the other items of the page are not read by any line"
   }
  },
  "baseline": {

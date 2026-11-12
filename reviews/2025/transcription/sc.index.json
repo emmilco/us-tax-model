@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-12); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -156,9 +156,9 @@
   },
   {
    "key": "3 (sc.line3)",
-   "record": "e268996285d802f9c2d44e2f1c296ba1a7515a7cff1da533a26bbb1eb7a3c5a5",
+   "record": "0344df3f26e9426f2f8e6b7cc3757fb8d5a9e6e381cb065c28ae851447fcf589",
    "status": "AGREE",
-   "subject_key": "e4e097b481c24c24616623dfcafe1657e461407a035d0433c2872805ffc55d5e"
+   "subject_key": "e540cb61213ff18218cabd8021a039b622aa8958b3266f69b1a1fd5f3d78e2e2"
   },
   {
    "key": "4 (sc.line4)",
@@ -393,7 +393,7 @@
   "sc.mq_total": "8fffb3718207a976666fec05c4d838d71dfe57e342398c8c51ab7cd6f81de5a5",
   "sc.cost179": "16b87f1be299748b61d29f032baf97b674ca4cb68ad633cc75fe209405ca7d17",
   "sc.profit_pos": "f8643c070bbe59001d28cdc7c669edafa0cdb42ea8970dbaa86ed124702a764c",
-  "3 (sc.line3)": "7f944b46d75cd47cd2377f9a74e8ce8ed53fbcad42a96c9445e510f4c20c792b",
+  "3 (sc.line3)": "ee8e2fd1a498224d042c7646968d4720481ae5caf0350d8dfa76fe20cd0fd91d",
   "4 (sc.line4)": "7bd4b774295ebb6907a73453b94e3cafbd8443e8b7f82eae3bd48576d59b5abe",
   "5 (sc.line5)": "2a876599a38c0e45f4ccade66e1189a489827ebc4cc3945cfc862edf3c0bb799",
   "7 (sc.line7)": "09eae94478e71d8e240d442e9d9774723b9003fed0741bd2ab34184e75ef219f",

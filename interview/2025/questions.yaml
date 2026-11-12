@@ -228,13 +228,152 @@ bank:
     order: 10
     help: The amount paid with Form 4868 or Form 2350, or paid to get an automatic extension of time to file, without any fee
       charged for making the payment. Zero if none.
-  - input: s3.line12
+  - input: s3.adoption_any
+    order: 2
+    help: Costs include agency, lawyer and court fees and travel, also for an adoption that did not go through.
+    prompt: Since the start of 2024, did you (or, on a joint return, your spouse) adopt a child, or pay costs toward adopting
+      one?
+  - input: s3.adoption
+    order: 2
+    help: Yes also if the costs paid in 2025 were for an adoption that is not finished.
+    prompt: Did the adoption become final in 2025, or did you (or, on a joint return, your spouse) pay any of the costs in
+      2025?
+  - input: s3.adoption_earlier
+    order: 2
+    help: Yes also for an adoption that was given up or did not succeed, or where no child had been placed yet.
+    prompt: Did you (or, on a joint return, your spouse) pay costs in 2024 toward an adoption that was not final at the end
+      of 2024?
+  - input: s3.adoption_us
+    order: 2
+    help: Yes for a child who was a U.S. citizen, or lived in the United States, when the adoption began, and for an adoption
+      in the United States with no child placed yet. For a child who was neither, the credit waits until the adoption is final,
+      so the answer is No.
+    prompt: When that adoption began, was the child (or any of the children) a citizen or resident of the United States?
+  - input: s3.credit_bond
     order: 10
-    help: The credit for federal tax on fuels from Form 4136, which this tool does not prepare. Zero if none.
-  - input: s3.line14
+    help: Reported on Form 1097-BTC or by the bond’s issuer; a bond that only pays interest gives none.
+    prompt: In 2025, did a bond you (or, on a joint return, your spouse) own, or a fund, give you a federal tax credit?
+  - input: s3.disability_retired
     order: 10
-    help: The total of Schedule 3 lines 13a through 13z (other payments and refundable credits), which this tool does not
-      prepare. Zero if none.
+    help: Yes if a person under 65 had to stop working because of a condition a doctor expects to last at least a year.
+    prompt: Have you (or, on a joint return, your spouse) retired on permanent and total disability?
+  - input: s3.elderly_credit
+    order: 10
+    help: 'Asked because someone on this return is 65 or older, or retired on disability. The credit is only for people with
+      low income: for a person not filing with a spouse, income (Form 1040 line 11a) under $17,500 and nontaxable social security
+      and pensions under $5,000; for a couple filing together, under $20,000 and $5,000, or under $25,000 and $7,500 when
+      both qualify. This tool cannot figure it; answer No to go on without it.'
+  - input: s3.ev
+    order: 10
+    help: Count a vehicle you received in 2025, new or used, bought or leased, even if you ordered it earlier.
+    prompt: In 2025, did you (or, on a joint return, your spouse) get an electric, plug-in hybrid or fuel-cell vehicle, or
+      install home equipment to charge or fuel a vehicle?
+  - input: s3.ev_dealer
+    order: 10
+    help: The sales papers show it as a clean vehicle credit transferred to the dealer. It has to be reported on the return
+      even though you already got the money.
+    prompt: When you (or, on a joint return, your spouse) bought a vehicle, did the dealer give you the tax credit, off the
+      price or as a payment?
+  - input: s3.ev_bought
+    order: 10
+    help: A payment includes a small deposit or a trade-in; the date the vehicle arrived does not matter here. Yes also if
+      you have since sold the vehicle or a lender holds its title. No credit exists for a leased vehicle or for one bought
+      after that date. Answer No if you only installed equipment.
+    prompt: Did you (or, on a joint return, your spouse) buy the vehicle, not lease it, with the contract signed and a payment
+      made by September 30, 2025?
+  - input: s3.ev_credit
+    order: 10
+    help: With more than one such vehicle, answer for any of them. The credit has limits on your income and on the vehicle’s
+      price, and the seller must have reported the sale to the IRS. This tool cannot figure it; answer No to go on without
+      it.
+    prompt: Do you (or, on a joint return, your spouse) want to claim a tax credit for that vehicle on this return?
+  - input: s3.ev_equipment
+    order: 10
+    help: The credit is only for equipment at your main home in certain low-income or rural areas. This tool cannot figure
+      it; answer No to go on without it, or if you installed none.
+    prompt: Do you (or, on a joint return, your spouse) want to claim a tax credit on this return for home charging or fueling
+      equipment installed in 2025?
+  - input: s3.farmland
+    order: 10
+    help: Yes also if you traded it for other property.
+    prompt: In 2025, did you (or, on a joint return, your spouse) sell farmland?
+  - input: s3.farmland_deferral
+    order: 10
+    help: The choice is made on Form 1062, for farmland sold to a farmer. If you have not heard of it, the answer is No.
+    prompt: Did you (or, on a joint return, your spouse) choose to pay the tax on the gain from that sale in installments
+      (Form 1062)?
+  - input: s3.foreign_any
+    order: 10
+    help: Count foreign tax a fund paid for you (Form 1099-DIV box 7) only if you once filed Form 1116 for it. For a foreign
+      company, count shares held through a partnership, an S corporation or a trust, or by your family.
+    prompt: Have you (or, on a joint return, your spouse) ever paid income tax to another country, had income from a U.S.
+      territory, or owned 10% or more of a foreign company?
+  - input: s3.section965
+    order: 10
+    help: This is a tax on earnings a foreign company held in 2017, which some owners chose to pay over eight years. Yes also
+      if you have since sold the shares.
+    prompt: Are you (or, on a joint return, your spouse) paying “section 965” tax on a foreign company’s earnings in yearly
+      installments?
+  - input: s3.section960c
+    order: 10
+    help: A rare claim by owners of foreign companies; a person who has one has been told so by a tax adviser.
+    prompt: Do you (or, on a joint return, your spouse) claim a credit under “section 960(c)”?
+  - input: s3.virgin_islands
+    order: 10
+    help: Yes if you (or, on a joint return, your spouse) had income from the U.S. Virgin Islands in 2025 and were not a resident
+      there.
+    prompt: Does part of your 2025 tax belong to the U.S. Virgin Islands (Form 8689)?
+  - input: s3.kerosene
+    order: 10
+    prompt: In 2025, was kerosene used in your home for heat, light or cooking?
+  - input: s3.kerosene_credit
+    order: 10
+    help: This tool cannot figure the credit; answer No to go on without it.
+    prompt: Do you (or, on a joint return, your spouse) want to claim back the federal fuel tax on that kerosene (Form 4136)?
+  - input: s3.mcc
+    order: 10
+    help: It is a paper issued when the loan was made, usually to first-time buyers, and it is not the yearly Form 1098 from
+      the lender. A certificate issued again after a refinancing counts. Most home loans do not have one.
+    prompt: Do you (or, on a joint return, your spouse) have a “mortgage credit certificate” from a state or local housing
+      agency for your home loan?
+  - input: s3.prior_other_forms
+    order: 10
+    help: For example Form 8962 or Form 8801. If you did not file for 2024, answer No.
+    prompt: Apart from Form 1040 and its schedules, does your (or, on a joint return, your spouse's) 2024 federal tax return
+      include any separate form (a page headed “Form” and a four-digit number)?
+  - input: s3.prior_amt
+    order: 10
+    help: If the return has no Schedule 2, the answer is No.
+    prompt: Does that return show alternative minimum tax (an amount on Schedule 2, line 2)?
+  - input: s3.prior_forms
+    order: 10
+    help: Each can leave a tax credit to carry into 2025 (business credits, a mortgage credit certificate, alternative minimum
+      tax paid earlier, credits held back by the passive activity rules, an adoption, a first home in Washington, D.C., a
+      tax credit bond). The form number is printed at the top left of each page.
+    prompt: Is any of those forms Form 3800, 8396, 8801, 8582-CR, 8839, 8859 or 8912?
+  - input: s3.repaid_income
+    order: 10
+    help: Add up everything you paid back in 2025, for example wages or a bonus you had to return. For social security benefits,
+      count only what you paid back above the benefits you received in 2025.
+    prompt: In 2025, did you (or, on a joint return, your spouse) pay back more than $3,000 that you had reported as income
+      in an earlier year?
+  - input: ftc.carryover
+    order: 10
+    help: Foreign tax you could not use as a credit in an earlier year can be carried to later years on Form 1116. The amount
+      is on the Form 1116 of an earlier return; if you have never filed Form 1116, the answer is No.
+    prompt: Do you (or, on a joint return, your spouse) want to use a foreign tax credit left over from an earlier year?
+  - input: sc.business_credit
+    order: 12
+    help: 'Business credits are claimed on Form 3800. Count any of them: a credit tied to employees, a credit carried from
+      an earlier year, and a credit for a vehicle or a charger bought for the business.'
+    prompt: For this business — Does this business claim any business tax credit, for example for research, for starting a
+      retirement plan, or for making the premises accessible?
+  - input: sc.fuel_credit
+    order: 12
+    help: The credit is claimed on Form 4136. Fuel in a vehicle used for personal driving, commuting or ride sharing does
+      not count.
+    prompt: For this business — Did this business use gasoline, diesel or another taxed fuel off the road, such as in equipment
+      or a boat, and want the federal fuel tax back?
   - input: sa.gambling_losses
     order: 11
     help: Enter all your gambling losses; the deduction on Schedule A line 16 is limited to your winnings on Schedule 1 line
@@ -372,10 +511,6 @@ bank:
     order: 0
     help: Yes if you have any Schedule 1 income or adjustment other than the items in the parentheses, which this tool asks
       about elsewhere, including the kinds the question names; Yes refuses the return.
-  - input: scope.credits
-    order: 0
-    help: Yes if you want any credit not in the question's list of credits this tool figures, or have any other amount for
-      Schedule 3 Part I; Yes refuses the return.
   - input: scope.other_income
     order: 0
     help: Yes if you or your spouse were a nonresident alien for any part of 2025, or you have any income or return treatment

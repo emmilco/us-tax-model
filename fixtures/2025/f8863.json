@@ -2981,13 +2981,13 @@
         "person[taxpayer].w2[emp_a].box2": 676500,
         "person[taxpayer].w2[emp_a].box5": 8456700,
         "person[taxpayer].w2[emp_a].box6": 122622,
-        "scope.credits": true,
+        "s3.credit_bond": true,
         "s179.line10": null
       },
       "expect": {
         "f8863.clw5": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet (Form 8863 instructions), line 5 (Schedule 3 lines 6d and 6l)",
           "remedy": "Credits other than the foreign tax credit and the child and dependent care credit that come before the education credits are outside this tool.",
           "cite": {

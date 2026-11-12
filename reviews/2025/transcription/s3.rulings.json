@@ -139,6 +139,443 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "s3.adoption_if_any",
+   "project_expr_sha256": "a4423ffbd0280555dddf7a9ae2ba3eb91f2368743c0ab977ec67eec3e89aa7d0",
+   "second_expr_sha256": "9b589eed749a3ad9bdf9aea0526847c4d0246ae979ea0446752e4910e6a07dba",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "284cfdb750b5626750dc3f78f3e0e60291f811d6585c50551daa0a7822ce06ca",
+   "date": "2026-11-12",
+   "run": "2c4e1d5dfbdbce3d833285cf1a29ae0ac6090643633061841120008cf86fd5a9",
+   "subject_key": "8724a348a780c0d690053347486740bf3c80b956b8cae2a1e0004413cf028b14",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.adoption_any@s3",
+     "partial:stage14.asset.bonus_100-s3.adoption_any@s3",
+     "partial:stage14.asset.prior_7yr-s3.adoption_any@s3",
+     "partial:stage14.asset.qip-s3.adoption_any@s3",
+     "partial:stage14.asset.done-s3.adoption_any@s3",
+     "partial:stage14.asset.refuse_class-s3.adoption_any@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.adoption_us_if_earlier",
+   "project_expr_sha256": "48e07d7a7e8590059421fc65d5ef4faf609ea6f58b4e8f84bed986246b5de28d",
+   "second_expr_sha256": "0efefb5b3d578485525c9fd063be61cbde2d2dbbcdfd2e02aff171719706cdf3",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "284cfdb750b5626750dc3f78f3e0e60291f811d6585c50551daa0a7822ce06ca",
+   "date": "2026-11-12",
+   "run": "2c4e1d5dfbdbce3d833285cf1a29ae0ac6090643633061841120008cf86fd5a9",
+   "subject_key": "120bddc948eb8b6a6a59ad991053dd36df6d41b796cb8868cccaa907f2b9de56",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.adoption_any@s3",
+     "partial:stage14.asset.bonus_100-s3.adoption_any@s3",
+     "partial:stage14.asset.prior_7yr-s3.adoption_any@s3",
+     "partial:stage14.asset.qip-s3.adoption_any@s3",
+     "partial:stage14.asset.done-s3.adoption_any@s3",
+     "partial:stage14.asset.refuse_class-s3.adoption_any@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.adoption_us_if_earlier",
+   "project_expr_sha256": "8cfb5f5b1c41485691d2a8dccb6fe657b33781dbdd3c74ab183585fd6cbfa78b",
+   "second_expr_sha256": "7a08a75fbe21d7806d3c70c0d51c32fe89e38f0b3d78bd15780e18b445ce11aa",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention). The reply writes the same condition as an `all` of the two answers; on every return with both answers the two are the same value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1fcb5e7ccc5c; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,955 agree; 11 project-unknown, all on partial records that withhold the upper answer, where the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "b3612138ccd645e8177c1faa890df4939bb0ef2247d80d07b67b7375eebcfaf1",
+   "date": "2026-11-12",
+   "run": "479f4b6a051fba04073d068d973064f79b39518758835194a3f2248192270bf5",
+   "subject_key": "addde4601e318fbc0404f5c27d32d71b8803fc72c1edb5ce6dbe18edd58f5144",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.adoption_earlier@s3",
+     "partial:stage14.asset.bonus_100-s3.adoption_earlier@s3",
+     "partial:stage14.asset.prior_7yr-s3.adoption_earlier@s3",
+     "partial:stage14.asset.qip-s3.adoption_earlier@s3",
+     "partial:stage14.asset.done-s3.adoption_earlier@s3",
+     "partial:stage14.asset.refuse_class-s3.adoption_earlier@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.elderly_credit_if_asked",
+   "project_expr_sha256": "83f74210940231c9d6e3f2e4fcffe3475f8143fa0ce384834e987a08b139a4af",
+   "second_expr_sha256": "2a544c841179fbfafd991ff05ff347df6562513509ee28a7c98b2225bc61b91e",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only when someone on the return is 65 or older or retired on disability (s3.elderly_ask, itself a choose on the count of people 65 or older and then on the disability answer) (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention). The reply writes the same condition as an `all` of the two answers; on every return with both answers the two are the same value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1c3929fed98e; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,903 agree; 63 project-unknown, all on partial records that withhold the upper answer, where the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "b6614d5b2e3e4c5b2cba9882bedec14ca0555874e1a53ff5c554fb04df284f47",
+   "date": "2026-11-12",
+   "run": "9306d0bc9766aeb16aed74cc8804ea8c32bd40a9022cf7582299df23dd976063",
+   "subject_key": "003147bc29bea263c61880467830aca5874891a5c27245b5b12c87fc47d5bb4c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@s3",
+     "fixture:classm.f4952.3.deepseek@s3",
+     "fixture:classm.sa.5.deepseek@s3",
+     "fixture:classm.dependent.5.deepseek@s3",
+     "fixture:classm.asset.3@s3",
+     "fixture:classm.s1.6@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.ev_credit_if_bought",
+   "project_expr_sha256": "66875060962e925c31d2da8a19dccb132f1553d42b0436834bb544306a5e43c3",
+   "second_expr_sha256": "c5c653c6c272da4a4a06635de06d57c37bd11138084dc3bfc004687da9bcbedc",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention). The reply writes the same condition as an `all` of the two answers; on every return with both answers the two are the same value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1fcb5e7ccc5c; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,955 agree; 11 project-unknown, all on partial records that withhold the upper answer, where the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "b3612138ccd645e8177c1faa890df4939bb0ef2247d80d07b67b7375eebcfaf1",
+   "date": "2026-11-12",
+   "run": "479f4b6a051fba04073d068d973064f79b39518758835194a3f2248192270bf5",
+   "subject_key": "8c2f1f65391abf44aa0a1438b32868998807c14e17c7f454fca0ccc3fb67faf9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.ev@s3",
+     "partial:stage14.asset.bonus_100-s3.ev@s3",
+     "partial:stage14.asset.prior_7yr-s3.ev@s3",
+     "partial:stage14.asset.qip-s3.ev@s3",
+     "partial:stage14.asset.done-s3.ev@s3",
+     "partial:stage14.asset.refuse_class-s3.ev@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.ev_dealer_if_ev",
+   "project_expr_sha256": "2bab3acdf73d6ee342974b7e4b4395f4a5d2dc20cd64ce09ad2601023a9866fa",
+   "second_expr_sha256": "a900ab83d6c65405f274eeda52cfe6db6932ec9acc59b5ce1dcd78e019136975",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention). The reply writes the same condition as an `all` of the two answers; on every return with both answers the two are the same value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1fcb5e7ccc5c; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,955 agree; 11 project-unknown, all on partial records that withhold the upper answer, where the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "b3612138ccd645e8177c1faa890df4939bb0ef2247d80d07b67b7375eebcfaf1",
+   "date": "2026-11-12",
+   "run": "479f4b6a051fba04073d068d973064f79b39518758835194a3f2248192270bf5",
+   "subject_key": "fff9f9ae6e0af1d662c6b7049408f3fcd03b67278af4412d349abc3159db010e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.ev@s3",
+     "partial:stage14.asset.bonus_100-s3.ev@s3",
+     "partial:stage14.asset.prior_7yr-s3.ev@s3",
+     "partial:stage14.asset.qip-s3.ev@s3",
+     "partial:stage14.asset.done-s3.ev@s3",
+     "partial:stage14.asset.refuse_class-s3.ev@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.ev_equipment_if_ev",
+   "project_expr_sha256": "9944ddbb98f2e567bb7a6b5c57ff62a70350d3413c468106cf58d84a3bb87025",
+   "second_expr_sha256": "7acaf84a8a13d56117266df5ff08e37b4f33a56b0e4bdd5af75d5d033e5d8df8",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention). The reply writes the same condition as an `all` of the two answers; on every return with both answers the two are the same value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1fcb5e7ccc5c; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,955 agree; 11 project-unknown, all on partial records that withhold the upper answer, where the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "b3612138ccd645e8177c1faa890df4939bb0ef2247d80d07b67b7375eebcfaf1",
+   "date": "2026-11-12",
+   "run": "479f4b6a051fba04073d068d973064f79b39518758835194a3f2248192270bf5",
+   "subject_key": "b1798086b54c657190da0ebdaeef10895a4460d42185f92cea9be4aa18ff49a5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.ev@s3",
+     "partial:stage14.asset.bonus_100-s3.ev@s3",
+     "partial:stage14.asset.prior_7yr-s3.ev@s3",
+     "partial:stage14.asset.qip-s3.ev@s3",
+     "partial:stage14.asset.done-s3.ev@s3",
+     "partial:stage14.asset.refuse_class-s3.ev@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.farmland_deferral_if_sold",
+   "project_expr_sha256": "22b65b3aeafdea3bddacbb174dee5b9cda20904bc41660077951f93b492dac41",
+   "second_expr_sha256": "e9c0335df4b7f9a2c3f27ae55c418ec7280e676cecb004e509ddd4a584d6c8b9",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "284cfdb750b5626750dc3f78f3e0e60291f811d6585c50551daa0a7822ce06ca",
+   "date": "2026-11-12",
+   "run": "2c4e1d5dfbdbce3d833285cf1a29ae0ac6090643633061841120008cf86fd5a9",
+   "subject_key": "f93e124cbb9a0df39ccaaf04905ae5aea38190cd3000f2c1ccb63088d55ae6a4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.farmland@s3",
+     "partial:stage14.asset.bonus_100-s3.farmland@s3",
+     "partial:stage14.asset.prior_7yr-s3.farmland@s3",
+     "partial:stage14.asset.qip-s3.farmland@s3",
+     "partial:stage14.asset.done-s3.farmland@s3",
+     "partial:stage14.asset.refuse_class-s3.farmland@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.kerosene_credit_if_kerosene",
+   "project_expr_sha256": "84e8accf3ecd570b4ef6bbe4b93f68a42bd773ec88b3ac9f1e8bbb44b3cbca98",
+   "second_expr_sha256": "f091e2dce452ab919e8d7bdb9d0215cbb54adad904e633712743084354e3d34e",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention). The reply writes the same condition as an `all` of the two answers; on every return with both answers the two are the same value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1fcb5e7ccc5c; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,955 agree; 11 project-unknown, all on partial records that withhold the upper answer, where the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "b3612138ccd645e8177c1faa890df4939bb0ef2247d80d07b67b7375eebcfaf1",
+   "date": "2026-11-12",
+   "run": "479f4b6a051fba04073d068d973064f79b39518758835194a3f2248192270bf5",
+   "subject_key": "7327f0573b54e78c095a4a0bfe2ba76f6232f48768482c2a3da080a4f4f677dc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.kerosene@s3",
+     "partial:stage14.asset.bonus_100-s3.kerosene@s3",
+     "partial:stage14.asset.prior_7yr-s3.kerosene@s3",
+     "partial:stage14.asset.qip-s3.kerosene@s3",
+     "partial:stage14.asset.done-s3.kerosene@s3",
+     "partial:stage14.asset.refuse_class-s3.kerosene@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.mcc_if_interest",
+   "project_expr_sha256": "4133ec0de300d2c670c3295b3ef382b0f5cbd7ce43e6aa0e279d121dc3eddb44",
+   "second_expr_sha256": "f3ccc9c249b11ce630f3ccba475ff77e4f7b1bab057f45ae662d808de124c7b3",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line for the mortgage credit certificate question, asked only when home mortgage interest is entered (Schedule A line 8a above zero; owner decision recorded in BUG-0619), written as a two-way choose on that amount. The reply writes the same condition as an `all` of the answer and the amount being above zero, and notes that interest not entered on line 8a is not captured, which is the residual recorded in BUG-0620. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,969 agree, none differ. Project stands.",
+   "context": "284cfdb750b5626750dc3f78f3e0e60291f811d6585c50551daa0a7822ce06ca",
+   "date": "2026-11-12",
+   "run": "2c4e1d5dfbdbce3d833285cf1a29ae0ac6090643633061841120008cf86fd5a9",
+   "subject_key": "9c1f1f8724292849ec15a780247229b4c4d6bd9d051f5522bd896bc3d8675f00",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.other_credit",
+   "project_expr_sha256": "3b21a8418fc6cf245f06e30f33e47dced7b23c3004e221ef277babfebdf95a17",
+   "second_expr_sha256": "e64f0c4f99db836471de0382aed969dc30289f7f549ea67993a05c4e2535e41b",
+   "ruling": "Ruling: model error; the page does not state this helper: it is true when any situation the tool refuses for Schedule 3 lines 6a to 6z, 12 and 13a to 13z is present, and the five credit limit worksheet lines refuse on it (i1040s8812 p. 4, Credit Limit Worksheet A, line 2; i8863 p. 8, line 5; i5695 pp. 5 and 7, line 2 of each worksheet). The project reads each situation's gate line in asking order as a chain of two-way chooses; the reply reads the question beneath a gate directly (s3.elderly_credit, not s3.elderly_credit_if_asked), so it takes an answer the interview does not ask. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1fcb5e7ccc5c; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,404 agree; 483 project-unknown and 46 candidate-unknown, and 33 value differences. On completed returns: 27 candidate-unknown, each a return on which nobody is 65 or older or retired on disability, so s3.elderly_credit is not asked and has no answer (project false), and 1 value difference, the fixture redesign.credits.elderly_not_asked, which states a Yes to the credit question for a person under 65 and not retired on disability to show that it is not read: project false, reply true. The other value differences and the project-unknowns are partial records, where the chain stops at the first unanswered situation (spec 4.7.3) and the reply's disjunction is decided by a later one. Project stands.",
+   "context": "b3612138ccd645e8177c1faa890df4939bb0ef2247d80d07b67b7375eebcfaf1",
+   "date": "2026-11-12",
+   "run": "479f4b6a051fba04073d068d973064f79b39518758835194a3f2248192270bf5",
+   "subject_key": "182023dc12eb665d10b50ba35c05b81d92f44dfa535381545d07a99620fd428b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@s3",
+     "fixture:classm.f4952.3.deepseek@s3",
+     "fixture:classm.sa.5.deepseek@s3",
+     "fixture:classm.dependent.5.deepseek@s3",
+     "fixture:classm.asset.3@s3",
+     "fixture:classm.f8960.1@s3",
+     "fixture:classm.s1.6@s3",
+     "fixture:classm.s3.1@s3",
+     "fixture:classm.s3.3@s3",
+     "fixture:classm.s3.4@s3",
+     "fixture:classm.s3.7@s3",
+     "fixture:classm.s3.8@s3",
+     "fixture:classm.s3.9@s3",
+     "fixture:classm.tax_on_amount.2@s3",
+     "fixture:stage16.cleanup.refuse.scope_credits@s3",
+     "fixture:stage15.refuse.f5695.other_credits_part1@s3",
+     "fixture:stage15.refuse.f5695.other_credits_part2@s3",
+     "fixture:stage19.refuse.other_credits@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.other_credit",
+   "project_expr_sha256": "9b950ffc44412e2448c70c0c09cceb91d161ae96230cde55ea87df188ba32a35",
+   "second_expr_sha256": "5a7b37bc36e77f486441931b8a568bc240e7dd0c7b75d8a57a0e2b0df0b1dcf7",
+   "ruling": "Ruling: model error; the page does not state this helper: it is true when any situation the tool refuses for Schedule 3 lines 6a to 6z, 12 and 13a to 13z, or for a foreign tax credit carried from another year, is present, and the five credit limit worksheet lines refuse on it (i1040s8812 p. 4, Credit Limit Worksheet A, line 2; i8863 p. 8, line 5; i5695 pp. 5 and 7, line 2 of each worksheet). The project reads each situation's gate line in asking order as a chain of two-way chooses. The reply reads the questions directly as one `any` and, as its note says, covers only the situations of lines 6a to 6m: it leaves out the kerosene claim of line 12, the line 13 situations and the foreign tax carryover. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,732 agree; 228 project-unknown (156 on incomplete and 72 on refused returns), where the chain stops at the first unanswered situation (spec 4.7.3) and the reply's disjunction is decided by a later one; 9 value differences, all on refused returns, project true and reply false: the witnesses are the fixtures ss.other.components (kerosene), redesign.credits.refuse.farmland, redesign.credits.refuse.ftc_carryover, redesign.credits.refuse.section960c, redesign.credits.refuse.section965 and redesign.credits.refuse.virgin_islands, each a situation the reply leaves out and each refused by the situation's own gate under either reading. None on a completed return. Project stands.",
+   "context": "284cfdb750b5626750dc3f78f3e0e60291f811d6585c50551daa0a7822ce06ca",
+   "date": "2026-11-12",
+   "run": "2c4e1d5dfbdbce3d833285cf1a29ae0ac6090643633061841120008cf86fd5a9",
+   "subject_key": "6ff2d750d07d62d679419e5f883ae51a1ef18020103be962cb5be67c43b678dd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sa.5.deepseek@s3",
+     "fixture:classm.sa.6@s3",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@s3",
+     "fixture:stage16.cleanup.refuse.f1040_line16@s3",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@s3",
+     "fixture:t264.f4952.unsupported_with_interest@s3",
+     "fixture:ss.other.components@s3",
+     "fixture:redesign.credits.refuse.farmland@s3",
+     "fixture:redesign.credits.refuse.ftc_carryover@s3",
+     "fixture:redesign.credits.refuse.section960c@s3",
+     "fixture:redesign.credits.refuse.section965@s3",
+     "fixture:redesign.credits.refuse.virgin_islands@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.prior_amt_if_forms",
+   "project_expr_sha256": "ad58acff81d7fbba94c3713f51b43b269b2c8e9cfb8438b18f1202833c6f2a31",
+   "second_expr_sha256": "85e053d998bdb95482087ec758ec4dc76575b971fdce406b19e704c7b8d5da45",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "284cfdb750b5626750dc3f78f3e0e60291f811d6585c50551daa0a7822ce06ca",
+   "date": "2026-11-12",
+   "run": "2c4e1d5dfbdbce3d833285cf1a29ae0ac6090643633061841120008cf86fd5a9",
+   "subject_key": "ede5d9cd08f737118e41c0439db994a67d038bcd2e68c16b83334d5a92288a9d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.prior_other_forms@s3",
+     "partial:stage14.asset.bonus_100-s3.prior_other_forms@s3",
+     "partial:stage14.asset.prior_7yr-s3.prior_other_forms@s3",
+     "partial:stage14.asset.qip-s3.prior_other_forms@s3",
+     "partial:stage14.asset.done-s3.prior_other_forms@s3",
+     "partial:stage14.asset.refuse_class-s3.prior_other_forms@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.prior_forms_if_forms",
+   "project_expr_sha256": "4af86d4ed4988ef69a72e2d2003c598ba55d8f43ffef5e9fcfbe6e4e76a8fcda",
+   "second_expr_sha256": "21be13b588dad4bebfc11d60ee9175b5334cbdf357bdff4d1eddaa60b415f233",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "284cfdb750b5626750dc3f78f3e0e60291f811d6585c50551daa0a7822ce06ca",
+   "date": "2026-11-12",
+   "run": "2c4e1d5dfbdbce3d833285cf1a29ae0ac6090643633061841120008cf86fd5a9",
+   "subject_key": "34e5356b717b6a65d8749097e9b5dba8a58dbe5c7b3add1ee9efa9b65e9860dc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.prior_other_forms@s3",
+     "partial:stage14.asset.bonus_100-s3.prior_other_forms@s3",
+     "partial:stage14.asset.prior_7yr-s3.prior_other_forms@s3",
+     "partial:stage14.asset.qip-s3.prior_other_forms@s3",
+     "partial:stage14.asset.done-s3.prior_other_forms@s3",
+     "partial:stage14.asset.refuse_class-s3.prior_other_forms@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.section960c_if_foreign",
+   "project_expr_sha256": "f0e65596347862afb5d17da74625b98b8bc7c91fb0eb4e7c21eb7fb00d22292a",
+   "second_expr_sha256": "49115833f259c1bb1d643dead2728695e0be6de8e1b2685b8f8f480fecaf7b5a",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "284cfdb750b5626750dc3f78f3e0e60291f811d6585c50551daa0a7822ce06ca",
+   "date": "2026-11-12",
+   "run": "2c4e1d5dfbdbce3d833285cf1a29ae0ac6090643633061841120008cf86fd5a9",
+   "subject_key": "c873b5cc998efdb690e282677716d19fe91ad50ca5e13134e21407e3e1c2f7ed",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.foreign_any@s3",
+     "partial:stage14.asset.bonus_100-s3.foreign_any@s3",
+     "partial:stage14.asset.prior_7yr-s3.foreign_any@s3",
+     "partial:stage14.asset.qip-s3.foreign_any@s3",
+     "partial:stage14.asset.done-s3.foreign_any@s3",
+     "partial:stage14.asset.refuse_class-s3.foreign_any@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.section965_if_foreign",
+   "project_expr_sha256": "c0f6d7c23b0fa4e3235b9f61e2b66984998ebb543fbd1a3949b10d9b2ca05971",
+   "second_expr_sha256": "e8c76ca2bb72a92de5c2ade1ac44d6da34a5e0d8a25cca214ebe269c5e2a131a",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "284cfdb750b5626750dc3f78f3e0e60291f811d6585c50551daa0a7822ce06ca",
+   "date": "2026-11-12",
+   "run": "2c4e1d5dfbdbce3d833285cf1a29ae0ac6090643633061841120008cf86fd5a9",
+   "subject_key": "2fe77f5bcbd226001ca99b9a669cc8946a256dbf6e9ec81dbdf3107be96f3766",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.foreign_any@s3",
+     "partial:stage14.asset.bonus_100-s3.foreign_any@s3",
+     "partial:stage14.asset.prior_7yr-s3.foreign_any@s3",
+     "partial:stage14.asset.qip-s3.foreign_any@s3",
+     "partial:stage14.asset.done-s3.foreign_any@s3",
+     "partial:stage14.asset.refuse_class-s3.foreign_any@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.virgin_islands_if_foreign",
+   "project_expr_sha256": "ee6899590ff16ec9c0a5a4dc3eb11211b32d8304cdbca516c02112c00568050c",
+   "second_expr_sha256": "ab41352a457a810e30427c8f57faf6e345384e2bebd37844b43d9360ea6f49d5",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "context": "284cfdb750b5626750dc3f78f3e0e60291f811d6585c50551daa0a7822ce06ca",
+   "date": "2026-11-12",
+   "run": "2c4e1d5dfbdbce3d833285cf1a29ae0ac6090643633061841120008cf86fd5a9",
+   "subject_key": "e9afabf0da7e111447db09e08831469fe7bdab381c2b38643320fa53d683747d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.foreign_any@s3",
+     "partial:stage14.asset.bonus_100-s3.foreign_any@s3",
+     "partial:stage14.asset.prior_7yr-s3.foreign_any@s3",
+     "partial:stage14.asset.qip-s3.foreign_any@s3",
+     "partial:stage14.asset.done-s3.foreign_any@s3",
+     "partial:stage14.asset.refuse_class-s3.foreign_any@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

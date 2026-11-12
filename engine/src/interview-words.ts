@@ -281,13 +281,13 @@ function selfTest(): number {
   assert.equal(reading([q("b", "Any pets?", "", "Bool", [{ value: true, label: "Yes" }])]).beforeOwn, null);
   const ctx = context();
   const config = ctx.configs["full"]!;
-  const given: Inputs = { $person: ["taxpayer", "spouse"], "f1040.status": "mfj", "person[spouse].role": "spouse", "person[taxpayer].role": "taxpayer", "scope.credits": true };
+  const given: Inputs = { $person: ["taxpayer", "spouse"], "f1040.status": "mfj", "person[spouse].role": "spouse", "person[taxpayer].role": "taxpayer", "scope.other_line16": true };
   const walked = pageWalk(ctx.data, config, (k) => (k in given ? { value: given[k] } : undefined));
   assert.equal(walked.status, "refused");
   // A couple's first answer records the filing status and both roles (the stated ones are not asked); one person is asked the status.
-  assert.deepEqual(walked.shown.map((s) => s.input), ["$person", "scope.credits"]);
+  assert.deepEqual(walked.shown.map((s) => s.input), ["$person", "scope.other_line16"]);
   assert.throws(() => pageWalk(ctx.data, config, (k) => (k === "$person" ? { value: ["taxpayer"] } : undefined)), Unanswered);
-  const alone: Inputs = { $person: ["taxpayer"], "f1040.status": "single", "scope.credits": true };
+  const alone: Inputs = { $person: ["taxpayer"], "f1040.status": "single", "scope.other_line16": true };
   const shown = pageWalk(ctx.data, config, (k) => (k in alone ? { value: alone[k] } : undefined)).shown.slice(0, 2);
   assert.deepEqual(shown.map((s) => s.input), ["$person", "f1040.status"]);
   assert.deepEqual(shown.map((s) => s.options!.length), [2, 4], "who the return is for has two choices; one person is offered four filing statuses, not married filing jointly");

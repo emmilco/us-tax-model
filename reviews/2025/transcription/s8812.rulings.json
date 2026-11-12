@@ -60,6 +60,59 @@
   {
    "printed": "(CLW A 2)",
    "project_expr_sha256": "609c23ada84a2f8b8928daa08a2a3e90fb73505549e74659e88277234a77349d",
+   "second_expr_sha256": "240c5bfb5890a3c312bfd97a42039f2be138e75542a626d2753c2bd87ef12ee3",
+   "ruling": "Ruling: representation (+ scope); i1040s8812 p. 4, Credit Limit Worksheet A, line 2. As ruled before on this line: the reply's sum is the project's and its shown_when is s8812.show13; triage applies only the project's shown_when, so candidate-shows-skipped counts the reply's value where the project hides the line. The refusal for Schedule 3 lines 6d, 6f, 6l and 6m is now s3.other_credit in place of scope.credits (BUG-0619); the reply refuses on the separate credit questions. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, pass 882b4ef599a4; 1,803 fixtures, 500 generated returns seed 20261026, 69 partial records from 40 bases; 2,365 comparisons): 2,005 agree; 136 candidate-shows-skipped, 123 candidate-refuses, 75 project-refuses, 18 project-unknown, 8 candidate-unknown. On completed returns: 113 candidate-shows-skipped and nothing else; no value differs. The refusals are on refused returns. Project stands.",
+   "context": "a6709317c9cd90ddef86545c743f559909420ac470ac1a6bbbff64bb11619835",
+   "date": "2026-11-12",
+   "run": "0a20ef4e09fc85f53c269465f605070e4914b191b542de9a086d23d0ef7d7c56",
+   "subject_key": "332995b5fecb3a2cd55343e1ce648753d02901666af2267f7b594f3ee57ffc50",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@s8812",
+     "fixture:classm.f2441.3.deepseek@s8812",
+     "fixture:classm.f2441.5.deepseek@s8812",
+     "fixture:classm.f8889.1.deepseek@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f4952.4.deepseek@s8812",
+     "fixture:classm.f8960.3.deepseek@s8812",
+     "fixture:classm.clcw26.3.deepseek@s8812",
+     "fixture:classm.dependent.2.deepseek@s8812",
+     "fixture:classm.f8880.3.deepseek@s8812",
+     "fixture:classm.f1040.6.deepseek@s8812",
+     "fixture:classm.s8812.2.deepseek@s8812",
+     "fixture:classm.f5695.3.deepseek@s8812",
+     "fixture:classm.f5695.5.deepseek@s8812",
+     "fixture:classm.f5695.6.deepseek@s8812",
+     "fixture:classm.eic.7.deepseek@s8812",
+     "fixture:classm.eic.8.deepseek@s8812",
+     "fixture:classm.retirement.1.deepseek@s8812",
+     "fixture:classm.retirement.2.deepseek@s8812",
+     "fixture:classm.retirement.3.deepseek@s8812",
+     "fixture:classm.retirement.5.deepseek@s8812",
+     "fixture:classm.sa.5.deepseek@s8812",
+     "fixture:classm.f2441.1@s8812",
+     "fixture:classm.f2441.2@s8812",
+     "fixture:classm.ssb.2@s8812",
+     "fixture:mutation.t2.no_itemize_f8960_9a@s8812",
+     "fixture:mutation.eic.mfj_no_child_20000@s8812",
+     "fixture:mutation.t2.ssb.mfs_apart_taxable@s8812",
+     "fixture:mutation.t2.ssb.mfs_together_skip@s8812",
+     "fixture:mutation.t3.person_edu_1098t_unanswered@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW A 2)",
+   "project_expr_sha256": "609c23ada84a2f8b8928daa08a2a3e90fb73505549e74659e88277234a77349d",
    "second_expr_sha256": "e76d71ce5d673d82cc529d002e79b7ab2316e7fea6aa2773efc3333a0a890d76",
    "ruling": "Ruling: model error; f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit.\"; i1040s8812 p. 3, Line 13: \"Enter the amount from Credit Limit Worksheet A.\" The candidate has no shown_when and shows a nonzero amount on 19 completed returns where the project hides the line (shown_when s8812.show13); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`; 1,495 fixtures, 500 generated returns seed 20261026, 79 partial records; 2,074 comparisons): 1,450 of 2,074 agree; differences 290 project-refuses, 119 candidate-unknown, 114 candidate-shows-skipped, 92 candidate-refuses, 9 project-unknown; on returns the full interview completes: 19 candidate-shows-skipped. Project stands.",
    "context": "6ee1c7a508b6a0bfcaf5af750b27ab6a9ed9db4d9e05b94cf6dfbe8769ce6f12",
@@ -198,6 +251,44 @@
      "fixture:stage8.refuse.s8812.credits@s8812",
      "fixture:stage15.refuse.s8812.puerto_rico_clwb@s8812",
      "generated:20261026.26@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW A 4)",
+   "project_expr_sha256": "9b1f745157f75ab3325bf8f8230ed6a49bc8dc740db333b9203a6be720536958",
+   "second_expr_sha256": "dea82066f73b42522873e08b5f31da9bae62a0cc2ab7c4b9e9e574d518ceac0d",
+   "ruling": "Ruling: model error (+ scope); i1040s8812 p. 4, Credit Limit Worksheet A, line 4, \"If you are not completing Credit Limit Worksheet B, enter -0-; otherwise, enter the amount from Credit Limit Worksheet B\". As ruled before on this line; the refusal for the credits that call for Worksheet B (Forms 8396, 8839, 8859) is now s3.other_credit in place of scope.credits (BUG-0619). executable-triage-v2 (`.transcription/triage/2025/s8812.json`, pass 882b4ef599a4; 1,803 fixtures, 500 generated returns seed 20261026, 69 partial records from 40 bases; 2,365 comparisons): 2,293 agree; 60 project-unknown, 8 candidate-refuses, 2 candidate-unknown, 2 project-refuses; none on a completed return (the project-unknowns are on incomplete and refused returns). Project stands.",
+   "context": "a6709317c9cd90ddef86545c743f559909420ac470ac1a6bbbff64bb11619835",
+   "date": "2026-11-12",
+   "run": "0a20ef4e09fc85f53c269465f605070e4914b191b542de9a086d23d0ef7d7c56",
+   "subject_key": "ee55c986cc653dc85f7367bb36bf51db532b2c42418449571b5b059ce4a3d280",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f2441.1.deepseek@s8812",
+     "fixture:classm.f2441.2.deepseek@s8812",
+     "fixture:classm.f2441.3.deepseek@s8812",
+     "fixture:classm.f2441.4.deepseek@s8812",
+     "fixture:classm.f2441.5.deepseek@s8812",
+     "fixture:classm.dependent.2.deepseek@s8812",
+     "fixture:classm.s179.7@s8812",
+     "fixture:classm.tax_on_amount.2@s8812",
+     "fixture:stage16.cleanup.refuse.scope_credits@s8812",
+     "fixture:stage15.refuse.f5695.other_credits_part1@s8812",
+     "fixture:mutation.t2.no_itemize_f8960_9a@s8812",
+     "fixture:mutation.f4952.election_without_interest_used@s8812",
+     "fixture:redesign.credits.refuse.adoption@s8812",
+     "fixture:redesign.credits.refuse.mcc@s8812",
+     "fixture:redesign.credits.refuse.prior_forms@s8812"
     ],
     "policy": "executable-triage-v2"
    }

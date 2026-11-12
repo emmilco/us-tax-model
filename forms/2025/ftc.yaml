@@ -20,6 +20,61 @@ form:
         doc: i1116
         locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
           regular tax
+    - id: ftc.carryover
+      printed: (helper)
+      type: Bool
+      gated_by: ftc.carryover_if_asked
+      label: Do you (or, on a joint return, your spouse) want to claim a foreign tax credit for unused foreign taxes carried to 2025 from another tax year?
+      expr:
+        op: input
+        source: Do you (or, on a joint return, your spouse) want to claim a foreign tax credit for unused foreign taxes carried to 2025 from another tax year?
+      cite:
+        doc: i1116
+        locator: p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025"
+    - id: ftc.carryover_ask
+      printed: (helper)
+      type: Bool
+      label: 'The carryover question is asked: foreign tax, territory income or a foreign corporation at some time, or a 2024 return with a form besides Form 1040 and its schedules'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - s3.foreign_any
+            - const: true
+          then: s3.foreign_any
+        - guard:
+            op: test
+            eq:
+            - s3.foreign_any
+            - const: false
+          then: s3.prior_other_forms
+      cite:
+        doc: i1116
+        locator: p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025"
+    - id: ftc.carryover_if_asked
+      printed: (gate)
+      type: Bool
+      label: Whether a foreign tax credit carried from another year is claimed, asked only of a filer who has paid income tax to a foreign country or a U.S. territory, had territory income or owned part of a foreign corporation, or whose 2024 return includes a form besides Form 1040 and its schedules (false otherwise)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - ftc.carryover_ask
+            - const: true
+          then: ftc.carryover
+        - guard:
+            op: test
+            eq:
+            - ftc.carryover_ask
+            - const: false
+          then: ftc.no
+      cite:
+        doc: i1116
+        locator: p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025"
     - id: ftc.all_passive
       printed: (helper)
       type: Bool
@@ -314,3 +369,9 @@ form:
             doc: i1116
             locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
               regular tax
+        - when: ftc.carryover_if_asked
+          form: Form 1116
+          remedy: A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.
+          cite:
+            doc: i1116
+            locator: p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025"

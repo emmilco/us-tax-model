@@ -731,6 +731,12 @@ params:
       cite:
         doc: i1040gi
         locator: 'p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit"; p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error"'
+    s3.no:
+      type: Bool
+      value: false
+      cite:
+        doc: i1040gi
+        locator: 'p. 116, Lines 6a Through 6z, "Leave line 6z blank"'
     s8812.no:
       type: Bool
       value: false

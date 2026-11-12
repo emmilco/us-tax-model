@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-11); see Line-scoped reviews"
+  "agree / disagree / missing": "5 / 28 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-12); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -50,10 +51,10 @@
   },
   {
    "key": "14",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "af9b7d26ab47e8f17537f609a8e473dd0f1baa8e06e5d346951445dd4219b4e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; same as the backlog-round ruling (line, candidate and evidence unchanged). i5695 p. 5, Line 14 worksheet. The values are the project's; the candidate reads its own unguarded line 32, so every return without Part II needs f5695.business_use, f5695.separate_homes or f5695.joint_occupancy. On a return without Part II (f5695.part2_any No) every Part II amount is $0 and the interview asks none of the Part II questions; the project's lines, guarded on f5695.part2_any or on cost lines that are $0 (credits-misc PENDING-2), do not read them. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 2,501 of 3,703 agree; on completed returns 550 candidate-unknown, 1 candidate-refuses (generated 360: part2_any No with joint_occupancy Yes supplied, candidate refuses at line 27).",
-   "subject_key": "829814a25b100bce0e1c83914cbdc77b6ae2183bbe1f10989674d98a4844341c"
+   "ruling": "Ruling: representation and scope; i5695 p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 2: \"Enter the total of the following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return\". As ruled before on this line, the worksheet's terms are the project's f5695.rce_ws2 (Schedule 3 lines 1, 2, 3 and 4, line 5b, the child tax credit), the other credits being refused; that refusal is now s3.other_credit in place of scope.credits (BUG-0619). The reply refuses on the separate credit questions instead and reads the ones asked beneath a gate directly (s3.ev_credit, s3.elderly_credit), which have no answer on a return where their gate is closed. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 912fab1d2cf7; 1,803 fixtures, 500 generated returns seed 20261026, 2,081 partial records from 40 bases; 3,619 comparisons): 2,439 agree; 968 candidate-unknown, 209 project-refuses, 3 candidate-refuses; no value differs. On completed returns: 775 candidate-unknown (the witnesses listed are each on s3.ev_credit, unanswered because not asked; project $0.00), and 3 candidate-refuses on s3.ev_credit and s3.elderly_credit, on fixtures that state an unread Yes beneath a closed gate. The project refusals are on refused returns. Project stands.",
+   "subject_key": "d9ac238b350f1846a9228e0c85fac5357274e45b64da431044f6390eea103295"
   },
   {
    "key": "15",
@@ -207,9 +208,10 @@
   },
   {
    "key": "31",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
-   "status": "AGREE",
-   "subject_key": "b4a7c12ef76dffa788bd4affd88aa9d36e52977af8a9e4a89cd523d3c1370ebb"
+   "record": "af9b7d26ab47e8f17537f609a8e473dd0f1baa8e06e5d346951445dd4219b4e6",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i5695 p. 7, Energy Efficient Home Improvement Credit Limit Worksheet—Line 31: \"Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 18\" less Schedule 3 lines 6l, 1, 2, 6d, 3 and 4. The reply's value is the project's; it adds a shown_when on f5695.part2_any, which the project does not carry on this line (as ruled before: line 32 is the smaller of lines 30 and 31 and Part II is not completed without the screen), and it refuses on s3.docs and s3.elderly_credit where the project refuses on s3.other_credit (BUG-0619). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 912fab1d2cf7; 1,803 fixtures, 500 generated returns seed 20261026, 2,081 partial records from 40 bases; 3,619 comparisons): 3,587 agree; 24 project-refuses, on refused returns; 7 candidate-unknown and 1 candidate-refuses on completed returns, where the reply reads s3.elderly_credit, not asked there (the refusing one is the fixture that states an unread Yes). No value differs. Project stands.",
+   "subject_key": "7db6a5ecbdca5f37c5caccbbb0ff6fa43fb52dd51b04298d06e0e51d103cc6db"
   },
   {
    "key": "32",
@@ -240,7 +242,7 @@
   "6b": "033dda84713fe99afcb352106c331342fe2469475865231043196d95777ddbd5",
   "11": "24d6e9f296e5431e0f6011ca7b7dd2615daa98b09d2421fb56c25d14bba2850f",
   "13": "895a3467d5031755ed80a0ceac228723d99deb6c0c6d796f228f06995ec2e3b3",
-  "14": "168427c5fcbccc3b91e12cd5203c44e6721d79380f4c353b78e192924deb9ddc",
+  "14": "445da6502d234ca01daf6aa6dafc70935ee5908ff6daea696dbb5421ec0c3042",
   "15": "07cddd6a6ade0f4436071f1f0b91e81ded007249c4d3ed5ea937b2d158d3633f",
   "16": "6e1f471dd878e5120de00782c2b04d157b3c1b698bd3810cde665d0afdad9405",
   "18b": "e18c290fc3247e387ac1ae52607b5592fd021c183247a48d5e9f990fbf844a6e",
@@ -263,7 +265,7 @@
   "29g": "8f0a91e5a9b87ab2c9d40e587dd9c5de32c025f67f6f5b5d63d93b14dfd2db63",
   "29h": "494a190df11c119e4e5c9a12434922684a47c22c049f3a5203281fe5eac1b6ad",
   "30": "d48f37676851031081d6999705d330af2e60f72692b8b0d9222a515a0b2cf1a4",
-  "31": "55649795697461f80a9b70dd1957cf067e50a0ee9b83acb77198b52daba0f637",
+  "31": "df0d89b489cb65c6b9aff92a63add114abb5a2f34bea2f18b6e73c07a022c6f5",
   "32": "64af264916beff747a1849d812e8557b3548b4d9c16a81a849bad47a899d7ce5",
   "32a": "bb17e5b3658ddec1501abb1fb7ab8be789fb4a3f2ab61ddb5d1ec7d2f063720e",
   "32b": "95f632dbb6a054f703bcee9906052361f278290a08aa400a9a7daebb0bbae849"
@@ -275,6 +277,7 @@
   "6a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "11": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "13": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "14": "acf3845da97e5a9786eba17335917c4fa5a45144cd4bee446d5aaec18d5c4cd9",
   "19c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "19h": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "20c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
@@ -286,6 +289,7 @@
   "26c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "29h": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "30": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "31": "f5f26f0b4b6ed0700e8d8e09ff2b8443ca27fe7e7c49786de98f687038bf0ab4",
   "32": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "32a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "32b": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a"

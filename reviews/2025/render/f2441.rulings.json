@@ -417,6 +417,16 @@
   {
    "printed": "CLW 2",
    "restated": "Enter the amount from s3 line 1.",
+   "model": "The IRS line says \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\"; the restatement takes only Schedule 3 line 1 and omits line 6l.",
+   "ruling": "Ruling: scope; i2441 p. 5, Line 10 Credit Limit Worksheet, \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". Line 6l is not prepared: a filer with a Form 8986 is refused with the return (s3.docs and scope.other_line16, read by scope.ready), which the line's note says; on every return the tool completes line 6l is zero and line 1 is the whole of the line. The note's wording changed with BUG-0619 and the expression did not. Project stands.",
+   "context": "d23b542ce45b3a02fb36f8600bd979dddeba55cfc6a47b4ebbf017a9b1033932",
+   "date": "2026-11-12",
+   "run": "2b3285ab9b29c4bd6e9320c62c33bf59022dfb350c510f94ee778452f4a8935d",
+   "subject_key": "0dc7ca920eac9bf2b97d923f03c616fcb91c15dcf11e38ca1cf2bf97605e7352"
+  },
+  {
+   "printed": "CLW 2",
+   "restated": "Enter the amount from s3 line 1.",
    "model": "The worksheet says \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". The restatement enters only Schedule 3, line 1, and no refusal names line 6l.",
    "ruling": "Ruling: scope; the model says Schedule 3 line 6l (Form 8978, line 14) is omitted with no refusal. i2441 p. 5, Line 10 Credit Limit Worksheet, line 2: \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". scope.credits asks about Form 8978 adjustments and refuses at s3.line8, and scope.other_line16 screens Form 8978 at f1040.line16, so on every computed return line 6l is zero and worksheet line 2 is Schedule 3 line 1. Same ruling as the earlier rounds. Re-checked for the hardening round: person.dc_earned, person.dc_earned_b, scope.other_income, sc.statutory and person.se_screened are unchanged since round 4 (BUG-0262 changes only f2441 lines 16 and 17; BUG-0263 only person.sep_s3).",
    "context": "0795aecc16b1dd900d1fcfdbb9d984d3fb3d403e05ed2b88f34cf2d64e1fbf3c",

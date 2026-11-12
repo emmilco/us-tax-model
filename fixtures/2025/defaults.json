@@ -1504,6 +1504,11 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "ftc.carryover",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "ftc.elect",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
@@ -2318,19 +2323,134 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "s3.adoption",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.adoption_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.adoption_earlier",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.adoption_us",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.credit_bond",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.disability_retired",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.elderly_credit",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.ev",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.ev_bought",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.ev_credit",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.ev_dealer",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.ev_equipment",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.farmland",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.farmland_deferral",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.foreign_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.kerosene",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.kerosene_credit",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "s3.line10",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "s3.line12",
-      "value": 0,
-      "reason": "Closed: no amount unless the scenario states one."
+      "input": "s3.mcc",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "s3.line14",
-      "value": 0,
-      "reason": "Closed: no amount unless the scenario states one."
+      "input": "s3.prior_amt",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.prior_forms",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.prior_other_forms",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.repaid_income",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.section960c",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.section965",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.virgin_islands",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "s8812.combat_pay",
@@ -2508,9 +2628,19 @@
       "reason": "true: all investment in a business is ordinarily at risk; false refuses the return (the at-risk rules are out of scope)."
     },
     {
+      "input": "sc.business_credit",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "sc.f7206_line1",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "sc.fuel_credit",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "sc.hi_screen",
@@ -2729,11 +2859,6 @@
     },
     {
       "input": "sc.tips_ot",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
-      "input": "scope.credits",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },

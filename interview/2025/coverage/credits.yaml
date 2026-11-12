@@ -1,37 +1,630 @@
-# Coverage rows for the credits the tool does not figure. See opening.yaml for how a row is read.
 tax_year: 2025
-part: Credits the tool does not figure
+part: Credits
 profile: full
+sets:
+  got_vehicle:
+    says: A person who received an electric vehicle in 2025, with no credit given by a dealer.
+    answers:
+      s3.ev: true
+      s3.ev_dealer: false
 rows:
-  - id: credits.form_1116
-    design: C.2 row 1 (foreign tax credit needing Form 1116)
-    situation: A filer paid more foreign tax than can be credited without Form 1116.
-    answers:
-      ftc.taxes: 500000
-    expect:
-      refused: ftc.needs1116
-  - id: credits.mortgage_certificate
-    design: C.2 row 8 (mortgage interest credit, current year)
-    replace_when: the credits screen is taken apart
-    situation: A homeowner holds a mortgage credit certificate and wants the mortgage interest credit.
-    answers:
-      scope.credits: true
-    expect:
-      refused: scope.credits
-  - id: credits.form_2439
-    design: C.2 row 17 (Form 2439)
-    situation: A fund sent the filer a Form 2439 for gains it kept and paid tax on.
-    answers:
-      sd.other_forms: true
-    expect:
-      refused: sd.other_forms
-  - id: credits.fuel_typed_in
-    design: C.2 row 16 (credit for federal tax on fuels)
-    replace_when: the credits screen is taken apart
-    situation: A filer with a fuel tax credit answers the credits screen No and types the Form 4136 amount in.
-    answers:
-      scope.credits: false
-      s3.line12: 25000
-    expect:
-      proceeds:
-        s3.line12: 25000
+- id: credits.form1116
+  design: C.2 row 1 (foreign tax credit needing Form 1116)
+  situation: A person paid $500 of foreign tax in 2025, more than the amount that can be claimed without Form 1116.
+  answers:
+    ftc.taxes: 50000
+  expect:
+    refused: ftc.needs1116
+- id: credits.business_credit
+  design: C.2 row 2a (business credit of a business on this return)
+  situation: A person runs a business that claims a business tax credit.
+  answers:
+    $sc@person[taxpayer]:
+    - shop
+    person[taxpayer].sc[shop].business_credit: true
+    $asset@person[taxpayer].sc[shop]: &id001 []
+    $scveh@person[taxpayer].sc[shop]: &id002 []
+    person[taxpayer].plan: none
+    person[taxpayer].sc[shop].hi_uses: false
+    person[taxpayer].sc[shop].ho_uses: false
+    person[taxpayer].sc[shop].inventory_other: false
+    person[taxpayer].sc[shop].line10: 0
+    person[taxpayer].sc[shop].line11: 0
+    person[taxpayer].sc[shop].line14: 0
+    person[taxpayer].sc[shop].line15: 0
+    person[taxpayer].sc[shop].line16a: 0
+    person[taxpayer].sc[shop].line16b: 0
+    person[taxpayer].sc[shop].line17: 0
+    person[taxpayer].sc[shop].line18: 0
+    person[taxpayer].sc[shop].line19: 0
+    person[taxpayer].sc[shop].line2: 0
+    person[taxpayer].sc[shop].line20b: 0
+    person[taxpayer].sc[shop].line21: 0
+    person[taxpayer].sc[shop].line22: 0
+    person[taxpayer].sc[shop].line23: 0
+    person[taxpayer].sc[shop].line24a: 0
+    person[taxpayer].sc[shop].line25: 0
+    person[taxpayer].sc[shop].line26: 0
+    person[taxpayer].sc[shop].line35: 0
+    person[taxpayer].sc[shop].line36: 0
+    person[taxpayer].sc[shop].line37: 0
+    person[taxpayer].sc[shop].line38: 0
+    person[taxpayer].sc[shop].line39: 0
+    person[taxpayer].sc[shop].line41: 0
+    person[taxpayer].sc[shop].line48: 0
+    person[taxpayer].sc[shop].line6: 0
+    person[taxpayer].sc[shop].line8: 0
+    person[taxpayer].sc[shop].meals_100: 0
+    person[taxpayer].sc[shop].meals_50: 0
+    person[taxpayer].sc[shop].meals_80: 0
+    person[taxpayer].sc[shop].method_other: false
+    person[taxpayer].sc[shop].passive: true
+    person[taxpayer].sc[shop].rent_equipment: 0
+    person[taxpayer].sc[shop].special: false
+    person[taxpayer].sc[shop].spouse_owned: false
+    person[taxpayer].sc[shop].statutory: false
+  expect:
+    refused: person[taxpayer].sc[shop].business_credit
+- id: credits.employment_credit
+  design: C.2 row 2b (employment credit of a business on this return)
+  situation: A person runs a business whose wages were reduced by an employment credit.
+  answers:
+    $sc@person[taxpayer]:
+    - shop
+    person[taxpayer].sc[shop].special: true
+    $asset@person[taxpayer].sc[shop]: *id001
+    $scveh@person[taxpayer].sc[shop]: *id002
+    person[taxpayer].plan: none
+    person[taxpayer].sc[shop].hi_uses: false
+    person[taxpayer].sc[shop].ho_uses: false
+    person[taxpayer].sc[shop].inventory_other: false
+    person[taxpayer].sc[shop].line10: 0
+    person[taxpayer].sc[shop].line11: 0
+    person[taxpayer].sc[shop].line14: 0
+    person[taxpayer].sc[shop].line15: 0
+    person[taxpayer].sc[shop].line16a: 0
+    person[taxpayer].sc[shop].line16b: 0
+    person[taxpayer].sc[shop].line17: 0
+    person[taxpayer].sc[shop].line18: 0
+    person[taxpayer].sc[shop].line19: 0
+    person[taxpayer].sc[shop].line2: 0
+    person[taxpayer].sc[shop].line20b: 0
+    person[taxpayer].sc[shop].line21: 0
+    person[taxpayer].sc[shop].line22: 0
+    person[taxpayer].sc[shop].line23: 0
+    person[taxpayer].sc[shop].line24a: 0
+    person[taxpayer].sc[shop].line25: 0
+    person[taxpayer].sc[shop].line26: 0
+    person[taxpayer].sc[shop].line35: 0
+    person[taxpayer].sc[shop].line36: 0
+    person[taxpayer].sc[shop].line37: 0
+    person[taxpayer].sc[shop].line38: 0
+    person[taxpayer].sc[shop].line39: 0
+    person[taxpayer].sc[shop].line41: 0
+    person[taxpayer].sc[shop].line48: 0
+    person[taxpayer].sc[shop].line6: 0
+    person[taxpayer].sc[shop].line8: 0
+    person[taxpayer].sc[shop].meals_100: 0
+    person[taxpayer].sc[shop].meals_50: 0
+    person[taxpayer].sc[shop].meals_80: 0
+    person[taxpayer].sc[shop].method_other: false
+    person[taxpayer].sc[shop].passive: true
+    person[taxpayer].sc[shop].rent_equipment: 0
+  expect:
+    refused: person[taxpayer].sc[shop].screened
+- id: credits.partnership_credit
+  design: C.2 row 2c (business credit through a partnership, S corporation or rental)
+  situation: A person has a partnership, S corporation or rental, the only way such a credit reaches a person with no business of their own.
+  answers:
+    scope.schedule1: true
+  expect:
+    refused: scope.schedule1
+- id: credits.business_credit_carried
+  design: C.2 row 2d (business credit carried from an earlier year)
+  situation: A person's 2024 return includes Form 3800, so a business credit may carry into 2025.
+  answers:
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: false
+    s3.prior_forms: true
+  expect:
+    refused: s3.prior_forms_if_forms
+- id: credits.minimum_tax_credit
+  design: C.2 row 3 (credit for prior-year minimum tax)
+  situation: A person's 2024 return includes Form 8801, so a minimum tax credit may carry into 2025.
+  answers:
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: false
+    s3.prior_forms: true
+  expect:
+    refused: s3.prior_forms_if_forms
+- id: credits.adoption
+  design: C.2 row 4 (adoption credit, adoption in 2025)
+  situation: A person adopted a child in 2025.
+  answers:
+    s3.adoption_any: true
+    s3.adoption: true
+  expect:
+    refused: s3.adoption_if_any
+- id: credits.adoption_carried
+  design: C.2 row 4b (adoption credit carried from an earlier year)
+  situation: A person adopted before 2024, and the 2024 return includes Form 8839, so an adoption credit may carry into 2025.
+  answers:
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: false
+    s3.prior_forms: true
+  expect:
+    refused: s3.prior_forms_if_forms
+- id: credits.adoption_refundable
+  design: C.2 row 5 (refundable adoption credit, Form 1040 line 30)
+  situation: A person paid adoption costs in 2025 and could get the refundable part of the adoption credit.
+  answers:
+    s3.adoption_any: true
+    s3.adoption: true
+  expect:
+    refused: s3.adoption_if_any
+- id: credits.elderly_65
+  design: C.2 row 6 (credit for the elderly or the disabled, a person 65 or older)
+  situation: A person 65 or older wants the credit for the elderly or the disabled.
+  answers:
+    person[taxpayer].age65: true
+    s3.elderly_credit: true
+    person[taxpayer].died_before_65: false
+    person[taxpayer].work_ssn: true
+  expect:
+    refused: s3.elderly_credit_if_asked
+    not_asked:
+    - s3.disability_retired
+- id: credits.elderly_disability
+  design: C.2 row 6 (credit for the elderly or the disabled, a person under 65 retired on disability)
+  situation: A person under 65 who retired on permanent and total disability wants the credit for the elderly or the disabled.
+  answers:
+    s3.disability_retired: true
+    s3.elderly_credit: true
+  expect:
+    refused: s3.elderly_credit_if_asked
+- id: credits.new_vehicle
+  design: C.2 row 7 (clean vehicle credit, new vehicle)
+  situation: A person bought a new electric car in spring 2025 and wants the tax credit on the return.
+  uses:
+  - got_vehicle
+  answers:
+    s3.ev_bought: true
+    s3.ev_credit: true
+  expect:
+    refused: s3.ev_credit_if_bought
+- id: credits.mcc
+  design: C.2 row 8 (mortgage interest credit, current year)
+  situation: A person paid $4,000 of mortgage interest and has a mortgage credit certificate for the home loan.
+  answers:
+    sa.line8a: 400000
+    s3.mcc: true
+  expect:
+    refused: s3.mcc_if_interest
+- id: credits.mcc_carried
+  design: C.2 row 8b (mortgage interest credit carried forward)
+  situation: A person's 2024 return includes Form 8396, so a mortgage interest credit may carry into 2025.
+  answers:
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: false
+    s3.prior_forms: true
+  expect:
+    refused: s3.prior_forms_if_forms
+- id: credits.dc_homebuyer
+  design: C.2 row 9 (D.C. first-time homebuyer credit, carryforward only)
+  situation: A person's 2024 return includes Form 8859.
+  answers:
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: false
+    s3.prior_forms: true
+  expect:
+    refused: s3.prior_forms_if_forms
+- id: credits.old_electric_vehicle
+  design: C.2 row 10 (qualified electric vehicle credit, carryforward only)
+  situation: A person's 2024 return includes Form 8582-CR, where an old electric vehicle credit held back by the passive activity rules is kept.
+  answers:
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: false
+    s3.prior_forms: true
+  expect:
+    refused: s3.prior_forms_if_forms
+- id: credits.charger
+  design: C.2 row 11 (charger credit, at home)
+  situation: A person put in a home charger in 2025, got no vehicle, and wants the credit for the charger.
+  uses:
+  - got_vehicle
+  answers:
+    s3.ev_bought: false
+    s3.ev_equipment: true
+  expect:
+    refused: s3.ev_equipment_if_ev
+    not_asked:
+    - s3.ev_credit
+- id: credits.bond_paper
+  design: C.2 row 12 (tax credit bonds, Form 1097-BTC received)
+  situation: A person received a Form 1097-BTC for 2025, showing a tax credit from a bond or a fund.
+  answers:
+    s3.credit_bond: true
+  expect:
+    refused: s3.credit_bond
+- id: credits.form8986
+  design: C.2 row 13 (Form 8978 amount, Form 8986 received)
+  situation: A person received a Form 8986 from a partnership after an audit and so has a Form 8978 amount; the existing line 16 question refuses it.
+  answers:
+    scope.other_line16: true
+  expect:
+    refused: scope.other_line16
+- id: credits.used_vehicle_dealer
+  design: C.2 row 14 (credit for a previously owned clean vehicle)
+  situation: A person bought a used electric car in 2025 and the dealer took the tax credit off the price.
+  answers:
+    s3.ev: true
+    s3.ev_dealer: true
+  expect:
+    refused: s3.ev_dealer_if_ev
+- id: credits.business_fuel
+  design: C.2 row 16 (credit for federal tax on fuels, a business)
+  situation: A person runs a business that used fuel off the road and wants the federal fuel tax back.
+  answers:
+    $sc@person[taxpayer]:
+    - shop
+    person[taxpayer].sc[shop].business_credit: false
+    person[taxpayer].sc[shop].fuel_credit: true
+    $asset@person[taxpayer].sc[shop]: *id001
+    $scveh@person[taxpayer].sc[shop]: *id002
+    person[taxpayer].plan: none
+    person[taxpayer].sc[shop].hi_uses: false
+    person[taxpayer].sc[shop].ho_uses: false
+    person[taxpayer].sc[shop].inventory_other: false
+    person[taxpayer].sc[shop].line10: 0
+    person[taxpayer].sc[shop].line11: 0
+    person[taxpayer].sc[shop].line14: 0
+    person[taxpayer].sc[shop].line15: 0
+    person[taxpayer].sc[shop].line16a: 0
+    person[taxpayer].sc[shop].line16b: 0
+    person[taxpayer].sc[shop].line17: 0
+    person[taxpayer].sc[shop].line18: 0
+    person[taxpayer].sc[shop].line19: 0
+    person[taxpayer].sc[shop].line2: 0
+    person[taxpayer].sc[shop].line20b: 0
+    person[taxpayer].sc[shop].line21: 0
+    person[taxpayer].sc[shop].line22: 0
+    person[taxpayer].sc[shop].line23: 0
+    person[taxpayer].sc[shop].line24a: 0
+    person[taxpayer].sc[shop].line25: 0
+    person[taxpayer].sc[shop].line26: 0
+    person[taxpayer].sc[shop].line35: 0
+    person[taxpayer].sc[shop].line36: 0
+    person[taxpayer].sc[shop].line37: 0
+    person[taxpayer].sc[shop].line38: 0
+    person[taxpayer].sc[shop].line39: 0
+    person[taxpayer].sc[shop].line41: 0
+    person[taxpayer].sc[shop].line48: 0
+    person[taxpayer].sc[shop].line6: 0
+    person[taxpayer].sc[shop].line8: 0
+    person[taxpayer].sc[shop].meals_100: 0
+    person[taxpayer].sc[shop].meals_50: 0
+    person[taxpayer].sc[shop].meals_80: 0
+    person[taxpayer].sc[shop].method_other: false
+    person[taxpayer].sc[shop].passive: true
+    person[taxpayer].sc[shop].rent_equipment: 0
+    person[taxpayer].sc[shop].special: false
+    person[taxpayer].sc[shop].spouse_owned: false
+    person[taxpayer].sc[shop].statutory: false
+  expect:
+    refused: person[taxpayer].sc[shop].fuel_credit
+- id: credits.form2439
+  design: C.2 row 17 (Form 2439)
+  situation: A person received a Form 2439 from a fund that kept its gains and paid tax on them.
+  answers:
+    sd.other_forms: true
+  expect:
+    refused: sd.other_forms
+- id: credits.repaid_income
+  design: C.2 row 18 (credit for repayment of income of an earlier year)
+  situation: A person paid back $5,000 of a bonus in 2025 that was taxed in an earlier year.
+  answers:
+    s3.repaid_income: true
+  expect:
+    refused: s3.repaid_income
+- id: credits.elective_payment
+  design: C.2 row 19 (net elective payment election amount, Form 3800)
+  situation: A person runs a business that elects to be paid a business credit; the election is made with a business credit on Form 3800.
+  answers:
+    $sc@person[taxpayer]:
+    - shop
+    person[taxpayer].sc[shop].business_credit: true
+    $asset@person[taxpayer].sc[shop]: *id001
+    $scveh@person[taxpayer].sc[shop]: *id002
+    person[taxpayer].plan: none
+    person[taxpayer].sc[shop].hi_uses: false
+    person[taxpayer].sc[shop].ho_uses: false
+    person[taxpayer].sc[shop].inventory_other: false
+    person[taxpayer].sc[shop].line10: 0
+    person[taxpayer].sc[shop].line11: 0
+    person[taxpayer].sc[shop].line14: 0
+    person[taxpayer].sc[shop].line15: 0
+    person[taxpayer].sc[shop].line16a: 0
+    person[taxpayer].sc[shop].line16b: 0
+    person[taxpayer].sc[shop].line17: 0
+    person[taxpayer].sc[shop].line18: 0
+    person[taxpayer].sc[shop].line19: 0
+    person[taxpayer].sc[shop].line2: 0
+    person[taxpayer].sc[shop].line20b: 0
+    person[taxpayer].sc[shop].line21: 0
+    person[taxpayer].sc[shop].line22: 0
+    person[taxpayer].sc[shop].line23: 0
+    person[taxpayer].sc[shop].line24a: 0
+    person[taxpayer].sc[shop].line25: 0
+    person[taxpayer].sc[shop].line26: 0
+    person[taxpayer].sc[shop].line35: 0
+    person[taxpayer].sc[shop].line36: 0
+    person[taxpayer].sc[shop].line37: 0
+    person[taxpayer].sc[shop].line38: 0
+    person[taxpayer].sc[shop].line39: 0
+    person[taxpayer].sc[shop].line41: 0
+    person[taxpayer].sc[shop].line48: 0
+    person[taxpayer].sc[shop].line6: 0
+    person[taxpayer].sc[shop].line8: 0
+    person[taxpayer].sc[shop].meals_100: 0
+    person[taxpayer].sc[shop].meals_50: 0
+    person[taxpayer].sc[shop].meals_80: 0
+    person[taxpayer].sc[shop].method_other: false
+    person[taxpayer].sc[shop].passive: true
+    person[taxpayer].sc[shop].rent_equipment: 0
+    person[taxpayer].sc[shop].special: false
+    person[taxpayer].sc[shop].spouse_owned: false
+    person[taxpayer].sc[shop].statutory: false
+  expect:
+    refused: person[taxpayer].sc[shop].business_credit
+- id: credits.section965
+  design: C.2 row 20 (deferred net 965 tax liability)
+  situation: A person who once owned part of a foreign company is paying section 965 tax on its earnings in yearly installments.
+  answers:
+    s3.foreign_any: true
+    ftc.carryover: false
+    s3.section960c: false
+    s3.section965: true
+  expect:
+    refused: s3.section965_if_foreign
+- id: credits.section960c
+  design: C.2 row 21 (section 960(c) credit)
+  situation: A person who owns part of a foreign company claims a refund under section 960(c).
+  answers:
+    s3.foreign_any: true
+    ftc.carryover: false
+    s3.section960c: true
+  expect:
+    refused: s3.section960c_if_foreign
+- id: credits.virgin_islands
+  design: C.2 row 22 (U.S. Virgin Islands tax, Form 8689)
+  situation: A person had income from the U.S. Virgin Islands, and part of the tax is owed there.
+  answers:
+    s3.foreign_any: true
+    ftc.carryover: false
+    s3.section960c: false
+    s3.section965: false
+    s3.virgin_islands: true
+  expect:
+    refused: s3.virgin_islands_if_foreign
+- id: credits.farmland
+  design: C.2 row 23 (farmland sale, Form 1062)
+  situation: A person sold farmland in 2025 and chose to pay the tax on the gain in installments.
+  answers:
+    s3.farmland: true
+    s3.farmland_deferral: true
+  expect:
+    refused: s3.farmland_deferral_if_sold
+- id: credits.gap.vehicle_ordered_earlier
+  design: sources check 5 (the vehicle's year is the year it is received)
+  situation: A person ordered and paid for an electric car in 2024, received it in 2025, and wants the credit.
+  uses:
+  - got_vehicle
+  answers:
+    s3.ev_bought: true
+    s3.ev_credit: true
+  expect:
+    refused: s3.ev_credit_if_bought
+- id: credits.gap.vehicle_leased_or_late
+  design: sources check 4 and 5 (a lessee has no credit; none for a vehicle acquired after September 30, 2025)
+  situation: A person leased an electric car in 2025, or bought one in November 2025; no credit exists, so the return goes on and the credit is not asked about.
+  uses:
+  - got_vehicle
+  answers:
+    s3.ev_bought: false
+    s3.ev_equipment: false
+  expect:
+    proceeds:
+      s3.ev_bought: false
+    not_asked:
+    - s3.ev_credit
+- id: credits.gap.adoption_paid_earlier_us
+  design: sources check 6 (costs paid in 2024 toward a U.S. adoption not final at the end of 2024)
+  situation: A person paid adoption costs in 2024 for a U.S. child whose adoption was still not final at the end of 2024, and neither adopted nor paid in 2025.
+  answers:
+    s3.adoption_any: true
+    s3.adoption: false
+    s3.adoption_earlier: true
+    s3.adoption_us: true
+  expect:
+    refused: s3.adoption_us_if_earlier
+- id: credits.gap.adoption_paid_earlier_foreign
+  design: sources check 6 (a foreign adoption gives no credit until it is final)
+  situation: A person paid adoption costs in 2024 for a child from another country whose adoption is still not final; no credit exists for 2025, so the return goes on.
+  answers:
+    s3.adoption_any: true
+    s3.adoption: false
+    s3.adoption_earlier: true
+    s3.adoption_us: false
+  expect:
+    proceeds:
+      s3.adoption_us: false
+- id: credits.gap.first_minimum_tax
+  design: sources check 9 (first alternative minimum tax in 2024, no Form 8801 in the 2024 return)
+  situation: A person owed alternative minimum tax for the first time on the 2024 return, which has Form 6251 and no Form 8801.
+  answers:
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: true
+  expect:
+    refused: s3.prior_amt_if_forms
+- id: credits.gap.form8834
+  design: sources check 2 (Form 8834 carries nothing; the amount sits on Form 8582-CR)
+  situation: A person has an old electric vehicle credit held back by the passive activity rules; the 2024 return has Form 8582-CR and no Form 8834.
+  answers:
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: false
+    s3.prior_forms: true
+  expect:
+    refused: s3.prior_forms_if_forms
+- id: credits.gap.bond_without_paper
+  design: sources check, noticed (a tax credit bond held with no Form 1097-BTC)
+  situation: A person owns a tax credit bond that gave a credit for 2025, and received no Form 1097-BTC for it.
+  answers:
+    s3.credit_bond: true
+  expect:
+    refused: s3.credit_bond
+- id: credits.gap.bond_credit_carried
+  design: sources check, noticed (Form 8912 can carry a bond credit forward)
+  situation: A person no longer owns a tax credit bond, and the 2024 return includes Form 8912 with a credit that could not be used.
+  answers:
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: false
+    s3.prior_forms: true
+  expect:
+    refused: s3.prior_forms_if_forms
+- id: credits.gap.kerosene
+  design: found while building (Form 4136 allows a claim for kerosene used at home, with no business)
+  situation: A person heats their home with kerosene and wants the federal fuel tax on it back.
+  answers:
+    s3.kerosene: true
+    s3.kerosene_credit: true
+  expect:
+    refused: s3.kerosene_credit_if_kerosene
+- id: credits.gap.foreign_tax_carryover
+  design: found while building (a foreign tax credit carried from an earlier year, with no foreign tax in 2025)
+  situation: A person paid foreign tax in an earlier year, paid none in 2025, and wants to use the credit left over.
+  answers:
+    s3.foreign_any: true
+    ftc.carryover: true
+  expect:
+    refused: ftc.carryover_if_asked
+- id: credits.gap.foreign_tax_carryover_form
+  design: owner decision (Form 1116 in the 2024 return leads to the carryover question, and refuses only with a carryover)
+  situation: A person never thought of having paid tax abroad, but the 2024 return includes Form 1116 and a foreign tax credit is carried into 2025.
+  answers:
+    s3.foreign_any: false
+    s3.prior_other_forms: true
+    ftc.carryover: true
+  expect:
+    refused: ftc.carryover_if_asked
+- id: credits.form1116_nothing_carried
+  design: owner decision (nobody is refused for having filed Form 1116 in 2024)
+  situation: A person's 2024 return includes Form 1116 and nothing is carried into 2025; the return goes on.
+  answers:
+    s3.foreign_any: false
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: false
+    s3.prior_forms: false
+  expect:
+    proceeds:
+      ftc.carryover: false
+- id: credits.none
+  design: C.2, the filer none of the rows describes
+  situation: A person with none of these situations answers each plain question No and finishes the return; none of the questions beneath is asked.
+  answers:
+    s3.adoption_any: false
+    s3.ev: false
+    s3.prior_other_forms: false
+    s3.foreign_any: false
+    s3.kerosene: false
+    s3.farmland: false
+    s3.disability_retired: false
+    s3.credit_bond: false
+    s3.repaid_income: false
+  expect:
+    proceeds:
+      s3.adoption_any: false
+      s3.ev: false
+      s3.prior_other_forms: false
+      s3.foreign_any: false
+    not_asked:
+    - s3.adoption
+    - s3.adoption_earlier
+    - s3.adoption_us
+    - s3.ev_dealer
+    - s3.ev_bought
+    - s3.ev_credit
+    - s3.ev_equipment
+    - s3.prior_amt
+    - s3.prior_forms
+    - ftc.carryover
+    - s3.section965
+    - s3.section960c
+    - s3.virgin_islands
+    - s3.kerosene_credit
+    - s3.farmland_deferral
+    - s3.elderly_credit
+    - s3.mcc
+- id: credits.adoption_none_since_2024
+  design: parent P1 answered Yes, nothing beneath applies
+  situation: A person adopted a child in 2024, with every cost paid and the adoption final that year; the credit belonged to the 2024 return and the return goes on.
+  answers:
+    s3.adoption_any: true
+    s3.adoption: false
+    s3.adoption_earlier: false
+  expect:
+    proceeds:
+      s3.adoption_earlier: false
+    not_asked:
+    - s3.adoption_us
+- id: credits.prior_forms_none
+  design: parent P3 answered Yes, nothing beneath applies
+  situation: A person's 2024 return includes Form 8962 and no form that carries a credit; the return goes on.
+  answers:
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: false
+    s3.prior_forms: false
+  expect:
+    proceeds:
+      s3.prior_forms: false
+- id: credits.foreign_none
+  design: parent P4 answered Yes, nothing beneath applies
+  situation: A person once paid income tax abroad and has none of the four situations; the return goes on.
+  answers:
+    s3.foreign_any: true
+    ftc.carryover: false
+    s3.section960c: false
+    s3.section965: false
+    s3.virgin_islands: false
+  expect:
+    proceeds:
+      s3.virgin_islands: false
+- id: credits.mcc_without_interest
+  design: owner decision 2 (the certificate question is asked only with mortgage interest)
+  situation: A person with no mortgage interest is not asked about a mortgage credit certificate.
+  answers:
+    sa.line8a: 0
+  expect:
+    proceeds:
+      sa.line8a: 0
+    not_asked:
+    - s3.mcc
+- id: credits.mcc_with_interest_none
+  design: owner decision 2 (the certificate question is asked with mortgage interest)
+  situation: A person paid $4,000 of mortgage interest and has no mortgage credit certificate; the return goes on.
+  answers:
+    sa.line8a: 400000
+    s3.mcc: false
+  expect:
+    proceeds:
+      s3.mcc: false

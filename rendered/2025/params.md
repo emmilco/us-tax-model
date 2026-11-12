@@ -196,6 +196,7 @@
 | `s1a.senior_rate` | Rate | 6% (0.06) | [f1040s1a] Schedule 1-A (2025), line 34, "Multiply line 33 by 6% (0.06)" (2025; created 2025-11-04; sha256 64f97b38) |
 | `s1a.tips_max` | NonNegDollars | $25,000 | [f1040s1a] Schedule 1-A (2025), line 7, "Enter the smaller of the amount on line 6 or $25,000" (2025; created 2025-11-04; sha256 64f97b38) |
 | `s1a.two_hundred_per_thousand` | Rate | 1/5 | [f1040s1a] Schedule 1-A (2025), lines 28-29: the whole number of $1,000 units, rounded up, times $200 (2025; created 2025-11-04; sha256 64f97b38) |
+| `s3.no` | Bool | false | [i1040gi] p. 116, Lines 6a Through 6z, "Leave line 6z blank" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `s8812.no` | Bool | false | [i1040s8812] p. 3, Bona Fide Residents of Puerto Rico, "If you were a bona fide resident of Puerto Rico, you may be eligible to claim the ACTC if you had at least one qualifying child" (2025; printed date 2026-01-23; sha256 bb9788cd) |
 | `sa.half` | Rate | 1/2 | [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12) |
 | `sa.medical_rate` | Rate | 75/1000 | [f1040sa] Schedule A (2025), line 3 (2025; created 2025-11-20; sha256 c14acf34) |

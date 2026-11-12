@@ -4,9 +4,116 @@
  "family": "claude",
  "base": "0fec04d10eb3917399737bc1bf3b0259c9537423ae7abd972872b60f667ab5b9",
  "head_rows": {
-  "line-scoped reviews": "4 (latest 2026-11-11); see Line-scoped reviews"
+  "printed lines compared": "29",
+  "agree / disagree / missing": "9 / 20 / 0",
+  "line-scoped reviews": "5 (latest 2026-11-12); see Line-scoped reviews"
  },
  "lines": [
+  {
+   "key": "s3.adoption_if_any",
+   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "8d48f96e16bf5bbfd365faa16337a3728a826b0e17c6c00412978b63b6612265"
+  },
+  {
+   "key": "s3.adoption_us_if_earlier",
+   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "9bf1c52973e381ce7a9295f98191cf678faa7e64cea4a6fc2982f2405b3dabf4"
+  },
+  {
+   "key": "s3.elderly_credit_if_asked",
+   "record": "dd7ddc478b8cb70477eefef0a67e477258dc1e4c02b87aeee0484d0e1a6d87a8",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only when someone on the return is 65 or older or retired on disability (s3.elderly_ask, itself a choose on the count of people 65 or older and then on the disability answer) (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention). The reply writes the same condition as an `all` of the two answers; on every return with both answers the two are the same value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1c3929fed98e; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,903 agree; 63 project-unknown, all on partial records that withhold the upper answer, where the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "1c1d6b1a58fa298f6e2879f8526660bbdbe2cf4e901e6f283549d8a1f3131d84"
+  },
+  {
+   "key": "s3.ev_dealer_if_ev",
+   "record": "97f3c2a27f16dbad3f2a178eb802c6e0bad425e1e07b2fa9d241b01c227b055d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention). The reply writes the same condition as an `all` of the two answers; on every return with both answers the two are the same value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1fcb5e7ccc5c; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,955 agree; 11 project-unknown, all on partial records that withhold the upper answer, where the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "e5788c7c230f245decbdbfd6343652b749d5e2e1463803402df1786066968c38"
+  },
+  {
+   "key": "s3.ev_credit_if_bought",
+   "record": "97f3c2a27f16dbad3f2a178eb802c6e0bad425e1e07b2fa9d241b01c227b055d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention). The reply writes the same condition as an `all` of the two answers; on every return with both answers the two are the same value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1fcb5e7ccc5c; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,955 agree; 11 project-unknown, all on partial records that withhold the upper answer, where the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "4bdf3f3db626d4031b80dfc4c53625dd0de4f8181f920e0eeffdbaa02883cc7f"
+  },
+  {
+   "key": "s3.ev_equipment_if_ev",
+   "record": "97f3c2a27f16dbad3f2a178eb802c6e0bad425e1e07b2fa9d241b01c227b055d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention). The reply writes the same condition as an `all` of the two answers; on every return with both answers the two are the same value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1fcb5e7ccc5c; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,955 agree; 11 project-unknown, all on partial records that withhold the upper answer, where the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "69c634b15aa8655be679b07b2a0a657bccf2e533919a22a68c8788a54ea2b5d7"
+  },
+  {
+   "key": "s3.farmland_deferral_if_sold",
+   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "a4ffa991b879d0e8e8cf7e071762a30296248b30de5c546b95d21d1fdaccee04"
+  },
+  {
+   "key": "s3.section965_if_foreign",
+   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "5db5a5e932b9eedbaa3a80a4578bf22ccb6028f08a48a5e3e6f266c0914324ad"
+  },
+  {
+   "key": "s3.section960c_if_foreign",
+   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "9b54ac09f5a697ecd9b8ce2f5a63506db5ca1220b24687b986fc57c2f80d9c15"
+  },
+  {
+   "key": "s3.virgin_islands_if_foreign",
+   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "6ba0c417afaaaf0de48b9c9f273c8332b98e830b41f09e40a2a7d32bcae112a6"
+  },
+  {
+   "key": "s3.kerosene_credit_if_kerosene",
+   "record": "97f3c2a27f16dbad3f2a178eb802c6e0bad425e1e07b2fa9d241b01c227b055d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention). The reply writes the same condition as an `all` of the two answers; on every return with both answers the two are the same value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1fcb5e7ccc5c; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,955 agree; 11 project-unknown, all on partial records that withhold the upper answer, where the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "4a2c97355b2db0105e23b2a0366dfcd2748be026b3cad355d90e6206b2ff48de"
+  },
+  {
+   "key": "s3.mcc_if_interest",
+   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line for the mortgage credit certificate question, asked only when home mortgage interest is entered (Schedule A line 8a above zero; owner decision recorded in BUG-0619), written as a two-way choose on that amount. The reply writes the same condition as an `all` of the answer and the amount being above zero, and notes that interest not entered on line 8a is not captured, which is the residual recorded in BUG-0620. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,969 agree, none differ. Project stands.",
+   "subject_key": "e7c23e0e908915dd497e4a4512e78cb049718980d81812866b76d9dabd42e85c"
+  },
+  {
+   "key": "s3.prior_amt_if_forms",
+   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "7603166138bb644759a79ae015cdcc218023f682533b20a367da2b699aa28b01"
+  },
+  {
+   "key": "s3.prior_forms_if_forms",
+   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
+   "subject_key": "440b594b34f707d3fb1551d26e528343284a3af13cbeae58a0e6ba80a16cfdb5"
+  },
+  {
+   "key": "s3.other_credit",
+   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the page does not state this helper: it is true when any situation the tool refuses for Schedule 3 lines 6a to 6z, 12 and 13a to 13z, or for a foreign tax credit carried from another year, is present, and the five credit limit worksheet lines refuse on it (i1040s8812 p. 4, Credit Limit Worksheet A, line 2; i8863 p. 8, line 5; i5695 pp. 5 and 7, line 2 of each worksheet). The project reads each situation's gate line in asking order as a chain of two-way chooses. The reply reads the questions directly as one `any` and, as its note says, covers only the situations of lines 6a to 6m: it leaves out the kerosene claim of line 12, the line 13 situations and the foreign tax carryover. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,732 agree; 228 project-unknown (156 on incomplete and 72 on refused returns), where the chain stops at the first unanswered situation (spec 4.7.3) and the reply's disjunction is decided by a later one; 9 value differences, all on refused returns, project true and reply false: the witnesses are the fixtures ss.other.components (kerosene), redesign.credits.refuse.farmland, redesign.credits.refuse.ftc_carryover, redesign.credits.refuse.section960c, redesign.credits.refuse.section965 and redesign.credits.refuse.virgin_islands, each a situation the reply leaves out and each refused by the situation's own gate under either reading. None on a completed return. Project stands.",
+   "subject_key": "0cc87a6738b9119bd5507bcaef007bb41bc232f112672d80352e825aec5492e6"
+  },
   {
    "key": "s3.mfs",
    "record": "0fec04d10eb3917399737bc1bf3b0259c9537423ae7abd972872b60f667ab5b9",
@@ -54,10 +161,16 @@
    "subject_key": "caa80390e5c9cfe2528bd1efaa49690068852173a330319b290a22bdd25491fc"
   },
   {
-   "key": "8",
-   "record": "3a3428d8c2897a5875014e906a1fd431d37538446659c067a71770040715f19a",
+   "key": "7",
+   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
    "status": "AGREE",
-   "subject_key": "35bff717bf73d4fe7449e35d82c0c852d9150655c73b7e5bfc46000ef0f1fb5c"
+   "subject_key": "a56320408de9348a0564beef7b42ba8a0a43ec32351750edf3902f8838533d20"
+  },
+  {
+   "key": "8",
+   "record": "dd7ddc478b8cb70477eefef0a67e477258dc1e4c02b87aeee0484d0e1a6d87a8",
+   "status": "AGREE",
+   "subject_key": "d8e94647095e199babbc4b8f09f6a952ded920e93ef430a478c6cd5728ada6b3"
   },
   {
    "key": "9",
@@ -73,13 +186,40 @@
    "subject_key": "3b5479d8f3c79491049c549089c435d1a41fddefc9d267ed19333be48988c9ab"
   },
   {
-   "key": "15",
-   "record": "4e2bc1ff0a016543e5740d20216f3ee92133edfbc8771b04ff76e9a1e3fc0619",
+   "key": "12",
+   "record": "97f3c2a27f16dbad3f2a178eb802c6e0bad425e1e07b2fa9d241b01c227b055d",
    "status": "AGREE",
-   "subject_key": "ccd8d718bde1e2da443510a49ea930c9e54bd9701cdfec417c81ca2e05aab640"
+   "subject_key": "788628523ea3cbd99eb6c2618b5a03fdb56c264a7d16f6f00f14968922315b0e"
+  },
+  {
+   "key": "14",
+   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "status": "AGREE",
+   "subject_key": "34ecabb05bf2114acda384924c205e7777f6011a26acebe2cf922f4c5d7c5753"
+  },
+  {
+   "key": "15",
+   "record": "dd7ddc478b8cb70477eefef0a67e477258dc1e4c02b87aeee0484d0e1a6d87a8",
+   "status": "AGREE",
+   "subject_key": "7593f21e22afee73e3cf7fe2077d3f97988e47c4eb7a7b20d515df17b815f9f1"
   }
  ],
  "subjects": {
+  "s3.adoption_if_any": "1282aeeca3c09220460fc92f659a33126bd819c1ad8db9c75df1ccb788fa4ede",
+  "s3.adoption_us_if_earlier": "ac8c27e52ee7d6f05581309159be2aeaf60244bac206fe8e8dcbbe5d59057a39",
+  "s3.elderly_credit_if_asked": "31dedaf5d52894fa63db77f9467bfeaa301ee5fa4064904f41c125e01cb6f744",
+  "s3.ev_dealer_if_ev": "4a1f3189d5b9a43c8adb19c55e6ea240ba9d6463ffdffb10db62150d1232a927",
+  "s3.ev_credit_if_bought": "7dc47715eaffe23891f726df1b2db7bfedd57fdb1171bf885c685ff728702553",
+  "s3.ev_equipment_if_ev": "d272fb003377364992ece864a32b7d40c1cf2941bd18caf1a1f4979a1476616f",
+  "s3.farmland_deferral_if_sold": "082242d57757ad9c46b27b7301cc7bf3a914096f1a4a4b9fa2ec3b3958b221c2",
+  "s3.section965_if_foreign": "de8a3c50e3243fc56634947bb99a9baeae22725adba3e6c365a71aa390dee718",
+  "s3.section960c_if_foreign": "68bc8c0e1f726d826c43262e000611ac7b5520ed44b0e9c10a880809c646654f",
+  "s3.virgin_islands_if_foreign": "bf253e71fc422349a1cb361bd4eaabe55d2935eb9c961b49d862c6bb91ef7f45",
+  "s3.kerosene_credit_if_kerosene": "b3dd8c1e1727f366bd787ce872125cdc42d4ea92403681337a8a03de2f4e8782",
+  "s3.mcc_if_interest": "25b0e28308a16ad82ddd75a818327266054071c89ca370f43c07f64cbe1d7731",
+  "s3.prior_amt_if_forms": "8c3bb157b4d2de02970663cf2419d1a9d4a31e427c5a7be0a02bd09b53c5571e",
+  "s3.prior_forms_if_forms": "2c74bedfad0be8508185b24b88f826443f9fa261b9b87a021b85fc9bce012011",
+  "s3.other_credit": "c18309e99abe54cd9d48386769fad4f2a6ab4b494eff2b0f75398e48a2761355",
   "s3.mfs": "6726f0b239d5632c25516cb419b9a78cdc2e311417aff2cbef8ada541e5e47b4",
   "1": "520111c959989188ce7d481be28a9b533f1facd077083a81cc2c4e457255b9fe",
   "2": "62e7115d0a806175d67b2a301449897878e49828445e6b95e4a18e054c8bda0c",
@@ -87,16 +227,37 @@
   "4": "03d8777671ca0033641c0177a039694b68d0ac164b316661d6b64dea351b5031",
   "5a": "d96673e713b85073ff55bf60e8b2b6053f6b040d3132603b472d87797ae11b91",
   "5b": "fddca36181beba97637b3e10759ac7f636e1f1f4871c33eba2ed26360f6fee10",
-  "8": "5760e7cd010d7809150cb65741c8005d18f00b70945e715568919ae2a0f0e43e",
+  "7": "b39f529051a795b95c206b35e4cadf0ca250467fa364ebbd46dc3a1d076d4788",
+  "8": "85954f42c63184e45d1eee34850eb53f59288a43326d35af3a97d20699c595ce",
   "9": "0f0192bd5d1fe6b89e20cfa96309a4201ab5c9a91a3d9e80707572ac190e4d20",
   "11": "80dec3598cdd31a4a7a95f9edead1a30e8513ab488c9d1d3999b95bbabde0859",
-  "15": "f4a5413bf30770cc51fc303c79efbc59e36c49ade4bf83cd1fc76d7e8ee9215e"
+  "12": "ca47d620d34ee6b6d2727415d58c67af8ace61b0767e088babd0f60bb3f9892b",
+  "14": "9e8b73a54fdeaebebb603108735fc1976c5616070bde2b30bcef62f46c7358ec",
+  "15": "0139308d9408fa0c602a3d55a75dad8cfd1aec5d92ec251520510ea0f4b93631"
  },
  "__rest__": "8c4455c31080bf1b56e8381468347998cd07ecbe53b3dadcaf427571c0240a42",
  "foreign": {
+  "s3.adoption_if_any": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "s3.adoption_us_if_earlier": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "s3.elderly_credit_if_asked": "50db8901f9044635510d2a9f5f1722fb82ef68c364532307fde9bacd5a2a6697",
+  "s3.ev_dealer_if_ev": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "s3.ev_credit_if_bought": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "s3.ev_equipment_if_ev": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "s3.farmland_deferral_if_sold": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "s3.section965_if_foreign": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "s3.section960c_if_foreign": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "s3.virgin_islands_if_foreign": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "s3.kerosene_credit_if_kerosene": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "s3.mcc_if_interest": "bfe85fe84f1d4a37e361a4fbc499beea88fe0c29448321ddd5646ab863452233",
+  "s3.prior_amt_if_forms": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "s3.prior_forms_if_forms": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "s3.other_credit": "027289f97b9d93fc3174a97c9a5058ba2c00283d46273381d6ecff424645eab4",
   "5a": "c796e5e0ddb7c5c1151b1f2a719e389817bde5a159095a14d7bc6a96bc7cc561",
   "5b": "a89f97d236069bb19791b578a8a6fbd9ebbcfd56bfa85b4075e20969aac6cca3",
-  "8": "fabf9f1e3d5aaf82948b5ca22fb205d131bfa4bdec60a9137731753e84d1adf0",
+  "7": "13aa228285d9f6cc98d3869b4cd371fa858c00f66be7c05c89f2d4c0827de1c8",
+  "8": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "12": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "14": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
  }
 }

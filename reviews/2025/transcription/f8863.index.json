@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "3820de89b16e07ec18b8f2948a1ba4c707e6b244b7c5f94165ef67ba0ac1f02b",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-12); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -176,10 +176,10 @@
   },
   {
    "key": "(CLW 5)",
-   "record": "0f30153e0376f30fa2bf7796f846f3b2f7df7fa573a3ab223dd81e436b79c539",
+   "record": "cdba7a3141c47ceb6359b1e90dab3fee85460c4311f1b82387896071011331f7",
    "status": "DISAGREE",
-   "ruling": "Ruling: interface gap (+ scope); i8863 p. 8, Credit Limit Worksheet, line 5: \"Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l\". The reply enters Schedule 3 line 1 only and says why: s3.line2 is not in the catalog it was given (the prompt lists s3.line1, .transcription/f8863.lines-35428f998f7b.prompt.txt line 793, and no s3.line2), so it could not express line 2; the project's sum of lines 1 and 2 is the source's within scope (lines 6d and 6l are refused by scope.credits, as the reply notes). The reply has no shown_when. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 1,967 of 2,261 agree; 152 candidate-refuses, 45 candidate-shows-skipped, 35 candidate-unknown, 32 project-refuses, 30 project-unknown; on completed returns 40 candidate-shows-skipped, all on returns without Form 8863. No sampled return that shows the worksheet has a Schedule 3 line 2 credit, so no value differs; by reading, the reply would understate line 5 for a filer with a Form 2441 credit. The refusals are on refused returns (ftc.needs1116, scope.credits and others). Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "subject_key": "ffbc09a8fb775e13328edbe02b7b844f75ae4246ebde400d53e9471255aa270b"
+   "ruling": "Ruling: interface gap (+ scope); i8863 p. 8, Credit Limit Worksheet, line 5: \"Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l\". As ruled before on this line: the reply enters Schedule 3 line 1 only and says why (s3.line2 is not in the catalog it was given), so it could not express line 2; the project's sum of lines 1 and 2 is the source's within scope. Lines 6d and 6l are refused: this line now refuses on s3.other_credit, which is true for the credit for the elderly or the disabled (s3.elderly_credit_if_asked) and a Form 8986 (s3.docs), in place of scope.credits (BUG-0619); the reply names the same two refusals. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass d133f955683f; 1,803 fixtures, 500 generated returns seed 20261026, 60 partial records from 40 bases; 2,363 comparisons): 2,048 agree; 151 candidate-refuses, 49 candidate-shows-skipped, 31 candidate-unknown, 52 project-refuses, 32 project-unknown. On completed returns: 42 candidate-shows-skipped, all on returns where the project does not show the worksheet; 7 candidate-unknown and 1 candidate-refuses, where the reply reads s3.elderly_credit, a question the interview does not ask on those returns (nobody 65 or older or retired on disability; the refusing one is the fixture that states an unread Yes). No value differs. Project stands.",
+   "subject_key": "dba1c5a978772b719d48f12df222ccb2d7504842751f007ddbdda45ad1db0396"
   },
   {
    "key": "(CLW 6)",
@@ -228,7 +228,7 @@
   "(CLW 2)": "166e5fb941683281577c61e543308ac00fdb539f1da5eb4dec96c8c42a43af22",
   "(CLW 3)": "63163d72c18511c716ac145bb2d12b417a3cb8816f977195fd104624bf65b36f",
   "(CLW 4)": "310d1e29cfee8cd7a740ac5360cb0f45a2d0aa92d0497d3d23e1fa0450d11cde",
-  "(CLW 5)": "b439c195331679a66473446b5b12ed675cbb019ba0021a49eb914c7bf67a12e1",
+  "(CLW 5)": "c6fecd7cc737ae5586d2a3d1b2698e6c9a2575a42c9b0afd251f59c105244e2b",
   "(CLW 6)": "4ea44e8c7e432095dce1945659bbda30416577decd4c743e01cab305d9c030fd",
   "(CLW 7)": "de23a7aa390a835a385cd118dba3d1b8bbdc41882ae80db6337cbefaa45bbca0",
   "19": "686b33b96558a342b2d7d1cc212b3c92741de341e2eb10edfa7d0377a9b6be24"
@@ -257,7 +257,7 @@
   "(CLW 2)": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
   "(CLW 3)": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
   "(CLW 4)": "f77938bfb2ac6b5109f32fc29854832a8b00a62ac12a859ca2c2b5ad796963e8",
-  "(CLW 5)": "ca80699cec14c33f0160c7c97df2920e9bfbfc693e92548c4d1e68203cf342cf",
+  "(CLW 5)": "6979913acbcadd72dfe0aae78fea1a19726b7c818838f73e65849b6f92c20191",
   "(CLW 6)": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
   "(CLW 7)": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79",
   "19": "f0352f52b04710cfae17faf146f4c73c1fe108a1d8c4c3a679db0e247ea3af79"

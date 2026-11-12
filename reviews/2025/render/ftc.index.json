@@ -3,12 +3,35 @@
  "form": "ftc",
  "family": "claude",
  "base": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+ "head_rows": {
+  "lines judged": "20",
+  "match / mismatch / unclear / missing": "19 / 1 / 0 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-12); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "taxes",
    "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
    "status": "MATCH",
    "subject_key": "aba41d4eef1fa3043703291d0d54bef5ebfee58d5f006ccdb1c0c11f11543cc5"
+  },
+  {
+   "key": "carryover",
+   "record": "53bd58adcdd7a81ec0bce287c3586b050cabc8f98502835bf2e87a799fb27476",
+   "status": "MATCH",
+   "subject_key": "94db4d83bebcf27c390192ec21960ce462b3be5a25803f44b0c4c5519858a32c"
+  },
+  {
+   "key": "carryover_ask",
+   "record": "e05d303255b90598bf722272bfe4ca14d9318365f4c68a1898a7c2d5fe41e989",
+   "status": "MATCH",
+   "subject_key": "c5100a6f162ab061b5f26ecb552e1e27beec25a062a367cd6a06c2a0afb1ab37"
+  },
+  {
+   "key": "carryover_if_asked",
+   "record": "e05d303255b90598bf722272bfe4ca14d9318365f4c68a1898a7c2d5fe41e989",
+   "status": "MATCH",
+   "subject_key": "23c4436333cb99b921ac0b8464d382ac89751349667abb5a0b29a58aecc09847"
   },
   {
    "key": "all_passive",
@@ -103,13 +126,16 @@
   },
   {
    "key": "credit",
-   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "record": "e05d303255b90598bf722272bfe4ca14d9318365f4c68a1898a7c2d5fe41e989",
    "status": "MATCH",
-   "subject_key": "f3e981a1eb4777aee3d472f495d5073d3860a40389e958f2deb5bd5f600fe4e7"
+   "subject_key": "8c00eb4dc10fd60eb6d1a78bbb82bd1baafe6eacfa09197a544f63eaff97a0b2"
   }
  ],
  "subjects": {
   "taxes": "e6d588a93b1ac6228df4a292cd466cb7ac8f603a98696488172beaf7a68c206f",
+  "carryover": "2d980b83c9f2ed478da6edf67656a25e911da2e2f591d0e13973e54f21609ab1",
+  "carryover_ask": "02d909e480d67daf1e14fb4a615c5452530bf4fd59f4bdeb69b358945bc5c842",
+  "carryover_if_asked": "0a757969a856fb30aa988f1d30bf834ad3db1b4506d47c18307ca2d49d207829",
   "all_passive": "e2f969fdb75a96cd6ab0bf2e64c8779c9492eff9ab622ef594f4aeae757074d9",
   "statements": "13e2d9df332aed24bbee5ced09955425f5ded1ba51316a040eaaa097f1b1208b",
   "eligible": "95155ec3ba732e5389fb3b04b77f0689a110d034d5580dd7fb6c71b14a1de5e3",
@@ -125,7 +151,7 @@
   "needs1116": "2e3b3732b2b08383984b0930b9c0d4f0174b78a54bfe6429fe75fc5e299036f8",
   "regular_tax": "9708e41122ecdaf9ac692bbfdc199dc4e05b00233f3861a7c8094d89caed5945",
   "limited": "da26157cf0aea3df3f30f29dbbf26a300f25e0742ff83e73e16494997e9764e9",
-  "credit": "720a4f71d3098a07cda22166ba3f07f4d14d93e9d80a30d570260029e2f88cdc"
+  "credit": "0fbe931973cb0b323098ef77822f4a0fd841e496cd8f5eeb15cfaea60ce0feee"
  },
  "__rest__": "8987249afe36e362d3bf00fb617ecae69dc7aac9d4ee3abd263aeae4d097b5db"
 }

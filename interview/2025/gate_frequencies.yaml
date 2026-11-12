@@ -114,9 +114,9 @@ situations:
 
   # ---- Scope screens (complements asked of everyone today) ----
   scope_credits:
-    label: Credits this tool does not figure
+    label: Credits this tool does not figure (asked as separate situations)
     theme: other
-    refs: [scope.credits]
+    refs: [s3.adoption_any, s3.credit_bond, s3.ev, s3.mcc, s3.prior_other_forms, s3.elderly_credit, sc.business_credit]
     share: 0.012
     range: [0.0091, 0.02]
     source:
@@ -521,7 +521,7 @@ situations:
   other_payments:
     label: Other payments and refundable credits on Schedule 3 lines 13a to 13z (Form 2439 and others)
     theme: other
-    refs: [s3.line14]
+    refs: [s3.repaid_income, s3.foreign_any, s3.farmland]
     share: 0.002
     range: [0.0005, 0.005]
     source:
@@ -530,7 +530,7 @@ situations:
   fuel_tax_credit:
     label: Credit for federal tax on fuels (Form 4136)
     theme: business_farm
-    refs: [s3.line12]
+    refs: [sc.fuel_credit, s3.kerosene]
     share: 0.0019
     range: [0.0019, 0.003]
     source:

@@ -5,7 +5,7 @@
  "base": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
  "head_rows": {
   "match / mismatch / unclear / missing": "25 / 11 / 0 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-11); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-12); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -86,16 +86,16 @@
   },
   {
    "key": "CLW 2",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "e120f6e4fe3f30ace12f23770ffb0237b61928264cc766bdaf79ddc7346b27b2",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; the model says Schedule 3 line 6l (Form 8978, line 14) is omitted with no refusal. i2441 p. 5, Line 10 Credit Limit Worksheet, line 2: \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". scope.credits asks about Form 8978 adjustments and refuses at s3.line8, and scope.other_line16 screens Form 8978 at f1040.line16, so on every computed return line 6l is zero and worksheet line 2 is Schedule 3 line 1. Same ruling as the earlier rounds. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
-   "subject_key": "330d89ab498c36cf1222a36d26f9a89a2d7c80cf9dd558d3d38beb16b0d4f3ad"
+   "ruling": "Ruling: scope; i2441 p. 5, Line 10 Credit Limit Worksheet, \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". Line 6l is not prepared: a filer with a Form 8986 is refused with the return (s3.docs and scope.other_line16, read by scope.ready), which the line's note says; on every return the tool completes line 6l is zero and line 1 is the whole of the line. The note's wording changed with BUG-0619 and the expression did not. Project stands.",
+   "subject_key": "e3988597bcffd8c23e3c89ae386099deaee63652c0de831623a3d3d73de55118"
   },
   {
    "key": "CLW 3",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "e120f6e4fe3f30ace12f23770ffb0237b61928264cc766bdaf79ddc7346b27b2",
    "status": "MATCH",
-   "subject_key": "ece4501572a53b6b54b16b42968657ce9eb32a6b74b6a37e691c16b4bf3b7c42"
+   "subject_key": "43430080fd7e6c033e785a478ae50873163e4422e198402e5f656ca7a022f0ba"
   },
   {
    "key": "10",
@@ -249,8 +249,8 @@
   "9b": "a7374679a99810db05f962bc2febce150ce1aba29004557a8d0215752425b5b8",
   "9c": "f74e5d34374954784150a4b36925a4b51e36c003924447854be3d10e25038a00",
   "CLW 1": "9e6914a4c2458a24954540197815718445ef1b16fa893d85a79e09335e00f1f7",
-  "CLW 2": "31afc58b3cf1a5deee2bd8dd6650a4a883ebbd795f51d555863602569d5a358c",
-  "CLW 3": "6324d98854acf0e487138b6719cafd8c23da4b97d1107e6658e5f41f94edc22f",
+  "CLW 2": "9e70713cc321e3d4a18563bdada37284904e3520d48e86665d52d7450a82249d",
+  "CLW 3": "cdfe0734822819080dc4be75060f36a14af9ca26536f1aefe7983e40a620b964",
   "10": "beb1d772c6355612bcb2d8cd668139efb1b99702b069e88d72a3b14454819f9a",
   "11": "61112cd04e10bd07071fb4cfb9ebbc42d409edcd4da7bc3f3b25aa399737cc64",
   "12": "27e355e131fd547c722f8fb844c74991cf94a00904e11f73c5ac7c019c88e90f",

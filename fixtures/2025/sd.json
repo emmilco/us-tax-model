@@ -1012,7 +1012,6 @@
           "a"
         ],
         "sales[a].box": "G",
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -1489,7 +1488,6 @@
           "a"
         ],
         "sales[a].box": "H",
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -1966,7 +1964,6 @@
           "a"
         ],
         "sales[a].box": "I",
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -2443,7 +2440,6 @@
           "a"
         ],
         "sales[a].box": "J",
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -2920,7 +2916,6 @@
           "a"
         ],
         "sales[a].box": "K",
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -3397,7 +3392,6 @@
           "a"
         ],
         "sales[a].box": "L",
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -3874,7 +3868,6 @@
           "a"
         ],
         "sales[a].special": true,
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -4351,7 +4344,6 @@
           "a"
         ],
         "sales[a].code": "other",
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -4829,7 +4821,6 @@
         ],
         "sales[a].box": "C",
         "sales[a].code": "B",
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -5306,7 +5297,6 @@
           "a"
         ],
         "sales[a].route": "aggregate",
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -5784,7 +5774,6 @@
         ],
         "sales[a].box": "B",
         "sales[a].route": "aggregate",
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -6262,7 +6251,6 @@
         ],
         "sales[a].route": "aggregate",
         "sales[a].code": "W",
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -6736,7 +6724,6 @@
       "evidence": "synthetic refusal regression",
       "inputs": {
         "sd.other_forms": true,
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,

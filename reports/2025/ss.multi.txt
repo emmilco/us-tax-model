@@ -95,6 +95,41 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter sales.zero
       = $0
       cite: [f1040s3] Schedule 3 (2025), lines 1 and 8 (2025; created 2025-11-17; 008cfd3f)
+  (helper) Year parameter s3.no (false)
+      = false
+      cite: [i1040gi] p. 116, Lines 6a Through 6z, "Leave line 6z blank" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) In 2025, did you (or, on a joint return, your spouse) sell or exchange farmland?
+      = false
+      cite: [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Whether the election to defer the tax on a sale of qualified farmland was made, asked only with a sale of farmland in 2025 (false without one)
+      = false
+      cite: [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s3.farmland",{"const":false}],"op":"test"}
+  (helper) Have you (or, on a joint return, your spouse) ever paid income tax to a foreign country or a U.S. territory, had income from sources in a U.S. territory, or owned 10% or more of a foreign corporation?
+      = false
+      cite: [i1040gi] p. 115, Line 1, "If you paid income tax to a foreign country or U.S. territory, you may be able to take this credit"; p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"; p. 117, Line 13d, "If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Whether part of a net 965 tax liability paid in installments remains to be paid, asked only with foreign tax, territory income or a foreign corporation (false without)
+      = false
+      cite: [i1040gi] p. 117, Line 13d, "If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s3.foreign_any",{"const":false}],"op":"test"}
+  (gate) Whether a credit under section 960(c) is claimed, asked only with foreign tax, territory income or a foreign corporation (false without)
+      = false
+      cite: [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s3.foreign_any",{"const":false}],"op":"test"}
+  (gate) Whether part of the tax is allocable to the U.S. Virgin Islands, asked only with foreign tax, territory income or a foreign corporation (false without)
+      = false
+      cite: [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s3.foreign_any",{"const":false}],"op":"test"}
+  (helper) In 2025, was kerosene used in your home for heating, lighting or cooking?
+      = false
+      cite: [i4136] p. 2, Part I—Information About Your Business, "used in your home during the tax period for heating, lighting, or cooking" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); d3d63fc3)
+  (gate) Whether the fuel tax credit for kerosene used at home is wanted, asked only with kerosene used at home (false without it)
+      = false
+      cite: [i4136] p. 2, Part I—Information About Your Business, "If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); d3d63fc3)
+      note: taken: {"eq":["s3.kerosene",{"const":false}],"op":"test"}
+  (helper) In 2025, did you (or, on a joint return, your spouse) repay more than $3,000 in total that you had included in income in an earlier year because it appeared you had an unrestricted right to it?
+      = false
+      cite: [p525] p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right" and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income" (2025; 39b0fa5e)
   (gate) Married filing separately
       = false
       cite: [i1040gi] p. 14, Married Filing Separately (2025; printed date 2026-02-25; 482e9c48)
@@ -111,7 +146,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: confirmed roster $person: taxpayer
   12  Credit for federal tax on fuels. Attach Form 4136
       = $0
-      cite: [f1040s3] Schedule 3 (2025), line 12 (2025; created 2025-11-17; 008cfd3f)
+      cite: [f1040s3] Schedule 3 (2025), line 12; i1040gi p. 117, Line 12, "Enter any credit for federal excise taxes paid on fuels" (2025; created 2025-11-17; 008cfd3f)
   14  Total other payments or refundable credits. Add lines 13a through 13z
       = $0
       cite: [f1040s3] Schedule 3 (2025), line 14 (2025; created 2025-11-17; 008cfd3f)
@@ -123,6 +158,16 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s3.line9: chose $0 (guard 1)
       not taken: guard 0 = false
   person[taxpayer].credit: chose $1,481.80 (guard 0)
+  s3.kerosene_credit_if_kerosene: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.farmland_deferral_if_sold: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.section960c_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.section965_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.virgin_islands_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
 
 Derivations:
   f8962.any: test(f8962.forms = 0; 0 = 0)
@@ -144,6 +189,14 @@ Derivations:
   person[taxpayer].excess: subtract_floor0(person[taxpayer].withheld = $12,400; #ss.limit = $10,918.20)
   person[taxpayer].credit: choose(person[taxpayer].rrta = false; person[taxpayer].over = false; person[taxpayer].eligible = true; true = true; person[taxpayer].excess = $1,481.80)
   s3.line11: sum_over(s3.mfs = false; person[taxpayer].credit = $1,481.80)
+  s3.no: param(#s3.no = false)
+  s3.kerosene_credit_if_kerosene: choose(s3.kerosene = false; true = true; s3.kerosene = false; false = false; s3.no = false)
+  s3.line12: param(s3.kerosene_credit_if_kerosene = false; #sales.zero = $0)
+  s3.farmland_deferral_if_sold: choose(s3.farmland = false; true = true; s3.farmland = false; false = false; s3.no = false)
+  s3.section960c_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
+  s3.section965_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
+  s3.virgin_islands_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
+  s3.line14: param(s3.farmland_deferral_if_sold = false; s3.section960c_if_foreign = false; s3.section965_if_foreign = false; s3.virgin_islands_if_foreign = false; s3.repaid_income = false; #sales.zero = $0)
   s3.line15: sum(s3.line9 = $0; s3.line10 = $0; s3.line11 = $1,481.80; s3.line12 = $0; s3.line14 = $0)
   f1040.line31: copy(s3.line15 = $1,481.80)
 Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers separately per person. Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security. (iw2w3, p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11)

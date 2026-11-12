@@ -1,6 +1,107 @@
 {
  "form": "ftc",
  "reviews": {
+  "gate:ftc.carryover_ask": {
+   "subject_sha": "539b28a2fe62b6f1a210b59120e75ac2759508e21b6cd5d4298d616d6eb5f292",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "An investor (or spouse) whose only foreign tax was paid by a mutual fund, ETF, partnership, S corporation, estate or trust and passed through on Form 1099-DIV box 7 or a Schedule K-1/K-3. They filed Form 1116 in, say, 2019-2023 with tax above the limitation, and their 2024 return has only Form 1040 and its schedules (holding sold, no foreign income, or the no-Form-1116 election used in 2024).",
+       "why_no": "\"Have you ever paid income tax to a foreign country\": the fund or partnership paid it, so the filer says no. The fallback asks only about the 2024 return, which truthfully has no other form. The carryover question is never asked.",
+       "line": "ftc.carryover_if_asked",
+       "irs_text": "i1116 p. 19: \"You can carry back 1 year and then forward 10 years any foreign tax you paid or accrued to any foreign country or U.S. territory\"; i1116 p. 19 Tip: \"If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV, 1099-INT, or similar statement\"",
+       "severity": "high",
+       "fix": "Ask facts the filer can check: \"In any year from 2015 through 2025, did you or your spouse file Form 1116, or have foreign tax paid, withheld or reported for you (Form 1099-DIV box 7, Form 1099-INT box 6, Schedule K-1 or K-3, a foreign payslip or tax return)?\" Or ask the carryover question of everyone."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose foreign tax was withheld at source from dividends, interest, royalties, a pension or wages, or was paid by an employer under tax equalization. They have an unused credit from an earlier Form 1116 and a 2024 return with no extra forms.",
+       "why_no": "They read \"paid income tax to a foreign country\" as filing and paying a foreign return themselves. A withholding on a brokerage statement, or tax the employer settled, is not perceived as tax they paid.",
+       "line": "ftc.carryover_if_asked",
+       "irs_text": "i1116 p. 19, Line 10: \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
+       "severity": "medium",
+       "fix": "Say \"paid, had withheld from your income, or had paid on your behalf (by an employer, broker, fund, partnership, estate or trust)\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer with a live carryover from any of 2015-2023 who answers the first helper no for one of the reasons above. Either they filed no 2024 return (income below the threshold, or not yet a U.S. filer), or their 2024 return carried no Form 1116.",
+       "why_no": "The fallback looks only at the 2024 return, though the carryforward runs ten years. \"Does your 2024 return include any form other than Form 1040 and its schedules\" is no when there was no 2024 return or the carryover arose earlier.",
+       "line": "ftc.carryover_if_asked",
+       "irs_text": "i1116 p. 19: \"You can carry back 1 year and then forward 10 years any foreign tax you paid or accrued ... The carryback-carryforward period can't be extended even if you are unable to take a credit in 1 of the intervening years.\"",
+       "severity": "medium",
+       "fix": "Make the fallback cover every year in the carryforward window: \"Did any federal return you or your spouse filed for 2015 through 2024 include Form 1116?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer whose 2024 return did include Form 1116 and Schedule B (Form 1116), prepared by a paid preparer or software, and who answered the first helper no because a fund paid the tax.",
+       "why_no": "\"Any form other than Form 1040 and its schedules\": they do not know what was attached, or they count Form 1116 (which feeds Schedule 3) and \"Schedule B (Form 1116)\" as schedules of Form 1040.",
+       "line": "ftc.carryover_if_asked",
+       "irs_text": "i1116 p. 19, Line 10: \"Attach Schedule B (Form 1116) to your Form 1116 for each applicable separate category of income if you enter a carryover of foreign taxes from a prior tax year on Form 1116, line 10, or if you generated a foreign tax carryover in the current year.\"",
+       "severity": "medium",
+       "fix": "Name the form: \"Did your 2024 return (or any return since 2015) include Form 1116, Foreign Tax Credit, or an amount on the foreign tax credit line of Schedule 3?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who paid income tax to a foreign province, canton, state or city, or a withholding or other tax in lieu of an income tax, or who is on the accrual basis and accrued foreign tax not yet paid.",
+       "why_no": "\"Income tax to a foreign country\" reads as a national income tax actually paid. A cantonal or provincial tax, a gross withholding tax, or an accrued unpaid tax seems outside it.",
+       "line": "ftc.carryover_if_asked",
+       "irs_text": "i1116 p. 19: \"any foreign tax you paid or accrued to any foreign country or U.S. territory\"",
+       "severity": "low",
+       "fix": "Say \"paid or accrued any tax on income (including withholding tax) to a foreign country, any of its provinces, states or cities, or a U.S. territory such as Puerto Rico, Guam, the U.S. Virgin Islands, American Samoa or the Northern Mariana Islands\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer amending 2025 to carry back excess foreign tax from 2026, or one who reaches the gated question with unused tax from an earlier year for which no Form 1116 was filed.",
+       "why_no": "The gated question says \"left over from an earlier year\", and its help says \"if you have never filed Form 1116, the answer is No\". A carryback from a later year is not an earlier year.",
+       "line": "ftc.carryover_if_asked",
+       "irs_text": "i1116 p. 19, Line 10: \"eligible to be carried forward to or back to 2025 ... You don't need to file Schedule B (Form 1116) for 2025 if you carry back a foreign tax to 2025\"",
+       "severity": "low",
+       "fix": "Word it \"carried to 2025 from another year (forward from 2015-2024 or back from 2026)\", and change the help to \"if neither you nor your spouse has had unused foreign tax in any of those years, answer No\"."
+      }
+     ],
+     "prompt_sha": "44e0c33d624132a0181bdc33a075cf85c9063801b20050617b17d19e7b4037eb",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-fable-5-2",
+     "cost": 0.25320800000000004,
+     "date": "2026-11-12",
+     "response": ".transcription/false_no/gate_ftc.carryover_ask.539b28a2fe62.1.response.txt"
+    }
+   ],
+   "condition": "ftc.carryover_ask",
+   "lines": [
+    "ftc.carryover_if_asked"
+   ],
+   "inputs": [
+    "ftc.carryover"
+   ],
+   "used": [
+    {
+     "doc": "i1116",
+     "revision": "2025; printed date 2025-12-23",
+     "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
+    }
+   ]
+  },
   "gate:ftc.has_tax": {
    "subject_sha": "4711934c03a420b8cdc7d17bbb49ab050ab0630944e87767658fef7d930ebdaa",
    "grandfathered": true,

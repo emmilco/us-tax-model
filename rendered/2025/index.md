@@ -29,7 +29,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | f8962.md | form | 165 |
 | f8995.md | form | 18 |
 | f8995a.md | form | 14 |
-| ftc.md | form | 17 |
+| ftc.md | form | 20 |
 | g28.md | form | 9 |
 | gift.md | form | 8 |
 | household.md | form | 64 |
@@ -48,13 +48,13 @@ Review these renderings line by line against the archived IRS sources in `source
 | s179.md | form | 40 |
 | s1a.md | form | 139 |
 | s2.md | form | 19 |
-| s3.md | form | 15 |
+| s3.md | form | 81 |
 | s8812.md | form | 92 |
 | sa.md | form | 66 |
 | sales.md | form | 29 |
 | sb.md | form | 24 |
-| sc.md | form | 152 |
-| scope.md | form | 5 |
+| sc.md | form | 154 |
+| scope.md | form | 4 |
 | scveh.md | form | 149 |
 | sd.md | form | 66 |
 | sdtw.md | worksheet | 75 |

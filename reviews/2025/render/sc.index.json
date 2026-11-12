@@ -5,7 +5,7 @@
  "base": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
  "head_rows": {
   "match / mismatch / unclear / missing": "71 / 4 / 0 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-12); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -40,9 +40,9 @@
   },
   {
    "key": "1 (sc.line1)",
-   "record": "ccb6ef563298e14ff768e93e52ec436781c149378851d46f820d3336b20c9201",
+   "record": "358e9ee4e16b1c29df7065a60c50e4f804598be3d8254f15825e1322ac371f25",
    "status": "MATCH",
-   "subject_key": "1145c94e4320ea57cba2af21fd3a1876f36eefd4ad11dc54a20cecf5a9973c83"
+   "subject_key": "06ecd23fcb40bb15e756ff9e29371dbde1ad86dace2b5679cb678144a83a4475"
   },
   {
    "key": "2 (sc.line2)",
@@ -52,9 +52,9 @@
   },
   {
    "key": "3 (sc.line3)",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "record": "358e9ee4e16b1c29df7065a60c50e4f804598be3d8254f15825e1322ac371f25",
    "status": "MATCH",
-   "subject_key": "86bf637c982fde7abbc85fd84baad16b34c4eeab6df8194e8e87c21aac685d53"
+   "subject_key": "f50695d3227d6946dae9299d995fcf7ea023dca58ea815026a6bc62acf5ecb04"
   },
   {
    "key": "4 (sc.line4)",
@@ -289,9 +289,9 @@
   },
   {
    "key": "5 (sc.ho_line5)",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "record": "358e9ee4e16b1c29df7065a60c50e4f804598be3d8254f15825e1322ac371f25",
    "status": "MATCH",
-   "subject_key": "0208e95102d9d498e1aebf66df26600c8a9205d082c273c72160a7d3d0d433c8"
+   "subject_key": "1f51c9394da226c1ac79f3089d23073e2c34e5c3a763491cc074d7c6a90a5696"
   },
   {
    "key": "30",
@@ -397,9 +397,9 @@
   },
   {
    "key": "3 (sc.f7206_line3)",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "record": "358e9ee4e16b1c29df7065a60c50e4f804598be3d8254f15825e1322ac371f25",
    "status": "MATCH",
-   "subject_key": "71c31173b61f58293fc8c98659d1771ebc71d40fb3d38a3b54eab81c9ed2c2c0"
+   "subject_key": "81ebb9024d80a2ccd908583f1470abdbb81aa282fe9e7103bc264c63f2ae1c65"
   },
   {
    "key": "4 (sc.f7206_line4)",
@@ -469,9 +469,9 @@
   "(screen) (sc.spouse_owned)": "50e12d17c0ac2c9df9a2a093f8ecbf7b395ecf60a6ae926d89771d9bbbdd97ee",
   "F": "64a4b664c7e9c5e00f93761d29f2348d5763768424d47ddb0889ba3785b68039",
   "(screen) (sc.special)": "b6054cf6d08de1448607610ff7324be5e50a13132e292f5f5a5fc5dce25a1c89",
-  "1 (sc.line1)": "9fae6f700a00928210f705396ff73c77d764798966bedf9605838efe8f67b144",
+  "1 (sc.line1)": "03fafaf7d73ee11afc19f908b4752e4efbd47f338b1296030ad290719a02ffde",
   "2 (sc.line2)": "a740eed3e32368c0a0975232c06d42726848f95d06bb1bddc037583ac496e10b",
-  "3 (sc.line3)": "31fb688586d9b8ed8d036e426c428a61910989c79b35af95efaefa6ad183e63d",
+  "3 (sc.line3)": "901981b52c046f1d113a01fd1f348031c9f8605b14edb29b8b3e04a2fa0b8cbb",
   "4 (sc.line4)": "7b85ae1e7bcd8268c76f2f79ad655b96c785b5c0fdd697ebc6f61267b02caa44",
   "5 (sc.line5)": "47740fe30007eb21334133749240887288f65f6e778209a425ecd20a93f45048",
   "6": "1f493718ee3436e80c160291430e5d61df692217454968863ed4adb17c6dad73",
@@ -510,7 +510,7 @@
   "3a": "f032c1aa616e675b295a4be9748270b4c92a3dca1786e32bc1cd1ed510b6c140",
   "4 (sc.ho_line4)": "c16a11b8934124f13c7226b8945dc16407c6b35e3e0612405a2ad90352ed45cd",
   "1 (sc.ho_line1)": "93604a87acc0da5e391576b70009e23bb7c8d01a2bc4e755bdb9b477e0d452c3",
-  "5 (sc.ho_line5)": "015b83e5804755ba3ec19d931afc13941a616ae47a0a2ba01a3207ba9aea621f",
+  "5 (sc.ho_line5)": "cb602b5fadf4ab9622c2be6cf3595323297913bad794fd1cdc11e50b80e0cc4e",
   "30": "2b2454406fde06a52b62715df8f45ee04691af33384cb10429efa6adda93e364",
   "31": "1422a43a9afabd8d0b571ce73dc64eb53b2e044a0ae273a7ae4fa0bcf181f6ac",
   "32": "b25d38d7fe4a3729fd765e7af7fd4e8de7a41893f83623de88158cddf985c07b",
@@ -528,7 +528,7 @@
   "(screen) (sc.hi_screen)": "a2dec570d2e040adde80c037b79193fe9da036b710becfa33502a71209a7c117",
   "1 (sc.f7206_line1)": "1bd2b7713de07addd04ce0b968a6901b8e3a8cfa661f5ec43ebd18c9b9e5849e",
   "2 (sc.f7206_line2)": "4a8f3bc38b51a3f22cb9c88722a242193ce322c350c38175024a52896c2c7433",
-  "3 (sc.f7206_line3)": "48a2fed1d6a66108dbca81b5e7afa798e7aa314e4119b8bb0cdc631f9831da5b",
+  "3 (sc.f7206_line3)": "accd9d31dbad60d075a17a4a36c8b7ece917cad2ca5821e35be4407180575662",
   "4 (sc.f7206_line4)": "7185c97a5e68441ae339f83b1976c871b54aeeb3bb98a6229b6488ded57bf79e",
   "5 (sc.f7206_line5)": "1e4d8104b52947e1b606366f9dbbf92ea57041036e8c26f0893f9a9a1b210069",
   "7 (sc.f7206_line7)": "aee5f8760211f4a11fe4265472f8269c62b21dbf6edc6557ff8892e40c64e608",

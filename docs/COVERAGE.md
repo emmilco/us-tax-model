@@ -14,21 +14,21 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 161 of the 169 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 181 of the 188 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **209 refusal gates**: 169 tax situations the tool does not prepare, grouped by topic below, and 40 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **228 refusal gates**: 188 tax situations the tool does not prepare, grouped by topic below, and 40 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
-- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (30)
+- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (47)
 - [Household and dependents](#household-and-dependents) (15)
 - [Interest and dividends](#interest-and-dividends) (4)
 - [Sales and capital gains](#sales-and-capital-gains) (5)
 - [Retirement distributions](#retirement-distributions) (7)
 - [Social Security](#social-security) (3)
-- [Self-employment](#self-employment) (26)
+- [Self-employment](#self-employment) (28)
 - [State and local tax refunds](#state-and-local-tax-refunds) (4)
 - [Other income and alimony](#other-income-and-alimony) (8)
 - [IRA contributions](#ira-contributions) (12)
@@ -288,6 +288,11 @@ The data holds **209 refusal gates**: 169 tax situations the tool does not prepa
   - *Not covered:* Form 1116. The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.
     *Source:* [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax
   - *Refused at:* `ftc.credit`
+- **`ftc.carryover_if_asked`**: Do you want to use a foreign tax credit left over from an earlier year?
+  - *The data asks or tests:* Whether a foreign tax credit carried from another year is claimed, asked only of a filer who has paid income tax to a foreign country or a U.S. territory, had territory income or owned part of a foreign corporation, or whose 2024 return includes a form besides Form 1040 and its schedules (false otherwise) (`choose`)
+  - *Not covered:* Form 1116. A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.
+    *Source:* [i1116] p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025"
+  - *Refused at:* `ftc.credit`, `scope.ready`
 
 *Taxes and credits*
 
@@ -356,23 +361,90 @@ The data holds **209 refusal gates**: 169 tax situations the tool does not prepa
   - *Not covered:* Form 1040 line 16 additional tax forms. Prepare the applicable additional tax or alternative worksheet.
     *Source:* [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
   - *Refused at:* `eic.step2_other`, `f1040.line16`, `scope.ready`
-- **`scope.credits`**: Do you want a credit the tool does not prepare, such as the adoption, clean vehicle, elderly or disabled, or general business credit?
-  - *The data asks or tests:* Do you want to claim any credit other than the following, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
-
-    - the foreign tax credit claimed without Form 1116
-    - the excess social security credit
-    - the child tax credit
-    - the credit for other dependents
-    - the additional child tax credit
-    - the earned income credit
-    - the credit for child and dependent care expenses (Form 2441)
-    - the retirement savings contributions credit (Form 8880)
-    - the residential energy credits (Form 5695)
-    - the net premium tax credit this tool figures on Form 8962 from your Forms 1095-A (Schedule 3 line 9)
-    - the education credits this tool figures on Form 8863 (the American opportunity and lifetime learning credits) (`input`)
-  - *Stops the return as:* Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)
-  - *Not covered:* Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31). Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits, the net premium tax credit figured on Form 8962 and the education credits (Form 8863) require forms outside this proof of concept.
-    *Source:* [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+- **`s3.adoption_if_any`**: Did an adoption become final in 2025, or did you pay adoption costs in 2025?
+  - *The data asks or tests:* Whether an adoption became final in 2025 or adoption expenses were paid in 2025, asked only with an adoption or adoption expenses in 2024 or 2025 (false without one) (`choose`)
+  - *Stops the return as:* Form 8839 (adoption credit)
+  - *Not covered:* Form 8839 (adoption credit). An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form 8839, with its refundable part on Form 1040 line 30), which this tool does not prepare.
+    *Source:* [i8839] p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements are true"
+  - *Refused at:* `f1040.line30`, `s3.line7`, `scope.ready`
+- **`s3.adoption_us_if_earlier`**: In 2024, did you pay costs toward adopting a U.S. child, where the adoption was not final by the end of 2024?
+  - *The data asks or tests:* Whether the child of an adoption paid toward in 2024 and not final at the end of 2024 was a U.S. child, asked only with such payments (false without them) (`choose`)
+  - *Not covered:* Form 8839 (adoption credit). Costs paid in 2024 toward adopting a U.S. child, where the adoption was not final at the end of 2024, are credited on the 2025 return (Form 8839), which this tool does not prepare.
+    *Source:* [i8839] p. 1, Purpose of Form, "2024 and the adoption wasn’t final at the end of 2024"; p. 3, Domestic Adoption, "the year after the year of the payment"
+  - *Refused at:* `f1040.line30`, `s3.line7`, `scope.ready`
+- **`s3.credit_bond`**: In 2025, did a bond you own, or a fund, give you a federal tax credit?
+  - *The data asks or tests:* For 2025, were you (or, on a joint return, your spouse) allowed a credit as the holder of a tax credit bond (a clean renewable energy bond, new clean renewable energy bond, qualified energy conservation bond, qualified zone academy bond, qualified school construction bond or build America bond), held by you or a nominee or through a fund or other pass-through entity, whether or not reported on Form 1097-BTC? (`input`)
+  - *Not covered:* Form 8912 (credit to holders of tax credit bonds). A tax credit from a bond, or one a fund passes on (Form 1097-BTC), is claimed on Form 8912, which this tool does not prepare.
+    *Source:* [i8912] p. 1, Who Can Claim the Credits, "can claim the credit by filing Form 8912 for each tax year in which it holds the bond on a credit allowance date"; p. 2, Line 1, "This amount is the total bond credits reported to you on Form(s) 1097-BTC"
+  - *Refused at:* `s3.line7`, `scope.ready`
+- **`s3.elderly_credit_if_asked`**: Is someone on the return 65 or older, or retired on permanent and total disability, and do you want the credit for the elderly or the disabled (Schedule R)?
+  - *The data asks or tests:* Whether the credit for the elderly or the disabled is wanted, asked only when someone on the return is 65 or older or retired on permanent and total disability (false otherwise) (`choose`)
+  - *Not covered:* Schedule R (credit for the elderly or the disabled). The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question.
+    *Source:* [i1040sr] p. 1, Qualified Individual, "You are a qualified individual for this credit if you are a U.S. citizen or resident alien"
+  - *Refused at:* `s3.line7`, `scope.ready`
+- **`s3.ev_dealer_if_ev`**: Did a dealer give you the clean vehicle credit for a vehicle you got in 2025?
+  - *The data asks or tests:* Whether a dealer took the clean vehicle credit off the price, asked only with a clean vehicle or home refueling property in 2025 (false without one) (`choose`)
+  - *Not covered:* Form 8936 (clean vehicle credits). A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed with this return; this tool does not prepare them.
+    *Source:* [i8936] p. 1, Purpose of Form, "You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer"
+  - *Refused at:* `s3.line7`, `scope.ready`
+- **`s3.ev_credit_if_bought`**: Do you want a clean vehicle credit for a vehicle you bought by September 30, 2025 and received in 2025?
+  - *The data asks or tests:* Whether a clean vehicle credit is wanted on this return, asked only for a vehicle bought and acquired before October 1, 2025 (false otherwise) (`choose`)
+  - *Not covered:* Form 8936 (clean vehicle credits). This tool does not prepare the clean vehicle credits (Form 8936). To go on without the credit, answer No to that question.
+    *Source:* [i8936] p. 1, Purpose of Form, "to figure the following credits for clean vehicles you placed in service during your tax year"
+  - *Refused at:* `s3.line7`, `scope.ready`
+- **`s3.ev_equipment_if_ev`**: Do you want the credit for home charging or fueling equipment installed in 2025 (Form 8911)?
+  - *The data asks or tests:* Whether the refueling property credit is wanted on this return, asked only with a clean vehicle or home refueling property in 2025 (false without one) (`choose`)
+  - *Not covered:* Form 8911 (alternative fuel vehicle refueling property credit). This tool does not prepare the credit for vehicle charging or fueling equipment (Form 8911). To go on without the credit, answer No to that question.
+    *Source:* [i8911] p. 1, Purpose of Form, "to figure your credit for alternative fuel vehicle refueling property you placed in service during your tax year"
+  - *Refused at:* `s3.line7`, `scope.ready`
+- **`s3.farmland_deferral_if_sold`**: Did you sell farmland in 2025 and choose to pay the tax on the gain in installments (Form 1062)?
+  - *The data asks or tests:* Whether the election to defer the tax on a sale of qualified farmland was made, asked only with a sale of farmland in 2025 (false without one) (`choose`)
+  - *Not covered:* Form 1062 (Schedule 3 line 13z). The election to pay the tax on a sale of farmland in installments (Form 1062) is reported on Schedule 3 line 13z, which this tool does not prepare.
+    *Source:* [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"
+  - *Refused at:* `s3.line14`, `scope.ready`
+- **`s3.section960c_if_foreign`**: Do you claim a refund under section 960(c)?
+  - *The data asks or tests:* Whether a credit under section 960(c) is claimed, asked only with foreign tax, territory income or a foreign corporation (false without) (`choose`)
+  - *Not covered:* Schedule 3 line 13z (section 960(c) credit). The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.
+    *Source:* [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"
+  - *Refused at:* `s3.line14`, `scope.ready`
+- **`s3.section965_if_foreign`**: Are you paying section 965 tax on a foreign company's earnings in installments?
+  - *The data asks or tests:* Whether part of a net 965 tax liability paid in installments remains to be paid, asked only with foreign tax, territory income or a foreign corporation (false without) (`choose`)
+  - *Not covered:* Schedule 3 line 13d (net 965 tax liability). A net 965 tax liability paid in installments is reported on Schedule 3 line 13d, which this tool does not prepare.
+    *Source:* [i1040gi] p. 117, Line 13d, "If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d"
+  - *Refused at:* `s3.line14`, `scope.ready`
+- **`s3.virgin_islands_if_foreign`**: Is part of your tax owed to the U.S. Virgin Islands (Form 8689)?
+  - *The data asks or tests:* Whether part of the tax is allocable to the U.S. Virgin Islands, asked only with foreign tax, territory income or a foreign corporation (false without) (`choose`)
+  - *Not covered:* Form 8689 (Schedule 3 line 13z). Tax allocable to the U.S. Virgin Islands (Form 8689) is reported on Schedule 3 line 13z, which this tool does not prepare.
+    *Source:* [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"
+  - *Refused at:* `s3.line14`, `scope.ready`
+- **`s3.kerosene_credit_if_kerosene`**: Do you want to claim back the federal fuel tax on kerosene used at home (Form 4136)?
+  - *The data asks or tests:* Whether the fuel tax credit for kerosene used at home is wanted, asked only with kerosene used at home (false without it) (`choose`)
+  - *Not covered:* Form 4136 (credit for federal tax paid on fuels). This tool does not prepare the credit for federal tax paid on fuels (Form 4136). To go on without the credit, answer No to that question.
+    *Source:* [i4136] p. 2, Part I—Information About Your Business, "If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking"
+  - *Refused at:* `s3.line12`, `scope.ready`
+- **`s3.mcc_if_interest`**: With home mortgage interest, do you have a mortgage credit certificate from a state or local housing agency?
+  - *The data asks or tests:* Whether a mortgage credit certificate was issued for the home loan, asked only when home mortgage interest is entered (false with none: the credit is a share of the interest paid) (`choose`)
+  - *Not covered:* Form 8396 (mortgage interest credit). A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A; this tool does not prepare it.
+    *Source:* [f8396] p. 2, Who Can Claim the Credit, "You can claim the credit only if you were issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency"; p. 2, Line 3, "you must reduce the amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3"
+  - *Refused at:* `s3.line7`, `scope.ready`
+- **`s3.prior_amt_if_forms`**: Does your 2024 federal return show alternative minimum tax?
+  - *The data asks or tests:* Whether the 2024 return shows an alternative minimum tax liability, asked only when the 2024 return includes a form besides Form 1040 and its schedules (false otherwise: the liability is figured on Form 6251) (`choose`)
+  - *Not covered:* Form 8801 (credit for prior year minimum tax). Alternative minimum tax on your 2024 return can give a credit for 2025 (Form 8801), which this tool does not prepare.
+    *Source:* [i8801] p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"
+  - *Refused at:* `s3.line7`, `scope.ready`
+- **`s3.prior_forms_if_forms`**: Does your 2024 federal return include Form 1116, 3800, 8396, 8801, 8582-CR, 8839, 8859 or 8912?
+  - *The data asks or tests:* Whether the 2024 return includes a form that can carry a credit into 2025, asked only when the 2024 return includes a form besides Form 1040 and its schedules (false otherwise) (`choose`)
+  - *Not covered:* Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912). A credit carried over from an earlier year is outside this tool.
+    *Source:* [i3800] p. 3, Carryback and Carryforward of Unused Credit, "unused general business credits may be carried back 1 year and carried forward 20 years"; f8396 p. 2, Part II—Mortgage Interest Credit Carryforward to 2026, "you may have an unused credit to carry forward to the next 3 tax years"; i8801 p. 1, Who Should File, "A credit carryforward to 2025 (on 2024 Form 8801, line 26)"; f8834 p. 2, Line 1, "Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR"; i8839 p. 1, Purpose of Form, "You have a carryforward of an adoption credit from 2024"; f8859 p. 1, Purpose of Form, "to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024"; i8912 p. 3, Line 12, "you may carry the unused portion of the credit to the next tax year"
+  - *Refused at:* `s3.line7`, `scope.ready`
+- **`s3.repaid_income`**: In 2025, did you pay back more than $3,000 that you had reported as income in an earlier year?
+  - *The data asks or tests:* In 2025, did you (or, on a joint return, your spouse) repay more than $3,000 in total that you had included in income in an earlier year because it appeared you had an unrestricted right to it? (`input`)
+  - *Not covered:* Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16). A repayment of more than $3,000 of income reported in an earlier year gives a choice between a deduction and a credit (Schedule 3 line 13b), which this tool does not figure.
+    *Source:* [p525] p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right" and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income"
+  - *Refused at:* `s3.line14`, `scope.ready`
+- **`s3.other_credit`**: Is any of the credits, payments or carryovers above present? The credit limit worksheets of the tool's own credits then cannot be completed.
+  - *The data asks or tests:* A credit or payment of Schedule 3 this tool does not prepare is present or wanted: any credit, payment or carryover this tool does not prepare (`choose`)
+  - *Stops the return as:* A credit limit worksheet line that adds credits this tool does not prepare
   - *Not covered:* Residential Clean Energy Credit Limit Worksheet, line 2 (Schedule 3 lines 6c, 6d, 6f, 6g, 6h, 6l and 6m). Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.
     *Source:* [i5695] p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 2
   - *Not covered:* Energy Efficient Home Improvement Credit Limit Worksheet, line 2 (Schedule 3 lines 6d and 6l). Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.
@@ -383,8 +455,7 @@ The data holds **209 refusal gates**: 169 tax situations the tool does not prepa
     *Source:* [i1040s8812] p. 4, Credit Limit Worksheet A, line 2
   - *Not covered:* Credit Limit Worksheet B (Forms 8396, 8839, 8859). The credits that call for Credit Limit Worksheet B are outside this tool.
     *Source:* [i1040s8812] p. 4, Credit Limit Worksheet A, "Complete Credit Limit Worksheet B only if you meet all the following"
-  - *Refused at:* `f1040.line30`, `f5695.rce_ws2`, `f5695.eehi_ws2`, `f8863.clw5`, `s3.line8`, `s8812.clw_a2`, `s8812.clw_a4`, `scope.ready`
-  - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
+  - *Refused at:* `f5695.rce_ws2`, `f5695.eehi_ws2`, `f8863.clw5`, `s8812.clw_a2`, `s8812.clw_a4`
 - **`f8960.unsupported`**: Do you have net investment income or adjustments the tool does not take for the Net Investment Income Tax: annuities, rentals, royalties, a business or pass-through, CFC or PFIC holdings, a section 1411 net operating loss, excluded savings bond interest, or another Form 8960 adjustment?
   - *The data asks or tests:* Do you (or, on a joint return, your spouse) have any of the following?
 
@@ -644,6 +715,16 @@ The data holds **209 refusal gates**: 169 tax situations the tool does not prepa
   - *The data asks or tests:* Something on this Schedule C is outside this tool (`test`)
   - *Not covered:* Schedule C items outside this tool. Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool.
     *Source:* [i1040sc] pp. 2-15, the items named in the screens of this Schedule C
+  - *Refused at:* `sc.line1`
+- **`sc.business_credit`**: Does your business claim a business tax credit (Form 3800)?
+  - *The data asks or tests:* Does this business claim a general business credit for 2025 (Form 3800), other than the employment credits asked about with the special items of this Schedule C? (`input`)
+  - *Not covered:* Form 3800 (general business credit). Business credits (Form 3800) are outside this tool.
+    *Source:* [i1040gi] p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334"
+  - *Refused at:* `sc.line1`
+- **`sc.fuel_credit`**: Does your business want the federal fuel tax back for fuel used off the road (Form 4136)?
+  - *The data asks or tests:* Does this business claim a credit for federal excise tax paid on fuel used for a nontaxable purpose, such as an off-highway business use (Form 4136)? (`input`)
+  - *Not covered:* Form 4136 (credit for federal tax paid on fuels). The credit for federal tax paid on fuels (Form 4136) is outside this tool.
+    *Source:* [i1040gi] p. 117, Line 12, "Attach Form 4136"
   - *Refused at:* `sc.line1`
 - **`sc.inventory_other`**: Is inventory valued other than at cost or lower of cost or market, or did its valuation change during the year?
   - *The data asks or tests:* Method used to value closing inventory: other than cost or lower of cost or market, or a change between opening and closing inventory (line 34)? (`input`)

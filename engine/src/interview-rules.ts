@@ -664,7 +664,7 @@ function selfTest(): number {
     ["an input of an entry the choice does not create", (c) => { person(c)[0]!.records!.push(record("person[spouse].role", "spouse")); }, /choice \["taxpayer"\]: records person\[spouse\]\.role, an input of an entry this choice does not create/],
     ["an input of another collection's entry", (c) => { person(c)[0]!.records!.push(record("dependent[taxpayer].lawful", true)); }, /records dependent\[taxpayer\]\.lawful, which is neither an input of an entry this choice creates nor on the allow-list/],
     ["an input of an entry nested under the choice's entry", (c) => { person(c)[0]!.records!.push(record("person[taxpayer].w2[a].box1", 0)); }, /records person\[taxpayer\]\.w2\[a\]\.box1, which is neither/],
-    ["a top-level input not on the allow-list", (c) => { person(c)[0]!.records!.push(record("scope.credits", false)); }, /records scope\.credits, which is neither an input of an entry this choice creates nor on the allow-list; the interview sets no other input/],
+    ["a top-level input not on the allow-list", (c) => { person(c)[0]!.records!.push(record("scope.other_line16", false)); }, /records scope\.other_line16, which is neither an input of an entry this choice creates nor on the allow-list; the interview sets no other input/],
     ["the allow-listed input at another value", (c) => { person(c)[1]!.records!.find((r) => r.input === "f1040.status")!.value = "single"; }, /records f1040\.status = "single"; the allow-list permits it only as "mfj"/],
     ["the allow-listed input by another choice", (c) => { person(c)[0]!.records!.push(record("f1040.status", "mfj")); }, /choice \["taxpayer"\]: records f1040\.status = "mfj"; the allow-list permits it only as "mfj", recorded by the choice \["taxpayer","spouse"\] of \$person/],
     ["a value the input cannot take", (c) => { person(c)[0]!.records![0]!.value = "banana"; }, /records person\[taxpayer\]\.role = "banana", a value this Enum\(person_role\) input cannot take/],
@@ -709,9 +709,9 @@ function selfTest(): number {
   assert.equal(replayedState(config, [together, justMe, status, together, justMe]).inputs["f1040.status"], undefined, "and giving that choice up withdraws it: the status is asked again");
   assert.equal(onlyGiven(config, [together, justMe, status, together, justMe]), null);
   // Replay's records are the bank's: an event with a record the bank does not declare, or without one it declares, is flagged.
-  assert.match(onlyGiven(config, [{ ...together, records: [...couple.records!, record("scope.credits", false)] }])!, /carries records the question bank does not declare/);
+  assert.match(onlyGiven(config, [{ ...together, records: [...couple.records!, record("scope.other_line16", false)] }])!, /carries records the question bank does not declare/);
   assert.match(onlyGiven(config, [{ input: "$person", value: ["taxpayer", "spouse"] }])!, /carries records the question bank does not declare for it \(none; declared: /);
-  assert.match(onlyGiven(config, [{ input: "scope.credits", value: false, records: [record("f1040.status", "mfj")] }])!, /carries records the question bank does not declare/);
+  assert.match(onlyGiven(config, [{ input: "scope.other_line16", value: false, records: [record("f1040.status", "mfj")] }])!, /carries records the question bank does not declare/);
   // A log answered under the earlier questions (the roster, the status and each role as separate answers, no records)
   // replays to the same inputs as today's one answer, and with the status or a role still unanswered it stays answerable.
   const old: Event[] = [{ input: "$person", value: ["taxpayer", "spouse"] }, { input: "f1040.status", value: "mfj" }, { input: "person[spouse].role", value: "spouse" }, { input: "person[taxpayer].role", value: "taxpayer" }];

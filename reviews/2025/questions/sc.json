@@ -48,6 +48,49 @@
     }
    ]
   },
+  "sc.business_credit": {
+   "subject_sha": "477976bdba9face37fe3379f3f6d4d13505bdbb069feadb12c697c60d6a2744a",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose only business credit is tied to employees (for example a work opportunity credit) is told by the label to leave out 'the employment credits asked about with the special items of this Schedule C', but told by the help to 'Count any of them: a credit tied to employees'.",
+       "source_text": "i1040gi p. 116, Line 6a: \"The general business credit consists of a number of credits that usually apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental property. See Form 3800 or Pub. 334.\"",
+       "why": "The text treats the general business credit as one group of credits on Form 3800 and carves out no employment credits, so the label and the help point to opposite answers for this filer. Reading the label gives no and reading the help gives yes, and only the yes triggers the Form 3800 refusal on sc.line1.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5fc17ab291ff76ddc1f9d5e2cf14106f02e32c29534fe264856eb4dff77071fe",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.09048,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/sc.business_credit.477976bdba9f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      116
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 116, Lines 6a Through 6z, \"See Form 3800 or Pub. 334\"",
+      "p. 116, Lines 6a Through 6z, \"The general business credit consists of a number of credits that usually apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental property\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
   "sc.f7206_line1": {
    "subject_sha": "c777293e550deb2289c81d26e7e42bb372f38052831ead15d5ed51bd15019619",
    "samples": [
@@ -128,6 +171,65 @@
       2
      ],
      "cols_sha256": "5bfa308e7e4634d4a0162d76b4af6a4182b8539a390109360875303222231cfe"
+    }
+   ]
+  },
+  "sc.fuel_credit": {
+   "subject_sha": "a667767489dedd5605cb4653867c0ae1fecaf21d39f81579dd486b78ad21e42b",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A business claims the Form 4136 credit for a nontaxable use that is not off-road use, such as taxable fuel it exported, and so truthfully answers no to a question about fuel used off the road in equipment or a boat.",
+       "source_text": "i1040gi p. 117, Line 12: \"Enter any credit for federal excise taxes paid on fuels that are ultimately used for a nontaxable purpose (for example, an off-highway business use). Attach Form 4136.\"; i4136 p. 2: \"Exported taxable fuel. The claim rates for exported taxable fuel are listed on lines 1d, 2c, 3e, 4d, 14b, 16a, and 16b.\"",
+       "why": "The tax text gives off-highway business use only as one example of a nontaxable purpose, but the question makes off-road use the whole test. A filer claiming Form 4136 for exported fuel or another type of use answers no, and the refusal that should fire for any Form 4136 claim does not.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ed4bc1e1697300dced91827873e252794632b5107dda3cb5d9a4f34eded2049d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.08535200000000001,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/sc.fuel_credit.a667767489de.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      117
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 117, Line 12, \"Attach Form 4136\"",
+      "p. 117, Line 12, \"Enter any credit for federal excise taxes paid on fuels that are ultimately used for a nontaxable purpose (for example, an off-highway business use)\"; , Part I—Information About Your Business, \"You must have owned or operated a business and conducted a business activity with qualifying use of qualifying fuels\""
+     ],
+     "cols_pages": [
+      117
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i4136",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "f2338a673161989fd24a575b29bd75077fda30429f135592b78c03b3bbdbf571",
+     "pages": [
+      2
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "031aac61c09cba6aadf939df9388eb5665127f2fde52f4b9a2a1bde53ed84ab5"
     }
    ]
   },
@@ -498,32 +600,32 @@
    ]
   },
   "sc.line1": {
-   "subject_sha": "f798335179734dd48b9cbb9f06cef48a91d5ea868bf63480d13434e81d8f4601",
+   "subject_sha": "d36af770595be5311e24a1ac9ce5ce5ee7049fa3300723390f751c240ee21cdb",
    "samples": [
     {
      "verdict": "NARROW",
      "findings": [
       {
        "kind": "NARROW",
-       "situation": "The filer is a statutory employee whose Schedule C covers income from a Form W-2 with the 'Statutory employee' box checked. Reading 'gross receipts or sales of this business,' they would not enter their W-2 box 1 wages.",
-       "source_text": "i1040sc p. 5, Statutory employees: \"Enter your statutory employee income from box 1 of Form W-2 on line 1 of Schedule C and check the box on that line.\" f1040sc line 1: \"check the box if this income was reported to you on Form W-2 and the 'Statutory employee' box on that form was checked\"",
-       "why": "The question names Forms 1099-NEC, 1099-K and other Forms 1099 but never mentions statutory employee wages from Form W-2. A truthful filer would leave out an amount that line 1, and so line 3, must include.",
+       "situation": "A statutory employee (Form W-2 with the box 13 'Statutory employee' box checked) reports that income on this Schedule C, but the question only asks for gross receipts or sales and amounts on Forms 1099.",
+       "source_text": "i1040sc (2025) p. 5, Line 1, Statutory employees: \"Enter your statutory employee income from box 1 of Form W-2 on line 1 of Schedule C and check the box on that line.\"",
+       "why": "The wording names Forms 1099-NEC and 1099-K but never W-2 box 1 statutory employee wages, so an ordinary filer would not think of W-2 wages as 'gross receipts or sales' and could answer zero or leave them out. Line 1, and so line 3, would then be understated.",
        "bound": ""
       },
       {
        "kind": "WIDE",
-       "situation": "Spouses who elected qualified joint venture treatment each file a separate Schedule C. Asked for the 'gross receipts or sales of this business,' a spouse would enter the business's total receipts instead of their own share.",
-       "source_text": "i1040sc p. 3, Making the election: \"divide all items of income, gain, loss, deduction, and credit attributable to the business between you and your spouse based on your respective interests in the business... Enter your share of the applicable income, deduction, or (loss) on the appropriate lines of your separate Schedule C\"",
-       "why": "The question asks for receipts 'of this business' without limiting them to the filer's share. In a qualified joint venture, both spouses would report the full receipts, so they would be counted twice across the two Schedules C.",
+       "situation": "Spouses who elected qualified joint venture treatment each file a separate Schedule C, but the question asks for the gross receipts 'of this business', which a filer would answer with the whole business's receipts.",
+       "source_text": "i1040sc (2025) p. 3, Making the election: \"divide all items of income, gain, loss, deduction, and credit attributable to the business between you and your spouse based on your respective interests in the business... Enter your share of the applicable income, deduction, or (loss) on the appropriate lines of your separate Schedule C\"",
+       "why": "The question says \"Gross receipts or sales of this business for 2025\" with no limit to the filer's own share, so a qualified joint venture spouse would enter 100% of the receipts. Line 1 on each spouse's schedule must carry only that spouse's share, so the receipts would be overstated or counted twice.",
        "bound": ""
       }
      ],
-     "prompt_sha": "2605660472312674f91b0c9e769a7b50f049fd92a95b761dc749ca7855f97202",
+     "prompt_sha": "844c760c639891a64edd549cd376c9bf18c8cec37eb13ba6ec8a694c2be21a20",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
-     "model": "claude-opus-5-5",
-     "cost": 0.167904,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/sc.line1.f79833517973.1.response.txt"
+     "model": "claude-fable-5-2",
+     "cost": 0.373408,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/sc.line1.d36af770595b.1.response.txt"
     }
    ],
    "type": "NonNegDollars",
@@ -570,6 +672,24 @@
       15
      ],
      "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      116,
+      117
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 116, Lines 6a Through 6z, \"See Form 3800 or Pub. 334\"",
+      "p. 117, Line 12, \"Attach Form 4136\""
+     ],
+     "cols_pages": [
+      117
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
     },
     {
      "doc": "f1040sc",

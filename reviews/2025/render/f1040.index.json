@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
  "head_rows": {
-  "line-scoped reviews": "4 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "5 (latest 2026-11-12); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -312,9 +312,9 @@
   },
   {
    "key": "30",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "fe652e56ac94a2053d575d852a028d157e2a1a60f4fbfe98c3b728c16230e090",
    "status": "MATCH",
-   "subject_key": "0ec05bc32870b6f2677cc9e91a4b98a39c873e6dea58078be55a6fd818670215"
+   "subject_key": "a77c5f400120c8a43715ce63bb349a77994c1ca35516d6d143d98d0459b55eec"
   },
   {
    "key": "31",
@@ -324,9 +324,9 @@
   },
   {
    "key": "32",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "fe652e56ac94a2053d575d852a028d157e2a1a60f4fbfe98c3b728c16230e090",
    "status": "MATCH",
-   "subject_key": "dc36bf810bf2133bc5668e4eb9e29d140fdb7186a8d35ff5aea96d81d2a38dc5"
+   "subject_key": "d267e224a4445b4c3500dfac57edf6e8b330e5b0794b6eee71e01e83a88feb36"
   },
   {
    "key": "33",
@@ -410,9 +410,9 @@
   "28": "befadb1ce960fdf4051e3f7b79c62fd5df9916a044eda34cdf2977d44bd2284a",
   "28 (box)": "7cc8ac2cd5fde24fad5aad84211fc7674cd733a3e4c90283629f7948c48ef531",
   "29": "38e40ee5db57acada98d3feb21e4384845e3fb65c3dec8bf394585a59d4c1a7d",
-  "30": "d802ea3dee0e6e9c79a240718ede75cc55115960b5dac897ed1b9c9ebe0bea3d",
+  "30": "249d7cdd9fea39416d33a7f03f19eb2fbd5310daa641b1028ccbc62ffddc411b",
   "31": "c5eb806c50ca7c3b98c519785b5064acc52416a647c6845dc92cb5e3404dbe39",
-  "32": "67339e596a308c76e88e5c5056da589a754af3f2a18b94ccb804beca885a3f36",
+  "32": "57b59116f04bb5053efae6dad7b2127f65a81a3238bff241de064cc28092f6d8",
   "33": "f0d2a55458883633d4ffc2f57335aa3f75aef0f0789af0aac0d015646a91dfdd",
   "34": "dcd0891ec7d863908be0d9c6a8fbfc6598cf920499c165c8e4df25452034f1df",
   "35a": "2cb7e8d0b935bf4109c4af7779143617535183fe71b5344e65c4663a99b88a89",
