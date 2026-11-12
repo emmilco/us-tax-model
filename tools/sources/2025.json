@@ -2097,5 +2097,196 @@
       "doc": "rrb1099r",
       "page": 1
     }
+  },
+  {
+    "id": "f3800",
+    "title": "General Business Credit",
+    "designation": "Form 3800",
+    "url": "https://www.irs.gov/pub/irs-pdf/f3800.pdf",
+    "form_purpose": {
+      "text": "You must file Form 3800 and the credit source form(s) to claim any of the general business credits.",
+      "doc": "i3800",
+      "page": 2
+    }
+  },
+  {
+    "id": "i3800",
+    "title": "Instructions for Form 3800",
+    "designation": "Instructions for Form 3800",
+    "url": "https://www.irs.gov/pub/irs-pdf/i3800.pdf"
+  },
+  {
+    "id": "f8396",
+    "title": "Mortgage Interest Credit",
+    "designation": "Form 8396",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8396.pdf",
+    "form_purpose": {
+      "text": "Use Form 8396 to figure the mortgage interest credit for 2025 and any credit carryforward to 2026.",
+      "doc": "f8396",
+      "page": 2
+    }
+  },
+  {
+    "id": "f8801",
+    "title": "Credit for Prior Year Minimum Tax— Individuals, Estates, and Trusts",
+    "designation": "Form 8801",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8801.pdf",
+    "form_purpose": {
+      "text": "Use Form 8801 if you are an individual, estate, or trust to figure the minimum tax credit, if any, for alternative minimum tax (AMT) you incurred in prior tax years and to figure any credit carryforward to 2026.",
+      "doc": "i8801",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8801",
+    "title": "Instructions for Form 8801",
+    "designation": "Instructions for Form 8801",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8801.pdf"
+  },
+  {
+    "id": "f8834",
+    "title": "Qualified Electric Vehicle Credit",
+    "designation": "Form 8834",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8834.pdf",
+    "form_purpose": {
+      "text": "Use Form 8834 to claim any qualified electric vehicle passive activity credit allowed for the current tax year.",
+      "doc": "f8834",
+      "page": 2
+    }
+  },
+  {
+    "id": "f8839",
+    "title": "Qualified Adoption Expenses",
+    "designation": "Form 8839",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8839.pdf",
+    "form_purpose": {
+      "text": "Use Form 8839 to figure your adoption credit and any employer-provided adoption benefits you can exclude from your income.",
+      "doc": "i8839",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8839",
+    "title": "Instructions for Form 8839",
+    "designation": "Instructions for Form 8839",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8839.pdf"
+  },
+  {
+    "id": "f8859",
+    "title": "Carryforward of the District of Columbia First-Time Homebuyer Credit",
+    "designation": "Form 8859",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8859.pdf",
+    "form_purpose": {
+      "text": "Use Form 8859 to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024.",
+      "doc": "f8859",
+      "page": 1
+    }
+  },
+  {
+    "id": "f8911",
+    "title": "Alternative Fuel Vehicle Refueling Property Credit",
+    "designation": "Form 8911",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8911.pdf",
+    "form_purpose": {
+      "text": "Use Form 8911 and Schedule A (Form 8911) to figure your credit for alternative fuel vehicle refueling property you placed in service during your tax year.",
+      "doc": "i8911",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8911",
+    "title": "Instructions for Form 8911",
+    "designation": "Instructions for Form 8911",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8911.pdf"
+  },
+  {
+    "id": "f8912",
+    "title": "Credit to Holders of Tax Credit Bonds",
+    "designation": "Form 8912",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8912.pdf",
+    "form_purpose": {
+      "text": "Use Form 8912 to claim the credit for the following tax credit bonds. • Clean renewable energy bond (CREB). • New clean renewable energy bond (NCREB). • Qualified energy conservation bond (QECB). • Qualified zone academy bond (QZAB). • Qualified school construction bond (QSCB). • Build America bond (BAB).",
+      "doc": "i8912",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8912",
+    "title": "Instructions for Form 8912",
+    "designation": "Instructions for Form 8912",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8912.pdf"
+  },
+  {
+    "id": "f8936",
+    "title": "Clean Vehicle Credits",
+    "designation": "Form 8936",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8936.pdf",
+    "form_purpose": {
+      "text": "Use Form 8936 and Schedule A (Form 8936) to figure the following credits for clean vehicles you placed in service during your tax year. • New clean vehicle credit. • Previously owned clean vehicle credit. • Qualified commercial clean vehicle credit.",
+      "doc": "i8936",
+      "page": 1
+    }
+  },
+  {
+    "id": "f8936sa",
+    "title": "Clean Vehicle Credit Amount",
+    "designation": "Schedule A (Form 8936)",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8936sa.pdf",
+    "form_purpose": {
+      "text": "Complete a separate Schedule A (Form 8936) for each clean vehicle placed in service during the tax year.",
+      "doc": "f8936sa",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8936",
+    "title": "Instructions for Form 8936",
+    "designation": "Instructions for Form 8936",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8936.pdf"
+  },
+  {
+    "id": "f1040sr",
+    "title": "Credit for the Elderly or the Disabled",
+    "designation": "Schedule R (Form 1040)",
+    "url": "https://www.irs.gov/pub/irs-prior/f1040sr--2025.pdf",
+    "form_purpose": {
+      "text": "Use Schedule R (Form 1040) to figure the credit for the elderly or the disabled.",
+      "doc": "i1040sr",
+      "page": 1
+    }
+  },
+  {
+    "id": "i1040sr",
+    "title": "Instructions for Schedule R (Form 1040)",
+    "designation": "Instructions for Schedule R (Form 1040)",
+    "url": "https://www.irs.gov/pub/irs-prior/i1040sr--2025.pdf"
+  },
+  {
+    "id": "f5498sa",
+    "title": "HSA, Archer MSA, or Medicare Advantage MSA Information",
+    "designation": "Form 5498-SA",
+    "url": "https://www.irs.gov/pub/irs-prior/f5498sa--2025.pdf",
+    "form_purpose": {
+      "text": "This information is submitted to the IRS by the trustee of your health savings account (HSA), Archer medical savings account (MSA), or Medicare Advantage MSA (MA MSA).",
+      "doc": "f5498sa",
+      "page": 3
+    }
+  },
+  {
+    "id": "i1099sa",
+    "title": "Instructions for Forms 1099-SA and 5498-SA",
+    "designation": "Instructions for Forms 1099-SA and 5498-SA",
+    "url": "https://www.irs.gov/pub/irs-prior/i1099sa--2025.pdf"
+  },
+  {
+    "id": "f8911sa",
+    "title": "Alternative Fuel Vehicle Refueling Property",
+    "designation": "Schedule A (Form 8911)",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8911sa.pdf",
+    "form_purpose": {
+      "text": "Complete a separate Schedule A (Form 8911) for each qualified alternative fuel vehicle refueling property placed in service during the tax year.",
+      "doc": "f8911sa",
+      "page": 1
+    }
   }
 ]
