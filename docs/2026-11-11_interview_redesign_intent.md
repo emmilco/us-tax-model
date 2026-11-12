@@ -32,27 +32,31 @@ weakening what the tool guarantees about a completed return.
    through some plain question. A situation that no plain question leads to is not dropped: it stays as its own
    separate question, however rare.
 
-3. **Measures of success.** Two, reported together:
-   - the words a typical filer has to read to finish;
-   - a reader test: a person, or a model playing a person who has only the documents, answers every question, and the
-     questions they cannot answer or answer wrongly are counted.
-   The number of screens is not the measure.
+3. **Measures of success.** Three, reported together:
+   - the words a typical filer has to read to finish (reports/2025/interview_words.md);
+   - a coverage check: every situation the design's coverage tables name is written as a set of answers with the end
+     it must reach (a question asked, a refusal, values recorded), and a check with no model walks the built question
+     tree and confirms each one. The structure of the tree is what must be right, and this walks it in the abstract;
+   - the owner's own walk.
+   The number of screens is not the measure. A reader test by a model (decision 6) was tried and dropped.
 
 4. **Reach into the model.** New gating questions and regrouped catch-alls are in scope, with their fixtures and
    reviews. Removing inputs the model does not need a filer to supply (such as `person.role`, which the roster choice
    already fixes) is potentially in scope, to be decided case by case.
 
-5. **A slice first.** The redesign is proven on a slice, taken all the way to a reader test, before the rest of the
+5. **A slice first.** The redesign is proven on a slice, taken all the way to its measures and the owner's walk, before the rest of the
    interview is touched. The slice: the opening (who is on the return, the filing status, the role question); one
    scope screen taken apart completely, `scope.credits`; and one ordinary topic end to end, health savings accounts
    (Form 8889: a roster, about 18 questions, a catch-all, per-person framing). The other three scope screens and the
    order of the interview as a whole are not in the slice.
 
-6. **The reader test.** Written personas, each a description of a life and the documents held, with the right
-   outcome known; a model plays each persona and answers one question at a time knowing only that persona's facts, or
-   says it cannot tell; the questions it cannot answer or answers wrongly are counted. The owner reads a sample of the
-   transcripts to judge whether it behaves like a person, and his own walk is the check on it. Personas are invented:
-   no real return or personal document is used.
+6. **The reader test: tried, and dropped as a measure (owner, 2026-11-11).** Invented personas, each a life and the
+   documents held, with the right outcome known; a model played each persona and answered one question at a time, or
+   said it could not tell. On today's interview it answered 96 percent of 510 questions correctly and none wrongly:
+   it passed the interview the owner found unanswerable, because it knows tax vocabulary whatever the persona says and
+   does not feel length, order or repetition. The owner's judgment: pretending to be a poor reader is not a realistic
+   task for a model, nor a meaningful signal. Its code, personas and results are not on main; they stay on the branch
+   `worktree-agent-aba087062001bfbeb`. The coverage check of decision 3 takes its place.
 
 7. **On hold until the slice is judged:** the remaining interview-rules rewrites (T-276) and the umbrella gates U3,
    U4 and U1 (T-265), since restructuring the catch-alls changes the gates they touch.
@@ -91,7 +95,7 @@ coverage check.
 ## Tensions the plan must handle
 
 - **A plain question is easier to answer wrongly.** A filer who does not recognize their situation under a plain word
-  says No. Decision 2 answers this structurally (nothing is dropped), and the reader test measures it. When a review
+  says No. Decision 2 answers this structurally (nothing is dropped), and the coverage check verifies it for the situations the design names. When a review
   finds a way to answer a top question No wrongly, the remedy is a child question or a separate question, not a longer
   top question: the umbrella question `sb.foreign_any` grew from a short question to about 640 words by the other
   remedy.
