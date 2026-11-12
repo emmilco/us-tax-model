@@ -280,6 +280,90 @@ The CLI tests (`engine/src/integration.ts`, `test-integration` in `check-all`) c
 help requests, corrections, early refusals, invalid inputs, the refusal to overwrite a
 log and the profile-mismatch error.
 
+## Coverage rows
+
+`2025/coverage/` lists the situations the interview is known to handle, one file per part of
+the interview (`opening.yaml`, `credits.yaml`, `hsa.yaml`). A row names a situation as the
+answers a filer in it gives and the end the interview must come to, and `interview-coverage`
+(`engine/src/interview-coverage.ts`, in `check-all`) walks the built interview with those
+answers, in the interview's own order, and fails naming the row when the tree does not end
+there. No model is called. `reports/2025/interview_coverage.md` lists every row with its
+situation, its end in the interview's own words and its path, and the background return;
+`interview-coverage --write` writes it and the check fails when it is not current (it
+quotes question and refusal wording, so it is rewritten after a wording change).
+
+```yaml
+tax_year: 2025
+part: The opening                 # the report's heading
+profile: full                     # full or ny; a row may give its own
+sets:                             # optional: named answers several rows share
+  one_person:
+    says: One person on the return, who takes the filing status single.
+    answers:
+      f1040.status: single
+rows:
+  - id: opening.single_but_married
+    design: C.1 row 9 (married, picks "None of these")
+    situation: A married person files alone and takes the status of an unmarried person.
+    uses: [one_person]
+    answers:
+      household.married: true
+    expect:
+      refused: household.filing_status_conflict
+```
+
+A row has an `id` (lower case, no tax year, unique across the files), the `design` row it
+comes from, the `situation` in one plain sentence, its `answers` and one expected end.
+Answers are keyed by the question's exact id, as the answer log has it and the page shows
+it (`person[taxpayer].age65`, `$f8889@person[taxpayer]`), with the log's values. A row
+written against the interview as it stands before a redesigned part lands says so in
+`replace_when`, and the report marks it. The schema is `coverageFile` in
+`schema/data.schema.json`.
+
+| `expect` | The row passes when | The walk stops |
+|---|---|---|
+| `asks: <question>` | that question is the interview's next question | there |
+| `refused: <gate>` | the return is refused at that gate (the refusal's `gate`), on an answer the row gave | at the first refusal |
+| `records: {<input>: <value>}` | once the row's own answers are given, each input holds the value without having been asked (an answer a choice records) | when the row's own answers are given |
+| `proceeds: {<input>: <value>}` | the return is completed and each input holds the value, given by the row or recorded | at completion |
+| `not_asked: [<question>]`, beside one of the above | none of them was asked before the walk stopped | |
+
+The walk reads each next question from `interviewView` and answers through `applyAnswer`,
+as the page and the CLI do, so an answer the interview would reject is rejected and what
+an answer records is recorded. It ends where a filer's does: at the first refusal (the
+interview then asks nothing more; a refusal met while questions are pending is the one the
+filer is shown first) or at completion.
+
+A question the row does not answer is answered by the background return: the minimal
+return of `interview-rules` (every question answered no, zero, none or the first option;
+the other option where that one refuses), walked once per profile. The rules are strict:
+
+- The background answers only the kinds of question it is itself asked (the same input
+  template, for any person or entry). A question the row's answers opened, which a filer
+  with nothing to report never meets, must be answered by the row; otherwise the row fails,
+  and the failure names the answer that opened the question. A question added beneath an
+  existing one therefore fails the rows whose path passes it until each says what its
+  filer answers.
+- The background never brings about a row's end. A refusal met on a background answer
+  fails the row, as does an expected value the background supplied. Where a refusal waits
+  on an answer the row would otherwise leave to the background, the row states that answer.
+- An answer of a set counts as the row's own, and a row's own answer replaces a set's.
+- Every answer of a row must be asked before its walk stops, and every answer of a set in
+  the walk of at least one row that uses it: an answer never asked is a stale row. An id
+  that names no question, input, gate or set fails without a walk.
+
+The check tests the structure, given the answers: that a filer who answers so is led where
+the row says. Whether a filer in the situation would give those answers is a matter of the
+questions' wording, which it does not judge. A row cannot name a refusal's wording, a
+computed line's value, "either of two gates" (one row per path), or a state only typed-in
+inputs produce.
+
+`interview-coverage --rows FILE` checks other row files in place of the year's (the report
+is then neither checked nor written). `interview-coverage --self-test` (in `check-all`)
+plants each kind of failure on the built interview: a wrong end, an unanswered question, a
+stale answer, an id that does not exist, an end the background brings about, a rejected
+answer, recorded answers, and a file's repeated id, unused set and stale set answer.
+
 ## Question data
 
 Every profile asks its questions from one bank, `2025/questions.yaml`: each entry gives

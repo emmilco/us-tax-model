@@ -18,6 +18,9 @@
 //                                                  order can reach, and in an order by expected pruning
 //   node engine/dist/main.js interview-words [--write]
 //                                                  the words a filer is shown per return
+//   node engine/dist/main.js interview-coverage [--write] [--rows FILE]
+//                                                  each row of interview/<year>/coverage/ walked through the built
+//                                                  interview: the situations it is known to handle
 //   node engine/dist/main.js serve --dir D [--port N]
 //                                                  the web UI (ui/) on 127.0.0.1, return logs in D
 //   node engine/dist/main.js test-serve            the web UI server's tests (synthetic returns, temporary dirs)
@@ -52,6 +55,7 @@ import { serveChecks } from "./serve-check.js";
 import { interviewRules } from "./interview-rules.js";
 import { interviewLength } from "./interview-length.js";
 import { interviewWords } from "./interview-words.js";
+import { interviewCoverage } from "./interview-coverage.js";
 import { personWordingReport, spouseWordingSelfTest } from "./spouse-wording.js";
 
 const command = process.argv[2];
@@ -187,6 +191,8 @@ if (command === "review-stage5") {
   process.exit(await interviewLength(process.argv.slice(3)));
 } else if (command === "interview-words") {
   process.exit(await interviewWords(process.argv.slice(3)));
+} else if (command === "interview-coverage") {
+  process.exit(await interviewCoverage(process.argv.slice(3)));
 } else if (command === "spouse-wording" && process.argv.includes("--self-test")) {
   process.exit(spouseWordingSelfTest());
 } else if (command === "spouse-wording" && process.argv.includes("--report")) {

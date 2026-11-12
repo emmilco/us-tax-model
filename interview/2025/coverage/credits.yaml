@@ -1,0 +1,37 @@
+# Coverage rows for the credits the tool does not figure. See opening.yaml for how a row is read.
+tax_year: 2025
+part: Credits the tool does not figure
+profile: full
+rows:
+  - id: credits.form_1116
+    design: C.2 row 1 (foreign tax credit needing Form 1116)
+    situation: A filer paid more foreign tax than can be credited without Form 1116.
+    answers:
+      ftc.taxes: 500000
+    expect:
+      refused: ftc.needs1116
+  - id: credits.mortgage_certificate
+    design: C.2 row 8 (mortgage interest credit, current year)
+    replace_when: the credits screen is taken apart
+    situation: A homeowner holds a mortgage credit certificate and wants the mortgage interest credit.
+    answers:
+      scope.credits: true
+    expect:
+      refused: scope.credits
+  - id: credits.form_2439
+    design: C.2 row 17 (Form 2439)
+    situation: A fund sent the filer a Form 2439 for gains it kept and paid tax on.
+    answers:
+      sd.other_forms: true
+    expect:
+      refused: sd.other_forms
+  - id: credits.fuel_typed_in
+    design: C.2 row 16 (credit for federal tax on fuels)
+    replace_when: the credits screen is taken apart
+    situation: A filer with a fuel tax credit answers the credits screen No and types the Form 4136 amount in.
+    answers:
+      scope.credits: false
+      s3.line12: 25000
+    expect:
+      proceeds:
+        s3.line12: 25000

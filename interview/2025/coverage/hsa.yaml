@@ -1,0 +1,21 @@
+# Coverage rows for health savings accounts (Form 8889). See opening.yaml for how a row is read.
+tax_year: 2025
+part: Health savings accounts
+profile: full
+rows:
+  - id: hsa.archer_msa
+    design: C.3 row 2 (Archer MSA contributions, own or spouse's)
+    replace_when: the redesigned health savings account questions land
+    situation: A person with a health savings account also had money put into an Archer MSA for 2025.
+    answers:
+      $f8889@person[taxpayer]: [hsa]
+      person[taxpayer].f8889[hsa].unsupported: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].unsupported
+  - id: hsa.earlier_year_excess
+    design: C.3 row 3 (excess contributions of an earlier year still in the account)
+    situation: Too much was put into a person's health savings account in an earlier year and is still in it.
+    answers:
+      person[taxpayer].x_other: true
+    expect:
+      refused: person[taxpayer].x_other
