@@ -11,7 +11,8 @@
 // explanation, each with its title and quoted purpose. Screenshots of each view go to /private/tmp/tax-ui-design-*.png,
 // and of the forms a question names to /private/tmp/tax-ui-glosses.png. A second return, written as a log, has
 // conflicting Form 8889 month answers: it is shown as a conflict with links to the answers involved, not as a
-// refusal (screenshot /private/tmp/tax-ui-conflict.png).
+// refusal (screenshot /private/tmp/tax-ui-conflict.png). Every question shows its id: in the answered list and under
+// the current question (screenshots /private/tmp/tax-ui-design-{answered-ids,question-id}.png).
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -213,7 +214,7 @@ try {
       forms.forEach((f, i) => {
         const purpose = q.forms[i].purpose;
         assert.equal(f.open, purpose ? q.forms.length <= 2 : null, `${input}: ${q.forms[i].designation} is open only when at most two forms are named`);
-        if (purpose) assert.equal(f.quote.replace(/[\u201c\u201d\s•]/g, ""), purpose.text.replace(/[\s•]/g, ""),
+        if (purpose) assert.equal(f.quote.replace(/[\u201c\u201d\s•]/g, ""), purpose.text.replace(/[\u201c\u201d\s•]/g, ""),
           `${input}: ${q.forms[i].designation}'s purpose is quoted word for word`);
       });
       if (q.forms.length > 2) sawFolded = true;
@@ -292,10 +293,12 @@ try {
   assert.deepEqual(finalState.answered.find(a => a.input === "$w2@person[taxpayer]").value, ["acme_corp", "acme_corp_2"], "the colliding label got a numeric suffix");
   assert.equal(finalState.entryLabels["person[taxpayer]"], "You");
   await view("answered");
-  const shown = await evaluate(`({answered:document.getElementById('answered').innerText, headings:[...document.querySelectorAll('#sheet h3')].map(h=>h.textContent)})`);
+  // The answered list's own words: each question's id, the one place an entry key is shown, is left out.
+  const shown = await evaluate(`({answered:[...document.querySelectorAll('#answered li')].map(li=>{const c=li.cloneNode(true);c.querySelectorAll('.qid').forEach(e=>e.remove());return c.textContent;}).join('\\n'),
+    headings:[...document.querySelectorAll('#sheet h3')].map(h=>h.textContent)})`);
   assert.match(shown.answered, /Just me/); assert.match(shown.answered, /Acme Corp\., Acme Corp/);
   assert.match(shown.answered, /You › Acme Corp\./);
-  assert.doesNotMatch(shown.answered, /acme_corp|\[taxpayer\]/, "no entry keys in the answered list");
+  assert.doesNotMatch(shown.answered, /acme_corp|\[taxpayer\]/, "no entry keys in the answered list, but in each question's id");
   await view("return");
   await click('.tabs [data-sheet="federal"]');
   await until("[...document.querySelectorAll('#sheet h3')].some(h=>h.textContent.endsWith('— You › Acme Corp.'))", "an entry heading on the sheet shown by its labels");
@@ -364,9 +367,11 @@ try {
   assert.match(conflictText, /These answers conflict[\s\S]*December 1 coverage do not fit together/);
   assert.doesNotMatch(await banner() + conflictText, /cannot prepare|provisional|Refused/, "a conflict is neither unsupported nor provisional");
   const links = await evaluate("[...document.querySelectorAll('#conflict button[data-input]')].map(b=>b.dataset.input)");
-  assert.deepEqual([...links].sort(), ["dec_coverage", "months_eligible", "months_family"].map(k => hsa + k), "the conflict links the three answers it reads");
+  assert.deepEqual([...links].sort(), ["coverage_year", "dec_coverage", "months_eligible", "months_family"].map(k => hsa + k), "the conflict links the four answers it reads");
   const conflictShown = Object.fromEntries(await evaluate("[...document.querySelectorAll('#conflict li')].map(l=>[l.querySelector('button').dataset.input,l.querySelector('.conflict-value').textContent])"));
-  assert.deepEqual(conflictShown, { [`${hsa}dec_coverage`]: "self_only", [`${hsa}months_eligible`]: "12", [`${hsa}months_family`]: "12" }, "each answer is shown beside its question");
+  assert.deepEqual({ ...conflictShown, [`${hsa}coverage_year`]: undefined }, { [`${hsa}coverage_year`]: undefined, [`${hsa}dec_coverage`]: "Self-only HDHP coverage", [`${hsa}months_eligible`]: "12", [`${hsa}months_family`]: "12" }, "each answer is shown beside its question");
+  assert.ok(conflictShown[`${hsa}coverage_year`], "the coverage answer is shown too");
+  assert.deepEqual(await evaluate("[...document.querySelectorAll('#conflict li')].map(l=>l.querySelector('.qid-key').textContent).sort()"), [...links].sort(), "each conflicting answer shows its id");
   await evaluate("window.scrollTo(0, 0)");
   await screenshot("/private/tmp/tax-ui-conflict.png");
   await click(`#conflict button[data-input="${hsa}months_family"]`);
@@ -375,11 +380,27 @@ try {
   await view("return");
   assert(await evaluate("[...document.querySelectorAll('#sheet .tag')].some(t=>t.textContent==='conflicting answers') && ![...document.querySelectorAll('#sheet .tag')].some(t=>/^refused/.test(t.textContent))"),
     "the lines the conflict stops are tagged as conflicting answers");
+  // The ids: in the answered list and with the current question.
+  await cdp("Page.navigate", { url: origin + "/#smoke" });
+  await until("document.querySelectorAll('#answered .qid-key').length > 0", "the answered list with its ids");
+  await view("answered");
+  const listed = await evaluate("[...document.querySelectorAll('#answered li')].map(li=>[li.querySelector('button[data-input]').dataset.input, li.querySelector('.qid-key').textContent])");
+  assert(listed.length > 5 && listed.every(([input, id]) => input === id), "each answered question shows its id, an entry's with its entry keys");
+  assert(listed.some(([input]) => /^person\[taxpayer\]\.w2\[/.test(input)), "a per-entry id is among them");
+  assert(await evaluate("[...document.querySelectorAll('#answered button[data-input]')].every(b=>!b.querySelector('.qid-key') && !b.title)"), "the id is outside the question's button, so it is no part of the button's name");
+  await evaluate("window.scrollTo(0, 0)");
+  await shot("answered-ids");
+  await click(`#answered button[data-input="person[taxpayer].w2[acme_corp_2].box1"]`);
+  await until("document.getElementById('question-id')?.querySelector('.qid-key')?.textContent === 'person[taxpayer].w2[acme_corp_2].box1'", "the current question's id");
+  assert.equal(await evaluate("getComputedStyle(document.querySelector('#question-id .qid-key')).userSelect"), "all", "one click selects the whole id");
+  assert(await evaluate("(()=>{const a=document.querySelector('.prompt-text'),b=document.getElementById('question-id');return !!(a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING) && !document.getElementById('prompt-heading').contains(b);})()"), "the id follows the question and is no part of its heading");
+  assert(await evaluate("!!document.getElementById('question-id-copy') && !document.querySelector('.source .key')"), "the id has its copy control, and the source no longer repeats it");
+  await shot("question-id");
   assert.deepEqual(errors, []);
   console.log(`Browser passed: the person selector with no entry syntax, ${answered} answers through the page's widgets, labelled roster entries (a colliding label suffixed; labels in the answered list, a sheet heading and a question's entry), a help request, a refused blank amount, a correction through the answered list, a derivation with operand links and the answer it depends on, a provisional refusal that became final, a reload, conflicting answers shown as a conflict with links that reopen them.`);
   assert(longShot, "the long question scope.other_line16 was shown in full");
   assert(sawFolded, "a question naming more than two forms was shown with each form folded to one line");
-  console.log("Screenshots: /private/tmp/tax-ui-design-{question,long,roster,answered,return,sheet-order,refusal-provisional,refusal,refused-sheet,about,narrow}.png, /private/tmp/tax-ui-glosses.png, /private/tmp/tax-ui-conflict.png");
+  console.log("Screenshots: /private/tmp/tax-ui-design-{answered-ids,question-id}.png, /private/tmp/tax-ui-design-{question,long,roster,answered,return,sheet-order,refusal-provisional,refusal,refused-sheet,about,narrow}.png, /private/tmp/tax-ui-glosses.png, /private/tmp/tax-ui-conflict.png");
 } finally {
   server?.kill(); ws.close();
   rmSync(dir, { recursive: true, force: true });
