@@ -16,6 +16,8 @@
 //   node engine/dist/main.js interview-length [--write]
 //                                                  questions asked per return in today's order, at the floor any
 //                                                  order can reach, and in an order by expected pruning
+//   node engine/dist/main.js interview-words [--write]
+//                                                  the words a filer is shown per return
 //   node engine/dist/main.js serve --dir D [--port N]
 //                                                  the web UI (ui/) on 127.0.0.1, return logs in D
 //   node engine/dist/main.js test-serve            the web UI server's tests (synthetic returns, temporary dirs)
@@ -47,6 +49,7 @@ import { runServe } from "./serve.js";
 import { serveChecks } from "./serve-check.js";
 import { interviewRules } from "./interview-rules.js";
 import { interviewLength } from "./interview-length.js";
+import { interviewWords } from "./interview-words.js";
 import { spouseWordingSelfTest } from "./spouse-wording.js";
 
 const command = process.argv[2];
@@ -180,13 +183,15 @@ if (command === "review-stage5") {
   process.exit(await interviewRules(process.argv.slice(3)));
 } else if (command === "interview-length") {
   process.exit(await interviewLength(process.argv.slice(3)));
+} else if (command === "interview-words") {
+  process.exit(await interviewWords(process.argv.slice(3)));
 } else if (command === "spouse-wording" && process.argv.includes("--self-test")) {
   process.exit(spouseWordingSelfTest());
 } else if (command === "check-self-test") {
   runCheckSelfTest();
 } else {
   console.error(
-    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] | test-serve | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules | interview-length [--write] | spouse-wording --self-test",
+    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] | test-serve | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules | interview-length [--write] | interview-words [--write] | spouse-wording --self-test",
   );
   process.exit(2);
 }

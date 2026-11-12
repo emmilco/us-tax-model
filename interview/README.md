@@ -311,3 +311,17 @@ value of the `filing_status` enum is read as joint or not) and the near-miss rul
 constructed texts, and that every built question parses as structured text in both readings;
 `test-serve` tests one return read three ways as the filing status goes from unanswered to
 married filing jointly to single.
+
+## The words a filer reads
+
+`node engine/dist/main.js interview-words [--write]` (`engine/src/interview-words.ts`; free and deterministic, no
+model call) measures the reading the interview asks of a filer. Each return is walked as the page walks it, to
+completion or refusal, and every question asked is counted as shown: the prompt reworded for the filing status
+answered, once per time it is asked (a question asked per person or per entry counts per entry). The report,
+`reports/2025/interview_words.md`, gives per group of returns the questions asked, the prompt words, the words of the
+answers offered, the help words (help is shown and optional to read, so it is counted apart), the prompt words read
+before the first question the filer answers with something of their own (an amount, a number or a list), the longest
+prompts met, and the longest sentences of the question bank. A word is a run of characters holding a letter or a
+digit, so list markers and dashes are not counted. The returns are those `interview-length` walks. It is a sibling of
+that tool, not part of it: `interview-length` compares question counts under three orders and never builds a question
+as shown; this one counts reading under the one order the interview has. Its `--self-test` runs in `check-all`.

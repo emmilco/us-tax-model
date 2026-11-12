@@ -116,7 +116,7 @@ export interface Measure {
   avoidable: string[];
 }
 
-type Ctx = { data: CanonicalData; configs: Record<string, InterviewData>; shares: Map<string, number> };
+export type Ctx = { data: CanonicalData; configs: Record<string, InterviewData>; shares: Map<string, number> };
 
 /** One return measured; null when the static walk asks a question the return does not answer (not walkable). */
 export function measure(ctx: Ctx, group: string, profile: string, id: string, answers: Answers, errors: string[]): Measure | null {
@@ -155,7 +155,7 @@ export function measure(ctx: Ctx, group: string, profile: string, id: string, an
 
 const SLICES = ["social-security", "sales", "stage4"] as const;
 
-function context(): Ctx {
+export function context(): Ctx {
   const data = loadCanonical();
   const configs = Object.fromEntries(["full", ...SLICES].map((p) => [p, loadInterview(p)]));
   return { data, configs, shares: sharesFrom(readFileSync(FREQUENCIES, "utf8")) };
@@ -164,10 +164,10 @@ function context(): Ctx {
 interface Run { measures: Measure[]; unwalkable: Record<string, number>; errors: string[] }
 
 /** One return to walk: its group, profile and answers. */
-interface Case { group: string; profile: string; id: string; answers: Answers; open?: { input: string; value: unknown } | null }
+export interface Case { group: string; profile: string; id: string; answers: Answers; open?: { input: string; value: unknown } | null }
 
 /** The returns measured, in report order. */
-function casesOf(ctx: Ctx): Case[] {
+export function casesOf(ctx: Ctx): Case[] {
   const { data, configs } = ctx;
   const out: Case[] = [];
   const fromInputs = (inputs: Inputs): Answers => (k) => (k in inputs ? { value: inputs[k] } : undefined);
