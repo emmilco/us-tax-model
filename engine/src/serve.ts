@@ -1,4 +1,4 @@
-// The web UI's server: `serve --dir <returns dir> [--port N]`. A local, single-user client of the interview, as the
+// The web UI's server: `serve --dir <returns dir> [--port N] [--vetting <verdict file>]`. A local, single-user client of the interview, as the
 // CLI is: each request replays a return's answer log with the `ny` profile (federal and New York) and answers go
 // through `applyAnswer`. It serves the page in ui/ and a JSON API, on 127.0.0.1 only.
 //
@@ -13,12 +13,21 @@
 //   POST /api/returns/:name/answer {input, value[, labels]}
 //                                     (labels: a roster answer's label for each entry key, kept in the log)
 //                                     appends the answer and returns the new state, or 400 with the reason
+//   GET  /api/vetting                 every question the profile can ask as a card (vetting.ts), each with the owner's
+//                                     record and whether it is stale, the records of questions no longer asked, and
+//                                     the counts
+//   POST /api/vetting {id, digest[, verdict][, note]}
+//                                     saves a verdict (up, down or none) or a note on the question as shown (`digest`
+//                                     is the card's; 409 when the wording has changed since) and returns the record and
+//                                     the counts; 500 with the reason when the file could not be written
 //
+// The page at /vet (ui/vet.html) is the client of the vetting routes. Verdicts are saved in the repository's tracked
+// verdict file whatever the returns directory is (`--vetting <file>` names another file, for tests).
 // The returns directory holds personal data, so it must lie outside the repository and be private to its owner.
 // Requests whose Host is not this server (DNS rebinding) and POSTs from another origin are refused.
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { appendFileSync, existsSync, readFileSync, readdirSync, realpathSync, statSync, writeFileSync } from "node:fs";
-import { join, resolve, sep } from "node:path";
+import { join, relative, resolve, sep } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { CANON_DIR, loadCanonical } from "./canonical.js";
 import { applyAnswer, inputMeta, interviewView, loadInterview, questionTemplate, recordedTemplates, replay, replayState, withheldValues, type Event, type InterviewData, type JsonDerivation } from "./interview.js";
@@ -27,6 +36,7 @@ import { jointReturn, shownFor, spouseWording } from "./spouse-wording.js";
 import { standingNotices, type SheetSection } from "./output.js";
 import { formResolver, type FormEntry, type FormRef, type Purpose } from "./form-refs.js";
 import type { CanonicalData } from "./types.js";
+import { NOTE_MAX, VERDICTS_FILE, applyChange, judgedOf, loadVerdicts, stamp, vettingCards, vettingCounts, vettingState, writeVerdicts, type Card, type Verdict } from "./vetting.js";
 
 export const PROFILE = "ny";
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -137,7 +147,7 @@ function changedKeys(before: Record<string, { value: unknown }> | null, after: R
   return [...keys].filter((k) => !isDeepStrictEqual(before[k]?.value, after[k]?.value)).sort();
 }
 
-export function createApp(data: CanonicalData, config: InterviewData, dir: string, conflictChecks: Record<string, string> = loadConflicts()) {
+export function createApp(data: CanonicalData, config: InterviewData, dir: string, conflictChecks: Record<string, string> = loadConflicts(), verdictsFile: string = VERDICTS_FILE) {
   const names = docNames(config.tax_year);
   const lineById = new Map([...data.forms, ...data.defs].flatMap((d) => d.lines.map((l) => [l.id, l] as const)));
   const formsOf = questionForms(config, names.forms);
@@ -263,10 +273,42 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
     throw new HttpError(404, "no such route");
   };
 
+  // The vetting routes. The cards are built on first use; the verdict file is read on every request, so the page
+  // always shows what the file holds, and a save changes one record of the file as it is then.
+  let cards: Card[] | null = null;
+  const vetting = (method: string, body: unknown): [number, unknown] => {
+    cards ??= vettingCards(data, config);
+    const shownFile = relative(ROOT, verdictsFile);
+    if (method === "GET") {
+      const state = vettingState(cards, loadVerdicts(verdictsFile, config.tax_year));
+      return [200, { ...state, counts: vettingCounts(state), file: shownFile.startsWith("..") ? verdictsFile : shownFile }];
+    }
+    if (method !== "POST") throw new HttpError(405, "method not allowed");
+    const b = body as { id?: unknown; digest?: unknown; verdict?: unknown; note?: unknown } | null;
+    const verdict = b?.verdict, note = b?.note;
+    if (!b || typeof b.id !== "string" || typeof b.digest !== "string" || (verdict === undefined && note === undefined)
+      || (verdict !== undefined && verdict !== "up" && verdict !== "down" && verdict !== "none") || (note !== undefined && typeof note !== "string"))
+      throw new HttpError(400, "a vetting change is {id, digest} with verdict (up, down or none), note, or both");
+    if (typeof note === "string" && note.length > NOTE_MAX) throw new HttpError(400, `a note can be at most ${NOTE_MAX} characters`);
+    const card = cards.find((c) => c.id === b.id);
+    if (!card) throw new HttpError(404, `the interview has no question ${b.id}`);
+    if (card.digest !== b.digest) throw new HttpError(409, `the wording of ${b.id} has changed since the page loaded it; reload the page`);
+    const file = loadVerdicts(verdictsFile, config.tax_year);
+    const judged = judgedOf(data, config.questions.find((q) => q.input === card.id)!);
+    const record = applyChange(file, card.id, judged, { ...(verdict === undefined ? {} : { verdict: verdict as Verdict }), ...(typeof note === "string" ? { note } : {}) }, stamp());
+    try { writeVerdicts(verdictsFile, file); }
+    catch (e) { throw new HttpError(500, `not saved: ${(e as Error).message}`); }
+    return [200, { id: card.id, record, stale: record !== null && record.digest !== card.digest, counts: vettingCounts(vettingState(cards, file)) }];
+  };
+
   const statics: Record<string, [string, string]> = {
     "/": ["ui/index.html", "text/html; charset=utf-8"],
     "/app.js": ["ui/dist/app.js", "text/javascript; charset=utf-8"],
+    "/text.js": ["ui/dist/text.js", "text/javascript; charset=utf-8"],
     "/style.css": ["ui/style.css", "text/css; charset=utf-8"],
+    "/vet": ["ui/vet.html", "text/html; charset=utf-8"],
+    "/vet.js": ["ui/dist/vet.js", "text/javascript; charset=utf-8"],
+    "/vet.css": ["ui/vet.css", "text/css; charset=utf-8"],
   };
 
   return (req: IncomingMessage, res: ServerResponse, port: number): void => {
@@ -290,21 +332,24 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
       try { return send(200, file[1], readFileSync(join(ROOT, file[0]))); }
       catch { return fail(500, `${file[0]} is missing; run npm run compile`); }
     }
-    if (url.pathname !== "/api/returns" && !url.pathname.startsWith("/api/returns/")) return fail(404, "no such route");
+    const forVetting = url.pathname === "/api/vetting";
+    if (!forVetting && url.pathname !== "/api/returns" && !url.pathname.startsWith("/api/returns/")) return fail(404, "no such route");
     const chunks: Buffer[] = [];
     let size = 0;
     req.on("data", (c: Buffer) => { size += c.length; if (size <= MAX_BODY) chunks.push(c); });
     req.on("end", () => {
       try {
         if (size > MAX_BODY) throw new HttpError(413, "request too large");
-        let parts: string[];
-        try { parts = url.pathname.slice("/api/returns".length).split("/").filter(Boolean).map(decodeURIComponent); }
-        catch { throw new HttpError(400, "malformed path"); }
+        let parts: string[] = [];
+        if (!forVetting) {
+          try { parts = url.pathname.slice("/api/returns".length).split("/").filter(Boolean).map(decodeURIComponent); }
+          catch { throw new HttpError(400, "malformed path"); }
+        }
         let body: unknown = null;
         if (method === "POST") {
           try { body = JSON.parse(Buffer.concat(chunks).toString("utf8")); } catch { throw new HttpError(400, "the request body is not JSON"); }
         }
-        const [status, payload] = api(method, parts, body);
+        const [status, payload] = forVetting ? vetting(method, body) : api(method, parts, body);
         send(status, "application/json; charset=utf-8", JSON.stringify(payload));
       } catch (e) {
         if (e instanceof HttpError) fail(e.status, e.message);
@@ -321,7 +366,8 @@ export async function runServe(args: string[]): Promise<void> {
   const port = Number(arg("--port") ?? "8791");
   if (!Number.isInteger(port) || port < 0 || port > 65535) throw new Error("--port must be a port number");
   const dir = checkReturnsDir(resolve(dirArg));
-  const handler = createApp(loadCanonical(), loadInterview(PROFILE), dir);
+  const vettingArg = arg("--vetting");
+  const handler = createApp(loadCanonical(), loadInterview(PROFILE), dir, undefined, vettingArg === undefined ? undefined : resolve(vettingArg));
   const server = createServer((req, res) => handler(req, res, (server.address() as { port: number }).port));
   await new Promise<void>((done, fail) => { server.once("error", fail); server.listen(port, "127.0.0.1", () => done()); });
   const actual = (server.address() as { port: number }).port;

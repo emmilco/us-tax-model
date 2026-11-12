@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Vetting the questions</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/vet.css">
+<script src="/vet.js" type="module"></script>
+</head>
+<body class="vet">
+<header id="top">
+  <div class="masthead">
+    <h1>Vetting the questions</h1>
+    <a id="interview-link" class="page-link" href="/">Back to the interview</a>
+  </div>
+  <div class="vet-bar">
+    <p id="progress" aria-live="polite"></p>
+    <p id="save-state" role="status" data-state="idle"></p>
+  </div>
+  <div class="vet-bar tools">
+    <label for="filter">Show</label>
+    <select id="filter">
+      <option value="all">All questions</option>
+      <option value="unjudged">Without a verdict</option>
+      <option value="down">Thumbs down</option>
+      <option value="noted">Has a note</option>
+      <option value="long">Long (a sentence over 40 words)</option>
+      <option value="stale">Stale (the wording changed)</option>
+    </select>
+    <span id="filter-count"></span>
+    <button type="button" id="first-unjudged">First without a verdict</button>
+    <form id="jump">
+      <label for="jump-id">Go to id</label>
+      <input type="text" id="jump-id" name="jump-id" list="ids" autocomplete="off" spellcheck="false" placeholder="for example f1040.status">
+      <datalist id="ids"></datalist>
+      <button type="submit">Go</button>
+    </form>
+  </div>
+</header>
+
+<main>
+  <div id="card" class="vet-card"></div>
+  <section id="orphans" class="vet-orphans" hidden></section>
+  <p class="keys">Keys: <kbd>u</kbd> thumbs up, <kbd>d</kbd> thumbs down, <kbd>x</kbd> clear the verdict, <kbd>j</kbd> or <kbd>→</kbd> next, <kbd>k</kbd> or <kbd>←</kbd> previous, <kbd>n</kbd> the notes box (<kbd>Esc</kbd> leaves it), <kbd>f</kbd> first without a verdict, <kbd>g</kbd> go to an id.</p>
+</main>
+
+<p id="error" role="alert" hidden></p>
+</body>
+</html>

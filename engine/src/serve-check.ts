@@ -2,17 +2,19 @@
 // refusals, file modes, the Host and Origin checks, that the server and the CLI give the same state on the same
 // log, that a rejected answer appends nothing, roster removal and re-adding, a consistency check served as a
 // conflict, the forms a question names and their quoted purposes, the spouse phrase reworded as the filing status is
-// answered and corrected (questions, sheet labels and, on a constructed form, a conflict's figure labels), and fixture interview paths replayed through the server against the fixtures' expected
+// answered and corrected (questions, sheet labels and, on a constructed form, a conflict's figure labels), the vetting
+// routes (the cards listed, verdicts and notes saved to a verdict file in the temporary directory, a failed save, a
+// stale record after a wording change and a record of a question no longer asked), and fixture interview paths replayed through the server against the fixtures' expected
 // values.
 import assert from "node:assert/strict";
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
-import { chmodSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, symlinkSync, writeFileSync } from "node:fs";
+import { chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, symlinkSync, writeFileSync } from "node:fs";
 import { createServer, request } from "node:http";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { loadCanonical } from "./canonical.js";
-import { interviewView, loadInterview, questionTemplate, replay, type Event, type InterviewData } from "./interview.js";
+import { askOrder, interviewView, loadInterview, questionTemplate, replay, type Event, type InterviewData } from "./interview.js";
 import { SPOUSE_PHRASE, SPOUSE_POSSESSIVE, STATUS_INPUT, personWording, spouseWording, type JointReturn } from "./spouse-wording.js";
 import { templateKey } from "./branches.js";
 import { renderValuesSheetText } from "./output.js";
@@ -22,6 +24,7 @@ import type { CanonicalData, Inputs } from "./types.js";
 import { mapPool, poolSize } from "./pool.js";
 import { createApp, docNames, questionForms } from "./serve.js";
 import { formResolver, namedDesignations, type FormEntry } from "./form-refs.js";
+import { NOTE_MAX, applyChange, digestOf, judgedOf, loadVerdicts, stableJson, stamp, writeVerdicts, type VerdictFile } from "./vetting.js";
 
 const MAIN = resolve(import.meta.dirname, "main.js");
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -66,8 +69,8 @@ function http(port: number, method: string, path: string, opts: { host?: string;
   });
 }
 
-function startServer(dir: string): Promise<Server> {
-  const proc = spawn(process.execPath, [MAIN, ...YEAR_ARGS, "serve", "--dir", dir, "--port", "0"], { stdio: ["ignore", "pipe", "pipe"] });
+function startServer(dir: string, options: string[] = []): Promise<Server> {
+  const proc = spawn(process.execPath, [MAIN, ...YEAR_ARGS, "serve", "--dir", dir, "--port", "0", ...options], { stdio: ["ignore", "pipe", "pipe"] });
   const server: Server = { proc, port: 0, dir, output: "", exit: null };
   return new Promise((done, fail) => {
     proc.stdout!.on("data", (d: Buffer) => {
@@ -502,6 +505,8 @@ export async function serveChecks(): Promise<void> {
     ok(earlier.values[STATUS_INPUT].value.value === "mfj" && framed(earlier, "spouse").length > 0
       && framed(earlier, "spouse").every((q: any) => q.frame === "About your spouse"), "and it is served with the same frames");
 
+    await vettingChecks(tmp, port, data, config, ok);
+
     // Fixture interview paths replayed through the server: the federal whole returns (the federal questions; their
     // fixtures have no New York answers) and a sample of the New York cases. Each walk answers the first pending
     // question the fixture answers, until none is left; every expected value the profile's targets reach must match.
@@ -542,4 +547,133 @@ export async function serveChecks(): Promise<void> {
     for (const p of extra) p.then((x) => x.proc.kill(), () => {});
     rmSync(tmp, { recursive: true, force: true });
   }
+}
+
+/** The vetting routes: the page and its script served by a server started as documented, the cards listed in asking
+ * order with the tracked verdict file named whatever the returns directory is, and nothing written by a refused
+ * change; then, on verdict files in the temporary directory, a verdict saved, changed and cleared, a note, the file's
+ * stable form, a failed save reported as failed with the file whole, a file that is not a verdict file left alone, a
+ * record left stale by a wording change and a record of a question that is not asked. */
+async function vettingChecks(tmp: string, port: number, data: CanonicalData, config: InterviewData, ok: (cond: unknown, message: string) => void): Promise<void> {
+  const tracked = join(ROOT, "reviews", String(config.tax_year), "owner_vetting", "verdicts.json");
+  const trackedBefore = existsSync(tracked) ? readFileSync(tracked, "utf8") : null;
+  const vet = (p: number, body: unknown) => http(p, "POST", "/api/vetting", { body });
+
+  // The server as documented: `serve --dir <returns dir> --port <port>`.
+  for (const path of ["/vet", "/vet.js", "/vet.css", "/text.js"]) ok((await http(port, "GET", path)).status === 200, `${path} is served`);
+  ok(/href="\/vet"/.test((await http(port, "GET", "/")).body as string) && /href="\/"/.test((await http(port, "GET", "/vet")).body as string), "the interview page links to the vetting page and back");
+  const listed = (await http(port, "GET", "/api/vetting")).body;
+  ok(listed.file === join("reviews", String(config.tax_year), "owner_vetting", "verdicts.json"), `the verdict file is the repository's, not a file of the returns directory: ${listed.file}`);
+  ok(listed.questions.length === config.questions.length && isDeepStrictEqual(listed.questions.map((q: any) => q.id), [...config.questions].sort(askOrder).map((q) => q.input)),
+    "every question of the profile is listed, in asking order");
+  ok(listed.counts.total === config.questions.length && listed.questions.every((q: any) => /^[0-9a-f]{64}$/.test(q.digest) && typeof q.prompt === "string" && q.answer.text && q.topic && q.scope && q.gate.text && q.words.prompt >= 0),
+    "each card has its digest, wording, answer, topic, scope, gate and words");
+  const firstCard = listed.questions[0];
+  ok((await http(port, "POST", "/api/vetting", { body: { id: firstCard.id, digest: firstCard.digest, verdict: "up" }, origin: "http://evil.example" })).status === 403, "a vetting change from another origin is refused");
+  ok((await vet(port, { id: "no.such_question", digest: firstCard.digest, verdict: "up" })).status === 404, "a verdict on a question the interview does not ask is refused");
+  ok((await vet(port, { id: firstCard.id, digest: "0".repeat(64), verdict: "up" })).status === 409, "a verdict on wording the page did not show is refused");
+  for (const bad of [{ id: firstCard.id, digest: firstCard.digest }, { id: firstCard.id, digest: firstCard.digest, verdict: "sideways" }, { id: firstCard.id, verdict: "up" }, { id: firstCard.id, digest: firstCard.digest, note: 3 }, { id: firstCard.id, digest: firstCard.digest, note: "x".repeat(NOTE_MAX + 1) }])
+    ok((await vet(port, bad)).status === 400, `a malformed vetting change is refused: ${JSON.stringify(bad).slice(0, 80)}`);
+  ok((existsSync(tracked) ? readFileSync(tracked, "utf8") : null) === trackedBefore, "refused changes leave the repository's verdict file as it was");
+
+  // A server given its own verdict file, in a directory that does not exist yet.
+  const vetDir = join(tmp, "vetting");
+  const file = join(vetDir, "verdicts.json");
+  const returns = join(tmp, "returns-vetting");
+  mkdirSync(returns, { mode: 0o700 });
+  const own = await startServer(returns, ["--vetting", file]);
+  try {
+    const p = own.port;
+    const records = () => (JSON.parse(readFileSync(file, "utf8")) as { records: Record<string, any> }).records;
+    const cards = (await http(p, "GET", "/api/vetting")).body;
+    ok(cards.file === file && !existsSync(vetDir) && cards.questions.every((q: any) => q.record === null && !q.stale) && cards.orphans.length === 0, "listing writes nothing, and a missing file has no records");
+    const [a, b] = cards.questions as any[];
+    const stored = config.questions.find((q) => q.input === a.id)!;
+
+    const up = await vet(p, { id: a.id, digest: a.digest, verdict: "up" });
+    ok(up.status === 200 && up.body.record.verdict === "up" && up.body.record.note === "" && up.body.stale === false && up.body.counts.up === 1, `a verdict is saved: ${JSON.stringify(up.body).slice(0, 200)}`);
+    const text = readFileSync(file, "utf8");
+    ok(text === stableJson(JSON.parse(text)) && text.endsWith("}\n") && isDeepStrictEqual(Object.keys(JSON.parse(text)), ["records", "tax_year", "version"]), "the file is written with sorted keys and a trailing newline");
+    const rec = records()[a.id];
+    ok(rec.digest === a.digest && rec.digest === digestOf(rec.judged) && rec.judged.prompt === stored.prompt && rec.judged.help === (stored.help ?? "") && /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$/.test(rec.changed),
+      "the record holds the stored wording that was judged, its digest and the time");
+    ok(isDeepStrictEqual(readdirSync(vetDir), ["verdicts.json"]), "no temporary file is left beside the verdict file");
+    const down = await vet(p, { id: a.id, digest: a.digest, verdict: "down" });
+    ok(down.body.record.verdict === "down" && down.body.counts.up === 0 && down.body.counts.down === 1 && records()[a.id].verdict === "down", "a verdict is changed");
+    const noted = await vet(p, { id: a.id, digest: a.digest, note: "No ordinary person knows this.\nSecond line." });
+    ok(noted.body.record.verdict === "down" && records()[a.id].note === "No ordinary person knows this.\nSecond line.", "a note is saved beside the verdict");
+    const both = await vet(p, { id: b.id, digest: b.digest, verdict: "up", note: "fine" });
+    ok(both.body.record.verdict === "up" && both.body.record.note === "fine" && Object.keys(records()).length === 2, "a verdict and a note are saved together");
+    const again = (await http(p, "GET", "/api/vetting")).body;
+    ok(again.questions[0].record.verdict === "down" && again.questions[1].record.note === "fine" && again.counts.noted === 2 && again.counts.down === 1 && again.counts.up === 1, "the list gives the saved records");
+    const cleared = await vet(p, { id: a.id, digest: a.digest, verdict: "none" });
+    ok(cleared.body.record.verdict === "none" && records()[a.id].note.startsWith("No ordinary person"), "a cleared verdict keeps the note");
+    const gone = await vet(p, { id: a.id, digest: a.digest, note: "" });
+    ok(gone.status === 200 && gone.body.record === null && !(a.id in records()), "a record with no verdict and no note is removed");
+
+    // A save that cannot be written is reported as failed, and the file is as it was.
+    const whole = readFileSync(file, "utf8");
+    chmodSync(vetDir, 0o500);
+    try {
+      const failed = await vet(p, { id: a.id, digest: a.digest, verdict: "up" });
+      ok(failed.status === 500 && /^not saved: /.test(failed.body.error), `a failed save is reported as failed: ${failed.status} ${JSON.stringify(failed.body)}`);
+      ok(readFileSync(file, "utf8") === whole && isDeepStrictEqual(readdirSync(vetDir), ["verdicts.json"]), "and leaves the file whole, with no temporary file");
+      ok((await http(p, "GET", "/api/vetting")).body.questions[0].record === null, "and the list does not show the verdict");
+    } finally { chmodSync(vetDir, 0o700); }
+    ok((await vet(p, { id: a.id, digest: a.digest, verdict: "up" })).status === 200 && records()[a.id].verdict === "up", "the save succeeds once the file can be written");
+
+    // A file that is not a verdict file is reported and never overwritten.
+    const good = readFileSync(file, "utf8");
+    writeFileSync(file, good.slice(0, good.length >> 1));
+    const broken = await http(p, "GET", "/api/vetting");
+    ok(broken.status === 500 && /not JSON/.test(broken.body.error), "a truncated verdict file is reported");
+    ok((await vet(p, { id: a.id, digest: a.digest, verdict: "down" })).status === 500 && readFileSync(file, "utf8") === good.slice(0, good.length >> 1), "and a save does not replace it");
+    writeFileSync(file, good);
+  } finally { own.proc.kill(); }
+
+  // A wording change, in a copy of the bank: the records given on the earlier wording are stale, each kept as given.
+  // A record of an id that is not asked is listed apart and kept through later saves.
+  const before = structuredClone(config), after = structuredClone(config);
+  const ordered = [...config.questions].sort(askOrder);
+  const labelled = ordered.find((q) => q.value_labels)!;
+  const [promptQ, helpQ, sameQ] = ordered.filter((q) => q !== labelled && q.help) as [typeof labelled, typeof labelled, typeof labelled];
+  const inAfter = (id: string) => after.questions.find((q) => q.input === id)!;
+  inAfter(promptQ.input).prompt += " And one more clause.";
+  inAfter(helpQ.input).help += " And one more sentence.";
+  const value = Object.keys(labelled.value_labels!)[0]!;
+  inAfter(labelled.input).value_labels![value] += " (reworded)";
+  const staleFile = join(tmp, "vetting-stale", "verdicts.json");
+  const serveApp = async (cfg: InterviewData) => {
+    const app = createApp(data, cfg, join(tmp, "returns"), {}, staleFile);
+    const s = createServer((req, res) => app(req, res, (s.address() as { port: number }).port));
+    await new Promise<void>((done) => s.listen(0, "127.0.0.1", () => done()));
+    return { port: (s.address() as { port: number }).port, close: () => s.close() };
+  };
+  const old = await serveApp(before), now = await serveApp(after);
+  try {
+    const oldCards = (await http(old.port, "GET", "/api/vetting")).body.questions as any[];
+    const digestThen = (id: string) => oldCards.find((q) => q.id === id).digest;
+    for (const [q, verdict] of [[promptQ, "down"], [helpQ, "up"], [labelled, "down"], [sameQ, "up"]] as const)
+      ok((await vet(old.port, { id: q.input, digest: digestThen(q.input), verdict, note: `on ${q.input}` })).status === 200, `a verdict on ${q.input} as worded before`);
+    const orphaned: VerdictFile = loadVerdicts(staleFile, config.tax_year);
+    applyChange(orphaned, "no.such_question", judgedOf(data, sameQ), { verdict: "down", note: "it was asked once" }, stamp());
+    writeVerdicts(staleFile, orphaned);
+
+    const state = (await http(now.port, "GET", "/api/vetting")).body;
+    const card = (id: string) => state.questions.find((q: any) => q.id === id);
+    for (const [q, what] of [[promptQ, "prompt"], [helpQ, "help"], [labelled, "answer label"]] as const)
+      ok(card(q.input).stale === true && card(q.input).record.note === `on ${q.input}` && card(q.input).record.digest === digestThen(q.input) && card(q.input).digest !== digestThen(q.input),
+        `a changed ${what} leaves the record stale, with its verdict and note as given`);
+    ok(card(promptQ.input).record.judged.prompt === promptQ.prompt && card(promptQ.input).stored?.prompt !== promptQ.prompt && (card(promptQ.input).stored?.prompt ?? card(promptQ.input).prompt).includes("And one more clause."), "the stale record holds the wording it judged; the card shows today's");
+    ok(card(sameQ.input).stale === false && card(sameQ.input).record.verdict === "up", "a record on unchanged wording is not stale");
+    ok(isDeepStrictEqual(state.counts, { ...state.counts, up: 1, down: 0, stale: 3, orphans: 1 }), `stale verdicts are counted as stale, not as verdicts: ${JSON.stringify(state.counts)}`);
+    ok(state.orphans.length === 1 && state.orphans[0].id === "no.such_question" && state.orphans[0].record.note === "it was asked once", "a record of a question that is not asked is listed apart");
+    ok((await vet(now.port, { id: promptQ.input, digest: digestThen(promptQ.input), verdict: "up" })).status === 409, "a verdict sent with the earlier wording's digest is refused");
+    const renoted = await vet(now.port, { id: promptQ.input, digest: card(promptQ.input).digest, note: "still unanswerable" });
+    ok(renoted.body.stale === true && renoted.body.record.verdict === "down" && renoted.body.record.note === "still unanswerable" && renoted.body.record.digest === digestThen(promptQ.input), "a note alone leaves a stale verdict stale");
+    const rejudged = await vet(now.port, { id: promptQ.input, digest: card(promptQ.input).digest, verdict: "up" });
+    ok(rejudged.body.stale === false && rejudged.body.record.digest === card(promptQ.input).digest && rejudged.body.record.judged.prompt.endsWith("And one more clause.") && rejudged.body.counts.stale === 2, "a verdict on today's wording is tied to it");
+    const kept = loadVerdicts(staleFile, config.tax_year);
+    ok(kept.records["no.such_question"]?.verdict === "down" && Object.keys(kept.records).length === 5, "the orphan's record is kept through later saves");
+  } finally { old.close(); now.close(); }
 }

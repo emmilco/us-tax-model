@@ -106,7 +106,8 @@ the order is the page's, the text sheet keeps the engine's), where the lines the
 changed are highlighted and a line opens its derivation beside the sheet (operation,
 citation, the lines it uses, the answers it depends on, which reopen their questions,
 conditions not taken and notes); and the scope and standing notices, whose one-sentence
-summary stays in the footer:
+summary stays in the footer. A second page, `/vet`, is for vetting the questions
+themselves ("Vetting the questions" below):
 
 ```sh
 node engine/dist/main.js serve --dir /path/to/returns [--port 8791]
@@ -146,10 +147,88 @@ Its API:
 | `POST /api/returns` `{name}` | starts a log (profile `ny`); an existing name is refused |
 | `GET /api/returns/:name` | the state: the CLI's fields, `pending` with each input's `type` (and enum `values`) and `forms` (the catalogued forms its question names: `designation`, `id`, `title`, `purpose`), `refusalFinal`, the structured `sheets` (federal and New York), the `answered` questions, the `entryLabels` (entry path to label) and the lines the last answer `changed` |
 | `POST /api/returns/:name/answer` `{input, value[, labels]}` | appends the answer and returns the new state, or 400 with the reason |
+| `GET /api/vetting` | the vetting page's cards, each with its record and whether it is stale, the records of questions no longer asked, the counts and the verdict file's path ("Vetting the questions") |
+| `POST /api/vetting` `{id, digest[, verdict][, note]}` | saves a verdict (`up`, `down` or `none`) or a note on the question as shown and returns the record and the counts; 409 when `digest` is not the card's (the wording changed), 500 with the reason when the file could not be written |
 
 `test-serve` (in `check-all`) tests the server on synthetic returns in temporary
-directories; `ui/test_browser.mjs` is a smoke test of the page in a separately launched
+directories; `ui/test_browser.mjs` is a smoke test of both pages in a separately launched
 headless Chrome, run by hand.
+
+### Vetting the questions
+
+The same server has a second page, `/vet` (a link at the top of the interview page leads to
+it, and one leads back): every question the `ny` profile can ask, one at a time, for the
+owner to mark thumbs up or thumbs down, with a note. Start the server as above and open
+`http://127.0.0.1:8791/vet`. The questions come in the interview's asking order (`askOrder`:
+order number, `seq` within a block, then id) and are the questions
+`reports/2025/interview_words.md` counts.
+
+A card shows, apart from one another:
+
+- **The question** as the interview page words it. The main text is what a one-person return
+  is shown (`shownAt` in `engine/src/interview-words.ts`, which applies `shownFor`: the spouse
+  phrase reworded, no per-person frame). Beneath it, smaller, are the wording on a joint return
+  and, for a question asked of a person or beneath one, the wording for the spouse's entry,
+  each only where it differs. The stored text, before it is reworded, is under "As stored in
+  the question bank".
+- **The help**, in full, with its other wordings where they differ.
+- **The answer** it takes, in plain words: Yes or No; a dollar amount (zero or more, or one
+  that may be negative); a whole number; one choice from a list, with the choices as labelled
+  (a filing status a one-person return is not offered is marked); or a list the filer builds,
+  with what an entry is (the title of the list's form).
+- **Context**: the id, with a control that copies it; the form the input belongs to and its
+  printed line; whether it is asked once per return, once per person or once per entry of a
+  list (named by its list question); when it is asked, as far as the engine can say; and the
+  words of the question and the help as shown (the words tool's `words`), with the longest
+  sentence of the stored question (`longestSentence`; over 40 words is long, as the words
+  report counts).
+
+"When" is one of a few fixed statements, each read off the engine and none of them a guess. A
+question whose input has a gate (`gated_by`) says "asked only after an earlier answer" and
+names the questions its gate is figured from, when they can be read off the gate's
+expressions and are at most four; otherwise it says "asked only in some cases" and names
+the gate line. A question with no gate says it is open from the start (it is pending on a
+return with nothing answered), open once who the return is for is answered (pending on the
+one-person return, the joint return or both), asked of an entry as soon as it is listed
+(pending on a one-person return whose lists each have one entry and nothing else answered),
+or, failing all of these, only "asked only in some cases". Being open at the start does not
+mean every filer is asked it: a later answer can still make a question unnecessary.
+
+The controls stay at the foot of the window: thumbs up, thumbs down, clear, the notes box,
+previous and next. A progress line gives the place and the counts ("37 of 663; 30 up, 5
+down, 2 skipped": skipped are the questions without a verdict that come before the last
+question that has one). The page can go to the first question without a verdict or to a
+question by id, and can show only the questions without a verdict, with thumbs down, with a
+note, that are long, or that are stale; next and previous then move among those. Keys, when
+the cursor is not in a text box: `u` thumbs up, `d` thumbs down, `x` clear, `j` or the right
+arrow next, `k` or the left arrow previous, `n` the notes box (Esc leaves it), `f` the first
+question without a verdict, `g` the box for an id.
+
+Every change is saved at once (a note a moment after typing stops, and when the cursor
+leaves the box), and a line at the top says so, or says in red that it was NOT SAVED, with
+the reason and a control to try again. The page shows a verdict as given only after the
+server has confirmed it.
+
+Verdicts are kept in `reviews/2025/owner_vetting/verdicts.json`, a tracked file of the
+repository (`reviews/2025/owner_vetting/README.md` gives its format). It does not depend
+on the returns directory, and holds nothing from a return. `serve --vetting <file>` names
+another file, which the tests use. Each record holds what was judged, as the question bank
+stored it then (prompt, help, answer type and the answers offered), and the digest of that.
+When a question's stored wording, type or offered answers differ from what its record
+judged, the record is **stale**: the page shows the earlier verdict and note marked as given
+on earlier wording, with that wording, and counts it as no verdict on today's question,
+until a verdict is given again. A note changed on a stale record leaves it stale. A record
+whose id the interview no longer asks is kept and listed under "Questions no longer in the
+interview". Nothing is ever dropped because the wording moved.
+
+`node engine/dist/main.js vetting-report [--write] [--file <verdicts.json>]` lists the
+verdicts for whoever acts on them: the counts, the thumbs-down questions with their notes,
+the notes on thumbs-up questions and on questions with no verdict, the stale records and
+the records of questions no longer asked, each with its id and the wording judged. With
+`--write` it writes `reports/2025/owner_vetting.md`. The report is written on demand; no
+check requires it to exist or to be current, so saving verdicts never leaves a check
+failing. Its `--self-test` (in `check-all`) tests the digest, the file and the record rules
+on planted cases and the cards of the built bank.
 
 ## The answer log
 

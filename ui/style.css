@@ -66,6 +66,7 @@ h1 span { font-weight: 400; color: var(--muted); }
 #returns input { width: 12rem; }
 #question-panel .page { padding-inline: 0; }
 #returns button { font-size: 0.875rem; padding: 0.3rem 0.75rem; }
+.page-link { font-size: 0.875rem; color: var(--accent); text-underline-offset: 0.15em; }
 
 .views [role=tablist] { display: flex; gap: 1.6rem; margin-top: 0.7rem; overflow-x: auto; }
 .views [role=tab] { border: 0; border-radius: 0; background: none; padding: 0.5rem 0 0.55rem; color: var(--muted); border-bottom: 2px solid transparent; white-space: nowrap; }

@@ -13,9 +13,13 @@
 // conflicting Form 8889 month answers: it is shown as a conflict with links to the answers involved, not as a
 // refusal (screenshot /private/tmp/tax-ui-conflict.png). Every question shows its id: in the answered list and under
 // the current question (screenshots /private/tmp/tax-ui-design-{answered-ids,question-id}.png).
+// Before the walk it goes through the vetting page (/vet), saving to a verdict file in a temporary directory: a
+// question with its help, answer and context, verdicts and a note by key and by button, a reload, the filters and
+// jumps, a failed save, a stale record and a record of a question no longer asked (screenshots
+// /private/tmp/tax-ui-vet-{choice,long,person,stale}.png).
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { chmodSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
@@ -120,9 +124,198 @@ async function answer(input, value) {
 }
 
 const dir = mkdtempSync(join(tmpdir(), "tax-ui-browser-"));
+// The vetting page saves to a verdict file of the test's own, never the repository's.
+const vetDir = mkdtempSync(join(tmpdir(), "tax-ui-vetting-"));
+const vetFile = join(vetDir, "verdicts.json");
+const verdicts = () => JSON.parse(readFileSync(vetFile, "utf8")).records;
+async function press(key) {
+  const named = { Escape: 27, ArrowRight: 39, ArrowLeft: 37 }[key];
+  await cdp("Input.dispatchKeyEvent", { type: "keyDown", key, ...(named ? { code: key, windowsVirtualKeyCode: named } : { text: key }) });
+  await cdp("Input.dispatchKeyEvent", { type: "keyUp", key, ...(named ? { code: key, windowsVirtualKeyCode: named } : {}) });
+}
+/** The whole page, however long, with what is held in view while scrolling (`held`) put back in the flow for the picture. */
+async function fullShot(path, held) {
+  await evaluate(`document.querySelectorAll(${JSON.stringify(held)}).forEach(e => { e.style.position = 'static'; })`);
+  const { cssContentSize: size } = await cdp("Page.getLayoutMetrics");
+  const r = await cdp("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip: { x: 0, y: 0, width: size.width, height: size.height, scale: 1 } });
+  await evaluate(`document.querySelectorAll(${JSON.stringify(held)}).forEach(e => { e.style.position = ''; })`);
+  writeFileSync(path, Buffer.from(r.data, "base64"));
+}
+
+/** The vetting page's main path, from the interview page's link and back: a question with its help, the sort of
+ * answer and its context; verdicts and a note by the keys and the buttons, saved as given and still there after a
+ * reload; the keys silent while typing in the notes box; the filters, the jump to an id and to the first question
+ * without a verdict; a failed save shown as failed; a stale record and a record of a question no longer asked. */
+async function vetting() {
+  const vetId = () => evaluate("document.querySelector('.vet-question')?.dataset.id ?? null");
+  const onCard = id => until(`document.querySelector('.vet-question')?.dataset.id === ${JSON.stringify(id)}`, `the card of ${id}`);
+  const pressed = v => evaluate(`document.getElementById('verdict-${v}').getAttribute('aria-pressed')`);
+  const saveLine = () => evaluate("[document.getElementById('save-state').dataset.state, document.getElementById('save-state').textContent]");
+  const progress = () => evaluate("document.getElementById('progress').textContent");
+  const untilSaved = async (pred, what) => {
+    for (let i = 0; i < 200; i++) { if (existsSync(vetFile) && pred(verdicts())) return; await wait(25); }
+    throw new Error(`timed out waiting for the verdict file: ${what}`);
+  };
+  const choose = async (value) => { await evaluate(`(()=>{const s=document.getElementById('filter');s.value=${JSON.stringify(value)};s.dispatchEvent(new Event('change'));})()`); };
+  // A reload, waited for: the document loaded afresh has no mark.
+  const reload = async (id) => {
+    await evaluate("window.beforeReload = true");
+    await cdp("Page.reload");
+    await until(`window.beforeReload !== true && document.querySelector('.vet-question')?.dataset.id === ${JSON.stringify(id)}`, `the card of ${id} after a reload`);
+  };
+  const goTo = async (id) => { await type("#jump-id", id); await click("#jump button"); await onCard(id); };
+  const bank = (await fetch(`${origin}/api/vetting`).then(r => r.json()));
+  const total = bank.questions.length;
+  assert(total > 600 && bank.file === vetFile, "the server lists the questions and names the test's verdict file");
+
+  await click("#vet-link");
+  await onCard("$person");
+  assert.equal(await progress(), `1 of ${total}; 0 up, 0 down, 0 skipped`);
+  const first = await evaluate(`({question:document.querySelector('#question-part .prompt-text').innerText, help:document.querySelector('#help-part .help-text').innerText,
+    answer:document.getElementById('answer-text').textContent, options:[...document.querySelectorAll('#answer-options li')].map(l=>l.textContent),
+    id:document.querySelector('#question-id .qid-key').textContent, copy:!!document.getElementById('question-id-copy'),
+    topic:document.getElementById('topic').textContent, scope:document.getElementById('scope').textContent, when:document.getElementById('gate').textContent, words:document.getElementById('words').textContent})`);
+  assert.equal(first.question, "Who is this tax return for?");
+  assert.match(first.help, /^Choose \u201ctogether\u201d if you are married/);
+  assert.equal(first.answer, "One choice from a list");
+  assert.deepEqual(first.options, ["Just me", "Me and my husband or wife, together on one return"]);
+  assert(first.id === "$person" && first.copy, "the id is shown with its copy control");
+  assert.match(first.topic, /^Each person on the return/);
+  assert.equal(first.scope, "Once per return");
+  assert.match(first.when, /^Open from the start/);
+  assert.match(first.words, /^question 6, help \d+; longest sentence of the stored question 6$/);
+
+  // Thumbs up by its key; a note typed with letters that are keys elsewhere; both saved as given.
+  assert(!existsSync(vetFile), "nothing is written before the first verdict");
+  await press("u");
+  await untilSaved(r => r["$person"]?.verdict === "up", "thumbs up on the first question");
+  await until("document.getElementById('verdict-up').getAttribute('aria-pressed') === 'true'", "thumbs up shown as given");
+  assert.match((await saveLine())[1], /^Saved \$person at /);
+  assert.equal(await progress(), `1 of ${total}; 1 up, 0 down, 0 skipped`);
+  await press("n");
+  assert.equal(await evaluate("document.activeElement.id"), "note", "n puts the cursor in the notes box");
+  for (const key of "judkxfg") await press(key);
+  assert.equal(await evaluate("document.getElementById('note').value"), "judkxfg", "letters typed in the notes box are text");
+  assert(await vetId() === "$person" && await pressed("up") === "true", "and move nothing and change no verdict");
+  await type("#note", "plain enough; d u j");
+  await evaluate("document.getElementById('note').dispatchEvent(new Event('input'))");
+  assert.equal((await saveLine())[0], "unsaved", "a typed note reads as not saved until it is");
+  await press("Escape");
+  await untilSaved(r => r["$person"]?.note === "plain enough; d u j" && r["$person"].verdict === "up", "the note beside the verdict");
+  await until("document.getElementById('save-state').dataset.state === 'saved'", "the note shown as saved");
+  const record = verdicts()["$person"];
+  assert(/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$/.test(record.changed) && /^[0-9a-f]{64}$/.test(record.digest) && record.judged.prompt === "Who is this tax return for?" && record.judged.options.length === 2,
+    "the record holds the time, the digest and the wording judged");
+  assert(readFileSync(vetFile, "utf8").endsWith("}\n"), "the file ends with a newline");
+
+  // The next question by its key: a choice list with its labels; thumbs down, cleared, and given again by the buttons.
+  await press("j");
+  await onCard("f1040.status");
+  const status = await evaluate("({answer:document.getElementById('answer-text').textContent, options:[...document.querySelectorAll('#answer-options li')].map(l=>l.textContent)})");
+  assert(status.answer === "One choice from a list" && status.options.length === 5 && status.options.filter(o => / \(not offered on a one-person return\)$/.test(o)).length === 1, `the filing statuses are listed with their labels: ${JSON.stringify(status)}`);
+  await evaluate("window.scrollTo(0, 0)");
+  await screenshot("/private/tmp/tax-ui-vet-choice.png");
+  await press("d");
+  await untilSaved(r => r["f1040.status"]?.verdict === "down", "thumbs down");
+  await until("document.getElementById('verdict-down').getAttribute('aria-pressed') === 'true'", "thumbs down shown");
+  await click("#verdict-clear");
+  await untilSaved(r => !("f1040.status" in r), "a cleared verdict with no note leaves no record");
+  await until("document.getElementById('verdict-down').getAttribute('aria-pressed') === 'false'", "the cleared verdict shown");
+  await click("#verdict-up");
+  await untilSaved(r => r["f1040.status"]?.verdict === "up", "thumbs up by its button");
+  await click("#verdict-down");
+  await untilSaved(r => r["f1040.status"]?.verdict === "down", "the verdict changed");
+  await until("document.getElementById('verdict-down').getAttribute('aria-pressed') === 'true'", "the changed verdict shown");
+
+  // A reload keeps the place, the verdicts and the note.
+  await reload("f1040.status");
+  assert(await pressed("down") === "true" && await pressed("up") === "false", "the verdict is there after a reload");
+  await press("k");
+  await onCard("$person");
+  assert(await pressed("up") === "true" && await evaluate("document.getElementById('note').value") === "plain enough; d u j", "and so are the first question's verdict and note");
+  await press("ArrowRight");
+  await onCard("f1040.status");
+  await press("ArrowLeft");
+  await onCard("$person");
+
+  // A long question by its id; a question asked of a person with its other wordings.
+  await goTo("scope.other_line16");
+  assert(await evaluate("[...document.querySelectorAll('.position .tag')].some(t=>t.textContent==='long')") && /\(long: over 40\)$/.test(await evaluate("document.getElementById('words').textContent")), "a long question is marked");
+  await evaluate("window.scrollTo(0, 0)");
+  await fullShot("/private/tmp/tax-ui-vet-long.png", "#controls, #context-part");
+  await goTo("person.blind");
+  const blind = await evaluate("({main:document.querySelector('#question-part .prompt-text').innerText, variants:[...document.querySelectorAll('#question-part .variant')].map(v=>[v.querySelector('h3').textContent, v.querySelector('.variant-text').innerText.slice(0, 60)]), scope:document.getElementById('scope').textContent, small:parseFloat(getComputedStyle(document.querySelector('.variant-text')).fontSize) < parseFloat(getComputedStyle(document.querySelector('#question-part .prompt-text')).fontSize)})");
+  assert.match(blind.main, /^Were you blind at the end of 2025\?/);
+  assert.deepEqual(blind.variants.map(v => v[0]), ["Asked about the spouse, on a joint return", "Asked about the filer, on a joint return"]);
+  assert(blind.variants[0][1].startsWith("About your spouse \u2014 Was your spouse blind") && blind.variants[1][1].startsWith("About you \u2014 Were you blind") && blind.small, "the spouse's and the joint wordings are beneath the main one, smaller");
+  assert.equal(blind.scope, "Once per person on the return");
+  await fullShot("/private/tmp/tax-ui-vet-person.png", "#controls, #context-part");
+  await goTo("$w2");
+  assert.match(await evaluate("document.getElementById('answer-part').innerText"), /A list the filer builds, naming each entry\s+An entry is one of: Form W-2/);
+
+  // The filters and the jump to the first question without a verdict.
+  await choose("down");
+  await onCard("f1040.status");
+  assert.equal(await evaluate("document.getElementById('filter-count').textContent"), "1 match");
+  await press("j");
+  assert(await vetId() === "f1040.status" && /none after this one/.test(await evaluate("document.getElementById('filter-count').textContent")), "next stays when no later question matches");
+  await choose("noted");
+  await onCard("$person");
+  await choose("long");
+  assert.equal(await evaluate("document.getElementById('filter-count').textContent"), `${bank.questions.filter(q => q.long).length} match`);
+  const longNow = await vetId();
+  assert(bank.questions.find(q => q.id === longNow).long, "the long filter moves to a long question");
+  await choose("unjudged");
+  assert.equal(await evaluate("document.getElementById('filter-count').textContent"), `${total - 2} match`);
+  await choose("all");
+  await goTo("person.blind");
+  await press("f");
+  await onCard(bank.questions[2].id);
+  await click("#first-unjudged");
+  assert.equal(await vetId(), bank.questions[2].id, "the first question without a verdict is the third");
+
+  // A save that fails is shown as failed, the verdict is not shown as given, and the file is as it was.
+  const before = readFileSync(vetFile, "utf8");
+  chmodSync(vetDir, 0o500);
+  try {
+    await press("u");
+    await until("document.getElementById('save-state').dataset.state === 'failed'", "the failed save");
+    assert.match((await saveLine())[1], /^NOT SAVED: /);
+    assert(await pressed("up") === "false" && readFileSync(vetFile, "utf8") === before, "a failed save is not shown as a verdict and writes nothing");
+    assert.equal(await progress(), `3 of ${total}; 1 up, 1 down, 0 skipped`);
+  } finally { chmodSync(vetDir, 0o700); }
+  await click("#save-retry");
+  await untilSaved(r => r[bank.questions[2].id]?.verdict === "up", "the save tried again");
+  await until("document.getElementById('save-state').dataset.state === 'saved' && document.getElementById('verdict-up').getAttribute('aria-pressed') === 'true'", "the retried save shown");
+
+  // A record given on other wording is stale; a record of an id the interview does not ask is listed apart.
+  const { digestOf } = await import(join(root, "engine/dist/vetting.js"));
+  const file = JSON.parse(readFileSync(vetFile, "utf8"));
+  const was = { ...file.records["f1040.status"].judged, prompt: "What was your filing status, as worded before?" };
+  file.records["f1040.status"] = { ...file.records["f1040.status"], judged: was, digest: digestOf(was) };
+  file.records["gone.question"] = { ...file.records["$person"], verdict: "down", note: "asked nothing a person knows" };
+  writeFileSync(vetFile, JSON.stringify(file, null, 2) + "\n");
+  await goTo("f1040.status");
+  await reload("f1040.status");
+  const stale = await evaluate("({banner:document.getElementById('stale')?.innerText ?? '', old:document.querySelector('#stale .as-stored')?.textContent, tags:[...document.querySelectorAll('.position .tag')].map(t=>t.textContent), orphans:document.getElementById('orphans').innerText})");
+  assert.match(stale.banner, /^STALE\. The wording has changed since this was given[\s\S]*Thumbs down/);
+  assert(stale.old === was.prompt && stale.tags.includes("stale"), "the stale record shows the wording it judged");
+  assert(await pressed("down") === "false" && await pressed("up") === "false", "a stale verdict is not shown as a verdict on today's wording");
+  assert.equal(await progress(), `2 of ${total}; 2 up, 0 down, 1 skipped, 1 stale`);
+  assert.match(stale.orphans, /Questions no longer in the interview \(1\)\s[\s\S]*gone\.question \u2014 Thumbs down, with the note \u201casked nothing a person knows\u201d/);
+  await fullShot("/private/tmp/tax-ui-vet-stale.png", "#controls, #context-part");
+  await press("d");
+  await untilSaved(r => r["f1040.status"]?.digest === bank.questions[1].digest && r["f1040.status"].verdict === "down" && "gone.question" in r, "a verdict on today's wording; the orphan kept");
+  await until("!document.getElementById('stale') && document.getElementById('verdict-down').getAttribute('aria-pressed') === 'true'", "the record no longer stale");
+
+  await click("#interview-link");
+  await until("document.readyState==='complete' && !!document.getElementById('notices') && document.getElementById('notices').textContent.includes('Not tax or legal advice')", "the interview page again");
+  return total;
+}
+
 let server, out = "";
 try {
-  server = spawn(process.execPath, [join(root, "engine/dist/main.js"), "serve", "--dir", dir, "--port", "0"], { stdio: ["ignore", "pipe", "pipe"] });
+  server = spawn(process.execPath, [join(root, "engine/dist/main.js"), "serve", "--dir", dir, "--port", "0", "--vetting", vetFile], { stdio: ["ignore", "pipe", "pipe"] });
   server.stdout.on("data", d => { out += d; }); server.stderr.on("data", d => { out += d; });
   for (let i = 0; i < 300 && !/http:\/\/127\.0\.0\.1:\d+\//.test(out); i++) await wait(50);
   origin = out.match(/http:\/\/127\.0\.0\.1:\d+/)?.[0];
@@ -133,6 +326,9 @@ try {
   await cdp("Page.navigate", { url: origin + "/" });
   await until("document.readyState==='complete' && document.getElementById('notices').textContent.includes('Not tax or legal advice')", "the page");
   assert.match(await evaluate("document.getElementById('scope').textContent"), /New York Form IT-201/);
+
+  // The vetting page, reached from this one and left for it again.
+  const vetted = await vetting();
 
   // A new return through the page.
   await type("#new-name", "smoke");
@@ -417,8 +613,10 @@ try {
   console.log(`Browser passed: the person selector with no entry syntax, ${answered} answers through the page's widgets, labelled roster entries (a colliding label suffixed; labels in the answered list, a sheet heading and a question's entry), a help request, a refused blank amount, a correction through the answered list, a derivation with operand links and the answer it depends on, a provisional refusal that became final, a reload, conflicting answers shown as a conflict with links that reopen them.`);
   assert(longShot, "the long question scope.other_line16 was shown in full");
   assert(sawFolded, "a question naming more than two forms was shown with each form folded to one line");
-  console.log("Screenshots: /private/tmp/tax-ui-design-{answered-ids,question-id}.png, /private/tmp/tax-ui-design-{question,status,long,roster,answered,return,sheet-order,refusal-provisional,refusal,refused-sheet,about,narrow}.png, /private/tmp/tax-ui-glosses.png, /private/tmp/tax-ui-conflict.png");
+  console.log(`Vetting page passed: ${vetted} questions listed; verdicts and a note by key and button, kept over a reload; filters and jumps; a failed save shown as failed; a stale record and an orphan.`);
+  console.log("Screenshots: /private/tmp/tax-ui-vet-{choice,long,person,stale}.png, /private/tmp/tax-ui-design-{answered-ids,question-id}.png, /private/tmp/tax-ui-design-{question,status,long,roster,answered,return,sheet-order,refusal-provisional,refusal,refused-sheet,about,narrow}.png, /private/tmp/tax-ui-glosses.png, /private/tmp/tax-ui-conflict.png");
 } finally {
   server?.kill(); ws.close();
   rmSync(dir, { recursive: true, force: true });
+  rmSync(vetDir, { recursive: true, force: true });
 }
