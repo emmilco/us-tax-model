@@ -202,6 +202,9 @@ step refusal_reach "${node[0]}" tools/check_refusal_reach.mjs "$@"
 step interview_rules "${node[@]}" interview-rules "$@"
 # The questions asked of a person, as stored and as shown for each entry: the tracked report is what the built questions give.
 step person_wording "${node[@]}" spouse-wording --report --check "$@"
+# The coverage rows (interview/<year>/coverage/): each situation walked through the built interview ends where its row
+# says, and reports/<year>/interview_coverage.md is what the rows produce.
+step interview_coverage "${node[@]}" interview-coverage "$@"
 step test_integration "${node[@]}" test-integration "$@"
 # The web UI server (serve): synthetic returns in temporary directories, compared with the CLI and the fixtures.
 step test_serve "${node[@]}" test-serve "$@"

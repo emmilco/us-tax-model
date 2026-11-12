@@ -1,0 +1,105 @@
+# Coverage rows: situations the interview is known to handle, checked by walking the built interview
+# (engine/src/interview-coverage.ts; interview/README.md, "Coverage rows"). No model is called.
+#
+# A row: the situation in one plain sentence, the answers a filer in it gives (by the question's exact id, as the
+# answer log has it) and the end the walk must come to. Every question the row does not answer is answered by the
+# background return, which answers only the kinds of question a filer with nothing to report is asked.
+tax_year: 2025
+part: The opening (who the return is for, and the filing status)
+profile: full
+rows:
+  - id: opening.couple
+    design: C.1 row 1 (married, filing together)
+    situation: A married couple puts both incomes on one return and is not asked for a filing status or whose entry is whose.
+    answers:
+      $person: [taxpayer, spouse]
+    expect:
+      records:
+        f1040.status: mfj
+        person[taxpayer].role: taxpayer
+        person[spouse].role: spouse
+      not_asked: [f1040.status]
+  - id: opening.couple_spouse_died
+    design: C.1 row 2 (filing together, spouse died in 2025)
+    situation: A person whose husband or wife died during 2025 files one return for the two of them.
+    answers:
+      $person: [taxpayer, spouse]
+      household.married: false
+      household.spouse_died_2025: true
+    expect:
+      proceeds:
+        f1040.status: mfj
+        household.spouse_died_2025: true
+  - id: opening.pair_not_married
+    design: C.1 row 3 (filing together, not married, no death)
+    situation: Two people who are not married to each other choose one return together.
+    answers:
+      $person: [taxpayer, spouse]
+      household.married: false
+      household.spouse_died_2025: false
+    expect:
+      refused: household.filing_status_conflict
+  - id: opening.separate
+    design: C.1 row 4 (married, filing a separate return)
+    situation: A married person files a return apart from their husband or wife.
+    answers:
+      $person: [taxpayer]
+      f1040.status: mfs
+    expect:
+      refused: s3.mfs
+  - id: opening.living_apart_parent
+    design: C.1 row 5 (married, living apart, child at home; may be head of household)
+    situation: A married parent who lives apart from their husband or wife picks the line about paying for a home and is asked whether they count as unmarried.
+    answers:
+      $person: [taxpayer]
+      f1040.status: hoh
+    expect:
+      asks: household.unmarried
+  - id: opening.unmarried_with_child
+    design: C.1 row 6 (unmarried with a child or supported relative)
+    situation: An unmarried person who pays for the home of their child picks the line about a home, says they were unmarried, and is asked about the cost of the home.
+    answers:
+      $person: [taxpayer]
+      f1040.status: hoh
+      household.unmarried: true
+    expect:
+      asks: household.home_cost
+  - id: opening.widowed_with_child
+    design: C.1 row 7 (widowed in 2023 or 2024 with a child)
+    situation: A person widowed in 2023 or 2024 whose child lives with them picks that line and is asked its five tests.
+    answers:
+      $person: [taxpayer]
+      f1040.status: qss
+    expect:
+      asks: household.qss_eligible
+  - id: opening.single
+    design: C.1 row 8 (unmarried, none of these)
+    situation: An unmarried person with no child or supported relative takes the last line and files as single.
+    answers:
+      $person: [taxpayer]
+      f1040.status: single
+      household.married: false
+      household.spouse_died_2025: false
+    expect:
+      proceeds:
+        f1040.status: single
+        person[taxpayer].role: taxpayer
+  - id: opening.married_picks_single
+    design: C.1 row 9 (married, picks "None of these")
+    situation: A married person takes the line that says they were not married, then says they were married at the end of 2025.
+    answers:
+      $person: [taxpayer]
+      f1040.status: single
+      household.married: true
+    expect:
+      refused: household.filing_status_conflict
+  - id: opening.widowed_this_year_alone
+    design: C.1 row 10 (spouse died in 2025, filing alone)
+    situation: A person whose husband or wife died during 2025 files for themselves alone as single.
+    answers:
+      $person: [taxpayer]
+      f1040.status: single
+      household.married: false
+      household.spouse_died_2025: true
+    expect:
+      refused: household.widowed_2025

@@ -336,6 +336,18 @@ sampling and satisfies the milestone until its subject changes. Runs are guarded
 `--force-rerun REASON`, and an estimate above the owner's $3.00 gate needs `--approve-cost` (`spend.py`, shared with
 `rerun_all.py`).
 
+## Interview coverage rows
+
+`node engine/dist/main.js interview-coverage` (the check-all step `interview_coverage`, beside
+`interview_rules`) walks every row of `interview/<year>/coverage/*.yaml` through the built interview and
+fails, naming the row, when the walk does not end where the row says; it calls no model. It also fails when
+`reports/<year>/interview_coverage.md` is not what the rows produce: `--write` writes the report (after a
+change to the rows, or to the wording of a question or refusal a row meets). `--rows FILE` (repeatable) checks
+other row files instead, without the report, and `--schema FILE` names another schema file holding
+`coverageFile`. The row format, the background return that answers the questions a row leaves out, and what a
+row cannot say are in `interview/README.md`, "Coverage rows". Its `--self-test` is a row of
+`tools/self_tests.py`.
+
 ## Test-data defaults
 
 A hand-authored fixture case states only the answers that make its scenario. `fixtures/<year>/defaults.json` (and,

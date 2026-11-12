@@ -111,6 +111,187 @@
         }
       }
     },
+    "coverageFile": {
+      "type": "object",
+      "description": "Rows of interview/<year>/coverage/: situations the interview is known to handle, each checked by walking the built interview (engine/src/interview-coverage.ts).",
+      "required": [
+        "tax_year",
+        "part",
+        "profile",
+        "rows"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "tax_year": {
+          "type": "integer"
+        },
+        "part": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The part of the interview the rows are about; the report's heading."
+        },
+        "profile": {
+          "enum": [
+            "full",
+            "ny"
+          ],
+          "description": "The interview profile the rows are walked on."
+        },
+        "sets": {
+          "type": "object",
+          "description": "Named groups of answers a row may use.",
+          "propertyNames": {
+            "pattern": "^[a-z0-9][a-z0-9_]*$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "says",
+              "answers"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "says": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What the answers say about the filer, in one plain sentence."
+              },
+              "answers": {
+                "type": "object",
+                "description": "Answers by the question's exact id as the answer log has it (person[taxpayer].age65, $w2@person[taxpayer]); the value as the log holds it.",
+                "propertyNames": {
+                  "minLength": 1
+                },
+                "minProperties": 1
+              }
+            }
+          }
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/coverageRow"
+          }
+        }
+      }
+    },
+    "coverageRow": {
+      "type": "object",
+      "required": [
+        "id",
+        "design",
+        "situation",
+        "expect"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_.-]*$"
+        },
+        "design": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The row of the design's coverage table this row comes from."
+        },
+        "situation": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The situation in one plain sentence."
+        },
+        "replace_when": {
+          "type": "string",
+          "minLength": 1,
+          "description": "On a row written against the interview as it stands before a redesigned part lands: what lands."
+        },
+        "profile": {
+          "enum": [
+            "full",
+            "ny"
+          ]
+        },
+        "uses": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "answers": {
+          "type": "object",
+          "description": "Answers by the question's exact id as the answer log has it (person[taxpayer].age65, $w2@person[taxpayer]); the value as the log holds it.",
+          "propertyNames": {
+            "minLength": 1
+          }
+        },
+        "expect": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "The end the walk must come to: exactly one of asks, refused, records and proceeds.",
+          "properties": {
+            "asks": {
+              "type": "string",
+              "minLength": 1,
+              "description": "This question is the interview's next question."
+            },
+            "refused": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The return is refused at this gate line, by its exact key."
+            },
+            "records": {
+              "type": "object",
+              "description": "Once the row's own answers are given, these inputs hold these values without having been asked.",
+              "propertyNames": {
+                "minLength": 1
+              },
+              "minProperties": 1
+            },
+            "proceeds": {
+              "type": "object",
+              "description": "The return is completed and these inputs hold these values.",
+              "propertyNames": {
+                "minLength": 1
+              },
+              "minProperties": 1
+            },
+            "not_asked": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "Questions not asked before the walk ends."
+            }
+          },
+          "oneOf": [
+            {
+              "required": [
+                "asks"
+              ]
+            },
+            {
+              "required": [
+                "refused"
+              ]
+            },
+            {
+              "required": [
+                "records"
+              ]
+            },
+            {
+              "required": [
+                "proceeds"
+              ]
+            }
+          ]
+        }
+      }
+    },
     "valueType": {
       "type": "string",
       "pattern": "^(Count|Dollars|NonNegDollars|Rate|Bool|Enum\\([a-z_]+\\))$"
