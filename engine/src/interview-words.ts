@@ -22,10 +22,10 @@
 import assert from "node:assert/strict";
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { inputMeta, interviewStatus, loadInterview, questionTemplate, type InterviewData, type RosterChoice } from "./interview.js";
+import { answerEvent, inputMeta, interviewStatus, loadInterview, offeredValues, questionTemplate, replayState, withheldValues, type AnswerEvent, type InterviewData, type RosterChoice } from "./interview.js";
 import { Unanswered, type Answers } from "./interview-rules.js";
 import { casesOf, context } from "./interview-length.js";
-import { jointReturn, shownQuestion } from "./spouse-wording.js";
+import { shownFor } from "./spouse-wording.js";
 import { YEAR } from "./year.js";
 import type { CanonicalData, Inputs } from "./types.js";
 
@@ -70,16 +70,17 @@ export function aboutOf(key: string, labels: Record<string, string>): string {
   return parts.join(" \u203a ");
 }
 
-/** The question for `key` as shown at these answers: wording reworded for the filing status answered, the entries it
- * is about, and the answers offered. */
+/** The question for `key` as shown at these answers (`shownFor`: the spouse phrase reworded for the filing status
+ * answered, the per-person frame and the person named for the entry), the entries it is about, and the answers
+ * offered: an enum's labels in the order shown, without the values withheld. */
 export function shownAt(data: CanonicalData, config: InterviewData, inputs: Inputs, key: string, given: Record<string, string> = {}): Shown {
   const stored = config.questions.find((x) => x.input === questionTemplate(key));
   if (!stored) throw new Error(`no question for ${key}`);
-  const q = shownQuestion(stored, jointReturn(inputs));
+  const q = shownFor(stored, key, inputs);
   const meta = inputMeta(data, key);
   const options: Option[] | null =
     meta.type === "Bool" ? [{ value: true, label: "Yes" }, { value: false, label: "No" }]
-    : meta.type === "Enum" ? meta.values!.map((v) => ({ value: v, label: q.value_labels?.[v] ?? v }))
+    : meta.type === "Enum" ? offeredValues(meta.values!, q.value_order, withheldValues(config, inputs, key)).map((v) => ({ value: v, label: q.value_labels?.[v] ?? v }))
     : meta.type === "Roster" && q.choices ? q.choices.map((c) => ({ value: c.value, label: c.label }))
     : null;
   return { input: key, template: questionTemplate(key), order: q.order, about: aboutOf(key, entryLabels(config, inputs, given)), prompt: q.prompt, help: q.help ?? "", type: meta.type, options };
@@ -127,9 +128,14 @@ export function longestSentence(text: string): number {
 }
 
 /** A return walked as the page walks it: the interview's next question answered from `answers` until the return is
- * complete or refused (the page asks nothing more once a return is refused). Each question as shown when asked. */
+ * complete or refused (the page asks nothing more once a return is refused). Each question as shown when asked. Each
+ * answer becomes its event through `answerEvent` and the state is the log replayed, as for every client of the
+ * interview, so what a roster choice records is recorded here and is not asked. */
 export function pageWalk(data: CanonicalData, config: InterviewData, answers: Answers, labels: Record<string, string> = {}): { shown: Shown[]; status: string } {
-  let inputs: Inputs = structuredClone(config.initial);
+  const events: AnswerEvent[] = [];
+  const replayed = () => replayState(config, [{ version: 1, tax_year: config.tax_year }, ...events]);
+  let state = replayed();
+  let inputs: Inputs = state.inputs;
   const shown: Shown[] = [];
   for (;;) {
     const st = interviewStatus(data, config, inputs);
@@ -138,7 +144,9 @@ export function pageWalk(data: CanonicalData, config: InterviewData, answers: An
     const answer = answers(key, inputs);
     if (!answer) throw new Unanswered(key);
     shown.push(shownAt(data, config, inputs, key, labels));
-    inputs = { ...inputs, [key]: answer.value };
+    events.push(answerEvent(config, state, key, answer.value));
+    state = replayed();
+    inputs = state.inputs;
     if (shown.length > BOUND) throw new Error("the walk did not end");
   }
 }
@@ -276,14 +284,20 @@ function selfTest(): number {
   const given: Inputs = { $person: ["taxpayer", "spouse"], "f1040.status": "mfj", "person[spouse].role": "spouse", "person[taxpayer].role": "taxpayer", "scope.credits": true };
   const walked = pageWalk(ctx.data, config, (k) => (k in given ? { value: given[k] } : undefined));
   assert.equal(walked.status, "refused");
-  assert.deepEqual(walked.shown.map((s) => s.input), ["$person", "f1040.status", "person[spouse].role", "person[taxpayer].role", "scope.credits"]);
+  // A couple's first answer records the filing status and both roles (the stated ones are not asked); one person is asked the status.
+  assert.deepEqual(walked.shown.map((s) => s.input), ["$person", "scope.credits"]);
   assert.throws(() => pageWalk(ctx.data, config, (k) => (k === "$person" ? { value: ["taxpayer"] } : undefined)), Unanswered);
-  const shown = walked.shown.slice(0, 4);
-  assert.deepEqual(shown.map((s) => s.about), ["", "", "Your spouse", "You"]);
-  assert.equal(shown[2]!.prompt, shown[3]!.prompt);
+  const alone: Inputs = { $person: ["taxpayer"], "f1040.status": "single", "scope.credits": true };
+  const shown = pageWalk(ctx.data, config, (k) => (k in alone ? { value: alone[k] } : undefined)).shown.slice(0, 2);
+  assert.deepEqual(shown.map((s) => s.input), ["$person", "f1040.status"]);
+  assert.deepEqual(shown.map((s) => s.options!.length), [2, 4], "who the return is for has two choices; one person is offered four filing statuses, not married filing jointly");
+  assert.ok(!shown[1]!.options!.some((o) => o.value === "mfj"));
+  // A question asked of a person is counted as shown for that person's entry.
+  const blind = shownAt(ctx.data, config, { $person: ["taxpayer", "spouse"], "person[taxpayer].role": "taxpayer", "person[spouse].role": "spouse", "f1040.status": "mfj" }, "person[spouse].blind");
+  assert.ok(blind.prompt.startsWith("About your spouse \u2014 Was your spouse blind"), blind.prompt);
   const joint = reading(shown);
   assert.equal(joint.prompt, shown.reduce((a, s) => a + words(s.prompt), 0));
-  assert.equal(joint.asked, 4);
+  assert.equal(joint.asked, 2);
   assert.ok(joint.options > 0, "the filing statuses and the two choices of who is on the return are options");
   assert.equal(joint.beforeOwn, null);
   console.log(`interview-words self-test: ${4 + walked.shown.length} questions counted, ok`);

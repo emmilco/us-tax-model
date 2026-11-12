@@ -179,14 +179,33 @@ def reader_items(inp, reading, english, brief):
 
 def build_prompt(inp, doc, line, wording, ambiguities, reading, gate_text, enum_values, english, excerpt, reached=(),
                  brief=False):
-    """The review prompt of one question. `wording` is {"prompt", "help", "cite"} as the interview shows it, or None
-    when no profile asks the input; `reading` the readers of the input; `english(doc, id)` a line's rendered English;
-    `brief` lists the readers by label only (the excerpt then holds the question's own pages)."""
+    """The review prompt of one question. `wording` is {"prompt", "help", "cite"} as the interview shows it, with
+    "options" (a labelled enum's values and labels, in the order shown) and "recorded" (the roster choices that record
+    the answer without asking) where the question has them, or None when no profile asks or records the input;
+    `reading` the readers of the input; `english(doc, id)` a line's rendered English; `brief` lists the readers by
+    label only (the excerpt then holds the question's own pages)."""
     asked = (f"Question (input `{inp}`, document {doc}): {indent_rest(wording['prompt'], '  ')}"
              + (f"\nHelp shown with it: {indent_rest(wording['help'], '  ')}" if wording.get("help") else "")
-             if wording else
+             if wording and wording.get("prompt") else
              f"Question text (input `{inp}`, document {doc}; no interview profile asks it): "
              f"{indent_rest(line['expr'].get('source', ''), '  ')}")
+    if wording and wording.get("options"):
+        asked += ("\nThe filer answers by choosing one of these lines, shown in this order (the value each stands for "
+                  "is in backticks):\n" + "\n".join(f"- `{v}`: {label}" for v, label in wording["options"]))
+    if wording and wording.get("recorded"):
+        asked += ("\n" + ("A filer is not always asked this question" if wording.get("prompt") else
+                           "No filer is asked this question")
+                  + ": the answer is recorded, without asking, from the line the filer chooses on another question. "
+                  "Judge each recorded value as the answer of a filer who truthfully chose that line."
+                  + (" A filer who chose another line of that question is asked this one, and is not offered a value "
+                     "that only the other line records." if wording.get("prompt") else ""))
+        seen = set()
+        for r in wording["recorded"]:
+            if r["by"] not in seen:
+                seen.add(r["by"])
+                asked += (f"\nThe other question (`{r['by']}`): {indent_rest(r['question'], '  ')}"
+                          + (f"\n  Help shown with it: {indent_rest(r['help'], '  ')}" if r.get("help") else ""))
+            asked += f"\n- the line \"{r['choice']}\" records `{r['input']}` = `{r['value']}`"
     facts = [f"Accepted answer: {type_text(line, enum_values)}", f"Label: {line['label']}",
              f"Question cites: {line['cite']['doc']} {indent_rest(line['cite']['locator'], '  ')}"]
     if wording and wording.get("cite") and wording["cite"].get("locator") != line["cite"]["locator"]:
@@ -382,13 +401,28 @@ def enum_catalog():
 
 def questions_of(root):
     """{input: {"prompt", "help", "cite"}} from the built interview profiles (the New York profile asks the federal
-    questions too)."""
-    out = {}
+    questions too). A labelled enum also has "options", its values and labels in the order shown. An input that a
+    roster question's choices record (interview/README.md, "Answers a choice records") has "recorded": each choice
+    that records it, with that question's prompt and help, the choice's label, the entry's input and the value; such an
+    input may have no question of its own, and then has no "prompt"."""
+    out, recorded = {}, {}
     for name in ("interview-full.json", "interview-ny.json"):
         path = os.path.join(root, "canonical", str(Y), name)
         if os.path.exists(path):
             for q in json.load(open(path, encoding="utf-8"))["questions"]:
-                out.setdefault(q["input"], {"prompt": q["prompt"], "help": q.get("help", ""), "cite": q.get("cite")})
+                if q["input"] in out:
+                    continue
+                w = out[q["input"]] = {"prompt": q["prompt"], "help": q.get("help", ""), "cite": q.get("cite")}
+                if q.get("value_labels"):
+                    w["options"] = [[v, q["value_labels"][v]] for v in q.get("value_order") or sorted(q["value_labels"])]
+                for c in q.get("choices") or []:
+                    for r in c.get("records") or []:
+                        template = re.sub(r"\[[^\]]+\]", "", r["input"])
+                        recorded.setdefault(template, []).append(
+                            {"by": q["input"], "question": q["prompt"], "help": q.get("help", ""), "choice": c["label"],
+                             "input": r["input"], "value": r["value"]})
+    for template, rows in recorded.items():
+        out.setdefault(template, {})["recorded"] = rows
     return out
 
 

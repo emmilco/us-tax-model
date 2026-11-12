@@ -8,12 +8,12 @@ import { parse as parseYaml } from "yaml";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import type { ValidateFunction } from "ajv";
 import { isMarkedLine, stableStringify } from "./util.js";
-import { entrySyntax, type InterviewData, type RosterChoice } from "./interview.js";
+import { entrySyntax, recordProblems, type InterviewData, type RosterChoice } from "./interview.js";
 import { checkInterview, checkSalesInterview } from "./interview-check.js";
 import { checkedCases, consistencyProblems, defaultsProblems, loadFixtureCases, walkedCases, yearDefaultsFiles } from "./fixture-inputs.js";
 import { runChecks } from "./check.js";
 import { isStructured, parseStructured, textSummary } from "./text.js";
-import { SPOUSE_PHRASE, SPOUSE_POSSESSIVE, spousePhraseNearMisses } from "./spouse-wording.js";
+import { PERSON_FRAME, SPOUSE_PHRASE, SPOUSE_POSSESSIVE, personWordingProblems, spousePhraseNearMisses } from "./spouse-wording.js";
 import { YEAR, nyPath, yearPath } from "./year.js";
 import type {
   CanonicalData,
@@ -247,6 +247,16 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   }
   const bankByInput = new Map(bank.questions.map((q) => [q.input, q]));
   if (bankByInput.size !== bank.questions.length) errors.push("question bank: duplicate inputs");
+  // The per-person frame is shown by the entry's role (spouse-wording.ts), which matches its stored text exactly.
+  if (bank.frames["person"] !== PERSON_FRAME) errors.push(`question bank: the person frame must be exactly "${PERSON_FRAME}", the text the interview shows by the entry's role`);
+  const inputLines = new Map(forms.flatMap((d) => d.lines.filter((l) => l.expr.op === "input").map((l) => [l.id, l] as const)));
+  const topCollections = new Set(forms.filter((d) => d.collection && !d.collection.parent).map((d) => d.id));
+  // An entry input every choice of its roster records is never asked, so it has no question.
+  const neverAsked = new Set<string>();
+  for (const q of bank.questions) for (const c of Array.isArray(q.choices) ? q.choices : []) for (const r of Array.isArray(c.records) ? c.records : []) {
+    const m = typeof r?.input === "string" ? /^([a-z0-9_]+)\[[a-zA-Z0-9_-]+\]\.([a-z0-9_]+)$/.exec(r.input) : null;
+    if (m && bankByInput.has(`${m[1]}.${m[2]}`) && !neverAsked.has(`${m[1]}.${m[2]}`)) { neverAsked.add(`${m[1]}.${m[2]}`); errors.push(`question ${m[1]}.${m[2]}: the choices of ${q.input} record it, so it is never asked; remove it from the bank`); }
+  }
   // A line's label is reworded on the interview's values sheet as a question is, so it is held to the same exact forms.
   for (const doc of [...forms, ...defs]) for (const line of doc.lines) {
     for (const miss of spousePhraseNearMisses(line.label)) errors.push(`line ${line.id}: the label has a near-miss of the spouse phrase ("${miss}"); write exactly "you${SPOUSE_PHRASE}" or "${SPOUSE_POSSESSIVE}"`);
@@ -279,11 +289,16 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       // Only the two exact forms of the spouse phrase are reworded for the filer's return; anything close would be shown as stored.
       for (const miss of spousePhraseNearMisses(text)) errors.push(`${where}: the ${field} has a near-miss of the spouse phrase ("${miss}"); write exactly "you${SPOUSE_PHRASE}" or "${SPOUSE_POSSESSIVE}"`);
     }
+    // A question asked of a person on the return is shown for that person (spouse-wording.ts, `personWording`); the rule
+    // must cover every "you", "your spouse" and "this person" of its prompt and help.
+    for (const p of personWordingProblems({ prompt, help: q.help ?? "" })) errors.push(`${where}: shown for the spouse or the taxpayer, the wording is not covered: ${p}`);
     if (q.choices !== undefined) {
       const ok = q.input.startsWith("$") && Array.isArray(q.choices) && q.choices.length >= 2 && q.choices.every((c) =>
         typeof c.label === "string" && c.label !== "" && Array.isArray(c.value) && c.value.every((k) => /^[a-zA-Z0-9_-]+$/.test(k))
         && new Set(c.value).size === c.value.length && stableStringify(Object.keys(c.labels ?? {}).sort()) === stableStringify([...c.value].sort()));
       if (!ok) errors.push(`${where}: choices must be a roster's, at least two, each a label, distinct entry keys and a label for each key`);
+      // What a choice records beside its roster: only inputs of the entries it creates, or an allow-listed input.
+      else errors.push(...recordProblems(q, inputLines, topCollections, { ...params.enums, ...(nyParams?.enums ?? {}) }, where));
     }
     // Value labels present an enum input's values as the facts they stand for; each label names exactly one value,
     // every value has one, and the answer is still the value.
@@ -303,7 +318,8 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       }
     }
     return { input: q.input, prompt, help: q.help ?? "", order: q.order, cite: cite!, ...(q.choices ? { choices: q.choices } : {}),
-      ...(q.value_labels ? { value_labels: q.value_labels } : {}) };
+      // The options of a labelled enum are shown in the order the bank lists their labels.
+      ...(q.value_labels ? { value_labels: q.value_labels, value_order: Object.keys(q.value_labels) } : {}) };
   };
   const resolved = new Map(bank.questions.flatMap((q) => { const r = resolveQuestion(q); return r ? [[q.input, r] as const] : []; }));
   const loadProfile = (path: string, name: string): InterviewData => {
@@ -349,6 +365,25 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       else if (/cannot prepare|outside this tool|not supported/i.test(text)) errors.push(`${where}: the explanation of a conflict must not describe it as unsupported`);
     }
   }
+  // What the interview adds to a refusal: for a gate line, what the filer can do next (presentation only; the refusal
+  // and its citation are the form data's). Every key is a gate line that is not a consistency check, which has its
+  // explanation.
+  const NOTES = join(INTERVIEW, "refusal_notes.yaml");
+  const refusalNotes = existsSync(NOTES) ? parseYaml(readFileSync(NOTES, "utf8")) as { tax_year: number; notes: Record<string, string> } : null;
+  if (refusalNotes) {
+    const gateLines = new Set([...forms, ...defs].flatMap((d) => d.lines.flatMap((l) => (l.refuses ?? []).map((r) => r.when))));
+    if (!refusalNotes.notes || typeof refusalNotes.notes !== "object") errors.push(`interview/${YEAR}/refusal_notes.yaml: no notes map`);
+    for (const [gate, text] of Object.entries(refusalNotes.notes ?? {})) {
+      const where = `interview/${YEAR}/refusal_notes.yaml: ${gate}`;
+      if (!gateLines.has(gate)) errors.push(`${where}: not a refusal gate (no line's refuses names it)`);
+      if (conflictChecks?.conflicts && gate in conflictChecks.conflicts) errors.push(`${where}: a consistency check has its explanation in conflict_checks.yaml, not a note`);
+      if (typeof text !== "string" || text.trim() === "" || text.includes("\n")) errors.push(`${where}: the note must be one non-empty paragraph`);
+      else { const syntax = entrySyntax(text); if (syntax) errors.push(`${where}: the note states entry syntax (${syntax})`); for (const miss of spousePhraseNearMisses(text)) errors.push(`${where}: the note has a near-miss of the spouse phrase ("${miss}")`); }
+    }
+  }
+  for (const profile of [interview, salesInterview, stage4Interview, fullInterview, ...(nyInterview ? [nyInterview] : [])]) {
+    if (refusalNotes?.notes) profile.refusal_notes = refusalNotes.notes;
+  }
   // Every document under the year's directories must state that year.
   const stated: [string, number][] = [
     ["sources manifest", (JSON.parse(readFileSync(MANIFEST_PATH, "utf-8")) as { tax_year: number }).tax_year],
@@ -357,6 +392,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     ["Stage 4 interview", stage4Interview.tax_year], ["full interview", fullInterview.tax_year],
     ...(nyInterview ? [["New York interview", nyInterview.tax_year] as [string, number]] : []),
     ...(conflictChecks ? [["conflict checks", conflictChecks.tax_year] as [string, number]] : []),
+    ...(refusalNotes ? [["refusal notes", refusalNotes.tax_year] as [string, number]] : []),
     ...[...forms, ...defs].map((d): [string, number] => [d.id, d.tax_year]),
     ...tables.map((t): [string, number] => [`table ${t.id}`, t.tax_year]),
     ...(existsSync(NY_MANIFEST_PATH) ? [["New York sources manifest", nyManifestYear] as [string, number]] : []),

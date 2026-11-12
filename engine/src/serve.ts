@@ -21,9 +21,9 @@ import { appendFileSync, existsSync, readFileSync, readdirSync, realpathSync, st
 import { join, resolve, sep } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { CANON_DIR, loadCanonical } from "./canonical.js";
-import { applyAnswer, inputMeta, interviewView, loadInterview, questionTemplate, replay, type Event, type InterviewData, type JsonDerivation } from "./interview.js";
+import { applyAnswer, inputMeta, interviewView, loadInterview, questionTemplate, recordedTemplates, replay, replayState, withheldValues, type Event, type InterviewData, type JsonDerivation } from "./interview.js";
 import { templateKey } from "./branches.js";
-import { jointReturn, shownQuestion, spouseWording } from "./spouse-wording.js";
+import { jointReturn, shownFor, spouseWording } from "./spouse-wording.js";
 import { standingNotices, type SheetSection } from "./output.js";
 import { formResolver, type FormEntry, type FormRef, type Purpose } from "./form-refs.js";
 import type { CanonicalData } from "./types.js";
@@ -160,15 +160,28 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
    * status as the pending questions and the sheet's labels are (spouse-wording.ts), from the same answers, so
    * every list reads alike. */
   const state = (name: string, events: Event[], view: ReturnType<typeof interviewView>, previous: ReturnType<typeof interviewView> | null) => {
-    const inputs = replay(config, events);
+    const replayed = replayState(config, events);
+    const inputs = replayed.inputs;
     const firstAnswered: string[] = [];
     for (const e of events.slice(1)) if (!firstAnswered.includes(e.input!)) firstAnswered.push(e.input!);
     const joint = jointReturn(inputs);
-    const question = (key: string) => shownQuestion(config.questions.find((q) => q.input === questionTemplate(key))!, joint);
-    const answered = firstAnswered.filter((key) => key in inputs).map((key) => {
-      const q = question(key);
-      return { input: key, value: inputs[key], prompt: q.prompt, help: q.help, order: q.order, cite: q.cite,
-        ...(q.choices ? { choices: q.choices } : {}), ...(q.value_labels ? { value_labels: q.value_labels } : {}), ...inputMeta(data, key), forms: formsFor(key) };
+    const bankQuestion = (key: string) => config.questions.find((q) => q.input === questionTemplate(key));
+    // The answers that go with a roster question's answer and have no question of their own: what its choice recorded,
+    // and, on a log answered when they were asked, the answers given then. Each is shown under that question and is
+    // changed by changing its answer.
+    const neverAsked = recordedTemplates(config);
+    const recorderOf = (key: string): string | undefined => replayed.recorded[key]?.by ?? (bankQuestion(key) ? undefined : neverAsked.get(questionTemplate(key)));
+    const recordedBy = (roster: string) => Object.keys(inputs).filter((key) => recorderOf(key) === roster && inputs[key] !== null).map((key) => {
+      const declared = config.questions.find((q) => q.input === roster)?.choices?.flatMap((c) => c.records ?? []).find((r) => r.input === key && r.value === inputs[key]);
+      return { input: key, value: inputs[key], shown: replayed.recorded[key]?.shown ?? declared?.shown ?? `${key}: ${String(inputs[key])}` };
+    });
+    const answered = firstAnswered.filter((key) => key in inputs && bankQuestion(key) && !replayed.recorded[key]).map((key) => {
+      const q = shownFor(bankQuestion(key)!, key, inputs);
+      const withheld = withheldValues(config, inputs, key);
+      const recorded = q.choices ? recordedBy(key) : [];
+      return { input: key, value: inputs[key], prompt: q.prompt, help: q.help, order: q.order, cite: q.cite, ...(q.frame ? { frame: q.frame } : {}),
+        ...(q.choices ? { choices: q.choices } : {}), ...(q.value_labels ? { value_labels: q.value_labels } : {}), ...(q.value_order ? { value_order: q.value_order } : {}),
+        ...(withheld.length ? { withheld } : {}), ...(recorded.length ? { recorded } : {}), ...inputMeta(data, key), forms: formsFor(key) };
     });
     // Each listed entry's label, by entry path (`person[taxpayer].w2[acme_corp]`), from its roster's latest labelled answer.
     const entryLabels: Record<string, string> = {};
@@ -185,7 +198,8 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
         const reads = conflictReads(view.values, gate, (key) => inputs[key] !== undefined && inputs[key] !== null);
         return {
           gate, explanation: conflictChecks[templateKey(gate)]!,
-          answers: reads.inputs.flatMap((key) => answered.filter((a) => a.input === key)),
+          // An answer a choice recorded is changed through the question that recorded it.
+          answers: [...new Set(reads.inputs.map((key) => recorderOf(key) ?? key))].flatMap((key) => answered.filter((a) => a.input === key)),
           figures: reads.figures.map((line) => {
             const l = lineById.get(templateKey(line));
             return { line, printed: l?.printed ?? "", label: l ? spouseWording(l.label, joint).split("\n")[0]! : line, value: view.values[line]!.value };

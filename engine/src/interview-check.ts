@@ -2,9 +2,10 @@
 // synthetic fixtures; finite enum/Boolean domains are exhaustively enumerated
 // over the questions the interview actually asks: the walk branches on every
 // value of a finite question when it is asked, so each distinct path runs once
-// and inputs the interview never reaches add no work.
+// and inputs the interview never reaches add no work. Every answer becomes its event through
+// `answerEvent` and the state is the log replayed, as for every client of the interview.
 import { resolve } from "node:path";
-import { interviewStatus, replay, type InterviewData } from "./interview.js";
+import { answerEvent, interviewStatus, replay, replayState, type Event, type InterviewData } from "./interview.js";
 import type { CanonicalData, Inputs } from "./types.js";
 import { walkedCases } from "./fixture-inputs.js";
 import { templateKey } from "./branches.js";
@@ -22,13 +23,16 @@ export function checkInterview(data: CanonicalData, config: InterviewData, paths
   for (const fixture of fixtures) {
     if (fixture.id === "ss.early.refusal") continue;
     if (JSON.stringify(fixture.inputs["$person"]) !== JSON.stringify(config.initial["$person"])) continue;
-    const walk = (current: Inputs, events: {input:string;value:unknown}[]): void => {
+    const header: Event = {version:1,tax_year:config.tax_year};
+    const walk = (events: Event[]): void => {
+      const replayed = replayState(config,[header,...events]);
+      const current: Inputs = replayed.inputs;
       try {
         if (events.length >= 100) throw new Error("path did not terminate");
         const state=interviewStatus(data,config,current);
         if(state.status!=="incomplete") {
           paths?.push(`${fixture.id} ${JSON.stringify(events)}`);
-          const reversed=replay(config,[{version:1,tax_year:config.tax_year},...events.toReversed()]);
+          const reversed=replay(config,[header,...events.toReversed()]);
           const b=interviewStatus(data,config,reversed);
           if(state.valuesKey()!==b.valuesKey()||state.status!==b.status) throw new Error("answer order changes result");
           return;
@@ -38,10 +42,10 @@ export function checkInterview(data: CanonicalData, config: InterviewData, paths
         if(question.input in current) throw new Error(`repeated question ${question.input}`);
         if(!state.reachableInputs.includes(question.input)) throw new Error("irrelevant question");
         for (const value of domain(question.input) ?? [fixture.inputs[question.input]])
-          walk({...current,[question.input]:value}, [...events,{input:question.input,value}]);
+          walk([...events,answerEvent(config,replayed,question.input,value)]);
       } catch(e) {errors.push(`${fixture.id}: ${String(e)}`);}
     };
-    walk(structuredClone(config.initial), []);
+    walk([]);
   }
   return errors;
 }
@@ -53,8 +57,10 @@ export function checkSalesInterview(data: CanonicalData, config: InterviewData, 
   const errors: string[]=[];
   for (const fixture of cases) {
     try {
-      let current: Inputs=structuredClone(config.initial);
-      const events:{input:string;value:unknown}[]=[];
+      const header: Event = {version:1,tax_year:config.tax_year};
+      let replayed=replayState(config,[header]);
+      let current: Inputs=replayed.inputs;
+      const events: Event[]=[];
       let ended=false;
       // Each step answers a distinct input of the fixture (a repeat throws), so a path takes at most one step
       // per input plus the final check: the bound is exact, not a guess.
@@ -65,11 +71,15 @@ export function checkSalesInterview(data: CanonicalData, config: InterviewData, 
         const key=state.question?.input;
         if(!key || !(key in fixture.inputs) || key in current) throw new Error(`missing or repeated question ${key}`);
         if(!state.reachableInputs.includes(key)) throw new Error(`irrelevant question ${key}`);
-        events.push({input:key,value:fixture.inputs[key]});
-        current={...current,[key]:fixture.inputs[key]};
+        const event=answerEvent(config,replayed,key,fixture.inputs[key]);
+        // What the choice records must be what the fixture states: otherwise the interview cannot produce this return.
+        for(const r of event.records??[]) if(r.input in fixture.inputs && JSON.stringify(fixture.inputs[r.input])!==JSON.stringify(r.value)) throw new Error(`the answer to ${key} records ${r.input} = ${JSON.stringify(r.value)}, and the fixture states ${JSON.stringify(fixture.inputs[r.input])}`);
+        events.push(event);
+        replayed=replayState(config,[header,...events]);
+        current=replayed.inputs;
       }
       if(!ended) throw new Error("path did not terminate");
-      const reversed=replay(config,[{version:1,tax_year:config.tax_year},...events.toReversed()]);
+      const reversed=replay(config,[header,...events.toReversed()]);
       const a=interviewStatus(data,config,current), b=interviewStatus(data,config,reversed);
       if(a.valuesKey()!==b.valuesKey()||a.status!==b.status)throw new Error("answer order changes result");
     } catch(e) {errors.push(`${fixture.id}: ${String(e)}`);}

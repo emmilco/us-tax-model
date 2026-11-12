@@ -200,6 +200,8 @@ jstep test_fixtures --ny "${node[@]}" test-fixtures
 step refusal_reach "${node[0]}" tools/check_refusal_reach.mjs "$@"
 # The interview rules of the formal gates design: no input set by the interview, order independence, no early completion.
 step interview_rules "${node[@]}" interview-rules "$@"
+# The questions asked of a person, as stored and as shown for each entry: the tracked report is what the built questions give.
+step person_wording "${node[@]}" spouse-wording --report --check "$@"
 step test_integration "${node[@]}" test-integration "$@"
 # The web UI server (serve): synthetic returns in temporary directories, compared with the CLI and the fixtures.
 step test_serve "${node[@]}" test-serve "$@"

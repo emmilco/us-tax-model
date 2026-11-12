@@ -21,14 +21,14 @@ questions in the group that the order does not ask.
 
 | Returns | Complete | Refused | Not walkable | Static asked (mean) | Static max | Closed answers (mean, share) | Floor (mean) | Expected order (mean) | Saved at floor | Saved by expected |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Stage 5 whole returns | 9 | 2 | 0 | 91.1 | 116 | 74.1 (81%) | 91.1 | 91.1 | 0% | 0% |
-| generated returns | 3 | 9 | 0 | 158.3 | 258 | 106.3 (67%) | 158.3 | 158.3 | 0% | 0% |
-| minimal returns | 7 | 0 | 0 | 79.1 | 83 | 75.6 (95%) | 79.1 | 79.1 | 0% | 0% |
+| Stage 5 whole returns | 9 | 2 | 0 | 90.1 | 115 | 74.1 (82%) | 90.1 | 90.1 | 0% | 0% |
+| generated returns | 3 | 9 | 0 | 157.3 | 257 | 106.3 (68%) | 157.3 | 157.3 | 0% | 0% |
+| minimal returns | 7 | 0 | 0 | 78.1 | 82 | 75.6 (97%) | 78.1 | 78.1 | 0% | 0% |
 | social-security profile fixtures | 16 | 5 | 0 | 11.3 | 13 | 6.3 (55%) | 11.3 | 11.3 | 0% | 0% |
 | sales profile fixtures | 58 | 14 | 0 | 62.7 | 110 | 54.2 (86%) | 62.7 | 62.7 | 0% | 0% |
 | stage4 profile fixtures | 69 | 62 | 0 | 73.5 | 112 | 64.6 (88%) | 73.4 | 73.5 | 0% | 0% |
-| **full profile, Stage 5 and generated** | 12 | 11 | 0 | 107.9 | 258 | 82.2 (76%) | 107.9 | 107.9 | 0% | 0% |
-| **all** | 162 | 92 | 0 | 66.3 | 258 | 56.9 (86%) | 66.2 | 66.3 | 0% | 0% |
+| **full profile, Stage 5 and generated** | 12 | 11 | 0 | 106.9 | 257 | 82.2 (77%) | 106.9 | 106.9 | 0% | 0% |
+| **all** | 162 | 92 | 0 | 66.2 | 257 | 56.9 (86%) | 66.1 | 66.2 | 0% | 0% |
 
 ## Closed answers no order avoids (missing-gate candidates)
 
@@ -133,46 +133,46 @@ better order (or a nested `choose`) would not ask. On the full profile these are
 
 | Return | Status | Static | Closed | Floor | Expected |
 |---|---|---|---|---|---|
-| stage5.return.owed | complete | 102 | 81 | 102 | 102 |
-| stage5.return.refund | complete | 81 | 71 | 81 | 81 |
-| stage5.return.itemized | complete | 116 | 80 | 116 | 116 |
-| stage5.refuse.screens | refused | 40 | 35 | - | - |
-| stage5.refuse.other_income | refused | 45 | 41 | - | - |
-| stage5.return.refund_f4952_screens_unused | complete | 81 | 71 | 81 | 81 |
-| stage5.return.refund_f8960_unsupported_unused | complete | 81 | 71 | 81 | 81 |
-| stage5.return.f8960_unsupported_agi_at_threshold | complete | 81 | 71 | 81 | 81 |
-| stage5.return.refund_f8960_refund_unused | complete | 81 | 71 | 81 | 81 |
-| stage5.return.refund_combat_pay_no_children | complete | 81 | 71 | 81 | 81 |
-| stage5.return.itemized_f8960_allocation_unused | complete | 116 | 80 | 116 | 116 |
+| stage5.return.owed | complete | 101 | 81 | 101 | 101 |
+| stage5.return.refund | complete | 80 | 71 | 80 | 80 |
+| stage5.return.itemized | complete | 115 | 80 | 115 | 115 |
+| stage5.refuse.screens | refused | 39 | 35 | - | - |
+| stage5.refuse.other_income | refused | 44 | 41 | - | - |
+| stage5.return.refund_f4952_screens_unused | complete | 80 | 71 | 80 | 80 |
+| stage5.return.refund_f8960_unsupported_unused | complete | 80 | 71 | 80 | 80 |
+| stage5.return.f8960_unsupported_agi_at_threshold | complete | 80 | 71 | 80 | 80 |
+| stage5.return.refund_f8960_refund_unused | complete | 80 | 71 | 80 | 80 |
+| stage5.return.refund_combat_pay_no_children | complete | 80 | 71 | 80 | 80 |
+| stage5.return.itemized_f8960_allocation_unused | complete | 115 | 80 | 115 | 115 |
 
 ### generated returns
 
 | Return | Status | Static | Closed | Floor | Expected |
 |---|---|---|---|---|---|
-| generated.0 | complete | 112 | 90 | 112 | 112 |
-| generated.1 | refused | 101 | 72 | - | - |
-| generated.2 | refused | 130 | 83 | - | - |
-| generated.3 | refused | 139 | 102 | - | - |
-| generated.4 | complete | 258 | 143 | 258 | 258 |
-| generated.5 | refused | 75 | 42 | - | - |
-| generated.6 | complete | 105 | 86 | 105 | 105 |
-| generated.7 | refused | 77 | 55 | - | - |
-| generated.8 | refused | 149 | 104 | - | - |
-| generated.9 | refused | 101 | 72 | - | - |
-| generated.10 | refused | 216 | 147 | - | - |
-| generated.11 | refused | 123 | 82 | - | - |
+| generated.0 | complete | 111 | 90 | 111 | 111 |
+| generated.1 | refused | 100 | 72 | - | - |
+| generated.2 | refused | 129 | 83 | - | - |
+| generated.3 | refused | 138 | 102 | - | - |
+| generated.4 | complete | 257 | 143 | 257 | 257 |
+| generated.5 | refused | 74 | 42 | - | - |
+| generated.6 | complete | 104 | 86 | 104 | 104 |
+| generated.7 | refused | 74 | 55 | - | - |
+| generated.8 | refused | 148 | 104 | - | - |
+| generated.9 | refused | 100 | 72 | - | - |
+| generated.10 | refused | 215 | 147 | - | - |
+| generated.11 | refused | 122 | 82 | - | - |
 
 ### minimal returns
 
 | Return | Status | Static | Closed | Floor | Expected |
 |---|---|---|---|---|---|
-| every gate closed | complete | 77 | 74 | 77 | 77 |
-| div.any = true alone | complete | 83 | 79 | 83 | 83 |
-| f4952.has_interest = true alone | complete | 79 | 75 | 79 | 79 |
-| f8889.coverage_year = "family" alone | complete | 77 | 74 | 77 | 77 |
-| f8889.coverage_year = "changed" alone | complete | 77 | 74 | 77 | 77 |
-| sa.gifts = true alone | complete | 80 | 76 | 80 | 80 |
-| sb.foreign_any = true alone | complete | 81 | 77 | 81 | 81 |
+| every gate closed | complete | 76 | 74 | 76 | 76 |
+| div.any = true alone | complete | 82 | 79 | 82 | 82 |
+| f4952.has_interest = true alone | complete | 78 | 75 | 78 | 78 |
+| f8889.coverage_year = "family" alone | complete | 76 | 74 | 76 | 76 |
+| f8889.coverage_year = "changed" alone | complete | 76 | 74 | 76 | 76 |
+| sa.gifts = true alone | complete | 79 | 76 | 79 | 79 |
+| sb.foreign_any = true alone | complete | 80 | 77 | 80 | 80 |
 
 ### social-security profile fixtures
 
@@ -414,6 +414,7 @@ better order (or a nested `choose`) would not ask. On the full profile these are
 | stage4.feeders.shortloss | complete | 81 | 67 | 81 | 81 |
 
 <!-- Hand-written findings below this line are kept when the tool rewrites the report. -->
+
 
 
 

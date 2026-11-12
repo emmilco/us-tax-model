@@ -7133,6 +7133,20 @@
    "bugs": [
     "BUG-0576"
    ]
+  },
+  "unruled:f1040.status#1": {
+   "subject_sha": "3bc4c2937957f20bb932ba95c86d030df696633424145a0886b7bc2da73951ce",
+   "reason": "No defect: a filer whose spouse was a nonresident alien at any time in 2025 is refused for the return, whichever line is chosen.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "i1040gi p. 14, Head of Household, third bullet, is the route named. The tool does not prepare it: scope.other_income asks \"Nonresident alien status: you or your spouse, for any part of 2025\" and a Yes refuses the return (scope.ready and f1040.line8), so this filer is refused whether the status is answered mfs (refused at s3.mfs) or hoh. The help therefore names only the living-apart route, which the tool prepares (household.unmarried, second bullet). The question is a plain top question by design (docs/2026-11-11_interview_redesign_intent.md, decision 2); the considered-unmarried tests are in household.unmarried beneath it.",
+     "gate": "scope.other_income (refusal on f1040.line8)"
+    }
+   ],
+   "bugs": []
   }
  },
  "baseline": {}

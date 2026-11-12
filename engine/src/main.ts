@@ -23,9 +23,11 @@
 //   node engine/dist/main.js test-serve            the web UI server's tests (synthetic returns, temporary dirs)
 //   node engine/dist/main.js spouse-wording --self-test
 //                                                  the spouse phrase's rewording for display, on constructed texts and the built questions
+//   node engine/dist/main.js spouse-wording --report [--check]
+//                                                  reports/<year>/person_wording.md: each question asked of a person, as stored and as shown
 
-import { readFileSync } from "node:fs";
-import { NY_MODE } from "./year.js";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { NY_MODE, yearPath } from "./year.js";
 import { readDefaultsFile, resolveCase, tableOf } from "./fixture-inputs.js";
 import { runBuild } from "./build.js";
 import { renderAll } from "./render.js";
@@ -50,7 +52,7 @@ import { serveChecks } from "./serve-check.js";
 import { interviewRules } from "./interview-rules.js";
 import { interviewLength } from "./interview-length.js";
 import { interviewWords } from "./interview-words.js";
-import { spouseWordingSelfTest } from "./spouse-wording.js";
+import { personWordingReport, spouseWordingSelfTest } from "./spouse-wording.js";
 
 const command = process.argv[2];
 
@@ -187,11 +189,19 @@ if (command === "review-stage5") {
   process.exit(await interviewWords(process.argv.slice(3)));
 } else if (command === "spouse-wording" && process.argv.includes("--self-test")) {
   process.exit(spouseWordingSelfTest());
+} else if (command === "spouse-wording" && process.argv.includes("--report")) {
+  // Writes reports/<year>/person_wording.md, or with --check fails when the file is not what the built questions give.
+  const path = yearPath("reports", "person_wording.md");
+  const text = personWordingReport();
+  if (process.argv.includes("--check")) {
+    if (!existsSync(path) || readFileSync(path, "utf8") !== text) { console.error(`${path} is not current; run node engine/dist/main.js spouse-wording --report`); process.exit(1); }
+    console.log(`person wording report: current (${path})`);
+  } else { writeFileSync(path, text); console.log(`wrote ${path}`); }
 } else if (command === "check-self-test") {
   runCheckSelfTest();
 } else {
   console.error(
-    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] | test-serve | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules | interview-length [--write] | interview-words [--write] | spouse-wording --self-test",
+    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] | test-serve | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules | interview-length [--write] | interview-words [--write] | spouse-wording --self-test | spouse-wording --report [--check]",
   );
   process.exit(2);
 }

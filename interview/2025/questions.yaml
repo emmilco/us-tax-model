@@ -18,21 +18,31 @@ bank:
   questions:
   - input: $person
     order: 0
-    help: Choose “Me and my spouse” only if you are married and filing a joint return. Forms W-2 and Forms 1099-R (IRA
-      distributions, pensions and annuities) are entered under the person who received them. Amounts that are not asked
-      person by person (interest, dividends, sales, social security benefits, deductions, payments) are entered once,
-      for you and your spouse combined.
-    prompt: 'Who is on this return: just you, or you and your spouse on a joint return?'
+    help: Choose “together” if you are married and the two of you are filing one return, even if only one of you had
+      income. If your husband or wife died during 2025, you can still choose “together”. If you are married but each
+      of you files a separate return, choose “Just me”.
+    prompt: Who is this tax return for?
     choices:
     - label: Just me
       value: [taxpayer]
       labels: { taxpayer: You }
-    - label: Me and my spouse (joint return)
+      records:
+      - input: person[taxpayer].role
+        value: taxpayer
+        shown: The entry “You” is your own.
+    - label: Me and my husband or wife, together on one return
       value: [taxpayer, spouse]
       labels: { taxpayer: You, spouse: Your spouse }
-  - input: person.role
-    order: 0
-    help: Your own entry is the taxpayer's; your spouse's entry is the spouse's.
+      records:
+      - input: person[taxpayer].role
+        value: taxpayer
+        shown: The entry “You” is your own.
+      - input: person[spouse].role
+        value: spouse
+        shown: The entry “Your spouse” is your husband's or wife's.
+      - input: f1040.status
+        value: mfj
+        shown: Your filing status is married filing jointly.
   - input: f8889.allocation
     order: 10
     help: The family limit is figured on each Form 8889 for the months treated as having family coverage (Step 1
@@ -85,6 +95,28 @@ bank:
     order: 15
   - input: f1040.status
     order: 0
+    help: 'Take the first line that is true for you, with one exception: if you are married but lived apart from your
+      husband or wife for the last six months of 2025 and your child lived with you, look at the line about paying for
+      a home before the first line. If a court decree of divorce or legal separation was final by December 31, 2025,
+      you were not married. If you pick one of the lines about a child or relative, later questions check the details
+      (who lived with you, for how long, who paid for the home). If they do not fit, you will be told, and you can
+      come back and choose again.'
+    prompt: Which of these fits you on December 31, 2025?
+    cite:
+      doc: i1040gi
+      locator: p. 13, Filing Status, Single, "You were never married" and "You were legally separated according to
+        your state law under a decree of divorce or separate maintenance"; p. 13, Married Filing Jointly, "They can
+        file a joint return even if only one had income"; p. 14, Married Filing Separately, "if you are married at the
+        end of 2025 and file a separate return"; p. 14, Head of Household, "if you are unmarried and provide a home for
+        certain other persons"; p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6
+        months of 2025"; p. 15, Qualifying Surviving Spouse, "Your spouse died in 2023 or 2024 and you didn’t remarry
+        before the end of 2025"
+    value_labels:
+      mfs: Married, and filing apart from my husband or wife (married filing separately)
+      qss: Widowed in 2023 or 2024, not remarried, and my child lived with me all of 2025 (qualifying surviving spouse)
+      hoh: I paid over half the cost of the home of my child, or of a relative I support (head of household)
+      single: 'None of these: I was not married (single)'
+      mfj: Married, and filing together with my husband or wife on one return (married filing jointly)
   - input: f1040.line3a
     order: 10
   - input: f4952.has_interest
@@ -187,8 +219,8 @@ bank:
       unsupported items are refused with citations.
   - input: person.rrta
     order: 10
-    help: Yes if any Form W-2 of this person reports railroad retirement (RRTA) compensation or tax in box 14, or this person
-      filed Form CT-2 as an employee representative. Railroad retirement compensation is outside this tool and is
+    help: Yes if any of this person's Forms W-2 reports railroad retirement (RRTA) compensation or tax in box 14, or this
+      person filed Form CT-2 as an employee representative. Railroad retirement compensation is outside this tool and is
       refused.
   - input: qbi.dividends
     order: 10
@@ -398,7 +430,9 @@ bank:
     order: 5
     help: 'One entry per distinct employer, not per Form W-2: the excess social security credit turns on the number of
       employers, so an employer''s corrected or additional Forms W-2 are combined under that employer. Leave the list
-      empty if there are none.'
+      empty if there are none. Forms W-2 and Forms 1099-R (IRA distributions, pensions and annuities) are entered under
+      the person who received them. Amounts that are not asked person by person (interest, dividends, sales, social
+      security benefits, deductions, payments) are entered once, for you and your spouse combined.'
     prompt: For this person (you, or your spouse on a joint return) — List the employers that gave you a Form W-2, one entry per
       employer. If one employer gave you more than one Form W-2, list that employer once and enter their boxes combined.
   - input: w2.box1
