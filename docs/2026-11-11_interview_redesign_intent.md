@@ -57,6 +57,27 @@ weakening what the tool guarantees about a completed return.
 7. **On hold until the slice is judged:** the remaining interview-rules rewrites (T-276) and the umbrella gates U3,
    U4 and U1 (T-265), since restructuring the catch-alls changes the gates they touch.
 
+## Decisions on the design of the first slice
+
+The slice is designed in docs/2026-11-11_interview_redesign_slice_design.md. The owner decided, on 2026-11-11:
+
+1. **One answer may record several inputs, narrowly.** The "who is this return for" choice also records each entry's
+   role and, for a couple, the joint filing status. The rule that the interview sets no input is restated to allow
+   this for the inputs of the entries a roster choice creates, plus an allow-list of one (the filing status). The role
+   is not derived inside the model.
+2. **Adoption and a mortgage credit certificate refuse on the fact,** not on the wish to claim the credit.
+3. **`s3.line12` and `s3.line14` refuse** instead of asking the filer to type a total from a form the tool does not
+   prepare.
+4. **The credit instructions that are not archived are archived first** (Forms 3800, 8396, 8801, 8834, 8839, 8859,
+   8911, 8912, 8936, Schedule R and Form 5498-SA), before the precise credit questions are written.
+
+The design's other five open questions stand at its recommendations unless the owner objects on reading it: marriage
+is not moved ahead of the filing status in this slice; refusal questions are asked at their topic; none of the three
+scope changes the sources support (a surviving spouse's inherited HSA, the elderly or disabled credit screened from
+income, a dormant Archer MSA) is made in this slice; the per-person frame becomes "About you" or "About your spouse"
+on a joint return and nothing on a one-person return, applied when shown; and a health FSA question is added after the
+coverage check.
+
 ## Readings ruled out
 
 - A polish pass that rewords the worst questions and keeps the structure. The objection to the catch-alls is to their

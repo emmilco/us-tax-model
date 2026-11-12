@@ -19,7 +19,8 @@ Question numbers are the order in which the interview asked them on his return.
   - `person.role` reads "For this person (you, or your spouse on a joint return) - Whose entry is this, yours (the
     taxpayer) or your spouse's?". It is asked of an entry the interview has just created and labelled, so its answer
     is fixed by question 1 alone. On a joint return it is asked twice.
-  - `person.role` is an input in the model, read by 35 lines; a roster entry's key carries no meaning to the model.
+  - `person.role` is an input in the model, read by 33 lines (34 references; an earlier count of 35 here was a text
+    match, corrected from the slice design); a roster entry's key carries no meaning to the model.
   - Questions 1 and 2 overlap: "Me and my spouse (joint return)" already says the status is married filing jointly,
     and "Just me" says it is not; the status is asked anyway, and the two can be answered inconsistently.
   - `f1040.status` is not worded as a question. Its prompt is "Form 1040, Filing Status checkboxes", it has no help
@@ -41,7 +42,7 @@ Question numbers are the order in which the interview asked them on his return.
   - The question asks about everything NOT on that list: the filer must know what other credits exist to answer it.
   - Its help reads: "Yes if you want any credit not in the question's list of credits this tool figures, or have any
     other amount for Schedule 3 Part I; Yes refuses the return."
-  - A Yes refuses the return. The answer is read by the scope line `scope.ready` and by eight other lines, each as a
+  - A Yes refuses the return. The answer is read by the scope line `scope.ready` and by seven other lines, each as a
     refusal (Form 1040 line 30, Schedule 3 line 8, two credit limit worksheet lines of Schedule 8812, the Form 8863
     worksheet line 5, and two Form 5695 worksheet lines).
   - It is one of four scope screens asked at the start, with `scope.other_income`, `scope.other_line16` and
@@ -140,3 +141,28 @@ those different cats and dogs. We can replace that question with:
 
 Given after notes 2, 3 and 5, each of which is a catch-all question whose Yes refuses the return and which lists
 everything the tool does not handle.
+
+## Corrections from the slice design
+
+The design of the first slice (docs/2026-11-11_interview_redesign_slice_design.md) checked these notes and the intent
+document's paper examples against the form data and the archived instructions. Where it differs, it is the better
+source:
+
+- `person.role` has 33 reading lines, and `scope.credits` seven besides `scope.ready` (corrected above).
+- Schedule 3 Part I has twelve named credits beyond lines 1 to 5, one reserved line, and line 6z, which the 2025
+  instructions say to leave blank: the list of other credits is closed, and shorter than "14 named credits and two
+  other lines".
+- Four of the situations `scope.credits` covers are already refused by other questions (Form 1116, a business's
+  employment credits, Form 2439, a Form 8978 amount).
+- `scope.credits`, read literally, refuses a filer with a fuel credit or another Schedule 3 Part II credit, and two
+  later questions (`s3.line12`, `s3.line14`) then ask every filer to type those amounts in.
+- The "five plain kinds" proposed for the HSA catch-all do not hold: two of them join things a filer would not put
+  together. The design uses nine short questions.
+- About half the credits the tool does not handle are not facts of a life: five are carryovers that only last year's
+  return shows, two are papers received, four are arrangements a person has only if told.
+- The HSA catch-all overlaps other questions (prior-year excess is asked of every person by `person.x_other`; the IRA
+  transfer is asked again at the Form 1099-R), refuses a surviving spouse's inherited HSA that the instructions treat
+  as the spouse's own, and misses money paid out of an Archer MSA.
+- The HSA questions are not asked together: on a walked return they came in four places, separated by 27 unrelated
+  questions.
+- A death in 2025 is asked in six places, each for one form.
