@@ -250,10 +250,13 @@ def gen_case(rng, i):
                        f"{HSA}.months_family": 12 if family else 0, f"{HSA}.age55": age55,
                        f"{HSA}.dec_coverage": "family" if family else "self_only", f"{HSA}.last_month": False})
         features.add("hsa")
-    # The Form 8889 screen is answered on every return: the form asks it whenever the account exists,
-    # contributions or not, and an unanswered screen leaves Schedule 1 and everything after it unknown.
+    # The Form 8889 questions about the account are answered on every return: the form asks them whenever the account
+    # exists, contributions or not, and an unanswered one leaves Schedule 1 and everything after it unknown.
     inputs.update({f"$f8889@{TAXPAYER}": ["hsa"], f"{HSA}.line2": contrib, f"{HSA}.line9": employer, f"{HSA}.line14a": 0,
-                   f"{HSA}.unsupported": False}); facts["hsa_deduction"] = hsa_deduction
+                   **{f"{HSA}.{k}": False for k in ("owner_died", "inherited", "archer", "ira_transfer", "excess_withdrawn",
+                                                     "fsa", "spouse_family", "ira_prior", "testing_prior", "dist_code", "mistake_repaid",
+                                                     "medical_all", "loan")},
+                   f"{HSA}.clear_all_year": True}); facts["hsa_deduction"] = hsa_deduction
     sli = rng.randint(1_000, 300_000) if rng.random() < 0.15 else 0
     inputs.update({"sli.interest": sli}); facts["student_loan_interest"] = sli
     if sli: features.add("student_loan_interest")

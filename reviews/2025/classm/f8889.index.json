@@ -2,406 +2,1111 @@
  "kind": "classm",
  "form": "f8889",
  "family": "claude",
- "base": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+ "base": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
  "lines": [
   {
    "key": "case classm.f8889.1",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": null
   },
   {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line3",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line4",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line5",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line6",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line7",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line8",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line10",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line11",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line12",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line13",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line14b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line14c",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line15",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line16",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.1 — person[spouse].f8889[hsa].line17b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line3",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line4",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line5",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line6",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line7",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line8",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line10",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line11",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line12",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line13",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line14b",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line14c",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line15",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line16",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.1 — person[taxpayer].f8889[hsa].line17b",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "case classm.f8889.2",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": null
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line3",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line3",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line4",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line4",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line5",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line5",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line6",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line6",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line7",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line7",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line8",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line8",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line10",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line10",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line11",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line11",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line12",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line12",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line13",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line13",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line14b",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line14b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line14c",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line14c",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line15",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line15",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line16",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line16",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
-   "key": "classm.f8889.2 — person[sample].f8889[hsa].line17b",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "key": "classm.f8889.2 — person[spouse].f8889[hsa].line17b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line3",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line4",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line5",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line6",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line7",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line8",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line10",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line11",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line12",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line13",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line14b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line14c",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line15",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line16",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.2 — person[taxpayer].f8889[hsa].line17b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "case classm.f8889.3",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": null
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line3",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line4",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line5",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line6",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line7",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line8",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line10",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line11",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line12",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line13",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line14b",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line14c",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line15",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line16",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.3 — person[taxpayer].f8889[hsa].line17b",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "case classm.f8889.4",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": null
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line3",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line4",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line5",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line6",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line7",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line8",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line10",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line11",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line12",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line13",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line14b",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line14c",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line15",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line16",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.4 — person[taxpayer].f8889[hsa].line17b",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "case classm.f8889.5",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": null
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line3",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line4",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line5",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line6",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line7",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line8",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line10",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line11",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line12",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line13",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line14b",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line14c",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line15",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line16",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   },
   {
    "key": "classm.f8889.5 — person[taxpayer].f8889[hsa].line17b",
-   "record": "61905805c3d6a05251ca891d8c4109797639d4a91f8b53067f33baf287d3400d",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f8889.6",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": null
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line3",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line4",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line5",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line6",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line7",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line8",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line10",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line11",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line12",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line13",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line14b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line14c",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line15",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line16",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.6 — person[taxpayer].f8889[hsa].line17b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f8889.7",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": null
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line3",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line4",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line5",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line6",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line7",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line8",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line10",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line11",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line12",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line13",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line14b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line14c",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line15",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line16",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.7 — person[taxpayer].f8889[hsa].line17b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f8889.8",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": null
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line3",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line4",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line5",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line6",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line7",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line8",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line10",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line11",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line12",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line13",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line14b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line14c",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line15",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line16",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.8 — person[taxpayer].f8889[hsa].line17b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f8889.9",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": null
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line3",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line4",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line5",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line6",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line7",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line8",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line10",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line11",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line12",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line13",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line14b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line14c",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line15",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line16",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.9 — person[taxpayer].f8889[hsa].line17b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f8889.10",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": null
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line3",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line4",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line5",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line6",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line7",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line8",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line10",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line11",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line12",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line13",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line14b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line14c",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line15",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line16",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[spouse].f8889[hsa].line17b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line3",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line4",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line5",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line6",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line7",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line8",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line10",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line11",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line12",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line13",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line14b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line14c",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line15",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line16",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.10 — person[taxpayer].f8889[hsa].line17b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f8889.11",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": null
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line3",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line4",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line5",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line6",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line7",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line8",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line10",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line11",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line12",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line13",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line14b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line14c",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line15",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line16",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8889.11 — person[taxpayer].f8889[hsa].line17b",
+   "record": "25f57c298be28808ecac564415c7d1a70438d89afe440579c38417c1ede4282a",
    "status": "AGREE"
   }
  ]

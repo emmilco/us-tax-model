@@ -29,79 +29,11 @@ For the taxpayer's entry only "this person" changes: "this person" to "you" with
 
 The closed lists the rule works from (a framed question with a subject before a word in neither list fails the build):
 
-- verbs after "you" that change for "your spouse": "are" to "is", "were" to "was", "have" to "has", "weren't" to "wasn't", "aren't" to "isn't", "don't" to "doesn't", "file" to "files", "teach" to "teaches", "contribute" to "contributes", "receive" to "receives", "stop" to "stops"
+- verbs after "you" that change for "your spouse": "are" to "is", "were" to "was", "have" to "has", "weren't" to "wasn't", "aren't" to "isn't", "don't" to "doesn't", "file" to "files", "teach" to "teaches", "contribute" to "contributes", "receive" to "receives", "stop" to "stops", "plan" to "plans", "stay" to "stays", "do" to "does"
 - verbs after "this person" or "your spouse" that change for "you": "is" to "are", "was" to "were", "has" to "have", "does" to "do", "isn't" to "aren't", "wasn't" to "weren't", "doesn't" to "don't"
-- words after a subject or an object that need no change: "a", "acquired", "age", "agreed", "an", "and", "applied", "applying", "as", "at", "became", "blind", "born", "by", "can", "can't", "cannot", "claimed", "contributed", "could", "covered", "deducted", "deferred", "did", "died", "enrolled", "filed", "for", "fully", "had", "if", "in", "made", "more", "never", "of", "on", "or", "overtime", "paid", "received", "recharacterized", "repaid", "rolled", "served", "to", "took", "under", "with"
+- words after a subject or an object that need no change: "a", "acquired", "age", "agreed", "an", "and", "applied", "applying", "as", "at", "became", "blind", "born", "by", "can", "can't", "cannot", "claimed", "contributed", "could", "covered", "deducted", "deferred", "did", "died", "enrolled", "filed", "for", "fully", "had", "have", "if", "in", "inherited", "made", "more", "never", "of", "on", "opened", "or", "overtime", "paid", "put", "received", "recharacterized", "repaid", "returned", "rolled", "served", "to", "took", "turned", "under", "with"
 
-84 questions carry the frame.
-
-## `f8889.allocation`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — you and your spouse each have an HSA and family coverage. Do you divide the family contribution limit equally (equal), or by a different allocation you both agree on, such as allocating nothing to one spouse (agreed)? Use the same answer on both Forms 8889.
-
-Shown on a one-person return:
-
-> You and your spouse each have an HSA and family coverage. Do you divide the family contribution limit equally (equal), or by a different allocation you both agree on, such as allocating nothing to one spouse (agreed)? Use the same answer on both Forms 8889.
-
-Shown for you on a couple's return:
-
-> About you — you and your spouse each have an HSA and family coverage. Do you divide the family contribution limit equally (equal), or by a different allocation you both agree on, such as allocating nothing to one spouse (agreed)? Use the same answer on both Forms 8889.
-
-Shown for your spouse:
-
-> About your spouse — you and your spouse each have an HSA and family coverage. Does your spouse divide the family contribution limit equally (equal), or by a different allocation you both agree on, such as allocating nothing to one spouse (agreed)? Use the same answer on both Forms 8889.
-
-**Help, as stored**
-
-> The family limit is figured on each Form 8889 for the months treated as having family coverage (Step 1 of the line 6 instructions).
-
-Shown on a one-person return:
-
-> The family limit is figured on each Form 8889 for the months treated as having family coverage (Step 1 of the line 6 instructions).
-
-Shown for you on a couple's return:
-
-> The family limit is figured on each Form 8889 for the months treated as having family coverage (Step 1 of the line 6 instructions).
-
-Shown for your spouse:
-
-> The family limit is figured on each Form 8889 for the months treated as having family coverage (Step 1 of the line 6 instructions).
-
-## `f8889.allocated`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — the part of the family contribution limit (Step 1) allocated to this person under the allocation you agreed on. The two parts together may not be more than the limit.
-
-Shown on a one-person return:
-
-> The part of the family contribution limit (Step 1) allocated to you under the allocation you agreed on. The two parts together may not be more than the limit.
-
-Shown for you on a couple's return:
-
-> About you — the part of the family contribution limit (Step 1) allocated to you under the allocation you agreed on. The two parts together may not be more than the limit.
-
-Shown for your spouse:
-
-> About your spouse — the part of the family contribution limit (Step 1) allocated to your spouse under the allocation your spouse agreed on. The two parts together may not be more than the limit.
-
-**Help, as stored**
-
-> Your spouse's part is the rest of the limit.
-
-Shown on a one-person return:
-
-> Your spouse's part is the rest of the limit.
-
-Shown for you on a couple's return:
-
-> Your spouse's part is the rest of the limit.
-
-Shown for your spouse:
-
-> Your part is the rest of the limit.
+97 questions carry the frame.
 
 ## `person.rrta`
 
@@ -1319,74 +1251,6 @@ Shown for your spouse:
 
 > Married filing separately and unsupported items are refused with citations.
 
-## `person.x_hsa_value`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — Total value of your HSAs on December 31, 2025, including contributions for 2025 that you made in 2026 (asked only when you have excess HSA contributions)
-
-Shown on a one-person return:
-
-> Total value of your HSAs on December 31, 2025, including contributions for 2025 that you made in 2026 (asked only when you have excess HSA contributions)
-
-Shown for you on a couple's return:
-
-> About you — Total value of your HSAs on December 31, 2025, including contributions for 2025 that you made in 2026 (asked only when you have excess HSA contributions)
-
-Shown for your spouse:
-
-> About your spouse — Total value of your spouse's HSAs on December 31, 2025, including contributions for 2025 that your spouse made in 2026 (asked only when your spouse has excess HSA contributions)
-
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
-
-## `f8889.employer_in_box1`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — Are your employer's HSA contributions above the limit included in your wages in Form W-2 box 1? (Answer no if the employer has not included them; asked only when employer contributions exceed the limit.)
-
-Shown on a one-person return:
-
-> Are your employer's HSA contributions above the limit included in your wages in Form W-2 box 1? (Answer no if the employer has not included them; asked only when employer contributions exceed the limit.)
-
-Shown for you on a couple's return:
-
-> About you — Are your employer's HSA contributions above the limit included in your wages in Form W-2 box 1? (Answer no if the employer has not included them; asked only when employer contributions exceed the limit.)
-
-Shown for your spouse:
-
-> About your spouse — Are your spouse's employer's HSA contributions above the limit included in your spouse's wages in Form W-2 box 1? (Answer no if the employer has not included them; asked only when employer contributions exceed the limit.)
-
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
-
 ## `$retirement`
 
 **Question, as stored**
@@ -1493,539 +1357,1169 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Did you, your employer or someone else contribute to a health savings account (HSA) for you for 2025 (including a qualified HSA funding distribution, a direct transfer from your IRA to your HSA), did your HSA make a distribution in 2025 (Form 1099-SA), did you stop being an eligible individual during a testing period (Form 8889 Part III), or did you acquire an interest in an HSA because the account beneficiary died?
+> For this person (you, or your spouse on a joint return) — Did you have a health savings account (HSA) in 2025, or get money from one?
 
 Shown on a one-person return:
 
-> Did you, your employer or someone else contribute to a health savings account (HSA) for you for 2025 (including a qualified HSA funding distribution, a direct transfer from your IRA to your HSA), did your HSA make a distribution in 2025 (Form 1099-SA), did you stop being an eligible individual during a testing period (Form 8889 Part III), or did you acquire an interest in an HSA because the account beneficiary died?
+> Did you have a health savings account (HSA) in 2025, or get money from one?
 
 Shown for you on a couple's return:
 
-> About you — Did you, your employer or someone else contribute to a health savings account (HSA) for you for 2025 (including a qualified HSA funding distribution, a direct transfer from your IRA to your HSA), did your HSA make a distribution in 2025 (Form 1099-SA), did you stop being an eligible individual during a testing period (Form 8889 Part III), or did you acquire an interest in an HSA because the account beneficiary died?
+> About you — Did you have a health savings account (HSA) in 2025, or get money from one?
 
 Shown for your spouse:
 
-> About your spouse — Did your spouse, your spouse's employer or someone else contribute to a health savings account (HSA) for your spouse for 2025 (including a qualified HSA funding distribution, a direct transfer from your spouse's IRA to your spouse's HSA), did your spouse's HSA make a distribution in 2025 (Form 1099-SA), did your spouse stop being an eligible individual during a testing period (Form 8889 Part III), or did your spouse acquire an interest in an HSA because the account beneficiary died?
+> About your spouse — Did your spouse have a health savings account (HSA) in 2025, or get money from one?
 
 **Help, as stored**
 
-> One Form 8889 per person covers all of that person's HSAs.
+> Signs that you had one: box 12 of your Form W-2 shows the letter W, or the bank that holds the account sent you a Form 5498-SA (money put in) or a Form 1099-SA (money paid out). Answer Yes even if nothing went in or came out in 2025, and if an HSA, or money from one, came from someone who died. A flexible spending account (FSA) is not an HSA.
 
 Shown on a one-person return:
 
-> One Form 8889 per person covers all of that person's HSAs.
+> Signs that you had one: box 12 of your Form W-2 shows the letter W, or the bank that holds the account sent you a Form 5498-SA (money put in) or a Form 1099-SA (money paid out). Answer Yes even if nothing went in or came out in 2025, and if an HSA, or money from one, came from someone who died. A flexible spending account (FSA) is not an HSA.
 
 Shown for you on a couple's return:
 
-> One Form 8889 per person covers all of that person's HSAs.
+> Signs that you had one: box 12 of your Form W-2 shows the letter W, or the bank that holds the account sent you a Form 5498-SA (money put in) or a Form 1099-SA (money paid out). Answer Yes even if nothing went in or came out in 2025, and if an HSA, or money from one, came from someone who died. A flexible spending account (FSA) is not an HSA.
 
 Shown for your spouse:
 
-> One Form 8889 per person covers all of that person's HSAs.
+> Signs that your spouse had one: box 12 of your spouse's Form W-2 shows the letter W, or the bank that holds the account sent your spouse a Form 5498-SA (money put in) or a Form 1099-SA (money paid out). Answer Yes even if nothing went in or came out in 2025, and if an HSA, or money from one, came from someone who died. A flexible spending account (FSA) is not an HSA.
 
-## `f8889.line2`
+## `f8889.owner_died`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — HSA contributions you made for 2025 (or those made on your behalf), including those made by April 15, 2026 that were for 2025 (or by a later date if you served in, or in support of, the U.S. Armed Forces in a designated combat zone or contingency operation); do not include employer contributions, payroll contributions through a cafeteria plan, rollovers, amounts the trustee of another of your HSAs transferred directly to this one (a trustee-to-trustee transfer), or qualified HSA funding distributions; zero if none
+> For this person (you, or your spouse on a joint return) — Did the owner of this HSA die in 2025?
 
 Shown on a one-person return:
 
-> HSA contributions you made for 2025 (or those made on your behalf), including those made by April 15, 2026 that were for 2025 (or by a later date if you served in, or in support of, the U.S. Armed Forces in a designated combat zone or contingency operation); do not include employer contributions, payroll contributions through a cafeteria plan, rollovers, amounts the trustee of another of your HSAs transferred directly to this one (a trustee-to-trustee transfer), or qualified HSA funding distributions; zero if none
+> Did the owner of this HSA die in 2025?
 
 Shown for you on a couple's return:
 
-> About you — HSA contributions you made for 2025 (or those made on your behalf), including those made by April 15, 2026 that were for 2025 (or by a later date if you served in, or in support of, the U.S. Armed Forces in a designated combat zone or contingency operation); do not include employer contributions, payroll contributions through a cafeteria plan, rollovers, amounts the trustee of another of your HSAs transferred directly to this one (a trustee-to-trustee transfer), or qualified HSA funding distributions; zero if none
+> About you — Did the owner of this HSA die in 2025?
 
 Shown for your spouse:
 
-> About your spouse — HSA contributions your spouse made for 2025 (or those made on your spouse's behalf), including those made by April 15, 2026 that were for 2025 (or by a later date if your spouse served in, or in support of, the U.S. Armed Forces in a designated combat zone or contingency operation); do not include employer contributions, payroll contributions through a cafeteria plan, rollovers, amounts the trustee of another of your spouse's HSAs transferred directly to this one (a trustee-to-trustee transfer), or qualified HSA funding distributions; zero if none
+> About your spouse — Did the owner of this HSA die in 2025?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> The owner is the person these questions are about. Answer Yes on that person's final return, and for that person on a joint return filed with the surviving husband or wife.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> The owner is the person these questions are about. Answer Yes on that person's final return, and for that person on a joint return filed with the surviving husband or wife.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> The owner is the person these questions are about. Answer Yes on that person's final return, and for that person on a joint return filed with the surviving husband or wife.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> The owner is the person these questions are about. Answer Yes on that person's final return, and for that person on a joint return filed with the surviving husband or wife.
+
+## `f8889.inherited`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did you get an HSA, or money from one, because its owner died?
+
+Shown on a one-person return:
+
+> Did you get an HSA, or money from one, because its owner died?
+
+Shown for you on a couple's return:
+
+> About you — Did you get an HSA, or money from one, because its owner died?
+
+Shown for your spouse:
+
+> About your spouse — Did your spouse get an HSA, or money from one, because its owner died?
+
+**Help, as stored**
+
+> For example, a parent, or a husband or wife who has died, named you as the beneficiary of their HSA. Answer Yes whatever year the owner died in.
+
+Shown on a one-person return:
+
+> For example, a parent, or a husband or wife who has died, named you as the beneficiary of their HSA. Answer Yes whatever year the owner died in.
+
+Shown for you on a couple's return:
+
+> For example, a parent, or a husband or wife who has died, named you as the beneficiary of their HSA. Answer Yes whatever year the owner died in.
+
+Shown for your spouse:
+
+> For example, a parent, or a husband or wife who has died, named your spouse as the beneficiary of their HSA. Answer Yes whatever year the owner died in.
+
+## `f8889.archer`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did you or your spouse have an Archer MSA in 2025?
+
+Shown on a one-person return:
+
+> Did you or your spouse have an Archer MSA in 2025?
+
+Shown for you on a couple's return:
+
+> About you — Did you or your spouse have an Archer MSA in 2025?
+
+Shown for your spouse:
+
+> About your spouse — Did your spouse or you have an Archer MSA in 2025?
+
+**Help, as stored**
+
+> An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Answer Yes also if money was put into one for 2025 after the year ended. If you have never heard of it, the answer is No.
+
+Shown on a one-person return:
+
+> An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Answer Yes also if money was put into one for 2025 after the year ended. If you have never heard of it, the answer is No.
+
+Shown for you on a couple's return:
+
+> An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Answer Yes also if money was put into one for 2025 after the year ended. If you have never heard of it, the answer is No.
+
+Shown for your spouse:
+
+> An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Answer Yes also if money was put into one for 2025 after the year ended. If your spouse has never heard of it, the answer is No.
 
 ## `f8889.line9`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Employer contributions to your HSAs for 2025, including payroll contributions through a cafeteria plan (Form W-2 box 12, code W, less employer contributions for 2024 included there, plus employer contributions for 2025 made in 2026); zero if none
+> For this person (you, or your spouse on a joint return) — How much did your employer put into your HSA for 2025, including money taken out of your pay?
 
 Shown on a one-person return:
 
-> Employer contributions to your HSAs for 2025, including payroll contributions through a cafeteria plan (Form W-2 box 12, code W, less employer contributions for 2024 included there, plus employer contributions for 2025 made in 2026); zero if none
+> How much did your employer put into your HSA for 2025, including money taken out of your pay?
 
 Shown for you on a couple's return:
 
-> About you — Employer contributions to your HSAs for 2025, including payroll contributions through a cafeteria plan (Form W-2 box 12, code W, less employer contributions for 2024 included there, plus employer contributions for 2025 made in 2026); zero if none
+> About you — How much did your employer put into your HSA for 2025, including money taken out of your pay?
 
 Shown for your spouse:
 
-> About your spouse — Employer contributions to your spouse's HSAs for 2025, including payroll contributions through a cafeteria plan (Form W-2 box 12, code W, less employer contributions for 2024 included there, plus employer contributions for 2025 made in 2026); zero if none
+> About your spouse — How much did your spouse's employer put into your spouse's HSA for 2025, including money taken out of your spouse's pay?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> Use the amount in box 12 of your Form W-2 next to the letter W. Take off any part of it that was for 2024, and add anything your employer put in for 2025 after December 31, 2025. Zero if none.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Use the amount in box 12 of your Form W-2 next to the letter W. Take off any part of it that was for 2024, and add anything your employer put in for 2025 after December 31, 2025. Zero if none.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Use the amount in box 12 of your Form W-2 next to the letter W. Take off any part of it that was for 2024, and add anything your employer put in for 2025 after December 31, 2025. Zero if none.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> Use the amount in box 12 of your spouse's Form W-2 next to the letter W. Take off any part of it that was for 2024, and add anything your spouse's employer put in for 2025 after December 31, 2025. Zero if none.
 
-## `f8889.unsupported`
+## `f8889.line2`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Any of these: a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, any contribution by anyone to your spouse's Archer MSA; excess HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified HSA funding distribution); an HSA you acquired because of the account beneficiary's death; the HSA of a person who died in 2025 whose estate is the beneficiary (its value at death is included on the final return); a deemed distribution from an HSA in 2025 (a prohibited transaction, or any part of an HSA used as security for a loan); a withdrawal of excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions; a mistaken distribution you repaid to your HSA; or this person died in 2025 (a joint return with a spouse who died in 2025, or the final return of a person who died in 2025), since the last month of a decedent's tax year is the month of death, not December?
+> For this person (you, or your spouse on a joint return) — How much did you put into your HSA for 2025 yourself, not counting money in box 12 of your Form W-2?
 
 Shown on a one-person return:
 
-> Any of these: a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, any contribution by anyone to your spouse's Archer MSA; excess HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified HSA funding distribution); an HSA you acquired because of the account beneficiary's death; the HSA of a person who died in 2025 whose estate is the beneficiary (its value at death is included on the final return); a deemed distribution from an HSA in 2025 (a prohibited transaction, or any part of an HSA used as security for a loan); a withdrawal of excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions; a mistaken distribution you repaid to your HSA; or you died in 2025 (a joint return with a spouse who died in 2025, or the final return of a person who died in 2025), since the last month of a decedent's tax year is the month of death, not December?
+> How much did you put into your HSA for 2025 yourself, not counting money in box 12 of your Form W-2?
 
 Shown for you on a couple's return:
 
-> About you — Any of these: a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, any contribution by anyone to your spouse's Archer MSA; excess HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified HSA funding distribution); an HSA you acquired because of the account beneficiary's death; the HSA of a person who died in 2025 whose estate is the beneficiary (its value at death is included on the final return); a deemed distribution from an HSA in 2025 (a prohibited transaction, or any part of an HSA used as security for a loan); a withdrawal of excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions; a mistaken distribution you repaid to your HSA; or you died in 2025 (a joint return with a spouse who died in 2025, or the final return of a person who died in 2025), since the last month of a decedent's tax year is the month of death, not December?
+> About you — How much did you put into your HSA for 2025 yourself, not counting money in box 12 of your Form W-2?
 
 Shown for your spouse:
 
-> About your spouse — Any of these: a qualified HSA funding distribution from an IRA in 2025; contributions by your spouse or your spouse's employer to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, any contribution by anyone to your Archer MSA; excess HSA contributions from an earlier year that remain in your spouse's HSA; failing to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified HSA funding distribution); an HSA your spouse acquired because of the account beneficiary's death; the HSA of a person who died in 2025 whose estate is the beneficiary (its value at death is included on the final return); a deemed distribution from an HSA in 2025 (a prohibited transaction, or any part of an HSA used as security for a loan); a withdrawal of excess contributions or their earnings, made in 2025 or in 2026 by the due date of your spouse's 2025 return, including extensions; a mistaken distribution your spouse repaid to your spouse's HSA; or your spouse died in 2025 (a joint return with a spouse who died in 2025, or the final return of a person who died in 2025), since the last month of a decedent's tax year is the month of death, not December?
+> About your spouse — How much did your spouse put into your spouse's HSA for 2025 himself or herself, not counting money in box 12 of your spouse's Form W-2?
 
 **Help, as stored**
 
-> HSA distributions that were not used for qualified medical expenses are not among these; Form 8889 Part II asks about them separately.
+> Count deposits by you, or by anyone other than your employer, that were for 2025, made up to April 15, 2026 (later if you served in a combat zone). Box 12 of your Form W-2 shows, next to the letter W, what your employer put in and what was taken out of your pay before tax; leave that out, and leave out pre-tax money taken from your pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your pay after tax counts here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Zero if none.
 
 Shown on a one-person return:
 
-> HSA distributions that were not used for qualified medical expenses are not among these; Form 8889 Part II asks about them separately.
+> Count deposits by you, or by anyone other than your employer, that were for 2025, made up to April 15, 2026 (later if you served in a combat zone). Box 12 of your Form W-2 shows, next to the letter W, what your employer put in and what was taken out of your pay before tax; leave that out, and leave out pre-tax money taken from your pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your pay after tax counts here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Zero if none.
 
 Shown for you on a couple's return:
 
-> HSA distributions that were not used for qualified medical expenses are not among these; Form 8889 Part II asks about them separately.
+> Count deposits by you, or by anyone other than your employer, that were for 2025, made up to April 15, 2026 (later if you served in a combat zone). Box 12 of your Form W-2 shows, next to the letter W, what your employer put in and what was taken out of your pay before tax; leave that out, and leave out pre-tax money taken from your pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your pay after tax counts here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Zero if none.
 
 Shown for your spouse:
 
-> HSA distributions that were not used for qualified medical expenses are not among these; Form 8889 Part II asks about them separately.
+> Count deposits by your spouse, or by anyone other than your spouse's employer, that were for 2025, made up to April 15, 2026 (later if your spouse served in a combat zone). Box 12 of your spouse's Form W-2 shows, next to the letter W, what your spouse's employer put in and what was taken out of your spouse's pay before tax; leave that out, and leave out pre-tax money taken from your spouse's pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your spouse's pay after tax counts here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Zero if none.
+
+## `f8889.ira_transfer`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was any money moved into your HSA straight from an IRA in 2025?
+
+Shown on a one-person return:
+
+> Was any money moved into your HSA straight from an IRA in 2025?
+
+Shown for you on a couple's return:
+
+> About you — Was any money moved into your HSA straight from an IRA in 2025?
+
+Shown for your spouse:
+
+> About your spouse — Was any money moved into your spouse's HSA straight from an IRA in 2025?
+
+**Help, as stored**
+
+> The IRA's custodian sends the money directly to the HSA. Money you took out of an IRA and deposited yourself does not count.
+
+Shown on a one-person return:
+
+> The IRA's custodian sends the money directly to the HSA. Money you took out of an IRA and deposited yourself does not count.
+
+Shown for you on a couple's return:
+
+> The IRA's custodian sends the money directly to the HSA. Money you took out of an IRA and deposited yourself does not count.
+
+Shown for your spouse:
+
+> The IRA's custodian sends the money directly to the HSA. Money your spouse took out of an IRA and deposited himself or herself does not count.
+
+## `f8889.excess_withdrawn`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — In 2025, or in 2026 before filing this return, did you take money back out of your HSA because too much had been put in?
+
+Shown on a one-person return:
+
+> In 2025, or in 2026 before filing this return, did you take money back out of your HSA because too much had been put in?
+
+Shown for you on a couple's return:
+
+> About you — In 2025, or in 2026 before filing this return, did you take money back out of your HSA because too much had been put in?
+
+Shown for your spouse:
+
+> About your spouse — In 2025, or in 2026 before filing this return, did your spouse take money back out of your spouse's HSA because too much had been put in?
+
+**Help, as stored**
+
+> This is called withdrawing excess contributions. It covers money put in by you, your employer or anyone else. Answer Yes also if you plan to do it before the filing deadline, extensions included.
+
+Shown on a one-person return:
+
+> This is called withdrawing excess contributions. It covers money put in by you, your employer or anyone else. Answer Yes also if you plan to do it before the filing deadline, extensions included.
+
+Shown for you on a couple's return:
+
+> This is called withdrawing excess contributions. It covers money put in by you, your employer or anyone else. Answer Yes also if you plan to do it before the filing deadline, extensions included.
+
+Shown for your spouse:
+
+> This is called withdrawing excess contributions. It covers money put in by your spouse, your spouse's employer or anyone else. Answer Yes also if your spouse plans to do it before the filing deadline, extensions included.
 
 ## `f8889.coverage_year`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Was your high-deductible health plan (HDHP) coverage self-only all year, family all year, or did it change during 2025 (including starting or ending)?
->
-> - Self-only all year: on the first day of every month of 2025 you were an eligible individual with self-only HDHP coverage, and no month counts as family coverage under the rules below.
-> - Family all year: on the first day of every month of 2025 you were an eligible individual with family HDHP coverage, or counted as having it under the rules below.
-> - Changed: anything else, including coverage that started, ended or changed type during 2025, any month in which you were not an eligible individual, or if you are not sure. The month-by-month questions follow.
->
-> An eligible individual on the first day of a month:
-> - is covered by an HDHP
-> - has no other health coverage, apart from the coverage the instructions disregard (accident, disability, dental, vision, long-term care, telehealth and other remote care, workers' compensation, tort or property liability insurance, insurance for a specified disease or illness, and insurance paying a fixed amount per day of hospitalization); a general-purpose health FSA or HRA that pays your medical expenses, yours or your spouse's, is other health coverage, while VA care for a service-connected disability and benefits under surprise billing laws are not
-> - is not enrolled in Medicare, counting Medicare coverage backdated to an earlier month
-> - cannot be claimed as a dependent on someone else's 2025 return
->
-> A month counts as family coverage:
-> - if you were covered by a family HDHP (HDHP coverage for you and at least one other person, such as an employee-plus-spouse or employee-plus-children tier), including as a member of someone else's plan (your spouse's or a parent's, for example)
-> - if you were covered by a self-only HDHP and a family HDHP at the same time
-> - if you and your spouse were both eligible individuals and either of you had family HDHP coverage
+> For this person (you, or your spouse on a joint return) — Was your health plan in 2025 a high-deductible plan that works with an HSA, and the same kind all year?
 
 Shown on a one-person return:
 
-> Was your high-deductible health plan (HDHP) coverage self-only all year, family all year, or did it change during 2025 (including starting or ending)?
->
-> - Self-only all year: on the first day of every month of 2025 you were an eligible individual with self-only HDHP coverage, and no month counts as family coverage under the rules below.
-> - Family all year: on the first day of every month of 2025 you were an eligible individual with family HDHP coverage, or counted as having it under the rules below.
-> - Changed: anything else, including coverage that started, ended or changed type during 2025, any month in which you were not an eligible individual, or if you are not sure. The month-by-month questions follow.
->
-> An eligible individual on the first day of a month:
-> - is covered by an HDHP
-> - has no other health coverage, apart from the coverage the instructions disregard (accident, disability, dental, vision, long-term care, telehealth and other remote care, workers' compensation, tort or property liability insurance, insurance for a specified disease or illness, and insurance paying a fixed amount per day of hospitalization); a general-purpose health FSA or HRA that pays your medical expenses, yours or your spouse's, is other health coverage, while VA care for a service-connected disability and benefits under surprise billing laws are not
-> - is not enrolled in Medicare, counting Medicare coverage backdated to an earlier month
-> - cannot be claimed as a dependent on someone else's 2025 return
->
-> A month counts as family coverage:
-> - if you were covered by a family HDHP (HDHP coverage for you and at least one other person, such as an employee-plus-spouse or employee-plus-children tier), including as a member of someone else's plan (your spouse's or a parent's, for example)
-> - if you were covered by a self-only HDHP and a family HDHP at the same time
-> - if you and your spouse were both eligible individuals and either of you had family HDHP coverage
+> Was your health plan in 2025 a high-deductible plan that works with an HSA, and the same kind all year?
 
 Shown for you on a couple's return:
 
-> About you — Was your high-deductible health plan (HDHP) coverage self-only all year, family all year, or did it change during 2025 (including starting or ending)?
->
-> - Self-only all year: on the first day of every month of 2025 you were an eligible individual with self-only HDHP coverage, and no month counts as family coverage under the rules below.
-> - Family all year: on the first day of every month of 2025 you were an eligible individual with family HDHP coverage, or counted as having it under the rules below.
-> - Changed: anything else, including coverage that started, ended or changed type during 2025, any month in which you were not an eligible individual, or if you are not sure. The month-by-month questions follow.
->
-> An eligible individual on the first day of a month:
-> - is covered by an HDHP
-> - has no other health coverage, apart from the coverage the instructions disregard (accident, disability, dental, vision, long-term care, telehealth and other remote care, workers' compensation, tort or property liability insurance, insurance for a specified disease or illness, and insurance paying a fixed amount per day of hospitalization); a general-purpose health FSA or HRA that pays your medical expenses, yours or your spouse's, is other health coverage, while VA care for a service-connected disability and benefits under surprise billing laws are not
-> - is not enrolled in Medicare, counting Medicare coverage backdated to an earlier month
-> - cannot be claimed as a dependent on someone else's 2025 return
->
-> A month counts as family coverage:
-> - if you were covered by a family HDHP (HDHP coverage for you and at least one other person, such as an employee-plus-spouse or employee-plus-children tier), including as a member of someone else's plan (your spouse's or a parent's, for example)
-> - if you were covered by a self-only HDHP and a family HDHP at the same time
-> - if you and your spouse were both eligible individuals and either of you had family HDHP coverage
+> About you — Was your health plan in 2025 a high-deductible plan that works with an HSA, and the same kind all year?
 
 Shown for your spouse:
 
-> About your spouse — Was your spouse's high-deductible health plan (HDHP) coverage self-only all year, family all year, or did it change during 2025 (including starting or ending)?
->
-> - Self-only all year: on the first day of every month of 2025 your spouse was an eligible individual with self-only HDHP coverage, and no month counts as family coverage under the rules below.
-> - Family all year: on the first day of every month of 2025 your spouse was an eligible individual with family HDHP coverage, or counted as having it under the rules below.
-> - Changed: anything else, including coverage that started, ended or changed type during 2025, any month in which your spouse was not an eligible individual, or if your spouse is not sure. The month-by-month questions follow.
->
-> An eligible individual on the first day of a month:
-> - is covered by an HDHP
-> - has no other health coverage, apart from the coverage the instructions disregard (accident, disability, dental, vision, long-term care, telehealth and other remote care, workers' compensation, tort or property liability insurance, insurance for a specified disease or illness, and insurance paying a fixed amount per day of hospitalization); a general-purpose health FSA or HRA that pays your spouse's medical expenses, yours or your spouse's, is other health coverage, while VA care for a service-connected disability and benefits under surprise billing laws are not
-> - is not enrolled in Medicare, counting Medicare coverage backdated to an earlier month
-> - cannot be claimed as a dependent on someone else's 2025 return
->
-> A month counts as family coverage:
-> - if your spouse was covered by a family HDHP (HDHP coverage for your spouse and at least one other person, such as an employee-plus-spouse or employee-plus-children tier), including as a member of someone else's plan (yours or a parent's, for example)
-> - if your spouse was covered by a self-only HDHP and a family HDHP at the same time
-> - if you and your spouse were both eligible individuals and either of you had family HDHP coverage
+> About your spouse — Was your spouse's health plan in 2025 a high-deductible plan that works with an HSA, and the same kind all year?
 
 **Help, as stored**
 
-> The first day of each month is what counts. Medicare enrollment, other health coverage that is not disregarded, or being someone else's dependent in any month means the coverage was not the same all year; choose Changed.
+> What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible” or “HDHP”. If you were covered all year as a member of someone else's plan (a parent's, or your spouse's), or by a plan for only you and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change.
 
 Shown on a one-person return:
 
-> The first day of each month is what counts. Medicare enrollment, other health coverage that is not disregarded, or being someone else's dependent in any month means the coverage was not the same all year; choose Changed.
+> What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible” or “HDHP”. If you were covered all year as a member of someone else's plan (a parent's, or your spouse's), or by a plan for only you and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change.
 
 Shown for you on a couple's return:
 
-> The first day of each month is what counts. Medicare enrollment, other health coverage that is not disregarded, or being someone else's dependent in any month means the coverage was not the same all year; choose Changed.
+> What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible” or “HDHP”. If you were covered all year as a member of someone else's plan (a parent's, or your spouse's), or by a plan for only you and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change.
 
 Shown for your spouse:
 
-> The first day of each month is what counts. Medicare enrollment, other health coverage that is not disregarded, or being someone else's dependent in any month means the coverage was not the same all year; choose Changed.
+> What counts is the plan your spouse had on the first day of each month; plan papers usually call such a plan “HSA-eligible” or “HDHP”. If your spouse was covered all year as a member of someone else's plan (a parent's, or yours), or by a plan for only your spouse and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change.
+
+## `f8889.clear_all_year`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — On the first day of every month of 2025, were all three of these true?
+>
+> - you were not enrolled in Medicare
+> - you had no other health coverage that pays medical bills (dental, vision, accident, disability and long-term care insurance do not count)
+> - nobody could claim you as a dependent
+
+Shown on a one-person return:
+
+> On the first day of every month of 2025, were all three of these true?
+>
+> - you were not enrolled in Medicare
+> - you had no other health coverage that pays medical bills (dental, vision, accident, disability and long-term care insurance do not count)
+> - nobody could claim you as a dependent
+
+Shown for you on a couple's return:
+
+> About you — On the first day of every month of 2025, were all three of these true?
+>
+> - you were not enrolled in Medicare
+> - you had no other health coverage that pays medical bills (dental, vision, accident, disability and long-term care insurance do not count)
+> - nobody could claim you as a dependent
+
+Shown for your spouse:
+
+> About your spouse — On the first day of every month of 2025, were all three of these true?
+>
+> - your spouse was not enrolled in Medicare
+> - your spouse had no other health coverage that pays medical bills (dental, vision, accident, disability and long-term care insurance do not count)
+> - nobody could claim your spouse as a dependent
+
+**Help, as stored**
+
+> Other health coverage means a second plan that pays medical bills before the high deductible is met, such as your spouse's ordinary plan that also covers you. These do not count either: telehealth, workers' compensation, liability cover under a car or home policy, insurance for one named illness or a fixed amount per day in hospital, and VA care for a service-connected disability. Medicare counts from the month its coverage began, even if that was set back. If you are not sure, answer No.
+
+Shown on a one-person return:
+
+> Other health coverage means a second plan that pays medical bills before the high deductible is met, such as your spouse's ordinary plan that also covers you. These do not count either: telehealth, workers' compensation, liability cover under a car or home policy, insurance for one named illness or a fixed amount per day in hospital, and VA care for a service-connected disability. Medicare counts from the month its coverage began, even if that was set back. If you are not sure, answer No.
+
+Shown for you on a couple's return:
+
+> Other health coverage means a second plan that pays medical bills before the high deductible is met, such as your spouse's ordinary plan that also covers you. These do not count either: telehealth, workers' compensation, liability cover under a car or home policy, insurance for one named illness or a fixed amount per day in hospital, and VA care for a service-connected disability. Medicare counts from the month its coverage began, even if that was set back. If you are not sure, answer No.
+
+Shown for your spouse:
+
+> Other health coverage means a second plan that pays medical bills before the high deductible is met, such as your ordinary plan that also covers your spouse. These do not count either: telehealth, workers' compensation, liability cover under a car or home policy, insurance for one named illness or a fixed amount per day in hospital, and VA care for a service-connected disability. Medicare counts from the month its coverage began, even if that was set back. If your spouse is not sure, answer No.
+
+## `f8889.fsa`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did you or your spouse have a health FSA or HRA at work in 2025 that pays ordinary medical bills?
+
+Shown on a one-person return:
+
+> Did you or your spouse have a health FSA or HRA at work in 2025 that pays ordinary medical bills?
+
+Shown for you on a couple's return:
+
+> About you — Did you or your spouse have a health FSA or HRA at work in 2025 that pays ordinary medical bills?
+
+Shown for your spouse:
+
+> About your spouse — Did your spouse or you have a health FSA or HRA at work in 2025 that pays ordinary medical bills?
+
+**Help, as stored**
+
+> It counts as other health coverage for you and your spouse alike, even when only one person signed up for it. Answer No if it pays only dental and vision costs, or pays nothing until the minimum annual deductible for an HSA plan is met ($1,650 for a plan covering one person, $3,300 for more). Answer Yes if it was suspended for only part of 2025, or if it pays only after retirement and the person who has it had retired. A 2024 health FSA's extra months in early 2025 count only if money was left in it at the end of 2024. A dependent care FSA is not a health FSA.
+
+Shown on a one-person return:
+
+> It counts as other health coverage for you and your spouse alike, even when only one person signed up for it. Answer No if it pays only dental and vision costs, or pays nothing until the minimum annual deductible for an HSA plan is met ($1,650 for a plan covering one person, $3,300 for more). Answer Yes if it was suspended for only part of 2025, or if it pays only after retirement and the person who has it had retired. A 2024 health FSA's extra months in early 2025 count only if money was left in it at the end of 2024. A dependent care FSA is not a health FSA.
+
+Shown for you on a couple's return:
+
+> It counts as other health coverage for you and your spouse alike, even when only one person signed up for it. Answer No if it pays only dental and vision costs, or pays nothing until the minimum annual deductible for an HSA plan is met ($1,650 for a plan covering one person, $3,300 for more). Answer Yes if it was suspended for only part of 2025, or if it pays only after retirement and the person who has it had retired. A 2024 health FSA's extra months in early 2025 count only if money was left in it at the end of 2024. A dependent care FSA is not a health FSA.
+
+Shown for your spouse:
+
+> It counts as other health coverage for you and your spouse alike, even when only one person signed up for it. Answer No if it pays only dental and vision costs, or pays nothing until the minimum annual deductible for an HSA plan is met ($1,650 for a plan covering one person, $3,300 for more). Answer Yes if it was suspended for only part of 2025, or if it pays only after retirement and the person who has it had retired. A 2024 health FSA's extra months in early 2025 count only if money was left in it at the end of 2024. A dependent care FSA is not a health FSA.
+
+## `f8889.spouse_family`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — In any month of 2025, did your spouse have a high-deductible plan covering more than one person?
+
+Shown on a one-person return:
+
+> In any month of 2025, did your spouse have a high-deductible plan covering more than one person?
+
+Shown for you on a couple's return:
+
+> About you — In any month of 2025, did your spouse have a high-deductible plan covering more than one person?
+
+Shown for your spouse:
+
+> About your spouse — In any month of 2025, did you have a high-deductible plan covering more than one person?
+
+**Help, as stored**
+
+> A plan covering more than one person includes one for an employee and a child. Answer Yes even if your spouse has no HSA and even if the plan did not cover you. In a month when both of you qualified to have an HSA, both of you are treated as having family coverage, and the limit is the family one, shared between you both.
+
+Shown on a one-person return:
+
+> A plan covering more than one person includes one for an employee and a child. Answer Yes even if your spouse has no HSA and even if the plan did not cover you. In a month when both of you qualified to have an HSA, both of you are treated as having family coverage, and the limit is the family one, shared between you both.
+
+Shown for you on a couple's return:
+
+> A plan covering more than one person includes one for an employee and a child. Answer Yes even if your spouse has no HSA and even if the plan did not cover you. In a month when both of you qualified to have an HSA, both of you are treated as having family coverage, and the limit is the family one, shared between you both.
+
+Shown for your spouse:
+
+> A plan covering more than one person includes one for an employee and a child. Answer Yes even if you have no HSA and even if the plan did not cover your spouse. In a month when both of you qualified to have an HSA, both of you are treated as having family coverage, and the limit is the family one, shared between you both.
 
 ## `f8889.months_eligible`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Number of months of 2025 on the first day of which you were an eligible individual (covered by a high-deductible health plan, with no other disqualifying health coverage, not enrolled in Medicare, and not able to be claimed as a dependent on someone else's 2025 return)
+> For this person (you, or your spouse on a joint return) — On the first day of how many months of 2025 were you covered by an HSA-qualifying plan, with all three of these true?
+>
+> - you were not enrolled in Medicare
+> - you had no other health coverage that pays medical bills, counting a health FSA or HRA at work that pays ordinary medical bills, yours or your spouse's (dental, vision, accident, disability and long-term care insurance do not count)
+> - nobody could claim you as a dependent
 
 Shown on a one-person return:
 
-> Number of months of 2025 on the first day of which you were an eligible individual (covered by a high-deductible health plan, with no other disqualifying health coverage, not enrolled in Medicare, and not able to be claimed as a dependent on someone else's 2025 return)
+> On the first day of how many months of 2025 were you covered by an HSA-qualifying plan, with all three of these true?
+>
+> - you were not enrolled in Medicare
+> - you had no other health coverage that pays medical bills, counting a health FSA or HRA at work that pays ordinary medical bills, yours or your spouse's (dental, vision, accident, disability and long-term care insurance do not count)
+> - nobody could claim you as a dependent
 
 Shown for you on a couple's return:
 
-> About you — Number of months of 2025 on the first day of which you were an eligible individual (covered by a high-deductible health plan, with no other disqualifying health coverage, not enrolled in Medicare, and not able to be claimed as a dependent on someone else's 2025 return)
+> About you — On the first day of how many months of 2025 were you covered by an HSA-qualifying plan, with all three of these true?
+>
+> - you were not enrolled in Medicare
+> - you had no other health coverage that pays medical bills, counting a health FSA or HRA at work that pays ordinary medical bills, yours or your spouse's (dental, vision, accident, disability and long-term care insurance do not count)
+> - nobody could claim you as a dependent
 
 Shown for your spouse:
 
-> About your spouse — Number of months of 2025 on the first day of which your spouse was an eligible individual (covered by a high-deductible health plan, with no other disqualifying health coverage, not enrolled in Medicare, and not able to be claimed as a dependent on someone else's 2025 return)
+> About your spouse — On the first day of how many months of 2025 was your spouse covered by an HSA-qualifying plan, with all three of these true?
+>
+> - your spouse was not enrolled in Medicare
+> - your spouse had no other health coverage that pays medical bills, counting a health FSA or HRA at work that pays ordinary medical bills, yours or your spouse's (dental, vision, accident, disability and long-term care insurance do not count)
+> - nobody could claim your spouse as a dependent
 
 **Help, as stored**
 
-> Count a month only if every condition held on its first day. December 1 counts as one of the months.
+> Count a month only if everything held on its first day; December counts as one of the months. An FSA or HRA that pays only dental and vision costs, or nothing until the minimum annual deductible for an HSA plan is met ($1,650 for a plan covering one person, $3,300 for more), does not count against a month; nor do telehealth, workers' compensation, insurance for one named illness or a fixed amount per day in hospital, or VA care for a service-connected disability. Zero if there was no such month.
 
 Shown on a one-person return:
 
-> Count a month only if every condition held on its first day. December 1 counts as one of the months.
+> Count a month only if everything held on its first day; December counts as one of the months. An FSA or HRA that pays only dental and vision costs, or nothing until the minimum annual deductible for an HSA plan is met ($1,650 for a plan covering one person, $3,300 for more), does not count against a month; nor do telehealth, workers' compensation, insurance for one named illness or a fixed amount per day in hospital, or VA care for a service-connected disability. Zero if there was no such month.
 
 Shown for you on a couple's return:
 
-> Count a month only if every condition held on its first day. December 1 counts as one of the months.
+> Count a month only if everything held on its first day; December counts as one of the months. An FSA or HRA that pays only dental and vision costs, or nothing until the minimum annual deductible for an HSA plan is met ($1,650 for a plan covering one person, $3,300 for more), does not count against a month; nor do telehealth, workers' compensation, insurance for one named illness or a fixed amount per day in hospital, or VA care for a service-connected disability. Zero if there was no such month.
 
 Shown for your spouse:
 
-> Count a month only if every condition held on its first day. December 1 counts as one of the months.
+> Count a month only if everything held on its first day; December counts as one of the months. An FSA or HRA that pays only dental and vision costs, or nothing until the minimum annual deductible for an HSA plan is met ($1,650 for a plan covering one person, $3,300 for more), does not count against a month; nor do telehealth, workers' compensation, insurance for one named illness or a fixed amount per day in hospital, or VA care for a service-connected disability. Zero if there was no such month.
 
 ## `f8889.months_family`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Of those eligible months, the number in which you had or were treated as having family (not self-only) high-deductible health plan coverage on the first day of the month; zero if your coverage was self-only in all of them. If you and your spouse were both eligible individuals for a month and either of you had family HDHP coverage, count that month as family coverage for both of you and disregard either spouse's self-only plan. Count the actual eligible months here; the separate last-month-rule question determines whether December 1 coverage is treated as applying throughout the year.
+> For this person (you, or your spouse on a joint return) — On the first day of how many of those months did your plan cover more than one person, or did your spouse have a high-deductible plan covering more than one person?
 
 Shown on a one-person return:
 
-> Of those eligible months, the number in which you had or were treated as having family (not self-only) high-deductible health plan coverage on the first day of the month; zero if your coverage was self-only in all of them. If you and your spouse were both eligible individuals for a month and either of you had family HDHP coverage, count that month as family coverage for both of you and disregard either spouse's self-only plan. Count the actual eligible months here; the separate last-month-rule question determines whether December 1 coverage is treated as applying throughout the year.
+> On the first day of how many of those months did your plan cover more than one person, or did your spouse have a high-deductible plan covering more than one person?
 
 Shown for you on a couple's return:
 
-> About you — Of those eligible months, the number in which you had or were treated as having family (not self-only) high-deductible health plan coverage on the first day of the month; zero if your coverage was self-only in all of them. If you and your spouse were both eligible individuals for a month and either of you had family HDHP coverage, count that month as family coverage for both of you and disregard either spouse's self-only plan. Count the actual eligible months here; the separate last-month-rule question determines whether December 1 coverage is treated as applying throughout the year.
+> About you — On the first day of how many of those months did your plan cover more than one person, or did your spouse have a high-deductible plan covering more than one person?
 
 Shown for your spouse:
 
-> About your spouse — Of those eligible months, the number in which your spouse had or was treated as having family (not self-only) high-deductible health plan coverage on the first day of the month; zero if your spouse's coverage was self-only in all of them. If you and your spouse were both eligible individuals for a month and either of you had family HDHP coverage, count that month as family coverage for both of you and disregard either spouse's self-only plan. Count the actual eligible months here; the separate last-month-rule question determines whether December 1 coverage is treated as applying throughout the year.
+> About your spouse — On the first day of how many of those months did your spouse's plan cover more than one person, or did you have a high-deductible plan covering more than one person?
 
 **Help, as stored**
 
-> Count only months of family coverage, not every month you were covered.
+> Count a month also if you were covered by someone else's family plan, or had a plan for only you and a family plan at once. Your spouse's plan counts for a month in which the three conditions held for your spouse as well, with or without an HSA, and whether or not the plan covered you. Zero if none.
 
 Shown on a one-person return:
 
-> Count only months of family coverage, not every month you were covered.
+> Count a month also if you were covered by someone else's family plan, or had a plan for only you and a family plan at once. Your spouse's plan counts for a month in which the three conditions held for your spouse as well, with or without an HSA, and whether or not the plan covered you. Zero if none.
 
 Shown for you on a couple's return:
 
-> Count only months of family coverage, not every month you were covered.
+> Count a month also if you were covered by someone else's family plan, or had a plan for only you and a family plan at once. Your spouse's plan counts for a month in which the three conditions held for your spouse as well, with or without an HSA, and whether or not the plan covered you. Zero if none.
 
 Shown for your spouse:
 
-> Count only months of family coverage, not every month your spouse was covered.
-
-## `f8889.age55`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — Were you age 55 or older at the end of 2025?
-
-Shown on a one-person return:
-
-> Were you age 55 or older at the end of 2025?
-
-Shown for you on a couple's return:
-
-> About you — Were you age 55 or older at the end of 2025?
-
-Shown for your spouse:
-
-> About your spouse — Was your spouse age 55 or older at the end of 2025?
+> Count a month also if your spouse was covered by someone else's family plan, or had a plan for only your spouse and a family plan at once. Your plan counts for a month in which the three conditions held for you as well, with or without an HSA, and whether or not the plan covered your spouse. Zero if none.
 
 ## `f8889.dec_coverage`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — The high-deductible health plan coverage you had or were treated as having on December 1, 2025: none (you were not an eligible individual that day), self_only, or family. Family is HDHP coverage for you and at least one other person, and includes coverage as a member of someone else's family HDHP (your spouse's or a parent's, for example) and a self-only HDHP and a family HDHP held at the same time. If you and your spouse were both eligible individuals that day and either of you had family HDHP coverage, answer family for both spouses and disregard either spouse's self-only plan.
+> For this person (you, or your spouse on a joint return) — What did you have on December 1, 2025?
 
 Shown on a one-person return:
 
-> The high-deductible health plan coverage you had or were treated as having on December 1, 2025: none (you were not an eligible individual that day), self_only, or family. Family is HDHP coverage for you and at least one other person, and includes coverage as a member of someone else's family HDHP (your spouse's or a parent's, for example) and a self-only HDHP and a family HDHP held at the same time. If you and your spouse were both eligible individuals that day and either of you had family HDHP coverage, answer family for both spouses and disregard either spouse's self-only plan.
+> What did you have on December 1, 2025?
 
 Shown for you on a couple's return:
 
-> About you — The high-deductible health plan coverage you had or were treated as having on December 1, 2025: none (you were not an eligible individual that day), self_only, or family. Family is HDHP coverage for you and at least one other person, and includes coverage as a member of someone else's family HDHP (your spouse's or a parent's, for example) and a self-only HDHP and a family HDHP held at the same time. If you and your spouse were both eligible individuals that day and either of you had family HDHP coverage, answer family for both spouses and disregard either spouse's self-only plan.
+> About you — What did you have on December 1, 2025?
 
 Shown for your spouse:
 
-> About your spouse — The high-deductible health plan coverage your spouse had or was treated as having on December 1, 2025: none (your spouse was not an eligible individual that day), self_only, or family. Family is HDHP coverage for your spouse and at least one other person, and includes coverage as a member of someone else's family HDHP (yours or a parent's, for example) and a self-only HDHP and a family HDHP held at the same time. If you and your spouse were both eligible individuals that day and either of you had family HDHP coverage, answer family for both spouses and disregard either spouse's self-only plan.
+> About your spouse — What did your spouse have on December 1, 2025?
+
+**Help, as stored**
+
+> Choose the first answer if on December 1 you were enrolled in Medicare, had other health coverage that pays medical bills, or could be claimed as a dependent. Choose the third if you were on someone else's HSA-qualifying family plan, if you had both kinds of plan at once, or if you were married, both of you qualified for an HSA that day, and either of you had a plan covering more than one person.
+
+Shown on a one-person return:
+
+> Choose the first answer if on December 1 you were enrolled in Medicare, had other health coverage that pays medical bills, or could be claimed as a dependent. Choose the third if you were on someone else's HSA-qualifying family plan, if you had both kinds of plan at once, or if you were married, both of you qualified for an HSA that day, and either of you had a plan covering more than one person.
+
+Shown for you on a couple's return:
+
+> Choose the first answer if on December 1 you were enrolled in Medicare, had other health coverage that pays medical bills, or could be claimed as a dependent. Choose the third if you were on someone else's HSA-qualifying family plan, if you had both kinds of plan at once, or if you were married, both of you qualified for an HSA that day, and either of you had a plan covering more than one person.
+
+Shown for your spouse:
+
+> Choose the first answer if on December 1 your spouse was enrolled in Medicare, had other health coverage that pays medical bills, or could be claimed as a dependent. Choose the third if your spouse was on someone else's HSA-qualifying family plan, if your spouse had both kinds of plan at once, or if your spouse was married, both of you qualified for an HSA that day, and either of you had a plan covering more than one person.
 
 ## `f8889.last_month`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Do you use the last-month rule: treat yourself as an eligible individual for all of 2025 with the coverage you had on December 1, 2025, which requires you to remain an eligible individual from December 1, 2025 through December 31, 2026 (the testing period)?
+> For this person (you, or your spouse on a joint return) — Do you want to be treated as having had your December 1 coverage for all of 2025?
 
 Shown on a one-person return:
 
-> Do you use the last-month rule: treat yourself as an eligible individual for all of 2025 with the coverage you had on December 1, 2025, which requires you to remain an eligible individual from December 1, 2025 through December 31, 2026 (the testing period)?
+> Do you want to be treated as having had your December 1 coverage for all of 2025?
 
 Shown for you on a couple's return:
 
-> About you — Do you use the last-month rule: treat yourself as an eligible individual for all of 2025 with the coverage you had on December 1, 2025, which requires you to remain an eligible individual from December 1, 2025 through December 31, 2026 (the testing period)?
+> About you — Do you want to be treated as having had your December 1 coverage for all of 2025?
 
 Shown for your spouse:
 
-> About your spouse — Does your spouse use the last-month rule: treat himself or herself as an eligible individual for all of 2025 with the coverage your spouse had on December 1, 2025, which requires your spouse to remain an eligible individual from December 1, 2025 through December 31, 2026 (the testing period)?
+> About your spouse — Does your spouse want to be treated as having had your spouse's December 1 coverage for all of 2025?
 
 **Help, as stored**
 
-> If you stop being an eligible individual during the testing period (other than by death or disability), the contributions the rule allowed are included in income, with a 10% additional tax (Form 8889 Part III).
+> This is the “last-month rule”. It lets you put in the full yearly amount for the coverage you had on December 1 although you were not covered that way all year. The condition is that you stay covered by an HSA-qualifying plan through December 31, 2026; if you do not, the extra amount becomes income, with a 10% additional tax. If no more was put in, by anyone, than your covered months allow, answer No.
 
 Shown on a one-person return:
 
-> If you stop being an eligible individual during the testing period (other than by death or disability), the contributions the rule allowed are included in income, with a 10% additional tax (Form 8889 Part III).
+> This is the “last-month rule”. It lets you put in the full yearly amount for the coverage you had on December 1 although you were not covered that way all year. The condition is that you stay covered by an HSA-qualifying plan through December 31, 2026; if you do not, the extra amount becomes income, with a 10% additional tax. If no more was put in, by anyone, than your covered months allow, answer No.
 
 Shown for you on a couple's return:
 
-> If you stop being an eligible individual during the testing period (other than by death or disability), the contributions the rule allowed are included in income, with a 10% additional tax (Form 8889 Part III).
+> This is the “last-month rule”. It lets you put in the full yearly amount for the coverage you had on December 1 although you were not covered that way all year. The condition is that you stay covered by an HSA-qualifying plan through December 31, 2026; if you do not, the extra amount becomes income, with a 10% additional tax. If no more was put in, by anyone, than your covered months allow, answer No.
 
 Shown for your spouse:
 
-> If your spouse stops being an eligible individual during the testing period (other than by death or disability), the contributions the rule allowed are included in income, with a 10% additional tax (Form 8889 Part III).
+> This is the “last-month rule”. It lets your spouse put in the full yearly amount for the coverage your spouse had on December 1 although your spouse was not covered that way all year. The condition is that your spouse stays covered by an HSA-qualifying plan through December 31, 2026; if your spouse does not, the extra amount becomes income, with a 10% additional tax. If no more was put in, by anyone, than your spouse's covered months allow, answer No.
+
+## `f8889.age55`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Were you 55 or older on December 31, 2025?
+
+Shown on a one-person return:
+
+> Were you 55 or older on December 31, 2025?
+
+Shown for you on a couple's return:
+
+> About you — Were you 55 or older on December 31, 2025?
+
+Shown for your spouse:
+
+> About your spouse — Was your spouse 55 or older on December 31, 2025?
+
+## `f8889.allocation`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — You both have HSAs and share one family limit. How is it split between you both?
+
+Shown on a one-person return:
+
+> You both have HSAs and share one family limit. How is it split between you both?
+
+Shown for you on a couple's return:
+
+> About you — You both have HSAs and share one family limit. How is it split between you both?
+
+Shown for your spouse:
+
+> About your spouse — You both have HSAs and share one family limit. How is it split between you both?
+
+**Help, as stored**
+
+> Give the same answer for both of you. The shared limit is the family amount for the months both of you are treated as having family coverage (Step 1 of the Form 8889 line 6 instructions).
+
+Shown on a one-person return:
+
+> Give the same answer for both of you. The shared limit is the family amount for the months both of you are treated as having family coverage (Step 1 of the Form 8889 line 6 instructions).
+
+Shown for you on a couple's return:
+
+> Give the same answer for both of you. The shared limit is the family amount for the months both of you are treated as having family coverage (Step 1 of the Form 8889 line 6 instructions).
+
+Shown for your spouse:
+
+> Give the same answer for both of you. The shared limit is the family amount for the months both of you are treated as having family coverage (Step 1 of the Form 8889 line 6 instructions).
+
+## `f8889.allocated`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — How much of the shared family limit is yours?
+
+Shown on a one-person return:
+
+> How much of the shared family limit is yours?
+
+Shown for you on a couple's return:
+
+> About you — How much of the shared family limit is yours?
+
+Shown for your spouse:
+
+> About your spouse — How much of the shared family limit is your spouse's?
+
+**Help, as stored**
+
+> The shared limit is the family amount for the months both of you are treated as having family coverage ($8,550 for a full year). Your spouse's part is the rest; the two parts together may not be more than it.
+
+Shown on a one-person return:
+
+> The shared limit is the family amount for the months both of you are treated as having family coverage ($8,550 for a full year). Your spouse's part is the rest; the two parts together may not be more than it.
+
+Shown for you on a couple's return:
+
+> The shared limit is the family amount for the months both of you are treated as having family coverage ($8,550 for a full year). Your spouse's part is the rest; the two parts together may not be more than it.
+
+Shown for your spouse:
+
+> The shared limit is the family amount for the months both of you are treated as having family coverage ($8,550 for a full year). Your part is the rest; the two parts together may not be more than it.
+
+## `f8889.employer_in_box1`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Your employer put more into your HSA than your limit. Is the extra included in box 1 of your Form W-2?
+
+Shown on a one-person return:
+
+> Your employer put more into your HSA than your limit. Is the extra included in box 1 of your Form W-2?
+
+Shown for you on a couple's return:
+
+> About you — Your employer put more into your HSA than your limit. Is the extra included in box 1 of your Form W-2?
+
+Shown for your spouse:
+
+> About your spouse — Your spouse's employer put more into your spouse's HSA than your spouse's limit. Is the extra included in box 1 of your spouse's Form W-2?
+
+**Help, as stored**
+
+> Box 1 is your taxable wages. Answer No if your employer has not added the extra to it.
+
+Shown on a one-person return:
+
+> Box 1 is your taxable wages. Answer No if your employer has not added the extra to it.
+
+Shown for you on a couple's return:
+
+> Box 1 is your taxable wages. Answer No if your employer has not added the extra to it.
+
+Shown for your spouse:
+
+> Box 1 is your spouse's taxable wages. Answer No if your spouse's employer has not added the extra to it.
+
+## `f8889.ira_prior`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was any money moved into your HSA straight from an IRA during 2024?
+
+Shown on a one-person return:
+
+> Was any money moved into your HSA straight from an IRA during 2024?
+
+Shown for you on a couple's return:
+
+> About you — Was any money moved into your HSA straight from an IRA during 2024?
+
+Shown for your spouse:
+
+> About your spouse — Was any money moved into your spouse's HSA straight from an IRA during 2024?
+
+**Help, as stored**
+
+> The IRA's custodian sends the money directly to the HSA. It came with a condition, to stay able to have an HSA for the 12 months after the month of the transfer. Money you took out of an IRA and deposited yourself does not count.
+
+Shown on a one-person return:
+
+> The IRA's custodian sends the money directly to the HSA. It came with a condition, to stay able to have an HSA for the 12 months after the month of the transfer. Money you took out of an IRA and deposited yourself does not count.
+
+Shown for you on a couple's return:
+
+> The IRA's custodian sends the money directly to the HSA. It came with a condition, to stay able to have an HSA for the 12 months after the month of the transfer. Money you took out of an IRA and deposited yourself does not count.
+
+Shown for your spouse:
+
+> The IRA's custodian sends the money directly to the HSA. It came with a condition, to stay able to have an HSA for the 12 months after the month of the transfer. Money your spouse took out of an IRA and deposited himself or herself does not count.
+
+## `f8889.testing_prior`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — For 2024, was more put into your HSA, by you, your employer or anyone else, than the months you could have an HSA, and the kind of plan you had in each, allowed?
+
+Shown on a one-person return:
+
+> For 2024, was more put into your HSA, by you, your employer or anyone else, than the months you could have an HSA, and the kind of plan you had in each, allowed?
+
+Shown for you on a couple's return:
+
+> About you — For 2024, was more put into your HSA, by you, your employer or anyone else, than the months you could have an HSA, and the kind of plan you had in each, allowed?
+
+Shown for your spouse:
+
+> About your spouse — For 2024, was more put into your spouse's HSA, by your spouse, your spouse's employer or anyone else, than the months your spouse could have an HSA, and the kind of plan your spouse had in each, allowed?
+
+**Help, as stored**
+
+> This is about the “last-month rule”. A person who could have an HSA on December 1, 2024 was allowed the full yearly amount for the plan held that day, on condition of staying able to have an HSA through December 31, 2025. Answer Yes if more went in for 2024 than your own months allowed, counting each month by the plan of that month. That can be so if your plan began during 2024; if for part of 2024 you were someone's dependent or had other health coverage, counting a health FSA or HRA at work (also the extra months of a 2023 health FSA early in 2024, and your spouse's FSA); or if your plan, or a plan your spouse had, went from covering one person to covering more. Line 3 of your 2024 Form 8889 then shows the full yearly amount ($4,150 for a plan covering one person, $8,300 for more, before the extra $1,000 from age 55) although not every month of 2024 earned it. If you are not sure, answer Yes.
+
+Shown on a one-person return:
+
+> This is about the “last-month rule”. A person who could have an HSA on December 1, 2024 was allowed the full yearly amount for the plan held that day, on condition of staying able to have an HSA through December 31, 2025. Answer Yes if more went in for 2024 than your own months allowed, counting each month by the plan of that month. That can be so if your plan began during 2024; if for part of 2024 you were someone's dependent or had other health coverage, counting a health FSA or HRA at work (also the extra months of a 2023 health FSA early in 2024, and your spouse's FSA); or if your plan, or a plan your spouse had, went from covering one person to covering more. Line 3 of your 2024 Form 8889 then shows the full yearly amount ($4,150 for a plan covering one person, $8,300 for more, before the extra $1,000 from age 55) although not every month of 2024 earned it. If you are not sure, answer Yes.
+
+Shown for you on a couple's return:
+
+> This is about the “last-month rule”. A person who could have an HSA on December 1, 2024 was allowed the full yearly amount for the plan held that day, on condition of staying able to have an HSA through December 31, 2025. Answer Yes if more went in for 2024 than your own months allowed, counting each month by the plan of that month. That can be so if your plan began during 2024; if for part of 2024 you were someone's dependent or had other health coverage, counting a health FSA or HRA at work (also the extra months of a 2023 health FSA early in 2024, and your spouse's FSA); or if your plan, or a plan your spouse had, went from covering one person to covering more. Line 3 of your 2024 Form 8889 then shows the full yearly amount ($4,150 for a plan covering one person, $8,300 for more, before the extra $1,000 from age 55) although not every month of 2024 earned it. If you are not sure, answer Yes.
+
+Shown for your spouse:
+
+> This is about the “last-month rule”. A person who could have an HSA on December 1, 2024 was allowed the full yearly amount for the plan held that day, on condition of staying able to have an HSA through December 31, 2025. Answer Yes if more went in for 2024 than your spouse's own months allowed, counting each month by the plan of that month. That can be so if your spouse's plan began during 2024; if for part of 2024 your spouse was someone's dependent or had other health coverage, counting a health FSA or HRA at work (also the extra months of a 2023 health FSA early in 2024, and your FSA); or if your spouse's plan, or a plan you had, went from covering one person to covering more. Line 3 of your spouse's 2024 Form 8889 then shows the full yearly amount ($4,150 for a plan covering one person, $8,300 for more, before the extra $1,000 from age 55) although not every month of 2024 earned it. If your spouse is not sure, answer Yes.
+
+## `person.x_hsa_value`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Total value of your HSAs on December 31, 2025, including contributions for 2025 that you made in 2026 (asked only when you have excess HSA contributions)
+
+Shown on a one-person return:
+
+> Total value of your HSAs on December 31, 2025, including contributions for 2025 that you made in 2026 (asked only when you have excess HSA contributions)
+
+Shown for you on a couple's return:
+
+> About you — Total value of your HSAs on December 31, 2025, including contributions for 2025 that you made in 2026 (asked only when you have excess HSA contributions)
+
+Shown for your spouse:
+
+> About your spouse — Total value of your spouse's HSAs on December 31, 2025, including contributions for 2025 that your spouse made in 2026 (asked only when your spouse has excess HSA contributions)
+
+**Help, as stored**
+
+> Married filing separately and unsupported items are refused with citations.
+
+Shown on a one-person return:
+
+> Married filing separately and unsupported items are refused with citations.
+
+Shown for you on a couple's return:
+
+> Married filing separately and unsupported items are refused with citations.
+
+Shown for your spouse:
+
+> Married filing separately and unsupported items are refused with citations.
 
 ## `f8889.line14a`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Total distributions you received in 2025 from all of your own HSAs (box 1 of your Forms 1099-SA, including distributions you rolled over, but not an amount the trustee transferred directly to the trustee of another of your HSAs); zero if none
+> For this person (you, or your spouse on a joint return) — How much came out of your HSA in 2025 in total?
 
 Shown on a one-person return:
 
-> Total distributions you received in 2025 from all of your own HSAs (box 1 of your Forms 1099-SA, including distributions you rolled over, but not an amount the trustee transferred directly to the trustee of another of your HSAs); zero if none
+> How much came out of your HSA in 2025 in total?
 
 Shown for you on a couple's return:
 
-> About you — Total distributions you received in 2025 from all of your own HSAs (box 1 of your Forms 1099-SA, including distributions you rolled over, but not an amount the trustee transferred directly to the trustee of another of your HSAs); zero if none
+> About you — How much came out of your HSA in 2025 in total?
 
 Shown for your spouse:
 
-> About your spouse — Total distributions your spouse received in 2025 from all of your spouse's own HSAs (box 1 of your spouse's Forms 1099-SA, including distributions your spouse rolled over, but not an amount the trustee transferred directly to the trustee of another of your spouse's HSAs); zero if none
+> About your spouse — How much came out of your spouse's HSA in 2025 in total?
 
 **Help, as stored**
 
-> A direct transfer from one of your HSAs to another (trustee to trustee) is not a distribution.
+> Add box 1 of your 2025 Forms 1099-SA for HSAs (box 5 marks the kind of account). This includes payments made straight to a doctor or pharmacy with the HSA card. Do not count money the bank moved directly into another HSA of yours. If you have no form, use the account's statements. Zero if none.
 
 Shown on a one-person return:
 
-> A direct transfer from one of your HSAs to another (trustee to trustee) is not a distribution.
+> Add box 1 of your 2025 Forms 1099-SA for HSAs (box 5 marks the kind of account). This includes payments made straight to a doctor or pharmacy with the HSA card. Do not count money the bank moved directly into another HSA of yours. If you have no form, use the account's statements. Zero if none.
 
 Shown for you on a couple's return:
 
-> A direct transfer from one of your HSAs to another (trustee to trustee) is not a distribution.
+> Add box 1 of your 2025 Forms 1099-SA for HSAs (box 5 marks the kind of account). This includes payments made straight to a doctor or pharmacy with the HSA card. Do not count money the bank moved directly into another HSA of yours. If you have no form, use the account's statements. Zero if none.
 
 Shown for your spouse:
 
-> A direct transfer from one of your spouse's HSAs to another (trustee to trustee) is not a distribution.
+> Add box 1 of your spouse's 2025 Forms 1099-SA for HSAs (box 5 marks the kind of account). This includes payments made straight to a doctor or pharmacy with the HSA card. Do not count money the bank moved directly into another HSA of your spouse's. If your spouse has no form, use the account's statements. Zero if none.
+
+## `f8889.dist_code`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Does box 3 of any of your 2025 Forms 1099-SA for an HSA show a number other than 1 or 3?
+
+Shown on a one-person return:
+
+> Does box 3 of any of your 2025 Forms 1099-SA for an HSA show a number other than 1 or 3?
+
+Shown for you on a couple's return:
+
+> About you — Does box 3 of any of your 2025 Forms 1099-SA for an HSA show a number other than 1 or 3?
+
+Shown for your spouse:
+
+> About your spouse — Does box 3 of any of your spouse's 2025 Forms 1099-SA for an HSA show a number other than 1 or 3?
+
+**Help, as stored**
+
+> Box 3 is the “distribution code”. 1 is an ordinary payment and 3 a payment after disability. 2 means excess contributions taken back, 4 or 6 a payment after a death, and 5 a prohibited transaction.
+
+Shown on a one-person return:
+
+> Box 3 is the “distribution code”. 1 is an ordinary payment and 3 a payment after disability. 2 means excess contributions taken back, 4 or 6 a payment after a death, and 5 a prohibited transaction.
+
+Shown for you on a couple's return:
+
+> Box 3 is the “distribution code”. 1 is an ordinary payment and 3 a payment after disability. 2 means excess contributions taken back, 4 or 6 a payment after a death, and 5 a prohibited transaction.
+
+Shown for your spouse:
+
+> Box 3 is the “distribution code”. 1 is an ordinary payment and 3 a payment after disability. 2 means excess contributions taken back, 4 or 6 a payment after a death, and 5 a prohibited transaction.
 
 ## `f8889.rollover`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — The part of those distributions that you rolled over within 60 days to another HSA of yours (an HSA of the same account beneficiary); do not count a rollover into an HSA that had already received a rollover contribution in the 1-year period before it, since an HSA can receive only one rollover contribution during a 1-year period; zero if none
+> For this person (you, or your spouse on a joint return) — How much of the money that came out did you put into another HSA of your own within 60 days?
 
 Shown on a one-person return:
 
-> The part of those distributions that you rolled over within 60 days to another HSA of yours (an HSA of the same account beneficiary); do not count a rollover into an HSA that had already received a rollover contribution in the 1-year period before it, since an HSA can receive only one rollover contribution during a 1-year period; zero if none
+> How much of the money that came out did you put into another HSA of your own within 60 days?
 
 Shown for you on a couple's return:
 
-> About you — The part of those distributions that you rolled over within 60 days to another HSA of yours (an HSA of the same account beneficiary); do not count a rollover into an HSA that had already received a rollover contribution in the 1-year period before it, since an HSA can receive only one rollover contribution during a 1-year period; zero if none
+> About you — How much of the money that came out did you put into another HSA of your own within 60 days?
 
 Shown for your spouse:
 
-> About your spouse — The part of those distributions that your spouse rolled over within 60 days to another HSA of your spouse's (an HSA of the same account beneficiary); do not count a rollover into an HSA that had already received a rollover contribution in the 1-year period before it, since an HSA can receive only one rollover contribution during a 1-year period; zero if none
+> About your spouse — How much of the money that came out did your spouse put into another HSA of your spouse's own within 60 days?
 
 **Help, as stored**
 
-> An HSA can receive only one rollover in a 1-year period.
+> An HSA can take in only one such deposit in any 12 months; do not count a second one, or money the bank moved directly (that is not part of the total). Zero if none.
 
 Shown on a one-person return:
 
-> An HSA can receive only one rollover in a 1-year period.
+> An HSA can take in only one such deposit in any 12 months; do not count a second one, or money the bank moved directly (that is not part of the total). Zero if none.
 
 Shown for you on a couple's return:
 
-> An HSA can receive only one rollover in a 1-year period.
+> An HSA can take in only one such deposit in any 12 months; do not count a second one, or money the bank moved directly (that is not part of the total). Zero if none.
 
 Shown for your spouse:
 
-> An HSA can receive only one rollover in a 1-year period.
+> An HSA can take in only one such deposit in any 12 months; do not count a second one, or money the bank moved directly (that is not part of the total). Zero if none.
+
+## `f8889.mistake_repaid`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was any money paid out of your HSA by mistake and later put back?
+
+Shown on a one-person return:
+
+> Was any money paid out of your HSA by mistake and later put back?
+
+Shown for you on a couple's return:
+
+> About you — Was any money paid out of your HSA by mistake and later put back?
+
+Shown for your spouse:
+
+> About your spouse — Was any money paid out of your spouse's HSA by mistake and later put back?
+
+**Help, as stored**
+
+> For example, the HSA paid a bill that turned out not to be a medical cost, and you returned the money to the HSA. Answer Yes also if you plan to return it.
+
+Shown on a one-person return:
+
+> For example, the HSA paid a bill that turned out not to be a medical cost, and you returned the money to the HSA. Answer Yes also if you plan to return it.
+
+Shown for you on a couple's return:
+
+> For example, the HSA paid a bill that turned out not to be a medical cost, and you returned the money to the HSA. Answer Yes also if you plan to return it.
+
+Shown for your spouse:
+
+> For example, the HSA paid a bill that turned out not to be a medical cost, and your spouse returned the money to the HSA. Answer Yes also if your spouse plans to return it.
+
+## `f8889.medical_all`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did all of the money that came out pay for doctor, dental, vision, hospital or pharmacy costs of you, your spouse, or your dependents?
+
+Shown on a one-person return:
+
+> Did all of the money that came out pay for doctor, dental, vision, hospital or pharmacy costs of you, your spouse, or your dependents?
+
+Shown for you on a couple's return:
+
+> About you — Did all of the money that came out pay for doctor, dental, vision, hospital or pharmacy costs of you, your spouse, or your dependents?
+
+Shown for your spouse:
+
+> About your spouse — Did all of the money that came out pay for doctor, dental, vision, hospital or pharmacy costs of your spouse, you, or your spouse's dependents?
+
+**Help, as stored**
+
+> Answer No if any of it paid for insurance premiums, for someone else (such as an adult child you do not claim), for costs from before you opened the HSA, or for costs that insurance or anyone else paid back to you. Money you put into another HSA within 60 days does not count against a Yes. These costs cannot also be deducted on Schedule A.
+
+Shown on a one-person return:
+
+> Answer No if any of it paid for insurance premiums, for someone else (such as an adult child you do not claim), for costs from before you opened the HSA, or for costs that insurance or anyone else paid back to you. Money you put into another HSA within 60 days does not count against a Yes. These costs cannot also be deducted on Schedule A.
+
+Shown for you on a couple's return:
+
+> Answer No if any of it paid for insurance premiums, for someone else (such as an adult child you do not claim), for costs from before you opened the HSA, or for costs that insurance or anyone else paid back to you. Money you put into another HSA within 60 days does not count against a Yes. These costs cannot also be deducted on Schedule A.
+
+Shown for your spouse:
+
+> Answer No if any of it paid for insurance premiums, for someone else (such as an adult child your spouse does not claim), for costs from before your spouse opened the HSA, or for costs that insurance or anyone else paid back to your spouse. Money your spouse put into another HSA within 60 days does not count against a Yes. These costs cannot also be deducted on Schedule A.
 
 ## `f8889.medical`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — The part of your 2025 HSA distributions used to pay qualified medical expenses (not reimbursed by insurance or other coverage, and incurred after the HSA was established) of you, your spouse, your dependents, and anyone who would be your dependent except that they filed a joint return, had gross income, or you (or your spouse, on a joint return) could be claimed as someone else's dependent; a child of divorced or separated parents counts for both parents. Insurance premiums count only if they are for long-term care insurance, health care continuation coverage (such as COBRA), health care coverage while receiving unemployment compensation under federal or state law, or Medicare and other health care coverage if you were 65 or older (not a Medicare supplemental policy, such as Medigap); continuation coverage and coverage while receiving unemployment compensation can be for your spouse or a dependent, but if you, the HSA owner, are under 65, Medicare premiums for your spouse or dependents generally do not count; zero if none
+> For this person (you, or your spouse on a joint return) — How much of the money that came out paid for medical costs that count?
+>
+> The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA.
+>
+> Whose costs count:
+> - yours, and your spouse's
+> - your dependents'
+> - those of a person you could claim as a dependent but for their income, their joint return, or your being someone else's dependent
+> - those of your child if you are divorced, separated or lived apart from the other parent for the last six months of the year, whichever parent claims the child
+>
+> Insurance premiums count only for:
+> - long-term care insurance
+> - continuation coverage such as COBRA, for you, your spouse, or a dependent
+> - health coverage while you, your spouse, or a dependent received unemployment compensation
+> - Medicare and other health coverage if you were 65 or older, but not a Medicare supplement (Medigap) policy; if you are under 65, Medicare premiums for your spouse or a dependent do not count
+>
+> Zero if none.
 
 Shown on a one-person return:
 
-> The part of your 2025 HSA distributions used to pay qualified medical expenses (not reimbursed by insurance or other coverage, and incurred after the HSA was established) of you, your spouse, your dependents, and anyone who would be your dependent except that they filed a joint return, had gross income, or you (or your spouse, on a joint return) could be claimed as someone else's dependent; a child of divorced or separated parents counts for both parents. Insurance premiums count only if they are for long-term care insurance, health care continuation coverage (such as COBRA), health care coverage while receiving unemployment compensation under federal or state law, or Medicare and other health care coverage if you were 65 or older (not a Medicare supplemental policy, such as Medigap); continuation coverage and coverage while receiving unemployment compensation can be for your spouse or a dependent, but if you, the HSA owner, are under 65, Medicare premiums for your spouse or dependents generally do not count; zero if none
+> How much of the money that came out paid for medical costs that count?
+>
+> The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA.
+>
+> Whose costs count:
+> - yours, and your spouse's
+> - your dependents'
+> - those of a person you could claim as a dependent but for their income, their joint return, or your being someone else's dependent
+> - those of your child if you are divorced, separated or lived apart from the other parent for the last six months of the year, whichever parent claims the child
+>
+> Insurance premiums count only for:
+> - long-term care insurance
+> - continuation coverage such as COBRA, for you, your spouse, or a dependent
+> - health coverage while you, your spouse, or a dependent received unemployment compensation
+> - Medicare and other health coverage if you were 65 or older, but not a Medicare supplement (Medigap) policy; if you are under 65, Medicare premiums for your spouse or a dependent do not count
+>
+> Zero if none.
 
 Shown for you on a couple's return:
 
-> About you — The part of your 2025 HSA distributions used to pay qualified medical expenses (not reimbursed by insurance or other coverage, and incurred after the HSA was established) of you, your spouse, your dependents, and anyone who would be your dependent except that they filed a joint return, had gross income, or you (or your spouse, on a joint return) could be claimed as someone else's dependent; a child of divorced or separated parents counts for both parents. Insurance premiums count only if they are for long-term care insurance, health care continuation coverage (such as COBRA), health care coverage while receiving unemployment compensation under federal or state law, or Medicare and other health care coverage if you were 65 or older (not a Medicare supplemental policy, such as Medigap); continuation coverage and coverage while receiving unemployment compensation can be for your spouse or a dependent, but if you, the HSA owner, are under 65, Medicare premiums for your spouse or dependents generally do not count; zero if none
+> About you — How much of the money that came out paid for medical costs that count?
+>
+> The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA.
+>
+> Whose costs count:
+> - yours, and your spouse's
+> - your dependents'
+> - those of a person you could claim as a dependent but for their income, their joint return, or your being someone else's dependent
+> - those of your child if you are divorced, separated or lived apart from the other parent for the last six months of the year, whichever parent claims the child
+>
+> Insurance premiums count only for:
+> - long-term care insurance
+> - continuation coverage such as COBRA, for you, your spouse, or a dependent
+> - health coverage while you, your spouse, or a dependent received unemployment compensation
+> - Medicare and other health coverage if you were 65 or older, but not a Medicare supplement (Medigap) policy; if you are under 65, Medicare premiums for your spouse or a dependent do not count
+>
+> Zero if none.
 
 Shown for your spouse:
 
-> About your spouse — The part of your spouse's 2025 HSA distributions used to pay qualified medical expenses (not reimbursed by insurance or other coverage, and incurred after the HSA was established) of your spouse, you, your spouse's dependents, and anyone who would be your spouse's dependent except that they filed a joint return, had gross income, or you (or your spouse, on a joint return) could be claimed as someone else's dependent; a child of divorced or separated parents counts for both parents. Insurance premiums count only if they are for long-term care insurance, health care continuation coverage (such as COBRA), health care coverage while receiving unemployment compensation under federal or state law, or Medicare and other health care coverage if your spouse was 65 or older (not a Medicare supplemental policy, such as Medigap); continuation coverage and coverage while receiving unemployment compensation can be for you or a dependent, but if your spouse, the HSA owner, is under 65, Medicare premiums for you or dependents generally do not count; zero if none
+> About your spouse — How much of the money that came out paid for medical costs that count?
+>
+> The costs must not have been paid back by insurance or anyone else, and must date from after your spouse opened the HSA.
+>
+> Whose costs count:
+> - your spouse's, and yours
+> - your spouse's dependents'
+> - those of a person your spouse could claim as a dependent but for their income, their joint return, or your spouse's being someone else's dependent
+> - those of your spouse's child if your spouse is divorced, separated or lived apart from the other parent for the last six months of the year, whichever parent claims the child
+>
+> Insurance premiums count only for:
+> - long-term care insurance
+> - continuation coverage such as COBRA, for your spouse, you, or a dependent
+> - health coverage while your spouse, you, or a dependent received unemployment compensation
+> - Medicare and other health coverage if your spouse was 65 or older, but not a Medicare supplement (Medigap) policy; if your spouse is under 65, Medicare premiums for you or a dependent do not count
+>
+> Zero if none.
 
 **Help, as stored**
 
-> You cannot also deduct these expenses on Schedule A.
+> Nonprescription medicines and menstrual care products count. These costs cannot also be deducted on Schedule A.
 
 Shown on a one-person return:
 
-> You cannot also deduct these expenses on Schedule A.
+> Nonprescription medicines and menstrual care products count. These costs cannot also be deducted on Schedule A.
 
 Shown for you on a couple's return:
 
-> You cannot also deduct these expenses on Schedule A.
+> Nonprescription medicines and menstrual care products count. These costs cannot also be deducted on Schedule A.
 
 Shown for your spouse:
 
-> Your spouse cannot also deduct these expenses on Schedule A.
+> Nonprescription medicines and menstrual care products count. These costs cannot also be deducted on Schedule A.
+
+## `f8889.loan`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — In 2025, did you use your HSA as security for a loan, borrow from it, lend to it, or buy from or sell to it yourself?
+
+Shown on a one-person return:
+
+> In 2025, did you use your HSA as security for a loan, borrow from it, lend to it, or buy from or sell to it yourself?
+
+Shown for you on a couple's return:
+
+> About you — In 2025, did you use your HSA as security for a loan, borrow from it, lend to it, or buy from or sell to it yourself?
+
+Shown for your spouse:
+
+> About your spouse — In 2025, did your spouse use your spouse's HSA as security for a loan, borrow from it, lend to it, or buy from or sell to it himself or herself?
+
+**Help, as stored**
+
+> It counts whether you did it yourself or through someone else. Renting property to or from the HSA, being paid by it for goods or services, and using or taking over something it owns count too. An HSA used only to save and to pay medical bills has none of these.
+
+Shown on a one-person return:
+
+> It counts whether you did it yourself or through someone else. Renting property to or from the HSA, being paid by it for goods or services, and using or taking over something it owns count too. An HSA used only to save and to pay medical bills has none of these.
+
+Shown for you on a couple's return:
+
+> It counts whether you did it yourself or through someone else. Renting property to or from the HSA, being paid by it for goods or services, and using or taking over something it owns count too. An HSA used only to save and to pay medical bills has none of these.
+
+Shown for your spouse:
+
+> It counts whether your spouse did it himself or herself or through someone else. Renting property to or from the HSA, being paid by it for goods or services, and using or taking over something it owns count too. An HSA used only to save and to pay medical bills has none of these.
 
 ## `f8889.line17a`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Were any of your taxable HSA distributions made after you became disabled or turned age 65 (the exceptions to the additional 20% tax)?
+> For this person (you, or your spouse on a joint return) — Was any of the money not spent on medical costs taken out after you turned 65 or became disabled?
 
 Shown on a one-person return:
 
-> Were any of your taxable HSA distributions made after you became disabled or turned age 65 (the exceptions to the additional 20% tax)?
+> Was any of the money not spent on medical costs taken out after you turned 65 or became disabled?
 
 Shown for you on a couple's return:
 
-> About you — Were any of your taxable HSA distributions made after you became disabled or turned age 65 (the exceptions to the additional 20% tax)?
+> About you — Was any of the money not spent on medical costs taken out after you turned 65 or became disabled?
 
 Shown for your spouse:
 
-> About your spouse — Were any of your spouse's taxable HSA distributions made after your spouse became disabled or turned age 65 (the exceptions to the additional 20% tax)?
+> About your spouse — Was any of the money not spent on medical costs taken out after your spouse turned 65 or became disabled?
 
 **Help, as stored**
 
-> Answer No if every taxable distribution was made before you became disabled or turned 65.
+> Answer No if all of it was taken out before you turned 65 or became disabled. Money taken out earlier carries an additional 20% tax.
 
 Shown on a one-person return:
 
-> Answer No if every taxable distribution was made before you became disabled or turned 65.
+> Answer No if all of it was taken out before you turned 65 or became disabled. Money taken out earlier carries an additional 20% tax.
 
 Shown for you on a couple's return:
 
-> Answer No if every taxable distribution was made before you became disabled or turned 65.
+> Answer No if all of it was taken out before you turned 65 or became disabled. Money taken out earlier carries an additional 20% tax.
 
 Shown for your spouse:
 
-> Answer No if every taxable distribution was made before your spouse became disabled or turned 65.
+> Answer No if all of it was taken out before your spouse turned 65 or became disabled. Money taken out earlier carries an additional 20% tax.
 
 ## `f8889.subject_part`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — The part of your taxable HSA distributions (Form 8889 line 16) that was made before you became disabled or turned age 65 (the part subject to the additional 20% tax); zero if all of it was made after
+> For this person (you, or your spouse on a joint return) — How much of the money not spent on medical costs came out before you turned 65 or became disabled?
 
 Shown on a one-person return:
 
-> The part of your taxable HSA distributions (Form 8889 line 16) that was made before you became disabled or turned age 65 (the part subject to the additional 20% tax); zero if all of it was made after
+> How much of the money not spent on medical costs came out before you turned 65 or became disabled?
 
 Shown for you on a couple's return:
 
-> About you — The part of your taxable HSA distributions (Form 8889 line 16) that was made before you became disabled or turned age 65 (the part subject to the additional 20% tax); zero if all of it was made after
+> About you — How much of the money not spent on medical costs came out before you turned 65 or became disabled?
 
 Shown for your spouse:
 
-> About your spouse — The part of your spouse's taxable HSA distributions (Form 8889 line 16) that was made before your spouse became disabled or turned age 65 (the part subject to the additional 20% tax); zero if all of it was made after
+> About your spouse — How much of the money not spent on medical costs came out before your spouse turned 65 or became disabled?
 
 **Help, as stored**
 
-> The taxable distributions are your distributions less rollovers and the part used for qualified medical expenses.
+> This is the part that carries the additional 20% tax. Zero if all of it came out after.
 
 Shown on a one-person return:
 
-> The taxable distributions are your distributions less rollovers and the part used for qualified medical expenses.
+> This is the part that carries the additional 20% tax. Zero if all of it came out after.
 
 Shown for you on a couple's return:
 
-> The taxable distributions are your distributions less rollovers and the part used for qualified medical expenses.
+> This is the part that carries the additional 20% tax. Zero if all of it came out after.
 
 Shown for your spouse:
 
-> The taxable distributions are your spouse's distributions less rollovers and the part used for qualified medical expenses.
+> This is the part that carries the additional 20% tax. Zero if all of it came out after.
 
 ## `person.died_before_65`
 

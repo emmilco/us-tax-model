@@ -824,7 +824,7 @@ form:
     cite:
       doc: f1040s1
       locator: Schedule 1 (2025), line 8f; i1040gi p. 91, Line 8f, "Enter the total of the amounts from Form 8889, lines
-        16 and 20" (line 20, Part III, is refused by f8889.unsupported)
+        16 and 20" (Part III of Form 8889 is not prepared, and f8889.testing_failed refuses a failed testing period)
   - id: s1.line9
     printed: '9'
     label: Total other income. Add lines 8a through 8z

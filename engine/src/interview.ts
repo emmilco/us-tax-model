@@ -14,7 +14,7 @@ export interface InterviewData {
   targets: string[];
   initial: Inputs;
   cite: CiteFilled;
-  questions: { input: string; prompt: string; help: string; order: number; cite: CiteFilled; choices?: RosterChoice[]; value_labels?: Record<string, string>; value_order?: string[] }[];
+  questions: { input: string; prompt: string; help: string; order: number; seq?: number; cite: CiteFilled; choices?: RosterChoice[]; value_labels?: Record<string, string>; value_order?: string[] }[];
   /** What the interview adds to a refusal, by gate line: what the filer can do next (interview/<year>/refusal_notes.yaml). */
   refusal_notes?: Record<string, string>;
 }
@@ -133,6 +133,19 @@ export function loadInterview(profile = "social-security"): InterviewData {
   if (!["social-security", "sales", "stage4", "full", "ny"].includes(profile)) throw new Error("unknown interview profile");
   return JSON.parse(readFileSync(resolve(CANON_DIR, profile === "social-security" ? "interview.json" : `interview-${profile}.json`), "utf8")) as InterviewData;
 }
+/** The outermost collection entry a question's key belongs to (`person[spouse]` for `person[spouse].f8889[hsa].line2`
+ * and for the roster `$f8889@person[spouse]`), or "" for a key of no entry. */
+export function outerEntry(key: string): string {
+  const path = key.startsWith("$") ? key.slice(key.indexOf("@") + 1 || key.length) : key;
+  return /^[a-zA-Z0-9_]+\[[a-zA-Z0-9_-]+\]/.exec(path)?.[0] ?? "";
+}
+/** The asking order of two open questions: bank order; within one order number, the questions of a block (each carries
+ * `seq`) entry by entry of the outermost collection, and within an entry in `seq` order; then by key. */
+export function askOrder(a: { input: string; order: number; seq?: number }, b: { input: string; order: number; seq?: number }): number {
+  return a.order - b.order
+    || (a.seq !== undefined && b.seq !== undefined ? outerEntry(a.input).localeCompare(outerEntry(b.input)) || a.seq - b.seq : 0)
+    || a.input.localeCompare(b.input);
+}
 export function questionTemplate(key: string): string {
   if (key.startsWith("$")) return key.split("@")[0]!;
   return templateKey(key);
@@ -190,7 +203,7 @@ export function withheldValues(config: InterviewData, inputs: Inputs, key: strin
   return withheld;
 }
 
-export interface Question { input: string; prompt: string; help: string; order: number; cite: CiteFilled; choices?: RosterChoice[]; value_labels?: Record<string, string>; value_order?: string[];
+export interface Question { input: string; prompt: string; help: string; order: number; seq?: number; cite: CiteFilled; choices?: RosterChoice[]; value_labels?: Record<string, string>; value_order?: string[];
   /** The per-person frame as shown ("About you", "About your spouse"), when the question is asked of a person on a return with two. */
   frame?: string;
   /** The enum values not offered (`withheldValues`). */
@@ -214,7 +227,7 @@ export function interviewView(data: CanonicalData, config: InterviewData, inputs
     const q = askFor(config, key).q;
     const withheld = withheldValues(config, inputs, key);
     return { ...shownFor(q, key, inputs), input: key, ...(withheld.length ? { withheld } : {}), helpRequested: inputs[key] === null, entry: entryHint(data, key, q.choices, q.value_labels, q.value_order, withheld) };
-  }).sort((a,b) => a.order - b.order || a.input.localeCompare(b.input));
+  }).sort(askOrder);
   const complete = targetValues.every(v => v.kind !== "unknown" && v.kind !== "refusal");
   return { status: refused ? "refused" : complete ? "complete" : "incomplete", refusal: refused ?? null,
     refusalNote: refused?.kind === "refusal" ? config.refusal_notes?.[templateKey(refused.gate)] ?? null : null,
@@ -236,10 +249,11 @@ export function interviewStatus(data: CanonicalData, config: InterviewData, inpu
   const needed = new Set<string>();
   for (const der of result.derivations.values()) if (der.value.kind === "unknown" && der.value.input) needed.add(der.value.input);
   const complete = targetValues.every(v => v.kind !== "unknown" && v.kind !== "refusal");
-  let first: { input: string; order: number } | null = null;
+  let first: { input: string; order: number; seq?: number } | null = null;
   for (const reachable of needed) {
     const { key, q } = askFor(config, reachable);
-    if (!first || q.order < first.order || (q.order === first.order && key.localeCompare(first.input) < 0)) first = { input: key, order: q.order };
+    const open = { input: key, order: q.order, ...(q.seq !== undefined ? { seq: q.seq } : {}) };
+    if (!first || askOrder(open, first) < 0) first = open;
   }
   return { status: refused ? "refused" : complete ? "complete" : "incomplete", refusal: refused ?? null,
     question: refused || complete ? null : first,

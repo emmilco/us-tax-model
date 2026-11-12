@@ -135,19 +135,6 @@
    ],
    "subject_sha": "7ba15b303f2477956dcb3f28ac0c3acbf055a6db6ee86ebb00e2bcb67913190a"
   },
-  "unruled:f8889.subject_part#1": {
-   "reason": "No defect: inherited HSAs and decedents' HSAs are refused.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "WIDE",
-     "class": "out of scope",
-     "evidence": "f8889.unsupported (refusal on line 13 and others, 'Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 ...') lists \"an HSA you acquired because of the account beneficiary's death\" and \"the HSA of a person who died in 2025\"; post-death distributions cannot reach line 16 here."
-    }
-   ],
-   "bugs": [],
-   "subject_sha": "f69ea30d6da339225d559c64215d84dd590df14576bb203868dd68d4eb49beda"
-  },
   "unruled:f8962.married_in_2025#1": {
    "reason": "Lows: the question omits Table 4 questions 1 and 5, but a Yes only refuses Form 8962 (Part V); no value is wrong.",
    "findings": [
@@ -2801,144 +2788,6 @@
     "BUG-0534"
    ],
    "subject_sha": "3c1fa97a0cdaf003a14f48f3c1c5da5fc454b48071b318c17b8afce6d464fdcd"
-  },
-  "unruled:f8889.employer_in_box1#1": {
-   "reason": "One low (a partly included excess); the funding-distribution case is refused; the box 12 reading is a misreading.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "TYPE",
-     "class": "real, low",
-     "evidence": "i8889 p. 8, Excess Employer Contributions: \"If the excess was not included in income on Form W-2, you must report it as 'Other income'\". f8889.employer_in_box1 is a Bool; a partly included excess cannot be given. Rare: employers rarely include any excess in box 1.",
-     "bug": "BUG-0535"
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "f8889.unsupported lists \"a qualified HSA funding distribution from an IRA in 2025\"; refused.",
-     "gate": "f8889.unsupported (refusal on f8889.line13 and f8889.line16)"
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "wrong",
-     "evidence": "The question names \"your wages in Form W-2 box 1\"; box 12 code W is a different box. Not a reading of the wording."
-    }
-   ],
-   "bugs": [
-    "BUG-0535"
-   ],
-   "subject_sha": "198a3965efac3bf97ec9891a95d873e1d61d99c1fa5ca5d846e28c98d26abfdf"
-  },
-  "unruled:f8889.last_month#1": {
-   "reason": "No defect: the rule is reached only for an eligible individual on December 1, and it is elective.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "WIDE",
-     "class": "wrong",
-     "evidence": "f8889.use_last_month asks f8889.last_month only when f8889.dec_coverage_if_changed is not none; f8889.dec_coverage's none is \"you were not an eligible individual that day\" (and coverage_year's help: \"Medicare enrollment, other health coverage that is not disregarded ... choose Changed\"). The gate tests eligibility, not just HDHP coverage."
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "wrong",
-     "evidence": "i8889 p. 2: \"You may consider yourself an 'eligible individual' for the entire year\". The rule is an election; a filer who declines it gets the month-by-month limit, a correct return either way."
-    }
-   ],
-   "bugs": [],
-   "subject_sha": "1c01264b6829b410a3e454819a9295747d273ad06267bb552a6ed972bb843e80"
-  },
-  "unruled:f8889.line14a#1": {
-   "reason": "No defect: inherited HSAs and deemed distributions are refused.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "NARROW",
-     "class": "out of scope",
-     "evidence": "f8889.unsupported lists \"an HSA you acquired because of the account beneficiary's death\" and \"the HSA of a person who died in 2025 whose estate is the beneficiary\".",
-     "gate": "f8889.unsupported (refusal on f8889.line13 and f8889.line16)"
-    },
-    {
-     "n": 1,
-     "kind": "NARROW",
-     "class": "out of scope",
-     "evidence": "f8889.unsupported lists \"a deemed distribution from an HSA in 2025 (a prohibited transaction, or any part of an HSA used as security for a loan)\".",
-     "gate": "f8889.unsupported (refusal on f8889.line13 and f8889.line16)"
-    }
-   ],
-   "bugs": [],
-   "subject_sha": "8ac6aa70effb1adf6ed5e5c93a960ce5fba8f0e7bb18b73f41a278bc4c15093b"
-  },
-  "unruled:f8889.line17a#1": {
-   "reason": "No defect: distributions after the account beneficiary's death are refused.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "NARROW",
-     "class": "out of scope",
-     "evidence": "f8889.unsupported lists an inherited HSA, a decedent's HSA whose estate is beneficiary, and \"this person died in 2025\"; the death exception never reaches line 17a.",
-     "gate": "f8889.unsupported (refusal on f8889.line13 and f8889.line16)"
-    }
-   ],
-   "bugs": [],
-   "subject_sha": "c4385f447b7920185526541ac58cdee8670f99b6dc1886a5c510da7c2275fff4"
-  },
-  "unruled:f8889.line2#1": {
-   "reason": "No defect: a withdrawal of excess contributions is refused.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "WIDE",
-     "class": "out of scope",
-     "evidence": "f8889.unsupported lists \"a withdrawal of excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions\".",
-     "gate": "f8889.unsupported (refusal on f8889.line13 and f8889.line16)"
-    }
-   ],
-   "bugs": [],
-   "subject_sha": "fa38d0de093772fd6a7754789f71ca53f5837ac15d8cf580e137081792388e90"
-  },
-  "unruled:f8889.medical#1": {
-   "reason": "No defect: inherited HSAs, late excess withdrawals and deemed distributions are refused.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "NARROW",
-     "class": "out of scope",
-     "evidence": "f8889.unsupported lists \"an HSA you acquired because of the account beneficiary's death\".",
-     "gate": "f8889.unsupported (refusal on f8889.line13 and f8889.line16)"
-    },
-    {
-     "n": 1,
-     "kind": "WIDE",
-     "class": "out of scope",
-     "evidence": "A late withdrawal in 2025 is of an earlier year's excess, which f8889.unsupported lists (\"excess HSA contributions from an earlier year that remain in your HSA\"); withdrawals of 2025 excess are also listed.",
-     "gate": "f8889.unsupported (refusal on f8889.line13 and f8889.line16)"
-    },
-    {
-     "n": 2,
-     "kind": "WIDE",
-     "class": "out of scope",
-     "evidence": "f8889.unsupported lists \"a deemed distribution from an HSA in 2025\".",
-     "gate": "f8889.unsupported (refusal on f8889.line13 and f8889.line16)"
-    }
-   ],
-   "bugs": [],
-   "subject_sha": "5b5f1428eaa16517e8591da8b9a5e6d97034171c44f9af960ca49213ebe3a854"
-  },
-  "unruled:f8889.months_eligible#1": {
-   "reason": "No defect: the last-month rule is applied by its own question, not by the month count.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "NARROW",
-     "class": "wrong",
-     "evidence": "f8889.line3_part_year takes f8889.line3_last_month (the full-year amount) when f8889.use_last_month is true, and the line 6 figures use twelve months then (f8889 line 6 Step 4 helpers, cite p. 4 rule 2). months_eligible is the actual count the Line 3 chart asks for; it is not meant to include the 'considered' months."
-    }
-   ],
-   "bugs": [],
-   "subject_sha": "b747f2500bb68e88924be1478be491e8de58ada77d05e97f76368274d6318f5c"
   },
   "unruled:otjob.flsa#1": {
    "reason": "Low: no time frame for part-year eligibility; 'Were you ... so that this employer was required to pay you overtime' reads naturally as yes for the months overtime was required.",
@@ -7147,6 +6996,340 @@
     }
    ],
    "bugs": []
+  },
+  "unruled:f8889.allocated#1": {
+   "reason": "No value effect.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WRONG_FIGURE",
+     "class": "covered",
+     "evidence": "An Archer MSA refuses the return (f8889.archer), so line 4 is zero wherever the limit is split and the Step 1 amount is the family amount the help describes."
+    },
+    {
+     "n": 1,
+     "kind": "TYPE",
+     "class": "covered",
+     "evidence": "A share above the Step 1 limit is refused by f8889.allocation_bad (Form 8889 line 6 for spouses with separate HSAs)."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "48ff5ddecfc02cabf84c0035d6bd3d457a6c84591d9b3279ccc6f07ddab0fd18"
+  },
+  "unruled:f8889.archer#1": {
+   "reason": "The WIDE is the design's refusal; one rare narrow case open.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "Married filing separately is refused when chosen (s3.mfs); the question as landed asks 'Did either of you have an Archer MSA', with no joint-return condition."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "real, low",
+     "evidence": "An inherited Archer MSA is not named (i8853 p. 1, Who Must File); BUG-0615."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "Any Archer MSA refuses, by design; BUG-0614."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "363667204fae6d129dcad7d02b6ea756547702342cedaae22991ad00989a2bde"
+  },
+  "unruled:f8889.coverage_year#1": {
+   "reason": "No value effect.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "A filer who reads a plan that ended after December 1, or began on January 1, as changed is sent to the month counts, which give twelve months of the same type and the same line 3; the cost is four questions."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "d5aa5a5109d98f93b8cb64c9530cc1dac87f4ac6922939788da7ad12e36b5a9a"
+  },
+  "unruled:f8889.dec_coverage#1": {
+   "reason": "One help phrase can be read two ways.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "real, changes value",
+     "evidence": "The help's 'while the three conditions held for both of you that day' can be read as both spouses failing the conditions, since the three conditions the help names are the ones that lead to the first answer; the rule is 'both eligible individuals' (i8889 p. 4, How To Complete Part I). The wrong reading changes the December 1 answer and line 3. Not fixed: reported to the coordinator before any change, as instructed."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "real, low",
+     "evidence": "Which other coverage counts is in the help of the month question, not here (i8889 p. 2); the answer's own wording says HSA-qualifying."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "b171a159733db69e0c54d855412160cf9859dbf066070c655081b95a196ba1e3"
+  },
+  "unruled:f8889.excess_withdrawn#1": {
+   "reason": "WIDE by design.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "Any take-back of an excess refuses; safe."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "A take-back of a 2026 excess before filing refuses; safe and rare."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "e70fda8fa23ec556a70d39cd42ae5a8d8ec1e9ef950f86e5a8f8ab246fc3a3cf"
+  },
+  "unruled:f8889.fsa#1": {
+   "reason": "WIDE only: a Yes sends the year to the month questions; no limit is raised.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "A spouse's arrangement that cannot pay this person's costs is counted (p969 p. 5 speaks of the person covered). A Yes only sends the year to the month count; a person who then leaves those months out has a lower limit, never a higher one. Kept: the plain question cannot ask whose costs the arrangement pays; with BUG-0453."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "A limited-purpose arrangement that also pays preventive care answers Yes and is sent to the month count (p969 p. 5, Limited-purpose health FSA or HRA); a few questions, no higher limit. Ruled low on this question before; with BUG-0453."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "81a0bb70c30efa270cef9b2cea002873dcb3327a697000c904c85ef0f22ad5dd"
+  },
+  "unruled:f8889.inherited#1": {
+   "reason": "No defect: the decedent's return is the question before; the WIDE findings are the kept refusal (BUG-0613).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "Refused by f8889.owner_died, asked first."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "BUG-0613."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "BUG-0613."
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "A Yes refuses; safe."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "ac8ce8888cb65939ebd769f047f18aad72e4ba0b41737d644545f8dc7fd952f2"
+  },
+  "unruled:f8889.line14a#1": {
+   "reason": "Both cases are refused by questions asked of every account.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "f8889.loan."
+    },
+    {
+     "n": 1,
+     "kind": "WRONG_FIGURE",
+     "class": "covered",
+     "evidence": "f8889.inherited and f8889.owner_died."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "2778d1111f20786dc06bd2f9775e59c7cca25ad0f64424e4f699660b4fc977bd"
+  },
+  "unruled:f8889.line17a#1": {
+   "reason": "No defect.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "Distributions after a death are on returns refused by f8889.owner_died or f8889.inherited (i8889 p. 9)."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "1ff697297da9720e3a70551baaefee0b4c3ec249c283822649f6f7cf5a41e0c7"
+  },
+  "unruled:f8889.line2#1": {
+   "reason": "WIDE only, refused elsewhere. The help now leaves out pre-tax pay taken in early 2026 for 2025, which belongs to the employer question (i8889 p. 4, Line 2; p. 7, Line 9 and the Employer Contribution Worksheet, line 4), and counts pay taken after tax; the earlier sample's double count is not found again.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "A timely withdrawn excess is refused by f8889.excess_withdrawn, asked of every account, before line 2 can reach Form 5329 line 47."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "59a3089efb76234297a0eae6f161b40864bb4e8a08a1e8f4915fd0f4c00c7501"
+  },
+  "unruled:f8889.medical#1": {
+   "reason": "Refused elsewhere, or wording.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A beneficiary's return is refused by f8889.inherited."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "f8889.excess_withdrawn refuses."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "f8889.loan refuses."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "real, low",
+     "evidence": "On the spouse's entry the question is shown about 'your spouse' (the display rule), so the Medicare line's 'you' is the account's owner."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "181c693ca07357846df52404d4438c4597a6095d36069a5c317848bd52d69a6a"
+  },
+  "unruled:f8889.medical_all#1": {
+   "reason": "A No only brings the amount question; the excess cases are refused before it.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A No leads to f8889.medical, whose list names the premiums that count; same line 15."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "The same: f8889.medical's list includes a person who would be a dependent but for income or a joint return."
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "Refused by f8889.excess_withdrawn before this question."
+    },
+    {
+     "n": 3,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A No leads to f8889.medical, which asks for the medical costs that count without the five words; same line 15."
+    },
+    {
+     "n": 4,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "Refused by f8889.excess_withdrawn whenever an excess was taken out."
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "real, low",
+     "evidence": "'Pharmacy costs' can be read as anything bought at a pharmacy; the wrong-Yes residual the design records (D.3), and the help names the common ways the spending is not all qualified."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "168d92a0e33ab6eba4cacb2b82c391ca89addfc916fa33bb28bfce5bdc74bc5e"
+  },
+  "unruled:f8889.mistake_repaid#1": {
+   "reason": "WIDE only; safe.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "A mistake of another year refuses; safe and rare."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "b92ccfc631420c194da74a991a312bbf1c3ad02be273ec1cb1284a5d6a96a196"
+  },
+  "unruled:f8889.spouse_family#1": {
+   "reason": "No value effect.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "A Yes leads to the month counts, which count the months."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "The month counts are by first days."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "real, low",
+     "evidence": "On the spouse's entry the question is shown as 'did you have a high-deductible plan covering more than one person', naming the other person on the return."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "dbae1b67379be6d562a625e133af8cb86194214436f3096625c62448362e67f2"
+  },
+  "unruled:f8889.subject_part#1": {
+   "reason": "No defect.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "As f8889.line17a."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "efa146ebf4a4e3675b4262d2be77161b34a4c9844207d18cd30fdb4f4f4e711b"
+  },
+  "unruled:f8889.testing_prior#1": {
+   "reason": "WIDE only: a wrong Yes refuses; safe (BUG-0616).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "A Yes without eligibility on December 1, 2024 refuses a return with no testing period; safe, and the help states the December 1 condition. BUG-0616."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "'If you are not sure, answer Yes' refuses where no testing period began; safe by design (BUG-0616)."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "5dca23501a0564f75cef38d4ba7ca4bf2df4102771659effc4ebd445019f3f85"
   }
  },
  "baseline": {}

@@ -5,8 +5,8 @@
  "base": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
  "head_rows": {
   "printed lines compared": "104",
-  "agree / disagree / missing": "55 / 49 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-11); see Line-scoped reviews"
+  "agree / disagree / missing": "57 / 47 / 0",
+  "line-scoped reviews": "5 (latest 2026-11-12); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -51,29 +51,27 @@
   },
   {
    "key": "person.hsa_split",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "ce2d73db44e9e0642a1f95e81d758ddd43bc93568689e10989d56c325ccbfaa3",
    "status": "AGREE",
    "subject_key": "b83d7e6541b061e47f0f9c3bbab8d6bced9c3cf93c568c5e26a6e7b2ab40ea46"
   },
   {
    "key": "person.hsa_agreed",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; i8889 p. 7, Line 6, \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules\". The project's helper is read only under the married-family split (household.hsa_agreed_count, in f8889.allocation_bad) and is zero otherwise; the reply omits that gate and asks the Form 8889 allocation answer of every person (completed-return witness classm.f4952.1.deepseek, candidate-unknown on f8889[hsa].allocation), an answer the rule does not need outside the split. Same objection as the ruling at reviews/2025/transcription/person.md 0a43f158. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 3,634 of 4,066 agree; 424 candidate-unknown, 4 project-unknown, 4 value; on returns the full interview completes: 124 candidate-unknown. Project stands.",
+   "record": "ce2d73db44e9e0642a1f95e81d758ddd43bc93568689e10989d56c325ccbfaa3",
+   "status": "AGREE",
    "subject_key": "82829bdddec68a87a0f0ca1163af8c60327e8a0ba323d7e6d60e931ee06e4b78"
   },
   {
    "key": "person.hsa_step1",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8889 p. 7, Line 6. The project's helper is read only under an agreed allocation of the married-family split (household.hsa_step1_sum, in f8889.allocation_bad) and is zero otherwise; the reply omits that gate, so it gives a Step 1 amount (classm.f8863.2.deepseek taxpayer: project $0.00, candidate $4,987.50) or asks the coverage answers on a helper no return reads outside the split. No printed Form 8889 line differs. As the ruling at reviews/2025/transcription/person.md 0a43f158. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 3,754 of 4,066 agree; 187 value, 125 candidate-unknown; on returns the full interview completes: 111 value, 17 candidate-unknown. Project stands.",
+   "record": "ce2d73db44e9e0642a1f95e81d758ddd43bc93568689e10989d56c325ccbfaa3",
+   "status": "AGREE",
    "subject_key": "a04e2c259aa977f9c3efa01ba3680e1bbe23d4da5a5d840728181d7e6b43b95a"
   },
   {
    "key": "person.hsa_share",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "ce2d73db44e9e0642a1f95e81d758ddd43bc93568689e10989d56c325ccbfaa3",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i8889 p. 7, Line 6. The project's helper is read only under an agreed allocation of the married-family split (household.hsa_share_sum) and is zero otherwise; the reply omits that gate. Its values outside the split (classm.f5329.1.deepseek: $0.00 against $356.25) are on a helper nothing reads there, but it now also asks the allocation answer of every person (classm.f4952.1.deepseek, completed, candidate-unknown on f8889[hsa].allocation), which the source does not need outside the split; reclassified from representation (ruling at reviews/2025/transcription/person.md 5d8c6fd8) as person.hsa_agreed was. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 3,447 of 4,066 agree; 441 candidate-unknown, 170 value, 8 candidate-refuses; on returns the full interview completes: 124 candidate-unknown, 108 value. Project stands.",
+   "ruling": "Ruling: representation; project retained, as the earlier rulings of this line. i8889 p. 7, Line 6, Steps 2 and 3. The project sums f8889.share_raw; the reply sums f8889.share, which copies it and carries the allocation refusal (f8889.allocation_bad), and that refusal's condition reads this total, so the reply's line depends on itself. triage.py (1,798 fixtures, 500 generated returns seed 20261026, 1,661 partial records): 4,987 of 5,013 agree; the 26 differences are 20 candidate-refuses and 6 candidate-unknown (a cycle at person.hsa_share or household.hsa_share_sum), none a value difference; on completed returns 2 candidate-unknown (stage13.hsa_agreed_all_to_you, both persons: project $8,550 and $0) and 1 candidate-refuses (generated return 383). Project stands.",
    "subject_key": "0266614d790b162cbbd5ccdb45f14744fff66a2fdc7d175ae43ab0f4d20d98e6"
   },
   {
@@ -523,7 +521,7 @@
   },
   {
    "key": "person.x_hsa_excess",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "ce2d73db44e9e0642a1f95e81d758ddd43bc93568689e10989d56c325ccbfaa3",
    "status": "AGREE",
    "subject_key": "45061f2d171a71ffad63da3d4b804f93c924c2a9c6d1720500ccbd597ed3903e"
   },

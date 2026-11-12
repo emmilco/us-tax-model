@@ -666,6 +666,18 @@
   },
   {
    "case": "classm.f8889.5",
+   "printed": "person[spouse].f8889[hsa].line3",
+   "project": "$5,300.00",
+   "model": "$4,300.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The case (classm.f8889.5, a generated joint return: this spouse 55 or older with self-only HDHP coverage in all 12 months, no month counted as family coverage, and a Yes to the husband's or wife's family plan) has no month treated as family coverage: the other spouse's plan counts only for a month in which both were eligible individuals (i8889 p. 4, How To Complete Part I), and the month counts say none. So the $1,000 belongs on line 3 (p. 4, Line 3, rule 6, 'married with self-only HDHP coverage for the entire year') and line 7 is $0; the model took the Yes alone as family coverage at some time (p. 5, Note). The generated return's two spouses' answers contradict each other, which is recorded open (low).",
+   "drop": true,
+   "context": "4ac2eb1315109a02479a138f08d4e4f34165a49869573d1eec6a9139114c1556",
+   "date": "2026-11-12",
+   "run": "2bda091a2dd9988058b556decf7dc62802d7a2e1112b83a9ecc30eb0424f34f4",
+   "subject_key": "efd9cb0c64ed6c61b4aea9084e31ea841d26bc9910995d3cc81ba69b6d2785d8"
+  },
+  {
+   "case": "classm.f8889.5",
    "printed": "person[spouse].f8889[hsa].line3_all_year",
    "project": "$2,137.50",
    "model": "$4,300.00",
@@ -681,6 +693,42 @@
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The spouse was an eligible individual for 3 months, all with family coverage, and does not use the last-month rule, so line 3 comes from the Line 3 Limitation Chart and Worksheet (i8889 p. 4, Line 3, rule 5; p. 6): $8,550 x 3 / 12 = $2,137.50, on which both agree (line 3 and step1_line3). line3_all_year is the helper for a filer eligible all year, which this return does not take; the model entered the full-year family amount under it, the project the chart amount. No change to the data.",
    "drop": true,
    "subject_key": "1646e129201c96915f17a6fe98f3bed47192d87c8d5e431f76e5c4a14966e984"
+  },
+  {
+   "case": "classm.f8889.5",
+   "printed": "person[spouse].f8889[hsa].line5",
+   "project": "$5,300.00",
+   "model": "$4,300.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The case (classm.f8889.5, a generated joint return: this spouse 55 or older with self-only HDHP coverage in all 12 months, no month counted as family coverage, and a Yes to the husband's or wife's family plan) has no month treated as family coverage: the other spouse's plan counts only for a month in which both were eligible individuals (i8889 p. 4, How To Complete Part I), and the month counts say none. So the $1,000 belongs on line 3 (p. 4, Line 3, rule 6, 'married with self-only HDHP coverage for the entire year') and line 7 is $0; the model took the Yes alone as family coverage at some time (p. 5, Note). The generated return's two spouses' answers contradict each other, which is recorded open (low). This line differs only through line 3.",
+   "drop": true,
+   "context": "4ac2eb1315109a02479a138f08d4e4f34165a49869573d1eec6a9139114c1556",
+   "date": "2026-11-12",
+   "run": "2bda091a2dd9988058b556decf7dc62802d7a2e1112b83a9ecc30eb0424f34f4",
+   "subject_key": "ef25696b1f2591db11f7fb6e3e2cdb003c57097ee1d1548cda89dc31acf92f2c"
+  },
+  {
+   "case": "classm.f8889.5",
+   "printed": "person[spouse].f8889[hsa].line6",
+   "project": "$5,300.00",
+   "model": "$4,300.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The case (classm.f8889.5, a generated joint return: this spouse 55 or older with self-only HDHP coverage in all 12 months, no month counted as family coverage, and a Yes to the husband's or wife's family plan) has no month treated as family coverage: the other spouse's plan counts only for a month in which both were eligible individuals (i8889 p. 4, How To Complete Part I), and the month counts say none. So the $1,000 belongs on line 3 (p. 4, Line 3, rule 6, 'married with self-only HDHP coverage for the entire year') and line 7 is $0; the model took the Yes alone as family coverage at some time (p. 5, Note). The generated return's two spouses' answers contradict each other, which is recorded open (low). This line differs only through line 3.",
+   "drop": true,
+   "context": "4ac2eb1315109a02479a138f08d4e4f34165a49869573d1eec6a9139114c1556",
+   "date": "2026-11-12",
+   "run": "2bda091a2dd9988058b556decf7dc62802d7a2e1112b83a9ecc30eb0424f34f4",
+   "subject_key": "1ad7a5f66b012b2d088cebe8e5c56a8f6c713f9daaac0fbd463dd6dbd8e26266"
+  },
+  {
+   "case": "classm.f8889.5",
+   "printed": "person[spouse].f8889[hsa].line7",
+   "project": "$0.00",
+   "model": "$1,000.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The case (classm.f8889.5, a generated joint return: this spouse 55 or older with self-only HDHP coverage in all 12 months, no month counted as family coverage, and a Yes to the husband's or wife's family plan) has no month treated as family coverage: the other spouse's plan counts only for a month in which both were eligible individuals (i8889 p. 4, How To Complete Part I), and the month counts say none. So the $1,000 belongs on line 3 (p. 4, Line 3, rule 6, 'married with self-only HDHP coverage for the entire year') and line 7 is $0; the model took the Yes alone as family coverage at some time (p. 5, Note). The generated return's two spouses' answers contradict each other, which is recorded open (low).",
+   "drop": true,
+   "context": "4ac2eb1315109a02479a138f08d4e4f34165a49869573d1eec6a9139114c1556",
+   "date": "2026-11-12",
+   "run": "2bda091a2dd9988058b556decf7dc62802d7a2e1112b83a9ecc30eb0424f34f4",
+   "subject_key": "807739c8693c0433fa9e4c10f165b12f9f53399d8f4c0cb1bdacdd200f2f77d5"
   },
   {
    "case": "classm.f8889.5",

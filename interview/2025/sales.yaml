@@ -200,7 +200,20 @@ interview:
   - $f8889
   - f8889.line2
   - f8889.line9
-  - f8889.unsupported
+  - f8889.owner_died
+  - f8889.inherited
+  - f8889.archer
+  - f8889.ira_transfer
+  - f8889.excess_withdrawn
+  - f8889.clear_all_year
+  - f8889.fsa
+  - f8889.spouse_family
+  - f8889.ira_prior
+  - f8889.testing_prior
+  - f8889.dist_code
+  - f8889.mistake_repaid
+  - f8889.medical_all
+  - f8889.loan
   - f8889.employer_in_box1
   - person.x_hsa_value
   - person.x_other

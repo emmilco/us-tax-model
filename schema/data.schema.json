@@ -60,6 +60,10 @@
               "order": {
                 "type": "integer"
               },
+              "seq": {
+                "type": "integer",
+                "minimum": 1
+              },
               "cite": {
                 "$ref": "#/$defs/cite"
               },

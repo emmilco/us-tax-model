@@ -15,7 +15,7 @@
         "sa.gifts": true,
         "sb.foreign_any": true,
         "sb.form8938": true,
-        "person[taxpayer].f8889[hsa].unsupported": true,
+        "person[taxpayer].f8889[hsa].inherited": true,
         "$f8889@person[taxpayer]": [
           "hsa"
         ],

@@ -179,7 +179,7 @@ the instruction that requires it.
 | **Credits** | ✓ The child tax credit, the earned income credit, and the child and dependent care, education, saver's, home energy and premium tax credits | ✗ Other credits, such as the adoption, clean vehicle, elderly or disabled, or business credits: 0.9% of returns |
 | **Foreign** | ✓ Foreign tax on investment income, within the small-amount election | ✗ Foreign accounts or assets that require an FBAR or Form 8938: not measured |
 
-Rare exceptions within the left-hand column are left to the interview, which stops with a citation if one applies. [`docs/COVERAGE.md`](docs/COVERAGE.md) lists all 161 situations the tool refuses, and says exactly what this table leaves out.
+Rare exceptions within the left-hand column are left to the interview, which stops with a citation if one applies. [`docs/COVERAGE.md`](docs/COVERAGE.md) lists all 169 situations the tool refuses, and says exactly what this table leaves out.
 <!-- coverage-tree:end -->
 
 ### Exact arithmetic

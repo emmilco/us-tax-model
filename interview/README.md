@@ -17,7 +17,7 @@ A profile file lists its targets, its initial answers and the inputs it asks; th
 | default (`social-security`) | `2025/social-security.yaml` | Form 1040 line 31 | Social Security credit and supplied Schedule 3 Part II subtotals; not a complete return |
 | `sales` | `2025/sales.yaml` | Form 1040 lines 7a and 16 | securities sales, Schedule D and tax-method selection; AGI and taxable income computed; not a complete return |
 | `stage4` | `2025/stage4.yaml` | `scope.ready`, lines 7a and 16, the Schedule A deduction, Form 4952 line 8, the QBI deduction, Schedule 2 line 21, Form 8959 line 24, Schedule 3 line 1 | form slices with eligibility and valuation screens; not a complete return |
-| `full` | `2025/full.yaml` | `scope.ready`, Form 1040 lines 24, 33, 34 and 37, `f2441.line1_box`, `f2441.line1_paid`, `f2441.statement_notice`, `f2441.household_notice`, `f5695.line32b`, `ira.basis_total` | the whole return: Form 1040 lines 1a–37 end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them); no filing or transmission |
+| `full` | `2025/full.yaml` | `scope.ready`, Form 1040 lines 24, 33, 34 and 37, `f2441.line1_box`, `f2441.line1_paid`, `f2441.statement_notice`, `f2441.household_notice`, `f5695.line32b`, `ira.basis_total`, and Form 8889's three results (`s1.line13`, `s1.line8f`, `s2.line17c`) | the whole return: Form 1040 lines 1a–37 end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them); no filing or transmission |
 
 The default, `sales` and `stage4` profiles fix the person roster to `taxpayer` in their
 initial answers. The `full` profile starts from no answers and asks `$person` first
@@ -64,7 +64,8 @@ Answer using the question's exact `input` key. `--value` is JSON: `false`, `6200
 `"single"`, `null` or `["employer_a","employer_b"]`. `null` requests help: the value
 stays unknown and the same question is asked again with `helpRequested` set. A blank
 printed money box must be entered as zero if that is the intended answer; unanswered
-questions never default to zero. Questions are asked in bank order, then by key.
+questions never default to zero. Questions are asked in bank order, then by key; the questions of a
+block are asked entry by entry and in the block's sequence ("Blocks", under Question data).
 
 ## Web UI
 
@@ -302,7 +303,7 @@ sets:                             # optional: named answers several rows share
     answers:
       f1040.status: single
 rows:
-  - id: opening.single_but_married
+  - id: opening.married_picks_single
     design: C.1 row 9 (married, picks "None of these")
     situation: A married person files alone and takes the status of an unmarried person.
     uses: [one_person]
@@ -386,6 +387,23 @@ choice: married filing jointly is what the couple's choice records, so a filer w
 value given now is always offered, and an answer is accepted whether or not it was offered
 (one person answering married filing jointly meets the consistency check
 `household.roster_bad`, as a typed-in return does).
+
+### Blocks
+
+A topic whose questions belong together is a block: every question of one `order` number, each with its place in
+the block, `seq` (a whole number from 1). Among the open questions of a block the interview asks first those of the
+first entry of the outermost collection (the person, for a form each person has), and within one entry the lowest
+`seq`; so a couple is asked one person's questions through, then the other's. An order number is all block or none
+(the build fails otherwise), and a question outside a block is asked in bank order, then by key, as before
+(`askOrder` in `engine/src/interview.ts`, which the interview-rules check also uses).
+
+Order alone does not keep a topic together: a question is asked only once it is reachable from a target, and a form
+whose results enter the return in several places becomes reachable piece by piece, as each place is reached. The
+health savings account block (order 9: the roster `$f8889`, the Form 8889 questions and `person.x_hsa_value`) is
+kept together by the `full` profile's asking for Form 8889's three results directly (`s1.line13`, `s1.line8f` and
+`s2.line17c`, which the return's own targets read in any case): each of the form's questions is then reachable as
+soon as the account is listed, and a refusal on the form is told at once. `person.x_hsa_value` is the exception: it
+is reached through Form 5329 and is asked when that form is.
 
 The Form 8863 Part III questions exist twice, as `person.edu*` and `dependent.edu*` lines with a bank entry
 each, because a student is a person on the return or a dependent. The two statements are kept the same:

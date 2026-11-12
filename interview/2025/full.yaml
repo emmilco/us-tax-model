@@ -17,6 +17,12 @@ interview:
   - clcw26.decedent_notice
   - clcw.figures_notice
   - s179.line13
+  # Form 8889's three results (the deduction, the taxable distributions, the additional 20% tax), asked for directly:
+  # every health savings account question is then reachable as soon as the account is listed, so the block is asked
+  # together and its refusals are told at once.
+  - s1.line13
+  - s1.line8f
+  - s2.line17c
   initial: {}
   cite:
     doc: f1040

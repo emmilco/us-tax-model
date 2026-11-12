@@ -117,7 +117,7 @@
    "not_applicable": "Pub. 969 p. 4's list of preventive care describes what an HDHP may pay before the deductible; it is cited only for the definition of family HDHP coverage (f8889.coverage_year) and limits no amount the tool computes."
   },
   "limit:p969:p7:21d3967d": {
-   "not_applicable": "the limit on a qualified HSA funding distribution: such distributions are refused by f8889.unsupported (Form 8889 line 10); Pub. 969 p. 7 is cited only for retroactive Medicare coverage (f8889.coverage_year)."
+   "not_applicable": "the limit on a qualified HSA funding distribution: such distributions are refused by f8889.ira_transfer (Form 8889 line 10); Pub. 969 p. 7 is cited only for retroactive Medicare coverage (f8889.clear_all_year)."
   },
   "limit:fs-2025-01:p3:2f866a9a": {
    "enforced_by": [

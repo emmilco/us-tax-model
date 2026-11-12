@@ -14,13 +14,13 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 153 of the 161 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 161 of the 169 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **201 refusal gates**: 161 tax situations the tool does not prepare, grouped by topic below, and 40 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **209 refusal gates**: 169 tax situations the tool does not prepare, grouped by topic below, and 40 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
 - [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (30)
 - [Household and dependents](#household-and-dependents) (15)
@@ -32,7 +32,7 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
 - [State and local tax refunds](#state-and-local-tax-refunds) (4)
 - [Other income and alimony](#other-income-and-alimony) (8)
 - [IRA contributions](#ira-contributions) (12)
-- [Health savings accounts](#health-savings-accounts) (3)
+- [Health savings accounts](#health-savings-accounts) (11)
 - [Itemized deductions](#itemized-deductions) (7)
 - [Tips, overtime, car loans and seniors](#tips-overtime-car-loans-and-seniors) (6)
 - [Earned income credit](#earned-income-credit) (2)
@@ -921,13 +921,53 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
 
 ### Health savings accounts
 
-- **`f8889.unsupported`**: Do you have an HSA funding distribution from an IRA, an Archer MSA, an earlier-year excess, a testing-period failure, an inherited HSA, a deemed distribution, or a withdrawal of excess contributions?
-  - *The data asks or tests:* Any of these: a qualified HSA funding distribution from an IRA in 2025; contributions to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage at any time during 2025, any contribution by anyone to your spouse's Archer MSA; excess HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing period that began in an earlier year; an HSA you acquired because of the account beneficiary's death; the HSA of a person who died in 2025 whose estate is the beneficiary; a deemed distribution (a prohibited transaction, or an HSA used as security for a loan); a withdrawal of excess contributions or their earnings (made in 2025, or in 2026 by the due date of your 2025 return, including extensions); or a mistaken distribution you repaid; or this person died in 2025? (`input`)
-  - *Not covered:* Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations. Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.
-    *Source:* [i8889] Parts II and III; lines 4, 10 and 13
+- **`f8889.owner_died`**: Did the owner of the HSA die in 2025?
+  - *The data asks or tests:* The account beneficiary of this HSA (the person this Form 8889 is for) died in 2025 (`input`)
+  - *Not covered:* Form 8889 for a person who died in 2025. The Form 8889 of a person who died in 2025 follows special rules (the tax year ends with the month of death, so the last-month rule looks at that month and not at December, and an HSA left to the estate is included at its value on the date of death). This tool does not prepare it; prepare it with the person's final return.
+    *Source:* [i8889] p. 2, Last-month rule; p. 3, Death of Account Beneficiary; i1040gi p. 12, Death of a Taxpayer
   - *Refused at:* `f8889.line13`, `f8889.line16`
+- **`f8889.inherited`**: Did you get an HSA, or money from one, because its owner died?
+  - *The data asks or tests:* An interest in an HSA acquired because of the death of its account beneficiary (`input`)
+  - *Not covered:* Form 8889 for an HSA acquired because its account beneficiary died. An inherited HSA is reported differently (a beneficiary who is not the surviving spouse reports the account's value on the date of death on a Form 8889 of its own and skips Part I). This tool does not prepare it, and it does not prepare a surviving spouse's inherited HSA either.
+    *Source:* [i8889] p. 3, Death of Account Beneficiary
+  - *Refused at:* `f8889.line13`, `f8889.line16`
+- **`f8889.archer`**: Did you or your spouse have an Archer MSA in 2025?
+  - *The data asks or tests:* You, or your husband or wife, had an Archer MSA at any time in 2025 (`input`)
+  - *Not covered:* Form 8853 (Archer MSAs) and Form 8889 line 4. Archer MSAs are outside this tool. Contributions to one reduce the HSA limit on Form 8889 line 4, and contributions to it and distributions from it (including one rolled over into an HSA) are reported on Form 8853.
+    *Source:* [f8889] Form 8889 (2025), line 4; i8853 p. 1, Who Must File
+  - *Refused at:* `f8889.line13`
+- **`f8889.ira_transfer`**: Was money moved into your HSA straight from an IRA in 2025 (a qualified HSA funding distribution)?
+  - *The data asks or tests:* A qualified HSA funding distribution was made to your HSA in 2025 (`input`)
+  - *Not covered:* Form 8889 line 10 (a qualified HSA funding distribution). A transfer from an IRA to an HSA (a qualified HSA funding distribution) is outside this tool. It reduces the amount that can be contributed and starts a testing period.
+    *Source:* [i8889] p. 7, Line 10
+  - *Refused at:* `f8889.line13_figured`, `f8889.line13_none`
+- **`f8889.excess_withdrawn`**: Did you take money back out of your HSA because too much had been put in?
+  - *The data asks or tests:* A withdrawal of excess HSA contributions or their earnings, made in 2025 or in 2026 by the due date of the 2025 return (`input`)
+  - *Not covered:* Form 8889 lines 2, 13 and 14b for excess contributions withdrawn. Excess contributions taken back out of an HSA by the due date of the return are treated as not contributed, and the withdrawal and its earnings are reported on lines 14a and 14b and as other income. This tool does not prepare that.
+    *Source:* [i8889] p. 8, Excess Contributions You Make and Line 14b
+  - *Refused at:* `f8889.line13_figured`, `f8889.line13_none`, `f8889.line16`
+- **`f8889.testing_failed`**: After relying on the last-month rule or an IRA transfer for 2024, did you go without HSA-qualifying coverage in any month of 2025?
+  - *The data asks or tests:* A testing period that began in 2024, and not an eligible individual in every month of 2025 (`choose`)
+  - *Not covered:* Form 8889 Part III. Income and additional tax for not staying an eligible individual during a testing period (Form 8889 Part III) are outside this tool. A testing period began in 2024, under the last-month rule or with a transfer from an IRA, and the answers show at least one month of 2025 without qualifying coverage.
+    *Source:* [i8889] p. 2, Testing period; p. 8, Testing period; p. 9, Part III
+  - *Refused at:* `f8889.line13_figured`, `f8889.line13_none`
+- **`f8889.dist_code_if_dist`**: Does a Form 1099-SA for your HSA show a distribution code other than 1 or 3?
+  - *The data asks or tests:* A Form 1099-SA distribution code other than 1 or 3: asked only when there were HSA distributions in 2025 (`choose`)
+  - *Not covered:* An HSA distribution with Form 1099-SA distribution code 2, 4, 5 or 6. Box 3 of Form 1099-SA shows code 2 for excess contributions taken back, code 4 or 6 for a payment after the account owner's death, and code 5 for a prohibited transaction. This tool does not prepare any of these.
+    *Source:* [f1099sa] p. 3, Instructions for Recipient, Box 3
+  - *Refused at:* `f8889.line16`
+- **`f8889.mistake_repaid`**: Was money paid out of your HSA by mistake and later put back?
+  - *The data asks or tests:* A mistaken distribution from your HSA that was repaid to the HSA (`input`)
+  - *Not covered:* A mistaken HSA distribution repaid to the HSA. A distribution made by mistake and returned to the HSA is left out of income and of the additional 20% tax under special rules (Notice 2004-50, Q&A 37 and 76). This tool does not prepare that.
+    *Source:* [i8889] p. 9, Lines 17a and 17b, Note; f1099sa p. 3, Instructions for Recipient
+  - *Refused at:* `f8889.line17b`
+- **`f8889.loan`**: Did you use your HSA as security for a loan, or borrow from it, lend to it, or buy from or sell to it?
+  - *The data asks or tests:* A deemed distribution from your HSA in 2025 (a prohibited transaction, or any part of an HSA used as security for a loan) (`input`)
+  - *Not covered:* A deemed distribution from an HSA. Using an HSA as security for a loan, or a prohibited transaction with it such as borrowing from it, lending to it, or buying from or selling to it, counts as taking money out of the HSA (a deemed distribution), which is taxable and generally subject to the additional 20% tax. This tool does not prepare that.
+    *Source:* [i8889] p. 3, Deemed Distributions From HSAs
+  - *Refused at:* `f8889.line17b`
 - **`f8889.excess`**: Did your employer contribute more than the limit to your HSA without including the excess in Form W-2 box 1?
-  - *The data asks or tests:* Employer contributions above the limit that are not included in Form W-2 box 1 (`test`)
+  - *The data asks or tests:* Employer contributions above the limit that are not included in Form W-2 box 1 (`choose`)
   - *Not covered:* Excess employer HSA contributions not included in Form W-2 box 1. Employer contributions above the limit that your employer did not include in box 1 are other income, which this tool does not take; ask the employer for a corrected Form W-2.
     *Source:* [i8889] p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer's contributions over your limitation on line 8."
   - *Refused at:* `f8889.line13_figured`
