@@ -59,7 +59,9 @@ weakening what the tool guarantees about a completed return.
 
 ## Decisions on the design of the first slice
 
-The slice is designed in docs/2026-11-11_interview_redesign_slice_design.md. The owner decided, on 2026-11-11:
+The slice is designed in docs/2026-11-11_interview_redesign_slice_design.md. The rules that design marks as unverified
+were checked against the credit instructions archived afterwards; what the sources say, and where the design is not
+right, is in docs/2026-11-11_interview_redesign_sources_check.md. The owner decided, on 2026-11-11:
 
 1. **One answer may record several inputs, narrowly.** The "who is this return for" choice also records each entry's
    role and, for a couple, the joint filing status. The rule that the interview sets no input is restated to allow
