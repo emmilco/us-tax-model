@@ -230,8 +230,8 @@
   },
   "unruled:f5329#1.1": {
    "class": "out of scope",
-   "gate": "f8889.unsupported",
-   "evidence": "i5329 p. 8. As the earlier f5329#4 ruling: f8889.unsupported names 'a withdrawal of excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions' and refuses Form 8889 lines 13 and 16; executed on stage11.hsa_excess with f8889.unsupported true, f5329.l47, l49, s2.line8 and f1040.line24 refuse. A withdrawal after a timely filed return is made on an amended return, not this one.",
+   "gate": "f8889.excess_withdrawn",
+   "evidence": "i5329 p. 8. As the earlier f5329#4 ruling: f8889.excess_withdrawn asks about a withdrawal of 'excess contributions (yours or your employer's) or the earnings on them, in 2025, or in 2026 by the due date of your 2025 return including extensions' and refuses Form 8889 lines 13 and 16; executed on stage11.hsa_excess with f8889.excess_withdrawn true, f5329.l47, l49, s2.line8 and f1040.line24 refuse. A withdrawal after a timely filed return is made on an amended return, not this one.",
    "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49"
   },
   "unruled:f5329#1.2": {
@@ -324,24 +324,6 @@
    "line": "person.sav_voluntary",
    "evidence": "f8880 p. 2, Line 2 (as the earlier f8880#1 ruling, rechecked). person.sav_line2 sums person.sav_w2 (box 12 codes D, E, F, S, AA, BB, EE and the governmental 457(b) part of G, so designated Roth deferrals are included), person.sav_voluntary ('Voluntary after-tax employee contributions ... to a qualified retirement plan (including the federal Thrift Savings Plan) ... not contributions designated under section 414(h)(2)') and person.sav_simple; code H (501(c)(18)(D)) is refused by w2.code_h on w2.sav_listed.",
    "subject_sha": "f820d0fbd25c84f485fc1d251a56f8884900022931937da5082646950d8bf600"
-  },
-  "unruled:f8889#1.1": {
-   "class": "real gap",
-   "bug": "BUG-0453",
-   "evidence": "p969 pp. 4-5; i8889 p. 4 (as the earlier f8889#2 ruling). f8889.coverage_year takes 'covered by an HDHP' at face value (embedded family deductible, plans of mostly disregarded coverage), as BUG-0453 records; the prescription drug plan paying before the deductible and the zero-balance grace-period FSA exception are further HDHP and other-coverage details of the same question, to be added to BUG-0453. The line 1 checkbox is presentation (earlier f8889#3 ruling). Low.",
-   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2"
-  },
-  "unruled:f8889#1.2": {
-   "class": "real gap",
-   "bug": "BUG-0453",
-   "evidence": "p969 p. 5, 'Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.' The f8889.line2 question does not exclude non-cash contributions. Pre-existing, low. [Restamped unchanged from the ruling of earlier claim #1 under prompt_sha bf2ae17c: same form, same quoted text, same cited page, same item and effect.]",
-   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2"
-  },
-  "unruled:f8889#1.3": {
-   "class": "real gap",
-   "bug": "BUG-0453",
-   "evidence": "i8889 p. 8, Line 15, 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses'. f8889.medical still lacks this exclusion; BUG-0453 already lists it (open, low).",
-   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2"
   },
   "unruled:f8959#1.1": {
    "class": "presentation",
@@ -959,64 +941,6 @@
    "subject_sha": "480fe3eae6948a29767cc3bd912338132ef05b126f0fef0a38ba5ecd368388bf",
    "same_as": "unruled:w2#1.5"
   },
-  "unruled:f8889#2.1": {
-   "class": "real gap",
-   "bug": "BUG-0453",
-   "evidence": "p969 pp. 4-5; i8889 p. 3. Same gap as f8889#1.1: f8889.coverage_year (and months_eligible, dec_coverage) take 'covered by an HDHP' at face value (no minimum deductible and out-of-pocket tests, embedded family deductible, plans mainly of disregarded coverage, prescription plan paying before the deductible, zero-balance FSA grace period). BUG-0453.",
-   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
-   "same_as": "unruled:f8889#1.1"
-  },
-  "unruled:f8889#2.3": {
-   "class": "real gap",
-   "bug": "BUG-0453",
-   "evidence": "i8889 p. 8, Line 15, 'Do not include the distribution of an excess contribution taken out after the due date'. Same gap as f8889#1.3: f8889.medical has no such exclusion (BUG-0453). The nonprescription medicine, menstrual product, condom and PPE sentences (i8889 p. 2) are covered: f8889.medical asks for 'qualified medical expenses', the HSA term, which includes them, and nothing in the question excludes them.",
-   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
-   "same_as": "unruled:f8889#1.3"
-  },
-  "unruled:f8889#2.4": {
-   "class": "presentation",
-   "evidence": "i8889 p. 4, Line 1. The line 1 self-only/family checkbox is not encoded; it changes no amount (lines 3, 6 and 7 come from f8889.coverage_year and the month counts). Raised within f8889#1.1, ruled presentation there.",
-   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2"
-  },
-  "unruled:f8889#3.1": {
-   "class": "real gap",
-   "bug": "BUG-0453",
-   "evidence": "p969 pp. 4-5. Same gap as f8889#1.1 (HDHP definition and the zero-balance FSA grace period not in f8889.coverage_year). BUG-0453.",
-   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
-   "same_as": "unruled:f8889#1.1"
-  },
-  "unruled:f8889#3.3": {
-   "class": "presentation",
-   "evidence": "i8889 p. 4, Line 1. Same as f8889#2.4: the line 1 checkbox only, no amount effect.",
-   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
-   "same_as": "unruled:f8889#2.4"
-  },
-  "unruled:f8889#4.2": {
-   "class": "real gap",
-   "bug": "BUG-0453",
-   "evidence": "p969 pp. 4-5. Items (1) to (4) are the gap of f8889#1.1 (BUG-0453). Item (5), the suspended or retirement HRA, is covered in substance: f8889.coverage_year counts as other coverage 'a general-purpose health FSA or HRA that pays your medical expenses', so an HRA that pays nothing during its suspension or before retirement is not other coverage, and is once it pays.",
-   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
-   "same_as": "unruled:f8889#1.1"
-  },
-  "unruled:f8889#4.3": {
-   "class": "presentation",
-   "evidence": "i8889 p. 4, Line 1. Same as f8889#2.4: the line 1 checkbox only.",
-   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
-   "same_as": "unruled:f8889#2.4"
-  },
-  "unruled:f8889#5.1": {
-   "class": "real gap",
-   "bug": "BUG-0453",
-   "evidence": "p969 pp. 4-5. Same gap as f8889#1.1 (HDHP definition and FSA grace period not in f8889.coverage_year). BUG-0453.",
-   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
-   "same_as": "unruled:f8889#1.1"
-  },
-  "unruled:f8889#5.4": {
-   "class": "presentation",
-   "evidence": "i8889 p. 4, Line 1. Same as f8889#2.4: the line 1 checkbox only.",
-   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
-   "same_as": "unruled:f8889#2.4"
-  },
   "unruled:f5329#2.1": {
    "class": "wrong",
    "evidence": "i5329 p. 5; p590b p. 28. The claim's core misreads the encoding (its list shows only the f5329 lines). The dollar caps are applied per person: person.x_cap09 ($10,000 less person.x_prior09), person.x_cap19 ($5,000 per birth, person.x_births), person.x_c05 (medical over 7.5% of AGI), person.x_c22 ($10,300), person.x_c23 ($1,000), summed in person.x_limited_sum into f5329.l2; the 50%-of-account and interest-minus-$1,000 limits are in retirement.exc_amount. The conditions (age 55/50 separation, plan type, reservist, first-home no-ownership for both spouses, birth/adoption period) are in retirement.exception, and retirement.wrong_kind refuses plan-type mismatches; one emergency distribution per year is refused by person.x_two23 and one within 3 years of an unrepaid one by retirement.early_screen. The birth/adoption statement is presentation (f5329#1.2).",
@@ -1024,8 +948,8 @@
   },
   "unruled:f5329#2.2": {
    "class": "out of scope",
-   "gate": "f8889.unsupported",
-   "evidence": "i5329 p. 8. Same gap as f5329#1.1: f8889.unsupported names 'a withdrawal of excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions' and refuses Form 8889 lines 13 and 16.",
+   "gate": "f8889.excess_withdrawn",
+   "evidence": "i5329 p. 8. Same gap as f5329#1.1: f8889.excess_withdrawn asks about a withdrawal of 'excess contributions (yours or your employer's) or the earnings on them, in 2025, or in 2026 by the due date of your 2025 return including extensions' and refuses Form 8889 lines 13 and 16.",
    "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
    "same_as": "unruled:f5329#1.1"
   },
@@ -1038,8 +962,8 @@
   },
   "unruled:f5329#3.1": {
    "class": "out of scope",
-   "gate": "f8889.unsupported",
-   "evidence": "i5329 p. 8. Same gap as f5329#1.1: a timely withdrawal of a 2025 HSA excess is refused by f8889.unsupported; a withdrawal in the 6-month window after a timely filed return is made on an amended return.",
+   "gate": "f8889.excess_withdrawn",
+   "evidence": "i5329 p. 8. Same gap as f5329#1.1: a timely withdrawal of a 2025 HSA excess is refused by f8889.excess_withdrawn; a withdrawal in the 6-month window after a timely filed return is made on an amended return.",
    "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
    "same_as": "unruled:f5329#1.1"
   },
@@ -1064,8 +988,8 @@
   },
   "unruled:f5329#4.2": {
    "class": "out of scope",
-   "gate": "f8889.unsupported",
-   "evidence": "i5329 p. 8. Same gap as f5329#1.1: refused by f8889.unsupported.",
+   "gate": "f8889.excess_withdrawn",
+   "evidence": "i5329 p. 8. Same gap as f5329#1.1: refused by f8889.excess_withdrawn.",
    "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
    "same_as": "unruled:f5329#1.1"
   },
@@ -1078,8 +1002,8 @@
   },
   "unruled:f5329#5.2": {
    "class": "out of scope",
-   "gate": "f8889.unsupported",
-   "evidence": "i5329 p. 8. Same gap as f5329#1.1: refused by f8889.unsupported.",
+   "gate": "f8889.excess_withdrawn",
+   "evidence": "i5329 p. 8. Same gap as f5329#1.1: refused by f8889.excess_withdrawn.",
    "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
    "same_as": "unruled:f5329#1.1"
   },
@@ -1411,6 +1335,44 @@
    "evidence": "i4562 pp. 13, 15. Same as f4562#2.2 (s179.line7; asset.listed_low); the passenger automobile limits on vehicles are applied in scveh.",
    "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
    "same_as": "unruled:f4562#2.2"
+  },
+  "unruled:f8889#1.1": {
+   "class": "out of scope",
+   "gate": "person.x_other",
+   "evidence": "i8889 p. 8, Prior Year Excess Contributions; i5329 p. 8. The claim reads Form 8889 alone. A prior-year HSA excess is asked of every person by person.x_other ('excess HSA contributions from an earlier year that you had not removed or used up before 2025 ..., whether or not you have a Form 8889 for 2025'), which refuses Form 5329 and through it the return; walked on the built interview (coverage row hsa.prior_year_excess: refused at person[taxpayer].x_other, with and without an HSA). The catch-all that named it on this form is gone, so nothing on Form 8889 repeats it.",
+   "subject_sha": "4f3a96b73e8017491b7b88580d94c9199340cef997099cc3de15c20c7baab8ba"
+  },
+  "unruled:f8889#1.2": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "evidence": "i8889 p. 8, Line 15; p969 pp. 8-9. The excess contribution taken out after the due date is the gap BUG-0453 lists for f8889.medical (open, low); a take-back in 2025 is in fact refused first, by f8889.excess_withdrawn, whose question has no due-date condition. The age-based limit on long-term care premiums and the establishment date of a rollover-funded HSA are further details of the same line 15 question, pre-existing in f8889.medical and now also in f8889.medical_all's help; low, to be recorded with BUG-0453.",
+   "subject_sha": "4f3a96b73e8017491b7b88580d94c9199340cef997099cc3de15c20c7baab8ba"
+  },
+  "unruled:f8889#1.3": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "evidence": "i8889 p. 3; p969 pp. 4-5. f8889.coverage_year still takes 'a high-deductible plan that works with an HSA' at face value (minimum deductible, out-of-pocket maximum, embedded family deductible, plans of mostly disregarded coverage), as BUG-0453 records; the instructions tell the filer to ask the insurer (i8889 p. 1, Caution). Pre-existing, low.",
+   "subject_sha": "4f3a96b73e8017491b7b88580d94c9199340cef997099cc3de15c20c7baab8ba"
+  },
+  "unruled:f8889#1.4": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "evidence": "p969 p. 5, Prescription drug plans. The other-coverage condition, now f8889.clear_all_year, does not say how a prescription drug plan is treated; BUG-0453 lists it. Pre-existing (the wording moved from f8889.coverage_year), low.",
+   "same_as": "unruled:f8889#1.3",
+   "subject_sha": "4f3a96b73e8017491b7b88580d94c9199340cef997099cc3de15c20c7baab8ba"
+  },
+  "unruled:f8889#1.5": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "evidence": "p969 p. 5, Health FSA grace period. f8889.fsa, the question split out of the other-coverage condition, has no exception for grace-period coverage with a zero prior-year balance; BUG-0453 lists the exception. A filer it applies to answers Yes and is sent to the month counts, where the same omission stands. Low.",
+   "same_as": "unruled:f8889#1.3",
+   "subject_sha": "4f3a96b73e8017491b7b88580d94c9199340cef997099cc3de15c20c7baab8ba"
+  },
+  "unruled:f8889#1.6": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "evidence": "p969 pp. 5 and 8. Cash-only contributions are the gap BUG-0453 lists for f8889.line2. Contributions by an S corporation for a 2% shareholder-employee or by a partnership for a partner (income to the person, deductible on line 2) are a further detail of the same pair of questions; such filers are refused elsewhere (Schedule K-1 income, scope.schedule1), so no return the tool completes is affected. Pre-existing, low.",
+   "subject_sha": "4f3a96b73e8017491b7b88580d94c9199340cef997099cc3de15c20c7baab8ba"
   }
  },
  "baseline": {}

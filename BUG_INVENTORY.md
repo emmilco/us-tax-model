@@ -7781,3 +7781,109 @@ Note on `ss.hoh` (`fixtures/2025/s3.json`): the T-269 draft said a truthful `hou
 - **Regression predictions:** no form line, expression, refusal text, fixture or default changes. The stored text of one help changes (`person.rrta`).
 - **Validation:** `spouse-wording --self-test` (14 constructed texts, one for each row of the rule, in both forms; 6 uncovered wordings each refused; all 84 built framed questions covered, and well-formed in each shown form with no "this person" left); the build check found the one uncovered built text before it was reworded; every shown form of the 84 questions was read in the report. Read and judged awkward but acceptable: `person.plan_screen` ("contributions for himself or herself to more than one plan", with only the frame as antecedent); `person.sav_prior_other` (its parenthesis about a return that is not joint, which a spouse's entry never is); the education questions that say "the student" and `person.died_before_65` ("a person born between ..."), which are stored in the third person and unchanged. Two Form 8889 questions use "you" for the couple and so read wrongly for the spouse's entry until they are rewritten in the same slice: `f8889.allocation` ("Does your spouse divide the family contribution limit ...") and `f8889.allocated` ("the allocation your spouse agreed on").
 - **Tags:** interview; wording; per-person frame; display rule; fixed
+
+## BUG-0610 — Form 8889's catch-all, roster and coverage questions taken apart; the health savings account questions are asked as one block
+
+- **Date:** 2026-11-12
+- **Caught by:** the owner's walk of his own return (docs/2026-11-11_owner_walkthrough_notes.md, note 5: "Unreadable"); docs/2026-11-11_interview_redesign_slice_design.md, sections A.3 to C.3 (T-282).
+- **Source:** i8889 pp. 1-9; f8889; f1099sa, Instructions for Recipient; f5498sa p. 3; i8853 p. 1; p969 pp. 4, 5, 9.
+- **Symptom:** `f8889.unsupported` was one 232-word sentence of ten situations whose Yes refused the return; the roster `$f8889` was an 84-word question in tax vocabulary; `f8889.coverage_year` ran to 339 words and was asked of people it could not affect; the form's questions came in four places among 27 unrelated ones.
+- **Where:** `forms/2025/f8889.yaml`, `forms/2025/s1.yaml` (citation text of line 8f), `params/2025.yaml`, `interview/2025/questions.yaml`, `interview/2025/full.yaml`, `interview/2025/coverage/hsa.yaml`, `fixtures/2025/`, `engine/src/generate.ts`, `tools/engines/generate_cases.py`, `tools/transcription/input_contracts/2025/f8889.json`, `tools/coverage/tree.json`, `engine/src/mutate.ts` (eight pinned arguments re-stated and re-pinned).
+- **Fix:** the catch-all is replaced by one yes/no question per situation: `f8889.owner_died`, `f8889.inherited`, `f8889.archer`, `f8889.ira_transfer`, `f8889.excess_withdrawn`, `f8889.mistake_repaid`, `f8889.loan`, `f8889.dist_code` (Form 1099-SA box 3, asked with distributions) and, for a testing period that began in 2024, `f8889.ira_prior` (a transfer from an IRA in 2024) and after its No `f8889.testing_prior` (the last-month rule used for 2024, for months without eligibility or for the kind of plan, whoever made the contributions); both are asked only when the answers do not show an eligible individual in every month of 2025, and are not gated on contributions. Line 13 refuses the three questions about the account; the figured deduction and the no-contribution branch refuse the transfer from an IRA, the withdrawn excess and a failed testing period; line 16 refuses the death, the inheritance, the withdrawn excess and the box 3 code; line 17b refuses the repaid mistake and the deemed distribution. Coverage is a three-way plan question with `f8889.clear_all_year`, `f8889.fsa` and `f8889.spouse_family` beneath it, and `f8889.coverage` is the value the limit reads; `f8889.medical_all` precedes `f8889.medical`; `f8889.excess_amt` is zero without contributions, so the limit is not asked of a person who only took money out. The three conjunctions `f8889.married_family`, `f8889.split` and `f8889.excess` are nested choose in their operands' order (the T-276 rewrite for this form). Every question's interview wording is plain and the form line keeps the instructions' terms.
+- **Fix lines:** `f8889.line13`, `f8889.line13_figured`, `f8889.line13_none`, `f8889.line16`, `f8889.line17b`, `f8889.line15`, `f8889.line15_dist`, `f8889.medical_if_partial`, `f8889.medical_all_if_dist`, `f8889.dist_code_if_dist`, `f8889.excess_amt`, `f8889.excess_sum`, `f8889.line3`, `f8889.full_year`, `f8889.bad_months`, `f8889.dec_coverage_if_changed`, `f8889.coverage`, `f8889.coverage_self`, `f8889.coverage_self_spouse`, `f8889.coverage_family`, `f8889.clear_if_uniform`, `f8889.fsa_if_clear`, `f8889.no_fsa`, `f8889.eligible_all`, `f8889.sf_married`, `f8889.sf_eligible`, `f8889.ask_spouse_family`, `f8889.spouse_family_if_asked`, `f8889.covered_12`, `f8889.not_covered_12`, `f8889.ask_testing`, `f8889.ira_prior_if_asked`, `f8889.ask_last_month_prior`, `f8889.testing_prior_if_asked`, `f8889.testing_if_asked`, `f8889.testing_failed`, `f8889.married_family`, `f8889.split`, `f8889.excess`, `f8889.over_limit`, `f8889.not_in_box1`
+- **Siblings checked:** `f5329.l47`, `f8889.age55`, `f8889.age55_line3`, `f8889.all_year`, `f8889.allocated`, `f8889.allocation`, `f8889.allocation_bad`, `f8889.any`, `f8889.archer`, `f8889.ask_last_month_prior`, `f8889.ask_spouse_family`, `f8889.ask_testing`, `f8889.bad_months`, `f8889.bad_months_counted`, `f8889.changed`, `f8889.chart_family`, `f8889.chart_limit`, `f8889.chart_self`, `f8889.chart_total`, `f8889.clear_all_year`, `f8889.clear_if_uniform`, `f8889.counts_hold`, `f8889.cov_changed`, `f8889.cov_family`, `f8889.cov_self_only`, `f8889.coverage`, `f8889.coverage_family`, `f8889.coverage_self`, `f8889.coverage_self_spouse`, `f8889.coverage_year`, `f8889.covered_12`, `f8889.dec_amount`, `f8889.dec_coverage`, `f8889.dec_coverage_if_changed`, `f8889.dec_family`, `f8889.dist_code`, `f8889.dist_code_if_dist`, `f8889.eligible_all`, `f8889.employer_in_box1`, `f8889.excess`, `f8889.excess_amt`, `f8889.excess_employer`, `f8889.excess_own`, `f8889.excess_sum`, `f8889.family_any_time`, `f8889.family_counted`, `f8889.family_dec_year`, `f8889.family_extra`, `f8889.family_year`, `f8889.fsa`, `f8889.fsa_if_clear`, `f8889.full_year`, `f8889.has_taxable`, `f8889.inherited`, `f8889.ira_prior_if_asked`, `f8889.ira_transfer`, `f8889.last_month`, `f8889.line10`, `f8889.line13`, `f8889.line13_figured`, `f8889.line13_none`, `f8889.line15`, `f8889.line15_dist`, `f8889.line16`, `f8889.line16_figured`, `f8889.line17b`, `f8889.line3`, `f8889.line3_all_year`, `f8889.line3_changed`, `f8889.line3_last_month`, `f8889.line3_part_year`, `f8889.line5`, `f8889.line6`, `f8889.line6_split`, `f8889.line7_applies`, `f8889.line7_total`, `f8889.line7_year`, `f8889.loan`, `f8889.married_family`, `f8889.medical`, `f8889.medical_all`, `f8889.medical_all_if_dist`, `f8889.medical_if_partial`, `f8889.mfs`, `f8889.mistake_repaid`, `f8889.months_family`, `f8889.no_fsa`, `f8889.no_last_month`, `f8889.not_covered_12`, `f8889.not_in_box1`, `f8889.over_limit`, `f8889.owner_died`, `f8889.self_all`, `f8889.self_counted`, `f8889.self_dec_year`, `f8889.self_family_months`, `f8889.self_in_family`, `f8889.self_year`, `f8889.sf_eligible`, `f8889.sf_married`, `f8889.share`, `f8889.share_equal`, `f8889.share_raw`, `f8889.some_family_months`, `f8889.split`, `f8889.spouse_family`, `f8889.spouse_family_if_asked`, `f8889.step1`, `f8889.step1_line3`, `f8889.step1_total`, `f8889.step1_x2`, `f8889.step4`, `f8889.step4_total`, `f8889.subject`, `f8889.testing_failed`, `f8889.testing_if_asked`, `f8889.testing_prior`, `f8889.testing_prior_if_asked`, `f8889.two`, `f8889.use_last_month`, `household.hsa_agreed_count`, `household.hsa_both`, `household.hsa_share_sum`, `household.hsa_split_count`, `household.hsa_step1_sum`, `person.hsa_agreed`, `person.hsa_share`, `person.hsa_split`, `person.hsa_step1`, `person.x_hsa_excess`, `s3.line11`, `s3.mfs`, `scope.ready` (the form's other lines and questions, which read the changed lines or cite the same passages; each was read against the new lines: the limit and month lines read `f8889.coverage` where they read the coverage question, the others are unchanged, and no value on a complete return changes)
+- **Regression predictions:** no expected value changes. Four refusal fixtures expect the refusal of the question that replaced the catch-all (gate, message and citation only): `stage21.refuse.hsa_excess_withdrawn` (the withdrawn excess), `stage16.refuse.f8889.unsupported_part2` (the box 3 code), `stage16.cleanup.refuse.f8889.screen_no_amounts` and `stage11.refuse.hsa_screen` (an inherited HSA). Five cases answered the catch-all Yes for a reason that cannot be recovered and are set to `f8889.inherited`: `stage12.car.mixed_sc_interest_prorated`, `mutation.t2.qss_s1a_tips_ot_car`, `classm.f8959.1`, `classm.sales.2`, `classm.dependent.5.deepseek`; the catch-all refused lines 13 and 16 alike, and of the questions that replace it only the death and the inheritance refuse both, so each case's asserted values and its refused return stay as they were. Any Archer MSA of the person or the spouse now refuses, and the testing-period refusal is wider than Part III (separate entries).
+- **Validation:** every federal and New York fixture passes with no expected value changed; 28 new cases (`redesign.hsa.*`), money and Boolean values predicted by hand before recording, all as predicted. The 21 coverage rows of `interview/2025/coverage/hsa.yaml` pass on the built interview. The general generator draws one flag per Form 8889 as before and gives the new answers after every other draw: on four generated corpora (1,500 returns) no answer other than the replaced one differs from the base tree's. Mutation: no unexplained survivor and no new pinned argument; the eight Form 8889 arguments were re-read against the new lines and re-pinned. Interview rules at 200 generated returns: 10 templates reached out of order before (one of Form 8889), 9 after (none of Form 8889). Reviews of the form (transcription, render, class M, completeness, screens, false-no, questions) run and ruled.
+- **Tags:** interview; redesign; Form 8889; catch-all; conjunction; fixed
+
+## BUG-0611 — Money paid out of, or rolled over from, an Archer MSA was caught by no question
+
+- **Date:** 2026-11-12
+- **Caught by:** the redesign's design (docs/2026-11-11_interview_redesign_slice_design.md, A.3 finding 5), reading i8889 and i8853 against `f8889.unsupported`.
+- **Source:** i8853 p. 1, Who Must File, "You (or your spouse, if filing jointly) received Archer MSA or Medicare Advantage MSA distributions in 2025"; i8889 p. 3, Rollovers, "from one HSA or Archer MSA".
+- **Symptom:** the catch-all named only contributions to an Archer MSA, so a person with a health savings account who was paid from an Archer MSA, or rolled one into the HSA, answered No and the return was completed without Form 8853.
+- **Where:** `forms/2025/f8889.yaml`.
+- **Fix:** `f8889.archer` asks whether the person or the spouse had an Archer MSA in 2025 and refuses line 13 on Yes. Wider than before: the spouse's Archer MSA refuses whatever the coverage, and so does an Archer MSA nothing went into or came out of (open entry below).
+- **Fix lines:** `f8889.line13`
+- **Siblings checked:** `f8889.archer`, `f8889.inherited`, `f8889.line16`, `f8889.no_last_month`, `f8889.owner_died`, `f8889.use_last_month` (line 16 does not read the Archer MSA question and is not refused by it; the others cite the same passage and are unchanged)
+- **Validation:** fixture `redesign.hsa.refuse.archer`; coverage rows `hsa.archer_msa` and `hsa.archer_msa_payout`.
+- **Tags:** interview; Form 8889; Archer MSA; refusal; fixed
+
+## BUG-0612 — A health savings account with no money in or out skipped the questions about a loan and a prohibited transaction
+
+- **Date:** 2026-11-12
+- **Caught by:** the redesign's design (A.3 finding 7).
+- **Source:** i8889 p. 3, Deemed Distributions From HSAs.
+- **Symptom:** the roster asked whether money went in or came out, so the owner of an untouched account answered No and was never asked about a loan secured on it or a prohibited transaction, both of which are deemed distributions.
+- **Where:** `interview/2025/questions.yaml` (`$f8889`), `forms/2025/f8889.yaml`.
+- **Fix:** the roster asks whether the person had a health savings account in 2025 or got money from one; `f8889.loan` and `f8889.mistake_repaid` are asked of every account and refuse line 17b.
+- **Fix lines:** `f8889.line17b`
+- **Siblings checked:** `f8889.dist_code`, `f8889.dist_code_if_dist`, `f8889.has_taxable`, `f8889.line16`, `f8889.loan`, `f8889.mistake_repaid`, `f8889.subject` (unchanged; they read line 17b or cite the same passage)
+- **Validation:** fixture `redesign.hsa.refuse.loan` (no contributions, no distributions); coverage row `hsa.loan_on_unused_account`. The owner of an unused account now answers 12 questions where they answered one.
+- **Tags:** interview; Form 8889; deemed distribution; fixed
+
+## BUG-0613 — A surviving spouse's inherited health savings account is refused though the instructions treat it as the spouse's own
+
+- **Date:** 2026-11-12
+- **Caught by:** the redesign's design (A.3, situation 5; decision 5: no scope change in the slice); the screen and question reviews of `f8889.inherited`.
+- **Source:** i8889 p. 3, Death of Account Beneficiary, "The surviving spouse completes Form 8889 as though the HSA belonged to the surviving spouse."
+- **Symptom:** `f8889.inherited` refuses every HSA acquired at a death, in whatever year: a widow who took over a spouse's HSA years ago is refused every year though her Form 8889 is an ordinary one, and so is a beneficiary of an earlier year with nothing from the account in 2025.
+- **Where:** `forms/2025/f8889.yaml` (`f8889.inherited`).
+- **Severity:** low (a refusal of a return the tool could prepare; no wrong value).
+- **Status:** open. To prepare it: a question beneath `f8889.inherited` (was it your spouse's, and did they die before 2025), whose Yes goes on as an ordinary account.
+- **Tags:** interview; Form 8889; scope; refusal wider than needed; open
+
+## BUG-0614 — Every Archer MSA refuses the return of a person with a health savings account, an untouched one included
+
+- **Date:** 2026-11-12
+- **Caught by:** the redesign's design (decision 5); the screen review of `f8889.archer`.
+- **Source:** f8889 line 4; i8853 p. 1, Who Must File (contributions for 2025 or distributions in 2025).
+- **Symptom:** `f8889.archer` refuses on having an Archer MSA in 2025. With nothing put in for 2025 and nothing paid out, line 4 is zero and Form 8853 is not required, so the tool could prepare the return.
+- **Where:** `forms/2025/f8889.yaml` (`f8889.archer`).
+- **Severity:** low.
+- **Status:** open. A question beneath it (did money go into or come out of it for 2025) would let the untouched ones through.
+- **Tags:** interview; Form 8889; Archer MSA; scope; open
+
+## BUG-0615 — Distributions from a Medicare Advantage MSA or an Archer MSA are screened nowhere for a person with no health savings account, unless taxable
+
+- **Date:** 2026-11-12
+- **Caught by:** the HSA lane of T-282, reading f1099sa and i8853 for the redesign.
+- **Source:** i8853 p. 1, Who Must File and its Caution ("you must file Form 8853 ... even if you have no taxable income"); f1099sa box 5 (HSA, Archer MSA, MA MSA).
+- **Symptom:** the only question outside the health savings account block that names Form 8853 is `s1.line8_other` ("income from Form 8853"), which a filer whose MSA distribution all paid medical expenses answers No. Such a return is completed without Form 8853. An inherited Archer MSA is not named by `f8889.archer` either.
+- **Where:** `interview/2025/questions.yaml` (no question); `forms/2025/s1.yaml` (`s1.line8_other`).
+- **Severity:** low (rare; no tax is misstated, a required form is missing). Not introduced by the redesign.
+- **Status:** open.
+- **Tags:** interview; scope; Form 8853; missing screen; open
+
+## BUG-0616 — The testing-period refusal of Form 8889 is wider than Part III
+
+- **Date:** 2026-11-12
+- **Caught by:** the HSA lane of T-282; the screen review of the gate `f8889.ask_testing`.
+- **Source:** i8889 p. 2, Testing period ("other than because of death or becoming disabled"); p. 8, Testing period for a qualified HSA funding distribution (it ends with the 12th month after the transfer).
+- **Symptom:** `f8889.testing_failed` refuses when a testing period began in 2024 and any month of 2025 was not covered. A period started by an IRA transfer early in 2024 ends before a gap late in 2025, a failure by death or disability is excepted, and a Yes without eligibility on December 1, 2024 started no period: those filers owe nothing under Part III and are refused.
+- **Where:** `forms/2025/f8889.yaml` (`f8889.testing_failed`, `f8889.testing_prior`).
+- **Severity:** low (refusals only).
+- **Status:** open.
+- **Tags:** interview; Form 8889; Part III; refusal wider than needed; open
+
+## BUG-0617 — The interview's order could not keep a form's questions together: blocks and direct targets
+
+- **Date:** 2026-11-12
+- **Caught by:** the HSA lane of T-282, placing the health savings account block; accepted by the owner on 2026-11-12 as a general mechanism.
+- **Symptom:** a question's `order` is an integer and equal numbers were broken by key, so a block could not be placed without renumbering the bank, and distinct numbers asked a couple's questions alternately; and a question is asked only once a target reaches it, so Form 8889's questions arrived as Schedule 1 line 13, Schedule 1 line 8f and Schedule 2 line 17c were each reached, behind other forms' questions.
+- **Where:** `engine/src/interview.ts` (`askOrder`, `outerEntry`), `engine/src/interview-rules.ts` (`bankOrder`), `engine/src/build.ts`, `schema/data.schema.json`, `interview/2025/full.yaml`, `interview/README.md` ("Blocks").
+- **Severity:** low (order only).
+- **Disposition:** fixed. A bank entry may give `seq`: every question of one order number is then a block, asked entry by entry of the outermost collection and in sequence (the build refuses an order number that is part block). The `full` profile asks Form 8889's three results directly, so every question of the block is reachable once the account is listed and a refusal on the form is told at once. The mutation check's premise self-test no longer uses a sentinel a parameter can hold.
+- **Validation:** walks of seven typical filers ask the block with no other question inside it; interview-rules, test-serve and the full check-all pass.
+- **Tags:** interview; order; tool change; fixed
+
+## BUG-0618 — A person married for part of 2025 and not at its end is not asked about the then-spouse's family plan
+
+- **Date:** 2026-11-12
+- **Caught by:** the false-no review of the gate `f8889.ask_spouse_family`.
+- **Source:** i8889 p. 4, How To Complete Part I, "if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan", applied month by month.
+- **Symptom:** `f8889.spouse_family` is asked of a person married at the end of 2025 whose own plan covered only them all year. A person divorced or widowed during 2025 with such a plan is not asked, and the months of the marriage in which the then-spouse had family coverage are figured at the self-only amount.
+- **Where:** `forms/2025/f8889.yaml` (`f8889.sf_married`).
+- **Severity:** low (rare; the limit is understated, never overstated).
+- **Status:** open by the owner's decision of 2026-11-12, for rollout. It can be closed by a separate question, which needs a fact the household form does not hold (married at some time in 2025).
+- **Tags:** interview; Form 8889; false no; open

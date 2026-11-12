@@ -2,20 +2,284 @@
 tax_year: 2025
 part: Health savings accounts
 profile: full
-rows:
-  - id: hsa.archer_msa
-    design: C.3 row 2 (Archer MSA contributions, own or spouse's)
-    replace_when: the redesigned health savings account questions land
-    situation: A person with a health savings account also had money put into an Archer MSA for 2025.
+sets:
+  account:
+    says: One person with a health savings account whose owner is alive, which was not inherited, and no Archer MSA.
     answers:
       $f8889@person[taxpayer]: [hsa]
-      person[taxpayer].f8889[hsa].unsupported: true
+      person[taxpayer].f8889[hsa].owner_died: false
+      person[taxpayer].f8889[hsa].inherited: false
+      person[taxpayer].f8889[hsa].archer: false
+  nothing_in:
+    says: Nothing was put into the account for 2025, by the employer, the person or an IRA, and nothing was taken back.
+    answers:
+      person[taxpayer].f8889[hsa].line9: 0
+      person[taxpayer].f8889[hsa].line2: 0
+      person[taxpayer].f8889[hsa].ira_transfer: false
+      person[taxpayer].f8889[hsa].excess_withdrawn: false
+  payroll_in:
+    says: The employer put $2,000 into the account for 2025, the person nothing more; no IRA transfer, nothing taken back.
+    answers:
+      person[taxpayer].f8889[hsa].line9: 200000
+      person[taxpayer].f8889[hsa].line2: 0
+      person[taxpayer].f8889[hsa].ira_transfer: false
+      person[taxpayer].f8889[hsa].excess_withdrawn: false
+  same_plan:
+    says: The same high-deductible plan all year covering only the person, no Medicare, no other coverage, nobody's dependent, no health FSA, under 55.
+    answers:
+      person[taxpayer].f8889[hsa].coverage_year: self_only
+      person[taxpayer].f8889[hsa].clear_all_year: true
+      person[taxpayer].f8889[hsa].fsa: false
+      person[taxpayer].f8889[hsa].age55: false
+rows:
+  - id: hsa.ira_transfer
+    design: C.3 row 1 (transfer from an IRA in 2025)
+    situation: A person with a health savings account had money moved into it straight from an IRA in 2025.
+    uses: [account]
+    answers:
+      person[taxpayer].f8889[hsa].line9: 0
+      person[taxpayer].f8889[hsa].line2: 0
+      person[taxpayer].f8889[hsa].ira_transfer: true
     expect:
-      refused: person[taxpayer].f8889[hsa].unsupported
-  - id: hsa.earlier_year_excess
+      refused: person[taxpayer].f8889[hsa].ira_transfer
+  - id: hsa.archer_msa
+    design: C.3 row 2 (Archer MSA contributions, own or spouse's)
+    situation: A person with a health savings account, or their husband or wife, also had an Archer MSA in 2025.
+    answers:
+      $f8889@person[taxpayer]: [hsa]
+      person[taxpayer].f8889[hsa].owner_died: false
+      person[taxpayer].f8889[hsa].inherited: false
+      person[taxpayer].f8889[hsa].archer: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].archer
+  - id: hsa.prior_year_excess
     design: C.3 row 3 (excess contributions of an earlier year still in the account)
-    situation: Too much was put into a person's health savings account in an earlier year and is still in it.
+    situation: Too much was put into a person's health savings account in an earlier year and is still there; the question asked of every person catches it, whatever they say about having an account.
     answers:
       person[taxpayer].x_other: true
     expect:
       refused: person[taxpayer].x_other
+  - id: hsa.testing_period_no_contributions
+    design: C.3 row 4 (failed a testing period that began in 2024), the person who lost coverage and stopped contributing
+    situation: A person relied on the last-month rule for 2024, lost the plan in February 2025 and put nothing in for 2025.
+    uses: [account, nothing_in]
+    answers:
+      person[taxpayer].f8889[hsa].ira_prior: false
+      person[taxpayer].f8889[hsa].testing_prior: true
+      person[taxpayer].f8889[hsa].coverage_year: changed
+      person[taxpayer].f8889[hsa].months_eligible: 2
+    expect:
+      refused: person[taxpayer].f8889[hsa].testing_failed
+  - id: hsa.testing_period_gap_with_contributions
+    design: C.3 row 4, second path (contributions for 2025, coverage with a gap)
+    situation: A person relied on the last-month rule for 2024, had the plan for seven months of 2025 and kept paying in.
+    uses: [account]
+    answers:
+      person[taxpayer].f8889[hsa].line9: 0
+      person[taxpayer].f8889[hsa].line2: 100000
+      person[taxpayer].f8889[hsa].ira_transfer: false
+      person[taxpayer].f8889[hsa].excess_withdrawn: false
+      person[taxpayer].f8889[hsa].coverage_year: changed
+      person[taxpayer].f8889[hsa].months_eligible: 7
+      person[taxpayer].f8889[hsa].months_family: 0
+      person[taxpayer].f8889[hsa].dec_coverage: none
+      person[taxpayer].f8889[hsa].age55: false
+      person[taxpayer].f8889[hsa].ira_prior: false
+      person[taxpayer].f8889[hsa].testing_prior: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].testing_failed
+  - id: hsa.testing_period_ira_transfer_last_year
+    design: C.3 row 4, the testing period of a transfer from an IRA made in 2024
+    situation: A person moved money from an IRA into the account in 2024, lost the plan in February 2025 and put nothing in for 2025; the Yes about the transfer is enough, and the longer question about 2024 is not asked.
+    uses: [account, nothing_in]
+    answers:
+      person[taxpayer].f8889[hsa].ira_prior: true
+      person[taxpayer].f8889[hsa].coverage_year: changed
+      person[taxpayer].f8889[hsa].months_eligible: 2
+    expect:
+      refused: person[taxpayer].f8889[hsa].testing_failed
+      not_asked: ["person[taxpayer].f8889[hsa].testing_prior"]
+  - id: hsa.testing_period_plan_grew_last_year
+    design: C.3 row 4, the last-month rule used for the kind of plan (covered all of 2024, by a plan for one person and then for more)
+    situation: A person was covered all of 2024, by a plan for one person until November and a family plan on December 1, and the full family amount went in for 2024; in 2025 the plan lasted seven months. More went in for 2024 than the kind of plan in each month allowed, so the answer is Yes.
+    uses: [account]
+    answers:
+      person[taxpayer].f8889[hsa].line9: 0
+      person[taxpayer].f8889[hsa].line2: 100000
+      person[taxpayer].f8889[hsa].ira_transfer: false
+      person[taxpayer].f8889[hsa].excess_withdrawn: false
+      person[taxpayer].f8889[hsa].coverage_year: changed
+      person[taxpayer].f8889[hsa].months_eligible: 7
+      person[taxpayer].f8889[hsa].months_family: 7
+      person[taxpayer].f8889[hsa].dec_coverage: none
+      person[taxpayer].f8889[hsa].age55: false
+      person[taxpayer].f8889[hsa].ira_prior: false
+      person[taxpayer].f8889[hsa].testing_prior: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].testing_failed
+  - id: hsa.testing_period_settled_by_coverage
+    design: C.3 row 4, settled without a question (covered in all 12 months of 2025)
+    situation: A person with payroll deposits and the same plan all year is not asked about 2024 at all, and the return is prepared.
+    uses: [account, payroll_in, same_plan]
+    answers:
+      person[taxpayer].f8889[hsa].line14a: 0
+      person[taxpayer].f8889[hsa].mistake_repaid: false
+      person[taxpayer].f8889[hsa].loan: false
+    expect:
+      proceeds:
+        person[taxpayer].f8889[hsa].coverage_year: self_only
+      not_asked: ["person[taxpayer].f8889[hsa].ira_prior", "person[taxpayer].f8889[hsa].testing_prior"]
+  - id: hsa.inherited
+    design: C.3 row 5 (HSA acquired because its owner died)
+    situation: A person was left a health savings account, or money from one, by someone who died.
+    answers:
+      $f8889@person[taxpayer]: [hsa]
+      person[taxpayer].f8889[hsa].owner_died: false
+      person[taxpayer].f8889[hsa].inherited: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].inherited
+  - id: hsa.death_payment_box3
+    design: C.3 row 5, second path (Form 1099-SA box 3 shows code 4 or 6)
+    situation: A person who did not think of the account as inherited holds a Form 1099-SA whose box 3 shows a payment after a death.
+    uses: [account, nothing_in]
+    answers:
+      person[taxpayer].f8889[hsa].ira_prior: false
+      person[taxpayer].f8889[hsa].testing_prior: false
+      person[taxpayer].f8889[hsa].line14a: 300000
+      person[taxpayer].f8889[hsa].dist_code: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].dist_code_if_dist
+  - id: hsa.estate_is_beneficiary
+    design: C.3 row 6 (HSA of a person who died in 2025, estate is beneficiary)
+    situation: The return is the last one of a person who died in 2025 and whose health savings account went to their estate.
+    answers:
+      $f8889@person[taxpayer]: [hsa]
+      person[taxpayer].f8889[hsa].owner_died: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].owner_died
+  - id: hsa.prohibited_transaction
+    design: C.3 row 7a (prohibited transaction)
+    situation: A person who spent from the account on medical bills also bought something from the account themselves.
+    uses: [account, payroll_in, same_plan]
+    answers:
+      person[taxpayer].f8889[hsa].line14a: 150000
+      person[taxpayer].f8889[hsa].dist_code: false
+      person[taxpayer].f8889[hsa].rollover: 0
+      person[taxpayer].f8889[hsa].mistake_repaid: false
+      person[taxpayer].f8889[hsa].medical_all: true
+      person[taxpayer].f8889[hsa].loan: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].loan
+  - id: hsa.loan_on_unused_account
+    design: C.3 row 7b (HSA used as security for a loan), on an account with no money in or out
+    situation: A person whose account was not touched in 2025 used it as security for a loan.
+    uses: [account, nothing_in]
+    answers:
+      person[taxpayer].f8889[hsa].ira_prior: false
+      person[taxpayer].f8889[hsa].testing_prior: false
+      person[taxpayer].f8889[hsa].line14a: 0
+      person[taxpayer].f8889[hsa].mistake_repaid: false
+      person[taxpayer].f8889[hsa].loan: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].loan
+  - id: hsa.excess_withdrawn
+    design: C.3 row 8 (excess contributions withdrawn, in 2025 or in 2026 by the due date)
+    situation: A person put in too much for 2025 and took the extra back out before filing.
+    uses: [account]
+    answers:
+      person[taxpayer].f8889[hsa].line9: 0
+      person[taxpayer].f8889[hsa].line2: 500000
+      person[taxpayer].f8889[hsa].ira_transfer: false
+      person[taxpayer].f8889[hsa].excess_withdrawn: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].excess_withdrawn
+  - id: hsa.mistake_repaid
+    design: C.3 row 9 (mistaken distribution repaid)
+    situation: The account paid a bill by mistake and the person put the money back; no Form 1099-SA shows it.
+    uses: [account, payroll_in, same_plan]
+    answers:
+      person[taxpayer].f8889[hsa].line14a: 0
+      person[taxpayer].f8889[hsa].mistake_repaid: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].mistake_repaid
+  - id: hsa.owner_died
+    design: C.3 row 10 (the HSA's owner died in 2025)
+    situation: The person the health savings account belonged to died during 2025.
+    answers:
+      $f8889@person[taxpayer]: [hsa]
+      person[taxpayer].f8889[hsa].owner_died: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].owner_died
+  - id: hsa.archer_msa_payout
+    design: C.3 row 11 (money moved from, or paid out of, an Archer MSA)
+    situation: A person with a health savings account moved money into it from an Archer MSA, or was paid from one.
+    answers:
+      $f8889@person[taxpayer]: [hsa]
+      person[taxpayer].f8889[hsa].owner_died: false
+      person[taxpayer].f8889[hsa].inherited: false
+      person[taxpayer].f8889[hsa].archer: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].archer
+  - id: hsa.employer_excess_not_in_wages
+    design: C.3 row 12 (today's other HSA refusals), excess employer contributions not in box 1
+    situation: An employer put $9,000 into the account of a person whose limit is $4,300 and did not add the extra to their wages.
+    uses: [account, same_plan]
+    answers:
+      person[taxpayer].f8889[hsa].line9: 900000
+      person[taxpayer].f8889[hsa].line2: 0
+      person[taxpayer].f8889[hsa].ira_transfer: false
+      person[taxpayer].f8889[hsa].excess_withdrawn: false
+      person[taxpayer].f8889[hsa].employer_in_box1: false
+    expect:
+      refused: person[taxpayer].f8889[hsa].excess
+  - id: hsa.impossible_months
+    design: C.3 row 12, impossible month counts
+    situation: A person says they were covered in 13 months of the year.
+    uses: [account]
+    answers:
+      person[taxpayer].f8889[hsa].line9: 0
+      person[taxpayer].f8889[hsa].line2: 100000
+      person[taxpayer].f8889[hsa].ira_transfer: false
+      person[taxpayer].f8889[hsa].excess_withdrawn: false
+      person[taxpayer].f8889[hsa].coverage_year: changed
+      person[taxpayer].f8889[hsa].months_eligible: 13
+    expect:
+      refused: person[taxpayer].f8889[hsa].bad_months
+  - id: hsa.rollover_over_total
+    design: C.3 row 12, rollover larger than the total
+    situation: A person says they put more back into another account than came out.
+    uses: [account, nothing_in]
+    answers:
+      person[taxpayer].f8889[hsa].ira_prior: false
+      person[taxpayer].f8889[hsa].testing_prior: false
+      person[taxpayer].f8889[hsa].line14a: 100000
+      person[taxpayer].f8889[hsa].dist_code: false
+      person[taxpayer].f8889[hsa].rollover: 200000
+    expect:
+      refused: person[taxpayer].f8889[hsa].rollover_bad
+  - id: hsa.no_account
+    design: G.3 (a filer with no HSA)
+    situation: A person with no health savings account answers one question and is asked nothing else about them.
+    answers:
+      $f8889@person[taxpayer]: []
+    expect:
+      proceeds:
+        $f8889@person[taxpayer]: []
+      not_asked: ["person[taxpayer].f8889[hsa].owner_died"]
+  - id: hsa.testing_period_no_account_left
+    design: C.3 row 4, a person with no health savings account left in 2025 (caught at the Schedule 2 question)
+    situation: A person who relied on the last-month rule for 2024 lost the plan and emptied the account before 2025, so answers No to having an account; the question about other taxes catches the tax they owe.
+    answers:
+      $f8889@person[taxpayer]: []
+      s2.other: true
+    expect:
+      refused: s2.other
+  - id: hsa.ira_transfer_at_the_1099r
+    design: C.3 row 1, second path (the IRA's Form 1099-R)
+    situation: A person who did not mention the transfer at the account's questions lists the IRA's Form 1099-R, whose question about special distributions names the transfer to an HSA.
+    answers:
+      $retirement@person[taxpayer]: [ira]
+      person[taxpayer].retirement[ira].account: traditional_ira
+      person[taxpayer].retirement[ira].special: true
+    expect:
+      refused: person[taxpayer].retirement[ira].special

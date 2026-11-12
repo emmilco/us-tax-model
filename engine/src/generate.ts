@@ -127,6 +127,15 @@ const MODELLED = new Set([
 // question is likewise left unset until it is answered from its screens at the end of buildInputs.
 const EARLY_ROOTS = ["x_other", "x_prior09", "x_births", "x_hsa_value"].map((k) => `person[taxpayer].${k}`).concat(`${HSA}.employer_in_box1`);
 const EARLY_SET = new Set([...EARLY_ROOTS, "sb.foreign_any"]);
+// Form 8889's questions about the account, the coverage checks, the testing period and the distributions (the questions
+// its one screen was taken apart into). None is drawn. Each Form 8889 keeps one drawn flag under HSA_FLAG, a key of no
+// input that stands where the screen's answer stood, so the random stream and the derived streams (which hash the
+// answers given before them) are those of the returns generated with the screen; `putHsaAnswers`, after every other
+// draw, removes the flag and gives these answers from it.
+const HSA_FLAG = "unsupported";
+const HSA_SITUATIONS = ["owner_died", "inherited", "archer", "ira_transfer", "excess_withdrawn", "mistake_repaid", "loan"] as const;
+const HSA_LATE = [...HSA_SITUATIONS, "clear_all_year", "fsa", "spouse_family", "ira_prior", "testing_prior", "dist_code", "medical_all"];
+const HSA_LATE_ROOTS = new Set(HSA_LATE.map((k) => `${HSA}.${k}`));
 
 // Inputs given their "no" or zero answer on every generated return, or an answer derived from other draws, and drawn
 // from no arbitrary, so the random stream is the same as without them: alimony, canceled debt and HSA distributions
@@ -145,7 +154,7 @@ const FIXED = new Set([
   "f4952.prior_7", "f8960.prior_2i", "sa.gifts", "f4952.has_interest",
   "f8962.alloc", "f8962.married_in_2025", "f8962.other", "f8962.premium_adjust", "f8962.same_state_counted", "f8962.estimate_100", "f8962.alien_below", "f8962.fpl_table",
   "f8863.paid", "f8863.ban",
-  ...EARLY_ROOTS,
+  ...EARLY_ROOTS, ...HSA_LATE_ROOTS,
   ...["", "_1098t", "_inst", "_mat", "_a2025", "_a2026", "_refunds", "_over", "_line23", "_line24", "_line25", "_line26", "_ein",
     "_born_2007", "_born_2002", "_fulltime", "_half_support", "_parent"].map((k) => `person[taxpayer].edu${k}`),
 ]);
@@ -319,6 +328,8 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
 export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
   const { roots } = declaredInputs(data);
   const boolKeys = [...roots].filter(([k, l]) => l.type === "Bool" && !NOT_DRAWN.has(k) && !FIXED.has(k) && !UNDRAWN.has(k)).map(([k]) => k);
+  // The Form 8889 flag is drawn where the screen was: first of the form's yes/no answers.
+  boolKeys.splice(boolKeys.findIndex((k) => k.startsWith(`${HSA}.`)), 0, `${HSA}.${HSA_FLAG}`);
   const extraKeys = [...roots].filter(([k, l]) => l.type !== "Bool" && !l.type.startsWith("Enum(") && !MODELLED.has(k) && !NOT_DRAWN.has(k) && !FIXED.has(k) && !UNDRAWN.has(k)).map(([k]) => k);
   const employer = fc.record<Employer>({
     box1: money(40_000_000),
@@ -500,7 +511,8 @@ function putBox12(inputs: Inputs, W: string, deferral: number): void {
 function buildInputs(data: CanonicalData, s: Spec): Inputs {
   const { roots } = declaredInputs(data);
   const inputs: Inputs = {};
-  for (const [key, line] of roots) if (!EARLY_SET.has(key)) inputs[key] = defaultFor(data, line);
+  for (const [key, line] of roots) if (!EARLY_SET.has(key) && !HSA_LATE_ROOTS.has(key)) inputs[key] = defaultFor(data, line);
+  inputs[`${HSA}.${HSA_FLAG}`] = false;
   // Clean returns keep every out-of-scope flag at its usual value, so most
   // generated returns compute all the way through; the rest exercise gates.
   for (const [key, v] of Object.entries(s.flags)) inputs[key] = s.clean ? (BOOL_TRUE_PERCENT[key] ?? 0) >= 50 : v;
@@ -717,7 +729,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     putBusinesses(data, inputs, P, s.spouseBusinesses, s.spousePlan);
     if (h.has) {
       const family = Math.min(h.familyMonths, h.months);
-      Object.assign(inputs, { [`${H}.line2`]: h.contrib, [`${H}.line9`]: 0, [`${H}.unsupported`]: false,
+      Object.assign(inputs, { [`${H}.line2`]: h.contrib, [`${H}.line9`]: 0, [`${H}.${HSA_FLAG}`]: false,
         [`${H}.coverage_year`]: coverageYear(h.months, family), [`${H}.months_eligible`]: h.months,
         [`${H}.months_family`]: family, [`${H}.age55`]: h.age55, [`${H}.last_month`]: false,
         [`${H}.dec_coverage`]: h.months === 0 ? "none" : family === h.months ? "family" : family === 0 ? "self_only" : h.decFamily ? "family" : "self_only",
@@ -746,7 +758,27 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   // answer is read. Set last, so no stream sees them.
   inputs["sa.gifts"] = (inputs["sa.line11"] as number) > 0 || ((inputs["$gift"] as string[] | undefined) ?? []).length > 0 || inputs["sa.charity_limited"] === true;
   inputs["f4952.has_interest"] = (inputs["f4952.line1"] as number) > 0 || inputs["f4952.carryover"] === true;
+  putHsaAnswers(inputs);
   return inputs;
+}
+
+/** Form 8889's answers that are not drawn, from each form's flag and a derived stream, after every other answer. A
+ * flagged form is outside the tool for one of the situations asked of every account; no other form is. The coverage
+ * checks agree with the month counts the generator gives (a year of one coverage type is twelve eligible months of that
+ * type, with no general-purpose FSA and no family plan of the other spouse), so a return's answers never contradict
+ * each other. No generated return has a testing period from 2024, a Form 1099-SA code or distributions that all paid
+ * medical expenses. */
+function putHsaAnswers(inputs: Inputs): void {
+  const next = derivedStream(inputs, "hsa");
+  for (const p of (inputs["$person"] as string[] | undefined) ?? []) for (const h of (inputs[`$f8889@person[${p}]`] as string[] | undefined) ?? []) {
+    const H = `person[${p}].f8889[${h}]`;
+    const flagged = inputs[`${H}.${HSA_FLAG}`] === true;
+    delete inputs[`${H}.${HSA_FLAG}`];
+    const situation = HSA_SITUATIONS[Math.floor(next() * HSA_SITUATIONS.length)]!;
+    for (const k of HSA_SITUATIONS) inputs[`${H}.${k}`] = flagged && k === situation;
+    Object.assign(inputs, { [`${H}.clear_all_year`]: true, [`${H}.fsa`]: false, [`${H}.spouse_family`]: false,
+      [`${H}.ira_prior`]: false, [`${H}.testing_prior`]: false, [`${H}.dist_code`]: false, [`${H}.medical_all`]: false });
+  }
 }
 
 /** The amounts `div.any` gates directly (Form 1099-DIV boxes 1a, 2a, 3, 9, 10, 12 and 13). */

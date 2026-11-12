@@ -1639,6 +1639,37 @@ params:
         doc: i8889
         locator: 'p. 2, Last-month rule, "for the entire year if you are an
           eligible individual"'
+    hsa.no:
+      type: Bool
+      value: false
+      cite:
+        doc: f8889
+        locator: 'Form 8889 (2025), Parts I and II: the answer taken for a Form 8889 question that is not asked because an
+          earlier answer settles it'
+    hsa.yes:
+      type: Bool
+      value: true
+      cite:
+        doc: f8889
+        locator: 'Form 8889 (2025), Parts I and II: a condition of Form 8889 that an earlier answer settles as holding'
+    hsa.cov_self_only:
+      type: Enum(hsa_year_coverage)
+      value: self_only
+      cite:
+        doc: i8889
+        locator: 'p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP": self-only coverage as an eligible individual in every month'
+    hsa.cov_family:
+      type: Enum(hsa_year_coverage)
+      value: family
+      cite:
+        doc: i8889
+        locator: 'p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage, enter ... $8,550 for a family HDHP": family coverage as an eligible individual in every month'
+    hsa.cov_changed:
+      type: Enum(hsa_year_coverage)
+      value: changed
+      cite:
+        doc: i8889
+        locator: 'p. 4, Line 3, rules 4 and 5, and p. 6, Line 3 Limitation Chart and Worksheet: a year that was not one type of coverage as an eligible individual in every month is counted month by month'
     hsa.year_self_only:
       type: Enum(hsa_coverage)
       value: self_only

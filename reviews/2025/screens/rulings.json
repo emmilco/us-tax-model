@@ -1479,6 +1479,355 @@
     }
    ],
    "subject_sha": "d7881adecd94573cefc55bdcb231b9898e633c80b624142f5173b53ea1b63575"
+  },
+  "unruled:f8889.dist_code#1": {
+   "reason": "No defect in the question: it is the paper backstop of four questions asked of every account, each of which catches its own case without a form.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A prohibited transaction with no code 5 is asked by f8889.loan of every account. Each question of the block is asked of every account in its turn; walked on the built interview (coverage rows, /tmp/redesign/hsa/coverage_rows.yaml)."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "An inherited HSA with no 2025 payment is asked by f8889.inherited of every account (i8889 p. 3)."
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "The final return of an owner who died in 2025 is refused by f8889.owner_died, the first question of the block."
+    },
+    {
+     "n": 3,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A pledge of the HSA is asked by f8889.loan of every account (i8889 p. 3, Deemed Distributions From HSAs)."
+    },
+    {
+     "n": 4,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A surviving spouse's code 4 payment is refused, as every inherited HSA is (no scope change; this lane's open entry on the surviving spouse). Safe."
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "The question asks what box 3 shows, which a filer holding the form can read; the nature of a distribution without a form is asked by the sibling questions."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "521c8b3758ba5c1b65339d28fc52aa29140c56d77e99992b8c4c620909088ea2"
+  },
+  "unruled:f8889.excess_withdrawn#1": {
+   "reason": "WIDE by design: any take-back of an excess refuses; one wording point fixed in the help.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A late withdrawal of an earlier year's excess is refused although line 14b excludes it (i8889 p. 8, Line 15 caution, makes it taxable whatever it paid for, which line 15's question does not exclude: BUG-0453). Safe."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A withdrawal in early 2026 of an excess for 2026 is refused. Safe; rare."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "The help said 'money you put in and money your employer put in'; i8889 p. 8 covers contributions 'made on your behalf'. The help now says money put in by you, your employer or anyone else. Low."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "958a5d0b18ebaa72c0d84f4296644be112bb91ea5ccdcecb3235a58a1d790824"
+  },
+  "unruled:f8889.inherited#1": {
+   "reason": "No defect: the decedent's own return is the sibling question; the WIDE findings are today's refusal of every inherited HSA, kept by decision.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "The final return of the owner whose estate is the beneficiary is refused by f8889.owner_died, asked before this question (coverage row hsa.estate_is_beneficiary)."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A surviving spouse who took over the HSA in an earlier year is refused though i8889 p. 3 treats it as their own: no scope change in the slice (design decision 5); this lane's open entry."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A non-spouse beneficiary of an earlier year with nothing from the account in 2025 is refused: the same decision; recorded in the same entry. Safe."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "An heir paid through the estate may answer either way; a Yes refuses (safe) and a No leaves the value on the decedent's final return, where it belongs."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "a7ca539a4eb37bb04553ed69332cdcead97c809eb737f41c35b483c35b60d9b8"
+  },
+  "unruled:f8889.ira_transfer#1": {
+   "reason": "No defect.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "The plain question asks about 'an IRA' without naming the kind, so a SEP or SIMPLE IRA holder is not led to No; the precise wording follows i8889 p. 7, Line 10, which names traditional and Roth IRAs and limits SEP and SIMPLE IRAs to those not ongoing."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "c06b1c881538f5037cd18c32ae53ec99db7adca7b3bbb66ce25576d6e98e6f28"
+  },
+  "unruled:f8889.loan#1": {
+   "reason": "One wording point fixed in the help; the WIDE finding is safe.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "p969 p. 9 lists four examples 'direct or indirect', the fourth 'Transfer to or use by you, or for your benefit, of any assets'. The help now names using or taking over something the HSA owns, by you or for your benefit, directly or through someone else. Low."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A filer 65 or disabled is refused though line 17b would not grow: the deemed distribution still belongs on line 14a or Schedule 1 line 8f, which the tool does not prepare. Safe."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "e9cba55875d1fa0d7ec2bea3d93769234b9f4613a2f95fbe1f6df3192665060e"
+  },
+  "unruled:f8889.owner_died#1": {
+   "reason": "No defect: the inheritor's cases are the next question's.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A non-spouse inheritor of an owner who died in 2025 answers Yes to f8889.inherited, asked next of every account."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A code 6 payment from an owner who died earlier: f8889.inherited ('whatever year the owner died in') and, on paper, f8889.dist_code."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "For an inheritor the precise wording's two descriptions point to different people; either reading ends in a refusal (this question or f8889.inherited). The plain question says 'the owner of this HSA'."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "dab8c10114fe41f49faab35504c2bb707532a0e1d5bc56f7a8874f4bedc5942d"
+  },
+  "unruled:f8889.archer#1": {
+   "reason": "The question as landed; the findings repeat the first sample's, ruled the same way.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Any Archer MSA of the person or the spouse refuses, an untouched one included: the widening the design states and BUG-0614 records. Safe."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "078d9299d13c0b6f21aea3c24f28485a3a68767e0df33b1ca522af751807d307"
+  },
+  "unruled:f8889.mistake_repaid#1": {
+   "reason": "The question as landed; the findings repeat the first sample's, ruled the same way.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A repaid mistake refuses whatever the year, the age or the form's content; safe and rare (i8889 p. 9, Note; i1099sa p. 1, HSA Mistaken Distributions)."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A repaid mistake refuses whatever the year, the age or the form's content; safe and rare (i8889 p. 9, Note; i1099sa p. 1, HSA Mistaken Distributions)."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A repaid mistake refuses whatever the year, the age or the form's content; safe and rare (i8889 p. 9, Note; i1099sa p. 1, HSA Mistaken Distributions)."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "A Yes refuses (safe); a No taxes the distribution in the ordinary way, which is the rule when the conditions of a mistaken distribution are not met (i1099sa p. 1: a mistake of fact due to reasonable cause, repaid by the date allowed)."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "A Yes refuses (safe); a No taxes the distribution in the ordinary way, which is the rule when the conditions of a mistaken distribution are not met (i1099sa p. 1: a mistake of fact due to reasonable cause, repaid by the date allowed)."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "c74ef11ce06918be6a5518d25402ff93fc527bb983020ec1d6122c206b6aa76d"
+  },
+  "unruled:gate:f8889.ask_spouse_family#1": {
+   "reason": "The question as landed; the findings repeat the first sample's, ruled the same way.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A filer whose year is not one coverage type as an eligible individual is asked the month questions, and f8889.months_family asks in its own words whether the spouse had a high-deductible plan covering more than one person (i8889 p. 4, Line 3, rule 1). The one case not reached, a marriage that ended during 2025, is BUG-0618 (open by the owner's decision)."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A filer whose year is not one coverage type as an eligible individual is asked the month questions, and f8889.months_family asks in its own words whether the spouse had a high-deductible plan covering more than one person (i8889 p. 4, Line 3, rule 1). The one case not reached, a marriage that ended during 2025, is BUG-0618 (open by the owner's decision)."
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A filer whose year is not one coverage type as an eligible individual is asked the month questions, and f8889.months_family asks in its own words whether the spouse had a high-deductible plan covering more than one person (i8889 p. 4, Line 3, rule 1). The one case not reached, a marriage that ended during 2025, is BUG-0618 (open by the owner's decision)."
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A Yes for a spouse who was not an eligible individual leads to the month counts, which count family months only where the conditions held for both. Harmless."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "aae267dab792d7e81ffc410691bd9489435ff8509b0797857a829e55f170b348"
+  },
+  "unruled:gate:f8889.medical_all_if_dist#1": {
+   "reason": "The question as landed; the findings repeat the first sample's, ruled the same way.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "An excess taken out is refused by f8889.excess_withdrawn and a deemed distribution by f8889.loan, each asked of every account, before a Yes here can matter."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "An excess taken out is refused by f8889.excess_withdrawn and a deemed distribution by f8889.loan, each asked of every account, before a Yes here can matter."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "The limits are in the question's help (premiums, someone else's costs, costs before the HSA, costs paid back); a beneficiary is refused by f8889.inherited. The design's residual for a wrong Yes (D.3)."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "The limits are in the question's help (premiums, someone else's costs, costs before the HSA, costs paid back); a beneficiary is refused by f8889.inherited. The design's residual for a wrong Yes (D.3)."
+    },
+    {
+     "n": 4,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "An extra question only."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "4cf494b6d6e482b547444b56b0732037ddfa8a79e7d771977fb30ce51e16f0d0"
+  },
+  "unruled:gate:f8889.ask_last_month_prior#1": {
+   "reason": "The gate as landed; each finding is answered by a question beneath or beside it, or is a safe widening.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A Yes to the 2024 transfer from an IRA already begins a testing period, and f8889.testing_failed then refuses the return on any month of 2025 without eligibility, whichever rule the amount would come from; no Part III amount is left out of a prepared return (fixtures redesign.hsa.refuse.ira_prior_no_contributions and redesign.hsa.refuse.ira_prior_contributions_gap). The refusal is wider than Part III: BUG-0616."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A Yes to the 2024 transfer from an IRA already begins a testing period, and f8889.testing_failed then refuses the return on any month of 2025 without eligibility, whichever rule the amount would come from; no Part III amount is left out of a prepared return (fixtures redesign.hsa.refuse.ira_prior_no_contributions and redesign.hsa.refuse.ira_prior_contributions_gap). The refusal is wider than Part III: BUG-0616."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "An extra question, or the wider refusal recorded in BUG-0616. Safe."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "02842c2bc7f95a666ac118cebbd5ff9a0354b5ef1ddfd803b82db4e7af0278ce"
+  },
+  "unruled:gate:f8889.clear_if_uniform#1": {
+   "reason": "The gate as landed; each finding is answered by a question beneath or beside it, or is a safe widening.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A filer not asked the FSA question is on the month path, and f8889.months_eligible's second condition reads 'counting a health FSA or HRA at work that pays ordinary medical bills, yours or your spouse's' (p969 p. 5). The reviewer was shown the gate without that question."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A filer not asked the FSA question is on the month path, and f8889.months_eligible's second condition reads 'counting a health FSA or HRA at work that pays ordinary medical bills, yours or your spouse's' (p969 p. 5). The reviewer was shown the gate without that question."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "An over-cautious No leads to the month count, which names the FSA and asks the conditions again by month."
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "An extra question only."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "1cfb29a0018dd07c545b3efc3814e8dffb5aac924f40959f734ad80912887d9b"
+  },
+  "unruled:gate:f8889.coverage#1": {
+   "reason": "The gate as landed; each finding is answered by a question beneath or beside it, or is a safe widening.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The spouse's family plan is the child question f8889.spouse_family; two plans at once and someone else's family plan are in the help of the coverage question ('if that was so for only part of the year, choose No')."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The spouse's family plan is the child question f8889.spouse_family; two plans at once and someone else's family plan are in the help of the coverage question ('if that was so for only part of the year, choose No')."
+    }
+   ],
+   "bugs": [],
+   "subject_sha": "7e6070958268852df0147e659a76e664a474908055de41ca43e7f7b75ceefae5"
   }
  },
  "baseline": {

@@ -45,7 +45,7 @@ const NY_TABLES_DIR = nyPath("tables");
 const NY_PARAMS_PATH = join(ROOT, "params", "ny", `${YEAR}.yaml`);
 const NY_REGISTER_PATH = join(ROOT, "ambiguities", "ny", `${YEAR}.yaml`);
 
-interface BankQuestion { input: string; order: number; help?: string; prompt?: string; cite?: CiteAuthored; choices?: RosterChoice[]; value_labels?: Record<string, string> }
+interface BankQuestion { input: string; order: number; seq?: number; help?: string; prompt?: string; cite?: CiteAuthored; choices?: RosterChoice[]; value_labels?: Record<string, string> }
 interface QuestionBank { tax_year: number; frames: Record<string, string>; questions: BankQuestion[] }
 interface InterviewProfile { tax_year: number; targets: string[]; initial: InterviewData["initial"]; cite: CiteAuthored; questions: string[] | "all"; questions_from?: string; targets_from?: string }
 
@@ -281,6 +281,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     if (q.cite !== undefined && stableStringify(cite) === stableStringify(derivedCite)) errors.push(`${where}: cite repeats the form line's; remove it from the bank`);
     const prompt = q.prompt ?? derivedPrompt;
     if (!prompt || (q.help !== undefined && !q.help) || !Number.isSafeInteger(q.order)) { errors.push(`invalid ${where}`); return null; }
+    if (q.seq !== undefined && !(Number.isSafeInteger(q.seq) && q.seq >= 1)) { errors.push(`${where}: seq must be a whole number of 1 or more`); return null; }
     // Entry syntax belongs to the clients (the CLI's entry hint, the page's widgets), not to the wording.
     for (const [field, text] of [["prompt", prompt], ["help", q.help ?? ""]] as const) {
       const syntax = entrySyntax(text);
@@ -317,11 +318,16 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
         for (const t of texts) { const syntax = typeof t === "string" ? entrySyntax(t) : null; if (syntax) errors.push(`${where}: a value label states entry syntax (${syntax})`); }
       }
     }
-    return { input: q.input, prompt, help: q.help ?? "", order: q.order, cite: cite!, ...(q.choices ? { choices: q.choices } : {}),
+    return { input: q.input, prompt, help: q.help ?? "", order: q.order, ...(q.seq !== undefined ? { seq: q.seq } : {}), cite: cite!, ...(q.choices ? { choices: q.choices } : {}),
       // The options of a labelled enum are shown in the order the bank lists their labels.
       ...(q.value_labels ? { value_labels: q.value_labels, value_order: Object.keys(q.value_labels) } : {}) };
   };
   const resolved = new Map(bank.questions.flatMap((q) => { const r = resolveQuestion(q); return r ? [[q.input, r] as const] : []; }));
+  // A block is every question of one order number, each with its place in the block: an order number is all block or none.
+  for (const order of new Set(bank.questions.filter((q) => q.seq !== undefined).map((q) => q.order))) {
+    const plain = bank.questions.filter((q) => q.order === order && q.seq === undefined).map((q) => q.input);
+    if (plain.length) errors.push(`order ${order}: some of its questions give seq and ${plain.join(", ")} do not; a block is every question of its order number`);
+  }
   const loadProfile = (path: string, name: string): InterviewData => {
     const profile = (parseYaml(readFileSync(path, "utf8")) as { interview: InterviewProfile }).interview;
     const own = profile.questions === "all" ? federalInputs : profile.questions;

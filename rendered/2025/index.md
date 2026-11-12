@@ -23,7 +23,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | f8606.md | form | 6 |
 | f8863.md | form | 48 |
 | f8880.md | form | 50 |
-| f8889.md | form | 113 |
+| f8889.md | form | 159 |
 | f8959.md | form | 26 |
 | f8960.md | form | 36 |
 | f8962.md | form | 165 |

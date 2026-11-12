@@ -126,14 +126,15 @@ export const COUPLE_PHRASES = ["you (or your spouse, on a joint return)", "you, 
 const AUXILIARY: Record<string, string> = { were: "was", are: "is", do: "does", have: "has", did: "did", can: "can", could: "could" };
 /** A verb after "you", as it reads after "your spouse". */
 export const SECOND_TO_THIRD: Record<string, string> = { are: "is", were: "was", have: "has", "weren't": "wasn't", "aren't": "isn't", "don't": "doesn't",
-  file: "files", teach: "teaches", contribute: "contributes", receive: "receives", stop: "stops" };
+  file: "files", teach: "teaches", contribute: "contributes", receive: "receives", stop: "stops", plan: "plans", stay: "stays", do: "does" };
 /** A verb after "this person" or "your spouse", as it reads after "you". */
 export const THIRD_TO_SECOND: Record<string, string> = { is: "are", was: "were", has: "have", does: "do", "isn't": "aren't", "wasn't": "weren't", "doesn't": "don't" };
 /** The words that may follow a subject and read the same for either person: past forms, modals, and the words after
  * an object ("gave you a", "paid you overtime"). */
 export const UNCHANGED_AFTER: ReadonlySet<string> = new Set(["a", "an", "and", "or", "for", "to", "on", "if", "as", "by", "in", "of", "at", "under", "with", "more", "age", "blind",
   "fully", "never", "overtime", "born", "made", "had", "took", "received", "enrolled", "filed", "applied", "applying", "can", "can't", "cannot", "could", "contributed", "did",
-  "paid", "died", "acquired", "repaid", "served", "rolled", "became", "claimed", "deducted", "recharacterized", "covered", "deferred", "agreed"]);
+  "paid", "died", "acquired", "repaid", "served", "rolled", "became", "claimed", "deducted", "recharacterized", "covered", "deferred", "agreed",
+  "inherited", "returned", "opened", "turned", "put", "have"]);
 const PREPOSITIONS: ReadonlySet<string> = new Set(["of", "for", "to", "by", "from", "with", "about", "on", "in"]);
 /** Whose entry a framed question is shown for. */
 export type PersonRole = "taxpayer" | "spouse";

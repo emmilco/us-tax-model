@@ -50,7 +50,7 @@ import { Worker } from "node:worker_threads";
 import fc from "fast-check";
 import { mapPool, poolSize } from "./pool.js";
 import { loadCanonical } from "./canonical.js";
-import { RECORD_ALLOWED, answerEvent, entryHint, inputMeta, interviewStatus, loadInterview, questionTemplate, recordProblems, recordProblemsIn, recordedTemplates, replayState, type AnswerEvent, type ChoiceRecord, type InterviewData, type RosterChoice } from "./interview.js";
+import { RECORD_ALLOWED, answerEvent, askOrder, entryHint, inputMeta, interviewStatus, loadInterview, questionTemplate, recordProblems, recordProblemsIn, recordedTemplates, replayState, type AnswerEvent, type ChoiceRecord, type InterviewData, type RosterChoice } from "./interview.js";
 import { evaluate } from "./eval.js";
 import { gateProblems, gatesOf, readsOf } from "./gates.js";
 import { nyReturnArbitrary, sampleReturns } from "./generate.js";
@@ -192,9 +192,9 @@ export function onlyGiven(config: InterviewData, events: Event[]): string | null
 
 /** The interview's own order: the open question first in bank order (then by key), as interviewStatus picks. */
 export function bankOrder(config: InterviewData): (open: string[]) => string {
-  const order = new Map(config.questions.map((q) => [q.input, q.order]));
-  const rank = (k: string) => order.get(questionTemplate(k)) ?? Infinity;
-  return (open) => open.reduce((a, b) => (rank(b) < rank(a) || (rank(b) === rank(a) && b.localeCompare(a) < 0) ? b : a));
+  const bank = new Map(config.questions.map((q) => [q.input, q]));
+  const place = (k: string) => { const q = bank.get(questionTemplate(k)); return { input: k, order: q?.order ?? Infinity, ...(q?.seq !== undefined ? { seq: q.seq } : {}) }; };
+  return (open) => open.reduce((a, b) => (askOrder(place(b), place(a)) < 0 ? b : a));
 }
 
 /** A complete walk's fixture answers, classed. `askedUnread`: asked, and not read by the complete return's evaluation (a

@@ -30,7 +30,20 @@
     ],
     "f1040.status": "single",
     "person[sample].role": "taxpayer",
-    "person[sample].f8889[hsa].unsupported": false
+    "person[sample].f8889[hsa].owner_died": false,
+    "person[sample].f8889[hsa].inherited": false,
+    "person[sample].f8889[hsa].archer": false,
+    "person[sample].f8889[hsa].ira_transfer": false,
+    "person[sample].f8889[hsa].excess_withdrawn": false,
+    "person[sample].f8889[hsa].clear_all_year": true,
+    "person[sample].f8889[hsa].fsa": false,
+    "person[sample].f8889[hsa].spouse_family": false,
+    "person[sample].f8889[hsa].ira_prior": false,
+    "person[sample].f8889[hsa].testing_prior": false,
+    "person[sample].f8889[hsa].dist_code": false,
+    "person[sample].f8889[hsa].mistake_repaid": false,
+    "person[sample].f8889[hsa].medical_all": false,
+    "person[sample].f8889[hsa].loan": false
   },
   "cases": [
     {
@@ -335,7 +348,7 @@
       "id": "H12",
       "inputs": {
         "person[sample].f8889[hsa].line14a": 0,
-        "person[sample].f8889[hsa].unsupported": null
+        "person[sample].f8889[hsa].inherited": null
       },
       "expect": {
         "person[sample].f8889[hsa].line16": {
@@ -345,13 +358,13 @@
           "kind": "unknown"
         }
       },
-      "basis": "The mandatory supported-scope question is deliberately unanswered. The final taxable-distribution and additional-tax outputs must remain unknown. Do not prescribe whether a reviewer checks that screen before intermediate amounts: the archived source does not determine the placement of project scope screens."
+      "basis": "A mandatory supported-scope question (whether the HSA was acquired because its owner died) is deliberately unanswered. The final taxable-distribution and additional-tax outputs must remain unknown. Do not prescribe whether a reviewer checks that screen before intermediate amounts: the archived source does not determine the placement of project scope screens."
     },
     {
       "id": "H13",
       "inputs": {
         "person[sample].f8889[hsa].line14a": 0,
-        "person[sample].f8889[hsa].unsupported": true
+        "person[sample].f8889[hsa].inherited": true
       },
       "expect": {
         "person[sample].f8889[hsa].line16": {
@@ -361,7 +374,7 @@
           "kind": "refusal"
         }
       },
-      "basis": "A true published out-of-scope screen must continue to refuse even with zero distributed dollars."
+      "basis": "A true published out-of-scope screen (an HSA acquired because its owner died) must continue to refuse even with zero distributed dollars."
     },
     {
       "id": "H14",
@@ -406,7 +419,20 @@
         "f1040.status": "mfj",
         "person[sample].role": "taxpayer",
         "person[spouse].role": "spouse",
-        "person[sample].f8889[hsa].unsupported": false,
+        "person[sample].f8889[hsa].owner_died": false,
+        "person[sample].f8889[hsa].inherited": false,
+        "person[sample].f8889[hsa].archer": false,
+        "person[sample].f8889[hsa].ira_transfer": false,
+        "person[sample].f8889[hsa].excess_withdrawn": false,
+        "person[sample].f8889[hsa].clear_all_year": true,
+        "person[sample].f8889[hsa].fsa": false,
+        "person[sample].f8889[hsa].spouse_family": false,
+        "person[sample].f8889[hsa].ira_prior": false,
+        "person[sample].f8889[hsa].testing_prior": false,
+        "person[sample].f8889[hsa].dist_code": false,
+        "person[sample].f8889[hsa].mistake_repaid": false,
+        "person[sample].f8889[hsa].medical_all": false,
+        "person[sample].f8889[hsa].loan": false,
         "person[sample].f8889[hsa].coverage_year": "changed",
         "person[sample].f8889[hsa].months_eligible": 12,
         "person[sample].f8889[hsa].months_family": 12,
@@ -416,7 +442,20 @@
         "person[sample].f8889[hsa].allocation": "equal",
         "person[sample].f8889[hsa].line2": 200000,
         "person[sample].f8889[hsa].line9": 0,
-        "person[spouse].f8889[hsa].unsupported": false,
+        "person[spouse].f8889[hsa].owner_died": false,
+        "person[spouse].f8889[hsa].inherited": false,
+        "person[spouse].f8889[hsa].archer": false,
+        "person[spouse].f8889[hsa].ira_transfer": false,
+        "person[spouse].f8889[hsa].excess_withdrawn": false,
+        "person[spouse].f8889[hsa].clear_all_year": true,
+        "person[spouse].f8889[hsa].fsa": false,
+        "person[spouse].f8889[hsa].spouse_family": false,
+        "person[spouse].f8889[hsa].ira_prior": false,
+        "person[spouse].f8889[hsa].testing_prior": false,
+        "person[spouse].f8889[hsa].dist_code": false,
+        "person[spouse].f8889[hsa].mistake_repaid": false,
+        "person[spouse].f8889[hsa].medical_all": false,
+        "person[spouse].f8889[hsa].loan": false,
         "person[spouse].f8889[hsa].coverage_year": "changed",
         "person[spouse].f8889[hsa].months_eligible": 12,
         "person[spouse].f8889[hsa].months_family": 12,
@@ -470,7 +509,20 @@
         "f1040.status": "mfj",
         "person[sample].role": "taxpayer",
         "person[spouse].role": "spouse",
-        "person[sample].f8889[hsa].unsupported": false,
+        "person[sample].f8889[hsa].owner_died": false,
+        "person[sample].f8889[hsa].inherited": false,
+        "person[sample].f8889[hsa].archer": false,
+        "person[sample].f8889[hsa].ira_transfer": false,
+        "person[sample].f8889[hsa].excess_withdrawn": false,
+        "person[sample].f8889[hsa].clear_all_year": true,
+        "person[sample].f8889[hsa].fsa": false,
+        "person[sample].f8889[hsa].spouse_family": false,
+        "person[sample].f8889[hsa].ira_prior": false,
+        "person[sample].f8889[hsa].testing_prior": false,
+        "person[sample].f8889[hsa].dist_code": false,
+        "person[sample].f8889[hsa].mistake_repaid": false,
+        "person[sample].f8889[hsa].medical_all": false,
+        "person[sample].f8889[hsa].loan": false,
         "person[sample].f8889[hsa].coverage_year": "changed",
         "person[sample].f8889[hsa].months_eligible": 12,
         "person[sample].f8889[hsa].months_family": 12,

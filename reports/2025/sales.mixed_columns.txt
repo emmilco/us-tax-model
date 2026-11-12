@@ -739,7 +739,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["s1.cod_any",{"const":false}],"op":"test"}; Interpretation amb.2025.cod_fully_taxable: The first (s1.cod_amount, s1.cod_unsupported). Student loans are refused with the other exceptions. The owner's decision (Stage 16 decision batch, D2, "fully taxable canceled nonbusiness debt"). An excepted student loan discharge is nontaxable and usually comes with no Form 1099-C (p. 3, TIP), so a filer who reports one is refused rather than told how much of it to include; the conservative choice where D2 is silent. (p4681, p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable"; p. 4, Exceptions)
   8f  Income from Form 8889
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 8f; i1040gi p. 91, Line 8f, "Enter the total of the amounts from Form 8889, lines 16 and 20" (line 20, Part III, is refused by f8889.unsupported) (2025; created 2025-07-25; 8dafec71)
+      cite: [f1040s1] Schedule 1 (2025), line 8f; i1040gi p. 91, Line 8f, "Enter the total of the amounts from Form 8889, lines 16 and 20" (Part III of Form 8889 is not prepared, and f8889.testing_failed refuses a failed testing period) (2025; created 2025-07-25; 8dafec71)
       note: confirmed roster $person: taxpayer
   9   Total other income. Add lines 8a through 8z
       = $0

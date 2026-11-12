@@ -369,7 +369,7 @@
         "f1040.lines8-10"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: the Form 8889 screen answered Yes (one of the situations it lists, such as a qualified HSA funding distribution): refused. Since Stage 16 the screen no longer lists taxable distributions, which Form 8889 Part II computes. Mutation-score assertion (T-159: the line 16 operand of f8889.subject_bad), predicted before recording: line 16 is refused at the HSA screen, and the comparison of the line 17b amount (unanswered here) with line 16 is that refusal, which outranks the unknown first operand (spec 4.7.2, comparisons: the first refusal among the two operands, else the first unknown). Refusal text recorded from the evaluator. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed.",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: the Form 8889 screen answered Yes (one of the situations it lists, such as a qualified HSA funding distribution): refused. Since Stage 16 the screen no longer lists taxable distributions, which Form 8889 Part II computes. Mutation-score assertion (T-159: the line 16 operand of f8889.subject_bad), predicted before recording: line 16 is refused at the HSA screen, and the comparison of the line 17b amount (unanswered here) with line 16 is that refusal, which outranks the unknown first operand (spec 4.7.2, comparisons: the first refusal among the two operands, else the first unknown). Refusal text recorded from the evaluator. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed. The situation answered Yes is an HSA acquired because its owner died (f8889.inherited), which refuses lines 13 and 16.",
       "inputs": {
         "$f8889@person[taxpayer]": [
           "hsa"
@@ -380,19 +380,19 @@
         "person[taxpayer].w2[emp_a].box1": 5000000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 72500,
-        "person[taxpayer].f8889[hsa].unsupported": true,
+        "person[taxpayer].f8889[hsa].inherited": true,
         "person[taxpayer].f8889[hsa].subject_part": null,
         "s179.line10": null
       },
       "expect": {
         "f1040.line10": {
           "kind": "refusal",
-          "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
-          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "gate": "person[taxpayer].f8889[hsa].inherited",
+          "form": "Form 8889 for an HSA acquired because its account beneficiary died",
+          "remedy": "An inherited HSA is reported differently (a beneficiary who is not the surviving spouse reports the account's value on the date of death on a Form 8889 of its own and skips Part I). This tool does not prepare it, and it does not prepare a surviving spouse's inherited HSA either.",
           "cite": {
             "doc": "i8889",
-            "locator": "Parts II and III; lines 4, 10 and 13",
+            "locator": "p. 3, Death of Account Beneficiary",
             "revision": "2025",
             "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
             "tax_year": 2025
@@ -400,12 +400,12 @@
         },
         "person[taxpayer].f8889[hsa].subject_bad": {
           "kind": "refusal",
-          "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
-          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "gate": "person[taxpayer].f8889[hsa].inherited",
+          "form": "Form 8889 for an HSA acquired because its account beneficiary died",
+          "remedy": "An inherited HSA is reported differently (a beneficiary who is not the surviving spouse reports the account's value on the date of death on a Form 8889 of its own and skips Part I). This tool does not prepare it, and it does not prepare a surviving spouse's inherited HSA either.",
           "cite": {
             "doc": "i8889",
-            "locator": "Parts II and III; lines 4, 10 and 13",
+            "locator": "p. 3, Death of Account Beneficiary",
             "revision": "2025",
             "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
             "tax_year": 2025
@@ -1829,7 +1829,7 @@
         "f8889:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage16.small.s4 (an HSA distribution of $3,000 on line 14a, $1,000 of it for medical expenses), with the unsupported-HSA-situations question (Part III, Form 8853, or other HSA situations) answered Yes. Line 16 carries the screen's own refusal entry (as line 13 does), so line 16 refuses whatever its figure; the figure behind it, line 14c less line 15, is $2,000. Schedule 1 line 8f carries the same refusal through line 16. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed.",
+      "evidence_note": "Inputs are stage16.small.s4 (an HSA distribution of $3,000 on line 14a, $1,000 of it for medical expenses), with the unsupported-HSA-situations question (Part III, Form 8853, or other HSA situations) answered Yes. Line 16 carries the screen's own refusal entry (as line 13 does), so line 16 refuses whatever its figure; the figure behind it, line 14c less line 15, is $2,000. Schedule 1 line 8f carries the same refusal through line 16. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed. The situation answered Yes is a Form 1099-SA distribution code other than 1 or 3 (f8889.dist_code), which refuses line 16.",
       "inputs": {
         "$f8889@person[taxpayer]": [
           "hsa"
@@ -1841,7 +1841,7 @@
         "person[taxpayer].w2[emp_a].box1": 5000000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 72500,
-        "person[taxpayer].f8889[hsa].unsupported": true,
+        "person[taxpayer].f8889[hsa].dist_code": true,
         "person[taxpayer].f8889[hsa].line14a": 300000,
         "person[taxpayer].f8889[hsa].medical": 100000,
         "s179.line10": null
@@ -1861,27 +1861,27 @@
         },
         "person[taxpayer].f8889[hsa].line16": {
           "kind": "refusal",
-          "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
-          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "gate": "person[taxpayer].f8889[hsa].dist_code_if_dist",
+          "form": "An HSA distribution with Form 1099-SA distribution code 2, 4, 5 or 6",
+          "remedy": "Box 3 of Form 1099-SA shows code 2 for excess contributions taken back, code 4 or 6 for a payment after the account owner's death, and code 5 for a prohibited transaction. This tool does not prepare any of these.",
           "cite": {
-            "doc": "i8889",
-            "locator": "Parts II and III; lines 4, 10 and 13",
-            "revision": "2025",
-            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "doc": "f1099sa",
+            "locator": "p. 3, Instructions for Recipient, Box 3",
+            "revision": "Rev. April 2025",
+            "snapshot": "cc2324629a9bd416180c1e10b66ce44d914937a6c4a11cc4bb8e17c22da44bd1",
             "tax_year": 2025
           }
         },
         "s1.line8f": {
           "kind": "refusal",
-          "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
-          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "gate": "person[taxpayer].f8889[hsa].dist_code_if_dist",
+          "form": "An HSA distribution with Form 1099-SA distribution code 2, 4, 5 or 6",
+          "remedy": "Box 3 of Form 1099-SA shows code 2 for excess contributions taken back, code 4 or 6 for a payment after the account owner's death, and code 5 for a prohibited transaction. This tool does not prepare any of these.",
           "cite": {
-            "doc": "i8889",
-            "locator": "Parts II and III; lines 4, 10 and 13",
-            "revision": "2025",
-            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "doc": "f1099sa",
+            "locator": "p. 3, Instructions for Recipient, Box 3",
+            "revision": "Rev. April 2025",
+            "snapshot": "cc2324629a9bd416180c1e10b66ce44d914937a6c4a11cc4bb8e17c22da44bd1",
             "tax_year": 2025
           }
         }
@@ -2318,7 +2318,7 @@
         "f8889:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage16.small.s4 as the interview asks them, for a person whose only HSA item is one the tool does not support (a qualified HSA funding distribution from an IRA, a testing-period failure or an inherited HSA): Form 8889 is answered for the person and the unsupported-HSA-situations question Yes. The interview asks that question straight after the Form 8889 roster and stops at the refusal, so no contribution or distribution amount is asked. Form 8889 lines 13 and 16 carry the question's refusal entry whatever their figure, and Schedule 1 lines 13 and 8f carry it through them. The refused values are the evaluator's. Ordinary dividends (box 1a) of $0 answered, with the dividends question answered yes: qualified dividends (line 3a) are asked only when box 1a is above zero, and the recorded $0 assumes it is not. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed.",
+      "evidence_note": "Inputs are stage16.small.s4 as the interview asks them, for a person whose only HSA item is one the tool does not support (a qualified HSA funding distribution from an IRA, a testing-period failure or an inherited HSA): Form 8889 is answered for the person and the unsupported-HSA-situations question Yes. The interview asks that question straight after the Form 8889 roster and stops at the refusal, so no contribution or distribution amount is asked. Form 8889 lines 13 and 16 carry the question's refusal entry whatever their figure, and Schedule 1 lines 13 and 8f carry it through them. The refused values are the evaluator's. Ordinary dividends (box 1a) of $0 answered, with the dividends question answered yes: qualified dividends (line 3a) are asked only when box 1a is above zero, and the recorded $0 assumes it is not. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed. The situation answered Yes is an HSA acquired because its owner died (f8889.inherited), the second question about the account, which refuses lines 13 and 16.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -2329,7 +2329,7 @@
         ],
         "f1040.line26": 200000,
         "div.any": true,
-        "person[taxpayer].f8889[hsa].unsupported": true,
+        "person[taxpayer].f8889[hsa].inherited": true,
         "f2441.benefits": null,
         "sd.distributions": null,
         "ssb.benefits": null,
@@ -2352,12 +2352,12 @@
       "expect": {
         "person[taxpayer].f8889[hsa].line13": {
           "kind": "refusal",
-          "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
-          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "gate": "person[taxpayer].f8889[hsa].inherited",
+          "form": "Form 8889 for an HSA acquired because its account beneficiary died",
+          "remedy": "An inherited HSA is reported differently (a beneficiary who is not the surviving spouse reports the account's value on the date of death on a Form 8889 of its own and skips Part I). This tool does not prepare it, and it does not prepare a surviving spouse's inherited HSA either.",
           "cite": {
             "doc": "i8889",
-            "locator": "Parts II and III; lines 4, 10 and 13",
+            "locator": "p. 3, Death of Account Beneficiary",
             "revision": "2025",
             "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
             "tax_year": 2025
@@ -2365,12 +2365,12 @@
         },
         "person[taxpayer].f8889[hsa].line16": {
           "kind": "refusal",
-          "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
-          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "gate": "person[taxpayer].f8889[hsa].inherited",
+          "form": "Form 8889 for an HSA acquired because its account beneficiary died",
+          "remedy": "An inherited HSA is reported differently (a beneficiary who is not the surviving spouse reports the account's value on the date of death on a Form 8889 of its own and skips Part I). This tool does not prepare it, and it does not prepare a surviving spouse's inherited HSA either.",
           "cite": {
             "doc": "i8889",
-            "locator": "Parts II and III; lines 4, 10 and 13",
+            "locator": "p. 3, Death of Account Beneficiary",
             "revision": "2025",
             "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
             "tax_year": 2025
@@ -2378,12 +2378,12 @@
         },
         "s1.line13": {
           "kind": "refusal",
-          "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
-          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "gate": "person[taxpayer].f8889[hsa].inherited",
+          "form": "Form 8889 for an HSA acquired because its account beneficiary died",
+          "remedy": "An inherited HSA is reported differently (a beneficiary who is not the surviving spouse reports the account's value on the date of death on a Form 8889 of its own and skips Part I). This tool does not prepare it, and it does not prepare a surviving spouse's inherited HSA either.",
           "cite": {
             "doc": "i8889",
-            "locator": "Parts II and III; lines 4, 10 and 13",
+            "locator": "p. 3, Death of Account Beneficiary",
             "revision": "2025",
             "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
             "tax_year": 2025
@@ -2391,12 +2391,12 @@
         },
         "s1.line8f": {
           "kind": "refusal",
-          "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
-          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "gate": "person[taxpayer].f8889[hsa].inherited",
+          "form": "Form 8889 for an HSA acquired because its account beneficiary died",
+          "remedy": "An inherited HSA is reported differently (a beneficiary who is not the surviving spouse reports the account's value on the date of death on a Form 8889 of its own and skips Part I). This tool does not prepare it, and it does not prepare a surviving spouse's inherited HSA either.",
           "cite": {
             "doc": "i8889",
-            "locator": "Parts II and III; lines 4, 10 and 13",
+            "locator": "p. 3, Death of Account Beneficiary",
             "revision": "2025",
             "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
             "tax_year": 2025
@@ -2931,7 +2931,7 @@
         "f5329"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 21 regression (BUG-0202): blind return E10 with its 2025 HSA excess withdrawn, with earnings, by the due date of the 2025 return including extensions. i5329 p. 8, Line 47: such contributions \"will be treated as not having been contributed\"; the withdrawal and its earnings go on Form 8889 lines 14a and 14b, which this tool does not prepare, so the Form 8889 screen refuses (D6). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed.",
+      "evidence_note": "Stage 21 regression (BUG-0202): blind return E10 with its 2025 HSA excess withdrawn, with earnings, by the due date of the 2025 return including extensions. i5329 p. 8, Line 47: such contributions \"will be treated as not having been contributed\"; the withdrawal and its earnings go on Form 8889 lines 14a and 14b, which this tool does not prepare, so the Form 8889 screen refuses (D6). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed. The question answered Yes is the withdrawal of excess contributions (f8889.excess_withdrawn).",
       "inputs": {
         "$f8889@person[taxpayer]": [
           "hsa"
@@ -2942,7 +2942,7 @@
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
-        "person[taxpayer].f8889[hsa].unsupported": true,
+        "person[taxpayer].f8889[hsa].excess_withdrawn": true,
         "person[taxpayer].retirement[a].box1": 200000,
         "person[taxpayer].retirement[a].code": "early_1",
         "person[taxpayer].w2[emp_a].box1": 6500000,
@@ -2954,16 +2954,1811 @@
       "expect": {
         "person[taxpayer].f8889[hsa].line13": {
           "kind": "refusal",
-          "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
-          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "gate": "person[taxpayer].f8889[hsa].excess_withdrawn",
+          "form": "Form 8889 lines 2, 13 and 14b for excess contributions withdrawn",
+          "remedy": "Excess contributions taken back out of an HSA by the due date of the return are treated as not contributed, and the withdrawal and its earnings are reported on lines 14a and 14b and as other income. This tool does not prepare that.",
           "cite": {
             "doc": "i8889",
-            "locator": "Parts II and III; lines 4, 10 and 13",
+            "locator": "p. 8, Excess Contributions You Make and Line 14b",
             "revision": "2025",
             "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
             "tax_year": 2025
           }
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.owner_died",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: the account's owner died in 2025 (i8889 p. 2, Last-month rule, the last month of a decedent's tax year is the month of death; p. 3, Death of Account Beneficiary): the first question about the account refuses lines 13 and 16, and Schedule 1 lines 13 and 8f through them, whatever the amounts ($1,000 contributed).",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].owner_died": true,
+        "person[taxpayer].f8889[hsa].line2": 100000
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].owner_died",
+          "form": "Form 8889 for a person who died in 2025",
+          "remedy": "The Form 8889 of a person who died in 2025 follows special rules (the tax year ends with the month of death, so the last-month rule looks at that month and not at December, and an HSA left to the estate is included at its value on the date of death). This tool does not prepare it; prepare it with the person's final return.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Last-month rule; p. 3, Death of Account Beneficiary; i1040gi p. 12, Death of a Taxpayer",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].owner_died",
+          "form": "Form 8889 for a person who died in 2025",
+          "remedy": "The Form 8889 of a person who died in 2025 follows special rules (the tax year ends with the month of death, so the last-month rule looks at that month and not at December, and an HSA left to the estate is included at its value on the date of death). This tool does not prepare it; prepare it with the person's final return.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Last-month rule; p. 3, Death of Account Beneficiary; i1040gi p. 12, Death of a Taxpayer",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].owner_died",
+          "form": "Form 8889 for a person who died in 2025",
+          "remedy": "The Form 8889 of a person who died in 2025 follows special rules (the tax year ends with the month of death, so the last-month rule looks at that month and not at December, and an HSA left to the estate is included at its value on the date of death). This tool does not prepare it; prepare it with the person's final return.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Last-month rule; p. 3, Death of Account Beneficiary; i1040gi p. 12, Death of a Taxpayer",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line8f": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].owner_died",
+          "form": "Form 8889 for a person who died in 2025",
+          "remedy": "The Form 8889 of a person who died in 2025 follows special rules (the tax year ends with the month of death, so the last-month rule looks at that month and not at December, and an HSA left to the estate is included at its value on the date of death). This tool does not prepare it; prepare it with the person's final return.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Last-month rule; p. 3, Death of Account Beneficiary; i1040gi p. 12, Death of a Taxpayer",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.archer",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: you or your husband or wife had an Archer MSA in 2025 (Form 8889 line 4; i8853 p. 1, Who Must File): line 13 is refused; line 16, which an Archer MSA does not enter, is $0 with no distributions.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].archer": true,
+        "person[taxpayer].f8889[hsa].line2": 100000
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].archer",
+          "form": "Form 8853 (Archer MSAs) and Form 8889 line 4",
+          "remedy": "Archer MSAs are outside this tool. Contributions to one reduce the HSA limit on Form 8889 line 4, and contributions to it and distributions from it (including one rolled over into an HSA) are reported on Form 8853.",
+          "cite": {
+            "doc": "f8889",
+            "locator": "Form 8889 (2025), line 4; i8853 p. 1, Who Must File",
+            "revision": "2025; created 2025-03-28",
+            "snapshot": "15ed4587f75bec57b0b343dfd001b4016f09698af970afee633ca1a364d5f49f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].archer",
+          "form": "Form 8853 (Archer MSAs) and Form 8889 line 4",
+          "remedy": "Archer MSAs are outside this tool. Contributions to one reduce the HSA limit on Form 8889 line 4, and contributions to it and distributions from it (including one rolled over into an HSA) are reported on Form 8853.",
+          "cite": {
+            "doc": "f8889",
+            "locator": "Form 8889 (2025), line 4; i8853 p. 1, Who Must File",
+            "revision": "2025; created 2025-03-28",
+            "snapshot": "15ed4587f75bec57b0b343dfd001b4016f09698af970afee633ca1a364d5f49f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.ira_transfer_contributions",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: a qualified HSA funding distribution in 2025 (i8889 p. 7, Line 10) with $1,000 contributed: the deduction is refused where it is figured; line 16 is $0.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].ira_transfer": true,
+        "person[taxpayer].f8889[hsa].line2": 100000
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].ira_transfer",
+          "form": "Form 8889 line 10 (a qualified HSA funding distribution)",
+          "remedy": "A transfer from an IRA to an HSA (a qualified HSA funding distribution) is outside this tool. It reduces the amount that can be contributed and starts a testing period.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 7, Line 10",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].ira_transfer",
+          "form": "Form 8889 line 10 (a qualified HSA funding distribution)",
+          "remedy": "A transfer from an IRA to an HSA (a qualified HSA funding distribution) is outside this tool. It reduces the amount that can be contributed and starts a testing period.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 7, Line 10",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.ira_transfer_no_contributions",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: a qualified HSA funding distribution in 2025 (i8889 p. 7, Line 10) and no other contribution: the question is asked of every account, and the deduction is refused although nothing was contributed.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].ira_transfer": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].ira_transfer",
+          "form": "Form 8889 line 10 (a qualified HSA funding distribution)",
+          "remedy": "A transfer from an IRA to an HSA (a qualified HSA funding distribution) is outside this tool. It reduces the amount that can be contributed and starts a testing period.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 7, Line 10",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].ira_transfer",
+          "form": "Form 8889 line 10 (a qualified HSA funding distribution)",
+          "remedy": "A transfer from an IRA to an HSA (a qualified HSA funding distribution) is outside this tool. It reduces the amount that can be contributed and starts a testing period.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 7, Line 10",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.excess_withdrawn_distribution",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: excess contributions withdrawn (i8889 p. 8, Excess Contributions You Make and Line 14b), $1,000 contributed and a $500 distribution on line 14a: lines 13 and 16 are both refused, since the withdrawal changes line 2 and line 14b.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].excess_withdrawn": true,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].line14a": 50000
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].excess_withdrawn",
+          "form": "Form 8889 lines 2, 13 and 14b for excess contributions withdrawn",
+          "remedy": "Excess contributions taken back out of an HSA by the due date of the return are treated as not contributed, and the withdrawal and its earnings are reported on lines 14a and 14b and as other income. This tool does not prepare that.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 8, Excess Contributions You Make and Line 14b",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].excess_withdrawn",
+          "form": "Form 8889 lines 2, 13 and 14b for excess contributions withdrawn",
+          "remedy": "Excess contributions taken back out of an HSA by the due date of the return are treated as not contributed, and the withdrawal and its earnings are reported on lines 14a and 14b and as other income. This tool does not prepare that.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 8, Excess Contributions You Make and Line 14b",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line8f": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].excess_withdrawn",
+          "form": "Form 8889 lines 2, 13 and 14b for excess contributions withdrawn",
+          "remedy": "Excess contributions taken back out of an HSA by the due date of the return are treated as not contributed, and the withdrawal and its earnings are reported on lines 14a and 14b and as other income. This tool does not prepare that.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 8, Excess Contributions You Make and Line 14b",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.excess_withdrawn_no_contributions",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: excess contributions withdrawn and nothing left contributed for 2025: the deduction is refused although line 2 is zero.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].excess_withdrawn": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].excess_withdrawn",
+          "form": "Form 8889 lines 2, 13 and 14b for excess contributions withdrawn",
+          "remedy": "Excess contributions taken back out of an HSA by the due date of the return are treated as not contributed, and the withdrawal and its earnings are reported on lines 14a and 14b and as other income. This tool does not prepare that.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 8, Excess Contributions You Make and Line 14b",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].excess_withdrawn",
+          "form": "Form 8889 lines 2, 13 and 14b for excess contributions withdrawn",
+          "remedy": "Excess contributions taken back out of an HSA by the due date of the return are treated as not contributed, and the withdrawal and its earnings are reported on lines 14a and 14b and as other income. This tool does not prepare that.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 8, Excess Contributions You Make and Line 14b",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.testing_no_contributions",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: no contributions for 2025; a testing period began in 2024 and the person was an eligible individual in only 5 months of 2025 (i8889 p. 2, Testing period, December 1, 2024 to December 31, 2025; p. 9, Part III): the testing period is asked because nothing else asks the months, the coverage questions follow the Yes, and line 13 is refused. Line 16 is $0 and is not refused.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].testing_prior": true,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 5,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].dec_coverage": "none"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ask_testing": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].covered_12": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].testing_failed",
+          "form": "Form 8889 Part III",
+          "remedy": "Income and additional tax for not staying an eligible individual during a testing period (Form 8889 Part III) are outside this tool. A testing period began in 2024, under the last-month rule or with a transfer from an IRA, and the answers show at least one month of 2025 without qualifying coverage.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Testing period; p. 8, Testing period; p. 9, Part III",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].testing_failed",
+          "form": "Form 8889 Part III",
+          "remedy": "Income and additional tax for not staying an eligible individual during a testing period (Form 8889 Part III) are outside this tool. A testing period began in 2024, under the last-month rule or with a transfer from an IRA, and the answers show at least one month of 2025 without qualifying coverage.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Testing period; p. 8, Testing period; p. 9, Part III",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.testing_no_contributions_covered",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: no contributions for 2025; a testing period began in 2024 and the person had self-only HDHP coverage as an eligible individual in every month of 2025, so the testing period, which ends in 2025, was kept (i8889 p. 2, Testing period): not refused, line 13 $0.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].testing_prior": true,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ask_testing": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].coverage": {
+          "kind": "enum",
+          "value": "self_only"
+        },
+        "person[taxpayer].f8889[hsa].covered_12": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.testing_contributions_gap",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: $1,000 contributed; an eligible individual in 7 months of 2025 with self-only coverage (December 1 among them, no last-month rule); a testing period began in 2024 (i8889 p. 2, Testing period; p. 9, Part III): asked because the months show a gap, and refused.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 7,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "person[taxpayer].f8889[hsa].testing_prior": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ask_testing": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].testing_failed",
+          "form": "Form 8889 Part III",
+          "remedy": "Income and additional tax for not staying an eligible individual during a testing period (Form 8889 Part III) are outside this tool. A testing period began in 2024, under the last-month rule or with a transfer from an IRA, and the answers show at least one month of 2025 without qualifying coverage.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Testing period; p. 8, Testing period; p. 9, Part III",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].testing_failed",
+          "form": "Form 8889 Part III",
+          "remedy": "Income and additional tax for not staying an eligible individual during a testing period (Form 8889 Part III) are outside this tool. A testing period began in 2024, under the last-month rule or with a transfer from an IRA, and the answers show at least one month of 2025 without qualifying coverage.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Testing period; p. 8, Testing period; p. 9, Part III",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.testing_not_asked_covered",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: $1,000 contributed with self-only coverage as an eligible individual all year: the answers show every month of 2025 covered, so the testing period is not asked and an answer given to it is not read (i8889 p. 2, Testing period). Line 3 $4,300, line 13 $1,000.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].testing_prior": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ask_testing": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.testing_not_asked_changed_type",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: $1,000 contributed; an eligible individual in all 12 months, 6 of them with family coverage, family on December 1: every month of 2025 is covered, so the testing period is not asked (i8889 p. 2, Testing period). Line 3 is the greater of the chart ($4,300 x 12 + $4,250 x 6, over 12, $6,425) and the December 1 amount, $8,550 (p. 4, Line 3, rule 4); line 13 $1,000.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 6,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "person[taxpayer].f8889[hsa].testing_prior": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].covered_12": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].ask_testing": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.testing_not_asked_family",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: $1,000 contributed with family coverage as an eligible individual all year: every month of 2025 is covered, so the testing period is not asked and an answer given to it is not read (i8889 p. 2, Testing period). Line 3 $8,550, line 13 $1,000.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "family",
+        "person[taxpayer].f8889[hsa].testing_prior": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].covered_12": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].ask_testing": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.testing_kept_age_unanswered",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: no contributions for 2025; a testing period began in 2024 and every month of 2025 was covered (self-only, an eligible individual all year): kept, so nothing is refused and line 13 is $0. The age question is left unanswered: with no contributions nothing reads the amount of the limit.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].testing_prior": true,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].age55": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].not_covered_12": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.distributions_only_coverage_unread",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: no contributions for 2025 and an $800 distribution all used for qualified medical expenses; the coverage question is left unanswered: nothing reads the limit (line 13 is $0 without contributions, i8889 p. 8, Line 13; the 2025 excess for Form 5329 line 47 is $0), so the return computes: line 15 $800, line 16 $0. An unmarried person is not married with family coverage, whatever the unanswered coverage question would say.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].coverage_year": null,
+        "person[taxpayer].f8889[hsa].line14a": 80000,
+        "person[taxpayer].f8889[hsa].medical_all": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].excess_amt": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "person[taxpayer].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line8f": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].married_family": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.dist_code_not_asked",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: no distributions in 2025: the Form 1099-SA box 3 question is not asked, and an answer given to it is not read (f1099sa, Instructions for Recipient, Box 1 and Box 3). Line 16 $0.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].dist_code": true,
+        "person[taxpayer].f8889[hsa].line14a": 0
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].dist_code_if_dist": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.mistake_repaid",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: a mistaken distribution repaid to the HSA (i8889 p. 9, Lines 17a and 17b, Note; f1099sa, Instructions for Recipient), with a $500 distribution all used for qualified medical expenses: line 16 is $0 as figured and line 17b, where the instructions put the note, is refused, and Schedule 2 line 17c through it.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].mistake_repaid": true,
+        "person[taxpayer].f8889[hsa].line14a": 50000,
+        "person[taxpayer].f8889[hsa].medical": 50000
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line17b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].mistake_repaid",
+          "form": "A mistaken HSA distribution repaid to the HSA",
+          "remedy": "A distribution made by mistake and returned to the HSA is left out of income and of the additional 20% tax under special rules (Notice 2004-50, Q&A 37 and 76). This tool does not prepare that.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 9, Lines 17a and 17b, Note; f1099sa p. 3, Instructions for Recipient",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s2.line17c": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].mistake_repaid",
+          "form": "A mistaken HSA distribution repaid to the HSA",
+          "remedy": "A distribution made by mistake and returned to the HSA is left out of income and of the additional 20% tax under special rules (Notice 2004-50, Q&A 37 and 76). This tool does not prepare that.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 9, Lines 17a and 17b, Note; f1099sa p. 3, Instructions for Recipient",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.loan",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: the HSA was used as security for a loan in 2025 (i8889 p. 3, Deemed Distributions From HSAs): asked of every account, also one with no contributions or distributions; line 17b is refused (deemed distributions are generally subject to the additional 20% tax); lines 13 and 16 are $0 as figured.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].loan": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line17b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].loan",
+          "form": "A deemed distribution from an HSA",
+          "remedy": "Using an HSA as security for a loan, or a prohibited transaction with it such as borrowing from it, lending to it, or buying from or selling to it, counts as taking money out of the HSA (a deemed distribution), which is taxable and generally subject to the additional 20% tax. This tool does not prepare that.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 3, Deemed Distributions From HSAs",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s2.line17c": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].loan",
+          "form": "A deemed distribution from an HSA",
+          "remedy": "Using an HSA as security for a loan, or a prohibited transaction with it such as borrowing from it, lending to it, or buying from or selling to it, counts as taking money out of the HSA (a deemed distribution), which is taxable and generally subject to the additional 20% tax. This tool does not prepare that.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 3, Deemed Distributions From HSAs",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.medicare_from_october",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: self-only HDHP all year, but not an eligible individual in every month (enrolled in Medicare from October 1): the check after the plan question sends the year to the month counts, 9 eligible months, none on December 1. Line 3 is the chart, $4,300 x 9 / 12 = $3,225 (i8889 p. 4, Line 3, rule 5; p. 6, chart); $3,000 contributed, line 13 $3,000.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].clear_all_year": false,
+        "person[taxpayer].f8889[hsa].months_eligible": 9,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].dec_coverage": "none"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].clear_if_uniform": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].eligible_all": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].coverage": {
+          "kind": "enum",
+          "value": "changed"
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 322500
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.general_fsa_all_year",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: self-only HDHP all year with the three conditions met, but covered all year by a general-purpose health FSA (p969 p. 5, Other employee health plans): the year goes to the month counts, no eligible month; line 3 $0; the $1,000 contributed is not deductible and is the 2025 excess for Form 5329 line 47 (i5329 p. 8, Line 47).",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].fsa": true,
+        "person[taxpayer].f8889[hsa].months_eligible": 0,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].dec_coverage": "none"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].fsa_if_clear": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].no_fsa": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].eligible_all": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].coverage": {
+          "kind": "enum",
+          "value": "changed"
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].excess_amt": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.family_not_clear",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: family HDHP all year, the three conditions not confirmed for every month (answered No, as a person who is not sure is told to): the month counts follow and say 12 eligible months, all family, family on December 1. Line 3 $8,550 (i8889 p. 4, Line 3, rule 3); line 13 $1,000.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "family",
+        "person[taxpayer].f8889[hsa].clear_all_year": false,
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].coverage": {
+          "kind": "enum",
+          "value": "changed"
+        },
+        "person[taxpayer].f8889[hsa].covered_12": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.unmarried_spouse_plan_not_asked",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: an unmarried person with self-only coverage as an eligible individual all year: the question about a husband's or wife's family plan is not asked, and an answer given to it is not read (i8889 p. 4, Line 3, rule 1). Line 3 $4,300.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].spouse_family": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ask_spouse_family": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].spouse_family_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].eligible_all": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].coverage": {
+          "kind": "enum",
+          "value": "self_only"
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 430000
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.married_spouse_family_plan",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: married, only you have an HSA; your own HDHP covered only you all year and you were an eligible individual every month, but your husband or wife had family HDHP coverage: you are both treated as having family coverage (i8889 p. 4, How To Complete Part I and Line 3, rule 1), so the year goes to the month counts: 12 eligible months, all treated as family, family on December 1. Line 3 $8,550; $8,550 contributed, line 13 $8,550.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 855000,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].spouse_family": true,
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ask_spouse_family": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].spouse_family_if_asked": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].eligible_all": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].coverage_self_spouse": {
+          "kind": "enum",
+          "value": "changed"
+        },
+        "person[taxpayer].f8889[hsa].coverage": {
+          "kind": "enum",
+          "value": "changed"
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 855000
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.married_spouse_no_family_plan",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: married, only you have an HSA, self-only coverage as an eligible individual all year, and your husband or wife had no family HDHP coverage: self-only all year stands. Line 3 $4,300; $5,000 contributed, line 13 $4,300 (i8889 p. 4, Line 3, rule 3; p. 8, Line 13).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 500000,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].spouse_family": false
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ask_spouse_family": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].spouse_family_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].eligible_all": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].coverage": {
+          "kind": "enum",
+          "value": "self_only"
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 430000
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.married_family_spouse_plan_not_asked",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: married with family HDHP coverage as an eligible individual all year: the question about the husband's or wife's family plan is asked only of a person whose own plan covered only them; an answer given to it is not read. Line 3 $8,550.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "family",
+        "person[taxpayer].f8889[hsa].spouse_family": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ask_spouse_family": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].spouse_family_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].coverage": {
+          "kind": "enum",
+          "value": "family"
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.married_not_clear_spouse_plan_not_asked",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: married, self-only HDHP all year, the three conditions not met in every month (9 eligible months, none on December 1): the month counts decide, and the question about the husband's or wife's family plan is not asked. Line 3 $3,225.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].clear_all_year": false,
+        "person[taxpayer].f8889[hsa].spouse_family": true,
+        "person[taxpayer].f8889[hsa].months_eligible": 9,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].dec_coverage": "none"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].sf_eligible": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].ask_spouse_family": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].coverage": {
+          "kind": "enum",
+          "value": "changed"
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 322500
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.married_fsa_spouse_plan_not_asked",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: married, self-only HDHP all year with the three conditions met, covered by a general-purpose health FSA all year: no eligible month, and the question about the husband's or wife's family plan is not asked. Line 3 $0, line 13 $0.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].fsa": true,
+        "person[taxpayer].f8889[hsa].spouse_family": true,
+        "person[taxpayer].f8889[hsa].months_eligible": 0,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].dec_coverage": "none"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].no_fsa": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].sf_eligible": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].ask_spouse_family": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].coverage": {
+          "kind": "enum",
+          "value": "changed"
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.medical_all",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: $1,500 distributed, $500 of it rolled over to another HSA, and all of the rest used for qualified medical expenses (i8889 p. 2, Distributions From an HSA; p. 8, Line 15): line 14c $1,000, line 15 $1,000, line 16 $0, no additional tax. The amount question is not asked, and an amount given to it ($250) is not read.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line14a": 150000,
+        "person[taxpayer].f8889[hsa].rollover": 50000,
+        "person[taxpayer].f8889[hsa].medical_all": true,
+        "person[taxpayer].f8889[hsa].medical": 25000
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].f8889[hsa].medical_if_partial": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line15_dist": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.medical_all_not_asked",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: no distributions in 2025: whether all of them paid medical expenses is not asked, and an answer given to it is not read. Line 15 $0, line 16 $0.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].medical_all": true,
+        "person[taxpayer].f8889[hsa].line14a": 0
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].medical_all_if_dist": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.ira_prior_no_contributions",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: no contributions for 2025; money was moved from an IRA into the HSA in 2024 (a qualified HSA funding distribution, i8889 p. 8, Testing period), the last-month rule was not used, and the person was an eligible individual in only 5 months of 2025: the transfer alone began a testing period, the last-month question is not asked after the Yes, and line 13 is refused (p. 9, Part III).",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].testing_prior": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 5,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].dec_coverage": "none",
+        "person[taxpayer].f8889[hsa].ira_prior": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ask_testing": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].covered_12": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].testing_failed",
+          "form": "Form 8889 Part III",
+          "remedy": "Income and additional tax for not staying an eligible individual during a testing period (Form 8889 Part III) are outside this tool. A testing period began in 2024, under the last-month rule or with a transfer from an IRA, and the answers show at least one month of 2025 without qualifying coverage.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Testing period; p. 8, Testing period; p. 9, Part III",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].testing_failed",
+          "form": "Form 8889 Part III",
+          "remedy": "Income and additional tax for not staying an eligible individual during a testing period (Form 8889 Part III) are outside this tool. A testing period began in 2024, under the last-month rule or with a transfer from an IRA, and the answers show at least one month of 2025 without qualifying coverage.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Testing period; p. 8, Testing period; p. 9, Part III",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].ira_prior_if_asked": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].ask_last_month_prior": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_prior_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_if_asked": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.ira_prior_contributions_gap",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: $1,000 contributed; an eligible individual in 7 months of 2025; money was moved from an IRA into the HSA in 2024 and the last-month rule was not used (i8889 p. 8, Testing period; p. 9, Part III): the transfer began a testing period and the months show a gap, so line 13 is refused.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 7,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "person[taxpayer].f8889[hsa].testing_prior": false,
+        "person[taxpayer].f8889[hsa].ira_prior": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ask_testing": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].testing_failed",
+          "form": "Form 8889 Part III",
+          "remedy": "Income and additional tax for not staying an eligible individual during a testing period (Form 8889 Part III) are outside this tool. A testing period began in 2024, under the last-month rule or with a transfer from an IRA, and the answers show at least one month of 2025 without qualifying coverage.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Testing period; p. 8, Testing period; p. 9, Part III",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].testing_failed",
+          "form": "Form 8889 Part III",
+          "remedy": "Income and additional tax for not staying an eligible individual during a testing period (Form 8889 Part III) are outside this tool. A testing period began in 2024, under the last-month rule or with a transfer from an IRA, and the answers show at least one month of 2025 without qualifying coverage.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Testing period; p. 8, Testing period; p. 9, Part III",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].ira_prior_if_asked": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].ask_last_month_prior": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_prior_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_if_asked": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.refuse.last_month_prior_after_ira_no",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: $1,000 contributed; an eligible individual in 7 months of 2025; no money was moved from an IRA in 2024, and the last-month rule was used for 2024 (i8889 p. 2, Testing period; p. 9, Part III): after the No to the transfer the last-month question is asked, its Yes began a testing period, and line 13 is refused.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 7,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "person[taxpayer].f8889[hsa].testing_prior": true,
+        "person[taxpayer].f8889[hsa].ira_prior": false
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ask_testing": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].testing_failed",
+          "form": "Form 8889 Part III",
+          "remedy": "Income and additional tax for not staying an eligible individual during a testing period (Form 8889 Part III) are outside this tool. A testing period began in 2024, under the last-month rule or with a transfer from an IRA, and the answers show at least one month of 2025 without qualifying coverage.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Testing period; p. 8, Testing period; p. 9, Part III",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].testing_failed",
+          "form": "Form 8889 Part III",
+          "remedy": "Income and additional tax for not staying an eligible individual during a testing period (Form 8889 Part III) are outside this tool. A testing period began in 2024, under the last-month rule or with a transfer from an IRA, and the answers show at least one month of 2025 without qualifying coverage.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 2, Testing period; p. 8, Testing period; p. 9, Part III",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].ira_prior_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].ask_last_month_prior": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].testing_prior_if_asked": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].testing_if_asked": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "redesign.hsa.ira_prior_not_asked_covered",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: $1,000 contributed with self-only coverage as an eligible individual all year: every month of 2025 is covered, so neither the 2024 transfer from an IRA nor the last-month rule is asked and a Yes given to the transfer is not read (i8889 p. 8, Testing period). Line 3 $4,300, line 13 $1,000.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].testing_prior": false,
+        "person[taxpayer].f8889[hsa].ira_prior": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ask_testing": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].f8889[hsa].ira_prior_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].ask_last_month_prior": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_prior_if_asked": {
+          "kind": "bool",
+          "value": false
         }
       }
     }

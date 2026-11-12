@@ -4735,8 +4735,7 @@
  },
  {
   "form": "f8889",
-  "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
-  "grandfathered": true,
+  "subject_sha": "4f3a96b73e8017491b7b88580d94c9199340cef997099cc3de15c20c7baab8ba",
   "used": [
    {
     "doc": "i1040gi",
@@ -4750,6 +4749,12 @@
     "doc": "i5329",
     "pages": [
      8
+    ]
+   },
+   {
+    "doc": "i8853",
+    "pages": [
+     1
     ]
    },
    {
@@ -4772,7 +4777,9 @@
      4,
      5,
      6,
-     7
+     7,
+     8,
+     9
     ]
    }
   ],
@@ -4781,47 +4788,25 @@
     "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
     "claims": [
      {
-      "item": "f8889.coverage_year",
+      "item": "f8889.line13",
       "sentences": [
        {
-        "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP.",
-        "page": "p969 p. 4"
+        "quote": "Also include on your 2025 Form 8889, line 13, the smaller of:",
+        "page": "i5329 p. 8"
        },
        {
-        "quote": "Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs.",
-        "page": "p969 p. 5"
+        "quote": "If your current year contributions from line 2 are less than your current year maximum HSA contribution limit shown on line 12 and you have prior year excess contributions, see the Instructions for Form 5329, Part VII, line 43, for more information.",
+        "page": "i8889 p. 8"
        },
        {
-        "quote": "You can have a prescription drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met. If you can receive benefits before that deductible is met, you aren't an eligible individual.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period.",
-        "page": "i8889 p. 4"
+        "quote": "The excess contribution you can deduct for the current year is the lesser of the following two amounts.",
+        "page": "p969 p. 8"
        }
       ],
-      "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP. / Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs. / You can have a prescription drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met. If you can receive benefits before that deductible is met, you aren't an eligible individual. / Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero. / If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period.",
-      "page": "p969 p. 4; p969 p. 5; i8889 p. 4",
-      "why_uncovered": "The eligibility question asks whether the filer is 'covered by an HDHP' and lists the disregarded coverage. It does not define an HDHP. It never says that a family plan with an embedded individual deductible below the family minimum is not an HDHP, or that a plan whose coverage is substantially all disregarded coverage is not an HDHP. It does not say that a prescription drug plan paying benefits before the deductible disqualifies the filer. It also treats any general-purpose health FSA as disqualifying, with no exception for a grace period that follows a zero-balance plan year. Separately, nothing computes or asks for the line 1 coverage checkbox.",
-      "closest_item": "f8889.coverage_year",
-      "effect": "eligibility"
-     },
-     {
-      "item": "f8889.line2",
-      "sentences": [
-       {
-        "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
-        "page": "p969 p. 5"
-       }
-      ],
-      "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
-      "page": "p969 p. 5",
-      "why_uncovered": "The line 2 question asks for the contributions made, but it does not exclude contributions of stock or property. A non-cash contribution would therefore be counted and deducted.",
-      "closest_item": "f8889.line2",
+      "quote": "Also include on your 2025 Form 8889, line 13, the smaller of: / If your current year contributions from line 2 are less than your current year maximum HSA contribution limit shown on line 12 and you have prior year excess contributions, see the Instructions for Form 5329, Part VII, line 43, for more information. / The excess contribution you can deduct for the current year is the lesser of the following two amounts.",
+      "page": "i5329 p. 8; i8889 p. 8; p969 p. 8",
+      "why_uncovered": "Line 13 is encoded only as the smaller of line 2 or line 12. No question asks about prior-year excess contributions still in the HSA (2024 Form 5329 lines 48 and 49), and no refusal covers a filer who has them. The extra line 13 deduction for absorbed prior-year excess is therefore never computed or refused.",
+      "closest_item": "f8889.line13",
       "effect": "amount"
      },
      {
@@ -4830,22 +4815,26 @@
        {
         "quote": "Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.",
         "page": "i8889 p. 8"
+       },
+       {
+        "quote": "However, the distribution of an excess contribution taken out after the due date, including extensions, of your return is subject to tax even if used for qualified medical expenses.",
+        "page": "p969 p. 9"
+       },
+       {
+        "quote": "The premiums for long-term care insurance (item (1)) that you can treat as qualified medical expenses are subject to limits based on age and are adjusted annually.",
+        "page": "p969 p. 9"
+       },
+       {
+        "quote": "An HSA that is funded by amounts rolled over from an Archer MSA or another HSA is established on the date the prior account was established.",
+        "page": "p969 p. 8"
        }
       ],
-      "quote": "Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.",
-      "page": "i8889 p. 8",
-      "why_uncovered": "The line 15 question asks for distributions used for qualified medical expenses, with no exclusion for a distribution of an excess contribution taken out after the due date. The unsupported refusal covers only withdrawals made by the due date and excess contributions that remain in the HSA. It does not cover an excess contribution that has already been distributed after the due date.",
+      "quote": "Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses. / However, the distribution of an excess contribution taken out after the due date, including extensions, of your return is subject to tax even if used for qualified medical expenses. / The premiums for long-term care insurance (item (1)) that you can treat as qualified medical expenses are subject to limits based on age and are adjusted annually. / An HSA that is funded by amounts rolled over from an Archer MSA or another HSA is established on the date the prior account was established.",
+      "page": "i8889 p. 8; p969 p. 9; p969 p. 8",
+      "why_uncovered": "The line 15 questions (f8889.medical and f8889.medical_all) do not exclude a distribution of an excess contribution taken out after the return due date. The excess-withdrawal question and refusal reach only withdrawals made by the due date. The questions list long-term care premiums as counting with no age-based dollar limit. They say expenses must be incurred after the HSA was established but do not say that a rollover-funded HSA takes the prior account's establishment date.",
       "closest_item": "f8889.medical",
       "effect": "amount"
-     }
-    ],
-    "cost": 0.272716,
-    "model": "claude-opus-5-5",
-    "response": ".transcription/completeness/f8889.response.txt"
-   },
-   {
-    "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
-    "claims": [
+     },
      {
       "item": "f8889.coverage_year",
       "sentences": [
@@ -4854,334 +4843,83 @@
         "page": "i8889 p. 3"
        },
        {
-        "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP.",
+        "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn’t qualify as an HDHP.",
         "page": "p969 p. 4"
        },
        {
-        "quote": "Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "You can have a prescrip- tion drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "If you can receive benefits before that deductible is met, you aren't an eligible individual.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
+        "quote": "Caution: Plans in which substantially all of the coverage is through the items listed earlier aren’t HDHPs.",
         "page": "p969 p. 5"
        }
       ],
-      "quote": "An HDHP is a health plan that meets the following requirements. / If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP. / Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs. / You can have a prescrip- tion drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met. / If you can receive benefits before that deductible is met, you aren't an eligible individual. / Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
+      "quote": "An HDHP is a health plan that meets the following requirements. / If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn’t qualify as an HDHP. / Caution: Plans in which substantially all of the coverage is through the items listed earlier aren’t HDHPs.",
       "page": "i8889 p. 3; p969 p. 4; p969 p. 5",
-      "why_uncovered": "The eligible-individual definition in the coverage questions (also used by f8889.months_eligible and f8889.dec_coverage) says only 'is covered by an HDHP'. It does not give the 2025 minimum-deductible and out-of-pocket tests. It also does not say that a family plan with an embedded individual deductible below the family minimum is not an HDHP, or that a plan made up mostly of disregarded coverage is not an HDHP. It says nothing about a separate prescription drug plan or rider that pays benefits before the deductible. Finally, it lists a general-purpose health FSA as disqualifying with no grace-period exception, so a filer with a zero-balance FSA grace period would wrongly count those months as ineligible.",
+      "why_uncovered": "The coverage questions ask whether the filer was covered by a 'high-deductible health plan' but never state what makes a plan one. The minimum annual deductible, the out-of-pocket maximum, the embedded individual deductible rule for family plans, and the exclusion of plans that are substantially all permitted or disregarded coverage are not asked or refused. A filer with a non-qualifying plan is treated as eligible.",
       "closest_item": "f8889.coverage_year",
       "effect": "eligibility"
      },
      {
-      "item": "f8889.line2",
+      "item": "f8889.clear_all_year",
       "sentences": [
        {
-        "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
+        "quote": "If you can receive benefits before that deductible is met, you aren’t an eligible individual.",
         "page": "p969 p. 5"
        }
       ],
-      "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
+      "quote": "If you can receive benefits before that deductible is met, you aren’t an eligible individual.",
       "page": "p969 p. 5",
-      "why_uncovered": "The line 2 question asks for contributions made for 2025 but does not limit them to cash. A filer could include stock or property contributions, which are not allowed, and that would inflate line 2 and possibly line 13.",
-      "closest_item": "f8889.line2",
-      "effect": "amount"
+      "why_uncovered": "The other-coverage question lists only the disregarded coverages. It does not say how a prescription drug plan or rider is treated: disqualifying only if it pays benefits before the HDHP minimum deductible is met. A filer cannot tell from the question whether such a plan counts as other health coverage.",
+      "closest_item": "f8889.clear_all_year",
+      "effect": "eligibility"
      },
      {
-      "item": "f8889.medical",
+      "item": "f8889.fsa",
       "sentences": [
-       {
-        "quote": "Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.",
-        "page": "i8889 p. 8"
-       },
-       {
-        "quote": "Even though nonprescription medicines (other than insulin) do not qualify for the medical and dental expenses deduction, they do qualify as expenses for HSA purposes.",
-        "page": "i8889 p. 2"
-       },
-       {
-        "quote": "The cost of menstrual care products (tampons, pads, liners, cups, sponges, or other similar products) are also reimbursable for HSA purposes.",
-        "page": "i8889 p. 2"
-       },
-       {
-        "quote": "Amounts paid for condoms are treated as amounts paid for medical care and qualify as reimbursable expenses for HSA purposes.",
-        "page": "i8889 p. 2"
-       },
-       {
-        "quote": "Amounts you pay for personal protective equipment, such as masks, hand sanitizer, and sanitizing wipes for you, your spouse, and your dependents for the primary purpose of preventing the spread of COVID-19 are treated as medical expenses eligible to be reimbursed from an HSA.",
-        "page": "i8889 p. 2"
-       }
-      ],
-      "quote": "Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses. / Even though nonprescription medicines (other than insulin) do not qualify for the medical and dental expenses deduction, they do qualify as expenses for HSA purposes. / The cost of menstrual care products (tampons, pads, liners, cups, sponges, or other similar products) are also reimbursable for HSA purposes. / Amounts paid for condoms are treated as amounts paid for medical care and qualify as reimbursable expenses for HSA purposes. / Amounts you pay for personal protective equipment, such as masks, hand sanitizer, and sanitizing wipes for you, your spouse, and your dependents for the primary purpose of preventing the spread of COVID-19 are treated as medical expenses eligible to be reimbursed from an HSA.",
-      "page": "i8889 p. 8; i8889 p. 2",
-      "why_uncovered": "The line 15 question spells out which people qualify and the premium limits. It does not exclude a late-withdrawn excess contribution used for medical expenses. The unsupported refusal covers only timely withdrawals and excess that still 'remains', not one that was distributed in 2025. The question also does not tell the filer that nonprescription medicines, menstrual products, condoms and COVID-19 protective equipment count for HSA purposes even though they are not Schedule A medical expenses. Either gap can misstate line 15 and so line 16 and the 20% tax.",
-      "closest_item": "f8889.medical",
-      "effect": "amount"
-     },
-     {
-      "item": "f8889.dec_coverage",
-      "sentences": [
-       {
-        "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period.",
-        "page": "i8889 p. 4"
-       },
-       {
-        "quote": "If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the “family” box.",
-        "page": "i8889 p. 4"
-       }
-      ],
-      "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period. / If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the “family” box.",
-      "page": "i8889 p. 4",
-      "why_uncovered": "No encoded item produces the Form 8889 line 1 coverage checkbox. The coverage and December 1 answers are collected, but the self-only or family box is never chosen from them.",
-      "closest_item": "f8889.dec_coverage",
-      "effect": "presentation"
-     }
-    ],
-    "cost": 0.310124,
-    "model": "claude-opus-5-5",
-    "date": "2026-11-10",
-    "response": ".transcription/completeness/f8889.468af834bc38.2.response.txt",
-    "rerun_reason": "calibration of SAMPLES_PER_MILESTONE (phase 2)"
-   },
-   {
-    "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
-    "claims": [
-     {
-      "item": "f8889.coverage_year",
-      "sentences": [
-       {
-        "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP.",
-        "page": "p969 p. 4"
-       },
-       {
-        "quote": "Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "You can have a prescription drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "If you can receive benefits before that deductible is met, you aren't an eligible individual.",
-        "page": "p969 p. 5"
-       },
        {
         "quote": "Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
         "page": "p969 p. 5"
        }
       ],
-      "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP. / Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs. / You can have a prescription drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met. / If you can receive benefits before that deductible is met, you aren't an eligible individual. / Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
-      "page": "p969 p. 4; p969 p. 5",
-      "why_uncovered": "The coverage question, and the month-count questions that rely on it, define an eligible individual as being 'covered by an HDHP' with no other coverage beyond a listed set of disregarded coverage and a general-purpose FSA or HRA. It never says that a family plan with an embedded individual deductible below the family minimum is not an HDHP. It never says that a plan consisting substantially of disregarded coverage is not an HDHP. It never says that a prescription drug plan paying benefits before the HDHP deductible is met disqualifies the filer. It also omits the exception that grace-period coverage under a general-purpose health FSA with a zero prior-year balance does not disqualify. A filer could therefore count months wrongly, in either direction.",
-      "closest_item": "f8889.coverage_year",
+      "quote": "Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
+      "page": "p969 p. 5",
+      "why_uncovered": "The FSA/HRA question asks about coverage 'at any time in 2025' and carves out only limited-purpose, post-deductible, suspended and retiree-only arrangements. It has no exception for grace-period coverage under a general-purpose health FSA with a zero prior-year balance. Such a filer is treated as not eligible in every month.",
+      "closest_item": "f8889.fsa",
       "effect": "eligibility"
      },
      {
       "item": "f8889.line2",
       "sentences": [
        {
-        "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
+        "quote": "Contributions by an S corporation to a 2% shareholder-employee’s HSA for services rendered are treated as guaranteed payments and are deductible by the S corporation and includible in the shareholder-employee’s gross income.",
+        "page": "p969 p. 8"
+       },
+       {
+        "quote": "The shareholder-employee can deduct the contribution made to the shareholder-employee’s HSA.",
+        "page": "p969 p. 8"
+       },
+       {
+        "quote": "The partner, if an eligible individual as defined in section 223(c)(1), is entitled to deduct the amount of the contributions made to the partner’s HSA during the tax year as an adjustment to gross income on their federal income tax return.",
+        "page": "p969 p. 8"
+       },
+       {
+        "quote": "Contributions to an HSA must be made in cash.",
+        "page": "p969 p. 5"
+       },
+       {
+        "quote": "Contributions of stock or property aren’t allowed.",
         "page": "p969 p. 5"
        }
       ],
-      "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
-      "page": "p969 p. 5",
-      "why_uncovered": "The line 2 question asks for contributions made for 2025 but does not exclude contributions of stock or property. Nothing refuses non-cash contributions. A non-cash contribution would flow into line 2 and the line 13 deduction.",
+      "quote": "Contributions by an S corporation to a 2% shareholder-employee’s HSA for services rendered are treated as guaranteed payments and are deductible by the S corporation and includible in the shareholder-employee’s gross income. / The shareholder-employee can deduct the contribution made to the shareholder-employee’s HSA. / The partner, if an eligible individual as defined in section 223(c)(1), is entitled to deduct the amount of the contributions made to the partner’s HSA during the tax year as an adjustment to gross income on their federal income tax return. / Contributions to an HSA must be made in cash. / Contributions of stock or property aren’t allowed.",
+      "page": "p969 p. 8; p969 p. 5",
+      "why_uncovered": "The line 2 question tells the filer to exclude 'employer contributions', and the line 9 question collects them as excludable. Neither says that contributions by an S corporation for a 2% shareholder-employee, or by a partnership for a partner, are included in income and deductible by the individual, so they belong on line 2 rather than line 9. Nothing asks or says that contributions must be in cash.",
       "closest_item": "f8889.line2",
       "effect": "amount"
-     },
-     {
-      "item": "f8889.dec_coverage",
-      "sentences": [
-       {
-        "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period.",
-        "page": "i8889 p. 4"
-       },
-       {
-        "quote": "If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the \"family\" box.",
-        "page": "i8889 p. 4"
-       }
-      ],
-      "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period. / If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the \"family\" box.",
-      "page": "i8889 p. 4",
-      "why_uncovered": "The encoding has no Form 8889 line 1 item. The coverage and December 1 coverage questions are used only to compute line 3 and line 6. Nothing sets the line 1 self-only or family checkbox under these rules.",
-      "closest_item": "f8889.dec_coverage",
-      "effect": "presentation"
      }
     ],
-    "cost": 0.27634400000000003,
-    "model": "claude-opus-5-5",
-    "date": "2026-11-10",
-    "response": ".transcription/completeness/f8889.468af834bc38.3.response.txt",
-    "rerun_reason": "calibration of SAMPLES_PER_MILESTONE (phase 2)"
-   },
-   {
-    "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
-    "claims": [
-     {
-      "item": "f8889.line2",
-      "sentences": [
-       {
-        "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
-        "page": "p969 p. 5"
-       }
-      ],
-      "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
-      "page": "p969 p. 5",
-      "why_uncovered": "The line 2 question lists what to leave out: employer and cafeteria-plan contributions, rollovers, trustee-to-trustee transfers and qualified HSA funding distributions. It never says that only cash contributions count. Nothing asks whether any contribution was made in stock or property, and nothing refuses that case. A filer could therefore enter a non-cash contribution on line 2 and have it flow into the line 13 deduction.",
-      "closest_item": "f8889.line2",
-      "effect": "amount"
-     },
-     {
-      "item": "f8889.coverage_year",
-      "sentences": [
-       {
-        "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP.",
-        "page": "p969 p. 4"
-       },
-       {
-        "quote": "Caution: Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "You can have a prescription drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met. If you can receive benefits before that deductible is met, you aren't an eligible individual.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "Suspended HRA. ... When the suspension period ends, you are no longer eligible to make contributions to an HSA.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "After retirement with such an HRA, you are no longer eligible to make contributions to an HSA.",
-        "page": "p969 p. 5"
-       }
-      ],
-      "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP. / Caution: Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs. / You can have a prescription drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met. If you can receive benefits before that deductible is met, you aren't an eligible individual. / Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero. / Suspended HRA. ... When the suspension period ends, you are no longer eligible to make contributions to an HSA. / After retirement with such an HRA, you are no longer eligible to make contributions to an HSA.",
-      "page": "p969 p. 4; p969 p. 5",
-      "why_uncovered": "The eligibility definition in the coverage questions (coverage_year, months_eligible, dec_coverage) asks whether the filer was 'covered by an HDHP'. It lists the disregarded coverage and says that a general-purpose FSA or HRA counts as other coverage. It does not cover five rules: (1) a family plan with an embedded individual deductible below the family minimum is not an HDHP; (2) a plan whose coverage is substantially all for disregarded items is not an HDHP; (3) a prescription drug plan that pays before the deductible disqualifies the filer; (4) grace-period coverage under a general-purpose FSA disqualifies unless the prior-year balance is zero; (5) a suspended or retiree-only HRA ends eligibility once the suspension ends or after retirement. Each of these rules can change which months count as eligible, and so the line 3 limit.",
-      "closest_item": "f8889.coverage_year",
-      "effect": "eligibility"
-     },
-     {
-      "item": "f8889.dec_coverage",
-      "sentences": [
-       {
-        "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period.",
-        "page": "i8889 p. 4"
-       },
-       {
-        "quote": "If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the \"family\" box.",
-        "page": "i8889 p. 4"
-       }
-      ],
-      "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period. / If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the \"family\" box.",
-      "page": "i8889 p. 4",
-      "why_uncovered": "No encoded item produces the line 1 coverage checkbox. The December 1 coverage and the month counts are collected, but no line applies the 'longer period' rule or the 'family on December 1' rule to set the box.",
-      "closest_item": "f8889.dec_coverage",
-      "effect": "presentation"
-     }
-    ],
-    "cost": 0.261264,
-    "model": "claude-opus-5-5",
-    "date": "2026-11-10",
-    "response": ".transcription/completeness/f8889.468af834bc38.4.response.txt",
-    "rerun_reason": "calibration of SAMPLES_PER_MILESTONE (phase 2)"
-   },
-   {
-    "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
-    "claims": [
-     {
-      "item": "f8889.coverage_year",
-      "sentences": [
-       {
-        "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP.",
-        "page": "p969 p. 4"
-       },
-       {
-        "quote": "Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "You can have a prescription drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "If you can receive benefits before that deductible is met, you aren't an eligible individual.",
-        "page": "p969 p. 5"
-       },
-       {
-        "quote": "Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
-        "page": "p969 p. 5"
-       }
-      ],
-      "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP. / Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs. / You can have a prescription drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met. / If you can receive benefits before that deductible is met, you aren't an eligible individual. / Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
-      "page": "p969 p. 4; p969 p. 5",
-      "why_uncovered": "The eligibility definition in the coverage question (repeated in the months_eligible and December 1 coverage questions) says only 'covered by an HDHP'. It never says what makes a plan an HDHP. It does not mention that an embedded individual deductible below the family minimum disqualifies a family plan. It does not mention that a plan that is substantially all excepted benefits is not an HDHP. It also does not say that a prescription drug plan paying benefits before the HDHP deductible is disqualifying coverage. The question also states flatly that a general-purpose health FSA is other health coverage. It omits the exception for grace-period coverage under an FSA whose prior-year balance was zero, so a filer in that situation would wrongly count those months as ineligible.",
-      "closest_item": "f8889.coverage_year",
-      "effect": "eligibility"
-     },
-     {
-      "item": "f8889.medical",
-      "sentences": [
-       {
-        "quote": "Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.",
-        "page": "i8889 p. 8"
-       }
-      ],
-      "quote": "Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.",
-      "page": "i8889 p. 8",
-      "why_uncovered": "The line 15 question asks for distributions used for qualified medical expenses. It does not exclude a distribution of an excess contribution withdrawn after the return due date. The refusal list covers prior-year excess contributions that 'remain' in the HSA and timely withdrawals of excess contributions. It does not clearly cover a late withdrawal of earlier-year excess made in 2025, which the filer could count on line 15 and so understate line 16.",
-      "closest_item": "f8889.medical",
-      "effect": "amount"
-     },
-     {
-      "item": "f8889.line2",
-      "sentences": [
-       {
-        "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
-        "page": "p969 p. 5"
-       }
-      ],
-      "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
-      "page": "p969 p. 5",
-      "why_uncovered": "The line 2 question lists what to exclude: employer, cafeteria plan, rollover, trustee-to-trustee and qualified HSA funding distribution amounts. It does not say that only cash contributions count, or that stock or property contributions are not allowed.",
-      "closest_item": "f8889.line2",
-      "effect": "amount"
-     },
-     {
-      "item": "f8889.dec_coverage",
-      "sentences": [
-       {
-        "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period.",
-        "page": "i8889 p. 4"
-       },
-       {
-        "quote": "If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the \"family\" box.",
-        "page": "i8889 p. 4"
-       }
-      ],
-      "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period. / If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the \"family\" box.",
-      "page": "i8889 p. 4",
-      "why_uncovered": "No encoded item produces the line 1 coverage checkbox. The coverage questions feed only the line 3, 6 and 7 computations. Neither the 'longer period' rule nor the December 1 family rule is applied to choose the line 1 box.",
-      "closest_item": "f8889.dec_coverage",
-      "effect": "presentation"
-     }
-    ],
-    "cost": 0.277384,
-    "model": "claude-opus-5-5",
-    "date": "2026-11-10",
-    "response": ".transcription/completeness/f8889.468af834bc38.5.response.txt",
-    "rerun_reason": "calibration of SAMPLES_PER_MILESTONE (phase 2)"
+    "cost": 0.746216,
+    "model": "claude-fable-5-2",
+    "date": "2026-11-12",
+    "response": ".transcription/completeness/f8889.4f3a96b73e80.1.response.txt"
    }
   ]
  },

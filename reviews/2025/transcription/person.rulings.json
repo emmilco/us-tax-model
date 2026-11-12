@@ -1569,6 +1569,38 @@
    "subject_key": "ba56ee0fc29fa20a9541be0e949f89c8a40ef538115718d5abe1e72fa2b80195"
   },
   {
+   "printed": "person.hsa_share",
+   "project_expr_sha256": "a7f4dff980942acd3a82712c6cd8ff526ce20d0fc6a86fe5f6c655eaa926ffe4",
+   "second_expr_sha256": "7e44d802ef881cd2e6033c55f3deaaf244e58522ac833524514f5b22e0947da2",
+   "ruling": "Ruling: representation; project retained, as the earlier rulings of this line. i8889 p. 7, Line 6, Steps 2 and 3. The project sums f8889.share_raw; the reply sums f8889.share, which copies it and carries the allocation refusal (f8889.allocation_bad), and that refusal's condition reads this total, so the reply's line depends on itself. triage.py (1,798 fixtures, 500 generated returns seed 20261026, 1,661 partial records): 4,987 of 5,013 agree; the 26 differences are 20 candidate-refuses and 6 candidate-unknown (a cycle at person.hsa_share or household.hsa_share_sum), none a value difference; on completed returns 2 candidate-unknown (stage13.hsa_agreed_all_to_you, both persons: project $8,550 and $0) and 1 candidate-refuses (generated return 383). Project stands.",
+   "context": "c89b2e5a07f538361a44f961e5b928352332f53018276792127e9e7ec22f82de",
+   "date": "2026-11-12",
+   "run": "788541a54cc9a964f5b4a8119b508030ece1b6cacf37ba99dbe42c223bb32833",
+   "subject_key": "7f07397b9d2115750a9c283f7794a46a49bfab3b9cb4487e0226ac040aa235dd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sc.2@person[spouse]",
+     "fixture:classm.tcw.11@person[spouse]",
+     "fixture:classm.f8962.2@person[spouse]",
+     "fixture:classm.f8863.2@person[spouse]",
+     "fixture:stage13.hsa_agreed_all_to_you@person[spouse]",
+     "fixture:stage13.hsa_agreed_all_to_you@person[taxpayer]",
+     "fixture:stage13.refuse.hsa_family_one_spouse@person[taxpayer]",
+     "fixture:stage13.refuse.hsa_over_allocated@person[spouse]",
+     "fixture:stage13.refuse.hsa_over_allocated@person[taxpayer]",
+     "fixture:stage13.refuse.hsa_mixed_methods@person[spouse]",
+     "generated:20261026.468@person[spouse]",
+     "generated:20261026.468@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "person.hsa_step1",
    "project_expr_sha256": "ab9fe32ee54ab91061018751d13aa40a551b027c74d26b301c3e8dcd6b53bef7",
    "second_expr_sha256": "4c524aa932385de4cdd1b5adde8ec41efc768a101dc63fd880466e9c14ecc20b",

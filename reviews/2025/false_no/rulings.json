@@ -157,16 +157,6 @@
    "bugs": [],
    "subject_sha": "ce534a6d7b965f4e73ce8667e089c1fd4b5a0dc078cc41e50364233e2a240114"
   },
-  "unruled:gate:f8889.dec_coverage_if_changed#1": {
-   "class": "no gate defect; findings on the December 1 question's own wording, pre-existing",
-   "reason": "The gate line f8889.use_last_month hides f8889.last_month when the December 1 coverage is none (i8889 p. 2, Last-month rule, 'if you are an eligible individual on the 1st day of the last month of the tax year'), as in gate round 1, now read through f8889.dec_coverage_if_changed, so the last-month question is also not asked after an all-year answer (rule 3: eligible all year with one coverage type, the rule adds nothing). This run: (1) a spouse who died in 2025, whose last month is the month of death (medium): pre-existing wording of the December 1 question, registered as BUG-0452 for the owner; (2) a fiscal-year filer (low): the tool prepares calendar-year returns (the fiscal-year refusing row of the gate grids); (3) COBRA coverage on December 1, (4) a marketplace plan labeled HSA-eligible, (5) coverage as a family member on the spouse's family HDHP (medium, UNCLEAR): the question states that family includes coverage as a member of someone else's family HDHP; recognising a plan as an HDHP is the definition point of BUG-0453. None is a gate defect: each is a filer answering the December 1 question itself wrongly, as before the restructure.",
-   "subject_sha": "fdadf3111868d0328c7e9d13e571076faa92175613496be40f47157d6a2e69df"
-  },
-  "unruled:gate:f8889.coverage_year#1": {
-   "class": "no gate defect; definition points of the eligible individual, shared with the month question",
-   "reason": "The gate hides the month counts and the December 1 coverage when coverage_year is self-only or family all year, which i8889 p. 4, Line 3, rule 3 makes decisive ('If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for a family HDHP'). Findings of the earlier runs this round were fixed in the wording (family coverage as a member of another's plan and two plans at once, i8889 p. 4, Line 1; the spouse rule in its own list; VA care and surprise billing, i8889 p. 2; family coverage as coverage for you and another person, a general-purpose FSA or HRA, backdated Medicare, p969 pp. 4, 5, 7). This run's findings are all on the definition of an eligible individual, which the month question (months_eligible) uses in the same words, so a filer who misjudges eligibility answers the month count the same way: automatic Part A (medium; the question counts Medicare coverage backdated, the automatic case is wording), a carried-over FSA balance, a drug rider or direct primary care, a spouse's non-HDHP plan covering the filer, an embedded family deductible (medium and low: HDHP and other-coverage definitions, BUG-0453), VA care not service-connected (low, wording), and a filer whose eligible spouse's family HDHP does not cover the filer (low; the question's third family rule states that case: both eligible and either had family coverage). No finding shows a filer who answers an all-year option correctly by the stated definitions while a hidden month answer would change line 3.",
-   "subject_sha": "d2ef6a54bd35badb50bb7b819795a0166e3e835b065124bfba536ba7570c0900"
-  },
   "unruled:gate:sa.gifts#1": {
    "reason": "No defect on the archived pages after the wording rounds; the residual mediums rest on Pub. 526 rules not archived (grantor trusts, sole proprietors' gifts, split-interest gifts).",
    "findings": [
@@ -253,6 +243,46 @@
     "BUG-0594"
    ],
    "subject_sha": "a2162ef06792dd67e929f388f41a09fb8c3e1e2ceb8951956e342836b8be9b1e"
+  },
+  "unruled:gate:f8889.ask_spouse_family#1": {
+   "class": "no gate defect for the month path; one residual open (BUG-0618)",
+   "reason": "Filers whose year is not uniform, or who were not eligible in every month, answer the month questions, where f8889.months_family asks about the spouse's plan in its own words (i8889 p. 4, Line 3, rule 1). A person married for part of 2025 and not at its end is not asked: BUG-0618, open by the owner's decision.",
+   "subject_sha": "aae267dab792d7e81ffc410691bd9489435ff8509b0797857a829e55f170b348"
+  },
+  "unruled:gate:f8889.dec_coverage_if_changed#1": {
+   "class": "no gate defect; findings on the December 1 and last-month wording",
+   "reason": "Fiscal years are outside the tool; the answers name an HSA-qualifying plan and the help says when to choose no coverage; the last-month help counts what anyone put in.",
+   "subject_sha": "174c679b961c0fd2355f66672e4900c617a0dd789e702d77f303b22182aebdc6"
+  },
+  "unruled:gate:f8889.medical_all_if_dist#1": {
+   "class": "no gate defect; the wrong-Yes residual is the design's (D.3)",
+   "reason": "A beneficiary, a withdrawn excess and a deemed distribution are refused before the distributions; the help lists the common ways the spending is not all qualified and carries the Schedule A warning.",
+   "subject_sha": "4cf494b6d6e482b547444b56b0732037ddfa8a79e7d771977fb30ce51e16f0d0"
+  },
+  "unruled:gate:f8889.ask_last_month_prior#1": {
+   "class": "no gate defect",
+   "reason": "A Yes to the 2024 transfer begins a testing period by itself, and a person who then was not eligible in every month of 2025 is refused (f8889.testing_failed), so no line 18 amount is left out of a prepared return. Eligibility by month is asked in full by f8889.clear_all_year and f8889.months_eligible (Medicare, other coverage counting an FSA or HRA, dependency). A person with no account left in 2025 is caught at s2.other (coverage row hsa.testing_period_no_account_left).",
+   "subject_sha": "02842c2bc7f95a666ac118cebbd5ff9a0354b5ef1ddfd803b82db4e7af0278ce"
+  },
+  "unruled:gate:f8889.clear_if_uniform#1": {
+   "class": "no gate defect; the FSA is named in the month question",
+   "reason": "A filer not asked the FSA question answers f8889.months_eligible, whose second condition names a health FSA or HRA at work, the person's or the spouse's (p969 p. 5). The remedy is in the question beneath, as the redesign's rule requires.",
+   "subject_sha": "1cfb29a0018dd07c545b3efc3814e8dffb5aac924f40959f734ad80912887d9b"
+  },
+  "unruled:gate:f8889.coverage#1": {
+   "class": "no gate defect",
+   "reason": "The spouse's family plan, all year or from part-way, is asked by f8889.spouse_family, whose Yes brings the month counts; two plans at once and someone else's plan are in the help; Medicare, other coverage and dependency are asked next by f8889.clear_all_year; the options say 'covering me and at least one other person'. Fiscal years are outside the tool.",
+   "subject_sha": "7e6070958268852df0147e659a76e664a474908055de41ca43e7f7b75ceefae5"
+  },
+  "unruled:gate:f8889.coverage_year#1": {
+   "class": "no gate defect; wording points accepted (low)",
+   "reason": "A filer who reads the year as changed where it was not is sent to the month counts, which give the same months and the same line 3; the spouse's plan is asked by f8889.spouse_family and f8889.months_family; whether a plan is an HDHP is BUG-0453.",
+   "subject_sha": "ea560106edb000bdcbb9fdfdbbdb0420fe303cd140a71ae5db2e0622bbba55c5"
+  },
+  "unruled:gate:f8889.has_dist#1": {
+   "class": "no gate defect; each case is asked outside the gate",
+   "reason": "A beneficiary is asked by f8889.inherited and a decedent's return by f8889.owner_died, a pledge or prohibited transaction by f8889.loan, each of every account; the total question's help names card payments and the statements to use without a form, and is asked for each person.",
+   "subject_sha": "2917ce271aa7aa9ae1aa3dd87e20c7d059528adde43ebfedc1de1bebd677f284"
   }
  },
  "baseline": {}

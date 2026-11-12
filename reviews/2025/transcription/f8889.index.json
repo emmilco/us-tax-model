@@ -2,167 +2,169 @@
  "kind": "transcription",
  "form": "f8889",
  "family": "claude",
- "base": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+ "base": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
  "lines": [
   {
    "key": "f8889.one",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "AGREE",
    "subject_key": "a29131ac91ec776be5f1e17ec8845345d781ac8280c60b6aa19cc2f6b2e3d5ce"
   },
   {
    "key": "f8889.step1",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation (+ scope); as the earlier rulings of this disagreement. i8889 p. 7, Line 6, Step 1, and p. 4, Line 3, rule 2 (amb.2025.hsa_last_month_all_year, reading 1). Step 1 is read only on the married allocation path (f8889.line6_split under f8889.split), so it reaches no printed line elsewhere; the reply returns zero when the spouse rule does not apply (split false), the project's helper keeps the Step 1 figure. Triage of this reply (triage.py, 1,641 fixtures, 500 generated returns seed 20261026, 494 partial records): 1,177 of 1,438 agree; on completed returns 14 value differences (every witness shown has split false, Step 1 not read) and 11 project-unknown (f8889.last_month unanswered where Step 1 is not read); the printed lines 3, 6, 7, 13, 16 and 17b show no completed-return value difference.",
-   "subject_key": "9405a1504ee434ff0fa848dc50aa7dfc18c813d2f8dd074a9fbe68a82ed3ba35"
+   "ruling": "Ruling: representation (+ scope); project retained, as the earlier rulings of this line. i8889 p. 7, Line 6, Step 1; p. 4, Line 3, rules 2 and 3. triage.py (1,802 fixtures, 500 generated returns seed 20261026, 1,014 partial records): 1,881 of 2,093 agree. The line now reads the coverage used (f8889.coverage), the coverage_year answer turned to changed by the checks beneath it. The reply reads f8889.spouse_family for every filer; the project asks it only of a married person whose own plan covered only them all year and who was an eligible individual in every month (i8889 p. 4, How To Complete Part I, 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage'), and otherwise takes the family months from the month counts. The differing completed cases state an answer the interview never asks (redesign.hsa.unmarried_spouse_plan_not_asked, an unmarried person) or give a Yes with no family month counted (classm.f8889.5, a generated return whose spouse answers contradict each other; recorded open, low). The $9,550 the reply gives an unmarried filer of 55 (stage11.hsa.family_55, stage11.hsa.family_all_year_answer) is on a helper only spouses with separate HSAs read. The other completed value differences are the owner-ruled readings ruled on this line before (amb.2025.hsa_last_month_all_year, amb.2025.hsa_step4_other_limits, amb.2025.hsa_line7_months: classm.s2.2, stage13.hsa_part_year_family, stage13.mut.hsa_married_last_month_self_only), unchanged by this round. This round's reply (the form reviewed whole after the testing-period questions were split): differences by kind 2 candidate-refuses, 61 candidate-unknown, 50 project-unknown, 99 value; on completed returns 16 candidate-unknown, 21 project-unknown, 38 value. Where the project is unknown on a completed return (21 records), an answer was withheld from a partial record, or not stated by a fixture, that the completed return does not read on this line's route (a helper or limit line nothing printed reads there); the reply reads it or computes without it.",
+   "subject_key": "27446b98b1d8495e442c129ec368c697ad18f6eb70f9759a49e91027837cd3c5"
   },
   {
    "key": "f8889.share_raw",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation (+ model error on the allocation check); as the earlier ruling. i8889 p. 7, Line 6, Step 2: divide Step 1 'equally between you and your spouse unless you both agree on a different allocation'. The helper is read only under f8889.split; the reply returns zero when split is false and, as before, leaves the check of an agreed allocation to the household totals, where the project tests it (f8889.allocation_bad). Triage of this reply: 900 of 1,438 agree; on completed returns 10 value differences (every witness shown has split false), 83 project-unknown (the allocation answers where split is false) and 4 candidate-refuses; value differences elsewhere only on incomplete or refused records; no difference on a printed line of completed returns.",
-   "subject_key": "8ab98cdd164f0958ce5d0f6be68827f334ccd18de9707cb2cc044336c9c04445"
+   "ruling": "Ruling: representation (+ scope); project retained, as f8889.step1: Steps 2 and 3 halve Step 1 (i8889 p. 7, Line 6, Steps 2 and 3). triage.py (1,802 fixtures, 500 generated returns seed 20261026, 1,014 partial records): 1,941 of 2,093 agree; the completed value differences are those of f8889.step1, on a helper only spouses with separate HSAs read. This round's reply (the form reviewed whole after the testing-period questions were split): differences by kind 5 candidate-refuses, 33 candidate-unknown, 23 project-unknown, 91 value; on completed returns 5 candidate-unknown, 7 project-unknown, 38 value. Where the project is unknown on a completed return (7 records), an answer was withheld from a partial record, or not stated by a fixture, that the completed return does not read on this line's route (a helper or limit line nothing printed reads there); the reply reads it or computes without it.",
+   "subject_key": "b82258add6f1e5d7d62dd37c2968e96a25330a9a30c1d8139b40e69050f69451"
   },
   {
    "key": "f8889.split",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; Form 8889 (2025), line 6, and i8889 p. 4, Line 3, rules 1 to 3; as the earlier rulings. Triage of this reply: 1,435 of 1,438 agree; the 3 differences are project-unknown on refused records; no completed-return difference.",
-   "subject_key": "82295be17a22a2eb757f7300e9282214d3ce23705afddbd3ccfda0f0b2cb78db"
+   "ruling": "Ruling: representation; project retained. Form 8889 line 6; i8889 p. 7, Line 6, 'Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025'. The line is now a choice on f8889.married_family then household.hsa_both, in the operands' order, so it is unknown while household.married is unanswered where the conjunction was false (the project-unknown records). triage.py (1,802 fixtures, 500 generated returns seed 20261026, 1,014 partial records): 1,983 of 2,093 agree. The reply reads f8889.spouse_family for every filer; the project asks it only of a married person whose own plan covered only them all year and who was an eligible individual in every month (i8889 p. 4, How To Complete Part I, 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage'), and otherwise takes the family months from the month counts. The differing completed cases state an answer the interview never asks (redesign.hsa.unmarried_spouse_plan_not_asked, an unmarried person) or give a Yes with no family month counted (classm.f8889.5, a generated return whose spouse answers contradict each other; recorded open, low). This round's reply (the form reviewed whole after the testing-period questions were split): differences by kind 4 candidate-unknown, 106 project-unknown; on completed returns 9 project-unknown. Where the project is unknown on a completed return (9 records), an answer was withheld from a partial record, or not stated by a fixture, that the completed return does not read on this line's route (a helper or limit line nothing printed reads there); the reply reads it or computes without it.",
+   "subject_key": "c735f737134061350f3eee6571739ed96c888e34d2aac00e8741b7dff41f835e"
   },
   {
    "key": "f8889.excess_amt",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
-   "status": "AGREE",
-   "subject_key": "ab168fa818602e352f49691aed7f92fff91ec199ce1b6abf5420ba2b212c92e4"
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation and ambiguity; project retained. i5329 p. 8, Line 47. The project gives $0 without contributions for 2025 and does not read the limit; the reply figures the excess for every filer and reads the account questions itself, so it refuses or is unknown where the project is $0 (the return is refused on line 13 in those cases). triage.py (1,802 fixtures, 500 generated returns seed 20261026, 1,014 partial records): 1,473 of 2,093 agree. The reply reads f8889.spouse_family for every filer; the project asks it only of a married person whose own plan covered only them all year and who was an eligible individual in every month (i8889 p. 4, How To Complete Part I, 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage'), and otherwise takes the family months from the month counts. The differing completed cases state an answer the interview never asks (redesign.hsa.unmarried_spouse_plan_not_asked, an unmarried person) or give a Yes with no family month counted (classm.f8889.5, a generated return whose spouse answers contradict each other; recorded open, low). The other completed value differences are the owner-ruled readings ruled on this line before (amb.2025.hsa_last_month_all_year, amb.2025.hsa_step4_other_limits, amb.2025.hsa_line7_months: classm.s2.2, stage13.hsa_part_year_family, stage13.mut.hsa_married_last_month_self_only), unchanged by this round. This round's reply (the form reviewed whole after the testing-period questions were split): differences by kind 43 candidate-refuses, 445 candidate-unknown, 63 project-refuses, 20 project-unknown, 49 value; on completed returns 87 candidate-unknown, 29 value.",
+   "subject_key": "59ffdb4282041924d3fcd0290efa5840448ddc8878f562d956ab736f78188cd8"
   },
   {
    "key": "3",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "DISAGREE",
-   "ruling": "Ruling: reading recorded (amb.2025.hsa_last_month_change); project retained (owner ruling, T-033: keep rule 4); as the earlier ruling. The reply applies rule 2 to every last-month-rule filer and rule 4's greater-of only to a filer eligible all twelve months; the project applies rule 4 also to a last-month-rule filer who changed coverage type. Triage of this reply: 1,355 of 1,438 agree; no completed-return difference; the differences are on incomplete records (30 candidate-unknown, 10 project-unknown, 1 value) and refused records (17 candidate-refuses, 13 candidate-unknown, 10 project-unknown, 2 value).",
-   "subject_key": "00ee2b259e53dd59cf9dfce92cddc0a0a7a168a064e0289e36eafa0c7baf5183"
+   "ruling": "Ruling: representation; project retained. i8889 pp. 4-5, Line 3, rules 1 to 6. triage.py (1,802 fixtures, 500 generated returns seed 20261026, 1,014 partial records): 2,032 of 2,093 agree. The reply reads f8889.spouse_family for every filer; the project asks it only of a married person whose own plan covered only them all year and who was an eligible individual in every month (i8889 p. 4, How To Complete Part I, 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage'), and otherwise takes the family months from the month counts. The differing completed cases state an answer the interview never asks (redesign.hsa.unmarried_spouse_plan_not_asked, an unmarried person) or give a Yes with no family month counted (classm.f8889.5, a generated return whose spouse answers contradict each other; recorded open, low). No other completed value differs. This round's reply (the form reviewed whole after the testing-period questions were split): differences by kind 4 candidate-refuses, 9 candidate-unknown, 20 project-unknown, 28 value; on completed returns 2 candidate-unknown, 7 project-unknown, 1 value. Where the project is unknown on a completed return (7 records), an answer was withheld from a partial record, or not stated by a fixture, that the completed return does not read on this line's route (a helper or limit line nothing printed reads there); the reply reads it or computes without it.",
+   "subject_key": "8e0c0ace4ee8209a83e74931b87fb073bb7268f912662e3838583c59a40974f3"
   },
   {
    "key": "4",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "AGREE",
    "subject_key": "322340eec7ae68172b64cf9b0b24227a500d1b03dcd8273fbf0e3d5a57c8bc49"
   },
   {
    "key": "5",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "AGREE",
    "subject_key": "282de64da85743b2992d3b4f4a9498a90f33edebc36a27709501dd87e9361eef"
   },
   {
    "key": "6",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity and scope; as the earlier rulings. i8889 p. 7, Line 6, Steps 1 to 4 (amb.2025.hsa_step4_other_limits, owner reading 1; amb.2025.hsa_last_month_all_year). Triage of this reply: 1,340 of 1,438 agree; on completed returns only the reply's own refusals (2, h_alloc_over, 'Outside candidate scope'); value differences only on incomplete (3) and refused (6) records.",
-   "subject_key": "5d495a677b9fadd6c168c7dccc79da5d0270af63092baca8987db2c2b4c9f965"
+   "ruling": "Ruling: owner ruling (amb.2025.hsa_last_month_all_year, amb.2025.hsa_last_month_change, amb.2025.hsa_step4_other_limits); project retained, as the earlier rulings of this line. i8889 p. 7, Line 6. triage.py (1,802 fixtures, 500 generated returns seed 20261026, 1,014 partial records): 1,910 of 2,093 agree. The reply reads f8889.spouse_family for every filer; the project asks it only of a married person whose own plan covered only them all year and who was an eligible individual in every month (i8889 p. 4, How To Complete Part I, 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage'), and otherwise takes the family months from the month counts. The differing completed cases state an answer the interview never asks (redesign.hsa.unmarried_spouse_plan_not_asked, an unmarried person) or give a Yes with no family month counted (classm.f8889.5, a generated return whose spouse answers contradict each other; recorded open, low). The other completed value differences are the owner-ruled readings ruled on this line before (amb.2025.hsa_last_month_all_year, amb.2025.hsa_step4_other_limits, amb.2025.hsa_line7_months: classm.s2.2, stage13.hsa_part_year_family, stage13.mut.hsa_married_last_month_self_only), unchanged by this round. This round's reply (the form reviewed whole after the testing-period questions were split): differences by kind 4 candidate-refuses, 46 candidate-unknown, 22 project-refuses, 29 project-unknown, 82 value; on completed returns 2 candidate-unknown, 1 project-refuses, 7 project-unknown, 29 value. Where the project is unknown on a completed return (7 records), an answer was withheld from a partial record, or not stated by a fixture, that the completed return does not read on this line's route (a helper or limit line nothing printed reads there); the reply reads it or computes without it. The one project refusal on a completed record is generated return 383 (f8889.allocation_bad, the spouses' allocations disagreeing; i8889 p. 7, Line 6, Steps 1 to 3), where the reply computes $4,275.",
+   "subject_key": "f328531a12d1667c0662df1641ab7362b809be5e4777eb49bed30b6cdfd458dd"
   },
   {
    "key": "7",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; project retained; as the earlier ruling. Line 7 applies only to a married filer, and married filers are refused (f8889.married); for an unmarried filer age 55 or older the $1,000 is in line 3 (rule 6). Triage of this reply: 1,423 of 1,438 agree; no completed-return difference; the 15 differences are project-unknown or value on incomplete (4) and refused (11) records.",
-   "subject_key": "0d9adcdde1197b331bb7df581a2b62c3668ea337756f2c7c9ea60b25717b9a27"
+   "ruling": "Ruling: owner ruling (amb.2025.hsa_line7_months, amb.2025.hsa_last_month_all_year); project retained, as the earlier rulings of this line. i8889 p. 7, Line 7. triage.py (1,802 fixtures, 500 generated returns seed 20261026, 1,014 partial records): 2,053 of 2,093 agree; the one completed value difference is stage13.mut.hsa_married_last_month_self_only ($500 against $0), the last-month reading ruled before. This round's reply (the form reviewed whole after the testing-period questions were split): differences by kind 6 candidate-unknown, 5 project-unknown, 29 value; on completed returns 1 value.",
+   "subject_key": "e13e2baf7f0b2ac0fc05529ca2ee1b5f9a072d21a03a31da045e8c035b3bb03e"
   },
   {
    "key": "8",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "AGREE",
    "subject_key": "19822c7927d9671dc92de43cdc99e9ea3d4aec177c9b924ffbe64eaddfd6e719"
   },
   {
    "key": "10",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "AGREE",
    "subject_key": "93d536f5292660a0779e1b41e4489449181d053c957e40de642393914808f43f"
   },
   {
    "key": "11",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "AGREE",
    "subject_key": "bb571680045b0796c495000b6557580fc3a14f19befcde258b46031d087b92a8"
   },
   {
    "key": "12",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "AGREE",
    "subject_key": "15ad697f3660e51637e0ac2a3adf0b020000c86660d855af8402f1e3ba3e9b25"
   },
   {
    "key": "13",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "DISAGREE",
-   "ruling": "Ruling: equivalent; project retained. i8889 p. 8, line 13: the smaller of line 2 or line 12. The reply returns zero when line 2 is zero and the smaller of lines 12 and 2 otherwise; the project also reads line 9 before returning zero, but line 2 is never negative (NonNegDollars), so the smaller of line 12 and line 2 is zero when line 2 is zero and the two agree wherever both are defined. The project-unknown differences (25, incomplete records) are records with no answer for line 9, which the reply never needs; on completed returns only the reply's own refusals differ (2, h_alloc_over). Triage of this reply: 1,362 of 1,438 agree; 32 project-refuses and 2 value on refused records.",
-   "subject_key": "c790549a2f5bfa1810b0f9648efe7bcb44b3d3f7df2c7b3bcd1396b3fd7663df"
+   "ruling": "Ruling: representation and ambiguity; project retained. i8889 p. 8, Line 13. The project refuses the account questions on line 13 and the money-in questions where the deduction is figured or is zero; the reply reads them all on line 13, so the two differ only in which line carries a refusal and in records with an answer missing. triage.py (1,802 fixtures, 500 generated returns seed 20261026, 1,014 partial records): 1,853 of 2,093 agree. The reply reads f8889.spouse_family for every filer; the project asks it only of a married person whose own plan covered only them all year and who was an eligible individual in every month (i8889 p. 4, How To Complete Part I, 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage'), and otherwise takes the family months from the month counts. The differing completed cases state an answer the interview never asks (redesign.hsa.unmarried_spouse_plan_not_asked, an unmarried person) or give a Yes with no family month counted (classm.f8889.5, a generated return whose spouse answers contradict each other; recorded open, low). The other completed value differences are the owner-ruled readings ruled on this line before (amb.2025.hsa_last_month_all_year, amb.2025.hsa_step4_other_limits, amb.2025.hsa_line7_months: classm.s2.2, stage13.hsa_part_year_family, stage13.mut.hsa_married_last_month_self_only), unchanged by this round. This round's reply (the form reviewed whole after the testing-period questions were split): differences by kind 1 candidate-refuses, 67 project-refuses, 123 project-unknown, 49 value; on completed returns 29 value. The completed value differences on this line are those of lines 3 and 6 carried down (classm.s2.2 and stage13.hsa_part_year_family and partial records of them, the owner-ruled readings; redesign.hsa.unmarried_spouse_plan_not_asked, where the reply reads a spouse's plan stated for an unmarried person and gives $0 against the project's $1,000, i8889 p. 4, Line 3, rule 1 speaking of 'you or your spouse').",
+   "subject_key": "91ef0c43723d9a4f4b436556eb5a1cc40fa316d6287833b033b360b4d9d23b68"
   },
   {
    "key": "14b",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "AGREE",
    "subject_key": "4fcc28164aed0a15799a42940b3ff5d7b72018bf512d442280da979b4ab3f486"
   },
   {
    "key": "14c",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "AGREE",
    "subject_key": "d963a309c6a679744ee237c47698abf2514f52b6c6e7d41a5770641041764426"
   },
   {
    "key": "15",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
-   "status": "AGREE",
-   "subject_key": "9eed4bfc02cef2c757d66b27a3a3d1bae4b940400943dc1b452b2f342eaace31"
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained. Form 8889 line 15; i8889 p. 8. triage.py (1,802 fixtures, 500 generated returns seed 20261026, 1,014 partial records): 2,049 of 2,093 agree. The differences are the reply's refusals and unknowns on incomplete or refused records (its rollover check and its account questions read on this line). This round's reply (the form reviewed whole after the testing-period questions were split): differences by kind 5 candidate-refuses, 39 candidate-unknown; on completed returns none.",
+   "subject_key": "acf2abc97be000e9b8506f423b35304152d079f13f01e020551491042c285b1f"
   },
   {
    "key": "16",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "DISAGREE",
-   "ruling": "Ruling: equivalent; project retained. i8889 p. 8, Line 16: line 14c less line 15, not below zero. The project returns zero without distributions (line 14a zero); with line 14a zero, line 14c is zero (f8889.rollover_bad refuses a line 14b above line 14a), so the reply's subtraction gives the same value. Triage of this reply: 1,437 of 1,438 agree; the one difference is the reply's own refusal on an incomplete record.",
-   "subject_key": "358f6617957bea52334ac2643b92a2012c7d7fc827b4289b6c7b0b411fddfdc0"
+   "ruling": "Ruling: representation; project retained. Form 8889 line 16. triage.py (1,802 fixtures, 500 generated returns seed 20261026, 1,014 partial records): 2,011 of 2,093 agree. The one completed difference is redesign.hsa.dist_code_not_asked: the reply refuses on a Form 1099-SA code stated with no distributions, which the project does not ask without distributions (f1099sa, Instructions for Recipient, Box 1 and Box 3: a code belongs to a distribution). The rest are the reply's unknowns on incomplete records, where it reads the questions the project puts on line 17b. This round's reply (the form reviewed whole after the testing-period questions were split): differences by kind 6 candidate-refuses, 76 candidate-unknown; on completed returns 1 candidate-refuses.",
+   "subject_key": "5d29db9950ec48c3549f74f3ac3a0d0bc8e035886eff86d53530a5d7ad5cb7a6"
   },
   {
    "key": "17b",
-   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "record": "4136f37d83c29ca171fce5d18a7dfcf91f2e2a489651dc750b7b452c0db0b45d",
    "status": "DISAGREE",
-   "ruling": "Ruling: equivalent; project retained. The project enters zero when line 16 is zero; the reply's 20% of the smaller of the part subject to the tax and line 16 is 20% of zero either way (f8889.subject_bad refuses a part above line 16; i8889 p. 9, 'Enter on line 17b only 20% (0.20) of any amount included on line 16 that does not meet any of the exceptions'). The input for the part subject to the tax is the owner's reading amb.2025.hsa_partial_exception (D13), which the reply also uses. Triage of this reply: 1,437 of 1,438 agree; the one difference is the reply's own refusal on an incomplete record.",
-   "subject_key": "1ce4257b010d5573d09c964b6740aa8deeddb31c5bc6e01205a2c126085be3d8"
+   "ruling": "Ruling: representation; project retained, as line 16. triage.py (1,802 fixtures, 500 generated returns seed 20261026, 1,014 partial records): 2,088 of 2,093 agree; the five differences are the reply's refusal on the Form 1099-SA code, one on a completed record (redesign.hsa.dist_code_not_asked). This round's reply (the form reviewed whole after the testing-period questions were split): differences by kind 5 candidate-refuses; on completed returns 1 candidate-refuses.",
+   "subject_key": "86b2c2afe2bba2296a0711402afa2478901c0f5993d594f153083fa9e7c3264f"
   }
  ],
  "subjects": {
   "f8889.one": "7594673a6ab47d68dbf371361fde8839f04584c5bbada1795628258925b53277",
-  "f8889.step1": "7a9db2708b97dd2d2286c01e749aa34bee2eb637e1fa10531566d3316c7b45ce",
-  "f8889.share_raw": "faa800cc3a0d666f6d4c6dc1922fa634ff83e0afd015fcb765ec81ef13f6eeb8",
-  "f8889.split": "213383c40200a43087ed0ff9035b74d7b4afba3db7386aa9bc5302f021018868",
-  "f8889.excess_amt": "14267b95d507b3150a18bb9abd049c43835d7900cd24cb45da8b1a900aa6a6ac",
-  "3": "a29ff56b466b32f6cffe229a1b0aa9cab59573d714385ed54216647f14515b2c",
+  "f8889.step1": "c9d5511225e6bdf786eb13407af19c53669f87516ab8a25e70104f3bc2bcfdc7",
+  "f8889.share_raw": "657ed8ce2d0d4cef9dc29a9036ef93b54dd5995c6eb24b902360de0b916bab2f",
+  "f8889.split": "666bbe457f8d885e3fc1366e4c5b8181b3e8cc7eb160a0808feed174bf657ab2",
+  "f8889.excess_amt": "faf98ab370f551875f0851ec70b42a8851e230d028eb8d0336d194d15005d1aa",
+  "3": "f41ba6721b6beae7aefcce6e00a175d98ad28341c02652558f250a9ff879f5e4",
   "4": "bdbcbd3473d26cfe30b4a43c1a03b3fa7b9a024cd4c5abb8ec952495149764a1",
   "5": "b3e43a8bf075344f2dbbf5309f12bbf9f421f91ed1919dd36ec20bca8658b96e",
-  "6": "63ed0feb94c62d2f8800d671d8708882e3e0aed9250d11c3b32ac1ea27125d3e",
-  "7": "bd67b66906587edf1fab7045db55a3c967e4c05aa7cdf51d0516047d5f5f2861",
+  "6": "c8fb31dcbae9bdbb368eb0cb2d40ebfdbdd516ad7514a1ae47cab546775d650b",
+  "7": "c010b2a6e4bb82eb2e85cd338eaa4a8d0d04c5c503d65dc9c5a5589b9af2d48e",
   "8": "d1f34d3eb338ae44aa92530768d65c84add035375340fd798c2208537ebfd141",
   "10": "4be51c2e6043d549304c4f147f0c648f8061ce8f2c587a7da68274d1de9cbe39",
   "11": "590d6c80986ff4565355039b56a84171e1afc451cb64f6e3f1d4f64d367db4a3",
   "12": "a9fd9e5994291c7a3e39f53ee1f988e632745270f1dae0fd873f0a0a5f813afd",
-  "13": "2ded058f2500dfb577d6a187fb14329445ee06f12b1d0651e7db7b5f15ca36f1",
+  "13": "3a6f9f01d6326a213b4161e01c7753e1540e24f0690293c05fe87dff015515e7",
   "14b": "09824692f9480d3bd433570920e255c070ef9a61716676ac2d2eca942e6530b5",
   "14c": "8f2b121d23624cdce6862484db27b6f9b72fd80ddae5b1b97c5e7d660574b6ec",
-  "15": "bc869fb982d977c8c5177e513d806443cb5f5dc41fbf85e541fa2b9d34c1c0da",
-  "16": "311f82046448873fd1daaab7ffda1df2a8f960562128ca32df8822ff036b5b2a",
-  "17b": "43a94580b15837c82b10cd4ff8056fc0788208f6581fec2341aea6c3b19cbf38"
+  "15": "aa084e67e8195bba0c47f2856103e5a1162d1279f35704a34f83207f27b484e8",
+  "16": "568ae216670f476e935d64f281c342d75d995085f0fe11e1a2fc9cff74c25c1c",
+  "17b": "418cefe719801e23f929f506d8c7891fa65cce4f35328eab8c4fc49cace661f8"
  },
  "__rest__": "53224b9b04f6ed8f50b69796e996e2c9484995e759b1ff8a00da01a8e7831756",
  "foreign": {
   "f8889.one": "9ac49f1c686239336a69e4c7977f9f969daa6457aa35dd98c3620129ed2279f6",
-  "f8889.step1": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "f8889.share_raw": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "f8889.step1": "847de7f3118ca7b27f9eb0b68b28e44da90c489f60c6da3da0d1859be08b1836",
+  "f8889.share_raw": "847de7f3118ca7b27f9eb0b68b28e44da90c489f60c6da3da0d1859be08b1836",
   "f8889.split": "fdd137c55c3a43083a264bfeee571894d579f263106605031d4cec0965a9b3ac",
-  "f8889.excess_amt": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "f8889.excess_amt": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "3": "847de7f3118ca7b27f9eb0b68b28e44da90c489f60c6da3da0d1859be08b1836",
   "4": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "5": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
@@ -172,7 +174,7 @@
   "10": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "11": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "12": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "13": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
+  "13": "c73407d21e94eace079d81184d7caa01f3b21d69862b6f690c96ac44e05b05cb",
   "14b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "14c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "15": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

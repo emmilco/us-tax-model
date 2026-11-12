@@ -1299,6 +1299,16 @@
       "reason": "The enum's first value: no value is ordinary, so a scenario that reads this input states it."
     },
     {
+      "input": "f8889.archer",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8889.clear_all_year",
+      "value": true,
+      "reason": "Yes: a filer whose plan was the same all year was not enrolled in Medicare, had no other health coverage and was nobody's dependent in any month, unless the scenario says otherwise (the answer that leaves the stated coverage as it is)."
+    },
+    {
       "input": "f8889.coverage_year",
       "value": "self_only",
       "reason": "The enum's first value: no value is ordinary, so a scenario that reads this input states it."
@@ -1309,7 +1319,32 @@
       "reason": "The enum's first value: no value is ordinary, so a scenario that reads this input states it."
     },
     {
+      "input": "f8889.dist_code",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "f8889.employer_in_box1",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8889.excess_withdrawn",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8889.fsa",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8889.inherited",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8889.ira_transfer",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -1339,9 +1374,24 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
+      "input": "f8889.loan",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "f8889.medical",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "f8889.medical_all",
+      "value": false,
+      "reason": "No: a scenario states the part of its distributions that paid qualified medical expenses (f8889.medical), which is asked when this answer is no; a scenario whose distributions all paid them may state yes."
+    },
+    {
+      "input": "f8889.mistake_repaid",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "f8889.months_eligible",
@@ -1354,9 +1404,19 @@
       "reason": "Closed: none unless the scenario states a count."
     },
     {
+      "input": "f8889.owner_died",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "f8889.rollover",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "f8889.spouse_family",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "f8889.subject_part",
@@ -1364,7 +1424,12 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "f8889.unsupported",
+      "input": "f8889.ira_prior",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8889.testing_prior",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
