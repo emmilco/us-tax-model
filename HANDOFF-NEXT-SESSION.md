@@ -1,3 +1,56 @@
+# 2026-11-11/12: the interview redesign's first slice is built and on main; the owner's walk is next
+
+**State:** `main` is pushed through `abf7d60a` (the commit after it holds this entry). Nothing is running except the
+interview server the owner walks (`node engine/dist/main.js serve --dir ~/Documents/Tax-Interview --port 8791`, started
+from main at `abf7d60a`). No release has been cut since `r2026.11.06.1`. All agents and paid reviews since the owner's
+switch on 2026-11-10 ran on `claude-fable-5-2`.
+
+**What the session was for.** The owner walked his own return and found the interview unanswerable by a person without
+tax vocabulary (docs/2026-11-11_owner_walkthrough_notes.md). The redesign's intent and every decision are in
+docs/2026-11-11_interview_redesign_intent.md: plain at the top, airtight underneath, nothing a catch-all covers
+dropped, proven on a slice first. The slice's design is docs/2026-11-11_interview_redesign_slice_design.md; what the
+archived credit instructions say against it is docs/2026-11-11_interview_redesign_sources_check.md. T-282 holds the
+steps and the figures.
+
+**Landed (first-parent, oldest first):**
+- `ba972a9c`, `5ecc2fb9`: the instructions of eleven credit documents archived; the sources check.
+- `3359c988`: the words a filer reads (`engine/src/interview-words.ts`, reports/2025/interview_words.md).
+- `8acf6830`: the opening. One first question records roles and the joint status; `person.role` is not asked;
+  per-person questions are reworded for display from closed word lists the build checks
+  (reports/2025/person_wording.md); plain notes accompany three refusals. BUG-0607 to BUG-0609.
+- `0ff57e0e`: the coverage check. Each row of interview/2025/coverage/ is a situation, its answers and the end it must
+  reach, walked with no model (reports/2025/interview_coverage.md; 79 rows now).
+- `e70f95bb`: health savings accounts. `f8889.unsupported` replaced by short refusing questions; the block asked
+  together by the `seq` bank field and direct targets. BUG-0610 to BUG-0618.
+- `abf7d60a`: credits. `scope.credits`, `s3.line12`, `s3.line14` removed; plain parents with the narrow questions
+  beneath; nine questions for a filer with none of the situations. BUG-0619; BUG-0620 open.
+
+**Tried and dropped:** a reader test (a model answering as an invented filer). It passed the interview the owner found
+unanswerable; the owner judged it neither realistic nor meaningful. Its branch `worktree-agent-aba087062001bfbeb` is
+unmerged; its ledger rows and `.transcription/reader/` remain in the main checkout's ignored review data.
+
+**What the owner should know before walking.**
+- The measures are the words read, the coverage check and his walk. Whole-interview words moved little (T-282 has the
+  figures): the slice is three topics of many.
+- Help grew wherever a review finding was answered; health savings accounts most (T-288).
+- Question order is still not by topic, for two causes found late (T-284). In credits a parent is followed by its
+  children except the three rare children of the foreign question.
+- Open residuals a filer could meet are in BUG-0620 and BUG-0613 to BUG-0618.
+
+**How the work went, for whoever runs lanes next.**
+- Every build lane's final review round found wording that gave a wrong value or a wrongly accepted return (five in
+  health savings accounts, three in credits), almost all in help sentences written to answer earlier findings. The
+  rule that worked: the lane stops and reports such a finding before fixing; a unit already edited once is recorded
+  open, not edited again.
+- Two lane agents outgrew the model's context mid-landing. A fresh agent finished each from the worktree and a written
+  handoff; ask a long-running lane for that handoff before its landing, not after.
+- A lane cut from an older tip was replayed onto main by rerunning its own scripts on main's files; its form and
+  fixture files main had not touched came out byte-identical.
+- The server test failed once with a connection reset under load on a tree that changed no code (T-283).
+
+**Next.** The owner walks the slice (T-282 step 4), then decides the rollout (step 5) with T-284 to T-290 in view.
+T-276's remaining families and the umbrella gates U3, U4 and U1 stay on hold until then.
+
 # Night 2026-11-10/11: phase 3 fix lanes landed, display rewording, five tech-debt items
 
 **State:** `main` is pushed through `7e2172ad` (the next commit after it holds this entry's update). No release has
@@ -157,51 +210,3 @@ input ids and 93 ambiguity ids". The spouse rule is recorded in `interview/READM
 
 **Next:** the owner's decisions above; then U3 and U4 umbrellas, then U1 once its false-no review is clean (T-265),
 the interview-rules rewrites he chooses (T-276), and his walk of the return (T-236).
-
-# Night 2026-11-09/10: gate wave finished, phase 1 closed, eight defects fixed
-
-**State:** `main` is pushed through the interview-layout commit below. No release has been cut since `r2026.11.06.1`.
-Review spend this session (Claude only, `.transcription/costs.jsonl`): about $117. No open rulings; every review,
-completeness and screen check current; interview-rules baseline empty (0/0/0).
-
-**Landed (first-parent):**
-- `8ff9b742` eic.zero reviewed (BUG-0468 closed for eic); carry.py judges log currency with `subjects.log_state` (BUG-0469).
-- `20edb6bb` phase 1 remainder merged: human_review docs fast tier; the 22 held tech-debt rows decided (inventory 5.1:
-  1 fixed, 2 partly, 4 proposals, 4 deferred, 11 won't fix); scripts run by hand documented; source catalogs under
-  `tools/sources/<year>.json` and `tools/sources/ny/<year>.json`; charter renamed `docs/consolidation_charter.md`;
-  proposals T-259 to T-263.
-- `bed2d176` gate wave (BUG-0471): 62/11/4 held templates to 8/6/2; reviews of the changed forms ($65); completeness
-  `elsewhere()` no longer reads a param as a line; mutation survivors killed (29 cases) or pinned.
-- `164ca7a2` BUG-0479 (line-scoped catalog lists summed collections) and BUG-0470 (review scope parsed outside
-  parentheses) fixed.
-- `62c47c07` BUG-0474 to BUG-0478 fixed (s179 working-capital interest, Schedule C home expenses, market discount and
-  contingent payment refusal, final-return carryover, Form 5695 installed date); open BUG-0487, 0488, 0489.
-- `b9c5b37d` T-264: the last four held families, operand order, `person.work_ssn`, BUG-0473; baseline 0/0/0; BUG-0466
-  resolved. Owner-accepted fixture changes: refusal or false to unknown on five incomplete-state fixtures. Open
-  BUG-0490, 0491.
-- `96ef8a7b` BUG-0472 fixed (chapter 11 debtor refused at return level); BUG-0495 fixed (siblings.py found entries
-  renumbered at a merge).
-- `436261d6` interview layout: `interview/<year>/` and `interview/ny/<year>/` (files named by profile); BUG-0496 fixed
-  (siblings.py matched a quoted heading).
-
-**Owner decisions (2026-11-09/10):** charter undated; New York catalog moved; the five phase 1 proposals are T-259 to
-T-263; the unknown-on-incomplete trade-off of nested `choose` accepted (BUG-0471, BUG-0492); the five T-264 fixture
-changes accepted; Claude review spend uncapped for the night; push without asking.
-
-**Process lessons (now in the tools or worth keeping):**
-- Renumber BUG ids in a branch commit before merging, not inside the merge commit (BUG-0495, BUG-0496).
-- Rebuild (`npm run compile`, `build`, `render`) on main after every merge before running review checks or triage; a
-  stale `canonical/` or `rendered/` gives false failures and wrong fixture counts.
-- Only one check-all run per clone at a time; a refused start means wait and retry. The detached runner, not the
-  launcher, is the pid to wait on.
-- A merge commit must equal the tested tree: copy the run's regenerated reports into the index before committing.
-
-**Open, for the owner:**
-- BUG-0487 (Form 8962 question order), BUG-0488 (three sales rules), BUG-0489 (Schedule C refusal display), BUG-0490
-  (SIMPLE salary reduction due date), BUG-0491 (New York use tax and DMV-paid vehicle tax): all open, unfixed.
-- T-259 to T-263 (phase 1 proposals). Phase 2 (process rules enforced by tools) is next in the charter.
-- `reports/2025/coverage.md` is 53 MB; GitHub warns above 50 MB. Consider trimming or Git LFS.
-- Two old agent worktrees remain (`agent-a64a29b0e8ab56370`, `agent-ada089006890714fc`): merged and clean, holding only
-  older derived review files (log views, triage) that differ from main's; safe to remove.
-
-- The 51 tracked-but-ignored `.transcription/` and `.classm/` files are untracked (they stay on disk; check-all copies those folders in).
