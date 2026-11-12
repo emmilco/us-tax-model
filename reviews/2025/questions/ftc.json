@@ -50,6 +50,64 @@
     }
    ]
   },
+  "ftc.carryover": {
+   "subject_sha": "c81ec30ea6f9db0fa2887cc361a8e37d82fcab4b945c691d68a5f252cb4912f1",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer has excess foreign tax from 2026 that is carried back one year to 2025 (for example on an amended 2025 return), and has no credit left over from any earlier year.",
+       "source_text": "i1116 p. 19, Line 10: \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\" and \"You can carry back 1 year and then forward 10 years any foreign tax you paid or accrued\"",
+       "why": "The question and help speak only of a credit \"left over from an earlier year\" that is \"carried to later years\", so a filer with only a carryback from a later year truthfully answers No, though the line needs Yes for unused taxes from any other tax year.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer who has never filed Form 1116 is carrying back 2026 excess foreign tax to 2025, or files jointly with a spouse whose earlier Form 1116 shows unused foreign tax.",
+       "source_text": "i1116 p. 19, Line 10: \"You don't need to file Schedule B (Form 1116) for 2025 if you carry back a foreign tax to 2025, and don't otherwise need to file Schedule B (Form 1116).\"",
+       "why": "The help says \"if you have never filed Form 1116, the answer is No\", which pushes these filers to No: the carryback amount comes from a later return, not an earlier Form 1116, and the help's \"you\" does not repeat the spouse.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer has unused foreign tax on an earlier Form 1116 that cannot be carried to 2025, because it is more than 10 years old, is in the section 951A category, or runs to or from a year in which the credit was claimed without Form 1116.",
+       "source_text": "Question: \"want to use a foreign tax credit left over from an earlier year?\"; i1116 p. 19: \"eligible to be carried forward to or back to 2025\", \"The carryback-carryforward period can't be extended\", \"No foreign tax carryovers are allowed for foreign taxes paid or accrued on section 951A category income\", \"You can't carry over unused foreign taxes paid or accrued in a year to which the election doesn't apply to or from any year for which you made the election\"",
+       "why": "The question and help put no eligibility limit on \"left over from an earlier year\", so such a filer truthfully answers Yes although no eligible carryover to 2025 exists.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "0beff4483c4bd453732e0db6e15fd9b5819bd372e84845a5b15b2a5bdb2f8d74",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.112536,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/ftc.carryover.c81ec30ea6f9.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1116",
+     "revision": "2025; printed date 2025-12-23",
+     "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
+    }
+   ]
+  },
   "ftc.elect": {
    "subject_sha": "36f135c73156592d707c4ed58e42417bec1c68e232a324ae49f53666db8b3552",
    "samples": [

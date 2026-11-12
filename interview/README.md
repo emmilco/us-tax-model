@@ -14,7 +14,7 @@ A profile file lists its targets, its initial answers and the inputs it asks; th
 
 | Profile | File | Targets | Scope reported by the CLI |
 |---|---|---|---|
-| default (`social-security`) | `2025/social-security.yaml` | Form 1040 line 31 | Social Security credit and supplied Schedule 3 Part II subtotals; not a complete return |
+| default (`social-security`) | `2025/social-security.yaml` | Form 1040 line 31 | Social Security credit, with the other Schedule 3 Part II amounts refused where they apply; not a complete return |
 | `sales` | `2025/sales.yaml` | Form 1040 lines 7a and 16 | securities sales, Schedule D and tax-method selection; AGI and taxable income computed; not a complete return |
 | `stage4` | `2025/stage4.yaml` | `scope.ready`, lines 7a and 16, the Schedule A deduction, Form 4952 line 8, the QBI deduction, Schedule 2 line 21, Form 8959 line 24, Schedule 3 line 1 | form slices with eligibility and valuation screens; not a complete return |
 | `full` | `2025/full.yaml` | `scope.ready`, Form 1040 lines 24, 33, 34 and 37, `f2441.line1_box`, `f2441.line1_paid`, `f2441.statement_notice`, `f2441.household_notice`, `f5695.line32b`, `ira.basis_total`, and Form 8889's three results (`s1.line13`, `s1.line8f`, `s2.line17c`) | the whole return: Form 1040 lines 1a–37 end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them); no filing or transmission |

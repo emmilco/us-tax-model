@@ -330,12 +330,23 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7
       = $300.01
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
+  (helper) The carryover question is asked: foreign tax, territory income or a foreign corporation at some time, or a 2024 return with a form besides Form 1040 and its schedules
+      = false
+      cite: [i1116] p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025" (2025; printed date 2025-12-23; 6998cf8c)
+      note: taken: {"eq":["s3.foreign_any",{"const":false}],"op":"test"}
+  (gate) Whether a foreign tax credit carried from another year is claimed, asked only of a filer who has paid income tax to a foreign country or a U.S. territory, had territory income or owned part of a foreign corporation, or whose 2024 return includes a form besides Form 1040 and its schedules (false otherwise)
+      = false
+      cite: [i1116] p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025" (2025; printed date 2025-12-23; 6998cf8c)
+      note: taken: {"eq":["ftc.carryover_ask",{"const":false}],"op":"test"}
   (helper) Year parameter ftc.limit
       = $300
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Positive foreign taxes
       = true
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
+  (helper) Year parameter ftc.no (false)
+      = false
+      cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory" (2025; printed date 2025-12-23; 6998cf8c)
   (helper) Fails a condition of the election
       = true
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
@@ -1034,6 +1045,125 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   1   Foreign tax credit
       = REFUSED: Form 1116. The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately. (trigger: ftc.needs1116; i1116, pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax)
       cite: [f1040s3] Schedule 3 (2025), Part I line 1 (2025; created 2025-11-17; 008cfd3f)
+  (helper) Year parameter s3.no (false)
+      = false
+      cite: [i1040gi] p. 116, Lines 6a Through 6z, "Leave line 6z blank" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) In 2024 or 2025, did you (or, on a joint return, your spouse) adopt a child, or pay expenses in connection with adopting a child or trying to adopt one?
+      = false
+      cite: [i8839] p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements are true"; p. 3, Domestic Adoption, "any year before the year the adoption becomes final" (2025; 90dd5f4d)
+  (gate) Whether an adoption became final in 2025 or adoption expenses were paid in 2025, asked only with an adoption or adoption expenses in 2024 or 2025 (false without one)
+      = false
+      cite: [i8839] p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements are true"; i1040gi p. 116, Lines 6a Through 6z, "You may be able to take the adoption credit if you paid expenses to adopt a child or you adopted a child with special needs and the adoption became final in 2025" (2025; 90dd5f4d)
+      note: taken: {"eq":["s3.adoption_any",{"const":false}],"op":"test"}
+  (gate) Whether expenses were paid in 2024 for an adoption not final at the end of 2024, asked only with an adoption or adoption expenses in 2024 or 2025 (false without one)
+      = false
+      cite: [i8839] p. 1, Purpose of Form, "2024 and the adoption wasn’t final at the end of 2024"; p. 3, Domestic Adoption, "any year before the year the adoption becomes final" (2025; 90dd5f4d)
+      note: taken: {"eq":["s3.adoption_any",{"const":false}],"op":"test"}
+  (gate) Whether the child of an adoption paid toward in 2024 and not final at the end of 2024 was a U.S. child, asked only with such payments (false without them)
+      = false
+      cite: [i8839] p. 3, Domestic Adoption, "If the eligible child is a U.S. citizen or resident, you can take the adoption credit or exclusion even if the adoption never became final" and "A child is a foreign child if they weren’t a citizen or resident of the United States (including U.S. territories) at the time the adoption effort began" (2025; 90dd5f4d)
+      note: taken: {"eq":["s3.adoption_earlier_if_any",{"const":false}],"op":"test"}
+  (helper) For 2025, were you (or, on a joint return, your spouse) allowed a credit as the holder of a tax credit bond (a clean renewable energy bond, new clean renewable energy bond, qualified energy conservation bond, qualified zone academy bond, qualified school construction bond or build America bond), held by you or a nominee or through a fund or other pass-through entity, whether or not reported on Form 1097-BTC?
+      = false
+      cite: [i8912] p. 1, Purpose of Form, "Use Form 8912 to claim the credit for the following tax credit bonds"; p. 2, Line 1, "This amount is the total bond credits reported to you on Form(s) 1097-BTC"; p. 3, Part IV, "Complete and attach a Part IV for each bond you held or bond credits received from a pass-through entity that weren’t reported to you on Form(s) 1097-BTC" (December 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025); 8d4a48b7)
+  (helper) Number of people on the return born before January 2, 1961
+      = 0
+      cite: [i1040sr] p. 1, Qualified Individual, "You were age 65 or older at the end of 2025" and "You were under age 65 (discussed later) at the end of 2025" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 7194fa66)
+      note: confirmed roster $person: taxpayer
+  (helper) Number of people on the return born after January 1, 1961
+      = 1
+      cite: [i1040sr] p. 1, Qualified Individual, "You were age 65 or older at the end of 2025" and "You were under age 65 (discussed later) at the end of 2025" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 7194fa66)
+      note: confirmed roster $person: taxpayer
+  (helper) Someone on the return is 65 or older
+      = false
+      cite: [i1040sr] p. 1, Qualified Individual, "You were age 65 or older at the end of 2025" and "You were under age 65 (discussed later) at the end of 2025" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 7194fa66)
+  (helper) Someone on the return is under 65
+      = true
+      cite: [i1040sr] p. 1, Qualified Individual, "You were age 65 or older at the end of 2025" and "You were under age 65 (discussed later) at the end of 2025" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 7194fa66)
+  (helper) Did you (or, on a joint return, your spouse), if under age 65 at the end of 2025, retire on permanent and total disability?
+      = false
+      cite: [i1040sr] p. 1, Qualified Individual, "You retired on permanent and total disability" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 7194fa66)
+  (gate) Whether a person under 65 on the return retired on permanent and total disability, asked only when someone on the return was born after January 1, 1961 (false when everyone is 65 or older and qualifies by age)
+      = false
+      cite: [i1040sr] p. 1, Qualified Individual, "You retired on permanent and total disability" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 7194fa66)
+      note: taken: {"eq":["s3.any_under65",{"const":true}],"op":"test"}
+  (helper) Someone on the return is 65 or older, or a person under 65 retired on permanent and total disability (the credit for the elderly or the disabled is asked about)
+      = false
+      cite: [i1040sr] p. 1, Qualified Individual, "You were age 65 or older at the end of 2025" and "You retired on permanent and total disability" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 7194fa66)
+      note: taken: {"eq":["s3.any_senior",{"const":false}],"op":"test"}
+  (gate) Whether the credit for the elderly or the disabled is wanted, asked only when someone on the return is 65 or older or retired on permanent and total disability (false otherwise)
+      = false
+      cite: [i1040sr] p. 1, Qualified Individual, "You are a qualified individual for this credit if you are a U.S. citizen or resident alien"; p. 3, Income Limits, "If your AGI or your nontaxable pensions, annuities, or disability income are equal to or more than the income limits, you can’t take the credit" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 7194fa66)
+      note: taken: {"eq":["s3.elderly_ask",{"const":false}],"op":"test"}
+  (helper) In 2025, did you (or, on a joint return, your spouse) take possession of an electric, plug-in hybrid or fuel cell vehicle (a clean vehicle placed in service in 2025), or place in service at your home property to recharge an electric vehicle or to store or dispense an alternative fuel into a vehicle?
+      = false
+      cite: [i8936] p. 1, Purpose of Form, "to figure the following credits for clean vehicles you placed in service during your tax year"; p. 2, New Clean Vehicle Certification and Other Requirements, "You placed the vehicle in service during the tax year"; p. 7, Line 3, "The date the vehicle was placed in service is the date the taxpayer takes possession of the vehicle"; i8911 p. 1, Purpose of Form, "to figure your credit for alternative fuel vehicle refueling property you placed in service during your tax year"; i8911 p. 2, Qualified Alternative Fuel Vehicle Refueling Property, "To recharge an electric vehicle, but only if the recharging property is located at the point where the vehicle is recharged" (2025; 49aa7277)
+  (gate) Whether a dealer took the clean vehicle credit off the price, asked only with a clean vehicle or home refueling property in 2025 (false without one)
+      = false
+      cite: [i8936] p. 1, Purpose of Form, "You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer"; p. 1, Reminders, "you may be able to transfer the credit amount to the dealer at the time of sale and receive an immediate financial benefit in place of a tax credit claimed on your tax return" (2025; 49aa7277)
+      note: taken: {"eq":["s3.ev",{"const":false}],"op":"test"}
+  (gate) Whether a vehicle received in 2025 was bought, and acquired before October 1, 2025, asked only with a clean vehicle or home refueling property in 2025 (false without one)
+      = false
+      cite: [i8936] p. 1, What’s New, "Taxpayers cannot claim clean vehicle credits for new, previously owned, or commercial clean vehicles that they acquired after September 30, 2025" and "a vehicle is “acquired” as of the date a written binding contract is entered into and a payment has been made"; p. 2, New Clean Vehicle Certification and Other Requirements, "If the vehicle is leased, only the lessor and not the lessee is entitled to the credit" (2025; 49aa7277)
+      note: taken: {"eq":["s3.ev",{"const":false}],"op":"test"}
+  (gate) Whether a clean vehicle credit is wanted on this return, asked only for a vehicle bought and acquired before October 1, 2025 (false otherwise)
+      = false
+      cite: [i8936] p. 1, Purpose of Form, "to figure the following credits for clean vehicles you placed in service during your tax year" (2025; 49aa7277)
+      note: taken: {"eq":["s3.ev_bought_if_ev",{"const":false}],"op":"test"}
+  (gate) Whether the refueling property credit is wanted on this return, asked only with a clean vehicle or home refueling property in 2025 (false without one)
+      = false
+      cite: [i8911] p. 1, Amount of Credit, "For property of a character not subject to depreciation and which is placed in service at your main home (personal use property), the credit is 30% of the cost of the property" (December 2025 (for tax years beginning in 2025 or later); a85de224)
+      note: taken: {"eq":["s3.ev",{"const":false}],"op":"test"}
+  (helper) In 2025, did you (or, on a joint return, your spouse) sell or exchange farmland?
+      = false
+      cite: [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Whether the election to defer the tax on a sale of qualified farmland was made, asked only with a sale of farmland in 2025 (false without one)
+      = false
+      cite: [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s3.farmland",{"const":false}],"op":"test"}
+  (helper) Have you (or, on a joint return, your spouse) ever paid income tax to a foreign country or a U.S. territory, had income from sources in a U.S. territory, or owned 10% or more of a foreign corporation?
+      = false
+      cite: [i1040gi] p. 115, Line 1, "If you paid income tax to a foreign country or U.S. territory, you may be able to take this credit"; p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"; p. 117, Line 13d, "If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Whether part of a net 965 tax liability paid in installments remains to be paid, asked only with foreign tax, territory income or a foreign corporation (false without)
+      = false
+      cite: [i1040gi] p. 117, Line 13d, "If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s3.foreign_any",{"const":false}],"op":"test"}
+  (gate) Whether a credit under section 960(c) is claimed, asked only with foreign tax, territory income or a foreign corporation (false without)
+      = false
+      cite: [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s3.foreign_any",{"const":false}],"op":"test"}
+  (gate) Whether part of the tax is allocable to the U.S. Virgin Islands, asked only with foreign tax, territory income or a foreign corporation (false without)
+      = false
+      cite: [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s3.foreign_any",{"const":false}],"op":"test"}
+  (helper) In 2025, was kerosene used in your home for heating, lighting or cooking?
+      = false
+      cite: [i4136] p. 2, Part I—Information About Your Business, "used in your home during the tax period for heating, lighting, or cooking" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); d3d63fc3)
+  (gate) Whether the fuel tax credit for kerosene used at home is wanted, asked only with kerosene used at home (false without it)
+      = false
+      cite: [i4136] p. 2, Part I—Information About Your Business, "If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); d3d63fc3)
+      note: taken: {"eq":["s3.kerosene",{"const":false}],"op":"test"}
+  (helper) Home mortgage interest is entered on Schedule A line 8a
+      = false
+      cite: [f8396] p. 2, Line 1, "Enter the interest you paid during the year on the loan amount (certified indebtedness amount) shown on your MCC" (2025; created 2025-08-28; 5c035af7)
+  (gate) Whether a mortgage credit certificate was issued for the home loan, asked only when home mortgage interest is entered (false with none: the credit is a share of the interest paid)
+      = false
+      cite: [f8396] p. 2, Who Can Claim the Credit, "You can claim the credit only if you were issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency under a qualified mortgage credit certificate program" (2025; created 2025-08-28; 5c035af7)
+      note: taken: {"eq":["s3.has_mortgage_interest",{"const":false}],"op":"test"}
+  (helper) Does your (or, on a joint return, your spouse's) 2024 federal income tax return include any form other than Form 1040 or 1040-SR and its schedules?
+      = false
+      cite: [i8801] p. 1, Who Should File, "A credit carryforward to 2025 (on 2024 Form 8801, line 26)"; f8859 p. 1, Purpose of Form, "to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024" (2025; cf99d034)
+  (gate) Whether the 2024 return shows an alternative minimum tax liability, asked only when the 2024 return includes a form besides Form 1040 and its schedules (false otherwise: the liability is figured on Form 6251)
+      = false
+      cite: [i8801] p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"; f8801 p. 2, Part II, "Enter the amount from your 2024 Form 6251, line 11" (2025; cf99d034)
+      note: taken: {"eq":["s3.prior_other_forms",{"const":false}],"op":"test"}
+  (gate) Whether the 2024 return includes a form that can carry a credit into 2025, asked only when the 2024 return includes a form besides Form 1040 and its schedules (false otherwise)
+      = false
+      cite: [i3800] p. 3, Carryback and Carryforward of Unused Credit, "unused general business credits may be carried back 1 year and carried forward 20 years"; f8396 p. 2, Part II—Mortgage Interest Credit Carryforward to 2026, "you may have an unused credit to carry forward to the next 3 tax years"; i8801 p. 1, Who Should File, "A credit carryforward to 2025 (on 2024 Form 8801, line 26)"; f8834 p. 2, Line 1, "Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR"; i8839 p. 1, Purpose of Form, "You have a carryforward of an adoption credit from 2024"; f8859 p. 1, Purpose of Form, "to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024"; i8912 p. 3, Line 12, "you may carry the unused portion of the credit to the next tax year" (2025; 97e4570d)
+      note: taken: {"eq":["s3.prior_other_forms",{"const":false}],"op":"test"}
+  (helper) In 2025, did you (or, on a joint return, your spouse) repay more than $3,000 in total that you had included in income in an earlier year because it appeared you had an unrestricted right to it?
+      = false
+      cite: [p525] p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right" and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income" (2025; 39b0fa5e)
   (gate) Married filing separately
       = false
       cite: [i1040gi] p. 14, Married Filing Separately (2025; printed date 2026-02-25; 482e9c48)
@@ -1348,21 +1478,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       Schedule 1-A deductions are asked separately.
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 43, Clergy, "The following instructions apply to ministers, members of religious orders who have not taken a vow of poverty, and Christian Science practitioners."; i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes." (2025; created 2025-09-05; 3d31c226)
-  (helper) Do you want to claim any credit other than the following, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
-
-      - the foreign tax credit claimed without Form 1116
-      - the excess social security credit
-      - the child tax credit
-      - the credit for other dependents
-      - the additional child tax credit
-      - the earned income credit
-      - the credit for child and dependent care expenses (Form 2441)
-      - the retirement savings contributions credit (Form 8880)
-      - the residential energy credits (Form 5695)
-      - the net premium tax credit this tool figures on Form 8962 from your Forms 1095-A (Schedule 3 line 9)
-      - the education credits this tool figures on Form 8863 (the American opportunity and lifetime learning credits)
-      = false
-      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any nonresident alien status, or other income or return treatment outside the kinds listed below?
 
       Kinds this question is not about:
@@ -1556,6 +1671,45 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["ssb.has_benefits",{"const":false}],"op":"test"}
 
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
+  s3.adoption_if_any: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.adoption_earlier_if_any: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.adoption_us_if_earlier: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.disability_if_under65: chose false (guard 0)
+  s3.elderly_ask: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.elderly_credit_if_asked: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.ev_dealer_if_ev: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.ev_bought_if_ev: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.ev_credit_if_bought: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.ev_equipment_if_ev: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.farmland_deferral_if_sold: chose false (guard 1)
+      not taken: guard 0 = false
+  ftc.carryover_ask: chose false (guard 1)
+      not taken: guard 0 = false
+  ftc.carryover_if_asked: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.section960c_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.section965_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.virgin_islands_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.kerosene_credit_if_kerosene: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.prior_amt_if_forms: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.prior_forms_if_forms: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.mcc_if_interest: chose false (guard 1)
+      not taken: guard 0 = false
   sd.line6: chose $0 (guard 1)
       not taken: guard 0 = false
   sd.distributions_if_dividends: chose $0 (guard 1)
@@ -1695,7 +1849,35 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
 
 Derivations:
   s3.mfs: test(f1040.status = single; "mfs" = mfs)
-  scope.ready: test(scope.schedule1 = false; scope.credits = false; scope.other_income = false; scope.other_line16 = false; s3.mfs = false; true = true; true = true)
+  s3.no: param(#s3.no = false)
+  s3.adoption_if_any: choose(s3.adoption_any = false; true = true; s3.adoption_any = false; false = false; s3.no = false)
+  s3.adoption_earlier_if_any: choose(s3.adoption_any = false; true = true; s3.adoption_any = false; false = false; s3.no = false)
+  s3.adoption_us_if_earlier: choose(s3.adoption_earlier_if_any = false; true = true; s3.adoption_earlier_if_any = false; false = false; s3.no = false)
+  s3.seniors: sum_over(person[taxpayer].age65 = false; true = true)
+  s3.any_senior: test(s3.seniors = 0; 0 = 0)
+  person[taxpayer].one: param(#person.one = 1)
+  s3.under65s: sum_over(person[taxpayer].age65 = false; false = false; person[taxpayer].one = 1)
+  s3.any_under65: test(s3.under65s = 1; 0 = 0)
+  s3.disability_if_under65: choose(s3.any_under65 = true; true = true; s3.disability_retired = false)
+  s3.elderly_ask: choose(s3.any_senior = false; true = true; s3.any_senior = false; false = false; s3.disability_if_under65 = false)
+  s3.elderly_credit_if_asked: choose(s3.elderly_ask = false; true = true; s3.elderly_ask = false; false = false; s3.no = false)
+  s3.ev_dealer_if_ev: choose(s3.ev = false; true = true; s3.ev = false; false = false; s3.no = false)
+  s3.ev_bought_if_ev: choose(s3.ev = false; true = true; s3.ev = false; false = false; s3.no = false)
+  s3.ev_credit_if_bought: choose(s3.ev_bought_if_ev = false; true = true; s3.ev_bought_if_ev = false; false = false; s3.no = false)
+  s3.ev_equipment_if_ev: choose(s3.ev = false; true = true; s3.ev = false; false = false; s3.no = false)
+  s3.farmland_deferral_if_sold: choose(s3.farmland = false; true = true; s3.farmland = false; false = false; s3.no = false)
+  ftc.carryover_ask: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.prior_other_forms = false)
+  ftc.no: param(#ftc.no = false)
+  ftc.carryover_if_asked: choose(ftc.carryover_ask = false; true = true; ftc.carryover_ask = false; false = false; ftc.no = false)
+  s3.section960c_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
+  s3.section965_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
+  s3.virgin_islands_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
+  s3.kerosene_credit_if_kerosene: choose(s3.kerosene = false; true = true; s3.kerosene = false; false = false; s3.no = false)
+  s3.prior_amt_if_forms: choose(s3.prior_other_forms = false; true = true; s3.prior_other_forms = false; false = false; s3.no = false)
+  s3.prior_forms_if_forms: choose(s3.prior_other_forms = false; true = true; s3.prior_other_forms = false; false = false; s3.no = false)
+  s3.has_mortgage_interest: test(sa.line8a = $0; 0 = $0)
+  s3.mcc_if_interest: choose(s3.has_mortgage_interest = false; true = true; s3.has_mortgage_interest = false; false = false; s3.no = false)
+  scope.ready: test(scope.schedule1 = false; scope.other_income = false; scope.other_line16 = false; s3.mfs = false; s3.adoption_if_any = false; s3.adoption_us_if_earlier = false; s3.credit_bond = false; s3.elderly_credit_if_asked = false; s3.ev_dealer_if_ev = false; s3.ev_credit_if_bought = false; s3.ev_equipment_if_ev = false; s3.farmland_deferral_if_sold = false; ftc.carryover_if_asked = false; s3.section960c_if_foreign = false; s3.section965_if_foreign = false; s3.virgin_islands_if_foreign = false; s3.kerosene_credit_if_kerosene = false; s3.prior_amt_if_forms = false; s3.prior_forms_if_forms = false; s3.repaid_income = false; s3.mcc_if_interest = false; true = true; true = true)
   sd.count: sum_over(sd.other_forms = false)
   sd.screen: test(sd.count = 0; 0 = 0)
   sd.line1a.h: sum_over(sd.screen = false)
@@ -1747,7 +1929,6 @@ Derivations:
   f1040.line7a: copy(sd.to1040 = $0)
   household.under16_count: sum_over(person[taxpayer].under16 = false; true = true)
   household.filer_under16: test(household.under16_count = 0; 0 = 0)
-  person[taxpayer].one: param(#person.one = 1)
   household.taxpayers: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].one = 1)
   household.spouses: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
   household.roster_ok: test(household.filer_under16 = false; f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)

@@ -1,0 +1,1145 @@
+{
+ "form": "s3",
+ "reviews": {
+  "gate:s3.adoption_any": {
+   "subject_sha": "60691b61093d85377eb4ae2d576f8b61b378d046774f2af839eeb3c838632c7b",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose adoption was final before 2024 (say 2022 or 2023) and who paid a remaining agency or lawyer bill, re-adoption cost or other adoption expense in 2025. Applies to a U.S. child or a foreign child.",
+       "why_no": "They read 'Since the start of 2024, did you adopt a child' as no because the adoption was in 2023, and 'pay costs toward adopting one' as costs of an adoption still ahead, not late bills for a finished one. The help speaks only of adoptions that 'did not go through', not ones already final.",
+       "line": "s3.adoption_if_any",
+       "irs_text": "i8839 p. 3, Domestic Adoption: 'any year after the year the adoption becomes final ... the year of the payment'; p. 1: '2025 and the adoption became final in or before 2025'; p. 1 item 3b: '2025 and the adoption became final before 2025'",
+       "severity": "medium",
+       "fix": "Ask 'Since the start of 2024, did you (or your spouse) adopt a child, have an adoption become final, or pay any cost of an adoption, including an adoption finished in an earlier year?' Add to the help: 'Yes also for bills paid now for an adoption that was final before 2024.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who thinks of the adoption as an earlier event, with the legal finality falling in 2025 and no costs paid since 2023. One case is a foster child with special needs placed in 2022 or 2023 whose decree came in 2025 at no cost. Another is a foreign child with a foreign decree or placement in 2023 whose adoption is treated as final in 2025 under the Rev. Procs. (entry to the U.S. or re-adoption).",
+       "why_no": "'Did you adopt a child since the start of 2024' is read as when the child came home or when the foreign decree was issued. They paid nothing in 2024 or 2025, so 'pay costs' is also no.",
+       "line": "s3.adoption_if_any",
+       "irs_text": "i8839 p. 1: 'You adopted an eligible U.S. child with special needs and the adoption became final in 2025. (In this case, you may be able to take the credit even if you didn’t pay any qualified adoption expenses.)'; p. 1 item 3a: '2025 or prior years and the adoption became final in 2025'; p. 3: 'To find out when a foreign adoption is treated as final, see Rev. Proc. 2005-31'",
+       "severity": "medium",
+       "fix": "Ask about the checkable event: 'did an adoption become final (court decree, or for a foreign child, the decree, entry to the U.S. or re-adoption) in 2024 or 2025, even if the child was placed with you earlier and you paid nothing?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "An employee whose employer paid the agency or lawyer directly, or reimbursed the costs, under an adoption assistance program in 2025, for an adoption that is not final or failed. The filer neither adopted nor bore any cost personally.",
+       "why_no": "'Did you ... pay costs' is read as no because the employer paid. No child was adopted, so the first limb is also no.",
+       "line": "s3.adoption_if_any",
+       "irs_text": "i8839 p. 1: 'You received employer-provided adoption benefits in 2025'; p. 3: 'IF your employer pays for qualifying expenses under an adoption assistance program in... any year ... the year of the payment'; p. 1: 'you must complete Form 8839, Part III, before you can figure the credit'",
+       "severity": "medium",
+       "fix": "Add 'or did an employer pay or reimburse adoption costs for you (Form W-2 box 12 code T)' to the gate and to the gated 2025 question. Alternatively, drive Form 8839 Part III from the W-2 code T amount independently of this gate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who adopted, or paid costs to adopt, a person aged 18 or over who is physically or mentally unable to care for themselves.",
+       "why_no": "'Adopt a child' is read as a minor, and the person adopted is an adult.",
+       "line": "s3.adoption_if_any (also s3.adoption_earlier_if_any)",
+       "irs_text": "The supplied pages use 'eligible child' (i8839 p. 1) without defining it. The definition, which from memory of i8839 p. 2 (not supplied here) includes a disabled person of any age unable to care for themselves, should be checked against that page.",
+       "severity": "low",
+       "fix": "Add to the help: 'A child here includes a person of any age who is physically or mentally unable to care for themselves.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who in 2024 paid only for a home study, application fees or meals and lodging while trying to adopt, with no child ever identified and the effort abandoned.",
+       "why_no": "The help list 'agency, lawyer and court fees and travel' is read as complete, and with no particular child they do not see the costs as 'toward adopting one'.",
+       "line": "s3.adoption_earlier_if_any",
+       "irs_text": "i8839 p. 3: 'In the case of a U.S. child, an adoption credit may be allowable for an attempted or unsuccessful adoption, as well as for an adoption that isn’t final.'",
+       "severity": "low",
+       "fix": "Change the help to: 'Costs include, for example, home study, agency, lawyer and court fees, travel, meals and lodging, also when you were only trying to adopt and no child had been matched or the adoption did not go through.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose adoption and payments were all before 2024 and who has an unused adoption credit carried forward from 2024.",
+       "why_no": "A truthful no: nothing was adopted or paid since the start of 2024.",
+       "line": "Neither gated line changes value (both are correctly false), but Schedule 3 line 6c is still non-zero. The carryforward must be asked outside this gate.",
+       "irs_text": "i8839 p. 1: '4. You have a carryforward of an adoption credit from 2024. Any amount of the carryforward credit from 2024 remains a nonrefundable credit.'",
+       "severity": "low",
+       "fix": "Confirm that a separate, ungated question asks for an adoption credit carryforward from 2024 (2024 Form 8839 Credit Carryforward Worksheet). If there is none, add 'or do you have unused adoption credit carried over from 2024' to this gate."
+      }
+     ],
+     "prompt_sha": "98765d034d940ffdb22bc9595edfff9e52e44b3626f6326b4ad1001eb42989c5",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-fable-5-2",
+     "cost": 0.25956,
+     "date": "2026-11-12",
+     "response": ".transcription/false_no/gate_s3.adoption_any.60691b61093d.1.response.txt"
+    }
+   ],
+   "condition": "s3.adoption_any",
+   "lines": [
+    "s3.adoption_earlier_if_any",
+    "s3.adoption_if_any"
+   ],
+   "inputs": [
+    "s3.adoption_earlier",
+    "s3.adoption"
+   ],
+   "used": [
+    {
+     "doc": "i8839",
+     "revision": "2025",
+     "text_sha256": "aba1b0860ba08ea9e0953f31580e22421bdb92427957682acc3d79b98cb43626",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Purpose of Form, \"2024 and the adoption wasn’t final at the end of 2024\"; p. 3, Domestic Adoption, \"any year before the year the adoption becomes final\"",
+      "p. 1, Purpose of Form, \"You may be able to take this credit in 2025 if any of the following statements are true\"; , Lines 6a Through 6z, \"You may be able to take the adoption credit if you paid expenses to adopt a child or you adopted a child with special needs and the adoption became final in 2025\"",
+      "p. 1, Purpose of Form, \"You may be able to take this credit in 2025 if any of the following statements are true\"; p. 3, Domestic Adoption, \"any year before the year the adoption becomes final\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "ba3ee91ddad989767d0c8aa84b7b53b7a4a1161c0d0731cbb8eb275febf19d8b"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      116
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:s3.adoption_earlier_if_any": {
+   "subject_sha": "5e2498abcc922c4cef0e9a884a9f91f522c0e7cf052b515aeebd2f79f49dbace",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer (or spouse) who paid agency, legal or birth-mother expenses in 2024 for a U.S. adoption that fell through in 2024 (for example, the birth mother changed her mind or the placement was disrupted), with no adoption pending at the end of 2024.",
+       "why_no": "The clause 'where the adoption was not final at the end of 2024' presupposes an adoption still in progress. This filer reads it as 'was your adoption still pending?' and answers no because the attempt was over, not 'not final'. The gate's help does not say a failed or abandoned attempt counts.",
+       "line": "s3.adoption_us_if_earlier",
+       "irs_text": "i8839 (2025) p. 3, Domestic Adoption footnote: 'In the case of a U.S. child, an adoption credit may be allowable for an attempted or unsuccessful adoption, as well as for an adoption that isn't final.' Also p. 3: 'you can take the adoption credit or exclusion even if the adoption never became final.'",
+       "severity": "medium",
+       "fix": "Ask about the fact: 'In 2024, did you (or your spouse) pay any expenses toward adopting or trying to adopt a child, other than for an adoption that became final in 2024? Answer Yes even if the attempt failed, was abandoned, or is still in progress.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who paid home-study, agency application or attorney fees in 2024 for a domestic adoption but had not been matched with a child by the end of 2024.",
+       "why_no": "With no child and no court proceeding, they see no 'adoption' that could be 'not final'. The only help saying that an adoption in the United States with no child placed yet counts sits on the gated question, which they never reach.",
+       "line": "s3.adoption_us_if_earlier",
+       "irs_text": "i8839 (2025) p. 3, Domestic Adoption: 'IF you pay qualifying expenses in... any year before the year the adoption becomes final* THEN take the credit in... the year after the year of the payment'; p. 3, Line 1: 'If you can't give complete information about an eligible child you tried to adopt in 2024 because the adoption was either unsuccessful or wasn't final by the end of 2025, complete the entries that you can.'",
+       "severity": "medium",
+       "fix": "Move the 'no child placed or identified yet' help up to the gate: 'Answer Yes if you paid expenses in 2024 and no adoption had been completed by December 31, 2024, including when no child had been matched or placed yet.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who paid expenses in 2024 for a U.S. child whose adoption became final in 2025.",
+       "why_no": "When answering, the adoption is final. They read 'not final' as describing its present status, or assume the 2024 payments belong with the now-completed adoption, and answer no.",
+       "line": "s3.adoption_us_if_earlier",
+       "irs_text": "i8839 (2025) p. 1, Purpose of Form: 'You paid qualified adoption expenses in connection with the adoption of an eligible U.S. child ... in: a. 2024 and the adoption wasn't final at the end of 2024.'",
+       "severity": "medium",
+       "fix": "Add help: 'Answer Yes if the adoption became final in 2025 or later, is still pending, or never became final. Answer No only if every adoption you paid toward in 2024 was final by December 31, 2024.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer with two adoption efforts: one final in 2024, and a second child or a separate attempt that was paid toward in 2024 and was not final or failed.",
+       "why_no": "The singular 'the adoption' leads them to answer for the main, completed adoption, which was final at the end of 2024, so they answer no.",
+       "line": "s3.adoption_us_if_earlier",
+       "irs_text": "i8839 (2025) p. 1, What's New: 'The amount of the refundable credit portion is determined separately for each eligible child'; p. 3, Line 1: 'Complete all columns that apply to the eligible child you adopted or tried to adopt.'",
+       "severity": "low",
+       "fix": "Say 'any adoption or adoption attempt' and add 'Answer for each child or attempt separately; Yes if any one was not final at the end of 2024.'"
+      }
+     ],
+     "prompt_sha": "8313ae1caa28b07df43459bcca23d02689138c941dbca149998036745d3807c4",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-fable-5-2",
+     "cost": 0.19703199999999998,
+     "date": "2026-11-12",
+     "response": ".transcription/false_no/gate_s3.adoption_earlier_if_any.5e2498abcc92.1.response.txt"
+    }
+   ],
+   "condition": "s3.adoption_earlier_if_any",
+   "lines": [
+    "s3.adoption_us_if_earlier"
+   ],
+   "inputs": [
+    "s3.adoption_us"
+   ],
+   "used": [
+    {
+     "doc": "i8839",
+     "revision": "2025",
+     "text_sha256": "aba1b0860ba08ea9e0953f31580e22421bdb92427957682acc3d79b98cb43626",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Purpose of Form, \"2024 and the adoption wasn’t final at the end of 2024\"; p. 3, Domestic Adoption, \"any year before the year the adoption becomes final\"",
+      "p. 3, Domestic Adoption, \"If the eligible child is a U.S. citizen or resident, you can take the adoption credit or exclusion even if the adoption never became final\" and \"A child is a foreign child if they weren’t a citizen or resident of the United States (including U.S. territories) at the time the adoption effort began\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "ba3ee91ddad989767d0c8aa84b7b53b7a4a1161c0d0731cbb8eb275febf19d8b"
+    }
+   ]
+  },
+  "gate:s3.elderly_ask": {
+   "subject_sha": "531550f50b106b404ca13940618febbfd137b3d4bbc9d511dbe9cc10b31d953c",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer or spouse under 65 who stopped working because of a disability and receives taxable disability pay from a former employer's plan, but never formally retired and does not call themselves retired.",
+       "why_no": "The disability helper asks whether the person 'retired on permanent and total disability'. Someone who quit, was let go, or is on long-term disability leave reads 'retired' as a formal retirement or pension and answers no.",
+       "line": "s3.elderly_credit_if_asked",
+       "irs_text": "i1040sr p. 1: 'You were under age 65 (discussed later) at the end of 2025 and all three of the following statements are true. a. You retired on permanent and total disability. (See Permanent and Total Disability, later).' The definition it points to is on page 2, which is not in the supplied text.",
+       "severity": "medium",
+       "fix": "Ask a fact the filer can check: 'Did you or your spouse stop working because of a physical or mental condition, and receive disability pay from a former employer in 2025?' Classify 'retired on permanent and total disability' after a yes, using the page 2 definition."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer or spouse under 65 whose disabling condition has lasted, or is expected to last, at least a year but might improve, or who has a VA certification rather than a physician's statement.",
+       "why_no": "'Permanent and total' is read literally as a condition that will never improve and leaves no capacity at all. The filer answers no because a doctor said recovery is possible or because nobody has used that phrase about them.",
+       "line": "s3.elderly_credit_if_asked",
+       "irs_text": "i1040sr p. 3: 'Your physician should show on the statement if the disability has lasted or can be expected to last continuously for at least a year, or if there is no reasonable probability that the disabled condition will ever improve'; and 'If the Department of Veterans Affairs (VA) certifies that you are permanently and totally disabled, you can use VA Form 21-0172 instead of the physician's statement.'",
+       "severity": "medium",
+       "fix": "Put the test in the question or its help: 'unable to work because of a physical or mental condition that has lasted, or is expected to last, at least 12 months continuously (or is not expected to improve); a VA certification counts'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A return for a taxpayer born before January 2, 1961 who died in 2025 before the day before their 65th birthday (for example born June 1960, died March 2025), and who had retired on disability with taxable disability income.",
+       "why_no": "The disability helper is asked only when someone was born after January 1, 1961. If the age helper applies the death rule, it is false for this decedent and the disability question is never asked, so the gate is false with no question shown. If the age helper uses birth date alone, the gate is true and this hole does not arise; the supplied material does not show which.",
+       "line": "s3.elderly_credit_if_asked",
+       "irs_text": "i1040sr p. 1: 'if the taxpayer died on February 12, 2025, the taxpayer isn't considered age 65 at the time of death or at the end of 2025.' Such a taxpayer can still qualify under item 2: 'You were under age 65 ... You retired on permanent and total disability.'",
+       "severity": "medium",
+       "fix": "Ask the disability helper whenever anyone on the return is not treated as 65 or older under the same age test the first helper uses, including the decedent rule, instead of using a fixed birth-date cutoff."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint return where both spouses are under 65 and only the spouse who is not answering the questions retired on disability.",
+       "why_no": "The wording of the disability helper's question is not shown. If it says 'you' without 'or your spouse', the answering filer says no for themselves.",
+       "line": "s3.elderly_credit_if_asked",
+       "irs_text": "i1040sr p. 3: 'If only one of you is under age 65, your initial amount can't be more than $5,000 plus the taxable disability income of the spouse who is under age 65. If both you and your spouse are under age 65, the initial amount for you and your spouse can't be more than your combined taxable disability income.'",
+       "severity": "low",
+       "fix": "Word the disability question as 'Did you (or, on a joint return, your spouse) ...', matching the gated question."
+      }
+     ],
+     "prompt_sha": "0f17fe343db987cd631db10bda47d869fcf0af4ae3fe55d2fc6221150dfe38dc",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-fable-5-2",
+     "cost": 0.18812800000000002,
+     "date": "2026-11-12",
+     "response": ".transcription/false_no/gate_s3.elderly_ask.531550f50b10.1.response.txt"
+    }
+   ],
+   "condition": "s3.elderly_ask",
+   "lines": [
+    "s3.elderly_credit_if_asked"
+   ],
+   "inputs": [
+    "s3.elderly_credit"
+   ],
+   "used": [
+    {
+     "doc": "i1040sr",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "8e01e7e4db0054efbeac87d4246ad14425e599b9e93a4d73ba6eda964726880c",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Qualified Individual, \"You are a qualified individual for this credit if you are a U.S. citizen or resident alien\"; p. 3, Income Limits, \"If your AGI or your nontaxable pensions, annuities, or disability income are equal to or more than the income limits, you can’t take the credit\"",
+      "p. 1, Qualified Individual, \"You were age 65 or older at the end of 2025\" and \"You retired on permanent and total disability\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "9b45d1c5b76440d18a3d1118b274368669e683ced562a0d8b208e92b856a84db"
+    }
+   ]
+  },
+  "gate:s3.ev": {
+   "subject_sha": "55a5cf048a760f6e0381c91c068bcc6832b65fda0acacf13e9f7c75cb023c2b8",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer (or spouse) who had a home charger mounted and wired in late 2024, but it only became operational in 2025 after the utility hookup, panel upgrade, permit sign-off or activation.",
+       "why_no": "The gate asks whether they 'install[ed] home equipment' 'in 2025'. The installation was in 2024 and no vehicle arrived in 2025, so no is truthful.",
+       "line": "s3.ev_equipment_if_ev",
+       "irs_text": "i8911 p. 4, Line 5: 'property is placed in service when it is ready and available for a specific use ... an EV charger installed at an individual taxpayer's principal residence will be placed in service when it is operational'; i8911 p. 2: 'You placed the refueling property in service during your tax year.'",
+       "severity": "high",
+       "fix": "Ask about the placed-in-service fact: '...or did home equipment to charge or fuel a vehicle first become ready to use in 2025 (even if it was bought or installed earlier)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer who in 2025 bought a newly built main home with a builder-fitted charger, or whose landlord, employer, utility programme or contractor put the equipment in. Also a filer who bought a portable Level 2 charger and simply plugs it into an existing outlet at home.",
+       "why_no": "'Did you ... install home equipment' reads as the filer doing or commissioning an installation. They bought a house, or plugged in a cord, and 'installed' nothing.",
+       "line": "s3.ev_equipment_if_ev",
+       "irs_text": "i8911 p. 2: 'To recharge an electric vehicle, but only if the recharging property is located at the point where the vehicle is recharged' and 'The original use of the property began with you'; i8911 p. 1: 'placed in service at your main home (personal use property), the credit is 30% of the cost of the property, limited to $1,000'",
+       "severity": "medium",
+       "fix": "Replace 'install' with a broader event: 'did you start using new charging or fueling equipment at your home (installed by you or anyone else, including equipment that came with a newly built home or a plug-in charger you bought)?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A sole proprietor, landlord or farmer (or spouse) who in 2025 put a charger or an alternative-fuel tank or dispenser (propane, CNG, E85, hydrogen) at a shop, office, farm or rental property, and got no clean vehicle that year.",
+       "why_no": "The gate says 'home equipment'. Equipment at a business or rental location is not home equipment, so no is truthful.",
+       "line": "s3.ev_equipment_if_ev",
+       "irs_text": "i8911 p. 1, Amount of Credit: 'For property of a character subject to depreciation (business/investment use property), the credit is 6% (30% if PWA requirements are met) of the property's cost, limited to $100,000'; i8911 p. 1: 'The part of the credit attributable to business/investment use is treated as a general business credit.'",
+       "severity": "medium",
+       "fix": "Drop 'home' from the gate: '...or put into use equipment to charge or fuel a vehicle, at your home or at a business or rental property?' Then classify main-home versus business use after a yes, and refuse the Form 8911 credit the tool cannot figure. The gated line itself is written for main-home property only, so this is a missed refusal rather than a wrong value on that line."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A sole proprietor or single-member LLC owner (or spouse) whose business took delivery in 2025 of an electric van, truck or car, bought by September 30, 2025, possibly with the credit transferred to the dealer. The vehicle may be titled to the LLC or to the filer's revocable trust.",
+       "why_no": "'Did you (or ... your spouse) get' a vehicle reads as a personal car. The filer thinks 'my company bought it, not me', and the help ('new or used, bought or leased') says nothing about business vehicles.",
+       "line": "s3.ev_bought_if_ev (and s3.ev_dealer_if_ev)",
+       "irs_text": "i8936 p. 1, Purpose of Form: 'New clean vehicle credit. • Previously owned clean vehicle credit. • Qualified commercial clean vehicle credit.' and 'The part of the credit attributable to business/investment use of a new clean vehicle is treated as a general business credit'; p. 1 Caution: 'You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer.'",
+       "severity": "medium",
+       "fix": "Add to the help: 'Count a vehicle for personal or business use, including one titled to your own business (a sole proprietorship or an LLC you own alone) or to your living trust.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer (or spouse) who took delivery of an EV in 2025 with the credit transferred to the dealer, then sold it, traded it in, returned it or had it totalled before year end, and has no such vehicle when filing.",
+       "why_no": "They read 'did you get a vehicle' as about a car they still have. The assurance 'Yes also if you have since sold the vehicle' appears only on the gated question they never reach, not on the gate.",
+       "line": "s3.ev_dealer_if_ev (and s3.ev_bought_if_ev)",
+       "irs_text": "i8936 p. 2, Repayment of credit: 'If you purchased a new clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer and you no longer qualify for the credit when you file your tax return, you must repay the amount of the credit that you transferred to the dealer'; p. 7, Line 4: 'you must report this amount on Schedule 2 (Form 1040), line 1b.'",
+       "severity": "low",
+       "fix": "Move the sentence into the gate's help: 'Answer Yes even if you no longer have the vehicle (sold, traded, returned or wrecked), and whenever a dealer took a clean vehicle tax credit off your price in 2025.'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner or S corporation shareholder (or spouse) whose Schedule K-1 passes through a clean vehicle credit or a refueling property credit (box 15 or 13, code AO for Form 8911). They personally got no vehicle and installed nothing.",
+       "why_no": "They truthfully did not 'get' a vehicle or 'install home equipment'; the entity did.",
+       "line": "s3.ev_equipment_if_ev (refusal for a Form 8911 credit the tool cannot figure); none of the gated lines for the vehicle credit",
+       "irs_text": "i8911 p. 3, Line 2: 'Enter total alternative fuel vehicle refueling property credits from: • Schedule K-1 (Form 1065) ... box 15 (code AO); and • Schedule K-1 (Form 1120-S) ... box 13 (code AO)'; i8936 p. 1: 'they can report this credit directly on line 1y in Part III of Form 3800'",
+       "severity": "low",
+       "fix": "Confirm the K-1 or general business credit path asks for pass-through clean vehicle and refueling credits independently of this gate, or add 'or receive a Schedule K-1 showing a clean vehicle or refueling property credit' and route it to Form 3800 or a refusal."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A fiscal-year individual filer whose tax year beginning in 2025 runs into 2026, and who took possession of a vehicle (contract and payment by September 30, 2025) or placed a home charger in service in the 2026 months of that year.",
+       "why_no": "The gate says 'In 2025', and the event was in calendar 2026 though inside the tax year.",
+       "line": "s3.ev_bought_if_ev; s3.ev_equipment_if_ev",
+       "irs_text": "i8936 p. 1: 'clean vehicles you placed in service during your tax year'; i8911 p. 1: 'refueling property you placed in service during your tax year' and 'You can't claim the credit for alternative fuel vehicle refueling property placed in service after June 30, 2026.'",
+       "severity": "low",
+       "fix": "Say 'during your 2025 tax year' in the gate, or refuse fiscal-year filers before this point."
+      }
+     ],
+     "prompt_sha": "051521c329d0329149a5460efdfa17f17867ca77ec120c5d2bb3e4ee1c33320a",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-fable-5-2",
+     "cost": 0.404208,
+     "date": "2026-11-12",
+     "response": ".transcription/false_no/gate_s3.ev.55a5cf048a76.1.response.txt"
+    }
+   ],
+   "condition": "s3.ev",
+   "lines": [
+    "s3.ev_bought_if_ev",
+    "s3.ev_dealer_if_ev",
+    "s3.ev_equipment_if_ev"
+   ],
+   "inputs": [
+    "s3.ev_bought",
+    "s3.ev_dealer",
+    "s3.ev_equipment"
+   ],
+   "used": [
+    {
+     "doc": "i8936",
+     "revision": "2025",
+     "text_sha256": "c29fb417b3f05e5067c6261e0eecf14e6dc2bb5d099b0179395b9e12bf9f0b0d",
+     "pages": [
+      1,
+      2,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Purpose of Form, \"You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer\"; p. 1, Reminders, \"you may be able to transfer the credit amount to the dealer at the time of sale and receive an immediate financial benefit in place of a tax credit claimed on your tax return\"",
+      "p. 1, Purpose of Form, \"to figure the following credits for clean vehicles you placed in service during your tax year\"; p. 2, New Clean Vehicle Certification and Other Requirements, \"You placed the vehicle in service during the tax year\"; p. 7, Line 3, \"The date the vehicle was placed in service is the date the taxpayer takes possession of the vehicle\"; , Purpose of Form, \"to figure your credit for alternative fuel vehicle refueling property you placed in service during your tax year\"; , Qualified Alternative Fuel Vehicle Refueling Property, \"To recharge an electric vehicle, but only if the recharging property is located at the point where the vehicle is recharged\"",
+      "p. 1, What’s New, \"Taxpayers cannot claim clean vehicle credits for new, previously owned, or commercial clean vehicles that they acquired after September 30, 2025\" and \"a vehicle is “acquired” as of the date a written binding contract is entered into and a payment has been made\"; p. 2, New Clean Vehicle Certification and Other Requirements, \"If the vehicle is leased, only the lessor and not the lessee is entitled to the credit\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      7
+     ],
+     "cols_sha256": "754e3102c5109789dd39499aed7275f3323010ad0736619519d4d96b98c18930"
+    },
+    {
+     "doc": "i8911",
+     "revision": "December 2025 (for tax years beginning in 2025 or later)",
+     "text_sha256": "9258095d5fbe83d1a67ef6ed338f5d0a706823c1b84475f53160171b49e02c29",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Amount of Credit, \"For property of a character not subject to depreciation and which is placed in service at your main home (personal use property), the credit is 30% of the cost of the property\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "cols_sha256": "6afc575ca0eeb12440668d8f8df07b23ab9250cf7b9058fc4e9a52294581aea6"
+    }
+   ]
+  },
+  "gate:s3.ev_bought_if_ev": {
+   "subject_sha": "f65c7a14bd4a1958ef4eae2e97f720288f5b98585a83b3f9b6e34b0840630c6c",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer (or spouse) who signed a binding purchase contract and paid a deposit or traded in a vehicle before October 1, 2025, but took delivery of the clean vehicle between October and December 2025. This includes a buyer who transferred the credit to the dealer at delivery.",
+       "why_no": "They read 'acquire it before October 1, 2025' in its everyday sense of getting the car. The legal definition sits in a parenthetical that can be read as an extra requirement rather than as the meaning of 'acquire', so a car received in November looks like a no.",
+       "line": "s3.ev_credit_if_bought",
+       "irs_text": "i8936 (2025) p. 1, What's New: \"a vehicle is “acquired” as of the date a written binding contract is entered into and a payment has been made. A payment includes a nominal down payment or a vehicle trade-in.\"",
+       "severity": "medium",
+       "fix": "Split the question into checkable facts: (a) Did you buy rather than lease the vehicle? (b) On what date did you sign the purchase contract and make any payment, deposit or trade-in? Compute 'acquired' from that date, and state in the help that the delivery date does not matter for this test."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner or S corporation shareholder whose entity bought and placed in service a clean vehicle in 2025 and passed the credit through on a Schedule K-1. Neither the filer nor the spouse personally took possession of any vehicle.",
+       "why_no": "The parent question asks whether 'you (or your spouse) take possession of' a vehicle. The entity did, so the truthful answer is no, and the credit question is never reached.",
+       "line": "s3.ev_credit_if_bought",
+       "irs_text": "i8936 (2025) p. 1, New Clean Vehicle Credit: \"All other taxpayers are not required to complete or file this form if their only source for this credit is a partnership or S corporation. Instead, they can report this credit directly on line 1y in Part III of Form 3800, General Business Credit.\"",
+       "severity": "medium",
+       "fix": "Add to the parent, or ask as a separate gate: 'or did a partnership or S corporation report a clean vehicle credit to you on a Schedule K-1?' Route a yes to the Form 3800 path or to a refusal, unless the K-1 questions elsewhere already capture it."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer who bought and owns a clean vehicle before October 1, 2025, but did not physically receive it. Examples are a car delivered to and driven by a child or other family member, or a sole proprietor who bought the vehicle to lease to others or had it delivered to an employee.",
+       "why_no": "Both questions turn on 'take possession of' or 'took possession of'. An owner who never had the car in hand answers no, though the instructions test ownership and placing in service, and expressly allow acquiring a vehicle to lease to others.",
+       "line": "s3.ev_credit_if_bought",
+       "irs_text": "i8936 (2025) p. 2, New Clean Vehicle Certification and Other Requirements: \"You are the owner of the vehicle... You placed the vehicle in service during the tax year... You acquired the vehicle for use or to lease to others, and not for resale.\"",
+       "severity": "medium",
+       "fix": "Ask 'Did you (or your spouse) buy, or become the owner of, an electric, plug-in hybrid or fuel cell vehicle that was first put to use in 2025, whether you or someone else drives it?' and drop the reliance on 'take possession'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A buyer who answers the gate yes but transferred the credit to the dealer at the time of sale and got the price reduction. This is a wrong no at the gated question itself, not at the gate, noted because it is silent in the same way.",
+       "why_no": "The question asks 'Do you want to claim a tax credit for that vehicle on this return?' and the help says 'answer No to go on without it'. They already received the benefit at the dealership and want nothing further, so they answer no. Form 8936 is still mandatory, and repayment may be due if the income limit is exceeded.",
+       "line": "s3.ev_credit_if_bought",
+       "irs_text": "i8936 (2025) p. 1, Purpose of Form, Caution: \"You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer.\" Also p. 2, Repayment of credit: \"you must repay the amount of the credit that you transferred to the dealer.\"",
+       "severity": "medium",
+       "fix": "Ask 'Did you transfer the credit to the dealer for a lower price or down payment at the time of sale, or do you want to claim the credit on this return?' Treat either yes as requiring Form 8936, and so as a refusal. Remove 'answer No to go on without it' for transfer cases."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who claimed or transferred a clean vehicle credit for a vehicle placed in service in 2024, where the vehicle stopped qualifying in 2025, for example because it was returned or resold. They have no 2025 vehicle or refueling property.",
+       "why_no": "The parent asks only about a vehicle taken into possession 'in 2025', so the truthful answer is no. Nothing in this gate reaches a recapture of the earlier credit.",
+       "line": "s3.ev_credit_if_bought",
+       "irs_text": "i8936 (2025) p. 2, Recapture of credit: \"If the vehicle no longer qualifies for the credit, you may have to recapture part or all of the credit. See Regulations section 1.30D-4.\"",
+       "severity": "low",
+       "fix": "Add a separate question outside this gate: 'Did you claim or transfer a clean vehicle credit in an earlier year for a vehicle you returned, resold or stopped using as required in 2025?' Route a yes to a refusal."
+      }
+     ],
+     "prompt_sha": "a24f938425a8035f5c8ea58a475c59ffd8deecae3eefd3e33b7c738a2c14f672",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-fable-5-2",
+     "cost": 0.271296,
+     "date": "2026-11-12",
+     "response": ".transcription/false_no/gate_s3.ev_bought_if_ev.f65c7a14bd4a.1.response.txt"
+    }
+   ],
+   "condition": "s3.ev_bought_if_ev",
+   "lines": [
+    "s3.ev_credit_if_bought"
+   ],
+   "inputs": [
+    "s3.ev_credit"
+   ],
+   "used": [
+    {
+     "doc": "i8936",
+     "revision": "2025",
+     "text_sha256": "c29fb417b3f05e5067c6261e0eecf14e6dc2bb5d099b0179395b9e12bf9f0b0d",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Purpose of Form, \"to figure the following credits for clean vehicles you placed in service during your tax year\"",
+      "p. 1, What’s New, \"Taxpayers cannot claim clean vehicle credits for new, previously owned, or commercial clean vehicles that they acquired after September 30, 2025\" and \"a vehicle is “acquired” as of the date a written binding contract is entered into and a payment has been made\"; p. 2, New Clean Vehicle Certification and Other Requirements, \"If the vehicle is leased, only the lessor and not the lessee is entitled to the credit\""
+     ],
+     "cols_pages": [
+      1,
+      2
+     ],
+     "cols_sha256": "754e3102c5109789dd39499aed7275f3323010ad0736619519d4d96b98c18930"
+    }
+   ]
+  },
+  "gate:s3.farmland": {
+   "subject_sha": "c1ac486f8ea13b02e61bf164f7b1041747120b57b5f7db79850180b87f891a76",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A partner, LLC member or S corporation shareholder whose entity sold farm real estate in 2025. The gain reaches the filer on a Schedule K-1, and the filer (not the entity) made the Form 1062 election on their own return.",
+       "why_no": "\"Did you (or your spouse) sell farmland?\" The filer sold nothing; the partnership or S corporation did, so no is truthful. The same reading applies to land held through a family LLC or a trust.",
+       "line": "s3.farmland_deferral_if_sold",
+       "irs_text": "i1040gi (2025) p. 117, Line 13z: \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property, use Form 1062 to figure the amount of your applicable net tax liability. On line 13z, enter 75% of your applicable net tax liability from Form 1062, line 14.\" The text conditions on the election and the gain, not on who held title. That the election is made at the owner level is from recall of section 1062, not from the page supplied.",
+       "severity": "high",
+       "fix": "Ask: \"Did you (or your spouse) have gain from a sale or exchange of farm or ranch land, whether you sold it yourself or through a partnership, S corporation, LLC or trust that reported the gain to you (for example on a Schedule K-1)?\" Or gate directly on the checkable fact: \"Did you (or your spouse) file or intend to file Form 1062?\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A fiscal-year filer using the 2025 Form 1040 for a tax year that began in 2025 and ends in 2026 (for example August 2025 through July 2026). They sold the farmland in the 2026 part of that year and made the Form 1062 election.",
+       "why_no": "\"In 2025, did you ... sell farmland?\" The sale closed in calendar 2026, so no is truthful, although the sale falls in the tax year this return covers.",
+       "line": "s3.farmland_deferral_if_sold",
+       "irs_text": "i1040gi (2025) p. 117, Line 13z: \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property ... On line 13z, enter 75% of your applicable net tax liability from Form 1062, line 14. Identify as \"1062NL.\"\" The text sets no calendar-year condition.",
+       "severity": "high",
+       "fix": "Replace \"In 2025\" with \"During the tax year this return covers (2025, or your fiscal year beginning in 2025)\". Better, drop the date from the gate and let Form 1062 decide whether the sale is eligible."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer whose farm real estate was disposed of in 2025 other than by an ordinary sale or trade: taken by condemnation or under threat of it, foreclosed or deeded back to the lender, or sold only in part (an undivided interest or part of the acreage). They elected on Form 1062 for the gain.",
+       "why_no": "\"Sell\" and \"traded it for other property\" read as voluntary deals. A filer whose land was taken or foreclosed says \"I didn't sell it, the state took it\" or \"the bank took it\", though tax law treats these as a sale or exchange.",
+       "line": "s3.farmland_deferral_if_sold",
+       "irs_text": "i1040gi (2025) p. 117, Line 13z: \"the gain on the sale or exchange of qualified farmland property\". The page does not define \"sale or exchange\"; whether each of these dispositions qualifies is for Form 1062.",
+       "severity": "medium",
+       "fix": "Help: \"Yes also if you traded it, if it was condemned or taken by a government, if it was foreclosed on or given back to a lender, or if you sold only part of it or a share in it.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A rancher, orchard, vineyard, nursery or timber owner who sold their land, or a retired owner or heir who sold land they had only rented out to a farmer. Either made the Form 1062 election.",
+       "why_no": "\"Farmland\" reads as cropland the filer personally farmed. They think of what they sold as a ranch, pasture, grove, timber tract or rental property, or as \"the farm\" with house and buildings rather than \"farmland\". The gate asks them to classify the property before any checkable fact.",
+       "line": "s3.farmland_deferral_if_sold",
+       "irs_text": "i1040gi (2025) p. 117, Line 13z: \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property, use Form 1062\". \"Qualified farmland property\" is defined on Form 1062, not on this page; from recall it covers land used as a farm or leased to a farmer.",
+       "severity": "medium",
+       "fix": "Ask broadly: \"Did you (or your spouse) sell or otherwise dispose of land used for farming or ranching (crops, pasture, livestock, orchards, vineyards, nurseries and the like), including land you rented to someone who farmed it?\" Then classify on Form 1062."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who sold farmland in 2025 and answers the gate yes, whose preparer or co-owner spouse filed Form 1062 for them, or who knows it only as \"the four-year farmland tax deferral\".",
+       "why_no": "This is in the gated question, not the gate. \"Choose to pay the tax ... in installments\" is confused with an installment sale (Form 6252), and the help \"If you have not heard of it, the answer is No\" steers an unsure filer to no.",
+       "line": "s3.farmland_deferral_if_sold",
+       "irs_text": "i1040gi (2025) p. 117, Line 13z: \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property, use Form 1062 to figure the amount of your applicable net tax liability.\"",
+       "severity": "low",
+       "fix": "Reword: \"Did you (or your spouse, or a preparer for you) file Form 1062 to spread the tax on that gain over four years? This is different from an installment sale, where the buyer pays you over time.\" Replace \"If you have not heard of it, the answer is No\" with \"If unsure, check your records or ask your preparer for Form 1062.\""
+      }
+     ],
+     "prompt_sha": "1d6be360853dbac2481eceb42877a0f10dceaff6bf9ef4d4e2b97659e6a11e6b",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-fable-5-2",
+     "cost": 0.190936,
+     "date": "2026-11-12",
+     "response": ".transcription/false_no/gate_s3.farmland.c1ac486f8ea1.1.response.txt"
+    }
+   ],
+   "condition": "s3.farmland",
+   "lines": [
+    "s3.farmland_deferral_if_sold"
+   ],
+   "inputs": [
+    "s3.farmland_deferral"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      117
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\""
+     ],
+     "cols_pages": [
+      117
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:s3.foreign_any": {
+   "subject_sha": "9b220dfc1b79068dce34a30c5203115edd339c3f7376d0e3d8818f4fb8b508ff",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer (or spouse) who held a small stake, say 3%, in an S corporation or domestic partnership that itself owned 10% or more of a foreign corporation in 2017. They had a section 965 inclusion through the K-1 and elected installments, commonly after a section 965(i) S corporation deferral ended on a later triggering event, so installments are still running in 2025.",
+       "why_no": "Even counting shares held through the entity, as the help says, their proportionate share of the foreign company is far below 10%. They paid no foreign income tax and had no territory income, so 'owned 10% or more of a foreign company' is a truthful no.",
+       "line": "s3.section965_if_foreign",
+       "irs_text": "i1040gi p. 117, Line 13d: \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d. Enter the amount of net 965 tax liability remaining to be paid in future years.\"",
+       "severity": "high",
+       "fix": "Do not gate the 965 question on 10% personal ownership. Ask everyone, or add to the gate: 'or have you ever reported section 965 income (2017 or 2018 foreign earnings), including through a K-1 from an S corporation, partnership, estate or trust, or agreed to take over someone else's section 965 installments?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "An heir or other transferee who signed a section 965 transfer agreement and took over a deceased or transferring shareholder's remaining installments. The shares were sold by the estate or never passed to them, and no family attribution applied while they were held.",
+       "why_no": "They never owned any of the foreign company's shares, paid no foreign tax and had no territory income. The gate asks about ownership, not about assuming a liability.",
+       "line": "s3.section965_if_foreign",
+       "irs_text": "i1040gi p. 117, Line 13d: \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d.\"",
+       "severity": "medium",
+       "fix": "Add to the gate or the help: 'Yes also if you are paying, or took over, section 965 tax installments, even if you never owned the shares.' Better, ask the 965 question outside this gate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A beneficiary of a domestic trust or estate that owned 10% or more of a foreign corporation. The section 965 inclusion was distributed to them on a K-1 and they elected installments.",
+       "why_no": "A beneficiary does not think of themselves as owning shares in the trust's foreign company. The help says to count shares 'held through a trust', but the beneficiary reads that as shares they own, and their share may be under 10% anyway.",
+       "line": "s3.section965_if_foreign",
+       "irs_text": "i1040gi p. 117, Line 13d: \"Enter the amount of net 965 tax liability remaining to be paid in future years.\"",
+       "severity": "medium",
+       "fix": "Add to the help: 'Yes if a trust or estate you benefit from, or a business you have any share in, owned 10% or more of a foreign company.' Then classify after the broad yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A U.S. resident (or spouse) who worked for some weeks in St. Thomas or St. Croix for a mainland employer and got an ordinary W-2. The same applies to a filer with a K-1 share of a business operating in the U.S. Virgin Islands, or rent from a property there received through a mainland manager.",
+       "why_no": "They read 'income from a U.S. territory' as income paid by a payer located there. Their pay came from a mainland employer or entity, the Virgin Islands are not named, and they paid no tax to 'another country'.",
+       "line": "s3.virgin_islands_if_foreign",
+       "irs_text": "i1040gi p. 117, Line 13z: \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands. Enter “Form 8689” and the amount paid.\"",
+       "severity": "medium",
+       "fix": "Name the facts in the gate: 'worked in, did business in, owned rental property in, or received income (including through a K-1) connected with Puerto Rico, the U.S. Virgin Islands, Guam, American Samoa or the Northern Mariana Islands, whoever paid you.' Or ask the Virgin Islands question directly of everyone."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer with U.S. Virgin Islands income, such as dividends from a company there or a short-term rental in St. John, who does not know which places count as 'a U.S. territory' or thinks of the islands as simply part of the United States.",
+       "why_no": "The gate says 'a U.S. territory' without listing any. The only place the Virgin Islands are named is the gated question, which they never see.",
+       "line": "s3.virgin_islands_if_foreign",
+       "irs_text": "i1040gi p. 117, Line 13z: \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands.\"",
+       "severity": "low",
+       "fix": "List the territories by name in the gate or its help, with the U.S. Virgin Islands first."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A minority partner or S corporation shareholder (under 10% of the foreign company, looking through) who reported subpart F income from the entity's controlled foreign corporation in earlier years. In 2025 the entity received a distribution of that previously taxed income, with foreign withholding tax reported on Schedule K-3, which can release an excess limitation account.",
+       "why_no": "The entity, not the filer, 'paid income tax to another country'. The help covers only tax a fund paid (Form 1099-DIV box 7) and is silent on K-3 taxes. Their ownership is under 10%.",
+       "line": "s3.section960c_if_foreign",
+       "irs_text": "i1040gi p. 117, Line 13z: \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account. If an increase in the limitation under section 960(c) is more than your U.S. income tax reported on Form 1116, Part III, line 20, the amount of the excess is deemed an overpayment of tax and can be claimed on line 13z as a refundable credit.\"",
+       "severity": "medium",
+       "fix": "Change the gate to 'paid or were charged foreign income tax, directly or through a partnership, S corporation, trust or fund (Schedule K-3, Form 1099-DIV box 7)', and add 'or ever reported income from a foreign corporation owned by a business or trust you have a share in'."
+      }
+     ],
+     "prompt_sha": "cca3e0e3e42cdb75a1cbaf21c6a78e987f02420adb66cc4277f3c8838a95f58a",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-fable-5-2",
+     "cost": 0.268536,
+     "date": "2026-11-12",
+     "response": ".transcription/false_no/gate_s3.foreign_any.9b220dfc1b79.1.response.txt"
+    }
+   ],
+   "condition": "s3.foreign_any",
+   "lines": [
+    "s3.section960c_if_foreign",
+    "s3.section965_if_foreign",
+    "s3.virgin_islands_if_foreign"
+   ],
+   "inputs": [
+    "s3.section960c",
+    "s3.section965",
+    "s3.virgin_islands"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      115,
+      117
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 115, Line 1, \"If you paid income tax to a foreign country or U.S. territory, you may be able to take this credit\"; p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"; p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\"",
+      "p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\"",
+      "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\""
+     ],
+     "cols_pages": [
+      115,
+      117
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:s3.has_mortgage_interest": {
+   "subject_sha": "fa2e8bde4e4d9cfda5a74e05f840c69f0dffb27830024435ee81acf47df2e93b",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer (or spouse on a joint return) with an MCC who takes the standard deduction, so no home mortgage interest is entered on Schedule A line 8a. This is typical of first-time, lower-income MCC buyers.",
+       "why_no": "The computed gate is 'sa line 8a > $0'. With no Schedule A, or one left empty because the standard deduction is larger, the condition is false and the MCC question is never asked.",
+       "line": "s3.mcc_if_interest (Form 8396 line 3, then line 9 and Schedule 3 line 6g)",
+       "irs_text": "f8396 p. 2, Line 3: 'If you itemize your deductions on Schedule A, you must reduce the amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3'. The credit is therefore not limited to itemizers. f8396 p. 2, Line 1: 'Enter the interest you paid during the year on the loan amount (certified indebtedness amount) shown on your MCC.'",
+       "severity": "high",
+       "fix": "Do not gate on Schedule A line 8a. Ask every filer who paid interest on a main-home loan the MCC question, whether or not they itemize, and collect that interest independently of Schedule A. The simplest form is to ask the MCC question ungated."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer who claimed the credit in 2022-2024 and has unused carryforward, but paid no deductible mortgage interest in 2025 (loan paid off, home sold, refinanced without a reissued certificate) or does not itemize.",
+       "why_no": "Line 8a is zero, so the gate is false. The gated question is also in the present tense about 'your home loan' ('Do you have'), so a filer with no current loan would say no even if asked.",
+       "line": "s3.mcc_if_interest (Form 8396 lines 4-6 carryforward, flowing to line 9 and Schedule 3 line 6g)",
+       "irs_text": "f8396 p. 1, lines 4-6: 'Enter any 2022 credit carryforward from line 16 of your 2024 Form 8396', 'Enter any 2023 credit carryforward from line 14', 'Enter any 2024 credit carryforward from line 17'. f8396 p. 2, Part II: 'you may have an unused credit to carry forward to the next 3 tax years or until used'.",
+       "severity": "high",
+       "fix": "Add a separate ungated question: 'Did you (or your spouse) file Form 8396 for 2024 showing a credit carryforward to 2025 (lines 14, 16 or 17)?' Compute lines 4-6 even when line 1 is zero."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "An MCC holder who itemizes but whose interest is not on line 8a because no Form 1098 was received. Examples are a seller-financed or private-lender loan from an unrelated person, or a Form 1098 issued in a co-owner's name; this interest is reported on Schedule A line 8b.",
+       "why_no": "The gate tests only line 8a (interest reported on Form 1098). The interest is on line 8b, so 8a is $0 and the gate is false.",
+       "line": "s3.mcc_if_interest (Form 8396 line 1 and line 3)",
+       "irs_text": "f8396 p. 2, Line 1: 'In most cases, this will be the amount in box 1 on Form 1098, Mortgage Interest Statement, or on a similar statement you received from your mortgage holder.' The line turns on interest paid, not on a Form 1098. Only interest 'paid to a related person' is barred.",
+       "severity": "high",
+       "fix": "Gate, if at all, on any home mortgage interest paid on the main home (lines 8a + 8b before limits and before the line 3 reduction), not on line 8a alone."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A nonresident alien filing Form 1040-NR who owns a main home in the United States bought with a state or local MCC.",
+       "why_no": "Schedule A (Form 1040-NR) has no home mortgage interest line, so 'Schedule A line 8a' is always $0 for this filer. The gate is false and the question is never asked.",
+       "line": "s3.mcc_if_interest (Form 8396 line 9, Schedule 3 line 6g)",
+       "irs_text": "f8396 p. 1: 'Attach to Form 1040, 1040-SR, or 1040-NR.' f8396 p. 2, Credit Limit Worksheet: 'Form 1040-NR filers: Enter the total of all amounts (if any) from Form 1040-NR, line 19'.",
+       "severity": "high",
+       "fix": "Ask the MCC question regardless of return type and collect line 1 interest directly on the Form 8396 path."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "An MCC holder whose line 8a is computed as zero or blank after other allocations. Examples are all interest claimed through Form 8829 or a rental schedule for part of the home, or a tool that computes line 8a net of the Form 8396 line 3 reduction, which makes the gate circular.",
+       "why_no": "The gate reads a computed Schedule A figure rather than the fact of interest paid on the certified indebtedness. Any upstream step that moves or reduces the interest can make it false.",
+       "line": "s3.mcc_if_interest (Form 8396 line 1)",
+       "irs_text": "f8396 p. 1, line 3: 'You must reduce your deduction for home mortgage interest on Schedule A (Form 1040) by the amount on line 3.' f8396 p. 2, Line 1: 'Enter the interest you paid during the year on the loan amount (certified indebtedness amount) shown on your MCC.'",
+       "severity": "medium",
+       "fix": "Base the condition on gross interest paid on the main-home loan before allocations and before the Form 8396 reduction, or drop the gate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer whose MCC was issued by a county, city, or state housing finance authority or similar governmental unit, or who bought years ago and was not a first-time buyer (targeted-area purchase).",
+       "why_no": "The question says 'state or local housing agency' and the help says 'usually to first-time buyers' and 'Most home loans do not have one'. A filer whose certificate came from a county government or finance authority, or who was not a first-time buyer, may read these as excluding them.",
+       "line": "s3.mcc_if_interest (input s3.mcc)",
+       "irs_text": "f8396 p. 2, Who Can Claim the Credit: 'issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency under a qualified mortgage credit certificate program'.",
+       "severity": "low",
+       "fix": "Reword to 'from a state, county, or city government or housing or finance agency'. Add 'you would have claimed this credit on Form 8396 in earlier years', and drop the nudge 'Most home loans do not have one' or soften it."
+      }
+     ],
+     "prompt_sha": "96a0eb286db2bc1a2ca14b38e3766e15ededf0835f31a01656cb137a79c6d3fd",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-fable-5-2",
+     "cost": 0.192904,
+     "date": "2026-11-12",
+     "response": ".transcription/false_no/gate_s3.has_mortgage_interest.fa2e8bde4e4d.1.response.txt"
+    }
+   ],
+   "condition": "s3.has_mortgage_interest",
+   "lines": [
+    "s3.mcc_if_interest"
+   ],
+   "inputs": [
+    "s3.mcc"
+   ],
+   "used": [
+    {
+     "doc": "f8396",
+     "revision": "2025; created 2025-08-28",
+     "text_sha256": "7d27fdfd3ca9b205d00b68cff4f6261540d0ccc556b13edf05ccb0dd11885ec9",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Line 1, \"Enter the interest you paid during the year on the loan amount (certified indebtedness amount) shown on your MCC\"",
+      "p. 2, Who Can Claim the Credit, \"You can claim the credit only if you were issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency under a qualified mortgage credit certificate program\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "71ea89f5ee5d170488cc56526b409eb38c10d65ce5abe72dcaee21064281eca9"
+    }
+   ]
+  },
+  "gate:s3.kerosene": {
+   "subject_sha": "d32a8e1ec215f7854b466a8d9ef76a1914a82f146dc207abd2ef2642ecc17bf8",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A fiscal-year individual filer whose 2025 tax year runs, for example, July 1, 2025 to June 30, 2026, and who first burned undyed kerosene in a home heater in January-March 2026 (new home, or new heater).",
+       "why_no": "The gate asks about use 'In 2025'. No kerosene was used in the home in calendar 2025, so no is truthful, although the use falls within the tax period of the 2025 return.",
+       "line": "s3.kerosene_credit_if_kerosene",
+       "irs_text": "i4136 (2025) p. 2, Part I: 'undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking'",
+       "severity": "high",
+       "fix": "Ask about the tax period, not the calendar year: 'During the tax year this return covers (calendar 2025 for most people), was kerosene used...'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse kept a separate residence for part or all of 2025 (working in another state, living apart, or their own home before a 2025 marriage) and heated it with kerosene. The answering filer's own home used none.",
+       "why_no": "The gate says only 'your home', with no mention of a spouse. The spouse appears only in the gated question, which is never reached. The filer reads 'your home' as the home they live in.",
+       "line": "s3.kerosene_credit_if_kerosene",
+       "irs_text": "i4136 (2025) p. 2, Part I: 'If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking'",
+       "severity": "medium",
+       "fix": "Word the gate as 'was kerosene used in a home of yours (or, on a joint return, your spouse's) for heating, lighting or cooking?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer whose main home has gas or electric heat but who burns undyed kerosene for heat, lamps or a cookstove in a second home: a cabin, hunting camp, seasonal cottage, or a houseboat or RV they live in part of the year.",
+       "why_no": "'Your home' in the singular is read as the main home, as elsewhere in tax questions. The cabin is 'the camp', not 'my home'.",
+       "line": "s3.kerosene_credit_if_kerosene",
+       "irs_text": "i4136 (2025) p. 2, Part I: 'used in your home during the tax period for heating, lighting, or cooking' (no main-home limit stated)",
+       "severity": "medium",
+       "fix": "Say 'in any home you (or your spouse) lived in during the year, including a second or seasonal home, cabin, or a boat or RV used as a home'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who used a kerosene heater in a home they lived in during January-April 2025, then moved or sold it, and whose present home uses no kerosene.",
+       "why_no": "'Your home' is read as the home they have now, when the question is being answered in 2026. The former residence is no longer 'your home'.",
+       "line": "s3.kerosene_credit_if_kerosene",
+       "irs_text": "i4136 (2025) p. 2, Part I: 'used in your home during the tax period for heating, lighting, or cooking'",
+       "severity": "medium",
+       "fix": "Add 'at any time in the year, in any home you lived in then, even if you have since moved'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose furnace, monitor heater, oil lamps or range burns fuel sold under another name: K-1, No. 1 fuel oil, range oil, stove oil, lamp oil, or 'heating oil' that the dealer delivers as undyed kerosene (common for outdoor tanks and mobile homes in cold states).",
+       "why_no": "They think 'I heat with oil' or 'I burn K-1 / lamp oil', not 'kerosene'. The question gives no help naming what counts.",
+       "line": "s3.kerosene_credit_if_kerosene",
+       "irs_text": "i4136 (2025) p. 2, Part I: 'a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home'",
+       "severity": "medium",
+       "fix": "Add help: 'Kerosene is also sold as K-1, No. 1 fuel oil, range oil, stove oil or lamp oil. Check your delivery ticket or receipt. Answer Yes if unsure.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who uses undyed kerosene only in a kerosene-fired water heater, or in a portable heater kept in an attached garage, basement workshop or enclosed porch of the residence.",
+       "why_no": "'Heat' is read as heating the living space, so water heating does not count. 'In your home' is read as the living quarters, not the attached garage or basement.",
+       "line": "s3.kerosene_credit_if_kerosene",
+       "irs_text": "i4136 (2025) p. 2, Part I: 'used in your home during the tax period for heating, lighting, or cooking'",
+       "severity": "low",
+       "fix": "Use the instruction's words 'heating, lighting, or cooking' and add help: 'Heating includes heating water. Your home includes attached parts of the residence.'"
+      }
+     ],
+     "prompt_sha": "381557ae04b9c52d6f79fd5e1c14433aaa8708ef63ab7a0be969a17b78d5f791",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-fable-5-2",
+     "cost": 0.178232,
+     "date": "2026-11-12",
+     "response": ".transcription/false_no/gate_s3.kerosene.d32a8e1ec215.1.response.txt"
+    }
+   ],
+   "condition": "s3.kerosene",
+   "lines": [
+    "s3.kerosene_credit_if_kerosene"
+   ],
+   "inputs": [
+    "s3.kerosene_credit"
+   ],
+   "used": [
+    {
+     "doc": "i4136",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "f2338a673161989fd24a575b29bd75077fda30429f135592b78c03b3bbdbf571",
+     "pages": [
+      2
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Part I—Information About Your Business, \"If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking\"",
+      "p. 2, Part I—Information About Your Business, \"used in your home during the tax period for heating, lighting, or cooking\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "031aac61c09cba6aadf939df9388eb5665127f2fde52f4b9a2a1bde53ed84ab5"
+    }
+   ]
+  },
+  "gate:s3.prior_other_forms": {
+   "subject_sha": "dd619e06925bf47be7b216ac05cfa87f0b68626d618df5556312810b83b1526c",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer (or spouse) who filed no 2024 return, for example because income was below the filing threshold or they lived abroad, but still holds an unused credit from 2023 or earlier: a minimum tax credit on 2023 Form 8801 line 26, a D.C. homebuyer credit, general business credits, or an adoption or mortgage credit.",
+       "why_no": "The help says in terms 'If you did not file for 2024, answer No.' The question asks only about the 2024 return, though the carryforward survives a year with no return.",
+       "line": "s3.prior_forms_if_forms",
+       "irs_text": "f8801 p. 2, line 26: 'Credit carryforward to 2026... Keep a record of this amount because you may use it in future years'; f8859 p. 1, Line 4: 'You can carry forward any unused credit shown on line 4 until you have used all of it'; i3800 p. 3: 'unused general business credits may be carried back 1 year and carried forward 20 years'",
+       "severity": "high",
+       "fix": "Remove 'If you did not file for 2024, answer No.' Ask the fact directly, ungated or as a second route: 'Do you or your spouse have any unused tax credit from 2024 or an earlier year (minimum tax credit, business credits, mortgage credit certificate, adoption, D.C. first-time homebuyer, passive activity credits, tax credit bond), whether or not you filed a 2024 return?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A filer who filed a 2024 Form 1040 with no tax liability (or a very simple return) and did not attach the credit form because no credit was usable that year. Examples are a mortgage credit certificate holder with 2022 or 2023 carryforwards, a D.C. homebuyer carryforward, or general business credits from 2022.",
+       "why_no": "The 2024 return truthfully contains only Form 1040 and its schedules. The gate asks whether a form was attached, not whether an unused credit exists.",
+       "line": "s3.prior_forms_if_forms",
+       "irs_text": "f8396 p. 2, Part II: 'you may have an unused credit to carry forward to the next 3 tax years or until used, whichever comes first... keep a copy of this form to figure your credit'; f8859 p. 1: 'You may claim only a carryforward of any unused credit (which is shown on your prior year Form 8859, line 4)'; i3800 p. 3: 'unused credit means the sum of business credits carried forward to your tax year'",
+       "severity": "high",
+       "fix": "Gate on the fact, not the attachment: 'Does your (or your spouse's) 2024 return, or your records from any earlier year, show a credit you could not fully use?' Or always ask the carryforward question, listing the credits by what they are for."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose original 2024 return was Form 1040 and schedules only, but whose 2024 alternative minimum tax arose later, through a Form 1040-X or an IRS examination adjustment (for example a corrected K-1 or a reported incentive stock option exercise).",
+       "why_no": "They read 'your 2024 federal tax return' as the return originally filed, which had no separate form. The Form 6251 came with the amendment or the exam report.",
+       "line": "s3.prior_amt_if_forms",
+       "irs_text": "i8801 p. 1, Who Should File: 'for 2024 had: An AMT liability and adjustments or preferences other than exclusion items'; f8801 p. 2, line 16: 'Enter the amount from your 2024 Form 6251, line 11'",
+       "severity": "medium",
+       "fix": "Add 'as originally filed, amended, or adjusted by the IRS' to the gate, and ask the alternative minimum tax question directly: 'Did you or your spouse owe alternative minimum tax for 2024, on the original return, an amended return, or after an IRS change?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer whose 2024 return was e-filed by software or a preparer and who never saw the attached pages. They owed alternative minimum tax (Form 6251) or had Form 8801, 3800 or 8582-CR generated behind the scenes, perhaps from a K-1, and kept only the Form 1040 summary and schedules.",
+       "why_no": "They believe they 'just filed a 1040'. The test of 'a page headed Form and a four-digit number' requires inspecting the full return. They see the alternative minimum tax on Schedule 2, which is 'a schedule', and do not recall a separate form.",
+       "line": "s3.prior_amt_if_forms",
+       "irs_text": "f8801 p. 2, line 16: 'Enter the amount from your 2024 Form 6251, line 11'; i8801 p. 1: 'The minimum tax credit is allowed only for the AMT caused by deferral items'",
+       "severity": "medium",
+       "fix": "Ask what the filer can check on Form 1040 and its schedules: 'Does your or your spouse's 2024 Schedule 2, line 2 show an amount (alternative minimum tax)?' and 'Does 2024 Schedule 3, line 6 show any credit, or do you have unused credits?' Do not gate these on the filer's recollection of attached forms. Tell them to look at the complete filed copy or the list of forms in the software's filing record."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer whose only non-1040 attachment is headed with a suffixed number, such as Form 8582-CR for passive activity credits from a K-1 with no passive loss. Another is a filer who regards numbered attachments as 'schedules' of the 1040.",
+       "why_no": "'A four-digit number' and the two examples (8962, 8801) are read as the complete rule. '8582-CR' is not obviously a four-digit number to them.",
+       "line": "s3.prior_forms_if_forms",
+       "irs_text": "f8834 p. 2, Line 1: 'Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR'",
+       "severity": "low",
+       "fix": "Reword to 'any page headed Form followed by a number (for example Form 6251, 8801, 8582-CR, 3800), other than Form 1040, 1040-SR or 1040-NR itself'."
+      }
+     ],
+     "prompt_sha": "4de7a161e2e3767b1432cbabf59bf59b9e0bcfb1570d6f33fb75b9ad24e1dd79",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-fable-5-2",
+     "cost": 0.543032,
+     "date": "2026-11-12",
+     "response": ".transcription/false_no/gate_s3.prior_other_forms.dd619e06925b.1.response.txt"
+    }
+   ],
+   "condition": "s3.prior_other_forms",
+   "lines": [
+    "s3.prior_amt_if_forms",
+    "s3.prior_forms_if_forms"
+   ],
+   "inputs": [
+    "s3.prior_amt",
+    "s3.prior_forms"
+   ],
+   "used": [
+    {
+     "doc": "i8801",
+     "revision": "2025",
+     "text_sha256": "0b107826c9e29d2b284a4aba175837438fd8d8e3f405b214909ddf3d39ed0656",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Who Should File, \"A credit carryforward to 2025 (on 2024 Form 8801, line 26)\"; , Purpose of Form, \"to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024\"",
+      "p. 1, Who Should File, \"An AMT liability and adjustments or preferences other than exclusion items\"; , Part II, \"Enter the amount from your 2024 Form 6251, line 11\""
+     ],
+     "cols_pages": [
+      1,
+      3,
+      4,
+      5
+     ],
+     "cols_sha256": "5505010794a0984c4345b545b2602b3bbc71348cde05091aa76e1a4c99bc6ddb"
+    },
+    {
+     "doc": "i3800",
+     "revision": "2025",
+     "text_sha256": "8f87d7d4652fdd97673c64cf436c3edfb4d31155a90efcb4a11d06a014bfe12d",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Carryback and Carryforward of Unused Credit, \"unused general business credits may be carried back 1 year and carried forward 20 years\"; , Part II—Mortgage Interest Credit Carryforward to 2026, \"you may have an unused credit to carry forward to the next 3 tax years\"; , Who Should File, \"A credit carryforward to 2025 (on 2024 Form 8801, line 26)\"; , Line 1, \"Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR\"; , Purpose of Form, \"You have a carryforward of an adoption credit from 2024\"; , Purpose of Form, \"to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024\"; , Line 12, \"you may carry the unused portion of the credit to the next tax year\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "f14b444e5dcde07304dc6f5f8c9309bacf8c621eca24a4d9093f9732c39d2b9f"
+    },
+    {
+     "doc": "f8859",
+     "revision": "2025; created 2025-08-07",
+     "text_sha256": "718b7d6bc801be84b557f42af42a44cc2dcdbce3ce93d169c0589b2266fb7295",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "648bf239b24daf08f051b1da3808a13b9c78d05e7c47d71665cf8a28219e7d8c"
+    },
+    {
+     "doc": "f8801",
+     "revision": "2025; created 2025-11-12",
+     "text_sha256": "8d6a9d2d7388958b1ef192d4ea86f72742b249ea7361494bbd6c100c52d0dbbd",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "1a2853e41754fc296460caa33ce7d5afcd0a2c76f3794b66cdec9e1c3f20655c"
+    },
+    {
+     "doc": "f8396",
+     "revision": "2025; created 2025-08-28",
+     "text_sha256": "7d27fdfd3ca9b205d00b68cff4f6261540d0ccc556b13edf05ccb0dd11885ec9",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "71ea89f5ee5d170488cc56526b409eb38c10d65ce5abe72dcaee21064281eca9"
+    },
+    {
+     "doc": "f8834",
+     "revision": "October 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+     "text_sha256": "294996953deaa0a29ce39ade08a10ab5de5d41a0eb955117b2543a94b17a0e41",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "15f21877e903e0b003bcb978d98712c7e8913bed71ae5e453700cb8150b9b4d1"
+    },
+    {
+     "doc": "i8839",
+     "revision": "2025",
+     "text_sha256": "aba1b0860ba08ea9e0953f31580e22421bdb92427957682acc3d79b98cb43626",
+     "pages": [
+      1
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "ba3ee91ddad989767d0c8aa84b7b53b7a4a1161c0d0731cbb8eb275febf19d8b"
+    },
+    {
+     "doc": "i8912",
+     "revision": "December 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+     "text_sha256": "e23ca6f7fb979757f2f3590fdf4823eba19cc909f724b0d91a61ce02f0300c40",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "cols_sha256": "e9178b04d7fc4e89ac00e77cea2a660b26eeb1c552cd4580a72a79b189f99f1b"
+    }
+   ]
+  }
+ }
+}

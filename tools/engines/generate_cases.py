@@ -76,11 +76,14 @@ def gen_case(rng, i):
         "f4952.line4g": 0, "f4952.carryover": False, "f4952.unsupported": False, "f4952.alternative_allocation": False,
         "f8959.unsupported": False, "f8960.unsupported": False, "f8960.refund": False, "f8960.allocated_taxes": 0,
         "ftc.all_passive": True, "ftc.statements": True, "ftc.eligible": True, "ftc.elect": True,
-        "$f1095a": [], "s3.line10": 0, "s3.line12": 0, "s3.line14": 0,
+        "$f1095a": [], "s3.line10": 0,
         "sa.unsupported": False, "sa.charity_limited": False, "sa.excluded_income": False, "sa.dependent": False,
         "sa.spouse_extra": False, "person[taxpayer].age65": False, "person[taxpayer].blind": False, "sa.spouse_itemizes": False, "sa.elect_itemize": False,
         "sa.line5c": 0,
-        "scope.schedule1": False, "scope.credits": False, "scope.other_income": False,
+        "scope.schedule1": False, "scope.other_income": False,
+        # The credit questions asked of everyone: none of the situations applies.
+        "s3.adoption_any": False, "s3.credit_bond": False, "s3.disability_retired": False, "s3.elderly_credit": False, "s3.ev": False,
+        "s3.farmland": False, "s3.foreign_any": False, "s3.kerosene": False, "s3.mcc": False, "s3.prior_other_forms": False, "s3.repaid_income": False,
         "refund.received": 0,
         # Schedule 1 lines 2a, 8c and 19a: no alimony and no canceled debt.
         "s1.alimony": False, "s1.cod_any": False, "s1.cod_amount": 0,
@@ -689,6 +692,7 @@ def make_se(case, j):
     for k in SC_ZERO:
         inputs[f"{pre}.{k}"] = 0
     inputs.update({f"{pre}.statutory": False, f"{pre}.passive": True, f"{pre}.spouse_owned": False, f"{pre}.method_other": False,
+                   f"{pre}.business_credit": False, f"{pre}.fuel_credit": False,
                    f"{pre}.special": False, f"{pre}.ho_uses": False, f"{pre}.at_risk": True, f"{pre}.inventory_other": False,
                    f"{pre}.hi_uses": False, f"{pre}.tips_ot": False, f"{pre}.line1": receipts, f"{pre}.line18": expenses,
                    f"$scveh@{pre}": [], f"$asset@{pre}": [], f"$ltc@{pre}": [],

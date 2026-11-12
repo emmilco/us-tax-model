@@ -3,6 +3,16 @@
  "form": "s8812",
  "rulings": [
   {
+   "printed": "(CLW A 4)",
+   "restated": "Choose — [helper \"Complete Credit Limit Worksheet B (claiming the residential clean energy credit, Form 5695 Part I, and line 4 of Schedule 8812 is more than zero)\" = true → column (CLW B 15)] [helper \"Complete Credit Limit Worksheet B (claiming the residential clean energy credit, Form 5695 Part I, and line 4 of Schedule 8812 is more than zero)\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The IRS says to complete Worksheet B 'only if you meet all the following', including '2. You are not filing Form 2555.' The restatement's test (claiming the Form 5695 Part I credit and line 4 more than zero) omits that condition, and no refusal shown covers it, so a Form 2555 filer would get the Worksheet B amount instead of -0-.",
+   "ruling": "Ruling: scope; i1040s8812 p. 4, Credit Limit Worksheet A, \"Complete Credit Limit Worksheet B only if you meet all the following\", \"2. You are not filing Form 2555\". Form 2555 is refused by sa.excluded_income on Schedule 8812 lines 2a to 2c, as the note of s8812.clwb_complete says, so condition 2 holds on every return the tool completes. The line changed only in the gate its refusal reads (s3.other_credit in place of scope.credits, BUG-0619). Project stands.",
+   "context": "5492aa57c806706c49586d8e8b04ad6661f096d53d48ace7d0a92d51d2f0bee8",
+   "date": "2026-11-12",
+   "run": "e2b1d7ed6f11f31cdab76fc510913c9df9eeb6e0384e7bec7c4e765c6eefec14",
+   "subject_key": "b7abd21f4ec042ab7c6f3ef059ca6bb45b178209ea3f8e809411d271f6b3ff75"
+  },
+  {
    "printed": "(CLW B 7)",
    "restated": "Enter the amount from line 21.",
    "model": "The restatement takes Schedule 8812 line 21, so it carries the same omission. Worksheet line 16, 'Add lines 6, 7, 11, and 15', is to be entered on 'line 7 of Credit Limit Worksheet B', and the RRTA lines 11 and 15 are left out.",

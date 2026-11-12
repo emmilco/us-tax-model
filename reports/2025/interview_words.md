@@ -15,39 +15,39 @@ Means are over complete returns; the last column is the mean prompt words of the
 
 | Returns | Complete | Refused | Questions asked (mean) | Prompt words (mean) | Prompt words (median) | Prompt words (max) | Option words (mean) | Help words (mean) | Before the first own item (mean) | Prompt words, refused (mean) |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Stage 5 whole returns | 9 | 2 | 90.1 | 7,212 | 6,773 | 8,625 | 78 | 2,414 | 796 | 465 |
-| generated returns | 3 | 9 | 160.3 | 12,443 | 8,066 | 21,718 | 222 | 3,557 | 796 | 3,150 |
-| minimal returns | 7 | 0 | 78.1 | 6,876 | 6,834 | 7,143 | 74 | 2,237 | 796 | 0 |
-| social-security profile fixtures | 16 | 5 | 11.3 | 191 | 196 | 196 | 75 | 389 | 9 | 85 |
+| Stage 5 whole returns | 9 | 2 | 96.3 | 7,220 | 6,777 | 8,647 | 78 | 2,529 | 678 | 584 |
+| generated returns | 3 | 9 | 144.7 | 10,308 | 10,569 | 12,266 | 102 | 3,689 | 678 | 3,204 |
+| minimal returns | 13 | 0 | 84.2 | 6,860 | 6,838 | 7,147 | 74 | 2,361 | 678 | 0 |
+| social-security profile fixtures | 15 | 6 | 13.2 | 226 | 231 | 231 | 75 | 430 | 9 | 102 |
 | sales profile fixtures | 58 | 14 | 62.7 | 7,154 | 6,686 | 20,800 | 99 | 1,802 | 672 | 5,651 |
-| stage4 profile fixtures | 69 | 62 | 73.5 | 6,495 | 6,200 | 9,078 | 79 | 2,125 | 790 | 2,903 |
-| **full profile, Stage 5 and generated** | 12 | 11 | 107.7 | 8,520 | 6,773 | 21,718 | 114 | 2,700 | 796 | 2,662 |
+| stage4 profile fixtures | 69 | 62 | 81.6 | 6,528 | 6,231 | 9,165 | 79 | 2,278 | 672 | 2,869 |
+| **full profile, Stage 5 and generated** | 12 | 11 | 108.4 | 7,992 | 6,777 | 12,266 | 84 | 2,819 | 678 | 2,728 |
 
 0 return(s) could not be walked.
 
 ## The longest prompts met on the full profile
 
-The 15 longest prompts among the questions the 30 full-profile walks ask, with how many of those walks ask each.
+The 15 longest prompts among the questions the 36 full-profile walks ask, with how many of those walks ask each.
 
 | Question | Prompt words | Walks that ask it |
 |---|---|---|
 | `sales.correct_basis` | 906 | 2 |
-| `asset.screen` | 843 | 2 |
-| `sb.foreign_any` | 827 | 20 |
-| `scveh.screen` | 732 | 1 |
+| `asset.screen` | 843 | 1 |
+| `sb.foreign_any` | 827 | 26 |
 | `sales.box` | 689 | 4 |
 | `dependent.supported` | 559 | 3 |
-| `sa.line1` | 429 | 20 |
-| `f8962.other` | 357 | 2 |
+| `sa.line1` | 429 | 26 |
+| `f8962.other` | 357 | 1 |
 | `sales.wash_loss` | 346 | 2 |
-| `household.unmarried` | 318 | 2 |
-| `dependent.relationship` | 297 | 3 |
-| `scope.schedule1` | 293 | 25 |
-| `sa.gifts` | 292 | 20 |
+| `household.unmarried` | 318 | 3 |
+| `dependent.relationship` | 297 | 4 |
+| `scope.schedule1` | 293 | 32 |
+| `sa.gifts` | 292 | 26 |
 | `asset.s179` | 271 | 1 |
-| `sc.special` | 267 | 1 |
+| `sli.interest` | 244 | 26 |
+| `sa.line5a` | 237 | 26 |
 
-The longest prompts every one of the 30 full-profile walks asks:
+The longest prompts every one of the 36 full-profile walks asks:
 
 | Question | Prompt words |
 |---|---|
@@ -55,7 +55,7 @@ The longest prompts every one of the 30 full-profile walks asks:
 
 ## The longest sentences in the question bank
 
-Of the 638 questions the page's profile can ask, 250 have a sentence of more than 40 words in their prompt, 60 one of more than 80 and 8 one of more than 120.
+Of the 663 questions the page's profile can ask, 250 have a sentence of more than 40 words in their prompt, 60 one of more than 80 and 8 one of more than 120.
 The twelve longest:
 
 | Question | Longest sentence (words) | Prompt words |

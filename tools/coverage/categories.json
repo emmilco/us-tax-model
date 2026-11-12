@@ -226,7 +226,17 @@
    "id": "other_nonrefundable",
    "group": "other_credits",
    "gates": [
-    "scope.credits"
+    "s3.adoption_if_any",
+    "s3.adoption_us_if_earlier",
+    "s3.elderly_credit_if_asked",
+    "s3.credit_bond",
+    "s3.ev_dealer_if_ev",
+    "s3.ev_credit_if_bought",
+    "s3.ev_equipment_if_ev",
+    "s3.mcc_if_interest",
+    "s3.prior_amt_if_forms",
+    "s3.prior_forms_if_forms",
+    "sc.business_credit"
    ],
    "label": "Other nonrefundable credits (general business, adoption, clean vehicle and others)",
    "irs": {

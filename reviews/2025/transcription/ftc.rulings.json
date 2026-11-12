@@ -3,6 +3,103 @@
  "form": "ftc",
  "rulings": [
   {
+   "printed": "ftc.carryover_if_asked",
+   "project_expr_sha256": "eda0e9c6b01b354262b7364fb46efcfe1915b1223cf613706e904107bc918dc9",
+   "second_expr_sha256": "4f1e84ff0391ba6cd701bc026ff95196db8b7347c8ab1994584760446a0b7432",
+   "ruling": "Ruling: model error; the page does not state when the question is asked: this is the project's gate line for the carryover question (i1116 p. 19, Line 10), asked after a Yes to either plain question above it, s3.foreign_any or s3.prior_other_forms (owner decision recorded in BUG-0619: Form 1116 is not in the list of last year's forms that refuse, so the carryover is asked of a filer whose 2024 return includes a separate form). The reply asks it only after s3.foreign_any. executable-triage-v2 (`.transcription/triage/2025/ftc.json`, pass c0bc3a63fe27; 1,854 fixtures, 500 generated returns seed 20261026, 149 partial records from 40 bases; 2,503 comparisons): 2,502 agree; 1 value difference, on a refused return, the fixture redesign.credits.refuse.ftc_carryover_prior_return (s3.foreign_any No, s3.prior_other_forms Yes, ftc.carryover Yes): project true, reply false. None on a completed return. Project stands.",
+   "context": "5a33d8b0d7b4a15151325f597d63acd7d49d6c8ec7d8f1d109d474301c3361d6",
+   "date": "2026-11-12",
+   "run": "2a223812cd3dfe727007d7a630efcc50a2d0803edb7e26d634ca570d7ea35a11",
+   "subject_key": "43c4d3d03e659cb826c7e5f0df647951aee8d37ccd810bc67b02f01ffcff15f6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "value"
+    ],
+    "witnesses": [
+     "fixture:redesign.credits.refuse.ftc_carryover_prior_return@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ftc.credit",
+   "project_expr_sha256": "a04b3c85e3e664c7c20705672c04591da2eb5fe71970a2fe60512588028dc343",
+   "second_expr_sha256": "1602629c39e7ff08e6791b3fef34882dad49af90dc938917da1f2a730c8db5ae",
+   "ruling": "Ruling: model error on the regular tax, representation otherwise; i1116 (2025) pp. 1-2, the election to claim the credit without filing Form 1116: the smaller of the foreign tax and the regular tax; p. 25, Line 20, \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\". As ruled before on this line: the reply names the refusal for a carryover (ftc.carryover_if_asked, BUG-0619), as the project does, and takes Form 1040 line 16 alone as the regular tax, saying no line 1z is supplied. executable-triage-v2 (`.transcription/triage/2025/ftc.json`, pass c0bc3a63fe27; 1,854 fixtures, 500 generated returns seed 20261026, 149 partial records from 40 bases; 2,503 comparisons): 1,826 agree; 593 candidate-refuses, 48 candidate-unknown and 3 project-refuses on refused returns, 31 candidate-unknown on incomplete ones, and 2 value differences on completed returns: the fixture stage18.ftc_limit_with_repayment ($200.00 of foreign tax, Form 1040 line 16 of $0, an excess advance premium tax credit repayment on Schedule 2: project $200.00, reply $0.00) and generated return 35 ($149.13 of foreign tax, line 16 of $0: project $99.09, reply $0.00). Checked against the page: line 20 adds Schedule 2, Part I, line 1z. Project stands.",
+   "context": "5a33d8b0d7b4a15151325f597d63acd7d49d6c8ec7d8f1d109d474301c3361d6",
+   "date": "2026-11-12",
+   "run": "2a223812cd3dfe727007d7a630efcc50a2d0803edb7e26d634ca570d7ea35a11",
+   "subject_key": "6fc7636a0758affd87da795a4f6f511b8c64d2968d8544abe01277508f356b26",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@ftc",
+     "fixture:stage14.asset.refuse_ads_past_gds@ftc",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@ftc",
+     "fixture:stage14.asset.refuse_class@ftc",
+     "fixture:stage14.asset.refuse_listed_low@ftc",
+     "fixture:stage14.asset.refuse_s179_over@ftc",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@ftc",
+     "fixture:classm.f8889.4.deepseek@ftc",
+     "fixture:classm.f8889.5.deepseek@ftc",
+     "fixture:classm.f4952.3.deepseek@ftc",
+     "fixture:classm.f4952.4.deepseek@ftc",
+     "fixture:classm.f8960.2.deepseek@ftc",
+     "fixture:classm.s179.6@ftc",
+     "fixture:stage18.ftc_limit_with_repayment@ftc",
+     "fixture:redesign.credits.refuse.ftc_carryover_prior_return@ftc",
+     "generated:20261026.35@ftc",
+     "generated:20261026.473@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ftc.credit",
+   "project_expr_sha256": "a04b3c85e3e664c7c20705672c04591da2eb5fe71970a2fe60512588028dc343",
+   "second_expr_sha256": "58ae6dee13d7f519dd32a4c378cf921dae2c2de7ad59d7a5e87484c1c6464e55",
+   "ruling": "Ruling: model error on the regular tax, representation otherwise; i1116 (2025) pp. 1–2, the election to claim the credit without filing Form 1116: the smaller of the foreign tax and the regular tax; p. 25, Line 20, \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z\". The reply now names the new refusal for a carryover (ftc.carryover, BUG-0619; i1116 p. 19, Line 10), as the project does, and takes Form 1040 line 16 alone as the regular tax. executable-triage-v2 (`.transcription/triage/2025/ftc.json`, pass 0165cdf84695; 1,803 fixtures, 500 generated returns seed 20261026, 172 partial records from 40 bases; 2,475 comparisons): 1,805 agree; 583 candidate-refuses and 51 candidate-unknown on refused returns, 32 candidate-unknown on incomplete ones, 3 project-refuses, and 1 value difference on a completed return, the fixture stage18.ftc_limit_with_repayment: $200.00 of foreign tax, Form 1040 line 16 of $0 and $375 of excess advance premium tax credit repayment (Form 8962 line 29) on Schedule 2; the project's regular tax includes Schedule 2 line 1z and the credit is $200.00, the reply's is $0.00. Checked against the page: line 20 adds Schedule 2, Part I, line 1z. Project stands.",
+   "context": "3ad980f5aa47483969a8608c6f5903275579ac65c76346031a4721bd73d19331",
+   "date": "2026-11-12",
+   "run": "63969a1f925954422cfee329e7f16fc402672eab4b9dc370427d9cb331a73808",
+   "subject_key": "1f717e8afdff24e5e8a7b8214489a88af176ab7b071f3bcf646af76be3422e3c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@ftc",
+     "fixture:stage14.asset.refuse_ads_past_gds@ftc",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@ftc",
+     "fixture:stage14.asset.refuse_class@ftc",
+     "fixture:stage14.asset.refuse_listed_low@ftc",
+     "fixture:stage14.asset.refuse_s179_over@ftc",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@ftc",
+     "fixture:classm.f8889.4.deepseek@ftc",
+     "fixture:classm.f8889.5.deepseek@ftc",
+     "fixture:classm.f4952.3.deepseek@ftc",
+     "fixture:classm.f4952.4.deepseek@ftc",
+     "fixture:classm.f8960.2.deepseek@ftc",
+     "fixture:classm.s179.6@ftc",
+     "fixture:stage18.ftc_limit_with_repayment@ftc",
+     "generated:20261026.112@ftc",
+     "generated:20261026.347@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "ftc.credit",
    "project_expr_sha256": "a04b3c85e3e664c7c20705672c04591da2eb5fe71970a2fe60512588028dc343",
    "second_expr_sha256": "ca5880e78c262f5fcbf9a7c611f26ee49f0fdfa9b9357118113926c4dc68b4e3",

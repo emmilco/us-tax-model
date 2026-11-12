@@ -63,8 +63,6 @@ interview:
   - s2.other
   - $f1095a
   - s3.line10
-  - s3.line12
-  - s3.line14
   - sa.unsupported
   - sa.gambling_losses
   - sa.charity_limited
@@ -100,7 +98,34 @@ interview:
   - sb.form8938
   - sb.line8
   - scope.schedule1
-  - scope.credits
+  - s3.adoption_any
+  - s3.adoption
+  - s3.adoption_earlier
+  - s3.adoption_us
+  - s3.credit_bond
+  - s3.disability_retired
+  - s3.elderly_credit
+  - s3.ev
+  - s3.ev_dealer
+  - s3.ev_bought
+  - s3.ev_credit
+  - s3.ev_equipment
+  - s3.farmland
+  - s3.farmland_deferral
+  - s3.foreign_any
+  - s3.section965
+  - s3.section960c
+  - s3.virgin_islands
+  - s3.kerosene
+  - s3.kerosene_credit
+  - s3.mcc
+  - s3.prior_other_forms
+  - s3.prior_amt
+  - s3.prior_forms
+  - s3.repaid_income
+  - ftc.carryover
+  - sc.business_credit
+  - sc.fuel_credit
   - scope.other_income
   - scope.other_line16
   - sd.other_forms

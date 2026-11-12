@@ -1,6 +1,891 @@
 {
  "form": "s3",
  "reviews": {
+  "s3.adoption": {
+   "subject_sha": "f4130351a80e274f6c6975bbea5f3f20612ac094e2bd4698fa1d4e0fdd23ccfc",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer paid costs in 2024 toward adopting a U.S. child, the adoption was not final at the end of 2024 and did not become final in 2025, and nothing was paid in 2025, so the gate is passed but the truthful answer here is no.",
+       "source_text": "i8839 p. 1, Purpose of Form: \"You may be able to take this credit in 2025 if any of the following statements are true. 1. You paid qualified adoption expenses in connection with the adoption of an eligible U.S. child ... in: a. 2024 and the adoption wasn't final at the end of 2024\"",
+       "why": "Expenses paid in 2024 for a domestic adoption not yet final are taken as a credit in 2025, yet the wording asks only about finality in 2025 or costs paid in 2025. The line is therefore false although the cited text allows the credit.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "The filer's adoption became final in 2024 with costs paid in 2024, leaving unused credit carried forward to 2025, and nothing was paid or finalized in 2025, so the gate is passed but the answer here is no.",
+       "source_text": "i8839 p. 1, Purpose of Form: \"4. You have a carryforward of an adoption credit from 2024.\"",
+       "why": "A carryforward from 2024 is one of the listed statements that allow the credit in 2025, but the question has no alternative that covers it. The line is false and the carried-forward credit is dropped.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer with more than one adoption or attempt since 2024 (for example one final in 2024 and another still in progress) cannot tell which one \"the adoption\" and \"the costs\" refer to.",
+       "source_text": "i8839 p. 1, What's New: \"The amount of the refundable credit portion is determined separately for each eligible child.\"",
+       "why": "The wording uses the singular \"the adoption\" although the credit is figured per child. A filer thinking of the wrong child may answer no when another adoption qualifies.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "5f3d221ff1b0255566793dd9e9163c1a55c76288ea187080295b1af84a306c39",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.121328,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.adoption.f4130351a80e.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8839",
+     "revision": "2025",
+     "text_sha256": "aba1b0860ba08ea9e0953f31580e22421bdb92427957682acc3d79b98cb43626",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Purpose of Form, \"You may be able to take this credit in 2025 if any of the following statements are true\"; , Lines 6a Through 6z, \"You may be able to take the adoption credit if you paid expenses to adopt a child or you adopted a child with special needs and the adoption became final in 2025\""
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "ba3ee91ddad989767d0c8aa84b7b53b7a4a1161c0d0731cbb8eb275febf19d8b"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      116
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "s3.adoption_any": {
+   "subject_sha": "0cd36ea262860d71087e42f95944c156f1ed2e2bc98919e59543d1167aa290e7",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "59a6fc68a95d4880c948c30c9adf5948c41ccef49ffabb984f4040816a55fb65",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.11344,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.adoption_any.0cd36ea26286.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8839",
+     "revision": "2025",
+     "text_sha256": "aba1b0860ba08ea9e0953f31580e22421bdb92427957682acc3d79b98cb43626",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Purpose of Form, \"2024 and the adoption wasn’t final at the end of 2024\"; p. 3, Domestic Adoption, \"any year before the year the adoption becomes final\"",
+      "p. 1, Purpose of Form, \"You may be able to take this credit in 2025 if any of the following statements are true\"; , Lines 6a Through 6z, \"You may be able to take the adoption credit if you paid expenses to adopt a child or you adopted a child with special needs and the adoption became final in 2025\"",
+      "p. 1, Purpose of Form, \"You may be able to take this credit in 2025 if any of the following statements are true\"; p. 3, Domestic Adoption, \"any year before the year the adoption becomes final\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "ba3ee91ddad989767d0c8aa84b7b53b7a4a1161c0d0731cbb8eb275febf19d8b"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      116
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "s3.adoption_earlier": {
+   "subject_sha": "ece7baad86c8207da80f666936af7cd097b1300b64fe89b91ecff78003284b32",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer paid costs in 2024 toward adopting a foreign child whose adoption was not final at the end of 2024 and truthfully answers yes.",
+       "source_text": "i8839 p. 1: \"You paid qualified adoption expenses in connection with the adoption of an eligible U.S. child ... in: a. 2024 and the adoption wasn’t final at the end of 2024\"; p. 3: \"If the eligible child is a foreign child, you can’t take the adoption credit or exclusion unless the adoption becomes final.\"",
+       "why": "The question (\"pay costs in 2024 toward an adoption that was not final at the end of 2024\") is not limited to a U.S. child, but the cited statement 1a and the Domestic Adoption table cover only a U.S. child. Foreign-child expenses are taken only in the year the adoption becomes final, so this yes brings in a case the line must not have.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose only 2024 adoption costs were reimbursed by an employer under a written qualified adoption assistance program truthfully answers yes.",
+       "source_text": "i8839 p. 1: \"For purposes of calculating the adoption credit in Part II, Qualified Adoption Expenses don’t include expenses reimbursed by an employer under a written qualified adoption assistance program\"",
+       "why": "The question and its help ask about \"costs\" in general, while the line needs qualified adoption expenses paid in 2024. Employer-reimbursed costs are not qualified adoption expenses, so this yes is one the line must not have.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "1e8527b87c39ec9d3e448609b5cdc06ec2c99dfb261e8a7f08b398e6744421f7",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.09931200000000001,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.adoption_earlier.ece7baad86c8.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8839",
+     "revision": "2025",
+     "text_sha256": "aba1b0860ba08ea9e0953f31580e22421bdb92427957682acc3d79b98cb43626",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Purpose of Form, \"2024 and the adoption wasn’t final at the end of 2024\"; p. 3, Domestic Adoption, \"any year before the year the adoption becomes final\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "ba3ee91ddad989767d0c8aa84b7b53b7a4a1161c0d0731cbb8eb275febf19d8b"
+    }
+   ]
+  },
+  "s3.adoption_us": {
+   "subject_sha": "7f2d3380268bd60e9a77902d92fe3efb3334b11cd7067f138f650920e75d18a4",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The child was not a U.S. citizen but lived in a U.S. territory (for example a non-citizen national in American Samoa, or a non-citizen child living in Puerto Rico or Guam) when the adoption effort began.",
+       "source_text": "i8839 (2025) p. 3: \"A child is a foreign child if they weren't a citizen or resident of the United States (including U.S. territories) at the time the adoption effort began.\"",
+       "why": "The question and its help say only \"citizen or resident of the United States\" and \"lived in the United States\", with no mention of territories, so a truthful filer could answer No. The line needs Yes, because the text counts a territory resident as a U.S. child who can take the credit before the adoption is final.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "868f4737127c5989164575a8b8561c039e9bf8a711c4eafcd428e3efae5549de",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.088064,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.adoption_us.7f2d3380268b.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8839",
+     "revision": "2025",
+     "text_sha256": "aba1b0860ba08ea9e0953f31580e22421bdb92427957682acc3d79b98cb43626",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Domestic Adoption, \"If the eligible child is a U.S. citizen or resident, you can take the adoption credit or exclusion even if the adoption never became final\" and \"A child is a foreign child if they weren’t a citizen or resident of the United States (including U.S. territories) at the time the adoption effort began\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "ba3ee91ddad989767d0c8aa84b7b53b7a4a1161c0d0731cbb8eb275febf19d8b"
+    }
+   ]
+  },
+  "s3.credit_bond": {
+   "subject_sha": "9463e2ba569bb348e2e07073bef76f41273d2d3a6acfdb89a7d769cc686c1d96",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer has an unused credit from a qualified tax credit bond or build America bond carried forward from an earlier year, but no bond or fund produced a new credit in 2025 (for example, the bond was sold or matured in 2024).",
+       "source_text": "i8912 p. 2, Line 3: \"Enter the amount of the credit carryforward (from prior years) that is attributable to a qualified tax credit bond or a BAB.\"; p. 3, Line 12: \"you may carry the unused portion of the credit to the next tax year\"",
+       "why": "The carryforward is claimed on Form 8912, so the refusal needs a yes. The question asks only whether a bond or fund gave a credit \"In 2025\", so this filer truthfully answers no.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer is passed a bond credit by a partnership, S corporation, estate or trust on a Schedule K-1 or other statement, with no Form 1097-BTC.",
+       "source_text": "i8912 p. 2, Line 2: \"bond credits reported to you from a pass-through entity (partnership, S corporation, estate, trust, regulated investment company, and real estate investment trust) that weren't reported to you on Form(s) 1097-BTC\"; p. 2, Note: \"The entity may also report your share of bond tax credits on a form/schedule/ statement other than the Form(s) 1097-BTC.\"",
+       "why": "The question names only \"a bond you ... own, or a fund\" and the help says \"Reported on Form 1097-BTC or by the bond's issuer\". A partner, S corporation shareholder or beneficiary does not own the bond, would not call the entity a fund, and has a K-1 rather than either report, so would answer no although Form 8912 Part IV applies.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose mutual fund passed through another federal credit (for example, foreign tax paid shown on Form 1099-DIV) can read \"or a fund, give you a federal tax credit\" as covering any credit from a fund.",
+       "source_text": "Question: \"did a bond you ... own, or a fund, give you a federal tax credit?\"; i8912 p. 1, Purpose of Form: \"Use Form 8912 to claim the credit for the following tax credit bonds. • Clean renewable energy bond (CREB) ... • Build America bond (BAB).\"",
+       "why": "The wording does not tie the fund's credit to a tax credit bond, so one reading gives a yes and a wrongful Form 8912 refusal. The other reading, guided by the help's mention of Form 1097-BTC, gives a no.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "991d5d7410c18573e0810f80d6fd036a5ad66c0a3c7212465c2f5ebeac12a5c6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.180584,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.credit_bond.9463e2ba569b.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8912",
+     "revision": "December 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+     "text_sha256": "e23ca6f7fb979757f2f3590fdf4823eba19cc909f724b0d91a61ce02f0300c40",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Purpose of Form, \"Use Form 8912 to claim the credit for the following tax credit bonds\"; p. 2, Line 1, \"This amount is the total bond credits reported to you on Form(s) 1097-BTC\"; p. 3, Part IV, \"Complete and attach a Part IV for each bond you held or bond credits received from a pass-through entity that weren’t reported to you on Form(s) 1097-BTC\"",
+      "p. 1, Who Can Claim the Credits, \"can claim the credit by filing Form 8912 for each tax year in which it holds the bond on a credit allowance date\"; p. 2, Line 1, \"This amount is the total bond credits reported to you on Form(s) 1097-BTC\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "cols_sha256": "e9178b04d7fc4e89ac00e77cea2a660b26eeb1c552cd4580a72a79b189f99f1b"
+    }
+   ]
+  },
+  "s3.disability_retired": {
+   "subject_sha": "3a220c74d133e637ceec5e199c7898a0054216900b678fe999a6c4b1224d4561",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer under 65 stopped working because of a condition a physician expects to end in death within a year (or that has already lasted a year without a forward-looking prognosis), reads the help's only test, 'a condition a doctor expects to last at least a year', and answers no.",
+       "source_text": "i1040sr (2025) p. 1, Qualified Individual: \"a. You retired on permanent and total disability. (See Permanent and Total Disability, later).\"",
+       "why": "The text makes the test a defined term, and the help replaces it with a single 'expected to last at least a year' condition. The definition sits on a later page that is not in the snapshot; as I recall it, it also covers a condition that has already lasted 12 months or is expected to result in death, which the help leaves out.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer under 65 had to leave their own job because of a long-lasting condition but can still do other substantial paid work, and answers yes because the help says 'Yes if a person under 65 had to stop working because of a condition a doctor expects to last at least a year.'",
+       "source_text": "i1040sr (2025) p. 1, Qualified Individual: \"You retired on permanent and total disability. (See Permanent and Total Disability, later).\"",
+       "why": "The text requires disability that is both permanent and total under the instructions' definition, while the help's 'had to stop working' also takes in partial or occupation-specific disability. The definition (as I recall, inability to engage in any substantial gainful activity, determined by a qualified physician) is on a later page not in the snapshot.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "On a joint return with one spouse 65 or older who retired on disability and one spouse under 65 who did not, the question 'Have you (or, on a joint return, your spouse) retired on permanent and total disability?' is truthfully answered yes.",
+       "source_text": "i1040sr (2025) p. 1, Qualified Individual: \"2. You were under age 65 (discussed later) at the end of 2025 and all three of the following statements are true. a. You retired on permanent and total disability.\"",
+       "why": "The line needs the disability retirement of a person who was under 65 at the end of 2025, and the gate only checks that someone on the return is under 65. The question text itself has no age limit; only the help and label mention under 65, and the help does not say 'at the end of 2025'.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "ff3ccdd98450a356c95499e39422d70804fe2c82c744b34007598016e78e4edb",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.109648,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.disability_retired.3a220c74d133.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sr",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "8e01e7e4db0054efbeac87d4246ad14425e599b9e93a4d73ba6eda964726880c",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Qualified Individual, \"You retired on permanent and total disability\""
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "9b45d1c5b76440d18a3d1118b274368669e683ced562a0d8b208e92b856a84db"
+    }
+   ]
+  },
+  "s3.elderly_credit": {
+   "subject_sha": "a216305c4f1ef417d6ecbf5faf9df0904475f81c7fad92811f6740a8a78aa8fa",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A married filer filing separately who lived with their spouse at some time in 2025, is 65 or older, and has income under $17,500 reads the help's 'a person not filing with a spouse' limits as covering them and answers Yes, though the credit is not available to them.",
+       "source_text": "i1040sr p. 1: \"If your filing status is married filing separately and you lived apart from your spouse at all times during 2025, you can claim the credit. However, if you lived with your spouse at any time during 2025, you can’t take the credit\"; p. 3 line 10 table: \"box 8 or 9 $3,750\"",
+       "why": "The help ('for a person not filing with a spouse, income (Form 1040 line 11a) under $17,500 and nontaxable social security and pensions under $5,000') leaves out the lived-apart-all-year condition for separate filers, so a Yes comes in for a credit that cannot be claimed. The $3,750 initial amount for boxes 8 and 9 also suggests the separate filer's limits are lower than the help states, but the page with Table 1 was not in the text supplied, so that part is unconfirmed.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A person under 65 who retired on permanent and total disability but received no taxable disability income for 2025 (or had reached the employer's mandatory retirement age by January 1, 2025), or a filer who was a nonresident alien during the year with no election, sees only the age, disability and income conditions in the help and answers Yes.",
+       "source_text": "i1040sr p. 1: \"You are a qualified individual for this credit if you are a U.S. citizen or resident alien ... all three of the following statements are true. a. You retired on permanent and total disability. ... b. You receive taxable disability income for 2025. c. On January 1, 2025, you had not reached mandatory retirement age\"",
+       "why": "The help ('Asked because someone on this return is 65 or older, or retired on disability. The credit is only for people with low income') presents retirement on disability plus low income as enough. It omits the taxable disability income, mandatory retirement age and citizen or resident conditions, so a Yes is given where no credit is allowed.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "826002af26c4fe32bd5574fe1bb413aab428f3abd02dcdf9973af3a8438de40b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.139016,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.elderly_credit.a216305c4f1e.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sr",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "8e01e7e4db0054efbeac87d4246ad14425e599b9e93a4d73ba6eda964726880c",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Qualified Individual, \"You are a qualified individual for this credit if you are a U.S. citizen or resident alien\"; p. 3, Income Limits, \"If your AGI or your nontaxable pensions, annuities, or disability income are equal to or more than the income limits, you can’t take the credit\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "9b45d1c5b76440d18a3d1118b274368669e683ced562a0d8b208e92b856a84db"
+    }
+   ]
+  },
+  "s3.ev": {
+   "subject_sha": "6693f1ec82ded27c209d067d488e473ba67af81077ef8e1fd5b0d32bdf531c3a",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose home charger was physically installed in late 2024 but only became operational (inspected, energized, ready to use) in 2025, and who got no vehicle in 2025, truthfully answers no to 'In 2025, did you ... install home equipment to charge or fuel a vehicle?'.",
+       "source_text": "i8911 p. 4, Line 5: \"Generally, property is placed in service when it is ready and available for a specific use, regardless of whether or not it is actually used at the time. For example, an EV charger installed at an individual taxpayer's principal residence will be placed in service when it is operational.\"; i8911 p. 1, Purpose of Form: \"alternative fuel vehicle refueling property you placed in service during your tax year\"",
+       "why": "The credit year is the year the property is placed in service (operational), not the year it was installed, so the word 'install' with no help on equipment timing makes this filer answer no. The gate then forces s3.ev_equipment_if_ev to false, although the refueling property credit question should be reached for property placed in service at the main home in 2025.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b468a57c2d646b5830c5da8e34f126d52b96e7169a6ac1702451f558b3e71e40",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.194408,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.ev.6693f1ec82de.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8936",
+     "revision": "2025",
+     "text_sha256": "c29fb417b3f05e5067c6261e0eecf14e6dc2bb5d099b0179395b9e12bf9f0b0d",
+     "pages": [
+      1,
+      2,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Purpose of Form, \"You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer\"; p. 1, Reminders, \"you may be able to transfer the credit amount to the dealer at the time of sale and receive an immediate financial benefit in place of a tax credit claimed on your tax return\"",
+      "p. 1, Purpose of Form, \"to figure the following credits for clean vehicles you placed in service during your tax year\"; p. 2, New Clean Vehicle Certification and Other Requirements, \"You placed the vehicle in service during the tax year\"; p. 7, Line 3, \"The date the vehicle was placed in service is the date the taxpayer takes possession of the vehicle\"; , Purpose of Form, \"to figure your credit for alternative fuel vehicle refueling property you placed in service during your tax year\"; , Qualified Alternative Fuel Vehicle Refueling Property, \"To recharge an electric vehicle, but only if the recharging property is located at the point where the vehicle is recharged\"",
+      "p. 1, What’s New, \"Taxpayers cannot claim clean vehicle credits for new, previously owned, or commercial clean vehicles that they acquired after September 30, 2025\" and \"a vehicle is “acquired” as of the date a written binding contract is entered into and a payment has been made\"; p. 2, New Clean Vehicle Certification and Other Requirements, \"If the vehicle is leased, only the lessor and not the lessee is entitled to the credit\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      7
+     ],
+     "cols_sha256": "754e3102c5109789dd39499aed7275f3323010ad0736619519d4d96b98c18930"
+    },
+    {
+     "doc": "i8911",
+     "revision": "December 2025 (for tax years beginning in 2025 or later)",
+     "text_sha256": "9258095d5fbe83d1a67ef6ed338f5d0a706823c1b84475f53160171b49e02c29",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Amount of Credit, \"For property of a character not subject to depreciation and which is placed in service at your main home (personal use property), the credit is 30% of the cost of the property\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "cols_sha256": "6afc575ca0eeb12440668d8f8df07b23ab9250cf7b9058fc4e9a52294581aea6"
+    }
+   ]
+  },
+  "s3.ev_bought": {
+   "subject_sha": "242ed1a74244b844106c0a4305bc94fe3c7d76e6a0b20943f4ccceeae1bd08e4",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer signed a non-binding order or reservation form and paid a small refundable deposit by September 30, 2025, but only entered into the binding purchase contract after that date; they would truthfully answer Yes.",
+       "source_text": "i8936 p. 1, What's New: \"a vehicle is “acquired” as of the date a written binding contract is entered into and a payment has been made\"",
+       "why": "The question asks only for \"the contract signed and a payment made by September 30, 2025\", and the help adds \"a small deposit\", so it drops the requirement that the contract be written and binding. A Yes then covers a vehicle acquired after September 30, 2025, for which \"Taxpayers cannot claim clean vehicle credits\".",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer received more than one clean vehicle in 2025, for example one leased and one bought, or one bought in August and one in November, and cannot tell which one \"the vehicle\" means.",
+       "source_text": "i8936 p. 1, New Clean Vehicle Credit: \"The credit is equal to the sum of the credit amounts figured for each new clean vehicle you placed in service during your tax year\"",
+       "why": "The line needs Yes if any vehicle received in 2025 was bought and acquired by September 30, 2025, but \"Did you ... buy the vehicle, not lease it\" can be read as referring to one particular vehicle. A filer thinking of the leased or later-bought one could answer No.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "1c8834d36c3172ed0dfe75460145882e443fdf7e90358bf068dcd888870bd093",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.11916,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.ev_bought.242ed1a74244.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8936",
+     "revision": "2025",
+     "text_sha256": "c29fb417b3f05e5067c6261e0eecf14e6dc2bb5d099b0179395b9e12bf9f0b0d",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, What’s New, \"Taxpayers cannot claim clean vehicle credits for new, previously owned, or commercial clean vehicles that they acquired after September 30, 2025\" and \"a vehicle is “acquired” as of the date a written binding contract is entered into and a payment has been made\"; p. 2, New Clean Vehicle Certification and Other Requirements, \"If the vehicle is leased, only the lessor and not the lessee is entitled to the credit\""
+     ],
+     "cols_pages": [
+      1,
+      2
+     ],
+     "cols_sha256": "754e3102c5109789dd39499aed7275f3323010ad0736619519d4d96b98c18930"
+    }
+   ]
+  },
+  "s3.ev_credit": {
+   "subject_sha": "9f47ee434d88d4060f2c981d300a25b575a3d65ae723c92734d2e56e7ab0cf2a",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer bought a new or used clean vehicle from a registered dealer before October 1, 2025 and transferred the credit to the dealer at the time of sale to reduce the price, so they do not 'want to claim a tax credit for that vehicle on this return' and truthfully answer No.",
+       "source_text": "i8936 p. 1, Purpose of Form, Caution: \"You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer.\"; p. 1, Reminders: \"If you elect to transfer the credit, you must file Form 8936 and Schedule A (Form 8936) with your return for the tax year in which the vehicle was placed in service.\"",
+       "why": "The question asks only whether the filer wants to claim a credit on the return, and the help says to answer No to go on without it. A filer who already received the benefit by transfer therefore answers No, although Form 8936 and Schedule A are mandatory for them and the line should be yes.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "6f9f179e51ecfd56c81241fdbec0a3d006552220d2f7de56c6d72807e83f1f42",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.082408,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.ev_credit.9f47ee434d88.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8936",
+     "revision": "2025",
+     "text_sha256": "c29fb417b3f05e5067c6261e0eecf14e6dc2bb5d099b0179395b9e12bf9f0b0d",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Purpose of Form, \"to figure the following credits for clean vehicles you placed in service during your tax year\""
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "754e3102c5109789dd39499aed7275f3323010ad0736619519d4d96b98c18930"
+    }
+   ]
+  },
+  "s3.ev_dealer": {
+   "subject_sha": "a2ced3a1c360de2d0740f87e932ef1f29d5f0f2f1ea35b36ea7e74c6de2706f1",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who bought a clean vehicle and took possession of it in 2024 with the credit transferred to the dealer, and who passes the gate only because they installed a home charger in 2025 (or leased or got another vehicle in 2025), truthfully answers yes.",
+       "source_text": "i8936 (2025) p. 1, Reminders: \"If you elect to transfer the credit, you must file Form 8936 and Schedule A (Form 8936) with your return for the tax year in which the vehicle was placed in service.\" p. 1, Purpose of Form: \"clean vehicles you placed in service during your tax year\"",
+       "why": "The question says \"When you (or, on a joint return, your spouse) bought a vehicle, did the dealer give you the tax credit\" with no year and no tie to the vehicle received in 2025. The gate does not close this gap because it is also true for home charging equipment alone, so a transfer on a vehicle placed in service in another year is brought onto the 2025 return.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b85b07bd3fbe669adffc48e06d2f79e8cb2a5176141dda4e7f712cb142f376c1",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.080128,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.ev_dealer.a2ced3a1c360.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8936",
+     "revision": "2025",
+     "text_sha256": "c29fb417b3f05e5067c6261e0eecf14e6dc2bb5d099b0179395b9e12bf9f0b0d",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Purpose of Form, \"You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer\"; p. 1, Reminders, \"you may be able to transfer the credit amount to the dealer at the time of sale and receive an immediate financial benefit in place of a tax credit claimed on your tax return\""
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "754e3102c5109789dd39499aed7275f3323010ad0736619519d4d96b98c18930"
+    }
+   ]
+  },
+  "s3.ev_equipment": {
+   "subject_sha": "3c461b01e8687de8149c512aef0fda339b2c1d6302b647a40c24d04eb895fe3b",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "d6d2ba9880e72dc4024631cb875ac0860efc8a4dfb6f131ae2951e711d56e1ad",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.113784,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.ev_equipment.3c461b01e868.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8911",
+     "revision": "December 2025 (for tax years beginning in 2025 or later)",
+     "text_sha256": "9258095d5fbe83d1a67ef6ed338f5d0a706823c1b84475f53160171b49e02c29",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Amount of Credit, \"For property of a character not subject to depreciation and which is placed in service at your main home (personal use property), the credit is 30% of the cost of the property\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "cols_sha256": "6afc575ca0eeb12440668d8f8df07b23ab9250cf7b9058fc4e9a52294581aea6"
+    }
+   ]
+  },
+  "s3.farmland": {
+   "subject_sha": "83dd0165590b4eba424a72c22881f7fdb599182c81799c82ceaa392f741a8c8f",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "e1ad3b4887662319b12e16ab5d4abf277fc4657a16fc2ed147618a48a8777c1b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.064608,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.farmland.83dd0165590b.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      117
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\""
+     ],
+     "cols_pages": [
+      117
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "s3.farmland_deferral": {
+   "subject_sha": "2f452eb6adc40f51deccb713221c072e06d9945cdeee09a527d36d6916a471c8",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "11688cfc971cf468392d83e4cdcf607294ab8831b34ce25ca62cb8a6395f6c38",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.055144,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.farmland_deferral.2f452eb6adc4.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      117
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\""
+     ],
+     "cols_pages": [
+      117
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "s3.foreign_any": {
+   "subject_sha": "f69440696cfed608248abffc7a6c750312748a51012946e6289decbc9a0ed9a1",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose section 965 inclusion came through an S corporation or domestic partnership that was itself the U.S. shareholder, and whose own share of the foreign corporation (even counting pass-through and family holdings) was under 10%, answers no while still having elected installments with net 965 tax liability left to pay.",
+       "source_text": "i1040gi p. 117, Line 13d: \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d. Enter the amount of net 965 tax liability remaining to be paid in future years.\"",
+       "why": "The text sets no ownership threshold on the filer, but the question lets in only filers who \"owned 10% or more of a foreign company\", so a truthful no forces s3.section965_if_foreign to false and line 13d is never asked.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer who paid income tax to a U.S. territory (for example Puerto Rico, as a former resident taxed on income not sourced there) but never paid tax to a foreign country and had no territory-source income answers no to \"paid income tax to another country\".",
+       "source_text": "i1040gi p. 115, Line 1: \"If you paid income tax to a foreign country or U.S. territory, you may be able to take this credit\"; i1116 p. 19, Line 10: \"any foreign tax you paid or accrued to any foreign country or U.S. territory\"",
+       "why": "The wording drops \"or a U.S. territory\" from the tax-paid limb (the label keeps it), so unused territory taxes eligible for carryover reach ftc.carryover_ask only if the 2024 return happened to include another form.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose only foreign income tax was paid through a partnership or S corporation and reported on Schedule K-3 (or was accrued rather than paid directly) may answer no, because they never personally \"paid income tax to another country\" and the help speaks only of fund tax on Form 1099-DIV.",
+       "source_text": "i1040gi p. 115, Line 1: \"the foreign tax paid on it were reported to you on Form 1099-INT, Form 1099-DIV, or Schedule K-3 (or substitute statement)\"; i1116 p. 19, Line 10: \"any foreign tax you paid or accrued\"",
+       "why": "Pass-through and accrued foreign taxes can produce unused foreign taxes eligible for carryover to 2025, yet the wording and help do not tell the filer to count them, leaving the carryover question dependent on the 2024-forms fallback.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b312ca88155d02da66c85bc492396c125a3bbecf347d7ebc9fc74097307b6903",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.196296,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.foreign_any.f69440696cfe.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      115,
+      117
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 115, Line 1, \"If you paid income tax to a foreign country or U.S. territory, you may be able to take this credit\"; p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"; p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\"",
+      "p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\"",
+      "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\""
+     ],
+     "cols_pages": [
+      115,
+      117
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i1116",
+     "revision": "2025; printed date 2025-12-23",
+     "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
+    }
+   ]
+  },
+  "s3.kerosene": {
+   "subject_sha": "cace060f062eeff15d07a6bb40d61baa89dd81df742083ccc651fafb29ac470d",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "ff8c373a4b820b13aa54ac3738e2eecb2176f39fcf3a42135dea3240748dea10",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.043344,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.kerosene.cace060f062e.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4136",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "f2338a673161989fd24a575b29bd75077fda30429f135592b78c03b3bbdbf571",
+     "pages": [
+      2
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Part I—Information About Your Business, \"If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking\"",
+      "p. 2, Part I—Information About Your Business, \"used in your home during the tax period for heating, lighting, or cooking\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "031aac61c09cba6aadf939df9388eb5665127f2fde52f4b9a2a1bde53ed84ab5"
+    }
+   ]
+  },
+  "s3.kerosene_credit": {
+   "subject_sha": "cf93bf16b176c47ec91f28606db6c07aadf62ebf97faa213cc3fc17c35be850b",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose home kerosene in 2025 was dyed (untaxed), was bought from a blocked pump, or was bought by someone else (for example a landlord) truthfully answers yes because they want the fuel tax back.",
+       "source_text": "i4136 p. 2: \"If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking\"",
+       "why": "The question as shown, \"want to claim back the federal fuel tax on that kerosene (Form 4136)?\", refers only to kerosene used in the home and drops the conditions that it be undyed, purchased by the filer, and not from a blocked pump. Those conditions appear only in the label, and neither the gate question nor the help text states them, so a yes brings in kerosene the line must not cover.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "acd733f5793a7e5284316b85e3b72da34c1cf0a0df77d537304c1b73bc836944",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.07472000000000001,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.kerosene_credit.cf93bf16b176.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4136",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "f2338a673161989fd24a575b29bd75077fda30429f135592b78c03b3bbdbf571",
+     "pages": [
+      2
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Part I—Information About Your Business, \"If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "031aac61c09cba6aadf939df9388eb5665127f2fde52f4b9a2a1bde53ed84ab5"
+    }
+   ]
+  },
   "s3.line10": {
    "subject_sha": "2616405aca5cfa1119f9f1f67ccf2a23d6bc2e67ce22e91118bb4775d7ae8ea9",
    "samples": [
@@ -50,73 +935,636 @@
     }
    ]
   },
-  "s3.line12": {
-   "subject_sha": "e1c24404e083eed5712ffc4ebf06d4b0a77f9ecd45742035e321f310d0d3ef58",
+  "s3.mcc": {
+   "subject_sha": "6a02e972215abb47bc1638dc96ae6aebeec1a60e2feb108355bfdceb54046897",
    "samples": [
     {
-     "verdict": "MATCH",
-     "findings": [],
-     "prompt_sha": "7f6dd190c37496e284cc479a647d9d2cc95def55f6d231ed0dee6e11c0d276f7",
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer holds an MCC for a home that is not (or is no longer) their main home, for example a former residence now kept as a second home or rental, and still pays mortgage interest that appears on Schedule A line 8a.",
+       "source_text": "f8396 p. 2, Who Can Claim the Credit: \"The home to which the certificate relates must be your main home and must also be located in the jurisdiction of the governmental unit that issued the certificate.\"",
+       "why": "The question asks only about a certificate \"for your home loan\" and its help never mentions the main home, although the label does. This filer truthfully answers yes where the line needs no.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer refinanced the original MCC loan and either got no reissued certificate (but still holds the original paper) or got a reissued one that fails the stated conditions.",
+       "source_text": "f8396 p. 2, Refinanced Mortgage: \"You can refinance your mortgage without losing this credit if your existing MCC is reissued and the reissued certificate meets all of the following conditions.\"",
+       "why": "The question asks \"Do you ... have a 'mortgage credit certificate'\" and the help says \"A certificate issued again after a refinancing counts\" without conditions. A filer who still holds the original certificate, or a non-conforming reissued one, answers yes although no certificate qualifies for the current loan.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "21a4e65fe9439531924d3b091af45e045952981e53f7b63764010c8f4ada4826",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
-     "model": "claude-opus-5-5",
-     "cost": 0.017332,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/s3.line12.e1c24404e083.1.response.txt"
+     "model": "claude-fable-5-2",
+     "cost": 0.109944,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.mcc.6a02e972215a.1.response.txt"
     }
    ],
-   "type": "NonNegDollars",
+   "type": "Bool",
    "readers": 1,
    "brief": false,
    "used": [
     {
-     "doc": "f1040s3",
-     "revision": "2025; created 2025-11-17",
-     "text_sha256": "43c7ba36b506a538179465978807938c64bde632d7e1bff225bb6b13b19f37bd",
+     "doc": "f8396",
+     "revision": "2025; created 2025-08-28",
+     "text_sha256": "7d27fdfd3ca9b205d00b68cff4f6261540d0ccc556b13edf05ccb0dd11885ec9",
      "pages": [
-      1
+      1,
+      2
      ],
      "how": "whole document",
      "locators": [
-      "Schedule 3 (2025), line 12",
-      "Schedule 3 (2025), line 15"
+      "p. 2, Who Can Claim the Credit, \"You can claim the credit only if you were issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency under a qualified mortgage credit certificate program\""
      ],
-     "cols_pages": [],
-     "cols_sha256": "1ae44325c8d22211a6eadd11b393254317542704e5fed0fb419e41690210fc48"
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "71ea89f5ee5d170488cc56526b409eb38c10d65ce5abe72dcaee21064281eca9"
     }
    ]
   },
-  "s3.line14": {
-   "subject_sha": "bc60c46ab9c2923f9c86de919eb3af2fe83ea9c0c249db4fddd7777edf701b00",
+  "s3.prior_amt": {
+   "subject_sha": "de6047e3ba392230d5a02e0f22771016c388cef69a9b455df61c23ba3cc8efdb",
    "samples": [
     {
-     "verdict": "MATCH",
-     "findings": [],
-     "prompt_sha": "39783b437ad1e214a000053167b6761927f3d7c60536ce49b056227dd02479ed",
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A couple filing jointly for 2025 filed two separate 2024 returns (married filing separately, or not yet married), and only one of those returns shows alternative minimum tax on Schedule 2, line 2.",
+       "source_text": "i8801 p. 1, Who Should File: \"Complete Form 8801 if you are an individual, estate, or trust that for 2024 had: • An AMT liability and adjustments or preferences other than exclusion items\"; i8801 p. 2, Foreign Earned Income Tax Worksheet line 2a: \"your (and your spouse's if filing jointly) 2024 Form 2555\"; f8801 p. 2, line 16: \"Enter the amount from your 2024 Form 6251, line 11\"",
+       "why": "The question says \"Does that return show alternative minimum tax\", in the singular, so a filer with two 2024 returns can reasonably answer for their own return only and say No when the spouse's return shows the tax. The line needs Yes if either spouse had a 2024 liability, because the joint Form 8801 takes in both spouses' 2024 amounts.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "99769aadbc2eb2c21f446406474cfa45c822e282bc3da850c4bce2a62a45f999",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
-     "model": "claude-opus-5-5",
-     "cost": 0.016492,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/s3.line14.bc60c46ab9c2.1.response.txt"
+     "model": "claude-fable-5-2",
+     "cost": 0.21095999999999998,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.prior_amt.de6047e3ba39.1.response.txt"
     }
    ],
-   "type": "NonNegDollars",
+   "type": "Bool",
    "readers": 1,
    "brief": false,
    "used": [
     {
-     "doc": "f1040s3",
-     "revision": "2025; created 2025-11-17",
-     "text_sha256": "43c7ba36b506a538179465978807938c64bde632d7e1bff225bb6b13b19f37bd",
+     "doc": "i8801",
+     "revision": "2025",
+     "text_sha256": "0b107826c9e29d2b284a4aba175837438fd8d8e3f405b214909ddf3d39ed0656",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Who Should File, \"An AMT liability and adjustments or preferences other than exclusion items\"; , Part II, \"Enter the amount from your 2024 Form 6251, line 11\""
+     ],
+     "cols_pages": [
+      1,
+      3,
+      4,
+      5
+     ],
+     "cols_sha256": "5505010794a0984c4345b545b2602b3bbc71348cde05091aa76e1a4c99bc6ddb"
+    },
+    {
+     "doc": "f8801",
+     "revision": "2025; created 2025-11-12",
+     "text_sha256": "8d6a9d2d7388958b1ef192d4ea86f72742b249ea7361494bbd6c100c52d0dbbd",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "1a2853e41754fc296460caa33ce7d5afcd0a2c76f3794b66cdec9e1c3f20655c"
+    }
+   ]
+  },
+  "s3.prior_forms": {
+   "subject_sha": "48ef9197081aae42e5a47d147da6a5255e276e7664674950377ca23e5aa4c275",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer who first owed alternative minimum tax in 2024 on deferral items has Form 6251 in the 2024 return but no Form 8801, so truthfully answers no, yet has a minimum tax credit to bring into 2025.",
+       "source_text": "i8801 p. 1, Who Should File: \"Complete Form 8801 if you are an individual, estate, or trust that for 2024 had: • An AMT liability and adjustments or preferences other than exclusion items, • A credit carryforward to 2025 (on 2024 Form 8801, line 26), or • An unallowed qualified electric vehicle credit\"",
+       "why": "The question detects only the second of the three cases (a 2024 Form 8801). A 2024 AMT liability shown on Form 6251 is left out, although the help itself mentions \"alternative minimum tax paid earlier\".",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer whose 2024 return has Form 8834 with a qualified electric vehicle credit disallowed by the tax limit, but none of the listed forms, answers no although that amount feeds the 2025 minimum tax credit.",
+       "source_text": "i8801 p. 4, Line 20: \"Enter any qualified electric vehicle credit not allowed for 2024 solely because of the limitation under section 30(b)(3)(B)\"",
+       "why": "Form 8834 is not in the list of forms, so this amount reaching 2025 through Form 8801 is missed when the filer has no Form 8582-CR or 8801 in the 2024 return.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "27a522daf3be1d73e38d8f94161adea27f8477d2719126ebaf8bae5bc342db6e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.360848,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.prior_forms.48ef9197081a.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i3800",
+     "revision": "2025",
+     "text_sha256": "8f87d7d4652fdd97673c64cf436c3edfb4d31155a90efcb4a11d06a014bfe12d",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Carryback and Carryforward of Unused Credit, \"unused general business credits may be carried back 1 year and carried forward 20 years\"; , Part II—Mortgage Interest Credit Carryforward to 2026, \"you may have an unused credit to carry forward to the next 3 tax years\"; , Who Should File, \"A credit carryforward to 2025 (on 2024 Form 8801, line 26)\"; , Line 1, \"Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR\"; , Purpose of Form, \"You have a carryforward of an adoption credit from 2024\"; , Purpose of Form, \"to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024\"; , Line 12, \"you may carry the unused portion of the credit to the next tax year\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "f14b444e5dcde07304dc6f5f8c9309bacf8c621eca24a4d9093f9732c39d2b9f"
+    },
+    {
+     "doc": "f8396",
+     "revision": "2025; created 2025-08-28",
+     "text_sha256": "7d27fdfd3ca9b205d00b68cff4f6261540d0ccc556b13edf05ccb0dd11885ec9",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "71ea89f5ee5d170488cc56526b409eb38c10d65ce5abe72dcaee21064281eca9"
+    },
+    {
+     "doc": "i8801",
+     "revision": "2025",
+     "text_sha256": "0b107826c9e29d2b284a4aba175837438fd8d8e3f405b214909ddf3d39ed0656",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      1,
+      3,
+      4,
+      5
+     ],
+     "cols_sha256": "5505010794a0984c4345b545b2602b3bbc71348cde05091aa76e1a4c99bc6ddb"
+    },
+    {
+     "doc": "f8834",
+     "revision": "October 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+     "text_sha256": "294996953deaa0a29ce39ade08a10ab5de5d41a0eb955117b2543a94b17a0e41",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "15f21877e903e0b003bcb978d98712c7e8913bed71ae5e453700cb8150b9b4d1"
+    },
+    {
+     "doc": "i8839",
+     "revision": "2025",
+     "text_sha256": "aba1b0860ba08ea9e0953f31580e22421bdb92427957682acc3d79b98cb43626",
+     "pages": [
+      1
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "ba3ee91ddad989767d0c8aa84b7b53b7a4a1161c0d0731cbb8eb275febf19d8b"
+    },
+    {
+     "doc": "f8859",
+     "revision": "2025; created 2025-08-07",
+     "text_sha256": "718b7d6bc801be84b557f42af42a44cc2dcdbce3ce93d169c0589b2266fb7295",
      "pages": [
       1
      ],
      "how": "whole document",
-     "locators": [
-      "Schedule 3 (2025), line 14",
-      "Schedule 3 (2025), line 15"
-     ],
+     "locators": [],
      "cols_pages": [],
-     "cols_sha256": "1ae44325c8d22211a6eadd11b393254317542704e5fed0fb419e41690210fc48"
+     "cols_sha256": "648bf239b24daf08f051b1da3808a13b9c78d05e7c47d71665cf8a28219e7d8c"
+    },
+    {
+     "doc": "i8912",
+     "revision": "December 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+     "text_sha256": "e23ca6f7fb979757f2f3590fdf4823eba19cc909f724b0d91a61ce02f0300c40",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "cols_sha256": "e9178b04d7fc4e89ac00e77cea2a660b26eeb1c552cd4580a72a79b189f99f1b"
+    }
+   ]
+  },
+  "s3.prior_other_forms": {
+   "subject_sha": "416ecf4561d598b69233bc275d24b43ee57efc7bfe18c7f1bdaedc3a52208754",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer who filed no 2024 return (for example, income below the filing threshold) but still holds an unused credit from 2023 or earlier, such as a general business credit, minimum tax credit, DC homebuyer credit, adoption credit or mortgage interest credit, is told by the help to answer No.",
+       "source_text": "i3800 p. 3: \"unused general business credits may be carried back 1 year and carried forward 20 years\"; f8859 p. 1: \"You can carry forward any unused credit shown on line 4 until you have used all of it\"; f8396 p. 2: \"you may have an unused credit to carry forward to the next 3 tax years or until used, whichever comes first\"",
+       "why": "These carryforwards last several years and do not depend on a 2024 return having been filed with the form attached. The forced No sets `s3.prior_forms_if_forms` to false without asking the carry-credit question, so a credit that can still be carried into 2025 is dropped.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b40a46480cbca352c3f0b35d28a5da55db20b13fcbd119851eaab0336c6716c9",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.44992,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.prior_other_forms.416ecf4561d5.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8801",
+     "revision": "2025",
+     "text_sha256": "0b107826c9e29d2b284a4aba175837438fd8d8e3f405b214909ddf3d39ed0656",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Who Should File, \"A credit carryforward to 2025 (on 2024 Form 8801, line 26)\"; , Purpose of Form, \"to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024\"",
+      "p. 1, Who Should File, \"An AMT liability and adjustments or preferences other than exclusion items\"; , Part II, \"Enter the amount from your 2024 Form 6251, line 11\""
+     ],
+     "cols_pages": [
+      1,
+      3,
+      4,
+      5
+     ],
+     "cols_sha256": "5505010794a0984c4345b545b2602b3bbc71348cde05091aa76e1a4c99bc6ddb"
+    },
+    {
+     "doc": "i1116",
+     "revision": "2025; printed date 2025-12-23",
+     "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
+    },
+    {
+     "doc": "i3800",
+     "revision": "2025",
+     "text_sha256": "8f87d7d4652fdd97673c64cf436c3edfb4d31155a90efcb4a11d06a014bfe12d",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Carryback and Carryforward of Unused Credit, \"unused general business credits may be carried back 1 year and carried forward 20 years\"; , Part II—Mortgage Interest Credit Carryforward to 2026, \"you may have an unused credit to carry forward to the next 3 tax years\"; , Who Should File, \"A credit carryforward to 2025 (on 2024 Form 8801, line 26)\"; , Line 1, \"Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR\"; , Purpose of Form, \"You have a carryforward of an adoption credit from 2024\"; , Purpose of Form, \"to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024\"; , Line 12, \"you may carry the unused portion of the credit to the next tax year\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "f14b444e5dcde07304dc6f5f8c9309bacf8c621eca24a4d9093f9732c39d2b9f"
+    },
+    {
+     "doc": "f8859",
+     "revision": "2025; created 2025-08-07",
+     "text_sha256": "718b7d6bc801be84b557f42af42a44cc2dcdbce3ce93d169c0589b2266fb7295",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "648bf239b24daf08f051b1da3808a13b9c78d05e7c47d71665cf8a28219e7d8c"
+    },
+    {
+     "doc": "f8801",
+     "revision": "2025; created 2025-11-12",
+     "text_sha256": "8d6a9d2d7388958b1ef192d4ea86f72742b249ea7361494bbd6c100c52d0dbbd",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "1a2853e41754fc296460caa33ce7d5afcd0a2c76f3794b66cdec9e1c3f20655c"
+    },
+    {
+     "doc": "f8396",
+     "revision": "2025; created 2025-08-28",
+     "text_sha256": "7d27fdfd3ca9b205d00b68cff4f6261540d0ccc556b13edf05ccb0dd11885ec9",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "71ea89f5ee5d170488cc56526b409eb38c10d65ce5abe72dcaee21064281eca9"
+    },
+    {
+     "doc": "f8834",
+     "revision": "October 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+     "text_sha256": "294996953deaa0a29ce39ade08a10ab5de5d41a0eb955117b2543a94b17a0e41",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "15f21877e903e0b003bcb978d98712c7e8913bed71ae5e453700cb8150b9b4d1"
+    },
+    {
+     "doc": "i8839",
+     "revision": "2025",
+     "text_sha256": "aba1b0860ba08ea9e0953f31580e22421bdb92427957682acc3d79b98cb43626",
+     "pages": [
+      1
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "ba3ee91ddad989767d0c8aa84b7b53b7a4a1161c0d0731cbb8eb275febf19d8b"
+    },
+    {
+     "doc": "i8912",
+     "revision": "December 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+     "text_sha256": "e23ca6f7fb979757f2f3590fdf4823eba19cc909f724b0d91a61ce02f0300c40",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "cols_sha256": "e9178b04d7fc4e89ac00e77cea2a660b26eeb1c552cd4580a72a79b189f99f1b"
+    }
+   ]
+  },
+  "s3.repaid_income": {
+   "subject_sha": "4d89eb811e2f93e1423ce3709a6bcf0f5910d68ecea4b7edd84e1c326898a5ff",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer repaid more than $3,000 of earlier-year income that was not included under a claim of right (for example, embezzled or stolen funds they reported and later returned, where it never appeared they had an unrestricted right to the money) and truthfully answers yes.",
+       "source_text": "p525 p. 36: \"If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right. This means that at the time you included the income, it appeared that you had an unrestricted right to it.\"",
+       "why": "The question asks only whether you \"pay back more than $3,000 that you had reported as income in an earlier year\"; the claim-of-right condition is in the label but not in the question or help the filer sees. A yes here triggers the refusal and the other-credit gate although no deduction-or-credit choice exists.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer voluntarily returned more than $3,000 of previously reported income without being obliged to (for example, giving a bonus back by choice) and truthfully answers yes.",
+       "source_text": "p525 p. 36: \"If you had to repay an amount that you included in your income in an earlier year, you may be able to deduct the amount repaid from your income for the year in which you repaid it.\"",
+       "why": "The question asks whether you \"pay back more than $3,000\", with no requirement that the repayment was owed; \"had to return\" appears only as an example in the help. A voluntary repayment would be counted and reach the refusal, although the text covers only amounts the filer had to repay.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c06f7bb5b7df14b72017c35984b73f2447037e4898027c585253e23b120305c5",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.131576,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.repaid_income.4d89eb811e2f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      36
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 36, Repayments, \"If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right\" and \"However, you can choose to take a credit for the year of repayment\"; , Line 13b, \"If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income\""
+     ],
+     "cols_pages": [
+      36
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      117
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      117
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "s3.section960c": {
+   "subject_sha": "6e6c517c611411f20a9993878b0a72b85cd96f7ece7be3b503ab5d71748a1f54",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "cf7eb2bbd508ca65c10698fc85757c981eeda3523465b5810c4d5330e33891ac",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.071784,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.section960c.6e6c517c6114.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      117
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\""
+     ],
+     "cols_pages": [
+      117
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "s3.section965": {
+   "subject_sha": "24220010da5f47f559ea5b1464f72c56320361f06ed68632a26f22aea25dd0e0",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who elected installments and is paying (or paid during 2025) the eighth and final installment truthfully answers yes to \"paying 'section 965' tax on a foreign company's earnings in yearly installments\", although nothing remains to be paid in future years.",
+       "source_text": "i1040gi p. 117, Line 13d: \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d. Enter the amount of net 965 tax liability remaining to be paid in future years.\"",
+       "why": "The line needs a yes only when part of the net 965 liability is still deferred to future years. The question and its help (\"which some owners chose to pay over eight years\") drop that condition, so a filer finishing the installments is brought in when the line must be false.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose last installment was paid earlier in 2025, or is due with the 2025 return, can read the present-tense \"Are you ... paying ... in yearly installments?\" as either yes (a payment was made this year) or no (the payments are finished).",
+       "source_text": "i1040gi p. 117, Line 13d: \"Enter the amount of net 965 tax liability remaining to be paid in future years.\"",
+       "why": "The wording fixes no point in time and does not mention a balance remaining after this return, so the two readings give different values for the line.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "c335d3f724bdff2867e51cec2bd17c19a459df94a4c488671b62b6abb883f50f",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.09559200000000001,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.section965.24220010da5f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      117
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\""
+     ],
+     "cols_pages": [
+      117
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "s3.virgin_islands": {
+   "subject_sha": "21541bc481220079349dabbd16b5876dc2d9444552e01cda5f4423300f7e9838",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "0968a9b067bfbef8d5bf057d493437d309f28b284b587778f92586f4ca956372",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.056624,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/s3.virgin_islands.21541bc48122.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      117
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\""
+     ],
+     "cols_pages": [
+      117
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
     }
    ]
   }

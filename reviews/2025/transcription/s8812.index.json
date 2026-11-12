@@ -5,7 +5,7 @@
  "base": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
  "head_rows": {
   "agree / disagree / missing": "12 / 39 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-11); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-12); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -117,10 +117,10 @@
   },
   {
    "key": "(CLW A 2)",
-   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "record": "419200487eeb1285b4e1254fbe6f9d98dc91dab22bc16bfe8f3ed5c3f36fc6d9",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation (+ scope); i1040s8812 p. 3, Credit Limit Worksheet A, line 2; f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,490 agree; 304 project-refuses, 124 candidate-unknown, 122 candidate-shows-skipped, 90 candidate-refuses, 13 project-unknown (on completed returns: 22 candidate-shows-skipped). As worksheet line 1: the reply's shown_when is s8812.show13; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays; the other differences are on refused or incomplete returns. Project stands.",
-   "subject_key": "1d816d3679e5f339ed56c823b6d4e474e2f07108df3eb4612521be7e91295bb7"
+   "ruling": "Ruling: representation (+ scope); i1040s8812 p. 4, Credit Limit Worksheet A, line 2. As ruled before on this line: the reply's sum is the project's and its shown_when is s8812.show13; triage applies only the project's shown_when, so candidate-shows-skipped counts the reply's value where the project hides the line. The refusal for Schedule 3 lines 6d, 6f, 6l and 6m is now s3.other_credit in place of scope.credits (BUG-0619); the reply refuses on the separate credit questions. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, pass 882b4ef599a4; 1,803 fixtures, 500 generated returns seed 20261026, 69 partial records from 40 bases; 2,365 comparisons): 2,005 agree; 136 candidate-shows-skipped, 123 candidate-refuses, 75 project-refuses, 18 project-unknown, 8 candidate-unknown. On completed returns: 113 candidate-shows-skipped and nothing else; no value differs. The refusals are on refused returns. Project stands.",
+   "subject_key": "f37ad91ee5d37dd402737c2ef5910783e7e686da4a7ca10fbddbe0d6eefa3dd8"
   },
   {
    "key": "(CLW A 3)",
@@ -131,10 +131,10 @@
   },
   {
    "key": "(CLW A 4)",
-   "record": "7465988cfb3d28832b925dfc79b9fb13af29b6d3edae767ede13628f06bd74ae",
+   "record": "419200487eeb1285b4e1254fbe6f9d98dc91dab22bc16bfe8f3ed5c3f36fc6d9",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; values are representation. i1040s8812 p. 4, Credit Limit Worksheet A, line 4: \"If you are not completing Credit Limit Worksheet B, enter -0-; otherwise, enter the amount from Credit Limit Worksheet B.\" Both sides choose (CLW B 15) when Worksheet B is completed and zero otherwise; the reply's guard includes line 12 above zero, which is implied by the line's shown_when s8812.show13 on both sides. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 2,225 of 2,272 agree; 42 project-unknown (23 incomplete, 19 refused), 5 project-refuses; none on a completed return. The project-unknown records are ones where s8812.show13 is itself unknown, so triage displays the project line as unknown while counting the reply's raw zero (stage14.mut.asset_2025_listed_unanswered: both values $0.00, project show13 unknown, `triage.py --explain`); the reply's own shown_when is the same s8812.show13. Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 6 differences: 5 project-refuses on refused returns (scope.credits, which the project screens on this line for the Forms 8396, 8839 and 8859 credits and the reply only on (CLW B 15): classm.f8960.1, classm.sb.2, stage8.refuse.s8812.credits, generated 26; and stage15.refuse.s8812.puerto_rico_clwb, where the project refuses the Puerto Rico path through Worksheet B line 6 (s8812.puerto_rico_if_child on (CLW B 11), cited to the line 6 sentence), a cited scope screen, while the reply figures it) and 1 project-unknown on a partial record withholding s8812.puerto_rico (base classm.f5695.4.deepseek), the question that screen asks. Project stands.",
-   "subject_key": "979cacd346a5a716b1a49d9b9aa7e942dbdf47c57ab2eb8e0f57913ddd5fccc8"
+   "ruling": "Ruling: model error (+ scope); i1040s8812 p. 4, Credit Limit Worksheet A, line 4, \"If you are not completing Credit Limit Worksheet B, enter -0-; otherwise, enter the amount from Credit Limit Worksheet B\". As ruled before on this line; the refusal for the credits that call for Worksheet B (Forms 8396, 8839, 8859) is now s3.other_credit in place of scope.credits (BUG-0619). executable-triage-v2 (`.transcription/triage/2025/s8812.json`, pass 882b4ef599a4; 1,803 fixtures, 500 generated returns seed 20261026, 69 partial records from 40 bases; 2,365 comparisons): 2,293 agree; 60 project-unknown, 8 candidate-refuses, 2 candidate-unknown, 2 project-refuses; none on a completed return (the project-unknowns are on incomplete and refused returns). Project stands.",
+   "subject_key": "9af560eedf5c2fc3442d9f18ad52f55c30019db457451199ae03016ab68ef447"
   },
   {
    "key": "(CLW A 5)",
@@ -372,9 +372,9 @@
   "11": "6efab51a89b36bf900a02c92653e95235c0b5f4d73c71dd058ec7720d69d86d0",
   "12": "3b4c257839088a2958f8c7690603a404af326a188c4f9a2009800941b7bb9003",
   "(CLW A 1)": "877500c05f9b56344db1784b6741359211258b95265fca80d5932fedefe7c6f8",
-  "(CLW A 2)": "06a14468e84fa420bce3f0e31bb4174d457156f51e68055c2e2b32f75ab16f39",
+  "(CLW A 2)": "03f1bb009c7cc73c49435bb9b493196f695f11908a375d1ad472d6c78774d3b3",
   "(CLW A 3)": "61f0c09671b7648c360d1ae551e31d1a2a7a3caaf3c6706d0a77bc0006f58076",
-  "(CLW A 4)": "8542d57a961dcc469bb56c2d9385e9b3a511346908f9e848bfae0d7c56392cca",
+  "(CLW A 4)": "0f430001c6decdea4345a769de20ec7901816a4c57a2f7aa27acafe5a1263474",
   "(CLW A 5)": "42cdbf544a354696984949fcfd7cdf0aa846d3f48915a0d5058f262f09b5b59e",
   "13": "1468df663953e3b73591eb991c72f1bca19ad288fb0a7c3a6417f34a67962984",
   "14": "84baf8ecdb7b32ea5f49e6706a97aa55ffbb9df25e861564b73ce74973972b9e",
@@ -412,7 +412,8 @@
   "s8812.clwb_complete": "25cf9c95738d00473ee009f4a9407e1fc808db3a1ebcdc3ad7e64c99960dd7b9",
   "4": "0d53bc5dc1cfa4f0daaf26549006dabfc947df56269fc2a313f5ba30eacdfee0",
   "6": "e5f15ec8384c902cbb90f2bbbb7a45114137186470f38670f9a39136c31a792e",
-  "(CLW A 4)": "02fc51c15ae9ec88dfbd177a3bef66b796e28e8bfaf42ec5ef878d6dd152cc39",
+  "(CLW A 2)": "7505de1ea4ef4e22cc0e952ae590d2fb27280c9b92e43cd8642ffa4b6feed7d5",
+  "(CLW A 4)": "85543fecffaaf297af9af2b94b36d8c85da701db9dec80245f073cc31ebab1fa",
   "18a": "8ad211a8e15777d7128605fcb605285c5eddbd15d4cbf0eb1da8a5dc908e228b",
   "18b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "27": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

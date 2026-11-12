@@ -18,6 +18,16 @@
    "subject_key": "ff5cc2a4950e874c0fb59f707c97b000b649e84b1401b5e92d6cec26de7c3ca9"
   },
   {
+   "printed": "credit",
+   "restated": "Choose — [helper \"Positive foreign taxes\" = true → helper \"Smaller of ftc.taxes, ftc.regular_tax\"] [helper \"Positive foreign taxes\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The smaller-of rule and the refusals agree with the text, but the regular-tax operand is restated as Form 1040 line 16 plus Schedule 2 line 1z, while the line 20 instruction says to enter that total 'less any tax included on line 16 from Form 4972' (and adjusted for Form 8978, line 14). No refusal or helper shown excludes those cases.",
+   "ruling": "Ruling: scope; i1116 p. 25, Line 20, \"less any tax included on line 16 from Form 4972\". Form 4972 and a Form 8978 amount are refused with the return (scope.other_line16, read by f1040.line16, which this line's regular tax reads), so no tax from Form 4972 is in line 16 on a return the tool completes. The line changed only by the new refusal for a carryover (ftc.carryover, BUG-0619), which the reviewer finds in agreement with the text. Project stands.",
+   "context": "48417fae71c5543d81c67030cddbbf0768d5a2b92ac4821994c2a5d7e4bf8b46",
+   "date": "2026-11-12",
+   "run": "4b2095127b63c4df7f27fc36e38ae7ca833de32d7ececa98f35dc6526a1e3c50",
+   "subject_key": "bd93eb3a7191de0332d9b71246977d6f00bc7bd637b46617ea90f2e687b93b35"
+  },
+  {
    "printed": "limited",
    "restated": "Enter the smaller of helper \"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7\" or f1040 line 16.",
    "model": "The text says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax' and to 'See the instructions for line 20... for how to figure your regular tax'. For individuals, line 20 means 'the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972' (adjusted for Form 8978). The program uses Form 1040 line 16 alone: it leaves out Schedule 2 line 1z and does not subtract the Form 4972 tax.",

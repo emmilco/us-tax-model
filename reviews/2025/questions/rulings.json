@@ -1065,25 +1065,26 @@
    ]
   },
   "unruled:sc.line1#1": {
-   "subject_sha": "f798335179734dd48b9cbb9f06cef48a91d5ea868bf63480d13434e81d8f4601",
-   "reason": "No defect: statutory employees and businesses owned with a spouse are refused.",
+   "subject_sha": "d36af770595be5311e24a1ac9ce5ce5ee7049fa3300723390f751c240ee21cdb",
+   "reason": "No defect: as ruled before on this question, statutory employees and businesses owned with a spouse are refused.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "sc.statutory (\"the 'Statutory employee' box in box 13 of your Form W-2 was checked\") makes sc.screened true, which refuses sc.line1.",
-     "gate": "sc.screened"
+     "evidence": "sc.statutory (\"the 'Statutory employee' box in box 13 of your Form W-2 was checked\") makes sc.screened true, which refuses sc.line1."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "out of scope",
-     "evidence": "sc.spouse_owned (\"as a qualified joint venture\") makes sc.screened true, which refuses sc.line1.",
-     "gate": "sc.screened"
+     "evidence": "sc.spouse_owned (\"as a qualified joint venture\") makes sc.screened true, which refuses sc.line1."
     }
    ],
-   "bugs": []
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
   },
   "unruled:sc.line10#1": {
    "subject_sha": "d544b8d8916a9c6169b8bb0baab579c65c81e59f5118728c5de6b8a72c4ad443",
@@ -7330,6 +7331,494 @@
    ],
    "bugs": [],
    "subject_sha": "5dca23501a0564f75cef38d4ba7ca4bf2df4102771659effc4ebd445019f3f85"
+  },
+  "unruled:ftc.carryover#1": {
+   "subject_sha": "c81ec30ea6f9db0fa2887cc361a8e37d82fcab4b945c691d68a5f252cb4912f1",
+   "reason": "No defect: a carryback belongs to an amended return; one over-refusal.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "A carryback from 2026 (i1116 p. 19, Line 10) is claimed on an amended 2025 return, which this tool does not prepare. Low."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "As the finding before for the carryback; on a joint return the question is shown as \"Do you or your spouse want to use ...\", so a spouse's earlier Form 1116 is within it. Low."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "Unused tax that can no longer be carried to 2025: a Yes refuses. Safe."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:person.age65#1": {
+   "subject_sha": "3cd6378cea29c25284b03c84e8cf08a2756cebeac335c1f5febce3a4981e3361",
+   "reason": "No defect: the wording is unchanged; the question gained the readers that count people for the disability question, and one rare residual comes with them.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "Married filing separately is refused (s3.mfs), so a separate filer's spouse is never counted."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "i1040sr p. 1, Death of taxpayer: a person born before January 2, 1961 who died in 2025 before reaching 65 is under 65 for Schedule R but is counted neither by s3.seniors nor by s3.under65s, so on a return with nobody else under 65 the disability question is not asked. What is lost is the offer of a refusal for a credit the filer must want. Low; BUG-0620 (9)."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "The senior deduction reads person.died_before_65 on its own lines (s1a.died_before_65, s1a.spouse_died_before_65), and s3.seniors does the same; the raw answer is not what those lines take."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.adoption#1": {
+   "subject_sha": "f4130351a80e274f6c6975bbea5f3f20612ac094e2bd4698fa1d4e0fdd23ccfc",
+   "reason": "No defect: the two missed situations are asked by the next question and by the 2024 forms question.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "Costs paid in 2024 toward an adoption not final at the end of 2024 are asked by s3.adoption_earlier and s3.adoption_us, asked next (fixture redesign.credits.refuse.adoption_earlier_us)."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A credit carried from 2024 is on the 2024 Form 8839, asked by s3.prior_forms (coverage row credits.adoption_carried)."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "More than one adoption and the singular \"the adoption\": a Yes for any of them refuses. Low."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.adoption_earlier#1": {
+   "subject_sha": "ece7baad86c8207da80f666936af7cd097b1300b64fe89b91ecff78003284b32",
+   "reason": "No defect: a foreign child is sorted out by the question beneath; one over-refusal.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "A Yes here refuses nothing: s3.adoption_us is asked next and a foreign child answers it No and goes on (fixture redesign.credits.adoption_earlier_foreign)."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "Costs wholly reimbursed by an employer: refused on the fact when the child was a U.S. child; adoption benefits are also refused by scope.other_income. Safe."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.adoption_us#1": {
+   "subject_sha": "7f2d3380268bd60e9a77902d92fe3efb3334b11cd7067f138f650920e75d18a4",
+   "reason": "No defect: one known wording residual.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "i8839 p. 3, \"(including U.S. territories)\": the help says \"lived in the United States\". Medium; BUG-0620 (9)."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.credit_bond#1": {
+   "subject_sha": "9463e2ba569bb348e2e07073bef76f41273d2d3a6acfdb89a7d769cc686c1d96",
+   "reason": "No defect: a carried credit and a credit through an entity are asked or refused elsewhere; one known residual.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A credit carried from an earlier year is on the 2024 Form 8912, asked by s3.prior_forms (coverage row credits.gap.bond_credit_carried)."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "A credit passed through by a partnership, S corporation, estate or trust comes with a Schedule K-1, which scope.schedule1 refuses; one passed through by a fund on another statement is BUG-0620 (7)."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "accepted WIDE",
+     "evidence": "A fund's other credit read as within the question: a Yes refuses. Safe."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.disability_retired#1": {
+   "subject_sha": "3a220c74d133e637ceec5e199c7898a0054216900b678fe999a6c4b1224d4561",
+   "reason": "No defect in the gate; one wording residual of the help, two wide cases that only ask one more question.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. i1040sr p. 1, Permanent and Total Disability: a condition expected to end in death is within the definition and outside the help's \"expects to last at least a year\". What is lost is the offer of a refusal for a credit the filer must want. Medium; BUG-0620 (9)."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A Yes only asks s3.elderly_credit, which refuses on the wish to claim."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "As the finding before: a Yes for a spouse who is 65 or older asks a question that is asked of that return anyway."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.elderly_credit#1": {
+   "subject_sha": "a216305c4f1ef417d6ecbf5faf9df0904475f81c7fad92811f6740a8a78aa8fa",
+   "reason": "No defect: wide by design, the question refuses on the wish to claim.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "out of scope",
+     "evidence": "Married filing separately is refused (s3.mfs)."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "i1040sr p. 1: a Yes without taxable disability income refuses though no credit exists. Safe."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.ev#1": {
+   "subject_sha": "6693f1ec82ded27c209d067d488e473ba67af81077ef8e1fd5b0d32bdf531c3a",
+   "reason": "No defect: one wording residual of the plain question.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. i8911 p. 4, Line 5: equipment mounted in 2024 and first usable in 2025. Medium in effect (a credit the filer must want); BUG-0620 (9)."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.ev_bought#1": {
+   "subject_sha": "242ed1a74244b844106c0a4305bc94fe3c7d76e6a0b20943f4ccceeae1bd08e4",
+   "reason": "No defect: one over-refusal, one low residual.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "A reservation before and a binding contract after September 30, 2025 (i8936 p. 1, What's New): a Yes leads to s3.ev_credit, where only a wish to claim refuses. Safe."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "More than one vehicle and the singular \"the vehicle\": the question beneath says \"With more than one such vehicle, answer for any of them\". Low."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.ev_credit#1": {
+   "subject_sha": "9f47ee434d88d4060f2c981d300a25b575a3d65ae723c92734d2e56e7ab0cf2a",
+   "reason": "No defect: the dealer transfer is asked first by its own question.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A credit transferred to the dealer is asked by s3.ev_dealer, before this question, and refuses (fixture redesign.credits.refuse.ev_dealer)."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.ev_dealer#1": {
+   "subject_sha": "a2ced3a1c360de2d0740f87e932ef1f29d5f0f2f1ea35b36ea7e74c6de2706f1",
+   "reason": "No defect; one rare over-refusal.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "A transfer for a vehicle received in 2024, asked because of 2025 equipment or a second vehicle (i8936 p. 1, Reminders). Rare, and the refusal names the form. As ruled on this question's screen."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.kerosene_credit#1": {
+   "subject_sha": "cf93bf16b176c47ec91f28606db6c07aadf62ebf97faa213cc3fc17c35be850b",
+   "reason": "No defect: wide only.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "i4136 p. 2: dyed kerosene, kerosene from a blocked pump or bought by someone else gives no credit, and a Yes refuses. Safe."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.mcc#1": {
+   "subject_sha": "6a02e972215abb47bc1638dc96ae6aebeec1a60e2feb108355bfdceb54046897",
+   "reason": "No defect: wide only, the question refuses on the fact by the owner's decision.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "f8396 p. 2, Who Can Claim the Credit: a certificate for a home that is no longer the main home refuses. Safe (owner decision 2 on the design)."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "f8396 p. 2, Refinanced Mortgage: a certificate not reissued, or reissued outside the conditions, refuses when answered Yes. Safe."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.prior_amt#1": {
+   "subject_sha": "de6047e3ba392230d5a02e0f22771016c388cef69a9b455df61c23ba3cc8efdb",
+   "reason": "No defect: one low wording residual.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "Two separate 2024 returns and the singular \"that return\": the question above asks about \"your (or, on a joint return, your spouse's)\" 2024 return, and a Yes for either refuses. Low."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.prior_forms#1": {
+   "subject_sha": "48ef9197081aae42e5a47d147da6a5255e276e7664674950377ca23e5aa4c275",
+   "reason": "No defect: a first minimum tax credit is asked by its own question; one known residual.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A 2024 alternative minimum tax with no Form 8801 is asked by s3.prior_amt (coverage row credits.gap.first_minimum_tax)."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "i8801 p. 4, Line 20: the list names Form 8582-CR in place of Form 8834 (f8834 p. 2, Line 1); whether every such return has Form 8582-CR is BUG-0620 (4) (coverage row credits.gap.form8834)."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.prior_other_forms#1": {
+   "subject_sha": "416ecf4561d598b69233bc275d24b43ee57efc7bfe18c7f1bdaedc3a52208754",
+   "reason": "No defect: the residual the design named.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "A credit carried from 2023 or earlier by a filer with no 2024 return: the design's D.2, C7 item 3, recorded as BUG-0620 (8) when the tree was accepted."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.section965#1": {
+   "subject_sha": "24220010da5f47f559ea5b1464f72c56320361f06ed68632a26f22aea25dd0e0",
+   "reason": "No defect: wide only.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "A filer paying the last installment has nothing remaining for later years (i1040gi p. 117, Line 13d) and a Yes refuses. Safe."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "The present tense and a last installment: a Yes refuses, and a No is right when nothing remains. Low."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:sc.business_credit#1": {
+   "subject_sha": "477976bdba9face37fe3379f3f6d4d13505bdbb069feadb12c697c60d6a2744a",
+   "reason": "No defect: either reading refuses.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The help says \"Count any of them: a credit tied to employees ...\", and the employment credits are also asked with the special items of the Schedule C (sc.special), which refuse; either answer refuses the business (coverage row credits.employment_credit)."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:sc.fuel_credit#1": {
+   "subject_sha": "a667767489dedd5605cb4653867c0ae1fecaf21d39f81579dd486b78ad21e42b",
+   "reason": "No defect: one low wording residual.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "i4136: a nontaxable use that is not off-road use, such as exported fuel. What is lost is the offer of a refusal for a credit the business must want. Low; BUG-0620 (9)."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:scope.other_line16#1": {
+   "subject_sha": "2c71887054266a383b969e8398182c9549d11b8760e2372c47dcd701b6ef6d5f",
+   "reason": "No defect in what this change touches: the wording is unchanged and the findings repeat earlier ones.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "out of scope / presentation",
+     "evidence": "As ruled on this question's screen: a triggered section 965(i) liability is an \"additional Form 1040 line 16 tax\" under the question's opening clause (i1040gi p. 36). Rare."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i1040gi p. 36, the January 1 birthday rule: a Yes refuses a return that needs no Form 8615. Safe."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.repaid_income#1": {
+   "subject_sha": "4d89eb811e2f93e1423ce3709a6bcf0f5910d68ecea4b7edd84e1c326898a5ff",
+   "reason": "No defect after the help was corrected for social security repayments (the first sample's screen finding): wide only.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "p525 p. 36, a repayment of income not included under a claim of right: a Yes refuses. Safe."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "A repayment the filer was not obliged to make: a Yes refuses. Safe; the help's example says \"had to return\"."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
+  },
+  "unruled:s3.foreign_any#1": {
+   "subject_sha": "f69440696cfed608248abffc7a6c750312748a51012946e6289decbc9a0ed9a1",
+   "reason": "Open residual, recorded and not edited again; two known residuals for the carryover question.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "open residual",
+     "evidence": "A section 965 inclusion through an entity with a look-through share below 10%. Recorded open as BUG-0620 (11), with the source line (i1040gi p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\", which sets no ownership condition); no further edit in this landing."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "i1040gi p. 115, Line 1, \"income tax to a foreign country or U.S. territory\": the question asks about tax paid to another country and income from a territory, so tax paid to a territory on other income is outside its words. It matters only for the carryover question. Low; BUG-0620 (3b)."
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "Foreign tax paid through an entity (Schedule K-3) or accrued: BUG-0620 (3b) and (9)."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ]
   }
  },
  "baseline": {}

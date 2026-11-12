@@ -49,6 +49,16 @@
   {
    "printed": "1",
    "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
+   "model": "The helper's regular tax is Form 1040 line 16 plus Schedule 2 line 1z, but the Form 1116 instructions say 'Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972'. Nothing shown subtracts or refuses the Form 4972 tax; the rest of the election (smaller of foreign tax or regular tax, $300/$600 limit, passive income, payee statements, no carryover) matches.",
+   "ruling": "Ruling: scope; as ruled on ftc.credit: i1116 p. 25, Line 20, \"less any tax included on line 16 from Form 4972\"; Form 4972 is refused with the return (scope.other_line16, read by f1040.line16), so line 16 holds no Form 4972 tax on a return the tool completes. Project stands.",
+   "context": "6e71771a65b91b98807855d6ef05ebc7293b9602ca656b5fbf6ef72be577ea2a",
+   "date": "2026-11-12",
+   "run": "abbf6405ec90f4098eb241e4f397710ce46b2b5e00768e9188faaab1ded0ee38",
+   "subject_key": "9c6ac1f3a8397152af935403ce14459adb6f628747707d61ecbe8b30125ff55c"
+  },
+  {
+   "printed": "1",
+   "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
    "model": "The program limits the credit to f1040 line 16 alone. The IRS defines regular tax for the election as 'the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972,' so it omits Schedule 2 line 1z and fails to subtract Form 4972 tax.",
    "ruling": "Ruling: finding; i1116 p. 2 (election to claim the credit without Form 1116): \"enter on the foreign tax credit line of your tax return ... the smaller of (a) your total foreign tax, or (b) your regular tax. See the instructions for line 20\"; p. 25, Line 20: \"Individuals. Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\". The English is accurate: ftc.limited is \"Smaller of ftc.taxes, f1040.line16\". Before Stage 18 the earlier rulings accepted this because every Schedule 2 Part I amount was refused (s2.other then listed \"repayment of excess advance premium tax credit\") and Form 4972 is refused through scope.other_line16, so line 1z was zero on every computed return. Stage 18 removed that item from s2.other and made line 1a a copy of Form 8962 line 29, so line 1z is now nonzero on every computed return with an excess advance payment, and the limit is understated there. Witness (constructed from stage18.blind.p8, single, a $375.00 repayment and Form 1040 line 16 $0.00, with ftc.taxes $200.00 and the election conditions all yes): project ftc.credit $0.00, Form 1040 line 22 $375.00; by the source the regular tax is $0 + $375 = $375 and the credit $200.00, line 22 $175.00 (refund $167.00 against $367.00). Finding F1 (s3.findings.md), introduced by Stage 18; amount, narrow.",
    "context": "d4aaadf35cb838999483a697f6ec46745722d807164af9d7a1f773e1e1b57a25",
@@ -89,6 +99,61 @@
    "model": "The instructions allow \"a credit on this line for the amount withheld in excess of $10,918.20\" only with \"more than one employer\", and not if \"any one employer withheld more than $10,918.20\". The restatement sums person.credit, which is not defined in the glossary, so it cannot be checked against these conditions.",
    "ruling": "Ruling: representation; project retained. `person.credit` is the per-person credit of i1040gi p. 117: zero unless more than one employer and total social security wages over $176,100, otherwise the withholding above $10,918.20, refused when any one employer withheld more than the limit (Form 843). The person worksheet has its own render log. No change to the data.",
    "subject_key": "df881a2b25ecf8af47631cff5be0c3327ca97e016411b18f3fa94f1cc210e707"
+  },
+  {
+   "printed": "12",
+   "restated": "Enter $0 (sales.zero).",
+   "model": "The IRS line is \"Enter any credit for federal excise taxes paid on fuels that are ultimately used for a nontaxable purpose (for example, an off-highway business use). Attach Form 4136.\" The only refusal is for undyed kerosene used in the home, so a filer with a business fuel-tax credit gets $0 with no refusal.",
+   "ruling": "Ruling: finding; i1040gi p. 117, Line 12, \"Enter any credit for federal excise taxes paid on fuels that are ultimately used for a nontaxable purpose (for example, an off-highway business use)\". As line 7: a business's claim is asked of each business (sc.fuel_credit) and refuses its Schedule C at line 1, and the return through it; line 12 itself refuses only the claim for kerosene used at home and shows $0 on a return refused for a business's claim. No completed return has a wrong value. Recorded in BUG-0620 (open).",
+   "context": "f4b03c3ecc5ca1dba81007c0f897b3ebd0dcec87c7cc8495b93774efea77d813",
+   "date": "2026-11-12",
+   "run": "8d0ee1f471193b6b6e6869aa8a90746da8b625a5d4a9c8e443c0cff54f092108",
+   "severity": "low",
+   "subject_key": "8500ff923975bdfbbe0c85973b58e5107ea45df52a431ca7703c4e6ce028eacc"
+  },
+  {
+   "printed": "14",
+   "restated": "Enter $0 (sales.zero).",
+   "model": "The IRS line is 'Total other payments or refundable credits. Add lines 13a through 13z', but the restatement enters $0 and no refusal covers '13a Form 2439' or '13c Net elective payment election amount from Form 3800, Part III, line 6, column (j)'. Only 13b, 13d and the 13z items (960(c), Form 8689, Form 1062) are refused.",
+   "ruling": "Ruling: finding; f1040s3 p. 1, line 13a, \"Form 2439\", and line 13c; i1040gi p. 117, Line 13c. As ruled before on this line: a Form 2439 is refused by sd.other_forms on Schedule D, and through it Form 1040 line 7a and the return; a net elective payment election amount belongs to a business credit (sc.business_credit, refused on Schedule C). Line 14 itself refuses only the line 13b, 13d and 13z situations and shows $0 on a return refused for the other two. No completed return has a wrong value. Recorded in BUG-0620 (6) (open): a refusal on line 14 for sd.other_forms needs that question added to the Schedule 3 slice profile, whose fixtures withhold it.",
+   "context": "82428e71f47fb6f5087a45b4fc597ffa34e437d3019a05ed4769adb27f4654e7",
+   "date": "2026-11-12",
+   "run": "d73539ae992832cd06935c46e495e44f85a754c1007b5ab6fa737c2fae7644be",
+   "severity": "low",
+   "subject_key": "c5a522996414fd6aa9f323594bd0e0024b48f55506d71f0cbf39fb8f01cd0783"
+  },
+  {
+   "printed": "14",
+   "restated": "Enter $0 (sales.zero).",
+   "model": "The form says 'Total other payments or refundable credits. Add lines 13a through 13z', and those lines include '13a Form 2439' and '13c Net elective payment election amount from Form 3800, Part III, line 6, column (j)'. The program enters $0 and refuses only the 13b, 13d and 13z cases, so a filer with a Form 2439 amount gets zero with no refusal.",
+   "ruling": "Ruling: finding; f1040s3 p. 1, line 13a, \"Form 2439\", and line 13c; i1040gi p. 117, Line 13c. A Form 2439 is refused by sd.other_forms on Schedule D, and through it Form 1040 line 7a and the return; a net elective payment election amount belongs to a business credit (sc.business_credit, refused on Schedule C). Line 14 itself refuses only the line 13b, 13d and 13z situations and shows $0 on a return refused for the other two. No completed return has a wrong value. Recorded in BUG-0620 (open): a refusal on line 14 for sd.other_forms needs that question added to the Schedule 3 slice profile, whose fixtures withhold it.",
+   "context": "6e71771a65b91b98807855d6ef05ebc7293b9602ca656b5fbf6ef72be577ea2a",
+   "date": "2026-11-12",
+   "run": "abbf6405ec90f4098eb241e4f397710ce46b2b5e00768e9188faaab1ded0ee38",
+   "severity": "low",
+   "subject_key": "c5839df13dfd269b8b3c3ef6368ac436d4d3a67f1d652d9e9a99f7ed2cfaddb1"
+  },
+  {
+   "printed": "7",
+   "restated": "Enter $0 (sales.zero).",
+   "model": "The IRS line is \"Total other nonrefundable credits. Add lines 6a through 6z\", and 6a is \"General business credit. Attach Form 3800\" (credits that \"usually apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental property\"). The refusals cover 6b through 6m and carryovers shown by a 2024 Form 3800, but nothing refuses a current-year general business credit, so such a filer gets $0 with no refusal.",
+   "ruling": "Ruling: finding; f1040s3 p. 1, line 6a, \"General business credit. Attach Form 3800\"; i1040gi p. 116, Lines 6a Through 6z. Line 7 is $0 behind one refusal per situation of lines 6b to 6m and for a credit carried from 2024, and has none for a current-year business credit: that is asked of each business (sc.business_credit) and refuses the business's Schedule C at line 1, and through it Schedule 1 line 3, adjusted gross income and the tax, so the return is refused; line 7 itself shows $0 on that refused return. A credit through a partnership, S corporation, rental or farm is refused whole by scope.schedule1. No completed return has a wrong value. Recorded in BUG-0620 (open): the line-level refusal for a business credit waits for the next change to Schedule 3.",
+   "context": "f4b03c3ecc5ca1dba81007c0f897b3ebd0dcec87c7cc8495b93774efea77d813",
+   "date": "2026-11-12",
+   "run": "8d0ee1f471193b6b6e6869aa8a90746da8b625a5d4a9c8e443c0cff54f092108",
+   "severity": "low",
+   "subject_key": "72c71fb9cdaa37d1af6e07db8b998e9c1fa639bd568fdfb65180c6a2c554f053"
+  },
+  {
+   "printed": "7",
+   "restated": "Enter $0 (sales.zero).",
+   "model": "The IRS line is 'Total other nonrefundable credits. Add lines 6a through 6z', but the restatement enters $0 and no refusal covers a current-year '6a General business credit. Attach Form 3800' (only a carryover is refused) or '6l Amount on Form 8978, line 14'. The mortgage interest credit (6g) is also refused only when Schedule A line 8a is positive, though the instructions say 'Enter any mortgage interest credit if a state or local government gave you a mortgage credit certificate'.",
+   "ruling": "Ruling: finding; f1040s3 p. 1, line 6a, \"General business credit. Attach Form 3800\"; i1040gi p. 116, Lines 6a Through 6z. As ruled before on this line: line 7 is $0 behind one refusal per situation of lines 6b to 6m and for a credit carried from 2024, and has none for a current-year business credit, which is asked of each business (sc.business_credit) and refuses the business's Schedule C at line 1, and through it Schedule 1 line 3, adjusted gross income and the tax, so the return is refused; line 7 itself shows $0 on that refused return. A credit through a partnership, S corporation, rental or farm is refused whole by scope.schedule1, and a Form 8978 amount (line 6l) by scope.other_line16, held by the coverage row for Form 8986. The mortgage interest credit is asked only when home mortgage interest is entered (owner decision; BUG-0619). No completed return has a wrong value. Recorded in BUG-0620 (6) (open): the line-level refusal for a business credit waits for the next change to Schedule 3.",
+   "context": "82428e71f47fb6f5087a45b4fc597ffa34e437d3019a05ed4769adb27f4654e7",
+   "date": "2026-11-12",
+   "run": "d73539ae992832cd06935c46e495e44f85a754c1007b5ab6fa737c2fae7644be",
+   "severity": "low",
+   "subject_key": "a5d90c06a5605b17356720a9f329e0c4fc0712d36e669dbfc407b3d2fc974496"
   }
  ]
 }

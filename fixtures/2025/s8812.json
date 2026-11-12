@@ -4250,7 +4250,8 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Synthetic refusal regression: other credits are claimed, so Credit Limit Worksheet A lines 2 and 4 refuse and Schedule 8812 line 13 follows. No independent human review is claimed. Stage 9: line 27a left the credits screen, so Schedule 8812 line 24 (Form 1040 line 27a plus Schedule 3 line 11) is $0 for this filer, whose AGI is above every EIC limit.",
       "inputs": {
-        "scope.credits": true,
+        "s3.adoption_any": true,
+        "s3.adoption": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -4338,7 +4339,7 @@
         },
         "f1040.line19": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4351,7 +4352,7 @@
         },
         "f1040.line28": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4364,7 +4365,7 @@
         },
         "f1040.line34": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4377,7 +4378,7 @@
         },
         "f1040.line37": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4422,7 +4423,7 @@
         },
         "s8812.clw_a2": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4435,7 +4436,7 @@
         },
         "s8812.clw_a3": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4448,7 +4449,7 @@
         },
         "s8812.clw_a4": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet B (Forms 8396, 8839, 8859)",
           "remedy": "The credits that call for Credit Limit Worksheet B are outside this tool.",
           "cite": {
@@ -4461,7 +4462,7 @@
         },
         "s8812.clw_a5": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4474,7 +4475,7 @@
         },
         "s8812.earned_covers": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4523,7 +4524,7 @@
         },
         "s8812.from_part_iia": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4536,7 +4537,7 @@
         },
         "s8812.from_part_iib": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4565,7 +4566,7 @@
         },
         "s8812.line13": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4578,7 +4579,7 @@
         },
         "s8812.line14": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4591,7 +4592,7 @@
         },
         "s8812.line16a": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4608,7 +4609,7 @@
         },
         "s8812.line17": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4661,7 +4662,7 @@
         },
         "s8812.line27": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {
@@ -4714,7 +4715,7 @@
         },
         "s8812.part_iib_result": {
           "kind": "refusal",
-          "gate": "scope.credits",
+          "gate": "s3.other_credit",
           "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m)",
           "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
           "cite": {

@@ -97,6 +97,12 @@ const NOT_DRAWN = new Set([
   "refund.mfs_spouse_itemized", "refund.you_born", "refund.you_blind", "refund.spouse_born", "refund.spouse_blind",
   "s1.line8_other", "s1.gambling_winnings", "s1.gambling_pro", "s1.line8g", "s1.line8h", "s1.line8i", "s1.line8j", "s1.line8r",
   "s1.jury_to_employer", "sa.gambling_losses", "div.any", "sb.form5471", "sb.foreign_any",
+  // The credit questions asked of everyone, and the questions beneath them: none applies, except the tax credit
+  // bond credit, which is drawn (rarely yes) so that some returns are refused for a credit this tool does not prepare.
+  "s3.adoption_any", "s3.adoption", "s3.adoption_earlier", "s3.adoption_us", "ftc.carryover", "s3.ev", "s3.ev_dealer",
+  "s3.ev_bought", "s3.ev_credit", "s3.ev_equipment", "s3.kerosene", "s3.kerosene_credit", "s3.prior_other_forms", "s3.prior_amt",
+  "s3.prior_forms", "s3.farmland", "s3.farmland_deferral", "s3.foreign_any", "s3.section965", "s3.section960c", "s3.virgin_islands",
+  "s3.repaid_income", "s3.disability_retired", "s3.elderly_credit", "s3.mcc",
 ]);
 
 // Root inputs that draw nothing: they keep their default (false or zero), so the random stream does not
@@ -268,7 +274,7 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
     const E = `${P}.sc[${keys[i]}]`;
     Object.assign(inputs, {
       [`${E}.statutory`]: false, [`${E}.passive`]: true, [`${E}.spouse_owned`]: false, [`${E}.method_other`]: false, [`${E}.special`]: false,
-      [`${E}.at_risk`]: true, [`${E}.inventory_other`]: false, [`${E}.tips_ot`]: false,
+      [`${E}.at_risk`]: true, [`${E}.inventory_other`]: false, [`${E}.tips_ot`]: false, [`${E}.business_credit`]: false, [`${E}.fuel_credit`]: false,
       [`${E}.line1`]: b.receipts, [`${E}.line2`]: Math.min(b.returns, b.receipts), [`${E}.line6`]: b.other,
       [`${E}.line35`]: 0, [`${E}.line36`]: b.inventory ? b.purchases : 0, [`${E}.line37`]: 0, [`${E}.line38`]: 0, [`${E}.line39`]: 0,
       [`${E}.line41`]: b.inventory ? Math.min(b.endInv, b.purchases) : 0,

@@ -4,22 +4,33 @@
  "family": "claude",
  "base": "65c196ceb6df30d9c6140b3c66b0abbdb93374ba0893d011bec927b0b749dc3a",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "printed lines compared": "2",
+  "agree / disagree / missing": "0 / 2 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-12); see Line-scoped reviews"
  },
  "lines": [
   {
-   "key": "ftc.credit",
-   "record": "5185f10d6620894b48f3979b8709c9ad6b5ccb4cf6dceac73f91410a028e8789",
+   "key": "ftc.carryover_if_asked",
+   "record": "1456921272952bfa0ff347c6e9b43a21dc762e51fcf920acc566311a2b5c9a78",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error, with scope for the not-elected return; as the prior ruling of this disagreement. i1116 p. 2, \"To make the election, just enter on the foreign tax credit line of your tax return ... the smaller of (a) your total foreign tax, or (b) your regular tax\"; p. 25, Line 20, \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z\"; p. 2, Who should file, \"File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply\". The reply puts the election conditions in the guards and enters $0 when they fail; the project enters $0 without foreign tax and otherwise refuses through ftc.needs1116 (Form 1116 is deferred, not dropped): the prior ruling's scope point. New in this reply: regular tax is Form 1040 line 16 alone, leaving out Schedule 2 line 1z, against p. 25, Line 20: a model error. The gate round changed only which election answers ftc.needs1116 reads (each now behind ftc.has_tax, false without foreign tax), not ftc.credit.",
-   "subject_key": "0f0fe8f0f14bebf44eb919e4f2e180e685d10081203167b1025cc0cf9f23ecf3"
+   "ruling": "Ruling: model error; the page does not state when the question is asked: this is the project's gate line for the carryover question (i1116 p. 19, Line 10), asked after a Yes to either plain question above it, s3.foreign_any or s3.prior_other_forms (owner decision recorded in BUG-0619: Form 1116 is not in the list of last year's forms that refuse, so the carryover is asked of a filer whose 2024 return includes a separate form). The reply asks it only after s3.foreign_any. executable-triage-v2 (`.transcription/triage/2025/ftc.json`, pass c0bc3a63fe27; 1,854 fixtures, 500 generated returns seed 20261026, 149 partial records from 40 bases; 2,503 comparisons): 2,502 agree; 1 value difference, on a refused return, the fixture redesign.credits.refuse.ftc_carryover_prior_return (s3.foreign_any No, s3.prior_other_forms Yes, ftc.carryover Yes): project true, reply false. None on a completed return. Project stands.",
+   "subject_key": "452a3ee97af3ac24853d24989362a9e732a16b637e7113a6baae390e979ad422"
+  },
+  {
+   "key": "ftc.credit",
+   "record": "1456921272952bfa0ff347c6e9b43a21dc762e51fcf920acc566311a2b5c9a78",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the regular tax, representation otherwise; i1116 (2025) pp. 1-2, the election to claim the credit without filing Form 1116: the smaller of the foreign tax and the regular tax; p. 25, Line 20, \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\". As ruled before on this line: the reply names the refusal for a carryover (ftc.carryover_if_asked, BUG-0619), as the project does, and takes Form 1040 line 16 alone as the regular tax, saying no line 1z is supplied. executable-triage-v2 (`.transcription/triage/2025/ftc.json`, pass c0bc3a63fe27; 1,854 fixtures, 500 generated returns seed 20261026, 149 partial records from 40 bases; 2,503 comparisons): 1,826 agree; 593 candidate-refuses, 48 candidate-unknown and 3 project-refuses on refused returns, 31 candidate-unknown on incomplete ones, and 2 value differences on completed returns: the fixture stage18.ftc_limit_with_repayment ($200.00 of foreign tax, Form 1040 line 16 of $0, an excess advance premium tax credit repayment on Schedule 2: project $200.00, reply $0.00) and generated return 35 ($149.13 of foreign tax, line 16 of $0: project $99.09, reply $0.00). Checked against the page: line 20 adds Schedule 2, Part I, line 1z. Project stands.",
+   "subject_key": "2feeea729a2d88a597bbc0c8461f33339bf7e5096d0cf97e50694736c37c3737"
   }
  ],
  "subjects": {
-  "ftc.credit": "5e13043a75fa0f2b47f421d784159a141514ad9141fb60c6753177782cce0a49"
+  "ftc.carryover_if_asked": "b4d6bec027ee368c2448eaa608846710cf41834d017cbab91ffc9f643b1beb45",
+  "ftc.credit": "06960b35ff8ebfaea82c15793873ad5964c3e24acfce2827d5b0058bcb9a69b8"
  },
  "__rest__": "0b27c1db7e23a8e90ed880b6d5e278e7ce96926cdbe182df2a1cfd1afeed920d",
  "foreign": {
-  "ftc.credit": "cb42de4021aa2818fc3fce716161252aacd39b40b09f928b21d0dad04f02a637"
+  "ftc.carryover_if_asked": "101424bfae053a6fc397942b53d359900381c419c0394c302da8687f95c7cfcb",
+  "ftc.credit": "c8ab2cecb913c08e828e6847fac8341525cb87bae7068df48ddfed28f3696278"
  }
 }

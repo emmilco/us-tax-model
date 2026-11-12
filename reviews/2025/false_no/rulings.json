@@ -283,6 +283,487 @@
    "class": "no gate defect; each case is asked outside the gate",
    "reason": "A beneficiary is asked by f8889.inherited and a decedent's return by f8889.owner_died, a pledge or prohibited transaction by f8889.loan, each of every account; the total question's help names card payments and the statements to use without a form, and is asked for each person.",
    "subject_sha": "2917ce271aa7aa9ae1aa3dd87e20c7d059528adde43ebfedc1de1bebd677f284"
+  },
+  "unruled:gate:s3.elderly_ask#1": {
+   "class": "no gate defect; two medium wording residuals on the disability question, which is the design's C4 wording",
+   "reason": "(1) accepted residual: i1040sr p. 1, \"You retired on permanent and total disability\". The design's C4 asks it in those words; the help says to answer Yes for a person who had to stop working because of a condition a doctor expects to last at least a year, even without a formal retirement. BUG-0620 (9). (2) accepted residual: As the first: the help states the instructions' test (i1040sr p. 2, a condition that has lasted or can be expected to last at least a year). (3) covered: A person born before January 2, 1961 answers the age question Yes (person.age65), so s3.any_senior is true and the credit question is asked without the disability question: asked more, not less. (4) covered: The question names the spouse: \"Have you (or, on a joint return, your spouse) retired on permanent and total disability?\"",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "i1040sr p. 1, \"You retired on permanent and total disability\". The design's C4 asks it in those words; the help says to answer Yes for a person who had to stop working because of a condition a doctor expects to last at least a year, even without a formal retirement. BUG-0620 (9)."
+    },
+    {
+     "n": 1,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "As the first: the help states the instructions' test (i1040sr p. 2, a condition that has lasted or can be expected to last at least a year)."
+    },
+    {
+     "n": 2,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "A person born before January 2, 1961 answers the age question Yes (person.age65), so s3.any_senior is true and the credit question is asked without the disability question: asked more, not less."
+    },
+    {
+     "n": 3,
+     "severity": "low",
+     "class": "covered",
+     "evidence": "The question names the spouse: \"Have you (or, on a joint return, your spouse) retired on permanent and total disability?\""
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ],
+   "subject_sha": "531550f50b106b404ca13940618febbfd137b3d4bbc9d511dbe9cc10b31d953c"
+  },
+  "unruled:gate:s3.ev#1": {
+   "class": "no gate defect: equipment and vehicles of a business, a rental or an entity are refused elsewhere; three wording residuals of the plain question",
+   "reason": "(1) accepted residual: The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. i8911 p. 4, Line 5: equipment mounted in 2024 and first usable in 2025 is not \"installed in 2025\" to its owner. What is lost is the offer of a refusal for a credit the filer must want (s3.ev_equipment), not a figure on a completed return, so medium in effect. BUG-0620 (9). (2) accepted residual: The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A charger that came with a new home, was put in by someone else or is only plugged in, not thought of as installed. BUG-0620 (9). (3) covered: Equipment at a business is asked of each business by sc.business_credit, whose help counts \"a credit for a vehicle or a charger bought for the business\" (fixture redesign.credits.refuse.business_credit); a rental or a farm is refused by scope.schedule1. (4) accepted residual: A vehicle bought for a business is asked by sc.business_credit as the finding before; one bought through a disregarded entity and read as not the filer's own is BUG-0620 (9). (5) accepted residual: A vehicle received in 2025 and gone by the year's end: the question asks \"did you get\". Low. (6) covered: A credit on a Schedule K-1 is refused by scope.schedule1. (7) not applicable: Every question of the interview asks about calendar 2025; a fiscal-year return is not one its questions can describe.",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "high",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. i8911 p. 4, Line 5: equipment mounted in 2024 and first usable in 2025 is not \"installed in 2025\" to its owner. What is lost is the offer of a refusal for a credit the filer must want (s3.ev_equipment), not a figure on a completed return, so medium in effect. BUG-0620 (9)."
+    },
+    {
+     "n": 1,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A charger that came with a new home, was put in by someone else or is only plugged in, not thought of as installed. BUG-0620 (9)."
+    },
+    {
+     "n": 2,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "Equipment at a business is asked of each business by sc.business_credit, whose help counts \"a credit for a vehicle or a charger bought for the business\" (fixture redesign.credits.refuse.business_credit); a rental or a farm is refused by scope.schedule1."
+    },
+    {
+     "n": 3,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "A vehicle bought for a business is asked by sc.business_credit as the finding before; one bought through a disregarded entity and read as not the filer's own is BUG-0620 (9)."
+    },
+    {
+     "n": 4,
+     "severity": "low",
+     "class": "accepted residual",
+     "evidence": "A vehicle received in 2025 and gone by the year's end: the question asks \"did you get\". Low."
+    },
+    {
+     "n": 5,
+     "severity": "low",
+     "class": "covered",
+     "evidence": "A credit on a Schedule K-1 is refused by scope.schedule1."
+    },
+    {
+     "n": 6,
+     "severity": "low",
+     "class": "not applicable",
+     "evidence": "Every question of the interview asks about calendar 2025; a fiscal-year return is not one its questions can describe."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ],
+   "subject_sha": "55a5cf048a760f6e0381c91c068bcc6832b65fda0acacf13e9f7c75cb023c2b8"
+  },
+  "unruled:gate:s3.ev_bought_if_ev#1": {
+   "class": "no gate defect: the false-no finding is refused by the Schedule 1 screen; wording residuals",
+   "reason": "(1) covered: The interview's question is \"with the contract signed and a payment made by September 30, 2025\", and its help says the date the vehicle arrived does not matter here (i8936 p. 1, What's New). (2) covered: A credit on a Schedule K-1 is refused by scope.schedule1. (3) accepted residual: As ruled on gate:s3.ev: a vehicle the buyer did not personally receive. BUG-0620 (9). (4) covered: A dealer transfer is asked first by s3.ev_dealer and refuses. (5) covered: A recapture is asked by s2.other.",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "The interview's question is \"with the contract signed and a payment made by September 30, 2025\", and its help says the date the vehicle arrived does not matter here (i8936 p. 1, What's New)."
+    },
+    {
+     "n": 1,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "A credit on a Schedule K-1 is refused by scope.schedule1."
+    },
+    {
+     "n": 2,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "As ruled on gate:s3.ev: a vehicle the buyer did not personally receive. BUG-0620 (9)."
+    },
+    {
+     "n": 3,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "A dealer transfer is asked first by s3.ev_dealer and refuses."
+    },
+    {
+     "n": 4,
+     "severity": "low",
+     "class": "covered",
+     "evidence": "A recapture is asked by s2.other."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ],
+   "subject_sha": "f65c7a14bd4a1958ef4eae2e97f720288f5b98585a83b3f9b6e34b0840630c6c"
+  },
+  "unruled:gate:s3.kerosene#1": {
+   "class": "no gate defect: the false-no finding is a fiscal-year return, which no question of the interview serves; five wording residuals of the plain question",
+   "reason": "(1) not applicable: As ruled before on this gate: every question of the interview asks about calendar 2025; a fiscal-year individual return is not something its questions can describe. (2) accepted residual: The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. The spouse's separate home. BUG-0620 (9). (3) accepted residual: The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A second home, a cabin or a vehicle lived in. BUG-0620 (9). (4) accepted residual: The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A home lived in during 2025 and since left. BUG-0620 (9). (5) accepted residual: Other names for the fuel: the instructions say only \"kerosene\" (i4136 p. 2), and no archived source gives its trade names. BUG-0620 (9). (6) accepted residual: A water heater, or a heater in an attached garage: \"used in your home for heat\" by the question's words. Low.",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "high",
+     "class": "not applicable",
+     "evidence": "As ruled before on this gate: every question of the interview asks about calendar 2025; a fiscal-year individual return is not something its questions can describe."
+    },
+    {
+     "n": 1,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. The spouse's separate home. BUG-0620 (9)."
+    },
+    {
+     "n": 2,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A second home, a cabin or a vehicle lived in. BUG-0620 (9)."
+    },
+    {
+     "n": 3,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A home lived in during 2025 and since left. BUG-0620 (9)."
+    },
+    {
+     "n": 4,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "Other names for the fuel: the instructions say only \"kerosene\" (i4136 p. 2), and no archived source gives its trade names. BUG-0620 (9)."
+    },
+    {
+     "n": 5,
+     "severity": "low",
+     "class": "accepted residual",
+     "evidence": "A water heater, or a heater in an attached garage: \"used in your home for heat\" by the question's words. Low."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ],
+   "subject_sha": "d32a8e1ec215f7854b466a8d9ef76a1914a82f146dc207abd2ef2642ecc17bf8"
+  },
+  "unruled:gate:ftc.carryover_ask#1": {
+   "class": "no gate defect: the fund case is answered by the help of the question above; the rest are residuals known when the tree was accepted, or low",
+   "reason": "(1) covered: The reviewer saw the condition's labels, not the questions as asked: s3.foreign_any's help says \"Count foreign tax a fund paid for you (Form 1099-DIV box 7) only if you once filed Form 1116 for it\", so this filer answers Yes and is asked the carryover question. A partner's or shareholder's 2025 return is refused by scope.schedule1. (2) accepted residual: The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. Tax withheld at source or settled by an employer, read as not \"paid\" by the filer: BUG-0620 (3b). (3) accepted residual: A carryover from 2015 to 2023 held by a filer with no 2024 return or none with a separate form: BUG-0620 (3b) and (8). (4) accepted residual: Form 1116 counted among the schedules, or a return whose pages the filer never saw: the question says what to look for (\"a page headed Form and a four-digit number\") and its help gives examples. BUG-0620 (3b). (5) accepted residual: A provincial or cantonal income tax, a tax in lieu, or tax accrued and unpaid, read as outside \"income tax to another country\". Low. (6) accepted residual: A carryback from 2026 belongs to an amended 2025 return, which this tool does not prepare.",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "high",
+     "class": "covered",
+     "evidence": "The reviewer saw the condition's labels, not the questions as asked: s3.foreign_any's help says \"Count foreign tax a fund paid for you (Form 1099-DIV box 7) only if you once filed Form 1116 for it\", so this filer answers Yes and is asked the carryover question. A partner's or shareholder's 2025 return is refused by scope.schedule1."
+    },
+    {
+     "n": 1,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. Tax withheld at source or settled by an employer, read as not \"paid\" by the filer: BUG-0620 (3b)."
+    },
+    {
+     "n": 2,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "A carryover from 2015 to 2023 held by a filer with no 2024 return or none with a separate form: BUG-0620 (3b) and (8)."
+    },
+    {
+     "n": 3,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "Form 1116 counted among the schedules, or a return whose pages the filer never saw: the question says what to look for (\"a page headed Form and a four-digit number\") and its help gives examples. BUG-0620 (3b)."
+    },
+    {
+     "n": 4,
+     "severity": "low",
+     "class": "accepted residual",
+     "evidence": "A provincial or cantonal income tax, a tax in lieu, or tax accrued and unpaid, read as outside \"income tax to another country\". Low."
+    },
+    {
+     "n": 5,
+     "severity": "low",
+     "class": "accepted residual",
+     "evidence": "A carryback from 2026 belongs to an amended 2025 return, which this tool does not prepare."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ],
+   "subject_sha": "539b28a2fe62b6f1a210b59120e75ac2759508e21b6cd5d4298d616d6eb5f292"
+  },
+  "unruled:gate:s3.adoption_any#1": {
+   "class": "no gate defect: employer-paid costs and a carried credit are asked elsewhere; four wording residuals, two medium",
+   "reason": "(1) accepted residual: The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A bill paid in 2025 for an adoption final before 2024 is a cost paid \"toward adopting\" since the start of 2024 by the question's words, but may be read as outside them. BUG-0620 (9). (2) accepted residual: The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A decree in 2025 for a child placed earlier, at no cost: \"did you adopt a child\" since the start of 2024 is Yes by the date of the decree, but may be read by the date the child came home. BUG-0620 (9). (3) covered: Employer-paid adoption costs are adoption benefits, which scope.other_income names and refuses. (4) accepted residual: An adopted adult unable to care for themselves read as not a \"child\" (i8839, eligible child). Low. (5) accepted residual: The help's list of costs is read as complete. Low. (6) covered: A credit carried from 2024 is on the 2024 Form 8839, asked by s3.prior_forms (coverage row credits.adoption_carried).",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A bill paid in 2025 for an adoption final before 2024 is a cost paid \"toward adopting\" since the start of 2024 by the question's words, but may be read as outside them. BUG-0620 (9)."
+    },
+    {
+     "n": 1,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A decree in 2025 for a child placed earlier, at no cost: \"did you adopt a child\" since the start of 2024 is Yes by the date of the decree, but may be read by the date the child came home. BUG-0620 (9)."
+    },
+    {
+     "n": 2,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "Employer-paid adoption costs are adoption benefits, which scope.other_income names and refuses."
+    },
+    {
+     "n": 3,
+     "severity": "low",
+     "class": "accepted residual",
+     "evidence": "An adopted adult unable to care for themselves read as not a \"child\" (i8839, eligible child). Low."
+    },
+    {
+     "n": 4,
+     "severity": "low",
+     "class": "accepted residual",
+     "evidence": "The help's list of costs is read as complete. Low."
+    },
+    {
+     "n": 5,
+     "severity": "low",
+     "class": "covered",
+     "evidence": "A credit carried from 2024 is on the 2024 Form 8839, asked by s3.prior_forms (coverage row credits.adoption_carried)."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ],
+   "subject_sha": "60691b61093d85377eb4ae2d576f8b61b378d046774f2af839eeb3c838632c7b"
+  },
+  "unruled:gate:s3.adoption_earlier_if_any#1": {
+   "class": "no gate defect: three findings are answered by the help or by the question asked first; one low residual",
+   "reason": "(1) covered: The help says \"Yes also for an adoption that was given up or did not succeed, or where no child had been placed yet\". (2) covered: As the finding before: the help names an adoption with no child placed yet. (3) covered: An adoption that became final in 2025 is a Yes at s3.adoption, asked before this question, which refuses (fixture redesign.credits.refuse.adoption). (4) accepted residual: Two adoption efforts and the singular \"an adoption\". Low.",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "The help says \"Yes also for an adoption that was given up or did not succeed, or where no child had been placed yet\"."
+    },
+    {
+     "n": 1,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "As the finding before: the help names an adoption with no child placed yet."
+    },
+    {
+     "n": 2,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "An adoption that became final in 2025 is a Yes at s3.adoption, asked before this question, which refuses (fixture redesign.credits.refuse.adoption)."
+    },
+    {
+     "n": 3,
+     "severity": "low",
+     "class": "accepted residual",
+     "evidence": "Two adoption efforts and the singular \"an adoption\". Low."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ],
+   "subject_sha": "5e2498abcc922c4cef0e9a884a9f91f522c0e7cf052b515aeebd2f79f49dbace"
+  },
+  "unruled:gate:s3.has_mortgage_interest#1": {
+   "class": "no gate defect: every filer is asked for the interest the gate reads; interest not on Form 1098, a carried credit and a nonresident alien are each caught by another question",
+   "reason": "(1) covered: sa.line8a is an input asked of every filer whether or not they itemize (the ordinary single filer's walk asks it; the gate line reads it directly); the condition is the amount entered, not a deduction taken. Coverage rows credits.mcc and credits.mcc_without_interest. (2) covered: A credit carried from 2022 to 2024 is on the 2024 Form 8396, asked by s3.prior_forms (coverage row credits.mcc_carried); a 2024 return that left the form out is BUG-0620 (8). (3) covered: Mortgage interest not on a Form 1098 is asked of every filer by sa.unsupported, which refuses the return. (4) not applicable: A nonresident alien is refused by scope.other_income; this tool prepares Form 1040 only. (5) accepted residual: Interest all moved to a rental is refused with the rental (scope.schedule1); interest all claimed through a home office leaves line 8a empty. Low. (6) accepted residual: The issuer's name and \"usually to first-time buyers\" in the help. Low.",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "high",
+     "class": "covered",
+     "evidence": "sa.line8a is an input asked of every filer whether or not they itemize (the ordinary single filer's walk asks it; the gate line reads it directly); the condition is the amount entered, not a deduction taken. Coverage rows credits.mcc and credits.mcc_without_interest."
+    },
+    {
+     "n": 1,
+     "severity": "high",
+     "class": "covered",
+     "evidence": "A credit carried from 2022 to 2024 is on the 2024 Form 8396, asked by s3.prior_forms (coverage row credits.mcc_carried); a 2024 return that left the form out is BUG-0620 (8)."
+    },
+    {
+     "n": 2,
+     "severity": "high",
+     "class": "covered",
+     "evidence": "Mortgage interest not on a Form 1098 is asked of every filer by sa.unsupported, which refuses the return."
+    },
+    {
+     "n": 3,
+     "severity": "high",
+     "class": "not applicable",
+     "evidence": "A nonresident alien is refused by scope.other_income; this tool prepares Form 1040 only."
+    },
+    {
+     "n": 4,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "Interest all moved to a rental is refused with the rental (scope.schedule1); interest all claimed through a home office leaves line 8a empty. Low."
+    },
+    {
+     "n": 5,
+     "severity": "low",
+     "class": "accepted residual",
+     "evidence": "The issuer's name and \"usually to first-time buyers\" in the help. Low."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ],
+   "subject_sha": "fa2e8bde4e4d9cfda5a74e05f840c69f0dffb27830024435ee81acf47df2e93b"
+  },
+  "unruled:gate:s3.prior_other_forms#1": {
+   "class": "no gate defect: the two false-no findings are the residual the design named and the owner accepted with the tree; three wording residuals",
+   "reason": "(1) accepted residual: A credit carried from 2023 or earlier by a filer with no 2024 return: the design's D.2, C7 item 3, recorded as BUG-0620 (8) when the tree was accepted. (2) accepted residual: As the finding before, for a 2024 return that left the credit form out: BUG-0620 (8). (3) accepted residual: A 2024 alternative minimum tax that arose on an amended return or in an examination: \"your 2024 federal tax return\" read as the return first filed. Low. (4) accepted residual: The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A return whose attached pages the filer never saw: the question says what to look for and its help gives two examples; how many filers answer it No wrongly is not counted (BUG-0620 (8)). (5) accepted residual: Form 8582-CR beside \"a four-digit number\": BUG-0620 (4).",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "high",
+     "class": "accepted residual",
+     "evidence": "A credit carried from 2023 or earlier by a filer with no 2024 return: the design's D.2, C7 item 3, recorded as BUG-0620 (8) when the tree was accepted."
+    },
+    {
+     "n": 1,
+     "severity": "high",
+     "class": "accepted residual",
+     "evidence": "As the finding before, for a 2024 return that left the credit form out: BUG-0620 (8)."
+    },
+    {
+     "n": 2,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "A 2024 alternative minimum tax that arose on an amended return or in an examination: \"your 2024 federal tax return\" read as the return first filed. Low."
+    },
+    {
+     "n": 3,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A return whose attached pages the filer never saw: the question says what to look for and its help gives two examples; how many filers answer it No wrongly is not counted (BUG-0620 (8))."
+    },
+    {
+     "n": 4,
+     "severity": "low",
+     "class": "accepted residual",
+     "evidence": "Form 8582-CR beside \"a four-digit number\": BUG-0620 (4)."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ],
+   "subject_sha": "dd619e06925bf47be7b216ac05cfa87f0b68626d618df5556312810b83b1526c"
+  },
+  "unruled:gate:s3.farmland#1": {
+   "class": "no gate defect after the help line for a trade: an entity's sale is refused with the entity and a fiscal year is outside the interview; three wording residuals",
+   "reason": "(1) covered: A sale by a partnership, S corporation, LLC or trust reaches the filer on a Schedule K-1, and scope.schedule1 refuses the return. (2) not applicable: As ruled on gate:s3.kerosene: every question of the interview asks about calendar 2025; a fiscal-year return is not one its questions can describe. (3) accepted residual: The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. Land taken by condemnation or foreclosure, or sold in part, read as not sold or traded (i1040gi p. 117, Line 13z, \"sale or exchange\"). BUG-0620 (9). (4) accepted residual: The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A ranch, an orchard or land rented to a farmer read as not \"farmland\". BUG-0620 (9). (5) accepted residual: The help of the question beneath (\"If you have not heard of it, the answer is No\") for a filer whose preparer made the election. Low; BUG-0620 (9).",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "high",
+     "class": "covered",
+     "evidence": "A sale by a partnership, S corporation, LLC or trust reaches the filer on a Schedule K-1, and scope.schedule1 refuses the return."
+    },
+    {
+     "n": 1,
+     "severity": "high",
+     "class": "not applicable",
+     "evidence": "As ruled on gate:s3.kerosene: every question of the interview asks about calendar 2025; a fiscal-year return is not one its questions can describe."
+    },
+    {
+     "n": 2,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. Land taken by condemnation or foreclosure, or sold in part, read as not sold or traded (i1040gi p. 117, Line 13z, \"sale or exchange\"). BUG-0620 (9)."
+    },
+    {
+     "n": 3,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "The question is plain by decision 2 of docs/2026-11-11_interview_redesign_intent.md; the remedy is a question or a help text beneath it. A ranch, an orchard or land rented to a farmer read as not \"farmland\". BUG-0620 (9)."
+    },
+    {
+     "n": 4,
+     "severity": "low",
+     "class": "accepted residual",
+     "evidence": "The help of the question beneath (\"If you have not heard of it, the answer is No\") for a filer whose preparer made the election. Low; BUG-0620 (9)."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ],
+   "subject_sha": "c1ac486f8ea13b02e61bf164f7b1041747120b57b5f7db79850180b87f891a76"
+  },
+  "unruled:gate:s3.foreign_any#1": {
+   "class": "open residual: after the help line for shares held through an entity or by family, a section 965 installment payer with a small look-through share, or who took the installments over, still answers No; recorded, not edited again",
+   "reason": "(1) open residual: A 3% stake in an entity that held the foreign company. Recorded open as BUG-0620 (11), with the source line (i1040gi p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\", which sets no ownership condition); no further edit in this landing. (2) open residual: An heir or other transferee under a transfer agreement (the owner's decision: recorded). Recorded open as BUG-0620 (11), with the source line (i1040gi p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\", which sets no ownership condition); no further edit in this landing. (3) open residual: A trust's or estate's beneficiary who does not read the trust's shares as held by them. Recorded open as BUG-0620 (11), with the source line (i1040gi p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\", which sets no ownership condition); no further edit in this landing. (4) accepted residual: Work done in the U.S. Virgin Islands for a mainland payer, read as not income from a territory. BUG-0620 (9). (5) accepted residual: The territories are not listed in the question. Low; BUG-0620 (9). (6) accepted residual: A section 960(c) credit computed for a minority owner through an entity: as the section 965 findings, BUG-0620 (11); the 2025 return of a partner or shareholder is refused by scope.schedule1.",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "high",
+     "class": "open residual",
+     "evidence": "A 3% stake in an entity that held the foreign company. Recorded open as BUG-0620 (11), with the source line (i1040gi p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\", which sets no ownership condition); no further edit in this landing."
+    },
+    {
+     "n": 1,
+     "severity": "medium",
+     "class": "open residual",
+     "evidence": "An heir or other transferee under a transfer agreement (the owner's decision: recorded). Recorded open as BUG-0620 (11), with the source line (i1040gi p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\", which sets no ownership condition); no further edit in this landing."
+    },
+    {
+     "n": 2,
+     "severity": "medium",
+     "class": "open residual",
+     "evidence": "A trust's or estate's beneficiary who does not read the trust's shares as held by them. Recorded open as BUG-0620 (11), with the source line (i1040gi p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\", which sets no ownership condition); no further edit in this landing."
+    },
+    {
+     "n": 3,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "Work done in the U.S. Virgin Islands for a mainland payer, read as not income from a territory. BUG-0620 (9)."
+    },
+    {
+     "n": 4,
+     "severity": "low",
+     "class": "accepted residual",
+     "evidence": "The territories are not listed in the question. Low; BUG-0620 (9)."
+    },
+    {
+     "n": 5,
+     "severity": "medium",
+     "class": "accepted residual",
+     "evidence": "A section 960(c) credit computed for a minority owner through an entity: as the section 965 findings, BUG-0620 (11); the 2025 return of a partner or shareholder is refused by scope.schedule1."
+    }
+   ],
+   "bugs": [
+    "BUG-0619",
+    "BUG-0620"
+   ],
+   "subject_sha": "9b220dfc1b79068dce34a30c5203115edd339c3f7376d0e3d8818f4fb8b508ff"
   }
  },
  "baseline": {}

@@ -36,7 +36,7 @@ export const UMBRELLAS: Umbrella[] = [
   { id: "sb.foreign_wide_any", label: "Any foreign account, asset, trust or corporation, or excluded foreign income",
     covers: ["sb.fbar_required", "sb.form8938", "sb.line8", "sb.form5471", "sa.excluded_income"] },
   { id: "f1040.other_payments_any", label: "Federal tax withheld other than on a W-2, or any other payment toward 2025 tax",
-    covers: ["f1040.line25b", "f1040.line25c_other", "f1040.line26", "s3.line10", "s3.line12", "s3.line14"] },
+    covers: ["f1040.line25b", "f1040.line25c_other", "f1040.line26", "s3.line10"] },
   { id: "f1040.withholding_other_any", label: "Federal tax withheld other than on a W-2 (survey B-4)",
     covers: ["f1040.line25b", "f1040.line25c_other"] },
   { id: "sd.carryovers_any", label: "A carryover into 2025 from an earlier year's return (capital loss, section 179, QBI loss)",

@@ -51,6 +51,42 @@
   },
   {
    "printed": "14",
+   "project_expr_sha256": "b33af908cbd5a5211675807fb0a21c42e86bce774e91cb547348093b1eb2528a",
+   "second_expr_sha256": "f4b5b76d4631faaaf3d34741a5b55d1c98c00a52b9ee4dc89a57253a0c4150b9",
+   "ruling": "Ruling: representation and scope; i5695 p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 2: \"Enter the total of the following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return\". As ruled before on this line, the worksheet's terms are the project's f5695.rce_ws2 (Schedule 3 lines 1, 2, 3 and 4, line 5b, the child tax credit), the other credits being refused; that refusal is now s3.other_credit in place of scope.credits (BUG-0619). The reply refuses on the separate credit questions instead and reads the ones asked beneath a gate directly (s3.ev_credit, s3.elderly_credit), which have no answer on a return where their gate is closed. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 912fab1d2cf7; 1,803 fixtures, 500 generated returns seed 20261026, 2,081 partial records from 40 bases; 3,619 comparisons): 2,439 agree; 968 candidate-unknown, 209 project-refuses, 3 candidate-refuses; no value differs. On completed returns: 775 candidate-unknown (the witnesses listed are each on s3.ev_credit, unanswered because not asked; project $0.00), and 3 candidate-refuses on s3.ev_credit and s3.elderly_credit, on fixtures that state an unread Yes beneath a closed gate. The project refusals are on refused returns. Project stands.",
+   "context": "b6ecc166491b65b2606f6336a52467cb4c8bdddb376d694443ee5aa6c3650a09",
+   "date": "2026-11-12",
+   "run": "5fff225b3f662f030b101e0491c8fd40b88bab1c22047a905d50d3a4f847c2bf",
+   "subject_key": "ee55c986cc653dc85f7367bb36bf51db532b2c42418449571b5b059ce4a3d280",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f5695",
+     "fixture:classm.f8889.1.deepseek@f5695",
+     "fixture:classm.f8889.3.deepseek@f5695",
+     "fixture:classm.f8889.5.deepseek@f5695",
+     "fixture:classm.f4952.1.deepseek@f5695",
+     "fixture:classm.f4952.2.deepseek@f5695",
+     "fixture:classm.f4952.3.deepseek@f5695",
+     "fixture:classm.f4952.4.deepseek@f5695",
+     "fixture:classm.f8960.1.deepseek@f5695",
+     "fixture:classm.g28.1.deepseek@f5695",
+     "fixture:classm.sd.1.deepseek@f5695",
+     "fixture:classm.sd.2.deepseek@f5695",
+     "fixture:redesign.credits.elderly_not_asked@f5695",
+     "fixture:redesign.credits.ev_leased@f5695",
+     "fixture:redesign.credits.ev_not_asked@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "14",
    "project_expr_sha256": "cf30a42da17ef96d3baf63bdc353fa8d96e47684fd7b72a67d959f5b58b8afc0",
    "second_expr_sha256": "430921e38c817e6b31cb90ff450de964fb6b577d16ea5a4b5ec3acbe454ae6cb",
    "ruling": "Ruling: representation; i5695 p. 5, Line 14 worksheet: \"Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 18\" less the listed credits, with \"Energy efficient home improvement credit, Form 5695, line 32\" and the line 19 asterisk (\"Include the amount in the instructions for Schedule 8812 (Form 1040), Credit Limit Worksheet B, line 14, instead of the amount from Form 1040 ... line 19, if the instructions for Schedule 8812 (Form 1040) direct you to complete Credit Limit Worksheet B\"). executable-triage-v2 (`reviews/2025/transcription/triage/f5695.json`; 1,382 fixtures, 500 generated returns seed 20261026, 1,970 partial records; 3,852 comparisons; full witness lists rebuilt with the cap lifted): 952 of 3,852 agree; 1,163 value (1,050 on completed returns), 1,354 project-refuses, 361 project-unknown, 22 candidate-unknown. New this round: the candidate returns $0 when f5695.part1_any is No. All 1,163 value differences, including the 1,050 completed ones, are every one of them on a return that answers f5695.part1_any No (checked witness by witness: the fixture or partial base has part1_any false), where Part I is not completed and Schedule 3 line 5a is zero by the screen (classm.f2441.1.deepseek: project $625.00, candidate $0.00); line 15 is the smaller of lines 13 and 14 and the project's line 13 is not evaluated without Part I, so no printed credit is reached. On returns claiming Part I there is no value difference: the candidate's worksheet (line 32 for Schedule 3 line 5b, Form 1040 line 19 for the smaller of CLW A line 3 and Schedule 8812 line 12, CLW B line 14 under the same guard) equals the project's. Project refusals are scope.credits and other cited gates on refused returns (2 with part1_any Yes: classm.ssb.3, refused); candidate-unknowns are partials withholding part1_any.",
@@ -1054,6 +1090,40 @@
    "ruling": "Ruling: representation and scope; f5695 p. 4, line 30; i5695 p. 3, Joint occupancy; owner decision 7. executable-triage-v2 (`reviews/2025/transcription/triage/f5695.json`; 1,382 fixtures, 500 generated returns seed 20261026, 1,970 partial records; 3,852 comparisons; full witness lists rebuilt with the cap lifted): 1,890 of 3,852 agree; 1,720 project-unknown (785 completed), 210 project-refuses (refused), 32 candidate-unknown (partials withholding part2_any). The candidate zeroes line 30 when part2_any is No. All 785 completed project-unknowns are on returns that do not claim Part II (769 with part2_any false and part1_any false, 16 Part-I-only records including stage16.cleanup.f5695_small_wind and stage16.cleanup.mut.clwb_three_figured that leave joint_occupancy unasked); no value difference. Refusals are the joint-occupancy, separate-homes and other cited gates. The BUG-0235 rewording of f5695.joint_occupancy does not change the gate: the question now names a co-occupant who does not file Form 5695 and items paid for separately, which i5695 p. 3 covers (\"If you occupied your home jointly with someone, each occupant must complete their own Form 5695\").",
    "context": "90ffc6cc184502c94074da61058ee7ec6c90d03111ac8c8999a7b225138ee021",
    "subject_key": "93905dca0a616ab823db06ba7591be39ef6baa95def7fbf9c472a01d99e5da88"
+  },
+  {
+   "printed": "31",
+   "project_expr_sha256": "328a083c4ce852fe86922f2d4081b04403a4f9815fd2730443d640c8de2651cc",
+   "second_expr_sha256": "28ac6fabbd111587d2ef593d5bc9e0cc110ae94380c85e046a8f6f2f9e571f75",
+   "ruling": "Ruling: representation; i5695 p. 7, Energy Efficient Home Improvement Credit Limit Worksheet—Line 31: \"Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 18\" less Schedule 3 lines 6l, 1, 2, 6d, 3 and 4. The reply's value is the project's; it adds a shown_when on f5695.part2_any, which the project does not carry on this line (as ruled before: line 32 is the smaller of lines 30 and 31 and Part II is not completed without the screen), and it refuses on s3.docs and s3.elderly_credit where the project refuses on s3.other_credit (BUG-0619). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 912fab1d2cf7; 1,803 fixtures, 500 generated returns seed 20261026, 2,081 partial records from 40 bases; 3,619 comparisons): 3,587 agree; 24 project-refuses, on refused returns; 7 candidate-unknown and 1 candidate-refuses on completed returns, where the reply reads s3.elderly_credit, not asked there (the refusing one is the fixture that states an unread Yes). No value differs. Project stands.",
+   "context": "b6ecc166491b65b2606f6336a52467cb4c8bdddb376d694443ee5aa6c3650a09",
+   "date": "2026-11-12",
+   "run": "5fff225b3f662f030b101e0491c8fd40b88bab1c22047a905d50d3a4f847c2bf",
+   "subject_key": "cf8d9be37fa698c5c8fd74216a8ba476822a6fda609f568922f90cc1952a82ba",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.2.deepseek@f5695",
+     "fixture:classm.f8960.1@f5695",
+     "fixture:classm.s179.7@f5695",
+     "fixture:classm.s3.1@f5695",
+     "fixture:classm.s3.3@f5695",
+     "fixture:classm.s3.4@f5695",
+     "fixture:classm.s3.7@f5695",
+     "fixture:classm.s3.8@f5695",
+     "fixture:classm.s3.9@f5695",
+     "fixture:classm.sc.1@f5695",
+     "fixture:classm.sc.2@f5695",
+     "fixture:stage16.cleanup.refuse.scope_credits@f5695",
+     "fixture:redesign.credits.elderly_not_asked@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "31",

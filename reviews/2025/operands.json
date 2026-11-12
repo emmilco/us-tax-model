@@ -5,13 +5,17 @@
   },
   "operands:person.edu_line28": {
    "reason": "Bound per student to the aqee definition's line 28 (Subtract $2,000 from line 27), whose operand is that definition's line 27; the resolver sees the binding, not the definition's line."
+  },
+  "operands:f8863.clw5": {
+   "reason": "Schedule 3 lines 6d (credit for the elderly or the disabled) and 6l (Form 8978) are not prepared: a return with either is refused by the questions of scope.ready (s3.elderly_credit_if_asked, s3.docs), so on every return the tool completes they are zero and the operands that remain are the whole line."
+  },
+  "operands:f8880.clw2": {
+   "reason": "Schedule 3 lines 6d (credit for the elderly or the disabled) and 6l (Form 8978) are not prepared: a return with either is refused by the questions of scope.ready (s3.elderly_credit_if_asked, s3.docs), so on every return the tool completes they are zero and the operands that remain are the whole line."
   }
  },
  "baseline": {
   "operands:f5695.line11": "a603e371c2135458",
   "operands:f8606.line14": "a59853997355eec1",
-  "operands:f8863.clw5": "c9115d86b74e21fc",
-  "operands:f8880.clw2": "f7335a8e3c79275d",
   "operands:f8962.line2a": "a2da5f5282aa8e4b",
   "operands:ira.line4": "a1f3e3eaa104c4c9",
   "operands:line3": "c01c5e2b469719ff",
@@ -21,7 +25,6 @@
   "operands:s1.line20": "a0209c7364cc8f73",
   "operands:s1.line26": "98b2be72b1889ec4",
   "operands:s2.line21": "b0d047d86556e081",
-  "operands:s3.line8": "5494e46d2a0928a5",
   "operands:s8812.line21": "bc557b7ae0f9a237",
   "operands:s8812.line22": "6c27da3fe5c92108",
   "operands:sc.f7206_line13": "f5aef6e4a211cd9e",

@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "a9080a227ba460fd5065b66e6e3b6107f25675a33105f86f392bb93c4fd06b9f",
  "head_rows": {
-  "match / mismatch / unclear / missing": "49 / 0 / 1 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "48 / 1 / 1 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-12); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -106,27 +106,28 @@
   },
   {
    "key": "(CLW A 2)",
-   "record": "a9080a227ba460fd5065b66e6e3b6107f25675a33105f86f392bb93c4fd06b9f",
+   "record": "4c14c6d7bbd15865bf16750b547bb54a8b8d78af1a03c51bd32a7996f7d740bb",
    "status": "MATCH",
-   "subject_key": "fe645f8db2ac5431f2a80cd09049b10fd4a14aae6193b20d5c0e3363480b60a8"
+   "subject_key": "9eea4354bfdfe26b5324583f2869f5f26c94f450cbf42fe9d2985013863643ae"
   },
   {
    "key": "(CLW A 3)",
-   "record": "a9080a227ba460fd5065b66e6e3b6107f25675a33105f86f392bb93c4fd06b9f",
+   "record": "4c14c6d7bbd15865bf16750b547bb54a8b8d78af1a03c51bd32a7996f7d740bb",
    "status": "MATCH",
-   "subject_key": "822c772b06b43e7f9152a748ce40984b3258774fdf3a586201c3da2c7d35fc8a"
+   "subject_key": "02c9facd73d1986158f38eb95bd10419feeacd2e0400c392f078dc04f8aafd70"
   },
   {
    "key": "(CLW A 4)",
-   "record": "a9080a227ba460fd5065b66e6e3b6107f25675a33105f86f392bb93c4fd06b9f",
-   "status": "MATCH",
-   "subject_key": "33240e4a99a4da33999151dcdae4375f4ba49abd22aa8b685dd8e2eff552873d"
+   "record": "4c14c6d7bbd15865bf16750b547bb54a8b8d78af1a03c51bd32a7996f7d740bb",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040s8812 p. 4, Credit Limit Worksheet A, \"Complete Credit Limit Worksheet B only if you meet all the following\", \"2. You are not filing Form 2555\". Form 2555 is refused by sa.excluded_income on Schedule 8812 lines 2a to 2c, as the note of s8812.clwb_complete says, so condition 2 holds on every return the tool completes. The line changed only in the gate its refusal reads (s3.other_credit in place of scope.credits, BUG-0619). Project stands.",
+   "subject_key": "8761a967d5d872c46f7573ff4317c3308068ff44704f30d59ef6bdf0ad627d7a"
   },
   {
    "key": "(CLW A 5)",
-   "record": "a9080a227ba460fd5065b66e6e3b6107f25675a33105f86f392bb93c4fd06b9f",
+   "record": "4c14c6d7bbd15865bf16750b547bb54a8b8d78af1a03c51bd32a7996f7d740bb",
    "status": "MATCH",
-   "subject_key": "90e21b21cfd222bd96b653ca93e47c7c1bb2785a0e815306e071421f6d414a3b"
+   "subject_key": "13883bfbcef37a59f0dd5fbe8aea30ab57d98caaac72f7aeb404f5a9259e1ebd"
   },
   {
    "key": "13",
@@ -305,9 +306,9 @@
   },
   {
    "key": "(CLW B 15)",
-   "record": "a9080a227ba460fd5065b66e6e3b6107f25675a33105f86f392bb93c4fd06b9f",
+   "record": "4c14c6d7bbd15865bf16750b547bb54a8b8d78af1a03c51bd32a7996f7d740bb",
    "status": "MATCH",
-   "subject_key": "afd1da4ae689bdb1bbe67731675f5227c0696bd0b138a11bc7485a8c0a4f3e94"
+   "subject_key": "c228f5c0576b83e1028f8b10128b9631e18176cc1ae27959d644861070c071f0"
   }
  ],
  "subjects": {
@@ -327,10 +328,10 @@
   "11": "cdea0715f73ae09ee5b980fa7cb70ca49d017870ae895fe6e2648660aabf674e",
   "12": "d82202b6e62f0092c5f00e42ff602261821d3e574e92362df5626efca077103b",
   "(CLW A 1)": "e6b54d520041d1f70fcc4f4256eb0c6e2b1f0a7417f26bd2d34796bd3954e62e",
-  "(CLW A 2)": "375c701db3a6cf556b6ff2bd054953dd1b69b425d3e3c4c6177ad650f3536db8",
-  "(CLW A 3)": "ef46ad567c122dcf49dd97a13660c57e4627c844026b2c3e2641e321d7ebb808",
-  "(CLW A 4)": "7176da4d9a69dedddad071c6aa7cd24dac01eaaf8396211f6acabb5f50bcc7cc",
-  "(CLW A 5)": "00516e9f7b21fa67d2cd6872bddd9b3a0120c5994d02fab83119ad7fbd17676d",
+  "(CLW A 2)": "62f6e658289d55aded78f399888ab0c4191a1a171aee997587f0abc622629971",
+  "(CLW A 3)": "11064644e606bed310937c903ca23d29065e7e132692460066521ac4143b5a3e",
+  "(CLW A 4)": "344d9641498e26b952fa70d75d8e63fcaa268689b981aeebbb781097b9da324c",
+  "(CLW A 5)": "31b6b023e9afe002f7ffce0b884fe862abfaeb7b96acda84fe04da8af595d9b9",
   "13": "9f59fdc6342b620a49c8441c8923996bd20e9c8a9ab13b444e052302ec4cd0b2",
   "14": "9ac712ed60ca486b67357c72ff56a166f2322739c551016bcca3b4da9a120c41",
   "16a": "2a3764402f20cd2711f331452596dde7e717d6bbbc9dcb2f355e3bb2ebcae1e9",
@@ -360,7 +361,7 @@
   "(CLW B 12)": "e08c871d4ee1cb5c102bd8275eaf6e8271398af8697f27a64dc3ef2f6529921d",
   "(CLW B 13)": "8eef5300e32950531e9d619bdd474b48935d62f721425c854cf80d4cf82d6b33",
   "(CLW B 14)": "f5c339a814703507f15d3bd03deaa1dadfb3877559e69ca7b0599c6d264a3d47",
-  "(CLW B 15)": "c1c5ab4105bf889b691bafd1e18a6e36437a1e8a4f50ae290ae0904f1d718f6b"
+  "(CLW B 15)": "53be4ff5f540a97b03a7bfb684517028c0952b45b3a3bd40f158c2f5cf064ed2"
  },
  "__rest__": "2abbd6b34d56633a21ef96dface3fb6db6aca1c0cfb3f64517fea5a545f499ff"
 }

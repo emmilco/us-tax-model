@@ -5,27 +5,109 @@ No model is called. Each row names a situation as the answers a filer in it give
 
 How to read a path: the numbered answers are the row's own (or a named set's, marked), with the question's number in the walk. Every other question on the way was answered by the background return (the last section): the answer a filer with nothing to report gives to the same question. The background answers only the kinds of question it is itself asked; a question opened by the row's answers must be answered by the row. A refusal met on a background answer, or an expected value the background supplied, fails the row.
 
-37 rows: 37 pass, 0 fail. 2 of them are written against the interview as it stands before a redesigned part lands, and are marked for replacement.
+79 rows: 79 pass, 0 fail.
 
-## Credits the tool does not figure
+## Credits
 
 Rows: `interview/2025/coverage/credits.yaml`.
 
 | Row | Design row | Situation | How the interview ends |
 |---|---|---|---|
-| `credits.form_1116` | C.2 row 1 (foreign tax credit needing Form 1116) | A filer paid more foreign tax than can be credited without Form 1116. | Refused at `ftc.needs1116`: Form 1116. The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately. |
-| `credits.mortgage_certificate` † | C.2 row 8 (mortgage interest credit, current year) | A homeowner holds a mortgage credit certificate and wants the mortgage interest credit. | Refused at `scope.credits`: Credit Limit Worksheet A, line 2 (Schedule 3 lines 6d, 6f, 6l, 6m). Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool. |
-| `credits.form_2439` | C.2 row 17 (Form 2439) | A fund sent the filer a Form 2439 for gains it kept and paid tax on. | Refused at `sd.other_forms`: Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. |
-| `credits.fuel_typed_in` † | C.2 row 16 (credit for federal tax on fuels) | A filer with a fuel tax credit answers the credits screen No and types the Form 4136 amount in. | The return is completed, with `s3.line12` = $250.00. |
-
-† Written against the interview as it stands; to be replaced: the credits screen is taken apart.
+| `credits.form1116` | C.2 row 1 (foreign tax credit needing Form 1116) | A person paid $500 of foreign tax in 2025, more than the amount that can be claimed without Form 1116. | Refused at `ftc.needs1116`: Form 1116. The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately. |
+| `credits.business_credit` | C.2 row 2a (business credit of a business on this return) | A person runs a business that claims a business tax credit. | Refused at `person[taxpayer].sc[shop].business_credit`: Form 3800 (general business credit). Business credits (Form 3800) are outside this tool. |
+| `credits.employment_credit` | C.2 row 2b (employment credit of a business on this return) | A person runs a business whose wages were reduced by an employment credit. | Refused at `person[taxpayer].sc[shop].screened`: Schedule C items outside this tool. Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool. |
+| `credits.partnership_credit` | C.2 row 2c (business credit through a partnership, S corporation or rental) | A person has a partnership, S corporation or rental, the only way such a credit reaches a person with no business of their own. | Refused at `scope.schedule1`: Schedule 1. Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool. |
+| `credits.business_credit_carried` | C.2 row 2d (business credit carried from an earlier year) | A person's 2024 return includes Form 3800, so a business credit may carry into 2025. | Refused at `s3.prior_forms_if_forms`: Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912). A credit carried over from an earlier year is outside this tool. |
+| `credits.minimum_tax_credit` | C.2 row 3 (credit for prior-year minimum tax) | A person's 2024 return includes Form 8801, so a minimum tax credit may carry into 2025. | Refused at `s3.prior_forms_if_forms`: Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912). A credit carried over from an earlier year is outside this tool. |
+| `credits.adoption` | C.2 row 4 (adoption credit, adoption in 2025) | A person adopted a child in 2025. | Refused at `s3.adoption_if_any`: Form 8839 (adoption credit). An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form 8839, with its refundable part on Form 1040 line 30), which this tool does not prepare. |
+| `credits.adoption_carried` | C.2 row 4b (adoption credit carried from an earlier year) | A person adopted before 2024, and the 2024 return includes Form 8839, so an adoption credit may carry into 2025. | Refused at `s3.prior_forms_if_forms`: Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912). A credit carried over from an earlier year is outside this tool. |
+| `credits.adoption_refundable` | C.2 row 5 (refundable adoption credit, Form 1040 line 30) | A person paid adoption costs in 2025 and could get the refundable part of the adoption credit. | Refused at `s3.adoption_if_any`: Form 8839 (adoption credit). An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form 8839, with its refundable part on Form 1040 line 30), which this tool does not prepare. |
+| `credits.elderly_65` | C.2 row 6 (credit for the elderly or the disabled, a person 65 or older) | A person 65 or older wants the credit for the elderly or the disabled. | Refused at `s3.elderly_credit_if_asked`: Schedule R (credit for the elderly or the disabled). The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question. Not asked on the way: `s3.disability_retired`. |
+| `credits.elderly_disability` | C.2 row 6 (credit for the elderly or the disabled, a person under 65 retired on disability) | A person under 65 who retired on permanent and total disability wants the credit for the elderly or the disabled. | Refused at `s3.elderly_credit_if_asked`: Schedule R (credit for the elderly or the disabled). The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question. |
+| `credits.new_vehicle` | C.2 row 7 (clean vehicle credit, new vehicle) | A person bought a new electric car in spring 2025 and wants the tax credit on the return. | Refused at `s3.ev_credit_if_bought`: Form 8936 (clean vehicle credits). This tool does not prepare the clean vehicle credits (Form 8936). To go on without the credit, answer No to that question. |
+| `credits.mcc` | C.2 row 8 (mortgage interest credit, current year) | A person paid $4,000 of mortgage interest and has a mortgage credit certificate for the home loan. | Refused at `s3.mcc_if_interest`: Form 8396 (mortgage interest credit). A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A; this tool does not prepare it. |
+| `credits.mcc_carried` | C.2 row 8b (mortgage interest credit carried forward) | A person's 2024 return includes Form 8396, so a mortgage interest credit may carry into 2025. | Refused at `s3.prior_forms_if_forms`: Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912). A credit carried over from an earlier year is outside this tool. |
+| `credits.dc_homebuyer` | C.2 row 9 (D.C. first-time homebuyer credit, carryforward only) | A person's 2024 return includes Form 8859. | Refused at `s3.prior_forms_if_forms`: Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912). A credit carried over from an earlier year is outside this tool. |
+| `credits.old_electric_vehicle` | C.2 row 10 (qualified electric vehicle credit, carryforward only) | A person's 2024 return includes Form 8582-CR, where an old electric vehicle credit held back by the passive activity rules is kept. | Refused at `s3.prior_forms_if_forms`: Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912). A credit carried over from an earlier year is outside this tool. |
+| `credits.charger` | C.2 row 11 (charger credit, at home) | A person put in a home charger in 2025, got no vehicle, and wants the credit for the charger. | Refused at `s3.ev_equipment_if_ev`: Form 8911 (alternative fuel vehicle refueling property credit). This tool does not prepare the credit for vehicle charging or fueling equipment (Form 8911). To go on without the credit, answer No to that question. Not asked on the way: `s3.ev_credit`. |
+| `credits.bond_paper` | C.2 row 12 (tax credit bonds, Form 1097-BTC received) | A person received a Form 1097-BTC for 2025, showing a tax credit from a bond or a fund. | Refused at `s3.credit_bond`: Form 8912 (credit to holders of tax credit bonds). A tax credit from a bond, or one a fund passes on (Form 1097-BTC), is claimed on Form 8912, which this tool does not prepare. |
+| `credits.form8986` | C.2 row 13 (Form 8978 amount, Form 8986 received) | A person received a Form 8986 from a partnership after an audit and so has a Form 8978 amount; the existing line 16 question refuses it. | Refused at `scope.other_line16`: Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture. Additional Form 1040 line 16 taxes are outside this proof of concept. |
+| `credits.used_vehicle_dealer` | C.2 row 14 (credit for a previously owned clean vehicle) | A person bought a used electric car in 2025 and the dealer took the tax credit off the price. | Refused at `s3.ev_dealer_if_ev`: Form 8936 (clean vehicle credits). A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed with this return; this tool does not prepare them. |
+| `credits.business_fuel` | C.2 row 16 (credit for federal tax on fuels, a business) | A person runs a business that used fuel off the road and wants the federal fuel tax back. | Refused at `person[taxpayer].sc[shop].fuel_credit`: Form 4136 (credit for federal tax paid on fuels). The credit for federal tax paid on fuels (Form 4136) is outside this tool. |
+| `credits.form2439` | C.2 row 17 (Form 2439) | A person received a Form 2439 from a fund that kept its gains and paid tax on them. | Refused at `sd.other_forms`: Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. |
+| `credits.repaid_income` | C.2 row 18 (credit for repayment of income of an earlier year) | A person paid back $5,000 of a bonus in 2025 that was taxed in an earlier year. | Refused at `s3.repaid_income`: Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16). A repayment of more than $3,000 of income reported in an earlier year gives a choice between a deduction and a credit (Schedule 3 line 13b), which this tool does not figure. |
+| `credits.elective_payment` | C.2 row 19 (net elective payment election amount, Form 3800) | A person runs a business that elects to be paid a business credit; the election is made with a business credit on Form 3800. | Refused at `person[taxpayer].sc[shop].business_credit`: Form 3800 (general business credit). Business credits (Form 3800) are outside this tool. |
+| `credits.section965` | C.2 row 20 (deferred net 965 tax liability) | A person who once owned part of a foreign company is paying section 965 tax on its earnings in yearly installments. | Refused at `s3.section965_if_foreign`: Schedule 3 line 13d (net 965 tax liability). A net 965 tax liability paid in installments is reported on Schedule 3 line 13d, which this tool does not prepare. |
+| `credits.section960c` | C.2 row 21 (section 960(c) credit) | A person who owns part of a foreign company claims a refund under section 960(c). | Refused at `s3.section960c_if_foreign`: Schedule 3 line 13z (section 960(c) credit). The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare. |
+| `credits.virgin_islands` | C.2 row 22 (U.S. Virgin Islands tax, Form 8689) | A person had income from the U.S. Virgin Islands, and part of the tax is owed there. | Refused at `s3.virgin_islands_if_foreign`: Form 8689 (Schedule 3 line 13z). Tax allocable to the U.S. Virgin Islands (Form 8689) is reported on Schedule 3 line 13z, which this tool does not prepare. |
+| `credits.farmland` | C.2 row 23 (farmland sale, Form 1062) | A person sold farmland in 2025 and chose to pay the tax on the gain in installments. | Refused at `s3.farmland_deferral_if_sold`: Form 1062 (Schedule 3 line 13z). The election to pay the tax on a sale of farmland in installments (Form 1062) is reported on Schedule 3 line 13z, which this tool does not prepare. |
+| `credits.gap.vehicle_ordered_earlier` | sources check 5 (the vehicle's year is the year it is received) | A person ordered and paid for an electric car in 2024, received it in 2025, and wants the credit. | Refused at `s3.ev_credit_if_bought`: Form 8936 (clean vehicle credits). This tool does not prepare the clean vehicle credits (Form 8936). To go on without the credit, answer No to that question. |
+| `credits.gap.vehicle_leased_or_late` | sources check 4 and 5 (a lessee has no credit; none for a vehicle acquired after September 30, 2025) | A person leased an electric car in 2025, or bought one in November 2025; no credit exists, so the return goes on and the credit is not asked about. | The return is completed, with `s3.ev_bought` = No. Not asked on the way: `s3.ev_credit`. |
+| `credits.gap.adoption_paid_earlier_us` | sources check 6 (costs paid in 2024 toward a U.S. adoption not final at the end of 2024) | A person paid adoption costs in 2024 for a U.S. child whose adoption was still not final at the end of 2024, and neither adopted nor paid in 2025. | Refused at `s3.adoption_us_if_earlier`: Form 8839 (adoption credit). Costs paid in 2024 toward adopting a U.S. child, where the adoption was not final at the end of 2024, are credited on the 2025 return (Form 8839), which this tool does not prepare. |
+| `credits.gap.adoption_paid_earlier_foreign` | sources check 6 (a foreign adoption gives no credit until it is final) | A person paid adoption costs in 2024 for a child from another country whose adoption is still not final; no credit exists for 2025, so the return goes on. | The return is completed, with `s3.adoption_us` = No. |
+| `credits.gap.first_minimum_tax` | sources check 9 (first alternative minimum tax in 2024, no Form 8801 in the 2024 return) | A person owed alternative minimum tax for the first time on the 2024 return, which has Form 6251 and no Form 8801. | Refused at `s3.prior_amt_if_forms`: Form 8801 (credit for prior year minimum tax). Alternative minimum tax on your 2024 return can give a credit for 2025 (Form 8801), which this tool does not prepare. |
+| `credits.gap.form8834` | sources check 2 (Form 8834 carries nothing; the amount sits on Form 8582-CR) | A person has an old electric vehicle credit held back by the passive activity rules; the 2024 return has Form 8582-CR and no Form 8834. | Refused at `s3.prior_forms_if_forms`: Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912). A credit carried over from an earlier year is outside this tool. |
+| `credits.gap.bond_without_paper` | sources check, noticed (a tax credit bond held with no Form 1097-BTC) | A person owns a tax credit bond that gave a credit for 2025, and received no Form 1097-BTC for it. | Refused at `s3.credit_bond`: Form 8912 (credit to holders of tax credit bonds). A tax credit from a bond, or one a fund passes on (Form 1097-BTC), is claimed on Form 8912, which this tool does not prepare. |
+| `credits.gap.bond_credit_carried` | sources check, noticed (Form 8912 can carry a bond credit forward) | A person no longer owns a tax credit bond, and the 2024 return includes Form 8912 with a credit that could not be used. | Refused at `s3.prior_forms_if_forms`: Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912). A credit carried over from an earlier year is outside this tool. |
+| `credits.gap.kerosene` | found while building (Form 4136 allows a claim for kerosene used at home, with no business) | A person heats their home with kerosene and wants the federal fuel tax on it back. | Refused at `s3.kerosene_credit_if_kerosene`: Form 4136 (credit for federal tax paid on fuels). This tool does not prepare the credit for federal tax paid on fuels (Form 4136). To go on without the credit, answer No to that question. |
+| `credits.gap.foreign_tax_carryover` | found while building (a foreign tax credit carried from an earlier year, with no foreign tax in 2025) | A person paid foreign tax in an earlier year, paid none in 2025, and wants to use the credit left over. | Refused at `ftc.carryover_if_asked`: Form 1116. A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare. |
+| `credits.gap.foreign_tax_carryover_form` | owner decision (Form 1116 in the 2024 return leads to the carryover question, and refuses only with a carryover) | A person never thought of having paid tax abroad, but the 2024 return includes Form 1116 and a foreign tax credit is carried into 2025. | Refused at `ftc.carryover_if_asked`: Form 1116. A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare. |
+| `credits.form1116_nothing_carried` | owner decision (nobody is refused for having filed Form 1116 in 2024) | A person's 2024 return includes Form 1116 and nothing is carried into 2025; the return goes on. | The return is completed, with `ftc.carryover` = No. |
+| `credits.none` | C.2, the filer none of the rows describes | A person with none of these situations answers each plain question No and finishes the return; none of the questions beneath is asked. | The return is completed, with `s3.adoption_any` = No, `s3.ev` = No, `s3.prior_other_forms` = No, `s3.foreign_any` = No. Not asked on the way: `s3.adoption`, `s3.adoption_earlier`, `s3.adoption_us`, `s3.ev_dealer`, `s3.ev_bought`, `s3.ev_credit`, `s3.ev_equipment`, `s3.prior_amt`, `s3.prior_forms`, `ftc.carryover`, `s3.section965`, `s3.section960c`, `s3.virgin_islands`, `s3.kerosene_credit`, `s3.farmland_deferral`, `s3.elderly_credit`, `s3.mcc`. |
+| `credits.adoption_none_since_2024` | parent P1 answered Yes, nothing beneath applies | A person adopted a child in 2024, with every cost paid and the adoption final that year; the credit belonged to the 2024 return and the return goes on. | The return is completed, with `s3.adoption_earlier` = No. Not asked on the way: `s3.adoption_us`. |
+| `credits.prior_forms_none` | parent P3 answered Yes, nothing beneath applies | A person's 2024 return includes Form 8962 and no form that carries a credit; the return goes on. | The return is completed, with `s3.prior_forms` = No. |
+| `credits.foreign_none` | parent P4 answered Yes, nothing beneath applies | A person once paid income tax abroad and has none of the four situations; the return goes on. | The return is completed, with `s3.virgin_islands` = No. |
+| `credits.mcc_without_interest` | owner decision 2 (the certificate question is asked only with mortgage interest) | A person with no mortgage interest is not asked about a mortgage credit certificate. | The return is completed, with `sa.line8a` = $0.00. Not asked on the way: `s3.mcc`. |
+| `credits.mcc_with_interest_none` | owner decision 2 (the certificate question is asked with mortgage interest) | A person paid $4,000 of mortgage interest and has no mortgage credit certificate; the return goes on. | The return is completed, with `s3.mcc` = No. |
 
 Paths:
 
-- `credits.form_1116`: (24 background answers) → 25. `ftc.taxes` = $5,000.00
-- `credits.mortgage_certificate`: (2 background answers) → 3. `scope.credits` = Yes
-- `credits.form_2439`: (60 background answers) → 61. `sd.other_forms` = Yes
-- `credits.fuel_typed_in`: (2 background answers) → 3. `scope.credits` = No → (42 background answers) → 46. `s3.line12` = $250.00 → (30 background answers)
+- `credits.form1116`: (24 background answers) → 25. `ftc.taxes` = $500.00
+- `credits.business_credit`: (70 background answers) → 71. `$sc@person[taxpayer]` = the entries `shop` → 72. `$asset@person[taxpayer].sc[shop]` = none → 73. `$scveh@person[taxpayer].sc[shop]` = none → 74. `person[taxpayer].plan` = `none` → 75. `person[taxpayer].sc[shop].hi_uses` = No → 76. `person[taxpayer].sc[shop].ho_uses` = No → 77. `person[taxpayer].sc[shop].inventory_other` = No → 78. `person[taxpayer].sc[shop].line10` = $0.00 → 79. `person[taxpayer].sc[shop].line11` = $0.00 → 80. `person[taxpayer].sc[shop].line14` = $0.00 → 81. `person[taxpayer].sc[shop].line15` = $0.00 → 82. `person[taxpayer].sc[shop].line16a` = $0.00 → 83. `person[taxpayer].sc[shop].line16b` = $0.00 → 84. `person[taxpayer].sc[shop].line17` = $0.00 → 85. `person[taxpayer].sc[shop].line18` = $0.00 → 86. `person[taxpayer].sc[shop].line19` = $0.00 → 87. `person[taxpayer].sc[shop].line2` = $0.00 → 88. `person[taxpayer].sc[shop].line20b` = $0.00 → 89. `person[taxpayer].sc[shop].line21` = $0.00 → 90. `person[taxpayer].sc[shop].line22` = $0.00 → 91. `person[taxpayer].sc[shop].line23` = $0.00 → 92. `person[taxpayer].sc[shop].line24a` = $0.00 → 93. `person[taxpayer].sc[shop].line25` = $0.00 → 94. `person[taxpayer].sc[shop].line26` = $0.00 → 95. `person[taxpayer].sc[shop].line35` = $0.00 → 96. `person[taxpayer].sc[shop].line36` = $0.00 → 97. `person[taxpayer].sc[shop].line37` = $0.00 → 98. `person[taxpayer].sc[shop].line38` = $0.00 → 99. `person[taxpayer].sc[shop].line39` = $0.00 → 100. `person[taxpayer].sc[shop].line41` = $0.00 → 101. `person[taxpayer].sc[shop].line48` = $0.00 → 102. `person[taxpayer].sc[shop].line6` = $0.00 → 103. `person[taxpayer].sc[shop].line8` = $0.00 → 104. `person[taxpayer].sc[shop].meals_100` = $0.00 → 105. `person[taxpayer].sc[shop].meals_50` = $0.00 → 106. `person[taxpayer].sc[shop].meals_80` = $0.00 → 107. `person[taxpayer].sc[shop].method_other` = No → 108. `person[taxpayer].sc[shop].passive` = Yes → 109. `person[taxpayer].sc[shop].rent_equipment` = $0.00 → 110. `person[taxpayer].sc[shop].special` = No → 111. `person[taxpayer].sc[shop].spouse_owned` = No → 112. `person[taxpayer].sc[shop].statutory` = No → 113. `person[taxpayer].sc[shop].business_credit` = Yes
+- `credits.employment_credit`: (70 background answers) → 71. `$sc@person[taxpayer]` = the entries `shop` → 72. `$asset@person[taxpayer].sc[shop]` = none → 73. `$scveh@person[taxpayer].sc[shop]` = none → 74. `person[taxpayer].plan` = `none` → 75. `person[taxpayer].sc[shop].hi_uses` = No → 76. `person[taxpayer].sc[shop].ho_uses` = No → 77. `person[taxpayer].sc[shop].inventory_other` = No → 78. `person[taxpayer].sc[shop].line10` = $0.00 → 79. `person[taxpayer].sc[shop].line11` = $0.00 → 80. `person[taxpayer].sc[shop].line14` = $0.00 → 81. `person[taxpayer].sc[shop].line15` = $0.00 → 82. `person[taxpayer].sc[shop].line16a` = $0.00 → 83. `person[taxpayer].sc[shop].line16b` = $0.00 → 84. `person[taxpayer].sc[shop].line17` = $0.00 → 85. `person[taxpayer].sc[shop].line18` = $0.00 → 86. `person[taxpayer].sc[shop].line19` = $0.00 → 87. `person[taxpayer].sc[shop].line2` = $0.00 → 88. `person[taxpayer].sc[shop].line20b` = $0.00 → 89. `person[taxpayer].sc[shop].line21` = $0.00 → 90. `person[taxpayer].sc[shop].line22` = $0.00 → 91. `person[taxpayer].sc[shop].line23` = $0.00 → 92. `person[taxpayer].sc[shop].line24a` = $0.00 → 93. `person[taxpayer].sc[shop].line25` = $0.00 → 94. `person[taxpayer].sc[shop].line26` = $0.00 → 95. `person[taxpayer].sc[shop].line35` = $0.00 → 96. `person[taxpayer].sc[shop].line36` = $0.00 → 97. `person[taxpayer].sc[shop].line37` = $0.00 → 98. `person[taxpayer].sc[shop].line38` = $0.00 → 99. `person[taxpayer].sc[shop].line39` = $0.00 → 100. `person[taxpayer].sc[shop].line41` = $0.00 → 101. `person[taxpayer].sc[shop].line48` = $0.00 → 102. `person[taxpayer].sc[shop].line6` = $0.00 → 103. `person[taxpayer].sc[shop].line8` = $0.00 → 104. `person[taxpayer].sc[shop].meals_100` = $0.00 → 105. `person[taxpayer].sc[shop].meals_50` = $0.00 → 106. `person[taxpayer].sc[shop].meals_80` = $0.00 → 107. `person[taxpayer].sc[shop].method_other` = No → 108. `person[taxpayer].sc[shop].passive` = Yes → 109. `person[taxpayer].sc[shop].rent_equipment` = $0.00 → 110. `person[taxpayer].sc[shop].special` = Yes
+- `credits.partnership_credit`: (3 background answers) → 4. `scope.schedule1` = Yes
+- `credits.business_credit_carried`: (51 background answers) → 52. `s3.prior_other_forms` = Yes → 53. `ftc.carryover` = No → 54. `s3.prior_amt` = No → 55. `s3.prior_forms` = Yes
+- `credits.minimum_tax_credit`: (51 background answers) → 52. `s3.prior_other_forms` = Yes → 53. `ftc.carryover` = No → 54. `s3.prior_amt` = No → 55. `s3.prior_forms` = Yes
+- `credits.adoption`: (12 background answers) → 13. `s3.adoption_any` = Yes → 14. `s3.adoption` = Yes
+- `credits.adoption_carried`: (51 background answers) → 52. `s3.prior_other_forms` = Yes → 53. `ftc.carryover` = No → 54. `s3.prior_amt` = No → 55. `s3.prior_forms` = Yes
+- `credits.adoption_refundable`: (12 background answers) → 13. `s3.adoption_any` = Yes → 14. `s3.adoption` = Yes
+- `credits.elderly_65`: (25 background answers) → 26. `person[taxpayer].age65` = Yes → 27. `person[taxpayer].died_before_65` = No → 28. `person[taxpayer].work_ssn` = Yes → (19 background answers) → 48. `s3.elderly_credit` = Yes
+- `credits.elderly_disability`: (45 background answers) → 46. `s3.disability_retired` = Yes → 47. `s3.elderly_credit` = Yes
+- `credits.new_vehicle`: (46 background answers) → 47. `s3.ev` = Yes [set got_vehicle] → 48. `s3.ev_dealer` = No [set got_vehicle] → 49. `s3.ev_bought` = Yes → 50. `s3.ev_credit` = Yes
+- `credits.mcc`: (57 background answers) → 58. `sa.line8a` = $4,000.00 → 59. `s3.mcc` = Yes
+- `credits.mcc_carried`: (51 background answers) → 52. `s3.prior_other_forms` = Yes → 53. `ftc.carryover` = No → 54. `s3.prior_amt` = No → 55. `s3.prior_forms` = Yes
+- `credits.dc_homebuyer`: (51 background answers) → 52. `s3.prior_other_forms` = Yes → 53. `ftc.carryover` = No → 54. `s3.prior_amt` = No → 55. `s3.prior_forms` = Yes
+- `credits.old_electric_vehicle`: (51 background answers) → 52. `s3.prior_other_forms` = Yes → 53. `ftc.carryover` = No → 54. `s3.prior_amt` = No → 55. `s3.prior_forms` = Yes
+- `credits.charger`: (46 background answers) → 47. `s3.ev` = Yes [set got_vehicle] → 48. `s3.ev_dealer` = No [set got_vehicle] → 49. `s3.ev_bought` = No → 50. `s3.ev_equipment` = Yes
+- `credits.bond_paper`: (44 background answers) → 45. `s3.credit_bond` = Yes
+- `credits.form8986`: (2 background answers) → 3. `scope.other_line16` = Yes
+- `credits.used_vehicle_dealer`: (46 background answers) → 47. `s3.ev` = Yes → 48. `s3.ev_dealer` = Yes
+- `credits.business_fuel`: (70 background answers) → 71. `$sc@person[taxpayer]` = the entries `shop` → 72. `$asset@person[taxpayer].sc[shop]` = none → 73. `$scveh@person[taxpayer].sc[shop]` = none → 74. `person[taxpayer].plan` = `none` → 75. `person[taxpayer].sc[shop].hi_uses` = No → 76. `person[taxpayer].sc[shop].ho_uses` = No → 77. `person[taxpayer].sc[shop].inventory_other` = No → 78. `person[taxpayer].sc[shop].line10` = $0.00 → 79. `person[taxpayer].sc[shop].line11` = $0.00 → 80. `person[taxpayer].sc[shop].line14` = $0.00 → 81. `person[taxpayer].sc[shop].line15` = $0.00 → 82. `person[taxpayer].sc[shop].line16a` = $0.00 → 83. `person[taxpayer].sc[shop].line16b` = $0.00 → 84. `person[taxpayer].sc[shop].line17` = $0.00 → 85. `person[taxpayer].sc[shop].line18` = $0.00 → 86. `person[taxpayer].sc[shop].line19` = $0.00 → 87. `person[taxpayer].sc[shop].line2` = $0.00 → 88. `person[taxpayer].sc[shop].line20b` = $0.00 → 89. `person[taxpayer].sc[shop].line21` = $0.00 → 90. `person[taxpayer].sc[shop].line22` = $0.00 → 91. `person[taxpayer].sc[shop].line23` = $0.00 → 92. `person[taxpayer].sc[shop].line24a` = $0.00 → 93. `person[taxpayer].sc[shop].line25` = $0.00 → 94. `person[taxpayer].sc[shop].line26` = $0.00 → 95. `person[taxpayer].sc[shop].line35` = $0.00 → 96. `person[taxpayer].sc[shop].line36` = $0.00 → 97. `person[taxpayer].sc[shop].line37` = $0.00 → 98. `person[taxpayer].sc[shop].line38` = $0.00 → 99. `person[taxpayer].sc[shop].line39` = $0.00 → 100. `person[taxpayer].sc[shop].line41` = $0.00 → 101. `person[taxpayer].sc[shop].line48` = $0.00 → 102. `person[taxpayer].sc[shop].line6` = $0.00 → 103. `person[taxpayer].sc[shop].line8` = $0.00 → 104. `person[taxpayer].sc[shop].meals_100` = $0.00 → 105. `person[taxpayer].sc[shop].meals_50` = $0.00 → 106. `person[taxpayer].sc[shop].meals_80` = $0.00 → 107. `person[taxpayer].sc[shop].method_other` = No → 108. `person[taxpayer].sc[shop].passive` = Yes → 109. `person[taxpayer].sc[shop].rent_equipment` = $0.00 → 110. `person[taxpayer].sc[shop].special` = No → 111. `person[taxpayer].sc[shop].spouse_owned` = No → 112. `person[taxpayer].sc[shop].statutory` = No → 113. `person[taxpayer].sc[shop].business_credit` = No → 114. `person[taxpayer].sc[shop].fuel_credit` = Yes
+- `credits.form2439`: (66 background answers) → 67. `sd.other_forms` = Yes
+- `credits.repaid_income`: (52 background answers) → 53. `s3.repaid_income` = Yes
+- `credits.elective_payment`: (70 background answers) → 71. `$sc@person[taxpayer]` = the entries `shop` → 72. `$asset@person[taxpayer].sc[shop]` = none → 73. `$scveh@person[taxpayer].sc[shop]` = none → 74. `person[taxpayer].plan` = `none` → 75. `person[taxpayer].sc[shop].hi_uses` = No → 76. `person[taxpayer].sc[shop].ho_uses` = No → 77. `person[taxpayer].sc[shop].inventory_other` = No → 78. `person[taxpayer].sc[shop].line10` = $0.00 → 79. `person[taxpayer].sc[shop].line11` = $0.00 → 80. `person[taxpayer].sc[shop].line14` = $0.00 → 81. `person[taxpayer].sc[shop].line15` = $0.00 → 82. `person[taxpayer].sc[shop].line16a` = $0.00 → 83. `person[taxpayer].sc[shop].line16b` = $0.00 → 84. `person[taxpayer].sc[shop].line17` = $0.00 → 85. `person[taxpayer].sc[shop].line18` = $0.00 → 86. `person[taxpayer].sc[shop].line19` = $0.00 → 87. `person[taxpayer].sc[shop].line2` = $0.00 → 88. `person[taxpayer].sc[shop].line20b` = $0.00 → 89. `person[taxpayer].sc[shop].line21` = $0.00 → 90. `person[taxpayer].sc[shop].line22` = $0.00 → 91. `person[taxpayer].sc[shop].line23` = $0.00 → 92. `person[taxpayer].sc[shop].line24a` = $0.00 → 93. `person[taxpayer].sc[shop].line25` = $0.00 → 94. `person[taxpayer].sc[shop].line26` = $0.00 → 95. `person[taxpayer].sc[shop].line35` = $0.00 → 96. `person[taxpayer].sc[shop].line36` = $0.00 → 97. `person[taxpayer].sc[shop].line37` = $0.00 → 98. `person[taxpayer].sc[shop].line38` = $0.00 → 99. `person[taxpayer].sc[shop].line39` = $0.00 → 100. `person[taxpayer].sc[shop].line41` = $0.00 → 101. `person[taxpayer].sc[shop].line48` = $0.00 → 102. `person[taxpayer].sc[shop].line6` = $0.00 → 103. `person[taxpayer].sc[shop].line8` = $0.00 → 104. `person[taxpayer].sc[shop].meals_100` = $0.00 → 105. `person[taxpayer].sc[shop].meals_50` = $0.00 → 106. `person[taxpayer].sc[shop].meals_80` = $0.00 → 107. `person[taxpayer].sc[shop].method_other` = No → 108. `person[taxpayer].sc[shop].passive` = Yes → 109. `person[taxpayer].sc[shop].rent_equipment` = $0.00 → 110. `person[taxpayer].sc[shop].special` = No → 111. `person[taxpayer].sc[shop].spouse_owned` = No → 112. `person[taxpayer].sc[shop].statutory` = No → 113. `person[taxpayer].sc[shop].business_credit` = Yes
+- `credits.section965`: (48 background answers) → 49. `s3.foreign_any` = Yes → 50. `ftc.carryover` = No → (3 background answers) → 54. `s3.section960c` = No → 55. `s3.section965` = Yes
+- `credits.section960c`: (48 background answers) → 49. `s3.foreign_any` = Yes → 50. `ftc.carryover` = No → (3 background answers) → 54. `s3.section960c` = Yes
+- `credits.virgin_islands`: (48 background answers) → 49. `s3.foreign_any` = Yes → 50. `ftc.carryover` = No → (3 background answers) → 54. `s3.section960c` = No → 55. `s3.section965` = No → 56. `s3.virgin_islands` = Yes
+- `credits.farmland`: (47 background answers) → 48. `s3.farmland` = Yes → 49. `s3.farmland_deferral` = Yes
+- `credits.gap.vehicle_ordered_earlier`: (46 background answers) → 47. `s3.ev` = Yes [set got_vehicle] → 48. `s3.ev_dealer` = No [set got_vehicle] → 49. `s3.ev_bought` = Yes → 50. `s3.ev_credit` = Yes
+- `credits.gap.vehicle_leased_or_late`: (46 background answers) → 47. `s3.ev` = Yes [set got_vehicle] → 48. `s3.ev_dealer` = No [set got_vehicle] → 49. `s3.ev_bought` = No → 50. `s3.ev_equipment` = No → (35 background answers)
+- `credits.gap.adoption_paid_earlier_us`: (12 background answers) → 13. `s3.adoption_any` = Yes → 14. `s3.adoption` = No → 15. `s3.adoption_earlier` = Yes → 16. `s3.adoption_us` = Yes
+- `credits.gap.adoption_paid_earlier_foreign`: (12 background answers) → 13. `s3.adoption_any` = Yes → 14. `s3.adoption` = No → 15. `s3.adoption_earlier` = Yes → 16. `s3.adoption_us` = No → (69 background answers)
+- `credits.gap.first_minimum_tax`: (51 background answers) → 52. `s3.prior_other_forms` = Yes → 53. `ftc.carryover` = No → 54. `s3.prior_amt` = Yes
+- `credits.gap.form8834`: (51 background answers) → 52. `s3.prior_other_forms` = Yes → 53. `ftc.carryover` = No → 54. `s3.prior_amt` = No → 55. `s3.prior_forms` = Yes
+- `credits.gap.bond_without_paper`: (44 background answers) → 45. `s3.credit_bond` = Yes
+- `credits.gap.bond_credit_carried`: (51 background answers) → 52. `s3.prior_other_forms` = Yes → 53. `ftc.carryover` = No → 54. `s3.prior_amt` = No → 55. `s3.prior_forms` = Yes
+- `credits.gap.kerosene`: (49 background answers) → 50. `s3.kerosene` = Yes → 51. `s3.kerosene_credit` = Yes
+- `credits.gap.foreign_tax_carryover`: (48 background answers) → 49. `s3.foreign_any` = Yes → 50. `ftc.carryover` = Yes
+- `credits.gap.foreign_tax_carryover_form`: (48 background answers) → 49. `s3.foreign_any` = No → (2 background answers) → 52. `s3.prior_other_forms` = Yes → 53. `ftc.carryover` = Yes
+- `credits.form1116_nothing_carried`: (48 background answers) → 49. `s3.foreign_any` = No → (2 background answers) → 52. `s3.prior_other_forms` = Yes → 53. `ftc.carryover` = No → 54. `s3.prior_amt` = No → 55. `s3.prior_forms` = No → (30 background answers)
+- `credits.none`: (12 background answers) → 13. `s3.adoption_any` = No → (31 background answers) → 45. `s3.credit_bond` = No → 46. `s3.disability_retired` = No → 47. `s3.ev` = No → 48. `s3.farmland` = No → 49. `s3.foreign_any` = No → 50. `s3.kerosene` = No → (1 background answer) → 52. `s3.prior_other_forms` = No → 53. `s3.repaid_income` = No → (29 background answers)
+- `credits.adoption_none_since_2024`: (12 background answers) → 13. `s3.adoption_any` = Yes → 14. `s3.adoption` = No → 15. `s3.adoption_earlier` = No → (69 background answers)
+- `credits.prior_forms_none`: (51 background answers) → 52. `s3.prior_other_forms` = Yes → 53. `ftc.carryover` = No → 54. `s3.prior_amt` = No → 55. `s3.prior_forms` = No → (30 background answers)
+- `credits.foreign_none`: (48 background answers) → 49. `s3.foreign_any` = Yes → 50. `ftc.carryover` = No → (3 background answers) → 54. `s3.section960c` = No → 55. `s3.section965` = No → 56. `s3.virgin_islands` = No → (30 background answers)
+- `credits.mcc_without_interest`: (57 background answers) → 58. `sa.line8a` = $0.00 → (24 background answers)
+- `credits.mcc_with_interest_none`: (57 background answers) → 58. `sa.line8a` = $4,000.00 → 59. `s3.mcc` = No → (24 background answers)
 
 ## Health savings accounts
 
@@ -66,7 +148,7 @@ Paths:
 - `hsa.testing_period_gap_with_contributions`: (15 background answers) → 16. `$f8889@person[taxpayer]` = the entries `hsa` [set account] → 17. `person[taxpayer].f8889[hsa].owner_died` = No [set account] → 18. `person[taxpayer].f8889[hsa].inherited` = No [set account] → 19. `person[taxpayer].f8889[hsa].archer` = No [set account] → 20. `person[taxpayer].f8889[hsa].line9` = $0.00 → 21. `person[taxpayer].f8889[hsa].line2` = $1,000.00 → 22. `person[taxpayer].f8889[hsa].ira_transfer` = No → 23. `person[taxpayer].f8889[hsa].excess_withdrawn` = No → 24. `person[taxpayer].f8889[hsa].coverage_year` = `changed` (No: it started, stopped or changed during 2025, or not sure) → 25. `person[taxpayer].f8889[hsa].months_eligible` = `7` → 26. `person[taxpayer].f8889[hsa].months_family` = `0` → 27. `person[taxpayer].f8889[hsa].dec_coverage` = `none` (No HSA-qualifying coverage that day) → 28. `person[taxpayer].f8889[hsa].age55` = No → 29. `person[taxpayer].f8889[hsa].ira_prior` = No → 30. `person[taxpayer].f8889[hsa].testing_prior` = Yes
 - `hsa.testing_period_ira_transfer_last_year`: (15 background answers) → 16. `$f8889@person[taxpayer]` = the entries `hsa` [set account] → 17. `person[taxpayer].f8889[hsa].owner_died` = No [set account] → 18. `person[taxpayer].f8889[hsa].inherited` = No [set account] → 19. `person[taxpayer].f8889[hsa].archer` = No [set account] → 20. `person[taxpayer].f8889[hsa].line9` = $0.00 [set nothing_in] → 21. `person[taxpayer].f8889[hsa].line2` = $0.00 [set nothing_in] → 22. `person[taxpayer].f8889[hsa].ira_transfer` = No [set nothing_in] → 23. `person[taxpayer].f8889[hsa].excess_withdrawn` = No [set nothing_in] → 24. `person[taxpayer].f8889[hsa].ira_prior` = Yes → 25. `person[taxpayer].f8889[hsa].coverage_year` = `changed` (No: it started, stopped or changed during 2025, or not sure) → 26. `person[taxpayer].f8889[hsa].months_eligible` = `2`
 - `hsa.testing_period_plan_grew_last_year`: (15 background answers) → 16. `$f8889@person[taxpayer]` = the entries `hsa` [set account] → 17. `person[taxpayer].f8889[hsa].owner_died` = No [set account] → 18. `person[taxpayer].f8889[hsa].inherited` = No [set account] → 19. `person[taxpayer].f8889[hsa].archer` = No [set account] → 20. `person[taxpayer].f8889[hsa].line9` = $0.00 → 21. `person[taxpayer].f8889[hsa].line2` = $1,000.00 → 22. `person[taxpayer].f8889[hsa].ira_transfer` = No → 23. `person[taxpayer].f8889[hsa].excess_withdrawn` = No → 24. `person[taxpayer].f8889[hsa].coverage_year` = `changed` (No: it started, stopped or changed during 2025, or not sure) → 25. `person[taxpayer].f8889[hsa].months_eligible` = `7` → 26. `person[taxpayer].f8889[hsa].months_family` = `7` → 27. `person[taxpayer].f8889[hsa].dec_coverage` = `none` (No HSA-qualifying coverage that day) → 28. `person[taxpayer].f8889[hsa].age55` = No → 29. `person[taxpayer].f8889[hsa].ira_prior` = No → 30. `person[taxpayer].f8889[hsa].testing_prior` = Yes
-- `hsa.testing_period_settled_by_coverage`: (15 background answers) → 16. `$f8889@person[taxpayer]` = the entries `hsa` [set account] → 17. `person[taxpayer].f8889[hsa].owner_died` = No [set account] → 18. `person[taxpayer].f8889[hsa].inherited` = No [set account] → 19. `person[taxpayer].f8889[hsa].archer` = No [set account] → 20. `person[taxpayer].f8889[hsa].line9` = $2,000.00 [set payroll_in] → 21. `person[taxpayer].f8889[hsa].line2` = $0.00 [set payroll_in] → 22. `person[taxpayer].f8889[hsa].ira_transfer` = No [set payroll_in] → 23. `person[taxpayer].f8889[hsa].excess_withdrawn` = No [set payroll_in] → 24. `person[taxpayer].f8889[hsa].coverage_year` = `self_only` (Yes, all 12 months, covering one person only) [set same_plan] → 25. `person[taxpayer].f8889[hsa].clear_all_year` = Yes [set same_plan] → 26. `person[taxpayer].f8889[hsa].fsa` = No [set same_plan] → 27. `person[taxpayer].f8889[hsa].age55` = No [set same_plan] → 28. `person[taxpayer].f8889[hsa].line14a` = $0.00 → 29. `person[taxpayer].f8889[hsa].mistake_repaid` = No → 30. `person[taxpayer].f8889[hsa].loan` = No → (60 background answers)
+- `hsa.testing_period_settled_by_coverage`: (15 background answers) → 16. `$f8889@person[taxpayer]` = the entries `hsa` [set account] → 17. `person[taxpayer].f8889[hsa].owner_died` = No [set account] → 18. `person[taxpayer].f8889[hsa].inherited` = No [set account] → 19. `person[taxpayer].f8889[hsa].archer` = No [set account] → 20. `person[taxpayer].f8889[hsa].line9` = $2,000.00 [set payroll_in] → 21. `person[taxpayer].f8889[hsa].line2` = $0.00 [set payroll_in] → 22. `person[taxpayer].f8889[hsa].ira_transfer` = No [set payroll_in] → 23. `person[taxpayer].f8889[hsa].excess_withdrawn` = No [set payroll_in] → 24. `person[taxpayer].f8889[hsa].coverage_year` = `self_only` (Yes, all 12 months, covering one person only) [set same_plan] → 25. `person[taxpayer].f8889[hsa].clear_all_year` = Yes [set same_plan] → 26. `person[taxpayer].f8889[hsa].fsa` = No [set same_plan] → 27. `person[taxpayer].f8889[hsa].age55` = No [set same_plan] → 28. `person[taxpayer].f8889[hsa].line14a` = $0.00 → 29. `person[taxpayer].f8889[hsa].mistake_repaid` = No → 30. `person[taxpayer].f8889[hsa].loan` = No → (66 background answers)
 - `hsa.inherited`: (15 background answers) → 16. `$f8889@person[taxpayer]` = the entries `hsa` → 17. `person[taxpayer].f8889[hsa].owner_died` = No → 18. `person[taxpayer].f8889[hsa].inherited` = Yes
 - `hsa.death_payment_box3`: (15 background answers) → 16. `$f8889@person[taxpayer]` = the entries `hsa` [set account] → 17. `person[taxpayer].f8889[hsa].owner_died` = No [set account] → 18. `person[taxpayer].f8889[hsa].inherited` = No [set account] → 19. `person[taxpayer].f8889[hsa].archer` = No [set account] → 20. `person[taxpayer].f8889[hsa].line9` = $0.00 [set nothing_in] → 21. `person[taxpayer].f8889[hsa].line2` = $0.00 [set nothing_in] → 22. `person[taxpayer].f8889[hsa].ira_transfer` = No [set nothing_in] → 23. `person[taxpayer].f8889[hsa].excess_withdrawn` = No [set nothing_in] → 24. `person[taxpayer].f8889[hsa].ira_prior` = No → 25. `person[taxpayer].f8889[hsa].testing_prior` = No → 26. `person[taxpayer].f8889[hsa].line14a` = $3,000.00 → 27. `person[taxpayer].f8889[hsa].dist_code` = Yes
 - `hsa.estate_is_beneficiary`: (15 background answers) → 16. `$f8889@person[taxpayer]` = the entries `hsa` → 17. `person[taxpayer].f8889[hsa].owner_died` = Yes
@@ -79,9 +161,9 @@ Paths:
 - `hsa.employer_excess_not_in_wages`: (15 background answers) → 16. `$f8889@person[taxpayer]` = the entries `hsa` [set account] → 17. `person[taxpayer].f8889[hsa].owner_died` = No [set account] → 18. `person[taxpayer].f8889[hsa].inherited` = No [set account] → 19. `person[taxpayer].f8889[hsa].archer` = No [set account] → 20. `person[taxpayer].f8889[hsa].line9` = $9,000.00 → 21. `person[taxpayer].f8889[hsa].line2` = $0.00 → 22. `person[taxpayer].f8889[hsa].ira_transfer` = No → 23. `person[taxpayer].f8889[hsa].excess_withdrawn` = No → 24. `person[taxpayer].f8889[hsa].coverage_year` = `self_only` (Yes, all 12 months, covering one person only) [set same_plan] → 25. `person[taxpayer].f8889[hsa].clear_all_year` = Yes [set same_plan] → 26. `person[taxpayer].f8889[hsa].fsa` = No [set same_plan] → 27. `person[taxpayer].f8889[hsa].age55` = No [set same_plan] → 28. `person[taxpayer].f8889[hsa].employer_in_box1` = No
 - `hsa.impossible_months`: (15 background answers) → 16. `$f8889@person[taxpayer]` = the entries `hsa` [set account] → 17. `person[taxpayer].f8889[hsa].owner_died` = No [set account] → 18. `person[taxpayer].f8889[hsa].inherited` = No [set account] → 19. `person[taxpayer].f8889[hsa].archer` = No [set account] → 20. `person[taxpayer].f8889[hsa].line9` = $0.00 → 21. `person[taxpayer].f8889[hsa].line2` = $1,000.00 → 22. `person[taxpayer].f8889[hsa].ira_transfer` = No → 23. `person[taxpayer].f8889[hsa].excess_withdrawn` = No → 24. `person[taxpayer].f8889[hsa].coverage_year` = `changed` (No: it started, stopped or changed during 2025, or not sure) → 25. `person[taxpayer].f8889[hsa].months_eligible` = `13`
 - `hsa.rollover_over_total`: (15 background answers) → 16. `$f8889@person[taxpayer]` = the entries `hsa` [set account] → 17. `person[taxpayer].f8889[hsa].owner_died` = No [set account] → 18. `person[taxpayer].f8889[hsa].inherited` = No [set account] → 19. `person[taxpayer].f8889[hsa].archer` = No [set account] → 20. `person[taxpayer].f8889[hsa].line9` = $0.00 [set nothing_in] → 21. `person[taxpayer].f8889[hsa].line2` = $0.00 [set nothing_in] → 22. `person[taxpayer].f8889[hsa].ira_transfer` = No [set nothing_in] → 23. `person[taxpayer].f8889[hsa].excess_withdrawn` = No [set nothing_in] → 24. `person[taxpayer].f8889[hsa].ira_prior` = No → 25. `person[taxpayer].f8889[hsa].testing_prior` = No → 26. `person[taxpayer].f8889[hsa].line14a` = $1,000.00 → 27. `person[taxpayer].f8889[hsa].dist_code` = No → 28. `person[taxpayer].f8889[hsa].rollover` = $2,000.00
-- `hsa.no_account`: (15 background answers) → 16. `$f8889@person[taxpayer]` = none → (60 background answers)
+- `hsa.no_account`: (15 background answers) → 16. `$f8889@person[taxpayer]` = none → (66 background answers)
 - `hsa.testing_period_no_account_left`: (15 background answers) → 16. `$f8889@person[taxpayer]` = none → (26 background answers) → 43. `s2.other` = Yes
-- `hsa.ira_transfer_at_the_1099r`: (7 background answers) → 8. `$retirement@person[taxpayer]` = the entries `ira` → (3 background answers) → 12. `person[taxpayer].retirement[ira].account` = `traditional_ira` → 13. `person[taxpayer].retirement[ira].special` = Yes
+- `hsa.ira_transfer_at_the_1099r`: (6 background answers) → 7. `$retirement@person[taxpayer]` = the entries `ira` → (3 background answers) → 11. `person[taxpayer].retirement[ira].account` = `traditional_ira` → 12. `person[taxpayer].retirement[ira].special` = Yes
 
 ## The opening (who the return is for, and the filing status)
 
@@ -103,35 +185,35 @@ Rows: `interview/2025/coverage/opening.yaml`.
 Paths:
 
 - `opening.couple`: 1. `$person` = the entries `taxpayer`, `spouse`
-- `opening.couple_spouse_died`: 1. `$person` = the entries `taxpayer`, `spouse` → (8 background answers) → 10. `household.married` = No → 11. `household.spouse_died_2025` = Yes → (75 background answers)
-- `opening.pair_not_married`: 1. `$person` = the entries `taxpayer`, `spouse` → (8 background answers) → 10. `household.married` = No → 11. `household.spouse_died_2025` = No
+- `opening.couple_spouse_died`: 1. `$person` = the entries `taxpayer`, `spouse` → (7 background answers) → 9. `household.married` = No → 10. `household.spouse_died_2025` = Yes → (82 background answers)
+- `opening.pair_not_married`: 1. `$person` = the entries `taxpayer`, `spouse` → (7 background answers) → 9. `household.married` = No → 10. `household.spouse_died_2025` = No
 - `opening.separate`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `mfs` (Married, and filing apart from my husband or wife (married filing separately))
-- `opening.living_apart_parent`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `hoh` (I paid over half the cost of the home of my child, or of a relative I support (head of household)) → (7 background answers)
-- `opening.unmarried_with_child`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `hoh` (I paid over half the cost of the home of my child, or of a relative I support (head of household)) → (7 background answers) → 10. `household.unmarried` = Yes
-- `opening.widowed_with_child`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `qss` (Widowed in 2023 or 2024, not remarried, and my child lived with me all of 2025 (qualifying surviving spouse)) → (7 background answers)
-- `opening.single`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `single` (None of these: I was not married (single)) → (7 background answers) → 10. `household.married` = No → 11. `household.spouse_died_2025` = No → (65 background answers)
-- `opening.married_picks_single`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `single` (None of these: I was not married (single)) → (7 background answers) → 10. `household.married` = Yes
-- `opening.widowed_this_year_alone`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `single` (None of these: I was not married (single)) → (7 background answers) → 10. `household.married` = No → 11. `household.spouse_died_2025` = Yes
+- `opening.living_apart_parent`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `hoh` (I paid over half the cost of the home of my child, or of a relative I support (head of household)) → (6 background answers)
+- `opening.unmarried_with_child`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `hoh` (I paid over half the cost of the home of my child, or of a relative I support (head of household)) → (6 background answers) → 9. `household.unmarried` = Yes
+- `opening.widowed_with_child`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `qss` (Widowed in 2023 or 2024, not remarried, and my child lived with me all of 2025 (qualifying surviving spouse)) → (6 background answers)
+- `opening.single`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `single` (None of these: I was not married (single)) → (6 background answers) → 9. `household.married` = No → 10. `household.spouse_died_2025` = No → (72 background answers)
+- `opening.married_picks_single`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `single` (None of these: I was not married (single)) → (6 background answers) → 9. `household.married` = Yes
+- `opening.widowed_this_year_alone`: 1. `$person` = the entries `taxpayer` → 2. `f1040.status` = `single` (None of these: I was not married (single)) → (6 background answers) → 9. `household.married` = No → 10. `household.spouse_died_2025` = Yes
 
 ## The background return
 
-The 76 questions a filer with nothing to report is asked, in order, and the answer given to each: no, zero, none or the first option (the other option where that one refuses). It is the minimal return `interview-rules` checks to completion.
+The 82 questions a filer with nothing to report is asked, in order, and the answer given to each: no, zero, none or the first option (the other option where that one refuses). It is the minimal return `interview-rules` checks to completion.
 
 | # | Question | Answer |
 |---|---|---|
 | 1 | `$person` | the entries `taxpayer` |
 | 2 | `f1040.status` | `single` (None of these: I was not married (single)) |
-| 3 | `scope.credits` | No |
-| 4 | `scope.other_line16` | No |
-| 5 | `scope.schedule1` | No |
-| 6 | `scope.other_income` | No |
-| 7 | `$f1095a` | none |
-| 8 | `$retirement@person[taxpayer]` | none |
-| 9 | `$dependent` | none |
-| 10 | `household.married` | No |
-| 11 | `household.spouse_died_2025` | No |
-| 12 | `person[taxpayer].under16` | No |
-| 13 | `household.community_property` | No |
+| 3 | `scope.other_line16` | No |
+| 4 | `scope.schedule1` | No |
+| 5 | `scope.other_income` | No |
+| 6 | `$f1095a` | none |
+| 7 | `$retirement@person[taxpayer]` | none |
+| 8 | `$dependent` | none |
+| 9 | `household.married` | No |
+| 10 | `household.spouse_died_2025` | No |
+| 11 | `person[taxpayer].under16` | No |
+| 12 | `household.community_property` | No |
+| 13 | `s3.adoption_any` | No |
 | 14 | `$w2@person[taxpayer]` | none |
 | 15 | `$interest` | none |
 | 16 | `$f8889@person[taxpayer]` | none |
@@ -163,35 +245,41 @@ The 76 questions a filer with nothing to report is asked, in order, and the answ
 | 42 | `s2.amt` | No |
 | 43 | `s2.other` | No |
 | 44 | `person[taxpayer].x_other` | No |
-| 45 | `s3.line10` | $0.00 |
-| 46 | `s3.line12` | $0.00 |
-| 47 | `s3.line14` | $0.00 |
-| 48 | `sa.dependent` | No |
-| 49 | `person[taxpayer].blind` | No |
-| 50 | `sa.elect_itemize` | No |
-| 51 | `sa.excluded_income` | No |
-| 52 | `sa.unsupported` | No |
-| 53 | `sa.gifts` | No |
-| 54 | `sa.line1` | $0.00 |
-| 55 | `sa.line5a` | $0.00 |
-| 56 | `sa.line5b` | $0.00 |
-| 57 | `sa.line5c` | $0.00 |
+| 45 | `s3.credit_bond` | No |
+| 46 | `s3.disability_retired` | No |
+| 47 | `s3.ev` | No |
+| 48 | `s3.farmland` | No |
+| 49 | `s3.foreign_any` | No |
+| 50 | `s3.kerosene` | No |
+| 51 | `s3.line10` | $0.00 |
+| 52 | `s3.prior_other_forms` | No |
+| 53 | `s3.repaid_income` | No |
+| 54 | `sa.dependent` | No |
+| 55 | `person[taxpayer].blind` | No |
+| 56 | `sa.elect_itemize` | No |
+| 57 | `sa.excluded_income` | No |
 | 58 | `sa.line8a` | $0.00 |
-| 59 | `sb.foreign_any` | No |
-| 60 | `sd.carryover` | No |
-| 61 | `sd.other_forms` | No |
-| 62 | `$sales` | none |
-| 63 | `sli.interest` | $0.00 |
-| 64 | `ssb.benefits` | $0.00 |
-| 65 | `$sc@person[taxpayer]` | none |
-| 66 | `s1a.overtime` | No |
-| 67 | `s1a.tips` | No |
-| 68 | `s179.line10` | $0.00 |
-| 69 | `f2441.benefits` | No |
-| 70 | `f2441.care` | No |
-| 71 | `person[taxpayer].sav_trad` | No |
-| 72 | `qbi.unsupported` | No |
-| 73 | `qbi.carryforward` | $0.00 |
-| 74 | `f5695.part1_any` | No |
-| 75 | `f5695.part2_any` | No |
-| 76 | `person[taxpayer].eic_ssn` | No |
+| 59 | `sa.unsupported` | No |
+| 60 | `sa.gifts` | No |
+| 61 | `sa.line1` | $0.00 |
+| 62 | `sa.line5a` | $0.00 |
+| 63 | `sa.line5b` | $0.00 |
+| 64 | `sa.line5c` | $0.00 |
+| 65 | `sb.foreign_any` | No |
+| 66 | `sd.carryover` | No |
+| 67 | `sd.other_forms` | No |
+| 68 | `$sales` | none |
+| 69 | `sli.interest` | $0.00 |
+| 70 | `ssb.benefits` | $0.00 |
+| 71 | `$sc@person[taxpayer]` | none |
+| 72 | `s1a.overtime` | No |
+| 73 | `s1a.tips` | No |
+| 74 | `s179.line10` | $0.00 |
+| 75 | `f2441.benefits` | No |
+| 76 | `f2441.care` | No |
+| 77 | `person[taxpayer].sav_trad` | No |
+| 78 | `qbi.unsupported` | No |
+| 79 | `qbi.carryforward` | $0.00 |
+| 80 | `f5695.part1_any` | No |
+| 81 | `f5695.part2_any` | No |
+| 82 | `person[taxpayer].eic_ssn` | No |

@@ -863,7 +863,7 @@ form:
       cite:
         doc: i2441
         locator: 'p. 5, Line 10 Credit Limit Worksheet, "Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)"'
-      note: Schedule 3 line 6l (Form 8978) is refused by the credits screen (scope.credits), so line 2 is line 1 alone.
+      note: Schedule 3 line 6l (Form 8978) is refused with the return (the Form 8986 question, s3.docs), so line 2 is line 1 alone.
     - id: f2441.clw3
       printed: CLW 3
       type: NonNegDollars

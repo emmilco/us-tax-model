@@ -568,7 +568,7 @@ form:
     cite:
       doc: f8880
       locator: 'p. 2, Credit Limit Worksheet, "2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l"
-        (lines 6d and 6l are refused by scope.credits)'
+        (lines 6d and 6l are refused with the return, by the questions of scope.ready)'
   - id: f8880.clw3
     printed: (CLW 3)
     shown_when: f8880.past9

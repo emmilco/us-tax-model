@@ -235,7 +235,7 @@ def render(r, groups):
         "- Where the IRS gives only parts of a situation with unknown overlap, the largest part is used, a lower bound.",
         f"- {len(r['gates_unmeasured'])} of the {len(r['gates_unmeasured']) + len(r['gates_mapped'])} refusal gates in the forms are not measured (no IRS count or",
         "  microdata variable), so the true coverage is lower by their share. Gates measured only in part (for example",
-        "  `scope.credits`, `scope.other_line16`) also refuse situations not counted here. Unmeasured:",
+        "  `s3.prior_forms`, `scope.other_line16`) also refuse situations not counted here. Unmeasured:",
         "  " + ", ".join(f"`{g}`" for g in r["gates_unmeasured"]) + ".",
         "",
         *(["Categories without an IRS count rest on the microdata model alone. Present coverage if each were set aside:", "",

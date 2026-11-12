@@ -10,6 +10,27 @@
 - Expr: `{"op":"input","source":"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7"}`
 - Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
 
+## (helper) — `ftc.carryover`
+
+- **Authored helper label:** Do you (or, on a joint return, your spouse) want to claim a foreign tax credit for unused foreign taxes carried to 2025 from another tax year?
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) want to claim a foreign tax credit for unused foreign taxes carried to 2025 from another tax year?
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) want to claim a foreign tax credit for unused foreign taxes carried to 2025 from another tax year?"}`
+- Cite: [i1116] p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025" (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## (helper) — `ftc.carryover_ask`
+
+- **Authored helper label:** The carryover question is asked: foreign tax, territory income or a foreign corporation at some time, or a 2024 return with a form besides Form 1040 and its schedules
+- **Encoded (Bool):** Choose — [s3 helper "Have you (or, on a joint return, your spouse) ever paid income tax to a foreign country or a U.S. territory, had income from sources in a U.S. territory, or owned 10% or more of a foreign corporation?" = true → s3 helper "Have you (or, on a joint return, your spouse) ever paid income tax to a foreign country or a U.S. territory, had income from sources in a U.S. territory, or owned 10% or more of a foreign corporation?"] [s3 helper "Have you (or, on a joint return, your spouse) ever paid income tax to a foreign country or a U.S. territory, had income from sources in a U.S. territory, or owned 10% or more of a foreign corporation?" = false → s3 helper "Does your (or, on a joint return, your spouse's) 2024 federal income tax return include any form other than Form 1040 or 1040-SR and its schedules?"]
+- Expr: `{"alternatives":[{"guard":{"eq":["s3.foreign_any",{"const":true}],"op":"test"},"then":"s3.foreign_any"},{"guard":{"eq":["s3.foreign_any",{"const":false}],"op":"test"},"then":"s3.prior_other_forms"}],"op":"choose"}`
+- Cite: [i1116] p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025" (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## (gate) — `ftc.carryover_if_asked`
+
+- **Authored helper label:** Whether a foreign tax credit carried from another year is claimed, asked only of a filer who has paid income tax to a foreign country or a U.S. territory, had territory income or owned part of a foreign corporation, or whose 2024 return includes a form besides Form 1040 and its schedules (false otherwise)
+- **Encoded (Bool):** Choose — [helper "The carryover question is asked: foreign tax, territory income or a foreign corporation at some time, or a 2024 return with a form besides Form 1040 and its schedules" = true → helper "Do you (or, on a joint return, your spouse) want to claim a foreign tax credit for unused foreign taxes carried to 2025 from another tax year?"] [helper "The carryover question is asked: foreign tax, territory income or a foreign corporation at some time, or a 2024 return with a form besides Form 1040 and its schedules" = false → helper "Year parameter ftc.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ftc.carryover_ask",{"const":true}],"op":"test"},"then":"ftc.carryover"},{"guard":{"eq":["ftc.carryover_ask",{"const":false}],"op":"test"},"then":"ftc.no"}],"op":"choose"}`
+- Cite: [i1116] p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025" (2025; printed date 2025-12-23; sha256 6998cf8c)
+
 ## (helper) — `ftc.all_passive`
 
 - **Authored helper label:** Was all foreign-source gross income passive category income under the small-tax election rules?
@@ -120,5 +141,6 @@
 - **Authored helper label:** Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax
 - **Encoded (Dollars):** Choose — [helper "Positive foreign taxes" = true → helper "Smaller of ftc.taxes, ftc.regular_tax"] [helper "Positive foreign taxes" = false → helper "Year parameter sales.zero"]
 - **Refusal:** when ftc.needs1116 is true, cannot complete Form 1116. The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately. Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
+- **Refusal:** when ftc.carryover_if_asked is true, cannot complete Form 1116. A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare. Cite: [i1116] p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025" (2025; printed date 2025-12-23; sha256 6998cf8c)
 - Expr: `{"alternatives":[{"guard":{"eq":["ftc.has_tax",{"const":true}],"op":"test"},"then":"ftc.limited"},{"guard":{"eq":["ftc.has_tax",{"const":false}],"op":"test"},"then":"ftc.zero"}],"op":"choose"}`
 - Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)

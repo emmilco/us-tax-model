@@ -298,12 +298,12 @@ export async function integrationChecks(): Promise<void> {
         ["joint",[{input:"$person",value:["taxpayer","spouse"]},{input:"f1040.status",value:"mfj"},{input:"person[spouse].role",value:"spouse"},{input:"person[taxpayer].role",value:"taxpayer"}],["taxpayer","spouse"]],
         ["single",[{input:"$person",value:["taxpayer"]},{input:"f1040.status",value:"single"},{input:"person[taxpayer].role",value:"taxpayer"}],["taxpayer"]],
       ] as const) {
-        const oldState=await cli(["interview","advance","--log",write(`old-${name}.jsonl`,[...old,{input:"scope.credits",value:false}])]);
+        const oldState=await cli(["interview","advance","--log",write(`old-${name}.jsonl`,[...old,{input:"scope.other_line16",value:false}])]);
         const newLog=join(dir,`new-${name}.jsonl`);
         await cli(["interview","start","--profile","full","--log",newLog]);
         await cli(["interview","answer","--log",newLog,"--input","$person","--value",JSON.stringify(now)]);
         if (name==="single") await cli(["interview","answer","--log",newLog,"--input","f1040.status","--value",'"single"']);
-        const newState=await cli(["interview","answer","--log",newLog,"--input","scope.credits","--value","false"]);
+        const newState=await cli(["interview","answer","--log",newLog,"--input","scope.other_line16","--value","false"]);
         assert.equal(comparable(oldState),comparable(newState),`${name}: a log of the earlier questions gives today's state`);
         assert.deepEqual(oldState.recorded,[],"answers given directly are not recorded ones");
         // The earlier log stays correctable: its status was answered directly, and changing the first answer records anew.

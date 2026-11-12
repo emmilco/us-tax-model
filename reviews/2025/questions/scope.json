@@ -2,17 +2,32 @@
  "form": "scope",
  "reviews": {
   "scope.other_line16": {
-   "subject_sha": "830c3b7ee2b8126eac1827f00f76553e9e52f7d2ed5d0211dd4d4334be52ed54",
+   "subject_sha": "2c71887054266a383b969e8398182c9549d11b8760e2372c47dcd701b6ef6d5f",
    "samples": [
     {
-     "verdict": "MATCH",
-     "findings": [],
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer had a section 965(i) triggering event during 2025 without a transfer agreement, so the triggered deferred net 965 tax liability must be added on line 16 (box 3, \"965INC\"), but the question's list never names it.",
+       "source_text": "i1040gi p. 36: \"Triggering event under section 965(i). If you had a triggering event under section 965(i) during the year and did not enter into a transfer agreement, check box 3 and enter the amount of the triggered deferred net 965 tax liability and enter \\\"965INC\\\" on the line next to that box.\"",
+       "why": "The filer is left to recognise this as an \"additional Form 1040 line 16 tax\" from the generic opening words alone, since the list omits it. A truthful No lets the tool compute line 16 without the tax.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer born on January 1 (2008, 2007 or 2002) reads their age at the end of 2025 as one year younger than the instructions treat it, and answers Yes for Form 8615 when it is not required (for example, born 1/1/2002 and a full-time student, or born 1/1/2008 with earned income over half of support).",
+       "source_text": "i1040gi p. 36: \"A child born on January 1, 2008, is considered to be age 18 at the end of 2025; a child born on January 1, 2007, is considered to be age 19 at the end of 2025; and a child born on January 1, 2002, is considered to be age 24 at the end of 2025.\"",
+       "why": "The question says \"you were under 18 at the end of 2025, or 18 with earned income of not more than half your support, or a full-time student 19 to 23\" without the January 1 birthday rule. These filers answer Yes and the return is refused although Form 8615 does not apply.",
+       "bound": ""
+      }
+     ],
      "prompt_sha": "9fe03ea1130c94aec1b98a69fe81b03af1af5752d46807ec09e83beed8bc544b",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
-     "model": "claude-opus-5-5",
-     "cost": 0.08846799999999999,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/scope.other_line16.830c3b7ee2b8.1.response.txt"
+     "model": "claude-fable-5-2",
+     "cost": 0.21284799999999998,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/scope.other_line16.2c7188705426.1.response.txt"
     }
    ],
    "type": "Bool",

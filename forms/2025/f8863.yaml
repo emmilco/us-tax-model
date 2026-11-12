@@ -700,7 +700,7 @@ form:
       locator: p. 8, Credit Limit Worksheet, "5. Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2,
         6d, and 6l"
     refuses:
-    - when: scope.credits
+    - when: s3.other_credit
       form: Credit Limit Worksheet (Form 8863 instructions), line 5 (Schedule 3 lines 6d and 6l)
       remedy: Credits other than the foreign tax credit and the child and dependent care credit that come before the education
         credits are outside this tool.

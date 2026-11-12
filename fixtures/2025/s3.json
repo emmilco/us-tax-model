@@ -341,7 +341,6 @@
         "eic.qc_of_another": null,
         "sa.dependent": null,
         "s8812.combat_pay": null,
-        "scope.credits": null,
         "person[taxpayer].w2[a].box2": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
@@ -429,7 +428,6 @@
         "eic.qc_of_another": null,
         "sa.dependent": null,
         "s8812.combat_pay": null,
-        "scope.credits": null,
         "person[taxpayer].w2[a].box2": null,
         "person[taxpayer].w2[b].box2": null,
         "f1040.line25b": null,
@@ -605,7 +603,6 @@
         "eic.qc_of_another": null,
         "sa.dependent": null,
         "s8812.combat_pay": null,
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -682,7 +679,6 @@
         "eic.qc_of_another": null,
         "sa.dependent": null,
         "s8812.combat_pay": null,
-        "scope.credits": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.unsupported": null,
@@ -826,8 +822,8 @@
           "b"
         ],
         "s3.line10": 500,
-        "s3.line12": 7,
-        "s3.line14": 20,
+        "s3.kerosene": true,
+        "s3.kerosene_credit": true,
         "person[taxpayer].w2[a].box3": 10000000,
         "person[taxpayer].w2[a].box4": 620000,
         "person[taxpayer].w2[b].box3": 10000000,
@@ -839,12 +835,30 @@
           "cents": 148180
         },
         "s3.line15": {
-          "kind": "money",
-          "cents": 148707
+          "kind": "refusal",
+          "gate": "s3.kerosene_credit_if_kerosene",
+          "form": "Form 4136 (credit for federal tax paid on fuels)",
+          "remedy": "This tool does not prepare the credit for federal tax paid on fuels (Form 4136). To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i4136",
+            "locator": "p. 2, Part I—Information About Your Business, \"If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "d3d63fc3e5af24a8d4c8466b415c3d9269233af67f24d29640a5b4581e10c9f1",
+            "tax_year": 2025
+          }
         },
         "f1040.line31": {
-          "kind": "money",
-          "cents": 148707
+          "kind": "refusal",
+          "gate": "s3.kerosene_credit_if_kerosene",
+          "form": "Form 4136 (credit for federal tax paid on fuels)",
+          "remedy": "This tool does not prepare the credit for federal tax paid on fuels (Form 4136). To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i4136",
+            "locator": "p. 2, Part I—Information About Your Business, \"If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "d3d63fc3e5af24a8d4c8466b415c3d9269233af67f24d29640a5b4581e10c9f1",
+            "tax_year": 2025
+          }
         }
       }
     },
@@ -919,7 +933,6 @@
         "eic.qc_of_another": null,
         "sa.dependent": null,
         "s8812.combat_pay": null,
-        "scope.credits": null,
         "person[taxpayer].w2[a].box2": null,
         "person[taxpayer].w2[b].box2": null,
         "f1040.line25b": null,
@@ -1023,6 +1036,2592 @@
         "s3.line11": {
           "kind": "money",
           "cents": 148180
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.adoption",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: an adoption final in 2025 or adoption costs paid in 2025 refuses on the fact: Schedule 3 line 7 (line 6c) and Form 1040 line 30, and line 8 through line 7. Lines 12 and 14 are $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.adoption_any": true,
+        "s3.adoption": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.adoption_if_any",
+          "form": "Form 8839 (adoption credit)",
+          "remedy": "An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form 8839, with its refundable part on Form 1040 line 30), which this tool does not prepare.",
+          "cite": {
+            "doc": "i8839",
+            "locator": "p. 1, Purpose of Form, \"You may be able to take this credit in 2025 if any of the following statements are true\"",
+            "revision": "2025",
+            "snapshot": "90dd5f4de0ca435d4e92666b5b50434e1ece488c67fc43a8c6697765bfb684eb",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "s3.adoption_if_any",
+          "form": "Form 8839 (adoption credit)",
+          "remedy": "An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form 8839, with its refundable part on Form 1040 line 30), which this tool does not prepare.",
+          "cite": {
+            "doc": "i8839",
+            "locator": "p. 1, Purpose of Form, \"You may be able to take this credit in 2025 if any of the following statements are true\"",
+            "revision": "2025",
+            "snapshot": "90dd5f4de0ca435d4e92666b5b50434e1ece488c67fc43a8c6697765bfb684eb",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "s3.adoption_if_any",
+          "form": "Form 8839 (adoption credit)",
+          "remedy": "An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form 8839, with its refundable part on Form 1040 line 30), which this tool does not prepare.",
+          "cite": {
+            "doc": "i8839",
+            "locator": "p. 1, Purpose of Form, \"You may be able to take this credit in 2025 if any of the following statements are true\"",
+            "revision": "2025",
+            "snapshot": "90dd5f4de0ca435d4e92666b5b50434e1ece488c67fc43a8c6697765bfb684eb",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line30": {
+          "kind": "refusal",
+          "gate": "s3.adoption_if_any",
+          "form": "Form 8839 (adoption credit)",
+          "remedy": "An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form 8839, with its refundable part on Form 1040 line 30), which this tool does not prepare.",
+          "cite": {
+            "doc": "i8839",
+            "locator": "p. 1, Purpose of Form, \"You may be able to take this credit in 2025 if any of the following statements are true\"",
+            "revision": "2025",
+            "snapshot": "90dd5f4de0ca435d4e92666b5b50434e1ece488c67fc43a8c6697765bfb684eb",
+            "tax_year": 2025
+          }
+        },
+        "s3.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line14": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.adoption_earlier_us",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: costs paid in 2024 toward a U.S. adoption not final at the end of 2024, nothing in 2025 (i8839 p. 1, case 1a): the question beneath refuses line 7 and Form 1040 line 30.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.adoption_any": true,
+        "s3.adoption": false,
+        "s3.adoption_earlier": true,
+        "s3.adoption_us": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.adoption_us_if_earlier",
+          "form": "Form 8839 (adoption credit)",
+          "remedy": "Costs paid in 2024 toward adopting a U.S. child, where the adoption was not final at the end of 2024, are credited on the 2025 return (Form 8839), which this tool does not prepare.",
+          "cite": {
+            "doc": "i8839",
+            "locator": "p. 1, Purpose of Form, \"2024 and the adoption wasn’t final at the end of 2024\"; p. 3, Domestic Adoption, \"the year after the year of the payment\"",
+            "revision": "2025",
+            "snapshot": "90dd5f4de0ca435d4e92666b5b50434e1ece488c67fc43a8c6697765bfb684eb",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "s3.adoption_us_if_earlier",
+          "form": "Form 8839 (adoption credit)",
+          "remedy": "Costs paid in 2024 toward adopting a U.S. child, where the adoption was not final at the end of 2024, are credited on the 2025 return (Form 8839), which this tool does not prepare.",
+          "cite": {
+            "doc": "i8839",
+            "locator": "p. 1, Purpose of Form, \"2024 and the adoption wasn’t final at the end of 2024\"; p. 3, Domestic Adoption, \"the year after the year of the payment\"",
+            "revision": "2025",
+            "snapshot": "90dd5f4de0ca435d4e92666b5b50434e1ece488c67fc43a8c6697765bfb684eb",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "s3.adoption_us_if_earlier",
+          "form": "Form 8839 (adoption credit)",
+          "remedy": "Costs paid in 2024 toward adopting a U.S. child, where the adoption was not final at the end of 2024, are credited on the 2025 return (Form 8839), which this tool does not prepare.",
+          "cite": {
+            "doc": "i8839",
+            "locator": "p. 1, Purpose of Form, \"2024 and the adoption wasn’t final at the end of 2024\"; p. 3, Domestic Adoption, \"the year after the year of the payment\"",
+            "revision": "2025",
+            "snapshot": "90dd5f4de0ca435d4e92666b5b50434e1ece488c67fc43a8c6697765bfb684eb",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line30": {
+          "kind": "refusal",
+          "gate": "s3.adoption_us_if_earlier",
+          "form": "Form 8839 (adoption credit)",
+          "remedy": "Costs paid in 2024 toward adopting a U.S. child, where the adoption was not final at the end of 2024, are credited on the 2025 return (Form 8839), which this tool does not prepare.",
+          "cite": {
+            "doc": "i8839",
+            "locator": "p. 1, Purpose of Form, \"2024 and the adoption wasn’t final at the end of 2024\"; p. 3, Domestic Adoption, \"the year after the year of the payment\"",
+            "revision": "2025",
+            "snapshot": "90dd5f4de0ca435d4e92666b5b50434e1ece488c67fc43a8c6697765bfb684eb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.adoption_earlier_foreign",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: costs paid in 2024 toward a foreign adoption not final at the end of 2024: no credit until the adoption is final (i8839 p. 3, Foreign Adoption), so nothing is refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.adoption_any": true,
+        "s3.adoption": false,
+        "s3.adoption_earlier": true,
+        "s3.adoption_us": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.adoption_us_if_earlier": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.adoption_earlier_if_any": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line30": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.adoption_2024_complete",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: an adoption paid for and final in 2024: its credit belonged to the 2024 return, so nothing is refused; the U.S. child question is not asked, and a Yes given to it is not read.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.adoption_any": true,
+        "s3.adoption": false,
+        "s3.adoption_earlier": false,
+        "s3.adoption_us": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.adoption_if_any": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.adoption_earlier_if_any": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.adoption_us_if_earlier": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line30": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.adoption_not_asked",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no adoption and no adoption costs since the start of 2024: none of the three questions beneath is asked, and a Yes given to each is not read.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.adoption_any": false,
+        "s3.adoption": true,
+        "s3.adoption_earlier": true,
+        "s3.adoption_us": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.adoption_if_any": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.adoption_earlier_if_any": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.adoption_us_if_earlier": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line30": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.credit_bond",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a federal tax credit from a bond or a fund in 2025 (Form 8912): line 7 refuses. Line 9 (no Form 1095-A) is $0 and is not refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.credit_bond": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.credit_bond",
+          "form": "Form 8912 (credit to holders of tax credit bonds)",
+          "remedy": "A tax credit from a bond, or one a fund passes on (Form 1097-BTC), is claimed on Form 8912, which this tool does not prepare.",
+          "cite": {
+            "doc": "i8912",
+            "locator": "p. 1, Who Can Claim the Credits, \"can claim the credit by filing Form 8912 for each tax year in which it holds the bond on a credit allowance date\"; p. 2, Line 1, \"This amount is the total bond credits reported to you on Form(s) 1097-BTC\"",
+            "revision": "December 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+            "snapshot": "8d4a48b71c4c1d3873b6488b5a4684d87d510d584d9f30a2beb353d0896343bd",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "s3.credit_bond",
+          "form": "Form 8912 (credit to holders of tax credit bonds)",
+          "remedy": "A tax credit from a bond, or one a fund passes on (Form 1097-BTC), is claimed on Form 8912, which this tool does not prepare.",
+          "cite": {
+            "doc": "i8912",
+            "locator": "p. 1, Who Can Claim the Credits, \"can claim the credit by filing Form 8912 for each tax year in which it holds the bond on a credit allowance date\"; p. 2, Line 1, \"This amount is the total bond credits reported to you on Form(s) 1097-BTC\"",
+            "revision": "December 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+            "snapshot": "8d4a48b71c4c1d3873b6488b5a4684d87d510d584d9f30a2beb353d0896343bd",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "s3.credit_bond",
+          "form": "Form 8912 (credit to holders of tax credit bonds)",
+          "remedy": "A tax credit from a bond, or one a fund passes on (Form 1097-BTC), is claimed on Form 8912, which this tool does not prepare.",
+          "cite": {
+            "doc": "i8912",
+            "locator": "p. 1, Who Can Claim the Credits, \"can claim the credit by filing Form 8912 for each tax year in which it holds the bond on a credit allowance date\"; p. 2, Line 1, \"This amount is the total bond credits reported to you on Form(s) 1097-BTC\"",
+            "revision": "December 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+            "snapshot": "8d4a48b71c4c1d3873b6488b5a4684d87d510d584d9f30a2beb353d0896343bd",
+            "tax_year": 2025
+          }
+        },
+        "s3.line9": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.elderly_65",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a person 65 or older, and the credit for the elderly or the disabled is wanted: asked because of the age answer, and refused on line 7.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].age65": true,
+        "s3.elderly_credit": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.elderly_credit_if_asked",
+          "form": "Schedule R (credit for the elderly or the disabled)",
+          "remedy": "The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i1040sr",
+            "locator": "p. 1, Qualified Individual, \"You are a qualified individual for this credit if you are a U.S. citizen or resident alien\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "7194fa66613b2ea28fa9ed67992cc06178892b7eb461013574ea1fb239f3ff3e",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "s3.elderly_credit_if_asked",
+          "form": "Schedule R (credit for the elderly or the disabled)",
+          "remedy": "The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i1040sr",
+            "locator": "p. 1, Qualified Individual, \"You are a qualified individual for this credit if you are a U.S. citizen or resident alien\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "7194fa66613b2ea28fa9ed67992cc06178892b7eb461013574ea1fb239f3ff3e",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "s3.elderly_credit_if_asked",
+          "form": "Schedule R (credit for the elderly or the disabled)",
+          "remedy": "The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i1040sr",
+            "locator": "p. 1, Qualified Individual, \"You are a qualified individual for this credit if you are a U.S. citizen or resident alien\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "7194fa66613b2ea28fa9ed67992cc06178892b7eb461013574ea1fb239f3ff3e",
+            "tax_year": 2025
+          }
+        },
+        "s3.elderly_ask": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.seniors": {
+          "kind": "count",
+          "value": 1
+        },
+        "s3.under65s": {
+          "kind": "count",
+          "value": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.elderly_disability",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a person under 65 retired on permanent and total disability, and the credit is wanted: asked because of the disability answer, and refused on line 7.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].age65": false,
+        "s3.disability_retired": true,
+        "s3.elderly_credit": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.elderly_credit_if_asked",
+          "form": "Schedule R (credit for the elderly or the disabled)",
+          "remedy": "The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i1040sr",
+            "locator": "p. 1, Qualified Individual, \"You are a qualified individual for this credit if you are a U.S. citizen or resident alien\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "7194fa66613b2ea28fa9ed67992cc06178892b7eb461013574ea1fb239f3ff3e",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "s3.elderly_credit_if_asked",
+          "form": "Schedule R (credit for the elderly or the disabled)",
+          "remedy": "The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i1040sr",
+            "locator": "p. 1, Qualified Individual, \"You are a qualified individual for this credit if you are a U.S. citizen or resident alien\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "7194fa66613b2ea28fa9ed67992cc06178892b7eb461013574ea1fb239f3ff3e",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "s3.elderly_credit_if_asked",
+          "form": "Schedule R (credit for the elderly or the disabled)",
+          "remedy": "The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i1040sr",
+            "locator": "p. 1, Qualified Individual, \"You are a qualified individual for this credit if you are a U.S. citizen or resident alien\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "7194fa66613b2ea28fa9ed67992cc06178892b7eb461013574ea1fb239f3ff3e",
+            "tax_year": 2025
+          }
+        },
+        "s3.elderly_ask": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.disability_if_under65": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.any_senior": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.any_under65": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.elderly_65_no",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a person 65 or older, credit not wanted: not refused. The disability question is not asked when everyone is 65 or older, and a Yes given to it is not read.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].age65": true,
+        "s3.disability_retired": true,
+        "s3.elderly_credit": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.disability_if_under65": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.elderly_ask": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.elderly_credit_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.any_under65": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.elderly_not_asked",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a person under 65 and not retired on disability: the credit question is not asked, and a Yes given to it is not read.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].age65": false,
+        "s3.disability_retired": false,
+        "s3.elderly_credit": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.elderly_ask": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.elderly_credit_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.seniors": {
+          "kind": "count",
+          "value": 0
+        },
+        "s3.under65s": {
+          "kind": "count",
+          "value": 1
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.disability_no_credit",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a person under 65 retired on disability, credit not wanted: asked, not refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].age65": false,
+        "s3.disability_retired": true,
+        "s3.elderly_credit": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.elderly_ask": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.elderly_credit_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.ev_dealer",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a vehicle received in 2025 with the credit given by the dealer (i8936 p. 1, Caution): Form 8936 must be filed, and line 7 refuses.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.ev": true,
+        "s3.ev_dealer": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.ev_dealer_if_ev",
+          "form": "Form 8936 (clean vehicle credits)",
+          "remedy": "A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed with this return; this tool does not prepare them.",
+          "cite": {
+            "doc": "i8936",
+            "locator": "p. 1, Purpose of Form, \"You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer\"",
+            "revision": "2025",
+            "snapshot": "49aa7277e16c54c2010e985aed96b37033da2ac223fe283d6266b014c445e057",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "s3.ev_dealer_if_ev",
+          "form": "Form 8936 (clean vehicle credits)",
+          "remedy": "A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed with this return; this tool does not prepare them.",
+          "cite": {
+            "doc": "i8936",
+            "locator": "p. 1, Purpose of Form, \"You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer\"",
+            "revision": "2025",
+            "snapshot": "49aa7277e16c54c2010e985aed96b37033da2ac223fe283d6266b014c445e057",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "s3.ev_dealer_if_ev",
+          "form": "Form 8936 (clean vehicle credits)",
+          "remedy": "A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed with this return; this tool does not prepare them.",
+          "cite": {
+            "doc": "i8936",
+            "locator": "p. 1, Purpose of Form, \"You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer\"",
+            "revision": "2025",
+            "snapshot": "49aa7277e16c54c2010e985aed96b37033da2ac223fe283d6266b014c445e057",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.ev_credit",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a vehicle bought and acquired by September 30, 2025, no dealer transfer, and the credit wanted on the return: line 7 refuses.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.ev": true,
+        "s3.ev_dealer": false,
+        "s3.ev_bought": true,
+        "s3.ev_credit": true,
+        "s3.ev_equipment": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.ev_credit_if_bought",
+          "form": "Form 8936 (clean vehicle credits)",
+          "remedy": "This tool does not prepare the clean vehicle credits (Form 8936). To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i8936",
+            "locator": "p. 1, Purpose of Form, \"to figure the following credits for clean vehicles you placed in service during your tax year\"",
+            "revision": "2025",
+            "snapshot": "49aa7277e16c54c2010e985aed96b37033da2ac223fe283d6266b014c445e057",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "s3.ev_credit_if_bought",
+          "form": "Form 8936 (clean vehicle credits)",
+          "remedy": "This tool does not prepare the clean vehicle credits (Form 8936). To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i8936",
+            "locator": "p. 1, Purpose of Form, \"to figure the following credits for clean vehicles you placed in service during your tax year\"",
+            "revision": "2025",
+            "snapshot": "49aa7277e16c54c2010e985aed96b37033da2ac223fe283d6266b014c445e057",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "s3.ev_credit_if_bought",
+          "form": "Form 8936 (clean vehicle credits)",
+          "remedy": "This tool does not prepare the clean vehicle credits (Form 8936). To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i8936",
+            "locator": "p. 1, Purpose of Form, \"to figure the following credits for clean vehicles you placed in service during your tax year\"",
+            "revision": "2025",
+            "snapshot": "49aa7277e16c54c2010e985aed96b37033da2ac223fe283d6266b014c445e057",
+            "tax_year": 2025
+          }
+        },
+        "s3.ev_dealer_if_ev": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.ev_bought_if_ev": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.ev_leased",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a vehicle received in 2025 that was leased, or bought after September 30, 2025: no credit exists (i8936 p. 1, What's New; p. 2, lessee), so the wish question is not asked, a Yes given to it is not read, and nothing is refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.ev": true,
+        "s3.ev_dealer": false,
+        "s3.ev_bought": false,
+        "s3.ev_credit": true,
+        "s3.ev_equipment": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.ev_bought_if_ev": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.ev_credit_if_bought": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.ev_equipment_if_ev": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line8": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.ev_bought_no_credit",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a vehicle bought by September 30, 2025 with no credit wanted and no equipment credit wanted: not refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.ev": true,
+        "s3.ev_dealer": false,
+        "s3.ev_bought": true,
+        "s3.ev_credit": false,
+        "s3.ev_equipment": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.ev_bought_if_ev": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.ev_credit_if_bought": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.ev_equipment",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: home charging equipment installed in 2025 and the credit wanted (Form 8911), no vehicle bought: line 7 refuses.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.ev": true,
+        "s3.ev_dealer": false,
+        "s3.ev_bought": false,
+        "s3.ev_equipment": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.ev_equipment_if_ev",
+          "form": "Form 8911 (alternative fuel vehicle refueling property credit)",
+          "remedy": "This tool does not prepare the credit for vehicle charging or fueling equipment (Form 8911). To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i8911",
+            "locator": "p. 1, Purpose of Form, \"to figure your credit for alternative fuel vehicle refueling property you placed in service during your tax year\"",
+            "revision": "December 2025 (for tax years beginning in 2025 or later)",
+            "snapshot": "a85de22466ee5c65f7211199c6d0e655211be0cd6e9a682a15bdb98540bcc8b3",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "s3.ev_equipment_if_ev",
+          "form": "Form 8911 (alternative fuel vehicle refueling property credit)",
+          "remedy": "This tool does not prepare the credit for vehicle charging or fueling equipment (Form 8911). To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i8911",
+            "locator": "p. 1, Purpose of Form, \"to figure your credit for alternative fuel vehicle refueling property you placed in service during your tax year\"",
+            "revision": "December 2025 (for tax years beginning in 2025 or later)",
+            "snapshot": "a85de22466ee5c65f7211199c6d0e655211be0cd6e9a682a15bdb98540bcc8b3",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "s3.ev_equipment_if_ev",
+          "form": "Form 8911 (alternative fuel vehicle refueling property credit)",
+          "remedy": "This tool does not prepare the credit for vehicle charging or fueling equipment (Form 8911). To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i8911",
+            "locator": "p. 1, Purpose of Form, \"to figure your credit for alternative fuel vehicle refueling property you placed in service during your tax year\"",
+            "revision": "December 2025 (for tax years beginning in 2025 or later)",
+            "snapshot": "a85de22466ee5c65f7211199c6d0e655211be0cd6e9a682a15bdb98540bcc8b3",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.ev_not_asked",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no vehicle and no equipment in 2025: none of the four questions beneath is asked, and a Yes given to each is not read.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.ev": false,
+        "s3.ev_dealer": true,
+        "s3.ev_bought": true,
+        "s3.ev_credit": true,
+        "s3.ev_equipment": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.ev_dealer_if_ev": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.ev_bought_if_ev": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.ev_credit_if_bought": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.ev_equipment_if_ev": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.farmland",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: farmland sold in 2025 with the election to pay the tax in installments (Form 1062; i1040gi p. 117, Line 13z): line 14 refuses, and line 15 through it. Lines 7 and 12 are $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.farmland": true,
+        "s3.farmland_deferral": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.farmland_deferral_if_sold",
+          "form": "Form 1062 (Schedule 3 line 13z)",
+          "remedy": "The election to pay the tax on a sale of farmland in installments (Form 1062) is reported on Schedule 3 line 13z, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line14": {
+          "kind": "refusal",
+          "gate": "s3.farmland_deferral_if_sold",
+          "form": "Form 1062 (Schedule 3 line 13z)",
+          "remedy": "The election to pay the tax on a sale of farmland in installments (Form 1062) is reported on Schedule 3 line 13z, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "s3.farmland_deferral_if_sold",
+          "form": "Form 1062 (Schedule 3 line 13z)",
+          "remedy": "The election to pay the tax on a sale of farmland in installments (Form 1062) is reported on Schedule 3 line 13z, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line31": {
+          "kind": "refusal",
+          "gate": "s3.farmland_deferral_if_sold",
+          "form": "Form 1062 (Schedule 3 line 13z)",
+          "remedy": "The election to pay the tax on a sale of farmland in installments (Form 1062) is reported on Schedule 3 line 13z, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line12": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.farmland_no_election",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: farmland sold in 2025 without the election: not refused by this question (the sale itself belongs to the sales questions).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.farmland": true,
+        "s3.farmland_deferral": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line14": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.farmland_not_asked",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no farmland sold: the election question is not asked, and a Yes given to it is not read.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.farmland": false,
+        "s3.farmland_deferral": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.farmland_deferral_if_sold": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line14": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.ftc_carryover",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: foreign tax paid in an earlier year and its credit carried to 2025, with no foreign tax in 2025: the foreign tax credit line refuses (Form 1116), and Schedule 3 lines 1 and 8 through it. Line 7 is $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.foreign_any": true,
+        "ftc.carryover": true,
+        "s3.section960c": false,
+        "s3.section965": false,
+        "s3.virgin_islands": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "ftc.carryover_if_asked",
+          "form": "Form 1116",
+          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "ftc.carryover_if_asked",
+          "form": "Form 1116",
+          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        },
+        "s3.line1": {
+          "kind": "refusal",
+          "gate": "ftc.carryover_if_asked",
+          "form": "Form 1116",
+          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "ftc.carryover_if_asked",
+          "form": "Form 1116",
+          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.section960c",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a credit under section 960(c) (i1040gi p. 117, Line 13z): line 14 refuses.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.foreign_any": true,
+        "ftc.carryover": false,
+        "s3.section960c": true,
+        "s3.section965": false,
+        "s3.virgin_islands": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.section960c_if_foreign",
+          "form": "Schedule 3 line 13z (section 960(c) credit)",
+          "remedy": "The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line14": {
+          "kind": "refusal",
+          "gate": "s3.section960c_if_foreign",
+          "form": "Schedule 3 line 13z (section 960(c) credit)",
+          "remedy": "The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "s3.section960c_if_foreign",
+          "form": "Schedule 3 line 13z (section 960(c) credit)",
+          "remedy": "The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line31": {
+          "kind": "refusal",
+          "gate": "s3.section960c_if_foreign",
+          "form": "Schedule 3 line 13z (section 960(c) credit)",
+          "remedy": "The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.section965",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a net 965 tax liability paid in installments (i1040gi p. 117, Line 13d): line 14 refuses.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.foreign_any": true,
+        "ftc.carryover": false,
+        "s3.section960c": false,
+        "s3.section965": true,
+        "s3.virgin_islands": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.section965_if_foreign",
+          "form": "Schedule 3 line 13d (net 965 tax liability)",
+          "remedy": "A net 965 tax liability paid in installments is reported on Schedule 3 line 13d, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line14": {
+          "kind": "refusal",
+          "gate": "s3.section965_if_foreign",
+          "form": "Schedule 3 line 13d (net 965 tax liability)",
+          "remedy": "A net 965 tax liability paid in installments is reported on Schedule 3 line 13d, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "s3.section965_if_foreign",
+          "form": "Schedule 3 line 13d (net 965 tax liability)",
+          "remedy": "A net 965 tax liability paid in installments is reported on Schedule 3 line 13d, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line31": {
+          "kind": "refusal",
+          "gate": "s3.section965_if_foreign",
+          "form": "Schedule 3 line 13d (net 965 tax liability)",
+          "remedy": "A net 965 tax liability paid in installments is reported on Schedule 3 line 13d, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13d, \"If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.line12": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.virgin_islands",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: tax allocable to the U.S. Virgin Islands (Form 8689; i1040gi p. 117, Line 13z): line 14 refuses.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.foreign_any": true,
+        "ftc.carryover": false,
+        "s3.section960c": false,
+        "s3.section965": false,
+        "s3.virgin_islands": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.virgin_islands_if_foreign",
+          "form": "Form 8689 (Schedule 3 line 13z)",
+          "remedy": "Tax allocable to the U.S. Virgin Islands (Form 8689) is reported on Schedule 3 line 13z, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line14": {
+          "kind": "refusal",
+          "gate": "s3.virgin_islands_if_foreign",
+          "form": "Form 8689 (Schedule 3 line 13z)",
+          "remedy": "Tax allocable to the U.S. Virgin Islands (Form 8689) is reported on Schedule 3 line 13z, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "s3.virgin_islands_if_foreign",
+          "form": "Form 8689 (Schedule 3 line 13z)",
+          "remedy": "Tax allocable to the U.S. Virgin Islands (Form 8689) is reported on Schedule 3 line 13z, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line31": {
+          "kind": "refusal",
+          "gate": "s3.virgin_islands_if_foreign",
+          "form": "Form 8689 (Schedule 3 line 13z)",
+          "remedy": "Tax allocable to the U.S. Virgin Islands (Form 8689) is reported on Schedule 3 line 13z, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 13z, \"Use line 13z to report the credit under section 960(c) with respect to an excess limitation account\", \"Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands\" and \"If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.foreign_none",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: foreign tax paid in the past and none of the four situations beneath: not refused; lines 1 and 14 are $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.foreign_any": true,
+        "ftc.carryover": false,
+        "s3.section960c": false,
+        "s3.section965": false,
+        "s3.virgin_islands": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "ftc.carryover_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line14": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.foreign_not_asked",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no foreign tax, territory income or foreign company: none of the four questions beneath is asked, and a Yes given to each is not read.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.foreign_any": false,
+        "s3.prior_other_forms": false,
+        "ftc.carryover": true,
+        "s3.section960c": true,
+        "s3.section965": true,
+        "s3.virgin_islands": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.section960c_if_foreign": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.section965_if_foreign": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.virgin_islands_if_foreign": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line14": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.kerosene",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: kerosene used at home and the fuel tax credit wanted (i4136 p. 2, the exemption for home use): line 12 refuses, and line 15 through it. Line 7 is $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.kerosene": true,
+        "s3.kerosene_credit": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.kerosene_credit_if_kerosene",
+          "form": "Form 4136 (credit for federal tax paid on fuels)",
+          "remedy": "This tool does not prepare the credit for federal tax paid on fuels (Form 4136). To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i4136",
+            "locator": "p. 2, Part I—Information About Your Business, \"If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "d3d63fc3e5af24a8d4c8466b415c3d9269233af67f24d29640a5b4581e10c9f1",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line12": {
+          "kind": "refusal",
+          "gate": "s3.kerosene_credit_if_kerosene",
+          "form": "Form 4136 (credit for federal tax paid on fuels)",
+          "remedy": "This tool does not prepare the credit for federal tax paid on fuels (Form 4136). To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i4136",
+            "locator": "p. 2, Part I—Information About Your Business, \"If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "d3d63fc3e5af24a8d4c8466b415c3d9269233af67f24d29640a5b4581e10c9f1",
+            "tax_year": 2025
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "s3.kerosene_credit_if_kerosene",
+          "form": "Form 4136 (credit for federal tax paid on fuels)",
+          "remedy": "This tool does not prepare the credit for federal tax paid on fuels (Form 4136). To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i4136",
+            "locator": "p. 2, Part I—Information About Your Business, \"If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "d3d63fc3e5af24a8d4c8466b415c3d9269233af67f24d29640a5b4581e10c9f1",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line31": {
+          "kind": "refusal",
+          "gate": "s3.kerosene_credit_if_kerosene",
+          "form": "Form 4136 (credit for federal tax paid on fuels)",
+          "remedy": "This tool does not prepare the credit for federal tax paid on fuels (Form 4136). To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i4136",
+            "locator": "p. 2, Part I—Information About Your Business, \"If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "d3d63fc3e5af24a8d4c8466b415c3d9269233af67f24d29640a5b4581e10c9f1",
+            "tax_year": 2025
+          }
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line8": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.kerosene_no_credit",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: kerosene used at home and no credit wanted: not refused; line 12 is $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.kerosene": true,
+        "s3.kerosene_credit": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.kerosene_not_asked",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no kerosene used at home: the credit question is not asked, and a Yes given to it is not read.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.kerosene": false,
+        "s3.kerosene_credit": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.kerosene_credit_if_kerosene": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.mcc",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: $4,000 of home mortgage interest and a mortgage credit certificate, which refuses on the fact (Form 8396): line 7.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "sa.line8a": 400000,
+        "s3.mcc": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.mcc_if_interest",
+          "form": "Form 8396 (mortgage interest credit)",
+          "remedy": "A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A; this tool does not prepare it.",
+          "cite": {
+            "doc": "f8396",
+            "locator": "p. 2, Who Can Claim the Credit, \"You can claim the credit only if you were issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency\"; p. 2, Line 3, \"you must reduce the amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3\"",
+            "revision": "2025; created 2025-08-28",
+            "snapshot": "5c035af748405ec42ef6da99efc4315ca6e666d5ba0fcdd82fc05808803dee0d",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "s3.mcc_if_interest",
+          "form": "Form 8396 (mortgage interest credit)",
+          "remedy": "A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A; this tool does not prepare it.",
+          "cite": {
+            "doc": "f8396",
+            "locator": "p. 2, Who Can Claim the Credit, \"You can claim the credit only if you were issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency\"; p. 2, Line 3, \"you must reduce the amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3\"",
+            "revision": "2025; created 2025-08-28",
+            "snapshot": "5c035af748405ec42ef6da99efc4315ca6e666d5ba0fcdd82fc05808803dee0d",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "s3.mcc_if_interest",
+          "form": "Form 8396 (mortgage interest credit)",
+          "remedy": "A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A; this tool does not prepare it.",
+          "cite": {
+            "doc": "f8396",
+            "locator": "p. 2, Who Can Claim the Credit, \"You can claim the credit only if you were issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency\"; p. 2, Line 3, \"you must reduce the amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3\"",
+            "revision": "2025; created 2025-08-28",
+            "snapshot": "5c035af748405ec42ef6da99efc4315ca6e666d5ba0fcdd82fc05808803dee0d",
+            "tax_year": 2025
+          }
+        },
+        "s3.has_mortgage_interest": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.mcc_no_certificate",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: $4,000 of home mortgage interest and no certificate: asked, not refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "sa.line8a": 400000,
+        "s3.mcc": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.has_mortgage_interest": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.mcc_if_interest": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.mcc_not_asked",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no home mortgage interest: the certificate question is not asked (the credit is a share of the interest paid, f8396 p. 2, Line 1), and a Yes given to it is not read.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "sa.line8a": 0,
+        "s3.mcc": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.has_mortgage_interest": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.mcc_if_interest": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.prior_amt",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a 2024 return with Form 6251 and alternative minimum tax on it (Form 8801 for 2025, i8801 p. 1): line 7 refuses.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.prior_other_forms": true,
+        "ftc.carryover": false,
+        "s3.prior_amt": true,
+        "s3.prior_forms": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.prior_amt_if_forms",
+          "form": "Form 8801 (credit for prior year minimum tax)",
+          "remedy": "Alternative minimum tax on your 2024 return can give a credit for 2025 (Form 8801), which this tool does not prepare.",
+          "cite": {
+            "doc": "i8801",
+            "locator": "p. 1, Who Should File, \"An AMT liability and adjustments or preferences other than exclusion items\"",
+            "revision": "2025",
+            "snapshot": "cf99d034d0332110613c8b61b5d3be046fefb638c85ade7e8046b3d79a8ab2ff",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "s3.prior_amt_if_forms",
+          "form": "Form 8801 (credit for prior year minimum tax)",
+          "remedy": "Alternative minimum tax on your 2024 return can give a credit for 2025 (Form 8801), which this tool does not prepare.",
+          "cite": {
+            "doc": "i8801",
+            "locator": "p. 1, Who Should File, \"An AMT liability and adjustments or preferences other than exclusion items\"",
+            "revision": "2025",
+            "snapshot": "cf99d034d0332110613c8b61b5d3be046fefb638c85ade7e8046b3d79a8ab2ff",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "s3.prior_amt_if_forms",
+          "form": "Form 8801 (credit for prior year minimum tax)",
+          "remedy": "Alternative minimum tax on your 2024 return can give a credit for 2025 (Form 8801), which this tool does not prepare.",
+          "cite": {
+            "doc": "i8801",
+            "locator": "p. 1, Who Should File, \"An AMT liability and adjustments or preferences other than exclusion items\"",
+            "revision": "2025",
+            "snapshot": "cf99d034d0332110613c8b61b5d3be046fefb638c85ade7e8046b3d79a8ab2ff",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.prior_forms",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: one of Forms 3800, 8396, 8801, 8582-CR, 8839, 8859 or 8912 in the 2024 return: a carried credit, line 7 refuses.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.prior_other_forms": true,
+        "ftc.carryover": false,
+        "s3.prior_amt": false,
+        "s3.prior_forms": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.prior_forms_if_forms",
+          "form": "Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912)",
+          "remedy": "A credit carried over from an earlier year is outside this tool.",
+          "cite": {
+            "doc": "i3800",
+            "locator": "p. 3, Carryback and Carryforward of Unused Credit, \"unused general business credits may be carried back 1 year and carried forward 20 years\"; f8396 p. 2, Part II—Mortgage Interest Credit Carryforward to 2026, \"you may have an unused credit to carry forward to the next 3 tax years\"; i8801 p. 1, Who Should File, \"A credit carryforward to 2025 (on 2024 Form 8801, line 26)\"; f8834 p. 2, Line 1, \"Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR\"; i8839 p. 1, Purpose of Form, \"You have a carryforward of an adoption credit from 2024\"; f8859 p. 1, Purpose of Form, \"to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024\"; i8912 p. 3, Line 12, \"you may carry the unused portion of the credit to the next tax year\"",
+            "revision": "2025",
+            "snapshot": "97e4570dab8ffdfad85f43c1582f4167d05fce5a86033f60570d0a39a49a146e",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "s3.prior_forms_if_forms",
+          "form": "Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912)",
+          "remedy": "A credit carried over from an earlier year is outside this tool.",
+          "cite": {
+            "doc": "i3800",
+            "locator": "p. 3, Carryback and Carryforward of Unused Credit, \"unused general business credits may be carried back 1 year and carried forward 20 years\"; f8396 p. 2, Part II—Mortgage Interest Credit Carryforward to 2026, \"you may have an unused credit to carry forward to the next 3 tax years\"; i8801 p. 1, Who Should File, \"A credit carryforward to 2025 (on 2024 Form 8801, line 26)\"; f8834 p. 2, Line 1, \"Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR\"; i8839 p. 1, Purpose of Form, \"You have a carryforward of an adoption credit from 2024\"; f8859 p. 1, Purpose of Form, \"to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024\"; i8912 p. 3, Line 12, \"you may carry the unused portion of the credit to the next tax year\"",
+            "revision": "2025",
+            "snapshot": "97e4570dab8ffdfad85f43c1582f4167d05fce5a86033f60570d0a39a49a146e",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "s3.prior_forms_if_forms",
+          "form": "Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912)",
+          "remedy": "A credit carried over from an earlier year is outside this tool.",
+          "cite": {
+            "doc": "i3800",
+            "locator": "p. 3, Carryback and Carryforward of Unused Credit, \"unused general business credits may be carried back 1 year and carried forward 20 years\"; f8396 p. 2, Part II—Mortgage Interest Credit Carryforward to 2026, \"you may have an unused credit to carry forward to the next 3 tax years\"; i8801 p. 1, Who Should File, \"A credit carryforward to 2025 (on 2024 Form 8801, line 26)\"; f8834 p. 2, Line 1, \"Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR\"; i8839 p. 1, Purpose of Form, \"You have a carryforward of an adoption credit from 2024\"; f8859 p. 1, Purpose of Form, \"to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024\"; i8912 p. 3, Line 12, \"you may carry the unused portion of the credit to the next tax year\"",
+            "revision": "2025",
+            "snapshot": "97e4570dab8ffdfad85f43c1582f4167d05fce5a86033f60570d0a39a49a146e",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.ftc_carryover_prior_return",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no foreign tax, territory income or foreign company, but a 2024 return with other forms (a Form 1116 among them) and a foreign tax credit carried to 2025: the carryover question is asked because of the 2024 return, and the foreign tax credit line refuses (Form 1116).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.prior_other_forms": true,
+        "ftc.carryover": true,
+        "s3.prior_amt": false,
+        "s3.prior_forms": false,
+        "s3.foreign_any": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "ftc.carryover_if_asked",
+          "form": "Form 1116",
+          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "ftc.carryover_if_asked",
+          "form": "Form 1116",
+          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        },
+        "s3.line1": {
+          "kind": "refusal",
+          "gate": "ftc.carryover_if_asked",
+          "form": "Form 1116",
+          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "ftc.carryover_if_asked",
+          "form": "Form 1116",
+          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        },
+        "ftc.carryover_ask": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.prior_other_forms_none",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a 2024 return with other forms, none of them one that carries a credit and no alternative minimum tax: not refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.prior_other_forms": true,
+        "ftc.carryover": false,
+        "s3.prior_amt": false,
+        "s3.prior_forms": false
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.prior_amt_if_forms": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.prior_forms_if_forms": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.prior_not_asked",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a 2024 return of Form 1040 and its schedules alone: the two questions beneath are not asked, and a Yes given to each is not read.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.prior_other_forms": false,
+        "s3.foreign_any": false,
+        "ftc.carryover": true,
+        "s3.prior_amt": true,
+        "s3.prior_forms": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "ftc.carryover_ask": {
+          "kind": "bool",
+          "value": false
+        },
+        "ftc.carryover_if_asked": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.prior_amt_if_forms": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.prior_forms_if_forms": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.repaid_income",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: more than $3,000 of an earlier year's income repaid in 2025 (p525 p. 36): line 14 refuses, and line 15 through it.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.repaid_income": true
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "refusal",
+          "gate": "s3.repaid_income",
+          "form": "Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16)",
+          "remedy": "A repayment of more than $3,000 of income reported in an earlier year gives a choice between a deduction and a credit (Schedule 3 line 13b), which this tool does not figure.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 36, Repayments, \"If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right\" and \"However, you can choose to take a credit for the year of repayment\"; i1040gi p. 117, Line 13b, \"If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line14": {
+          "kind": "refusal",
+          "gate": "s3.repaid_income",
+          "form": "Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16)",
+          "remedy": "A repayment of more than $3,000 of income reported in an earlier year gives a choice between a deduction and a credit (Schedule 3 line 13b), which this tool does not figure.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 36, Repayments, \"If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right\" and \"However, you can choose to take a credit for the year of repayment\"; i1040gi p. 117, Line 13b, \"If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "s3.repaid_income",
+          "form": "Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16)",
+          "remedy": "A repayment of more than $3,000 of income reported in an earlier year gives a choice between a deduction and a credit (Schedule 3 line 13b), which this tool does not figure.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 36, Repayments, \"If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right\" and \"However, you can choose to take a credit for the year of repayment\"; i1040gi p. 117, Line 13b, \"If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line31": {
+          "kind": "refusal",
+          "gate": "s3.repaid_income",
+          "form": "Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16)",
+          "remedy": "A repayment of more than $3,000 of income reported in an earlier year gives a choice between a deduction and a credit (Schedule 3 line 13b), which this tool does not figure.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 36, Repayments, \"If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right\" and \"However, you can choose to take a credit for the year of repayment\"; i1040gi p. 117, Line 13b, \"If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        },
+        "s3.line12": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.none",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: none of the situations: every question asked of everyone answered No, and $500 paid with an extension request (line 10). Schedule 3 lines 7, 8, 12 and 14 are $0, line 15 is line 10 alone, $500 (one employer, so no excess social security tax on line 11), and Form 1040 line 30 is $0; nothing is refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.adoption_any": false,
+        "person[taxpayer].age65": false,
+        "s3.disability_retired": false,
+        "s3.credit_bond": false,
+        "s3.ev": false,
+        "s3.farmland": false,
+        "s3.foreign_any": false,
+        "s3.kerosene": false,
+        "s3.prior_other_forms": false,
+        "s3.repaid_income": false,
+        "sa.line8a": 0,
+        "s3.line10": 50000
+      },
+      "expect": {
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line14": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f1040.line30": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line1": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.business_credit",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a business that claims a business credit (Form 3800): its Schedule C refuses at line 1.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 6000000,
+        "person[taxpayer].sc[shop].business_credit": true
+      },
+      "expect": {
+        "person[taxpayer].sc[shop].line1": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[shop].business_credit",
+          "form": "Form 3800 (general business credit)",
+          "remedy": "Business credits (Form 3800) are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 116, Lines 6a Through 6z, \"See Form 3800 or Pub. 334\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.refuse.business_fuel_credit",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a business that wants the fuel tax credit (Form 4136): its Schedule C refuses at line 1.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 6000000,
+        "person[taxpayer].sc[shop].fuel_credit": true
+      },
+      "expect": {
+        "person[taxpayer].sc[shop].line1": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[shop].fuel_credit",
+          "form": "Form 4136 (credit for federal tax paid on fuels)",
+          "remedy": "The credit for federal tax paid on fuels (Form 4136) is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 12, \"Attach Form 4136\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "redesign.credits.business_no_credit",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a business with neither credit: line 1 is the receipts entered, $60,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 6000000,
+        "person[taxpayer].sc[shop].business_credit": false,
+        "person[taxpayer].sc[shop].fuel_credit": false
+      },
+      "expect": {
+        "person[taxpayer].sc[shop].line1": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "scope.ready": {
+          "kind": "bool",
+          "value": true
         }
       }
     }

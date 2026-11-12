@@ -484,7 +484,7 @@ form:
         credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return"
     note: Form 5695 line 32 is read as Schedule 3 line 5b, which is line 32 when Part II is completed and zero otherwise.
     refuses:
-    - when: scope.credits
+    - when: s3.other_credit
       form: Residential Clean Energy Credit Limit Worksheet, line 2 (Schedule 3 lines 6c, 6d, 6f, 6g, 6h, 6l and 6m)
       remedy: Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are
         outside this tool.
@@ -2284,7 +2284,7 @@ form:
       locator: p. 7, Energy Efficient Home Improvement Credit Limit Worksheet—Line 31, line 2, "Enter the total of the
         following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return"
     refuses:
-    - when: scope.credits
+    - when: s3.other_credit
       form: Energy Efficient Home Improvement Credit Limit Worksheet, line 2 (Schedule 3 lines 6d and 6l)
       remedy: Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are
         outside this tool.
