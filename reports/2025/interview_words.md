@@ -15,13 +15,13 @@ Means are over complete returns; the last column is the mean prompt words of the
 
 | Returns | Complete | Refused | Questions asked (mean) | Prompt words (mean) | Prompt words (median) | Prompt words (max) | Option words (mean) | Help words (mean) | Before the first own item (mean) | Prompt words, refused (mean) |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Stage 5 whole returns | 9 | 2 | 91.1 | 7,419 | 6,980 | 8,832 | 30 | 2,219 | 823 | 492 |
-| generated returns | 3 | 9 | 158.3 | 13,532 | 9,154 | 22,809 | 222 | 2,812 | 823 | 3,291 |
-| minimal returns | 7 | 0 | 79.1 | 7,094 | 7,052 | 7,361 | 26 | 2,042 | 823 | 0 |
-| social-security profile fixtures | 16 | 5 | 11.3 | 209 | 214 | 214 | 5 | 233 | 5 | 96 |
-| sales profile fixtures | 58 | 14 | 62.7 | 7,308 | 6,840 | 20,954 | 38 | 1,586 | 668 | 5,783 |
-| stage4 profile fixtures | 69 | 62 | 73.5 | 6,672 | 6,376 | 9,279 | 18 | 1,911 | 786 | 2,997 |
-| **full profile, Stage 5 and generated** | 12 | 11 | 107.9 | 8,947 | 6,980 | 22,809 | 78 | 2,367 | 823 | 2,782 |
+| Stage 5 whole returns | 9 | 2 | 90.1 | 7,269 | 6,830 | 8,682 | 87 | 2,354 | 796 | 465 |
+| generated returns | 3 | 9 | 157.3 | 13,248 | 8,871 | 22,523 | 279 | 2,946 | 796 | 3,240 |
+| minimal returns | 7 | 0 | 78.1 | 6,933 | 6,891 | 7,200 | 83 | 2,177 | 796 | 0 |
+| social-security profile fixtures | 16 | 5 | 11.3 | 191 | 196 | 196 | 75 | 389 | 9 | 85 |
+| sales profile fixtures | 58 | 14 | 62.7 | 7,211 | 6,743 | 20,857 | 108 | 1,742 | 672 | 5,708 |
+| stage4 profile fixtures | 69 | 62 | 73.5 | 6,552 | 6,257 | 9,135 | 88 | 2,065 | 790 | 2,940 |
+| **full profile, Stage 5 and generated** | 12 | 11 | 106.9 | 8,764 | 6,830 | 22,523 | 135 | 2,502 | 796 | 2,735 |
 
 0 return(s) could not be walked.
 
@@ -40,8 +40,8 @@ The 15 longest prompts among the questions the 30 full-profile walks ask, with h
 | `sa.line1` | 429 | 20 |
 | `f8962.other` | 357 | 2 |
 | `sales.wash_loss` | 346 | 2 |
-| `f8889.coverage_year` | 328 | 4 |
 | `household.unmarried` | 318 | 2 |
+| `f8889.coverage_year` | 317 | 4 |
 | `dependent.relationship` | 297 | 3 |
 | `scope.schedule1` | 293 | 25 |
 | `sa.gifts` | 292 | 20 |
@@ -51,12 +51,11 @@ The longest prompts every one of the 30 full-profile walks asks:
 
 | Question | Prompt words |
 |---|---|
-| `$person` | 16 |
-| `f1040.status` | 5 |
+| `$person` | 6 |
 
 ## The longest sentences in the question bank
 
-Of the 626 questions the page's profile can ask, 261 have a sentence of more than 40 words in their prompt, 64 one of more than 80 and 9 one of more than 120.
+Of the 625 questions the page's profile can ask, 261 have a sentence of more than 40 words in their prompt, 64 one of more than 80 and 9 one of more than 120.
 The twelve longest:
 
 | Question | Longest sentence (words) | Prompt words |

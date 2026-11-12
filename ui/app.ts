@@ -14,15 +14,22 @@ type Value =
   | { kind: "refusal"; gate: string; form: string; remedy: string; cite: Cite }
   | { kind: "unknown"; reason: string; input?: string };
 interface Derivation { value: Value; op: string; cite: Cite | null; operands: { ref: string; value: Value }[]; guardsNotTaken: { guard: string; value: Value }[]; notes: string[] }
-interface Choice { label: string; value: string[]; labels: Record<string, string> }
+/** An answer a roster choice recorded with the roster: the input, its value and the sentence shown for it. */
+interface Recorded { input: string; value: unknown; shown: string }
+interface Choice { label: string; value: string[]; labels: Record<string, string>; records?: Recorded[] }
 interface FormRef { designation: string; id: string; title?: string; purpose?: { text: string; doc: string; page: number } }
-interface Question { input: string; prompt: string; help: string; cite: Cite; helpRequested?: boolean; type: string; values?: string[]; choices?: Choice[]; value_labels?: Record<string, string>; value?: unknown; forms?: FormRef[] }
+/** `value_order`: a labelled enum's values in the order offered; `withheld`: the values not offered; `frame`: the per-person
+ * frame the prompt begins with ("About your spouse"); `recorded` (an answered roster question): what its answer recorded. */
+interface Question { input: string; prompt: string; help: string; cite: Cite; helpRequested?: boolean; type: string; values?: string[]; choices?: Choice[]; value_labels?: Record<string, string>;
+  value_order?: string[]; withheld?: string[]; frame?: string; recorded?: Recorded[]; value?: unknown; forms?: FormRef[] }
 interface SheetLine { key: string; printed: string; label: string; value: Value; status: string; shown: boolean; notes: string[] }
 interface Section { doc: string; title: string; entry: string | null; lines: SheetLine[] }
 /** A refusal whose gate is a consistency check: answers that contradict each other, not an unsupported case. */
 interface Conflict { gate: string; explanation: string; answers: Question[]; figures: { line: string; printed: string; label: string; value: Value }[] }
 interface State {
   name: string; status: "incomplete" | "complete" | "refused"; refusal: (Value & { kind: "refusal" }) | null; refusalFinal: boolean;
+  /** What the interview adds to the refusal: what the filer can do next. */
+  refusalNote: string | null;
   conflicts: Conflict[];
   pending: Question[]; answered: Question[]; scope: string; notices: string; standingNotices: string[];
   values: Record<string, Derivation>; sheets: { federal: Section[]; newYork: Section[] }; changed: string[];
@@ -291,6 +298,17 @@ function entryContext(key: string): string {
   }
   return parts.join(" › ");
 }
+/** What a question is about, for the line above it and the answered list: the entries its key lies in, as labels. The
+ * person is left out where the question's own words say whose it is (its prompt begins with the shown frame, "About
+ * your spouse") and on a return with one person on it, where every question is about that person. */
+function aboutContext(q: Question): string {
+  const context = entryContext(q.input);
+  const body = q.input.startsWith("$") ? q.input.split("@")[1] ?? "" : q.input;
+  if (!body.startsWith("person[")) return context;
+  const people = state?.answered.find((a) => a.input === "$person")?.value;
+  if (!q.frame && !(Array.isArray(people) && people.length === 1)) return context;
+  return context.split(" › ").slice(1).join(" › ");
+}
 /** A line or input key with each entry key replaced by its label: `person[You].w2[Acme Corp].box1`. */
 function displayKey(key: string): string {
   return key.replace(SEGMENT, (whole, coll: string, _k: string, offset: number) => {
@@ -424,8 +442,21 @@ function refusalDetails(r: Value & { kind: "refusal" }, final: boolean): HTMLEle
     el("dl", {},
       el("dt", {}, "Form this tool cannot prepare"), el("dd", {}, r.form),
       el("dt", {}, "What to do"), el("dd", {}, r.remedy),
+      ...(state?.refusalNote ? [el("dt", {}, "What you can do here"), el("dd", { id: "refusal-note-detail" }, state.refusalNote)] : []),
       el("dt", {}, "Trigger"), el("dd", { class: "mono" }, r.gate),
       el("dt", {}, "Source"), el("dd", {}, citeText(r.cite))));
+}
+/** What the interview adds to the refusal shown, above the question: what the filer can do next, and a control that
+ * reopens each answered question the note names. None for a conflict, which has its own block. */
+function refusalNoteBlocks(): HTMLElement[] {
+  const s = state!;
+  if (s.status !== "refused" || !s.refusal || !s.refusalNote || conflictOf(s.refusal.gate)) return [];
+  return [el("section", { class: "refusal-note", id: "refusal-note", "aria-labelledby": "refusal-note-title" },
+    el("h2", { id: "refusal-note-title" }, `This tool cannot prepare: ${s.refusal.form}`),
+    el("p", {}, s.refusalNote),
+    // Each answered question the note names by its words, as a control that reopens it.
+    ...s.answered.filter((a) => s.refusalNote!.includes(`“${firstLine(a.prompt)}”`)).map((a) =>
+      el("p", { class: "refusal-note-link" }, button(`Change your answer to “${firstLine(a.prompt)}”`, { class: "link", "data-reopen": a.input }, () => reopen(a.input)))))];
 }
 /** The conflict a refusal stands for, when its gate is a consistency check. */
 function conflictOf(gate: string): Conflict | null {
@@ -512,7 +543,7 @@ function renderQuestion(): void {
   const current = currentQuestion();
   if (!current) {
     const s = state!;
-    panel.replaceChildren(el("div", { class: "page narrow empty" }, savedLine(), ...conflictBlocks(),
+    panel.replaceChildren(el("div", { class: "page narrow empty" }, savedLine(), ...conflictBlocks(), ...refusalNoteBlocks(),
       el("h2", { class: "prompt-text" }, s.status === "complete" ? "Every question is answered." : "No questions are pending."),
       el("p", { class: "lede" }, "You can change any answer from the Answered tab, or see how each line was figured under Your return so far.")));
     return;
@@ -538,6 +569,15 @@ function renderQuestion(): void {
     const group = el("div", { class: "choices", role: "group", "aria-labelledby": labelId });
     for (const [label, v] of [["Yes", true], ["No", false]] as const) {
       group.append(button(label, { class: `choice${current_value === v ? " chosen" : ""}`, "data-answer": label.toLowerCase(), "aria-pressed": String(current_value === v) }, () => void submit(v)));
+    }
+    widget.append(group);
+  } else if (q.type === "Enum" && q.value_labels) {
+    // A labelled enum is a list of the facts its values stand for, in the bank's order, one to a line: choosing one
+    // answers. A value the engine withholds is not offered, unless it is the answer given now.
+    const offered = (q.value_order ?? q.values ?? []).filter((v) => !(q.withheld ?? []).includes(v) || v === current_value);
+    const group = el("div", { class: "choices stacked", role: "group", "aria-labelledby": labelId });
+    for (const v of offered) {
+      group.append(button(q.value_labels[v] ?? v, { class: `choice${current_value === v ? " chosen" : ""}`, "data-value": v, "aria-pressed": String(current_value === v) }, () => void submit(v)));
     }
     widget.append(group);
   } else if (q.type === "Enum") {
@@ -609,7 +649,7 @@ function renderQuestion(): void {
     widget.append(`This input's type (${q.type}) has no widget.`);
   }
   const help = button("I don’t know / need help", { id: "need-help", class: "quiet" }, () => void submit(null));
-  const about = entryContext(q.input);
+  const about = aboutContext(q);
   const head: (HTMLElement | null)[] = [];
   if (correcting) {
     head.push(el("div", { class: "correcting" },
@@ -632,7 +672,7 @@ function renderQuestion(): void {
     q.help ? el("section", { class: "help", "aria-label": "Explanation" }, longText(q.help, "help-text", "help", "explanation", true)) : null,
     formsBlock(q.forms ?? []),
     el("div", { class: "actions" }, help));
-  panel.replaceChildren(savedLine(), ...conflictBlocks(), el("article", { class: "question", "data-input": q.input }, main, sourceBlock(q.cite)));
+  panel.replaceChildren(savedLine(), ...conflictBlocks(), ...refusalNoteBlocks(), el("article", { class: "question", "data-input": q.input }, main, sourceBlock(q.cite)));
   if (view === "question") (panel.querySelector("#answer-input, .widget .choice, .roster-row input") as HTMLElement | null)?.focus({ preventScroll: true });
 }
 function shortPrompt(text: string, n: number): string {
@@ -644,10 +684,15 @@ function renderAnswered(): void {
   const s = state!;
   $("answered-count").textContent = String(s.answered.length);
   $("answered").replaceChildren(...s.answered.map((a) => {
-    const about = entryContext(a.input);
+    const about = aboutContext(a);
     const link = button(el("span", { class: "q" }, firstLine(a.prompt)), { class: "answered-q", "data-input": a.input }, () => reopen(a.input));
     if (about) link.prepend(el("span", { class: "about" }, about));
-    return el("li", {}, el("div", { class: "with-qid" }, link, questionIdTag(a.input)), el("span", { class: "value" }, fmtAnswer(a, a.value)));
+    // What the answer recorded beside itself: shown under it, and changed by changing it.
+    const recorded = a.recorded?.length ? el("div", { class: "recorded" },
+      el("p", { class: "recorded-head" }, "This answer also recorded:"),
+      ...a.recorded.map((r) => el("div", { class: "recorded-item", "data-recorded": r.input }, el("span", {}, r.shown), questionIdTag(r.input))),
+      el("p", { class: "recorded-help" }, "To change what was recorded, change this answer.")) : null;
+    return el("li", {}, el("div", { class: "with-qid" }, link, questionIdTag(a.input)), el("span", { class: "value" }, fmtAnswer(a, a.value)), recorded);
   }));
 }
 

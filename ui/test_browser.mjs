@@ -85,8 +85,9 @@ const served = () => fetch(`${origin}/api/returns/smoke`).then(r => r.json());
 /** Answers the question on the page with the fixture's `value` through its widget and waits for the page to move on. */
 async function answer(input, value) {
   const before = logLines();
-  const kind = await evaluate("document.querySelector('.widget [data-choice]') ? 'choice' : document.querySelector('.widget #roster') ? 'roster' : document.querySelector('.widget [data-answer]') ? 'bool' : document.querySelector('.widget select') ? 'enum' : 'text'");
+  const kind = await evaluate("document.querySelector('.widget [data-choice]') ? 'choice' : document.querySelector('.widget [data-value]') ? 'value' : document.querySelector('.widget #roster') ? 'roster' : document.querySelector('.widget [data-answer]') ? 'bool' : document.querySelector('.widget select') ? 'enum' : 'text'");
   if (kind === "bool") await click(`.widget [data-answer=${value ? "yes" : "no"}]`);
+  else if (kind === "value") await click(`.widget [data-value="${value}"]`);
   else if (kind === "enum") { await evaluate(`document.querySelector('.widget select').value=${JSON.stringify(value)}`); await click("#answer-submit"); }
   else if (kind === "choice") {
     const q = (await served()).pending.find(p => p.input === input);
@@ -142,7 +143,8 @@ try {
     text:document.querySelector('.question').innerText, inputs:document.querySelectorAll('.widget input').length,
     source:document.querySelector('.question .source').innerText,
     beside:(()=>{const a=document.querySelector('.question .ask').getBoundingClientRect(),b=document.querySelector('.question .source').getBoundingClientRect();return b.left>=a.right&&b.top<a.bottom;})()})`);
-  assert.deepEqual(firstQ.choices, ["Just me", "Me and my spouse (joint return)"]);
+  assert.deepEqual(firstQ.choices, ["Just me", "Me and my husband or wife, together on one return"]);
+  assert.match(firstQ.text, /^Who is this tax return for\?/);
   assert.equal(firstQ.inputs, 0, "no text box on the first question");
   assert.doesNotMatch(firstQ.text, /\[|taxpayer|JSON|cents|true or false/, "no entry syntax or keys on the first question");
   assert.match(firstQ.source, /^Source\s+Form 1040 \u2014 U\.S\. Individual Income Tax Return\s/);
@@ -150,32 +152,11 @@ try {
   assert(firstQ.beside, "the source is beside the question on a wide window");
   await shot("question");
   assert.match(await banner(), /In progress/);
-  // The first question names Form W-2 and Form 1099-R: under the explanation, each by designation and title; Form
-  // 1099-R's purpose, from its recipient instructions, quoted with its source and shown open; Form W-2, with no
-  // recipient-facing purpose archived, by name alone. The question itself is unchanged.
-  const glosses = await evaluate(`({heading:document.getElementById('forms-heading')?.textContent,
-    items:[...document.querySelectorAll('.forms-mentioned .form-gloss')].map(li=>({name:li.querySelector('.form-name').textContent,
-      open:li.querySelector('details')?.open ?? null, quote:li.querySelector('blockquote')?.innerText ?? '', meta:li.querySelector('.meta')?.textContent ?? ''})),
-    below:(()=>{const h=document.querySelector('.question .help'),f=document.querySelector('.forms-mentioned');return !!h&&!!f&&f.getBoundingClientRect().top>=h.getBoundingClientRect().bottom;})(),
-    inAsk:!!document.querySelector('.question .ask .forms-mentioned')})`);
-  assert.equal(glosses.heading, "Forms mentioned");
-  assert.deepEqual(glosses.items.map(i => i.name), ["Form W-2 \u2014 Wage and Tax Statement",
-    "Form 1099-R \u2014 Distributions From Pensions, Annuities, Retirement or Profit-Sharing Plans, IRAs, Insurance Contracts, etc."]);
-  assert.equal(glosses.items[0].open, null, "Form W-2 has no purpose to show");
-  assert.equal(glosses.items[1].open, true, "with two forms, a purpose is shown open");
-  assert.match(glosses.items[1].quote, /^\u201cGenerally, distributions from retirement plans/);
-  assert.equal(glosses.items[1].meta, "Form 1099-R, p. 5", "a purpose quoted from the form itself names it by designation");
-  // Form 1099-R's name wraps; every line of it starts right of the disclosure marker, none under it.
-  const wrap = await evaluate(`(()=>{const n=document.querySelector('.forms-mentioned summary .form-name'),s=n.closest('summary');
-    const box=n.getBoundingClientRect();return {lines:Math.round(box.height/parseFloat(getComputedStyle(n).lineHeight)), indent:box.left-s.getBoundingClientRect().left};})()`);
-  assert(wrap.lines >= 2 && wrap.indent > 5, `the wrapped form name is indented past the marker on every line: ${JSON.stringify(wrap)}`);
-  assert(glosses.below && glosses.inAsk, "the forms are listed under the explanation, in the question's column");
-  await evaluate("document.querySelector('.forms-mentioned').scrollIntoView({block:'center',behavior:'instant'})");
-  await screenshot("/private/tmp/tax-ui-glosses.png");
-  await evaluate("window.scrollTo(0, 0)");
+  // The first question, in plain words, names no form.
+  assert.equal(await evaluate("document.querySelectorAll('.forms-mentioned .form-gloss').length"), 0, "the first question names no form");
 
   // A blank amount is refused on the page and nothing is written; a help request leaves the question pending.
-  let answered = 0, correctedAt = null, sawProvisional = false, derivationOpened = false, blankRefused = false, sawFolded = false;
+  let answered = 0, correctedAt = null, sawProvisional = false, derivationOpened = false, blankRefused = false, sawFolded = false, sawGlosses = false, sawStatus = false;
   for (let step = 0; step < 400; step++) {
     const input = await question();
     if (!input || !(fx(input) in inputs)) break;
@@ -218,6 +199,37 @@ try {
           `${input}: ${q.forms[i].designation}'s purpose is quoted word for word`);
       });
       if (q.forms.length > 2) sawFolded = true;
+      // The first question that names one or two forms with a purpose: under the explanation, each by designation and
+      // title; a purpose, quoted with its source, shown open. The question itself is unchanged.
+      if (!sawGlosses && q.forms.length >= 1 && q.forms.length <= 2 && q.forms.some(f => f.purpose)) {
+        const glosses = await evaluate(`({heading:document.getElementById('forms-heading')?.textContent,
+          items:[...document.querySelectorAll('.forms-mentioned .form-gloss')].map(li=>({name:li.querySelector('.form-name').textContent,
+            open:li.querySelector('details')?.open ?? null, quote:li.querySelector('blockquote')?.innerText ?? '', meta:li.querySelector('.meta')?.textContent ?? ''})),
+          below:(()=>{const h=document.querySelector('.question .help') ?? document.querySelector('.question .widget'),f=document.querySelector('.forms-mentioned');return !!h&&!!f&&f.getBoundingClientRect().top>=h.getBoundingClientRect().bottom;})(),
+          inAsk:!!document.querySelector('.question .ask .forms-mentioned')})`);
+        assert.equal(glosses.heading, "Forms mentioned");
+        assert.deepEqual(glosses.items.map(i => i.name), q.forms.map(f => f.title && !f.title.includes(f.designation) ? `${f.designation} \u2014 ${f.title}` : f.title ?? f.designation), `${input}: each form by designation and title`);
+        const withPurpose = q.forms.findIndex(f => f.purpose);
+        assert.equal(glosses.items[withPurpose].open, true, "with at most two forms, a purpose is shown open");
+        assert.match(glosses.items[withPurpose].quote, /^\u201c/);
+        assert.match(glosses.items[withPurpose].meta, /, p\. \d+$/, "a purpose names its source and page");
+        assert(glosses.below && glosses.inAsk, "the forms are listed under the explanation, in the question's column");
+        await evaluate("document.querySelector('.forms-mentioned').scrollIntoView({block:'center',behavior:'instant'})");
+        await screenshot("/private/tmp/tax-ui-glosses.png");
+        await evaluate("window.scrollTo(0, 0)");
+        sawGlosses = true;
+      }
+      // The filing status, asked of one person: its labelled options one to a line in the bank's order, without the
+      // joint status, which only the couple's choice of the first question records.
+      if (input === "f1040.status") {
+        const options = await evaluate("[...document.querySelectorAll('.widget .choices.stacked [data-value]')].map(b=>[b.dataset.value,b.textContent])");
+        assert.deepEqual(options.map(o => o[0]), ["mfs", "qss", "hoh", "single"]);
+        assert.deepEqual(options.map(o => o[1]), ["mfs", "qss", "hoh", "single"].map(v => q.value_labels[v]));
+        assert.deepEqual(q.withheld, ["mfj"]);
+        assert.equal(await evaluate("document.querySelectorAll('.widget select').length"), 0, "a labelled enum is not a drop-down");
+        await shot("status");
+        sawStatus = true;
+      }
       if (input === "scope.other_line16") {
         assert(q.prompt.length > 900, "scope.other_line16 is a long question");
         await shot("long");
@@ -297,7 +309,9 @@ try {
   const shown = await evaluate(`({answered:[...document.querySelectorAll('#answered li')].map(li=>{const c=li.cloneNode(true);c.querySelectorAll('.qid').forEach(e=>e.remove());return c.textContent;}).join('\\n'),
     headings:[...document.querySelectorAll('#sheet h3')].map(h=>h.textContent)})`);
   assert.match(shown.answered, /Just me/); assert.match(shown.answered, /Acme Corp\., Acme Corp/);
-  assert.match(shown.answered, /You › Acme Corp\./);
+  // On a return with one person the answered list names the employer alone; the sheet's entry headings keep the person.
+  assert.match(shown.answered, /Acme Corp\./);
+  assert.doesNotMatch(shown.answered, /You › Acme Corp\./);
   assert.doesNotMatch(shown.answered, /acme_corp|\[taxpayer\]/, "no entry keys in the answered list, but in each question's id");
   await view("return");
   await click('.tabs [data-sheet="federal"]');
@@ -318,9 +332,12 @@ try {
   // An entry's question names the entry it is about.
   await view("answered");
   await click(`#answered button[data-input="person[taxpayer].w2[acme_corp_2].box1"]`);
-  await until("document.querySelector('.question .about')?.textContent === 'About: You › Acme Corp'", "the entry a question is about");
+  // On a return with one person the entry is the employer alone; the person is every question's subject.
+  await until("document.querySelector('.question .about')?.textContent === 'About: Acme Corp'", "the entry a question is about");
   await click("#back-next");
   assert(correctedAt, "an earlier answer was corrected");
+  assert(sawGlosses, "a question naming a form with a purpose was shown");
+  assert(sawStatus, "the filing status was asked");
   assert(derivationOpened, "a derivation was opened");
   assert(sawProvisional, "the refusal was shown as provisional while questions were pending");
   assert.match(await banner(), /Refused \(final\)/);
@@ -400,7 +417,7 @@ try {
   console.log(`Browser passed: the person selector with no entry syntax, ${answered} answers through the page's widgets, labelled roster entries (a colliding label suffixed; labels in the answered list, a sheet heading and a question's entry), a help request, a refused blank amount, a correction through the answered list, a derivation with operand links and the answer it depends on, a provisional refusal that became final, a reload, conflicting answers shown as a conflict with links that reopen them.`);
   assert(longShot, "the long question scope.other_line16 was shown in full");
   assert(sawFolded, "a question naming more than two forms was shown with each form folded to one line");
-  console.log("Screenshots: /private/tmp/tax-ui-design-{answered-ids,question-id}.png, /private/tmp/tax-ui-design-{question,long,roster,answered,return,sheet-order,refusal-provisional,refusal,refused-sheet,about,narrow}.png, /private/tmp/tax-ui-glosses.png, /private/tmp/tax-ui-conflict.png");
+  console.log("Screenshots: /private/tmp/tax-ui-design-{answered-ids,question-id}.png, /private/tmp/tax-ui-design-{question,status,long,roster,answered,return,sheet-order,refusal-provisional,refusal,refused-sheet,about,narrow}.png, /private/tmp/tax-ui-glosses.png, /private/tmp/tax-ui-conflict.png");
 } finally {
   server?.kill(); ws.close();
   rmSync(dir, { recursive: true, force: true });

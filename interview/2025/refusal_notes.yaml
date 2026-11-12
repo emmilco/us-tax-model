@@ -1,0 +1,32 @@
+# What the interview adds to a refusal: for a refusal gate, what the filer can do next, in plain words. The interview's
+# clients show the note with the refusal (the command-line interview as `refusalNote`, the page under the status line
+# and in the refusal's details).
+#
+# Presentation only: the refusal, its remedy and its citation are the form data's, and a note decides nothing. The key
+# is the gate line (a line some `refuses: - when:` names) of the refusal the interview reports; the build checks each
+# key is one and is not a consistency check, whose explanation is in conflict_checks.yaml.
+#
+# Grounds, in the Form 1040 instructions (i1040gi):
+#   s3.mfs                p. 13, Married Filing Jointly, "They can file a joint return even if only one had income";
+#                         p. 13, Single, "legally separated according to your state law under a decree of divorce or
+#                         separate maintenance"; p. 14, Married persons who live apart
+#   household.hoh_fails   p. 14, Head of Household
+#   household.qss_fails   p. 15, Qualifying Surviving Spouse
+tax_year: 2025
+notes:
+  s3.mfs: >-
+    This tool cannot prepare the return of a married person who files apart from their husband or wife. If the two of
+    you are putting, or could put, your income on one return, go back to “Who is this tax return for?” and choose
+    “Me and my husband or wife, together on one return”: a married couple can file together even if only one of you
+    had income. If you lived apart from your husband or wife for the last six months of 2025 and your child lived with
+    you, go back to “Which of these fits you on December 31, 2025?” and choose the line about paying for a home. If a
+    court decree of divorce or legal separation was final by December 31, 2025, you were not married: choose one of
+    the other lines.
+  household.hoh_fails: >-
+    You chose the line about paying over half the cost of a home (head of household), but your answers about your
+    household do not meet its tests. Go back to “Which of these fits you on December 31, 2025?” and choose another
+    line, or change the answer about your household that is wrong.
+  household.qss_fails: >-
+    You chose the line about being widowed in 2023 or 2024 (qualifying surviving spouse), but your answer about its
+    tests was No. Go back to “Which of these fits you on December 31, 2025?” and choose another line, or change that
+    answer if it is wrong.

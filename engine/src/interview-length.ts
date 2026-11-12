@@ -32,7 +32,7 @@ import { parse } from "yaml";
 import { loadCanonical } from "./canonical.js";
 import { inputMeta, interviewStatus, loadInterview, questionTemplate, type InterviewData } from "./interview.js";
 import {
-  bankOrder, existenceGates, fixtureCases, GENERATED, leakPair, minimalAnswers, plantLeak, readInputs, replayed, SEED, Unanswered, walk,
+  bankOrder, existenceGates, fixtureCases, GENERATED, leakPair, minimalAnswers, plantLeak, readInputs, replayed, replayedState, SEED, Unanswered, walk,
   type Answers, type Walk,
 } from "./interview-rules.js";
 import { walkedCases } from "./fixture-inputs.js";
@@ -71,10 +71,9 @@ export function sharesFrom(text: string): Map<string, number> {
   return out;
 }
 
-/** The answer the expected order probes with: false, zero or an empty roster; none for an enum, a role or `$person`. */
+/** The answer the expected order probes with: false, zero or an empty roster; none for an enum or `$person`. */
 function probeAnswer(data: CanonicalData, key: string): unknown {
   if (key.startsWith("$")) return questionTemplate(key) === "$person" ? undefined : [];
-  if (/^person\[[^\]]+\]\.role$/.test(key)) return undefined;
   const t = inputMeta(data, key).type;
   return t === "Bool" ? false : t === "Enum" ? undefined : 0;
 }
@@ -98,12 +97,13 @@ export function expectedOrder(data: CanonicalData, config: InterviewData, shares
   };
 }
 
-/** The answered inputs the complete return reads (its initial keys excepted): the least any order asks. Every walk of a
+/** The answered inputs the complete return reads (its initial keys, and the answers a roster choice recorded, which are
+ * not questions, excepted): the least any order asks. Every walk of a
  * complete return ends with these answered; an evaluation that lacks one of them meets it unknown before any input
  * outside the set, so it is reachable at every state that lacks it. (readInputs also names a roster a collection sum
  * confirms without an answer; such a roster is never asked, so it is not counted.) */
-function floorOf(data: CanonicalData, config: InterviewData, answered: Inputs): Set<string> {
-  return new Set([...readInputs(data, config, answered)].filter((k) => k in answered && !(k in config.initial)));
+function floorOf(data: CanonicalData, config: InterviewData, answered: Inputs, recorded: Record<string, unknown>): Set<string> {
+  return new Set([...readInputs(data, config, answered)].filter((k) => k in answered && !(k in config.initial) && !(k in recorded)));
 }
 
 export interface Measure {
@@ -124,11 +124,12 @@ export function measure(ctx: Ctx, group: string, profile: string, id: string, an
   const config = configs[profile]!;
   let w: Walk;
   try { w = walk(data, config, answers, bankOrder(config), BOUND, () => {}); } catch (e) { if (e instanceof Unanswered) return null; throw e; }
-  const given = replayed(config, w.events);
+  const state = replayedState(config, w.events);
+  const given = state.inputs;
   const closed = w.events.filter((e) => isClosed(e.value)).length;
   const m: Measure = { group, profile, id, status: w.status, asked: w.events.length, closed, floor: null, oracle: null, expected: null, unavoidableClosed: [], avoidable: [] };
   if (w.status !== "complete") return m;
-  const floor = floorOf(data, config, given);
+  const floor = floorOf(data, config, given, state.recorded);
   m.floor = floor.size;
   const closedKeys = new Set(w.events.filter((e) => isClosed(e.value)).map((e) => e.input));
   m.unavoidableClosed = [...new Set([...floor].filter((k) => closedKeys.has(k)).map(questionTemplate))].sort();

@@ -7,7 +7,7 @@ import { loadCanonical } from "./canonical.js";
 import { runChecks } from "./check.js";
 import { loadCases } from "./fixtures.js";
 import type { CanonicalData, Inputs } from "./types.js";
-import { YEAR_ARGS } from "./year.js";
+import { YEAR, YEAR_ARGS } from "./year.js";
 import { gate, mapPool, run } from "./pool.js";
 
 // The checks fall into groups that share nothing (each has its own log and files); the groups run side by side,
@@ -227,6 +227,97 @@ export async function integrationChecks(): Promise<void> {
         if(id==="stage5.return.refund")assert.equal(state.values["f1040.line34"].value.cents,173300);
       });
     }
+    // The opening of the whole return: one question for a couple, two for one person, and the answers the first
+    // question's choice records (each entry's role; the couple's filing status).
+    groups.push(async()=>{
+      const path=join(dir,"opening.jsonl");
+      const answer=(key:string,value:unknown,ok=true)=>cli(["interview","answer","--log",path,"--input",key,"--value",JSON.stringify(value)],ok);
+      const events=()=>readFileSync(path,"utf8").trim().split("\n").slice(1).map(l=>JSON.parse(l) as {input:string;value:unknown;records?:{input:string;value:unknown}[]});
+      const pendingKeys=(s:any):string[]=>s.pending.map((q:any)=>q.input);
+      let state=await cli(["interview","start","--profile","full","--log",path]);
+      assert.equal(state.question.input,"$person");
+      assert.equal(state.question.prompt,"Who is this tax return for?");
+      assert.deepEqual(state.question.choices.map((c:any)=>c.label),["Just me","Me and my husband or wife, together on one return"]);
+      assert.deepEqual(state.recorded,[]);
+      // Not a declared choice: refused, nothing written.
+      await answer("$person",["taxpayer","second"],false);
+      await answer("$person",["spouse"],false);
+      assert.equal(events().length,0);
+      // The couple: one answer records both roles and the joint status; neither is asked.
+      state=await answer("$person",["taxpayer","spouse"]);
+      assert.deepEqual(events().at(-1)!.records!.map(r=>[r.input,r.value]),[["person[taxpayer].role","taxpayer"],["person[spouse].role","spouse"],["f1040.status","mfj"]]);
+      assert.deepEqual(state.recorded.map((r:any)=>[r.input,r.value,r.by]),[["f1040.status","mfj","$person"],["person[spouse].role","spouse","$person"],["person[taxpayer].role","taxpayer","$person"]]);
+      assert.ok(state.recorded.every((r:any)=>typeof r.shown==="string"&&r.shown!==""));
+      assert.ok(!pendingKeys(state).some(k=>k==="f1040.status"||k.endsWith(".role")),"after the couple's choice neither the status nor a role is pending");
+      assert.equal(state.values["f1040.status"].value.value,"mfj");
+      // Per-person questions say whose they are; a once-per-return question names the spouse.
+      const perPerson=state.pending.filter((q:any)=>q.frame);
+      assert.ok(perPerson.some((q:any)=>q.frame==="About you"&&q.input.includes("person[taxpayer]")&&q.prompt.startsWith("About you — ")));
+      assert.ok(perPerson.some((q:any)=>q.frame==="About your spouse"&&q.input.includes("person[spouse]")&&q.prompt.startsWith("About your spouse — ")));
+      assert.ok(state.pending.every((q:any)=>!q.prompt.includes("For this person (you, or your spouse on a joint return)")),"no stored per-person frame is shown");
+      // A recorded answer is changed through the choice, not directly.
+      const before=readFileSync(path,"utf8");
+      for (const [key,value] of [["f1040.status","single"],["f1040.status",null],["person[spouse].role","taxpayer"],["person[taxpayer].role","taxpayer"]] as const) await answer(key,value,false);
+      assert.equal(readFileSync(path,"utf8"),before,"a refused answer writes nothing");
+      const spouseQuestion=perPerson.find((q:any)=>q.frame==="About your spouse"&&q.entry.startsWith("true or false")).input as string;
+      state=await answer(spouseQuestion,true);
+      assert.ok(!pendingKeys(state).includes(spouseQuestion));
+      // Changing the choice: the recorded status is withdrawn and asked, the spouse's answers are inactive.
+      state=await answer("$person",["taxpayer"]);
+      assert.deepEqual(state.recorded.map((r:any)=>r.input),["person[taxpayer].role"]);
+      assert.equal(state.question.input,"f1040.status");
+      assert.equal(state.question.prompt,"Which of these fits you on December 31, 2025?");
+      assert.deepEqual(state.question.withheld,["mfj"]);
+      assert.match(state.question.entry,/^one of: "mfs" \(Married, and filing apart[^"]*\), "qss" \([^"]*\), "hoh" \([^"]*\), "single" \(None of these: I was not married \(single\)\); null asks for help$/);
+      assert.ok(!(spouseQuestion in state.values)&&!pendingKeys(state).some(k=>k.includes("person[spouse]")));
+      assert.ok(state.pending.every((q:any)=>q.frame===undefined&&!q.prompt.startsWith("About you")&&!q.prompt.includes("For this person (you")),"one person on the return: no per-person frame");
+      // Married filing separately is refused at once, with what the filer can do.
+      state=await answer("f1040.status","mfs");
+      assert.equal(state.status,"refused");assert.equal(state.refusal.form,"Married filing separately");
+      assert.match(state.refusalNote,/go back to “Who is this tax return for\?” and choose “Me and my husband or wife, together on one return”/);
+      state=await answer("f1040.status","hoh");
+      assert.equal(state.refusalNote,null);assert.equal(state.question.withheld,undefined);
+      // Back to the couple: the joint status is recorded over the status answered alone, and the spouse's answer returns.
+      state=await answer("$person",["spouse","taxpayer"]);
+      assert.deepEqual(events().at(-1)!.value,["taxpayer","spouse"]);
+      assert.equal(state.values["f1040.status"].value.value,"mfj");
+      assert.ok(!pendingKeys(state).includes(spouseQuestion)&&pendingKeys(state).some(k=>k.includes("person[spouse]")),"the spouse's earlier answer is active again");
+      // And alone again: the status answered alone before is not brought back; it is asked.
+      state=await answer("$person",["taxpayer"]);
+      assert.equal(state.question.input,"f1040.status");
+      assert.equal(state.values["f1040.status"].value.kind,"unknown");
+      // A help request on the first question withdraws what its answer recorded.
+      state=await answer("$person",null);
+      assert.deepEqual(state.recorded,[]);assert.equal(state.question.input,"$person");assert.equal(state.question.helpRequested,true);
+
+      // Logs answered under the earlier questions (the roster, the status and each role as separate answers) give
+      // the same values as today's one answer; a log that stopped before a role was answered asks the first question again.
+      const write=(name:string,lines:object[])=>{const p=join(dir,name);writeFileSync(p,[{version:1,tax_year:YEAR,profile:"full"},...lines].map(l=>JSON.stringify(l)).join("\n")+"\n");return p;};
+      const comparable=(s:any)=>JSON.stringify([s.status,s.refusal,s.values,s.reachableInputs,s.pending]);
+      for (const [name,old,now] of [
+        ["joint",[{input:"$person",value:["taxpayer","spouse"]},{input:"f1040.status",value:"mfj"},{input:"person[spouse].role",value:"spouse"},{input:"person[taxpayer].role",value:"taxpayer"}],["taxpayer","spouse"]],
+        ["single",[{input:"$person",value:["taxpayer"]},{input:"f1040.status",value:"single"},{input:"person[taxpayer].role",value:"taxpayer"}],["taxpayer"]],
+      ] as const) {
+        const oldState=await cli(["interview","advance","--log",write(`old-${name}.jsonl`,[...old,{input:"scope.credits",value:false}])]);
+        const newLog=join(dir,`new-${name}.jsonl`);
+        await cli(["interview","start","--profile","full","--log",newLog]);
+        await cli(["interview","answer","--log",newLog,"--input","$person","--value",JSON.stringify(now)]);
+        if (name==="single") await cli(["interview","answer","--log",newLog,"--input","f1040.status","--value",'"single"']);
+        const newState=await cli(["interview","answer","--log",newLog,"--input","scope.credits","--value","false"]);
+        assert.equal(comparable(oldState),comparable(newState),`${name}: a log of the earlier questions gives today's state`);
+        assert.deepEqual(oldState.recorded,[],"answers given directly are not recorded ones");
+        // The earlier log stays correctable: its status was answered directly, and changing the first answer records anew.
+        const oldPath=join(dir,`old-${name}.jsonl`);
+        const corrected=await cli(["interview","answer","--log",oldPath,"--input","$person","--value",JSON.stringify(now)]);
+        assert.equal(comparable(corrected),comparable(newState),`${name}: answering the first question again leaves the values`);
+      }
+      const partial=await cli(["interview","advance","--log",write("old-partial.jsonl",[{input:"$person",value:["taxpayer","spouse"]},{input:"f1040.status",value:"mfj"}])]);
+      assert.ok(partial.reachableInputs.includes("person[spouse].role")&&partial.reachableInputs.includes("person[taxpayer].role"));
+      assert.equal(partial.question.input,"$person","an unanswered role is asked through the first question, whose choice records it");
+      assert.equal(partial.pending.filter((q:any)=>q.input==="$person").length,1);
+      const healed=await cli(["interview","answer","--log",join(dir,"old-partial.jsonl"),"--input","$person","--value",'["taxpayer","spouse"]']);
+      assert.ok(!healed.reachableInputs.some((k:string)=>k.endsWith(".role"))&&healed.question.input!=="$person");
+    });
     await mapPool(groups,(g)=>g(),groups.length);
     console.log(`integration: ${checks} CLI invocations passed (interview, corrections, early refusals, invalid inputs, graph/type failures)`);
   } finally {rmSync(dir,{recursive:true,force:true});}

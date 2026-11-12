@@ -13,7 +13,7 @@ import { join, resolve } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { loadCanonical } from "./canonical.js";
 import { interviewView, loadInterview, questionTemplate, replay, type Event, type InterviewData } from "./interview.js";
-import { SPOUSE_PHRASE, SPOUSE_POSSESSIVE, STATUS_INPUT, spouseWording, type JointReturn } from "./spouse-wording.js";
+import { SPOUSE_PHRASE, SPOUSE_POSSESSIVE, STATUS_INPUT, personWording, spouseWording, type JointReturn } from "./spouse-wording.js";
 import { templateKey } from "./branches.js";
 import { renderValuesSheetText } from "./output.js";
 import { loadFixtureCases } from "./fixture-inputs.js";
@@ -186,13 +186,14 @@ export async function serveChecks(): Promise<void> {
     ok(formsOf("gift.special").includes("Schedule K-1?"), "a bare Schedule K-1, of three parent forms in the catalogs, stays unresolved");
     ok(isDeepStrictEqual(formsOf("ny_it2.state_withheld"), ["Form W-2", "Form IT-2+"]), `a New York question names Form W-2 and Form IT-2: ${formsOf("ny_it2.state_withheld")}`);
     // As served: only the forms the catalogs hold, each purpose the catalog's own.
-    const firstForms = created.body.pending[0].forms as { designation: string; id: string; title?: string; purpose?: { text: string; doc: string; page: number } }[];
-    const catalogPurpose = (id: string) => names.forms.find((f) => f.id === id)!.purpose;
-    ok(created.body.pending[0].input === "$person" && isDeepStrictEqual(firstForms.map((f) => f.id), ["fw2", "f1099r"])
-      && firstForms[0]!.title === "Wage and Tax Statement" && firstForms[0]!.purpose === undefined
-      && firstForms[1]!.purpose?.doc === "f1099r" && firstForms[1]!.purpose?.page === 5
-      && firstForms.every((f) => isDeepStrictEqual(f.purpose, catalogPurpose(f.id))),
-      `the first question's forms are served with their titles and purposes: ${JSON.stringify(firstForms).slice(0, 300)}`);
+    type Served = { designation: string; id: string; title?: string; purpose?: { text: string; doc: string; page: number } };
+    const catalogEntry = (id: string) => names.forms.find((f) => f.id === id)!;
+    ok(created.body.pending[0].input === "$person" && isDeepStrictEqual(created.body.pending[0].forms, []), "the first question, in plain words, names no form");
+    const naming = created.body.pending.find((q: any) => q.input === "$f1095a");
+    const namedForms = (naming?.forms ?? []) as Served[];
+    ok(isDeepStrictEqual(namedForms.map((f) => f.id), ["f1095a"]) && namedForms[0]!.title === catalogEntry("f1095a").title && typeof namedForms[0]!.title === "string"
+      && namedForms[0]!.purpose !== undefined && namedForms.every((f) => isDeepStrictEqual(f.purpose, catalogEntry(f.id).purpose)),
+      `a question's forms are served with their titles and purposes: ${JSON.stringify(namedForms).slice(0, 300)}`);
     ok(created.body.pending.every((q: any) => Array.isArray(q.forms) && q.forms.every((f: any) => typeof f.id === "string")), "every pending question carries its catalogued forms");
     const cli = (args: string[], expectOk = true) => {
       const p = spawnSync(process.execPath, [MAIN, ...YEAR_ARGS, "interview", ...args, "--log", log], { encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
@@ -428,6 +429,78 @@ export async function serveChecks(): Promise<void> {
       ok(asJoint.label === "Limit for you or your spouse and your or your spouse's dependents", `a conflict's figure label in the joint reading: ${asJoint.label}`);
       ok(asPlain.label === "Limit for you and your dependents", `a conflict's figure label in the plain reading: ${asPlain.label}`);
     } finally { probeServer.close(); }
+
+    // The opening. A couple answers one question: the choice records both roles and the joint status, the answered
+    // list shows them under that answer, and they are changed only through it.
+    const FRAME = "For this person (you, or your spouse on a joint return)";
+    let opening = (await post("/api/returns", { name: "opening" })).body;
+    const openingLog = join(dir, "opening.jsonl");
+    const lastEvent = () => JSON.parse(readFileSync(openingLog, "utf8").trim().split("\n").at(-1)!) as { input: string; value: unknown; labels?: unknown; records?: { input: string; value: unknown; shown: string }[] };
+    // The server and the command-line interview read the same log alike: the questions as shown, the refusal and its note,
+    // and the recorded answers.
+    const sameOpening = (served: any, label: string) => {
+      const p = spawnSync(process.execPath, [MAIN, ...YEAR_ARGS, "interview", "advance", "--log", openingLog], { encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
+      assert.equal(p.status, 0, `interview advance on the opening log: ${p.stderr}`);
+      const c = JSON.parse(p.stdout);
+      for (const k of ["status", "refusal", "refusalNote", "question", "reachableInputs", "values"]) ok(isDeepStrictEqual(served[k], c[k]), `${label}: ${k} differs between the server and the CLI`);
+      ok(isDeepStrictEqual(served.pending.map(({ type: _t, values: _v, forms: _f, ...q }: any) => q), c.pending), `${label}: pending differs between the server and the CLI`);
+      ok(isDeepStrictEqual(served.answered.flatMap((a: any) => (a.recorded ?? []).map((r: any) => ({ ...r, by: a.input }))).sort((a: any, b: any) => a.input.localeCompare(b.input)), c.recorded.map(({ input, value, by, shown }: any) => ({ input, value, shown, by }))),
+        `${label}: the recorded answers differ between the server and the CLI: ${JSON.stringify(c.recorded)}`);
+    };
+    const person = opening.pending[0];
+    ok(person.input === "$person" && person.prompt === "Who is this tax return for?" && isDeepStrictEqual(person.choices.map((c: any) => c.label), ["Just me", "Me and my husband or wife, together on one return"]),
+      `the first question and its two choices: ${person.prompt} ${JSON.stringify(person.choices.map((c: any) => c.label))}`);
+    ok(/the answer is one of/.test(await unchanged("opening", "$person", ["taxpayer", "second"], "a roster answer that is not a declared choice")), "a roster answer that is not a choice is refused with the choices");
+    opening = (await post("/api/returns/opening/answer", { input: "$person", value: person.choices[1].value, labels: person.choices[1].labels })).body;
+    ok(isDeepStrictEqual(lastEvent().records?.map((r) => [r.input, r.value]), [["person[taxpayer].role", "taxpayer"], ["person[spouse].role", "spouse"], ["f1040.status", "mfj"]]) && lastEvent().labels !== undefined,
+      "the couple's choice is saved with its labels and the answers it records");
+    ok(opening.answered.length === 1 && isDeepStrictEqual(opening.answered[0].recorded.map((r: any) => r.input), ["person[taxpayer].role", "person[spouse].role", "f1040.status"])
+      && opening.answered[0].recorded.every((r: any) => typeof r.shown === "string" && r.shown !== ""), `the answered list shows what the choice recorded under it: ${JSON.stringify(opening.answered[0].recorded)}`);
+    ok(!opening.pending.some((q: any) => q.input === STATUS_INPUT || q.input.endsWith(".role")), "a couple is asked neither the filing status nor a role");
+    ok(opening.values[STATUS_INPUT].value.value === "mfj", "the joint status is on the return");
+    for (const [key, value] of [[STATUS_INPUT, "single"], ["person[spouse].role", "taxpayer"]] as const) {
+      ok(/was recorded by the answer to \$person .*change that answer to change it/.test(await unchanged("opening", key, value, `a direct answer to the recorded ${key}`)), `${key}: a recorded answer is changed through its choice`);
+    }
+    const framed = (s: any, who: string) => s.pending.filter((q: any) => q.input.includes(`person[${who}]`) && storedFor(q.input).prompt.startsWith(FRAME));
+    ok(framed(opening, "taxpayer").length > 0 && framed(opening, "taxpayer").every((q: any) => q.frame === "About you" && q.prompt.startsWith("About you — "))
+      && framed(opening, "spouse").length > 0 && framed(opening, "spouse").every((q: any) => q.frame === "About your spouse" && q.prompt.startsWith("About your spouse — ")),
+      "on a couple's return each per-person question begins About you or About your spouse");
+    ok(framed(opening, "spouse").every((q: any) => q.prompt === "About your spouse — " + personWording(storedFor(q.input).prompt.slice(FRAME.length + 3), "spouse") && q.help === personWording(spouseWording(storedFor(q.input).help, "joint"), "spouse"))
+      && framed(opening, "spouse").some((q: any) => /^About your spouse — (Was|Does|Did|Is) your spouse /.test(q.prompt)),
+      "a question asked of the spouse names the spouse and does not say you of them");
+    ok([...opening.pending, ...opening.answered].every((q: any) => !q.prompt.includes(FRAME)), "the stored per-person frame is not served once the roles are recorded");
+    sameOpening(opening, "the couple's return");
+    // An unmarried pair: the existing consistency check, whose recorded status is reached through the first question.
+    opening = (await answer("opening", "household.married", false)).body;
+    opening = (await answer("opening", "household.spouse_died_2025", false)).body;
+    const pairConflict = opening.conflicts.find((c: any) => c.gate === "household.filing_status_conflict");
+    ok(pairConflict && isDeepStrictEqual(pairConflict.answers.map((a: any) => a.input), ["$person", "household.married", "household.spouse_died_2025"]),
+      `two unmarried people filing together are shown the conflict, with the first question as the answer that set the status: ${JSON.stringify(opening.conflicts.map((c: any) => [c.gate, c.answers.map((a: any) => a.input)]))}`);
+    // One person: the status is asked next, with labelled options in the bank's order and married filing jointly withheld.
+    opening = (await post("/api/returns/opening/answer", { input: "$person", value: person.choices[0].value, labels: person.choices[0].labels })).body;
+    const statusQ = opening.pending.find((q: any) => q.input === STATUS_INPUT);
+    ok(opening.pending[0].input === STATUS_INPUT && statusQ.prompt === "Which of these fits you on December 31, 2025?" && isDeepStrictEqual(statusQ.value_order, ["mfs", "qss", "hoh", "single", "mfj"])
+      && isDeepStrictEqual(statusQ.withheld, ["mfj"]) && Object.keys(statusQ.value_labels).length === 5 && statusQ.help !== "",
+      `one person is asked the filing status next, without the joint status: ${JSON.stringify([opening.pending[0].input, statusQ?.value_order, statusQ?.withheld])}`);
+    ok(isDeepStrictEqual(opening.answered.find((a: any) => a.input === "$person").recorded.map((r: any) => r.input), ["person[taxpayer].role"]) && !(STATUS_INPUT in opening.values && opening.values[STATUS_INPUT].value.kind !== "unknown"),
+      "changing the choice withdraws the status the couple's choice recorded");
+    ok(framed(opening, "taxpayer").length > 0 && framed(opening, "taxpayer").every((q: any) => q.frame === undefined && q.prompt === personWording(storedFor(q.input).prompt.slice(FRAME.length + 3), "taxpayer").replace(/^./, (c: string) => c.toUpperCase()))
+      && !opening.pending.some((q: any) => q.input.includes("person[spouse]")), "on a one-person return a per-person question has no frame");
+    opening = (await answer("opening", STATUS_INPUT, "mfs")).body;
+    ok(opening.status === "refused" && opening.refusal.form === "Married filing separately" && /choose “Me and my husband or wife, together on one return”/.test(opening.refusalNote ?? ""),
+      `married filing separately is refused with what the filer can do: ${opening.refusal?.gate} ${String(opening.refusalNote).slice(0, 80)}`);
+    opening = (await answer("opening", STATUS_INPUT, "single")).body;
+    ok(opening.refusalNote === null && opening.answered.find((a: any) => a.input === STATUS_INPUT).withheld?.[0] === "mfj", "the corrected status clears the note, and its answered question still withholds the joint status");
+    sameOpening(opening, "one person's return");
+    // A log answered when the roster, the status and each role were separate questions is served, its role answers
+    // listed under the first question.
+    writeFileSync(join(dir, "earlier.jsonl"), [{ version: 1, tax_year: config.tax_year, profile: "ny" }, { input: "$person", value: ["taxpayer", "spouse"], labels: { taxpayer: "You", spouse: "Your spouse" } },
+      { input: STATUS_INPUT, value: "mfj" }, { input: "person[spouse].role", value: "spouse" }, { input: "person[taxpayer].role", value: "taxpayer" }].map((e) => JSON.stringify(e)).join("\n") + "\n", { mode: 0o600 });
+    const earlier = (await get("/api/returns/earlier")).body;
+    ok(isDeepStrictEqual(earlier.answered.map((a: any) => a.input), ["$person", STATUS_INPUT]) && isDeepStrictEqual(earlier.answered[0].recorded.map((r: any) => [r.input, r.value]), [["person[spouse].role", "spouse"], ["person[taxpayer].role", "taxpayer"]])
+      && earlier.answered[0].recorded.every((r: any) => /^The entry/.test(r.shown)), `a log of the earlier questions lists its role answers under the first question: ${JSON.stringify(earlier.answered?.map((a: any) => [a.input, a.recorded]))}`);
+    ok(earlier.values[STATUS_INPUT].value.value === "mfj" && framed(earlier, "spouse").length > 0
+      && framed(earlier, "spouse").every((q: any) => q.frame === "About your spouse"), "and it is served with the same frames");
 
     // Fixture interview paths replayed through the server: the federal whole returns (the federal questions; their
     // fixtures have no New York answers) and a sample of the New York cases. Each walk answers the first pending

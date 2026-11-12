@@ -20,9 +20,12 @@ A profile file lists its targets, its initial answers and the inputs it asks; th
 | `full` | `2025/full.yaml` | `scope.ready`, Form 1040 lines 24, 33, 34 and 37, `f2441.line1_box`, `f2441.line1_paid`, `f2441.statement_notice`, `f2441.household_notice`, `f5695.line32b`, `ira.basis_total` | the whole return: Form 1040 lines 1a–37 end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them); no filing or transmission |
 
 The default, `sales` and `stage4` profiles fix the person roster to `taxpayer` in their
-initial answers. The `full` profile starts from no answers and asks `$person` first:
-`["taxpayer"]`, or `["taxpayer","spouse"]` on a joint return. It asks every question in
-the bank (`questions: all`).
+initial answers. The `full` profile starts from no answers and asks `$person` first
+("Who is this tax return for?"): `["taxpayer"]`, or `["taxpayer","spouse"]` for a couple
+filing together. That answer also records each entry's role and, for the couple, the
+filing status ("Answers a choice records"), so a couple is asked nothing more to open the
+return and one person is asked the filing status next. It asks every question in the bank
+(`questions: all`).
 
 ## CLI
 
@@ -41,13 +44,18 @@ tax year. Every command takes `--year N` (default: the newest year in `years.jso
 
 Each response is JSON with `status` (`incomplete`, `complete` or `refused`), the next
 `question` (its `input`, `prompt`, `help`, `order` and `cite`, `helpRequested`, `entry`, a
-hint for typing the answer as `--value` JSON from the input's type, and `choices` for a
-roster with a fixed set of answers, such as `$person`), the
+hint for typing the answer as `--value` JSON from the input's type, `choices` for a
+roster with a fixed set of answers, such as `$person`, and, where they apply, `frame`,
+the per-person frame its prompt begins with, and `withheld`, the values not offered), the
 `pending` questions (every question still reachable, in asking order, in the same form),
-the `refusal` if any, `reachableInputs`, the profile's `scope` sentence, the standing
+the `refusal` if any with its `refusalNote` ("Refusal as a result"), `reachableInputs`, the
+`recorded` answers (each answer a roster choice recorded: its `input`, `value`, the
+question it was recorded `by` and the sentence `shown` for it), the profile's `scope`
+sentence, the standing
 `notices`, the `values` with derivations, and a text `sheet`. A question's `prompt` and
 `help` are as shown to the filer: the spouse phrase is reworded for the filing status
-answered ("The spouse phrase as shown", under Question data). `question` is null once the
+answered, and the per-person frame for the entry's role ("The spouse phrase as shown" and
+"The per-person frame as shown", under Question data). `question` is null once the
 return is complete or refused; `pending` continues after a refusal, because on an
 incomplete return a later answer may clear it. A refusal is final only when nothing is
 pending.
@@ -85,8 +93,13 @@ and source in a dialog. A refusal whose gate is a consistency check (`2025/confl
 answers that contradict each other or are impossible, such as more family months than eligible
 months) is shown instead as conflicting answers, neither unsupported nor provisional: the
 check's explanation and the answers it reads, each a link that reopens its question, above the
-current question. Everything else is one tab away: the answered questions (choosing one
-reopens it for correction); "Your return so far", the federal and New York values sheets (the
+current question. A refusal that has a note (`2025/refusal_notes.yaml`) shows it above the
+current question and in the refusal's details. A question asked of a person on the return
+begins "About you" or "About your spouse" when the return has two people, and has no frame
+when it has one; the line above the question then names only the entries beneath the person
+(an employer, an account). Everything else is one tab away: the answered questions (choosing one
+reopens it for correction; under the answer to "Who is this tax return for?" the list shows
+what that answer recorded, each with its id, to be changed by changing that answer); "Your return so far", the federal and New York values sheets (the
 return first, then its schedules, the other forms, and worksheets and helper sections last;
 the order is the page's, the text sheet keeps the engine's), where the lines the last answer
 changed are highlighted and a line opens its derivation beside the sheet (operation,
@@ -106,7 +119,9 @@ group or others; it creates logs mode 0600 and never overwrites one. It listens 
 `localhost:<port>`, and POSTs whose `Origin` is not that same origin. Answers go through the
 same validation as `interview answer` (`applyAnswer` in `interview.ts`); a rejected answer
 is a 400 and nothing is written. The page sends money as integer cents and never sends a
-blank amount as zero. Yes/no questions, enums and rosters with `choices` are selectors. An
+blank amount as zero. Yes/no questions, enums and rosters with `choices` are selectors: a
+labelled enum (`value_labels`) is a list of its labels, one to a line in the bank's order
+without the withheld values, and choosing one answers. An
 open roster is entered as a list of labels the user types ("Acme Corp"); the page derives
 each new entry's key from its label (lowercase, other characters to `_`, a numeric suffix
 when the key is taken), an edited label keeps its entry's key, and the page shows labels,
@@ -144,6 +159,54 @@ an event on an initial key is invalid. A correction is another event for the sam
 an event is appended the candidate inputs are validated and the state is computed, so a
 malformed or unreachable answer is a command failure and is not written.
 
+### Answers a choice records
+
+The interview sets no input, with one declared exception: the choice a filer makes on a
+roster question with fixed `choices` may record answers that its label already states. The
+bank declares them beside the choice, as `records` (each an `input`, a `value` and the
+sentence `shown` to the filer for it). The person roster's choices record each entry's
+role (`person[taxpayer].role`, `person[spouse].role`), and "Me and my husband or wife,
+together on one return" also records `f1040.status` as married filing jointly. The limits,
+checked at build and by `interview-rules`:
+
+- a choice records only inputs of the entries it creates, or an input on the allow-list
+  `RECORD_ALLOWED` (`interview.ts`), which holds one input: `f1040.status`, with the value
+  `mfj`, for the couple's choice of `$person`. Nothing else is set by the interview;
+- each recorded value is one the input can take, each input is recorded once, and a gated
+  input is never recorded;
+- an entry input one choice records is recorded by every choice for every entry it
+  creates, so that input (`person.role`) is never asked and has no question in the bank.
+  It stays an input of the model: `eval` and the fixtures state it directly.
+
+One function, `answerEvent` (`interview.ts`), turns an answer into its event, and every
+client answers through it: the CLI and the server (`applyAnswer`) and the walks of the
+fixtures, the generated returns and the tests (`interview-rules.ts`,
+`interview-check.ts`). It accepts only a declared choice as the answer to a roster
+question with choices (in any key order), attaches that choice's records, and refuses a
+direct answer to an input a choice recorded: that answer is changed by changing the choice.
+
+The records are saved on the roster answer's event (`{input, value, labels, records}`), and
+replay applies them from the event, so a log gives the same state whatever the bank says
+later. An answer to a roster question first withdraws what that question's earlier answer
+recorded and then applies its own records. So when the choice is changed:
+
+- from the couple to one person, the recorded filing status is withdrawn and the status is
+  asked; the spouse's entry and its answers become inactive, as for any removed entry;
+- from one person to the couple, married filing jointly is recorded over the status that
+  was answered alone; going back to one person withdraws it again, and the status is asked
+  again (the earlier answer is not brought back);
+- a help request on the roster question withdraws its records with its answer.
+
+A filer who chose the couple therefore cannot end with another filing status: the status
+is not asked, cannot be answered directly, and is replaced only with the choice. A log
+answered when the roster, the status and each role were separate questions carries them
+as ordinary answers and replays to the same state; if such a log stops before a role was
+answered, the interview asks the roster question again, whose answer records it.
+
+A fixture or generated return walked through the interview must state what its roster
+answer records (the same roles, and married filing jointly for two people): one that
+states otherwise is a return only typed-in inputs can make, and its walk fails saying so.
+
 Keyed collections are entered through roster questions: `$w2@person[taxpayer]` lists an
 employer roster, `$sales` the transactions, `$interest` the payers, `$gift` the noncash
 gift groups. An entry's amounts use keys such as `person[taxpayer].w2[employer_a].box4`.
@@ -159,6 +222,14 @@ and no roster question.
 A refusal is a result, not a command failure: a `refused` response names the gate, the
 form the tool cannot prepare and the remedy, with a source citation. The targets that
 depend on it are refused; independent values remain inspectable in `values`.
+
+The interview may add to a refusal what the filer can do next, in plain words:
+`2025/refusal_notes.yaml` maps a refusal gate to a note, which the response carries as
+`refusalNote` and the page shows above the question and in the refusal's details. Married
+filing separately, and a head of household or qualifying surviving spouse choice whose
+tests are not met, have one (go back and choose "together", or another line). A note is
+presentation only: the refusal, its remedy and its citation are the form data's. The
+build checks each key is a refusal gate that is not a consistency check.
 
 ## Direct evaluation
 
@@ -217,11 +288,20 @@ question text, after its collection's frame (for example "For this business — 
 its citation from the line (a roster question's from its collection). An entry states a
 `prompt` or `cite` only for interview wording the line does not carry; the build fails
 if it repeats the line's. `help` is optional. A roster with a fixed set of answers lists
-them as `choices` (a label, the entry keys and a label for each key), which the page shows
+them as `choices` (a label, the entry keys, a label for each key and, optionally, the
+answers the choice `records`; "Answers a choice records"), which the page shows
 as a selector. An enum input may give `value_labels`, a label for each value of its enum
 (presentation only: the answer is still the value). The build requires exactly one
 distinct label per value; the page's selector, its answered list and the CLI's entry hint
-show the labels.
+show the labels, in the order the bank lists them (`value_order` in the built question).
+
+A value is not offered (`withheld` on the question as shown; `withheldValues`) when a choice
+of an answered roster question records it and the filer answered that question with another
+choice: married filing jointly is what the couple's choice records, so a filer who answered
+"Just me" is offered the four other filing statuses. This too is presentation only: the
+value given now is always offered, and an answer is accepted whether or not it was offered
+(one person answering married filing jointly meets the consistency check
+`household.roster_bad`, as a typed-in return does).
 
 The Form 8863 Part III questions exist twice, as `person.edu*` and `dependent.edu*` lines with a bank entry
 each, because a student is a person on the return or a dependent. The two statements are kept the same:
@@ -277,9 +357,9 @@ client its prompt and help are reworded from the return's filing-status answer
 Married filing separately is read as no spouse on the return: the spouse's items are not on a
 separate return (and the tool refuses that status). The replacement is exact, on the built
 text: the phrase with the space before it, and the possessive form with its "your". Every
-occurrence in a text is reworded. No other wording is touched: "(and, on a joint return, your
-spouse)", "(or your spouse, if filing jointly)", "you or your spouse" and the per-person frame
-"For this person (you, or your spouse on a joint return) — " are shown as stored.
+occurrence in a text is reworded. No other spouse wording is touched: "(and, on a joint return,
+your spouse)", "(or your spouse, if filing jointly)" and "you or your spouse" are shown as
+stored. The per-person frame has its own rule ("The per-person frame as shown").
 
 Where it applies: `interviewView` (`interview.ts`) rewords the next `question` and every
 `pending` question, so the CLI's JSON and the server's state carry the text as shown, and the
@@ -311,6 +391,66 @@ value of the `filing_status` enum is read as joint or not) and the near-miss rul
 constructed texts, and that every built question parses as structured text in both readings;
 `test-serve` tests one return read three ways as the filing status goes from unanswered to
 married filing jointly to single.
+
+### The per-person frame as shown
+
+Every question asked of a person on the return is stored with one frame, "For this person
+(you, or your spouse on a joint return) — " (the bank's `person` and `f8889` frames, and the
+rosters listed under a person; the build fails if the `person` frame is any other text). A
+filer reads it in the form that fits the entry (`shownFor` in `spouse-wording.ts`), from the
+entry's role (`person[…].role`, which the first question's choice records) and the number of
+people on the return, not from the entry's key or the filing status alone:
+
+| The entry's role | Two people on the return | One person on the return |
+|---|---|---|
+| taxpayer | "About you — " | no frame; the question's first letter is a capital |
+| spouse | "About your spouse — " | "About your spouse — " |
+| not answered | as stored | as stored |
+
+The question as shown carries the frame it begins with as `frame` ("About you", "About your
+spouse"), so a client that prints its own heading for the entry does not say it twice. The
+rule applies wherever the spouse phrase's does (the next `question`, the `pending` and the
+`answered` questions) and nowhere in the stored text. `spouse-wording --self-test` tests the
+frames on constructed returns and that every built framed question parses as structured
+text in each shown form; `test-integration` and `test-serve` test them on a couple's return
+and on one person's.
+
+### The person a question is about, as shown
+
+A framed question is stored in the second person: "you" and "your" are the person whose entry
+it is, "your spouse" is that person's husband or wife, and "this person" is that person again.
+Shown for the spouse's entry, the person is named ("About your spouse — Was your spouse born
+before January 2, 1961?"); shown for the taxpayer's entry, only "this person" changes, to "you"
+(`personWording` in `spouse-wording.ts`, applied by `shownFor` to the prompt and the help after
+the spouse phrase):
+
+| Stored | For the taxpayer's entry | For the spouse's entry |
+|---|---|---|
+| "you" as a subject | as stored | "your spouse", the verb after it agreeing ("you have" to "your spouse has") |
+| "Were you", "Do you", "Have you", "Are you" | as stored | "Was your spouse", "Does your spouse", "Has your spouse", "Is your spouse" |
+| "you" as an object ("paid to you") | as stored | "your spouse" |
+| "your", "yours" | as stored | "your spouse's" |
+| "yourself" | as stored | "himself or herself" |
+| "this person", "this person's", "you (this person)" | "you" (the verb agreeing), "your", "you" | "your spouse", "your spouse's", "your spouse" |
+| "your spouse", "your spouse's" | as stored | "you" (the verb agreeing); "your" before a noun, "yours" otherwise |
+| a phrase that means both people ("you and your spouse", "you or your spouse", "you both", "either of you", "both of you") | as stored | as stored |
+
+So in a framed question "you" never means the couple: the couple is written with one of the
+phrases of `COUPLE_PHRASES`. The rule works from closed lists in `spouse-wording.ts`: the verbs
+that change with their subject (`SECOND_TO_THIRD`, `THIRD_TO_SECOND`) and the words that may
+follow a subject or an object unchanged (`UNCHANGED_AFTER`). The build fails, naming the
+question and the words, on a framed prompt or help the rule does not cover: a subject before a
+word in neither list ("you swim"), a contraction ("you're"), or a verb the lists change standing
+after a preposition's object ("of this person reports"), where the rule cannot tell whose verb
+it is. Such a question is reworded, or its word is added to a list.
+
+The reviews read the stored text, so the shown text has a record of its own:
+`reports/2025/person_wording.md` lists every framed question as stored and in each shown form
+(a one-person return, the taxpayer's entry of a couple's return, the spouse's entry), prompt
+and help. `node engine/dist/main.js spouse-wording --report` writes it, and check-all fails
+when it is not current (`--report --check`), so a change to the rule or to a stored question
+is a difference a person reads. The rule cannot check meaning: a new or changed framed
+question's shown forms are read in that report before it is committed.
 
 ## The words a filer reads
 
