@@ -21,8 +21,11 @@
 //   node engine/dist/main.js interview-coverage [--write] [--rows FILE]
 //                                                  each row of interview/<year>/coverage/ walked through the built
 //                                                  interview: the situations it is known to handle
-//   node engine/dist/main.js serve --dir D [--port N]
-//                                                  the web UI (ui/) on 127.0.0.1, return logs in D
+//   node engine/dist/main.js serve --dir D [--port N] [--vetting F]
+//                                                  the web UI (ui/) on 127.0.0.1, return logs in D; the question
+//                                                  vetting page at /vet saves to the tracked verdict file, or to F
+//   node engine/dist/main.js vetting-report [--write] [--file F]
+//                                                  the owner's verdicts on the questions, for whoever acts on them
 //   node engine/dist/main.js test-serve            the web UI server's tests (synthetic returns, temporary dirs)
 //   node engine/dist/main.js spouse-wording --self-test
 //                                                  the spouse phrase's rewording for display, on constructed texts and the built questions
@@ -56,6 +59,7 @@ import { interviewRules } from "./interview-rules.js";
 import { interviewLength } from "./interview-length.js";
 import { interviewWords } from "./interview-words.js";
 import { interviewCoverage } from "./interview-coverage.js";
+import { vettingReport } from "./vetting.js";
 import { personWordingReport, spouseWordingSelfTest } from "./spouse-wording.js";
 
 const command = process.argv[2];
@@ -191,6 +195,8 @@ if (command === "review-stage5") {
   process.exit(await interviewLength(process.argv.slice(3)));
 } else if (command === "interview-words") {
   process.exit(await interviewWords(process.argv.slice(3)));
+} else if (command === "vetting-report") {
+  process.exit(vettingReport(process.argv.slice(3)));
 } else if (command === "interview-coverage") {
   process.exit(await interviewCoverage(process.argv.slice(3)));
 } else if (command === "spouse-wording" && process.argv.includes("--self-test")) {
@@ -207,7 +213,7 @@ if (command === "review-stage5") {
   runCheckSelfTest();
 } else {
   console.error(
-    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] | test-serve | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules | interview-length [--write] | interview-words [--write] | spouse-wording --self-test | spouse-wording --report [--check]",
+    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] [--vetting <file>] | test-serve | vetting-report [--write] [--file <file>] [--self-test] | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules | interview-length [--write] | interview-words [--write] | spouse-wording --self-test | spouse-wording --report [--check]",
   );
   process.exit(2);
 }

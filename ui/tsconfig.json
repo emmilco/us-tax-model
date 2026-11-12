@@ -11,5 +11,5 @@
     "skipLibCheck": true,
     "types": []
   },
-  "files": ["app.ts"]
+  "files": ["app.ts", "vet.ts"]
 }

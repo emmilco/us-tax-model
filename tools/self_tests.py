@@ -33,6 +33,7 @@ TESTS = [
     ("interview_rules_self_test", "code", True, NODE + ["interview-rules", "--self-test"]),
     ("interview_length_self_test", "code", True, NODE + ["interview-length", "--self-test"]),
     ("interview_words_self_test", "code", True, NODE + ["interview-words", "--self-test"]),
+    ("vetting_self_test", "code", True, NODE + ["vetting-report", "--self-test"]),
     ("interview_coverage_self_test", "code", True, NODE + ["interview-coverage", "--self-test"]),
     ("spouse_wording_self_test", "code", True, NODE + ["spouse-wording", "--self-test"]),
     ("compare_corpus_self_test", "code", True, NODE + ["compare", "--corpus-self-test"]),

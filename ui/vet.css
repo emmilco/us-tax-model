@@ -1,0 +1,71 @@
+/* The vetting page, over style.css: one question as a column of labelled parts, with the verdict, the notes box and
+   the moves held at the foot of the window so they are in reach however long the question is. */
+.vet-bar { max-width: 72rem; margin: 0 auto; padding: 0.35rem 2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1.5rem; font-size: 0.875rem; }
+.vet-bar.tools { border-top: 1px solid var(--rule-soft); gap: 0.4rem 0.75rem; }
+.vet-bar form { display: flex; align-items: center; gap: 0.4rem; margin-left: auto; }
+.vet-bar select, .vet-bar input, .vet-bar button { font-size: 0.875rem; padding: 0.25rem 0.5rem; }
+.vet-bar input { width: 16rem; font-family: var(--mono); }
+.vet .masthead { padding-bottom: 0.5rem; }
+#progress { font-weight: 600; font-variant-numeric: tabular-nums; }
+#filter-count { color: var(--muted); }
+
+#save-state { margin-left: auto; padding: 0.1rem 0.5rem; border-radius: 4px; color: var(--muted); }
+#save-state[data-state=saved] { color: var(--done); }
+#save-state[data-state=unsaved], #save-state[data-state=saving] { color: var(--unknown); }
+#save-state[data-state=failed] { background: var(--refused); color: #fff; font-weight: 600; }
+#save-state[data-state=failed] button { color: #fff; }
+
+.vet-card, .vet-orphans, .keys { max-width: 72rem; margin: 0 auto; padding: 1rem 2rem 0; }
+/* The question, its help and its answer in a reading column; the context beside it, in view while they scroll. */
+.vet-columns { display: grid; grid-template-columns: minmax(0, 44rem) minmax(15rem, 1fr); column-gap: 2.5rem; align-items: start; }
+#context-part { position: sticky; top: 0.5rem; }
+.position { font-size: 0.8125rem; color: var(--muted); display: flex; gap: 0.5rem; align-items: center; }
+.position .tag { border: 1px solid var(--rule); border-radius: 3px; padding: 0 0.35rem; font-size: 0.75rem; }
+.position .tag.stale { border-color: var(--refused); color: var(--refused); }
+.position .tag.long { border-color: var(--unknown); color: var(--unknown); }
+
+.part { margin-top: 1.1rem; padding-top: 0.8rem; border-top: 1px solid var(--rule); }
+.part > h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.45rem; }
+.variant { margin-top: 0.9rem; padding-left: 0.9rem; border-left: 3px solid var(--rule-soft); }
+.variant h3, .stored h3 { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-bottom: 0.2rem; }
+.variant-text { font-family: var(--serif); font-size: 0.875rem; line-height: 1.5; color: #3a4048; }
+.variant-text p + p { margin-top: 0.6em; }
+.none, .aside { color: var(--muted); }
+.options { margin: 0.4rem 0 0; padding-left: 1.6rem; }
+.options li + li { margin-top: 0.2rem; }
+#answer-text { font-weight: 600; }
+#answer-entry { margin-top: 0.3rem; }
+
+#context-part dl { font-size: 0.8125rem; }
+#context-part dt { color: var(--muted); margin-top: 0.55rem; }
+#context-part dt:first-child { margin-top: 0; }
+#context-part dd { margin: 0; overflow-wrap: anywhere; }
+#context-part .qid-line { margin-top: 0; }
+.gate-questions { margin: 0.2rem 0 0; padding-left: 1.2rem; }
+.stored { margin-top: 0.7rem; font-size: 0.8125rem; }
+.stored summary { cursor: pointer; color: var(--accent); }
+.stored h3 { margin-top: 0.5rem; }
+.as-stored { white-space: pre-wrap; font-family: var(--serif); color: #3a4048; }
+
+.stale { margin-top: 0.8rem; padding: 0.6rem 0.8rem; border: 1px solid var(--refused); background: var(--refused-soft); border-radius: 4px; font-size: 0.875rem; }
+
+.controls { position: sticky; bottom: 0; margin-top: 1.5rem; padding: 0.7rem 0; background: var(--paper); border-top: 2px solid var(--ink);
+  display: grid; grid-template-columns: max-content 1fr max-content; gap: 0.75rem; align-items: start; }
+.verdicts, .moves { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.verdict.chosen.up { background: var(--done); border-color: var(--done); color: #fff; }
+.verdict.chosen.down { background: var(--refused); border-color: var(--refused); color: #fff; }
+#note { font: inherit; width: 100%; min-height: 4.2rem; resize: vertical; border: 1px solid #aeb6bf; border-radius: 4px; padding: 0.4rem 0.55rem; }
+
+.vet-orphans { margin-top: 2rem; }
+.vet-orphans h2 { font-size: 1rem; }
+.vet-orphans ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+.vet-orphans li + li { margin-top: 0.6rem; }
+.keys { font-size: 0.8125rem; color: var(--muted); padding-bottom: 1.5rem; }
+kbd { font-family: var(--mono); font-size: 0.75rem; border: 1px solid var(--rule); border-radius: 3px; padding: 0 0.3rem; background: var(--shade); }
+
+@media (max-width: 48rem) {
+  .vet-bar, .vet-card, .vet-orphans, .keys { padding-inline: 1rem; }
+  .vet-bar form { margin-left: 0; }
+  .controls, .vet-columns { grid-template-columns: 1fr; }
+  #context-part { position: static; }
+}
