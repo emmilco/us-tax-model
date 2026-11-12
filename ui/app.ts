@@ -1,7 +1,8 @@
 // The page of the web UI: a client of the server's JSON API (engine/src/serve.ts). It computes nothing about the
 // return: every value, status, refusal and question comes from the engine. The current question is the page's centre,
 // with its source beside it; the answered list, the values sheets with their derivations, and the scope and notices
-// are views one tab away; a refusal's details open in a dialog from the status line.
+// are views one tab away; a refusal's details open in a dialog from the status line. Every question shows its id: the
+// input key the engine and the answer log know it by.
 
 type Cite = { doc: string; locator: string; revision?: string; quote?: string };
 type Value =
@@ -165,14 +166,13 @@ function referenceNode(ref: string): HTMLElement {
   if (at < ref.length) li.append(ref.slice(at));
   return li;
 }
-function sourceBlock(c: Cite, inputKey: string): HTMLElement {
+function sourceBlock(c: Cite): HTMLElement {
   return el("aside", { class: "source", "aria-labelledby": "source-heading" },
     el("h2", { id: "source-heading", class: "source-label" }, "Source"),
     el("p", { class: "doc" }, docTitle(c.doc)),
     c.quote ? el("blockquote", {}, c.quote) : null,
     el("ol", { class: "refs", id: "source-refs" }, ...references(c.locator).map(referenceNode)),
-    el("p", { class: "meta" }, `${c.doc}${c.revision ? `, revision ${c.revision}` : ""}`),
-    el("p", { class: "meta key", title: "The input this question answers" }, displayKey(inputKey)));
+    el("p", { class: "meta" }, `${c.doc}${c.revision ? `, revision ${c.revision}` : ""}`));
 }
 
 /** The forms a question names (found by the server in its prompt and help): each one's designation and printed
@@ -297,6 +297,13 @@ function displayKey(key: string): string {
     const label = entryLabel(key.slice(0, offset + whole.length).replace(/^\$[^@]*@/, ""));
     return label ? `${coll}[${label}]` : whole;
   });
+}
+/** A question's id as the page shows it everywhere a question appears: the input key itself, an entry's with its
+ * entry keys (`person[taxpayer].role`), in the monospace face, small and muted beside or below the question. One
+ * click selects the whole of it. It is a separate element after the question's own text, outside any heading, label
+ * or button, so a screen reader reads the question first and the id, announced as such, after it. */
+function questionIdTag(input: string): HTMLElement {
+  return el("span", { class: "qid" }, el("span", { class: "visually-hidden" }, "Question id: "), el("code", { class: "qid-key", "data-qid": input }, input));
 }
 /** Each line or input key inside a sentence, shown with its entries' labels. */
 function labelKeys(text: string): string {
@@ -431,7 +438,7 @@ function conflictBlocks(): HTMLElement[] {
     const answers = c.answers.map((a) => {
       const about = entryContext(a.input);
       return el("li", {},
-        button(`${about ? about + ": " : ""}${shortPrompt(firstLine(a.prompt), 180)}`, { class: "link", "data-input": a.input, title: displayKey(a.input) }, () => reopen(a.input)),
+        el("span", { class: "with-qid" }, button(`${about ? about + ": " : ""}${shortPrompt(firstLine(a.prompt), 180)}`, { class: "link", "data-input": a.input }, () => reopen(a.input)), questionIdTag(a.input)),
         el("span", { class: "conflict-value" }, fmtAnswer(a, a.value)));
     });
     const figures = c.figures.map((f) => el("li", {},
@@ -616,12 +623,16 @@ function renderQuestion(): void {
     about ? el("p", { class: "about" }, `About: ${about}`) : null,
     el("h2", { class: "prompt-heading visually-hidden", id: labelId }, shortPrompt(firstLine(q.prompt), 160)),
     longText(q.prompt, "prompt-text", "prompt", "question", false),
+    el("p", { class: "qid-line", id: "question-id" }, questionIdTag(q.input),
+      button("Copy", { class: "quiet qid-copy", id: "question-id-copy", "aria-label": "Copy the question id" }, () => {
+        void navigator.clipboard.writeText(q.input).then(() => { const b = $("question-id-copy"); b.textContent = "Copied"; setTimeout(() => { b.textContent = "Copy"; }, 1500); }, () => showError("Could not copy the id; select it instead."));
+      })),
     widget, errorLine,
     q.helpRequested ? el("p", { class: "note" }, "You asked for help with this question. It stays unanswered until you answer it.") : null,
     q.help ? el("section", { class: "help", "aria-label": "Explanation" }, longText(q.help, "help-text", "help", "explanation", true)) : null,
     formsBlock(q.forms ?? []),
     el("div", { class: "actions" }, help));
-  panel.replaceChildren(savedLine(), ...conflictBlocks(), el("article", { class: "question", "data-input": q.input }, main, sourceBlock(q.cite, q.input)));
+  panel.replaceChildren(savedLine(), ...conflictBlocks(), el("article", { class: "question", "data-input": q.input }, main, sourceBlock(q.cite)));
   if (view === "question") (panel.querySelector("#answer-input, .widget .choice, .roster-row input") as HTMLElement | null)?.focus({ preventScroll: true });
 }
 function shortPrompt(text: string, n: number): string {
@@ -634,9 +645,9 @@ function renderAnswered(): void {
   $("answered-count").textContent = String(s.answered.length);
   $("answered").replaceChildren(...s.answered.map((a) => {
     const about = entryContext(a.input);
-    const link = button(el("span", { class: "q" }, firstLine(a.prompt)), { class: "answered-q", "data-input": a.input, title: displayKey(a.input) }, () => reopen(a.input));
+    const link = button(el("span", { class: "q" }, firstLine(a.prompt)), { class: "answered-q", "data-input": a.input }, () => reopen(a.input));
     if (about) link.prepend(el("span", { class: "about" }, about));
-    return el("li", {}, link, el("span", { class: "value" }, fmtAnswer(a, a.value)));
+    return el("li", {}, el("div", { class: "with-qid" }, link, questionIdTag(a.input)), el("span", { class: "value" }, fmtAnswer(a, a.value)));
   }));
 }
 
@@ -733,10 +744,10 @@ function renderDerivation(): void {
   const deps = dependsOn(key).map((input) => {
     const a = s.answered.find((q) => q.input === input);
     const p = s.pending.find((q) => q.input === input);
-    if (!a && !p) return el("li", { class: "mono" }, displayKey(input));
+    if (!a && !p) return el("li", {}, questionIdTag(input));
     const about = entryContext(input);
-    const b = button(`${about ? about + ": " : ""}${shortPrompt(firstLine((a ?? p)!.prompt), 110)}`, { class: "link", "data-input": input, title: displayKey(input) }, () => reopen(input));
-    return el("li", {}, b, el("span", { class: "dep-value" }, a ? fmtAnswer(a, a.value) : "not yet answered"));
+    const b = button(`${about ? about + ": " : ""}${shortPrompt(firstLine((a ?? p)!.prompt), 110)}`, { class: "link", "data-input": input }, () => reopen(input));
+    return el("li", {}, el("span", { class: "with-qid" }, b, questionIdTag(input)), el("span", { class: "dep-value" }, a ? fmtAnswer(a, a.value) : "not yet answered"));
   });
   const close = button("Close", { class: "quiet" }, () => { trail = []; renderDerivation(); renderSheet(); });
   const back = button("Back", { class: "quiet", id: "derivation-back" }, () => { trail.pop(); renderDerivation(); renderSheet(); });

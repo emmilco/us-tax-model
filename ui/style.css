@@ -171,6 +171,13 @@ h1 span { font-weight: 400; color: var(--muted); }
 .form-gloss blockquote ul { margin: 0.2rem 0 0; padding-left: 1.1rem; }
 .form-gloss .meta { margin-top: 0.3rem; font-size: 0.75rem; color: var(--muted); }
 .key { font-family: var(--mono); }
+/* A question's id: plain, selectable in one click, secondary to the question. */
+.qid { display: block; font-size: 0.75rem; line-height: 1.4; color: var(--muted); overflow-wrap: anywhere; }
+.qid-key { font-family: var(--mono); font-size: inherit; user-select: all; -webkit-user-select: all; cursor: text; }
+.qid-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.9rem; margin-top: 0.7rem; font-size: 0.8125rem; }
+.qid-line .qid { display: inline; font-size: 0.8125rem; }
+.qid-copy { font-size: 0.75rem; padding: 0.05rem 0.4rem; }
+.with-qid { display: grid; gap: 0.15rem; justify-items: start; min-width: 0; }
 
 /* ---- answered ---- */
 #answered { padding: 0; margin: 0; list-style: none; counter-reset: q; border-top: 1px solid var(--rule-soft); }

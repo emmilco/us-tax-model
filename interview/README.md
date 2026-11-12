@@ -110,8 +110,19 @@ blank amount as zero. Yes/no questions, enums and rosters with `choices` are sel
 open roster is entered as a list of labels the user types ("Acme Corp"); the page derives
 each new entry's key from its label (lowercase, other characters to `_`, a numeric suffix
 when the key is taken), an edited label keeps its entry's key, and the page shows labels,
-not keys. The labels are saved on the roster answer's event as `labels`, a map from entry
-key to label, which replay ignores. Its API:
+not keys, except in a question's id. The labels are saved on the roster answer's event as
+`labels`, a map from entry key to label, which replay ignores.
+
+Every question shows its id, the input key the engine and the answer log know it by: under
+the current question's text (with a control that copies it), and under each question of the
+answered list, of a conflict's answers and of a derivation's "Answers it depends on". A
+question asked per entry shows its key with the entry keys (`person[taxpayer].role`,
+`person[taxpayer].w2[acme_corp].box1`). The id is small, in the monospace face, and one
+click selects the whole of it. It is a separate element after the question's words, outside
+the question's heading and outside any button, so a screen reader reads the question first
+and then "Question id: …".
+
+Its API:
 
 | Route | Does |
 |---|---|
