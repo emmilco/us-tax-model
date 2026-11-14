@@ -73,11 +73,12 @@ The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast
 
 - **full** (the default): every step, about 38 minutes. A release needs it.
 - **fast**: every step except `mutate`, `ny_mutate`, `engine_differential`, `lean_build`,
-  `compare`, `ny_compare` and `human_review` (the human-review tooling's test: human packets
-  are optional), about 10 minutes. It does not check mutation adequacy or agreement
-  with the independent evaluators, and leaves `mutation.md`, `evaluator_agreement.md`
-  and `engine_differential.{md,json}` as the last full run wrote them; `evidence.md`
-  then says that its E column dates from the latest release.
+  `compare`, `ny_compare`, `human_review` (the human-review tooling's test: human packets
+  are optional) and `interview_length` (about 8 minutes on one core), about 10 minutes. It
+  does not check mutation adequacy or agreement with the independent evaluators, and leaves
+  `mutation.md`, `evaluator_agreement.md`, `engine_differential.{md,json}` and
+  `interview_length.md` as the last full run wrote them; `evidence.md` then says that its E
+  column dates from the latest release.
 - **docs**: compile, the build, and the checks that read the bookkeeping paths in
   `tools/docs_paths.txt` (`check_bug_inventory`, `check_agent_runs`, `siblings_check`,
   `coverage_tree`, and `bookkeeping_self_tests`: the self-tests of the agent-run, siblings,
@@ -91,7 +92,8 @@ differs. The generated returns come from the general generator (`engine/src/gene
 step: both commands take the returns, the seed and the size from one definition
 (`corpusReturns`, `CORPUS_SEED`, `CORPUS_SIZE`), so they follow the declared inputs and their
 branch coverage is the one `properties.md` lists. `PROPERTY_RUNS=<n>` sets the size for a run of
-either command (400 without it; check-all sets none); each report states the seed and the number of
+either command (400 without it; check-all refuses to start while it, or another variable that changes what
+a step checks, is set: `SIZING_ENV` in `tools/green.sh`); each report states the seed and the number of
 returns it used, so two reports written under different sizes say so themselves. The self-test
 `compare --corpus-self-test` (`compare_corpus_self_test`) fails unless the returns the comparison
 compares are the returns the properties report's coverage is of, for both jurisdictions, unless a
@@ -434,8 +436,34 @@ conditions and rules, less the open entries of cases it drops.
   both jurisdictions), and the refusal names the files that differ and the command that regenerates them. The
   transcription review reads the form's YAML, class M builds the canonical data and its jobs itself, and the
   completeness review reads `canonical/`; none of them reads `rendered/`.
-- **Bug inventory in merges** (`tools/check_bug_inventory.py --merge`, from pre-commit): a merge may not create or
-  renumber a BUG entry; colliding ids are renumbered in a commit on the branch before merging.
+- **Bug inventory and pending entries** (`tools/check_bug_inventory.py`, step `check_bug_inventory`; `--merge`
+  from pre-commit). The rule a branch follows: a branch that runs alongside others does not write
+  `BUG_INVENTORY.md`. It records each defect as a pending entry, `python3 tools/new_bug.py "Title" --pending
+  [PREFIX] --field ...`, which writes `bug_pending/<PREFIX>-<NN>.md` (one entry, headed
+  `## BUG-NEW-<PREFIX>-<NN> — <title>`; the prefix defaults to the branch's name, so two branches never
+  choose the same file) and prints the placeholder, `BUG-NEW-<PREFIX>-<NN>`, which the branch cites
+  wherever it would cite an id: other entries, commit messages, docs, code. A committed pending entry is
+  never changed or deleted on the branch (a correction is another pending entry that cites it). Ids are
+  given in the merge that brings the entries onto main, by whoever merges: `git merge --no-ff --no-commit
+  <branch>`, then `python3 tools/new_bug.py --assign`, which appends every pending entry in the tree to the
+  inventory in name order (numbers compared as numbers) with the next ids, rewrites each placeholder to its
+  id in every tracked file, deletes the pending files and prints `BUG-NEW-<name> -> BUG-NNNN` per entry for
+  the merge's commit message; then `git add -A`, a check-all run of that tree, and `git commit` (pre-commit
+  refuses a tree no green run tested, and runs the merge check; `tools/commit_tested.sh` refuses a staged
+  index, so it does not conclude a merge). Many findings at one landing go
+  the same way: written as pending entries on the branch (one `--pending` call each, in the order they are
+  to be numbered), numbered together by one `--assign`. A single session on main may still append directly
+  with `new_bug.py` (no `--pending`).
+  What the checks hold: on every tree, the inventory extends HEAD's byte for byte with ids gapless from
+  BUG-0001; every pending file is one well-formed entry under its own name; every pending file committed at
+  HEAD is present and unchanged; every placeholder in a tracked file names a pending file. On a merge
+  (pre-commit, which runs on a merge concluded with `git commit`, so a merge that assigns must be made with
+  `--no-commit`): every parent's inventory is a prefix of the merge's, so no entry is rewritten, dropped or
+  renumbered and no id is reused; what the merge appends after the longest parent's inventory is exactly
+  what `--assign` appends for the parents' pending entries the merge removes; a pending file the merge
+  keeps is a parent's, changed only by the rewriting of assigned placeholders. `tools/siblings.py --check`
+  reads pending entries too, measured from the commit that added the file, and an assigned entry from the
+  merge that assigned it.
 - **Docs conventions** (`tools/check_docs_conventions.py`, docs tier): docs/ files are dated unless living, and
   HANDOFF-NEXT-SESSION.md keeps two entries.
 - **Year-free ids** (`tools/check_year_ids.py`, step `year_ids`; spec 4.3): reads every document, line, parameter,
@@ -505,7 +533,7 @@ that year's table from its archived source, and the check-all step named beside 
 | `coverage/estimate.py` | The coverage estimate (spec 2.4), under the engines interpreter with the microdata `coverage/fetch_microdata.sh` downloads once |
 | `coverage/roadmap.py` | `reports/roadmap.html` from the coverage estimate and the open rows of `TASKS.md` |
 | `ny_fixtures.py` | Writes the New York fixtures from `ny_predict.py`'s predictions |
-| `new_bug.py`, `task_row.py` | Append a `BUG_INVENTORY.md` entry; add or update a `TASKS.md` row (tested by `test_bookkeeping_tools.py`) |
+| `new_bug.py`, `task_row.py` | Append a `BUG_INVENTORY.md` entry, record a pending one (`--pending`) or number the pending ones at a merge (`--assign`); add or update a `TASKS.md` row (tested by `test_bookkeeping_tools.py`) |
 | `ocr_audit.py` | An image-grounded audit of the archived text layers (Tesseract), for a person to adjudicate; not a gate |
 | `extraction/page_review.py` | Local HTML pages of each archived page beside the project's reading of it, for a person to judge |
 | `transcription/question_review.py` | The question review (section "Sampled completeness, screen, false-no and question reviews"); also prices every question's prompt without a call (`--measure`) and lists which existing reviews judge each input's wording (`--coverage`) |

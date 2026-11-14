@@ -206,6 +206,7 @@ if [ "$(cd "$main" && pwd -P)" = "$(cd "$wt" 2>/dev/null && pwd -P)" ]; then
   exit 2
 fi
 python3 tools/worktree_data.py check || exit 1
+refuse_sizing_env || exit 2
 
 take_lock
 base="$(git rev-parse HEAD)"

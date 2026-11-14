@@ -699,6 +699,13 @@ remains an assertion. `audit_skipped.py` checks old logs against their embedded
 raw replies; `--apply` removes only skipped expectations and archives originals
 with hashes. The audit is an offline check-all step (BUG-0123).
 
+A reply is read from its last fenced block, or the whole text when it has none (an
+earlier draft block is never used). A reply that is not valid YAML, or has no `lines`
+list or a repeated line key, leaves its case unparsed: the run goes on with the other
+cases, the case's section in the log says `Reply not parsed:` with the reason, every
+line of it is MISSING (so the run exits 3), the raw reply is kept under Raw responses,
+and the run's summary names the unparsed cases.
+
 
 `classm.py --case-jobs 4` issues independent case requests concurrently; the default is1.
 `rerun_all.py` passes that option only to class M. Each case keeps its own prompt/response

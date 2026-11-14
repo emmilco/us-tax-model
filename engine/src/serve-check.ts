@@ -10,7 +10,7 @@ import assert from "node:assert/strict";
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
 import { chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, symlinkSync, writeFileSync } from "node:fs";
 import { createServer, request } from "node:http";
-import { tmpdir } from "node:os";
+import { loadavg, tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { loadCanonical } from "./canonical.js";
@@ -34,12 +34,30 @@ interface Server { proc: ChildProcess; port: number; dir: string; output: string
 const servers = new Map<number, Server>();
 
 /** What is known of the server on a port, for a failed request's message: its directory, whether it has exited, and
- * the end of its output. */
+ * the end of its output other than its connection log. */
 function serverContext(port: number): string {
   const s = servers.get(port);
   if (!s) return `no server started on port ${port}`;
-  const tail = s.output.trim().split("\n").slice(-20).join("\n");
+  const tail = s.output.trim().split("\n").filter((l) => !l.startsWith("conn ")).slice(-20).join("\n");
   return `server on port ${port} (pid ${s.proc.pid}, --dir ${s.dir}) ${s.exit ? `exited (${s.exit})` : "still running"}; its output:\n${tail}`;
+}
+
+/** What the server's connection log (serve --log-connections) holds of the connection from `clientPort`, with what it
+ * shows: the server never accepted it, accepted it and parsed no request, received the request and sent no response,
+ * or sent its response before the failure. Only the lines since the port's last "accepted" are the connection's. */
+export function connectionRecord(output: string, clientPort: number | undefined): string {
+  if (clientPort === undefined) return "the connection was never opened (no client port)";
+  const all = output.split("\n");
+  const mine = all.filter((l) => l.startsWith(`conn ${clientPort} `));
+  const from = mine.findLastIndex((l) => / accepted$/.test(l));
+  const lines = from < 0 ? [] : mine.slice(from);
+  const reading = lines.length === 0 ? "the server never accepted it (refused or reset before the server saw it)"
+    : !lines.some((l) => / request /.test(l)) ? "the server accepted it and parsed no request on it"
+      : !lines.some((l) => / response \d+ sent$/.test(l)) ? "the server received the request and sent no response"
+        : "the server sent its response before the failure";
+  const stalls = all.filter((l) => l.startsWith("event loop stalled")).slice(-3);
+  return [`the server's record of the connection from port ${clientPort}: ${reading}`, ...lines.map((l) => `  ${l}`),
+    ...(stalls.length ? [`the server's last event loop stalls: ${stalls.join("; ")}`] : [])].join("\n");
 }
 
 interface Reply { status: number; body: any }
@@ -51,7 +69,11 @@ function http(port: number, method: string, path: string, opts: { host?: string;
   const origin = opts.origin === undefined ? (method === "GET" ? null : `http://${host}`) : opts.origin;
   const payload = opts.body === undefined ? undefined : JSON.stringify(opts.body);
   return new Promise((done, fail) => {
-    const failed = (e: Error) => fail(new Error(`${method} ${path} (Host ${host}) failed: ${e.message}; ${serverContext(port)}`, { cause: e }));
+    const t0 = Date.now();
+    let clientPort: number | undefined;
+    // The server writes its connection log through a pipe, so its lines for this connection are read a moment later.
+    const failed = (e: Error) => setTimeout(() => fail(new Error(`${method} ${path} (Host ${host}) failed after ${Date.now() - t0} ms: ${e.message}; `
+      + `${connectionRecord(servers.get(port)?.output ?? "", clientPort)}\nload averages ${loadavg().map((x) => x.toFixed(1)).join(" ")}; ${serverContext(port)}`, { cause: e })), 1000);
     const req = request({ host: "127.0.0.1", port, method, path, agent: false, headers: { Host: host, ...(origin ? { Origin: origin } : {}), ...(payload ? { "Content-Type": "application/json" } : {}) } }, (res) => {
       const chunks: Buffer[] = [];
       res.on("data", (c: Buffer) => chunks.push(c));
@@ -65,12 +87,13 @@ function http(port: number, method: string, path: string, opts: { host?: string;
       });
     });
     req.on("error", failed);
+    req.on("socket", (socket) => socket.once("connect", () => { clientPort = socket.localPort; }));
     req.end(payload);
   });
 }
 
 function startServer(dir: string, options: string[] = []): Promise<Server> {
-  const proc = spawn(process.execPath, [MAIN, ...YEAR_ARGS, "serve", "--dir", dir, "--port", "0", ...options], { stdio: ["ignore", "pipe", "pipe"] });
+  const proc = spawn(process.execPath, [MAIN, ...YEAR_ARGS, "serve", "--dir", dir, "--port", "0", "--log-connections", ...options], { stdio: ["ignore", "pipe", "pipe"] });
   const server: Server = { proc, port: 0, dir, output: "", exit: null };
   return new Promise((done, fail) => {
     proc.stdout!.on("data", (d: Buffer) => {
@@ -128,6 +151,23 @@ export async function serveChecks(): Promise<void> {
     const port = started.port;
     const get = (path: string, host?: string) => http(port, "GET", path, host ? { host } : {});
     const post = (path: string, body: unknown, opts: { host?: string; origin?: string | null } = {}) => http(port, "POST", path, { ...opts, body });
+
+    // A failed request's message reads the server's connection log: each reading on a planted log, then the log of
+    // a real request (its lines arrive through a pipe, so they are read a moment later).
+    const planted = ["conn 7 +0ms accepted", "conn 7 +2ms request POST /api/returns/a/answer (Connection: close)", "conn 7 +9ms response 200 sent",
+      "conn 7 +9ms closed", "conn 9 +0ms accepted", "conn 9 +1ms request GET / (Connection: close)", "conn 7 +0ms accepted"].join("\n");
+    ok(/never accepted it/.test(connectionRecord(planted, 8)) && /parsed no request/.test(connectionRecord(planted, 7))
+      && /sent no response/.test(connectionRecord(planted, 9)) && /sent its response/.test(connectionRecord(planted.split("\n").slice(0, 4).join("\n"), 7))
+      && /never opened/.test(connectionRecord(planted, undefined)), "a failed request's connection is read from the server's log");
+    const probed = await new Promise<number>((done, fail) => {
+      let local = 0;
+      const req = request({ host: "127.0.0.1", port, path: "/api/returns", agent: false, headers: { Host: `127.0.0.1:${port}` } }, (res) => { res.resume(); res.on("end", () => done(local)); });
+      req.on("socket", (socket) => socket.once("connect", () => { local = socket.localPort ?? 0; }));
+      req.on("error", fail);
+      req.end();
+    });
+    await new Promise((done) => setTimeout(done, 500));
+    ok(/sent its response/.test(connectionRecord(started.output, probed)), `the server logs each connection: ${connectionRecord(started.output, probed)}`);
 
     // Host and Origin.
     ok((await get("/api/returns", `evil.example:${port}`)).status === 403, "a request for another Host is refused");

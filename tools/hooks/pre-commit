@@ -31,7 +31,8 @@ if [ -f "$merge_head" ]; then
 fi
 # Form claims (tools/claims.py): a commit may not change a form another lane's branch holds.
 python3 tools/claims.py check "$staged" ${parents[@]+"${parents[@]}"} || exit 1
-# A merge combines BUG entries; it never creates or renumbers one (tools/check_bug_inventory.py --merge).
+# A merge keeps every parent's BUG entries and appends only the pending entries it assigns
+# (tools/check_bug_inventory.py --merge).
 if [ -f "$merge_head" ]; then
   python3 tools/check_bug_inventory.py --merge "$staged" "${parents[@]}" || exit 1
 fi

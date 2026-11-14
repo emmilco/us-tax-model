@@ -44,11 +44,15 @@ _COMMENT = ("none", "a comment or docstring citing the document")
 _KEY = ("none", "a dictionary key named docs, not a path")
 READERS = {
     ("tools/check_bug_inventory.py", "BUG_INVENTORY.md"): ("docs", ["check_bug_inventory"]),
+    ("tools/check_bug_inventory.py", "bug_pending/*"): ("docs", ["check_bug_inventory"]),
+    ("tools/new_bug.py", "bug_pending/*"): ("docs", ["bookkeeping_self_tests"]),
+    ("tools/test_bookkeeping_tools.py", "bug_pending/*"): ("none", "writes the path in a temporary repository"),
     ("tools/check_docs_conventions.py", "HANDOFF-NEXT-SESSION.md"): ("docs", ["check_docs_conventions"]),
     ("tools/check_docs_conventions.py", "docs/*"): ("docs", ["check_docs_conventions"]),
     ("tools/check_docs_conventions.py", "handoffs/*"): ("none", "named in its messages; it reads HANDOFF-NEXT-SESSION.md, not handoffs/"),
     # --check and --self-test both validate the real inventory's Siblings checked fields.
     ("tools/siblings.py", "BUG_INVENTORY.md"): ("docs", ["siblings_check", "bookkeeping_self_tests"]),
+    ("tools/siblings.py", "bug_pending/*"): ("docs", ["siblings_check", "bookkeeping_self_tests"]),
     # The tests copy the real registers and run the tools on the copies (--file).
     ("tools/test_bookkeeping_tools.py", "BUG_INVENTORY.md"): ("docs", ["bookkeeping_self_tests"]),
     ("tools/test_bookkeeping_tools.py", "TASKS.md"): ("docs", ["bookkeeping_self_tests"]),
@@ -96,6 +100,11 @@ WALKERS = {
     ("tools/claims.py", "--name-only"): "pre-commit: the forms a commit changes; its self-test uses a temporary repository",
     ("tools/claims.py", "ls-tree"): "pre-commit, root commit only: the forms of the first tree; not a check-all step",
     ("tools/build_fresh.py", ".rglob("): "the model sources and canonical/ by modification time; reads no docs-tier path",
+    ("tools/check_bug_inventory.py", '"grep"'): "git grep for placeholders over every tracked file; a docs-tier step",
+    ("tools/check_bug_inventory.py", "git grep"): "as above (named in its docstring)",
+    ("tools/check_bug_inventory.py", "ls-tree"): "lists bug_pending/ at a revision",
+    ("tools/check_bug_inventory.py", "--name-only"): "the ls-tree listing above",
+    ("tools/new_bug.py", '"grep"'): "--assign: the tracked files citing a placeholder; not a check-all step",
     ("tools/siblings.py", '"grep"'): "git grep over forms/<year> only",
     ("tools/siblings.py", "--name-only"): "git diff over reviews/<year> logs; the unscoped one serves --reviews-since, not a step",
     ("tools/siblings.py", ".rglob("): "the --input ripple over its listed source directories; not a step",

@@ -544,6 +544,46 @@ class WorkedValueParsing(unittest.TestCase):
             self.assertEqual(json.loads(Path(temp, "fixtures.json").read_text())["cases"][0]["expect"], {})
 
 
+class UnparsedClassmReply(unittest.TestCase):
+    # An unquoted colon inside a value: yaml.scanner.ScannerError, "mapping values are not allowed here".
+    MALFORMED = ('Working.\n\n```yaml\nlines:\n  - printed: "1"\n    value: "5.00"\n'
+                 '    work: add line A: 2 and line B: 3\n```\n')
+    GOOD = 'lines:\n  - printed: "1"\n    value: "5.00"\n    work: "2 + 3"\n'
+
+    def test_malformed_reply_is_a_value_error_and_an_unparsed_case(self):
+        with self.assertRaisesRegex(ValueError, "not valid YAML"):
+            M.extract(self.MALFORMED)
+        verdicts, reason = M.extract_case(self.MALFORMED)
+        self.assertEqual(verdicts, {})
+        self.assertIn("mapping values are not allowed", reason)
+        self.assertEqual(M.extract_case(self.GOOD)[1], None)
+
+    def test_an_earlier_draft_block_is_not_used(self):
+        draft = "```yaml\n" + self.GOOD + "```\n\nRevised:\n\n" + self.MALFORMED
+        self.assertEqual(M.extract_case(draft)[0], {})
+
+    def test_unparsed_case_is_recorded_and_the_other_case_is_compared(self):
+        with tempfile.TemporaryDirectory() as temp, patch.object(rulings, "REVIEWS", temp), \
+                patch.object(M, "LOGS", temp), patch.object(M.subjects, "current", return_value="a" * 64), \
+                patch.object(M, "fixture_path", return_value=str(Path(temp, "fixtures.json"))):
+            Path(temp, "classm").mkdir()
+            fill = [{"id": "x.line1", "printed": "1", "label": "Test", "type": "Dollars"}]
+            jobs, runs = [], {}
+            for n, reply in ((1, self.MALFORMED), (2, self.GOOD)):
+                job = {"id": f"classm.x.{n}", "branches": [], "inputs": {}, "fill": fill,
+                       "project": {"x.line1": {"kind": "money", "cents": 500}}}
+                verdicts, reason = M.extract_case(reply)
+                jobs.append(job)
+                runs[job["id"]] = {"used": [], "verdicts": verdicts, "parse_error": reason, "raw": reply,
+                                   "prompt_sha": "b" * 64}
+            path, counts = M.write_outputs({"id": "x", "title": "Test"}, "claude-opus-5-5", jobs, runs,
+                                           {j["id"]: {"model_reported": ["claude-opus-5-5"]} for j in jobs})
+            self.assertEqual((counts["AGREE"], counts["MISSING"]), (1, 1))
+            log = Path(path).read_text()
+            self.assertIn("Reply not parsed: reply is not valid YAML", log)
+            self.assertIn("work: add line A: 2 and line B: 3", log.partition("## Raw responses")[2])
+
+
 class ArchivedSkippedAudit(unittest.TestCase):
     def example(self, raw):
         text = ('# Test\n\n## Lines\n\n### classm.x.1 — 1 — Amount\nStatus: **AGREE**\n\nValue: $0.00\n'

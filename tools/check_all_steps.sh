@@ -28,7 +28,7 @@
 # run is the step ny_<name>, the same command with the New York flag.
 #
 # --tier full|fast|docs selects the steps (default full: every step). fast skips slow_steps: the
-# mutation and independent-evaluator checks a release runs, and the human-review tooling's test
+# mutation and independent-evaluator checks a release runs, the interview length report, and the human-review tooling's test
 # (human packets are optional; tools/full_paths.txt makes a change to that tooling need the full
 # tier). evidence then marks its E column with the latest release reachable from HEAD, because the
 # engine differential it reads was not rerun. docs runs docs_steps: compile, the build without
@@ -47,7 +47,7 @@ while [ "$#" -gt 0 ]; do
 done
 set -- ${args[@]+"${args[@]}"}
 run_args=("$@")
-slow_steps=" lean_build mutate engine_differential compare ny_compare ny_mutate human_review "
+slow_steps=" lean_build mutate engine_differential compare ny_compare ny_mutate human_review interview_length "
 docs_steps=" compile build check_bug_inventory check_agent_runs check_docs_conventions siblings_check bookkeeping_self_tests coverage_tree "
 case "$tier" in
   full|fast|docs) ;;
@@ -202,6 +202,9 @@ step refusal_reach "${node[0]}" tools/check_refusal_reach.mjs "$@"
 step interview_rules "${node[@]}" interview-rules "$@"
 # The questions asked of a person, as stored and as shown for each entry: the tracked report is what the built questions give.
 step person_wording "${node[@]}" spouse-wording --report --check "$@"
+# reports/<year>/interview_length.md, rewritten above its hand-written findings (about 8 minutes on one core, so the
+# full tier only); interview_rules, above, fails when reports/<year>/interview_pruning.md is not what it finds.
+step interview_length "${node[@]}" interview-length --write "$@"
 # The coverage rows (interview/<year>/coverage/): each situation walked through the built interview ends where its row
 # says, and reports/<year>/interview_coverage.md is what the rows produce.
 step interview_coverage "${node[@]}" interview-coverage "$@"

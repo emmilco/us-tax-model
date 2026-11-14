@@ -3,6 +3,8 @@
 # --tier fast or --year N) and, when it passes, writes the tested tree's hash to
 # the tier's marker and list of green trees (tools/green.sh) for
 # tools/hooks/pre-commit and pre-push. The tier is full unless --tier says otherwise.
+# It refuses to start while a variable that changes what a step checks (tools/green.sh,
+# SIZING_ENV: PROPERTY_RUNS and the like) is set.
 # A run is green only if nothing outside the suite's own outputs (reports/,
 # rendered/) changed while it ran; an edit made mid-run gets no marker. A run
 # for a year other than the default (--year N) is checked but never marked
@@ -27,6 +29,7 @@ while [ "$#" -gt 0 ]; do
 done
 set -- ${rest[@]+"${rest[@]}"}
 marker="$(marker_of "$tier")" || exit 2
+refuse_sizing_env || exit 2
 
 # At most CHECK_ALL_MAX_RUNS runs execute at once on the machine (tools/check_slot.py): wait for a
 # slot, then run again from the top holding it. A run started by check_all_bg.sh already holds one.

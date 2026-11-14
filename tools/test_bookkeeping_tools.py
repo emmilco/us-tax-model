@@ -77,6 +77,133 @@ class NewBug(TempCase):
         self.assertEqual(ids, list(range(1, len(ids) + 1)))
 
 
+P = "BUG-" + "NEW-"  # built, so that this file cites no placeholder
+
+
+class PendingBugs(TempCase):
+    """--pending and --assign in a temporary repository: two lanes' entries assigned at a merge."""
+
+    def setUp(self):
+        super().setUp()
+        self.f = self.dir / "BUG_INVENTORY.md"
+        self.f.write_text("# Bug inventory\n\n---\n\n## BUG-0001 — one\n\n- **Symptom:** s\n")
+        subprocess.run(["git", "init", "-q", "-b", "lane-x"], cwd=self.dir, check=True)
+
+    def git_add(self):
+        subprocess.run(["git", "add", "-A"], cwd=self.dir, check=True)
+
+    def test_pending_names_and_assign(self):
+        r = run("new_bug.py", "--file", self.f, "First", "--pending", "--field", "Symptom=see later")
+        self.assertEqual((r.returncode, r.stdout.strip()), (0, P + "lane-x-01"), r.stderr)
+        r = run("new_bug.py", "--file", self.f, "Second", "--pending", "--field", f"Symptom=after {P}lane-x-01")
+        self.assertEqual(r.stdout.strip(), P + "lane-x-02")
+        r = run("new_bug.py", "--file", self.f, "Other lane", "--pending", "b", "--field", "Symptom=s")
+        self.assertEqual(r.stdout.strip(), P + "b-01")
+        for k in range(3, 11):
+            run("new_bug.py", "--file", self.f, f"n{k}", "--pending", "--field", "Symptom=s")
+        self.assertEqual((self.dir / "bug_pending" / "lane-x-02.md").read_text(),
+                         f"## {P}lane-x-02 — Second\n\n- **Symptom:** after {P}lane-x-01\n")
+        (self.dir / "TASKS.md").write_text(f"| T-1 | fix {P}lane-x-10 and {P}b-01 |\n")
+        self.git_add()
+        before = self.f.read_text()
+        r = run("new_bug.py", "--file", self.f, "--assign")
+        self.assertEqual(r.returncode, 0, r.stderr)
+        lines = r.stdout.split("\n")
+        # Name order with numbers compared as numbers: b-01, lane-x-01 .. lane-x-10.
+        self.assertEqual(lines[0], f"{P}b-01 -> BUG-0002")
+        self.assertEqual(lines[10], f"{P}lane-x-10 -> BUG-0012")
+        after = self.f.read_text()
+        self.assertTrue(after.startswith(before))
+        self.assertIn("## BUG-0004 — Second\n\n- **Symptom:** after BUG-0003\n", after)
+        self.assertEqual(re.findall(r"^## BUG-(\d{4}) ", after, re.M), [f"{k:04d}" for k in range(1, 13)])
+        self.assertEqual((self.dir / "TASKS.md").read_text(), "| T-1 | fix BUG-0012 and BUG-0002 |\n")
+        self.assertEqual(list((self.dir / "bug_pending").glob("*.md")), [])
+
+    def test_refusals(self):
+        bad = self.dir / "bug_pending"
+        bad.mkdir()
+        (bad / "z-1.md").write_text("## BUG-0009 — numbered\n")
+        before = self.f.read_bytes()
+        r = run("new_bug.py", "--file", self.f, "--assign")
+        self.assertNotEqual(r.returncode, 0)
+        self.assertEqual(self.f.read_bytes(), before)
+        self.assertNotEqual(run("new_bug.py", "--file", self.f, "T", "--pending", "Bad_Prefix",
+                                "--field", "A=b").returncode, 0)
+        self.assertNotEqual(run("new_bug.py", "--file", self.f, "T", "--assign").returncode, 0)
+
+
+class PendingMergeFlow(TempCase):
+    """Two lanes record pending entries; each is merged onto main with --assign, in either order, and
+    check_bug_inventory.py (the working check and --merge, as pre-commit runs it) accepts every step."""
+
+    def git(self, *args, check=True):
+        return subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@t", *args], cwd=self.dir,
+                              capture_output=True, text=True, check=check)
+
+    def tool(self, script, *args):
+        return subprocess.run([sys.executable, f"tools/{script}", *args], cwd=self.dir, capture_output=True, text=True)
+
+    def setUp(self):
+        super().setUp()
+        (self.dir / "tools").mkdir()
+        for f in ("check_bug_inventory.py", "new_bug.py"):
+            shutil.copy(TOOLS / f, self.dir / "tools" / f)
+        (self.dir / "BUG_INVENTORY.md").write_text("# Bug inventory\n\n---\n\n## BUG-0001 — one\n\n- **S:** s\n")
+        self.git("init", "-q", "-b", "main")
+        self.git("add", "-A")
+        self.git("commit", "-qm", "base")
+        for lane in ("a", "b"):
+            self.git("checkout", "-q", "-b", f"lane-{lane}", "main")
+            self.tool("new_bug.py", f"from {lane}", "--pending", "--field", "S=s")
+            self.tool("new_bug.py", f"second {lane}", "--pending", "--field", f"S=after {P}lane-{lane}-01")
+            (self.dir / f"notes-{lane}.txt").write_text(f"see {P}lane-{lane}-02\n")
+            self.git("add", "-A")
+            r = self.tool("check_bug_inventory.py")
+            self.assertEqual(r.returncode, 0, r.stderr)
+            self.git("commit", "-qm", f"lane {lane}")
+        self.git("checkout", "-q", "main")
+
+    def merge(self, lane, assign=True):
+        self.git("merge", "-q", "--no-ff", "--no-commit", f"lane-{lane}")
+        if assign:
+            self.assertEqual(self.tool("new_bug.py", "--assign").returncode, 0)
+        self.git("add", "-A")
+        tree = self.git("write-tree").stdout.strip()
+        return self.tool("check_bug_inventory.py", "--merge", tree, "HEAD", f"lane-{lane}")
+
+    def test_either_order(self):
+        results = {}
+        for order in (("a", "b"), ("b", "a")):
+            self.git("checkout", "-q", "-B", "trial", "main")
+            for lane in order:
+                r = self.merge(lane)
+                self.assertEqual(r.returncode, 0, (order, r.stderr))
+                self.git("commit", "-qm", f"merge {lane}")
+                r = self.tool("check_bug_inventory.py")
+                self.assertEqual(r.returncode, 0, (order, r.stderr))
+            inv = (self.dir / "BUG_INVENTORY.md").read_text()
+            self.assertEqual(re.findall(r"^## BUG-(\d{4}) ", inv, re.M), ["0001", "0002", "0003", "0004", "0005"])
+            first, second = order
+            self.assertIn(f"## BUG-0003 — second {first}\n\n- **S:** after BUG-0002\n", inv)
+            self.assertIn(f"## BUG-0005 — second {second}\n\n- **S:** after BUG-0004\n", inv)
+            self.assertEqual((self.dir / f"notes-{second}.txt").read_text(), "see BUG-0005\n")
+            self.assertFalse((self.dir / "bug_pending").exists())
+            results[order] = sorted(re.findall(r"^## BUG-\d{4} — (.*)$", inv, re.M))
+        self.assertEqual(results[("a", "b")], results[("b", "a")])
+
+    def test_merge_dropping_pending_is_refused(self):
+        self.git("merge", "-q", "--no-ff", "--no-commit", "lane-a")
+        r = self.git("rm", "-q", "-r", "-f", "bug_pending", check=False)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        tree = self.git("write-tree").stdout.strip()
+        r = self.tool("check_bug_inventory.py", "--merge", tree, "HEAD", "lane-a")
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("not the parents' pending entries", r.stderr)
+
+    def test_merge_without_assign_keeps_pending(self):
+        self.assertEqual(self.merge("a", assign=False).returncode, 0)
+
+
 HEADER = "# Tasks\n\n| Id | Task | Source | Due when | Status |\n| --- | --- | --- | --- | --- |\n"
 DONE_HEADER = "# Tasks done\n\n| Id | Task | Source | Due when | Status |\n| --- | --- | --- | --- | --- |\n"
 

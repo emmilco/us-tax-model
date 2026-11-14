@@ -104,7 +104,7 @@ Every process rule is either enforced by a tool or marked advisory. No new prose
 | Two lanes never edit the same form at once | `tools/claims.py`, checked by `pre-commit` (owner, 2026-11-10) | enforced at commit; a merge releases the merged branch's claims; `inputs` is one claim |
 | Fixture defaults are visible test data | `defaults_guard.mjs`, commit-msg hook | enforced |
 | No case takes a default its other answers contradict | consistency rules in `fixtures/<year>/defaults.json`, checked by the build (`consistencyProblems`) | enforced for the declared rules; known violations are listed as `open` with their reasons |
-| A merge never creates or renumbers BUG entries (renumber on the branch) | `check_bug_inventory.py --merge`, pre-commit | enforced |
+| A branch records defects as pending entries (`bug_pending/`, cited as `BUG-NEW-<name>`) and never writes the inventory; ids are given in the merge onto main by `new_bug.py --assign`; no entry is rewritten, dropped or renumbered and no id reused (tools/README.md, "Bug inventory and pending entries") | `check_bug_inventory.py` (check-all) and `--merge` (pre-commit) | enforced |
 | Review checks and triage read a fresh build | `tools/build_fresh.py`, called by the review checks and triage | enforced |
 | A review that reads rendered English reads what the current build renders to | `tools/build_fresh.py` (`require(rendered=True)`), called by `render_compare.py`, `rerun_all.py` (render jobs), `check_logs.py` and the screen, false-no and question reviews and checks | enforced |
 | Point-in-time docs are dated; the handoff file keeps two entries | `tools/check_docs_conventions.py`, docs tier | enforced |

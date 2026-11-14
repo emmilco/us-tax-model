@@ -1,4 +1,4 @@
-// The web UI's server: `serve --dir <returns dir> [--port N] [--vetting <verdict file>]`. A local, single-user client of the interview, as the
+// The web UI's server: `serve --dir <returns dir> [--port N] [--vetting <verdict file>] [--log-connections]`. A local, single-user client of the interview, as the
 // CLI is: each request replays a return's answer log with the `ny` profile (federal and New York) and answers go
 // through `applyAnswer`. It serves the page in ui/ and a JSON API, on 127.0.0.1 only.
 //
@@ -25,7 +25,8 @@
 // verdict file whatever the returns directory is (`--vetting <file>` names another file, for tests).
 // The returns directory holds personal data, so it must lie outside the repository and be private to its owner.
 // Requests whose Host is not this server (DNS rebinding) and POSTs from another origin are refused.
-import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
+import { createServer, type IncomingMessage, type Server, type ServerResponse } from "node:http";
+import type { Socket } from "node:net";
 import { appendFileSync, existsSync, readFileSync, readdirSync, realpathSync, statSync, writeFileSync } from "node:fs";
 import { join, relative, resolve, sep } from "node:path";
 import { isDeepStrictEqual } from "node:util";
@@ -359,6 +360,44 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
   };
 }
 
+/** `--log-connections` (for test-serve): one stderr line per event of each connection, keyed by the client's port
+ * (`conn <client port> +<ms since accepted> <event>`): accepted, the request, the response's status, a socket error
+ * or a client error, and the close. Also the server's timeouts at the start, and each stall of the event loop over
+ * a second, which delays every connection. A test that meets a failed request reads these lines for its port. */
+function logConnections(server: Server): void {
+  const opened = new Map<number, number>();
+  const say = (port: number | undefined, what: string) => {
+    const t0 = port === undefined ? undefined : opened.get(port);
+    console.error(`conn ${port ?? "?"} +${t0 === undefined ? "?" : Date.now() - t0}ms ${what}`);
+  };
+  console.error(`connections: headersTimeout ${server.headersTimeout} ms, requestTimeout ${server.requestTimeout} ms, keepAliveTimeout ${server.keepAliveTimeout} ms, timeout ${server.timeout} ms`);
+  server.on("connection", (socket) => {
+    const port = socket.remotePort;
+    if (port !== undefined) opened.set(port, Date.now());
+    say(port, "accepted");
+    socket.on("error", (e: NodeJS.ErrnoException) => say(port, `socket error ${e.code ?? e.message}`));
+    socket.on("close", (hadError) => say(port, `closed${hadError ? " after an error" : ""}`));
+  });
+  server.on("request", (req: IncomingMessage, res: ServerResponse) => {
+    const port = req.socket.remotePort;
+    say(port, `request ${req.method} ${req.url} (Connection: ${req.headers.connection ?? "-"})`);
+    res.on("finish", () => say(port, `response ${res.statusCode} sent`));
+    res.on("close", () => { if (!res.writableFinished) say(port, "response closed before it was sent"); });
+  });
+  // A listener replaces the default handling, which this repeats: a reset socket is destroyed, any other is answered 400.
+  server.on("clientError", (e: NodeJS.ErrnoException, socket) => {
+    say((socket as Socket).remotePort, `client error ${e.code ?? e.message}`);
+    if (e.code === "ECONNRESET" || !socket.writable) socket.destroy();
+    else socket.end("HTTP/1.1 400 Bad Request\r\nConnection: close\r\n\r\n");
+  });
+  let last = Date.now();
+  setInterval(() => {
+    const now = Date.now();
+    if (now - last > 1500) console.error(`event loop stalled ${now - last - 500} ms`);
+    last = now;
+  }, 500).unref();
+}
+
 export async function runServe(args: string[]): Promise<void> {
   const arg = (name: string) => { const i = args.indexOf(name); return i < 0 ? undefined : args[i + 1]; };
   const dirArg = arg("--dir");
@@ -369,6 +408,7 @@ export async function runServe(args: string[]): Promise<void> {
   const vettingArg = arg("--vetting");
   const handler = createApp(loadCanonical(), loadInterview(PROFILE), dir, undefined, vettingArg === undefined ? undefined : resolve(vettingArg));
   const server = createServer((req, res) => handler(req, res, (server.address() as { port: number }).port));
+  if (args.includes("--log-connections")) logConnections(server);
   await new Promise<void>((done, fail) => { server.once("error", fail); server.listen(port, "127.0.0.1", () => done()); });
   const actual = (server.address() as { port: number }).port;
   console.log(`serving http://127.0.0.1:${actual}/ (returns in ${dir}; profile ${PROFILE}; stop with Ctrl-C)`);

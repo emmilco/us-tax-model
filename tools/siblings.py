@@ -14,8 +14,10 @@ its siblings were not.
     siblings.py --check                         validate the bug entries' Siblings checked field
     siblings.py --self-test
 
-`--check` requires every new bug entry (BUG-0290 onward) that has a Fix field to name its
-Fix lines and the generated Siblings checked set; it does not grandfather older entries.
+`--check` requires every new bug entry (BUG-0290 onward, and every pending entry in bug_pending/)
+that has a Fix field to name its Fix lines and the generated Siblings checked set; it does not
+grandfather older entries. A pending entry is measured from the commit before the one that added
+its file on this line of history, or from HEAD while the file is uncommitted.
 The review-refresh half of T-150 (fail check-all when a sibling form's logs were not rerun)
 is `--reviews-since <rev>`: it reports sibling forms with no review log changed since <rev>.
 """
@@ -35,7 +37,9 @@ import check_twins  # noqa: E402
 
 CANON = ROOT / "canonical" / Y
 BUGS = Path(os.environ.get("SIBLINGS_BUGS", ROOT / "BUG_INVENTORY.md"))
+PENDING = BUGS.parent / "bug_pending"
 ENTRY_RE = re.compile(r"^## (BUG-(\d{4})) — (.*)$", re.M)
+PENDING_RE = re.compile(r"^## (BUG-NEW-[a-z0-9-]+) — (.*)$", re.M)
 REQUIRED_FROM = 290
 TWINS = check_twins.read_config()
 
@@ -250,18 +254,27 @@ def input_ripple(key):
     print("             tools/engines/generate_cases.py + input_contracts + classm jobs")
 
 
+def entry_fields(body):
+    fields = {}
+    for field in ("Fix", "Fix lines", "Siblings checked"):
+        hit = re.search(rf"^- \*\*{re.escape(field)}:\*\* (.*)$", body, re.M)
+        if hit:
+            fields[field] = hit.group(1).strip()
+    return fields
+
+
 def bug_entries():
+    """(id, number, title, fields) per inventory entry, then per pending entry (number None)."""
     text = BUGS.read_text(encoding="utf-8")
     marks = list(ENTRY_RE.finditer(text))
     for i, m in enumerate(marks):
         end = marks[i + 1].start() if i + 1 < len(marks) else len(text)
-        body = text[m.end():end]
-        fields = {}
-        for field in ("Fix", "Fix lines", "Siblings checked"):
-            hit = re.search(rf"^- \*\*{re.escape(field)}:\*\* (.*)$", body, re.M)
-            if hit:
-                fields[field] = hit.group(1).strip()
-        yield m.group(1), int(m.group(2)), m.group(3), fields
+        yield m.group(1), int(m.group(2)), m.group(3), entry_fields(text[m.end():end])
+    for f in sorted(PENDING.glob("*.md")) if PENDING.is_dir() else []:
+        pending = f.read_text(encoding="utf-8")
+        m = PENDING_RE.search(pending)
+        if m:
+            yield m.group(1), None, m.group(2), entry_fields(pending[m.end():])
 
 
 def checked_ids(text):
@@ -274,11 +287,20 @@ def checked_ids(text):
 
 def entry_base(bug, head_text):
     """The revision the entry's change is measured from: HEAD for an uncommitted entry,
-    else the parent of the commit that added it. The search follows first parents and diffs a merge
-    against its first parent, so an entry is attributed to the commit that brought it onto this line
-    of history: a merge that renumbered a branch's entries, rather than a branch commit that used the
-    same heading for another entry. It matches the heading line itself (-G anchored at the line start), not the
+    else the parent of the commit that added it (for a pending entry, its file). The search follows
+    first parents and diffs a merge against its first parent, so an entry is attributed to the commit
+    that brought it onto this line of history: the merge that assigned a branch's pending entries,
+    rather than the branch commit that recorded them. It matches the heading line itself (-G anchored at the line start), not the
     heading's text anywhere, which a later entry may quote."""
+    if bug.startswith("BUG-NEW-"):
+        name = bug[len("BUG-NEW-"):]
+        rel = str((PENDING / f"{name}.md").relative_to(ROOT))
+        if subprocess.run(["git", "cat-file", "-e", f"HEAD:{rel}"], capture_output=True, check=False).returncode:
+            return "HEAD"
+        out = subprocess.run(["git", "log", "-1", "-s", "--first-parent", "--diff-merges=first-parent",
+                              "--diff-filter=A", "--format=%H", "--", rel],
+                             capture_output=True, text=True, check=False).stdout.strip()
+        return f"{out}^" if out else "HEAD"
     if f"## {bug} " not in head_text:
         return "HEAD"
     out = subprocess.run(["git", "log", "-1", "-s", "--first-parent", "--diff-merges=first-parent",
@@ -321,7 +343,7 @@ def check(docs, ids):
     logged = {}
     existed = {}
     for bug, number, title, fields in bug_entries():
-        if number < REQUIRED_FROM or "Fix" not in fields:
+        if (number is not None and number < REQUIRED_FROM) or "Fix" not in fields:
             continue
         if "Fix lines" not in fields:
             problems.append(f"{bug}: has a Fix field but no '- **Fix lines:**' list")
