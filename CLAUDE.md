@@ -10,6 +10,12 @@ inactive (owner, 2026-11-09; `docs/consolidation_charter.md`). Its machinery is 
 second-family runs are made unless the owner reactivates a family. Existing second-family logs are historical. The consolidation charter governs the execution order and the
 verification system.
 
+- **Interview questions (owner decision 2026-11-13).** `docs/2026-11-13_interview_construction_protocol.md` is
+  normative for any work that adds or changes an interview question, topic or form: read it before the first such
+  change. It holds the standard (the least mental effort to answer correctly; the norms N1 to N12), the judgment
+  applied to every question, the techniques, the phases of the work, how agents are briefed, the bar and what it
+  does not show, and the checklist for extending coverage. The whole-interview redraft it describes is provisional,
+  in a scratch clone under `.claude/worktrees/provisional*`, until the owner adopts it.
 - **Inference cost (owner decision 2026-11-03).** Use inference only where it adds evidence.
   Paid review calls (transcription, render, class M, completeness, screen) and agents are
   weighed against what they can find; screen and completeness reviews have the best yield.
