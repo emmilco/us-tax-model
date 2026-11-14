@@ -238,11 +238,42 @@ Form 8995 line 11 omitting line 13b (no generated return builds Form 8995).
 tools/engines/run.sh                  (ENGINE_CASES=1000 ENGINE_SEED=20260101 by default)
   generate_cases.py  -> .engines/work/cases.json     random in-scope returns, integer cents
   main.js eval --batch -> .engines/work/project.json  the project's lines and derivations
-  run_engines.py     -> .engines/work/engines.json   each engine's lines, in cents
+  run_engines.py     -> .engines/work/engines.json   each engine's lines, in cents (an engine's stored record
+                        reused while its key is unchanged: "Stored engine records" below)
   compare.py         -> reports/2025/engine_differential.md and engine_differential.json (per engine and line:
                         cases compared, nonzero, excluded, unexplained; read by the evidence report) ; exit 1 on any unexplained difference
 test_compare.py                       (in check-all) unit tests of compare.py's matching and tolerance logic, on synthetic data
+engine_cache.py --self-test           (in check-all) the stored records' key, modes and module check, on planted cases
 ```
+
+## Stored engine records
+
+The four outside engines take most of the step's time, and their output depends only on the generated cases,
+the adapters and the installed engines, not on the forms. `run_engines.py` therefore runs each engine through
+`engine_cache.py`, which stores the engine's record for `engines.json` in the git-ignored
+`.engines/cache/<engine>/<key>.json` and reuses it while the key is unchanged. The key is the sha256 of:
+
+- the cases file (its bytes: every generated case's facts and features) and the tax year;
+- the adapter code: every file under `tools/engines/` except those the engine run neither imports nor reads
+  (`NOT_READ` in `engine_cache.py`: the comparison and its tests, the generator, `run.sh`, `setup.sh`,
+  `requirements.txt`, `ny_policyengine.py` and this file), `tools/taxyear.py`, and
+  `canonical/<year>/params.json`, from which the OpenTaxSolver and UsTaxes adapters take the amounts they supply;
+- the engine as installed: for PolicyEngine-US and Tax-Calculator the interpreter's version, every distribution
+  in the virtualenv with its version and the bytes of the engine's own packages (`policyengine_us` and
+  `policyengine_core`; `taxcalc`); for OpenTaxSolver the bytes of the extracted package and the versions it
+  reports; for UsTaxes the bytes of the clone (its commit read from `.git`, the rest of `.git` left out) and of
+  `.engines/ustaxes-deps/`, and the Node version.
+
+The project's own evaluation of the cases and the comparison run every time. A stored record is read only if
+the components stored with it hash to its key. After the engines have run, every module the process loaded
+from the repository must be one of the hashed files, or the step fails: an adapter that comes to import a file
+the key leaves out cannot read an old record. The newest six records of each engine are kept.
+
+`ENGINE_CACHE` chooses the mode: `use` (the default; a missing record is produced and stored), `verify`
+(every engine runs; a stored record under the same key must equal the fresh one, or the step fails naming the
+engine and the first differing lines, the stored record set aside as `<key>.stale`), and `off` (every engine
+runs; nothing is read or stored). `tools/release.sh` runs its full check-all with `ENGINE_CACHE=verify`. The
+step's log names, per engine, whether its record was reused or how long the engine ran.
 
 Tax-Calculator runs with `exact_calculations=True`, so its phase-outs follow the printed $1,000 steps (Schedule 1-A lines 11, 19 and 28; Schedule 8812 line 10) rather than its smoothed default. Generated filers are 40, or 66 to 85 for the enhanced deduction for seniors; PolicyEngine-US is told they are not enrolled in Medicare, since medical expenses are all supplied.
 

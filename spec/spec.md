@@ -344,7 +344,9 @@ printed lines that were not expanded earn no credit from that packet. An unresol
 or UNCLEAR is saved for investigation and earns no credit. Optional incomplete, stale or negative
 readings do not block unrelated checks or evidence reporting. Malformed records, duplicate entries,
 invalid reader identity or incorrect committed authorship still fail record validation. Engineering
-responses are recorded separately and never replace the person's verdict or supply H credit.
+responses are recorded separately and never replace the person's verdict or supply H credit. The
+reading packets that issued receipts are retired; with no tool to issue a current receipt, no line
+earns H, and the recorded readings are kept and listed as pending (`tools/human_review/README.md`).
 
 **Secondary interpretation (soft evidence).** Professional commentary, tax-software explanations,
 practitioner discussions and other online advice may support or challenge a specific reading. Record

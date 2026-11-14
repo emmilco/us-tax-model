@@ -1,6 +1,6 @@
 # Paths whose change needs the full tier of check-all at commit and at push (tools/tier_paths.py):
 # the inputs of the steps the fast tier skips (slow_steps in tools/check_all_steps.sh: mutate, ny_mutate,
-# engine_differential, lean_build, compare, ny_compare, human_review) that no fast-tier step exercises.
+# engine_differential, lean_build, compare, ny_compare) that no fast-tier step exercises.
 # Patterns as in docs_paths.txt; `*` also matches `/`.
 # The mutation tool, its equivalence tables (EQUIVALENT, EQUIVALENT_IF) and pinned open-defect survivors.
 engine/src/mutate*.ts
@@ -10,7 +10,3 @@ lean/*
 # The engine differential: its runner, adapters, comparison and the explanations of engine differences.
 tools/engines/*
 fixtures/*/differential/engine_investigations.json
-# The human-review tooling's code and data, which its test (human_review) reads and only the full tier runs.
-# Its README and the browser test (run by hand, by no step) need only the fast tier.
-tools/human_review/*.py
-tools/human_review/*.json

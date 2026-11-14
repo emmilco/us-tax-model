@@ -1509,7 +1509,8 @@ export function structuralReason(data: CanonicalData, mutation: Mutation): strin
 
 // Equivalences that need an argument about evaluation order or reachability. Each is
 // accepted only while the structural facts it rests on hold in the current data; when
-// they lapse, the mutant is reported as unexplained again.
+// they lapse, the mutant is reported as unexplained again, and an argument that explains no surviving mutant fails
+// the run (staleEquivalences).
 // A keyed conditional argument. `reads`, set on every pinned argument, is the line the argument says the
 // mutant reads: a mutant id names only the replaced operand, and the replacement is the nearest earlier
 // same-typed line, so a line inserted between them retargets the id while the premise digest is unchanged.
@@ -1799,19 +1800,6 @@ const EQUIVALENT_IF: Record<string, Conditional> = {
       return stop.expr.op === "test" && "all" in stop.expr && i >= 0 && i < j && j < k;
     },
   },
-  "refusal.f4952.f4952.required.1": {
-    reason: "The removed refusal (the alternative-allocation gate, after the unsupported-items gate) is carried by f4952.election, the first operand f4952.required reads: election refuses on the same gates in the same order with the same records, and the any-test returns the first refusal it meets. With the gate No both routes evaluate the same expression; with it Yes both refuse on the same record (the unsupported-items gate first on both); with it unanswered, the unknown election is the first pending value on both, and line 3 reaches the same gate through line 2.",
-    holds: (d) => {
-      const req = findLine(d, "f4952.required"), el = findLine(d, "f4952.election");
-      if (!req || !el || req.expr.op !== "test" || !("any" in req.expr)) return false;
-      const gates = (l: typeof req) => (l.refuses ?? []).map((r) => r.when);
-      if (stableStringify(gates(req)) !== stableStringify(["f4952.unsupported", "f4952.alternative_allocation"])) return false;
-      if (stableStringify(gates(el).slice(0, 2)) !== stableStringify(gates(req))) return false;
-      const strip = (r: unknown) => stableStringify(r);
-      if (strip(req.refuses![0]) !== strip(el.refuses![0]) || strip(req.refuses![1]) !== strip(el.refuses![1])) return false;
-      return operandRefs(d, req.expr)[0] === "f4952.election";
-    },
-  },
   "boundary.s1a.s1a.line10_over": s1aStepSkip("s1a.line10_over", "s1a.line8", "s1a.line9", "s1a.line10_pos", "s1a.line12", "s1a.line13_figured", "s1a.line7", "s1a.line13_amount"),
   "boundary.s1a.s1a.line18_over": s1aStepSkip("s1a.line18_over", "s1a.line16", "s1a.line17", "s1a.line18_pos", "s1a.line20", "s1a.line21_figured", "s1a.line15", "s1a.line21_amount"),
   "boundary.s1a.s1a.line27_over": s1aStepSkip("s1a.line27_over", "s1a.line25", "s1a.line26", "s1a.line27_pos", "s1a.line29", "s1a.line30_figured", "s1a.line24", "s1a.line30_amount"),
@@ -1847,14 +1835,6 @@ const EQUIVALENT_IF: Record<string, Conditional> = {
       const l17 = exprOf(d, "f8959.line17"), l16 = exprOf(d, "f8959.line16"), l15 = findLine(d, "f8959.line15");
       return l17?.op === "multiply_rate" && l17.amount === "f8959.line16" && l16?.op === "subtract_floor0" && l16.from === "f8959.line14" && l16.take === "f8959.line15"
         && zeroBehindGates(d, "f8959.line14") && l15?.type === "NonNegDollars";
-    },
-  },
-  "operand.f8960.f8960.line8.line5d": {
-    reason: "Line 5d is line 5a plus lines 5b and 5c, which are $0 behind the refusal entries that line 1, the first operand of line 8, carries word for word. When an entry fires, line 1 refuses with it and line 8 returns that refusal on both routes; otherwise lines 5b and 5c are $0 and line 5d equals line 5a.",
-    holds: (d) => {
-      const l8 = exprOf(d, "f8960.line8"), l5d = exprOf(d, "f8960.line5d"), l1 = findLine(d, "f8960.line1");
-      if (l8?.op !== "sum" || (l8.of as string[])[0] !== "f8960.line1" || l5d?.op !== "sum" || stableStringify(l5d.of) !== stableStringify(["f8960.line5a", "f8960.line5b", "f8960.line5c"]) || !l1?.refuses?.length) return false;
-      return ["f8960.line5b", "f8960.line5c"].every((id) => zeroBehindGates(d, id) && stableStringify(findLine(d, id)?.refuses) === stableStringify(l1.refuses));
     },
   },
   "operand.f8960.f8960.line9d.line9c": {
@@ -2680,6 +2660,65 @@ async function outcomesOf(baseline: CanonicalData, cases: JudgingCases, muts: Mu
   return all;
 }
 
+// Whether a mutant id belongs to the New York run: the id embeds the mutant's location, which selectMutants tests.
+const nyId = (id: string): boolean => /\bny[_.]/.test(id);
+
+// The keyed arguments of `table` (and the ids of `answeredOnly`) for this run's jurisdiction that no longer explain
+// a survivor: the mutant is no longer generated (its line, operand or parameter is gone or renamed), it is killed,
+// or it survives without the argument applying (the line it says the mutant reads, or a premise it pins, changed).
+// Each is one problem naming the entry; the run fails on any, as it does on a stale OPEN_DEFECT_SURVIVORS entry.
+export function staleEquivalences(table: Record<string, Conditional>, answeredOnly: Set<string>, data: CanonicalData, muts: Mutation[], survivors: Set<string>): string[] {
+  const byId = new Map(muts.map((m) => [m.id, m]));
+  const inRun = (id: string): boolean => nyId(id) === NY_MODE;
+  const out: string[] = [];
+  for (const [id, c] of Object.entries(table)) {
+    if (!inRun(id)) continue;
+    const m = byId.get(id);
+    if (!m) out.push(`${id}: no mutant has this id any more (its line, operand or parameter changed); remove the argument or rewrite it for the mutant that replaced it`);
+    else if (!survivors.has(id)) out.push(`${id}: the mutant is killed; the argument explains nothing; remove it`);
+    else if (c.reads !== undefined && c.reads !== m.replacement) out.push(`${id}: the argument says the mutant reads ${c.reads}, but it reads ${m.replacement ?? "no line"}`);
+    else if (!c.holds(data)) out.push(`${id}: the mutant survives but the argument no longer holds (a line or premise it pins changed)`);
+  }
+  for (const id of answeredOnly) if (inRun(id) && table[id] === undefined) out.push(`${id}: listed as equivalent on answered inputs only, with no keyed argument`);
+  return out;
+}
+
+// Self-test of staleEquivalences on the real data: a keyed argument that explains a surviving mutant is not reported;
+// planted copies of it are, under an id no mutant has, with its mutant killed, read through another line, with a line
+// premise of the argument changed in a copy of the data, and listed as answered-only with no argument. Also checks that
+// every generated mutant's id and location agree on the jurisdiction, which the scope test above relies on.
+export function staleEquivalenceSelfTest(baseline: CanonicalData, muts: Mutation[], survivors: Set<string>): { problems: string[]; planted: number } {
+  const problems: string[] = [];
+  let planted = 0;
+  for (const m of mutations(baseline)) if (nyId(m.id) !== /\bny[_.]/.test(m.where)) problems.push(`${m.id}: its id and its location (${m.where}) disagree on the jurisdiction`);
+  const byId = new Map(muts.map((m) => [m.id, m]));
+  const used = Object.entries(EQUIVALENT_IF).find(([id, c]) => nyId(id) === NY_MODE && survivors.has(id) && byId.has(id) && c.premises?.some((p) => !p.includes(":"))
+    && (c.reads === undefined || c.reads === byId.get(id)!.replacement) && c.holds(baseline));
+  if (!used) {
+    if (Object.keys(EQUIVALENT_IF).some((id) => nyId(id) === NY_MODE && survivors.has(id))) problems.push("stale-argument self-test found no pinned argument explaining a survivor to plant from");
+    return { problems, planted };
+  }
+  const [id, c] = used;
+  const none = new Set<string>();
+  const expect = (what: string, table: Record<string, Conditional>, answered: Set<string>, data: CanonicalData, alive: Set<string>, stale: boolean): void => {
+    const found = staleEquivalences(table, answered, data, muts, alive);
+    if (stale) planted++;
+    if (stale && found.length !== 1) problems.push(`stale-argument self-test: ${what} was ${found.length === 0 ? "not reported" : "reported more than once"}`);
+    if (!stale && found.length !== 0) problems.push(`stale-argument self-test: ${what} was reported: ${found.join("; ")}`);
+  };
+  expect(`the argument ${id}, which explains its surviving mutant`, { [id]: c }, none, baseline, survivors, false);
+  const planted_ = NY_MODE ? "operand.ny_planted.ny_planted.line1.line0" : "operand.planted.planted.line1.line0";
+  expect("an argument for a mutant that no longer exists", { [planted_]: c }, none, baseline, survivors, true);
+  expect("an argument whose mutant is killed", { [id]: c }, none, baseline, new Set([...survivors].filter((s) => s !== id)), true);
+  expect("an argument naming another line than the mutant reads", { [id]: { ...c, reads: `${byId.get(id)!.replacement ?? id}_planted` } }, none, baseline, survivors, true);
+  const changed = cloneData(baseline);
+  const premise = findLine(changed, c.premises!.find((p) => !p.includes(":"))!)!;
+  premise.type = premise.type === "Bool" ? "Count" : "Bool";
+  expect(`an argument whose premise ${c.premises!.find((p) => !p.includes(":"))} changed`, { [id]: c }, none, changed, survivors, true);
+  expect("an answered-only listing with no argument", {}, new Set([planted_]), baseline, survivors, true);
+  return { problems, planted };
+}
+
 // A survivor that a recorded, still-open defect explains: it is not equivalent and is not excluded from
 // the adjusted score, but it does not fail the run while the bug entry is open. The run fails if a listed
 // mutant is killed (the entry is stale) or the bug entry is missing.
@@ -2734,6 +2773,9 @@ export async function runMutation(): Promise<number> {
     ...(survivors.some((s) => s.id === id) ? [] : [`${id}: listed for ${bug} but no longer survives; remove the entry`]),
     ...(new RegExp(`^## ${bug} — .*\\(open\\)$`, "m").test(inventory) ? [] : [`${id}: ${bug} is not an open entry in BUG_INVENTORY.md`]),
   ]);
+  const survivorIds = new Set(survivors.map((s) => s.id));
+  const staleArguments = staleEquivalences(EQUIVALENT_IF, ANSWERED_ONLY, baseline, muts, survivorIds);
+  const staleTest = staleEquivalenceSelfTest(baseline, muts, survivorIds);
   const adjusted = total - equivalentSurvivors.length === 0 ? 1 : killed / (total - equivalentSurvivors.length);
   const adjustedEvery = total - everyInput.length === 0 ? 1 : killed / (total - everyInput.length);
 
@@ -2789,6 +2831,14 @@ export async function runMutation(): Promise<number> {
     for (const p of retarget.problems) report.push(`- PROBLEM: ${p}`);
     report.push("");
   }
+  if (staleArguments.length > 0) {
+    report.push("## Stale equivalence arguments");
+    report.push("");
+    report.push("Keyed arguments that no longer explain a surviving mutant (the run fails until each is removed or rewritten):");
+    report.push("");
+    for (const p of staleArguments) report.push(`- PROBLEM: ${p}`);
+    report.push("");
+  }
   if (openDefect.length > 0 || openDefectProblems.length > 0) {
     report.push("## Surviving — explained by an open defect");
     report.push("");
@@ -2829,5 +2879,9 @@ export async function runMutation(): Promise<number> {
   const chooseProblems = scalarChooseSelfTest();
   console.log(`mutation: Bool and enum choose reasoning self-test: ${chooseProblems.length} problems`);
   for (const p of chooseProblems) console.log(`mutation: ${p}`);
-  return unexplained.length === 0 && openDefectProblems.length === 0 && retarget.problems.length === 0 && wholeProblems.length === 0 && guardProblems.length === 0 && figureProblems.length === 0 && digestTest.problems.length === 0 && chooseProblems.length === 0 ? 0 : 1;
+  console.log(`mutation: ${staleArguments.length} stale equivalence arguments`);
+  for (const p of staleArguments) console.log(`mutation: stale argument: ${p}`);
+  console.log(`mutation: stale-argument self-test: ${staleTest.planted} planted stale arguments, ${staleTest.problems.length} problems`);
+  for (const p of staleTest.problems) console.log(`mutation: ${p}`);
+  return staleArguments.length === 0 && staleTest.problems.length === 0 && unexplained.length === 0 && openDefectProblems.length === 0 && retarget.problems.length === 0 && wholeProblems.length === 0 && guardProblems.length === 0 && figureProblems.length === 0 && digestTest.problems.length === 0 && chooseProblems.length === 0 ? 0 : 1;
 }

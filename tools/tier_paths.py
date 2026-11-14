@@ -84,7 +84,7 @@ READERS = {
     **{(f, "docs/*"): _COMMENT for f in [
         "engine/src/year.ts", "lean/Main.lean", "tools/check_all_steps.sh", "tools/check_consumers.py",
         "tools/check_instruction_cites.py", "tools/check_limits.py", "tools/check_operands.py", "tools/check_signs.py",
-        "tools/citations.py", "tools/fixtures_year.py", "tools/human_review/reading.py", "tools/jurisdiction.py",
+        "tools/citations.py", "tools/fixtures_year.py", "tools/jurisdiction.py",
         "tools/transcription/question_review.py", "tools/transcription/screen_review.py"]},
 }
 
@@ -286,10 +286,9 @@ def surface_like(tracked):
 
 # Paths whose tier under the real tools/full_paths.txt is fixed: True for full, False for not full.
 FULL_EXAMPLES = {
-    "tools/human_review/packet.py": True,
-    "tools/human_review/reading_list.json": True,
+    "tools/engines/engine_cache.py": True,
+    "tools/human_review/logs.py": False,
     "tools/human_review/README.md": False,
-    "tools/human_review/test_browser.mjs": False,
     "engine/src/mutate.ts": True,
 }
 
@@ -344,8 +343,9 @@ def unit_tests():
         READERS, WALKERS = saved
     assert check_lists(["docs/*", "tools/x/*", "a*.md"], ["lean/*", "docs/x"], ["docs/a", "lean/b", "tools/x/y.py"])
     assert not check_lists(["docs/*"], ["lean/*"], ["docs/a", "lean/b"])
-    assert check_examples(["tools/human_review/*"]) == [f"{FULL}: tools/human_review/README.md should not need the full tier",
-                                                         f"{FULL}: tools/human_review/test_browser.mjs should not need the full tier",
+    assert check_examples(["tools/human_review/*"]) == [f"{FULL}: tools/engines/engine_cache.py should need the full tier",
+                                                         f"{FULL}: tools/human_review/logs.py should not need the full tier",
+                                                         f"{FULL}: tools/human_review/README.md should not need the full tier",
                                                          f"{FULL}: engine/src/mutate.ts should need the full tier"]
 
 

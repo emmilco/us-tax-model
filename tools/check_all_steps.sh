@@ -11,8 +11,8 @@
 # of a wave write the same file, and none reads what another of its wave writes:
 # wave 1 checks the sources, logs and the build's data and runs the tools' self-tests
 # (tools/self_tests.py, one step per group), wave 2 runs the evaluator checks, wave 3
-# writes the evidence report and review packets and runs human_review, which copies
-# reports/<year>/engine_differential.json that engine_differential (wave 2) rewrites.
+# writes the evidence report, which reads reports/<year>/engine_differential.json that
+# engine_differential (wave 2) rewrites, and the stage review packets.
 # Nothing checks these rules; a new step must be placed by them. A failing step fails
 # the run after its wave. So does a step that exits 0 without a line tools/step_output.py
 # requires of it: the line of each self-test the step runs inside itself, which would
@@ -28,10 +28,11 @@
 # run is the step ny_<name>, the same command with the New York flag.
 #
 # --tier full|fast|docs selects the steps (default full: every step). fast skips slow_steps: the
-# mutation and independent-evaluator checks a release runs, and the human-review tooling's test
-# (human packets are optional; tools/full_paths.txt makes a change to that tooling need the full
-# tier). evidence then marks its E column with the latest release reachable from HEAD, because the
-# engine differential it reads was not rerun. docs runs docs_steps: compile, the build without
+# mutation and independent-evaluator checks a release runs. evidence then marks its E column with
+# the latest release reachable from HEAD, because the engine differential it reads was not rerun.
+# engine_differential reuses an outside engine's stored record while everything that determines it
+# is unchanged (tools/engines/engine_cache.py; ENGINE_CACHE=verify reruns every engine and compares,
+# as tools/release.sh does). docs runs docs_steps: compile, the build without
 # render, and the checks that read the bookkeeping paths of tools/docs_paths.txt (tools/tier_paths.py
 # lists every reader of them).
 set -euo pipefail
@@ -47,7 +48,7 @@ while [ "$#" -gt 0 ]; do
 done
 set -- ${args[@]+"${args[@]}"}
 run_args=("$@")
-slow_steps=" lean_build mutate engine_differential compare ny_compare ny_mutate human_review "
+slow_steps=" lean_build mutate engine_differential compare ny_compare ny_mutate "
 docs_steps=" compile build check_bug_inventory check_agent_runs check_docs_conventions siblings_check bookkeeping_self_tests coverage_tree "
 case "$tier" in
   full|fast|docs) ;;
@@ -227,6 +228,4 @@ if [ "$tier" = fast ]; then
 fi
 step evidence "${node[@]}" evidence ${evidence_args[@]+"${evidence_args[@]}"} "$@"
 step review_packets review_packets "$@"
-# The human-review tooling: reading, saved verdict, signed log and evidence report, in a sandbox.
-step human_review python3 tools/human_review/test_review.py "$@"
 wave wave3

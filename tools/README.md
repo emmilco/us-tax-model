@@ -48,7 +48,7 @@ little it has.
 A linked worktree (an agent's) gets its git-ignored data from the main worktree with
 `python3 tools/worktree_data.py clone <worktree>`: complete copy-on-write clones
 (`cp -cR`, never links) of the review data (`.transcription/`, `.classm/`,
-`.human-review/`, `.extraction-review/`, `.direct-file/`) and the installs
+`.extraction-review/`, `.direct-file/`) and the installs
 (`node_modules/`, `.engines/`, `lean/.lake/`), and a record of the clone's base (the
 hash of every untracked review file, each ledger's length and hash) in the worktree's
 git directory. Reviews run there write their raw files and cost rows into the
@@ -71,10 +71,15 @@ it back only if the worktree later edits it. `--self-test` runs in check-all.
 
 The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast`):
 
-- **full** (the default): every step, about 38 minutes. A release needs it.
+- **full** (the default): every step. A release needs it. The recorded green full runs
+  (`.git/check-all-bg/runs/*/times`) took 13 to 32 minutes, median 17; most of the spread is
+  the machine's other load. Wave 2 is the longest stage: `engine_differential`, `compare` and
+  `mutate` set it. `engine_differential` reuses the outside engines' stored records while
+  their inputs are unchanged (`tools/engines/README.md`, "Stored engine records"), which takes
+  it from about 9 minutes to about 4 on a loaded machine, so `compare` and `mutate` set the wave.
 - **fast**: every step except `mutate`, `ny_mutate`, `engine_differential`, `lean_build`,
-  `compare`, `ny_compare` and `human_review` (the human-review tooling's test: human packets
-  are optional), about 10 minutes. It does not check mutation adequacy or agreement
+  `compare` and `ny_compare`; the recorded green fast runs took 4 to 12 minutes, median 7.
+  It does not check mutation adequacy or agreement
   with the independent evaluators, and leaves `mutation.md`, `evaluator_agreement.md`
   and `engine_differential.{md,json}` as the last full run wrote them; `evidence.md`
   then says that its E column dates from the latest release.
@@ -82,7 +87,7 @@ The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast
   `tools/docs_paths.txt` (`check_bug_inventory`, `check_agent_runs`, `siblings_check`,
   `coverage_tree`, and `bookkeeping_self_tests`: the self-tests of the agent-run, siblings,
   bookkeeping and green-record tools),
-  about 3 minutes, nearly all of it the build.
+  1 to 4 minutes in the recorded runs, nearly all of it the build.
 
 `compare` and `ny_compare` (`engine/src/compare.ts`) run the TypeScript and the Lean evaluator
 over every fixture case and over generated whole returns, and fail on any line value that
@@ -145,7 +150,7 @@ A full-green tree is also fast- and docs-green, and a fast-green tree is docs-gr
 Which tier a commit needs is decided from the paths it changes against its parent
 (`tools/tier_paths.py`): **full** if it changes a path in `tools/full_paths.txt` (the
 mutation tool and its equivalence and pinned lists, the Lean evaluator and its
-comparison, the engine differential, the human-review tooling's code and data but not its README), **docs** if every changed path is in
+comparison, the engine differential), **docs** if every changed path is in
 `tools/docs_paths.txt`, **fast** otherwise; a merge needs at least fast, a commit with
 no parent full. The lists are read from the parent, so a commit cannot widen the list
 it is judged by. `tools/tier_paths.py --self-test` (run by `hooks/test_green.sh`) checks
@@ -202,8 +207,7 @@ slot) are check-all steps.
 
 After compiling and building, the steps run in three waves of side-by-side steps
 (see the head of `tools/check_all_steps.sh`); a step that reads what another writes runs
-in a later wave than its writer (`human_review` and `evidence` after
-`engine_differential`), a rule no check enforces, so a new
+in a later wave than its writer (`evidence` after `engine_differential`), a rule no check enforces, so a new
 step must be placed by it. A check that runs for both jurisdictions is declared once
 (`jstep`), and its New York run is the step `ny_<name>`. The tools' self-tests and test
 suites run as two steps, `bookkeeping_self_tests` and `self_tests`
@@ -510,4 +514,4 @@ that year's table from its archived source, and the check-all step named beside 
 | `extraction/page_review.py` | Local HTML pages of each archived page beside the project's reading of it, for a person to judge |
 | `transcription/question_review.py` | The question review (section "Sampled completeness, screen, false-no and question reviews"); also prices every question's prompt without a call (`--measure`) and lists which existing reviews judge each input's wording (`--coverage`) |
 | `transcription/migrate_line_subjects.py` | Rewrites transcription logs' line-subject tables (`transcription/README.md`; tested by `test_review_tools.py`) |
-| `human_review/test_browser.mjs`, `../ui/test_browser.mjs` | Browser smoke tests of the review packet and the web UI (the interview page and the vetting page), against a separately launched headless Chrome |
+| `../ui/test_browser.mjs` | Browser smoke test of the web UI (the interview page and the vetting page), against a separately launched headless Chrome |

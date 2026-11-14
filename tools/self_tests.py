@@ -40,6 +40,8 @@ TESTS = [
     ("consistency_checks", "code", False, ["node", "tools/test_consistency_checks.mjs"]),
     ("defaults_guard_self_test", "code", False, ["node", "tools/defaults_guard.mjs", "--self-test"]),
     ("engine_compare_tests", "code", False, ["python3", "-I", "tools/engines/test_compare.py"]),
+    ("engine_cache_self_test", "code", False, ["python3", "-I", "tools/engines/engine_cache.py", "--self-test"]),
+    ("human_logs_tests", "code", True, ["python3", "tools/human_review/test_logs.py"]),
     ("fetch_sources_self_test", "code", False, ["python3", "tools/fetch_sources.py", "--self-test"]),
     ("archive_text_self_test", "code", False, ["python3", "tools/archive_text.py", "--self-test"]),
     ("check_extraction_self_test", "code", False, ["python3", "tools/check_extraction.py", "--self-test"]),

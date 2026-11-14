@@ -8,7 +8,9 @@ back the engine's federal lines in integer cents. OpenTaxSolver's adapter is
 the sibling module ots_adapter.py (text input files through the C programs
 built under .engines/opentaxsolver-src/); UsTaxes' is ustaxes_adapter.py (one Node
 process over the TypeScript clone in .engines/ustaxes-src/). Each is left out,
-visibly, when its package is not installed.
+visibly, when its package is not installed. Each engine's record is stored and
+reused while everything that determines it is unchanged (engine_cache.py,
+ENGINE_CACHE).
 
 Output: { "engines": { name: { "version", "precision", "lines": { case_id: { line: cents } },
           "limitations": [ { feature, lines, reason } ],
@@ -40,6 +42,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from taxyear import YEAR  # noqa: E402
 sys.path.pop(0)
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import engine_cache  # noqa: E402
 import ots_adapter  # noqa: E402
 import ustaxes_adapter  # noqa: E402
 sys.path.pop(0)
@@ -591,22 +594,51 @@ def run_taxcalc(cases):
             "pass_through": TC_PASS_THROUGH, "components": {line: len(spec) for line, spec in TC_MAP.items()}}
 
 
+def ots_identity():
+    """OpenTaxSolver as installed: the extracted package's bytes and the versions it reports (engine_cache.py)."""
+    ots_adapter.configure(YEAR)
+    pkg = ots_adapter.package_dir()
+    if pkg is None or not ots_adapter.is_available():
+        return None
+    return {"package": pkg.name, "bytes": engine_cache.tree_digest(pkg), "versions": list(ots_adapter.package_version(pkg))}
+
+
+def ustaxes_identity():
+    """UsTaxes as installed: the clone's bytes (its .git left out) and commit, its runtime packages' bytes, the Node version."""
+    if not ustaxes_adapter.available(YEAR):
+        return None
+    return {"clone": engine_cache.tree_digest(ustaxes_adapter.USTAXES_SRC), "version": list(ustaxes_adapter.package_version()),
+            "deps": engine_cache.tree_digest(ustaxes_adapter.USTAXES_DEPS), "node": engine_cache.node_version()}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cases", required=True); ap.add_argument("--out", required=True)
     a = ap.parse_args()
-    cases = json.load(open(a.cases))
-    out = {"engines": {"PolicyEngine-US": run_policyengine(cases), "Tax-Calculator": run_taxcalc(cases)}}
-    ots = ots_adapter.run_ots(cases, YEAR, Path(a.out).resolve().parent / "ots")
+    raw = Path(a.cases).read_bytes()
+    cases = json.loads(raw)
+    work = Path(a.out).resolve().parent
+    # Each engine's record is reused while everything that determines it is unchanged (engine_cache.py; ENGINE_CACHE).
+    cache = engine_cache.Cache(engine_cache.base_components(raw, YEAR))
+    out = {"engines": {
+        "PolicyEngine-US": cache.record("PolicyEngine-US", engine_cache.python_identity(["policyengine_us", "policyengine_core"]),
+                                        lambda: run_policyengine(cases)),
+        "Tax-Calculator": cache.record("Tax-Calculator", engine_cache.python_identity(["taxcalc"]), lambda: run_taxcalc(cases))}}
+    ots = cache.record(ots_adapter.ENGINE_NAME, ots_identity(), lambda: ots_adapter.run_ots(cases, YEAR, work / "ots"))
     if ots is None:
         print("OpenTaxSolver: SKIPPED - package not built under .engines/opentaxsolver-src/ (see tools/engines/README.md)")
     else:
         out["engines"][ots_adapter.ENGINE_NAME] = ots
-    ust = ustaxes_adapter.run_ustaxes(cases, YEAR, Path(a.out).resolve().parent / "ustaxes")
+    ust = cache.record(ustaxes_adapter.ENGINE_NAME, ustaxes_identity(), lambda: ustaxes_adapter.run_ustaxes(cases, YEAR, work / "ustaxes"))
     if ust is None:
         print("UsTaxes: SKIPPED - clone or runtime packages missing under .engines/ustaxes-src, .engines/ustaxes-deps (see tools/engines/README.md)")
     else:
         out["engines"][ustaxes_adapter.ENGINE_NAME] = ust
+    unhashed = engine_cache.check_modules(engine_cache.ROOT, YEAR)
+    if unhashed:
+        sys.exit("engine cache: the engine run loaded repository modules its key does not hash (add them to the key in "
+                 f"tools/engines/engine_cache.py, or take them out of NOT_READ): {', '.join(unhashed)}")
+    cache.finish()
     json.dump(out, open(a.out, "w"))
     print(f"engines ran {len(cases)} cases -> {a.out}")
 
