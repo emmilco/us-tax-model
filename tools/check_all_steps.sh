@@ -191,6 +191,9 @@ step twins python3 tools/check_twins.py "$@"
 jstep completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py
 # No id of either jurisdiction's build carries a year, but for the ids listed in tools/year_ids.json (spec 4.3).
 step year_ids python3 tools/check_year_ids.py "$@"
+# The prepared operations of the next tax year (changes/<year+1>/) still apply to this year's forms, question bank and
+# profiles: no line gone or renamed, no expected text changed, no collision, reference or gate broken, evidence printed.
+jstep year_changes "--jurisdiction ny" python3 tools/year_changes.py --check
 # New York only: its tax table.
 step ny_tax_table python3 tools/extract_ny_tax_table.py --check "$@"
 wave wave1

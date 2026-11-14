@@ -99,6 +99,7 @@ WALKERS = {
     ("tools/siblings.py", '"grep"'): "git grep over forms/<year> only",
     ("tools/siblings.py", "--name-only"): "git diff over reviews/<year> logs; the unscoped one serves --reviews-since, not a step",
     ("tools/siblings.py", ".rglob("): "the --input ripple over its listed source directories; not a step",
+    ("tools/year_changes.py", ".rglob("): "the files of interview/<year> only",
     ("tools/transcription/carry.py", "ls-tree"): "lists forms/ and tables/ directories at a revision",
     ("tools/transcription/carry.py", "--name-only"): "the ls-tree listings above",
     ("tools/fetch_sources.py", '"archive"'): "a dictionary key for sources/<year>",

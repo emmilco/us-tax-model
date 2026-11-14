@@ -1,0 +1,51 @@
+changes:
+  tax_year: 2026
+  form: w2
+  entries:
+  - change: C-PRI-24
+    evidence:
+    - doc: iw2w3
+      page: 23
+      quote: Code TP—Total amount of cash tips reported to the employer
+    - doc: iw2w3
+      page: 23
+      quote: Code TT—Total amount of qualified overtime compensation
+    verified: final
+    note: 'The questions are added here: the proposal left them to adoption.'
+    operations:
+    - add_line:
+        after: w2.box12_userra
+        line:
+          id: w2.box12_tp
+          printed: 12 (TP)
+          label: Box 12, code TP. Total amount of cash tips reported to the employer
+          type: NonNegDollars
+          expr:
+            op: input
+            source: Form W-2 box 12, code TP (total cash tips reported to the employer); zero if none
+          cite:
+            doc: iw2w3
+            locator: p. 23, Box 12—Codes, "Code TP—Total amount of cash tips reported to the employer"
+    - add_line:
+        after: w2.box12_tp
+        line:
+          id: w2.box12_tt
+          printed: 12 (TT)
+          label: Box 12, code TT. Total amount of qualified overtime compensation
+          type: NonNegDollars
+          expr:
+            op: input
+            source: Form W-2 box 12, code TT (total qualified overtime compensation); zero if none
+          cite:
+            doc: iw2w3
+            locator: p. 23, Box 12—Codes, "Code TT—Total amount of qualified overtime compensation"
+    - add_question:
+        input: w2.box12_tp
+        like: w2.box12_userra
+        entry:
+          help: The code TP amount in box 12, zero if none.
+    - add_question:
+        input: w2.box12_tt
+        like: w2.box12_tp
+        entry:
+          help: The code TT amount in box 12, zero if none.

@@ -42,8 +42,12 @@ with tax_year and the year in file names and in
 "(<year>)" form citations replaced, relocates their page numbers against the
 to-year's archive (tools/citations.py --relocate --from <from-year>, which lists
 the segments left for review in reports/<to-year>/relocation_from_<from-year>.md),
-and then reports with the
-to-year as the data year. It refuses to overwrite an existing year.
+applies the year-change operations of changes/<to-year>/ to the copy
+(tools/year_changes.py: their values are written for the to-year's text, so they
+replace relocated values and are not relocated), and then reports with the
+to-year as the data year. It refuses to overwrite an existing year, and refuses to
+adopt when an operation does not apply to the from-year's definitions or reads a
+line it awaits that no operation has added.
 """
 
 import argparse
@@ -482,6 +486,10 @@ def adopt(from_year, to_year):
         sys.exit("adopt: refusing to overwrite " + ", ".join(clash))
     if not (ypath("sources", t) / "manifest.json").exists():
         sys.exit(f"adopt: archive the {t} sources first (tools/fetch_sources.py --year {t} --fetch)")
+    import year_changes
+    if year_changes.check(f, adopting=True)[0]:
+        sys.exit(f"adopt: the operations of {ypath('changes', t).relative_to(ROOT)} do not all apply to the {f} "
+                 "definitions (above); mend them first")
 
     def convert(text):
         text = re.sub(rf"(?m)^(\s*tax_year:\s*){f}\b", rf"\g<1>{t}", text)
@@ -514,6 +522,12 @@ def adopt(from_year, to_year):
     print(f"adopt: copied the {f} definitions (and citation rulings, to be reviewed again) to {t}; "
           f"relocating page numbers against the {t} archive")
     subprocess.run([sys.executable, str(ROOT / "tools" / "citations.py"), "--relocate", "--from", f, "--year", t, *jurisdiction.J_ARGS], check=True)
+    r = year_changes.write(t)
+    print(f"adopt: applied the {len(r.ops)} operations of {ypath('changes', t).relative_to(ROOT)} to the {t} "
+          f"definitions ({len(r.touched)} lines added or changed, {len(r.removed)} removed); their values are written "
+          f"for {t}'s text and were not relocated")
+    if r.new_params:
+        print(f"adopt: the operations read parameters params/{t}.yaml does not define: {', '.join(sorted(r.new_params))}")
 
 
 # ---------- self-test ----------

@@ -419,6 +419,47 @@ with the number of cases whose inputs change as `tools/defaults_guard.mjs` count
 default for a new input needs none. `tools/fixtures_year.py` carries the defaults file to a new year with its
 conditions and rules, less the open entries of cases it drops.
 
+## Year changes as operations
+
+A change prepared for the next tax year is kept as operations keyed by line id in `changes/<year>/<form>.yaml`
+(`changes/ny/<year>/` for New York), not as a copy of a form: `tools/year_changes.py` applies the operations of year
+N+1 to the forms, question bank and profiles of year N. Design and the classification of the TY2026 change map:
+`docs/2026-11-14_year_change_operations.md`; the TY2026 entries: `changes/2026/README.md`.
+
+```yaml
+changes:
+  tax_year: 2026
+  form: f1040
+  entries:
+  - change: C-PRI-02                       # the change-map entry
+    evidence:                              # printed where it says, in sources/2026
+    - {doc: f1040, page: 3, quote: "13a Additional deductions from Schedule 1-A, line 44"}
+    verified: draft                        # draft, or final once checked against a final edition
+    operations:
+    - set: {line: f1040.line13b, field: printed, from: 13b, to: 13a}
+```
+
+Operations: `add_line {after, line}`, `remove_line {line}`, `set {line, field, from, to}` (`field` a path of keys such
+as `expr.take` or `cite.locator`; `from: null` is absent, `to: null` removes), `add_form {form}`, `set_form {field,
+from, to}`, `add_question {input, like | after, entry, profiles}` (`like` lends its order number and its place in the
+profiles, never its wording), `remove_question {input}`, `set_question {input, field, from, to}`. An entry may list
+the lines it `awaits` (`{line, change}`), lines another change not yet written is to add, and a free-text `note`.
+
+- `year_changes.py --check` (check-all step `year_changes`, with `ny_year_changes`) fails, naming the file, change,
+  position, kind and line, when an operation's line, form or anchor is gone (the closest ids suggested), the value it
+  expects is not there (stale), it is already applied, two operations collide, a reference is left dangling, a gated
+  input is read outside its gate, a new input has no question or a question outlives its input, a new question takes
+  another's order and seq, or the evidence is not printed on its page (or is marked final on a draft). It notes the
+  parameters the operations read that the year does not define, awaited lines, and entries whose documents are all
+  final now. `--against DIR` checks another tree's `forms/`, `interview/` and `params/` read-only (an exported branch).
+- `year_changes.py --record EDITED.yaml` prints the operations that turn the year's form into an edited copy of it,
+  as an entry to complete with its change and evidence.
+- `year_diff.py --adopt` refuses to adopt when an operation does not apply or an awaited line is missing, then
+  applies the operations to the relocated copy, block by block: every line, bank entry and profile line no operation
+  touches keeps the copy's text.
+- `--self-test` (in check-all) plants each failure in a synthetic tree, and checks that writing equals applying in
+  memory and keeps untouched blocks byte for byte.
+
 ## Process hooks
 
 - **Fresh build** (`tools/build_fresh.py`): the completeness, screen, false-no and question checks and triage refuse to run when

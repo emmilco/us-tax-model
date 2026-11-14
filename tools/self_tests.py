@@ -54,6 +54,7 @@ TESTS = [
     ("citations_self_test", "code", True, ["python3", "tools/citations.py", "--self-test"]),
     ("year_diff_self_test", "code", True, ["python3", "tools/year_diff.py", "--self-test"]),
     ("fixtures_year_self_test", "code", False, ["python3", "tools/fixtures_year.py", "--self-test"]),
+    ("year_changes_self_test", "code", False, ["python3", "tools/year_changes.py", "--self-test"]),
     ("year_ids_self_test", "code", False, ["python3", "tools/check_year_ids.py", "--self-test"]),
     ("coverage_tree_self_test", "code", True, ["python3", "tools/coverage/tree.py", "--self-test"]),
     ("instruction_cites_self_test", "code", True, ["python3", "tools/check_instruction_cites.py", "--self-test"]),

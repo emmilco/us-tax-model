@@ -40,13 +40,18 @@ one entry's evidence, so the evidence is stated once.
 | `set` | `line`, `field`, `from`, `to` | replaces one field of a line: `printed` (a line moved to another printed number), `label`, `expr` or a key path inside it (`expr.take`, `expr.of`, `expr.ref` for a parameter reference), `cite` or `cite.locator`, `refuses`, `type`, `ambiguity`, `gated_by`, `shown_when`, `note`. `from: null` means the field is absent; `to: null` removes it |
 | `add_form` | `form` | a new form file (its whole document) |
 | `set_form` | `field`, `from`, `to` | a form-level field (`title`, `note`) |
-| `add_question` | `input`, `like` or `after`, `entry` | the question-bank entry of a new input: placed after the bank entry of `like` (whose entry it copies, then overrides with `entry`, and whose place in every profile it takes) or `after` |
+| `add_question` | `input`, `like` or `after`, `entry` | the question-bank entry of a new input, with the fields `entry` gives: placed after the bank entry of `like` (which lends its order number and its place in every profile, never its wording, so a copied prompt cannot carry the old meaning) or `after` |
 | `remove_question` | `input` | the bank entry of an input that goes, and its place in the profiles |
 | `set_question` | `input`, `field`, `from`, `to` | one field of a bank entry (`help`, `prompt`) |
 
 Ids survive renumbering (spec 4.3), so a line that moves to another printed number is a `set` of `printed`, never
 a new line. `field` is a path of mapping keys; a list is replaced whole (a sum's `of`), so an operation never
 depends on a list position.
+
+An entry may also list the lines it `awaits` (`{line, change}`): lines that another change, not yet written as
+operations, is to add (Schedule 3-A line 4 reads the renumbered Schedule 2's line 20). Reading one is reported, not
+failed, while the year is prepared; adoption refuses while one is missing. An entry's `note` is free text (the
+conversion records its mends there).
 
 ## 3. What "applies" means
 
@@ -66,20 +71,22 @@ bank and profiles. Each fails, naming its file, change, position, kind and line,
 - **gated read:** a line an operation added or changed reads a gated input other than through its gate line (the
   formal gates rule, `engine/src/gates.ts`, which the build would otherwise report only at adoption);
 - **input without question:** a new input (an added line, or a line set to `op: input`) has no question, or a
-  question is left for a line that is no longer an input;
+  question is left for a line that is no longer an input; a new question that states an order and `seq` another
+  question holds is a collision;
 - **evidence:** a cited document is not in the new year's archive, a quote is not printed on its page (either text
   layer, normalized as `tools/citations.py` does; the page where it is printed is named if there is one), or an
   entry is marked `final` while a document it cites is still a draft.
 
-Two things are reported without failing: the parameters the operations read that `params/<from>.yaml` does not
-define (the meeting point with the parameter lane, below), and entries marked `draft` whose documents are all final
-now (to verify and mark `final`).
+Three things are reported without failing: the parameters the operations read that `params/<from>.yaml` does not
+define (the meeting point with the parameter lane, below), awaited lines, and entries marked `draft` whose documents
+are all final now (to verify and mark `final`).
 
 ## 4. The check, adoption and the tools that follow a form change
 
 **Check.** `tools/year_changes.py --check` (check-all step `year_changes`, fast and full tiers, wave 1) applies the
 operations of the year after the run's year to that year's forms and fails on any failure above. It reads 62 form
-files, the bank and profiles (about 0.5 s with the C YAML loader) and the archived pages its evidence cites. It
+files, the bank and profiles with the C YAML loader and the archived pages its evidence cites: 1.5 s for the 86
+operations below, Python's start included (the New York run, with no operations, about as long). It
 belongs in the fast tier: any change to `forms/`, `interview/` or `changes/` needs it; a docs-tier commit cannot
 change its result. `--against <dir>` runs the same check, read-only, on another tree's `forms/<year>`,
 `interview/<year>` and `params/<year>.yaml` (an exported branch). `--self-test` plants every failure above in a
@@ -93,8 +100,8 @@ their new lines are not relocated. A file is edited block by block (a line, a ba
 operation touches stays as the copy wrote it.
 
 **Fixtures.** `fixtures_year.py` re-evaluates every case on the adopted definitions, so an operation needs nothing
-from it. A new input needs a test-data default (`fixtures/<year>/defaults.json`); the check names new inputs, and
-adding their defaults at adoption is left to `fixtures_year.py` (not built here).
+from it. A new input needs a test-data default (`fixtures/<year>/defaults.json`); the check lists the new inputs,
+and adding their defaults at adoption is left to `fixtures_year.py` (not built here).
 
 **Question bank.** `add_question`, `remove_question` and `set_question` are the bank side of an input that comes or
 goes; the check enforces that every new input has a question and no question outlives its input.
@@ -104,10 +111,11 @@ only when its words change (a quote no longer printed, a line number in the loca
 the new year's pages.
 
 **Review carry.** `year_carry.py` decides which reviewed lines carry by comparing each line's year-normalized
-subject and cited text across the two trees. The operations are the declared list of what changed: every line an
-operation adds, sets or reads through a changed line has a different subject, so it is reviewed; a line whose key
-differs but that no operation touches changed through year normalization or its cited text, which is what
-`year_carry.py` reports on its own. A cross-check of the two lists is left for when a year is adopted.
+subject and cited text across the two trees, so it needs nothing from the operations to work. The operations are
+the declared list of what changed: a line an operation adds or sets has a different subject and is reviewed again.
+A line whose key differs although no operation touched it changed through its cited text or a year literal; a
+cross-check of the two lists (every touched line not carried, every other uncarried line explained) is left for the
+first adoption.
 
 **Other lanes.** Parameters, enum values and tables live in `params/` and `tables/` and are not operations: a
 `set` of `expr.ref` changes which parameter a line reads, never a parameter's value. The check lists the
@@ -128,7 +136,7 @@ several) and by what it needs outside them. Counts are of entries.
 | `add_line` | 28 | | year literals (year-free ids lane, `--adopt`'s list) | 10 |
 | `set` of `cite` (requoted) | 28 | | not encoded (refused or outside scope) | 9 |
 | `set` of `printed` (renumbering) | 16 | | page moves only (`--relocate`) | 7 |
-| `add_question` | 12 | | ambiguity register entries | 4 |
+| `add_question` | 11 | | ambiguity register entries | 4 |
 | `remove_line` | 9 | | waiting for a 2026 source | 2 |
 | `remove_question` | 5 | | | |
 | `set_question` (help text) | 3 | | | |
@@ -152,17 +160,44 @@ The proposals in `research/ty2026/forms-proposed/` (Form 1040, Schedule A, Form 
 and the new Schedule 3-A) are converted to operations against the 2025 forms on `main`, by comparing each proposal
 with the 2025 file it was copied from (its blob is named in its `.diff`) line id by line id, and re-basing each
 difference on the current form. Where the current form moved since 2026-11-04, the operation is mended and the
-mend recorded in the entry. The proposals stay in `research/` as the record of the preparation.
+mend recorded in the entry. The proposals stay in `research/` as the record of the preparation. For the next
+preparation, `year_changes.py --record <edited copy>` writes the operations of one edited form the same way.
 
 ## 7. Left out
 
 - The ambiguity register (`ambiguities/<year>.yaml`): no operation adds or changes an entry.
 - Enum values and parameter values: other lanes (section 4).
 - Defaults of new inputs in `fixtures/<year>/defaults.json`, and the other places a new input reaches
-  (`engine/src/generate.ts`, `tools/engines/generate_cases.py`, the input contracts): named by the check, not
+  (`engine/src/generate.ts`, `tools/engines/generate_cases.py`, the input contracts): listed by the check, not
   written.
 - Whether an applied tree builds: the check is structural (references, gates, questions, evidence), not the
   build; types and guard exhaustiveness are checked by the build at adoption. A full build of the applied tree on
-  every commit would cost a scratch year (manifest, parameters) and minutes; it is the adoption's step.
-- An operation authoring aid that writes operations from an edited copy of a form: the conversion of section 6
-  used a one-off comparison; the tool's `--record` mode does the same for one form.
+  every commit would need a scratch year (manifest, parameters) and the build's time; it is the adoption's step.
+- Rules of the question bank beyond places and inputs: wording a `like` would have copied, topics, groups.
+
+## 8. Results (2026-11-14)
+
+Measured in this worktree on `main` at `460825d2`, and in scratch copies under `/tmp`; nothing adopted in the
+repository.
+
+- **Conversion.** 17 entries, 86 operations in `changes/2026/` (`changes/2026/README.md` lists the mends). Applied
+  to the 2025 forms, the raw operations (before mending) failed 10 times: one stale (`sa.line14`'s sum, changed by
+  the gating of line 11), three gated reads (`sa.line11` and `sa.charity_limited`, gated since the proposals were
+  written), five inputs without a question (the proposals left the bank to adoption) and one question left
+  (`scveh.miles_business`). After the mends the check passes, with notes: five parameters for the parameter lane
+  and the awaited `s2.line20`. The 43 evidence quotes are printed on their pages (all 43 fail when every page is
+  moved by one).
+- **Structural build of the applied operations.** In a scratch copy, the operations written into `forms/2025` as
+  if they were 2025 (with the five parameters, the five new documents in the 2025 manifest, a stub register entry,
+  and `s2.line21` for the awaited line, as the preparation's own build test did): the build's references, types,
+  cycles, guards, gates and interview checks passed; its only 7 errors were test-data defaults (the six new inputs
+  and the old `scveh.miles_business`).
+- **Adoption.** `year_diff.py --from 2025 --to 2026 --adopt` in a scratch copy refused first, naming the awaited
+  `s2.line20`; with it pointed at `s2.line21` in the scratch copy it adopted in 18 s: 86 operations applied (60
+  lines added or changed, 2 removed). Against a second scratch adoption without operations, only the touched
+  blocks of `f1040`, `sa`, `scveh`, `w2`, the bank and two profiles differ, plus the new `s3a.yaml`.
+- **The redraft** (`refs/scratch/draft-land`, exported read-only): 3 operations stop applying.
+  `f1040.yaml C-PRI-05 op 7` (line 33's sum: the redraft reads `f1040.line26_if_estimated` where the operation
+  expects `f1040.line26`), and `sa.yaml C-PRI-14+16+17 ops 1 and 2` (the `sa.unsupported` screen: the redraft
+  rewords it and makes it a computed line, so the operation's expected label and question are gone). Those are what
+  must be mended when the redraft lands.

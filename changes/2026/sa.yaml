@@ -1,0 +1,355 @@
+changes:
+  tax_year: 2026
+  form: sa
+  entries:
+  - change: C-PRI-14
+    evidence:
+    - doc: f1040sa
+      page: 2
+      quote: 8d Mortgage insurance premiums (see instructions)
+    - doc: f1040sa
+      page: 2
+      quote: 8e Add lines 8a through 8d
+    verified: draft
+    note: 'Mended from the proposal: sa.line8d refuses on sa.charity_limited_if_gifts, as the other Schedule A lines held
+      at zero do on main.'
+    operations:
+    - add_line:
+        after: sa.line7
+        line:
+          id: sa.line8d
+          printed: 8d
+          type: NonNegDollars
+          label: Amount from sa.zero
+          expr:
+            op: copy
+            from: sa.zero
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2026), line 8d (draft), "8d Mortgage insurance premiums (see instructions)"
+          refuses:
+          - when: sa.unsupported
+            form: Schedule A unsupported item / Form 4684
+            remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.
+            cite:
+              doc: f1040sa
+              locator: Schedule A (2025), lines 1–18
+          - when: sa.charity_limited_if_gifts
+            form: Schedule A charitable limitation / carryover
+            remedy: Income-limited and carried-over charitable deductions are outside scope.
+            cite:
+              doc: f1040sa
+              locator: Schedule A (2025), lines 1–18
+          - when: sa.excluded_income
+            form: Schedule A SALT Worksheet / Forms 2555 and 4563
+            remedy: Excluded-income addbacks are outside scope.
+            cite:
+              doc: i1040sca
+              locator: p. 7, State and Local Tax Deduction Worksheet
+    - set:
+        line: sa.line8e
+        field: label
+        from: Add sa.line8a, sa.line8b, sa.line8c
+        to: Add sa.line8a, sa.line8b, sa.line8c, sa.line8d
+    - set:
+        line: sa.line8e
+        field: expr.of
+        from:
+        - sa.line8a
+        - sa.line8b
+        - sa.line8c
+        to:
+        - sa.line8a
+        - sa.line8b
+        - sa.line8c
+        - sa.line8d
+    - set:
+        line: sa.line8e
+        field: cite.locator
+        from: p. 1, Interest You Paid, line 8e, "e Add lines 8a through 8c"
+        to: p. 2 (draft), Interest You Paid, line 8e, "8e Add lines 8a through 8d"
+  - change:
+    - C-PRI-14
+    - C-PRI-16
+    - C-PRI-17
+    evidence:
+    - doc: f1040sa
+      page: 2
+      quote: 8d Mortgage insurance premiums (see instructions)
+    - doc: f1040sa
+      page: 3
+      quote: Casualty and theft loss(es) from a federally or state-declared disaster
+    - doc: f1040sa
+      page: 3
+      quote: 17z Add lines 17a through 17k
+    verified: draft
+    operations:
+    - set:
+        line: sa.unsupported
+        field: label
+        from: Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the
+          Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage
+          interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build
+          or improve the home, or debt over the limit); or the sales-tax election?
+        to: Any casualty or theft loss (from a federally or state-declared disaster, or a disaster loss added to the standard
+          deduction); a deduction on Schedule A lines 17b to 17k (other than gambling losses); a foreign tax or generation-skipping
+          tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds
+          not all used to buy, build or improve the home, or debt over the limit); mortgage insurance premiums; or the sales-tax
+          election?
+    - set:
+        line: sa.unsupported
+        field: expr.source
+        from: Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the
+          Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage
+          interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build
+          or improve the home, or debt over the limit); or the sales-tax election?
+        to: Any casualty or theft loss (from a federally or state-declared disaster, or a disaster loss added to the standard
+          deduction); a deduction on Schedule A lines 17b to 17k (other than gambling losses); a foreign tax or generation-skipping
+          tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds
+          not all used to buy, build or improve the home, or debt over the limit); mortgage insurance premiums; or the sales-tax
+          election?
+  - change: C-PRI-15
+    evidence:
+    - doc: f1040sa
+      page: 3
+      quote: 13 Enter the amount from line 6 of the Charitable Contribution Limitation Worksheet
+    - doc: f1040sa
+      page: 3
+      quote: 14 Carryover from prior year
+    - doc: f1040sa
+      page: 3
+      quote: 15 Add lines 13 and 14
+    - doc: plaw-119-21
+      page: 165
+      quote: exceeds 0.5 percent of the taxpayer’s contribution base
+    verified: draft
+    note: 'Mended from the proposal: main gates sa.line11 (sa.line11_if_gifts), so sa.gifts_total adds the gate line, and
+      sa.line14 is expected to read sa.line11_if_gifts.'
+    operations:
+    - set:
+        line: sa.charity_limited
+        field: label
+        from: Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication
+          526 before answering.
+        to: Are any charitable deductions reduced by income limits (other than the 0.5% floor, which this tool figures), or
+          carried over from a prior year? Determine under Publication 526 before answering.
+    - set:
+        line: sa.charity_limited
+        field: expr.source
+        from: Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication
+          526 before answering.
+        to: Are any charitable deductions reduced by income limits (other than the 0.5% floor, which this tool figures), or
+          carried over from a prior year? Determine under Publication 526 before answering.
+    - set:
+        line: sa.charity_limited
+        field: cite.locator
+        from: Schedule A (2025), lines 1–18
+        to: Schedule A (2025), lines 1–18; plaw-119-21 p. 166, section 70425(a)(2), section 170(d)(1)(C), "CONTRIBUTIONS DISALLOWED
+          BY 0.5-PERCENT FLOOR CARRIED FORWARD ONLY FROM YEARS IN WHICH LIMITATION IS EXCEEDED"
+    - add_line:
+        after: sa.line8c
+        line:
+          id: sa.gifts_total
+          printed: (helper)
+          type: NonNegDollars
+          label: Add sa.line11, sa.line12
+          expr:
+            op: sum
+            of:
+            - sa.line11_if_gifts
+            - sa.line12
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2026), lines 11 and 12 (draft)
+    - add_line:
+        after: sa.gifts_total
+        line:
+          id: sa.gift_floor
+          printed: (helper)
+          type: NonNegDollars
+          label: Multiply sa.agi_floor by sa.gift_floor_rate (0.5% of the contribution base)
+          expr:
+            op: multiply_rate
+            amount: sa.agi_floor
+            rate:
+              param: sa.gift_floor_rate
+          cite:
+            doc: plaw-119-21
+            locator: p. 165, section 70425, section 170(b)(1)(I), "shall be allowed only to the extent that the aggregate
+              of such contributions exceeds 0.5 percent of the taxpayer’s contribution base"
+          ambiguity: amb.2026.gift_floor_base
+    - add_line:
+        after: sa.gift_floor
+        line:
+          id: sa.line13_ws
+          printed: '13'
+          type: NonNegDollars
+          label: Subtract sa.gift_floor from sa.gifts_total; if zero or less, enter zero (the Charitable Contribution Limitation
+            Worksheet, line 6, as the statute fixes it)
+          expr:
+            op: subtract_floor0
+            from: sa.gifts_total
+            take: sa.gift_floor
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2026), line 13 (draft), "Enter the amount from line 6 of the Charitable Contribution Limitation
+              Worksheet"; plaw-119-21 p. 165, section 70425 (final), "Any charitable contribution otherwise allowable (without
+              regard to this subparagraph) as a deduction under this section shall be allowed only to the extent that the
+              aggregate of such contributions exceeds 0.5 percent of the taxpayer’s contribution base"
+          ambiguity: amb.2026.gift_floor_base
+    - set:
+        line: sa.line13
+        field: printed
+        from: '13'
+        to: '14'
+    - set:
+        line: sa.line14
+        field: printed
+        from: '14'
+        to: '15'
+    - set:
+        line: sa.line14
+        field: label
+        from: Add sa.line11, sa.line12, sa.line13
+        to: Add sa.line13_ws, sa.line13
+    - set:
+        line: sa.line14
+        field: expr.of
+        from:
+        - sa.line11_if_gifts
+        - sa.line12
+        - sa.line13
+        to:
+        - sa.line13_ws
+        - sa.line13
+    - set:
+        line: sa.line14
+        field: cite.locator
+        from: p. 1, Gifts to Charity, line 14, "Add lines 11 through 13"
+        to: p. 3 (draft), Gifts to Charity, line 15, "15 Add lines 13 and 14"
+  - change: C-PRI-16
+    evidence:
+    - doc: f1040sa
+      page: 3
+      quote: Casualty and theft loss(es) from a federally or state-declared disaster
+    verified: draft
+    operations:
+    - set:
+        line: sa.line15
+        field: printed
+        from: '15'
+        to: '16'
+  - change: C-PRI-17
+    evidence:
+    - doc: f1040sa
+      page: 3
+      quote: 17a Deductible gambling losses
+    - doc: f1040sa
+      page: 3
+      quote: 17z Add lines 17a through 17k
+    - doc: plaw-119-21
+      page: 96
+      quote: shall be equal to 90 percent of the amount of such losses during such taxable year
+    verified: draft
+    operations:
+    - add_line:
+        after: sa.gambling_losses
+        line:
+          id: sa.gambling_90
+          printed: (helper)
+          type: NonNegDollars
+          label: 90 percent of your gambling losses
+          expr:
+            op: multiply_rate
+            amount: sa.gambling_losses
+            rate:
+              param: sa.gambling_rate
+          cite:
+            doc: plaw-119-21
+            locator: p. 96, section 70114, section 165(d)(1)(A), "shall be equal to 90 percent of the amount of such losses
+              during such taxable year"
+    - set:
+        line: sa.line16_gambling
+        field: label
+        from: Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b
+        to: 90 percent of gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b
+    - set:
+        line: sa.line16_gambling
+        field: expr.of
+        from:
+        - sa.gambling_losses
+        - s1.line8b
+        to:
+        - sa.gambling_90
+        - s1.line8b
+    - set:
+        line: sa.line16
+        field: printed
+        from: '16'
+        to: 17a
+    - set:
+        line: sa.line16
+        field: label
+        from: 'Other—from list in instructions. List type and amount:'
+        to: Deductible gambling losses
+    - set:
+        line: sa.line16
+        field: cite.locator
+        from: Schedule A (2025), line 16; i1040sca p. 11, Other Itemized Deductions, "Only the expenses listed next can be
+          deducted on line 16"
+        to: Schedule A (2026), line 17a (draft), "17a Deductible gambling losses"
+    - add_line:
+        after: sa.line14
+        line:
+          id: sa.line17z
+          printed: 17z
+          type: NonNegDollars
+          label: Add lines 17a through 17k (only 17a is figured; 17b to 17k are refused)
+          expr:
+            op: copy
+            from: sa.line16
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2026), line 17z (draft), "17z Add lines 17a through 17k"
+  - change: C-PRI-18
+    evidence:
+    - doc: f1040sa
+      page: 3
+      quote: Add the amounts in far-right column for lines 4 through 17z
+    verified: draft
+    operations:
+    - set:
+        line: sa.line17
+        field: printed
+        from: '17'
+        to: '18'
+    - set:
+        line: sa.line17
+        field: label
+        from: Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
+        to: Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line17z
+    - set:
+        line: sa.line17
+        field: expr.of
+        from:
+        - sa.line4
+        - sa.line7
+        - sa.line10
+        - sa.line14
+        - sa.line15
+        - sa.line16
+        to:
+        - sa.line4
+        - sa.line7
+        - sa.line10
+        - sa.line14
+        - sa.line15
+        - sa.line17z
+    - set:
+        line: sa.line17
+        field: cite.locator
+        from: p. 1, Total Itemized Deductions, line 17, "Add the amounts in the far right column for lines 4 through 16. Also,
+          enter this amount on Form 1040 or 1040-SR, line 12e"
+        to: 'p. 3 (draft), Total Itemized Deductions, line 18, "No. Your deductions are not limited. Add the amounts in far-right
+          column for lines 4 through 17z" (the Yes branch, the Itemized Deductions Worksheet, is refused on Form 1040 line
+          15: f1040.gate.itemized_limit)'

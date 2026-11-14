@@ -1,0 +1,418 @@
+changes:
+  tax_year: 2026
+  form: f1040
+  entries:
+  - change: C-PRI-01
+    evidence:
+    - doc: f1040
+      page: 3
+      quote: 12f Charitable contribution deduction for non-itemizers (see instructions)
+    - doc: f1040
+      page: 3
+      quote: 14 Add lines 12e, 12f, 13a, and 13b
+    verified: draft
+    note: 'Mended from the proposal: the gate reads sa.line11_if_gifts, since main gates sa.line11 (formal gates rule: only
+      its gate line reads a gated input).'
+    operations:
+    - add_line:
+        after: f1040.line12e
+        line:
+          id: f1040.gate.nonitemizer_gifts
+          printed: (gate)
+          type: Bool
+          label: Standard deduction taken and cash or check gifts to charity entered (Form 1040 line 12f)
+          expr:
+            op: test
+            all:
+            - op: test
+              eq:
+              - sa.itemizes
+              - const: false
+            - op: test
+              gt:
+              - sa.line11_if_gifts
+              - const: 0
+          cite:
+            doc: f1040
+            locator: Form 1040 (2026), line 12f (draft), "Charitable contribution deduction for non-itemizers (see instructions)"
+    - add_line:
+        after: f1040.gate.nonitemizer_gifts
+        line:
+          id: f1040.line12f
+          printed: 12f
+          label: Charitable contribution deduction for non-itemizers (see instructions)
+          type: NonNegDollars
+          expr:
+            op: copy
+            from: sa.zero
+          cite:
+            doc: f1040
+            locator: Form 1040 (2026), line 12f (draft), "Charitable contribution deduction for non-itemizers (see instructions)"
+          refuses:
+          - when: f1040.gate.nonitemizer_gifts
+            form: The charitable contribution deduction for non-itemizers (Form 1040, line 12f)
+            remedy: You took the standard deduction and gave cash or checks to charity. For 2026 a filer who does not itemize
+              may deduct some of these gifts on line 12f; this tool does not yet figure that deduction (the 2026 Form 1040
+              instructions that define it are not published).
+            cite:
+              doc: plaw-119-21
+              locator: p. 165, section 70424, amending section 170(p), "by striking ‘‘$300 ($600’’ and inserting ‘‘$1,000
+                ($2,000’’"
+    - set:
+        line: f1040.line14
+        field: label
+        from: Add lines 12e, 13a, and 13b
+        to: Add lines 12e, 12f, 13a, and 13b
+    - set:
+        line: f1040.line14
+        field: expr.of
+        from:
+        - f1040.line12e
+        - f1040.line13a
+        - f1040.line13b
+        to:
+        - f1040.line12e
+        - f1040.line12f
+        - f1040.line13a
+        - f1040.line13b
+  - change: C-PRI-02
+    evidence:
+    - doc: f1040
+      page: 3
+      quote: 13a Additional deductions from Schedule 1-A, line 44
+    - doc: f1040
+      page: 3
+      quote: 13b Qualified business income deduction from Form 8995 or Form 8995-A
+    verified: draft
+    operations:
+    - set:
+        line: f1040.line13a
+        field: printed
+        from: 13a
+        to: 13b
+    - set:
+        line: f1040.line13a
+        field: cite.locator
+        from: Form 1040 (2025), line 13a
+        to: Form 1040 (2026), line 13b (draft)
+    - set:
+        line: f1040.line13b
+        field: printed
+        from: 13b
+        to: 13a
+    - set:
+        line: f1040.line13b
+        field: label
+        from: Additional deductions from Schedule 1-A, line 38
+        to: Additional deductions from Schedule 1-A, line 44
+    - set:
+        line: f1040.line13b
+        field: cite.locator
+        from: Form 1040 (2025), line 13b; i1040gi p. 34, Line 13b, "enter on line 13b the amount, if any, from Schedule 1-A,
+          line 38"
+        to: Form 1040 (2026), line 13a (draft), "Additional deductions from Schedule 1-A, line 44"
+  - change: C-PRI-18
+    evidence:
+    - doc: f1040sa
+      page: 3
+      quote: minus the amounts on lines 13a and 13b of that form, more than $384,350?
+    - doc: f1040sa
+      page: 3
+      quote: Itemized Deductions Worksheet in the instructions
+    - doc: plaw-119-21
+      page: 94
+      quote: shall be reduced by 2⁄37 of the lesser of
+    verified: draft
+    operations:
+    - add_line:
+        after: f1040.line14
+        line:
+          id: f1040.line13_total
+          printed: (helper)
+          type: NonNegDollars
+          label: Add lines 13a and 13b
+          expr:
+            op: sum
+            of:
+            - f1040.line13a
+            - f1040.line13b
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2026), line 18 (draft), "Is the amount on Form 1040 or 1040-SR, line 11b, minus the amounts
+              on lines 13a and 13b of that form, more than $384,350?"
+    - add_line:
+        after: f1040.line13_total
+        line:
+          id: f1040.limit_base
+          printed: (helper)
+          type: Dollars
+          label: Form 1040 line 11b minus lines 13a and 13b
+          expr:
+            op: subtract
+            from: f1040.line11b
+            take: f1040.line13_total
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2026), line 18 (draft), "minus the amounts on lines 13a and 13b of that form, more than $384,350?"
+    - add_line:
+        after: f1040.limit_base
+        line:
+          id: f1040.limit_screen
+          printed: (helper)
+          type: Dollars
+          label: Year parameter sa.limit_screen
+          expr:
+            op: param
+            ref: sa.limit_screen
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2026), line 18 (draft), "more than $384,350?"
+    - add_line:
+        after: f1040.limit_screen
+        line:
+          id: f1040.gate.itemized_limit
+          printed: (gate)
+          type: Bool
+          label: Itemizing, and line 11b minus lines 13a and 13b is more than the Schedule A line 18 amount
+          expr:
+            op: test
+            all:
+            - op: test
+              eq:
+              - sa.itemizes
+              - const: true
+            - op: test
+              gt:
+              - f1040.limit_base
+              - f1040.limit_screen
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2026), line 18 (draft), "Yes. Your deductions may be limited. See the Itemized Deductions
+              Worksheet in the instructions to figure the amount to enter"
+    - set:
+        line: f1040.line15
+        field: refuses
+        from: null
+        to:
+        - when: f1040.gate.itemized_limit
+          form: Schedule A Itemized Deductions Worksheet (2026)
+          remedy: Your itemized deductions may be limited for 2026 (Schedule A line 18, "Yes"); the worksheet that figures
+            the limit is in the 2026 Schedule A instructions, which are not published yet.
+          cite:
+            doc: plaw-119-21
+            locator: p. 94, section 70111, section 68(a), "shall be reduced by 2⁄37 of the lesser of"
+  - change: C-PRI-08
+    evidence:
+    - doc: f1040
+      page: 3
+      quote: 29 Refundable American opportunity credit from Form 8863, line 8
+    - doc: f1040
+      page: 3
+      quote: 23 Additional taxes, including self-employment tax, from Schedule 2, line 21
+    verified: draft
+    operations:
+    - set:
+        line: f1040.line23
+        field: label
+        from: Other taxes, including self-employment tax, from Schedule 2, line 21
+        to: Additional taxes, including self-employment tax, from Schedule 2, line 21
+    - set:
+        line: f1040.line29
+        field: label
+        from: American opportunity credit from Form 8863, line 8
+        to: Refundable American opportunity credit from Form 8863, line 8
+  - change: C-PRI-04
+    evidence:
+    - doc: f1040
+      page: 3
+      quote: 24b Enter amount from Form 1062, line 15
+    - doc: i1062
+      page: 2
+      quote: New election to pay the tax on gain from the sale or exchange of qualified farmland property to qualified farmers
+        in installments
+    - doc: f1062
+      page: 2
+      quote: 15 First installment due. Enter 25% (0.25) of line 14 here
+    verified: draft
+    operations:
+    - add_line:
+        after: f1040.line24
+        line:
+          id: f1040.form1062
+          printed: (helper)
+          type: Bool
+          label: Are you electing to pay the tax on gain from a sale or exchange of qualified farmland property to a qualified
+            farmer in four annual installments (Form 1062)?
+          expr:
+            op: input
+            source: Form 1062 election (interview question)
+          cite:
+            doc: i1062
+            locator: p. 2 (draft), What’s New, "New election to pay the tax on gain from the sale or exchange of qualified
+              farmland property to qualified farmers in installments"
+    - add_line:
+        after: f1040.form1062
+        line:
+          id: f1040.line24b
+          printed: 24b
+          label: Enter amount from Form 1062, line 15
+          type: NonNegDollars
+          expr:
+            op: copy
+            from: sa.zero
+          cite:
+            doc: f1040
+            locator: Form 1040 (2026), line 24b (draft), "Enter amount from Form 1062, line 15"
+          refuses:
+          - when: f1040.form1062
+            form: Form 1062 (installment payment of tax on a sale of qualified farmland property)
+            remedy: This tool does not prepare Form 1062 or Schedule A (Form 1062).
+            cite:
+              doc: f1062
+              locator: p. 2 (draft), line 15, "First installment due. Enter 25% (0.25) of line 14 here"
+    - add_question:
+        input: f1040.form1062
+        after: f1040.line36
+        entry:
+          order: 20
+  - change: C-PRI-03
+    evidence:
+    - doc: f1040
+      page: 3
+      quote: 24a Add lines 22 and 23. This is your total tax
+    - doc: f1040
+      page: 3
+      quote: 24c Add lines 24a and 24b
+    - doc: f1040
+      page: 3
+      quote: If line 33 is more than line 24c, subtract line 24c from line 33
+    - doc: f1040
+      page: 3
+      quote: Subtract line 33 from line 24c
+    verified: draft
+    operations:
+    - set:
+        line: f1040.line24
+        field: printed
+        from: '24'
+        to: 24a
+    - set:
+        line: f1040.line24
+        field: cite.locator
+        from: Form 1040 (2025), line 24
+        to: Form 1040 (2026), line 24a (draft)
+    - add_line:
+        after: f1040.line24b
+        line:
+          id: f1040.line24c
+          printed: 24c
+          label: Add lines 24a and 24b
+          type: NonNegDollars
+          expr:
+            op: sum
+            of:
+            - f1040.line24
+            - f1040.line24b
+          cite:
+            doc: f1040
+            locator: Form 1040 (2026), line 24c (draft), "Add lines 24a and 24b"
+    - set:
+        line: f1040.line34
+        field: label
+        from: If line 33 is more than line 24, subtract line 24 from line 33. This is the amount you overpaid
+        to: If line 33 is more than line 24c, subtract line 24c from line 33. This is the amount you overpaid
+    - set:
+        line: f1040.line34
+        field: expr.take
+        from: f1040.line24
+        to: f1040.line24c
+    - set:
+        line: f1040.line37
+        field: label
+        from: Subtract line 33 from line 24. This is the amount you owe
+        to: Subtract line 33 from line 24c. This is the amount you owe
+    - set:
+        line: f1040.line37
+        field: expr.from
+        from: f1040.line24
+        to: f1040.line24c
+  - change: C-PRI-07
+    evidence:
+    - doc: f1040
+      page: 3
+      quote: 28 Additional child tax credit (ACTC) from Schedule 8812
+    verified: draft
+    operations:
+    - remove_line:
+        line: f1040.line28_box
+  - change: C-PRI-05
+    evidence:
+    - doc: f1040
+      page: 3
+      quote: 32b Amount from Schedule 3-A
+    - doc: f1040
+      page: 3
+      quote: 32c Subtract line 32b from line 32a
+    - doc: f1040
+      page: 3
+      quote: 33 Add lines 25d, 26, and 32c
+    verified: draft
+    operations:
+    - set:
+        line: f1040.line32
+        field: printed
+        from: '32'
+        to: 32a
+    - set:
+        line: f1040.line32
+        field: label
+        from: Add lines 27a, 28, 29, 30, and 31. These are your total other payments and refundable credits
+        to: Add lines 27a, 28, 29, 30, and 31
+    - set:
+        line: f1040.line32
+        field: cite.locator
+        from: Form 1040 (2025), line 32
+        to: Form 1040 (2026), line 32a (draft), "Add lines 27a, 28, 29, 30, and 31"
+    - add_line:
+        after: f1040.line32
+        line:
+          id: f1040.line32b
+          printed: 32b
+          label: Amount from Schedule 3-A
+          type: NonNegDollars
+          expr:
+            op: copy
+            from: s3a.line8
+          cite:
+            doc: f1040
+            locator: Form 1040 (2026), line 32b (draft), "Amount from Schedule 3-A"
+    - add_line:
+        after: f1040.line32b
+        line:
+          id: f1040.line32c
+          printed: 32c
+          label: Subtract line 32b from line 32a
+          type: NonNegDollars
+          expr:
+            op: subtract_floor0
+            from: f1040.line32
+            take: f1040.line32b
+          cite:
+            doc: f1040
+            locator: Form 1040 (2026), line 32c (draft), "Subtract line 32b from line 32a"
+    - set:
+        line: f1040.line33
+        field: label
+        from: Add lines 25d, 26, and 32. These are your total payments
+        to: Add lines 25d, 26, and 32c. These are your total payments
+    - set:
+        line: f1040.line33
+        field: expr.of
+        from:
+        - f1040.line25d
+        - f1040.line26
+        - f1040.line32
+        to:
+        - f1040.line25d
+        - f1040.line26
+        - f1040.line32c

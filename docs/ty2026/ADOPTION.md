@@ -35,7 +35,11 @@ unchanged.
    and rulings to 2026 and relocates pages); then apply the proposed parameters
    (`params-2026.proposed.yaml` → `params/2026.yaml`, in the `params/2025.yaml` format: drop `source`, `note`,
    `new_in_2026`, `unsourced` and `retired`, and remove the retired `sc.mileage_rate`) and the proposed definitions (`research/ty2026/forms-proposed/*.diff`, then the other sections of the
-   change map in the order of the next section). Work the citation check (`tools/citations.py --strict --year 2026`)
+   change map in the order of the next section).
+   **Since 2026-11-14** the proposed definitions are operations in `changes/2026/`, checked against the 2025 forms
+   in check-all and applied by `--adopt` itself (`docs/2026-11-14_year_change_operations.md`); the other sections of
+   the change map are to be written there as operations, not as diffs. `--adopt` refuses while `s2.line20`, which
+   Schedule 3-A awaits, has no operation adding it (C-SCHED-10). Work the citation check (`tools/citations.py --strict --year 2026`)
    and `reports/2026/relocation_from_2025.md` until `node engine/dist/main.js build --year 2026` passes.
 5. **New inputs and their ripple** (fixtures, interview bank and profiles, `engine/src/generate.ts`,
    `tools/engines/generate_cases.py`, `tools/transcription/input_contracts/`), one owner per input
