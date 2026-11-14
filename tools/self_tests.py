@@ -55,6 +55,7 @@ TESTS = [
     ("year_diff_self_test", "code", True, ["python3", "tools/year_diff.py", "--self-test"]),
     ("propose_params_self_test", "code", False, ["python3", "tools/propose_params.py", "--self-test"]),
     ("printed_tables_self_test", "code", False, ["python3", "tools/extract_printed_tables.py", "--self-test"]),
+    ("layouts_self_test", "code", False, ["python3", "tools/layouts.py", "--self-test"]),
     ("fixtures_year_self_test", "code", False, ["python3", "tools/fixtures_year.py", "--self-test"]),
     ("year_ids_self_test", "code", False, ["python3", "tools/check_year_ids.py", "--self-test"]),
     ("coverage_tree_self_test", "code", True, ["python3", "tools/coverage/tree.py", "--self-test"]),

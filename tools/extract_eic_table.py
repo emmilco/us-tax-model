@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Extract the Earned Income Credit (EIC) Table from the archived IRS PDF into pinned data.
 
-Reads word boxes (pdftotext -bbox-layout) from `sources/<year>/i1040gi.pdf`, pages 49-60, and
+Reads word boxes (pdftotext -bbox-layout) from `sources/<year>/i1040gi.pdf`, on the pages its layout names (tools/layouts/<year>.json), and
 writes one table per number of qualifying children: `tables/<year>/eic_0.yaml` ... `eic_3.yaml`.
 Each table has two columns, as printed: "Single, head of household, or qualifying surviving
 spouse" (which the table's star note also gives to married filing separately) and "Married
@@ -10,8 +10,8 @@ filing jointly".
 
 Every page prints two halves of ten numeric columns (at least, but less than, four credits for
 the first status group, four for joint filers), right-aligned at fixed positions. A row is kept
-only when every cell of its half is present, so the worked example at the top of page 49 is not
-read as data. Rows must tile [$1, $68,700) in $50 steps ($1 to $50 first).
+only when every cell of its half is present, so the worked example at the top of the first page
+is not read as data. Rows must tile [$1, the layout's `end`) in $50 steps ($1 to $50 first).
 
 A cell printed as `*`, `**` or `***` refers to a footnote of the form "If the amount you are
 looking up from the worksheet is at least $A but less than $B, and you have <n> qualifying
@@ -33,22 +33,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
-import taxyear  # noqa: E402
 from taxyear import Y  # noqa: E402
+import layouts  # noqa: E402
 PDF = ROOT / "sources" / Y / "i1040gi.pdf"
 OUT_DIR = ROOT / "tables" / Y
-# Per year's i1040gi: the PDF pages (1-based) of the EIC Table, the right edges (points) of its
-# twenty numeric columns, the same on every table page, and where its rows end (the year's
-# highest earned income that can get the credit, in dollars).
-LAYOUT = {2025: {"pages": (49, 60), "end": 68700,
-                 "edges": [76, 109, 133, 157, 180, 204, 228, 251, 275, 301, 342, 375, 399, 423, 446, 470, 494, 517, 541, 567]}}
-_L = taxyear.for_year(LAYOUT, "extract_eic_table.py: the pages, column edges and last row of the EIC Table in i1040gi")
-FIRST_PAGE, LAST_PAGE = _L["pages"]
+# The year's i1040gi (tools/layouts/<year>.json): the PDF pages (1-based) of the EIC Table, the
+# right edges (points) of its twenty numeric columns, the same on every table page, and where its
+# rows end (the year's highest earned income that can get the credit, in dollars).
+_L = layouts.get("eic_table")
+FIRST_PAGE, LAST_PAGE = _L["ranges"]["table"]["pages"]
 TOOL_VERSION = "0.1"
-EDGES = _L["edges"]
+EDGES = _L["fields"]["edges"]
 EDGE_TOLERANCE = 4.0
 ROW_TOLERANCE = 3.0
-START, END, STEP = 1, _L["end"], 50
+START, END, STEP = 1, _L["fields"]["end"], 50
 COUNTS = {"no": 0, "one": 1, "two": 2, "three": 3}
 
 

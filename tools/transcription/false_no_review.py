@@ -51,7 +51,7 @@ SYSTEM = jurisdiction.system("You are an adversarial reviewer of the questions a
                              "and no other sources. Output only the YAML requested.")
 
 # The failure patterns of the T-251 review's 43 findings (L-1 to L-43), each with the findings that show it.
-PATTERNS = """1. A narrow time frame. "In 2025" or the present tense, where the line also takes amounts from an
+PATTERNS = f"""1. A narrow time frame. "In {Y}" or the present tense, where the line also takes amounts from an
    earlier year's event or a disposition earlier this year: an installment payment on a 2021 sale (L-1); a
    partnership audit adjustment for a year the filer has since left (L-5); recapture of a fractional gift ten
    years on (L-6); a foreign fund sold in March, asked as "do you own" (L-13); a carryover or NOL from an earlier

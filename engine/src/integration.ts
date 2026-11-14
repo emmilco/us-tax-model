@@ -266,7 +266,7 @@ export async function integrationChecks(): Promise<void> {
       state=await answer("$person",["taxpayer"]);
       assert.deepEqual(state.recorded.map((r:any)=>r.input),["person[taxpayer].role"]);
       assert.equal(state.question.input,"f1040.status");
-      assert.equal(state.question.prompt,"Which of these fits you on December 31, 2025?");
+      assert.equal(state.question.prompt,`Which of these fits you on December 31, ${YEAR}?`);
       assert.deepEqual(state.question.withheld,["mfj"]);
       assert.match(state.question.entry,/^one of: "mfs" \(Married, and filing apart[^"]*\), "qss" \([^"]*\), "hoh" \([^"]*\), "single" \(None of these: I was not married \(single\)\); null asks for help$/);
       assert.ok(!(spouseQuestion in state.values)&&!pendingKeys(state).some(k=>k.includes("person[spouse]")));

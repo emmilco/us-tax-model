@@ -19,7 +19,7 @@ import { SPOUSE_PHRASE, SPOUSE_POSSESSIVE, STATUS_INPUT, personWording, spouseWo
 import { templateKey } from "./branches.js";
 import { renderValuesSheetText } from "./output.js";
 import { loadFixtureCases } from "./fixture-inputs.js";
-import { YEAR_ARGS } from "./year.js";
+import { YEAR, YEAR_ARGS } from "./year.js";
 import type { CanonicalData, Inputs } from "./types.js";
 import { mapPool, poolSize } from "./pool.js";
 import { createApp, docNames, questionForms } from "./serve.js";
@@ -482,7 +482,7 @@ export async function serveChecks(): Promise<void> {
     // One person: the status is asked next, with labelled options in the bank's order and married filing jointly withheld.
     opening = (await post("/api/returns/opening/answer", { input: "$person", value: person.choices[0].value, labels: person.choices[0].labels })).body;
     const statusQ = opening.pending.find((q: any) => q.input === STATUS_INPUT);
-    ok(opening.pending[0].input === STATUS_INPUT && statusQ.prompt === "Which of these fits you on December 31, 2025?" && isDeepStrictEqual(statusQ.value_order, ["mfs", "qss", "hoh", "single", "mfj"])
+    ok(opening.pending[0].input === STATUS_INPUT && statusQ.prompt === `Which of these fits you on December 31, ${YEAR}?` && isDeepStrictEqual(statusQ.value_order, ["mfs", "qss", "hoh", "single", "mfj"])
       && isDeepStrictEqual(statusQ.withheld, ["mfj"]) && Object.keys(statusQ.value_labels).length === 5 && statusQ.help !== "",
       `one person is asked the filing status next, without the joint status: ${JSON.stringify([opening.pending[0].input, statusQ?.value_order, statusQ?.withheld])}`);
     ok(isDeepStrictEqual(opening.answered.find((a: any) => a.input === "$person").recorded.map((r: any) => r.input), ["person[taxpayer].role"]) && !(STATUS_INPUT in opening.values && opening.values[STATUS_INPUT].value.kind !== "unknown"),

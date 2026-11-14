@@ -364,6 +364,22 @@ not printed; its keys are the `placed_year` enumeration, renamed with the year) 
 (three amounts printed in the running text of Pub. 560 and the year's retirement plan notice; the
 2026 Pub. 560 is not archived).
 
+## Page layouts
+
+The tools that read an archived document by page (the Tax Table, EIC Table, Form 8962 and Pub. 946 class-life
+extractors, the second transcription of the Pub. 946 tables, and the instruction-section check's page ranges of
+Form 1040 and Schedules 1 to 3 in i1040gi) take the pages from `tools/layouts/<year>.json`, read through
+`tools/layouts.py`. Each page range names the words printed on its first page (`first`), its last page (`last`),
+the page after it (`last_before`) or the lowest pages of a list of words (`each`); `fields` hold a layout's other
+values for the year (the EIC Table's column edges and last row, the HHS guidelines the Form 8962 tables reprint). A
+year with no file, or no entry, stops the tool that needs it, naming the file.
+
+`python3 tools/layouts.py --check` (check-all) fails when a range's pages are not where its words are printed in
+the year's archive. `python3 tools/layouts.py --propose --from 2025 --to 2026` writes the next year's file: every
+range placed again by its words in the new archive (years in the words moved), the fields carried and listed for
+review; a layout whose document has no edition archived, or whose words are not printed, is listed and the file is
+not written unless `--partial`. `--self-test` (in check-all) plants an edition with a page inserted.
+
 ## Sampled completeness, screen, false-no and question reviews
 
 `completeness_review.py` and `check_completeness.py`, `screen_review.py` and `check_screens.py`,

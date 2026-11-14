@@ -46,7 +46,7 @@ MAX_CHARS = 700_000
 GAP = 2
 EFFECTS = ("amount", "eligibility", "presentation")
 SYSTEM = jurisdiction.system("You review a software encoding of US federal tax instructions for completeness. You are given the "
-          "pages of the 2025 IRS instructions or publications that a form's lines cite, and the list of what the "
+          f"pages of the {Y} IRS instructions or publications that a form's lines cite, and the list of what the "
           "software encodes for the form: its computed lines, the questions it asks the filer, and the situations "
           "it refuses to handle. A HANDLED ELSEWHERE list gives refusals on other forms tied to lines this form "
           "reads; a rule that leads to one of those situations is already handled and is not a gap.\n"
