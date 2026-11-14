@@ -29,9 +29,9 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
-import taxyear  # noqa: E402
 from taxyear import Y, YEAR_ARGS  # noqa: E402
 import archive_text  # noqa: E402
+import layouts  # noqa: E402
 sys.path.insert(0, str(ROOT / "tools" / "transcription"))
 from transcribe import call_model  # noqa: E402
 
@@ -41,9 +41,8 @@ WORK = ROOT / ".transcription" / "tables"
 SYSTEM = ("You transcribe tables from IRS publications from the text given to you. "
           "You have no tools and no other sources. Output only the YAML requested.")
 
-# The Pub. 946 pages each job reads, per year's printing.
-PAGES = taxyear.for_year({2025: {"class_lives": list(range(99, 109)), "macrs_mq": [71, 72, 73]}},
-                         "transcribe_tables.py: the Pub. 946 pages of Tables A-1 to A-5 and B-1 and B-2")
+# The Pub. 946 pages each job reads, from the year's layouts (tools/layouts/<year>.json).
+PAGES = {job: layouts.pages_of(layouts.get(job), "tables") for job in ("class_lives", "macrs_mq")}
 
 JOBS = {
     "class_lives": {

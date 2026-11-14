@@ -61,7 +61,7 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = (".transcription", ".classm", ".human-review", ".extraction-review", ".direct-file")
+DATA = (".transcription", ".classm", ".extraction-review", ".direct-file")
 INSTALLS = ("node_modules", ".engines", "lean/.lake")
 LEDGER = "costs.jsonl"
 REF = re.compile(r"(\.(?:transcription|classm)/[A-Za-z0-9_./-]+)")

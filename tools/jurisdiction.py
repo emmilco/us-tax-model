@@ -15,6 +15,13 @@ exactly as before, so federal results do not change.
     register_file()         ambiguities/<year>.yaml  or ambiguities/ny/<year>.yaml
     interview_dir(year)     interview/<year>/        or interview/ny/<year>/
     catalog()               tools/sources/<year>.json or tools/sources/ny/<year>.json
+
+The tax year is taxyear.py's (the newest year in years.json unless --year N), for both jurisdictions.
+New York publishes its forms for a year after the IRS does, so a year can have federal data and no
+New York data. In New York mode a year qualifies if it has New York definitions (forms/ny/<year>/) or
+a New York catalog (tools/sources/ny/<year>.json): require_year() exits naming what is missing, and is
+called on import for the year taxyear resolved when taxyear was imported first. A New York-only tool
+calls ny_only(), which makes New York its jurisdiction without the flag and refuses --jurisdiction us.
 """
 
 import os
@@ -39,13 +46,47 @@ def _resolve():
             continue
         if value not in JURISDICTIONS:
             sys.exit(f"--jurisdiction: expected one of {', '.join(JURISDICTIONS)}, got '{value}'")
-        return value
-    return "us"
+        return value, True
+    return "us", False
 
 
-J = _resolve()
+J, EXPLICIT = _resolve()
 NY = J == "ny"
 J_ARGS = ["--jurisdiction", J] if NY else []
+
+
+def has_year(year):
+    """Whether New York has data for a tax year: its definitions or its source catalog."""
+    return (ROOT / "forms" / "ny" / str(year)).is_dir() or (ROOT / "tools" / "sources" / "ny" / f"{year}.json").exists()
+
+
+def no_year(year, tool=None):
+    """The message for a year New York has no data for."""
+    known = sorted(p.stem for p in (ROOT / "tools" / "sources" / "ny").glob("*.json"))
+    return (f"{tool + ': ' if tool else ''}--jurisdiction ny --year {year}: New York has no data for {year} "
+            f"(neither forms/ny/{year}/ nor tools/sources/ny/{year}.json exists; New York years: "
+            f"{', '.join(known) or 'none'}). A New York year starts with its catalog, written when New York "
+            f"publishes that year's forms (tools/README.md, \"New York years\").")
+
+
+def require_year(year, tool=None):
+    """In New York mode, exit unless New York has data for the year (federally, nothing to check)."""
+    if NY and not has_year(year):
+        sys.exit(no_year(year, tool))
+
+
+def ny_only(tool):
+    """For a tool that works on New York data only: New York mode without the flag; --jurisdiction us refused."""
+    global J, NY, J_ARGS
+    if EXPLICIT and not NY:
+        sys.exit(f"{tool}: New York only; --jurisdiction {J} is not supported")
+    J, NY, J_ARGS = "ny", True, ["--jurisdiction", "ny"]
+    if "taxyear" in sys.modules:
+        require_year(sys.modules["taxyear"].YEAR, tool)
+
+
+if NY and "taxyear" in sys.modules:
+    require_year(sys.modules["taxyear"].YEAR)
 
 
 def ypath(top, year, *rest):

@@ -132,9 +132,14 @@ def run(kind, form, model, resume=False, reasoning_effort=None, max_output_token
     if r.returncode == 3 and carry:
         # T-218: carry earlier rulings over to repeat disagreements (same line, same content, line unchanged)
         fam = families.family_of(model) if model else families.DEFAULT
-        ccmd = [sys.executable, os.path.join(HERE, "carry.py"), "--kind", kind, "--form", form, *jurisdiction.J_ARGS]
-        if fam != families.DEFAULT:
-            ccmd += ["--family", fam]
+        fam_args = ["--family", fam] if fam != families.DEFAULT else []
+        if kind == "transcription":
+            # executable triage of the new reply first: carry.py rules the disagreements it shows equivalent
+            t = subprocess.run([sys.executable, os.path.join(HERE, "triage.py"), "--form", form, *fam_args,
+                                *YEAR_ARGS, *jurisdiction.J_ARGS], capture_output=True, text=True, cwd=ROOT)
+            if t.returncode:
+                last = f"{last} | triage failed: {(t.stderr.strip().splitlines() or [''])[-1][:200]}"
+        ccmd = [sys.executable, os.path.join(HERE, "carry.py"), "--kind", kind, "--form", form, *jurisdiction.J_ARGS, *fam_args]
         c = subprocess.run(ccmd, capture_output=True, text=True, cwd=ROOT)
         cl = (c.stdout.strip().splitlines() or [""])[-1]
         last = f"{last} | carry: {cl}"

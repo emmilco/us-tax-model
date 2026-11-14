@@ -16,6 +16,7 @@
 import { questionTemplate, type InterviewData } from "./interview.js";
 import { refsOf } from "./gates.js";
 import type { CanonicalData, Expr, FormDoc, Line } from "./types.js";
+import { YEAR } from "./year.js";
 
 export interface Umbrella {
   /** The new Bool input, `<doc>.<name>`. */
@@ -35,11 +36,11 @@ export const UMBRELLAS: Umbrella[] = [
     covers: ["sb.fbar_required", "sb.form8938", "sb.line8", "sb.form5471"] },
   { id: "sb.foreign_wide_any", label: "Any foreign account, asset, trust or corporation, or excluded foreign income",
     covers: ["sb.fbar_required", "sb.form8938", "sb.line8", "sb.form5471", "sa.excluded_income"] },
-  { id: "f1040.other_payments_any", label: "Federal tax withheld other than on a W-2, or any other payment toward 2025 tax",
+  { id: "f1040.other_payments_any", label: `Federal tax withheld other than on a W-2, or any other payment toward ${YEAR} tax`,
     covers: ["f1040.line25b", "f1040.line25c_other", "f1040.line26", "s3.line10"] },
   { id: "f1040.withholding_other_any", label: "Federal tax withheld other than on a W-2 (survey B-4)",
     covers: ["f1040.line25b", "f1040.line25c_other"] },
-  { id: "sd.carryovers_any", label: "A carryover into 2025 from an earlier year's return (capital loss, section 179, QBI loss)",
+  { id: "sd.carryovers_any", label: `A carryover into ${YEAR} from an earlier year's return (capital loss, section 179, QBI loss)`,
     covers: ["sd.carryover", "s179.line10", "qbi.carryforward"] },
   { id: "f5695.any", label: "Residential energy credits (Form 5695 Part I or Part II)",
     covers: ["f5695.part1_any", "f5695.part2_any"] },

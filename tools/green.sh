@@ -20,6 +20,22 @@ worktree_tree() {
   rm -rf "$tmp"
 }
 
+# The variables that change what a check-all step checks (its corpus, its sample, or the file it reads)
+# rather than how fast it runs. A run with one set is not the run a green record claims, so check_all.sh
+# and check_all_bg.sh refuse to start while one is set in the environment.
+SIZING_ENV="PROPERTY_RUNS INTERVIEW_RULES_RUNS INTERVIEW_RULES_RANDOM_EVERY INTERVIEW_RULES_SEEDS MUTATE_TIER SIBLINGS_BUGS NY_REVIEWS_ROOT REVIEW_PENDING_FILE"
+
+refuse_sizing_env() {
+  local v set=()
+  for v in $SIZING_ENV; do
+    if [ -n "${!v+x}" ]; then set+=("$v=${!v}"); fi
+  done
+  if [ "${#set[@]}" -gt 0 ]; then
+    echo "check-all: ${set[*]} is set in the environment and would change what the steps check; unset it (tools/green.sh, SIZING_ENV)" >&2
+    return 1
+  fi
+}
+
 marker_of() {
   case "$1" in
     full) echo "$MARKER" ;;

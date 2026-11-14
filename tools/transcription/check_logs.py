@@ -17,10 +17,10 @@ counted and printed, never required and never failed for staleness, open rulings
 integrity is still checked, for every family, by rulings.check() below (each ruling in a log equals its
 sidecar's) and by `review_store.py check` (every record present and named by its hash).
 
-Optional human reading logs (reviews/<year>/human/) earn H only with a current receipt,
-MATCH and reason, and exact contents committed by the named reader. Incomplete, stale or
-negative readings are pending without failing this check. Malformed/duplicate records and
-invalid identity or committed authorship remain failures (owner amendment 2026-10-24)."""
+Optional human reading logs (reviews/<year>/human/) are validated by tools/human_review/logs.py:
+malformed or duplicate records, a reader who is not a named person and a committed log whose
+author is not its reader fail this check. No tool issues the receipts H credit needs, so every
+reading is listed as pending with its verdict, without failing this check."""
 import json, os, re, subprocess, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

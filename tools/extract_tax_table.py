@@ -3,7 +3,7 @@
 """Extract the Tax Table from the archived IRS PDF into pinned data.
 
 Reads word bounding boxes (pdftotext -bbox-layout) from the archived
-`sources/<year>/i1040gi.pdf`, pages 68-79, and emits `tables/<year>/tax_table.yaml`.
+`sources/<year>/i1040gi.pdf`, on the pages its layout names (tools/layouts/<year>.json), and emits `tables/<year>/tax_table.yaml`.
 
 The extraction is deterministic: the same PDF bytes and the same script
 version produce the same table. Structural claims are validated before
@@ -26,14 +26,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
-import taxyear  # noqa: E402
 from taxyear import Y  # noqa: E402
+import layouts  # noqa: E402
 PDF = ROOT / "sources" / Y / "i1040gi.pdf"
 MANIFEST = ROOT / "sources" / Y / "manifest.json"
 OUT = ROOT / "tables" / Y / "tax_table.yaml"
 
-# PDF pages (1-based) of the Tax Table in each year's i1040gi.
-FIRST_PAGE, LAST_PAGE = taxyear.for_year({2025: (68, 79)}, "extract_tax_table.py: the Tax Table pages of i1040gi")
+# PDF pages (1-based) of the Tax Table in the year's i1040gi (tools/layouts/<year>.json).
+FIRST_PAGE, LAST_PAGE = layouts.get("tax_table")["ranges"]["table"]["pages"]
 TOOL_VERSION = "0.1"
 
 

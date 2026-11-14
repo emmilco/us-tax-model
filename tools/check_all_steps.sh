@@ -11,8 +11,8 @@
 # of a wave write the same file, and none reads what another of its wave writes:
 # wave 1 checks the sources, logs and the build's data and runs the tools' self-tests
 # (tools/self_tests.py, one step per group), wave 2 runs the evaluator checks, wave 3
-# writes the evidence report and review packets and runs human_review, which copies
-# reports/<year>/engine_differential.json that engine_differential (wave 2) rewrites.
+# writes the evidence report, which reads reports/<year>/engine_differential.json that
+# engine_differential (wave 2) rewrites, and the stage review packets.
 # Nothing checks these rules; a new step must be placed by them. A failing step fails
 # the run after its wave. So does a step that exits 0 without a line tools/step_output.py
 # requires of it: the line of each self-test the step runs inside itself, which would
@@ -28,10 +28,11 @@
 # run is the step ny_<name>, the same command with the New York flag.
 #
 # --tier full|fast|docs selects the steps (default full: every step). fast skips slow_steps: the
-# mutation and independent-evaluator checks a release runs, and the human-review tooling's test
-# (human packets are optional; tools/full_paths.txt makes a change to that tooling need the full
-# tier). evidence then marks its E column with the latest release reachable from HEAD, because the
-# engine differential it reads was not rerun. docs runs docs_steps: compile, the build without
+# mutation and independent-evaluator checks a release runs, and the interview length report. evidence then marks
+# its E column with the latest release reachable from HEAD, because the engine differential it reads was not rerun.
+# engine_differential reuses an outside engine's stored record while everything that determines it
+# is unchanged (tools/engines/engine_cache.py; ENGINE_CACHE=verify reruns every engine and compares,
+# as tools/release.sh does). docs runs docs_steps: compile, the build without
 # render, and the checks that read the bookkeeping paths of tools/docs_paths.txt (tools/tier_paths.py
 # lists every reader of them).
 set -euo pipefail
@@ -47,7 +48,7 @@ while [ "$#" -gt 0 ]; do
 done
 set -- ${args[@]+"${args[@]}"}
 run_args=("$@")
-slow_steps=" lean_build mutate engine_differential compare ny_compare ny_mutate human_review "
+slow_steps=" lean_build mutate engine_differential compare ny_compare ny_mutate interview_length "
 docs_steps=" compile build check_bug_inventory check_agent_runs check_docs_conventions siblings_check bookkeeping_self_tests coverage_tree "
 case "$tier" in
   full|fast|docs) ;;
@@ -162,6 +163,8 @@ jstep check_extraction "--jurisdiction ny" python3 tools/check_extraction.py
 step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
 step check_ptc_tables python3 tools/extract_ptc_tables.py --check "$@"
 step check_auto_limits python3 tools/check_auto_limits.py "$@"
+step check_printed_tables python3 tools/extract_printed_tables.py --check "$@"
+step check_layouts python3 tools/layouts.py --check "$@"
 step check_source_titles python3 tools/check_source_titles.py "$@"
 step check_bug_inventory python3 tools/check_bug_inventory.py
 step check_agent_runs python3 tools/check_agent_runs.py
@@ -191,8 +194,12 @@ step twins python3 tools/check_twins.py "$@"
 jstep completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py
 # No id of either jurisdiction's build carries a year, but for the ids listed in tools/year_ids.json (spec 4.3).
 step year_ids python3 tools/check_year_ids.py "$@"
-# New York only: its tax table.
+# The prepared operations of the next tax year (changes/<year+1>/) still apply to this year's forms, question bank and
+# profiles: no line gone or renamed, no expected text changed, no collision, reference or gate broken, evidence printed.
+jstep year_changes "--jurisdiction ny" python3 tools/year_changes.py --check
+# New York only: its tax tables and household credit tables, each the same as a fresh extraction.
 step ny_tax_table python3 tools/extract_ny_tax_table.py --check "$@"
+step ny_household_tables python3 tools/extract_ny_household_tables.py --check "$@"
 wave wave1
 
 step conjecture "${node[@]}" conjecture "$@"
@@ -202,6 +209,9 @@ step refusal_reach "${node[0]}" tools/check_refusal_reach.mjs "$@"
 step interview_rules "${node[@]}" interview-rules "$@"
 # The questions asked of a person, as stored and as shown for each entry: the tracked report is what the built questions give.
 step person_wording "${node[@]}" spouse-wording --report --check "$@"
+# reports/<year>/interview_length.md, rewritten above its hand-written findings (about 8 minutes on one core, so the
+# full tier only); interview_rules, above, fails when reports/<year>/interview_pruning.md is not what it finds.
+step interview_length "${node[@]}" interview-length --write "$@"
 # The coverage rows (interview/<year>/coverage/): each situation walked through the built interview ends where its row
 # says, and reports/<year>/interview_coverage.md is what the rows produce.
 step interview_coverage "${node[@]}" interview-coverage "$@"
@@ -227,6 +237,4 @@ if [ "$tier" = fast ]; then
 fi
 step evidence "${node[@]}" evidence ${evidence_args[@]+"${evidence_args[@]}"} "$@"
 step review_packets review_packets "$@"
-# The human-review tooling: reading, saved verdict, signed log and evidence report, in a sandbox.
-step human_review python3 tools/human_review/test_review.py "$@"
 wave wave3

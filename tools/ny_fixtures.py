@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Write fixtures/ny/2025/it201.json: the New York fixtures (decision C6), each expected value predicted from the
+"""Write fixtures/ny/<year>/it201.json: the New York fixtures (decision C6), each expected value predicted from the
 source by tools/ny_predict.py before the New York encoding is evaluated.
 
 Each case is a federal return from the federal fixtures (a whole-return case whose federal values are already
@@ -12,7 +12,10 @@ predictor alone, which reads no New York encoding. Refusal cases assert the refu
 The two official tax-table examples (taxable income $38,275, married filing jointly: State tax $1,773, City tax
 $1,292) are class A: a married-filing-jointly return whose New York taxable income is $38,275.
 
-    ny_fixtures.py            write the fixtures (runs the federal evaluation through the CLI)
+    ny_fixtures.py [--year N]     write the fixtures (runs the federal evaluation through the CLI)
+
+The year is taxyear.py's; the predictor knows one year's printing (tools/ny_predict.py, PRINTED) and exits for any
+other.
 """
 import copy
 import json
@@ -23,11 +26,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import YEAR, Y, YEAR_ARGS  # noqa: E402
+import jurisdiction  # noqa: E402
 import ny_predict  # noqa: E402
 from fixture_inputs import load_cases  # noqa: E402
 
 NODE = ["node", str(ROOT / "engine" / "dist" / "main.js")]
-OUT = ROOT / "fixtures" / "ny" / "2025" / "it201.json"
+OUT = ROOT / "fixtures" / "ny" / Y / "it201.json"
 FED_KEYS = ["f1040.status", "f1040.line1z", "f1040.line2b", "f1040.line3b", "s1.line1", "s1.line2a", "s1.line3", "f1040.line7a",
             "f1040.line4b", "f1040.line5b", "s1.line7", "f1040.line6b", "s1.line9", "s1.line26", "f1040.line11a", "f1040.line27a", "eic.limit"]
 
@@ -48,7 +53,7 @@ def federal_inputs(case_id):
     """A federal fixture case's inputs as it is evaluated (tools/fixture_inputs.py: parameters and test-data defaults)."""
     global _FEDERAL
     if _FEDERAL is None:
-        _FEDERAL = {c["id"]: c["inputs"] for c in load_cases(2025)}
+        _FEDERAL = {c["id"]: c["inputs"] for c in load_cases(YEAR)}
     return copy.deepcopy(_FEDERAL[case_id])
 
 
@@ -83,7 +88,7 @@ BASES = {  # status: (case id, the W-2 whose wages are varied)
 def federal(inputs):
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
         json.dump(inputs, f)
-    out = subprocess.run(NODE + ["eval", "--inputs", f.name, "--json"], capture_output=True, text=True, check=True).stdout
+    out = subprocess.run(NODE + ["eval", *YEAR_ARGS, "--inputs", f.name, "--json"], capture_output=True, text=True, check=True).stdout
     vals = json.loads(out)["values"]
     fed = {}
     for k in FED_KEYS:
@@ -136,7 +141,7 @@ def refusal(line, gate):
     """The refusal value of ny_it201.<line> for <gate>: its recorded form, remedy and citation (canonical build)."""
     global _CANON
     if _CANON is None:
-        _CANON = {l["id"]: l for l in json.loads((ROOT / "canonical" / "2025" / "ny_it201.json").read_text())["form"]["lines"]}
+        _CANON = {l["id"]: l for l in json.loads((ROOT / "canonical" / Y / "ny_it201.json").read_text())["form"]["lines"]}
     entry = next(r for r in _CANON[f"ny_it201.{line}"]["refuses"] if r["when"] == f"ny_it201.{gate}")
     return {"kind": "refusal", "gate": entry["when"], "form": entry["form"], "remedy": entry["remedy"], "cite": entry["cite"]}
 
@@ -284,7 +289,7 @@ def main():
     # class A: the official tax-table examples ($38,275, married filing jointly)
     w = wages_for_taxable("mfj", 38275)
     cases.append(make_case("official.tax_table_38275", "mfj", w, evidence="A — official New York example",
-                           note="Class A: the 2025 tax-tables page's examples, \"Their taxable income on line 38 is $38,275\" ... \"is $1,773\" "
+                           note=f"Class A: the {Y} tax-tables page's examples, \"Their taxable income on line 38 is $38,275\" ... \"is $1,773\" "
                                 "(State) and \"Their taxable income on line 47 is $38,275\" ... \"is $1,292\" (City) (ny_it201_tax_tables). "
                                 "Only lines 38, 39, 47 and 47a are the examples' own; the others are the predictor's."))
     # the Tax Table: band edges (single, mfj, hoh)
@@ -318,7 +323,7 @@ def main():
                                note="Use tax owed: the chart amount for federal AGI."))
     # withholding, estimated payments, refund and amount owed, line 79
     cases.append(make_case("payments.refund", "single", wages_for_taxable("single", 70000), w2s=((500000, 300000), (100000, 50000)),
-                           line75=20000, line79=10000, note="Two W-2 records, an estimated payment and part of the refund applied to 2026."))
+                           line75=20000, line79=10000, note=f"Two W-2 records, an estimated payment and part of the refund applied to {YEAR + 1}."))
     cases.append(make_case("payments.owe_safe", "single", wages_for_taxable("single", 150000), w2s=((600000, 300000),), prior_tax=800000,
                            note="A balance due with prepayments at least 100% of the prior-year tax: no estimated tax penalty refusal."))
     cases.append(make_case("payments.owe_safe_110", "single", wages_for_taxable("single", 150000), w2s=((600000, 300000),),
@@ -393,15 +398,17 @@ def main():
                            refuse=("gate.use_tax_abode", "line59"), note="use tax owed with a New York abode for only part of the year."))
     cases.append(make_case("refuse.no_prior_full_year", "single", wages_for_taxable("single", 150000), w2s=((600000, 300000),),
                            prior_tax=800000, ans={"prior_full_year": False}, refuse=("gate.estimated_penalty", "line81"),
-                           note="a balance due and no full-year 2024 return (no prior-year safe harbor)."))
+                           note=f"a balance due and no full-year {YEAR - 1} return (no prior-year safe harbor)."))
     cases.append(make_case("refuse.est_late", "single", wages_for_taxable("single", 70000), w2s=((900000, 500000),), line75=100000,
                            ans={"est_late": True}, refuse=("gate.estimated_penalty", "line81"),
                            note="an estimated installment paid late or short, even with a refund."))
     cases = [c for c in cases if c]
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({"tax_year": 2025, "cases": cases}, indent=1) + "\n")
+    OUT.write_text(json.dumps({"tax_year": YEAR, "cases": cases}, indent=1) + "\n")
     print(f"wrote {OUT.relative_to(ROOT)}: {len(cases)} cases")
 
 
 if __name__ == "__main__":
+    jurisdiction.ny_only("ny_fixtures")
+    ny_predict.require_printed()
     main()

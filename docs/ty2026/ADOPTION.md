@@ -30,12 +30,19 @@ unchanged.
    parameters, the proposed definitions and the draft-sourced fixture cases. Run
    `python3 research/ty2026/check_quotes.py` and `python3 research/ty2026/check_params.py` after refetching: a quote
    that is no longer printed on its page is the first sign a draft changed. Then fill the 108 parameters with no
-   source from the final instructions (`build_params.py`, the `V` table).
+   source from the final instructions (`build_params.py`, the `V` table). `python3 tools/propose_params.py --from 2025
+   --to 2026 --write --compare research/ty2026/params-2026.proposed.yaml` reads every 2025 parameter at its cited
+   place in the 2026 archive and lists, beside the hand-made proposal, what it found, what changed and what it
+   could not place (`reports/2026/params_proposal_from_2025.md`); rerun it after the finals are archived.
 4. **Adopt the definitions**: `python3 tools/year_diff.py --from 2025 --to 2026 --adopt` (copies the 2025 definitions
    and rulings to 2026 and relocates pages); then apply the proposed parameters
    (`params-2026.proposed.yaml` → `params/2026.yaml`, in the `params/2025.yaml` format: drop `source`, `note`,
    `new_in_2026`, `unsourced` and `retired`, and remove the retired `sc.mileage_rate`) and the proposed definitions (`research/ty2026/forms-proposed/*.diff`, then the other sections of the
-   change map in the order of the next section). Work the citation check (`tools/citations.py --strict --year 2026`)
+   change map in the order of the next section).
+   **Since 2026-11-14** the proposed definitions are operations in `changes/2026/`, checked against the 2025 forms
+   in check-all and applied by `--adopt` itself (`docs/2026-11-14_year_change_operations.md`); the other sections of
+   the change map are to be written there as operations, not as diffs. `--adopt` refuses while `s2.line20`, which
+   Schedule 3-A awaits, has no operation adding it (C-SCHED-10). Work the citation check (`tools/citations.py --strict --year 2026`)
    and `reports/2026/relocation_from_2025.md` until `node engine/dist/main.js build --year 2026` passes.
 5. **New inputs and their ripple** (fixtures, interview bank and profiles, `engine/src/generate.ts`,
    `tools/engines/generate_cases.py`, `tools/transcription/input_contracts/`), one owner per input
@@ -44,6 +51,10 @@ unchanged.
    `fixtures-proposed/2026-predicted.json` as full fixtures (every input answered), each re-checked against the final.
    The 2026 tables (Tax Table, EIC tables, Form 8962 tables, Pub. 946 tables, auto limits, `ltc_limit`,
    `simple_catchup`, `savers_rate`, `dc_rate`) need re-extraction from the finals.
+   `python3 tools/extract_printed_tables.py --write --year 2026` writes `dc_rate`, `ltc_limit`, `savers_rate`,
+   `rate_schedule` and the automobile limits from the archive (on the drafts it writes the first four; the 2026
+   `dc_rate` has a column for joint returns and one for the other statuses, so Form 2441 line 8 must read it by
+   filing status). `simple_catchup` is still written by hand (tools/README.md, "Printed tables").
 7. **Reviews of changed forms only** (CLAUDE.md, inference cost): transcription, render and class M for the forms whose
    content changed; completeness and screen reviews for those forms; adjudicate only those. Make the completeness
    prompt year-aware first (T-230). Which lines changed is decided by `tools/transcription/year_carry.py --year 2026
@@ -53,6 +64,14 @@ unchanged.
    on this preparation copy is in `research/ty2026/review_carry_rehearsal.md`.
 8. **`years.json`**: add 2026 only when every 2026 source is final and the 2026 build and fixtures pass.
 9. **check-all** on the owner's machine (`tools/check_all.sh --year 2026`), then commit with the hook.
+
+## New York
+
+New York publishes its 2026 forms after the IRS; nothing for New York 2026 is archived or prepared. The New York
+tools take `--year` and refuse a year with no New York data (`tools/README.md`, "New York years"). The order of work
+the day New York publishes, after the federal adoption (New York reads federal lines), and what a rehearsal on the
+2025 documents showed, are in `docs/ny/2026-11-14_ny_year_handling.md`, sections 3 and 6. Until New York 2026 is
+adopted, a check-all run for 2026 fails its New York steps (that note, section 5, D1).
 
 ## Definition changes in the order to do them (from `changes.md`)
 

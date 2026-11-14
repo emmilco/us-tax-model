@@ -1,0 +1,192 @@
+changes:
+  tax_year: 2026
+  form: s3a
+  entries:
+  - change: C-PRI-05
+    evidence:
+    - doc: f1040s3a
+      page: 2
+      quote: Subtract line 5 from line 2. This is your federal public benefit
+    - doc: f1040s3a
+      page: 2
+      quote: Do you want to receive your federal public benefit?
+    - doc: f1040s3a
+      page: 2
+      quote: Are you or your spouse a U.S. citizen, U.S. national, or qualified alien? See instructions
+    verified: draft
+    awaits:
+    - line: s2.line20
+      change: C-SCHED-10
+    note: Line 4 reads the 2026 Schedule 2 line 20, which the Schedule 2 renumbering (C-SCHED-10, not yet written as operations)
+      is to add.
+    operations:
+    - add_form:
+        form:
+          form:
+            id: s3a
+            kind: form
+            title: Schedule 3-A (Form 1040) — Federal Public Benefit
+            tax_year: 2026
+            lines:
+            - id: s3a.line1a
+              printed: 1a
+              label: Enter the amount from Form 1040 or 1040-SR, line 32a
+              type: NonNegDollars
+              expr:
+                op: copy
+                from: f1040.line32
+              cite:
+                doc: f1040s3a
+                locator: p. 2, Part I, line 1a (draft), "Enter the amount from Form 1040 or 1040-SR, line 32a"
+            - id: s3a.line1b
+              printed: 1b
+              label: Enter the amount from Form 1040 or 1040-SR, line 31
+              type: NonNegDollars
+              expr:
+                op: copy
+                from: f1040.line31
+              cite:
+                doc: f1040s3a
+                locator: p. 2, Part I, line 1b (draft), "Enter the amount from Form 1040 or 1040-SR, line 31"
+            - id: s3a.line2
+              printed: '2'
+              label: Subtract line 1b from line 1a
+              type: NonNegDollars
+              expr:
+                op: subtract_floor0
+                from: s3a.line1a
+                take: s3a.line1b
+              cite:
+                doc: f1040s3a
+                locator: p. 2, Part I, line 2 (draft), "Subtract line 1b from line 1a"
+            - id: s3a.line3
+              printed: '3'
+              label: Enter the amount from Form 1040 or 1040-SR, line 24a
+              type: NonNegDollars
+              expr:
+                op: copy
+                from: f1040.line24
+              cite:
+                doc: f1040s3a
+                locator: p. 2, Part I, line 3 (draft), "Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 24a"
+            - id: s3a.line4
+              printed: '4'
+              label: Enter the amount from Schedule 2 (Form 1040), line 20
+              type: NonNegDollars
+              expr:
+                op: copy
+                from: s2.line20
+              cite:
+                doc: f1040s3a
+                locator: p. 2, Part I, line 4 (draft), "Enter the amount from Schedule 2 (Form 1040), line 20"
+            - id: s3a.line5
+              printed: '5'
+              label: Subtract line 4 from line 3
+              type: Dollars
+              expr:
+                op: subtract
+                from: s3a.line3
+                take: s3a.line4
+              cite:
+                doc: f1040s3a
+                locator: p. 2, Part I, line 5 (draft), "Subtract line 4 from line 3"
+            - id: s3a.line6
+              printed: '6'
+              label: Is line 2 more than line 5? If yes, subtract line 5 from line 2 (your federal public benefit); if no,
+                enter -0-
+              type: NonNegDollars
+              expr:
+                op: subtract_floor0
+                from: s3a.line2
+                take: s3a.line5
+              cite:
+                doc: f1040s3a
+                locator: p. 2, Part I, line 6 (draft), "Is line 2 more than line 5?" and "Subtract line 5 from line 2. This
+                  is your federal public benefit"
+            - id: s3a.wants_benefit
+              printed: '7'
+              label: Do you want to receive your federal public benefit?
+              type: Bool
+              expr:
+                op: input
+                source: Schedule 3-A line 7 (interview question)
+              cite:
+                doc: f1040s3a
+                locator: p. 2, Part I, line 7 (draft), "Do you want to receive your federal public benefit?"
+            - id: s3a.zero
+              printed: (helper)
+              label: Year parameter sales.zero
+              type: NonNegDollars
+              expr:
+                op: param
+                ref: sales.zero
+              cite:
+                doc: f1040s3a
+                locator: p. 2, lines 6 and 8 (draft), "Enter -0-"
+            - id: s3a.gate.qualified_alien
+              printed: (gate)
+              label: Line 8 is reached (line 6 is more than zero and you want to receive your federal public benefit)
+              type: Bool
+              expr:
+                op: test
+                all:
+                - op: test
+                  gt:
+                  - s3a.line6
+                  - const: 0
+                - op: test
+                  eq:
+                  - s3a.wants_benefit
+                  - const: true
+              cite:
+                doc: f1040s3a
+                locator: p. 2 (draft), line 6, "Enter the result here, and go to line 7"; line 7, "Yes. Go to line 8"
+            - id: s3a.line8_wanted
+              printed: (helper)
+              label: Line 8 when you want the benefit (zero when line 6 is zero; refused when line 8's question must be answered)
+              type: NonNegDollars
+              expr:
+                op: copy
+                from: s3a.zero
+              cite:
+                doc: f1040s3a
+                locator: p. 2, Part II, line 8 (draft), "Are you or your spouse a U.S. citizen, U.S. national, or qualified
+                  alien? See instructions"
+              refuses:
+              - when: s3a.gate.qualified_alien
+                form: Schedule 3-A (2026), line 8
+                remedy: Schedule 3-A line 8 asks whether you or your spouse is a U.S. citizen, U.S. national or qualified
+                  alien; the term "qualified alien" is defined in instructions that are not published yet, so this tool cannot
+                  figure line 8 or Form 1040 lines 32b to 37.
+                cite:
+                  doc: f1040s3a
+                  locator: p. 2, Part II, line 8 (draft), "See instructions"
+            - id: s3a.line8
+              printed: '8'
+              label: Amount for Form 1040 line 32b (line 6 if you do not want the benefit; otherwise as line 8 directs)
+              type: NonNegDollars
+              expr:
+                op: choose
+                alternatives:
+                - guard:
+                    op: test
+                    eq:
+                    - s3a.wants_benefit
+                    - const: true
+                  then: s3a.line8_wanted
+                - guard:
+                    op: test
+                    eq:
+                    - s3a.wants_benefit
+                    - const: false
+                  then: s3a.line6
+              cite:
+                doc: f1040s3a
+                locator: 'p. 2, lines 6 to 8 (draft): line 6 "No. Stop. Enter -0- here. Enter -0- on Form 1040, 1040-SR, or
+                  1040-NR, line 32b"; line 7 "No. Stop. Enter the amount from line 6 on Form 1040, 1040-SR, or 1040-NR, line
+                  32b"'
+    - add_question:
+        input: s3a.wants_benefit
+        after: f1040.line36
+        entry:
+          order: 20

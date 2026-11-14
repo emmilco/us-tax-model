@@ -21,100 +21,106 @@ questions in the group that the order does not ask.
 
 | Returns | Complete | Refused | Not walkable | Static asked (mean) | Static max | Closed answers (mean, share) | Floor (mean) | Expected order (mean) | Saved at floor | Saved by expected |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Stage 5 whole returns | 9 | 2 | 0 | 90.1 | 115 | 74.1 (82%) | 90.1 | 90.1 | 0% | 0% |
-| generated returns | 3 | 9 | 0 | 157.3 | 257 | 106.3 (68%) | 157.3 | 157.3 | 0% | 0% |
-| minimal returns | 7 | 0 | 0 | 78.1 | 82 | 75.6 (97%) | 78.1 | 78.1 | 0% | 0% |
-| social-security profile fixtures | 16 | 5 | 0 | 11.3 | 13 | 6.3 (55%) | 11.3 | 11.3 | 0% | 0% |
+| Stage 5 whole returns | 9 | 2 | 0 | 96.3 | 122 | 80.3 (83%) | 96.3 | 96.3 | 0% | 0% |
+| generated returns | 3 | 9 | 0 | 144.7 | 172 | 112.0 (77%) | 144.7 | 144.7 | 0% | 0% |
+| minimal returns | 13 | 0 | 0 | 84.2 | 88 | 81.5 (97%) | 84.2 | 84.2 | 0% | 0% |
+| social-security profile fixtures | 15 | 6 | 0 | 13.2 | 15 | 8.4 (64%) | 13.2 | 13.2 | 0% | 0% |
 | sales profile fixtures | 58 | 14 | 0 | 62.7 | 110 | 54.2 (86%) | 62.7 | 62.7 | 0% | 0% |
-| stage4 profile fixtures | 69 | 62 | 0 | 73.5 | 112 | 64.6 (88%) | 73.4 | 73.5 | 0% | 0% |
-| **full profile, Stage 5 and generated** | 12 | 11 | 0 | 106.9 | 257 | 82.2 (77%) | 106.9 | 106.9 | 0% | 0% |
-| **all** | 162 | 92 | 0 | 66.2 | 257 | 56.9 (86%) | 66.1 | 66.2 | 0% | 0% |
+| stage4 profile fixtures | 69 | 62 | 0 | 81.6 | 122 | 72.7 (89%) | 81.4 | 81.6 | 0% | 0% |
+| **full profile, Stage 5 and generated** | 12 | 11 | 0 | 108.4 | 172 | 88.3 (81%) | 108.4 | 108.4 | 0% | 0% |
+| **all** | 167 | 93 | 0 | 71.0 | 172 | 62.3 (88%) | 71.0 | 71.0 | 0% | 0% |
 
 ## Closed answers no order avoids (missing-gate candidates)
 
 Templates asked, read by the complete return and answered closed, on the full profile, listed when at least half of the 12 complete
-Stage 5 and generated returns ask them closed (count of 7 complete minimal returns beside). *Kind*: `gate guard` is read by a gate's guard
+Stage 5 and generated returns ask them closed (count of 13 complete minimal returns beside). *Kind*: `gate guard` is read by a gate's guard
 (asking it is the gate working); `behind a gate` is already gated and its gate was open; `ungated` has no gate line above it, so only a
 new gate in the formal model (one question whose no makes it unreachable) could hide it. *Share yes* is the situation's share of all
 returns in `gate_frequencies.yaml` where the file names the template (- where it does not).
 
-57 templates are asked and answered closed on every one of the 12 returns; 34 of them have a recorded share
+64 templates are asked and answered closed on every one of the 12 returns; 39 of them have a recorded share
 yes below the rare-situation cut (0.05).
 
 | Template | Kind | Share yes | Stage 5 and generated | Minimal |
 |---|---|---|---|---|
-| `$dependent` | ungated | 0.2937 | 12 | 7 |
-| `$oi8z` | ungated | 0.0485 | 12 | 7 |
-| `$retirement` | ungated | 0.2357 | 12 | 7 |
-| `f1040.line25b` | ungated | 0.2081 | 12 | 7 |
-| `f1040.line25c_other` | ungated | 0.2081 | 12 | 7 |
-| `f2441.benefits` | ungated | 0.012 | 12 | 7 |
-| `f2441.care` | ungated | 0.045 | 12 | 7 |
-| `f4952.line4g` | ungated | - | 12 | 7 |
-| `f5695.part1_any` | ungated | 0.0252 | 12 | 7 |
-| `f5695.part2_any` | ungated | 0.0252 | 12 | 7 |
-| `f8863.paid` | ungated | 0.09 | 12 | 7 |
-| `f8959.unsupported` | ungated | 0.006 | 12 | 7 |
-| `household.community_property` | ungated | 0.2335 | 12 | 7 |
-| `household.married` | ungated | 0.3656 | 12 | 7 |
-| `household.spouse_died_2025` | ungated | 0.006 | 12 | 7 |
-| `person.age65` | ungated | 0.1944 | 12 | 7 |
-| `person.blind` | ungated | 0.004 | 12 | 7 |
-| `person.educator_expenses` | ungated | 0.0237 | 12 | 7 |
-| `person.rrta` | ungated | 0.0015 | 12 | 7 |
-| `person.sav_trad` | ungated | 0.08 | 12 | 7 |
-| `person.under16` | ungated | 0.005 | 12 | 7 |
-| `person.x_other` | ungated | 0.006 | 12 | 7 |
-| `qbi.carryforward` | ungated | 0.012 | 12 | 7 |
-| `qbi.unsupported` | ungated | 0.005 | 12 | 7 |
-| `refund.received` | ungated | 0.4 | 12 | 7 |
-| `s1.alimony` | ungated | 0.0029 | 12 | 7 |
-| `s1.cod_any` | ungated | 0.006 | 12 | 7 |
-| `s1.gambling_winnings` | ungated | 0.03 | 12 | 7 |
-| `s1.line8_other` | ungated | - | 12 | 7 |
-| `s1.line8g` | ungated | - | 12 | 7 |
-| `s1.line8h` | ungated | - | 12 | 7 |
-| `s1.line8i` | ungated | - | 12 | 7 |
-| `s1.line8j` | ungated | - | 12 | 7 |
-| `s1.line8r` | ungated | - | 12 | 7 |
-| `s1.uc_paid` | ungated | 0.0292 | 12 | 7 |
-| `s179.line10` | ungated | 0.012 | 12 | 7 |
-| `s1a.carloan` | ungated | 0.03 | 12 | 7 |
-| `s1a.overtime` | ungated | 0.1471 | 12 | 7 |
-| `s1a.tips` | ungated | 0.0195 | 12 | 7 |
-| `s2.amt` | ungated | 0.0009 | 12 | 7 |
-| `s2.other` | ungated | 0.008 | 12 | 7 |
-| `s3.line10` | ungated | 0.0153 | 12 | 7 |
-| `s3.line12` | ungated | 0.0019 | 12 | 7 |
-| `s3.line14` | ungated | 0.002 | 12 | 7 |
-| `sa.dependent` | ungated | 0.0469 | 12 | 7 |
-| `sa.elect_itemize` | ungated | - | 12 | 7 |
-| `sa.excluded_income` | ungated | 0.004 | 12 | 7 |
-| `sa.line5c` | ungated | - | 12 | 7 |
-| `sa.unsupported` | ungated | 0.01 | 12 | 7 |
-| `scope.credits` | ungated | 0.012 | 12 | 7 |
-| `scope.other_income` | ungated | 0.015 | 12 | 7 |
-| `scope.other_line16` | ungated | 0.002 | 12 | 7 |
-| `scope.schedule1` | ungated | 0.12 | 12 | 7 |
-| `sd.carryover` | ungated | 0.045 | 12 | 7 |
-| `sd.other_forms` | ungated | 0.025 | 12 | 7 |
-| `ssb.benefits` | ungated | 0.1999 | 12 | 7 |
-| `sb.foreign_any` | gate guard | - | 12 | 6 |
-| `$f1095a` | ungated | 0.085 | 11 | 7 |
-| `$sc` | ungated | 0.1898 | 11 | 7 |
-| `sli.interest` | ungated | 0.08 | 11 | 7 |
-| `$f8889` | ungated | 0.11 | 9 | 7 |
-| `$sales` | ungated | 0.13 | 9 | 7 |
-| `ftc.taxes` | ungated | 0.0734 | 9 | 7 |
-| `sa.line5b` | ungated | - | 9 | 7 |
-| `sa.line1` | ungated | - | 8 | 7 |
-| `sa.line8a` | ungated | - | 8 | 7 |
-| `div.any` | gate guard | - | 8 | 6 |
-| `f4952.has_interest` | gate guard | 0.01 | 8 | 6 |
-| `$interest` | ungated | 0.3441 | 7 | 7 |
-| `sa.line5a` | ungated | - | 7 | 7 |
-| `sa.gifts` | gate guard | 0.4 | 7 | 6 |
-| `f1040.line26` | ungated | 0.0657 | 6 | 7 |
+| `$dependent` | ungated | 0.2937 | 12 | 13 |
+| `$oi8z` | ungated | 0.0485 | 12 | 13 |
+| `$retirement` | ungated | 0.2357 | 12 | 13 |
+| `$sc` | ungated | 0.1898 | 12 | 13 |
+| `f1040.line25b` | ungated | 0.2081 | 12 | 13 |
+| `f1040.line25c_other` | ungated | 0.2081 | 12 | 13 |
+| `f2441.benefits` | ungated | 0.012 | 12 | 13 |
+| `f2441.care` | ungated | 0.045 | 12 | 13 |
+| `f4952.line4g` | ungated | - | 12 | 13 |
+| `f5695.part1_any` | ungated | 0.0252 | 12 | 13 |
+| `f5695.part2_any` | ungated | 0.0252 | 12 | 13 |
+| `f8863.paid` | ungated | 0.09 | 12 | 13 |
+| `f8959.unsupported` | ungated | 0.006 | 12 | 13 |
+| `household.community_property` | ungated | 0.2335 | 12 | 13 |
+| `household.married` | ungated | 0.3656 | 12 | 13 |
+| `household.spouse_died_2025` | ungated | 0.006 | 12 | 13 |
+| `person.age65` | ungated | 0.1944 | 12 | 13 |
+| `person.blind` | ungated | 0.004 | 12 | 13 |
+| `person.educator_expenses` | ungated | 0.0237 | 12 | 13 |
+| `person.rrta` | ungated | 0.0015 | 12 | 13 |
+| `person.sav_trad` | ungated | 0.08 | 12 | 13 |
+| `person.under16` | ungated | 0.005 | 12 | 13 |
+| `person.x_other` | ungated | 0.006 | 12 | 13 |
+| `qbi.carryforward` | ungated | 0.012 | 12 | 13 |
+| `qbi.unsupported` | ungated | 0.005 | 12 | 13 |
+| `refund.received` | ungated | 0.4 | 12 | 13 |
+| `s1.alimony` | ungated | 0.0029 | 12 | 13 |
+| `s1.cod_any` | ungated | 0.006 | 12 | 13 |
+| `s1.gambling_winnings` | ungated | 0.03 | 12 | 13 |
+| `s1.line8_other` | ungated | - | 12 | 13 |
+| `s1.line8g` | ungated | - | 12 | 13 |
+| `s1.line8h` | ungated | - | 12 | 13 |
+| `s1.line8i` | ungated | - | 12 | 13 |
+| `s1.line8j` | ungated | - | 12 | 13 |
+| `s1.line8r` | ungated | - | 12 | 13 |
+| `s1.uc_paid` | ungated | 0.0292 | 12 | 13 |
+| `s179.line10` | ungated | 0.012 | 12 | 13 |
+| `s1a.carloan` | ungated | 0.03 | 12 | 13 |
+| `s1a.overtime` | ungated | 0.1471 | 12 | 13 |
+| `s1a.tips` | ungated | 0.0195 | 12 | 13 |
+| `s2.amt` | ungated | 0.0009 | 12 | 13 |
+| `s2.other` | ungated | 0.008 | 12 | 13 |
+| `s3.credit_bond` | ungated | 0.012 | 12 | 13 |
+| `s3.disability_retired` | ungated | - | 12 | 13 |
+| `s3.line10` | ungated | 0.0153 | 12 | 13 |
+| `s3.repaid_income` | ungated | 0.002 | 12 | 13 |
+| `sa.dependent` | ungated | 0.0469 | 12 | 13 |
+| `sa.elect_itemize` | ungated | - | 12 | 13 |
+| `sa.excluded_income` | ungated | 0.004 | 12 | 13 |
+| `sa.line5c` | ungated | - | 12 | 13 |
+| `sa.unsupported` | ungated | 0.01 | 12 | 13 |
+| `scope.other_income` | ungated | 0.015 | 12 | 13 |
+| `scope.other_line16` | ungated | 0.002 | 12 | 13 |
+| `scope.schedule1` | ungated | 0.12 | 12 | 13 |
+| `sd.carryover` | ungated | 0.045 | 12 | 13 |
+| `sd.other_forms` | ungated | 0.025 | 12 | 13 |
+| `ssb.benefits` | ungated | 0.1999 | 12 | 13 |
+| `s3.adoption_any` | gate guard | 0.012 | 12 | 12 |
+| `s3.ev` | gate guard | 0.012 | 12 | 12 |
+| `s3.farmland` | gate guard | 0.002 | 12 | 12 |
+| `s3.foreign_any` | gate guard | 0.002 | 12 | 12 |
+| `s3.kerosene` | gate guard | 0.0019 | 12 | 12 |
+| `s3.prior_other_forms` | gate guard | 0.012 | 12 | 12 |
+| `sb.foreign_any` | gate guard | - | 12 | 12 |
+| `$f1095a` | ungated | 0.085 | 11 | 13 |
+| `sli.interest` | ungated | 0.08 | 11 | 13 |
+| `$f8889` | ungated | 0.11 | 9 | 13 |
+| `$sales` | ungated | 0.13 | 9 | 13 |
+| `ftc.taxes` | ungated | 0.0734 | 9 | 13 |
+| `sa.line5b` | ungated | - | 9 | 13 |
+| `sa.line1` | ungated | - | 8 | 13 |
+| `sa.line8a` | ungated | - | 8 | 13 |
+| `div.any` | gate guard | - | 8 | 12 |
+| `f4952.has_interest` | gate guard | 0.01 | 8 | 12 |
+| `$interest` | ungated | 0.3441 | 7 | 13 |
+| `sa.line5a` | ungated | - | 7 | 13 |
+| `sa.gifts` | gate guard | 0.4 | 7 | 12 |
+| `f1040.line26` | ungated | 0.0657 | 6 | 13 |
 
 ## Questions order could avoid
 
@@ -133,71 +139,77 @@ better order (or a nested `choose`) would not ask. On the full profile these are
 
 | Return | Status | Static | Closed | Floor | Expected |
 |---|---|---|---|---|---|
-| stage5.return.owed | complete | 101 | 81 | 101 | 101 |
-| stage5.return.refund | complete | 80 | 71 | 80 | 80 |
-| stage5.return.itemized | complete | 115 | 80 | 115 | 115 |
-| stage5.refuse.screens | refused | 39 | 35 | - | - |
-| stage5.refuse.other_income | refused | 44 | 41 | - | - |
-| stage5.return.refund_f4952_screens_unused | complete | 80 | 71 | 80 | 80 |
-| stage5.return.refund_f8960_unsupported_unused | complete | 80 | 71 | 80 | 80 |
-| stage5.return.f8960_unsupported_agi_at_threshold | complete | 80 | 71 | 80 | 80 |
-| stage5.return.refund_f8960_refund_unused | complete | 80 | 71 | 80 | 80 |
-| stage5.return.refund_combat_pay_no_children | complete | 80 | 71 | 80 | 80 |
-| stage5.return.itemized_f8960_allocation_unused | complete | 115 | 80 | 115 | 115 |
+| stage5.return.owed | complete | 107 | 87 | 107 | 107 |
+| stage5.return.refund | complete | 86 | 77 | 86 | 86 |
+| stage5.return.itemized | complete | 122 | 87 | 122 | 122 |
+| stage5.refuse.screens | refused | 39 | 36 | - | - |
+| stage5.refuse.other_income | refused | 43 | 40 | - | - |
+| stage5.return.refund_f4952_screens_unused | complete | 86 | 77 | 86 | 86 |
+| stage5.return.refund_f8960_unsupported_unused | complete | 86 | 77 | 86 | 86 |
+| stage5.return.f8960_unsupported_agi_at_threshold | complete | 86 | 77 | 86 | 86 |
+| stage5.return.refund_f8960_refund_unused | complete | 86 | 77 | 86 | 86 |
+| stage5.return.refund_combat_pay_no_children | complete | 86 | 77 | 86 | 86 |
+| stage5.return.itemized_f8960_allocation_unused | complete | 122 | 87 | 122 | 122 |
 
 ### generated returns
 
 | Return | Status | Static | Closed | Floor | Expected |
 |---|---|---|---|---|---|
-| generated.0 | complete | 111 | 90 | 111 | 111 |
-| generated.1 | refused | 100 | 72 | - | - |
-| generated.2 | refused | 129 | 83 | - | - |
-| generated.3 | refused | 138 | 102 | - | - |
-| generated.4 | complete | 257 | 143 | 257 | 257 |
-| generated.5 | refused | 74 | 42 | - | - |
-| generated.6 | complete | 104 | 86 | 104 | 104 |
-| generated.7 | refused | 74 | 55 | - | - |
-| generated.8 | refused | 148 | 104 | - | - |
-| generated.9 | refused | 100 | 72 | - | - |
-| generated.10 | refused | 215 | 147 | - | - |
-| generated.11 | refused | 122 | 82 | - | - |
+| generated.0 | complete | 121 | 102 | 121 | 121 |
+| generated.1 | refused | 139 | 96 | - | - |
+| generated.2 | refused | 122 | 90 | - | - |
+| generated.3 | refused | 148 | 114 | - | - |
+| generated.4 | complete | 141 | 105 | 141 | 141 |
+| generated.5 | refused | 118 | 80 | - | - |
+| generated.6 | complete | 172 | 129 | 172 | 172 |
+| generated.7 | refused | 152 | 103 | - | - |
+| generated.8 | refused | 186 | 130 | - | - |
+| generated.9 | refused | 178 | 127 | - | - |
+| generated.10 | refused | 222 | 160 | - | - |
+| generated.11 | refused | 124 | 91 | - | - |
 
 ### minimal returns
 
 | Return | Status | Static | Closed | Floor | Expected |
 |---|---|---|---|---|---|
-| every gate closed | complete | 76 | 74 | 76 | 76 |
-| div.any = true alone | complete | 82 | 79 | 82 | 82 |
-| f4952.has_interest = true alone | complete | 78 | 75 | 78 | 78 |
-| f8889.coverage_year = "family" alone | complete | 76 | 74 | 76 | 76 |
-| f8889.coverage_year = "changed" alone | complete | 76 | 74 | 76 | 76 |
-| sa.gifts = true alone | complete | 79 | 76 | 79 | 79 |
-| sb.foreign_any = true alone | complete | 80 | 77 | 80 | 80 |
+| every gate closed | complete | 82 | 80 | 82 | 82 |
+| div.any = true alone | complete | 88 | 85 | 88 | 88 |
+| f4952.has_interest = true alone | complete | 84 | 81 | 84 | 84 |
+| f8889.coverage_year = "family" alone | complete | 82 | 80 | 82 | 82 |
+| f8889.coverage_year = "changed" alone | complete | 82 | 80 | 82 | 82 |
+| s3.adoption_any = true alone | complete | 84 | 81 | 84 | 84 |
+| s3.ev = true alone | complete | 85 | 82 | 85 | 85 |
+| s3.farmland = true alone | complete | 83 | 80 | 83 | 83 |
+| s3.foreign_any = true alone | complete | 86 | 83 | 86 | 86 |
+| s3.kerosene = true alone | complete | 83 | 80 | 83 | 83 |
+| s3.prior_other_forms = true alone | complete | 85 | 82 | 85 | 85 |
+| sa.gifts = true alone | complete | 85 | 82 | 85 | 85 |
+| sb.foreign_any = true alone | complete | 86 | 83 | 86 | 86 |
 
 ### social-security profile fixtures
 
 | Return | Status | Static | Closed | Floor | Expected |
 |---|---|---|---|---|---|
-| ss.multi | complete | 13 | 7 | 13 | 13 |
-| ss.base.below | complete | 13 | 7 | 13 | 13 |
-| ss.base.exact | complete | 13 | 7 | 13 | 13 |
-| ss.base.above | complete | 13 | 7 | 13 | 13 |
-| ss.withheld.below | complete | 13 | 7 | 13 | 13 |
-| ss.withheld.exact | complete | 13 | 7 | 13 | 13 |
-| ss.withheld.above | complete | 13 | 7 | 13 | 13 |
-| ss.single.exact | complete | 8 | 5 | 8 | 8 |
-| ss.single.below | complete | 8 | 5 | 8 | 8 |
+| ss.multi | complete | 15 | 9 | 15 | 15 |
+| ss.base.below | complete | 15 | 9 | 15 | 15 |
+| ss.base.exact | complete | 15 | 9 | 15 | 15 |
+| ss.base.above | complete | 15 | 9 | 15 | 15 |
+| ss.withheld.below | complete | 15 | 9 | 15 | 15 |
+| ss.withheld.exact | complete | 15 | 9 | 15 | 15 |
+| ss.withheld.above | complete | 15 | 9 | 15 | 15 |
+| ss.single.exact | complete | 10 | 7 | 10 | 10 |
+| ss.single.below | complete | 10 | 7 | 10 | 10 |
 | ss.single.over | refused | 6 | 3 | - | - |
 | ss.multi.over | refused | 7 | 3 | - | - |
-| ss.tips | complete | 13 | 6 | 13 | 13 |
-| ss.none | complete | 7 | 6 | 7 | 7 |
-| ss.mfj | complete | 7 | 6 | 7 | 7 |
+| ss.tips | complete | 15 | 8 | 15 | 15 |
+| ss.none | complete | 9 | 8 | 9 | 9 |
+| ss.mfj | complete | 9 | 8 | 9 | 9 |
 | ss.mfs | refused | 3 | 2 | - | - |
 | ss.rrta | refused | 4 | 2 | - | - |
-| ss.hoh | complete | 13 | 7 | 13 | 13 |
-| ss.qss | complete | 13 | 7 | 13 | 13 |
-| ss.other.components | complete | 13 | 4 | 13 | 13 |
-| ss.person.separation | complete | 8 | 5 | 8 | 8 |
+| ss.hoh | complete | 15 | 9 | 15 | 15 |
+| ss.qss | complete | 15 | 9 | 15 | 15 |
+| ss.other.components | refused | 15 | 6 | - | - |
+| ss.person.separation | complete | 10 | 7 | 10 | 10 |
 | ss.early.refusal | refused | 7 | 4 | - | - |
 
 ### sales profile fixtures
@@ -281,139 +293,141 @@ better order (or a nested `choose`) would not ask. On the full profile these are
 
 | Return | Status | Static | Closed | Floor | Expected |
 |---|---|---|---|---|---|
-| stage4.mut.div_box3_basis_reconciled | complete | 71 | 64 | 71 | 71 |
-| stage4.refuse.div.section1202 | refused | 66 | 59 | - | - |
-| stage4.refuse.div.amt | refused | 65 | 59 | - | - |
-| stage4.refuse.div.special | refused | 68 | 62 | - | - |
-| stage4.refuse.div.inconsistent | refused | 72 | 65 | - | - |
-| stage4.refuse.div.components | refused | 72 | 65 | - | - |
-| stage4.refuse.div.overlapping | refused | 73 | 65 | - | - |
-| stage4.refuse.div.basis | refused | 69 | 63 | - | - |
-| stage4.interest.limited | complete | 78 | 69 | 78 | 78 |
-| stage4.interest.exception | complete | 78 | 69 | 78 | 78 |
-| stage4.interest.election | complete | 78 | 67 | 78 | 78 |
-| stage4.4952.carryover_no_income | complete | 69 | 61 | 69 | 69 |
-| stage4.f4952.line4a_taxable_interest_and_dividends | complete | 80 | 68 | 80 | 80 |
-| stage4.refuse.4952.unsupported | refused | 62 | 54 | - | - |
-| stage4.refuse.4952.alternative_allocation | refused | 63 | 55 | - | - |
-| stage4.refuse.4952.election | refused | 64 | 57 | - | - |
-| stage4.refuse.4952.bad_dividends | refused | 73 | 64 | - | - |
-| stage4.refuse.4952.unsupported_with_carryover | refused | 62 | 54 | - | - |
-| stage4.interest.short_term | complete | 70 | 60 | 70 | 70 |
-| stage4.f4952.unused_unsupported | complete | 64 | 59 | 64 | 64 |
-| stage4.f4952.unused_alternative_allocation | complete | 64 | 59 | 64 | 64 |
-| stage4.base | complete | 64 | 59 | 64 | 64 |
-| stage4.medicare.single.-1 | complete | 64 | 59 | 64 | 64 |
-| stage4.medicare.single.0 | complete | 64 | 59 | 64 | 64 |
-| stage4.medicare.single.100000 | complete | 64 | 59 | 64 | 64 |
-| stage4.medicare.hoh.-1 | complete | 81 | 67 | 80 | 81 |
-| stage4.medicare.hoh.0 | complete | 81 | 67 | 80 | 81 |
-| stage4.medicare.hoh.100000 | complete | 81 | 67 | 80 | 81 |
-| stage4.medicare.qss.-1 | complete | 63 | 57 | 63 | 63 |
-| stage4.medicare.qss.0 | complete | 63 | 57 | 63 | 63 |
-| stage4.medicare.qss.100000 | complete | 63 | 57 | 63 | 63 |
-| stage4.medicare.mfs.-1 | refused | 59 | 54 | - | - |
-| stage4.medicare.mfs.0 | refused | 59 | 54 | - | - |
-| stage4.medicare.mfs.100000 | refused | 59 | 54 | - | - |
-| stage4.medicare.mfj.-1 | refused | 39 | 34 | - | - |
-| stage4.medicare.mfj.0 | refused | 39 | 34 | - | - |
-| stage4.medicare.mfj.100000 | refused | 39 | 34 | - | - |
-| stage4.medicare.withholding | complete | 64 | 59 | 64 | 64 |
-| stage4.medicare.withholding_floor | complete | 64 | 59 | 64 | 64 |
-| stage4.refuse.8959 | refused | 56 | 52 | - | - |
-| stage4.niit.allocated | complete | 89 | 70 | 88 | 89 |
-| stage4.niit.single.0 | complete | 74 | 67 | 74 | 74 |
-| stage4.niit.single.100000 | complete | 76 | 69 | 76 | 76 |
-| stage4.niit.hoh.0 | complete | 91 | 75 | 90 | 91 |
-| stage4.niit.hoh.100000 | complete | 93 | 77 | 92 | 93 |
-| stage4.niit.qss.0 | complete | 73 | 65 | 73 | 73 |
-| stage4.niit.qss.100000 | complete | 75 | 67 | 75 | 75 |
-| stage4.niit.mfj.0 | refused | 48 | 41 | - | - |
-| stage4.niit.mfj.100000 | refused | 48 | 41 | - | - |
-| stage4.niit.mfs.0 | refused | 69 | 62 | - | - |
-| stage4.niit.mfs.100000 | refused | 71 | 64 | - | - |
-| stage4.niit.standard_no_deduction | complete | 80 | 70 | 80 | 80 |
-| stage4.refuse.8960.unsupported | refused | 65 | 59 | - | - |
-| stage4.refuse.8960.refund | refused | 66 | 60 | - | - |
-| stage4.niit.loss_floor | complete | 72 | 62 | 72 | 72 |
-| stage4.refuse.niit.allocation | refused | 67 | 60 | - | - |
-| stage4.refuse.8960.unsupported.simultaneous | refused | 65 | 59 | - | - |
-| stage4.additional_taxes.combined | complete | 89 | 70 | 88 | 89 |
-| stage4.official.medicare_example5 | refused | 39 | 34 | - | - |
-| stage4.ftc.29999 | complete | 69 | 59 | 69 | 69 |
-| stage4.ftc.30000 | complete | 69 | 59 | 69 | 69 |
-| stage4.ftc.regular_limit | complete | 69 | 59 | 69 | 69 |
-| stage4.refuse.ftc.limit | refused | 59 | 53 | - | - |
-| stage4.refuse.ftc.passive | refused | 60 | 54 | - | - |
-| stage4.refuse.ftc.statements | refused | 63 | 54 | - | - |
-| stage4.refuse.ftc.eligible | refused | 63 | 54 | - | - |
-| stage4.refuse.ftc.election | refused | 63 | 54 | - | - |
-| stage4.mut.savers_claimed_dependent | refused | 50 | 44 | - | - |
-| stage4.qbi.below | complete | 76 | 68 | 76 | 76 |
-| stage4.qbi.exact | complete | 76 | 68 | 76 | 76 |
-| stage4.qbi.above | complete | 76 | 68 | 76 | 76 |
-| stage4.qbi.income_limit | complete | 74 | 66 | 74 | 74 |
-| stage4.qbi.capital_limit | complete | 78 | 69 | 78 | 78 |
-| stage4.refuse.qbi | refused | 64 | 58 | - | - |
-| stage4.qbi.zero_income | complete | 64 | 60 | 64 | 64 |
-| stage4.refuse.s2.amt | refused | 62 | 56 | - | - |
-| stage4.refuse.s2.other | refused | 63 | 57 | - | - |
-| stage4.refuse.s2.amt.simultaneous | refused | 62 | 56 | - | - |
-| stage4.refuse.gift.sectionB | refused | 66 | 58 | - | - |
-| stage4.salt.below | complete | 67 | 61 | 67 | 67 |
-| stage4.salt.exact | complete | 67 | 61 | 67 | 67 |
-| stage4.salt.phase | complete | 67 | 61 | 67 | 67 |
-| stage4.salt.floor | complete | 66 | 60 | 66 | 66 |
-| stage4.salt.above | complete | 66 | 60 | 66 | 66 |
-| stage4.salt.mfs | refused | 61 | 55 | - | - |
-| stage4.salt.mfs_floor | refused | 61 | 55 | - | - |
-| stage4.salt.low_paid | complete | 66 | 60 | 66 | 66 |
-| stage4.medical.below | complete | 64 | 58 | 64 | 64 |
-| stage4.medical.above | complete | 64 | 58 | 64 | 64 |
-| stage4.standard.single | complete | 66 | 58 | 66 | 66 |
-| stage4.standard.hoh | complete | 83 | 66 | 82 | 83 |
-| stage4.standard.qss | complete | 65 | 56 | 65 | 65 |
-| stage4.standard.mfj | refused | 41 | 33 | - | - |
-| stage4.standard.mfs | refused | 60 | 53 | - | - |
-| stage4.standard.spouse_itemizes | refused | 58 | 52 | - | - |
-| stage4.standard.itemized | complete | 64 | 58 | 64 | 64 |
-| stage4.standard.elected | complete | 64 | 58 | 63 | 64 |
-| stage4.gift.50000.false | complete | 69 | 61 | 69 | 69 |
-| stage4.gift.500000.false | complete | 69 | 61 | 69 | 69 |
-| stage4.gift.500001.true | complete | 70 | 61 | 70 | 70 |
-| stage4.refuse.sa.unsupported | refused | 53 | 47 | - | - |
-| stage4.refuse.sa.charity_limited | refused | 55 | 48 | - | - |
-| stage4.refuse.sa.excluded_income | refused | 55 | 49 | - | - |
-| stage4.refuse.standard.dependent | refused | 50 | 44 | - | - |
-| stage4.refuse.dependent_itemizes | refused | 50 | 44 | - | - |
-| stage4.refuse.standard.spouse_extra | refused | 59 | 53 | - | - |
-| stage4.refuse.gift.special | refused | 64 | 56 | - | - |
-| stage4.refuse.sa.unsupported.simultaneous | refused | 53 | 47 | - | - |
-| stage4.deductions.combined | complete | 76 | 58 | 76 | 76 |
-| audit.sa.negative_agi_medical | complete | 112 | 100 | 112 | 112 |
-| audit.sa.negative_agi_medical_paid | complete | 112 | 99 | 112 | 112 |
-| stage4.refuse.sb.unsupported | refused | 61 | 54 | - | - |
-| stage4.refuse.sb.fbar_required | refused | 61 | 55 | - | - |
-| stage4.refuse.sb.form8938 | refused | 62 | 56 | - | - |
-| stage4.refuse.sb.line8 | refused | 63 | 57 | - | - |
-| stage4.sb.foreign_no_filing | complete | 64 | 59 | 64 | 64 |
-| stage4.refuse.sb.unsupported.simultaneous | refused | 61 | 54 | - | - |
-| stage4.refuse.scope.schedule1 | refused | 38 | 33 | - | - |
-| stage4.refuse.scope.credits | refused | 59 | 53 | - | - |
-| stage4.refuse.scope.other_income | refused | 45 | 40 | - | - |
-| stage4.refuse.scope.other_line16 | refused | 57 | 51 | - | - |
-| stage4.refuse.married | refused | 59 | 54 | - | - |
-| stage4.sdtw.special_rates | complete | 77 | 68 | 77 | 77 |
-| stage4.sdtw.skip22 | complete | 78 | 68 | 77 | 78 |
-| stage4.sdtw.skip32 | complete | 75 | 68 | 75 | 75 |
-| stage4.sdtw.twenty_percent | complete | 77 | 68 | 77 | 77 |
-| stage4.sdtw.lower_bracket | complete | 75 | 66 | 75 | 75 |
-| stage4.sdtw.line12_takes_line9 | complete | 85 | 71 | 85 | 85 |
-| stage4.mut.sdtw_28pct_no_1250 | complete | 77 | 69 | 77 | 77 |
-| stage4.mut.sdtw_1250_line32_is_line1 | complete | 75 | 68 | 75 | 75 |
-| stage4.feeders.shortloss | complete | 81 | 67 | 81 | 81 |
+| stage4.mut.div_box3_basis_reconciled | complete | 79 | 72 | 79 | 79 |
+| stage4.refuse.div.section1202 | refused | 74 | 67 | - | - |
+| stage4.refuse.div.amt | refused | 73 | 67 | - | - |
+| stage4.refuse.div.special | refused | 76 | 70 | - | - |
+| stage4.refuse.div.inconsistent | refused | 80 | 73 | - | - |
+| stage4.refuse.div.components | refused | 80 | 73 | - | - |
+| stage4.refuse.div.overlapping | refused | 81 | 73 | - | - |
+| stage4.refuse.div.basis | refused | 77 | 71 | - | - |
+| stage4.interest.limited | complete | 86 | 77 | 86 | 86 |
+| stage4.interest.exception | complete | 86 | 77 | 86 | 86 |
+| stage4.interest.election | complete | 86 | 75 | 86 | 86 |
+| stage4.4952.carryover_no_income | complete | 77 | 69 | 77 | 77 |
+| stage4.f4952.line4a_taxable_interest_and_dividends | complete | 88 | 76 | 88 | 88 |
+| stage4.refuse.4952.unsupported | refused | 70 | 62 | - | - |
+| stage4.refuse.4952.alternative_allocation | refused | 71 | 63 | - | - |
+| stage4.refuse.4952.election | refused | 72 | 65 | - | - |
+| stage4.refuse.4952.bad_dividends | refused | 81 | 72 | - | - |
+| stage4.refuse.4952.unsupported_with_carryover | refused | 70 | 62 | - | - |
+| stage4.interest.short_term | complete | 78 | 68 | 78 | 78 |
+| stage4.f4952.unused_unsupported | complete | 72 | 67 | 72 | 72 |
+| stage4.f4952.unused_alternative_allocation | complete | 72 | 67 | 72 | 72 |
+| stage4.base | complete | 72 | 67 | 72 | 72 |
+| stage4.medicare.single.-1 | complete | 72 | 67 | 72 | 72 |
+| stage4.medicare.single.0 | complete | 72 | 67 | 72 | 72 |
+| stage4.medicare.single.100000 | complete | 72 | 67 | 72 | 72 |
+| stage4.medicare.hoh.-1 | complete | 89 | 75 | 88 | 89 |
+| stage4.medicare.hoh.0 | complete | 89 | 75 | 88 | 89 |
+| stage4.medicare.hoh.100000 | complete | 89 | 75 | 88 | 89 |
+| stage4.medicare.qss.-1 | complete | 71 | 65 | 71 | 71 |
+| stage4.medicare.qss.0 | complete | 71 | 65 | 71 | 71 |
+| stage4.medicare.qss.100000 | complete | 71 | 65 | 71 | 71 |
+| stage4.medicare.mfs.-1 | refused | 60 | 55 | - | - |
+| stage4.medicare.mfs.0 | refused | 60 | 55 | - | - |
+| stage4.medicare.mfs.100000 | refused | 60 | 55 | - | - |
+| stage4.medicare.mfj.-1 | refused | 48 | 43 | - | - |
+| stage4.medicare.mfj.0 | refused | 48 | 43 | - | - |
+| stage4.medicare.mfj.100000 | refused | 48 | 43 | - | - |
+| stage4.medicare.withholding | complete | 72 | 67 | 72 | 72 |
+| stage4.medicare.withholding_floor | complete | 72 | 67 | 72 | 72 |
+| stage4.refuse.8959 | refused | 64 | 60 | - | - |
+| stage4.niit.allocated | complete | 97 | 78 | 96 | 97 |
+| stage4.niit.single.0 | complete | 82 | 75 | 82 | 82 |
+| stage4.niit.single.100000 | complete | 84 | 77 | 84 | 84 |
+| stage4.niit.hoh.0 | complete | 99 | 83 | 98 | 99 |
+| stage4.niit.hoh.100000 | complete | 101 | 85 | 100 | 101 |
+| stage4.niit.qss.0 | complete | 81 | 73 | 81 | 81 |
+| stage4.niit.qss.100000 | complete | 83 | 75 | 83 | 83 |
+| stage4.niit.mfj.0 | refused | 57 | 50 | - | - |
+| stage4.niit.mfj.100000 | refused | 57 | 50 | - | - |
+| stage4.niit.mfs.0 | refused | 70 | 63 | - | - |
+| stage4.niit.mfs.100000 | refused | 72 | 65 | - | - |
+| stage4.niit.standard_no_deduction | complete | 88 | 78 | 88 | 88 |
+| stage4.refuse.8960.unsupported | refused | 73 | 67 | - | - |
+| stage4.refuse.8960.refund | refused | 74 | 68 | - | - |
+| stage4.niit.loss_floor | complete | 80 | 70 | 80 | 80 |
+| stage4.refuse.niit.allocation | refused | 75 | 68 | - | - |
+| stage4.refuse.8960.unsupported.simultaneous | refused | 73 | 67 | - | - |
+| stage4.additional_taxes.combined | complete | 97 | 78 | 96 | 97 |
+| stage4.official.medicare_example5 | refused | 48 | 43 | - | - |
+| stage4.ftc.29999 | complete | 77 | 67 | 77 | 77 |
+| stage4.ftc.30000 | complete | 77 | 67 | 77 | 77 |
+| stage4.ftc.regular_limit | complete | 77 | 67 | 77 | 77 |
+| stage4.refuse.ftc.limit | refused | 67 | 61 | - | - |
+| stage4.refuse.ftc.passive | refused | 68 | 62 | - | - |
+| stage4.refuse.ftc.statements | refused | 71 | 62 | - | - |
+| stage4.refuse.ftc.eligible | refused | 71 | 62 | - | - |
+| stage4.refuse.ftc.election | refused | 71 | 62 | - | - |
+| stage4.mut.savers_claimed_dependent | refused | 59 | 53 | - | - |
+| stage4.qbi.below | complete | 84 | 76 | 84 | 84 |
+| stage4.qbi.exact | complete | 84 | 76 | 84 | 84 |
+| stage4.qbi.above | complete | 84 | 76 | 84 | 84 |
+| stage4.qbi.income_limit | complete | 82 | 74 | 82 | 82 |
+| stage4.qbi.capital_limit | complete | 86 | 77 | 86 | 86 |
+| stage4.refuse.qbi | refused | 72 | 66 | - | - |
+| stage4.qbi.zero_income | complete | 72 | 68 | 72 | 72 |
+| stage4.refuse.s2.amt | refused | 70 | 64 | - | - |
+| stage4.refuse.s2.other | refused | 71 | 65 | - | - |
+| stage4.refuse.s2.amt.simultaneous | refused | 70 | 64 | - | - |
+| stage4.refuse.gift.sectionB | refused | 74 | 66 | - | - |
+| stage4.salt.below | complete | 75 | 69 | 75 | 75 |
+| stage4.salt.exact | complete | 75 | 69 | 75 | 75 |
+| stage4.salt.phase | complete | 75 | 69 | 75 | 75 |
+| stage4.salt.floor | complete | 74 | 68 | 74 | 74 |
+| stage4.salt.above | complete | 74 | 68 | 74 | 74 |
+| stage4.salt.mfs | refused | 62 | 56 | - | - |
+| stage4.salt.mfs_floor | refused | 62 | 56 | - | - |
+| stage4.salt.low_paid | complete | 74 | 68 | 74 | 74 |
+| stage4.medical.below | complete | 72 | 66 | 72 | 72 |
+| stage4.medical.above | complete | 72 | 66 | 72 | 72 |
+| stage4.standard.single | complete | 74 | 66 | 74 | 74 |
+| stage4.standard.hoh | complete | 91 | 74 | 90 | 91 |
+| stage4.standard.qss | complete | 73 | 64 | 73 | 73 |
+| stage4.standard.mfj | refused | 50 | 42 | - | - |
+| stage4.standard.mfs | refused | 61 | 54 | - | - |
+| stage4.standard.spouse_itemizes | refused | 59 | 53 | - | - |
+| stage4.standard.itemized | complete | 73 | 67 | 73 | 73 |
+| stage4.standard.elected | complete | 72 | 66 | 71 | 72 |
+| stage4.gift.50000.false | complete | 77 | 69 | 77 | 77 |
+| stage4.gift.500000.false | complete | 77 | 69 | 77 | 77 |
+| stage4.gift.500001.true | complete | 78 | 69 | 78 | 78 |
+| stage4.refuse.sa.unsupported | refused | 62 | 56 | - | - |
+| stage4.refuse.sa.charity_limited | refused | 64 | 57 | - | - |
+| stage4.refuse.sa.excluded_income | refused | 64 | 58 | - | - |
+| stage4.refuse.standard.dependent | refused | 59 | 53 | - | - |
+| stage4.refuse.dependent_itemizes | refused | 59 | 53 | - | - |
+| stage4.refuse.standard.spouse_extra | refused | 60 | 54 | - | - |
+| stage4.refuse.gift.special | refused | 72 | 64 | - | - |
+| stage4.refuse.sa.unsupported.simultaneous | refused | 62 | 56 | - | - |
+| stage4.deductions.combined | complete | 85 | 67 | 85 | 85 |
+| audit.sa.negative_agi_medical | complete | 122 | 110 | 122 | 122 |
+| audit.sa.negative_agi_medical_paid | complete | 122 | 109 | 122 | 122 |
+| stage4.refuse.sb.unsupported | refused | 69 | 62 | - | - |
+| stage4.refuse.sb.fbar_required | refused | 69 | 63 | - | - |
+| stage4.refuse.sb.form8938 | refused | 70 | 64 | - | - |
+| stage4.refuse.sb.line8 | refused | 71 | 65 | - | - |
+| stage4.sb.foreign_no_filing | complete | 72 | 67 | 72 | 72 |
+| stage4.refuse.sb.unsupported.simultaneous | refused | 69 | 62 | - | - |
+| stage4.refuse.scope.schedule1 | refused | 40 | 35 | - | - |
+| stage4.refuse.scope.credits | refused | 62 | 55 | - | - |
+| stage4.refuse.scope.other_income | refused | 46 | 41 | - | - |
+| stage4.refuse.scope.other_line16 | refused | 58 | 52 | - | - |
+| stage4.refuse.married | refused | 60 | 55 | - | - |
+| stage4.sdtw.special_rates | complete | 85 | 76 | 85 | 85 |
+| stage4.sdtw.skip22 | complete | 86 | 76 | 85 | 86 |
+| stage4.sdtw.skip32 | complete | 83 | 76 | 83 | 83 |
+| stage4.sdtw.twenty_percent | complete | 85 | 76 | 85 | 85 |
+| stage4.sdtw.lower_bracket | complete | 83 | 74 | 83 | 83 |
+| stage4.sdtw.line12_takes_line9 | complete | 93 | 79 | 93 | 93 |
+| stage4.mut.sdtw_28pct_no_1250 | complete | 85 | 77 | 85 | 85 |
+| stage4.mut.sdtw_1250_line32_is_line1 | complete | 83 | 76 | 83 | 83 |
+| stage4.feeders.shortloss | complete | 89 | 75 | 89 | 89 |
 
 <!-- Hand-written findings below this line are kept when the tool rewrites the report. -->
+
+
 
 
 

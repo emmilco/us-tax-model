@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Extract the 2025 New York State and New York City Tax Tables from the archived web page
+"""Extract the New York State and New York City Tax Tables of a tax year from the archived web page
 (sources/ny/<year>/ny_it201_tax_tables.html; the tables exist only on the web, IT-201-I p. 12,
 Line 39, "visit www.tax.ny.gov and search: table") into tables/ny/<year>/ny_tax_table.yaml and
 ny_city_tax_table.yaml, in the shape of the federal Tax Table (tables/<year>/tax_table.yaml).
@@ -18,9 +18,15 @@ Checks (also run by --check, which re-extracts and compares with the committed f
     band that does not is listed (a conjecture to test, as for the federal table: the source
     does not state how the tables were built).
 
+What the tables say of themselves is read from the page's derived text (ny_it201_tax_tables.txt, hashed
+in the manifest), not assumed: the State table's heading ("<year> New York State Tax Table"), the
+sentence giving the New York AGI above which the tables may not be used (the State table's quote),
+and the "$<limit> or more—compute your New York ... tax" sentences, whose amount must equal the
+tables' last band. Each must occur exactly once or the extraction stops naming it.
+
 The snapshot is read as published (its hash checked against the manifest); nothing in it is run.
 
-    extract_ny_tax_table.py [--check]
+    extract_ny_tax_table.py [--check] [--year N]
 """
 import argparse
 import hashlib
@@ -36,7 +42,9 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
+import jurisdiction  # noqa: E402
 
+jurisdiction.ny_only("extract_ny_tax_table")
 NYDIR = ROOT / "sources" / "ny" / Y
 OUT = ROOT / "tables" / "ny" / Y
 PARAMS = ROOT / "params" / "ny" / f"{Y}.yaml"
@@ -91,20 +99,50 @@ def number(cell):
 
 
 def snapshot():
+    """(the page's HTML, its sha256, its derived text), each hash checked against the manifest."""
+    if not (NYDIR / "manifest.json").exists():
+        raise SystemExit(f"no New York archive for {Y}: sources/ny/{Y}/manifest.json does not exist")
     manifest = {d["id"]: d for d in json.loads((NYDIR / "manifest.json").read_text())["documents"]}
+    if DOC not in manifest:
+        raise SystemExit(f"{DOC} is not archived for {Y} (sources/ny/{Y}/manifest.json)")
     entry = manifest[DOC]
     raw = (NYDIR / entry["file"]).read_bytes()  # the .html snapshot as published (not a text layer)
     if hashlib.sha256(raw).hexdigest() != entry["sha256"]:
         raise SystemExit(f"{DOC}: hash mismatch with the manifest")
-    return raw.decode("utf-8"), entry["sha256"]
+    text = (NYDIR / entry["text_file"]).read_bytes()
+    if hashlib.sha256(text).hexdigest() != entry["text_sha256"]:
+        raise SystemExit(f"{DOC}: derived text hash mismatch with the manifest")
+    return raw.decode("utf-8"), entry["sha256"], text.decode("utf-8")
+
+
+def printed(text):
+    """What the page states of its tables: {heading, state_quote, limits: {State, City}}, each found once."""
+    def once(pattern, what):
+        found = sorted(set(re.findall(pattern, text)))
+        if len(found) != 1:
+            raise SystemExit(f"{DOC}: expected one {what}, found {len(found)}")
+        return found[0]
+    heading = once(rf"(?m)^{Y} New York State Tax Table$", f"heading '{Y} New York State Tax Table'")
+    quote = once(r"If your New York adjusted gross income, Form IT-201, line 33 is more than \$[\d,]+, you cannot use these tables\.",
+                 "sentence on the New York AGI above which the tables may not be used")
+    limits = {}
+    for who in ("State", "City"):
+        amount = once(rf"\$([\d,]+) or more—compute your New York {who} tax using New York {who} tax rate schedule\.",
+                      f"'$... or more—compute your New York {who} tax' sentence")
+        limits[who] = int(amount.replace(",", ""))
+    return {"heading": heading, "state_quote": quote, "limits": limits}
 
 
 def extract():
-    html, sha = snapshot()
+    html, sha, text = snapshot()
+    page = printed(text)
     parser = Tables()
     parser.feed(html)
     out = {}
     for caption, table_id in CAPTIONS.items():
+        limit = page["limits"]["State" if table_id == "ny_tax_table" else "City"]
+        if limit != LIMIT:
+            raise SystemExit(f"{table_id}: the page's tables end at ${limit:,}, not ${LIMIT:,}")
         bands = [[number(c) for c in row] for row in parser.rows.get(caption, [])]
         if not bands:
             raise SystemExit(f"no rows under the caption {caption!r}")
@@ -116,7 +154,7 @@ def extract():
         if expect != LIMIT:
             raise SystemExit(f"{table_id}: last band ends at {expect}, not {LIMIT}")
         out[table_id] = bands
-    return out, sha
+    return out, sha, page
 
 
 def schedule(params, prefix, group):
@@ -176,12 +214,11 @@ def conjecture(tables):
     return lines, unexplained
 
 
-def render(table_id, bands, sha):
-    title = "2025 New York State Tax Table" if table_id == "ny_tax_table" else "2025 New York City Tax Table"
-    heading = "2025 New York State Tax Table" if table_id == "ny_tax_table" else "New York City Tax Table"
-    quote = ("If your New York adjusted gross income, Form IT-201, line 33 is more than $107,650, you cannot use these tables."
-             if table_id == "ny_tax_table" else
-             "$65,000 or more—compute your New York City tax using New York City tax rate schedule.")
+def render(table_id, bands, sha, page):
+    title = f"{Y} New York State Tax Table" if table_id == "ny_tax_table" else f"{Y} New York City Tax Table"
+    heading = page["heading"] if table_id == "ny_tax_table" else "New York City Tax Table"
+    quote = (page["state_quote"] if table_id == "ny_tax_table" else
+             f"${page['limits']['City']:,} or more—compute your New York City tax using New York City tax rate schedule.")
     out = [f"# {title}, extracted from the archived web page (the tables are published only there).",
            f"# Source: sources/ny/{Y}/{DOC}.html sha256 {sha}",
            "# Extractor: tools/extract_ny_tax_table.py",
@@ -211,10 +248,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--check", action="store_true", help="re-extract and compare with the committed tables; test the conjecture")
     a = ap.parse_args()
-    tables, sha = extract()
+    tables, sha, page = extract()
     status = 0
     for table_id, bands in tables.items():
-        text = render(table_id, bands, sha)
+        text = render(table_id, bands, sha, page)
         path = OUT / f"{table_id}.yaml"
         if a.check:
             if not path.exists() or path.read_text() != text:

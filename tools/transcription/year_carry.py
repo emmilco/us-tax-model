@@ -13,13 +13,19 @@ A line carries only when its year-carry key is equal in both years. The key hash
    rendered section and its glossary sections; for class M the document's computation (subjects.
    of_computation);
 2. the values of every parameter, enum and table the reach reads (a changed value blocks the carry: the
-   prompt and the compared expression show the year's value);
+   prompt and the compared expression show the year's value); a table's value is its data, every field but
+   its title, citation and tax year (table_value), so a table carries when only its year moved;
 3. the cited source text, at anchor-section granularity, of every line of the reach and every foreign line
    it names: for each cited page segment, the text from the cited anchor heading to the next anchor any
    citation of the same document names on those pages, else the cited pages whole; a citation naming no
    page stands for its whole document. Never only the quoted words, so a paragraph added under the same
    heading changes the key;
 4. the policy versions of the review tools.
+
+With --jurisdiction ny the reviews carried are New York's (reviews/ny/<year>/), and each tree is read across both
+jurisdictions as the New York review tools read it: the federal and New York forms (a New York line names federal
+lines), both years' parameters and tables, and each document's sources and rendering in its own jurisdiction's
+directory (ny_ ids under sources/ny/<year>/ and rendered/ny/<year>/). Federally only the federal tree is read.
 
 Year normalization is lockstep, never blind. The two years' texts are aligned token by token (difflib);
 a year literal is replaced by {Y}, {Y-1}, ... only where it moved by exactly +1 between the two years and
@@ -29,7 +35,7 @@ where the line's cited source moved the same year and printed it nowhere unchang
 2025" printed in both years' text, "2026" in the project) stays a difference. Birth-year cutoffs (1961 -> 1962) lie outside the window:
 they change, so their lines are reviewed.
 
-    year_carry.py --year 2026 --from ../tax-2025 [--from-year 2025] [--kind K] [--write] [--report PATH] [--verbose]
+    year_carry.py --year 2026 --from ../tax-2025 [--from-year 2025] [--jurisdiction ny] [--kind K] [--write] [--report PATH] [--verbose]
     year_carry.py --self-test
 """
 import argparse, difflib, hashlib, json, os, re, sys
@@ -40,6 +46,7 @@ sys.path.insert(0, os.path.join(ROOT, "tools"))
 
 import yaml  # noqa: E402
 from taxyear import Y  # noqa: E402  (--year: the tax year TY+1 of this tree)
+import jurisdiction  # noqa: E402  (--jurisdiction ny: New York's reviews)
 
 _Loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
 YEAR_WINDOW = (-10, 1)  # years from TY-10 to TY+1 may be normalized
@@ -64,6 +71,16 @@ class Tree:
     def path(self, *parts):
         return os.path.join(self.root, *parts)
 
+    def dir(self, top, doc=None):
+        """The path parts of a per-year directory: a document's own jurisdiction's, or (no document) the
+        jurisdiction under review's."""
+        ny = jurisdiction.is_ny(doc) if doc is not None else jurisdiction.NY
+        return (top, "ny", self.year) if ny else (top, self.year)
+
+    def dirs(self, top):
+        """The per-year directories this tree is read from: the federal one, then (New York) the New York one."""
+        return [(top, self.year)] + ([(top, "ny", self.year)] if jurisdiction.NY else [])
+
     def read(self, *parts):
         p = self.path(*parts)
         if p not in self._c:
@@ -73,13 +90,14 @@ class Tree:
     def docs(self):
         if "__docs" not in self._c:
             out = {}
-            d = self.path("forms", self.year)
-            for name in sorted(os.listdir(d)) if os.path.isdir(d) else []:
-                if name.endswith(".yaml"):
-                    raw = yaml.load(self.read("forms", self.year, name), Loader=_Loader) or {}
-                    doc = raw.get("form") or raw.get("def")
-                    if doc:
-                        out[doc["id"]] = doc
+            for parts in self.dirs("forms"):
+                d = self.path(*parts)
+                for name in sorted(os.listdir(d)) if os.path.isdir(d) else []:
+                    if name.endswith(".yaml"):
+                        raw = yaml.load(self.read(*parts, name), Loader=_Loader) or {}
+                        doc = raw.get("form") or raw.get("def")
+                        if doc:
+                            out[doc["id"]] = doc
             self._c["__docs"] = out
         return self._c["__docs"]
 
@@ -95,27 +113,35 @@ class Tree:
 
     def params(self):
         if "__params" not in self._c:
-            text = self.read("params", self.year + ".yaml")
-            raw = (yaml.load(text, Loader=_Loader) or {}) if text else {}
-            p = raw.get("params") or raw
-            self._c["__params"] = (p.get("values") or {}, p.get("enums") or {})
+            values, enums = {}, {}
+            for parts in [("params", self.year + ".yaml")] + ([("params", "ny", self.year + ".yaml")] if jurisdiction.NY else []):
+                text = self.read(*parts)
+                raw = (yaml.load(text, Loader=_Loader) or {}) if text else {}
+                p = raw.get("params") or raw
+                values.update(p.get("values") or {})
+                enums.update(p.get("enums") or {})
+            self._c["__params"] = (values, enums)
         return self._c["__params"]
 
     def tables(self):
+        """{table id: the path parts of its file}."""
         if "__tables" not in self._c:
-            d = self.path("tables", self.year)
-            self._c["__tables"] = {n.split(".")[0]: n for n in sorted(os.listdir(d))} if os.path.isdir(d) else {}
+            out = {}
+            for parts in self.dirs("tables"):
+                d = self.path(*parts)
+                out.update({n.split(".")[0]: (*parts, n) for n in sorted(os.listdir(d))} if os.path.isdir(d) else {})
+            self._c["__tables"] = out
         return self._c["__tables"]
 
     def pages(self, doc):
         """The pages of an archived document's reading-order text, else None."""
         key = "__pages " + doc
         if key not in self._c:
-            m = json.loads(self.read("sources", self.year, "manifest.json") or "{}")
+            m = json.loads(self.read(*self.dir("sources", doc), "manifest.json") or "{}")
             entries = m["documents"] if isinstance(m, dict) else m
             d = next((e for e in entries if e.get("id") == doc), None)
             name = d and (d.get("cols_file") or d.get("text_file"))
-            text = self.read("sources", self.year, name) if name else None
+            text = self.read(*self.dir("sources", doc), name) if name else None
             self._c[key] = text.split("\f") if text is not None else None
         return self._c[key]
 
@@ -180,8 +206,20 @@ def values(tree, doc, ids):
             elif s in params:
                 out["param " + s] = (params[s] or {}).get("value") if isinstance(params[s], dict) else params[s]
             elif s in tables:
-                out["table " + s] = hashlib.sha256((tree.read("tables", tree.year, tables[s]) or "").encode()).hexdigest()
+                out["table " + s] = table_value(tree.read(*tables[s]))
     return out
+
+
+TABLE_NOT_VALUES = ("title", "cite", "tax_year")
+
+
+def table_value(text):
+    """The hash of a table file's data: the parsed table without its title, citation and tax year (comments are
+    not parsed), so the same bands or rows under the next year's heading hash alike."""
+    raw = (yaml.load(text, Loader=_Loader) or {}) if text else {}
+    table = raw.get("table") if isinstance(raw, dict) else None
+    data = {k: v for k, v in table.items() if k not in TABLE_NOT_VALUES} if isinstance(table, dict) else raw
+    return _sha(data)
 
 
 def cites(line):
@@ -346,7 +384,7 @@ def parts(kind, tree, fid, line_id):
         return None
     by_id = {l["id"]: l for l in doc["lines"]}
     if kind == "classm":
-        text = tree.read("forms", tree.year, fid + ".yaml")
+        text = tree.read(*tree.dir("forms", fid), fid + ".yaml")
         raw = yaml.load(text, Loader=_Loader)
         d = raw.get("form") or raw.get("def")
         rows = [{"id": l.get("id"), "type": l.get("type"), "expr": {k: v for k, v in (l.get("expr") or {}).items() if k != "source"}}
@@ -359,7 +397,7 @@ def parts(kind, tree, fid, line_id):
     subject, foreign = subject_text(tree, doc, line_id)
     members, boundary = reach(doc, line_id)
     if kind == "render":
-        rendered = tree.read("rendered", tree.year, fid + ".md")
+        rendered = tree.read(*tree.dir("rendered", fid), fid + ".md")
         if rendered is None:
             return None
         head, sections = subjects.rendered_sections(rendered)
@@ -384,7 +422,7 @@ def _rendered(tree, fid, use):
     """use(render_compare, parsed entries) with the tree's rendering of a document in render_compare's
     cache (it reads the rendering of the checkout it runs in), else None without a rendering."""
     import render_compare as R
-    text = tree.read("rendered", tree.year, fid + ".md")
+    text = tree.read(*tree.dir("rendered", fid), fid + ".md")
     if text is None:
         return None
     saved = R._rendered_cache.get(fid)
@@ -412,13 +450,13 @@ def plan(kind, old, new):
     import families
     import transcribe as T
     out = {}
-    d = old.path("reviews", old.year, kind)
+    d = old.path(*old.dir("reviews"), kind)
     stems = sorted(n[:-len(".index.json")] for n in os.listdir(d) if n.endswith(".index.json")) if os.path.isdir(d) else []
     for stem in stems:
         fid, family = families.split_stem(stem)
         if family != families.DEFAULT:
             continue  # the second family is dropped: its historical reviews do not carry
-        index = json.loads(old.read("reviews", old.year, kind, stem + ".index.json"))
+        index = json.loads(old.read(*old.dir("reviews"), kind, stem + ".index.json"))
         rec = out.setdefault(fid, {"carry": [], "review": []})
         doc_old, doc_new = old.docs().get(fid), new.docs().get(fid)
         if doc_new is None:
@@ -431,7 +469,7 @@ def plan(kind, old, new):
                 (rec["carry"] if ok else rec["review"]).append((l["key"], None, kb if ok else why))
             continue
         keys_old, keys_new = compared_keys(kind, old, doc_old), compared_keys(kind, new, doc_new)
-        if kind == "render" and new.read("rendered", new.year, fid + ".md") is None:
+        if kind == "render" and new.read(*new.dir("rendered", fid), fid + ".md") is None:
             rec["review"] += [(l["key"], None, f"no rendering of the form in {new.year}") for l in index["lines"]]
             continue
         for l in index["lines"]:
@@ -477,7 +515,7 @@ def write(kind, old, new_year, result):
     for fid, rec in sorted(result.items()):
         if not rec["carry"]:
             continue
-        index = json.loads(old.read("reviews", old.year, kind, fid + ".index.json"))
+        index = json.loads(old.read(*old.dir("reviews"), kind, fid + ".index.json"))
         carried = {k: key for k, _, key in rec["carry"]}
         lines = [{**l, "carried": {"from": old.year, "year_key": carried[l["key"]]}} for l in index["lines"] if l["key"] in carried]
         out = {**index, "lines": lines, "carried_from": old.year}
@@ -585,9 +623,18 @@ def self_test():
             bad.append(f"{name}: carried={got[0]} ({got[1]})")
         if want and got[2] != got[3]:
             bad.append(f"{name}: carried with unequal keys")
+    table = ("# 2025 Table\ntable:\n  id: t\n  title: \"2025 Table\"\n  tax_year: 2025\n"
+             "  cite: { doc: d, locator: '2025 Table' }\n  bands:\n    - { at_least: 0, less_than: 100, tax: [5] }\n")
+    tables = [("a table whose title, citation, comment and tax year moved", True,
+               table.replace("2025", "2026")),
+              ("a table with a band amount changed", False, table.replace("tax: [5]", "tax: [6]"))]
+    for name, want, other in tables:
+        if (table_value(table) == table_value(other)) != want:
+            bad.append(f"{name}: equal={not want}")
     for b in bad:
         print("year-carry self-test: WRONG", b, file=sys.stderr)
-    print(f"year-carry self-test: {len(cases) - len(bad)}/{len(cases)} near-miss pairs as expected")
+    n = len(cases) + len(tables)
+    print(f"year-carry self-test: {n - len(bad)}/{n} near-miss pairs as expected")
     return 1 if bad else 0
 
 
@@ -606,6 +653,7 @@ def main(argv=None):
     if not a.origin:
         ap.error("--from is required")
     new_year = str(Y)
+    jurisdiction.require_year(new_year, "year_carry")
     old = Tree(os.path.abspath(a.origin), a.from_year or str(int(new_year) - 1))
     new = Tree(ROOT, new_year)
     texts = []

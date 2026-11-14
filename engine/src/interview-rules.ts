@@ -42,10 +42,13 @@
 // the data and the seed the serial loop would give it, and their results are taken back in the loop's order, so the
 // output and verdicts are those of a serial run (bar the printed times).
 //
-//   interview-rules [--self-test]
+//   interview-rules [--self-test] [--write-pruning]
+//
+// reports/<year>/interview_pruning.md lists the reach check's asked-and-unread templates. --write-pruning writes it; a
+// run at the default sizes (no INTERVIEW_RULES_* variable set, as check-all runs it) fails when the file differs.
 import assert from "node:assert/strict";
 import { readFileSync, writeFileSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { join, relative, resolve } from "node:path";
 import { Worker } from "node:worker_threads";
 import fc from "fast-check";
 import { mapPool, poolSize } from "./pool.js";
@@ -69,7 +72,10 @@ const RANDOM_EVERY = Number(process.env["INTERVIEW_RULES_RANDOM_EVERY"] ?? 3);
 const RANDOM_SEEDS = Number(process.env["INTERVIEW_RULES_SEEDS"] ?? 5);
 export const SEED = 11;
 const BASELINE = resolve(import.meta.dirname, "../..", "tools", "interview_rules_baseline.json");
-const PRUNING = resolve(import.meta.dirname, "../..", "reports", String(YEAR), "interview_pruning.md");
+const ROOT = resolve(import.meta.dirname, "../..");
+const PRUNING = resolve(ROOT, "reports", String(YEAR), "interview_pruning.md");
+/** The run check-all makes: the pruning report is compared only on it, since its counts follow the run's size. */
+const DEFAULT_RUN = ["INTERVIEW_RULES_RUNS", "INTERVIEW_RULES_RANDOM_EVERY", "INTERVIEW_RULES_SEEDS"].every((k) => process.env[k] === undefined);
 /** The held lists, each keyed by input template with a reason. */
 interface Baseline { early_completion: Record<string, string>; order_dependent_reach: Record<string, string>; walked_unused: Record<string, string> }
 
@@ -602,6 +608,9 @@ export async function interviewRules(args: string[] = []): Promise<number> {
     console.log(`  pruning opportunities (asked in bank order, unread by the complete return):`);
     for (const [t, x] of [...askedUnread].sort()) console.log(`    ${t}: ${x.cases} return(s), first ${x.where}`);
     if (args.includes("--write-pruning")) writePruning();
+    else if (DEFAULT_RUN && readFileSync(PRUNING, "utf8") !== pruningText()) {
+      errors.push(`${relative(ROOT, PRUNING)} is not what this run finds; run: node engine/dist/main.js interview-rules --write-pruning`);
+    }
     for (const t of times) console.log(`  time: ${t}`);
     for (const e of errors.slice(0, 60)) console.error(`  ${e}`);
     if (errors.length > 60) console.error(`  ... and ${errors.length - 60} more`);
@@ -610,8 +619,13 @@ export async function interviewRules(args: string[] = []): Promise<number> {
   }
 
   function writePruning(): void {
+    writeFileSync(PRUNING, pruningText());
+    console.log(`  wrote ${PRUNING}`);
+  }
+
+  function pruningText(): string {
     const rows = [...askedUnread].sort().map(([t, x]) => `| \`${t}\` | ${x.cases} | ${x.where} |`);
-    writeFileSync(PRUNING, [
+    return [
       "# Interview pruning opportunities",
       "",
       "Written by `node engine/dist/main.js interview-rules --write-pruning`. Each template below is a question the interview asks in bank order",
@@ -625,8 +639,7 @@ export async function interviewRules(args: string[] = []): Promise<number> {
       "|---|---|---|",
       ...rows,
       "",
-    ].join("\n"));
-    console.log(`  wrote ${PRUNING}`);
+    ].join("\n");
   }
 }
 

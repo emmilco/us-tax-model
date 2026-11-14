@@ -21,14 +21,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
-import taxyear  # noqa: E402
 from taxyear import Y  # noqa: E402
 import archive_text  # noqa: E402
+import layouts  # noqa: E402
 ARCHIVE = ROOT / "sources" / Y
 OUT = ROOT / "tables" / Y / "class_lives.yaml"
 VERSION = "0.1"
-# Pub. 946 pages (1-based) of Tables B-1 and B-2, per year.
-PAGES = taxyear.for_year({2025: range(99, 109)}, "extract_class_lives.py: the Pub. 946 pages of Tables B-1 and B-2")
+# Pub. 946 pages (1-based) of Tables B-1 and B-2 (tools/layouts/<year>.json).
+PAGES = layouts.pages_of(layouts.get("class_lives"), "tables")
 GDS_OK = {"3": "y3", "5": "y5", "7": "y7", "10": "y10", "15": "y15", "20": "y20"}
 VALID_GDS = {"3", "5", "7", "10", "15", "20", "25", "27.5", "39", "50"}
 

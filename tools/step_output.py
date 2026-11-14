@@ -62,6 +62,9 @@ MUTATE = [
     ("the self-test of the reasoning through a Bool or enum choose (scalarChooseSelfTest)",
      r"mutation: Bool and enum choose reasoning self-test: 0 problems",
      "mutation: Bool and enum choose reasoning self-test: 0 problems"),
+    ("the self-test of the stale-argument check on planted stale arguments (staleEquivalenceSelfTest)",
+     r"mutation: stale-argument self-test: [1-9][0-9]* planted stale arguments, 0 problems",
+     "mutation: stale-argument self-test: 5 planted stale arguments, 0 problems"),
 ]
 REQUIRED = {
     # engine/src/check-selftest.ts, runCheckSelfTest.

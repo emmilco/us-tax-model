@@ -132,7 +132,9 @@ Its first line is the scoreboard, the share of computed lines with at least one 
 the Claude model family: **554 of 1,911 (29.0%)**, with H 0, B 0, second-family M 435 and E 220 (the
 sub-counts overlap, and include lines credited through exact copies of an asserted line). H credits a source reading only with a current receipt and the exact log
 committed by its named reader; it supplies no worked values and never fills B. Human packets are
-optional under the [2026-10-24 policy amendment](2026-10-24_validation_policy.md). **Guarantees:** the
+optional under the [2026-10-24 policy amendment](2026-10-24_validation_policy.md), and the reading
+packets are retired: no tool issues receipts, so H stays 0 and the recorded readings are listed as
+pending with their verdicts. **Guarantees:** the
 evidence behind any line can be looked up, and the one number the project is moving is printed first.
 **Does not guarantee:** that a line with only A, Claude-family M or R assertions has been checked by
 anyone but one model family.

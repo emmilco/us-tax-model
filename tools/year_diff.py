@@ -7,7 +7,9 @@ that is different in another year.
 
 The citations of the data year (--data, by default --from: the year whose
 definitions exist) are read against both years' archived text. Each archived PDF
-is split into sentences of its reading-order text, and the two years' sentences
+is split into sentences of its reading-order text, and each archived web page into
+sentences of its derived text (one page, so its citations, which name no page, read
+it whole), and the two years' sentences
 are aligned (difflib), the other year's text read with its years moved to the
 data year's (a sentence naming its own tax year is not a change): each sentence of
 the data year is unchanged, changed (with
@@ -42,8 +44,12 @@ with tax_year and the year in file names and in
 "(<year>)" form citations replaced, relocates their page numbers against the
 to-year's archive (tools/citations.py --relocate --from <from-year>, which lists
 the segments left for review in reports/<to-year>/relocation_from_<from-year>.md),
-and then reports with the
-to-year as the data year. It refuses to overwrite an existing year.
+applies the year-change operations of changes/<to-year>/ to the copy
+(tools/year_changes.py: their values are written for the to-year's text, so they
+replace relocated values and are not relocated), and then reports with the
+to-year as the data year. It refuses to overwrite an existing year, and refuses to
+adopt when an operation does not apply to the from-year's definitions or reads a
+line it awaits that no operation has added.
 """
 
 import argparse
@@ -81,7 +87,7 @@ def year_shifted(text, shift):
 
 
 def sentences(arch, doc, shift=0):
-    """[(page, normalized sentence)] of a PDF's reading-order text, its years moved by
+    """[(page, normalized sentence)] of a PDF's reading-order text (a web page's text: page 1), its years moved by
     `shift` (the text as printed is kept in .printed[(page, sentence)])."""
     out = []
     d = arch.docs[doc]
@@ -245,9 +251,9 @@ def run(from_year, to_year, data_year, archives=None, only=None, definitions=Non
         if doc not in A.docs and other in B.docs:
             alignments[doc] = None
             doc_state[doc] = f"no {data_year} edition archived"
-        elif doc not in A.docs or not A.docs[doc]["file"].endswith(".pdf"):
+        elif doc not in A.docs or not A.docs[doc]["file"].endswith((".pdf", ".html")):
             alignments[doc] = None
-            doc_state[doc] = "not compared (no PDF text)"
+            doc_state[doc] = "not compared (no PDF or web page text)"
         elif other not in B.docs:
             alignments[doc] = None
             doc_state[doc] = f"no {other_year} edition archived"
@@ -482,6 +488,10 @@ def adopt(from_year, to_year):
         sys.exit("adopt: refusing to overwrite " + ", ".join(clash))
     if not (ypath("sources", t) / "manifest.json").exists():
         sys.exit(f"adopt: archive the {t} sources first (tools/fetch_sources.py --year {t} --fetch)")
+    import year_changes
+    if year_changes.check(f, adopting=True)[0]:
+        sys.exit(f"adopt: the operations of {ypath('changes', t).relative_to(ROOT)} do not all apply to the {f} "
+                 "definitions (above); mend them first")
 
     def convert(text):
         text = re.sub(rf"(?m)^(\s*tax_year:\s*){f}\b", rf"\g<1>{t}", text)
@@ -510,10 +520,16 @@ def adopt(from_year, to_year):
     (ypath("reports", t)).mkdir(parents=True, exist_ok=True)
     (ypath("reports", t) / f"year_literals_from_{f}.json").write_text(json.dumps(literals, indent=1) + "\n")
     print(f"adopt: {len(literals)} line(s) of the {t} definitions still name {f} outside citations "
-          f"(reports/{t}/year_literals_from_{f}.json); each is on the worklist")
+          f"({(ypath('reports', t) / f'year_literals_from_{f}.json').relative_to(ROOT)}); each is on the worklist")
     print(f"adopt: copied the {f} definitions (and citation rulings, to be reviewed again) to {t}; "
           f"relocating page numbers against the {t} archive")
     subprocess.run([sys.executable, str(ROOT / "tools" / "citations.py"), "--relocate", "--from", f, "--year", t, *jurisdiction.J_ARGS], check=True)
+    r = year_changes.write(t)
+    print(f"adopt: applied the {len(r.ops)} operations of {ypath('changes', t).relative_to(ROOT)} to the {t} "
+          f"definitions ({len(r.touched)} lines added or changed, {len(r.removed)} removed); their values are written "
+          f"for {t}'s text and were not relocated")
+    if r.new_params:
+        print(f"adopt: the operations read parameters params/{t}.yaml does not define: {', '.join(sorted(r.new_params))}")
 
 
 # ---------- self-test ----------

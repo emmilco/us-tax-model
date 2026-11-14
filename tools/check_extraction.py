@@ -323,6 +323,8 @@ def main():
     if a.jurisdiction == "ny":
         ARCHIVE, REPORT = ROOT / "sources" / "ny" / Y, ROOT / "reports" / "ny" / Y / "extraction.md"
     skip_pdfkit = pdfkit_skip_reason(a.no_pdfkit, sys.platform, shutil.which("swift"))
+    if not (ARCHIVE / "manifest.json").exists():
+        sys.exit(f"check_extraction: no archive for {Y} ({(ARCHIVE / 'manifest.json').relative_to(ROOT)} does not exist)")
     docs = json.loads((ARCHIVE / "manifest.json").read_text())["documents"]
     html_docs = {d["id"][: -len("-html")]: d for d in docs if d["id"].endswith("-html")}
     body, fails, counts = [], Counter(), Counter()

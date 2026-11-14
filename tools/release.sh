@@ -6,7 +6,9 @@
 #
 # HEAD must be the branch main, in the main worktree, with nothing to commit (the tree
 # `git add -A` would commit is HEAD's tree). The run is tools/check_all_bg.sh --wait
-# --tier full. A full run rewrites reports the fast tier leaves as they were (mutation,
+# --tier full, with ENGINE_CACHE=verify: the engine differential reruns every outside engine
+# rather than reusing its stored record, and fails if a stored record differs from the fresh
+# one. A full run rewrites reports the fast tier leaves as they were (mutation,
 # evaluator agreement, the engine differential, and evidence without its fast-run
 # note); when the tested tree differs from HEAD's, tools/commit_tested.sh commits it,
 # with the message in <file> or a generated one, and the tag goes on that commit.
@@ -42,7 +44,8 @@ tools/release_reviews.sh || die "the sampled reviews are not complete for a rele
 common="$(cd "$(git rev-parse --git-common-dir)" && pwd)"
 last="$common/check-all-bg/last"
 get() { sed -n "s/^$1=//p" "$last"; }
-if ! tools/check_all_bg.sh --wait --tier full; then
+# A release reruns every outside engine and compares each stored record with the fresh one (tools/engines/engine_cache.py).
+if ! ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full; then
   die "the full run did not pass; nothing tagged (log: $common/check-all-bg/log)"
 fi
 [ "$(get status)" = green ] && [ "$(get tier)" = full ] || die "the full run is $(get status), not green; nothing tagged"

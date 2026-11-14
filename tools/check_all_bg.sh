@@ -42,7 +42,7 @@ common="$(cd "$(git rev-parse --git-common-dir)" && pwd)"
 wt="$common/check-all-worktree"
 state="$common/check-all-bg"
 lock="$state/lock"
-cloned=(.transcription .classm .human-review .extraction-review .direct-file node_modules)
+cloned=(.transcription .classm .extraction-review .direct-file node_modules)
 # The clone's main worktree (the first git lists): where installs come from when this worktree has none.
 primary="$(git worktree list --porcelain | sed -n '1s/^worktree //p')"
 # from NAME: the copy of the ignored folder NAME to use: this worktree's, or for an install
@@ -89,7 +89,7 @@ take_lock() {
 }
 
 # prepare SNAP BASE: check out the snapshot's files with HEAD at BASE, the commit the snapshot was taken
-# on, so that steps comparing the tree with HEAD (check_bug_inventory, siblings, human_review) see the
+# on, so that steps comparing the tree with HEAD (check_bug_inventory, siblings) see the
 # snapshot's changes as uncommitted, as they would in the main worktree.
 prepare() {
   local snap="$1" base="$2" e n
@@ -206,6 +206,7 @@ if [ "$(cd "$main" && pwd -P)" = "$(cd "$wt" 2>/dev/null && pwd -P)" ]; then
   exit 2
 fi
 python3 tools/worktree_data.py check || exit 1
+refuse_sizing_env || exit 2
 
 take_lock
 base="$(git rev-parse HEAD)"

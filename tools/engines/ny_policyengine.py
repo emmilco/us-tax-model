@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
 """Class C differential for New York (decision C6): PolicyEngine-US (the version pinned in requirements.txt, installed
-in .engines/venv by tools/engines/setup.sh) against the New York fixtures (fixtures/ny/2025/it201.json).
+in .engines/venv by tools/engines/setup.sh) against the New York fixtures (fixtures/ny/<year>/it201.json; --year N,
+taxyear.py).
 
 For the single and married-filing-jointly cases without dependents whose New York lines are asserted, the adapter
 gives PolicyEngine a New York City household with the case's federal adjusted gross income as wages (for these
@@ -18,9 +19,9 @@ returns New York AGI equals federal AGI: no addition or subtraction applies), an
 
 PolicyEngine computes in unrounded dollars; New York's entries are whole dollars (decision C4), so a PolicyEngine
 value is rounded half-up to the dollar before comparison and that is the only tolerance. Every other difference is
-listed for explanation. Writes reports/ny/2025/engine_differential.md.
+listed for explanation. Writes reports/ny/<year>/engine_differential.md.
 
-    .engines/venv/bin/python -I tools/engines/ny_policyengine.py
+    .engines/venv/bin/python -I tools/engines/ny_policyengine.py [--year N]
 """
 import json
 import sys
@@ -29,9 +30,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import YEAR, Y  # noqa: E402
+import jurisdiction  # noqa: E402
 import fixture_inputs  # noqa: E402
-FIXTURES = ROOT / "fixtures" / "ny" / "2025" / "it201.json"
-REPORT = ROOT / "reports" / "ny" / "2025" / "engine_differential.md"
+FIXTURES = ROOT / "fixtures" / "ny" / Y / "it201.json"
+REPORT = ROOT / "reports" / "ny" / Y / "engine_differential.md"
 LINES = [("line33", ["ny_agi"]), ("line38", ["ny_taxable_income"]), ("line39", ["ny_main_income_tax", "ny_supplemental_tax"]),
          ("line40", ["ny_household_credit"]), ("line47a", ["nyc_income_tax_before_credits"]), ("line48", ["nyc_household_credit"]),
          ("line69", ["nyc_school_tax_credit_fixed_amount"]), ("line69a", ["nyc_school_tax_credit_rate_reduction_amount"])]
@@ -45,7 +48,7 @@ def explain(line, e, ours, theirs, status):
     v = lambda k: e[f"ny_it201.{k}"]["cents"] // 100  # noqa: E731
     d = abs(ours - theirs)
     if line == "line39" and v("line33") <= 107650 and v("line38") < 65000 and d <= 3:
-        return ("table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table "
+        return (f"table: PolicyEngine computes from the rate schedule; the return uses the {Y} New York State Tax Table "
                 "(IT-201-I p. 12, Line 39)")
     if line == "line47a" and v("line47") < 65000 and d <= 3:
         return "table: PolicyEngine computes from the rate schedule; the return uses the New York City Tax Table (p. 13, Line 47a)"
@@ -70,15 +73,15 @@ def dollars_half_up(x):
 
 
 def situation(status, agi):
-    people = {"you": {"age": {"2025": 40}, "employment_income": {"2025": agi}}}
+    people = {"you": {"age": {Y: 40}, "employment_income": {Y: agi}}}
     members = ["you"]
     if status == "mfj":
-        people["spouse"] = {"age": {"2025": 40}, "employment_income": {"2025": 0}}
+        people["spouse"] = {"age": {Y: 40}, "employment_income": {Y: 0}}
         members.append("spouse")
     units = {"members": members}
     return {"people": people, "tax_units": {"tu": dict(units)}, "families": {"f": dict(units)}, "spm_units": {"s": dict(units)},
             "marital_units": {"m": dict(units)},
-            "households": {"h": {**units, "state_code": {"2025": "NY"}, "in_nyc": {"2025": True}}}}
+            "households": {"h": {**units, "state_code": {Y: "NY"}, "in_nyc": {Y: True}}}}
 
 
 def main():
@@ -87,7 +90,7 @@ def main():
     # The inputs each case is evaluated on (parameters and test-data defaults resolved), so an unstated filing status
     # reads as its default rather than as missing.
     stated = json.loads(FIXTURES.read_text())["cases"]
-    resolved = fixture_inputs.resolve_cases([{**c, "file": FIXTURES.name} for c in stated], 2025, ny=True)
+    resolved = fixture_inputs.resolve_cases([{**c, "file": FIXTURES.name} for c in stated], YEAR, ny=True)
     cases = [{**c, "inputs": resolved[c["id"]]} for c in stated]
     rows, diffs, compared = [], [], 0
     for c in cases:
@@ -105,7 +108,7 @@ def main():
             ours = e.get(f"ny_it201.{line}")
             if not ours or ours.get("kind") != "money":
                 continue
-            theirs = dollars_half_up(sum(float(sim.calculate(v, 2025)[0]) for v in vars_))
+            theirs = dollars_half_up(sum(float(sim.calculate(v, YEAR)[0]) for v in vars_))
             ok = theirs * 100 == ours["cents"]
             cause = "" if ok else explain(line, e, ours["cents"] // 100, theirs, status)
             rows.append(f"| `{c['id']}` | {line} | {ours['cents'] // 100:,} | {theirs:,} | {'agree' if ok else cause or '**unexplained**'} |")
@@ -129,4 +132,5 @@ def main():
 
 
 if __name__ == "__main__":
+    jurisdiction.ny_only("ny_policyengine")
     sys.exit(main())

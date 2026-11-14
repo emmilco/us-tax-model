@@ -283,10 +283,15 @@ def handle(job, line):
 
 
 def extract(text):
-    # A response may hold an abandoned draft block before the finished one; the answer is the last block.
+    """The worked answers of a reply, keyed by printed line; ValueError when the reply has none.
+
+    A reply may hold an abandoned draft block before the finished one, so the answer is the last
+    fenced block, or the whole text when there is none; an earlier block is never used."""
     blocks = re.findall(r"```(?:yaml)?\s*\n(.*?)```", text, re.S)
-    m = blocks[-1] if blocks else None
-    doc = yaml.safe_load(m if m is not None else text)
+    try:
+        doc = yaml.safe_load(blocks[-1] if blocks else text)
+    except yaml.YAMLError as e:
+        raise ValueError(f"reply is not valid YAML: {' '.join(str(e).split())}") from None
     if not isinstance(doc, dict) or not isinstance(doc.get("lines"), list):
         raise ValueError("response has no `lines`")
     out = {}
@@ -299,6 +304,15 @@ def extract(text):
             raise ValueError(f"missing or duplicate worked-line key: {key!r}")
         out[key] = {"value": l.get("value", ""), "work": str(l.get("work", "")).strip()}
     return out
+
+
+def extract_case(text):
+    """(answers, None) for a reply extract() reads, else ({}, the reason): one unreadable reply leaves
+    its case unparsed, every line of it MISSING, and the document's run goes on."""
+    try:
+        return extract(text), None
+    except ValueError as e:
+        return {}, str(e)
 
 
 def answers_for(job, verdicts):
@@ -362,6 +376,8 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
         run = runs[job["id"]]
         out.append(f"### case {job['id']} — prompt sha256 {run['prompt_sha']}; branches: {', '.join(job['branches'])}")
         out.append("")
+        if run.get("parse_error"):
+            out += [f"Reply not parsed: {run['parse_error']}; every line of this case is MISSING.", ""]
         expect = {}
         answers = answers_for(job, run["verdicts"])
         for l in job["fill"]:
@@ -469,7 +485,11 @@ def main():
             return job['id'], None, None
         text, meta = review_response(prompt, a.model, base, PROMPT_POLICY, a.from_response, SYSTEM, a.reasoning_effort, a.max_output_tokens,
                                      "classm", job["id"])
-        return job['id'], {"verdicts": extract(text), "raw": text, "prompt_sha": sha, "used": used}, meta
+        verdicts, parse_error = extract_case(text)
+        if parse_error:
+            print(f"{job['id']}: reply not parsed ({parse_error}); its lines are MISSING", file=sys.stderr)
+        return job['id'], {"verdicts": verdicts, "parse_error": parse_error, "raw": text, "prompt_sha": sha,
+                           "used": used}, meta
     if a.case_jobs == 1:
         worked = map(work, jobs)
         for ident, run, meta in worked:
@@ -488,6 +508,9 @@ def main():
     path, counts = write_outputs(form_doc, a.model, jobs, runs, meta_all)
     cost = sum((m.get("cost_usd") or 0) for m in meta_all.values())
     print(f"{a.doc}: agree {counts['AGREE']}, disagree {counts['DISAGREE']}, skipped {counts['SKIPPED']}, missing {counts['MISSING']}; cost {cost:.2f} -> {os.path.relpath(path, ROOT)}")
+    unparsed = sorted(ident for ident, run in runs.items() if run.get("parse_error"))
+    if unparsed:
+        print(f"{a.doc}: {len(unparsed)} case(s) with a reply not parsed: {', '.join(unparsed)}")
     sys.exit(0 if counts["DISAGREE"] + counts["MISSING"] == 0 else 3)
 
 

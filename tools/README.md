@@ -48,7 +48,7 @@ little it has.
 A linked worktree (an agent's) gets its git-ignored data from the main worktree with
 `python3 tools/worktree_data.py clone <worktree>`: complete copy-on-write clones
 (`cp -cR`, never links) of the review data (`.transcription/`, `.classm/`,
-`.human-review/`, `.extraction-review/`, `.direct-file/`) and the installs
+`.extraction-review/`, `.direct-file/`) and the installs
 (`node_modules/`, `.engines/`, `lean/.lake/`), and a record of the clone's base (the
 hash of every untracked review file, each ledger's length and hash) in the worktree's
 git directory. Reviews run there write their raw files and cost rows into the
@@ -71,18 +71,23 @@ it back only if the worktree later edits it. `--self-test` runs in check-all.
 
 The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast`):
 
-- **full** (the default): every step, about 38 minutes. A release needs it.
+- **full** (the default): every step. A release needs it. The recorded green full runs
+  (`.git/check-all-bg/runs/*/times`) took 13 to 32 minutes, median 17; most of the spread is
+  the machine's other load. Wave 2 is the longest stage: `engine_differential`, `compare` and
+  `mutate` set it. `engine_differential` reuses the outside engines' stored records while
+  their inputs are unchanged (`tools/engines/README.md`, "Stored engine records"), which takes
+  it from about 9 minutes to about 4 on a loaded machine, so `compare` and `mutate` set the wave.
 - **fast**: every step except `mutate`, `ny_mutate`, `engine_differential`, `lean_build`,
-  `compare`, `ny_compare` and `human_review` (the human-review tooling's test: human packets
-  are optional), about 10 minutes. It does not check mutation adequacy or agreement
-  with the independent evaluators, and leaves `mutation.md`, `evaluator_agreement.md`
-  and `engine_differential.{md,json}` as the last full run wrote them; `evidence.md`
-  then says that its E column dates from the latest release.
+  `compare`, `ny_compare` and `interview_length` (about 8 minutes on one core); the recorded green fast
+  runs took 4 to 12 minutes, median 7. It does not check mutation adequacy or agreement with the
+  independent evaluators, and leaves `mutation.md`, `evaluator_agreement.md`,
+  `engine_differential.{md,json}` and `interview_length.md` as the last full run wrote them;
+  `evidence.md` then says that its E column dates from the latest release.
 - **docs**: compile, the build, and the checks that read the bookkeeping paths in
   `tools/docs_paths.txt` (`check_bug_inventory`, `check_agent_runs`, `siblings_check`,
   `coverage_tree`, and `bookkeeping_self_tests`: the self-tests of the agent-run, siblings,
   bookkeeping and green-record tools),
-  about 3 minutes, nearly all of it the build.
+  1 to 4 minutes in the recorded runs, nearly all of it the build.
 
 `compare` and `ny_compare` (`engine/src/compare.ts`) run the TypeScript and the Lean evaluator
 over every fixture case and over generated whole returns, and fail on any line value that
@@ -91,7 +96,8 @@ differs. The generated returns come from the general generator (`engine/src/gene
 step: both commands take the returns, the seed and the size from one definition
 (`corpusReturns`, `CORPUS_SEED`, `CORPUS_SIZE`), so they follow the declared inputs and their
 branch coverage is the one `properties.md` lists. `PROPERTY_RUNS=<n>` sets the size for a run of
-either command (400 without it; check-all sets none); each report states the seed and the number of
+either command (400 without it; check-all refuses to start while it, or another variable that changes what
+a step checks, is set: `SIZING_ENV` in `tools/green.sh`); each report states the seed and the number of
 returns it used, so two reports written under different sizes say so themselves. The self-test
 `compare --corpus-self-test` (`compare_corpus_self_test`) fails unless the returns the comparison
 compares are the returns the properties report's coverage is of, for both jurisdictions, unless a
@@ -145,7 +151,7 @@ A full-green tree is also fast- and docs-green, and a fast-green tree is docs-gr
 Which tier a commit needs is decided from the paths it changes against its parent
 (`tools/tier_paths.py`): **full** if it changes a path in `tools/full_paths.txt` (the
 mutation tool and its equivalence and pinned lists, the Lean evaluator and its
-comparison, the engine differential, the human-review tooling's code and data but not its README), **docs** if every changed path is in
+comparison, the engine differential), **docs** if every changed path is in
 `tools/docs_paths.txt`, **fast** otherwise; a merge needs at least fast, a commit with
 no parent full. The lists are read from the parent, so a commit cannot widen the list
 it is judged by. `tools/tier_paths.py --self-test` (run by `hooks/test_green.sh`) checks
@@ -202,8 +208,7 @@ slot) are check-all steps.
 
 After compiling and building, the steps run in three waves of side-by-side steps
 (see the head of `tools/check_all_steps.sh`); a step that reads what another writes runs
-in a later wave than its writer (`human_review` and `evidence` after
-`engine_differential`), a rule no check enforces, so a new
+in a later wave than its writer (`evidence` after `engine_differential`), a rule no check enforces, so a new
 step must be placed by it. A check that runs for both jurisdictions is declared once
 (`jstep`), and its New York run is the step `ny_<name>`. The tools' self-tests and test
 suites run as two steps, `bookkeeping_self_tests` and `self_tests`
@@ -306,6 +311,61 @@ enforces these rules (self-tests: `tools/transcription/test_rerun_all.py`):
 - **Owner gate.** A run whose estimate exceeds `COST_GATE_USD` ($3.00), or which includes
   calls the ledger cannot price (no recent call of that tool and family), is refused (exit 2)
   unless `--approve-cost DOLLARS` is at least the estimate.
+- **Mechanical rulings after a review.** A review that leaves open disagreements is followed,
+  unless `--no-carry`, by `carry.py`; a transcription review first by `triage.py` on the new reply.
+  `carry.py` rules, in order: a reply that fails the host's validation on the line (model error on
+  the declaration); a repeat of an earlier settled ruling on an unchanged line (carried over, naming
+  its source): the same disagreement content, or, for transcription, a new reply that differs from the
+  line exactly as an earlier ruled reply did (the same triage verdict, kinds of difference and witness
+  inputs, from the ruling's triage stamp in the sidecar, with the line subject it was ruled on); and a
+  disagreement whose triage record, for that very reply and the current form,
+  shows the project's line and the reply's agreeing on every input run (no value different, missing
+  or invalid; compared on fixture cases and on at least 500 generated returns; no evaluation
+  failure): "representation; equivalent on executable triage, ruled mechanically", with the counts.
+  One in ten of those (`AUDIT_EVERY`), chosen by a hash of the disagreement's identity, so a rerun
+  holds the same ones, is left open and printed as held for adjudication; an agent rules it, so a
+  broken rule shows. A disagreement an earlier finding, defect or unsettled ruling answered is never
+  ruled by triage. Self-tests: `test_review_tools.py` (`CarryOver`, `TriageRulings`).
+
+## Carrying review verdicts across a rename of line ids
+
+`tools/transcription/rename_carry.py` carries the review verdicts of lines whose ids were renamed, where
+the rename is proven to change nothing but the names (owner decision: such a carry is acceptable
+evidence). Run it in the renamed tree after its build and rendering:
+
+    python3 tools/transcription/rename_carry.py --map MAP.json --from <commit before the rename> [--report PATH]
+    python3 tools/transcription/rename_carry.py --map MAP.json --from <commit> --write --report PATH
+
+`MAP.json` is `{"old id": "new id", ...}` (or `{"renames": [{"old": ..., "new": ...}]}`); `--from` may also
+name a directory holding the tree before the rename. Without `--write` it only reports.
+
+- **Stale map.** It refuses the map whole (exit 2, nothing written) when an old id is not a line at
+  `--from` or is still a line, a new id was already a line at `--from` or is not one now, an id has no
+  document prefix, or two entries share an id.
+- **Proof.** For each review unit the rename moves (a compared line of a transcription or render log,
+  a whole-form class M subject, a question, screen, gate or completeness record): (A) the subject the
+  review recorded equals the subject the tool's own code computes on a copy-on-write scratch copy of
+  the tree with every new id put back to its old id (in `forms/`, `rendered/`, `canonical/`,
+  `interview/`, `ambiguities/`); and (B) for transcription, render and class M, the year-carry parts
+  (`year_carry.parts`: subject with foreign interfaces, values read, cited anchor sections) are equal at
+  `--from` and in the scratch tree, and the review policies at `--from` are the current ones. A unit
+  that fails either is listed with the reason, nothing of it is carried, and it falls due as usual.
+- **What it writes.** Index lines get the current subject and a `carried` marker (`by: rename`, the map
+  entries the subject names, `from`, the subject it was proven against); a line whose log key is a
+  renamed id is shown from its record's old section under the new key (`section`), and its rulings
+  sidecar is re-keyed; class M (and a log without line subjects) gets `subject_carried`; sampled
+  records, their per-sample rulings and baseline entries are re-keyed to the new id with the current
+  `subject_sha` and a `carried` marker; a completeness ruling's `line` and `gate` are renamed; a
+  `consumers.json` ruling or baseline entry of a renamed input is re-keyed when the input's question is
+  unchanged. Records,
+  verdict and ruling texts and raw replies keep the old names. `check_logs.py`, `review_store.py check`,
+  `rulings.py --check` and the sampled checks then accept the carried entries and fail as before on
+  anything whose proof did not hold. A later review of the form drops a line's marker only when the
+  line's verdict comes from a new record.
+- **Not covered.** An inactive family's logs (history), definition lines' local ids, and the seeded
+  generated returns (which move with input ids: rulings citing them
+  rest on the earlier sample). It takes several minutes on the whole tree (it computes every subject twice).
+- Self-test: `tools/transcription/test_rename_carry.py` (a small tree of its own; check-all `self_tests`).
 
 ## EIC Table
 
@@ -317,6 +377,99 @@ starred cell's footnote (read from the page text, matched by order) fits the row
 and the column. `node engine/dist/main.js conjecture` checks every cell against
 the credit formula built from Rev. Proc. 2024-40 section 3.06(1); see
 `reports/2025/eic_table_conjecture.md`.
+
+## New York years
+
+The New York tools take the tax year the way the federal ones do: `--year N`, else the newest year in `years.json`
+(`taxyear.py`). New York publishes a year's forms after the IRS does, so a year can have federal data and none for
+New York. In New York mode (`--jurisdiction ny`, `jurisdiction.py`) a year qualifies only if it has New York
+definitions (`forms/ny/<year>/`) or a New York catalog (`tools/sources/ny/<year>.json`); for any other year the tool
+exits naming both and the New York years that exist. `fetch_sources.py` and `check_extraction.py`, which parse the
+flag themselves, refuse the same way; a tool reading an archive that has no `manifest.json` exits naming it
+(`archive_text.py`).
+
+- The New York-only tools (`ny_predict.py`, `ny_fixtures.py`, `extract_ny_tax_table.py`,
+  `extract_ny_household_tables.py`, `engines/ny_policyengine.py`) are in New York mode without the flag and refuse
+  `--jurisdiction us`.
+- `ny_predict.py` holds the amounts of one printing (`PRINTED`): `predict()` exits for any other year, so
+  `ny_fixtures.py` does too, until the year's amounts are read from its IT-201-I and tax tables and added. Its
+  `--self-test` checks the `PRINTED` examples whatever the year.
+- `ny_fixtures.py` writes `fixtures/ny/<year>/it201.json` whole. It reproduces neither the cases added to that file
+  by hand since it was generated nor the files' reliance on `defaults.json`; carry New York fixtures to a new year with
+  `fixtures_year.py --jurisdiction ny`, not with this script.
+- The year tools work for New York with `--jurisdiction ny`: `year_diff.py` (and `--adopt`, which copies
+  `forms/ny`, `tables/ny`, `params/ny`, `ambiguities/ny` and `interview/ny` and relocates their citations with
+  `citations.py --relocate`), `fixtures_year.py`, `citations.py`, `fetch_sources.py`, `check_extraction.py`, and
+  `transcription/year_carry.py`, which carries New York's reviews (`reviews/ny/<year>/`) reading each tree across
+  both jurisdictions (a New York line names federal lines).
+- The New York tables are extracted, each year, from the archived web pages: the State and City Tax Tables by
+  `extract_ny_tax_table.py` (the page's heading, its New York AGI limit and its $65,000 limit read from the page) and
+  the household credit tables 1, 2, 4 and 5 by `extract_ny_household_tables.py` (the captions, the header cells the
+  citations quote and Notes 1 to 3 checked as printed). Both write `tables/ny/<year>/` and, with `--check`, compare a
+  fresh extraction with the committed files byte for byte (check-all steps `ny_tax_table`, `ny_household_tables`).
+  `ny_hh_spouse_count` (one for your spouse on a joint return) has no printed amounts and stays by hand.
+
+## Proposing a year's parameters
+
+`python3 tools/propose_params.py --from 2025 --to 2026 --write` reads every parameter of
+`params/2025.yaml` from the 2026 edition of the document its citation names, at the place the
+citation names, and writes `reports/2026/params_proposal_from_2025.yaml` (per parameter: status
+`unchanged`, `changed` or `not found`, the 2025 and proposed values, and the evidence: how the
+place was found, the 2026 document and pages, the 2025 text and the 2026 text read) and `.md`
+(counts, the declined by reason, the changed values). A value read from an IRS draft is marked
+`draft: true`. The tool never fills a parameter whose text it cannot place: the reasons it
+declines are listed in its header (a text reworded or gone, printed with different figures in
+several places, no edition archived, no text naming the value alone, a value that is not a
+printed figure). How a place is read: the citation's quote that prints the value, or the
+narrowest window of printed words around it that names the value alone in the 2025 edition,
+confirmed by the next wider window; line and item numbers are free, years move with the tax
+year, and a text printed the same number of times in both editions is read in order.
+
+`--compare FILE` scores a proposal against a parameter file taken as the truth. Two runs check
+the reader: `--from 2025 --to 2025 --compare params/2025.yaml` (how many 2025 values it reads
+back from their own citations) and `--from 2026 --to 2025 --params
+research/ty2026/params-2026.proposed.yaml --compare params/2025.yaml` (the hand-read 2026
+citations read in the 2025 archive, against the adopted 2025 values). `--self-test` (in
+check-all) plants two editions of a few documents and checks each kind of reading and of
+refusal.
+
+## Printed tables
+
+`python3 tools/extract_printed_tables.py --check` (check-all) reads the small printed tables again
+from the year's archive and compares them, cell by cell, with the committed `tables/<year>/` files:
+`dc_rate` (Form 2441 line 8, or the phaseout schedule of its instructions when the form refers to
+it), `ltc_limit` (Form 7206 line 2(b), against the Instructions for Form 7206 and the revenue
+procedure), `savers_rate` (Form 8880 line 9, against section 25B(b)(2)'s 3/4 and 1/2 thresholds and
+the parameter `savers.agi_limit`), `rate_schedule` (the revenue procedure's Tables 1 to 4, each base
+against the previous row and the Tax Computation Worksheet parameters against their rows) and the
+passenger automobile limits (`auto_limit`, `auto_limit_first_nobonus`, from Pub. 946, checked against
+three printings by `check_auto_limits.py`). Tables are found by the words printed with them, not by
+page. `--write [--table ID] [--out DIR]` writes a year's tables (refusing one that is not well formed
+or that its second printing or formula contradicts); `--out` writes outside `tables/` for a year not
+yet adopted.
+
+Written by hand: `quarter_convention` (the mid-quarter fractions, fixed by the regulations, not a
+yearly printing), `macrs_last_year` (each recovery period plus one; checked against `macrs_gds` by
+`check_macrs_tables.py`), `recovery_year` (the year less the year placed in service, plus one: figured,
+not printed; its keys are the `placed_year` enumeration, renamed with the year) and `simple_catchup`
+(three amounts printed in the running text of Pub. 560 and the year's retirement plan notice; the
+2026 Pub. 560 is not archived).
+
+## Page layouts
+
+The tools that read an archived document by page (the Tax Table, EIC Table, Form 8962 and Pub. 946 class-life
+extractors, the second transcription of the Pub. 946 tables, and the instruction-section check's page ranges of
+Form 1040 and Schedules 1 to 3 in i1040gi) take the pages from `tools/layouts/<year>.json`, read through
+`tools/layouts.py`. Each page range names the words printed on its first page (`first`), its last page (`last`),
+the page after it (`last_before`) or the lowest pages of a list of words (`each`); `fields` hold a layout's other
+values for the year (the EIC Table's column edges and last row, the HHS guidelines the Form 8962 tables reprint). A
+year with no file, or no entry, stops the tool that needs it, naming the file.
+
+`python3 tools/layouts.py --check` (check-all) fails when a range's pages are not where its words are printed in
+the year's archive. `python3 tools/layouts.py --propose --from 2025 --to 2026` writes the next year's file: every
+range placed again by its words in the new archive (years in the words moved), the fields carried and listed for
+review; a layout whose document has no edition archived, or whose words are not printed, is listed and the file is
+not written unless `--partial`. `--self-test` (in check-all) plants an edition with a page inserted.
 
 ## Sampled completeness, screen, false-no and question reviews
 
@@ -419,6 +572,47 @@ with the number of cases whose inputs change as `tools/defaults_guard.mjs` count
 default for a new input needs none. `tools/fixtures_year.py` carries the defaults file to a new year with its
 conditions and rules, less the open entries of cases it drops.
 
+## Year changes as operations
+
+A change prepared for the next tax year is kept as operations keyed by line id in `changes/<year>/<form>.yaml`
+(`changes/ny/<year>/` for New York), not as a copy of a form: `tools/year_changes.py` applies the operations of year
+N+1 to the forms, question bank and profiles of year N. Design and the classification of the TY2026 change map:
+`docs/2026-11-14_year_change_operations.md`; the TY2026 entries: `changes/2026/README.md`.
+
+```yaml
+changes:
+  tax_year: 2026
+  form: f1040
+  entries:
+  - change: C-PRI-02                       # the change-map entry
+    evidence:                              # printed where it says, in sources/2026
+    - {doc: f1040, page: 3, quote: "13a Additional deductions from Schedule 1-A, line 44"}
+    verified: draft                        # draft, or final once checked against a final edition
+    operations:
+    - set: {line: f1040.line13b, field: printed, from: 13b, to: 13a}
+```
+
+Operations: `add_line {after, line}`, `remove_line {line}`, `set {line, field, from, to}` (`field` a path of keys such
+as `expr.take` or `cite.locator`; `from: null` is absent, `to: null` removes), `add_form {form}`, `set_form {field,
+from, to}`, `add_question {input, like | after, entry, profiles}` (`like` lends its order number and its place in the
+profiles, never its wording), `remove_question {input}`, `set_question {input, field, from, to}`. An entry may list
+the lines it `awaits` (`{line, change}`), lines another change not yet written is to add, and a free-text `note`.
+
+- `year_changes.py --check` (check-all step `year_changes`, with `ny_year_changes`) fails, naming the file, change,
+  position, kind and line, when an operation's line, form or anchor is gone (the closest ids suggested), the value it
+  expects is not there (stale), it is already applied, two operations collide, a reference is left dangling, a gated
+  input is read outside its gate, a new input has no question or a question outlives its input, a new question takes
+  another's order and seq, or the evidence is not printed on its page (or is marked final on a draft). It notes the
+  parameters the operations read that the year does not define, awaited lines, and entries whose documents are all
+  final now. `--against DIR` checks another tree's `forms/`, `interview/` and `params/` read-only (an exported branch).
+- `year_changes.py --record EDITED.yaml` prints the operations that turn the year's form into an edited copy of it,
+  as an entry to complete with its change and evidence.
+- `year_diff.py --adopt` refuses to adopt when an operation does not apply or an awaited line is missing, then
+  applies the operations to the relocated copy, block by block: every line, bank entry and profile line no operation
+  touches keeps the copy's text.
+- `--self-test` (in check-all) plants each failure in a synthetic tree, and checks that writing equals applying in
+  memory and keeps untouched blocks byte for byte.
+
 ## Process hooks
 
 - **Fresh build** (`tools/build_fresh.py`): the completeness, screen, false-no and question checks and triage refuse to run when
@@ -434,8 +628,34 @@ conditions and rules, less the open entries of cases it drops.
   both jurisdictions), and the refusal names the files that differ and the command that regenerates them. The
   transcription review reads the form's YAML, class M builds the canonical data and its jobs itself, and the
   completeness review reads `canonical/`; none of them reads `rendered/`.
-- **Bug inventory in merges** (`tools/check_bug_inventory.py --merge`, from pre-commit): a merge may not create or
-  renumber a BUG entry; colliding ids are renumbered in a commit on the branch before merging.
+- **Bug inventory and pending entries** (`tools/check_bug_inventory.py`, step `check_bug_inventory`; `--merge`
+  from pre-commit). The rule a branch follows: a branch that runs alongside others does not write
+  `BUG_INVENTORY.md`. It records each defect as a pending entry, `python3 tools/new_bug.py "Title" --pending
+  [PREFIX] --field ...`, which writes `bug_pending/<PREFIX>-<NN>.md` (one entry, headed
+  `## BUG-NEW-<PREFIX>-<NN> — <title>`; the prefix defaults to the branch's name, so two branches never
+  choose the same file) and prints the placeholder, `BUG-NEW-<PREFIX>-<NN>`, which the branch cites
+  wherever it would cite an id: other entries, commit messages, docs, code. A committed pending entry is
+  never changed or deleted on the branch (a correction is another pending entry that cites it). Ids are
+  given in the merge that brings the entries onto main, by whoever merges: `git merge --no-ff --no-commit
+  <branch>`, then `python3 tools/new_bug.py --assign`, which appends every pending entry in the tree to the
+  inventory in name order (numbers compared as numbers) with the next ids, rewrites each placeholder to its
+  id in every tracked file, deletes the pending files and prints `BUG-NEW-<name> -> BUG-NNNN` per entry for
+  the merge's commit message; then `git add -A`, a check-all run of that tree, and `git commit` (pre-commit
+  refuses a tree no green run tested, and runs the merge check; `tools/commit_tested.sh` refuses a staged
+  index, so it does not conclude a merge). Many findings at one landing go
+  the same way: written as pending entries on the branch (one `--pending` call each, in the order they are
+  to be numbered), numbered together by one `--assign`. A single session on main may still append directly
+  with `new_bug.py` (no `--pending`).
+  What the checks hold: on every tree, the inventory extends HEAD's byte for byte with ids gapless from
+  BUG-0001; every pending file is one well-formed entry under its own name; every pending file committed at
+  HEAD is present and unchanged; every placeholder in a tracked file names a pending file. On a merge
+  (pre-commit, which runs on a merge concluded with `git commit`, so a merge that assigns must be made with
+  `--no-commit`): every parent's inventory is a prefix of the merge's, so no entry is rewritten, dropped or
+  renumbered and no id is reused; what the merge appends after the longest parent's inventory is exactly
+  what `--assign` appends for the parents' pending entries the merge removes; a pending file the merge
+  keeps is a parent's, changed only by the rewriting of assigned placeholders. `tools/siblings.py --check`
+  reads pending entries too, measured from the commit that added the file, and an assigned entry from the
+  merge that assigned it.
 - **Docs conventions** (`tools/check_docs_conventions.py`, docs tier): docs/ files are dated unless living, and
   HANDOFF-NEXT-SESSION.md keeps two entries.
 - **Year-free ids** (`tools/check_year_ids.py`, step `year_ids`; spec 4.3): reads every document, line, parameter,
@@ -501,13 +721,15 @@ that year's table from its archived source, and the check-all step named beside 
 | `extract_macrs_tables.py` | The MACRS tables of Pub. 946 into `tables/<year>/macrs_gds.yaml` (yearly; checked by `check_macrs_tables.py`) |
 | `extract_class_lives.py` | Pub. 946 Appendix B into `tables/<year>/class_lives.yaml` and its enum file (yearly) |
 | `extract_eic_table.py` | The EIC Table (section above) |
+| `extract_printed_tables.py --write` | The small printed tables of a year (section "Printed tables"; `--check` is in check-all) |
+| `propose_params.py` | A year's parameter values read from its archived documents at the places the prior year's citations name (section "Proposing a year's parameters") |
 | `engines/ny_policyengine.py` | The New York differential against PolicyEngine-US, under the engines interpreter (`engines/setup.sh`) |
 | `coverage/estimate.py` | The coverage estimate (spec 2.4), under the engines interpreter with the microdata `coverage/fetch_microdata.sh` downloads once |
 | `coverage/roadmap.py` | `reports/roadmap.html` from the coverage estimate and the open rows of `TASKS.md` |
-| `ny_fixtures.py` | Writes the New York fixtures from `ny_predict.py`'s predictions |
-| `new_bug.py`, `task_row.py` | Append a `BUG_INVENTORY.md` entry; add or update a `TASKS.md` row (tested by `test_bookkeeping_tools.py`) |
+| `ny_fixtures.py` | Writes the New York fixtures from `ny_predict.py`'s predictions, for the year the predictor was transcribed for (section "New York years") |
+| `new_bug.py`, `task_row.py` | Append a `BUG_INVENTORY.md` entry, record a pending one (`--pending`) or number the pending ones at a merge (`--assign`); add or update a `TASKS.md` row (tested by `test_bookkeeping_tools.py`) |
 | `ocr_audit.py` | An image-grounded audit of the archived text layers (Tesseract), for a person to adjudicate; not a gate |
 | `extraction/page_review.py` | Local HTML pages of each archived page beside the project's reading of it, for a person to judge |
 | `transcription/question_review.py` | The question review (section "Sampled completeness, screen, false-no and question reviews"); also prices every question's prompt without a call (`--measure`) and lists which existing reviews judge each input's wording (`--coverage`) |
 | `transcription/migrate_line_subjects.py` | Rewrites transcription logs' line-subject tables (`transcription/README.md`; tested by `test_review_tools.py`) |
-| `human_review/test_browser.mjs`, `../ui/test_browser.mjs` | Browser smoke tests of the review packet and the web UI (the interview page and the vetting page), against a separately launched headless Chrome |
+| `../ui/test_browser.mjs` | Browser smoke test of the web UI (the interview page and the vetting page), against a separately launched headless Chrome |

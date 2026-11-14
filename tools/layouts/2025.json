@@ -1,0 +1,43 @@
+{
+  "tax_table": {
+    "doc": "i1040gi",
+    "what": "the Tax Table pages",
+    "ranges": {"table": {"pages": [68, 79], "first": "see the instructions for line 16 to see if you must use the", "last": "tax table-continued"}}
+  },
+  "eic_table": {
+    "doc": "i1040gi",
+    "what": "the EIC Table pages, the right edges (points) of its twenty numeric columns and its last row (the year's highest earned income that can get the credit, in dollars)",
+    "ranges": {"table": {"pages": [49, 60], "first": "earned income credit (eic) table and your filing status is", "last": "earned income credit (eic) table-continued"}},
+    "fields": {"end": 68700, "edges": [76, 109, 133, 157, 180, 204, 228, 251, 275, 301, 342, 375, 399, 423, 446, 470, 494, 517, 541, 567]}
+  },
+  "ptc_tables": {
+    "doc": "i8962",
+    "what": "the pages of Table 2 and Tables 1-1 to 1-3, the HHS poverty guidelines they reprint (an archived document and the guidelines' year) and the sentence that says which guidelines apply",
+    "ranges": {
+      "table2": {"pages": [11, 11], "first": "table 2. applicable figure", "last": "table 2. applicable figure"},
+      "fpl": {"pages": [8, 9], "first": "table 1-1. federal poverty line", "last": "table 1-3. federal poverty line"}
+    },
+    "fields": {"hhs": "fr-2024-00796", "fpl_year": 2024, "fpl_quote": "For 2025, the 2024 federal poverty lines are used for this purpose and are shown below."}
+  },
+  "class_lives": {
+    "doc": "p946",
+    "what": "the Pub. 946 pages of Tables B-1 and B-2",
+    "ranges": {"tables": {"pages": [99, 108], "first": "table b-1. table of class lives", "last": "table b-2. table of class lives"}}
+  },
+  "macrs_mq": {
+    "doc": "p946",
+    "what": "the Pub. 946 pages of the mid-quarter convention Tables A-2 to A-5",
+    "ranges": {"tables": {"pages": [71, 73], "each": ["convention placed in service in first quarter", "convention placed in service in second quarter", "convention placed in service in third quarter", "convention placed in service in fourth quarter"]}}
+  },
+  "i1040gi_parts": {
+    "doc": "i1040gi",
+    "what": "the page ranges of the instructions for Form 1040 and Schedules 1, 1-A, 2 and 3 in i1040gi",
+    "ranges": {
+      "f1040": {"pages": [1, 87], "last_before": "instructions for schedule 1 additional income"},
+      "f1040s1": {"pages": [88, 100], "first": "instructions for schedule 1 additional income", "last_before": "instructions for schedule 1-a additional deductions"},
+      "f1040s1a": {"pages": [101, 110], "first": "instructions for schedule 1-a additional deductions", "last_before": "instructions for schedule 2 additional taxes"},
+      "f1040s2": {"pages": [111, 114], "first": "instructions for schedule 2 additional taxes", "last_before": "instructions for schedule 3 additional credits"},
+      "f1040s3": {"pages": [115, 999], "first": "instructions for schedule 3 additional credits"}
+    }
+  }
+}

@@ -29,6 +29,7 @@ import audit_transcription as transcription_audit
 import input_contracts as contracts
 import adapter_contracts as adapters
 import carry
+import triage as TR
 import migrate_line_subjects as ML
 import input_context
 import os
@@ -542,6 +543,46 @@ class WorkedValueParsing(unittest.TestCase):
             self.assertEqual(counts["AGREE"], 0)
             self.assertIn("Status: **SKIPPED**", Path(path).read_text())
             self.assertEqual(json.loads(Path(temp, "fixtures.json").read_text())["cases"][0]["expect"], {})
+
+
+class UnparsedClassmReply(unittest.TestCase):
+    # An unquoted colon inside a value: yaml.scanner.ScannerError, "mapping values are not allowed here".
+    MALFORMED = ('Working.\n\n```yaml\nlines:\n  - printed: "1"\n    value: "5.00"\n'
+                 '    work: add line A: 2 and line B: 3\n```\n')
+    GOOD = 'lines:\n  - printed: "1"\n    value: "5.00"\n    work: "2 + 3"\n'
+
+    def test_malformed_reply_is_a_value_error_and_an_unparsed_case(self):
+        with self.assertRaisesRegex(ValueError, "not valid YAML"):
+            M.extract(self.MALFORMED)
+        verdicts, reason = M.extract_case(self.MALFORMED)
+        self.assertEqual(verdicts, {})
+        self.assertIn("mapping values are not allowed", reason)
+        self.assertEqual(M.extract_case(self.GOOD)[1], None)
+
+    def test_an_earlier_draft_block_is_not_used(self):
+        draft = "```yaml\n" + self.GOOD + "```\n\nRevised:\n\n" + self.MALFORMED
+        self.assertEqual(M.extract_case(draft)[0], {})
+
+    def test_unparsed_case_is_recorded_and_the_other_case_is_compared(self):
+        with tempfile.TemporaryDirectory() as temp, patch.object(rulings, "REVIEWS", temp), \
+                patch.object(M, "LOGS", temp), patch.object(M.subjects, "current", return_value="a" * 64), \
+                patch.object(M, "fixture_path", return_value=str(Path(temp, "fixtures.json"))):
+            Path(temp, "classm").mkdir()
+            fill = [{"id": "x.line1", "printed": "1", "label": "Test", "type": "Dollars"}]
+            jobs, runs = [], {}
+            for n, reply in ((1, self.MALFORMED), (2, self.GOOD)):
+                job = {"id": f"classm.x.{n}", "branches": [], "inputs": {}, "fill": fill,
+                       "project": {"x.line1": {"kind": "money", "cents": 500}}}
+                verdicts, reason = M.extract_case(reply)
+                jobs.append(job)
+                runs[job["id"]] = {"used": [], "verdicts": verdicts, "parse_error": reason, "raw": reply,
+                                   "prompt_sha": "b" * 64}
+            path, counts = M.write_outputs({"id": "x", "title": "Test"}, "claude-opus-5-5", jobs, runs,
+                                           {j["id"]: {"model_reported": ["claude-opus-5-5"]} for j in jobs})
+            self.assertEqual((counts["AGREE"], counts["MISSING"]), (1, 1))
+            log = Path(path).read_text()
+            self.assertIn("Reply not parsed: reply is not valid YAML", log)
+            self.assertIn("work: add line A: 2 and line B: 3", log.partition("## Raw responses")[2])
 
 
 class ArchivedSkippedAudit(unittest.TestCase):
@@ -2258,6 +2299,148 @@ class CarryOver(unittest.TestCase):
         m1 = {"key": ("classm.x.1", "2", "$1.00", "$2.00"), "status": "DISAGREE"}
         m2 = {"key": ("classm.x.1", "2", "$1.00", "$3.00"), "status": "DISAGREE"}
         self.assertNotEqual(carry.content("classm", m1), carry.content("classm", m2))
+
+
+class TriageRulings(unittest.TestCase):
+    """carry.py rules an open transcription disagreement that executable triage shows equivalent on every input,
+    except the one in AUDIT_EVERY its identity selects, which is held for an agent."""
+    LINES, OTHER = CarryOver.LINES, CarryOver.OTHER
+    files, write, rows = CarryOver.files, CarryOver.write, CarryOver.rows
+
+    def triage(self, line=None, bank=None, **record):
+        text = Path(rulings.log_path("transcription", "x")).read_text()
+        run = rulings.section_run("transcription", text, "2", next(c for k, _, c in rulings.log_sections(
+            "transcription", text, with_content=True) if k[0] == "2"))
+        good = {"handle": "2", "triage": "agrees on sample", "compared": 600, "agree": 600, "differ": 0, "absent": 0,
+                "invalid": 0, "sources": {"fixture": 80, "generated": 500, "partial": 20}}
+        rec = {"policy": TR.POLICY,
+               "subject_sha256": "a" * 64, "response_sha256": run, "state": "evaluated", "errors": [],
+               "bank": {"fixtures": 1768, "generated": 500, "seed": 20261026, "partial_records": 40, "evaluation_failures": 0,
+                        **(bank or {})},
+               "lines": [{**good, **(line or {})}], **record}
+        Path(self.triage_dir, "x.json").write_text(json.dumps(rec))
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        for p in (patch.object(rulings, "REVIEWS", self.temp.name), patch.object(T, "LOGS", self.temp.name),
+                  patch.object(T.subjects, "current", return_value="a" * 64),
+                  patch.object(carry.subjects, "of_text", return_value="a" * 64)):
+            p.start()
+            self.addCleanup(p.stop)
+        Path(self.temp.name, "transcription").mkdir()
+        self.triage_dir = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, self.triage_dir)
+        p = patch.object(rulings, "TRIAGE_DIR", self.triage_dir)
+        p.start()
+        self.addCleanup(p.stop)
+        self.write(self.rows(second='{"op":"copy","from":"x.renamed_but_equal"}'), prompt="a changed prompt")
+
+    def run_triage(self, **kw):
+        with patch.object(carry, "source_logs", return_value=([], "no source log")):
+            return carry.carry("transcription", "x", current=_Files(self.files()), **kw)
+
+    def test_equivalent_on_every_input_is_ruled_mechanically_with_its_evidence(self):
+        self.triage()
+        with patch.object(carry, "held_for_audit", return_value=False):
+            ruled, stats, left = self.run_triage()
+        self.assertEqual(list(ruled), ["2"])
+        self.assertEqual(stats["triage"], 1)
+        self.assertTrue(ruled["2"].startswith(carry.TRIAGE_RULING))
+        for evidence in ("600 values compared", "1768 fixture cases", "500 generated returns seed 20261026", "one in 10"):
+            self.assertIn(evidence, ruled["2"])
+        self.assertEqual(C.ruling_category(ruled["2"][len("Ruling: "):]), "representation")
+        text = Path(rulings.log_path("transcription", "x")).read_text()
+        self.assertIn(ruled["2"], text)
+        self.assertEqual(rulings.check(), 0)
+        self.assertIn("3", [h for h, _ in left])  # no triage line for it: left open
+
+    def test_the_audit_sample_is_held_open_and_listed_never_ruled(self):
+        self.triage()
+        with patch.object(carry, "held_for_audit", return_value=True):
+            ruled, stats, left = self.run_triage()
+        self.assertEqual(ruled, {})
+        self.assertEqual(stats["held"], 1)
+        self.assertIn(("2", "triage-equivalent, held for adjudication (the one-in-10 audit sample)"), left)
+        self.assertEqual(Path(rulings.log_path("transcription", "x")).read_text().count("Ruling: open"), 2)
+
+    def test_the_audit_sample_is_chosen_by_identity_one_in_ten(self):
+        sec = lambda i: {"handle": str(i), "status": "DISAGREE", "key": (str(i), '{"const": 1}', '{"const": %d}' % i)}
+        picks = [carry.held_for_audit("transcription", "x", families.DEFAULT, sec(i)) for i in range(2000)]
+        self.assertEqual(picks, [carry.held_for_audit("transcription", "x", families.DEFAULT, sec(i)) for i in range(2000)])
+        self.assertTrue(150 <= sum(picks) <= 250, sum(picks))  # about one in ten
+        self.assertNotEqual(picks, [carry.held_for_audit("transcription", "y", families.DEFAULT, sec(i)) for i in range(2000)])
+
+    def test_anything_short_of_agreement_on_every_input_is_not_ruled(self):
+        cases = {"a difference": dict(line={"triage": "differs", "differ": 3}),
+                 "a missing value": dict(line={"absent": 1}),
+                 "too few generated returns": dict(bank={"generated": 100}),
+                 "no generated return compared": dict(line={"sources": {"fixture": 80}}),
+                 "an evaluation failure": dict(bank={"evaluation_failures": 2}),
+                 "an earlier version of the form": dict(subject_sha256="b" * 64),
+                 "another reply": dict(response_sha256="c" * 64),
+                 "another triage policy": dict(policy="executable-triage-v0")}
+        for name, kw in cases.items():
+            with self.subTest(name):
+                self.triage(**kw)
+                with patch.object(carry, "held_for_audit", return_value=False):
+                    ruled, _, _ = self.plan_only()
+                self.assertEqual(ruled, {}, name)
+
+    def plan_only(self):
+        with patch.object(carry, "source_logs", return_value=([], "no source log")):
+            return carry.plan("transcription", "x", current=_Files(self.files()))
+
+    def differing(self, witnesses=("fixture:a@x", "generated:20261026.4@x")):
+        """A triage record finding the reply's line 2 differing, and the stamp a ruling on it would carry."""
+        w = [{"kind": "amount", "source": {"kind": "fixture", "id": "a"}, "instance": "x"},
+             {"kind": "amount", "source": {"kind": "generated", "seed": 20261026, "index": 4}, "instance": "x"}]
+        self.triage(line={"triage": "differs", "differ": 2, "kinds": {"amount": 2}, "witnesses": w})
+        return {"verdict": "differs", "kinds": ["amount"], "witnesses": list(witnesses), "policy": TR.POLICY}
+
+    def earlier(self, stamp, ruling="model error; the reply ignores the cap", subject=None):
+        """A sidecar entry from an earlier reply on line 2 (other expressions), with its triage stamp."""
+        side = rulings.load("transcription", "x")
+        subject = subject or carry.line_subject("transcription", _Files(self.files()), "x", "2")
+        side[rulings.stored_key("transcription", ("2", '{"from":"x.a","op":"copy"}', '{"op":"copy","from":"x.other"}'))] = {
+            "ruling": "Ruling: " + ruling, "drop": False, "date": "2026-11-01", "subject_key": subject, "triage": stamp}
+        rulings.save("transcription", "x", side)
+
+    def test_a_reply_differing_as_an_earlier_ruled_reply_did_carries_that_ruling(self):
+        stamp = self.differing()
+        self.earlier(stamp)
+        ruled, stats, _ = self.run_triage()
+        self.assertEqual(list(ruled), ["2"])
+        self.assertEqual(stats["by_triage_match"], 1)
+        self.assertTrue(ruled["2"].startswith("Ruling: model error; the reply ignores the cap (carried over from "
+                                              "x.rulings.json, matched by triage kinds and witnesses, review of 2026-11-01)"))
+        self.assertEqual(rulings.check(), 0)
+
+    def test_other_witnesses_another_line_or_a_finding_do_not_carry(self):
+        cases = {"other witnesses": dict(stamp=dict(witnesses=["fixture:b@x"])),
+                 "other kinds": dict(stamp=dict(kinds=["refusal"])),
+                 "the line changed since": dict(subject="0" * 64),
+                 "a finding": dict(ruling="finding; the project omits the cap")}
+        for name, kw in cases.items():
+            with self.subTest(name):
+                self.setUp()
+                stamp = self.differing()
+                self.earlier({**stamp, **kw.get("stamp", {})}, kw.get("ruling", "model error; the reply ignores the cap"),
+                             kw.get("subject"))
+                ruled, _, left = self.run_triage(dry_run=True)
+                self.assertEqual(ruled, {}, name)
+                if name == "a finding":
+                    self.assertIn(("2", "earlier ruling not carried: finding or defect (matched by triage kinds and "
+                                        "witnesses)"), left)
+
+    def test_an_earlier_finding_on_the_same_disagreement_is_not_overridden(self):
+        self.triage()
+        with patch.object(carry, "held_for_audit", return_value=False), \
+                patch.object(carry, "match", return_value=(None, "earlier ruling not carried: finding or defect")), \
+                patch.object(carry, "source_logs", return_value=([("no sections", "old.md", _Files(self.files()))], None)):
+            ruled, _, left = carry.plan("transcription", "x", current=_Files(self.files()))
+        self.assertEqual(ruled, {})
+        self.assertIn(("2", "earlier ruling not carried: finding or defect"), left)
 
 
 class CarryClosure(unittest.TestCase):

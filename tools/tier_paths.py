@@ -43,12 +43,17 @@ TIERS = ("docs", "fast", "full")
 _COMMENT = ("none", "a comment or docstring citing the document")
 _KEY = ("none", "a dictionary key named docs, not a path")
 READERS = {
+    ("tools/extract_ny_household_tables.py", "docs/*"): ("none", "a table header it writes names docs/ny/DECISIONS.md; the file is not read"),
     ("tools/check_bug_inventory.py", "BUG_INVENTORY.md"): ("docs", ["check_bug_inventory"]),
+    ("tools/check_bug_inventory.py", "bug_pending/*"): ("docs", ["check_bug_inventory"]),
+    ("tools/new_bug.py", "bug_pending/*"): ("docs", ["bookkeeping_self_tests"]),
+    ("tools/test_bookkeeping_tools.py", "bug_pending/*"): ("none", "writes the path in a temporary repository"),
     ("tools/check_docs_conventions.py", "HANDOFF-NEXT-SESSION.md"): ("docs", ["check_docs_conventions"]),
     ("tools/check_docs_conventions.py", "docs/*"): ("docs", ["check_docs_conventions"]),
     ("tools/check_docs_conventions.py", "handoffs/*"): ("none", "named in its messages; it reads HANDOFF-NEXT-SESSION.md, not handoffs/"),
     # --check and --self-test both validate the real inventory's Siblings checked fields.
     ("tools/siblings.py", "BUG_INVENTORY.md"): ("docs", ["siblings_check", "bookkeeping_self_tests"]),
+    ("tools/siblings.py", "bug_pending/*"): ("docs", ["siblings_check", "bookkeeping_self_tests"]),
     # The tests copy the real registers and run the tools on the copies (--file).
     ("tools/test_bookkeeping_tools.py", "BUG_INVENTORY.md"): ("docs", ["bookkeeping_self_tests"]),
     ("tools/test_bookkeeping_tools.py", "TASKS.md"): ("docs", ["bookkeeping_self_tests"]),
@@ -84,21 +89,33 @@ READERS = {
     **{(f, "docs/*"): _COMMENT for f in [
         "engine/src/year.ts", "lean/Main.lean", "tools/check_all_steps.sh", "tools/check_consumers.py",
         "tools/check_instruction_cites.py", "tools/check_limits.py", "tools/check_operands.py", "tools/check_signs.py",
-        "tools/citations.py", "tools/fixtures_year.py", "tools/human_review/reading.py", "tools/jurisdiction.py",
+        "tools/citations.py", "tools/fixtures_year.py", "tools/jurisdiction.py",
         "tools/transcription/question_review.py", "tools/transcription/screen_review.py"]},
 }
 
 # (file, idiom) -> why the enumeration stays inside named, non-allowlisted directories.
 WALKERS = {
+    ("tools/engines/engine_cache.py", ".rglob("): "hashes tools/engines, the installed engines under .engines/ and its own cache; reads no docs-tier path",
+    ("tools/transcription/rename_carry.py", "os.walk("): "puts ids back in a scratch copy of forms/, rendered/, canonical/, interview/ and ambiguities/; run by hand, not a check-all step",
+    ("tools/transcription/rename_carry.py", "ls-tree"): "lists sources/ at the --from revision; run by hand",
+    ("tools/transcription/rename_carry.py", "--name-only"): "the ls-tree listing above",
+    ("tools/transcription/rename_carry.py", '"archive"'): "git archive of the --from revision into a scratch directory; run by hand",
+    ("tools/transcription/test_rename_carry.py", "os.walk("): "walks reviews/ of a temporary tree of its own",
     ("tools/archive_text.py", 'glob("tools/**'): "its self-test scans tools/**/*.py",
     ("tools/check_all.sh", "--name-only"): "the run's guard: paths changed during the run, not an input of a step",
     ("tools/commit_tested.sh", "--name-only"): "commits a tested tree; not a check-all step",
     ("tools/claims.py", "--name-only"): "pre-commit: the forms a commit changes; its self-test uses a temporary repository",
     ("tools/claims.py", "ls-tree"): "pre-commit, root commit only: the forms of the first tree; not a check-all step",
     ("tools/build_fresh.py", ".rglob("): "the model sources and canonical/ by modification time; reads no docs-tier path",
+    ("tools/check_bug_inventory.py", '"grep"'): "git grep for placeholders over every tracked file; a docs-tier step",
+    ("tools/check_bug_inventory.py", "git grep"): "as above (named in its docstring)",
+    ("tools/check_bug_inventory.py", "ls-tree"): "lists bug_pending/ at a revision",
+    ("tools/check_bug_inventory.py", "--name-only"): "the ls-tree listing above",
+    ("tools/new_bug.py", '"grep"'): "--assign: the tracked files citing a placeholder; not a check-all step",
     ("tools/siblings.py", '"grep"'): "git grep over forms/<year> only",
     ("tools/siblings.py", "--name-only"): "git diff over reviews/<year> logs; the unscoped one serves --reviews-since, not a step",
     ("tools/siblings.py", ".rglob("): "the --input ripple over its listed source directories; not a step",
+    ("tools/year_changes.py", ".rglob("): "the files of interview/<year> only",
     ("tools/transcription/carry.py", "ls-tree"): "lists forms/ and tables/ directories at a revision",
     ("tools/transcription/carry.py", "--name-only"): "the ls-tree listings above",
     ("tools/fetch_sources.py", '"archive"'): "a dictionary key for sources/<year>",
@@ -286,10 +303,9 @@ def surface_like(tracked):
 
 # Paths whose tier under the real tools/full_paths.txt is fixed: True for full, False for not full.
 FULL_EXAMPLES = {
-    "tools/human_review/packet.py": True,
-    "tools/human_review/reading_list.json": True,
+    "tools/engines/engine_cache.py": True,
+    "tools/human_review/logs.py": False,
     "tools/human_review/README.md": False,
-    "tools/human_review/test_browser.mjs": False,
     "engine/src/mutate.ts": True,
 }
 
@@ -344,8 +360,9 @@ def unit_tests():
         READERS, WALKERS = saved
     assert check_lists(["docs/*", "tools/x/*", "a*.md"], ["lean/*", "docs/x"], ["docs/a", "lean/b", "tools/x/y.py"])
     assert not check_lists(["docs/*"], ["lean/*"], ["docs/a", "lean/b"])
-    assert check_examples(["tools/human_review/*"]) == [f"{FULL}: tools/human_review/README.md should not need the full tier",
-                                                         f"{FULL}: tools/human_review/test_browser.mjs should not need the full tier",
+    assert check_examples(["tools/human_review/*"]) == [f"{FULL}: tools/engines/engine_cache.py should need the full tier",
+                                                         f"{FULL}: tools/human_review/logs.py should not need the full tier",
+                                                         f"{FULL}: tools/human_review/README.md should not need the full tier",
                                                          f"{FULL}: engine/src/mutate.ts should need the full tier"]
 
 
