@@ -318,6 +318,30 @@ and the column. `node engine/dist/main.js conjecture` checks every cell against
 the credit formula built from Rev. Proc. 2024-40 section 3.06(1); see
 `reports/2025/eic_table_conjecture.md`.
 
+## Proposing a year's parameters
+
+`python3 tools/propose_params.py --from 2025 --to 2026 --write` reads every parameter of
+`params/2025.yaml` from the 2026 edition of the document its citation names, at the place the
+citation names, and writes `reports/2026/params_proposal_from_2025.yaml` (per parameter: status
+`unchanged`, `changed` or `not found`, the 2025 and proposed values, and the evidence: how the
+place was found, the 2026 document and pages, the 2025 text and the 2026 text read) and `.md`
+(counts, the declined by reason, the changed values). A value read from an IRS draft is marked
+`draft: true`. The tool never fills a parameter whose text it cannot place: the reasons it
+declines are listed in its header (a text reworded or gone, printed with different figures in
+several places, no edition archived, no text naming the value alone, a value that is not a
+printed figure). How a place is read: the citation's quote that prints the value, or the
+narrowest window of printed words around it that names the value alone in the 2025 edition,
+confirmed by the next wider window; line and item numbers are free, years move with the tax
+year, and a text printed the same number of times in both editions is read in order.
+
+`--compare FILE` scores a proposal against a parameter file taken as the truth. Two runs check
+the reader: `--from 2025 --to 2025 --compare params/2025.yaml` (how many 2025 values it reads
+back from their own citations) and `--from 2026 --to 2025 --params
+research/ty2026/params-2026.proposed.yaml --compare params/2025.yaml` (the hand-read 2026
+citations read in the 2025 archive, against the adopted 2025 values). `--self-test` (in
+check-all) plants two editions of a few documents and checks each kind of reading and of
+refusal.
+
 ## Sampled completeness, screen, false-no and question reviews
 
 `completeness_review.py` and `check_completeness.py`, `screen_review.py` and `check_screens.py`,
@@ -501,6 +525,7 @@ that year's table from its archived source, and the check-all step named beside 
 | `extract_macrs_tables.py` | The MACRS tables of Pub. 946 into `tables/<year>/macrs_gds.yaml` (yearly; checked by `check_macrs_tables.py`) |
 | `extract_class_lives.py` | Pub. 946 Appendix B into `tables/<year>/class_lives.yaml` and its enum file (yearly) |
 | `extract_eic_table.py` | The EIC Table (section above) |
+| `propose_params.py` | A year's parameter values read from its archived documents at the places the prior year's citations name (section "Proposing a year's parameters") |
 | `engines/ny_policyengine.py` | The New York differential against PolicyEngine-US, under the engines interpreter (`engines/setup.sh`) |
 | `coverage/estimate.py` | The coverage estimate (spec 2.4), under the engines interpreter with the microdata `coverage/fetch_microdata.sh` downloads once |
 | `coverage/roadmap.py` | `reports/roadmap.html` from the coverage estimate and the open rows of `TASKS.md` |

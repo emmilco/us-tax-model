@@ -30,7 +30,10 @@ unchanged.
    parameters, the proposed definitions and the draft-sourced fixture cases. Run
    `python3 research/ty2026/check_quotes.py` and `python3 research/ty2026/check_params.py` after refetching: a quote
    that is no longer printed on its page is the first sign a draft changed. Then fill the 108 parameters with no
-   source from the final instructions (`build_params.py`, the `V` table).
+   source from the final instructions (`build_params.py`, the `V` table). `python3 tools/propose_params.py --from 2025
+   --to 2026 --write --compare research/ty2026/params-2026.proposed.yaml` reads every 2025 parameter at its cited
+   place in the 2026 archive and lists, beside the hand-made proposal, what it found, what changed and what it
+   could not place (`reports/2026/params_proposal_from_2025.md`); rerun it after the finals are archived.
 4. **Adopt the definitions**: `python3 tools/year_diff.py --from 2025 --to 2026 --adopt` (copies the 2025 definitions
    and rulings to 2026 and relocates pages); then apply the proposed parameters
    (`params-2026.proposed.yaml` → `params/2026.yaml`, in the `params/2025.yaml` format: drop `source`, `note`,
