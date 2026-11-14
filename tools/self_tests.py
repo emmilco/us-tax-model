@@ -51,6 +51,7 @@ TESTS = [
     ("check_times_self_test", "code", False, ["python3", "tools/check_times.py", "--self-test"]),
     ("step_output_self_test", "code", False, ["python3", "tools/step_output.py", "--self-test"]),
     ("year_carry_self_test", "code", False, ["python3", "tools/transcription/year_carry.py", "--self-test"]),
+    ("rename_carry_self_test", "code", False, ["python3", "tools/transcription/test_rename_carry.py"]),
     ("citations_self_test", "code", True, ["python3", "tools/citations.py", "--self-test"]),
     ("year_diff_self_test", "code", True, ["python3", "tools/year_diff.py", "--self-test"]),
     ("fixtures_year_self_test", "code", False, ["python3", "tools/fixtures_year.py", "--self-test"]),

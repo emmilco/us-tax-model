@@ -51,6 +51,29 @@ versions, the newest settled ruling on the same disagreement whose line was
 then as it is now carries; a newer finding, defect or unsettled ruling on the
 same disagreement stops the search.
 
+A transcription disagreement whose reply differs from the earlier one (so no
+earlier section has the same content) is still a repeat when the reply differs
+from the project's line exactly as an earlier ruled reply did: the form's
+triage record evaluated the section's reply on the current form and found it
+differing, and an earlier ruling in the form's sidecar on the same handle
+carries the same triage stamp (verdict, kinds of difference, witness inputs and
+triage policy) and the same line subject (the line and what it reads, as
+above). The newest such ruling carries, naming that it matched by triage kinds
+and witnesses; a ruling of a re-judged class stops it.
+
+Last, a transcription disagreement still open is ruled from the form's
+executable triage record (triage.py, .transcription/triage/) when that record
+evaluated the very reply the section records, on the current form, and found
+the project's line and the reply's agreeing on every input it ran: no value
+different, missing or invalid, compared on fixture cases and on at least
+MIN_GENERATED generated returns, with no evaluation failure. The ruling is
+"representation; equivalent on executable triage, ruled mechanically" with the
+counts it rests on. One in AUDIT_EVERY such disagreements, chosen by a hash of
+the disagreement's identity (not by time, so a rerun chooses the same ones), is
+left open and listed as held for adjudication, so that a broken rule shows in an
+agent's ruling. A disagreement an earlier ruling of a re-judged class answered
+(a finding, a defect, an unsettled class) is not ruled by triage.
+
 The carried ruling keeps its text, so its class prefix is read as before, and
 names its source:
     Ruling: <earlier text> (carried over from <source>, review of <date>)
@@ -439,6 +462,124 @@ def mechanical(kind, sec):
             "not the tax reading.")
 
 
+TRIAGE_RULING = "Ruling: representation; equivalent on executable triage, ruled mechanically"
+AUDIT_EVERY = 10      # one in AUDIT_EVERY triage-equivalent disagreements is held for an agent instead
+MIN_GENERATED = 500   # the generated returns a triage run needs before its agreement rules anything
+
+
+def held_for_audit(kind, form, family, sec):
+    """Whether a triage-equivalent disagreement is held for adjudication: one in AUDIT_EVERY, chosen by the
+    disagreement's identity (log stem, handle, status and both sides), so the same disagreement is always
+    held or always ruled, whenever and however often the step runs."""
+    ident = json.dumps([kind, families.stem(form, family), sec["handle"], *content(kind, sec)], ensure_ascii=False)
+    return int(hashlib.sha256(ident.encode()).hexdigest(), 16) % AUDIT_EVERY == 0
+
+
+def triage_equivalence(record, line, subject):
+    """(ruling text, None) when the triage line shows the project's line and the reply's agreeing on every
+    fixture case and every generated return run, else (None, why). `record` is the form's triage record,
+    `line` its line for the section and the reply the section records (rulings.triage_line), `subject` the
+    form's current transcription subject."""
+    import triage
+    if record.get("policy") != triage.POLICY:
+        return None, f"triage record of another policy ({record.get('policy')})"
+    if record.get("subject_sha256") != subject:
+        return None, "triage record of an earlier version of the form; rerun triage"
+    state = (record.get("passes") or {}).get(line.get("pass")) if line.get("pass") else record
+    bank = (state or {}).get("bank") or {}
+    if (state or {}).get("state") != "evaluated" or (state or {}).get("errors"):
+        return None, "triage did not evaluate the reply"
+    if line.get("triage") != "agrees on sample":
+        return None, f"triage: {line.get('triage')}"
+    sources = line.get("sources") or {}
+    if bank.get("evaluation_failures") or line.get("absent") or line.get("differ") or line.get("invalid"):
+        return None, "triage: not every input evaluated alike"
+    if (bank.get("generated") or 0) < MIN_GENERATED or not sources.get("fixture") or not sources.get("generated"):
+        return None, "triage: the line was not compared on the fixtures and enough generated returns"
+    return (f"{TRIAGE_RULING}: the project's line and the reply's agree on every input triage ran "
+            f"({line['compared']} values compared, none different or missing: {sources.get('fixture', 0)} on "
+            f"{bank.get('fixtures')} fixture cases, {sources.get('generated', 0)} on {bank['generated']} generated returns "
+            f"seed {bank.get('seed')}, {sources.get('partial', 0)} on {bank.get('partial_records', 0)} partial records; "
+            f"policy {record['policy']}). No agent read the source; one in {AUDIT_EVERY} such disagreements is "
+            "held for adjudication instead."), None
+
+
+def _triage_record(form, family):
+    path = sidecar.triage_path(form, family)
+    if not os.path.exists(path):
+        return None
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def triage_repeats(kind, form, family, text, targets, current):
+    """({handle: ruling} for open transcription sections whose reply differs from the project's line exactly as
+    the reply of an earlier settled ruling did, [(handle, why)] for those an earlier ruling of a re-judged class
+    matches). A repeat: the form's triage record evaluated the section's reply on the current form and found it
+    differing; an earlier ruling in the form's sidecar on the same handle carries the same triage stamp (verdict,
+    kinds of difference, witness inputs, triage policy: rulings.triage_stamp) and was made when the line and what
+    it reads (line_subject) were as they are now. The newest such ruling carries, naming that it matched by triage."""
+    if kind != "transcription":
+        return {}, []
+    record = _triage_record(form, family)
+    if record is None or record.get("subject_sha256") != subjects.current("transcription", form, Y):
+        return {}, []
+    side = sidecar.load(kind, form, family)
+    blocks = sidecar.pass_blocks(text)
+    contents = {key[0]: c for key, _, c in sidecar.log_sections(kind, text, with_content=True)}
+    out, stopped = {}, []
+    for s in targets:
+        if s["status"] != "DISAGREE" or s["handle"] not in contents:
+            continue
+        run = sidecar.section_run(kind, text, s["handle"], contents[s["handle"]], blocks)
+        line = sidecar.triage_line(record, s["handle"], run)
+        if line is None or line.get("triage") != "differs" or not line.get("witnesses"):
+            continue
+        stamp = sidecar.triage_stamp(record, line)
+        subject = line_subject(kind, current, form, s["handle"])
+        same = [v for k, v in side.items() if k[0] == s["handle"] and v.get("triage") == stamp and subject
+                and v.get("subject_key") == subject and v.get("ruling")]
+        if not same:
+            continue
+        same.sort(key=lambda v: v.get("date") or "", reverse=True)
+        stop = excluded(same[0]["ruling"])
+        if stop:
+            stopped.append((s["handle"], f"earlier ruling not carried: {stop} (matched by triage kinds and witnesses)"))
+            continue
+        out[s["handle"]] = carried_text(same[0]["ruling"], f"{families.stem(form, family)}.rulings.json, matched by "
+                                        "triage kinds and witnesses", same[0].get("date") or "unknown date")
+    return out, stopped
+
+
+def triage_rulings(kind, form, family, text, targets):
+    """({handle: ruling} for open transcription sections triage shows equivalent, [(handle, why)] for those held
+    for adjudication by the one-in-AUDIT_EVERY sample). Without a triage record of the form, nothing."""
+    if kind != "transcription":
+        return {}, []
+    record = _triage_record(form, family)
+    if record is None:
+        return {}, []
+    subject = subjects.current("transcription", form, Y)
+    blocks = sidecar.pass_blocks(text)
+    contents = {key[0]: c for key, _, c in sidecar.log_sections(kind, text, with_content=True)}
+    out, held = {}, []
+    for s in targets:
+        if s["status"] != "DISAGREE" or s["handle"] not in contents:
+            continue
+        run = sidecar.section_run(kind, text, s["handle"], contents[s["handle"]], blocks)
+        line = sidecar.triage_line(record, s["handle"], run)
+        if line is None:
+            continue
+        ruling, _ = triage_equivalence(record, line, subject)
+        if ruling is None:
+            continue
+        if held_for_audit(kind, form, family, s):
+            held.append((s["handle"], f"triage-equivalent, held for adjudication (the one-in-{AUDIT_EVERY} audit sample)"))
+        else:
+            out[s["handle"]] = ruling
+    return out, held
+
+
 def carried_text(ruling, source, date):
     text = sidecar.split_ruling(ruling)[0]
     if CARRIED.search(text):
@@ -560,14 +701,19 @@ def snapshot(rev):
 
 # ---------------------------------------------------------------- carry
 
-def log_is_current(kind, form, text, current):
-    """Whether the log describes the document in `current`. Against the working tree this is
-    subjects.log_state, the test check_logs.py applies: a log with line-scoped passes is current when
-    every compared line's subject is, whatever its header's whole-form subject records. Against a
-    commit or an in-memory snapshot only the header's whole-form subject is compared, which can refuse
-    a current line-scoped log but never accepts a stale one."""
+def log_is_current(kind, form, text, current, family=families.DEFAULT):
+    """Whether the log describes the document in `current`. Against the working tree this is the test
+    check_logs.py applies: review_store.state for a stored review (which reads a whole-form subject carried
+    across a rename), else subjects.log_state; a log with line-scoped passes is current when every compared
+    line's subject is, whatever its header's whole-form subject records. Against a commit or an in-memory
+    snapshot only the header's whole-form subject is compared, which can refuse a current line-scoped log
+    but never accepts a stale one."""
     if current.rev is None:
-        return subjects.log_state(kind, form, Y, text) is None
+        import review_store
+        state = review_store.state(kind, form, family, Y)
+        if state is review_store.NO_INDEX:
+            state = subjects.log_state(kind, form, Y, text)
+        return state is None
     reviewed = current.read(os.path.relpath(subjects.path(kind, form, Y), ROOT))
     return reviewed is not None and recorded(text, "subject sha256") == subjects.of_text(kind, reviewed)
 
@@ -581,7 +727,7 @@ def plan(kind, form, family=families.DEFAULT, origin=None, current=None):
     if not targets:
         return {}, stats, []
     current = current or Snapshot(None)
-    if not log_is_current(kind, form, text, current):
+    if not log_is_current(kind, form, text, current, family):
         return {}, stats, [(s["handle"], "the log is stale; rerun first") for s in targets]
     out = {s["handle"]: m for s in targets for m in [mechanical(kind, s)] if m}
     stats["mechanical"] = len(out)
@@ -589,24 +735,41 @@ def plan(kind, form, family=families.DEFAULT, origin=None, current=None):
     if not targets:
         return out, stats, []
     srcs, reason = source_logs(kind, form, family, origin)
-    if not srcs:
-        return out, stats, [(s["handle"], reason) for s in targets]
-    earlier = []  # per source, newest first: (label, date, snapshot, {handle: [sections]})
-    for src, label, snap in srcs:
-        by_handle = {}
-        for e in sections(kind, src):
-            by_handle.setdefault(e["handle"], []).append(e)
-        earlier.append((label, recorded(src, "date") or "unknown date", snap, by_handle))
     left = []
-    for s in targets:
-        ruled, why = match(kind, form, s, earlier, current)
-        if ruled is None:
-            left.append((s["handle"], why)); continue
-        e, label, date = ruled
-        text = carried_text(e["ruling"], label, date)
-        # A class M model error dropped from the fixture is dropped again (rule.py does it).
-        out[s["handle"]] = {"ruling": text, "drop": True} if sidecar.split_ruling(e["ruling"])[1] else text
+    if not srcs:
+        left = [(s["handle"], reason) for s in targets]
+    else:
+        earlier = []  # per source, newest first: (label, date, snapshot, {handle: [sections]})
+        for src, label, snap in srcs:
+            by_handle = {}
+            for e in sections(kind, src):
+                by_handle.setdefault(e["handle"], []).append(e)
+            earlier.append((label, recorded(src, "date") or "unknown date", snap, by_handle))
+        for s in targets:
+            ruled, why = match(kind, form, s, earlier, current)
+            if ruled is None:
+                left.append((s["handle"], why)); continue
+            e, label, date = ruled
+            ruling = carried_text(e["ruling"], label, date)
+            # A class M model error dropped from the fixture is dropped again (rule.py does it).
+            out[s["handle"]] = {"ruling": ruling, "drop": True} if sidecar.split_ruling(e["ruling"])[1] else ruling
+    # A repeat whose reply differs from the line as an earlier ruled reply did (triage kinds and witnesses).
+    open_left = {h for h, why in left if not why.startswith("earlier ruling not carried")}
+    repeats, stopped = triage_repeats(kind, form, family, text, [s for s in targets if s["handle"] in open_left], current)
+    for h, ruling in repeats.items():
+        out[h] = {"ruling": ruling, "drop": True} if sidecar.split_ruling(ruling)[1] else ruling
+    stopped_why = dict(stopped)
+    left = [(h, stopped_why.get(h, why)) for h, why in left if h not in repeats]
     stats["carried"] = len(out) - stats["mechanical"]
+    stats["by_triage_match"] = len(repeats)
+    # Executable triage rules what is left, except a disagreement an earlier ruling of a re-judged class
+    # (a finding, a defect, an unsettled class) already answered: that ruling is not overridden.
+    open_left = {h for h, why in left if not why.startswith("earlier ruling not carried")}
+    ruled, held = triage_rulings(kind, form, family, text, [s for s in targets if s["handle"] in open_left])
+    out.update(ruled)
+    stats["triage"], stats["held"] = len(ruled), len(held)
+    held_why = dict(held)
+    left = [(h, held_why.get(h, why)) for h, why in left if h not in ruled]
     return out, stats, left
 
 
@@ -669,13 +832,15 @@ def main(argv=None):
         total.update({"left: " + w: n for w, n in reasons.items()})
         if stats["open"]:
             print(f"{families.stem(form, a.family)}: {stats['open']} open, {stats['mechanical']} ruled mechanically, "
-                  f"{stats['carried']} carried"
+                  f"{stats['carried']} carried, {stats['triage']} ruled by triage"
                   + (" (dry run)" if a.dry_run else "") + "".join(f"; {n} {w}" for w, n in sorted(reasons.items())))
-        if a.verbose:
-            for h, w in left:
+        for h, w in left:
+            if a.verbose or w.startswith("triage-equivalent, held"):
                 print(f"  open {h}: {w}")
+    ruled = total["carried"] + total["mechanical"] + total["triage"]
     print(f"{a.kind} [{a.family}]: {total['mechanical']} ruled mechanically, {total['carried']} carried, "
-          f"{total['open'] - total['carried'] - total['mechanical']} left open of {total['open']}"
+          f"{total['triage']} ruled by triage ({total['held']} held for adjudication), "
+          f"{total['open'] - ruled} left open of {total['open']}"
           + (" (dry run; nothing written)" if a.dry_run else ""))
     return 0
 

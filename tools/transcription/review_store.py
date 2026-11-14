@@ -18,6 +18,13 @@ the foreign interfaces of transcription lines (`foreign`), the whole-form record
 from (`base`) and the header rows a later pass rewrote (`head_rows`). A line's `subject_key` folds its line
 subject and its foreign interfaces together.
 
+A verdict carried across a proven rename of line ids (rename_carry.py) is marked on its line with `carried`
+({"by": "rename", "map", "from", ...}). When the rename changed the line's log key, the line also names the
+record section it was judged under (`section`, the old key); the view shows that section under the new key.
+A whole-form subject carried the same way is `subject_carried` ({"subject", "was", "carried"}): state() reads
+`subject` in place of the base record's header subject only while `was` is that header's. ingest() keeps a
+line's `carried` and `section` while the line's verdict still comes from the same record.
+
 The per-form log is a view, generated, not committed: view() assembles it from the index and the records it
 names, byte for byte as the review tools wrote it; ingest() takes a log a tool wrote (or rule.py ruled) and
 stores what is new in it, verifying that the view reproduces it. `render` writes the views to the
@@ -312,6 +319,27 @@ def _apply_head(base_head, rows):
     return head
 
 
+def aliased(text, old, new):
+    """A record's section (or gate row) judged under log key `old`, shown under key `new`: the key that opens
+    the section's title (or the row's first cell) is replaced; nothing else changes."""
+    if text is None or old is None or old == new:
+        return text
+    if text.startswith("| " + old + " | "):
+        return "| " + new + " | " + text[len("| " + old + " | "):]
+    if text.startswith(old):
+        return new + text[len(old):]
+    raise ValueError(f"record section {old!r} does not open with its key")
+
+
+def section_of(parts, line):
+    """The text of an index line's section from its record's parts, under the line's key."""
+    return aliased(parts["section " + line.get("section", line["key"])], line.get("section"), line["key"])
+
+
+def _gate_of(parts, line):
+    return aliased(parts.get("gate " + line.get("section", line["key"])), line.get("section"), line["key"])
+
+
 def _extras(kind, index, records):
     """The text between the sections and the raw reply, as merge_log writes it."""
     import subjects as S
@@ -319,7 +347,7 @@ def _extras(kind, index, records):
         return index["extras"]
     tail = []
     if kind == "transcription":
-        rows = [records[l["record"]][1].get("gate " + l["key"]) for l in index["lines"]]
+        rows = [_gate_of(records[l["record"]][1], l) for l in index["lines"]]
         rows = [r for r in rows if r is not None]
         if rows:
             tail += [GATES_HEADING, "",
@@ -353,7 +381,7 @@ def view_of(index, read=None):
     head = _apply_head(base["head"], index.get("head_rows") or {})
     body = index.get("lead", "")
     for l in index["lines"]:
-        part = records[l["record"]][1]["section " + l["key"]]
+        part = section_of(records[l["record"]][1], l)
         if l.get("ruling") is not None:
             m = RULING_RE.search(part)
             part = part[:m.start()] + l["ruling"] + part[m.end():]
@@ -399,11 +427,22 @@ def state(kind, form, family, year):
     index = load_index(kind, form, family)
     if index is None:
         return NO_INDEX
+    passes = line_passes(kind, form, family)
+    return subjects.index_state(kind, form, year, index, recorded_subject(kind, index),
+                                any(v["pass"] for v in passes.values()))
+
+
+def recorded_subject(kind, index):
+    """The whole-form subject an index answers: its base record's header subject, or the subject carried
+    across a proven rename (`subject_carried`) while that carry names the header's subject as the one it
+    was proven from."""
     _, base = load_record(kind, index["base"])
     m = re.search(r"^\| subject sha256 \| ([0-9a-f]{64}) \|$", base["head"], re.M)
-    passes = line_passes(kind, form, family)
-    return subjects.index_state(kind, form, year, index, m.group(1) if m else None,
-                                any(v["pass"] for v in passes.values()))
+    header = m.group(1) if m else None
+    carried = index.get("subject_carried")
+    if header and carried and carried.get("was") == header and carried.get("subject"):
+        return carried["subject"]
+    return header
 
 
 # ---------------------------------------------------------------- ingest
@@ -415,6 +454,15 @@ def ingest(kind, form, family, text):
     p = parse(kind, text)
     by_pid, base = {}, None
     old_records = set()
+    old_lines = {l["key"]: l for l in (old or {}).get("lines", [])}
+
+    def recorded_section(parts, k):
+        """A record's section for log key k, shown under k as the old index showed it."""
+        line = old_lines.get(k)
+        name = line.get("section", k) if line else k
+        got = parts.get("section " + name)
+        return aliased(got, line.get("section"), k) if line and got is not None else got
+
     if old is not None:
         old_records = {old["base"]} | {l["record"] for l in old["lines"]}
         for sha in old_records:
@@ -428,7 +476,7 @@ def ingest(kind, form, family, text):
     owner = {}
     for key, part in p["sections"]:
         owner[key] = _tag(part) if kind != "classm" else None
-    if base is not None and any(base[1].get("section " + k) != _normal(s)[0] for k, s in p["sections"] if owner[k] is None):
+    if base is not None and any(recorded_section(base[1], k) != _normal(s)[0] for k, s in p["sections"] if owner[k] is None):
         base = None  # a whole-form review with the same header and reply, but other verdicts: a new record
     if base is None:
         untagged = [(k, s) for k, s in p["sections"] if owner[k] is None]
@@ -446,7 +494,7 @@ def ingest(kind, form, family, text):
     shas = {None: base[0]}
     for pid, block in p["blocks"].items():
         mine = [(k, s) for k, s in p["sections"] if owner[k] == pid]
-        if pid in by_pid and all(by_pid[pid][1].get("section " + k) == _normal(s)[0] for k, s in mine):
+        if pid in by_pid and all(recorded_section(by_pid[pid][1], k) == _normal(s)[0] for k, s in mine):
             shas[pid] = by_pid[pid][0]
             continue
         scope = row(block, "review scope")
@@ -466,9 +514,17 @@ def ingest(kind, form, family, text):
         ruling = _normal(s)[1]
         ls = (p["subjects"] or {}).get(k)
         fo = (p["foreign"] or {}).get(k)
-        lines.append({"key": k, "record": shas[owner[k]], "status": status.group(1) if status else None,
-                      **({"ruling": ruling} if ruling is not None else {}),
-                      **({"subject_key": subject_key(ls, fo)} if ls is not None else {})})
+        line = {"key": k, "record": shas[owner[k]], "status": status.group(1) if status else None,
+                **({"ruling": ruling} if ruling is not None else {}),
+                **({"subject_key": subject_key(ls, fo)} if ls is not None else {})}
+        was = old_lines.get(k)
+        if was is not None and was["record"] == line["record"]:
+            # the same verdict from the same record: a carry across a rename still describes it
+            if was.get("section"):
+                line["section"] = was["section"]
+            if was.get("carried") and was.get("subject_key") == line.get("subject_key"):
+                line["carried"] = was["carried"]
+        lines.append(line)
     index = {"kind": kind, "form": form, "family": family, "base": base[0]}
     rows = _head_rows(base[1]["head"], p["head"])
     if rows:
@@ -582,6 +638,14 @@ def check():
                     ([f"verdict section without a line subject: {', '.join(no_subject)}"] if no_subject else [])))
             elif tag in SUBJECT_VERDICT_EXCEPTIONS and not (no_verdict or no_subject):
                 problems.append(f"{tag}: listed in SUBJECT_VERDICT_EXCEPTIONS but has no gap; remove it")
+            for l in index["lines"]:
+                if l.get("section") and ((l.get("carried") or {}).get("by") != "rename"
+                                         or (l["carried"].get("keys") or {}).get(l["section"]) != l["key"]):
+                    problems.append(f"{tag}: line {l['key']} is shown from record section {l['section']} without a "
+                                    "rename carry that maps that key to it")
+            sc = index.get("subject_carried")
+            if sc is not None and (sc.get("carried") or {}).get("by") != "rename":
+                problems.append(f"{tag}: subject_carried without a rename carry")
             for sha in {index["base"]} | {l["record"] for l in index["lines"]}:
                 used.add((kind, sha))
                 try:

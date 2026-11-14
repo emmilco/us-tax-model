@@ -306,6 +306,61 @@ enforces these rules (self-tests: `tools/transcription/test_rerun_all.py`):
 - **Owner gate.** A run whose estimate exceeds `COST_GATE_USD` ($3.00), or which includes
   calls the ledger cannot price (no recent call of that tool and family), is refused (exit 2)
   unless `--approve-cost DOLLARS` is at least the estimate.
+- **Mechanical rulings after a review.** A review that leaves open disagreements is followed,
+  unless `--no-carry`, by `carry.py`; a transcription review first by `triage.py` on the new reply.
+  `carry.py` rules, in order: a reply that fails the host's validation on the line (model error on
+  the declaration); a repeat of an earlier settled ruling on an unchanged line (carried over, naming
+  its source): the same disagreement content, or, for transcription, a new reply that differs from the
+  line exactly as an earlier ruled reply did (the same triage verdict, kinds of difference and witness
+  inputs, from the ruling's triage stamp in the sidecar, with the line subject it was ruled on); and a
+  disagreement whose triage record, for that very reply and the current form,
+  shows the project's line and the reply's agreeing on every input run (no value different, missing
+  or invalid; compared on fixture cases and on at least 500 generated returns; no evaluation
+  failure): "representation; equivalent on executable triage, ruled mechanically", with the counts.
+  One in ten of those (`AUDIT_EVERY`), chosen by a hash of the disagreement's identity, so a rerun
+  holds the same ones, is left open and printed as held for adjudication; an agent rules it, so a
+  broken rule shows. A disagreement an earlier finding, defect or unsettled ruling answered is never
+  ruled by triage. Self-tests: `test_review_tools.py` (`CarryOver`, `TriageRulings`).
+
+## Carrying review verdicts across a rename of line ids
+
+`tools/transcription/rename_carry.py` carries the review verdicts of lines whose ids were renamed, where
+the rename is proven to change nothing but the names (owner decision: such a carry is acceptable
+evidence). Run it in the renamed tree after its build and rendering:
+
+    python3 tools/transcription/rename_carry.py --map MAP.json --from <commit before the rename> [--report PATH]
+    python3 tools/transcription/rename_carry.py --map MAP.json --from <commit> --write --report PATH
+
+`MAP.json` is `{"old id": "new id", ...}` (or `{"renames": [{"old": ..., "new": ...}]}`); `--from` may also
+name a directory holding the tree before the rename. Without `--write` it only reports.
+
+- **Stale map.** It refuses the map whole (exit 2, nothing written) when an old id is not a line at
+  `--from` or is still a line, a new id was already a line at `--from` or is not one now, an id has no
+  document prefix, or two entries share an id.
+- **Proof.** For each review unit the rename moves (a compared line of a transcription or render log,
+  a whole-form class M subject, a question, screen, gate or completeness record): (A) the subject the
+  review recorded equals the subject the tool's own code computes on a copy-on-write scratch copy of
+  the tree with every new id put back to its old id (in `forms/`, `rendered/`, `canonical/`,
+  `interview/`, `ambiguities/`); and (B) for transcription, render and class M, the year-carry parts
+  (`year_carry.parts`: subject with foreign interfaces, values read, cited anchor sections) are equal at
+  `--from` and in the scratch tree, and the review policies at `--from` are the current ones. A unit
+  that fails either is listed with the reason, nothing of it is carried, and it falls due as usual.
+- **What it writes.** Index lines get the current subject and a `carried` marker (`by: rename`, the map
+  entries the subject names, `from`, the subject it was proven against); a line whose log key is a
+  renamed id is shown from its record's old section under the new key (`section`), and its rulings
+  sidecar is re-keyed; class M (and a log without line subjects) gets `subject_carried`; sampled
+  records, their per-sample rulings and baseline entries are re-keyed to the new id with the current
+  `subject_sha` and a `carried` marker; a completeness ruling's `line` and `gate` are renamed; a
+  `consumers.json` ruling or baseline entry of a renamed input is re-keyed when the input's question is
+  unchanged. Records,
+  verdict and ruling texts and raw replies keep the old names. `check_logs.py`, `review_store.py check`,
+  `rulings.py --check` and the sampled checks then accept the carried entries and fail as before on
+  anything whose proof did not hold. A later review of the form drops a line's marker only when the
+  line's verdict comes from a new record.
+- **Not covered.** An inactive family's logs (history), definition lines' local ids, and the seeded
+  generated returns (which move with input ids: rulings citing them
+  rest on the earlier sample). It takes several minutes on the whole tree (it computes every subject twice).
+- Self-test: `tools/transcription/test_rename_carry.py` (a small tree of its own; check-all `self_tests`).
 
 ## EIC Table
 
