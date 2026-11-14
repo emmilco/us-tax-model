@@ -380,7 +380,8 @@ transcription, render and class M review which compared lines carry to TY+1 and 
 with `--write` writes the carried entries into TY+1's indexes (same record, status and ruling, each marked
 `carried: {from, year_key}`; a form's `__rest__` is set to TY+1's only when the document's own fields
 carry). A line carries only when its year-carry key is equal in both years: its subject with foreign
-interfaces, the values of the parameters, enums and tables its reach reads, the cited source text at
+interfaces, the values of the parameters, enums and tables its reach reads (a table's data: not its title,
+citation or tax year), the cited source text at
 anchor-section granularity over its reach and the foreign lines it names (never only the quoted words; a
 citation naming no page stands for its whole document), and the review tools' policy versions. Year
 literals are normalized in lockstep: only where the year moved by exactly +1 between the two years'
@@ -390,7 +391,10 @@ project wrongly incremented, a rolling year the project failed to move, and a bi
 a review. The report lists every carried line for spot review and separates the lines that wait only on
 a TY+1 source not yet archived or a TY+1 parameter not yet set. `--self-test` (in check-all) runs
 near-miss pairs: a paragraph added under the same heading, a changed parameter value, an incremented
-fixed date, a rolling year not moved, a moved birth year.
+fixed date, a rolling year not moved, a moved birth year. With `--jurisdiction ny` it carries New York's
+reviews (`reviews/ny/<year>/`), reading each tree across both jurisdictions as the New York review tools
+do: federal and New York forms, both parameter files and table directories, and each document's sources
+and rendering in its own jurisdiction's directory; it refuses a TY+1 with no New York data.
 
 ## Rulings
 

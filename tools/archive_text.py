@@ -40,8 +40,11 @@ def drop_draft_marks(text, entry):
 
 
 def manifest(sources):
-    """{id: entry} of an archive directory (sources/<year>)."""
-    data = json.loads((Path(sources) / "manifest.json").read_text(encoding="utf-8"))
+    """{id: entry} of an archive directory (sources/<year>); exits naming the directory when it has no manifest."""
+    path = Path(sources) / "manifest.json"
+    if not path.exists():
+        sys.exit(f"no archive: {shown(path)} does not exist (archive the year's sources first: tools/fetch_sources.py)")
+    data = json.loads(path.read_text(encoding="utf-8"))
     return {d["id"]: d for d in (data["documents"] if isinstance(data, dict) else data)}
 
 

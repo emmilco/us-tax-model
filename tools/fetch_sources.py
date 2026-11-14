@@ -236,6 +236,11 @@ def main():
     global ARCHIVE, CATALOG, HOSTS, PATHS
     j = JURISDICTIONS[args.jurisdiction]
     ARCHIVE, CATALOG, HOSTS, PATHS = j["archive"], j["catalog"], j["hosts"], j["paths"]
+    if not CATALOG.exists():
+        if args.jurisdiction == "ny":
+            import jurisdiction
+            sys.exit(jurisdiction.no_year(YEAR, "fetch_sources"))
+        sys.exit(f"fetch_sources: no catalog for {YEAR} ({CATALOG.relative_to(ROOT)})")
     catalog = json.loads(CATALOG.read_text())
     for item in catalog:
         check_draft_marking(item)

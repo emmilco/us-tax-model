@@ -318,6 +318,37 @@ and the column. `node engine/dist/main.js conjecture` checks every cell against
 the credit formula built from Rev. Proc. 2024-40 section 3.06(1); see
 `reports/2025/eic_table_conjecture.md`.
 
+## New York years
+
+The New York tools take the tax year the way the federal ones do: `--year N`, else the newest year in `years.json`
+(`taxyear.py`). New York publishes a year's forms after the IRS does, so a year can have federal data and none for
+New York. In New York mode (`--jurisdiction ny`, `jurisdiction.py`) a year qualifies only if it has New York
+definitions (`forms/ny/<year>/`) or a New York catalog (`tools/sources/ny/<year>.json`); for any other year the tool
+exits naming both and the New York years that exist. `fetch_sources.py` and `check_extraction.py`, which parse the
+flag themselves, refuse the same way; a tool reading an archive that has no `manifest.json` exits naming it
+(`archive_text.py`).
+
+- The New York-only tools (`ny_predict.py`, `ny_fixtures.py`, `extract_ny_tax_table.py`,
+  `extract_ny_household_tables.py`, `engines/ny_policyengine.py`) are in New York mode without the flag and refuse
+  `--jurisdiction us`.
+- `ny_predict.py` holds the amounts of one printing (`PRINTED`): `predict()` exits for any other year, so
+  `ny_fixtures.py` does too, until the year's amounts are read from its IT-201-I and tax tables and added. Its
+  `--self-test` checks the `PRINTED` examples whatever the year.
+- `ny_fixtures.py` writes `fixtures/ny/<year>/it201.json` whole. It reproduces neither the cases added to that file
+  by hand since it was generated nor the files' reliance on `defaults.json`; carry New York fixtures to a new year with
+  `fixtures_year.py --jurisdiction ny`, not with this script.
+- The year tools work for New York with `--jurisdiction ny`: `year_diff.py` (and `--adopt`, which copies
+  `forms/ny`, `tables/ny`, `params/ny`, `ambiguities/ny` and `interview/ny` and relocates their citations with
+  `citations.py --relocate`), `fixtures_year.py`, `citations.py`, `fetch_sources.py`, `check_extraction.py`, and
+  `transcription/year_carry.py`, which carries New York's reviews (`reviews/ny/<year>/`) reading each tree across
+  both jurisdictions (a New York line names federal lines).
+- The New York tables are extracted, each year, from the archived web pages: the State and City Tax Tables by
+  `extract_ny_tax_table.py` (the page's heading, its New York AGI limit and its $65,000 limit read from the page) and
+  the household credit tables 1, 2, 4 and 5 by `extract_ny_household_tables.py` (the captions, the header cells the
+  citations quote and Notes 1 to 3 checked as printed). Both write `tables/ny/<year>/` and, with `--check`, compare a
+  fresh extraction with the committed files byte for byte (check-all steps `ny_tax_table`, `ny_household_tables`).
+  `ny_hh_spouse_count` (one for your spouse on a joint return) has no printed amounts and stays by hand.
+
 ## Sampled completeness, screen, false-no and question reviews
 
 `completeness_review.py` and `check_completeness.py`, `screen_review.py` and `check_screens.py`,
@@ -504,7 +535,7 @@ that year's table from its archived source, and the check-all step named beside 
 | `engines/ny_policyengine.py` | The New York differential against PolicyEngine-US, under the engines interpreter (`engines/setup.sh`) |
 | `coverage/estimate.py` | The coverage estimate (spec 2.4), under the engines interpreter with the microdata `coverage/fetch_microdata.sh` downloads once |
 | `coverage/roadmap.py` | `reports/roadmap.html` from the coverage estimate and the open rows of `TASKS.md` |
-| `ny_fixtures.py` | Writes the New York fixtures from `ny_predict.py`'s predictions |
+| `ny_fixtures.py` | Writes the New York fixtures from `ny_predict.py`'s predictions, for the year the predictor was transcribed for (section "New York years") |
 | `new_bug.py`, `task_row.py` | Append a `BUG_INVENTORY.md` entry; add or update a `TASKS.md` row (tested by `test_bookkeeping_tools.py`) |
 | `ocr_audit.py` | An image-grounded audit of the archived text layers (Tesseract), for a person to adjudicate; not a gate |
 | `extraction/page_review.py` | Local HTML pages of each archived page beside the project's reading of it, for a person to judge |

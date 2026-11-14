@@ -7,7 +7,9 @@ that is different in another year.
 
 The citations of the data year (--data, by default --from: the year whose
 definitions exist) are read against both years' archived text. Each archived PDF
-is split into sentences of its reading-order text, and the two years' sentences
+is split into sentences of its reading-order text, and each archived web page into
+sentences of its derived text (one page, so its citations, which name no page, read
+it whole), and the two years' sentences
 are aligned (difflib), the other year's text read with its years moved to the
 data year's (a sentence naming its own tax year is not a change): each sentence of
 the data year is unchanged, changed (with
@@ -81,7 +83,7 @@ def year_shifted(text, shift):
 
 
 def sentences(arch, doc, shift=0):
-    """[(page, normalized sentence)] of a PDF's reading-order text, its years moved by
+    """[(page, normalized sentence)] of a PDF's reading-order text (a web page's text: page 1), its years moved by
     `shift` (the text as printed is kept in .printed[(page, sentence)])."""
     out = []
     d = arch.docs[doc]
@@ -245,9 +247,9 @@ def run(from_year, to_year, data_year, archives=None, only=None, definitions=Non
         if doc not in A.docs and other in B.docs:
             alignments[doc] = None
             doc_state[doc] = f"no {data_year} edition archived"
-        elif doc not in A.docs or not A.docs[doc]["file"].endswith(".pdf"):
+        elif doc not in A.docs or not A.docs[doc]["file"].endswith((".pdf", ".html")):
             alignments[doc] = None
-            doc_state[doc] = "not compared (no PDF text)"
+            doc_state[doc] = "not compared (no PDF or web page text)"
         elif other not in B.docs:
             alignments[doc] = None
             doc_state[doc] = f"no {other_year} edition archived"
@@ -510,7 +512,7 @@ def adopt(from_year, to_year):
     (ypath("reports", t)).mkdir(parents=True, exist_ok=True)
     (ypath("reports", t) / f"year_literals_from_{f}.json").write_text(json.dumps(literals, indent=1) + "\n")
     print(f"adopt: {len(literals)} line(s) of the {t} definitions still name {f} outside citations "
-          f"(reports/{t}/year_literals_from_{f}.json); each is on the worklist")
+          f"({(ypath('reports', t) / f'year_literals_from_{f}.json').relative_to(ROOT)}); each is on the worklist")
     print(f"adopt: copied the {f} definitions (and citation rulings, to be reviewed again) to {t}; "
           f"relocating page numbers against the {t} archive")
     subprocess.run([sys.executable, str(ROOT / "tools" / "citations.py"), "--relocate", "--from", f, "--year", t, *jurisdiction.J_ARGS], check=True)

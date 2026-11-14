@@ -1,14 +1,22 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Predict Form IT-201 (2025) values for a full-year New York City resident from the archived instructions,
-independently of the encoding (forms/ny/2025/), for the New York fixtures (Phase 3 step 5, decision C6).
+"""Predict Form IT-201 values for a full-year New York City resident from the archived instructions of one tax
+year (PRINTED), independently of the encoding (forms/ny/<year>/), for the New York fixtures (decision C6).
 
 It reads no New York YAML, parameter or canonical file: every rule and amount below is transcribed here from
-the archived IT-201-I (sources/ny/2025/ny_it201i.pdf and its web edition) and the archived tax-tables page, with
-the quote beside it. The only inputs are federal amounts (from the federal return, which the New York return copies)
-and the answers to the New York questions. Amounts are whole dollars as Fractions; money is returned in cents.
+the archived IT-201-I of PRINTED (sources/ny/<PRINTED>/ny_it201i.pdf and its web edition) and that year's archived
+tax-tables page, with the quote beside it. The only inputs are federal amounts (from the federal return, which the
+New York return copies) and the answers to the New York questions. Amounts are whole dollars as Fractions; money is
+returned in cents.
 
-Used by tools/ny_fixtures.py; `--self-test` checks the predictor against the two official tax-table examples.
+The amounts are those of one printing, so predict() runs only for that tax year (--year, taxyear.py): for another
+year it exits naming the year it knows, and the year's amounts must be read from its printing and added first.
+`--self-test` checks the predictor against the two official tax-table examples of PRINTED, whatever the year.
+
+Used by tools/ny_fixtures.py.
+
+    ny_predict.py --self-test
+    ny_predict.py '<federal amounts JSON>' '<New York answers JSON>'    [--year N]
 """
 import html.parser
 import json
@@ -18,7 +26,17 @@ from fractions import Fraction as F
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-NYDIR = ROOT / "sources" / "ny" / "2025"
+sys.path.insert(0, str(ROOT / "tools"))
+import taxyear  # noqa: E402
+import jurisdiction  # noqa: E402
+
+PRINTED = 2025  # the tax year whose IT-201-I and tax tables every amount below is transcribed from
+NYDIR = ROOT / "sources" / "ny" / str(PRINTED)
+
+
+def require_printed():
+    """Exit unless the tax year is the one the amounts were transcribed for."""
+    taxyear.for_year({PRINTED: None}, f"ny_predict (amounts transcribed from the {PRINTED} IT-201-I and tax tables)")
 
 
 def r_dollar(x):
@@ -92,7 +110,7 @@ _TABLES = None
 
 
 def tax_table(amount, status, city=False):
-    """The 2025 New York State or City Tax Table (the archived web page, read directly from its HTML here, not from
+    """The PRINTED New York State or City Tax Table (the archived web page, read directly from its HTML here, not from
     tables/ny/): the row "At least" <= amount < "But less than", the column "Single or Married filing separately",
     "Married filing jointly*" (with a qualifying surviving spouse) or "Head of a household"."""
     global _TABLES
@@ -200,6 +218,7 @@ def sales_use(fagi, owes):
 def predict(fed, ny):
     """fed: federal amounts in cents (keys f1040.line1z ... f1040.line11a, s1.*, f1040.line27a, eic.limit) and the
     status; ny: the New York answers. Returns {line: value} with money in cents, or {"refused": gate}."""
+    require_printed()
     status = fed["status"]
     d = lambda k: F(fed.get(k, 0), 100)  # noqa: E731
     # Lines 65 and 70 (p. 19, p. 20): "Did you claim the federal earned income credit ... or could you have claimed it
@@ -301,4 +320,5 @@ def self_test():
 if __name__ == "__main__":
     if "--self-test" in sys.argv:
         sys.exit(self_test())
+    jurisdiction.ny_only("ny_predict")
     print(json.dumps(predict(json.loads(sys.argv[1]), json.loads(sys.argv[2]))))

@@ -54,6 +54,14 @@ unchanged.
 8. **`years.json`**: add 2026 only when every 2026 source is final and the 2026 build and fixtures pass.
 9. **check-all** on the owner's machine (`tools/check_all.sh --year 2026`), then commit with the hook.
 
+## New York
+
+New York publishes its 2026 forms after the IRS; nothing for New York 2026 is archived or prepared. The New York
+tools take `--year` and refuse a year with no New York data (`tools/README.md`, "New York years"). The order of work
+the day New York publishes, after the federal adoption (New York reads federal lines), and what a rehearsal on the
+2025 documents showed, are in `docs/ny/2026-11-14_ny_year_handling.md`, sections 3 and 6. Until New York 2026 is
+adopted, a check-all run for 2026 fails its New York steps (that note, section 5, D1).
+
 ## Definition changes in the order to do them (from `changes.md`)
 
 Priority forms first (proposals drafted in `forms-proposed/`): C-PRI-01 to -08 (Form 1040: line 12f, 13a/13b, 24a–24c
