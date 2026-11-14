@@ -342,6 +342,28 @@ citations read in the 2025 archive, against the adopted 2025 values). `--self-te
 check-all) plants two editions of a few documents and checks each kind of reading and of
 refusal.
 
+## Printed tables
+
+`python3 tools/extract_printed_tables.py --check` (check-all) reads the small printed tables again
+from the year's archive and compares them, cell by cell, with the committed `tables/<year>/` files:
+`dc_rate` (Form 2441 line 8, or the phaseout schedule of its instructions when the form refers to
+it), `ltc_limit` (Form 7206 line 2(b), against the Instructions for Form 7206 and the revenue
+procedure), `savers_rate` (Form 8880 line 9, against section 25B(b)(2)'s 3/4 and 1/2 thresholds and
+the parameter `savers.agi_limit`), `rate_schedule` (the revenue procedure's Tables 1 to 4, each base
+against the previous row and the Tax Computation Worksheet parameters against their rows) and the
+passenger automobile limits (`auto_limit`, `auto_limit_first_nobonus`, from Pub. 946, checked against
+three printings by `check_auto_limits.py`). Tables are found by the words printed with them, not by
+page. `--write [--table ID] [--out DIR]` writes a year's tables (refusing one that is not well formed
+or that its second printing or formula contradicts); `--out` writes outside `tables/` for a year not
+yet adopted.
+
+Written by hand: `quarter_convention` (the mid-quarter fractions, fixed by the regulations, not a
+yearly printing), `macrs_last_year` (each recovery period plus one; checked against `macrs_gds` by
+`check_macrs_tables.py`), `recovery_year` (the year less the year placed in service, plus one: figured,
+not printed; its keys are the `placed_year` enumeration, renamed with the year) and `simple_catchup`
+(three amounts printed in the running text of Pub. 560 and the year's retirement plan notice; the
+2026 Pub. 560 is not archived).
+
 ## Sampled completeness, screen, false-no and question reviews
 
 `completeness_review.py` and `check_completeness.py`, `screen_review.py` and `check_screens.py`,
@@ -525,6 +547,7 @@ that year's table from its archived source, and the check-all step named beside 
 | `extract_macrs_tables.py` | The MACRS tables of Pub. 946 into `tables/<year>/macrs_gds.yaml` (yearly; checked by `check_macrs_tables.py`) |
 | `extract_class_lives.py` | Pub. 946 Appendix B into `tables/<year>/class_lives.yaml` and its enum file (yearly) |
 | `extract_eic_table.py` | The EIC Table (section above) |
+| `extract_printed_tables.py --write` | The small printed tables of a year (section "Printed tables"; `--check` is in check-all) |
 | `propose_params.py` | A year's parameter values read from its archived documents at the places the prior year's citations name (section "Proposing a year's parameters") |
 | `engines/ny_policyengine.py` | The New York differential against PolicyEngine-US, under the engines interpreter (`engines/setup.sh`) |
 | `coverage/estimate.py` | The coverage estimate (spec 2.4), under the engines interpreter with the microdata `coverage/fetch_microdata.sh` downloads once |

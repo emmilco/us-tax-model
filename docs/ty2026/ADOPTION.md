@@ -47,6 +47,10 @@ unchanged.
    `fixtures-proposed/2026-predicted.json` as full fixtures (every input answered), each re-checked against the final.
    The 2026 tables (Tax Table, EIC tables, Form 8962 tables, Pub. 946 tables, auto limits, `ltc_limit`,
    `simple_catchup`, `savers_rate`, `dc_rate`) need re-extraction from the finals.
+   `python3 tools/extract_printed_tables.py --write --year 2026` writes `dc_rate`, `ltc_limit`, `savers_rate`,
+   `rate_schedule` and the automobile limits from the archive (on the drafts it writes the first four; the 2026
+   `dc_rate` has a column for joint returns and one for the other statuses, so Form 2441 line 8 must read it by
+   filing status). `simple_catchup` is still written by hand (tools/README.md, "Printed tables").
 7. **Reviews of changed forms only** (CLAUDE.md, inference cost): transcription, render and class M for the forms whose
    content changed; completeness and screen reviews for those forms; adjudicate only those. Make the completeness
    prompt year-aware first (T-230). Which lines changed is decided by `tools/transcription/year_carry.py --year 2026

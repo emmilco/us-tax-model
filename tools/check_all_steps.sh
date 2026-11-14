@@ -162,6 +162,7 @@ jstep check_extraction "--jurisdiction ny" python3 tools/check_extraction.py
 step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
 step check_ptc_tables python3 tools/extract_ptc_tables.py --check "$@"
 step check_auto_limits python3 tools/check_auto_limits.py "$@"
+step check_printed_tables python3 tools/extract_printed_tables.py --check "$@"
 step check_source_titles python3 tools/check_source_titles.py "$@"
 step check_bug_inventory python3 tools/check_bug_inventory.py
 step check_agent_runs python3 tools/check_agent_runs.py
