@@ -1,0 +1,31 @@
+changes:
+  tax_year: 2026
+  form: retirement
+  entries:
+  - change: C-PEOP-07
+    evidence:
+    - doc: i5329
+      page: 6
+      quote: A qualified distribution from an applicable eligible retirement plan for the birth or adoption of a child is
+        a distribution of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted.
+    verified: draft
+    note: retirement.exception also quotes the first-time homebuyer sentence (p590b p. 28 in 2025; p. 29, "Generally, you
+      are a first-time homebuyer ... the home that the distribution is being used to buy, build, or rebuild" in the 2026
+      draft). It is not changed here because C-PEOP-05 sets the same citation; its operation must carry that sentence.
+    operations:
+    - set:
+        line: retirement.is_e19
+        field: cite.locator
+        from: p. 5, Line 2, "A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution
+          of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted."
+        to: p. 6, Line 2, "A qualified distribution from an applicable eligible retirement plan for the birth or adoption
+          of a child is a distribution of up to $5,000 if made during the 1-year period beginning on the date your child
+          was born or adopted."
+    - set:
+        line: retirement.l2_e19
+        field: cite.locator
+        from: p. 5, Line 2, "A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution
+          of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted."
+        to: p. 6, Line 2, "A qualified distribution from an applicable eligible retirement plan for the birth or adoption
+          of a child is a distribution of up to $5,000 if made during the 1-year period beginning on the date your child
+          was born or adopted."

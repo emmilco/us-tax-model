@@ -1,0 +1,47 @@
+changes:
+  tax_year: 2026
+  form: ira
+  entries:
+  - change: C-PEOP-08
+    evidence:
+    - doc: i8606
+      page: 6
+      quote: your limit on contributions to traditional and Roth IRAs is generally the smaller of $7,500 ($8,600 if age 50
+        or older at the end of 2026) or your taxable compensation
+    - doc: i8606
+      page: 6
+      quote: combined taxable compensation of both you and your spouse is less than $15,000 ($16,100 if one spouse is age
+        50 or older at the end of 2026; $17,200 if both spouses are age 50 or older at the end of 2026
+    verified: draft
+    note: The worksheet caution amounts ($15,000, $16,100, $17,200) are the 2026 i8606 figures for the same rule; the i1040gi
+      locators wait for its 2026 edition.
+    operations:
+    - set:
+        line: ira.kbh_none
+        field: label
+        from: $14,000
+        to: $15,000
+    - set:
+        line: ira.kbh_one
+        field: label
+        from: $15,000
+        to: $16,100
+    - set:
+        line: ira.kbh_both
+        field: label
+        from: $16,000
+        to: $17,200
+    - set:
+        line: ira.kbh_amount
+        field: label
+        from: The amount in the caution below line 10 ($14,000; $15,000 if one spouse is age 50 or older; $16,000 if both
+          are)
+        to: The amount in the caution below line 10 ($15,000; $16,100 if one spouse is age 50 or older; $17,200 if both are)
+    - set:
+        line: ira.all_total
+        field: cite.locator
+        from: p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional
+          and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable
+          compensation"
+        to: p. 6, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional and
+          Roth IRAs is generally the smaller of $7,500 ($8,600 if age 50 or older at the end of 2026) or your taxable compensation"

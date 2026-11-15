@@ -1,0 +1,455 @@
+changes:
+  tax_year: 2026
+  form: f2441
+  entries:
+  - change: C-CRED-10
+    evidence:
+    - doc: f2441
+      page: 2
+      quote: Enter on line 8 the decimal amount that applies to the amount on line 7. See instructions for the amount to enter
+    - doc: i2441
+      page: 2
+      quote: Different phaseout thresholds apply for joint filers and other filers.
+    - doc: i2441
+      page: 5
+      quote: Use the table that follows to find the decimal amount that applies to the amount on line 7. Enter that decimal
+        amount on line 8.
+    - doc: i2441
+      page: 6
+      quote: If your filing status is married filing jointly and line 7 is
+    - doc: i2441
+      page: 6
+      quote: If your filing status is any other filing status and line 7 is
+    verified: draft
+    note: 'Line 8 reads the 2026 dc_rate table by filing status (expr.status, as f8880.line9 reads savers_rate). The table
+      is the parameter lane''s: tables/2026/dc_rate.yaml with columns mfj [mfj] and other [single, hoh, mfs, qss], the bands
+      the union of both columns'' edges, the first open below. The form no longer prints the table, so line 8 cites the instructions.
+      amb.2025.dc_rate_nonpositive_agi still applies: both columns print their first band from $0.'
+    operations:
+    - set:
+        line: f2441.line8
+        field: label
+        from: Enter on line 8 the decimal amount shown below that applies to the amount on line 7
+        to: Enter on line 8 the decimal amount that applies to the amount on line 7. See instructions for the amount to enter
+    - set:
+        line: f2441.line8
+        field: expr.status
+        from: null
+        to: f1040.status
+    - set:
+        line: f2441.line8
+        field: cite
+        from:
+          doc: f2441
+          locator: Form 2441 (2025), line 8
+        to:
+          doc: i2441
+          locator: p. 5, Line 8, "Use the table that follows to find the decimal amount that applies to the amount on line
+            7. Enter that decimal amount on line 8"; p. 6, 2026 Phaseout Schedule, "If your filing status is married filing
+            jointly and line 7 is" and "If your filing status is any other filing status and line 7 is"
+    - set_ambiguity:
+        id: amb.2025.dc_rate_nonpositive_agi
+        field: text_at_issue
+        from: 'Form 2441, line 8: "Enter on line 8 the decimal amount shown below that applies to the amount on line 7", in
+          a table whose first band is "Over $0 But not over 15,000".'
+        to: 'i2441 p. 5, Line 8: "Use the table that follows to find the decimal amount that applies to the amount on line
+          7", in a table (p. 6, 2026 Phaseout Schedule) whose first band, for married filing jointly and for any other filing
+          status, is "Over $0 But not over $15,000".'
+    - set_ambiguity:
+        id: amb.2025.dc_rate_nonpositive_agi
+        field: readings
+        from:
+        - Line 7 of zero or less takes the first band's .35.
+        - Line 7 of zero or less has no decimal amount, and the credit is not figured.
+        to:
+        - Line 7 of zero or less takes the first band's .50.
+        - Line 7 of zero or less has no decimal amount, and the credit is not figured.
+    - set_ambiguity:
+        id: amb.2025.dc_rate_nonpositive_agi
+        field: chosen
+        from: The first (tables/2025/dc_rate.yaml, the first band open below).
+        to: The first (tables/2026/dc_rate.yaml, the first band open below in both columns).
+    - set_ambiguity:
+        id: amb.2025.dc_rate_nonpositive_agi
+        field: cite
+        from:
+          doc: f2441
+          locator: Form 2441 (2025), line 8
+        to:
+          doc: i2441
+          locator: p. 5, Line 8, "Use the table that follows to find the decimal amount that applies to the amount on line
+            7"
+  - change: C-CRED-11
+    evidence:
+    - doc: f2441
+      page: 3
+      quote: Enter $7,500 ($3,750 if married filing separately and you were required to enter your spouse’s earned income
+        on line 19).
+    - doc: i2441
+      page: 7
+      quote: The maximum amount is increased to $7,500 (previously $5,000).
+    - doc: i2441
+      page: 7
+      quote: For married employees filing separate returns who are required to enter their spouse’s earned income on line
+        19, the maximum amount is increased to $3,750 (previously $2,500).
+    - doc: i2441
+      page: 7
+      quote: Your employer can tell you whether your dependent care plan was amended to increase the amount that can be excluded.
+    - doc: i2441
+      page: 7
+      quote: For example, if your dependent care plan only allows a maximum of $5,000 to be excluded, substitute $5,000 for
+        the $7,500 amount to enter on line 21.
+    verified: draft
+    note: 'The amount itself is the parameter dc.exclusion_max (750000, the parameter lane). The higher limit applies only
+      to a plan the employer amended, so the plan_max question no longer offers the limit as the answer for a filer who does
+      not know the plan''s maximum. Not taken: w2.box10 and w2.box10_wages (form w2) name the $5,000 exclusion, and the final
+      iw2w3 p. 19 still prints it.'
+    operations:
+    - set:
+        line: f2441.exclusion_max
+        field: label
+        from: Year parameter dc.exclusion_max ($5,000)
+        to: Year parameter dc.exclusion_max ($7,500)
+    - set:
+        line: f2441.exclusion_max
+        field: cite.locator
+        from: p. 5, Line 21, "For 2025, the maximum amount that can be excluded from your income through a dependent care
+          assistance program is $5,000"
+        to: p. 7, Line 21, "Beginning in 2026, employers may increase the maximum amount that can be excluded from an employee’s
+          income through a dependent care assistance program. The maximum amount is increased to $7,500 (previously $5,000)"
+    - set:
+        line: f2441.line21
+        field: label
+        from: Enter $5,000 ($2,500 if married filing separately and you were required to enter your spouse's earned income
+          on line 19). However, don't enter more than the maximum amount allowed under your dependent care plan
+        to: Enter $7,500 ($3,750 if married filing separately and you were required to enter your spouse's earned income on
+          line 19). However, don't enter more than the maximum amount allowed under your dependent care plan
+    - set:
+        line: f2441.plan_max
+        field: expr.source
+        from: The maximum amount your (or, on a joint return, your spouse's) dependent care plan (or plans, if they all allow
+          the same maximum) allows to be excluded for 2025; enter $5,000 if the plan allows $5,000 or more, or if you do not
+          know of a lower plan maximum
+        to: The maximum amount your (or, on a joint return, your spouse's) dependent care plan (or plans, if they all allow
+          the same maximum) allows to be excluded for 2026; enter $7,500 if the plan allows $7,500 or more (a plan allows
+          more than $5,000 only if your employer amended it to; your employer can tell you)
+    - set:
+        line: f2441.plan_max
+        field: cite.locator
+        from: p. 5, Line 21, "Don't enter more than the maximum amount allowed under your dependent care plan. For example,
+          if your dependent care plan only allows a maximum of $4,000 to be excluded, substitute $4,000 for the $5,000 amount
+          to enter on line 21"
+        to: p. 7, Line 21, "Your employer can tell you whether your dependent care plan was amended to increase the amount
+          that can be excluded. Don’t enter more than the maximum amount allowed under your dependent care plan. For example,
+          if your dependent care plan only allows a maximum of $5,000 to be excluded, substitute $5,000 for the $7,500 amount
+          to enter on line 21"
+    - set_question:
+        input: f2441.plan_max
+        field: prompt
+        from: What is the most your (or, on a joint return, your spouse's) dependent care plan lets you set aside tax-free
+          for 2025? Give $5,000 if the plan allows that much or more, or if you do not know of a lower limit.
+        to: What is the most your (or, on a joint return, your spouse's) dependent care plan lets you set aside tax-free for
+          2026? A plan allows more than $5,000, up to $7,500, only if your employer raised its limit.
+    - set_question:
+        input: f2441.plan_max
+        field: help
+        from: If you were in more than one plan and they allow the same maximum, give that maximum.
+        to: Your employer can tell you whether it raised the plan's limit for 2026. If you were in more than one plan and
+          they allow the same maximum, give that maximum.
+    - set:
+        line: f2441.line11
+        field: refuses
+        from:
+        - when: s3.mfs
+          form: Form 2441 for married filing separately (line A; lines 19 and 21)
+          remedy: A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500)
+            is outside this tool. Married filing jointly is supported.
+          cite:
+            doc: i2441
+            locator: p. 2, Married Persons Filing Separately, "Generally, married persons must file a joint return to claim
+              the credit"
+        to:
+        - when: s3.mfs
+          form: Form 2441 for married filing separately (line A; lines 19 and 21)
+          remedy: A married filing separately return (the credit only when considered unmarried, the exclusion at $3,750)
+            is outside this tool. Married filing jointly is supported.
+          cite:
+            doc: i2441
+            locator: p. 3, Married Persons Filing Separately, "Generally, married persons must file a joint return to claim
+              the credit"
+    - set:
+        line: f2441.line26
+        field: refuses
+        from:
+        - when: s3.mfs
+          form: Form 2441 for married filing separately (line A; lines 19 and 21)
+          remedy: A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500)
+            is outside this tool. Married filing jointly is supported.
+          cite:
+            doc: i2441
+            locator: p. 2, Married Persons Filing Separately, "Generally, married persons must file a joint return to claim
+              the credit"
+        to:
+        - when: s3.mfs
+          form: Form 2441 for married filing separately (line A; lines 19 and 21)
+          remedy: A married filing separately return (the credit only when considered unmarried, the exclusion at $3,750)
+            is outside this tool. Married filing jointly is supported.
+          cite:
+            doc: i2441
+            locator: p. 3, Married Persons Filing Separately, "Generally, married persons must file a joint return to claim
+              the credit"
+    - set_ambiguity:
+        id: amb.2025.dc_plan_maximum
+        field: text_at_issue
+        from: 'Form 2441 line 21: "However, don''t enter more than the maximum amount allowed under your dependent care plan";
+          i2441 p. 5, Line 21: "if your dependent care plan only allows a maximum of $4,000 to be excluded, substitute $4,000".
+          The text speaks of one plan; spouses, or one person with two employers, may have more than one.'
+        to: 'Form 2441 line 21: "However, don''t enter more than the maximum amount allowed under your dependent care plan";
+          i2441 p. 7, Line 21: "if your dependent care plan only allows a maximum of $5,000 to be excluded, substitute $5,000
+          for the $7,500 amount". The text speaks of one plan; spouses, or one person with two employers, may have more than
+          one.'
+    - set_ambiguity:
+        id: amb.2025.dc_plan_maximum
+        field: readings
+        from:
+        - One plan maximum for the return (f2441.plan_max), the smaller of it and $5,000; refused when the plans allow different
+          maximums.
+        - The $5,000 limit, reduced only if every plan's maximum is lower.
+        - The sum of the plans' maximums, not more than $5,000.
+        to:
+        - One plan maximum for the return (f2441.plan_max), the smaller of it and $7,500; refused when the plans allow different
+          maximums.
+        - The $7,500 limit, reduced only if every plan's maximum is lower.
+        - The sum of the plans' maximums, not more than $7,500.
+    - set_ambiguity:
+        id: amb.2025.dc_plan_maximum
+        field: reason
+        from: The owner's decision (Stage 15, decision 6), confirmed 2026-10-30. Where every plan allows the same maximum,
+          readings 1 and 2 agree but reading 3 differs (two $3,000 plans give $3,000 under reading 1 and $5,000 under reading
+          3); the owner keeps reading 1 for that case. Where the plans allow different maximums the text does not decide,
+          so that case is refused.
+        to: The owner's decision (Stage 15, decision 6), confirmed 2026-10-30. Where every plan allows the same maximum, readings
+          1 and 2 agree but reading 3 differs (two $3,000 plans give $3,000 under reading 1 and $6,000 under reading 3); the
+          owner keeps reading 1 for that case. Where the plans allow different maximums the text does not decide, so that
+          case is refused.
+    - set_ambiguity:
+        id: amb.2025.dc_plan_maximum
+        field: cite
+        from:
+          doc: i2441
+          locator: p. 5, Line 21, "Don't enter more than the maximum amount allowed under your dependent care plan"
+        to:
+          doc: i2441
+          locator: p. 7, Line 21, "Don’t enter more than the maximum amount allowed under your dependent care plan"
+  - change: C-CRED-12
+    evidence:
+    - doc: f2441
+      page: 2
+      quote: 1a Care provider’s name
+    - doc: f2441
+      page: 2
+      quote: 1e Amount paid. See instructions.
+    - doc: i2441
+      page: 4
+      quote: Complete lines 1a through 1e for each person or organization that provided the care.
+    - doc: i2441
+      page: 4
+      quote: If you have more than three care providers, check the box at the top of Part I and attach a statement to your
+        return with the required information.
+    - doc: i2441
+      page: 4
+      quote: Enter “See Attached Statement” on any line for which you don’t have the information.
+    - doc: i2441
+      page: 4
+      quote: Don’t list an ineligible related individual as a care provider in Part I.
+    - doc: i2441
+      page: 4
+      quote: enter your employer’s name on line 1a. Then enter “See W-2” on line 1b, leave line 1c blank, check the “No” box
+        on line 1d, and enter -0- on line 1e.
+    - doc: i2441
+      page: 4
+      quote: You must check either the “Yes” or “No” box on line 1d
+    - doc: i2441
+      page: 4
+      quote: Enter the total amount you actually paid in 2026 to the care provider. Also include amounts your employer paid
+        to a third party on your behalf.
+    verified: draft
+    note: 'Layout only: Part I''s columns (a) to (e) are lines 1a to 1e, and the box for more than three providers sits at
+      the top of Part I. No rule changes. Every citation whose words changed is requoted on its 2026 page; those that only
+      moved are left to the relocation. The column (d) of line 2 is unchanged.'
+    operations:
+    - set:
+        line: f2441.provider_count
+        field: cite.locator
+        from: p. 2, Line 1, "Complete columns (a) through (e) for each person or organization that provided the care"
+        to: p. 4, Lines 1a through 1e, "Complete lines 1a through 1e for each person or organization that provided the care"
+    - set:
+        line: f2441.provider_ineligible
+        field: cite.locator
+        from: p. 3, Due Diligence, "Don't list an ineligible related individual as a care provider on line 1. No credit is
+          allowed for any amount paid to your spouse, the parent of your qualifying child, or a person whom you can claim
+          as a dependent"
+        to: p. 4, Due Diligence, "Don’t list an ineligible related individual as a care provider in Part I. No credit is allowed
+          for any amount paid to your spouse, the parent of your qualifying child, or a person whom you can claim as a dependent"
+    - set:
+        line: f2441.many_providers
+        field: cite.locator
+        from: p. 2, Line 1, "If you have more than three care providers, check the box above line 1 and attach a statement
+          to your return with the required information"
+        to: p. 4, Lines 1a through 1e, "If you have more than three care providers, check the box at the top of Part I and
+          attach a statement to your return with the required information"
+    - set:
+        line: f2441.no
+        field: cite.locator
+        from: p. 2, Line 1, "If you have more than three care providers, check the box above line 1 and attach a statement
+          to your return with the required information"
+        to: p. 4, Lines 1a through 1e, "If you have more than three care providers, check the box at the top of Part I and
+          attach a statement to your return with the required information"
+    - set:
+        line: f2441.line1_box
+        field: printed
+        from: 1 (box)
+        to: Part I (box)
+    - set:
+        line: f2441.line1_box
+        field: cite.locator
+        from: p. 2, Line 1, "If you have more than three care providers, check the box above line 1 and attach a statement
+          to your return with the required information"
+        to: p. 4, Lines 1a through 1e, "If you have more than three care providers, check the box at the top of Part I and
+          attach a statement to your return with the required information"
+    - set:
+        line: f2441.statement_count
+        field: cite.locator
+        from: p. 3, Due Diligence, "Enter “See Attached Statement” in the columns for which you don't have the information"
+        to: p. 4, Due Diligence, "Enter “See Attached Statement” on any line for which you don’t have the information"
+    - set:
+        line: f2441.household_count
+        field: cite.locator
+        from: p. 3, Column (d), "You must check either the "Yes" or "No" box in column (d)"
+        to: p. 4, Line 1d, "You must check either the “Yes” or “No” box on line 1d"
+    - set:
+        line: f2441.provider_paid
+        field: label
+        from: Total of column (e), the amounts paid to the care providers
+        to: Total of line 1e, the amounts paid to the care providers
+    - set:
+        line: f2441.provider_paid
+        field: cite.locator
+        from: p. 3, Column (e), "Enter the total amount you actually paid in 2025 to the care provider"
+        to: p. 4, Line 1e, "Enter the total amount you actually paid in 2026 to the care provider"
+    - set:
+        line: f2441.line1_paid
+        field: label
+        from: Amounts paid to the care providers listed on line 1, column (e)
+        to: Amounts paid to the care providers listed in Part I, line 1e
+    - set:
+        line: f2441.line1_paid
+        field: cite.locator
+        from: p. 3, Column (e), "Enter the total amount you actually paid in 2025 to the care provider. Also, include amounts
+          your employer paid to a third party on your behalf"
+        to: p. 4, Line 1e, "Enter the total amount you actually paid in 2026 to the care provider. Also include amounts your
+          employer paid to a third party on your behalf"
+    - set:
+        line: f2441.other_care_expenses
+        field: cite.locator
+        from: p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s).
+          It doesn't matter when the expenses were paid"; p. 3, Columns (a) and (b), "If you were covered by your employer's
+          dependent care plan and your employer furnished the care (either at your workplace or by hiring a care provider),
+          enter your employer's name in column (a)"
+        to: p. 7, Line 16, "Enter the total of all qualified expenses incurred in 2026 for the care of your qualifying person(s).
+          It doesn’t matter when the expenses were paid"; p. 4, Lines 1a and 1b, "If you were covered by your employer’s dependent
+          care plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your
+          employer’s name on line 1a"
+    - set:
+        line: f2441.line17
+        field: refuses
+        from:
+        - when: f2441.employer_care_l16
+          form: Form 2441, line 16, with employer-furnished care
+          remedy: Your employer furnished care whose value is among your dependent care benefits, and the expenses you entered
+            are less than your benefits. The instructions do not say whether the value of the care your employer furnished
+            is a qualified expense incurred for line 16, and that decides how much of your benefits is excluded; this tool
+            does not figure that case.
+          cite:
+            doc: i2441
+            locator: p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying
+              person(s)"; p. 1, Dependent Care Benefits, "The fair market value of care in a daycare facility provided or
+              sponsored by your employer"; p. 3, Columns (a) and (b), "If you were covered by your employer's dependent care
+              plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your
+              employer's name in column (a)"
+        to:
+        - when: f2441.employer_care_l16
+          form: Form 2441, line 16, with employer-furnished care
+          remedy: Your employer furnished care whose value is among your dependent care benefits, and the expenses you entered
+            are less than your benefits. The instructions do not say whether the value of the care your employer furnished
+            is a qualified expense incurred for line 16, and that decides how much of your benefits is excluded; this tool
+            does not figure that case.
+          cite:
+            doc: i2441
+            locator: p. 7, Line 16, "Enter the total of all qualified expenses incurred in 2026 for the care of your qualifying
+              person(s)"; p. 2, Dependent Care Benefits, "The fair market value of care in a daycare facility provided or
+              sponsored by your employer"; p. 4, Lines 1a and 1b, "If you were covered by your employer’s dependent care plan
+              and your employer furnished the care (either at your workplace or by hiring a care provider), enter your employer’s
+              name on line 1a"
+    - set:
+        line: f2441.employer_care_l16
+        field: cite.locator
+        from: p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s)";
+          p. 3, Columns (a) and (b), "your employer furnished the care (either at your workplace or by hiring a care provider)"
+        to: p. 7, Line 16, "Enter the total of all qualified expenses incurred in 2026 for the care of your qualifying person(s)";
+          p. 4, Lines 1a and 1b, "your employer furnished the care (either at your workplace or by hiring a care provider)"
+    - set:
+        line: f2441.employer_care
+        field: cite.locator
+        from: p. 3, Columns (a) and (b), "If you were covered by your employer's dependent care plan and your employer furnished
+          the care (either at your workplace or by hiring a care provider), enter your employer's name in column (a)"
+        to: p. 4, Lines 1a and 1b, "If you were covered by your employer’s dependent care plan and your employer furnished
+          the care (either at your workplace or by hiring a care provider), enter your employer’s name on line 1a"
+    - set:
+        line: f2441.employer_care_gate
+        field: cite.locator
+        from: p. 3, Columns (a) and (b), "enter your employer's name in column (a)"
+        to: p. 4, Lines 1a and 1b, "enter your employer’s name on line 1a"
+    - set:
+        line: f2441.line30
+        field: refuses
+        from:
+        - when: f2441.employer_care_gate
+          form: Form 2441, line 30, with employer-furnished care
+          remedy: When your employer furnished care and you also paid for care, the value of the employer's care is among
+            your benefits but is not an expense you paid, and the instructions do not say how line 30 treats it; this tool
+            does not figure that case.
+          cite:
+            doc: i2441
+            locator: p. 3, Columns (a) and (b), "enter your employer's name in column (a)"
+        to:
+        - when: f2441.employer_care_gate
+          form: Form 2441, line 30, with employer-furnished care
+          remedy: When your employer furnished care and you also paid for care, the value of the employer's care is among
+            your benefits but is not an expense you paid, and the instructions do not say how line 30 treats it; this tool
+            does not figure that case.
+          cite:
+            doc: i2441
+            locator: p. 4, Lines 1a and 1b, "enter your employer’s name on line 1a"
+    - set_ambiguity:
+        id: amb.2025.dc_employer_care_value
+        field: text_at_issue
+        from: Form 2441 instructions, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of
+          your qualifying person(s)"; Columns (a) and (b), "If you were covered by your employer's dependent care plan and
+          your employer furnished the care (either at your workplace or by hiring a care provider), enter your employer's
+          name in column (a)". The archived sources do not say whether the value of care the employer furnished is an expense
+          incurred for line 16 (BUG-0262).
+        to: Form 2441 instructions, Line 16, "Enter the total of all qualified expenses incurred in 2026 for the care of your
+          qualifying person(s)"; Lines 1a and 1b, "If you were covered by your employer’s dependent care plan and your employer
+          furnished the care (either at your workplace or by hiring a care provider), enter your employer’s name on line 1a".
+          The archived sources do not say whether the value of care the employer furnished is an expense incurred for line
+          16 (BUG-0262).
+    - set_ambiguity:
+        id: amb.2025.dc_employer_care_value
+        field: cite
+        from:
+          doc: i2441
+          locator: p. 5, Line 16; p. 3, Columns (a) and (b)
+        to:
+          doc: i2441
+          locator: p. 7, Line 16; p. 4, Lines 1a and 1b

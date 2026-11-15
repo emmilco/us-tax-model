@@ -1,0 +1,95 @@
+changes:
+  tax_year: 2026
+  form: f8863
+  entries:
+  - change: C-CRED-17
+    evidence:
+    - doc: f8863
+      page: 2
+      quote: Enter the amount from Form 1040 or 1040-SR, line 11a.
+    - doc: i8863
+      page: 9
+      quote: Generally, your MAGI is the amount on your Form 1040 or 1040-SR, line 11a.
+    - doc: i8863
+      page: 4
+      quote: add to the amount on your Form 1040 or 1040-SR, line 11a, the amount of income you excluded.
+    verified: draft
+    note: Both lines read f1040.line11a, the amount the 2025 form also prints as line 11b ("Amount from line 11a"); no numeric
+      effect.
+    operations:
+    - set:
+        line: f8863.line3
+        field: label
+        from: Enter the amount from Form 1040 or 1040-SR, line 11b
+        to: Enter the amount from Form 1040 or 1040-SR, line 11a
+    - set:
+        line: f8863.line3
+        field: expr.from
+        from: f1040.line11b
+        to: f1040.line11a
+    - set:
+        line: f8863.line3
+        field: cite.locator
+        from: p. 1, Part I, line 3, "Enter the amount from Form 1040 or 1040-SR, line 11b."
+        to: p. 2, Part I, line 3, "Enter the amount from Form 1040 or 1040-SR, line 11a."
+    - set:
+        line: f8863.line3
+        field: refuses
+        from:
+        - when: sa.excluded_income
+          form: Form 8863, lines 3 and 14, with Form 2555, Form 4563 or excluded Puerto Rico income
+          remedy: With excluded foreign, American Samoa or Puerto Rico income, Form 8863 lines 3 and 14 add the excluded
+            income back (Pub. 970); this tool does not prepare it.
+          cite:
+            doc: i8863
+            locator: p. 3, Who cannot claim a credit, "However, if you’re filing Form 2555, Foreign Earned Income; or Form
+              4563, Exclusion of Income for Bona Fide Residents of American Samoa; or are excluding income from Puerto Rico,
+              add to the amount on your Form 1040 or 1040-SR, line 11b, the amount of income you excluded."
+        to:
+        - when: sa.excluded_income
+          form: Form 8863, lines 3 and 14, with Form 2555, Form 4563 or excluded Puerto Rico income
+          remedy: With excluded foreign, American Samoa or Puerto Rico income, Form 8863 lines 3 and 14 add the excluded
+            income back (Pub. 970); this tool does not prepare it.
+          cite:
+            doc: i8863
+            locator: p. 4, Who cannot claim a credit, "However, if you’re filing Form 2555, Foreign Earned Income; or Form
+              4563, Exclusion of Income for Bona Fide Residents of American Samoa; or are excluding income from Puerto Rico,
+              add to the amount on your Form 1040 or 1040-SR, line 11a, the amount of income you excluded."
+    - set:
+        line: f8863.line14
+        field: label
+        from: Enter the amount from Form 1040 or 1040-SR, line 11b
+        to: Enter the amount from Form 1040 or 1040-SR, line 11a
+    - set:
+        line: f8863.line14
+        field: expr.from
+        from: f1040.line11b
+        to: f1040.line11a
+    - set:
+        line: f8863.line14
+        field: cite.locator
+        from: p. 8, Line 14, "Generally, your MAGI is the amount on your Form 1040 or 1040-SR, line 11b."
+        to: p. 9, Line 14, "Generally, your MAGI is the amount on your Form 1040 or 1040-SR, line 11a."
+    - set:
+        line: f8863.line14
+        field: refuses
+        from:
+        - when: sa.excluded_income
+          form: Form 8863, lines 3 and 14, with Form 2555, Form 4563 or excluded Puerto Rico income
+          remedy: With excluded foreign, American Samoa or Puerto Rico income, Form 8863 lines 3 and 14 add the excluded
+            income back (Pub. 970); this tool does not prepare it.
+          cite:
+            doc: i8863
+            locator: p. 3, Who cannot claim a credit, "However, if you’re filing Form 2555, Foreign Earned Income; or Form
+              4563, Exclusion of Income for Bona Fide Residents of American Samoa; or are excluding income from Puerto Rico,
+              add to the amount on your Form 1040 or 1040-SR, line 11b, the amount of income you excluded."
+        to:
+        - when: sa.excluded_income
+          form: Form 8863, lines 3 and 14, with Form 2555, Form 4563 or excluded Puerto Rico income
+          remedy: With excluded foreign, American Samoa or Puerto Rico income, Form 8863 lines 3 and 14 add the excluded
+            income back (Pub. 970); this tool does not prepare it.
+          cite:
+            doc: i8863
+            locator: p. 4, Who cannot claim a credit, "However, if you’re filing Form 2555, Foreign Earned Income; or Form
+              4563, Exclusion of Income for Bona Fide Residents of American Samoa; or are excluding income from Puerto Rico,
+              add to the amount on your Form 1040 or 1040-SR, line 11a, the amount of income you excluded."

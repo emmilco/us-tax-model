@@ -1,0 +1,459 @@
+changes:
+  tax_year: 2026
+  form: retirement
+  entries:
+  - change:
+    - C-PEOP-04
+    - C-PEOP-11
+    evidence:
+    - doc: i1099r
+      page: 1
+      quote: We renumbered box 7 and the “IRA/SEP/SIMPLE” checkbox to boxes 7a and 7b and we added boxes 7c (Trump account)
+        and 7d (Earnings on excess contributions).
+    - doc: f1099r
+      page: 7
+      quote: Box 7a. The following codes identify the distribution you received.
+    - doc: f1099r
+      page: 9
+      quote: Box 7b. If the IRA/SEP/SIMPLE box is checked, you’ve received a traditional IRA (other than a Trump account),
+        SEP, or SIMPLE distribution.
+    - &id001
+      doc: f1099r
+      page: 9
+      quote: Box 7c. If the Trump account box is checked, you’ve received a distribution from a Trump account.
+    - doc: f1099r
+      page: 9
+      quote: Box 7d. Shows the earnings attributable to the distributed excess contributions made to a Trump account. These
+        earnings are subject to a 100% tax.
+    verified: final
+    note: 'Box 7 is box 7a and the IRA/SEP/SIMPLE box is box 7b. A Trump account distribution (box 7c; box 7d is reported
+      only for one) is refused, by owner decision 2026-11-04 (ADOPTION.md question 5): the account question gains the answer
+      trump, which needs the value trump in the enum retirement_account (parameter lane), and the gate retirement.trump refuses
+      in retirement.yaml''s refusal lists (C-PEOP-04+C-PEOP-11+C-PEOP-05). No new input: the account question already asks
+      about the boxes beside box 7a.'
+    operations:
+    - set:
+        line: retirement.account
+        field: expr.source
+        from: 'Kind of account: traditional_ira (the IRA/SEP/SIMPLE box on Form 1099-R is checked; includes SEP and traditional
+          SIMPLE IRAs), roth_ira (a Roth IRA or Roth SIMPLE IRA), or plan (a pension, annuity, 401(k), 403(b) or governmental
+          457(b) plan)'
+        to: 'Kind of account: traditional_ira (box 7b, IRA/SEP/SIMPLE, on Form 1099-R is checked; includes SEP and traditional
+          SIMPLE IRAs), roth_ira (a Roth IRA or Roth SIMPLE IRA), plan (a pension, annuity, 401(k), 403(b) or governmental
+          457(b) plan), or trump (box 7c, Trump account, is checked)'
+    - set:
+        line: retirement.account
+        field: cite.locator
+        from: Instructions for Recipient, IRA/SEP/SIMPLE box; i1040gi pp. 26 and 28, lines 4a-4b and 5a-5b
+        to: p. 9, Box 7b, "If the IRA/SEP/SIMPLE box is checked, you’ve received a traditional IRA (other than a Trump account),
+          SEP, or SIMPLE distribution."; Box 7c, "If the Trump account box is checked, you’ve received a distribution from
+          a Trump account."; i1040gi pp. 26 and 28, lines 4a-4b and 5a-5b
+    - set:
+        line: retirement.code
+        field: label
+        from: Distribution code in box 7
+        to: Distribution code in box 7a
+    - set:
+        line: retirement.code
+        field: expr.source
+        from: 'Distribution code in box 7: normal_7, death_4, early_exception_2, early_1 (code 1, early distribution, no known
+          exception), simple_S (code S, SIMPLE IRA in its first 2 years), disability_3 (code 3, disability), direct_rollover_G,
+          qualified_roth_Q, or other (any other code, or two codes)'
+        to: 'Distribution code in box 7a: normal_7, death_4, early_exception_2, early_1 (code 1, early distribution, no known
+          exception), simple_S (code S, SIMPLE IRA in its first 2 years), disability_3 (code 3, disability), direct_rollover_G,
+          qualified_roth_Q, or other (any other code, or two codes)'
+    - set:
+        line: retirement.code
+        field: cite.locator
+        from: Instructions for Recipient, Box 7
+        to: p. 7, Box 7a, "The following codes identify the distribution you received."
+    - set:
+        line: retirement.direct
+        field: cite.locator
+        from: p. 5, Box 2a, "For a direct rollover, other than from a qualified plan, section 403(b) plan, or governmental
+          section 457(b) plan to a designated Roth account in the same plan or to a Roth IRA, zero should be shown and you
+          must enter zero (-0-) on the “Taxable amount” line of your tax return"; pp. 7 and 9, Box 7, "G—Direct rollover of
+          a distribution to a qualified plan, a section 403(b) plan, a governmental section 457(b) plan, or an IRA"
+        to: p. 5, Box 2a, "For a direct rollover, other than from a qualified plan, section 403(b) plan, or governmental section
+          457(b) plan to a designated Roth account in the same plan or to a Roth IRA, zero should be shown and you must enter
+          zero (-0-) on the “Taxable amount” line of your tax return"; pp. 7 and 9, Box 7a, "G—Direct rollover of a distribution
+          to a qualified plan, a section 403(b) plan, a governmental section 457(b) plan, or an IRA"
+    - set:
+        line: retirement.bad_code
+        field: cite.locator
+        from: p. 27, Exception 2 (a Roth IRA distribution other than code Q needs Form 8606); f1099r pp. 7 and 9, Box 7, "The
+          following codes identify the distribution you received", "Q—Qualified distribution from a Roth IRA or Roth SIMPLE
+          IRA"
+        to: p. 27, Exception 2 (a Roth IRA distribution other than code Q needs Form 8606); f1099r pp. 7 and 9, Box 7a, "The
+          following codes identify the distribution you received", "Q—Qualified distribution from a Roth IRA or Roth SIMPLE
+          IRA"
+    - add_line:
+        after: retirement.bad_code
+        line:
+          id: retirement.trump
+          printed: (gate)
+          label: A distribution from a Trump account (box 7c is checked)
+          type: Bool
+          expr:
+            op: test
+            eq:
+            - retirement.account
+            - const: trump
+          cite:
+            doc: f1099r
+            locator: p. 9, Box 7c, "If the Trump account box is checked, you’ve received a distribution from a Trump account.";
+              Box 7d, "Shows the earnings attributable to the distributed excess contributions made to a Trump account."
+    - set_question:
+        input: retirement.account
+        field: help
+        from: The form has a small box marked “IRA/SEP/SIMPLE” next to box 7.
+        to: The form has small boxes marked “IRA/SEP/SIMPLE” (box 7b) and “Trump account” (box 7c).
+    - set_question:
+        input: retirement.account
+        field: value_labels.plan
+        from: A pension, an annuity, or a 401(k), 403(b) or 457(b) plan (the box “IRA/SEP/SIMPLE” is not ticked)
+        to: A pension, an annuity, or a 401(k), 403(b) or 457(b) plan (neither box “IRA/SEP/SIMPLE” nor “Trump account” is
+          ticked)
+    - set_question:
+        input: retirement.account
+        field: value_labels.trump
+        from: null
+        to: A Trump account (the box “Trump account” is ticked)
+    - set_question:
+        input: retirement.code
+        field: prompt
+        from: Which code is in box 7 of this form?
+        to: Which code is in box 7a of this form?
+  - change: C-PEOP-05
+    evidence:
+    - &id004
+      doc: i5329
+      page: 5
+      quote: In the space provided, enter the applicable exception number (01–24). If more than one exception applies, enter
+        99.
+    - &id002
+      doc: i5329
+      page: 2
+      quote: Beginning with distributions made after December 29, 2025, a distribution from your employer’s defined contribution
+        plan for or with respect to certified long-term care insurance is not subject to the 10% additional tax on early distributions
+        if certain requirements are met.
+    verified: draft
+    note: 'Exception 24 is not built: a qualified long-term care distribution, which in 2025 was refused only when made December
+      30 or 31, is refused whenever it is one, through retirement.early_screen. Building it would need the value e24 in the
+      enum early_exception, the joint-return condition for spouse coverage and the cap of the smallest of premiums, 10% of
+      the vested benefit and $2,600 (p590b p. 30, n-25-67 p. 5).'
+    operations:
+    - set:
+        line: retirement.early_screen
+        field: expr.source
+        from: 'Is any of these true of this distribution: it is a qualified disaster recovery distribution (Form 8915-F);
+          it is part of a series of substantially equal periodic payments that was modified (recapture); it is from an annuity
+          contract or a modified endowment contract; it repays a birth or adoption, terminal illness, domestic abuse or emergency
+          personal expense distribution; it is an emergency personal expense distribution within 3 years after an earlier
+          one you have not repaid; it is a qualified long-term care distribution made December 30 or 31, 2025; or more than
+          one exception to the additional tax applies to it?'
+        to: 'Is any of these true of this distribution: it is a qualified disaster recovery distribution (Form 8915-F); it
+          is part of a series of substantially equal periodic payments that was modified (recapture); it is from an annuity
+          contract or a modified endowment contract; it repays a birth or adoption, terminal illness, domestic abuse or emergency
+          personal expense distribution; it is an emergency personal expense distribution within 3 years after an earlier
+          one you have not repaid; it paid for long-term care insurance (a qualified long-term care distribution from an employer
+          plan); or more than one exception to the additional tax applies to it?'
+    - set:
+        line: retirement.early_screen
+        field: cite.locator
+        from: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+        to: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–24). If more than one exception applies, enter 99."; p. 2, What's New, "Beginning with distributions
+          made after December 29, 2025, a distribution from your employer’s defined contribution plan for or with respect
+          to certified long-term care insurance is not subject to the 10% additional tax on early distributions if certain
+          requirements are met."
+    - set:
+        line: retirement.screen_refused
+        field: cite.locator
+        from: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+        to: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–24). If more than one exception applies, enter 99."
+    - set:
+        line: retirement.has_exception
+        field: cite.locator
+        from: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+        to: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–24). If more than one exception applies, enter 99."
+    - set:
+        line: retirement.exc_amount
+        field: cite.locator
+        from: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+        to: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–24). If more than one exception applies, enter 99."
+    - set:
+        line: retirement.exc_capped
+        field: cite.locator
+        from: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+        to: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–24). If more than one exception applies, enter 99."
+    - set:
+        line: retirement.l2
+        field: cite.locator
+        from: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+        to: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–24). If more than one exception applies, enter 99."
+    - set_question:
+        input: retirement.early_screen
+        field: prompt
+        from: 'Is any of these true of this early withdrawal?
+
+
+          - it is one of a series of substantially equal periodic payments that was later changed
+
+          - it is from an annuity contract or a modified endowment contract
+
+          - it repays a birth or adoption, terminal illness, domestic abuse or emergency personal expense distribution
+
+          - it is an emergency personal expense distribution within 3 years after an earlier one you have not repaid
+
+          - it is a qualified long-term care distribution made December 30 or 31, 2025
+
+          - more than one exception to the 10% additional tax applies to it'
+        to: 'Is any of these true of this early withdrawal?
+
+
+          - it is one of a series of substantially equal periodic payments that was later changed
+
+          - it is from an annuity contract or a modified endowment contract
+
+          - it repays a birth or adoption, terminal illness, domestic abuse or emergency personal expense distribution
+
+          - it is an emergency personal expense distribution within 3 years after an earlier one you have not repaid
+
+          - it paid for long-term care insurance (a qualified long-term care distribution from an employer plan)
+
+          - more than one exception to the 10% additional tax applies to it'
+  - change:
+    - C-PEOP-04
+    - C-PEOP-11
+    - C-PEOP-05
+    evidence:
+    - *id001
+    - *id002
+    verified: draft
+    note: 'The three refusal lists of a Form 1099-R (rolled, taxable, amount_a, which shared one list by a YAML alias): the
+      Trump account refusal first, so it is told when the account is answered; box 7a in the code refusal''s locator; the
+      long-term care distribution in the screen refusal''s remedy.'
+    operations:
+    - set:
+        line: retirement.rolled
+        field: refuses
+        from:
+        - when: retirement.special
+          form: Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)
+          remedy: This distribution needs a form or rule outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
+              Safety Officers, Simplified Method'
+        - when: retirement.bad_code
+          form: Form 8606 or another Form 1099-R code
+          remedy: A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional
+            SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside
+            this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 27, Exception 2; f1099r Box 7
+        to:
+        - when: retirement.trump
+          form: Form 5329 Parts X and XI (Trump accounts)
+          remedy: A distribution from a Trump account (box 7c of Form 1099-R checked) is outside this tool.
+          cite:
+            doc: f1099r
+            locator: p. 9, Box 7c, "If the Trump account box is checked, you’ve received a distribution from a Trump account.";
+              Box 7d, "Shows the earnings attributable to the distributed excess contributions made to a Trump account."
+        - when: retirement.special
+          form: Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)
+          remedy: This distribution needs a form or rule outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
+              Safety Officers, Simplified Method'
+        - when: retirement.bad_code
+          form: Form 8606 or another Form 1099-R code
+          remedy: A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional
+            SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside
+            this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 27, Exception 2; f1099r Box 7a
+    - set:
+        line: retirement.taxable
+        field: refuses
+        from: &id003
+        - when: retirement.special
+          form: Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)
+          remedy: This distribution needs a form or rule outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
+              Safety Officers, Simplified Method'
+        - when: retirement.bad_code
+          form: Form 8606 or another Form 1099-R code
+          remedy: A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional
+            SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside
+            this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 27, Exception 2; f1099r Box 7
+        - when: retirement.screen_refused
+          form: Form 5329 or Form 8915-F for this Form 1099-R
+          remedy: A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity
+            or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than
+            one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs
+            Form 5329 or Form 8915-F rules this tool does not apply.
+          cite:
+            doc: i5329
+            locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude."
+        - when: retirement.annuity_rollover
+          form: Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)
+          remedy: A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside
+            this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'
+        to:
+        - when: retirement.trump
+          form: Form 5329 Parts X and XI (Trump accounts)
+          remedy: A distribution from a Trump account (box 7c of Form 1099-R checked) is outside this tool.
+          cite:
+            doc: f1099r
+            locator: p. 9, Box 7c, "If the Trump account box is checked, you’ve received a distribution from a Trump account.";
+              Box 7d, "Shows the earnings attributable to the distributed excess contributions made to a Trump account."
+        - when: retirement.special
+          form: Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)
+          remedy: This distribution needs a form or rule outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
+              Safety Officers, Simplified Method'
+        - when: retirement.bad_code
+          form: Form 8606 or another Form 1099-R code
+          remedy: A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional
+            SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside
+            this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 27, Exception 2; f1099r Box 7a
+        - when: retirement.screen_refused
+          form: Form 5329 or Form 8915-F for this Form 1099-R
+          remedy: A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity
+            or modified endowment contract distribution, a repayment, a qualified long-term care distribution, more than one
+            exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs
+            Form 5329 or Form 8915-F rules this tool does not apply.
+          cite:
+            doc: i5329
+            locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude."
+        - when: retirement.annuity_rollover
+          form: Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)
+          remedy: A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside
+            this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'
+    - set:
+        line: retirement.amount_a
+        field: refuses
+        from: *id003
+        to:
+        - when: retirement.trump
+          form: Form 5329 Parts X and XI (Trump accounts)
+          remedy: A distribution from a Trump account (box 7c of Form 1099-R checked) is outside this tool.
+          cite:
+            doc: f1099r
+            locator: p. 9, Box 7c, "If the Trump account box is checked, you’ve received a distribution from a Trump account.";
+              Box 7d, "Shows the earnings attributable to the distributed excess contributions made to a Trump account."
+        - when: retirement.special
+          form: Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)
+          remedy: This distribution needs a form or rule outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
+              Safety Officers, Simplified Method'
+        - when: retirement.bad_code
+          form: Form 8606 or another Form 1099-R code
+          remedy: A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional
+            SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside
+            this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 27, Exception 2; f1099r Box 7a
+        - when: retirement.screen_refused
+          form: Form 5329 or Form 8915-F for this Form 1099-R
+          remedy: A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity
+            or modified endowment contract distribution, a repayment, a qualified long-term care distribution, more than one
+            exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs
+            Form 5329 or Form 8915-F rules this tool does not apply.
+          cite:
+            doc: i5329
+            locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude."
+        - when: retirement.annuity_rollover
+          form: Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)
+          remedy: A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside
+            this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'
+  - change:
+    - C-PEOP-05
+    - C-PEOP-07
+    evidence:
+    - *id004
+    - doc: p590b
+      page: 29
+      quote: you are a first-time homebuyer if you had no present interest in a main home during the 2-year period ending
+        on the date of acquisition of the home that the distribution is being used to buy, build, or rebuild.
+    verified: draft
+    note: 'One locator holds both entries'' quotes, so both are set here: the exception range (01–24) and the first-time homebuyer
+      sentence of Pub. 590-B ("that" for "which", now p. 29).'
+    operations:
+    - set:
+        line: retirement.exception
+        field: cite.locator
+        from: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99.", "Qualified retirement plan distributions
+          (doesn’t apply to IRAs) you received after separation from service when the separation from service occurs in or
+          after the year you reach age 55 (age 50 for qualified public safety employees and private sector firefighters) or
+          25 years of service under the plan, whichever is earlier.", "(if from an employer plan, payments must begin after
+          separation from service)", "You are considered disabled if you can furnish proof that you can’t do any substantial
+          gainful activity because of your physical or mental condition." and "Distributions due to death (doesn’t apply to
+          modified endowment contracts)."; p590b p. 28, First-time homebuyer, "you are a first-time homebuyer if you had no
+          present interest in a main home during the 2-year period ending on the date of acquisition of the home which the
+          distribution is being used to buy, build, or rebuild. If you are married, your spouse must also meet this no-ownership
+          requirement.", "You enter into a binding contract to buy the main home", "You were ordered or called to active duty
+          after September 11, 2001.", "of more than 179 days or for an indefinite period because you are a member of a reserve
+          component.", "The distribution is from an IRA or from amounts attributable to elective deferrals under a section
+          401(k) or 403(b) plan or a similar arrangement.", "the date of the order or call to active duty and no later than
+          the close of the active duty period.", "if made during the 1-year period beginning on the date on which your child
+          was born or the date on which the legal adoption of your child was finalized" and "an eligible adoptee is any individual
+          (other than the child of the taxpayer’s spouse) who has not reached age 18 or is physically or mentally incapable
+          of self-support."
+        to: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–24). If more than one exception applies, enter 99.", "Qualified retirement plan distributions
+          (doesn’t apply to IRAs) you received after separation from service when the separation from service occurs in or
+          after the year you reach age 55 (age 50 for qualified public safety employees and private sector firefighters) or
+          25 years of service under the plan, whichever is earlier.", "(if from an employer plan, payments must begin after
+          separation from service)", "You are considered disabled if you can furnish proof that you can’t do any substantial
+          gainful activity because of your physical or mental condition." and "Distributions due to death (doesn’t apply to
+          modified endowment contracts)."; p590b p. 29, First-time homebuyer, "Generally, you are a first-time homebuyer if
+          you had no present interest in a main home during the 2-year period ending on the date of acquisition of the home
+          that the distribution is being used to buy, build, or rebuild. If you are married, your spouse must also meet this
+          no-ownership requirement.", "You enter into a binding contract to buy the main home", "You were ordered or called
+          to active duty after September 11, 2001.", "of more than 179 days or for an indefinite period because you are a
+          member of a reserve component.", "The distribution is from an IRA or from amounts attributable to elective deferrals
+          under a section 401(k) or 403(b) plan or a similar arrangement.", "the date of the order or call to active duty
+          and no later than the close of the active duty period.", "if made during the 1-year period beginning on the date
+          on which your child was born or the date on which the legal adoption of your child was finalized" and "an eligible
+          adoptee is any individual (other than the child of the taxpayer’s spouse) who has not reached age 18 or is physically
+          or mentally incapable of self-support."

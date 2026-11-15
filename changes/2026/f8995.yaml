@@ -1,0 +1,159 @@
+changes:
+  tax_year: 2026
+  form: f8995
+  entries:
+  - change: C-SCHED-31
+    evidence:
+    - doc: f8995
+      page: 2
+      quote: Qualified business income deduction before the minimum deduction for active qualified business income. Enter
+        the smaller of line 10 or line 14
+    - doc: f8995
+      page: 2
+      quote: Minimum deduction for active qualified business income (see instructions)
+    - doc: f8995
+      page: 2
+      quote: Qualified business income deduction. Enter the greater of line 15 or line 16
+    - doc: f8995
+      page: 2
+      quote: Total qualified business (loss) carryforward. Combine lines 2 and 3. If greater than zero, enter -0-
+    - doc: i8995
+      page: 2
+      quote: There is a minimum qualified business income deduction of $400 for taxpayers whose aggregate qualified business
+        income for such taxable year is at least $1,000 with respect to all qualified trades or businesses in which the taxpayer
+        materially participates, within the meaning of section 469(h).
+    - doc: i8995
+      page: 6
+      quote: If the smaller of line 10 or 14 is less than $400, enter $400 if the aggregate qualified business income from
+        lines 1i through 1v, column (c) with respect to all qualified trades or businesses in which you materially participated
+    - doc: plaw-119-21
+      page: 91
+      quote: the deduction allowed under subsection (a) for the taxable year shall be equal to the greater of
+    verified: draft
+    note: 'Line 16 is $400 when the active QBI is at least $1,000 and zero otherwise, and line 17 the greater of lines 15
+      and 16: the same amount as the i8995 Line 17 text ("If the smaller of line 10 or 14 is less than $400, enter $400 if
+      ..."), which reconciles the instructions'' heading with the form. The active QBI is line 2: every Schedule C business
+      on a completed return answered Yes to line G (material participation, or the oil and gas working-interest exception,
+      whose depletion the Schedule C screen refuses). Line 20 (the ESBT box) is a trust''s and is not encoded. The ids f8995.line16
+      and f8995.line17 keep the carryforwards, now printed 18 and 19.'
+    operations:
+    - set:
+        line: f8995.line15
+        field: label
+        from: Smaller of f8995.line10, f8995.line14
+        to: Smaller of f8995.line10, f8995.line14 (the deduction before the minimum deduction for active qualified business
+          income)
+    - set:
+        line: f8995.line15
+        field: cite.locator
+        from: p. 1, "Qualified business income deduction. Enter the smaller of line 10 or line 14" (line 15); i8995 pp. 3–4
+        to: p. 2, "Qualified business income deduction before the minimum deduction for active qualified business income.
+          Enter the smaller of line 10 or line 14" (line 15); i8995 p. 6, Line 15, "Enter the smaller of line 10 or line 14."
+    - add_line:
+        after: f8995.line15
+        line:
+          id: f8995.min_amount
+          printed: (helper)
+          type: NonNegDollars
+          label: Year parameter qbi.min_deduction (the minimum deduction for active qualified business income)
+          expr:
+            op: param
+            ref: qbi.min_deduction
+          cite:
+            doc: i8995
+            locator: p. 2, What’s New, "There is a minimum qualified business income deduction of $400 for taxpayers whose
+              aggregate qualified business income for such taxable year is at least $1,000"
+    - add_line:
+        after: f8995.min_amount
+        line:
+          id: f8995.min_qualifies
+          printed: (helper)
+          type: Bool
+          label: 'The qualified business income of the active businesses (line 2: every Schedule C business on a return this
+            tool completes answered Yes to material participation, line G) is at least the year parameter qbi.min_active'
+          expr:
+            op: test
+            ge:
+            - f8995.line2
+            - param: qbi.min_active
+          cite:
+            doc: i8995
+            locator: p. 6, Line 17, "If the smaller of line 10 or 14 is less than $400, enter $400 if the aggregate qualified
+              business income from lines 1i through 1v, column (c) with respect to all qualified trades or businesses in which
+              you materially participated for the taxable year, within the meaning of section 469(h), is at least $1,000."
+    - add_line:
+        after: f8995.min_qualifies
+        line:
+          id: f8995.minimum
+          printed: '16'
+          type: NonNegDollars
+          label: Minimum deduction for active qualified business income (see instructions)
+          expr:
+            op: choose
+            alternatives:
+            - guard:
+                op: test
+                eq:
+                - f8995.min_qualifies
+                - const: true
+              then: f8995.min_amount
+            - guard:
+                op: test
+                eq:
+                - f8995.min_qualifies
+                - const: false
+              then: qbi.zero
+          cite:
+            doc: f8995
+            locator: p. 2, "Minimum deduction for active qualified business income (see instructions)" (line 16); i8995 p.
+              6, Line 16, "If you have active qualified business income from one or more active qualified trades or businesses,
+              enter the minimum"
+    - add_line:
+        after: f8995.minimum
+        line:
+          id: f8995.deduction
+          printed: '17'
+          type: NonNegDollars
+          label: Qualified business income deduction. Enter the greater of line 15 or line 16
+          expr:
+            op: larger_of
+            of:
+            - f8995.line15
+            - f8995.minimum
+          cite:
+            doc: f8995
+            locator: p. 2, "Qualified business income deduction. Enter the greater of line 15 or line 16" (line 17); plaw-119-21
+              p. 91, SEC. 70105, section 199A(i)(1), "the deduction allowed under subsection (a) for the taxable year shall
+              be equal to the greater of"
+    - set:
+        line: f8995.line16
+        field: printed
+        from: '16'
+        to: '18'
+    - set:
+        line: f8995.line16
+        field: cite.locator
+        from: Form 8995 (2025), line 16
+        to: Form 8995 (2026), line 18
+    - set:
+        line: f8995.line17
+        field: printed
+        from: '17'
+        to: '19'
+    - set:
+        line: f8995.line17
+        field: cite.locator
+        from: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+        to: Form 8995 (2026), line 19; i8995 p. 6, Line 19, "This amount must be carried forward to next year"
+    - set:
+        line: f8995.loss
+        field: cite.locator
+        from: Form 8995 (2025), line 16
+        to: Form 8995 (2026), line 18
+    - set:
+        line: f8995.line4_sum
+        field: cite.locator
+        from: p. 1, "Total qualified business income. Combine lines 2 and 3" (line 4), "Total qualified business (loss) carryforward.
+          Combine lines 2 and 3" (line 16)
+        to: p. 2, "Total qualified business income. Combine lines 2 and 3" (line 4), "Total qualified business (loss) carryforward.
+          Combine lines 2 and 3" (line 18)

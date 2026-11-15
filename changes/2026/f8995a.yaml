@@ -1,0 +1,71 @@
+changes:
+  tax_year: 2026
+  form: f8995a
+  entries:
+  - change: C-SCHED-32
+    evidence:
+    - doc: f8995a
+      page: 3
+      quote: Qualified business income deduction before the minimum deduction for active qualified business income. Add lines
+        37 and 38
+    - doc: f8995a
+      page: 3
+      quote: Minimum deduction for active qualified business income (see instructions)
+    - doc: f8995a
+      page: 3
+      quote: Total qualified business income deduction. Enter the greater of line 39 or line 40
+    - doc: f8995a
+      page: 3
+      quote: Total qualified REIT dividends and PTP (loss) carryforward. Combine lines 28 and 29. If zero or greater, enter
+        -0-
+    verified: draft
+    note: 'On the dividend-only path the minimum deduction is zero (no qualified business income, so none in an active business).
+      f8995a.line40 keeps the REIT and PTP carryforward, now printed 42; line 43 (the ESBT box) is not encoded. The 2026 Instructions
+      for Form 8995-A are not published: the i8995a segments of these citations ("skip Parts I through III") keep their 2025
+      page until they can be checked.'
+    operations:
+    - set:
+        line: f8995a.line40
+        field: printed
+        from: '40'
+        to: '42'
+    - set:
+        line: f8995a.line40
+        field: cite.locator
+        from: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts
+          I through III and complete Part IV"
+        to: p. 3, Part IV, line 42, "Total qualified REIT dividends and PTP (loss) carryforward. Combine lines 28 and 29.
+          If zero or greater, enter -0-"; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts
+          I through III and complete Part IV"
+    - add_line:
+        after: f8995a.line39
+        line:
+          id: f8995a.minimum
+          printed: '40'
+          type: NonNegDollars
+          label: 'Minimum deduction for active qualified business income (zero: this path has no qualified business income)'
+          expr:
+            op: copy
+            from: qbi.zero
+          cite:
+            doc: f8995a
+            locator: p. 3, Part IV, line 40, "Minimum deduction for active qualified business income (see instructions)";
+              i8995 p. 2, What’s New, "aggregate qualified business income for such taxable year is at least $1,000 with respect
+              to all qualified trades or businesses in which the taxpayer materially participates" (this path has section
+              199A dividends only; business income above the Form 8995 threshold is refused through qbi.business_any)
+    - add_line:
+        after: f8995a.minimum
+        line:
+          id: f8995a.deduction
+          printed: '41'
+          type: NonNegDollars
+          label: Total qualified business income deduction. Enter the greater of line 39 or line 40
+          expr:
+            op: larger_of
+            of:
+            - f8995a.line39
+            - f8995a.minimum
+          cite:
+            doc: f8995a
+            locator: p. 3, Part IV, line 41, "Total qualified business income deduction. Enter the greater of line 39 or line
+              40"

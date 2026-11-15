@@ -360,6 +360,7 @@ def check(docs, ids):
     head_text = subprocess.run(["git", "show", "HEAD:BUG_INVENTORY.md"], capture_output=True, text=True, check=False).stdout
     logged = {}
     existed = {}
+    year_forms_changed = {}
     for bug, number, title, fields in bug_entries():
         if (number is not None and number < REQUIRED_FROM) or "Fix" not in fields:
             continue
@@ -393,6 +394,14 @@ def check(docs, ids):
                             f"{', '.join(sorted(missing)[:8])}{' ...' if len(missing) > 8 else ''}")
         if base not in logged:
             logged[base] = current_docs(changed_logs(base))
+        if base not in year_forms_changed:
+            year_forms_changed[base] = bool(subprocess.run(
+                ["git", "diff", "--name-only", base, "--", f"forms/{Y}"],
+                capture_output=True, text=True, check=False).stdout.strip())
+        if not year_forms_changed[base]:
+            # The fix changed no form of the year (for example, it is written as next year's operations in
+            # changes/<year>/): no line subject a review judged has changed, so no review log is due.
+            continue
         forms = {target.split(".")[0] for target in siblings}
         unrefreshed = sorted(forms - logged[base])
         if unrefreshed:

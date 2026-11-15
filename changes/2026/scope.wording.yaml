@@ -1,0 +1,30 @@
+changes:
+  tax_year: 2026
+  form: scope
+  entries:
+  - change: C-PEOP-20
+    evidence:
+    - doc: iw2w3
+      page: 21
+      quote: Even though the 2026 limit for elective deferrals and designated Roth contributions is $24,500
+    - doc: n-25-67
+      page: 1
+      quote: is increased from $23,500 to $24,500.
+    verified: final
+    note: The question asking whether pay deferred into retirement plans passed the yearly limit names the limit and the
+      year; the change map did not list it.
+    operations:
+    - set:
+        line: scope.excess_deferral
+        field: label
+        from: In 2025, did you (or, on a joint return, your spouse) put more of your pay into retirement plans at work than
+          the yearly limit ($23,500 for most people)?
+        to: In 2026, did you (or, on a joint return, your spouse) put more of your pay into retirement plans at work than
+          the yearly limit ($24,500 for most people)?
+    - set:
+        line: scope.excess_deferral
+        field: expr.source
+        from: In 2025, did you (or, on a joint return, your spouse) put more of your pay into retirement plans at work than
+          the yearly limit ($23,500 for most people)?
+        to: In 2026, did you (or, on a joint return, your spouse) put more of your pay into retirement plans at work than
+          the yearly limit ($24,500 for most people)?

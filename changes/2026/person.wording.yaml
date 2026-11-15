@@ -1,0 +1,163 @@
+changes:
+  tax_year: 2026
+  form: person
+  entries:
+  - change: C-PEOP-01
+    evidence:
+    - doc: f1040
+      page: 2
+      quote: If a joint return, spouse’s first name and middle initial
+    - doc: f1040
+      page: 2
+      quote: Your first name and middle initial
+    - doc: f1040
+      page: 2
+      quote: Married filing jointly (even if only one had income)
+    verified: draft
+    note: 'The person collection citation only. person.role carries the same quote but is not changed: it is an input with
+      no bank question, which the check refuses to see touched.'
+    operations:
+    - set_form:
+        field: collection.cite.locator
+        from: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and
+          middle initial"
+        to: Form 1040 (2025), page 2, "Your first name and middle initial" and "If a joint return, spouse’s first name and
+          middle initial"
+  - change: C-PEOP-10
+    evidence:
+    - doc: i8606
+      page: 10
+      quote: However, you may need to enter an amount that is more than zero (even if this is the first year you are required
+        to file Form 8606) or increase or decrease the amount from the chart if your basis changed because of any of the
+        following.
+    - doc: i8606
+      page: 10
+      quote: a year after 2023 and before 2026
+    - doc: i8606
+      page: 10
+      quote: the amount from line 14 of that Form 8606 as adjusted to include the amount from line 6 of the Line 15c Worksheet,
+        if any
+    verified: draft
+    note: Citations only. The questions that name years ("before 2025" in person.ira_basis and its label) are year literals,
+      not taken here.
+    operations:
+    - set:
+        line: person.ira_basis_adjusted
+        field: cite.locator
+        from: p. 9, Line 2, "you may need to enter an amount that is more than -0- (even if this is the first year you are
+          required to file Form 8606) or increase or decrease the amount from the chart"; p. 9, Total Basis Chart, "the
+          amount from line 14 of that Form 8606 as adjusted to include the amount from line 6 of the Line 15c Worksheet,
+          if any"
+        to: p. 10, Line 2, "you may need to enter an amount that is more than zero (even if this is the first year you are
+          required to file Form 8606) or increase or decrease the amount from the chart"; p. 10, Total Basis Chart, "the
+          amount from line 14 of that Form 8606 as adjusted to include the amount from line 6 of the Line 15c Worksheet,
+          if any"
+    - set:
+        line: person.ira_basis_gate
+        field: cite.locator
+        from: p. 9, Line 2, "increase or decrease the amount from the chart"
+        to: p. 10, Line 2, "increase or decrease the amount from the chart"
+    - set:
+        line: person.ira_8606_line2
+        field: refuses
+        from:
+        - when: person.ira_basis_gate
+          form: Form 8606, line 2 (basis adjustments)
+          remedy: Adjusting the Form 8606 line 2 basis for a Line 15c Worksheet amount, a return of excess contributions,
+            a transfer incident to divorce or a rollover of a nontaxable part of a qualified plan is outside this tool.
+          cite:
+            doc: i8606
+            locator: p. 9, Line 2, "you may need to enter an amount that is more than -0- (even if this is the first year
+              you are required to file Form 8606) or increase or decrease the amount from the chart"
+        to:
+        - when: person.ira_basis_gate
+          form: Form 8606, line 2 (basis adjustments)
+          remedy: Adjusting the Form 8606 line 2 basis for a Line 15c Worksheet amount, a return of excess contributions,
+            a transfer incident to divorce or a rollover of a nontaxable part of a qualified plan is outside this tool.
+          cite:
+            doc: i8606
+            locator: p. 10, Line 2, "you may need to enter an amount that is more than zero (even if this is the first year
+              you are required to file Form 8606) or increase or decrease the amount from the chart"
+    - set:
+        line: person.ira_basis
+        field: cite.locator
+        from: p. 9, Line 2, "Generally, if this is the first year you are required to file Form 8606, enter -0-. Otherwise,
+          use the Total Basis Chart to find the amount to enter on line 2"
+        to: p. 10, Line 2, "Generally, if this is the first year you are required to file Form 8606, enter -0-. Otherwise,
+          use the Total Basis Chart to find the amount to enter on line 2"
+  - change: C-PEOP-19
+    evidence:
+    - doc: f8889
+      page: 2
+      quote: Also include this amount in the total on Schedule 2 (Form 1040), Part II, line 13c
+    verified: draft
+    operations:
+    - set:
+        line: person.hsa_addtax
+        field: cite.locator
+        from: Form 8889 (2025), line 17b, "Also, include this amount in the total on Schedule 2 (Form 1040), Part II, line
+          17c"
+        to: Form 8889 (2025), line 17b, "Also include this amount in the total on Schedule 2 (Form 1040), Part II, line
+          13c"
+  - change: C-PEOP-20
+    evidence:
+    - doc: iw2w3
+      page: 21
+      quote: Even though the 2026 limit for elective deferrals and designated Roth contributions is $24,500, Alex’s total
+        elective deferral amount of $26,500 is reported in box 12 with code D
+    - doc: n-25-67
+      page: 1
+      quote: is increased from $23,500 to $24,500.
+    verified: final
+    note: The literal $23,500 is in the citations of person.sav_excess, person.sav_excess_gate, person.sav_line2 (its refusal),
+      and of person.no and person.sav_has_w2, which copy the same citation; and in the label and question of scope.excess_deferral
+      (in change C-PEOP-20 of scope.wording.yaml). It is in no parameter. The i1040gi p. 24 quote in scope.excess_deferral_if_w2
+      cannot be re-quoted until the 2026 Form 1040 instructions are posted.
+    operations:
+    - set:
+        line: person.sav_excess
+        field: cite.locator
+        from: p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions
+          is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D"
+        to: p. 21, Box 12—Codes, "Even though the 2026 limit for elective deferrals and designated Roth contributions is
+          $24,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D"
+    - set:
+        line: person.sav_excess_gate
+        field: cite.locator
+        from: p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions
+          is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D"
+        to: p. 21, Box 12—Codes, "Even though the 2026 limit for elective deferrals and designated Roth contributions is
+          $24,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D"
+    - set:
+        line: person.sav_line2
+        field: refuses
+        from:
+        - when: person.sav_excess_gate
+          form: Excess elective deferrals on Form 8880 line 2
+          remedy: Elective deferrals over the limit for the year, and their later distribution, are outside this tool.
+          cite:
+            doc: iw2w3
+            locator: p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions
+              is $23,500"
+        to:
+        - when: person.sav_excess_gate
+          form: Excess elective deferrals on Form 8880 line 2
+          remedy: Elective deferrals over the limit for the year, and their later distribution, are outside this tool.
+          cite:
+            doc: iw2w3
+            locator: p. 21, Box 12—Codes, "Even though the 2026 limit for elective deferrals and designated Roth contributions
+              is $24,500"
+    - set:
+        line: person.no
+        field: cite.locator
+        from: p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions
+          is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D"
+        to: p. 21, Box 12—Codes, "Even though the 2026 limit for elective deferrals and designated Roth contributions is
+          $24,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D"
+    - set:
+        line: person.sav_has_w2
+        field: cite.locator
+        from: p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions
+          is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D"
+        to: p. 21, Box 12—Codes, "Even though the 2026 limit for elective deferrals and designated Roth contributions is
+          $24,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D"

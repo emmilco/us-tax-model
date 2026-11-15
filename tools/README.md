@@ -81,7 +81,7 @@ The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast
   their inputs are unchanged (`tools/engines/README.md`, "Stored engine records"), which takes
   it from about 9 minutes to about 4 on a loaded machine, so `compare` and `mutate` set the wave.
 - **fast**: every step except `mutate`, `ny_mutate`, `engine_differential`, `lean_build`,
-  `compare`, `ny_compare` and `interview_length` (about 8 minutes on one core); the recorded green fast
+  `compare`, `ny_compare` and `interview_length`; the recorded green fast
   runs took 4 to 12 minutes, median 7. It does not check mutation adequacy or agreement with the
   independent evaluators, and leaves `mutation.md`, `evaluator_agreement.md`,
   `engine_differential.{md,json}` and `interview_length.md` as the last full run wrote them;
@@ -204,8 +204,9 @@ so a killed run leaves no stale slot; a waiter's place is a ticket named by arri
 pid, dropped when its pid is dead. A background run waits for its slot before it checks out
 its snapshot. The worker pools size themselves to the limit: by default the smaller of
 the core count less six and `floor((cores - 2) / CHECK_ALL_MAX_RUNS)`
-(`defaultWorkers()` in `engine/src/pool.ts`, used by the test commands, interview-rules
-and mutate); `TEST_WORKERS` and `MUTATE_WORKERS` still override. `check_slot.py --self-test`
+(`defaultWorkers()` in `engine/src/pool.ts`, used by the test commands, interview-rules,
+mutate, interview-length and interview-coverage); `TEST_WORKERS`, `MUTATE_WORKERS` and
+`INTERVIEW_WORKERS` still override. `check_slot.py --self-test`
 and `hooks/test_check_bg.sh` (per-run records, pruning, a background run waiting for a
 slot) are check-all steps.
 
@@ -243,7 +244,15 @@ one after another and the steps of a stage side by side, so a stage lasts as lon
 of its steps do not add up. `python3 tools/check_times.py [FILE] [--top N]` prints the summary of the last run
 of this worktree, or of a run's `times` file. Mutation spreads its mutants
 over worker threads (`MUTATE_WORKERS`, default `defaultWorkers()` of `engine/src/pool.ts`);
-`MUTATE_WORKERS=1` runs it on one.
+`MUTATE_WORKERS=1` runs it on one. `interview_length` spreads its returns, and `interview_coverage` the walks of
+its rows, over worker threads (`INTERVIEW_WORKERS`, default `defaultWorkers()`, as for mutate). Each worker builds
+the same list of returns or receives the row, and the results are taken back in list order, so the report, the problems and the exit code are the same for every count; `INTERVIEW_WORKERS=1` runs
+both on one thread. Each self-test checks this on a small set (the returns of the social-security profile; the
+planted rows and the smallest row file), on one thread and on two workers. Within a thread, both keep what they
+compute by state: interview-length the status and reachable inputs of each state its walks and probes meet, and
+interview-coverage each answer applied, by the answers given before it, since walks that have answered alike so far
+(the minimal returns; every row's background answers) meet the same states. Both are functions of the built data,
+the bank and the state, so what is kept is what would be computed again.
 
 A surviving mutant must be explained, by a structural rule checked against the data or by
 a hand-written equivalence argument keyed by the mutant's id (`EQUIVALENT_IF` in

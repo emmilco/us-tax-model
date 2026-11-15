@@ -119,8 +119,10 @@ export class Unreachable extends Error {}
  * the answers do not cover: without `reach` it throws Unanswered; with `reach` every such input open at the state is
  * reported there and the pick is made among the answered ones. A refusal is provisional (a later answer may clear it), so the walk goes on past it while a
  * reachable question has an answer, and ends complete or when none has; past a refusal only answered inputs are open.
- * Reports early completion at every state to `leak`. */
-export function walk(data: CanonicalData, config: InterviewData, answers: Answers, pick: (open: string[], current: Inputs) => string, bound: number, leak: (reachable: string[]) => void, reach?: (key: string) => void): Walk {
+ * Reports early completion at every state to `leak`. `status` is interviewStatus of the data and bank, or a caller's
+ * store of its results (interview-length). */
+export function walk(data: CanonicalData, config: InterviewData, answers: Answers, pick: (open: string[], current: Inputs) => string, bound: number, leak: (reachable: string[]) => void, reach?: (key: string) => void,
+  status: (inputs: Inputs) => { status: string; reachableInputs: string[] } = (inputs) => interviewStatus(data, config, inputs)): Walk {
   let state = replayedState(config, []);
   let current: Inputs = state.inputs;
   const events: Event[] = [];
@@ -128,7 +130,7 @@ export function walk(data: CanonicalData, config: InterviewData, answers: Answer
   let pending: string[] = [];
   for (let step = 0; ; step++) {
     if (step > bound) throw new Error("the walk did not end");
-    const st = interviewStatus(data, config, current);
+    const st = status(current);
     if (st.status === "complete" && st.reachableInputs.length) leak(st.reachableInputs);
     const now = new Set(st.reachableInputs);
     for (const k of pending) if (!now.has(k) && !(k in current) && !(k in exposed)) exposed[k] = events.at(-1)!.input;

@@ -1,0 +1,397 @@
+changes:
+  tax_year: 2026
+  form: person
+  entries:
+  - change:
+    - C-SCHED-11
+    - C-PEOP-03
+    evidence:
+    - doc: f1040s2
+      page: 2
+      quote: Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here
+    - doc: f1040s2
+      page: 3
+      quote: Additional tax on excess contributions or accumulations in IRAs or other tax-favored accounts. Attach Form 5329
+    - doc: f5329
+      page: 3
+      quote: Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2026 (including
+        2026 contributions made in 2027). Include this amount on Schedule 2 (Form 1040), line 18
+    verified: draft
+    note: 'Schedule 2 line 8 becomes two lines: line 5 takes Form 5329 line 4 (with the box for code 1 tax entered without
+      the form) and new line 18 takes line 49. f5329.tax keeps line 4 only and f5329.tax_excess carries line 49; the per-person
+      totals person.x_tax_early and person.x_tax_excess are the ones lane O1''s Schedule 2 lines 5 and 18 (s2.excess_contrib)
+      read. person.x_tax is read only by the 2025 s2.line8; it is removed once O1''s operations no longer read it (a remove_line
+      at the merge).'
+    operations:
+    - add_line:
+        after: person.x_tax
+        line:
+          id: person.x_tax_early
+          printed: (helper)
+          label: This person's Form 5329 tax for Schedule 2 line 5 (Form 5329 line 4; Part II is refused)
+          type: NonNegDollars
+          expr:
+            op: sum_over
+            collection: f5329
+            field: f5329.tax
+          cite:
+            doc: f1040s2
+            locator: p. 2, Part II, line 5, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required."
+    - add_line:
+        after: person.x_tax_early
+        line:
+          id: person.x_tax_excess
+          printed: (helper)
+          label: This person's Form 5329 tax for Schedule 2 line 18 (Form 5329 line 49; the other excess-contribution parts
+            are refused)
+          type: NonNegDollars
+          expr:
+            op: sum_over
+            collection: f5329
+            field: f5329.tax_excess
+          cite:
+            doc: f1040s2
+            locator: p. 3, Part II, line 18, "Additional tax on excess contributions or accumulations in IRAs or other tax-favored
+              accounts. Attach Form 5329"
+    - remove_line:
+        line: person.x_tax
+  - change: C-PEOP-04
+    evidence:
+    - doc: i5329
+      page: 2
+      quote: However, if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R and you owe the additional
+        tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329.
+    verified: draft
+    operations:
+    - set:
+        line: person.x_must
+        field: cite.locator
+        from: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and
+          you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+        to: p. 2, Who Must File, "However, if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R and
+          you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+  - change: C-PEOP-05
+    evidence:
+    - doc: i5329
+      page: 5
+      quote: In the space provided, enter the applicable exception number (01–24). If more than one exception applies, enter
+        99.
+    verified: draft
+    operations:
+    - set:
+        line: person.x_l2_all
+        field: cite.locator
+        from: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+        to: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–24). If more than one exception applies, enter 99."
+    - set:
+        line: person.x_capped_sum
+        field: cite.locator
+        from: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+        to: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–24). If more than one exception applies, enter 99."
+    - set:
+        line: person.x_limited_sum
+        field: cite.locator
+        from: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+        to: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–24). If more than one exception applies, enter 99."
+    - set:
+        line: person.x_other_exc
+        field: cite.locator
+        from: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+        to: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–24). If more than one exception applies, enter 99."
+  - change: C-PEOP-06
+    evidence:
+    - doc: p590b
+      page: 29
+      quote: must not exceed the lesser of $10,500 for 2026 or 50% of the present value of the IRA.
+    - doc: n-25-67
+      page: 5
+      quote: is increased from $10,300 to $10,500.
+    verified: draft
+    note: The cap itself is the parameter f5329.cap_abuse (1050000 cents in 2026), set by the parameter lane.
+    operations:
+    - set:
+        line: person.x_e22
+        field: cite.locator
+        from: p. 28, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of
+          $10,300 for 2025 or 50% of the present value of the IRA."
+        to: p. 29, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of $10,500
+          for 2026 or 50% of the present value of the IRA."
+    - set:
+        line: person.x_cap22
+        field: label
+        from: Year parameter f5329.cap_abuse ($10,300)
+        to: Year parameter f5329.cap_abuse ($10,500)
+    - set:
+        line: person.x_cap22
+        field: cite.locator
+        from: p. 28, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of
+          $10,300 for 2025 or 50% of the present value of the IRA."
+        to: p. 29, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of $10,500
+          for 2026 or 50% of the present value of the IRA."
+    - set:
+        line: person.x_c22
+        field: label
+        from: Exception 22 within $10,300
+        to: Exception 22 within $10,500
+    - set:
+        line: person.x_c22
+        field: cite.locator
+        from: p. 28, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of
+          $10,300 for 2025 or 50% of the present value of the IRA."
+        to: p. 29, Distributions to domestic abuse victims, "on to a domestic abuse victim must not exceed the lesser of $10,500
+          for 2026 or 50% of the present value of the IRA."
+  - change: C-PEOP-08
+    evidence:
+    - doc: i8606
+      page: 6
+      quote: your limit on contributions to traditional and Roth IRAs is generally the smaller of $7,500 ($8,600 if age 50
+        or older at the end of 2026) or your taxable compensation
+    - doc: i8606
+      page: 6
+      quote: combined taxable compensation of both you and your spouse is less than $15,000 ($16,100 if one spouse is age
+        50 or older at the end of 2026; $17,200 if both spouses are age 50 or older at the end of 2026
+    - doc: n-25-67
+      page: 4
+      quote: is increased from $7,000 to $7,500.
+    - doc: n-25-67
+      page: 4
+      quote: is increased from $1,000 to $1,100.
+    verified: draft
+    note: The amounts shown in labels, the question and the refusals. The limits themselves are parameters (ira.limit 750000,
+      ira.limit_50 860000, ira.kbh_none/one/both 1500000/1610000/1720000), set by the parameter lane. The locators that quote
+      the IRA Deduction Worksheet (i1040gi) and Pub. 590-A wait for their 2026 editions.
+    operations:
+    - set:
+        line: person.ira_extra_left
+        field: label
+        from: Were your contributions for 2025 to traditional and Roth IRAs together more than you were allowed to contribute
+          (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a
+          Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date
+          of your return (including extensions)?
+        to: Were your contributions for 2026 to traditional and Roth IRAs together more than you were allowed to contribute
+          (more than $7,500, or $8,600 if age 50 or older at the end of 2026, or more than your taxable compensation, or a
+          Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date
+          of your return (including extensions)?
+    - set:
+        line: person.ira_extra_left
+        field: expr.source
+        from: Were your contributions for 2025 to traditional and Roth IRAs together more than you were allowed to contribute
+          (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a
+          Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date
+          of your return (including extensions)?
+        to: Were your contributions for 2026 to traditional and Roth IRAs together more than you were allowed to contribute
+          (more than $7,500, or $8,600 if age 50 or older at the end of 2026, or more than your taxable compensation, or a
+          Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date
+          of your return (including extensions)?
+    - set:
+        line: person.ira_limit_under50
+        field: label
+        from: $7,000
+        to: $7,500
+    - set:
+        line: person.ira_limit_over50
+        field: label
+        from: $8,000
+        to: $8,600
+    - set:
+        line: person.ira_limit
+        field: label
+        from: The applicable amount for this person ($7,000 if under age 50 at the end of 2025; $8,000 if age 50 or older)
+        to: The applicable amount for this person ($7,500 if under age 50 at the end of 2026; $8,600 if age 50 or older)
+    - set:
+        line: person.ira_own_total
+        field: cite.locator
+        from: p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional
+          and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable
+          compensation"
+        to: p. 6, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional and
+          Roth IRAs is generally the smaller of $7,500 ($8,600 if age 50 or older at the end of 2026) or your taxable compensation"
+    - set:
+        line: person.ira_line11
+        field: refuses
+        from:
+        - when: ira.both_kinds
+          form: Traditional and Roth IRA contributions on a joint return (Pub. 590-A)
+          remedy: On a joint return where you or your spouse made contributions to both a traditional IRA and a Roth IRA for
+            2025, the IRA deduction is figured with Pub. 590-A, which this tool does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 95, Line 20, "If you are filing a joint return and you or your spouse made contributions to both a
+              traditional IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions"
+        - when: ira.kbh_short
+          form: IRA deduction on a joint return with little compensation (Pub. 590-A worksheet)
+          remedy: On a joint return with line 10 of the IRA Deduction Worksheet under $14,000 ($15,000 or $16,000 with spouses
+            age 50 or older), the IRA deduction is figured with the worksheet in Pub. 590-A, which this tool does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 98, IRA Deduction Worksheet—Continued, Caution, "stop here and use the worksheet in Pub. 590-A to
+              figure your IRA deduction"
+        - when: person.ira_excess_gate
+          form: Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)
+          remedy: Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an
+            excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 95, Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to
+              your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see
+              Pub. 590-A for special rules"
+        - when: person.ira_over_limit
+          form: Excess IRA contributions (Form 5329 Part III, Pub. 590-A)
+          remedy: Your traditional and Roth IRA contributions for 2025 are together more than $7,000 ($8,000 if age 50 or
+            older), an excess contribution, which is outside this tool.
+          cite:
+            doc: p590a
+            locator: p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
+              IRAs for the year that is more than the smaller of"
+        - when: ira.over_comp
+          form: Excess IRA contributions (Form 5329 Part III, Pub. 590-A)
+          remedy: The traditional and Roth IRA contributions for 2025 on this return are more than the compensation on line
+            10 of the IRA Deduction Worksheet, an excess contribution, which is outside this tool.
+          cite:
+            doc: p590a
+            locator: p. 35, Excess Contributions, "Your taxable compensation for the year"
+        - when: ira.special_gate
+          form: IRA deduction special cases (Pub. 590-A)
+          remedy: Nonqualified deferred compensation in box 1 (Form W-2 box 11 or code Z, Form 1099-MISC box 15), fellowship
+            or stipend payments not on a Form W-2, repayments of qualified reservist distributions and difficulty of care
+            payments change the IRA compensation or contribution limits; they are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 95, Line 20, "don’t include that income on line 8 of the worksheet" and "Don’t include any repayments
+              of qualified reservist distributions"; p590a p. 6, What Is Compensation?, "certain non-tuition fellowship and
+              stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes"
+        - when: ira.excl_gate
+          form: IRA deduction with excluded foreign or possession income (Pub. 590-A)
+          remedy: With a retirement plan coverage and Form 2555 (or excluded income from Form 4563 or Puerto Rico), the IRA
+            deduction is figured with Pub. 590-A, which this tool does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 96, Were You Covered by a Retirement Plan?, "If you were covered by a retirement plan and you file
+              Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount,
+              if any, of your IRA deduction"
+        - when: ira.combat_gate
+          form: Nontaxable combat pay in IRA compensation (IRA Deduction Worksheet, line 8)
+          remedy: Nontaxable combat pay counts as compensation for the IRA deduction; it is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 98, IRA Deduction Worksheet—Continued, line 8, "Nontaxable combat pay. This amount should be reported
+              in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i"
+        to:
+        - when: ira.both_kinds
+          form: Traditional and Roth IRA contributions on a joint return (Pub. 590-A)
+          remedy: On a joint return where you or your spouse made contributions to both a traditional IRA and a Roth IRA for
+            2025, the IRA deduction is figured with Pub. 590-A, which this tool does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 95, Line 20, "If you are filing a joint return and you or your spouse made contributions to both a
+              traditional IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions"
+        - when: ira.kbh_short
+          form: IRA deduction on a joint return with little compensation (Pub. 590-A worksheet)
+          remedy: On a joint return with line 10 of the IRA Deduction Worksheet under $15,000 ($16,100 or $17,200 with spouses
+            age 50 or older), the IRA deduction is figured with the worksheet in Pub. 590-A, which this tool does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 98, IRA Deduction Worksheet—Continued, Caution, "stop here and use the worksheet in Pub. 590-A to
+              figure your IRA deduction"
+        - when: person.ira_excess_gate
+          form: Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)
+          remedy: Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an
+            excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 95, Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to
+              your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see
+              Pub. 590-A for special rules"
+        - when: person.ira_over_limit
+          form: Excess IRA contributions (Form 5329 Part III, Pub. 590-A)
+          remedy: Your traditional and Roth IRA contributions for 2026 are together more than $7,500 ($8,600 if age 50 or
+            older), an excess contribution, which is outside this tool.
+          cite:
+            doc: p590a
+            locator: p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
+              IRAs for the year that is more than the smaller of"
+        - when: ira.over_comp
+          form: Excess IRA contributions (Form 5329 Part III, Pub. 590-A)
+          remedy: The traditional and Roth IRA contributions for 2025 on this return are more than the compensation on line
+            10 of the IRA Deduction Worksheet, an excess contribution, which is outside this tool.
+          cite:
+            doc: p590a
+            locator: p. 35, Excess Contributions, "Your taxable compensation for the year"
+        - when: ira.special_gate
+          form: IRA deduction special cases (Pub. 590-A)
+          remedy: Nonqualified deferred compensation in box 1 (Form W-2 box 11 or code Z, Form 1099-MISC box 15), fellowship
+            or stipend payments not on a Form W-2, repayments of qualified reservist distributions and difficulty of care
+            payments change the IRA compensation or contribution limits; they are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 95, Line 20, "don’t include that income on line 8 of the worksheet" and "Don’t include any repayments
+              of qualified reservist distributions"; p590a p. 6, What Is Compensation?, "certain non-tuition fellowship and
+              stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes"
+        - when: ira.excl_gate
+          form: IRA deduction with excluded foreign or possession income (Pub. 590-A)
+          remedy: With a retirement plan coverage and Form 2555 (or excluded income from Form 4563 or Puerto Rico), the IRA
+            deduction is figured with Pub. 590-A, which this tool does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 96, Were You Covered by a Retirement Plan?, "If you were covered by a retirement plan and you file
+              Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount,
+              if any, of your IRA deduction"
+        - when: ira.combat_gate
+          form: Nontaxable combat pay in IRA compensation (IRA Deduction Worksheet, line 8)
+          remedy: Nontaxable combat pay counts as compensation for the IRA deduction; it is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 98, IRA Deduction Worksheet—Continued, line 8, "Nontaxable combat pay. This amount should be reported
+              in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i"
+    - set_question:
+        input: person.ira_extra_left
+        field: help
+        from: The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025),
+          or your taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside
+          what this tool prepares; a Yes ends the interview here.
+        to: The limit for traditional and Roth IRAs together is $7,500 ($8,600 if you were 50 or older at the end of 2026),
+          or your taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside
+          what this tool prepares; a Yes ends the interview here.
+    - set_question:
+        input: person.age50_at_year_end
+        field: help
+        from: Age 50 or older at the end of 2025 raises the IRA contribution limit to $8,000, changes the IRA Deduction Worksheet's
+          percentages, and allows catch-up contributions to a SIMPLE IRA.
+        to: Age 50 or older at the end of 2026 raises the IRA contribution limit to $8,600, changes the IRA Deduction Worksheet's
+          percentages, and allows catch-up contributions to a SIMPLE IRA.
+  - change: C-PEOP-11
+    evidence:
+    - doc: f8606
+      page: 1
+      quote: but does not include Trump accounts.
+    - doc: i8606
+      page: 2
+      quote: traditional IRAs do not include Trump accounts
+    verified: draft
+    note: 'Trump accounts are refused (owner decision 2026-11-04, ADOPTION.md question 5): a Form 1099-R from one refuses
+      in retirement.yaml; here the traditional IRA questions leave Trump-account money out.'
+    operations:
+    - set_question:
+        input: person.ira_trad
+        field: help
+        from: Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money you deducted on your 2024
+          return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately,
+          and SEP or SIMPLE contributions.
+        to: Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money you deducted on your 2024
+          return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately,
+          SEP or SIMPLE contributions, and money put into a Trump account.
+    - set_question:
+        input: person.ira_basis
+        field: help
+        from: Your basis is the total of your nondeductible contributions to traditional IRAs, less any nontaxable distributions;
+          zero if this is the first year you file Form 8606.
+        to: Your basis is the total of your nondeductible contributions to traditional IRAs (not Trump accounts), less any
+          nontaxable distributions; zero if this is the first year you file Form 8606.

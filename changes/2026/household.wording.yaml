@@ -1,0 +1,54 @@
+changes:
+  tax_year: 2026
+  form: household
+  entries:
+  - change: C-PEOP-01
+    evidence:
+    - doc: f1040
+      page: 2
+      quote: If a joint return, spouse’s first name and middle initial
+    - doc: f1040
+      page: 2
+      quote: Your first name and middle initial
+    - doc: f1040
+      page: 2
+      quote: Married filing jointly (even if only one had income)
+    verified: draft
+    note: Quote and page of the Form 1040 name lines ("If a joint return"; Form 1040 draft p. 2). The "Form 1040 (2025)"
+      year in these citations is not changed here.
+    operations:
+    - set:
+        line: household.persons
+        field: cite.locator
+        from: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and
+          middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)"
+        to: Form 1040 (2025), page 2, "Your first name and middle initial" and "If a joint return, spouse’s first name and
+          middle initial"; p. 2, Filing Status, "Married filing jointly (even if only one had income)"
+    - set:
+        line: household.roster_bad
+        field: cite.locator
+        from: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and
+          middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)"
+        to: Form 1040 (2025), page 2, "Your first name and middle initial" and "If a joint return, spouse’s first name and
+          middle initial"; p. 2, Filing Status, "Married filing jointly (even if only one had income)"
+    - set:
+        line: household.roster_ok
+        field: cite.locator
+        from: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and
+          middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)"
+        to: Form 1040 (2025), page 2, "Your first name and middle initial" and "If a joint return, spouse’s first name and
+          middle initial"; p. 2, Filing Status, "Married filing jointly (even if only one had income)"
+    - set:
+        line: household.spouses
+        field: cite.locator
+        from: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and
+          middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)"
+        to: Form 1040 (2025), page 2, "Your first name and middle initial" and "If a joint return, spouse’s first name and
+          middle initial"; p. 2, Filing Status, "Married filing jointly (even if only one had income)"
+    - set:
+        line: household.taxpayers
+        field: cite.locator
+        from: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and
+          middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)"
+        to: Form 1040 (2025), page 2, "Your first name and middle initial" and "If a joint return, spouse’s first name and
+          middle initial"; p. 2, Filing Status, "Married filing jointly (even if only one had income)"

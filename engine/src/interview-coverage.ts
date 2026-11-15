@@ -35,8 +35,11 @@
 //     --rows FILE   check these row files instead of interview/<year>/coverage/*.yaml (the report is then neither
 //                   checked nor written)
 //     --schema FILE the schema file holding `coverageFile` (default schema/data.schema.json)
+//   The rows are walked on INTERVIEW_WORKERS worker threads (default defaultWorkers() of pool.ts) and judged here in
+//   file order; the problems and the report are the same for every count, and 1 walks them in one thread.
 import assert from "node:assert/strict";
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { join, relative, resolve } from "node:path";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import { parse } from "yaml";
@@ -44,6 +47,7 @@ import { CANON_DIR, loadCanonical } from "./canonical.js";
 import { templateKey } from "./branches.js";
 import { applyAnswer, inputMeta, interviewView, loadInterview, questionTemplate, replay, type Event, type InterviewData } from "./interview.js";
 import { bankOrder, minimalAnswers, walk } from "./interview-rules.js";
+import { TaskWorkers, walkWorkers } from "./pool.js";
 import { YEAR } from "./year.js";
 import type { CanonicalData, Inputs } from "./types.js";
 
@@ -124,9 +128,33 @@ function givenOf(row: Row, sets: Record<string, AnswerSet>): Map<string, { value
   return given;
 }
 
+/** What a walk reads of a view: its status, refusal, next question and reachable inputs. */
+type Seen = { status: string; refusal: unknown; question: { input: string } | null; reachableInputs: string[] };
+const seen = (v: ReturnType<typeof interviewView>): Seen => ({ status: v.status, refusal: v.refusal, question: v.question ? { input: v.question.input } : null, reachableInputs: v.reachableInputs });
+/** An answer applied: the event appended, the inputs with it, and the view after it. */
+type Applied = { event: Event; inputs: Inputs; after: Seen };
+
+/** The answers applied, by data and bank, then by the answers given so far (the question and value of each, in order,
+ * chained in a hash), so that the walks of rows that have answered alike so far, which every row's background answers
+ * make long, apply each answer once per thread. What applyAnswer gives is a function of the data, the bank, the log and
+ * the answer, and the log is a function of the answers given. A rejected answer is not kept. Cleared when it holds
+ * APPLIED_KEPT answers. */
+const appliedStore = new WeakMap<CanonicalData, WeakMap<InterviewData, Map<string, Applied | Seen>>>();
+const APPLIED_KEPT = 20_000;
+function appliedOf(data: CanonicalData, config: InterviewData): Map<string, Applied | Seen> {
+  let byConfig = appliedStore.get(data);
+  if (!byConfig) appliedStore.set(data, (byConfig = new WeakMap()));
+  let memo = byConfig.get(config);
+  if (!memo) byConfig.set(config, (memo = new Map()));
+  if (memo.size >= APPLIED_KEPT) memo.clear();
+  return memo;
+}
+const chain = (path: string, key: string, value: unknown): string => createHash("sha1").update(`${path}\u0000${key}\u0000${JSON.stringify(value)}`).digest("base64");
+
 /** Walks the built interview as the row's filer: see the head of this file. */
 export function walkRow(ctx: Ctx, row: Row, file: Pick<CoverageFile, "profile" | "sets">): RowWalk {
   const { config, background } = profileCtx(ctx, row.profile ?? file.profile);
+  const memo = appliedOf(ctx.data, config);
   const given = givenOf(row, file.sets ?? {});
   const own = Object.keys(row.answers ?? {});
   const events: Event[] = [{ version: 1, tax_year: config.tax_year }];
@@ -135,7 +163,11 @@ export function walkRow(ctx: Ctx, row: Row, file: Pick<CoverageFile, "profile" |
   /** Each input's opener: the last answer given before the input was first reachable (null: reachable from the start). */
   const opener = new Map<string, Step | null>();
   let inputs = replay(config, events);
-  let view = interviewView(ctx.data, config, inputs);
+  // The view of the log as it stands, whole when this walk computed it (applyAnswer then takes it as `before`).
+  let path = "";
+  let whole: ReturnType<typeof interviewView> | undefined;
+  let view = memo.get(path) as Seen | undefined;
+  if (!view) { whole = interviewView(ctx.data, config, inputs); view = seen(whole); memo.set(path, view); }
   for (;;) {
     const done = (end: End): RowWalk => ({ steps, end, inputs });
     if (steps.length > BOUND) return done({ kind: "stuck", message: "the walk did not end" });
@@ -152,15 +184,24 @@ export function walkRow(ctx: Ctx, row: Row, file: Pick<CoverageFile, "profile" |
     const template = questionTemplate(key);
     const answer = given.get(key) ?? (background.answers.has(template) ? { value: background.answers.get(template), from: "background" } : undefined);
     if (!answer) return done({ kind: "unanswered", input: key, openedBy: opener.get(key) ?? null });
-    let applied: ReturnType<typeof applyAnswer>;
-    try { applied = applyAnswer(ctx.data, config, events, key, answer.value); } catch (e) {
-      return done({ kind: "rejected", input: key, value: answer.value, from: answer.from, message: e instanceof Error ? e.message : String(e) });
+    const next = chain(path, key, answer.value);
+    let step = memo.get(next) as Applied | undefined;
+    if (step) whole = undefined;
+    else {
+      let a: ReturnType<typeof applyAnswer>;
+      try { a = applyAnswer(ctx.data, config, events, key, answer.value, undefined, whole); } catch (e) {
+        return done({ kind: "rejected", input: key, value: answer.value, from: answer.from, message: e instanceof Error ? e.message : String(e) });
+      }
+      step = { event: a.event, inputs: a.inputs, after: seen(a.after) };
+      whole = a.after;
+      memo.set(next, step);
     }
-    events.push(applied.event);
+    events.push(step.event);
     steps.push({ n: steps.length + 1, input: key, value: answer.value, from: answer.from });
     asked.add(key);
-    inputs = applied.inputs;
-    view = applied.after;
+    inputs = step.inputs;
+    view = step.after;
+    path = next;
   }
 }
 
@@ -279,8 +320,9 @@ export function idProblems(ctx: Ctx, file: CoverageFile): Map<string, string[]> 
 export interface RowResult { file: string; part: string; row: Row; profile: Profile; walk: RowWalk | null; problems: string[] }
 export interface Run { results: RowResult[]; problems: string[] }
 
-/** Checks row files already parsed and valid against the schema (`name` is how a file is named in a failure). */
-export function checkFiles(ctx: Ctx, files: { name: string; file: CoverageFile }[]): Run {
+/** Checks row files already parsed and valid against the schema (`name` is how a file is named in a failure). `walkOf`
+ * gives a row's walk (walkRow by default; walksOn computes them on worker threads beforehand). */
+export function checkFiles(ctx: Ctx, files: { name: string; file: CoverageFile }[], walkOf: (row: Row, file: CoverageFile) => RowWalk = (row, file) => walkRow(ctx, row, file)): Run {
   const results: RowResult[] = [];
   const problems: string[] = [];
   const seen = new Map<string, string>();
@@ -296,7 +338,7 @@ export function checkFiles(ctx: Ctx, files: { name: string; file: CoverageFile }
       const profile = row.profile ?? file.profile;
       const idp = bad.get(row.id);
       if (idp) { results.push({ file: name, part: file.part, row, profile, walk: null, problems: idp.map((p) => `names an id that does not exist: ${p}`) }); continue; }
-      const w = walkRow(ctx, row, file);
+      const w = walkOf(row, file);
       for (const u of row.uses ?? []) setUsed.add(u);
       for (const s of w.steps) if (s.from.startsWith("set ")) setAsked.get(s.from.slice(4))?.add(s.input);
       results.push({ file: name, part: file.part, row, profile, walk: w, problems: judge(row, w) });
@@ -307,6 +349,27 @@ export function checkFiles(ctx: Ctx, files: { name: string; file: CoverageFile }
     }
   }
   return { results, problems };
+}
+
+/** One row's walk, as a worker thread is sent it: the row and what of its file the walk reads. */
+export interface WalkTask { row: Row; file: Pick<CoverageFile, "profile" | "sets"> }
+
+/** The walks of the rows checkFiles walks (those that name no id that does not exist), done on `workers` worker
+ * threads (interview-coverage-worker.ts, each with its own context, loaded as loadCtx loads it), as checkFiles'
+ * `walkOf`. A walk depends only on its row, its file's profile and sets, and the built data, so the run is the same
+ * for every worker count; one walks the rows in checkFiles itself. */
+export async function walksOn(ctx: Ctx, files: { name: string; file: CoverageFile }[], workers: number): Promise<(row: Row, file: CoverageFile) => RowWalk> {
+  const serial = (row: Row, file: CoverageFile) => walkRow(ctx, row, file);
+  const rows = files.flatMap(({ file }) => { const bad = idProblems(ctx, file); return file.rows.filter((row) => !bad.has(row.id)).map((row) => ({ row, file })); });
+  if (workers <= 1 || rows.length < 2) return serial;
+  const pool = new TaskWorkers<WalkTask, RowWalk>(new URL("./interview-coverage-worker.js", import.meta.url), Math.min(workers, rows.length), { year: YEAR });
+  let walks: RowWalk[];
+  try {
+    if ((await pool.ready).some((y) => y !== YEAR)) throw new Error("interview-coverage: a worker loaded another tax year");
+    walks = await pool.map(rows, ({ row, file }) => ({ row, file: { profile: file.profile, ...(file.sets ? { sets: file.sets } : {}) } }));
+  } finally { await pool.close(); }
+  const byRow = new Map(rows.map(({ row }, i) => [row, walks[i]!]));
+  return (row) => { const w = byRow.get(row); if (!w) throw new Error(`interview-coverage: row ${row.id} was not walked`); return w; };
 }
 
 const schemaCache = new Map<string, (v: unknown) => string | null>();
@@ -444,11 +507,13 @@ export async function interviewCoverage(args: string[] = []): Promise<number> {
   if (!paths.length) problems.push(`no row file in ${relative(ROOT, ROWS_DIR)}`);
   const t0 = performance.now();
   const ctx = loadCtx();
-  const run = checkFiles(ctx, readFiles(paths, schemaPath, problems));
+  const files = readFiles(paths, schemaPath, problems);
+  const workers = walkWorkers("INTERVIEW_WORKERS");
+  const run = checkFiles(ctx, files, await walksOn(ctx, files, workers));
   problems.push(...run.problems);
   for (const r of run.results) for (const p of r.problems) problems.push(`${r.file}: row ${r.row.id}: ${p}`);
   const asked = run.results.reduce((a, r) => a + (r.walk?.steps.length ?? 0), 0);
-  console.log(`  ${run.results.length} rows of ${paths.length} file(s) walked (${asked} answers, ${run.results.reduce((a, r) => a + (r.walk?.steps.filter((s) => s.from === "background").length ?? 0), 0)} of them the background's), ${((performance.now() - t0) / 1000).toFixed(1)} s`);
+  console.log(`  ${run.results.length} rows of ${paths.length} file(s) walked (${asked} answers, ${run.results.reduce((a, r) => a + (r.walk?.steps.filter((s) => s.from === "background").length ?? 0), 0)} of them the background's), ${((performance.now() - t0) / 1000).toFixed(1)} s on ${workers} worker(s)`);
   if (own) {
     const text = renderReport(ctx, run);
     if (args.includes("--write")) { writeFileSync(REPORT, text); console.log(`  wrote ${relative(ROOT, REPORT)}`); }
@@ -461,7 +526,7 @@ export async function interviewCoverage(args: string[] = []): Promise<number> {
 
 /** Each kind of failure is found on a planted row, and the clean rows pass. The planted rows are written against the
  * background return's own questions, so they hold whatever the question bank asks beyond them. */
-function selfTest(): number {
+async function selfTest(): Promise<number> {
   // The schema: a well-formed file passes; each malformed one is refused.
   const ok = { tax_year: YEAR, part: "Self-test", profile: "full", rows: [{ id: "a", design: "none", situation: "A filer.", answers: { $person: ["taxpayer"] }, expect: { asks: "f1040.status" } }] };
   assert.equal(schemaProblem(ok), null);
@@ -505,6 +570,17 @@ function selfTest(): number {
   assert.equal(refusedWalk.steps.at(-1)!.input, Q, "the walk ends at the first refusal");
   assert.ok(refusedWalk.steps.slice(0, -1).every((s) => s.from === "background") && refusedWalk.steps.at(-1)!.from === "row", "the answers before the row's are the background's");
   assert.equal(cleanRun.results[2]!.walk!.steps.length, bg.length, "a row that changes nothing walks the background return's questions");
+  // Workers: the clean rows, and the rows of the smallest row file that has rows, walked on two workers are judged as
+  // when walked here, and give the same report.
+  const own = existsSync(ROWS_DIR) ? readdirSync(ROWS_DIR).filter((f) => f.endsWith(".yaml")).sort().map((f) => join(ROWS_DIR, f)) : [];
+  const read: string[] = [];
+  const smallest = readFiles(own, SCHEMA, read).filter((f) => f.file.rows.length).sort((a, b) => a.file.rows.length - b.file.rows.length)[0];
+  assert.deepEqual(read, [], "the row files are readable");
+  const sample = [...file(clean), ...(smallest ? [smallest] : [])];
+  const here = checkFiles(ctx, sample), there = checkFiles(ctx, sample, await walksOn(ctx, sample, 2));
+  assert.deepEqual(there, here, "two workers walk the rows as one thread does");
+  assert.equal(renderReport(ctx, there), renderReport(ctx, here), "and give the same report");
+  const sharded = here.results.length;
   // A set's answers count as declared answers of the rows that use it.
   assert.equal(problemsOf([row("uses-set", {}, { refused: GATE }, { uses: ["yes"] })], { yes: { says: "The planted yes.", answers: { [Q]: true } } }), "");
 
@@ -583,6 +659,6 @@ function selfTest(): number {
   assert.ok(report.includes("| `refuses` | none | A planted filer. | Refused at `" + GATE + "`") || report.includes("| `refuses` | none | A planted filer. | Stopped as conflicting answers at `" + GATE + "`"), "the report gives a refused row's end");
   assert.ok(report.includes("| `stale` † | none | A planted filer. | **FAILS:**") && report.includes("to be replaced: the planted part lands"), "the report marks a failing row and a row to be replaced");
   assert.ok(report.includes("## The background return") && report.includes(`| 1 | \`${first.input}\` |`), "the report lists the background return");
-  console.log(`interview-coverage self-test: passed (schema, 7 malformed files; on the built interview, planted on ${Q} and ${roster!.input}: clean rows of each end; a wrong end, 6 cases; an unanswered question, opened by a row's answer and not; a stale answer, 3 cases; an id that does not exist, 6 cases; an end the background brings about, 2 cases; a rejected answer; recorded answers, 5 cases; a repeated id, an unused set, a stale set answer, another year; the report)`);
+  console.log(`interview-coverage self-test: passed (schema, 7 malformed files; on the built interview, planted on ${Q} and ${roster!.input}: clean rows of each end; a wrong end, 6 cases; an unanswered question, opened by a row's answer and not; a stale answer, 3 cases; an id that does not exist, 6 cases; an end the background brings about, 2 cases; a rejected answer; recorded answers, 5 cases; a repeated id, an unused set, a stale set answer, another year; the report; ${sharded} rows the same on two workers)`);
   return 0;
 }

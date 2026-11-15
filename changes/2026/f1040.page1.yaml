@@ -1,0 +1,110 @@
+changes:
+  tax_year: 2026
+  form: f1040
+  entries:
+  - change: C-PRI-06
+    evidence:
+    - doc: f1040
+      page: 2
+      quote: At the time you file your return, are you, and your spouse if filing jointly, a U.S. citizen, U.S. national,
+        or an alien lawfully authorized to work in the U.S.?
+    verified: draft
+    note: The draft prints the question and a Yes or No for you and for your spouse; it does not say what the answer feeds,
+      and the 2026 instructions it points to are not posted. The answer is asked once per person and printed; no line computes
+      from it until the instructions say what it changes. It is not Schedule 3-A line 8's qualified-alien question and is
+      not merged with it.
+    operations:
+    - add_line:
+        after: f1040.status
+        line:
+          id: f1040.work_auth_you_count
+          printed: (helper)
+          type: Count
+          label: Your entry, if you answered yes
+          expr:
+            op: sum_over
+            collection: person
+            field: person.one
+            where:
+              op: test
+              all:
+              - op: test
+                eq:
+                - person.role
+                - const: taxpayer
+              - op: test
+                eq:
+                - person.work_auth
+                - const: true
+          cite: &id001
+            doc: f1040
+            locator: 'Form 1040 (2026), page 1, Other Information (draft), "At the time you file your return, are you, and
+              your spouse if filing jointly, a U.S. citizen, U.S. national, or an alien lawfully authorized to work in the
+              U.S.? (see instructions) You: Yes No Spouse: Yes No"'
+    - add_line:
+        after: f1040.work_auth_you_count
+        line:
+          id: f1040.work_auth_you
+          printed: Work authorization (You)
+          type: Bool
+          label: At the time you file your return, are you, and your spouse if filing jointly, a U.S. citizen, U.S. national,
+            or an alien lawfully authorized to work in the U.S.? You
+          expr:
+            op: test
+            gt:
+            - f1040.work_auth_you_count
+            - const: 0
+              type: Count
+          cite: *id001
+    - add_line:
+        after: f1040.work_auth_you
+        line:
+          id: f1040.work_auth_spouse_count
+          printed: (helper)
+          type: Count
+          label: Your spouse's entry, if your spouse answered yes
+          expr:
+            op: sum_over
+            collection: person
+            field: person.one
+            where:
+              op: test
+              all:
+              - op: test
+                eq:
+                - person.role
+                - const: spouse
+              - op: test
+                eq:
+                - person.work_auth
+                - const: true
+          cite: *id001
+    - add_line:
+        after: f1040.work_auth_spouse_count
+        line:
+          id: f1040.work_auth_joint
+          printed: (helper)
+          type: Bool
+          label: Filing jointly (the spouse's answer is printed)
+          expr:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfj
+          cite: *id001
+    - add_line:
+        after: f1040.work_auth_joint
+        line:
+          id: f1040.work_auth_spouse
+          printed: Work authorization (Spouse)
+          type: Bool
+          label: At the time you file your return, are you, and your spouse if filing jointly, a U.S. citizen, U.S. national,
+            or an alien lawfully authorized to work in the U.S.? Spouse
+          expr:
+            op: test
+            gt:
+            - f1040.work_auth_spouse_count
+            - const: 0
+              type: Count
+          cite: *id001
+          shown_when: f1040.work_auth_joint

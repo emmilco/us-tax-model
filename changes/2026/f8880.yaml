@@ -1,0 +1,172 @@
+changes:
+  tax_year: 2026
+  form: f8880
+  entries:
+  - change: C-CRED-16
+    evidence:
+    - doc: f8880
+      page: 2
+      quote: designated beneficiary for 2026. Do not include rollover contributions
+    - doc: f8880
+      page: 2
+      quote: 4 Certain distributions received after 2023 and before the due date (including extensions) of your 2026 tax return
+    - doc: f8880
+      page: 3
+      quote: (a) was born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was
+        a student.
+    - doc: f8880
+      page: 3
+      quote: Example. You received a distribution of $5,000 from a qualified retirement plan in 2026.
+    verified: draft
+    note: Every year of the form moves by one. The amounts of the AGI limit and the line 9 bands, and the citations that quote
+      them (f8880.past9, f8880.can_take), are C-CRED-15's (the parameter lane). The ambiguity amb.2025.savers_2026_joint stays
+      linked; its register text moves by a year with the register operations (plan D4, lane R3).
+    operations:
+    - set:
+        line: f8880.line1a
+        field: label
+        from: Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2025.
+          Do not include rollover contributions (you)
+        to: Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2026.
+          Do not include rollover contributions (you)
+    - set:
+        line: f8880.line1b
+        field: label
+        from: Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2025.
+          Do not include rollover contributions (your spouse)
+        to: Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2026.
+          Do not include rollover contributions (your spouse)
+    - set:
+        line: f8880.line2a
+        field: label
+        from: Elective deferrals to a 401(k) or other qualified employer plan, voluntary employee contributions, and 501(c)(18)(D)
+          plan contributions for 2025 (you)
+        to: Elective deferrals to a 401(k) or other qualified employer plan, voluntary employee contributions, and 501(c)(18)(D)
+          plan contributions for 2026 (you)
+    - set:
+        line: f8880.line2b
+        field: label
+        from: Elective deferrals to a 401(k) or other qualified employer plan, voluntary employee contributions, and 501(c)(18)(D)
+          plan contributions for 2025 (your spouse)
+        to: Elective deferrals to a 401(k) or other qualified employer plan, voluntary employee contributions, and 501(c)(18)(D)
+          plan contributions for 2026 (your spouse)
+    - set:
+        line: f8880.dist_this_year
+        field: label
+        from: Distributions received in 2025 that line 4 counts (the Forms 1099-R of the return, less rollovers and the excluded
+          kinds)
+        to: Distributions received in 2026 that line 4 counts (the Forms 1099-R of the return, less rollovers and the excluded
+          kinds)
+    - set:
+        line: f8880.prior_joint_sum
+        field: label
+        from: Both spouses' distributions in 2023, 2024 and 2026 (before the due date) from years for which you filed a joint
+          return
+        to: Both spouses' distributions in 2024, 2025 and 2027 (before the due date) from years for which you filed a joint
+          return
+    - set:
+        line: f8880.prior_own_a
+        field: label
+        from: Your own distributions in 2023, 2024 and 2026 (before the due date) from years not filed jointly with your spouse;
+          on a return that is not joint, all of your distributions in those years
+        to: Your own distributions in 2024, 2025 and 2027 (before the due date) from years not filed jointly with your spouse;
+          on a return that is not joint, all of your distributions in those years
+    - set:
+        line: f8880.prior_own_b
+        field: label
+        from: Your spouse's own distributions in 2023, 2024 and 2026 (before the due date) from years not filed jointly with
+          you (column (b), on a joint return only)
+        to: Your spouse's own distributions in 2024, 2025 and 2027 (before the due date) from years not filed jointly with
+          you (column (b), on a joint return only)
+    - set:
+        line: f8880.line4a
+        field: label
+        from: Certain distributions received after 2022 and before the due date (including extensions) of your 2025 tax return
+          (see instructions). If married filing jointly, include both spouses' amounts in both columns. See instructions for
+          an exception (you)
+        to: Certain distributions received after 2023 and before the due date (including extensions) of your 2026 tax return
+          (see instructions). If married filing jointly, include both spouses' amounts in both columns. See instructions for
+          an exception (you)
+    - set:
+        line: f8880.line4b
+        field: label
+        from: Certain distributions received after 2022 and before the due date (including extensions) of your 2025 tax return
+          (see instructions). If married filing jointly, include both spouses' amounts in both columns. See instructions for
+          an exception (your spouse)
+        to: Certain distributions received after 2023 and before the due date (including extensions) of your 2026 tax return
+          (see instructions). If married filing jointly, include both spouses' amounts in both columns. See instructions for
+          an exception (your spouse)
+    - set:
+        line: f8880.inelig_a
+        field: label
+        from: Your entry, if you were born after January 1, 2008, are claimed as a dependent on someone else's 2025 return,
+          or were a student
+        to: Your entry, if you were born after January 1, 2009, are claimed as a dependent on someone else's 2026 return,
+          or were a student
+    - set:
+        line: f8880.inelig_b
+        field: label
+        from: Your spouse's entry, if your spouse was born after January 1, 2008, is claimed as a dependent on someone else's
+          2025 return, or was a student
+        to: Your spouse's entry, if your spouse was born after January 1, 2009, is claimed as a dependent on someone else's
+          2026 return, or was a student
+    - set:
+        line: f8880.dist_this_year
+        field: cite.locator
+        from: p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
+          2022 and before the due date of your 2025 return (including extensions)"; "If you’re filing a joint return, include
+          both spouses’ amounts in both columns"
+        to: p. 3, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
+          2023 and before the due date of your 2026 return (including extensions)"; "If you’re filing a joint return, include
+          both spouses’ amounts in both columns"
+    - set:
+        line: f8880.line4b_joint
+        field: cite.locator
+        from: p. 2, Line 4, "Example. You received a distribution of $5,000 from a qualified retirement plan in 2025. Your
+          spouse received a distribution of $2,000 from a Roth IRA in 2023. You and your spouse file a joint return in 2025,
+          but didn’t file a joint return in 2023. You would include $5,000 in column (a) and $7,000 in column (b)"
+        to: p. 3, Line 4, "Example. You received a distribution of $5,000 from a qualified retirement plan in 2026. Your spouse
+          received a distribution of $2,000 from a Roth IRA in 2024. You and your spouse file a joint return in 2026, but
+          didn’t file a joint return in 2024. You would include $5,000 in column (a) and $7,000 in column (b)"
+    - set:
+        line: f8880.inelig_a
+        field: cite.locator
+        from: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
+          was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"
+        to: p. 3, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+          born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was a student"
+    - set:
+        line: f8880.inelig_b
+        field: cite.locator
+        from: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
+          was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"
+        to: p. 3, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+          born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was a student"
+    - set:
+        line: f8880.elig_a
+        field: cite.locator
+        from: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
+          was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"
+        to: p. 3, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+          born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was a student"
+    - set:
+        line: f8880.elig_b
+        field: cite.locator
+        from: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
+          was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"
+        to: p. 3, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+          born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was a student"
+    - set:
+        line: f8880.line3a_counted
+        field: cite.locator
+        from: p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; "was
+          born after January 1, 2008"
+        to: p. 3, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; "was
+          born after January 1, 2009"
+    - set:
+        line: f8880.line3b_counted
+        field: cite.locator
+        from: p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; "was
+          born after January 1, 2008"
+        to: p. 3, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; "was
+          born after January 1, 2009"

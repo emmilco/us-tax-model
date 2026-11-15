@@ -1,0 +1,333 @@
+changes:
+  tax_year: 2026
+  form: scope
+  entries:
+  - change: C-SCHED-39
+    evidence:
+    - doc: f1040s3
+      page: 2
+      quote: 13e Total section 1062 applicable net tax liability. Enter amount from Form 1062,
+    verified: draft
+    note: The scope summary's refusal of the Form 1062 election names Schedule 3 line 13e, as s3.line14's does.
+    operations:
+    - set:
+        line: scope.ready_credits
+        field: refuses
+        from:
+        - when: s3.mfs
+          form: Married filing separately
+          remedy: The rules for a married filing separately return (among them a spouse who itemizes, the Social Security
+            base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married
+            filing jointly is supported.
+          cite:
+            doc: i1040gi
+            locator: p. 14, Married Filing Separately
+        - when: s3.adoption_if_any
+          form: Form 8839 (adoption credit)
+          remedy: An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form
+            8839, with its refundable part on Form 1040 line 30), which this tool does not prepare.
+          cite:
+            doc: i8839
+            locator: p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements
+              are true"
+        - when: s3.adoption_us_if_earlier
+          form: Form 8839 (adoption credit)
+          remedy: Costs paid in 2024 toward adopting a U.S. child, where the adoption was not final at the end of 2024, are
+            credited on the 2025 return (Form 8839), which this tool does not prepare.
+          cite:
+            doc: i8839
+            locator: p. 1, Purpose of Form, "2024 and the adoption wasn’t final at the end of 2024"; p. 3, Domestic Adoption,
+              "the year after the year of the payment"
+        - when: s3.credit_bond
+          form: Form 8912 (credit to holders of tax credit bonds)
+          remedy: A tax credit from a bond, or one a fund passes on (Form 1097-BTC), is claimed on Form 8912, which this tool
+            does not prepare.
+          cite:
+            doc: i8912
+            locator: p. 1, Who Can Claim the Credits, "can claim the credit by filing Form 8912 for each tax year in which
+              it holds the bond on a credit allowance date"; p. 2, Line 1, "This amount is the total bond credits reported
+              to you on Form(s) 1097-BTC"
+        - when: s3.elderly_credit_if_asked
+          form: Schedule R (credit for the elderly or the disabled)
+          remedy: The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit,
+            answer No to that question.
+          cite:
+            doc: i1040sr
+            locator: p. 1, Qualified Individual, "You are a qualified individual for this credit if you are a U.S. citizen
+              or resident alien"
+        - when: s3.ev_dealer_if_ev
+          form: Form 8936 (clean vehicle credits)
+          remedy: A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed with
+            this return; this tool does not prepare them.
+          cite:
+            doc: i8936
+            locator: p. 1, Purpose of Form, "You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or
+              used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring
+              the credit to the dealer"
+        - when: s3.ev_credit_if_bought
+          form: Form 8936 (clean vehicle credits)
+          remedy: This tool does not prepare the clean vehicle credits (Form 8936). To go on without the credit, answer No
+            to that question.
+          cite:
+            doc: i8936
+            locator: p. 1, Purpose of Form, "to figure the following credits for clean vehicles you placed in service during
+              your tax year"
+        - when: s3.ev_equipment_if_ev
+          form: Form 8911 (alternative fuel vehicle refueling property credit)
+          remedy: This tool does not prepare the credit for vehicle charging or fueling equipment (Form 8911). To go on without
+            the credit, answer No to that question.
+          cite:
+            doc: i8911
+            locator: p. 1, Purpose of Form, "to figure your credit for alternative fuel vehicle refueling property you placed
+              in service during your tax year"
+        - when: s3.farmland_deferral_if_sold
+          form: Form 1062 (Schedule 3 line 13z)
+          remedy: The election to pay the tax on a sale of farmland in installments (Form 1062) is reported on Schedule 3
+            line 13z, which this tool does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation
+              account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If
+              you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified
+              farmland property"
+        - when: ftc.carryover_if_asked
+          form: Form 1116
+          remedy: A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.
+          cite:
+            doc: i1116
+            locator: p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are
+              eligible to be carried forward to or back to 2025"
+        - when: s3.section960c_if_foreign
+          form: Schedule 3 line 13z (section 960(c) credit)
+          remedy: The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation
+              account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If
+              you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified
+              farmland property"
+        - when: s3.section965_if_foreign
+          form: Schedule 3 line 13d (net 965 tax liability)
+          remedy: A net 965 tax liability paid in installments is reported on Schedule 3 line 13d, which this tool does not
+            prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13d, "If you elected to pay your net 965 tax liability in installments, report the deferred
+              amount on line 13d"
+        - when: s3.virgin_islands_if_foreign
+          form: Form 8689 (Schedule 3 line 13z)
+          remedy: Tax allocable to the U.S. Virgin Islands (Form 8689) is reported on Schedule 3 line 13z, which this tool
+            does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation
+              account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If
+              you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified
+              farmland property"
+        - when: s3.kerosene_credit_if_kerosene
+          form: Form 4136 (credit for federal tax paid on fuels)
+          remedy: This tool does not prepare the credit for federal tax paid on fuels (Form 4136). To go on without the credit,
+            answer No to that question.
+          cite:
+            doc: i4136
+            locator: p. 2, Part I—Information About Your Business, "If you are claiming a credit for the tax on undyed kerosene
+              you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting,
+              or cooking"
+        - when: s3.prior_amt_if_forms
+          form: Form 8801 (credit for prior year minimum tax)
+          remedy: Alternative minimum tax on your 2024 return can give a credit for 2025 (Form 8801), which this tool does
+            not prepare.
+          cite:
+            doc: i8801
+            locator: p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"
+        - when: s3.prior_forms_if_forms
+          form: Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912)
+          remedy: A credit carried over from an earlier year is outside this tool.
+          cite:
+            doc: i3800
+            locator: p. 3, Carryback and Carryforward of Unused Credit, "unused general business credits may be carried back
+              1 year and carried forward 20 years"; f8396 p. 2, Part II—Mortgage Interest Credit Carryforward to 2026, "you
+              may have an unused credit to carry forward to the next 3 tax years"; i8801 p. 1, Who Should File, "A credit
+              carryforward to 2025 (on 2024 Form 8801, line 26)"; f8834 p. 2, Line 1, "Enter the qualified electric vehicle
+              passive activity credits allowed for your current tax year from Form 8582-CR"; i8839 p. 1, Purpose of Form,
+              "You have a carryforward of an adoption credit from 2024"; f8859 p. 1, Purpose of Form, "to claim a carryforward
+              of the District of Columbia first-time homebuyer credit from 2024"; i8912 p. 3, Line 12, "you may carry the
+              unused portion of the credit to the next tax year"
+        - when: s3.repaid_income
+          form: Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16)
+          remedy: A repayment of more than $3,000 of income reported in an earlier year gives a choice between a deduction
+            and a credit (Schedule 3 line 13b), which this tool does not figure.
+          cite:
+            doc: p525
+            locator: p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an
+              other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right"
+              and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you
+              are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared
+              you had a right to the income"
+        - when: s3.mcc_if_interest
+          form: Form 8396 (mortgage interest credit)
+          remedy: A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home
+            mortgage interest deducted on Schedule A; this tool does not prepare it.
+          cite:
+            doc: f8396
+            locator: p. 2, Who Can Claim the Credit, "You can claim the credit only if you were issued a qualified Mortgage
+              Credit Certificate (MCC) by a state or local governmental unit or agency"; p. 2, Line 3, "you must reduce the
+              amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3"
+        to:
+        - when: s3.mfs
+          form: Married filing separately
+          remedy: The rules for a married filing separately return (among them a spouse who itemizes, the Social Security
+            base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married
+            filing jointly is supported.
+          cite:
+            doc: i1040gi
+            locator: p. 14, Married Filing Separately
+        - when: s3.adoption_if_any
+          form: Form 8839 (adoption credit)
+          remedy: An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form
+            8839, with its refundable part on Form 1040 line 30), which this tool does not prepare.
+          cite:
+            doc: i8839
+            locator: p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements
+              are true"
+        - when: s3.adoption_us_if_earlier
+          form: Form 8839 (adoption credit)
+          remedy: Costs paid in 2024 toward adopting a U.S. child, where the adoption was not final at the end of 2024, are
+            credited on the 2025 return (Form 8839), which this tool does not prepare.
+          cite:
+            doc: i8839
+            locator: p. 1, Purpose of Form, "2024 and the adoption wasn’t final at the end of 2024"; p. 3, Domestic Adoption,
+              "the year after the year of the payment"
+        - when: s3.credit_bond
+          form: Form 8912 (credit to holders of tax credit bonds)
+          remedy: A tax credit from a bond, or one a fund passes on (Form 1097-BTC), is claimed on Form 8912, which this tool
+            does not prepare.
+          cite:
+            doc: i8912
+            locator: p. 1, Who Can Claim the Credits, "can claim the credit by filing Form 8912 for each tax year in which
+              it holds the bond on a credit allowance date"; p. 2, Line 1, "This amount is the total bond credits reported
+              to you on Form(s) 1097-BTC"
+        - when: s3.elderly_credit_if_asked
+          form: Schedule R (credit for the elderly or the disabled)
+          remedy: The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit,
+            answer No to that question.
+          cite:
+            doc: i1040sr
+            locator: p. 1, Qualified Individual, "You are a qualified individual for this credit if you are a U.S. citizen
+              or resident alien"
+        - when: s3.ev_dealer_if_ev
+          form: Form 8936 (clean vehicle credits)
+          remedy: A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed with
+            this return; this tool does not prepare them.
+          cite:
+            doc: i8936
+            locator: p. 1, Purpose of Form, "You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or
+              used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring
+              the credit to the dealer"
+        - when: s3.ev_credit_if_bought
+          form: Form 8936 (clean vehicle credits)
+          remedy: This tool does not prepare the clean vehicle credits (Form 8936). To go on without the credit, answer No
+            to that question.
+          cite:
+            doc: i8936
+            locator: p. 1, Purpose of Form, "to figure the following credits for clean vehicles you placed in service during
+              your tax year"
+        - when: s3.ev_equipment_if_ev
+          form: Form 8911 (alternative fuel vehicle refueling property credit)
+          remedy: This tool does not prepare the credit for vehicle charging or fueling equipment (Form 8911). To go on without
+            the credit, answer No to that question.
+          cite:
+            doc: i8911
+            locator: p. 1, Purpose of Form, "to figure your credit for alternative fuel vehicle refueling property you placed
+              in service during your tax year"
+        - when: s3.farmland_deferral_if_sold
+          form: Form 1062 (Schedule 3 line 13e)
+          remedy: The election to pay the tax on a sale of qualified farmland property in installments (Form 1062) is reported
+            on Schedule 3 line 13e, which this tool does not prepare.
+          cite:
+            doc: f1040s3
+            locator: Schedule 3 (2026), line 13e (draft), "Total section 1062 applicable net tax liability. Enter amount from
+              Form 1062, line 14"
+        - when: ftc.carryover_if_asked
+          form: Form 1116
+          remedy: A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.
+          cite:
+            doc: i1116
+            locator: p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are
+              eligible to be carried forward to or back to 2025"
+        - when: s3.section960c_if_foreign
+          form: Schedule 3 line 13z (section 960(c) credit)
+          remedy: The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation
+              account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If
+              you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified
+              farmland property"
+        - when: s3.section965_if_foreign
+          form: Schedule 3 line 13d (net 965 tax liability)
+          remedy: A net 965 tax liability paid in installments is reported on Schedule 3 line 13d, which this tool does not
+            prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13d, "If you elected to pay your net 965 tax liability in installments, report the deferred
+              amount on line 13d"
+        - when: s3.virgin_islands_if_foreign
+          form: Form 8689 (Schedule 3 line 13z)
+          remedy: Tax allocable to the U.S. Virgin Islands (Form 8689) is reported on Schedule 3 line 13z, which this tool
+            does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation
+              account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If
+              you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified
+              farmland property"
+        - when: s3.kerosene_credit_if_kerosene
+          form: Form 4136 (credit for federal tax paid on fuels)
+          remedy: This tool does not prepare the credit for federal tax paid on fuels (Form 4136). To go on without the credit,
+            answer No to that question.
+          cite:
+            doc: i4136
+            locator: p. 2, Part I—Information About Your Business, "If you are claiming a credit for the tax on undyed kerosene
+              you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting,
+              or cooking"
+        - when: s3.prior_amt_if_forms
+          form: Form 8801 (credit for prior year minimum tax)
+          remedy: Alternative minimum tax on your 2024 return can give a credit for 2025 (Form 8801), which this tool does
+            not prepare.
+          cite:
+            doc: i8801
+            locator: p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"
+        - when: s3.prior_forms_if_forms
+          form: Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912)
+          remedy: A credit carried over from an earlier year is outside this tool.
+          cite:
+            doc: i3800
+            locator: p. 3, Carryback and Carryforward of Unused Credit, "unused general business credits may be carried back
+              1 year and carried forward 20 years"; f8396 p. 2, Part II—Mortgage Interest Credit Carryforward to 2026, "you
+              may have an unused credit to carry forward to the next 3 tax years"; i8801 p. 1, Who Should File, "A credit
+              carryforward to 2025 (on 2024 Form 8801, line 26)"; f8834 p. 2, Line 1, "Enter the qualified electric vehicle
+              passive activity credits allowed for your current tax year from Form 8582-CR"; i8839 p. 1, Purpose of Form,
+              "You have a carryforward of an adoption credit from 2024"; f8859 p. 1, Purpose of Form, "to claim a carryforward
+              of the District of Columbia first-time homebuyer credit from 2024"; i8912 p. 3, Line 12, "you may carry the
+              unused portion of the credit to the next tax year"
+        - when: s3.repaid_income
+          form: Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16)
+          remedy: A repayment of more than $3,000 of income reported in an earlier year gives a choice between a deduction
+            and a credit (Schedule 3 line 13b), which this tool does not figure.
+          cite:
+            doc: p525
+            locator: p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an
+              other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right"
+              and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you
+              are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared
+              you had a right to the income"
+        - when: s3.mcc_if_interest
+          form: Form 8396 (mortgage interest credit)
+          remedy: A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home
+            mortgage interest deducted on Schedule A; this tool does not prepare it.
+          cite:
+            doc: f8396
+            locator: p. 2, Who Can Claim the Credit, "You can claim the credit only if you were issued a qualified Mortgage
+              Credit Certificate (MCC) by a state or local governmental unit or agency"; p. 2, Line 3, "you must reduce the
+              amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3"

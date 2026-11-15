@@ -1,0 +1,402 @@
+changes:
+  tax_year: 2026
+  form: person
+  entries:
+  - change: C-CRED-16
+    evidence:
+    - doc: f8880
+      page: 3
+      quote: (a) was born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was
+        a student.
+    - doc: f8880
+      page: 3
+      quote: You were a student if during any part of 5 calendar months of 2026
+    - doc: f8880
+      page: 3
+      quote: received after 2023 and before the due date of your 2026 return
+    verified: draft
+    note: Every year moves by one; the birth-year test itself reads age.cut_18, which the parameter lane moves.
+    operations:
+    - set:
+        line: person.sav_born
+        field: label
+        from: Born before January 2, 2008
+        to: Born before January 2, 2009
+    - set:
+        line: person.sav_born
+        field: cite.locator
+        from: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
+          was born after January 1, 2008"
+        to: p. 3, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+          born after January 1, 2009"
+    - set:
+        line: person.sav_ineligible
+        field: label
+        from: Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student (the dependent
+          question is asked only if someone can claim you or your spouse as a dependent)
+        to: Born after January 1, 2009, claimed as a dependent on someone else's 2026 return, or a student (the dependent
+          question is asked only if someone can claim you or your spouse as a dependent)
+    - set:
+        line: person.sav_ineligible
+        field: cite.locator
+        from: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
+          was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"
+        to: p. 3, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+          born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was a student"
+    - set:
+        line: person.sav_dist
+        field: label
+        from: Distributions received in 2025 that Form 8880 line 4 counts, on this person's Forms 1099-R
+        to: Distributions received in 2026 that Form 8880 line 4 counts, on this person's Forms 1099-R
+    - set:
+        line: person.sav_dist
+        field: cite.locator
+        from: p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
+          2022 and before the due date of your 2025 return (including extensions)"
+        to: p. 3, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
+          2023 and before the due date of your 2026 return (including extensions)"
+    - set:
+        line: person.sav_student
+        field: label
+        from: Were you a student in 2025 (during any part of 5 calendar months, enrolled as a full-time student at a school,
+          or taking a full-time, on-farm training course given by a school or a state, county, or local government agency)?
+        to: Were you a student in 2026 (during any part of 5 calendar months, enrolled as a full-time student at a school,
+          or taking a full-time, on-farm training course given by a school or a state, county, or local government agency)?
+    - set:
+        line: person.sav_student
+        field: expr.source
+        from: 'Were you a student in 2025: during any part of 5 calendar months of 2025, were you enrolled as a full-time
+          student at a school, or did you take a full-time, on-farm training course given by a school or a state, county,
+          or local government agency? (A school includes technical, trade, and mechanical schools. It does not include on-the-job
+          training courses, correspondence schools, or schools offering courses only through the Internet.)'
+        to: 'Were you a student in 2026: during any part of 5 calendar months of 2026, were you enrolled as a full-time student
+          at a school, or did you take a full-time, on-farm training course given by a school or a state, county, or local
+          government agency? (A school includes technical, trade, and mechanical schools. It does not include on-the-job training
+          courses, correspondence schools, or schools offering courses only through the Internet.)'
+    - set:
+        line: person.sav_student
+        field: cite.locator
+        from: 'p. 2, Who Can Take This Credit, "You were a student if during any part of 5 calendar months of 2025 you: •
+          Were enrolled as a full-time student at a school; or • Took a full-time, on-farm training course given by a school
+          or a state, county, or local government agency"'
+        to: 'p. 3, Who Can Take This Credit, "You were a student if during any part of 5 calendar months of 2026 you: • Were
+          enrolled as a full-time student at a school; or • Took a full-time, on-farm training course given by a school or
+          a state, county, or local government agency"'
+    - set_question:
+        input: person.sav_student
+        field: prompt
+        from: For this person (you, or your spouse on a joint return) — Were you a full-time student during any part of five
+          calendar months of 2025?
+        to: For this person (you, or your spouse on a joint return) — Were you a full-time student during any part of five
+          calendar months of 2026?
+  - change: C-PEOP-21
+    evidence:
+    - doc: f8880
+      page: 3
+      quote: Reminders Permanent credit for Achieving a Better Life Experience (ABLE) account contributions. P.L. 119-21 made
+        permanent the credit for contributions by a designated beneficiary to their ABLE account.
+    - doc: f8880
+      page: 3
+      quote: Exception. Don’t include your spouse’s distributions with yours when entering an amount on line 4 if you and
+        your spouse didn’t file a joint return for the year the distribution was received.
+    verified: draft
+    note: 'The ABLE refusals cite the Reminders, where the 2026 form moves the paragraph. person.sav_claimed''s i1040gi segment
+      and person.sav_line1''s Pub. 590-A refusal citation are left as they are: the 2026 i1040gi and Pub. 590-A are not archived
+      (C-PEOP-23, C-PEOP-24). The ambiguity amb.2025.savers_2026_joint stays linked; its register text moves by a year with
+      the register operations (plan D4, lane R3).'
+    operations:
+    - set:
+        line: person.sav_claimed
+        field: label
+        from: Are you claimed as a dependent on someone else's 2025 tax return?
+        to: Are you claimed as a dependent on someone else's 2026 tax return?
+    - set:
+        line: person.sav_claimed
+        field: expr.source
+        from: Are you claimed as a dependent on someone else's 2025 tax return?
+        to: Are you claimed as a dependent on someone else's 2026 tax return?
+    - set:
+        line: person.sav_claimed
+        field: cite.locator
+        from: p. 2, Who Can Take This Credit, "(b) is claimed as a dependent on someone else’s 2025 tax return"; i1040gi p.
+          98, Line 21, "You, or your spouse if filing jointly, aren’t claimed as a dependent on someone else's (such as your
+          parent’s) 2025 tax return"
+        to: p. 3, Who Can Take This Credit, "(b) is claimed as a dependent on someone else’s 2026 tax return"; i1040gi p.
+          98, Line 21, "You, or your spouse if filing jointly, aren’t claimed as a dependent on someone else's (such as your
+          parent’s) 2025 tax return"
+    - set_question:
+        input: person.sav_claimed
+        field: help
+        from: Answer Yes only if someone actually claims you on their 2025 return, not merely could.
+        to: Answer Yes only if someone actually claims you on their 2026 return, not merely could.
+    - set:
+        line: person.sav_able
+        field: label
+        from: As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive a distribution
+          from an ABLE account after 2022 (through the due date of your 2025 return)?
+        to: As the designated beneficiary of an ABLE account, did you contribute to it for 2026, or did you receive a distribution
+          from an ABLE account after 2023 (through the due date of your 2026 return)?
+    - set:
+        line: person.sav_able
+        field: expr.source
+        from: As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any
+          distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?
+        to: As the designated beneficiary of an ABLE account, did you contribute to it for 2026, or did you receive any distribution
+          from an ABLE account after 2023 and before the due date of your 2026 return (including extensions)?
+    - set_question:
+        input: person.sav_able
+        field: prompt
+        from: For this person (you, or your spouse on a joint return) — Is an ABLE account held for you, and did you put money
+          into it for 2025, or get money out of it in 2023 or later?
+        to: For this person (you, or your spouse on a joint return) — Is an ABLE account held for you, and did you put money
+          into it for 2026, or get money out of it in 2024 or later?
+    - set:
+        line: person.sav_prior_joint
+        field: label
+        from: Your distributions in 2023 and 2024 from years for which you and your spouse filed a joint return, and in 2026
+          before the due date of your 2025 return (a joint return only)
+        to: Your distributions in 2024 and 2025 from years for which you and your spouse filed a joint return, and in 2027
+          before the due date of your 2026 return (a joint return only)
+    - set:
+        line: person.sav_prior_joint
+        field: expr.source
+        from: 'On a joint return: the distributions you received in 2023 and 2024 in a year for which you and your spouse
+          filed a joint return, plus those you receive in 2026 before the due date of your 2025 return (including extensions),
+          from any of the following; zero if none
+
+
+          - a traditional or Roth IRA
+
+          - a 401(k), 403(b), governmental 457(b), 501(c)(18)(D), SEP or SIMPLE plan, or the federal TSP
+
+          - another qualified retirement plan
+
+
+          Do not include:
+
+          - rollovers or trustee-to-trustee transfers
+
+          - in-plan Roth rollovers
+
+          - amounts rolled over or converted to a Roth IRA
+
+          - plan loans treated as distributions
+
+          - distributions of excess contributions or deferrals
+
+          - IRA contributions returned by the due date
+
+          - section 404(k) dividends
+
+          - distributions from a military retirement plan (other than the TSP)
+
+          - distributions from an inherited IRA as a nonspouse beneficiary'
+        to: 'On a joint return: the distributions you received in 2024 and 2025 in a year for which you and your spouse filed
+          a joint return, plus those you receive in 2027 before the due date of your 2026 return (including extensions), from
+          any of the following; zero if none
+
+
+          - a traditional or Roth IRA
+
+          - a 401(k), 403(b), governmental 457(b), 501(c)(18)(D), SEP or SIMPLE plan, or the federal TSP
+
+          - another qualified retirement plan
+
+
+          Do not include:
+
+          - rollovers or trustee-to-trustee transfers
+
+          - in-plan Roth rollovers
+
+          - amounts rolled over or converted to a Roth IRA
+
+          - plan loans treated as distributions
+
+          - distributions of excess contributions or deferrals
+
+          - IRA contributions returned by the due date
+
+          - section 404(k) dividends
+
+          - distributions from a military retirement plan (other than the TSP)
+
+          - distributions from an inherited IRA as a nonspouse beneficiary'
+    - set:
+        line: person.sav_prior_joint
+        field: cite.locator
+        from: p. 2, Line 4, "If you’re filing a joint return, include both spouses’ amounts in both columns. Exception. Don’t
+          include your spouse’s distributions with yours when entering an amount on line 4 if you and your spouse didn’t file
+          a joint return for the year the distribution was received"
+        to: p. 3, Line 4, "If you’re filing a joint return, include both spouses’ amounts in both columns. Exception. Don’t
+          include your spouse’s distributions with yours when entering an amount on line 4 if you and your spouse didn’t file
+          a joint return for the year the distribution was received"
+    - set:
+        line: person.sav_prior_joint
+        field: refuses
+        from:
+        - when: person.sav_able
+          form: ABLE account contributions or distributions on Form 8880 (Pub. 907)
+          remedy: Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4)
+            are outside this tool.
+          cite:
+            doc: f8880
+            locator: p. 2, What’s New, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
+              ABLE accounts"
+        to:
+        - when: person.sav_able
+          form: ABLE account contributions or distributions on Form 8880 (Pub. 907)
+          remedy: Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4)
+            are outside this tool.
+          cite:
+            doc: f8880
+            locator: p. 3, Reminders, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
+              ABLE accounts"
+    - set:
+        line: person.sav_prior_other
+        field: label
+        from: Your distributions in 2023 and 2024 from years for which you did not file a joint return with your spouse on
+          this return (on a return that is not joint, all of your 2023, 2024 and early-2026 distributions)
+        to: Your distributions in 2024 and 2025 from years for which you did not file a joint return with your spouse on this
+          return (on a return that is not joint, all of your 2024, 2025 and early-2027 distributions)
+    - set:
+        line: person.sav_prior_other
+        field: expr.source
+        from: 'The distributions you received in 2023 and 2024 in a year for which you did not file a joint return with your
+          spouse on this return (on a return that is not a joint return: all your distributions in 2023 and 2024, and in 2026
+          before the due date of your 2025 return, including extensions), from any of the following; zero if none
+
+
+          - a traditional or Roth IRA
+
+          - a 401(k), 403(b), governmental 457(b), 501(c)(18)(D), SEP or SIMPLE plan, or the federal TSP
+
+          - another qualified retirement plan
+
+
+          Do not include:
+
+          - rollovers or trustee-to-trustee transfers
+
+          - in-plan Roth rollovers
+
+          - amounts rolled over or converted to a Roth IRA
+
+          - plan loans treated as distributions
+
+          - distributions of excess contributions or deferrals
+
+          - IRA contributions returned by the due date
+
+          - section 404(k) dividends
+
+          - distributions from a military retirement plan (other than the TSP)
+
+          - distributions from an inherited IRA as a nonspouse beneficiary'
+        to: 'The distributions you received in 2024 and 2025 in a year for which you did not file a joint return with your
+          spouse on this return (on a return that is not a joint return: all your distributions in 2024 and 2025, and in 2027
+          before the due date of your 2026 return, including extensions), from any of the following; zero if none
+
+
+          - a traditional or Roth IRA
+
+          - a 401(k), 403(b), governmental 457(b), 501(c)(18)(D), SEP or SIMPLE plan, or the federal TSP
+
+          - another qualified retirement plan
+
+
+          Do not include:
+
+          - rollovers or trustee-to-trustee transfers
+
+          - in-plan Roth rollovers
+
+          - amounts rolled over or converted to a Roth IRA
+
+          - plan loans treated as distributions
+
+          - distributions of excess contributions or deferrals
+
+          - IRA contributions returned by the due date
+
+          - section 404(k) dividends
+
+          - distributions from a military retirement plan (other than the TSP)
+
+          - distributions from an inherited IRA as a nonspouse beneficiary'
+    - set:
+        line: person.sav_prior_other
+        field: cite.locator
+        from: p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
+          2022 and before the due date of your 2025 return (including extensions)"; "Exception. Don’t include your spouse’s
+          distributions with yours when entering an amount on line 4 if you and your spouse didn’t file a joint return for
+          the year the distribution was received"
+        to: p. 3, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
+          2023 and before the due date of your 2026 return (including extensions)"; "Exception. Don’t include your spouse’s
+          distributions with yours when entering an amount on line 4 if you and your spouse didn’t file a joint return for
+          the year the distribution was received"
+    - set:
+        line: person.sav_prior_other
+        field: refuses
+        from:
+        - when: person.sav_able
+          form: ABLE account contributions or distributions on Form 8880 (Pub. 907)
+          remedy: Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4)
+            are outside this tool.
+          cite:
+            doc: f8880
+            locator: p. 2, What’s New, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
+              ABLE accounts"
+        to:
+        - when: person.sav_able
+          form: ABLE account contributions or distributions on Form 8880 (Pub. 907)
+          remedy: Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4)
+            are outside this tool.
+          cite:
+            doc: f8880
+            locator: p. 3, Reminders, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
+              ABLE accounts"
+    - set:
+        line: person.sav_line1
+        field: label
+        from: Form 8880 line 1 for this person (traditional IRA contributions for 2025, deductible or not, and Roth IRA contributions
+          for 2025)
+        to: Form 8880 line 1 for this person (traditional IRA contributions for 2026, deductible or not, and Roth IRA contributions
+          for 2026)
+    - set:
+        line: person.sav_line1
+        field: refuses
+        from:
+        - when: person.ira_excess_gate
+          form: Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)
+          remedy: Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an
+            excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.
+          cite:
+            doc: p590a
+            locator: p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
+              IRAs for the year that is more than the smaller of"
+        - when: person.sav_able
+          form: ABLE account contributions or distributions on Form 8880 (Pub. 907)
+          remedy: Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4)
+            are outside this tool.
+          cite:
+            doc: f8880
+            locator: p. 2, What’s New, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
+              ABLE accounts"
+        to:
+        - when: person.ira_excess_gate
+          form: Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)
+          remedy: Traditional or Roth IRA contributions for 2026 that are more than allowed or were recharacterized, and an
+            excess contribution from an earlier year that remained in an IRA at the end of 2026, are outside this tool.
+          cite:
+            doc: p590a
+            locator: p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
+              IRAs for the year that is more than the smaller of"
+        - when: person.sav_able
+          form: ABLE account contributions or distributions on Form 8880 (Pub. 907)
+          remedy: Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4)
+            are outside this tool.
+          cite:
+            doc: f8880
+            locator: p. 3, Reminders, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
+              ABLE accounts"

@@ -1,0 +1,471 @@
+changes:
+  tax_year: 2026
+  form: sc
+  entries:
+  - change: C-BUS-02
+    evidence:
+    - doc: f1040sc
+      page: 1
+      quote: 16b Vehicle loan
+    - doc: f1040sc
+      page: 1
+      quote: 16c Other
+    - doc: f1040sc
+      page: 1
+      quote: Total expenses before expenses for business use of home. Add lines 8 through 27b
+    - doc: i1040sc
+      page: 2
+      quote: New Line 16b, Vehicle loan interest. Use line 16b to report the business-use portion of your vehicle loan interest.
+    - doc: i1040sc
+      page: 2
+      quote: New Line 16c, Other interest. Use line 16c to report interest not claimed on line 16a or 16b.
+    - doc: i1040sc
+      page: 9
+      quote: If you did not receive a Form 1098, enter the interest on line 16c
+    - doc: i1040sc
+      page: 9
+      quote: include your share of the interest on line 16c
+    - doc: i1040sc
+      page: 7
+      quote: 'Report the business-use portion of these expenses as follows: vehicle loan interest on line 16b and personal
+        property taxes on your vehicle on line 23'
+    verified: draft
+    note: 'The new printed line 16b is the sum over the business''s vehicles of scveh.loan_interest (changes/2026/scveh.yaml,
+      C-BUS-02); the line that was 16b keeps its id sc.line16b and is printed 16c. The business-use portion is asked, not
+      figured: the 2026 text says to allocate the interest between business and personal use without naming a method, and
+      the 2025 line 16b asked the business part the same way. Line 23 now names the business-use part of a listed vehicle''s
+      personal property tax, which the 2026 text routes there under either method.'
+    operations:
+    - set:
+        line: sc.line16a
+        field: cite.locator
+        from: p. 8, Lines 16a and 16b, How to report; p. 14, Line 30, "You can’t deduct any excess mortgage interest, excess
+          real estate taxes, or excess casualty losses on Schedule C for this home"
+        to: p. 9, Line 16a, How to report; p. 15, Line 30, "You can’t deduct any excess mortgage interest, excess real estate
+          taxes, or excess casualty losses on Schedule C for this home"
+    - add_line:
+        after: sc.line16a
+        line:
+          id: sc.vehicle_interest
+          printed: 16b
+          label: 'Interest: vehicle loan'
+          type: NonNegDollars
+          expr:
+            op: sum_over
+            collection: scveh
+            field: scveh.loan_interest
+          cite:
+            doc: i1040sc
+            locator: p. 9, Line 16b, "Enter interest paid or accrued on debt incurred to purchase a vehicle that is used in
+              your trade or business" and "Deduct only the business-use portion of the vehicle loan interest on Schedule C
+              (Form 1040)"; p. 7, Line 9, "Report the business-use portion of vehicle loan interest on line 16b, regardless
+              of whether you use the business standard mileage rate or the actual costs of operating your vehicle"
+    - set:
+        line: sc.line16b
+        field: printed
+        from: 16b
+        to: 16c
+    - set:
+        line: sc.line16b
+        field: expr.source
+        from: Other interest on business debt (including mortgage interest not reported on a Form 1098 to you); for a vehicle
+          used for business and personal purposes, only the business part, and none of the interest you deduct on Schedule
+          1-A; for interest paid in 2025 that also applies to future years, only the part that applies to 2025; for a mortgage
+          on which you and another person (other than your spouse on a joint return) were liable and paid interest and the
+          other person received the Form 1098, only your share; not mortgage interest on your home; zero if none
+        to: Other interest on business debt (including mortgage interest not reported on a Form 1098 to you; not interest
+          on a loan to buy a vehicle, which is asked with each vehicle); for interest paid in 2026 that also applies to future
+          years, only the part that applies to 2026; for a mortgage on which you and another person (other than your spouse
+          on a joint return) were liable and paid interest and the other person received the Form 1098, only your share; not
+          mortgage interest on your home; zero if none
+    - set:
+        line: sc.line16b
+        field: cite.locator
+        from: p. 8, Lines 16a and 16b, "If you paid interest in 2025 that also applies to future years, deduct only the part
+          that applies to 2025" and "include your share of the interest on line 16b"; p. 14, Line 30, "You can’t deduct any
+          excess mortgage interest, excess real estate taxes, or excess casualty losses on Schedule C for this home"
+        to: p. 9, Line 16c, "Enter any business-related interest not listed on line 16a or 16b"; Line 16a, "If you did not
+          receive a Form 1098, enter the interest on line 16c", "include your share of the interest on line 16c" and "If you
+          paid interest in 2026 that also applies to future years, deduct only the part that applies to 2026"; p. 15, Line
+          30, "You can’t deduct any excess mortgage interest, excess real estate taxes, or excess casualty losses on Schedule
+          C for this home"
+    - set:
+        line: sc.line23
+        field: expr.source
+        from: 'Business taxes and licenses: sales tax imposed on you as the seller, real estate and personal property taxes
+          on business assets, licenses and regulatory fees paid each year (not licenses you must amortize, such as some liquor
+          licenses, and not license plates for a car, truck or van you list for this business, which its car and truck expenses
+          already include), the employer share of social security and Medicare taxes, federal unemployment tax, federal highway
+          use tax, contributions to a state unemployment insurance fund or a paid family and medical leave program disability
+          benefit fund if they are taxes under state law (not income or self-employment tax, not taxes on property you bought,
+          and not real estate taxes on your home, which with the simplified method for business use of the home you can deduct
+          only on Schedule A); zero if none'
+        to: 'Business taxes and licenses: sales tax imposed on you as the seller, real estate and personal property taxes
+          on business assets, licenses and regulatory fees paid each year (not licenses you must amortize, such as some liquor
+          licenses, and not license plates for a car, truck or van you list for this business, which its car and truck expenses
+          already include), the business-use part of personal property tax on a car, truck or van you list for this business
+          (under either the standard mileage rate or actual expenses), the employer share of social security and Medicare
+          taxes, federal unemployment tax, federal highway use tax, contributions to a state unemployment insurance fund or
+          a paid family and medical leave program disability benefit fund if they are taxes under state law (not income or
+          self-employment tax, not taxes on property you bought, and not real estate taxes on your home, which with the simplified
+          method for business use of the home you can deduct only on Schedule A); zero if none'
+    - set:
+        line: sc.line23
+        field: cite.locator
+        from: p. 9, Line 23, "Licenses and regulatory fees for your trade or business paid each year to state or local governments"
+          and "Contributions to a state unemployment insurance fund, or paid family and medical leave program disability benefit
+          fund if they are considered taxes under state law"; p. 14, Line 30, "You can’t deduct any excess mortgage interest,
+          excess real estate taxes, or excess casualty losses on Schedule C for this home"
+        to: 'p. 10, Line 23, "Licenses and regulatory fees for your trade or business paid each year to state or local governments"
+          and "Contributions to a state unemployment insurance fund, or paid family and medical leave program disability benefit
+          fund if they are considered taxes under state law"; p. 7, Line 9, "Report the business-use portion of these expenses
+          as follows: vehicle loan interest on line 16b and personal property taxes on your vehicle on line 23"; p. 15, Line
+          30, "You can’t deduct any excess mortgage interest, excess real estate taxes, or excess casualty losses on Schedule
+          C for this home"'
+    - set:
+        line: sc.line28
+        field: expr.of
+        from:
+        - sc.line8
+        - sc.line9
+        - sc.line10
+        - sc.line11
+        - sc.line12
+        - sc.line13
+        - sc.line14_if_employees
+        - sc.line15
+        - sc.line16a
+        - sc.line16b
+        - sc.line17
+        - sc.line18
+        - sc.line19_if_employees
+        - sc.line20a
+        - sc.line20b
+        - sc.line21
+        - sc.line22
+        - sc.line23
+        - sc.line24a_if_travel_meals
+        - sc.line24b
+        - sc.line25
+        - sc.line26_if_employees
+        - sc.line27a
+        - sc.line27b
+        to:
+        - sc.line8
+        - sc.line9
+        - sc.line10
+        - sc.line11
+        - sc.line12
+        - sc.line13
+        - sc.line14_if_employees
+        - sc.line15
+        - sc.line16a
+        - sc.vehicle_interest
+        - sc.line16b
+        - sc.line17
+        - sc.line18
+        - sc.line19_if_employees
+        - sc.line20a
+        - sc.line20b
+        - sc.line21
+        - sc.line22
+        - sc.line23
+        - sc.line24a_if_travel_meals
+        - sc.line24b
+        - sc.line25
+        - sc.line26_if_employees
+        - sc.line27a
+        - sc.line27b
+    - set:
+        line: sc.line28_pre179
+        field: expr.of
+        from:
+        - sc.line8
+        - sc.line9
+        - sc.line10
+        - sc.line11
+        - sc.line12
+        - sc.line14_if_employees
+        - sc.line15
+        - sc.line16a
+        - sc.line16b
+        - sc.line17
+        - sc.line18
+        - sc.line19_if_employees
+        - sc.line20a
+        - sc.line20b
+        - sc.line21
+        - sc.line22
+        - sc.line23
+        - sc.line24a_if_travel_meals
+        - sc.line24b
+        - sc.line25
+        - sc.line26_if_employees
+        - sc.line27a
+        - sc.line27b
+        - sc.dep_other
+        to:
+        - sc.line8
+        - sc.line9
+        - sc.line10
+        - sc.line11
+        - sc.line12
+        - sc.line14_if_employees
+        - sc.line15
+        - sc.line16a
+        - sc.vehicle_interest
+        - sc.line16b
+        - sc.line17
+        - sc.line18
+        - sc.line19_if_employees
+        - sc.line20a
+        - sc.line20b
+        - sc.line21
+        - sc.line22
+        - sc.line23
+        - sc.line24a_if_travel_meals
+        - sc.line24b
+        - sc.line25
+        - sc.line26_if_employees
+        - sc.line27a
+        - sc.line27b
+        - sc.dep_other
+    - set_question:
+        input: sc.line16b
+        field: help
+        from: Only the business part, and only interest that belongs to 2025. Include business mortgage interest with no Form
+          1098 in your name (your share only). Leave out your home mortgage and car loan interest you deduct as personal.
+        to: Only the business part, and only interest that belongs to 2026. Include business mortgage interest with no Form
+          1098 in your name (your share only). Leave out your home mortgage, and interest on a loan to buy a vehicle, which
+          is asked with each vehicle.
+  - change: C-BUS-04
+    evidence:
+    - doc: i1040sc
+      page: 11
+      quote: You can fully deduct the following meal expenses
+    - doc: i1040sc
+      page: 11
+      quote: Meals provided to crew members on certain commercial fishing vessels and at other qualifying facilities
+    - doc: i1040sc
+      page: 11
+      quote: Meals that are part of goods or services sold in a bona fide transaction for adequate and full consideration
+    - doc: i1040sc
+      page: 11
+      quote: may not deduct costs paid or incurred after 2025 for the operation of an employer-operated eating facility
+    - doc: i1040sc
+      page: 2
+      quote: However no deduction is allowed for expenses paid or incurred after 2025 by an employer
+    verified: draft
+    note: 'The full-deduction list follows the 2026 text (two cases reworded, two added) and keeps the Pub. 463 cases of the
+      2025 question (client-reimbursed contractor meals, employee recreation, food for the public), whose 2026 edition is
+      not archived: amb.2025.meals_full_exceptions is to be re-ruled when p463 for 2026 is archived. Section 274(o) meals
+      (for the convenience of the employer, or of an employer-operated eating facility) are excluded from both the 50% and
+      the full amounts.'
+    operations:
+    - set:
+        line: sc.meals_50
+        field: expr.source
+        from: 'The full cost of business meals (actual cost or the standard meal allowance) subject to the 50% limit, before
+          applying the percentage: meals while you or your employees travel away from home on business, including your employees''
+          travel meals you pay for or reimburse other than as wages; and meals with a current or potential business customer,
+          client, consultant or similar business contact that were ordinary and necessary in your business, not lavish or
+          extravagant, with you or your employee present, and, at an entertainment event, bought separately from the entertainment
+          or stated separately on the bill. Do not include entertainment, meals during a period of duty under the Department
+          of Transportation hours of service limits, or food for the children in your daycare, which are asked about separately;
+          zero if none'
+        to: 'The full cost of business meals (actual cost or the standard meal allowance) subject to the 50% limit, before
+          applying the percentage: meals while you or your employees travel away from home on business, including your employees''
+          travel meals you pay for or reimburse other than as wages; and meals with a current or potential business customer,
+          client, consultant or similar business contact that were ordinary and necessary in your business, not lavish or
+          extravagant, with you or your employee present, and, at an entertainment event, bought separately from the entertainment
+          or stated separately on the bill. Do not include entertainment, meals during a period of duty under the Department
+          of Transportation hours of service limits, or food for the children in your daycare, which are asked about separately,
+          and do not include meals provided to your employees for your convenience or food and beverages of an eating facility
+          you operate for your employees, which are not deductible; zero if none'
+    - set:
+        line: sc.meals_50
+        field: cite.locator
+        from: pp. 9–10, Line 24b, Business meal expenses ("You can deduct a percentage of the actual cost of a meal if the
+          following conditions are met"), Standard meal allowance, Amount of deduction ("including meals incurred while away
+          from home on business"); p. 9, Line 24a, "Do not include entertainment expenses on this line"
+        to: pp. 10–11, Line 24b, Business meal expenses ("You can deduct a percentage of the actual cost of a meal if the
+          following conditions are met"), Standard meal allowance, Amount of deduction ("including meals incurred while away
+          from home on business"); p. 10, Line 24a, "Do not include entertainment expenses on this line"; p. 11, Meals furnished
+          to employees for the convenience of the employer, "may not deduct costs paid or incurred after 2025 for the operation
+          of an employer-operated eating facility"
+    - set:
+        line: sc.meals_50_if_travel_meals
+        field: cite.locator
+        from: pp. 9–10, Line 24b, Business meal expenses ("You can deduct a percentage of the actual cost of a meal if the
+          following conditions are met"), Standard meal allowance, Amount of deduction ("including meals incurred while away
+          from home on business"); p. 9, Line 24a, "Do not include entertainment expenses on this line"
+        to: pp. 10–11, Line 24b, Business meal expenses ("You can deduct a percentage of the actual cost of a meal if the
+          following conditions are met"), Standard meal allowance, Amount of deduction ("including meals incurred while away
+          from home on business"); p. 10, Line 24a, "Do not include entertainment expenses on this line"; p. 11, Meals furnished
+          to employees for the convenience of the employer, "may not deduct costs paid or incurred after 2025 for the operation
+          of an employer-operated eating facility"
+    - set:
+        line: sc.meals_100
+        field: label
+        from: Meals and incidentals not subject to the 50% limit, deducted in full
+        to: Meals not subject to the 50% limit, deducted in full
+    - set:
+        line: sc.meals_100
+        field: expr.source
+        from: 'The cost of meals and incidentals not subject to the 50% limit, deducted in full: meals furnished or reimbursed
+          to an employee and treated as wages subject to withholding; meals provided to a nonemployee, to the extent includible
+          in their income and reported on Form 1099-NEC; meals a customer or client reimbursed you for, as an independent
+          contractor, after you gave them adequate records; recreational, social or similar activities for your employees
+          (such as a holiday party or a summer picnic); food and beverages provided to the general public as advertising or
+          to promote goodwill; meals you sell to the public; and, if you run a daycare, the food consumed by the children
+          in your care (actual cost or, for eligible children in family daycare, the standard meal and snack rates; not food
+          consumed by you or your family), less any reimbursement under a food program of the Department of Agriculture. Don''t
+          include anything entered elsewhere on this Schedule C (for example, in cost of goods sold); zero if none'
+        to: 'The cost of meals not subject to the 50% limit, deducted in full: meals provided to an employee whose value you
+          include in the employee''s wages subject to withholding; meals provided to a nonemployee, to the extent their value
+          is includible in their income and reported on Form 1099-NEC; meals provided to crew members on certain commercial
+          fishing vessels and at other qualifying facilities; meals that are part of goods or services you sell in a bona
+          fide transaction for adequate and full consideration (such as food bought to prepare meals for restaurant or catering
+          customers, including meals your employees eat at the worksite); meals a customer or client reimbursed you for, as
+          an independent contractor, after you gave them adequate records; recreational, social or similar activities for
+          your employees (such as a holiday party or a summer picnic); food and beverages provided to the general public as
+          advertising or to promote goodwill; and, if you run a daycare, the food consumed by the children in your care (actual
+          cost or, for eligible children in family daycare, the standard meal and snack rates; not food consumed by you or
+          your family), less any reimbursement under a food program of the Department of Agriculture. Do not include meals
+          provided to your employees for your convenience or food and beverages of an eating facility you operate for your
+          employees (not deductible), unless you sell them to the employees for full value or they are fishing-vessel or fish-processing
+          meals. Don''t include anything entered elsewhere on this Schedule C (for example, in cost of goods sold); zero if
+          none'
+    - set:
+        line: sc.meals_100
+        field: cite.locator
+        from: p. 10, Line 24b, Amount of deduction, "However, you can fully deduct meals and incidentals furnished or reimbursed
+          to an employee if you properly treat the expense as wages subject to withholding. You can also fully deduct meals
+          and incidentals provided to a nonemployee to the extent the expenses are includible in the gross income of that
+          person and reported on Form 1099-NEC" and Daycare providers, "If you receive reimbursement under a food program
+          of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement"; p587 p. 13, Meals, "You
+          can deduct as a business expense 100% of the actual cost of food consumed by your daycare recipients"
+        to: p. 11, Line 24b, Amount of deduction, "You can fully deduct the following meal expenses", "Meals provided to an
+          employee if you include the value of the meals in the employee’s wages subject to withholding", "Meals provided
+          to a nonemployee to the extent the value is includible in the recipient’s gross income and properly reported on
+          Form 1099-NEC", "Meals provided to crew members on certain commercial fishing vessels and at other qualifying facilities"
+          and "Meals that are part of goods or services sold in a bona fide transaction for adequate and full consideration";
+          Meals furnished to employees for the convenience of the employer, "may not deduct costs paid or incurred after 2025
+          for the operation of an employer-operated eating facility" and "However, a sole proprietor may deduct such costs
+          if the costs are for a meal it sells to employees in a bona fide transaction"; Daycare providers, "If you receive
+          reimbursement under a food program of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement";
+          p587 p. 13, Meals, "You can deduct as a business expense 100% of the actual cost of food consumed by your daycare
+          recipients"
+    - set:
+        line: sc.meals_100_if_travel_meals
+        field: label
+        from: Meals and incidentals not subject to the 50% limit, deducted in full, asked only of a business with travel,
+          meal or food expenses (zero without)
+        to: Meals not subject to the 50% limit, deducted in full, asked only of a business with travel, meal or food expenses
+          (zero without)
+    - set:
+        line: sc.meals_100_if_travel_meals
+        field: cite.locator
+        from: p. 10, Line 24b, Amount of deduction, "However, you can fully deduct meals and incidentals furnished or reimbursed
+          to an employee if you properly treat the expense as wages subject to withholding. You can also fully deduct meals
+          and incidentals provided to a nonemployee to the extent the expenses are includible in the gross income of that
+          person and reported on Form 1099-NEC" and Daycare providers, "If you receive reimbursement under a food program
+          of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement"; p587 p. 13, Meals, "You
+          can deduct as a business expense 100% of the actual cost of food consumed by your daycare recipients"
+        to: p. 11, Line 24b, Amount of deduction, "You can fully deduct the following meal expenses", "Meals provided to an
+          employee if you include the value of the meals in the employee’s wages subject to withholding", "Meals provided
+          to a nonemployee to the extent the value is includible in the recipient’s gross income and properly reported on
+          Form 1099-NEC", "Meals provided to crew members on certain commercial fishing vessels and at other qualifying facilities"
+          and "Meals that are part of goods or services sold in a bona fide transaction for adequate and full consideration";
+          Meals furnished to employees for the convenience of the employer, "may not deduct costs paid or incurred after 2025
+          for the operation of an employer-operated eating facility" and "However, a sole proprietor may deduct such costs
+          if the costs are for a meal it sells to employees in a bona fide transaction"; Daycare providers, "If you receive
+          reimbursement under a food program of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement";
+          p587 p. 13, Meals, "You can deduct as a business expense 100% of the actual cost of food consumed by your daycare
+          recipients"
+    - set_question:
+        input: sc.meals_50
+        field: help
+        from: Include travel meals of employees that you paid for. Leave out entertainment, lavish meals, and the meals the
+          next two questions ask about (transport workers on duty, and food deducted in full).
+        to: Include travel meals of employees that you paid for. Leave out entertainment, lavish meals, meals you give staff
+          for your convenience or in a cafeteria you run (not deductible), and the meals the next two questions ask about.
+    - set_question:
+        input: sc.meals_100
+        field: prompt
+        from: 'How much did this business spend in 2025 on food and drink that is deducted in full: a staff party or picnic,
+          food given to the public to promote the business, meals it sells, meals counted as someone’s pay, meals a client
+          paid you back for, or food for the children in your daycare?'
+        to: 'How much did this business spend in 2026 on food and drink that is deducted in full: a staff party or picnic,
+          food given to the public to promote the business, meals it sells (with its staff’s meals at work that are part of
+          them), meals counted as someone’s pay, meals for the crew of a commercial fishing vessel, meals a client paid you
+          back for, or food for the children in your daycare?'
+  - change: C-BUS-06
+    evidence:
+    - doc: i1040sc
+      page: 11
+      quote: Space used for storage is allowed only if the residence is the sole fixed location of your business
+    verified: draft
+    note: The tick-box label of sc.ho_uses is unchanged; the storage condition is in the question, the square-feet line and
+      the square-feet help, so a filer who stores stock at home but has another fixed place of business leaves the storage
+      space out of the square feet.
+    operations:
+    - set:
+        line: sc.ho_uses
+        field: expr.source
+        from: Do you claim a deduction for the business use of your home for this business (a part of your home used regularly
+          and exclusively for the business, or regularly for storing inventory or product samples)?
+        to: Do you claim a deduction for the business use of your home for this business (a part of your home used regularly
+          and exclusively for the business, or, if your home is the sole fixed location of the business, regularly for storing
+          inventory or product samples)?
+    - set:
+        line: sc.ho_uses
+        field: cite.locator
+        from: p. 10, Line 30, Business use of your home; Pub. 587 referenced
+        to: p. 11, Line 30, Business use of your home; Simplified method, "Space used for storage is allowed only if the residence
+          is the sole fixed location of your business"; Pub. 587 referenced
+    - set:
+        line: sc.ho_sqft
+        field: expr.source
+        from: The square feet of your home used regularly and exclusively for this business (or regularly for storing inventory
+          or product samples) throughout 2025
+        to: The square feet of your home used regularly and exclusively for this business (or, if your home is the sole fixed
+          location of the business, regularly for storing inventory or product samples) throughout 2026
+    - set:
+        line: sc.ho_sqft
+        field: cite.locator
+        from: p. 12, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method
+        to: p. 14, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 11, Simplified method, "Space used for
+          storage is allowed only if the residence is the sole fixed location of your business"
+    - set_question:
+        input: sc.ho_uses
+        field: prompt
+        from: In 2025, did you use part of your home regularly and only for this business (or regularly to store its stock
+          or samples), and do you want to deduct it?
+        to: In 2026, did you use part of your home regularly and only for this business (or, if your home is its only fixed
+          place of business, regularly to store its stock or samples), and do you want to deduct it?
+    - set_question:
+        input: sc.ho_sqft
+        field: help
+        from: null
+        to: Count space used only to store stock or samples only if your home is the only fixed place of this business.
+  - change: C-BUS-11
+    evidence:
+    - doc: f4562
+      page: 3
+      quote: Total. Add amounts from line 12, lines 14a through 14d, lines 15 through 17, lines 19 and 20 in column (g), and
+        line 21
+    verified: draft
+    operations:
+    - set:
+        line: sc.dep_other
+        field: label
+        from: Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)
+        to: Depreciation other than the section 179 deduction (Form 4562 lines 14a, 17, 19 and 21)
+    - set:
+        line: sc.dep_other
+        field: cite.locator
+        from: p. 2, Part IV, "Total. Add amounts from line 12, lines 14 through 17, lines 19 and 20 in column (g), and line
+          21" (line 22, less line 12)
+        to: p. 3, Part IV, "Total. Add amounts from line 12, lines 14a through 14d, lines 15 through 17, lines 19 and 20 in
+          column (g), and line 21" (line 22, less line 12; lines 14b to 16 are refused through the screens of the property)

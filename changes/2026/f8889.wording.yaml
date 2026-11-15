@@ -1,0 +1,32 @@
+changes:
+  tax_year: 2026
+  form: f8889
+  entries:
+  - change: C-PRI-21
+    evidence:
+    - doc: f8889
+      page: 2
+      quote: Also include this amount in the total on Schedule 2 (Form 1040), Part II, line 13c
+    - doc: f8889
+      page: 2
+      quote: 1040), Part II, line 13d
+    - doc: i8889
+      page: 10
+      quote: Lines 17a and 17b
+    verified: draft
+    note: Label and citation of f8889.line17b only; the Schedule 2 line the amount lands on is renumbered by the Schedule
+      2 entry (C-SCHED-10), and s2.line17c is not touched here. The 2026 form prints "Also include" without the comma.
+    operations:
+    - set:
+        line: f8889.line17b
+        field: label
+        from: Additional 20% tax (see instructions). Enter 20% (0.20) of the distributions included on line 16 that are
+          subject to the additional 20% tax. Also, include this amount in the total on Schedule 2 (Form 1040), Part II,
+          line 17c
+        to: Additional 20% tax (see instructions). Enter 20% (0.20) of the distributions included on line 16 that are subject
+          to the additional 20% tax. Also include this amount in the total on Schedule 2 (Form 1040), Part II, line 13c
+    - set:
+        line: f8889.line17b
+        field: cite.locator
+        from: Form 8889 (2025), line 17b; i8889 p. 9, Lines 17a and 17b Additional 20% Tax
+        to: Form 8889 (2025), line 17b; i8889 p. 10, Lines 17a and 17b Additional 20% Tax

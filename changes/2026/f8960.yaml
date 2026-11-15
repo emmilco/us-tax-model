@@ -1,0 +1,183 @@
+changes:
+  tax_year: 2026
+  form: f8960
+  entries:
+  - change: C-SCHED-27
+    evidence:
+    - doc: i8960
+      page: 2
+      quote: A new Lines 9 and 10 Section 68 Limitation Worksheet for Individuals, Estates, and Trusts has been created to
+        reflect the section 68 overall limitation on itemized deductions.
+    - doc: i8960
+      page: 19
+      quote: Beginning in 2026, your deduction for investment interest expense may be limited if your taxable income is more
+        than the threshold amount.
+    - doc: i8960
+      page: 19
+      quote: You can use any reasonable method to determine the portion of your state, local, and foreign income taxes
+    - doc: i8960
+      page: 21
+      quote: Individuals enter taxable income reported on Form 1040, line 15, plus allowable itemized deductions.
+    - doc: i8960
+      page: 21
+      quote: Enter $768,700 if married filing jointly or qualifying surviving spouse; $640,600 if head of household or single;
+        $384,350 if married filing separately.
+    - doc: i8960
+      page: 21
+      quote: If line 3 is zero, your deductions are not limited under section 68.
+    - doc: rp-25-32
+      page: 10
+      quote: Over $768,700
+    - doc: rp-25-32
+      page: 11
+      quote: Over $640,600
+    - doc: rp-25-32
+      page: 12
+      quote: Over $384,350
+    verified: draft
+    note: 'Refused rather than encoded: the worksheet cuts lines 9a and 9b only above its line 2 amounts, and every itemizer
+      there is already refused on Form 1040 line 15 (f1040.gate.itemized_limit, C-PRI-18, screens line 11b minus lines 13a
+      and 13b at $384,350, the lowest of the three). The refusal here keeps Form 8960 right when that screen is replaced by
+      the Schedule A worksheet. niit.s68_threshold is a new parameter: single and head of household 64060000, married filing
+      separately 38435000, married filing jointly and qualifying surviving spouse 76870000 (the 37% bracket starts of rp-25-32
+      section 4.01).'
+    operations:
+    - add_line:
+        after: f8960.line9b
+        line:
+          id: f8960.s68_base
+          printed: (helper)
+          type: NonNegDollars
+          label: Taxable income plus itemized deductions (Lines 9 and 10 Section 68 Limitation Worksheet, line 1)
+          expr:
+            op: sum
+            of:
+            - f1040.line15
+            - sa.deduction
+          cite:
+            doc: i8960
+            locator: p. 21, Lines 9 and 10—Section 68 Limitation Worksheet for Individuals, Estates, and Trusts, "Individuals
+              enter taxable income reported on Form 1040, line 15, plus allowable itemized deductions." (line 1), "If line
+              3 is zero, your deductions are not limited under section 68." (line 3)
+    - add_line:
+        after: f8960.s68_base
+        line:
+          id: f8960.s68_threshold
+          printed: (helper)
+          type: NonNegDollars
+          label: Year parameter niit.s68_threshold (where the 37% rate bracket begins; worksheet line 2)
+          expr:
+            op: param
+            ref: niit.s68_threshold
+          cite:
+            doc: i8960
+            locator: p. 21, Lines 9 and 10—Section 68 Limitation Worksheet for Individuals, Estates, and Trusts, "Enter $768,700
+              if married filing jointly or qualifying surviving spouse; $640,600 if head of household or single; $384,350
+              if married filing separately." (line 2)
+    - add_line:
+        after: f8960.s68_threshold
+        line:
+          id: f8960.gate.s68_limit
+          printed: (gate)
+          type: Bool
+          label: Itemizing, with investment interest or allocated taxes on lines 9a and 9b, and taxable income plus itemized
+            deductions more than the worksheet's line 2 amount (worksheet line 3 above zero)
+          expr:
+            op: test
+            all:
+            - op: test
+              eq:
+              - sa.itemizes
+              - const: true
+            - op: test
+              gt:
+              - f8960.s68_base
+              - f8960.s68_threshold
+            - op: test
+              any:
+              - op: test
+                gt:
+                - f8960.line9a
+                - const: 0
+              - op: test
+                gt:
+                - f8960.line9b
+                - const: 0
+          cite:
+            doc: i8960
+            locator: p. 21, Lines 9 and 10—Section 68 Limitation Worksheet for Individuals, Estates, and Trusts, "Individuals
+              enter taxable income reported on Form 1040, line 15, plus allowable itemized deductions." (line 1), "If line
+              3 is zero, your deductions are not limited under section 68." (line 3)
+    - set:
+        line: f8960.line9d
+        field: refuses
+        from: null
+        to:
+        - when: f8960.gate.s68_limit
+          form: Form 8960 Lines 9 and 10 Section 68 Limitation Worksheet
+          remedy: Your investment interest and the taxes you allocate to net investment income may be limited for 2026 by
+            the overall limit on itemized deductions (section 68); the worksheet that figures the limit is outside this tool.
+          cite:
+            doc: i8960
+            locator: p. 19, Line 9a—Investment Interest Expense, "Beginning in 2026, your deduction for investment interest
+              expense may be limited if your taxable income is more than the threshold amount."
+    - set:
+        line: f8960.line9b
+        field: cite.locator
+        from: pp. 17–18, line 9b; p. 18, Line 9b—State, Local, and Foreign Income Tax, "allocable to NII using any reasonable
+          method"
+        to: p. 19, Line 9b—State, Local, and Foreign Income Taxes, "You can use any reasonable method to determine the portion
+          of your state, local, and foreign income taxes; state, local, and foreign real property taxes; and state and local
+          personal property taxes that is allocable to NII"
+  - change: C-SCHED-28
+    evidence:
+    - doc: i8960
+      page: 14
+      quote: Other items of NII (or properly allocable deductions) not otherwise included on Form 8960 reported on Schedule
+        1 (Form 1040), lines 8j and 8z
+    - doc: i8960
+      page: 6
+      quote: Rental at less than FRV is recharacterized as a nonpassive activity regardless of your material participation
+        and is NII to an individual under section 1411(c)(1)(A)(i).
+    - doc: i8960
+      page: 6
+      quote: Report the income on Form 8960, line 7, as a modification (originally reported on Schedule 1 (Form 1040), line
+        8j).
+    verified: draft
+    note: Line 7 stays zero. The new line 8j item is rent below fair rental value; scope.rental ("rent out, or offer for rent,
+      anything you own, such as a house, a room, ...") refuses it on every return, so the line 8j amount a completed return
+      carries is hobby income, not investment income. The i1040gi part of the register entry's citation waits for the 2026
+      Instructions for Form 1040.
+    operations:
+    - set:
+        line: f8960.line7
+        field: cite.locator
+        from: Form 8960 (2025), Parts I–III, individual lines 1–17
+        to: 'i8960 p. 14, Line 7—Other Modifications to Investment Income, "Other items of NII (or properly allocable deductions)
+          not otherwise included on Form 8960 reported on Schedule 1 (Form 1040), lines 8j and 8z" (zero: the line 8z kinds
+          this tool computes are not investment income, amb.2025.line8z_kinds); i8960 p. 6, Rental at less than fair rental
+          value (FRV), "Report the income on Form 8960, line 7, as a modification (originally reported on Schedule 1 (Form
+          1040), line 8j)." (renting anything out is refused on every return by scope.rental, so the line 8j income of a completed
+          return is hobby income, which is not investment income)'
+    - set_ambiguity:
+        id: amb.2025.line8z_kinds
+        field: reason
+        from: 'The owner''s decision D4 (Stage 16). The closed list is the premise map''s R-OI-2 less insurance dividends:
+          Form 8960 line 7 takes "Other items of NII ... reported on Schedule 1 (Form 1040), line 8z", and an insurance policy
+          dividend above the premiums paid may be net investment income (an amount from an insurance contract) that this tool
+          would leave off Form 8960; an entry cannot read the return''s income to refuse only above the Form 8960 threshold
+          (that would be a cycle through line 8z), so the conservative reading refuses it.'
+        to: 'The owner''s decision D4 (Stage 16). The closed list is the premise map''s R-OI-2 less insurance dividends: Form
+          8960 line 7 takes "Other items of NII ... reported on Schedule 1 (Form 1040), lines 8j and 8z", and an insurance
+          policy dividend above the premiums paid may be net investment income (an amount from an insurance contract) that
+          this tool would leave off Form 8960; an entry cannot read the return''s income to refuse only above the Form 8960
+          threshold (that would be a cycle through line 8z), so the conservative reading refuses it.'
+    - set_ambiguity:
+        id: amb.2025.line8z_kinds
+        field: cite.locator
+        from: p. 92, Line 8z, "List the type and amount of income" and "Examples of income to report on line 8z include the
+          following"; i8960 p. 13, Line 7—Other Modifications to Investment Income, "Other items of NII (or properly allocable
+          deductions) not otherwise included on Form 8960 reported on Schedule 1 (Form 1040), line 8z"
+        to: p. 92, Line 8z, "List the type and amount of income" and "Examples of income to report on line 8z include the
+          following"; i8960 p. 14, Line 7—Other Modifications to Investment Income, "Other items of NII (or properly allocable
+          deductions) not otherwise included on Form 8960 reported on Schedule 1 (Form 1040), lines 8j and 8z"

@@ -1,0 +1,426 @@
+changes:
+  tax_year: 2026
+  form: person
+  entries:
+  - change: C-CRED-18+C-PEOP-16
+    evidence:
+    - doc: i8863
+      page: 3
+      quote: You may be able to claim an education credit if you and the student meet the identification requirement and you,
+        your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational
+        institution.
+    - doc: i8863
+      page: 3
+      quote: only one spouse is required to have a valid SSN to be eligible to claim an education credit.
+    - doc: i8863
+      page: 3
+      quote: If the student for whom expenses were paid is a dependent (not you or your spouse), the student must also have
+        a valid SSN issued before the due date of your 2026 return (including extensions).
+    - doc: i8863
+      page: 3
+      quote: Only one spouse on a joint return is required to have a valid SSN to claim an education credit. This is true
+        even when one spouse on a joint return is the student for whom qualified education expenses were paid and does not
+        have a valid SSN.
+    - doc: i8863
+      page: 4
+      quote: 5. You (or your spouse if filing jointly) and the student (if the student is a dependent on your tax return)
+        have not been issued valid SSNs before the due date of your 2026 return (including extensions).
+    - doc: i8863
+      page: 5
+      quote: 5. You (or your spouse if filing jointly) and the student (if the student is a dependent on your tax return)
+        must have been issued valid SSNs before the due date of your 2026 return (including extensions).
+    verified: draft
+    note: 'Beginning in 2026 the filer (one spouse on a joint return) and a dependent student need an SSN valid for employment
+      issued before the due date; an ITIN or ATIN no longer qualifies for either credit, so the lifetime learning credit refusal
+      for a number only applied for goes. The return-level test is f8863.eligible (changes/2026/f8863.yaml); Part III repeats
+      it for a person on the return (household.any_work_ssn: a joint-return spouse who is the student needs no SSN of their
+      own, i8863 Tip) and tests the dependent student''s own valid SSN (dependent.work_ssn_known). The American opportunity
+      credit''s fifth requirement now says one spouse suffices, which settles amb.2025.edu_filer_tin; its register entry is
+      to be retired with the register operations (plan D4, lane R3). Both sides are changed in step: reviews/2026/twins.json
+      must drop the differences of the removed lines (person.edu_student_itin, the edu_llc_tin_refused pair, edu_line31''s
+      first refusal, dependent.edu_tin_issued) and restate the label differences with these values.'
+    operations:
+    - set:
+        line: person.edu
+        field: label
+        from: Qualified education expenses paid in 2025 for this person
+        to: Qualified education expenses paid in 2026 for this person
+    - set:
+        line: person.edu
+        field: expr.source
+        from: Did anyone pay qualified education expenses in 2025 for this person at an eligible educational institution (a
+          college, university, vocational school, or other postsecondary school eligible for federal student aid)?
+        to: Did anyone pay qualified education expenses in 2026 for this person at an eligible educational institution (a
+          college, university, vocational school, or other postsecondary school eligible for federal student aid)?
+    - set:
+        line: person.edu
+        field: cite.locator
+        from: p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse,
+          or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution."
+        to: p. 3, Who Can Claim an Education Credit, "You may be able to claim an education credit if you and the student
+          meet the identification requirement and you, your spouse, or a dependent you claim on your tax return was a student
+          enrolled at or attending an eligible educational institution."
+    - set_question:
+        input: person.edu
+        field: prompt
+        from: For this person (you, or your spouse on a joint return) — In 2025, was tuition or a required fee paid for this
+          person as a student at a college, university or trade school?
+        to: For this person (you, or your spouse on a joint return) — In 2026, was tuition or a required fee paid for this
+          person as a student at a college, university or trade school?
+    - set:
+        line: person.edu_student_edu
+        field: cite.locator
+        from: p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse,
+          or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution."
+        to: p. 3, Who Can Claim an Education Credit, "You may be able to claim an education credit if you and the student
+          meet the identification requirement and you, your spouse, or a dependent you claim on your tax return was a student
+          enrolled at or attending an eligible educational institution."
+    - set:
+        line: person.edu_student
+        field: label
+        from: 'An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)'
+        to: 'An eligible student of this return: expenses paid, the valid-SSN requirement met and a Form 1098-T (or an exception)'
+    - set:
+        line: person.edu_student
+        field: cite.locator
+        from: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
+          return (including extensions)."
+        to: p. 4, Who cannot claim a credit, "5. You (or your spouse if filing jointly) and the student (if the student is
+          a dependent on your tax return) have not been issued valid SSNs before the due date of your 2026 return (including
+          extensions)."; p. 3, Identification requirement, "If the student for whom expenses were paid is a dependent (not
+          you or your spouse), the student must also have a valid SSN issued before the due date of your 2026 return (including
+          extensions)."; p. 3, Tip, "Only one spouse on a joint return is required to have a valid SSN to claim an education
+          credit. This is true even when one spouse on a joint return is the student for whom qualified education expenses
+          were paid and does not have a valid SSN."
+    - set:
+        line: person.edu_student_edu
+        field: label
+        from: 'With education expenses paid: this person was a student with qualified expenses, has a TIN by the due date
+          and a Form 1098-T (or an exception)'
+        to: 'With education expenses paid: this person was a student with qualified expenses, meets the valid-SSN requirement
+          and has a Form 1098-T (or an exception)'
+    - set:
+        line: person.edu_student_tin
+        field: label
+        from: 'A student with qualified expenses: an SSN or ITIN (or an ITIN applied for by the due date), and a Form 1098-T
+          (or an exception)'
+        to: 'A student with qualified expenses: you, or your spouse if filing jointly, have a valid SSN, and a Form 1098-T
+          (or an exception)'
+    - set:
+        line: person.edu_student_tin
+        field: expr.alternatives
+        from:
+        - guard:
+            op: test
+            eq:
+            - person.tin
+            - const: true
+          then: person.edu_1098t
+        - guard:
+            op: test
+            eq:
+            - person.tin
+            - const: false
+          then: person.edu_student_itin
+        to:
+        - guard:
+            op: test
+            eq:
+            - household.any_work_ssn
+            - const: true
+          then: person.edu_1098t
+        - guard:
+            op: test
+            eq:
+            - household.any_work_ssn
+            - const: false
+          then: person.edu_no
+    - set:
+        line: person.edu_student_tin
+        field: cite.locator
+        from: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
+          return (including extensions)."
+        to: p. 4, Who cannot claim a credit, "5. You (or your spouse if filing jointly) and the student (if the student is
+          a dependent on your tax return) have not been issued valid SSNs before the due date of your 2026 return (including
+          extensions)."; p. 3, Identification requirement, "If the student for whom expenses were paid is a dependent (not
+          you or your spouse), the student must also have a valid SSN issued before the due date of your 2026 return (including
+          extensions)."; p. 3, Tip, "Only one spouse on a joint return is required to have a valid SSN to claim an education
+          credit. This is true even when one spouse on a joint return is the student for whom qualified education expenses
+          were paid and does not have a valid SSN."
+    - remove_line:
+        line: person.edu_student_itin
+    - set:
+        line: person.edu_aoc
+        field: label
+        from: 'An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution''s
+          EIN is available'
+        to: 'An American opportunity credit student: lines 23 to 26 allow it, you, or your spouse if filing jointly, have
+          a valid SSN, and the institution''s EIN is available'
+    - set:
+        line: person.edu_aoc
+        field: cite.locator
+        from: p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications,
+          "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)."
+        to: p. 3, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 5, Student qualifications,
+          "5. You (or your spouse if filing jointly) and the student (if the student is a dependent on your tax return) must
+          have been issued valid SSNs before the due date of your 2026 return (including extensions)."
+    - set:
+        line: person.edu_aoc23
+        field: label
+        from: For an eligible student, line 23 is No (the American opportunity credit was not claimed for 4 prior tax years),
+          and lines 24 to 26, the TINs and the EIN allow the credit
+        to: For an eligible student, line 23 is No (the American opportunity credit was not claimed for 4 prior tax years),
+          and lines 24 to 26, the valid SSN and the EIN allow the credit
+    - set:
+        line: person.edu_aoc24
+        field: label
+        from: Line 24 is Yes (enrolled at least half-time), and lines 25 and 26, the TINs and the EIN allow the credit
+        to: Line 24 is Yes (enrolled at least half-time), and lines 25 and 26, the valid SSN and the EIN allow the credit
+    - set:
+        line: person.edu_aoc25
+        field: label
+        from: Line 25 is No (the first 4 years of postsecondary education were not completed before 2025), and line 26, the
+          TINs and the EIN allow the credit
+        to: Line 25 is No (the first 4 years of postsecondary education were not completed before 2026), and line 26, the
+          valid SSN and the EIN allow the credit
+    - set:
+        line: person.edu_aoc26
+        field: label
+        from: Line 26 is No (no felony drug conviction), and the TINs and the EIN allow the credit
+        to: Line 26 is No (no felony drug conviction), and the valid SSN and the EIN allow the credit
+    - set:
+        line: person.edu_aoc_tin
+        field: label
+        from: You, and your spouse if filing jointly, have a TIN, and the institution's EIN is available
+        to: You, or your spouse if filing jointly, have a valid SSN, and the institution's EIN is available
+    - set:
+        line: person.edu_aoc_tin
+        field: expr.alternatives
+        from:
+        - guard:
+            op: test
+            eq:
+            - household.all_tin
+            - const: true
+          then: person.edu_ein
+        - guard:
+            op: test
+            eq:
+            - household.all_tin
+            - const: false
+          then: person.edu_no
+        to:
+        - guard:
+            op: test
+            eq:
+            - household.any_work_ssn
+            - const: true
+          then: person.edu_ein
+        - guard:
+            op: test
+            eq:
+            - household.any_work_ssn
+            - const: false
+          then: person.edu_no
+    - set:
+        line: person.edu_aoc_tin
+        field: cite.locator
+        from: p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025
+          return (including extensions)."
+        to: p. 5, Student qualifications, "5. You (or your spouse if filing jointly) and the student (if the student is a
+          dependent on your tax return) must have been issued valid SSNs before the due date of your 2026 return (including
+          extensions)."
+    - set:
+        line: person.edu_aoc_tin
+        field: ambiguity
+        from: amb.2025.edu_filer_tin
+        to: null
+    - set:
+        line: person.edu_line31
+        field: refuses
+        from:
+        - when: person.edu_llc_tin_refused
+          form: Lifetime learning credit for a student whose ITIN was only applied for
+          remedy: The lifetime learning credit requires the student to have been issued a TIN by the due date of the return
+            (including extensions); an ITIN only applied for by then counts as issued for the American opportunity credit
+            only. This tool does not prepare the return without the lifetime learning credit for this student.
+          cite:
+            doc: i8863
+            locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or
+              her 2025 return (including extensions)."; p970 p. 11, "If an ATIN or ITIN is applied for on or before the due
+              date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application,
+              the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return."
+        - when: person.edu_over_refused
+          form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
+          remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
+            and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
+            by period.
+          cite:
+            doc: i8863
+            locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student
+              for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated
+              as having paid) qualified education expenses in 2025."
+        to:
+        - when: person.edu_over_refused
+          form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
+          remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance
+            and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period
+            by period.
+          cite:
+            doc: i8863
+            locator: p. 10, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student
+              for each academic period beginning or treated as beginning (see below) in 2026 for which you paid (or are treated
+              as having paid) qualified education expenses in 2026."
+    - remove_line:
+        line: person.edu_llc_tin_refused
+  - change: C-CRED-20
+    evidence:
+    - doc: i8863
+      page: 2
+      quote: After February 1, 2027 (January 31 falls on a Sunday), but before you file the return, you or the student must
+        request that the educational institution furnish a Form 1098-T.
+    verified: draft
+    note: The 2026 instructions print the weekend shift themselves, which settles amb.2025.edu_1098t_date (Pub. 970 against
+      i8863); its register entry is to be retired with the register operations (plan D4, lane R3). The 2026 Pub. 970 is not
+      archived.
+    operations:
+    - set:
+        line: person.edu_1098t
+        field: label
+        from: The student received a 2025 Form 1098-T from the institution, or an exception applies
+        to: The student received a 2026 Form 1098-T from the institution, or an exception applies
+    - set:
+        line: person.edu_1098t
+        field: expr.source
+        from: Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution
+          was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships
+          or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution
+          did not furnish it and, after February 2, 2026, but before you file, you or the student requested it, you fully
+          cooperated with the institution's efforts to gather the information needed to furnish it, and you can show the enrollment
+          and the payments.
+        to: Did the student receive a 2026 Form 1098-T from the educational institution? Answer yes also if the institution
+          was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships
+          or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution
+          did not furnish it and, after February 1, 2027, but before you file, you or the student requested it, you fully
+          cooperated with the institution's efforts to gather the information needed to furnish it, and you can show the enrollment
+          and the payments.
+    - set:
+        line: person.edu_1098t
+        field: cite.locator
+        from: p. 1, Form 1098-T requirement, "To be eligible to claim the American opportunity credit or the lifetime learning
+          credit, the law requires a taxpayer (or a dependent) to have received Form 1098-T, Tuition Statement, from an eligible
+          educational institution, whether domestic or foreign."; p. 1, "You must fully cooperate with the educational institution’s
+          efforts to gather the information needed to furnish the Form 1098-T."
+        to: p. 2, Form 1098-T requirement, "To be eligible to claim the American opportunity credit or the lifetime learning
+          credit, the law requires a taxpayer (or a dependent) to have received Form 1098-T, Tuition Statement, from an eligible
+          educational institution, whether domestic or foreign."; p. 2, "After February 1, 2027 (January 31 falls on a Sunday),
+          but before you file the return, you or the student must request that the educational institution furnish a Form
+          1098-T."; p. 2, "You must fully cooperate with the educational institution’s efforts to gather the information needed
+          to furnish the Form 1098-T."
+    - set:
+        line: person.edu_1098t
+        field: ambiguity
+        from: amb.2025.edu_1098t_date
+        to: null
+    - set_question:
+        input: person.edu_1098t
+        field: prompt
+        from: For this person (you, or your spouse on a joint return) — Did the school send this person a Form 1098-T (Tuition
+          Statement) for 2025?
+        to: For this person (you, or your spouse on a joint return) — Did the school send this person a Form 1098-T (Tuition
+          Statement) for 2026?
+    - set_question:
+        input: person.edu_1098t
+        field: help
+        from: Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses
+          gave no academic credit), or if it was asked for after February 2, 2026, the school was given what it needed to
+          prepare it, and the enrollment and the payments can be shown.
+        to: Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses
+          gave no academic credit), or if it was asked for after February 1, 2027, the school was given what it needed to
+          prepare it, and the enrollment and the payments can be shown.
+  - change: C-PEOP-17
+    evidence:
+    - doc: f8863
+      page: 3
+      quote: 24 Was the student enrolled at least half-time for at least 1 academic period that began or is treated as having
+        begun in 2026
+    - doc: i8863
+      page: 9
+      quote: you were a full-time student for 2026 if during any part of any 5 calendar months during the year you were enrolled
+        as a full-time student at an eligible educational institution (defined earlier) or took a full-time, on-farm training
+        course given by such an institution or by a state, county, or local government agency.
+    verified: draft
+    operations:
+    - set:
+        line: person.edu_line24
+        field: label
+        from: Was the student enrolled at least half-time for at least one academic period that began or is treated as having
+          begun in 2025 at an eligible educational institution in a program leading toward a postsecondary degree, certificate,
+          or other recognized postsecondary educational credential?
+        to: Was the student enrolled at least half-time for at least 1 academic period that began or is treated as having
+          begun in 2026 at an eligible educational institution in a program leading toward a postsecondary degree, certificate,
+          or other recognized postsecondary educational credential?
+    - set:
+        line: person.edu_line24
+        field: expr.source
+        from: Was the student enrolled at least half-time (Form 1098-T box 8) for at least one academic period that began
+          in 2025, or in the first 3 months of 2026 if paid for in 2025, at an eligible educational institution, in a program
+          leading toward a postsecondary degree, certificate or other recognized postsecondary educational credential?
+        to: Was the student enrolled at least half-time (Form 1098-T box 8) for at least one academic period that began in
+          2026, or in the first 3 months of 2027 if paid for in 2026, at an eligible educational institution, in a program
+          leading toward a postsecondary degree, certificate or other recognized postsecondary educational credential?
+    - set:
+        line: person.edu_line24
+        field: cite.locator
+        from: p. 2, Part III, line 24, "Was the student enrolled at least half-time for at least one academic period that
+          began or is treated as having begun in 2025 at an eligible educational institution in a program leading toward a
+          postsecondary degree, certificate, or other recognized postsecondary educational credential?"; i8863 p. 8, Line
+          24
+        to: p. 3, Part III, line 24, "Was the student enrolled at least half-time for at least 1 academic period that began
+          or is treated as having begun in 2026 at an eligible educational institution in a program leading toward a postsecondary
+          degree, certificate, or other recognized postsecondary educational credential?"; i8863 p. 9, Line 24
+    - set_question:
+        input: person.edu_line24
+        field: prompt
+        from: For this person (you, or your spouse on a joint return) — For at least one term that began in 2025, was this
+          person's enrollment at least half-time, in a program leading to a degree or certificate? (Form 1098-T box 8 is checked
+          if so.)
+        to: For this person (you, or your spouse on a joint return) — For at least one term that began in 2026, was this person's
+          enrollment at least half-time, in a program leading to a degree or certificate? (Form 1098-T box 8 is checked if
+          so.)
+    - set_question:
+        input: person.edu_line24
+        field: help
+        from: A term that began in January to March 2026 also counts if it was paid for in 2025.
+        to: A term that began in January to March 2027 also counts if it was paid for in 2026.
+    - set:
+        line: person.edu_fulltime
+        field: label
+        from: A full-time student for 2025 (any part of 5 calendar months at an eligible educational institution)
+        to: A full-time student for 2026 (any part of 5 calendar months at an eligible educational institution)
+    - set:
+        line: person.edu_fulltime
+        field: expr.source
+        from: 'Were you a full-time student for 2025: during any part of any 5 calendar months of 2025, were you enrolled
+          as a full-time student at an eligible educational institution, or did you take a full-time, on-farm training course
+          given by such an institution or by a state, county, or local government agency?'
+        to: 'Were you a full-time student for 2026: during any part of any 5 calendar months of 2026, were you enrolled as
+          a full-time student at an eligible educational institution, or did you take a full-time, on-farm training course
+          given by such an institution or by a state, county, or local government agency?'
+    - set:
+        line: person.edu_fulltime
+        field: cite.locator
+        from: p. 7, Full-time student, "you were a full-time student for 2025 if during any part of any 5 calendar months
+          during the year you were enrolled as a full-time student at an eligible educational institution (defined earlier),
+          or took a full-time, on-farm training course given by such an institution or by a state, county, or local government
+          agency."
+        to: p. 9, Full-time student, "you were a full-time student for 2026 if during any part of any 5 calendar months during
+          the year you were enrolled as a full-time student at an eligible educational institution (defined earlier) or took
+          a full-time, on-farm training course given by such an institution or by a state, county, or local government agency."
+    - set_question:
+        input: person.edu_fulltime
+        field: prompt
+        from: For this person (you, or your spouse on a joint return) — Were you a full-time student during some part of at
+          least five months of 2025?
+        to: For this person (you, or your spouse on a joint return) — Were you a full-time student during some part of at
+          least five months of 2026?

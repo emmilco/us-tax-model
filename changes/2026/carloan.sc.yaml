@@ -1,0 +1,20 @@
+changes:
+  tax_year: 2026
+  form: carloan
+  entries:
+  - change: C-BUS-02
+    evidence:
+    - doc: i1040sc
+      page: 2
+      quote: New Line 16b, Vehicle loan interest. Use line 16b to report the business-use portion of your vehicle loan interest.
+    verified: draft
+    note: 'Column (ii) stays an input per loan: a loan entry (carloan) and a business''s vehicle (scveh) are separate collections
+      that no line may join (spec 4.4), so it is not read from Schedule C line 16b. The citation of carloan.col_ii_input (the
+      caution moved to i1040sc p. 9, Line 16b) is left to C-SCHED-07 (wording lane), so the two files do not set the same
+      field.'
+    operations:
+    - set:
+        line: carloan.col_ii_input
+        field: expr.source
+        from: The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)
+        to: The part of this loan's 2026 interest you deduct on Schedule C, line 16b (the business-use portion; zero if none)

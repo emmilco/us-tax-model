@@ -1,0 +1,1174 @@
+changes:
+  tax_year: 2026
+  form: s1a
+  entries:
+  - change: C-SCHED-01
+    evidence:
+    - doc: f1040s1a
+      page: 2
+      quote: Subtract line 11 from line 10. If zero or less, enter the amount from line 9 on line 15
+    - doc: f1040s1a
+      page: 3
+      quote: Qualified overtime compensation deduction. Subtract line 26 from line 21. If zero or less, enter -0-
+    - doc: f1040s1a
+      page: 4
+      quote: Add lines 28a and 28b, column (iii)
+    - doc: f1040s1a
+      page: 4
+      quote: Subtract line 38 from line 37. If zero or less, enter $6,000 on line 41
+    - doc: f1040s1a
+      page: 4
+      quote: Add lines 15, 27, 36, and 43. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 13a
+    verified: draft
+    note: 'Renumbering of every line from 2025 line 6 on (6 to 8, 7 to 9, ..., 38 to 44); labels and the Schedule 1-A citations
+      follow the 2026 draft''s numbers. Citations to the 2025 i1040gi are left as they are: no 2026 i1040gi is archived, so
+      their pages and words wait for it. The decedent window (the died_before_65 lines) waits for the same reason. The Form
+      1040 reader of line 44 is f1040.yaml C-PRI-02.'
+    operations:
+    - set_form:
+        field: note
+        from: For a single, head of household, qualifying surviving spouse or married filing jointly return (married filing
+          separately is refused through s3.mfs). Tips and overtime as an employee only, by the methods the instructions give
+          for 2025; tips or overtime in a trade or business, Form 4137, and excluded Puerto Rico income or Forms 2555 and
+          4563 are refused. Lines 11, 19 and 28 (a whole number of $1,000 units) are kept as that many thousands of dollars;
+          lines 12, 20 and 29 multiply them by $100 or $200 per thousand.
+        to: For a single, head of household, qualifying surviving spouse or married filing jointly return (married filing
+          separately is refused through s3.mfs). Tips and overtime as an employee only, by the methods the 2025 instructions
+          give; tips or overtime in a trade or business, Form 4137, and excluded Puerto Rico income or Forms 2555 and 4563
+          are refused. Lines 13, 25 and 34 (a whole number of $1,000 units) are kept as that many thousands of dollars; lines
+          14, 26 and 35 multiply them by $100 or $200 per thousand.
+    - set:
+        line: s1a.line6_calc
+        field: label
+        from: 'Figured: Add lines 4c and 5'
+        to: 'Figured: Add lines 5 and 7'
+    - set:
+        line: s1a.line6_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 6
+        to: Schedule 1-A (2026), line 8 (draft)
+    - set:
+        line: s1a.line6
+        field: printed
+        from: '6'
+        to: '8'
+    - set:
+        line: s1a.line6
+        field: label
+        from: Add lines 4c and 5
+        to: Add lines 5 and 7
+    - set:
+        line: s1a.line7_calc
+        field: label
+        from: 'Figured: Enter the smaller of the amount on line 6 or $25,000'
+        to: 'Figured: Enter the smaller of the amount on line 8 or $25,000'
+    - set:
+        line: s1a.line7_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 7
+        to: Schedule 1-A (2026), line 9 (draft)
+    - set:
+        line: s1a.line7
+        field: printed
+        from: '7'
+        to: '9'
+    - set:
+        line: s1a.line7
+        field: label
+        from: Enter the smaller of the amount on line 6 or $25,000
+        to: Enter the smaller of the amount on line 8 or $25,000
+    - set:
+        line: s1a.line8_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 8
+        to: Schedule 1-A (2026), line 10 (draft)
+    - set:
+        line: s1a.line8
+        field: printed
+        from: '8'
+        to: '10'
+    - set:
+        line: s1a.line9_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 9
+        to: Schedule 1-A (2026), line 11 (draft)
+    - set:
+        line: s1a.line9
+        field: printed
+        from: '9'
+        to: '11'
+    - set:
+        line: s1a.line10_calc
+        field: label
+        from: 'Figured: Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13'
+        to: 'Figured: Subtract line 11 from line 10. If zero or less, enter the amount from line 9 on line 15'
+    - set:
+        line: s1a.line10_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 10
+        to: Schedule 1-A (2026), line 12 (draft)
+    - set:
+        line: s1a.line10
+        field: printed
+        from: '10'
+        to: '12'
+    - set:
+        line: s1a.line10
+        field: label
+        from: Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13
+        to: Subtract line 11 from line 10. If zero or less, enter the amount from line 9 on line 15
+    - set:
+        line: s1a.line10_over
+        field: label
+        from: Is the amount on line 8 more than the amount on line 9?
+        to: Is the amount on line 10 more than the amount on line 11?
+    - set:
+        line: s1a.line10_over
+        field: cite.locator
+        from: Schedule 1-A (2025), line 10, "If zero or less"
+        to: Schedule 1-A (2026), line 12 (draft), "If zero or less"
+    - set:
+        line: s1a.line10_pos
+        field: label
+        from: Line 10 if more than zero, otherwise zero
+        to: Line 12 if more than zero, otherwise zero
+    - set:
+        line: s1a.line10_pos
+        field: cite.locator
+        from: Schedule 1-A (2025), line 10, "Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on
+          line 13"
+        to: Schedule 1-A (2026), line 12 (draft), "Subtract line 11 from line 10. If zero or less, enter the amount from line
+          9 on line 15"
+    - set:
+        line: s1a.line11_thousands
+        field: label
+        from: Line 11. Divide line 10 by $1,000, decreasing the result to the next lower whole number (kept as that many thousands
+          of dollars)
+        to: Line 13. Divide line 12 by $1,000, decreasing the result to the next lower whole number (kept as that many thousands
+          of dollars)
+    - set:
+        line: s1a.line11_thousands
+        field: cite.locator
+        from: Schedule 1-A (2025), line 11 (the whole number of $1,000 units, kept as that many thousands of dollars)
+        to: Schedule 1-A (2026), line 13 (draft) (the whole number of $1,000 units, kept as that many thousands of dollars)
+    - set:
+        line: s1a.line12_calc
+        field: label
+        from: 'Figured: Multiply line 11 by $100'
+        to: 'Figured: Multiply line 13 by $100'
+    - set:
+        line: s1a.line12_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 12, "Multiply line 11 by $100"
+        to: Schedule 1-A (2026), line 14 (draft), "Multiply line 13 by $100"
+    - set:
+        line: s1a.line12
+        field: printed
+        from: '12'
+        to: '14'
+    - set:
+        line: s1a.line12
+        field: label
+        from: Multiply line 11 by $100
+        to: Multiply line 13 by $100
+    - set:
+        line: s1a.line13_figured
+        field: label
+        from: Subtract line 12 from line 7. If zero or less, enter -0-
+        to: Subtract line 14 from line 9. If zero or less, enter -0-
+    - set:
+        line: s1a.line13_figured
+        field: cite.locator
+        from: Schedule 1-A (2025), line 13
+        to: Schedule 1-A (2026), line 15 (draft)
+    - set:
+        line: s1a.line13_amount
+        field: label
+        from: Line 13 when Part II applies
+        to: Line 15 when Part II applies
+    - set:
+        line: s1a.line13_ssn
+        field: label
+        from: 'Line 13 with qualified tips: zero unless a person who received them has a valid SSN'
+        to: 'Line 15 with qualified tips: zero unless a person who received them has a valid SSN'
+    - set:
+        line: s1a.line13_claim
+        field: label
+        from: 'Line 13 with qualified tips: zero for married filing separately'
+        to: 'Line 15 with qualified tips: zero for married filing separately'
+    - set:
+        line: s1a.line13
+        field: printed
+        from: '13'
+        to: '15'
+    - set:
+        line: s1a.line13
+        field: label
+        from: Qualified tips deduction. Subtract line 12 from line 7. If zero or less, enter -0-
+        to: Qualified tips deduction. Subtract line 14 from line 9. If zero or less, enter -0-
+    - set:
+        line: s1a.line13
+        field: cite.locator
+        from: Schedule 1-A (2025), line 13; i1040gi p. 101, "Fill out Schedule 1-A, Part II, only if"
+        to: Schedule 1-A (2026), line 15 (draft); i1040gi p. 101, "Fill out Schedule 1-A, Part II, only if"
+    - set:
+        line: s1a.line15_calc
+        field: label
+        from: 'Figured: Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)'
+        to: 'Figured: Enter the smaller of the amount on line 20 or $12,500 ($25,000 if married filing jointly)'
+    - set:
+        line: s1a.line15_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 15
+        to: Schedule 1-A (2026), line 21 (draft)
+    - set:
+        line: s1a.line15
+        field: printed
+        from: '15'
+        to: '21'
+    - set:
+        line: s1a.line15
+        field: label
+        from: Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)
+        to: Enter the smaller of the amount on line 20 or $12,500 ($25,000 if married filing jointly)
+    - set:
+        line: s1a.line16_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 16
+        to: Schedule 1-A (2026), line 22 (draft)
+    - set:
+        line: s1a.line16
+        field: printed
+        from: '16'
+        to: '22'
+    - set:
+        line: s1a.line17_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 17
+        to: Schedule 1-A (2026), line 23 (draft)
+    - set:
+        line: s1a.line17
+        field: printed
+        from: '17'
+        to: '23'
+    - set:
+        line: s1a.line18_calc
+        field: label
+        from: 'Figured: Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21'
+        to: 'Figured: Subtract line 23 from line 22. If zero or less, enter the amount from line 21 on line 27'
+    - set:
+        line: s1a.line18_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 18
+        to: Schedule 1-A (2026), line 24 (draft)
+    - set:
+        line: s1a.line18
+        field: printed
+        from: '18'
+        to: '24'
+    - set:
+        line: s1a.line18
+        field: label
+        from: Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21
+        to: Subtract line 23 from line 22. If zero or less, enter the amount from line 21 on line 27
+    - set:
+        line: s1a.line18_over
+        field: label
+        from: Is the amount on line 16 more than the amount on line 17?
+        to: Is the amount on line 22 more than the amount on line 23?
+    - set:
+        line: s1a.line18_over
+        field: cite.locator
+        from: Schedule 1-A (2025), line 18, "If zero or less"
+        to: Schedule 1-A (2026), line 24 (draft), "If zero or less"
+    - set:
+        line: s1a.line18_pos
+        field: label
+        from: Line 18 if more than zero, otherwise zero
+        to: Line 24 if more than zero, otherwise zero
+    - set:
+        line: s1a.line18_pos
+        field: cite.locator
+        from: Schedule 1-A (2025), line 18, "Subtract line 17 from line 16. If zero or less, enter the amount from line 15
+          on line 21"
+        to: Schedule 1-A (2026), line 24 (draft), "Subtract line 23 from line 22. If zero or less, enter the amount from line
+          21 on line 27"
+    - set:
+        line: s1a.line19_thousands
+        field: label
+        from: Line 19. Divide line 18 by $1,000, decreasing the result to the next lower whole number (kept as that many thousands
+          of dollars)
+        to: Line 25. Divide line 24 by $1,000, decreasing the result to the next lower whole number (kept as that many thousands
+          of dollars)
+    - set:
+        line: s1a.line19_thousands
+        field: cite.locator
+        from: Schedule 1-A (2025), line 19 (the whole number of $1,000 units, kept as that many thousands of dollars)
+        to: Schedule 1-A (2026), line 25 (draft) (the whole number of $1,000 units, kept as that many thousands of dollars)
+    - set:
+        line: s1a.line20_calc
+        field: label
+        from: 'Figured: Multiply line 19 by $100'
+        to: 'Figured: Multiply line 25 by $100'
+    - set:
+        line: s1a.line20_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 20, "Multiply line 19 by $100"
+        to: Schedule 1-A (2026), line 26 (draft), "Multiply line 25 by $100"
+    - set:
+        line: s1a.line20
+        field: printed
+        from: '20'
+        to: '26'
+    - set:
+        line: s1a.line20
+        field: label
+        from: Multiply line 19 by $100
+        to: Multiply line 25 by $100
+    - set:
+        line: s1a.line21_figured
+        field: label
+        from: Subtract line 20 from line 15. If zero or less, enter -0-
+        to: Subtract line 26 from line 21. If zero or less, enter -0-
+    - set:
+        line: s1a.line21_figured
+        field: cite.locator
+        from: Schedule 1-A (2025), line 21
+        to: Schedule 1-A (2026), line 27 (draft)
+    - set:
+        line: s1a.line21_amount
+        field: label
+        from: Line 21 when Part III applies
+        to: Line 27 when Part III applies
+    - set:
+        line: s1a.line21_ssn
+        field: label
+        from: 'Line 21 with qualified overtime: zero unless a person who received it has a valid SSN'
+        to: 'Line 27 with qualified overtime: zero unless a person who received it has a valid SSN'
+    - set:
+        line: s1a.line21_claim
+        field: label
+        from: 'Line 21 with qualified overtime: zero for married filing separately'
+        to: 'Line 27 with qualified overtime: zero for married filing separately'
+    - set:
+        line: s1a.line21
+        field: printed
+        from: '21'
+        to: '27'
+    - set:
+        line: s1a.line21
+        field: label
+        from: Qualified overtime compensation deduction. Subtract line 20 from line 15. If zero or less, enter -0-
+        to: Qualified overtime compensation deduction. Subtract line 26 from line 21. If zero or less, enter -0-
+    - set:
+        line: s1a.line21
+        field: cite.locator
+        from: Schedule 1-A (2025), line 21; i1040gi p. 106, "Fill out Schedule 1-A, Part III, only if"
+        to: Schedule 1-A (2026), line 27 (draft); i1040gi p. 106, "Fill out Schedule 1-A, Part III, only if"
+    - set:
+        line: s1a.line23_total
+        field: label
+        from: Add lines 22a and 22b, column (iii), and any further loans on the attached statement
+        to: Add lines 28a and 28b, column (iii), and any further loans on the attached statement
+    - set:
+        line: s1a.line23
+        field: printed
+        from: '23'
+        to: '29'
+    - set:
+        line: s1a.line23
+        field: label
+        from: Add lines 22a and 22b, column (iii)
+        to: Add lines 28a and 28b, column (iii)
+    - set:
+        line: s1a.line23
+        field: cite.locator
+        from: Schedule 1-A (2025), line 23
+        to: Schedule 1-A (2026), line 29 (draft)
+    - set:
+        line: s1a.line24_calc
+        field: label
+        from: 'Figured: Enter the smaller of the amount on line 23 or $10,000'
+        to: 'Figured: Enter the smaller of the amount on line 29 or $10,000'
+    - set:
+        line: s1a.line24_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 24
+        to: Schedule 1-A (2026), line 30 (draft)
+    - set:
+        line: s1a.line24
+        field: printed
+        from: '24'
+        to: '30'
+    - set:
+        line: s1a.line24
+        field: label
+        from: Enter the smaller of the amount on line 23 or $10,000
+        to: Enter the smaller of the amount on line 29 or $10,000
+    - set:
+        line: s1a.line25_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 25
+        to: Schedule 1-A (2026), line 31 (draft)
+    - set:
+        line: s1a.line25
+        field: printed
+        from: '25'
+        to: '31'
+    - set:
+        line: s1a.line26_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 26
+        to: Schedule 1-A (2026), line 32 (draft)
+    - set:
+        line: s1a.line26
+        field: printed
+        from: '26'
+        to: '32'
+    - set:
+        line: s1a.line27_calc
+        field: label
+        from: 'Figured: Subtract line 26 from line 25. If zero or less, enter the amount from line 24 on line 30'
+        to: 'Figured: Subtract line 32 from line 31. If zero or less, enter the amount from line 30 on line 36'
+    - set:
+        line: s1a.line27_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 27
+        to: Schedule 1-A (2026), line 33 (draft)
+    - set:
+        line: s1a.line27
+        field: printed
+        from: '27'
+        to: '33'
+    - set:
+        line: s1a.line27
+        field: label
+        from: Subtract line 26 from line 25. If zero or less, enter the amount from line 24 on line 30
+        to: Subtract line 32 from line 31. If zero or less, enter the amount from line 30 on line 36
+    - set:
+        line: s1a.line27_over
+        field: label
+        from: Is the amount on line 25 more than the amount on line 26?
+        to: Is the amount on line 31 more than the amount on line 32?
+    - set:
+        line: s1a.line27_over
+        field: cite.locator
+        from: Schedule 1-A (2025), line 27, "If zero or less"
+        to: Schedule 1-A (2026), line 33 (draft), "If zero or less"
+    - set:
+        line: s1a.line27_pos
+        field: label
+        from: Line 27 if more than zero, otherwise zero
+        to: Line 33 if more than zero, otherwise zero
+    - set:
+        line: s1a.line27_pos
+        field: cite.locator
+        from: Schedule 1-A (2025), line 27, "Subtract line 26 from line 25. If zero or less, enter the amount from line 24
+          on line 30"
+        to: Schedule 1-A (2026), line 33 (draft), "Subtract line 32 from line 31. If zero or less, enter the amount from line
+          30 on line 36"
+    - set:
+        line: s1a.line28_thousands
+        field: label
+        from: Line 28. Divide line 27 by $1,000, increasing the result to the next higher whole number (kept as that many
+          thousands of dollars)
+        to: Line 34. Divide line 33 by $1,000, increasing the result to the next higher whole number (kept as that many thousands
+          of dollars)
+    - set:
+        line: s1a.line28_thousands
+        field: cite.locator
+        from: Schedule 1-A (2025), line 28 (the whole number of $1,000 units, kept as that many thousands of dollars)
+        to: Schedule 1-A (2026), line 34 (draft) (the whole number of $1,000 units, kept as that many thousands of dollars)
+    - set:
+        line: s1a.line29_calc
+        field: label
+        from: 'Figured: Multiply line 28 by $200'
+        to: 'Figured: Multiply line 34 by $200'
+    - set:
+        line: s1a.line29_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 29, "Multiply line 28 by $200"
+        to: Schedule 1-A (2026), line 35 (draft), "Multiply line 34 by $200"
+    - set:
+        line: s1a.line29
+        field: printed
+        from: '29'
+        to: '35'
+    - set:
+        line: s1a.line29
+        field: label
+        from: Multiply line 28 by $200
+        to: Multiply line 34 by $200
+    - set:
+        line: s1a.line30_figured
+        field: label
+        from: Subtract line 29 from line 24. If zero or less, enter -0-
+        to: Subtract line 35 from line 30. If zero or less, enter -0-
+    - set:
+        line: s1a.line30_figured
+        field: cite.locator
+        from: Schedule 1-A (2025), line 30
+        to: Schedule 1-A (2026), line 36 (draft)
+    - set:
+        line: s1a.line30_amount
+        field: label
+        from: Line 30 when Part IV applies
+        to: Line 36 when Part IV applies
+    - set:
+        line: s1a.line30
+        field: printed
+        from: '30'
+        to: '36'
+    - set:
+        line: s1a.line30
+        field: label
+        from: Qualified passenger vehicle loan interest deduction. Subtract line 29 from line 24. If zero or less, enter -0-
+        to: Qualified passenger vehicle loan interest deduction. Subtract line 35 from line 30. If zero or less, enter -0-
+    - set:
+        line: s1a.line31_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 31
+        to: Schedule 1-A (2026), line 37 (draft)
+    - set:
+        line: s1a.line31
+        field: printed
+        from: '31'
+        to: '37'
+    - set:
+        line: s1a.line32_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 32
+        to: Schedule 1-A (2026), line 38 (draft)
+    - set:
+        line: s1a.line32
+        field: printed
+        from: '32'
+        to: '38'
+    - set:
+        line: s1a.line33_calc
+        field: label
+        from: 'Figured: Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35'
+        to: 'Figured: Subtract line 38 from line 37. If zero or less, enter $6,000 on line 41'
+    - set:
+        line: s1a.line33_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 33
+        to: Schedule 1-A (2026), line 39 (draft)
+    - set:
+        line: s1a.line33
+        field: printed
+        from: '33'
+        to: '39'
+    - set:
+        line: s1a.line33
+        field: label
+        from: Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35
+        to: Subtract line 38 from line 37. If zero or less, enter $6,000 on line 41
+    - set:
+        line: s1a.line33_over
+        field: label
+        from: Is the amount on line 31 more than the amount on line 32?
+        to: Is the amount on line 37 more than the amount on line 38?
+    - set:
+        line: s1a.line33_over
+        field: cite.locator
+        from: Schedule 1-A (2025), line 33, "If zero or less, enter $6,000 on line 35"
+        to: Schedule 1-A (2026), line 39 (draft), "If zero or less, enter $6,000 on line 41"
+    - set:
+        line: s1a.line33_pos
+        field: label
+        from: Line 33 if more than zero, otherwise zero
+        to: Line 39 if more than zero, otherwise zero
+    - set:
+        line: s1a.line33_pos
+        field: cite.locator
+        from: Schedule 1-A (2025), line 33, "Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35"
+        to: Schedule 1-A (2026), line 39 (draft), "Subtract line 38 from line 37. If zero or less, enter $6,000 on line 41"
+    - set:
+        line: s1a.line34_calc
+        field: label
+        from: 'Figured: Multiply line 33 by 6% (0.06)'
+        to: 'Figured: Multiply line 39 by 6% (0.06)'
+    - set:
+        line: s1a.line34_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 34
+        to: Schedule 1-A (2026), line 40 (draft)
+    - set:
+        line: s1a.line34
+        field: printed
+        from: '34'
+        to: '40'
+    - set:
+        line: s1a.line34
+        field: label
+        from: Multiply line 33 by 6% (0.06)
+        to: Multiply line 39 by 6% (0.06)
+    - set:
+        line: s1a.line35_figured
+        field: label
+        from: Subtract line 34 from $6,000. If zero or less, enter -0-
+        to: Subtract line 40 from $6,000. If zero or less, enter -0-
+    - set:
+        line: s1a.line35_figured
+        field: cite.locator
+        from: Schedule 1-A (2025), line 35
+        to: Schedule 1-A (2026), line 41 (draft)
+    - set:
+        line: s1a.line35_calc
+        field: label
+        from: 'Figured: Subtract line 34 from $6,000. If zero or less, enter -0-'
+        to: 'Figured: Subtract line 40 from $6,000. If zero or less, enter -0-'
+    - set:
+        line: s1a.line35_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 35, "Subtract line 34 from $6,000. If zero or less, enter -0-", line 33, "If zero
+          or less, enter $6,000 on line 35"
+        to: Schedule 1-A (2026), line 41 (draft), "Subtract line 40 from $6,000. If zero or less, enter -0-", line 39, "If
+          zero or less, enter $6,000 on line 41"
+    - set:
+        line: s1a.line35
+        field: printed
+        from: '35'
+        to: '41'
+    - set:
+        line: s1a.line35
+        field: label
+        from: Subtract line 34 from $6,000. If zero or less, enter -0-
+        to: Subtract line 40 from $6,000. If zero or less, enter -0-
+    - set:
+        line: s1a.line36a_senior
+        field: cite.locator
+        from: Schedule 1-A (2025), line 36a
+        to: Schedule 1-A (2026), line 42a (draft)
+    - set:
+        line: s1a.line36a
+        field: printed
+        from: 36a
+        to: 42a
+    - set:
+        line: s1a.line36a
+        field: cite.locator
+        from: Schedule 1-A (2025), line 36a
+        to: Schedule 1-A (2026), line 42a (draft)
+    - set:
+        line: s1a.line36b_senior
+        field: cite.locator
+        from: Schedule 1-A (2025), line 36b
+        to: Schedule 1-A (2026), line 42b (draft)
+    - set:
+        line: s1a.line36b
+        field: printed
+        from: 36b
+        to: 42b
+    - set:
+        line: s1a.line36b
+        field: cite.locator
+        from: Schedule 1-A (2025), line 36b; i1040gi p. 110, "The maximum amount of the enhanced deduction for seniors is
+          $6,000 per person"
+        to: Schedule 1-A (2026), line 42b (draft); i1040gi p. 110, "The maximum amount of the enhanced deduction for seniors
+          is $6,000 per person"
+    - set:
+        line: s1a.line37
+        field: printed
+        from: '37'
+        to: '43'
+    - set:
+        line: s1a.line37
+        field: label
+        from: Enhanced deduction for seniors. Add lines 36a and 36b
+        to: Enhanced deduction for seniors. Add lines 42a and 42b
+    - set:
+        line: s1a.line37
+        field: cite.locator
+        from: Schedule 1-A (2025), line 37
+        to: Schedule 1-A (2026), line 43 (draft)
+    - set:
+        line: s1a.line38
+        field: printed
+        from: '38'
+        to: '44'
+    - set:
+        line: s1a.line38
+        field: label
+        from: Add lines 13, 21, 30, and 37. Enter here and on Form 1040 or 1040-SR, line 13b, or on Form 1040-NR, line 13c
+        to: Add lines 15, 27, 36, and 43. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 13a
+    - set:
+        line: s1a.line38
+        field: cite.locator
+        from: Schedule 1-A (2025), line 38
+        to: Schedule 1-A (2026), line 44 (draft)
+  - change: C-SCHED-02
+    evidence:
+    - doc: f1040s1a
+      page: 2
+      quote: Enter the smaller of the amount on line 8 or $25,000
+    - doc: f1040s1a
+      page: 2
+      quote: Enter $150,000 ($300,000 if married filing jointly)
+    - doc: f1040s1a
+      page: 3
+      quote: Enter the smaller of the amount on line 20 or $12,500 ($25,000 if married filing jointly)
+    - doc: f1040s1a
+      page: 4
+      quote: Enter the smaller of the amount on line 29 or $10,000
+    - doc: f1040s1a
+      page: 4
+      quote: Enter $100,000 ($200,000 if married filing jointly)
+    - doc: f1040s1a
+      page: 4
+      quote: Enter $75,000 ($150,000 if married filing jointly)
+    - doc: f1040s1a
+      page: 4
+      quote: Subtract line 40 from $6,000. If zero or less, enter -0-
+    verified: draft
+    note: The limits are printed unchanged; only the lines that cite them move. Their values stay with the parameter lane.
+    operations:
+    - set:
+        line: s1a.tips_max
+        field: cite.locator
+        from: Schedule 1-A (2025), line 7, $25,000
+        to: Schedule 1-A (2026), line 9 (draft), $25,000
+    - set:
+        line: s1a.base_other
+        field: cite.locator
+        from: Schedule 1-A (2025), lines 9 and 17, $150,000
+        to: Schedule 1-A (2026), lines 11 and 23 (draft), $150,000
+    - set:
+        line: s1a.base_joint
+        field: cite.locator
+        from: Schedule 1-A (2025), lines 9 and 17, $300,000
+        to: Schedule 1-A (2026), lines 11 and 23 (draft), $300,000
+    - set:
+        line: s1a.ot_max_other
+        field: cite.locator
+        from: Schedule 1-A (2025), line 15, $12,500
+        to: Schedule 1-A (2026), line 21 (draft), $12,500
+    - set:
+        line: s1a.ot_max_joint
+        field: cite.locator
+        from: Schedule 1-A (2025), line 15, $25,000
+        to: Schedule 1-A (2026), line 21 (draft), $25,000
+    - set:
+        line: s1a.ot_max
+        field: cite.locator
+        from: Schedule 1-A (2025), line 15
+        to: Schedule 1-A (2026), line 21 (draft)
+    - set:
+        line: s1a.car_max
+        field: cite.locator
+        from: Schedule 1-A (2025), line 24, $10,000
+        to: Schedule 1-A (2026), line 30 (draft), $10,000
+    - set:
+        line: s1a.car_base_other
+        field: cite.locator
+        from: Schedule 1-A (2025), line 26, $100,000
+        to: Schedule 1-A (2026), line 32 (draft), $100,000
+    - set:
+        line: s1a.car_base_joint
+        field: cite.locator
+        from: Schedule 1-A (2025), line 26, $200,000
+        to: Schedule 1-A (2026), line 32 (draft), $200,000
+    - set:
+        line: s1a.senior_base_other
+        field: cite.locator
+        from: Schedule 1-A (2025), line 32, $75,000
+        to: Schedule 1-A (2026), line 38 (draft), $75,000
+    - set:
+        line: s1a.senior_base_joint
+        field: cite.locator
+        from: Schedule 1-A (2025), line 32, $150,000
+        to: Schedule 1-A (2026), line 38 (draft), $150,000
+    - set:
+        line: s1a.senior_amount
+        field: cite.locator
+        from: Schedule 1-A (2025), lines 33 and 35, $6,000
+        to: Schedule 1-A (2026), lines 39 and 41 (draft), $6,000
+  - change: C-SCHED-03
+    evidence:
+    - doc: f1040s1a
+      page: 2
+      quote: Qualified tips received as an employee.
+    - doc: f1040s1a
+      page: 2
+      quote: (iii) Qualified tips included in Form W-2, box 12, code “TP” (see instructions)
+    - doc: f1040s1a
+      page: 2
+      quote: Add lines 4a through 4e, column (v)
+    verified: draft
+    note: 'Lines 4a to 4c (W-2 box 7, Form 4137, and the one-employer or worksheet amount) are replaced by employer rows 4a
+      to 4e, which the tipjob collection already is: line 5 (id s1a.line4c, the line that fed the total before) now adds column
+      (v) of every row. The one-employer path and the worksheet''s column (b) total go. Form 4137 stays refused through tipjob.col_c
+      (column (iv)). How code TP amounts are determined (''see instructions'') waits for the 2026 i1040gi.'
+    operations:
+    - remove_line:
+        line: s1a.tip_employers
+    - remove_line:
+        line: s1a.tip_reported
+    - remove_line:
+        line: s1a.tip_multi
+    - remove_line:
+        line: s1a.line4a_calc
+    - remove_line:
+        line: s1a.line4a
+    - remove_line:
+        line: s1a.line4b_calc
+    - remove_line:
+        line: s1a.line4b
+    - remove_line:
+        line: s1a.line4c_one
+    - set:
+        line: s1a.tip_total
+        field: label
+        from: Worksheet line 2. Add lines 1A through 1E, column (d)
+        to: Lines 4a through 4e, column (v), for each person with a valid SSN who received the tips
+    - set:
+        line: s1a.tip_total
+        field: cite.doc
+        from: i1040gi
+        to: f1040s1a
+    - set:
+        line: s1a.tip_total
+        field: cite.locator
+        from: p. 104, Qualified Tips From More Than One Employer Worksheet, line 2
+        to: Schedule 1-A (2026), line 4, column (v) (draft), "Enter the larger of column (iii) or column (iv)"; Part II caution,
+          "You and/or your spouse who received qualified tips must have a valid social security number to claim the deduction"
+    - set:
+        line: s1a.line4c_calc
+        field: label
+        from: 'Figured: If you only received qualified tips as an employee with respect to employment with one employer, enter
+          the larger of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c'
+        to: 'Figured: Add lines 4a through 4e, column (v)'
+    - set:
+        line: s1a.line4c_calc
+        field: expr
+        from:
+          op: choose
+          alternatives:
+          - guard:
+              op: test
+              eq:
+              - s1a.tip_multi
+              - const: true
+            then: s1a.tip_total
+          - guard:
+              op: test
+              eq:
+              - s1a.tip_multi
+              - const: false
+            then: s1a.line4c_one
+        to:
+          op: copy
+          from: s1a.tip_total
+    - set:
+        line: s1a.line4c_calc
+        field: cite.doc
+        from: i1040gi
+        to: f1040s1a
+    - set:
+        line: s1a.line4c_calc
+        field: cite.locator
+        from: p. 104, Schedule 1-A, line 4c, and the Qualified Tips From More Than One Employer Worksheet
+        to: Schedule 1-A (2026), line 5 (draft), "Add lines 4a through 4e, column (v)"
+    - set:
+        line: s1a.line4c
+        field: printed
+        from: 4c
+        to: '5'
+    - set:
+        line: s1a.line4c
+        field: label
+        from: If you only received qualified tips as an employee with respect to employment with one employer, enter the larger
+          of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c
+        to: Add lines 4a through 4e, column (v)
+  - change: C-SCHED-04
+    evidence:
+    - doc: f1040s1a
+      page: 2
+      quote: Qualified tips received in the course of a trade or business.
+    - doc: f1040s1a
+      page: 2
+      quote: Add lines 6a through 6e, column (xiii)
+    - doc: f1040s1a
+      page: 2
+      quote: Add lines 5 and 7
+    verified: draft
+    note: Tips in a trade or business stay refused through s1.sc_1a and scope.schedule1; only the line numbers and the refusals'
+      form text change (rows 6a to 6e, total line 7).
+    operations:
+    - set:
+        line: s1a.line5_calc
+        field: label
+        from: 'Figured: Qualified tips received in the course of a trade or business'
+        to: 'Figured: Add lines 6a through 6e, column (xiii)'
+    - set:
+        line: s1a.line5_calc
+        field: refuses
+        from:
+        - when: scope.schedule1
+          form: Schedule 1-A, line 5 (qualified tips in a trade or business, with Schedule C, E or F)
+          remedy: Income from a trade or business is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet
+        - when: s1.sc_1a
+          form: Schedule 1-A, line 5 (qualified tips in a trade or business, with Schedule C)
+          remedy: Qualified tips received in a trade or business are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet
+        to:
+        - when: scope.schedule1
+          form: Schedule 1-A, lines 6 and 7 (qualified tips in a trade or business, with Schedule C, E or F)
+          remedy: Income from a trade or business is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet
+        - when: s1.sc_1a
+          form: Schedule 1-A, lines 6 and 7 (qualified tips in a trade or business, with Schedule C)
+          remedy: Qualified tips received in a trade or business are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet
+    - set:
+        line: s1a.line5
+        field: printed
+        from: '5'
+        to: '7'
+    - set:
+        line: s1a.line5
+        field: label
+        from: Qualified tips received in the course of a trade or business
+        to: Add lines 6a through 6e, column (xiii)
+    - set:
+        line: s1a.line13
+        field: refuses
+        from:
+        - when: s1.sc_1a
+          form: Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported
+            on Form 1099-NEC or 1099-MISC, with Schedule C)
+          remedy: Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC
+            are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 104, Schedule 1-A, line 5, "Include the qualified tips you and/or your spouse received in the course
+              of a trade or business"; p. 101, "Fill out Schedule 1-A, Part II, only if"
+        to:
+        - when: s1.sc_1a
+          form: Schedule 1-A, lines 6 and 18 (qualified tips received in a trade or business, or qualified overtime reported
+            on Form 1099-NEC or 1099-MISC, with Schedule C)
+          remedy: Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC
+            are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 104, Schedule 1-A, line 5, "Include the qualified tips you and/or your spouse received in the course
+              of a trade or business"; p. 101, "Fill out Schedule 1-A, Part II, only if"
+  - change: C-SCHED-05
+    evidence:
+    - doc: f1040s1a
+      page: 3
+      quote: Qualified overtime compensation reported on Form W-2.
+    - doc: f1040s1a
+      page: 3
+      quote: Add lines 16a through 16e, column (iii)
+    - doc: f1040s1a
+      page: 3
+      quote: Qualified overtime compensation reported on Form 1099-MISC or 1099-NEC.
+    - doc: f1040s1a
+      page: 3
+      quote: Add lines 18a through 18e, column (iv)
+    - doc: f1040s1a
+      page: 3
+      quote: Add lines 17 and 19
+    verified: draft
+    note: 'Line 14a (W-2) becomes employer rows 16a to 16e with total line 17 (id s1a.line14a); line 14b (Forms 1099) becomes
+      payer rows 18a to 18e with total line 19, still refused; line 14c becomes line 20. The otjob methods of figuring the
+      overtime premium (2025 i1040gi, Notice 2025-69) are kept: whether they survive a W-2 code TT waits for the 2026 i1040gi.'
+    operations:
+    - set:
+        line: s1a.line14a_calc
+        field: label
+        from: 'Figured: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation
+          not reported on Form W-2, box 1, see instructions'
+        to: 'Figured: Add lines 16a through 16e, column (iii)'
+    - set:
+        line: s1a.line14a_calc
+        field: cite.doc
+        from: i1040gi
+        to: f1040s1a
+    - set:
+        line: s1a.line14a_calc
+        field: cite.locator
+        from: p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet,
+          line 2
+        to: Schedule 1-A (2026), line 17 (draft), "Add lines 16a through 16e, column (iii)"; Part III caution, "You and/or
+          your spouse who received the qualified overtime compensation must have a valid social security number to claim this
+          deduction"
+    - set:
+        line: s1a.line14a
+        field: printed
+        from: 14a
+        to: '17'
+    - set:
+        line: s1a.line14a
+        field: label
+        from: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation
+          not reported on Form W-2, box 1, see instructions
+        to: Add lines 16a through 16e, column (iii)
+    - set:
+        line: s1a.line14b_calc
+        field: label
+        from: 'Figured: Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3'
+        to: 'Figured: Add lines 18a through 18e, column (iv)'
+    - set:
+        line: s1a.line14b_calc
+        field: refuses
+        from:
+        - when: scope.schedule1
+          form: Schedule 1-A, line 14b (qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C)
+          remedy: Nonemployee compensation is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 108, Schedule 1-A, line 14b, and the Qualified Overtime Compensation From More Than One Payor Worksheet
+        - when: s1.sc_1a
+          form: Schedule 1-A, line 14b (qualified overtime reported on Form 1099-NEC or 1099-MISC)
+          remedy: Qualified overtime compensation reported on Form 1099-NEC or 1099-MISC is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 108, Schedule 1-A, line 14b
+        to:
+        - when: scope.schedule1
+          form: Schedule 1-A, line 18 (qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C)
+          remedy: Nonemployee compensation is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 108, Schedule 1-A, line 14b, and the Qualified Overtime Compensation From More Than One Payor Worksheet
+        - when: s1.sc_1a
+          form: Schedule 1-A, line 18 (qualified overtime reported on Form 1099-NEC or 1099-MISC)
+          remedy: Qualified overtime compensation reported on Form 1099-NEC or 1099-MISC is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 108, Schedule 1-A, line 14b
+    - set:
+        line: s1a.line14b
+        field: printed
+        from: 14b
+        to: '19'
+    - set:
+        line: s1a.line14b
+        field: label
+        from: Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3
+        to: Add lines 18a through 18e, column (iv)
+    - set:
+        line: s1a.line14c_calc
+        field: label
+        from: 'Figured: Add lines 14a and 14b'
+        to: 'Figured: Add lines 17 and 19'
+    - set:
+        line: s1a.line14c_calc
+        field: cite.locator
+        from: Schedule 1-A (2025), line 14c
+        to: Schedule 1-A (2026), line 20 (draft)
+    - set:
+        line: s1a.line14c
+        field: printed
+        from: 14c
+        to: '20'
+    - set:
+        line: s1a.line14c
+        field: label
+        from: Add lines 14a and 14b
+        to: Add lines 17 and 19
+    - set:
+        line: s1a.line21
+        field: refuses
+        from:
+        - when: s1.sc_1a
+          form: Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported
+            on Form 1099-NEC or 1099-MISC, with Schedule C)
+          remedy: Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC
+            are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 108, Schedule 1-A, line 14b, "Enter on Line 14b only the qualified overtime compensation amount that
+              is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"; p. 106, "Fill out Schedule 1-A, Part III, only
+              if"
+        to:
+        - when: s1.sc_1a
+          form: Schedule 1-A, lines 6 and 18 (qualified tips received in a trade or business, or qualified overtime reported
+            on Form 1099-NEC or 1099-MISC, with Schedule C)
+          remedy: Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC
+            are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 108, Schedule 1-A, line 14b, "Enter on Line 14b only the qualified overtime compensation amount that
+              is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"; p. 106, "Fill out Schedule 1-A, Part III, only
+              if"
+  - change: C-SCHED-08
+    evidence:
+    - doc: f1040s1a
+      page: 4
+      quote: If you have a valid social security number (see instructions) and were born before January 2, 1962,
+    - doc: f1040s1a
+      page: 4
+      quote: your spouse was born before January 2, 1962, enter the amount from line 41
+    verified: draft
+    note: The birth-date cutoff in the labels moves to January 2, 1962. The decedent window (born from January 2, 1960, to
+      January 1, 1961, dying before 65) has no 2026 text and waits for the 2026 i1040gi.
+    operations:
+    - set:
+        line: s1a.senior_count
+        field: label
+        from: Number of people born before January 2, 1961, with a valid SSN
+        to: Number of people born before January 2, 1962, with a valid SSN
+    - set:
+        line: s1a.senior_any
+        field: label
+        from: You (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN
+        to: You (and/or your spouse if filing jointly) were born before January 2, 1962, and have a valid SSN
+    - set:
+        line: s1a.part5
+        field: label
+        from: 'Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid
+          SSN, not married filing separately'
+        to: 'Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1962, and have a valid
+          SSN, not married filing separately'
+    - set:
+        line: s1a.line36a_senior
+        field: label
+        from: Line 36a for a filer born before January 2, 1961
+        to: Line 42a for a filer born before January 2, 1962
+    - set:
+        line: s1a.line36a_claim
+        field: label
+        from: 'Line 36a for a filer born before January 2, 1961: zero for married filing separately'
+        to: 'Line 42a for a filer born before January 2, 1962: zero for married filing separately'
+    - set:
+        line: s1a.line36a
+        field: label
+        from: If you have a valid social security number (see instructions) and were born before January 2, 1961, enter the
+          amount from line 35
+        to: If you have a valid social security number (see instructions) and were born before January 2, 1962, enter the
+          amount from line 41
+    - set:
+        line: s1a.spouse_senior_count
+        field: label
+        from: Your spouse, if born before January 2, 1961, with a valid SSN
+        to: Your spouse, if born before January 2, 1962, with a valid SSN
+    - set:
+        line: s1a.spouse_senior
+        field: label
+        from: Your spouse was born before January 2, 1961, and has a valid SSN
+        to: Your spouse was born before January 2, 1962, and has a valid SSN
+    - set:
+        line: s1a.line36b_senior
+        field: label
+        from: Line 36b for a spouse born before January 2, 1961, with a valid SSN
+        to: Line 42b for a spouse born before January 2, 1962, with a valid SSN
+    - set:
+        line: s1a.line36b
+        field: label
+        from: If you are married filing jointly, your spouse has a valid social security number (see instructions), and your
+          spouse was born before January 2, 1961, enter the amount from line 35
+        to: If you are married filing jointly, your spouse has a valid social security number (see instructions), and your
+          spouse was born before January 2, 1962, enter the amount from line 41

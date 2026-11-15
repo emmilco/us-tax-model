@@ -248,8 +248,11 @@ step interview_rules "${node[@]}" interview-rules "$@"
 step tick_groups "${node[@]}" tick-groups "$@"
 # The questions asked of a person, as stored and as shown for each entry: the tracked report is what the built questions give.
 step person_wording "${node[@]}" spouse-wording --report --check "$@"
-# reports/<year>/interview_length.md, rewritten above its hand-written findings (about 8 minutes on one core, so the
-# full tier only); interview_rules, above, fails when reports/<year>/interview_pruning.md is not what it finds.
+# reports/<year>/interview_length.md, rewritten above its hand-written findings (full tier only); interview_rules,
+# above, fails when reports/<year>/interview_pruning.md is not what it finds. interview_length and interview_coverage
+# each spread their walks over INTERVIEW_WORKERS worker threads (default defaultWorkers() of engine/src/pool.ts,
+# sized to CHECK_ALL_MAX_RUNS as the other pools are); the output is the same for every count, and
+# INTERVIEW_WORKERS=1 runs each on one thread.
 step interview_length "${node[@]}" interview-length --write "$@"
 # The coverage rows (interview/<year>/coverage/): each situation walked through the built interview ends where its row
 # says, and reports/<year>/interview_coverage.md is what the rows produce.

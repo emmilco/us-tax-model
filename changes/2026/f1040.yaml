@@ -234,24 +234,11 @@ changes:
       page: 2
       quote: 15 First installment due. Enter 25% (0.25) of line 14 here
     verified: draft
+    note: The election is asked once, by the Schedule 3 questions s3.farmland and s3.farmland_deferral; line 24b refuses on
+      their gate s3.farmland_deferral_if_sold, as Schedule 3 line 14 does for line 13e.
     operations:
     - add_line:
         after: f1040.line24
-        line:
-          id: f1040.form1062
-          printed: (helper)
-          type: Bool
-          label: Are you electing to pay the tax on gain from a sale or exchange of qualified farmland property to a qualified
-            farmer in four annual installments (Form 1062)?
-          expr:
-            op: input
-            source: Form 1062 election (interview question)
-          cite:
-            doc: i1062
-            locator: p. 2 (draft), What’s New, "New election to pay the tax on gain from the sale or exchange of qualified
-              farmland property to qualified farmers in installments"
-    - add_line:
-        after: f1040.form1062
         line:
           id: f1040.line24b
           printed: 24b
@@ -264,19 +251,12 @@ changes:
             doc: f1040
             locator: Form 1040 (2026), line 24b (draft), "Enter amount from Form 1062, line 15"
           refuses:
-          - when: f1040.form1062
+          - when: s3.farmland_deferral_if_sold
             form: Form 1062 (installment payment of tax on a sale of qualified farmland property)
             remedy: This tool does not prepare Form 1062 or Schedule A (Form 1062).
             cite:
               doc: f1062
               locator: p. 2 (draft), line 15, "First installment due. Enter 25% (0.25) of line 14 here"
-    - add_question:
-        input: f1040.form1062
-        after: f1040.line36
-        entry:
-          order: 20
-        default: false
-        reason: 'Closed: the circumstance this question asks about does not apply unless the scenario says so.'
   - change: C-PRI-03
     evidence:
     - doc: f1040

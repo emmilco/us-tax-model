@@ -1,0 +1,43 @@
+changes:
+  tax_year: 2026
+  form: person
+  entries:
+  - change: C-PRI-06
+    evidence:
+    - doc: f1040
+      page: 2
+      quote: At the time you file your return, are you, and your spouse if filing jointly, a U.S. citizen, U.S. national,
+        or an alien lawfully authorized to work in the U.S.?
+    verified: draft
+    note: The draft prints the question and a Yes or No for you and for your spouse; it does not say what the answer feeds,
+      and the 2026 instructions it points to are not posted. The answer is asked once per person and printed; no line computes
+      from it until the instructions say what it changes. It is not Schedule 3-A line 8's qualified-alien question and is
+      not merged with it.
+    operations:
+    - add_line:
+        after: person.work_ssn
+        line:
+          id: person.work_auth
+          printed: (helper)
+          type: Bool
+          label: At the time you file your return, are you a U.S. citizen, U.S. national, or an alien lawfully authorized
+            to work in the U.S.?
+          expr:
+            op: input
+            source: At the time you file your 2026 return, are you a U.S. citizen, a U.S. national, or an alien lawfully authorized
+              to work in the United States?
+          cite:
+            doc: f1040
+            locator: 'Form 1040 (2026), page 1, Other Information (draft), "At the time you file your return, are you, and
+              your spouse if filing jointly, a U.S. citizen, U.S. national, or an alien lawfully authorized to work in the
+              U.S.? (see instructions) You: Yes No Spouse: Yes No"'
+    - add_question:
+        input: person.work_auth
+        default: true
+        reason: 'true: an ordinary filer is a U.S. citizen or national, or an alien authorized to work; a person without that status is the special case.'
+        like: person.blind
+        entry:
+          seq: 2
+          prompt: For this person (you, or your spouse on a joint return) — Are you a U.S. citizen, a U.S. national, or a
+            noncitizen allowed to work in the United States?
+          help: Answer as things will stand on the day the return is filed.

@@ -1,0 +1,93 @@
+changes:
+  tax_year: 2026
+  form: dependent
+  entries:
+  - change: C-PEOP-18
+    evidence:
+    - doc: i2441
+      page: 4
+      quote: If you were covered by your employer’s dependent care plan and your employer furnished the care (either at your
+        workplace or by hiring a care provider), enter your employer’s name on line 1a.
+    - doc: p503
+      page: 7
+      quote: However, if you are required to pay for care weekly, monthly, or in another way that includes both days worked
+        and days not worked, you can figure your credit including the expenses you paid for
+    - doc: p503
+      page: 8
+      quote: days you didn’t work. Any day when you work at least 1 hour is a day of work.
+    verified: draft
+    note: The input rule is unchanged (the value of care the employer furnished itself is still left out). The locator is
+      written whole for the 2026 pages, the Part-time work sentence now running across p503 pp. 7-8. The years in the input's
+      prompt and source are left to the year-literal list.
+    operations:
+    - set:
+        line: dependent.dc_paid
+        field: cite.locator
+        from: pp. 3–4, Column (d), "Enter the qualified expenses you incurred and paid in 2025 for the person listed in column
+          (a)" and "Expenses you incurred in 2025 but didn't pay until 2026"; p503 p. 10, Expenses prepaid in an earlier year,
+          "If you pay for services before they are provided, you can count the prepaid expenses only in the year the care
+          is received"; p. 2, Care of the qualifying person, "It doesn't include the cost of food, lodging, education, clothing,
+          or entertainment. You can include the cost of care provided outside your home for your dependent under age 13, or
+          any other qualifying person who regularly spends at least 8 hours a day in your home. If the care was provided by
+          a dependent care center, the center must meet all applicable state and local regulations." and "But don't include
+          the cost of schooling for a child in kindergarten or above." and "But don't include any expenses for sending your
+          child to an overnight camp, a summer school, or a tutoring program."; p. 2, "Child support payments aren't qualified
+          expenses." and "Generally, if you worked or actively looked for work during only part of the period in which you
+          incurred the expenses, you must figure your expenses for each day."; p503 p. 6, Temporary absence from work, "An
+          absence of 2 weeks or less is a short, temporary absence."; p503 p. 6, Part-time work, "However, if you are required
+          to pay for care weekly, monthly, or in another way that includes both days worked and days not worked, you can figure
+          your credit including the expenses you paid for days you didn't work. Any day when you work at least 1 hour is a
+          day of work."; p503 p. 8, Expenses partly work related, "If part of an expense is work related (for either household
+          services or the care of a qualifying person) and part is for other purposes, you have to divide the expense." and
+          "However, you don't have to divide the expense if only a small part is for other purposes."; p. 1, Qualified Expenses,
+          "These include amounts paid for household services and care of the qualifying person while you worked or looked
+          for work."; p. 2, Household services, "They include, for example, the services of a cook, maid, babysitter, housekeeper,
+          or cleaning person if the services were partly for the care of the qualifying person. However, they don't include
+          the services of a chauffeur, bartender, or gardener."; p503 p. 6, Volunteer work, "For this purpose, you aren't
+          considered to be working if you do unpaid volunteer work or work for a nominal salary."; p503 p. 7, Transportation,
+          "If a care provider takes a qualifying person to or from a place where care is provided, that transportation is
+          for the care of the qualifying person." and "However, transportation not provided by a care provider isn't for the
+          care of a qualifying person. Also, if you pay the transportation cost for the care provider to come to your home,
+          that expense isn't for care of a qualifying person."; p503 p. 7, Fees and deposits, "Fees you paid to an agency
+          to get the services of a care provider, deposits you paid to an agency or preschool, application fees, and other
+          indirect expenses are work-related expenses if you have to pay them to get care" and "However, a forfeited deposit
+          isn't for the care of a qualifying person if care isn't provided."; p503 p. 8, Meals and lodging provided for housekeeper,
+          "If you have expenses for meals that your housekeeper eats in your home because of their employment, count these
+          as work-related expenses. If you have extra expenses for providing lodging in your home to the housekeeper, count
+          these as work-related expenses also."; p. 3, Columns (a) and (b), "If you were covered by your employer's dependent
+          care plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your
+          employer's name in column (a)"
+        to: p. 5, Column (d), "Enter the qualified expenses you incurred and paid in 2026 for the person listed in column
+          (a)" and "Expenses you incurred in 2025 but didn’t pay until 2026"; p503 p. 11, Expenses prepaid in an earlier year,
+          "If you pay for services before they are provided, you can count the prepaid expenses only in the year the care
+          is received"; p. 3, Care of the qualifying person, "It doesn’t include the cost of food, lodging, education, clothing,
+          or entertainment. You can include the cost of care provided outside your home for your dependent under age 13, or
+          any other qualifying person who regularly spends at least 8 hours a day in your home. If the care was provided by
+          a dependent care center, the center must meet all applicable state and local regulations." and "But don’t include
+          the cost of schooling for a child in kindergarten or above." and "But don’t include any expenses for sending your
+          child to an overnight camp, a summer school, or a tutoring program."; p. 3, Qualified Expenses, "Child support payments
+          aren’t qualified expenses." and "Generally, if you worked or actively looked for work during only part of the period
+          in which you incurred the expenses, you must figure your expenses for each day."; p503 p. 7, Temporary absence from
+          work, "An absence of 2 weeks or less is a short, temporary absence."; p503 pp. 7–8, Part-time work, "However, if
+          you are required to pay for care weekly, monthly, or in another way that includes both days worked and days not
+          worked, you can figure your credit including the expenses you paid for" and "days you didn’t work. Any day when
+          you work at least 1 hour is a day of work."; p503 p. 9, Expenses partly work related, "If part of an expense is
+          work related (for either household services or the care of a qualifying person) and part is for other purposes,
+          you have to divide the expense." and "However, you don’t have to divide the expense if only a small part is for
+          other purposes."; p. 3, Qualified Expenses, "These include amounts paid for household services and care of the qualifying
+          person while you worked or looked for work."; p. 3, Household services, "They include, for example, the services
+          of a cook, maid, babysitter, housekeeper, or cleaning person if the services were partly for the care of the qualifying
+          person. However, they don’t include the services of a chauffeur, bartender, or gardener."; p503 p. 7, Volunteer
+          work, "For this purpose, you aren’t considered to be working if you do unpaid volunteer work or work for a nominal
+          salary."; p503 p. 8, Transportation, "If a care provider takes a qualifying person to or from a place where care
+          is provided, that transportation is for the care of the qualifying person." and "However, transportation not provided
+          by a care provider isn’t for the care of a qualifying person. Also, if you pay the transportation cost for the care
+          provider to come to your home, that expense isn’t for care of a qualifying person."; p503 p. 8, Fees and deposits,
+          "Fees you paid to an agency to get the services of a care provider, deposits you paid to an agency or preschool,
+          application fees, and other indirect expenses are work-related expenses if you have to pay them to get care" and
+          "However, a forfeited deposit isn’t for the care of a qualifying person if care isn’t provided."; p503 p. 9, Meals
+          and lodging provided for housekeeper, "If you have expenses for meals that your housekeeper eats in your home because
+          of their employment, count these as work-related expenses. If you have extra expenses for providing lodging in your
+          home to the housekeeper, count these as work-related expenses also."; p. 4, Lines 1a and 1b, "If you were covered
+          by your employer’s dependent care plan and your employer furnished the care (either at your workplace or by hiring
+          a care provider), enter your employer’s name on line 1a"

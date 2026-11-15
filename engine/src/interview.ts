@@ -353,24 +353,47 @@ export function interviewView(data: CanonicalData, config: InterviewData, inputs
  * `reach`: "none" leaves the pass out and "all" takes every input it finds; both are for measuring (interview-order). */
 export type Reach = "stated" | "none" | "all";
 function neededInputs(data: CanonicalData, config: InterviewData, inputs: Inputs, result: { derivations: Map<string, { value: Value; op: string }> }, targetValues: Value[], reach: Reach = "stated"): Set<string> {
-  const needed = new Set<string>();
+  const { read, ahead } = neededParts(data, config, inputs, result, targetValues, reach);
+  for (const k of ahead()) read.add(k);
+  return read;
+}
+/** neededInputs in its two parts: `read`, the unknown inputs the evaluation reads, and `ahead`, called, those the
+ * reach pass adds (none where it does not run). */
+function neededParts(data: CanonicalData, config: InterviewData, inputs: Inputs, result: { derivations: Map<string, { value: Value; op: string }> }, targetValues: Value[], reach: Reach = "stated"): { read: Set<string>; ahead: () => string[] } {
+  const read = new Set<string>();
   // The reach pass adds something only where a line is held behind an unanswered gate.
   let held = false;
   for (const der of result.derivations.values()) {
     if (der.value.kind !== "unknown") continue;
-    if (der.value.input) needed.add(der.value.input);
+    if (der.value.input) read.add(der.value.input);
     held ||= der.op === "gate";
   }
+  const none = (): string[] => [];
   const incomplete = !targetValues.some((v) => v.kind === "refusal") && targetValues.some((v) => v.kind === "unknown");
-  if (reach === "none" || !incomplete || !held) return needed;
-  if (reach !== "all" && !config.questions.some((q) => q.seq !== undefined)) return needed;
-  const recorded = recordedTemplates(config);
-  for (const k of inputsAhead(data, inputs, config.targets)) {
-    if (needed.has(k)) continue;
-    const template = questionTemplate(k);
-    if (reach === "all" || questionFor(config, recorded.get(template) ?? template)?.seq !== undefined) needed.add(k);
-  }
-  return needed;
+  if (reach === "none" || !incomplete || !held) return { read, ahead: none };
+  if (reach !== "all" && !config.questions.some((q) => q.seq !== undefined)) return { read, ahead: none };
+  const ahead = (): string[] => {
+    const recorded = recordedTemplates(config);
+    const out: string[] = [];
+    for (const k of inputsAhead(data, inputs, config.targets)) {
+      if (read.has(k)) continue;
+      const template = questionTemplate(k);
+      if (reach === "all" || questionFor(config, recorded.get(template) ?? template)?.seq !== undefined) out.push(k);
+    }
+    return out;
+  };
+  return { read, ahead };
+}
+/** interviewStatus's status and reachable inputs, for a caller that may need only part of them: `read`, the reachable
+ * inputs the evaluation reads, at once, and `ahead()`, those the reach pass adds, only when called (the pass is most of
+ * the cost of a state). The reachable inputs are `read` and `ahead()` together. */
+export function statusParts(data: CanonicalData, config: InterviewData, inputs: Inputs): { status: string; read: Set<string>; ahead: () => string[] } {
+  const result = evaluate(data, inputs, config.targets);
+  const targetValues = config.targets.map(t => result.values.get(t)!);
+  const refused = targetValues.some(v => v.kind === "refusal");
+  const complete = targetValues.every(v => v.kind !== "unknown" && v.kind !== "refusal");
+  const { read, ahead } = neededParts(data, config, inputs, result, targetValues);
+  return { status: refused ? "refused" : complete ? "complete" : "incomplete", read, ahead };
 }
 /** What a caller that only steps through or compares states reads: status, refusal, the next question's input, the
  * reachable inputs and, as the function `valuesKey`, computed on demand, the derivations of `interviewView`'s `values` serialized in key order, so two
@@ -468,11 +491,12 @@ export function answerEvent(config: InterviewData, state: Replayed, input: strin
 /** Checks an answer against the log's events without writing it: the input must be reachable or already answered (a
  * correction), the answer must be one `answerEvent` accepts, and the inputs with it must validate and evaluate. Throws
  * when the answer is rejected, so nothing is appended. Returns the event to append, the inputs with it, and the views
- * before and after it. */
-export function applyAnswer(data: CanonicalData, config: InterviewData, events: Event[], input: string, value: unknown, labels?: unknown) {
+ * before and after it. `before`, when given, is the view of the log as it stands (the `after` of the call that
+ * appended its last answer, which a caller stepping through answers holds), and is not computed again. */
+export function applyAnswer(data: CanonicalData, config: InterviewData, events: Event[], input: string, value: unknown, labels?: unknown, before?: ReturnType<typeof interviewView>) {
   const state = replayState(config, events);
   const current = state.inputs;
-  const before = interviewView(data, config, current);
+  before ??= interviewView(data, config, current);
   if (!before.reachableInputs.includes(input) && !(input in current)) throw new Error("answer is neither reachable nor a correction");
   if (labels !== undefined) {
     const keys = Array.isArray(value) ? value : null;

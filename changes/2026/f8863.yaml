@@ -1,0 +1,126 @@
+changes:
+  tax_year: 2026
+  form: f8863
+  entries:
+  - change: C-CRED-18
+    evidence:
+    - doc: f8863
+      page: 2
+      quote: 'Before you begin: A valid social security number (SSN) is now required to claim an education credit.'
+    - doc: i8863
+      page: 3
+      quote: If you are filing a joint return, only one spouse is required to have a valid SSN to be eligible to claim an
+        education credit.
+    - doc: i8863
+      page: 3
+      quote: A valid SSN to claim an education credit is one that is valid for employment
+    - doc: i8863
+      page: 4
+      quote: 5. You (or your spouse if filing jointly) and the student (if the student is a dependent on your tax return)
+        have not been issued valid SSNs before the due date of your 2026 return (including extensions).
+    - doc: i8863
+      page: 3
+      quote: You may be able to claim an education credit if you and the student meet the identification requirement and you,
+        your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational
+        institution.
+    verified: draft
+    note: The return-level half of the valid-SSN rule (you, or one spouse on a joint return) is tested once, in f8863.eligible,
+      which zeroes lines 1 and 10; the student half is in Part III (changes/2026/person.edu.yaml and dependent.edu.yaml).
+      household.any_work_ssn is the existing count of people on the return whose person.work_ssn answer is yes (an SSN valid
+      for employment, issued before the due date). Lines 3 and 14 (C-CRED-17) are lane W1's.
+    operations:
+    - add_line:
+        after: f8863.none_claimed
+        line:
+          id: f8863.filers_qualify
+          printed: (helper)
+          label: Neither you nor your spouse is claimed as a dependent on another person's tax return, and you, or your spouse
+            if filing jointly, have a valid SSN (valid for employment and issued before the due date of the return, including
+            extensions)
+          type: Bool
+          expr:
+            op: test
+            all:
+            - op: test
+              eq:
+              - f8863.none_claimed
+              - const: true
+            - op: test
+              eq:
+              - household.any_work_ssn
+              - const: true
+          cite:
+            doc: i8863
+            locator: p. 3, Identification requirement, "Identification requirement. To claim an education credit, you must
+              have a valid SSN (defined next). If you are filing a joint return, only one spouse is required to have a valid
+              SSN to be eligible to claim an education credit."; "A valid SSN to claim an education credit is one that is
+              valid for employment and that is issued by the Social Security Administration before the due date of your 2026
+              return (including extensions)."; p. 4, Who cannot claim a credit, "1. You’re claimed as a dependent on another
+              person’s tax return, such as your parent’s return."; "5. You (or your spouse if filing jointly) and the student
+              (if the student is a dependent on your tax return) have not been issued valid SSNs before the due date of your
+              2026 return (including extensions)."
+    - set:
+        line: f8863.eligible
+        field: expr.alternatives
+        from:
+        - guard:
+            op: test
+            eq:
+            - f8863.paid
+            - const: true
+          then: f8863.none_claimed
+        - guard:
+            op: test
+            eq:
+            - f8863.paid
+            - const: false
+          then: f8863.no
+        to:
+        - guard:
+            op: test
+            eq:
+            - f8863.paid
+            - const: true
+          then: f8863.filers_qualify
+        - guard:
+            op: test
+            eq:
+            - f8863.paid
+            - const: false
+          then: f8863.no
+    - set:
+        line: f8863.eligible
+        field: label
+        from: 'An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed
+          as a dependent'
+        to: 'An education credit can be claimed on this return: expenses paid, neither you nor your spouse is claimed as a
+          dependent, and you, or your spouse if filing jointly, have a valid SSN'
+    - set:
+        line: f8863.paid
+        field: label
+        from: Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim
+        to: Qualified education expenses paid in 2026 for you, your spouse or a dependent you claim
+    - set:
+        line: f8863.paid
+        field: expr.source
+        from: Did anyone pay qualified education expenses in 2025 for you, your spouse if filing jointly, or a dependent you
+          claim, at a college, university, vocational school or other postsecondary school (for tuition, required fees or
+          course materials)?
+        to: Did anyone pay qualified education expenses in 2026 for you, your spouse if filing jointly, or a dependent you
+          claim, at a college, university, vocational school or other postsecondary school (for tuition, required fees or
+          course materials)?
+    - set:
+        line: f8863.paid
+        field: cite.locator
+        from: p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse,
+          or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution."
+        to: p. 3, Who Can Claim an Education Credit, "You may be able to claim an education credit if you and the student
+          meet the identification requirement and you, your spouse, or a dependent you claim on your tax return was a student
+          enrolled at or attending an eligible educational institution."
+    - set_question:
+        input: f8863.paid
+        field: prompt
+        from: In 2025, was tuition paid for you (or, on a joint return, your spouse) or for a dependent you claim, at a college,
+          university or trade school?
+        to: In 2026, was tuition paid for you (or, on a joint return, your spouse) or for a dependent you claim, at a college,
+          university or trade school?

@@ -1,0 +1,273 @@
+changes:
+  tax_year: 2026
+  form: s8812
+  entries:
+  - change: C-SCHED-16
+    evidence:
+    - doc: f1040s8812
+      page: 1
+      quote: Enter the amount from line 11b of your Form 1040, 1040-SR, or 1040-NR
+    verified: draft
+    operations:
+    - set:
+        line: s8812.line1
+        field: label
+        from: Enter the amount from line 11a of your Form 1040, 1040-SR, or 1040-NR
+        to: Enter the amount from line 11b of your Form 1040, 1040-SR, or 1040-NR
+    - set:
+        line: s8812.line1
+        field: expr.from
+        from: f1040.line11a
+        to: f1040.line11b
+  - change: C-SCHED-17
+    evidence:
+    - doc: f1040s8812
+      page: 2
+      quote: Enter the total of the amounts from Schedule 1 (Form 1040), line 15; Schedule 2 (Form 1040), line 16c; and Schedule
+        2 (Form 1040), line 17c
+    - doc: i1040s8812
+      page: 6
+      quote: Schedule 2, line 16c; and
+    - doc: i1040s8812
+      page: 6
+      quote: Schedule 2, line 17c.
+    verified: draft
+    note: Only the references move (2025 Schedule 2 lines 5 and 6 are 2026 line 16c's parts, line 13 is 17c); the Schedule
+      2 amounts stay refused through s2.other, whose wording the Schedule 2 operations (C-SCHED-10) carry.
+    operations:
+    - set:
+        line: s8812.line22
+        field: label
+        from: Enter the total of the amounts from Schedule 1, line 15; Schedule 2, line 5; Schedule 2, line 6; and Schedule
+          2, line 13
+        to: Enter the total of the amounts from Schedule 1, line 15; Schedule 2, line 16c; and Schedule 2, line 17c
+    - set:
+        line: s8812.line22
+        field: cite.locator
+        from: Schedule 8812 (2025), line 22 (Schedule 2 lines 5, 6 and 13 are refused by s2.other)
+        to: Schedule 8812 (2026), line 22 (draft) (Schedule 2 lines 16c and 17c are refused by s2.other)
+    - set:
+        line: s8812.line22
+        field: refuses
+        from:
+        - when: s2.other
+          form: Schedule 8812 line 22 (Schedule 2, lines 5, 6 and 13)
+          remedy: Other Schedule 2 taxes are outside this tool.
+          cite:
+            doc: f1040s8812
+            locator: Schedule 8812 (2025), line 22
+        to:
+        - when: s2.other
+          form: Schedule 8812 line 22 (Schedule 2, lines 16c and 17c)
+          remedy: Other Schedule 2 taxes are outside this tool.
+          cite:
+            doc: f1040s8812
+            locator: Schedule 8812 (2026), line 22 (draft)
+    - set:
+        line: s8812.clwb_8
+        field: label
+        from: Credit Limit Worksheet B, line 8. Enter the total of any amounts from Schedule 1, line 15; Schedule 2, line
+          5; Schedule 2, line 6; and Schedule 2, line 13
+        to: Credit Limit Worksheet B, line 8. Enter the total of any amounts from Schedule 1, line 15; Schedule 2, line 16c;
+          and Schedule 2, line 17c
+  - change: C-SCHED-18
+    evidence:
+    - doc: i1040s8812
+      page: 10
+      quote: Enter one-half of the Additional Medicare Tax, if any, on self-employment income (one-half of Form 8959, line
+        18)
+    verified: draft
+    note: s8812.amt_ws7 keeps reading f8959.line13, the line Form 8959's reordering (C-SCHED-13) prints as line 18 (ids survive
+      renumbering). The RRTA lines of the worksheet (Form 8959 line 11) are refused, not encoded.
+    operations:
+    - set:
+        line: s8812.amt_ws7
+        field: label
+        from: Additional Medicare Tax and RRTA Tax Worksheet, line 7. One-half of the Additional Medicare Tax on self-employment
+          income (one-half of Form 8959, line 13)
+        to: Additional Medicare Tax and RRTA Tax Worksheet, line 7. One-half of the Additional Medicare Tax on self-employment
+          income (one-half of Form 8959, line 18)
+    - set:
+        line: s8812.amt_ws7
+        field: cite.locator
+        from: p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 7, "Enter one-half of the Additional Medicare Tax,
+          if any, on self-employment income (one-half of Form 8959, line 13)"
+        to: p. 10, Additional Medicare Tax and RRTA Tax Worksheet, line 7, "Enter one-half of the Additional Medicare Tax,
+          if any, on self-employment income (one-half of Form 8959, line 18)"
+  - change: C-SCHED-19
+    evidence:
+    - doc: i1040s8812
+      page: 2
+      quote: To claim the CTC or ACTC on either your original or an amended 2026 return, you must have a valid SSN.
+    - doc: i1040s8812
+      page: 2
+      quote: only one filer is required to have a valid SSN to be eligible for the CTC or ACTC
+    - doc: i1040s8812
+      page: 2
+      quote: The qualifying child used to claim the CTC or ACTC on either your original or an amended 2026 return must have
+        a valid SSN.
+    - doc: i1040s8812
+      page: 2
+      quote: To claim the ODC on either your original or an amended 2026 return, you (and your spouse if filing jointly) must
+        have an SSN or ITIN issued on or before the due date of your return (including extensions).
+    verified: draft
+    note: The i1040s8812 sentences are requoted from the 2026 draft; the i1040gi parts of both citations keep their 2025 quotes
+      until the 2026 Instructions for Form 1040 are archived.
+    operations:
+    - set:
+        line: s8812.line4
+        field: cite.locator
+        from: Schedule 8812 (2025), line 4; i1040s8812 p. 1, Taxpayer Identification Number Requirements, "If you, and your
+          spouse if filing jointly, do not have a valid SSN, you can’t claim the CTC or ACTC", "If you are filing a joint
+          return, only one spouse is required to have a valid SSN to be eligible for the CTC or ACTC", "For the CTC and ACTC,
+          a valid SSN is one that is valid for employment and that is issued by the Social Security Administration before
+          the due date of your 2025 return (including extensions)", "If you have a qualifying child who does not have a valid
+          SSN, you can’t use the child to claim the CTC or ACTC"; i1040gi pp. 17–19, Step 3, "Do you have a child who meets
+          the conditions to be your qualifying child?", "Was the child a U.S. citizen, U.S. national, or U.S. resident alien?",
+          "Was the child under age 17 at the end of 2025?", "Did you, or your spouse if filing a joint return, and this child
+          have SSNs valid for employment and issued before the due date of your 2025 return (including extensions)?"
+        to: Schedule 8812 (2026), line 4; i1040s8812 p. 2 (draft), Valid SSN Required Before the Due Date of Your Return To
+          Claim the CTC and ACTC, "To claim the CTC or ACTC on either your original or an amended 2026 return, you must have
+          a valid SSN", "If you are filing a joint return, only one filer is required to have a valid SSN to be eligible for
+          the CTC or ACTC", "A valid SSN is one that is valid for employment and that is issued by the Social Security Administration
+          before the due date of your 2026 return (including extensions)", "The qualifying child used to claim the CTC or
+          ACTC on either your original or an amended 2026 return must have a valid SSN"; i1040gi pp. 17–19, Step 3, "Do you
+          have a child who meets the conditions to be your qualifying child?", "Was the child a U.S. citizen, U.S. national,
+          or U.S. resident alien?", "Was the child under age 17 at the end of 2025?", "Did you, or your spouse if filing a
+          joint return, and this child have SSNs valid for employment and issued before the due date of your 2025 return (including
+          extensions)?"
+    - set:
+        line: s8812.line6
+        field: cite.locator
+        from: Schedule 8812 (2025), line 6; i1040s8812 p. 1, Taxpayer Identification Number Requirements, "If your qualifying
+          child does not have a valid SSN, but has another type of taxpayer identification number issued on or before the
+          due date of your 2025 return (including extensions), you may be able to claim the ODC for that child", "TIN Required
+          by Due Date of Your Return To Claim the ODC", "If you have a dependent who does not have an SSN, ITIN, or ATIN issued
+          on or before the due date of your 2025 return (including extensions), you can’t use that dependent to claim the
+          ODC"; i1040gi pp. 17–19, Step 3, "Did the child have an SSN, ITIN, or adoption taxpayer identification number (ATIN)
+          issued on or before the due date of your return (including extensions)?", "Was the child a U.S. citizen, U.S. national,
+          or U.S. resident alien?", "Was the child under age 17 at the end of 2025? Yes. Continue No. You can claim the credit
+          for other", "Did your qualifying relative have an SSN, ITIN, or ATIN issued on or before the due date of your 2025
+          return (including extensions)?", "Was your qualifying relative a U.S. citizen, U.S. national, or U.S. resident alien?"
+        to: Schedule 8812 (2026), line 6; i1040s8812 p. 2 (draft), Qualifying child required to have a valid SSN, "If your
+          qualifying child does not have a valid SSN, but has another type of taxpayer identification number issued on or
+          before the due date of your 2026 return (including extensions), you may be able to claim the ODC for that child",
+          TIN Required by Due Date of Your Return To Claim the ODC, "To claim the ODC on either your original or an amended
+          2026 return, you (and your spouse if filing jointly) must have an SSN or ITIN issued on or before the due date of
+          your return (including extensions)"; i1040gi pp. 17–19, Step 3, "Did the child have an SSN, ITIN, or adoption taxpayer
+          identification number (ATIN) issued on or before the due date of your return (including extensions)?", "Was the
+          child a U.S. citizen, U.S. national, or U.S. resident alien?", "Was the child under age 17 at the end of 2025? Yes.
+          Continue No. You can claim the credit for other", "Did your qualifying relative have an SSN, ITIN, or ATIN issued
+          on or before the due date of your 2025 return (including extensions)?", "Was your qualifying relative a U.S. citizen,
+          U.S. national, or U.S. resident alien?"
+  - change: C-SCHED-20
+    evidence:
+    - doc: i1040s8812
+      page: 7
+      quote: Credit Limit Worksheet B (continued)
+    - doc: i1040s8812
+      page: 7
+      quote: Subtract line 10 from line 9. If the result is zero or less, enter -0-
+    - doc: i1040s8812
+      page: 7
+      quote: Enter the larger of line 5 or line 11
+    - doc: i1040s8812
+      page: 7
+      quote: Enter the smaller of line 2 or line 12
+    verified: draft
+    operations:
+    - set:
+        line: s8812.clwb_10
+        field: cite.locator
+        from: p. 6, Credit Limit Worksheet B—Continued, line 10, "1040 and 1040-SR filers. Enter the total of the amounts
+          from Form 1040 or 1040-SR, line 27a, and Schedule 3, line 11"
+        to: p. 7, Credit Limit Worksheet B (continued), line 10, "1040 and 1040-SR filers. Enter the total of the amounts
+          from Form 1040 or 1040-SR, line 27a, and Schedule 3, line 11"
+    - set:
+        line: s8812.clwb_11_figured
+        field: cite.locator
+        from: p. 6, Credit Limit Worksheet B—Continued, line 11, "Subtract line 10 from line 9. If the result is zero or less,
+          enter -0-"
+        to: p. 7, Credit Limit Worksheet B (continued), line 11, "Subtract line 10 from line 9. If the result is zero or less,
+          enter -0-"
+    - set:
+        line: s8812.clwb_12
+        field: cite.locator
+        from: p. 6, Credit Limit Worksheet B—Continued, line 12, "Enter the larger of line 5 or line 11"
+        to: p. 7, Credit Limit Worksheet B (continued), line 12, "Enter the larger of line 5 or line 11"
+    - set:
+        line: s8812.clwb_13
+        field: cite.locator
+        from: p. 6, Credit Limit Worksheet B—Continued, line 13, "Enter the smaller of line 2 or line 12"
+        to: p. 7, Credit Limit Worksheet B (continued), line 13, "Enter the smaller of line 2 or line 12"
+    - set:
+        line: s8812.clwb_14
+        field: cite.locator
+        from: p. 6, Credit Limit Worksheet B—Continued, line 14, "Is the amount on line 13 of this worksheet more than the
+          amount on line 1? No. Subtract line 13 from line 1. Enter the result. Yes. Enter -0-"
+        to: p. 7, Credit Limit Worksheet B (continued), line 14, "Is the amount on line 13 of this worksheet more than the
+          amount on line 1? No. Subtract line 13 from line 1. Enter the result. Yes. Enter -0-"
+    - set:
+        line: s8812.clwb_15
+        field: cite.locator
+        from: p. 6, Credit Limit Worksheet B—Continued, line 15, "Enter this amount on line 4 of Credit Limit Worksheet A"
+        to: p. 7, Credit Limit Worksheet B (continued), line 15, "Enter this amount on line 4 of Credit Limit Worksheet A"
+  - change:
+    - C-SCHED-23
+    - C-CRED-05
+    evidence:
+    - doc: i1040s8812
+      page: 5
+      quote: Schedule 3, line 4
+    - doc: i1040s8812
+      page: 5
+      quote: Schedule 3, line 6d
+    - doc: i1040s8812
+      page: 5
+      quote: c. Residential clean energy credit, Form 5695.
+    verified: draft
+    note: The Schedule 8812 side of both entries. s8812.clwb_complete keeps reading f5695.claiming_part1, which the Form 5695
+      operations (C-CRED-05) redefine for the carryforward-only form.
+    operations:
+    - set:
+        line: s8812.clw_a2
+        field: label
+        from: Credit Limit Worksheet A, line 2. Schedule 3 lines 1, 2, 3, 4, 5b, 6d, 6f, 6l and 6m; in this tool lines 1,
+          2, 3, 4 and 5b, the other credits being refused
+        to: Credit Limit Worksheet A, line 2. Schedule 3 lines 1, 2, 3, 4, 6d, 6f, 6l and 6m; in this tool lines 1, 2, 3 and
+          4, the other credits being refused
+    - set:
+        line: s8812.clw_a2
+        field: expr.of
+        from:
+        - s3.line1
+        - s3.line2
+        - s3.line3
+        - s3.line4
+        - s3.line5b
+        to:
+        - s3.line1
+        - s3.line2
+        - s3.line3
+        - s3.line4
+    - set:
+        line: s8812.clwb_complete
+        field: label
+        from: Complete Credit Limit Worksheet B (claiming the residential clean energy credit, Form 5695 Part I, and line
+          4 of Schedule 8812 is more than zero)
+        to: Complete Credit Limit Worksheet B (claiming the residential clean energy credit, Form 5695, and line 4 of Schedule
+          8812 is more than zero)
+  - change: C-SCHED-26
+    evidence:
+    - doc: i1040s8812
+      page: 3
+      quote: To receive a refund of the ACTC, you must be a U.S. citizen, U.S. national, or qualified alien.
+    verified: draft
+    note: 'Nothing on the 2026 Schedule 8812 changes: the limit is Schedule 3-A''s (C-PRI-05), which takes the credit in through
+      Form 1040 line 32a.'
+    operations:
+    - set:
+        line: s8812.line27
+        field: note
+        from: null
+        to: The refund of this credit is limited through Schedule 3-A, which reads it within Form 1040 line 32a.

@@ -1,0 +1,72 @@
+changes:
+  tax_year: 2026
+  form: person
+  entries:
+  - change: C-SCHED-03
+    evidence:
+    - doc: f1040s1a
+      page: 2
+      quote: Qualified tips received as an employee.
+    - doc: f1040s1a
+      page: 2
+      quote: (iii) Qualified tips included in Form W-2, box 12, code “TP” (see instructions)
+    - doc: f1040s1a
+      page: 2
+      quote: Add lines 4a through 4e, column (v)
+    verified: draft
+    note: The worksheet's column (b) total had one reader, the one-employer path of line 4a, which goes.
+    operations:
+    - remove_line:
+        line: person.tip_reported
+    - set:
+        line: person.tip_total
+        field: label
+        from: This person's worksheet column (d) total
+        to: This person's Schedule 1-A line 4, column (v) total
+    - set:
+        line: person.tip_total
+        field: cite.doc
+        from: i1040gi
+        to: f1040s1a
+    - set:
+        line: person.tip_total
+        field: cite.locator
+        from: p. 104, Qualified Tips From More Than One Employer Worksheet, line 2
+        to: Schedule 1-A (2026), line 4, column (v) (draft), "Enter the larger of column (iii) or column (iv)"
+  - change: C-SCHED-05
+    evidence:
+    - doc: f1040s1a
+      page: 3
+      quote: Qualified overtime compensation reported on Form W-2.
+    - doc: f1040s1a
+      page: 3
+      quote: Add lines 16a through 16e, column (iii)
+    - doc: f1040s1a
+      page: 3
+      quote: Qualified overtime compensation reported on Form 1099-MISC or 1099-NEC.
+    - doc: f1040s1a
+      page: 3
+      quote: Add lines 18a through 18e, column (iv)
+    - doc: f1040s1a
+      page: 3
+      quote: Add lines 17 and 19
+    verified: draft
+    note: Relabelled for the 2026 line 16.
+    operations:
+    - set:
+        line: person.ot_total
+        field: label
+        from: This person's overtime worksheet column (b) total
+        to: This person's Schedule 1-A line 16, column (iii) total
+    - set:
+        line: person.ot_total
+        field: cite.doc
+        from: i1040gi
+        to: f1040s1a
+    - set:
+        line: person.ot_total
+        field: cite.locator
+        from: p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet,
+          line 2
+        to: Schedule 1-A (2026), line 16, column (iii) (draft), "Qualified overtime compensation included in Form W-2, box
+          12, code “TT” (see instructions)"

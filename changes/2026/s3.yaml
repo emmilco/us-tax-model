@@ -1,0 +1,249 @@
+changes:
+  tax_year: 2026
+  form: s3
+  entries:
+  - change: C-SCHED-12
+    evidence:
+    - doc: f1040s3
+      page: 2
+      quote: 5a Residential clean energy credit from Form 5695, line 3
+    - doc: f1040s3
+      page: 2
+      quote: 5b Reserved for future use
+    - doc: f1040s3
+      page: 2
+      quote: Add lines 1 through 4, 5a, and 7. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 20
+    - doc: f5695
+      page: 2
+      quote: Residential clean energy credit. Enter the smaller of line 1 or line 2. Also include this amount on
+    verified: draft
+    note: 'Line 5a keeps reading f5695.line15, the credit line that Form 5695''s renumbering (C-CRED-03) prints as line 3.
+      Line 5b stays as a zero line printed "Reserved for future use" rather than being removed: f5695.rce_ws2 still reads
+      it until the Form 5695 operations (C-CRED-04) rewrite that worksheet, and f5695.part2_any and f5695.line32, which it
+      read, are removed by C-CRED-06 to -08.'
+    operations:
+    - set:
+        line: s3.line5a
+        field: label
+        from: Residential clean energy credit from Form 5695, line 15
+        to: Residential clean energy credit from Form 5695, line 3
+    - set:
+        line: s3.line5a
+        field: cite.locator
+        from: Schedule 3 (2025), line 5a (zero when Form 5695 Part I is not completed)
+        to: Schedule 3 (2026), line 5a (draft), "Residential clean energy credit from Form 5695, line 3" (zero when Form 5695
+          is not completed)
+    - set:
+        line: s3.line5b
+        field: label
+        from: Energy efficient home improvement credit from Form 5695, line 32
+        to: Reserved for future use
+    - set:
+        line: s3.line5b
+        field: expr
+        from:
+          op: choose
+          alternatives:
+          - guard:
+              op: test
+              eq:
+              - f5695.part2_any
+              - const: true
+            then: f5695.line32
+          - guard:
+              op: test
+              eq:
+              - f5695.part2_any
+              - const: false
+            then: s3.zero
+        to:
+          op: copy
+          from: s3.zero
+    - set:
+        line: s3.line5b
+        field: cite.locator
+        from: Schedule 3 (2025), line 5b (zero when Form 5695 Part II is not completed)
+        to: Schedule 3 (2026), line 5b (draft), "Reserved for future use"
+    - set:
+        line: s3.line8
+        field: label
+        from: Add lines 1 through 4, 5a, 5b, and 7. Enter here and on Form 1040, line 20
+        to: Add lines 1 through 4, 5a, and 7. Enter here and on Form 1040, line 20
+    - set:
+        line: s3.line8
+        field: expr.of
+        from:
+        - s3.line1
+        - s3.line2
+        - s3.line3
+        - s3.line4
+        - s3.line5a
+        - s3.line5b
+        - s3.line7
+        to:
+        - s3.line1
+        - s3.line2
+        - s3.line3
+        - s3.line4
+        - s3.line5a
+        - s3.line7
+  - change: C-SCHED-39
+    evidence:
+    - doc: f1040s3
+      page: 2
+      quote: 13e Total section 1062 applicable net tax liability. Enter amount from Form 1062,
+    - doc: f1040s3
+      page: 2
+      quote: Total other payments or refundable credits. Add lines 13a through 13z
+    - doc: f1062
+      page: 2
+      quote: Total section 1062 applicable net tax liability. Subtract line 13 from line 5.
+    - doc: i1062
+      page: 2
+      quote: New election to pay the tax on gain from the sale or exchange of qualified farmland property to qualified farmers
+        in installments
+    verified: draft
+    note: 'Line 13e is left inside line 14, as lines 13a to 13d and 13z are: line 14 is zero, and the Form 1062 election that
+      gives line 13e is refused there, now citing line 13e (2025: line 13z). The election is asked once, by s3.farmland and
+      s3.farmland_deferral (Form 1040 line 24b refuses on the same gate, C-PRI-04); its lines now cite the 2026 Form 1062
+      instructions.'
+    operations:
+    - set:
+        line: s3.line14
+        field: refuses
+        from:
+        - when: s3.section965_if_foreign
+          form: Schedule 3 line 13d (net 965 tax liability)
+          remedy: A net 965 tax liability paid in installments is reported on Schedule 3 line 13d, which this tool does not
+            prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13d, "If you elected to pay your net 965 tax liability in installments, report the deferred
+              amount on line 13d"
+        - when: s3.section960c_if_foreign
+          form: Schedule 3 line 13z (section 960(c) credit)
+          remedy: The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation
+              account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If
+              you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified
+              farmland property"
+        - when: s3.virgin_islands_if_foreign
+          form: Form 8689 (Schedule 3 line 13z)
+          remedy: Tax allocable to the U.S. Virgin Islands (Form 8689) is reported on Schedule 3 line 13z, which this tool
+            does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation
+              account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If
+              you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified
+              farmland property"
+        - when: s3.farmland_deferral_if_sold
+          form: Form 1062 (Schedule 3 line 13z)
+          remedy: The election to pay the tax on a sale of farmland in installments (Form 1062) is reported on Schedule 3
+            line 13z, which this tool does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation
+              account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If
+              you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified
+              farmland property"
+        - when: s3.repaid_income
+          form: Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16)
+          remedy: A repayment of more than $3,000 of income reported in an earlier year gives a choice between a deduction
+            and a credit (Schedule 3 line 13b), which this tool does not figure.
+          cite:
+            doc: p525
+            locator: p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an
+              other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right"
+              and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you
+              are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared
+              you had a right to the income"
+        to:
+        - when: s3.section965_if_foreign
+          form: Schedule 3 line 13d (net 965 tax liability)
+          remedy: A net 965 tax liability paid in installments is reported on Schedule 3 line 13d, which this tool does not
+            prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13d, "If you elected to pay your net 965 tax liability in installments, report the deferred
+              amount on line 13d"
+        - when: s3.section960c_if_foreign
+          form: Schedule 3 line 13z (section 960(c) credit)
+          remedy: The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation
+              account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If
+              you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified
+              farmland property"
+        - when: s3.virgin_islands_if_foreign
+          form: Form 8689 (Schedule 3 line 13z)
+          remedy: Tax allocable to the U.S. Virgin Islands (Form 8689) is reported on Schedule 3 line 13z, which this tool
+            does not prepare.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation
+              account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If
+              you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified
+              farmland property"
+        - when: s3.farmland_deferral_if_sold
+          form: Form 1062 (Schedule 3 line 13e)
+          remedy: The election to pay the tax on a sale of qualified farmland property in installments (Form 1062) is reported
+            on Schedule 3 line 13e, which this tool does not prepare.
+          cite:
+            doc: f1040s3
+            locator: Schedule 3 (2026), line 13e (draft), "Total section 1062 applicable net tax liability. Enter amount from
+              Form 1062, line 14"
+        - when: s3.repaid_income
+          form: Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16)
+          remedy: A repayment of more than $3,000 of income reported in an earlier year gives a choice between a deduction
+            and a credit (Schedule 3 line 13b), which this tool does not figure.
+          cite:
+            doc: p525
+            locator: p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an
+              other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right"
+              and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you
+              are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared
+              you had a right to the income"
+    - set:
+        line: s3.farmland_deferral
+        field: label
+        from: Did you (or, on a joint return, your spouse) make the election to defer the net income tax attributable to the
+          gain on the sale or exchange of qualified farmland property (Form 1062)?
+        to: Did you (or, on a joint return, your spouse) choose to pay the tax on the gain from a sale or exchange of qualified
+          farmland property to a qualified farmer in installments (Form 1062)?
+    - set:
+        line: s3.farmland_deferral
+        field: expr.source
+        from: Did you (or, on a joint return, your spouse) make the election to defer the net income tax attributable to the
+          gain on the sale or exchange of qualified farmland property (Form 1062)?
+        to: Did you (or, on a joint return, your spouse) choose to pay the tax on the gain from a sale or exchange of qualified
+          farmland property to a qualified farmer in installments (Form 1062)?
+    - set:
+        line: s3.farmland_deferral
+        field: cite
+        from:
+          doc: i1040gi
+          locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation
+            account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you
+            made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland
+            property"
+        to:
+          doc: i1062
+          locator: p. 2 (draft), What’s New, "New election to pay the tax on gain from the sale or exchange of qualified farmland
+            property to qualified farmers in installments"
+    - set:
+        line: s3.farmland_deferral_if_sold
+        field: cite
+        from:
+          doc: i1040gi
+          locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation
+            account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you
+            made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland
+            property"
+        to:
+          doc: i1062
+          locator: p. 2 (draft), What’s New, "New election to pay the tax on gain from the sale or exchange of qualified farmland
+            property to qualified farmers in installments"

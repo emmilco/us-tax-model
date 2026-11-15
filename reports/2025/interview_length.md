@@ -523,8 +523,6 @@ better order (or a nested `choose`) would not ask. On the full profile these are
 
 
 
-
-
 ## Findings (hand-written; tax year 2025, from the tables above as first written)
 
 **What the numbers show (observation).**

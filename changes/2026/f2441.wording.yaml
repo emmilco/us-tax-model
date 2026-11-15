@@ -1,0 +1,85 @@
+changes:
+  tax_year: 2026
+  form: f2441
+  entries:
+  - change: C-CRED-13
+    evidence:
+    - doc: i2441
+      page: 6
+      quote: Subtract line 2 from line 1. Also, enter this amount on Form 2441, line 10. But if zero or less, stop; you
+        can’t take the credit
+    verified: draft
+    operations:
+    - set:
+        line: f2441.clw3
+        field: label
+        from: Subtract line 2 from line 1. Also enter this amount on Form 2441, line 10. But if zero or less, stop; you
+          can't take the credit
+        to: Subtract line 2 from line 1. Also, enter this amount on Form 2441, line 10. But if zero or less, stop; you can't
+          take the credit
+    - set:
+        line: f2441.clw3
+        field: cite.locator
+        from: p. 5, Line 10 Credit Limit Worksheet, "Subtract line 2 from line 1. Also enter this amount on Form 2441, line
+          10. But if zero or less, stop; you can’t take the credit"
+        to: p. 6, Line 10 Credit Limit Worksheet, "Subtract line 2 from line 1. Also, enter this amount on Form 2441, line
+          10. But if zero or less, stop; you can’t take the credit"
+  - change: C-CRED-14
+    evidence:
+    - doc: i2441
+      page: 2
+      quote: a. The disabled person had gross income of $5,300 or more, b. The disabled person filed a joint return, or
+        c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer’s 2026 tax return
+    - doc: rp-25-32
+      page: 20
+      quote: the exemption amount referred to in § 152(d)(1)(B) is $5,300
+    verified: draft
+    note: Only f2441.nondependent and its question. The same $5,200 literal is in the prompts and citations of f2441.care_other,
+      f2441.care_other_or_claimable and f2441.nondependent_if_other, and in dependent, household and sa (the qr.gross_income_limit
+      group); not taken here.
+    operations:
+    - set:
+        line: f2441.nondependent
+        field: expr.source
+        from: Did you (or, on a joint return, your spouse) pay for the care of a person who was not able to care for themselves,
+          lived with you for more than half of 2025 (or, for a person born or who died in 2025, for more than half of the
+          time they were alive in 2025) and would be your dependent except that they had gross income of $5,200 or more,
+          they filed a joint return, or you (or, on a joint return, your spouse) could be claimed as a dependent on someone
+          else's 2025 return; or of your child under 13 (or not able to care for themselves) whom you treat as your qualifying
+          person as the custodial parent although you cannot claim the child as your dependent?
+        to: Did you (or, on a joint return, your spouse) pay for the care of a person who was not able to care for themselves,
+          lived with you for more than half of 2025 (or, for a person born or who died in 2025, for more than half of the
+          time they were alive in 2025) and would be your dependent except that they had gross income of $5,300 or more,
+          they filed a joint return, or you (or, on a joint return, your spouse) could be claimed as a dependent on someone
+          else's 2025 return; or of your child under 13 (or not able to care for themselves) whom you treat as your qualifying
+          person as the custodial parent although you cannot claim the child as your dependent?
+    - set:
+        line: f2441.nondependent
+        field: cite.locator
+        from: 'p. 1, Qualifying Person(s), "or could claim as a dependent except: a. The disabled person had gross income
+          of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could
+          be claimed as a dependent on another taxpayer''s 2025 tax return"; p. 1, Special rule for children of divorced
+          or separated parents or parents who live apart, "Even if you can''t claim your child as a dependent, they are
+          treated as your qualifying person if"; p503 p. 3, Birth or death of otherwise qualifying person, "a person who
+          was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person''s
+          home more than half the time they were alive in 2025"'
+        to: 'p. 2, Qualifying Person(s), "or could claim as a dependent except: a. The disabled person had gross income
+          of $5,300 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could
+          be claimed as a dependent on another taxpayer''s 2026 tax return"; p. 2, Special rule for children of divorced
+          or separated parents or parents who live apart, "Even if you can''t claim your child as a dependent, they are
+          treated as your qualifying person if"; p503 p. 3, Birth or death of otherwise qualifying person, "a person who
+          was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person''s
+          home more than half the time they were alive in 2025"'
+    - set_question:
+        input: f2441.nondependent
+        field: prompt
+        from: |-
+          Was any of that care for a person in either of these situations?
+
+          - A person who could not care for themselves and lived with you for more than half of 2025, whom you cannot claim as a dependent only because they had income of $5,200 or more, or filed a joint return, or because you (or, on a joint return, your spouse) can be claimed as a dependent by someone else.
+          - Your child, under 13 or not able to care for themselves, who lived with you for the longer part of 2025 but whom you cannot claim as a dependent, for example because the child's other parent claims the child.
+        to: |-
+          Was any of that care for a person in either of these situations?
+
+          - A person who could not care for themselves and lived with you for more than half of 2025, whom you cannot claim as a dependent only because they had income of $5,300 or more, or filed a joint return, or because you (or, on a joint return, your spouse) can be claimed as a dependent by someone else.
+          - Your child, under 13 or not able to care for themselves, who lived with you for the longer part of 2025 but whom you cannot claim as a dependent, for example because the child's other parent claims the child.

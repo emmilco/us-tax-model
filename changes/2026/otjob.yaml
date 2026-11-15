@@ -1,0 +1,56 @@
+changes:
+  tax_year: 2026
+  form: otjob
+  entries:
+  - change: C-SCHED-05
+    evidence:
+    - doc: f1040s1a
+      page: 3
+      quote: Qualified overtime compensation reported on Form W-2.
+    - doc: f1040s1a
+      page: 3
+      quote: Add lines 16a through 16e, column (iii)
+    - doc: f1040s1a
+      page: 3
+      quote: Qualified overtime compensation reported on Form 1099-MISC or 1099-NEC.
+    - doc: f1040s1a
+      page: 3
+      quote: Add lines 18a through 18e, column (iv)
+    - doc: f1040s1a
+      page: 3
+      quote: Add lines 17 and 19
+    - doc: iw2w3
+      page: 23
+      quote: Code TT—Total amount of qualified overtime compensation
+    verified: draft
+    note: Column (b) of the worksheet is the 2026 form's line 16, column (iii). The methods and their questions and note are
+      unchanged; they wait for the 2026 i1040gi.
+    operations:
+    - set_form:
+        field: title
+        from: Qualified Overtime Compensation From More Than One Employer Worksheet (Schedule 1-A, line 14a) — one row per
+          employer
+        to: Schedule 1-A, line 16, qualified overtime compensation reported on Form W-2 — one row per employer (lines 16a
+          through 16e)
+    - set:
+        line: otjob.col_b
+        field: printed
+        from: 1(b)
+        to: 16(iii)
+    - set:
+        line: otjob.col_b
+        field: label
+        from: Qualified overtime reported on Form W-2, box 1
+        to: Qualified overtime compensation included in Form W-2, box 12, code “TT” (see instructions)
+    - set:
+        line: otjob.col_b
+        field: cite.doc
+        from: i1040gi
+        to: f1040s1a
+    - set:
+        line: otjob.col_b
+        field: cite.locator
+        from: p. 108, Qualified Overtime Compensation From More Than One Employer Worksheet, column (b); p. 108, line 14a,
+          including qualified overtime not included in box 1 (for example overtime deferred under a qualified retirement plan)
+        to: Schedule 1-A (2026), line 16, column (iii) (draft), "Qualified overtime compensation included in Form W-2, box
+          12, code “TT” (see instructions)"; iw2w3 p. 23, Box 12—Codes, "Code TT—Total amount of qualified overtime compensation"

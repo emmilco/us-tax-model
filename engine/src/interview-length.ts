@@ -21,16 +21,19 @@
 // false, zero or an empty roster.
 //
 //   interview-length [--write] [--self-test] [--what-if]
+//     The returns are measured on INTERVIEW_WORKERS worker threads (default defaultWorkers() of pool.ts); the report
+//     and the problems are the same for every count, and 1 measures them in one thread.
 //     --write       writes reports/<year>/interview_length.md, keeping the hand-written findings below its marker
 //     --what-if     today's order only, as built and with each proposed umbrella gate applied in memory
 //                   (umbrella-what-if.ts), then with the recommended ones together; with --write, writes
 //                   reports/<year>/umbrella_savings.md
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse } from "yaml";
 import { loadCanonical } from "./canonical.js";
-import { inputMeta, interviewStatus, loadInterview, questionTemplate, type InterviewData } from "./interview.js";
+import { inputMeta, loadInterview, questionTemplate, statusParts, type InterviewData } from "./interview.js";
 import {
   bankOrder, existenceGates, fixtureCases, GENERATED, leakPair, minimalAnswers, plantLeak, readInputs, replayed, replayedState, SEED, Unanswered, walk,
   type Answers, type Walk,
@@ -38,6 +41,7 @@ import {
 import { walkedCases } from "./fixture-inputs.js";
 import { sampleReturns } from "./generate.js";
 import { gatesOf } from "./gates.js";
+import { TaskWorkers, walkWorkers } from "./pool.js";
 import { YEAR } from "./year.js";
 import { applyUmbrellas, RECOMMENDED, UMBRELLAS, umbrellaAnswer, unGated, type Umbrella } from "./umbrella-what-if.js";
 import type { CanonicalData, Inputs } from "./types.js";
@@ -78,21 +82,77 @@ function probeAnswer(data: CanonicalData, key: string): unknown {
   return t === "Bool" ? false : t === "Enum" ? undefined : 0;
 }
 
-/** The expected order: the open question with the most expected removals under a closed answer, ties in bank order. */
+/** A state's inputs as a key: its entries in key order, hashed. */
+export function stateKey(inputs: Inputs): string {
+  return createHash("sha1").update(JSON.stringify(Object.keys(inputs).sort().map((k) => [k, inputs[k]]))).digest("base64");
+}
+
+/** A state as the walks and probes read it: its status, the reachable inputs the evaluation reads, and those the reach
+ * pass adds, computed only when asked for (statusParts in interview.ts). */
+interface State { status: string; read: Set<string>; pass: (() => string[]) | null; ahead?: Set<string>; reachable?: string[] }
+const aheadOf = (st: State): Set<string> => { if (!st.ahead) { st.ahead = new Set(st.pass!()); st.pass = null; } return st.ahead; };
+const reachableOf = (st: State): string[] => (st.reachable ??= [...st.read, ...aheadOf(st)].sort());
+
+/** The states met, by data and bank, then by state (stateKey): the expected order's probes, and the states of the
+ * walks. A state's status and reachable inputs are a function of the data, the bank and the state, and the walks of
+ * returns that have answered alike so far meet the same states (the minimal returns share nearly all of theirs), so
+ * each is evaluated once per thread. Cleared when it holds STATES_KEPT states. */
+const met = new WeakMap<CanonicalData, WeakMap<InterviewData, Map<string, State>>>();
+const STATES_KEPT = 100_000;
+function statesOf(data: CanonicalData, config: InterviewData): (inputs: Inputs) => State {
+  let byConfig = met.get(data);
+  if (!byConfig) met.set(data, (byConfig = new WeakMap()));
+  let memo = byConfig.get(config);
+  if (!memo) byConfig.set(config, (memo = new Map()));
+  const states = memo;
+  return (inputs) => {
+    const key = stateKey(inputs);
+    const hit = states.get(key);
+    if (hit) return hit;
+    const { status, read, ahead } = statusParts(data, config, inputs);
+    const st: State = { status, read, pass: ahead };
+    if (states.size >= STATES_KEPT) states.clear();
+    states.set(key, st);
+    return st;
+  };
+}
+
+/** What walk() reads of a state, from the states met: interviewStatus's status and reachable inputs. */
+export function statusOf(data: CanonicalData, config: InterviewData): (inputs: Inputs) => { status: string; reachableInputs: string[] } {
+  const state = statesOf(data, config);
+  return (inputs) => { const st = state(inputs); return { status: st.status, reachableInputs: reachableOf(st) }; };
+}
+
+/** The expected order: the open question with the most expected removals under a closed answer, ties in bank order.
+ * A probe's removals are the open questions unreachable after it, so an open question the evaluation reads after it
+ * (`read`) is not removed, and the reach pass is run only for a probe whose other open questions could give a score
+ * as high as the best found: the probes are taken by that bound, highest first. The questions with the best score,
+ * in the order of `open`, are the same as when every probe is scored in that order. */
 export function expectedOrder(data: CanonicalData, config: InterviewData, shares: Map<string, number>): (open: string[], current: Inputs) => string {
   const bank = bankOrder(config);
+  const state = statesOf(data, config);
   return (open, current) => {
     if (open.length === 1) return open[0]!;
-    let best: string[] = [];
-    let bestScore = 0;
+    const probes: { q: string; st: State; left: string[]; weight: number; bound: number }[] = [];
     for (const q of open) {
       const probe = probeAnswer(data, q);
       if (probe === undefined) continue;
-      const after = new Set(interviewStatus(data, config, { ...current, [q]: probe }).reachableInputs);
-      const removed = open.filter((k) => k !== q && !after.has(k)).length;
-      const score = (1 - (shares.get(questionTemplate(q)) ?? DEFAULT_SHARE)) * removed;
-      if (score > bestScore) { bestScore = score; best = [q]; } else if (score === bestScore && score > 0) best.push(q);
+      const st = state({ ...current, [q]: probe });
+      const left = open.filter((k) => k !== q && !st.read.has(k));
+      const weight = 1 - (shares.get(questionTemplate(q)) ?? DEFAULT_SHARE);
+      probes.push({ q, st, left, weight, bound: weight * left.length });
     }
+    probes.sort((a, b) => b.bound - a.bound);
+    let bestScore = 0;
+    const scores = new Map<string, number>();
+    for (const { q, st, left, weight, bound } of probes) {
+      if (bound === 0 || bound < bestScore) break;
+      const after = aheadOf(st);
+      const score = weight * left.filter((k) => !after.has(k)).length;
+      scores.set(q, score);
+      if (score > bestScore) bestScore = score;
+    }
+    const best = bestScore > 0 ? open.filter((q) => scores.get(q) === bestScore) : [];
     return bank(best.length ? best : open);
   };
 }
@@ -123,7 +183,8 @@ export function measure(ctx: Ctx, group: string, profile: string, id: string, an
   const { data, configs, shares } = ctx;
   const config = configs[profile]!;
   let w: Walk;
-  try { w = walk(data, config, answers, bankOrder(config), BOUND, () => {}); } catch (e) { if (e instanceof Unanswered) return null; throw e; }
+  const status = statusOf(data, config);
+  try { w = walk(data, config, answers, bankOrder(config), BOUND, () => {}, undefined, status); } catch (e) { if (e instanceof Unanswered) return null; throw e; }
   const state = replayedState(config, w.events);
   const given = state.inputs;
   const closed = w.events.filter((e) => isClosed(e.value)).length;
@@ -143,7 +204,7 @@ export function measure(ctx: Ctx, group: string, profile: string, id: string, an
   ];
   for (const [name, pick] of others) {
     let o: Walk;
-    try { o = walk(data, config, known, pick, BOUND, () => {}); } catch (e) {
+    try { o = walk(data, config, known, pick, BOUND, () => {}, undefined, status); } catch (e) {
       errors.push(`${group}: ${id}: the ${name} order asks ${e instanceof Unanswered ? `${e.message}, which the return does not answer` : String(e)}`);
       continue;
     }
@@ -184,14 +245,44 @@ export function casesOf(ctx: Ctx): Case[] {
   return out;
 }
 
-function runAll(ctx: Ctx): Run {
+/** One return measured, with the problems its walks found, in the order measure() finds them. */
+export interface Measured { m: Measure | null; errors: string[] }
+
+export function measureCase(ctx: Ctx, c: Case): Measured {
+  const errors: string[] = [];
+  return { m: measure(ctx, c.group, c.profile, c.id, c.answers, errors), errors };
+}
+
+/** What identifies the list of returns: a worker that built another list is refused. */
+export function casesDigest(cases: Case[]): string {
+  return createHash("sha256").update(JSON.stringify(cases.map((c) => [c.group, c.profile, c.id, c.open ?? null]))).digest("hex");
+}
+
+/** Measures every return (or those at the indices `only`, for the self-test), on `workers` worker threads
+ * (interview-length-worker.ts), each of which builds the same list of returns and measures those it is sent by
+ * index; one measures them here. The results are taken in the list's order whichever thread measured them, so the
+ * run is the same for every worker count. */
+export async function runAll(ctx: Ctx, workers: number, only?: number[]): Promise<Run> {
+  const all = casesOf(ctx);
+  const indices = only ?? all.map((_, i) => i);
+  const cases = indices.map((i) => all[i]!);
+  let results: Measured[];
+  if (workers <= 1) results = cases.map((c) => measureCase(ctx, c));
+  else {
+    const pool = new TaskWorkers<number, Measured>(new URL("./interview-length-worker.js", import.meta.url), Math.min(workers, cases.length), { year: YEAR });
+    try {
+      const digest = casesDigest(all);
+      if ((await pool.ready).some((d) => d !== digest)) throw new Error("interview-length: a worker built a different list of returns");
+      results = await pool.map(indices, (i) => i);
+    } finally { await pool.close(); }
+  }
   const errors: string[] = [];
   const measures: Measure[] = [];
   const unwalkable: Record<string, number> = {};
-  for (const c of casesOf(ctx)) {
-    const m = measure(ctx, c.group, c.profile, c.id, c.answers, errors);
-    if (m) measures.push(m); else unwalkable[c.group] = (unwalkable[c.group] ?? 0) + 1;
-  }
+  results.forEach(({ m, errors: e }, i) => {
+    errors.push(...e);
+    if (m) measures.push(m); else unwalkable[cases[i]!.group] = (unwalkable[cases[i]!.group] ?? 0) + 1;
+  });
   return { measures, unwalkable, errors };
 }
 
@@ -297,9 +388,10 @@ export async function interviewLength(args: string[] = []): Promise<number> {
   if (args.includes("--what-if")) return whatIf(args.includes("--write"));
   const ctx = context();
   const t0 = performance.now();
-  const run = runAll(ctx);
+  const workers = walkWorkers("INTERVIEW_WORKERS");
+  const run = await runAll(ctx, workers);
   const done = run.measures.filter((m) => m.status === "complete");
-  console.log(`  ${run.measures.length} returns measured (${done.length} complete), ${Object.values(run.unwalkable).reduce((a, b) => a + b, 0)} not walkable, ${((performance.now() - t0) / 1000).toFixed(1)} s`);
+  console.log(`  ${run.measures.length} returns measured (${done.length} complete), ${Object.values(run.unwalkable).reduce((a, b) => a + b, 0)} not walkable, ${((performance.now() - t0) / 1000).toFixed(1)} s on ${workers} worker(s)`);
   if (args.includes("--write")) {
     const old = existsSync(REPORT) ? readFileSync(REPORT, "utf8") : "";
     const kept = old.includes(MARKER) ? old.slice(old.indexOf(MARKER) + MARKER.length) : "\n";
@@ -316,7 +408,7 @@ export async function interviewLength(args: string[] = []): Promise<number> {
 
 /** The orders on a fixture, and on the same fixture with a planted question asked before the answer that makes it
  * moot: static asks it, the floor does not, and the expected order (whose probe sees the removal) does not either. */
-function selfTest(): number {
+async function selfTest(): Promise<number> {
   assert.ok(isClosed(false) && isClosed(0) && isClosed([]) && !isClosed(true) && !isClosed(1) && !isClosed(["a"]) && !isClosed("single"));
   const planted = sharesFrom("situations:\n  a: {refs: [x.y, ladder 3, \"$w2\"], share: 0.2}\n  b: {refs: [x.y], share: 0.4}\n  c: {refs: [z.w]}\n");
   assert.deepEqual([...planted].sort(), [["$w2", 0.2], ["x.y", 0.4]]);
@@ -359,7 +451,17 @@ function selfTest(): number {
   const wp = walk(data, config, withPrize, bankOrder(config), BOUND, () => {});
   const wrong = walk(applied.data, applied.configs["full"]!, (k, cur) => (k === u.id ? { value: false } : withPrize(k, cur)), bankOrder(applied.configs["full"]!), BOUND, () => {});
   assert.ok(umbrellaAnswer(u, wp.events, isClosed) && wrong.valuesKey !== wp.valuesKey, "a wrong no changes the values");
-  console.log(`interview-length self-test: passed (closed answers, frequency shares, orders on ${c.id}: static ${clean.asked}, floor ${clean.floor}, expected ${clean.expected}; ${pair.leaked} planted before ${pair.decider}; ${u.id} asks ${wi.events.length} for ${w.events.length})`);
+  // Workers: the returns of the smallest slice profile (complete and refused ones), measured in this thread and on two
+  // workers, give the same run and report.
+  const cases = casesOf(ctx);
+  const picks = cases.flatMap((x, i) => (x.profile === SLICES[0] ? [i] : []));
+  const one = await runAll(ctx, 1, picks), two = await runAll(ctx, 2, picks);
+  assert.ok(one.measures.length + Object.values(one.unwalkable).reduce((a, b) => a + b, 0) === picks.length && picks.length > 1);
+  assert.ok(one.measures.some((m) => m.status === "complete") && one.measures.some((m) => m.status !== "complete"), "the sample has complete and refused returns");
+  assert.deepEqual(two, one, "two workers measure the returns as one thread does");
+  const report = (r: Run) => renderReport(r, new Set(existenceGates(data).keys()), new Set(gatesOf(data).map((g) => g.input)), ctx.shares, 0.05, "\n");
+  assert.equal(report(two), report(one), "and give the same report");
+  console.log(`interview-length self-test: passed (closed answers, frequency shares, orders on ${c.id}: static ${clean.asked}, floor ${clean.floor}, expected ${clean.expected}; ${pair.leaked} planted before ${pair.decider}; ${u.id} asks ${wi.events.length} for ${w.events.length}; ${picks.length} ${SLICES[0]} returns the same on two workers)`);
   return 0;
 }
 

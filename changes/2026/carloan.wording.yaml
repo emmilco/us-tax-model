@@ -1,0 +1,30 @@
+changes:
+  tax_year: 2026
+  form: carloan
+  entries:
+  - change: C-SCHED-07
+    evidence:
+    - doc: i1040sc
+      page: 9
+      quote: Deduct only the business-use portion of the vehicle loan interest on Schedule C (Form 1040).
+    - doc: i1040sc
+      page: 9
+      quote: If you claim a deduction on Schedule 1-A (Form 1040) for vehicle loan interest, then you can’t claim a deduction
+        for that same interest on Schedule C.
+    - doc: i1040sc
+      page: 2
+      quote: New Line 16b, Vehicle loan interest. Use line 16b to report the business-use portion of your vehicle loan interest.
+    verified: draft
+    note: 'Re-cite only: the caution moved from the Line 9 text to the Line 16b text. Whether carloan.col_ii_input should
+      read the new Schedule C line 16b interest belongs to the Schedule C adoption (C-BUS-02); the i1040gi p. 110 citation
+      cannot be checked until the 2026 Form 1040 instructions are posted.'
+    operations:
+    - set:
+        line: carloan.col_ii_input
+        field: cite.locator
+        from: p. 110, Schedule 1-A, line 22, column (ii), "enter the amount of the QPVLI, if any, that was deducted elsewhere
+          on your return (for example, on Schedule C, Schedule E, or Schedule F)"; i1040sc p. 6, Line 9, Caution
+        to: p. 110, Schedule 1-A, line 22, column (ii), "enter the amount of the QPVLI, if any, that was deducted elsewhere
+          on your return (for example, on Schedule C, Schedule E, or Schedule F)"; i1040sc p. 9, Line 16b, "If you claim
+          a deduction on Schedule 1-A (Form 1040) for vehicle loan interest, then you can’t claim a deduction for that same
+          interest on Schedule C."

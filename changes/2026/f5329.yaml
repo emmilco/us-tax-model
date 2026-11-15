@@ -1,0 +1,167 @@
+changes:
+  tax_year: 2026
+  form: f5329
+  entries:
+  - change:
+    - C-SCHED-11
+    - C-PEOP-03
+    evidence:
+    - doc: f5329
+      page: 2
+      quote: Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 5
+    - doc: f5329
+      page: 3
+      quote: Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2026 (including
+        2026 contributions made in 2027). Include this amount on Schedule 2 (Form 1040), line 18
+    - doc: f1040s2
+      page: 2
+      quote: Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here
+    - doc: f1040s2
+      page: 3
+      quote: Additional tax on excess contributions or accumulations in IRAs or other tax-favored accounts. Attach Form 5329
+    verified: draft
+    note: 'Schedule 2 line 8 becomes two lines: line 5 takes Form 5329 line 4 (with the box for code 1 tax entered without
+      the form) and new line 18 takes line 49. f5329.tax keeps line 4 only and f5329.tax_excess carries line 49; the per-person
+      totals person.x_tax_early and person.x_tax_excess are the ones lane O1''s Schedule 2 lines 5 and 18 (s2.excess_contrib)
+      read. person.x_tax is read only by the 2025 s2.line8; it is removed once O1''s operations no longer read it (a remove_line
+      at the merge).'
+    operations:
+    - set:
+        line: f5329.rate10
+        field: cite.locator
+        from: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
+          line 8"
+        to: p. 2, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
+          line 5"
+    - set:
+        line: f5329.tax10
+        field: cite.locator
+        from: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
+          line 8"
+        to: p. 2, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
+          line 5"
+    - set:
+        line: f5329.l4
+        field: label
+        from: Additional tax. 10% of line 3 (25% of the part from a SIMPLE IRA within 2 years). Include on Schedule 2 (Form
+          1040), line 8
+        to: Additional tax. 10% of line 3 (25% of the part from a SIMPLE IRA within 2 years). Include on Schedule 2 (Form
+          1040), line 5
+    - set:
+        line: f5329.l4
+        field: cite.locator
+        from: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
+          line 8"; i5329 p. 5, Line 4, "you must multiply that amount by 25% instead of 10%"
+        to: p. 2, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
+          line 5"; i5329 p. 6, Line 4, "you must multiply that amount by 25% instead of 10%"
+    - set:
+        line: f5329.l49
+        field: label
+        from: Additional tax. 6% of the smaller of line 48 or the value of your HSAs on December 31, 2025. Include on Schedule
+          2 (Form 1040), line 8
+        to: Additional tax. 6% of the smaller of line 48 or the value of your HSAs on December 31, 2026. Include on Schedule
+          2 (Form 1040), line 18
+    - set:
+        line: f5329.l49
+        field: cite.locator
+        from: p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs
+          on December 31, 2025 (including 2025 contributions made in 2026)."
+        to: p. 3, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs
+          on December 31, 2026 (including 2026 contributions made in 2027). Include this amount on Schedule 2 (Form 1040),
+          line 18"
+    - set:
+        line: f5329.tax
+        field: label
+        from: This person's Form 5329 taxes for Schedule 2 line 8 (lines 4 and 49)
+        to: This person's Form 5329 tax for Schedule 2 line 5 (line 4)
+    - set:
+        line: f5329.tax
+        field: expr
+        from:
+          op: sum
+          of:
+          - f5329.l4
+          - f5329.l49
+        to:
+          op: copy
+          from: f5329.l4
+    - set:
+        line: f5329.tax
+        field: cite.locator
+        from: p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required."
+        to: p. 2, Part II, line 5, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required."
+    - add_line:
+        after: f5329.tax
+        line:
+          id: f5329.tax_excess
+          printed: (helper)
+          label: This person's Form 5329 tax for Schedule 2 line 18 (line 49)
+          type: NonNegDollars
+          expr:
+            op: copy
+            from: f5329.l49
+          cite:
+            doc: f1040s2
+            locator: p. 3, Part II, line 18, "Additional tax on excess contributions or accumulations in IRAs or other tax-favored
+              accounts. Attach Form 5329"
+  - change: C-PEOP-04
+    evidence:
+    - doc: i5329
+      page: 2
+      quote: However, if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R and you owe the additional
+        tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329.
+    verified: draft
+    operations:
+    - set_form:
+        field: collection
+        from:
+          parent: person
+          implicit: form
+          cite:
+            doc: i5329
+            locator: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R
+              and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+        to:
+          parent: person
+          implicit: form
+          cite:
+            doc: i5329
+            locator: p. 2, Who Must File, "However, if distribution code 1 is correctly shown in box 7a of all your Forms
+              1099-R and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form
+              5329."
+    - set:
+        line: f5329.must
+        field: cite.locator
+        from: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and
+          you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+        to: p. 2, Who Must File, "However, if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R and
+          you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+    - set:
+        line: f5329.one
+        field: cite.locator
+        from: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and
+          you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+        to: p. 2, Who Must File, "However, if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R and
+          you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+    - set:
+        line: f5329.files
+        field: cite.locator
+        from: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and
+          you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+        to: p. 2, Who Must File, "However, if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R and
+          you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+  - change: C-PEOP-05
+    evidence:
+    - doc: i5329
+      page: 5
+      quote: In the space provided, enter the applicable exception number (01–24). If more than one exception applies, enter
+        99.
+    verified: draft
+    operations:
+    - set:
+        line: f5329.l2
+        field: cite.locator
+        from: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–23). If more than one exception applies, enter 99."
+        to: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+          exception number (01–24). If more than one exception applies, enter 99."

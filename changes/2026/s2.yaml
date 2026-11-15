@@ -1,0 +1,394 @@
+changes:
+  tax_year: 2026
+  form: s2
+  entries:
+  - change: C-SCHED-10
+    evidence:
+    - doc: f1040s2
+      page: 2
+      quote: Net investment income tax. Attach Form 8960
+    - doc: f1040s2
+      page: 2
+      quote: 13c Additional tax on HSA distributions. Attach Form 8889
+    - doc: f1040s2
+      page: 3
+      quote: 14 Total additional income taxes. Add lines 13a through 13z
+    - doc: f1040s2
+      page: 3
+      quote: 15 Add lines 4 through 11 and line 14
+    - doc: f1040s2
+      page: 3
+      quote: 17d Total other employment taxes. Add lines 17a through 17c
+    - doc: f1040s2
+      page: 3
+      quote: 20 Total additional employment and other taxes. Add lines 16c, 17d, 18, and 19c
+    - doc: f1040s2
+      page: 3
+      quote: Add lines 15 and 20. These are your total additional taxes. Enter here and on Form 1040 or 1040-SR, line 23
+    - doc: f1040s2
+      page: 3
+      quote: 17a Household employment taxes. Attach Schedule H
+    - doc: f1040s2
+      page: 2
+      quote: 13b Recapture of federal mortgage subsidy
+    - doc: f1040s2
+      page: 3
+      quote: 13n Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866
+    - doc: i8960
+      page: 23
+      quote: include this amount on Schedule 2 (Form 1040), line 6
+    verified: draft
+    note: 'Part II is laid out again in Sections A to C. Ids are kept, so a line that moves is a set of printed: s2.line8
+      (5, C-SCHED-11), s2.line12 (6), s2.line17c (13c), s2.line18 (14). The new subtotal lines 15, 17d and 20 are added; line
+      16c and 19c are not figured, as 2025 line 7 and lines 17p and 17q were not. Line 21 becomes 15 + 20, which is 4 + 5
+      + 6 + 11 + 14 + 17b + 18 in the slice. The cites of the screen questions follow the new line numbers; their i1040gi
+      quotes wait for the 2026 Instructions for Form 1040. s2.line17c keeps its cite here: its Form 8889 sentence (line 13c)
+      is C-PEOP-19.'
+    operations:
+    - set:
+        line: s2.w2_marks
+        field: cite.locator
+        from: Schedule 2 (2025), lines 5, 13, 17h and 17k
+        to: Schedule 2 (2026), lines 16a, 17c, 13h and 13k (draft)
+    - set:
+        line: s2.household_help
+        field: cite.locator
+        from: Schedule 2 (2025), line 9, "Household employment taxes. Attach Schedule H"
+        to: Schedule 2 (2026), line 17a (draft), "Household employment taxes. Attach Schedule H"
+    - set:
+        line: s2.household_employee
+        field: cite.locator
+        from: Schedule 2 (2025), line 9, "Household employment taxes. Attach Schedule H"
+        to: Schedule 2 (2026), line 17a (draft), "Household employment taxes. Attach Schedule H"
+    - set:
+        line: s2.household_employee_if_help
+        field: cite.locator
+        from: Schedule 2 (2025), line 9, "Household employment taxes. Attach Schedule H"
+        to: Schedule 2 (2026), line 17a (draft), "Household employment taxes. Attach Schedule H"
+    - set:
+        line: s2.mortgage_subsidy
+        field: cite.locator
+        from: Schedule 2 (2025), line 17b
+        to: Schedule 2 (2026), line 13b (draft)
+    - set:
+        line: s2.hsa_testing
+        field: cite.locator
+        from: Schedule 2 (2025), line 17d
+        to: Schedule 2 (2026), line 13d (draft)
+    - set:
+        line: s2.credit_recapture
+        field: cite.locator
+        from: Schedule 2 (2025), lines 1d, 1e, 1f, 1y, 16, 17a, 17z and 19
+        to: Schedule 2 (2026), lines 1d, 1e, 1f, 1y, 9, 10, 13a and 13z (draft)
+    - set:
+        line: s2.lookback
+        field: cite.locator
+        from: Schedule 2 (2025), line 17n
+        to: Schedule 2 (2026), line 13n (draft)
+    - set:
+        line: s2.lookback_if_business
+        field: cite.locator
+        from: Schedule 2 (2025), line 17n
+        to: Schedule 2 (2026), line 13n (draft)
+    - set:
+        line: s2.other_tax
+        field: cite.locator
+        from: Schedule 2 (2025), lines 1y, 17h to 17m and 17z
+        to: Schedule 2 (2026), lines 1y, 13h to 13m and 13z (draft)
+    - set:
+        line: s2.line12
+        field: printed
+        from: '12'
+        to: '6'
+    - set:
+        line: s2.line12
+        field: cite.locator
+        from: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+        to: Schedule 2 (2026), line 6 (draft), "Net investment income tax. Attach Form 8960"; i8960 p. 23 (draft), Line 17,
+          "include this amount on Schedule 2 (Form 1040), line 6"
+    - set:
+        line: s2.line17c
+        field: printed
+        from: 17c
+        to: 13c
+    - set:
+        line: s2.line18
+        field: printed
+        from: '18'
+        to: '14'
+    - set:
+        line: s2.line18
+        field: label
+        from: Total additional taxes. Add lines 17a through 17z
+        to: Total additional income taxes. Add lines 13a through 13z
+    - set:
+        line: s2.line18
+        field: cite.locator
+        from: Schedule 2 (2025), line 18 (the other line 17 items are refused by s2.other)
+        to: Schedule 2 (2026), line 14 (draft), "Total additional income taxes. Add lines 13a through 13z" (the other line
+          13 items are refused by s2.other)
+    - add_line:
+        after: s2.line18
+        line:
+          id: s2.line15
+          printed: '15'
+          type: NonNegDollars
+          label: Add lines 4 through 11 and line 14 (of lines 4 to 11, this tool figures lines 4, 5, 6 and 11)
+          expr:
+            op: sum
+            of:
+            - s2.line4
+            - s2.line8
+            - s2.line12
+            - s2.line11
+            - s2.line18
+          cite:
+            doc: f1040s2
+            locator: Schedule 2 (2026), line 15 (draft), "Add lines 4 through 11 and line 14"
+    - add_line:
+        after: s2.line15
+        line:
+          id: s2.line17d
+          printed: 17d
+          type: NonNegDollars
+          label: Total other employment taxes. Add lines 17a through 17c (lines 17a and 17c are refused by s2.other)
+          expr:
+            op: copy
+            from: s2.line17b
+          cite:
+            doc: f1040s2
+            locator: Schedule 2 (2026), line 17d (draft), "Total other employment taxes. Add lines 17a through 17c"
+    - add_line:
+        after: s2.line17d
+        line:
+          id: s2.line20
+          printed: '20'
+          type: NonNegDollars
+          label: Total additional employment and other taxes. Add lines 16c, 17d, 18, and 19c (lines 16c and 19c are not figured
+            by this tool)
+          expr:
+            op: sum
+            of:
+            - s2.line17d
+            - s2.excess_contrib
+          cite:
+            doc: f1040s2
+            locator: Schedule 2 (2026), line 20 (draft), "Total additional employment and other taxes. Add lines 16c, 17d,
+              18, and 19c"
+    - set:
+        line: s2.line21
+        field: label
+        from: Add s2.line4, s2.line8, s2.line11, s2.line12, s2.line18
+        to: Add lines 15 and 20. These are your total additional taxes
+    - set:
+        line: s2.line21
+        field: expr.of
+        from:
+        - s2.line4
+        - s2.line8
+        - s2.line11
+        - s2.line12
+        - s2.line18
+        to:
+        - s2.line15
+        - s2.line20
+    - set:
+        line: s2.line21
+        field: cite.locator
+        from: Schedule 2 (2025), line 21, "Add lines 4, 7 through 16, 18, and 19. These are your total other taxes"
+        to: Schedule 2 (2026), line 21 (draft), "Add lines 15 and 20. These are your total additional taxes"
+  - change:
+    - C-SCHED-11
+    - C-PEOP-03
+    evidence:
+    - doc: f1040s2
+      page: 2
+      quote: 5 Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check
+        here
+    - doc: f1040s2
+      page: 3
+      quote: 18 Additional tax on excess contributions or accumulations in IRAs or other tax-favored accounts. Attach Form
+        5329
+    - doc: f5329
+      page: 2
+      quote: Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 5
+    - doc: f5329
+      page: 3
+      quote: Include this amount on Schedule 2 (Form 1040), line 18
+    - doc: i5329
+      page: 2
+      quote: if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R
+    verified: draft
+    note: 'The Form 5329 taxes split: line 5 (was 8) takes the early-distribution tax (Form 5329 line 4, and Part II line
+      8, refused), with its "if not required" box; the new line 18 (id s2.excess_contrib, as s2.line18 is the kept id of line
+      14) takes the excess-contribution taxes (line 49 in the slice). Each reads a per-person total the Form 5329 side of
+      C-PEOP-03 is to add: person.x_tax_early and person.x_tax_excess (person.x_tax, today lines 4 + 49, is then no longer
+      read by Schedule 2).'
+    operations:
+    - set:
+        line: s2.line8_must
+        field: cite.locator
+        from: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and
+          you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+        to: p. 2 (draft), Who Must File, "However, if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R
+          and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+    - set:
+        line: s2.line8_file
+        field: cite.locator
+        from: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and
+          you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+        to: p. 2 (draft), Who Must File, "However, if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R
+          and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
+    - set:
+        line: s2.line8
+        field: printed
+        from: '8'
+        to: '5'
+    - set:
+        line: s2.line8
+        field: expr.field
+        from: person.x_tax
+        to: person.x_tax_early
+    - set:
+        line: s2.line8
+        field: cite.locator
+        from: p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required.
+          If not required, check here"
+        to: p. 2 (draft), Part II, line 5, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required.
+          If not required, check here"; f5329 p. 2 (draft), line 4, "Include this amount on Schedule 2 (Form 1040), line 5"
+    - set:
+        line: s2.line8_box
+        field: printed
+        from: 8 (box)
+        to: 5 (box)
+    - set:
+        line: s2.line8_box
+        field: display
+        from: The Schedule 2 line 8 check box, shown on the values sheet; it changes no amount.
+        to: The Schedule 2 line 5 check box, shown on the values sheet; it changes no amount.
+    - set:
+        line: s2.line8_box
+        field: cite.locator
+        from: p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required.
+          If not required, check here"; i1040gi p. 112, Line 8, "Also check the box on line 8 to indicate that you don’t have
+          to file Form 5329."
+        to: p. 2 (draft), Part II, line 5, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required.
+          If not required, check here"; i5329 p. 2 (draft), Who Must File, "you don’t have to file Form 5329. Instead, see
+          the instructions for Schedule 2 (Form 1040), line 5"
+    - add_line:
+        after: s2.line17d
+        line:
+          id: s2.excess_contrib
+          printed: '18'
+          type: NonNegDollars
+          label: Additional tax on excess contributions or accumulations in IRAs or other tax-favored accounts. Attach Form
+            5329
+          expr:
+            op: sum_over
+            collection: person
+            field: person.x_tax_excess
+          cite:
+            doc: f1040s2
+            locator: Schedule 2 (2026), line 18 (draft), "Additional tax on excess contributions or accumulations in IRAs
+              or other tax-favored accounts. Attach Form 5329"; f5329 p. 3 (draft), "Include this amount on Schedule 2 (Form
+              1040), line 18"
+  - change: C-SCHED-13
+    evidence:
+    - doc: f1040s2
+      page: 2
+      quote: 11 Additional Medicare Tax on self-employment income. Attach Form 8959
+    - doc: f1040s2
+      page: 3
+      quote: 17b Additional Medicare tax on Medicare wages and RRTA compensation
+    - doc: f8959
+      page: 2
+      quote: Add lines 7 and 11. Also enter this amount on Schedule 2 (Form 1040), line 17b
+    - doc: f8959
+      page: 2
+      quote: Additional Medicare Tax on self-employment income. Multiply line 17 by 0.9% (0.009). Enter here and on Schedule
+        2 (Form 1040), line 11
+    verified: draft
+    note: 'Form 8959 keeps its ids through the renumbering (changes/2026/f8959.yaml): line 18 (self-employment) is f8959.line13
+      and line 12 (wages and RRTA) is f8959.line18. Line 11 reads the first; the new line 17b the second.'
+    operations:
+    - set:
+        line: s2.line11
+        field: label
+        from: Amount from f8959.line18
+        to: Additional Medicare Tax on self-employment income. Attach Form 8959
+    - set:
+        line: s2.line11
+        field: expr.from
+        from: f8959.line18
+        to: f8959.line13
+    - set:
+        line: s2.line11
+        field: cite.locator
+        from: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+        to: Schedule 2 (2026), line 11 (draft), "Additional Medicare Tax on self-employment income. Attach Form 8959"; f8959
+          p. 2 (draft), line 18, "Enter here and on Schedule 2 (Form 1040), line 11"
+    - add_line:
+        after: s2.line15
+        line:
+          id: s2.line17b
+          printed: 17b
+          type: NonNegDollars
+          label: Additional Medicare tax on Medicare wages and RRTA compensation. Attach Form 8959
+          expr:
+            op: copy
+            from: f8959.line18
+          cite:
+            doc: f1040s2
+            locator: Schedule 2 (2026), line 17b (draft), "Additional Medicare tax on Medicare wages and RRTA compensation.
+              Attach Form 8959"; f8959 p. 2 (draft), line 12, "Also enter this amount on Schedule 2 (Form 1040), line 17b"
+  - change: C-PEOP-12
+    evidence:
+    - doc: f8962
+      page: 2
+      quote: Excess advance payment of PTC. If line 25 is greater than line 24, subtract line 24 from line 25. Enter the difference
+        here and on Schedule 2 (Form 1040), line 1a
+    - doc: f1040s2
+      page: 2
+      quote: 1a Excess advance premium tax credit repayment. Attach Form 8962
+    verified: draft
+    note: 'The repayment limitation is repealed: line 1a reads Form 8962 line 27, which the Form 8962 side of C-PEOP-12 keeps
+      while it removes lines 28 and 29. The i1040gi quote of the cite waits for the 2026 Instructions for Form 1040.'
+    operations:
+    - set:
+        line: s2.line1a
+        field: expr.alternatives
+        from:
+        - guard:
+            op: test
+            eq:
+            - f8962.any
+            - const: true
+          then: f8962.line29
+        - guard:
+            op: test
+            eq:
+            - f8962.any
+            - const: false
+          then: s2.zero
+        to:
+        - guard:
+            op: test
+            eq:
+            - f8962.any
+            - const: true
+          then: f8962.line27
+        - guard:
+            op: test
+            eq:
+            - f8962.any
+            - const: false
+          then: s2.zero
+    - set:
+        line: s2.line1a
+        field: cite.locator
+        from: p. 1, Part I, line 1a, "Excess advance premium tax credit repayment. Attach Form 8962"; i1040gi p. 111, "If
+          the advance credit payments were more than the premium tax credit you can claim, the amount you must repay will
+          be shown on Form 8962, line 29."
+        to: p. 2 (draft), Part I, line 1a, "Excess advance premium tax credit repayment. Attach Form 8962"; f8962 p. 2 (draft),
+          line 27, "Excess advance payment of PTC. If line 25 is greater than line 24, subtract line 24 from line 25. Enter
+          the difference here and on Schedule 2 (Form 1040), line 1a"

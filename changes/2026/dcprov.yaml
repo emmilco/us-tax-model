@@ -1,0 +1,117 @@
+changes:
+  tax_year: 2026
+  form: dcprov
+  entries:
+  - change: C-CRED-12
+    evidence:
+    - doc: f2441
+      page: 2
+      quote: 1c Identifying number (SSN or EIN)
+    - doc: f2441
+      page: 2
+      quote: 1e Amount paid. See instructions.
+    - doc: i2441
+      page: 4
+      quote: Complete lines 1a through 1e for each person or organization that provided the care.
+    - doc: i2441
+      page: 4
+      quote: If the provider is a tax-exempt organization, enter “Tax-Exempt” on line 1c.
+    - doc: i2441
+      page: 4
+      quote: You must check either the “Yes” or “No” box on line 1d to indicate whether or not the care provider listed on
+        line 1a was your household employee during the year.
+    verified: draft
+    note: 'Layout only: Part I''s columns (a) to (e) are lines 1a to 1e. The provider data asked is unchanged.'
+    operations:
+    - set_form:
+        field: note
+        from: One entry per care provider. The provider's name and address (columns (a) and (b)) are written on the form by
+          the filer and are not modelled; the identifying number is modelled by its kind, the household-employee box and the
+          amount paid as given. A provider who is an ineligible related person is refused.
+        to: One entry per care provider. The provider's name and address (lines 1a and 1b) are written on the form by the
+          filer and are not modelled; the identifying number is modelled by its kind, the household-employee box and the amount
+          paid as given. A provider who is an ineligible related person is refused.
+    - set_form:
+        field: collection.cite.locator
+        from: p. 2, Line 1, "Complete columns (a) through (e) for each person or organization that provided the care"
+        to: p. 4, Lines 1a through 1e, "Complete lines 1a through 1e for each person or organization that provided the care"
+    - set:
+        line: dcprov.one
+        field: cite.locator
+        from: p. 2, Line 1, "Complete columns (a) through (e) for each person or organization that provided the care"
+        to: p. 4, Lines 1a through 1e, "Complete lines 1a through 1e for each person or organization that provided the care"
+    - set:
+        line: dcprov.tin_kind
+        field: printed
+        from: 1(c)
+        to: 1c
+    - set:
+        line: dcprov.tin_kind
+        field: expr.source
+        from: 'What do you enter in column (c), the provider''s identifying number? tin (you have the provider''s SSN, ITIN
+          or EIN and enter it), tax_exempt (a tax-exempt organization: enter "Tax-Exempt"), lafcp (you live abroad and the
+          foreign provider has no U.S. taxpayer identification number and is not required to get one: enter "LAFCP"), see_statement
+          (the provider did not give you the information: enter "See Attached Statement" and attach a statement saying so),
+          or employer (your employer furnished the care under its dependent care plan: enter "See W-2" in column (b), leave
+          column (c) blank and enter -0- in column (e))'
+        to: 'What do you enter on line 1c, the provider''s identifying number? tin (you have the provider''s SSN, ITIN or
+          EIN and enter it), tax_exempt (a tax-exempt organization: enter "Tax-Exempt"), lafcp (you live abroad and the foreign
+          provider has no U.S. taxpayer identification number and is not required to get one: enter "LAFCP"), see_statement
+          (the provider did not give you the information: enter "See Attached Statement" and attach a statement saying so),
+          or employer (your employer furnished the care under its dependent care plan: enter "See W-2" on line 1b, leave line
+          1c blank and enter -0- on line 1e)'
+    - set:
+        line: dcprov.tin_kind
+        field: cite.locator
+        from: p. 3, Column (c), "If the care provider is an individual, enter their SSN or individual taxpayer identification
+          number (ITIN). Otherwise, enter the provider's employer identification number (EIN)"; p. 3, Due Diligence, "Enter
+          “See Attached Statement” in the columns for which you don't have the information. Then, attach a statement to your
+          return explaining that the provider didn't give you the information you requested"; p. 3, Columns (a) and (b), "enter
+          “See W-2” in column (b), leave column (c) blank, check the “No” box in column (d), and enter -0- in column (e)";
+          p. 3, U.S. citizens and resident aliens living abroad, "may not have, and may not be required to get, a U.S. taxpayer
+          identification number"
+        to: p. 4, Line 1c, "If the care provider is an individual, enter their SSN or individual taxpayer identification number
+          (ITIN). Otherwise, enter the provider’s employer identification number (EIN)"; p. 4, Due Diligence, "Enter “See
+          Attached Statement” on any line for which you don’t have the information. Then, attach a statement to your return
+          explaining that the provider didn’t give you the information you requested"; p. 4, Lines 1a and 1b, "Then enter
+          “See W-2” on line 1b, leave line 1c blank, check the “No” box on line 1d, and enter -0- on line 1e"; p. 4, U.S.
+          citizens and resident aliens living abroad, "may not have, and may not be required to get, a U.S. taxpayer identification
+          number"
+    - set:
+        line: dcprov.household
+        field: printed
+        from: 1(d)
+        to: 1d
+    - set:
+        line: dcprov.household
+        field: cite.locator
+        from: p. 3, Column (d), "You must check either the "Yes" or "No" box in column (d) to indicate whether or not the
+          care provider listed in column (a) was your household employee during the year" and "For example, nannies are generally
+          household employees, while daycare centers are not"
+        to: p. 4, Line 1d, "You must check either the “Yes” or “No” box on line 1d to indicate whether or not the care provider
+          listed on line 1a was your household employee during the year" and "For example, nannies are generally household
+          employees, while daycare centers are not"
+    - set:
+        line: dcprov.paid
+        field: printed
+        from: 1(e)
+        to: 1e
+    - set:
+        line: dcprov.paid
+        field: cite.locator
+        from: p. 3, Column (e), "Enter the total amount you actually paid in 2025 to the care provider. Also, include amounts
+          your employer paid to a third party on your behalf. It doesn't matter when the expenses were incurred. Don't reduce
+          this amount by any reimbursement you received"
+        to: p. 4, Line 1e, "Enter the total amount you actually paid in 2026 to the care provider. Also include amounts your
+          employer paid to a third party on your behalf. It doesn’t matter when the expenses were incurred. Don’t reduce this
+          amount by any reimbursement you received"
+    - set:
+        line: dcprov.see_statement
+        field: label
+        from: Column (c) reads "See Attached Statement"
+        to: Line 1c reads "See Attached Statement"
+    - set:
+        line: dcprov.see_statement
+        field: cite.locator
+        from: p. 3, Due Diligence, "Enter “See Attached Statement” in the columns for which you don't have the information"
+        to: p. 4, Due Diligence, "Enter “See Attached Statement” on any line for which you don’t have the information"

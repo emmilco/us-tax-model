@@ -1,0 +1,1147 @@
+changes:
+  tax_year: 2026
+  form: f5695
+  entries:
+  - change: C-CRED-01
+    evidence:
+    - doc: f5695
+      page: 2
+      quote: Carryforward of Residential Energy Credit
+    - doc: i5695
+      page: 2
+      quote: Termination of credits. You can’t claim residential clean energy credits for expenditures made after December
+        31, 2025.
+    - doc: i5695
+      page: 2
+      quote: You can’t claim energy efficient home improvement credits for expenditures or property placed in service after
+        December 31, 2025.
+    - doc: plaw-119-21
+      page: 181
+      quote: with respect to any expenditures made after December 31, 2025
+    - doc: plaw-119-21
+      page: 181
+      quote: placed in service after December 31, 2025
+    verified: draft
+    note: The form keeps only the carryforward tail of Part I (C-CRED-03, C-CRED-04); the current-year lines of Part I (C-CRED-02)
+      and all of Part II (C-CRED-06 to C-CRED-08) are removed. No scope line names Form 5695 in 2025 (the change map's scope.credits
+      is gone since the redraft), so no scope operation is needed.
+    operations:
+    - set_form:
+        field: title
+        from: Form 5695 — Residential Energy Credits (Parts I and II)
+        to: Form 5695 — Carryforward of Residential Energy Credit
+    - set_form:
+        field: note
+        from: Part I (residential clean energy credit, to Schedule 3 line 5a) and Part II (energy efficient home improvement
+          credit, to Schedule 3 line 5b), with the Residential Clean Energy Credit Limit Worksheet (line 14) and the Energy
+          Efficient Home Improvement Credit Limit Worksheet (line 31). Fuel cell property (lines 7a to 11), business use of
+          an item, joint occupancy with anyone other than a spouse, spouses with separate main homes, improvements related
+          to the construction of a home and items without a valid QMID are refused. Addresses and QMIDs are not values (the
+          data model has no strings); a QMID is an attestation per category. Each kind of property is asked by a yes or no
+          question beneath one opening question, and a part is figured only when one of its kinds was installed.
+        to: 'Lines 1 to 4: the residential clean energy credit carryforward from 2025 (line 1, the 2025 Form 5695 line 16),
+          limited by the Residential Clean Energy Credit Limit Worksheet (line 2), the credit to Schedule 3 line 5a (line
+          3) and the carryforward to 2027 (line 4). No credit is figured from costs: the residential clean energy credit ends
+          with expenditures made after December 31, 2025, and the energy efficient home improvement credit with property placed
+          in service after that date. The form is completed only when the 2025 return carries a credit forward.'
+  - change: C-CRED-02
+    evidence:
+    - doc: i5695
+      page: 2
+      quote: Termination of credits. You can’t claim residential clean energy credits for expenditures made after December
+        31, 2025.
+    - doc: i5695
+      page: 2
+      quote: 'Caution: You may claim only a carryforward of any unused residential clean energy credit (which is shown on
+        your prior-year Form 5695, line 16)'
+    - doc: plaw-119-21
+      page: 181
+      quote: with respect to any expenditures made after December 31, 2025
+    verified: draft
+    note: Removes the current-year property of Part I (lines 1 to 11), the opening question f5695.any with every kind-of-property
+      question and gate (Part II's included, which the removals of C-CRED-06 and C-CRED-07 leave without readers), and the
+      business-use and construction refusals. Lines 6b and 11's gate lines go with them; line 13, which read them, is C-CRED-03's.
+    operations:
+    - remove_line:
+        line: f5695.any
+    - remove_line:
+        line: f5695.solar
+    - remove_line:
+        line: f5695.solar_if_any
+    - remove_line:
+        line: f5695.solar_water
+    - remove_line:
+        line: f5695.solar_water_if_any
+    - remove_line:
+        line: f5695.wind
+    - remove_line:
+        line: f5695.wind_if_any
+    - remove_line:
+        line: f5695.geothermal
+    - remove_line:
+        line: f5695.geothermal_if_any
+    - remove_line:
+        line: f5695.line7a_if_any
+    - remove_line:
+        line: f5695.kinds_answered
+    - remove_line:
+        line: f5695.part1_some
+    - remove_line:
+        line: f5695.business_use
+    - remove_line:
+        line: f5695.construction_later
+    - remove_line:
+        line: f5695.line1
+    - remove_line:
+        line: f5695.line1_if_solar
+    - remove_line:
+        line: f5695.line2
+    - remove_line:
+        line: f5695.line2_if_solar_water
+    - remove_line:
+        line: f5695.line3
+    - remove_line:
+        line: f5695.line3_if_wind
+    - remove_line:
+        line: f5695.line4
+    - remove_line:
+        line: f5695.line4_if_geothermal
+    - remove_line:
+        line: f5695.line5a
+    - remove_line:
+        line: f5695.line5a_if_any
+    - remove_line:
+        line: f5695.battery_cost
+    - remove_line:
+        line: f5695.line5b
+    - remove_line:
+        line: f5695.line6a
+    - remove_line:
+        line: f5695.rce_rate
+    - remove_line:
+        line: f5695.line6b
+    - remove_line:
+        line: f5695.line7a
+    - remove_line:
+        line: f5695.line11
+    - remove_line:
+        line: f5695.line6b_if_any
+    - remove_line:
+        line: f5695.line11_if_any
+    - remove_question:
+        input: f5695.any
+    - remove_question:
+        input: f5695.solar
+    - remove_question:
+        input: f5695.solar_water
+    - remove_question:
+        input: f5695.wind
+    - remove_question:
+        input: f5695.geothermal
+    - remove_question:
+        input: f5695.business_use
+    - remove_question:
+        input: f5695.construction_later
+    - remove_question:
+        input: f5695.line1
+    - remove_question:
+        input: f5695.line2
+    - remove_question:
+        input: f5695.line3
+    - remove_question:
+        input: f5695.line4
+    - remove_question:
+        input: f5695.line5a
+    - remove_question:
+        input: f5695.battery_cost
+    - remove_question:
+        input: f5695.line7a
+    - remove_ambiguity:
+        id: amb.2025.f5695_battery_second_home
+  - change: C-CRED-03
+    evidence:
+    - doc: f5695
+      page: 2
+      quote: Credit carryforward from 2025. Enter the amount, if any, from your 2025 Form 5695, line 16
+    - doc: f5695
+      page: 2
+      quote: Residential clean energy credit. Enter the smaller of line 1 or line 2. Also include this amount on
+    - doc: f5695
+      page: 2
+      quote: Credit carryforward to 2027. If line 3 is less than line 1, subtract line 3 from
+    - doc: i5695
+      page: 2
+      quote: Use Form 5695 to take any residential clean energy credit carryforward from 2025 or to carry the unused portion
+        of the residential clean energy credit to 2027
+    - doc: i5695
+      page: 2
+      quote: 'Caution: You may claim only a carryforward of any unused residential clean energy credit (which is shown on
+        your prior-year Form 5695, line 16)'
+    - doc: i5695
+      page: 2
+      quote: If you can’t use all of the credit because of the tax liability limit (that is, line 2 is less than line 1),
+        you can carry the unused portion of the credit to 2027.
+    verified: draft
+    note: 'Ids are kept through the renumbering: f5695.line12 is printed 1, f5695.line14 2 (C-CRED-04), f5695.line15 3 (read
+      by s3.line5a and s8812.clwb_15, lane O3b) and f5695.line16 4. Line 1 is the only source, so the 2025 line 13 (the sum
+      of lines 6b, 11 and 12) is removed and lines 3 and 4 read line 1''s gate line. f5695.part1_any (read by s3.line5a) is
+      kept, now true exactly when there is a carryforward. The i1040gi joint-return cite stays the 2025 edition until the
+      2026 Form 1040 instructions are archived.'
+    operations:
+    - set:
+        line: f5695.zero
+        field: cite.locator
+        from: Form 5695 (2025), lines 5b, 11, 18b to 20d, 22d to 26c, 29h and 32
+        to: 'Form 5695 (2026), line 1 (draft): zero when there is no carryforward from 2025'
+    - set:
+        line: f5695.carry
+        field: label
+        from: A residential clean energy credit carryforward from 2024 (an amount on line 16 of a 2024 Form 5695)
+        to: A residential clean energy credit carryforward from 2025 (an amount on line 16 of a 2025 Form 5695)
+    - set:
+        line: f5695.carry
+        field: expr.source
+        from: Does that 2024 return include Form 5695 (Residential Energy Credits) with an amount on line 16?
+        to: Does that 2025 return include Form 5695 (Residential Energy Credits) with an amount on line 16?
+    - set:
+        line: f5695.carry
+        field: cite.locator
+        from: Form 5695 (2025), line 12; i5695 p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean energy
+          credit carryforward from 2024"; i1040gi p. 13, Married Filing Jointly, "A married couple filing jointly report their
+          combined income and deduct their combined allowable expenses on one return"
+        to: Form 5695 (2026), line 1 (draft), "Credit carryforward from 2025. Enter the amount, if any, from your 2025 Form
+          5695, line 16"; i5695 p. 2 (draft), Purpose of Form, "Use Form 5695 to take any residential clean energy credit
+          carryforward from 2025 or to carry the unused portion of the residential clean energy credit to 2027"; i1040gi p.
+          13, Married Filing Jointly, "A married couple filing jointly report their combined income and deduct their combined
+          allowable expenses on one return"
+    - set:
+        line: f5695.carry_if_prior
+        field: label
+        from: 'A residential clean energy credit carryforward from 2024, asked only when the 2024 return includes a form besides
+          Form 1040 and its schedules (false otherwise: the carryforward is line 16 of the 2024 Form 5695)'
+        to: 'A residential clean energy credit carryforward from 2025, asked only when the 2025 return includes a form besides
+          Form 1040 and its schedules (false otherwise: the carryforward is line 16 of the 2025 Form 5695)'
+    - set:
+        line: f5695.carry_if_prior
+        field: cite.locator
+        from: Form 5695 (2025), line 12; i5695 p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean energy
+          credit carryforward from 2024"; i1040gi p. 13, Married Filing Jointly, "A married couple filing jointly report their
+          combined income and deduct their combined allowable expenses on one return"
+        to: Form 5695 (2026), line 1 (draft), "Credit carryforward from 2025. Enter the amount, if any, from your 2025 Form
+          5695, line 16"; i5695 p. 2 (draft), Purpose of Form, "Use Form 5695 to take any residential clean energy credit
+          carryforward from 2025 or to carry the unused portion of the residential clean energy credit to 2027"; i1040gi p.
+          13, Married Filing Jointly, "A married couple filing jointly report their combined income and deduct their combined
+          allowable expenses on one return"
+    - set:
+        line: f5695.part1_any
+        field: label
+        from: 'Part I is completed: residential clean energy property was installed in 2025 (counted when the original installation
+          is completed, or for a constructed or reconstructed home when its original use begins), or there is a carryforward
+          from 2024'
+        to: 'Form 5695 is completed: there is a residential clean energy credit carryforward from 2025'
+    - set:
+        line: f5695.part1_any
+        field: expr
+        from:
+          op: choose
+          alternatives:
+          - guard:
+              op: test
+              eq:
+              - f5695.kinds_answered
+              - const: true
+            then: f5695.part1_some
+          - guard:
+              op: test
+              eq:
+              - f5695.kinds_answered
+              - const: false
+            then: f5695.no
+        to:
+          op: copy
+          from: f5695.carry_if_prior
+    - set:
+        line: f5695.part1_any
+        field: cite.locator
+        from: p. 2, Residential Clean Energy Credit (Part I), "You may be able to take a credit of 30% of your costs of qualified
+          solar electric property, solar water heating property, small wind energy property, geothermal heat pump property,
+          battery storage technology, and fuel cell property"; p. 2, Joint occupancy, "These rules don't apply to married
+          individuals filing a joint return"; p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean energy
+          credit carryforward from 2024"; p. 1, Costs, "For purposes of both credits, costs are treated as being paid when
+          the original installation of the item is completed", "For purposes of the residential clean energy credit only,
+          costs connected with the construction of a home are treated as being paid when your original use of the constructed
+          home begins"; p. 2, Association or cooperative costs, "you are treated as having paid your proportionate share of
+          any costs of such association or corporation"; p. 1, Termination of credits, "You can’t claim residential clean
+          energy credits for expenditures made after December 31, 2025"
+        to: 'p. 2 (draft), Purpose of Form, "Use Form 5695 to take any residential clean energy credit carryforward from 2025
+          or to carry the unused portion of the residential clean energy credit to 2027"; "Caution: You may claim only a carryforward
+          of any unused residential clean energy credit (which is shown on your prior-year Form 5695, line 16)"'
+    - set:
+        line: f5695.line12
+        field: printed
+        from: '12'
+        to: '1'
+    - set:
+        line: f5695.line12
+        field: label
+        from: Credit carryforward from 2024. Enter the amount, if any, from your 2024 Form 5695, line 16
+        to: Credit carryforward from 2025. Enter the amount, if any, from your 2025 Form 5695, line 16
+    - set:
+        line: f5695.line12
+        field: expr.source
+        from: The residential clean energy credit carryforward from 2024, the amount on line 16 of your (or, on a joint return,
+          your spouse's) 2024 Form 5695, or the total of those amounts if there is more than one such form (zero if none)
+        to: The residential clean energy credit carryforward from 2025, the amount on line 16 of your (or, on a joint return,
+          your spouse's) 2025 Form 5695, or the total of those amounts if there is more than one such form (zero if none)
+    - set:
+        line: f5695.line12
+        field: cite.locator
+        from: Form 5695 (2025), line 12; i5695 p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean energy
+          credit carryforward from 2024"; i1040gi p. 13, Married Filing Jointly, "A married couple filing jointly report their
+          combined income and deduct their combined allowable expenses on one return"
+        to: Form 5695 (2026), line 1 (draft); i5695 p. 2 (draft), Purpose of Form, "Use Form 5695 to take any residential
+          clean energy credit carryforward from 2025 or to carry the unused portion of the residential clean energy credit
+          to 2027"; i1040gi p. 13, Married Filing Jointly, "A married couple filing jointly report their combined income and
+          deduct their combined allowable expenses on one return"
+    - set:
+        line: f5695.line12_if_carry
+        field: cite.locator
+        from: p. 1, Residential Clean Energy Credit, line 12, "Credit carryforward from 2024. Enter the amount, if any, from
+          your 2024 Form 5695, line 16"; i5695 p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean energy
+          credit carryforward from 2024"; i1040gi p. 13, Married Filing Jointly, "A married couple filing jointly report their
+          combined income and deduct their combined allowable expenses on one return"
+        to: p. 2 (draft), line 1, "Credit carryforward from 2025. Enter the amount, if any, from your 2025 Form 5695, line
+          16"; i5695 p. 2 (draft), Purpose of Form, "Use Form 5695 to take any residential clean energy credit carryforward
+          from 2025 or to carry the unused portion of the residential clean energy credit to 2027"; i1040gi p. 13, Married
+          Filing Jointly, "A married couple filing jointly report their combined income and deduct their combined allowable
+          expenses on one return"
+    - set:
+        line: f5695.line15
+        field: printed
+        from: '15'
+        to: '3'
+    - set:
+        line: f5695.line15
+        field: label
+        from: Residential clean energy credit. Enter the smaller of line 13 or line 14. Also include this amount on Schedule
+          3 (Form 1040), line 5a
+        to: Residential clean energy credit. Enter the smaller of line 1 or line 2. Also include this amount on Schedule 3
+          (Form 1040), line 5a
+    - set:
+        line: f5695.line15
+        field: expr.of
+        from:
+        - f5695.line13
+        - f5695.line14
+        to:
+        - f5695.line12_if_carry
+        - f5695.line14
+    - set:
+        line: f5695.line15
+        field: cite.locator
+        from: Form 5695 (2025), line 15
+        to: Form 5695 (2026), line 3 (draft)
+    - set:
+        line: f5695.line16
+        field: printed
+        from: '16'
+        to: '4'
+    - set:
+        line: f5695.line16
+        field: label
+        from: Credit carryforward to 2026. If line 15 is less than line 13, subtract line 15 from line 13
+        to: Credit carryforward to 2027. If line 3 is less than line 1, subtract line 3 from line 1
+    - set:
+        line: f5695.line16
+        field: expr.from
+        from: f5695.line13
+        to: f5695.line12_if_carry
+    - set:
+        line: f5695.line16
+        field: cite.locator
+        from: p. 5, Line 16, "If you can't use all of the credit because of the tax liability limit (that is, line 14 is less
+          than line 13), you can carry the unused portion of the credit to 2026"
+        to: p. 2 (draft), Line 4, "If you can’t use all of the credit because of the tax liability limit (that is, line 2
+          is less than line 1), you can carry the unused portion of the credit to 2027"
+    - remove_line:
+        line: f5695.line13
+    - set_question:
+        input: f5695.line12
+        field: prompt
+        from: What is the amount on line 16 of your (or, on a joint return, your spouse's) 2024 Form 5695? Add the forms if
+          there is more than one.
+        to: What is the amount on line 16 of your (or, on a joint return, your spouse's) 2025 Form 5695? Add the forms if
+          there is more than one.
+    - set_question:
+        input: f5695.carry
+        field: help
+        from: Line 16 is the part of a solar or other clean energy credit that was more than the 2024 tax; it carries to 2025.
+        to: Line 16 is the part of a solar or other clean energy credit that was more than the 2025 tax; it carries to 2026.
+  - change: C-CRED-04
+    evidence:
+    - doc: f5695
+      page: 2
+      quote: Limitation based on tax liability. Enter the amount from the Residential Clean Energy Credit Limit
+    - doc: i5695
+      page: 2
+      quote: Residential Clean Energy Credit Limit Worksheet—Line 2
+    - doc: i5695
+      page: 2
+      quote: Complete the following worksheet to figure the amount to enter on line 2.
+    - doc: i5695
+      page: 2
+      quote: Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 18
+    - doc: i5695
+      page: 2
+      quote: Subtract line 2 from line 1. Also enter this amount on Form 5695, line 2. If zero or less, enter -0- on Form
+        5695, lines 2 and 3
+    - doc: i5695
+      page: 2
+      quote: Include the amount in the instructions for Schedule 8812 (Form 1040), Credit Limit Worksheet B, line 14, instead
+        of the amount from Form 1040, 1040-SR, or 1040-NR, line 19
+    verified: draft
+    note: 'The worksheet''s line 2 list no longer has a Form 5695 entry (2025: line 32, read as Schedule 3 line 5b), so s3.line5b
+      leaves the sum; lane O3b keeps s3.line5b as a zero Reserved line, which nothing reads once this applies. The other entries,
+      the Form 1040 line 18 start and the Credit Limit Worksheet B footnote are unchanged in substance: their cites move to
+      the 2026 page. f5695.ctc_line19 cites the Schedule 8812 instructions with unchanged words (a page move, left to citations.py
+      --relocate).'
+    operations:
+    - set:
+        line: f5695.rce_ws1
+        field: cite.locator
+        from: p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 1, "Enter the amount from Form 1040, 1040-SR,
+          or 1040-NR, line 18"
+        to: p. 2 (draft), Residential Clean Energy Credit Limit Worksheet—Line 2, line 1, "Enter the amount from Form 1040,
+          1040-SR, or 1040-NR, line 18"
+    - set:
+        line: f5695.ctc
+        field: cite.locator
+        from: p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, "Include the amount in the instructions for Schedule
+          8812 (Form 1040), Credit Limit Worksheet B, line 14, instead of the amount from Form 1040, 1040-SR, or 1040-NR,
+          line 19, if the instructions for Schedule 8812 (Form 1040) direct you to complete Credit Limit Worksheet B"
+        to: p. 2 (draft), Residential Clean Energy Credit Limit Worksheet—Line 2, "Include the amount in the instructions
+          for Schedule 8812 (Form 1040), Credit Limit Worksheet B, line 14, instead of the amount from Form 1040, 1040-SR,
+          or 1040-NR, line 19, if the instructions for Schedule 8812 (Form 1040) direct you to complete Credit Limit Worksheet
+          B"
+    - set:
+        line: f5695.rce_ws2
+        field: label
+        from: Residential Clean Energy Credit Limit Worksheet, line 2. Schedule 3 lines 6l, 1, 2, 6d, 3 and 4, Form 5695 line
+          32, Schedule 3 lines 6m and 6f, Form 1040 line 19 (or Credit Limit Worksheet B line 14), and Schedule 3 lines 6g,
+          6c and 6h; in this tool Schedule 3 lines 1, 2, 3 and 4, Form 5695 line 32 and the child tax credit, the others being
+          refused
+        to: Residential Clean Energy Credit Limit Worksheet, line 2. Schedule 3 lines 6l, 1, 2, 6d, 3, 4, 6m and 6f, Form
+          1040 line 19 (or Credit Limit Worksheet B line 14), and Schedule 3 lines 6g, 6c and 6h; in this tool Schedule 3
+          lines 1, 2, 3 and 4 and the child tax credit, the others being refused
+    - set:
+        line: f5695.rce_ws2
+        field: expr.of
+        from:
+        - s3.line1
+        - s3.line2
+        - s3.line3
+        - s3.line4
+        - s3.line5b
+        - f5695.ctc
+        to:
+        - s3.line1
+        - s3.line2
+        - s3.line3
+        - s3.line4
+        - f5695.ctc
+    - set:
+        line: f5695.rce_ws2
+        field: cite.locator
+        from: p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 2, "Enter the total of the following credit(s)/adjustment(s)
+          if you are taking the credit(s)/adjustment(s) on your 2025 income tax return"
+        to: p. 2 (draft), Residential Clean Energy Credit Limit Worksheet—Line 2, line 2, "Enter the total of the following
+          credit(s)/", "adjustment(s) on your 2026 income tax return"
+    - set:
+        line: f5695.rce_ws2
+        field: note
+        from: Form 5695 line 32 is read as Schedule 3 line 5b, which is line 32 when Part II is completed and zero otherwise.
+        to: null
+    - set:
+        line: f5695.rce_ws2
+        field: refuses
+        from:
+        - when: s3.other_credit
+          form: Residential Clean Energy Credit Limit Worksheet, line 2 (Schedule 3 lines 6c, 6d, 6f, 6g, 6h, 6l and 6m)
+          remedy: Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the
+            education credits, the saver's credit and the residential energy credits are outside this tool.
+          cite:
+            doc: i5695
+            locator: p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 2
+        to:
+        - when: s3.other_credit
+          form: Residential Clean Energy Credit Limit Worksheet, line 2 (Schedule 3 lines 6c, 6d, 6f, 6g, 6h, 6l and 6m)
+          remedy: Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the
+            education credits, the saver's credit and the residential energy credits are outside this tool.
+          cite:
+            doc: i5695
+            locator: p. 2 (draft), Residential Clean Energy Credit Limit Worksheet—Line 2, line 2
+    - set:
+        line: f5695.rce_ws3
+        field: cite.locator
+        from: p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 3, "Subtract line 2 from line 1. Also enter
+          this amount on Form 5695, line 14. If zero or less, enter -0- on Form 5695, lines 14 and 15"
+        to: p. 2 (draft), Residential Clean Energy Credit Limit Worksheet—Line 2, line 3, "Subtract line 2 from line 1. Also
+          enter this amount on Form 5695, line 2. If zero or less, enter -0- on Form 5695, lines 2 and 3"
+    - set:
+        line: f5695.line14
+        field: printed
+        from: '14'
+        to: '2'
+    - set:
+        line: f5695.line14
+        field: cite.locator
+        from: p. 4, Line 14, "Complete the following worksheet to figure the amount to enter on line 14"
+        to: p. 2 (draft), Line 2, "Complete the following worksheet to figure the amount to enter on line 2"
+  - change: C-CRED-05
+    evidence:
+    - doc: i1040s8812
+      page: 5
+      quote: Complete Credit Limit Worksheet B only if you meet all the following
+    - doc: i1040s8812
+      page: 5
+      quote: c. Residential clean energy credit, Form 5695.
+    - doc: f5695
+      page: 2
+      quote: Credit carryforward from 2025. Enter the amount, if any, from your 2025 Form 5695, line 16
+    verified: draft
+    note: 'The Form 5695 side (lane O3b has the Schedule 8812 side): f5695.claiming_part1 keeps its id (read by s8812.clwb_complete)
+      and tests line 1, the credit before the tax limit, as the 2025 line tested line 13; line 3 cannot be tested, since it
+      reads Credit Limit Worksheet B through the line 2 worksheet. The ambiguity still arises in the 2026 wording and is re-read
+      for the new line numbers, with the same chosen reading.'
+    operations:
+    - set:
+        line: f5695.no
+        field: cite.locator
+        from: p. 4, Credit Limit Worksheet A, "You are claiming one or more of the following credits", "Residential clean
+          energy credit, Form 5695, Part I"
+        to: p. 5 (draft), Credit Limit Worksheet A, "Complete Credit Limit Worksheet B only if you meet all the following",
+          "You are claiming one or more of the following credits", "c. Residential clean energy credit, Form 5695."
+    - add_line:
+        after: f5695.no
+        line:
+          id: f5695.carry_positive
+          printed: (helper)
+          label: Line 1 is more than zero
+          type: Bool
+          expr:
+            op: test
+            gt:
+            - f5695.line12_if_carry
+            - param: sales.zero
+          cite:
+            doc: i1040s8812
+            locator: p. 5 (draft), Credit Limit Worksheet A, "Complete Credit Limit Worksheet B only if you meet all the following",
+              "You are claiming one or more of the following credits", "c. Residential clean energy credit, Form 5695."
+    - set:
+        line: f5695.claiming_part1
+        field: label
+        from: Claiming the residential clean energy credit (Part I is completed and line 13 is more than zero)
+        to: Claiming the residential clean energy credit (Form 5695 is completed and line 1 is more than zero)
+    - set:
+        line: f5695.claiming_part1
+        field: expr
+        from:
+          op: choose
+          alternatives:
+          - guard:
+              op: test
+              eq:
+              - f5695.part1_any
+              - const: true
+            then: f5695.line13_positive
+          - guard:
+              op: test
+              eq:
+              - f5695.part1_any
+              - const: false
+            then: f5695.no
+        to:
+          op: choose
+          alternatives:
+          - guard:
+              op: test
+              eq:
+              - f5695.part1_any
+              - const: true
+            then: f5695.carry_positive
+          - guard:
+              op: test
+              eq:
+              - f5695.part1_any
+              - const: false
+            then: f5695.no
+    - set:
+        line: f5695.claiming_part1
+        field: cite.locator
+        from: p. 4, Credit Limit Worksheet A, "You are claiming one or more of the following credits", "Residential clean
+          energy credit, Form 5695, Part I"
+        to: p. 5 (draft), Credit Limit Worksheet A, "Complete Credit Limit Worksheet B only if you meet all the following",
+          "You are claiming one or more of the following credits", "c. Residential clean energy credit, Form 5695."
+    - remove_line:
+        line: f5695.line13_positive
+    - set_ambiguity:
+        id: amb.2025.clwb_claiming_part1
+        field: text_at_issue
+        from: 'i1040s8812 p. 4, Credit Limit Worksheet A: "Complete Credit Limit Worksheet B only if you meet all the following.
+          1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part
+          I." Whether one is claiming the credit depends on Form 5695 line 15, which is limited by a worksheet that reads
+          Credit Limit Worksheet B line 14 when Worksheet B is completed.'
+        to: 'i1040s8812 p. 5, Credit Limit Worksheet A: "Complete Credit Limit Worksheet B only if you meet all the following.
+          1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695." Whether
+          one is claiming the credit depends on Form 5695 line 3, which is limited by a worksheet that reads Credit Limit
+          Worksheet B line 14 when Worksheet B is completed.'
+    - set_ambiguity:
+        id: amb.2025.clwb_claiming_part1
+        field: readings
+        from:
+        - Claiming the credit means completing Form 5695 Part I with line 13 (the credit before the tax limit, the 2024 carryforward
+          included) more than zero.
+        - Claiming the credit means Form 5695 line 15 (the credit allowed) is more than zero.
+        to:
+        - Claiming the credit means completing Form 5695 with line 1 (the carryforward from 2025, the credit before the tax
+          limit) more than zero.
+        - Claiming the credit means Form 5695 line 3 (the credit allowed) is more than zero.
+    - set_ambiguity:
+        id: amb.2025.clwb_claiming_part1
+        field: reason
+        from: The second is circular (line 15 depends on whether Worksheet B is completed). The readings cannot differ in
+          any amount. With Worksheet B completed, the Part I limit subtracts Worksheet B line 14, which is never more than
+          Schedule 8812 line 12, instead of Form 1040 line 19, the smaller of line 12 and Credit Limit Worksheet A line 3;
+          so the limit with Worksheet B is at least the limit without it. If line 13 is more than zero and line 15 is zero
+          with Worksheet B, it is zero without it too, and Credit Limit Worksheet A line 4 (Worksheet B line 15, Schedule
+          3 line 5a) is zero either way; if line 15 is more than zero, both readings complete Worksheet B.
+        to: The second is circular (line 3 depends on whether Worksheet B is completed). The readings cannot differ in any
+          amount. With Worksheet B completed, the line 2 limit subtracts Worksheet B line 14, which is never more than Schedule
+          8812 line 12, instead of Form 1040 line 19, the smaller of line 12 and Credit Limit Worksheet A line 3; so the limit
+          with Worksheet B is at least the limit without it. If line 1 is more than zero and line 3 is zero with Worksheet
+          B, it is zero without it too, and Credit Limit Worksheet A line 4 (Worksheet B line 15, Schedule 3 line 5a) is zero
+          either way; if line 3 is more than zero, both readings complete Worksheet B.
+    - set_ambiguity:
+        id: amb.2025.clwb_claiming_part1
+        field: cite.locator
+        from: p. 4, Credit Limit Worksheet A, "Complete Credit Limit Worksheet B only if you meet all the following"
+        to: p. 5, Credit Limit Worksheet A, "Complete Credit Limit Worksheet B only if you meet all the following"
+  - change: C-CRED-06
+    evidence:
+    - doc: i5695
+      page: 2
+      quote: You can’t claim energy efficient home improvement credits for expenditures or property placed in service after
+        December 31, 2025.
+    - doc: plaw-119-21
+      page: 181
+      quote: placed in service after December 31, 2025
+    verified: draft
+    note: Removes Part II Section A (lines 17a to 20d) with its kind-of-property questions and gates and the Part II opening
+      lines (f5695.part2_some, f5695.part2_any, read by s3.line5b until lane O3b's C-SCHED-12 makes it a zero line).
+    operations:
+    - remove_line:
+        line: f5695.insulation
+    - remove_line:
+        line: f5695.insulation_if_any
+    - remove_line:
+        line: f5695.doors
+    - remove_line:
+        line: f5695.doors_if_any
+    - remove_line:
+        line: f5695.windows
+    - remove_line:
+        line: f5695.windows_if_any
+    - remove_line:
+        line: f5695.sec_a_kinds
+    - remove_line:
+        line: f5695.part2_some
+    - remove_line:
+        line: f5695.part2_any
+    - remove_line:
+        line: f5695.line17a
+    - remove_line:
+        line: f5695.line17b
+    - remove_line:
+        line: f5695.line17c
+    - remove_line:
+        line: f5695.sec_a_home
+    - remove_line:
+        line: f5695.sec_a_original
+    - remove_line:
+        line: f5695.sec_a_claimed
+    - remove_line:
+        line: f5695.line17e
+    - remove_line:
+        line: f5695.sec_a_new_home
+    - remove_line:
+        line: f5695.eehi_rate
+    - remove_line:
+        line: f5695.line18a
+    - remove_line:
+        line: f5695.line18a_if_insulation
+    - remove_line:
+        line: f5695.ins_30
+    - remove_line:
+        line: f5695.insulation_max
+    - remove_line:
+        line: f5695.ins_capped
+    - remove_line:
+        line: f5695.line18b
+    - remove_line:
+        line: f5695.line19a
+    - remove_line:
+        line: f5695.line19a_if_doors
+    - remove_line:
+        line: f5695.door1_30
+    - remove_line:
+        line: f5695.door_max
+    - remove_line:
+        line: f5695.line19c
+    - remove_line:
+        line: f5695.line19d_i
+    - remove_line:
+        line: f5695.line19d_i_if_doors
+    - remove_line:
+        line: f5695.line19d_ii
+    - remove_line:
+        line: f5695.line19d_ii_if_doors
+    - remove_line:
+        line: f5695.line19e
+    - remove_line:
+        line: f5695.line19e_if_doors
+    - remove_line:
+        line: f5695.line19f
+    - remove_line:
+        line: f5695.line19g
+    - remove_line:
+        line: f5695.doors_sum
+    - remove_line:
+        line: f5695.doors_max
+    - remove_line:
+        line: f5695.doors_cost
+    - remove_line:
+        line: f5695.qmid_doors
+    - remove_line:
+        line: f5695.doors_costs
+    - remove_line:
+        line: f5695.doors_qmid_missing
+    - remove_line:
+        line: f5695.doors_no_qmid
+    - remove_line:
+        line: f5695.doors_capped
+    - remove_line:
+        line: f5695.line19h
+    - remove_line:
+        line: f5695.line20a_i
+    - remove_line:
+        line: f5695.line20a_i_if_windows
+    - remove_line:
+        line: f5695.line20a_ii
+    - remove_line:
+        line: f5695.line20a_ii_if_windows
+    - remove_line:
+        line: f5695.line20a_iii
+    - remove_line:
+        line: f5695.line20a_iii_if_windows
+    - remove_line:
+        line: f5695.line20a_iv
+    - remove_line:
+        line: f5695.line20a_iv_if_windows
+    - remove_line:
+        line: f5695.line20b
+    - remove_line:
+        line: f5695.line20b_if_windows
+    - remove_line:
+        line: f5695.line20c
+    - remove_line:
+        line: f5695.windows_30
+    - remove_line:
+        line: f5695.windows_max
+    - remove_line:
+        line: f5695.qmid_windows
+    - remove_line:
+        line: f5695.windows_costs
+    - remove_line:
+        line: f5695.windows_qmid_missing
+    - remove_line:
+        line: f5695.windows_no_qmid
+    - remove_line:
+        line: f5695.windows_capped
+    - remove_line:
+        line: f5695.line20d
+    - remove_question:
+        input: f5695.insulation
+    - remove_question:
+        input: f5695.doors
+    - remove_question:
+        input: f5695.windows
+    - remove_question:
+        input: f5695.line17a
+    - remove_question:
+        input: f5695.line17b
+    - remove_question:
+        input: f5695.line17c
+    - remove_question:
+        input: f5695.line17e
+    - remove_question:
+        input: f5695.line18a
+    - remove_question:
+        input: f5695.line19a
+    - remove_question:
+        input: f5695.line19d_i
+    - remove_question:
+        input: f5695.line19d_ii
+    - remove_question:
+        input: f5695.line19e
+    - remove_question:
+        input: f5695.qmid_doors
+    - remove_question:
+        input: f5695.line20a_i
+    - remove_question:
+        input: f5695.line20a_ii
+    - remove_question:
+        input: f5695.line20a_iii
+    - remove_question:
+        input: f5695.line20a_iv
+    - remove_question:
+        input: f5695.line20b
+    - remove_question:
+        input: f5695.qmid_windows
+    - remove_ambiguity:
+        id: amb.2025.f5695_17abc_section_a
+  - change: C-CRED-07
+    evidence:
+    - doc: i5695
+      page: 2
+      quote: You can’t claim energy efficient home improvement credits for expenditures or property placed in service after
+        December 31, 2025.
+    - doc: plaw-119-21
+      page: 181
+      quote: placed in service after December 31, 2025
+    verified: draft
+    note: Removes Part II Section B (lines 21a to 29h), the QMID attestations and their refusals.
+    operations:
+    - remove_line:
+        line: f5695.panel
+    - remove_line:
+        line: f5695.panel_if_any
+    - remove_line:
+        line: f5695.audit
+    - remove_line:
+        line: f5695.audit_if_any
+    - remove_line:
+        line: f5695.heat_pump
+    - remove_line:
+        line: f5695.heat_pump_if_any
+    - remove_line:
+        line: f5695.hp_water_heater
+    - remove_line:
+        line: f5695.hp_water_heater_if_any
+    - remove_line:
+        line: f5695.central_ac
+    - remove_line:
+        line: f5695.central_ac_if_any
+    - remove_line:
+        line: f5695.water_heater
+    - remove_line:
+        line: f5695.water_heater_if_any
+    - remove_line:
+        line: f5695.furnace
+    - remove_line:
+        line: f5695.furnace_if_any
+    - remove_line:
+        line: f5695.biomass
+    - remove_line:
+        line: f5695.biomass_if_any
+    - remove_line:
+        line: f5695.sec_b_kinds
+    - remove_line:
+        line: f5695.line21a
+    - remove_line:
+        line: f5695.line21b
+    - remove_line:
+        line: f5695.sec_b_home
+    - remove_line:
+        line: f5695.sec_b_claimed
+    - remove_line:
+        line: f5695.b_new_home
+    - remove_line:
+        line: f5695.sec_b_new_home
+    - remove_line:
+        line: f5695.item_max
+    - remove_line:
+        line: f5695.line22a
+    - remove_line:
+        line: f5695.line22a_if_central_ac
+    - remove_line:
+        line: f5695.line22b
+    - remove_line:
+        line: f5695.line22b_if_central_ac
+    - remove_line:
+        line: f5695.line22c
+    - remove_line:
+        line: f5695.ac_30
+    - remove_line:
+        line: f5695.qmid_ac
+    - remove_line:
+        line: f5695.ac_costs
+    - remove_line:
+        line: f5695.ac_qmid_missing
+    - remove_line:
+        line: f5695.ac_no_qmid
+    - remove_line:
+        line: f5695.ac_capped
+    - remove_line:
+        line: f5695.line22d
+    - remove_line:
+        line: f5695.line23a_i
+    - remove_line:
+        line: f5695.line23a_i_if_water_heater
+    - remove_line:
+        line: f5695.line23a_ii
+    - remove_line:
+        line: f5695.line23a_ii_if_water_heater
+    - remove_line:
+        line: f5695.line23b
+    - remove_line:
+        line: f5695.line23b_if_water_heater
+    - remove_line:
+        line: f5695.line23c
+    - remove_line:
+        line: f5695.wh_30
+    - remove_line:
+        line: f5695.qmid_wh
+    - remove_line:
+        line: f5695.wh_costs
+    - remove_line:
+        line: f5695.wh_qmid_missing
+    - remove_line:
+        line: f5695.wh_no_qmid
+    - remove_line:
+        line: f5695.wh_capped
+    - remove_line:
+        line: f5695.line23d
+    - remove_line:
+        line: f5695.line24a
+    - remove_line:
+        line: f5695.line24a_if_furnace
+    - remove_line:
+        line: f5695.line24b
+    - remove_line:
+        line: f5695.line24b_if_furnace
+    - remove_line:
+        line: f5695.line24c
+    - remove_line:
+        line: f5695.furnace_30
+    - remove_line:
+        line: f5695.qmid_furnace
+    - remove_line:
+        line: f5695.furnace_costs
+    - remove_line:
+        line: f5695.furnace_qmid_missing
+    - remove_line:
+        line: f5695.furnace_no_qmid
+    - remove_line:
+        line: f5695.furnace_capped
+    - remove_line:
+        line: f5695.line24d
+    - remove_line:
+        line: f5695.line25a
+    - remove_line:
+        line: f5695.line25a_if_panel
+    - remove_line:
+        line: f5695.enabling_claimed
+    - remove_line:
+        line: f5695.line25c
+    - remove_line:
+        line: f5695.enabling_30
+    - remove_line:
+        line: f5695.qmid_enabling
+    - remove_line:
+        line: f5695.enabling_costs
+    - remove_line:
+        line: f5695.enabling_qmid_missing
+    - remove_line:
+        line: f5695.enabling_no_qmid
+    - remove_line:
+        line: f5695.enabling_capped
+    - remove_line:
+        line: f5695.line25e
+    - remove_line:
+        line: f5695.line26a
+    - remove_line:
+        line: f5695.line26a_if_audit
+    - remove_line:
+        line: f5695.line26b
+    - remove_line:
+        line: f5695.audit_30
+    - remove_line:
+        line: f5695.audit_max
+    - remove_line:
+        line: f5695.audit_capped
+    - remove_line:
+        line: f5695.line26c
+    - remove_line:
+        line: f5695.line27
+    - remove_line:
+        line: f5695.annual_max
+    - remove_line:
+        line: f5695.line28
+    - remove_line:
+        line: f5695.line29a
+    - remove_line:
+        line: f5695.line29a_if_heat_pump
+    - remove_line:
+        line: f5695.line29b
+    - remove_line:
+        line: f5695.line29b_if_heat_pump
+    - remove_line:
+        line: f5695.line29c
+    - remove_line:
+        line: f5695.line29c_if_hp_water_heater
+    - remove_line:
+        line: f5695.line29d
+    - remove_line:
+        line: f5695.line29d_if_hp_water_heater
+    - remove_line:
+        line: f5695.line29e
+    - remove_line:
+        line: f5695.line29e_if_biomass
+    - remove_line:
+        line: f5695.line29f
+    - remove_line:
+        line: f5695.line29f_if_biomass
+    - remove_line:
+        line: f5695.line29g
+    - remove_line:
+        line: f5695.hp_30
+    - remove_line:
+        line: f5695.heat_pump_max
+    - remove_line:
+        line: f5695.qmid_hp
+    - remove_line:
+        line: f5695.hp_costs
+    - remove_line:
+        line: f5695.hp_qmid_missing
+    - remove_line:
+        line: f5695.hp_no_qmid
+    - remove_line:
+        line: f5695.hp_capped
+    - remove_line:
+        line: f5695.line29h
+    - remove_question:
+        input: f5695.panel
+    - remove_question:
+        input: f5695.audit
+    - remove_question:
+        input: f5695.heat_pump
+    - remove_question:
+        input: f5695.hp_water_heater
+    - remove_question:
+        input: f5695.central_ac
+    - remove_question:
+        input: f5695.water_heater
+    - remove_question:
+        input: f5695.furnace
+    - remove_question:
+        input: f5695.biomass
+    - remove_question:
+        input: f5695.line21a
+    - remove_question:
+        input: f5695.line21b
+    - remove_question:
+        input: f5695.b_new_home
+    - remove_question:
+        input: f5695.line22a
+    - remove_question:
+        input: f5695.line22b
+    - remove_question:
+        input: f5695.qmid_ac
+    - remove_question:
+        input: f5695.line23a_i
+    - remove_question:
+        input: f5695.line23a_ii
+    - remove_question:
+        input: f5695.line23b
+    - remove_question:
+        input: f5695.qmid_wh
+    - remove_question:
+        input: f5695.line24a
+    - remove_question:
+        input: f5695.line24b
+    - remove_question:
+        input: f5695.qmid_furnace
+    - remove_question:
+        input: f5695.line25a
+    - remove_question:
+        input: f5695.line25c
+    - remove_question:
+        input: f5695.qmid_enabling
+    - remove_question:
+        input: f5695.line26a
+    - remove_question:
+        input: f5695.line26b
+    - remove_question:
+        input: f5695.line29a
+    - remove_question:
+        input: f5695.line29b
+    - remove_question:
+        input: f5695.line29c
+    - remove_question:
+        input: f5695.line29d
+    - remove_question:
+        input: f5695.line29e
+    - remove_question:
+        input: f5695.line29f
+    - remove_question:
+        input: f5695.qmid_hp
+    - remove_ambiguity:
+        id: amb.2025.f5695_category_cap
+    - remove_ambiguity:
+        id: amb.2025.f5695_section_b_residence
+  - change: C-CRED-08
+    evidence:
+    - doc: i5695
+      page: 2
+      quote: You can’t claim energy efficient home improvement credits for expenditures or property placed in service after
+        December 31, 2025.
+    - doc: plaw-119-21
+      page: 181
+      quote: placed in service after December 31, 2025
+    verified: draft
+    note: Removes the Part II totals, the Energy Efficient Home Improvement Credit Limit Worksheet and the statements (lines
+      30 to 32b), with the joint occupancy, separate homes and condominium questions. f5695.line32 was read by s3.line5b (lane
+      O3b, C-SCHED-12) and, through it, by f5695.rce_ws2 (C-CRED-04).
+    operations:
+    - remove_line:
+        line: f5695.joint_occupancy
+    - remove_line:
+        line: f5695.separate_homes
+    - remove_line:
+        line: f5695.separate_homes_joint
+    - remove_line:
+        line: f5695.line30
+    - remove_line:
+        line: f5695.eehi_ws1
+    - remove_line:
+        line: f5695.eehi_ws2
+    - remove_line:
+        line: f5695.eehi_ws3
+    - remove_line:
+        line: f5695.line31
+    - remove_line:
+        line: f5695.eehi_credit
+    - remove_line:
+        line: f5695.line32
+    - remove_line:
+        line: f5695.line32a
+    - remove_line:
+        line: f5695.condo
+    - remove_line:
+        line: f5695.line32b
+    - remove_question:
+        input: f5695.joint_occupancy
+    - remove_question:
+        input: f5695.separate_homes
+    - remove_question:
+        input: f5695.condo

@@ -1,0 +1,591 @@
+changes:
+  tax_year: 2026
+  form: f8889
+  entries:
+  - change: C-PRI-20
+    evidence:
+    - doc: f8889
+      page: 2
+      quote: enter $4,400 ($8,750 for family coverage)
+    - doc: rp-25-19
+      page: 2
+      quote: deductible health plan is $4,400
+    - doc: rp-25-19
+      page: 2
+      quote: deductible health plan is $8,750
+    - doc: rp-25-19
+      page: 2
+      quote: not less than $1,700 for self-only coverage or $3,400 for family coverage
+    - doc: i8889
+      page: 7
+      quote: Enter $4,400 on the line below for the month. If you were age 55 or older at the end of 2026, enter $5,400 for
+        the month.
+    - doc: i8889
+      page: 7
+      quote: Enter $8,750 on the line below for the month. If, at the end of 2026, you were unmarried and age 55 or older,
+        enter $9,750 for the month.
+    verified: draft
+    note: 'The amounts themselves are the parameters hsa.self_only, hsa.self_only_55, hsa.family, hsa.family_55 (4,400, 5,400,
+      8,750, 9,750), the 2026 parameters'' to set; these operations re-quote the lines whose labels or quotes print the amounts,
+      with the 2026 pages and year. Beyond the change map''s list: the help of f8889.fsa states the 2026 minimum deductible
+      of an HDHP (rp-25-19, $1,700 and $3,400), f8889.allocated the 2026 family amount, and f8889.testing_prior the prior
+      year''s amounts and dates (2025: $4,300 and $8,550, as printed in the 2025 Instructions for Form 8889). Line 17a''s
+      quote is re-quoted for a comma the 2026 instructions add.'
+    operations:
+    - set:
+        line: f8889.cov_self_only
+        field: cite.locator
+        from: p. 4, Line 3, rule 3, "enter $4,300 for a self-only HDHP"
+        to: p. 5, Line 3, rule 3, "enter $4,400 for a self-only HDHP"
+    - set:
+        line: f8889.cov_family
+        field: cite.locator
+        from: p. 4, Line 3, rule 3, "$8,550 for a family HDHP"
+        to: p. 5, Line 3, rule 3, "$8,750 for a family HDHP"
+    - set:
+        line: f8889.coverage
+        field: cite.locator
+        from: p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did
+          not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for a family HDHP on line 3"; p. 4,
+          Line 3, rules 4 and 5
+        to: p. 5, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did
+          not change your type of coverage, enter $4,400 for a self-only HDHP or $8,750 for a family HDHP on line 3"; p. 5,
+          Line 3, rules 4 and 5
+    - set:
+        line: f8889.married_family
+        field: cite.locator
+        from: p. 5, Line 3, "Note. If you are married and had family coverage at any time during the year, the additional
+          contribution amount is figured on line 7 and is not included on line 3"; p. 4, Line 3, rule 2, "If the last-month
+          rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same
+          HDHP coverage for the entire year as you had on the first day of the last month of your tax year"
+        to: p. 6, Line 3, "If you are married and had family coverage at any time during the year, the additional contribution
+          amount is figured on line 7 and is not included on line 3"; p. 5, Line 3, rule 2, "If the last-month rule ... applies,
+          you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage
+          for the entire year as you had on the first day of the last month of your tax year"
+    - set:
+        line: f8889.age55_line3
+        field: cite.locator
+        from: p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older and unmarried or married with self-only
+          HDHP coverage for the entire year, you can increase the amount determined in (3) or (4) by $1,000"; p. 5, Line 3,
+          "Note. If you are married and had family coverage at any time during the year, the additional contribution amount
+          is figured on line 7 and is not included on line 3"
+        to: p. 6, Line 3, rule 6, "If, at the end of 2026, you were age 55 or older and unmarried or married with self-only
+          HDHP coverage for the entire year, you can increase the amount determined in (3) or (4) by $1,000"; p. 6, Line 3,
+          "If you are married and had family coverage at any time during the year, the additional contribution amount is figured
+          on line 7 and is not included on line 3"
+    - set:
+        line: f8889.self_amount
+        field: label
+        from: Line 3 chart amount for a month of self-only coverage ($4,300; $5,300 if age 55 or older at the end of 2025)
+        to: Line 3 chart amount for a month of self-only coverage ($4,400; $5,400 if age 55 or older at the end of 2026)
+    - set:
+        line: f8889.self_amount
+        field: cite.locator
+        from: p. 6, Line 3 Limitation Chart, 'Enter $4,300 on the line below for the month. If you were age 55 or older at
+          the end of 2025, enter $5,300 for the month'
+        to: p. 7, Line 3 Limitation Chart, 'Enter $4,400 on the line below for the month. If you were age 55 or older at the
+          end of 2026, enter $5,400 for the month'
+    - set:
+        line: f8889.self_under55
+        field: label
+        from: Year parameter hsa.self_only ($4,300)
+        to: Year parameter hsa.self_only ($4,400)
+    - set:
+        line: f8889.self_under55
+        field: cite.locator
+        from: p. 6, Line 3 Limitation Chart, $4,300
+        to: p. 7, Line 3 Limitation Chart, $4,400
+    - set:
+        line: f8889.self_55
+        field: label
+        from: Year parameter hsa.self_only_55 ($5,300)
+        to: Year parameter hsa.self_only_55 ($5,400)
+    - set:
+        line: f8889.self_55
+        field: cite.locator
+        from: p. 6, Line 3 Limitation Chart, $5,300
+        to: p. 7, Line 3 Limitation Chart, $5,400
+    - set:
+        line: f8889.age55_unmarried
+        field: cite.locator
+        from: p. 6, Line 3 Limitation Chart, 'If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550
+          for the month'
+        to: p. 7, Line 3 Limitation Chart, 'If, at the end of 2026, you were unmarried and age 55 or older, enter $9,750 for
+          the month'
+    - set:
+        line: f8889.family_amount
+        field: label
+        from: Line 3 chart amount for a month of family coverage ($8,550; $9,550 if unmarried and age 55 or older at the end
+          of 2025)
+        to: Line 3 chart amount for a month of family coverage ($8,750; $9,750 if unmarried and age 55 or older at the end
+          of 2026)
+    - set:
+        line: f8889.family_amount
+        field: cite.locator
+        from: p. 6, Line 3 Limitation Chart, 'Enter $8,550 on the line below for the month. If, at the end of 2025, you were
+          unmarried and age 55 or older, enter $9,550 for the month'
+        to: p. 7, Line 3 Limitation Chart, 'Enter $8,750 on the line below for the month. If, at the end of 2026, you were
+          unmarried and age 55 or older, enter $9,750 for the month'
+    - set:
+        line: f8889.family_under55
+        field: label
+        from: Year parameter hsa.family ($8,550)
+        to: Year parameter hsa.family ($8,750)
+    - set:
+        line: f8889.family_under55
+        field: cite.locator
+        from: p. 6, Line 3 Limitation Chart, $8,550
+        to: p. 7, Line 3 Limitation Chart, $8,750
+    - set:
+        line: f8889.family_55
+        field: label
+        from: Year parameter hsa.family_55 ($9,550)
+        to: Year parameter hsa.family_55 ($9,750)
+    - set:
+        line: f8889.family_55
+        field: cite.locator
+        from: p. 6, Line 3 Limitation Chart, $9,550
+        to: p. 7, Line 3 Limitation Chart, $9,750
+    - set:
+        line: f8889.year_self_only
+        field: cite.locator
+        from: p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did
+          not change your type of coverage, enter $4,300 for a self-only HDHP"
+        to: p. 5, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did
+          not change your type of coverage, enter $4,400 for a self-only HDHP"
+    - set:
+        line: f8889.year_family
+        field: cite.locator
+        from: p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did
+          not change your type of coverage, enter ... $8,550 for a family HDHP"
+        to: p. 5, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did
+          not change your type of coverage, enter ... $8,750 for a family HDHP"
+    - set:
+        line: f8889.line3_all_year
+        field: cite.locator
+        from: p. 4, Line 3, rules 3 and 4 (for a year with one coverage type the chart gives $4,300 or $8,550, plus $1,000
+          if age 55 or older)
+        to: p. 5, Line 3, rules 3 and 4 (for a year with one coverage type the chart gives $4,400 or $8,750, plus $1,000 if
+          age 55 or older)
+    - set:
+        line: f8889.line3
+        field: label
+        from: If you were under age 55 at the end of 2025 and, on the first day of every month during 2025, you were, or were
+          considered, an eligible individual with the same coverage, enter $4,300 ($8,550 for family coverage). All others,
+          see the instructions for the amount to enter
+        to: If you were under age 55 at the end of 2026 and, on the first day of every month during 2026, you were, or were
+          considered, an eligible individual with the same coverage, enter $4,400 ($8,750 for family coverage). All others,
+          see the instructions for the amount to enter
+    - set:
+        line: f8889.line3
+        field: cite.locator
+        from: Form 8889 (2025), line 3; i8889 p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual
+          for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for
+          a family HDHP on line 3"
+        to: p. 2, line 3, "enter $4,400 ($8,750 for family coverage)"; i8889 p. 5, Line 3, rule 3, "If you were, or were considered,
+          an eligible individual for the entire year and you did not change your type of coverage, enter $4,400 for a self-only
+          HDHP or $8,750 for a family HDHP on line 3"
+    - set:
+        line: f8889.line7_applies
+        field: cite.locator
+        from: p. 7, Line 7, "If, at the end of 2025, you were age 55 or older and married, use the Additional Contribution
+          Amount Worksheet"; p. 5, Line 3, "Note. If you are married and had family coverage at any time during the year,
+          the additional contribution amount is figured on line 7 and is not included on line 3"
+        to: p. 8, Line 7, "If, at the end of 2026, you were age 55 or older and married, use the Additional Contribution Amount
+          Worksheet"; p. 6, Line 3, "If you are married and had family coverage at any time during the year, the additional
+          contribution amount is figured on line 7 and is not included on line 3"
+    - set:
+        line: f8889.line17a
+        field: cite.locator
+        from: 'p. 9, Exceptions to the Additional 20% Tax, "The additional 20% tax does not apply to distributions made after
+          the account beneficiary: • Dies, • Becomes disabled or • Turns age 65" and "If any of the exceptions apply to any
+          of the distributions included on line 16, check the box on line 17a"'
+        to: 'p. 10, Exceptions to the Additional 20% Tax, "The additional 20% tax does not apply to distributions made after
+          the account beneficiary: • Dies, • Becomes disabled, or • Turns age 65" and "If any of the exceptions apply to any
+          of the distributions included on line 16, check the box on line 17a"'
+    - set_question:
+        input: f8889.fsa
+        field: help
+        from: It counts as other health coverage for you and your spouse alike, even when only one person signed up for it.
+          Answer No if it pays only dental and vision costs, or pays nothing until the minimum annual deductible for an HSA
+          plan is met ($1,650 for a plan covering one person, $3,300 for more). Answer Yes if it was suspended for only part
+          of 2025, or if it pays only after retirement and the person who has it had retired. A 2024 health FSA's extra months
+          in early 2025 count only if money was left in it at the end of 2024. A dependent care FSA is not a health FSA.
+        to: It counts as other health coverage for you and your spouse alike, even when only one person signed up for it.
+          Answer No if it pays only dental and vision costs, or pays nothing until the minimum annual deductible for an HSA
+          plan is met ($1,700 for a plan covering one person, $3,400 for more). Answer Yes if it was suspended for only part
+          of 2026, or if it pays only after retirement and the person who has it had retired. A 2025 health FSA's extra months
+          in early 2026 count only if money was left in it at the end of 2025. A dependent care FSA is not a health FSA.
+    - set_question:
+        input: f8889.allocated
+        field: help
+        from: The shared limit is the family amount for the months both of you are treated as having family coverage ($8,550
+          for a full year). Your spouse's part is the rest; the two parts together may not be more than it.
+        to: The shared limit is the family amount for the months both of you are treated as having family coverage ($8,750
+          for a full year). Your spouse's part is the rest; the two parts together may not be more than it.
+    - set_question:
+        input: f8889.testing_prior
+        field: help
+        from: This is about the “last-month rule”. A person who could have an HSA on December 1, 2024 was allowed the full
+          yearly amount for the plan held that day, on condition of staying able to have an HSA through December 31, 2025.
+          Answer Yes if more went in for 2024 than your own months allowed, counting each month by the plan of that month.
+          That can be so if your plan began during 2024; if for part of 2024 you were someone's dependent or had other health
+          coverage, counting a health FSA or HRA at work (also the extra months of a 2023 health FSA early in 2024, and your
+          spouse's FSA); or if your plan, or a plan your spouse had, went from covering one person to covering more. Line
+          3 of your 2024 Form 8889 then shows the full yearly amount ($4,150 for a plan covering one person, $8,300 for more,
+          before the extra $1,000 from age 55) although not every month of 2024 earned it. If you are not sure, answer Yes.
+        to: This is about the “last-month rule”. A person who could have an HSA on December 1, 2025 was allowed the full yearly
+          amount for the plan held that day, on condition of staying able to have an HSA through December 31, 2026. Answer
+          Yes if more went in for 2025 than your own months allowed, counting each month by the plan of that month. That can
+          be so if your plan began during 2025; if for part of 2025 you were someone's dependent or had other health coverage,
+          counting a health FSA or HRA at work (also the extra months of a 2024 health FSA early in 2025, and your spouse's
+          FSA); or if your plan, or a plan your spouse had, went from covering one person to covering more. Line 3 of your
+          2025 Form 8889 then shows the full yearly amount ($4,300 for a plan covering one person, $8,550 for more, before
+          the extra $1,000 from age 55) although not every month of 2025 earned it. If you are not sure, answer Yes.
+  - change: C-PRI-22
+    evidence:
+    - doc: i8889
+      page: 2
+      quote: '2. Bronze and Catastrophic Plans Treated as HDHPs: After 2025, bronze and catastrophic plans available through
+        an Exchange are considered HSA-compatible, regardless of whether the plans satisfy the general definition of an HDHP.'
+    - doc: i8889
+      page: 2
+      quote: Notice 2026-5 clarifies that bronze and catastrophic plans do not have to be purchased through an Exchange to
+        qualify for the new relief.
+    - doc: i8889
+      page: 3
+      quote: A direct primary care service arrangement is not considered a health plan and does not disqualify an otherwise
+        “eligible individual”
+    verified: draft
+    note: 'The computation does not change; the definitions shown with the HDHP coverage questions do. The coverage questions
+      are Form 8889''s (coverage_year, clear_all_year, months_eligible), not person''s: no person.hsa.yaml is needed. coverage_year''s
+      quotes are re-based here with the 2026 amounts of C-PRI-20, and months_eligible''s help with the 2026 minimum deductible,
+      so that each field is set once. Notice 2026-5 is not archived; nothing here quotes it.'
+    operations:
+    - set:
+        line: f8889.coverage_year
+        field: expr.source
+        from: 'Were you covered by a high-deductible health plan (HDHP) on the first day of every month of 2025, with the
+          same type of coverage in all twelve?
+
+
+          - Self-only all year: an HDHP covering only you on the first day of every month of 2025.
+
+          - Family all year: on the first day of every month of 2025, an HDHP covering you and at least one other person (such
+          as an employee-plus-spouse or employee-plus-children tier), including as a member of someone else''s plan (a parent''s,
+          or your husband''s or wife''s, for example), or a self-only HDHP and a family HDHP at the same time.
+
+          - Changed: anything else, including HDHP coverage that started, ended or changed type during 2025, or if you are
+          not sure. The month-by-month questions follow.
+
+
+          This asks about the plan only. Whether you were an eligible individual in every month (no Medicare, no other health
+          coverage, not a dependent), and whether your husband''s or wife''s family coverage counts as yours, are asked next.'
+        to: 'Were you covered by a high-deductible health plan (HDHP) on the first day of every month of 2026, with the same
+          type of coverage in all twelve? A bronze or catastrophic plan counts as an HDHP.
+
+
+          - Self-only all year: an HDHP covering only you on the first day of every month of 2026.
+
+          - Family all year: on the first day of every month of 2026, an HDHP covering you and at least one other person (such
+          as an employee-plus-spouse or employee-plus-children tier), including as a member of someone else''s plan (a parent''s,
+          or your husband''s or wife''s, for example), or a self-only HDHP and a family HDHP at the same time.
+
+          - Changed: anything else, including HDHP coverage that started, ended or changed type during 2026, or if you are
+          not sure. The month-by-month questions follow.
+
+
+          This asks about the plan only. Whether you were an eligible individual in every month (no Medicare, no other health
+          coverage, not a dependent), and whether your husband''s or wife''s family coverage counts as yours, are asked next.'
+    - set:
+        line: f8889.coverage_year
+        field: label
+        from: 'HDHP coverage on the first day of every month of 2025: self-only in all twelve, family in all twelve, or anything
+          else (including coverage that started, ended or changed type)'
+        to: 'HDHP coverage (a bronze or catastrophic plan counting as one) on the first day of every month of 2026: self-only
+          in all twelve, family in all twelve, or anything else (including coverage that started, ended or changed type)'
+    - set:
+        line: f8889.coverage_year
+        field: cite.locator
+        from: p. 2, Eligible Individual, "you must be covered under a high deductible health plan (HDHP) and have no other
+          health coverage except certain disregarded coverage ... You must be, or be considered, an eligible individual on
+          the first day of a month"; p. 4, Line 1, "If you were covered by both a self-only HDHP and a family HDHP at the
+          same time, you are treated as having family coverage during that period"; p. 4, Line 3, rule 3, "If you were, or
+          were considered, an eligible individual for the entire year and you did not change your type of coverage, enter
+          $4,300 for a self-only HDHP or $8,550 for a family HDHP on line 3"; p969 p. 4, "Family HDHP coverage is HDHP coverage
+          for an eligible individual and at least one other individual"
+        to: p. 3, Eligible Individual, "you must be covered under an HDHP and have no other health plan except certain disregarded
+          coverage"; p. 4, High Deductible Health Plan, "Bronze and catastrophic plans are treated as high deductible health
+          plans."; p. 5, Line 1, "If you were covered by both a self-only HDHP and a family HDHP at the same time, you are
+          treated as having family coverage during that period"; p. 5, Line 3, rule 3, "If you were, or were considered, an
+          eligible individual for the entire year and you did not change your type of coverage, enter $4,400 for a self-only
+          HDHP or $8,750 for a family HDHP on line 3"
+    - set_question:
+        input: f8889.coverage_year
+        field: help
+        from: What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible”
+          or “HDHP”. If you were covered all year as a member of someone else's plan (a parent's, or your spouse's), or by
+          a plan for only you and a family plan at once, choose “covering more than one person”; if that was so for only part
+          of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change.
+        to: What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible”
+          or “HDHP”, and a bronze or catastrophic plan counts too. If you were covered all year as a member of someone else's
+          plan (a parent's, or your spouse's), or by a plan for only you and a family plan at once, choose “covering more
+          than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the
+          same kind of plan is not a change.
+    - set:
+        line: f8889.clear_all_year
+        field: expr.source
+        from: 'On the first day of every month of 2025, were all three of these true?
+
+
+          - you were not enrolled in Medicare, counting Medicare coverage backdated to an earlier month
+
+          - you had no other health coverage, apart from the coverage the instructions disregard (accident, disability, dental,
+          vision, long-term care, telehealth and other remote care, workers'' compensation, tort or property liability insurance,
+          insurance for a specified disease or illness, and insurance paying a fixed amount per day of hospitalization); VA
+          care for a service-connected disability and benefits under surprise billing laws are not other health coverage
+
+          - you could not be claimed as a dependent on someone else''s 2025 return'
+        to: 'On the first day of every month of 2026, were all three of these true?
+
+
+          - you were not enrolled in Medicare, counting Medicare coverage backdated to an earlier month
+
+          - you had no other health coverage, apart from the coverage the instructions disregard (accident, disability, dental,
+          vision, long-term care, telehealth and other remote care, workers'' compensation, tort or property liability insurance,
+          insurance for a specified disease or illness, and insurance paying a fixed amount per day of hospitalization); VA
+          care for a service-connected disability, benefits under surprise billing laws and a direct primary care service
+          arrangement are not other health coverage
+
+          - you could not be claimed as a dependent on someone else''s 2026 return'
+    - set:
+        line: f8889.clear_all_year
+        field: cite.locator
+        from: p. 2, Eligible Individual, "you must be covered under a high deductible health plan (HDHP) and have no other
+          health coverage except certain disregarded coverage ... you cannot be enrolled in Medicare or be another person's
+          dependent"; p. 2, Certain coverage disregarded and Permitted insurance; p. 2, Eligible Individual, VA hospital care
+          or medical services for a service-connected disability and benefits under surprise billing laws; p. 4, "You cannot
+          deduct any contributions for any month in which you were enrolled in Medicare. Also, you cannot deduct contributions
+          if you are someone else's dependent for 2025"; p969 p. 7, Enrolled in Medicare, "This rule applies to periods of
+          retroactive Medicare coverage"
+        to: p. 3, Eligible Individual, "you must be covered under an HDHP and have no other health plan except certain disregarded
+          coverage"; p. 3, Eligible Individual, "However, you cannot be enrolled in Medicare or be another person’s dependent.";
+          p. 3, Certain coverage disregarded and Permitted insurance; p. 3, Eligible Individual, VA hospital care or medical
+          services for a service-connected disability, benefits under surprise billing laws, and "A direct primary care service
+          arrangement is not considered a health plan and does not disqualify an otherwise “eligible individual”"; p. 5, "You
+          cannot deduct any contributions for any month in which you were enrolled in Medicare. Also, you cannot deduct contributions
+          if you are someone else’s dependent for 2026."
+    - set_question:
+        input: f8889.clear_all_year
+        field: help
+        from: 'Other health coverage means a second plan that pays medical bills before the high deductible is met, such as
+          your spouse''s ordinary plan that also covers you. These do not count either: telehealth, workers'' compensation,
+          liability cover under a car or home policy, insurance for one named illness or a fixed amount per day in hospital,
+          and VA care for a service-connected disability. Medicare counts from the month its coverage began, even if that
+          was set back. If you are not sure, answer No.'
+        to: 'Other health coverage means a second plan that pays medical bills before the high deductible is met, such as
+          your spouse''s ordinary plan that also covers you. These do not count either: telehealth, workers'' compensation,
+          liability cover under a car or home policy, insurance for one named illness or a fixed amount per day in hospital,
+          VA care for a service-connected disability, and a direct primary care arrangement (a set fee paid to a doctor''s
+          practice). Medicare counts from the month its coverage began, even if that was set back. If you are not sure, answer
+          No.'
+    - set_question:
+        input: f8889.months_eligible
+        field: help
+        from: Count a month only if everything held on its first day; December counts as one of the months. An FSA or HRA
+          that pays only dental and vision costs, or nothing until the minimum annual deductible for an HSA plan is met ($1,650
+          for a plan covering one person, $3,300 for more), does not count against a month; nor do telehealth, workers' compensation,
+          insurance for one named illness or a fixed amount per day in hospital, or VA care for a service-connected disability.
+          Zero if there was no such month.
+        to: Count a month only if everything held on its first day; December counts as one of the months. An FSA or HRA that
+          pays only dental and vision costs, or nothing until the minimum annual deductible for an HSA plan is met ($1,700
+          for a plan covering one person, $3,400 for more), does not count against a month; nor do telehealth, workers' compensation,
+          insurance for one named illness or a fixed amount per day in hospital, VA care for a service-connected disability,
+          or a direct primary care arrangement (a set fee paid to a doctor's practice). A bronze or catastrophic plan counts
+          as an HSA-qualifying plan. Zero if there was no such month.
+  - change: C-PRI-23
+    evidence:
+    - doc: i8889
+      page: 3
+      quote: including amounts paid for menstrual care products
+    - doc: i8889
+      page: 3
+      quote: 'Insurance may not be purchased from an HSA, except for the following:'
+    - doc: i8889
+      page: 3
+      quote: 5. Any direct primary care service arrangement.
+    verified: draft
+    note: 'Nothing computed changes: f8889.medical is an amount the filer states. Its definition gains the direct primary
+      care fees the 2026 list adds; menstrual care products were already in its help. Its quotes and f8889.rollover''s are
+      re-quoted from the 2026 text and pages.'
+    operations:
+    - set:
+        line: f8889.medical
+        field: expr.source
+        from: 'The part of your 2025 HSA distributions used to pay qualified medical expenses; zero if none
+
+
+          The expenses must not have been reimbursed by insurance or other coverage, and must have been incurred after the
+          HSA was established.
+
+
+          Whose expenses count:
+
+          - yours and your spouse''s
+
+          - your dependents''
+
+          - those of anyone who would be your dependent except that they filed a joint return, had gross income, or you (or
+          your spouse, on a joint return) could be claimed as someone else''s dependent
+
+          - those of a child of divorced or separated parents, who counts for both parents
+
+
+          Insurance premiums count only if they are for:
+
+          - long-term care insurance
+
+          - health care continuation coverage (such as COBRA), which can be for your spouse or a dependent
+
+          - health care coverage while receiving unemployment compensation under federal or state law, which can be for your
+          spouse or a dependent
+
+          - Medicare and other health care coverage if you were 65 or older (not a Medicare supplemental policy, such as Medigap);
+          if you, the HSA owner, are under 65, Medicare premiums for your spouse or dependents generally do not count'
+        to: 'The part of your 2026 HSA distributions used to pay qualified medical expenses; zero if none
+
+
+          The expenses must not have been reimbursed by insurance or other coverage, and must have been incurred after the
+          HSA was established.
+
+
+          Whose expenses count:
+
+          - yours and your spouse''s
+
+          - your dependents''
+
+          - those of anyone who would be your dependent except that they filed a joint return, had gross income, or you (or
+          your spouse, on a joint return) could be claimed as someone else''s dependent
+
+          - those of a child of divorced or separated parents, who counts for both parents
+
+
+          Insurance premiums count only if they are for:
+
+          - long-term care insurance
+
+          - health care continuation coverage (such as COBRA), which can be for your spouse or a dependent
+
+          - health care coverage while receiving unemployment compensation under federal or state law, which can be for your
+          spouse or a dependent
+
+          - Medicare and other health care coverage if you were 65 or older (not a Medicare supplemental policy, such as Medigap);
+          if you, the HSA owner, are under 65, Medicare premiums for your spouse or dependents generally do not count
+
+          - a direct primary care service arrangement'
+    - set:
+        line: f8889.medical
+        field: cite.locator
+        from: p. 8, Line 15, "Only include on line 15 distributions from your HSA that were used to pay you for qualified
+          medical expenses not reimbursed by insurance or other coverage and that you incurred after the HSA was established"
+          and "Any person who would be a dependent except that"; p. 9, Line 15, TIP, divorced or separated parents; p. 2,
+          Qualified Medical Expenses, "You cannot treat insurance premiums as qualified medical expenses unless the premiums
+          are for:", "Long-term care (LTC) insurance", "Health care continuation coverage (such as coverage under COBRA)"
+          and "Health care coverage while receiving unemployment compensation under federal or state law"; p. 3, "Medicare
+          and other health care coverage if you were 65 or older (other than premiums for a Medicare supplemental policy,
+          such as Medigap)", "Coverage under (2) and (3) can be for your spouse or a dependent meeting the requirement." and
+          "are under age 65, Medicare premiums for your spouse or dependents (who are age 65 or older) are generally not qualified
+          medical expenses"
+        to: p. 9, Line 15, "Only include on line 15 distributions from your HSA that were used to pay you for qualified medical
+          expenses not reimbursed by insurance or other coverage and that you incurred after the HSA was established" and
+          "Any person who would be a dependent except that"; p. 9, Line 15, Tip, divorced or separated parents; p. 3, Qualified
+          Medical Expenses, "including amounts paid for menstrual care products", "Insurance may not be purchased from an
+          HSA, except for the following:", "A health plan during any period of continuation coverage required under any federal
+          law", "A qualified long-term care insurance contract", "A health plan during a period in which the individual is
+          receiving unemployment compensation under any federal or state law", "In the case of an HSA beneficiary who has
+          reached age 65 years, any health insurance other than a Medicare supplemental policy", "Any direct primary care
+          service arrangement." and "Medicare premiums for a spouse who has reached age 65 are generally not qualified medical
+          expenses if the HSA account beneficiary has not attained age 65."
+    - set_question:
+        input: f8889.medical
+        field: prompt
+        from: 'For this person (you, or your spouse on a joint return) — How much of the money that came out paid for medical
+          costs that count?
+
+
+          The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA.
+
+
+          Whose costs count:
+
+          - yours, and your spouse''s
+
+          - your dependents''
+
+          - those of a person you could claim as a dependent but for their income, their joint return, or your being someone
+          else''s dependent
+
+          - those of your child if you are divorced, separated or lived apart from the other parent for the last six months
+          of the year, whichever parent claims the child
+
+
+          Insurance premiums count only for:
+
+          - long-term care insurance
+
+          - continuation coverage such as COBRA, for you, your spouse, or a dependent
+
+          - health coverage while you, your spouse, or a dependent received unemployment compensation
+
+          - Medicare and other health coverage if you were 65 or older, but not a Medicare supplement (Medigap) policy; if
+          you are under 65, Medicare premiums for your spouse or a dependent do not count
+
+
+          Zero if none.'
+        to: 'For this person (you, or your spouse on a joint return) — How much of the money that came out paid for medical
+          costs that count?
+
+
+          The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA.
+
+
+          Whose costs count:
+
+          - yours, and your spouse''s
+
+          - your dependents''
+
+          - those of a person you could claim as a dependent but for their income, their joint return, or your being someone
+          else''s dependent
+
+          - those of your child if you are divorced, separated or lived apart from the other parent for the last six months
+          of the year, whichever parent claims the child
+
+
+          Insurance premiums count only for:
+
+          - long-term care insurance
+
+          - continuation coverage such as COBRA, for you, your spouse, or a dependent
+
+          - health coverage while you, your spouse, or a dependent received unemployment compensation
+
+          - Medicare and other health coverage if you were 65 or older, but not a Medicare supplement (Medigap) policy; if
+          you are under 65, Medicare premiums for your spouse or a dependent do not count
+
+          - a direct primary care arrangement: a set fee paid to a doctor''s practice for its care
+
+
+          Zero if none.'
+    - set:
+        line: f8889.rollover
+        field: cite.locator
+        from: p. 8, Line 14b, "Include on line 14b any distributions your HSA made in 2025 that qualified as a rollover contribution
+          to another HSA"; p. 3, Rollovers, "Generally, you must complete the rollover within 60 days after you received the
+          distribution", "reinvested in another HSA of the same account beneficiary" and "An HSA can only receive one rollover
+          contribution during a 1-year period."
+        to: p. 9, Line 14b, "Include on line 14b any distributions your HSA made in 2026 that qualified as a rollover contribution
+          to another HSA"; p. 4, Rollovers, "reinvested in another HSA of the same account beneficiary"; p. 5, Rollovers,
+          "the rollover within 60 days after you received the distribution" and "An HSA can only receive one rollover contribution
+          during a 1-year period."

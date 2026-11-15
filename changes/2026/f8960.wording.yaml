@@ -1,0 +1,106 @@
+changes:
+  tax_year: 2026
+  form: f8960
+  entries:
+  - change: C-SCHED-29
+    evidence:
+    - doc: i8960
+      page: 8
+      quote: 'Enter your taxable interest. Include the applicable amount from your return:'
+    - doc: i8960
+      page: 8
+      quote: • Form 1040 or 1040-SR, line 2b.
+    - doc: i8960
+      page: 8
+      quote: Enter your ordinary dividends. Include the applicable
+    - doc: i8960
+      page: 8
+      quote: • Form 1040 or 1040-SR, line 3b.
+    - doc: i8960
+      page: 9
+      quote: If line 2 includes dividends from employer securities held in an employee stock ownership plan (ESOP) that
+        are deductible under section 404(k), or Alaska Permanent Fund dividends, include those amounts as negative modifications
+        on line 7.
+    - doc: i8960
+      page: 11
+      quote: Enter the amount from line 2(i) of this worksheet as calculated on your prior-year return.
+    - doc: i8960
+      page: 13
+      quote: capital loss carryforwards must be adjusted if the sum of all capital gain or loss amounts excluded from NII
+        on lines 5b and 5c was a net loss
+    - doc: i8960
+      page: 14
+      quote: 'Note: The early withdrawal penalty reported on Schedule 1 (Form 1040), line 18, is reported on Form 8960,
+        line 10.'
+    - doc: i8960
+      page: 20
+      quote: Use line 10 to report additional deductions or modifications to NII that aren’t otherwise reflected on lines
+        1–9.
+    verified: draft
+    note: Citations only; the rules are unchanged. Pages and quotes re-cited from the 2026 draft. The unquoted citation
+      parts (pp. 14-15 deduction recoveries; Form 8960 (2025) lines) are not re-checked here.
+    operations:
+    - set:
+        line: f8960.line1
+        field: cite.locator
+        from: p. 7, Line 1—Taxable Interest, "Enter the amount of taxable interest received. Include the following amount
+          from your return. • Form 1040 or 1040-SR, line 2b."
+        to: 'p. 8, Line 1—Taxable Interest, "Enter your taxable interest. Include the applicable amount from your return:
+          • Form 1040 or 1040-SR, line 2b."'
+    - set:
+        line: f8960.line2
+        field: cite.locator
+        from: p. 7, Line 2—Ordinary Dividends, "Enter the amount of ordinary dividends received. Include the following amount
+          from your return. • Form 1040 or 1040-SR, line 3b."
+        to: 'p. 8, Line 2—Ordinary Dividends, "Enter your ordinary dividends. Include the applicable amount from your return:
+          • Form 1040 or 1040-SR, line 3b."'
+    - set:
+        line: f8960.line10
+        field: cite.locator
+        from: 'p. 13, Line 7—Other Modifications to Investment Income, "Note: Early withdrawal penalty (Schedule 1 (Form
+          1040), line 18) is reported on Form 8960, line 10"; p. 18, Line 10—Additional Modifications, "On line 10, report
+          additional deductions or modifications to NII that aren''t otherwise reflected on lines 1–9" (the other line 10
+          modifications are refused by f8960.unsupported)'
+        to: 'p. 14, Line 7—Other Modifications to Investment Income, "Note: The early withdrawal penalty reported on Schedule
+          1 (Form 1040), line 18, is reported on Form 8960, line 10."; p. 20, Line 10—Additional Modifications, "Use line
+          10 to report additional deductions or modifications to NII that aren’t otherwise reflected on lines 1–9." (the
+          other line 10 modifications are refused by f8960.unsupported)'
+    - set:
+        line: f8960.prior_2i
+        field: cite.locator
+        from: p. 10, Net Gains and Losses Worksheet, line 2(h), "Enter the amount reported on line 2(i) of this worksheet
+          from your prior tax year return calculations"; p. 9, "capital loss carryforwards must be adjusted"
+        to: p. 11, Net Gains and Losses Worksheet, line 2(h), "Enter the amount from line 2(i) of this worksheet as calculated
+          on your prior-year return."; p. 13, "capital loss carryforwards must be adjusted"
+    - set:
+        line: f8960.carryforward_adj
+        field: cite.locator
+        from: p. 9, "capital loss carryforwards must be adjusted"; p. 10, Net Gains and Losses Worksheet, line 2(h), "Enter
+          the amount reported on line 2(i) of this worksheet from your prior tax year return calculations"
+        to: p. 13, "capital loss carryforwards must be adjusted"; p. 11, Net Gains and Losses Worksheet, line 2(h), "Enter
+          the amount from line 2(i) of this worksheet as calculated on your prior-year return."
+    - set:
+        line: f8960.unsupported
+        field: cite.locator
+        from: Form 8960 (2025), Parts I–III, individual lines 1–17; i8960 p. 9, line 5b, "Any gain attributable to NUA (within
+          the meaning of section 402(e)(4)) that you realize on a disposition of employer securities held by a qualified
+          plan is a distribution within the meaning of section 1411(c)(5) and isn’t included in NII."; i8960 p. 7, Line
+          2—Ordinary Dividends, "If line 2 includes dividends from employer securities held in an employee stock ownership
+          plan (ESOP) that are deductible under section 404(k) or Alaska Permanent Fund Dividends, include those amounts
+          as negative modifications on line 7"; i8960 p. 13, Line 7—Other Modifications to Investment Income, "Section 404(k)
+          dividends reported on line 2 (enter as a negative amount)" and "Gain or loss from the disposition of an annuity
+          or life insurance contract"; i8960 p. 9, Adjustments to your capital loss carryforwards, "capital loss carryforwards
+          must be adjusted if any sum of all capital gain or loss amounts excluded from NII on lines 5b and 5c was a net
+          loss"; i1099div p. 4, Box 1a, "Include reinvested dividends and section 404(k) dividends paid directly from the
+          corporation"
+        to: Form 8960 (2025), Parts I–III, individual lines 1–17; i8960 p. 10, line 5b, "Any gain attributable to NUA (within
+          the meaning of section 402(e)(4)) that you realize on a disposition of employer securities held by a qualified
+          plan is a distribution within the meaning of section 1411(c)(5) and isn’t included in NII."; i8960 p. 9, Line
+          2—Ordinary Dividends, "If line 2 includes dividends from employer securities held in an employee stock ownership
+          plan (ESOP) that are deductible under section 404(k), or Alaska Permanent Fund dividends, include those amounts
+          as negative modifications on line 7."; i8960 p. 14, Line 7—Other Modifications to Investment Income, "Section
+          404(k) dividends reported on line 2 (enter as a negative amount)" and "Gain or loss from the disposition of an
+          annuity or life insurance contract"; i8960 p. 13, Adjustments to your capital loss carryforwards, "capital loss
+          carryforwards must be adjusted if the sum of all capital gain or loss amounts excluded from NII on lines 5b and
+          5c was a net loss"; i1099div p. 4, Box 1a, "Include reinvested dividends and section 404(k) dividends paid directly
+          from the corporation"

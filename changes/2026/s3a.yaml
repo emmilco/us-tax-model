@@ -14,11 +14,8 @@ changes:
       page: 2
       quote: Are you or your spouse a U.S. citizen, U.S. national, or qualified alien? See instructions
     verified: draft
-    awaits:
-    - line: s2.line20
-      change: C-SCHED-10
-    note: Line 4 reads the 2026 Schedule 2 line 20, which the Schedule 2 renumbering (C-SCHED-10, not yet written as operations)
-      is to add.
+    note: Line 4 reads the 2026 Schedule 2 line 20, which the Schedule 2 renumbering (C-SCHED-10, changes/2026/s2.yaml)
+      adds.
     operations:
     - add_form:
         form:

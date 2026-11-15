@@ -1,0 +1,131 @@
+changes:
+  tax_year: 2026
+  form: tipjob
+  entries:
+  - change: C-SCHED-03
+    evidence:
+    - doc: f1040s1a
+      page: 2
+      quote: Qualified tips received as an employee.
+    - doc: f1040s1a
+      page: 2
+      quote: (iii) Qualified tips included in Form W-2, box 12, code “TP” (see instructions)
+    - doc: f1040s1a
+      page: 2
+      quote: Add lines 4a through 4e, column (v)
+    - doc: iw2w3
+      page: 23
+      quote: Code TP—Total amount of cash tips reported to the employer
+    verified: draft
+    note: The worksheet's columns (b) to (d) are the 2026 form's line 4 columns (iii) to (v). The question now names W-2 box
+      12 code TP, as column (iii) does; the 2025 help's Form 4070 alternative and its $176,100 test are not on the 2026 form
+      and are dropped (the 2026 i1040gi may restore an alternative).
+    operations:
+    - set_form:
+        field: title
+        from: Qualified Tips From More Than One Employer Worksheet (Schedule 1-A, line 4c) — one row per employer
+        to: Schedule 1-A, line 4, qualified tips received as an employee — one row per employer (lines 4a through 4e)
+    - set_form:
+        field: note
+        from: One entry per employer from which you received tips as an employee that you are deducting. Tips reported on
+          Form 4137 (column (c)) are refused with Form 4137, so column (d) is the column (b) amount.
+        to: One entry per employer from which you received tips as an employee that you are deducting. Tips reported on Form
+          4137 (column (iv)) are refused with Form 4137, so column (v) is the column (iii) amount.
+    - set:
+        line: tipjob.tips
+        field: expr.source
+        from: What were your tips from this employer in 2025? Take box 7 of its W-2 (social security tips), or a tip amount
+          this employer gave you in box 14 or on a separate statement.
+        to: What were your tips from this employer in 2026? Take the amount with code TP in box 12 of its W-2 (cash tips reported
+          to the employer).
+    - set:
+        line: tipjob.tips
+        field: cite.doc
+        from: i1040gi
+        to: f1040s1a
+    - set:
+        line: tipjob.tips
+        field: cite.locator
+        from: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); pp. 103-104, paragraphs 1 through
+          3
+        to: Schedule 1-A (2026), line 4, column (iii) (draft), "Qualified tips included in Form W-2, box 12, code “TP” (see
+          instructions)"; iw2w3 p. 23, Box 12—Codes, "Code TP—Total amount of cash tips reported to the employer"
+    - set:
+        line: tipjob.amount
+        field: printed
+        from: 1(b)
+        to: 4(iii)
+    - set:
+        line: tipjob.amount
+        field: label
+        from: Amount of qualified tips reported by this employer on Form W-2, or reported by you to this employer on Form(s)
+          4070
+        to: Qualified tips included in Form W-2, box 12, code “TP” (see instructions)
+    - set:
+        line: tipjob.amount
+        field: cite.doc
+        from: i1040gi
+        to: f1040s1a
+    - set:
+        line: tipjob.amount
+        field: cite.locator
+        from: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); pp. 103-104, paragraphs 1 through
+          3
+        to: Schedule 1-A (2026), line 4, column (iii) (draft), "Qualified tips included in Form W-2, box 12, code “TP” (see
+          instructions)"
+    - set:
+        line: tipjob.col_c
+        field: printed
+        from: 1(c)
+        to: 4(iv)
+    - set:
+        line: tipjob.col_c
+        field: label
+        from: Qualified tips reported on Form 4137, column 1(c), for this employer
+        to: Qualified tips included in Form 4137, line 1, column (c). If Form 4137 is not filed, enter -0-.
+    - set:
+        line: tipjob.col_c
+        field: cite.doc
+        from: i1040gi
+        to: f1040s1a
+    - set:
+        line: tipjob.col_c
+        field: cite.locator
+        from: p. 104, Qualified Tips From More Than One Employer Worksheet, column (c)
+        to: Schedule 1-A (2026), line 4, column (iv) (draft), "Qualified tips included in Form 4137, line 1, column (c). If
+          Form 4137 is not filed, enter -0-."
+    - set:
+        line: tipjob.col_d
+        field: printed
+        from: 1(d)
+        to: 4(v)
+    - set:
+        line: tipjob.col_d
+        field: label
+        from: Enter the greater of column (b) or column (c)
+        to: Enter the larger of column (iii) or column (iv).
+    - set:
+        line: tipjob.col_d
+        field: cite.doc
+        from: i1040gi
+        to: f1040s1a
+    - set:
+        line: tipjob.col_d
+        field: cite.locator
+        from: p. 104, Qualified Tips From More Than One Employer Worksheet, column (d)
+        to: Schedule 1-A (2026), line 4, column (v) (draft), "Enter the larger of column (iii) or column (iv)."
+    - set_form:
+        field: collection.cite
+        from:
+          doc: i1040gi
+          locator: p. 104, Schedule 1-A, line 4c, and the Qualified Tips From More Than One Employer Worksheet (one row per
+            employer)
+        to:
+          doc: f1040s1a
+          locator: Schedule 1-A (2026), line 4 (draft), rows 4a through 4e, "Qualified tips received as an employee."
+    - set_question:
+        input: tipjob.tips
+        field: help
+        from: You may instead take the total of the tips you reported to this employer on Form 4070 or a similar monthly report,
+          which can be more accurate if box 1 or box 5 of the W-2 is over $176,100.
+        to: Code TP is the total of the cash tips you reported to this employer.

@@ -1,0 +1,178 @@
+changes:
+  tax_year: 2026
+  form: f8959
+  entries:
+  - change: C-SCHED-13
+    evidence:
+    - doc: i8959
+      page: 2
+      quote: Form 8959 has been revised to report Additional Medicare Tax on Medicare wages and Railroad Retirement Tax Act
+        (RRTA) compensation separately from Additional Medicare Tax on self-employment income.
+    - doc: f8959
+      page: 2
+      quote: 8 RRTA compensation and tips from Form(s) W-2, box 14a (see instructions)
+    - doc: f8959
+      page: 2
+      quote: Additional Medicare Tax on RRTA compensation. Multiply line 10 by 0.9% (0.009).
+    - doc: f8959
+      page: 2
+      quote: Add lines 7 and 11. Also enter this amount on Schedule 2 (Form 1040), line 17b, or Form 1040-SS, Part I, line
+        5b.
+    - doc: f8959
+      page: 2
+      quote: Subtract line 15 from line 14. If zero or less, enter -0-
+    - doc: f8959
+      page: 2
+      quote: Subtract line 16 from line 13. If zero or less, enter -0-
+    - doc: f8959
+      page: 2
+      quote: Additional Medicare Tax on self-employment income. Multiply line 17 by 0.9% (0.009). Enter here and on Schedule
+        2 (Form 1040), line 11, or Form 1040-SS, Part I, line 5a.
+    verified: draft
+    note: 'Ids are kept through the renumbering: the self-employment part (ids line8 to line13) becomes lines 13 to 18, the
+      RRTA part (ids line14 to line17) lines 8 to 11, and the total (id line18) line 12, now lines 7 + 11 only (ids line7
+      and line17). Schedule 2 line 11 reads f8959.line13 and the new line 17b f8959.line18 (changes/2026/s2.yaml).'
+    operations:
+    - set_form:
+        field: note
+        from: The total liability feeds Schedule 2 line 11. Additional Medicare withholding feeds Form 1040 line 25c, separately
+          from the tax. Self-employment income (Part II) is figured from Schedule SE. Railroad retirement (RRTA) compensation
+          (Part III) and a wage statement from a U.S. territory are refused.
+        to: The tax on Medicare wages and RRTA compensation (line 12) feeds Schedule 2 line 17b, and the tax on self-employment
+          income (line 18) feeds Schedule 2 line 11. Additional Medicare withholding feeds Form 1040 line 25c, separately
+          from the tax. Self-employment income (Part IV) is figured from Schedule SE. Railroad retirement (RRTA) compensation
+          (Part II) and a wage statement from a U.S. territory are refused.
+    - set:
+        line: f8959.line8
+        field: printed
+        from: '8'
+        to: '13'
+    - set:
+        line: f8959.line8
+        field: cite.locator
+        from: Form 8959 (2025), line 8 (on a joint return, the combined amounts of both spouses' Schedules SE, line 6); i8959
+          p. 3, Line 8, "Enter your self-employment income from Schedule SE (Form 1040), Part I, line 6"
+        to: Form 8959 (2026), line 13 (draft) (on a joint return, the combined amounts of both spouses' Schedules SE, line
+          6); i8959 p. 5 (draft), Line 13, "Enter your self-employment income from Schedule SE (Form 1040), Part I, line 6"
+    - set:
+        line: f8959.line14
+        field: printed
+        from: '14'
+        to: '8'
+    - set:
+        line: f8959.line14
+        field: cite.locator
+        from: Form 8959 (2025), lines 1–24; i8959 p. 4, Line 14, "Enter the total of your RRTA compensation and tips"
+        to: Form 8959 (2026), lines 1–24 (draft); i8959 p. 5 (draft), Line 8, "Enter the total of your RRTA compensation and
+          tips"
+    - set:
+        line: f8959.line9
+        field: printed
+        from: '9'
+        to: '14'
+    - set:
+        line: f8959.line10
+        field: printed
+        from: '10'
+        to: '15'
+    - set:
+        line: f8959.line11
+        field: printed
+        from: '11'
+        to: '16'
+    - set:
+        line: f8959.line11
+        field: cite.locator
+        from: p. 1, Part II, line 11, "Subtract line 10 from line 9. If zero or less, enter -0-"; i8959 pp. 1–3
+        to: p. 2 (draft), Part IV, line 16, "Subtract line 15 from line 14. If zero or less, enter -0-"; i8959 pp. 1–3
+    - set:
+        line: f8959.line12
+        field: printed
+        from: '12'
+        to: '17'
+    - set:
+        line: f8959.line12
+        field: cite.locator
+        from: p. 1, Part II, line 12, "Subtract line 11 from line 8. If zero or less, enter -0-"; i8959 pp. 1–3
+        to: p. 2 (draft), Part IV, line 17, "Subtract line 16 from line 13. If zero or less, enter -0-"; i8959 pp. 1–3
+    - set:
+        line: f8959.line13
+        field: printed
+        from: '13'
+        to: '18'
+    - set:
+        line: f8959.line13
+        field: cite.locator
+        from: p. 1, Part II, line 13, "Additional Medicare Tax on self-employment income. Multiply line 12 by 0.9% (0.009)";
+          i8959 pp. 1–3
+        to: p. 2 (draft), Part IV, line 18, "Additional Medicare Tax on self-employment income. Multiply line 17 by 0.9% (0.009).
+          Enter here and on Schedule 2 (Form 1040), line 11"; i8959 pp. 1–3
+    - set:
+        line: f8959.line15
+        field: printed
+        from: '15'
+        to: '9'
+    - set:
+        line: f8959.line16
+        field: printed
+        from: '16'
+        to: '10'
+    - set:
+        line: f8959.line16
+        field: cite.locator
+        from: p. 1, Part III, line 16, "Subtract line 15 from line 14. If zero or less, enter -0-"; i8959 pp. 1–3
+        to: p. 2 (draft), Part II, line 10, "Subtract line 9 from line 8. If zero or less, enter -0-"; i8959 pp. 1–3
+    - set:
+        line: f8959.line17
+        field: printed
+        from: '17'
+        to: '11'
+    - set:
+        line: f8959.line17
+        field: cite.locator
+        from: p. 1, Part III, line 17, "Multiply line 16 by 0.9% (0.009)"; i8959 pp. 1–3
+        to: p. 2 (draft), Part II, line 11, "Additional Medicare Tax on RRTA compensation. Multiply line 10 by 0.9% (0.009)";
+          i8959 pp. 1–3
+    - set:
+        line: f8959.line18
+        field: printed
+        from: '18'
+        to: '12'
+    - set:
+        line: f8959.line18
+        field: label
+        from: Add f8959.line7, f8959.line13, f8959.line17
+        to: Add f8959.line7, f8959.line17
+    - set:
+        line: f8959.line18
+        field: expr.of
+        from:
+        - f8959.line7
+        - f8959.line13
+        - f8959.line17
+        to:
+        - f8959.line7
+        - f8959.line17
+    - set:
+        line: f8959.line18
+        field: cite.locator
+        from: p. 1, Part IV, line 18, "Add lines 7, 13, and 17"; i8959 pp. 1–3
+        to: p. 2 (draft), Part III, line 12, "Add lines 7 and 11. Also enter this amount on Schedule 2 (Form 1040), line 17b";
+          i8959 p. 5 (draft), Line 12, "Line 17b of Schedule 2 (Form 1040)"
+  - change: C-SCHED-15
+    evidence:
+    - doc: i8959
+      page: 2
+      quote: (box 14a) is greater than $200,000.
+    - doc: f8959
+      page: 2
+      quote: Additional Medicare Tax withholding on RRTA compensation from Form W-2, box 14a
+    verified: draft
+    operations:
+    - set:
+        line: f8959.line23
+        field: cite.locator
+        from: Form 8959 (2025), lines 1–24; i8959 p. 4, Line 23, "Enter the amount of Additional Medicare Tax withheld, if
+          any, reported on Form W-2, box 14"
+        to: Form 8959 (2026), lines 1–24 (draft); i8959 p. 5 (draft), Line 23, "Enter the amount of Additional Medicare Tax
+          withheld, if any, reported on Form W-2, box 14a"

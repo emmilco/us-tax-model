@@ -1,0 +1,63 @@
+changes:
+  tax_year: 2026
+  form: f4562
+  entries:
+  - change: C-BUS-11
+    evidence:
+    - doc: f4562
+      page: 2
+      quote: 14a Special depreciation allowance for certain qualified property (other than listed property) under section
+        168(k)
+    - doc: f4562
+      page: 2
+      quote: Special depreciation allowance for certain specified plants bearing fruits and nuts under section 168(k)(5)
+    - doc: f4562
+      page: 2
+      quote: Special depreciation allowance for qualified reuse and recycle property under section 168(m)
+    - doc: f4562
+      page: 2
+      quote: Special depreciation allowance for certain qualified production property under section 168(n)
+    - doc: f4562
+      page: 3
+      quote: Total. Add amounts from line 12, lines 14a through 14d, lines 15 through 17, lines 19 and 20 in column (g), and
+        line 21
+    - doc: i1040sc
+      page: 3
+      quote: Form 4562-B to claim amortization that began in 2026
+    verified: draft
+    note: 'Lines 14b to 14d are not encoded: 14c (section 168(m)) and 14d (qualified production property) are refused by asset.screen,
+      and 14b (specified plants bearing fruits and nuts) is farm property reported on Schedule F, which the scope refuses.
+      Line 22 sums the same lines as before.'
+    operations:
+    - set_form:
+        field: note
+        from: The lines of one business's Form 4562, read from its Schedule C's totals over its vehicles and other property
+          (enclosing-entry references, spec 4.4); Part I is figured once for the return (s179). Parts II lines 15 and 16,
+          Part III Section C (ADS), Part V line 27 and Part VI are refused through the screens of the property.
+        to: The lines of one business's Form 4562, read from its Schedule C's totals over its vehicles and other property
+          (enclosing-entry references, spec 4.4); Part I is figured once for the return (s179). Part II lines 14b to 16, Part
+          III Section C (ADS), Part V line 27 and amortization (Form 4562-B) are refused through the screens of the property
+          and the scope of the return (specified plants bearing fruits and nuts, line 14b, are farm property, and Schedule
+          F is refused).
+    - set:
+        line: f4562.line14
+        field: printed
+        from: '14'
+        to: 14a
+    - set:
+        line: f4562.line14
+        field: label
+        from: Special depreciation allowance for qualified property (other than listed property) placed in service during
+          the tax year
+        to: Special depreciation allowance for certain qualified property (other than listed property) under section 168(k)
+    - set:
+        line: f4562.line22
+        field: label
+        from: Total. Add amounts from line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21
+        to: Total. Add amounts from line 12, lines 14a through 14d, lines 15 through 17, lines 19 and 20 in column (g), and
+          line 21
+    - set:
+        line: f4562.line22
+        field: cite.locator
+        from: Form 4562 (2025), line 22, "Enter here and on the appropriate lines of your return"
+        to: Form 4562 (2026), line 22, "Enter here and on the appropriate lines of your return"

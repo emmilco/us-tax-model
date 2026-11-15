@@ -1,0 +1,98 @@
+changes:
+  tax_year: 2026
+  form: scveh
+  entries:
+  - change: C-BUS-03
+    evidence:
+    - doc: i1040sc
+      page: 7
+      quote: Include on line 9 the business-use portion of expenses for gasoline, oil, repairs, insurance, license plates,
+        etc.
+    - doc: i1040sc
+      page: 7
+      quote: depreciation on line 13, vehicle loan interest on line 16b, rent or lease payments on line 20a, and personal
+        property taxes on your vehicle on line 23
+    - doc: i1040sc
+      page: 7
+      quote: Add to this amount your parking fees and tolls and enter the total on line 9.
+    - doc: i1040sc
+      page: 7
+      quote: You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that
+        vehicle.
+    - doc: i1040sc
+      page: 9
+      quote: enter on line 20a the business-use portion of your rental cost
+    - doc: i1040sc
+      page: 17
+      quote: If you converted your vehicle during the year from personal to business use (or vice versa)
+    verified: draft
+    note: Quotes and pages only. The cites that rest on p463 pp. 25-26 and i4562 p. 13 have no 2026 edition in the archive
+      and are left as they are.
+    operations:
+    - set:
+        line: scveh.line9_standard
+        field: cite.locator
+        from: p. 6, Line 9, "Add to this amount your parking fees and tolls; and Enter the total on line 9"
+        to: p. 7, Line 9, "Add to this amount your parking fees and tolls and enter the total on line 9."
+    - set:
+        line: scveh.operating
+        field: cite.locator
+        from: p. 7, Line 9, If you deduct actual expenses, "Include on line 9 the business portion of expenses for gasoline,
+          oil, repairs, insurance, license plates, etc."
+        to: p. 7, Line 9, If you deduct actual expenses, "Include on line 9 the business-use portion of expenses for gasoline,
+          oil, repairs, insurance, license plates, etc."
+    - set:
+        line: scveh.operating_business
+        field: cite.locator
+        from: p. 7, Line 9, "the business portion of expenses"
+        to: p. 7, Line 9, "the business-use portion of expenses"
+    - set:
+        line: scveh.is_actual_owned
+        field: cite.locator
+        from: p. 7, Line 9, "Show depreciation on line 13 and rent or lease payments on line 20a"
+        to: p. 7, Line 9, "depreciation on line 13, vehicle loan interest on line 16b, rent or lease payments on line 20a,
+          and personal property taxes on your vehicle on line 23"
+    - set:
+        line: scveh.lease
+        field: cite.locator
+        from: p. 8, Lines 20a and 20b, "enter on line 20a the business portion of your rental cost"
+        to: p. 9, Lines 20a and 20b, "enter on line 20a the business-use portion of your rental cost"
+    - set:
+        line: scveh.lease_smr_before
+        field: cite.locator
+        from: p. 6, Line 9, "You can't use actual expenses for a leased vehicle if you previously used the standard mileage
+          rate for that vehicle"; p. 15, Line 44b, "If you converted your vehicle during the year from personal to business
+          use (or vice versa)"; p463 pp. 25-26, Change from personal to business use, "you figure the percentage of business
+          use for the year as follows"
+        to: p. 7, Line 9, "You can't use actual expenses for a leased vehicle if you previously used the standard mileage
+          rate for that vehicle"; p. 17, Line 44b, "If you converted your vehicle during the year from personal to business
+          use (or vice versa)"; p463 pp. 25-26, Change from personal to business use, "you figure the percentage of business
+          use for the year as follows"
+    - set:
+        line: scveh.lease_business
+        field: cite.locator
+        from: p. 8, Lines 20a and 20b
+        to: p. 9, Lines 20a and 20b
+    - set:
+        line: scveh.lease_business
+        field: refuses
+        from:
+        - when: scveh.lease_smr_bad
+          form: Actual expenses on a leased vehicle after using the standard mileage rate for it in an earlier year, or
+            on a leased vehicle converted between personal and business use in 2025
+          remedy: You can't use actual expenses for a leased vehicle after using the standard mileage rate for it; use the
+            standard mileage rate for the rest of the lease. Actual expenses for a leased vehicle converted between personal
+            and business use in 2025 are outside this tool.
+          cite:
+            doc: i1040sc
+            locator: p. 6, Line 9; p. 15, Line 44b; p463 pp. 25-26, Change from personal to business use
+        to:
+        - when: scveh.lease_smr_bad
+          form: Actual expenses on a leased vehicle after using the standard mileage rate for it in an earlier year, or
+            on a leased vehicle converted between personal and business use in 2025
+          remedy: You can't use actual expenses for a leased vehicle after using the standard mileage rate for it; use the
+            standard mileage rate for the rest of the lease. Actual expenses for a leased vehicle converted between personal
+            and business use in 2025 are outside this tool.
+          cite:
+            doc: i1040sc
+            locator: p. 7, Line 9; p. 17, Line 44b; p463 pp. 25-26, Change from personal to business use

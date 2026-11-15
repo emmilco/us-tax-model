@@ -1,0 +1,318 @@
+changes:
+  tax_year: 2026
+  form: f8962
+  entries:
+  - change: C-PEOP-12
+    evidence:
+    - doc: f8962
+      page: 2
+      quote: Excess advance payment of PTC. If line 25 is greater than line 24, subtract line 24 from line 25. Enter the difference
+        here and on Schedule 2 (Form 1040), line 1a
+    - doc: f8962
+      page: 2
+      quote: 28 Reserved for future use
+    - doc: f8962
+      page: 2
+      quote: 29 Reserved for future use
+    - doc: plaw-119-21
+      page: 254
+      quote: Section 36B(f)(2) is amended by striking subparagraph (B).
+    - doc: rp-25-32
+      page: 5
+      quote: Accordingly, the inflation adjustment to § 36B(f)(2)(B) is removed from this revenue procedure.
+    verified: draft
+    note: 'Line 27 now goes to Schedule 2 line 1a, so s2.line1a reads f8962.line27 (changes/2026/s2.ptc.yaml, the Schedule
+      2 side of this entry). The parameters ptc.repay_200, ptc.repay_300 and ptc.repay_400 are no longer read and have no
+      2026 value (rp-25-32): the 2026 parameters drop them. The i8962 locators of the lines that stay wait for the 2026 Instructions
+      for Form 8962.'
+    operations:
+    - remove_line:
+        line: f8962.repay_200
+    - remove_line:
+        line: f8962.repay_300
+    - remove_line:
+        line: f8962.repay_400
+    - remove_line:
+        line: f8962.show_28
+    - remove_line:
+        line: f8962.line28
+    - remove_line:
+        line: f8962.line29
+    - set:
+        line: f8962.line27
+        field: label
+        from: Excess advance payment of PTC
+        to: Excess advance payment of PTC (to Schedule 2, line 1a)
+    - set:
+        line: f8962.line27
+        field: cite.locator
+        from: p. 1, Part III, line 27, "Excess advance payment of PTC. If line 25 is greater than line 24, subtract line 24
+          from line 25. Enter the difference here"
+        to: p. 2, Part III, line 27, "Excess advance payment of PTC. If line 25 is greater than line 24, subtract line 24
+          from line 25. Enter the difference here and on Schedule 2 (Form 1040), line 1a"
+  - change: C-PEOP-14
+    evidence:
+    - doc: f8962
+      page: 2
+      quote: Did you enter 401% on line 5? (See instructions if you entered less than 100%.)
+    - doc: f8962
+      page: 2
+      quote: Yes. You are not eligible to take the PTC. If advance payment of the PTC was made, see the instructions for how
+        to report your excess advance PTC repayment amount.
+    - doc: rp-25-25
+      page: 3
+      quote: At least 300% but not more than 400%
+    verified: draft
+    note: 'Line 5 is 401 when household income is more than 400% of the poverty line (percent_floor, cap 400). At 401 the
+      filer is not an applicable taxpayer: line 24 is zero (amb.2025.ptc_not_applicable, reading 1), so any advance payments
+      are repaid in full on line 27 (C-PEOP-12). How the 2026 Instructions for Form 8962 route that repayment, and the line
+      5 worksheet and line 6 text, wait for them. The table ptc_applicable_figure loses its rows above 400 in 2026 (rp-25-25
+      ends at ''not more than 400%''); line 7 is not shown at 401 (show_applicable reads applicable). The 2025 test of applicable
+      moves unchanged to the helper f8962.applicable_under_401, so that applicable''s guards are a Bool pair on line 6.'
+    operations:
+    - add_line:
+        after: f8962.line5
+        line:
+          id: f8962.line6
+          printed: '6'
+          label: 'Did you enter 401% on line 5? (household income above 400% of the federal poverty line: not eligible to
+            take the PTC)'
+          shown_when: f8962.any
+          type: Bool
+          expr:
+            op: test
+            gt:
+            - f8962.line5
+            - const: 400
+              type: Count
+          cite:
+            doc: f8962
+            locator: p. 2, Part I, line 6, "Did you enter 401% on line 5?" and "Yes. You are not eligible to take the PTC."
+    - add_line:
+        after: f8962.estimate_100
+        line:
+          id: f8962.applicable_under_401
+          printed: (helper)
+          label: Line 5 at least 100, or the Marketplace estimate exception (the applicable taxpayer test before line 6)
+          type: Bool
+          expr:
+            op: choose
+            alternatives:
+            - guard:
+                op: test
+                eq:
+                - f8962.income_100
+                - const: true
+              then: f8962.income_100
+            - guard:
+                op: test
+                eq:
+                - f8962.income_100
+                - const: false
+              then: f8962.estimate_exception
+          cite:
+            doc: i8962
+            locator: p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025";
+              p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100%
+              of the federal poverty line for your family size for 2025."
+    - set:
+        line: f8962.applicable
+        field: expr.alternatives
+        from:
+        - guard:
+            op: test
+            eq:
+            - f8962.income_100
+            - const: true
+          then: f8962.income_100
+        - guard:
+            op: test
+            eq:
+            - f8962.income_100
+            - const: false
+          then: f8962.estimate_exception
+        to:
+        - guard:
+            op: test
+            eq:
+            - f8962.line6
+            - const: true
+          then: f8962.no
+        - guard:
+            op: test
+            eq:
+            - f8962.line6
+            - const: false
+          then: f8962.applicable_under_401
+    - set:
+        line: f8962.applicable
+        field: label
+        from: You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)
+        to: You are an applicable taxpayer (line 6 is No, and line 5 at least 100 or the Marketplace estimate exception)
+  - change: C-PEOP-27
+    evidence:
+    - doc: plaw-119-21
+      page: 254
+      quote: Such term shall not include any plan enrolled in during a special enrollment period provided for by an Exchange
+    - doc: plaw-119-21
+      page: 254
+      quote: shall apply with respect to plan years beginning after December 31, 2025.
+    verified: final
+    note: 'Refused, as the change map says, until the 2026 Instructions for Form 8962 say how a filer knows the basis of a
+      special enrollment period. One question per return, a box of the mkt_premiums group (asked with the other Marketplace
+      refusals); a Yes refuses through f8962.other, whose refusal on f8962.line24 and line25 is told with that line''s remedy.
+      The remedy''s list of situations is not extended here: f8962.line24 holds the YAML anchor of the refusal list line 25
+      aliases, and rewriting that block at adoption would drop the anchor (BUG-0653). Who could answer No wrongly:
+      a filer who signed up in such a period without knowing its basis; the Marketplace states the period it grants. The interview
+      needs a coverage row for the refusal and an answer in the Marketplace persona at adoption.'
+    operations:
+    - add_line:
+        after: f8962.a_zero_paid
+        line:
+          id: f8962.sep_income
+          printed: (gate)
+          label: Someone on this return enrolled in a Marketplace plan during a special enrollment period offered on the basis
+            of expected household income, not a life event
+          type: Bool
+          expr:
+            op: input
+            source: In 2026, did anyone on this return enroll in a Marketplace plan during a special enrollment period that
+              the Marketplace offered because of their expected household income, and not because of a life event such as
+              a move, a birth, a marriage or the loss of other coverage?
+          cite:
+            doc: plaw-119-21
+            locator: p. 254, section 71304, "Such term shall not include any plan enrolled in during a special enrollment
+              period provided for by an Exchange", "on the basis of the relationship of the individual’s expected household
+              income to such a percentage of the poverty line" and "not in connection with the occurrence of an event or change
+              in circumstances specified by the Secretary of Health and Human Services for such purposes"
+    - set:
+        line: f8962.other
+        field: expr.any
+        from:
+        - op: test
+          eq:
+          - f8962.mec_job_enrolled_if_other_coverage
+          - const: true
+        - op: test
+          eq:
+          - f8962.mec_job_affordable_if_job_offer
+          - const: true
+        - op: test
+          eq:
+          - f8962.mec_government_if_other_coverage
+          - const: true
+        - op: test
+          eq:
+          - f8962.mec_other_if_other_coverage
+          - const: true
+        - op: test
+          eq:
+          - f8962.hra
+          - const: true
+        - op: test
+          eq:
+          - f8962.not_lawful
+          - const: true
+        - op: test
+          eq:
+          - f8962.incarcerated
+          - const: true
+        - op: test
+          eq:
+          - f8962.no_family
+          - const: true
+        - op: test
+          eq:
+          - f8962.medicaid_reversed
+          - const: true
+        - op: test
+          eq:
+          - f8962.unpaid
+          - const: true
+        - op: test
+          eq:
+          - f8962.a_zero_paid
+          - const: true
+        to:
+        - op: test
+          eq:
+          - f8962.mec_job_enrolled_if_other_coverage
+          - const: true
+        - op: test
+          eq:
+          - f8962.mec_job_affordable_if_job_offer
+          - const: true
+        - op: test
+          eq:
+          - f8962.mec_government_if_other_coverage
+          - const: true
+        - op: test
+          eq:
+          - f8962.mec_other_if_other_coverage
+          - const: true
+        - op: test
+          eq:
+          - f8962.hra
+          - const: true
+        - op: test
+          eq:
+          - f8962.not_lawful
+          - const: true
+        - op: test
+          eq:
+          - f8962.incarcerated
+          - const: true
+        - op: test
+          eq:
+          - f8962.no_family
+          - const: true
+        - op: test
+          eq:
+          - f8962.medicaid_reversed
+          - const: true
+        - op: test
+          eq:
+          - f8962.unpaid
+          - const: true
+        - op: test
+          eq:
+          - f8962.a_zero_paid
+          - const: true
+        - op: test
+          eq:
+          - f8962.sep_income
+          - const: true
+    - set:
+        line: f8962.other
+        field: label
+        from: Coverage or eligibility this tool does not reconcile (other minimum essential coverage, an HRA, unpaid premiums,
+          no tax family, incarceration)
+        to: Coverage or eligibility this tool does not reconcile (other minimum essential coverage, an HRA, unpaid premiums,
+          no tax family, incarceration, a plan enrolled in during an income-based special enrollment period)
+    - set_form:
+        field: note
+        from: Prepared when there is a Form 1095-A. Parts IV and V (allocation, year of marriage), other minimum essential
+          coverage and the coverage-family rules that go with it, coverage of someone not lawfully present, a VOID or replaced
+          Form 1095-A, coverage that began after the first day of a month, a refunded premium, QSEHRA and individual coverage
+          HRAs, unpaid premiums, advance payments for someone in no tax family, and a covered month with zero in column (b)
+          are refused; married filing separately is refused for the whole return.
+        to: Prepared when there is a Form 1095-A. Parts IV and V (allocation, year of marriage), other minimum essential coverage
+          and the coverage-family rules that go with it, coverage of someone not lawfully present, a VOID or replaced Form
+          1095-A, coverage that began after the first day of a month, a refunded premium, QSEHRA and individual coverage HRAs,
+          unpaid premiums, advance payments for someone in no tax family, a plan enrolled in during a special enrollment period
+          offered on the basis of expected household income, and a covered month with zero in column (b) are refused; married
+          filing separately is refused for the whole return.
+    - add_question:
+        input: f8962.sep_income
+        default: false
+        reason: 'Closed: the circumstance this question asks about does not apply unless the scenario says so.'
+        like: f8962.midmonth_start
+        entry:
+          seq: 24
+          group: mkt_premiums
+          tick: Signed up outside open enrollment only because of low income
+          help: That is a special sign-up period the Marketplace offers for income alone, with no move, birth, marriage, loss
+            of other coverage or other life change. A return with this is outside what this tool prepares; a Yes ends the
+            interview here.
+          prompt: In 2026, did anyone on this return sign up for a Marketplace plan outside open enrollment only because their
+            income was low?
