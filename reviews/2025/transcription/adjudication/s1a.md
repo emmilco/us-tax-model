@@ -256,3 +256,32 @@ gives $0. All the candidate’s other value differences are amounts printed in P
 Findings: 2 — lines 5 and 14b (one defect: the Schedule C tips/overtime screen `s1.sc_1a` is reached only under the
 employee-only `s1a.tips` / `s1a.overtime` gates, so those amounts are defaulted to $0 and `sc.tips_ot` is never asked);
 see `.transcription/proposed/s1a.findings.md`. Project lines otherwise unchanged.
+
+## Landing round (2026-11-14)
+
+The interview redraft's line-scoped Claude review (pass 83265de2d095) of lines 4b, 5, 14b and 36b, ruled by the
+land3-adj5 lane against `.transcription/triage/2025/s1a.json` (executable-triage-v2; 2,597 comparisons; not rebuilt).
+The redraft replaced age questions by `person.birth_year` with parameterized cut-offs. Rulings in
+`/tmp/land3-adj5/s1a.json`, applied with rule.py.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | 4b | representation | 2,470/2,597 agree; no value; project-unknown (Part II parents), project-refuses 6 (Form 4137, `s2.other`) | i1040gi p. 104, line 4b, "If Form 4137 is not filed, enter -0-" | Both 0 wherever both compute; the project refuses Form 4137 here. |
+| claude | transcription | 5 | representation | 2,481/2,597 agree; no value; refusals on refused/incomplete returns only | i1040gi p. 101, "Fill out Schedule 1-A, Part II, only if"; p. 104, line 5 | Both 0 and both refuse Schedule C tips (`s1.sc_1a`); the reply refuses also where Part II does not apply. |
+| claude | transcription | 14b | representation | 2,487/2,597 agree; no value; refusals on refused/incomplete returns only | i1040gi, "Fill out Schedule 1-A, Part III, only if" | As line 5, for overtime on Form 1099. |
+| claude | transcription | 36b | representation | 2,576/2,597 agree; no value; candidate-unknown 9 (`person.died_at_64` read for every spouse), project-refuses 11 (`s1a.spouse_senior_decedent`) | i1040gi p. 110, Part V, "died in 2025 before reaching age 65, then the taxpayer doesn't qualify" | The reply's 0 for that decedent matches the text; the project refuses the case instead (a scope choice, not a wrong value). |
+
+Counts: 4 representation. Findings: none. Observation: line 36b (and 36a by the same gate) refuses a spouse who
+died before reaching 65, a case the source answers with 0; computing it would replace a refusal by a completed return.
+
+## Landing round (2026-11-14), render
+
+Lane land3-adj7 (claude-opus-5-5, judgment). Open lines of the Claude render log `.transcription/logs/2025/render/s1a.md`, ruled on the rendered English (`rendered/2025/s1a.md`), the form YAML and the cited source; the deepseek log is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | 36b | scope | MISMATCH; form YAML (household.roster_ok) | Schedule 1-A line 36b; i1040gi p. 110 | A spouse entry exists only on a joint return; any other roster is refused at household.roster_bad. Same as earlier rounds. |
+
+Counts: claude render: scope 1.
+
+Findings: none. No line left open.

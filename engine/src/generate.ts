@@ -13,6 +13,11 @@ import type { CanonicalData, FormDoc, Inputs, Line } from "./types.js";
 import { YEAR } from "./year.js";
 import { cohereSpouseHsa } from "./hsa-calendar.js";
 
+// The questions the vehicle screen and the equipment screen were taken apart into (scveh.screen and asset.screen are
+// now derived from them). A generated return answers each the way that refuses nothing: no, and yes to having records.
+const VEHICLE_SCREEN = ["records", "got_other", "acquired_before_bonus_date", "used_before", "bonus_excluded", "prior_bonus", "prior_smr", "prior_low_use", "converted", "disposed", "basis_changed", "short_year", "for_hire", "investment", "method_other", "others_use", "leasing", "exempt_use", "qbu_low"];
+const ASSET_SCREEN = ["kind_excluded", "software", "software_spread", "industry", "industry_item", "long_production", "got_other", "acquired_before_bonus_date", "used_before", "ended_this_year", "basis_changed", "use_changed", "short_year", "method_other", "ads_required", "outside_use", "qbu_low"];
+
 const WAGE_BASE = 17_610_000; // Social Security wage base, cents
 const ADDL_MEDICARE_START = 20_000_000;
 
@@ -74,11 +79,12 @@ const BOOL_TRUE_PERCENT: Record<string, number> = {
   "div.basis_reconciled": 95,
   "ftc.all_passive": 90, "ftc.statements": 90, "ftc.eligible": 90, "ftc.elect": 90,
   "sa.elect_itemize": 10,
-  "person[taxpayer].born_before_2001": 85, "eic.us_home": 95,
+  "person[taxpayer].eic_age25": 85, "eic.us_home": 95,
   "s1a.tips": 20, "s1a.overtime": 20, "s1a.carloan": 15, "person[taxpayer].died_before_65": 2,
   // Form 5695: each part's screen is sometimes yes; once inside, its eligibility answers and QMID
   // attestations are usually yes, so the parts are figured rather than mostly zero or refused.
-  "f5695.part1_any": 15, "f5695.part2_any": 15,
+  // The two answers drawn stand for the form's two parts (buildInputs spreads them over the kinds of property).
+  "f5695.any": 15, "f5695.solar": 15,
   "f5695.line17a": 70, "f5695.line17b": 95, "f5695.line17c": 95, "f5695.line21a": 70, "f5695.line21b": 95,
   "f5695.qmid_doors": 95, "f5695.qmid_windows": 95, "f5695.qmid_ac": 95, "f5695.qmid_wh": 95,
   "f5695.qmid_furnace": 95, "f5695.qmid_enabling": 95, "f5695.qmid_hp": 95,
@@ -91,25 +97,43 @@ const DEFAULT_TRUE_PERCENT = 10;
 // income tax refund and no other recovery); line 8 (gambling, Alaska Permanent Fund dividends, jury duty pay, prizes,
 // hobby income, scholarships and its screen), line 24a and gambling losses on Schedule A line 16. The Form 5471 screen
 // (no), and the dividends and foreign questions (set from the answers they gate, in buildInputs).
+const F5695_PART1_KINDS = ["solar", "solar_water", "wind", "geothermal"];
+const F5695_PART2_KINDS = ["insulation", "doors", "windows", "panel", "audit", "heat_pump", "hp_water_heater", "central_ac", "water_heater", "furnace", "biomass"];
 const NOT_DRAWN = new Set([
-  "refund.received", "refund.box8", "refund.not_2024", "refund.itemized", "refund.sales",
-  "refund.exc_tax", "refund.exc_who", "refund.line5d_2024", "refund.line5e_2024", "refund.line17_2024",
+  "refund.any", "refund.received", "refund.box8", "refund.other_year", "refund.paid_other_time", "refund.itemized", "refund.sales",
+  "refund.exc_tax", "refund.exc_who", "refund.line5d_prior_year", "refund.line5e_prior_year", "refund.line17_prior_year",
   "refund.mfs_spouse_itemized", "refund.you_born", "refund.you_blind", "refund.spouse_born", "refund.spouse_blind",
-  "s1.line8_other", "s1.gambling_winnings", "s1.gambling_pro", "s1.line8g", "s1.line8h", "s1.line8i", "s1.line8j", "s1.line8r",
-  "s1.jury_to_employer", "sa.gambling_losses", "div.any", "sb.form5471", "sb.foreign_any",
+  "s1.gambling_winnings", "s1.gambling_pro", "s1.alaska_dividend", "s1.jury_pay", "s1.prizes", "s1.hobby_income", "s1.scholarship_taxable",
+  // The yes or no parents of those amounts and of alimony, and the items the Schedule 1 line 8 screen was taken apart into.
+  "s1.winnings_any", "s1.alaska_any", "s1.jury_any", "s1.hobby_any", "s1.scholarship_any", "s1.alimony_any", "s1.uc_any",
+  "s1.ltc_payout", "s1.stock_options", "s1.olympic", "s1.nqdc_pension", "s1.inmate_wages", "s1.digital_income",
+  // The items the Schedule 2 screens were taken apart into, except one each (s2.amt_owed, s2.other_tax, and
+  // f8959.territory_w2 for Form 8959), which are drawn where the screens were.
+  "s2.options_any", "s2.iso", "s2.iso_vested", "s2.w2_marks", "s2.household_help", "s2.household_employee", "s2.mortgage_subsidy", "s2.hsa_testing",
+  "s2.credit_recapture", "s2.lookback",
+  "s1.jury_to_employer", "sa.gambling_losses", "div.any", "div.other_boxes", "sb.nominee", "sb.bonds_any", "sb.form5471",
+  "sb.account_any", "sb.asset_any", "sb.trust_any", "sb.company_any", "sb.territory_any",
+  "sa.state_tax_other", "sa.property_tax_leave_out",
+  "sa.mortgage_unreported", "sa.mortgage_over_limit", "sa.mortgage_other_use", "sa.sales_tax_wish", "sa.foreign_tax_deduct", "sa.estate_tax_income", "sa.bond_premium", "sa.debt_instrument_loss", "sa.pension_unrecovered", "sa.impairment_work",
   // The credit questions asked of everyone, and the questions beneath them: none applies, except the tax credit
   // bond credit, which is drawn (rarely yes) so that some returns are refused for a credit this tool does not prepare.
   "s3.adoption_any", "s3.adoption", "s3.adoption_earlier", "s3.adoption_us", "ftc.carryover", "s3.ev", "s3.ev_dealer",
   "s3.ev_bought", "s3.ev_credit", "s3.ev_equipment", "s3.kerosene", "s3.kerosene_credit", "s3.prior_other_forms", "s3.prior_amt",
   "s3.prior_forms", "s3.farmland", "s3.farmland_deferral", "s3.foreign_any", "s3.section965", "s3.section960c", "s3.virgin_islands",
   "s3.repaid_income", "s3.disability_retired", "s3.elderly_credit", "s3.mcc",
+  // Form 5695: the 2024 carryforward sits beneath s3.prior_other_forms, which is not drawn; the kinds of property are
+  // set in buildInputs from the two answers that are drawn (f5695.any and f5695.solar, in the places of the two part
+  // screens they replaced, so the random stream is the one it was).
+  "f5695.carry", ...F5695_PART1_KINDS.filter((k) => k !== "solar").map((k) => `f5695.${k}`), ...F5695_PART2_KINDS.map((k) => `f5695.${k}`),
+  // Student loan interest: the parent is set from the amount in buildInputs, and no generated return has an amount to leave out.
+  "sli.any", "sli.unqualified_any", "sli.unqualified", "sli.assisted_any", "sli.assisted",
 ]);
 
 // Root inputs that draw nothing: they keep their default (false or zero), so the random stream does not
 // depend on them. The IRA deduction's: with no traditional IRA contribution amount, none of them is reached.
 const UNDRAWN = new Set([
-  "person[taxpayer].ira_trad", "person[taxpayer].ira_excess", "person[taxpayer].ira_age50", "person[taxpayer].ira_work_plan",
-  "person[taxpayer].ira_basis", "person[taxpayer].ira_basis_adjusted", "person[taxpayer].ira_dist", "ira.special", "ira.se_capital", "ira.deduct_less",
+  "person[taxpayer].ira_trad", "person[taxpayer].ira_work_plan",
+  "person[taxpayer].ira_basis", "person[taxpayer].ira_basis_adjusted", "person[taxpayer].ira_dist", "ira.deferred_comp", "ira.fellowship", "ira.care_payments", "ira.se_capital", "ira.deduct_less",
 ]);
 
 // Money inputs the generator models with structure; every other declared
@@ -123,16 +147,17 @@ const EXTRA_NONZERO_PERCENT: Record<string, number> = Object.fromEntries(
 
 const MODELLED = new Set([
   "f1040.line3a", "sb.ordinary_dividends", "qbi.dividends", "sd.distributions", "div.box2b", "div.box2d",
-  "sa.line1", "sa.line5a", "sa.line5b", "sa.line8a", "sa.line11", "f4952.line1", "f4952.line4g", "ftc.taxes",
+  "sa.line1", "sa.line5a", "sa.line5b", "sa.mortgage_interest", "sa.line11", "f4952.line1", "f4952.line4g", "ftc.taxes",
   "s1.uc_paid", "s1.uc_repaid", "person[taxpayer].educator_expenses", `${HSA}.line2`, `${HSA}.line9`, `${HSA}.months_eligible`, `${HSA}.months_family`, "sli.interest",
   "person[taxpayer].sav_roth",
 ]);
 
 // Form 5329's per-person answers and Form 8889's box 1 answer (Stage 21): set by `putEarly` after every other draw, so
 // neither the random stream nor the derived streams (which hash the answers given before them) see them. The foreign
-// question is likewise left unset until it is answered from its screens at the end of buildInputs.
-const EARLY_ROOTS = ["x_other", "x_prior09", "x_births", "x_hsa_value"].map((k) => `person[taxpayer].${k}`).concat(`${HSA}.employer_in_box1`);
-const EARLY_SET = new Set([...EARLY_ROOTS, "sb.foreign_any"]);
+// questions are likewise left unset until they are answered from their screens at the end of buildInputs.
+const FOREIGN_PARENTS = ["sb.account_any", "sb.asset_any", "sb.trust_any", "sb.company_any", "sb.territory_any"];
+const EARLY_ROOTS = ["x_prior09", "x_births", "x_hsa_value"].map((k) => `person[taxpayer].${k}`).concat(`${HSA}.employer_in_box1`);
+const EARLY_SET = new Set([...EARLY_ROOTS, ...FOREIGN_PARENTS]);
 // Form 8889's questions about the account, the coverage checks, the testing period and the distributions (the questions
 // its one screen was taken apart into). None is drawn. Each Form 8889 keeps one drawn flag under HSA_FLAG, a key of no
 // input that stands where the screen's answer stood, so the random stream and the derived streams (which hash the
@@ -150,19 +175,31 @@ const HSA_LATE_ROOTS = new Set(HSA_LATE.map((k) => `${HSA}.${k}`));
 // disallowance; a community property state; a registered domestic partnership; a spouse's death in 2025; a marriage
 // ended in 2025 in a community property state; the qualifying surviving spouse tests (met, so a drawn qss status stays
 // valid); the charitable-gifts and investment-interest gates (yes when a drawn answer they gate is not none).
+// A person's birth-date facts are drawn as working answers under these names (they are not inputs) and turned into
+// the one birth year, with the stated answers a year on a cut needs, by putBirthYear at the end of buildInputs.
+const BIRTH_DRAWN = ["age65", "eic_age25", "died_before_65", "sav_born"].map((k) => `person[taxpayer].${k}`);
+const BIRTH_WORKING = ["age65", "eic_under65", "eic_age25", "died_before_65", "sav_born", "under16", "edu_over18", "edu_age24", "ira_age50", "hsa_age55", "simple_age_w"];
+const BIRTH_SET = ["birth_year", "born_jan1", "under16_at_year_end", "age50_at_year_end", "age55_at_year_end", "simple_age_at_year_end", "died_at_64"].map((k) => `person[taxpayer].${k}`);
+// The questions person.x_other and person.ira_excess were taken apart into, and the IRA parent: none is drawn (no
+// generated person has one of the situations); putPersonFacts sets each for every person, the IRA parent from the
+// contributions drawn.
+const PERSON_NO = ["x_edu_account", "x_edu_taxable", "x_edu_excess", "x_archer_excess", "x_ira_prior_excess", "x_hsa_prior_excess",
+  "inherited_account", "rmd_missed", "ira_extra_left", "ira_recharacterized"];
 const FIXED = new Set([
+  ...PERSON_NO.map((k) => `person[taxpayer].${k}`), "person[taxpayer].ira_owner",
   "s1.alimony", "s1.alimony_received", "s1.alimony_paid", "s1.alimony_unsupported", "s1.cod_any", "s1.cod_amount", "s1.cod_unsupported",
   `${HSA}.line14a`, `${HSA}.rollover`, `${HSA}.medical`, `${HSA}.line17a`, `${HSA}.subject_part`,
-  "household.married", "household.credit_disallowed", "household.community_property", "household.rdp", "household.spouse_died_2025",
-  "household.cp_married", "household.qss_eligible", "eic.died_2025",
-  "person[taxpayer].eic_ssn", "person[taxpayer].under16",
+  "household.married_dec31", "household.ever_married", "household.credit_disallowed", "household.community_property", "household.rdp", "household.spouse_died_this_year",
+  "household.cp_married", "household.qss_eligible", "eic.died_this_year",
+  "person[taxpayer].eic_ssn", ...BIRTH_SET,
   "clcw.spouse_screen", "clcw.prior_11", "clcw.prior_14", "clcw.prior_sd7", "clcw.prior_sd15", "clcw.prior_sd21",
   "f4952.prior_7", "f8960.prior_2i", "sa.gifts", "f4952.has_interest",
-  "f8962.alloc", "f8962.married_in_2025", "f8962.other", "f8962.premium_adjust", "f8962.same_state_counted", "f8962.estimate_100", "f8962.alien_below", "f8962.fpl_table",
+  "sa.home_owner", "sa.home_other", "sa.state_tax_any", "sa.state_tax_other_any", "sa.medical_any", "sa.medical_premiums", "sa.personal_property_tax_any", "sa.gift_carryover", "sa.property_tax_other_any",
+  "f8962.shared_policy", "f8962.divorced_enrolled", "f8962.married_this_year", "f8962.other_coverage", "f8962.mec_job_enrolled", "f8962.job_offer", "f8962.mec_job_affordable", "f8962.mec_government", "f8962.mec_other", "f8962.hra", "f8962.not_lawful", "f8962.incarcerated", "f8962.no_family", "f8962.medicaid_reversed", "f8962.unpaid", "f8962.a_zero_paid", "f8962.midmonth_start", "f8962.premium_refunded", "f8962.same_state_counted", "f8962.estimate_100", "f8962.alien_below", "f8962.fpl_table",
   "f8863.paid", "f8863.ban",
   ...EARLY_ROOTS, ...HSA_LATE_ROOTS,
-  ...["", "_1098t", "_inst", "_mat", "_a2025", "_a2026", "_refunds", "_over", "_line23", "_line24", "_line25", "_line26", "_ein",
-    "_born_2007", "_born_2002", "_fulltime", "_half_support", "_parent"].map((k) => `person[taxpayer].edu${k}`),
+  ...["", "_1098t", "_inst", "_mat", "_a_this_year", "_a_next_year", "_refunds", "_over", "_line23", "_line24", "_line25", "_line26", "_ein",
+    "_over18", "_age24", "_fulltime", "_half_support", "_parent"].map((k) => `person[taxpayer].edu${k}`),
 ]);
 
 interface Employer { box1: number; box2pct: number; box7: number; over: number; deferral: number }
@@ -173,6 +210,12 @@ interface Household { taxpayer_tin: boolean; taxpayer_work_ssn: boolean; home_co
 interface Distribution { account: string; code: string; box1: number; box5: number; rollover: number; special: boolean; annuity: boolean; cost: number; used_last_year: boolean; last_line4: number; joint_life: boolean; age: number; combined_age: number; months: number; recovered: number; savExcluded: boolean }
 
 interface TipJob { qualified: boolean; amount: number }
+// A tip job's answers: every tip was received in a listed occupation, and a job that does not qualify in full is one
+// with tips from other work as well (the mixed-tips refusal).
+function putTipJob(inputs: Record<string, unknown>, key: string, t: TipJob): void {
+  inputs[`${key}.listed`] = true; inputs[`${key}.other_work`] = !t.qualified; inputs[`${key}.charged`] = false;
+  inputs[`${key}.unlawful`] = false; inputs[`${key}.tips`] = t.amount;
+}
 interface OvertimeJob { flsa: boolean; special: boolean; method: string; statement: number }
 interface CarLoan { kind: string; requirements: boolean; vehicle: boolean; interest: number; mixed: boolean; financed: number; nonqualifying: number; down: number; refiBalance: number; refiWhole: boolean }
 interface ScheduleOneA { tips: TipJob[]; overtime: OvertimeJob[]; loans: CarLoan[] }
@@ -279,6 +322,8 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
       [`${E}.line35`]: 0, [`${E}.line36`]: b.inventory ? b.purchases : 0, [`${E}.line37`]: 0, [`${E}.line38`]: 0, [`${E}.line39`]: 0,
       [`${E}.line41`]: b.inventory ? Math.min(b.endInv, b.purchases) : 0,
       [`${E}.ho_uses`]: b.home, [`${E}.hi_uses`]: b.health,
+      // The three parents over the expense amounts are answered yes, so every amount below is read.
+      [`${E}.employees`]: true, [`${E}.goods`]: true, [`${E}.travel_meals`]: true,
     });
     SC_EXPENSES.forEach((k, j) => { inputs[`${E}.${k}`] = b.expenses[j]!; });
     // Every field of the entry gets a value, as every root input does; the home office and health insurance
@@ -296,8 +341,8 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
       const s179 = method === "actual" && v.owned && v.year === YEAR ? Math.min(v.s179, v.cost) : 0;
       Object.assign(inputs, {
         [`${V}.method`]: method, [`${V}.owned`]: v.owned, [`${V}.placed_date`]: v.year, [`${V}.miles_business`]: v.business,
-        [`${V}.miles_commuting`]: v.commuting, [`${V}.miles_other`]: v.other, [`${V}.parking`]: v.parking, [`${V}.smr_ok`]: true, [`${V}.lease_smr_before`]: false,
-        [`${V}.operating`]: v.operating, [`${V}.employee_use`]: false, [`${V}.lease`]: v.lease, [`${V}.placed`]: `y${v.year}`, [`${V}.screen`]: false,
+        [`${V}.miles_commuting`]: v.commuting, [`${V}.miles_other`]: v.other, [`${V}.parking`]: v.parking, [`${V}.smr_always`]: true, [`${V}.smr_first`]: false, [`${V}.fleet`]: false, [`${V}.lease_smr_before`]: false,
+        [`${V}.operating`]: v.operating, [`${V}.employee_use`]: false, [`${V}.lease`]: v.lease, [`${V}.placed`]: `y${v.year}`, ...Object.fromEntries(VEHICLE_SCREEN.map((c) => [`${V}.${c}`, c === "records"])),
         [`${V}.cost`]: v.cost, [`${V}.passenger`]: v.passenger, [`${V}.suv`]: false, [`${V}.s179_elect`]: s179,
         [`${V}.after_jan19`]: v.afterJan19, [`${V}.bonus_choice`]: v.year === YEAR ? v.bonus : "none", [`${V}.bonus_same`]: true,
         [`${V}.prior_179`]: v.year === YEAR ? 0 : Math.min(v.prior179, v.cost), [`${V}.quarter`]: v.quarter, [`${V}.prior_conv`]: v.priorConv,
@@ -309,7 +354,7 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
       const now = a.year === YEAR;
       const businessCost = Math.floor((a.cost * a.pct) / 100);
       Object.assign(inputs, {
-        [`${A}.class`]: classes[a.cls % Math.max(1, classes.length)], [`${A}.screen`]: false, [`${A}.placed`]: `y${a.year}`,
+        [`${A}.class`]: classes[a.cls % Math.max(1, classes.length)], ...Object.fromEntries(ASSET_SCREEN.map((c) => [`${A}.${c}`, false])), [`${A}.placed`]: `y${a.year}`,
         [`${A}.cost`]: a.cost, [`${A}.pct`]: a.listed ? Math.max(a.pct, 51) : a.pct, [`${A}.listed`]: a.listed, [`${A}.quarter`]: a.quarter,
         [`${A}.s179`]: now && a.pct > 50 ? Math.min(a.s179, businessCost) : 0, [`${A}.not179`]: false, [`${A}.after_jan19`]: a.afterJan19,
         [`${A}.bonus_choice`]: a.bonus, [`${A}.bonus_same`]: true, [`${A}.prior_conv`]: a.priorConv,
@@ -326,7 +371,7 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
     // and amounts for a plan the person lacks would trip that plan's limits on lines nothing reads.
     const sep = plan.kind === "sep", simple = plan.kind === "simple";
     Object.assign(inputs, { [`${P}.sep_rate`]: plan.sepRate, [`${P}.sep_contrib`]: sep ? plan.sepContrib : 0,
-      [`${P}.simple_deferral`]: simple ? plan.deferral : 0, [`${P}.simple_age`]: plan.age, [`${P}.simple_kind`]: plan.formula,
+      [`${P}.simple_deferral`]: simple ? plan.deferral : 0, ...(simple ? { [`${P}.simple_age_w`]: plan.age } : {}), [`${P}.simple_kind`]: plan.formula,
       [`${P}.simple_employer`]: simple ? plan.employer : 0 });
   }
 }
@@ -334,6 +379,7 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
 export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
   const { roots } = declaredInputs(data);
   const boolKeys = [...roots].filter(([k, l]) => l.type === "Bool" && !NOT_DRAWN.has(k) && !FIXED.has(k) && !UNDRAWN.has(k)).map(([k]) => k);
+  boolKeys.push(...BIRTH_DRAWN);
   // The Form 8889 flag is drawn where the screen was: first of the form's yes/no answers.
   boolKeys.splice(boolKeys.findIndex((k) => k.startsWith(`${HSA}.`)), 0, `${HSA}.${HSA_FLAG}`);
   const extraKeys = [...roots].filter(([k, l]) => l.type !== "Bool" && !l.type.startsWith("Enum(") && !MODELLED.has(k) && !NOT_DRAWN.has(k) && !FIXED.has(k) && !UNDRAWN.has(k)).map(([k]) => k);
@@ -459,7 +505,13 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
  * every one is Yes. */
 export interface Screen { entry: RegExp | null; when: string[]; amounts: (string | RegExp)[] }
 
-const F5695_PART1 = ["line1", "line2", "line3", "line4", "battery_cost", "line12"].map((k) => `f5695.${k}`);
+/** The Form 5695 kinds of property, each with the costs asked only when it was installed. */
+const F5695_KINDS: Record<string, string[]> = {
+  solar: ["line1"], solar_water: ["line2"], wind: ["line3"], geothermal: ["line4"], insulation: ["line18a"],
+  doors: ["line19a", "line19d_i", "line19d_ii", "line19e"], windows: ["line20a_i", "line20a_ii", "line20a_iii", "line20a_iv", "line20b"],
+  heat_pump: ["line29a", "line29b"], hp_water_heater: ["line29c", "line29d"], central_ac: ["line22a", "line22b"],
+  water_heater: ["line23a_i", "line23a_ii", "line23b"], furnace: ["line24a", "line24b"], biomass: ["line29e", "line29f"],
+};
 const F5695_SEC_A = ["line18a", "line19a", "line19d_i", "line19d_ii", "line19e", "line20a_i", "line20a_ii", "line20a_iii", "line20a_iv", "line20b"].map((k) => `f5695.${k}`);
 const F5695_SEC_B = ["line22a", "line22b", "line23a_i", "line23a_ii", "line23b", "line24a", "line24b", "line25c", "line29a", "line29b", "line29c", "line29d", "line29e", "line29f"].map((k) => `f5695.${k}`);
 const W2 = /^(?:.*\.)?w2\[[^\]]+\]$/;
@@ -468,15 +520,15 @@ const W2 = /^(?:.*\.)?w2\[[^\]]+\]$/;
  * zeroes those behind a No, so a generated return never answers a screen No while carrying its amounts (the
  * interview never asks them), while every value drawn is drawn as it would be without the zeroing. */
 export const SCREENS: Screen[] = [
-  { entry: null, when: ["f5695.part1_any"], amounts: F5695_PART1 },
-  { entry: null, when: ["f5695.line5a"], amounts: ["f5695.battery_cost"] },
-  { entry: null, when: ["f5695.part2_any"], amounts: [...F5695_SEC_A, ...F5695_SEC_B, "f5695.line26b"] },
+  ...Object.entries(F5695_KINDS).map(([kind, amounts]) => ({ entry: null, when: ["f5695.any", `f5695.${kind}`], amounts: amounts.map((k) => `f5695.${k}`) })),
+  { entry: null, when: ["f5695.any", "f5695.line5a"], amounts: ["f5695.battery_cost"] },
+  { entry: null, when: ["s3.prior_other_forms", "f5695.carry"], amounts: ["f5695.line12"] },
   { entry: null, when: ["f5695.line17a", "f5695.line17b", "f5695.line17c"], amounts: F5695_SEC_A },
   { entry: null, when: ["f5695.line21a", "f5695.line21b"], amounts: F5695_SEC_B },
-  { entry: null, when: ["f5695.line25a"], amounts: ["f5695.line25c"] },
-  { entry: null, when: ["f5695.line26a"], amounts: ["f5695.line26b"] },
+  { entry: null, when: ["f5695.any", "f5695.panel", "f5695.line25a"], amounts: ["f5695.line25c"] },
+  { entry: null, when: ["f5695.any", "f5695.audit", "f5695.line26a"], amounts: ["f5695.line26b"] },
   { entry: null, when: ["f2441.care"], amounts: [/^dependent\[[^\]]+\]\.dc_paid$/] },
-  { entry: null, when: ["f2441.benefits"], amounts: ["f2441.line13", "f2441.line14", "f2441.paid_2026", "f2441.plan_max", /\.w2\[[^\]]+\]\.box10(?:_wages)?$/] },
+  { entry: null, when: ["f2441.benefits"], amounts: ["f2441.line13", "f2441.line14", "f2441.other_care_expenses", "f2441.plan_max", /\.w2\[[^\]]+\]\.box10(?:_wages)?$/] },
   { entry: W2, when: ["box12_any"], amounts: ["box12_d", "box12_e", "box12_f", "box12_g", "box12_h", "box12_s", "box12_aa", "box12_bb", "box12_ee", "g_elective"] },
   { entry: /^person\[[^\]]+\]\.retirement\[[^\]]+\]$/, when: ["annuity"], amounts: ["cost", "recovered", "last_line4"] },
   { entry: /^person\[[^\]]+\]\.retirement\[[^\]]+\]$/, when: ["used_last_year"], amounts: ["last_line4"] },
@@ -523,8 +575,14 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   // generated returns compute all the way through; the rest exercise gates.
   for (const [key, v] of Object.entries(s.flags)) inputs[key] = s.clean ? (BOOL_TRUE_PERCENT[key] ?? 0) >= 50 : v;
   for (const [key, v] of Object.entries(s.extras)) inputs[key] = s.clean ? 0 : v;
+  // Form 5695: the answer drawn for f5695.any stands for Part I and the one drawn for f5695.solar for Part II, as the
+  // two part screens did; every kind of a part drawn Yes was installed, so each of its costs is asked.
+  const energy1 = inputs["f5695.any"] === true, energy2 = inputs["f5695.solar"] === true;
+  inputs["f5695.any"] = energy1 || energy2;
+  for (const k of F5695_PART1_KINDS) inputs[`f5695.${k}`] = energy1;
+  for (const k of F5695_PART2_KINDS) inputs[`f5695.${k}`] = energy2;
   // The EIC's birth-date question agrees with the age-65 answer: no generated filer is born on January 1, 1961.
-  inputs["person[taxpayer].born_after_1960"] = inputs["person[taxpayer].age65"] !== true;
+  inputs["person[taxpayer].eic_under65"] = inputs["person[taxpayer].age65"] !== true;
   inputs["f1040.status"] = s.status;
   // An investor has no wages and only qualified dividends and gains, which is
   // the only way the worksheets' upper skip rules and ceilings are reached. A
@@ -537,6 +595,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["person[taxpayer].role"] = "taxpayer";
   inputs["$f8889@person[taxpayer]"] = ["hsa"];
   inputs[`${HSA}.coverage_year`] = "changed";
+  inputs["qbi.prior_form"] = false;
   inputs["qbi.carryforward"] = 0;
   putBusinesses(data, inputs, "person[taxpayer]", s.profile === "investor" || s.profile === "retiree" ? [] : s.businesses, s.plan);
   inputs["person[taxpayer].rrta"] = s.rrta;
@@ -599,7 +658,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   });
 
   inputs["sa.line1"] = s.medical; inputs["sa.line5a"] = s.saltIncome; inputs["sa.line5b"] = s.saltRe;
-  inputs["sa.line8a"] = s.mortgage; inputs["sa.line11"] = s.cashGifts;
+  inputs["sa.mortgage_interest"] = s.mortgage; inputs["sa.line11"] = s.cashGifts;
   inputs["$gift"] = s.gifts.map((_, i) => `item_${String.fromCharCode(97 + i)}`);
   s.gifts.forEach((g, i) => { for (const [k, v] of Object.entries(g)) inputs[`gift[item_${String.fromCharCode(97 + i)}].${k}`] = v; });
   inputs["$dependent"] = s.dependents.map((_, i) => `dep_${String.fromCharCode(97 + i)}`);
@@ -612,6 +671,15 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     inputs[`${key}.spouse_relative`] = false;
     inputs[`${key}.qr_all_year`] = d.months === 12;
     inputs[`${key}.absence_no_return`] = false;
+    // The plain parents of the dependent tests follow the drawn facts, so the stream and every value are unchanged: a
+    // parent is Yes wherever the answer beneath it is, and a plain support answer agrees with the full test's.
+    inputs[`${key}.lived_all_year`] = d.months === 12;
+    inputs[`${key}.ever_married`] = d.married || d.joint_return || d.age > 30;
+    inputs[`${key}.parents_apart`] = d.divorced_rule || d.age % 3 === 0;
+    inputs[`${key}.own_money`] = d.self_support || d.age >= 16;
+    inputs[`${key}.self_support_view`] = d.age % 2 === 0 ? "unsure" : d.self_support ? "over_half" : "under_half";
+    inputs[`${key}.citizen_ssn`] = d.citizen && d.tin && d.work_ssn && d.eic_ssn && d.age % 2 === 1;
+    inputs[`${key}.supported_view`] = d.age % 2 === 0 ? "unsure" : d.supported ? "over_half" : "under_half";
   });
   // Form 2441, derived from the generated facts so the random stream is unchanged: a child turning 13 is under 13
   // for part of the year, a permanently and totally disabled person cannot care for themselves, and the expenses vary
@@ -624,17 +692,18 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["$oi8z"] = s.oi8z.map((_, i) => `item_${String.fromCharCode(97 + i)}`);
   s.oi8z.forEach((o, i) => { inputs[`oi8z[item_${String.fromCharCode(97 + i)}].kind`] = o.kind; inputs[`oi8z[item_${String.fromCharCode(97 + i)}].amount`] = o.amount; });
   Object.assign(inputs, { "dcprov[prov_a].tin_kind": "tin", "dcprov[prov_a].household": false, "dcprov[prov_a].paid": 0, "dcprov[prov_a].related": false });
-  const HOUSEHOLD_KEYS: Record<string, string> = { taxpayer_tin: "person[taxpayer].tin", taxpayer_work_ssn: "person[taxpayer].work_ssn" };
+  const HOUSEHOLD_KEYS: Record<string, string> = { taxpayer_tin: "person[taxpayer].tin", taxpayer_work_ssn: "person[taxpayer].work_ssn", unmarried: "household.considered_unmarried", married: "household.married_dec31" };
   for (const [k, v] of Object.entries(s.household)) inputs[HOUSEHOLD_KEYS[k] ?? `household.${k}`] = v;
   // A joint filer is married; a head of household is married (considered unmarried) on the household draw; nobody else is.
-  inputs["household.married"] = s.status === "mfj" || (s.status === "hoh" && s.household.married);
+  inputs["household.ever_married"] = true;
+  inputs["household.married_dec31"] = s.status === "mfj" || (s.status === "hoh" && s.household.married);
   inputs["household.credit_disallowed"] = false;
   inputs["household.community_property"] = false;
   inputs["household.rdp"] = false;
-  inputs["household.spouse_died_2025"] = false;
+  inputs["household.spouse_died_this_year"] = false;
   inputs["household.cp_married"] = false;
   inputs["household.qss_eligible"] = true;
-  inputs["eic.died_2025"] = false;
+  inputs["eic.died_this_year"] = false;
   inputs["person[taxpayer].itin_applied"] = false;
   inputs["person[taxpayer].eic_ssn"] = inputs["person[taxpayer].work_ssn"];
   inputs["person[taxpayer].under16"] = false;
@@ -646,13 +715,17 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["$retirement@person[taxpayer]"] = dists.map((_, i) => `r${i + 1}`);
   dists.forEach((d, i) => {
     const code = s.clean ? (d.account === "roth_ira" ? "qualified_roth_Q" : d.code === "qualified_roth_Q" || d.code === "other" ? "normal_7" : d.code) : d.code;
-    const { savExcluded, ...fields } = d;
+    const { savExcluded, special, ...fields } = d;
     // Form 8880 line 4: a plan distribution is sometimes from a military retirement plan, an IRA one sometimes inherited.
-    const entry = { ...fields, code, special: s.clean ? false : d.special, annuity: d.account === "plan" && d.annuity,
+    // A special situation is given as the one question every Form 1099-R is asked (a disaster); a rollover and the
+    // Simplified Method are stated with the plain questions they sit beneath.
+    const entry = { ...fields, code, disaster: s.clean ? false : special, annuity: d.account === "plan" && d.annuity,
+      cost_any: d.account === "plan" && d.annuity, rollover_any: code !== "direct_rollover_G" && Math.min(d.rollover, d.box1) > 0,
       box5: d.account === "plan" ? d.box5 : 0, rollover: Math.min(d.rollover, d.box1),
       sav_military: d.account === "plan" && savExcluded, sav_404k: false, sav_inherited: d.account !== "plan" && savExcluded };
     for (const [k, v] of Object.entries(entry)) inputs[`person[taxpayer].retirement[r${i + 1}].${k}`] = v;
   });
+  inputs["ssb.any"] = retiree && s.benefits > 0;
   inputs["ssb.benefits"] = retiree ? s.benefits : 0;
   // Schedule 1 items: unemployment (with part of a current-year overpayment sometimes repaid), educator expenses,
   // student loan interest, and an HSA whose month counts are always possible (family months at most the
@@ -660,7 +733,9 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["s1.uc_paid"] = s.adj.uc;
   inputs["s1.uc_repaid"] = Math.floor((s.adj.uc * s.adj.ucRepaidPct) / 100);
   inputs["person[taxpayer].educator_expenses"] = s.adj.educator;
+  inputs["sli.any"] = s.adj.sli > 0;
   inputs["sli.interest"] = s.adj.sli;
+  Object.assign(inputs, { "sli.unqualified_any": false, "sli.unqualified": 0, "sli.assisted_any": false, "sli.assisted": 0 });
   if (s.adj.hsa) {
     const months = s.adj.months, family = Math.min(s.adj.familyMonths, months);
     inputs[`${HSA}.coverage_year`] = coverageYear(months, family);
@@ -675,7 +750,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["ftc.taxes"] = s.ftcTaxes;
   if (inputs["s1a.tips"] === true) {
     inputs["$tipjob@person[taxpayer]"] = s.s1a.tips.map((_, i) => `tip_${i + 1}`);
-    s.s1a.tips.forEach((t, i) => { inputs[`person[taxpayer].tipjob[tip_${i + 1}].qualified`] = t.qualified; inputs[`person[taxpayer].tipjob[tip_${i + 1}].amount`] = t.amount; });
+    s.s1a.tips.forEach((t, i) => putTipJob(inputs, `person[taxpayer].tipjob[tip_${i + 1}]`, t));
   }
   if (inputs["s1a.overtime"] === true) {
     inputs["$otjob@person[taxpayer]"] = s.s1a.overtime.map((_, i) => `ot_${i + 1}`);
@@ -703,11 +778,11 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     Object.assign(inputs, {
       [`${P}.role`]: "spouse", [`${P}.rrta`]: false, [`${P}.age65`]: sp.age65, [`${P}.blind`]: sp.blind, [`${P}.tin`]: sp.tin || sp.work_ssn,
       [`${P}.work_ssn`]: sp.work_ssn, [`${P}.eic_ssn`]: sp.work_ssn, [`${P}.under16`]: false, [`${P}.itin_applied`]: false,
-      [`${P}.born_before_2001`]: sp.eicAge || sp.age65, [`${P}.born_after_1960`]: !sp.age65 && sp.eicAge,
+      [`${P}.eic_age25`]: sp.eicAge || sp.age65, [`${P}.eic_under65`]: !sp.age65 && sp.eicAge,
       [`${P}.educator_expenses`]: sp.educator, [`${P}.eligible_educator`]: sp.eligible,
       [`${P}.sav_born`]: sp.born, [`${P}.sav_student`]: false, [`${P}.sav_claimed`]: false, [`${P}.sav_trad`]: false, [`${P}.sav_able`]: false,
-      [`${P}.sav_roth`]: sp.roth, [`${P}.sav_excess`]: false, [`${P}.sav_voluntary`]: 0, [`${P}.sav_prior_joint`]: 0, [`${P}.sav_prior_other`]: 0,
-      [`${P}.ira_trad`]: 0, [`${P}.ira_excess`]: false, [`${P}.ira_age50`]: false, [`${P}.ira_work_plan`]: false, [`${P}.ira_basis`]: 0,
+      [`${P}.sav_roth`]: sp.roth, [`${P}.sav_voluntary`]: 0, [`${P}.sav_prior_joint`]: 0, [`${P}.sav_prior_other`]: 0,
+      [`${P}.ira_trad`]: 0, [`${P}.ira_work_plan`]: false, [`${P}.ira_basis`]: 0,
       [`${P}.ira_basis_adjusted`]: false, [`${P}.ira_dist`]: false,
     });
     if (sp.age65) inputs[`${P}.died_before_65`] = sp.died;
@@ -724,7 +799,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
       putBox12(inputs, `${P}.w2[${keys[k]}]`, Math.min(e.deferral, box1));
     });
     inputs[`$tipjob@${P}`] = inputs["s1a.tips"] === true ? sp.tips.map((_, k) => `tip_${k + 1}`) : [];
-    if (inputs["s1a.tips"] === true) sp.tips.forEach((tj, k) => { inputs[`${P}.tipjob[tip_${k + 1}].qualified`] = tj.qualified; inputs[`${P}.tipjob[tip_${k + 1}].amount`] = tj.amount; });
+    if (inputs["s1a.tips"] === true) sp.tips.forEach((tj, k) => putTipJob(inputs, `${P}.tipjob[tip_${k + 1}]`, tj));
     inputs[`$otjob@${P}`] = inputs["s1a.overtime"] === true ? sp.overtime.map((_, k) => `ot_${k + 1}`) : [];
     if (inputs["s1a.overtime"] === true) sp.overtime.forEach((o, k) => {
       const k2 = `${P}.otjob[ot_${k + 1}]`;
@@ -737,7 +812,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
       const family = Math.min(h.familyMonths, h.months);
       Object.assign(inputs, { [`${H}.line2`]: h.contrib, [`${H}.line9`]: 0, [`${H}.${HSA_FLAG}`]: false,
         [`${H}.coverage_year`]: coverageYear(h.months, family), [`${H}.months_eligible`]: h.months,
-        [`${H}.months_family`]: family, [`${H}.age55`]: h.age55, [`${H}.last_month`]: false,
+        [`${H}.months_family`]: family, [`${P}.hsa_age55`]: h.age55, [`${H}.last_month`]: false,
         [`${H}.dec_coverage`]: h.months === 0 ? "none" : family === h.months ? "family" : family === 0 ? "self_only" : h.decFamily ? "family" : "self_only",
         [`${H}.allocation`]: h.agreed ? "agreed" : "equal", [`${H}.allocated`]: h.allocated,
         [`${H}.line14a`]: 0, [`${H}.rollover`]: 0, [`${H}.medical`]: 0, [`${H}.line17a`]: false, [`${H}.subject_part`]: 0 });
@@ -758,14 +833,64 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   for (const k of (inputs["$dependent"] as string[] | undefined) ?? []) Object.assign(inputs, { [`dependent[${k}].born_died`]: false, [`dependent[${k}].placed`]: false });
   // The dividends question agrees with the amounts it gates, set last for the same reason.
   inputs["div.any"] = DIV_ANY_GATED.some((k) => inputs[k] !== 0);
-  // The foreign question is yes exactly when one of the screens it gates is answered yes, set last for the same reason.
-  inputs["sb.foreign_any"] = FOREIGN_ANY_GATED.some((k) => inputs[k] === true);
+  // The unemployment question agrees with the amount it gates, set last for the same reason.
+  inputs["s1.uc_any"] = inputs["s1.uc_paid"] !== 0;
+  // Foreign tax is asked of a filer with shares, interest or tax paid abroad: a return with foreign tax and no dividends says the last.
+  if ((inputs["ftc.taxes"] as number) > 0 && inputs["div.any"] !== true) inputs["s3.foreign_any"] = true;
+  // The bonds-and-loans question is yes exactly when the screen beneath it is; nominee income is never drawn.
+  inputs["sb.bonds_any"] = inputs["sb.bond_special"] === true;
+  // The question on the less common boxes of Form 1099-DIV is yes exactly when one of them holds an amount.
+  inputs["div.other_boxes"] = DIV_OTHER_BOXES.some((k) => inputs[k] !== 0);
+  // The foreign questions: an account abroad is yes exactly when one of the screens the foreign questions gate is
+  // answered yes, a foreign trust when Schedule B line 8 is and a foreign company when the Form 5471 screen is; the
+  // other two are no. Set last for the same reason.
+  inputs["sb.account_any"] = FOREIGN_ANY_GATED.some((k) => inputs[k] === true);
+  inputs["sb.asset_any"] = false;
+  inputs["sb.trust_any"] = inputs["sb.line8"] === true;
+  inputs["sb.company_any"] = inputs["sb.form5471"] === true;
+  inputs["sb.territory_any"] = false;
   // The charitable-gifts and investment-interest gates: yes whenever an answer they gate is not none, so every drawn
   // answer is read. Set last, so no stream sees them.
+  // The Schedule A parents agree with the amounts they gate in the same way, and their No-children are answered no.
+  inputs["sa.home_owner"] = (inputs["sa.mortgage_interest"] as number) > 0 || (inputs["sa.line5b"] as number) > 0;
+  inputs["sa.state_tax_any"] = (inputs["sa.line5a"] as number) > 0;
+  inputs["sa.medical_any"] = (inputs["sa.line1"] as number) > 0;
+  inputs["sa.personal_property_tax_any"] = ((inputs["sa.line5c"] as number | undefined) ?? 0) > 0;
+  Object.assign(inputs, { "sa.home_other": false, "sa.state_tax_other_any": false, "sa.medical_premiums": false, "sa.gift_carryover": false, "sa.property_tax_other_any": false });
   inputs["sa.gifts"] = (inputs["sa.line11"] as number) > 0 || ((inputs["$gift"] as string[] | undefined) ?? []).length > 0 || inputs["sa.charity_limited"] === true;
   inputs["f4952.has_interest"] = (inputs["f4952.line1"] as number) > 0 || inputs["f4952.carryover"] === true;
   putHsaAnswers(inputs);
+  putBirthYear(inputs);
   return inputs;
+}
+
+/** Each person's birth year from the working birth-date answers, which are then removed: 65 or older (1950; 1960 for
+ * the final return of a person who died before reaching 65), 25 to 64 (1980; 1970 when 50 or older, or when the
+ * spouse's health savings account was drawn as that of a person 55 or older, or the SIMPLE catch-up age drawn is 50 to
+ * 59 or 64 and over; 1964 when it is 60 to 63), then the
+ * education credit's ages (2001, 2004, 2007) and under 18 (2009). No generated person is born on January 1, in 1962,
+ * 1966, 1971, 1976 or 2010, so the questions asked only of such a person are never reached. */
+function putBirthYear(inputs: Inputs): void {
+  for (const E of (inputs["$person"] as string[] | undefined) ?? ["taxpayer"]) {
+    const P = `person[${E}]`;
+    const w = (k: string): unknown => inputs[`${P}.${k}`];
+    const age65 = w("age65") === true;
+    const year = age65 ? (w("died_before_65") === true ? 1960 : 1950)
+      : w("eic_age25") !== false ? (w("simple_age_w") === "age60_63" ? 1964
+        : w("ira_age50") === true || w("hsa_age55") === true || w("simple_age_w") === "age50" ? 1970 : 1980)
+      : w("edu_age24") === true ? 2001 : w("edu_over18") === true ? 2004 : w("sav_born") !== false ? 2007 : 2009;
+    const died = w("died_before_65") === true;
+    for (const k of BIRTH_WORKING) delete inputs[`${P}.${k}`];
+    inputs[`${P}.birth_year`] = year;
+    inputs[`${P}.born_jan1`] = false;
+    inputs[`${P}.under16_at_year_end`] = false;
+    inputs[`${P}.age50_at_year_end`] = false;
+    inputs[`${P}.age55_at_year_end`] = false;
+    inputs[`${P}.simple_age_at_year_end`] = "age50";
+    inputs[`${P}.died_at_64`] = year === 1960 && died;
+    for (const k of PERSON_NO) inputs[`${P}.${k}`] = false;
+    inputs[`${P}.ira_owner`] = inputs[`${P}.sav_trad`] === true || ((inputs[`${P}.sav_roth`] as number | undefined) ?? 0) > 0;
+  }
 }
 
 /** Form 8889's answers that are not drawn, from each form's flag and a derived stream, after every other answer. A
@@ -790,13 +915,16 @@ function putHsaAnswers(inputs: Inputs): void {
 /** The amounts `div.any` gates directly (Form 1099-DIV boxes 1a, 2a, 3, 9, 10, 12 and 13). */
 const DIV_ANY_GATED = ["sb.ordinary_dividends", "sd.distributions", ...["3", "9", "10", "12", "13"].map((b) => `div.box${b}`)];
 
-/** The screens `sb.foreign_any` gates (FinCEN Form 114, Form 8938, Schedule B line 8 and Form 5471). */
+/** The boxes of Form 1099-DIV asked only after a Yes to `div.other_boxes`. */
+const DIV_OTHER_BOXES = ["2b", "2c", "2d", "2e", "2f", "3", "9", "10", "13"].map((b) => `div.box${b}`);
+
+/** The screens the foreign questions gate (FinCEN Form 114, Form 8938, Schedule B line 8 and Form 5471). */
 const FOREIGN_ANY_GATED = ["sb.fbar_required", "sb.form8938", "sb.line8", "sb.form5471"];
 
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
 const EDU_ANSWERS = ["", "_1098t", "_over", "_line23", "_line24", "_line25", "_line26", "_ein"];
-const EDU_AMOUNTS = ["_inst", "_mat", "_a2025", "_a2026", "_refunds"];
+const EDU_AMOUNTS = ["_inst", "_mat", "_a_this_year", "_a_next_year", "_refunds"];
 
 /** Form 8863 on about one return in eight, from a derived stream: one or two students among you, your spouse on a
  * joint return and the dependents, mostly American opportunity credit students, the rest lifetime learning credit
@@ -815,12 +943,12 @@ function putEdu(inputs: Inputs): void {
     for (const k of EDU_AMOUNTS) inputs[`${E}.edu${k}`] = 0;
   }
   for (const E of deps) inputs[`${E}.edu_tin_issued`] = true;
-  // Born before January 2, 2008 (sav_born), 2007 and 2002, and before January 2, 2001 (born_before_2001), in order.
+  // Born before January 2, 2008 (sav_born), 2007 and 2002, and before January 2, 2001 (eic_age25), in order.
   for (const P of persons) {
-    const old = inputs[`${P}.born_before_2001`] === true || inputs[`${P}.age65`] === true;
+    const old = inputs[`${P}.eic_age25`] === true || inputs[`${P}.age65`] === true;
     const adult = inputs[`${P}.sav_born`] !== false;
     const b2007 = adult && (old || next() < 0.6);
-    Object.assign(inputs, { [`${P}.edu_born_2007`]: b2007, [`${P}.edu_born_2002`]: b2007 && (old || next() < 0.2),
+    Object.assign(inputs, { [`${P}.edu_over18`]: b2007, [`${P}.edu_age24`]: b2007 && (old || next() < 0.2),
       [`${P}.edu_fulltime`]: next() < 0.7, [`${P}.edu_half_support`]: next() < 0.6, [`${P}.edu_parent`]: next() < 0.9 });
   }
   inputs["f8863.ban"] = false;
@@ -840,8 +968,8 @@ function putEdu(inputs: Inputs): void {
     inputs[`${E}.edu_1098t`] = next() < 0.95;
     inputs[`${E}.edu_inst`] = inst;
     inputs[`${E}.edu_mat`] = next() < 0.5 ? between(0, 150_000) : 0;
-    inputs[`${E}.edu_a2025`] = next() < 0.3 ? between(0, Math.floor(inst / 2)) : 0;
-    inputs[`${E}.edu_a2026`] = next() < 0.05 ? between(0, 50_000) : 0;
+    inputs[`${E}.edu_a_this_year`] = next() < 0.3 ? between(0, Math.floor(inst / 2)) : 0;
+    inputs[`${E}.edu_a_next_year`] = next() < 0.05 ? between(0, 50_000) : 0;
     inputs[`${E}.edu_refunds`] = next() < 0.05 ? between(0, 50_000) : 0;
     // An AOC student passes lines 23 to 26 with the institution's EIN; an LLC student fails one of them.
     const why = next() < 0.75 ? "aoc" : (["line23", "ein", "ein", "line23", "line25", "line24"] as const)[Math.floor(next() * 6)]!;
@@ -851,7 +979,7 @@ function putEdu(inputs: Inputs): void {
 }
 
 const RETIREMENT_FIELDS: Record<string, number | boolean | string> = {
-  account: "traditional_ira", code: "normal_7", box1: 0, box5: 0, rollover: 0, special: false, annuity: false, cost: 0,
+  account: "traditional_ira", code: "normal_7", box1: 0, box5: 0, rollover: 0, annuity: false, cost: 0,
   used_last_year: false, last_line4: 0, joint_life: false, age: 50, combined_age: 100, months: 12, recovered: 0,
   sav_military: false, sav_404k: false, sav_inherited: false,
 };
@@ -874,9 +1002,9 @@ function putEarly(inputs: Inputs): void {
   const pick = <T>(xs: readonly T[]): T => xs[Math.floor(next() * xs.length)]!;
   const persons = ((inputs["$person"] as string[] | undefined) ?? []).map((p) => `person[${p}]`);
   for (const P of persons) {
-    Object.assign(inputs, { [`${P}.x_other`]: false, [`${P}.x_prior09`]: 0, [`${P}.x_births`]: 0, [`${P}.x_hsa_value`]: 0 });
+    Object.assign(inputs, { [`${P}.x_prior09`]: 0, [`${P}.x_births`]: 0, [`${P}.x_hsa_value`]: 0 });
     for (const e of (inputs[`$retirement@${P}`] as string[] | undefined) ?? []) {
-      Object.assign(inputs, { [`${P}.retirement[${e}].early_screen`]: false, [`${P}.retirement[${e}].code_screen`]: false,
+      Object.assign(inputs, { [`${P}.retirement[${e}].early_screen`]: false,
         [`${P}.retirement[${e}].exception`]: "none", [`${P}.retirement[${e}].exc_amount`]: 0 });
     }
     for (const h of (inputs[`$f8889@${P}`] as string[] | undefined) ?? []) {
@@ -914,7 +1042,7 @@ function putEarly(inputs: Inputs): void {
     const S = "person[spouse]", E = `${S}.retirement[r1]`;
     inputs[`$retirement@${S}`] = ["r1"];
     for (const [k, v] of Object.entries(RETIREMENT_FIELDS)) inputs[`${E}.${k}`] = v;
-    Object.assign(inputs, { [`${E}.box1`]: between(50_000, 3_000_000), [`${E}.early_screen`]: false, [`${E}.code_screen`]: false,
+    Object.assign(inputs, { [`${E}.box1`]: between(50_000, 3_000_000), [`${E}.early_screen`]: false,
       [`${E}.exception`]: "none", [`${E}.exc_amount`]: 0 });
     first = null;
     early(S, E, true);
@@ -928,13 +1056,13 @@ function putEarly(inputs: Inputs): void {
 function putPtc(inputs: Inputs): void {
   const next = derivedStream(inputs, "ptc");
   const between = (lo: number, hi: number) => lo + Math.floor(next() * (hi - lo + 1));
-  Object.assign(inputs, { "f8962.alloc": false, "f8962.married_in_2025": false, "f8962.other": false, "f8962.premium_adjust": false, "f8962.same_state_counted": false, "f8962.alien_below": false,
+  Object.assign(inputs, { "f8962.shared_policy": false, "f8962.divorced_enrolled": false, "f8962.married_this_year": false, "f8962.other_coverage": false, "f8962.mec_job_enrolled": false, "f8962.job_offer": false, "f8962.mec_job_affordable": false, "f8962.mec_government": false, "f8962.mec_other": false, "f8962.hra": false, "f8962.not_lawful": false, "f8962.incarcerated": false, "f8962.no_family": false, "f8962.medicaid_reversed": false, "f8962.unpaid": false, "f8962.a_zero_paid": false, "f8962.midmonth_start": false, "f8962.premium_refunded": false, "f8962.same_state_counted": false, "f8962.alien_below": false,
     "f8962.estimate_100": next() < 0.7, "f8962.fpl_table": next() < 0.9 ? "contiguous" : next() < 0.5 ? "alaska" : "hawaii" });
   for (const k of (inputs["$dependent"] as string[] | undefined) ?? []) Object.assign(inputs, { [`dependent[${k}].ptc_files`]: false, [`dependent[${k}].ptc_magi`]: 0 });
   if (next() >= 0.15) { inputs["$f1095a"] = []; return; }
   const n = next() < 0.8 ? 1 : 2;
   const twoStates = next() < 0.3;
-  const keys = Array.from({ length: n }, (_, i) => `mkt_${String.fromCharCode(97 + i)}`);
+  const keys = Array.from({ length: n }, (_, i) => `form_${i + 1}`);
   inputs["$f1095a"] = keys;
   // Two forms from one state either follow one another (the first ends when the second starts; both are counted, since
   // no month has two forms) or the second covers only months the first covers (only the first is counted).
@@ -945,7 +1073,7 @@ function putPtc(inputs: Inputs): void {
     const E = `f1095a[${key}]`;
     const uniform = !sequential && next() < 0.7 && !(i === 1 && !twoStates && firstStart > 0);
     const a = between(15_000, 150_000), b = between(15_000, 120_000);
-    inputs[`${E}.uniform`] = uniform;
+    Object.assign(inputs, { [`${E}.same_months`]: uniform, [`${E}.b_blank`]: false, [`${E}.b_changed`]: false, [`${E}.b_doubt`]: false, [`${E}.b_fixed_same`]: uniform });
     inputs[`${E}.void`] = false;
     inputs[`${E}.b_counted`] = i === 0 || twoStates || sequential;
     // Both the uniform answers and the monthly amounts are filled, agreeing with each other, so every line of the entry is
@@ -1011,7 +1139,11 @@ export function sampleReturns(data: CanonicalData, n: number, seed: number): Inp
 // compute. Every Bool input of the New York documents must be listed.
 const NY_IN_SCOPE: Record<string, boolean> = {
   state_resident: true, city_resident: true, spouse_resident: true, prior_full_year: true,
-  special_accrual: false, yonkers: false, special_code: false, decedent: false, item_c: false, inflation_check: false,
+  special_accrual: false, yonkers: false, decedent: false, active_duty: false, moved_in: false, moved_out: false,
+  bab: false, abroad: false, installment: false, public_job: false, ny_529: false, gov_pension_other: false,
+  spouse_itemizes: false, use_tax_exact: false, apply_any: false,
+  // est_any: in scope either way; true, so the estimated payment amount is drawn as it was when line 75 was an input.
+  est_any: true, item_c: false, inflation_check: false,
   out_of_state_bond_interest: false, "414h": false, "529_nonqualified": false, it225: false, gov_pension: false,
   us_obligation_interest: false, pension_exclusion: false, "529_owner": false, itemize: false, resident_credit: false,
   other_credits: false, other_taxes: false, city_credits: false, mctmt: false, owes_use_tax: false, use_tax_st141: false,

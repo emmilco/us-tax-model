@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "82de8c9ba80af1434c63911f671d25a5da3bb6ac74bf7fd42bbe81bb49a3a2b3",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-11); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -58,10 +58,10 @@
   },
   {
    "key": "4b",
-   "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
+   "record": "45f950a70602ddb91cf04fb90208fd30b2f78ac2b9a0f399320813b83c5f0068",
    "status": "DISAGREE",
-   "ruling": "Ruling: refusal representation; project retained. The line is $0 within scope and carries its own refusal for the form it would come from (Form 4137, through s2.other), as ruled in Stage 12 (BUG-0043); the second enters $0 and refuses Form 4137 filers by its own note. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 2,205 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 32, \"candidate-unknown\": 25, \"project-refuses\": 3, \"project-unknown\": 122}; on completed returns none. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "39ca02cc48e943bcc33168038ccf42f94602dca6e5e17d564b3eb6c0cec15598"
+   "ruling": "Ruling: representation; triage 2,470/2,597 agree, no value difference; differences are project-unknown (unasked Part II questions: s1a.tips and the SSN tests) and project-refuses (6, refused returns: the project's Form 4137 refusal, s2.other). Both lines are 0 wherever they compute: i1040gi p. 104, line 4b, \"If Form 4137 is not filed, enter -0-\", and Form 4137 is outside the tool (refused here by the project, through person.se_screen per the reply's note). The project's line is 0 also when Part II does not apply (i1040gi p. 101, \"Fill out Schedule 1-A, Part II, only if\").",
+   "subject_key": "f8b9f12af223b0fd64d9ac928de8ef434ff7e22010a80eacad714e781a85c81d"
   },
   {
    "key": "4c",
@@ -72,10 +72,10 @@
   },
   {
    "key": "5",
-   "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
+   "record": "45f950a70602ddb91cf04fb90208fd30b2f78ac2b9a0f399320813b83c5f0068",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; project retained. Qualified tips in a trade or business need Schedule C, E or F and the net income limitation, refused through scope.schedule1, which line 5 carries, and for a Schedule C through s1.sc_1a; the second enters $0 for the same computed case. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 2,268 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 3, \"project-refuses\": 5, \"project-unknown\": 111}; on completed returns none. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "a1863d7d5ec338728bdd04b71ba5d3f05baad67847a54015b33822a73b27839d"
+   "ruling": "Ruling: representation; triage 2,481/2,597 agree, no value difference; differences are project-unknown (unasked Part II questions), project-refuses (12) and candidate-refuses (3), all on refused or incomplete returns: both lines are 0 where they compute and both refuse trade-or-business tips (s1.sc_1a; the project also scope.schedule1). The reply refuses on s1.sc_1a even when Part II does not apply, where the project's line is 0 (i1040gi p. 101, \"Fill out Schedule 1-A, Part II, only if\": you received qualified tips); refusal placement only. i1040gi p. 104, line 5.",
+   "subject_key": "12e49bec6fc50dcc5b54bf2886587c8156cb933c639e1a5c7e912baa9d70ffeb"
   },
   {
    "key": "6",
@@ -135,10 +135,10 @@
   },
   {
    "key": "14b",
-   "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
+   "record": "45f950a70602ddb91cf04fb90208fd30b2f78ac2b9a0f399320813b83c5f0068",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; project retained. Overtime reported on Form 1099-NEC or 1099-MISC is nonemployee compensation, refused through scope.schedule1, which line 14b carries; the second enters $0 for the same computed case. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 2,271 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 3, \"project-refuses\": 2, \"project-unknown\": 111}; on completed returns none. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "385ae1c11ac0112bed31921c5cce76bc55b422ba61e94ae5748db69b2f917f72"
+   "ruling": "Ruling: representation; triage 2,487/2,597 agree, no value difference; differences are project-unknown (unasked Part III questions), project-refuses (6) and candidate-refuses (3), all on refused or incomplete returns: both lines are 0 where they compute and both refuse Form 1099 overtime from a Schedule C (s1.sc_1a). The reply refuses on s1.sc_1a also when Part III does not apply, where the project's line is 0; refusal placement only. i1040gi, Schedule 1-A Part III, \"Fill out Schedule 1-A, Part III, only if\".",
+   "subject_key": "be168a3a38a20a659776655bd3d72f11f4b9b10b1d421e7e65aed25e8d304d9c"
   },
   {
    "key": "14c",
@@ -282,10 +282,10 @@
   },
   {
    "key": "36b",
-   "record": "9751febc3b0a524551af013a08364e700935ca86f67af07971824ab2bd4993db",
+   "record": "45f950a70602ddb91cf04fb90208fd30b2f78ac2b9a0f399320813b83c5f0068",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040gi p. 110, Death of a taxpayer in 2025: \"If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn’t qualify for the enhanced deduction for seniors.\" As line 36a for the spouse: the candidate gives $0 and the project refuses at its cited gate s1a.spouse_senior_decedent (stage13.refuse.senior_spouse_decedent, generated 491). The project-unknown record lacks a roster role on an incomplete return. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,358 of 2,361 comparisons agree; differences {\"project-refuses\": 2, \"project-unknown\": 1}; on completed returns none.",
-   "subject_key": "2812ada4db72c9a32c5eb7c2857f4f1ee445498733b20efe1ff3a068f3d83e76"
+   "ruling": "Ruling: representation; triage 2,576/2,597 agree, no value difference; differences are candidate-unknown (9: the reply reads person.died_at_64 for every spouse, a question asked only of a person born in the year that turns 65 in 2025 (gated_by person.died_before_65)) and project-refuses (11: the project refuses a spouse born before January 2, 1961 who died in 2025 before reaching 65, s1a.spouse_senior_decedent, where the reply enters 0). i1040gi p. 110, Part V, \"If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors\": the reply's 0 matches the source and the project declines the case rather than computing it (a scope choice, not a wrong value). Elsewhere both enter line 35 for a married-filing-jointly spouse born before January 2, 1961 with a valid SSN.",
+   "subject_key": "4ef3b0fb01da606765fa1e8d69ef5cfff69df89129e0dc7b69424beb7dfcbd0c"
   },
   {
    "key": "37",
@@ -348,9 +348,9 @@
  "__rest__": "72d6a605d769b79dd9b412e8f8a7e363d66aa6f28a55bfe31e2428c7309d2c07",
  "foreign": {
   "4a": "b907ab2795f1cc005b8d008e9d7c715606fd29e20a1d27ca24cf45b9ae97c719",
-  "4b": "818ca61100794caa5f75bfccb17b0ca96f55c7aeca401fc44dd6aba1c77b3b0f",
+  "4b": "d1f44d0e90197f7d6f646345c21e1104ee87c23a9b1112daee886e455038b383",
   "4c": "1f33d0cc21cddedac36b56770eee662d008f2587bb1f6d8a219eaf08fc95ad71",
-  "5": "a9ed5328ae271b55737229233168d56850f79009fa0c82b0bac1b392ee85d832",
+  "5": "13e5e0d9b0c9b8692fc3632d03c0bc2939c4c3bf70e9cd8e8899e94e372668ba",
   "6": "87cf665601fed8a95803703dacb4c4696c3b2ec0a5b84426ba0042bd3ad7a212",
   "7": "87cf665601fed8a95803703dacb4c4696c3b2ec0a5b84426ba0042bd3ad7a212",
   "8": "87cf665601fed8a95803703dacb4c4696c3b2ec0a5b84426ba0042bd3ad7a212",
@@ -359,7 +359,7 @@
   "12": "87cf665601fed8a95803703dacb4c4696c3b2ec0a5b84426ba0042bd3ad7a212",
   "13": "2c3904e831429d0d42b8b4bfb87f48adb39182aff17005e9c4ea2e29df1f2f9f",
   "14a": "ba8d4a6b3d57fe4a9cf45810cd411e7030e5f22120ee569a3e0e5b78ac15a044",
-  "14b": "74c41fbb04745c5e6f37936d5842261ee43c9c38c8b5520fe4ddac16d74e8518",
+  "14b": "5a81511bf881548dbfb80145ec5f85e37f11ead504e37c024407b8c87a413021",
   "14c": "afebb5217c1de1c715757c45a70c0b07fd23b55c11a063fcf42914d55fd1f11b",
   "15": "afebb5217c1de1c715757c45a70c0b07fd23b55c11a063fcf42914d55fd1f11b",
   "16": "afebb5217c1de1c715757c45a70c0b07fd23b55c11a063fcf42914d55fd1f11b",
@@ -379,6 +379,6 @@
   "33": "1d67bab617c93862b69cdc0b35799268e0d98944aec72f5054b93b89878b3151",
   "34": "1d67bab617c93862b69cdc0b35799268e0d98944aec72f5054b93b89878b3151",
   "35": "1d67bab617c93862b69cdc0b35799268e0d98944aec72f5054b93b89878b3151",
-  "36b": "1638a5bf7fd7bd82b1990544229db3c294af8a63675fab39151de0b064688214"
+  "36b": "c236109c44dceb9beaec63395ccbd98f46cbf1218f3d8728cbbe10acd43ea5b2"
  }
 }

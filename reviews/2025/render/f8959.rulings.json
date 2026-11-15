@@ -3,6 +3,36 @@
  "form": "f8959",
  "rulings": [
   {
+   "printed": "19",
+   "restated": "Add person.medicare6 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Only W-2 box 6 is summed. The instructions also say \"Also include any uncollected Medicare tax on tips from Form W-2, box 12, code B, and any uncollected Medicare tax on the taxable cost of group-term life insurance over $50,000 ... from Form W-2, box 12, code N\". No refusal excludes those cases.",
+   "ruling": "Ruling: scope; refusal located elsewhere. i8959 p. 4, Line 19, \"Also include any uncollected Medicare tax on tips from Form W-2, box 12, code B, and any uncollected Medicare tax on the taxable cost of group-term life insurance ... code N\". A W-2 with code B or N in box 12 is asked by s2.w2_marks (\"code A, B, K, M, N or Z in box 12?\", asked whenever a W-2 is listed, the only case line 19 has a value), which refuses Schedule 2 (lines 2 and 21 among others) through s2.other, and so the tax on Form 1040. No completed return has a code B or N amount; box 6 alone is right on every computed return. Project stands.",
+   "context": "900b7973c5cf571731a8f253e61d89153053e4004faa5a5e17386994f483720c",
+   "date": "2026-11-14",
+   "run": "b114f4f50f643c713c8644924aae0542c4a7aaf64acccfa8fd7ce0448592f7d4",
+   "subject_key": "d091921818fa3c59a322c9837bea551e0176bde24f8a0feb2d0ed46ed524804b"
+  },
+  {
+   "printed": "2",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "The IRS line is \"Unreported tips from Form 4137, line 6\", including the spouse's Form 4137 on a joint return. The program always enters zero. Its only refusal names territory wage statements, so a wage-only filer with Form 4137 tips is not refused and the tips are dropped.",
+   "ruling": "Ruling: scope; refusal located elsewhere. f8959 line 2, \"Unreported tips from Form 4137, line 6\". Form 4137 is filed for tips not reported to the employer or allocated tips (i1040gi p. 112, Line 5). Unreported tips are not on a W-2 and are asked by scope.pay_no_w2 (\"wages, tips or strike benefits that are not on a W-2?\"), which refuses Form 1040 line 8 through scope.other_income; allocated tips (W-2 box 8) by s2.w2_marks, which refuses Schedule 2 through s2.other. The redraft moved these words out of f8959.unsupported to those askers (docs/provisional/MAP.md 2.5). No completed return has a Form 4137 amount, so line 2 is $0 on every computed return. Project stands.",
+   "context": "900b7973c5cf571731a8f253e61d89153053e4004faa5a5e17386994f483720c",
+   "date": "2026-11-14",
+   "run": "b114f4f50f643c713c8644924aae0542c4a7aaf64acccfa8fd7ce0448592f7d4",
+   "subject_key": "6caae266d9d41e4bccaa713a8f6c5ec29d4bfc9db6eff35a945a3cbf361dbf52"
+  },
+  {
+   "printed": "3",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "The IRS line is \"Wages from Form 8919, line 6\", including the spouse's amount on a joint return. The program always enters zero. Its only refusal names territory wage statements, so a filer with Form 8919 wages and no Schedule C is not screened out and the wages are dropped.",
+   "ruling": "Ruling: scope; refusal located elsewhere. f8959 line 3, \"Wages from Form 8919, line 6\". Form 8919 wages are pay from an employer who treated the worker as a contractor, so not on a W-2; scope.pay_no_w2 (\"wages, tips or strike benefits that are not on a W-2?\") asks it of everyone and refuses Form 1040 line 8 through scope.other_income (MAP 2.5). No completed return has a Form 8919 amount; line 3 is $0 on every computed return. Project stands.",
+   "context": "900b7973c5cf571731a8f253e61d89153053e4004faa5a5e17386994f483720c",
+   "date": "2026-11-14",
+   "run": "b114f4f50f643c713c8644924aae0542c4a7aaf64acccfa8fd7ce0448592f7d4",
+   "subject_key": "2a93663c24bbcd469485cd6edef7fc628bf9ba22c750b864c85d4d0cb27a6cea"
+  },
+  {
    "printed": "8",
    "restated": "Add person.se_line6 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The form says \"Self-employment income from Schedule SE (Form 1040), Part I, line 6. If you had a loss, enter -0-\", and the instructions say negative amounts shouldn't be considered. The restatement sums person.se_line6 with no per-person floor at zero, and the text given does not show whether se_line6 is already nonnegative, so a loss on one spouse's Schedule SE could offset the other's income.",

@@ -1,50 +1,6 @@
 {
  "form": "f8889",
  "reviews": {
-  "f8889.age55": {
-   "subject_sha": "a009ea152981782f0df1ea2141c5e5de83d52e59288fab942ced5bfd26aca413",
-   "samples": [
-    {
-     "verdict": "MATCH",
-     "findings": [],
-     "prompt_sha": "9c5a499bf188e848941c26a3e40db7a43d0db712c6b85e4ef9eb1d38aa9a9206",
-     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
-     "model": "claude-fable-5-2",
-     "cost": 0.084504,
-     "date": "2026-11-12",
-     "response": ".transcription/questions/f8889.age55.a009ea152981.1.response.txt"
-    }
-   ],
-   "type": "Bool",
-   "readers": 3,
-   "brief": false,
-   "used": [
-    {
-     "doc": "i8889",
-     "revision": "2025",
-     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
-     "pages": [
-      4,
-      5,
-      6,
-      7
-     ],
-     "how": "cited pages",
-     "locators": [
-      "p. 4, Line 3, rule 6, \"If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year, you can increase the amount determined in (3) or (4) by $1,000\"; p. 5, Line 3, \"Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\"",
-      "p. 4, Line 3, rule 6, and p. 6, Line 3 Limitation Chart",
-      "p. 6, Line 3 Limitation Chart, 'If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month'",
-      "p. 7, Line 7, \"If, at the end of 2025, you were age 55 or older and married, use the Additional Contribution Amount Worksheet\"; p. 5, Line 3, \"Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\""
-     ],
-     "cols_pages": [
-      4,
-      5,
-      7
-     ],
-     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
-    }
-   ]
-  },
   "f8889.allocated": {
    "subject_sha": "48ff5ddecfc02cabf84c0035d6bd3d457a6c84591d9b3279ccc6f07ddab0fd18",
    "samples": [

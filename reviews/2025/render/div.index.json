@@ -4,7 +4,9 @@
  "family": "claude",
  "base": "e5e59509b9ae4437c5913d7df2f1aec76efdbf21356bbdc72ea0383125cb0c54",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
+  "lines judged": "43",
+  "match / mismatch / unclear / missing": "42 / 0 / 1 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -75,9 +77,9 @@
   },
   {
    "key": "box1a",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "b546673e038f4445dba647fe3c8d6fcda76f6a423a8e973123a022d405011dda"
+   "subject_key": "8bf120237868d2461ef52fe9e4cc19059adc3da27d67c8afe9eb4cee2114220f"
   },
   {
    "key": "box1b",
@@ -87,9 +89,9 @@
   },
   {
    "key": "box2a",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "2c84b7e9dba6b221882e0268e446f37fac0534a20c7807b1abd6db68f7f677a6"
+   "subject_key": "d7fe439e4b21be5839f0808812c1fde48c7c55012843886f2f4244fc0ab23f19"
   },
   {
    "key": "box5",
@@ -99,69 +101,70 @@
   },
   {
    "key": "section1202",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "31f943966cf04aab3bb6b8601badc4f88b3e56be5e714e35e3da5d607ce4079b"
+   "subject_key": "98046968696b88ccd6149b5fab578802fb249c870150d6238982240e1b55188a"
   },
   {
    "key": "amt",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "5d64da3f87e306393a1708f4301f491d98b525eac2aafe48e1bb9e6df671df73"
+   "subject_key": "bb5b2f1ceaf1a59cf111052513c82e816b507c3e81035fa65250cae6054d0320"
   },
   {
    "key": "unsupported",
-   "record": "25b447d37a964971495325b8f3f08797815dacd76fd49b6543c2604278fea9b0",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "47bc3a274fcd195d5c25a19c42149614d9db77c87d490a39d27f84b9a0020052"
+   "subject_key": "fa418642aac801c98f404a6bc2021f5f7d437f4ef6af9916989902ac2157d543"
   },
   {
    "key": "bad_special",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
-   "status": "MATCH",
-   "subject_key": "226e5aacd525c198cbe652a9e96b826ffd9a3067511d8f7ef7cb92a1438a36a6"
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.2025.div_gain_portions_disjoint (cited on div.bad_special), as the earlier ruling. f1099div p. 5: \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\", \"Box 2c ... section 1202 gain\", \"Box 2d ... 28% rate gain\". The model accepts each single-box test and objects only that the text does not say the portions are disjoint; that is the register's text at issue, whose chosen reading (disjoint, each box a different kind of property; the test can only refuse an entry, never change an amount) the restatement follows. Project stands.",
+   "subject_key": "d382f578d5e4d48945131aa06a41eeeb78d1ae1940eb5d4753a69ce09f45c31d"
   },
   {
    "key": "screen",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "603087ad33e6a48f35707ac1fb680d658b90ac91a965224d8afc40eca4793178"
+   "subject_key": "f5583f39d76cd2a261f349b434a091573578eb08727c6707b06662baf3ccac18"
   },
   {
    "key": "bad_components",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "cc27a255e076e532192893dd016e769458599ac1b5f4d4063b2469019c3ecc7f"
+   "subject_key": "883e37324e5491df1177fd7b466dd3725b3efbe01cc38eff266c87399a76171e"
   },
   {
    "key": "special_total",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "bd0840dfb5919b6a30f67f1b40d5723f921efdfcf219ece716554ea3bebdd932"
+   "subject_key": "edabbce5bf9eb65f3361fc39ddc0074bacbd627de5d99cfe62f986d027c3bc38"
   },
   {
    "key": "any",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "53f5c0a552abcd1e7de4b3d1b5bd5c500a03e61bd50f752d664e7dfd449c4488"
+   "subject_key": "bcfddc39f653003af6105e0bf3b862fe82ed32424dce35ab56675e1b34a1e06d"
   },
   {
    "key": "has_ordinary",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "46d1ca9a49c650348043c7d9237fc1c1b0d39129db9e397ba61809f05e703941"
+   "subject_key": "b1ee0c889ecad68622b5bda9e67f6e7670de1b92d0748250a33cb8e58f805f44"
   },
   {
    "key": "has_capital_gain",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "7be3f9f840625a04a027cd66c14572de45464edd6c12144907592aa1a3089836"
+   "subject_key": "fa71fbd8cb5acac56e70de0c459cafa3bf4f86026d0d59f5b499843a42a5dc7d"
   },
   {
    "key": "has_return_of_capital",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "06032b8ea3ef2979e66962922c7d4461d6961df5857101ac580b997b25ae5b03"
+   "subject_key": "02e0388c9b991bec73ec8bde36133690427f813cae5def2f6ddb957a2a449b11"
   },
   {
    "key": "zero",
@@ -171,75 +174,99 @@
   },
   {
    "key": "no",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "e7c3209dddb002a95e0d930a71165daeebb064ee91e11bbd78d33acf209e4113"
+   "subject_key": "748f1992b6bf645719e635f588b578d056e4b5523b0eee8008c0e8c389313f0d"
+  },
+  {
+   "key": "other_boxes",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
+   "status": "MATCH",
+   "subject_key": "1e606affbc6abe4b54e97ce247045636dc4ec9f391a311931280989de286702e"
+  },
+  {
+   "key": "other_boxes_if_dividends",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
+   "status": "MATCH",
+   "subject_key": "3c3efa4af0d65461951af5a925b1f7c11fb5733ce1a73aa7a5da7ddf075282a7"
+  },
+  {
+   "key": "capital_gain_boxes",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
+   "status": "MATCH",
+   "subject_key": "5cd8672a1bdb3abf0b099f6a364ed55ea1b1b1eaf7a97928b911c337f8050004"
+  },
+  {
+   "key": "ordinary_boxes",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
+   "status": "MATCH",
+   "subject_key": "d581902d22eb0255d1cdf990862a2866c00250891f3e9a13acb72d8f11d9b582"
   },
   {
    "key": "box2b_if_capital_gain",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "5c373944bbfb29c9585efae56bbc9794ca943c972ebdccd9de42938e4fad18e7"
+   "subject_key": "a7bccd63baa78c19fed5b8cfe37050a29307c782ec86e0f33972f3c253d2b48e"
   },
   {
    "key": "box2c_if_capital_gain",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "bf4c1ef5b7f549a9dddf0271091dde9910454f0aa30c55aa8d113b4f0c30322e"
+   "subject_key": "1bb1d2dfae4bebd44ed9dd920001783e4f04a2f0130694a4b5ec7b7aa5bab7d5"
   },
   {
    "key": "box2d_if_capital_gain",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "b9869a579e9b8455d823dc6a165bf262b73422b4195540dd92fb7a1b998e4e56"
+   "subject_key": "711be17a1028a3f58882e8b9e45aae66691277c2d290c080539c478afa8d9e25"
   },
   {
    "key": "box2f_if_capital_gain",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "33b34dd3d8b7dc7ac8d88682dc8f23bd5cb620c1244cbf5ee309ff40e84c7866"
+   "subject_key": "0c70c39497668ce58a0b06d911fe0915226fb6189a225143ce76b5f8aec425a8"
   },
   {
    "key": "box2e_if_ordinary",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "243b443c2305bbf98ae0d1e49cb526a222caff2f07d239343fced8273b0fc625"
+   "subject_key": "defdf1b62839c9f0a65faa72842c3ed2df9fbdf9e5246351f8f52ab5560e9d31"
   },
   {
    "key": "box3_if_dividends",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "9f464ff1a7e47b95ebbb8f9b8fdcdfe339929be7ea9f6205b1e5b005192b87c4"
+   "subject_key": "16101a0fc39174d37260db509318ba2024705cf5522a7b9ee033661fd9ee2079"
   },
   {
    "key": "box9_if_dividends",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "72df77a15935bf8451f20cf54c3a2be0e0c21df43ae87f9f2351df4d4c0d1927"
+   "subject_key": "36bafead9d7c39b09288fc6bb00bcfc8dfc8f752611da3b186cdd7dc05f8a679"
   },
   {
    "key": "box10_if_dividends",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "08a75e6e5ca6b47e763d4149214afb386e80b1417de995a588b27d08550ca883"
+   "subject_key": "2052db6e87531c6d6724416cfc5369ff993ccf3092b9a25c0d663c8ecf2bff5e"
   },
   {
    "key": "box12_if_dividends",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "5f3e1c3d3d05165761357965a8ddb61f80acf9779309b2180114608021a820c8"
+   "subject_key": "c1622c8efe4de8a1778f2ce9d0bc5ca560e1b8d86ce73df90fa8542d72ceb0f5"
   },
   {
    "key": "box13_if_dividends",
-   "record": "270184f617f3fbb54725e96ca3b3d7ecee12b35081d11af25631ddb0a112fba6",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "5512e0c13e95f63cb0560277a23089ce15896c22d50829fd5cfd69e20118ba57"
+   "subject_key": "669471046eed9c00665baf318672108e9f11b24bf4d6480288ea3be4f6928643"
   },
   {
    "key": "basis_reconciled_if_return_of_capital",
-   "record": "25b447d37a964971495325b8f3f08797815dacd76fd49b6543c2604278fea9b0",
+   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
    "status": "MATCH",
-   "subject_key": "a14901b0315c7e4c89c2e2568bde0c8d3f75d2d7eb4d3f2b77cd40381c8d93fd"
+   "subject_key": "7f36489836a0d32d14f872467611b26984aacce696641e9668fa29a0890c6423"
   }
  ],
  "subjects": {
@@ -254,34 +281,38 @@
   "box12": "c44a263712c56dc638fc6fd0d9cbce69558783a492154d3345eb18595528d2e6",
   "box13": "184ff288b4b9d7fe14588a16572d762bc3cb7bfc2f8a1dfa8fa37a01b6d2faa5",
   "basis_reconciled": "9eb732c2bbcbab7c637fa80c79bc52d8ef418ffed68cd0eb4a56b0f40ead041c",
-  "box1a": "c2ca6a18c1f899686e4a4b355ff907977cf334ee2f801df782df55295cb0856c",
+  "box1a": "a034c3cd8fee211510f5cc882fb1c020dca4c1a1bf3bab95249215e158862ffa",
   "box1b": "0e7b7fec792f5764cc28b07d9330d43209f75400bf712a71f8a40b1c0eb68d58",
-  "box2a": "5a1ed9c77232175bac9afb483c02ec3e66c79a3df2bfa1745aad5418d70d6841",
+  "box2a": "b37c89d2963b1c500e568088a5870dc7119ee672fc524c419147c62fd97163b5",
   "box5": "8fd5282ce32ec47c7ac709abf5d672d08577dc833de40390585d4f1299554c66",
-  "section1202": "6b00f5ce1417288f84206cd1427b951e737f4fa1de00dd4d58e754cebddc4b25",
-  "amt": "53f7de60dd06c05757c33966960523a74dc66290c0da7ee42d0ca06ec9e30c86",
-  "unsupported": "0f9d03b44cbbd7fcdcf5644d21b823f8f527b295df403bee0d182e1b44c1812f",
-  "bad_special": "0d2b26e1982c3ec085af815b03fc7db7b65d7ecfff6afb2a44bae484290a5a88",
-  "screen": "5ed163c00b4965b8019f9ffea9148f90185cfd840659bfe2882f524ec22d6c99",
-  "bad_components": "78a765130805bb1c24ec4c9ed5b02bd461bafed00e929832e0d9f9b391ed1c0e",
-  "special_total": "ff93f028621361b560c7f815ab966f15888c4f6102e32074b591840279cf4b5e",
-  "any": "f7f8eca4f900dfd8b63b82e54587955b167a76f5c5ab6bc4734be37567d6e1c9",
-  "has_ordinary": "32036257a0fa989dfd8e10094f125efc9b72bd230fddc92d4a2b796b3efa7c48",
-  "has_capital_gain": "85a4c63ed1422645a8fe52bf464c0b554436d510c09a526e6cadb79c44bee847",
-  "has_return_of_capital": "0ede2ce620dc25d6bbfbe579697700eb1bfdf8bda58049aa1b8c8b2a3c7c98c7",
+  "section1202": "e03e6f4df32da567b13419362513830498af7926f8fa13be6e4f316a938d3a0f",
+  "amt": "f9dbc4d457102de0580b04f4e1e3dcef5a4fb87a0bb482d5247a85ca6a20fe96",
+  "unsupported": "9b786b502e61edb09121c56f5b73493634bc89ee8e3f68274e7484c8250586f8",
+  "bad_special": "938b96ad425b44c5e364e50fde3c37952c9276015a5d8cb5e5679387156c9613",
+  "screen": "bb67fef9a76c3a95504e7a6d381c4eb817355b82b71538b6dc508c61c7472664",
+  "bad_components": "705f85664e6bef21ad87ede7c8600b2e47329f442d0390945cad517e39a6c60a",
+  "special_total": "296060a43a94eb10baee65c8eac4e996c2d1b23d8243a0faec781ea94564ebf5",
+  "any": "dfcabea1e741a32e30e2d424d87493303faa7c8dc991f4b769b56f895f7f174b",
+  "has_ordinary": "63bd2089704c5a03b2e58fdae591f716dcdda2b81aa2833e3456ca6dcf5271b6",
+  "has_capital_gain": "a789a03c8dac76e1a8d789b4ba94c1bc98ab70f74d2821da7efc22e1b7e6c3fb",
+  "has_return_of_capital": "985299d004e054999e8c8983b2bd0829c054a0971582f13921107e4caeaed83c",
   "zero": "81e03ac28d2a7399c7206d4cd2fa6b2067819991a0664e25e4bc8ec9f103e06b",
-  "no": "86328eb62e9effb0a35b5d4f2a9bef67a69f51fc25ab32d083f572d30517a742",
-  "box2b_if_capital_gain": "093826c9dc75713c909e45b766421db55ae12cf2ecbbf096020e52c32a6594a6",
-  "box2c_if_capital_gain": "912015453f6bf32ef6c2d51416f68c7693efe2c027633c1e7fa793db82373690",
-  "box2d_if_capital_gain": "501e9a966270d4e7a45463476870d4380d169c763dd6495a4162461bb5a991c4",
-  "box2f_if_capital_gain": "8d01e7f4c0fbb736e3ad2b9e7818c90b3dd4a6055c61b8a59649472125b3c25f",
-  "box2e_if_ordinary": "b494c27376ff2e5f747ae37a039f36150b801f894472565f8e51ea5ce055abe2",
-  "box3_if_dividends": "8f6b745edc950ade02538cfc7dac3b253f1a21eedb05b983c950ab8b3b5337a8",
-  "box9_if_dividends": "0f74bf2ae66db1caf27cd5c137a9ad1c233e982864fbc1413c5fc8daa8eb1432",
-  "box10_if_dividends": "2f5a7042c5bd9c193d85a8e12688d7ed01f64b7d7fdb23ef8d318c001b2a4194",
-  "box12_if_dividends": "36a77b3b763ca983d7348a792268309d5fba94dad3f2fe2862b33eff4046f496",
-  "box13_if_dividends": "cc1bbd38fb0b42bea0647bef3c964a4d0f7de3552c9f0366a998f3d9422c661b",
-  "basis_reconciled_if_return_of_capital": "b83f9fd9363de7eaf10a0cdb84fd4f025f3c720773360ad280d0da9bfec6adab"
+  "no": "391d40a1f9f5ab614db6f5989d07350c57431364b2a7c5530334af4c5aae8bec",
+  "other_boxes": "258621864ad8171829ef4c89075dabd80f64ab6556ebbc088cd0eaa1cc38e7a3",
+  "other_boxes_if_dividends": "18a72042bea061bac1dafef4f90c0e1766a79982cf7d5f0b62bc1d71d44a31dc",
+  "capital_gain_boxes": "046574836d220255ce52f0d1c3904c8f70f265f7726cac0605535004cf407e4d",
+  "ordinary_boxes": "abba669dc886b8fa7dbc346d1819177ec49ba7fc715ae8ec0b6d9fd73fd4458f",
+  "box2b_if_capital_gain": "4ad8c0af065ac14e990df6b3a16c80801718b8e56627acdb44e70266bbc583cd",
+  "box2c_if_capital_gain": "87be7cedbeb9693eb95f5e5a878f5135d132c23a565dc687e80eb92f4f8875d7",
+  "box2d_if_capital_gain": "3b8c381c9c7466a6e865f0e48b0f30298dd4a5d0e963cdbd18c7918c36061bca",
+  "box2f_if_capital_gain": "ce48b7453865536cd8707447cd1fbb4b8f00c7621dc328c187b8cdb3c9d83915",
+  "box2e_if_ordinary": "422ac1325dc9dbf882203e507fa4a4a01780676c3249a0c4ac122b4604edeb4a",
+  "box3_if_dividends": "072542621917b3401abaa0f4360c6d8ceda4ede6918cc679e98d252b4c855ea6",
+  "box9_if_dividends": "ac57f7c01290810cb0f9f926262dcdcba265608715473f3a6a4365f866e5766e",
+  "box10_if_dividends": "bc76ac55ce91fe4acb992a4b50239e4c83868a1276d00b93529ed5f4660730f9",
+  "box12_if_dividends": "04a45ebb9d3cd8d2b9c1f0d405c89f6e9851278d800a0ef9e0863fddd80a3bb2",
+  "box13_if_dividends": "db88467b427d6642efc7b3e9db3b5c1e03cd507ac1d1933a5adb1b3c62ff145b",
+  "basis_reconciled_if_return_of_capital": "4724a9df849c863d4501e6f1b7b9ebf1ae8ad6729325ba81ad245ebba5f1fc38"
  },
  "__rest__": "a85f53df7da43a251cbe59da94288581f632b3d79e337c9ee2ba4785671b029b"
 }

@@ -136,3 +136,29 @@ Logs re-reviewed today on the package's tree; triage rerun with `tools/transcrip
 | deepseek | render | (c) | scope | - | this marker is the business basis before section 179 and the special allowance (its label); the reduced basis is 19(c). asset.screen refuses property whose basis "is reduced by a credit or deductio... |
 | deepseek | render | 25 | representation | - | restatement accepted. The per-asset allowance appears on line 25 for listed property and line 14 otherwise, figured by the same instructions (i4562 p. 14, "Enter on line 25 your total special depre... |
 | deepseek | render | 26(i) | representation | - | i4562 p. 5, Line 6, and p. 16, Column (i). asset.f26i copies asset.s179, the per-asset elected section 179 cost; the printed line 6(c) is the non-listed column, so "from line 6(c)" is loose wording... |
+
+## Landing round (2026-11-14)
+
+Claude transcription, line pass 5e41b3397541 of 2026-11-14 (redraft over main 83c7d1c0), 16 open lines, all ruled by the land3-adj4 lane (claude-opus-5-5, judgment). Triage `.transcription/triage/2025/asset.json` (log sha matches; 3,086 comparisons per line). Rulings applied with `rule.py`; full text in the sidecar.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | dep_this_year, bonus_this_year, s179_this_year, mq_q4, mq_total, dep_prior, 14, 25, 26(i), 19(c), 19(g), 17, 26(h) | representation | 1,841-2,142 agree each; unknown or refusals only, no value witness | i4562 pp. 4-15 | Equal where both evaluate; the reply reads gated inputs and declares its own screen. |
+| claude | transcription | (c) | representation | 1,422 agree; every value witness is the reply's after-reduction basis (bonus_100 $20,000 v. $0, bonus_40 $10,000 v. $6,000) | i4562 p. 11, Column (c) | The reply's (c) is i4562's column (c), which the project carries as 19(c). |
+| claude | transcription | (screen) | scope | 2,132 agree; stage14.asset.* single properties, bonus_choice none, bonus_same false by fixture default: false v. true | i4562 p. 7, Election out | The screens refuse different property; no computed amount differs. |
+| claude | transcription | asset.cost179 | model error | 2,045 agree; all value witnesses have use 50% or less (stage18.mut.classm_f8962_4_nov_start item_2 $0 v. $2,482.83; generated 3, 25, 46, 177, 182, 269, 403) | i4562 p. 3, Part I, "used predominantly (more than 50%)"; p. 4, Line 2 | The reply counts property not used more than 50% in the business. |
+
+Counts: representation 14, model error 1, scope 1. Observation (not ruled, no bug filed): fixtures/2025/defaults.json gives asset.bonus_same the closed default false with the reason "the circumstance ... does not apply", but false is the circumstance (a mixed choice within a class); the project's asset.screen does not refuse an election out with bonus_same false (the other property in the class is refused on its 100%/40% path). Findings: none.
+
+
+## Landing round (2026-11-14), class M
+
+Lane land3-adj12 (claude-opus-5-5, judgment). Claude class M log of 2026-11-14 (subject hash equal to the current computation); `carry.py --kind classm` ruled nothing. Rulings file `/tmp/land3-adj12/asset.json`, applied with `rule.py --kind classm` (see the lane note `docs/provisional/lanes/land3-adj12.md` for whether it has been applied: the review store index for this log had not been carried into the landing tree when the rulings were written).
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | classm | classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].period | model error | dropped from the fixture | p946 p. 35, Table 4-1 (GDS using SL) | project retained. The item is qualified improvement property placed in service after 2017; p946 Table 4-1, GDS using SL: "Qualified improvement property (as defined in se... |
+| claude | classm | classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].macrs_this_year | model error | dropped from the fixture | p946 Table 4-1; Table A-12, 15-year, year 1, 0.83% | project retained. Follows from the model's method: it applied Table A-5 (150% DB, mid-quarter, fourth quarter, 15-year, year 1 1.25%) to $18,751.20, but qualified improve... |
+| claude | classm | classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].basis | model error | dropped from the fixture | i4562 p. 11, Column (c); the line's label | project retained. The line requested is the project's '(c)' marker, labeled "Basis for depreciation (business/investment use only), before section 179 and the special all... |
+
+Counts: claude classm model error 3. Findings: none. Left open: none.

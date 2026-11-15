@@ -45,3 +45,13 @@ rulings before round 4 are archived in `.transcription/archive/before-round4-202
 | deepseek | 22(iii) | model error | 102/141 agree; 32 candidate-unknown, 4 project-unknown, 3 value | fr-2025-24154 p. 21, proposed § 1.163-16(d)(2)(iii)(A) | Prorates every loan, mixed or not, so it requires the amount financed on loans the text needs no allocation for. |
 
 Findings: none. Project lines unchanged.
+
+## Landing round (2026-11-14)
+
+Interview redraft (landing worktree), Claude line-scoped pass 7f12a8604c3f. Triage `.transcription/triage/2025/carloan.json` (executable-triage-v2, regenerated 2026-11-14 on the fresh build; not rerun). Rulings applied with `rule.py`; full text in the log and sidecar.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | 22(ii) | model error | 307/389; 39 value, 43 candidate-unknown (4 completed) | fr-2025-24154 pp. 21, 23, (d)(2)(iii)(A), (g)(1) | Smaller of the whole Schedule C interest and the QPVLI, not prorated (stage12.car.mixed_sc_interest_prorated $84.80 / $106.00). |
+
+Counts: model error 1 (1). Findings: none. Project lines unchanged.

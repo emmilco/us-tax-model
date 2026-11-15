@@ -3,6 +3,66 @@
  "form": "div",
  "rulings": [
   {
+   "printed": "div.box2b_if_capital_gain",
+   "project_expr_sha256": "5a4999d131e6de1e51eb51dad7683a1a8d704f3d24c1ebd55db6d3b22db53bc1",
+   "second_expr_sha256": "92303e9ddd51d1798a5574a95d5df9fb89f827aa8df37901a2f25ceb2a2acb00",
+   "ruling": "Ruling: representation; f1099div p. 5, Instructions for Recipient: \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\". The project asks box 2b only when capital gain distributions (box 2a, sd.distributions) are above zero and a Form 1099-DIV shows an amount in the less common boxes (div.capital_gain_boxes); with box 2a zero, box 2b, a portion of it, is zero. The reply tests div.any and div.other_boxes only and so reads div.box2b where the interview does not ask it. executable triage (.transcription/triage/2025/div.json, executable-triage-v2): 2,916 of 2,974 agree; 4 candidate-unknown, 54 project-unknown, all on incomplete or refused returns; no value difference. Project stands.",
+   "context": "70be8e3c2bf6ada7efcea44cdfbd7a92c1e0f99a7bf2b8a96d77abf42e7069ac",
+   "date": "2026-11-14",
+   "run": "02dfe9cd5d651bf8dec653297dd8a102f13ea3fc6368e986371976269e009deb",
+   "subject_key": "7cf70a5835ca4253389dfc992a75d4bd8beefcfd94dda622c6b66213492dd0fe",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.2.deepseek@div",
+     "fixture:classm.s1.2@div",
+     "fixture:classm.dependent.3@div",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@div",
+     "fixture:stage16.cleanup.refuse.f1040_line16@div",
+     "fixture:stage16.cleanup.refuse.scope_credits@div",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@div",
+     "fixture:mutation.m3.div.boxes_no_capital_gain@div",
+     "fixture:mutation.m3.div.return_of_capital_no_capital_gain@div",
+     "fixture:mutation.m3.div.box2e_no_capital_gain@div"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "div.box2d_if_capital_gain",
+   "project_expr_sha256": "2ad57b1c31c5fede9921c400d3ab0d702c86866fb6363b8b8efa6f45d20fab49",
+   "second_expr_sha256": "0c4cb8673eadc1dd0a640e8b0b0c3b728fca605ca8be2d6d762b72b7e4b2b335",
+   "ruling": "Ruling: representation; f1099div p. 5, Instructions for Recipient: \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\". As box 2b: the project asks box 2d only when box 2a is above zero (div.capital_gain_boxes); the reply drops that parent and reads div.box2d where it is not asked. executable triage (.transcription/triage/2025/div.json, executable-triage-v2): 2,916 of 2,974 agree; 4 candidate-unknown, 54 project-unknown, all on incomplete or refused returns; no value difference. Project stands.",
+   "context": "70be8e3c2bf6ada7efcea44cdfbd7a92c1e0f99a7bf2b8a96d77abf42e7069ac",
+   "date": "2026-11-14",
+   "run": "02dfe9cd5d651bf8dec653297dd8a102f13ea3fc6368e986371976269e009deb",
+   "subject_key": "17c3c5c4439f56e00e0647d7a03d495368b5cad2f32294a5889affcb86886812",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.2.deepseek@div",
+     "fixture:classm.s1.2@div",
+     "fixture:classm.dependent.3@div",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@div",
+     "fixture:stage16.cleanup.refuse.f1040_line16@div",
+     "fixture:stage16.cleanup.refuse.scope_credits@div",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@div",
+     "fixture:mutation.m3.div.boxes_no_capital_gain@div",
+     "fixture:mutation.m3.div.return_of_capital_no_capital_gain@div",
+     "fixture:mutation.m3.div.box2e_no_capital_gain@div"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "div.has_ordinary",
    "project_expr_sha256": "29d5ea1a1d08d778145d0d675229edc36e7591439c72ceeff3db96afb8eff0c4",
    "second_expr_sha256": "38abfb74dd5bf469ab54eac8af90bbb3e4dc28d41477cc6e947d3117d46e604e",

@@ -28,6 +28,10 @@ export interface Derivation {
   guardsNotTaken: { guard: string; value: Value }[];
   notes: string[];
   takenGuardIndex?: number;
+  /** Set only when evaluating with `ahead`, on a line held behind a refusal gate that awaits its answer: the unknown
+   * input the line's own expression reads first (an input line's own key, a collection sum's roster), which the line
+   * needs as soon as the gate is answered no. */
+  awaits?: string;
   /** A choose with an unknown guard: every way the line can still resolve, in alternative order (chooseUnresolved). */
   paths?: ChoosePath[];
 }
@@ -58,12 +62,27 @@ interface Ctx {
   memoLog: string[];
   inProgress: Set<string>;
   errors: string[];
+  ahead: boolean;
 }
+
+/** `ahead`: the reach pass, which finds the inputs a return is certain to need before the evaluation proper reaches
+ * them. Its values are not the return's (use an evaluation without it for those); `inputsAhead` runs it. It differs in
+ * two places, both about a line's refusal gates, which are read in order, the first unanswered one leaving the line
+ * unknown:
+ *  - past an unanswered gate, the gates after it and the line's own expression are evaluated as well (unless a later
+ *    gate already refuses), exactly as they will be once that gate is answered no. The lines read so are added to the
+ *    derivations, and `Derivation.awaits` carries the unknown input the held line's own expression reads first;
+ *  - an `all` or `any` test stops at its first unanswered operand. The evaluation proper goes on to the operands after
+ *    it, which the answer may make moot; nothing is read ahead beneath those.
+ * So every line read ahead is read by the return unless a gate ahead of it refuses or the test operand above it is
+ * decided without it, which is the condition under which the line's first gate is read today. */
+export interface EvalOptions { ahead?: boolean }
 
 export function evaluate(
   data: CanonicalData,
   inputs: Inputs,
   targets: string[],
+  options: EvalOptions = {},
 ): EvalResult {
   validateInputs(data, inputs);
   const ctx: Ctx = {
@@ -74,6 +93,7 @@ export function evaluate(
     memoLog: [],
     inProgress: new Set(),
     errors: [],
+    ahead: options.ahead === true,
   };
   const rootFrames = new Map<string, Frame>();
   for (const target of targets) {
@@ -104,6 +124,17 @@ export function evaluate(
   const values = new Map<string, Value>();
   for (const [key, d] of ctx.memo) values.set(key, d.value);
   return { values, derivations: ctx.memo };
+}
+
+/** The unknown inputs the reach pass finds (EvalOptions): those an evaluation of the targets reads on the way to its
+ * first unanswered points, and those held behind a refusal gate that awaits its answer. */
+export function inputsAhead(data: CanonicalData, inputs: Inputs, targets: string[]): Set<string> {
+  const needed = new Set<string>();
+  for (const der of evaluate(data, inputs, targets, { ahead: true }).derivations.values()) {
+    if (der.value.kind === "unknown" && der.value.input) needed.add(der.value.input);
+    if (der.awaits) needed.add(der.awaits);
+  }
+  return needed;
 }
 
 /** Evaluate every line of the given documents (used by compare/fixtures). */
@@ -221,6 +252,8 @@ function evalLine(ctx: Ctx, frame: Frame, lineId: string): Derivation {
     const gateOps: { ref: string; value: Value }[] = [];
     const gateNotes: string[] = [];
     let blocked: Value | null = null;
+    // With `ahead`, past the first unanswered gate: `settled` once a later gate refuses whatever that answer is.
+    let settled = false;
     for (const refusal of line.refuses ?? []) {
       const before = refusal.when_known ? new Map(ctx.memo) : null;
       const gate = evalLine(ctx, frame, refusal.when);
@@ -231,15 +264,29 @@ function evalLine(ctx: Ctx, frame: Frame, lineId: string): Derivation {
         gateNotes.push(`Check for ${refusal.form} awaits supplied figures; no answer was assumed.`);
         continue;
       }
+      if (blocked) {
+        if (gate.value.kind === "refusal" || (gate.value.kind === "bool" && gate.value.value)) { settled = true; break; }
+        continue;
+      }
       gateOps.push({ ref: gate.line, value: gate.value });
       if (gate.value.kind === "bool" && gate.value.value) {
         blocked = { kind: "refusal", gate: gate.line, form: refusal.form, remedy: refusal.remedy, cite: refusal.cite };
         break;
       }
-      if (gate.value.kind !== "bool") { blocked = markPending(gate.value, true); break; }
+      if (gate.value.kind !== "bool") {
+        blocked = markPending(gate.value, true);
+        if (!(ctx.ahead && gate.value.kind === "unknown")) break;
+      }
     }
     if (blocked) {
       result = { line: key, op: "gate", value: blocked, operands: [], cite: line.cite, guardsNotTaken: [], notes: [] };
+      if (ctx.ahead && blocked.kind === "unknown" && !settled) {
+        if (line.expr.op === "input") { if (ctx.inputs[key] === undefined || ctx.inputs[key] === null) result.awaits = key; }
+        else {
+          const own = evalExpr(ctx, frame, lineId, line.expr as Expr, line.cite).value;
+          if (own.kind === "unknown" && own.input) result.awaits = own.input;
+        }
+      }
     } else if (line.expr.op === "input") {
       const raw = ctx.inputs[key];
       const value: Value = raw === undefined || raw === null
@@ -751,7 +798,7 @@ function evalTest(ctx: Ctx, frame: Frame, test: TestExpr, ops?: { ref: string; v
     for (const t of tests) {
       const v = evalTest(ctx, frame, t, ops);
       if (v.kind === "refusal") return v;
-      if (v.kind !== "bool") { pending ??= v; gatePending ||= anyPending([v]); continue; }
+      if (v.kind !== "bool") { pending ??= v; gatePending ||= anyPending([v]); if (ctx.ahead) break; continue; }
       if (v.value !== isAll) return {kind:"bool", value: !isAll};
     }
     return pending ? markPending(pending, gatePending) : {kind:"bool", value:isAll};

@@ -289,6 +289,16 @@
   {
    "printed": "20a",
    "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
+   "model": "The restatement enters the business portion of the lease payments with no reduction. The instructions say 'But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount,' and no inclusion amount or refusal covers that case.",
+   "ruling": "Ruling: scope; i1040sc, Line 20a: \"But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount\", as the earlier rulings. An inclusion amount for leased property is refused for the business: sc.special lists \"recapture of depreciation or section 179 on listed property, ... or an inclusion amount for leased property\", and sc.screened (which reads sc.special) refuses Schedule C line 1 (forms/2025/sc.yaml). So line 20a is the business portion of the lease payments on every vehicle that reaches it. Project stands.",
+   "context": "8692c9d1a19c1c083852466e3cca4d3bc64d67f97bfcbf120f162b025c225484",
+   "date": "2026-11-14",
+   "run": "b79806f367d76386c3a3d201f7b93ad717c91001893b3aaf654e61b19cb288bb",
+   "subject_key": "5e199f142de998a8419aa9b931193a9e60f628c0e90f66e045349efceed3a92d"
+  },
+  {
+   "printed": "20a",
+   "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
    "model": "The restatement enters the full business portion of the lease payments and has no refusal for long leases. The instructions add: \"But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.\"",
    "ruling": "Ruling: scope; refusal located elsewhere, restatement accepted. i1040sc line 20a, \"if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount\": sc.special refuses \"an inclusion amount for leased property\" for the business, read for every Schedule C (the wording is unchanged by this package; checked in forms/2025/sc.yaml).",
    "context": "f6345ae61a79869f6f57bc9e71269feb338df13f10b69919164501985a59dd89",

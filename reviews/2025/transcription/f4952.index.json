@@ -4,15 +4,15 @@
  "family": "claude",
  "base": "44f0df5a5038d97470818cf392daf80248b4e3bef4d97816b446d24e6f893c35",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "f4952.required",
-   "record": "493a6bff65be52d34101d56c83c6fa7a00d80684362ad5707a4e56d6b02c0977",
+   "record": "b92b9e8fdb136f65a4a862f90a1c85a8027fb43cce58d36296dd5b6227c153dd",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; same disagreement as the earlier rulings on this line. f4952 p. 3, Who Must File: \"If you are an individual, an estate, or a trust, you must file Form 4952 to claim a deduction for your investment interest expense.\", with the Exception; f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income (don’t enter more than the sum of lines 4b and 4e).\" The reply's filing test has no disjunct for a positive line 4g election, so a return whose interest meets the exception but which elects on line 4g is told the form is not required (fixture classm.f8880.2.deepseek: f4952.line4g 971900, f4952.has_interest yes, no carryover, investment income above the interest; the project says required, the reply not). Triage executable-triage-v2 (`.transcription/triage/2025/f4952.json`, pass c48595c59516; 1,767 fixtures, 500 generated returns seed 20261026, 244 partial records): 2,231 of 2,363 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 9, \"candidate-unknown\": 5, \"project-refuses\": 92, \"project-unknown\": 75, \"value\": 52}; on completed returns 19 value differences (the recorded witnesses are all of this kind: the project true, the reply false) and 1 candidate-unknown (the reply reads f4952.unsupported on a return where the project's f4952.used is false and the screen is not asked). The project refusals are at its cited gates (f4952.unsupported, f4952.alternative_allocation, f4952.bad_election) or reach the line from other forms. The project line is retained.",
-   "subject_key": "f9fcf9df73182082406b0c1db69ebcd502d1e4496a7155be3ef9bc871a92c572"
+   "ruling": "Ruling: model error; triage 2,581/2,730 agree; 33 value differences (3 on completed returns), every one witnessed with an election on line 4g and the exception's three conditions met (e.g. classm.f1040.2: has_interest yes, line 1 $2,441, line 4g $5,992, no carryover): the project says the form is required, the reply says not. Form 4952 instructions p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\"; the election is made on the form, so the p. 3 Exception (\"You don't have to file Form 4952 if all of the following apply\") cannot excuse a filer who elects. The reply reads only the exception and ignores the election. Its other differences are refusal placement and the project's has_interest gate (unasked line 1, carryover).",
+   "subject_key": "61a718d3c08a11bc79e43f9c114d2488f699c6f85ba50b27bfed9b8ea7605258"
   },
   {
    "key": "1",
@@ -28,10 +28,10 @@
   },
   {
    "key": "2",
-   "record": "493a6bff65be52d34101d56c83c6fa7a00d80684362ad5707a4e56d6b02c0977",
+   "record": "b92b9e8fdb136f65a4a862f90a1c85a8027fb43cce58d36296dd5b6227c153dd",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f4952 p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\". The reply takes f4952.prior_7 when f4952.carryover is true and zero otherwise, the project's amount; but it reads the input f4952.carryover where the project reads the gate line f4952.carryover_if_interest, which is f4952.carryover only when f4952.has_interest is yes and false otherwise (the interview asks the carryover only after the gate). So on completed returns where the gate is No the reply needs an answer the interview never asks (triage: 10 candidate-unknown on completed returns; the recorded witnesses name f4952.carryover); the earlier ruling that this difference cannot reach a return the interview produces holds for the values, not for the reply's need of the unasked answer. Triage executable-triage-v2 (`.transcription/triage/2025/f4952.json`, pass c48595c59516; 1,767 fixtures, 500 generated returns seed 20261026, 244 partial records): 2,366 of 2,446 in-scope comparisons agree; differences by kind {\"candidate-unknown\": 16, \"project-refuses\": 31, \"project-unknown\": 64}; the project refusals and unknowns, including those on completed returns, are at its cited gate f4952.alternative_allocation (f4952 pp. 1, 3–4: only the default allocation is supported) and f4952.unsupported, scope. No value differs. The project line is retained.",
-   "subject_key": "68989f2c861881063ade840d5edea4e14c3d3cc2a94e4ddad22e257fa58dde83"
+   "ruling": "Ruling: representation; triage 2,618/2,730 agree, no value difference; differences are candidate-unknown (16 on completed returns: the reply reads f4952.carryover, which is asked only when f4952.has_interest is yes) and project-unknown/refuses (the project's f4952.alternative_allocation and f4952.unsupported refusals on this line). f4952 line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\": with no investment interest and no carryforward (has_interest No) the project's line 2 is 0, as the reply's would be; the reply ignores the parent question.",
+   "subject_key": "32cfb796045d4d9549aeab59fbf7f9f75bd228cb0e2841834f34f15b29a8f684"
   },
   {
    "key": "3",
@@ -74,10 +74,10 @@
   },
   {
    "key": "4h",
-   "record": "493a6bff65be52d34101d56c83c6fa7a00d80684362ad5707a4e56d6b02c0977",
+   "record": "b92b9e8fdb136f65a4a862f90a1c85a8027fb43cce58d36296dd5b6227c153dd",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f4952 p. 1, line 4h, \"Add lines 4c, 4f, and 4g\". The reply sums lines 4c, 4f and 4g as the project does; the project floors line 4g at zero inside its election helper and refuses an election above lines 4b plus 4e (f4952.bad_election; f4952 p. 4, Line 4g, \"don’t enter more than the sum of lines 4b and 4e\"). Triage executable-triage-v2 (`.transcription/triage/2025/f4952.json`, pass c48595c59516; 1,767 fixtures, 500 generated returns seed 20261026, 244 partial records): 2,285 of 2,288 in-scope comparisons agree; differences by kind {\"project-refuses\": 51, \"project-unknown\": 3}, every one on a refused or incomplete return (the project's cited gates f4952.bad_election, f4952.alternative_allocation and f4952.unsupported); no completed-return difference and no value difference. The project line is retained.",
-   "subject_key": "0663045964eedc52ffd7de46404885207d6d85b33a87b17c9c3c09fd5cd0d539"
+   "ruling": "Ruling: representation; triage 2,600/2,730 agree; 21 value differences (3 on completed returns), each with f4952.has_interest No and an f4952.line4g answer present in the record (e.g. generated 465: line 4g $9,163.89 with no investment interest): line 4g is asked only beneath has_interest Yes (gated_by f4952.line4g_if_interest), so that answer is never collected and the project's election is 0. The reply sums the raw input. Where line 4g is asked the two agree; the project also refuses an election above lines 4b plus 4e (f4952 line 4g, \"don't enter more than the sum of lines 4b and 4e\"). f4952 line 4h, \"Add lines 4c, 4f, and 4g\".",
+   "subject_key": "f595e389cd96350ec0b756ca9718f03cc21976ae40ad42dea9f6f083717426e1"
   },
   {
    "key": "5",
@@ -99,28 +99,28 @@
   },
   {
    "key": "8",
-   "record": "6f9596d3bced37c987428d7365fa9862e5db8c047b407204034a47887fcf224c",
+   "record": "b92b9e8fdb136f65a4a862f90a1c85a8027fb43cce58d36296dd5b6227c153dd",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the same reply and reading as the earlier rulings: f4952 p. 1, line 8, \"Enter the smaller of line 3 or line 6\"; the amounts agree where both compute, but the reply figures lines 3 and 6 on every return and reaches the f4952.unsupported and f4952.alternative_allocation screens on returns that do not use Form 4952 (f4952.used false, line 8 $0). Project stands.",
-   "subject_key": "848ec7a486993b10954326916c75b031255f19c71116f87fbae1281fc58223c2"
+   "ruling": "Ruling: representation; triage 2,308/2,730 agree, no value difference; differences are candidate-unknown (36 on completed returns: the reply reaches f4952.unsupported where the form is not used and that question is not asked) and candidate/project-refuses (refusals reached through line 6 on returns where the form is not used). When the form is not used, line 1 and line 2 are 0, so line 3 is 0 and the smaller of lines 3 and 6 is 0, the project's value. f4952 line 8, \"Enter the smaller of line 3 or line 6\".",
+   "subject_key": "995488db1f7d5cbbfb53076a4a16c3c5f20636cbfd1b1c0ea2628721853f4e42"
   }
  ],
  "subjects": {
-  "f4952.required": "f42ab9bfd0097da1e57ebb9c6441bf778083d173cc30afc7678ee002829c4892",
+  "f4952.required": "e155970fe7fcf74521eee196eb613caae91e4e86f6f263fce2be1751e8024f8c",
   "1": "040d57fedb2d2884f77c37869c16886627408afe407590f1725a32c148cbf5f4",
   "4a": "c21d4937d2ac41d88b812da7c86688878ed02c5163ce0b9faad7ea035d8ea5bf",
-  "2": "f9e5f4bf7cfcb4d5a3a7b3a85cb940f13a5e74836087c6a76c0438e140fe575b",
+  "2": "534769559b6beaa594f4ca0327fbe32a4f792ef5e9c7ecafe2577b4af798d046",
   "3": "f86056ac188244bebd0b409f071eaf62534349ea18baf66fbb4a3b62da7f4f3d",
   "4b": "5354454438868809725d7225a618287f516687b56819a0f1391f20833873a08f",
   "4c": "6ed8f4f7add56e5ba37356af0d13416c0ce5da868ee207a1915ca4cc41b627ca",
   "4d": "39e350352eb15f2cbc6b7f28bb64f396f5de1b2423d50aa76436b1e44c15d00b",
   "4e": "174630a8e414cfd53ec1e1c3db148b9f8b24e23ba12123f8e025ffc887668202",
   "4f": "d16be06871fbe5d9c1e48fa42151588aa59c2ca6874b00cc99205231a87a92ad",
-  "4h": "be76592e83f8caf2ade9a61c09c541368ab8ee06bc080c159dd54ade8e15c36e",
+  "4h": "26f187a17399b716206cc924163bb2607285c6f80fdeabacee2b7a72f3bee55a",
   "5": "b8b5a706a5a41c5066bc301db75da460ca165498310762645f91385381aa465d",
   "6": "73868ad0c486b367c5e733328ffa97ece933dfa463b6d647d49c0bb4a921ff2d",
   "7": "ea6ef3551538e84e7d8d5f873599d0793891af205442e430186a37a3bc141cbe",
-  "8": "9740719bf581c7008dd088bd44208c755f1c6b091ea774300950852ddf7ea932"
+  "8": "a005b351f378df5dd2e6404d850da0d7a026bdeedb2cb375a45444df05622867"
  },
  "__rest__": "9b7c7c4aeba3ea3ae16cf7d238a6cce71a67f7b7722c45a41770e3a6bd2f9b70",
  "foreign": {

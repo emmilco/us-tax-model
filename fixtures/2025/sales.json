@@ -568,9 +568,9 @@
         "sales[a].wash_loss": 44900,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "sales[a].w": {

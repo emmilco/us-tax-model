@@ -8,7 +8,8 @@ import { parse as parseYaml } from "yaml";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import type { ValidateFunction } from "ajv";
 import { isMarkedLine, stableStringify } from "./util.js";
-import { entrySyntax, recordProblems, type InterviewData, type RosterChoice } from "./interview.js";
+import { blockPlaces, entrySyntax, recordProblems, type InterviewData, type RosterChoice, type TickGroup } from "./interview.js";
+import { opensMap, tickGroupProblems } from "./tick-groups.js";
 import { checkInterview, checkSalesInterview } from "./interview-check.js";
 import { checkedCases, consistencyProblems, defaultsProblems, loadFixtureCases, walkedCases, yearDefaultsFiles } from "./fixture-inputs.js";
 import { runChecks } from "./check.js";
@@ -45,8 +46,8 @@ const NY_TABLES_DIR = nyPath("tables");
 const NY_PARAMS_PATH = join(ROOT, "params", "ny", `${YEAR}.yaml`);
 const NY_REGISTER_PATH = join(ROOT, "ambiguities", "ny", `${YEAR}.yaml`);
 
-interface BankQuestion { input: string; order: number; seq?: number; help?: string; prompt?: string; cite?: CiteAuthored; choices?: RosterChoice[]; value_labels?: Record<string, string> }
-interface QuestionBank { tax_year: number; frames: Record<string, string>; questions: BankQuestion[] }
+interface BankQuestion { input: string; order: number; seq?: number; help?: string; prompt?: string; cite?: CiteAuthored; choices?: RosterChoice[]; value_labels?: Record<string, string>; group?: string; tick?: string }
+interface QuestionBank { tax_year: number; frames: Record<string, string>; groups?: TickGroup[]; questions: BankQuestion[] }
 interface InterviewProfile { tax_year: number; targets: string[]; initial: InterviewData["initial"]; cite: CiteAuthored; questions: string[] | "all"; questions_from?: string; targets_from?: string }
 
 interface ManifestEntry {
@@ -244,6 +245,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     for (const q of nyBank.questions) if (!q.input.replace(/^\$/, "").startsWith("ny_")) errors.push(`New York question bank: input '${q.input}' is not a New York line`);
     bank.questions = [...bank.questions, ...nyBank.questions];
     bank.frames = { ...bank.frames, ...nyBank.frames };
+    if (bank.groups !== undefined || nyBank.groups !== undefined) bank.groups = [...(Array.isArray(bank.groups) ? bank.groups : []), ...(Array.isArray(nyBank.groups) ? nyBank.groups : [])];
   }
   const bankByInput = new Map(bank.questions.map((q) => [q.input, q]));
   if (bankByInput.size !== bank.questions.length) errors.push("question bank: duplicate inputs");
@@ -320,14 +322,44 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     }
     return { input: q.input, prompt, help: q.help ?? "", order: q.order, ...(q.seq !== undefined ? { seq: q.seq } : {}), cite: cite!, ...(q.choices ? { choices: q.choices } : {}),
       // The options of a labelled enum are shown in the order the bank lists their labels.
-      ...(q.value_labels ? { value_labels: q.value_labels, value_order: Object.keys(q.value_labels) } : {}) };
+      ...(q.value_labels ? { value_labels: q.value_labels, value_order: Object.keys(q.value_labels) } : {}),
+      ...(typeof q.group === "string" && typeof q.tick === "string" ? { group: q.group, tick: q.tick } : {}) };
   };
   const resolved = new Map(bank.questions.flatMap((q) => { const r = resolveQuestion(q); return r ? [[q.input, r] as const] : []; }));
-  // A block is every question of one order number, each with its place in the block: an order number is all block or none.
-  for (const order of new Set(bank.questions.filter((q) => q.seq !== undefined).map((q) => q.order))) {
-    const plain = bank.questions.filter((q) => q.order === order && q.seq === undefined).map((q) => q.input);
-    if (plain.length) errors.push(`order ${order}: some of its questions give seq and ${plain.join(", ")} do not; a block is every question of its order number`);
+  // A question's place in its topic (`seq`) is its own: no two questions of one order number state the same.
+  const seqSeen = new Map<string, string>();
+  for (const q of bank.questions) {
+    if (q.seq === undefined) continue;
+    const k = `${q.order}/${q.seq}`;
+    const other = seqSeen.get(k);
+    if (other) errors.push(`question ${q.input}: order ${q.order} seq ${q.seq} is also the place of ${other}; each question of an order number states its own seq`);
+    else seqSeen.set(k, q.input);
   }
+  // The place of each run of entry questions (`at`), which `askOrder` reads to ask one entry's questions through.
+  const collectionChain = (id: string): string[] => {
+    const parent = forms.find((d) => d.id === id)?.collection?.parent;
+    return parent ? [...collectionChain(parent), id] : [id];
+  };
+  const chainOf = (input: string): string[] => {
+    if (input.startsWith("$")) return collectionChain(input.slice(1)).slice(0, -1);
+    const doc = forms.find((d) => d.lines.some((l) => l.id === input));
+    return doc?.collection ? collectionChain(doc.id) : [];
+  };
+  for (const [input, at] of blockPlaces(bank.questions, chainOf)) { const r = resolved.get(input); if (r) r.at = at; }
+  // Tick-box groups (tick-groups.ts): a few yes or no questions of one block shown on one screen. A group's heading is
+  // stored as a prompt is, after the frame of its members' form.
+  const formOfInput = new Map(forms.flatMap((d) => d.lines.filter((l) => l.expr.op === "input").map((l) => [l.id, d] as const)));
+  const opened = opensMap([...forms, ...defs]);
+  errors.push(...tickGroupProblems(bank.groups, bank.questions, {
+    typeOf: (input) => inputLines.get(input)?.type,
+    formOf: (input) => { const d = formOfInput.get(input); return d ? { id: d.id, collection: d.collection !== undefined, frame: bank.frames[d.id] ?? "" } : undefined; },
+    opens: (input) => opened.get(input) ?? [],
+  }));
+  const builtGroups: TickGroup[] = (Array.isArray(bank.groups) ? bank.groups : []).flatMap((g) => {
+    const member = bank.questions.find((q) => q.group === g.id);
+    const form = member ? formOfInput.get(member.input) : undefined;
+    return typeof g?.heading === "string" && form ? [{ id: g.id, heading: (bank.frames[form.id] ?? "") + g.heading }] : [];
+  });
   const loadProfile = (path: string, name: string): InterviewData => {
     const profile = (parseYaml(readFileSync(path, "utf8")) as { interview: InterviewProfile }).interview;
     const own = profile.questions === "all" ? federalInputs : profile.questions;
@@ -348,6 +380,8 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       tax_year: profile.tax_year, targets: [...targetsBefore, ...profile.targets], initial: profile.initial,
       cite: fillCite(profile.cite, YEAR, name),
       questions: inputs.flatMap((input) => resolved.get(input) ?? []),
+      // The groups the profile's questions name.
+      ...(builtGroups.some((g) => inputs.some((i) => bankByInput.get(i)?.group === g.id)) ? { groups: builtGroups.filter((g) => inputs.some((i) => bankByInput.get(i)?.group === g.id)) } : {}),
     };
   };
   const interview = loadProfile(join(INTERVIEW, "social-security.yaml"), "interview");

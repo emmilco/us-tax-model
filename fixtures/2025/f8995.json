@@ -12,7 +12,7 @@
         "$sc@person[taxpayer]": [
           "shop"
         ],
-        "qbi.carryforward": 500000,
+        "qbi.prior_form": true, "qbi.carryforward": 500000,
         "person[taxpayer].sc[shop].line1": 2000000
       },
       "expect": {

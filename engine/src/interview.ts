@@ -4,9 +4,9 @@ import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { loadCanonical, CANON_DIR } from "./canonical.js";
 import { templateKey } from "./branches.js";
-import { evaluate, validateInputs, type Value } from "./eval.js";
+import { evaluate, inputsAhead, validateInputs, type Value } from "./eval.js";
 import { renderValuesSheetText, resultToJson, valuesSheet } from "./output.js";
-import { jointReturn, shownFor, shownSheet } from "./spouse-wording.js";
+import { jointReturn, shownFor, shownLabel, shownSheet } from "./spouse-wording.js";
 import type { CanonicalData, CiteFilled, Inputs } from "./types.js";
 
 export interface InterviewData {
@@ -14,10 +14,18 @@ export interface InterviewData {
   targets: string[];
   initial: Inputs;
   cite: CiteFilled;
-  questions: { input: string; prompt: string; help: string; order: number; seq?: number; cite: CiteFilled; choices?: RosterChoice[]; value_labels?: Record<string, string>; value_order?: string[] }[];
+  questions: { input: string; prompt: string; help: string; order: number; seq?: number; at?: number[]; cite: CiteFilled; choices?: RosterChoice[]; value_labels?: Record<string, string>; value_order?: string[];
+    /** The tick-box group the question is a member of, and the words shown beside its box (`TickGroup`). */
+    group?: string; tick?: string }[];
+  /** The tick-box groups the profile's questions name. */
+  groups?: TickGroup[];
   /** What the interview adds to a refusal, by gate line: what the filer can do next (interview/<year>/refusal_notes.yaml). */
   refusal_notes?: Record<string, string>;
 }
+/** A tick-box group: a few yes or no questions of one topic, side by side, that a client may show on one screen, under the heading,
+ * one box per open member with the member's `tick` label. Presentation only: each member stays its own input, with
+ * its own answer in the log. `heading` is stored as a prompt is (its collection's frame first). */
+export interface TickGroup { id: string; heading: string }
 /** A roster question with a fixed set of answers (`$person`: just you, or you and your husband or wife): each
  * choice's label, its entry keys, each key's label and the answers the choice records. */
 export interface RosterChoice { label: string; value: string[]; labels: Record<string, string>; records?: ChoiceRecord[] }
@@ -133,18 +141,70 @@ export function loadInterview(profile = "social-security"): InterviewData {
   if (!["social-security", "sales", "stage4", "full", "ny"].includes(profile)) throw new Error("unknown interview profile");
   return JSON.parse(readFileSync(resolve(CANON_DIR, profile === "social-security" ? "interview.json" : `interview-${profile}.json`), "utf8")) as InterviewData;
 }
-/** The outermost collection entry a question's key belongs to (`person[spouse]` for `person[spouse].f8889[hsa].line2`
- * and for the roster `$f8889@person[spouse]`), or "" for a key of no entry. */
-export function outerEntry(key: string): string {
-  const path = key.startsWith("$") ? key.slice(key.indexOf("@") + 1 || key.length) : key;
-  return /^[a-zA-Z0-9_]+\[[a-zA-Z0-9_-]+\]/.exec(path)?.[0] ?? "";
+/** The entries a question's key lies in, outermost first (`person[taxpayer]`, `w2[acme]` for a line of that W-2;
+ * `person[taxpayer]` for the roster `$w2@person[taxpayer]`). */
+export function entriesOf(key: string): string[] {
+  const path = key.startsWith("$") ? key.slice(key.indexOf("@") + 1 || key.length) : key.slice(0, Math.max(0, key.lastIndexOf(".")));
+  return path.match(/[a-zA-Z0-9_]+\[[a-zA-Z0-9_-]+\]/g) ?? [];
 }
-/** The asking order of two open questions: bank order; within one order number, the questions of a block (each carries
- * `seq`) entry by entry of the outermost collection, and within an entry in `seq` order; then by key. */
-export function askOrder(a: { input: string; order: number; seq?: number }, b: { input: string; order: number; seq?: number }): number {
-  return a.order - b.order
-    || (a.seq !== undefined && b.seq !== undefined ? outerEntry(a.input).localeCompare(outerEntry(b.input)) || a.seq - b.seq : 0)
-    || a.input.localeCompare(b.input);
+/** What `askOrder` reads of a question: its key, its topic's position (`order`), its place in the topic (`seq`) and,
+ * for a question of a collection entry, the place of each run of entry questions it belongs to (`at`, from the build). */
+export interface Place { input: string; order: number; seq?: number; at?: number[] }
+/** A bank question's place under the key it is asked by. */
+export function placeOf(q: { order: number; seq?: number; at?: number[] }, key: string): Place {
+  return { input: key, order: q.order, ...(q.seq !== undefined ? { seq: q.seq } : {}), ...(q.at ? { at: q.at } : {}) };
+}
+/** The asking order of two open questions. First the topic: the lower `order` number. Within one order number the
+ * questions that state a place (`seq`) come first, in the order the bank states, read as an outline: at each level
+ * (the return, then an entry of a collection, then an entry of a collection inside it) the lower number comes first,
+ * where a question of that level counts by its `seq` and a run of entry questions by the lowest `seq` in it (`at`);
+ * within a run, one entry's questions are asked through before the next entry's (entries by key). So one W-2's
+ * questions are asked through before the next W-2's, and one person's before the other's. A question that states no
+ * `seq` comes after those of its order number that do, by key. */
+export function askOrder(a: Place, b: Place): number {
+  if (a.order !== b.order) return a.order - b.order;
+  if (a.seq === undefined || b.seq === undefined) return a.seq !== undefined ? -1 : b.seq !== undefined ? 1 : a.input.localeCompare(b.input);
+  const ea = entriesOf(a.input);
+  const eb = entriesOf(b.input);
+  for (let i = 0; ; i++) {
+    const inA = i < ea.length;
+    const inB = i < eb.length;
+    const na = inA ? a.at?.[i] ?? a.seq : a.seq;
+    const nb = inB ? b.at?.[i] ?? b.seq : b.seq;
+    if (na !== nb) return na - nb;
+    if (!inA || !inB) return inA !== inB ? (inA ? 1 : -1) : a.input.localeCompare(b.input);
+    const c = ea[i]!.localeCompare(eb[i]!);
+    if (c) return c;
+  }
+}
+/** The `at` of every question that states a `seq` and lies in a collection: for each order number, the questions in
+ * `seq` order are cut, level by level, into runs of consecutive questions of one collection, and a question's `at`
+ * holds, outermost first, the lowest `seq` of the run it is in at each level. `chainOf` gives the collections a
+ * question's entry lies in, outermost first (none for a question of the return). */
+export function blockPlaces(questions: { input: string; order: number; seq?: number }[], chainOf: (input: string) => string[]): Map<string, number[]> {
+  const out = new Map<string, number[]>();
+  type Item = { input: string; seq: number; chain: string[] };
+  const assign = (items: Item[], depth: number): void => {
+    let run: Item[] = [];
+    const close = () => {
+      if (!run.length) return;
+      for (const it of run) (out.get(it.input) ?? out.set(it.input, []).get(it.input)!)[depth] = run[0]!.seq;
+      assign(run, depth + 1);
+      run = [];
+    };
+    for (const it of items) {
+      if (it.chain.length <= depth) { close(); continue; }
+      if (run.length && run[0]!.chain[depth] !== it.chain[depth]) close();
+      run.push(it);
+    }
+    close();
+  };
+  for (const order of new Set(questions.map((q) => q.order))) {
+    const items = questions.filter((q) => q.order === order && q.seq !== undefined)
+      .map((q) => ({ input: q.input, seq: q.seq!, chain: chainOf(q.input) })).sort((x, y) => x.seq - y.seq || x.input.localeCompare(y.input));
+    assign(items, 0);
+  }
+  return out;
 }
 export function questionTemplate(key: string): string {
   if (key.startsWith("$")) return key.split("@")[0]!;
@@ -203,56 +263,130 @@ export function withheldValues(config: InterviewData, inputs: Inputs, key: strin
   return withheld;
 }
 
-export interface Question { input: string; prompt: string; help: string; order: number; seq?: number; cite: CiteFilled; choices?: RosterChoice[]; value_labels?: Record<string, string>; value_order?: string[];
+export interface Question { input: string; prompt: string; help: string; order: number; seq?: number; at?: number[]; cite: CiteFilled; choices?: RosterChoice[]; value_labels?: Record<string, string>; value_order?: string[];
+  /** The tick-box group the question is a member of, and its label as shown. */
+  group?: string; tick?: string;
   /** The per-person frame as shown ("About you", "About your spouse"), when the question is asked of a person on a return with two. */
   frame?: string;
   /** The enum values not offered (`withheldValues`). */
   withheld?: string[];
   helpRequested: boolean; entry: string }
+/** The entry a question's key is asked of (`person[spouse].f8889[hsa]` for `person[spouse].f8889[hsa].line2`), or ""
+ * for a question asked once per return. */
+export function entryPath(key: string): string {
+  return /^(.*\])\.[^.\[\]]+$/.exec(key)?.[1] ?? "";
+}
+/** The tick-box screen a client shows in place of the next question: the group's heading as shown and its members to
+ * show, as questions, in asking order. */
+export interface ShownGroup { id: string; heading: string; frame?: string; members: Question[] }
+/** The tick-box screen for the first pending question, or null when that question is in no group or the screen would
+ * have one box (the question is then asked as an ordinary question). The members shown are those of the next
+ * question's group, asked of the same entry, that are open or would be once the open ones are answered No: a member
+ * the engine reaches only after another member's No (two lines of one chain of tests) belongs on the same screen,
+ * since on the typical answer, none of these, it is asked next in any case. An answered member is not shown, nor one
+ * that waits on an answer outside the group. `shown` words a question for its key. */
+function tickScreen(data: CanonicalData, config: InterviewData, inputs: Inputs, pending: Question[], shown: (key: string) => Question): ShownGroup | null {
+  const first = pending[0];
+  const group = first?.group === undefined ? undefined : config.groups?.find((g) => g.id === first.group);
+  if (!first || !group) return null;
+  // The key of another member for the same entry: the members of a group asked per entry are inputs of one form.
+  const path = entryPath(first.input);
+  const template = questionTemplate(first.input);
+  const form = path === "" ? "" : template.slice(0, template.length - (first.input.length - path.length - 1));
+  const keyOf = (member: string): string | null => (path === "" ? member : member.startsWith(form) ? `${path}.${member.slice(form.length)}` : null);
+  const keys = config.questions.filter((q) => q.group === group.id).sort(askOrder).flatMap((q) => keyOf(q.input) ?? []);
+  const open = new Set(pending.filter((q) => q.group === group.id && entryPath(q.input) === path).map((q) => q.input));
+  const waiting = (k: string) => !open.has(k) && (!(k in inputs) || inputs[k] === null);
+  for (let round = 0; round < keys.length && keys.some(waiting); round++) {
+    const probe: Inputs = { ...inputs };
+    for (const k of open) probe[k] = false;
+    // What the interview would ask then: the reach pass included, as for the pending questions themselves.
+    const result = evaluate(data, probe, config.targets);
+    const needed = neededInputs(data, config, probe, result, config.targets.map((t) => result.values.get(t)!));
+    const more = keys.filter((k) => waiting(k) && needed.has(k));
+    if (!more.length) break;
+    for (const k of more) open.add(k);
+  }
+  const members = keys.filter((k) => open.has(k)).map((k) => pending.find((q) => q.input === k) ?? shown(k));
+  if (members.length < 2) return null;
+  const heading = shownFor({ prompt: group.heading, help: "" }, first.input, inputs);
+  return { id: group.id, heading: heading.prompt, ...(heading.frame ? { frame: heading.frame } : {}), members };
+}
 /** A derivation as `resultToJson` writes it. */
 export interface JsonDerivation { value: Value; op: string; cite: CiteFilled | null; operands: { ref: string; value: Value }[]; guardsNotTaken: { guard: string; value: Value }[]; notes: string[] }
 /** The interview's state, with the values sheet as data (`interviewState` prints it as text). `question` is the next
  * question while the return is incomplete; `pending` is every question still reachable, in asking order, which
- * continues after a refusal because a later answer may clear it. Each question's prompt and help, and each sheet
+ * continues after a refusal because a later answer may clear it; `group` is the tick-box screen the first pending
+ * question may be shown in (`tickScreen`), for a client that shows one. Each question's prompt and help, and each sheet
  * line's label, are as shown to the filer: the spouse phrase reworded from these inputs' filing status
  * (spouse-wording.ts). */
 export function interviewView(data: CanonicalData, config: InterviewData, inputs: Inputs) {
   const result = evaluate(data, inputs, config.targets);
   const targetValues = config.targets.map(t => result.values.get(t)!);
   const refused = targetValues.find(v => v.kind === "refusal");
-  const needed = new Set<string>();
-  for (const der of result.derivations.values()) if (der.value.kind === "unknown" && der.value.input) needed.add(der.value.input);
+  const needed = neededInputs(data, config, inputs, result, targetValues);
   const joint = jointReturn(inputs);
-  const pending: Question[] = [...new Set([...needed].map((k) => askFor(config, k).key))].map(key => {
+  const shown = (key: string): Question => {
     const q = askFor(config, key).q;
     const withheld = withheldValues(config, inputs, key);
-    return { ...shownFor(q, key, inputs), input: key, ...(withheld.length ? { withheld } : {}), helpRequested: inputs[key] === null, entry: entryHint(data, key, q.choices, q.value_labels, q.value_order, withheld) };
-  }).sort(askOrder);
+    return { ...shownFor(q, key, inputs), input: key, ...(q.tick !== undefined ? { tick: shownLabel(q.tick, q.prompt, key, inputs) } : {}), ...(withheld.length ? { withheld } : {}), helpRequested: inputs[key] === null, entry: entryHint(data, key, q.choices, q.value_labels, q.value_order, withheld) };
+  };
+  const pending: Question[] = [...new Set([...needed].map((k) => askFor(config, k).key))].map(shown).sort(askOrder);
   const complete = targetValues.every(v => v.kind !== "unknown" && v.kind !== "refusal");
   return { status: refused ? "refused" : complete ? "complete" : "incomplete", refusal: refused ?? null,
     refusalNote: refused?.kind === "refusal" ? config.refusal_notes?.[templateKey(refused.gate)] ?? null : null,
     question: refused || complete ? null : pending[0] ?? null,
     pending,
+    group: tickScreen(data, config, inputs, pending, shown),
     reachableInputs: [...needed].sort(),
     scope: config.targets.includes("ny_it201.line80") ? "New York Form IT-201 for a full-year New York City resident on the New York standard deduction, computed from the whole federal return, with cited refusals for New York items this tool does not compute. No filing or transmission." : config.targets.includes("f1040.line37") ? "Whole return: Form 1040 lines 1a–37 computed end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them). No filing or transmission." : config.targets.includes("scope.ready") ? "Stage 4 form slices with eligibility/valuation screening and allocation inputs; AGI and taxable income are computed for the single-person slice. Not a complete return." : config.targets.includes("f1040.line7a") ? "Stage 3 securities sales, Schedule D, and tax-method selection; AGI and taxable income are computed. Not a complete return." : "Stage 2 Social Security credit, with the other Schedule 3 Part II amounts refused where they apply; not a complete return. Other forms are not prepared.",
     notices: config.targets.includes("ny_it201.line80") ? "Not tax or legal advice. You are responsible for the return. Published IRS and New York State instructions are not the law itself. Not affiliated with or endorsed by the IRS or the New York State Department of Taxation and Finance." : "Not tax or legal advice. You are responsible for the return. Published IRS instructions are not the law itself. Not affiliated with or endorsed by the IRS.",
     values: JSON.parse(resultToJson(result)).values as Record<string, JsonDerivation>,
     sheet: shownSheet(valuesSheet(data, result, data.forms.map(f=>f.id)), joint) };
 }
+/** The inputs a return needs and lacks: each unknown input a line of the evaluation reads; and, while the return is
+ * incomplete, those the reach pass finds (`inputsAhead`: the inputs held behind a refusal gate that awaits its answer)
+ * whose question states its place in its topic (`seq`). Such a question is open as soon as the return is certain to
+ * need it, and the bank's order alone decides when it is asked. A question that states no `seq` is open only once the
+ * evaluation itself reaches it, so where the bank states no order the forms' order of refusal gates still decides
+ * (a screen before what stands behind it). A complete or refused return has the evaluation's own only.
+ * `reach`: "none" leaves the pass out and "all" takes every input it finds; both are for measuring (interview-order). */
+export type Reach = "stated" | "none" | "all";
+function neededInputs(data: CanonicalData, config: InterviewData, inputs: Inputs, result: { derivations: Map<string, { value: Value; op: string }> }, targetValues: Value[], reach: Reach = "stated"): Set<string> {
+  const needed = new Set<string>();
+  // The reach pass adds something only where a line is held behind an unanswered gate.
+  let held = false;
+  for (const der of result.derivations.values()) {
+    if (der.value.kind !== "unknown") continue;
+    if (der.value.input) needed.add(der.value.input);
+    held ||= der.op === "gate";
+  }
+  const incomplete = !targetValues.some((v) => v.kind === "refusal") && targetValues.some((v) => v.kind === "unknown");
+  if (reach === "none" || !incomplete || !held) return needed;
+  if (reach !== "all" && !config.questions.some((q) => q.seq !== undefined)) return needed;
+  const recorded = recordedTemplates(config);
+  for (const k of inputsAhead(data, inputs, config.targets)) {
+    if (needed.has(k)) continue;
+    const template = questionTemplate(k);
+    if (reach === "all" || questionFor(config, recorded.get(template) ?? template)?.seq !== undefined) needed.add(k);
+  }
+  return needed;
+}
 /** What a caller that only steps through or compares states reads: status, refusal, the next question's input, the
  * reachable inputs and, as the function `valuesKey`, computed on demand, the derivations of `interviewView`'s `values` serialized in key order, so two
- * states' derivations are equal exactly when their keys are; no sheet, entry hints or question wording. */
-export function interviewStatus(data: CanonicalData, config: InterviewData, inputs: Inputs) {
+ * states' derivations are equal exactly when their keys are; no sheet, entry hints or question wording.
+ * `reach` is for measuring what the reach pass changes (`neededInputs`; interview-order); every client of the
+ * interview takes the default. */
+export function interviewStatus(data: CanonicalData, config: InterviewData, inputs: Inputs, options: { reach?: Reach } = {}) {
   const result = evaluate(data, inputs, config.targets);
   const targetValues = config.targets.map(t => result.values.get(t)!);
   const refused = targetValues.find(v => v.kind === "refusal");
-  const needed = new Set<string>();
-  for (const der of result.derivations.values()) if (der.value.kind === "unknown" && der.value.input) needed.add(der.value.input);
+  const needed = neededInputs(data, config, inputs, result, targetValues, options.reach);
   const complete = targetValues.every(v => v.kind !== "unknown" && v.kind !== "refusal");
-  let first: { input: string; order: number; seq?: number } | null = null;
+  let first: Place | null = null;
   for (const reachable of needed) {
     const { key, q } = askFor(config, reachable);
-    const open = { input: key, order: q.order, ...(q.seq !== undefined ? { seq: q.seq } : {}) };
+    const open = placeOf(q, key);
     if (!first || askOrder(open, first) < 0) first = open;
   }
   return { status: refused ? "refused" : complete ? "complete" : "incomplete", refusal: refused ?? null,
@@ -352,6 +486,33 @@ export function applyAnswer(data: CanonicalData, config: InterviewData, events: 
   validateInputs(data, candidate);
   const after = interviewView(data, config, candidate);
   return { event, inputs: candidate, before, after };
+}
+/** Checks the answers given on one tick-box screen without writing them: one answer, Yes or No, for each box of the
+ * screen the interview offers now (`group` of `interviewView`), and no other. They are judged together, against the
+ * state before any of them, because the filer gave them together: an answer stands though another box's answer, taken
+ * first, would refuse the return or leave its question unreachable. Throws when the answers are rejected, so nothing is
+ * appended. Returns the events to append, in the order given, the inputs with them, and the views before and after. */
+export function applyAnswers(data: CanonicalData, config: InterviewData, events: Event[], answers: unknown) {
+  const state = replayState(config, events);
+  const before = interviewView(data, config, state.inputs);
+  const shape = "the answers of a tick-box screen are a list of {input, value}, one for each box, each value yes or no";
+  if (!Array.isArray(answers) || answers.some((a) => !a || typeof a !== "object" || typeof (a as { input?: unknown }).input !== "string" || !("value" in a))) throw new Error(shape);
+  const given = answers as { input: string; value: unknown }[];
+  const boxes = before.group?.members.map((q) => q.input);
+  if (!boxes) throw new Error("the interview offers no tick-box screen now; answer the next question on its own");
+  const stray = given.find((a) => !boxes.includes(a.input));
+  if (stray) throw new Error(`${stray.input}: not a box of the tick-box screen offered now (${boxes.join(", ")})`);
+  const twice = given.find((a, i) => given.findIndex((b) => b.input === a.input) !== i);
+  if (twice) throw new Error(`${twice.input}: answered twice`);
+  const missing = boxes.find((k) => !given.some((a) => a.input === k));
+  if (missing) throw new Error(`${missing}: the screen's answers leave this box out; a tick-box screen is answered whole (${boxes.join(", ")})`);
+  const odd = given.find((a) => typeof a.value !== "boolean");
+  if (odd) throw new Error(`${odd.input}: a tick-box is answered yes or no`);
+  const made = given.map((a) => answerEvent(config, state, a.input, a.value));
+  const candidate = replay(config, [...events, ...made]);
+  validateInputs(data, candidate);
+  const after = interviewView(data, config, candidate);
+  return { events: made, inputs: candidate, before, after };
 }
 /** Replays a log. Events apply in order: an answer replaces the input's value; an answer to a roster question first
  * withdraws what that question's earlier answer recorded, then applies its own records, so changing a choice replaces

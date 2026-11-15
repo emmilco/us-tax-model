@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "f8148b823f2754f7202e41e9691e39f587db346c93e481cbeb6c56e44df67882",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "11 / 1 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -21,15 +22,15 @@
   },
   {
    "key": "2",
-   "record": "f6da965522f9bbe124cca3a19e55787aeb782c3b208b69bfa0c76e5fec2c6b18",
+   "record": "f5717672acb307a3262d91d9fd7734299ff48b48d1fd09477fcc17adc2a644d2",
    "status": "MATCH",
-   "subject_key": "d80b0dff54c740420947cbfec15fdb23bcf3b4ba4f84b27a3baa641d6364a80a"
+   "subject_key": "9b39d72ed063b7ca306247939ef8e0dd3011335e1a45dc85aecf30250be2740a"
   },
   {
    "key": "3",
-   "record": "f6da965522f9bbe124cca3a19e55787aeb782c3b208b69bfa0c76e5fec2c6b18",
+   "record": "f5717672acb307a3262d91d9fd7734299ff48b48d1fd09477fcc17adc2a644d2",
    "status": "MATCH",
-   "subject_key": "c0345b308b92a23046c3389f8f7a9194e531c223cb8673dec37c5202d4be2863"
+   "subject_key": "d33eca2553ab0cefd82f1ef8462f93dd6d10d7671a8cfc894766e4b600e87cd6"
   },
   {
    "key": "4",
@@ -75,16 +76,17 @@
   },
   {
    "key": "21",
-   "record": "f6da965522f9bbe124cca3a19e55787aeb782c3b208b69bfa0c76e5fec2c6b18",
-   "status": "MATCH",
-   "subject_key": "51006f3b48dc6a285358d87771b35bdbc3517768b1aace676a7f1ea7b971c4f8"
+   "record": "f5717672acb307a3262d91d9fd7734299ff48b48d1fd09477fcc17adc2a644d2",
+   "status": "MISMATCH",
+   "ruling": "Ruling: interface gap; each omitted line is refused by a screen the reviewer was not given: Form 4137 (line 5) and Form 8919 (line 6, feeding line 7) by scope.pay_no_w2 (\"wages, tips or strike benefits that are not on a W-2\"; help: \"tips not reported to your employer (or shown only in box 8), or pay from a firm that wrongly treated you as a contractor. A Yes ends the interview here\") through scope.other_income, and for self-employed persons also by person.se_screen (\"tips reported on Form 4137 or wages on Form 8919\"); lines 14 and 15 (interest on installment-sale deferred tax) need an installment obligation, which sd.sold_other (\"Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale\") sends to sd.installment, refused (Form 6252). The reviewer names no other omitted line. Within scope line 21 is lines 4, 8, 11, 12 and 18 (f1040s2 line 21, \"Add lines 4, 7 through 16, 18, and 19\"). Project stands.",
+   "subject_key": "88fc728cdcf2d29658ce3ca3f5c5cf3e1102256ee08454a5c46268ecde2ce664"
   }
  ],
  "subjects": {
   "1a": "948c5bdb2766ad5ed74cbb3ecc7e370cef081b3b5fc0e996e63782a1b301ec54",
   "1z": "e9c1c517071505d51cfdd09048d2806447cc278f27db6ccaaeb8660cf62dcff9",
-  "2": "da86415f7fb0e39304a50c08bb97ccd06519d0fc25e24041fc4f39075623b3e0",
-  "3": "cb25af5a8a6b33079d9d8d1c27c87faae3da4eee551adfb8454883f662cd9b4e",
+  "2": "57c4d2ffd5806529bdbc05d098950dd354fcd77b8e06924f095c7cd1875110d1",
+  "3": "401777da2baa70013f7bdb4441d8135e953390566ea62630167f2a64eac09344",
   "4": "9cd8a4c296c43b06d436f6de558fe38ee0931e30d2d7f91c46bde228c1854ab2",
   "8": "65684a5df6d08729d036bc5051b48a08801862608c1a4302b5840a91893f491e",
   "8 (box)": "59f629b249ea6174de9ff804d402427ce91849e74e08d825be82d81b90eb1af3",
@@ -92,7 +94,7 @@
   "12": "a2b0364ad10a5465bad5f179eaabc783505f19ee1cfa377f25770c36df7d6ad1",
   "17c": "a7f242e005215d810811a1ccbafcb250d841c171576512a790ace38f8326c71d",
   "18": "fa212e033612dc85b8b7d0a72790eddf3c24462b8703bef9af9f623e922eb97e",
-  "21": "80d0dda4428b7955cd91678600754992ee2fe43ca30bf3be7a83a395b81e8078"
+  "21": "062301fc45f243c603fd6c2284d4bdf92a8f906323c071269ff83a503a6d842e"
  },
  "__rest__": "62e1e78bc43403c82fc8dd83ac8b2f3e5535a2a722b2af4193ee0376b12e6cd6"
 }

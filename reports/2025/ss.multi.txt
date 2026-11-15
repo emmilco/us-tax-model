@@ -160,13 +160,13 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   person[taxpayer].credit: chose $1,481.80 (guard 0)
   s3.kerosene_credit_if_kerosene: chose false (guard 1)
       not taken: guard 0 = false
-  s3.farmland_deferral_if_sold: chose false (guard 1)
+  s3.section965_if_foreign: chose false (guard 1)
       not taken: guard 0 = false
   s3.section960c_if_foreign: chose false (guard 1)
       not taken: guard 0 = false
-  s3.section965_if_foreign: chose false (guard 1)
-      not taken: guard 0 = false
   s3.virgin_islands_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.farmland_deferral_if_sold: chose false (guard 1)
       not taken: guard 0 = false
 
 Derivations:
@@ -192,11 +192,11 @@ Derivations:
   s3.no: param(#s3.no = false)
   s3.kerosene_credit_if_kerosene: choose(s3.kerosene = false; true = true; s3.kerosene = false; false = false; s3.no = false)
   s3.line12: param(s3.kerosene_credit_if_kerosene = false; #sales.zero = $0)
-  s3.farmland_deferral_if_sold: choose(s3.farmland = false; true = true; s3.farmland = false; false = false; s3.no = false)
-  s3.section960c_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
   s3.section965_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
+  s3.section960c_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
   s3.virgin_islands_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
-  s3.line14: param(s3.farmland_deferral_if_sold = false; s3.section960c_if_foreign = false; s3.section965_if_foreign = false; s3.virgin_islands_if_foreign = false; s3.repaid_income = false; #sales.zero = $0)
+  s3.farmland_deferral_if_sold: choose(s3.farmland = false; true = true; s3.farmland = false; false = false; s3.no = false)
+  s3.line14: param(s3.section965_if_foreign = false; s3.section960c_if_foreign = false; s3.virgin_islands_if_foreign = false; s3.farmland_deferral_if_sold = false; s3.repaid_income = false; #sales.zero = $0)
   s3.line15: sum(s3.line9 = $0; s3.line10 = $0; s3.line11 = $1,481.80; s3.line12 = $0; s3.line14 = $0)
   f1040.line31: copy(s3.line15 = $1,481.80)
 Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers separately per person. Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security. (iw2w3, p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11)

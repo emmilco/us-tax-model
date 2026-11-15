@@ -3,6 +3,31 @@
  "form": "sli",
  "rulings": [
   {
+   "printed": "1",
+   "project_expr_sha256": "ca12fb52daed0063f192bdaa4a670ba397d0961d151f69a68f860b2cae9f55a7",
+   "second_expr_sha256": "550af164b38520efaba53f83a730fe971fddac8c80df12d12cda671d73435c65",
+   "ruling": "Ruling: representation; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 1: \"Enter the total interest you paid in 2025 on qualified student loans ... Don't enter more than $2,500\"; p. 98, \"Don't include any amount paid from a distribution of earnings made from a qualified tuition program\". Both take the interest less the unqualified and the assisted amounts, floored at zero, capped at $2,500 (subtracting the two in turn with a zero floor equals subtracting their sum), and both refuse on sa.excluded_income. The project asks sli.unqualified_any and sli.assisted_any only after sli.any; the reply reads them directly. executable triage (.transcription/triage/2025/sli.json, executable-triage-v2): 2,643 of 2,726 agree; 83 candidate-unknown (20 completed, e.g. classm.eic.1: no student loan, project $0), no value difference. Project stands.",
+   "context": "f388d24c7142e8ab84ae36769fa6c3e476116a604937eec81489e18de4602477",
+   "date": "2026-11-14",
+   "run": "feef2f6003e271fb4043197b1799d3a320530f8af3f457d9be29c31d81d81d85",
+   "subject_key": "ca36bbfa89fdb73110b5a6b9b86c8c69835da7b95a6db5346ff204e08f8cc40d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.eic.1@sli",
+     "fixture:classm.eic.2@sli",
+     "fixture:classm.eic.3@sli",
+     "fixture:classm.eic.5@sli",
+     "fixture:classm.eic.6@sli",
+     "fixture:classm.eic.7@sli"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "5",
    "project_expr_sha256": "8483af9700758061844c6df5132a102046e5c18826438dbe534b383021eff469",
    "second_expr_sha256": "b3fad40fe31fbf817e9caa137b93a373229c2b838aab5781605f23a852c1048c",
@@ -36,6 +61,52 @@
    "second_expr_sha256": "d049a2be923489fb2821255cf66271e39c848209999c6d3eb7d378a2f559c0b8",
    "ruling": "Ruling: equivalent; project retained. The second omits the 'interest more than zero' guard; with no interest line 1 and line 9 are zero, so the value is the same, and the project's guard keeps a filer without student loan interest from being asked whether they are claimed as a dependent. The eligibility tests (not married filing separately, not claimed as a dependent) agree.",
    "subject_key": "15109bcec31790cc953e660a5156a0fa4d07fed4e6ad0d8666eaebfb7a7a3d8f"
+  },
+  {
+   "printed": "sli.deduction",
+   "project_expr_sha256": "8ae08c6a090913e4faa30c44f426c11942c2adac38604640209c4308da857bc2",
+   "second_expr_sha256": "63a0dfab6eab45fc93a662c2ef3475c02f3599ac62cf5cd6ebe78358f0a9fa90",
+   "ruling": "Ruling: model error; i1040gi p. 98, Schedule 1, line 21: \"You can take this deduction only if all of the following apply\", including \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return.\" The reply drops that condition, saying no supplied input states it, but the request's person collection carried person.sav_claimed (\"Are you claimed as a dependent on someone else's 2025 tax return?\"), which the project counts in sli.claimed_count. Completed stage11.sli.claimed (project $0, reply $1,200) and stage11.sli.spouse_claimed (project $0, reply $2,497.50). executable triage (.transcription/triage/2025/sli.json, executable-triage-v2): 2,063 of 2,726 agree; 6 value (3 completed), 155 candidate-unknown (20 completed: the reply reads the loan answers without sli.any), 492 candidate-refuses (refused returns, upstream refusals through line 9), 10 project-unknown. Project stands.",
+   "context": "f388d24c7142e8ab84ae36769fa6c3e476116a604937eec81489e18de4602477",
+   "date": "2026-11-14",
+   "run": "feef2f6003e271fb4043197b1799d3a320530f8af3f457d9be29c31d81d81d85",
+   "subject_key": "4d2c0748c0e8c7a91c998b5718926ffe1082f6c98e0e88b4db7b269b6a5dd457",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@sli",
+     "fixture:stage14.asset.refuse_ads_past_gds@sli",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@sli",
+     "fixture:stage14.asset.refuse_class@sli",
+     "fixture:stage14.asset.refuse_listed_low@sli",
+     "fixture:stage14.asset.refuse_s179_over@sli",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@sli",
+     "fixture:classm.f8889.3.deepseek@sli",
+     "fixture:classm.f8889.4.deepseek@sli",
+     "fixture:classm.f8889.5.deepseek@sli",
+     "fixture:classm.dependent.5.deepseek@sli",
+     "fixture:classm.carloan.3@sli",
+     "fixture:classm.sales.2@sli",
+     "fixture:classm.scveh.2@sli",
+     "fixture:classm.eic.1@sli",
+     "fixture:mutation.t2.sli.qss_divisor@sli",
+     "fixture:mutation.t2.sli.hoh_divisor@sli",
+     "fixture:mutation.m4.sli.part_unqualified@sli",
+     "fixture:stage16.sd.line17_no_skips_19@sli",
+     "fixture:stage11.sli.claimed@sli",
+     "fixture:stage11.sli.spouse_claimed@sli",
+     "partial:classm.f1095a.1.deepseek-sli.any@sli",
+     "partial:classm.eic.8.deepseek-sli.any@sli",
+     "partial:classm.retirement.4.deepseek-sli.interest@sli"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "sli.deduction",

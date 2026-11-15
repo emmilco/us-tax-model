@@ -3,6 +3,16 @@
  "form": "ira",
  "rulings": [
   {
+   "printed": "(screen) (ira.reservist_repaid)",
+   "restated": "scope helper \"The answer to scope.reservist_repaid, asked only when the question scope.armed_forces is answered Yes (false otherwise)\" = true",
+   "model": "The IRS text says only \"Don't include any repayments of qualified reservist distributions\" and refers to Pub. 590-A. Nothing in the pages given sets the repayment period or service window, so the text cannot confirm that limiting the question to service \"since the start of 2022\" catches every 2025 repayment.",
+   "ruling": "Ruling: interface gap; Pub. 590-A p. 9, Qualified reservist repayments, When repayment contributions can be made: \"You can't make these repayment contributions later than the date that is 2 years after your active duty period ends.\" A repayment made in 2025 therefore follows active duty that ended in 2023 or later, so the person served in the reserves after the start of 2022 and scope.armed_forces (\"Since the start of 2022, did you ... serve in the U.S. armed forces, the reserves or the National Guard?\") is Yes for every such filer; the gate loses no 2025 repayment. That page was not given to the reviewer, whose UNCLEAR says only that the pages given do not set the repayment period. The English states the screen correctly. Project stands.",
+   "context": "3f157f58d8b997a644422ef51669f59aab4e5f17c848c7d7ca7f0ea9761433d3",
+   "date": "2026-11-14",
+   "run": "33a5945fde477d0ebb51187a21a59495198c311d5519a341634f7c6678d7c565",
+   "subject_key": "3d86aa23bee61a3ac2612e1f3dcb53593ee41c5eeb7fcee073a84a738b42af1f"
+  },
+  {
    "printed": "12a",
    "restated": "Add person.ira_deduction over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'taxpayer', within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The IRS says \"On line 12a, enter the smallest of line 7a, 10, or 11a.\" The restatement sums a filer-supplied person.ira_deduction instead of taking that minimum. There is also no refusal for the caution \"If married filing jointly and line 10 is less than $14,000 ... stop here and use the worksheet in Pub. 590-A.\"",

@@ -68,15 +68,43 @@ form:
       cite:
         doc: i2441
         locator: 'p. 1, Purpose of Form, "In addition, if you (or your spouse if filing jointly) received any dependent care benefits for 2025, you must use Form 2441 to figure the amount, if any, of the benefits you can exclude from your income"'
+    - id: f2441.student
+      printed: (helper)
+      type: Bool
+      label: Were you or your spouse a full-time student in 2025?
+      expr:
+        op: input
+        source: In 2025, were you (or, on a joint return, your spouse) a full-time student at a school for some part of each
+          of 5 calendar months?
+      cite:
+        doc: i2441
+        locator: 'p. 4, If You or Your Spouse Was a Student or Disabled, "For each month or part of a month your spouse was a student or was disabled, they are considered to have worked and earned income" and "These rules for a spouse who was a student or disabled also apply to you if you were a student or disabled"; p. 1, Qualifying Person(s), "Your disabled spouse who wasn''t physically or mentally able to care for themselves and lived with you for more than half the year"'
+    - id: f2441.unable
+      printed: (helper)
+      type: Bool
+      label: Were you or your spouse not able to care for yourselves in 2025?
+      expr:
+        op: input
+        source: In 2025, were you (or, on a joint return, your spouse) physically or mentally not able to care for yourself
+          at any time? (This includes paying for the care of your spouse who was not able to care for themselves.)
+      cite:
+        doc: i2441
+        locator: 'p. 4, If You or Your Spouse Was a Student or Disabled, "For each month or part of a month your spouse was a student or was disabled, they are considered to have worked and earned income" and "These rules for a spouse who was a student or disabled also apply to you if you were a student or disabled"; p. 1, Qualifying Person(s), "Your disabled spouse who wasn''t physically or mentally able to care for themselves and lived with you for more than half the year"'
     - id: f2441.student_disabled
       printed: (gate)
       type: Bool
       label: Were you or your spouse a full-time student or not able to care for yourselves in 2025?
       expr:
-        op: input
-        source: In 2025, were you (or your spouse, if filing jointly) a full-time student at a school for some part of each
-          of 5 calendar months, or physically or mentally not able to care for yourself at any time? (This includes paying
-          for the care of your spouse who was not able to care for themselves.)
+        op: test
+        any:
+          - op: test
+            eq:
+              - f2441.student
+              - const: true
+          - op: test
+            eq:
+              - f2441.unable
+              - const: true
       cite:
         doc: i2441
         locator: 'p. 4, If You or Your Spouse Was a Student or Disabled, "For each month or part of a month your spouse was a student or was disabled, they are considered to have worked and earned income" and "These rules for a spouse who was a student or disabled also apply to you if you were a student or disabled"; p. 1, Qualifying Person(s), "Your disabled spouse who wasn''t physically or mentally able to care for themselves and lived with you for more than half the year"'
@@ -108,9 +136,24 @@ form:
       cite:
         doc: i2441
         locator: 'p. 4, Special Situations, "If your spouse died in 2025, see Pub. 503"'
+    - id: f2441.care_other
+      printed: (helper)
+      type: Bool
+      label: Was any of the care for a person other than your child under 13 listed as a dependent?
+      expr:
+        op: input
+        source: Was any of that care for anyone other than your (or, on a joint return, your spouse's) children under age 13
+          whom you listed on this return as dependents?
+      cite:
+        doc: i2441
+        locator: 'p. 1, Qualifying Person(s), "or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer''s 2025 tax return"; p. 1, Special rule for children of divorced or separated parents or parents who live apart, "Even if you can''t claim your child as a dependent, they are treated as your qualifying person if"; p503 p. 3, Birth or death of otherwise qualifying person, "a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person''s home more than half the time they were alive in 2025"'
+      note: A plain question in front of f2441.nondependent. Every person that question describes is outside the group
+        named here except a child under 13 who is listed and is not the filer's dependent; the gate line asks the
+        question whatever the answer here when the filer can be claimed as a dependent (sa.dependent).
     - id: f2441.nondependent
       printed: (helper)
       type: Bool
+      gated_by: f2441.nondependent_if_other
       label: Did you pay for the care of a qualifying person who is not your dependent?
       expr:
         op: input
@@ -120,6 +163,48 @@ form:
           return, or you (or, on a joint return, your spouse) could be claimed as a dependent on someone else''s 2025 return; or of your child
           under 13 (or not able to care for themselves) whom you treat as your qualifying person as the custodial parent
           although you cannot claim the child as your dependent?'
+      cite:
+        doc: i2441
+        locator: 'p. 1, Qualifying Person(s), "or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer''s 2025 tax return"; p. 1, Special rule for children of divorced or separated parents or parents who live apart, "Even if you can''t claim your child as a dependent, they are treated as your qualifying person if"; p503 p. 3, Birth or death of otherwise qualifying person, "a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person''s home more than half the time they were alive in 2025"'
+    - id: f2441.care_other_or_claimable
+      printed: (helper)
+      type: Bool
+      label: Some of the care was for a person other than your child under 13 listed as a dependent, or you can be claimed as a
+        dependent
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - sa.dependent
+              - const: true
+          - op: test
+            eq:
+              - f2441.care_other
+              - const: true
+      cite:
+        doc: i2441
+        locator: 'p. 1, Qualifying Person(s), "or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer''s 2025 tax return"; p. 1, Special rule for children of divorced or separated parents or parents who live apart, "Even if you can''t claim your child as a dependent, they are treated as your qualifying person if"; p503 p. 3, Birth or death of otherwise qualifying person, "a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person''s home more than half the time they were alive in 2025"'
+    - id: f2441.nondependent_if_other
+      printed: (helper)
+      type: Bool
+      label: Whether a qualifying person is not your dependent, asked only when some of the care was for a person other than your
+        child under 13 listed as a dependent, or when you can be claimed as a dependent (false otherwise)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f2441.care_other_or_claimable
+                - const: true
+            then: f2441.nondependent
+          - guard:
+              op: test
+              eq:
+                - f2441.care_other_or_claimable
+                - const: false
+            then: f2441.no
       cite:
         doc: i2441
         locator: 'p. 1, Qualifying Person(s), "or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer''s 2025 tax return"; p. 1, Special rule for children of divorced or separated parents or parents who live apart, "Even if you can''t claim your child as a dependent, they are treated as your qualifying person if"; p503 p. 3, Birth or death of otherwise qualifying person, "a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person''s home more than half the time they were alive in 2025"'
@@ -136,7 +221,7 @@ form:
               - const: true
           - op: test
             eq:
-              - f2441.nondependent
+              - f2441.nondependent_if_other
               - const: true
       cite:
         doc: i2441
@@ -990,7 +1075,7 @@ form:
             doc: i2441
             locator: 'p. 5, Line 14, "enter on line 14 the total of the following amounts included on line 12"'
     # The legacy input id is retained; line 16 is not limited to a payment year.
-    - id: f2441.paid_2026
+    - id: f2441.other_care_expenses
       printed: (helper)
       type: NonNegDollars
       label: Qualified care expenses incurred in 2025 not already counted in the per-person care amounts
@@ -1013,7 +1098,7 @@ form:
         op: sum
         of:
           - f2441.paid_total
-          - f2441.paid_2026
+          - f2441.other_care_expenses
       cite:
         doc: i2441
         locator: 'p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn''t matter when the expenses were paid"'

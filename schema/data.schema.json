@@ -64,6 +64,13 @@
                 "type": "integer",
                 "minimum": 1
               },
+              "at": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
               "cite": {
                 "$ref": "#/$defs/cite"
               },
@@ -105,7 +112,31 @@
                 "minItems": 2,
                 "uniqueItems": true,
                 "items": { "type": "string", "minLength": 1 }
+              },
+              "group": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$",
+                "description": "The tick-box group the question is a member of (engine/src/tick-groups.ts)."
+              },
+              "tick": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The words shown beside the question's box when its group is shown as tick-boxes."
               }
+            }
+          }
+        },
+        "groups": {
+          "type": "array",
+          "minItems": 1,
+          "description": "The tick-box groups the profile's questions name: a few yes or no questions of one block shown on one screen. Presentation only.",
+          "items": {
+            "type": "object",
+            "required": ["id", "heading"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+              "heading": { "type": "string", "minLength": 1 }
             }
           }
         },

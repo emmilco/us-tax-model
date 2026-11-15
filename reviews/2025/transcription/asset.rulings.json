@@ -49,6 +49,56 @@
   {
    "printed": "(c)",
    "project_expr_sha256": "0268c5b06d4b59d3efd0a26555d63c6cf469529f4b87f304c04e23ed2721e09b",
+   "second_expr_sha256": "974b66c05f3df5a4b0688062a94f4d467126ee39de1a5d759c12c3606a21f79d",
+   "ruling": "Ruling: representation; the reply's (c) is i4562's column (c) after the reductions (p. 11, Column (c), \"multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property\", the section 179 deduction among them, and the special allowance), which the project carries as 19(c); the project's (c) is the business-use cost before them, as its label says. Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,422 agree, 1,664 differ; every value witness is that difference (stage14.asset.bonus_100 $20,000 v. $0, bonus_40_before $10,000 v. $6,000, prior_179_full $10,000 v. $0, ...) and the reply's value equals the project's 19(c) where both are shown; the rest unknown or refusals.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "a5cf37895b7abc216bdf316bad207205613e0db9503b36b900df8681a68fd70e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].sc[desk].asset[saw]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.bonus_40_elected@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.prior_179_full@person[taxpayer].sc[desk].asset[saw]",
+     "fixture:stage14.asset.prior_bonus_full@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.refuse_qip_2017@person[taxpayer].sc[desk].asset[fitout]",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_bonus40@person[taxpayer].sc[d].asset[pc]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]",
+     "fixture:mutation.m4.asset.qip_2016_screen@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].software@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].industry@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].listed@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].sc[desk].asset[saw].software@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].sc[desk].asset[saw].industry@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].sc[desk].asset[saw].acquired_before_bonus_date@person[taxpayer].sc[desk].asset[saw]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(c)",
+   "project_expr_sha256": "0268c5b06d4b59d3efd0a26555d63c6cf469529f4b87f304c04e23ed2721e09b",
    "second_expr_sha256": "e5faa0c7be4d6419fe9b26739266a9abda0671b503e5b9327f4e2a867e20a81a",
    "ruling": "Ruling: representation; i4562 p. 11, Column (c). The project shows the amount before section 179 under this marker and the reduced column (c) at 19(c); the candidate nets section 179 and, on the witnesses, also drops unelected property through its line 2 reading. Both reach column (g) on the project basis only through the project lines. Triage executable-triage-v2 (triage/asset.json): 943 of 1864 comparisons agree; on completed returns {\"candidate-unknown\": 7, \"value\": 129}.",
    "context": "75338242d0d9601b28a30cd5bf657fab3329b934053b2f69307ef7b299b3768b",
@@ -82,6 +132,44 @@
    "second_expr_sha256": "ac23c92948c0c34ea7b1b64e0d57ca4bd28fae9a53312e05bf244a7ed0892943",
    "ruling": "Ruling: representation; project retained. The same lookup of the GDS recovery period by asset class in Pub. 946 Appendix B (p. 98); the second names the table p946_appendix_b_gds_recovery_period where the project's is class_lives, checked against a second transcription of Tables B-1 and B-2 (reviews/2025/tables/class_lives.json).",
    "subject_key": "2e8750be8528884e66fe2a3b26a7059859817aaa72283972d0efe3f1f712f68c"
+  },
+  {
+   "printed": "(screen)",
+   "project_expr_sha256": "cbbdd5177f4ceadffe269cc74c69313b2216e07b3d897885d618287964fa9de8",
+   "second_expr_sha256": "e20c0f9172f1d9b0c0778fa243c6dd6c5714d39c6008e0935e191ba47fccf3ad",
+   "ruling": "Ruling: scope; the two screens differ in which property is refused, not in any computed amount. The reply refuses a property placed in service in 2025 whenever bonus_same is false, including an election out (bonus_choice none), and property acquired before September 28, 2017 only when placed in service in 2025; the project refuses a different allowance choice within a class on the 100% and 40% paths (asset.bonus_mixed, i4562 p. 7, Election out, \"for any class of property, to not deduct any special depreciation allowance for all such property in such class\") and property acquired before that date in any year. Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,132 agree, 954 differ; the value witnesses (stage14.asset.hy_5yr, mq_7yr, mq_mixed, mq_not: project false, reply true) are single 2025 properties with bonus_choice none and bonus_same false only by the fixture default (fixtures/2025/defaults.json); the rest unknown.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].asset[pc].bonus_choice@person[taxpayer].sc[desk].asset[pc]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].asset[pc].kind_excluded@person[taxpayer].sc[desk].asset[pc]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].asset[pc].software@person[taxpayer].sc[desk].asset[pc]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].asset[pc].industry@person[taxpayer].sc[desk].asset[pc]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].asset[pc].long_production@person[taxpayer].sc[desk].asset[pc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "14",
@@ -175,6 +263,45 @@
    "subject_key": "309039e1e02fc9a19695f23dba5ed50155bf1ddd07a85cc2ffdf60fd9d1b52f7"
   },
   {
+   "printed": "14",
+   "project_expr_sha256": "e3752586daeb85b27c416eef6fda2f9988bf5b87445cd6a9c1d34d6c80aa8588",
+   "second_expr_sha256": "53ae400a8c10539f0dc923b724288ef0fc942ad4dc4673fc232fa569b37bb24a",
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 pp. 5-7, line 14). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,999 agree, 1,087 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "e730e3afd68b46ced05e212cd9ff366c71b087cbbaeffb04310c44578d51c32d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].software@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].industry@person[taxpayer].sc[desk].asset[saw]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].software@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].software@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "17",
    "project_expr_sha256": "d732c454560968857a51e633831ac4928256c5540d835fd359cc8354ada75c67",
    "second_expr_sha256": "0a2309f2a7ede3ffd28d1dda46454092b4319a1d0c0158084de3f769997050c4",
@@ -222,6 +349,48 @@
    "second_expr_sha256": "890d84eef554f81fda7619d6f9328bd3eaf3c5c549dbf7d4b7598d4a76c145d1",
    "ruling": "Ruling: representation; project retained. MACRS for earlier property from the Pub. 946 tables by period, convention and recovery year, on the basis less earlier section 179 and special allowance; the project figures each per-asset amount for every asset and selects 2025 property, prior-year property and listed property where the totals are taken (asset.dep_2025, asset.bonus_2025, asset.dep_prior, asset.dep_listed, and the where-filters of the sc sums for Form 4562 lines 14, 17, 19, 25 and 26); the second zeroes the same amounts on the asset itself.",
    "subject_key": "776bc73cbb46eb865d17c173f042abb07b1c79b8b015fc39d58d1272464c7dc0"
+  },
+  {
+   "printed": "17",
+   "project_expr_sha256": "d732c454560968857a51e633831ac4928256c5540d835fd359cc8354ada75c67",
+   "second_expr_sha256": "8aa80d88b8997c5a9957bf4180e0920578252489eb35705ceecdb85c240fd62a",
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 9, line 17). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,052 agree, 1,034 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "4ba627401a4421f241f0e5eb7095d77f0fa163d728bdcec9a0614bd1e20adf79",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.refuse_qip_2017@person[taxpayer].sc[desk].asset[fitout]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]",
+     "fixture:mutation.m4.asset.qip_2016_screen@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].sc[desk].asset[saw].industry@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].sc[desk].asset[saw].acquired_before_bonus_date@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.done-person[taxpayer].sc[desk].asset[pc].pct@person[taxpayer].sc[desk].asset[pc]",
+     "partial:stage14.asset.done-person[taxpayer].sc[desk].asset[pc].industry@person[taxpayer].sc[desk].asset[pc]",
+     "partial:stage14.asset.done-person[taxpayer].sc[desk].asset[pc].acquired_before_bonus_date@person[taxpayer].sc[desk].asset[pc]",
+     "partial:stage14.asset.prior_179_bonus-person[taxpayer].sc[d].asset[van].industry@person[taxpayer].sc[d].asset[van]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "17",
@@ -282,11 +451,43 @@
    "printed": "19(c)",
    "project_expr_sha256": "774dabbd090eed9b43afca3db987aac2f08eafe86d579eaafb483080a1f1a6b4",
    "second_expr_sha256": "96fd3612515a26c895e50df8e68e76e978e1de33a1de32529131736b7c9e55b9",
-   "ruling": "Ruling: model error; i4562 p. 9, Lines 19a Through 19j: \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025\". The reply needs answers the source does not require (asset.bonus_same of property with no allowance elected). Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 1,318 of 1,403 comparisons agree; on completed returns 13 candidate-unknown (asset.bonus_same); the rest on refused or incomplete returns. No value differs. Project stands.",
-   "context": "b16377fc1bad382bc12483b516e01f48055ac1c7020bcdc5f34f23610aab1255",
-   "date": "2026-11-07",
-   "run": "8a750e49235a5fcd29fa265920e704b9b434508ea1d635049e04df01ed168116",
-   "subject_key": "4c8732337aa44446f9adb6cf84c722f8c0da13ab1f8ff97cb5f48e8dcd94a28c"
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 11, column (c)). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,142 agree, 944 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "69abe717a67091a554f373b8e3266babdd2905591f0e9d76f4a5d998c346a21b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].software@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].industry@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.refuse_s179_half-person[taxpayer].sc[d].asset[pc].bonus_same@person[taxpayer].sc[d].asset[pc]",
+     "partial:stage14.mut.s179_half_fifty_cents-person[taxpayer].sc[d].asset[pc].bonus_same@person[taxpayer].sc[d].asset[pc]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].software@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].software@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "19(c)",
@@ -407,6 +608,48 @@
   {
    "printed": "19(g)",
    "project_expr_sha256": "cf33e40cde1cdfbb0e5e57b7901e8cc90f89054a92b3e8e77303c8dca1ab0d26",
+   "second_expr_sha256": "f35134a8ce42834333c48d7fc9ecfa6dbc57be71ff2858d62ebda9cd447f98a4",
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 pp. 9-12, column (g)). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,008 agree, 1,078 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "57a5e92e6c46b281878567ddf7080793c4676240f571c50881b1b8227f369578",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_2]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].industry@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.refuse_s179_half-person[taxpayer].sc[d].asset[pc].bonus_same@person[taxpayer].sc[d].asset[pc]",
+     "partial:stage14.mut.s179_half_fifty_cents-person[taxpayer].sc[d].asset[pc].bonus_same@person[taxpayer].sc[d].asset[pc]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.s8812.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.asset.1-person[taxpayer].sc[biz_b].asset[item_1].industry@person[taxpayer].sc[biz_b].asset[item_1]",
+     "partial:classm.asset.1-person[taxpayer].sc[biz_b].asset[item_2].industry@person[taxpayer].sc[biz_b].asset[item_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "19(g)",
+   "project_expr_sha256": "cf33e40cde1cdfbb0e5e57b7901e8cc90f89054a92b3e8e77303c8dca1ab0d26",
    "second_expr_sha256": "f523ab3a4f1235ef9ecd4ab271a2b038bdc24e0870cfe759af8f61508317bc08",
    "ruling": "Ruling: representation; project retained. MACRS on 2025 property by the mid-quarter test (Pub. 946 p. 34, Which Convention Applies), on the basis less the section 179 election and the special allowance; the project figures each per-asset amount for every asset and selects 2025 property, prior-year property and listed property where the totals are taken (asset.dep_2025, asset.bonus_2025, asset.dep_prior, asset.dep_listed, and the where-filters of the sc sums for Form 4562 lines 14, 17, 19, 25 and 26); the second zeroes the same amounts on the asset itself.",
    "subject_key": "225e5e554f14b440c82f754035779df9b03336abcb6ca86ea696752c06408c49"
@@ -455,6 +698,43 @@
   {
    "printed": "25",
    "project_expr_sha256": "9ba5690cfd03814c9a604a4214fcc9d7ce0bf43c30c0de34a2dae622d44a7bac",
+   "second_expr_sha256": "98e1f127180f52cf7d810e5e00365de0cc0bab6beaa9ed44207175419c7a2faa",
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 15, line 25). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,869 agree, 1,217 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "6c7c434728711dbe7e5a3ec4ca4006b37a8131e2751b072471fbe3e7284e1179",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:classm.asset.1-person[taxpayer].sc[biz_b].asset[item_2].software@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:classm.asset.1-person[taxpayer].sc[biz_b].asset[item_2].industry@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:stage14.sep.step1_other_se_income-person[taxpayer].sc[biz_a].asset[item_1].software@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:stage14.sep.step1_other_se_income-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "25",
+   "project_expr_sha256": "9ba5690cfd03814c9a604a4214fcc9d7ce0bf43c30c0de34a2dae622d44a7bac",
    "second_expr_sha256": "d22ab6af756fc4216259c85c9731c6813e9e6129b50028f6aeb8b9fbd6e3dfad",
    "ruling": "Ruling: representation; i4562 p. 13, Line 25. representation; every difference is on a partial or refused record: refusals sit on different lines and the withheld answers are ones the interview asks. No completed return differs. Triage executable-triage-v2 (triage/asset.json): 1674 of 1710 comparisons agree; on completed returns no difference.",
    "context": "76ae461b0b466a00f1d7aae4b5ef351a0edf8c96f19dd0c8b6ad4ecbce86bec7",
@@ -467,6 +747,47 @@
    "ruling": "Ruling: representation; i4562 p. 13, Line 25: \"If you placed in service certain qualified listed property during the tax year, you may be able to deduct the special depreciation allowance\". Triage executable-triage-v1 (triage/asset.json; 1,083 fixtures, 500 generated returns seed 20261026, 893 partial records): 1,096 of 2,045 comparisons agree (1,096 of 2,032 in scope); 644 value; 226 project-unknown; 66 candidate-unknown; 13 project-refuses. All 644 value differences are on entries where the project's line is not reported (asset.on_26_2025 false, checked for every witness), where the candidate enters zero; spec/spec.md (shown_when): \"the values sheet shows the line only when it is true ... The value is computed either way\". The Schedule C sums read asset.bonus_2025 filtered by asset.listed (sc.f25_assets), which triage compares separately, so no printed amount differs. Witnesses: classm.f8889.4.deepseek item_2 not listed ($48,573.00 against $0.00), classm.asset.1 item_1 placed before 2025 ($2,130.00 against $0.00). The 13 project-refuses records are the cited asset.bonus_mixed refusal (i4562 p. 7): scope. The project-unknown records are all on entries where the project line is not reported (shown_when false) and withhold answers that only the hidden value reads; no printed amount: representation. The 3 candidate-unknown records withholding bonus_same on listed 2025 property with bonus_choice none repeat the model error ruled at line 14; the rest withhold asset.listed or asset.placed, which the interview asks of every asset where the base is not refused: representation. Project stands.",
    "context": "85323b2abe39c514211be4eb084a1490c6d08daa8ab89e9a6937b617013b9bd8",
    "subject_key": "89ff82bc8f17546b0b70f9997573d3e5d062903180c233a8fc82ecda3d0eef5c"
+  },
+  {
+   "printed": "26(h)",
+   "project_expr_sha256": "72f0ac60e2a2c8b4ea9799f8adc0389499c7fe1e04ec998a342624221ac4421d",
+   "second_expr_sha256": "05a3e02f463a52f805430d191f0b060e1bb059d512adb6714e7b9d30e3ea888e",
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 15, column (h)). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,853 agree, 1,233 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "9a16c369573d88ee0b5727b9d963fd083a5eeba31fff00cc43f40853168012de",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:classm.asset.1-person[taxpayer].sc[biz_b].asset[item_1].industry@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:classm.asset.1-person[taxpayer].sc[biz_b].asset[item_1].listed@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:classm.asset.1-person[taxpayer].sc[biz_b].asset[item_1].bonus_choice@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:classm.asset.1-person[taxpayer].sc[biz_b].asset[item_2].industry@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:classm.f4562.1-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.f4562.1-person[taxpayer].sc[biz_a].asset[item_1].acquired_before_bonus_date@person[taxpayer].sc[biz_a].asset[item_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "26(h)",
@@ -570,6 +891,38 @@
   {
    "printed": "26(i)",
    "project_expr_sha256": "789b229d3f0770b99a72d13d2bd06285a888dbf9a0fc5710fec3a8f8fd42e2bf",
+   "second_expr_sha256": "6052a6ce7e54cbf1868c40d17a20eb3584834666efa686a958e5a8b6adbf1bdb",
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 15, line 26 column (i)). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,841 agree, 1,245 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "b3dcfe16055ddd7def3609739c26f4d31f3c2d7f280f5c8a290d605d24fba10a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "26(i)",
+   "project_expr_sha256": "789b229d3f0770b99a72d13d2bd06285a888dbf9a0fc5710fec3a8f8fd42e2bf",
    "second_expr_sha256": "7fa8144ea2c4a23b0d858868bf734d44ea46f157e268ad63c33ad91dabba6a75",
    "ruling": "Ruling: representation; same as the backlog-round ruling. i4562 p. 5, Line 6, \"Enter the elected section 179 cost of listed property in column (i) of line 26\". Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,349 of 1,364 agree; the only differences are records withholding asset.listed on refused or incomplete returns; no completed return differs.",
    "context": "5fab5c6b64b3bf2b1ed1a4f09e48ad712e9ad6c63277d933ffd98837335da97f",
@@ -632,6 +985,45 @@
    "subject_key": "9c54b514424ed2d4930c4ef65fc454dc6d014dee1ead4879b369926d32e5e874"
   },
   {
+   "printed": "asset.bonus_this_year",
+   "project_expr_sha256": "56a5cd08ff18b73cb5800fbcdc2f39ec4a344716110f50472d951554a176c08e",
+   "second_expr_sha256": "356d56ee26e4ed627e9ff8ca2d08b538a93ba6dbb6e48ddecd6616f9fd07deca",
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 pp. 5-7, line 14). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,029 agree, 1,057 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "63f1b09aac01b1071deb11b1d16e04a70ccfb4e8eeab0c5944ef52c87723a036",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].software@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].industry@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].listed@person[taxpayer].sc[desk].asset[saw]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].software@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].listed@person[taxpayer].sc[biz_a].asset[item_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "asset.cost179",
    "project_expr_sha256": "08298e5b89a12ddf9debc80c0232514cbaa68a0ddb4eab96d710c6a06cfb8bdc",
    "second_expr_sha256": "c06a464420db5add2114edba032af9f36c26d61cfef13cfb98b65c4c10432f93",
@@ -689,6 +1081,52 @@
    "second_expr_sha256": "2bd5eb07bf54ada404abaf7e01ada24888c17c91efb0fe2bf63fe4869810878a",
    "ruling": "Ruling: equivalent; project retained. Column (c) for 2025 property used more than 50% in business and zero otherwise on both sides; the guards are merged differently.",
    "subject_key": "0f7987897c9afd600c5d18c8f6f73a73834ee92a70bad33f8ff5df0d9a3f7610"
+  },
+  {
+   "printed": "asset.cost179",
+   "project_expr_sha256": "b88b68261de8f361a5cacd39a17f9121ce7c475f1206aa19cf375765e9cadd07",
+   "second_expr_sha256": "69669a5942834d9a1f4a5a6bd435e9c963583be9b534f29653def046f94d315f",
+   "ruling": "Ruling: model error; the reply counts the business cost of 2025 property used 50% or less in the business as section 179 property cost. i4562 p. 3, Part I: section 179 property must be \"used predominantly (more than 50%) in your trade or business\"; p. 4, Line 2, \"Enter the total cost of all section 179 property you placed in service during the tax year\". The reply's note shows it read the more-than-50% test as a condition of the election only. Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,045 agree, 1,041 differ; every value witness has asset.cost179_over_half $0 (stage18.mut.classm_f8962_4_nov_start item_2 $0 v. $2,482.83; generated 3, 25, 46, 177, 182, 269, 403).",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "d6c32e43768bbd8e38c9482a522db64fb4c52351e30dea9e9d94227380f7d4b1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_2]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage18.mut.classm_f8962_4_nov_start@person[taxpayer].sc[biz_a].asset[item_2]",
+     "generated:20261026.3@person[taxpayer].sc[biz_a].asset[item_1]",
+     "generated:20261026.25@person[taxpayer].sc[biz_a].asset[item_2]",
+     "generated:20261026.46@person[taxpayer].sc[biz_a].asset[item_1]",
+     "generated:20261026.177@person[taxpayer].sc[biz_a].asset[item_1]",
+     "generated:20261026.182@person[taxpayer].sc[biz_b].asset[item_1]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].software@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].industry@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].listed@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].bonus_choice@person[taxpayer].sc[desk].asset[saw]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].software@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "asset.dep_2025",
@@ -835,6 +1273,130 @@
    "subject_key": "0fc9fd1556e68afe78015570cb84312ed3e84e32b1e66f2f94c73d4c1fb2f806"
   },
   {
+   "printed": "asset.dep_prior",
+   "project_expr_sha256": "54da30a34087c33f7b54df5f75588703b75263f96870ba2357b875dd368503d1",
+   "second_expr_sha256": "7e9f4de3e05d0e2cea664d8f7549371f3b9163d948f00982345cd386a97092ce",
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 9, line 17). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,051 agree, 1,035 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "e854ce9aff628637836a94a4e9e4131d7e1e93b32c322cc2a1742c32cf1090b5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.refuse_qip_2017@person[taxpayer].sc[desk].asset[fitout]",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]",
+     "fixture:mutation.m4.asset.qip_2016_screen@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].sc[desk].asset[saw].industry@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].sc[desk].asset[saw].acquired_before_bonus_date@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].sc[desk].asset[saw].listed@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.done-person[taxpayer].sc[desk].asset[pc].pct@person[taxpayer].sc[desk].asset[pc]",
+     "partial:stage14.asset.done-person[taxpayer].sc[desk].asset[pc].industry@person[taxpayer].sc[desk].asset[pc]",
+     "partial:stage14.asset.done-person[taxpayer].sc[desk].asset[pc].acquired_before_bonus_date@person[taxpayer].sc[desk].asset[pc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "asset.dep_this_year",
+   "project_expr_sha256": "13e585d252dc7939c0c01f883405aa4f495c3e7339207285d20ba7a7da6d6cb3",
+   "second_expr_sha256": "769de8319e5a1ef7bfe9fa934d836131b6fa19733b733b4bfee13e8be90dda54",
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 9, line 19 column (g)). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,960 agree, 1,126 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "6cfa4777bd4597922f1797e544c377245be7b5f694befebffd733033b354c0d1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_2]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].industry@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].listed@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.refuse_s179_half-person[taxpayer].sc[d].asset[pc].bonus_same@person[taxpayer].sc[d].asset[pc]",
+     "partial:stage14.mut.s179_half_fifty_cents-person[taxpayer].sc[d].asset[pc].bonus_same@person[taxpayer].sc[d].asset[pc]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].listed@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].listed@person[taxpayer].sc[biz_a].asset[item_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "asset.mq_q4",
+   "project_expr_sha256": "9b1dcc0b952a2c2c0812c0f59e9f10015bef1d6f405bd2dd48ac6cde4fc8a417",
+   "second_expr_sha256": "3b488b9c524451bf0da8bfb66a5366a7efc79a568ff9ae502f23fe89af986523",
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 10, mid-quarter convention). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,899 agree, 1,187 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "58754c64a1b237be5ab9d0a7bb2c7dd4bee6aaf8c38e7b823629965828e02321",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].placed@person[taxpayer].sc[desk].asset[saw]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].placed@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].placed@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.s8812.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].placed@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.asset.1-person[taxpayer].sc[biz_b].asset[item_1].placed@person[taxpayer].sc[biz_b].asset[item_1]",
+     "partial:classm.asset.1-person[taxpayer].sc[biz_b].asset[item_2].industry@person[taxpayer].sc[biz_b].asset[item_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "asset.mq_q4",
    "project_expr_sha256": "f87764d341980efb848839d66be66fa89713998b9d2f6006126628553dc3fa9a",
    "second_expr_sha256": "555d88c42ab73a517ff2cf32ba3c51073dca4d9fc0d1273aef599744951718ee",
@@ -879,6 +1441,48 @@
   },
   {
    "printed": "asset.mq_total",
+   "project_expr_sha256": "6d1f54b52bd5ab1444923e1e6a540b50aa04e31c64f68d3c5799e372dbe3de3c",
+   "second_expr_sha256": "9b7c1233b58616de239dcd9688703163bafc888b8b8e23a95df82b1fbe512af0",
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 10, mid-quarter convention). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,140 agree, 946 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "eeb6cf95d91fcca6e30cdb80097d95e1c622cb48166e56942cc3870608775a7c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].industry@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].listed@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].sc[desk].asset[saw].bonus_choice@person[taxpayer].sc[desk].asset[saw]",
+     "partial:stage14.asset.refuse_s179_half-person[taxpayer].sc[d].asset[pc].bonus_same@person[taxpayer].sc[d].asset[pc]",
+     "partial:stage14.mut.s179_half_fifty_cents-person[taxpayer].sc[d].asset[pc].bonus_same@person[taxpayer].sc[d].asset[pc]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].industry@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].listed@person[taxpayer].sc[biz_a].asset[item_1]",
+     "partial:classm.g28.1.deepseek-person[taxpayer].sc[biz_a].asset[item_1].bonus_choice@person[taxpayer].sc[biz_a].asset[item_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "asset.mq_total",
    "project_expr_sha256": "b6b464661a8d316ec2f2062322cd3be24a1f562263a5be98495012bd925b7cc4",
    "second_expr_sha256": "1d6e5dcea77776d28bbb194dbaf1b7238b45a268da6387364a1a92c819df55aa",
    "ruling": "Ruling: representation; p946 p. 34, the same test over the entire year. Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 1,337 of 1,403 comparisons agree; 2 candidate-refuses, 17 project-refuses, 47 project-unknown; no completed return differs; the differences are the project's refusals (asset.screened, asset.listed_low) or unknowns on unasked answers, on refused or incomplete returns. Project stands.",
@@ -911,6 +1515,42 @@
    "second_expr_sha256": "c97553c439f33f70d9dae1fc8ba508fdf3910847779a78eb6ba210a94deba73f",
    "ruling": "Ruling: equivalent within the totals; project retained. The second excludes listed property here; the project keeps the 2025 election for every 2025 asset and divides it at the sums: line 6 takes property that is not listed (sc.f6, where listed is false) and line 29, through line 26 column (i), listed property (sc.f29), as i4562 p. 5, Line 6 says ('Do not include any listed property on line 6').",
    "subject_key": "b3e674c861b082a004f952b7b501c96e4b822ec99be246ad16f817c442f79de3"
+  },
+  {
+   "printed": "asset.s179_this_year",
+   "project_expr_sha256": "e6f39c7f717573dc078d5e93f90cb4f14a84b033e304b78e6a9e81894679662f",
+   "second_expr_sha256": "9858a31c5840e5ba24b6eb8bf6baca5b8b45b66e2f90d8d9b3d516f11bd03c27",
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 4, line 6 column (c)). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,854 agree, 1,232 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
+   "context": "5c16bc85068050f95bb342c5aa89c9cea17d7c1e4d890cff963efc72c2cf7c53",
+   "date": "2026-11-14",
+   "run": "0bb4b5546f506700d78e43463074b6c8ebc88fda7420c64ab2994a430459301e",
+   "subject_key": "2ed47a97cc3d42dba0186be8ee89c6f5f74217c23172971e4b2a3a36cb066961",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[lot]",
+     "fixture:classm.asset.2@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.asset.3@person[taxpayer].sc[biz_b].asset[item_2]",
+     "partial:stage18.mut.classm_f8962_4_nov_start-person[taxpayer].sc[biz_a].asset[item_2].placed@person[taxpayer].sc[biz_a].asset[item_2]",
+     "partial:stage18.mut.classm_f8962_4_nov_start-person[taxpayer].sc[biz_a].asset[item_2].s179@person[taxpayer].sc[biz_a].asset[item_2]",
+     "partial:mutation.m4.s1a.spouse_no_ssn_one_job-person[taxpayer].sc[biz_b].asset[item_1].placed@person[taxpayer].sc[biz_b].asset[item_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

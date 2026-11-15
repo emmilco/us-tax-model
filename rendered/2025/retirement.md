@@ -54,60 +54,439 @@
 - Expr: `{"op":"input","source":"Amount of this distribution you rolled over within 60 days to a qualified plan or an IRA other than a Roth IRA (for a direct rollover, code G, the whole distribution is treated as rolled over).\n\nAlso count:\n- an amount rolled over after the 60 days if the 60-day requirement was waived (you qualify for an automatic waiver, you self-certify that you meet the requirements of a waiver, or you received a private letter ruling granting a waiver) or the period was extended because the amount was a frozen deposit\n- an IRA distribution to buy, build or rebuild a first home that you contributed back to a traditional IRA within 120 days of the distribution because the purchase or construction was canceled or delayed\n\nDo not count any part of a required minimum distribution, which is not eligible for rollover, nor any of these from a pension, annuity, 401(k), 403(b) or 457(b) plan:\n\n- any part of a series of substantially equal payments over your life or life expectancy (or yours and your beneficiary's) or over 10 years or more\n- a hardship distribution\n- dividends on employer securities\n- the cost of life insurance coverage\n\nIf you received this distribution as a beneficiary other than the surviving spouse, count only an amount paid by direct trustee-to-trustee transfer to an inherited IRA.\n\nFor code S (a SIMPLE IRA in its first 2 years), count only an amount rolled over to another SIMPLE IRA."}`
 - Cite: [i1040gi] p. 27, Exception 1 (IRA rollovers); p. 30, Rollovers; p575 p. 21, Eligible rollover distribution, "An eligible rollover distribution is any distribution of all or any part of the balance to your credit in a qualified retirement plan except the following." and "A required minimum distribution (RMD)"; p590b p. 6, Distributions not eligible for rollover, "Amounts that must be distributed (required minimum distributions) during a particular year aren't eligible for rollover treatment."; p575 p. 21, Eligible rollover distribution, "Any of a series of substantially equal distributions paid at least once a year over", "Hardship distributions.", "Dividends paid on employer securities.", "The cost of life insurance coverage." and "a distribution to the plan participant’s beneficiary isn’t generally treated as an eligible rollover distribution"; p575 p. 24, Rollovers by nonspouse beneficiary, "The distribution must be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive the distribution."; p590b p. 5, Inherited from someone other than spouse, "you can't roll over any amounts into or out of the inherited IRA"; p560 p. 18, Distributions (Withdrawals), "a rollover from a SIMPLE IRA to a non-SIMPLE IRA can be made tax free only after a 2-year participation in the SIMPLE IRA plan"; p575 p. 23, Ways to get a waiver of the 60-day rollover requirement, "There are three ways to obtain a waiver of the 60-day requirement." and Frozen deposits, "The 60-day rollover period is extended by the period for which the amount is a frozen deposit"; p590b p. 28, "the purchase or construction was canceled or delayed, you could generally contribute the amount of the distribution to an IRA within 120 days of the distribution and not pay income tax or the 10% additional tax on early distributions. This contribution is treated as a rollover contribution to the IRA." (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `retirement.no`
+
+- **Authored helper label:** Year parameter s3.no (false)
+- **Encoded (Bool):** Enter false (s3.no).
+- Expr: `{"op":"param","ref":"s3.no"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.rollover_any`
+
+- **Authored helper label:** Did any of this money go into a retirement account again (a rollover or a conversion), even if it was paid to you first?
+- **Encoded (Bool):** Input — Did any of this money go into a retirement account again (a rollover or a conversion), even if it was paid to you first?
+- Expr: `{"op":"input","source":"Did any of this money go into a retirement account again (a rollover or a conversion), even if it was paid to you first?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.rolled_some`
+
+- **Authored helper label:** The filer put some of this money into a retirement account (asked unless the form is a direct rollover, code G)
+- **Encoded (Bool):** helper "Did any of this money go into a retirement account again (a rollover or a conversion), even if it was paid to you first?" = true
+- Expr: `{"eq":["retirement.rollover_any",{"const":true}],"op":"test"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.put_back`
+
+- **Authored helper label:** Some of the money went into another retirement account (a direct rollover, code G, or the filer says so)
+- **Encoded (Bool):** Choose — [helper "Direct rollover (code G)" = true → helper "Direct rollover (code G)"] [helper "Direct rollover (code G)" = false → helper "The filer put some of this money into a retirement account (asked unless the form is a direct rollover, code G)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.direct",{"const":true}],"op":"test"},"then":"retirement.direct"},{"guard":{"eq":["retirement.direct",{"const":false}],"op":"test"},"then":"retirement.rolled_some"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.rollover_if_any`
+
+- **Authored helper label:** Amount rolled over, asked only when some of the money went into another retirement account (none otherwise)
+- **Encoded (NonNegDollars):** Choose — [helper "Did any of this money go into a retirement account again (a rollover or a conversion), even if it was paid to you first?" = true → helper "Amount you rolled over to a qualified plan or IRA (not a Roth account) within 60 days, or later under a waiver or frozen-deposit extension, or recontributed to an IRA within 120 days after a first-home purchase was canceled or delayed"] [helper "Did any of this money go into a retirement account again (a rollover or a conversion), even if it was paid to you first?" = false → helper "No amount"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.rollover_any",{"const":true}],"op":"test"},"then":"retirement.rollover"},{"guard":{"eq":["retirement.rollover_any",{"const":false}],"op":"test"},"then":"retirement.zero"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.is_trad`
+
+- **Authored helper label:** A traditional, SEP or SIMPLE IRA
+- **Encoded (Bool):** helper "Kind of account the distribution came from" = 'traditional_ira'
+- Expr: `{"eq":["retirement.account",{"const":"traditional_ira"}],"op":"test"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.is_death`
+
+- **Authored helper label:** Code 4 (death)
+- **Encoded (Bool):** helper "Distribution code in box 7" = 'death_4'
+- Expr: `{"eq":["retirement.code",{"const":"death_4"}],"op":"test"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.plan_death`
+
+- **Authored helper label:** A payment from a plan to a beneficiary (code 4, not an IRA)
+- **Encoded (Bool):** helper "IRA distribution (lines 4a and 4b)" = false and helper "Code 4 (death)" = true
+- Expr: `{"all":[{"eq":["retirement.is_ira",{"const":false}],"op":"test"},{"eq":["retirement.is_death",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.roth_moved`
+
+- **Authored helper label:** Did any of this money go into a Roth IRA or another Roth account?
+- **Encoded (Bool):** Input — Did any of this money go into a Roth IRA or another Roth account?
+- Expr: `{"op":"input","source":"Did any of this money go into a Roth IRA or another Roth account?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.roth_moved_if_put_back`
+
+- **Authored helper label:** Did any of this money go into a Roth IRA or another Roth account? Asked only with some of the money went into another retirement account (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Some of the money went into another retirement account (a direct rollover, code G, or the filer says so)" = true → helper "Did any of this money go into a Roth IRA or another Roth account?"] [helper "Some of the money went into another retirement account (a direct rollover, code G, or the filer says so)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.put_back",{"const":true}],"op":"test"},"then":"retirement.roth_moved"},{"guard":{"eq":["retirement.put_back",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.rollover_property`
+
+- **Authored helper label:** Did the plan or IRA pay out anything other than cash (such as shares) that you then sold, kept, or put only partly into the new account?
+- **Encoded (Bool):** Input — Did the plan or IRA pay out anything other than cash (such as shares) that you then sold, kept, or put only partly into the new account?
+- Expr: `{"op":"input","source":"Did the plan or IRA pay out anything other than cash (such as shares) that you then sold, kept, or put only partly into the new account?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.rollover_property_if_put_back`
+
+- **Authored helper label:** Did the plan or IRA pay out anything other than cash (such as shares) that you then sold, kept, or put only partly into the new account? Asked only with some of the money went into another retirement account (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Some of the money went into another retirement account (a direct rollover, code G, or the filer says so)" = true → helper "Did the plan or IRA pay out anything other than cash (such as shares) that you then sold, kept, or put only partly into the new account?"] [helper "Some of the money went into another retirement account (a direct rollover, code G, or the filer says so)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.put_back",{"const":true}],"op":"test"},"then":"retirement.rollover_property"},{"guard":{"eq":["retirement.put_back",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.rollover_qdro`
+
+- **Authored helper label:** Did you get this money under a court order in a divorce or separation (a qualified domestic relations order)?
+- **Encoded (Bool):** Input — Did you get this money under a court order in a divorce or separation (a qualified domestic relations order)?
+- Expr: `{"op":"input","source":"Did you get this money under a court order in a divorce or separation (a qualified domestic relations order)?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.rollover_qdro_if_put_back`
+
+- **Authored helper label:** Did you get this money under a court order in a divorce or separation (a qualified domestic relations order)? Asked only with some of the money went into another retirement account (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Some of the money went into another retirement account (a direct rollover, code G, or the filer says so)" = true → helper "Did you get this money under a court order in a divorce or separation (a qualified domestic relations order)?"] [helper "Some of the money went into another retirement account (a direct rollover, code G, or the filer says so)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.put_back",{"const":true}],"op":"test"},"then":"retirement.rollover_qdro"},{"guard":{"eq":["retirement.put_back",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.levy_returned`
+
+- **Authored helper label:** Was this money taken by the IRS under a levy and later returned to you?
+- **Encoded (Bool):** Input — Was this money taken by the IRS under a levy and later returned to you?
+- Expr: `{"op":"input","source":"Was this money taken by the IRS under a levy and later returned to you?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.levy_returned_if_put_back`
+
+- **Authored helper label:** Was this money taken by the IRS under a levy and later returned to you? Asked only with some of the money went into another retirement account (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Some of the money went into another retirement account (a direct rollover, code G, or the filer says so)" = true → helper "Was this money taken by the IRS under a levy and later returned to you?"] [helper "Some of the money went into another retirement account (a direct rollover, code G, or the filer says so)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.put_back",{"const":true}],"op":"test"},"then":"retirement.levy_returned"},{"guard":{"eq":["retirement.put_back",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.charity_hsa`
+
+- **Authored helper label:** Did any of this money go straight from the IRA to a charity, or into a health savings account?
+- **Encoded (Bool):** Input — Did any of this money go straight from the IRA to a charity, or into a health savings account?
+- Expr: `{"op":"input","source":"Did any of this money go straight from the IRA to a charity, or into a health savings account?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.charity_hsa_if_ira`
+
+- **Authored helper label:** Did any of this money go straight from the IRA to a charity, or into a health savings account? Asked only with an IRA (false otherwise)
+- **Encoded (Bool):** Choose — [helper "IRA distribution (lines 4a and 4b)" = true → helper "Did any of this money go straight from the IRA to a charity, or into a health savings account?"] [helper "IRA distribution (lines 4a and 4b)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_ira",{"const":true}],"op":"test"},"then":"retirement.charity_hsa"},{"guard":{"eq":["retirement.is_ira",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.ira_returned`
+
+- **Authored helper label:** Was any of this a contribution of yours that the IRA paid back to you, for example because you had put in more than the yearly limit?
+- **Encoded (Bool):** Input — Was any of this a contribution of yours that the IRA paid back to you, for example because you had put in more than the yearly limit?
+- Expr: `{"op":"input","source":"Was any of this a contribution of yours that the IRA paid back to you, for example because you had put in more than the yearly limit?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.ira_returned_if_ira`
+
+- **Authored helper label:** Was any of this a contribution of yours that the IRA paid back to you, for example because you had put in more than the yearly limit? Asked only with an IRA (false otherwise)
+- **Encoded (Bool):** Choose — [helper "IRA distribution (lines 4a and 4b)" = true → helper "Was any of this a contribution of yours that the IRA paid back to you, for example because you had put in more than the yearly limit?"] [helper "IRA distribution (lines 4a and 4b)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_ira",{"const":true}],"op":"test"},"then":"retirement.ira_returned"},{"guard":{"eq":["retirement.is_ira",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.ira_basis`
+
+- **Authored helper label:** Have you ever put money into a traditional IRA that you did not deduct on a tax return?
+- **Encoded (Bool):** Input — Have you ever put money into a traditional IRA that you did not deduct on a tax return?
+- Expr: `{"op":"input","source":"Have you ever put money into a traditional IRA that you did not deduct on a tax return?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.ira_basis_if_trad`
+
+- **Authored helper label:** Have you ever put money into a traditional IRA that you did not deduct on a tax return? Asked only with a traditional IRA (false otherwise)
+- **Encoded (Bool):** Choose — [helper "A traditional, SEP or SIMPLE IRA" = true → helper "Have you ever put money into a traditional IRA that you did not deduct on a tax return?"] [helper "A traditional, SEP or SIMPLE IRA" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_trad",{"const":true}],"op":"test"},"then":"retirement.ira_basis"},{"guard":{"eq":["retirement.is_trad",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.box6`
+
+- **Authored helper label:** Is there an amount in box 6 of this form (net unrealized appreciation in employer's securities)?
+- **Encoded (Bool):** Input — Is there an amount in box 6 of this form (net unrealized appreciation in employer's securities)?
+- Expr: `{"op":"input","source":"Is there an amount in box 6 of this form (net unrealized appreciation in employer's securities)?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.box6_if_plan`
+
+- **Authored helper label:** Is there an amount in box 6 of this form (net unrealized appreciation in employer's securities)? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)
+- **Encoded (Bool):** Choose — [helper "IRA distribution (lines 4a and 4b)" = false → helper "Is there an amount in box 6 of this form (net unrealized appreciation in employer's securities)?"] [helper "IRA distribution (lines 4a and 4b)" = true → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_ira",{"const":false}],"op":"test"},"then":"retirement.box6"},{"guard":{"eq":["retirement.is_ira",{"const":true}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.loan_offset`
+
+- **Authored helper label:** Was any of this amount an unpaid loan from the plan that was taken off your balance, not money paid out (a plan loan offset)?
+- **Encoded (Bool):** Input — Was any of this amount an unpaid loan from the plan that was taken off your balance, not money paid out (a plan loan offset)?
+- Expr: `{"op":"input","source":"Was any of this amount an unpaid loan from the plan that was taken off your balance, not money paid out (a plan loan offset)?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.loan_offset_if_plan`
+
+- **Authored helper label:** Was any of this amount an unpaid loan from the plan that was taken off your balance, not money paid out (a plan loan offset)? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)
+- **Encoded (Bool):** Choose — [helper "IRA distribution (lines 4a and 4b)" = false → helper "Was any of this amount an unpaid loan from the plan that was taken off your balance, not money paid out (a plan loan offset)?"] [helper "IRA distribution (lines 4a and 4b)" = true → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_ira",{"const":false}],"op":"test"},"then":"retirement.loan_offset"},{"guard":{"eq":["retirement.is_ira",{"const":true}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.disability`
+
+- **Authored helper label:** Do you get this pension because you became disabled?
+- **Encoded (Bool):** Input — Do you get this pension because you became disabled?
+- Expr: `{"op":"input","source":"Do you get this pension because you became disabled?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.disability_if_plan`
+
+- **Authored helper label:** Do you get this pension because you became disabled? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)
+- **Encoded (Bool):** Choose — [helper "IRA distribution (lines 4a and 4b)" = false → helper "Do you get this pension because you became disabled?"] [helper "IRA distribution (lines 4a and 4b)" = true → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_ira",{"const":false}],"op":"test"},"then":"retirement.disability"},{"guard":{"eq":["retirement.is_ira",{"const":true}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.dis_early`
+
+- **Authored helper label:** When any of this was paid, were you younger than the earliest age at which the plan would have let you retire without the disability (its minimum retirement age)?
+- **Encoded (Bool):** Input — When any of this was paid, were you younger than the earliest age at which the plan would have let you retire without the disability (its minimum retirement age)?
+- Expr: `{"op":"input","source":"When any of this was paid, were you younger than the earliest age at which the plan would have let you retire without the disability (its minimum retirement age)?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.dis_early_if_disability`
+
+- **Authored helper label:** When any of this was paid, were you younger than the earliest age at which the plan would have let you retire without the disability (its minimum retirement age)? Asked only with a disability pension (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Do you get this pension because you became disabled? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true → helper "When any of this was paid, were you younger than the earliest age at which the plan would have let you retire without the disability (its minimum retirement age)?"] [helper "Do you get this pension because you became disabled? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.disability_if_plan",{"const":true}],"op":"test"},"then":"retirement.dis_early"},{"guard":{"eq":["retirement.disability_if_plan",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.dis_terror`
+
+- **Authored helper label:** Did the disability result from a terrorist attack?
+- **Encoded (Bool):** Input — Did the disability result from a terrorist attack?
+- Expr: `{"op":"input","source":"Did the disability result from a terrorist attack?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.dis_terror_if_disability`
+
+- **Authored helper label:** Did the disability result from a terrorist attack? Asked only with a disability pension (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Do you get this pension because you became disabled? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true → helper "Did the disability result from a terrorist attack?"] [helper "Do you get this pension because you became disabled? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.disability_if_plan",{"const":true}],"op":"test"},"then":"retirement.dis_terror"},{"guard":{"eq":["retirement.disability_if_plan",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.dis_military`
+
+- **Authored helper label:** Is it a disability pension for service in the armed forces?
+- **Encoded (Bool):** Input — Is it a disability pension for service in the armed forces?
+- Expr: `{"op":"input","source":"Is it a disability pension for service in the armed forces?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.dis_military_if_disability`
+
+- **Authored helper label:** Is it a disability pension for service in the armed forces? Asked only with a disability pension (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Do you get this pension because you became disabled? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true → helper "Is it a disability pension for service in the armed forces?"] [helper "Do you get this pension because you became disabled? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.disability_if_plan",{"const":true}],"op":"test"},"then":"retirement.dis_military"},{"guard":{"eq":["retirement.disability_if_plan",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.pso_exclusion`
+
+- **Authored helper label:** Are you a retired police officer, firefighter or other public safety officer who wants to leave out of income the part of this pension that paid for health or long-term care insurance?
+- **Encoded (Bool):** Input — Are you a retired police officer, firefighter or other public safety officer who wants to leave out of income the part of this pension that paid for health or long-term care insurance?
+- Expr: `{"op":"input","source":"Are you a retired police officer, firefighter or other public safety officer who wants to leave out of income the part of this pension that paid for health or long-term care insurance?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.pso_exclusion_if_plan`
+
+- **Authored helper label:** Are you a retired police officer, firefighter or other public safety officer who wants to leave out of income the part of this pension that paid for health or long-term care insurance? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)
+- **Encoded (Bool):** Choose — [helper "IRA distribution (lines 4a and 4b)" = false → helper "Are you a retired police officer, firefighter or other public safety officer who wants to leave out of income the part of this pension that paid for health or long-term care insurance?"] [helper "IRA distribution (lines 4a and 4b)" = true → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_ira",{"const":false}],"op":"test"},"then":"retirement.pso_exclusion"},{"guard":{"eq":["retirement.is_ira",{"const":true}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.born_before_averaging_date`
+
+- **Authored helper label:** Was the person who earned this pension or plan balance (you, or the person you inherited it from) born before January 2, 1936?
+- **Encoded (Bool):** Input — Was the person who earned this pension or plan balance (you, or the person you inherited it from) born before January 2, 1936?
+- Expr: `{"op":"input","source":"Was the person who earned this pension or plan balance (you, or the person you inherited it from) born before January 2, 1936?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.born_before_averaging_date_if_plan`
+
+- **Authored helper label:** Was the person who earned this pension or plan balance (you, or the person you inherited it from) born before January 2, 1936? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)
+- **Encoded (Bool):** Choose — [helper "IRA distribution (lines 4a and 4b)" = false → helper "Was the person who earned this pension or plan balance (you, or the person you inherited it from) born before January 2, 1936?"] [helper "IRA distribution (lines 4a and 4b)" = true → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_ira",{"const":false}],"op":"test"},"then":"retirement.born_before_averaging_date"},{"guard":{"eq":["retirement.is_ira",{"const":true}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.lump_sum`
+
+- **Authored helper label:** Was this the whole of that person's balance in the plan, paid out within one year (a lump-sum distribution)?
+- **Encoded (Bool):** Input — Was this the whole of that person's balance in the plan, paid out within one year (a lump-sum distribution)?
+- Expr: `{"op":"input","source":"Was this the whole of that person's balance in the plan, paid out within one year (a lump-sum distribution)?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.lump_sum_if_born_before_averaging_date`
+
+- **Authored helper label:** Was this the whole of that person's balance in the plan, paid out within one year (a lump-sum distribution)? Asked only with a person born before January 2, 1936 (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Was the person who earned this pension or plan balance (you, or the person you inherited it from) born before January 2, 1936? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true → helper "Was this the whole of that person's balance in the plan, paid out within one year (a lump-sum distribution)?"] [helper "Was the person who earned this pension or plan balance (you, or the person you inherited it from) born before January 2, 1936? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.born_before_averaging_date_if_plan",{"const":true}],"op":"test"},"then":"retirement.lump_sum"},{"guard":{"eq":["retirement.born_before_averaging_date_if_plan",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.death_exclusion`
+
+- **Authored helper label:** Did the employee die before August 21, 1996, so that a death benefit exclusion applies to these payments?
+- **Encoded (Bool):** Input — Did the employee die before August 21, 1996, so that a death benefit exclusion applies to these payments?
+- Expr: `{"op":"input","source":"Did the employee die before August 21, 1996, so that a death benefit exclusion applies to these payments?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.death_exclusion_if_death`
+
+- **Authored helper label:** Did the employee die before August 21, 1996, so that a death benefit exclusion applies to these payments? Asked only with a payment from a plan after a death (code 4) (false otherwise)
+- **Encoded (Bool):** Choose — [helper "A payment from a plan to a beneficiary (code 4, not an IRA)" = true → helper "Did the employee die before August 21, 1996, so that a death benefit exclusion applies to these payments?"] [helper "A payment from a plan to a beneficiary (code 4, not an IRA)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.plan_death",{"const":true}],"op":"test"},"then":"retirement.death_exclusion"},{"guard":{"eq":["retirement.plan_death",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.ben_before_retire`
+
+- **Authored helper label:** Did the person who died do so before starting to draw this pension (before retiring)?
+- **Encoded (Bool):** Input — Did the person who died do so before starting to draw this pension (before retiring)?
+- Expr: `{"op":"input","source":"Did the person who died do so before starting to draw this pension (before retiring)?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.ben_before_retire_if_death`
+
+- **Authored helper label:** Did the person who died do so before starting to draw this pension (before retiring)? Asked only with a payment from a plan after a death (code 4) (false otherwise)
+- **Encoded (Bool):** Choose — [helper "A payment from a plan to a beneficiary (code 4, not an IRA)" = true → helper "Did the person who died do so before starting to draw this pension (before retiring)?"] [helper "A payment from a plan to a beneficiary (code 4, not an IRA)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.plan_death",{"const":true}],"op":"test"},"then":"retirement.ben_before_retire"},{"guard":{"eq":["retirement.plan_death",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.ben_guaranteed`
+
+- **Authored helper label:** Are these payments ones the plan guaranteed for a set period after the retiree's pension began, not a survivor's pension paid for your own life?
+- **Encoded (Bool):** Input — Are these payments ones the plan guaranteed for a set period after the retiree's pension began, not a survivor's pension paid for your own life?
+- Expr: `{"op":"input","source":"Are these payments ones the plan guaranteed for a set period after the retiree's pension began, not a survivor's pension paid for your own life?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.ben_guaranteed_if_death`
+
+- **Authored helper label:** Are these payments ones the plan guaranteed for a set period after the retiree's pension began, not a survivor's pension paid for your own life? Asked only with a payment from a plan after a death (code 4) (false otherwise)
+- **Encoded (Bool):** Choose — [helper "A payment from a plan to a beneficiary (code 4, not an IRA)" = true → helper "Are these payments ones the plan guaranteed for a set period after the retiree's pension began, not a survivor's pension paid for your own life?"] [helper "A payment from a plan to a beneficiary (code 4, not an IRA)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.plan_death",{"const":true}],"op":"test"},"then":"retirement.ben_guaranteed"},{"guard":{"eq":["retirement.plan_death",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.ben_shared`
+
+- **Authored helper label:** Is this pension shared among more than one beneficiary?
+- **Encoded (Bool):** Input — Is this pension shared among more than one beneficiary?
+- Expr: `{"op":"input","source":"Is this pension shared among more than one beneficiary?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.ben_shared_if_death`
+
+- **Authored helper label:** Is this pension shared among more than one beneficiary? Asked only with a payment from a plan after a death (code 4) (false otherwise)
+- **Encoded (Bool):** Choose — [helper "A payment from a plan to a beneficiary (code 4, not an IRA)" = true → helper "Is this pension shared among more than one beneficiary?"] [helper "A payment from a plan to a beneficiary (code 4, not an IRA)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.plan_death",{"const":true}],"op":"test"},"then":"retirement.ben_shared"},{"guard":{"eq":["retirement.plan_death",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.cost_any`
+
+- **Authored helper label:** Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes.
+- **Encoded (Bool):** Input — Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes.
+- Expr: `{"op":"input","source":"Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes."}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.cost_any_if_plan`
+
+- **Authored helper label:** Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)
+- **Encoded (Bool):** Choose — [helper "IRA distribution (lines 4a and 4b)" = false → helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes."] [helper "IRA distribution (lines 4a and 4b)" = true → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_ira",{"const":false}],"op":"test"},"then":"retirement.cost_any"},{"guard":{"eq":["retirement.is_ira",{"const":true}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.own_annuity`
+
+- **Authored helper label:** Is this an annuity you bought yourself from an insurance company, not through an employer's plan (a nonqualified annuity)?
+- **Encoded (Bool):** Input — Is this an annuity you bought yourself from an insurance company, not through an employer's plan (a nonqualified annuity)?
+- Expr: `{"op":"input","source":"Is this an annuity you bought yourself from an insurance company, not through an employer's plan (a nonqualified annuity)?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.own_annuity_if_cost`
+
+- **Authored helper label:** Is this an annuity you bought yourself from an insurance company, not through an employer's plan (a nonqualified annuity)? Asked only with after-tax cost in the plan (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true → helper "Is this an annuity you bought yourself from an insurance company, not through an employer's plan (a nonqualified annuity)?"] [helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.cost_any_if_plan",{"const":true}],"op":"test"},"then":"retirement.own_annuity"},{"guard":{"eq":["retirement.cost_any_if_plan",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.csrs_alt`
+
+- **Authored helper label:** Is this a federal civil service pension for which you took a lump-sum payment of your own contributions when you retired (the alternative annuity option)?
+- **Encoded (Bool):** Input — Is this a federal civil service pension for which you took a lump-sum payment of your own contributions when you retired (the alternative annuity option)?
+- Expr: `{"op":"input","source":"Is this a federal civil service pension for which you took a lump-sum payment of your own contributions when you retired (the alternative annuity option)?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.csrs_alt_if_cost`
+
+- **Authored helper label:** Is this a federal civil service pension for which you took a lump-sum payment of your own contributions when you retired (the alternative annuity option)? Asked only with after-tax cost in the plan (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true → helper "Is this a federal civil service pension for which you took a lump-sum payment of your own contributions when you retired (the alternative annuity option)?"] [helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.cost_any_if_plan",{"const":true}],"op":"test"},"then":"retirement.csrs_alt"},{"guard":{"eq":["retirement.cost_any_if_plan",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.started_before_simplified_method_date`
+
+- **Authored helper label:** Did the regular payments from this pension or annuity start before November 19, 1996? (For a survivor, count from when the retiree's payments started.)
+- **Encoded (Bool):** Input — Did the regular payments from this pension or annuity start before November 19, 1996? (For a survivor, count from when the retiree's payments started.)
+- Expr: `{"op":"input","source":"Did the regular payments from this pension or annuity start before November 19, 1996? (For a survivor, count from when the retiree's payments started.)"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.started_before_simplified_method_date_if_cost`
+
+- **Authored helper label:** Did the regular payments from this pension or annuity start before November 19, 1996? (For a survivor, count from when the retiree's payments started.) Asked only with after-tax cost in the plan (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true → helper "Did the regular payments from this pension or annuity start before November 19, 1996? (For a survivor, count from when the retiree's payments started.)"] [helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.cost_any_if_plan",{"const":true}],"op":"test"},"then":"retirement.started_before_simplified_method_date"},{"guard":{"eq":["retirement.cost_any_if_plan",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.general_rule`
+
+- **Authored helper label:** When the regular payments started, were you (or, for a survivor, the retiree) 75 or older, with payments guaranteed for five years or more?
+- **Encoded (Bool):** Input — When the regular payments started, were you (or, for a survivor, the retiree) 75 or older, with payments guaranteed for five years or more?
+- Expr: `{"op":"input","source":"When the regular payments started, were you (or, for a survivor, the retiree) 75 or older, with payments guaranteed for five years or more?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.general_rule_if_cost`
+
+- **Authored helper label:** When the regular payments started, were you (or, for a survivor, the retiree) 75 or older, with payments guaranteed for five years or more? Asked only with after-tax cost in the plan (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true → helper "When the regular payments started, were you (or, for a survivor, the retiree) 75 or older, with payments guaranteed for five years or more?"] [helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.cost_any_if_plan",{"const":true}],"op":"test"},"then":"retirement.general_rule"},{"guard":{"eq":["retirement.cost_any_if_plan",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.lump_at_start`
+
+- **Authored helper label:** Besides regular payments, does this form include a one-time payment that came with the start of the pension, closed it out, or made your later payments smaller?
+- **Encoded (Bool):** Input — Besides regular payments, does this form include a one-time payment that came with the start of the pension, closed it out, or made your later payments smaller?
+- Expr: `{"op":"input","source":"Besides regular payments, does this form include a one-time payment that came with the start of the pension, closed it out, or made your later payments smaller?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.lump_at_start_if_cost`
+
+- **Authored helper label:** Besides regular payments, does this form include a one-time payment that came with the start of the pension, closed it out, or made your later payments smaller? Asked only with after-tax cost in the plan (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true → helper "Besides regular payments, does this form include a one-time payment that came with the start of the pension, closed it out, or made your later payments smaller?"] [helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.cost_any_if_plan",{"const":true}],"op":"test"},"then":"retirement.lump_at_start"},{"guard":{"eq":["retirement.cost_any_if_plan",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `retirement.disaster`
+
+- **Authored helper label:** Did you take this money out, or put money back, because of a federally declared disaster (Form 8915-F)?
+- **Encoded (Bool):** Input — Did you take this money out, or put money back, because of a federally declared disaster (Form 8915-F)?
+- Expr: `{"op":"input","source":"Did you take this money out, or put money back, because of a federally declared disaster (Form 8915-F)?"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `retirement.special`
 
-- **Authored helper label:** Does this distribution involve any of these?
-
-  - a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack
-  - a corrective distribution of excess deferrals or contributions
-  - a qualified charitable distribution or HSA funding distribution
-  - nondeductible contributions to any traditional IRA
-  - a conversion or recharacterization (Form 8606)
-  - a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025
-  - a rollover to a Roth IRA or designated Roth account
-  - a lump-sum distribution you may report on Form 4972
-  - a distribution of employer securities with net unrealized appreciation (an amount in box 6)
-  - a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments
-  - a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA
-  - a nonqualified annuity
-  - the retired public safety officer premium exclusion
-  - a death benefit exclusion
-  - a military disability pension
-  - an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these)
-  - a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead
-  - a rollover of a distribution under a qualified domestic relations order
-  - a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F)
-  - a plan loan offset
-  - a Form RRB-1099-R
-  - U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721)
-  - a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)
-- **Encoded (Bool):** Input — Does this distribution involve any of these?
-
-  - a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack
-  - a corrective distribution of excess deferrals or contributions
-  - a qualified charitable distribution or HSA funding distribution
-  - nondeductible contributions to any traditional IRA
-  - a conversion or recharacterization (Form 8606)
-  - a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025
-  - a rollover to a Roth IRA or designated Roth account
-  - a lump-sum distribution you may report on Form 4972
-  - a distribution of employer securities with net unrealized appreciation (an amount in box 6)
-  - a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments
-  - a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA
-  - a nonqualified annuity
-  - the retired public safety officer premium exclusion
-  - a death benefit exclusion
-  - a military disability pension
-  - an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these)
-  - a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead
-  - a rollover of a distribution under a qualified domestic relations order
-  - a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F)
-  - a plan loan offset
-  - a Form RRB-1099-R
-  - U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721)
-  - a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)
-- Expr: `{"op":"input","source":"Does this distribution involve any of these?\n\n- a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack\n- a corrective distribution of excess deferrals or contributions\n- a qualified charitable distribution or HSA funding distribution\n- nondeductible contributions to any traditional IRA\n- a conversion or recharacterization (Form 8606)\n- a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025\n- a rollover to a Roth IRA or designated Roth account\n- a lump-sum distribution you may report on Form 4972\n- a distribution of employer securities with net unrealized appreciation (an amount in box 6)\n- a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments\n- a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA\n- a nonqualified annuity\n- the retired public safety officer premium exclusion\n- a death benefit exclusion\n- a military disability pension\n- an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these)\n- a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead\n- a rollover of a distribution under a qualified domestic relations order\n- a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F)\n- a plan loan offset\n- a Form RRB-1099-R\n- U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721)\n- a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)"}`
-- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method; f1099r Box 7 codes; p. 28, "For details on military disability pensions, see Pub. 525."; p. 30, "If you are the beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary’s taxable amount." and "See Pub. 575 for more details on rollovers, including special rules that apply to rollovers from designated Roth accounts, partial rollovers of property, and distributions under qualified domestic relations orders."; p. 30, Age (or Combined Ages) at Annuity Starting Date, "If you are the survivor of a retiree, use the retiree’s age on their annuity starting date"; p575 p. 34, Survivors of retirees, "Benefits paid to you as a survivor under a joint and survivor annuity must be included in your gross income", "If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date" and "If you receive guaranteed payments as the decedent’s beneficiary under a life annuity contract"; p575 p. 23, Rollovers of property, "To roll over an eligible rollover distribution of property, you must either roll over the actual property distributed or sell it and roll over the proceeds", "You can’t keep the distributed property and roll over cash or other property." and "If you roll over only part of the proceeds, you are taxed on the part you keep"; p575 p. 34, "If you received a qualified disaster recovery distribution, it is taxable but isn’t subject to the 10% additional tax on early distributions" and "the distribution is included in income ratably over 3 years unless you elect to report the entire amount in the year of distribution"; p575 p. 35, "Use Form 8915-F to report qualified disaster recovery distributions and repayments." and "Also report recontributions of qualified distributions for home purchases and construction that were canceled because of qualified disasters on Form 8915-F, as applicable."; p575 p. 16, Distributions of employer securities, "The NUA on which tax is deferred should be shown in box 6 of the Form 1099-R you receive from the payer of the distribution."; p575 p. 16, Reduction in subsequent payments, "If the annuity payments you receive are reduced because you received a nonperiodic distribution, you can exclude part of the nonperiodic distribution from gross income."; p575 p. 17, Single-sum payment in connection with the start of annuity payments, "treat the single-sum payment as if it were received before your annuity starting date" and Distribution in full discharge of contract, "Include the amount in gross income only to the extent that it exceeds the remaining cost of the contract."; i5329 p. 2, Qualified retirement plan rollover, "If a retirement account has been wrongfully levied by the IRS, the amount returned plus interest on such amount may be contributed to the account or to an IRA" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** A Form 1099-R situation that needs a form or rule outside this tool (any of the situations asked about one by one: where the money went, the IRA's history, employer securities, a plan loan offset, a disability pension, the public safety officer exclusion, a lump-sum distribution, a payment after a death, after-tax cost outside the Simplified Method, a disaster)
+- **Encoded (Bool):** (helper "Did any of this money go into a Roth IRA or another Roth account? Asked only with some of the money went into another retirement account (false otherwise)" = true or helper "Did the plan or IRA pay out anything other than cash (such as shares) that you then sold, kept, or put only partly into the new account? Asked only with some of the money went into another retirement account (false otherwise)" = true or helper "Did you get this money under a court order in a divorce or separation (a qualified domestic relations order)? Asked only with some of the money went into another retirement account (false otherwise)" = true or helper "Was this money taken by the IRS under a levy and later returned to you? Asked only with some of the money went into another retirement account (false otherwise)" = true or helper "Did any of this money go straight from the IRA to a charity, or into a health savings account? Asked only with an IRA (false otherwise)" = true or helper "Was any of this a contribution of yours that the IRA paid back to you, for example because you had put in more than the yearly limit? Asked only with an IRA (false otherwise)" = true or helper "Have you ever put money into a traditional IRA that you did not deduct on a tax return? Asked only with a traditional IRA (false otherwise)" = true or helper "Is there an amount in box 6 of this form (net unrealized appreciation in employer's securities)? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true or helper "Was any of this amount an unpaid loan from the plan that was taken off your balance, not money paid out (a plan loan offset)? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true or helper "When any of this was paid, were you younger than the earliest age at which the plan would have let you retire without the disability (its minimum retirement age)? Asked only with a disability pension (false otherwise)" = true or helper "Did the disability result from a terrorist attack? Asked only with a disability pension (false otherwise)" = true or helper "Is it a disability pension for service in the armed forces? Asked only with a disability pension (false otherwise)" = true or helper "Are you a retired police officer, firefighter or other public safety officer who wants to leave out of income the part of this pension that paid for health or long-term care insurance? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true or helper "Was this the whole of that person's balance in the plan, paid out within one year (a lump-sum distribution)? Asked only with a person born before January 2, 1936 (false otherwise)" = true or helper "Did the employee die before August 21, 1996, so that a death benefit exclusion applies to these payments? Asked only with a payment from a plan after a death (code 4) (false otherwise)" = true or helper "Did the person who died do so before starting to draw this pension (before retiring)? Asked only with a payment from a plan after a death (code 4) (false otherwise)" = true or helper "Are these payments ones the plan guaranteed for a set period after the retiree's pension began, not a survivor's pension paid for your own life? Asked only with a payment from a plan after a death (code 4) (false otherwise)" = true or helper "Is this pension shared among more than one beneficiary? Asked only with a payment from a plan after a death (code 4) (false otherwise)" = true or helper "Is this an annuity you bought yourself from an insurance company, not through an employer's plan (a nonqualified annuity)? Asked only with after-tax cost in the plan (false otherwise)" = true or helper "Is this a federal civil service pension for which you took a lump-sum payment of your own contributions when you retired (the alternative annuity option)? Asked only with after-tax cost in the plan (false otherwise)" = true or helper "Did the regular payments from this pension or annuity start before November 19, 1996? (For a survivor, count from when the retiree's payments started.) Asked only with after-tax cost in the plan (false otherwise)" = true or helper "When the regular payments started, were you (or, for a survivor, the retiree) 75 or older, with payments guaranteed for five years or more? Asked only with after-tax cost in the plan (false otherwise)" = true or helper "Besides regular payments, does this form include a one-time payment that came with the start of the pension, closed it out, or made your later payments smaller? Asked only with after-tax cost in the plan (false otherwise)" = true or helper "Did you take this money out, or put money back, because of a federally declared disaster (Form 8915-F)?" = true)
+- Expr: `{"any":[{"eq":["retirement.roth_moved_if_put_back",{"const":true}],"op":"test"},{"eq":["retirement.rollover_property_if_put_back",{"const":true}],"op":"test"},{"eq":["retirement.rollover_qdro_if_put_back",{"const":true}],"op":"test"},{"eq":["retirement.levy_returned_if_put_back",{"const":true}],"op":"test"},{"eq":["retirement.charity_hsa_if_ira",{"const":true}],"op":"test"},{"eq":["retirement.ira_returned_if_ira",{"const":true}],"op":"test"},{"eq":["retirement.ira_basis_if_trad",{"const":true}],"op":"test"},{"eq":["retirement.box6_if_plan",{"const":true}],"op":"test"},{"eq":["retirement.loan_offset_if_plan",{"const":true}],"op":"test"},{"eq":["retirement.dis_early_if_disability",{"const":true}],"op":"test"},{"eq":["retirement.dis_terror_if_disability",{"const":true}],"op":"test"},{"eq":["retirement.dis_military_if_disability",{"const":true}],"op":"test"},{"eq":["retirement.pso_exclusion_if_plan",{"const":true}],"op":"test"},{"eq":["retirement.lump_sum_if_born_before_averaging_date",{"const":true}],"op":"test"},{"eq":["retirement.death_exclusion_if_death",{"const":true}],"op":"test"},{"eq":["retirement.ben_before_retire_if_death",{"const":true}],"op":"test"},{"eq":["retirement.ben_guaranteed_if_death",{"const":true}],"op":"test"},{"eq":["retirement.ben_shared_if_death",{"const":true}],"op":"test"},{"eq":["retirement.own_annuity_if_cost",{"const":true}],"op":"test"},{"eq":["retirement.csrs_alt_if_cost",{"const":true}],"op":"test"},{"eq":["retirement.started_before_simplified_method_date_if_cost",{"const":true}],"op":"test"},{"eq":["retirement.general_rule_if_cost",{"const":true}],"op":"test"},{"eq":["retirement.lump_at_start_if_cost",{"const":true}],"op":"test"},{"eq":["retirement.disaster",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `retirement.annuity`
 
@@ -126,6 +505,13 @@
   A nonperiodic payment received on or after the annuity starting date, one that is not one of the periodic payments, is generally fully taxable, so if box 1 is only such a payment, answer No; if box 1 also includes the periodic payments, answer for those payments.
 - Expr: `{"op":"input","source":"Is this a pension or annuity to which all of these apply?\n\n- from a qualified plan, section 403(b) plan or tax-sheltered annuity\n- paid in periodic payments in which you have after-tax cost (box 9b or your records)\n- with an annuity starting date after November 18, 1996\n- on that date you were under age 75 or had fewer than 5 years of guaranteed payments\n\nThis is when the Simplified Method applies.\n\nIf you are the survivor of a retiree, answer for the retiree's annuity, with its starting date and the retiree's age on that date.\n\nA nonperiodic payment received on or after the annuity starting date, one that is not one of the periodic payments, is generally fully taxable, so if box 1 is only such a payment, answer No; if box 1 also includes the periodic payments, answer for those payments."}`
 - Cite: [i1040gi] p. 30, Simplified Method, conditions 1 and 2; p. 28, Partially Taxable Pensions and Annuities; p575 p. 16, Distribution On or After Annuity Starting Date, "If you receive a nonperiodic payment from your annuity contract on or after the annuity starting date, you must generally include all of the payment in gross income."; p575 p. 34, Survivors of retirees, "If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `retirement.annuity_if_cost`
+
+- **Authored helper label:** The Simplified Method applies, asked only with after-tax cost in the plan (false without it)
+- **Encoded (Bool):** Choose — [helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = true → helper "Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed payments? (This is when the Simplified Method applies. A nonperiodic payment received on or after the annuity starting date, one that is not one of the periodic payments, is generally fully taxable, so if box 1 is only such a payment, answer No; if box 1 also includes the periodic payments, answer for those payments.)"] [helper "Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes. Asked only with a pension, annuity or plan (not an IRA) (false otherwise)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.cost_any_if_plan",{"const":true}],"op":"test"},"then":"retirement.annuity"},{"guard":{"eq":["retirement.cost_any_if_plan",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `retirement.cost`
 
@@ -228,10 +614,10 @@
 ## (helper) — `retirement.rolled`
 
 - **Authored helper label:** Amount rolled over (the whole distribution for a direct rollover)
-- **Encoded (NonNegDollars):** Choose — [helper "Direct rollover (code G)" = true → helper "Gross distribution, box 1"] [helper "Direct rollover (code G)" = false → helper "Amount you rolled over to a qualified plan or IRA (not a Roth account) within 60 days, or later under a waiver or frozen-deposit extension, or recontributed to an IRA within 120 days after a first-home purchase was canceled or delayed"]
+- **Encoded (NonNegDollars):** Choose — [helper "Direct rollover (code G)" = true → helper "Gross distribution, box 1"] [helper "Direct rollover (code G)" = false → helper "Amount rolled over, asked only when some of the money went into another retirement account (none otherwise)"]
 - **Refusal:** when retirement.special is true, cannot complete Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939). This distribution needs a form or rule outside this tool. Cite: [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when retirement.bad_code is true, cannot complete Form 8606 or another Form 1099-R code. A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool. Cite: [i1040gi] p. 27, Exception 2; f1099r Box 7 (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"alternatives":[{"guard":{"eq":["retirement.direct",{"const":true}],"op":"test"},"then":"retirement.box1"},{"guard":{"eq":["retirement.direct",{"const":false}],"op":"test"},"then":"retirement.rollover"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.direct",{"const":true}],"op":"test"},"then":"retirement.box1"},{"guard":{"eq":["retirement.direct",{"const":false}],"op":"test"},"then":"retirement.rollover_if_any"}],"op":"choose"}`
 - Cite: [i1040gi] p. 27, Exception 1; p. 30, Rollovers (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `retirement.has_rollover`
@@ -429,15 +815,15 @@
 ## (helper) — `retirement.annuity_with_cost`
 
 - **Authored helper label:** The Simplified Method applies and some cost is left to recover
-- **Encoded (Bool):** helper "Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed payments? (This is when the Simplified Method applies. A nonperiodic payment received on or after the annuity starting date, one that is not one of the periodic payments, is generally fully taxable, so if box 1 is only such a payment, answer No; if box 1 also includes the periodic payments, answer for those payments.)" = true and helper "Some cost is left to recover (line 7 of the Simplified Method Worksheet is more than zero)" = true
-- Expr: `{"all":[{"eq":["retirement.annuity",{"const":true}],"op":"test"},{"eq":["retirement.cost_left",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** helper "The Simplified Method applies, asked only with after-tax cost in the plan (false without it)" = true and helper "Some cost is left to recover (line 7 of the Simplified Method Worksheet is more than zero)" = true
+- Expr: `{"all":[{"eq":["retirement.annuity_if_cost",{"const":true}],"op":"test"},{"eq":["retirement.cost_left",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 28, Fully Taxable and Partially Taxable Pensions and Annuities (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `retirement.annuity_rollover`
 
 - **Authored helper label:** A pension or annuity figured by the Simplified Method of which some amount was rolled over
-- **Encoded (Bool):** helper "IRA distribution (lines 4a and 4b)" = false and helper "Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed payments? (This is when the Simplified Method applies. A nonperiodic payment received on or after the annuity starting date, one that is not one of the periodic payments, is generally fully taxable, so if box 1 is only such a payment, answer No; if box 1 also includes the periodic payments, answer for those payments.)" = true and helper "Part or all of the distribution was rolled over (an amount rolled over, or a direct rollover, code G)" = true
-- Expr: `{"all":[{"eq":["retirement.is_ira",{"const":false}],"op":"test"},{"eq":["retirement.annuity",{"const":true}],"op":"test"},{"eq":["retirement.has_rollover",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** helper "IRA distribution (lines 4a and 4b)" = false and helper "The Simplified Method applies, asked only with after-tax cost in the plan (false without it)" = true and helper "Part or all of the distribution was rolled over (an amount rolled over, or a direct rollover, code G)" = true
+- Expr: `{"all":[{"eq":["retirement.is_ira",{"const":false}],"op":"test"},{"eq":["retirement.annuity_if_cost",{"const":true}],"op":"test"},{"eq":["retirement.has_rollover",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 30, Rollovers, 'See Pub. 575 for more details on rollovers' (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `retirement.annuity_taxable`
@@ -478,8 +864,8 @@
 ## (helper) — `retirement.plan_taxable`
 
 - **Authored helper label:** Taxable pension or annuity amount (the Simplified Method for an annuity with after-tax cost)
-- **Encoded (NonNegDollars):** Choose — [helper "Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed payments? (This is when the Simplified Method applies. A nonperiodic payment received on or after the annuity starting date, one that is not one of the periodic payments, is generally fully taxable, so if box 1 is only such a payment, answer No; if box 1 also includes the periodic payments, answer for those payments.)" = true → helper "Taxable annuity amount: Simplified Method line 9, or the whole of box 1 once the cost has been recovered"] [helper "Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed payments? (This is when the Simplified Method applies. A nonperiodic payment received on or after the annuity starting date, one that is not one of the periodic payments, is generally fully taxable, so if box 1 is only such a payment, answer No; if box 1 also includes the periodic payments, answer for those payments.)" = false → helper "Box 1 less taxable contributions (box 5) and the amount rolled over"]
-- Expr: `{"alternatives":[{"guard":{"eq":["retirement.annuity",{"const":true}],"op":"test"},"then":"retirement.annuity_taxable"},{"guard":{"eq":["retirement.annuity",{"const":false}],"op":"test"},"then":"retirement.plan_simple"}],"op":"choose"}`
+- **Encoded (NonNegDollars):** Choose — [helper "The Simplified Method applies, asked only with after-tax cost in the plan (false without it)" = true → helper "Taxable annuity amount: Simplified Method line 9, or the whole of box 1 once the cost has been recovered"] [helper "The Simplified Method applies, asked only with after-tax cost in the plan (false without it)" = false → helper "Box 1 less taxable contributions (box 5) and the amount rolled over"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.annuity_if_cost",{"const":true}],"op":"test"},"then":"retirement.annuity_taxable"},{"guard":{"eq":["retirement.annuity_if_cost",{"const":false}],"op":"test"},"then":"retirement.plan_simple"}],"op":"choose"}`
 - Cite: [i1040gi] p. 28, Partially Taxable Pensions and Annuities; p. 29, Simplified Method Worksheet, line 9 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `retirement.taxable`
@@ -496,8 +882,8 @@
 ## (helper) — `retirement.show_a`
 
 - **Authored helper label:** An exception applies, so the total distribution goes on line 4a or 5a
-- **Encoded (Bool):** (helper "Part or all of the distribution was rolled over (an amount rolled over, or a direct rollover, code G)" = true or helper "Roth IRA distribution" = true or helper "IRA distribution (lines 4a and 4b)" = false and (helper "The Simplified Method applies and some cost is left to recover" = true or helper "Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed payments? (This is when the Simplified Method applies. A nonperiodic payment received on or after the annuity starting date, one that is not one of the periodic payments, is generally fully taxable, so if box 1 is only such a payment, answer No; if box 1 also includes the periodic payments, answer for those payments.)" = false and helper "Employee contributions recovered tax free, box 5" > $0 (sales.zero)))
-- Expr: `{"any":[{"eq":["retirement.has_rollover",{"const":true}],"op":"test"},{"eq":["retirement.roth",{"const":true}],"op":"test"},{"all":[{"eq":["retirement.is_ira",{"const":false}],"op":"test"},{"any":[{"eq":["retirement.annuity_with_cost",{"const":true}],"op":"test"},{"all":[{"eq":["retirement.annuity",{"const":false}],"op":"test"},{"gt":["retirement.box5",{"param":"sales.zero"}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** (helper "Part or all of the distribution was rolled over (an amount rolled over, or a direct rollover, code G)" = true or helper "Roth IRA distribution" = true or helper "IRA distribution (lines 4a and 4b)" = false and (helper "The Simplified Method applies and some cost is left to recover" = true or helper "The Simplified Method applies, asked only with after-tax cost in the plan (false without it)" = false and helper "Employee contributions recovered tax free, box 5" > $0 (sales.zero)))
+- Expr: `{"any":[{"eq":["retirement.has_rollover",{"const":true}],"op":"test"},{"eq":["retirement.roth",{"const":true}],"op":"test"},{"all":[{"eq":["retirement.is_ira",{"const":false}],"op":"test"},{"any":[{"eq":["retirement.annuity_with_cost",{"const":true}],"op":"test"},{"all":[{"eq":["retirement.annuity_if_cost",{"const":false}],"op":"test"},{"gt":["retirement.box5",{"param":"sales.zero"}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 27, line 4b ('If the distribution from your IRA is fully taxable, enter the total distribution on line 4b; don't make an entry on line 4a'); p. 28, Fully Taxable and Partially Taxable Pensions and Annuities; p. 30, Rollovers (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `retirement.amount_a`
@@ -570,12 +956,89 @@
 - Expr: `{"op":"input","source":"Is any of these true of this distribution: it is a qualified disaster recovery distribution (Form 8915-F); it is part of a series of substantially equal periodic payments that was modified (recapture); it is from an annuity contract or a modified endowment contract; it repays a birth or adoption, terminal illness, domestic abuse or emergency personal expense distribution; it is an emergency personal expense distribution within 3 years after an earlier one you have not repaid; it is a qualified long-term care distribution made December 30 or 31, 2025; or more than one exception to the additional tax applies to it?"}`
 - Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." (2025; sha256 aec3d325)
 
+## (helper) — `retirement.under59`
+
+- **Authored helper label:** Were you under age 59½ when you received any of this money?
+- **Encoded (Bool):** Input — Were you under age 59½ when you received any of this money?
+- Expr: `{"op":"input","source":"Were you under age 59½ when you received any of this money?"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.is_code7`
+
+- **Authored helper label:** Code 7 (normal distribution)
+- **Encoded (Bool):** helper "Distribution code in box 7" = 'normal_7'
+- Expr: `{"eq":["retirement.code",{"const":"normal_7"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
+
+## (gate) — `retirement.under59_if_code7`
+
+- **Authored helper label:** Under age 59½ when the money was received, asked only with code 7 (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Code 7 (normal distribution)" = true → helper "Were you under age 59½ when you received any of this money?"] [helper "Code 7 (normal distribution)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_code7",{"const":true}],"op":"test"},"then":"retirement.under59"},{"guard":{"eq":["retirement.is_code7",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.sec457`
+
+- **Authored helper label:** Is it from a section 457 plan (a deferred compensation plan of a state or local government or a tax-exempt employer), and not money that was rolled into that plan from another kind of plan?
+- **Encoded (Bool):** Input — Is it from a section 457 plan (a deferred compensation plan of a state or local government or a tax-exempt employer), and not money that was rolled into that plan from another kind of plan?
+- Expr: `{"op":"input","source":"Is it from a section 457 plan (a deferred compensation plan of a state or local government or a tax-exempt employer), and not money that was rolled into that plan from another kind of plan?"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
+
+## (gate) — `retirement.sec457_if_under59`
+
+- **Authored helper label:** A section 457 plan distribution not from a rollover, asked only with code 7 under age 59½ (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Under age 59½ when the money was received, asked only with code 7 (false otherwise)" = true → helper "Is it from a section 457 plan (a deferred compensation plan of a state or local government or a tax-exempt employer), and not money that was rolled into that plan from another kind of plan?"] [helper "Under age 59½ when the money was received, asked only with code 7 (false otherwise)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.under59_if_code7",{"const":true}],"op":"test"},"then":"retirement.sec457"},{"guard":{"eq":["retirement.under59_if_code7",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.code7_wrong`
+
+- **Authored helper label:** Code 7 although under age 59½, other than a section 457 plan distribution not from a rollover
+- **Encoded (Bool):** helper "Under age 59½ when the money was received, asked only with code 7 (false otherwise)" = true and helper "A section 457 plan distribution not from a rollover, asked only with code 7 under age 59½ (false otherwise)" = false
+- Expr: `{"all":[{"eq":["retirement.under59_if_code7",{"const":true}],"op":"test"},{"eq":["retirement.sec457_if_under59",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.code2_partial`
+
+- **Authored helper label:** Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?
+- **Encoded (Bool):** Input — Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?
+- Expr: `{"op":"input","source":"Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.is_code2`
+
+- **Authored helper label:** Code 2 (early distribution, exception applies)
+- **Encoded (Bool):** helper "Distribution code in box 7" = 'early_exception_2'
+- Expr: `{"eq":["retirement.code",{"const":"early_exception_2"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
+
+## (gate) — `retirement.code2_partial_if_code2`
+
+- **Authored helper label:** The code 2 exception does not cover the whole distribution, asked only with code 2 (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Code 2 (early distribution, exception applies)" = true → helper "Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?"] [helper "Code 2 (early distribution, exception applies)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_code2",{"const":true}],"op":"test"},"then":"retirement.code2_partial"},{"guard":{"eq":["retirement.is_code2",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
+
+## (helper) — `retirement.not_beneficiary`
+
+- **Authored helper label:** Code 4 is for money paid to the beneficiary of a person who has died. Did you get this money some other way?
+- **Encoded (Bool):** Input — Code 4 is for money paid to the beneficiary of a person who has died. Did you get this money some other way?
+- Expr: `{"op":"input","source":"Code 4 is for money paid to the beneficiary of a person who has died. Did you get this money some other way?"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
+
+## (gate) — `retirement.not_beneficiary_if_death`
+
+- **Authored helper label:** Code 4 although not a beneficiary, asked only with code 4 (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Code 4 (death)" = true → helper "Code 4 is for money paid to the beneficiary of a person who has died. Did you get this money some other way?"] [helper "Code 4 (death)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_death",{"const":true}],"op":"test"},"then":"retirement.not_beneficiary"},{"guard":{"eq":["retirement.is_death",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
+
 ## (gate) — `retirement.code_screen`
 
 - **Authored helper label:** A code 2, 4 or 7 distribution whose code does not fit
-- **Encoded (Bool):** Input — Is either of these true of this distribution: it has code 2 and the exception that code 2 shows does not apply to all of it (it applies to only part of the distribution, or to none of it); or its code is wrong: code 7 although you were under age 59½ when you received it (other than a distribution from a section 457 plan that is not from a rollover from a qualified retirement plan), or code 4 although you are not the beneficiary of a person who died?
-- Expr: `{"op":"input","source":"Is either of these true of this distribution: it has code 2 and the exception that code 2 shows does not apply to all of it (it applies to only part of the distribution, or to none of it); or its code is wrong: code 7 although you were under age 59½ when you received it (other than a distribution from a section 457 plan that is not from a rollover from a qualified retirement plan), or code 4 although you are not the beneficiary of a person who died?"}`
-- Cite: [i5329] p. 1, Who Must File, "You received a distribution subject to the tax on early distributions from a qualified retirement plan (other than a Roth IRA) and you meet an exception to the tax on early distributions from the list shown later, but box 7 of your Form 1099-R doesn’t indicate an exception or the exception doesn’t apply to the entire distribution."; p. 5, Line 2, exception 13, "Distributions from a section 457 plan, which aren’t from a rollover from a qualified retirement plan." (2025; sha256 aec3d325)
+- **Encoded (Bool):** (helper "The code 2 exception does not cover the whole distribution, asked only with code 2 (false otherwise)" = true or helper "Code 7 although under age 59½, other than a section 457 plan distribution not from a rollover" = true or helper "Code 4 although not a beneficiary, asked only with code 4 (false otherwise)" = true)
+- Expr: `{"any":[{"eq":["retirement.code2_partial_if_code2",{"const":true}],"op":"test"},{"eq":["retirement.code7_wrong",{"const":true}],"op":"test"},{"eq":["retirement.not_beneficiary_if_death",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
 
 ## (gate) — `retirement.screen_refused`
 

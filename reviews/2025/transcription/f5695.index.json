@@ -4,29 +4,45 @@
  "family": "claude",
  "base": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
  "head_rows": {
-  "agree / disagree / missing": "5 / 28 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-12); see Line-scoped reviews"
+  "printed lines compared": "35",
+  "agree / disagree / missing": "4 / 31 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
-   "key": "f5695.claiming_part1",
-   "record": "876d0e1670586eb6e35382d23c8acb8edf5dd1835401a2cd80279beab4bfc96e",
+   "key": "f5695.part1_any",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; project retained under amb.2025.clwb_claiming_part1. i1040s8812 p. 4, Credit Limit Worksheet A, \"Complete Credit Limit Worksheet B only if you meet all the following\", \"You are claiming one or more of the following credits\", \"Residential clean energy credit, Form 5695, Part I\". The text does not say when the credit counts as claimed; the register's chosen reading is Part I completed with line 13 more than zero. The reply takes Part I being completed (f5695.part1_any Yes) alone, and its note says the reading by line 13 or line 15 \"is not determined by the text\". Re-reviewed because f5695.part1_any was reworded so that the one spouse phrase governs the 2024 carryforward as well as the costs, and f5695.line12 now counts a spouse's own 2024 carryforward on a joint return (wording only; no expression changed). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 4119f349996b; 1,767 fixtures, 500 generated returns seed 20261026, 1,647 partial records): 3,882 of 3,914 comparisons agree; differences by kind {\"project-refuses\": 8, \"project-unknown\": 18, \"value\": 6}; on completed returns 3 value (classm.s3.4.deepseek, classm.s3.4 and stage15.mut.f5695_part1_one_cent: project false, candidate true; on the first and the last, traced, f5695.part1_any is Yes and line 13 is $0). The line is a helper that selects the credit limit worksheet; whether any amount differs on those three records under the reply's reading was not traced. No change to the data.",
-   "subject_key": "71cb76c5057655d6399f06f9245b426326a0fbdfa563584e9f0552b66a47127a"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate tests the Part I kinds under f5695.any or a 2024 carryforward, but reads f5695.carry raw (asked only when the 2024 return includes a form besides Form 1040 and its schedules, s3.prior_other_forms; carry_if_prior), so it is unknown on completed returns where that gate is No (classm.eic.1, .3, .4: project false). It also leaves out fuel cell property (line 7a), which i5695 p. 2 lists in Part I (\"and fuel cell property\") and the project counts and then refuses at f5695.line7a; the one value difference (mutation.m4.f5695.fuel_cell_only, project true, candidate false) is on that refused return. i5695 p. 1, Purpose of Form, \"Also use Form 5695 to take any residential clean energy credit carryforward from 2024\". The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 4,456 of 4,642 agree; on completed returns: 14 candidate-unknown.",
+   "subject_key": "165f0c80d613441b5830d7ac43c2388685943ab912d20d3a411cc6183e80498a"
+  },
+  {
+   "key": "f5695.part2_any",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate reads f5695.audit raw outside the f5695.any gate (classm.eic.1, .3, .4: project false, candidate unknown); otherwise the same Part II kinds as the project's part2_some. The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 4,464 of 4,642 agree; on completed returns: 14 candidate-unknown.",
+   "subject_key": "be8e1f8d54df1cbcf24ba0a508b31ecb9f821300312f350414805b3b5dd40dc4"
+  },
+  {
+   "key": "f5695.claiming_part1",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate tests line 13 above zero on every return (amb.2025.clwb_claiming_part1, i1040s8812 p. 4, \"Residential clean energy credit, Form 5695, Part I\"); line 13 reads the Part I screens (f5695.construction_later, f5695.business_use), asked only with Part I, so it is unknown on completed returns without Part I (classm.eic.1: project false). The two value differences (classm.dcprov.1, mutation.t2.qss_s1a_car) are refused fixtures that carry a $1,619 line 3 cost with f5695.any and every kind answered No, inputs the interview does not ask. The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,688 of 4,642 agree; on completed returns: 78 candidate-unknown.",
+   "subject_key": "65b949f50147e81fcef892dff450e44cc527f438763b03ef0f9b02ea1b1a7b0f"
   },
   {
    "key": "5b",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i5695 p. 4, Lines 5a and 5b: \"If you check the “No” box, you can't include any battery storage technology costs on line 5b.\" The reply's value is the project's and it adds a display condition on 5a. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,819 of 3,819 agree. The rewording of line 5a (BUG-0552, BUG-0553) changes no value. Project stands.",
-   "subject_key": "8c419b1ca896b4f0b6ac4a54e84fa46d55d27dfa271be362ba52a7d85ede0835"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate reads line 5a raw; the interview asks it only after f5695.any Yes (classm.eic.1: project $0.00, candidate unknown). f5695 p. 1, line 5b, \"If you checked the 'Yes' box, enter the qualified battery technology costs\". The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 4,037 of 4,642 agree; on completed returns: 14 candidate-unknown.",
+   "subject_key": "a55a4cee6586817505ae5522675880ab04496ce1d69506e08576e57405bd9262"
   },
   {
    "key": "6a",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
-   "status": "AGREE",
-   "subject_key": "f625431b92691795995f4dc1b2f5753a8ff91295e0452c26bd987dad2e86e38c"
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate sums the raw lines 1 to 5b; the project reads each through its kind gate (f5695 p. 1, line 6a, \"Add lines 1 through 5b\"). Completed differences are partials withholding a cost whose kind was answered No (stage14.asset.hy_5yr). The two value differences are the refused fixtures classm.dcprov.1 and mutation.t2.qss_s1a_car, which carry a line 3 cost with every kind answered No. The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 4,451 of 4,642 agree; on completed returns: 40 candidate-unknown.",
+   "subject_key": "6f047dd08fab4f23533b15ed318ac31a3bc15d8bb05a6e72a62d85b47b0e478b"
   },
   {
    "key": "6b",
@@ -44,10 +60,10 @@
   },
   {
    "key": "13",
-   "record": "876d0e1670586eb6e35382d23c8acb8edf5dd1835401a2cd80279beab4bfc96e",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f5695 (2025), line 13, \"Add lines 6b, 11, and 12\". The same sum of the same three lines; the reply shows the line only when f5695.part1_any is Yes, and the project declares no display condition on it. Re-reviewed because f5695.line12, which this line adds, now counts a spouse's own 2024 carryforward on a joint return (wording only; the line is still one amount, so a total of two carryforwards is summed as before). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 4119f349996b; 1,767 fixtures, 500 generated returns seed 20261026, 1,647 partial records): 3,914 of 3,914 comparisons agree; no differences. Observed equivalence on that sample, not proof. No change to the data.",
-   "subject_key": "c62e79a39001ab18af8577ebd391781738fe9bee460f2cd6db583cf66433ff58"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate adds lines 6b, 11 and 12 without the gates (f5695 p. 1, line 13); it inherits line 6b's Part I screens (f5695.construction_later, asked only with Part I) and line 12's carryforward gate. The two value differences are the refused fixtures classm.dcprov.1 and mutation.t2.qss_s1a_car (a line 3 cost with every kind answered No). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,782 of 4,642 agree; on completed returns: 78 candidate-unknown.",
+   "subject_key": "2437490d0d92b45102f019f060a3f1819adba433bee1c6d32009561f5c1e954b"
   },
   {
    "key": "14",
@@ -71,24 +87,24 @@
   },
   {
    "key": "18b",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f5695 p. 2, line 17c, \"If you checked the “No” box for line 17a, 17b, or 17c, you cannot claim the energy efficient home improvement credit\", and i5695 p. 5, Line 17e, \"You cannot claim the credit for expenses related to the construction of a new home\". The candidate's added line 17e conjunct is the project's reading where Part II is claimed, but it needs line 17e on returns without Part II: every completed difference is a partial record of a part2_any-No class M return withholding line17e (classm.f8960.1.deepseek, classm.sd.1.deepseek, classm.u1250.2.deepseek, classm.clcw26.4.deepseek), project $0.00, candidate unknown. On a return without Part II (f5695.part2_any No) every Part II amount is $0 and the interview asks none of the Part II questions; the project's lines, guarded on f5695.part2_any or on cost lines that are $0 (credits-misc PENDING-2), do not read them. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,677 of 3,703 agree; on completed returns 10 candidate-unknown.",
-   "subject_key": "133ce597bf1973b1ddcfc42e4dc6ba9f9e38773a6d8b7c6d3ebfbe744e4f448b"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate reads lines 17a to 17e raw; the interview asks them only when a Section A kind is Yes (classm.eic.1: project $0.00, candidate unknown on line 17a). Value and refusal differences are only on refused returns: the candidate zeroes a line 17e Yes (new home; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\") or a cost without a valid QMID (i5695 p. 5, \"you must provide a valid QMID for each item\") or a Section B new home (i5695 p. 1, Costs, \"only available for existing homes\"), cases the project refuses (owner decision 7). The one value difference is mutation.m4.f5695.new_home_insulation_no_doors (refused). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,989 of 4,642 agree; on completed returns: 11 candidate-unknown.",
+   "subject_key": "338d26ceec2616e49a5a076e2cca6723ae33d4fb98cd7fca4ff4438b190a0bee"
   },
   {
    "key": "19c",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as the earlier rulings on this line. i5695 p. 5, Part II, \"you must provide a valid QMID for each item\"; f5695 p. 2, line 17c, \"Do not complete Part II, Section A\". The reply zeroes the line when the door QMID is missing or Section A may not be completed, where the project refuses the return (f5695.doors_no_qmid, f5695.sec_a_new_home), and it needs f5695.qmid_doors on returns that do not claim Section A, where the interview does not ask it. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,598 of 3,819 agree; 161 candidate-unknown, 16 project-unknown, 44 value. The value differences are on incomplete or refused returns (QMID No: stage15.refuse.f5695.qmid_doors_windows_ac $250.00 vs $0.00, refused); on completed returns 39 candidate-unknown (f5695.qmid_doors not asked; project $0.00) and 9 project-unknown, partial records of returns without Part II withholding a Section A answer the interview never asks there; no completed value differs. Project stands.",
-   "subject_key": "383cea5fe9c39ebaf1bf98707a655ade6826372e7aee738bd682d725d67ebbaa"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate reads lines 17a to 17e, the door costs and f5695.qmid_doors raw (classm.eic.1: unknown on line 17a). Four value differences are on incomplete records that carry a door cost with line 17a No (mutation.t2.f5695.doors_not_main_home, mutation.m4.f5695.doors_not_main_home_with_solar, classm.f5695.10.deepseek and a partial of it): the interview does not ask line 19a after a line 17a No (checked with the engine: with 17a No the door-cost questions are not reachable, with 17a Yes they are), so the $500 there is an input the filer is never asked, and line 19h is $0 either way (f5695 p. 2, line 17c, \"Do not complete Part II, Section A\"). Value and refusal differences are only on refused returns: the candidate zeroes a line 17e Yes (new home; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\") or a cost without a valid QMID (i5695 p. 5, \"you must provide a valid QMID for each item\") or a Section B new home (i5695 p. 1, Costs, \"only available for existing homes\"), cases the project refuses (owner decision 7). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,886 of 4,642 agree; on completed returns: 11 candidate-unknown.",
+   "subject_key": "23b25a30153eb7948d4915cdef22acb45c362f5fd96a2e3c38760ab33d0b4d28"
   },
   {
    "key": "19f",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the candidate adds a shown_when that hides the line where the form says to skip it (f5695 p. 2, line 17c, \"Do not complete Part II, Section A\"); the project shows the line without one, and on every record its shown amount is $0 where the candidate hides the line, which the v3 shown_when note and the README's skipped-line rule accept (zero entered where a later line reads it as blank). Values otherwise identical. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,703 of 3,703 agree.",
-   "subject_key": "563a5aab7be7167e7a751e5ff12d6f142d8c177db37f34b5ce6af041c2db6628"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate sums the raw lines 19d and 19e (f5695 p. 2, line 19f); the project reads them through the doors gate (classm.eic.1: unknown on line 19d (i)). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,940 of 4,642 agree; on completed returns: 30 candidate-unknown.",
+   "subject_key": "b0633b1634ac44eb963632e2dd1d4545cdd6dd4aa296820dbdba27e75c5119a6"
   },
   {
    "key": "19g",
@@ -99,80 +115,80 @@
   },
   {
    "key": "19h",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as for line 19c. i5695 p. 5, Part II, \"you must provide a valid QMID for each item\"; i5695 p. 5, Line 17e, \"You cannot claim the credit for expenses related to the construction of a new home\". The reply gates the line on f5695.qmid_doors and line 17e, so it needs them where the interview does not ask them and zeroes where the project refuses. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,699 of 3,819 agree; 111 candidate-unknown, 7 project-unknown, 1 project-refuses, 1 value; the refusal, the value and the project-unknowns are on refused returns; on completed returns 19 candidate-unknown (project $0.00). Project stands.",
-   "subject_key": "14d9041f319cd57ccf94d5e11e9bcb335694e5839f9691102a294bff7f24186f"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate gates on raw lines 17a to 17e and f5695.qmid_doors (classm.eic.1: unknown on line 17a). Value and refusal differences are only on refused returns: the candidate zeroes a line 17e Yes (new home; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\") or a cost without a valid QMID (i5695 p. 5, \"you must provide a valid QMID for each item\") or a Section B new home (i5695 p. 1, Costs, \"only available for existing homes\"), cases the project refuses (owner decision 7). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,947 of 4,642 agree; on completed returns: 14 candidate-unknown.",
+   "subject_key": "a53ba4f2a4f1733fdb88866dc2090faec2bae19a59de7a932c8c09cc93d90ba4"
   },
   {
    "key": "20c",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as for line 19c, with f5695.qmid_windows. i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". The reply zeroes line 20c when the window QMID is missing, where the project refuses the return (f5695.windows_no_qmid), and needs f5695.qmid_windows where the interview does not ask it. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,582 of 3,819 agree; 155 candidate-unknown, 80 project-unknown, 2 value; both value differences on refused returns (stage15.refuse.f5695.qmid_doors_windows_ac $2,200.00 vs $0.00; generated 152); on completed returns 41 candidate-unknown (project $0.00) and 45 project-unknown, partial records of returns without Part II (for example stage14.asset.hy_5yr withholding f5695.line20a_i), an answer the interview never asks there; the line is not evaluated on those returns' printed sheets. No completed value differs; the Most Efficient rewording of lines 20a(i) to (iv) (BUG-0498) changes no value. Project stands.",
-   "subject_key": "120df18f66ede9058f1c7887698a008ded29b41e0eb178cef0ae90a2a7b8c29a"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate sums the raw lines 20a and 20b (f5695 p. 2, line 20c); the project reads them through the windows gate (classm.eic.1: unknown on line 20a (i)). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,881 of 4,642 agree; on completed returns: 46 candidate-unknown.",
+   "subject_key": "2ba6e7784d5e7ba577af2d2620139c4e3be90f68b3187fb86a1e24454cfb4db3"
   },
   {
    "key": "20d",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". As for line 19h, the candidate gates the line on f5695.qmid_windows whatever the window cost (classm.f5695.1 and .7 with .deepseek: project $0.00, candidate unknown) and needs line 17e of returns without Part II. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,572 of 3,703 agree; on completed returns 53 candidate-unknown; no completed value differs.",
-   "subject_key": "b284fe6746eac63ec4554d1dd96feee12ba3466827641ed21273df71da519990"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate gates on raw lines 17a to 17e and f5695.qmid_windows (classm.eic.1: unknown on line 17a). Value and refusal differences are only on refused returns: the candidate zeroes a line 17e Yes (new home; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\") or a cost without a valid QMID (i5695 p. 5, \"you must provide a valid QMID for each item\") or a Section B new home (i5695 p. 1, Costs, \"only available for existing homes\"), cases the project refuses (owner decision 7). The one value difference is generated 326 (refused). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,934 of 4,642 agree; on completed returns: 15 candidate-unknown.",
+   "subject_key": "916f83dbb55cd7e6750076eddfb895bf73176cdf9856d4d496baa37bb8b2bfce"
   },
   {
    "key": "22c",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the candidate adds a shown_when that hides the line where the form says to skip it (f5695 p. 3, line 21b, \"Skip lines 22 through 25 and line 29\"); the project shows the line without one, and on every record its shown amount is $0 where the candidate hides the line, which the v3 shown_when note and the README's skipped-line rule accept (zero entered where a later line reads it as blank). Values otherwise identical. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,703 of 3,703 agree.",
-   "subject_key": "ab9fcbb5367bae5cdd20f8d2ebdf4eab127f6b60d7e20d2d9e8436c6c782ba97"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate sums the raw lines 22a and 22b (f5695 p. 3, line 22c); the project reads them through the central air conditioner gate (classm.eic.1: unknown on line 22a). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,926 of 4,642 agree; on completed returns: 23 candidate-unknown.",
+   "subject_key": "707e364f2ca47029e1a96b3c9e4e4595005fe28cb9dfb12e9822772d666a76bd"
   },
   {
    "key": "22d",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as the earlier rulings on this line. f5695 p. 3, line 21b, \"Skip lines 22 through 25 and line 29\"; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". The reply gates the line on f5695.b_new_home and f5695.qmid_ac, so it needs them on returns without Section B, where the interview does not ask them, and zeroes or refuses where the project refuses. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,512 of 3,819 agree; 290 candidate-unknown, 13 candidate-refuses, 4 project-refuses; all refusals on refused returns; on completed returns 80 candidate-unknown (project $0.00). Project stands.",
-   "subject_key": "8aa0e688a0f90b881ab62c844b71e8bcce760d7cfd0444b0bee962f9b6fe1993"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate gates on raw lines 21a, 21b, f5695.b_new_home and f5695.qmid_ac (classm.eic.1: unknown on line 21a). Value and refusal differences are only on refused returns: the candidate zeroes a line 17e Yes (new home; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\") or a cost without a valid QMID (i5695 p. 5, \"you must provide a valid QMID for each item\") or a Section B new home (i5695 p. 1, Costs, \"only available for existing homes\"), cases the project refuses (owner decision 7). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,938 of 4,642 agree; on completed returns: 11 candidate-unknown.",
+   "subject_key": "7b555a1b21d4adadfb7dfed146cb49a4b1a8364e734307a45791846d3d01cd98"
   },
   {
    "key": "23c",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the candidate adds a shown_when that hides the line where the form says to skip it (f5695 p. 3, line 21b, \"Skip lines 22 through 25 and line 29\"); the project shows the line without one, and on every record its shown amount is $0 where the candidate hides the line, which the v3 shown_when note and the README's skipped-line rule accept (zero entered where a later line reads it as blank). Values otherwise identical. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,703 of 3,703 agree.",
-   "subject_key": "c052f4348abb6478ecc66f16160b1a359aea89987da50170033b67dcab6a91ed"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate sums the raw lines 23a and 23b (f5695 p. 3, line 23c); the project reads them through the water heater gate (classm.eic.1: unknown on line 23a (i)). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,901 of 4,642 agree; on completed returns: 31 candidate-unknown.",
+   "subject_key": "46423660eace12ae767de2dfe803b4c6d02caf6b01615fee26efc02c677b0764"
   },
   {
    "key": "23d",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as for line 22d, with f5695.qmid_wh. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,553 of 3,819 agree; 250 candidate-unknown, 13 candidate-refuses, 3 project-refuses; all refusals on refused returns; on completed returns 80 candidate-unknown (project $0.00). Project stands.",
-   "subject_key": "f4f38d46d7a487e1fc9d4830c2f1177a79271081ab828462fb6818a0e14f5864"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate gates on raw lines 21a, 21b, f5695.b_new_home and f5695.qmid_wh (classm.eic.1: unknown on line 21a). Value and refusal differences are only on refused returns: the candidate zeroes a line 17e Yes (new home; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\") or a cost without a valid QMID (i5695 p. 5, \"you must provide a valid QMID for each item\") or a Section B new home (i5695 p. 1, Costs, \"only available for existing homes\"), cases the project refuses (owner decision 7). The one value difference is mutation.m4.f5695.water_heater_new_home_audit (refused). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,928 of 4,642 agree; on completed returns: 12 candidate-unknown.",
+   "subject_key": "689938001252ea93b9a1bc7ebffdeab7d1db12900f0d16b33c569733919b7c61"
   },
   {
    "key": "24c",
-   "record": "98ce3b998bd3a227f4616d4dd52ca7f4f63ec7ecf186e6b13a9d241596d0c5aa",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f5695 p. 3, line 21b: \"If you checked the “No” box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26.\" The candidate zeroes and hides line 24c when 21a or 21b is No; the project sums 24a and 24b, which are not asked on that route, so the line is $0 where the candidate zeroes it, and the 21a/21b condition takes effect at the project's later lines as in the earlier rulings on this line. Values identical. Triage executable-triage-v2 (`../triage/f5695.json`, structured-text round; 1,638 fixtures, 500 generated returns seed 20261026, 1,425 partial records): 3,563 of 3,563 agree.",
-   "subject_key": "db84c9a1bbd91210971f208be458fc5c153e3c108061c3125f06711573576a7c"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate sums the raw lines 24a and 24b (f5695 p. 3, line 24c); the project reads them through the furnace gate (classm.eic.1: unknown on line 24a). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,926 of 4,642 agree; on completed returns: 23 candidate-unknown.",
+   "subject_key": "c99c4dd173191393ba47c063c55f4382f40e7921a2d2be827281faa23ec4d47a"
   },
   {
    "key": "24d",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as for line 22d, with f5695.qmid_furnace. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,514 of 3,819 agree; 289 candidate-unknown, 13 candidate-refuses, 3 project-refuses; all refusals on refused returns; on completed returns 80 candidate-unknown (project $0.00). Project stands.",
-   "subject_key": "2eab0f224e3cd534e7e9c4404dc0e503c514bc4271d777df26ca8a0fd2bf7ccc"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate gates on raw lines 21a, 21b, f5695.b_new_home and f5695.qmid_furnace (classm.eic.1: unknown on line 21a). Value and refusal differences are only on refused returns: the candidate zeroes a line 17e Yes (new home; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\") or a cost without a valid QMID (i5695 p. 5, \"you must provide a valid QMID for each item\") or a Section B new home (i5695 p. 1, Costs, \"only available for existing homes\"), cases the project refuses (owner decision 7). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,939 of 4,642 agree; on completed returns: 11 candidate-unknown.",
+   "subject_key": "84af003d4dfa22a4f8f438627b2bf2d334b2dafa882953804e6546239cf27125"
   },
   {
    "key": "25e",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as for line 22d, with f5695.qmid_enabling and line 25a. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,658 of 3,819 agree; 147 candidate-unknown, 13 candidate-refuses, 1 project-refuses; all refusals on refused returns; on completed returns 66 candidate-unknown (project $0.00). Project stands.",
-   "subject_key": "0cd9a9e8a40a59976a03ac21c4a663f1e7f5c68873e1f1abf717ac78500b13a9"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate gates on raw lines 21a, 21b, 25a, f5695.b_new_home and f5695.qmid_enabling (classm.eic.1: unknown on line 21a). Value and refusal differences are only on refused returns: the candidate zeroes a line 17e Yes (new home; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\") or a cost without a valid QMID (i5695 p. 5, \"you must provide a valid QMID for each item\") or a Section B new home (i5695 p. 1, Costs, \"only available for existing homes\"), cases the project refuses (owner decision 7). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,987 of 4,642 agree; on completed returns: 7 candidate-unknown.",
+   "subject_key": "40fee6658d84ecafaa9399bdf34165c1c83000e2987f10c7b76f5d8383d441a4"
   },
   {
    "key": "26c",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f5695 p. 4, line 26a: \"If you checked the “No” box, you cannot claim the home energy audit credit. Stop. Go to line 27.\" The reply's value is the project's and it adds a display condition on 26a. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,819 of 3,819 agree. Project stands.",
-   "subject_key": "33426ab00c1b8fbec117975b6057091621cac8f40a16f89bd4ec5067f1557589"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate's choose on line 26a is the project's (f5695 p. 3, line 26c, \"Multiply line 26b by 30% (0.30)\"), but it reads line 26a raw outside the audit gate (classm.eic.1: unknown on line 26a). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,993 of 4,642 agree; on completed returns: 14 candidate-unknown.",
+   "subject_key": "e629ee5906c112347e67fa3b0347c4cd7d833553e19e25254b98a457cd608200"
   },
   {
    "key": "27",
@@ -188,23 +204,23 @@
   },
   {
    "key": "29g",
-   "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the candidate adds a shown_when that hides the line where the form says to skip it (f5695 p. 3, line 21b, \"Skip lines 22 through 25 and line 29\"); the project shows the line without one, and on every record its shown amount is $0 where the candidate hides the line, which the v3 shown_when note and the README's skipped-line rule accept (zero entered where a later line reads it as blank). Values otherwise identical. The completed differences are partials of part2_any-No class M returns withholding f5695.business_use, which the candidate's shown_when reaches; the line's value is the project's. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,599 of 3,703 agree; on completed returns 12 candidate-unknown.",
-   "subject_key": "4d0be55197265a70e638649b48ff5e1840016c489437066b71aeb09b4970b493"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate sums the raw lines 29a to 29f (f5695 p. 3, line 29g); the project reads them through the heat pump and biomass gates (classm.eic.1: unknown on line 29a). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,812 of 4,642 agree; on completed returns: 55 candidate-unknown.",
+   "subject_key": "7a252539f05554887fb5e5aa687aa3904b90c9fadabdbdd824fc0e458b76a524"
   },
   {
    "key": "29h",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as for line 22d, with f5695.qmid_hp. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,605 of 3,819 agree; 200 candidate-unknown, 13 candidate-refuses, 1 project-refuses; all refusals on refused returns; on completed returns 78 candidate-unknown (project $0.00). Project stands.",
-   "subject_key": "4c33e620d803b7ee4f7049b08473ababfd519331c867bdc1ae9f5bc51ca977af"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate gates on raw lines 21a, 21b, f5695.b_new_home and f5695.qmid_hp (classm.eic.1: unknown on line 21a). Value and refusal differences are only on refused returns: the candidate zeroes a line 17e Yes (new home; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\") or a cost without a valid QMID (i5695 p. 5, \"you must provide a valid QMID for each item\") or a Section B new home (i5695 p. 1, Costs, \"only available for existing homes\"), cases the project refuses (owner decision 7). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,879 of 4,642 agree; on completed returns: 15 candidate-unknown.",
+   "subject_key": "a8f83e20ba7953955513b2c33306a4b9d3da84f2219ab51930e01a9453c335c7"
   },
   {
    "key": "30",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "AGREE",
-   "subject_key": "79dedb444cf575af9a5e5ed31036c221d1b60e152b52485c8590049a1145b931"
+   "subject_key": "28cf8212e67567ae5030154c798bbb4dba4f50e9100ba0eecf91798b68764056"
   },
   {
    "key": "31",
@@ -215,83 +231,93 @@
   },
   {
    "key": "32",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as the earlier ruling on this line. f5695 p. 4, line 32, \"Enter the smaller of line 30 or line 31\". On a return without Part II (f5695.part2_any No) every Part II amount is $0 and the interview asks none of the Part II questions; the project guards the line on f5695.part2_any; the reply's unguarded line 32 is unknown or refuses there. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 1,860 of 3,819 agree; 1,132 candidate-refuses, 804 candidate-unknown, 6 project-refuses, 17 project-unknown; on completed returns 476 candidate-unknown (f5695.business_use and other Part II answers not asked; project $0.00) and 1 candidate-refuses; the project's refusals and unknowns are on refused or incomplete returns. Where Part II is completed the amounts are the project's. Project stands.",
-   "subject_key": "df4028c0cb2fadbc91612cd44ee98248a0bd633a68c80ce8f7f755e9879266d4"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate's line 32 is the printed smaller of lines 30 and 31 (f5695 p. 4) on every return; through line 30 it reads f5695.joint_occupancy and the other Part II screens, asked only with Part II (classm.eic.1: project $0.00, candidate unknown). Its 1,387 refusals are all on returns the project refuses elsewhere. The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 2,276 of 4,642 agree; on completed returns: 61 candidate-unknown.",
+   "subject_key": "748c681baae7e00d7bcf8118b88c7eb793537c54e965f1f969921f353b7c1529"
   },
   {
    "key": "32a",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; minor, a Boolean on which no amount depends; as the earlier rulings on this line. i5695 p. 7, Lines 32a and 32b, \"Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\". The reply copies f5695.joint_occupancy, asked only with Part II. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,462 of 3,819 agree; 337 candidate-unknown, 20 value; the value differences are records that supply joint_occupancy Yes with part2_any No (an answer the interview never asks there; 19 refused, 1 completed). Project stands.",
-   "subject_key": "c9be2237eafc319a2082b7651899693a5e198829305b73b89989c34b9fb926b4"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate reads Part II as the kinds under f5695.any or f5695.audit raw (classm.eic.1: unknown on f5695.audit) and then f5695.joint_occupancy; i5695 p. 7, \"Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\". The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 4,611 of 4,642 agree; on completed returns: 6 candidate-unknown.",
+   "subject_key": "328286d3cb46813ea0e9c74db1a2e155c9dc8824c4c469063eedd78d393da86e"
   },
   {
    "key": "32b",
-   "record": "d46e2ed85c1606aea22bb95ac386a8ed03b3d8511136966e4f5c064e8c79a3e9",
+   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; minor, a Boolean on which no amount depends; as the earlier rulings on this line. i5695 p. 7, Lines 32a and 32b: \"Line 32b. Occupants of a condominium or cooperative who are claiming a fractional share of the qualified energy efficiency improvements or residential energy property costs must check the box on line 32b.\" The box goes with a Part II claim; the reply checks it on the condominium answer alone and needs that answer on returns without Part II, where the interview does not ask it. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass ae1fb03e56a3; 1,767 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,355 of 3,819 agree; 423 candidate-unknown, 28 project-unknown, 13 value; the value differences are records that supply f5695.condo Yes with f5695.part2_any No (for example classm.sd.2.deepseek, completed: project No, candidate Yes), an answer the interview never asks there; line 32 is $0.00 on them. The association-share wording added to part2_any (BUG-0553) makes the share part of the Yes answer, consistent with the project's guard. Project stands.",
-   "subject_key": "c255a197cae8a6af484118abbedae5bf633df4c6cf5ecacd10a5fce10e01b573"
+   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here as line 32a, with f5695.condo (classm.eic.1: unknown on f5695.audit); i5695 p. 7, Line 32b. The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 4,484 of 4,642 agree; on completed returns: 6 candidate-unknown.",
+   "subject_key": "3242ac633b7fe50b6b58adb6d8c7fd3527a44518143f3623cca1419403c76163"
   }
  ],
  "subjects": {
-  "f5695.claiming_part1": "57109a0aab2b7106b34e89c1c271910c85916a5d477d0279cc8e4ceacd9cad5b",
-  "5b": "4877c2b17faf66a5411a82ef3c12dbb38b05316b22da58c42f3ce47b95e9cd94",
-  "6a": "602a79287960ef1a5b081519f7524af54364608dd33b17dd1497dab546e35e93",
+  "f5695.part1_any": "0ee5dcdf1ec4cbdd4f0613e7d520e8dfd96a7be1400495a43105189476282779",
+  "f5695.part2_any": "5dad0f528c47ae7f9973d66ddcc544f40a63ea8fcd080d658533d0ec3bb5d6e0",
+  "f5695.claiming_part1": "ed5c63e7ea1a8d748c304e36346dd83f9c72bdd6437d5168cf381f5ca2a1af6a",
+  "5b": "fe915bce126bcdbe8d05b8dea65a7d7c806cc6ae7ee9cad4b9964bd938ea5587",
+  "6a": "795ee40fbb218bf0776d1ce4734d4c809147461f28a07399b23d78aa020dd643",
   "6b": "033dda84713fe99afcb352106c331342fe2469475865231043196d95777ddbd5",
   "11": "24d6e9f296e5431e0f6011ca7b7dd2615daa98b09d2421fb56c25d14bba2850f",
-  "13": "895a3467d5031755ed80a0ceac228723d99deb6c0c6d796f228f06995ec2e3b3",
+  "13": "b56bb80b7d357b0eedd125f36ac504f08a2c7c6bf91c6ff3bd11d363d71b18cc",
   "14": "445da6502d234ca01daf6aa6dafc70935ee5908ff6daea696dbb5421ec0c3042",
   "15": "07cddd6a6ade0f4436071f1f0b91e81ded007249c4d3ed5ea937b2d158d3633f",
   "16": "6e1f471dd878e5120de00782c2b04d157b3c1b698bd3810cde665d0afdad9405",
-  "18b": "e18c290fc3247e387ac1ae52607b5592fd021c183247a48d5e9f990fbf844a6e",
-  "19c": "29fbdffefa5d5b60f469ce48b3f413e90dcfbf641b3489c024a66b853b1dfc39",
-  "19f": "1f18357a597c447f4126e559c4b7f3a3c055cd3a724c112d880d67f6533bdd02",
+  "18b": "6b1c33798204270f490829eafabdc7a362ed177a8d2aabe14d7287a72c4ee7f6",
+  "19c": "23425638cb73fc0e66a65b09a739525a82009a550ee9778bf5566c3f9b2b3587",
+  "19f": "df13e4a182b1940c5662e69e1705f3ef2490d6b73293d44060f1ac24acdb8001",
   "19g": "8c64ecf5dfe473b274f016fdb7eb2fa67d3edb02b67522370dc31baceefb1de2",
-  "19h": "f53b1dcab391c8b78199edf6d37d8d2d8b010c79b5a92efdcd990ba544d5857d",
-  "20c": "2856aedfabe459397c61e74917b19e1af7cc16fdbe873b579511489622cbffbf",
-  "20d": "0f972394723c78d099b3e105f66f2421647c6b844f9d671ced63a24bfa01c67d",
-  "22c": "51db5aa7a885d360a9d267e8bd7906aa7c2bc63bcbbe8cd37d2a04b6f2134688",
-  "22d": "e80c40a7ac6620418b7ca205d902b5aa7168772fbf3ccd57bf5c554ae91592c5",
-  "23c": "bc942f5f8a8a73edebf2547c69a19f9945ceaad5038c44a4875f8f5fe0a5b657",
-  "23d": "f2e9d2ee82d31137eb52205cf41184518f92fee715a37933b7a03d99da39c1c5",
-  "24c": "f2d3d57b2af9ee0bbd787183cb4034229554df807e666532add2974f819aebe0",
-  "24d": "27e13a38fe445e627cea06f82f1eaba57d1dceaf8478646381015f4ce6a17034",
-  "25e": "cdf034466413acd96417d9fa0049f31529d1ed70435feb4b0f2568e79a60cde9",
-  "26c": "c6b42cef3a6c90c643463c5be7c4623dd89da8543bc03883f8f0ceb80e76f63c",
+  "19h": "b0297c1c3436cbaca18df8235fce357bee56566c920e60566675db93f36a8935",
+  "20c": "15ba58771053e60818b39e844c935d42d598418f3d6eb28891b10c78456951bc",
+  "20d": "39244e259cd5673c688f718773dc985be548c82d4d309995f44faa77604c42e8",
+  "22c": "3728e4db17ec5d830e211af2098bcff4ec634bc232a1dcde4f236246903a6220",
+  "22d": "01b698e29e26e2490d756d4f93a01c3568e9647fca5e5229e5b174f6311fd137",
+  "23c": "86e9652473828e698daab560861ad636c2a74da046b1fe6882f9100c51def0d0",
+  "23d": "992362cf0f4ba3b6380d231ba6ff44e05885f1afb96e1f4cb745d9351e5b56d5",
+  "24c": "9a400726e5fe9cd765ab2b322312eb09b1c8cd2ba952f53b4994260503f025fe",
+  "24d": "4b835a58e8a9400f04d03d2e994f7057707322d2533e0d82511c6e808d6ecd04",
+  "25e": "e4bbda20e2a9aa29abceddb9ada3c80e8a4ff190464e13ea569725e4d1acb71e",
+  "26c": "0b6f529aca9d2ef6bc322050da23a3560ab42b0514547f7c5c23bba916e6499c",
   "27": "ba37ce34b486adbd5d0faaf2c5c092a547042fa4cd731c284824a036921d660a",
   "28": "395d7c34a09b2fc1ae73116a364da14c606591ddd09c19c3bf5f161166887e51",
-  "29g": "8f0a91e5a9b87ab2c9d40e587dd9c5de32c025f67f6f5b5d63d93b14dfd2db63",
-  "29h": "494a190df11c119e4e5c9a12434922684a47c22c049f3a5203281fe5eac1b6ad",
-  "30": "d48f37676851031081d6999705d330af2e60f72692b8b0d9222a515a0b2cf1a4",
+  "29g": "2620b4f2b048a85bdb84d09a6cb1ea68f132f5c0efd7d91c839e6f2b1a2aa858",
+  "29h": "363405e16a53ece10c4a29fea5b3e2f985b7a7c9c44312399e02f24cda5bcb0e",
+  "30": "54bde6192aeb9bf3d538e697bf052b6e6560dd261b44505673bfdf3bc2227d9a",
   "31": "df0d89b489cb65c6b9aff92a63add114abb5a2f34bea2f18b6e73c07a022c6f5",
-  "32": "64af264916beff747a1849d812e8557b3548b4d9c16a81a849bad47a899d7ce5",
-  "32a": "bb17e5b3658ddec1501abb1fb7ab8be789fb4a3f2ab61ddb5d1ec7d2f063720e",
-  "32b": "95f632dbb6a054f703bcee9906052361f278290a08aa400a9a7daebb0bbae849"
+  "32": "6978b9bdebde2a142ac2f1f2c18f5d97c9bfe16e7a192a95d843b37c3872c0f3",
+  "32a": "6798ac7215b891337ab5a76829638c54329be1ab0176501c3f54bcc3af7f79fe",
+  "32b": "69db707b6e860f32ceb1d4789f8557506be20731c8278b9753d7c132b878d72f"
  },
  "__rest__": "9eb53ebd84be121b2dff181a4acb827ff5c29d9dd96cbbe8f7ecc67c12520537",
  "foreign": {
-  "f5695.claiming_part1": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
-  "5b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "6a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "f5695.part1_any": "b4413388b26b4ffa0b074074c4bbc0018d87f3827898a677da7cecc2ef0d2f9c",
+  "f5695.part2_any": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f5695.claiming_part1": "51be88f06d63ff06272b973d18d381dd1ff872315567f884cd7f9bff46c92a6f",
+  "5b": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "6a": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "11": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "13": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "13": "51be88f06d63ff06272b973d18d381dd1ff872315567f884cd7f9bff46c92a6f",
   "14": "acf3845da97e5a9786eba17335917c4fa5a45144cd4bee446d5aaec18d5c4cd9",
-  "19c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "19h": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "20c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "22d": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "18b": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "19c": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "19f": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "19h": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "20c": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "20d": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "22c": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "22d": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "23c": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "23d": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
-  "24c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "24c": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "24d": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
-  "25e": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "26c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "25e": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "26c": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "29g": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "29h": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
-  "30": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "30": "7e601ff2d9938c9f4d8b6c2eb8f367408be989c98da1e9705b486b895a1a3903",
   "31": "f5f26f0b4b6ed0700e8d8e09ff2b8443ca27fe7e7c49786de98f687038bf0ab4",
-  "32": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "32a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "32": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "32a": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
   "32b": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a"
  }
 }

@@ -66,13 +66,6 @@
    ],
    "reason": "The lifetime exclusion is limited to cost by Simplified Method Worksheet lines 7 and 8 (line 7 is cost less the amount recovered tax free after 1986, line 8 the smaller of line 5 or line 7); retirement.recovered asks a survivor of a retiree to include the retiree's recovery, so the limit covers both annuitants."
   },
-  "limit:p575:p35:1499b8a9": {
-   "enforced_by": [
-    "retirement.special",
-    "scope.other_income"
-   ],
-   "reason": "The $22,000 per-disaster limit across plans is never reached: retirement.special asks for \"a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one (Form 8915-F)\" and refuses the distribution on yes, and scope.other_income asks for \"the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F)\" and refuses the return on yes."
-  },
   "limit:p463:p25:dd77fe6a": {
    "enforced_by": [
     "scveh.line7",
@@ -161,6 +154,9 @@
   },
   "limit:p525:p36:ca8f2c0b": {
    "not_applicable": "a rule of Pub. 525 on the page that gives the repayment rule; the tool figures neither the repayment deduction nor the credit and refuses a repayment over $3,000 (s3.repaid_income); the other items of the page are not read by any line"
+  },
+  "limit:i8582:p1:57da1db6": {
+   "not_applicable": "Form 8582's exception for rental real estate activities with active participation (modified adjusted gross income not more than $100,000); the tool never figures Form 8582: a passive activity is refused at scope.other_income (scope.passive) and rental real estate at scope.schedule1 (scope.rental)."
   }
  },
  "baseline": {

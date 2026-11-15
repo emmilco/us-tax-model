@@ -7,6 +7,9 @@
 # gate line (a line some `refuses: - when:` names); the build checks each key is one.
 tax_year: 2025
 conflicts:
+  household.birth_year_bad: >-
+    The year entered for "In what year were you born?" is not possible for a person on this return: it is after 2025,
+    or more than 125 years before 2025. Correct the year of birth.
   asset.s179_bad: >-
     A section 179 election is entered for this property, but the other answers about it do not allow one: the election
     is more than the property's business cost, the property is used 50% or less in the business, or it is not section

@@ -3,6 +3,798 @@
  "form": "f1095a",
  "rulings": [
   {
+   "printed": "f1095a.a_apr",
+   "project_expr_sha256": "8e8e93e609ed080d654d7eb1b3e2057f3cc99fafed0f663a3903c134aebed2f0",
+   "second_expr_sha256": "3b022f573c3d8945a7fc504441b7939b20822dd10ba81e0adb63f73edea5f302",
+   "ruling": "Ruling: scope; f1095a p. 2, Part III, column A; i8962 p. 2, \"Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A to complete Form 8962.\" The candidate returns 0 for a void or superseded form; otherwise it is the project's choose (mo_a on the uniform path, the month's in_a entry otherwise). The project refuses any return with such a form (f8962.void_form, fixture stage18.refuse.void_1095a), so the void branch reaches only refused returns. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; the candidate-unknown are partial records withholding f1095a.void (asked for every form), the project-unknown withhold b_blank or b_changed, read by the new uniform derivation.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "5cb6fb127063c4b96ce8946e0179433f528d08ce7c18092a93ba74b8ab2c8384",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_apr",
+   "project_expr_sha256": "ffc9413a8b22d693e2864ea6d94fba08d5e27002b582834e18743e629664af00",
+   "second_expr_sha256": "fc0f35b447a6b19c1e3fa1ae01d43b2d6c902971bdc6d9b789907f18129fc282",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_apr); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_apr for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "c4eda24f0e5f1b117bf87a8f0d677f80d73ff52ee28bb97753ce4de5e1c3223c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_aug",
+   "project_expr_sha256": "34e2f401780d0a9fcf2c34a09bd04067a69cb4802774bd6706a2ae17515b45ee",
+   "second_expr_sha256": "ec74e4a65833e1026e3826ca05cb8cd8ea3a141ea02f49d6ada2133f40f6745c",
+   "ruling": "Ruling: scope; f1095a p. 2, Part III, column A; i8962 p. 2, \"Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A to complete Form 8962.\" The candidate returns 0 for a void or superseded form; otherwise it is the project's choose (mo_a on the uniform path, the month's in_a entry otherwise). The project refuses any return with such a form (f8962.void_form, fixture stage18.refuse.void_1095a), so the void branch reaches only refused returns. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; the candidate-unknown are partial records withholding f1095a.void (asked for every form), the project-unknown withhold b_blank or b_changed, read by the new uniform derivation.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "fb82b625383dda35c6797b75fbfaf967b5f97535bca90f71786c89e6fc634f8b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_aug",
+   "project_expr_sha256": "e4636226ceb229244770cb235be2ed67c908294241b8e2874dcbaea8da6befa2",
+   "second_expr_sha256": "e7217e61a669a8db6e28c82f9c581cdf3dfe52408de45e52ecf03f21138a7aa5",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_aug); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_aug for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "3504c2607dc10b4854b799949fc20863248a231bfc2bc6bf9ff5da428bc2850d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_dec",
+   "project_expr_sha256": "0cc7d573eac0f4f906198a9276aa7bea6347c78e5079ca8d1d3612b4b71ab305",
+   "second_expr_sha256": "9dcd7a5612316ae3c90c58f8d2f8a117643a410096f3e51d8f43c3ba793eaf86",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_dec); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_dec for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "70762e3f8307d2befd629915e74b17bb1c1b83e13427d80e39ae5120c62c15b1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_dec",
+   "project_expr_sha256": "e100bae452eb416d97912f5cce7b21e7e6a301d521d44f396b6d411922072401",
+   "second_expr_sha256": "2e50e102097085ac609c0480f6ed22d8076e1315091d040028d38e2502aee89e",
+   "ruling": "Ruling: scope; f1095a p. 2, Part III, column A; i8962 p. 2, \"Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A to complete Form 8962.\" The candidate returns 0 for a void or superseded form; otherwise it is the project's choose (mo_a on the uniform path, the month's in_a entry otherwise). The project refuses any return with such a form (f8962.void_form, fixture stage18.refuse.void_1095a), so the void branch reaches only refused returns. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; the candidate-unknown are partial records withholding f1095a.void (asked for every form), the project-unknown withhold b_blank or b_changed, read by the new uniform derivation.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "029b1c69d5af4b92b6e62cc28be0191d3de03027c9817bf90d259390d46cfb5c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_feb",
+   "project_expr_sha256": "31392f761d491deb2a87b53f68d24ef8a3e143239b3698e1aa7056108d6d0023",
+   "second_expr_sha256": "780de65dcccc7ce812582352609fdbc7c73aa6d5b8ad10f5a80b0a0562f2082d",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_feb); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_feb for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "bbba4c3102756c03d60ba8eb49e1ece1951d1995b8a8e2370f51c30f3dfd7b99",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_feb",
+   "project_expr_sha256": "a0111a0d7de11174b5010532f7277ed3fe2f857a42e465b1a82eed1ebe406692",
+   "second_expr_sha256": "4c9479076f0766d30d6e6a8efc56154741920a070dd42f7c9b76392c579a6b42",
+   "ruling": "Ruling: scope; f1095a p. 2, Part III, column A; i8962 p. 2, \"Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A to complete Form 8962.\" The candidate returns 0 for a void or superseded form; otherwise it is the project's choose (mo_a on the uniform path, the month's in_a entry otherwise). The project refuses any return with such a form (f8962.void_form, fixture stage18.refuse.void_1095a), so the void branch reaches only refused returns. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; the candidate-unknown are partial records withholding f1095a.void (asked for every form), the project-unknown withhold b_blank or b_changed, read by the new uniform derivation.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "e5cfd83fd25d855f606f7291eca6871a696f620e8550b3595ca1252336b0242a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_jan",
+   "project_expr_sha256": "1f475da242706837b2f21a90ddedfba35b17e93d9ecb0e6632bf70829008a8d8",
+   "second_expr_sha256": "e1c666e0a4c3fa7f5f758263151b559e9ee80f5e53b9e3a82809282c139d39be",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_jan); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_jan for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "aa5bc918778ebf1a962c830b2e26d8c26a615fa0768fd73715f57560a134e7fc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_jan",
+   "project_expr_sha256": "a0e8354740c49db95d3a0c29ab84c144868c21f4d556d8629296c40c99213d8e",
+   "second_expr_sha256": "7e035ec4182d09db4b65066c58b895f3ca20ff443952caddc0add396a6b0061b",
+   "ruling": "Ruling: scope; f1095a p. 2, Part III, column A; i8962 p. 2, \"Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A to complete Form 8962.\" The candidate returns 0 for a void or superseded form; otherwise it is the project's choose (mo_a on the uniform path, the month's in_a entry otherwise). The project refuses any return with such a form (f8962.void_form, fixture stage18.refuse.void_1095a), so the void branch reaches only refused returns. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; the candidate-unknown are partial records withholding f1095a.void (asked for every form), the project-unknown withhold b_blank or b_changed, read by the new uniform derivation.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "5f0c326f941b7e70aec7c52c470fa2138f3d873e821954c1e4aeef8fa910d667",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_jul",
+   "project_expr_sha256": "1049b2332782f28b0ec78c6cdbad82860c3f630c7af34a3c946ae0295f9cf023",
+   "second_expr_sha256": "66ec2436f0c70a642886f92ed945a73eaf32a28a470f5462b2f890277e7e1a7a",
+   "ruling": "Ruling: scope; f1095a p. 2, Part III, column A; i8962 p. 2, \"Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A to complete Form 8962.\" The candidate returns 0 for a void or superseded form; otherwise it is the project's choose (mo_a on the uniform path, the month's in_a entry otherwise). The project refuses any return with such a form (f8962.void_form, fixture stage18.refuse.void_1095a), so the void branch reaches only refused returns. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; the candidate-unknown are partial records withholding f1095a.void (asked for every form), the project-unknown withhold b_blank or b_changed, read by the new uniform derivation.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "5c1cec7a09c470ac1f47df0ea12ff51db1948424a363a394083254fb51203859",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_jul",
+   "project_expr_sha256": "42934fa7394ee86f8ce51e292ee48aed00165e0ec44ad53b26d013e57030651b",
+   "second_expr_sha256": "23416fc1483714d0093b00e5dfe90dde6abe3ce6192ba7aa0c03ac3bd3148fcd",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_jul); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_jul for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "7cdf8f167358724eaffb4799ab1f3a6fc6da6d620b7def8dcab0fc045f9c7407",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_jun",
+   "project_expr_sha256": "4da96021adc47c628d7076d3579b2b6a001bc9be3b46decbbe32c2bae515f374",
+   "second_expr_sha256": "25d3bfa8dcd97a3394cf563f135802a0dc8b1c2428b97d0b92308f103cb9b575",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_jun); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_jun for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "520a1e0514b4ea79a59f849f55662e7884b519d8b9a3b36032d10954ff0f9adb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_jun",
+   "project_expr_sha256": "d130503c68b60c25262b7ce1df81432e41b5a8338555cc65aa9413bc6ba84039",
+   "second_expr_sha256": "c7666ceefc62a797801f07e2db9f9d9f9e2ad329d068a447a0e576259dd34acb",
+   "ruling": "Ruling: scope; f1095a p. 2, Part III, column A; i8962 p. 2, \"Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A to complete Form 8962.\" The candidate returns 0 for a void or superseded form; otherwise it is the project's choose (mo_a on the uniform path, the month's in_a entry otherwise). The project refuses any return with such a form (f8962.void_form, fixture stage18.refuse.void_1095a), so the void branch reaches only refused returns. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; the candidate-unknown are partial records withholding f1095a.void (asked for every form), the project-unknown withhold b_blank or b_changed, read by the new uniform derivation.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "3e49e21e3f465a257ace4ce2d88b648db36c6ef0bfcbfcfac9f42214f1f031f0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_mar",
+   "project_expr_sha256": "5841c9cb9f252a4e2e7b72f3ebff1a7bccc84dee5f2398a53ddeefcf6927fe12",
+   "second_expr_sha256": "e87f1a582d8151d4c09df76c93138e1d6915ed03740f828e6b4d87ead583f6aa",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_mar); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_mar for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "4f4c1cff5dc39838f81dd7cbb5e52c8b1054cd21a009f2b1a68f287904f49339",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_mar",
+   "project_expr_sha256": "c264c177c477f4cf5fd450c6a49b477060daad2499073fc67ecef8c5e52b61b3",
+   "second_expr_sha256": "e64d1c16c87beccb82962f136eb9722b5cd0e3bd1c99d83ec6d075aa1ece124b",
+   "ruling": "Ruling: scope; f1095a p. 2, Part III, column A; i8962 p. 2, \"Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A to complete Form 8962.\" The candidate returns 0 for a void or superseded form; otherwise it is the project's choose (mo_a on the uniform path, the month's in_a entry otherwise). The project refuses any return with such a form (f8962.void_form, fixture stage18.refuse.void_1095a), so the void branch reaches only refused returns. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; the candidate-unknown are partial records withholding f1095a.void (asked for every form), the project-unknown withhold b_blank or b_changed, read by the new uniform derivation.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "e17e5775c87c9d95513dad24f523cbff90cc9c6a5a5ef31039d815d920f011cc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_may",
+   "project_expr_sha256": "2621cf10aa4c02b6c5da6bb039d385f7f94102eca60ba5e41f9a453e9e9aac8b",
+   "second_expr_sha256": "81ca09ff2d50b2651646d0bb37b90a0d6dec639b7ba70405a6c56854c47d1016",
+   "ruling": "Ruling: scope; f1095a p. 2, Part III, column A; i8962 p. 2, \"Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A to complete Form 8962.\" The candidate returns 0 for a void or superseded form; otherwise it is the project's choose (mo_a on the uniform path, the month's in_a entry otherwise). The project refuses any return with such a form (f8962.void_form, fixture stage18.refuse.void_1095a), so the void branch reaches only refused returns. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; the candidate-unknown are partial records withholding f1095a.void (asked for every form), the project-unknown withhold b_blank or b_changed, read by the new uniform derivation.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "5fd03fb95679d6aff86d9941378a451e7fbb5e56b17b8a115ed34ec617ae073b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_may",
+   "project_expr_sha256": "8e7d71d6a96883fd42ca7e6c71c4ff716bd7ee43a46db896b5e259f456c4400d",
+   "second_expr_sha256": "792e5a580ad857bba6fffab28b7ca70069676ed85761093a2446ed1adcedb605",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_may); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_may for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "6fd76c29855cb4f62007bf551ff2b5405afc72ffcdf8c24bb14478457c7ab22e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_nov",
+   "project_expr_sha256": "cb1a51911a57bd0d043594a46ea74e155427f09cdaa924d155782425d00119ac",
+   "second_expr_sha256": "17624aee8bb3b1c1f0d2f186ac8adc792fa3a58bfb00919532dd8607cdeea283",
+   "ruling": "Ruling: scope; f1095a p. 2, Part III, column A; i8962 p. 2, \"Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A to complete Form 8962.\" The candidate returns 0 for a void or superseded form; otherwise it is the project's choose (mo_a on the uniform path, the month's in_a entry otherwise). The project refuses any return with such a form (f8962.void_form, fixture stage18.refuse.void_1095a), so the void branch reaches only refused returns. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; the candidate-unknown are partial records withholding f1095a.void (asked for every form), the project-unknown withhold b_blank or b_changed, read by the new uniform derivation.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "8837dceea20f76859e7f325a4a121434366f2fa58c5c8dfd016fdcb6377248d1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_nov",
+   "project_expr_sha256": "da57c8a27baff231f7cfa3fee19ab8f63a34521b8069125eda6941858c007266",
+   "second_expr_sha256": "4a7ffe71e6c3498b34b9a7b2d60f0bcafa17b8302beb98762133608b7e0fc965",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_nov); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_nov for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "abf6237a8ec081b381bee4f93e2288f4d9b08d9b8638fe731aadeeb3e99a38ed",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_oct",
+   "project_expr_sha256": "216111e76bc525e1c9e30c38408590ad91098fee823027d30bff7626e58e6bc7",
+   "second_expr_sha256": "865298946e710bb4337004077099e6cf21a4583b133e0d205176adba1753f14a",
+   "ruling": "Ruling: scope; f1095a p. 2, Part III, column A; i8962 p. 2, \"Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A to complete Form 8962.\" The candidate returns 0 for a void or superseded form; otherwise it is the project's choose (mo_a on the uniform path, the month's in_a entry otherwise). The project refuses any return with such a form (f8962.void_form, fixture stage18.refuse.void_1095a), so the void branch reaches only refused returns. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; the candidate-unknown are partial records withholding f1095a.void (asked for every form), the project-unknown withhold b_blank or b_changed, read by the new uniform derivation.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "4d19465cf4f57d786ddca1aeab0e4104ed2650c5d6f3e6ff5adadcf45189051d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_oct",
+   "project_expr_sha256": "2ddf91b2da138e62f269e7fa670981fa581ef410c8abc27713206513f3e0077c",
+   "second_expr_sha256": "b6e988c41a96c3b1e47595df99523dcaef214be503a5a96ae1060edfd35cc8b7",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_oct); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_oct for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "3e0dc91813e379e594adee064b32756314afa30a80afd140b72377b31988b17c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_sep",
+   "project_expr_sha256": "0e2f564d728bef3f92ebc1d15740bcf89a9ab50922ad3d35189c720ea20e1691",
+   "second_expr_sha256": "3b68f74784e2fcf51fa67c082d6e9df4f120301b6e15e10391f60b454dcd6ae3",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_sep); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_sep for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "0a345ffc927140ee0af840a48ca6424e988eae1eda6d9e62f3ec62e6eb3f9187",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.a_sep",
+   "project_expr_sha256": "2732baca89f196b198d946d3a6a4c0560e825663b589ae3424bcd32283860551",
+   "second_expr_sha256": "8015fb0aafe81129b7a2c8cfcb6c2d2e66bb8f58db221815d244134970333a87",
+   "ruling": "Ruling: scope; f1095a p. 2, Part III, column A; i8962 p. 2, \"Do not use the information on the Form 1095-A with the 'VOID' box checked or the previously received Form 1095-A to complete Form 8962.\" The candidate returns 0 for a void or superseded form; otherwise it is the project's choose (mo_a on the uniform path, the month's in_a entry otherwise). The project refuses any return with such a form (f8962.void_form, fixture stage18.refuse.void_1095a), so the void branch reaches only refused returns. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; the candidate-unknown are partial records withholding f1095a.void (asked for every form), the project-unknown withhold b_blank or b_changed, read by the new uniform derivation.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "128a921f0cbd5ad7442cb65c8ffacbe85de66b8a8884e5eafe0dbf1f5e581407",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "f1095a.b_apr",
    "project_expr_sha256": "391b7c4fe5dfb2bca0f7e926962e269a3dc0292cfffb84b27f321339354994e9",
    "second_expr_sha256": "13e4e3ec7a2c4f55e237bb723dab822519843a3893655a147e2b2d5e8bf383f1",
@@ -27,6 +819,84 @@
    "ruling": "Ruling: model error; f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's April column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes, so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A, where f1095a.b_used is true by the form count). The completed-return candidate-unknown are f1095a.b_counted on the only form (mkt_a, 16 records) or withheld (mkt_b, 1); the completed-return project-unknown (3) withhold the uncounted form's own monthly column B, which the project asks as an entry of the document. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Triage executable-triage-v2 (`reviews/2025/transcription/triage/f1095a.json`; 1,495 fixtures, 500 generated returns seed 20261026, 1,485 partial records from 40 bases; 2,141 comparisons): 1,952 agree; differences 55 candidate-unknown, 48 project-unknown, 86 value; on completed returns 17 candidate-unknown, 3 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
    "context": "aa135aba381b52a130dc70b3fbbbd2e31e02c8707c997e85170f21d0d4a2e29e",
    "subject_key": "9a8319e09cdd79062c1a9ebd35079329e40fac41273af1f91c23db1c6b0a4ad3"
+  },
+  {
+   "printed": "f1095a.b_apr",
+   "project_expr_sha256": "7b66c7c78645dd7d24830f6b884a46db473d46e7526e7bb4f003290a69df261f",
+   "second_expr_sha256": "69ee47a531710dca68bae6315ab1509c5266ce6c6c29d16383747dd9d08abfe3",
+   "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,598 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 179}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 129, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 341, \"project-unknown\": 11, \"value\": 176}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "06d14f6760fdc7ffe9f21efbf39f84e8e04cb53a11664b6a2b8ca5447195d81c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "generated:20261026.151@f1095a[form_2]",
+     "generated:20261026.223@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_apr",
+   "project_expr_sha256": "d095266a68aecd8ea480ce1fa5d6da9096517ee28a56c6521ae2c8396910d58b",
+   "second_expr_sha256": "14e728039aa29e95304bf072ab682d2c52b6e9f3399a89cd9755239e518923da",
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "21ee924db0810285f1f60a445ab30f846cd5361af2f0d4e4136fa6ec8b101987",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "generated:20261026.151@f1095a[form_2]",
+     "generated:20261026.223@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f1095a.b_aug",
@@ -55,6 +925,123 @@
    "subject_key": "29ae5975dd54b425945b0c0b408053210a868511c17caa4635edf1fa7030b614"
   },
   {
+   "printed": "f1095a.b_aug",
+   "project_expr_sha256": "d27b35cc32cef43758e772a4e192c4477d6d43b12b02f6f3a0709868c3cc63a0",
+   "second_expr_sha256": "a64de554c729e163448d34a89d5525833d0bf8566873eb16f46520da07ce15f3",
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "e7129e6ace16fcc8ff0e86d0a9ca028b7c6ac10c4b664e50fd2e527400a74bee",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_aug",
+   "project_expr_sha256": "e4eb6334172b67b718bc5a70ae825654ac73d0d89f6f9a915055d7172e67494a",
+   "second_expr_sha256": "ab478f597ceb2e53acb1bec9ad0d4f2360ceb77088769b202ce87faee8e3d3fb",
+   "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,594 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 183}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 129, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 341, \"project-unknown\": 11, \"value\": 180}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "df192afac2af8d5f86311682eb5127713457e40d9fc9bf4158bdd9a6a4115897",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_dec",
+   "project_expr_sha256": "2009b251c0dadadaaf371df3165a6995ac828ef9073b953cbe769413f3ad3111",
+   "second_expr_sha256": "6bf33065744bae19eebf8a7bd1b54871cecfe776c2ee0c0a9ca996d7572d9a3f",
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "4675977c0e962da16c67e2613b0f9b1444ecaa06b7405d0f48b83167e8f3fd86",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "f1095a.b_dec",
    "project_expr_sha256": "c8d952966aa54e7259b3709a4d8699c4f8fc1e05b9f7b6d2ab87dc0083c1dff0",
    "second_expr_sha256": "4069a1005efad221e0d673903dd316c1681d92e4a84cf33bc2381d4b2b1f4c6a",
@@ -79,6 +1066,45 @@
    "ruling": "Ruling: representation — the candidate zeroes this entry's monthly column B unless f1095a.b_counted is true, moving the 'column B from only one Form 1095-A' filter from the consumer into the entry. The project keeps the form's monthly column B and filters when f8962 sums it (f8962.line12b to 23b sum only f1095a.b_used forms). Executable triage: 2571 comparisons; the 147 completed-return value differences are two-form same-state returns where the second form's b_counted is false, and the consumer total is the same on both sides; no completed-return difference reaches a printed tax amount. The candidate's single-form case omits the project's forms-equals-one short circuit, which is ruled on f1095a.b_used.",
    "context": "d8fe0d9e359489b841224bd859f14cee7712e876784fdbf074fba87dc9a17104",
    "subject_key": "0e522306ea7bec11971a8dd9d8019907b6f0010eaf54aa85723a23c3af76d7fc"
+  },
+  {
+   "printed": "f1095a.b_dec",
+   "project_expr_sha256": "ce715344efac70fc8ac70ae22470b5c804db0215a5d2cef485c8f20c595a87f9",
+   "second_expr_sha256": "6bc98fe2e030da9f787b39496cdf766452867550d25a873bcda9d757bf91633c",
+   "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,593 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 184}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 4}, \"incomplete\": {\"candidate-unknown\": 129, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 341, \"project-unknown\": 11, \"value\": 180}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "2eb5c34129a90e13a4b235e54894223cc6cea7bc883067cd85d0ed1188f56a9d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f1095a.b_feb",
@@ -107,6 +1133,123 @@
    "subject_key": "da9093d78e503cec5a305e8e7b252b5430e21bf455349ad9983174e6d3f3ed86"
   },
   {
+   "printed": "f1095a.b_feb",
+   "project_expr_sha256": "64af12adcc7e30753aeaeb6050513cef3e31b7df2dc33076e73748979241f74f",
+   "second_expr_sha256": "f4b4939fdd2898d06e753d35d98a7119d34502f4308c9bb479dc9316277ab873",
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "c2095d2d1500799b76ad74be04bacd52b44432c0ba6b1fd3278d7f036dfd03ad",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "generated:20261026.151@f1095a[form_2]",
+     "generated:20261026.223@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_feb",
+   "project_expr_sha256": "7e7efb048d543f30359e5a970c40c24ffe9fa75c74b15f45f80a293f0bb2e4e0",
+   "second_expr_sha256": "cf79f1d5a0f9177ca1adbc10708de1da0955fb05723cf973ac85ca5d705f1f6a",
+   "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,598 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 179}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 129, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 341, \"project-unknown\": 11, \"value\": 176}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "ce00e6ad7bc4580058d11d074aeeefcd94ed5af3628c60210a8d1bfa4ba6ed4f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "generated:20261026.151@f1095a[form_2]",
+     "generated:20261026.223@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_jan",
+   "project_expr_sha256": "17775f23cdcac0636f50bb6d8acdb071702a5c72824aa580b897fefa7504f2b4",
+   "second_expr_sha256": "e1edc443a6859175b3e0265321d2c7607b52f1ad160e74b8cacaae9fddf41cee",
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "bd4b5bbffd87a900072780ced6ae176c92f9c21fecd8efababd5be2e0aadea88",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "generated:20261026.223@f1095a[form_2]",
+     "generated:20261026.380@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "f1095a.b_jan",
    "project_expr_sha256": "1ad76213cdce3d5d59fd8e9d217c76ce18698922a5da3a2da1158973493804da",
    "second_expr_sha256": "1f02e17f529b28a8816dda5ebfebec106c262f36a53be8f7fefa3f1b8a65083a",
@@ -131,6 +1274,123 @@
    "ruling": "Ruling: representation — the candidate zeroes this entry's monthly column B unless f1095a.b_counted is true, moving the 'column B from only one Form 1095-A' filter from the consumer into the entry. The project keeps the form's monthly column B and filters when f8962 sums it (f8962.line12b to 23b sum only f1095a.b_used forms). Executable triage: 2571 comparisons; the 147 completed-return value differences are two-form same-state returns where the second form's b_counted is false, and the consumer total is the same on both sides; no completed-return difference reaches a printed tax amount. The candidate's single-form case omits the project's forms-equals-one short circuit, which is ruled on f1095a.b_used.",
    "context": "d8fe0d9e359489b841224bd859f14cee7712e876784fdbf074fba87dc9a17104",
    "subject_key": "75a5e2eb4ce75bbae211a7de2f112d9faff77653ecf273594e97b72a31233a5d"
+  },
+  {
+   "printed": "f1095a.b_jan",
+   "project_expr_sha256": "824e8a85c7b42227dafbb4aec4b35095b87c9e764574108926ae1d55bdc5c89c",
+   "second_expr_sha256": "42c39a5eb364f19230136096a2c0c9ed83c9c52372f02adc4a84a0c2f89465d6",
+   "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,599 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 178}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 129, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 341, \"project-unknown\": 11, \"value\": 175}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "3a279ded0c3e77c7fdb2c5b550217bbee556982c4395f74b0ca516269f91047a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "generated:20261026.223@f1095a[form_2]",
+     "generated:20261026.380@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_jul",
+   "project_expr_sha256": "2b9ffc63439b339334633eccb6a2e00b79ed1b0dbb00d73342b734822b164b3b",
+   "second_expr_sha256": "ff47bea9bc4e5614e6cee5eef6b8060250e8933484f489678a2bca2496852d0d",
+   "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,595 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 182}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 129, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 341, \"project-unknown\": 11, \"value\": 179}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "c52d2b6aa8c936d5f33ef9758530ea98e7f5ef626a7f217c1c2d971778e80b25",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_jul",
+   "project_expr_sha256": "2bc049c12f24588b86bf00521991d4d3436e4bdbc73befee9b793889414d136f",
+   "second_expr_sha256": "a114bc66e997d5a11bcdc7b966e14821f75c8a432f478dec576ee263a6bb09fa",
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "c447afbbfa78686f7cc0ba036b82fee8e84dfc5099383b42d0574fa60df79f9c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f1095a.b_jul",
@@ -185,6 +1445,84 @@
    "subject_key": "92da299012696c3822b15bef9e72afdda8993b3631dab86d0763d1f66edf297c"
   },
   {
+   "printed": "f1095a.b_jun",
+   "project_expr_sha256": "7bad4fb4b3a51c7f9406804a3bc85d61dd313b8658842658b5fd86b1ba25e8e7",
+   "second_expr_sha256": "64e24fd862d813793a08551e7b28c6b1c3f9d72b6f42c924fef2c54d0df95f7b",
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "a24874077030e03fbe285fff9890e806da166822a1d49a6e1779098aedce1053",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_jun",
+   "project_expr_sha256": "9392a70fde93fcb09173e7de1688a70c5fe86b844fac9b6245329651c695e17b",
+   "second_expr_sha256": "13ea153145d51c1ee46627974d1ce9a5640afefc95c16c22dd39a71f738727da",
+   "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,595 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 182}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 129, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 341, \"project-unknown\": 11, \"value\": 179}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "4cd048864cfea044dc79e3732560c3a191bef8a8f1bc62d93a188250953cd04c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "f1095a.b_mar",
    "project_expr_sha256": "209d32b9774ef5426f96d74e7929e912d8f3e6bb327606c3c52d66d1c7b3cfb7",
    "second_expr_sha256": "0113e01bf65e91d78cda3049c9838a4df124f07221d7d1ec61c64bdff07242b2",
@@ -211,6 +1549,84 @@
    "subject_key": "bc4a9377ad3819776b714e7aaa2caf1f1af54b7786b712bfd0b13820e424051b"
   },
   {
+   "printed": "f1095a.b_mar",
+   "project_expr_sha256": "212bb78eb3b03ea60501648f4f5fdc21794f1b399878188e8371acd479bb86e1",
+   "second_expr_sha256": "aec299b2f2c9d472838a906c483c6b07fe0cfc737efa4471ba2e9c1d07266f43",
+   "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,598 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 179}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 128, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 342, \"project-unknown\": 11, \"value\": 176}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "1f853634bdb0df1d4299c8b7ec49efe6af87ca0d7962ad4fd1d9b107e3a6bcee",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "generated:20261026.151@f1095a[form_2]",
+     "generated:20261026.223@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_mar",
+   "project_expr_sha256": "a2a1058a5b1de453897fade4a9c6dfcd44b82c5354a7fb009a4a630d53c6e9f8",
+   "second_expr_sha256": "fea32afdc90be3b1429135006b23eef6d7054dbebf3b6f67b26d12cf70c19410",
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "761d938940cf517f5d9feee03e5b2836fdfd65538c678933e2a5e9511cd3a50c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "generated:20261026.151@f1095a[form_2]",
+     "generated:20261026.223@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "f1095a.b_may",
    "project_expr_sha256": "276da7507217775eaa21b5e69e0c24a71a8b94147aebf79c28de889396cf650b",
    "second_expr_sha256": "23c7dae16a4e82ae33419234ef389ab196c26d60376286bac1c4cbf169224972",
@@ -235,6 +1651,162 @@
    "ruling": "Ruling: representation — the candidate zeroes this entry's monthly column B unless f1095a.b_counted is true, moving the 'column B from only one Form 1095-A' filter from the consumer into the entry. The project keeps the form's monthly column B and filters when f8962 sums it (f8962.line12b to 23b sum only f1095a.b_used forms). Executable triage: 2571 comparisons; the 147 completed-return value differences are two-form same-state returns where the second form's b_counted is false, and the consumer total is the same on both sides; no completed-return difference reaches a printed tax amount. The candidate's single-form case omits the project's forms-equals-one short circuit, which is ruled on f1095a.b_used.",
    "context": "d8fe0d9e359489b841224bd859f14cee7712e876784fdbf074fba87dc9a17104",
    "subject_key": "acce5a3f34edbb18d927549f4e1873910a7ea13345c153f8ca69055ec8185b1b"
+  },
+  {
+   "printed": "f1095a.b_may",
+   "project_expr_sha256": "71f1ab108747f72fcd0e428f0c2032d5727ca2138c0fc1af880eab64513e622e",
+   "second_expr_sha256": "fb7ec7ea8aecaefc24c711e2e121dc2830177283044b4e479c577cca8a6b9bf0",
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "51b1f10fa55256458d57dfb51c66ad7bca2c3fbfbc336f321bace35412e0adca",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_may",
+   "project_expr_sha256": "a139256aaa6e8bcecf891b2ddb39d77c9e2f73b8d2a0a7fb986df9f07359db8e",
+   "second_expr_sha256": "cadf73aab113d6371015497bb4f0b552ad910d777038163d327abb06bed0461a",
+   "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,596 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 181}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 128, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 342, \"project-unknown\": 11, \"value\": 178}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "5277f3d04e6a3b6f718bad647a12176953badb804176a7cd0b92826759934e14",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_nov",
+   "project_expr_sha256": "2ceb9e92899219d84c77aa67ca1e37277b251093f831a0b5c5674f7b2c3da344",
+   "second_expr_sha256": "baa9d0d3b6c5eaa8bb72110a3ffb8563b655f93007c9c1358f6efb6c5f16eca9",
+   "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,594 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 183}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 129, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 341, \"project-unknown\": 11, \"value\": 180}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "8d12fd1c23d1a8aa9b9cad5184c36403066ab2f2286e4c56898c9fb6eff5a90b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_nov",
+   "project_expr_sha256": "7037b7a9141d33dcb4d2b14fa572ada03e033184099becdddbb2478432ce3f5b",
+   "second_expr_sha256": "0aad26867f0a93a408ec2434cc1bb77a90887711c9cde5b6b6d6654a7c4e1b18",
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "6d3cebd794cecc884aab8573738c1b4d19cbe43373f0ccf02436e748d462c5cc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f1095a.b_nov",
@@ -289,6 +1861,84 @@
    "subject_key": "2f1fd0ebb859dee699e6fa686daac1f3f7779127a43069b810374a8c6effde23"
   },
   {
+   "printed": "f1095a.b_oct",
+   "project_expr_sha256": "5ed4611b66a5e88a17f1aec92d60a8f4c13b63a6e715174d806ec3c3ed22c0f8",
+   "second_expr_sha256": "e940e0e8fd204f3fa61a9034a61207264a14a326228873f846073baafbbf8076",
+   "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,594 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 183}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 129, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 341, \"project-unknown\": 11, \"value\": 180}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "d6d0577b68c7ee4aefeaa69d2076b405e8a69977cb5c244f43fa22535742f59c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_oct",
+   "project_expr_sha256": "ae0c7c0fe8a3fdfd0df6ea36c916b6ad7e911068c18a29be85e794f3ca3d02bf",
+   "second_expr_sha256": "c39390e6ac3ed15cfb29c28ab60dd1df6dc273948725cae97f0217a6264c474d",
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "d36bedae23e1cb613ad59bce605563bac87d0b5dcd4a5f77d00af38fb21bdd46",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "f1095a.b_sep",
    "project_expr_sha256": "3ce890df2f303e623954c7432e74b251b402ac4442780f2fed213d3f292927cb",
    "second_expr_sha256": "268a0ac39f6e117385b23bb2277b9c95deae3e8f244407d8ef59ba32499dc79c",
@@ -313,6 +1963,84 @@
    "ruling": "Ruling: representation — the candidate zeroes this entry's monthly column B unless f1095a.b_counted is true, moving the 'column B from only one Form 1095-A' filter from the consumer into the entry. The project keeps the form's monthly column B and filters when f8962 sums it (f8962.line12b to 23b sum only f1095a.b_used forms). Executable triage: 2571 comparisons; the 147 completed-return value differences are two-form same-state returns where the second form's b_counted is false, and the consumer total is the same on both sides; no completed-return difference reaches a printed tax amount. The candidate's single-form case omits the project's forms-equals-one short circuit, which is ruled on f1095a.b_used.",
    "context": "d8fe0d9e359489b841224bd859f14cee7712e876784fdbf074fba87dc9a17104",
    "subject_key": "e9de80c43355eb476ebb5a00d9bee5af31626aba77cd07f6657dd8df1008387e"
+  },
+  {
+   "printed": "f1095a.b_sep",
+   "project_expr_sha256": "5eaf96b1d4b8430bfc555d00584e9a4b4ac2d2ce3d7cdc6d759b17afeca9a161",
+   "second_expr_sha256": "c87972f43e9a73d2a11c52544e811e297513dcab3b600d07e6740eb6e712dc30",
+   "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,594 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 183}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 128, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 342, \"project-unknown\": 11, \"value\": 180}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "fc9f34ef5406fd7ab0ec088935182b1cb256fed040061340fca6a9ac81d3ec78",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.b_sep",
+   "project_expr_sha256": "dab35a027adb59701106770a8e54e09a98c2f7e23be6ea5b9119dcd06e21b203",
+   "second_expr_sha256": "909e21934a77ea78afa7b4057338ece2d3688bf451fe52a9a5a024ad6b736db8",
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "f913ade616df3c903a2f2d2698d491b20528b4a1fa6dd2d205042449bb679173",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "generated:20261026.120@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f1095a.b_used",
@@ -357,6 +2085,72 @@
    "subject_key": "ef2ccf167bc50da3ecd10e4aca5a492c690f3e550c0ccb79f878dd78a6d8f9e5"
   },
   {
+   "printed": "f1095a.line33a",
+   "project_expr_sha256": "a6b9fb71d00fd5ca077b624cb0a61f47f2fda49cc4c92639b4a09c3c74a9c1fd",
+   "second_expr_sha256": "91069b2562da73736246931eca75b7cce947f849ebaec6da12cf2862faec9a49",
+   "ruling": "Ruling: representation; the sum of the twelve column A lines, as the project's choose of 12 x mo_a or the monthly sum (i1095a p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33\"). It differs only through f1095a.uniform, ruled on that line; column A is the same every month wherever the routes part. Triage pass ea49629f14d1: 2,470 of 2,842 agree; 314 candidate-unknown, 57 project-unknown; 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($4,560.00 vs $0.00, mo_a not stated in that fixture).",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "789cb06dea6f067bc21339674c9bc0010001d96959dd3b398fa95430d72d2ac2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.line33a",
+   "project_expr_sha256": "a9ef8a6df2e8a30f8652a78cfcf3b85cf1f76c1cccdffbad40410e572301cc64",
+   "second_expr_sha256": "ba9dd271608952384c57759a42ffd983d5a9f8c413610c05bd7482e96eaec4ef",
+   "ruling": "Ruling: scope; i1095a p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33\"; i8962 p. 2 (VOID). For column A the candidate gives 0 on a void form and otherwise the project's two routes (the sum of its monthly a lines, equal to 12 times mo_a on the uniform path and the sum of in_a otherwise). A void form refuses the return (f8962.void_form). executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; unknowns are withheld void (candidate) or b_blank/b_changed (project) answers.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "54a0fd0996f191ef333bf460d4953baf23b65a1fc34a2599fe67d46d103182d6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "f1095a.line33b",
    "project_expr_sha256": "57e36ffef9301ccec4dd61d9d42279a53971b4737765dce4804f77d26e19677c",
    "second_expr_sha256": "1faab5953d29efd14f73aab150952c0d3e7777f13453e721efab90c81f1f137b",
@@ -381,6 +2175,208 @@
    "ruling": "Ruling: representation; i1095a p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\" The candidate sums its lines 21B to 32B (the project's b_jan to b_dec, the corrected column B) and, as its note says, leaves the counting rule to f1095a.b_used rather than zeroing an uncounted form, which is the project's structure (f8962.line11b and lines 12(b) to 23(b) sum only forms with b_used true). On the uniform route 12 times the one monthly amount equals the sum of the months. Triage executable-triage-v2 (triage/f1095a.json; 1,228 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,113 partial records): 1,677 of 1,677 comparisons agree; kinds {}; by return {}. No difference on the sample, and none is possible from the derivation. Exact cents are kept under amb.2025.ptc_1095a_cents.",
    "context": "5acaaae90735b49e6e2f3b40f822c64b7e0c3330b9fce0be61ab0d6c66bdbeee",
    "subject_key": "ed63368f1b28fda7f87fb6510727aca1c6314e204e1c871b6edc976423b0dec2"
+  },
+  {
+   "printed": "f1095a.line33b",
+   "project_expr_sha256": "780efea83899fefd873156b565b44952683fce10e43c281c19c87c2cb0465f59",
+   "second_expr_sha256": "c13531c78281a5592a3e9201ad3a4845137a55316a6bdd343d579fde6a04346a",
+   "ruling": "Ruling: model error; the same deviation as the monthly column B lines and the earlier rulings on this line: f1095a p. 2, line 33, \"Annual Totals\"; i8962 p. 16, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The candidate sums its monthly column B, which it zeroes on an uncounted form (and needs b_counted on a single form); line 33B is the document's total. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,691 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 628, \"project-unknown\": 14, \"value\": 185}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 5}, \"incomplete\": {\"candidate-unknown\": 104, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 267, \"project-unknown\": 11, \"value\": 180}}. Completed value witnesses: stage18.blind.p11 $6,000.00 vs $0.00, stage18.mut.two_forms_one_state_monthly $3,000.00 vs $0.00 (uncounted form_2); candidate-unknown b_counted on single forms (stage18.blind.p1 to p6). No Form 8962 amount differs.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "173ccc918ee7b6926e952be8328309d2beb2cf9ed7aee485a51871c77888e0d9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "partial:mutation.m2.f1095a.same_months_b_blank-f1095a[form_1].same_months@f1095a[form_1]",
+     "partial:generated 20261026/17-f1095a[form_2].same_months@f1095a[form_2]",
+     "partial:generated 20261026/17-f1095a[form_2].b_blank@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.line33b",
+   "project_expr_sha256": "97e8d01ac04f75caf3145b06275b6391a9f670ba6d8b9e57024df873c6efbc6d",
+   "second_expr_sha256": "304538a00e02c61a6b3e757b07631e60a92153df2b4cf276f3111f22bdf024df",
+   "ruling": "Ruling: model error; inherits the column B lines (uncounted form's column B zeroed; b_counted required with one form; no-APTC limb dropped through f1095a.uniform). i8962 p. 16, Column (b); i8962 p. 14, situation 1. Triage pass ea49629f14d1: 1,690 of 2,842 agree; 808 candidate-unknown, 101 project-unknown, 243 value (completed: stage18.blind.p11 form_2 $6,000.00 vs $0.00; stage18.mut.two_forms_one_state_monthly and _full_overlap $3,000.00 vs $0.00; generated 20261026/126 and /442).",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "464cb1a87d23bbbd85e178bcb0c339b3f94a14b0094b8f6f9d648fc94e099156",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f1095a[form_1]",
+     "fixture:classm.s3.2.deepseek@f1095a[form_1]",
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.1.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.3.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f8962.5.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f1095a.1.gpt@f1095a[form_2]",
+     "fixture:classm.f1095a.1@f1095a[form_2]",
+     "fixture:stage18.blind.p11@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_monthly@f1095a[form_2]",
+     "fixture:stage18.mut.two_forms_one_state_full_overlap@f1095a[form_2]",
+     "generated:20261026.17@f1095a[form_2]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.line33c",
+   "project_expr_sha256": "607cdbd7e2708c1a28ad57be251a564835b702545f8aaf8130a9aef43c0c5a4e",
+   "second_expr_sha256": "55ac0c1b9789f83274d0a447b4f98bb6392a8d293d62615e6427ec70a621913a",
+   "ruling": "Ruling: representation; c_total on the uniform route, the monthly column C sum otherwise, as the project (i1095a p. 2; i8962 p. 16, Column (f)). It differs only through f1095a.uniform, ruled on that line; where the routes part, line 33C equals the monthly sum for a consistent filer. Triage pass ea49629f14d1: 2,495 of 2,842 agree; 314 candidate-unknown, 33 project-unknown; no value difference.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "subject_key": "c297ddd86cb2b0068ec32debc495f3e7f47908a5018069b40d4ba39a1ec9b5d1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.blind.p17-f1095a[form_1].b_fixed_same@f1095a[form_1]",
+     "partial:stage18.refuse.void_1095a-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.void_1095a-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.two_counted_same_state-f1095a[form_1].b_blank@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.line33c",
+   "project_expr_sha256": "808f587d39e7bb99db2c0236e2dd85642587cbe1fb776e24db03a542443faa1c",
+   "second_expr_sha256": "8c4835e02ec5b5f83fc737fd1996f691ceef9f913c8edd2a718672d66a3b31d6",
+   "ruling": "Ruling: scope; i1095a p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33\"; i8962 p. 2 (VOID). For column C the candidate gives 0 on a void form and otherwise the project's two routes (c_total on the uniform path, the monthly in_c sum otherwise). A void form refuses the return (f8962.void_form). executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,452 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 45, \"project-unknown\": 21}; by return {\"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 10}, \"refused\": {\"candidate-unknown\": 24, \"project-unknown\": 11}}. No value differs; unknowns are withheld void (candidate) or b_blank/b_changed (project) answers.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "828e0635bac3e18953b005c05f956be50c2343134585611eb4d9aa7f09b956c1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].void@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].void@f1095a[form_2]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.uniform",
+   "project_expr_sha256": "3f38eaa9e92bbb00dcab3efdd06046757623cc964e97830ad181c4ec1b446240",
+   "second_expr_sha256": "e61a1ed803e7fef492cc8003af881d97b7d467c5b487cff5ed7e8756518d86d0",
+   "ruling": "Ruling: representation; i8962 p. 14, Line 10: \"Check 'Yes' ... if all of the following apply ...: You were enrolled ... for all 12 months ...; Your enrollment premium was the same for every month ...; Your SLCSP premium is the same for every month\" and \"Missing or incorrect SLCSP premium on Form 1095-A ... you must determine the correct applicable SLCSP premium for every month. If the correct applicable SLCSP premium is not the same for every month of 2025, check 'No'\". The candidate writes (same_months and not b_blank and not b_changed) or ((b_blank or b_changed) and b_fixed_same); the project chooses on b_wrong_asked (= b_blank or b_changed, read once same_months is answered): same_months when No, b_fixed_same when Yes. The two are the same Boolean function of the four answers. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 2,497 of 2,518 comparisons agree; kinds {\"project-unknown\": 21}; by return {\"incomplete\": {\"project-unknown\": 10}, \"refused\": {\"project-unknown\": 11}}. No value differs; the 21 project-unknown are partial records withholding b_blank or b_changed (stage18.blind.p9), questions the interview always asks after same_months, where the candidate's 'or' short-circuits.",
+   "context": "e0d2617d6bb66df7bec520d08ba414f7806571caaeffa6b366df0485deb2cd47",
+   "date": "2026-11-14",
+   "run": "4b0a98858b8169aefb476c52786640514414e746104ce39722224d2949ef125d",
+   "subject_key": "f1544b512131367e4a7aee453eba9b8a8aa5b5c0a64144d49773b16d593bbd7f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage18.blind.p9-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.blind.p9-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.allocation-f1095a[form_1].b_changed@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_blank@f1095a[form_1]",
+     "partial:stage18.refuse.premium_adjust-f1095a[form_1].b_changed@f1095a[form_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1095a.uniform",
+   "project_expr_sha256": "a4e5c796938da951ecf39cba50c6afaae8a1556d02f2593ca2cb97b8d3ad7025",
+   "second_expr_sha256": "1663b1ac5989efc0e02a412bfe88201328845bcd19a208dbc6bceb568c78f5c0",
+   "ruling": "Ruling: finding; low (BUG-0635). Two differences, one each way. (1) The reply is wrong on the no-APTC limb: its h_no_b_issue tests only b_blank, b_changed and b_doubt, so a form with no advance payments and a filled-in column B is uniform on same_months alone. i8962 p. 14, Missing or incorrect SLCSP premium: \"If either of these two situations applies to you, or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month\"; situation 1, \"No APTC was paid for your coverage ... column B ... may be wrong, left blank, or reported as -0-\" (also p. 16, Column (b), \"or if no APTC was paid\"). No APTC is a trigger of its own, not only a blank column B; the project's f1095a.no_aptc (line 33C zero) carries it. Triage pass ea49629f14d1: 2,386 of 2,842 agree; 1 completed value witness, stage18.reg.no_aptc_slcsp_by_month (no APTC, correct SLCSP $400 Jan-Jun, $300 Jul-Dec): project No, reply Yes; 398 candidate-unknown (b_doubt not stated in older class M fixtures and partials, which the project's short-circuit does not read), 57 project-unknown (line 33C withheld). (2) The project is wrong on the route where Part III differs by month: f1095a.b_wrong_asked reads only b_wrong there, so b_doubt and no advance payments never reach b_fixed_same, while b_blank does. i8962 p. 14, Line 10, \"Your SLCSP premium is the same for every month ... But see Missing or incorrect SLCSP premium\" and \"If the correct applicable SLCSP premium is not the same for every month of 2025, check No\": the line 10 test is on the corrected premium (as the project's own b_blank route reads it), and line 10 is a test (amb.2025.ptc_annual_route). A form with column A the same all year whose corrected column B is uniform gets line 10 No and lines 12-23 (a few dollars through the line 8b rounding). The reply applies the doubt test on both routes and is right there. No sample input reaches (2); not witnessed, found by reading.",
+   "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
+   "date": "2026-11-14",
+   "run": "b1f4061c769e7d36ee3b55d54300b517a2ea9a87cc30bfa1a5bd74a969b11145",
+   "severity": "low",
+   "subject_key": "806e6d9c3b4b341ba52e0a88b9a4bab1eb714f1cc7fad177a7588c16be3fc84a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f1095a.1.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.2.deepseek@f1095a[form_2]",
+     "fixture:classm.f8962.4.deepseek@f1095a[form_1]",
+     "fixture:classm.f5695.2.deepseek@f1095a[form_2]",
+     "fixture:classm.retirement.4.deepseek@f1095a[form_1]",
+     "fixture:classm.retirement.5.deepseek@f1095a[form_1]",
+     "fixture:stage18.reg.no_aptc_slcsp_by_month@f1095a[form_1]",
+     "partial:classm.f8889.4.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.5.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.eic.6.deepseek-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_1].c_total@f1095a[form_1]",
+     "partial:classm.f8962.1.gpt-f1095a[form_2].c_total@f1095a[form_2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

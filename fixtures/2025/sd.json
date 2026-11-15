@@ -1014,9 +1014,9 @@
         "sales[a].box": "G",
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -1490,9 +1490,9 @@
         "sales[a].box": "H",
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -1966,9 +1966,9 @@
         "sales[a].box": "I",
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -2442,9 +2442,9 @@
         "sales[a].box": "J",
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -2918,9 +2918,9 @@
         "sales[a].box": "K",
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -3394,9 +3394,9 @@
         "sales[a].box": "L",
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -3870,9 +3870,9 @@
         "sales[a].special": true,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -4346,9 +4346,9 @@
         "sales[a].code": "other",
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -4823,9 +4823,9 @@
         "sales[a].code": "B",
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -5299,9 +5299,9 @@
         "sales[a].route": "aggregate",
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -5776,9 +5776,9 @@
         "sales[a].route": "aggregate",
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -6253,9 +6253,9 @@
         "sales[a].code": "W",
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -6723,12 +6723,12 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
-        "sd.other_forms": true,
+        "sd.sec1256": true,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -7283,6 +7283,7 @@
         "sales[a].proceeds": 599999,
         "sales[a].reported_basis": 200000,
         "div.box2d": 1,
+        "div.other_boxes": true,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -7317,6 +7318,7 @@
         "sales[a].proceeds": 599999,
         "sales[a].reported_basis": 200000,
         "div.box2b": 1,
+        "div.other_boxes": true,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -7351,6 +7353,7 @@
         "sales[a].proceeds": 590000,
         "sales[a].reported_basis": 200000,
         "div.box2d": 10000,
+        "div.other_boxes": true,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -7775,21 +7778,24 @@
       "inputs": {
         "div.any": true,
         "div.box2d": 439165,
+        "div.other_boxes": true,
         "f1040.status": "mfs",
         "f1040.line3a": 1554605,
         "qbi.dividends": 437917,
+        "sa.medical_any": true,
         "sa.line1": 2591255,
         "sb.ordinary_dividends": 2189584,
         "sd.distributions": 708331,
         "person[taxpayer].plan": "simple",
         "person[taxpayer].simple_deferral": 568654,
-        "person[taxpayer].simple_age": "age60_63",
+        "person[taxpayer].birth_year": 1965,
         "$f8889@person[taxpayer]": [
           "hsa"
         ],
         "$sc@person[taxpayer]": [
           "biz_a"
         ],
+        "person[taxpayer].sc[biz_a].employees": true,
         "person[taxpayer].sc[biz_a].line1": 17,
         "person[taxpayer].sc[biz_a].line15": 995993,
         "person[taxpayer].sc[biz_a].line16a": 9,
@@ -7802,7 +7808,7 @@
         ],
         "person[taxpayer].sc[biz_a].scveh[car_1].miles_business": 14719,
         "person[taxpayer].sc[biz_a].scveh[car_1].parking": 90280,
-        "person[taxpayer].sc[biz_a].scveh[car_1].smr_ok": true,
+        "person[taxpayer].sc[biz_a].scveh[car_1].smr_always": true, "person[taxpayer].sc[biz_a].scveh[car_1].smr_first": false, "person[taxpayer].sc[biz_a].scveh[car_1].fleet": false,
         "$asset@person[taxpayer].sc[biz_a]": [
           "item_1"
         ],
@@ -7866,6 +7872,7 @@
       "inputs": {
         "div.any": true,
         "div.box2b": 14500,
+        "div.other_boxes": true,
         "f1040.status": "qss",
         "household.qss_eligible": true,
         "f1040.line3a": 150000,
@@ -7874,14 +7881,18 @@
         "qbi.dividends": 900000,
         "sa.gifts": true,
         "sa.elect_itemize": true,
+        "sa.medical_any": true,
         "sa.line1": 942900,
+        "sa.state_tax_any": true,
         "sa.line5a": 2663700,
+        "sa.home_owner": true,
         "sa.line5b": 2000000,
-        "sa.line8a": 2821200,
+        "sa.mortgage_interest": 2821200,
         "sa.line11": 1877200,
         "sb.ordinary_dividends": 5000000,
         "sd.distributions": 1445500,
         "sli.interest": 300000,
+        "sli.any": true,
         "person[taxpayer].sav_claimed": true,
         "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "$f8889@person[taxpayer]": [
@@ -7951,7 +7962,7 @@
         "clcw.spouse_screen": true,
         "clcw.prior_sd7": -800000,
         "clcw.prior_sd21": 300000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "clcw.line1": {
@@ -8017,7 +8028,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: with other Schedule D source forms and a carryover, Schedule D lines 6 and 14 refuse on the source-form screen, while the worksheet results they would hold (held negative) are still figured.",
       "inputs": {
-        "sd.other_forms": true,
+        "sd.sec1256": true,
         "sd.carryover": true,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -8029,7 +8040,7 @@
         "clcw.prior_14": 1460000,
         "clcw.prior_sd7": -800000,
         "clcw.prior_sd21": 300000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "sd.line6_ws": {
@@ -8084,14 +8095,17 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "household.married": true,
+        "household.married_dec31": true,
         "sa.gifts": true,
+        "sa.state_tax_any": true,
         "sa.line5a": 209800,
+        "sa.home_owner": true,
         "sa.line5b": 216200,
-        "sa.line8a": 4000000,
+        "sa.mortgage_interest": 4000000,
         "sa.line11": 190500,
         "sd.distributions": 266100,
         "sli.interest": 4300,
+        "sli.any": true,
         "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "$person": [
           "taxpayer",
@@ -8129,7 +8143,7 @@
         "dependent[dep_c].months": 12,
         "dependent[dep_c].citizen": false,
         "dependent[dep_c].us_half": false,
-        "person[spouse].born_before_2001": false,
+        "person[spouse].birth_year": 1970,
         "$w2@person[spouse]": [
           "emp_a",
           "emp_b"
@@ -8146,7 +8160,6 @@
         "person[spouse].f8889[hsa].line2": 693200,
         "person[spouse].f8889[hsa].coverage_year": "changed",
         "person[spouse].f8889[hsa].months_eligible": 12,
-        "person[spouse].f8889[hsa].age55": true,
         "person[spouse].f8889[hsa].dec_coverage": "self_only",
         "person[spouse].x_hsa_value": 834100,
         "sales[s1].special": null
@@ -8195,14 +8208,17 @@
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "household.married": true,
+        "household.married_dec31": true,
         "sa.gifts": true,
+        "sa.state_tax_any": true,
         "sa.line5a": 209800,
+        "sa.home_owner": true,
         "sa.line5b": 216200,
-        "sa.line8a": 4000000,
+        "sa.mortgage_interest": 4000000,
         "sa.line11": 190500,
         "sd.distributions": 266100,
         "sli.interest": 4300,
+        "sli.any": true,
         "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "$person": [
           "taxpayer",
@@ -8240,7 +8256,7 @@
         "dependent[dep_c].months": 12,
         "dependent[dep_c].citizen": false,
         "dependent[dep_c].us_half": false,
-        "person[spouse].born_before_2001": false,
+        "person[spouse].birth_year": 1970,
         "$w2@person[spouse]": [
           "emp_a",
           "emp_b"
@@ -8257,7 +8273,6 @@
         "person[spouse].f8889[hsa].line2": 693200,
         "person[spouse].f8889[hsa].coverage_year": "changed",
         "person[spouse].f8889[hsa].months_eligible": 12,
-        "person[spouse].f8889[hsa].age55": true,
         "person[spouse].f8889[hsa].dec_coverage": "self_only",
         "person[spouse].x_hsa_value": 834100,
         "sales[s1].special": null
@@ -8305,21 +8320,26 @@
         "f4952.has_interest": true,
         "f4952.line1": 252000,
         "f4952.line4g": 912800,
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.insulation": true,
         "ftc.taxes": 19500,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "household.married": true,
+        "household.married_dec31": true,
         "qbi.dividends": 3536400,
         "s1a.overtime": true,
         "s1a.carloan": true,
+        "sa.medical_any": true,
         "sa.line1": 1643600,
+        "sa.state_tax_any": true,
         "sa.line5a": 2870200,
+        "sa.home_owner": true,
         "sa.line5b": 1197500,
         "sb.ordinary_dividends": 23576100,
         "sli.interest": 284400,
+        "sli.any": true,
         "person[taxpayer].sav_claimed": true,
         "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "$person": [
@@ -8354,6 +8374,8 @@
         "$sc@person[spouse]": [
           "biz_a"
         ],
+        "person[spouse].sc[biz_a].employees": true,
+        "person[spouse].sc[biz_a].travel_meals": true,
         "person[spouse].sc[biz_a].line1": 16108000,
         "person[spouse].sc[biz_a].line14": 1287000,
         "person[spouse].sc[biz_a].line16b": 2711900,
@@ -8365,7 +8387,7 @@
           "car_1"
         ],
         "person[spouse].sc[biz_a].scveh[car_1].miles_business": 14752,
-        "person[spouse].sc[biz_a].scveh[car_1].smr_ok": true,
+        "person[spouse].sc[biz_a].scveh[car_1].smr_always": true, "person[spouse].sc[biz_a].scveh[car_1].smr_first": false, "person[spouse].sc[biz_a].scveh[car_1].fleet": false,
         "$asset@person[spouse].sc[biz_a]": [
           "item_1",
           "item_2"
@@ -8424,21 +8446,26 @@
         "f4952.has_interest": true,
         "f4952.line1": 252000,
         "f4952.line4g": 912800,
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.insulation": true,
         "ftc.taxes": 19500,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
         "ftc.elect": true,
-        "household.married": true,
+        "household.married_dec31": true,
         "qbi.dividends": 3536400,
         "s1a.overtime": true,
         "s1a.carloan": true,
+        "sa.medical_any": true,
         "sa.line1": 1643600,
+        "sa.state_tax_any": true,
         "sa.line5a": 2870200,
+        "sa.home_owner": true,
         "sa.line5b": 1197500,
         "sb.ordinary_dividends": 23576100,
         "sli.interest": 284400,
+        "sli.any": true,
         "person[taxpayer].sav_claimed": true,
         "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "$person": [
@@ -8473,6 +8500,8 @@
         "$sc@person[spouse]": [
           "biz_a"
         ],
+        "person[spouse].sc[biz_a].employees": true,
+        "person[spouse].sc[biz_a].travel_meals": true,
         "person[spouse].sc[biz_a].line1": 16108000,
         "person[spouse].sc[biz_a].line14": 1287000,
         "person[spouse].sc[biz_a].line16b": 2711900,
@@ -8484,7 +8513,7 @@
           "car_1"
         ],
         "person[spouse].sc[biz_a].scveh[car_1].miles_business": 14752,
-        "person[spouse].sc[biz_a].scveh[car_1].smr_ok": true,
+        "person[spouse].sc[biz_a].scveh[car_1].smr_always": true, "person[spouse].sc[biz_a].scveh[car_1].smr_first": false, "person[spouse].sc[biz_a].scveh[car_1].fleet": false,
         "$asset@person[spouse].sc[biz_a]": [
           "item_1",
           "item_2"

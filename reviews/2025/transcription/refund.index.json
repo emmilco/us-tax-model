@@ -4,33 +4,44 @@
  "family": "claude",
  "base": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
+  "agree / disagree / missing": "6 / 5 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "refund.has",
-   "record": "102a74419c30f435c3bd1204386e2a482ba95dc1d98c7a7e85acd72f6699fb28",
+   "record": "e54b3076359d7ca0633bc5591560de3db7bea213880b72765b9535979936d364",
    "status": "AGREE",
-   "subject_key": "d5afa63b33264161fb8e3b22423a299a35942f21105022cd77d2cd38ef93f054"
+   "subject_key": "fdd22daa5246e93bfe31c4bc27bf3b5b0b493b151337b2889c9386476c395285"
   },
   {
    "key": "refund.taxable",
-   "record": "102a74419c30f435c3bd1204386e2a482ba95dc1d98c7a7e85acd72f6699fb28",
+   "record": "e54b3076359d7ca0633bc5591560de3db7bea213880b72765b9535979936d364",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation and scope; same reading as the earlier rulings on this line. i1040gi p. 88, Line 1, TIP: \"None of your refund is taxable if, in the year you paid the tax, you either (a) didn’t itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes\". The reply gives zero without a refund (refund.received not above zero), zero when the 2024 tax was not deducted on Schedule A, and worksheet line 9 otherwise; the project gives zero or line 9 on the same two answers and reads the line only through refund.has. Triage executable-triage-v2 (`.transcription/triage/2025/refund.json`, pass 2ea8878f1733; 1,767 fixtures, 500 generated returns seed 20261026): 2,399 of 2,902 in-scope comparisons agree; differences by kind {\"candidate-unknown\": 44, \"project-unknown\": 459, \"project-refuses\": 2}; on completed returns only project-unknown (218), on returns with no refund (refund.has false; the recorded witnesses show the reply's zero and the project waiting on refund.box8, a question the interview does not ask without a refund), where nothing reads the line; the candidate-unknown are on refused or incomplete returns, and the project refusals are at its cited screens. No value differs where both give one. The project line is retained.",
-   "subject_key": "76c9852ece0f18c8c3bb8cb7dbbd125eb7893a756c23c64dc1c4417123e17ffc"
+   "ruling": "Ruling: representation; both are zero unless a refund was received, 2024 deductions were itemized and income taxes (not sales taxes) were deducted, and line 9 otherwise (i1040gi p. 88, Line 1, \"None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn't itemize deductions, or (b) elected to deduct state and local general sales taxes\"); the project reads refund.worksheet and checks its box 8 and other-year refusals first, and Schedule 1 line 1 reads refund.taxable only when refund.has is true, which the reply folds in as refund.any. Triage executable-triage-v2 (.transcription/triage/2025/refund.json, pass 643525b6700d): 2,584 of 3,206 agree; no value difference; 620 project-unknown (66 on completed returns, e.g. classm.eic.1, where no refund was received and refund.box8 is not asked, so Schedule 1 line 1 takes zero without this line), 2 project-refuses on refused returns.",
+   "subject_key": "6e963ff92f4d885c261e719a9c52a5fa9fb14ec30c706a31270800f3b691db38"
   },
   {
    "key": "1",
-   "record": "102a74419c30f435c3bd1204386e2a482ba95dc1d98c7a7e85acd72f6699fb28",
-   "status": "AGREE",
-   "subject_key": "12f17f6f1f7ba3d7df04e1d2caf36ec43cf748c0080a7241ea57729ee17eba58"
+   "record": "e54b3076359d7ca0633bc5591560de3db7bea213880b72765b9535979936d364",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; both enter the refund capped at the 2024 Schedule A line 5d amount (i1040gi p. 90, worksheet line 1, \"But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\"); the project reads the refund through its parent question (refund.received_if_worksheet: zero when the worksheet is not used) and refuses the Pub. 525 exceptions at this line, the reply reads refund.received directly and refuses box 8 here. Triage executable-triage-v2 (.transcription/triage/2025/refund.json, pass 643525b6700d): 3,002 of 3,206 agree; 2 value differences, both on the incomplete mutation mutation.t2.refund.not_itemized (2024 deductions not itemized, $3,000 refund supplied: project $0.00, reply $3,000.00), where the worksheet is not used and line 1 reaches nothing; 160 candidate-unknown (60 on completed returns, refund.received unasked when the worksheet does not apply), 40 project-unknown, 2 candidate-refuses on refused returns.",
+   "subject_key": "91cc0e842a474c1987cf56179e03fce4dc1fc44a50bd211b45241027294c5005"
   },
   {
    "key": "2",
    "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
    "status": "AGREE",
-   "subject_key": "d4191aeb5cfa019780982234fb0d33b2df7846d1b54fee265a2a0041f2ead0fb"
+   "subject_key": "20aaee1b3e313e3466f7237fff22e0fd602bf0ce17905bdca0deb64b9ec9e263",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "refund.line5d_2024": "refund.line5d_prior_year",
+     "refund.line5e_2024": "refund.line5e_prior_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "d4191aeb5cfa019780982234fb0d33b2df7846d1b54fee265a2a0041f2ead0fb"
+   }
   },
   {
    "key": "3",
@@ -42,7 +53,15 @@
    "key": "4",
    "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
    "status": "AGREE",
-   "subject_key": "3236b988baab4de5679c0a4395c7e97839f67007b9cabb6828b63ea476c738bb"
+   "subject_key": "94d3c2d479484f8d00d0506b26e4df47a3c9509a19862ad8892a107c3914d141",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "refund.line17_2024": "refund.line17_prior_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "3236b988baab4de5679c0a4395c7e97839f67007b9cabb6828b63ea476c738bb"
+   }
   },
   {
    "key": "5",
@@ -79,12 +98,12 @@
   }
  ],
  "subjects": {
-  "refund.has": "c9ef0067b6aa72ea804c5f975f0da478fb824f99b6ff647840f9a4daabcc1a39",
-  "refund.taxable": "d8131fe55fff5725c2f7ab7f80449a1057c7295c8794bc5ed55558a2433cc665",
-  "1": "1d6e2448322a484b8116f1683931d16525ef21b79ab5b7c250b433a38e8f3bb4",
-  "2": "91eb1ef47a73d5a7374918887568614cf502d38e4d54dd584ff71e4c439c2fc6",
+  "refund.has": "ebb17fa1c64c2c2b8479d241a3f3598583e92775f8ab0c8a5ba8730277223403",
+  "refund.taxable": "34eb7a157e04cecb69dc0b686f8759dabd4ac7618e3d156c84ec2e535159619c",
+  "1": "9fe4856834a5c42a71498a4ca8e432a7cfbf60d2c33fb737c72d7748a149cadd",
+  "2": "5d1fcd89d106a50a99c5c224d43fccb3989f6c037038842467a57092badbf562",
   "3": "dee0b86519f8bb9ddf2c825b78358413221b68d930a03e98e7344a8d18bf6ede",
-  "4": "3c5a9ffb234d55e9d92f41c2448191732b0c6e38e87d64a593f5b1a5603fc4e3",
+  "4": "e48bd6e2a58def054ba9a5f5a088b9a4673d02ffec932f6a04a816dbca878417",
   "5": "c02e5042fa5062503cbaf42cafe2f64610447e57d9faf525a0e1904747cfda6f",
   "6": "bd0f71484f4b227904202cecbc11ee69fc6b5c8cda8b7ca7fa271046dbc23630",
   "7": "5d74c147b1a5ab8fec6ef3b481bfde13d4561526952288baa8079115adfad20c",
@@ -93,8 +112,8 @@
  },
  "__rest__": "9a12945506dcc91b7709e71f5f54423e182739ad982dde223b33e1168f0e0716",
  "foreign": {
-  "refund.has": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "refund.has": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "refund.taxable": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "1": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  "1": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
  }
 }

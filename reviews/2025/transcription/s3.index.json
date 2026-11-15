@@ -6,29 +6,29 @@
  "head_rows": {
   "printed lines compared": "29",
   "agree / disagree / missing": "9 / 20 / 0",
-  "line-scoped reviews": "5 (latest 2026-11-12); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "s3.adoption_if_any",
-   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
-   "subject_key": "8d48f96e16bf5bbfd365faa16337a3728a826b0e17c6c00412978b63b6612265"
+   "ruling": "Ruling: representation; equivalent: the reply's conjunction of s3.adoption_any and s3.adoption is the project's gated choose (false without an adoption or expenses; i8839 p. 1, \"You may be able to take this credit in 2025 if any of the following statements are true\"). Triage (pass fc3ac0eb0f5d): 3,078/3,089 agree; 11 project-unknown (incomplete/refused partial records); no value difference.",
+   "subject_key": "5e75610577abad167deca248a5a3879b91bc2676c37a813bba83dfce6fe37994"
   },
   {
    "key": "s3.adoption_us_if_earlier",
-   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
-   "subject_key": "9bf1c52973e381ce7a9295f98191cf678faa7e64cea4a6fc2982f2405b3dabf4"
+   "ruling": "Ruling: representation; equivalent: the reply's conjunction (s3.adoption_any, s3.adoption_earlier, s3.adoption_us) is the project's chain of gates (s3.adoption_earlier_if_any, then s3.adoption_us; i8839 p. 3, Domestic Adoption, \"If the eligible child is a U.S. citizen or resident, you can take the adoption credit or exclusion even if the adoption never became final\"). Triage (pass fc3ac0eb0f5d): 3,078/3,089 agree; 11 project-unknown (incomplete/refused); no value difference.",
+   "subject_key": "931dc95a85e3c27a40c96c186751297013f802a2e11898845dffdbe1fa560da2"
   },
   {
    "key": "s3.elderly_credit_if_asked",
-   "record": "dd7ddc478b8cb70477eefef0a67e477258dc1e4c02b87aeee0484d0e1a6d87a8",
+   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only when someone on the return is 65 or older or retired on disability (s3.elderly_ask, itself a choose on the count of people 65 or older and then on the disability answer) (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention). The reply writes the same condition as an `all` of the two answers; on every return with both answers the two are the same value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 1c3929fed98e; 1,803 fixtures, 500 generated returns seed 20261026, 663 partial records from 40 bases; 2,966 comparisons): 2,903 agree; 63 project-unknown, all on partial records that withhold the upper answer, where the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
-   "subject_key": "1c1d6b1a58fa298f6e2879f8526660bbdbe2cf4e901e6f283549d8a1f3131d84"
+   "ruling": "Ruling: representation; both ask the wish only when someone is 65 or older or retired on permanent and total disability (i1040sr p. 1, Qualified Individual, \"You were age 65 or older at the end of 2025\" and \"You retired on permanent and total disability\"). The project asks the disability question only of a person under 65 (s3.disability_if_under65) and reads age from person.birth_year; the result is the same. Triage (pass fc3ac0eb0f5d): 3,041/3,089 agree; 48 project-unknown (incomplete/refused); no value difference.",
+   "subject_key": "4e14ab827925e15ae5e74e16bd37fa6d4dc11feaa9a43d1afa3939358a23bf51"
   },
   {
    "key": "s3.ev_dealer_if_ev",
@@ -88,10 +88,10 @@
   },
   {
    "key": "s3.mcc_if_interest",
-   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line for the mortgage credit certificate question, asked only when home mortgage interest is entered (Schedule A line 8a above zero; owner decision recorded in BUG-0619), written as a two-way choose on that amount. The reply writes the same condition as an `all` of the answer and the amount being above zero, and notes that interest not entered on line 8a is not captured, which is the residual recorded in BUG-0620. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,969 agree, none differ. Project stands.",
-   "subject_key": "e7c23e0e908915dd497e4a4512e78cb049718980d81812866b76d9dabd42e85c"
+   "ruling": "Ruling: representation; the project asks about a mortgage credit certificate only when Schedule A line 8a holds Form 1098 interest (f8396 p. 2, Line 1, \"Enter the interest you paid during the year on the loan amount (certified indebtedness amount) shown on your MCC\"), the reply of every home owner or payer of other home-secured interest. With no such interest the current-year credit is zero; a Form 8396 carryforward is screened by s3.prior_forms (\"2024 federal return include any of Forms 3800, 8396, ...\"), and interest not on Form 1098 is refused at Schedule A line 8b (sa.unsupported reads sa.mortgage_unreported_if_home). Triage (pass fc3ac0eb0f5d): 2,945/3,089 agree; 144 candidate-unknown (s3.mcc unasked by the project's gate; 6 on completed returns); no value difference.",
+   "subject_key": "d0a2a77937a0b77a33471fb03c38a0b95ab96ee55a716ed10c26a96c3c094128"
   },
   {
    "key": "s3.prior_amt_if_forms",
@@ -109,10 +109,10 @@
   },
   {
    "key": "s3.other_credit",
-   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the page does not state this helper: it is true when any situation the tool refuses for Schedule 3 lines 6a to 6z, 12 and 13a to 13z, or for a foreign tax credit carried from another year, is present, and the five credit limit worksheet lines refuse on it (i1040s8812 p. 4, Credit Limit Worksheet A, line 2; i8863 p. 8, line 5; i5695 pp. 5 and 7, line 2 of each worksheet). The project reads each situation's gate line in asking order as a chain of two-way chooses. The reply reads the questions directly as one `any` and, as its note says, covers only the situations of lines 6a to 6m: it leaves out the kerosene claim of line 12, the line 13 situations and the foreign tax carryover. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,732 agree; 228 project-unknown (156 on incomplete and 72 on refused returns), where the chain stops at the first unanswered situation (spec 4.7.3) and the reply's disjunction is decided by a later one; 9 value differences, all on refused returns, project true and reply false: the witnesses are the fixtures ss.other.components (kerosene), redesign.credits.refuse.farmland, redesign.credits.refuse.ftc_carryover, redesign.credits.refuse.section960c, redesign.credits.refuse.section965 and redesign.credits.refuse.virgin_islands, each a situation the reply leaves out and each refused by the situation's own gate under either reading. None on a completed return. Project stands.",
-   "subject_key": "0cc87a6738b9119bd5507bcaef007bb41bc232f112672d80352e825aec5492e6"
+   "ruling": "Ruling: representation; the project's gate (label: \"A credit or payment of Schedule 3 this tool does not prepare\") covers credits and payments; the reply's covers lines 6a to 6z only and refuses the payment and other items at its own lines 12 and 14 (Form 4136 kerosene, sections 965 and 960(c), Form 8689, Form 1062, claim of right) and the foreign tax carryover at line 1 (ftc.needs1116). Triage (pass fc3ac0eb0f5d): 2,813/3,089 agree; 9 value differences, all on refused returns and all project true / reply false on items the reply refuses elsewhere (e.g. ss.other.components: kerosene; redesign.credits.refuse.section965, .section960c, .virgin_islands, .farmland, .ftc_carryover); the rest project- or candidate-unknown on unasked gates (6 candidate-unknown on completed returns). The return-level refusal is the same.",
+   "subject_key": "66334558670f4721e44071770f057b2e03a03c84d65e787ae08ef4f031529d59"
   },
   {
    "key": "s3.mfs",
@@ -148,23 +148,23 @@
   },
   {
    "key": "5a",
-   "record": "a3bad5eb625e42177f44455af221463a228ab32f34697874ee48cd29cceba844",
+   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as the earlier rulings on this line. f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\". The project takes Form 5695 line 15 when f5695.part1_any is Yes and $0 otherwise; the reply copies f5695.line15 on every return, so it needs Part I answers (f5695.business_use, f5695.construction_later) the interview asks only after a Yes, or refuses at Part I gates the project never reaches. The rewording of part1_any and line 5a (BUG-0552, BUG-0553) changes no value. Re-reviewed because f5695.part1_any, which this line reads, was reworded so that the one spouse phrase governs the 2024 carryforward as well as the costs (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 56fd9caa95a1; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,240 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 859, \"candidate-unknown\": 288}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 119} (the candidate refuses at f5695.construction_later on 1; the candidate is unknown for f5695.business_use, f5695.construction_later on 119). The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "f810a6ec1861bed862882597a6cac4ca3800aa3d43207774331142fe5d0aa6d1"
+   "ruling": "Ruling: representation; the project enters zero when Form 5695 Part I is not completed (f5695.part1_any), the reply copies Form 5695 line 15, which is unknown or refuses on a return without Form 5695 (Schedule 3 line 5a, \"Residential clean energy credit from Form 5695, line 15\"). Triage (pass fc3ac0eb0f5d): 1,641/3,089 agree; 1,093 candidate-refuses (refused returns), 351 candidate-unknown (6 completed), 4 project-unknown; no value difference.",
+   "subject_key": "865d98cb4c7fffd25c82457512444c4f4cf8d6820db57a0710448a2d9054881f"
   },
   {
    "key": "5b",
-   "record": "34c2b27439ee0bba34d82a24b34e08684114f44463a72f7f962305d3e2a70eea",
+   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040s3 line 5b, \"Energy efficient home improvement credit from Form 5695, line 32\". The project takes Form 5695 line 32 when f5695.part2_any is Yes and $0 otherwise; the reply copies f5695.line32 on every return. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass 22db672af71d; 1,767 fixtures, 500 generated returns seed 20261026, 105 partial records): 2,372 of 2,372 agree. Project stands.",
-   "subject_key": "caa80390e5c9cfe2528bd1efaa49690068852173a330319b290a22bdd25491fc"
+   "ruling": "Ruling: representation; as line 5a: zero without Form 5695 Part II (f5695.part2_any), else Form 5695 line 32 (Schedule 3 line 5b). Triage (pass fc3ac0eb0f5d): 3,065/3,089 agree; 6 candidate-refuses (refused), 6 candidate-unknown (2 completed), 12 project-unknown; no value difference.",
+   "subject_key": "4e3a642933adfef620e7a6b197351601ea8323524a4d6b4b55911fc255603807"
   },
   {
    "key": "7",
-   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
    "status": "AGREE",
-   "subject_key": "a56320408de9348a0564beef7b42ba8a0a43ec32351750edf3902f8838533d20"
+   "subject_key": "581e7cdf1ccc019c4a7304e0370f18c4d659eedef51ba6b99359c970633c6de6"
   },
   {
    "key": "8",
@@ -193,9 +193,9 @@
   },
   {
    "key": "14",
-   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
    "status": "AGREE",
-   "subject_key": "34ecabb05bf2114acda384924c205e7777f6011a26acebe2cf922f4c5d7c5753"
+   "subject_key": "f94a104a519cfc62de0f0f2969c1efa3b7211635e46617786fdd988a9c380ae7"
   },
   {
    "key": "15",
@@ -205,8 +205,8 @@
   }
  ],
  "subjects": {
-  "s3.adoption_if_any": "1282aeeca3c09220460fc92f659a33126bd819c1ad8db9c75df1ccb788fa4ede",
-  "s3.adoption_us_if_earlier": "ac8c27e52ee7d6f05581309159be2aeaf60244bac206fe8e8dcbbe5d59057a39",
+  "s3.adoption_if_any": "917802f562006c6d70fda6cec3b54030261cc47e87b73a3e93bfa54019aff9ea",
+  "s3.adoption_us_if_earlier": "683b16994c987bc2d06219add30af7443939e74f3ddd9a4d6cd30f4006e60dc9",
   "s3.elderly_credit_if_asked": "31dedaf5d52894fa63db77f9467bfeaa301ee5fa4064904f41c125e01cb6f744",
   "s3.ev_dealer_if_ev": "4a1f3189d5b9a43c8adb19c55e6ea240ba9d6463ffdffb10db62150d1232a927",
   "s3.ev_credit_if_bought": "7dc47715eaffe23891f726df1b2db7bfedd57fdb1171bf885c685ff728702553",
@@ -219,7 +219,7 @@
   "s3.mcc_if_interest": "25b0e28308a16ad82ddd75a818327266054071c89ca370f43c07f64cbe1d7731",
   "s3.prior_amt_if_forms": "8c3bb157b4d2de02970663cf2419d1a9d4a31e427c5a7be0a02bd09b53c5571e",
   "s3.prior_forms_if_forms": "2c74bedfad0be8508185b24b88f826443f9fa261b9b87a021b85fc9bce012011",
-  "s3.other_credit": "c18309e99abe54cd9d48386769fad4f2a6ab4b494eff2b0f75398e48a2761355",
+  "s3.other_credit": "8f91d5d1d541908a0f5ebca723f4a238401da22d244f42c4cd62194a3ecb702c",
   "s3.mfs": "6726f0b239d5632c25516cb419b9a78cdc2e311417aff2cbef8ada541e5e47b4",
   "1": "520111c959989188ce7d481be28a9b533f1facd077083a81cc2c4e457255b9fe",
   "2": "62e7115d0a806175d67b2a301449897878e49828445e6b95e4a18e054c8bda0c",
@@ -227,19 +227,19 @@
   "4": "03d8777671ca0033641c0177a039694b68d0ac164b316661d6b64dea351b5031",
   "5a": "d96673e713b85073ff55bf60e8b2b6053f6b040d3132603b472d87797ae11b91",
   "5b": "fddca36181beba97637b3e10759ac7f636e1f1f4871c33eba2ed26360f6fee10",
-  "7": "b39f529051a795b95c206b35e4cadf0ca250467fa364ebbd46dc3a1d076d4788",
+  "7": "c0c0a5372a7fefee5874f2b83a1218ca6bdb7f9525fc508110122a1c8422b890",
   "8": "85954f42c63184e45d1eee34850eb53f59288a43326d35af3a97d20699c595ce",
   "9": "0f0192bd5d1fe6b89e20cfa96309a4201ab5c9a91a3d9e80707572ac190e4d20",
   "11": "80dec3598cdd31a4a7a95f9edead1a30e8513ab488c9d1d3999b95bbabde0859",
   "12": "ca47d620d34ee6b6d2727415d58c67af8ace61b0767e088babd0f60bb3f9892b",
-  "14": "9e8b73a54fdeaebebb603108735fc1976c5616070bde2b30bcef62f46c7358ec",
+  "14": "f414ba90ba9cb208384574bb2c1246a07b0c46f6bb7dca222426e82500beac4f",
   "15": "0139308d9408fa0c602a3d55a75dad8cfd1aec5d92ec251520510ea0f4b93631"
  },
  "__rest__": "8c4455c31080bf1b56e8381468347998cd07ecbe53b3dadcaf427571c0240a42",
  "foreign": {
   "s3.adoption_if_any": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "s3.adoption_us_if_earlier": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "s3.elderly_credit_if_asked": "50db8901f9044635510d2a9f5f1722fb82ef68c364532307fde9bacd5a2a6697",
+  "s3.elderly_credit_if_asked": "1e3a41bd44f8dd410b76cc56577c1069f81b72d8b08e3fe60f5efedc4a89a188",
   "s3.ev_dealer_if_ev": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "s3.ev_credit_if_bought": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "s3.ev_equipment_if_ev": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
@@ -248,13 +248,13 @@
   "s3.section960c_if_foreign": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "s3.virgin_islands_if_foreign": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "s3.kerosene_credit_if_kerosene": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "s3.mcc_if_interest": "bfe85fe84f1d4a37e361a4fbc499beea88fe0c29448321ddd5646ab863452233",
+  "s3.mcc_if_interest": "35dd1984bb454dbd3fb42fc15752535f9ce5adb3dc582997990dfe651370785c",
   "s3.prior_amt_if_forms": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "s3.prior_forms_if_forms": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "s3.other_credit": "027289f97b9d93fc3174a97c9a5058ba2c00283d46273381d6ecff424645eab4",
-  "5a": "c796e5e0ddb7c5c1151b1f2a719e389817bde5a159095a14d7bc6a96bc7cc561",
-  "5b": "a89f97d236069bb19791b578a8a6fbd9ebbcfd56bfa85b4075e20969aac6cca3",
-  "7": "13aa228285d9f6cc98d3869b4cd371fa858c00f66be7c05c89f2d4c0827de1c8",
+  "s3.other_credit": "b4cb72a13f2bc7767ce09d3d95ee40039636dcab7bb42558d0d2b391d492713c",
+  "5a": "44145c9c17e80c02409fa95cd0f52adc10271be1967989b4354ff767f5b70bd6",
+  "5b": "f31308964e4ab0eaf59e9fdec690c8a94688eee8fecb7e91bd2772510ba14bde",
+  "7": "f4cd049b50d95cc77bc369e9d0c7aa842e74fcf1e43042b2c3e544aed3c89f38",
   "8": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "12": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "14": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

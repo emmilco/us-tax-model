@@ -12,9 +12,9 @@ interview:
   - f2441.household_notice
   - f5695.line32b
   - ira.basis_total
-  - clcw26.line8
-  - clcw26.line13
-  - clcw26.decedent_notice
+  - clcw_next_year.line8
+  - clcw_next_year.line13
+  - clcw_next_year.decedent_notice
   - clcw.figures_notice
   - s179.line13
   # Form 8889's three results (the deduction, the taxable distributions, the additional 20% tax), asked for directly:
@@ -23,6 +23,16 @@ interview:
   - s1.line13
   - s1.line8f
   - s2.line17c
+  # Schedule 1's additional income, and the tip and overtime amounts of Schedule 1-A, asked for directly: their
+  # questions are then open in their own topics (160 to 165; 150 to 153), and a refusal among them is told at once,
+  # without waiting for the last scope item.
+  - s1.line10
+  - s1a.line7
+  - s1a.line15
+  # Schedule A's total and the Schedule 2 screen, asked for directly: every return reads both, and their questions are
+  # then open from the start, so the bank's order decides where each is asked.
+  - sa.line17
+  - s2.other
   initial: {}
   cite:
     doc: f1040

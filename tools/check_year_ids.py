@@ -161,6 +161,8 @@ def summary(held):
     def counts(field, order):
         n = {v: sum(1 for e in held.values() if e.get(field) == v) for v in order}
         return ", ".join(f"{v} {c}" for v, c in n.items() if c)
+    if not held:
+        return "0 listed"
     return f"{len(held)} listed ({counts('kind', KINDS)}; {counts('class', CLASSES)})"
 
 

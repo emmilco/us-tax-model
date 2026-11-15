@@ -3,6 +3,20 @@
 - Document: `ssb` (worksheet, tax year 2025)
 - Note: The worksheet of the Form 1040 instructions; the exceptions that send a filer to Pub. 915 or Pub. 590-A, and the lump-sum election, are refused.
 
+## (helper) — `ssb.any`
+
+- **Authored helper label:** Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them.
+- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them.
+- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them."}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ssb.no`
+
+- **Authored helper label:** Year parameter s3.no (false)
+- **Encoded (Bool):** Enter false (s3.no).
+- Expr: `{"op":"param","ref":"s3.no"}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `ssb.benefits`
 
 - **Authored helper label:** Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099
@@ -10,18 +24,46 @@
 - Expr: `{"op":"input","source":"Total of box 5 (net benefits) of all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099 for 2025"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `ssb.pub915`
+## (helper) — `ssb.ira_covered`
 
-- **Authored helper label:** Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you (or, on a joint return, your spouse) were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico?
-- **Encoded (Bool):** Input — Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you (or, on a joint return, your spouse) were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico?
-- Expr: `{"op":"input","source":"Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you (or, on a joint return, your spouse) were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico?"}`
+- **Authored helper label:** Did you (or, on a joint return, your spouse) put money into a traditional IRA for 2025 while covered by a retirement plan at work or through self-employment?
+- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) put money into a traditional IRA for 2025 while covered by a retirement plan at work or through self-employment?
+- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) put money into a traditional IRA for 2025 while covered by a retirement plan at work or through self-employment?"}`
 - Cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `ssb.lump_sum`
+## (helper) — `ssb.repaid_more`
 
-- **Authored helper label:** Do you elect to use the lump-sum election method for a social security benefit payment to you (or, on a joint return, your spouse) that was for an earlier year?
-- **Encoded (Bool):** Input — Do you elect to use the lump-sum election method for a social security benefit payment to you (or, on a joint return, your spouse) that was for an earlier year?
-- Expr: `{"op":"input","source":"Do you elect to use the lump-sum election method for a social security benefit payment to you (or, on a joint return, your spouse) that was for an earlier year?"}`
+- **Authored helper label:** On any of your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099, is box 4 (benefits repaid) more than box 3 (benefits paid)?
+- **Encoded (Bool):** Input — On any of your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099, is box 4 (benefits repaid) more than box 3 (benefits paid)?
+- Expr: `{"op":"input","source":"On any of your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099, is box 4 (benefits repaid) more than box 3 (benefits paid)?"}`
+- Cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ssb.pub915`
+
+- **Authored helper label:** A situation in which the Social Security Benefits Worksheet of the Form 1040 instructions does not apply: a traditional IRA contribution for 2025 by a person covered by a retirement plan, or repayments (box 4) that are more than the benefits (box 3). The excluded income of Forms 2555 and 4563 and of Puerto Rico, the savings bond interest of Form 8815 and employer adoption benefits are asked about at their own questions.
+- **Encoded (Bool):** (helper "Did you (or, on a joint return, your spouse) put money into a traditional IRA for 2025 while covered by a retirement plan at work or through self-employment?" = true or helper "On any of your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099, is box 4 (benefits repaid) more than box 3 (benefits paid)?" = true)
+- Expr: `{"any":[{"eq":["ssb.ira_covered",{"const":true}],"op":"test"},{"eq":["ssb.repaid_more",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ssb.prior_year_pay`
+
+- **Authored helper label:** Did the 2025 benefits paid to you (or, on a joint return, your spouse) include a payment for an earlier year? The Form SSA-1099 says so in its description of the amount in box 3.
+- **Encoded (Bool):** Input — Did the 2025 benefits paid to you (or, on a joint return, your spouse) include a payment for an earlier year? The Form SSA-1099 says so in its description of the amount in box 3.
+- Expr: `{"op":"input","source":"Did the 2025 benefits paid to you (or, on a joint return, your spouse) include a payment for an earlier year? The Form SSA-1099 says so in its description of the amount in box 3."}`
+- Cite: [i1040gi] p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ssb.lump_elect`
+
+- **Authored helper label:** Do you want to figure the tax on that earlier year's payment with the lump-sum election method?
+- **Encoded (Bool):** Input — Do you want to figure the tax on that earlier year's payment with the lump-sum election method?
+- Expr: `{"op":"input","source":"Do you want to figure the tax on that earlier year's payment with the lump-sum election method?"}`
+- Cite: [i1040gi] p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `ssb.lump_sum`
+
+- **Authored helper label:** The lump-sum election method is chosen for a benefit payment that was for an earlier year (asked only when the benefits include such a payment; false otherwise)
+- **Encoded (Bool):** Choose — [helper "Did the 2025 benefits paid to you (or, on a joint return, your spouse) include a payment for an earlier year? The Form SSA-1099 says so in its description of the amount in box 3." = true → helper "Do you want to figure the tax on that earlier year's payment with the lump-sum election method?"] [helper "Did the 2025 benefits paid to you (or, on a joint return, your spouse) include a payment for an earlier year? The Form SSA-1099 says so in its description of the amount in box 3." = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ssb.prior_year_pay",{"const":true}],"op":"test"},"then":"ssb.lump_elect"},{"guard":{"eq":["ssb.prior_year_pay",{"const":false}],"op":"test"},"then":"ssb.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.terror_disability`
@@ -38,11 +80,18 @@
 - Expr: `{"op":"input","source":"If you are married filing separately: did you live apart from your spouse for all of 2025?"}`
 - Cite: [i1040gi] p. 31, Line 6d; p. 32, worksheet, Before you begin and line 8 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (gate) — `ssb.benefits_if_any`
+
+- **Authored helper label:** Net benefits, asked only of a filer who got social security or railroad retirement benefits (none otherwise)
+- **Encoded (NonNegDollars):** Choose — [helper "Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them." = true → helper "Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099"] [helper "Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them." = false → helper "No amount"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ssb.any",{"const":true}],"op":"test"},"then":"ssb.benefits"},{"guard":{"eq":["ssb.any",{"const":false}],"op":"test"},"then":"ssb.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## 1 — `ssb.line1`
 
 - **IRS:** Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099
-- **Encoded (NonNegDollars):** Enter the amount from helper "Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099".
-- Expr: `{"from":"ssb.benefits","op":"copy"}`
+- **Encoded (NonNegDollars):** Enter the amount from helper "Net benefits, asked only of a filer who got social security or railroad retirement benefits (none otherwise)".
+- Expr: `{"from":"ssb.benefits_if_any","op":"copy"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.has_benefits`

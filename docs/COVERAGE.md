@@ -14,16 +14,16 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 181 of the 188 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 186 of the 193 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **228 refusal gates**: 188 tax situations the tool does not prepare, grouped by topic below, and 40 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **234 refusal gates**: 193 tax situations the tool does not prepare, grouped by topic below, and 41 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
 - [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (47)
-- [Household and dependents](#household-and-dependents) (15)
+- [Household and dependents](#household-and-dependents) (19)
 - [Interest and dividends](#interest-and-dividends) (4)
 - [Sales and capital gains](#sales-and-capital-gains) (5)
 - [Retirement distributions](#retirement-distributions) (7)
@@ -33,14 +33,14 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
 - [Other income and alimony](#other-income-and-alimony) (8)
 - [IRA contributions](#ira-contributions) (12)
 - [Health savings accounts](#health-savings-accounts) (11)
-- [Itemized deductions](#itemized-deductions) (7)
+- [Itemized deductions](#itemized-deductions) (8)
 - [Tips, overtime, car loans and seniors](#tips-overtime-car-loans-and-seniors) (6)
 - [Earned income credit](#earned-income-credit) (2)
 - [Child and dependent care](#child-and-dependent-care) (10)
 - [Education credits](#education-credits) (5)
 - [Home energy credits](#home-energy-credits) (7)
 - [Premium tax credit](#premium-tax-credit) (7)
-- [Entry checks](#entry-checks) (40)
+- [Entry checks](#entry-checks) (41)
 
 ### Filing status, residency, wages, accounts and other taxes
 
@@ -53,32 +53,10 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
     *Source:* [i2441] p. 2, Married Persons Filing Separately, "Generally, married persons must file a joint return to claim the credit"
   - *Not covered:* Married filing separately. The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married filing jointly is supported.
     *Source:* [i1040gi] p. 14, Married Filing Separately
-  - *Refused at:* `f2441.line11`, `f2441.line26`, `s3.line11`, `scope.ready`
+  - *Refused at:* `f2441.line11`, `f2441.line26`, `s3.line11`, `scope.ready_credits`
   - *Share of returns (coverage estimate):* Married filing separately, 2.6%
 - **`scope.other_income`**: Were you or your spouse a nonresident alien for any part of 2025, or do you have income such as wages not on a Form W-2, Medicaid waiver payments or passive-activity income?
-  - *The data asks or tests:* Any nonresident alien status, or other income or return treatment outside the kinds listed below?
-
-    Kinds this question is not about:
-    - wages
-    - interest
-    - dividends
-    - supported securities sales
-    - Form 1099-R distributions
-    - social security benefits
-
-    Nonresident alien status:
-    - you or your spouse, for any part of 2025
-
-    Other income or return treatment, including:
-    - wages or tips not on a Form W-2
-    - Medicaid waiver payments (whether or not in Form W-2 box 1)
-    - adoption benefits
-    - dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan)
-    - other earned income (Form 1040 lines 1b to 1d and 1f to 1h)
-    - income or loss from a passive activity (including gain on selling an interest in one)
-    - the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F)
-    - a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1)
-    - you or your spouse being a debtor in a chapter 11 bankruptcy case open at any time in 2025, even if your only income is wages, interest or dividends (`input`)
+  - *The data asks or tests:* Nonresident alien status, or other income or return treatment outside this tool (true when any of the other-income screening questions is answered Yes) (`test`)
   - *Stops the return as:* Nonresident or dual-status returns, and income outside the kinds the tool supports
   - *Not covered:* Nonresident aliens (EIC, Step 1, question 4). Nonresident and dual-status treatment is outside this tool.
     *Source:* [i1040gi] p. 40, Step 1, question 4; p. 44, Nonresident aliens
@@ -86,7 +64,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 42, Step 5, worksheet line 2
   - *Not covered:* Form 1040 additional income/return forms. Prepare the required unsupported income or return treatment.
     *Source:* [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
-  - *Refused at:* `eic.step1_resident`, `eic.step5_line2`, `f1040.line8`, `scope.ready`
+  - *Refused at:* `eic.step1_resident`, `eic.step5_line2`, `f1040.line8`, `scope.ready_other_income`
   - *Share of returns (coverage estimate):* Wages or tips not on Form W-2, dependent care benefits, other earned income, 0.8%
 - **`sa.dependent`**: Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
   - *The data asks or tests:* Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.) (`input`)
@@ -144,44 +122,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
 *Income, wages and accounts*
 
 - **`scope.schedule1`**: Do you have rental or royalty income, a partnership, S corporation, estate or trust (Schedule E or a K-1), farm income, sales of business property (Form 4797), a net operating loss, or another Schedule 1 item the tool does not ask about?
-  - *The data asks or tests:* Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately, including any of the following?
-
-    Income:
-    - statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner
-    - church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)
-    - a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund, for example:
-      - a refund of general sales tax, real estate tax or personal property tax
-      - a refund of mortgage interest in box 4 of Form 1098
-      - a reimbursement of medical expenses
-      - a payment on a bad debt you deducted
-    - sales of business property (Form 4797)
-    - a net operating loss deduction
-    - rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)
-    - rental of personal property
-    - farm income (Schedule F)
-    - an exclusion of Medicaid waiver payments (Schedule 1 line 8s)
-
-    Adjustments:
-    - other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan)
-    - an adjustment on Schedule 1 line 12, 14 or 23
-
-    The ones this tool asks about separately:
-    - business income or loss from Schedule C
-    - a taxable state or local income tax refund
-    - alimony under an agreement made before 2019
-    - unemployment compensation
-    - the line 8 items asked one by one
-    - educator expenses
-    - the HSA deduction
-    - the deductible part of self-employment tax
-    - self-employed SEP and SIMPLE contributions
-    - the self-employed health insurance deduction
-    - the penalty on early withdrawal of savings
-    - the IRA deduction
-    - student loan interest
-    - jury duty pay you gave your employer
-
-    Schedule 1-A deductions are asked separately. (`input`)
+  - *The data asks or tests:* Any income or adjustment requiring Schedule 1 other than the ones this tool computes (true when any of the Schedule 1 screening questions is answered Yes) (`test`)
   - *Stops the return as:* Schedule 1 items outside the tool, among them Schedules E and F, Form 4797 and the net operating loss
   - *Not covered:* Pub. 596, Worksheet 1 (EIC, Step 2, question 4). Schedule E, rental of personal property and passive activity income are outside this tool.
     *Source:* [i1040gi] p. 40, Step 2, question 4, "Yes. Use Worksheet 1 ... in Pub. 596"
@@ -201,10 +142,10 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
     *Source:* [i1040s8812] p. 8, Earned Income Worksheet, line 4
   - *Not covered:* Schedule 1 adjustments (Social Security Benefits Worksheet, line 6). Schedule 1 adjustments on lines 12, 14 and 23 are outside this tool.
     *Source:* [i1040gi] p. 32, Social Security Benefits Worksheet, line 6
-  - *Refused at:* `eic.step2_other`, `eic.step5_line1`, `eic.clergy`, `f1040.line8`, `f1040.line10`, `s1a.line5_calc`, `s1a.line14b_calc`, `s8812.eiw_3`, `s8812.eiw_4`, `scope.ready`, `ssb.line6`
+  - *Refused at:* `eic.step2_other`, `eic.step5_line1`, `eic.clergy`, `f1040.line8`, `f1040.line10`, `s1a.line5_calc`, `s1a.line14b_calc`, `s8812.eiw_3`, `s8812.eiw_4`, `scope.ready_schedule1`, `ssb.line6`
   - *Share of returns (coverage estimate):* Rental and royalty income or loss, 5.9%; Other income (Schedule 1 line 8z and similar), 4.8%; Partnership or S corporation income or loss, 3.5%; Farm income or loss, 1.1%; Sales of business property (Form 4797), 1.1%; Net operating loss deduction, 0.6%; Estate or trust income or loss, 0.4%
 - **`qbi.unsupported`**: Do you have qualified business income beyond your Schedule C businesses and section 199A dividends (a partnership, publicly traded partnership, REIT carryforward or cooperative)?
-  - *The data asks or tests:* Do you (or, on a joint return, your spouse) have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you (or, on a joint return, your spouse) a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)? (`input`)
+  - *The data asks or tests:* Any of these: a prior-year REIT or PTP loss carryforward; losses or deductions suspended in an earlier year by another provision and allowed this year; being a patron of any agricultural or horticultural cooperative, specified or not. Qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses is refused by the scope questions on Schedule E, Schedule K-1 and Schedule F income (`test`)
   - *Not covered:* Forms 8995 / 8995-A business or PTP path. Only section 199A dividend income without loss carryovers is supported.
     *Source:* [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4
   - *Refused at:* `qbi.eligible`
@@ -233,9 +174,9 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
   - *Not covered:* Earned Income Worksheet, line 1b (nontaxable combat pay). Nontaxable combat pay is outside this tool.
     *Source:* [i1040s8812] p. 8, Earned Income Worksheet, line 1b
   - *Refused at:* `eic.step5_line4`, `f2441.line4`, `f2441.line5`, `f2441.line18`, `f2441.line19`, `s8812.eiw_1b`
-- **`f8959.unsupported`**: Do you have church employee income, unreported or allocated tips (Form 4137), Form 8919 wages, uncollected Medicare tax, or wages from a U.S. territory?
-  - *The data asks or tests:* Do you (or, on a joint return, your spouse) have any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)? (`input`)
-  - *Not covered:* Form 8959 additional source forms. The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.
+- **`f8959.unsupported`**: Did you (or, on a joint return, your spouse) receive a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR)?
+  - *The data asks or tests:* A wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR), which this tool does not prepare (true when f8959.territory_w2 is answered Yes) (`test`)
+  - *Not covered:* Form 8959 additional source forms. Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare Form 8959 with one.
     *Source:* [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3
   - *Refused at:* `f8959.line1`, `f8959.line2`, `f8959.line3`, `f8959.line8`, `f8959.line14`, `f8959.line23`, `f8959.line19`
 - **`w2.box12_userra`**: Does a Form W-2 box 12 show a make-up contribution for an earlier year (a year after the code, such as "D 24")?
@@ -259,7 +200,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
     *Source:* [f8880] p. 2, What’s New, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts"
   - *Refused at:* `person.sav_line1`, `person.sav_prior_joint`, `person.sav_prior_other`
 - **`person.x_other`**: Do you have a taxable Coverdell, 529 or ABLE distribution, earlier-year excess contributions still in an account, or a required minimum distribution you missed?
-  - *The data asks or tests:* Form 5329 parts this tool does not prepare (`input`)
+  - *The data asks or tests:* Form 5329 parts this tool does not prepare (`test`)
   - *Not covered:* Form 5329 Parts II, III, IV, V, VI, VIII or IX, or an earlier-year excess in Part VII. Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess, and missed required minimum distributions need Form 5329 parts this tool does not prepare.
     *Source:* [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."
   - *Refused at:* `f5329.l4`, `f5329.l49`
@@ -292,12 +233,12 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
   - *The data asks or tests:* Whether a foreign tax credit carried from another year is claimed, asked only of a filer who has paid income tax to a foreign country or a U.S. territory, had territory income or owned part of a foreign corporation, or whose 2024 return includes a form besides Form 1040 and its schedules (false otherwise) (`choose`)
   - *Not covered:* Form 1116. A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.
     *Source:* [i1116] p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025"
-  - *Refused at:* `ftc.credit`, `scope.ready`
+  - *Refused at:* `ftc.credit`, `scope.ready_credits`
 
 *Taxes and credits*
 
 - **`s2.amt`**: Do you owe the alternative minimum tax, or need to file Form 6251?
-  - *The data asks or tests:* Are you required to file Form 6251 or do you have an AMT adjustment requiring its review? (`input`)
+  - *The data asks or tests:* Are you required to file Form 6251 or do you have an AMT adjustment requiring its review? (`test`)
   - *Not covered:* Form 6251. Alternative minimum tax is outside scope; prepare Form 6251.
     *Source:* [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21
   - *Refused at:* `s2.line2`, `s2.line3`, `s2.line21`
@@ -319,7 +260,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
     - tax on unreported tips (Form 4137)
     - interest on deferred tax
 
-    Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts. (`input`)
+    Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts. (`test`)
   - *Stops the return as:* Other Schedule 2 taxes
   - *Not covered:* Form 4137 (Social Security and Medicare Tax on Unreported Tip Income). Tips reported on Form 4137 are outside this tool.
     *Source:* [i1040gi] p. 101, Schedule 1-A, Part II, "If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137"; p. 104, line 4b
@@ -332,27 +273,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
   - *Refused at:* `s1a.line4b_calc`, `s2.line2`, `s2.line3`, `s2.line21`, `s8812.line22`, `tipjob.col_c`
   - *Share of returns (coverage estimate):* Household employment, uncollected tip taxes, homebuyer credit repayment, 0.4%
 - **`scope.other_line16`**: Do you have an extra line 16 tax or filing, such as the tax on a child's unearned income (Form 8615), Form 8814, Form 4972 or an education credit recapture?
-  - *The data asks or tests:* Any additional Form 1040 line 16 tax or filing, including any of the following?
-
-    A child's unearned income:
-    - filing Form 8814 (even with no tax)
-    - Form 8615, required if all of these apply:
-      - you had more than $2,700 of unearned income
-      - you are required to file
-      - you do not file jointly
-      - you have a parent who was alive at the end of 2025
-      - you were under 18 at the end of 2025, or 18 with earned income of not more than half your support, or a full-time student 19 to 23 with earned income of not more than half your support
-
-    Foreign corporations:
-    - a section 962 election
-    - Form 8621
-    - stock you own, directly or indirectly, in a controlled foreign corporation (CFC) or a passive foreign investment company (PFIC), even with nothing to include in income for 2025 (its distributions, dispositions and related adjustments can make the modified AGI of Form 8960 line 13 differ from AGI)
-
-    Other:
-    - Form 4972
-    - a Form 8978 amount
-    - recapture of an education credit
-    - income averaging of farming or fishing income on Schedule J (if you choose it) (`input`)
+  - *The data asks or tests:* An additional Form 1040 line 16 tax or filing outside this tool (true when any of the line 16 screening questions is answered Yes) (`test`)
   - *Stops the return as:* Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture
   - *Not covered:* Form 8814 (EIC, Step 2, question 4). Reporting a child's interest and dividends on Form 8814 is outside this tool.
     *Source:* [i1040gi] p. 40, Step 2, question 4
@@ -360,88 +281,88 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
     *Source:* [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
   - *Not covered:* Form 1040 line 16 additional tax forms. Prepare the applicable additional tax or alternative worksheet.
     *Source:* [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
-  - *Refused at:* `eic.step2_other`, `f1040.line16`, `scope.ready`
+  - *Refused at:* `eic.step2_other`, `f1040.line16`, `scope.ready_other_line16`
 - **`s3.adoption_if_any`**: Did an adoption become final in 2025, or did you pay adoption costs in 2025?
   - *The data asks or tests:* Whether an adoption became final in 2025 or adoption expenses were paid in 2025, asked only with an adoption or adoption expenses in 2024 or 2025 (false without one) (`choose`)
   - *Stops the return as:* Form 8839 (adoption credit)
   - *Not covered:* Form 8839 (adoption credit). An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form 8839, with its refundable part on Form 1040 line 30), which this tool does not prepare.
     *Source:* [i8839] p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements are true"
-  - *Refused at:* `f1040.line30`, `s3.line7`, `scope.ready`
+  - *Refused at:* `f1040.line30`, `s3.line7`, `scope.ready_credits`
 - **`s3.adoption_us_if_earlier`**: In 2024, did you pay costs toward adopting a U.S. child, where the adoption was not final by the end of 2024?
   - *The data asks or tests:* Whether the child of an adoption paid toward in 2024 and not final at the end of 2024 was a U.S. child, asked only with such payments (false without them) (`choose`)
   - *Not covered:* Form 8839 (adoption credit). Costs paid in 2024 toward adopting a U.S. child, where the adoption was not final at the end of 2024, are credited on the 2025 return (Form 8839), which this tool does not prepare.
     *Source:* [i8839] p. 1, Purpose of Form, "2024 and the adoption wasn’t final at the end of 2024"; p. 3, Domestic Adoption, "the year after the year of the payment"
-  - *Refused at:* `f1040.line30`, `s3.line7`, `scope.ready`
+  - *Refused at:* `f1040.line30`, `s3.line7`, `scope.ready_credits`
 - **`s3.credit_bond`**: In 2025, did a bond you own, or a fund, give you a federal tax credit?
   - *The data asks or tests:* For 2025, were you (or, on a joint return, your spouse) allowed a credit as the holder of a tax credit bond (a clean renewable energy bond, new clean renewable energy bond, qualified energy conservation bond, qualified zone academy bond, qualified school construction bond or build America bond), held by you or a nominee or through a fund or other pass-through entity, whether or not reported on Form 1097-BTC? (`input`)
   - *Not covered:* Form 8912 (credit to holders of tax credit bonds). A tax credit from a bond, or one a fund passes on (Form 1097-BTC), is claimed on Form 8912, which this tool does not prepare.
     *Source:* [i8912] p. 1, Who Can Claim the Credits, "can claim the credit by filing Form 8912 for each tax year in which it holds the bond on a credit allowance date"; p. 2, Line 1, "This amount is the total bond credits reported to you on Form(s) 1097-BTC"
-  - *Refused at:* `s3.line7`, `scope.ready`
+  - *Refused at:* `s3.line7`, `scope.ready_credits`
 - **`s3.elderly_credit_if_asked`**: Is someone on the return 65 or older, or retired on permanent and total disability, and do you want the credit for the elderly or the disabled (Schedule R)?
   - *The data asks or tests:* Whether the credit for the elderly or the disabled is wanted, asked only when someone on the return is 65 or older or retired on permanent and total disability (false otherwise) (`choose`)
   - *Not covered:* Schedule R (credit for the elderly or the disabled). The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question.
     *Source:* [i1040sr] p. 1, Qualified Individual, "You are a qualified individual for this credit if you are a U.S. citizen or resident alien"
-  - *Refused at:* `s3.line7`, `scope.ready`
+  - *Refused at:* `s3.line7`, `scope.ready_credits`
 - **`s3.ev_dealer_if_ev`**: Did a dealer give you the clean vehicle credit for a vehicle you got in 2025?
   - *The data asks or tests:* Whether a dealer took the clean vehicle credit off the price, asked only with a clean vehicle or home refueling property in 2025 (false without one) (`choose`)
   - *Not covered:* Form 8936 (clean vehicle credits). A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed with this return; this tool does not prepare them.
     *Source:* [i8936] p. 1, Purpose of Form, "You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer"
-  - *Refused at:* `s3.line7`, `scope.ready`
+  - *Refused at:* `s3.line7`, `scope.ready_credits`
 - **`s3.ev_credit_if_bought`**: Do you want a clean vehicle credit for a vehicle you bought by September 30, 2025 and received in 2025?
   - *The data asks or tests:* Whether a clean vehicle credit is wanted on this return, asked only for a vehicle bought and acquired before October 1, 2025 (false otherwise) (`choose`)
   - *Not covered:* Form 8936 (clean vehicle credits). This tool does not prepare the clean vehicle credits (Form 8936). To go on without the credit, answer No to that question.
     *Source:* [i8936] p. 1, Purpose of Form, "to figure the following credits for clean vehicles you placed in service during your tax year"
-  - *Refused at:* `s3.line7`, `scope.ready`
+  - *Refused at:* `s3.line7`, `scope.ready_credits`
 - **`s3.ev_equipment_if_ev`**: Do you want the credit for home charging or fueling equipment installed in 2025 (Form 8911)?
   - *The data asks or tests:* Whether the refueling property credit is wanted on this return, asked only with a clean vehicle or home refueling property in 2025 (false without one) (`choose`)
   - *Not covered:* Form 8911 (alternative fuel vehicle refueling property credit). This tool does not prepare the credit for vehicle charging or fueling equipment (Form 8911). To go on without the credit, answer No to that question.
     *Source:* [i8911] p. 1, Purpose of Form, "to figure your credit for alternative fuel vehicle refueling property you placed in service during your tax year"
-  - *Refused at:* `s3.line7`, `scope.ready`
+  - *Refused at:* `s3.line7`, `scope.ready_credits`
 - **`s3.farmland_deferral_if_sold`**: Did you sell farmland in 2025 and choose to pay the tax on the gain in installments (Form 1062)?
   - *The data asks or tests:* Whether the election to defer the tax on a sale of qualified farmland was made, asked only with a sale of farmland in 2025 (false without one) (`choose`)
   - *Not covered:* Form 1062 (Schedule 3 line 13z). The election to pay the tax on a sale of farmland in installments (Form 1062) is reported on Schedule 3 line 13z, which this tool does not prepare.
     *Source:* [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"
-  - *Refused at:* `s3.line14`, `scope.ready`
+  - *Refused at:* `s3.line14`, `scope.ready_credits`
 - **`s3.section960c_if_foreign`**: Do you claim a refund under section 960(c)?
   - *The data asks or tests:* Whether a credit under section 960(c) is claimed, asked only with foreign tax, territory income or a foreign corporation (false without) (`choose`)
   - *Not covered:* Schedule 3 line 13z (section 960(c) credit). The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.
     *Source:* [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"
-  - *Refused at:* `s3.line14`, `scope.ready`
+  - *Refused at:* `s3.line14`, `scope.ready_credits`
 - **`s3.section965_if_foreign`**: Are you paying section 965 tax on a foreign company's earnings in installments?
   - *The data asks or tests:* Whether part of a net 965 tax liability paid in installments remains to be paid, asked only with foreign tax, territory income or a foreign corporation (false without) (`choose`)
   - *Not covered:* Schedule 3 line 13d (net 965 tax liability). A net 965 tax liability paid in installments is reported on Schedule 3 line 13d, which this tool does not prepare.
     *Source:* [i1040gi] p. 117, Line 13d, "If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d"
-  - *Refused at:* `s3.line14`, `scope.ready`
+  - *Refused at:* `s3.line14`, `scope.ready_credits`
 - **`s3.virgin_islands_if_foreign`**: Is part of your tax owed to the U.S. Virgin Islands (Form 8689)?
   - *The data asks or tests:* Whether part of the tax is allocable to the U.S. Virgin Islands, asked only with foreign tax, territory income or a foreign corporation (false without) (`choose`)
   - *Not covered:* Form 8689 (Schedule 3 line 13z). Tax allocable to the U.S. Virgin Islands (Form 8689) is reported on Schedule 3 line 13z, which this tool does not prepare.
     *Source:* [i1040gi] p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"
-  - *Refused at:* `s3.line14`, `scope.ready`
+  - *Refused at:* `s3.line14`, `scope.ready_credits`
 - **`s3.kerosene_credit_if_kerosene`**: Do you want to claim back the federal fuel tax on kerosene used at home (Form 4136)?
   - *The data asks or tests:* Whether the fuel tax credit for kerosene used at home is wanted, asked only with kerosene used at home (false without it) (`choose`)
   - *Not covered:* Form 4136 (credit for federal tax paid on fuels). This tool does not prepare the credit for federal tax paid on fuels (Form 4136). To go on without the credit, answer No to that question.
     *Source:* [i4136] p. 2, Part I—Information About Your Business, "If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking"
-  - *Refused at:* `s3.line12`, `scope.ready`
+  - *Refused at:* `s3.line12`, `scope.ready_credits`
 - **`s3.mcc_if_interest`**: With home mortgage interest, do you have a mortgage credit certificate from a state or local housing agency?
   - *The data asks or tests:* Whether a mortgage credit certificate was issued for the home loan, asked only when home mortgage interest is entered (false with none: the credit is a share of the interest paid) (`choose`)
   - *Not covered:* Form 8396 (mortgage interest credit). A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A; this tool does not prepare it.
     *Source:* [f8396] p. 2, Who Can Claim the Credit, "You can claim the credit only if you were issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency"; p. 2, Line 3, "you must reduce the amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3"
-  - *Refused at:* `s3.line7`, `scope.ready`
+  - *Refused at:* `s3.line7`, `scope.ready_credits`
 - **`s3.prior_amt_if_forms`**: Does your 2024 federal return show alternative minimum tax?
   - *The data asks or tests:* Whether the 2024 return shows an alternative minimum tax liability, asked only when the 2024 return includes a form besides Form 1040 and its schedules (false otherwise: the liability is figured on Form 6251) (`choose`)
   - *Not covered:* Form 8801 (credit for prior year minimum tax). Alternative minimum tax on your 2024 return can give a credit for 2025 (Form 8801), which this tool does not prepare.
     *Source:* [i8801] p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"
-  - *Refused at:* `s3.line7`, `scope.ready`
+  - *Refused at:* `s3.line7`, `scope.ready_credits`
 - **`s3.prior_forms_if_forms`**: Does your 2024 federal return include Form 1116, 3800, 8396, 8801, 8582-CR, 8839, 8859 or 8912?
   - *The data asks or tests:* Whether the 2024 return includes a form that can carry a credit into 2025, asked only when the 2024 return includes a form besides Form 1040 and its schedules (false otherwise) (`choose`)
   - *Not covered:* Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912). A credit carried over from an earlier year is outside this tool.
     *Source:* [i3800] p. 3, Carryback and Carryforward of Unused Credit, "unused general business credits may be carried back 1 year and carried forward 20 years"; f8396 p. 2, Part II—Mortgage Interest Credit Carryforward to 2026, "you may have an unused credit to carry forward to the next 3 tax years"; i8801 p. 1, Who Should File, "A credit carryforward to 2025 (on 2024 Form 8801, line 26)"; f8834 p. 2, Line 1, "Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR"; i8839 p. 1, Purpose of Form, "You have a carryforward of an adoption credit from 2024"; f8859 p. 1, Purpose of Form, "to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024"; i8912 p. 3, Line 12, "you may carry the unused portion of the credit to the next tax year"
-  - *Refused at:* `s3.line7`, `scope.ready`
+  - *Refused at:* `s3.line7`, `scope.ready_credits`
 - **`s3.repaid_income`**: In 2025, did you pay back more than $3,000 that you had reported as income in an earlier year?
   - *The data asks or tests:* In 2025, did you (or, on a joint return, your spouse) repay more than $3,000 in total that you had included in income in an earlier year because it appeared you had an unrestricted right to it? (`input`)
   - *Not covered:* Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16). A repayment of more than $3,000 of income reported in an earlier year gives a choice between a deduction and a credit (Schedule 3 line 13b), which this tool does not figure.
     *Source:* [p525] p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right" and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income"
-  - *Refused at:* `s3.line14`, `scope.ready`
+  - *Refused at:* `s3.line14`, `scope.ready_credits`
 - **`s3.other_credit`**: Is any of the credits, payments or carryovers above present? The credit limit worksheets of the tool's own credits then cannot be completed.
   - *The data asks or tests:* A credit or payment of Schedule 3 this tool does not prepare is present or wanted: any credit, payment or carryover this tool does not prepare (`choose`)
   - *Stops the return as:* A credit limit worksheet line that adds credits this tool does not prepare
@@ -498,7 +419,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
   - *Not covered:* Form 8862 and the CTC, ACTC and ODC disallowance period (Form 8862 may be required). Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.
     *Source:* [i1040s8812] p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" and "you will not be allowed to claim any of these credits for 2 years even if you are otherwise eligible to do so. If it is determined that your error was due to fraud, you will not be allowed to claim any of these credits for 10 years"
   - *Refused at:* `s8812.line12`
-- **`household.widowed_2025`**: Are you filing as single or head of household although your spouse died in 2025?
+- **`household.widowed_this_year`**: Are you filing as single or head of household although your spouse died in 2025?
   - *The data asks or tests:* Filing as single or head of household although your spouse died in 2025 (`choose`)
   - *Not covered:* Filing status after a spouse's death in 2025. Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly), or a separate return, which this tool does not support.
     *Source:* [i1040gi] p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."
@@ -520,6 +441,11 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
   - *Refused at:* `dependent.claimed`, `dependent.hoh_test1`
 - **`dependent.divorced_rule`**: Does the rule for children of divorced or separated parents (for example a Form 8332 release) apply to a child?
   - *The data asks or tests:* Rule for children of divorced or separated parents applies? (`input`)
+  - *Not covered:* Children of divorced or separated parents. The rule for children of divorced or separated parents is outside this tool.
+    *Source:* [i1040gi] p. 20, Children of divorced or separated parents
+  - *Refused at:* `dependent.divorced_rule_screen`
+- **`dependent.divorced_rule_if_parents_apart`**: For a child whose parents are divorced, separated or living apart, does the rule for children of divorced or separated parents (for example a Form 8332 release) apply?
+  - *The data asks or tests:* Whether the rule for children of divorced or separated parents applies, asked only of a child whose parents are apart (false for anyone else) (`choose`)
   - *Not covered:* Children of divorced or separated parents. The rule for children of divorced or separated parents is outside this tool.
     *Source:* [i1040gi] p. 20, Children of divorced or separated parents
   - *Refused at:* `dependent.qualifying_child`
@@ -546,7 +472,22 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 21, Married person
   - *Not covered:* Married child (EIC). A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person.
     *Source:* [i1040gi] p. 44, Married child
-  - *Refused at:* `dependent.qualifying_child`, `dependent.qualifying_relative`, `dependent.eic_child`
+  - *Refused at:* `dependent.married_screen_qc`, `dependent.married_screen_qr`, `dependent.married_screen_eic`
+- **`dependent.married_if_ever_married_qc`**: Is a qualifying child who has ever been married married at the end of 2025, or on a 2025 joint return?
+  - *The data asks or tests:* Whether this person was married at the end of 2025 or is on a 2025 joint return, asked only of a person who has ever been married (false for one who has not) (`choose`)
+  - *Not covered:* Married person rules. A married dependent is outside this tool; see Married person in the instructions.
+    *Source:* [i1040gi] p. 21, Married person
+  - *Refused at:* `dependent.qualifying_child`
+- **`dependent.married_if_ever_married_qr`**: Is a qualifying relative who has ever been married married at the end of 2025, or on a 2025 joint return?
+  - *The data asks or tests:* Whether this person was married at the end of 2025 or is on a 2025 joint return, asked only of a person who has ever been married (false for one who has not) (`choose`)
+  - *Not covered:* Married person rules. A married dependent is outside this tool; see Married person in the instructions.
+    *Source:* [i1040gi] p. 21, Married person
+  - *Refused at:* `dependent.qualifying_relative`
+- **`dependent.married_if_ever_married_eic`**: For the EIC, is a qualifying child who has ever been married married at the end of 2025, or on a 2025 joint return?
+  - *The data asks or tests:* Whether this person was married at the end of 2025 or is on a 2025 joint return, asked only of a person who has ever been married (false for one who has not) (`choose`)
+  - *Not covered:* Married child (EIC). A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person.
+    *Source:* [i1040gi] p. 44, Married child
+  - *Refused at:* `dependent.eic_child`
 - **`dependent.kidnap_residency`**: Did a child presumed kidnapped by someone outside the family live with you for fewer than 7 months of 2025, not counting the time missing?
   - *The data asks or tests:* A child presumed kidnapped who lived with you for fewer than 7 months of 2025, not counting the time missing (`choose`)
   - *Not covered:* Kidnapped child (Pub. 501; Pub. 596 for the EIC). A child presumed kidnapped by someone who isn't a family member, who lived with you for fewer than 7 months of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.
@@ -571,7 +512,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
 ### Interest and dividends
 
 - **`sb.unsupported_if_income`**: Do you have nominee interest, OID not on a Form 1099-OID, bond premium or market discount, seller-financed mortgage interest, a savings bond interest exclusion, or other special interest treatment?
-  - *The data asks or tests:* Schedule B special treatment, when taxable interest, ordinary dividends or capital gain distributions are above zero; false otherwise (`choose`)
+  - *The data asks or tests:* Schedule B special treatment, when taxable interest, ordinary dividends or capital gain distributions are above zero; false otherwise (`copy`)
   - *Not covered:* Schedule B special treatment / Form 8815. Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends.
     *Source:* [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts
   - *Refused at:* `sb.line2`, `sb.line3`, `sb.line6`
@@ -617,7 +558,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
     *Source:* [i8949] pp. 7–11, columns (e) through (h), codes B and W
   - *Refused at:* `sales.one`
 - **`sd.other_forms`**: Do you have gains or losses from Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?
-  - *The data asks or tests:* Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity. (`input`)
+  - *The data asks or tests:* Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity. (`test`)
   - *Not covered:* Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice.
     *Source:* [f1040sd] Schedule D (2025), Parts I–III
   - *Refused at:* `sd.count`, `sd.line4`, `sd.line5`, `sd.line6`, `sd.line11`, `sd.line12`, `sd.line14`
@@ -630,31 +571,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
 ### Retirement distributions
 
 - **`retirement.special`**: Does a retirement distribution involve a special case: a disability pension, a corrective distribution, a qualified charitable distribution, a conversion or Roth rollover, a lump sum (Form 4972), a nonqualified annuity, a plan loan offset, Form RRB-1099-R, or the General Rule?
-  - *The data asks or tests:* Does this distribution involve any of these?
-
-    - a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack
-    - a corrective distribution of excess deferrals or contributions
-    - a qualified charitable distribution or HSA funding distribution
-    - nondeductible contributions to any traditional IRA
-    - a conversion or recharacterization (Form 8606)
-    - a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025
-    - a rollover to a Roth IRA or designated Roth account
-    - a lump-sum distribution you may report on Form 4972
-    - a distribution of employer securities with net unrealized appreciation (an amount in box 6)
-    - a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments
-    - a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA
-    - a nonqualified annuity
-    - the retired public safety officer premium exclusion
-    - a death benefit exclusion
-    - a military disability pension
-    - an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these)
-    - a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead
-    - a rollover of a distribution under a qualified domestic relations order
-    - a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F)
-    - a plan loan offset
-    - a Form RRB-1099-R
-    - U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721)
-    - a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule) (`input`)
+  - *The data asks or tests:* A Form 1099-R situation that needs a form or rule outside this tool (any of the situations asked about one by one: where the money went, the IRA's history, employer securities, a plan loan offset, a disability pension, the public safety officer exclusion, a lump-sum distribution, a payment after a death, after-tax cost outside the Simplified Method, a disaster) (`test`)
   - *Not covered:* Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939). This distribution needs a form or rule outside this tool.
     *Source:* [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method
   - *Refused at:* `retirement.rolled`, `retirement.taxable`, `retirement.amount_a`
@@ -692,12 +609,12 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
 ### Social Security
 
 - **`ssb.lump_sum`**: Do you want the lump-sum election for Social Security benefits paid for an earlier year?
-  - *The data asks or tests:* Do you elect to use the lump-sum election method for a social security benefit payment to you (or, on a joint return, your spouse) that was for an earlier year? (`input`)
+  - *The data asks or tests:* The lump-sum election method is chosen for a benefit payment that was for an earlier year (asked only when the benefits include such a payment; false otherwise) (`choose`)
   - *Not covered:* Lump-Sum Election (Pub. 915). The lump-sum election method is outside this tool.
     *Source:* [i1040gi] p. 31, Line 6c
   - *Refused at:* `ssb.line2`
 - **`ssb.pub915`**: Do you have Social Security benefits with a situation the Form 1040 worksheet does not cover (IRA contributions with plan coverage, repayments above benefits, Forms 2555, 4563 or 8815, excluded adoption benefits or Puerto Rico income)?
-  - *The data asks or tests:* Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you (or, on a joint return, your spouse) were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico? (`input`)
+  - *The data asks or tests:* A situation in which the Social Security Benefits Worksheet of the Form 1040 instructions does not apply: a traditional IRA contribution for 2025 by a person covered by a retirement plan, or repayments (box 4) that are more than the benefits (box 3). The excluded income of Forms 2555 and 4563 and of Puerto Rico, the savings bond interest of Form 8815 and employer adoption benefits are asked about at their own questions. (`test`)
   - *Not covered:* Pub. 915 or Pub. 590-A worksheet. The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication.
     *Source:* [i1040gi] p. 31, Lines 6a and 6b, Exception
   - *Refused at:* `ssb.line2`
@@ -886,8 +803,8 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
   - *Not covered:* Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A 2024 return on which you could be claimed as a dependent, a 2024 Form 1040-NR, or a refund from a joint state or local return with someone you are not filing jointly with for 2025 is figured with Pub. 525 instead of the Form 1040 worksheet; that is outside this tool.
     *Source:* [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 8 and 9; p525 p. 24, Itemized Deduction Recoveries, "if you’re a nonresident alien"
   - *Refused at:* `refund.line1`
-- **`refund.not_2024`**: Is a state or local refund for a year other than 2024, or did you pay some of your 2024 state income tax in 2025?
-  - *The data asks or tests:* Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024 state or local income tax in 2025 or before 2024? (`input`)
+- **`refund.not_prior_year`**: Is a state or local refund for a year other than 2024, or did you pay some of your 2024 state income tax in 2025?
+  - *The data asks or tests:* A refund is for a tax year other than 2024 (box 3 of Form 1099-G), or you paid any of your 2024 state or local income tax in 2025 or before 2024 (`test`)
   - *Not covered:* Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A refund for a tax year other than 2024, or a refund when any of your 2024 state or local income tax was paid in 2025 (a last estimated payment, a payment with an extension, or a balance due) or before 2024, is figured with Pub. 525 (and may reduce your 2025 deduction for taxes); that is outside this tool.
     *Source:* [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 1 and 5; p525 p. 24, Recovery for 2 or more years, "you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it"
   - *Refused at:* `refund.taxable`
@@ -910,7 +827,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
     *Source:* [p525] p. 33, Gambling winnings, "For tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings"
   - *Refused at:* `s1.line8b`
 - **`s1.line8_other`**: Do you have other Schedule 1 line 8 income the tool does not ask about item by item?
-  - *The data asks or tests:* Do you have any income for Schedule 1 line 8 other than the items this tool computes? (`input`)
+  - *The data asks or tests:* Do you have any income for Schedule 1 line 8 other than the items this tool computes? (`test`)
   - *Not covered:* Schedule 1, line 8 (other income this tool does not compute). Other income on Schedule 1 line 8 other than gambling winnings, canceled debt, income from Form 8889, Alaska Permanent Fund dividends, jury duty pay, prizes and awards, income from an activity not engaged in for profit, scholarship and fellowship grants not on Form W-2 and the supported line 8z items is outside this tool.
     *Source:* [i1040gi] pp. 91–92, Lines 8a Through 8z
   - *Refused at:* `s1.line9`
@@ -1061,15 +978,20 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
 ### Itemized deductions
 
 - **`sa.unsupported`**: Do you have a casualty or theft loss, another miscellaneous deduction, a foreign tax deduction, mortgage interest not on Form 1098 or over the limits, or the sales tax election?
-  - *The data asks or tests:* Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election? (`input`)
-  - *Not covered:* Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.
+  - *The data asks or tests:* A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt or use limits; the sales-tax election; a foreign tax deduction; or a deduction from the Schedule A line 16 list other than gambling losses (`test`)
+  - *Not covered:* Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
   - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`
 - **`sa.charity_limited_if_gifts`**: Are your charitable deductions limited by income, or carried over from an earlier year?
-  - *The data asks or tests:* Charitable deductions are reduced by income limits or carried over from a prior year (no when you and your spouse gave nothing to charity and have no carryover) (`choose`)
+  - *The data asks or tests:* Charitable deductions are reduced by income limits or carried over from a prior year (no when you and your spouse gave nothing to charity in 2025) (`choose`)
   - *Not covered:* Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope.
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
   - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`
+- **`sa.gift_carryover_if_no_gifts`**: With no gifts to charity in 2025, do you have a charitable contribution carried over from an earlier year?
+  - *The data asks or tests:* A charitable contribution is carried over from an earlier year (asked only when you and your spouse gave nothing to charity in 2025) (`choose`)
+  - *Not covered:* Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope.
+    *Source:* [f1040sa] Schedule A (2025), lines 1–18
+  - *Refused at:* `sa.line13`
 - **`gift.special`**: Does a noncash gift need an appraisal or special treatment (over $5,000, a vehicle, intellectual property, inventory and similar)?
   - *The data asks or tests:* Does this group need an appraisal or other special treatment: any of the following?
 
@@ -1150,7 +1072,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
 
 ### Earned income credit
 
-- **`eic.died_2025`**: For the earned income credit: did your spouse die in 2025, or is this return for someone who died in 2025?
+- **`eic.died_this_year`**: For the earned income credit: did your spouse die in 2025, or is this return for someone who died in 2025?
   - *The data asks or tests:* Spouse died in 2025, or a return for someone who died in 2025? (`input`)
   - *Not covered:* EIC age test after a death in 2025 (Pub. 596). When your spouse died in 2025 or the return is for someone who died in 2025, the EIC age test is answered under Pub. 596, which this tool does not apply.
     *Source:* [i1040gi] p. 42, Step 4, question 2, "spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596 before you answer."
@@ -1164,7 +1086,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
 ### Child and dependent care
 
 - **`f2441.student_disabled`**: For the child and dependent care credit: were you or your spouse a full-time student, or unable to care for yourself?
-  - *The data asks or tests:* Were you or your spouse a full-time student or not able to care for yourselves in 2025? (`input`)
+  - *The data asks or tests:* Were you or your spouse a full-time student or not able to care for yourselves in 2025? (`test`)
   - *Not covered:* Deemed earned income for a student or disabled spouse or filer (Form 2441, line B and lines 4, 5, 18 and 19). The deemed earned income of $250 or $500 a month for a full-time student or a person not able to care for themselves, and a disabled spouse as a qualifying person, are outside this tool.
     *Source:* [i2441] p. 4, If You or Your Spouse Was a Student or Disabled, "Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)"
   - *Refused at:* `f2441.line4`, `f2441.line5`, `f2441.line18`, `f2441.line19`
@@ -1265,17 +1187,17 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
     *Source:* [i5695] p. 3, Joint occupancy, "If the aggregate credit that would be allowed to all occupants for any item of property exceeds the credit limit below, then you must figure your allocable share of the credit from each property"
   - *Refused at:* `f5695.line30`
 - **`f5695.separate_homes_joint`**: On a joint return, did you and your spouse live in separate main homes?
-  - *The data asks or tests:* Married filing jointly with separate main homes (`test`)
+  - *The data asks or tests:* Married filing jointly with separate main homes (`choose`)
   - *Not covered:* Form 5695 Part II for spouses with separate main homes (a separate Form 5695 for each main home). Figuring lines 17a through 30 on a separate Form 5695 for each spouse's main home and combining them on line 30 is outside this tool.
     *Source:* [i5695] p. 3, Married taxpayers with more than one home, "Complete lines 17a through 30 of a separate Form 5695 for each main home"
   - *Refused at:* `f5695.line30`
 - **`f5695.sec_a_new_home`**: Are energy efficiency improvements connected with building the home?
-  - *The data asks or tests:* Section A is completed and line 17e is Yes (`test`)
+  - *The data asks or tests:* Section A is completed and line 17e is Yes (`choose`)
   - *Not covered:* Form 5695 Part II, Section A, with improvements related to the construction of the main home (line 17e Yes). Separating improvements related to the construction of a home from those that are not is outside this tool.
     *Source:* [i5695] p. 5, Lines 17a Through 17e, "If the qualified improvements for which you are seeking to claim the credit are related to the construction of a new home, check the ... Yes ... box. If you check the ... Yes ... box, skip lines 18a through 20d"
   - *Refused at:* `f5695.line30`
 - **`f5695.sec_b_new_home`**: Is energy property installed in a newly built home?
-  - *The data asks or tests:* Section B is completed for property installed in connection with the construction of a new home (`test`)
+  - *The data asks or tests:* Section B is completed for property installed in connection with the construction of a new home (`choose`)
   - *Not covered:* Form 5695 Part II, Section B, for property installed in connection with the construction of a new home. The energy efficient home improvement credit is only available for existing homes; separating such property from property for an existing home is outside this tool.
     *Source:* [i5695] p. 1, Costs, "The energy efficient home improvement credit (Part II) is only available for existing homes"
   - *Refused at:* `f5695.line30`
@@ -1283,12 +1205,12 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
 ### Premium tax credit
 
 - **`f8962.other`**: Is anyone in the tax family eligible for other minimum essential coverage (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer, employer coverage actually enrolled in including COBRA or retiree coverage), or is a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, or is an enrolled person incarcerated, not lawfully present, or covered by an HRA, or are premiums unpaid or advance payments made for someone in no tax family?
-  - *The data asks or tests:* Coverage or eligibility this tool does not reconcile (other minimum essential coverage, an HRA, unpaid premiums, no tax family, incarceration) (`input`)
+  - *The data asks or tests:* Coverage or eligibility this tool does not reconcile (other minimum essential coverage, an HRA, unpaid premiums, no tax family, incarceration) (`test`)
   - *Not covered:* Form 8962 with coverage or eligibility outside this tool. Eligibility for other minimum essential coverage for any month (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.
     *Source:* [i8962] p. 5, "An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month."; p. 6, "Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace."
   - *Refused at:* `f8962.line24`, `f8962.line25`
 - **`f8962.premium_adjust`**: Did Marketplace coverage begin after the first day of a month (other than on a birth, adoption, placement for adoption or foster care, or a court order), or were any Marketplace premiums refunded in 2025?
-  - *The data asks or tests:* A Marketplace premium needs an adjustment this tool does not make (coverage began after the first day of a month, or a premium was refunded) (`input`)
+  - *The data asks or tests:* A Marketplace premium needs an adjustment this tool does not make (coverage began after the first day of a month, or a premium was refunded) (`test`)
   - *Not covered:* Form 8962 with a Marketplace premium this tool does not adjust. Coverage that began after the first day of a month is not allowed a monthly credit amount for that month (except coverage effective on a birth, adoption, placement for adoption or foster care, or the effective date of a court order, which counts from the first day), and the enrollment premiums for a month are reduced by any premium amounts refunded in 2025. This tool takes Form 1095-A column A as reported and does not make either adjustment.
     *Source:* [i8962] p. 4, "Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month."; p. 4, "The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025"
   - *Refused at:* `f8962.line24`, `f8962.line25`
@@ -1298,7 +1220,7 @@ The data holds **228 refusal gates**: 188 tax situations the tool does not prepa
     *Source:* [i8962] p. 2, "Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962."
   - *Refused at:* `f8962.line24`, `f8962.line25`
 - **`f8962.alloc`**: Did a Marketplace policy cover someone outside your tax family, or were you divorced or separated in 2025 while sharing a policy?
-  - *The data asks or tests:* A policy shared with another tax family, or a divorce or separation in 2025 with a shared policy (`input`)
+  - *The data asks or tests:* A policy shared with another tax family, or a divorce or separation in 2025 with a shared policy (`test`)
   - *Not covered:* Form 8962 Part IV, Allocation of Policy Amounts. A policy shared with another tax family, and a divorce or separation in 2025, need an allocation of the policy amounts (Part IV), which this tool does not prepare.
     *Source:* [i8962] p. 12, Allocating policy amounts, "The policy covered at least one individual in your tax family and at least one individual in another tax family"
   - *Refused at:* `f8962.line24`, `f8962.line25`
@@ -1347,6 +1269,11 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *Not covered:* The people on the return. Enter one person with the role taxpayer, and, only when married filing jointly, one person with the role spouse.
     *Source:* [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status
   - *Refused at:* `f1040.line1a`
+- **`household.birth_year_bad`**
+  - *The data asks or tests:* A year of birth entered for you, or your spouse on a joint return, is after the tax year or more than 125 years before it (`test`)
+  - *Not covered:* Year of birth not possible. Correct the year of birth. A person on a return for 2025 was born in 2025 or earlier, and a year more than 125 years before 2025 is taken for a mistyped year.
+    *Source:* [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"
+  - *Refused at:* `household.roster_ok`
 - **`household.hoh_fails`**
   - *The data asks or tests:* Head of household checked without meeting its tests (`test`)
   - *Not covered:* Head of household filing status. Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person.
@@ -1420,7 +1347,7 @@ These refuse a return when entered figures contradict each other, or when an ent
 #### Self-employment
 
 - **`asset.s179_bad`**
-  - *The data asks or tests:* The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property (`test`)
+  - *The data asks or tests:* The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property (`choose`)
   - *Not covered:* Section 179 election above the business cost, on property used 50% or less in the business, or on property that is not section 179 property. A section 179 election must not exceed the business cost, needs more than 50% business use, and is allowed only for section 179 property.
     *Source:* [i4562] p. 3, Part I; p. 5, Line 6, Column (c); p946 p. 17, What Property Does Not Qualify?
   - *Refused at:* `asset.after179`
@@ -1428,7 +1355,7 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *The data asks or tests:* The section 179 election is more than the business cost, or than the SUV limit (`test`)
   - *Not covered:* Section 179 election above the vehicle's business cost or the SUV limit. A section 179 election must not exceed the business cost, or $31,300 for an SUV.
     *Source:* [i4562] p. 16, Column (i)
-  - *Refused at:* `scveh.s179_2025_ok`
+  - *Refused at:* `scveh.s179_this_year_ok`
 - **`scveh.no_miles`**
   - *The data asks or tests:* Actual expenses claimed for a vehicle with no miles (`test`)
   - *Not covered:* A vehicle with actual expenses and no miles. The business-use percentage of a vehicle's actual expenses is its business miles divided by its total miles, so it cannot be figured for a vehicle with no miles in 2025. Enter the vehicle's miles, or leave out a vehicle that was not driven.
@@ -1518,17 +1445,17 @@ These refuse a return when entered figures contradict each other, or when an ent
 #### Home energy credits
 
 - **`f5695.ac_no_qmid`**
-  - *The data asks or tests:* Central air conditioner costs entered without a valid QMID for each item (`test`)
+  - *The data asks or tests:* Central air conditioner costs entered without a valid QMID for each item (`choose`)
   - *Not covered:* Form 5695 line 22 (a central air conditioner without a valid QMID). Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.
     *Source:* [i5695] p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
   - *Refused at:* `f5695.ac_capped`
 - **`f5695.doors_no_qmid`**
-  - *The data asks or tests:* Exterior door costs entered without a valid QMID for each door (`test`)
+  - *The data asks or tests:* Exterior door costs entered without a valid QMID for each door (`choose`)
   - *Not covered:* Form 5695 line 19 (an exterior door without a valid QMID). An exterior door installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that door.
     *Source:* [i5695] p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
   - *Refused at:* `f5695.doors_capped`
 - **`f5695.enabling_no_qmid`**
-  - *The data asks or tests:* Enabling property costs entered without a valid QMID for each item (`test`)
+  - *The data asks or tests:* Enabling property costs entered without a valid QMID for each item (`choose`)
   - *Not covered:* Form 5695 line 25 (enabling property without a valid QMID). Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.
     *Source:* [i5695] p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
   - *Refused at:* `f5695.enabling_capped`
@@ -1548,7 +1475,7 @@ These refuse a return when entered figures contradict each other, or when an ent
     *Source:* [i5695] p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
   - *Refused at:* `f5695.wh_capped`
 - **`f5695.windows_no_qmid`**
-  - *The data asks or tests:* Window and skylight costs entered without a valid QMID for each item (`test`)
+  - *The data asks or tests:* Window and skylight costs entered without a valid QMID for each item (`choose`)
   - *Not covered:* Form 5695 line 20 (an exterior window or skylight without a valid QMID). An exterior window or skylight installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.
     *Source:* [i5695] p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
   - *Refused at:* `f5695.windows_capped`

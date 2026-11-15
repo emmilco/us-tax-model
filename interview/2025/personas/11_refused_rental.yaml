@@ -1,0 +1,7 @@
+name: 11_refused_rental
+who: A single person with wages from one job who also rents out a house she owns; the tool does not prepare rental income.
+end: { refused: scope.schedule1 }
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  scope.rental: true

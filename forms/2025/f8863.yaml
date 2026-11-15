@@ -224,6 +224,7 @@ form:
     printed: (gate)
     label: An American opportunity credit after a denial or reduction, or within a ban
     type: Bool
+    gated_by: f8863.ban_refused
     expr:
       op: input
       source: Was your American opportunity credit denied or reduced, for a reason other than a math or clerical error, for

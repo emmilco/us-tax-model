@@ -2,7 +2,9 @@
 // refusals, file modes, the Host and Origin checks, that the server and the CLI give the same state on the same
 // log, that a rejected answer appends nothing, roster removal and re-adding, a consistency check served as a
 // conflict, the forms a question names and their quoted purposes, the spouse phrase reworded as the filing status is
-// answered and corrected (questions, sheet labels and, on a constructed form, a conflict's figure labels), the vetting
+// answered and corrected (questions, sheet labels and, on a constructed form, a conflict's figure labels), a tick-box
+// screen (the group served and answered with some ticked, with none and with a refusing member, a member answered
+// earlier, a member corrected afterwards, rejected screens writing nothing), the vetting
 // routes (the cards listed, verdicts and notes saved to a verdict file in the temporary directory, a failed save, a
 // stale record after a wording change and a record of a question no longer asked), and fixture interview paths replayed through the server against the fixtures' expected
 // values.
@@ -15,7 +17,7 @@ import { join, resolve } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { loadCanonical } from "./canonical.js";
 import { askOrder, interviewView, loadInterview, questionTemplate, replay, type Event, type InterviewData } from "./interview.js";
-import { SPOUSE_PHRASE, SPOUSE_POSSESSIVE, STATUS_INPUT, personWording, spouseWording, type JointReturn } from "./spouse-wording.js";
+import { SPOUSE_PHRASE, SPOUSE_POSSESSIVE, STATUS_INPUT, jointReturn, personWording, spouseWording, type JointReturn } from "./spouse-wording.js";
 import { templateKey } from "./branches.js";
 import { renderValuesSheetText } from "./output.js";
 import { loadFixtureCases } from "./fixture-inputs.js";
@@ -223,8 +225,8 @@ export async function serveChecks(): Promise<void> {
     const names = docNames(config.tax_year);
     const byQuestion = questionForms(config, names.forms);
     const formsOf = (input: string) => byQuestion.get(input)!.map((f) => `${f.designation}${f.id === null ? "?" : f.purpose ? "+" : ""}`);
-    ok(isDeepStrictEqual(formsOf("scope.other_line16"), ["Form 1040", "Form 8814+", "Form 8615+", "Form 8621", "Form 8960+", "Form 4972+", "Form 8978+", "Schedule J (Form 1040)+"]),
-      `scope.other_line16 names Schedule J (resolved to Schedule J (Form 1040)), Form 8621, held without a purpose, and Forms 8814 and 8960, glossed: ${formsOf("scope.other_line16")}`);
+    ok(isDeepStrictEqual(formsOf("scope.income_averaging"), ["Schedule J (Form 1040)+"]),
+      `scope.income_averaging names Schedule J (resolved to Schedule J (Form 1040)), glossed: ${formsOf("scope.income_averaging")}`);
     ok(isDeepStrictEqual(formsOf("interest.penalty"), ["Form 1099-INT+", "Form 1099-OID+", "Schedule 1 (Form 1040)+"]), `a bare "Schedule 1" is Schedule 1 (Form 1040), the catalogs' only Schedule 1: ${formsOf("interest.penalty")}`);
     ok(formsOf("gift.special").includes("Schedule K-1?"), "a bare Schedule K-1, of three parent forms in the catalogs, stays unresolved");
     ok(isDeepStrictEqual(formsOf("ny_it2.state_withheld"), ["Form W-2", "Form IT-2+"]), `a New York question names Form W-2 and Form IT-2: ${formsOf("ny_it2.state_withheld")}`);
@@ -243,15 +245,15 @@ export async function serveChecks(): Promise<void> {
       assert.equal(p.status === 0, expectOk, `interview ${args.join(" ")}: ${p.stderr}`);
       return expectOk ? JSON.parse(p.stdout) : null;
     };
-    const same = (served: any, label: string) => {
-      const c = cli(["advance"]);
+    const same = (served: any, label: string, of: string = log) => {
+      const c = cli(["advance", "--log", of]);
       for (const k of ["status", "refusal", "question", "reachableInputs", "scope", "notices", "values"]) ok(isDeepStrictEqual(served[k], c[k]), `${label}: ${k} differs between the server and the CLI`);
       const pending = served.pending.map(({ type: _t, values: _v, forms: _f, ...q }: any) => q);
       ok(isDeepStrictEqual(pending, c.pending), `${label}: pending differs between the server and the CLI`);
       const hints: Record<string, RegExp> = { Bool: /^true or false/, NonNegDollars: /^integer cents/, Dollars: /^integer cents, negative/, Count: /^a whole number/,
         Enum: /^one of: "/, Roster: /^(?:one of: \[|a JSON list of distinct entry keys)/ };
       ok(served.pending.every((q: any) => hints[q.type]!.test(q.entry) && /null asks for help$/.test(q.entry)), `${label}: the CLI's entry hint matches each input's type`);
-      const events = readFileSync(log, "utf8").trim().split("\n").map((l) => JSON.parse(l) as Event);
+      const events = readFileSync(of, "utf8").trim().split("\n").map((l) => JSON.parse(l) as Event);
       const view = interviewView(data, config, replay(config, events));
       ok(renderValuesSheetText(view.sheet) === c.sheet, `${label}: the structured sheet does not render to the CLI's text sheet`);
       const sections = JSON.parse(JSON.stringify(view.sheet.sections)) as typeof view.sheet.sections; // as served
@@ -396,11 +398,17 @@ export async function serveChecks(): Promise<void> {
       return sheetLines(s).filter((l) => phrased(storedLabel.get(templateKey(l.key))!)).length;
     };
     let wording = (await post("/api/returns", { name: "wording" })).body;
+    // The help-text example is a pending question whose help carries the phrase. Where a new return has none pending,
+    // it is reached by answering yes to the question that leads to one (Schedule 3's foreign question opens
+    // s3.virgin_islands, whose help names the spouse).
+    const HELP_LEAD = "s3.foreign_any";
+    ok(wording.pending.some((q: any) => q.input === STATUS_INPUT), "a new return has the filing status pending");
+    if (!wording.pending.some((q: any) => phrased(q.help))) wording = (await answer("wording", HELP_LEAD, true)).body;
     const once = wording.pending.find((q: any) => q.type === "Bool" && q.prompt.includes(SPOUSE_PHRASE));
     const possessive = wording.pending.find((q: any) => q.prompt.includes(SPOUSE_POSSESSIVE));
     const helped = wording.pending.find((q: any) => phrased(q.help));
     ok(once && possessive && helped && wording.pending.some((q: any) => q.input === STATUS_INPUT),
-      "a new return has the filing status and spouse-phrased questions pending (both forms of the phrase, and one in a help text)");
+      `a new return has the filing status and spouse-phrased questions pending (both forms of the phrase, and one in a help text, reached through ${HELP_LEAD} where none is pending at the start)`);
     const shown = (s: any, input: string): string => { const q = [...s.pending, ...s.answered].find((x: any) => x.input === input); return `${q.prompt}\n${q.help}`; };
     const readings = new Map<string, Set<string>>([once, possessive, helped].map((q: any) => [q.input, new Set<string>()]));
     const read = (s: any) => { for (const [input, texts] of readings) texts.add(shown(s, input)); };
@@ -514,10 +522,10 @@ export async function serveChecks(): Promise<void> {
     ok([...opening.pending, ...opening.answered].every((q: any) => !q.prompt.includes(FRAME)), "the stored per-person frame is not served once the roles are recorded");
     sameOpening(opening, "the couple's return");
     // An unmarried pair: the existing consistency check, whose recorded status is reached through the first question.
-    opening = (await answer("opening", "household.married", false)).body;
-    opening = (await answer("opening", "household.spouse_died_2025", false)).body;
+    opening = (await answer("opening", "household.married_dec31", false)).body;
+    opening = (await answer("opening", "household.spouse_died_this_year", false)).body;
     const pairConflict = opening.conflicts.find((c: any) => c.gate === "household.filing_status_conflict");
-    ok(pairConflict && isDeepStrictEqual(pairConflict.answers.map((a: any) => a.input), ["$person", "household.married", "household.spouse_died_2025"]),
+    ok(pairConflict && isDeepStrictEqual(pairConflict.answers.map((a: any) => a.input), ["$person", "household.married_dec31", "household.spouse_died_this_year"]),
       `two unmarried people filing together are shown the conflict, with the first question as the answer that set the status: ${JSON.stringify(opening.conflicts.map((c: any) => [c.gate, c.answers.map((a: any) => a.input)]))}`);
     // One person: the status is asked next, with labelled options in the bank's order and married filing jointly withheld.
     opening = (await post("/api/returns/opening/answer", { input: "$person", value: person.choices[0].value, labels: person.choices[0].labels })).body;
@@ -546,6 +554,150 @@ export async function serveChecks(): Promise<void> {
       && framed(earlier, "spouse").every((q: any) => q.frame === "About your spouse"), "and it is served with the same frames");
 
     await vettingChecks(tmp, port, data, config, ok);
+
+    // The screen is tested on the bank's group `rare_credits`, which the bank must declare: without it the route
+    // /answers has no test here.
+    if (!config.groups?.some((g) => g.id === "rare_credits")) ok(false, "the bank declares no group rare_credits, so the tick-box screen is not tested");
+    else {
+    // A tick-box screen: the bank's group of three yes or no questions of one block, shown together and answered
+    // together through /answers. Each return is a whole federal return's answers without the group's (and without the
+    // question a yes opens), so the group's first member is the next question.
+    const TICKS = ["s3.credit_bond", "s3.farmland", "s3.repaid_income"];
+    const OPENED = ["s3.farmland_deferral"];
+    const tickCase = federal.find((c) => c.walk === "full" && jointReturn(c.inputs) === "not-joint" && TICKS.every((m) => c.inputs[m] === false))!;
+    ok(tickCase !== undefined, "a whole federal return answers the three grouped questions no");
+    const linesOf = (name: string) => readFileSync(join(dir, `${name}.jsonl`), "utf8").trim().split("\n").map((l) => JSON.parse(l) as Event);
+    const seed = async (name: string, keep: string[] = []) => {
+      const left = [...TICKS, ...OPENED].filter((k) => !keep.includes(k));
+      writeFileSync(join(dir, `${name}.jsonl`), [{ version: 1, tax_year: config.tax_year, profile: "ny" }, ...Object.entries(tickCase.inputs).filter(([k]) => !left.includes(k)).map(([input, value]) => ({ input, value }))]
+        .map((e) => JSON.stringify(e)).join("\n") + "\n", { mode: 0o600 });
+      return (await get(`/api/returns/${name}`)).body;
+    };
+    const tick = (name: string, answers: unknown) => post(`/api/returns/${name}/answers`, { answers });
+    const boxes = (s: any): string[] | null => (s.group ? s.group.members.map((q: any) => q.input) : null);
+    const ticked = (yes: string[], of: string[] = TICKS) => of.map((input) => ({ input, value: yes.includes(input) }));
+    const stored = (input: string) => config.questions.find((q) => q.input === input)!;
+
+    // The screen as served: the heading as shown, a box for each member in asking order with its label, and each box's
+    // own question whole (prompt, help, source, type), as a pending question is served.
+    let ticks = await seed("ticks-some");
+    ok(ticks.pending[0].input === TICKS[0] && ticks.group?.id === "rare_credits" && isDeepStrictEqual(boxes(ticks), TICKS), `the group's first member is next and the screen has the three boxes: ${JSON.stringify([ticks.pending[0].input, boxes(ticks)])}`);
+    const groupHeading = config.groups!.find((g) => g.id === "rare_credits")!.heading;
+    ok(ticks.group.heading === spouseWording(groupHeading, "not-joint") && !ticks.group.heading.includes("joint return") && groupHeading.includes(SPOUSE_PHRASE), `the heading is reworded for the filing status as a question is: ${ticks.group.heading}`);
+    ok(ticks.group.members.every((q: any) => q.type === "Bool" && q.group === "rare_credits" && q.tick === stored(q.input).tick && q.tick !== q.prompt
+      && q.prompt === spouseWording(stored(q.input).prompt, "not-joint") && q.help === spouseWording(stored(q.input).help, "not-joint") && typeof q.cite?.doc === "string" && Array.isArray(q.forms)),
+      "each box carries its label and its own question, help and source");
+    const late = TICKS.filter((m) => !ticks.pending.some((p: any) => p.input === m));
+    ok(ticks.pending.filter((p: any) => TICKS.includes(p.input)).every((p: any) => p.tick === stored(p.input).tick), "a pending member carries its label");
+    same(ticks, "a tick-box screen offered", join(dir, "ticks-some.jsonl"));
+    ok(isDeepStrictEqual(cli(["advance", "--log", join(dir, "ticks-some.jsonl")]).group.members.map((q: any) => q.input), TICKS), "the command-line interview's state names the same screen");
+
+    // Rejected screens write nothing: a box left out, a question that is no box, a box twice, an answer that is not
+    // yes or no, and a body that is no list.
+    const refusedTicks = async (name: string, answers: unknown, pattern: RegExp, label: string) => {
+      const before = readFileSync(join(dir, `${name}.jsonl`), "utf8");
+      const r = await tick(name, answers);
+      ok(r.status === 400 && pattern.test(r.body.error), `${label}: expected 400 matching ${pattern}, got ${r.status} ${JSON.stringify(r.body).slice(0, 200)}`);
+      ok(readFileSync(join(dir, `${name}.jsonl`), "utf8") === before, `${label}: a rejected screen changed the log`);
+    };
+    await refusedTicks("ticks-some", ticked([], TICKS.slice(0, 2)), /s3\.repaid_income: the screen's answers leave this box out/, "a box left out");
+    await refusedTicks("ticks-some", [...ticked([]), { input: ticks.pending.find((p: any) => !TICKS.includes(p.input)).input, value: false }], /not a box of the tick-box screen offered now/, "a question outside the group");
+    await refusedTicks("ticks-some", [...ticked([]), { input: "no.such_input", value: false }], /no\.such_input: not a box/, "an undeclared input");
+    await refusedTicks("ticks-some", [...ticked([]), { input: TICKS[0], value: true }], /s3\.credit_bond: answered twice/, "a box answered twice");
+    await refusedTicks("ticks-some", TICKS.map((input, i) => ({ input, value: i === 2 ? null : true })), /s3\.repaid_income: a tick-box is answered yes or no/, "a help request among valid answers");
+    await refusedTicks("ticks-some", TICKS.map((input, i) => ({ input, value: i === 2 ? "yes" : false })), /a tick-box is answered yes or no/, "an answer as text");
+    await refusedTicks("ticks-some", { [TICKS[0]!]: true }, /are \{answers: \[/, "answers that are no list");
+    await refusedTicks("ticks-some", [TICKS[0]], /a list of \{input, value\}/, "answers that are not {input, value}");
+    ok((await tick("no-such-return", ticked([]))).status === 404, "a screen for a return that does not exist");
+
+    // Some ticked: each member is recorded as its own answer, the ticked yes and the others no, in the order shown;
+    // the question the ticked member opens is asked next; the answered list holds each member with its own question.
+    const lengthBefore = linesOf("ticks-some").length;
+    let r = await tick("ticks-some", ticked(["s3.farmland"]));
+    assert.equal(r.status, 200, JSON.stringify(r.body).slice(0, 300));
+    ticks = r.body;
+    ok(isDeepStrictEqual(linesOf("ticks-some").slice(lengthBefore), TICKS.map((input) => ({ input, value: input === "s3.farmland" }))), "the screen's answers are appended as one event each, yes for the ticked and no for the others");
+    ok(ticks.group === null && ticks.pending[0].input === "s3.farmland_deferral" && !ticks.pending.some((p: any) => TICKS.includes(p.input)), `the question the ticked box opens is asked next: ${ticks.pending[0].input}`);
+    ok(TICKS.every((m) => { const a = ticks.answered.find((x: any) => x.input === m); return a && a.value === (m === "s3.farmland") && a.prompt === spouseWording(stored(m).prompt, "not-joint") && a.type === "Bool"; }), "the answered list has each member as its own answer, under its own question");
+    ok(ticks.changed.length > 0, "the lines the screen's answers changed are listed");
+    same(ticks, "a tick-box screen answered", join(dir, "ticks-some.jsonl"));
+    ok(isDeepStrictEqual((await get("/api/returns/ticks-some")).body.values, ticks.values), "a reload gives the same values");
+    await refusedTicks("ticks-some", ticked([]), /the interview offers no tick-box screen now/, "a screen when none is offered");
+    // One member corrected afterwards, on its own, through the ordinary route: the others stand.
+    r = await answer("ticks-some", "s3.farmland", false);
+    ok(r.status === 200 && r.body.answered.find((a: any) => a.input === "s3.farmland").value === false && !r.body.pending.some((p: any) => p.input === "s3.farmland_deferral")
+      && TICKS.filter((m) => m !== "s3.farmland").every((m) => r.body.answered.find((a: any) => a.input === m).value === false) && r.body.group === null,
+      "a member is corrected on its own, which closes the question it had opened");
+    r = await answer("ticks-some", "s3.farmland", true);
+    ok(r.status === 200 && r.body.pending[0].input === "s3.farmland_deferral" && r.body.group === null && TICKS.filter((m) => m !== "s3.farmland").every((m) => r.body.answered.find((a: any) => a.input === m).value === false),
+      "the member corrected back to yes opens its question again, and the others stand");
+
+    // None of these: every member recorded no, and the return ends as the fixture's does.
+    await seed("ticks-none");
+    r = await tick("ticks-none", ticked([]));
+    ok(r.status === 200 && isDeepStrictEqual(linesOf("ticks-none").slice(-TICKS.length), ticked([])) && r.body.group === null && !r.body.pending.some((p: any) => [...TICKS, ...OPENED].includes(p.input)),
+      "none of these records no for each member and opens nothing");
+    for (const [key, expected] of Object.entries(tickCase.expect ?? {})) if (key in r.body.values) ok(isDeepStrictEqual(r.body.values[key].value, expected), `${tickCase.id} with the group answered on one screen: ${key}`);
+
+    // The same answers sent one at a time through the ordinary route, in the order shown. Each member states its place
+    // (`seq`), so a box stays open after another box's yes has opened a question (the reach pass reads past the
+    // unanswered gate), and the three answers are written as the screen writes them, with the opened question next.
+    // Where the members are read by one chain of tests a later box is rejected one at a time, which is why the screen's
+    // answers go in one request (`tick-groups --self-test`, the constructed chain).
+    await seed("ticks-one-by-one");
+    ok((await answer("ticks-one-by-one", "s3.credit_bond", false)).status === 200 && (await answer("ticks-one-by-one", "s3.farmland", true)).status === 200, "one at a time, the first two answers of the screen are written");
+    r = await answer("ticks-one-by-one", "s3.repaid_income", false);
+    ok(r.status === 200, "one at a time, a later box of the same screen is still open after an earlier box's yes");
+    ok(r.status === 200 && isDeepStrictEqual(linesOf("ticks-one-by-one").slice(-TICKS.length), ticked(["s3.farmland"])) && r.body.group === null && r.body.pending[0].input === "s3.farmland_deferral",
+      "one at a time, in the order shown, the answers are written as the screen writes them and the opened question is next");
+
+    // A member whose yes refuses the return: the refusal is the one the same answers give one question at a time, and
+    // every box's answer is saved with it.
+    await seed("ticks-refuse");
+    r = await tick("ticks-refuse", ticked(["s3.credit_bond"]));
+    let single = await seed("ticks-refuse-single");
+    for (let n = 0; single.status !== "refused"; n++) {
+      assert.ok(n < 8, "answered one at a time, the members did not refuse the return");
+      const next = single.pending.find((p: any) => TICKS.includes(p.input));
+      single = (await answer("ticks-refuse-single", next.input, next.input === "s3.credit_bond")).body;
+    }
+    ok(r.status === 200 && r.body.status === "refused" && /Form 8912/.test(r.body.refusal.form) && isDeepStrictEqual(r.body.refusal, single.refusal) && r.body.refusalNote === single.refusalNote
+      && r.body.refusalFinal === single.refusalFinal && isDeepStrictEqual(r.body.conflicts, single.conflicts),
+      `a ticked member's refusal is served as that question's refusal is: ${JSON.stringify(r.body.refusal).slice(0, 200)}`);
+    ok(isDeepStrictEqual(linesOf("ticks-refuse").slice(-TICKS.length), ticked(["s3.credit_bond"])) && TICKS.every((m) => r.body.answered.some((a: any) => a.input === m)), "every box's answer is saved with a refusing one");
+    // Correcting the refusing member clears the refusal; the others' answers stand and are not asked again.
+    r = await answer("ticks-refuse", "s3.credit_bond", false);
+    ok(r.status === 200 && r.body.refusal?.gate !== single.refusal.gate && !r.body.pending.some((p: any) => TICKS.includes(p.input)), "correcting the refusing member clears its refusal and asks no member again");
+
+    // A member answered earlier is not on the screen; the rest are, and are answered together.
+    await seed("ticks-earlier");
+    r = await answer("ticks-earlier", "s3.farmland", false);
+    const rest = TICKS.filter((m) => m !== "s3.farmland");
+    ok(r.status === 200 && isDeepStrictEqual(boxes(r.body), rest), `a member answered earlier is not shown: ${JSON.stringify(boxes(r.body))}`);
+    await refusedTicks("ticks-earlier", ticked([]), /s3\.farmland: not a box of the tick-box screen offered now/, "a screen with an answered member");
+    r = await tick("ticks-earlier", ticked(["s3.repaid_income"], rest));
+    ok(r.status === 200 && r.body.status === "refused" && isDeepStrictEqual(linesOf("ticks-earlier").slice(-rest.length), ticked(["s3.repaid_income"], rest)), "the rest are answered together");
+    // A help request leaves a member open, so it stays on the screen.
+    await seed("ticks-help");
+    r = await answer("ticks-help", "s3.farmland", null);
+    ok(r.status === 200 && isDeepStrictEqual(boxes(r.body), TICKS) && r.body.group.members.find((q: any) => q.input === "s3.farmland").helpRequested === true, "a member with help requested stays on the screen, marked");
+    // One member open: an ordinary question with its full prompt, and no screen.
+    const alone = await seed("ticks-alone", ["s3.credit_bond", "s3.farmland"]);
+    ok(alone.group === null && alone.pending[0].input === "s3.repaid_income" && alone.pending[0].prompt === spouseWording(stored("s3.repaid_income").prompt, "not-joint"), `the only open member is asked as an ordinary question: ${JSON.stringify([alone.group, alone.pending[0].input])}`);
+    ok((await answer("ticks-alone", "s3.repaid_income", false)).status === 200, "and answered as one");
+    // On a joint return the heading names the spouse, as the members' own questions do.
+    const jointTicks = Object.entries(tickCase.inputs).filter(([k]) => ![...TICKS, ...OPENED].includes(k)).map(([input, value]) => ({ input, value: input === STATUS_INPUT ? "mfj" : value }));
+    writeFileSync(join(dir, "ticks-joint.jsonl"), [{ version: 1, tax_year: config.tax_year, profile: "ny" }, ...jointTicks].map((e) => JSON.stringify(e)).join("\n") + "\n", { mode: 0o600 });
+    const joint = (await get("/api/returns/ticks-joint")).body;
+    if (joint.group) ok(joint.group.heading === spouseWording(groupHeading, "joint") && /you or your spouse/.test(joint.group.heading), `the heading on a joint return: ${joint.group.heading}`);
+    // The vetting page's card of a member says how it is shown: its group, the heading and its label.
+    const vetCards = (await get("/api/vetting")).body.questions;
+    const vetCard = vetCards.find((c: any) => c.id === "s3.farmland");
+    ok(isDeepStrictEqual(vetCard.tick, { group: "rare_credits", heading: spouseWording(groupHeading, "not-joint"), label: stored("s3.farmland").tick, with: TICKS.filter((m) => m !== "s3.farmland") })
+      && isDeepStrictEqual(vetCards.filter((c: any) => c.tick?.group === "rare_credits").map((c: any) => c.id), TICKS) && vetCard.digest === digestOf(judgedOf(data, stored("s3.farmland"))),
+      `a member's vetting card names its group, heading and label, and its digest is the question's alone: ${JSON.stringify(vetCard.tick)}`);
+    console.log(`serve: tick-box screen ${JSON.stringify(TICKS)}; ${late.length ? `${late.join(", ")} not pending when the screen is offered (reached after another member's no)` : "every member pending when offered"}; joint heading ${joint.group ? "checked" : "not reached (the joint return's next question is not a member)"}`);
+    }
 
     // Fixture interview paths replayed through the server: the federal whole returns (the federal questions; their
     // fixtures have no New York answers) and a sample of the New York cases. Each walk answers the first pending

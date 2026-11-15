@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "3a15ed464ec0c4e2a869b1a15dfbe0440a3dd97a9abbf9ddcd4d29cf7f919dcf",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "agree / disagree / missing": "2 / 3 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,29 +23,31 @@
   },
   {
    "key": "div.box2b_if_capital_gain",
-   "record": "31d267669399bd40f58212d806210436bac367702c17842636fc25c41ec56fba",
-   "status": "AGREE",
-   "subject_key": "a539738063f8c4829ae6977820956c12d15f39dab5fb3fa9e44e764d0a371220"
+   "record": "40b03853341b69a6ae454c70e927278ca30bb5cc83fe3dc3ed0440ef4347c736",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f1099div p. 5, Instructions for Recipient: \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\". The project asks box 2b only when capital gain distributions (box 2a, sd.distributions) are above zero and a Form 1099-DIV shows an amount in the less common boxes (div.capital_gain_boxes); with box 2a zero, box 2b, a portion of it, is zero. The reply tests div.any and div.other_boxes only and so reads div.box2b where the interview does not ask it. executable triage (.transcription/triage/2025/div.json, executable-triage-v2): 2,916 of 2,974 agree; 4 candidate-unknown, 54 project-unknown, all on incomplete or refused returns; no value difference. Project stands.",
+   "subject_key": "2239cae74ece883d4c2242b3305bce524f1062f2b69e3ddef49c66702bafd165"
   },
   {
    "key": "div.box2d_if_capital_gain",
-   "record": "31d267669399bd40f58212d806210436bac367702c17842636fc25c41ec56fba",
-   "status": "AGREE",
-   "subject_key": "ab680655c18278bcd80a182a3d37bb62f56690da436e6f0db7ca1c8a28ee0385"
+   "record": "40b03853341b69a6ae454c70e927278ca30bb5cc83fe3dc3ed0440ef4347c736",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f1099div p. 5, Instructions for Recipient: \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\". As box 2b: the project asks box 2d only when box 2a is above zero (div.capital_gain_boxes); the reply drops that parent and reads div.box2d where it is not asked. executable triage (.transcription/triage/2025/div.json, executable-triage-v2): 2,916 of 2,974 agree; 4 candidate-unknown, 54 project-unknown, all on incomplete or refused returns; no value difference. Project stands.",
+   "subject_key": "3f09d94cff6732c14623e329a41bf4c58484950aeeeeeebc45080a32ab643311"
   },
   {
    "key": "div.box12_if_dividends",
-   "record": "31d267669399bd40f58212d806210436bac367702c17842636fc25c41ec56fba",
+   "record": "40b03853341b69a6ae454c70e927278ca30bb5cc83fe3dc3ed0440ef4347c736",
    "status": "AGREE",
-   "subject_key": "2bd0a28336318915c3fd16ce69ff83f4544a158ed608d9010ef61e7cb354f398"
+   "subject_key": "457dcf3b50810377832c7bb768864ca2657cf473beed6e6a6c9d75e5d3febdf3"
   }
  ],
  "subjects": {
   "div.has_ordinary": "51c58c1de7464bc47824ab0732e2e7831ea30d020938580b7f2bd8eee2826ad4",
   "div.zero": "023fca92bb2ca85c42b5ddf6296460a606a9efbc6b93efb54dd6aa7da46b1887",
-  "div.box2b_if_capital_gain": "d037b9cb7d43cab62280380d52b31c7076837f085745fbc7d567bb1bdb2e2821",
-  "div.box2d_if_capital_gain": "f0f73fe697c3e65e8a82d138affaeb3b54cd208ee43548636fb0794a7dab5dbf",
-  "div.box12_if_dividends": "a5dfd6825e6b28b269a3a9ee79dcdb95d6803af033b1f5b53856a0d8879cb82a"
+  "div.box2b_if_capital_gain": "eca821b6729cc9058f3361cc58d4c0ea5efdf0e57a676ba941d497e88901ad69",
+  "div.box2d_if_capital_gain": "53077916f4780325880e3567c6417b96a009aa97d1296edfef326e411033a12a",
+  "div.box12_if_dividends": "523ea11eb5f7ac8867d66d74e8ad1867db1afad4c43f2816f64daf3fd6a1d6d0"
  },
  "__rest__": "ab9ea5065d1d3f1a23ab77de1d140198c1b1c4bc6363087c360e4f5384b11029",
  "foreign": {

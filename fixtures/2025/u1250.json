@@ -12,6 +12,7 @@
       "inputs": {
         "div.any": true,
         "div.box2b": 400000,
+        "div.other_boxes": true,
         "div.box2d": 200000,
         "sd.distributions": 1000000,
         "$sales": [

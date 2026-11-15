@@ -452,6 +452,22 @@
    }
   },
   {
+   "printed": "24b",
+   "project_expr_sha256": "78a5ee22f0342f2c2386cb7a2fb095950b29fb617eeb6852bc13ddf27b80506a",
+   "second_expr_sha256": "6f21e1080573d6a5b42d7c59ec719b57a5120c0e0610bfaba73ec4d21a8d96b2",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3622 values compared, none different or missing: 370 on 1987 fixture cases, 186 on 500 generated returns seed 20261026, 3066 on 2321 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "c01fa6cf6d17719076c3d1e005d2c6d348ebe423a7da88d46e71cd62899246a6",
+   "date": "2026-11-14",
+   "run": "3abffb256e90527d58fe689d1cf44b494ccd023a487056d89659dd1b202a456f",
+   "subject_key": "26f4e6ea4bdc43c963a55bf078a1d6835b2c63515575e9fc0cc417bba4ebd4bc",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "28",
    "project_expr_sha256": "4f76c7c1881634c0dfa6b97e2a0b081ef849ea177184e35d939f2b5b4868c64c",
    "second_expr_sha256": "e220fb3a625f159ccd27cdc1b5868a0338e92369b74b8858d19ea9bbb75c0612",
@@ -609,6 +625,29 @@
    }
   },
   {
+   "printed": "40",
+   "project_expr_sha256": "6a61628e9f01e372273d61a2dab4bc55f4fe2ef3fe48dc12ebdc2b10c91213ea",
+   "second_expr_sha256": "555236e247035474b364480b3a193e000d1a450f227abbd9ee2940dbbbff6e11",
+   "ruling": "Ruling: representation; equivalent. f1040sc line 40, \"Add lines 35 through 39\". The project zeroes each of lines 35 to 39 when the business sells no goods (sc.goods false) and adds them; the reply zeroes the sum. Same arithmetic. executable triage (.transcription/triage/2025/sc.json, executable-triage-v2): 3,746 of 3,749 agree; 2 project-unknown (incomplete), 1 project-refuses (refused); no value difference. Project stands.",
+   "context": "c01fa6cf6d17719076c3d1e005d2c6d348ebe423a7da88d46e71cd62899246a6",
+   "date": "2026-11-14",
+   "run": "3abffb256e90527d58fe689d1cf44b494ccd023a487056d89659dd1b202a456f",
+   "subject_key": "f09175b2807c4deaa6bcc1c3148fa8f97f1c7505ea7b37e92c5862d1e60b7640",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.refuse.inventory@person[taxpayer].sc[b]",
+     "partial:classm.ira.1-person[taxpayer].sc[shop].inventory_other@person[taxpayer].sc[shop]",
+     "partial:mutation.t2.f8962_months_scveh3-person[taxpayer].sc[biz_b].inventory_other@person[taxpayer].sc[biz_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "5 (sc.f7206_line5)",
    "project_expr_sha256": "3cc8558b5de664770f8916c8a9ac61f83d57cf49ebbafc1f73c0050f6b596ee1",
    "second_expr_sha256": "47d80d10956461e9309d2f1b8ab65a455373a2921d2e9be4a3c8830fc0d2efe7",
@@ -651,6 +690,45 @@
      "fixture:stage14.ho.refuse_two_businesses@person[taxpayer].sc[home]",
      "fixture:stage14.ho.refuse_two_businesses@person[taxpayer].sc[shop]",
      "fixture:stage14.veh.suv_179@person[taxpayer].sc[haul]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "5 (sc.ho_line5)",
+   "project_expr_sha256": "2e695696524921390037b59538e48d30f0206bfe32c8aa3f7245cd2884cf9a6a",
+   "second_expr_sha256": "bc82987950056a74b5f94ced0520e08b4309bedecc5c58ef57b36db221bbd9be",
+   "ruling": "Ruling: model error; i1040sc p. 12, Simplified Method Worksheet, line 5, \"Enter the smaller of line 1 or line 4\", with line 1 Schedule C line 29, and p946 p. 19, Business Income Limit, \"Two different taxable income limits\" (given in the request): when a section 179 deduction and a home office limited by gross income both apply, each limit depends on the other and Pub. 946 sets the order. The reply takes the smaller of line 29 (after the section 179 deduction) and line 4, which reads line 29 through line 30 and Form 4562 line 12 in a cycle (\"cycle at ...sc[desk].line28\"), so the line evaluates to nothing on the Schedule C returns sampled. The project uses line 4 when it fits within line 29 less the most section 179 deduction possible, the smaller of line 4 and line 29 without the section 179 deduction when no section 179 deduction is possible, and refuses the case where both limits could bind (sc.ho_both_limits). executable triage (.transcription/triage/2025/sc.json, executable-triage-v2): 1,953 of 3,749 agree; 1,488 candidate-unknown (352 completed, e.g. stage14.asset.hy_5yr), 110 candidate-refuses, 198 project-refuses (7 completed, the both-limits refusal); no value difference. Project stands.",
+   "context": "c01fa6cf6d17719076c3d1e005d2c6d348ebe423a7da88d46e71cd62899246a6",
+   "date": "2026-11-14",
+   "run": "3abffb256e90527d58fe689d1cf44b494ccd023a487056d89659dd1b202a456f",
+   "subject_key": "e6f0427373b844ff338bb150dcda73ee9df348cec5186505f7d8fb27a8542485",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.refuse_class@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.refuse_reuse_recycling@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.refuse_pre_2017@person[taxpayer].sc[desk]",
+     "fixture:classm.eic.3.deepseek@person[taxpayer].sc[biz_a]",
+     "fixture:classm.f4952.3@person[taxpayer].sc[biz_a]",
+     "fixture:classm.f4952.3@person[taxpayer].sc[biz_b]",
+     "fixture:mutation.t2.f8962_months_scveh3@person[taxpayer].sc[biz_b]",
+     "fixture:stage14.sep.step1_other_se_income@person[taxpayer].sc[biz_b]",
+     "fixture:stage14.s179.income_limit@person[taxpayer].sc[desk]",
+     "fixture:stage14.s179.refuse_zero_limit@person[taxpayer].sc[d]",
+     "fixture:stage14.s179.refuse_over_limit@person[taxpayer].sc[d]",
+     "fixture:stage14.s179.refuse_mfs@person[taxpayer].sc[d]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1391,6 +1469,45 @@
    "ruling": "Ruling: representation; All differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/sc.json): 3600 of 3697 comparisons agree; on completed returns no difference.",
    "context": "eceba7a52558aa2602ccfc7ac771b38d768be22581861bdb5442971542ac7276",
    "subject_key": "ed71d7f3294ade24dd6c944a2fbdafd0d546d8fd6d570e059adab104be58640a"
+  },
+  {
+   "printed": "sc.line31_pre179",
+   "project_expr_sha256": "deae0ed23738959a9f5006609a8a469d16d8383fc91cfc61e818128bc7ed2542",
+   "second_expr_sha256": "b865a661f71b8bf6d75eed0482d4eb0684fa594cb1c71ae81fd63ee5ca0dc4ee",
+   "ruling": "Ruling: model error; i4562 p. 5, Line 11, and p946 pp. 17-19, Business Income Limit: the business income is figured \"without regard to the section 179 deduction\". The reply defines it as line 31 plus Form 4562 line 12 for the business (sc.s179_allowed), but line 12 is limited by line 11, which reads this line: the definition is circular and evaluates to nothing (\"cycle at ...sc[desk].line28\"). The project figures it forward, line 29 without the section 179 deduction less line 30. executable triage (.transcription/triage/2025/sc.json, executable-triage-v2): 1,606 of 3,749 agree; 1,916 candidate-unknown (371 completed, e.g. stage14.asset.hy_5yr, project $49,400.00), 112 candidate-refuses, 115 project-refuses; no value difference. Project stands.",
+   "context": "c01fa6cf6d17719076c3d1e005d2c6d348ebe423a7da88d46e71cd62899246a6",
+   "date": "2026-11-14",
+   "run": "3abffb256e90527d58fe689d1cf44b494ccd023a487056d89659dd1b202a456f",
+   "subject_key": "8784407f514119ca8335c1ceb8d3e0760d008aecd2a91f9e9a4e6eb5fde2092d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.refuse_class@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.refuse_reuse_recycling@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.refuse_pre_2017@person[taxpayer].sc[desk]",
+     "fixture:classm.f4952.3@person[taxpayer].sc[biz_a]",
+     "fixture:classm.f4952.3@person[taxpayer].sc[biz_b]",
+     "fixture:stage14.s179.refuse_zero_limit@person[taxpayer].sc[d]",
+     "fixture:stage14.s179.refuse_over_limit@person[taxpayer].sc[d]",
+     "fixture:stage14.s179.refuse_mfs@person[taxpayer].sc[d]",
+     "fixture:redesign.credits.refuse.business_credit@person[taxpayer].sc[shop]",
+     "fixture:redesign.credits.refuse.business_fuel_credit@person[taxpayer].sc[shop]",
+     "fixture:stage14.ho.refuse_two_businesses@person[taxpayer].sc[home]",
+     "fixture:stage14.ho.refuse_two_businesses@person[taxpayer].sc[shop]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "sc.profit_pos",

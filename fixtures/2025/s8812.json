@@ -24,7 +24,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sa.line12": {
@@ -60,6 +61,7 @@
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -76,7 +78,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12
       },
@@ -428,7 +430,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12
       },
@@ -806,7 +808,7 @@
           "c"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[a].age": 2,
         "dependent[a].months": 12,
         "dependent[b].age": 5,
@@ -1306,7 +1308,7 @@
           "c"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[a].age": 1,
         "dependent[a].months": 12,
         "dependent[b].age": 6,
@@ -1807,7 +1809,7 @@
         "$dependent": [
           "child"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 12,
         "dependent[child].months": 12
       },
@@ -2149,7 +2151,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -2499,11 +2501,12 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].months": 5,
         "dependent[child].supported": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -3005,7 +3008,7 @@
           "child"
         ],
         "person[taxpayer].work_ssn": false,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12
       },
@@ -3341,7 +3344,7 @@
         ],
         "person[taxpayer].tin": false,
         "person[taxpayer].work_ssn": false,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12
       },
@@ -3682,10 +3685,11 @@
         "$dependent": [
           "child"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -4263,10 +4267,11 @@
         "$dependent": [
           "child"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -4753,11 +4758,12 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "s8812.combat_pay": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -5248,7 +5254,28 @@
       "evidence_note": "Synthetic refusal regression: Schedule 1 is in play, so Earned Income Worksheet lines 3, 4 and 5 and Schedule 8812 line 22 refuse. No independent human review is claimed. Stage 14: Earned Income Worksheet line 5 and Schedule 8812 line 22 now read Schedule 1, line 15 (zero here) instead of refusing; lines 3 and 7 refuse with the reworded statutory employee, farm or partnership refusal. Line 23 therefore computes ($306) and line 25 refuses through the general Schedule 1 refusal; the return stays refused. Owner decision 2026-11-07 (Form 8880 eligibility AGI-first; f8880 p. 2, Who Can Take This Credit; lines 8-9): Schedule 8812 Credit Limit Worksheet A line 2 reads Form 8880 line 12, whose AGI test (line 8) is now decided first; line 8 is refused on this return, so line 2 is that refusal where it was $0 (no contributions).",
       "inputs": {
         "f1040.status": "hoh",
-        "scope.schedule1": true,
+        "scope.noncitizen": false,
+        "scope.armed_forces": false,
+        "scope.unearned_2700": false,
+        "scope.religious_work": false,
+        "scope.artist_official": false,
+        "scope.foreign_shares": false,
+        "scope.business_before": false,
+        "scope.reservist_expenses": false,
+        "scope.military_move": false,
+        "scope.rental": false,
+        "scope.k1": false,
+        "scope.farm": true,
+        "scope.clergy": false,
+        "scope.church_exempt_wages": false,
+        "scope.w2_marks": false,
+        "scope.performer_expenses": false,
+        "scope.recovery": false,
+        "scope.archer_msa": false,
+        "scope.se_plan_other": false,
+        "scope.reforestation": false,
+        "scope.attorney_fees": false,
+        "scope.nol": false,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -5261,10 +5288,11 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -5892,7 +5920,7 @@
       "evidence_note": "Synthetic refusal regression: other Schedule 2 taxes are reported, so Schedule 8812 line 22 refuses (Schedule 2 lines 5, 6 and 13) and lines 23 and 25 follow. No independent human review is claimed. Owner decision 2026-11-07 (Form 8880 eligibility AGI-first; f8880 p. 2, Who Can Take This Credit; lines 8-9): Schedule 8812 Credit Limit Worksheet A line 2 reads Form 8880 line 12, whose AGI test (line 8) is now decided first; line 8 is refused on this return, so line 2 is that refusal where it was $0 (no contributions).",
       "inputs": {
         "f1040.status": "hoh",
-        "s2.other": true,
+        "s2.other_tax": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -5905,13 +5933,21 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "s1a.tips": null,
         "s1a.overtime": null,
         "s1a.carloan": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s2.w2_marks": false,
+        "s2.household_help": false,
+        "s2.hsa_testing": false,
+        "s2.credit_recapture": false,
+        "s2.mortgage_subsidy": false,
+        "s2.lookback": false,
+        "sa.mortgage_interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -6434,11 +6470,12 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "s8812.puerto_rico": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -6807,11 +6844,12 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "household.credit_disallowed": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s8812.line12": {
@@ -6895,7 +6933,7 @@
           "c"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "s8812.combat_pay": true,
         "dependent[a].age": 2,
         "dependent[a].months": 12,
@@ -6944,7 +6982,8 @@
         "s1a.tips": null,
         "s1a.overtime": null,
         "s1a.carloan": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line27a": {
@@ -6994,13 +7033,14 @@
           "c"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[a].age": 1,
         "dependent[a].months": 12,
         "dependent[b].age": 6,
         "dependent[b].months": 12,
         "dependent[c].age": 12,
         "dependent[c].months": 12,
+        "eic.lived_with_relative": true,
         "eic.qc_of_another": true
       },
       "expect": {
@@ -7057,7 +7097,7 @@
           "child"
         ],
         "person[taxpayer].work_ssn": false,
-        "household.married": true,
+        "household.married_dec31": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12
       },
@@ -7103,7 +7143,7 @@
           "child"
         ],
         "person[taxpayer].work_ssn": false,
-        "household.married": true,
+        "household.married_dec31": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
         "person[spouse].tin": false,
@@ -7149,7 +7189,7 @@
         "$dependent": [
           "child"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
         "person[spouse].tin": false,
@@ -7184,7 +7224,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "$sc@person[taxpayer]": [
@@ -7236,7 +7276,7 @@
         ],
         "person[taxpayer].sc[t].line1": 5000000,
         "person[spouse].sc[s].line18": 6000000,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "s1.line15": {
@@ -7282,7 +7322,7 @@
         ],
         "person[taxpayer].sc[t].line1": 5000000,
         "person[spouse].sc[s].line18": 5000000,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "s1.line15": {
@@ -7327,15 +7367,17 @@
           "b"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "s8812.puerto_rico": true,
-        "f5695.part1_any": true,
+        "f5695.any": true,
+        "f5695.solar": true,
         "dependent[a].age": 4,
         "dependent[a].months": 12,
         "dependent[b].age": 9,
         "dependent[b].months": 12,
         "f5695.line1": 1000000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s8812.clwb_11": {
@@ -7378,10 +7420,11 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "s1.gambling_winnings": 500000,
         "dependent[a].age": 6,
-        "dependent[a].months": 12
+        "dependent[a].months": 12,
+        "s1.winnings_any": true
       },
       "expect": {
         "s1.line8b": {
@@ -7539,7 +7582,7 @@
         "dependent[c].age": 9,
         "dependent[c].months": 12,
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -7555,7 +7598,8 @@
         ],
         "person[taxpayer].w2[emp_a].box3": 100000,
         "person[taxpayer].sc[shop].line1": 200000,
-        "f5695.part1_any": true,
+        "f5695.any": true,
+        "f5695.solar": true,
         "f5695.line1": 500000,
         "person[taxpayer].w2[emp_a].box6": 1450,
         "person[taxpayer].sav_student": null
@@ -7889,7 +7933,7 @@
         "dependent[b].age": 6,
         "dependent[b].months": 12,
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -7900,7 +7944,8 @@
         "person[taxpayer].w2[emp_a].box4": 24800,
         "person[taxpayer].w2[emp_a].box5": 400000,
         "interest[bank_a].amount": 1500000,
-        "f5695.part1_any": true,
+        "f5695.any": true,
+        "f5695.solar": true,
         "f5695.line1": 500000
       },
       "expect": {
@@ -8175,8 +8220,9 @@
           "b"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
-        "f5695.part1_any": true,
+        "f5695.any": true,
+        "f5695.solar": true,
+        "household.considered_unmarried": true,
         "dependent[a].age": 4,
         "dependent[a].months": 12,
         "dependent[b].age": 9,

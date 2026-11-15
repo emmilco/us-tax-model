@@ -380,6 +380,42 @@
   },
   {
    "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
+   "project": "$58,204.91",
+   "model": "$58,204.92",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (72,801 x 0.799507 = 58,204.91; exact 58,204.92). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "bfc8097410a0af3f8b688d63588cc618d7fb408dd3a984b044d0d4b7038c1045",
+   "subject_key": "de666c80737cb1d8c3b63a4a220f00fba6254c57675040bd95026a2c4436af6e"
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line15",
+   "project": "$58,204.91",
+   "model": "$58,204.92",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (72,801 x 0.799507 = 58,204.91; exact 58,204.92). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "bfc8097410a0af3f8b688d63588cc618d7fb408dd3a984b044d0d4b7038c1045",
+   "subject_key": "537f2de6f371096157edabb9532784799cd5b386bcca0edd4d2c45a1d1a82966"
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line18",
+   "project": "$58,204.91",
+   "model": "$58,204.92",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (72,801 x 0.799507 = 58,204.91; exact 58,204.92). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "bfc8097410a0af3f8b688d63588cc618d7fb408dd3a984b044d0d4b7038c1045",
+   "subject_key": "9d8e2c98e8322d1aebb4cbbaa635058a447b0e943285020c429fe5ebf7305560"
+  },
+  {
+   "case": "classm.scveh.1",
    "printed": "person[taxpayer].sc[biz_b].scveh[car_1].bm_c",
    "project": "$123.06",
    "model": "$12,306.00",
@@ -395,6 +431,18 @@
    "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
    "drop": true,
    "subject_key": "76cfb8276c255e88de636b314d9b93ce9ffb0a65631172149c213b0e13f7d5df"
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].bonus_allowed",
+   "project": "$16,821.83",
+   "model": "$16,821.84",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "bfc8097410a0af3f8b688d63588cc618d7fb408dd3a984b044d0d4b7038c1045",
+   "subject_key": "387d8eda781ddfbbdef9e39903c98470b76d88104c48f73df1b2d3901a4f3bf3"
   },
   {
    "case": "classm.scveh.1",
@@ -431,6 +479,18 @@
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence.",
    "drop": true,
    "subject_key": "274988119339c4eba7d0b09868bbfd28103bc596cd00bd05352f1573a9b6c457"
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].bus_cost",
+   "project": "$62,021.76",
+   "model": "$62,021.78",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "bfc8097410a0af3f8b688d63588cc618d7fb408dd3a984b044d0d4b7038c1045",
+   "subject_key": "de666c80737cb1d8c3b63a4a220f00fba6254c57675040bd95026a2c4436af6e"
   },
   {
    "case": "classm.scveh.1",
@@ -489,6 +549,18 @@
   {
    "case": "classm.scveh.1",
    "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line11",
+   "project": "$16,821.83",
+   "model": "$16,821.84",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "bfc8097410a0af3f8b688d63588cc618d7fb408dd3a984b044d0d4b7038c1045",
+   "subject_key": "49780758289609568537658fdaeff7054ea6b70841792d0c843de9c090629b4e"
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line11",
    "project": "$3,988.45",
    "model": "$3,988.46",
    "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent.",
@@ -507,6 +579,30 @@
   },
   {
    "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line15",
+   "project": "$62,021.76",
+   "model": "$62,021.78",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "bfc8097410a0af3f8b688d63588cc618d7fb408dd3a984b044d0d4b7038c1045",
+   "subject_key": "537f2de6f371096157edabb9532784799cd5b386bcca0edd4d2c45a1d1a82966"
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line16",
+   "project": "$24,808.70",
+   "model": "$24,808.71",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "bfc8097410a0af3f8b688d63588cc618d7fb408dd3a984b044d0d4b7038c1045",
+   "subject_key": "db1b6d8f6e11b3683513cb40b9125dfc3a18bcb5f2e9f64e0b40ec176f5c403d"
+  },
+  {
+   "case": "classm.scveh.1",
    "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line17",
    "project": "$3,988.45",
    "model": "$3,988.46",
@@ -518,11 +614,35 @@
   {
    "case": "classm.scveh.1",
    "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line18",
+   "project": "$37,213.06",
+   "model": "$37,213.07",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "bfc8097410a0af3f8b688d63588cc618d7fb408dd3a984b044d0d4b7038c1045",
+   "subject_key": "9d8e2c98e8322d1aebb4cbbaa635058a447b0e943285020c429fe5ebf7305560"
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line18",
    "project": "$6,673.89",
    "model": "$6,673.90",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence.",
    "drop": true,
    "subject_key": "1f07ece9b077081d686ca93004b6cdfe9ab90429713374bbdaaaf6e6e69ebc9b"
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line9w",
+   "project": "$16,821.83",
+   "model": "$16,821.84",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "bfc8097410a0af3f8b688d63588cc618d7fb408dd3a984b044d0d4b7038c1045",
+   "subject_key": "f68813501ce38272fd9ea5af5beac54f94914ec91ebe4fae582202c075674812"
   },
   {
    "case": "classm.scveh.1",
@@ -1700,12 +1820,48 @@
   },
   {
    "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].bus_cost",
+   "project": "$19,957.72",
+   "model": "$19,957.71",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (28,221 x 0.707194 = 19,957.72; exact 19,957.71). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "430ee72a8a832edbd8f23cb274510175519ddaa6b60e4a82d706b82707a096c1",
+   "subject_key": "de666c80737cb1d8c3b63a4a220f00fba6254c57675040bd95026a2c4436af6e"
+  },
+  {
+   "case": "classm.scveh.2",
    "printed": "person[taxpayer].sc[biz_b].scveh[car_2].cost179_o",
    "project": "$76,802.87",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
    "drop": true,
    "subject_key": "45b40e420ccbbd6fc7c6b4dd286f8857f9b74c4602dff1ffdbee8929feeace75"
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].line15",
+   "project": "$19,957.72",
+   "model": "$19,957.71",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (28,221 x 0.707194 = 19,957.72; exact 19,957.71). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "430ee72a8a832edbd8f23cb274510175519ddaa6b60e4a82d706b82707a096c1",
+   "subject_key": "537f2de6f371096157edabb9532784799cd5b386bcca0edd4d2c45a1d1a82966"
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].line18",
+   "project": "$19,957.72",
+   "model": "$19,957.71",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (28,221 x 0.707194 = 19,957.72; exact 19,957.71). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "430ee72a8a832edbd8f23cb274510175519ddaa6b60e4a82d706b82707a096c1",
+   "subject_key": "9d8e2c98e8322d1aebb4cbbaa635058a447b0e943285020c429fe5ebf7305560"
   },
   {
    "case": "classm.scveh.2",
@@ -2082,6 +2238,18 @@
   },
   {
    "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
+   "project": "$61,003.80",
+   "model": "$61,003.82",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (26,262/30,459 to six places is 0.862208: 9,866 x 0.862208 = 8,506.54 and 70,753 x 0.862208 = 61,003.80; exact 8,506.55 and 61,003.82; lines 15, 18 and 19 (20%) follow). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "e2a6f7ab8ae8057c6879b4c1f04f907aec47687207722745dda39f05b9ed3f35",
+   "subject_key": "de666c80737cb1d8c3b63a4a220f00fba6254c57675040bd95026a2c4436af6e"
+  },
+  {
+   "case": "classm.scveh.3",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_2].cm_c",
    "project": "$29.10",
    "model": "$2,910.00",
@@ -2147,6 +2315,18 @@
   },
   {
    "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line15",
+   "project": "$50,484.86",
+   "model": "$50,484.88",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (26,262/30,459 to six places is 0.862208: 9,866 x 0.862208 = 8,506.54 and 70,753 x 0.862208 = 61,003.80; exact 8,506.55 and 61,003.82; lines 15, 18 and 19 (20%) follow). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "e2a6f7ab8ae8057c6879b4c1f04f907aec47687207722745dda39f05b9ed3f35",
+   "subject_key": "537f2de6f371096157edabb9532784799cd5b386bcca0edd4d2c45a1d1a82966"
+  },
+  {
+   "case": "classm.scveh.3",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line17",
    "project": "$17,222.10",
    "model": "$0.00",
@@ -2182,6 +2362,30 @@
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
    "drop": true,
    "subject_key": "1f07ece9b077081d686ca93004b6cdfe9ab90429713374bbdaaaf6e6e69ebc9b"
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line18",
+   "project": "$50,484.86",
+   "model": "$50,484.88",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (26,262/30,459 to six places is 0.862208: 9,866 x 0.862208 = 8,506.54 and 70,753 x 0.862208 = 61,003.80; exact 8,506.55 and 61,003.82; lines 15, 18 and 19 (20%) follow). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "e2a6f7ab8ae8057c6879b4c1f04f907aec47687207722745dda39f05b9ed3f35",
+   "subject_key": "9d8e2c98e8322d1aebb4cbbaa635058a447b0e943285020c429fe5ebf7305560"
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line19",
+   "project": "$10,096.97",
+   "model": "$10,096.98",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (26,262/30,459 to six places is 0.862208: 9,866 x 0.862208 = 8,506.54 and 70,753 x 0.862208 = 61,003.80; exact 8,506.55 and 61,003.82; lines 15, 18 and 19 (20%) follow). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "e2a6f7ab8ae8057c6879b4c1f04f907aec47687207722745dda39f05b9ed3f35",
+   "subject_key": "0335149a4068058d1c3b74e2acd38e22b4b6d8cef5ec5a2b17ba313e9cd8fa3c"
   },
   {
    "case": "classm.scveh.3",
@@ -2239,6 +2443,18 @@
    "drop": true,
    "context": "97547ef7eb82e2ac3aafd85d1266cae09b58420a728147b9977170880365d35d",
    "subject_key": "ea5e2edf8a05e9c159c20aee595409837aa4aa10f24fdac1ae7a4e9d82511b5e"
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line9",
+   "project": "$8,506.54",
+   "model": "$8,506.55",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (26,262/30,459 to six places is 0.862208: 9,866 x 0.862208 = 8,506.54 and 70,753 x 0.862208 = 61,003.80; exact 8,506.55 and 61,003.82; lines 15, 18 and 19 (20%) follow). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "e2a6f7ab8ae8057c6879b4c1f04f907aec47687207722745dda39f05b9ed3f35",
+   "subject_key": "651ba4c595245bad05ac81300fa2ef7259d60c25a73cc71306163fc456062dbc"
   },
   {
    "case": "classm.scveh.3",
@@ -2401,6 +2617,18 @@
   },
   {
    "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
+   "project": "$60,942.61",
+   "model": "$60,942.62",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (78,385 x 0.777478 = 60,942.61; exact 60,942.62). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "7841a511f18fb145e78216b2140da4d4623462387a8686db9b1de09a544f4bd1",
+   "subject_key": "de666c80737cb1d8c3b63a4a220f00fba6254c57675040bd95026a2c4436af6e"
+  },
+  {
+   "case": "classm.scveh.4",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2",
    "project": "$7,658.80",
    "model": "$0.00",
@@ -2457,6 +2685,18 @@
   },
   {
    "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line15",
+   "project": "$60,942.61",
+   "model": "$60,942.62",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (78,385 x 0.777478 = 60,942.61; exact 60,942.62). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "7841a511f18fb145e78216b2140da4d4623462387a8686db9b1de09a544f4bd1",
+   "subject_key": "537f2de6f371096157edabb9532784799cd5b386bcca0edd4d2c45a1d1a82966"
+  },
+  {
+   "case": "classm.scveh.4",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line17",
    "project": "$3,253.86",
    "model": "$0.00",
@@ -2474,6 +2714,18 @@
    "drop": true,
    "context": "97547ef7eb82e2ac3aafd85d1266cae09b58420a728147b9977170880365d35d",
    "subject_key": "1f07ece9b077081d686ca93004b6cdfe9ab90429713374bbdaaaf6e6e69ebc9b"
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line18",
+   "project": "$60,942.61",
+   "model": "$60,942.62",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (78,385 x 0.777478 = 60,942.61; exact 60,942.62). Not evidence.",
+   "drop": true,
+   "context": "15f4c4445237a39c71e989bab6604b191d2c0123066d1165366205fc52348cd1",
+   "date": "2026-11-14",
+   "run": "7841a511f18fb145e78216b2140da4d4623462387a8686db9b1de09a544f4bd1",
+   "subject_key": "9d8e2c98e8322d1aebb4cbbaa635058a447b0e943285020c429fe5ebf7305560"
   },
   {
    "case": "classm.scveh.4",

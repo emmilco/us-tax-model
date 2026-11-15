@@ -1,0 +1,146 @@
+[
+ {
+  "id": "mutation.m1.retirement.direct_rollover_put_back",
+  "base": "f1040.json:stage10.plan.direct_rollover",
+  "expect": {
+   "person[taxpayer].retirement[p].put_back": {
+    "kind": "bool",
+    "value": true
+   }
+  },
+  "kills": [
+   "operand.retirement.retirement.put_back.direct.then0"
+  ]
+ },
+ {
+  "id": "mutation.m1.retirement.partial_rollover_put_back",
+  "base": "f1040.json:stage10.ira.partial_rollover",
+  "expect": {
+   "person[taxpayer].retirement[a].put_back": {
+    "kind": "bool",
+    "value": true
+   }
+  },
+  "kills": [
+   "operand.retirement.retirement.rolled_some.rollover_any.eq.0",
+   "operand.retirement.retirement.put_back.rolled_some.then1"
+  ]
+ },
+ {
+  "id": "mutation.m1.retirement.plan_death_code4",
+  "base": "retirement.json:stage10.smw.survivor_of_retiree",
+  "expect": {
+   "person[taxpayer].retirement[p].plan_death": {
+    "kind": "bool",
+    "value": true
+   }
+  },
+  "kills": [
+   "operand.retirement.retirement.plan_death.is_death.all.1.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.retirement.roth_ira_code4",
+  "base": "f1040.json:stage10.ira.roth_qualified",
+  "set": {
+   "person[taxpayer].retirement[r].code": "death_4",
+   "person[taxpayer].retirement[r].not_beneficiary": false
+  },
+  "expect": {
+   "person[taxpayer].retirement[r].plan_death": {
+    "kind": "bool",
+    "value": false
+   }
+  },
+  "kills": [
+   "operand.retirement.retirement.plan_death.is_ira.all.0.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.retirement.annuity_rollover_smw_shown",
+  "base": "f1040.json:stage10.refuse.annuity_rollover",
+  "expect": {
+   "person[taxpayer].retirement[p].smw_shown": {
+    "kind": "bool",
+    "value": true
+   }
+  },
+  "kills": [
+   "operand.retirement.retirement.smw_shown.is_ira.all.0.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.retirement.code7_under59",
+  "base": "f1040.json:stage10.ira.fully_taxable",
+  "set": {
+   "person[taxpayer].retirement[a].code": "normal_7",
+   "person[taxpayer].retirement[a].under59": true,
+   "person[taxpayer].retirement[a].sec457": false
+  },
+  "expect": {
+   "person[taxpayer].retirement[a].code7_wrong": {
+    "kind": "bool",
+    "value": true
+   },
+   "person[taxpayer].retirement[a].screen_refused": {
+    "kind": "bool",
+    "value": true
+   }
+  },
+  "kills": [
+   "operand.retirement.retirement.code7_wrong.sec457_if_under59.all.1.eq.0",
+   "operand.retirement.retirement.screen_refused.code_screen.any.1.all.1.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.retirement.roth_code7_under59_line4a",
+  "base": "f1040.json:stage10.refuse.roth_not_q",
+  "expect": {
+   "f1040.line4a": {
+    "kind": "refusal",
+    "gate": "person[taxpayer].retirement[r].bad_code",
+    "form": "Form 8606 or another Form 1099-R code",
+    "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool.",
+    "cite": {
+     "doc": "i1040gi",
+     "locator": "p. 27, Exception 2; f1099r Box 7",
+     "revision": "2025; printed date 2026-02-25",
+     "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+     "tax_year": 2025
+    }
+   },
+   "person[taxpayer].retirement[r].screen_refused": {
+    "kind": "bool",
+    "value": true
+   }
+  },
+  "kills": [
+   "refusal.retirement.retirement.amount_a.1"
+  ],
+  "set": {
+   "person[taxpayer].retirement[r].code": "normal_7",
+   "person[taxpayer].retirement[r].under59": true,
+   "person[taxpayer].retirement[r].sec457": false
+  }
+ },
+ {
+  "id": "mutation.m1.retirement.ira_box5",
+  "base": "f1040.json:stage10.ira.fully_taxable",
+  "set": {
+   "person[taxpayer].retirement[a].box5": 50000
+  },
+  "expect": {
+   "person[taxpayer].retirement[a].amount_a": {
+    "kind": "money",
+    "cents": 0
+   },
+   "f1040.line4b": {
+    "kind": "money",
+    "cents": 1000000
+   }
+  },
+  "kills": [
+   "operand.retirement.retirement.show_a.is_ira.any.2.all.0.eq.0"
+  ]
+ }
+]

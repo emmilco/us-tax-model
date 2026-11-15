@@ -513,6 +513,26 @@
    "subject_key": "2485744ff2dedfd064db55befd1ea516e1ef4aa562d96a182f39427004685387"
   },
   {
+   "printed": "27",
+   "restated": "Choose — [helper \"An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available\" = true → \"line27\" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper \"Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c\", inst = helper \"Qualified education expenses required to be paid to the institution\", and mat = helper \"Other course materials (American opportunity credit only)\"] [helper \"An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available\" = false → helper \"No amount for this person\"]",
+   "model": "The worksheet arithmetic matches: line 1 (institution expenses plus course materials) less line 3, floored at -0-, and capped at $4,000 ('Don't enter more than $4,000'). The per-period refusal is a valid narrowing. But the eligible-student gate uses the 1098-T exception input, which requires the request 'after February 2, 2026', while the IRS text says 'After January 31, 2026, but before you file the return, you or the student must request...'. A request made on February 1 or 2 would wrongly fail the gate.",
+   "ruling": "Ruling: ambiguity; owner's decision D7(d) (amb.2025.edu_1098t_date). i8863 p. 1, Form 1098-T requirement, \"After January 31, 2026, but before you file the return\"; p970 p. 2, Reminders, \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return\". The two IRS texts differ; the project takes Pub. 970's later date in dependent.edu_1098t, by the owner's recorded choice. The reply was not given p970 p. 2 and read the i8863 date as the only rule. The worksheet arithmetic of line 27 it accepts. Project stands.",
+   "context": "c50b84ded2f5024f96ffce520991f4366ac1838abb199b24c36fc72097ba7c58",
+   "date": "2026-11-14",
+   "run": "f09ae3287c2e86645921e403f5b0fcb021a59e0997e93ea71abaafe9aa127715",
+   "subject_key": "e6e304a47abb2d66ec8b91832ddb332b3667d4f4a5e9218742ec14893775e35f"
+  },
+  {
+   "printed": "28",
+   "restated": "Choose — [helper \"An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available\" = true → \"line28\" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper \"Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c\", inst = helper \"Qualified education expenses required to be paid to the institution\", and mat = helper \"Other course materials (American opportunity credit only)\"] [helper \"An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available\" = false → helper \"No amount for this person\"]",
+   "model": "'Subtract $2,000 from line 27. If zero or less, enter -0-' is computed correctly. However, the line uses the same eligible-student gate, and that gate's 1098-T exception says 'after February 2, 2026' where the IRS says 'After January 31, 2026'.",
+   "ruling": "Ruling: ambiguity; owner's decision D7(d) (amb.2025.edu_1098t_date). i8863 p. 1, Form 1098-T requirement, \"After January 31, 2026, but before you file the return\"; p970 p. 2, Reminders, \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return\". The two IRS texts differ; the project takes Pub. 970's later date in dependent.edu_1098t, by the owner's recorded choice. The reply was not given p970 p. 2 and read the i8863 date as the only rule. The worksheet arithmetic of line 28 it accepts. Project stands.",
+   "context": "c50b84ded2f5024f96ffce520991f4366ac1838abb199b24c36fc72097ba7c58",
+   "date": "2026-11-14",
+   "run": "f09ae3287c2e86645921e403f5b0fcb021a59e0997e93ea71abaafe9aa127715",
+   "subject_key": "78cefb74367c8ac759839dbbbd0ee80d8254535d29fa40212998e24f4755256e"
+  },
+  {
    "printed": "28",
    "restated": "Choose — [helper \"An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available\" = true → \"line28\" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper \"Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c\", inst = helper \"Qualified education expenses required to be paid to the institution\", and mat = helper \"Other course materials (American opportunity credit only)\"] [helper \"An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available\" = false → helper \"No amount for this person\"]",
    "model": "'Subtract $2,000 from line 27. If zero or less, enter -0-' is computed correctly. The gate inherits the 1098-T exception date error ('after February 2, 2026' instead of the IRS 'After January 31, 2026').",
@@ -585,6 +605,16 @@
   {
    "printed": "29",
    "restated": "Choose — [helper \"An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available\" = true → \"line29\" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper \"Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c\", inst = helper \"Qualified education expenses required to be paid to the institution\", and mat = helper \"Other course materials (American opportunity credit only)\"] [helper \"An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available\" = false → helper \"No amount for this person\"]",
+   "model": "'Multiply line 28 by 25% (0.25)' is computed correctly. However, the line uses the same eligible-student gate, and that gate's 1098-T exception says 'after February 2, 2026' where the IRS says 'After January 31, 2026, but before you file the return'.",
+   "ruling": "Ruling: ambiguity; owner's decision D7(d) (amb.2025.edu_1098t_date). i8863 p. 1, Form 1098-T requirement, \"After January 31, 2026, but before you file the return\"; p970 p. 2, Reminders, \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return\". The two IRS texts differ; the project takes Pub. 970's later date in dependent.edu_1098t, by the owner's recorded choice. The reply was not given p970 p. 2 and read the i8863 date as the only rule. The worksheet arithmetic of line 29 it accepts. Project stands.",
+   "context": "c50b84ded2f5024f96ffce520991f4366ac1838abb199b24c36fc72097ba7c58",
+   "date": "2026-11-14",
+   "run": "f09ae3287c2e86645921e403f5b0fcb021a59e0997e93ea71abaafe9aa127715",
+   "subject_key": "d6c49eb0cf3005501556ca86722537eda66f3d08422e9b0296447454d5350f5b"
+  },
+  {
+   "printed": "29",
+   "restated": "Choose — [helper \"An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available\" = true → \"line29\" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper \"Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c\", inst = helper \"Qualified education expenses required to be paid to the institution\", and mat = helper \"Other course materials (American opportunity credit only)\"] [helper \"An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available\" = false → helper \"No amount for this person\"]",
    "model": "'Multiply line 28 by 25% (0.25)' is computed correctly. The gate inherits the 1098-T exception date error ('after February 2, 2026' instead of the IRS 'After January 31, 2026').",
    "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29). i8863 p. 1: \"After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T\"; p970 p. 2, Reminders: \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.\" The model read i8863 correctly and the English says what the project asks (dependent.edu_1098t: \"after February 2, 2026, but before you file\"); the register records both dates and chooses Pub. 970, the later revision, which the reviewer was not given (p970 is not among its pages: an interface note, not a defect). The 25% matches, as the model says. Why this line is new this round: the render prompt changed from round 2 only in dependent.qr_relationship (lawful now also for sibling_descendant), the dependent.lawful question and the dependent.edu_over label (diff of .transcription/dependent.render.prompt.txt against the round-2 archive); the text the model objects to is unchanged and was judged MATCH last round, so the new MISMATCH is reviewer variance, not the lawful change or its English.",
    "context": "9e835e8310475fef98a41f1e91ce26d9b7d8f00b32b45693d31ad6acb43e1b8d",
@@ -651,6 +681,16 @@
    "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, \"After January 31, 2026, but before you file the return\"; p970 p. 2, \"After February 2, 2026 (January 31 falls on a Saturday)\"; the register chooses Pub. 970, which the reviewer was not given. The computation matches, as the model says (gate dependent.edu_aoc). The model also objects that the gate accepts a TIN applied for where i8863 p. 3 says \"Filers and students must have been issued a TIN by the due date\": p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date\", which the reviewer was not given (an interface gap, as ruled for the deepseek reviewer in Stage 19 round 3); BUG-0256 does not touch this, since it removes only a pending renewal of an expired ITIN from person.tin. The date is the register's chosen reading. Project stands.",
    "context": "30605f91adc83f51b84094c34ba10f465bc1f53f39016d1385b80e5ffe7b7710",
    "subject_key": "a47c33d19907a175fa80dca3d04af294b9fda5ab133f35951eab22daf5ba1bec"
+  },
+  {
+   "printed": "30",
+   "restated": "Choose — [helper \"An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available\" = true → \"line30\" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper \"Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c\", inst = helper \"Qualified education expenses required to be paid to the institution\", and mat = helper \"Other course materials (American opportunity credit only)\"] [helper \"An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available\" = false → helper \"No amount for this person\"]",
+   "model": "'If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29' is computed correctly. However, the line uses the same eligible-student gate, and that gate's 1098-T exception says 'after February 2, 2026' where the IRS says 'After January 31, 2026'.",
+   "ruling": "Ruling: ambiguity; owner's decision D7(d) (amb.2025.edu_1098t_date). i8863 p. 1, Form 1098-T requirement, \"After January 31, 2026, but before you file the return\"; p970 p. 2, Reminders, \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return\". The two IRS texts differ; the project takes Pub. 970's later date in dependent.edu_1098t, by the owner's recorded choice. The reply was not given p970 p. 2 and read the i8863 date as the only rule. The worksheet arithmetic of line 30 it accepts. Project stands.",
+   "context": "c50b84ded2f5024f96ffce520991f4366ac1838abb199b24c36fc72097ba7c58",
+   "date": "2026-11-14",
+   "run": "f09ae3287c2e86645921e403f5b0fcb021a59e0997e93ea71abaafe9aa127715",
+   "subject_key": "a16903430eb72ff1618fe518cd355c6acb4fefbb148d2c3acb0065027e76a075"
   },
   {
    "printed": "30",
@@ -751,6 +791,16 @@
    "date": "2026-11-07",
    "run": "428c19b1355b258175c748fc68bbb25adecf9b852f3969c56cbd188fb284ed32",
    "subject_key": "91af8f012efcf8cbaf0f68743e54146c8ec36dce004fd00c253fd28873c8bd30"
+  },
+  {
+   "printed": "31",
+   "restated": "Choose — [helper \"A lifetime learning credit student: an eligible student who is not an American opportunity credit student\" = true → \"ws4_llc\" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper \"Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c\", inst = helper \"Qualified education expenses required to be paid to the institution\", and mat = helper \"No amount for this person\"] [helper \"A lifetime learning credit student: an eligible student who is not an American opportunity credit student\" = false → helper \"No amount for this person\"]",
+   "model": "The worksheet logic matches. For the lifetime learning credit, only expenses 'required to be paid to the institution' count, less the adjustments, floored at -0-. The refusals for an applied-for-only TIN and for per-period excess are valid narrowings. But the eligible-student gate's 1098-T exception says 'after February 2, 2026' where the IRS says 'After January 31, 2026, but before you file the return, you or the student must request...'.",
+   "ruling": "Ruling: ambiguity; owner's decision D7(d) (amb.2025.edu_1098t_date). i8863 p. 1, Form 1098-T requirement, \"After January 31, 2026, but before you file the return\"; p970 p. 2, Reminders, \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return\". The two IRS texts differ; the project takes Pub. 970's later date in dependent.edu_1098t, by the owner's recorded choice. The reply was not given p970 p. 2 and read the i8863 date as the only rule. The worksheet arithmetic of line 31 it accepts. Project stands.",
+   "context": "c50b84ded2f5024f96ffce520991f4366ac1838abb199b24c36fc72097ba7c58",
+   "date": "2026-11-14",
+   "run": "f09ae3287c2e86645921e403f5b0fcb021a59e0997e93ea71abaafe9aa127715",
+   "subject_key": "5e578af10330f19b7abbb60a2c17cb8edcb815599b66f5b998042b5a2f9d180b"
   },
   {
    "printed": "31",

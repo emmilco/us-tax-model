@@ -20,7 +20,8 @@
         "person[taxpayer].w2[emp_a].box5": 3000000,
         "person[taxpayer].w2[emp_a].box6": 43500,
         "s1.uc_paid": 500000,
-        "s1.uc_repaid": 100000
+        "s1.uc_repaid": 100000,
+        "s1.uc_any": true
       },
       "expect": {
         "s1.line7": {
@@ -88,7 +89,9 @@
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 72500,
         "sli.interest": 120000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "sli.any": true
       },
       "expect": {
         "s1.line21": {
@@ -120,7 +123,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "person[taxpayer].educator_expenses": 25000,
         "person[taxpayer].eligible_educator": true,
         "$w2@person[taxpayer]": [
@@ -159,7 +162,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -190,7 +193,8 @@
         "person[spouse].f8889[hsa].dec_coverage": "family",
         "person[spouse].f8889[hsa].allocation": "agreed",
         "person[spouse].f8889[hsa].allocated": 100000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1.line13": {
@@ -222,7 +226,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -239,7 +243,8 @@
         "person[spouse].w2[e0].box1": 5000000,
         "person[spouse].w2[e0].box5": 5000000,
         "person[spouse].w2[e0].box6": 72500,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1.line13": {
@@ -270,7 +275,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -298,7 +303,8 @@
         "person[spouse].f8889[hsa].months_family": 12,
         "person[spouse].f8889[hsa].dec_coverage": "family",
         "person[spouse].f8889[hsa].allocation": "agreed",
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1.line13": {
@@ -484,6 +490,7 @@
         "$interest": [
           "bank_a"
         ],
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -546,6 +553,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.other.o1 (gambling winnings $5,000), with the professional-gambler question answered Yes (Schedule C). Line 8b copies the winnings, an input, so its own entry decides its value; line 9 and the lines after it carry the same refusal through line 8b. The refused values are the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -555,7 +563,9 @@
         "person[taxpayer].w2[emp_a].box6": 87000,
         "s1.gambling_winnings": 500000,
         "s1.gambling_pro": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s1.winnings_any": true
       },
       "expect": {
         "s1.line8b": {
@@ -620,6 +630,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.other.o1 (gambling winnings $5,000), with the question on other line 8 income this tool does not compute answered Yes. No line 8 entry (8b to 8z) carries this gate, so their sum is a number and line 9's own entry decides its value; line 10 and Form 1040 line 8 carry the same refusal through line 9. The refused values are the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -627,9 +638,16 @@
         "person[taxpayer].w2[emp_a].box1": 6000000,
         "person[taxpayer].w2[emp_a].box5": 6000000,
         "person[taxpayer].w2[emp_a].box6": 87000,
-        "s1.line8_other": true,
+        "s1.ltc_payout": true,
         "s1.gambling_winnings": 500000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s1.winnings_any": true,
+        "s1.nqdc_pension": false,
+        "s1.inmate_wages": false,
+        "s1.digital_income": false,
+        "s1.olympic": false,
+        "s2.options_any": false
       },
       "expect": {
         "s1.line8b": {
@@ -685,6 +703,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.other.o5 (jury duty pay $300, all of it given to the employer), with the amount given to the employer changed to $400, more than the $300 of jury duty pay on line 8h. Line 24a copies that input, so its own entry decides its value; lines 25 and 26 carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -692,9 +711,11 @@
         "person[taxpayer].w2[emp_a].box1": 4500000,
         "person[taxpayer].w2[emp_a].box5": 4500000,
         "person[taxpayer].w2[emp_a].box6": 65250,
-        "s1.line8h": 30000,
+        "s1.jury_pay": 30000,
         "s1.jury_to_employer": 40000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s1.jury_any": true
       },
       "expect": {
         "s1.line8h": {
@@ -763,6 +784,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.small.s7 (canceled debt $5,000), with the canceled-debt exceptions question (Form 982, Pub. 4681 exceptions, business or farm debt, foreclosure or repossession) answered Yes. The refused line copies the amount, an input, so its own entry decides its value; line 8c and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -773,7 +795,8 @@
         "s1.cod_amount": 500000,
         "s1.cod_unsupported": true,
         "s1.cod_any": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1.cod_refused": {
@@ -851,6 +874,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.small.s2 (alimony received $12,000), with the alimony exceptions question (more than one agreement, recapture, or payments partly child support) answered Yes. The refused line copies the amount received, an input, so its own entry decides its value; line 2a and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -860,7 +884,9 @@
         "person[taxpayer].w2[emp_a].box6": 43500,
         "s1.alimony": true,
         "s1.alimony_unsupported": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s1.alimony_any": true
       },
       "expect": {
         "s1.alimony_refused": {
@@ -925,6 +951,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.small.s3 (alimony paid $18,000), with the alimony exceptions question answered Yes. The refused line copies the amount paid, an input, so its own entry decides its value; line 19a and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -934,7 +961,9 @@
         "person[taxpayer].w2[emp_a].box6": 87000,
         "s1.alimony": true,
         "s1.alimony_unsupported": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s1.alimony_any": true
       },
       "expect": {
         "s1.paid_refused": {
@@ -999,6 +1028,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "SC-03 of the Stage 16 mutation scenarios. Single, aged 40. Wages $60,000. Paid $6,000 of alimony in 2025 to a former spouse under a divorce decree signed in 2016 and never modified. All of it is alimony: one agreement, one recipient, no child support, no recapture. Received no alimony. No IRA contributions. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -1008,7 +1038,8 @@
         "person[taxpayer].w2[emp_a].box5": 6000000,
         "person[taxpayer].w2[emp_a].box6": 87000,
         "s1.alimony": true,
-        "s1.alimony_paid": 600000
+        "s1.alimony_paid": 600000,
+        "s1.alimony_any": true
       },
       "expect": {
         "f1040.line11a": {
@@ -1049,6 +1080,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage16.small.s7 (single; $5,000 of fully taxable canceled nonbusiness debt, the only Schedule 1 income) with Yes to the question whether any debt was canceled and an amount of $0; the exceptions question is not asked for a zero amount and is left out, as the interview leaves it. Line 8c is the amount, $0, and lines 9 and 10 add nothing else (i1040gi p. 91, Line 8c; Schedule 1 lines 9 and 10).",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -1082,6 +1114,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Inputs are stage16.small.s7 (single; $5,000 of fully taxable canceled nonbusiness debt, the only Schedule 1 income) with No to the question whether any debt was canceled; the amount and the exceptions question are not asked after a No and are left out, as the interview leaves them. Line 8c is $0 and lines 9 and 10 add nothing else (Schedule 1 lines 8c, 9 and 10).",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"

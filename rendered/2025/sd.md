@@ -3,12 +3,124 @@
 - Document: `sd` (form, tax year 2025)
 - Note: Special-gain feeders are computed from 1099-DIV box 2b/2d. Section 1202 distributions, non-securities source forms are refused. Lines 6 and 14 come from the Capital Loss Carryover Worksheet (`clcw`), held as negative amounts. Boolean flow predicates are shown even when their printed line is skipped.
 
+## (helper) — `sd.no`
+
+- **Authored helper label:** Year parameter household.no (false)
+- **Encoded (Bool):** Enter false (household.no).
+- Expr: `{"op":"param","ref":"household.no"}`
+- Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
+
+## (gate) — `sd.sold_other`
+
+- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale.
+- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale.
+- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale."}`
+- Cite: [i1040sd] p. 1, Other Forms You May Have To File; p. 1, "To report a gain from Form 2439 or 6252 or Part I of Form 4797" and "To report a gain or loss from Form 4684, 6781, or 8824" (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.business_property`
+
+- **Authored helper label:** Was any of that property used in a business or rented out, or was it oil, gas or mineral property? Count any sale of something that was not held as an investment or for personal use.
+- **Encoded (Bool):** Input — Was any of that property used in a business or rented out, or was it oil, gas or mineral property? Count any sale of something that was not held as an investment or for personal use.
+- Expr: `{"op":"input","source":"Was any of that property used in a business or rented out, or was it oil, gas or mineral property? Count any sale of something that was not held as an investment or for personal use."}`
+- Cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 4797 to report the following." and "Real property used in your trade or business" (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.business_property_if_sold`
+
+- **Authored helper label:** Whether property sold or traded was business, rental or mineral property (Form 4797), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale." = true → helper "Was any of that property used in a business or rented out, or was it oil, gas or mineral property? Count any sale of something that was not held as an investment or for personal use."] [helper "In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale." = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sd.sold_other",{"const":true}],"op":"test"},"then":"sd.business_property"},{"guard":{"eq":["sd.sold_other",{"const":false}],"op":"test"},"then":"sd.no"}],"op":"choose"}`
+- Cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 4797 to report the following." and "Real property used in your trade or business" (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.installment`
+
+- **Authored helper label:** Does any payment for any of it come in a year after the year of the sale, with the gain reported as the payments arrive (an installment sale)?
+- **Encoded (Bool):** Input — Does any payment for any of it come in a year after the year of the sale, with the gain reported as the payments arrive (an installment sale)?
+- Expr: `{"op":"input","source":"Does any payment for any of it come in a year after the year of the sale, with the gain reported as the payments arrive (an installment sale)?"}`
+- Cite: [i1040sd] p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method. Also, use Form 6252 to report any payment received in 2025 from a sale made in an earlier year that you reported on the installment method." and "To elect out of the installment method, report the full amount of the gain on Form 8949" (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.installment_if_sold`
+
+- **Authored helper label:** Whether a sale is reported on the installment method (Form 6252), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale." = true → helper "Does any payment for any of it come in a year after the year of the sale, with the gain reported as the payments arrive (an installment sale)?"] [helper "In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale." = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sd.sold_other",{"const":true}],"op":"test"},"then":"sd.installment"},{"guard":{"eq":["sd.sold_other",{"const":false}],"op":"test"},"then":"sd.no"}],"op":"choose"}`
+- Cite: [i1040sd] p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method. Also, use Form 6252 to report any payment received in 2025 from a sale made in an earlier year that you reported on the installment method." and "To elect out of the installment method, report the full amount of the gain on Form 8949" (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.like_kind`
+
+- **Authored helper label:** Did you trade any of it for other real estate, putting off the tax on the gain (a like-kind exchange)?
+- **Encoded (Bool):** Input — Did you trade any of it for other real estate, putting off the tax on the gain (a like-kind exchange)?
+- Expr: `{"op":"input","source":"Did you trade any of it for other real estate, putting off the tax on the gain (a like-kind exchange)?"}`
+- Cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 8824 to report like-kind exchanges." (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.like_kind_if_sold`
+
+- **Authored helper label:** Whether there was a like-kind exchange (Form 8824), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale." = true → helper "Did you trade any of it for other real estate, putting off the tax on the gain (a like-kind exchange)?"] [helper "In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale." = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sd.sold_other",{"const":true}],"op":"test"},"then":"sd.like_kind"},{"guard":{"eq":["sd.sold_other",{"const":false}],"op":"test"},"then":"sd.no"}],"op":"choose"}`
+- Cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 8824 to report like-kind exchanges." (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.sec1256`
+
+- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) trade futures, foreign currency contracts or options on a stock index (section 1256 contracts, shown in boxes 8 to 11 of a Form 1099-B), or hold offsetting positions taxed as a straddle?
+- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) trade futures, foreign currency contracts or options on a stock index (section 1256 contracts, shown in boxes 8 to 11 of a Form 1099-B), or hold offsetting positions taxed as a straddle?
+- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) trade futures, foreign currency contracts or options on a stock index (section 1256 contracts, shown in boxes 8 to 11 of a Form 1099-B), or hold offsetting positions taxed as a straddle?"}`
+- Cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 6781 to report gains and losses from section 1256 contracts and straddles."; f1099b p. 7, "Box 8. Shows the profit or (loss) realized on regulated futures, foreign currency, or Section 1256 option contracts closed during 2025." (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.condemned`
+
+- **Authored helper label:** In 2025, was your (or, on a joint return, your spouse's) business or investment property taken by a government, or sold under threat of that (a condemnation)?
+- **Encoded (Bool):** Input — In 2025, was your (or, on a joint return, your spouse's) business or investment property taken by a government, or sold under threat of that (a condemnation)?
+- Expr: `{"op":"input","source":"In 2025, was your (or, on a joint return, your spouse's) business or investment property taken by a government, or sold under threat of that (a condemnation)?"}`
+- Cite: [i1040sd] p. 1, Other Forms You May Have To File, "The involuntary conversion (other than from casualty or theft) of property used in a trade or business and capital assets held more than 1 year for business or profit." (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.small_business_stock`
+
+- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) lose money on stock that a small company issued to you, a loss you claim as an ordinary loss and not a capital loss (section 1244 or section 1242 stock)?
+- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) lose money on stock that a small company issued to you, a loss you claim as an ordinary loss and not a capital loss (section 1244 or section 1242 stock)?
+- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) lose money on stock that a small company issued to you, a loss you claim as an ordinary loss and not a capital loss (section 1244 or section 1242 stock)?"}`
+- Cite: [i1040sd] p. 1, Other Forms You May Have To File, "Ordinary loss on the sale, exchange, or worthlessness of small business investment company (section 1242) stock." and "Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock." (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.trader_election`
+
+- **Authored helper label:** Do you (or, on a joint return, your spouse) trade securities or commodities as a business, under a mark-to-market election made in an earlier year?
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) trade securities or commodities as a business, under a mark-to-market election made in an earlier year?
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) trade securities or commodities as a business, under a mark-to-market election made in an earlier year?"}`
+- Cite: [i1040sd] p. 1, Other Forms You May Have To File, "Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election." (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.f2439`
+
+- **Authored helper label:** Did a mutual fund or a real estate investment trust (REIT) send you (or, on a joint return, your spouse) a Form 2439 for 2025, a notice of gains it kept and paid tax on?
+- **Encoded (Bool):** Input — Did a mutual fund or a real estate investment trust (REIT) send you (or, on a joint return, your spouse) a Form 2439 for 2025, a notice of gains it kept and paid tax on?
+- Expr: `{"op":"input","source":"Did a mutual fund or a real estate investment trust (REIT) send you (or, on a joint return, your spouse) a Form 2439 for 2025, a notice of gains it kept and paid tax on?"}`
+- Cite: [i1040sd] p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439." (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.f2439_if_dividends`
+
+- **Authored helper label:** Whether a fund or REIT sent a Form 2439 (undistributed long-term capital gains), asked only when you or your spouse received dividends or other distributions (false otherwise)
+- **Encoded (Bool):** Choose — [div helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund outside a retirement account, or get a Form 1099-DIV?" = true → helper "Did a mutual fund or a real estate investment trust (REIT) send you (or, on a joint return, your spouse) a Form 2439 for 2025, a notice of gains it kept and paid tax on?"] [div helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund outside a retirement account, or get a Form 1099-DIV?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["div.any",{"const":true}],"op":"test"},"then":"sd.f2439"},{"guard":{"eq":["div.any",{"const":false}],"op":"test"},"then":"sd.no"}],"op":"choose"}`
+- Cite: [i1040sd] p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439." (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.casualty`
+
+- **Authored helper label:** In 2025, was your (or, on a joint return, your spouse's) property damaged, destroyed or stolen, leaving a loss that insurance did not cover or an insurance payment above what the property cost?
+- **Encoded (Bool):** Input — In 2025, was your (or, on a joint return, your spouse's) property damaged, destroyed or stolen, leaving a loss that insurance did not cover or an insurance payment above what the property cost?
+- Expr: `{"op":"input","source":"In 2025, was your (or, on a joint return, your spouse's) property damaged, destroyed or stolen, leaving a loss that insurance did not cover or an insurance payment above what the property cost?"}`
+- Cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 4684 to report involuntary conversions of property due to casualty or theft." (2025; printed date 2025-12-11; sha256 650643a6)
+
 ## (helper) — `sd.other_forms`
 
 - **Authored helper label:** Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
-- **Encoded (Bool):** Input — Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
-- Expr: `{"op":"input","source":"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity."}`
-- Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
+- **Encoded (Bool):** (helper "Whether property sold or traded was business, rental or mineral property (Form 4797), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)" = true or helper "Whether a sale is reported on the installment method (Form 6252), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)" = true or helper "Whether there was a like-kind exchange (Form 8824), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)" = true or helper "In 2025, did you (or, on a joint return, your spouse) trade futures, foreign currency contracts or options on a stock index (section 1256 contracts, shown in boxes 8 to 11 of a Form 1099-B), or hold offsetting positions taxed as a straddle?" = true or helper "In 2025, was your (or, on a joint return, your spouse's) business or investment property taken by a government, or sold under threat of that (a condemnation)?" = true or helper "In 2025, did you (or, on a joint return, your spouse) lose money on stock that a small company issued to you, a loss you claim as an ordinary loss and not a capital loss (section 1244 or section 1242 stock)?" = true or helper "Do you (or, on a joint return, your spouse) trade securities or commodities as a business, under a mark-to-market election made in an earlier year?" = true or helper "Whether a fund or REIT sent a Form 2439 (undistributed long-term capital gains), asked only when you or your spouse received dividends or other distributions (false otherwise)" = true or helper "In 2025, was your (or, on a joint return, your spouse's) property damaged, destroyed or stolen, leaving a loss that insurance did not cover or an insurance payment above what the property cost?" = true)
+- Expr: `{"any":[{"eq":["sd.business_property_if_sold",{"const":true}],"op":"test"},{"eq":["sd.installment_if_sold",{"const":true}],"op":"test"},{"eq":["sd.like_kind_if_sold",{"const":true}],"op":"test"},{"eq":["sd.sec1256",{"const":true}],"op":"test"},{"eq":["sd.condemned",{"const":true}],"op":"test"},{"eq":["sd.small_business_stock",{"const":true}],"op":"test"},{"eq":["sd.trader_election",{"const":true}],"op":"test"},{"eq":["sd.f2439_if_dividends",{"const":true}],"op":"test"},{"eq":["sd.casualty",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 4797 to report the following.", "The involuntary conversion (other than from casualty or theft) of property used in a trade or business", "Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.", "Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.", "Use Form 4684 to report involuntary conversions of property due to casualty or theft.", "Use Form 6781 to report gains and losses from section 1256 contracts and straddles.", "Use Form 8824 to report like-kind exchanges."; p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method"; p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439." (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.route_each`
+
+- **Authored helper label:** Do you want to choose, sale by sale, between listing a sale on Form 8949 and adding it to a total on Schedule D? The tax is the same either way; with a No, every sale is listed.
+- **Encoded (Bool):** Input — Do you want to choose, sale by sale, between listing a sale on Form 8949 and adding it to a total on Schedule D? The tax is the same either way; with a No, every sale is listed.
+- Expr: `{"op":"input","source":"Do you want to choose, sale by sale, between listing a sale on Form 8949 and adding it to a total on Schedule D? The tax is the same either way; with a No, every sale is listed."}`
+- Cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sd.carryover`
 
@@ -85,257 +197,257 @@
 ## 1a(d) — `sd.line1a.d`
 
 - **IRS:** Line 1a, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 1a, column (d), "Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments", "(d) Proceeds (sales price)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 1a(e) — `sd.line1a.e`
 
 - **IRS:** Line 1a, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 1a, column (e), "Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments", "(e) Cost (or other basis)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 1a(g) — `sd.line1a.g`
 
 - **IRS:** Line 1a, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 1a, column (g), "Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments", "(g) Adjustments to gain or loss from Form(s) 8949, Part I, line 2, column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 1a(h) — `sd.line1a.h`
 
 - **IRS:** Line 1a, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 1a, column (h), "Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 1b(d) — `sd.line1b.d`
 
 - **IRS:** Line 1b, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 1b, column (d), "Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked", "(d) Proceeds (sales price)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 1b(e) — `sd.line1b.e`
 
 - **IRS:** Line 1b, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 1b, column (e), "Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked", "(e) Cost (or other basis)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 1b(g) — `sd.line1b.g`
 
 - **IRS:** Line 1b, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 1b, column (g), "Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked", "(g) Adjustments to gain or loss from Form(s) 8949, Part I, line 2, column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 1b(h) — `sd.line1b.h`
 
 - **IRS:** Line 1b, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'A' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 1b, column (h), "Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 2(d) — `sd.line2.d`
 
 - **IRS:** Line 2, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'B' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'B' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"B"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"B"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 2, column (d), "Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked", "(d) Proceeds (sales price)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 2(e) — `sd.line2.e`
 
 - **IRS:** Line 2, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'B' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'B' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"B"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"B"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 2, column (e), "Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked", "(e) Cost (or other basis)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 2(g) — `sd.line2.g`
 
 - **IRS:** Line 2, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'B' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'B' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"B"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"B"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 2, column (g), "Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked", "(g) Adjustments to gain or loss from Form(s) 8949, Part I, line 2, column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 2(h) — `sd.line2.h`
 
 - **IRS:** Line 2, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'B' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'B' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"B"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"B"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 2, column (h), "Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 3(d) — `sd.line3.d`
 
 - **IRS:** Line 3, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'C' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'C' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 3, column (d), "Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked", "(d) Proceeds (sales price)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 3(e) — `sd.line3.e`
 
 - **IRS:** Line 3, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'C' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'C' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 3, column (e), "Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked", "(e) Cost (or other basis)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 3(g) — `sd.line3.g`
 
 - **IRS:** Line 3, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'C' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'C' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 3, column (g), "Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked", "(g) Adjustments to gain or loss from Form(s) 8949, Part I, line 2, column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 3(h) — `sd.line3.h`
 
 - **IRS:** Line 3, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'C' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'C' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part I, line 3, column (h), "Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 8a(d) — `sd.line8a.d`
 
 - **IRS:** Line 8a, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 8a, column (d), "Totals for all long-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments", "(d) Proceeds (sales price)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 8a(e) — `sd.line8a.e`
 
 - **IRS:** Line 8a, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 8a, column (e), "Totals for all long-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments", "(e) Cost (or other basis)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 8a(g) — `sd.line8a.g`
 
 - **IRS:** Line 8a, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 8a, column (g), "Totals for all long-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments", "(g) Adjustments to gain or loss from Form(s) 8949, Part II, line 2, column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 8a(h) — `sd.line8a.h`
 
 - **IRS:** Line 8a, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 8a, column (h), "Totals for all long-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 8b(d) — `sd.line8b.d`
 
 - **IRS:** Line 8b, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 8b, column (d), "Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked", "(d) Proceeds (sales price)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 8b(e) — `sd.line8b.e`
 
 - **IRS:** Line 8b, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 8b, column (e), "Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked", "(e) Cost (or other basis)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 8b(g) — `sd.line8b.g`
 
 - **IRS:** Line 8b, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 8b, column (g), "Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked", "(g) Adjustments to gain or loss from Form(s) 8949, Part II, line 2, column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 8b(h) — `sd.line8b.h`
 
 - **IRS:** Line 8b, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'D' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 8b, column (h), "Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 9(d) — `sd.line9.d`
 
 - **IRS:** Line 9, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'E' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'E' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"E"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"E"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 9, column (d), "Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked", "(d) Proceeds (sales price)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 9(e) — `sd.line9.e`
 
 - **IRS:** Line 9, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'E' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'E' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"E"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"E"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 9, column (e), "Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked", "(e) Cost (or other basis)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 9(g) — `sd.line9.g`
 
 - **IRS:** Line 9, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'E' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'E' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"E"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"E"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 9, column (g), "Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked", "(g) Adjustments to gain or loss from Form(s) 8949, Part II, line 2, column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 9(h) — `sd.line9.h`
 
 - **IRS:** Line 9, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'E' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'E' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"E"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"E"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 9, column (h), "Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 10(d) — `sd.line10.d`
 
 - **IRS:** Line 10, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'F' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'F' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"F"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"F"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 10, column (d), "Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked", "(d) Proceeds (sales price)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 10(e) — `sd.line10.e`
 
 - **IRS:** Line 10, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'F' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'F' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"F"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"F"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 10, column (e), "Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked", "(e) Cost (or other basis)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 10(g) — `sd.line10.g`
 
 - **IRS:** Line 10, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'F' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'F' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"F"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"F"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 10, column (g), "Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked", "(g) Adjustments to gain or loss from Form(s) 8949, Part II, line 2, column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 10(h) — `sd.line10.h`
 
 - **IRS:** Line 10, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'F' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'F' and helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
-- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"F"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"F"}],"op":"test"},{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] p. 1, Part II, line 10, column (h), "Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 4 — `sd.line4`
@@ -501,6 +613,6 @@
 ## (helper) — `sd.distributions_if_dividends`
 
 - **Authored helper label:** Capital gain distributions, generally Form 1099-DIV box 2a, when you or your spouse received dividends or other distributions; zero otherwise
-- **Encoded (NonNegDollars):** Choose — [div helper "In 2025, did you (or your spouse) receive any dividends or other distributions from a company or a fund, with or without a Form 1099-DIV? Count amounts that were reinvested, credited to an account or paid in shares or other property. Answer Yes if any of these applies:" = true → helper "Capital gain distributions, generally Form 1099-DIV box 2a"] [div helper "In 2025, did you (or your spouse) receive any dividends or other distributions from a company or a fund, with or without a Form 1099-DIV? Count amounts that were reinvested, credited to an account or paid in shares or other property. Answer Yes if any of these applies:" = false → div helper "No amount in a box whose condition does not hold"]
+- **Encoded (NonNegDollars):** Choose — [div helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund outside a retirement account, or get a Form 1099-DIV?" = true → helper "Capital gain distributions, generally Form 1099-DIV box 2a"] [div helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund outside a retirement account, or get a Form 1099-DIV?" = false → div helper "No amount in a box whose condition does not hold"]
 - Expr: `{"alternatives":[{"guard":{"eq":["div.any",{"const":true}],"op":"test"},"then":"sd.distributions"},{"guard":{"eq":["div.any",{"const":false}],"op":"test"},"then":"div.zero"}],"op":"choose"}`
 - Cite: [f1099div] p. 5, Instructions for Recipient, "Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)" (January 2024 (continuous-use form); sha256 4ea1de80)

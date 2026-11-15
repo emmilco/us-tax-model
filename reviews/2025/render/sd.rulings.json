@@ -31,6 +31,17 @@
    "subject_key": "cb3f31acdc2317e26d5112c1ce5d65a597c9241c51b663266fd13c62c29e64bc"
   },
   {
+   "printed": "12",
+   "restated": "Enter the amount from helper \"No amount on an inapplicable line\".",
+   "model": "Line 12 is 'Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1'. The restatement enters $0, and no condition in sd.other_forms checks for K-1 capital gains or losses, so such amounts are omitted without a refusal.",
+   "ruling": "Ruling: finding; f1040sd line 12, \"Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1\". The value is right: a Schedule K-1 is asked of everyone by scope.k1, which refuses Form 1040 line 8 through scope.schedule1, so no completed return has a K-1 capital gain and line 12 is $0 on every computed return. The reply is right that sd.other_forms tests no K-1 case: its label still says \"or capital gains or losses on a Schedule K-1\", stale since the redraft moved the K-1 words to scope.k1 (MAP 2.7), so the refusal the line shows names a test that does not exist. Low (BUG-0638).",
+   "context": "2c04d1e7c33e636af5a04fc6a8cd3451588dba58d6b5019b9a088fcb3ecf0827",
+   "date": "2026-11-14",
+   "run": "cc4b398be898f0102277542231192e37e4911907ed0a149261d61f89fe549fcb",
+   "severity": "low",
+   "subject_key": "ace462d850b3cadae7a1ec14734afe9a56d597b5e47b6ed876b259a91efc3e40"
+  },
+  {
    "printed": "1a(d)",
    "restated": "Add sales.proceeds over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'A' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Only classification 'A' is summed, but line 1a covers short-term transactions 'reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS'. The digital-asset counterpart (G) is left out, and no refusal names it.",
@@ -157,6 +168,17 @@
    "model": "The IRS line says 'with Box C or Box I checked', but only classification 'C' is summed and there is no refusal for I.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data.",
    "subject_key": "eff681e466923c6e4e1602df8e97424b7cfe1e125c88d0c2425a9a5e82c4ab4b"
+  },
+  {
+   "printed": "5",
+   "restated": "Enter the amount from helper \"No amount on an inapplicable line\".",
+   "model": "Line 5 is 'Net short-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1'. The restatement enters $0, and although the gate's label mentions Schedule K-1, none of the conditions in sd.other_forms asks about K-1 capital gains or losses. A K-1 amount would therefore be silently dropped instead of refused.",
+   "ruling": "Ruling: finding; f1040sd line 5, \"Net short-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1\". The value is right: a Schedule K-1 is asked of everyone by scope.k1, which refuses Form 1040 line 8 through scope.schedule1, so no completed return has a K-1 capital gain and line 5 is $0 on every computed return. The reply is right that sd.other_forms tests no K-1 case: its label still says \"or capital gains or losses on a Schedule K-1\", stale since the redraft moved the K-1 words to scope.k1 (MAP 2.7), so the refusal the line shows names a test that does not exist. Low (BUG-0638).",
+   "context": "2c04d1e7c33e636af5a04fc6a8cd3451588dba58d6b5019b9a088fcb3ecf0827",
+   "date": "2026-11-14",
+   "run": "cc4b398be898f0102277542231192e37e4911907ed0a149261d61f89fe549fcb",
+   "severity": "low",
+   "subject_key": "de1b0ecdcf6f0746a0d811449650fe5defadf0e9be96f4a636190838007dcd65"
   },
   {
    "printed": "8a(d)",

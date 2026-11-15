@@ -2948,51 +2948,6 @@
     }
    ]
   },
-  "f1095a.uniform": {
-   "subject_sha": "bb4553fc0f2ce2d1ced97d52764a40aa67f7c70bf55f86d6a32f9a6fe2f9740d",
-   "samples": [
-    {
-     "verdict": "NARROW",
-     "findings": [
-      {
-       "kind": "NARROW",
-       "situation": "A filer marries mid-year (not in December), and each spouse's separate Form 1095-A shows 12 uniform months in columns A and B, but the applicable SLCSP premium for the combined coverage family changes in the month of marriage.",
-       "source_text": "i8962 p. 15, Line 11 Column (b): \"If you got married in a month other than December, your applicable SLCSP premium may not be the same for every month. If it is not the same for every month, you cannot use line 11.\"",
-       "why": "The question is asked per form, and its list of reasons column B can be wrong leaves out marriage, so the filer would truthfully answer yes for each form. Line 10 needs No because the applicable SLCSP premium is not the same every month, so monthly lines 12–23 are required.",
-       "bound": ""
-      }
-     ],
-     "prompt_sha": "21c0c5f60c912579328e9eed4a50d7d5d8d48a027314bf45b2d2adb5e1c6f082",
-     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
-     "model": "claude-opus-5-5",
-     "cost": 0.060236,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/f1095a.uniform.bb4553fc0f2c.1.response.txt"
-    }
-   ],
-   "type": "Bool",
-   "readers": 28,
-   "brief": true,
-   "used": [
-    {
-     "doc": "i8962",
-     "revision": "2025",
-     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
-     "pages": [
-      14,
-      15
-     ],
-     "how": "cited pages",
-     "locators": [
-      "p. 14, Line 10, \"Check “Yes” and continue to line 11 if all of the following apply for each qualified health plan\", \"Full-year coverage with no changes on Form 1095-A, Part III, column A or B.\", \"If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”\"; p. 15, \"Examples of changes in circumstances that may affect your applicable SLCSP premium include the following\", \"You moved during 2025\", \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\""
-     ],
-     "cols_pages": [
-      15
-     ],
-     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
-    }
-   ]
-  },
   "f1095a.void": {
    "subject_sha": "5a96ed3d679050356423c8042195e2b4436b50a27c8feee96a59f606dc173cc7",
    "samples": [

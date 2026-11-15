@@ -1,0 +1,160 @@
+{
+ "parents": [
+  "scope.noncitizen",
+  "scope.armed_forces",
+  "scope.under24",
+  "scope.unearned_2700",
+  "scope.religious_work",
+  "scope.artist_official",
+  "scope.foreign_shares",
+  "scope.business_before"
+ ],
+ "set_inputs": {
+  "mutation.t2.no_itemize_f8960_9a": {
+   "s3.adoption_any": false
+  }
+ },
+ "rename_unknown": {
+  "stage9.eic.refuse.other_income.schedule1_unanswered": {
+   "scope.schedule1": "scope.rental"
+  }
+ },
+ "screens": {
+  "scope.schedule1": {
+   "items": [
+    "scope.reservist_expenses",
+    "scope.military_move",
+    "scope.rental",
+    "scope.k1",
+    "scope.farm",
+    "scope.clergy",
+    "scope.church_exempt_wages",
+    "scope.w2_marks",
+    "scope.performer_expenses",
+    "scope.recovery",
+    "scope.archer_msa",
+    "scope.se_plan_other",
+    "scope.reforestation",
+    "scope.attorney_fees",
+    "scope.nol"
+   ],
+   "default_true": {
+    "scope.rental": true
+   }
+  },
+  "scope.other_income": {
+   "items": [
+    "scope.nonresident",
+    "scope.chapter11",
+    "scope.reservist_repaid",
+    "scope.adoption_benefits",
+    "scope.pay_no_w2",
+    "scope.medicaid_waiver",
+    "scope.care_benefits_other",
+    "scope.disaster_distribution",
+    "scope.excess_deferral",
+    "scope.passive"
+   ],
+   "default_true": {
+    "scope.chapter11": true
+   }
+  },
+  "scope.other_line16": {
+   "items": [
+    "scope.f8615",
+    "scope.f8814",
+    "scope.education_recapture",
+    "scope.income_averaging",
+    "scope.pfic",
+    "scope.cfc",
+    "scope.f8978"
+   ],
+   "default_true": {
+    "scope.f8814": true
+   }
+  }
+ },
+ "drop_nulls": [
+  "stage4.refuse.scope.schedule1",
+  "stage4.refuse.scope.other_income",
+  "stage4.refuse.scope.other_line16",
+  "stage5.refuse.other_income"
+ ],
+ "cases": {
+  "stage9.eic.refuse.clergy_schedule1": {
+   "scope.schedule1": {
+    "scope.religious_work": true,
+    "scope.clergy": true
+   }
+  },
+  "stage9.eic.refuse.clergy_schedule1.step5": {
+   "scope.schedule1": {
+    "scope.religious_work": true,
+    "scope.clergy": true
+   }
+  },
+  "stage9.eic.refuse.other_income": {
+   "scope.other_income": {
+    "scope.medicaid_waiver": true
+   }
+  },
+  "stage9.eic.refuse.other_income.schedule1_unanswered": {
+   "scope.other_income": {
+    "scope.noncitizen": true,
+    "scope.nonresident": true
+   }
+  },
+  "stage5.refuse.other_income": {
+   "scope.other_income": {
+    "scope.noncitizen": true,
+    "scope.nonresident": true
+   }
+  },
+  "stage4.refuse.scope.other_income": {
+   "scope.other_income": {
+    "scope.noncitizen": true,
+    "scope.nonresident": true
+   }
+  },
+  "stage12.refuse.tips_trade_or_business": {
+   "scope.schedule1": {
+    "scope.k1": true
+   }
+  },
+  "stage12.refuse.overtime_nonemployee": {
+   "scope.schedule1": {
+    "scope.k1": true
+   }
+  },
+  "stage8.refuse.s8812.schedule1": {
+   "scope.schedule1": {
+    "scope.farm": true
+   }
+  },
+  "stage10.ss.refuse.schedule1": {
+   "scope.schedule1": {
+    "scope.archer_msa": true
+   }
+  },
+  "scope.ch11.wage_only_debtor": {
+   "scope.other_income": {
+    "scope.chapter11": true
+   }
+  },
+  "scope.ch11.mfj_spouse_debtor": {
+   "scope.other_income": {
+    "scope.chapter11": true
+   }
+  },
+  "stage9.eic.refuse.form8814": {
+   "scope.other_line16": {
+    "scope.f8814": true
+   }
+  },
+  "t264.eic.step2_schedule1": {
+   "scope.schedule1": {
+    "scope.rental": true
+   }
+  }
+ }
+}

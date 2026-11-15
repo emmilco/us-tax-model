@@ -112,10 +112,6 @@ def build_info(case, year):
     joint = bool(f.get("joint"))
     hsa = "hsa" in case["features"]
     age = f.get("age", 40)
-    # The HSA catch-up contribution (Form 8889 line 7) follows the date of birth in UsTaxes; the
-    # generator answers the age-55 question on its own, so a filer under 55 who answered yes is 56.
-    if hsa and inputs.get(f"{HSA}.age55") and age < 55:
-        age = 56
     primary = {**person("PRIMARY", year, age), "isTaxpayerDependent": False,
                "address": {"address": "1 Main St", "city": "Austin", "state": "TX", "zip": "78701"}}
     tp = {"filingStatus": STATUS[status], "primaryPerson": primary, "dependents": []}
@@ -422,7 +418,7 @@ def run_features(case, vals):
             # account (F8889.ts constructor filter), deducts the same contributions a second time.
             if (vals.get("f8889.l2") or 0) > (vals.get("f8889.l12") or 0) or (vals.get("f8889s.l13") or 0) > 0:
                 fs.add("hsa_family_limited")
-        if inputs.get(f"{HSA}.age55"):
+        if case["facts"].get("hsa_age55"):
             fs.add("hsa_age55")
         elif case["facts"].get("age", 40) >= 55:
             fs.add("hsa_senior_without_age55")

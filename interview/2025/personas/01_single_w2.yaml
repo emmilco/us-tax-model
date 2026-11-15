@@ -1,0 +1,18 @@
+name: 01_single_w2
+who: A single person, 31, with one job (one Form W-2, $52,000 of wages) and nothing else to report.
+end: complete
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  person[taxpayer].birth_year: 1994
+  $w2@person[taxpayer]: [acme]
+  person[taxpayer].w2[acme].box1: 5200000
+  person[taxpayer].w2[acme].box2: 520000
+  person[taxpayer].w2[acme].box4: 322400
+  person[taxpayer].w2[acme].box5: 5200000
+  person[taxpayer].w2[acme].box6: 75400
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false

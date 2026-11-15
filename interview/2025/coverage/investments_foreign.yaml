@@ -1,0 +1,313 @@
+# Coverage rows for interest, dividends, foreign tax and accounts outside the United States (provisional redraft,
+# lane 5a). See opening.yaml for how a row is read.
+tax_year: 2025
+part: Interest, dividends, foreign tax and accounts outside the United States
+profile: full
+rows:
+  # The foreign question (sb.foreign_any, 827 words, nine bullets) taken apart into five plain questions.
+  - id: foreign.none
+    design: lane 5a, foreign parents (a filer with nothing outside the United States)
+    situation: A person with no account, asset, trust or company outside the United States or in a U.S. territory.
+    answers:
+      sb.account_any: false
+      sb.asset_any: false
+      sb.trust_any: false
+      sb.company_any: false
+      sb.territory_any: false
+    expect:
+      proceeds:
+        sb.account_any: false
+      not_asked: [sb.fbar_required, sb.form8938, sb.line8, sb.form5471]
+  - id: foreign.account_fbar
+    design: old bullet 1 (a financial interest in an account located outside the United States)
+    situation: A person kept a savings account in another country that held more than $10,000, so the foreign account report is due.
+    answers:
+      sb.account_any: true
+      sb.fbar_required: true
+    expect:
+      refused: sb.fbar_required_if_foreign
+  - id: foreign.account_signature
+    design: old bullet 2 (signature authority over an employer's or a relative's account)
+    situation: A person can sign for an account of their employer in another country and has no money of their own abroad; the foreign account report is due.
+    answers:
+      sb.account_any: true
+      sb.fbar_required: true
+    expect:
+      refused: sb.fbar_required_if_foreign
+  - id: foreign.account_small
+    design: old opening ("count it whatever its value", "closed, emptied or sold during 2025")
+    situation: A person had a small bank account in another country, closed in March 2025; no report or form is due for it.
+    answers:
+      sb.account_any: true
+      sb.fbar_required: false
+      sb.form8938: false
+    expect:
+      proceeds:
+        sb.account_any: true
+      not_asked: [sb.line8, sb.form5471]
+  - id: foreign.account_8938
+    design: old bullets 1 and 5 (accounts are specified foreign financial assets)
+    situation: A person holds accounts in another country worth more than the Form 8938 threshold.
+    answers:
+      sb.account_any: true
+      sb.fbar_required: false
+      sb.form8938: true
+    expect:
+      refused: sb.form8938_if_foreign
+  - id: foreign.asset_8938
+    design: old bullet 5 (securities of a non-US issuer held outside a US account, an interest in a foreign entity)
+    situation: A person owns shares of a foreign company, held outside any U.S. brokerage account, worth more than the Form 8938 threshold.
+    answers:
+      sb.asset_any: true
+      sb.fbar_required: false
+      sb.form8938: true
+    expect:
+      refused: sb.form8938_if_foreign
+  - id: foreign.asset_fbar
+    design: old bullets 1 and 4 (a cash-value policy of a foreign insurer; a balance with a business abroad)
+    situation: A person has a cash-value life insurance policy from a foreign insurer, which they did not think of as an account; the foreign account report is due.
+    answers:
+      sb.account_any: false
+      sb.asset_any: true
+      sb.fbar_required: true
+    expect:
+      refused: sb.fbar_required_if_foreign
+  - id: foreign.asset_loan
+    design: old bullet 5 (a loan to a relative abroad; an heir of an estate abroad)
+    situation: A person lent money to a cousin who lives abroad; the amount is below every filing threshold.
+    answers:
+      sb.asset_any: true
+      sb.fbar_required: false
+      sb.form8938: false
+    expect:
+      proceeds:
+        sb.asset_any: true
+      not_asked: [sb.line8, sb.form5471]
+  - id: foreign.trust_distribution
+    design: old bullets 7 and 8 (a distribution from, grantor of or transferor to a foreign trust)
+    situation: A person received money in 2025 from a family trust run from another country.
+    answers:
+      sb.trust_any: true
+      sb.line8: true
+      sb.fbar_required: false
+      sb.form8938: false
+    expect:
+      refused: sb.line8_if_foreign
+  - id: foreign.trust_beneficiary_only
+    design: old bullet 7 ("or being a beneficiary of a foreign trust")
+    situation: A person is named as a beneficiary of a foreign trust, received nothing from it in 2025, never gave to it, and has no form to file for it.
+    answers:
+      sb.trust_any: true
+      sb.line8: false
+      sb.fbar_required: false
+      sb.form8938: false
+    expect:
+      proceeds:
+        sb.trust_any: true
+      not_asked: [sb.form5471]
+  - id: foreign.trust_account
+    design: old bullet 3 (an account of a trust in which you have more than a 50% present beneficial interest)
+    situation: A person has more than half of the present benefit of a foreign trust whose bank account held more than $10,000.
+    answers:
+      sb.trust_any: true
+      sb.fbar_required: true
+    expect:
+      refused: sb.fbar_required_if_foreign
+  - id: foreign.company_director
+    design: old bullet 9 (an officer, director or manager of a foreign company)
+    situation: A person is a director of their employer's subsidiary in another country.
+    answers:
+      sb.company_any: true
+      sb.form5471: true
+      sb.fbar_required: false
+      sb.form8938: false
+    expect:
+      refused: sb.form5471_if_foreign
+  - id: foreign.company_small_share
+    design: old bullet 9 (10% or more counting family shares), answered Yes to the plain question and No to the precise one
+    situation: A person and their brother each own 6% of a foreign company; a brother's shares are not counted, so the precise test is not met and nothing is due.
+    answers:
+      sb.company_any: true
+      sb.form5471: false
+      sb.fbar_required: false
+      sb.form8938: false
+    expect:
+      proceeds:
+        sb.company_any: true
+      not_asked: [sb.line8]
+  - id: foreign.territory_trust
+    design: old bullet 8 (a trust supervised by a court in Puerto Rico, Guam or another US territory counts as foreign)
+    situation: A person set up a trust in Puerto Rico that a court there supervises.
+    answers:
+      sb.territory_any: true
+      sb.line8: true
+      sb.fbar_required: false
+      sb.form8938: false
+    expect:
+      refused: sb.line8_if_foreign
+  - id: foreign.territory_company
+    design: old bullet 9 (a company organized in Puerto Rico, Guam or another US territory)
+    situation: A person is an officer of a company organized in Guam.
+    answers:
+      sb.territory_any: true
+      sb.line8: false
+      sb.form5471: true
+      sb.fbar_required: false
+      sb.form8938: false
+    expect:
+      refused: sb.form5471_if_foreign
+  - id: foreign.territory_account
+    design: old bullet 4 (an account with a financial institution organized in a US territory)
+    situation: A person has a large account with a bank organized in Puerto Rico and must file Form 8938 for it.
+    answers:
+      sb.territory_any: true
+      sb.fbar_required: false
+      sb.form8938: true
+    expect:
+      refused: sb.form8938_if_foreign
+  # The dividends question (div.any, 217 words, seven bullets) as a question about what the person owns, and the
+  # less common boxes of Form 1099-DIV beneath one question about the paper.
+  - id: dividends.none
+    design: lane 5a, dividends (a filer who owns no shares and has no Form 1099-DIV)
+    situation: A person owns no shares or funds outside a retirement account and received no Form 1099-DIV.
+    answers:
+      div.any: false
+    expect:
+      proceeds:
+        div.any: false
+      not_asked: [sb.ordinary_dividends, sd.distributions, div.other_boxes, div.box3]
+  - id: dividends.owner_without_dividends
+    design: 'lane 5a, dividends (the wider parent: an owner of shares that paid nothing)'
+    situation: A person owns shares of a company that paid no dividend in 2025 and has no Form 1099-DIV.
+    answers:
+      div.any: true
+      sb.ordinary_dividends: 0
+      sd.distributions: 0
+      div.other_boxes: false
+      ftc.taxes: 0
+      sd.f2439: false
+    expect:
+      proceeds:
+        div.any: true
+      not_asked: [f1040.line3a, qbi.dividends, div.box2b, div.box2e, div.box3, div.box9, div.box10, div.box13]
+  - id: dividends.ordinary_fund
+    design: old bullets 1 and 2 (a Form 1099-DIV; dividends from stock or a mutual fund, reinvested or not)
+    situation: A person holds an index fund whose Form 1099-DIV shows $1,000 in box 1a, $800 in box 1b and $200 in box 2a, and nothing in the less common boxes.
+    answers:
+      div.any: true
+      sb.ordinary_dividends: 100000
+      f1040.line3a: 80000
+      qbi.dividends: 0
+      sd.distributions: 20000
+      div.other_boxes: false
+      sb.nominee: false
+      sb.bonds_any: false
+      ftc.taxes: 0
+      sd.f2439: false
+    expect:
+      proceeds:
+        div.other_boxes: false
+      not_asked: [div.box2b, div.box2c, div.box2d, div.box2e, div.box2f, div.box3, div.box9, div.box10, div.box13]
+  - id: dividends.liquidation
+    design: old bullet 3 (liquidation distributions)
+    situation: A person received a liquidation distribution in shares of another company, box 10 of a Form 1099-DIV, and no dividends.
+    answers:
+      div.any: true
+      sb.ordinary_dividends: 0
+      sd.distributions: 0
+      div.other_boxes: true
+      div.box9: 0
+      div.box10: 500000
+      div.box13: 0
+    expect:
+      refused: div.unsupported
+  - id: dividends.return_of_capital_over_basis
+    design: old bullet 3 (nondividend distributions, a return of capital)
+    situation: A person received a return of capital, box 3 of a Form 1099-DIV, that was more than what the shares had cost.
+    answers:
+      div.any: true
+      sb.ordinary_dividends: 0
+      sd.distributions: 0
+      div.other_boxes: true
+      div.box3: 500000
+      div.box9: 0
+      div.box10: 0
+      div.box13: 0
+      div.basis_reconciled: false
+    expect:
+      refused: div.unsupported
+  # The special-treatment screen of Schedule B (sb.unsupported, nine items in one sentence) taken apart.
+  - id: interest.bank_only
+    design: 'lane 5a, interest (the common case: bank interest and nothing special)'
+    situation: A person was paid $300 of interest by a bank, all of it their own, and owns no bonds and made no loans.
+    answers:
+      $interest: [bank]
+      interest[bank].amount: 30000
+      interest[bank].penalty: 0
+      sb.nominee: false
+      sb.bonds_any: false
+      ftc.taxes: 0
+    expect:
+      proceeds:
+        sb.bonds_any: false
+      not_asked: [sb.bond_special]
+  - id: interest.nominee
+    design: old item 1 (nominee income)
+    situation: A person's Form 1099-INT for a joint account with their mother shows $300 of interest, half of which is the mother's.
+    answers:
+      $interest: [bank]
+      interest[bank].amount: 30000
+      interest[bank].penalty: 0
+      sb.nominee: true
+    expect:
+      refused: sb.unsupported_if_income
+  - id: interest.seller_financed
+    design: old items 2 to 9 (bond and loan adjustments; here seller-financed mortgage interest)
+    situation: A person sold their house in 2023 and the buyer pays them interest on the price.
+    answers:
+      $interest: [buyer]
+      interest[buyer].amount: 400000
+      interest[buyer].penalty: 0
+      sb.nominee: false
+      sb.bonds_any: true
+      sb.bond_special: true
+    expect:
+      refused: sb.unsupported_if_income
+  - id: interest.treasury_plain
+    design: lane 5a, interest (a Yes to the plain parent and a No beneath it)
+    situation: A person holds Treasury notes bought at issue and held all year; nothing about the interest needs adjusting.
+    answers:
+      $interest: [treasury]
+      interest[treasury].amount: 120000
+      interest[treasury].penalty: 0
+      sb.nominee: false
+      sb.bonds_any: true
+      sb.bond_special: false
+      ftc.taxes: 0
+    expect:
+      proceeds:
+        sb.bonds_any: true
+  - id: interest.none
+    design: lane 5a, interest (no interest and no dividends)
+    situation: A person had no interest and no dividends.
+    answers:
+      $interest: []
+      div.any: false
+    expect:
+      proceeds:
+        div.any: false
+      not_asked: [sb.nominee, sb.bonds_any, sb.bond_special]
+  - id: dividends.private_activity_bonds
+    design: old bullet 3 (exempt-interest dividends; here the part from private activity bonds, box 13)
+    situation: A person's municipal bond fund reports specified private activity bond interest dividends in box 13 of Form 1099-DIV.
+    answers:
+      div.any: true
+      sb.ordinary_dividends: 0
+      sd.distributions: 0
+      div.other_boxes: true
+      div.box13: 5000
+      div.box9: 0
+      div.box10: 0
+      div.box3: 0
+    expect:
+      refused: div.amt

@@ -119,11 +119,91 @@
   },
   {
    "printed": "ftc.credit",
+   "project_expr_sha256": "a81cb3e2ea54ff61e4b54fa1fdd3b6fd5e758d5824d7d5e28a4f80590a8c6fea",
+   "second_expr_sha256": "b329272cafddd4f319ae43971e1252b0a187b1d134c924818bc388c6bd874e73",
+   "ruling": "Ruling: model error; i1116 p. 25, Line 20: \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\" (the regular tax that limits the credit under the election). The reply limits the credit by Form 1040 line 16 alone, dropping Schedule 2 line 1z: completed stage18.ftc_limit_with_repayment ($200 of foreign tax, line 16 $0, Schedule 2 line 1z $375), project $200, reply $0. It also reads the election inputs (ftc.all_passive, ftc.elect, ftc.carryover and others) where the interview does not ask them. executable triage (.transcription/triage/2025/ftc.json, executable-triage-v2): 1,757 of 2,629 agree; 1 value (completed, the witness above), 641 candidate-unknown (22 completed), 198 candidate-refuses (refused returns, upstream refusals through f1040.line16), 20 project-refuses, 12 project-unknown. Project stands.",
+   "context": "72d573ffbe1ad45e0060cf8001cb9bfd6069c9e49ffaba7df86449f963dccd38",
+   "date": "2026-11-14",
+   "run": "b6a3372ac4378d4942ac1deba9b1f2c055f41dfe9638527d56148476bf24ccbf",
+   "subject_key": "db081b6c8f8fb2f777e8e83209c9ed5a440be71d684cf2ebb61de14b3a4238db",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@ftc",
+     "fixture:classm.f2441.2.deepseek@ftc",
+     "fixture:classm.f2441.3.deepseek@ftc",
+     "fixture:classm.f2441.4.deepseek@ftc",
+     "fixture:classm.f2441.5.deepseek@ftc",
+     "fixture:classm.f2441.6.deepseek@ftc",
+     "fixture:classm.w2.1.deepseek@ftc",
+     "fixture:classm.person.1.deepseek@ftc",
+     "fixture:classm.carloan.2@ftc",
+     "fixture:classm.f4562.1@ftc",
+     "fixture:classm.person.15@ftc",
+     "fixture:t264.eic.show5_agi_open_married_child@ftc",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ftc",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ftc",
+     "fixture:stage16.cleanup.refuse.scope_credits@ftc",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@ftc",
+     "fixture:t264.f4952.unsupported_with_interest@ftc",
+     "fixture:stage4.refuse.ftc.eligible@ftc",
+     "fixture:stage4.refuse.ftc.election@ftc",
+     "fixture:stage18.ftc_limit_with_repayment@ftc",
+     "fixture:mutation.t2.hoh_s1a_car@ftc",
+     "generated:20261026.1@ftc",
+     "generated:20261026.2@ftc",
+     "generated:20261026.3@ftc",
+     "generated:20261026.4@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ftc.credit",
    "project_expr_sha256": "d9a4df3c95c1b3904c1f538ab18829b3bf78e4caf60ef0ba8a3ede74983c5ec3",
    "second_expr_sha256": "9c5ba0d57953e928af9e4ab0b87ca4c147522b2fdbfca77c658a4ea1579a41a7",
    "ruling": "Ruling: representation on completed supported returns; i1116 (2025) pp.1-2 Election To Claim ... Without Filing Form1116 explicitly instructs the smaller of total foreign tax and regular tax, despite waiving the Form1116 lines15-23 limitation. That primary text establishes the shared min expression. With positive tax, admitted cases meet the election conditions and both use that min; the reply floors regular tax at zero, redundant for the supported computed nonnegative line16. With zero tax and a completed no-election answer the reply returns zero, as confirmed by .transcription/ftc-zero-tax-source-witness.json. Excluded regimes and absent election answers are not asserted equivalent.",
    "context": "c1446e3bc321c1aaec144a5b57532c2054151a1033b6f0232656349bde9f1c46",
    "subject_key": "0e73f66f019a05fd77f8ec8636b3c7faae886a43c0e784c1affca3b7eccb0ec4"
+  },
+  {
+   "printed": "ftc.has_tax",
+   "project_expr_sha256": "38ce81184d28a22c3d873493d7d6e00f2267ed55b3714ea3123967a5d3c5117c",
+   "second_expr_sha256": "1afa0661af6ed06828e7407965af184ec34dc2d6b7cb1ce7e5308025964ca9d1",
+   "ruling": "Ruling: representation; i1116 pp. 1-2, the election to claim the credit without Form 1116 (\"All of your foreign source gross income was passive category income\" ... \"reported to you on a payee statement\"). The project tests ftc.taxes_if_asked, the foreign tax asked only of a filer who owned shares or received a Form 1099-DIV, was paid taxable interest, or paid tax to another country (ftc.asked); the reply tests ftc.taxes directly. Where the amount is asked the two are the same test. executable triage (.transcription/triage/2025/ftc.json, executable-triage-v2): 2,581 of 2,629 agree; 35 candidate-unknown (12 completed, e.g. classm.eic.3: no question asked, project false) and 13 project-unknown on incomplete or refused records; no value difference. Project stands.",
+   "context": "72d573ffbe1ad45e0060cf8001cb9bfd6069c9e49ffaba7df86449f963dccd38",
+   "date": "2026-11-14",
+   "run": "b6a3372ac4378d4942ac1deba9b1f2c055f41dfe9638527d56148476bf24ccbf",
+   "subject_key": "e7f5be23a53a4aa3658a3bbaf8cd9303be1e9f30fdb7ce33d9bf2bdc1186695f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@ftc",
+     "fixture:classm.f8889.5.deepseek@ftc",
+     "fixture:classm.eic.3@ftc",
+     "fixture:classm.eic.4@ftc",
+     "fixture:classm.eic.6@ftc",
+     "fixture:classm.eic.7@ftc",
+     "fixture:classm.eic.9@ftc",
+     "fixture:classm.eic.10@ftc",
+     "fixture:classm.gift.1@ftc",
+     "fixture:t264.eic.show5_agi_open_married_child@ftc",
+     "fixture:stage16.cleanup.refuse.scope_credits@ftc",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

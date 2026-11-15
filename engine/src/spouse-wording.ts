@@ -221,6 +221,15 @@ export function shownFor<Q extends { prompt: string; help: string }>(q: Q, key: 
   return { ...shown, prompt: framedPrompt(PERSON_FRAME + rest, frame), help: personWording(shown.help, role), ...(frame ? { frame } : {}) };
 }
 
+/** A tick-box label as shown beside the box of the question `key`, whose stored prompt is `prompt`: the spouse phrase
+ * reworded for the filing status and, for a question asked of a person, the person named for the entry's role, as
+ * `shownFor` words the question. A label carries no frame: the group's heading does. */
+export function shownLabel(label: string, prompt: string, key: string, inputs: Inputs): string {
+  const shown = spouseWording(label, jointReturn(inputs));
+  const frame = personFrame(prompt, key, inputs);
+  return frame === undefined ? shown : personWording(shown, frame === ABOUT_SPOUSE ? "spouse" : "taxpayer");
+}
+
 /** A values sheet as shown: each line's label reworded. */
 export function shownSheet<S extends { sections: { lines: { label: string }[] }[] }>(sheet: S, joint: JointReturn): S {
   if (joint === "unknown") return sheet;

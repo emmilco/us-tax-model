@@ -1,11 +1,5 @@
 {
  "rulings": {
-  "consumer:ny_it201.ask.state_resident@ny_it201i:p3": {
-   "verdict": "same",
-   "question_phrase": "a New York State resident for all of 2025",
-   "source_phrase": "p. 3, \"If you were a New York State resident for only part of the year, do not file Form IT-201.\"",
-   "reason": "The gate refuses the part-year (or nonresident) case p. 3 sends to Form IT-203; the question asks the full-year residence p. 30 defines."
-  },
   "consumer:ny_it201.ask.city_resident@ny_it201i:p14": {
    "verdict": "same",
    "question_phrase": "a New York City resident ... for all of 2025",
@@ -29,6 +23,36 @@
    "question_phrase": "owe New York sales or use tax on purchases made without paying New York tax",
    "source_phrase": "p. 19, \"If you do not owe any sales or use tax, you must enter 0 on line 59.\"",
    "reason": "A No is the case p. 19 says to enter 0 for; the question restates p. 18's \"You owe sales or compensating use tax if you\" conditions."
+  },
+  "consumer:ny_it201.ask.abroad@ny_it201i:p5": {
+   "verdict": "same",
+   "question_phrase": "Were you outside the United States and Puerto Rico on April 15, 2026, and are you using the extra time to file that this gives?",
+   "source_phrase": "If you qualify for one or more of the special conditions below, enter the specified two-character code.",
+   "reason": "The item G introduction on p. 5 defines no condition; the code this answer stands for is defined on p. 6, which the question cites, and the reader only tests whether any item G code applies."
+  },
+  "consumer:ny_it201.ask.installment@ny_it201i:p5": {
+   "verdict": "same",
+   "question_phrase": "If you owe New York tax, will you ask to pay it in installments?",
+   "source_phrase": "If you qualify for one or more of the special conditions below, enter the specified two-character code.",
+   "reason": "The item G introduction on p. 5 defines no condition; the installment code is defined on p. 6, which the question cites, and the reader only tests whether any item G code applies."
+  },
+  "consumer:ny_it201.ask.city_resident@ny_it201i:p3": {
+   "verdict": "same",
+   "question_phrase": "a New York City resident (the Bronx, Brooklyn, Manhattan, Queens or Staten Island) for all of 2025",
+   "source_phrase": "If you were a New York State resident for only part of the year, do not file Form IT-201.",
+   "reason": "New York City lies in New York State, so a resident of the city for all of 2025 by the State's test was a State resident for all of 2025; the gate treats a city Yes as a full-year State resident and asks the State question after a No."
+  },
+  "consumer:ny_it201.ask.city_resident@ny_it201i:p30": {
+   "verdict": "same",
+   "question_phrase": "by the same test with New York City in place of New York State",
+   "source_phrase": "Your domicile is New York State.",
+   "reason": "The question applies the page's domicile and permanent-place-of-abode tests with the city in place of the State, and a city domicile or a city abode with the days in the city meets the State's tests, so a Yes is a State resident; a No leads to the State question itself."
+  },
+  "consumer:ny_it201.ask.spouse_itemizes@ny_it201i:p10": {
+   "verdict": "same",
+   "question_phrase": "Is your husband or wife itemizing deductions on their own New York return?",
+   "source_phrase": "You may take either the New York standard deduction or the New York itemized deduction.",
+   "reason": "Page 10 states only the choice between the two deductions; the married-filing-separately rule the answer serves is on p. 11, which the question cites, and the gate asks it only of a separate return."
   }
  },
  "baseline": {}

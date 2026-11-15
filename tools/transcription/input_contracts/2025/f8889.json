@@ -438,7 +438,7 @@
         "person[sample].f8889[hsa].months_family": 12,
         "person[sample].f8889[hsa].dec_coverage": "family",
         "person[sample].f8889[hsa].last_month": false,
-        "person[sample].f8889[hsa].age55": false,
+        "person[sample].birth_year": 1980,
         "person[sample].f8889[hsa].allocation": "equal",
         "person[sample].f8889[hsa].line2": 200000,
         "person[sample].f8889[hsa].line9": 0,
@@ -461,11 +461,11 @@
         "person[spouse].f8889[hsa].months_family": 12,
         "person[spouse].f8889[hsa].dec_coverage": "family",
         "person[spouse].f8889[hsa].last_month": false,
-        "person[spouse].f8889[hsa].age55": false,
+        "person[spouse].birth_year": 1980,
         "person[spouse].f8889[hsa].allocation": "equal",
         "person[spouse].f8889[hsa].line2": 200000,
         "person[spouse].f8889[hsa].line9": 0,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "person[sample].f8889[hsa].line3": {
@@ -528,11 +528,11 @@
         "person[sample].f8889[hsa].months_family": 12,
         "person[sample].f8889[hsa].dec_coverage": "family",
         "person[sample].f8889[hsa].last_month": false,
-        "person[sample].f8889[hsa].age55": false,
+        "person[sample].birth_year": 1980,
         "person[sample].f8889[hsa].allocation": "equal",
         "person[sample].f8889[hsa].line2": 200000,
         "person[sample].f8889[hsa].line9": 0,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "person[sample].f8889[hsa].line3": {

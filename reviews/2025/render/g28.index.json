@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "5fa2d0406fbf9e38797508f404cca8e0bb869787b070f9e4385f881d66df6e6c",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -36,10 +36,10 @@
   },
   {
    "key": "4",
-   "record": "f98020a0e33c5edc279bc8ea04578a2447acffba90c9aa2c3777468752408219",
+   "record": "97cf0cbbee57c55b05b3e276f962460ebf2d1d801851947faf61fdc97e9f708d",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 4: \"Enter the total of any collectibles gain reported to you on: • Form 1099-DIV, box 2d; • Form 2439, box 1d; and • Schedule K-1 from a partnership, S corporation, estate, or trust.\" Form 2439 and Schedule K-1 amounts: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") refuses them, reaching Form 1040 line 7a through Schedule D lines 7, 15 and 16 (as the earlier rulings of this line). Within scope line 4 is Form 1099-DIV box 2d alone. The restatement now names the box 2a condition of the box 2d input: f1099div p. 5, \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\", so box 2d is zero when box 2a is. Project retained.",
-   "subject_key": "3a847b0bbc10d5b70a3fcca2e1e7b1fe8f969f299d6b19ce0278937f2abb272f"
+   "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 4: \"Enter the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust.\" Form 2439: sd.f2439 (\"Did a mutual fund or a real estate investment trust (REIT) send you ... a Form 2439 for 2025\", asked under div.any, which covers anyone owning fund shares) is a limb of sd.other_forms, which refuses Schedule D (sd.route_each and lines 4, 6, 14 and others, forms/2025/sd.yaml). Schedule K-1: scope.k1 is a limb of scope.schedule1, refused at scope.ready. Within scope line 4 is Form 1099-DIV box 2d alone; box 2d is \"the portion of the amount in box 2a\" (f1099div p. 5), so the box 2a condition is the input's. Project stands.",
+   "subject_key": "6feb2019c92d25014cec7017d59278cebe79feea914b5d70ab40d02f62270fd6"
   },
   {
    "key": "6",
@@ -49,9 +49,9 @@
   },
   {
    "key": "7",
-   "record": "f98020a0e33c5edc279bc8ea04578a2447acffba90c9aa2c3777468752408219",
+   "record": "97cf0cbbee57c55b05b3e276f962460ebf2d1d801851947faf61fdc97e9f708d",
    "status": "MATCH",
-   "subject_key": "6f9ad62b06dba0de7bdd4ce172fd2535c837e54fdaddc0bcd5f039ad69b26248"
+   "subject_key": "480fc67c1fad19a666af35d3551a0c728276d1a757f576068e3f54ae4e52701b"
   }
  ],
  "subjects": {
@@ -59,9 +59,9 @@
   "2": "6282e4be7e2b480b3d5b547ded3043c192acff2ef61407cb72f941c5a9006285",
   "3": "91696c467c502b4e13c65458a970ae5c6c24655d41e611d1495459f3203ca1fa",
   "5": "11e0c5560452fce7fb68bb8b5886890a3451153cd6b4efe8e5f7cbb680e7d87e",
-  "4": "727852d2db4365fe5a7842bc5249ca539c1514c5dc18256600a494eb40fa4f21",
+  "4": "14bf35a8342c5d7da300bb4f247de1a726ef201881a6ea8ab283ee2dcf33ba9b",
   "6": "4a35e37f60f12a8d1c01d962160486443fac4421179adcf2192cfee09631954e",
-  "7": "29a02c670e7b07fde98ac38e7db51987b284daa874d16de4367bd0edc2a3caa4"
+  "7": "f5d1e5e8f2d01c530261a0eb69bbf3e3fe78f0a1df3c78b49008a6a0eac6414d"
  },
  "__rest__": "98dcc1328cc45881d8b4dab0186222fa449c102d4c0c88dd830dedc671d61bd9"
 }

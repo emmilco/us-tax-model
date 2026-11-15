@@ -33,313 +33,95 @@ The closed lists the rule works from (a framed question with a subject before a 
 - verbs after "this person" or "your spouse" that change for "you": "is" to "are", "was" to "were", "has" to "have", "does" to "do", "isn't" to "aren't", "wasn't" to "weren't", "doesn't" to "don't"
 - words after a subject or an object that need no change: "a", "acquired", "age", "agreed", "an", "and", "applied", "applying", "as", "at", "became", "blind", "born", "by", "can", "can't", "cannot", "claimed", "contributed", "could", "covered", "deducted", "deferred", "did", "died", "enrolled", "filed", "for", "fully", "had", "have", "if", "in", "inherited", "made", "more", "never", "of", "on", "opened", "or", "overtime", "paid", "put", "received", "recharacterized", "repaid", "returned", "rolled", "served", "to", "took", "turned", "under", "with"
 
-97 questions carry the frame.
+101 questions carry the frame.
 
 ## `person.rrta`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?
+> For this person (you, or your spouse on a joint return) — Did you work for a railroad in 2025?
 
 Shown on a one-person return:
 
-> Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?
+> Did you work for a railroad in 2025?
 
 Shown for you on a couple's return:
 
-> About you — Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?
+> About you — Did you work for a railroad in 2025?
 
 Shown for your spouse:
 
-> About your spouse — Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did your spouse file Form CT-2 as an employee representative?
+> About your spouse — Did your spouse work for a railroad in 2025?
 
 **Help, as stored**
 
-> Yes if any of this person's Forms W-2 reports railroad retirement (RRTA) compensation or tax in box 14, or this person filed Form CT-2 as an employee representative. Railroad retirement compensation is outside this tool and is refused.
+> Yes also if box 14 of a W-2 shows railroad retirement (RRTA) pay or tax, or if you filed Form CT-2. A Yes ends the interview here.
 
 Shown on a one-person return:
 
-> Yes if any of your Forms W-2 reports railroad retirement (RRTA) compensation or tax in box 14, or you filed Form CT-2 as an employee representative. Railroad retirement compensation is outside this tool and is refused.
+> Yes also if box 14 of a W-2 shows railroad retirement (RRTA) pay or tax, or if you filed Form CT-2. A Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> Yes if any of your Forms W-2 reports railroad retirement (RRTA) compensation or tax in box 14, or you filed Form CT-2 as an employee representative. Railroad retirement compensation is outside this tool and is refused.
+> Yes also if box 14 of a W-2 shows railroad retirement (RRTA) pay or tax, or if you filed Form CT-2. A Yes ends the interview here.
 
 Shown for your spouse:
 
-> Yes if any of your spouse's Forms W-2 reports railroad retirement (RRTA) compensation or tax in box 14, or your spouse filed Form CT-2 as an employee representative. Railroad retirement compensation is outside this tool and is refused.
+> Yes also if box 14 of a W-2 shows railroad retirement (RRTA) pay or tax, or if your spouse filed Form CT-2. A Yes ends the interview here.
 
-## `person.age65`
+## `person.birth_year`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Were you born before January 2, 1961?
+> For this person (you, or your spouse on a joint return) — In what year were you born?
 
 Shown on a one-person return:
 
-> Were you born before January 2, 1961?
+> In what year were you born?
 
 Shown for you on a couple's return:
 
-> About you — Were you born before January 2, 1961?
+> About you — In what year were you born?
 
 Shown for your spouse:
 
-> About your spouse — Was your spouse born before January 2, 1961?
+> About your spouse — In what year was your spouse born?
 
-**Help, as stored**
-
-> Yes if this person was born before January 2, 1961. It counts for the age box on Form 1040 line 12d and the higher standard deduction.
-
-Shown on a one-person return:
-
-> Yes if you were born before January 2, 1961. It counts for the age box on Form 1040 line 12d and the higher standard deduction.
-
-Shown for you on a couple's return:
-
-> Yes if you were born before January 2, 1961. It counts for the age box on Form 1040 line 12d and the higher standard deduction.
-
-Shown for your spouse:
-
-> Yes if your spouse was born before January 2, 1961. It counts for the age box on Form 1040 line 12d and the higher standard deduction.
-
-## `person.blind`
+## `person.born_jan1`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Were you blind at the end of 2025?
->
-> Answer yes if you were totally blind as of December 31, 2025.
->
-> If you weren't totally blind, answer yes only if you have a statement certified by your eye doctor (ophthalmologist or optometrist) that you can't see better than 20/200 in your better eye with glasses or contact lenses, or that your field of vision is 20 degrees or less (or, if your eye condition isn't likely to improve beyond these conditions, a certified statement to that effect).
->
-> If your vision can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection or ulcers, answer yes.
->
-> Keep the statement for your records.
+> For this person (you, or your spouse on a joint return) — Were you born on January 1?
 
 Shown on a one-person return:
 
-> Were you blind at the end of 2025?
->
-> Answer yes if you were totally blind as of December 31, 2025.
->
-> If you weren't totally blind, answer yes only if you have a statement certified by your eye doctor (ophthalmologist or optometrist) that you can't see better than 20/200 in your better eye with glasses or contact lenses, or that your field of vision is 20 degrees or less (or, if your eye condition isn't likely to improve beyond these conditions, a certified statement to that effect).
->
-> If your vision can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection or ulcers, answer yes.
->
-> Keep the statement for your records.
+> Were you born on January 1?
 
 Shown for you on a couple's return:
 
-> About you — Were you blind at the end of 2025?
->
-> Answer yes if you were totally blind as of December 31, 2025.
->
-> If you weren't totally blind, answer yes only if you have a statement certified by your eye doctor (ophthalmologist or optometrist) that you can't see better than 20/200 in your better eye with glasses or contact lenses, or that your field of vision is 20 degrees or less (or, if your eye condition isn't likely to improve beyond these conditions, a certified statement to that effect).
->
-> If your vision can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection or ulcers, answer yes.
->
-> Keep the statement for your records.
+> About you — Were you born on January 1?
 
 Shown for your spouse:
 
-> About your spouse — Was your spouse blind at the end of 2025?
->
-> Answer yes if your spouse was totally blind as of December 31, 2025.
->
-> If your spouse wasn't totally blind, answer yes only if your spouse has a statement certified by your spouse's eye doctor (ophthalmologist or optometrist) that your spouse can't see better than 20/200 in your spouse's better eye with glasses or contact lenses, or that your spouse's field of vision is 20 degrees or less (or, if your spouse's eye condition isn't likely to improve beyond these conditions, a certified statement to that effect).
->
-> If your spouse's vision can be corrected beyond these limits only by contact lenses that your spouse can wear only briefly because of pain, infection or ulcers, answer yes.
->
-> Keep the statement for your spouse's records.
+> About your spouse — Was your spouse born on January 1?
 
 **Help, as stored**
 
-> Yes if this person was blind at the end of 2025, as the question defines it; if not totally blind, a statement certified by an eye doctor is needed. It counts for the blindness box on Form 1040 line 12d.
+> For several rules of this return a person born on January 1 counts as a year older on the December 31 before.
 
 Shown on a one-person return:
 
-> Yes if you were blind at the end of 2025, as the question defines it; if not totally blind, a statement certified by an eye doctor is needed. It counts for the blindness box on Form 1040 line 12d.
+> For several rules of this return a person born on January 1 counts as a year older on the December 31 before.
 
 Shown for you on a couple's return:
 
-> Yes if you were blind at the end of 2025, as the question defines it; if not totally blind, a statement certified by an eye doctor is needed. It counts for the blindness box on Form 1040 line 12d.
+> For several rules of this return a person born on January 1 counts as a year older on the December 31 before.
 
 Shown for your spouse:
 
-> Yes if your spouse was blind at the end of 2025, as the question defines it; if not totally blind, a statement certified by an eye doctor is needed. It counts for the blindness box on Form 1040 line 12d.
+> For several rules of this return a person born on January 1 counts as a year older on the December 31 before.
 
-## `$w2`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — List the employers that gave you a Form W-2, one entry per employer. If one employer gave you more than one Form W-2, list that employer once and enter their boxes combined.
-
-Shown on a one-person return:
-
-> List the employers that gave you a Form W-2, one entry per employer. If one employer gave you more than one Form W-2, list that employer once and enter their boxes combined.
-
-Shown for you on a couple's return:
-
-> About you — List the employers that gave you a Form W-2, one entry per employer. If one employer gave you more than one Form W-2, list that employer once and enter their boxes combined.
-
-Shown for your spouse:
-
-> About your spouse — List the employers that gave your spouse a Form W-2, one entry per employer. If one employer gave your spouse more than one Form W-2, list that employer once and enter their boxes combined.
-
-**Help, as stored**
-
-> One entry per distinct employer, not per Form W-2: the excess social security credit turns on the number of employers, so an employer's corrected or additional Forms W-2 are combined under that employer. Leave the list empty if there are none. Forms W-2 and Forms 1099-R (IRA distributions, pensions and annuities) are entered under the person who received them. Amounts that are not asked person by person (interest, dividends, sales, social security benefits, deductions, payments) are entered once, for you and your spouse combined.
-
-Shown on a one-person return:
-
-> One entry per distinct employer, not per Form W-2: the excess social security credit turns on the number of employers, so an employer's corrected or additional Forms W-2 are combined under that employer. Leave the list empty if there are none. Forms W-2 and Forms 1099-R (IRA distributions, pensions and annuities) are entered under the person who received them. Amounts that are not asked person by person (interest, dividends, sales, social security benefits, deductions, payments) are entered once, for you and your spouse combined.
-
-Shown for you on a couple's return:
-
-> One entry per distinct employer, not per Form W-2: the excess social security credit turns on the number of employers, so an employer's corrected or additional Forms W-2 are combined under that employer. Leave the list empty if there are none. Forms W-2 and Forms 1099-R (IRA distributions, pensions and annuities) are entered under the person who received them. Amounts that are not asked person by person (interest, dividends, sales, social security benefits, deductions, payments) are entered once, for you and your spouse combined.
-
-Shown for your spouse:
-
-> One entry per distinct employer, not per Form W-2: the excess social security credit turns on the number of employers, so an employer's corrected or additional Forms W-2 are combined under that employer. Leave the list empty if there are none. Forms W-2 and Forms 1099-R (IRA distributions, pensions and annuities) are entered under the person who received them. Amounts that are not asked person by person (interest, dividends, sales, social security benefits, deductions, payments) are entered once, for you and your spouse combined.
-
-## `person.tin`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions)? An ITIN that has expired counts only if it has been renewed by then (a renewal only applied for does not count here).
-
-Shown on a one-person return:
-
-> Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions)? An ITIN that has expired counts only if it has been renewed by then (a renewal only applied for does not count here).
-
-Shown for you on a couple's return:
-
-> About you — Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions)? An ITIN that has expired counts only if it has been renewed by then (a renewal only applied for does not count here).
-
-Shown for your spouse:
-
-> About your spouse — Does your spouse have an SSN or ITIN issued on or before the due date of your spouse's 2025 return (including extensions)? An ITIN that has expired counts only if it has been renewed by then (a renewal only applied for does not count here).
-
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
-
-## `person.itin_applied`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — If you have neither (or your ITIN has expired and was not renewed), have you applied, or are you applying, for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your 2025 return (including extensions)? Answer Yes if you are applying with this return, for example by filing Form W-7 with it.
-
-Shown on a one-person return:
-
-> If you have neither (or your ITIN has expired and was not renewed), have you applied, or are you applying, for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your 2025 return (including extensions)? Answer Yes if you are applying with this return, for example by filing Form W-7 with it.
-
-Shown for you on a couple's return:
-
-> About you — If you have neither (or your ITIN has expired and was not renewed), have you applied, or are you applying, for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your 2025 return (including extensions)? Answer Yes if you are applying with this return, for example by filing Form W-7 with it.
-
-Shown for your spouse:
-
-> About your spouse — If your spouse has neither (or your spouse's ITIN has expired and was not renewed), has your spouse applied, or is your spouse applying, for an ITIN, or for the renewal of your spouse's expired ITIN, on or before the due date of your spouse's 2025 return (including extensions)? Answer Yes if your spouse is applying with this return, for example by filing Form W-7 with it.
-
-**Help, as stored**
-
-> An application (or a renewal application) by the due date counts for the credit for other dependents, but not for the child tax credit, and for this person as a student for the American opportunity credit; the lifetime learning credit for a student whose ITIN was only applied for is refused.
-
-Shown on a one-person return:
-
-> An application (or a renewal application) by the due date counts for the credit for other dependents, but not for the child tax credit, and for you as a student for the American opportunity credit; the lifetime learning credit for a student whose ITIN was only applied for is refused.
-
-Shown for you on a couple's return:
-
-> An application (or a renewal application) by the due date counts for the credit for other dependents, but not for the child tax credit, and for you as a student for the American opportunity credit; the lifetime learning credit for a student whose ITIN was only applied for is refused.
-
-Shown for your spouse:
-
-> An application (or a renewal application) by the due date counts for the credit for other dependents, but not for the child tax credit, and for your spouse as a student for the American opportunity credit; the lifetime learning credit for a student whose ITIN was only applied for is refused.
-
-## `person.work_ssn`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)? If your card says "Valid for Work Only With DHS Authorization", answer yes only if the DHS authorization is valid.
-
-Shown on a one-person return:
-
-> Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)? If your card says "Valid for Work Only With DHS Authorization", answer yes only if the DHS authorization is valid.
-
-Shown for you on a couple's return:
-
-> About you — Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)? If your card says "Valid for Work Only With DHS Authorization", answer yes only if the DHS authorization is valid.
-
-Shown for your spouse:
-
-> About your spouse — Does your spouse have an SSN valid for employment, issued before the due date of your spouse's 2025 return (including extensions)? If your spouse's card says "Valid for Work Only With DHS Authorization", answer yes only if the DHS authorization is valid.
-
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
-
-## `person.eic_ssn`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — Do you have a social security number issued on or before the due date of your 2025 return (including extensions) that is valid for the EIC? Any number issued by the Social Security Administration is valid unless the card says "Not Valid for Employment" and the number was issued solely to apply for or receive a federally funded benefit; a card that says "Valid for Work Only With DHS Authorization" is valid only while the authorization is valid.
-
-Shown on a one-person return:
-
-> Do you have a social security number issued on or before the due date of your 2025 return (including extensions) that is valid for the EIC? Any number issued by the Social Security Administration is valid unless the card says "Not Valid for Employment" and the number was issued solely to apply for or receive a federally funded benefit; a card that says "Valid for Work Only With DHS Authorization" is valid only while the authorization is valid.
-
-Shown for you on a couple's return:
-
-> About you — Do you have a social security number issued on or before the due date of your 2025 return (including extensions) that is valid for the EIC? Any number issued by the Social Security Administration is valid unless the card says "Not Valid for Employment" and the number was issued solely to apply for or receive a federally funded benefit; a card that says "Valid for Work Only With DHS Authorization" is valid only while the authorization is valid.
-
-Shown for your spouse:
-
-> About your spouse — Does your spouse have a social security number issued on or before the due date of your spouse's 2025 return (including extensions) that is valid for the EIC? Any number issued by the Social Security Administration is valid unless the card says "Not Valid for Employment" and the number was issued solely to apply for or receive a federally funded benefit; a card that says "Valid for Work Only With DHS Authorization" is valid only while the authorization is valid.
-
-**Help, as stored**
-
-> This is the earned income credit's definition of a valid SSN, which differs from the child tax credit's "valid for employment" question asked earlier.
-
-Shown on a one-person return:
-
-> This is the earned income credit's definition of a valid SSN, which differs from the child tax credit's "valid for employment" question asked earlier.
-
-Shown for you on a couple's return:
-
-> This is the earned income credit's definition of a valid SSN, which differs from the child tax credit's "valid for employment" question asked earlier.
-
-Shown for your spouse:
-
-> This is the earned income credit's definition of a valid SSN, which differs from the child tax credit's "valid for employment" question asked earlier.
-
-## `person.under16`
+## `person.under16_at_year_end`
 
 **Question, as stored**
 
@@ -359,737 +141,727 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool.
+> A Yes ends the interview here.
 
 Shown on a one-person return:
 
-> A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool.
+> A Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool.
+> A Yes ends the interview here.
 
 Shown for your spouse:
 
-> A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool.
+> A Yes ends the interview here.
 
-## `person.born_before_2001`
+## `person.died_at_64`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Were you born before January 2, 2001?
+> For this person (you, or your spouse on a joint return) — Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
 
 Shown on a one-person return:
 
-> Were you born before January 2, 2001?
+> Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
 
 Shown for you on a couple's return:
 
-> About you — Were you born before January 2, 2001?
+> About you — Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
 
 Shown for your spouse:
 
-> About your spouse — Was your spouse born before January 2, 2001?
+> About your spouse — Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> It decides whether the higher standard deduction and the deduction for people 65 or older apply. For a living person the answer is No.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> It decides whether the higher standard deduction and the deduction for people 65 or older apply. For a living person the answer is No.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> It decides whether the higher standard deduction and the deduction for people 65 or older apply. For a living person the answer is No.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> It decides whether the higher standard deduction and the deduction for people 65 or older apply. For a living person the answer is No.
 
-## `person.born_after_1960`
+## `person.blind`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Were you born after December 31, 1960?
+> For this person (you, or your spouse on a joint return) — Were you blind on December 31, 2025? (Partly blind counts only if an eye doctor has certified it in writing; the help gives the limits.)
 
 Shown on a one-person return:
 
-> Were you born after December 31, 1960?
+> Were you blind on December 31, 2025? (Partly blind counts only if an eye doctor has certified it in writing; the help gives the limits.)
 
 Shown for you on a couple's return:
 
-> About you — Were you born after December 31, 1960?
+> About you — Were you blind on December 31, 2025? (Partly blind counts only if an eye doctor has certified it in writing; the help gives the limits.)
 
 Shown for your spouse:
 
-> About your spouse — Was your spouse born after December 31, 1960?
+> About your spouse — Was your spouse blind on December 31, 2025? (Partly blind counts only if an eye doctor has certified it in writing; the help gives the limits.)
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> The statement must say that your better eye sees no better than 20/200 with glasses or contact lenses, or that your field of vision is 20 degrees or less, or that your sight is not likely to improve beyond those limits.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> The statement must say that your better eye sees no better than 20/200 with glasses or contact lenses, or that your field of vision is 20 degrees or less, or that your sight is not likely to improve beyond those limits.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> The statement must say that your better eye sees no better than 20/200 with glasses or contact lenses, or that your field of vision is 20 degrees or less, or that your sight is not likely to improve beyond those limits.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> The statement must say that your spouse's better eye sees no better than 20/200 with glasses or contact lenses, or that your spouse's field of vision is 20 degrees or less, or that your spouse's sight is not likely to improve beyond those limits.
+
+## `$w2`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Which employers gave you a W-2 for 2025?
+
+Shown on a one-person return:
+
+> Which employers gave you a W-2 for 2025?
+
+Shown for you on a couple's return:
+
+> About you — Which employers gave you a W-2 for 2025?
+
+Shown for your spouse:
+
+> About your spouse — Which employers gave your spouse a W-2 for 2025?
+
+**Help, as stored**
+
+> Name each employer once. If one employer gave you more than one W-2, add the boxes of those W-2s together. If you had no job with a W-2, leave the list empty.
+
+Shown on a one-person return:
+
+> Name each employer once. If one employer gave you more than one W-2, add the boxes of those W-2s together. If you had no job with a W-2, leave the list empty.
+
+Shown for you on a couple's return:
+
+> Name each employer once. If one employer gave you more than one W-2, add the boxes of those W-2s together. If you had no job with a W-2, leave the list empty.
+
+Shown for your spouse:
+
+> Name each employer once. If one employer gave your spouse more than one W-2, add the boxes of those W-2s together. If your spouse had no job with a W-2, leave the list empty.
+
+## `person.tin`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Do you have a social security number, or an ITIN (the tax number the IRS gives a person who cannot get a social security number)?
+
+Shown on a one-person return:
+
+> Do you have a social security number, or an ITIN (the tax number the IRS gives a person who cannot get a social security number)?
+
+Shown for you on a couple's return:
+
+> About you — Do you have a social security number, or an ITIN (the tax number the IRS gives a person who cannot get a social security number)?
+
+Shown for your spouse:
+
+> About your spouse — Does your spouse have a social security number, or an ITIN (the tax number the IRS gives a person who cannot get a social security number)?
+
+**Help, as stored**
+
+> The number must be issued by the date the 2025 return is due, extensions included. An ITIN that has expired counts only once it has been renewed; an application to renew is not enough.
+
+Shown on a one-person return:
+
+> The number must be issued by the date the 2025 return is due, extensions included. An ITIN that has expired counts only once it has been renewed; an application to renew is not enough.
+
+Shown for you on a couple's return:
+
+> The number must be issued by the date the 2025 return is due, extensions included. An ITIN that has expired counts only once it has been renewed; an application to renew is not enough.
+
+Shown for your spouse:
+
+> The number must be issued by the date the 2025 return is due, extensions included. An ITIN that has expired counts only once it has been renewed; an application to renew is not enough.
+
+## `person.itin_applied`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Have you applied, or are you applying, for an ITIN or for the renewal of your expired ITIN, by the date the 2025 return is due?
+
+Shown on a one-person return:
+
+> Have you applied, or are you applying, for an ITIN or for the renewal of your expired ITIN, by the date the 2025 return is due?
+
+Shown for you on a couple's return:
+
+> About you — Have you applied, or are you applying, for an ITIN or for the renewal of your expired ITIN, by the date the 2025 return is due?
+
+Shown for your spouse:
+
+> About your spouse — Has your spouse applied, or is your spouse applying, for an ITIN or for the renewal of your spouse's expired ITIN, by the date the 2025 return is due?
+
+**Help, as stored**
+
+> Extensions count. Answer Yes if you are applying with this return, for example by sending Form W-7 with it.
+
+Shown on a one-person return:
+
+> Extensions count. Answer Yes if you are applying with this return, for example by sending Form W-7 with it.
+
+Shown for you on a couple's return:
+
+> Extensions count. Answer Yes if you are applying with this return, for example by sending Form W-7 with it.
+
+Shown for your spouse:
+
+> Extensions count. Answer Yes if your spouse is applying with this return, for example by sending Form W-7 with it.
+
+## `person.work_ssn`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Do you have a social security number that allows you to work in the United States?
+
+Shown on a one-person return:
+
+> Do you have a social security number that allows you to work in the United States?
+
+Shown for you on a couple's return:
+
+> About you — Do you have a social security number that allows you to work in the United States?
+
+Shown for your spouse:
+
+> About your spouse — Does your spouse have a social security number that allows your spouse to work in the United States?
+
+**Help, as stored**
+
+> A card that says “Not Valid for Employment” does not. A card that says “Valid for Work Only With DHS Authorization” does while the authorization is valid. The number must be issued before the 2025 return is due, extensions included.
+
+Shown on a one-person return:
+
+> A card that says “Not Valid for Employment” does not. A card that says “Valid for Work Only With DHS Authorization” does while the authorization is valid. The number must be issued before the 2025 return is due, extensions included.
+
+Shown for you on a couple's return:
+
+> A card that says “Not Valid for Employment” does not. A card that says “Valid for Work Only With DHS Authorization” does while the authorization is valid. The number must be issued before the 2025 return is due, extensions included.
+
+Shown for your spouse:
+
+> A card that says “Not Valid for Employment” does not. A card that says “Valid for Work Only With DHS Authorization” does while the authorization is valid. The number must be issued before the 2025 return is due, extensions included.
+
+## `person.eic_ssn`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Do you have a social security number that counts for the earned income credit? Nearly every number does: the help says which do not, if your card says “Not Valid for Employment” or “Valid for Work Only With DHS Authorization”.
+
+Shown on a one-person return:
+
+> Do you have a social security number that counts for the earned income credit? Nearly every number does: the help says which do not, if your card says “Not Valid for Employment” or “Valid for Work Only With DHS Authorization”.
+
+Shown for you on a couple's return:
+
+> About you — Do you have a social security number that counts for the earned income credit? Nearly every number does: the help says which do not, if your card says “Not Valid for Employment” or “Valid for Work Only With DHS Authorization”.
+
+Shown for your spouse:
+
+> About your spouse — Does your spouse have a social security number that counts for the earned income credit? Nearly every number does: the help says which do not, if your spouse's card says “Not Valid for Employment” or “Valid for Work Only With DHS Authorization”.
+
+**Help, as stored**
+
+> A card that says “Not Valid for Employment” counts unless the number was issued only to get a federally funded benefit. One that says “Valid for Work Only With DHS Authorization” counts while the authorization is valid. The number must be issued by the due date of the 2025 return, extensions included.
+
+Shown on a one-person return:
+
+> A card that says “Not Valid for Employment” counts unless the number was issued only to get a federally funded benefit. One that says “Valid for Work Only With DHS Authorization” counts while the authorization is valid. The number must be issued by the due date of the 2025 return, extensions included.
+
+Shown for you on a couple's return:
+
+> A card that says “Not Valid for Employment” counts unless the number was issued only to get a federally funded benefit. One that says “Valid for Work Only With DHS Authorization” counts while the authorization is valid. The number must be issued by the due date of the 2025 return, extensions included.
+
+Shown for your spouse:
+
+> A card that says “Not Valid for Employment” counts unless the number was issued only to get a federally funded benefit. One that says “Valid for Work Only With DHS Authorization” counts while the authorization is valid. The number must be issued by the due date of the 2025 return, extensions included.
 
 ## `person.edu`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Did anyone pay qualified education expenses in 2025 for this person at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?
+> For this person (you, or your spouse on a joint return) — In 2025, was tuition or a required fee paid for this person as a student at a college, university or trade school?
 
 Shown on a one-person return:
 
-> Did anyone pay qualified education expenses in 2025 for you at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?
+> In 2025, was tuition or a required fee paid for you as a student at a college, university or trade school?
 
 Shown for you on a couple's return:
 
-> About you — Did anyone pay qualified education expenses in 2025 for you at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?
+> About you — In 2025, was tuition or a required fee paid for you as a student at a college, university or trade school?
 
 Shown for your spouse:
 
-> About your spouse — Did anyone pay qualified education expenses in 2025 for your spouse at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?
+> About your spouse — In 2025, was tuition or a required fee paid for your spouse as a student at a college, university or trade school?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> The school must be one that can take part in federal student aid; nearly every accredited college, university and trade school is.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> The school must be one that can take part in federal student aid; nearly every accredited college, university and trade school is.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> The school must be one that can take part in federal student aid; nearly every accredited college, university and trade school is.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> The school must be one that can take part in federal student aid; nearly every accredited college, university and trade school is.
 
 ## `person.edu_1098t`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution did not furnish it and, after February 2, 2026, but before you file, you or the student requested it, you fully cooperated with the institution's efforts to gather the information needed to furnish it, and you can show the enrollment and the payments.
+> For this person (you, or your spouse on a joint return) — Did the school send this person a Form 1098-T (Tuition Statement) for 2025?
 
 Shown on a one-person return:
 
-> Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution did not furnish it and, after February 2, 2026, but before you file, you or the student requested it, you fully cooperated with the institution's efforts to gather the information needed to furnish it, and you can show the enrollment and the payments.
+> Did the school send you a Form 1098-T (Tuition Statement) for 2025?
 
 Shown for you on a couple's return:
 
-> About you — Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution did not furnish it and, after February 2, 2026, but before you file, you or the student requested it, you fully cooperated with the institution's efforts to gather the information needed to furnish it, and you can show the enrollment and the payments.
+> About you — Did the school send you a Form 1098-T (Tuition Statement) for 2025?
 
 Shown for your spouse:
 
-> About your spouse — Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution did not furnish it and, after February 2, 2026, but before your spouse files, your spouse or the student requested it, your spouse fully cooperated with the institution's efforts to gather the information needed to furnish it, and your spouse can show the enrollment and the payments.
+> About your spouse — Did the school send your spouse a Form 1098-T (Tuition Statement) for 2025?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses gave no academic credit), or if it was asked for after February 2, 2026, the school was given what it needed to prepare it, and the enrollment and the payments can be shown.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses gave no academic credit), or if it was asked for after February 2, 2026, the school was given what it needed to prepare it, and the enrollment and the payments can be shown.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses gave no academic credit), or if it was asked for after February 2, 2026, the school was given what it needed to prepare it, and the enrollment and the payments can be shown.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses gave no academic credit), or if it was asked for after February 2, 2026, the school was given what it needed to prepare it, and the enrollment and the payments can be shown.
 
 ## `person.edu_inst`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Qualified education expenses paid in 2025 for this student, by anyone, that had to be paid to the institution, for academic periods beginning in 2025 or in the first 3 months of 2026:
->
-> - tuition
-> - required enrollment fees
-> - books, supplies and equipment required to be paid to the institution as a condition of enrollment or attendance
->
-> Use the amounts actually paid, which may differ from Form 1098-T box 1.
->
-> Do not include:
-> - amounts paid in 2024 or 2026
-> - room and board
-> - insurance
-> - medical expenses (including student health fees)
-> - transportation
-> - expenses deducted elsewhere (for example on Schedule C)
-> - expenses used for a tax-free distribution from a Coverdell ESA or qualified tuition program (529 plan)
-> - a course or other education involving sports, games or hobbies, or any noncredit course, unless it is part of the student's degree program or, where this student can't get the American opportunity credit, it helps the student acquire or improve job skills
->
-> Zero if none
+> For this person (you, or your spouse on a joint return) — How much was paid to the school in 2025 for this person's tuition and required fees? (Form 1098-T box 1 shows what the school received.)
 
 Shown on a one-person return:
 
-> Qualified education expenses paid in 2025 for this student, by anyone, that had to be paid to the institution, for academic periods beginning in 2025 or in the first 3 months of 2026:
->
-> - tuition
-> - required enrollment fees
-> - books, supplies and equipment required to be paid to the institution as a condition of enrollment or attendance
->
-> Use the amounts actually paid, which may differ from Form 1098-T box 1.
->
-> Do not include:
-> - amounts paid in 2024 or 2026
-> - room and board
-> - insurance
-> - medical expenses (including student health fees)
-> - transportation
-> - expenses deducted elsewhere (for example on Schedule C)
-> - expenses used for a tax-free distribution from a Coverdell ESA or qualified tuition program (529 plan)
-> - a course or other education involving sports, games or hobbies, or any noncredit course, unless it is part of the student's degree program or, where this student can't get the American opportunity credit, it helps the student acquire or improve job skills
->
-> Zero if none
+> How much was paid to the school in 2025 for your tuition and required fees? (Form 1098-T box 1 shows what the school received.)
 
 Shown for you on a couple's return:
 
-> About you — Qualified education expenses paid in 2025 for this student, by anyone, that had to be paid to the institution, for academic periods beginning in 2025 or in the first 3 months of 2026:
->
-> - tuition
-> - required enrollment fees
-> - books, supplies and equipment required to be paid to the institution as a condition of enrollment or attendance
->
-> Use the amounts actually paid, which may differ from Form 1098-T box 1.
->
-> Do not include:
-> - amounts paid in 2024 or 2026
-> - room and board
-> - insurance
-> - medical expenses (including student health fees)
-> - transportation
-> - expenses deducted elsewhere (for example on Schedule C)
-> - expenses used for a tax-free distribution from a Coverdell ESA or qualified tuition program (529 plan)
-> - a course or other education involving sports, games or hobbies, or any noncredit course, unless it is part of the student's degree program or, where this student can't get the American opportunity credit, it helps the student acquire or improve job skills
->
-> Zero if none
+> About you — How much was paid to the school in 2025 for your tuition and required fees? (Form 1098-T box 1 shows what the school received.)
 
 Shown for your spouse:
 
-> About your spouse — Qualified education expenses paid in 2025 for this student, by anyone, that had to be paid to the institution, for academic periods beginning in 2025 or in the first 3 months of 2026:
->
-> - tuition
-> - required enrollment fees
-> - books, supplies and equipment required to be paid to the institution as a condition of enrollment or attendance
->
-> Use the amounts actually paid, which may differ from Form 1098-T box 1.
->
-> Do not include:
-> - amounts paid in 2024 or 2026
-> - room and board
-> - insurance
-> - medical expenses (including student health fees)
-> - transportation
-> - expenses deducted elsewhere (for example on Schedule C)
-> - expenses used for a tax-free distribution from a Coverdell ESA or qualified tuition program (529 plan)
-> - a course or other education involving sports, games or hobbies, or any noncredit course, unless it is part of the student's degree program or, where this student can't get the American opportunity credit, it helps the student acquire or improve job skills
->
-> Zero if none
+> About your spouse — How much was paid to the school in 2025 for your spouse's tuition and required fees? (Form 1098-T box 1 shows what the school received.)
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Books, supplies and equipment count here only if they had to be bought from the school.
+>
+> Leave out:
+> - room and board, insurance, medical costs (student health fees too) and transportation
+> - amounts paid with a tax-free withdrawal from a 529 plan or a Coverdell account
+> - amounts deducted elsewhere on this return
+> - courses in sports, games or hobbies, and courses without credit, unless they are part of the degree program (or, for a student who cannot get the American opportunity credit, they improve job skills)
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Books, supplies and equipment count here only if they had to be bought from the school.
+>
+> Leave out:
+> - room and board, insurance, medical costs (student health fees too) and transportation
+> - amounts paid with a tax-free withdrawal from a 529 plan or a Coverdell account
+> - amounts deducted elsewhere on this return
+> - courses in sports, games or hobbies, and courses without credit, unless they are part of the degree program (or, for a student who cannot get the American opportunity credit, they improve job skills)
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Books, supplies and equipment count here only if they had to be bought from the school.
+>
+> Leave out:
+> - room and board, insurance, medical costs (student health fees too) and transportation
+> - amounts paid with a tax-free withdrawal from a 529 plan or a Coverdell account
+> - amounts deducted elsewhere on this return
+> - courses in sports, games or hobbies, and courses without credit, unless they are part of the degree program (or, for a student who cannot get the American opportunity credit, they improve job skills)
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Books, supplies and equipment count here only if they had to be bought from the school.
+>
+> Leave out:
+> - room and board, insurance, medical costs (student health fees too) and transportation
+> - amounts paid with a tax-free withdrawal from a 529 plan or a Coverdell account
+> - amounts deducted elsewhere on this return
+> - courses in sports, games or hobbies, and courses without credit, unless they are part of the degree program (or, for a student who cannot get the American opportunity credit, they improve job skills)
 
 ## `person.edu_mat`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Other course materials paid for in 2025 for this student: books, supplies and equipment needed for a course of study that did not have to be paid to the institution (they count for the American opportunity credit only); the same exclusions as for the expenses paid to the institution; zero if none
+> For this person (you, or your spouse on a joint return) — How much was spent in 2025 on books, supplies and equipment needed for this person's courses, bought anywhere but from the school?
 
 Shown on a one-person return:
 
-> Other course materials paid for in 2025 for this student: books, supplies and equipment needed for a course of study that did not have to be paid to the institution (they count for the American opportunity credit only); the same exclusions as for the expenses paid to the institution; zero if none
+> How much was spent in 2025 on books, supplies and equipment needed for your courses, bought anywhere but from the school?
 
 Shown for you on a couple's return:
 
-> About you — Other course materials paid for in 2025 for this student: books, supplies and equipment needed for a course of study that did not have to be paid to the institution (they count for the American opportunity credit only); the same exclusions as for the expenses paid to the institution; zero if none
+> About you — How much was spent in 2025 on books, supplies and equipment needed for your courses, bought anywhere but from the school?
 
 Shown for your spouse:
 
-> About your spouse — Other course materials paid for in 2025 for this student: books, supplies and equipment needed for a course of study that did not have to be paid to the institution (they count for the American opportunity credit only); the same exclusions as for the expenses paid to the institution; zero if none
+> About your spouse — How much was spent in 2025 on books, supplies and equipment needed for your spouse's courses, bought anywhere but from the school?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> Leave out what is left out of tuition: anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted elsewhere on this return.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Leave out what is left out of tuition: anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted elsewhere on this return.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Leave out what is left out of tuition: anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted elsewhere on this return.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> Leave out what is left out of tuition: anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted elsewhere on this return.
 
-## `person.edu_a2025`
+## `person.edu_a_this_year`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Tax-free educational assistance received in 2025 for this student's 2025 expenses: the tax-free part of scholarships and fellowship grants (including Pell grants; Form 1098-T box 5 may help), tax-free employer-provided educational assistance, veterans' educational assistance, and other tax-free educational assistance. Do not include wages, loans, gifts, inheritances, withdrawals from personal savings, emergency financial aid grants, or a scholarship the student includes in income (for you or your spouse, the amount on Schedule 1 line 8r); zero if none
+> For this person (you, or your spouse on a joint return) — How much tax-free help with these school costs came in during 2025: scholarships and grants (Form 1098-T box 5), an employer's tuition assistance, veterans' education benefits?
 
 Shown on a one-person return:
 
-> Tax-free educational assistance received in 2025 for this student's 2025 expenses: the tax-free part of scholarships and fellowship grants (including Pell grants; Form 1098-T box 5 may help), tax-free employer-provided educational assistance, veterans' educational assistance, and other tax-free educational assistance. Do not include wages, loans, gifts, inheritances, withdrawals from personal savings, emergency financial aid grants, or a scholarship the student includes in income (for you or your spouse, the amount on Schedule 1 line 8r); zero if none
+> How much tax-free help with these school costs came in during 2025: scholarships and grants (Form 1098-T box 5), an employer's tuition assistance, veterans' education benefits?
 
 Shown for you on a couple's return:
 
-> About you — Tax-free educational assistance received in 2025 for this student's 2025 expenses: the tax-free part of scholarships and fellowship grants (including Pell grants; Form 1098-T box 5 may help), tax-free employer-provided educational assistance, veterans' educational assistance, and other tax-free educational assistance. Do not include wages, loans, gifts, inheritances, withdrawals from personal savings, emergency financial aid grants, or a scholarship the student includes in income (for you or your spouse, the amount on Schedule 1 line 8r); zero if none
+> About you — How much tax-free help with these school costs came in during 2025: scholarships and grants (Form 1098-T box 5), an employer's tuition assistance, veterans' education benefits?
 
 Shown for your spouse:
 
-> About your spouse — Tax-free educational assistance received in 2025 for this student's 2025 expenses: the tax-free part of scholarships and fellowship grants (including Pell grants; Form 1098-T box 5 may help), tax-free employer-provided educational assistance, veterans' educational assistance, and other tax-free educational assistance. Do not include wages, loans, gifts, inheritances, withdrawals from personal savings, emergency financial aid grants, or a scholarship the student includes in income (for you or your spouse, the amount on Schedule 1 line 8r); zero if none
+> About your spouse — How much tax-free help with these school costs came in during 2025: scholarships and grants (Form 1098-T box 5), an employer's tuition assistance, veterans' education benefits?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> Count only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, inheritances, savings, wages, emergency financial aid grants, and any scholarship reported as income on a tax return.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Count only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, inheritances, savings, wages, emergency financial aid grants, and any scholarship reported as income on a tax return.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Count only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, inheritances, savings, wages, emergency financial aid grants, and any scholarship reported as income on a tax return.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> Count only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, inheritances, savings, wages, emergency financial aid grants, and any scholarship reported as income on a tax return.
 
-## `person.edu_a2026`
+## `person.edu_a_next_year`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Tax-free educational assistance received in 2026, before you file this return, that is allocable to an academic period of these 2025 expenses; zero if none
+> For this person (you, or your spouse on a joint return) — How much more of that tax-free help has come in during 2026, so far, for the same school terms?
 
 Shown on a one-person return:
 
-> Tax-free educational assistance received in 2026, before you file this return, that is allocable to an academic period of these 2025 expenses; zero if none
+> How much more of that tax-free help has come in during 2026, so far, for the same school terms?
 
 Shown for you on a couple's return:
 
-> About you — Tax-free educational assistance received in 2026, before you file this return, that is allocable to an academic period of these 2025 expenses; zero if none
+> About you — How much more of that tax-free help has come in during 2026, so far, for the same school terms?
 
 Shown for your spouse:
 
-> About your spouse — Tax-free educational assistance received in 2026, before your spouse files this return, that is allocable to an academic period of these 2025 expenses; zero if none
-
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
+> About your spouse — How much more of that tax-free help has come in during 2026, so far, for the same school terms?
 
 ## `person.edu_refunds`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Refunds of these 2025 qualified education expenses received in 2025, or in 2026 before you file this return; zero if none
+> For this person (you, or your spouse on a joint return) — How much of the tuition and fees paid in 2025 has the school refunded, in 2025 or so far in 2026?
 
 Shown on a one-person return:
 
-> Refunds of these 2025 qualified education expenses received in 2025, or in 2026 before you file this return; zero if none
+> How much of the tuition and fees paid in 2025 has the school refunded, in 2025 or so far in 2026?
 
 Shown for you on a couple's return:
 
-> About you — Refunds of these 2025 qualified education expenses received in 2025, or in 2026 before you file this return; zero if none
+> About you — How much of the tuition and fees paid in 2025 has the school refunded, in 2025 or so far in 2026?
 
 Shown for your spouse:
 
-> About your spouse — Refunds of these 2025 qualified education expenses received in 2025, or in 2026 before your spouse files this return; zero if none
-
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
+> About your spouse — How much of the tuition and fees paid in 2025 has the school refunded, in 2025 or so far in 2026?
 
 ## `person.edu_line23`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Has the American opportunity credit been claimed (by you or anyone else) for this student for any 4 tax years before 2025?
+> For this person (you, or your spouse on a joint return) — Has the American opportunity credit already been claimed for this person, by anyone, in four tax years before 2025?
 
 Shown on a one-person return:
 
-> Has the American opportunity credit been claimed (by you or anyone else) for this student for any 4 tax years before 2025?
+> Has the American opportunity credit already been claimed for you, by anyone, in four tax years before 2025?
 
 Shown for you on a couple's return:
 
-> About you — Has the American opportunity credit been claimed (by you or anyone else) for this student for any 4 tax years before 2025?
+> About you — Has the American opportunity credit already been claimed for you, by anyone, in four tax years before 2025?
 
 Shown for your spouse:
 
-> About your spouse — Has the American opportunity credit been claimed (by your spouse or anyone else) for this student for any 4 tax years before 2025?
+> About your spouse — Has the American opportunity credit already been claimed for your spouse, by anyone, in four tax years before 2025?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> It is the main tax credit for the first four years of college. For a student who first went to college in 2022 or later, the answer is No.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> It is the main tax credit for the first four years of college. For a student who first went to college in 2022 or later, the answer is No.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> It is the main tax credit for the first four years of college. For a student who first went to college in 2022 or later, the answer is No.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> It is the main tax credit for the first four years of college. For a student who first went to college in 2022 or later, the answer is No.
 
 ## `person.edu_line24`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Was the student enrolled at least half-time (Form 1098-T box 8) for at least one academic period that began in 2025, or in the first 3 months of 2026 if paid for in 2025, at an eligible educational institution, in a program leading toward a postsecondary degree, certificate or other recognized postsecondary educational credential?
+> For this person (you, or your spouse on a joint return) — For at least one term that began in 2025, was this person's enrollment at least half-time, in a program leading to a degree or certificate? (Form 1098-T box 8 is checked if so.)
 
 Shown on a one-person return:
 
-> Was the student enrolled at least half-time (Form 1098-T box 8) for at least one academic period that began in 2025, or in the first 3 months of 2026 if paid for in 2025, at an eligible educational institution, in a program leading toward a postsecondary degree, certificate or other recognized postsecondary educational credential?
+> For at least one term that began in 2025, was your enrollment at least half-time, in a program leading to a degree or certificate? (Form 1098-T box 8 is checked if so.)
 
 Shown for you on a couple's return:
 
-> About you — Was the student enrolled at least half-time (Form 1098-T box 8) for at least one academic period that began in 2025, or in the first 3 months of 2026 if paid for in 2025, at an eligible educational institution, in a program leading toward a postsecondary degree, certificate or other recognized postsecondary educational credential?
+> About you — For at least one term that began in 2025, was your enrollment at least half-time, in a program leading to a degree or certificate? (Form 1098-T box 8 is checked if so.)
 
 Shown for your spouse:
 
-> About your spouse — Was the student enrolled at least half-time (Form 1098-T box 8) for at least one academic period that began in 2025, or in the first 3 months of 2026 if paid for in 2025, at an eligible educational institution, in a program leading toward a postsecondary degree, certificate or other recognized postsecondary educational credential?
+> About your spouse — For at least one term that began in 2025, was your spouse's enrollment at least half-time, in a program leading to a degree or certificate? (Form 1098-T box 8 is checked if so.)
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> A term that began in January to March 2026 also counts if it was paid for in 2025.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> A term that began in January to March 2026 also counts if it was paid for in 2025.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> A term that began in January to March 2026 also counts if it was paid for in 2025.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> A term that began in January to March 2026 also counts if it was paid for in 2025.
 
 ## `person.edu_line25`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Did the student complete the first 4 years of postsecondary education before 2025, as determined by the institution (4 years of academic credit, not counting credit awarded solely for proficiency examinations)?
+> For this person (you, or your spouse on a joint return) — Were this person's first four years of college already complete before 2025 began, by the school's count of academic credit?
 
 Shown on a one-person return:
 
-> Did the student complete the first 4 years of postsecondary education before 2025, as determined by the institution (4 years of academic credit, not counting credit awarded solely for proficiency examinations)?
+> Were your first four years of college already complete before 2025 began, by the school's count of academic credit?
 
 Shown for you on a couple's return:
 
-> About you — Did the student complete the first 4 years of postsecondary education before 2025, as determined by the institution (4 years of academic credit, not counting credit awarded solely for proficiency examinations)?
+> About you — Were your first four years of college already complete before 2025 began, by the school's count of academic credit?
 
 Shown for your spouse:
 
-> About your spouse — Did the student complete the first 4 years of postsecondary education before 2025, as determined by the institution (4 years of academic credit, not counting credit awarded solely for proficiency examinations)?
+> About your spouse — Were your spouse's first four years of college already complete before 2025 began, by the school's count of academic credit?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> Credit awarded only for passing proficiency examinations is not counted.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Credit awarded only for passing proficiency examinations is not counted.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Credit awarded only for passing proficiency examinations is not counted.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> Credit awarded only for passing proficiency examinations is not counted.
 
 ## `person.edu_line26`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Was the student convicted, before the end of 2025, of a federal or state felony for possession or distribution of a controlled substance?
+> For this person (you, or your spouse on a joint return) — By the end of 2025, was there a federal or state felony conviction of this person for possessing or distributing a controlled substance (illegal drugs)?
 
 Shown on a one-person return:
 
-> Was the student convicted, before the end of 2025, of a federal or state felony for possession or distribution of a controlled substance?
+> By the end of 2025, was there a federal or state felony conviction of you for possessing or distributing a controlled substance (illegal drugs)?
 
 Shown for you on a couple's return:
 
-> About you — Was the student convicted, before the end of 2025, of a federal or state felony for possession or distribution of a controlled substance?
+> About you — By the end of 2025, was there a federal or state felony conviction of you for possessing or distributing a controlled substance (illegal drugs)?
 
 Shown for your spouse:
 
-> About your spouse — Was the student convicted, before the end of 2025, of a federal or state felony for possession or distribution of a controlled substance?
-
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
+> About your spouse — By the end of 2025, was there a federal or state felony conviction of your spouse for possessing or distributing a controlled substance (illegal drugs)?
 
 ## `person.edu_ein`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Do you have the educational institution's employer identification number (EIN), from Form 1098-T or from the institution?
+> For this person (you, or your spouse on a joint return) — Is the school's employer identification number (EIN) at hand? Form 1098-T shows it, and the school can give it.
 
 Shown on a one-person return:
 
-> Do you have the educational institution's employer identification number (EIN), from Form 1098-T or from the institution?
+> Is the school's employer identification number (EIN) at hand? Form 1098-T shows it, and the school can give it.
 
 Shown for you on a couple's return:
 
-> About you — Do you have the educational institution's employer identification number (EIN), from Form 1098-T or from the institution?
+> About you — Is the school's employer identification number (EIN) at hand? Form 1098-T shows it, and the school can give it.
 
 Shown for your spouse:
 
-> About your spouse — Does your spouse have the educational institution's employer identification number (EIN), from Form 1098-T or from the institution?
-
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
+> About your spouse — Is the school's employer identification number (EIN) at hand? Form 1098-T shows it, and the school can give it.
 
 ## `person.edu_over`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more than that period's qualified education expenses that had to be paid to the institution (tuition, required fees and course materials required to be paid to the institution)?
+> For this person (you, or your spouse on a joint return) — Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required fees and required course materials?
 
 Shown on a one-person return:
 
-> Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more than that period's qualified education expenses that had to be paid to the institution (tuition, required fees and course materials required to be paid to the institution)?
+> Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required fees and required course materials?
 
 Shown for you on a couple's return:
 
-> About you — Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more than that period's qualified education expenses that had to be paid to the institution (tuition, required fees and course materials required to be paid to the institution)?
+> About you — Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required fees and required course materials?
 
 Shown for your spouse:
 
-> About your spouse — Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more than that period's qualified education expenses that had to be paid to the institution (tuition, required fees and course materials required to be paid to the institution)?
+> About your spouse — Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required fees and required course materials?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> With one term in the year, answer by that term alone. A Yes is outside what this tool prepares and ends the interview here.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> With one term in the year, answer by that term alone. A Yes is outside what this tool prepares and ends the interview here.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> With one term in the year, answer by that term alone. A Yes is outside what this tool prepares and ends the interview here.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
-
-## `person.edu_born_2007`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — Were you born before January 2, 2007?
-
-Shown on a one-person return:
-
-> Were you born before January 2, 2007?
-
-Shown for you on a couple's return:
-
-> About you — Were you born before January 2, 2007?
-
-Shown for your spouse:
-
-> About your spouse — Was your spouse born before January 2, 2007?
-
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
-
-## `person.edu_born_2002`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — Were you born before January 2, 2002?
-
-Shown on a one-person return:
-
-> Were you born before January 2, 2002?
-
-Shown for you on a couple's return:
-
-> About you — Were you born before January 2, 2002?
-
-Shown for your spouse:
-
-> About your spouse — Was your spouse born before January 2, 2002?
-
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
+> With one term in the year, answer by that term alone. A Yes is outside what this tool prepares and ends the interview here.
 
 ## `person.edu_fulltime`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Were you a full-time student for 2025: during any part of any 5 calendar months of 2025, were you enrolled as a full-time student at an eligible educational institution, or did you take a full-time, on-farm training course given by such an institution or by a state, county, or local government agency?
+> For this person (you, or your spouse on a joint return) — Were you a full-time student during some part of at least five months of 2025?
 
 Shown on a one-person return:
 
-> Were you a full-time student for 2025: during any part of any 5 calendar months of 2025, were you enrolled as a full-time student at an eligible educational institution, or did you take a full-time, on-farm training course given by such an institution or by a state, county, or local government agency?
+> Were you a full-time student during some part of at least five months of 2025?
 
 Shown for you on a couple's return:
 
-> About you — Were you a full-time student for 2025: during any part of any 5 calendar months of 2025, were you enrolled as a full-time student at an eligible educational institution, or did you take a full-time, on-farm training course given by such an institution or by a state, county, or local government agency?
+> About you — Were you a full-time student during some part of at least five months of 2025?
 
 Shown for your spouse:
 
-> About your spouse — Was your spouse a full-time student for 2025: during any part of any 5 calendar months of 2025, was your spouse enrolled as a full-time student at an eligible educational institution, or did your spouse take a full-time, on-farm training course given by such an institution or by a state, county, or local government agency?
+> About your spouse — Was your spouse a full-time student during some part of at least five months of 2025?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> At a college, university or trade school. A full-time on-farm training course given by such a school or by a state, county or local government agency also counts. The months need not be in a row.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> At a college, university or trade school. A full-time on-farm training course given by such a school or by a state, county or local government agency also counts. The months need not be in a row.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> At a college, university or trade school. A full-time on-farm training course given by such a school or by a state, county or local government agency also counts. The months need not be in a row.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> At a college, university or trade school. A full-time on-farm training course given by such a school or by a state, county or local government agency also counts. The months need not be in a row.
 
 ## `person.edu_half_support`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Was your earned income for 2025 less than one-half of your support? Earned income is wages, salaries, professional fees and other pay for personal services (including the part of a scholarship that pays for teaching, research or other required services). Support includes food, shelter, clothing, medical and dental care, education and the like, provided by you, your parents and others; a scholarship is not support if you were a full-time student.
+> For this person (you, or your spouse on a joint return) — In 2025, was your pay from work less than half of your support, meaning what your food, housing, clothing, medical care, education and the like cost?
 
 Shown on a one-person return:
 
-> Was your earned income for 2025 less than one-half of your support? Earned income is wages, salaries, professional fees and other pay for personal services (including the part of a scholarship that pays for teaching, research or other required services). Support includes food, shelter, clothing, medical and dental care, education and the like, provided by you, your parents and others; a scholarship is not support if you were a full-time student.
+> In 2025, was your pay from work less than half of your support, meaning what your food, housing, clothing, medical care, education and the like cost?
 
 Shown for you on a couple's return:
 
-> About you — Was your earned income for 2025 less than one-half of your support? Earned income is wages, salaries, professional fees and other pay for personal services (including the part of a scholarship that pays for teaching, research or other required services). Support includes food, shelter, clothing, medical and dental care, education and the like, provided by you, your parents and others; a scholarship is not support if you were a full-time student.
+> About you — In 2025, was your pay from work less than half of your support, meaning what your food, housing, clothing, medical care, education and the like cost?
 
 Shown for your spouse:
 
-> About your spouse — Was your spouse's earned income for 2025 less than one-half of your spouse's support? Earned income is wages, salaries, professional fees and other pay for personal services (including the part of a scholarship that pays for teaching, research or other required services). Support includes food, shelter, clothing, medical and dental care, education and the like, provided by your spouse, your spouse's parents and others; a scholarship is not support if your spouse was a full-time student.
+> About your spouse — In 2025, was your spouse's pay from work less than half of your spouse's support, meaning what your spouse's food, housing, clothing, medical care, education and the like cost?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for teaching or research. Support counts whoever paid for it; a scholarship is not support if you were a full-time student.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for teaching or research. Support counts whoever paid for it; a scholarship is not support if you were a full-time student.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for teaching or research. Support counts whoever paid for it; a scholarship is not support if you were a full-time student.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for teaching or research. Support counts whoever paid for it; a scholarship is not support if your spouse was a full-time student.
 
 ## `person.edu_parent`
 
@@ -1109,79 +881,175 @@ Shown for your spouse:
 
 > About your spouse — Was at least one of your spouse's parents alive at the end of 2025?
 
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
-
-## `person.x_other`
+## `person.x_hsa_prior_excess`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Does any of these apply to you?
->
-> - a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account
-> - excess contributions to a traditional or Roth IRA for an earlier year that remained in the IRA at the end of 2025 (whether or not you contributed for 2025)
-> - excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account
-> - excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported), whether or not you have a Form 8889 for 2025
-> - a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)
+> For this person (you, or your spouse on a joint return) — Before 2025, was more put into your HSA than the limit for the year, with some of the extra still in the account at the start of 2025?
 
 Shown on a one-person return:
 
-> Does any of these apply to you?
->
-> - a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account
-> - excess contributions to a traditional or Roth IRA for an earlier year that remained in the IRA at the end of 2025 (whether or not you contributed for 2025)
-> - excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account
-> - excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported), whether or not you have a Form 8889 for 2025
-> - a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)
+> Before 2025, was more put into your HSA than the limit for the year, with some of the extra still in the account at the start of 2025?
 
 Shown for you on a couple's return:
 
-> About you — Does any of these apply to you?
->
-> - a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account
-> - excess contributions to a traditional or Roth IRA for an earlier year that remained in the IRA at the end of 2025 (whether or not you contributed for 2025)
-> - excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account
-> - excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported), whether or not you have a Form 8889 for 2025
-> - a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)
+> About you — Before 2025, was more put into your HSA than the limit for the year, with some of the extra still in the account at the start of 2025?
 
 Shown for your spouse:
 
-> About your spouse — Does any of these apply to your spouse?
->
-> - a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account
-> - excess contributions to a traditional or Roth IRA for an earlier year that remained in the IRA at the end of 2025 (whether or not your spouse contributed for 2025)
-> - excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account
-> - excess HSA contributions from an earlier year that your spouse had not removed or used up before 2025 (including any amount on line 48 of your spouse's 2024 Form 5329, or an excess your spouse never reported), whether or not your spouse has a Form 8889 for 2025
-> - a required minimum distribution from an IRA or plan that your spouse did not receive in full by its deadline (including a shortfall your spouse made up later)
+> About your spouse — Before 2025, was more put into your spouse's HSA than the limit for the year, with some of the extra still in the account at the start of 2025?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> Answer Yes if your 2024 Form 5329 has an amount on line 48, or if you never reported the excess. A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Answer Yes if your 2024 Form 5329 has an amount on line 48, or if you never reported the excess. A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Answer Yes if your 2024 Form 5329 has an amount on line 48, or if you never reported the excess. A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> Answer Yes if your spouse's 2024 Form 5329 has an amount on line 48, or if your spouse never reported the excess. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `person.x_archer_excess`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Does an Archer MSA of yours (an older kind of medical savings account) still hold money that was put in above its limit in a year before 2025?
+
+Shown on a one-person return:
+
+> Does an Archer MSA of yours (an older kind of medical savings account) still hold money that was put in above its limit in a year before 2025?
+
+Shown for you on a couple's return:
+
+> About you — Does an Archer MSA of yours (an older kind of medical savings account) still hold money that was put in above its limit in a year before 2025?
+
+Shown for your spouse:
+
+> About your spouse — Does an Archer MSA of your spouse's (an older kind of medical savings account) still hold money that was put in above its limit in a year before 2025?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `person.x_edu_account`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — At any time in 2025, did you have a 529 plan, a Coverdell education savings account or an ABLE account, or was one held for you?
+
+Shown on a one-person return:
+
+> At any time in 2025, did you have a 529 plan, a Coverdell education savings account or an ABLE account, or was one held for you?
+
+Shown for you on a couple's return:
+
+> About you — At any time in 2025, did you have a 529 plan, a Coverdell education savings account or an ABLE account, or was one held for you?
+
+Shown for your spouse:
+
+> About your spouse — At any time in 2025, did your spouse have a 529 plan, a Coverdell education savings account or an ABLE account, or was one held for your spouse?
+
+**Help, as stored**
+
+> Answer Yes whether the account is yours or is held for you. A Form 1099-Q or Form 1099-QA sent to you for 2025 means Yes.
+
+Shown on a one-person return:
+
+> Answer Yes whether the account is yours or is held for you. A Form 1099-Q or Form 1099-QA sent to you for 2025 means Yes.
+
+Shown for you on a couple's return:
+
+> Answer Yes whether the account is yours or is held for you. A Form 1099-Q or Form 1099-QA sent to you for 2025 means Yes.
+
+Shown for your spouse:
+
+> Answer Yes whether the account is your spouse's or is held for your spouse. A Form 1099-Q or Form 1099-QA sent to your spouse for 2025 means Yes.
+
+## `person.x_edu_taxable`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was any money that came out of the account in 2025 taxable: more than the education costs, or for an ABLE account the disability costs, that it paid for?
+
+Shown on a one-person return:
+
+> Was any money that came out of the account in 2025 taxable: more than the education costs, or for an ABLE account the disability costs, that it paid for?
+
+Shown for you on a couple's return:
+
+> About you — Was any money that came out of the account in 2025 taxable: more than the education costs, or for an ABLE account the disability costs, that it paid for?
+
+Shown for your spouse:
+
+> About your spouse — Was any money that came out of the account in 2025 taxable: more than the education costs, or for an ABLE account the disability costs, that it paid for?
+
+**Help, as stored**
+
+> Money used for the costs the account is meant for is not taxable. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> Money used for the costs the account is meant for is not taxable. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> Money used for the costs the account is meant for is not taxable. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> Money used for the costs the account is meant for is not taxable. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `person.x_edu_excess`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was more than the yearly limit put into a Coverdell education savings account or an ABLE account held for you, and is the extra still in the account?
+
+Shown on a one-person return:
+
+> Was more than the yearly limit put into a Coverdell education savings account or an ABLE account held for you, and is the extra still in the account?
+
+Shown for you on a couple's return:
+
+> About you — Was more than the yearly limit put into a Coverdell education savings account or an ABLE account held for you, and is the extra still in the account?
+
+Shown for your spouse:
+
+> About your spouse — Was more than the yearly limit put into a Coverdell education savings account or an ABLE account held for your spouse, and is the extra still in the account?
+
+**Help, as stored**
+
+> This includes an excess from an earlier year. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> This includes an excess from an earlier year. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> This includes an excess from an earlier year. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> This includes an excess from an earlier year. A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 ## `person.x_prior09`
 
@@ -1201,22 +1069,6 @@ Shown for your spouse:
 
 > About your spouse — Total of your spouse's earlier IRA distributions (before 2025) for which the first-home exception was used; zero if none
 
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
-
 ## `person.x_births`
 
 **Question, as stored**
@@ -1235,123 +1087,159 @@ Shown for your spouse:
 
 > About your spouse — For how many births or adoptions (children born or adopted, each counted once) did your spouse take the birth or adoption distributions?
 
-**Help, as stored**
+## `person.inherited_account`
 
-> Married filing separately and unsupported items are refused with citations.
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Have you inherited an IRA or a workplace retirement account, such as a 401(k), from someone who died?
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Have you inherited an IRA or a workplace retirement account, such as a 401(k), from someone who died?
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> About you — Have you inherited an IRA or a workplace retirement account, such as a 401(k), from someone who died?
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> About your spouse — Has your spouse inherited an IRA or a workplace retirement account, such as a 401(k), from someone who died?
+
+**Help, as stored**
+
+> It counts even if the money is still in the account.
+
+Shown on a one-person return:
+
+> It counts even if the money is still in the account.
+
+Shown for you on a couple's return:
+
+> It counts even if the money is still in the account.
+
+Shown for your spouse:
+
+> It counts even if the money is still in the account.
+
+## `person.rmd_missed`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did you take less than the required yearly minimum out of a retirement account by its deadline, even if you made up the shortfall later?
+
+Shown on a one-person return:
+
+> Did you take less than the required yearly minimum out of a retirement account by its deadline, even if you made up the shortfall later?
+
+Shown for you on a couple's return:
+
+> About you — Did you take less than the required yearly minimum out of a retirement account by its deadline, even if you made up the shortfall later?
+
+Shown for your spouse:
+
+> About your spouse — Did your spouse take less than the required yearly minimum out of a retirement account by its deadline, even if your spouse made up the shortfall later?
+
+**Help, as stored**
+
+> People aged 73 or older, and people who inherited an account, usually must take a minimum amount out each year. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> People aged 73 or older, and people who inherited an account, usually must take a minimum amount out each year. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> People aged 73 or older, and people who inherited an account, usually must take a minimum amount out each year. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> People aged 73 or older, and people who inherited an account, usually must take a minimum amount out each year. A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 ## `$retirement`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — List each Form 1099-R this person received, one entry per form (for example by payer). Leave the list empty if this person received none.
+> For this person (you, or your spouse on a joint return) — In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received (for example by payer), or leave the list empty.
 
 Shown on a one-person return:
 
-> List each Form 1099-R you received, one entry per form (for example by payer). Leave the list empty if you received none.
+> In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received (for example by payer), or leave the list empty.
 
 Shown for you on a couple's return:
 
-> About you — List each Form 1099-R you received, one entry per form (for example by payer). Leave the list empty if you received none.
+> About you — In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received (for example by payer), or leave the list empty.
 
 Shown for your spouse:
 
-> About your spouse — List each Form 1099-R your spouse received, one entry per form (for example by payer). Leave the list empty if your spouse received none.
+> About your spouse — In 2025, did your spouse take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R your spouse received (for example by payer), or leave the list empty.
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> List a Form RRB-1099-R too. Do not list a Form SSA-1099 or RRB-1099 (social security benefits); they are asked about separately.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> List a Form RRB-1099-R too. Do not list a Form SSA-1099 or RRB-1099 (social security benefits); they are asked about separately.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> List a Form RRB-1099-R too. Do not list a Form SSA-1099 or RRB-1099 (social security benefits); they are asked about separately.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> List a Form RRB-1099-R too. Do not list a Form SSA-1099 or RRB-1099 (social security benefits); they are asked about separately.
 
 ## `person.educator_expenses`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Qualified educator expenses you paid in 2025 (professional development courses you took that are related to the curriculum you teach or to the students you teach, and books, supplies, equipment (including computer equipment, software and services) and other materials used in the classroom, including personal protective equipment, disinfectant and other supplies used to prevent the spread of coronavirus; not expenses for home schooling or nonathletic supplies for courses in health or physical education), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none
+> For this person (you, or your spouse on a joint return) — How much did you spend in 2025 on books, supplies, equipment, software and other materials for the classroom, and on courses for your teaching?
 
 Shown on a one-person return:
 
-> Qualified educator expenses you paid in 2025 (professional development courses you took that are related to the curriculum you teach or to the students you teach, and books, supplies, equipment (including computer equipment, software and services) and other materials used in the classroom, including personal protective equipment, disinfectant and other supplies used to prevent the spread of coronavirus; not expenses for home schooling or nonathletic supplies for courses in health or physical education), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none
+> How much did you spend in 2025 on books, supplies, equipment, software and other materials for the classroom, and on courses for your teaching?
 
 Shown for you on a couple's return:
 
-> About you — Qualified educator expenses you paid in 2025 (professional development courses you took that are related to the curriculum you teach or to the students you teach, and books, supplies, equipment (including computer equipment, software and services) and other materials used in the classroom, including personal protective equipment, disinfectant and other supplies used to prevent the spread of coronavirus; not expenses for home schooling or nonathletic supplies for courses in health or physical education), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none
+> About you — How much did you spend in 2025 on books, supplies, equipment, software and other materials for the classroom, and on courses for your teaching?
 
 Shown for your spouse:
 
-> About your spouse — Qualified educator expenses your spouse paid in 2025 (professional development courses your spouse took that are related to the curriculum your spouse teaches or to the students your spouse teaches, and books, supplies, equipment (including computer equipment, software and services) and other materials used in the classroom, including personal protective equipment, disinfectant and other supplies used to prevent the spread of coronavirus; not expenses for home schooling or nonathletic supplies for courses in health or physical education), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your spouse's Form W-2; zero if none
+> About your spouse — How much did your spouse spend in 2025 on books, supplies, equipment, software and other materials for the classroom, and on courses for your spouse's teaching?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> Count only costs that nobody repaid. Leave out home schooling costs, and supplies for health or physical education courses that are not for athletics. Subtract any tax-free savings bond interest, 529 plan or Coverdell money that paid for them.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Count only costs that nobody repaid. Leave out home schooling costs, and supplies for health or physical education courses that are not for athletics. Subtract any tax-free savings bond interest, 529 plan or Coverdell money that paid for them.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Count only costs that nobody repaid. Leave out home schooling costs, and supplies for health or physical education courses that are not for athletics. Subtract any tax-free savings bond interest, 529 plan or Coverdell money that paid for them.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> Count only costs that nobody repaid. Leave out home schooling costs, and supplies for health or physical education courses that are not for athletics. Subtract any tax-free savings bond interest, 529 plan or Coverdell money that paid for them.
 
 ## `person.eligible_educator`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?
+> For this person (you, or your spouse on a joint return) — In 2025, did you work in a school, from kindergarten through grade 12, as a teacher, instructor, counselor, principal or aide, for at least 900 hours during a school year?
 
 Shown on a one-person return:
 
-> Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?
+> In 2025, did you work in a school, from kindergarten through grade 12, as a teacher, instructor, counselor, principal or aide, for at least 900 hours during a school year?
 
 Shown for you on a couple's return:
 
-> About you — Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?
+> About you — In 2025, did you work in a school, from kindergarten through grade 12, as a teacher, instructor, counselor, principal or aide, for at least 900 hours during a school year?
 
 Shown for your spouse:
 
-> About your spouse — Was your spouse an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?
-
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
+> About your spouse — In 2025, did your spouse work in a school, from kindergarten through grade 12, as a teacher, instructor, counselor, principal or aide, for at least 900 hours during a school year?
 
 ## `$f8889`
 
@@ -1373,19 +1261,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Signs that you had one: box 12 of your Form W-2 shows the letter W, or the bank that holds the account sent you a Form 5498-SA (money put in) or a Form 1099-SA (money paid out). Answer Yes even if nothing went in or came out in 2025, and if an HSA, or money from one, came from someone who died. A flexible spending account (FSA) is not an HSA.
+> Signs of one: the letter W in box 12 of your Form W-2, or a Form 5498-SA or 1099-SA from the account's bank. Answer Yes even if nothing went in or out in 2025, or if it came from someone who died. A flexible spending account (FSA) is not an HSA.
 
 Shown on a one-person return:
 
-> Signs that you had one: box 12 of your Form W-2 shows the letter W, or the bank that holds the account sent you a Form 5498-SA (money put in) or a Form 1099-SA (money paid out). Answer Yes even if nothing went in or came out in 2025, and if an HSA, or money from one, came from someone who died. A flexible spending account (FSA) is not an HSA.
+> Signs of one: the letter W in box 12 of your Form W-2, or a Form 5498-SA or 1099-SA from the account's bank. Answer Yes even if nothing went in or out in 2025, or if it came from someone who died. A flexible spending account (FSA) is not an HSA.
 
 Shown for you on a couple's return:
 
-> Signs that you had one: box 12 of your Form W-2 shows the letter W, or the bank that holds the account sent you a Form 5498-SA (money put in) or a Form 1099-SA (money paid out). Answer Yes even if nothing went in or came out in 2025, and if an HSA, or money from one, came from someone who died. A flexible spending account (FSA) is not an HSA.
+> Signs of one: the letter W in box 12 of your Form W-2, or a Form 5498-SA or 1099-SA from the account's bank. Answer Yes even if nothing went in or out in 2025, or if it came from someone who died. A flexible spending account (FSA) is not an HSA.
 
 Shown for your spouse:
 
-> Signs that your spouse had one: box 12 of your spouse's Form W-2 shows the letter W, or the bank that holds the account sent your spouse a Form 5498-SA (money put in) or a Form 1099-SA (money paid out). Answer Yes even if nothing went in or came out in 2025, and if an HSA, or money from one, came from someone who died. A flexible spending account (FSA) is not an HSA.
+> Signs of one: the letter W in box 12 of your spouse's Form W-2, or a Form 5498-SA or 1099-SA from the account's bank. Answer Yes even if nothing went in or out in 2025, or if it came from someone who died. A flexible spending account (FSA) is not an HSA.
 
 ## `f8889.owner_died`
 
@@ -1929,7 +1817,7 @@ Shown for your spouse:
 
 > This is the “last-month rule”. It lets your spouse put in the full yearly amount for the coverage your spouse had on December 1 although your spouse was not covered that way all year. The condition is that your spouse stays covered by an HSA-qualifying plan through December 31, 2026; if your spouse does not, the extra amount becomes income, with a 10% additional tax. If no more was put in, by anyone, than your spouse's covered months allow, answer No.
 
-## `f8889.age55`
+## `person.age55_at_year_end`
 
 **Question, as stored**
 
@@ -2521,443 +2409,351 @@ Shown for your spouse:
 
 > This is the part that carries the additional 20% tax. Zero if all of it came out after.
 
-## `person.died_before_65`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
-
-Shown on a one-person return:
-
-> Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
-
-Shown for you on a couple's return:
-
-> About you — Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
-
-Shown for your spouse:
-
-> About your spouse — Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
-
-**Help, as stored**
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown on a one-person return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for you on a couple's return:
-
-> Married filing separately and unsupported items are refused with citations.
-
-Shown for your spouse:
-
-> Married filing separately and unsupported items are refused with citations.
-
 ## `$tipjob`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — List the employers from which you received tips you are deducting, one entry per employer. Leave the list empty if none.
+> For this person (you, or your spouse on a joint return) — At which employers did you get tips in 2025?
 
 Shown on a one-person return:
 
-> List the employers from which you received tips you are deducting, one entry per employer. Leave the list empty if none.
+> At which employers did you get tips in 2025?
 
 Shown for you on a couple's return:
 
-> About you — List the employers from which you received tips you are deducting, one entry per employer. Leave the list empty if none.
+> About you — At which employers did you get tips in 2025?
 
 Shown for your spouse:
 
-> About your spouse — List the employers from which your spouse received tips your spouse is deducting, one entry per employer. Leave the list empty if none.
+> About your spouse — At which employers did your spouse get tips in 2025?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> Name only the employers where you received tips. If you received none, leave the list empty.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Name only the employers where you received tips. If you received none, leave the list empty.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Name only the employers where you received tips. If you received none, leave the list empty.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> Name only the employers where your spouse received tips. If your spouse received none, leave the list empty.
 
 ## `$otjob`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — List the employers that paid you overtime you are deducting, one entry per employer. Leave the list empty if none.
+> For this person (you, or your spouse on a joint return) — Which employers paid you overtime in 2025?
 
 Shown on a one-person return:
 
-> List the employers that paid you overtime you are deducting, one entry per employer. Leave the list empty if none.
+> Which employers paid you overtime in 2025?
 
 Shown for you on a couple's return:
 
-> About you — List the employers that paid you overtime you are deducting, one entry per employer. Leave the list empty if none.
+> About you — Which employers paid you overtime in 2025?
 
 Shown for your spouse:
 
-> About your spouse — List the employers that paid your spouse overtime your spouse is deducting, one entry per employer. Leave the list empty if none.
+> About your spouse — Which employers paid your spouse overtime in 2025?
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> Name only the employers that paid you overtime. If none did, leave the list empty.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Name only the employers that paid you overtime. If none did, leave the list empty.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Name only the employers that paid you overtime. If none did, leave the list empty.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> Name only the employers that paid your spouse overtime. If none did, leave the list empty.
 
 ## `$sc`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Did you operate a business or practice a profession as a sole proprietor in 2025 (income reported to you on Forms 1099-NEC, 1099-K or 1099-MISC for your own work is usually such a business)? List each such business, one entry per business; leave the list empty if none.
+> For this person (you, or your spouse on a joint return) — In 2025, did you work for yourself: freelance or gig work, a side business, or a business of your own? Add one entry for each business; leave the list empty if you did not.
 
 Shown on a one-person return:
 
-> Did you operate a business or practice a profession as a sole proprietor in 2025 (income reported to you on Forms 1099-NEC, 1099-K or 1099-MISC for your own work is usually such a business)? List each such business, one entry per business; leave the list empty if none.
+> In 2025, did you work for yourself: freelance or gig work, a side business, or a business of your own? Add one entry for each business; leave the list empty if you did not.
 
 Shown for you on a couple's return:
 
-> About you — Did you operate a business or practice a profession as a sole proprietor in 2025 (income reported to you on Forms 1099-NEC, 1099-K or 1099-MISC for your own work is usually such a business)? List each such business, one entry per business; leave the list empty if none.
+> About you — In 2025, did you work for yourself: freelance or gig work, a side business, or a business of your own? Add one entry for each business; leave the list empty if you did not.
 
 Shown for your spouse:
 
-> About your spouse — Did your spouse operate a business or practice a profession as a sole proprietor in 2025 (income reported to your spouse on Forms 1099-NEC, 1099-K or 1099-MISC for your spouse's own work is usually such a business)? List each such business, one entry per business; leave the list empty if none.
+> About your spouse — In 2025, did your spouse work for himself or herself: freelance or gig work, a side business, or a business of your spouse's own? Add one entry for each business; leave the list empty if your spouse did not.
+
+**Help, as stored**
+
+> Pay reported to you on Form 1099-NEC, 1099-K or 1099-MISC for your own work is usually such a business. Any short label will do, such as “Tutoring”.
+
+Shown on a one-person return:
+
+> Pay reported to you on Form 1099-NEC, 1099-K or 1099-MISC for your own work is usually such a business. Any short label will do, such as “Tutoring”.
+
+Shown for you on a couple's return:
+
+> Pay reported to you on Form 1099-NEC, 1099-K or 1099-MISC for your own work is usually such a business. Any short label will do, such as “Tutoring”.
+
+Shown for your spouse:
+
+> Pay reported to your spouse on Form 1099-NEC, 1099-K or 1099-MISC for your spouse's own work is usually such a business. Any short label will do, such as “Tutoring”.
 
 ## `person.se_screen`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Does any of these apply to this person?
->
-> - church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)
-> - being a minister, a member of a religious order or a Christian Science practitioner, or having an approved Form 4361 or Form 4029
-> - net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C (such as director's fees, fiduciary fees, or fees as a fee-basis state or local government employee)
-> - farm income (Schedule F) or Conservation Reserve Program payments
-> - electing an optional method (Schedule SE Part II)
-> - a chapter 11 bankruptcy case
-> - community income on a separate return
-> - self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government
-> - tips reported on Form 4137 or wages on Form 8919
+> For this person (you, or your spouse on a joint return) — Does any of these apply to you: an approved exemption from self-employment tax on religious grounds (Form 4361 or Form 4029); fees as a company director, a fiduciary or a fee-basis government employee that are not in a business listed here; Conservation Reserve Program payments; a choice of the optional method of figuring self-employment earnings; or earnings exempt under a social security agreement with another country or from work for a foreign government?
 
 Shown on a one-person return:
 
-> Does any of these apply to you?
->
-> - church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)
-> - being a minister, a member of a religious order or a Christian Science practitioner, or having an approved Form 4361 or Form 4029
-> - net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C (such as director's fees, fiduciary fees, or fees as a fee-basis state or local government employee)
-> - farm income (Schedule F) or Conservation Reserve Program payments
-> - electing an optional method (Schedule SE Part II)
-> - a chapter 11 bankruptcy case
-> - community income on a separate return
-> - self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government
-> - tips reported on Form 4137 or wages on Form 8919
+> Does any of these apply to you: an approved exemption from self-employment tax on religious grounds (Form 4361 or Form 4029); fees as a company director, a fiduciary or a fee-basis government employee that are not in a business listed here; Conservation Reserve Program payments; a choice of the optional method of figuring self-employment earnings; or earnings exempt under a social security agreement with another country or from work for a foreign government?
 
 Shown for you on a couple's return:
 
-> About you — Does any of these apply to you?
->
-> - church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)
-> - being a minister, a member of a religious order or a Christian Science practitioner, or having an approved Form 4361 or Form 4029
-> - net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C (such as director's fees, fiduciary fees, or fees as a fee-basis state or local government employee)
-> - farm income (Schedule F) or Conservation Reserve Program payments
-> - electing an optional method (Schedule SE Part II)
-> - a chapter 11 bankruptcy case
-> - community income on a separate return
-> - self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government
-> - tips reported on Form 4137 or wages on Form 8919
+> About you — Does any of these apply to you: an approved exemption from self-employment tax on religious grounds (Form 4361 or Form 4029); fees as a company director, a fiduciary or a fee-basis government employee that are not in a business listed here; Conservation Reserve Program payments; a choice of the optional method of figuring self-employment earnings; or earnings exempt under a social security agreement with another country or from work for a foreign government?
 
 Shown for your spouse:
 
-> About your spouse — Does any of these apply to your spouse?
->
-> - church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)
-> - being a minister, a member of a religious order or a Christian Science practitioner, or having an approved Form 4361 or Form 4029
-> - net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C (such as director's fees, fiduciary fees, or fees as a fee-basis state or local government employee)
-> - farm income (Schedule F) or Conservation Reserve Program payments
-> - electing an optional method (Schedule SE Part II)
-> - a chapter 11 bankruptcy case
-> - community income on a separate return
-> - self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government
-> - tips reported on Form 4137 or wages on Form 8919
+> About your spouse — Does any of these apply to your spouse: an approved exemption from self-employment tax on religious grounds (Form 4361 or Form 4029); fees as a company director, a fiduciary or a fee-basis government employee that are not in a business listed here; Conservation Reserve Program payments; a choice of the optional method of figuring self-employment earnings; or earnings exempt under a social security agreement with another country or from work for a foreign government?
+
+**Help, as stored**
+
+> A Yes is outside what this tool prepares and ends the interview here.
+
+Shown on a one-person return:
+
+> A Yes is outside what this tool prepares and ends the interview here.
+
+Shown for you on a couple's return:
+
+> A Yes is outside what this tool prepares and ends the interview here.
+
+Shown for your spouse:
+
+> A Yes is outside what this tool prepares and ends the interview here.
 
 ## `person.plan`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Did you (this person) contribute for yourself, as a self-employed person, to a SEP IRA (sep) or a SIMPLE IRA (simple) for 2025, or to neither (none)?
+> For this person (you, or your spouse on a joint return) — Did you put money into a SEP IRA or a SIMPLE IRA for yourself for 2025, as a self-employed person?
 
 Shown on a one-person return:
 
-> Did you contribute for yourself, as a self-employed person, to a SEP IRA (sep) or a SIMPLE IRA (simple) for 2025, or to neither (none)?
+> Did you put money into a SEP IRA or a SIMPLE IRA for yourself for 2025, as a self-employed person?
 
 Shown for you on a couple's return:
 
-> About you — Did you contribute for yourself, as a self-employed person, to a SEP IRA (sep) or a SIMPLE IRA (simple) for 2025, or to neither (none)?
+> About you — Did you put money into a SEP IRA or a SIMPLE IRA for yourself for 2025, as a self-employed person?
 
 Shown for your spouse:
 
-> About your spouse — Did your spouse contribute for himself or herself, as a self-employed person, to a SEP IRA (sep) or a SIMPLE IRA (simple) for 2025, or to neither (none)?
+> About your spouse — Did your spouse put money into a SEP IRA or a SIMPLE IRA for himself or herself for 2025, as a self-employed person?
 
 **Help, as stored**
 
-> One of the values of retire_plan.
+> Money put in after the end of 2025 counts if it was for 2025 and paid by the due date of this return.
 
 Shown on a one-person return:
 
-> One of the values of retire_plan.
+> Money put in after the end of 2025 counts if it was for 2025 and paid by the due date of this return.
 
 Shown for you on a couple's return:
 
-> One of the values of retire_plan.
+> Money put in after the end of 2025 counts if it was for 2025 and paid by the due date of this return.
 
 Shown for your spouse:
 
-> One of the values of retire_plan.
+> Money put in after the end of 2025 counts if it was for 2025 and paid by the due date of this return.
 
 ## `person.plan_screen`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Does any of these apply: a SARSEP; a SEP plan whose contribution rate is not a whole percentage or is more than 25%; a SIMPLE IRA plan of an employer that allows the higher contribution limits of section 117 of the SECURE 2.0 Act; contributions for yourself to more than one plan, or to a qualified plan (such as a solo 401(k)); salary reduction contributions or elective deferrals to any other plan in 2025 (such as a 401(k) or 403(b) through an employer); Roth SEP or Roth SIMPLE contributions; or contributions that are more than the maximum deductible amount?
+> For this person (you, or your spouse on a joint return) — Does any of these apply: a SARSEP; a SEP rate that is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put in for yourself to another plan too, such as a solo 401(k), or to a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted?
 
 Shown on a one-person return:
 
-> Does any of these apply: a SARSEP; a SEP plan whose contribution rate is not a whole percentage or is more than 25%; a SIMPLE IRA plan of an employer that allows the higher contribution limits of section 117 of the SECURE 2.0 Act; contributions for yourself to more than one plan, or to a qualified plan (such as a solo 401(k)); salary reduction contributions or elective deferrals to any other plan in 2025 (such as a 401(k) or 403(b) through an employer); Roth SEP or Roth SIMPLE contributions; or contributions that are more than the maximum deductible amount?
+> Does any of these apply: a SARSEP; a SEP rate that is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put in for yourself to another plan too, such as a solo 401(k), or to a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted?
 
 Shown for you on a couple's return:
 
-> About you — Does any of these apply: a SARSEP; a SEP plan whose contribution rate is not a whole percentage or is more than 25%; a SIMPLE IRA plan of an employer that allows the higher contribution limits of section 117 of the SECURE 2.0 Act; contributions for yourself to more than one plan, or to a qualified plan (such as a solo 401(k)); salary reduction contributions or elective deferrals to any other plan in 2025 (such as a 401(k) or 403(b) through an employer); Roth SEP or Roth SIMPLE contributions; or contributions that are more than the maximum deductible amount?
+> About you — Does any of these apply: a SARSEP; a SEP rate that is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put in for yourself to another plan too, such as a solo 401(k), or to a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted?
 
 Shown for your spouse:
 
-> About your spouse — Does any of these apply: a SARSEP; a SEP plan whose contribution rate is not a whole percentage or is more than 25%; a SIMPLE IRA plan of an employer that allows the higher contribution limits of section 117 of the SECURE 2.0 Act; contributions for himself or herself to more than one plan, or to a qualified plan (such as a solo 401(k)); salary reduction contributions or elective deferrals to any other plan in 2025 (such as a 401(k) or 403(b) through an employer); Roth SEP or Roth SIMPLE contributions; or contributions that are more than the maximum deductible amount?
+> About your spouse — Does any of these apply: a SARSEP; a SEP rate that is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put in for himself or herself to another plan too, such as a solo 401(k), or to a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted?
+
+**Help, as stored**
+
+> A Yes is outside what this tool prepares and ends the interview here.
+
+Shown on a one-person return:
+
+> A Yes is outside what this tool prepares and ends the interview here.
+
+Shown for you on a couple's return:
+
+> A Yes is outside what this tool prepares and ends the interview here.
+
+Shown for your spouse:
+
+> A Yes is outside what this tool prepares and ends the interview here.
 
 ## `person.sep_rate`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — The contribution rate stated in your SEP plan, as a whole percent (for example 10)
+> For this person (you, or your spouse on a joint return) — What contribution rate does your SEP plan state, as a percent of pay (for example 10)?
 
 Shown on a one-person return:
 
-> The contribution rate stated in your SEP plan, as a whole percent (for example 10)
+> What contribution rate does your SEP plan state, as a percent of pay (for example 10)?
 
 Shown for you on a couple's return:
 
-> About you — The contribution rate stated in your SEP plan, as a whole percent (for example 10)
+> About you — What contribution rate does your SEP plan state, as a percent of pay (for example 10)?
 
 Shown for your spouse:
 
-> About your spouse — The contribution rate stated in your spouse's SEP plan, as a whole percent (for example 10)
+> About your spouse — What contribution rate does your spouse's SEP plan state, as a percent of pay (for example 10)?
 
 ## `person.sep_contrib`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — The contributions you made for yourself to your SEP IRA for 2025 (by the due date of the return, including extensions)
+> For this person (you, or your spouse on a joint return) — How much did you put into your SEP IRA for yourself for 2025, counting money paid in up to the due date of this return?
 
 Shown on a one-person return:
 
-> The contributions you made for yourself to your SEP IRA for 2025 (by the due date of the return, including extensions)
+> How much did you put into your SEP IRA for yourself for 2025, counting money paid in up to the due date of this return?
 
 Shown for you on a couple's return:
 
-> About you — The contributions you made for yourself to your SEP IRA for 2025 (by the due date of the return, including extensions)
+> About you — How much did you put into your SEP IRA for yourself for 2025, counting money paid in up to the due date of this return?
 
 Shown for your spouse:
 
-> About your spouse — The contributions your spouse made for himself or herself to your spouse's SEP IRA for 2025 (by the due date of the return, including extensions)
+> About your spouse — How much did your spouse put into your spouse's SEP IRA for himself or herself for 2025, counting money paid in up to the due date of this return?
 
 ## `person.simple_deferral`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — The salary reduction contributions you made for yourself to your SIMPLE IRA for 2025, including any catch-up contributions
+> For this person (you, or your spouse on a joint return) — How much of your own earnings did you put into your SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions)?
 
 Shown on a one-person return:
 
-> The salary reduction contributions you made for yourself to your SIMPLE IRA for 2025, including any catch-up contributions
+> How much of your own earnings did you put into your SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions)?
 
 Shown for you on a couple's return:
 
-> About you — The salary reduction contributions you made for yourself to your SIMPLE IRA for 2025, including any catch-up contributions
+> About you — How much of your own earnings did you put into your SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions)?
 
 Shown for your spouse:
 
-> About your spouse — The salary reduction contributions your spouse made for himself or herself to your spouse's SIMPLE IRA for 2025, including any catch-up contributions
+> About your spouse — How much of your spouse's own earnings did your spouse put into your spouse's SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions)?
 
-## `person.simple_age`
+## `person.simple_age_at_year_end`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Your age at the end of 2025 for SIMPLE catch-up contributions: under 50 (under50), 50 to 59 or 64 and over (age50), or 60, 61, 62 or 63 (age60_63)
+> For this person (you, or your spouse on a joint return) — How old were you at the end of 2025?
 
 Shown on a one-person return:
 
-> Your age at the end of 2025 for SIMPLE catch-up contributions: under 50 (under50), 50 to 59 or 64 and over (age50), or 60, 61, 62 or 63 (age60_63)
+> How old were you at the end of 2025?
 
 Shown for you on a couple's return:
 
-> About you — Your age at the end of 2025 for SIMPLE catch-up contributions: under 50 (under50), 50 to 59 or 64 and over (age50), or 60, 61, 62 or 63 (age60_63)
+> About you — How old were you at the end of 2025?
 
 Shown for your spouse:
 
-> About your spouse — Your spouse's age at the end of 2025 for SIMPLE catch-up contributions: under 50 (under50), 50 to 59 or 64 and over (age50), or 60, 61, 62 or 63 (age60_63)
-
-**Help, as stored**
-
-> One of the values of catchup_age.
-
-Shown on a one-person return:
-
-> One of the values of catchup_age.
-
-Shown for you on a couple's return:
-
-> One of the values of catchup_age.
-
-Shown for your spouse:
-
-> One of the values of catchup_age.
+> About your spouse — How old was your spouse at the end of 2025?
 
 ## `person.simple_kind`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — The employer contribution formula of your SIMPLE IRA plan for 2025: matching contributions (match) or 2% nonelective contributions (nonelective)
+> For this person (you, or your spouse on a joint return) — Which employer contribution does your SIMPLE IRA plan use for 2025?
 
 Shown on a one-person return:
 
-> The employer contribution formula of your SIMPLE IRA plan for 2025: matching contributions (match) or 2% nonelective contributions (nonelective)
+> Which employer contribution does your SIMPLE IRA plan use for 2025?
 
 Shown for you on a couple's return:
 
-> About you — The employer contribution formula of your SIMPLE IRA plan for 2025: matching contributions (match) or 2% nonelective contributions (nonelective)
+> About you — Which employer contribution does your SIMPLE IRA plan use for 2025?
 
 Shown for your spouse:
 
-> About your spouse — The employer contribution formula of your spouse's SIMPLE IRA plan for 2025: matching contributions (match) or 2% nonelective contributions (nonelective)
-
-**Help, as stored**
-
-> One of the values of simple_formula.
-
-Shown on a one-person return:
-
-> One of the values of simple_formula.
-
-Shown for you on a couple's return:
-
-> One of the values of simple_formula.
-
-Shown for your spouse:
-
-> One of the values of simple_formula.
+> About your spouse — Which employer contribution does your spouse's SIMPLE IRA plan use for 2025?
 
 ## `person.simple_employer`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — The employer matching or nonelective contributions you made for yourself to your SIMPLE IRA for 2025 (by the due date of the return, including extensions)
+> For this person (you, or your spouse on a joint return) — How much did you put into your SIMPLE IRA for 2025 as the employer’s contribution for yourself, counting money paid in up to the due date of this return?
 
 Shown on a one-person return:
 
-> The employer matching or nonelective contributions you made for yourself to your SIMPLE IRA for 2025 (by the due date of the return, including extensions)
+> How much did you put into your SIMPLE IRA for 2025 as the employer’s contribution for yourself, counting money paid in up to the due date of this return?
 
 Shown for you on a couple's return:
 
-> About you — The employer matching or nonelective contributions you made for yourself to your SIMPLE IRA for 2025 (by the due date of the return, including extensions)
+> About you — How much did you put into your SIMPLE IRA for 2025 as the employer’s contribution for yourself, counting money paid in up to the due date of this return?
 
 Shown for your spouse:
 
-> About your spouse — The employer matching or nonelective contributions your spouse made for himself or herself to your spouse's SIMPLE IRA for 2025 (by the due date of the return, including extensions)
-
-## `person.sav_born`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — Were you born before January 2, 2008?
-
-Shown on a one-person return:
-
-> Were you born before January 2, 2008?
-
-Shown for you on a couple's return:
-
-> About you — Were you born before January 2, 2008?
-
-Shown for your spouse:
-
-> About your spouse — Was your spouse born before January 2, 2008?
-
-**Help, as stored**
-
-> The saver's credit (Form 8880) is not allowed for contributions made by a person born after January 1, 2008.
-
-Shown on a one-person return:
-
-> The saver's credit (Form 8880) is not allowed for contributions made by a person born after January 1, 2008.
-
-Shown for you on a couple's return:
-
-> The saver's credit (Form 8880) is not allowed for contributions made by a person born after January 1, 2008.
-
-Shown for your spouse:
-
-> The saver's credit (Form 8880) is not allowed for contributions made by a person born after January 1, 2008.
+> About your spouse — How much did your spouse put into your spouse’s SIMPLE IRA for 2025 as the employer’s contribution for himself or herself, counting money paid in up to the due date of this return?
 
 ## `person.sav_student`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Were you a student in 2025: during any part of 5 calendar months of 2025, were you enrolled as a full-time student at a school, or did you take a full-time, on-farm training course given by a school or a state, county, or local government agency? (A school includes technical, trade, and mechanical schools. It does not include on-the-job training courses, correspondence schools, or schools offering courses only through the Internet.)
+> For this person (you, or your spouse on a joint return) — Were you a full-time student during any part of five calendar months of 2025?
 
 Shown on a one-person return:
 
-> Were you a student in 2025: during any part of 5 calendar months of 2025, were you enrolled as a full-time student at a school, or did you take a full-time, on-farm training course given by a school or a state, county, or local government agency? (A school includes technical, trade, and mechanical schools. It does not include on-the-job training courses, correspondence schools, or schools offering courses only through the Internet.)
+> Were you a full-time student during any part of five calendar months of 2025?
 
 Shown for you on a couple's return:
 
-> About you — Were you a student in 2025: during any part of 5 calendar months of 2025, were you enrolled as a full-time student at a school, or did you take a full-time, on-farm training course given by a school or a state, county, or local government agency? (A school includes technical, trade, and mechanical schools. It does not include on-the-job training courses, correspondence schools, or schools offering courses only through the Internet.)
+> About you — Were you a full-time student during any part of five calendar months of 2025?
 
 Shown for your spouse:
 
-> About your spouse — Was your spouse a student in 2025: during any part of 5 calendar months of 2025, was your spouse enrolled as a full-time student at a school, or did your spouse take a full-time, on-farm training course given by a school or a state, county, or local government agency? (A school includes technical, trade, and mechanical schools. It does not include on-the-job training courses, correspondence schools, or schools offering courses only through the Internet.)
+> About your spouse — Was your spouse a full-time student during any part of five calendar months of 2025?
 
 **Help, as stored**
 
-> A student for the saver's credit (Form 8880).
+> Technical, trade and mechanical schools count, and so does a full-time on-farm training course given by a school or a government agency. On-the-job training, correspondence schools and schools that teach only over the internet do not.
 
 Shown on a one-person return:
 
-> A student for the saver's credit (Form 8880).
+> Technical, trade and mechanical schools count, and so does a full-time on-farm training course given by a school or a government agency. On-the-job training, correspondence schools and schools that teach only over the internet do not.
 
 Shown for you on a couple's return:
 
-> A student for the saver's credit (Form 8880).
+> Technical, trade and mechanical schools count, and so does a full-time on-farm training course given by a school or a government agency. On-the-job training, correspondence schools and schools that teach only over the internet do not.
 
 Shown for your spouse:
 
-> A student for the saver's credit (Form 8880).
+> Technical, trade and mechanical schools count, and so does a full-time on-farm training course given by a school or a government agency. On-the-job training, correspondence schools and schools that teach only over the internet do not.
 
 ## `person.sav_claimed`
 
@@ -2979,139 +2775,225 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Asked for the saver's credit when someone can claim you or your spouse as a dependent, for the education credits when qualified education expenses were paid, and for the student loan interest deduction when student loan interest was paid. Answer Yes only if this person is actually claimed on someone else's 2025 return.
+> Answer Yes only if someone actually claims you on their 2025 return, not merely could.
 
 Shown on a one-person return:
 
-> Asked for the saver's credit when someone can claim you or your spouse as a dependent, for the education credits when qualified education expenses were paid, and for the student loan interest deduction when student loan interest was paid. Answer Yes only if you are actually claimed on someone else's 2025 return.
+> Answer Yes only if someone actually claims you on their 2025 return, not merely could.
 
 Shown for you on a couple's return:
 
-> Asked for the saver's credit when someone can claim you or your spouse as a dependent, for the education credits when qualified education expenses were paid, and for the student loan interest deduction when student loan interest was paid. Answer Yes only if you are actually claimed on someone else's 2025 return.
+> Answer Yes only if someone actually claims you on their 2025 return, not merely could.
 
 Shown for your spouse:
 
-> Asked for the saver's credit when someone can claim you or your spouse as a dependent, for the education credits when qualified education expenses were paid, and for the student loan interest deduction when student loan interest was paid. Answer Yes only if your spouse is actually claimed on someone else's 2025 return.
+> Answer Yes only if someone actually claims your spouse on their 2025 return, not merely could.
+
+## `person.ira_owner`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did you have an IRA (an individual retirement account) of any kind at any time in 2025, or do you have one now?
+
+Shown on a one-person return:
+
+> Did you have an IRA (an individual retirement account) of any kind at any time in 2025, or do you have one now?
+
+Shown for you on a couple's return:
+
+> About you — Did you have an IRA (an individual retirement account) of any kind at any time in 2025, or do you have one now?
+
+Shown for your spouse:
+
+> About your spouse — Did your spouse have an IRA (an individual retirement account) of any kind at any time in 2025, or does your spouse have one now?
+
+**Help, as stored**
+
+> Traditional, Roth, SEP and SIMPLE IRAs count, and so do an IRA you inherited and one opened in early 2026 for 2025. A 401(k) or a pension at work is not an IRA. If you are not sure, answer Yes.
+
+Shown on a one-person return:
+
+> Traditional, Roth, SEP and SIMPLE IRAs count, and so do an IRA you inherited and one opened in early 2026 for 2025. A 401(k) or a pension at work is not an IRA. If you are not sure, answer Yes.
+
+Shown for you on a couple's return:
+
+> Traditional, Roth, SEP and SIMPLE IRAs count, and so do an IRA you inherited and one opened in early 2026 for 2025. A 401(k) or a pension at work is not an IRA. If you are not sure, answer Yes.
+
+Shown for your spouse:
+
+> Traditional, Roth, SEP and SIMPLE IRAs count, and so do an IRA your spouse inherited and one opened in early 2026 for 2025. A 401(k) or a pension at work is not an IRA. If your spouse is not sure, answer Yes.
 
 ## `person.sav_trad`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Did you make contributions (other than rollover contributions) to a traditional IRA for 2025, deductible or not, including contributions made by the due date of your 2025 return for 2025? Do not count contributions made under a SEP or SIMPLE IRA plan, including those you made for yourself as a self-employed person.
+> For this person (you, or your spouse on a joint return) — Did you put money into a traditional IRA for 2025? Money put in by April 15, 2026 for 2025 counts; a rollover from another retirement account does not.
 
 Shown on a one-person return:
 
-> Did you make contributions (other than rollover contributions) to a traditional IRA for 2025, deductible or not, including contributions made by the due date of your 2025 return for 2025? Do not count contributions made under a SEP or SIMPLE IRA plan, including those you made for yourself as a self-employed person.
+> Did you put money into a traditional IRA for 2025? Money put in by April 15, 2026 for 2025 counts; a rollover from another retirement account does not.
 
 Shown for you on a couple's return:
 
-> About you — Did you make contributions (other than rollover contributions) to a traditional IRA for 2025, deductible or not, including contributions made by the due date of your 2025 return for 2025? Do not count contributions made under a SEP or SIMPLE IRA plan, including those you made for yourself as a self-employed person.
+> About you — Did you put money into a traditional IRA for 2025? Money put in by April 15, 2026 for 2025 counts; a rollover from another retirement account does not.
 
 Shown for your spouse:
 
-> About your spouse — Did your spouse make contributions (other than rollover contributions) to a traditional IRA for 2025, deductible or not, including contributions made by the due date of your spouse's 2025 return for 2025? Do not count contributions made under a SEP or SIMPLE IRA plan, including those your spouse made for himself or herself as a self-employed person.
+> About your spouse — Did your spouse put money into a traditional IRA for 2025? Money put in by April 15, 2026 for 2025 counts; a rollover from another retirement account does not.
 
 **Help, as stored**
 
-> Contributions to a traditional IRA for 2025, which may be made until April 15, 2026. They count for the IRA deduction (Schedule 1, line 20), Form 8606 and the saver's credit. Contributions under a SEP or SIMPLE IRA plan, whether your employer made them or you made them for yourself as a self-employed person, are not counted here; a self-employed person's contributions for themselves are asked with their SEP or SIMPLE plan and deducted on Schedule 1, line 16.
+> It counts whether or not you can deduct it. Do not count money that went into a SEP IRA or a SIMPLE IRA, whether an employer paid it or you paid it for yourself from your own business.
 
 Shown on a one-person return:
 
-> Contributions to a traditional IRA for 2025, which may be made until April 15, 2026. They count for the IRA deduction (Schedule 1, line 20), Form 8606 and the saver's credit. Contributions under a SEP or SIMPLE IRA plan, whether your employer made them or you made them for yourself as a self-employed person, are not counted here; a self-employed person's contributions for themselves are asked with their SEP or SIMPLE plan and deducted on Schedule 1, line 16.
+> It counts whether or not you can deduct it. Do not count money that went into a SEP IRA or a SIMPLE IRA, whether an employer paid it or you paid it for yourself from your own business.
 
 Shown for you on a couple's return:
 
-> Contributions to a traditional IRA for 2025, which may be made until April 15, 2026. They count for the IRA deduction (Schedule 1, line 20), Form 8606 and the saver's credit. Contributions under a SEP or SIMPLE IRA plan, whether your employer made them or you made them for yourself as a self-employed person, are not counted here; a self-employed person's contributions for themselves are asked with their SEP or SIMPLE plan and deducted on Schedule 1, line 16.
+> It counts whether or not you can deduct it. Do not count money that went into a SEP IRA or a SIMPLE IRA, whether an employer paid it or you paid it for yourself from your own business.
 
 Shown for your spouse:
 
-> Contributions to a traditional IRA for 2025, which may be made until April 15, 2026. They count for the IRA deduction (Schedule 1, line 20), Form 8606 and the saver's credit. Contributions under a SEP or SIMPLE IRA plan, whether your spouse's employer made them or your spouse made them for himself or herself as a self-employed person, are not counted here; a self-employed person's contributions for themselves are asked with their SEP or SIMPLE plan and deducted on Schedule 1, line 16.
+> It counts whether or not your spouse can deduct it. Do not count money that went into a SEP IRA or a SIMPLE IRA, whether an employer paid it or your spouse paid it for himself or herself from your spouse's own business.
 
 ## `person.ira_trad`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Your contributions to your traditional IRAs for 2025, made in 2025 or made by April 15, 2026, and designated for 2025; do not include rollover contributions, contributions made in 2025 that you deducted for 2024, contributions withdrawn (with their earnings) by the due date of your return, trustees' fees billed separately, or contributions made under a SEP or SIMPLE IRA plan, by your employer or by you for yourself as a self-employed person
+> For this person (you, or your spouse on a joint return) — How much did you put into your traditional IRAs for 2025, in 2025 or by April 15, 2026?
 
 Shown on a one-person return:
 
-> Your contributions to your traditional IRAs for 2025, made in 2025 or made by April 15, 2026, and designated for 2025; do not include rollover contributions, contributions made in 2025 that you deducted for 2024, contributions withdrawn (with their earnings) by the due date of your return, trustees' fees billed separately, or contributions made under a SEP or SIMPLE IRA plan, by your employer or by you for yourself as a self-employed person
+> How much did you put into your traditional IRAs for 2025, in 2025 or by April 15, 2026?
 
 Shown for you on a couple's return:
 
-> About you — Your contributions to your traditional IRAs for 2025, made in 2025 or made by April 15, 2026, and designated for 2025; do not include rollover contributions, contributions made in 2025 that you deducted for 2024, contributions withdrawn (with their earnings) by the due date of your return, trustees' fees billed separately, or contributions made under a SEP or SIMPLE IRA plan, by your employer or by you for yourself as a self-employed person
+> About you — How much did you put into your traditional IRAs for 2025, in 2025 or by April 15, 2026?
 
 Shown for your spouse:
 
-> About your spouse — Your spouse's contributions to your spouse's traditional IRAs for 2025, made in 2025 or made by April 15, 2026, and designated for 2025; do not include rollover contributions, contributions made in 2025 that your spouse deducted for 2024, contributions withdrawn (with their earnings) by the due date of your spouse's return, trustees' fees billed separately, or contributions made under a SEP or SIMPLE IRA plan, by your spouse's employer or by your spouse for himself or herself as a self-employed person
+> About your spouse — How much did your spouse put into your spouse's traditional IRAs for 2025, in 2025 or by April 15, 2026?
 
 **Help, as stored**
 
-> Form 5498 or a statement from the IRA trustee, sent by June 1, 2026, shows the contributions to your traditional IRA for 2025.
+> Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money you deducted on your 2024 return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately, and SEP or SIMPLE contributions.
 
 Shown on a one-person return:
 
-> Form 5498 or a statement from the IRA trustee, sent by June 1, 2026, shows the contributions to your traditional IRA for 2025.
+> Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money you deducted on your 2024 return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately, and SEP or SIMPLE contributions.
 
 Shown for you on a couple's return:
 
-> Form 5498 or a statement from the IRA trustee, sent by June 1, 2026, shows the contributions to your traditional IRA for 2025.
+> Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money you deducted on your 2024 return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately, and SEP or SIMPLE contributions.
 
 Shown for your spouse:
 
-> Form 5498 or a statement from the IRA trustee, sent by June 1, 2026, shows the contributions to your spouse's traditional IRA for 2025.
+> Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money your spouse deducted on your spouse's 2024 return, anything your spouse took back out with its earnings by the deadline for your spouse's return, trustee's fees billed separately, and SEP or SIMPLE contributions.
 
-## `person.ira_excess`
+## `person.ira_extra_left`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Does any of these apply to you?
->
-> - your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return (including extensions)
-> - you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse)
-> - an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025
+> For this person (you, or your spouse on a joint return) — Did you put more into your IRAs for 2025 than you were allowed, and was the extra still there after the deadline for your 2025 return?
 
 Shown on a one-person return:
 
-> Does any of these apply to you?
->
-> - your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return (including extensions)
-> - you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse)
-> - an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025
+> Did you put more into your IRAs for 2025 than you were allowed, and was the extra still there after the deadline for your 2025 return?
 
 Shown for you on a couple's return:
 
-> About you — Does any of these apply to you?
->
-> - your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return (including extensions)
-> - you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse)
-> - an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025
+> About you — Did you put more into your IRAs for 2025 than you were allowed, and was the extra still there after the deadline for your 2025 return?
 
 Shown for your spouse:
 
-> About your spouse — Does any of these apply to your spouse?
->
-> - your spouse's contributions for 2025 to traditional and Roth IRAs together were more than your spouse was allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your spouse's taxable compensation, or a Roth contribution above the limit for your spouse's income), and the excess was not withdrawn with its earnings by the due date of your spouse's return (including extensions)
-> - your spouse recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse)
-> - an excess contribution from an earlier year remained in your spouse's traditional or Roth IRA at the end of 2025
+> About your spouse — Did your spouse put more into your spouse's IRAs for 2025 than your spouse was allowed, and was the extra still there after the deadline for your spouse's 2025 return?
 
 **Help, as stored**
 
-> An excess contribution, a recharacterization, or an earlier excess that remained in the IRA at the end of 2025 is reported on Form 5329 or with Pub. 590-A rules, which this tool does not prepare; Yes refuses the return.
+> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 Shown on a one-person return:
 
-> An excess contribution, a recharacterization, or an earlier excess that remained in the IRA at the end of 2025 is reported on Form 5329 or with Pub. 590-A rules, which this tool does not prepare; Yes refuses the return.
+> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> An excess contribution, a recharacterization, or an earlier excess that remained in the IRA at the end of 2025 is reported on Form 5329 or with Pub. 590-A rules, which this tool does not prepare; Yes refuses the return.
+> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 Shown for your spouse:
 
-> An excess contribution, a recharacterization, or an earlier excess that remained in the IRA at the end of 2025 is reported on Form 5329 or with Pub. 590-A rules, which this tool does not prepare; Yes refuses the return.
+> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if your spouse was 50 or older at the end of 2025), or your spouse's taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside what this tool prepares; a Yes ends the interview here.
 
-## `person.ira_age50`
+## `person.ira_recharacterized`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did you move a 2025 IRA contribution from a traditional IRA to a Roth IRA, or the other way (a "recharacterization")?
+
+Shown on a one-person return:
+
+> Did you move a 2025 IRA contribution from a traditional IRA to a Roth IRA, or the other way (a "recharacterization")?
+
+Shown for you on a couple's return:
+
+> About you — Did you move a 2025 IRA contribution from a traditional IRA to a Roth IRA, or the other way (a "recharacterization")?
+
+Shown for your spouse:
+
+> About your spouse — Did your spouse move a 2025 IRA contribution from a traditional IRA to a Roth IRA, or the other way (a "recharacterization")?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `person.x_ira_prior_excess`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — At the end of 2025, did your IRA still hold money put in above the limit in an earlier year?
+
+Shown on a one-person return:
+
+> At the end of 2025, did your IRA still hold money put in above the limit in an earlier year?
+
+Shown for you on a couple's return:
+
+> About you — At the end of 2025, did your IRA still hold money put in above the limit in an earlier year?
+
+Shown for your spouse:
+
+> About your spouse — At the end of 2025, did your spouse's IRA still hold money put in above the limit in an earlier year?
+
+**Help, as stored**
+
+> This is an excess contribution from before 2025 that was never taken out or used up. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> This is an excess contribution from before 2025 that was never taken out or used up. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> This is an excess contribution from before 2025 that was never taken out or used up. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> This is an excess contribution from before 2025 that was never taken out or used up. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `person.age50_at_year_end`
 
 **Question, as stored**
 
@@ -3131,53 +3013,53 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Age 50 or older at the end of 2025 raises the contribution limit to $8,000 and changes the IRA Deduction Worksheet's percentages.
+> Age 50 or older at the end of 2025 raises the IRA contribution limit to $8,000, changes the IRA Deduction Worksheet's percentages, and allows catch-up contributions to a SIMPLE IRA.
 
 Shown on a one-person return:
 
-> Age 50 or older at the end of 2025 raises the contribution limit to $8,000 and changes the IRA Deduction Worksheet's percentages.
+> Age 50 or older at the end of 2025 raises the IRA contribution limit to $8,000, changes the IRA Deduction Worksheet's percentages, and allows catch-up contributions to a SIMPLE IRA.
 
 Shown for you on a couple's return:
 
-> Age 50 or older at the end of 2025 raises the contribution limit to $8,000 and changes the IRA Deduction Worksheet's percentages.
+> Age 50 or older at the end of 2025 raises the IRA contribution limit to $8,000, changes the IRA Deduction Worksheet's percentages, and allows catch-up contributions to a SIMPLE IRA.
 
 Shown for your spouse:
 
-> Age 50 or older at the end of 2025 raises the contribution limit to $8,000 and changes the IRA Deduction Worksheet's percentages.
+> Age 50 or older at the end of 2025 raises the IRA contribution limit to $8,000, changes the IRA Deduction Worksheet's percentages, and allows catch-up contributions to a SIMPLE IRA.
 
 ## `person.ira_work_plan`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Were you covered by a retirement plan at work for 2025 (a qualified pension, profit-sharing or 401(k), annuity, SEP, SIMPLE or other employer plan), even if you were not vested in it?
+> For this person (you, or your spouse on a joint return) — Were you covered by a retirement plan at work in 2025, such as a pension or a 401(k), even if you were not vested in it? If you were, the "Retirement plan" box in box 13 of your Form W-2 should be ticked.
 
 Shown on a one-person return:
 
-> Were you covered by a retirement plan at work for 2025 (a qualified pension, profit-sharing or 401(k), annuity, SEP, SIMPLE or other employer plan), even if you were not vested in it?
+> Were you covered by a retirement plan at work in 2025, such as a pension or a 401(k), even if you were not vested in it? If you were, the "Retirement plan" box in box 13 of your Form W-2 should be ticked.
 
 Shown for you on a couple's return:
 
-> About you — Were you covered by a retirement plan at work for 2025 (a qualified pension, profit-sharing or 401(k), annuity, SEP, SIMPLE or other employer plan), even if you were not vested in it?
+> About you — Were you covered by a retirement plan at work in 2025, such as a pension or a 401(k), even if you were not vested in it? If you were, the "Retirement plan" box in box 13 of your Form W-2 should be ticked.
 
 Shown for your spouse:
 
-> About your spouse — Was your spouse covered by a retirement plan at work for 2025 (a qualified pension, profit-sharing or 401(k), annuity, SEP, SIMPLE or other employer plan), even if your spouse was not vested in it?
+> About your spouse — Was your spouse covered by a retirement plan at work in 2025, such as a pension or a 401(k), even if your spouse was not vested in it? If your spouse was, the "Retirement plan" box in box 13 of your spouse's Form W-2 should be ticked.
 
 **Help, as stored**
 
-> The "Retirement plan" box in box 13 of your Form W-2 should be checked if you were covered by a plan at work, even if you were not vested in it. If you are not sure, ask your employer. Coverage under social security or railroad retirement is not coverage by a plan. A SEP or SIMPLE IRA you contribute to as a self-employed person is taken from your Schedule C answers.
+> If you are not sure, ask the employer. Social security and railroad retirement are not a plan. A SEP or SIMPLE IRA of a business of your own is taken from the answers about the business.
 
 Shown on a one-person return:
 
-> The "Retirement plan" box in box 13 of your Form W-2 should be checked if you were covered by a plan at work, even if you were not vested in it. If you are not sure, ask your employer. Coverage under social security or railroad retirement is not coverage by a plan. A SEP or SIMPLE IRA you contribute to as a self-employed person is taken from your Schedule C answers.
+> If you are not sure, ask the employer. Social security and railroad retirement are not a plan. A SEP or SIMPLE IRA of a business of your own is taken from the answers about the business.
 
 Shown for you on a couple's return:
 
-> The "Retirement plan" box in box 13 of your Form W-2 should be checked if you were covered by a plan at work, even if you were not vested in it. If you are not sure, ask your employer. Coverage under social security or railroad retirement is not coverage by a plan. A SEP or SIMPLE IRA you contribute to as a self-employed person is taken from your Schedule C answers.
+> If you are not sure, ask the employer. Social security and railroad retirement are not a plan. A SEP or SIMPLE IRA of a business of your own is taken from the answers about the business.
 
 Shown for your spouse:
 
-> The "Retirement plan" box in box 13 of your spouse's Form W-2 should be checked if your spouse was covered by a plan at work, even if your spouse was not vested in it. If your spouse is not sure, ask your spouse's employer. Coverage under social security or railroad retirement is not coverage by a plan. A SEP or SIMPLE IRA your spouse contributes to as a self-employed person is taken from your spouse's Schedule C answers.
+> If your spouse is not sure, ask the employer. Social security and railroad retirement are not a plan. A SEP or SIMPLE IRA of a business of your spouse's own is taken from the answers about the business.
 
 ## `person.ira_basis`
 
@@ -3285,137 +3167,103 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?
+> For this person (you, or your spouse on a joint return) — Is an ABLE account held for you, and did you put money into it for 2025, or get money out of it in 2023 or later?
 
 Shown on a one-person return:
 
-> As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?
+> Is an ABLE account held for you, and did you put money into it for 2025, or get money out of it in 2023 or later?
 
 Shown for you on a couple's return:
 
-> About you — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?
+> About you — Is an ABLE account held for you, and did you put money into it for 2025, or get money out of it in 2023 or later?
 
 Shown for your spouse:
 
-> About your spouse — As the designated beneficiary of an ABLE account, did your spouse contribute to it for 2025, or did your spouse receive any distribution from an ABLE account after 2022 and before the due date of your spouse's 2025 return (including extensions)?
+> About your spouse — Is an ABLE account held for your spouse, and did your spouse put money into it for 2025, or get money out of it in 2023 or later?
 
 **Help, as stored**
 
-> ABLE accounts (Pub. 907) are outside this tool.
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 Shown on a one-person return:
 
-> ABLE accounts (Pub. 907) are outside this tool.
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> ABLE accounts (Pub. 907) are outside this tool.
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 Shown for your spouse:
 
-> ABLE accounts (Pub. 907) are outside this tool.
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 ## `person.sav_roth`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Your contributions to a Roth IRA for 2025, including contributions made by the due date of your 2025 return that are for 2025; do not include rollover contributions or conversions; zero if none
+> For this person (you, or your spouse on a joint return) — How much did you put into a Roth IRA for 2025, in 2025 or by the deadline for your 2025 return? Do not count rollovers or conversions.
 
 Shown on a one-person return:
 
-> Your contributions to a Roth IRA for 2025, including contributions made by the due date of your 2025 return that are for 2025; do not include rollover contributions or conversions; zero if none
+> How much did you put into a Roth IRA for 2025, in 2025 or by the deadline for your 2025 return? Do not count rollovers or conversions.
 
 Shown for you on a couple's return:
 
-> About you — Your contributions to a Roth IRA for 2025, including contributions made by the due date of your 2025 return that are for 2025; do not include rollover contributions or conversions; zero if none
+> About you — How much did you put into a Roth IRA for 2025, in 2025 or by the deadline for your 2025 return? Do not count rollovers or conversions.
 
 Shown for your spouse:
 
-> About your spouse — Your spouse's contributions to a Roth IRA for 2025, including contributions made by the due date of your spouse's 2025 return that are for 2025; do not include rollover contributions or conversions; zero if none
+> About your spouse — How much did your spouse put into a Roth IRA for 2025, in 2025 or by the deadline for your spouse's 2025 return? Do not count rollovers or conversions.
 
 **Help, as stored**
 
-> Contributions for 2025 may be made up to the due date of your 2025 return. A contribution later recharacterized as a traditional IRA contribution is a traditional IRA contribution.
+> A contribution that was later moved to a traditional IRA (recharacterized) is a traditional IRA contribution, not a Roth one.
 
 Shown on a one-person return:
 
-> Contributions for 2025 may be made up to the due date of your 2025 return. A contribution later recharacterized as a traditional IRA contribution is a traditional IRA contribution.
+> A contribution that was later moved to a traditional IRA (recharacterized) is a traditional IRA contribution, not a Roth one.
 
 Shown for you on a couple's return:
 
-> Contributions for 2025 may be made up to the due date of your 2025 return. A contribution later recharacterized as a traditional IRA contribution is a traditional IRA contribution.
+> A contribution that was later moved to a traditional IRA (recharacterized) is a traditional IRA contribution, not a Roth one.
 
 Shown for your spouse:
 
-> Contributions for 2025 may be made up to the due date of your spouse's 2025 return. A contribution later recharacterized as a traditional IRA contribution is a traditional IRA contribution.
-
-## `person.sav_excess`
-
-**Question, as stored**
-
-> For this person (you, or your spouse on a joint return) — Is the total of your elective deferrals and designated Roth contributions for 2025 (Form W-2 box 12, from all your employers) more than the limit that applies to you (for a 401(k) plan, $23,500 plus any catch-up contributions your plan allows), so that you have excess deferrals?
-
-Shown on a one-person return:
-
-> Is the total of your elective deferrals and designated Roth contributions for 2025 (Form W-2 box 12, from all your employers) more than the limit that applies to you (for a 401(k) plan, $23,500 plus any catch-up contributions your plan allows), so that you have excess deferrals?
-
-Shown for you on a couple's return:
-
-> About you — Is the total of your elective deferrals and designated Roth contributions for 2025 (Form W-2 box 12, from all your employers) more than the limit that applies to you (for a 401(k) plan, $23,500 plus any catch-up contributions your plan allows), so that you have excess deferrals?
-
-Shown for your spouse:
-
-> About your spouse — Is the total of your spouse's elective deferrals and designated Roth contributions for 2025 (Form W-2 box 12, from all your spouse's employers) more than the limit that applies to your spouse (for a 401(k) plan, $23,500 plus any catch-up contributions your spouse's plan allows), so that your spouse has excess deferrals?
-
-**Help, as stored**
-
-> Your plan administrator tells you if you deferred more than the limit.
-
-Shown on a one-person return:
-
-> Your plan administrator tells you if you deferred more than the limit.
-
-Shown for you on a couple's return:
-
-> Your plan administrator tells you if you deferred more than the limit.
-
-Shown for your spouse:
-
-> Your spouse's plan administrator tells your spouse if your spouse deferred more than the limit.
+> A contribution that was later moved to a traditional IRA (recharacterized) is a traditional IRA contribution, not a Roth one.
 
 ## `person.sav_voluntary`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Voluntary after-tax employee contributions you made for 2025 to a qualified retirement plan (including the federal Thrift Savings Plan), which may be shown in box 14 of your Form W-2; not designated Roth contributions, and not contributions designated under section 414(h)(2) (treated as employer contributions); zero if none
+> For this person (you, or your spouse on a joint return) — How much of your own after-tax money did you choose to put into a retirement plan at work for 2025? It may be shown in box 14 of your Form W-2.
 
 Shown on a one-person return:
 
-> Voluntary after-tax employee contributions you made for 2025 to a qualified retirement plan (including the federal Thrift Savings Plan), which may be shown in box 14 of your Form W-2; not designated Roth contributions, and not contributions designated under section 414(h)(2) (treated as employer contributions); zero if none
+> How much of your own after-tax money did you choose to put into a retirement plan at work for 2025? It may be shown in box 14 of your Form W-2.
 
 Shown for you on a couple's return:
 
-> About you — Voluntary after-tax employee contributions you made for 2025 to a qualified retirement plan (including the federal Thrift Savings Plan), which may be shown in box 14 of your Form W-2; not designated Roth contributions, and not contributions designated under section 414(h)(2) (treated as employer contributions); zero if none
+> About you — How much of your own after-tax money did you choose to put into a retirement plan at work for 2025? It may be shown in box 14 of your Form W-2.
 
 Shown for your spouse:
 
-> About your spouse — Voluntary after-tax employee contributions your spouse made for 2025 to a qualified retirement plan (including the federal Thrift Savings Plan), which may be shown in box 14 of your spouse's Form W-2; not designated Roth contributions, and not contributions designated under section 414(h)(2) (treated as employer contributions); zero if none
+> About your spouse — How much of your spouse's own after-tax money did your spouse choose to put into a retirement plan at work for 2025? It may be shown in box 14 of your spouse's Form W-2.
 
 **Help, as stored**
 
-> Required employee contributions and employer contributions are not voluntary contributions.
+> Do not count Roth contributions, contributions your employer requires of you, or contributions your employer pays for you. The federal Thrift Savings Plan counts as a plan.
 
 Shown on a one-person return:
 
-> Required employee contributions and employer contributions are not voluntary contributions.
+> Do not count Roth contributions, contributions your employer requires of you, or contributions your employer pays for you. The federal Thrift Savings Plan counts as a plan.
 
 Shown for you on a couple's return:
 
-> Required employee contributions and employer contributions are not voluntary contributions.
+> Do not count Roth contributions, contributions your employer requires of you, or contributions your employer pays for you. The federal Thrift Savings Plan counts as a plan.
 
 Shown for your spouse:
 
-> Required employee contributions and employer contributions are not voluntary contributions.
+> Do not count Roth contributions, contributions your spouse's employer requires of your spouse, or contributions your spouse's employer pays for your spouse. The federal Thrift Savings Plan counts as a plan.
 
 ## `person.sav_prior_joint`
 

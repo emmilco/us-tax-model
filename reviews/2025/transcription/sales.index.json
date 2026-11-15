@@ -4,14 +4,23 @@
  "family": "claude",
  "base": "9d3118026893a1c312a9f2d8f6ed48ff9175923e1c54b7d5ae7765d55be6842d",
  "head_rows": {
-  "line-scoped reviews": "4 (latest 2026-11-10); see Line-scoped reviews"
+  "printed lines compared": "5",
+  "agree / disagree / missing": "1 / 4 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
+   "key": "sales.route_if_chosen",
+   "record": "fbbf3af035124a92e8a427710066c75bd44b8978de88143d1f092fae4a1b945b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage 1,898/1,933 agree, no value difference; differences are candidate-unknown (the reply reads sales.route, which is asked only when sd.route_each is Yes) and candidate-refuses (6 on completed returns: the reply's own consistency refusal of an aggregate route that fails Exception 1, which the project refuses at sales.one through sales.bad_aggregate). i1040sd p. 10, lines 1a and 8a: \"You can report on line 1a ... or line 8a ... the aggregate totals from any transactions ... for which\" basis was reported and no adjustment shown, and \"If you choose to report these transactions on lines 1a and 8a, don't report them on Form 8949\": aggregation is the filer's option, and with sd.route_each No every sale is listed on Form 8949 (sales.detail), which the project's choose returns. The reply's note that choose cannot yield an enum value is mistaken (the project's line is such a choose); it ignores the parent question.",
+   "subject_key": "ce0a5e49bef4d0b6c74826fbba8aae3bb87030ce8623f345221f663bea8b8b26"
+  },
+  {
    "key": "sales.one",
-   "record": "448b05f8c9fd8a4f57e9e9d0e274c93a894b0c9c9ed737211924a9643c08927a",
+   "record": "fbbf3af035124a92e8a427710066c75bd44b8978de88143d1f092fae4a1b945b",
    "status": "AGREE",
-   "subject_key": "db048625e32ea9d54f3b47ff777040649e9017087acca0c50266cf72baae1eea"
+   "subject_key": "aa2c39c8e88c6889c4e4c6e0f0ac37405bdd67c7d3887fd7fbc379f70803f34c"
   },
   {
    "key": "(e)",
@@ -36,14 +45,16 @@
   }
  ],
  "subjects": {
-  "sales.one": "b984b4d36b5a94f6ebef0efa995a417e9e68b981e7a9166d583c36d0f306c4c1",
+  "sales.route_if_chosen": "315219a45c1f5c9aaac7ee892631f48376b2ea29797dc0d2a21b65e861d12985",
+  "sales.one": "ecd3b715c9867ce79ec8109e2c52f4169d5619dcf304e1850eb3247049065dda",
   "(e)": "b7f290bb5c1dd9dbd25b593ae9a7e0244a1e684e986b47849a9572b164e73d0d",
   "(g)": "8c5e7c4b6c15b66814b237d3abf17b798ce115d648da208cc89d28bca8ade4f7",
   "(h)": "99ee2a26d2615b358c59742db7fe5cb7211304df3fd2300bdc0b375bc504b241"
  },
  "__rest__": "d66e458afa5745f8eec417fb8e25dc768244f7e1dca0d2d0114dfbf47d7cba76",
  "foreign": {
-  "sales.one": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "sales.route_if_chosen": "035e230f1191202dc068a51ad305f0c024defb44bb86987e3ec1055d82d92152",
+  "sales.one": "9b05197195150a9176724ea1d31b15a2b7ab0273abe446abe4347584a33f2579",
   "(e)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "(g)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "(h)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"

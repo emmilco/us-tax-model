@@ -1,0 +1,346 @@
+# Coverage rows for Marketplace health insurance (Form 1095-A and Form 8962). See opening.yaml for how a row is read.
+tax_year: 2025
+part: Marketplace health insurance
+profile: full
+sets:
+  one_form:
+    says: "One person with one Form 1095-A, which is not void or replaced, and no tax-exempt interest."
+    answers:
+      $f1095a: [form_1]
+      f1040.tax_exempt_interest: 0
+      f1095a[form_1].void: false
+  plain:
+    says: "None of the facts that end the interview. No other coverage was possible, the plan covered only people on the return, and every premium was paid and none refunded."
+    answers:
+      f8962.other_coverage: false
+      f8962.hra: false
+      f8962.shared_policy: false
+      f8962.divorced_enrolled: false
+      f8962.no_family: false
+      f8962.not_lawful: false
+      f8962.incarcerated: false
+      f8962.medicaid_reversed: false
+      f8962.unpaid: false
+      f8962.a_zero_paid: false
+      f8962.premium_refunded: false
+      f8962.midmonth_start: false
+  column_b_right:
+    says: "Column B of the form is filled in, nothing changed that the Marketplace was not told, and the filer has no other reason to think column B wrong."
+    answers:
+      f1095a[form_1].b_blank: false
+      f1095a[form_1].b_changed: false
+      f1095a[form_1].b_doubt: false
+  lower_48:
+    says: "The filer did not live in Alaska or Hawaii, no one covered is an immigrant shut out of Medicaid, and the Marketplace estimated income above the poverty line (the last two are asked because the return has no income)."
+    answers:
+      f8962.fpl_table: contiguous
+      f8962.alien_below: false
+      f8962.estimate_100: true
+  amounts_year:
+    says: "The form's one monthly premium is $500, its column B $600, and the year's advance payments $2,400."
+    answers:
+      "f1095a[form_1].mo_a": 50000
+      "f1095a[form_1].mo_b": 60000
+      "f1095a[form_1].c_total": 240000
+  amounts_months:
+    says: "The form shows January to April only: $500 of premium, $600 in column B and $200 of advance payment each month, and nothing from May."
+    answers:
+      "f1095a[form_1].in_a_jan": 50000
+      "f1095a[form_1].in_b_jan": 60000
+      "f1095a[form_1].in_c_jan": 20000
+      "f1095a[form_1].in_a_feb": 50000
+      "f1095a[form_1].in_b_feb": 60000
+      "f1095a[form_1].in_c_feb": 20000
+      "f1095a[form_1].in_a_mar": 50000
+      "f1095a[form_1].in_b_mar": 60000
+      "f1095a[form_1].in_c_mar": 20000
+      "f1095a[form_1].in_a_apr": 50000
+      "f1095a[form_1].in_b_apr": 60000
+      "f1095a[form_1].in_c_apr": 20000
+      "f1095a[form_1].in_a_may": 0
+      "f1095a[form_1].in_b_may": 0
+      "f1095a[form_1].in_c_may": 0
+      "f1095a[form_1].in_a_jun": 0
+      "f1095a[form_1].in_b_jun": 0
+      "f1095a[form_1].in_c_jun": 0
+      "f1095a[form_1].in_a_jul": 0
+      "f1095a[form_1].in_b_jul": 0
+      "f1095a[form_1].in_c_jul": 0
+      "f1095a[form_1].in_a_aug": 0
+      "f1095a[form_1].in_b_aug": 0
+      "f1095a[form_1].in_c_aug": 0
+      "f1095a[form_1].in_a_sep": 0
+      "f1095a[form_1].in_b_sep": 0
+      "f1095a[form_1].in_c_sep": 0
+      "f1095a[form_1].in_a_oct": 0
+      "f1095a[form_1].in_b_oct": 0
+      "f1095a[form_1].in_c_oct": 0
+      "f1095a[form_1].in_a_nov": 0
+      "f1095a[form_1].in_b_nov": 0
+      "f1095a[form_1].in_c_nov": 0
+      "f1095a[form_1].in_a_dec": 0
+      "f1095a[form_1].in_b_dec": 0
+      "f1095a[form_1].in_c_dec": 0
+rows:
+  - id: marketplace.none
+    design: "l8a"
+    situation: "A filer with no Marketplace insurance answers No and is asked nothing more about it."
+    answers:
+      $f1095a: []
+    expect:
+      proceeds: { $f1095a: [] }
+      not_asked: [f8962.other_coverage, f8962.shared_policy, f8962.unpaid, f8962.fpl_table]
+  - id: marketplace.no_other_coverage
+    design: "l8a (f8962.other, the parent spares its children)"
+    situation: "No one on the return could have had other health coverage while on Marketplace insurance, so none of the questions about kinds of coverage is asked."
+    uses: [one_form, plain]
+    answers:
+      f8962.other_coverage: false
+    expect:
+      asks: f8962.hra
+      not_asked: [f8962.mec_job_enrolled, f8962.job_offer, f8962.mec_job_affordable, f8962.mec_government, f8962.mec_other]
+  - id: marketplace.job_plan_enrolled
+    design: "l8a (f8962.other item: employer coverage enrolled in, COBRA, retiree)"
+    situation: "While on Marketplace insurance, someone on the return was also enrolled in a job's health plan."
+    uses: [one_form, plain]
+    answers:
+      f8962.other_coverage: true
+      f8962.mec_job_enrolled: true
+    expect:
+      refused: f8962.other
+  - id: marketplace.job_offer_affordable
+    design: "l8a (f8962.other item: affordable employer offer)"
+    situation: "Someone on the return was offered an affordable plan with minimum value by an employer and did not take it."
+    uses: [one_form, plain]
+    answers:
+      f8962.other_coverage: true
+      f8962.mec_job_enrolled: false
+      f8962.job_offer: true
+      f8962.mec_job_affordable: true
+    expect:
+      refused: f8962.other
+  - id: marketplace.job_offer_unaffordable
+    design: "l8a (f8962.other: an unaffordable offer does not refuse)"
+    situation: "Someone on the return was offered a plan by an employer that was not affordable, and had no other coverage open to them; the return goes on."
+    uses: [one_form, plain]
+    answers:
+      f8962.other_coverage: true
+      f8962.mec_job_enrolled: false
+      f8962.job_offer: true
+      f8962.mec_job_affordable: false
+      f8962.mec_government: false
+      f8962.mec_other: false
+    expect:
+      asks: f8962.hra
+  - id: marketplace.government_coverage
+    design: "l8a (f8962.other item: government-sponsored coverage)"
+    situation: "While on Marketplace insurance, someone on the return qualified for Medicare, Medicaid, CHIP, TRICARE, veterans' care or Peace Corps coverage."
+    uses: [one_form, plain]
+    answers:
+      f8962.other_coverage: true
+      f8962.mec_job_enrolled: false
+      f8962.job_offer: false
+      f8962.mec_government: true
+    expect:
+      refused: f8962.other
+      not_asked: [f8962.mec_job_affordable]
+  - id: marketplace.other_designated_coverage
+    design: "l8a (f8962.other item: other designated coverage)"
+    situation: "While on Marketplace insurance, someone on the return could have had another kind of coverage that counts, such as a plan from a business they own."
+    uses: [one_form, plain]
+    answers:
+      f8962.other_coverage: true
+      f8962.mec_job_enrolled: false
+      f8962.job_offer: false
+      f8962.mec_government: false
+      f8962.mec_other: true
+    expect:
+      refused: f8962.other
+  - id: marketplace.hra
+    design: "l8a (f8962.other item: QSEHRA or individual coverage HRA)"
+    situation: "An employer offered money toward insurance the person buys (a QSEHRA or an individual coverage HRA)."
+    uses: [one_form, plain]
+    answers:
+      f8962.hra: true
+    expect:
+      refused: f8962.other
+  - id: marketplace.not_lawful
+    design: "l8a (f8962.other item: not lawfully present)"
+    situation: "Someone covered by the Marketplace plan was not lawfully present in the United States."
+    uses: [one_form, plain]
+    answers:
+      f8962.not_lawful: true
+    expect:
+      refused: f8962.other
+  - id: marketplace.incarcerated
+    design: "l8a (f8962.other item: incarceration)"
+    situation: "Someone covered by the Marketplace plan was in prison during 2025."
+    uses: [one_form, plain]
+    answers:
+      f8962.incarcerated: true
+    expect:
+      refused: f8962.other
+  - id: marketplace.no_family
+    design: "l8a (f8962.other item: advance payments for someone in no tax family)"
+    situation: "Advance payments were made for someone who is on no one's tax return."
+    uses: [one_form, plain]
+    answers:
+      f8962.no_family: true
+    expect:
+      refused: f8962.other
+  - id: marketplace.medicaid_reversed
+    design: "l8a (f8962.other item: Medicaid or CHIP determination reversed)"
+    situation: "A Marketplace finding of no Medicaid or CHIP eligibility was later found to rest on recklessly wrong information."
+    uses: [one_form, plain]
+    answers:
+      f8962.medicaid_reversed: true
+    expect:
+      refused: f8962.other
+  - id: marketplace.unpaid
+    design: "l8a (f8962.other item: unpaid premiums)"
+    situation: "Part of a month's premium was never paid."
+    uses: [one_form, plain]
+    answers:
+      f8962.unpaid: true
+    expect:
+      refused: f8962.other
+  - id: marketplace.a_zero_paid
+    design: "l8a (f8962.other item: column A zero for a paid month)"
+    situation: "A Form 1095-A shows zero in column A for a month whose premium was paid."
+    uses: [one_form, plain]
+    answers:
+      f8962.a_zero_paid: true
+    expect:
+      refused: f8962.other
+  - id: marketplace.shared_policy
+    design: "l8a (f8962.alloc item: a policy shared with another tax family)"
+    situation: "A Marketplace plan covered a person on the return and a child claimed on another return."
+    uses: [one_form, plain]
+    answers:
+      f8962.shared_policy: true
+    expect:
+      refused: f8962.alloc
+  - id: marketplace.divorced_enrolled
+    design: "l8a (f8962.alloc item: divorce or separation)"
+    situation: "A person divorced during 2025 while on one Marketplace plan with the former spouse."
+    uses: [one_form, plain]
+    answers:
+      f8962.divorced_enrolled: true
+    expect:
+      refused: f8962.alloc
+  - id: marketplace.premium_refunded
+    design: "l8a (f8962.premium_adjust item: a refunded premium)"
+    situation: "A premium for a 2025 month of Marketplace coverage was refunded in 2025."
+    uses: [one_form, plain]
+    answers:
+      f8962.premium_refunded: true
+    expect:
+      refused: f8962.premium_adjust
+  - id: marketplace.midmonth_start
+    design: "l8a (f8962.premium_adjust item: coverage began after the first day of a month)"
+    situation: "Marketplace coverage began on the 15th of a month, not on a birth or adoption."
+    uses: [one_form, plain]
+    answers:
+      f8962.midmonth_start: true
+    expect:
+      refused: f8962.premium_adjust
+  - id: marketplace.void_form
+    design: "l8a (f1095a.void, unchanged in the model)"
+    situation: "The filer counted a Form 1095-A that is marked VOID."
+    uses: [one_form, plain]
+    answers:
+      f1095a[form_1].void: true
+    expect:
+      refused: f8962.void_form
+  - id: marketplace.same_all_year
+    design: "l8a (f1095a.uniform route: annual)"
+    situation: "The form shows the same amounts in columns A and B in all twelve months and column B is right; the filer types three amounts, not thirty-six, and the return is completed."
+    uses: [one_form, plain, column_b_right, lower_48, amounts_year]
+    answers:
+      "f1095a[form_1].same_months": true
+    expect:
+      proceeds:
+        "f1095a[form_1].mo_a": 50000
+      not_asked: ["f1095a[form_1].b_fixed_same", "f1095a[form_1].in_a_jan", "f1095a[form_1].b_counted"]
+  - id: marketplace.months_differ
+    design: "l8a (f1095a.uniform route: monthly)"
+    situation: "The form covers January to April only; the filer is asked the months and the return is completed."
+    uses: [one_form, plain, column_b_right, lower_48, amounts_months]
+    answers:
+      "f1095a[form_1].same_months": false
+    expect:
+      proceeds:
+        "f1095a[form_1].in_a_jan": 50000
+      not_asked: ["f1095a[form_1].b_fixed_same", "f1095a[form_1].mo_a"]
+  - id: marketplace.column_b_blank_same
+    design: "l8a (f1095a.uniform route: column B blank, corrected the same)"
+    situation: "Column B is blank all year (no advance payments were arranged) and the correct amount is the same every month; the annual route, as today."
+    uses: [one_form, plain, lower_48, amounts_year]
+    answers:
+      "f1095a[form_1].same_months": true
+      "f1095a[form_1].b_blank": true
+      "f1095a[form_1].b_fixed_same": true
+    expect:
+      proceeds:
+        "f1095a[form_1].mo_b": 60000
+      not_asked: ["f1095a[form_1].in_a_jan"]
+  - id: marketplace.unreported_move
+    design: "l8a (f1095a.uniform route: column B wrong, corrected not the same)"
+    situation: "The form looks the same all year but the filer moved without telling the Marketplace, so the correct column B is not the same every month; the monthly route, as today."
+    uses: [one_form, plain, lower_48, amounts_months]
+    answers:
+      "f1095a[form_1].same_months": true
+      "f1095a[form_1].b_blank": false
+      "f1095a[form_1].b_changed": true
+      "f1095a[form_1].b_fixed_same": false
+    expect:
+      proceeds:
+        "f1095a[form_1].in_b_jan": 60000
+      not_asked: ["f1095a[form_1].mo_a"]
+  - id: marketplace.no_advance_payments
+    design: "BUG-0634 (f1095a.no_aptc: no advance payments, derived from line 33, column C)"
+    situation: "The form looks the same all year and column B is filled in, but no advance payments were made, so column B may be wrong; the filer is asked whether the correct column B is the same every month."
+    uses: [one_form, plain, lower_48]
+    answers:
+      "f1095a[form_1].same_months": true
+      "f1095a[form_1].b_blank": false
+      "f1095a[form_1].b_changed": false
+      "f1095a[form_1].b_doubt": false
+      "f1095a[form_1].c_total": 0
+    expect:
+      asks: "f1095a[form_1].b_fixed_same"
+      not_asked: ["f1095a[form_1].mo_a", "f1095a[form_1].in_a_jan"]
+  - id: marketplace.column_b_doubted
+    design: "BUG-0634 (f1095a.b_doubt: another reason to believe column B wrong)"
+    situation: "The form looks the same all year and advance payments were made, but the Marketplace's tax tool gives a different column B for some month; the filer is asked whether the correct column B is the same every month, before the yearly amounts."
+    uses: [one_form, plain, lower_48]
+    answers:
+      "f1095a[form_1].same_months": true
+      "f1095a[form_1].b_blank": false
+      "f1095a[form_1].b_changed": false
+      "f1095a[form_1].b_doubt": true
+    expect:
+      asks: "f1095a[form_1].b_fixed_same"
+      not_asked: ["f1095a[form_1].c_total", "f1095a[form_1].mo_a"]
+  - id: marketplace.printed_differs_corrected_same
+    design: "l8a (f1095a.uniform route: printed months differ, corrected the same)"
+    situation: "Column B is printed for only some months, and the correct amount is the same in all twelve with column A the same too; the annual route, as today."
+    uses: [one_form, plain, lower_48, amounts_year]
+    answers:
+      "f1095a[form_1].same_months": false
+      "f1095a[form_1].b_blank": true
+      "f1095a[form_1].b_fixed_same": true
+    expect:
+      proceeds:
+        "f1095a[form_1].mo_a": 50000
+      not_asked: ["f1095a[form_1].in_a_jan"]
+  - id: marketplace.married_this_year
+    design: "l8a (f8962.marriage, unchanged in the model)"
+    situation: "A couple who married during 2025 file together, and one of them had Marketplace insurance before the first full month of marriage."
+    uses: [one_form, plain]
+    answers:
+      $person: [taxpayer, spouse]
+      household.married_dec31: true
+      f8962.married_this_year: true
+    expect:
+      refused: f8962.marriage

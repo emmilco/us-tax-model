@@ -15,6 +15,7 @@ interface Question {
   answer: { type: string; text: string; options: { label: string; value: unknown; withheld?: true }[] | null; entry: string | null };
   topic: string; scope: string; gate: { text: string; questions: { id: string; prompt: string }[] };
   words: { prompt: number; help: number; sentence: number }; long: boolean;
+  tick?: { group: string; heading: string; label: string; with: string[] };
   record: VerdictRecord | null; stale: boolean;
 }
 interface Counts { total: number; up: number; down: number; stale: number; noted: number; skipped: number; orphans: number }
@@ -205,6 +206,11 @@ function render(): void {
         el("dt", {}, "Belongs to"), el("dd", { id: "topic" }, q.topic),
         el("dt", {}, "Asked"), el("dd", { id: "scope" }, q.scope),
         el("dt", {}, "When"), gate,
+        // A member of a tick-box group: on the interview page it is one box of a screen, under the group's heading.
+        ...(q.tick ? [el("dt", {}, "Shown as"), el("dd", { id: "tick" },
+          el("span", {}, `a tick-box on one screen with ${q.tick.with.length} other${q.tick.with.length === 1 ? "" : "s"} (group ${q.tick.group}), when more than one of them is open; alone, as the question above. The screen asks:`),
+          el("span", { class: "tick-heading" }, q.tick.heading),
+          el("span", { class: "tick-label" }, `☐ ${q.tick.label}`))] : []),
         el("dt", {}, "Words"), el("dd", { id: "words" }, `question ${q.words.prompt}, help ${q.words.help}; longest sentence of the stored question ${q.words.sentence}${q.long ? " (long: over 40)" : ""}`)),
         q.stored ? judgedDetails({ prompt: q.stored.prompt, help: q.stored.help, type: q.answer.type, options: null }, "As stored in the question bank, before it is worded for the return") : null))),
     el("div", { class: "controls", id: "controls" },

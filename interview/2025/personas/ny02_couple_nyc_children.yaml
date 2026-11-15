@@ -1,0 +1,26 @@
+name: ny02_couple_nyc_children
+who: A married couple in Queens all of 2025, filing together, each with one job, with two children aged 3 and 6; New York's child credit for a child under 17 is not computed by this tool.
+end: { refused: ny_it201.gate.child_credit }
+profile: ny
+answers:
+  $person: ["taxpayer", "spouse"]
+  household.married_dec31: true
+  $dependent: ["older_child", "younger_child"]
+  dependent[older_child].other_claimant: false
+  dependent[older_child].parents_apart: false
+  dependent[older_child].relationship: "child"
+  dependent[older_child].age: 6
+  dependent[older_child].younger: true
+  dependent[older_child].ever_married: false
+  dependent[older_child].own_money: false
+  dependent[younger_child].other_claimant: false
+  dependent[younger_child].parents_apart: false
+  dependent[younger_child].relationship: "child"
+  dependent[younger_child].age: 3
+  dependent[younger_child].younger: true
+  dependent[younger_child].ever_married: false
+  dependent[younger_child].own_money: false
+  dependent[older_child].lived_all_year: true
+  dependent[older_child].citizen_ssn: true
+  dependent[younger_child].lived_all_year: true
+  dependent[younger_child].citizen_ssn: true

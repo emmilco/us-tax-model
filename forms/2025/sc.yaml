@@ -228,13 +228,6 @@ form:
         or sales on line 1"; p. 6, Name, image, likeness (NIL) income, "However, report royalties and other NIL income that
         is not self-employment income on Schedule E instead"
     refuses:
-    - when: sc.screened
-      form: Schedule C items outside this tool
-      remedy: Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting
-        method changes and the special items in the screen are outside this tool.
-      cite:
-        doc: i1040sc
-        locator: pp. 2-15, the items named in the screens of this Schedule C
     - when: sc.business_credit
       form: Form 3800 (general business credit)
       remedy: Business credits (Form 3800) are outside this tool.
@@ -247,6 +240,13 @@ form:
       cite:
         doc: i1040gi
         locator: p. 117, Line 12, "Attach Form 4136"
+    - when: sc.screened
+      form: Schedule C items outside this tool
+      remedy: Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting
+        method changes and the special items in the screen are outside this tool.
+      cite:
+        doc: i1040sc
+        locator: pp. 2-15, the items named in the screens of this Schedule C
   - id: sc.line2
     printed: '2'
     label: Returns and allowances
@@ -386,10 +386,21 @@ form:
       doc: i1040sc
       locator: p. 7, Line 13, "See the Instructions for Form 4562 and Pub. 946 to figure the amount to enter on line 13";
         i4562 p. 13, Part IV, line 22
+  - id: sc.employees
+    printed: (helper)
+    label: "Did this business have employees in 2025?"
+    type: Bool
+    expr:
+      op: input
+      source: "Did this business have employees in 2025?"
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), lines 14, 19 and 26
   - id: sc.line14
     printed: '14'
     label: Employee benefit programs (other than on line 19)
     type: NonNegDollars
+    gated_by: sc.line14_if_employees
     expr:
       op: input
       source: Contributions to employee benefit programs for your employees, such as accident and health plans, group-term
@@ -398,6 +409,28 @@ form:
     cite:
       doc: i1040sc
       locator: pp. 7-8, Line 14
+  - id: sc.line14_if_employees
+    printed: (gate)
+    label: "Employee benefit programs (other than on line 19), asked only of a business with employees (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.employees
+          - const: true
+        then: sc.line14
+      - guard:
+          op: test
+          eq:
+          - sc.employees
+          - const: false
+        then: sc.zero
+    cite:
+      doc: i1040sc
+      locator: 'pp. 7-8, Line 14'
   - id: sc.line15
     printed: '15'
     label: Insurance (other than health)
@@ -468,6 +501,7 @@ form:
     printed: '19'
     label: Pension and profit-sharing plans
     type: NonNegDollars
+    gated_by: sc.line19_if_employees
     expr:
       op: input
       source: Contributions you made for your employees to a pension, profit-sharing or annuity plan, including SEP, SIMPLE
@@ -475,6 +509,28 @@ form:
     cite:
       doc: i1040sc
       locator: p. 8, Line 19
+  - id: sc.line19_if_employees
+    printed: (gate)
+    label: "Pension and profit-sharing plans, asked only of a business with employees (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.employees
+          - const: true
+        then: sc.line19
+      - guard:
+          op: test
+          eq:
+          - sc.employees
+          - const: false
+        then: sc.zero
+    cite:
+      doc: i1040sc
+      locator: 'p. 8, Line 19'
   - id: sc.line20a
     printed: 20a
     label: 'Rent or lease: vehicles, machinery, and equipment'
@@ -552,10 +608,21 @@ form:
         governments" and "Contributions to a state unemployment insurance fund, or paid family and medical leave program
         disability benefit fund if they are considered taxes under state law"; p. 14, Line 30, "You can’t deduct any excess mortgage interest, excess real estate taxes, or
         excess casualty losses on Schedule C for this home"
+  - id: sc.travel_meals
+    printed: (helper)
+    label: "Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?"
+    type: Bool
+    expr:
+      op: input
+      source: "Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?"
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), lines 24a and 24b
   - id: sc.line24a
     printed: 24a
     label: Travel
     type: NonNegDollars
+    gated_by: sc.line24a_if_travel_meals
     expr:
       op: input
       source: |-
@@ -579,10 +646,33 @@ form:
         that period of employment exceeds 1 year", "you cannot deduct travel expenses for your spouse, your dependent, or
         any other individual unless" and "held outside the North American area unless"; p. 9, Line 24b, "you can use the standard
         meal allowance for your daily meals and incidental expenses"
+  - id: sc.line24a_if_travel_meals
+    printed: (gate)
+    label: "Travel, asked only of a business with travel, meal or food expenses (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.travel_meals
+          - const: true
+        then: sc.line24a
+      - guard:
+          op: test
+          eq:
+          - sc.travel_meals
+          - const: false
+        then: sc.zero
+    cite:
+      doc: i1040sc
+      locator: 'p. 9, Line 24a, "you can use an optional method for deducting incidental expenses only if you did not pay or incur meal expenses on a day you were traveling away from your tax home", "The amount of the deduction is $5 a day", "They do not include expenses for laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams or telephone calls" and "You cannot use this method on any day that you use the standard meal allowance", "You can’t deduct expenses paid or incurred in connection with employment away from home if that period of employment exceeds 1 year", "you cannot deduct travel expenses for your spouse, your dependent, or any other individual unless" and "held outside the North American area unless"; p. 9, Line 24b, "you can use the standard meal allowance for your daily meals and incidental expenses"'
   - id: sc.meals_50
     printed: (helper)
     label: Business meals subject to the 50% limit, at their full cost
     type: NonNegDollars
+    gated_by: sc.meals_50_if_travel_meals
     expr:
       op: input
       source: 'The full cost of business meals (actual cost or the standard meal allowance) subject to the 50% limit, before
@@ -598,11 +688,34 @@ form:
       locator: pp. 9–10, Line 24b, Business meal expenses ("You can deduct a percentage of the actual cost of a meal if
         the following conditions are met"), Standard meal allowance, Amount of deduction ("including meals incurred while away
         from home on business"); p. 9, Line 24a, "Do not include entertainment expenses on this line"
+  - id: sc.meals_50_if_travel_meals
+    printed: (gate)
+    label: "Business meals subject to the 50% limit, at their full cost, asked only of a business with travel, meal or food expenses (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.travel_meals
+          - const: true
+        then: sc.meals_50
+      - guard:
+          op: test
+          eq:
+          - sc.travel_meals
+          - const: false
+        then: sc.zero
+    cite:
+      doc: i1040sc
+      locator: 'pp. 9–10, Line 24b, Business meal expenses ("You can deduct a percentage of the actual cost of a meal if the following conditions are met"), Standard meal allowance, Amount of deduction ("including meals incurred while away from home on business"); p. 9, Line 24a, "Do not include entertainment expenses on this line"'
   - id: sc.meals_80
     printed: (helper)
     label: Business meals during or incident to a period of duty under the Department of Transportation hours of service limits,
       at their full cost
     type: NonNegDollars
+    gated_by: sc.meals_80_if_travel_meals
     expr:
       op: input
       source: The full cost of business meals consumed by you or your employees during or incident to a period of duty for
@@ -614,10 +727,33 @@ form:
       locator: p. 10, Line 24b, Amount of deduction, "for individuals subject to the Department of Transportation (DOT) hours
         of service limits, the percentage is increased to 80% for business meals consumed during or incident to any period
         of duty for which those limits are in effect"
+  - id: sc.meals_80_if_travel_meals
+    printed: (gate)
+    label: "Business meals during or incident to a period of duty under the Department of Transportation hours of service limits,, asked only of a business with travel, meal or food expenses (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.travel_meals
+          - const: true
+        then: sc.meals_80
+      - guard:
+          op: test
+          eq:
+          - sc.travel_meals
+          - const: false
+        then: sc.zero
+    cite:
+      doc: i1040sc
+      locator: 'p. 10, Line 24b, Amount of deduction, "for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80% for business meals consumed during or incident to any period of duty for which those limits are in effect"'
   - id: sc.meals_100
     printed: (helper)
     label: Meals and incidentals not subject to the 50% limit, deducted in full
     type: NonNegDollars
+    gated_by: sc.meals_100_if_travel_meals
     expr:
       op: input
       source: 'The cost of meals and incidentals not subject to the 50% limit, deducted in full: meals furnished or reimbursed
@@ -638,13 +774,35 @@ form:
         of Agriculture, only deduct the cost of food that exceeds reimbursement"; p587 p. 13, Meals, "You can deduct as a
         business expense 100% of the actual cost of food consumed by your daycare recipients"
     ambiguity: amb.2025.meals_full_exceptions
+  - id: sc.meals_100_if_travel_meals
+    printed: (gate)
+    label: "Meals and incidentals not subject to the 50% limit, deducted in full, asked only of a business with travel, meal or food expenses (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.travel_meals
+          - const: true
+        then: sc.meals_100
+      - guard:
+          op: test
+          eq:
+          - sc.travel_meals
+          - const: false
+        then: sc.zero
+    cite:
+      doc: i1040sc
+      locator: 'p. 10, Line 24b, Amount of deduction, "However, you can fully deduct meals and incidentals furnished or reimbursed to an employee if you properly treat the expense as wages subject to withholding. You can also fully deduct meals and incidentals provided to a nonemployee to the extent the expenses are includible in the gross income of that person and reported on Form 1099-NEC" and Daycare providers, "If you receive reimbursement under a food program of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement"; p587 p. 13, Meals, "You can deduct as a business expense 100% of the actual cost of food consumed by your daycare recipients"'
   - id: sc.meals_50_ded
     printed: (helper)
     label: 50% of the meals subject to the 50% limit
     type: NonNegDollars
     expr:
       op: multiply_rate
-      amount: sc.meals_50
+      amount: sc.meals_50_if_travel_meals
       rate:
         param: sc.meals_rate
     cite:
@@ -656,7 +814,7 @@ form:
     type: NonNegDollars
     expr:
       op: multiply_rate
-      amount: sc.meals_80
+      amount: sc.meals_80_if_travel_meals
       rate:
         param: sc.meals_rate_dot
     cite:
@@ -671,7 +829,7 @@ form:
       of:
       - sc.meals_50_ded
       - sc.meals_80_ded
-      - sc.meals_100
+      - sc.meals_100_if_travel_meals
     cite:
       doc: i1040sc
       locator: p. 9, Line 24b, "Enter your deductible business meal expenses"
@@ -692,6 +850,7 @@ form:
     printed: '26'
     label: Wages (less employment credits)
     type: NonNegDollars
+    gated_by: sc.line26_if_employees
     expr:
       op: input
       source: Salaries and wages of your employees for 2025 under your accounting method (with the cash method, the amounts
@@ -702,6 +861,28 @@ form:
       doc: i1040sc
       locator: p. 10, Line 26, "Enter the total salaries and wages for the tax year" and "If you provided taxable fringe benefits to your employees, such as personal use of a car,
         do not deduct as wages the amount applicable to depreciation and other expenses claimed elsewhere"
+  - id: sc.line26_if_employees
+    printed: (gate)
+    label: "Wages (less employment credits), asked only of a business with employees (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.employees
+          - const: true
+        then: sc.line26
+      - guard:
+          op: test
+          eq:
+          - sc.employees
+          - const: false
+        then: sc.zero
+    cite:
+      doc: i1040sc
+      locator: 'p. 10, Line 26, "Enter the total salaries and wages for the tax year" and "If you provided taxable fringe benefits to your employees, such as personal use of a car, do not deduct as wages the amount applicable to depreciation and other expenses claimed elsewhere"'
   - id: sc.line27a
     printed: 27a
     label: Energy efficient commercial buildings deduction (attach Form 7205)
@@ -746,22 +927,22 @@ form:
       - sc.line11
       - sc.line12
       - sc.line13
-      - sc.line14
+      - sc.line14_if_employees
       - sc.line15
       - sc.line16a
       - sc.line16b
       - sc.line17
       - sc.line18
-      - sc.line19
+      - sc.line19_if_employees
       - sc.line20a
       - sc.line20b
       - sc.line21
       - sc.line22
       - sc.line23
-      - sc.line24a
+      - sc.line24a_if_travel_meals
       - sc.line24b
       - sc.line25
-      - sc.line26
+      - sc.line26_if_employees
       - sc.line27a
       - sc.line27b
     cite:
@@ -790,22 +971,22 @@ form:
       - sc.line10
       - sc.line11
       - sc.line12
-      - sc.line14
+      - sc.line14_if_employees
       - sc.line15
       - sc.line16a
       - sc.line16b
       - sc.line17
       - sc.line18
-      - sc.line19
+      - sc.line19_if_employees
       - sc.line20a
       - sc.line20b
       - sc.line21
       - sc.line22
       - sc.line23
-      - sc.line24a
+      - sc.line24a_if_travel_meals
       - sc.line24b
       - sc.line25
-      - sc.line26
+      - sc.line26_if_employees
       - sc.line27a
       - sc.line27b
       - sc.dep_other
@@ -1307,10 +1488,21 @@ form:
     cite:
       doc: i1040sc
       locator: p. 15, Part III, Line 33; Schedule C (2025), lines 33 and 34
+  - id: sc.goods
+    printed: (helper)
+    label: "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?"
+    type: Bool
+    expr:
+      op: input
+      source: "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?"
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), Part III, Cost of Goods Sold, lines 35 to 42
   - id: sc.line35
     printed: '35'
     label: Inventory at beginning of year
     type: NonNegDollars
+    gated_by: sc.line35_if_goods
     expr:
       op: input
       source: Inventory at the beginning of 2025 (the same as your closing inventory for 2024); zero if none
@@ -1325,10 +1517,33 @@ form:
       cite:
         doc: i1040sc
         locator: p. 15, Lines 33 and 35
+  - id: sc.line35_if_goods
+    printed: (gate)
+    label: "Inventory at beginning of year, asked only of a business with goods for sale or an inventory (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.goods
+          - const: true
+        then: sc.line35
+      - guard:
+          op: test
+          eq:
+          - sc.goods
+          - const: false
+        then: sc.zero
+    cite:
+      doc: i1040sc
+      locator: 'p. 15, Line 35'
   - id: sc.line36
     printed: '36'
     label: Purchases less cost of items withdrawn for personal use
     type: NonNegDollars
+    gated_by: sc.line36_if_goods
     expr:
       op: input
       source: Purchases of merchandise or materials for sale, less the cost of items you withdrew for personal use; zero if
@@ -1336,36 +1551,127 @@ form:
     cite:
       doc: f1040sc
       locator: Schedule C (2025), line 36
+  - id: sc.line36_if_goods
+    printed: (gate)
+    label: "Purchases less cost of items withdrawn for personal use, asked only of a business with goods for sale or an inventory (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.goods
+          - const: true
+        then: sc.line36
+      - guard:
+          op: test
+          eq:
+          - sc.goods
+          - const: false
+        then: sc.zero
+    cite:
+      doc: f1040sc
+      locator: 'p. 2, Cost of Goods Sold, line 36, "Purchases less cost of items withdrawn for personal use"; i1040sc p. 15, Part III. Cost of Goods Sold, "you must take inventories into account at the beginning and end of your tax year"'
   - id: sc.line37
     printed: '37'
     label: Cost of labor
     type: NonNegDollars
+    gated_by: sc.line37_if_goods
     expr:
       op: input
       source: Cost of labor for producing goods for sale (not amounts paid to yourself); zero if none
     cite:
       doc: f1040sc
       locator: Schedule C (2025), line 37
+  - id: sc.line37_if_goods
+    printed: (gate)
+    label: "Cost of labor, asked only of a business with goods for sale or an inventory (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.goods
+          - const: true
+        then: sc.line37
+      - guard:
+          op: test
+          eq:
+          - sc.goods
+          - const: false
+        then: sc.zero
+    cite:
+      doc: f1040sc
+      locator: 'p. 2, Cost of Goods Sold, line 37, "Cost of labor. Do not include any amounts paid to yourself"; i1040sc p. 15, Part III. Cost of Goods Sold, "you must take inventories into account at the beginning and end of your tax year"'
   - id: sc.line38
     printed: '38'
     label: Materials and supplies
     type: NonNegDollars
+    gated_by: sc.line38_if_goods
     expr:
       op: input
       source: Materials and supplies used in producing goods for sale; zero if none
     cite:
       doc: f1040sc
       locator: Schedule C (2025), line 38
+  - id: sc.line38_if_goods
+    printed: (gate)
+    label: "Materials and supplies, asked only of a business with goods for sale or an inventory (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.goods
+          - const: true
+        then: sc.line38
+      - guard:
+          op: test
+          eq:
+          - sc.goods
+          - const: false
+        then: sc.zero
+    cite:
+      doc: f1040sc
+      locator: 'p. 2, Cost of Goods Sold, line 38, "Materials and supplies"; i1040sc p. 15, Part III. Cost of Goods Sold, "you must take inventories into account at the beginning and end of your tax year"'
   - id: sc.line39
     printed: '39'
     label: Other costs
     type: NonNegDollars
+    gated_by: sc.line39_if_goods
     expr:
       op: input
       source: Other costs of goods sold; zero if none
     cite:
       doc: f1040sc
       locator: Schedule C (2025), line 39
+  - id: sc.line39_if_goods
+    printed: (gate)
+    label: "Other costs, asked only of a business with goods for sale or an inventory (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.goods
+          - const: true
+        then: sc.line39
+      - guard:
+          op: test
+          eq:
+          - sc.goods
+          - const: false
+        then: sc.zero
+    cite:
+      doc: f1040sc
+      locator: 'p. 2, Cost of Goods Sold, line 39, "Other costs"; i1040sc p. 15, Part III. Cost of Goods Sold, "you must take inventories into account at the beginning and end of your tax year"'
   - id: sc.line40
     printed: '40'
     label: Add lines 35 through 39
@@ -1373,11 +1679,11 @@ form:
     expr:
       op: sum
       of:
-      - sc.line35
-      - sc.line36
-      - sc.line37
-      - sc.line38
-      - sc.line39
+      - sc.line35_if_goods
+      - sc.line36_if_goods
+      - sc.line37_if_goods
+      - sc.line38_if_goods
+      - sc.line39_if_goods
     cite:
       doc: f1040sc
       locator: Schedule C (2025), line 40
@@ -1385,12 +1691,35 @@ form:
     printed: '41'
     label: Inventory at end of year
     type: NonNegDollars
+    gated_by: sc.line41_if_goods
     expr:
       op: input
       source: Inventory at the end of 2025; zero if none
     cite:
       doc: f1040sc
       locator: Schedule C (2025), line 41
+  - id: sc.line41_if_goods
+    printed: (gate)
+    label: "Inventory at end of year, asked only of a business with goods for sale or an inventory (zero without)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.goods
+          - const: true
+        then: sc.line41
+      - guard:
+          op: test
+          eq:
+          - sc.goods
+          - const: false
+        then: sc.zero
+    cite:
+      doc: f1040sc
+      locator: 'p. 2, Cost of Goods Sold, line 41, "Inventory at end of year"; i1040sc p. 15, Part III. Cost of Goods Sold, "you must take inventories into account at the beginning and end of your tax year"'
   - id: sc.line42
     printed: '42'
     label: Cost of goods sold. Subtract line 41 from line 40
@@ -1398,7 +1727,7 @@ form:
     expr:
       op: subtract
       from: sc.line40
-      take: sc.line41
+      take: sc.line41_if_goods
     cite:
       doc: f1040sc
       locator: Schedule C (2025), line 42
@@ -1409,7 +1738,7 @@ form:
     expr:
       op: sum_over
       collection: asset
-      field: asset.s179_2025
+      field: asset.s179_this_year
       where: &id001
         op: test
         eq:
@@ -1425,7 +1754,7 @@ form:
     expr:
       op: sum_over
       collection: asset
-      field: asset.bonus_2025
+      field: asset.bonus_this_year
       where: *id001
     cite:
       doc: i4562
@@ -1449,7 +1778,7 @@ form:
     expr:
       op: sum_over
       collection: asset
-      field: asset.dep_2025
+      field: asset.dep_this_year
       where:
         op: test
         all:
@@ -1468,7 +1797,7 @@ form:
     expr:
       op: sum_over
       collection: asset
-      field: asset.dep_2025
+      field: asset.dep_this_year
       where:
         op: test
         all:
@@ -1487,7 +1816,7 @@ form:
     expr:
       op: sum_over
       collection: asset
-      field: asset.dep_2025
+      field: asset.dep_this_year
       where:
         op: test
         all:
@@ -1506,7 +1835,7 @@ form:
     expr:
       op: sum_over
       collection: asset
-      field: asset.dep_2025
+      field: asset.dep_this_year
       where:
         op: test
         all:
@@ -1525,7 +1854,7 @@ form:
     expr:
       op: sum_over
       collection: asset
-      field: asset.dep_2025
+      field: asset.dep_this_year
       where:
         op: test
         all:
@@ -1544,7 +1873,7 @@ form:
     expr:
       op: sum_over
       collection: asset
-      field: asset.dep_2025
+      field: asset.dep_this_year
       where:
         op: test
         all:
@@ -1563,7 +1892,7 @@ form:
     expr:
       op: sum_over
       collection: asset
-      field: asset.dep_2025
+      field: asset.dep_this_year
       where:
         op: test
         all:
@@ -1582,7 +1911,7 @@ form:
     expr:
       op: sum_over
       collection: asset
-      field: asset.bonus_2025
+      field: asset.bonus_this_year
       where: &id002
         op: test
         eq:
@@ -1668,7 +1997,7 @@ form:
     expr:
       op: sum_over
       collection: asset
-      field: asset.s179_2025
+      field: asset.s179_this_year
       where: *id002
     cite:
       doc: i4562
@@ -1680,7 +2009,7 @@ form:
     expr:
       op: sum_over
       collection: scveh
-      field: scveh.s179_2025
+      field: scveh.s179_this_year
     cite:
       doc: i4562
       locator: p. 16, Column (i)

@@ -1,0 +1,814 @@
+{
+ "reviews/2025/questions/clcw26.json": {
+  "clcw26.final_return": {
+   "subject_sha": "8751c4bc28193a425487ef1faabaeb5b073bb668499c8d2b885f98c7ccaca054",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "56ab0550ea46af70c3acdae6a7c661b5d0c05a8807145efc004e83dac28ca5f2",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.025736,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/clcw26.final_return.8751c4bc2819.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p550",
+     "revision": "2025 returns; printed date 2026-03-05",
+     "text_sha256": "e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26",
+     "pages": [
+      103
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 103, Decedent's capital loss, \"can be deducted only on the final income tax return filed for the decedent\"",
+      "p. 103, Decedent's capital loss, \"can be deducted only on the final income tax return filed for the decedent\" and \"The decedent's estate cannot deduct any of the loss or carry it over to following years\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51"
+    }
+   ]
+  }
+ },
+ "reviews/2025/questions/dependent.json": {
+  "dependent.edu_a2025": {
+   "subject_sha": "c7eb773cc2f6cbc8b2bdf79b9396fb8c3e90b01dee87d139b1a7e099ac15b4fd",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "Tuition was paid in 2025 for a term starting in January–March 2026 (or in December 2024 for a term starting in 2025), and the student received a tax-free scholarship in 2025 for that term.",
+       "source_text": "i8863 (2025) p. 9: \"a. Tax-free educational assistance received in 2025 allocable to the academic period\"; \"each academic period beginning or treated as beginning ... in 2025 for which you paid ... qualified education expenses in 2025\"; \"If any qualified education expenses for the student were paid in 2025 for an academic period beginning in the first 3 months of 2026, treat that academic period as if it began in 2025.\"",
+       "why": "\"This student's 2025 expenses\" can mean expenses paid in 2025 or expenses for terms in 2025. Under the second reading, a filer would leave out 2025 aid for an early-2026 term the worksheet covers, and would include 2025 aid for a 2025 term paid in 2024 that is not on line 1. Either way the amount reaching line 3 would be wrong.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "3fc9a5b0109ca43b782fbdfe82ee27e1823c078e0489dc5b166f1556f4b9274b",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.044899999999999995,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_a2025.c7eb773cc2f6.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"3. Total adjustments (add lines 2a, 2b, and 2c)\"",
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"a. Tax-free educational assistance received in 2025 allocable to the academic period\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "dependent.edu_a2026": {
+   "subject_sha": "f4243ee8162fe99133836de6e0b4ae37f65b37a3cf8594e8f45493fabfe7ec51",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "22b5cdc4bca879b2e0affb70b25aed6f1bf4d31e3614f504ea6522bc4bbf806d",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.024815999999999998,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/dependent.edu_a2026.f4243ee8162f.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"3. Total adjustments (add lines 2a, 2b, and 2c)\"",
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"b. Tax-free educational assistance received in 2026 (and before you file your 2025 tax return) allocable to the academic period\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  }
+ },
+ "reviews/2025/questions/f2441.json": {
+  "f2441.paid_2026": {
+   "subject_sha": "8c0ce4fbef2e412cd00f03003b697091d4fc3a858f19531bd372a4498a85e338",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "b81b7613f2c8b28de979cc136d2cfb2aae3db3da0c64915688ce1c1427130fa4",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.040251999999999996,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f2441.paid_2026.8c0ce4fbef2e.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i2441",
+     "revision": "2025",
+     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+     "pages": [
+      3,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 16, \"Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn't matter when the expenses were paid\"",
+      "p. 5, Line 16, \"Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn't matter when the expenses were paid\"; p. 3, Columns (a) and (b), \"If you were covered by your employer's dependent care plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your employer's name in column (a)\""
+     ],
+     "cols_pages": [
+      3,
+      5
+     ],
+     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+    }
+   ]
+  }
+ },
+ "reviews/2025/questions/f8889.json": {
+  "f8889.age55": {
+   "subject_sha": "a009ea152981782f0df1ea2141c5e5de83d52e59288fab942ced5bfd26aca413",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "9c5a499bf188e848941c26a3e40db7a43d0db712c6b85e4ef9eb1d38aa9a9206",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-fable-5-2",
+     "cost": 0.084504,
+     "date": "2026-11-12",
+     "response": ".transcription/questions/f8889.age55.a009ea152981.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Line 3, rule 6, \"If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year, you can increase the amount determined in (3) or (4) by $1,000\"; p. 5, Line 3, \"Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\"",
+      "p. 4, Line 3, rule 6, and p. 6, Line 3 Limitation Chart",
+      "p. 6, Line 3 Limitation Chart, 'If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month'",
+      "p. 7, Line 7, \"If, at the end of 2025, you were age 55 or older and married, use the Additional Contribution Amount Worksheet\"; p. 5, Line 3, \"Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\""
+     ],
+     "cols_pages": [
+      4,
+      5,
+      7
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  }
+ },
+ "reviews/2025/questions/f8962.json": {
+  "f8962.married_in_2025": {
+   "subject_sha": "0cb7204c078fcd1ce635f1e8cbe738ed2818cef62099391d7205c25b0ea4752d",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A couple filing jointly who married in 2025, with Marketplace coverage before their first full month of marriage, but for whom no APTC was paid for anyone in the tax family during 2025, would truthfully answer yes.",
+       "source_text": "i8962 p. 13, Table 4, Q5: \"Was APTC paid for anyone in your tax family during 2025? ... No. You are not eligible to elect the alternative calculation. Do not complete Part V. ... check 'No' on line 9\"",
+       "why": "The question asks only 'Did you and your spouse marry during 2025, and was anyone in your tax family enrolled in a Marketplace plan before your first full month of marriage?' It omits the Table 4 condition that APTC was paid. A yes from these filers sends line 9 toward the alternative calculation when line 9 must be No.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "Joint filers who married in 2025 and had pre-marriage coverage with APTC paid, but no excess APTC, or for whom the election does not reduce repayment, would answer yes.",
+       "source_text": "i8962 p. 13, Table 4, Q5: \"You are eligible to elect the alternative calculation for year of marriage if excess APTC was paid during 2025. Continue to Worksheet 3 ... see ... Pub. 974 to determine if electing the alternative calculation reduces your repayment amount.\"; f8962 line 9: \"do you want to use the alternative calculation for year of marriage?\"",
+       "why": "Line 9 records an election that is available only if excess APTC was paid, and the filer chooses whether to make it. The question asks only about marriage and enrollment, so a yes is taken as electing even when the filer is ineligible or would not elect.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who was still married to a former spouse on January 1, 2025, divorced, and then married the current spouse later in 2025 would truthfully answer that they married during 2025.",
+       "source_text": "i8962 p. 13, Table 4, Q1: \"Were you and your spouse each unmarried on January 1, 2025? ... No. You are not eligible to elect the alternative calculation.\"",
+       "why": "'Did you and your spouse marry during 2025' does not require that each spouse was unmarried on January 1, 2025. This filer answers yes although Table 4 makes them ineligible.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "2d80dbcfec2dc8a90e32fe259bafddfeba09fdfbbaa91fee83d53dad2301889a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.04616,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/f8962.married_in_2025.0cb7204c078f.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      13
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Table 4, \"Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  }
+ },
+ "reviews/2025/questions/household.json": {
+  "household.spouse_died_2025": {
+   "subject_sha": "502f88376a9582599ff07dc19f7cd530a1d49628ab825a02557df85750a6394f",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose spouse died in 2025 remarried later in 2025 and was divorced from the new spouse by December 31, 2025, then claims married filing jointly. A truthful Yes satisfies the death-in-2025 path even though remarriage bars a joint return with the deceased spouse.",
+       "source_text": "i1040gi p. 13: \"Your spouse died in 2025 and you didn't remarry in 2025.\"; p501 p. 6: \"If you remarried before the end of the tax year, you can file a joint return with your new spouse. Your deceased spouse's filing status is married filing separately for that year.\"",
+       "why": "The question asks only whether the spouse died in 2025, so its Yes covers more filers than the joint-return condition, which also requires no remarriage in 2025. Filers who remarried and are no longer married at year end get the joint return allowed wrongly.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer whose divorce became final earlier in 2025, and whose former spouse then died later in 2025, could read 'your spouse' as including the ex-spouse and answer Yes.",
+       "source_text": "Question: \"Did your spouse die in 2025?\"; p501 p. 6: \"If you are divorced under a final decree by the last day of the year, you are considered unmarried for the whole year.\"",
+       "why": "If the filer counts the former spouse, the Yes is refused and blocks a valid single or head of household return. The wording does not say the person must still have been the filer's spouse when they died.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer who chose married filing jointly reads help that says the question is asked only for single or head of household and that a Yes is refused, even though the joint-return path needs a Yes.",
+       "source_text": "Help: \"Asked when your filing status is single or head of household; a Yes is refused\"; question: \"(Asked when ... filing jointly although not married at the end of 2025.)\"; i1040gi p. 13: \"Your spouse died in 2025 and you didn't remarry in 2025.\"",
+       "why": "The help and the question describe when the question is asked in conflicting ways. A widowed joint filer may answer No to avoid the stated refusal, and that No would disqualify the joint return they are allowed to file.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "73b9aae53249b5d8d03e2462a353e8a2ebd913e94308c315b7a91aec853fe091",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.071476,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/household.spouse_died_2025.502f88376a95.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      13
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Single, \"But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box.\"; p. 13, Married Filing Jointly, \"You were married at the end of 2025\"; p. 13, \"Your spouse died in 2025 and you didn’t remarry in 2025.\"",
+      "p. 13, Single, \"You were widowed before January 1, 2025, and didn’t remarry before the end of 2025\"; p. 13, Married Filing Jointly, \"Your spouse died in 2025 and you didn’t remarry in 2025.\"; , Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\""
+     ],
+     "cols_pages": [
+      13
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  }
+ },
+ "reviews/2025/questions/person.json": {
+  "person.edu_a2025": {
+   "subject_sha": "b947a3684d626f42fe92f52bfcd0e60528a10ad8eac2ddef29ce49460889e48e",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A student paid tuition in 2025 for an academic period beginning in January–March 2026 and received tax-free scholarship in 2025 for that period; the filer leaves that scholarship out because it is not for '2025 expenses'.",
+       "source_text": "i8863 p. 9: \"a. Tax-free educational assistance received in 2025 allocable to the academic period\"; \"If any qualified education expenses for the student were paid in 2025 for an academic period beginning in the first 3 months of 2026, treat that academic period as if it began in 2025.\"",
+       "why": "Line 1 includes expenses prepaid in 2025 for a period beginning in early 2026, so 2025 assistance allocable to that period must be subtracted. The question limits the amount to assistance 'for this student's 2025 expenses', which a filer would read as excluding it.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A student's tax-free scholarship for one academic period is more than that period's qualified expenses, and the filer reports one combined amount for the whole year, so the excess reduces another period's expenses.",
+       "source_text": "i8863 p. 9: \"Complete a separate worksheet for each student for each academic period\"; \"4. ... Subtract line 3 from line 1. If zero or less, enter -0-\". Question: \"Tax-free educational assistance received in 2025 for this student's 2025 expenses\"",
+       "why": "The worksheet nets assistance against expenses one academic period at a time, with a floor of zero. A single year total lets excess assistance from one period offset expenses of another, which understates adjusted qualified education expenses.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b74491c06fcbb077a4e8bba689a15acbcee1d9ec60a6b18e6fb5c29d4d3ca126",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.047044,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/person.edu_a2025.b947a3684d62.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"3. Total adjustments (add lines 2a, 2b, and 2c)\"",
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"a. Tax-free educational assistance received in 2025 allocable to the academic period\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "person.edu_a2026": {
+   "subject_sha": "78c3043f9eb6e222a4d03b8c85efa506a56c5f4da4e9b1e5409b9735c4cef0d2",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "f077ea481a20ef38588b1d1d0e72370eb9c0079150945888ae3a2f6a88453288",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.02826,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/person.edu_a2026.78c3043f9eb6.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"3. Total adjustments (add lines 2a, 2b, and 2c)\"",
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"b. Tax-free educational assistance received in 2026 (and before you file your 2025 tax return) allocable to the academic period\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "person.simple_age": {
+   "subject_sha": "043900a1bee1105cb19a78cc541da8073d0194e512ddf69e54001b53c659b202",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A participant age 50 or over in a SIMPLE IRA plan of an employer that elected the section 117 higher limits has a catch-up limit of $3,850. The three age choices cannot express this, so the line would look up $3,500.",
+       "source_text": "p560 p. 16: \"Pursuant to section 117(b) of the SECURE 2.0 Act of 2022, a higher catch-up limit of $3,850 may apply to participants in SIMPLE IRA plans of certain employers for 2025.\"",
+       "why": "The question asks only for an age band, but the line uses the answer as the whole of 'Catch-up eligibility'. Nothing in the question captures the employer-dependent $3,850 limit, so these filers get too low a limit.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A participant who turned 61 in 2025 is in a SIMPLE plan that did not adopt the section 109 higher catch-up. They truthfully answer age60_63, and the line gives $5,250 instead of $3,500.",
+       "source_text": "p560 p. 16: \"section 109 of the SECURE 2.0 Act of 2022 permits SIMPLE plans ... to allow participants to make a higher amount of catch-up contributions in a tax year in which they attain age 60, 61, 62, or 63.\"",
+       "why": "The text makes the higher limit depend on what the plan allows, not on age alone. The question asks only age, yet the label and the line treat the answer as eligibility for the $5,250 limit.",
+       "bound": ""
+      },
+      {
+       "kind": "TYPE",
+       "situation": "A participant age 50 or over is in a SIMPLE IRA plan that does not permit catch-up contributions at all. The lines need a zero catch-up limit, but the list has no choice for this.",
+       "source_text": "p560 p. 16: \"A SIMPLE IRA plan can permit participants who are age 50 or over at the end of the calendar year to also make catch-up contributions.\"",
+       "why": "Catch-up eligibility depends on plan permission. A truthful age answer of age50 or age60_63 yields a positive limit where the text allows none.",
+       "bound": "catch-up limit of 0 (plan does not permit), $3,500, $3,850 (section 117 employer), or $5,250 (age 60-63, plan permits)"
+      }
+     ],
+     "prompt_sha": "b1e3557d9f30e14954f3279bbadacc70f3974dd6a64da5317109218ebff171a5",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.051419999999999993,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/person.simple_age.043900a1bee1.1.response.txt"
+    }
+   ],
+   "type": "Enum(catchup_age)",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p560",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "38bbfa2efb2894e2527d66cd3478f33c6ceae4b777f78674c22bec16db9809aa",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, chapter 3, Catch-up contributions, \"age 50 or over at the end of the calendar year\" and \"in a tax year in which they attain age 60, 61, 62, or 63\"",
+      "p. 16, chapter 3, Catch-up contributions, \"generally $3,500 for 2025\" and \"the higher limit on catch-up contributions ... is $5,250\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "7ef279c8f34addc2ff13420e35fab4a092bf8027f53907c28a5f46d2c21da737"
+    }
+   ]
+  }
+ },
+ "reviews/2025/questions/refund.json": {
+  "refund.line17_2024": {
+   "subject_sha": "7320090f0b78fea2d61b4f9fca9a2c319f34d7621bc05073dc471a41ef14b0c8",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "7ac5f6e4bbc94ee57234050600fe4caee66e0aefca47db7da317a2a65af82dd2",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.032672,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.line17_2024.7320090f0b78.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 4",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 4, \"Enter your total itemized deductions from your 2024 Schedule A, line 17\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "refund.line5d_2024": {
+   "subject_sha": "45712544fd7529fce5e2421a1f89af02461d6743d5de4c059dee4ceb04d418ca",
+   "samples": [
+    {
+     "verdict": "WRONG_FIGURE",
+     "findings": [
+      {
+       "kind": "WRONG_FIGURE",
+       "situation": "Take a filer whose 2024 Schedule A, line 5d was $9,000: $2,000 of state income tax on line 5a plus $7,000 of real estate tax on line 5b. In 2025 the filer receives a $3,000 state income tax refund. The tool caps line 1 at the $9,000 total instead of the $2,000 of income taxes.",
+       "source_text": "i1040gi p. 90, Worksheet line 1: \"But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\"; question: \"The amount on your 2024 Schedule A, line 5d (your state and local income or general sales taxes, real estate taxes and personal property taxes, added together)\"",
+       "why": "Line 1 caps the refund at the income-tax part of line 5d, which is the line 5a amount, and only when income tax rather than sales tax was elected. The question gives the whole line 5d total, including real estate and personal property taxes, so the cap is too high. For a filer who elected sales tax, the cap should be zero (\"None of your refund is taxable if ... you ... elected to deduct state and local general sales taxes\", i1040gi p. 88), but the tool uses the line 5d total. These cases also fall under Exception 4 (i1040gi p. 89), which sends the filer to Pub. 525. No refusal for that exception is listed here, so the tool still applies the wrong cap.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "9f68d32f8f386bb5e7eff1c70bc9792e10f0e14668c0514b3e10786717c51af5",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.093364,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.line5d_2024.45712544fd75.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 4,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      88,
+      89,
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, \"Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, \"your state and local income taxes shown on your 2024 Schedule A, line 5d\", and line 2, \"(generally, this is the amount reported on your 2024 Schedule A, line 5d)\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, \"Is the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, \"No. Enter the amount from line 1 on line 3 and go to line 4. Yes. Subtract the amount on your 2024 Schedule A, line 5e\" (zero on No, so that line 3 is line 1)",
+      "pp. 88–89, Line 1, \"Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies\", items 3, 4, 6 and 7",
+      "pp. 88–89, Line 1, \"Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies\", items 8 and 9; , Itemized Deduction Recoveries, \"if you’re a nonresident alien\""
+     ],
+     "cols_pages": [
+      88,
+      89
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 5e, \"enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      24
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "refund.line5e_2024": {
+   "subject_sha": "529ab2e0de19b8f6dca30039e3f74ec6fe088a0a1fac779f8f0eb14d26086066",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "6ec5c5d20415f6b351b3a23b6f8c66a6ced9afd60492dbb35f6b8c4eb0439a35",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.036608,
+     "date": "2026-11-10",
+     "response": ".transcription/questions/refund.line5e_2024.529ab2e0de19.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, \"Is the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, \"No. Enter the amount from line 1 on line 3 and go to line 4. Yes. Subtract the amount on your 2024 Schedule A, line 5e\" (zero on No, so that line 3 is line 1)",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, \"more than the amount on your 2024 Schedule A, line 5e\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 5e, \"enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    }
+   ]
+  }
+ },
+ "reviews/ny/2025/questions/ny_it201.json": {
+  "ny_it201.ask.special_code": {
+   "subject_sha": "878cc5da7bef18c17ca43f205e7863d513e72c09aa86ecb4974abda1dadb9d5d",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "48e5f2c68fb2f7060fa8f12bb915c6011019f52a1e73a9bb594ce18e20e52a49",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.043340000000000004,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.ask.special_code.878cc5da7bef.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Item G, \"If you qualify for one or more of the special conditions below, enter the specified two-character code.\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.line75": {
+   "subject_sha": "fed52fb5ba860c20608422a15d43893b9a9ca4370d3691b98a35356c0c87a78f",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "454895fa7c90b9fc98ed32ef3abb53eb2bf29143ccf0a06805871628530d77ea",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.063404,
+     "date": "2026-11-10",
+     "response": ".transcription/ny/questions/ny_it201.line75.fed52fb5ba86.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 3,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      22,
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 22, Line 75: Total estimated tax payments and amount paid with Form IT-370, \"your 2025 estimated tax payments for New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax\"",
+      "p. 23, Line 81, \"the total amount of your 2025 prepayments (the amount of withholding and estimated tax payments you have already made or which were paid on your behalf by a partnership or S corporation for 2025)\"",
+      "p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), \"You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year.\""
+     ],
+     "cols_pages": [
+      22,
+      23
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    },
+    {
+     "doc": "ny_it201",
+     "revision": "Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12",
+     "text_sha256": "c924371c32a986a1903c9216bd60c6df8fb52f8e506e5c462851226b71e2154d",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 4, Payments and refundable credits, \"Total payments (add lines 63 through 75)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "895c4b15bba606353fd49f5779f969877e55196eda7f7b9f633f02cbd3dbbb3d"
+    }
+   ]
+  }
+ },
+ "reviews/2025/false_no/rulings.json": {
+  "rulings": {
+   "unruled:gate:clcw_next_year.final_ask#1": {
+    "class": "no gate defect; joint return designed out to a notice, wording finding low",
+    "reason": "(1) FALSE_NO, joint return of a spouse who died in 2025: by design, as the screen-review rulings of this gate. On a joint return a carryover is figured for both spouses and only the deceased spouse's part stops (p550 p. 103); the project does not split a joint carryover between the spouses and gives clcw26.decedent_notice (shown on a joint return when line 8 or line 13 is above zero: the part from the deceased spouse's losses does not carry over to 2026 and can be deducted only on this return). The question is for a return whose whole carryover is the decedent's. The same-page sentence on joint and separate returns concerns a later separate return; a 2025 separate return is refused (s3.mfs). (2) UNCLEAR, a representative reading 'filer' as themselves: low; the question says 'a return filed for the decedent', and it is asked only on a return with one filer, whose return the representative is preparing.",
+    "subject_sha": "66f9b217fcc0742121c41192dc65071cad692072b7a886bc33005584489f041d",
+    "carried": {
+     "by": "rename",
+     "map": {
+      "clcw26.final_ask": "clcw_next_year.final_ask",
+      "clcw26.final_return": "clcw_next_year.final_return",
+      "clcw26.final_return_if_carryover": "clcw_next_year.final_return_if_carryover",
+      "clcw26.no": "clcw_next_year.no",
+      "clcw26.not_joint": "clcw_next_year.not_joint",
+      "clcw26.show": "clcw_next_year.show"
+     },
+     "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+     "was": "d7881adecd94573cefc55bdcb231b9898e633c80b624142f5173b53ea1b63575"
+    }
+   }
+  }
+ },
+ "reviews/2025/consumers.json": {
+  "rulings": {
+   "consumer:asset.placed@i4562:p9": {
+    "verdict": "same",
+    "question_phrase": "The year you placed this property in service in the business (2005 to 2025). Property is placed in service when it is ready and available for a specific use",
+    "source_phrase": "Lines 19a Through 19j, \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025\" (read by asset.is2025)",
+    "reason": "Page 9 uses placed in service in the sense p946 p. 32 defines, which the question now states; asset.is2025 tests the year it asks."
+   }
+  },
+  "baseline": {
+   "consumer:f8889.age55@i8889:p5": "99a64d71d9fedc70",
+   "consumer:f8889.age55@i8889:p6": "99a64d71d9fedc70",
+   "consumer:f8889.age55@i8889:p7": "99a64d71d9fedc70",
+   "consumer:scveh.placed@i4562:p13": "426f9faca571206d",
+   "consumer:scveh.placed@i4562:p16": "426f9faca571206d",
+   "consumer:scveh.placed@p946:p61": "426f9faca571206d",
+   "consumer:asset.placed@i4562:p9": "164e70f9fbc6d21c"
+  }
+ },
+ "reviews/ny/2025/consumers.json": {
+  "rulings": {
+   "consumer:ny_it201.ask.state_resident@ny_it201i:p3": {
+    "verdict": "same",
+    "question_phrase": "a New York State resident for all of 2025",
+    "source_phrase": "p. 3, \"If you were a New York State resident for only part of the year, do not file Form IT-201.\"",
+    "reason": "The gate refuses the part-year (or nonresident) case p. 3 sends to Form IT-203; the question asks the full-year residence p. 30 defines."
+   }
+  }
+ },
+ "reviews/2025/instruction_cites.json": {
+  "baseline": {
+   "section:f1040.line25d": "102783a8cf309256",
+   "section:f8995.line3": "8645d8940ed4ba4d"
+  }
+ }
+}

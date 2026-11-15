@@ -71,7 +71,7 @@ form:
     expr:
       op: sum_over
       collection: person
-      field: person.sav_roth
+      field: person.sav_roth_if_ira_owner
     cite:
       doc: i1040gi
       locator: 'p. 95, Line 20, "You can’t deduct contributions to a Roth IRA"'
@@ -772,15 +772,53 @@ form:
         compensation for the year"'
   - id: ira.special
     printed: (screen)
-    label: Does any of these apply to you or your spouse (the IRA deduction special cases)?
+    label: One of the IRA deduction special cases applies (deferred compensation, a fellowship not on a Form W-2, a reservist repayment, difficulty of care payments)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - ira.deferred_comp
+        - const: true
+      - op: test
+        eq:
+        - ira.fellowship
+        - const: true
+      - op: test
+        eq:
+        - ira.reservist_repaid
+        - const: true
+      - op: test
+        eq:
+        - ira.care_payments
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with
+        code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a
+        p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are
+        treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments'
+  - id: ira.deferred_comp
+    printed: (screen)
+    label: "Income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan"
     type: Bool
     expr:
       op: input
-      source: 'Does any of these apply to you (or your spouse on a joint return): income from a nonqualified deferred compensation
-        plan or a nongovernmental section 457 plan (an amount in box 11 of your Form W-2, in box 12 with code Z, or in box 15
-        of Form 1099-MISC); taxable non-tuition fellowship or stipend payments for graduate or postdoctoral study not reported
-        on a Form W-2; a repayment to an IRA of a qualified reservist distribution; or difficulty of care payments (qualified
-        foster care payments) used to increase your nondeductible IRA contribution limit?'
+      source: "Did you (or your spouse on a joint return) have income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (an amount in box 11 of your Form W-2, in box 12 with code Z, or in box 15 of Form 1099-MISC)?"
+    cite:
+      doc: i1040gi
+      locator: 'p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with
+        code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a
+        p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are
+        treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments'
+  - id: ira.fellowship
+    printed: (screen)
+    label: "Taxable non-tuition fellowship or stipend payments not reported on a Form W-2"
+    type: Bool
+    expr:
+      op: input
+      source: "Did you (or your spouse on a joint return) receive taxable non-tuition fellowship or stipend payments for graduate or postdoctoral study that were not reported on a Form W-2?"
     cite:
       doc: i1040gi
       locator: 'p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with
@@ -788,6 +826,34 @@ form:
         p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are
         treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments'
     ambiguity: amb.2025.ira_fellowship
+  - id: ira.reservist_repaid
+    printed: (screen)
+    label: "A repayment to an IRA of a qualified reservist distribution (the answer to scope.reservist_repaid)"
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - scope.reservist_repaid_if_armed_forces
+      - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with
+        code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a
+        p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are
+        treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments'
+  - id: ira.care_payments
+    printed: (screen)
+    label: "Difficulty of care payments used to increase the nondeductible IRA contribution limit"
+    type: Bool
+    expr:
+      op: input
+      source: "Did you (or your spouse on a joint return) use difficulty of care payments (qualified foster care payments) to increase your nondeductible IRA contribution limit?"
+    cite:
+      doc: i1040gi
+      locator: 'p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with
+        code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a
+        p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are
+        treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments'
   - id: ira.se_capital
     printed: (screen)
     label: Is any Schedule C income on this return from a business in which your (or your spouse's) personal services are
@@ -990,6 +1056,7 @@ form:
     printed: (screen)
     label: Do you want to deduct less than the most you can deduct, treating the rest as a nondeductible contribution?
     type: Bool
+    gated_by: ira.less_gate
     expr:
       op: input
       source: The most you (and your spouse) can deduct for your traditional IRA contributions is figured on line 12 of the

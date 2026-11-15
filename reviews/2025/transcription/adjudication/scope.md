@@ -87,3 +87,48 @@ Triage: `../triage/<stem>.json`, executable-triage-v2, rerun today with `tools/t
 | deepseek | render | ready | interface gap | render MISMATCH | The MFS refusal matches i1040gi p. 14, Married Filing Separately; the other screens are filer-answered declarations whose items are cited on | As the prior ruling. Project stands. |
 
 Counts: deepseek render interface gap 5 (5). Errors introduced: none (BUG-0393's `scope.other_income` clause, a qualified disaster recovery distribution received in 2023 or 2024 or a 2025 repayment, leaves a 2025 distribution to `retirement.special`). Reclassified: deepseek `schedule1` (scope to interface gap: the reviewer now objects only that the pages lack Schedule 1). The transcription logs have no open section. Findings: none.
+
+## Landing round (2026-11-14)
+
+Pass 1ad4bbd67c02 (lines scope.has_w2, scope.reservist_repaid_if_armed_forces, scope.excess_deferral_if_w2, scope.schedule1, scope.other_income, scope.other_line16). Evidence: triage record `.transcription/triage/2025/scope.json` (executable-triage-v2; 4,036 comparisons per line), read with the source, `forms/2025/scope.yaml` and the readers of the three screens (`f1040`, `carloan`, `f2441`, `eic`). Rulings text in `/tmp/land3-adj5/scope.json` (lane land3-adj5).
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | scope.reservist_repaid_if_armed_forces | representation | 3,997/4,036; 39 project-unknown; no value | i1040gi p. 95, Line 20 | Equivalent conjunction of gate and question. |
+| claude | transcription | scope.schedule1 | model error | 3,592/4,036; 77 value (refused returns, project true / reply false); 37 candidate-unknown (5 completed) | i1040se p. 1; i1040sf p. 2; i1040gi p. 25 (statutory employee), Line 8z | Leaves rental, K-1, farm, clergy/church, statutory-employee and recovery items out of the Schedule 1 screen that carloan, f2441 and f1040 rely on. |
+| claude | transcription | scope.other_income | model error | 3,503/4,036; 63 value (refused returns); 279 candidate-unknown (37 completed) | i1040gi p. 8 (nonresident aliens), p. 23 (chapter 11), p. 95 (Line 20); i2441 p. 5 | Leaves out nonresident status (named in the label), chapter 11, reservist repayments and other dependent care benefits. |
+| claude | transcription | scope.other_line16 | model error | 3,861/4,036; 16 value (refused; mutation.m3.scope.l16_cfc and ungated generated answers); 75 candidate-unknown (14 completed) | i1040gi, Line 16, "Tax with respect to a section 962 election" | Leaves out the CFC screen, the only input reaching a section 962 election; reads income averaging and Form 8978 without their gates. |
+
+4 lines: 1 representation, 3 model error. No findings.
+
+## Landing round (2026-11-14), after the scope-hole fixes
+
+Subject after lane land3-holes (BUG-0642: `scope.nol` ungated, read directly by `scope.schedule1`, and asked in the new tick group `before_2025`). Claude transcription pass b8c2e2325e96 (line `scope.schedule1`), triage record `.transcription/triage/2025/scope.json` (executable-triage-v2, 4,039 comparisons, newer than the log; carry ruled nothing). Claude render pass 1b4bf43be4e1 (whole form; the reviewer was given Form 1040 pp. 1-2, i1040gi pp. 14, 36, 43, i1040sse and p575 p. 35 only). Rulings text in `/tmp/land3-adj10/scope.transcription.json` and `/tmp/land3-adj10/scope.render.json` (lane land3-adj10).
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | scope.schedule1 | model error | 3,651/4,039; 74 value (refused returns, project true / reply false, e.g. scope.rental, scope.clergy_if_religious_work); 6 candidate-unknown (none completed) | i1040se p. 1; i1040sf p. 2; i1040gi p. 25, Lines 8z, 24f | As the earlier landing ruling: leaves rental, K-1, farm, clergy/church, W-2 marks, recovery and other self-employed plans out of the Schedule 1 screen; scope.nol agrees. |
+| claude | render | armed_forces | interface gap | UNCLEAR | p590a p. 9, "2 years after your active duty period ends" | A 2025 repayment needs active duty ending after 2022 began; the window is no narrower than the source. |
+| claude | render | pay_no_w2 | interface gap | MISMATCH | i1040gi p. 24, Line 1c (box 8) | Box 8 allocated tips are refused by s2.w2_marks in the same W-2 tick group; the help names box 8 too. |
+| claude | render | w2_marks | interface gap | UNCLEAR | fw2 box 12 code H; i1040gi Line 24f; p525 p. 10 | Code H deferrals are deducted on Schedule 1 line 24f. |
+| claude | render | artist_official_if_w2 | interface gap | UNCLEAR | p463 pp. 20, 23 | The line 12 deduction is for employees (Form 2106); an official paid only in fees misses only a refusal whose remedy is to go on without the deduction. |
+| claude | render | recovery | finding (medium) | UNCLEAR | p525 p. 24, Recoveries and Tax benefit rule; f1040s1 line 1 | Names a deduction but not a credit; excepts a state but not a local income tax refund (BUG-0640). |
+| claude | render | disaster_distribution | interface gap | MISMATCH | i8915f p. 2, Who Must File; p. 8, Carrybacks | 2025 distributions are screened per Form 1099-R by retirement.disaster; a late-2025 repayment of a 2022 distribution is carried back. |
+| claude | render | reforestation | interface gap | UNCLEAR | i4562 p. 18, section 194, "84-month period" | Amortization reaching 2025 starts no earlier than 2018. |
+| claude | render | passive_if_business_before | interface gap | MISMATCH | i1040sc p. 4, Line G (sc.passive); scope.rental, scope.k1, scope.farm | Activities begun in 2025 are refused by those screens. |
+| claude | render | other_line16 | interface gap | MISMATCH | i1040gi p. 36, Line 16; retirement lump-sum screen; scope.k1 | Form 4972 is refused per Form 1099-R; a section 965(i) triggering event comes with a 2025 K-1. |
+
+10 lines: transcription 1 model error; render 8 interface gap, 1 finding (medium). Findings: BUG-0640 (`scope.recovery` wording).
+
+## Landing round (2026-11-14), after the scope.recovery fix
+
+Subject after BUG-0640 (`scope.recovery`: deduction or credit, state or local refund, p525 p. 24). Last
+review of this round for scope. Claude transcription pass 2eb39b30c079 (line `scope.schedule1`), triage
+`.transcription/triage/2025/scope.json` (executable-triage-v2, 4,053 comparisons; carry ruled nothing). Rulings in
+`/tmp/land3-adj14/scope.transcription.json` (lane land3-adj14).
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | scope.schedule1 | model error | 3,689/4,053; 59 value (refused returns, project true / reply false: scope.rental, scope.clergy_if_religious_work); 53 candidate-unknown (3 completed) | i1040se p. 1; i1040sf p. 2; i1040gi Line 24f | Third time: leaves rental, K-1, farm, clergy/church, W-2 marks out of the screen; its extra CFC term is refused by scope.other_line16 anyway. |
+
+1 line: 1 model error. Findings: none.

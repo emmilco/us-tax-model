@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
  "head_rows": {
-  "match / mismatch / unclear / missing": "25 / 11 / 0 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-12); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "33 / 3 / 0 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -16,31 +16,27 @@
   },
   {
    "key": "2 (box)",
-   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
-   "subject_key": "17bdefbbbbffcb00d486ea1d1fd98b5313e10bfcb4cb800090dff62091430c08"
+   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "status": "MATCH",
+   "subject_key": "44d1d1220c7e2f0ba90f17dfdbcbee3eea4fa68e806f0bce85363fe50dbed5ac"
   },
   {
    "key": "3",
-   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
-   "subject_key": "b3825b49e32ca6b39a9f30bd395c3f0d324d4475fbabb19d625e2e1a486db356"
+   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "status": "MATCH",
+   "subject_key": "d242e2fa3ba6734fca2b71aab6f67697b58b5f05ca5be31fe2c6843fb68a2176"
   },
   {
    "key": "4",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; the model says person.dc_earned omits Form 1040 lines 1b, 1c, 1d, 1f, 1g and 1h with no refusal. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h (household employee wages, tips not on a W-2, Medicaid waiver payments, adoption benefits, Form 8919 wages, other earned income) by scope.other_income (refused at f1040.line8 and scope.ready), statutory-employee and notary income by sc.statutory (sc.screened at sc.line1), and Schedule SE items outside the tool by person.se_screened. On the remaining returns line 1z is lines 1a and 1e, which person.dc_earned adds per person (amb.2025.dc_line1e_attribution) with net self-employment earnings. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\" and adds statutory-employee Schedule C line 1 and net self-employment earnings; p. 5, Line 18, \"Earned income ... is determined in the same way as earned income for figuring the credit ... however, for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\". Same ruling as the earlier rounds. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
-   "subject_key": "78698a3e7468e2064158bc866796661714d65cbf07c369076235de0474f21975"
+   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "status": "MATCH",
+   "subject_key": "75e86b1828737037e3e7c40ef99c2888571f82ada3b24b86584d38054a8529bf"
   },
   {
    "key": "5",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The excerpt's missing Form 1040 page is a real context limitation, supplied in this adjudication; it is not model noise or a claim of support for the excluded cases. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
-   "subject_key": "ec0456bb5bfb2459b0524817c8b7edde0ccc5685517f74840158cec2b9fc2593"
+   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "status": "MATCH",
+   "subject_key": "0a49c1cb3f0f0cc8ac150dd25083e54ce3bce73e83b052a11e8ea23c32ee3e37"
   },
   {
    "key": "6",
@@ -135,30 +131,36 @@
   },
   {
    "key": "16",
-   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. The reviewer accepts adding expenses incurred and paid in 2025 to expenses incurred in 2025 and not yet counted (i2441 p. 5, Line 16, \"It doesn't matter when the expenses were paid\"). Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
-   "subject_key": "be3a493fd28dcbcb346c077eb60c82062ef8d933704ee5fab747a878325fcad2"
+   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "status": "MATCH",
+   "subject_key": "0a5d3085eab2ce0475f57ebf1fb9aa66210654fee656aeecb5f82a190c480ca8"
   },
   {
    "key": "17",
    "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
    "status": "MATCH",
-   "subject_key": "b609221fd2894e28ddc9d9a821d6b6eb746a4a90d70509ded027d55348079c8c"
+   "subject_key": "dc0c0bea288f48c56b050bdb054dcb4d03b62a93e9ef1bddc28d2c50f134ef8f",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f2441.paid_2026": "f2441.other_care_expenses"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "b609221fd2894e28ddc9d9a821d6b6eb746a4a90d70509ded027d55348079c8c"
+   }
   },
   {
    "key": "18",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; the model accepts that line 1e is left out but says person.dc_earned_b omits the other line 1z components. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h (household employee wages, tips not on a W-2, Medicaid waiver payments, adoption benefits, Form 8919 wages, other earned income) by scope.other_income (refused at f1040.line8 and scope.ready), statutory-employee and notary income by sc.statutory (sc.screened at sc.line1), and Schedule SE items outside the tool by person.se_screened. On the remaining returns line 1z is lines 1a and 1e, and person.dc_earned_b takes box 1 wages and net self-employment earnings without the line 12 benefits. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\" and adds statutory-employee Schedule C line 1 and net self-employment earnings; p. 5, Line 18, \"Earned income ... is determined in the same way as earned income for figuring the credit ... however, for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\". Same ruling as the earlier rounds. Re-checked for the hardening round: person.dc_earned, person.dc_earned_b, scope.other_income, sc.statutory and person.se_screened are unchanged since round 4 (BUG-0262 changes only f2441 lines 16 and 17; BUG-0263 only person.sep_s3). (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
-   "subject_key": "948791ee95087510aa20036511a96895a34677dd06cc5f62b4707365d24ec9b8"
+   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "status": "MATCH",
+   "subject_key": "0a6de6375e3e29801ab4a011ace980a90bdae5ee09676812019e534b1e750d40"
   },
   {
    "key": "19",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The refreshed prompt supplies Form 1040. The omitted wage classes are explicitly outside completed-return scope, not reviewer noise or supported cases. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
-   "subject_key": "898266cad2d1103a741f6f4cf4d150f41ca6faeac1878c8b61dcec011ed02521"
+   "ruling": "Ruling: scope; Form 2441 (2025) line 19: \"If married filing jointly, enter your spouse's earned income ...; all others, enter the amount from line 18\"; the married filing separately branch the model cites (i2441, Line 19, \"No. Enter your spouse's earned income on line 19\") is never reached: married filing separately is refused for the whole return by s3.mfs (forms/2025/s3.yaml, f1040.status equal to mfs; refused at scope.ready and in Form 2441 itself, forms/2025/f2441.yaml). On every supported status the English gives the line its source amount. Project stands.",
+   "subject_key": "5455c305626f3a77c9c5ba88a11f2e9c03c3c44e23a5db5b2ec52d959113eaa3"
   },
   {
    "key": "20",
@@ -205,10 +207,9 @@
   },
   {
    "key": "27",
-   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
-   "subject_key": "7dabaf59ee30a775d4bc0776a00c83d68f782368a486bc77b1a7f42e7e1e36af"
+   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "status": "MATCH",
+   "subject_key": "1310f555c3e0420a4b9df804e375d4d2592b5bd8252f8c43a082412d347b994c"
   },
   {
    "key": "28",
@@ -224,10 +225,9 @@
   },
   {
    "key": "30",
-   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted, as ruled on this finding before: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal\" is wrong. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads); no expression changed and the reviewer found the restated structure to match the form. No change to the data.",
-   "subject_key": "699d9edf9321a22bf6492b561cb8338106f35c7a6a2977f96c450cabc041bcd4"
+   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "status": "MATCH",
+   "subject_key": "b957467708295fedf3db47b42911f717843415588846083a23a993265379f530"
   },
   {
    "key": "31",
@@ -238,10 +238,10 @@
  ],
  "subjects": {
   "1 (box)": "63cf86b36d046aba6c7c9f36f44970ad94918a778daac88083d22cd4525f90e1",
-  "2 (box)": "5b057614073d8e64ced1ddaaa667a008792472c84118826a607269177716df9a",
-  "3": "d270d5ecc58ef1fbc4274094265a6ba837a8acea4f517c1b55f65c0bbc63b09a",
-  "4": "65ad69c5e8c90589973e31b7331b7e54b7eeec0da4a9da21fb99ebc46d650886",
-  "5": "7e9d36ccd0386049fe2332050fc622ba6bc809c0427cdb1daf10a1670ee6bda0",
+  "2 (box)": "e23f23395c1078cf8843dfb0c0f34d5e34dd87416a55c168cd85f9c2d2d04cd6",
+  "3": "1c767b2eaa52ff5733a870123e5dae3e75543625d1d51d0eb77652e8c6b7b2c5",
+  "4": "b31e98ed527937ae24810d4e77d0f4aede20f7856cf9edf0aee6337ed566c06d",
+  "5": "bc4e62c8bab3bf687a8197798e83264f64d57c04826301c2815386d4ad0e3e49",
   "6": "34f0d934a032cf5160050a88a7c21ff9f4b54c02714966c2a6fce32c9aca03fb",
   "7": "9b9154af283c2b42e9d64eb62ce706bf52b02db97816b30e65038653eeb3c9aa",
   "8": "17c760497e98f0b2f513dfc9cc6b76141b008ea179d06e5f01941e0ab163e0e8",
@@ -257,10 +257,10 @@
   "13": "9c59410597dd8251a1404a58864e53ac6f836e19d99949e1d1b3681c5da3828f",
   "14": "1a98d03c2e93e7b622ce07eb9d77306990a1d55aee6b5f4ddce7e75e1e947429",
   "15": "d75c604b72e6811ff1647da5d3ca0c5dbcd75443bb772c0654e910980de44649",
-  "16": "79e3bc1d7e81d608dd892e6c11eadf054e31e915b41a1e51088751f584f41bbb",
-  "17": "1ca42929dcfa0a2729c6887d392128267e4850482de2b5ba0e03f1b9a0064877",
-  "18": "0173f358a0769e400ef832f67d5fed47d84f265a613c786cb44d02824177e752",
-  "19": "4fa05799b9419a9cd11d34fcdd78f0367c16e4205211c290d41584406a2b8949",
+  "16": "3aa8c3bd1cfd4a0571f16661fb7cf39654ac9e1ac507b3d138b1d609946ac67c",
+  "17": "78ab2963b186566d4153c3becbc73ce26f1c5b149b5c26e53907cdc0c7c2036a",
+  "18": "888de4d3b50e829ac38070f4d1491ff2eec8be5cb20f7cd4902c221dfea7966c",
+  "19": "9ec41f66512f0595b9412902c35caaf15b50879908481862de6d5c62da1f16ad",
   "20": "3aab5c68c71c94c0354eb93b008c5b539f5ff921257d450219e800653174b0d3",
   "21": "7cafa7d867acbfaf07feca23f0e8ff3b61a812ae578493abd2567a44283f0c10",
   "22": "b915b927da69a12457c6002e5f4945115d7ede5473d998b24281b6acff79954e",
@@ -268,10 +268,10 @@
   "24": "c4455d17f0737c3ab5cbad5a5d0a496bfb08d4d0b51305717e5efdeb09ad5f19",
   "25": "b3349d87b149af32bf0a4819625b73b5268559fb9c4e2ded7436a04d31bc1b22",
   "26": "90b1ba6674d128d79ba05341a50c2bb64366e6734e0df6a88c9f9dd10beea6b4",
-  "27": "62850ea6996a5c274e58179cc2d6748dbfe4691a16c4062416aa316ed632deb8",
+  "27": "055d34da3e8a1c73dbbe87490c17e2a493359085667497114216b1e53511094f",
   "28": "208f72b6ca518d77c27979fd4088f6e51a4a18aeb44779a921cd4d572a31dbcd",
   "29": "b6d8757189cc5ba3f8e0410f2083b76e555b3c635eb498aa1810ec854604c0ff",
-  "30": "b44338fbf902697749023b9803443cd71117d70013b9be10d7c594dce214f389",
+  "30": "a394a8a338c4392c6cb715b006268e38362090c2c9c4ef763220b088e1839c13",
   "31": "9bfe370e903a66d4b98337a63a9ce2fa854b3e0e155cfbbd12dd477da41513cc"
  },
  "__rest__": "bb4b29bcc2aa36444c7a09d3b0883307635faecc1234ab9c0d9ed9d55d114f4d"

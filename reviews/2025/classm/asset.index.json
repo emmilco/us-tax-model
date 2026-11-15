@@ -2,206 +2,209 @@
  "kind": "classm",
  "form": "asset",
  "family": "claude",
- "base": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+ "base": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
  "lines": [
   {
    "key": "case classm.asset.1",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": null
   },
   {
    "key": "classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].period",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
    "key": "classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].basis",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].macrs_prior",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].bonus",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].col19c",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].macrs_this_year",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
    "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].period",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
    "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].basis",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].bonus",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].col19c",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].macrs2025",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].macrs_prior",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
    "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].period",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
    "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].basis",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].f25",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].bonus",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].f26i",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].col19c",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].dep_listed",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].macrs_this_year",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
    "key": "case classm.asset.2",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": null
   },
   {
-   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[lot].period",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].period",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[lot].basis",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].basis",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[lot].bonus",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].bonus",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[lot].col19c",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].col19c",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[lot].macrs2025",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].macrs_this_year",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[pc].period",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].period",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[pc].basis",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].basis",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[pc].bonus",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].f25",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[pc].col19c",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].f26i",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[pc].macrs2025",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].dep_listed",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
    "key": "case classm.asset.3",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": null
   },
   {
-   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_1].period",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].period",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained. The item is qualified improvement property placed in service after 2017; p946 Table 4-1, GDS using SL: \"Qualified improvement property (as defined in section 168(e)(6) of the Internal Revenue Code) placed in service after 2017\". The class is 15-year straight line (y15sl), as the project has it; the model gave the 15-year 150% DB class (y15), as in the earlier ruling on classm.asset.2. Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].basis",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_1].basis",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].bonus",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_1].macrs_prior",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].col19c",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_2].period",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].macrs_this_year",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained. Follows from the model's method: it applied Table A-5 (150% DB, mid-quarter, fourth quarter, 15-year, year 1 1.25%) to $18,751.20, but qualified improvement property is GDS straight line (p946 Table 4-1, \"GDS using SL ... Qualified improvement property ... placed in service after 2017\"); Table A-12 (Straight Line Method, Mid-Quarter Convention, Placed in Service in Fourth Quarter), 15 years, year 1, is 0.83%, and $18,751.20 x 0.83% = $155.63, the project's amount. Both sides agree on the basis ($18,751.20, 19(c)) and the fourth-quarter convention. Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].period",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_2].basis",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].basis",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_2].f25",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].bonus",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_2].f26i",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].col19c",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
-   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_2].dep_listed",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].macrs_this_year",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
    "key": "case classm.asset.4",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": null
   },
   {
    "key": "classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].period",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   },
   {
    "key": "classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].basis",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
-   "status": "AGREE"
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained. The line requested is the project's '(c)' marker, labeled \"Basis for depreciation (business/investment use only), before section 179 and the special allowance\": $165.00 x 100% = $165.00. The model subtracted the section 179 deduction, which i4562 p. 11, Column (c) (\"From that result, subtract any credits and deductions allocable to the property ... Section 179 expense deduction\") applies to the reduced basis the project carries at 19(c) (asset.col19c), as settled in the transcription rulings on (c) (representation: the business basis at (c), the reduced basis at 19(c)). The model read the label wrong. Not evidence. [dropped]"
   },
   {
-   "key": "classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].bonus",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].col19c",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].macrs2025",
-   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "key": "classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].macrs_prior",
+   "record": "5f59477d5a95dd8ffe3f621ec5b9dadbf23fa2b6dbbb8db0c4b786f587e74b53",
    "status": "AGREE"
   }
  ]

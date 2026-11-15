@@ -409,7 +409,7 @@ form:
           cite:
             doc: i1040gi
             locator: p. 14, Head of Household
-        - when: household.widowed_2025
+        - when: household.widowed_this_year
           form: Filing status after a spouse's death in 2025
           remedy: Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint
             return with your deceased spouse (married filing jointly), or a separate return, which this tool does not
@@ -709,10 +709,23 @@ form:
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 25a
+    - id: f1040.withheld_other_any
+      printed: (gate)
+      label: Was federal income tax withheld in 2025 from any payment other than wages?
+      type: Bool
+      expr:
+        op: input
+        source: Was federal income tax withheld in 2025 from any payment to you (or, on a joint return, your spouse) other
+          than wages reported on a Form W-2 (tax shown on a Form 1099, SSA-1099, RRB-1099 or W-2G, on a Schedule K-1, or on
+          Form 1042-S, 8805 or 8288-A)?
+      cite:
+        doc: i1040gi
+        locator: p. 39, Line 25b, "This should be shown in box 4 of Form 1099, box 6, of Form SSA-1099, or box 10 of Form RRB-1099"; p. 39, Line 25c—Other Forms, "Federal income tax withheld on your Form(s) W-2G"
     - id: f1040.line25b
       printed: 25b
       label: Federal income tax withheld from Form(s) 1099
       type: NonNegDollars
+      gated_by: f1040.line25b_if_withheld_other
       expr:
         op: input
         source: Federal income tax withheld shown on your (or, on a joint return, your spouse's) Forms 1099 (supplied total
@@ -720,14 +733,60 @@ form:
       cite:
         doc: i1040gi
         locator: p. 39, Line 25b, "This should be shown in box 4 of Form 1099, box 6, of Form SSA-1099, or box 10 of Form RRB-1099"
+    - id: f1040.line25b_if_withheld_other
+      printed: (helper)
+      label: 'Federal income tax withheld from Form(s) 1099 (line 25b), when tax was withheld from a payment other than wages; zero otherwise'
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f1040.withheld_other_any
+                - const: true
+            then: f1040.line25b
+          - guard:
+              op: test
+              eq:
+                - f1040.withheld_other_any
+                - const: false
+            then: div.zero
+      cite:
+        doc: i1040gi
+        locator: p. 39, Line 25b, "This should be shown in box 4 of Form 1099, box 6, of Form SSA-1099, or box 10 of Form RRB-1099"
     - id: f1040.line25c_other
       printed: (helper)
       label: Federal income tax withheld on Forms W-2G, Schedules K-1 and Forms 1042-S, 8805 and 8288-A
       type: NonNegDollars
+      gated_by: f1040.line25c_other_if_withheld_other
       expr:
         op: input
         source: Federal income tax withheld shown on your (or, on a joint return, your spouse's) Forms W-2G (box 4), Schedules
           K-1, and Forms 1042-S, 8805 and 8288-A (supplied total; not Additional Medicare Tax, which Form 8959 figures)
+      cite:
+        doc: i1040gi
+        locator: p. 39, Line 25c—Other Forms, "Federal income tax withheld on your Form(s) W-2G"; "Federal income tax withheld
+          that is shown on a Schedule K-1"; "Tax withheld that is shown on Form 1042-S, Form 8805, or Form 8288-A"
+    - id: f1040.line25c_other_if_withheld_other
+      printed: (helper)
+      label: 'Federal income tax withheld on Forms W-2G, Schedules K-1 and Forms 1042-S, 8805 and 8288-A, when tax was withheld from a payment other than wages; zero otherwise'
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f1040.withheld_other_any
+                - const: true
+            then: f1040.line25c_other
+          - guard:
+              op: test
+              eq:
+                - f1040.withheld_other_any
+                - const: false
+            then: div.zero
       cite:
         doc: i1040gi
         locator: p. 39, Line 25c—Other Forms, "Federal income tax withheld on your Form(s) W-2G"; "Federal income tax withheld
@@ -739,7 +798,7 @@ form:
       expr:
         op: sum
         of:
-          - f1040.line25c_other
+          - f1040.line25c_other_if_withheld_other
           - f8959.line24
       cite:
         doc: i1040gi
@@ -753,15 +812,28 @@ form:
         op: sum
         of:
           - f1040.line25a
-          - f1040.line25b
+          - f1040.line25b_if_withheld_other
           - f1040.line25c
       cite:
         doc: f1040
-        locator: Form 1040 (2025), line 25d
+        locator: Form 1040 (2025), line 25d; i1040gi p. 39, Line 25
+    - id: f1040.estimated_any
+      printed: (gate)
+      label: Were estimated tax payments made for 2025, or an amount applied from the 2024 return?
+      type: Bool
+      expr:
+        op: input
+        source: Did you (or, on a joint return, your spouse) make estimated tax payments for 2025, or have an amount from your
+          (or, on a joint return, your spouse's) 2024 return applied to 2025?
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 26; i1040gi p. 39, Line 26, "If you or your spouse paid separate estimated tax but
+          you are now filing a joint return, add the amounts you each paid"
     - id: f1040.line26
       printed: "26"
       label: 2025 estimated tax payments and amount applied from 2024 return
       type: NonNegDollars
+      gated_by: f1040.line26_if_estimated
       expr:
         op: input
         source: 2025 estimated tax payments you (or, on a joint return, your spouse) made and amount applied from your (or, on
@@ -903,6 +975,29 @@ form:
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 32
+    - id: f1040.line26_if_estimated
+      printed: (helper)
+      label: '2025 estimated tax payments and amount applied from 2024 return (line 26), when any was made or applied; zero otherwise'
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f1040.estimated_any
+                - const: true
+            then: f1040.line26
+          - guard:
+              op: test
+              eq:
+                - f1040.estimated_any
+                - const: false
+            then: div.zero
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 26; i1040gi p. 39, Line 26, "If you or your spouse paid separate estimated tax but
+          you are now filing a joint return, add the amounts you each paid"
     - id: f1040.line33
       printed: "33"
       label: Add lines 25d, 26, and 32. These are your total payments
@@ -911,7 +1006,7 @@ form:
         op: sum
         of:
           - f1040.line25d
-          - f1040.line26
+          - f1040.line26_if_estimated
           - f1040.line32
       cite:
         doc: f1040

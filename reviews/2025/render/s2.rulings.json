@@ -17,6 +17,16 @@
    "subject_key": "30b4d16eb069b68fb1d8d54a79862643d1e828650479e573003481bd9d88f518"
   },
   {
+   "printed": "21",
+   "restated": "Add line 4, line 8, line 11, line 12, and line 18.",
+   "model": "The IRS text says 'Add lines 4, 7 through 16, 18, and 19', but the restatement adds only lines 4, 8, 11, 12 and 18. The s2.other gate does not test for every omitted line: no input asks about Form 8919 uncollected tax (line 6, which feeds line 7), installment-sale interest (lines 14 and 15), or tips unreported to an employer that are not on a W-2 (Form 4137, line 5), so those amounts would be left out without a refusal.",
+   "ruling": "Ruling: interface gap; each omitted line is refused by a screen the reviewer was not given: Form 4137 (line 5) and Form 8919 (line 6, feeding line 7) by scope.pay_no_w2 (\"wages, tips or strike benefits that are not on a W-2\"; help: \"tips not reported to your employer (or shown only in box 8), or pay from a firm that wrongly treated you as a contractor. A Yes ends the interview here\") through scope.other_income, and for self-employed persons also by person.se_screen (\"tips reported on Form 4137 or wages on Form 8919\"); lines 14 and 15 (interest on installment-sale deferred tax) need an installment obligation, which sd.sold_other (\"Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale\") sends to sd.installment, refused (Form 6252). The reviewer names no other omitted line. Within scope line 21 is lines 4, 8, 11, 12 and 18 (f1040s2 line 21, \"Add lines 4, 7 through 16, 18, and 19\"). Project stands.",
+   "context": "d0a82d6fd102f449aea412443cc5886713dcd5595e9bcbe637ca1eb76fd82941",
+   "date": "2026-11-14",
+   "run": "ee4131afd2c4d8f5b0353558640fe0cf28caae570762ad7fc0e48f86b67d02fe",
+   "subject_key": "ce2e9b92d32078bf97d21d20fda113bf2b3d38057606d46c8bc3bc034a51e1d7"
+  },
+  {
    "printed": "4",
    "restated": "Add person.se_line12 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Adding across persons agrees with the instruction \"If both spouses have self-employment income, each must file a separate Schedule SE... Enter the combined SE tax on Schedule 2 (Form 1040), line 4.\" But nothing given here shows that Schedule SE line 12 is the SE tax amount; the Schedule SE form itself is not included.",

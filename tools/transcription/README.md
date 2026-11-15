@@ -242,8 +242,9 @@ comparison the rendered English, for class M each line's id, type and
 expression, all without citations (`tools/citations.py` checks those). A change
 to the subject fails `check-all` until the review is run again; a change to a
 tool's prompt or to the pages a citation names does not, and is rerun
-deliberately. `classm.py` builds the data and rebuilds its document's jobs
-before every run, so it never works from jobs of older data.
+deliberately. `classm.py` rebuilds its document's jobs before every run, so it never
+works from jobs of older data; it rebuilds the data first only when `tools/build_fresh.py`
+finds the build stale, so runs side by side do not each rebuild an unchanged tree.
 
 Raw prompts and responses are kept under the git-ignored `.transcription/`;
 the committed artifact is the log. For transcription/render/class M, cached responses
@@ -439,7 +440,12 @@ never automatically reused; migration does not certify an old rationale in a new
 
 ## What is compared
 
-Printed computed lines, matched by printed number. In addition, helper lines
+Printed computed lines, matched by printed number. A marker several computed lines of one form
+share is qualified by the line id in the log (`marker_keys`); `(screen)` is qualified so only where two
+or more computed lines carry it (`(screen) (ira.special)`), and the request still shows it bare
+(`prompt_marker`), so a reply's `(screen)` line takes the key of the project line it names
+(`second_keys`). Two compared lines with one key are an error (`line_keys`), and the review store
+refuses a record with two parts of one name. In addition, helper lines
 that other forms read (for example `qbi.deduction`, `ftc.credit`, the
 per-person W-2 totals) and the result lines of the shared definitions
 (`tax_on_amount.tax`, `tcw.tax`) are listed in the prompt by id and compared

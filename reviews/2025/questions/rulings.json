@@ -5465,7 +5465,7 @@
    ]
   },
   "unruled:scveh.passenger#1": {
-   "subject_sha": "e6f2696e575f54f0e678f7c0eb6808572f22b1e0cb8dda6190c7662e56c2edaf",
+   "subject_sha": "13fa9d1acfa82df0db1fa93cf4f87eec047cbfabaf8e01a9b65a69b621f437bd",
    "reason": "No defect: all three cases are refused.",
    "findings": [
     {
@@ -5490,7 +5490,16 @@
      "line": "scveh.screen (refusal on scveh.cost via scveh.screened)"
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "carried": {
+    "by": "rename",
+    "map": {
+     "scveh.line10_2025": "scveh.line10_this_year",
+     "scveh.s179_2025_ok": "scveh.s179_this_year_ok"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "e6f2696e575f54f0e678f7c0eb6808572f22b1e0cb8dda6190c7662e56c2edaf"
+   }
   },
   "unruled:scveh.placed#1": {
    "subject_sha": "e77f6f6bde32d01f392e24af81bd59d224fe95eb4773998c0ceba7bcd0420630",
@@ -5537,7 +5546,7 @@
    ]
   },
   "unruled:scveh.prior_179#1": {
-   "subject_sha": "92899f489d34103cb891f3ff6698e016ae628c8c2ff5aa37c871232c7f48d223",
+   "subject_sha": "85531b829d7726724dd278350fabda2fc25845faf6723771eae3c01c0c9b710e",
    "reason": "Finding 0 is a rare low on the 2019 post-recovery path; finding 1 misreads the encoding.",
    "findings": [
     {
@@ -5556,7 +5565,15 @@
    ],
    "bugs": [
     "BUG-0559"
-   ]
+   ],
+   "carried": {
+    "by": "rename",
+    "map": {
+     "scveh.is2025": "scveh.placed_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "92899f489d34103cb891f3ff6698e016ae628c8c2ff5aa37c871232c7f48d223"
+   }
   },
   "unruled:scveh.quarter#1": {
    "subject_sha": "994bc16ea39ea5e4e824f661882f74ba2232309b2558e667a06528982536ff97",

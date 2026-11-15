@@ -501,8 +501,8 @@
   },
   "unruled:s1a#1.1": {
    "class": "covered",
-   "line": "tipjob.qualified",
-   "evidence": "i1040gi pp. 101-103. Every employee tip amount is a tipjob entry whose tipjob.qualified question requires tips \"paid in cash (including by check, card or app), voluntarily, without negotiation and in an amount the customer decided, not for a service that is a felony or misdemeanor ..., and not for prostitution or pornographic activity\"; No refuses through tipjob.mixed, so automatic gratuities, non-cash and illegal-service tips cannot reach line 4a or 4c. [Restamped unchanged from the ruling of earlier claim #1 under prompt_sha c1e801ce: same form, same quoted text, same cited page, same item and effect.]",
+   "line": "tipjob.mixed",
+   "evidence": "i1040gi pp. 101-103. Every employee tip amount is a tipjob entry. Where the tips were received in a listed occupation, tipjob.charged asks \"Do these tips include a service charge or automatic gratuity that the business added to the bill, an amount you negotiated with the customer, or tips given as tickets, meals or goods instead of money?\" and tipjob.unlawful asks \"Was any of the work you got these tips for against the law (for example, serving alcohol without a license the state requires), or was any of it prostitution or pornographic activity?\"; a Yes to either makes tipjob.mixed true, which refuses tipjob.amount (\"Splitting one employer's reported tips between qualified and nonqualified tips is outside this tool\"), so automatic gratuities, non-cash and illegal-service tips cannot reach line 4a or 4c. [Restated for the interview redraft, which took tipjob.qualified apart into tipjob.listed, tipjob.other_work, tipjob.charged and tipjob.unlawful; the item and its effect are unchanged from the ruling of earlier claim #1 under prompt_sha c1e801ce.]",
    "subject_sha": "c148b52c8197fcd096b5e6a4a6eecbc6ef637ef05defee848b926bd96549895c"
   },
   "unruled:s2#1.1": {
@@ -744,8 +744,8 @@
   },
   "unruled:s1a#1.2": {
    "class": "covered",
-   "line": "tipjob.qualified",
-   "evidence": "i1040gi p. 103, \"Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c.\" tipjob.qualified asks, for each employer, \"Were all the tips you are counting from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024\"; No refuses through tipjob.mixed (\"Splitting one employer's reported tips between qualified and nonqualified tips is outside this tool\"), so an employer's amount that mixes listed and unlisted occupations cannot reach line 4a.",
+   "line": "tipjob.listed",
+   "evidence": "i1040gi p. 103, \"Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c.\" tipjob.listed asks, for each employer, \"Is the work you got these tips for on the IRS list of jobs that customarily get tips?\"; No makes this employer's qualified tips zero (tipjob.amount). Where it is Yes, tipjob.other_work asks \"Did you also get tips from this employer for other work that is not on that list?\", and Yes refuses through tipjob.mixed (\"Splitting one employer's reported tips between qualified and nonqualified tips is outside this tool\"), so an employer's amount that mixes listed and unlisted occupations cannot reach line 4a. [Restated for the interview redraft, which took tipjob.qualified apart into tipjob.listed, tipjob.other_work, tipjob.charged and tipjob.unlawful.]",
    "subject_sha": "c148b52c8197fcd096b5e6a4a6eecbc6ef637ef05defee848b926bd96549895c"
   },
   "unruled:s1a#1.3": {
@@ -1250,7 +1250,7 @@
   },
   "unruled:f4562#5.2": {
    "class": "covered",
-   "line": "asset.bonus_2025",
+   "line": "asset.bonus_this_year",
    "evidence": "i4562 pp. 5, 10. The allowance is taken only on property placed in service in 2025 (asset.bonus_2025 is zero unless asset.is2025) and figured on asset.after179, after section 179; qualified production property is refused by asset.screen.",
    "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64"
   },

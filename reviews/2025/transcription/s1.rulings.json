@@ -80,12 +80,51 @@
    "subject_key": "88551b4b7f98341812036b4d96ad6970419c7d4549f4d76e76fbd2277a321ea8"
   },
   {
+   "printed": "19a",
+   "project_expr_sha256": "aa163929eed6f77cd798bb0e8e58a7b0beed96001fed0dc67ef1417cdbcbfcbc",
+   "second_expr_sha256": "89f72fffee250ce912b8ebf2e19c427066e9e9def8da9ff66e0d461302100b5e",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3554 values compared, none different or missing: 1987 on 1987 fixture cases, 500 on 500 generated returns seed 20261026, 1067 on 1067 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "b32d95d2e680b66d4f494ad1071dc606bea4a26d28f19d40e064aa1bd115416e",
+   "date": "2026-11-14",
+   "run": "2c1d84afa7117e6c7b349cbf8b5e5f33d0d5cd4d4fad4e5c9e011bbb8cac01b2",
+   "subject_key": "1f94ac4e1c3ed89972f05f4a251c47a09c6abfdffc7afe94bb32131fcdcc87b9",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "20",
    "project_expr_sha256": "734b9913dd9977d8fdfac33b115d057cab32933037fbc63665bb341233f2bb12",
    "second_expr_sha256": "213f3f9e8a533a55a7111aca29cc19474e7674ef013ca3066cb38abe043aa857",
    "ruling": "Ruling: representation; i1040gi p. 98, IRA Deduction Worksheet, line 12: \"Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20\". The candidate's ira.line12a plus ira.line12b is the same total of person.ira_deduction over you and your spouse as the project's ira.total. executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,495 fixtures, 500 generated returns seed 20261026, 639 partial records from 40 bases; 2,634 comparisons per line; completed-return witnesses listed from an uncapped scratch re-run of triage.mjs, /tmp/adj-bklg-income/full/, same counts): 2,605 of 2,634 agree; no value differences and no difference on a completed return. The 22 candidate-unknown (21 incomplete, 1 refused; e.g. stage16.ira.i1 to i10, stage16.mut.ira_kbh_one_edge, audit.ira.covered_age50_single_phaseout, ss.person.separation) stop inside person.ira_deduction on modified AGI, which the candidate builds from its own Schedule 1 lines (line 1 needing refund.box8, ruled above, and the ungated refusal declarations on lines 2a and 19a that read s1.alimony_unsupported on every return); the 7 project-refuses (stage16.refuse.ira.kbh_short, .over_comp, .special, .excluded_income, .combat_pay, .dist, .deduct_less) are the IRA worksheet gates inside person.ira_deduction, which the candidate reaches too once those answers exist. Same expression and ruling as fix round 3. Project stands.",
    "context": "cf52b5b82eaefdc17c5fb53020a6dab28ac825051d33fc5bb8eea2bf3e93719f",
    "subject_key": "55667e7655db8858c50be8351958e6a6f8dc2968884328aab0b341cf087d0b05"
+  },
+  {
+   "printed": "24a",
+   "project_expr_sha256": "9fd0b9b5423b9fba13a8fa3e372689658d8b110316c8025a1ace85ddea414dac",
+   "second_expr_sha256": "2e4c4a6ba7aef293b370f3709e92e19a3bf43423b8fda9f0eb3cd515f46298fa",
+   "ruling": "Ruling: representation; both enter the jury duty pay given to the employer (i1040gi, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury\"). The reply gates on the parent question s1.jury_any, the project on line 8h being more than zero; they part only where jury pay is zero (nothing to give back) or a question is unasked. Triage (pass eba464d939db): 3,549/3,553 agree; 4 project-unknown (incomplete/refused); no value difference.",
+   "context": "b32d95d2e680b66d4f494ad1071dc606bea4a26d28f19d40e064aa1bd115416e",
+   "date": "2026-11-14",
+   "run": "2c1d84afa7117e6c7b349cbf8b5e5f33d0d5cd4d4fad4e5c9e011bbb8cac01b2",
+   "subject_key": "182c3d25d88ac4234a39096a61422398a7edf11ee92f73a375464c169575ad6b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@s1",
+     "fixture:t264.f4952.unsupported_with_interest@s1",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@s1",
+     "fixture:stage16.cleanup.refuse.retirement.special_first@s1"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "24a",
@@ -99,6 +138,22 @@
   },
   {
    "printed": "2a",
+   "project_expr_sha256": "1be799a77a9de4bc5e1bed93e8685df7c006969fd9cb4697565b90c1196b377b",
+   "second_expr_sha256": "25ee6eaa82adca61b1eef73886fb9baf5b6d35df7cf68d6d21030e19b2eae89a",
+   "ruling": "Ruling: representation; equivalent: the reply's conjunction (s1.alimony_any and s1.alimony) is the project's gated choose of s1.alimony_received, with zero otherwise (i1040gi p. 89, Line 2a). Triage (pass eba464d939db): 3,553/3,553 agree, no difference of any kind (an audit sample held from mechanical ruling).",
+   "context": "b32d95d2e680b66d4f494ad1071dc606bea4a26d28f19d40e064aa1bd115416e",
+   "date": "2026-11-14",
+   "run": "2c1d84afa7117e6c7b349cbf8b5e5f33d0d5cd4d4fad4e5c9e011bbb8cac01b2",
+   "subject_key": "28c547b8f1bcbf955dfae346a78fb63f60142ae809dcc1c92747c2fad38f1ab4",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2a",
    "project_expr_sha256": "45f8f1567f62e3e23f2f090ccf0469fda4dc17a17182989df6eeb8eca5e93bfa",
    "second_expr_sha256": "659cbd9addc40c69fd517e70826a5d0b6f8ba83bf9600968ec2f46ed48e7d172",
    "ruling": "Ruling: representation; the reply enters s1.alimony_received when s1.alimony is true and zero otherwise; the project enters zero when false and the amount when true. For an answered Bool these are the same; both need s1.alimony. The round-2 wording of the alimony inputs (A2, s1#4) is what the reply read (\"agreement entered into on or before December 31, 2018, unless a later change expressly provides that alimony isn't included in income\"); its refusals (more than one agreement, recapture, payments partly not alimony) go through s1.alimony_unsupported as in the project.",
@@ -106,6 +161,38 @@
    "date": "2026-11-04",
    "run": "68116d69bff88edfcc71d7837f31274043094232b8876dfc88021ac84175d7fc",
    "subject_key": "aba6c94f75ae0adea928e64ad412aa6edf291f40d4fef808c02203ce14065734"
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "6f583385d559effa11140134f8973cfb72c477c0d9ebcb6dd68c106287cc05e0",
+   "second_expr_sha256": "ce4c35b19de7e579d5e56bafacde071284e4b09dac90432840df8018dad13ebc",
+   "ruling": "Ruling: representation; both give box 1 of Form 1099-G less a 2025 repayment, floored at zero (i1040gi p. 89, Line 7, \"subtract the amount you repaid from the total amount you received\"). The reply refuses on s1.uc_unsupported for every filer, the project only when unemployment compensation was received (s1.line7_figured): contributions to a program reduce \"the amount you report on line 7\" and an earlier-year repayment is not a line 7 amount, so with no compensation line 7 is zero either way. Triage (pass eba464d939db): 2,804/3,553 agree; differences only candidate-refuses/candidate-unknown on s1.uc_unsupported where the project has no compensation (19 + 15 on completed returns, project 0); no value difference.",
+   "context": "b32d95d2e680b66d4f494ad1071dc606bea4a26d28f19d40e064aa1bd115416e",
+   "date": "2026-11-14",
+   "run": "2c1d84afa7117e6c7b349cbf8b5e5f33d0d5cd4d4fad4e5c9e011bbb8cac01b2",
+   "subject_key": "8704265d1e32ef59dc8dfb579debe72e4915146ffcc4151f97ad0ed0bb90cf8c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@s1",
+     "fixture:classm.f2441.2.deepseek@s1",
+     "fixture:classm.f2441.3.deepseek@s1",
+     "fixture:classm.f2441.4.deepseek@s1",
+     "fixture:classm.f2441.5.deepseek@s1",
+     "fixture:classm.f2441.6.deepseek@s1",
+     "fixture:classm.f1040.6.deepseek@s1",
+     "fixture:classm.otjob.3@s1",
+     "fixture:classm.f1040.6@s1",
+     "fixture:mutation.t2.qss_s1a_tips_ot_car@s1",
+     "fixture:mutation.t2.s1a.mfs_ssn_unanswered@s1",
+     "fixture:mutation.m3.scope.l16_f8615_qss@s1"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "7",
@@ -203,6 +290,28 @@
    "ruling": "Ruling: ambiguity; i1040gi p. 92, Line 8z: \"Use line 8z to report any taxable income not reported elsewhere on your return ... For more details, see Miscellaneous Income in Pub. 525\". The candidate sums oi8z.amount for every kind, refusing only recoveries, a corrective-distribution loss and charitable recapture; the project sums oi8z.taxable, which also refuses kinds whose taxable part needs other rules (corrective distributions, disaster relief, insurance dividends, any other kind) through oi8z.figured, the owner's choice amb.2025.line8z_kinds (decision D4). Triage executable-triage-v1 (triage/s1.json): 2,187 of 2,210 agree; all 23 differences are project-refuses on oi8z.figured where the candidate computes the entered amount (classm.dependent.3: kind other, candidate $6,999.00; stage16.refuse.oi8z.figured: $2,300.00; generated 0, 28, 39, 50). Project stands.",
    "context": "17198776ac9150f6fe290a710c57db027cf0426fd9142a5bda0b3e6f932f5a9a",
    "subject_key": "b6595f7e92f2fc11ef5b61adf214c7e948253456e62b12f6d0f02662fcb676f4"
+  },
+  {
+   "printed": "s1.has_gambling",
+   "project_expr_sha256": "3f62aeeccf4483c03832e018da1a27cbea7c685a159dbf38df5ed331fab1466f",
+   "second_expr_sha256": "9f69267fc224c9a57ad5108cc0d94bd205b5390b3665bcef162c404dbdb334b2",
+   "ruling": "Ruling: representation; the reply tests line 8b, the project the gated winnings amount that line 8b copies (s1.gambling_winnings_if_winnings); they differ only where line 8b refuses for a professional gambler (s1.gambling_business: p525 p. 33, \"If you're in the trade or business of gambling, use Schedule C\") or its question is unasked. Triage (pass eba464d939db): 3,551/3,553 agree; 1 candidate-refuses (refused return, stage16.refuse.s1.gambling_business), 1 candidate-unknown (incomplete); no value difference.",
+   "context": "b32d95d2e680b66d4f494ad1071dc606bea4a26d28f19d40e064aa1bd115416e",
+   "date": "2026-11-14",
+   "run": "2c1d84afa7117e6c7b349cbf8b5e5f33d0d5cd4d4fad4e5c9e011bbb8cac01b2",
+   "subject_key": "8151fa11014cb87555b2abf998f8f6d5246618591a7d8eae4a4127fb35f56f6d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.s1.10@s1",
+     "fixture:stage16.refuse.s1.gambling_business@s1"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "s1.has_gambling",

@@ -40,6 +40,43 @@
    }
   },
   {
+   "printed": "10",
+   "project_expr_sha256": "ebabb2c87d2b3454bf144af5a4fb08970864b4cc88618cc83b49053849560d29",
+   "second_expr_sha256": "a61993ecfd8bfaf7516c9a2a6989714054e28ed05fdd196fbe955fc149513e27",
+   "ruling": "Ruling: representation; i4562 p. 5, Line 10: \"If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562\". Both give the 2024 carryover when a prior form is reported and zero otherwise; the project asks s179.prior_form only of a filer whose business existed before 2025 (scope.business_before), the reply reads it directly. executable triage (.transcription/triage/2025/s179.json, executable-triage-v2): 2,069 of 2,560 agree; 459 candidate-unknown (14 completed), 1 candidate-shows-skipped (the line's display, s179.show10), 2 project-unknown, 29 project-refuses; no value difference. Project stands.",
+   "context": "32be22470b5ed3e5b3b2b46ae48911152847abe7275667d53121304104e0dfc7",
+   "date": "2026-11-14",
+   "run": "3ae36cfd3222cbc261e816357d752acd7fdb11b7165a80c7e882b22742885fae",
+   "subject_key": "133c22a8cbf3404db994085820499c9a7a4fa0ff4003d0fc41c0e5475cb7bf66",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_class@s179",
+     "fixture:stage14.asset.refuse_pct@s179",
+     "fixture:stage14.asset.refuse_reuse_recycling@s179",
+     "fixture:stage14.asset.refuse_pre_2017@s179",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s179",
+     "fixture:stage12.car.mixed_sc_interest_prorated@s179",
+     "fixture:classm.f2441.1.deepseek@s179",
+     "fixture:classm.f2441.2.deepseek@s179",
+     "fixture:classm.f2441.3.deepseek@s179",
+     "fixture:classm.f2441.4.deepseek@s179",
+     "fixture:classm.f2441.5.deepseek@s179",
+     "fixture:classm.f2441.6.deepseek@s179",
+     "fixture:classm.g28.2.deepseek@s179",
+     "fixture:classm.f4952.3@s179",
+     "fixture:stage14.s179.zero_limit_carryover@s179"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "11",
    "project_expr_sha256": "21034e94f084c24f1076de8902a90918ea1d45d8c92514adf9923ef8bbd4593c",
    "second_expr_sha256": "361e8313fb466b0729e0470abaed9172c54d49956437ab8b6b5fe0343ead964b",
@@ -63,11 +100,33 @@
    "printed": "11",
    "project_expr_sha256": "56ccd9b619bb48ed77c284a8cac9d356fcd4d400c28736cbcb81df105ae3f699",
    "second_expr_sha256": "489f3dc1ca17b6c58aa848a05f32ee4eeca4f542afce4c27fe2b4d1a5dbb161b",
-   "ruling": "Ruling: representation; project retained. i4562 p. 5, Line 11, Individuals, and p946 p. 19, \"Interest from working capital of your trade or business\". Both take the smaller of line 5 and the business income (Schedule C income before section 179, Form 1040 line 1a and the working-capital interest), not less than zero. The project asks s179.wc_interest only where it can matter (s179.wc_interest_if_limited: a section 179 deduction is figured, the business income before it is less than line 5, and line 2b is above zero) and uses zero otherwise; the second reads the answer on every return. Where the business income is at least line 5, line 11 is line 5 on both; where line 2b is zero the interest is zero on both; where no deduction is figured (lines 9 and 10 zero) line 12 is zero on both, as ruled when BUG-0474 was fixed (BUG-0482). Re-reviewed because this round reworded s179.line10 (a carryover with no 2024 Form 4562, BUG-0542); no expression changed. Project stands.",
-   "context": "d63c792e9b566b2f4d62af0469aa79509a20c9bf9aaf64cd9ff2c6943cae4a6a",
-   "date": "2026-11-10",
-   "run": "ce3899c78993e7315a05091ababc480a68001fb250d1188b1cd6ccd9516a2b5b",
-   "subject_key": "30cbc92ac80439387bb2ffd12760280e0250306ae7d2be11117cfff23a7857a3"
+   "ruling": "Ruling: representation; i4562 p. 5, Line 11, and p946 p. 19, Taxable income, \"Interest from working capital of your trade or business\". Both take the smaller of line 5 and the business income (wages, the businesses' net income without the section 179 deduction, and working-capital interest), floored at zero. The project asks the working-capital interest only where it can change line 12 (lines 9 and 10 above zero, the other income under line 5, and taxable interest on Form 1040 line 2b); the reply reads s179.wc_interest on every return. executable triage (.transcription/triage/2025/s179.json, executable-triage-v2): 1,929 of 2,560 agree; 623 candidate-unknown (25 completed), 8 project-refuses; no value difference. Project stands.",
+   "context": "32be22470b5ed3e5b3b2b46ae48911152847abe7275667d53121304104e0dfc7",
+   "date": "2026-11-14",
+   "run": "3ae36cfd3222cbc261e816357d752acd7fdb11b7165a80c7e882b22742885fae",
+   "subject_key": "c41b29eeb8191b8349fe8e4570090b7d3aef417037d6bf07ab301a8e74e9d965",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@s179",
+     "fixture:classm.f2441.2.deepseek@s179",
+     "fixture:classm.f2441.3.deepseek@s179",
+     "fixture:classm.f2441.4.deepseek@s179",
+     "fixture:classm.f2441.5.deepseek@s179",
+     "fixture:classm.f2441.6.deepseek@s179",
+     "fixture:stage14.s179.refuse_zero_limit@s179",
+     "fixture:stage14.s179.refuse_over_limit@s179",
+     "fixture:stage14.s179.refuse_mfs@s179",
+     "fixture:bug0474.s179.wc_interest_over@s179",
+     "generated:20261026.155@s179",
+     "generated:20261026.285@s179"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "11",

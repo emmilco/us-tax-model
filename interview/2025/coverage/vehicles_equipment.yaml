@@ -1,0 +1,1112 @@
+# Coverage rows for business vehicles and equipment (lane 6b of the provisional redraft). Written by
+# docs/provisional/lanes/l6b_work/coverage.py from the bank's seq numbers; see opening.yaml for how a row is read.
+tax_year: 2025
+part: Business vehicles and equipment
+profile: full
+sets:
+  business:
+    says: A single self-employed designer with one business and an office at home (the answers of persona 05), with
+      no vehicle or equipment unless the row lists one.
+    answers:
+      $person: [taxpayer]
+      f1040.status: single
+      $sc@person[taxpayer]: [design_studio]
+      person[taxpayer].plan: none
+      person[taxpayer].sc[design_studio].hi_uses: false
+      person[taxpayer].sc[design_studio].ho_uses: true
+      person[taxpayer].sc[design_studio].line10: 0
+      person[taxpayer].sc[design_studio].line11: 450000
+      person[taxpayer].sc[design_studio].line15: 60000
+      person[taxpayer].sc[design_studio].line16a: 0
+      person[taxpayer].sc[design_studio].line16b: 0
+      person[taxpayer].sc[design_studio].line17: 85000
+      person[taxpayer].sc[design_studio].line18: 42000
+      person[taxpayer].sc[design_studio].line2: 0
+      person[taxpayer].sc[design_studio].line20b: 0
+      person[taxpayer].sc[design_studio].line21: 0
+      person[taxpayer].sc[design_studio].line22: 130000
+      person[taxpayer].sc[design_studio].line23: 15000
+      person[taxpayer].sc[design_studio].travel_meals: true
+      person[taxpayer].sc[design_studio].line24a: 95000
+      person[taxpayer].sc[design_studio].meals_80: 0
+      person[taxpayer].sc[design_studio].meals_100: 0
+      person[taxpayer].sc[design_studio].employees: false
+      person[taxpayer].sc[design_studio].goods: false
+      person[taxpayer].sc[design_studio].line25: 72000
+      person[taxpayer].sc[design_studio].line48: 240000
+      person[taxpayer].sc[design_studio].line6: 0
+      person[taxpayer].sc[design_studio].line8: 110000
+      person[taxpayer].sc[design_studio].meals_50: 36000
+      person[taxpayer].sc[design_studio].method_other: false
+      person[taxpayer].sc[design_studio].passive: true
+      person[taxpayer].sc[design_studio].rent_equipment: 0
+      person[taxpayer].sc[design_studio].special: false
+      person[taxpayer].sc[design_studio].spouse_owned: false
+      person[taxpayer].sc[design_studio].statutory: false
+      person[taxpayer].sc[design_studio].business_credit: false
+      person[taxpayer].sc[design_studio].fuel_credit: false
+      person[taxpayer].sc[design_studio].line1: 8800000
+      person[taxpayer].sc[design_studio].tips_ot: false
+      person[taxpayer].se_screen: false
+      person[taxpayer].sc[design_studio].ho_other: false
+      person[taxpayer].sc[design_studio].ho_sqft: 180
+      scope.se_plan_other: false
+      scope.income_averaging: false
+      qbi.suspended: false
+      s2.lookback: false
+      $scveh@person[taxpayer].sc[design_studio]: []
+      $asset@person[taxpayer].sc[design_studio]: []
+rows:
+- id: equipment.carryover_none
+  design: s179.line10, no carryover
+  situation: A filer with no business and no section 179 deduction left over from an earlier year is asked for no
+    amount.
+  uses: []
+  answers:
+    scope.business_before: true
+    scope.nol: false
+    scope.passive: false
+    scope.f8978: false
+    s179.prior_form: false
+  expect:
+    proceeds:
+      s179.prior_form: false
+    not_asked:
+    - s179.carryover
+- id: equipment.carryover_no_business
+  design: s179.line10, a carryover with no Schedule C (s179.orphan)
+  situation: A filer has a section 179 deduction left over from an earlier year and no business in 2025.
+  uses: []
+  answers:
+    scope.business_before: true
+    scope.nol: false
+    scope.passive: false
+    scope.f8978: false
+    s179.prior_form: true
+    s179.carryover: 300000
+  expect:
+    refused: s179.orphan
+- id: vehicles.mileage_every_year
+  design: scveh.smr_ok, the typical vehicle
+  situation: A person drives their own car for the business and has always taken the standard mileage rate for it.
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: &id001
+    - car
+    person[taxpayer].sc[design_studio].scveh[car].method: standard
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 4200
+    person[taxpayer].sc[design_studio].scveh[car].smr_always: true
+    person[taxpayer].sc[design_studio].scveh[car].fleet: false
+  expect:
+    proceeds:
+      person[taxpayer].sc[design_studio].scveh[car].smr_always: true
+    not_asked:
+    - person[taxpayer].sc[design_studio].scveh[car].smr_first
+    - person[taxpayer].sc[design_studio].scveh[car].owned
+    - person[taxpayer].sc[design_studio].scveh[car].records
+- id: vehicles.mileage_first_year_only
+  design: scveh.smr_ok, owned, rate used in the first year
+  situation: An owner took the standard mileage rate in the first year, actual expenses in a later year, and the
+    rate again in 2025.
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id001
+    person[taxpayer].sc[design_studio].scveh[car].method: standard
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 4200
+    person[taxpayer].sc[design_studio].scveh[car].smr_always: false
+    person[taxpayer].sc[design_studio].scveh[car].smr_first: true
+    person[taxpayer].sc[design_studio].scveh[car].fleet: false
+  expect:
+    proceeds:
+      person[taxpayer].sc[design_studio].scveh[car].smr_first: true
+- id: vehicles.mileage_not_first_year
+  design: scveh.smr_ok answered No (first year or lease)
+  situation: The standard mileage rate was not used in the first year of an owned vehicle, or not for the whole
+    lease.
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id001
+    person[taxpayer].sc[design_studio].scveh[car].method: standard
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].smr_always: false
+    person[taxpayer].sc[design_studio].scveh[car].smr_first: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 4200
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].smr_bad
+- id: vehicles.mileage_fleet
+  design: scveh.smr_ok answered No (five or more vehicles)
+  situation: Five or more vehicles were used in the business at the same time.
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id001
+    person[taxpayer].sc[design_studio].scveh[car].method: standard
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].smr_always: true
+    person[taxpayer].sc[design_studio].scveh[car].fleet: true
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 4200
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].smr_bad
+- id: vehicles.actual_owned_plain
+  design: scveh.screen answered No
+  situation: An owned car bought new in 2025 in an ordinary way, on actual expenses, with none of the special facts.
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: &id002
+    - car
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: false
+    person[taxpayer].sc[design_studio].scveh[car].for_hire: false
+    person[taxpayer].sc[design_studio].scveh[car].investment: false
+    person[taxpayer].sc[design_studio].scveh[car].others_use: false
+    person[taxpayer].sc[design_studio].scveh[car].method_other: false
+    person[taxpayer].sc[design_studio].scveh[car].passenger: true
+    person[taxpayer].sc[design_studio].scveh[car].s179_elect: 0
+    person[taxpayer].sc[design_studio].scveh[car].bonus_choice: full
+    person[taxpayer].sc[design_studio].scveh[car].after_jan19: true
+    person[taxpayer].sc[design_studio].scveh[car].bonus_same: true
+    person[taxpayer].sc[design_studio].scveh[car].used_before: false
+    person[taxpayer].sc[design_studio].scveh[car].bonus_excluded: false
+    person[taxpayer].sc[design_studio].scveh[car].cost: 3000000
+    person[taxpayer].sc[design_studio].scveh[car].quarter: q2
+  expect:
+    proceeds:
+      person[taxpayer].sc[design_studio].scveh[car].records: true
+- id: vehicles.screen_records
+  design: scveh.screen item, now scveh.records
+  situation: 'An owned vehicle on actual expenses: Its business use can be proved with adequate records or with
+    sufficient evidence to support your own statements.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: false
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_got_other
+  design: scveh.screen item, now scveh.got_other
+  situation: 'An owned vehicle on actual expenses: Acquired in a trade-in or from a related person, or in an involuntary
+    conversion or a like-kind exchange.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_before_2017
+  design: scveh.screen item, now scveh.acquired_before_bonus_date
+  situation: 'An owned vehicle on actual expenses: Placed in service in 2025 but acquired before September 28, 2017.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_converted
+  design: scveh.screen item, now scveh.converted
+  situation: 'An owned vehicle on actual expenses: Converted from personal use to business use, or from business
+    use to personal use, during 2025.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_disposed
+  design: scveh.screen item, now scveh.disposed
+  situation: 'An owned vehicle on actual expenses: Disposed of in 2025.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_basis_changed
+  design: scveh.screen item, now scveh.basis_changed
+  situation: 'An owned vehicle on actual expenses: A substantial improvement made to it in 2025 or an earlier year
+    (such as adding air conditioning or a new engine).'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_short_year
+  design: scveh.screen item, now scveh.short_year
+  situation: 'An owned vehicle on actual expenses: The 2025 tax year, or any tax year since it was placed in service,
+    is shorter than 12 months.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_for_hire
+  design: scveh.screen item, now scveh.for_hire
+  situation: 'An owned vehicle on actual expenses: Used in your business of transporting persons or property for
+    hire, or an ambulance or hearse.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: false
+    person[taxpayer].sc[design_studio].scveh[car].for_hire: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_investment
+  design: scveh.screen item, now scveh.investment
+  situation: 'An owned vehicle on actual expenses: Used in 2025 for investment, that is, for the production of income
+    outside your trade or business.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: false
+    person[taxpayer].sc[design_studio].scveh[car].for_hire: false
+    person[taxpayer].sc[design_studio].scveh[car].investment: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_leasing
+  design: scveh.screen item, now scveh.leasing
+  situation: 'An owned vehicle on actual expenses: You are regularly engaged in the business of leasing passenger
+    automobiles.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: false
+    person[taxpayer].sc[design_studio].scveh[car].for_hire: false
+    person[taxpayer].sc[design_studio].scveh[car].investment: false
+    person[taxpayer].sc[design_studio].scveh[car].others_use: true
+    person[taxpayer].sc[design_studio].scveh[car].leasing: true
+    person[taxpayer].sc[design_studio].scveh[car].method_other: false
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_exempt_use
+  design: scveh.screen item, now scveh.exempt_use
+  situation: 'An owned vehicle on actual expenses: Used by a tax-exempt organization, unless used in connection
+    with the production of income subject to the tax on unrelated trade or business income.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: false
+    person[taxpayer].sc[design_studio].scveh[car].for_hire: false
+    person[taxpayer].sc[design_studio].scveh[car].investment: false
+    person[taxpayer].sc[design_studio].scveh[car].others_use: true
+    person[taxpayer].sc[design_studio].scveh[car].leasing: false
+    person[taxpayer].sc[design_studio].scveh[car].exempt_use: true
+    person[taxpayer].sc[design_studio].scveh[car].method_other: false
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_qbu_low
+  design: scveh.screen item, now scveh.qbu_low
+  situation: 'An owned vehicle on actual expenses: Its qualified business use is 50% or less once uses that are
+    not qualified business use are left out.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: false
+    person[taxpayer].sc[design_studio].scveh[car].for_hire: false
+    person[taxpayer].sc[design_studio].scveh[car].investment: false
+    person[taxpayer].sc[design_studio].scveh[car].others_use: true
+    person[taxpayer].sc[design_studio].scveh[car].leasing: false
+    person[taxpayer].sc[design_studio].scveh[car].exempt_use: false
+    person[taxpayer].sc[design_studio].scveh[car].qbu_low: true
+    person[taxpayer].sc[design_studio].scveh[car].method_other: false
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_method_other
+  design: scveh.screen item, now scveh.method_other
+  situation: 'An owned vehicle on actual expenses: Must be depreciated under ADS (for example, used predominantly
+    outside the United States), or ADS, the straight line method or the 150% declining bala.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: false
+    person[taxpayer].sc[design_studio].scveh[car].for_hire: false
+    person[taxpayer].sc[design_studio].scveh[car].investment: false
+    person[taxpayer].sc[design_studio].scveh[car].others_use: false
+    person[taxpayer].sc[design_studio].scveh[car].method_other: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_prior_bonus
+  design: scveh.screen item, now scveh.prior_bonus
+  situation: 'An owned vehicle on actual expenses: A special depreciation allowance was claimed for it in an earlier
+    year.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2024
+    person[taxpayer].sc[design_studio].scveh[car].passenger: true
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: false
+    person[taxpayer].sc[design_studio].scveh[car].for_hire: false
+    person[taxpayer].sc[design_studio].scveh[car].investment: false
+    person[taxpayer].sc[design_studio].scveh[car].others_use: false
+    person[taxpayer].sc[design_studio].scveh[car].method_other: false
+    person[taxpayer].sc[design_studio].scveh[car].prior_bonus: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_prior_smr
+  design: scveh.screen item, now scveh.prior_smr
+  situation: 'An owned vehicle on actual expenses: The standard mileage rate was used for it in an earlier year.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2024
+    person[taxpayer].sc[design_studio].scveh[car].passenger: true
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: false
+    person[taxpayer].sc[design_studio].scveh[car].for_hire: false
+    person[taxpayer].sc[design_studio].scveh[car].investment: false
+    person[taxpayer].sc[design_studio].scveh[car].others_use: false
+    person[taxpayer].sc[design_studio].scveh[car].method_other: false
+    person[taxpayer].sc[design_studio].scveh[car].prior_bonus: false
+    person[taxpayer].sc[design_studio].scveh[car].prior_smr: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_prior_low_use
+  design: scveh.screen item, now scveh.prior_low_use
+  situation: 'An owned vehicle on actual expenses: Its business use was 50% or less in any earlier year.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2024
+    person[taxpayer].sc[design_studio].scveh[car].passenger: true
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: false
+    person[taxpayer].sc[design_studio].scveh[car].for_hire: false
+    person[taxpayer].sc[design_studio].scveh[car].investment: false
+    person[taxpayer].sc[design_studio].scveh[car].others_use: false
+    person[taxpayer].sc[design_studio].scveh[car].method_other: false
+    person[taxpayer].sc[design_studio].scveh[car].prior_bonus: false
+    person[taxpayer].sc[design_studio].scveh[car].prior_smr: false
+    person[taxpayer].sc[design_studio].scveh[car].prior_low_use: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_used_before
+  design: scveh.screen item, now scveh.used_before
+  situation: 'An owned vehicle on actual expenses: A special depreciation allowance is claimed for it in 2025 and
+    its original use did not begin with you.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: false
+    person[taxpayer].sc[design_studio].scveh[car].for_hire: false
+    person[taxpayer].sc[design_studio].scveh[car].investment: false
+    person[taxpayer].sc[design_studio].scveh[car].others_use: false
+    person[taxpayer].sc[design_studio].scveh[car].method_other: false
+    person[taxpayer].sc[design_studio].scveh[car].passenger: true
+    person[taxpayer].sc[design_studio].scveh[car].s179_elect: 0
+    person[taxpayer].sc[design_studio].scveh[car].bonus_choice: full
+    person[taxpayer].sc[design_studio].scveh[car].after_jan19: true
+    person[taxpayer].sc[design_studio].scveh[car].bonus_same: true
+    person[taxpayer].sc[design_studio].scveh[car].used_before: true
+    person[taxpayer].sc[design_studio].scveh[car].cost: 3000000
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: vehicles.screen_bonus_excluded
+  design: scveh.screen item, now scveh.bonus_excluded
+  situation: 'An owned vehicle on actual expenses: A special depreciation allowance is claimed for it in 2025 and
+    it is property described in section 168(k)(9)(A) or 168(k)(9)(B): property primarily us.'
+  uses:
+  - business
+  answers:
+    $scveh@person[taxpayer].sc[design_studio]: *id002
+    person[taxpayer].sc[design_studio].scveh[car].method: actual
+    person[taxpayer].sc[design_studio].scveh[car].parking: 0
+    person[taxpayer].sc[design_studio].scveh[car].employee_use: false
+    person[taxpayer].sc[design_studio].scveh[car].miles_business: 8000
+    person[taxpayer].sc[design_studio].scveh[car].miles_commuting: 0
+    person[taxpayer].sc[design_studio].scveh[car].miles_other: 2000
+    person[taxpayer].sc[design_studio].scveh[car].operating: 300000
+    person[taxpayer].sc[design_studio].scveh[car].owned: true
+    person[taxpayer].sc[design_studio].scveh[car].placed: y2025
+    person[taxpayer].sc[design_studio].scveh[car].records: true
+    person[taxpayer].sc[design_studio].scveh[car].got_other: false
+    person[taxpayer].sc[design_studio].scveh[car].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].scveh[car].converted: false
+    person[taxpayer].sc[design_studio].scveh[car].disposed: false
+    person[taxpayer].sc[design_studio].scveh[car].basis_changed: false
+    person[taxpayer].sc[design_studio].scveh[car].short_year: false
+    person[taxpayer].sc[design_studio].scveh[car].for_hire: false
+    person[taxpayer].sc[design_studio].scveh[car].investment: false
+    person[taxpayer].sc[design_studio].scveh[car].others_use: false
+    person[taxpayer].sc[design_studio].scveh[car].method_other: false
+    person[taxpayer].sc[design_studio].scveh[car].passenger: true
+    person[taxpayer].sc[design_studio].scveh[car].s179_elect: 0
+    person[taxpayer].sc[design_studio].scveh[car].bonus_choice: full
+    person[taxpayer].sc[design_studio].scveh[car].after_jan19: true
+    person[taxpayer].sc[design_studio].scveh[car].bonus_same: true
+    person[taxpayer].sc[design_studio].scveh[car].used_before: false
+    person[taxpayer].sc[design_studio].scveh[car].bonus_excluded: true
+    person[taxpayer].sc[design_studio].scveh[car].cost: 3000000
+  expect:
+    refused: person[taxpayer].sc[design_studio].scveh[car].screened
+- id: equipment.plain_computer
+  design: asset.screen answered No
+  situation: A computer bought new in 2025 in an ordinary way and used only in the business.
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: &id003
+    - item
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].got_other: false
+    person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].asset[item].ended_this_year: false
+    person[taxpayer].sc[design_studio].asset[item].basis_changed: false
+    person[taxpayer].sc[design_studio].asset[item].short_year: false
+    person[taxpayer].sc[design_studio].asset[item].method_other: false
+    person[taxpayer].sc[design_studio].asset[item].ads_required: false
+    person[taxpayer].sc[design_studio].asset[item].outside_use: false
+    person[taxpayer].sc[design_studio].asset[item].not179: false
+    person[taxpayer].sc[design_studio].asset[item].bonus_choice: full
+    person[taxpayer].sc[design_studio].asset[item].after_jan19: true
+    person[taxpayer].sc[design_studio].asset[item].bonus_same: true
+    person[taxpayer].sc[design_studio].asset[item].used_before: false
+    person[taxpayer].sc[design_studio].asset[item].cost: 200000
+    person[taxpayer].sc[design_studio].asset[item].quarter: q2
+  expect:
+    proceeds:
+      person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+- id: equipment.screen_kind_excluded
+  design: asset.screen item, now asset.kind_excluded
+  situation: 'An item of equipment: Real property (a building or a structural component, other than qualified improvement
+    property) or land.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_software_spread
+  design: asset.screen item, now asset.software_spread
+  situation: 'An item of equipment: Computer software not placed in service in 2025, or whose business cost is not
+    all deducted in 2025 through section 179 and the special depreciation a.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: true
+    person[taxpayer].sc[design_studio].asset[item].software_spread: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_industry_item
+  design: asset.screen item, now asset.industry_item
+  situation: 'An item of equipment: Qualified reuse and recycling property.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: true
+    person[taxpayer].sc[design_studio].asset[item].industry_item: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_long_production
+  design: asset.screen item, now asset.long_production
+  situation: 'An item of equipment: Property with a long production period, or qualified production property.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_got_other
+  design: asset.screen item, now asset.got_other
+  situation: 'An item of equipment: Acquired in a like-kind exchange or an involuntary conversion, with a trade-in,
+    from a related person, or by gift or inheritance.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].got_other: true
+    person[taxpayer].sc[design_studio].asset[item].cost: 200000
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_before_2017
+  design: asset.screen item, now asset.acquired_before_bonus_date
+  situation: 'An item of equipment: Acquired before September 28, 2017.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].got_other: false
+    person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: true
+    person[taxpayer].sc[design_studio].asset[item].cost: 200000
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_ended_2025
+  design: asset.screen item, now asset.ended_this_year
+  situation: 'An item of equipment: Disposed of, or a portion of it disposed of, or converted to personal use in
+    2025.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].got_other: false
+    person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].asset[item].ended_this_year: true
+    person[taxpayer].sc[design_studio].asset[item].cost: 200000
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_basis_changed
+  design: asset.screen item, now asset.basis_changed
+  situation: 'An item of equipment: Basis adjusted for anything other than depreciation (for example a casualty
+    loss), or reduced by a credit or deduction other than the section 179 dedu.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].got_other: false
+    person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].asset[item].ended_this_year: false
+    person[taxpayer].sc[design_studio].asset[item].basis_changed: true
+    person[taxpayer].sc[design_studio].asset[item].cost: 200000
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_use_changed
+  design: asset.screen item, now asset.use_changed
+  situation: 'An item of equipment: Its business use percentage has changed since it was placed in service.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2024
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].got_other: false
+    person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].asset[item].ended_this_year: false
+    person[taxpayer].sc[design_studio].asset[item].basis_changed: false
+    person[taxpayer].sc[design_studio].asset[item].use_changed: true
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_short_year
+  design: asset.screen item, now asset.short_year
+  situation: 'An item of equipment: The 2025 tax year, or any tax year since it was placed in service, is shorter
+    than 12 months.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].got_other: false
+    person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].asset[item].ended_this_year: false
+    person[taxpayer].sc[design_studio].asset[item].basis_changed: false
+    person[taxpayer].sc[design_studio].asset[item].short_year: true
+    person[taxpayer].sc[design_studio].asset[item].cost: 200000
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_method_other
+  design: asset.screen item, now asset.method_other
+  situation: 'An item of equipment: ADS, the straight line method or the 150% declining balance method elected.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].got_other: false
+    person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].asset[item].ended_this_year: false
+    person[taxpayer].sc[design_studio].asset[item].basis_changed: false
+    person[taxpayer].sc[design_studio].asset[item].short_year: false
+    person[taxpayer].sc[design_studio].asset[item].method_other: true
+    person[taxpayer].sc[design_studio].asset[item].cost: 200000
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_ads_required
+  design: asset.screen item, now asset.ads_required
+  situation: 'An item of equipment: Must be depreciated under ADS, for example: imported property covered by an
+    executive order of the President of the United States.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].got_other: false
+    person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].asset[item].ended_this_year: false
+    person[taxpayer].sc[design_studio].asset[item].basis_changed: false
+    person[taxpayer].sc[design_studio].asset[item].short_year: false
+    person[taxpayer].sc[design_studio].asset[item].method_other: false
+    person[taxpayer].sc[design_studio].asset[item].ads_required: true
+    person[taxpayer].sc[design_studio].asset[item].cost: 200000
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_outside_use
+  design: asset.screen item, now asset.outside_use
+  situation: 'An item of equipment: Used predominantly outside the United States, or tax-exempt use or tax-exempt
+    bond financed property.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].got_other: false
+    person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].asset[item].ended_this_year: false
+    person[taxpayer].sc[design_studio].asset[item].basis_changed: false
+    person[taxpayer].sc[design_studio].asset[item].short_year: false
+    person[taxpayer].sc[design_studio].asset[item].method_other: false
+    person[taxpayer].sc[design_studio].asset[item].ads_required: false
+    person[taxpayer].sc[design_studio].asset[item].outside_use: true
+    person[taxpayer].sc[design_studio].asset[item].cost: 200000
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_qbu_low
+  design: asset.screen item, now asset.qbu_low
+  situation: 'An item of equipment: Listed property whose qualified business use is 50% or less.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: true
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].qbu_low: true
+    person[taxpayer].sc[design_studio].asset[item].cost: 200000
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_used_before
+  design: asset.screen item, now asset.used_before
+  situation: 'An item of equipment: A special depreciation allowance is claimed for it in 2025 and its original
+    use did not begin with you.'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].got_other: false
+    person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].asset[item].ended_this_year: false
+    person[taxpayer].sc[design_studio].asset[item].basis_changed: false
+    person[taxpayer].sc[design_studio].asset[item].short_year: false
+    person[taxpayer].sc[design_studio].asset[item].method_other: false
+    person[taxpayer].sc[design_studio].asset[item].ads_required: false
+    person[taxpayer].sc[design_studio].asset[item].outside_use: false
+    person[taxpayer].sc[design_studio].asset[item].not179: false
+    person[taxpayer].sc[design_studio].asset[item].bonus_choice: full
+    person[taxpayer].sc[design_studio].asset[item].after_jan19: true
+    person[taxpayer].sc[design_studio].asset[item].bonus_same: true
+    person[taxpayer].sc[design_studio].asset[item].used_before: true
+    person[taxpayer].sc[design_studio].asset[item].cost: 200000
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.software_expensed
+  design: asset.screen, the software exception
+  situation: Software first used in 2025 whose whole business cost is deducted in 2025 goes on.
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: true
+    person[taxpayer].sc[design_studio].asset[item].software_spread: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].long_production: false
+    person[taxpayer].sc[design_studio].asset[item].got_other: false
+    person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
+    person[taxpayer].sc[design_studio].asset[item].ended_this_year: false
+    person[taxpayer].sc[design_studio].asset[item].basis_changed: false
+    person[taxpayer].sc[design_studio].asset[item].short_year: false
+    person[taxpayer].sc[design_studio].asset[item].method_other: false
+    person[taxpayer].sc[design_studio].asset[item].ads_required: false
+    person[taxpayer].sc[design_studio].asset[item].outside_use: false
+    person[taxpayer].sc[design_studio].asset[item].not179: false
+    person[taxpayer].sc[design_studio].asset[item].bonus_choice: full
+    person[taxpayer].sc[design_studio].asset[item].after_jan19: true
+    person[taxpayer].sc[design_studio].asset[item].bonus_same: true
+    person[taxpayer].sc[design_studio].asset[item].used_before: false
+    person[taxpayer].sc[design_studio].asset[item].cost: 200000
+    person[taxpayer].sc[design_studio].asset[item].quarter: q2
+  expect:
+    proceeds:
+      person[taxpayer].sc[design_studio].asset[item].software_spread: false

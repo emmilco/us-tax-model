@@ -5,14 +5,14 @@
 
 ## (helper) — `sa.unsupported`
 
-- **Authored helper label:** Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
-- **Encoded (Bool):** Input — Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
-- Expr: `{"op":"input","source":"Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Authored helper label:** A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt or use limits; the sales-tax election; a foreign tax deduction; or a deduction from the Schedule A line 16 list other than gambling losses
+- **Encoded (Bool):** (helper "Asked only where it can apply (sa.mortgage_unreported)" = true or helper "Asked only where it can apply (sa.mortgage_over_limit)" = true or helper "Asked only where it can apply (sa.mortgage_other_use)" = true or helper "Do you elect to deduct state and local general sales taxes instead of state and local income taxes?" = true or helper "Asked only where it can apply (sa.foreign_tax_deduct)" = true or helper "Do you (or, on a joint return, your spouse) have a deduction for federal estate tax on income in respect of a decedent?" = true or helper "Do you (or, on a joint return, your spouse) have a deduction for amortizable bond premium (for example, a bond premium carryforward, or premium on bonds acquired before October 23, 1986)?" = true or helper "Do you (or, on a joint return, your spouse) have an ordinary loss attributable to a contingent payment debt instrument or an inflation-indexed debt instrument (for example, a Treasury Inflation-Protected Security)?" = true or helper "Is there an unrecovered investment in a pension to deduct (the after-tax contributions of a person who died before recovering them)?" = true or helper "Do you (or, on a joint return, your spouse) have impairment-related work expenses of a disabled person?" = true)
+- Expr: `{"any":[{"eq":["sa.mortgage_unreported_if_home",{"const":true}],"op":"test"},{"eq":["sa.mortgage_over_limit_if_interest",{"const":true}],"op":"test"},{"eq":["sa.mortgage_other_use_if_interest",{"const":true}],"op":"test"},{"eq":["sa.sales_tax_wish",{"const":true}],"op":"test"},{"eq":["sa.foreign_tax_deduct_if_tax",{"const":true}],"op":"test"},{"eq":["sa.estate_tax_income",{"const":true}],"op":"test"},{"eq":["sa.bond_premium",{"const":true}],"op":"test"},{"eq":["sa.debt_instrument_loss",{"const":true}],"op":"test"},{"eq":["sa.pension_unrecovered",{"const":true}],"op":"test"},{"eq":["sa.impairment_work",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040sca] p. 8, Limits on home mortgage interest, "Your deduction for home mortgage interest is subject to a number of limits"; p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 3, Line 5a, "You can elect to deduct state and local general sales taxes instead of state and local income taxes"; p. 7, Other Taxes, "Include on this line income taxes you paid to a foreign country"; pp. 11–12, Other Itemized Deductions, "Only the expenses listed next can be deducted on line 16" (2025; printed date 2025-12-08; sha256 b0999b12)
 
 ## (helper) — `sa.gifts`
 
-- **Authored helper label:** Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:
+- **Authored helper label:** Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:
 
   - money given to a charity by cash, check, card or payroll deduction, including money put into a donor-advised fund
   - a payment to a charity that got you something back (such as a fundraising dinner, an auction item or a membership), or that earned you a state or local tax credit
@@ -20,10 +20,9 @@
   - out-of-pocket costs of volunteer work for a charity, such as mileage, parking, supplies or uniforms, or unreimbursed costs of hosting a student or a foster child placed by a charitable organization
   - a charitable contribution shown on a Schedule K-1 from a partnership, S corporation, estate or trust
   - expenses you paid as a whaling captain for Native Alaskan subsistence bowhead whale hunting
-  - a contribution from an earlier year (in most cases one of the five years before 2025) that was more than you could deduct that year, by either of you, on a joint or separate return; if you itemized in any of those years, check that return and any carryover worksheet or statement kept with it
 
   A charity here is any organization that is religious, charitable, educational, scientific or literary in purpose (such as a church, a school, a nonprofit hospital, a veterans' group or a fraternal order's charitable work), one that works to prevent cruelty to children or animals, or a federal, state, local or Indian tribal government receiving a gift for public purposes; nonprofit cemetery companies and other qualified organizations count too.
-- **Encoded (Bool):** Input — Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:
+- **Encoded (Bool):** Input — Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:
 
   - money given to a charity by cash, check, card or payroll deduction, including money put into a donor-advised fund
   - a payment to a charity that got you something back (such as a fundraising dinner, an auction item or a membership), or that earned you a state or local tax credit
@@ -31,10 +30,9 @@
   - out-of-pocket costs of volunteer work for a charity, such as mileage, parking, supplies or uniforms, or unreimbursed costs of hosting a student or a foster child placed by a charitable organization
   - a charitable contribution shown on a Schedule K-1 from a partnership, S corporation, estate or trust
   - expenses you paid as a whaling captain for Native Alaskan subsistence bowhead whale hunting
-  - a contribution from an earlier year (in most cases one of the five years before 2025) that was more than you could deduct that year, by either of you, on a joint or separate return; if you itemized in any of those years, check that return and any carryover worksheet or statement kept with it
 
   A charity here is any organization that is religious, charitable, educational, scientific or literary in purpose (such as a church, a school, a nonprofit hospital, a veterans' group or a fraternal order's charitable work), one that works to prevent cruelty to children or animals, or a federal, state, local or Indian tribal government receiving a gift for public purposes; nonprofit cemetery companies and other qualified organizations count too.
-- Expr: `{"op":"input","source":"Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:\n\n- money given to a charity by cash, check, card or payroll deduction, including money put into a donor-advised fund\n- a payment to a charity that got you something back (such as a fundraising dinner, an auction item or a membership), or that earned you a state or local tax credit\n- property given to a charity, such as clothing, household items, a vehicle or stock, or property sold to a charity for less than its value\n- out-of-pocket costs of volunteer work for a charity, such as mileage, parking, supplies or uniforms, or unreimbursed costs of hosting a student or a foster child placed by a charitable organization\n- a charitable contribution shown on a Schedule K-1 from a partnership, S corporation, estate or trust\n- expenses you paid as a whaling captain for Native Alaskan subsistence bowhead whale hunting\n- a contribution from an earlier year (in most cases one of the five years before 2025) that was more than you could deduct that year, by either of you, on a joint or separate return; if you itemized in any of those years, check that return and any carryover worksheet or statement kept with it\n\nA charity here is any organization that is religious, charitable, educational, scientific or literary in purpose (such as a church, a school, a nonprofit hospital, a veterans' group or a fraternal order's charitable work), one that works to prevent cruelty to children or animals, or a federal, state, local or Indian tribal government receiving a gift for public purposes; nonprofit cemetery companies and other qualified organizations count too."}`
+- Expr: `{"op":"input","source":"Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:\n\n- money given to a charity by cash, check, card or payroll deduction, including money put into a donor-advised fund\n- a payment to a charity that got you something back (such as a fundraising dinner, an auction item or a membership), or that earned you a state or local tax credit\n- property given to a charity, such as clothing, household items, a vehicle or stock, or property sold to a charity for less than its value\n- out-of-pocket costs of volunteer work for a charity, such as mileage, parking, supplies or uniforms, or unreimbursed costs of hosting a student or a foster child placed by a charitable organization\n- a charitable contribution shown on a Schedule K-1 from a partnership, S corporation, estate or trust\n- expenses you paid as a whaling captain for Native Alaskan subsistence bowhead whale hunting\n\nA charity here is any organization that is religious, charitable, educational, scientific or literary in purpose (such as a church, a school, a nonprofit hospital, a veterans' group or a fraternal order's charitable work), one that works to prevent cruelty to children or animals, or a federal, state, local or Indian tribal government receiving a gift for public purposes; nonprofit cemetery companies and other qualified organizations count too."}`
 - Cite: [i1040sca] p. 9, Gifts to Charity, "You can deduct contributions or gifts you gave to organizations that are religious, charitable, educational, scientific, or literary in purpose", "Certain whaling captains may be able to deduct expenses paid in 2025 for Native Alaskan subsistence bowhead whale hunting activities" and "Federal, state, and local governments if the gifts are solely for public purposes"; p. 9, Gifts from which you benefit, "If you made a gift and received a benefit in return"; p. 9, Amounts You Can Deduct, "Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work"; p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; sha256 b0999b12)
 
 ## (helper) — `sa.no`
@@ -53,10 +51,24 @@
 
 ## (helper) — `sa.charity_limited_if_gifts`
 
-- **Authored helper label:** Charitable deductions are reduced by income limits or carried over from a prior year (no when you and your spouse gave nothing to charity and have no carryover)
-- **Encoded (Bool):** Choose — [helper "Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:" = true → helper "Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering."] [helper "Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:" = false → helper "Year parameter sa.no (no)"]
+- **Authored helper label:** Charitable deductions are reduced by income limits or carried over from a prior year (no when you and your spouse gave nothing to charity in 2025)
+- **Encoded (Bool):** Choose — [helper "Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:" = true → helper "Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering."] [helper "Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:" = false → helper "Year parameter sa.no (no)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.gifts",{"const":true}],"op":"test"},"then":"sa.charity_limited"},{"guard":{"eq":["sa.gifts",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
 - Cite: [i1040sca] p. 10, Limit on the amount you can deduct, "See Pub. 526 to figure the amount of your deduction if any of the following applies"; p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.gift_carryover`
+
+- **Authored helper label:** Do you (or, on a joint return, your spouse) have a charitable contribution carried over from an earlier year, one that was more than you could deduct in the year you made it?
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) have a charitable contribution carried over from an earlier year, one that was more than you could deduct in the year you made it?
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) have a charitable contribution carried over from an earlier year, one that was more than you could deduct in the year you made it?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (gate) — `sa.gift_carryover_if_no_gifts`
+
+- **Authored helper label:** A charitable contribution is carried over from an earlier year (asked only when you and your spouse gave nothing to charity in 2025)
+- **Encoded (Bool):** Choose — [helper "Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:" = false → helper "Do you (or, on a joint return, your spouse) have a charitable contribution carried over from an earlier year, one that was more than you could deduct in the year you made it?"] [helper "Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:" = true → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.gifts",{"const":false}],"op":"test"},"then":"sa.gift_carryover"},{"guard":{"eq":["sa.gifts",{"const":true}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
+- Cite: [i1040sca] p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; sha256 b0999b12)
 
 ## (helper) — `sa.excluded_income`
 
@@ -89,7 +101,7 @@
 ## (helper) — `sa.age65_count`
 
 - **Authored helper label:** Your entry, if the answer is yes
-- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Were you born before January 2, 1961?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Born before January 2, 1961" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.age65",{"const":true}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sa] i1040gi p. 35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind, "You were born before January 2, 1961", "Enter the total number of boxes checked" (2025; created 2025-11-20; sha256 c14acf34)
 
@@ -121,9 +133,37 @@
 - Expr: `{"from":"f1040.line11b","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
-## 1 — `sa.line1`
+## (helper) — `sa.medical_any`
 
-- **IRS:** Unreimbursed eligible medical and dental expenses
+- **Authored helper label:** In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your income?
+- **Encoded (Bool):** Input — In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your income?
+- Expr: `{"op":"input","source":"In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your income?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.medical_premiums`
+
+- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) pay for health insurance with money that had already been taxed, such as Medicare premiums, a Marketplace plan, COBRA or long-term care insurance, rather than through a deduction from pay at a job?
+- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) pay for health insurance with money that had already been taxed, such as Medicare premiums, a Marketplace plan, COBRA or long-term care insurance, rather than through a deduction from pay at a job?
+- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) pay for health insurance with money that had already been taxed, such as Medicare premiums, a Marketplace plan, COBRA or long-term care insurance, rather than through a deduction from pay at a job?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (gate) — `sa.medical_premiums_if_not_large`
+
+- **Authored helper label:** Paid for health insurance with money already taxed (asked only when medical and dental costs were not said to be more than 7.5% of income)
+- **Encoded (Bool):** Choose — [helper "In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your income?" = false → helper "In 2025, did you (or, on a joint return, your spouse) pay for health insurance with money that had already been taxed, such as Medicare premiums, a Marketplace plan, COBRA or long-term care insurance, rather than through a deduction from pay at a job?"] [helper "In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your income?" = true → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.medical_any",{"const":false}],"op":"test"},"then":"sa.medical_premiums"},{"guard":{"eq":["sa.medical_any",{"const":true}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
+- Cite: [i1040sca] p. 1, Medical and Dental Expenses, "Insurance premiums for medical and dental care", "You can't include insurance premiums paid by making a pretax reduction to your employee compensation" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.medical_asked`
+
+- **Authored helper label:** Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)
+- **Encoded (Bool):** (helper "In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your income?" = true or helper "Paid for health insurance with money already taxed (asked only when medical and dental costs were not said to be more than 7.5% of income)" = true)
+- Expr: `{"any":[{"eq":["sa.medical_any",{"const":true}],"op":"test"},{"eq":["sa.medical_premiums_if_not_large",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040sca] p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income", "You can't include insurance premiums paid by making a pretax reduction to your employee compensation" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.line1`
+
+- **Authored helper label:** Unreimbursed eligible medical and dental expenses
 - **Encoded (NonNegDollars):** Input — Unreimbursed eligible medical and dental expenses paid in 2025 (Pub. 502 lists what counts) for these people:
 
   - yourself
@@ -158,12 +198,53 @@
 - Expr: `{"op":"input","source":"Unreimbursed eligible medical and dental expenses paid in 2025 (Pub. 502 lists what counts) for these people:\n\n- yourself\n- your spouse\n- your dependents\n- your child whom you do not claim only because of the rules for children of divorced or separated parents\n- anyone you could have claimed as a dependent except that the person had gross income of $5,200 or more or filed a joint return\n\nReduce them by payments from insurance or other sources, but do not reduce them by a 2025 reimbursement of expenses paid in an earlier year.\n\nLeave out:\n- amounts equal to tax-free distributions from a health savings account (HSA) or an Archer MSA\n- insurance premiums paid by a pretax reduction of your pay, and premiums and other medical and dental expenses paid by an employer-sponsored health plan (cafeteria plan) unless they are included in box 1 of your Form W-2\n- premiums for someone on your policy who is not one of the people listed above (for example a nondependent child under age 27), unless you had family coverage when you added that person and your premiums did not increase\n- if you are a retired public safety officer, premiums to the extent paid with a tax-free distribution from your retirement plan\n- the housework part of pay to someone who did both nursing and housework (only the nursing help counts)\n- meals while away from home for medical care, other than hospital care, which includes its meals and lodging (other lodging for medical care counts at no more than $50 a night for each person who meets the Pub. 502 lodging requirements)\n\nReduce health insurance premiums by any self-employed health insurance deduction on Schedule 1 (Form 1040), line 17.\n\nFor Marketplace coverage on a Form 1095-A, include the total premiums (including the part paid by advance payments of the premium tax credit), minus the premium tax credit allowed on Form 8962, line 24, and minus any excess advance payments you do not have to repay because of the repayment limit (Form 8962, line 27 minus line 29); advance payments you do repay count as premiums you paid.\n\nInclude qualified long-term care insurance premiums only up to the limit for the age at the end of 2025 of the person for whom they were paid:\n\n- $480 if 40 or under\n- $900 if 41 to 50\n- $1,800 if 51 to 60\n- $4,810 if 61 to 70\n- $6,020 if 71 or older\n\nOn the final return of a person who died in 2025, include the medical expenses paid out of that person's estate that Pub. 502 allows on the final return."}`
 - Cite: [i1040sca] p. 1, Medical and Dental Expenses, "If you received a distribution from a health savings account or a medical savings account in 2025, see Pub. 969 to figure your deduction", "Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return", "You can't include insurance premiums paid by making a pretax reduction to your employee compensation", "If you are a retired public safety officer, you can't include any premiums you paid to the extent they were paid for with a tax-free distribution from your retirement plan", "If you paid someone to do both nursing and housework, you can deduct only the cost of the nursing help", "Hospital care (including meals and lodging), clinic costs, and lab fees", "Lodging expenses (but not meals) while away from home to receive medical care"; p. 2, "Don't deduct more than $50 a night for each person who meets the requirements in Pub. 502 under Lodging", "Limit on long-term care premiums you can include. The amount you can include for qualified long-term care insurance contracts (as defined in Pub. 502) depends on the age at the end of 2025 of the person for whom the premiums were paid", Line 1 Medical and Dental Expenses, "Enter the total of your medical and dental expenses after you reduce these expenses by any payments received from insurance or other sources", "If advance payments of the premium tax credit were made or you think you may be eligible to claim a premium tax credit, fill out Form 8962 before filling out Schedule A, line 1", "self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the amount on line 17", "You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them", "Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents", "Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return", "You can't deduct any premiums attributable to this individual unless this individual is a person described under Whose medical and dental expenses can you include, earlier", "However, if you had family coverage when you added this individual to your policy and your premiums didn't increase, you can enter on line 1 the full amount of your medical and dental insurance premiums", "If you received a reimbursement in 2025 for prior year medical or dental expenses, don't reduce your 2025 expenses by this amount", "don’t include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2", "Also, don't include any other medical and dental expenses paid by the plan unless the amount paid is included in box 1 of your Form(s) W-2"; p502 p. 12, Premium Tax Credit, "You can’t include in medical expenses the amount of health insurance premiums paid by or through the premium tax credit", "You also can’t include in medical expenses any amount of advance payments of the premium tax credit made that you did not have to pay back", "However, any amount of advance payments of the premium tax credit that you did have to pay back can be included in medical expenses", "You are treated as paying $5,100 ($8,700 less the allowed premium tax credit of $3,600)"; i8962 p. 2, "You cannot deduct the portion of your health insurance premium on your tax return that is paid for by the PTC or APTC (after you determine how much of any excess APTC you must repay)"; p969 p. 9, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your HSA"; p969 p. 13, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your Archer MSA" (2025; printed date 2025-12-08; sha256 b0999b12)
 
-## 5a — `sa.line5a`
+## 1 — `sa.line1_if_medical`
 
-- **IRS:** State/local income taxes paid, including withholding; no sales-tax election
-- **Encoded (NonNegDollars):** Input — State/local income taxes you (or, on a joint return, your spouse) paid, including withholding; no sales-tax election.
+- **IRS:** Medical and dental expenses (zero when your costs were not more than 7.5% of income and you paid for no health insurance with money already taxed)
+- **Encoded (NonNegDollars):** Choose — [helper "Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)" = true → helper "Unreimbursed eligible medical and dental expenses"] [helper "Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.medical_asked",{"const":true}],"op":"test"},"then":"sa.line1"},{"guard":{"eq":["sa.medical_asked",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
+- Cite: [i1040sca] p. 1, Medical and Dental Expenses, "If you received a distribution from a health savings account or a medical savings account in 2025, see Pub. 969 to figure your deduction", "Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return", "You can't include insurance premiums paid by making a pretax reduction to your employee compensation", "If you are a retired public safety officer, you can't include any premiums you paid to the extent they were paid for with a tax-free distribution from your retirement plan", "If you paid someone to do both nursing and housework, you can deduct only the cost of the nursing help", "Hospital care (including meals and lodging), clinic costs, and lab fees", "Lodging expenses (but not meals) while away from home to receive medical care"; p. 2, "Don't deduct more than $50 a night for each person who meets the requirements in Pub. 502 under Lodging", "Limit on long-term care premiums you can include. The amount you can include for qualified long-term care insurance contracts (as defined in Pub. 502) depends on the age at the end of 2025 of the person for whom the premiums were paid", Line 1 Medical and Dental Expenses, "Enter the total of your medical and dental expenses after you reduce these expenses by any payments received from insurance or other sources", "If advance payments of the premium tax credit were made or you think you may be eligible to claim a premium tax credit, fill out Form 8962 before filling out Schedule A, line 1", "self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the amount on line 17", "You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them", "Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents", "Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return", "You can't deduct any premiums attributable to this individual unless this individual is a person described under Whose medical and dental expenses can you include, earlier", "However, if you had family coverage when you added this individual to your policy and your premiums didn't increase, you can enter on line 1 the full amount of your medical and dental insurance premiums", "If you received a reimbursement in 2025 for prior year medical or dental expenses, don't reduce your 2025 expenses by this amount", "don’t include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2", "Also, don't include any other medical and dental expenses paid by the plan unless the amount paid is included in box 1 of your Form(s) W-2"; p502 p. 12, Premium Tax Credit, "You can’t include in medical expenses the amount of health insurance premiums paid by or through the premium tax credit", "You also can’t include in medical expenses any amount of advance payments of the premium tax credit made that you did not have to pay back", "However, any amount of advance payments of the premium tax credit that you did have to pay back can be included in medical expenses", "You are treated as paying $5,100 ($8,700 less the allowed premium tax credit of $3,600)"; i8962 p. 2, "You cannot deduct the portion of your health insurance premium on your tax return that is paid for by the PTC or APTC (after you determine how much of any excess APTC you must repay)"; p969 p. 9, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your HSA"; p969 p. 13, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your Archer MSA" (2025; printed date 2025-12-08; sha256 b0999b12)
 
-  Include state and local income taxes withheld in 2025 (but not withholding you deducted on another form, such as Schedule C), estimated payments made in 2025 (including a prior-year refund credited to 2025), and taxes paid in 2025 for a prior year, but not penalties or interest.
+## (helper) — `sa.state_tax_any`
+
+- **Authored helper label:** In 2025, was state or local income tax taken out of your (or, on a joint return, your spouse's) pay?
+- **Encoded (Bool):** Input — In 2025, was state or local income tax taken out of your (or, on a joint return, your spouse's) pay? Boxes 17 and 19 of a Form W-2 show it.
+- Expr: `{"op":"input","source":"In 2025, was state or local income tax taken out of your (or, on a joint return, your spouse's) pay? Boxes 17 and 19 of a Form W-2 show it."}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.state_tax_other_any`
+
+- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) pay state or local income tax other than tax withheld from pay: tax withheld from other income, estimated payments, tax paid for an earlier year, a mandatory contribution to a state disability, unemployment, workers compensation or family leave fund, or income tax of a U.S. territory?
+- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) pay state or local income tax other than tax withheld from pay: tax withheld from other income, estimated payments, tax paid for an earlier year, a mandatory contribution to a state disability, unemployment, workers compensation or family leave fund, or income tax of a U.S. territory?
+- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) pay state or local income tax other than tax withheld from pay: tax withheld from other income, estimated payments, tax paid for an earlier year, a mandatory contribution to a state disability, unemployment, workers compensation or family leave fund, or income tax of a U.S. territory?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.line5a`
+
+- **Authored helper label:** State and local income tax withheld from your (or, on a joint return, your spouse's) pay in 2025 (Form W-2, boxes 17 and 19)
+- **Encoded (NonNegDollars):** Input — State and local income tax withheld from your (or, on a joint return, your spouse's) pay in 2025: boxes 17 and 19 of each Form W-2.
+
+  Do not count withholding you deduct on another form, such as Schedule C, E or F.
+
+  Do not count here state or local income tax paid any other way (tax withheld from other income such as a pension, estimated payments, tax paid for an earlier year, mandatory contributions to a state disability, unemployment or family leave fund, U.S. territory income tax, or a state or local tax credit received for a charitable contribution); that is the amount of state and local income tax paid other than tax withheld from pay, entered separately.
+
+  Do not reduce the amount by a state or local income tax refund or credit you expect for 2025, or by a refund or credit of prior-year state and local income taxes received in 2025.
+- Expr: `{"op":"input","source":"State and local income tax withheld from your (or, on a joint return, your spouse's) pay in 2025: boxes 17 and 19 of each Form W-2.\n\nDo not count withholding you deduct on another form, such as Schedule C, E or F.\n\nDo not count here state or local income tax paid any other way (tax withheld from other income such as a pension, estimated payments, tax paid for an earlier year, mandatory contributions to a state disability, unemployment or family leave fund, U.S. territory income tax, or a state or local tax credit received for a charitable contribution); that is the amount of state and local income tax paid other than tax withheld from pay, entered separately.\n\nDo not reduce the amount by a state or local income tax refund or credit you expect for 2025, or by a refund or credit of prior-year state and local income taxes received in 2025."}`
+- Cite: [i1040sca] p. 3, Line 5a, "State and local income taxes withheld from your salary during 2025. Your Form(s) W-2 will show these amounts", "don't include on line 5a any withheld taxes you deducted on other forms, such as Schedule C, E, or F", "State or local income tax refund or credit you expect to receive for 2025", "Refund of or credit for prior year state and local income taxes you actually received in 2025"; fw2 p. 4, Copy B, "17 State income tax", "19 Local income tax" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.line5a_if_state_tax`
+
+- **Authored helper label:** State and local income taxes withheld from pay (zero when none was withheld)
+- **Encoded (NonNegDollars):** Choose — [helper "In 2025, was state or local income tax taken out of your (or, on a joint return, your spouse's) pay?" = true → helper "State and local income tax withheld from your (or, on a joint return, your spouse's) pay in 2025 (Form W-2, boxes 17 and 19)"] [helper "In 2025, was state or local income tax taken out of your (or, on a joint return, your spouse's) pay?" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.state_tax_any",{"const":true}],"op":"test"},"then":"sa.line5a"},{"guard":{"eq":["sa.state_tax_any",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
+- Cite: [i1040sca] p. 3, Line 5a, "State and local income taxes withheld from your salary during 2025. Your Form(s) W-2 will show these amounts", "don't include on line 5a any withheld taxes you deducted on other forms, such as Schedule C, E, or F" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.state_tax_other`
+
+- **Authored helper label:** State and local income taxes paid in 2025 other than tax withheld from pay
+- **Encoded (NonNegDollars):** Input — State and local income taxes you (or, on a joint return, your spouse) paid in 2025 other than tax withheld from pay (Form W-2, boxes 17 and 19, entered separately).
+
+  Include state and local income tax withheld from other income, such as a pension, unemployment pay or gambling winnings (but not withholding you deducted on another form, such as Schedule C), estimated payments made in 2025 (including a prior-year refund credited to 2025), and taxes paid in 2025 for a prior year, but not penalties or interest.
 
   Include mandatory contributions to:
   - the California, New Jersey or New York Nonoccupational Disability Benefit Fund
@@ -177,12 +258,54 @@
   If you made a cash charitable contribution in return for a state or local tax credit and reduced your charitable deduction by that credit, you may include here (or on line 5b or 5c, whichever tax the credit offsets) the part of the credit you applied to your 2025 or an earlier year's state or local tax liability.
 
   Include income taxes imposed by a U.S. territory here (not as foreign taxes), except territory taxes allocable to excluded income and territory taxes you take as a credit instead of a deduction.
-- Expr: `{"op":"input","source":"State/local income taxes you (or, on a joint return, your spouse) paid, including withholding; no sales-tax election.\n\nInclude state and local income taxes withheld in 2025 (but not withholding you deducted on another form, such as Schedule C), estimated payments made in 2025 (including a prior-year refund credited to 2025), and taxes paid in 2025 for a prior year, but not penalties or interest.\n\nInclude mandatory contributions to:\n- the California, New Jersey or New York Nonoccupational Disability Benefit Fund\n- the Rhode Island Temporary Disability Benefit Fund\n- the Washington State Supplemental Workmen's Compensation Fund\n- the Alaska, California, New Jersey or Pennsylvania state unemployment fund\n- state family leave programs (such as New Jersey Family Leave Insurance or California Paid Family Leave)\n\nDo not reduce the amount by a state or local income tax refund or credit you expect for 2025, or by a refund or credit of prior-year state and local income taxes received in 2025.\n\nIf you made a cash charitable contribution in return for a state or local tax credit and reduced your charitable deduction by that credit, you may include here (or on line 5b or 5c, whichever tax the credit offsets) the part of the credit you applied to your 2025 or an earlier year's state or local tax liability.\n\nInclude income taxes imposed by a U.S. territory here (not as foreign taxes), except territory taxes allocable to excluded income and territory taxes you take as a credit instead of a deduction."}`
-- Cite: [i1040sca] p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c", "However, don't include any U.S. territory taxes you paid that are allocable to excluded income", "You may want to take a credit for U.S. territory tax instead of a deduction", Line 5a, "don't include on line 5a any withheld taxes you deducted on other forms, such as Schedule C, E, or F", "State and local estimated tax payments made during 2025, including any part of a prior year refund that you chose to have credited to your 2025 state or local income taxes", "State and local income taxes paid in 2025 for a prior year, such as taxes paid with your 2024 state or local income tax return. Don't include penalties or interest.", "Mandatory contributions you made to the California, New Jersey, or New York Nonoccupational Disability Benefit Fund", "Mandatory contributions to the Alaska, California, New Jersey, or Pennsylvania state unemployment fund", "Mandatory contributions to state family leave programs", "Refund of or credit for prior year state and local income taxes you actually received in 2025", Safe harbor for certain charitable contributions made in exchange for a state or local tax credit, "If you meet these conditions and to the extent you apply the state or local tax credit to this or a prior year's state or local tax liability, you may include this amount on line 5a, 5b, or 5c, whichever is appropriate"; p. 7, Line 6, "Don't include taxes you paid to a U.S. territory on this line; instead, include U.S. territory taxes on the appropriate state and local tax line" (2025; printed date 2025-12-08; sha256 b0999b12)
+- Expr: `{"op":"input","source":"State and local income taxes you (or, on a joint return, your spouse) paid in 2025 other than tax withheld from pay (Form W-2, boxes 17 and 19, entered separately).\n\nInclude state and local income tax withheld from other income, such as a pension, unemployment pay or gambling winnings (but not withholding you deducted on another form, such as Schedule C), estimated payments made in 2025 (including a prior-year refund credited to 2025), and taxes paid in 2025 for a prior year, but not penalties or interest.\n\nInclude mandatory contributions to:\n- the California, New Jersey or New York Nonoccupational Disability Benefit Fund\n- the Rhode Island Temporary Disability Benefit Fund\n- the Washington State Supplemental Workmen's Compensation Fund\n- the Alaska, California, New Jersey or Pennsylvania state unemployment fund\n- state family leave programs (such as New Jersey Family Leave Insurance or California Paid Family Leave)\n\nDo not reduce the amount by a state or local income tax refund or credit you expect for 2025, or by a refund or credit of prior-year state and local income taxes received in 2025.\n\nIf you made a cash charitable contribution in return for a state or local tax credit and reduced your charitable deduction by that credit, you may include here (or on line 5b or 5c, whichever tax the credit offsets) the part of the credit you applied to your 2025 or an earlier year's state or local tax liability.\n\nInclude income taxes imposed by a U.S. territory here (not as foreign taxes), except territory taxes allocable to excluded income and territory taxes you take as a credit instead of a deduction."}`
+- Cite: [i1040sca] p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c", "However, don't include any U.S. territory taxes you paid that are allocable to excluded income", "You may want to take a credit for U.S. territory tax instead of a deduction", Line 5a, "Forms W-2G, 1099-G, 1099-R, 1099-MISC, and 1099-NEC may also show state and local income taxes withheld", "don't include on line 5a any withheld taxes you deducted on other forms, such as Schedule C, E, or F", "State and local estimated tax payments made during 2025, including any part of a prior year refund that you chose to have credited to your 2025 state or local income taxes", "State and local income taxes paid in 2025 for a prior year, such as taxes paid with your 2024 state or local income tax return. Don't include penalties or interest.", "Mandatory contributions you made to the California, New Jersey, or New York Nonoccupational Disability Benefit Fund", "Mandatory contributions to the Alaska, California, New Jersey, or Pennsylvania state unemployment fund", "Mandatory contributions to state family leave programs", "Refund of or credit for prior year state and local income taxes you actually received in 2025", Safe harbor for certain charitable contributions made in exchange for a state or local tax credit, "If you meet these conditions and to the extent you apply the state or local tax credit to this or a prior year's state or local tax liability, you may include this amount on line 5a, 5b, or 5c, whichever is appropriate"; p. 7, Line 6, "Don't include taxes you paid to a U.S. territory on this line; instead, include U.S. territory taxes on the appropriate state and local tax line" (2025; printed date 2025-12-08; sha256 b0999b12)
 
-## 5b — `sa.line5b`
+## (gate) — `sa.state_tax_other_if_any`
 
-- **IRS:** Deductible state/local real estate taxes
+- **Authored helper label:** State and local income taxes paid other than by withholding from pay (zero when there were none)
+- **Encoded (NonNegDollars):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) pay state or local income tax other than tax withheld from pay: tax withheld from other income, estimated payments, tax paid for an earlier year, a mandatory contribution to a state disability, unemployment, workers compensation or family leave fund, or income tax of a U.S. territory?" = true → helper "State and local income taxes paid in 2025 other than tax withheld from pay"] [helper "In 2025, did you (or, on a joint return, your spouse) pay state or local income tax other than tax withheld from pay: tax withheld from other income, estimated payments, tax paid for an earlier year, a mandatory contribution to a state disability, unemployment, workers compensation or family leave fund, or income tax of a U.S. territory?" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.state_tax_other_any",{"const":true}],"op":"test"},"then":"sa.state_tax_other"},{"guard":{"eq":["sa.state_tax_other_any",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
+- Cite: [i1040sca] p. 3, Line 5a, "State and local income taxes paid in 2025 for a prior year", "State and local estimated tax payments made during 2025" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## 5a — `sa.line5a_total`
+
+- **IRS:** Add sa.line5a_if_state_tax, sa.state_tax_other_if_any
+- **Encoded (NonNegDollars):** Add helper "State and local income taxes withheld from pay (zero when none was withheld)" and helper "State and local income taxes paid other than by withholding from pay (zero when there were none)".
+- Expr: `{"of":["sa.line5a_if_state_tax","sa.state_tax_other_if_any"],"op":"sum"}`
+- Cite: [i1040sca] p. 3, Line 5a, "include on line 5a the state and local income taxes listed next" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.home_owner`
+
+- **Authored helper label:** At any time in 2025, did you (or, on a joint return, your spouse) own a home or other real estate?
+- **Encoded (Bool):** Input — At any time in 2025, did you (or, on a joint return, your spouse) own a home or other real estate?
+- Expr: `{"op":"input","source":"At any time in 2025, did you (or, on a joint return, your spouse) own a home or other real estate?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.home_other`
+
+- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) pay interest on a loan secured by a boat, a camper or a mobile home that has sleeping, cooking and toilet facilities, or on a mortgage on a home that is in another person's name?
+- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) pay interest on a loan secured by a boat, a camper or a mobile home that has sleeping, cooking and toilet facilities, or on a mortgage on a home that is in another person's name?
+- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) pay interest on a loan secured by a boat, a camper or a mobile home that has sleeping, cooking and toilet facilities, or on a mortgage on a home that is in another person's name?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (gate) — `sa.home_other_if_not_owner`
+
+- **Authored helper label:** Paid interest on a loan secured by a boat, camper or mobile home, or on a mortgage on a home in the name of another person (asked only when you owned no home or other real estate)
+- **Encoded (Bool):** Choose — [helper "At any time in 2025, did you (or, on a joint return, your spouse) own a home or other real estate?" = false → helper "In 2025, did you (or, on a joint return, your spouse) pay interest on a loan secured by a boat, a camper or a mobile home that has sleeping, cooking and toilet facilities, or on a mortgage on a home that is in another person's name?"] [helper "At any time in 2025, did you (or, on a joint return, your spouse) own a home or other real estate?" = true → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.home_owner",{"const":false}],"op":"test"},"then":"sa.home_other"},{"guard":{"eq":["sa.home_owner",{"const":true}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
+- Cite: [i1040sca] p. 8, Line 8, "A home can be a house, condominium, cooperative, mobile home, boat, or similar property", "It must provide basic living accommodations including sleeping space, toilet, and cooking facilities" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.home_asked`
+
+- **Authored helper label:** You owned a home or other real estate, or paid interest on a loan secured by a home
+- **Encoded (Bool):** (helper "At any time in 2025, did you (or, on a joint return, your spouse) own a home or other real estate?" = true or helper "Paid interest on a loan secured by a boat, camper or mobile home, or on a mortgage on a home in the name of another person (asked only when you owned no home or other real estate)" = true)
+- Expr: `{"any":[{"eq":["sa.home_owner",{"const":true}],"op":"test"},{"eq":["sa.home_other_if_not_owner",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040sca] p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own"; p. 8, Line 8, "A home mortgage is any loan that is secured by your main home or second home" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.line5b`
+
+- **Authored helper label:** Deductible state/local real estate taxes
 - **Encoded (NonNegDollars):** Input — Deductible state/local real estate taxes on real estate you (or, on a joint return, your spouse) own that was not used for business, only if the taxes are assessed uniformly at a like rate on all real property in the community and used for general community or governmental purposes.
 
   Leave out:
@@ -200,18 +323,186 @@
 - Expr: `{"op":"input","source":"Deductible state/local real estate taxes on real estate you (or, on a joint return, your spouse) own that was not used for business, only if the taxes are assessed uniformly at a like rate on all real property in the community and used for general community or governmental purposes.\n\nLeave out:\n- foreign real estate taxes\n- itemized charges for services to specific property or persons (for example trash collection, water use or mowing charges)\n- charges for improvements that tend to increase the property's value (for example an assessment to build a new sidewalk), except a charge used only to maintain an existing public facility (for example to repair an existing sidewalk)\n\nIf your mortgage payments include real estate taxes, include only what the mortgage company actually paid to the taxing authority in 2025.\n\nReduce the amount by a 2025 refund or rebate of real estate taxes paid in 2025, and by real estate tax charged to the buyer if you sold your home in 2025 (settlement statement, Form 1099-S box 6); do not reduce it by a refund of taxes paid in an earlier year.\n\nOnly taxes paid in 2025 and assessed before 2026 count (state or local law determines when a tax is assessed, generally when you become liable for it), so leave out a prepayment of 2026 property tax not assessed before 2026.\n\nInclude real estate taxes imposed by a U.S. territory, except those allocable to excluded income."}`
 - Cite: [i1040sca] p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c", "However, don't include any U.S. territory taxes you paid that are allocable to excluded income"; p. 6, Line 5b, "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025", "State or local law determines whether and when a property tax is assessed, which is generally when the taxpayer becomes liable for the property tax imposed", "Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business, but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes", "Foreign taxes you paid on real estate", "Itemized charges for services to specific property or persons", "Charges for improvements that tend to increase the value of your property", "However, a charge is deductible if it is used only to maintain an existing public facility in service", "If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025", "any real estate tax charged to the buyer should be shown on your settlement statement and in box 6 of any Form 1099-S you received", "This amount is considered a refund of real estate taxes", "If you received a refund or rebate in 2025 of real estate taxes you paid in 2025, reduce your deduction by the amount of the refund or rebate", "If you received a refund or rebate in 2025 of real estate taxes you paid in an earlier year, don't reduce your deduction by this amount" (2025; printed date 2025-12-08; sha256 b0999b12)
 
-## 5c — `sa.line5c`
+## (helper) — `sa.line5b_if_home_owner`
 
-- **IRS:** Deductible state/local personal property taxes
+- **Authored helper label:** State and local real estate taxes (zero when you owned no home or other real estate)
+- **Encoded (NonNegDollars):** Choose — [helper "You owned a home or other real estate, or paid interest on a loan secured by a home" = true → helper "Deductible state/local real estate taxes"] [helper "You owned a home or other real estate, or paid interest on a loan secured by a home" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.home_asked",{"const":true}],"op":"test"},"then":"sa.line5b"},{"guard":{"eq":["sa.home_asked",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
+- Cite: [i1040sca] p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c", "However, don't include any U.S. territory taxes you paid that are allocable to excluded income"; p. 6, Line 5b, "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025", "State or local law determines whether and when a property tax is assessed, which is generally when the taxpayer becomes liable for the property tax imposed", "Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business, but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes", "Foreign taxes you paid on real estate", "Itemized charges for services to specific property or persons", "Charges for improvements that tend to increase the value of your property", "However, a charge is deductible if it is used only to maintain an existing public facility in service", "If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025", "any real estate tax charged to the buyer should be shown on your settlement statement and in box 6 of any Form 1099-S you received", "This amount is considered a refund of real estate taxes", "If you received a refund or rebate in 2025 of real estate taxes you paid in 2025, reduce your deduction by the amount of the refund or rebate", "If you received a refund or rebate in 2025 of real estate taxes you paid in an earlier year, don't reduce your deduction by this amount" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.property_tax_other_any`
+
+- **Authored helper label:** Does the real estate tax amount you entered include any amount that is not deductible: tax on real estate outside the United States, an itemized charge for services, a charge for an improvement, tax charged to the buyer on a sale, a refund or rebate of 2025 tax, or tax not assessed before 2026?
+- **Encoded (Bool):** Input — Does the real estate tax amount you entered include any amount that is not deductible: tax on real estate outside the United States, an itemized charge for services, a charge for an improvement, tax charged to the buyer on a sale, a refund or rebate of 2025 tax, or tax not assessed before 2026?
+- Expr: `{"op":"input","source":"Does the real estate tax amount you entered include any amount that is not deductible: tax on real estate outside the United States, an itemized charge for services, a charge for an improvement, tax charged to the buyer on a sale, a refund or rebate of 2025 tax, or tax not assessed before 2026?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (gate) — `sa.property_tax_other_if_home`
+
+- **Authored helper label:** The real estate tax amount includes an amount that is not deductible (asked only of an owner of real estate)
+- **Encoded (Bool):** Choose — [helper "You owned a home or other real estate, or paid interest on a loan secured by a home" = true → helper "Does the real estate tax amount you entered include any amount that is not deductible: tax on real estate outside the United States, an itemized charge for services, a charge for an improvement, tax charged to the buyer on a sale, a refund or rebate of 2025 tax, or tax not assessed before 2026?"] [helper "You owned a home or other real estate, or paid interest on a loan secured by a home" = false → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.home_asked",{"const":true}],"op":"test"},"then":"sa.property_tax_other_any"},{"guard":{"eq":["sa.home_asked",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
+- Cite: [i1040sca] p. 6, Line 5b, "Don't include the following amounts on line 5b", "Foreign taxes you paid on real estate" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.property_tax_leave_out`
+
+- **Authored helper label:** The part of the real estate tax amount that is not deductible
+- **Encoded (NonNegDollars):** Input — The part of the real estate tax amount that is not deductible
+- Expr: `{"op":"input","source":"The part of the real estate tax amount that is not deductible"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (gate) — `sa.property_tax_leave_out_if_any`
+
+- **Authored helper label:** The part of the real estate tax amount that is not deductible (zero when there is none)
+- **Encoded (NonNegDollars):** Choose — [helper "The real estate tax amount includes an amount that is not deductible (asked only of an owner of real estate)" = true → helper "The part of the real estate tax amount that is not deductible"] [helper "The real estate tax amount includes an amount that is not deductible (asked only of an owner of real estate)" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.property_tax_other_if_home",{"const":true}],"op":"test"},"then":"sa.property_tax_leave_out"},{"guard":{"eq":["sa.property_tax_other_if_home",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
+- Cite: [i1040sca] p. 6, Line 5b, "Don't include the following amounts on line 5b", "Itemized charges for services to specific property or persons" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## 5b — `sa.line5b_net`
+
+- **IRS:** Subtract sa.property_tax_leave_out_if_any from sa.line5b_if_home_owner; if zero or less, enter zero
+- **Encoded (NonNegDollars):** Subtract helper "The part of the real estate tax amount that is not deductible (zero when there is none)" from helper "State and local real estate taxes (zero when you owned no home or other real estate)". If zero or less, enter -0-.
+- Expr: `{"from":"sa.line5b_if_home_owner","op":"subtract_floor0","take":"sa.property_tax_leave_out_if_any"}`
+- Cite: [i1040sca] p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business", "Don't include the following amounts on line 5b" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.personal_property_tax_any`
+
+- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) pay a state or local tax on personal property, such as a car or a boat, that is charged every year and based on the value of the property?
+- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) pay a state or local tax on personal property, such as a car or a boat, that is charged every year and based on the value of the property?
+- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) pay a state or local tax on personal property, such as a car or a boat, that is charged every year and based on the value of the property?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.line5c`
+
+- **Authored helper label:** Deductible state/local personal property taxes
 - **Encoded (NonNegDollars):** Input — Deductible state/local personal property taxes: only taxes based on value alone and imposed on a yearly basis (for a yearly car registration fee based partly on value, only the part based on value), paid in 2025 and assessed before 2026. Include personal property taxes imposed by a U.S. territory, except those allocable to excluded income.
 - Expr: `{"op":"input","source":"Deductible state/local personal property taxes: only taxes based on value alone and imposed on a yearly basis (for a yearly car registration fee based partly on value, only the part based on value), paid in 2025 and assessed before 2026. Include personal property taxes imposed by a U.S. territory, except those allocable to excluded income."}`
 - Cite: [i1040sca] p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c", "However, don't include any U.S. territory taxes you paid that are allocable to excluded income"; p. 6, Line 5c, "Enter on line 5c the state and local personal property taxes you paid, but only if the taxes were based on value alone and were imposed on a yearly basis", "You can deduct only the part of the fee that was based on the car's value"; p. 7, "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025" (2025; printed date 2025-12-08; sha256 b0999b12)
 
-## 8a — `sa.line8a`
+## 5c — `sa.line5c_if_taxed`
 
-- **IRS:** Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits do not apply
+- **IRS:** State and local personal property taxes (zero when you paid none)
+- **Encoded (NonNegDollars):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) pay a state or local tax on personal property, such as a car or a boat, that is charged every year and based on the value of the property?" = true → helper "Deductible state/local personal property taxes"] [helper "In 2025, did you (or, on a joint return, your spouse) pay a state or local tax on personal property, such as a car or a boat, that is charged every year and based on the value of the property?" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.personal_property_tax_any",{"const":true}],"op":"test"},"then":"sa.line5c"},{"guard":{"eq":["sa.personal_property_tax_any",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
+- Cite: [i1040sca] p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c", "However, don't include any U.S. territory taxes you paid that are allocable to excluded income"; p. 6, Line 5c, "Enter on line 5c the state and local personal property taxes you paid, but only if the taxes were based on value alone and were imposed on a yearly basis", "You can deduct only the part of the fee that was based on the car's value"; p. 7, "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.mortgage_interest`
+
+- **Authored helper label:** Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits do not apply
 - **Encoded (NonNegDollars):** Input — Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits do not apply
 - Expr: `{"op":"input","source":"Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits do not apply"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## 8a — `sa.line8a`
+
+- **IRS:** Home mortgage interest and points reported to you on Form 1098 (zero when you owned no home or other real estate and paid no interest on a mortgage secured by a home)
+- **Encoded (NonNegDollars):** Choose — [helper "You owned a home or other real estate, or paid interest on a loan secured by a home" = true → helper "Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits do not apply"] [helper "You owned a home or other real estate, or paid interest on a loan secured by a home" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.home_asked",{"const":true}],"op":"test"},"then":"sa.mortgage_interest"},{"guard":{"eq":["sa.home_asked",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
+- Cite: [i1040sca] p. 8, Line 8a, "Enter on line 8a mortgage interest and points reported to you on Form 1098 unless one or more of the limits on home mortgage interest apply to you" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.has_mortgage_interest`
+
+- **Authored helper label:** Home mortgage interest is entered on line 8a
+- **Encoded (Bool):** line 8a > $0
+- Expr: `{"gt":["sa.line8a",{"const":0}],"op":"test"}`
+- Cite: [i1040sca] p. 8, Line 8a, "Enter on line 8a mortgage interest and points reported to you on Form 1098" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.mortgage_unreported`
+
+- **Authored helper label:** Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098?
+- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098?
+- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (gate) — `sa.mortgage_unreported_if_home`
+
+- **Authored helper label:** Asked only where it can apply (sa.mortgage_unreported)
+- **Encoded (Bool):** Choose — [helper "You owned a home or other real estate, or paid interest on a loan secured by a home" = true → helper "Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098?"] [helper "You owned a home or other real estate, or paid interest on a loan secured by a home" = false → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.home_asked",{"const":true}],"op":"test"},"then":"sa.mortgage_unreported"},{"guard":{"eq":["sa.home_asked",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
+- Cite: [i1040sca] p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 9, Line 8c, "Points Not Reported on Form 1098" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.mortgage_over_limit`
+
+- **Authored helper label:** Is your home mortgage interest limited because the mortgage debt is more than $750,000 (more than $1,000,000 where it was all taken out on or before December 15, 2017), or because the mortgages together are more than the fair market value of the home?
+- **Encoded (Bool):** Input — Is your home mortgage interest limited because the mortgage debt is more than $750,000 (more than $1,000,000 where it was all taken out on or before December 15, 2017), or because the mortgages together are more than the fair market value of the home?
+- Expr: `{"op":"input","source":"Is your home mortgage interest limited because the mortgage debt is more than $750,000 (more than $1,000,000 where it was all taken out on or before December 15, 2017), or because the mortgages together are more than the fair market value of the home?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (gate) — `sa.mortgage_over_limit_if_interest`
+
+- **Authored helper label:** Asked only where it can apply (sa.mortgage_over_limit)
+- **Encoded (Bool):** Choose — [helper "Home mortgage interest is entered on line 8a" = true → helper "Is your home mortgage interest limited because the mortgage debt is more than $750,000 (more than $1,000,000 where it was all taken out on or before December 15, 2017), or because the mortgages together are more than the fair market value of the home?"] [helper "Home mortgage interest is entered on line 8a" = false → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.has_mortgage_interest",{"const":true}],"op":"test"},"then":"sa.mortgage_over_limit"},{"guard":{"eq":["sa.has_mortgage_interest",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
+- Cite: [i1040sca] p. 8, Limits on home mortgage interest, "you can only deduct home mortgage interest on up to $1,000,000", "deduct home mortgage interest on up to $750,000", "If the total amount of all mortgages is more than the fair market value of the home" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.mortgage_other_use`
+
+- **Authored helper label:** Were any of the proceeds of a loan secured by your home used for something other than to buy, build or substantially improve that home?
+- **Encoded (Bool):** Input — Were any of the proceeds of a loan secured by your home used for something other than to buy, build or substantially improve that home?
+- Expr: `{"op":"input","source":"Were any of the proceeds of a loan secured by your home used for something other than to buy, build or substantially improve that home?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (gate) — `sa.mortgage_other_use_if_interest`
+
+- **Authored helper label:** Asked only where it can apply (sa.mortgage_other_use)
+- **Encoded (Bool):** Choose — [helper "Home mortgage interest is entered on line 8a" = true → helper "Were any of the proceeds of a loan secured by your home used for something other than to buy, build or substantially improve that home?"] [helper "Home mortgage interest is entered on line 8a" = false → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.has_mortgage_interest",{"const":true}],"op":"test"},"then":"sa.mortgage_other_use"},{"guard":{"eq":["sa.has_mortgage_interest",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
+- Cite: [i1040sca] p. 8, Line 8, "Interest paid on home mortgage proceeds used for other purposes isn’t deductible on lines 8a or 8b" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.sales_tax_wish`
+
+- **Authored helper label:** Do you elect to deduct state and local general sales taxes instead of state and local income taxes?
+- **Encoded (Bool):** Input — Do you elect to deduct state and local general sales taxes instead of state and local income taxes?
+- Expr: `{"op":"input","source":"Do you elect to deduct state and local general sales taxes instead of state and local income taxes?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.foreign_tax_deduct`
+
+- **Authored helper label:** Do you choose to take your foreign income taxes as an itemized deduction (Schedule A, line 6) instead of as a credit?
+- **Encoded (Bool):** Input — Do you choose to take your foreign income taxes as an itemized deduction (Schedule A, line 6) instead of as a credit?
+- Expr: `{"op":"input","source":"Do you choose to take your foreign income taxes as an itemized deduction (Schedule A, line 6) instead of as a credit?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (gate) — `sa.foreign_tax_deduct_if_tax`
+
+- **Authored helper label:** Asked only where it can apply (sa.foreign_tax_deduct)
+- **Encoded (Bool):** Choose — [ftc helper "Positive foreign taxes" = true → helper "Do you choose to take your foreign income taxes as an itemized deduction (Schedule A, line 6) instead of as a credit?"] [ftc helper "Positive foreign taxes" = false → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ftc.has_tax",{"const":true}],"op":"test"},"then":"sa.foreign_tax_deduct"},{"guard":{"eq":["ftc.has_tax",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
+- Cite: [i1040sca] p. 7, Line 6, "Include on this line income taxes you paid to a foreign country", "You may want to take a credit for the foreign tax instead" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.estate_tax_income`
+
+- **Authored helper label:** Do you (or, on a joint return, your spouse) have a deduction for federal estate tax on income in respect of a decedent?
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) have a deduction for federal estate tax on income in respect of a decedent?
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) have a deduction for federal estate tax on income in respect of a decedent?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.bond_premium`
+
+- **Authored helper label:** Do you (or, on a joint return, your spouse) have a deduction for amortizable bond premium (for example, a bond premium carryforward, or premium on bonds acquired before October 23, 1986)?
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) have a deduction for amortizable bond premium (for example, a bond premium carryforward, or premium on bonds acquired before October 23, 1986)?
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) have a deduction for amortizable bond premium (for example, a bond premium carryforward, or premium on bonds acquired before October 23, 1986)?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.debt_instrument_loss`
+
+- **Authored helper label:** Do you (or, on a joint return, your spouse) have an ordinary loss attributable to a contingent payment debt instrument or an inflation-indexed debt instrument (for example, a Treasury Inflation-Protected Security)?
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) have an ordinary loss attributable to a contingent payment debt instrument or an inflation-indexed debt instrument (for example, a Treasury Inflation-Protected Security)?
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) have an ordinary loss attributable to a contingent payment debt instrument or an inflation-indexed debt instrument (for example, a Treasury Inflation-Protected Security)?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.pension_unrecovered`
+
+- **Authored helper label:** Is there an unrecovered investment in a pension to deduct (the after-tax contributions of a person who died before recovering them)?
+- **Encoded (Bool):** Input — Is there an unrecovered investment in a pension to deduct (the after-tax contributions of a person who died before recovering them)?
+- Expr: `{"op":"input","source":"Is there an unrecovered investment in a pension to deduct (the after-tax contributions of a person who died before recovering them)?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.impairment_work`
+
+- **Authored helper label:** Do you (or, on a joint return, your spouse) have impairment-related work expenses of a disabled person?
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) have impairment-related work expenses of a disabled person?
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) have impairment-related work expenses of a disabled person?"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.line11`
@@ -223,8 +514,8 @@
 
 ## 11 — `sa.line11_if_gifts`
 
-- **IRS:** Gifts by cash or check (zero when you and your spouse gave nothing to charity and have no carryover)
-- **Encoded (NonNegDollars):** Choose — [helper "Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:" = true → helper "Deductible cash/check charitable gifts before income limits, after benefits received and required substantiation"] [helper "Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:" = false → helper "Year parameter sales.zero"]
+- **IRS:** Gifts by cash or check (zero when you and your spouse gave nothing to charity)
+- **Encoded (NonNegDollars):** Choose — [helper "Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:" = true → helper "Deductible cash/check charitable gifts before income limits, after benefits received and required substantiation"] [helper "Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:" = false → helper "Year parameter sales.zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.gifts",{"const":true}],"op":"test"},"then":"sa.line11"},{"guard":{"eq":["sa.gifts",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
 - Cite: [f1040sa] p. 1, Gifts to Charity, line 11, "Gifts by cash or check"; i1040sca p. 10, Line 11, "Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)" (2025; created 2025-11-20; sha256 c14acf34)
 
@@ -261,16 +552,16 @@
 
 ## 4 — `sa.line4`
 
-- **IRS:** Subtract sa.line3 from sa.line1; if zero or less, enter zero
+- **IRS:** Subtract sa.line3 from sa.line1_if_medical; if zero or less, enter zero
 - **Encoded (NonNegDollars):** Subtract line 3 from line 1. If zero or less, enter -0-.
-- Expr: `{"from":"sa.line1","op":"subtract_floor0","take":"sa.line3"}`
+- Expr: `{"from":"sa.line1_if_medical","op":"subtract_floor0","take":"sa.line3"}`
 - Cite: [f1040sa] p. 1, Medical and Dental Expenses, line 4, "Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 5d — `sa.line5d`
 
-- **IRS:** Add sa.line5a, sa.line5b, sa.line5c
+- **IRS:** Add sa.line5a_total, sa.line5b_net, sa.line5c_if_taxed
 - **Encoded (NonNegDollars):** Add line 5a, line 5b, and line 5c.
-- Expr: `{"of":["sa.line5a","sa.line5b","sa.line5c"],"op":"sum"}`
+- Expr: `{"of":["sa.line5a_total","sa.line5b_net","sa.line5c_if_taxed"],"op":"sum"}`
 - Cite: [f1040sa] p. 1, Taxes You Paid, line 5d, "d Add lines 5a through 5c" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.saltbase`
@@ -356,8 +647,8 @@
 
 - **IRS:** Amount from sa.zero
 - **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
-- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"from":"sa.zero","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
@@ -366,8 +657,8 @@
 
 - **IRS:** Amount from sa.zero
 - **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
-- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"from":"sa.zero","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
@@ -376,8 +667,8 @@
 
 - **IRS:** Amount from sa.zero
 - **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
-- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"from":"sa.zero","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
@@ -386,8 +677,9 @@
 
 - **IRS:** Amount from sa.zero
 - **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
-- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.gift_carryover_if_no_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"from":"sa.zero","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
@@ -396,11 +688,11 @@
 
 - **IRS:** Amount from sa.zero
 - **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
-- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"from":"sa.zero","op":"copy"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [i1040sca] p. 11, Line 15, "Complete and attach Form 4684 to figure the amount of your loss. Only enter the amount from Form 4684, line 18, on line 15" (zero here: a casualty or theft loss is refused by sd.casualty through sd.other_forms, the refusal Schedule D additional source forms) (2025; printed date 2025-12-08; sha256 b0999b12)
 
 ## (helper) — `sa.gambling_losses`
 
@@ -421,8 +713,8 @@
 
 - **IRS:** Other—from list in instructions. List type and amount:
 - **Encoded (NonNegDollars):** Choose — [s1 helper "Any gambling winnings" = true → helper "Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b"] [s1 helper "Any gambling winnings" = false → helper "Year parameter sales.zero"]
-- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"alternatives":[{"guard":{"eq":["s1.has_gambling",{"const":true}],"op":"test"},"then":"sa.line16_gambling"},{"guard":{"eq":["s1.has_gambling",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
 - Cite: [f1040sa] Schedule A (2025), line 16; i1040sca p. 11, Other Itemized Deductions, "Only the expenses listed next can be deducted on line 16" (2025; created 2025-11-20; sha256 c14acf34)
@@ -464,10 +756,10 @@
 
 ## 12 — `sa.line12`
 
-- **IRS:** Total supported noncash donations before income limits (zero when you and your spouse gave nothing to charity and have no carryover)
-- **Encoded (NonNegDollars):** Choose — [helper "Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:" = true → helper "Total supported noncash donations before income limits"] [helper "Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:" = false → helper "Year parameter sales.zero"]
-- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **IRS:** Total supported noncash donations before income limits (zero when you and your spouse gave nothing to charity)
+- **Encoded (NonNegDollars):** Choose — [helper "Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:" = true → helper "Total supported noncash donations before income limits"] [helper "Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:" = false → helper "Year parameter sales.zero"]
 - **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.gifts",{"const":true}],"op":"test"},"then":"sa.line12_noncash"},{"guard":{"eq":["sa.gifts",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
 - Cite: [f1040sa] p. 1, Gifts to Charity, line 12, "Other than by cash or check. If you made any gift of $250 or more, see instructions"; i1040sca p. 10, Line 12, "Enter on line 12 the total value of your contributions of property other than by cash or check" (2025; created 2025-11-20; sha256 c14acf34)
@@ -490,8 +782,8 @@
 
 - **IRS:** Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
 - **Encoded (NonNegDollars):** Add line 4, line 7, line 10, line 14, line 15, and line 16.
-- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"of":["sa.line4","sa.line7","sa.line10","sa.line14","sa.line15","sa.line16"],"op":"sum"}`
 - Cite: [f1040sa] p. 1, Total Itemized Deductions, line 17, "Add the amounts in the far right column for lines 4 through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e" (2025; created 2025-11-20; sha256 c14acf34)

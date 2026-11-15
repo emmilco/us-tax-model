@@ -9,6 +9,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage15.f8880.s3 with the W-2 answered as showing a box 12 amount with a year after its code (USERRA make-up contributions): the W-2's Form 8880 line 2 amount is refused. The refused value is the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -19,7 +20,7 @@
         "person[taxpayer].w2[emp_a].box6": 43500,
         "person[taxpayer].w2[emp_a].box12_any": true,
         "person[taxpayer].w2[emp_a].box12_userra": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].w2[emp_a].sav_listed": {
@@ -45,6 +46,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage15.f8880.s3 with box 12 code H $500 (section 501(c)(18)(D) plan, Schedule 1 line 24f): the W-2's Form 8880 line 2 amount is refused. The refused value is the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -55,7 +57,7 @@
         "person[taxpayer].w2[emp_a].box6": 43500,
         "person[taxpayer].w2[emp_a].box12_any": true,
         "person[taxpayer].w2[emp_a].box12_h": 50000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].w2[emp_a].sav_listed": {
@@ -81,6 +83,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage15.f8880.s10 (box 12 code G $1,000, governmental 457(b)) with the elective part entered as $1,500, more than the code G amount: the governmental part is refused. The refused value is the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -93,7 +96,7 @@
         "person[taxpayer].w2[emp_a].box12_g": 100000,
         "person[taxpayer].w2[emp_a].g_governmental": true,
         "person[taxpayer].w2[emp_a].g_elective": 150000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].w2[emp_a].g_gov_part": {
@@ -131,7 +134,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 5,
@@ -142,7 +145,7 @@
         "dcprov[p0].paid": 600000,
         "person[taxpayer].w2[emp_a].box10": 500000,
         "person[taxpayer].w2[emp_a].box10_wages": 600000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].w2[emp_a].dc_net": {
@@ -172,6 +175,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Mutation fixture (T-159: the g_governmental operand of w2.g_bad), predicted before evaluating: stage15.refuse.w2.g_bad (governmental 457(b), elective part $1,500) with box 12 code G entered as $0. The elective part of the code G amount is still more than the code G amount, so the inconsistency gate is true as for that case (the elective deferrals are part of the box 12 code G amount, f1040 W-2 instructions for box 12 code G).",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"

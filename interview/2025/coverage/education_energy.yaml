@@ -1,0 +1,266 @@
+# Coverage rows of lane 8b: education, student loans and home energy improvements. See opening.yaml for how a row is read.
+tax_year: 2025
+part: Education, student loans and home energy improvements
+profile: full
+sets:
+  student:
+    says: A single person who was a college student in 2025, has a social security number and got a Form 1098-T.
+    answers:
+      f8863.paid: true
+      person[taxpayer].sav_claimed: false
+      person[taxpayer].tin: true
+      person[taxpayer].edu: true
+      person[taxpayer].edu_1098t: true
+  loan:
+    says: A person who paid $1,200 of interest on student loans in 2025.
+    answers:
+      sli.any: true
+      sli.interest: 120000
+  work_done:
+    says: Something was installed at home in 2025; each kind not named by the row was not installed.
+    answers:
+      f5695.any: true
+      f5695.solar: false
+      f5695.solar_water: false
+      f5695.wind: false
+      f5695.geothermal: false
+      f5695.line5a: false
+      f5695.line7a: false
+      f5695.insulation: false
+      f5695.doors: false
+      f5695.windows: false
+      f5695.panel: false
+      f5695.audit: false
+      f5695.heat_pump: false
+      f5695.hp_water_heater: false
+      f5695.central_ac: false
+      f5695.water_heater: false
+      f5695.furnace: false
+      f5695.biomass: false
+rows:
+- id: l8b.sli_none
+  design: lane 8b notes, student loans (no loan)
+  situation: A person paid no student loan interest in 2025.
+  answers:
+    sli.any: false
+  expect:
+    proceeds:
+      sli.any: false
+    not_asked: [sli.interest, sli.unqualified_any, sli.assisted_any]
+- id: l8b.sli_plain
+  design: lane 8b notes, student loans (the common case)
+  situation: A person paid $1,200 of interest on ordinary student loans, none of it paid by a program or a 529 plan.
+  uses: [loan]
+  answers:
+    sli.unqualified_any: false
+    sli.assisted_any: false
+    person[taxpayer].sav_claimed: false
+  expect:
+    proceeds:
+      sli.interest: 120000
+    not_asked: [sli.unqualified, sli.assisted]
+- id: l8b.sli_family_loan
+  design: lane 8b notes, student loans (a loan that is not a qualified student loan)
+  situation: A person paid student loan interest, part of it on a loan from a relative.
+  uses: [loan]
+  answers:
+    sli.unqualified_any: true
+  expect:
+    asks: sli.unqualified
+- id: l8b.sli_repayment_program
+  design: lane 8b notes, student loans (interest paid by a repayment program or from 529 earnings)
+  situation: A person's student loan interest was partly paid by a state loan repayment program for health workers.
+  uses: [loan]
+  answers:
+    sli.unqualified_any: false
+    sli.assisted_any: true
+  expect:
+    asks: sli.assisted
+- id: l8b.edu_none
+  design: lane 8b notes, education (no student)
+  situation: Nobody on the return was a student in 2025.
+  answers:
+    f8863.paid: false
+  expect:
+    proceeds:
+      f8863.paid: false
+    not_asked: ['person[taxpayer].edu', f8863.ban]
+- id: l8b.edu_no_form
+  design: lane 8b notes, education (no Form 1098-T and no exception)
+  situation: A student whose school sent no Form 1098-T, where none of the exceptions applies.
+  uses: [student]
+  answers:
+    person[taxpayer].edu_1098t: false
+  expect:
+    proceeds:
+      person[taxpayer].edu_1098t: false
+    not_asked: ['person[taxpayer].edu_inst', 'person[taxpayer].edu_line23']
+- id: l8b.edu_four_years_asked
+  design: lane 8b notes, education (the student with a Form 1098-T goes on to the conditions of the credit)
+  situation: A student with a Form 1098-T is asked next whether the credit was already claimed in four earlier years.
+  uses: [student]
+  expect:
+    asks: person[taxpayer].edu_line23
+- id: l8b.energy_none
+  design: lane 8b notes, home energy (nothing installed)
+  situation: A person had nothing installed at home in 2025 that saves or makes energy.
+  answers:
+    f5695.any: false
+  expect:
+    proceeds:
+      f5695.any: false
+    not_asked: [f5695.solar, f5695.heat_pump, f5695.business_use, f5695.carry]
+- id: l8b.energy_solar
+  design: lane 8b notes, home energy (solar panels, the common Part I case)
+  situation: A homeowner had solar panels installed in 2025 for $20,000.
+  uses: [work_done]
+  answers:
+    f5695.solar: true
+    f5695.business_use: false
+    f5695.construction_later: false
+    f5695.line1: 2000000
+  expect:
+    proceeds:
+      f5695.line1: 2000000
+    not_asked: [f5695.line2, f5695.battery_cost, f5695.line17a, f5695.line21a, f5695.joint_occupancy, f5695.line12]
+- id: l8b.energy_heat_pump
+  design: lane 8b notes, home energy (a heat pump, the common Part II case)
+  situation: A homeowner had a heat pump installed in 2025 for $9,000 at the home she lives in.
+  uses: [work_done]
+  answers:
+    f5695.heat_pump: true
+    f5695.business_use: false
+    f5695.joint_occupancy: false
+    f5695.line21a: true
+    f5695.line21b: true
+    f5695.b_new_home: false
+    f5695.line29a: 900000
+    f5695.line29b: 0
+    f5695.qmid_hp: true
+    f5695.condo: false
+  expect:
+    proceeds:
+      f5695.line29a: 900000
+    not_asked: [f5695.line22a, f5695.line23a_i, f5695.line24a, f5695.line25a, f5695.line17a, f5695.line1, f5695.construction_later]
+- id: l8b.energy_fuel_cell
+  design: lane 8b notes, home energy (fuel cell property)
+  situation: A fuel cell was installed at the main home in 2025.
+  uses: [work_done]
+  answers:
+    f5695.line7a: true
+  expect:
+    refused: f5695.line7a
+- id: l8b.energy_business_use
+  design: lane 8b notes, home energy (an item used for business)
+  situation: Solar panels were installed on a home that is partly rented out.
+  uses: [work_done]
+  answers:
+    f5695.solar: true
+    f5695.business_use: true
+  expect:
+    refused: f5695.business_use
+- id: l8b.energy_construction_later
+  design: lane 8b notes, home energy (a home under construction not yet lived in)
+  situation: Solar panels went on a house being built that the owner first lived in in 2026.
+  uses: [work_done]
+  answers:
+    f5695.solar: true
+    f5695.business_use: false
+    f5695.construction_later: true
+  expect:
+    refused: f5695.construction_later
+- id: l8b.energy_joint_occupancy
+  design: lane 8b notes, home energy (a home shared with another occupant)
+  situation: Insulation was put in a home the owner shares with a housemate.
+  uses: [work_done]
+  answers:
+    f5695.insulation: true
+    f5695.business_use: false
+    f5695.joint_occupancy: true
+  expect:
+    refused: f5695.joint_occupancy
+- id: l8b.energy_new_home_insulation
+  design: lane 8b notes, home energy (improvements in building a new main home)
+  situation: Insulation was put in as part of building the owner's new main home.
+  uses: [work_done]
+  answers:
+    f5695.insulation: true
+    f5695.business_use: false
+    f5695.joint_occupancy: false
+    f5695.line17a: true
+    f5695.line17b: true
+    f5695.line17c: true
+    f5695.line17e: true
+  expect:
+    refused: f5695.sec_a_new_home
+- id: l8b.energy_new_home_heat_pump
+  design: lane 8b notes, home energy (equipment in building a new home)
+  situation: A heat pump was installed as part of building a new home.
+  uses: [work_done]
+  answers:
+    f5695.heat_pump: true
+    f5695.business_use: false
+    f5695.joint_occupancy: false
+    f5695.line21a: true
+    f5695.line21b: true
+    f5695.b_new_home: true
+  expect:
+    refused: f5695.sec_b_new_home
+- id: l8b.energy_door_no_qmid
+  design: lane 8b notes, home energy (a door without its manufacturer number)
+  situation: One exterior door was installed for $500 and the owner has no manufacturer identification number for it.
+  uses: [work_done]
+  answers:
+    f5695.doors: true
+    f5695.business_use: false
+    f5695.joint_occupancy: false
+    f5695.line17a: true
+    f5695.line17b: true
+    f5695.line17c: true
+    f5695.line17e: false
+    f5695.line19a: 50000
+    f5695.line19d_i: 0
+    f5695.line19d_ii: 0
+    f5695.line19e: 0
+    f5695.qmid_doors: false
+  expect:
+    refused: f5695.doors_no_qmid
+- id: l8b.energy_rented_home_insulation
+  design: lane 8b notes, home energy (insulation in a home that is not the owned main home)
+  situation: Insulation was put in a home the person rents; the first condition is answered No and no cost is asked.
+  uses: [work_done]
+  answers:
+    f5695.insulation: true
+    f5695.business_use: false
+    f5695.joint_occupancy: false
+    f5695.line17a: false
+    f5695.condo: false
+  expect:
+    proceeds:
+      f5695.line17a: false
+    not_asked: [f5695.line17b, f5695.line18a]
+- id: l8b.energy_carryforward
+  design: lane 8b notes, home energy (a carryforward from 2024 and nothing installed in 2025)
+  situation: A person installed nothing in 2025 but has $1,500 of clean energy credit carried forward on line 16 of the 2024 Form 5695.
+  answers:
+    f5695.any: false
+    s3.prior_other_forms: true
+    s3.prior_amt: false
+    s3.prior_forms: false
+    ftc.carryover: false
+    f5695.carry: true
+    f5695.line12: 150000
+  expect:
+    proceeds:
+      f5695.line12: 150000
+    not_asked: [f5695.solar, f5695.business_use, f5695.construction_later, f5695.line7a]
+- id: l8b.energy_no_prior_form
+  design: lane 8b notes, home energy (no separate form in the 2024 return)
+  situation: A person whose 2024 return had no separate form is not asked about a carryforward.
+  answers:
+    f5695.any: false
+    s3.prior_other_forms: false
+  expect:
+    proceeds:
+      s3.prior_other_forms: false
+    not_asked: [f5695.carry, f5695.line12]

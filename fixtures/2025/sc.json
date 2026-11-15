@@ -16,6 +16,8 @@
         "$sc@person[taxpayer]": [
           "shop"
         ],
+        "person[taxpayer].sc[shop].travel_meals": true,
+        "person[taxpayer].sc[shop].goods": true,
         "person[taxpayer].sc[shop].line1": 6000000,
         "person[taxpayer].sc[shop].line2": 100000,
         "person[taxpayer].sc[shop].line6": 50000,
@@ -111,6 +113,8 @@
         "$sc@person[taxpayer]": [
           "shop"
         ],
+        "person[taxpayer].sc[shop].travel_meals": true,
+        "person[taxpayer].sc[shop].goods": true,
         "person[taxpayer].sc[shop].line1": 6000000,
         "person[taxpayer].sc[shop].line2": 100000,
         "person[taxpayer].sc[shop].line6": 50000,
@@ -508,7 +512,7 @@
         ],
         "person[taxpayer].sc[van].scveh[car].miles_business": 10000,
         "person[taxpayer].sc[van].scveh[car].parking": 15000,
-        "person[taxpayer].sc[van].scveh[car].smr_ok": true
+        "person[taxpayer].sc[van].scveh[car].smr_always": true, "person[taxpayer].sc[van].scveh[car].smr_first": false, "person[taxpayer].sc[van].scveh[car].fleet": false
       },
       "expect": {
         "person[taxpayer].sc[van].scveh[car].line9": {
@@ -1032,6 +1036,7 @@
         "$sc@person[taxpayer]": [
           "b"
         ],
+        "person[taxpayer].sc[b].goods": true,
         "person[taxpayer].sc[b].line1": 100000,
         "person[taxpayer].sc[b].inventory_other": true
       },
@@ -1088,6 +1093,7 @@
         "$sc@person[taxpayer]": [
           "shop"
         ],
+        "person[taxpayer].sc[shop].travel_meals": true,
         "person[taxpayer].sc[shop].line1": 6000000,
         "person[taxpayer].sc[shop].line22": 70000,
         "person[taxpayer].sc[shop].meals_80": 100000,
@@ -1236,7 +1242,7 @@
         "$asset@person[taxpayer].sc[h]": [
           "saw"
         ],
-        "s179.line10": 450000,
+        "scope.business_before": true, "s179.prior_form": true, "s179.carryover": 450000,
         "person[taxpayer].sc[h].asset[saw].placed": "y2025",
         "person[taxpayer].sc[h].asset[saw].cost": 500000,
         "person[taxpayer].sc[h].asset[saw].pct": 100,

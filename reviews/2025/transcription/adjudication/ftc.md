@@ -30,3 +30,26 @@ Findings: none. Both reviewers' regular tax is the BUG-0190 expression. The fix'
 with Line 20, because line 3 adds the alternative minimum tax, which section 26(b)(2) excludes. Nothing reads
 `ftc.regular_tax` except `ftc.limited`. When Form 8962 refuses, the refusal reaches the credit only on returns that are
 refused anyway (stage18.refuse.alien_below_100, stage18.refuse.two_counted_same_state). No new error found.
+
+## Landing round (2026-11-14)
+
+Interview redraft (landing worktree), Claude line-scoped pass ea98d8b27ac6. Triage `.transcription/triage/2025/ftc.json` (executable-triage-v2, regenerated 2026-11-14 on the fresh build; not rerun). Rulings applied with `rule.py`; full text in the log and sidecar.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | ftc.has_tax | representation | 2,581/2,629; 35 candidate-unknown (12 completed), 13 project-unknown; no value | i1116 pp. 1-2 | Reads ftc.taxes without the ftc.asked parent. |
+| claude | transcription | ftc.credit | model error | 1,757/2,629; 1 value (completed), 641 candidate-unknown, 198 candidate-refuses, 20 project-refuses, 12 project-unknown | i1116 p. 25, Line 20 | Limit by Form 1040 line 16 alone, dropping Schedule 2 line 1z (stage18.ftc_limit_with_repayment $200 / $0). |
+
+Counts: model error 1, representation 1 (2). Findings: none. Project lines unchanged.
+
+## Landing round (2026-11-14), render
+
+Lane land3-adj7 (claude-opus-5-5, judgment). Open lines of the Claude render log `.transcription/logs/2025/render/ftc.md`, ruled on the rendered English (`rendered/2025/ftc.md`), the form YAML and the cited source; the deepseek log is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | limited | scope | MISMATCH; form YAML | i1116 p. 25, Line 20 | Form 4972 tax is refused at Form 1040 line 16 (scope.other_line16), so nothing is subtracted on a completed return. |
+
+Counts: claude render: scope 1.
+
+Findings: none. No line left open.

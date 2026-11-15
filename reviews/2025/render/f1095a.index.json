@@ -4,7 +4,9 @@
  "family": "claude",
  "base": "be548cbf8248386dbc0e8c169a64511559cd0b562e2f8438ee08097fd9f1ccb8",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "lines judged": "88",
+  "match / mismatch / unclear / missing": "86 / 2 / 0 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -26,10 +28,77 @@
    "subject_key": "839e38dbd908bc1ffdb8d185e53e87fbd162a300b18c68d23ff905cfe7e2909b"
   },
   {
-   "key": "uniform",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "key": "no",
+   "record": "09d671040e9cc09c2483384ccb9c212dc27fa158e6d91261a606891ea0543000",
    "status": "MATCH",
-   "subject_key": "a959e5dd560f3899051f8f5d5a3980f79163fcae21a2c83a71550e71f973a08b"
+   "subject_key": "1c2654003da1930bf0991fb30bdb0cb97c00cf661cb7609c3aa3d021c726eb2e"
+  },
+  {
+   "key": "same_months",
+   "record": "09d671040e9cc09c2483384ccb9c212dc27fa158e6d91261a606891ea0543000",
+   "status": "MATCH",
+   "subject_key": "9eda3a99820e77b18451bc6439161a8c6f2a60a2b4aa1c49b8dee7f319c60c0c"
+  },
+  {
+   "key": "b_blank",
+   "record": "09d671040e9cc09c2483384ccb9c212dc27fa158e6d91261a606891ea0543000",
+   "status": "MATCH",
+   "subject_key": "1383184dd1d6006569acc4db3818b412128608da761dc4d84af62adbe62a9dde"
+  },
+  {
+   "key": "b_changed",
+   "record": "09d671040e9cc09c2483384ccb9c212dc27fa158e6d91261a606891ea0543000",
+   "status": "MATCH",
+   "subject_key": "6a35eba9d5f154a807694c9ab27bdeefa006f33218249d9c9c4cf61ef03f0ab9"
+  },
+  {
+   "key": "b_wrong",
+   "record": "09d671040e9cc09c2483384ccb9c212dc27fa158e6d91261a606891ea0543000",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; i8962 p. 14, Line 10, Missing or incorrect SLCSP premium: \"If either of these two situations applies to you, or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month\"; situation 1, \"If no APTC was paid ... column B ... may be wrong, left blank, or reported as -0-\"; p. 15, \"or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium\". f1095a.b_wrong tests only b_blank and b_changed, so a no-APTC form or one the filer otherwise believes wrong, with Part III the same every month, is taken as uniform without f1095a.b_fixed_same, and f1095a.mo_b takes the corrected premium as one amount the same every month; a correct premium that differs by month cannot be entered, and line 10 is Yes where the instructions give No. The model is right. Fix: add a no-APTC / reason-to-believe question as a third limb of b_wrong (BUG-0634).",
+   "subject_key": "2528300a0c0eb309d871dd14242b76476775182db0950b6f0129fd876034c4ff"
+  },
+  {
+   "key": "b_doubt",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
+   "status": "MATCH",
+   "subject_key": "712ac94aa3155e6acf0f6d101c4ceeaaaf01aabe3fd11a1b071ca7d1bfc2ff9d"
+  },
+  {
+   "key": "no_aptc",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
+   "status": "MATCH",
+   "subject_key": "535094dfe83a9968deb792324d061935d6abb72a8cc9d0d42cc2d6ac1af1b7b1"
+  },
+  {
+   "key": "b_check",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
+   "status": "MATCH",
+   "subject_key": "9d832f3286ab6f7c4bb7962cc75d7779aa64a67bc538afd7168d63f23c3ca7e2"
+  },
+  {
+   "key": "b_wrong_asked",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
+   "status": "MATCH",
+   "subject_key": "1d53939632948bb812369eabec207b97bbfc577c983c2c76a8a4c8580dd37b9b"
+  },
+  {
+   "key": "b_fixed_same",
+   "record": "09d671040e9cc09c2483384ccb9c212dc27fa158e6d91261a606891ea0543000",
+   "status": "MATCH",
+   "subject_key": "23d317c29cc576eba9ab34ef14f17f3f06668ecdb3d91c8587f55c3303c2f7de"
+  },
+  {
+   "key": "b_fixed_same_if_b_wrong",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
+   "status": "MATCH",
+   "subject_key": "b553023f7ad49779ad858e437593118fcffa9ec28990cc75e910c781cba0a7ef"
+  },
+  {
+   "key": "uniform",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
+   "status": "MATCH",
+   "subject_key": "5e8ed255f343c6ff764332ec3198dfc19ba34e31e6d13e1ca6bcb4664020bce7"
   },
   {
    "key": "mo_a",
@@ -267,147 +336,147 @@
   },
   {
    "key": "a_jan",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "d3fbb505a051c618bea7a9e45781a9da30117ee3338d59d12638d108680a9c4a"
+   "subject_key": "7af95f09c0b372c9f9a320d52823152604e8ca4e55611ed6d4456967a927db13"
   },
   {
    "key": "a_feb",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "ce881bb462a59256d83c511cec3b3656607e10a751a605078b38c891f410587e"
+   "subject_key": "aec6591568374ce265235c605fac42e39a8b68aec21def83caed21269323bcf8"
   },
   {
    "key": "a_mar",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "251d7273f549d2234912db38041251e7b1f411fb6c0e698d78bf40027fd6cd89"
+   "subject_key": "92d6038707e94bbf99251698cf8f732461fcaefaccf926589e2062132e215a9f"
   },
   {
    "key": "a_apr",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "d73b40e118513bc17e71b9cece301c207f3bcad7a3d5ccb87d035cff1b7297cc"
+   "subject_key": "d77608221ba1634f7352dedf0a2379065fcf991e98ba219aa63ee5bf7ddbdcaa"
   },
   {
    "key": "a_may",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "8b77abb33385b5c6491deebc0c4e8a374904ab9b353e199e4df51a1d87f60a5b"
+   "subject_key": "0dd18d10d62f84f693a22919ad90b91f31a268e1a05d03c4f865088b67232bbb"
   },
   {
    "key": "a_jun",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "5beee112307b1aa23d67068a86b2f004d1e9cf99d8b1669ef0885a149c5b0df5"
+   "subject_key": "76803014705acf84487f760b7be678865340c965966fe154b64684ee89b993c4"
   },
   {
    "key": "a_jul",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "1ed4896e35c06294ad24d4c5a05bf5b84cdb3c1706b4a827ab9231f689dce974"
+   "subject_key": "67caa2bdad0686a7b6c11f6dc2bd131235ca47dd133cea7f3d1d711c3664d72e"
   },
   {
    "key": "a_aug",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "ae38c180cc7637a0149e1930558730f51d832b35f572134a668226969254e19d"
+   "subject_key": "2ca2399c85017f0272e478c153d58de803caaf108529f0edce690b6e6d607017"
   },
   {
    "key": "a_sep",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "a3aa18829e2e09cad62b80ea2357875a3fa329216609428d31b412a4786355ab"
+   "subject_key": "48fd75d55ec7f0b4050b0254f5e67dd3d088a33ebc6e3b828c4aebb036368a05"
   },
   {
    "key": "a_oct",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "3ef4092a6bb4f36c28add9689d2c1b57beadcf0326be1fdd028ad4b319cb9be1"
+   "subject_key": "cf011f075f0d36e560e5d37570ebc0d0e1d5a6a18711c681b5d9463e1dd6f0be"
   },
   {
    "key": "a_nov",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "7c6ac2a4838cc1ef2639659243b231c368d9c9beaa5cc7607af7c67de63703c5"
+   "subject_key": "1328ea1940ceebfbeb4b32f21c43f0cb00bd8e9afef52595128051ce908742c5"
   },
   {
    "key": "a_dec",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "6eed3d2f9d94a50a365e48bdd0c9497ea27fa4fedbe29ed3191f0876a0749fcf"
+   "subject_key": "519c5df7bbb9860f97a2898b83f0298912715da2d1d02a951dcfbaac6267c010"
   },
   {
    "key": "b_jan",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "03df4ee86975a99c1b889ce27f36d9d050e53b2437ca95fc2dc33eec765691b0"
+   "subject_key": "0da98353dc6b4b3e1e1d1db206a7438ea7e9b08efe459b20cfef15819320178c"
   },
   {
    "key": "b_feb",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "ee0792d2cebf5c52bba5f95256ef965c4da6b0a7722a60b9f1d86bb2f217580c"
+   "subject_key": "e041b7b944421610a6d1d1f2453bd9c4cb5a15288f2ec52220bf23fe6e499bda"
   },
   {
    "key": "b_mar",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "29e134eb181fa0d140aad039c0e25b8e60d16ef1214703aa7e04d285d2e7204f"
+   "subject_key": "e72800d6b18b2cb6ce2641039cf737ba25af95c720b82859f47a3b1b7b395d4e"
   },
   {
    "key": "b_apr",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "6407d645883b5ae673f0d93b1f680281dec0512d02d2137c4e109ab8f7b382db"
+   "subject_key": "4111b5aa2367ce30520c064dfb44d9677767a449336f200a83faaae4a7779432"
   },
   {
    "key": "b_may",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "b5f951040667b117a94884a9558808d047f9b6831e288c8b057077fe5380f200"
+   "subject_key": "e1a40cc7ea657a1954479f194a18f3a3eebc4352c25a5ec338b1651297beb8ed"
   },
   {
    "key": "b_jun",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "19fbb4858d32fb0611fd8c9ae7d260059624bd9d5bf4c60331cc303e16b0539f"
+   "subject_key": "0a91842f3b2e1f810cd6c4bee85b6352852e6491653a2792cf3faa8a9b81f502"
   },
   {
    "key": "b_jul",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "1cdf27d6fd9d0e09cca28f83dbe550131f9146d269be1593a83109295567b1fb"
+   "subject_key": "2c76d638172282e21f0b304a510baab71d72e39e151ec9f891f3f3d4b0088b65"
   },
   {
    "key": "b_aug",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "3d6342957db95d600912208a23ab9e6bcb0761ceb5f657a5337cd914c8b26f0d"
+   "subject_key": "1ba8b82a28086d897df88cbff81ddca74630e03907bce8275eec707d06fa63ea"
   },
   {
    "key": "b_sep",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "61686602c6d9cd6ec8bf46d9fa9e231c406addf256e49105da17eee1973b0bf0"
+   "subject_key": "d607b3a3c2a213f9dce3df9fad72a5fcd4d990285dc4c3d416e9e8ade455212c"
   },
   {
    "key": "b_oct",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "f5b43523261a55441826cb16386f2baaac8e54e109caa1ea6871a20018deebab"
+   "subject_key": "b1f75f4202e92555e3e4f69893083df8f98d2214826c834433ca3a614205de4d"
   },
   {
    "key": "b_nov",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "089757a08a25f11f1f9169dddc08a79b0b42e5d7f69ecfb7e264dabd47ad3c62"
+   "subject_key": "d2de1a3e9f2e0de170835d1ffc64fac2c7894f3a34362f2639b2c1df755d4afe"
   },
   {
    "key": "b_dec",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "89b901611ba4a7e5a3bee031d23502a3381b64a020c38d8f001e4062508d7b2e"
+   "subject_key": "e23f626baf834da9f41305c2b8f2faf3325f4073134245a96d0c298ef4d21e3c"
   },
   {
    "key": "yr_a_monthly",
@@ -423,9 +492,9 @@
   },
   {
    "key": "line33a",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "f07337d8c4a26abe18fefcdb98af72d84dd555b86d265c20047f176c02100859"
+   "subject_key": "c6b806b18a162e07711bfd6eb8e488811d61f9d9b1501c8bc354dd9cda0db667"
   },
   {
    "key": "yr_b_monthly",
@@ -441,9 +510,9 @@
   },
   {
    "key": "line33b",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "32aa7530bcb65b0647acdc755577c67bc570286d0a3ce26216740d8839018080"
+   "subject_key": "9f8f801cce06aa8c7d272c9235559271300f881fb77eba58a6104b9c7b23ccf4"
   },
   {
    "key": "yr_c_monthly",
@@ -453,9 +522,9 @@
   },
   {
    "key": "line33c",
-   "record": "b9c6d4d1ce50797ccdf3a6336826c2ee15a954ccce117e0f1596aa1dd6bc7aaa",
+   "record": "12c73c0b59f1074ec70a83745be93ac7b6a800033876aa7ff5d29b7e2cecf12b",
    "status": "MATCH",
-   "subject_key": "19be037c0a17132d061180e598444e72fa082ee38e2c535c65f7f585329703e3"
+   "subject_key": "c9b54df137cb89991fbb78d152e103f1e757030fc2de10de83e6cbc8b05407cc"
   },
   {
    "key": "b_counted",
@@ -475,7 +544,18 @@
   "one": "018c2c03ae21d6664ce922160a72bd14fea1356f59f6bed4d7455258b06b78a2",
   "void": "90bdc80b2f67c32cab32b3f3db045888dc6bfef2d6e25abdf529035d82864f71",
   "months": "3511b9c33d94e0b6ad7ddbfdf8cfda304002189c7468d008d2f1b3aec38680e4",
-  "uniform": "747bf46b8ef4885bccc97670d7e183473c4e77830b6c1d9434b26914329e978f",
+  "no": "3c41be3034b9391ef592621c8bdd61df554403d6eabe192f296133caadf82f3c",
+  "same_months": "89acac446e7273e3c7d0c2d07f5ed405e8caf100aa0947cfbe7747aeeb2c837b",
+  "b_blank": "6d5c47eee460fa6c2b20e25ae74bd42570c3b9f6a26163babbf767967e774267",
+  "b_changed": "6b24b208a1188f892aa1eec8e03a7ef30116c2cd6c2742b728cb94dd2c1256f2",
+  "b_wrong": "a69467e781af2040ef8a4a4793ebd2b32d0b1b463eb91fe07aae864e513daebf",
+  "b_doubt": "067e40d967ab2b6df03c99b8f32c4e103cb114e325cdf3fec034193599b5707f",
+  "no_aptc": "cc90e592a2b8634f4995f911f5d9aeba26357ec30b68e5c32db08aa3d4b26bd4",
+  "b_check": "db2b1c6d7c51fa16d2a61578d0cee234e709c1d30b338a54b55cd20fac2a6e77",
+  "b_wrong_asked": "5ff3389f4f9ef88ec8b6f98e1abd5298540e43abfcc9bd66cb2dad678171fa46",
+  "b_fixed_same": "abca2a2daaa83599bd657e78cce6265c846db59e22c45449ba302e755f8b3b8d",
+  "b_fixed_same_if_b_wrong": "858c2beb1c1057d7bea668eb53367401de1d36b224533f6443c21f32c5ca71ef",
+  "uniform": "cf11a9ab1378ea2c3a4675e5e693996f9ceac37df46713df3dc506a97b7fa504",
   "mo_a": "eaa96060d5d7b4a9836a4815fab29c1371acdb324c5ae8a784b31de71c9bf315",
   "mo_b": "7796a19e49897e61c975ac8ea6c2706f5d786ed6d42282cf0b8cf959b8e18c77",
   "c_total": "39051a24f63780cb1babe46353f9e8e3e0d514d7eebfee35784be0c2a4277e44",
@@ -515,38 +595,38 @@
   "in_c_oct": "fc73a606bd1a9e21ffc68c0b57421180654b89c27f0f249f275eaf45c5f4d712",
   "in_c_nov": "f4361198055096297ded07208d3cbdbf513fc6ae67ad5eeb1c679c6620ef5ba9",
   "in_c_dec": "adc53c9dc80c9d50d253a7b4824b48dababd2305ad1a3aaa8c0b3375072ae42c",
-  "a_jan": "d416d3d1f41888fb7dd69257b0bd8ed5363e5388e3141a1606b2273824cacbdb",
-  "a_feb": "e34abafc4abdd6c80111ef5c68eddd06b5cff6ed88905b5be4f9fdcbdc4e3888",
-  "a_mar": "d830a64b0ae771a628c944d659cdea27c324ef93735252151594d2cf020b72df",
-  "a_apr": "93891c9d0debc7360c3ac958de1df167ecbb192f7f104aca9a2c2dbee83832f6",
-  "a_may": "f7d3fa01de854d74a66ed304905eae6f864e712b615602a19fabcbacdebc563d",
-  "a_jun": "87083c8f7e3786296c3299a2a5281ed232615d66dc0570b757b725a9be61857d",
-  "a_jul": "6f9d8dd794935c37fc753cbf5d1d1fd91fcc985d804e424cacfff74e3892e301",
-  "a_aug": "0286cec102e2f4bf21f0ce509528e278441ce0823abfeb9928b597ef32a11324",
-  "a_sep": "d0827ec375347188827ac6fa8766df300cce5b4605e87940e649a9e96af6dc40",
-  "a_oct": "c0bd82f31a646875fdbf2a11983c194bfd013c7ffdc8753f4aa92d09d27fdc92",
-  "a_nov": "9e41eee3c100b9068c89c72a67952ff5256451d05093fe50098b729412e007d6",
-  "a_dec": "bdf47410aafe3ece57e9901901c5d7598e719c4dcba25d8c896f769131896ce6",
-  "b_jan": "cf48da3ecfb04d21df397649a3e205e204e36925ceaa84815b5f0484cb85ac9e",
-  "b_feb": "36d39fd685ca68c7cb56962e739034358c797f7e2e0a0b1ef58bc1ec6843a29e",
-  "b_mar": "53338f98224bc1c678577202e0c66d9044ac4b0dd1e3dc244575fb850023c193",
-  "b_apr": "0743b5910a514e40c4c7e0abd9e56076c7879111bbb1d42d90b61a359b657118",
-  "b_may": "b0b74d49680dc8f63baa6d97d8ef2e7b44105024302949d8231a485386fcdf4c",
-  "b_jun": "eb5af73233b940c97500694f6b77ab080310fe1755dce57c2e0c2d4d6cd1fd19",
-  "b_jul": "94eacb871ecdb88708416a4cd1c91c74c62576db109fcaad521ec4a427c6cd7c",
-  "b_aug": "2f341acb12689c7c7fe07d37a4e036d6a117546255d95a5d1f9e3bd09801e906",
-  "b_sep": "c7ba2dd5e65fae7f816f92b98a5a33e248d3380adc51cfa1c6dd901e182fd46e",
-  "b_oct": "c93db3819a305e995f50d578dbc56b5093db2ac8298bebff39cbc708ee899aed",
-  "b_nov": "67b3304793313b1f3c29c8bc87c97a95e721f4df1a9e5b298d7e2316fb5fb567",
-  "b_dec": "2a4269d8dd935ff763b869cb31b4de01cc78a810f9e57e2c8b2809c056b276af",
+  "a_jan": "26b04cafa067ef9f6809d87c5fc2a2472d69b53e46e34eac88c30ea03c716e98",
+  "a_feb": "fef8b09d7e1e569456077420e3cf5a17189a3e37f25d44debed322c02b7f61dd",
+  "a_mar": "90088ced3ee6f0fff90c9bce26d0354fe1821edd43c905fd792822c74d1d8f58",
+  "a_apr": "551af929f2f78f9666eb4cf5d1ea2d4eaacd6606b261491db7a1b491285342a5",
+  "a_may": "d9dc66d8d3c283f267efa21ac5eca79ce611da05956f31d38048c01a11ec40c9",
+  "a_jun": "8fc8e2146f28923f9698d789b31b867af05abf78d2c08365d3d451093a97629a",
+  "a_jul": "2680c628ebddc23b3077b0e43453ad2411007d6d2235a5f4ba6075ab61bc4e5c",
+  "a_aug": "09e1b3f30c044af719d6e332cc71cc79547d148bfddd346600bb267f347fc381",
+  "a_sep": "7f6c5e1dfcb39b897765d37a16dfd5e92ef488f48ee6cd5df4640c36b1335df0",
+  "a_oct": "c4cc49c0bba4efb6ada7b8a7d302bdfc514fd66cd0cb2e0916e8ca7843caba4f",
+  "a_nov": "0fe91a318f1d774f7b7b6de77e976f1915bbd895f8d208a0f41f8f89a960f9b3",
+  "a_dec": "05f172097b4701363221e63501e16027c7c890a4276329e61b786c5c58c83d34",
+  "b_jan": "71d7ddd509cb361902d5613cab121f2267166f9e52420d895dadc9e4c31ef259",
+  "b_feb": "22ccea5be100e4fae7679c3a3c333b57d0f8b4f0a5791e67312a5e6a6849bbf1",
+  "b_mar": "b0ab62571bf262cd10ed57aa94d06c2801625bd4ed6e21f8cd7183241bdb5af4",
+  "b_apr": "7d3e47b89a003ccff4b05ed171e1ff46d20e53194a172b0333894258a502ece4",
+  "b_may": "ce394ba5cfb003efec183a0a61d1f3057717209a7e524580889f40cdd703167a",
+  "b_jun": "c2c896dbf60df73ce76dd139c29d484bba4b91482d1e2cda0b0932db22ec7bf5",
+  "b_jul": "eb3915b9ddac5869be4135f2b6eeea2186aec8d364740b307c55ee69a673c552",
+  "b_aug": "7e3eed64c4213c9a4e5cd6abb0ac9c6eeb4d5b6a02739455ba0bfa8b6a615961",
+  "b_sep": "7032a561a150b67429a99867929533b3596f82e4184dd5a8f877bb53494262c8",
+  "b_oct": "b4bb57c59cf149166540e50734a7d6067ca9ebed875ffc5d68b03ea9f01d1d53",
+  "b_nov": "14020ea3047b79ff30a57eff91b62114d4b20fcda72b5b0d297eb97fe6d9f904",
+  "b_dec": "8bd5cb00960a408c6217a66a63c58b28d1adb393d193212737bce3c40ff3a12b",
   "yr_a_monthly": "bd927e5b46ad806444aa077ff148bee6f10319abaf2d7926d1f3803ff67c8903",
   "yr_a_uniform": "e5a36a162bc8d7fca171ae5578df83a4b509825faf898bab41dbf6d23f6563d5",
-  "line33a": "50d0626d30ec16adeea0d8e0c411d2d29e1f27bbc27f27c4207fd10c74dfd0f7",
+  "line33a": "bd56f92ade51a8d1c7e940f8cc8e50beb47930f168a48e3adbdd1a97ae6bb54c",
   "yr_b_monthly": "924b97ed0171cda25356a4a032741e6a149dd8a4849a89d670ef5d5cf06d1d97",
   "yr_b_uniform": "5f0bc259f4d49391b407fd7bc2e081a39edbaf79f358123af4beb432e0175205",
-  "line33b": "c1624550e930b696bb44481dab28ee9f93cbad53be9d63164cb9cea0f4ca7ffa",
+  "line33b": "67765409faf38f344bdf9be75482a02a5395ee673a9fc3c1d1f7729e296c19d9",
   "yr_c_monthly": "f14bbb5d161e344b2292b2203c7c3e827e9926e3887baba37ad52988f8e73c9d",
-  "line33c": "6ce43e75268c1e2022528fdbd69aaef266da7c49fb086065e6a94557e1106abf",
+  "line33c": "f4d13c0a20cb7d468c2c93b4b55c47943597746b4e3313cebccfca8dd9e55ef1",
   "b_counted": "61e9490e23f8e01be5e764c38c7e872963c4f79e7eda88d967d128cc33755939",
   "b_used": "82622d3620367b0dee84db6523a55dcadd94130ff4672f6eebde0217b33a59e7"
  },

@@ -40,10 +40,21 @@ form:
       doc: f1040s1
       locator: Schedule 1 (2025), line 1; i1040gi p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line
         9, "Enter the smaller of line 3 or line 8 here and on Schedule 1, line 1"
+  - id: s1.uc_any
+    printed: (helper)
+    type: Bool
+    label: "Did you (or, on a joint return, your spouse) receive unemployment compensation in 2025?"
+    expr:
+      op: input
+      source: "Did you (or, on a joint return, your spouse) receive unemployment compensation in 2025?"
+    cite:
+      doc: i1040gi
+      locator: "p. 89, Schedule 1, line 7"
   - id: s1.uc_paid
     printed: (helper)
     label: Unemployment compensation paid to you in 2025
     type: NonNegDollars
+    gated_by: s1.uc_paid_if_any
     expr:
       op: input
       source: 'Unemployment compensation paid to you (or, on a joint return, your spouse) in 2025: the total of box 1 of
@@ -53,6 +64,28 @@ form:
       locator: p. 89, Schedule 1, line 7, 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation
         paid to you in 2025' and 'If the amount reported in box 1 of your Form(s) 1099-G is incorrect, report on line 7 only
         the actual amount'
+  - id: s1.uc_paid_if_any
+    printed: (gate)
+    type: NonNegDollars
+    label: "Unemployment compensation paid in 2025, asked only when unemployment compensation was received (zero otherwise)"
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.uc_any
+          - const: true
+        then: s1.uc_paid
+      - guard:
+          op: test
+          eq:
+          - s1.uc_any
+          - const: false
+        then: s1.zero
+    cite:
+      doc: i1040gi
+      locator: "p. 89, Schedule 1, line 7"
   - id: s1.has_uc
     printed: (helper)
     label: Any unemployment compensation
@@ -60,7 +93,7 @@ form:
     expr:
       op: test
       gt:
-      - s1.uc_paid
+      - s1.uc_paid_if_any
       - param: sales.zero
     cite:
       doc: i1040gi
@@ -102,7 +135,7 @@ form:
     type: NonNegDollars
     expr:
       op: subtract_floor0
-      from: s1.uc_paid
+      from: s1.uc_paid_if_any
       take: s1.uc_repaid
     cite:
       doc: i1040gi
@@ -284,46 +317,184 @@ form:
         cite:
           doc: i1040sc
           locator: p. 1, Reminders, Excess business loss limitation; rp-2024-40 section 3.32
+  - id: s1.ltc_payout
+    printed: (helper)
+    type: Bool
+    label: "Did you (or, on a joint return, your spouse) receive in 2025 payments under a long-term care insurance contract, or accelerated death benefits under a life insurance contract (Form 1099-LTC; Form 8853)?"
+    expr:
+      op: input
+      source: "Did you (or, on a joint return, your spouse) receive in 2025 payments under a long-term care insurance contract, or accelerated death benefits under a life insurance contract (Form 1099-LTC; Form 8853)?"
+    cite:
+      doc: f1040s1
+      locator: "Schedule 1 (2025), line 8e"
+  - id: s1.stock_options
+    printed: (helper)
+    type: Bool
+    gated_by: s1.stock_options_if_options
+    label: "Did you (or, on a joint return, your spouse) have income in 2025 from the exercise of stock options that is not otherwise reported on the return (Schedule 1, line 8k)?"
+    expr:
+      op: input
+      source: "Did you (or, on a joint return, your spouse) have income in 2025 from the exercise of stock options that is not otherwise reported on the return (Schedule 1, line 8k)?"
+    cite:
+      doc: f1040s1
+      locator: "Schedule 1 (2025), line 8k"
+  - id: s1.stock_options_if_options
+    printed: (gate)
+    type: Bool
+    label: "Stock option income not otherwise reported, asked only with employer stock options exercised or their shares sold (false otherwise)"
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s2.options_any
+          - const: true
+        then: s1.stock_options
+      - guard:
+          op: test
+          eq:
+          - s2.options_any
+          - const: false
+        then: s1.no
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8k, "Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h"'
+  - id: s1.olympic
+    printed: (helper)
+    type: Bool
+    gated_by: s1.olympic_if_winnings
+    label: "Did you (or, on a joint return, your spouse) receive in 2025 an Olympic or Paralympic medal or prize money from the United States Olympic and Paralympic Committee (Schedule 1, line 8m)?"
+    expr:
+      op: input
+      source: "Did you (or, on a joint return, your spouse) receive in 2025 an Olympic or Paralympic medal or prize money from the United States Olympic and Paralympic Committee (Schedule 1, line 8m)?"
+    cite:
+      doc: f1040s1
+      locator: "Schedule 1 (2025), line 8m"
+  - id: s1.olympic_if_winnings
+    printed: (gate)
+    type: Bool
+    label: "An Olympic or Paralympic medal or prize money, asked only with winnings, prizes or awards (false otherwise)"
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.winnings_any
+          - const: true
+        then: s1.olympic
+      - guard:
+          op: test
+          eq:
+          - s1.winnings_any
+          - const: false
+        then: s1.no
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8m, "The value of Olympic and Paralympic medals and the amount of United States Olympic Committee (USOC) prize money you receive on account of your participation in the Olympic or Paralympic Games may be nontaxable"'
+  - id: s1.nqdc_pension
+    printed: (helper)
+    type: Bool
+    gated_by: s1.nqdc_pension_if_w2
+    label: "Did you (or, on a joint return, your spouse) receive in 2025 a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (Schedule 1, line 8t; it may be shown in box 11 of Form W-2)?"
+    expr:
+      op: input
+      source: "Did you (or, on a joint return, your spouse) receive in 2025 a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (Schedule 1, line 8t; it may be shown in box 11 of Form W-2)?"
+    cite:
+      doc: f1040s1
+      locator: "Schedule 1 (2025), line 8t"
+  - id: s1.nqdc_pension_if_w2
+    printed: (gate)
+    type: Bool
+    label: "The answer to s1.nqdc_pension, asked only when a Form W-2 is listed (false otherwise)"
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scope.has_w2
+          - const: true
+        then: s1.nqdc_pension
+      - guard:
+          op: test
+          eq:
+          - scope.has_w2
+          - const: false
+        then: s1.no
+    cite:
+      doc: f1040s1
+      locator: "Schedule 1 (2025), line 8t"
+  - id: s1.inmate_wages
+    printed: (helper)
+    type: Bool
+    label: "Did you (or, on a joint return, your spouse) receive in 2025 amounts for services performed while an inmate in a penal institution (Schedule 1, line 8u)?"
+    expr:
+      op: input
+      source: "Did you (or, on a joint return, your spouse) receive in 2025 amounts for services performed while an inmate in a penal institution (Schedule 1, line 8u)?"
+    cite:
+      doc: f1040s1
+      locator: "Schedule 1 (2025), line 8u"
+  - id: s1.digital_income
+    printed: (helper)
+    type: Bool
+    label: "Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income not reported elsewhere on the return (Schedule 1, line 8v)?"
+    expr:
+      op: input
+      source: "Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income not reported elsewhere on the return (Schedule 1, line 8v)?"
+    cite:
+      doc: f1040s1
+      locator: "Schedule 1 (2025), line 8v"
   - id: s1.line8_other
     printed: (gate)
     label: Do you have any income for Schedule 1 line 8 other than the items this tool computes?
     type: Bool
     expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - s1.nqdc_pension_if_w2
+        - const: true
+      - op: test
+        eq:
+        - s1.stock_options_if_options
+        - const: true
+      - op: test
+        eq:
+        - s1.olympic_if_winnings
+        - const: true
+      - op: test
+        eq:
+        - s1.ltc_payout
+        - const: true
+      - op: test
+        eq:
+        - s1.inmate_wages
+        - const: true
+      - op: test
+        eq:
+        - s1.digital_income
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8e, "Enter the total of the amounts from Form 8853, lines 8, 12, and 26"; p. 91, Line 8k, "Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h"; p. 91, Line 8m, "The value of Olympic and Paralympic medals and the amount of United States Olympic Committee (USOC) prize money you receive on account of your participation in the Olympic or Paralympic Games may be nontaxable"; p. 92, Line 8t, "Enter the amount that you received as a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental 457 plan"; p. 92, Line 8u, "Enter the amount that you received for services performed while an inmate in a penal institution"; p. 92, Line 8v, "If, in 2025, you received ordinary income in connection with digital assets that isn’t reported elsewhere on your return"'
+  - id: s1.winnings_any
+    printed: (helper)
+    type: Bool
+    label: "Did you (or, on a joint return, your spouse) have gambling winnings, or receive a prize or an award, in 2025?"
+    expr:
       op: input
-      source: |-
-        Do you (or, on a joint return, your spouse) have any income (or loss or exclusion) for Schedule 1, line 8, other than the following?
-
-        - gambling winnings (line 8b)
-        - canceled debt (line 8c)
-        - income from Form 8889 (line 8f)
-        - Alaska Permanent Fund dividends (line 8g)
-        - jury duty pay (line 8h)
-        - prizes and awards (line 8i)
-        - income from an activity not engaged in for profit (line 8j)
-        - scholarship and fellowship grants not reported on Form W-2 (line 8r)
-        - the other income asked item by item for line 8z
-
-        Other income, loss or exclusion, for example:
-        - a net operating loss deduction (8a)
-        - the foreign earned income or housing exclusion from Form 2555 (8d)
-        - income from Form 8853 (8e)
-        - stock options (8k)
-        - income from the rental of personal property (8l)
-        - Olympic and Paralympic medals or USOC prize money (8m)
-        - a section 951(a) or 951A(a) inclusion (8n, 8o)
-        - a section 461(l) excess business loss adjustment (8p)
-        - taxable distributions from an ABLE account (8q)
-        - nontaxable Medicaid waiver payments (8s)
-        - a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t)
-        - wages earned while incarcerated (8u)
-        - digital assets received as ordinary income not reported elsewhere (8v)
+      source: "Did you (or, on a joint return, your spouse) have gambling winnings, or receive a prize or an award, in 2025?"
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), lines 8a to 8z
+      locator: "Schedule 1 (2025), lines 8b, 8i and 8m"
   - id: s1.gambling_winnings
     printed: (helper)
     label: Gambling winnings not attributable to a trade or business
     type: NonNegDollars
+    gated_by: s1.gambling_winnings_if_winnings
     expr:
       op: input
       source: 'Gambling winnings you (or, on a joint return, your spouse) had in 2025 that are not attributable to a trade or
@@ -337,6 +508,28 @@ form:
         include lotteries, raffles, a lump-sum payment from the sale of a right to receive future lottery payments, etc.";
         p525 p. 33, Gambling winnings, "Winnings from fantasy sports leagues are gambling winnings" and "Include the amount
         from box 1 on Schedule 1 (Form 1040), line 8b"'
+  - id: s1.gambling_winnings_if_winnings
+    printed: (gate)
+    type: NonNegDollars
+    label: "Gambling winnings, asked only with winnings, prizes or awards (zero otherwise)"
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.winnings_any
+          - const: true
+        then: s1.gambling_winnings
+      - guard:
+          op: test
+          eq:
+          - s1.winnings_any
+          - const: false
+        then: s1.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8b, "Enter gambling winnings not attributable to a trade or business. Gambling winnings include lotteries, raffles, a lump-sum payment from the sale of a right to receive future lottery payments, etc."; p525 p. 33, Gambling winnings, "Winnings from fantasy sports leagues are gambling winnings" and "Include the amount from box 1 on Schedule 1 (Form 1040), line 8b"'
   - id: s1.has_gambling
     printed: (helper)
     label: Any gambling winnings
@@ -344,7 +537,7 @@ form:
     expr:
       op: test
       gt:
-      - s1.gambling_winnings
+      - s1.gambling_winnings_if_winnings
       - param: sales.zero
     cite:
       doc: i1040gi
@@ -353,6 +546,7 @@ form:
     printed: (helper)
     label: Are you (or your spouse) in the trade or business of gambling (a professional gambler)?
     type: Bool
+    gated_by: s1.gambling_business
     expr:
       op: input
       source: Are you (or, on a joint return, your spouse) in the trade or business of gambling (a professional gambler)?
@@ -398,7 +592,7 @@ form:
     type: NonNegDollars
     expr:
       op: copy
-      from: s1.gambling_winnings
+      from: s1.gambling_winnings_if_winnings
     cite:
       doc: f1040s1
       locator: Schedule 1 (2025), line 8b; i1040gi p. 91, Line 8b, "Enter gambling winnings not attributable to a trade or
@@ -412,10 +606,21 @@ form:
         doc: p525
         locator: 'p. 33, Gambling winnings, "For tax years 2018 through 2025, professional gambling losses and expenses are
           limited to the amount of your winnings"'
-  - id: s1.line8g
-    printed: 8g
+  - id: s1.alaska_any
+    printed: (helper)
+    type: Bool
+    label: "Did you (or, on a joint return, your spouse) receive an Alaska Permanent Fund dividend in 2025?"
+    expr:
+      op: input
+      source: "Did you (or, on a joint return, your spouse) receive an Alaska Permanent Fund dividend in 2025?"
+    cite:
+      doc: f1040s1
+      locator: "Schedule 1 (2025), line 8g"
+  - id: s1.alaska_dividend
+    printed: (helper)
     label: Alaska Permanent Fund dividends
     type: NonNegDollars
+    gated_by: s1.line8g
     expr:
       op: input
       source: 'Alaska Permanent Fund dividends paid to you (and, on a joint return, your spouse) in 2025, as shown on the
@@ -425,10 +630,44 @@ form:
       doc: f1040s1
       locator: Schedule 1 (2025), line 8g; p525 p. 31, Alaska Permanent Fund dividend, "report it as income on Schedule 1
         (Form 1040), line 8g"
-  - id: s1.line8h
-    printed: 8h
+  - id: s1.line8g
+    printed: 8g
+    label: Alaska Permanent Fund dividends
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.alaska_any
+          - const: true
+        then: s1.alaska_dividend
+      - guard:
+          op: test
+          eq:
+          - s1.alaska_any
+          - const: false
+        then: s1.zero
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 8g; p525 p. 31, Alaska Permanent Fund dividend, "report it as income on Schedule 1
+        (Form 1040), line 8g"
+  - id: s1.jury_any
+    printed: (helper)
+    type: Bool
+    label: "Did you (or, on a joint return, your spouse) receive jury duty pay in 2025?"
+    expr:
+      op: input
+      source: "Did you (or, on a joint return, your spouse) receive jury duty pay in 2025?"
+    cite:
+      doc: f1040s1
+      locator: "Schedule 1 (2025), line 8h"
+  - id: s1.jury_pay
+    printed: (helper)
     label: Jury duty pay
     type: NonNegDollars
+    gated_by: s1.line8h
     expr:
       op: input
       source: Jury duty pay you (and, on a joint return, your spouse) received in 2025, including any you gave to your
@@ -437,10 +676,34 @@ form:
       doc: i1040gi
       locator: 'p. 91, Line 8h, "Enter any jury duty pay and see the instructions for line 24a"; p525 p. 34, Jury duty,
         "Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h"'
-  - id: s1.line8i
-    printed: 8i
+  - id: s1.line8h
+    printed: 8h
+    label: Jury duty pay
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.jury_any
+          - const: true
+        then: s1.jury_pay
+      - guard:
+          op: test
+          eq:
+          - s1.jury_any
+          - const: false
+        then: s1.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8h, "Enter any jury duty pay and see the instructions for line 24a"; p525 p. 34, Jury duty,
+        "Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h"'
+  - id: s1.prizes
+    printed: (helper)
     label: Prizes and awards
     type: NonNegDollars
+    gated_by: s1.line8i
     expr:
       op: input
       source: 'Prizes and awards you (and, on a joint return, your spouse) received in 2025 that are not gambling winnings,
@@ -452,10 +715,45 @@ form:
       locator: 'p. 91, Line 8i, "Enter prizes and awards but see the instructions for line 8m"; p525 p. 35, Prizes and awards,
         "If you refuse to accept a prize, don’t include its value in your income. Prizes and awards in goods or services
         must be included in your income at their FMV"'
-  - id: s1.line8j
-    printed: 8j
+  - id: s1.line8i
+    printed: 8i
+    label: Prizes and awards
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.winnings_any
+          - const: true
+        then: s1.prizes
+      - guard:
+          op: test
+          eq:
+          - s1.winnings_any
+          - const: false
+        then: s1.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8i, "Enter prizes and awards but see the instructions for line 8m"; p525 p. 35, Prizes and awards,
+        "If you refuse to accept a prize, don’t include its value in your income. Prizes and awards in goods or services
+        must be included in your income at their FMV"'
+  - id: s1.hobby_any
+    printed: (helper)
+    type: Bool
+    label: "Did you (or, on a joint return, your spouse) receive income in 2025 from an activity not engaged in for profit, such as a hobby?"
+    expr:
+      op: input
+      source: "Did you (or, on a joint return, your spouse) receive income in 2025 from an activity not engaged in for profit, such as a hobby?"
+    cite:
+      doc: f1040s1
+      locator: "Schedule 1 (2025), line 8j"
+  - id: s1.hobby_income
+    printed: (helper)
     label: Activity not engaged in for profit income
     type: NonNegDollars
+    gated_by: s1.line8j
     expr:
       op: input
       source: Income you (and, on a joint return, your spouse) received in 2025 from an activity not engaged in for profit,
@@ -465,15 +763,74 @@ form:
       locator: 'p. 91, Line 8j, "Activity not engaged in for profit income. See Pub. 525"; p525 p. 31, Activity not for
         profit, "An example of this type of activity is a hobby or a farm you operate mostly for recreation and pleasure.
         Enter this income on Schedule 1 (Form 1040), line 8j"'
-  - id: s1.line8r
-    printed: 8r
+  - id: s1.line8j
+    printed: 8j
+    label: Activity not engaged in for profit income
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.hobby_any
+          - const: true
+        then: s1.hobby_income
+      - guard:
+          op: test
+          eq:
+          - s1.hobby_any
+          - const: false
+        then: s1.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8j, "Activity not engaged in for profit income. See Pub. 525"; p525 p. 31, Activity not for
+        profit, "An example of this type of activity is a hobby or a farm you operate mostly for recreation and pleasure.
+        Enter this income on Schedule 1 (Form 1040), line 8j"'
+  - id: s1.scholarship_any
+    printed: (helper)
+    type: Bool
+    label: "Did you (or, on a joint return, your spouse) receive a scholarship or fellowship grant in 2025?"
+    expr:
+      op: input
+      source: "Did you (or, on a joint return, your spouse) receive a scholarship or fellowship grant in 2025?"
+    cite:
+      doc: f1040s1
+      locator: "Schedule 1 (2025), line 8r"
+  - id: s1.scholarship_taxable
+    printed: (helper)
     label: Scholarship and fellowship grants not reported on Form W-2
     type: NonNegDollars
+    gated_by: s1.line8r
     expr:
       op: input
       source: 'Scholarship and fellowship grants you (and, on a joint return, your spouse) received in 2025 that are not
         reported on a Form W-2; if you were a degree candidate, only the part used for expenses other than tuition and
         course-related expenses (for example room, board and travel); zero if none'
+    cite:
+      doc: i1040gi
+      locator: 'p. 92, Line 8r, "Enter the amount of scholarship and fellowship grants not reported on Form W-2. However, if
+        you were a degree candidate, include on line 8r only the amounts you used for expenses other than tuition and
+        course-related expenses. For example, amounts used for room, board, and travel must be reported on line 8r"'
+  - id: s1.line8r
+    printed: 8r
+    label: Scholarship and fellowship grants not reported on Form W-2
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.scholarship_any
+          - const: true
+        then: s1.scholarship_taxable
+      - guard:
+          op: test
+          eq:
+          - s1.scholarship_any
+          - const: false
+        then: s1.zero
     cite:
       doc: i1040gi
       locator: 'p. 92, Line 8r, "Enter the amount of scholarship and fellowship grants not reported on Form W-2. However, if
@@ -491,11 +848,22 @@ form:
       doc: i1040gi
       locator: 'p. 92, Line 8z, "Use line 8z to report any taxable income not reported" and "List the type and amount of
         income"'
+  - id: s1.alimony_any
+    printed: (helper)
+    type: Bool
+    label: "Did you (or, on a joint return, your spouse) pay or receive alimony or separate maintenance in 2023, 2024 or 2025?"
+    expr:
+      op: input
+      source: "Did you (or, on a joint return, your spouse) pay or receive alimony or separate maintenance in 2023, 2024 or 2025?"
+    cite:
+      doc: i1040gi
+      locator: "p. 89, Line 2a; p. 95, Line 19a"
   - id: s1.alimony
     printed: (helper)
     label: Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered
       into on or before December 31, 2018, or must you include or may you deduct a recapture of alimony?
     type: Bool
+    gated_by: s1.alimony_if_any
     expr:
       op: input
       source: |-
@@ -511,6 +879,28 @@ form:
         states that the alimony isn’t deductible to the payer or includible in the income of the recipient", and Example 2,
         "the modification expressly provided that the post-2018 alimony rules apply" and "The alimony payments made in January
         2025 through May 2025 are includible in the recipient’s income and deductible from the payer’s income."
+  - id: s1.alimony_if_any
+    printed: (gate)
+    type: Bool
+    label: "Alimony under an agreement of 2018 or earlier, or a recapture of alimony, asked only when alimony was paid or received since the start of 2023 (false otherwise)"
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.alimony_any
+          - const: true
+        then: s1.alimony
+      - guard:
+          op: test
+          eq:
+          - s1.alimony_any
+          - const: false
+        then: s1.no
+    cite:
+      doc: i1040gi
+      locator: "p. 89, Line 2a; p. 95, Line 19a"
   - id: s1.alimony_received
     printed: (helper)
     label: Alimony or separate maintenance received in 2025 under an agreement entered into on or before December 31, 2018
@@ -655,13 +1045,13 @@ form:
       - guard:
           op: test
           eq:
-          - s1.alimony
+          - s1.alimony_if_any
           - const: true
         then: s1.alimony_refused
       - guard:
           op: test
           eq:
-          - s1.alimony
+          - s1.alimony_if_any
           - const: false
         then: s1.zero
     cite:
@@ -971,13 +1361,13 @@ form:
       - guard:
           op: test
           eq:
-          - s1.alimony
+          - s1.alimony_if_any
           - const: true
         then: s1.paid_refused
       - guard:
           op: test
           eq:
-          - s1.alimony
+          - s1.alimony_if_any
           - const: false
         then: s1.zero
     cite:

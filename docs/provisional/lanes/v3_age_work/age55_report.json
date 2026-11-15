@@ -1,0 +1,2721 @@
+{
+ "kept": [
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.w2.1.deepseek",
+   "taxpayer",
+   true,
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8889.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8889.4.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f4952.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f4952.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8960.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.g28.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.g28.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.sd.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.sd.3.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.u1250.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.u1250.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw.3.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw.4.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 2009
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw26.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw26.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw26.3.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw26.4.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.dependent.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s2.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s2.2.deepseek",
+   "spouse",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s2.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s2.3.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s3.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s3.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s3.3.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s3.4.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1095a.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8962.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8962.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8962.3.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8962.4.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8962.5.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8880.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8880.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8880.4.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.3.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.4.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.5.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.6.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s8812.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s8812.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s8812.4.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5695.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5695.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5695.7.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5695.8.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5695.9.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8863.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8863.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8863.4.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.aqee.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.3.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.4.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.5.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.7.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 2009
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.8.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.retirement.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.retirement.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.retirement.3.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.retirement.4.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.retirement.5.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5329.1.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5329.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.gpt.json",
+   "classm.f8962.1.gpt",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.gpt.json",
+   "classm.f8962.3.gpt",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.gpt.json",
+   "classm.f8962.4.gpt",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.gpt.json",
+   "classm.f8962.5.gpt",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.gpt.json",
+   "classm.f1095a.1.gpt",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.asset.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.carloan.1",
+   "taxpayer",
+   false,
+   {
+    "y": 2001,
+    "j": false
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.carloan.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.carloan.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.dcprov.1",
+   "taxpayer",
+   false,
+   {
+    "y": 2001,
+    "j": false
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f4562.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f4952.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f4952.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8606.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8880.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8880.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8880.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8959.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8995.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8995.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8995.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.g28.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.g28.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.ira.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.ltc.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.ltc.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.oi8z.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.otjob.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.otjob.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.otjob.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.qdcg.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.qdcg.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.refund.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.retirement.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.retirement.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.retirement.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.retirement.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.retirement.5",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s2.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s2.2",
+   "spouse",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s2.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s2.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sales.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sb.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sc.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.scveh.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.scveh.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.scveh.5",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sd.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sd.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sdtw.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sdtw.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sdtw.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sdtw.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sdtw.5",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.se.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.se.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.se.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sli.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sli.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.ssb.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.ssb.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.ssb.6",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.tcw.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.tcw.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.tcw.5",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.tcw.6",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.tcw.7",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.tcw.8",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.tcw.9",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.tcw.10",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.tcw.12",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.tcw.16",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.tipjob.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.u1250.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.u1250.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.5",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.6",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.eic.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.eic.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.eic.8",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.2",
+   "spouse",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.3",
+   "taxpayer",
+   true,
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.5",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.6",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.7",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.8",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.9",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.10",
+   "spouse",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.10",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.11",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s8812.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s8812.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s8812.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.clcw.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.clcw.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.clcw.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.clcw.4",
+   "taxpayer",
+   false,
+   {
+    "y": 2009
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.clcw26.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.clcw26.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8962.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8962.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8962.5",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8962.6",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1095a.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8863.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8863.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.aqee.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f5329.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f5329.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.gift.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sa.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sa.3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s1a.4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/f8889.json",
+   "stage16.small.s5",
+   "taxpayer",
+   true,
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/f8889.json",
+   "stage16.small.s6",
+   "taxpayer",
+   true,
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/f8889.json",
+   "stage16.refuse.f8889.subject_over",
+   "taxpayer",
+   true,
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.mfj_sdtw_skip23",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.qss_sdtw_sli",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.mfs_sdtw_skip41",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8962_months_r5",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8962_months_r4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8962_months_scveh3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8962_months_asset3",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.no_carloan_part4",
+   "taxpayer",
+   false,
+   {
+    "y": 2009
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.no_senior_part5",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.mfj_no_overtime_part3",
+   "spouse",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.no_5695_part1_s3_5a",
+   "taxpayer",
+   true,
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.hoh_s1a_tips_ot",
+   "taxpayer",
+   false,
+   {
+    "y": 2004
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.qss_s1a_ot",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.hoh_s1a_car",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.qss_s1a_car",
+   "taxpayer",
+   false,
+   {
+    "y": 2001,
+    "j": false
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.eic.qss_one_child",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.sli.qss_divisor",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.sli.hoh_divisor",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8880.hoh_line4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8880.sep_line2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8880.simple_line2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s3.one_employer",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f1095a.monthly_columns",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s1a.line13_magi_first",
+   "spouse",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s1a.line21_magi_first",
+   "taxpayer",
+   false,
+   {
+    "y": 2009
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s1a.hoh_ot_max",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s1a.qss_ot_max",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8889.rollover_no_dist",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8889.all_year_dec_unanswered",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8889.part_year_no_last_month_dec_family",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8889.last_month_self_only_allocation",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8889.dec_none_changed_all_year",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.eic.qss_child_line5_skip",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.eic.hoh_child_line5_skip",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.eic.mfs_child_line5_skip",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.eic.mfs_step1_agi_stop",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.eic.qss_step1_agi_stop",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.scveh.mq_prior_car_q4",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.scveh.mq_2025_car_q2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.person.eic_se_refusal_order",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.person.simple_nonelective_excess",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t3.ira_line1b_spouse_covered",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t3.roth_excess_screen",
+   "taxpayer",
+   true,
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8880.no_plan_line2",
+   "taxpayer",
+   false,
+   {
+    "y": 1980
+   }
+  ]
+ ],
+ "moved": [
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8889.3.deepseek",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8889.5.deepseek",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.sd.2.deepseek",
+   "taxpayer",
+   false,
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.6.deepseek",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5329.3.deepseek",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f5695.7",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8959.2",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.otjob.1",
+   "spouse",
+   false,
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sd.2",
+   "taxpayer",
+   false,
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.se.3",
+   "spouse",
+   false,
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sli.5",
+   "taxpayer",
+   false,
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.w2.1",
+   "taxpayer",
+   false,
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.1",
+   "spouse",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8889.2",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f5329.3",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/f8889.json",
+   "stage11.hsa.family_55",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/f8889.json",
+   "stage11.hsa.family_all_year_answer",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/f8889.json",
+   "stage13.hsa_age55_line7",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/f8889.json",
+   "stage13.hsa_age55_line7_all_year_answer",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/f8889.json",
+   "stage13.hsa_married_self_only_55",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/f8889.json",
+   "stage13.hsa_last_month_spouses",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/f8889.json",
+   "stage13.mut.hsa_married_last_month_self_only",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/f8889.json",
+   "audit.f8889.married_hoh_family_age55",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/f8889.json",
+   "audit.f8889.unmarried_hoh_family_age55",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/ira.json",
+   "stage21.f1.lower_bound_still_decides",
+   "spouse",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.no_carloan_part4_b",
+   "taxpayer",
+   false,
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.mfj_no_overtime_part3",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.mfs_sli_line5",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.qss_s1a_tips_ot_car",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8880.inherited_ira",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s1a.line13_magi_first",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s1a.mfs_ssn_unanswered",
+   "taxpayer",
+   false,
+   {
+    "y": 1961,
+    "j": true,
+    "d": false
+   },
+   {
+    "y": 1961,
+    "j": true,
+    "d": false
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s1a.hoh_senior_decedent",
+   "taxpayer",
+   false,
+   {
+    "y": 1961,
+    "j": true,
+    "d": true
+   },
+   {
+    "y": 1961,
+    "j": true,
+    "d": true
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s1a.qss_senior_decedent",
+   "taxpayer",
+   false,
+   {
+    "y": 1961,
+    "j": true,
+    "d": true
+   },
+   {
+    "y": 1961,
+    "j": true,
+    "d": true
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.f8889.married_55_family_months",
+   "taxpayer",
+   true,
+   {
+    "y": 1980
+   },
+   {
+    "y": 1970
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/sd.json",
+   "stage21.f1.special_withheld",
+   "spouse",
+   true,
+   {
+    "y": 2001,
+    "j": false
+   },
+   {
+    "y": 1970
+   },
+   [
+    "born_before_2001",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/sd.json",
+   "stage21.f1.special_null",
+   "spouse",
+   true,
+   {
+    "y": 2001,
+    "j": false
+   },
+   {
+    "y": 1970
+   },
+   [
+    "born_before_2001",
+    "ira_age50"
+   ]
+  ]
+ ],
+ "null": [
+  [
+   "fixtures/2025/f8889.json",
+   "redesign.hsa.testing_kept_age_unanswered",
+   "taxpayer",
+   null,
+   {
+    "y": 1980
+   }
+  ]
+ ],
+ "conflict": [],
+ "unstated": [
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f8889.2.deepseek",
+   "sample",
+   false,
+   "unstated"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.single_no_edu_no_spouse_col",
+   "sample",
+   false,
+   "unstated"
+  ]
+ ]
+}

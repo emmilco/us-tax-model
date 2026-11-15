@@ -4,8 +4,9 @@
  "family": "claude",
  "base": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
  "head_rows": {
-  "match / mismatch / unclear / missing": "17 / 4 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
+  "lines judged": "25",
+  "match / mismatch / unclear / missing": "20 / 4 / 1 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -98,9 +99,34 @@
   },
   {
    "key": "(screen) (ira.special)",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
+   "record": "b992f872595a7931aceda6429756da6142efbc7c030a23d93e833cb83ea3c224",
    "status": "MATCH",
-   "subject_key": "1714deaa37cd3e1fbbb5d160eba80c8924c2306999e73b515a3b835918a5d404"
+   "subject_key": "b777a2dbf054bb460411ffbb14c6d5df0783e025c823657ea6bc8cf1bad0859e"
+  },
+  {
+   "key": "(screen) (ira.deferred_comp)",
+   "record": "b992f872595a7931aceda6429756da6142efbc7c030a23d93e833cb83ea3c224",
+   "status": "MATCH",
+   "subject_key": "03c92576ec7590211a3f07e18c552b7f466b087d9c22900d3c386fb0c1442360"
+  },
+  {
+   "key": "(screen) (ira.fellowship)",
+   "record": "b992f872595a7931aceda6429756da6142efbc7c030a23d93e833cb83ea3c224",
+   "status": "MATCH",
+   "subject_key": "c9b02d05e04cb5983bf314c944765a961c5a4d69a922d8ddc41842c4f00d765a"
+  },
+  {
+   "key": "(screen) (ira.reservist_repaid)",
+   "record": "b992f872595a7931aceda6429756da6142efbc7c030a23d93e833cb83ea3c224",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: interface gap; Pub. 590-A p. 9, Qualified reservist repayments, When repayment contributions can be made: \"You can't make these repayment contributions later than the date that is 2 years after your active duty period ends.\" A repayment made in 2025 therefore follows active duty that ended in 2023 or later, so the person served in the reserves after the start of 2022 and scope.armed_forces (\"Since the start of 2022, did you ... serve in the U.S. armed forces, the reserves or the National Guard?\") is Yes for every such filer; the gate loses no 2025 repayment. That page was not given to the reviewer, whose UNCLEAR says only that the pages given do not set the repayment period. The English states the screen correctly. Project stands.",
+   "subject_key": "b0b504cabc30677e1a09949f17025b5d72a77a13746408767778b2637cb01e33"
+  },
+  {
+   "key": "(screen) (ira.care_payments)",
+   "record": "b992f872595a7931aceda6429756da6142efbc7c030a23d93e833cb83ea3c224",
+   "status": "MATCH",
+   "subject_key": "511856bc8564beeec0eb3978637a9417a675c3b9b431b21817f82a8a387a6741"
   },
   {
    "key": "(screen) (ira.se_capital)",
@@ -122,15 +148,15 @@
   },
   {
    "key": "12a",
-   "record": "5886cfe324931c66faf35ad4f7b8ceff0b48cf143ab0e3eee503038f78ae930d",
+   "record": "b992f872595a7931aceda6429756da6142efbc7c030a23d93e833cb83ea3c224",
    "status": "MATCH",
-   "subject_key": "15888b505df0badb4a79e37bc17d1faae170a2ede9e0234723044049802f429d"
+   "subject_key": "3b72b8a60cde737c72e2db7432d3e2f098ca7bbb1cb2172b56d16954611994c1"
   },
   {
    "key": "12b",
-   "record": "5886cfe324931c66faf35ad4f7b8ceff0b48cf143ab0e3eee503038f78ae930d",
+   "record": "b992f872595a7931aceda6429756da6142efbc7c030a23d93e833cb83ea3c224",
    "status": "MATCH",
-   "subject_key": "f69b3701639022231bae8ec6e204cb38a1e4bbbcc4107be0c6880977c0430f8c"
+   "subject_key": "3899eae3f0bdab830cd30a1d72219dc39ebca7e8e17b63deac7fffe241833b4a"
   },
   {
    "key": "(screen) (ira.deduct_less)",
@@ -154,12 +180,16 @@
   "8": "2e002c5b49a6bf59c74f34b532a35e1831b29e53251b2a1cb9feaac8621bdfee",
   "9": "e0c88b07f9e834cac611e12d20a888d42803b075c71f81601be2737a1b1696e1",
   "10": "05a8fb8f9ed2403f2f49ca8c5c2a96c9a0429a65574de08177339869980e4a03",
-  "(screen) (ira.special)": "cb0a672ae260ede5704c7fe8b6d986ca7799c2ed6d3d43f494389d67578ec65c",
+  "(screen) (ira.special)": "201538afb273929ab974776e52fc2e0e9382cff88ad2cc666dcefab249f37792",
+  "(screen) (ira.deferred_comp)": "6527b419ba8699a945b7b5912b93d87654df1cc567e0467f796668d611369b7f",
+  "(screen) (ira.fellowship)": "5fcbe6fa74bbcb5cf8a54a33d4a912b596e32008699aaf9155867a0673265600",
+  "(screen) (ira.reservist_repaid)": "b98ee9d96240f9e2d5f8cc4e0dcf04a1f4bf9e3a8fb94fc85788923eb45daf6d",
+  "(screen) (ira.care_payments)": "a675c5ccaa11e4cab0b1585e2d7aa7b1688ee59bd2d4c427ea875227ed9fb59c",
   "(screen) (ira.se_capital)": "dae8086074c34029941c504a1fbf3e1a570ac6f3bf29c842880ce83e0c215a47",
   "11a": "a2330bb4d0b76c1402650572ba3345913bbd9dba1bf36d7449b40468656bde1e",
   "11b": "2cce555dc6a35cf66f1b1f9a4f067486f524dda968590ad3a62e4bb147027e48",
-  "12a": "661c968a49aba29db66c401f86ebf2f64a9c284c09609d3c0a37387e8224ca68",
-  "12b": "ecfe777ac95e8914bdfc80e0fd9c7fde17f170af58d9c6dbe82dee54f6a3d08a",
+  "12a": "cdcd64cc7795c9c21ee415704df67801a4d45354947520b07c6c208190cb53c5",
+  "12b": "d2729ee8124d278a88af0bd2ef840910025fb7a42a72c9d132512f59596959f1",
   "(screen) (ira.deduct_less)": "b4240e555b0ceac4d5954d9f838e2de758a9b775e15598e46e6cec0f3a36258f"
  },
  "__rest__": "17123d13dc65bd705a2a042799aea875ab0ac42f5ea45f1e031b5a4f0e7383c6"

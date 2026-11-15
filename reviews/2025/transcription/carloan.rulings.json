@@ -39,6 +39,38 @@
    "subject_key": "f66772123343cacfc4e15194b170da89dc0c59849dd907d5c2fc9b1cac5610e3"
   },
   {
+   "printed": "22(ii)",
+   "project_expr_sha256": "906002942e9165616fe161c0490c20731194572c1728c5546a15c33097e7759d",
+   "second_expr_sha256": "c41c98d9faee551a4cfdea65c8cc8a9fc606111c76ffc5e3111950ebf4dc3edd",
+   "ruling": "Ruling: model error; fr-2025-24154 p. 23, proposed § 1.163-16(g)(1): \"Independently deductible interest is limited to interest that is QPVLI\"; p. 21, (d)(2)(iii)(A): \"payments of interest and principal are allocated to the portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ... on a pro rata basis\", and (d)(4) the same for a refinanced loan. The reply takes the smaller of the whole Schedule C interest and the loan's QPVLI, so on a loan that also financed other amounts it treats non-QPVLI Schedule C interest as QPVLI: stage12.car.mixed_sc_interest_prorated, project $84.80 (the Schedule C interest prorated by the qualifying part), reply $106.00; the deepseek reply of round 4 was ruled model error for the same reading. executable triage (.transcription/triage/2025/carloan.json, executable-triage-v2): 307 of 389 comparisons agree; 39 value (4 incomplete, 35 refused), 43 candidate-unknown (4 completed): the reply asks carloan.col_ii_input without a Schedule C, where the project reads zero (i1040gi p. 110, column (ii); Schedules E and F refused by scope.schedule1). Project stands.",
+   "context": "22eed7e796957ea9a533bf88d54d6607bacad5185c1f32afb1d09ca0b00eeb76",
+   "date": "2026-11-14",
+   "run": "1338a18da4d8acd5b6eb1c09eccf918239db668290a057bbe3f956a9be5f7d97",
+   "subject_key": "c1886897d67e3fdea5d375fa5f37795d2a8b1192aecb1729a6d6263dcaa4471f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage12.car.mixed_sc_interest_prorated@carloan[vin_1]",
+     "fixture:classm.clcw.2.deepseek@carloan[vin_1]",
+     "fixture:classm.s3.4.deepseek@carloan[vin_1]",
+     "fixture:classm.carloan.2@carloan[vin_1]",
+     "fixture:classm.carloan.3@carloan[vin_1]",
+     "fixture:classm.tipjob.1@carloan[vin_1]",
+     "fixture:classm.clcw.2@carloan[vin_1]",
+     "fixture:classm.s1a.3@carloan[VIN0]",
+     "fixture:classm.s1a.6@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN1]",
+     "fixture:mutation.t2.no_senior_part5@carloan[vin_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "22(iii)",
    "project_expr_sha256": "3c30859adb6ed36132e2cdacae4413acf92f2c983961df81909ee01038c63c72",
    "second_expr_sha256": "13af0be3963b0ba03768dcc0dfdf3bf3a987e1fe1a71a26ef49955f35d9a02cf",

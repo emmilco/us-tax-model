@@ -6,16 +6,285 @@ form:
   note: Other Schedule 2 sources are screened, not silently defaulted. Form 1040 integration is
     completed in Stage 5.
   lines:
+    - id: s2.no
+      printed: (helper)
+      type: Bool
+      label: "Year parameter household.no (false)"
+      expr:
+        op: param
+        ref: household.no
+      cite:
+        doc: f1040s2
+        locator: "Schedule 2 (2025), lines 2, 3, 11, 12 and 21"
+    - id: s2.options_any
+      printed: (helper)
+      type: Bool
+      label: "In 2025, did you (or, on a joint return, your spouse) exercise stock options from an employer?"
+      expr:
+        op: input
+        source: "In 2025, did you (or, on a joint return, your spouse) exercise stock options from an employer?"
+      cite:
+        doc: f1040s2
+        locator: "Schedule 2 (2025), lines 2, 3, 11, 12 and 21"
+    - id: s2.iso
+      printed: (helper)
+      type: Bool
+      gated_by: s2.iso_if_options
+      label: "Did you (or, on a joint return, your spouse) exercise incentive stock options in 2025 and not dispose of the stock in 2025?"
+      expr:
+        op: input
+        source: "Did you (or, on a joint return, your spouse) exercise incentive stock options in 2025 and not dispose of the stock in 2025?"
+      cite:
+        doc: i6251
+        locator: "Who Must File; Part I, the adjustment for the exercise of incentive stock options"
+    - id: s2.iso_if_options
+      printed: (gate)
+      type: Bool
+      label: "Incentive stock options exercised in 2025 with the stock not disposed of in 2025, asked only with stock options exercised (false without them)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - s2.options_any
+            - const: true
+          then: s2.iso
+        - guard:
+            op: test
+            eq:
+            - s2.options_any
+            - const: false
+          then: s2.no
+      cite:
+        doc: i6251
+        locator: 'p. 1, Who Must File, "Attach Form 6251 to your return if any of the following statements are true"; p. 4, Line 2i—Exercise of Incentive Stock Options, "For the regular tax, no income is recognized when an incentive stock option (ISO), as defined in section 422(b), is exercised. However, this rule doesn’t apply for the AMT"'
+    - id: s2.iso_vested
+      printed: (helper)
+      type: Bool
+      label: "Did shares that you (or, on a joint return, your spouse) bought before 2025 with incentive stock options vest in 2025, that is, first become yours to sell or no longer able to be forfeited?"
+      expr:
+        op: input
+        source: "Did shares that you (or, on a joint return, your spouse) bought before 2025 with incentive stock options vest in 2025, that is, first become yours to sell or no longer able to be forfeited?"
+      cite:
+        doc: i6251
+        locator: 'p. 4, Line 2i—Exercise of Incentive Stock Options, "when your rights in the acquired stock first become transferable or when these rights are no longer subject to a substantial risk of forfeiture", "you may elect to include in AMT income the excess of the stock’s FMV (determined without regard to any lapse restriction) over the exercise price upon the transfer to you"; p. 1, Who Must File, "Attach Form 6251 to your return if any of the following statements are true"'
+    - id: s2.amt_owed
+      printed: (helper)
+      type: Bool
+      label: "Are you (or, on a joint return, your spouse) required to file Form 6251, or do you have an alternative minimum tax adjustment requiring its review, other than from incentive stock options exercised in 2025?"
+      expr:
+        op: input
+        source: "Are you (or, on a joint return, your spouse) required to file Form 6251, or do you have an alternative minimum tax adjustment requiring its review, other than from incentive stock options exercised in 2025?"
+      cite:
+        doc: i6251
+        locator: "Who Must File, \"Attach Form 6251 to your return if any of the following statements are true\""
     - id: s2.amt
       printed: (helper)
       type: Bool
-      label: Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
+      label: "Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?"
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - s2.iso_if_options
+          - const: true
+        - op: test
+          eq:
+          - s2.iso_vested
+          - const: true
+        - op: test
+          eq:
+          - s2.amt_owed
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 112, Line 2, "See the Instructions for Form 6251 to see if you must file the form"; i6251 p. 1, Who Must File, "Attach Form 6251 to your return if any of the following statements are true"; i6251 p. 4, Line 2i—Exercise of Incentive Stock Options, "For the regular tax, no income is recognized when an incentive stock option (ISO), as defined in section 422(b), is exercised. However, this rule doesn’t apply for the AMT"'
+    - id: s2.w2_marks
+      printed: (helper)
+      type: Bool
+      gated_by: s2.w2_marks_if_w2
+      label: "Does any Form W-2 you (or, on a joint return, your spouse) received for 2025 show an amount in box 8 (allocated tips), or code A, B, K, M, N or Z in box 12?"
       expr:
         op: input
-        source: Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
+        source: "Does any Form W-2 you (or, on a joint return, your spouse) received for 2025 show an amount in box 8 (allocated tips), or code A, B, K, M, N or Z in box 12?"
       cite:
         doc: f1040s2
-        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+        locator: "Schedule 2 (2025), lines 5, 13, 17h and 17k"
+    - id: s2.w2_marks_if_w2
+      printed: (gate)
+      type: Bool
+      label: "The answer to s2.w2_marks, asked only when a Form W-2 is listed (false otherwise)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - scope.has_w2
+            - const: true
+          then: s2.w2_marks
+        - guard:
+            op: test
+            eq:
+            - scope.has_w2
+            - const: false
+          then: s2.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1c, "any allocated tips shown in box 8 on your Form(s) W-2"; p. 112, Line 5, "If you received tips of $20 or more in any month and you didn’t report the full amount to your employer"; p. 113, Line 13, "This tax should be shown in box 12 of Form W-2 with codes A and B or M and N"; p. 114, Line 17h, "This income should be shown in box 12 of Form W-2 with code Z"; p. 114, Line 17k, "This tax should be shown in box 12 of Form W-2 with code K"'
+    - id: s2.household_help
+      printed: (helper)
+      type: Bool
+      label: "Did you (or, on a joint return, your spouse) pay anyone in 2025 for household work done in or around your home (for example a babysitter, a nanny, a health aide, a housekeeper or a yard worker)?"
+      expr:
+        op: input
+        source: "Did you (or, on a joint return, your spouse) pay anyone in 2025 for household work done in or around your home (for example a babysitter, a nanny, a health aide, a housekeeper or a yard worker)?"
+      cite:
+        doc: f1040s2
+        locator: "Schedule 2 (2025), line 9, \"Household employment taxes. Attach Schedule H\""
+    - id: s2.household_employee
+      printed: (helper)
+      type: Bool
+      gated_by: s2.household_employee_if_help
+      label: "Do you (or, on a joint return, your spouse) owe household employment taxes (Schedule H): cash wages of $2,800 or more paid in 2025 to any one household employee, total cash wages of $1,000 or more paid to household employees in any calendar quarter of 2024 or 2025, or federal income tax withheld for a household employee?"
+      expr:
+        op: input
+        source: "Do you (or, on a joint return, your spouse) owe household employment taxes (Schedule H): cash wages of $2,800 or more paid in 2025 to any one household employee, total cash wages of $1,000 or more paid to household employees in any calendar quarter of 2024 or 2025, or federal income tax withheld for a household employee?"
+      cite:
+        doc: f1040s2
+        locator: "Schedule 2 (2025), line 9, \"Household employment taxes. Attach Schedule H\""
+    - id: s2.household_employee_if_help
+      printed: (gate)
+      type: Bool
+      label: "Household employment taxes owed, asked only when someone was paid to work in the home (false otherwise)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - s2.household_help
+            - const: true
+          then: s2.household_employee
+        - guard:
+            op: test
+            eq:
+            - s2.household_help
+            - const: false
+          then: s2.no
+      cite:
+        doc: f1040s2
+        locator: "Schedule 2 (2025), line 9, \"Household employment taxes. Attach Schedule H\""
+    - id: s2.has_mortgage_interest
+      printed: (helper)
+      type: Bool
+      label: "Home mortgage interest is entered on Schedule A line 8a"
+      expr:
+        op: test
+        gt:
+        - sa.line8a
+        - const: 0
+      cite:
+        doc: i1040gi
+        locator: 'i1040sca p. 8, Line 8a, "Enter on line 8a mortgage interest and points reported to you on Form 1098"; p. 113, Line 17b, "If you sold your home in 2025 and it was financed (in whole or in part) from the proceeds of any tax-exempt qualified mortgage bond or you claimed the mortgage interest credit, you may owe a recapture tax on the mortgage subsidy"'
+    - id: s2.mortgage_subsidy
+      printed: (helper)
+      type: Bool
+      gated_by: s2.mortgage_subsidy_if_interest
+      label: "Did you (or, on a joint return, your spouse) sell or give away in 2025 a home bought with a federally subsidized mortgage (a loan from tax-exempt mortgage bonds, or one with a mortgage credit certificate), so that the subsidy may have to be repaid (Form 8828)?"
+      expr:
+        op: input
+        source: "Did you (or, on a joint return, your spouse) sell or give away in 2025 a home bought with a federally subsidized mortgage (a loan from tax-exempt mortgage bonds, or one with a mortgage credit certificate), so that the subsidy may have to be repaid (Form 8828)?"
+      cite:
+        doc: f1040s2
+        locator: "Schedule 2 (2025), line 17b"
+    - id: s2.mortgage_subsidy_if_interest
+      printed: (gate)
+      type: Bool
+      label: "A home with a federally subsidized mortgage sold in 2025, asked only when home mortgage interest is entered (false otherwise)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - s2.has_mortgage_interest
+            - const: true
+          then: s2.mortgage_subsidy
+        - guard:
+            op: test
+            eq:
+            - s2.has_mortgage_interest
+            - const: false
+          then: s2.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 113, Line 17b, "If you sold your home in 2025 and it was financed (in whole or in part) from the proceeds of any tax-exempt qualified mortgage bond or you claimed the mortgage interest credit, you may owe a recapture tax on the mortgage subsidy"'
+    - id: s2.hsa_testing
+      printed: (helper)
+      type: Bool
+      label: "Did you (or, on a joint return, your spouse) put money into a health savings account for 2024 under the last-month rule, or move money into one from an IRA in 2024, and then stop being eligible for a health savings account before the end of the testing period, without having a health savings account in 2025 (Form 8889, Part III)?"
+      expr:
+        op: input
+        source: "Did you (or, on a joint return, your spouse) put money into a health savings account for 2024 under the last-month rule, or move money into one from an IRA in 2024, and then stop being eligible for a health savings account before the end of the testing period, without having a health savings account in 2025 (Form 8889, Part III)?"
+      cite:
+        doc: f1040s2
+        locator: "Schedule 2 (2025), line 17d"
+    - id: s2.credit_recapture
+      printed: (helper)
+      type: Bool
+      label: "Must you (or, on a joint return, your spouse) pay back in 2025 a tax credit claimed in an earlier year (a recapture or repayment of a business, investment, energy, low-income housing or vehicle refueling credit, or a penalty tied to one)?"
+      expr:
+        op: input
+        source: "Must you (or, on a joint return, your spouse) pay back in 2025 a tax credit claimed in an earlier year (a recapture or repayment of a business, investment, energy, low-income housing or vehicle refueling credit, or a penalty tied to one)?"
+      cite:
+        doc: f1040s2
+        locator: "Schedule 2 (2025), lines 1d, 1e, 1f, 1y, 16, 17a, 17z and 19"
+    - id: s2.lookback
+      printed: (helper)
+      type: Bool
+      gated_by: s2.lookback_if_business
+      label: "Do you (or, on a joint return, your spouse) owe or claim look-back interest for a long-term contract finished in 2025 or for property depreciated under the income forecast method (Form 8697 or Form 8866)?"
+      expr:
+        op: input
+        source: "Do you (or, on a joint return, your spouse) owe or claim look-back interest for a long-term contract finished in 2025 or for property depreciated under the income forecast method (Form 8697 or Form 8866)?"
+      cite:
+        doc: f1040s2
+        locator: "Schedule 2 (2025), line 17n"
+    - id: s2.lookback_if_business
+      printed: (gate)
+      type: Bool
+      label: "Look-back interest, asked only when the return has a Schedule C (false otherwise)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - s1.has_sc
+            - const: true
+          then: s2.lookback
+        - guard:
+            op: test
+            eq:
+            - s1.has_sc
+            - const: false
+          then: s2.no
+      cite:
+        doc: f1040s2
+        locator: "Schedule 2 (2025), line 17n"
+    - id: s2.other_tax
+      printed: (helper)
+      type: Bool
+      label: "Do you (or, on a joint return, your spouse) owe any other additional tax for Schedule 2 that has not been asked about: the additional tax on deferred compensation that failed section 409A or 457A, the tax on an excess parachute payment, the section 72(m)(5) excess benefits tax, the excise tax on insider stock compensation, or any other tax to be written in on line 1y or line 17z?"
+      expr:
+        op: input
+        source: "Do you (or, on a joint return, your spouse) owe any other additional tax for Schedule 2 that has not been asked about: the additional tax on deferred compensation that failed section 409A or 457A, the tax on an excess parachute payment, the section 72(m)(5) excess benefits tax, the excise tax on insider stock compensation, or any other tax to be written in on line 1y or line 17z?"
+      cite:
+        doc: f1040s2
+        locator: "Schedule 2 (2025), lines 1y, 17h to 17m and 17z"
     - id: s2.other
       printed: (helper)
       type: Bool
@@ -38,28 +307,39 @@ form:
 
         Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.
       expr:
-        op: input
-        source: |-
-          Any amount on Schedule 2 other than the following?
-
-          - self-employment tax from Schedule SE
-          - Additional Medicare Tax
-          - Net Investment Income Tax
-          - the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures)
-
-          Other amounts, for example:
-          - the alternative minimum tax
-          - repayment of a clean vehicle credit
-          - household employment taxes
-          - the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III)
-          - uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N)
-          - tax on unreported tips (Form 4137)
-          - interest on deferred tax
-
-          Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.
+        op: test
+        any:
+        - op: test
+          eq:
+          - s2.w2_marks_if_w2
+          - const: true
+        - op: test
+          eq:
+          - s2.household_employee_if_help
+          - const: true
+        - op: test
+          eq:
+          - s2.mortgage_subsidy_if_interest
+          - const: true
+        - op: test
+          eq:
+          - s2.hsa_testing
+          - const: true
+        - op: test
+          eq:
+          - s2.credit_recapture
+          - const: true
+        - op: test
+          eq:
+          - s2.lookback_if_business
+          - const: true
+        - op: test
+          eq:
+          - s2.other_tax
+          - const: true
       cite:
-        doc: f1040s2
-        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+        doc: i1040gi
+        locator: 'p. 111, Line 1y, "Other additions to tax"; p. 112, Line 5, "If you received tips of $20 or more in any month and you didn’t report the full amount to your employer"; p. 113, Line 9, "Enter the household employment taxes you owe for having a household employee"; p. 113, Line 13, "This tax should be shown in box 12 of Form W-2 with codes A and B or M and N"; p. 113, Line 16, "Enter the amount from Form 8611, line 14"; p. 113, Lines 17a Through 17z, "Line 17a. Recapture of the following credits"; p. 113, Line 17b, "If you sold your home in 2025 and it was financed (in whole or in part) from the proceeds of any tax-exempt qualified mortgage bond or you claimed the mortgage interest credit, you may owe a recapture tax on the mortgage subsidy"; p. 113, Line 17d, "Enter any additional tax for failure to remain an eligible individual during the testing period from Form 8889, line 21"; p. 114, Line 17h, "This income should be shown in box 12 of Form W-2 with code Z"; p. 114, Line 17k, "This tax should be shown in box 12 of Form W-2 with code K"; p. 114, Line 17n, "Enter any look-back interest under section 167(g) or 460(b)"; p. 114, Line 17z, "Use line 17z to report any taxes not reported elsewhere on your return or other schedules"; p. 114, Line 19, "Enter the recapture amount of the net EPE claimed on Form 4255, line 1d, column (l)"'
     - id: s2.zero
       printed: (helper)
       type: NonNegDollars

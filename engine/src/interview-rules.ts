@@ -53,7 +53,7 @@ import { Worker } from "node:worker_threads";
 import fc from "fast-check";
 import { mapPool, poolSize } from "./pool.js";
 import { loadCanonical } from "./canonical.js";
-import { RECORD_ALLOWED, answerEvent, askOrder, entryHint, inputMeta, interviewStatus, loadInterview, questionTemplate, recordProblems, recordProblemsIn, recordedTemplates, replayState, type AnswerEvent, type ChoiceRecord, type InterviewData, type RosterChoice } from "./interview.js";
+import { RECORD_ALLOWED, answerEvent, askOrder, entryHint, inputMeta, interviewStatus, loadInterview, placeOf, questionTemplate, recordProblems, recordProblemsIn, recordedTemplates, replayState, type AnswerEvent, type ChoiceRecord, type InterviewData, type RosterChoice } from "./interview.js";
 import { evaluate } from "./eval.js";
 import { gateProblems, gatesOf, readsOf } from "./gates.js";
 import { nyReturnArbitrary, sampleReturns } from "./generate.js";
@@ -196,10 +196,10 @@ export function onlyGiven(config: InterviewData, events: Event[]): string | null
   return null;
 }
 
-/** The interview's own order: the open question first in bank order (then by key), as interviewStatus picks. */
+/** The interview's own order: the open question first in the bank's order (`askOrder`), as interviewStatus picks. */
 export function bankOrder(config: InterviewData): (open: string[]) => string {
   const bank = new Map(config.questions.map((q) => [q.input, q]));
-  const place = (k: string) => { const q = bank.get(questionTemplate(k)); return { input: k, order: q?.order ?? Infinity, ...(q?.seq !== undefined ? { seq: q.seq } : {}) }; };
+  const place = (k: string) => { const q = bank.get(questionTemplate(k)); return q ? placeOf(q, k) : { input: k, order: Infinity }; };
   return (open) => open.reduce((a, b) => (askOrder(place(b), place(a)) < 0 ? b : a));
 }
 
@@ -287,13 +287,17 @@ export function heldProblems(seen: Map<string, string>, baseline: Record<string,
   return out;
 }
 
+/** The closed answer to a number that has no "none": the minimal returns' person was born in 1980, a year that
+ * settles every age question the other way from the rare case (not 65, not under 18, not on a cut). */
+const CLOSED_NUMBER: Record<string, number> = { "person.birth_year": 1980 };
+
 /** The minimal returns' closed answer to an input: an empty roster (the taxpayer alone for `$person`, whose choice
  * records the role), false, zero, the
  * first enum value; where that answer refuses the return and another value of a Bool or enum does not, that value. */
-function closedAnswer(data: CanonicalData, config: InterviewData, key: string, current: Inputs): unknown {
+export function closedAnswer(data: CanonicalData, config: InterviewData, key: string, current: Inputs): unknown {
   if (key.startsWith("$")) return questionTemplate(key) === "$person" ? ["taxpayer"] : [];
   const meta = inputMeta(data, key);
-  const first = meta.type === "Bool" ? false : meta.type === "Enum" ? meta.values![0] : 0;
+  const first = meta.type === "Bool" ? false : meta.type === "Enum" ? meta.values![0] : CLOSED_NUMBER[questionTemplate(key)] ?? 0;
   const refuses = (v: unknown) => interviewStatus(data, config, { ...current, [key]: v }).status === "refused";
   if (!refuses(first)) return first;
   const other = (meta.type === "Bool" ? [true] : meta.type === "Enum" ? meta.values!.slice(1) : []).find((v) => !refuses(v));
@@ -302,8 +306,11 @@ function closedAnswer(data: CanonicalData, config: InterviewData, key: string, c
 
 /** Answers the minimal returns fix beyond the closed answers: New York refuses every return whose federal AGI is below
  * the federal earned income credit limit (its own credit is not computed), so its minimal return has income
- * above that limit, as unemployment compensation (which asks no employer questions). */
-const MINIMAL_BASE: Partial<Record<"full" | "ny", Inputs>> = { ny: { "s1.uc_paid": 5_000_000 } };
+ * above that limit, as unemployment compensation (which asks no employer questions): the question that opens the
+ * amount is answered yes, and the amount, a gated input, is given although its gate counts as closed. */
+// ny: the city question is answered Yes, the filer the New York part serves. Its No does not refuse at once (the State
+// question follows, and either answer to it refuses), so the closed answer would leave the walk on a gated question.
+const MINIMAL_BASE: Partial<Record<"full" | "ny", Inputs>> = { ny: { "s1.uc_any": true, "s1.uc_paid": 5_000_000, "ny_it201.ask.city_resident": true } };
 
 /** The existence gates: the inputs a gate line's guard reads directly, and for each the gated inputs it can open (those
  * whose gate line's guards read it, directly or through other lines). */
@@ -342,8 +349,9 @@ export function minimalAnswers(data: CanonicalData, config: InterviewData, profi
   const answers: Answers = (key, current) => {
     const t = questionTemplate(key);
     if (open && t === open.input) return { value: open.value };
+    if (key in base) return { value: base[key] };
     if (closed.has(t)) return undefined;
-    return { value: key in base ? base[key] : closedAnswer(data, config, key, current) };
+    return { value: closedAnswer(data, config, key, current) };
   };
   return answers;
 }
@@ -677,7 +685,7 @@ function selfTest(): number {
     ["an input of an entry the choice does not create", (c) => { person(c)[0]!.records!.push(record("person[spouse].role", "spouse")); }, /choice \["taxpayer"\]: records person\[spouse\]\.role, an input of an entry this choice does not create/],
     ["an input of another collection's entry", (c) => { person(c)[0]!.records!.push(record("dependent[taxpayer].lawful", true)); }, /records dependent\[taxpayer\]\.lawful, which is neither an input of an entry this choice creates nor on the allow-list/],
     ["an input of an entry nested under the choice's entry", (c) => { person(c)[0]!.records!.push(record("person[taxpayer].w2[a].box1", 0)); }, /records person\[taxpayer\]\.w2\[a\]\.box1, which is neither/],
-    ["a top-level input not on the allow-list", (c) => { person(c)[0]!.records!.push(record("scope.other_line16", false)); }, /records scope\.other_line16, which is neither an input of an entry this choice creates nor on the allow-list; the interview sets no other input/],
+    ["a top-level input not on the allow-list", (c) => { person(c)[0]!.records!.push(record("scope.chapter11", false)); }, /records scope\.chapter11, which is neither an input of an entry this choice creates nor on the allow-list; the interview sets no other input/],
     ["the allow-listed input at another value", (c) => { person(c)[1]!.records!.find((r) => r.input === "f1040.status")!.value = "single"; }, /records f1040\.status = "single"; the allow-list permits it only as "mfj"/],
     ["the allow-listed input by another choice", (c) => { person(c)[0]!.records!.push(record("f1040.status", "mfj")); }, /choice \["taxpayer"\]: records f1040\.status = "mfj"; the allow-list permits it only as "mfj", recorded by the choice \["taxpayer","spouse"\] of \$person/],
     ["a value the input cannot take", (c) => { person(c)[0]!.records![0]!.value = "banana"; }, /records person\[taxpayer\]\.role = "banana", a value this Enum\(person_role\) input cannot take/],
@@ -722,9 +730,9 @@ function selfTest(): number {
   assert.equal(replayedState(config, [together, justMe, status, together, justMe]).inputs["f1040.status"], undefined, "and giving that choice up withdraws it: the status is asked again");
   assert.equal(onlyGiven(config, [together, justMe, status, together, justMe]), null);
   // Replay's records are the bank's: an event with a record the bank does not declare, or without one it declares, is flagged.
-  assert.match(onlyGiven(config, [{ ...together, records: [...couple.records!, record("scope.other_line16", false)] }])!, /carries records the question bank does not declare/);
+  assert.match(onlyGiven(config, [{ ...together, records: [...couple.records!, record("scope.chapter11", false)] }])!, /carries records the question bank does not declare/);
   assert.match(onlyGiven(config, [{ input: "$person", value: ["taxpayer", "spouse"] }])!, /carries records the question bank does not declare for it \(none; declared: /);
-  assert.match(onlyGiven(config, [{ input: "scope.other_line16", value: false, records: [record("f1040.status", "mfj")] }])!, /carries records the question bank does not declare/);
+  assert.match(onlyGiven(config, [{ input: "scope.chapter11", value: false, records: [record("f1040.status", "mfj")] }])!, /carries records the question bank does not declare/);
   // A log answered under the earlier questions (the roster, the status and each role as separate answers, no records)
   // replays to the same inputs as today's one answer, and with the status or a role still unanswered it stays answerable.
   const old: Event[] = [{ input: "$person", value: ["taxpayer", "spouse"] }, { input: "f1040.status", value: "mfj" }, { input: "person[spouse].role", value: "spouse" }, { input: "person[taxpayer].role", value: "taxpayer" }];

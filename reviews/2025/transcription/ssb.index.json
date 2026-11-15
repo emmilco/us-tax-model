@@ -4,9 +4,18 @@
  "family": "claude",
  "base": "0aa1f08e60389455d6c3c7d69036cebc2452f8ec5d75a8a5c0d7b772dd24a030",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-11); see Line-scoped reviews"
+  "printed lines compared": "20",
+  "agree / disagree / missing": "6 / 14 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
+  {
+   "key": "ssb.lump_sum",
+   "record": "9f4cb065457a28fb3a19ed7854990cd246e788a92c7344fd6ca75b2a59cac718",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 31, Line 6c: \"If you elect to use the lump-sum election method for your benefits, check the box on line 6c\". Both are true when the benefits include a payment for an earlier year (ssb.prior_year_pay) and the filer elects the method (ssb.lump_elect); the reply also requires ssb.any. The project's only reader is the refusal on worksheet line 2, which is figured only for a filer with benefits, and the interview asks ssb.prior_year_pay in the group \"Is any of these true of the social security benefits?\" after ssb.any. executable triage (.transcription/triage/2025/ssb.json, executable-triage-v2): 2,324 of 2,773 agree; 6 value, all on refused mutation records with ssb.any false but ssb.prior_year_pay and ssb.lump_elect true (e.g. mutation.t2.mfj_no_overtime_part3), which the interview does not produce; 443 project-unknown (16 completed) where ssb.prior_year_pay was not supplied. No completed-return value difference. Project stands.",
+   "subject_key": "41f0c984f3531f6c6c22cc50f567103f84271300d2068f0ef5d52fb79637d659"
+  },
   {
    "key": "ssb.has_benefits",
    "record": "0aa1f08e60389455d6c3c7d69036cebc2452f8ec5d75a8a5c0d7b772dd24a030",
@@ -15,15 +24,15 @@
   },
   {
    "key": "1",
-   "record": "ecbac87d7b831fd2350b834afd427ba70de84d78e17907d973e5f13f3b72bc26",
+   "record": "9f4cb065457a28fb3a19ed7854990cd246e788a92c7344fd6ca75b2a59cac718",
    "status": "AGREE",
-   "subject_key": "e8f884ac36d9d5d45c8debb63bdb50208cf1849448dc842a6f763503e044812b"
+   "subject_key": "738de9fa1ec39e8c43aca3780852c259618b2d9e6372b7204312d17e9075bf47"
   },
   {
    "key": "2",
-   "record": "4bb068046fc52ce8f3a9b594a22d556eaaea0209e46cf5227b9f2ba9499bd10c",
+   "record": "9f4cb065457a28fb3a19ed7854990cd246e788a92c7344fd6ca75b2a59cac718",
    "status": "AGREE",
-   "subject_key": "6b174ee32cc99b0259eb7af0b68ec2fd2fc855559bdbdde218f52ddf6b7daa10"
+   "subject_key": "9a830fd83661348936daf2893cb6983cbaa23862497fd92f663debe7a516235f"
   },
   {
    "key": "3",
@@ -136,9 +145,10 @@
   }
  ],
  "subjects": {
+  "ssb.lump_sum": "afebd3626bdfee2a2d4a5b88e7e9935987232b7815042b6c6e53efd3cfa56f85",
   "ssb.has_benefits": "93481a8c549c4df9d5ce12871063ca88c64c3091e445ec5c540a5cecdd71d515",
-  "1": "2f498a53f22315968366c4c1103fc7b7529b7e0eef36e74966f9c9e61badffbc",
-  "2": "2e37a6614cc7a39fc73cd3f3f7a6196da772dda81f597d4b9d51ad1ab3da0f1d",
+  "1": "7ccd6d5d9f180d66b5cbd7600b94e66d898d3b1d0b57e3329fbe18674c621d7a",
+  "2": "874eaa16f20af2f22c031b34556c2ffa8d6d3318319e7361ea599068f4319bc3",
   "3": "a2cdc624483dc3839e03343dd07ddfb7623427bbf7aa11fb62374dee4811a8b2",
   "4": "42300b844db21a635dc8e82a1e4d71f9b7283c6a1e2bd8fb6ec5a74033fc97ab",
   "5": "3e4a2531fb2be20399d6f85aba35256f4eca403025eb075ec52e40d16a4e1c80",
@@ -158,8 +168,9 @@
  },
  "__rest__": "f27ed8c32596d66063a07d65a0895977e0afa69acc647b72c1b05da4f85fa713",
  "foreign": {
-  "1": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "2": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "ssb.lump_sum": "8e58164f5796377a873627a87019e0ea9a7a6b2de3ac9e347c69b89a3a2d132e",
+  "1": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "2": "8e58164f5796377a873627a87019e0ea9a7a6b2de3ac9e347c69b89a3a2d132e",
   "8": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
   "9": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
   "10": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",

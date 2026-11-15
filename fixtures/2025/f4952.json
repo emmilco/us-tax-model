@@ -253,8 +253,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null,
-        "s1a.carloan": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f4952.line8": {
@@ -337,8 +337,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null,
-        "s1a.carloan": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f4952.line8": {
@@ -418,7 +418,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null,
+        "s179.prior_form": null,
+        "s179.carryover": null,
         "f4952.has_interest": true
       },
       "expect": {
@@ -460,7 +461,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f4952.line8": {
@@ -499,8 +501,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null,
-        "s1a.carloan": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f4952.line8": {
@@ -743,6 +745,7 @@
           "emp_a"
         ],
         "person[taxpayer].w2[emp_a].box1": 5000000,
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "div.any": true,
         "f4952.has_interest": true,
@@ -752,35 +755,48 @@
         "f2441.benefits": null,
         "sd.distributions": null,
         "ssb.benefits": null,
-        "sd.other_forms": null,
-        "refund.received": null,
+        "refund.any": null,
+        "sd.sold_other": null,
+        "sd.sec1256": null,
+        "sd.condemned": null,
+        "sd.small_business_stock": null,
+        "sd.trader_election": null,
+        "sd.casualty": null,
         "s1.alimony": null,
         "s1.uc_paid": null,
-        "s1.line8_other": null,
+        "s1.ltc_payout": null,
         "person[taxpayer].educator_expenses": null,
+        "person[taxpayer].ira_owner": true,
         "person[taxpayer].sav_trad": null,
         "person[taxpayer].ira_dist": null,
         "ira.deduct_less": null,
         "sli.interest": null,
-        "s1.line8h": null,
+        "s1.jury_pay": null,
         "sa.dependent": null,
         "s1a.carloan": null,
-        "person[taxpayer].age65": null,
+        "person[taxpayer].birth_year": null,
         "sa.excluded_income": null,
         "f1040.tax_exempt_interest": null,
         "div.box12": null,
         "ftc.taxes": null,
         "f2441.care": null,
-        "f5695.part2_any": null,
-        "f5695.part1_any": null,
         "f5695.business_use": null,
         "f5695.line7a": null,
         "f5695.line12": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f5695.condo": null,
         "sd.carryover": null,
-        "s179.line10": null,
-        "f4952.alternative_allocation": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "f4952.alternative_allocation": null,
+        "s1.uc_any": true,
+        "s1.jury_any": true,
+        "s1.alimony_any": true,
+        "s1.nqdc_pension": false,
+        "s1.inmate_wages": false,
+        "s1.digital_income": false,
+        "s1.olympic": false,
+        "s2.options_any": false
       },
       "expect": {
         "f4952.line3": {
@@ -858,7 +874,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f4952.line4h": {
@@ -927,7 +944,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f4952.line4h": {
@@ -994,7 +1012,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null,
+        "s179.prior_form": null,
+        "s179.carryover": null,
         "f4952.has_interest": true
       },
       "expect": {
@@ -1022,7 +1041,7 @@
       "id": "stage20.blind.r9",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "sd",
         "f4952"
       ],
@@ -1037,8 +1056,10 @@
         "f4952.has_interest": true,
         "f4952.line1": 400000,
         "f4952.carryover": true,
+        "sa.state_tax_any": true,
         "sa.line5a": 900000,
-        "sa.line8a": 1200000,
+        "sa.home_owner": true,
+        "sa.mortgage_interest": 1200000,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1050,11 +1071,11 @@
         "f4952.prior_7": 250000
       },
       "expect": {
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 0
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 0
         },
@@ -1124,7 +1145,7 @@
       "id": "stage20.refuse.4952_alternative_with_carryforward",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "f4952"
       ],
       "evidence": "synthetic refusal regression",
@@ -1139,8 +1160,10 @@
         "f4952.line1": 400000,
         "f4952.carryover": true,
         "f4952.alternative_allocation": true,
+        "sa.state_tax_any": true,
         "sa.line5a": 900000,
-        "sa.line8a": 1200000,
+        "sa.home_owner": true,
+        "sa.mortgage_interest": 1200000,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1149,7 +1172,8 @@
         "person[taxpayer].w2[emp_a].box5": 15000000,
         "person[taxpayer].w2[emp_a].box6": 217500,
         "interest[bank_a].amount": 300000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f4952.required": {
@@ -1192,6 +1216,7 @@
           "emp_a"
         ],
         "person[taxpayer].w2[emp_a].box1": 5000000,
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "div.any": true,
         "f4952.has_interest": true,
@@ -1201,35 +1226,48 @@
         "f2441.benefits": null,
         "sd.distributions": null,
         "ssb.benefits": null,
-        "sd.other_forms": null,
-        "refund.received": null,
+        "refund.any": null,
+        "sd.sold_other": null,
+        "sd.sec1256": null,
+        "sd.condemned": null,
+        "sd.small_business_stock": null,
+        "sd.trader_election": null,
+        "sd.casualty": null,
         "s1.alimony": null,
         "s1.uc_paid": null,
-        "s1.line8_other": null,
+        "s1.ltc_payout": null,
         "person[taxpayer].educator_expenses": null,
+        "person[taxpayer].ira_owner": true,
         "person[taxpayer].sav_trad": null,
         "person[taxpayer].ira_dist": null,
         "ira.deduct_less": null,
         "sli.interest": null,
-        "s1.line8h": null,
+        "s1.jury_pay": null,
         "sa.dependent": null,
         "s1a.carloan": null,
-        "person[taxpayer].age65": null,
+        "person[taxpayer].birth_year": 1980,
         "sa.excluded_income": null,
         "f1040.tax_exempt_interest": null,
         "div.box12": null,
         "ftc.taxes": null,
         "f2441.care": null,
-        "f5695.part2_any": null,
-        "f5695.part1_any": null,
         "f5695.business_use": null,
         "f5695.line7a": null,
         "f5695.line12": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "f5695.condo": null,
         "sd.carryover": null,
-        "s179.line10": null,
-        "f4952.alternative_allocation": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "f4952.alternative_allocation": null,
+        "s1.uc_any": true,
+        "s1.jury_any": true,
+        "s1.alimony_any": true,
+        "s1.nqdc_pension": false,
+        "s1.inmate_wages": false,
+        "s1.digital_income": false,
+        "s1.olympic": false,
+        "s2.options_any": false
       },
       "expect": {
         "f4952.required": {

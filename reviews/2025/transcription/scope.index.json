@@ -3,7 +3,69 @@
  "form": "scope",
  "family": "claude",
  "base": "967264f92b4f12f49b8e65c16bb93a24be5c589d17652ae79c3b265ba870c5b8",
- "lines": [],
- "subjects": {},
- "__rest__": "c0448cd138abd167fdf478a533908ab7d7dbffd5aa5e7a74d1e438f35e949699"
+ "head_rows": {
+  "printed lines compared": "6",
+  "agree / disagree / missing": "1 / 5 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "scope.has_w2",
+   "record": "ec8ead938781af5865e68143050c853b23b3dabb0d05e50c285bae5f014b9da7",
+   "status": "AGREE",
+   "subject_key": "b9a0c25c5f5d5cf0f3c5064979b396a7682d192f9e461136d41c5f42d30c1046"
+  },
+  {
+   "key": "scope.reservist_repaid_if_armed_forces",
+   "record": "ec8ead938781af5865e68143050c853b23b3dabb0d05e50c285bae5f014b9da7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent: the reply's conjunction of scope.armed_forces and scope.reservist_repaid is the project's gated choose (i1040gi p. 95, Line 20, \"Don't include any repayments of qualified reservist distributions\"). Triage (pass 1ad4bbd67c02): 3,997/4,036 agree; 39 project-unknown (incomplete/refused); no value difference.",
+   "subject_key": "ecc1ce1d0a25cb19f5e65b26aab2806772fe3554987debce39afa8d95a6957c6"
+  },
+  {
+   "key": "scope.excess_deferral_if_w2",
+   "record": "ec8ead938781af5865e68143050c853b23b3dabb0d05e50c285bae5f014b9da7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (4037 values compared, none different or missing: 1987 on 1987 fixture cases, 500 on 500 generated returns seed 20261026, 1550 on 1550 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "7c3446c26b74ea5cfe5e3d8ed355c6bf7a5a239acc92685379b425e009b67703"
+  },
+  {
+   "key": "scope.schedule1",
+   "record": "73f7eadb4e82f4a9e6b814402fb3aefe305332d1febf91baf4f1bc850f4e736a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; as ruled twice earlier today on this line. Triage (executable-triage-v2, pass 2eb39b30c079): 3,689/4,053 agree; 59 value differences, all refused returns with the project true and the reply false (scope.rental, e.g. t264.eic.step2_schedule1; scope.clergy_if_religious_work, stage9.eic.refuse.clergy_schedule1); 53 candidate-unknown (3 completed: scope.se_plan_other read ungated), 252 project-unknown. The reply leaves out rental and royalty (Schedule E to Schedule 1 line 5; i1040se p. 1), K-1 income, farm income (i1040sf p. 2, Schedule 1 line 6), clergy and church wages, W-2 marks (i1040gi Line 24f, code H) and the gated items, all of which carloan, f2441 and f1040 rely on this screen to refuse. Its extra CFC term changes no outcome: scope.cfc_if_foreign_shares is refused by scope.other_line16 on Form 1040.",
+   "subject_key": "e1a83d59ddf5b8e6313101c99cb6ca6d8b0c318cffb3b4c4a1cde8c7740c8181"
+  },
+  {
+   "key": "scope.other_income",
+   "record": "ec8ead938781af5865e68143050c853b23b3dabb0d05e50c285bae5f014b9da7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the label is \"Nonresident alien status, or other income or return treatment outside this tool\", and the reply leaves out nonresident status (scope.nonresident_if_noncitizen; i1040gi p. 8, \"Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR\"), a chapter 11 case (p. 23), a repayment of qualified reservist distributions (p. 95, Line 20) and dependent care benefits from one's own business or a grace period (scope.care_benefits_other_if_benefits; i2441 p. 5, Lines 12 and 13), and adds Schedule 1 items that belong to scope.schedule1. Triage (pass 1ad4bbd67c02): 3,503/4,036 agree; 63 value differences on refused returns, mostly project true / reply false (e.g. classm.carloan.2, classm.f8959.1, classm.sb.1), one the reverse (stage9.eic.refuse.clergy_schedule1.step5); 279 candidate-unknown (37 completed: scope.adoption_benefits read without its adoption gate); 191 project-unknown.",
+   "subject_key": "627cf0ac31f2e4478ca8c5306d923c7b07e991e994d529680a18e66fb5a1f2ed"
+  },
+  {
+   "key": "scope.other_line16",
+   "record": "ec8ead938781af5865e68143050c853b23b3dabb0d05e50c285bae5f014b9da7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply leaves out the controlled-foreign-corporation screen (scope.cfc_if_foreign_shares), the only question that reaches the line 16 tax of i1040gi p. 34, Line 16, \"Tax with respect to a section 962 election (election made by a domestic shareholder of a controlled foreign corporation to be taxed at corporate rates)\", while its note says no input covers section 962; and it reads scope.income_averaging and scope.f8978 without the project's business gates. Triage (pass 1ad4bbd67c02): 3,861/4,036 agree; 16 value differences on refused returns: mutation.m3.scope.l16_cfc project true / reply false, and generated records where the reply reads an ungated answer (project false / reply true); 75 candidate-unknown (14 completed: scope.unearned_2700 read where the project does not ask it); 84 project-unknown.",
+   "subject_key": "8a3b1f5301b6296cc34914a599f829510df88ab822f81b3ea17a5fe386920f53"
+  }
+ ],
+ "subjects": {
+  "scope.has_w2": "821f02aa9c7493efd8a6e938a2b1537590ee73b4e2847d7ca11c29b640ec4f44",
+  "scope.reservist_repaid_if_armed_forces": "af82e1bc652fea7fe1f41699ff421bca139acb0a060f3ecf29d83179d5118bb1",
+  "scope.excess_deferral_if_w2": "f62b1921e36df83067fa2da62cd47f106dfc9fe5cb829ed703143c124679ee03",
+  "scope.schedule1": "f272c151b4418325ca3d5d0479c4eadd7aba273857cc5b15c367ffd2ad4e12aa",
+  "scope.other_income": "215ec974d87e61ecedccd7880de0f3723bc0a09e11f7c981527c0acfd8f35292",
+  "scope.other_line16": "bc48e7ea67e5a0ad99bbeb8ec4a60ee0f4c563596aaadcf5e6afbf0721e37691"
+ },
+ "__rest__": "c0448cd138abd167fdf478a533908ab7d7dbffd5aa5e7a74d1e438f35e949699",
+ "foreign": {
+  "scope.has_w2": "d529f6cae62dfea3096edc13769b5bbd78c78f1eacc2d484f528e23ca088a586",
+  "scope.reservist_repaid_if_armed_forces": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "scope.excess_deferral_if_w2": "057a207b3671167074c52c60785b543abaf1a4748c6cb99727ac0b1bc2a8da1a",
+  "scope.schedule1": "10b1502db6a36d41a0ffc5423c74e95c279ee954b169a5d8144a9a83af36b692",
+  "scope.other_income": "cfc694723d808a9eb9747f8a66507176f04acd9be445f2e01cd588217f2b6c12",
+  "scope.other_line16": "bc6466ed6f67ed39a3f0ffe9a5a27a94cf40ccb608929b247239034df02293b4"
+ }
 }

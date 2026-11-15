@@ -139,3 +139,41 @@ open DeepSeek line reads either, so those lines are ruled by reading). Full ruli
 | deepseek | 1a–10, columns (d)(e)(g)(h) (32 lines) | scope | not executable | f1040sd p. 1, lines 1a–10 | It adds the printed digital boxes, which the project refuses through `sales.digital`; the result is the same within scope (T-003). |
 
 Findings: sd.line18 and sd.line19 (worksheet results kept when line 17 is No), in the Claude log; see `.transcription/proposed/sd.findings.md`. No tax amount differs.
+
+## Landing round (2026-11-14)
+
+Line-scoped pass da3c033dcfd8 (receipt `.transcription/sd.lines-33cef6d8af35`, 41 lines, 6 agree, 35 open) after the
+interview redraft: `sd.other_forms` is now derived from plain-language source-form questions (`sd.sold_other`,
+`sd.business_property`, `sd.installment`, `sd.like_kind`, `sd.sec1256`, `sd.condemned`, `sd.small_business_stock`,
+`sd.trader_election`, `sd.f2439`, `sd.casualty`), and the line filters read `sales.route_if_chosen` (asked only after
+`sd.route_each`). Triage `.transcription/triage/2025/sd.json`, pass da3c033dcfd8 (executable-triage-v2;
+1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 392 partial records; 2,878 comparisons per line).
+Full ruling text is in the log and its sidecar. Lane land3-adj2.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | 1a–10, columns (d)(e)(g)(h) (32 lines) | scope | 2,482–2,484 of 2,878 agree; 115–116 project-refuses, 278–280 project-unknown; no value | f1040sd p. 1, lines 1a–10; i1040sd p. 10, lines 1a and 8a | Digital boxes G–L added; refused by `sales.one` (T-003). Route test dropped on 2, 3, 9, 10 is covered by `sales.bad_aggregate`. Unknowns withhold asked screen answers (`div.any` behind `sd.f2439_if_dividends`, `sd.sold_other`). |
+| claude | transcription | sd.distributions_if_dividends | model error | 32 of 2,878; 2,846 candidate-unknown "cycle at sd.distributions_if_dividends" (1,017 completed, e.g. stage14.asset.hy_5yr) | f1040sd p. 1, line 13; f1099div box 2a | Gates box 2a on `div.has_capital_gain`, which is `sd.distributions_if_dividends > 0`: the line reads itself. The parent question is `div.any`. |
+| claude | transcription | 13 | model error | 33 of 2,878; 2,790 candidate-unknown (cycle), 55 project-refuses (`div.bad_components`) | f1040sd p. 1, line 13 | Copies the circular helper; otherwise equal to the project (which adds the zero term `div.screen`). |
+| claude | transcription | sd.filed | model error | 806 of 2,878; 1,903 candidate-unknown (cycle, 894 completed), 92 project-refuses, 75 project-unknown, 2 value (completed: stage20.line21_at_both_bounds, stage20.mut.line21_below_limit; project false, candidate true) | i1040gi p. 31, Line 7a, Exception 1; i1040sd p. 10, "Otherwise, you don’t have any carryovers" | Files whenever `sd.carryover` is Yes, even with lines 6 and 14 at $0; the raw box 2b/2c/2d test is the T-003 form of the project's test but reads through the circular helper. |
+
+Counts: 35 = 32 scope + 3 model error. Findings: none. The redraft's new gates appear only as project refusals or
+withheld answers; no value differs on any column line, and the only value differences (`sd.filed`) are the carryover
+model error ruled in earlier rounds.
+
+Observation (tooling, not a finding): the line-scoped catalog listed `div.has_capital_gain` as a derived Bool gate
+with no label or definition, although it is computed from the line under review (`sd.distributions_if_dividends`).
+The reply chose it as the line's gate and became circular.
+
+## Landing round (2026-11-14), render
+
+Line-scoped Claude render review, pass cd301108d3f1. `carry.py --kind render` ruled nothing. Ruled by lane land3-adj9;
+rulings in `/tmp/land3-adj9/sd.json`, applied with rule.py.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | 5 | finding (low) | MISMATCH; sd.other_forms tests no K-1 case | f1040sd line 5 | Value right (`scope.k1` refuses through scope.schedule1 at Form 1040 line 8); `sd.other_forms`'s label still names K-1 gains. BUG-0638. |
+| claude | render | 12 | finding (low) | As line 5 | f1040sd line 12 | As line 5. |
+
+2 lines: 2 finding (low). Finding BUG-0638 (`bug_pending/land3-adj9-03.md`): drop the K-1 words from
+`sd.other_forms`'s label and name scope.k1 in the citations of lines 5 and 12. No value is wrong.

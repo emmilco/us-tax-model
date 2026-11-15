@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
  "head_rows": {
-  "line-scoped reviews": "4 (latest 2026-11-11); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "25 / 4 / 0 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,9 +16,9 @@
   },
   {
    "key": "7",
-   "record": "847c241576bf5cb517c2aaa90e0e2ad882900fb7f179b55dbd4e22fec83e76b6",
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
    "status": "MATCH",
-   "subject_key": "8bdafc74a2e4e45e38ff01009f2a78cc13d33bd56687c98dcc0f31f009994805"
+   "subject_key": "208c8f6868af8b2f08083843015089b2a0fb711b3e5e598bdbcbf6255307a947"
   },
   {
    "key": "7 (box)",
@@ -39,39 +40,39 @@
   },
   {
    "key": "8b",
-   "record": "d1cca99ab3dd9a725027ec47e9ae242e200ddbd81fe4adb757154e79a33b5a82",
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
    "status": "MATCH",
-   "subject_key": "7217b4012259b0ea6c4c75a1ace4d2fc9d3643c8a5befc073a8508469baccf68"
+   "subject_key": "0d106eb70636f0176d25cb4b9a0c04dd46a914a8a172c3f05b6c5320b7a61266"
   },
   {
    "key": "8g",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
    "status": "MATCH",
-   "subject_key": "e06d8b4955244c30564e75f1293a7adc72c5c13599a01ef2290cd0c08aabc8ef"
+   "subject_key": "9b0aae357a6b56a8f58b4a8cad1c2d663a8c02cf5e49b97f37b7dce51fcef1b1"
   },
   {
    "key": "8h",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
    "status": "MATCH",
-   "subject_key": "2e6d12e9b2d06ae3f938203256d6462e72f842a838dc8650a152c1837e5a2883"
+   "subject_key": "bc885a643b30a08e177b70055fbf441942da8dec0e8a71c1b33598f32fdab755"
   },
   {
    "key": "8i",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
    "status": "MATCH",
-   "subject_key": "a5d84b6c421f3780f88a8d7f90ed3b522c3b9dc6bcca6da84f64f97c2d9088f2"
+   "subject_key": "d6d3cd49dcc67f2a61ad405cbe07bbf51168a09690679b9238663c36e2f5ea01"
   },
   {
    "key": "8j",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
    "status": "MATCH",
-   "subject_key": "92e75e7f43e91626951c68a5a635ee9addf6c218631ad5c88fb7006a10d5e458"
+   "subject_key": "ea3340c829e2a31b81c5859c07801c9df57f4685cb5240ea5f14061d251ab3ac"
   },
   {
    "key": "8r",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
    "status": "MATCH",
-   "subject_key": "0069f578eb4bf03d23f0d0f614f142a3005ff2d9646345886b64b78a73528a68"
+   "subject_key": "2bd5a0fe386b588515188abdb1a385eff382e4e348b8ee75384108cf4d981a8d"
   },
   {
    "key": "8z",
@@ -81,9 +82,9 @@
   },
   {
    "key": "2a",
-   "record": "847c241576bf5cb517c2aaa90e0e2ad882900fb7f179b55dbd4e22fec83e76b6",
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
    "status": "MATCH",
-   "subject_key": "ee622954dec0e8daf49dbaaff4ca2aee43b62965508212ac593be155ff136592"
+   "subject_key": "a31ef010c8d1a21ea1c84f157315ef005a880f3d7009a063c6600c428e13424a"
   },
   {
    "key": "8c",
@@ -99,16 +100,17 @@
   },
   {
    "key": "9",
-   "record": "847c241576bf5cb517c2aaa90e0e2ad882900fb7f179b55dbd4e22fec83e76b6",
-   "status": "MATCH",
-   "subject_key": "d1495a3964ad4394c8abc18bb2e0ea58e480ae06b558f798c5050dfa326422ad"
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; f1040s1 line 9, \"Add lines 8a through 8z\". The value is right: each item not summed refuses the return elsewhere (8a scope.nol and 8l scope.rental through scope.schedule1 at Form 1040 line 8; 8d sa.excluded_income on Schedule A lines 6, 15, 16, read by sa.itemizes; 8n, 8o scope.cfc through scope.other_line16; 8p the excess business loss refusal on line 3; 8q person.x_edu_taxable through person.x_other on Form 5329; 8s scope.medicaid_waiver through scope.other_income), so 8a, 8d, 8l, 8n to 8q and 8s are not silently dropped, as the reply says. But the line's citation says those lines \"are refused by s1.line8_other\", which since the redraft tests only 8e, 8k, 8m and 8t to 8v: the line names the wrong screen. Low (BUG-0637).",
+   "subject_key": "c8f250768e2169dbc51e004758e4bd5c10cc92226ab074fa0cb14bf2f41c314d"
   },
   {
    "key": "10",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: its text names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\" (checked on the current forms/2025/scope.yaml); within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; the income package changed only the wording of the alimony and unemployment screens, which does not touch this line. Re-checked on the current scope.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393). Project stands on the English.",
-   "subject_key": "af75401d75f7a8fa34e4124509da222647d021a4418d713bc0cca401f39568fc"
+   "ruling": "Ruling: finding; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". The value is right: line 4 (Form 4797) is refused by sd.business_property_if_sold through sd.other_forms on Schedule D, lines 5 and 6 by scope.rental, scope.k1 and scope.farm through scope.schedule1 at Form 1040 line 8 (which copies this line), so within scope they are zero. But the citation puts lines 4 to 6 at \"scope.schedule1 and the line 8 screen\", and Form 4797 no longer refuses there (MAP 2.7). Low (BUG-0637).",
+   "subject_key": "f3a58a590dd2e3302f12cf0628ca857c76d3aee814f8f8f995c76d5e1a3f47d0"
   },
   {
    "key": "11",
@@ -148,9 +150,9 @@
   },
   {
    "key": "19a",
-   "record": "d1cca99ab3dd9a725027ec47e9ae242e200ddbd81fe4adb757154e79a33b5a82",
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
    "status": "MATCH",
-   "subject_key": "c23732ca454c06cb9bbcfefb4b82d90d3f80ef911ad1ab0fe4a3d60f10794962"
+   "subject_key": "e556e7a43cf5587b8d4f7f0dae984d31338e8bd576d07c3c7acfaefb1a54d809"
   },
   {
    "key": "20",
@@ -166,9 +168,9 @@
   },
   {
    "key": "24a",
-   "record": "a9dbf9571925f7d3435a269958d1089732b423954dad21385aa69cb1107aeeef",
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
    "status": "MATCH",
-   "subject_key": "b750c7a101cdda8eb3f42e1c7cad33e2ecf975152ba814d904ba5b665f5d1c5f"
+   "subject_key": "8a5b3a1d40d3507a89d7671847112071698a07b532946a57878893e89a5a3bbd"
   },
   {
    "key": "25",
@@ -179,42 +181,42 @@
   },
   {
    "key": "26",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; f1040s1 line 26, \"Add lines 11 through 23 and 25\". Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\", checked on the current scope.yaml); within scope they are zero, as the line's citation says. Line 22 is reserved; every other line is added. Same ruling as the earlier rounds. Re-checked on the current scope.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393). Project stands on the English.",
-   "subject_key": "b9971c49cee297c10f1f7acd0a5bbeae9423c6595946e3a596c46368f86707ca"
+   "ruling": "Ruling: scope; refusal located elsewhere (as the prior rulings). f1040s1 line 26, \"Add lines 11 through 23 and 25\". Line 12 is asked by scope.reservist_expenses and scope.performer_expenses, line 14 by scope.military_move, line 23 by scope.archer_msa, all in scope.schedule1, which refuses Form 1040 line 10, the line this one is entered on; within scope they are zero, as the line's citation says. Line 22 is reserved. Project stands.",
+   "subject_key": "1ca22e652c71dc9b0d21f3d7c01a7f99777190113b6057177736b89dd9614edf"
   }
  ],
  "subjects": {
   "1": "3cf027355da75e3c1f9ff97b91bfd36372ca9ab6e610480bc31bdbad6d856ef1",
-  "7": "7764bc3e608ebe0342b1a9c2cd10931115c47f9c1ba29d5c6d94e6a01a4c7939",
+  "7": "0aa7e18fa41397e9c171ffac098cfbea679e107ade4d0789644fb7a869935a82",
   "7 (box)": "09b7c34093b1ada499b0dd9b024a5725401b1b3c053bf7a088ca9b4b4fe0fa61",
   "7 (amount repaid)": "684c11973a74fbcaca801a35d11dedc198af1f3f9c8045e0b24173854c36a5a6",
   "3": "bc3ec168d14d2a8cd64d175e37c7e910d8a5af268c316d775da646c4dd01ddcd",
-  "8b": "e7e0ba6233104cb4b7536d1474b853a4ab5fbfd9b02a83c94960a92006c2b889",
-  "8g": "a3571d84edee2cfb3de333815f5d20985387df2f1636b2e1b6e1aac16cd49204",
-  "8h": "9ed043904bf99e07ffdba67546672e89dcf24deb3424681bd8a7dc67942ad15e",
-  "8i": "c68f1e8a3ff60d5244459d36d21b0b62e65c8c933467f51dea16aa0ae2b8407d",
-  "8j": "29a9416344de32f83f0e9092659845581207319a988464bfe47bd71bcf5eb305",
-  "8r": "97662a747727caf31391c45b947c97f49ba69e76d0f9c4043b5d7c40354a9f7d",
+  "8b": "cc86673029995e183bbe1b99c0d9fab9a8e94421f7f4fa29ed2b1dcaeedb9ec8",
+  "8g": "37217f436fbec719189e075f3b1f2bf40747a59128014b3cba843179e39affb2",
+  "8h": "80b6c80b9281d97b3e5ed1441f830a5cd8349c82557cb07fc2b4d9d68b7781c5",
+  "8i": "7e9326f770fa266db83736018572ae0ee32dd616b1961edba521b03fbe2c43d9",
+  "8j": "9080f3ad8698c5cdcb124d73834ba1fc736d2d01d330936ab03035c1048f70c0",
+  "8r": "2891dfe3bd4061bce6067a94240c460c252b4d257fab28e0e4e06bf52a9b7068",
   "8z": "716e4f6692a25b41948e6fdbe805ecff692e5452aeffbfaba8b32f5e0f42e407",
-  "2a": "1d3e5712e710574448b76ec9f757d4cbebfb560ec82df42640ef38f1a791946a",
+  "2a": "978f6fd9d84dccac3569cc51b677eb4899a483919ee31adc82908e98379c6d53",
   "8c": "2b741fc0c23cd68a3f92c48bfb37bdf8d74eb3a87f4dfa280bccbffb0a93459c",
   "8f": "61cd1ea00f9720c8fa0491e4eabe0184235cd502525725831f06f21d546abb4a",
-  "9": "fcfc71009176baa07e61cf154891a27f5729cce29e90e2bd064e50c471079cd1",
-  "10": "d6214796af17b99dfca44131888035ff71b7c5e63bc3d2a2cae51af7939a196c",
+  "9": "f63675713ebbe490de727504c380bd62e5779b9a012f6f06d741f26697986829",
+  "10": "53fd48a2eea5f64b3a98f9a3829d6ee7aed1923efaa45a35c874183e146f740d",
   "11": "444b97633e80dc22f7362c42b60b247a91d3290a3d4917b7429f07dec9ebf99d",
   "13": "d28511b7f2c281e110c89fdb0b05daddf7fd81c5cd68febefceddfd95320e99c",
   "15": "2862a9af51da579f2eeae0fca7a1e5fd656c4e385c5dde00e4cedea04abf6f88",
   "16": "aef86069282bbaabff9f8a9daed19f8276dbdddcce570580486b1dcecd2b8871",
   "17": "bf48e84e65b403942498520eeb97e8bffef5b0d9e4a871749fcad25441a36591",
   "18": "68468ce4276ba46f7520091bb4beb4cca084d19d6b0ceb9bbba6fc637e9593ac",
-  "19a": "de4c3a1c81dadb34cb22687dde7c50aba94ef2bc8371d0f9ebc96a05a66b1279",
+  "19a": "c81ab15d94daae0e64cbd97bece5b206e3b2fb73c5b19bb72e144eb8bdd82098",
   "20": "f5fe786e81fd42f622503e89aab81fb0d7d0dd71d81f7ef1bb4a2c0c276a41cc",
   "21": "6a9e1286ec5d1c79200191fa27ea65aad3e34c1557b4f969476844c8c2b25dbf",
-  "24a": "d0fbed7869157afc41a042ee4e71347d6896026dbf9429c2d32eb412db42a286",
+  "24a": "31369b1b105228b8c5f133e8c3fd9b294c8ffc28346a0687a317919714dc1274",
   "25": "c3cc27cbf052acae70854b6056de1f9f7c2bfa9717211b348d2fafede9c896e0",
-  "26": "7ada04370e3a07740337ad078e0e63008201c54239e01a63516de1f64def451a"
+  "26": "09514616fba09c45dc0c3ac1c2172fcfcec69ece8ed2a950ee276104560e168b"
  },
  "__rest__": "f5e70797ebc2b9e4473c24c82607878d7004ef8e9ac2a487cb492e6158a05791"
 }

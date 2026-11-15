@@ -8,16 +8,264 @@ form:
     (`clcw`), held as negative amounts. Boolean flow predicates are
     shown even when their printed line is skipped.
   lines:
+    - id: sd.no
+      printed: (helper)
+      label: Year parameter household.no (false)
+      type: Bool
+      expr:
+        op: param
+        ref: household.no
+      cite:
+        doc: f1040sd
+        locator: Schedule D (2025), Parts I–III
+    - id: sd.sold_other
+      printed: (gate)
+      label: 'In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale.'
+      type: Bool
+      expr:
+        op: input
+        source: 'In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale.'
+      cite:
+        doc: i1040sd
+        locator: 'p. 1, Other Forms You May Have To File; p. 1, "To report a gain from Form 2439 or 6252 or Part I of Form 4797" and "To report a gain or loss from Form 4684, 6781, or 8824"'
+    - id: sd.business_property
+      printed: (gate)
+      label: 'Was any of that property used in a business or rented out, or was it oil, gas or mineral property? Count any sale of something that was not held as an investment or for personal use.'
+      type: Bool
+      gated_by: sd.business_property_if_sold
+      expr:
+        op: input
+        source: 'Was any of that property used in a business or rented out, or was it oil, gas or mineral property? Count any sale of something that was not held as an investment or for personal use.'
+      cite:
+        doc: i1040sd
+        locator: 'p. 1, Other Forms You May Have To File, "Use Form 4797 to report the following." and "Real property used in your trade or business"'
+    - id: sd.business_property_if_sold
+      printed: (gate)
+      label: 'Whether property sold or traded was business, rental or mineral property (Form 4797), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sd.sold_other
+                - const: true
+            then: sd.business_property
+          - guard:
+              op: test
+              eq:
+                - sd.sold_other
+                - const: false
+            then: sd.no
+      cite:
+        doc: i1040sd
+        locator: 'p. 1, Other Forms You May Have To File, "Use Form 4797 to report the following." and "Real property used in your trade or business"'
+    - id: sd.installment
+      printed: (gate)
+      label: 'Does any payment for any of it come in a year after the year of the sale, with the gain reported as the payments arrive (an installment sale)?'
+      type: Bool
+      gated_by: sd.installment_if_sold
+      expr:
+        op: input
+        source: 'Does any payment for any of it come in a year after the year of the sale, with the gain reported as the payments arrive (an installment sale)?'
+      cite:
+        doc: i1040sd
+        locator: 'p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method. Also, use Form 6252 to report any payment received in 2025 from a sale made in an earlier year that you reported on the installment method." and "To elect out of the installment method, report the full amount of the gain on Form 8949"'
+    - id: sd.installment_if_sold
+      printed: (gate)
+      label: 'Whether a sale is reported on the installment method (Form 6252), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sd.sold_other
+                - const: true
+            then: sd.installment
+          - guard:
+              op: test
+              eq:
+                - sd.sold_other
+                - const: false
+            then: sd.no
+      cite:
+        doc: i1040sd
+        locator: 'p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method. Also, use Form 6252 to report any payment received in 2025 from a sale made in an earlier year that you reported on the installment method." and "To elect out of the installment method, report the full amount of the gain on Form 8949"'
+    - id: sd.like_kind
+      printed: (gate)
+      label: 'Did you trade any of it for other real estate, putting off the tax on the gain (a like-kind exchange)?'
+      type: Bool
+      gated_by: sd.like_kind_if_sold
+      expr:
+        op: input
+        source: 'Did you trade any of it for other real estate, putting off the tax on the gain (a like-kind exchange)?'
+      cite:
+        doc: i1040sd
+        locator: 'p. 1, Other Forms You May Have To File, "Use Form 8824 to report like-kind exchanges."'
+    - id: sd.like_kind_if_sold
+      printed: (gate)
+      label: 'Whether there was a like-kind exchange (Form 8824), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sd.sold_other
+                - const: true
+            then: sd.like_kind
+          - guard:
+              op: test
+              eq:
+                - sd.sold_other
+                - const: false
+            then: sd.no
+      cite:
+        doc: i1040sd
+        locator: 'p. 1, Other Forms You May Have To File, "Use Form 8824 to report like-kind exchanges."'
+    - id: sd.sec1256
+      printed: (gate)
+      label: 'In 2025, did you (or, on a joint return, your spouse) trade futures, foreign currency contracts or options on a stock index (section 1256 contracts, shown in boxes 8 to 11 of a Form 1099-B), or hold offsetting positions taxed as a straddle?'
+      type: Bool
+      expr:
+        op: input
+        source: 'In 2025, did you (or, on a joint return, your spouse) trade futures, foreign currency contracts or options on a stock index (section 1256 contracts, shown in boxes 8 to 11 of a Form 1099-B), or hold offsetting positions taxed as a straddle?'
+      cite:
+        doc: i1040sd
+        locator: 'p. 1, Other Forms You May Have To File, "Use Form 6781 to report gains and losses from section 1256 contracts and straddles."; f1099b p. 7, "Box 8. Shows the profit or (loss) realized on regulated futures, foreign currency, or Section 1256 option contracts closed during 2025."'
+    - id: sd.condemned
+      printed: (gate)
+      label: 'In 2025, was your (or, on a joint return, your spouse''s) business or investment property taken by a government, or sold under threat of that (a condemnation)?'
+      type: Bool
+      expr:
+        op: input
+        source: 'In 2025, was your (or, on a joint return, your spouse''s) business or investment property taken by a government, or sold under threat of that (a condemnation)?'
+      cite:
+        doc: i1040sd
+        locator: 'p. 1, Other Forms You May Have To File, "The involuntary conversion (other than from casualty or theft) of property used in a trade or business and capital assets held more than 1 year for business or profit."'
+    - id: sd.small_business_stock
+      printed: (gate)
+      label: 'In 2025, did you (or, on a joint return, your spouse) lose money on stock that a small company issued to you, a loss you claim as an ordinary loss and not a capital loss (section 1244 or section 1242 stock)?'
+      type: Bool
+      expr:
+        op: input
+        source: 'In 2025, did you (or, on a joint return, your spouse) lose money on stock that a small company issued to you, a loss you claim as an ordinary loss and not a capital loss (section 1244 or section 1242 stock)?'
+      cite:
+        doc: i1040sd
+        locator: 'p. 1, Other Forms You May Have To File, "Ordinary loss on the sale, exchange, or worthlessness of small business investment company (section 1242) stock." and "Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock."'
+    - id: sd.trader_election
+      printed: (gate)
+      label: 'Do you (or, on a joint return, your spouse) trade securities or commodities as a business, under a mark-to-market election made in an earlier year?'
+      type: Bool
+      expr:
+        op: input
+        source: 'Do you (or, on a joint return, your spouse) trade securities or commodities as a business, under a mark-to-market election made in an earlier year?'
+      cite:
+        doc: i1040sd
+        locator: 'p. 1, Other Forms You May Have To File, "Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election."'
+    - id: sd.f2439
+      printed: (gate)
+      label: 'Did a mutual fund or a real estate investment trust (REIT) send you (or, on a joint return, your spouse) a Form 2439 for 2025, a notice of gains it kept and paid tax on?'
+      type: Bool
+      gated_by: sd.f2439_if_dividends
+      expr:
+        op: input
+        source: 'Did a mutual fund or a real estate investment trust (REIT) send you (or, on a joint return, your spouse) a Form 2439 for 2025, a notice of gains it kept and paid tax on?'
+      cite:
+        doc: i1040sd
+        locator: 'p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439."'
+    - id: sd.f2439_if_dividends
+      printed: (gate)
+      label: 'Whether a fund or REIT sent a Form 2439 (undistributed long-term capital gains), asked only when you or your spouse received dividends or other distributions (false otherwise)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: true
+            then: sd.f2439
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: false
+            then: sd.no
+      cite:
+        doc: i1040sd
+        locator: 'p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439."'
+    - id: sd.casualty
+      printed: (gate)
+      label: 'In 2025, was your (or, on a joint return, your spouse''s) property damaged, destroyed or stolen, leaving a loss that insurance did not cover or an insurance payment above what the property cost?'
+      type: Bool
+      expr:
+        op: input
+        source: 'In 2025, was your (or, on a joint return, your spouse''s) property damaged, destroyed or stolen, leaving a loss that insurance did not cover or an insurance payment above what the property cost?'
+      cite:
+        doc: i1040sd
+        locator: 'p. 1, Other Forms You May Have To File, "Use Form 4684 to report involuntary conversions of property due to casualty or theft."'
     - id: sd.other_forms
       printed: (helper)
       label: 'Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.'
       type: Bool
       expr:
-        op: input
-        source: 'Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.'
+        op: test
+        any:
+          - op: test
+            eq:
+              - sd.business_property_if_sold
+              - const: true
+          - op: test
+            eq:
+              - sd.installment_if_sold
+              - const: true
+          - op: test
+            eq:
+              - sd.like_kind_if_sold
+              - const: true
+          - op: test
+            eq:
+              - sd.sec1256
+              - const: true
+          - op: test
+            eq:
+              - sd.condemned
+              - const: true
+          - op: test
+            eq:
+              - sd.small_business_stock
+              - const: true
+          - op: test
+            eq:
+              - sd.trader_election
+              - const: true
+          - op: test
+            eq:
+              - sd.f2439_if_dividends
+              - const: true
+          - op: test
+            eq:
+              - sd.casualty
+              - const: true
       cite:
-        doc: f1040sd
-        locator: Schedule D (2025), Parts I–III
+        doc: i1040sd
+        locator: 'p. 1, Other Forms You May Have To File, "Use Form 4797 to report the following.", "The involuntary conversion (other than from casualty or theft) of property used in a trade or business", "Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.", "Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.", "Use Form 4684 to report involuntary conversions of property due to casualty or theft.", "Use Form 6781 to report gains and losses from section 1256 contracts and straddles.", "Use Form 8824 to report like-kind exchanges."; p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method"; p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439."'
+    - id: sd.route_each
+      printed: (gate)
+      label: 'Do you want to choose, sale by sale, between listing a sale on Form 8949 and adding it to a total on Schedule D? The tax is the same either way; with a No, every sale is listed.'
+      type: Bool
+      expr:
+        op: input
+        source: 'Do you want to choose, sale by sale, between listing a sale on Form 8949 and adding it to a total on Schedule D? The tax is the same either way; with a No, every sale is listed.'
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
     - id: sd.carryover
       printed: (helper)
       label: 'Did line 21 of your 2024 Schedule D show a loss?'
@@ -204,7 +452,7 @@ form:
                 - const: A
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: aggregate
       cite:
         doc: f1040sd
@@ -235,7 +483,7 @@ form:
                 - const: A
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: aggregate
       cite:
         doc: f1040sd
@@ -266,7 +514,7 @@ form:
                 - const: A
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: aggregate
       cite:
         doc: f1040sd
@@ -297,7 +545,7 @@ form:
                 - const: A
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: aggregate
       cite:
         doc: f1040sd
@@ -328,7 +576,7 @@ form:
                 - const: A
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -358,7 +606,7 @@ form:
                 - const: A
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -388,7 +636,7 @@ form:
                 - const: A
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -418,7 +666,7 @@ form:
                 - const: A
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -449,7 +697,7 @@ form:
                 - const: B
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -479,7 +727,7 @@ form:
                 - const: B
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -509,7 +757,7 @@ form:
                 - const: B
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -539,7 +787,7 @@ form:
                 - const: B
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -570,7 +818,7 @@ form:
                 - const: C
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -600,7 +848,7 @@ form:
                 - const: C
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -630,7 +878,7 @@ form:
                 - const: C
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -660,7 +908,7 @@ form:
                 - const: C
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -691,7 +939,7 @@ form:
                 - const: D
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: aggregate
       cite:
         doc: f1040sd
@@ -722,7 +970,7 @@ form:
                 - const: D
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: aggregate
       cite:
         doc: f1040sd
@@ -753,7 +1001,7 @@ form:
                 - const: D
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: aggregate
       cite:
         doc: f1040sd
@@ -784,7 +1032,7 @@ form:
                 - const: D
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: aggregate
       cite:
         doc: f1040sd
@@ -815,7 +1063,7 @@ form:
                 - const: D
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -845,7 +1093,7 @@ form:
                 - const: D
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -875,7 +1123,7 @@ form:
                 - const: D
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -905,7 +1153,7 @@ form:
                 - const: D
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -936,7 +1184,7 @@ form:
                 - const: E
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -966,7 +1214,7 @@ form:
                 - const: E
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -996,7 +1244,7 @@ form:
                 - const: E
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -1026,7 +1274,7 @@ form:
                 - const: E
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -1057,7 +1305,7 @@ form:
                 - const: F
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -1087,7 +1335,7 @@ form:
                 - const: F
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -1117,7 +1365,7 @@ form:
                 - const: F
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd
@@ -1147,7 +1395,7 @@ form:
                 - const: F
             - op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
       cite:
         doc: f1040sd

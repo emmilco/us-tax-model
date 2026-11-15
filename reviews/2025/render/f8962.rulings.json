@@ -661,6 +661,16 @@
   {
    "printed": "24",
    "restated": "Choose — [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = false → helper \"Year parameter sales.zero\"] [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = true → helper \"The PTC allowed: line 11, column (e), or lines 12 through 23, column (e), added\"]",
+   "model": "The applicable-taxpayer test looks only at line 5 and the Marketplace estimate exception. It omits the married-filing-separately condition (\"if you were married at the end of 2025, you must file a joint return to be an applicable taxpayer unless you meet one of the exceptions\"). For that case the instructions say \"enter -0- on line 24\", but the restatement would enter line 11(e) or the column (e) total, and no refusal excludes married filing separately.",
+   "ruling": "Ruling: scope; screen s3.mfs, as the earlier rulings on this line. i8962 p. 16, Not an applicable taxpayer: \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC ... enter -0- on line 24\". No married filing separately return is completed: s3.mfs (forms/2025/s3.yaml, f1040.status equal to mfs) refuses scope.ready (forms/2025/scope.yaml), Exception 2 included, so the applicable-taxpayer helper never meets a married filing separately filer. The render review does not show the return-wide refusal. Project stands.",
+   "context": "4fa1a4ae0fa3df8bd193ab48d3dd1cd67f1298e0a13b0eac142060b14465d97a",
+   "date": "2026-11-14",
+   "run": "e84be3825ce65caeb6cf9a0938e3bccfde6119c188436a1cbce6807f0dbb3568",
+   "subject_key": "f13506b36b985a442a32882df1a091cc24a8c9e77b279d753eca4ffc8d86cd79"
+  },
+  {
+   "printed": "24",
+   "restated": "Choose — [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = false → helper \"Year parameter sales.zero\"] [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = true → helper \"The PTC allowed: line 11, column (e), or lines 12 through 23, column (e), added\"]",
    "model": "The applicable-taxpayer test looks only at line 5 and the Marketplace-estimate exception. It ignores married filing separately, so line 24 would show a PTC where the text requires zero: \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you ... enter -0- on line 24.\" Form line A: \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception.\"",
    "ruling": "Ruling: scope — married filing separately is refused for the whole return by s3.mfs, and Part V (the alternative calculation for year of marriage) by f8962.marriage; the applicable helper's income and Marketplace-estimate limbs are the only reachable ones. The render review does not show the return-wide refusal.",
    "context": "ef2868a4d625b0c8ad720e803bea77f3ed2a6ab6351d73f1fc4591b2b8a07b48",
@@ -817,6 +827,16 @@
    "ruling": "Ruling: scope — Form 8814 is outside this tool: scope.other_line16 asks about any additional Form 1040 line 16 tax or filing including filing Form 8814 (even with no tax) and refuses the return at scope.ready and f1040.line16, so the Worksheet 1-2 adjustment cannot reach a computed return.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec",
    "subject_key": "4394a91617b2851628d568249daa96f16faa026b6505a3cb6daf406b498a02cf"
+  },
+  {
+   "printed": "9",
+   "restated": "(helper \"A policy shared with another tax family, or a divorce or separation in 2025 with a shared policy\" = true or helper \"A joint return with Marketplace coverage before the first full month of a 2025 marriage\" = true)",
+   "model": "Line 9 asks \"Are you allocating policy amounts with another taxpayer or do you want to use the alternative calculation for year of marriage?\" The restatement answers Yes in cases where the IRS text answers No. For allocation, a shared policy alone is not enough: the instructions also require that \"You received a Form 1095-A for the policy that does not accurately represent the members of your tax family ... or b. The other tax family received a Form 1095-A for the policy that includes a member of your tax family.\" For year of marriage, the calculation is an election that also requires \"Was APTC paid for anyone in your tax family during 2025?\" and excess APTC (Worksheet 3).",
+   "ruling": "Ruling: scope; f8962 p. 1, line 9 and i8962 p. 12, Allocating policy amounts (\"1. The policy covered at least one individual in your tax family and at least one individual in another tax family; and 2. Either: a. ... or b. ...\") and p. 13, Table 4 (questions 1 to 5, including \"Was APTC paid for anyone in your tax family during 2025?\"). Line 9 is Yes only when f8962.alloc or f8962.marriage is true, and both refuse the return at line 24 (forms/2025/f8962.yaml, refuses: Part IV, Part V). On every completed return line 9 is No, and neither situation applies there: any policy shared with another tax family, and any divorce with a shared policy, is refused, and the alternative calculation needs a joint return with coverage before the first full month of a 2025 marriage (Table 4, questions 1 to 4), all refused. Where the restatement says Yes and the source would say No (a shared policy whose Forms 1095-A are already accurate; a 2025 marriage with no APTC or no excess APTC), the effect is an over-refusal, never a wrong line on a completed return. Project stands.",
+   "context": "4fa1a4ae0fa3df8bd193ab48d3dd1cd67f1298e0a13b0eac142060b14465d97a",
+   "date": "2026-11-14",
+   "run": "e84be3825ce65caeb6cf9a0938e3bccfde6119c188436a1cbce6807f0dbb3568",
+   "subject_key": "54dea0eeaad176d484295dea4cc8921b348c5ef4958f3151568c96dee623f789"
   }
  ]
 }

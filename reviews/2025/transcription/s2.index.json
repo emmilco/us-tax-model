@@ -4,9 +4,18 @@
  "family": "claude",
  "base": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "printed lines compared": "14",
+  "agree / disagree / missing": "12 / 2 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
+  {
+   "key": "s2.other",
+   "record": "bb94ef1cb3151624e0b52064a3141812a90957f8e4c5b0737acbb4b7a7c959b8",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the line is the screening question whose label lists what counts as another amount, including \"household employment taxes\" and \"uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N)\" (i1040gi p. 113, Lines 9 and 13); the reply's test leaves out those two answers (s2.household_employee_if_help, s2.w2_marks_if_w2), so as a gate for the readers that rely on it (s8812 line 22, \"Schedule 2 lines 5, 6 and 13 are refused by s2.other\"; tipjob; s1a) it would not refuse them, and it reads the ungated s2.mortgage_subsidy and s2.lookback where the project reads their parent-gated forms. Triage executable-triage-v2 (.transcription/triage/2025/s2.json, pass 19839a055a94): 2,740 of 2,868 agree; no value difference in the sample (no sampled return answers Yes to the two omitted questions); 61 candidate-unknown (15 on completed returns, s2.mortgage_subsidy or s2.lookback unasked behind their parent questions), 67 project-unknown on incomplete or refused returns.",
+   "subject_key": "e4b4fbdd1ecce82a45c1765c517cd13201075846636ad04fb90083d209b4592d"
+  },
   {
    "key": "s2.line8_file",
    "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
@@ -28,15 +37,15 @@
   },
   {
    "key": "2",
-   "record": "26286123230c40a18508a3db78e8ba33629760fd39187ad8c120ea63501b3b8f",
+   "record": "8226d9d61a206d1955ad56bea8331e4e09c9c1ca17905a6ee8ff4d72b96c77eb",
    "status": "AGREE",
-   "subject_key": "0323e615e78efb0a0cd25bdc01b760a34d8484fcbef3e13f06a5ec784298aa78"
+   "subject_key": "48b625881867828e183bfa9c6dfd8b69f6f8cc0185b4ef5168ab097e17988d52"
   },
   {
    "key": "3",
-   "record": "26286123230c40a18508a3db78e8ba33629760fd39187ad8c120ea63501b3b8f",
+   "record": "8226d9d61a206d1955ad56bea8331e4e09c9c1ca17905a6ee8ff4d72b96c77eb",
    "status": "AGREE",
-   "subject_key": "1c71b23dc21133d5c77d8bf62c047ed9f40f349d3bf134ad2e17db4d1c3fd475"
+   "subject_key": "f96561e35689c8f712a6ca37d89d2d6f27f73378b29dbb04ea217b8b8a572b91"
   },
   {
    "key": "4",
@@ -82,17 +91,18 @@
   },
   {
    "key": "21",
-   "record": "26286123230c40a18508a3db78e8ba33629760fd39187ad8c120ea63501b3b8f",
+   "record": "8226d9d61a206d1955ad56bea8331e4e09c9c1ca17905a6ee8ff4d72b96c77eb",
    "status": "AGREE",
-   "subject_key": "5b55d357ee298effe2e3acbe4208a62e4739c37c4aaff6a6e27d7cf9218016a6"
+   "subject_key": "8b26593a8654a237d96044ad9b48faa3c294b09a2af3315e0f6e55bab332c84c"
   }
  ],
  "subjects": {
+  "s2.other": "47e7766623efa4f173e69e6870713ba9ca82817478ade31038c4c6feb94f6b90",
   "s2.line8_file": "deb8be263885897cf5058b90185a21cfbad1938e3b0c9298cb84098d5a29294d",
   "1a": "45c38ce8fdfae6506bcf62fdeee06baaffe971d62e9f9cdb5cbb53c45888473b",
   "1z": "6f4b1df49b40ea901fd5f718d9895e33a1fe75eb19126d946bfd778466b46996",
-  "2": "9841a212c237db8f273bf6e877b07eff99bd8470332a3531bd4215be6b0f489e",
-  "3": "fd7514f3e2234ae5d2f476f4758f56747ddcaae7f4339ee1deae9ba2ed707264",
+  "2": "bcf7e6cad3c6b3f03cdd01f94c044680be98e2dec660c8c2a09f67aa788ad357",
+  "3": "654e1d58ef1341510c7a08ee94a647402e27acbdc54e128c4db4a4c87332a1cb",
   "4": "953ef54c0b1d62d61d6b53201beb0d3ad1e1265d162735865c2ae696027a420c",
   "8": "7355e8cb8c3b54d4f15ff1dde8c8942afb9116cf25c38c82aa861eb1becf57f1",
   "8 (box)": "5de2b5104f546bd8692ed681b83939a3c8a4346164cf927662e2d0cc42eb95a8",
@@ -100,12 +110,13 @@
   "12": "8815af92f32d42a0845b67cc205b1f75b926aa1f211865b195398d8c43314de6",
   "17c": "a0773b09a661c82935a41d37eac6c5d2fc11bd478506d923f364a2385b9616d7",
   "18": "70b979917d928776213d250602da518e7d7b607beb59522fca084ad3286f5069",
-  "21": "197d56cfbf8944170d4901f4514dbae5452c868acd056774925c1a0d0e338f54"
+  "21": "d7c4308c7dd42fd955d684ebdf48c7a2c7cbde1cc5d210903f49e9f3e9cceb89"
  },
  "__rest__": "afebc9cd3ed3e50a0f1f9e9d83cb49dd824e77c8da32f20b0c141d045a8c0355",
  "foreign": {
-  "2": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "21": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  "s2.other": "a7ff8f7f7c0a74dd1ccb09592b408d098f7f257bad2988feb0699ee6e1299710",
+  "2": "37ca7f4a1ca77e0dce49f5da468f2a4eaeca5481b20c24440c1758e7611d7a9e",
+  "3": "a7ff8f7f7c0a74dd1ccb09592b408d098f7f257bad2988feb0699ee6e1299710",
+  "21": "a7ff8f7f7c0a74dd1ccb09592b408d098f7f257bad2988feb0699ee6e1299710"
  }
 }

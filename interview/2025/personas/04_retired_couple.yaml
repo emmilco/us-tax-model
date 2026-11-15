@@ -1,0 +1,46 @@
+name: 04_retired_couple
+who: A retired married couple, 71 and 69, filing together, with social security benefits, one pension (a Form 1099-R), bank interest and some dividends from a mutual fund.
+end: complete
+answers:
+  $person: [taxpayer, spouse]
+  person[taxpayer].birth_year: 1954
+  person[spouse].birth_year: 1956
+  $retirement@person[taxpayer]: [pension]
+  $interest: [credit_union]
+  div.any: true
+  sd.f2439: false
+  ssb.any: true
+  ftc.taxes: 0
+  div.other_boxes: false
+  ssb.benefits: 4100000
+  household.married_dec31: true
+  person[taxpayer].retirement[pension].account: plan
+  person[taxpayer].retirement[pension].code: normal_7
+  person[taxpayer].retirement[pension].under59: false
+  person[taxpayer].retirement[pension].rollover_any: false
+  person[taxpayer].retirement[pension].loan_offset: false
+  person[taxpayer].retirement[pension].disability: false
+  person[taxpayer].retirement[pension].pso_exclusion: false
+  person[taxpayer].retirement[pension].born_before_averaging_date: false
+  person[taxpayer].retirement[pension].cost_any: false
+  person[taxpayer].retirement[pension].disaster: false
+  person[taxpayer].retirement[pension].box6: false
+  person[taxpayer].retirement[pension].box1: 2400000
+  interest[credit_union].amount: 85000
+  interest[credit_union].penalty: 0
+  person[taxpayer].work_ssn: true
+  person[spouse].work_ssn: true
+  s3.elderly_credit: false
+  sb.ordinary_dividends: 210000
+  sd.distributions: 40000
+  ssb.repaid_more: false
+  ssb.prior_year_pay: false
+  ssb.ira_covered: false
+  ssb.terror_disability: false
+  div.box12: 0
+  f1040.tax_exempt_interest: 0
+  person[taxpayer].retirement[pension].box5: 0
+  f1040.line3a: 160000
+  sb.nominee: false
+  sb.bonds_any: false
+  qbi.dividends: 0

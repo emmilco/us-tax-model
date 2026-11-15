@@ -7,7 +7,7 @@
       "covers": [
         "sd.carryover",
         "clcw",
-        "clcw26"
+        "clcw_next_year"
       ],
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 20, predicted by hand from i1040sd p. 10 before recording. 2024: Form 1040 line 11 $50,000, line 14 $15,000; Schedule D line 7 -$10,000, line 15 $0, line 21 -$3,000. Worksheet: line 1 $35,000, line 2 $3,000, line 3 $38,000, line 4 $3,000, line 5 $10,000, line 6 $0, line 7 $3,000, line 8 $7,000; line 15 is not a loss, so lines 9 to 13 are skipped and line 13 is $0. 2025: a $4,000 short-term gain; Schedule D line 6 -$7,000, line 7 -$3,000, line 16 -$3,000, line 21 -$3,000 (the limit), Form 1040 line 7a -$3,000. Carryover to 2026: 2025 line 1 is negative and line 3 $0, so line 8 is the whole $3,000 net short-term loss.",
@@ -72,11 +72,11 @@
           "kind": "money",
           "cents": -300000
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 300000
         },
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 0
         }
@@ -86,7 +86,7 @@
       "id": "stage20.blind.r1",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "sd"
       ],
       "evidence": "synthetic regression (not class B)",
@@ -111,11 +111,11 @@
         "clcw.prior_sd21": 300000
       },
       "expect": {
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 0
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 100000
         },
@@ -197,7 +197,7 @@
       "id": "stage20.blind.r2",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "sd"
       ],
       "evidence": "synthetic regression (not class B)",
@@ -223,11 +223,11 @@
         "clcw.prior_sd21": 300000
       },
       "expect": {
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 350000
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 0
         },
@@ -329,7 +329,7 @@
       "id": "stage20.blind.r3",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "sd"
       ],
       "evidence": "synthetic regression (not class B)",
@@ -350,11 +350,11 @@
         "clcw.prior_sd21": 300000
       },
       "expect": {
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 500000
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 200000
         },
@@ -468,7 +468,7 @@
       "id": "stage20.blind.r4",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "sd"
       ],
       "evidence": "synthetic regression (not class B)",
@@ -488,11 +488,11 @@
         "clcw.prior_sd21": 300000
       },
       "expect": {
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 0
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 100000
         },
@@ -574,7 +574,7 @@
       "id": "stage20.blind.r5",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "sd"
       ],
       "evidence": "synthetic regression (not class B)",
@@ -601,11 +601,11 @@
         "clcw.prior_sd21": 300000
       },
       "expect": {
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 0
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 0
         },
@@ -699,7 +699,7 @@
       "id": "stage20.blind.r6",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "sd"
       ],
       "evidence": "synthetic regression (not class B)",
@@ -722,11 +722,11 @@
         "clcw.prior_sd21": 300000
       },
       "expect": {
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 50000
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 0
         },
@@ -826,7 +826,7 @@
           "kind": "bool",
           "value": true
         },
-        "clcw26.show_lt": {
+        "clcw_next_year.show_lt": {
           "kind": "bool",
           "value": true
         }
@@ -836,7 +836,7 @@
       "id": "stage20.blind.r7",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "sd"
       ],
       "evidence": "synthetic regression (not class B)",
@@ -851,7 +851,7 @@
           "a"
         ],
         "sd.carryover": true,
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -877,11 +877,11 @@
         "clcw.prior_sd21": 300000
       },
       "expect": {
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 0
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 0
         },
@@ -983,7 +983,7 @@
       "id": "stage20.blind.r8",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "sd"
       ],
       "evidence": "synthetic regression (not class B)",
@@ -993,6 +993,7 @@
         "sb.ordinary_dividends": 200000,
         "f1040.line3a": 150000,
         "div.box2d": 40000,
+        "div.other_boxes": true,
         "sd.carryover": true,
         "sd.distributions": 100000,
         "$w2@person[taxpayer]": [
@@ -1008,11 +1009,11 @@
         "clcw.prior_sd21": 300000
       },
       "expect": {
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 0
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 0
         },
@@ -1114,7 +1115,7 @@
       "id": "stage20.blind.r10",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "sd"
       ],
       "evidence": "synthetic regression (not class B)",
@@ -1143,11 +1144,11 @@
         "clcw.prior_sd21": 300000
       },
       "expect": {
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 0
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 0
         },
@@ -1279,7 +1280,7 @@
         "sales[a].reported_basis": 400000,
         "clcw.prior_sd7": -800000,
         "clcw.prior_sd21": 350000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "clcw.line2": {
@@ -1346,7 +1347,7 @@
         "clcw.prior_sd7": -100000,
         "clcw.prior_sd15": -100000,
         "clcw.prior_sd21": 300000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "clcw.line2": {
@@ -1446,7 +1447,7 @@
       "id": "stage20.mut.line21_below_limit",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "f4952"
       ],
       "evidence": "synthetic regression (not class B)",
@@ -1504,7 +1505,7 @@
       "id": "stage20.refuse.line21_just_over_limit",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "f4952"
       ],
       "evidence": "synthetic refusal regression",
@@ -1524,7 +1525,7 @@
         "sales[a].reported_basis": 400000,
         "clcw.prior_sd7": -800000,
         "clcw.prior_sd21": 300050,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "clcw.line2": {
@@ -1576,7 +1577,7 @@
         "sales[a].proceeds": 500000,
         "sales[a].reported_basis": 400000,
         "clcw.prior_sd7": -500000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "clcw.line2": {
@@ -1629,7 +1630,7 @@
         "sales[a].reported_basis": 400000,
         "clcw.prior_sd7": -200000,
         "clcw.prior_sd21": 149999,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "clcw.line2": {

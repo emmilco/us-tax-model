@@ -1,0 +1,3 @@
+{
+ "stage9.eic.refuse.other_income.schedule1_unanswered": "T-264 (owner-accepted change, the BUG-0471 trade-off). With the Schedule 1 screen withheld, the EIC steps, a chain in the flow chart's order, wait at Step 1, question 1 on AGI, so Form 1040 line 27a is unknown and the interview asks the Schedule 1 screen next; no interview target refuses this partial record. Its line 27c assertion (the Step 1, question 4 refusal, through the Worksheet B line 5 test) still holds as a computed value; the return-level refusal for other income is covered by stage9.eic.refuse.other_income."
+}

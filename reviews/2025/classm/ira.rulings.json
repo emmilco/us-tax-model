@@ -67,6 +67,30 @@
    "date": "2026-11-09",
    "run": "f9d7fdd99b2cf10241a6d488220d0b12109e694ea422dd0182de61fc0e9d2d50",
    "subject_key": "c66a3e06c839a522d95e7685809274184d9fa24b37585cc6975192fecd861069"
+  },
+  {
+   "case": "classm.ira.3",
+   "printed": "7a",
+   "project": "$0.00",
+   "model": "$8,000.00",
+   "ruling": "Ruling: representation; project retained. No one on the return made traditional IRA contributions (both persons' traditional contributions are $0.00; ira.any_trad false), and the IRA Deduction Worksheet is used to figure a deduction for traditional IRA contributions (i1040gi, Line 20, IRA Deduction: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"); the project shows line 7 as zero when the worksheet has nothing to limit (ira.line7a/7b take ira.zero), while each person's own line 7 ($8,000.00, age 50 or older) is carried in person.ira_line7. The model entered the applicable amount ($8,000) for a worksheet nobody completes. Lines 12a and 12b (the smallest of line 7, 10 and 11) and Schedule 1 line 20 are zero either way, and no printed amount a filer uses differs. Not evidence.",
+   "drop": true,
+   "context": "88bcbb712cff522bdd454879f0643e9a545130f6d5c527a61515d860ada52290",
+   "date": "2026-11-14",
+   "run": "a9595a24f03a422f7119d106e5042b907b57f662dae2b560ba5e6494321884cc",
+   "subject_key": "9ba1cd5fa13bf20a1f2a441f2089e28062db197c536c69b8e99f517ec472bf3c"
+  },
+  {
+   "case": "classm.ira.3",
+   "printed": "7b",
+   "project": "$0.00",
+   "model": "$8,000.00",
+   "ruling": "Ruling: representation; project retained. No one on the return made traditional IRA contributions (both persons' traditional contributions are $0.00; ira.any_trad false), and the IRA Deduction Worksheet is used to figure a deduction for traditional IRA contributions (i1040gi, Line 20, IRA Deduction: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"); the project shows line 7 as zero when the worksheet has nothing to limit (ira.line7a/7b take ira.zero), while each person's own line 7 ($8,000.00, age 50 or older) is carried in person.ira_line7. The model entered the applicable amount ($8,000) for a worksheet nobody completes. Lines 12a and 12b (the smallest of line 7, 10 and 11) and Schedule 1 line 20 are zero either way, and no printed amount a filer uses differs. Not evidence.",
+   "drop": true,
+   "context": "88bcbb712cff522bdd454879f0643e9a545130f6d5c527a61515d860ada52290",
+   "date": "2026-11-14",
+   "run": "a9595a24f03a422f7119d106e5042b907b57f662dae2b560ba5e6494321884cc",
+   "subject_key": "eba963414f6b43f326ba2811765698e37f77c88a25dbc05b04c827071d29df92"
   }
  ]
 }

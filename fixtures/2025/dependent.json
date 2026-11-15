@@ -24,13 +24,13 @@
           "parent"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
         "dependent[parent].supported": true,
         "dependent[parent].born_died": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[parent].hoh_test2": {
@@ -76,7 +76,7 @@
           "parent"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -119,7 +119,7 @@
           "parent"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].age": 30,
         "dependent[parent].gross_income": 400000,
         "dependent[parent].supported": true,
@@ -166,7 +166,7 @@
           "age19",
           "mexico"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[six_months].age": 10,
         "dependent[six_months].months": 6,
         "dependent[six_months].supported": true,
@@ -731,7 +731,7 @@
           "student24",
           "age17"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[student23].age": 23,
         "dependent[student23].student": true,
         "dependent[student23].months": 12,
@@ -1218,7 +1218,7 @@
           "disabled",
           "no_work_ssn"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[all_year].relationship": "household_member",
         "dependent[all_year].age": 30,
         "dependent[all_year].qr_all_year": true,
@@ -1757,11 +1757,11 @@
         "$dependent": [
           "child"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
         "dependent[child].supported": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -2222,12 +2222,12 @@
         "$dependent": [
           "child"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
         "dependent[child].other_claimant": true,
         "dependent[child].other_nontaxpayer": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -2805,9 +2805,9 @@
         "$dependent": [
           "child"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].divorced_rule": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -3385,9 +3385,9 @@
         "$dependent": [
           "child"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].married": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -3965,10 +3965,10 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].multiple_support": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -4531,11 +4531,11 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].disabled": true,
         "dependent[parent].gross_income": 600000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -5107,11 +5107,11 @@
         "$dependent": [
           "child"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
         "dependent[child].tin": false,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[child].claimed_no_tin": {
@@ -5235,13 +5235,13 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].tin": false,
         "dependent[parent].gross_income": 400000,
         "dependent[parent].supported": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[parent].claimed_no_tin": {
@@ -5324,6 +5324,7 @@
       "evidence_note": "Inputs are stage8.hoh.child.ctc filed single, with the child answered as having lived with the filer five months, not supported by the filer, and having no SSN, ITIN or ATIN: the child is neither a qualifying child nor a qualifying relative, so no dependent is listed and the missing number refuses nothing (i1040gi p. 22 requires a number for each dependent you enter); the return computes. Predicted from i1040gi pp. 17-19 and 22; no independent human hand-work is claimed.",
       "inputs": {
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -5395,7 +5396,7 @@
         "dependent[child].other_claimant": null,
         "dependent[child].other_nontaxpayer": null,
         "dependent[child].kidnapped": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[child].claimed": {
@@ -5436,7 +5437,7 @@
         "$dependent": [
           "child"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "dependent[child].relationship": "other",
         "dependent[child].age": 30,
         "dependent[child].spouse_relative": true,
@@ -5483,7 +5484,7 @@
         "$dependent": [
           "child"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "dependent[child].relationship": "other",
         "dependent[child].age": 30
       },
@@ -5559,7 +5560,7 @@
         "$dependent": [
           "child"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "dependent[child].relationship": "other",
         "dependent[child].age": 10,
         "dependent[child].spouse_relative": true,
@@ -5678,6 +5679,7 @@
       "evidence_note": "T-091, predicted from the archived source before recording: The same answer does not touch the qualifying-child test, whose text has no expected-return condition (i1040gi p. 21): filed single, line 12e is the single amount and the child credit stands.",
       "inputs": {
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -5733,7 +5735,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -5814,7 +5816,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 11,
         "dependent[child].kidnapped": true,
@@ -5869,7 +5871,7 @@
           "b"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 4,
         "dependent[a].months": 12,
@@ -5925,7 +5927,7 @@
         "f1040.status": "hoh",
         "f8863.paid": true,
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 500000,
@@ -5933,7 +5935,7 @@
         "person[taxpayer].w2[emp_a].box2": 496000,
         "person[taxpayer].w2[emp_a].box5": 6200000,
         "person[taxpayer].w2[emp_a].box6": 89900,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[daughter].edu_line31": {
@@ -5989,7 +5991,7 @@
         "$dependent": [
           "child"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "dependent[child].relationship": "household_member",
         "dependent[child].age": 3,
         "dependent[child].qr_all_year": true,
@@ -6033,7 +6035,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].citizen": false,
@@ -6073,7 +6075,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].months": 12,
@@ -6108,6 +6110,7 @@
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -6124,7 +6127,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].relationship": "sibling_descendant",
         "dependent[child].age": 17,
         "dependent[child].months": 12
@@ -6155,6 +6158,7 @@
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -6171,7 +6175,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].absence_no_return": true,
         "dependent[child].supported": true,
@@ -6203,7 +6207,7 @@
         "person[taxpayer].w2[emp_a].box4": 744000,
         "person[taxpayer].w2[emp_a].box5": 12000000,
         "person[taxpayer].w2[emp_a].box6": 174000,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$dependent": [
           "abroad"
         ],
@@ -6247,7 +6251,7 @@
         "person[taxpayer].w2[emp_a].box4": 744000,
         "person[taxpayer].w2[emp_a].box5": 12000000,
         "person[taxpayer].w2[emp_a].box6": 174000,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$dependent": [
           "parent"
         ],
@@ -6288,7 +6292,7 @@
         "person[taxpayer].w2[emp_a].box4": 744000,
         "person[taxpayer].w2[emp_a].box5": 12000000,
         "person[taxpayer].w2[emp_a].box6": 174000,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$dependent": [
           "aunt"
         ],
@@ -6332,7 +6336,7 @@
         "person[taxpayer].w2[emp_a].box4": 744000,
         "person[taxpayer].w2[emp_a].box5": 12000000,
         "person[taxpayer].w2[emp_a].box6": 174000,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$dependent": [
           "niece"
         ],
@@ -6383,7 +6387,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[spouse]": [],
         "$dependent": [
           "friend"
@@ -6432,7 +6436,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[spouse]": [],
         "$dependent": [
           "uncle"
@@ -6467,7 +6471,7 @@
         "person[taxpayer].w2[emp_a].box4": 744000,
         "person[taxpayer].w2[emp_a].box5": 12000000,
         "person[taxpayer].w2[emp_a].box6": 174000,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$dependent": [
           "kid"
         ],
@@ -6500,7 +6504,7 @@
         "person[taxpayer].w2[emp_a].box4": 744000,
         "person[taxpayer].w2[emp_a].box5": 12000000,
         "person[taxpayer].w2[emp_a].box6": 174000,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$dependent": [
           "kid"
         ],
@@ -6533,7 +6537,7 @@
         "person[taxpayer].w2[emp_a].box4": 744000,
         "person[taxpayer].w2[emp_a].box5": 12000000,
         "person[taxpayer].w2[emp_a].box6": 174000,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f1040.status": "hoh",
         "f2441.care": true,
         "$dependent": [
@@ -6571,7 +6575,7 @@
         "person[taxpayer].w2[emp_a].box4": 744000,
         "person[taxpayer].w2[emp_a].box5": 12000000,
         "person[taxpayer].w2[emp_a].box6": 174000,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$dependent": [
           "kid"
         ],
@@ -6607,7 +6611,7 @@
         "$dependent": [
           "a"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 4,
         "dependent[a].months": 12,
@@ -6616,7 +6620,7 @@
           "p0"
         ],
         "dcprov[p0].paid": 400000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[a].claimed": {
@@ -6707,7 +6711,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 13,
         "dependent[a].months": 12,
@@ -6751,7 +6755,7 @@
         "dependent[daughter].age": 22,
         "dependent[daughter].edu": true,
         "dependent[daughter].edu_1098t": true,
-        "dependent[daughter].edu_a2025": 100000,
+        "dependent[daughter].edu_a_this_year": 100000,
         "dependent[daughter].edu_tin_issued": true,
         "dependent[daughter].edu_line24": true,
         "dependent[daughter].edu_line25": true,
@@ -6761,7 +6765,7 @@
         "f1040.status": "hoh",
         "f8863.paid": true,
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 500000,
@@ -6769,7 +6773,7 @@
         "person[taxpayer].w2[emp_a].box2": 496000,
         "person[taxpayer].w2[emp_a].box5": 6200000,
         "person[taxpayer].w2[emp_a].box6": 89900,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "dependent[daughter].edu_line27": {
@@ -6859,10 +6863,10 @@
         "div.any": true,
         "f1040.status": "hoh",
         "f8863.paid": true,
-        "f8959.unsupported": true,
+        "f8959.territory_w2": true,
         "household.home_cost": true,
-        "household.unmarried": true,
-        "household.married": true,
+        "household.considered_unmarried": true,
+        "household.married_dec31": true,
         "sa.gifts": true,
         "sa.excluded_income": true,
         "sd.distributions": 1013500,
@@ -6948,7 +6952,7 @@
         "f1040.status": "hoh",
         "f8863.paid": true,
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 500000,

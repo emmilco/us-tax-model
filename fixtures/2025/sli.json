@@ -19,7 +19,8 @@
         "person[taxpayer].w2[emp_a].box4": 310000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 72500,
-        "sli.interest": 120000
+        "sli.interest": 120000,
+        "sli.any": true
       },
       "expect": {
         "sli.deduction": {
@@ -54,7 +55,8 @@
         "person[taxpayer].w2[emp_a].box4": 310000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 72500,
-        "sli.interest": 300000
+        "sli.interest": 300000,
+        "sli.any": true
       },
       "expect": {
         "sli.line1": {
@@ -85,7 +87,8 @@
         "person[taxpayer].w2[emp_a].box4": 558000,
         "person[taxpayer].w2[emp_a].box5": 9000000,
         "person[taxpayer].w2[emp_a].box6": 130500,
-        "sli.interest": 200000
+        "sli.interest": 200000,
+        "sli.any": true
       },
       "expect": {
         "sli.line6": {
@@ -120,7 +123,8 @@
         "person[taxpayer].w2[emp_a].box4": 573500,
         "person[taxpayer].w2[emp_a].box5": 9250000,
         "person[taxpayer].w2[emp_a].box6": 134125,
-        "sli.interest": 250000
+        "sli.interest": 250000,
+        "sli.any": true
       },
       "expect": {
         "sli.line8": {
@@ -151,7 +155,8 @@
         "person[taxpayer].w2[emp_a].box4": 626200,
         "person[taxpayer].w2[emp_a].box5": 10100000,
         "person[taxpayer].w2[emp_a].box6": 146450,
-        "sli.interest": 250000
+        "sli.interest": 250000,
+        "sli.any": true
       },
       "expect": {
         "sli.line8": {
@@ -182,7 +187,8 @@
         "person[taxpayer].w2[emp_a].box4": 533200,
         "person[taxpayer].w2[emp_a].box5": 8600000,
         "person[taxpayer].w2[emp_a].box6": 124700,
-        "sli.interest": 250000
+        "sli.interest": 250000,
+        "sli.any": true
       },
       "expect": {
         "sli.line8": {
@@ -214,6 +220,7 @@
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 72500,
         "sli.interest": 120000,
+        "sli.any": true,
         "person[taxpayer].sav_claimed": true
       },
       "expect": {
@@ -247,6 +254,7 @@
         "person[taxpayer].educator_expenses": 30000,
         "person[taxpayer].f8889[hsa].line2": 100000,
         "sli.interest": 200000,
+        "sli.any": true,
         "person[taxpayer].eligible_educator": true,
         "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
@@ -296,7 +304,8 @@
         "sli.interest": {
           "param": "sli.max",
           "offset": 0
-        }
+        },
+        "sli.any": true
       },
       "expect": {
         "sli.line6": {
@@ -336,11 +345,12 @@
         "person[taxpayer].w2[emp_a].box4": 1054093,
         "person[taxpayer].w2[emp_a].box5": 17001500,
         "person[taxpayer].w2[emp_a].box6": 246522,
-        "household.married": true,
+        "household.married_dec31": true,
         "sli.interest": {
           "param": "sli.max",
           "offset": 0
-        }
+        },
+        "sli.any": true
       },
       "expect": {
         "sli.line5": {
@@ -384,11 +394,12 @@
         "person[taxpayer].w2[emp_a].box4": 1054093,
         "person[taxpayer].w2[emp_a].box5": 17001500,
         "person[taxpayer].w2[emp_a].box6": 246522,
-        "household.married": true,
+        "household.married_dec31": true,
         "sli.interest": {
           "param": "sli.max",
           "offset": 0
-        }
+        },
+        "sli.any": true
       },
       "expect": {
         "sli.claimed_count": {
@@ -428,11 +439,12 @@
         "person[taxpayer].w2[emp_a].box4": 1054093,
         "person[taxpayer].w2[emp_a].box5": 17001500,
         "person[taxpayer].w2[emp_a].box6": 246522,
-        "household.married": true,
+        "household.married_dec31": true,
         "sli.interest": {
           "param": "sli.max",
           "offset": 0
         },
+        "sli.any": true,
         "person[spouse].sav_claimed": true
       },
       "expect": {
@@ -463,8 +475,9 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "sli.interest": 250000,
+        "sli.any": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],

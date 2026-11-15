@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "05fd3b5bbddec02486e879c54c4d1ae86a4cb2a776582837db6b1403784f11e9",
  "head_rows": {
-  "match / mismatch / unclear / missing": "16 / 3 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-12); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "18 / 1 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,10 +22,9 @@
   },
   {
    "key": "3",
-   "record": "05fd3b5bbddec02486e879c54c4d1ae86a4cb2a776582837db6b1403784f11e9",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.hsa_last_month_all_year (owner ruling after Stage 16, reading 1), as the earlier ruling of this line. i8889 p. 4, Line 3, rule 2: 'You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year', so a filer who uses the last-month rule with self-only coverage on December 1 is treated as self-only for every month and has no family coverage for the page 5 Note; the English states the chosen reading.",
-   "subject_key": "f0de6efa53af7d6028930493d8a5329456536b674ecc8d7a4894a26c120474d6"
+   "record": "862eb7314a6fcb5430663eb3e0397a9eef72c2c38f6151ccb5a293f9c7bec37d",
+   "status": "MATCH",
+   "subject_key": "eb08660fdc6ede35f7f5cb928f843fe79148212b947c8dae6e2d5333c15fdcf3"
   },
   {
    "key": "4",
@@ -41,17 +40,16 @@
   },
   {
    "key": "6",
-   "record": "05fd3b5bbddec02486e879c54c4d1ae86a4cb2a776582837db6b1403784f11e9",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.hsa_last_month_all_year (owner ruling after Stage 16, reading 1), as the earlier ruling of this line. i8889 p. 4, Line 3, rule 2: 'You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year', so a filer who uses the last-month rule with self-only coverage on December 1 is treated as self-only for every month and has no family coverage for the page 5 Note; the English states the chosen reading. Line 6 follows line 3: without family coverage at any time under that reading, line 6 is line 5.",
-   "subject_key": "0b44ac668cfd8edac12109853535ca63964e9845011ffbc54d34c77f20953bce"
+   "record": "862eb7314a6fcb5430663eb3e0397a9eef72c2c38f6151ccb5a293f9c7bec37d",
+   "status": "MATCH",
+   "subject_key": "e0766f43e3d4213804394fdd61f393b205a89cd66b7614076ca8288aa74fc679"
   },
   {
    "key": "7",
-   "record": "05fd3b5bbddec02486e879c54c4d1ae86a4cb2a776582837db6b1403784f11e9",
+   "record": "862eb7314a6fcb5430663eb3e0397a9eef72c2c38f6151ccb5a293f9c7bec37d",
    "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.hsa_last_month_all_year (owner ruling after Stage 16, reading 1), as the earlier ruling of this line. i8889 p. 4, Line 3, rule 2: 'You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year', so a filer who uses the last-month rule with self-only coverage on December 1 is treated as self-only for every month and has no family coverage for the page 5 Note; the English states the chosen reading. Line 7 is then $0 and the $1,000 is counted once, on line 3; the worksheet's months are amb.2025.hsa_line7_months.",
-   "subject_key": "37681f86f5685f15897dc42c1733dbfe5982c0cfb26af24d57f50645fbd0d4a1"
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (owner accepted, cited on the worksheet line 1 helper), as the earlier rulings. i8889 p. 7, Additional Contribution Amount Worksheet, \"$1,000 x number of months eligible\": the text does not say whether a self-only month counts in a year with family coverage in other months. The register's chosen reading counts every month treated as eligible, because line 3 (p. 5, Note) drops the additional amount for every month once a married filer had family coverage at any time; the model reads the other reading. Both agree when every eligible month has family coverage. Project stands.",
+   "subject_key": "394e52206f0c65bc0544583c987a10147828c66e34a5e71bda48d5e50d14a14a"
   },
   {
    "key": "8",
@@ -79,9 +77,9 @@
   },
   {
    "key": "13",
-   "record": "e777907a7fcbedad6c2117d0cf11f7ca0332184d419527d9b3c2416d5423d1e1",
+   "record": "862eb7314a6fcb5430663eb3e0397a9eef72c2c38f6151ccb5a293f9c7bec37d",
    "status": "MATCH",
-   "subject_key": "a9fe7c621ac108e10a09ba58a8f410597ba2d6ccc9b882bf3971233ce1c83db5"
+   "subject_key": "726d889c19a9da70f3b6dac9999d87e0cc29d1f4b82d8b273b096ceaf840ade9"
   },
   {
    "key": "14a",
@@ -129,16 +127,16 @@
  "subjects": {
   "2": "2801d78e69c37ee24115db41e5235da312bd06df55e272ee28083dc011a5f5bf",
   "9": "c907349dbc8b5965c63f2946fe179ae94c3521ade0757220c0a0f0662cacf4e2",
-  "3": "6a0fc5737802c9351da5466b5e7122db1933bb411bf4afc9b8aed9cd579722a1",
+  "3": "63ba0e474927d1c763cd9a83134c6fee167ab01cf5e1daddf35d7d2bb3a013d9",
   "4": "66c8cb628df1fc8f52a3e6a07c44e516b2b37dc7b8337191d71e6c52ecef5fad",
   "5": "55cd4636f29c903005e95a654b36503895e002c4a6e215607c3bdd1cd863f535",
-  "6": "652c3ce84ebdb11afc052426a9e2d0bfe11d97defc42241333dc1288b131b573",
-  "7": "b3b0e76b8bfbaba17a72fef3959c12a1644f21f572a44c38f6e18a5cc12ac1fb",
+  "6": "831a57ad0e6bacb6bb733ddaf4d4853daf571f3e3d7af0a889d112bb5fa39a54",
+  "7": "94ceda96bb538a4543bc60762e35aca45db3e1db7c9952e1a9405e36c163f085",
   "8": "140c092b04ec360b69526e0117464af2bb1daf4e1cd18619ddace827684b6909",
   "10": "4d894568a5073a0219da252a0228e9f16d4da19de17284ac2591ccbd8a62bdf0",
   "11": "10231ebfca7ee67bae504c3d67a48b26630654159159ba35f8f04439cb17d497",
   "12": "433e1aab81c429caf584307e3aefe3f7b97a2077d40a3f639fdb9a4d76c7915b",
-  "13": "18612f577f8d89b22a46c9e24a19d81546f8e5c454f2932602021f235bc8ed69",
+  "13": "f9dac3eed8b06aa58006b5f0542ca7829171ca1b4e3268103469807032bc8d78",
   "14a": "2a13fc3666dd83c836cabda2b0e3f470c3e797bc913548161b25f9a6763613d4",
   "14b": "1cc9da67d36bfb3e4e5dbc97332dd6257b083257857343d18c0872f8fb0d6b72",
   "14c": "ab5463202f3bac2cc65837d523f1a5b1e024ca4c01ad301d1192e808e93a3385",

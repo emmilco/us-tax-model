@@ -38,7 +38,7 @@ situations:
   # ---- Who is on the return (direct questions asked of everyone today) ----
   married:
     label: Married at the end of 2025
-    refs: [household.married]
+    refs: [household.married_dec31]
     share: 0.3656
     range: [0.3656, 0.39]
     source:
@@ -50,7 +50,7 @@ situations:
     note: Joint (with qualifying surviving spouses) plus separate returns. Married people filing as head of household (living apart) answer yes too, so the share is a floor.
   age65:
     label: You or your spouse 65 or older
-    refs: [person.age65]
+    refs: [person.birth_year]
     share: 0.1944
     range: [0.1944, 0.22]
     source:
@@ -85,7 +85,7 @@ situations:
   spouse_died:
     label: Spouse died in 2025
     theme: family_household
-    refs: [household.spouse_died_2025]
+    refs: [household.spouse_died_this_year]
     share: 0.006
     range: [0.004, 0.008]
     source:
@@ -103,7 +103,7 @@ situations:
   filer_under16:
     label: You or your spouse under 16
     theme: family_household
-    refs: [person.under16]
+    refs: [person.birth_year]
     share: 0.005
     range: [0.002, 0.0112]
     source:
@@ -331,7 +331,7 @@ situations:
   business_carryovers:
     label: A business, farm or rental loss or deduction carried into 2025 (section 179, QBI loss, NOL)
     theme: business_farm
-    refs: [ladder 9d, survey B-5, s179.line10, qbi.carryforward]
+    refs: [ladder 9d, survey B-5, s179.prior_form, qbi.carryforward]
     share: 0.012
     range: [0.0063, 0.025]
     source:
@@ -414,7 +414,7 @@ situations:
   home_energy:
     label: Home energy improvements or residential clean energy property
     theme: home_vehicle
-    refs: [ladder 13, f5695.part1_any, f5695.part2_any]
+    refs: [ladder 13, f5695.any]
     share: 0.0252
     range: [0.016, 0.035]
     source:
@@ -427,7 +427,7 @@ situations:
   clean_energy_part1:
     label: Residential clean energy property (Form 5695 Part I) or a carryforward
     theme: home_vehicle
-    refs: [f5695.part1_any]
+    refs: [f5695.any]
     share: 0.0092
     range: [0.0092, 0.015]
     source:
@@ -438,7 +438,7 @@ situations:
   home_improvement_part2:
     label: Energy efficient home improvements (Form 5695 Part II)
     theme: home_vehicle
-    refs: [f5695.part2_any]
+    refs: [f5695.any]
     share: 0.0160
     range: [0.0160, 0.025]
     source:
@@ -555,7 +555,7 @@ situations:
   schedule_d_other_forms:
     label: Gains or losses from other forms (2439, 6252, 4797, 4684, 6781, 8824) or a K-1
     theme: investments
-    refs: [sd.other_forms]
+    refs: [sd.sold_other, sd.business_property, sd.installment, sd.like_kind, sd.sec1256, sd.condemned, sd.small_business_stock, sd.trader_election, sd.f2439, sd.casualty]
     share: 0.025
     range: [0.0123, 0.0477]
     source:
@@ -764,7 +764,7 @@ situations:
   amt:
     label: Alternative minimum tax
     theme: investments
-    refs: [s2.amt]
+    refs: [s2.amt_owed]
     share: 0.0009
     range: [0.0009, 0.002]
     source:
@@ -799,7 +799,7 @@ situations:
   additional_medicare_items:
     label: Additional Medicare tax items (Form 4137 tips, Form 8919 wages, RRTA, church income, territory wages)
     theme: other_income
-    refs: [f8959.unsupported]
+    refs: [f8959.territory_w2]
     share: 0.006
     range: [0.002, 0.012]
     source:

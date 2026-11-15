@@ -21,6 +21,30 @@
    "drop": true,
    "context": "ce797550b75de10b2b730ad28c022accb5a402ecdc7ed5d28dda82cd68390d70",
    "subject_key": "2c8fa675fdb0248137e72cf41a902295db23d7aa2a7d7565871814d91f6c7a7b"
+  },
+  {
+   "case": "classm.f1095a.3",
+   "printed": "f1095a[form_1].b_check",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The case answers that Part III shows the same column A and the same column B in all 12 months (f1095a[form_1].same_months yes), and that with column B corrected the form is not the same every month (b_fixed_same no); the twelve column B entries ($400.00 January to June, $300.00 July to December) are the corrected amounts the input asks for (f1095a.in_b_*: \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong ...\"). Line 33C is $0.00, so no advance payments were made (no_aptc yes, agreed), and i8962 p. 14, Line 10: \"1. No APTC was paid for your coverage. If no APTC was paid ..., the SLCSP premium reported in Part III, lines 21 through 32, column B, of Form 1095-A may be wrong, left blank, or reported as -0-\", \"you must determine the correct applicable SLCSP premium for every month\". f1095a.b_check is any of b_wrong, b_doubt and no_aptc, so it is yes; the model answered no because 'column B here is $400 for Jan-Jun and $300 for Jul-Dec'. The model set the filer's months answer aside, reading the corrected monthly amounts as the printed form. The values that follow agree: uniform no, column B by month and line 33B $4,200.00.",
+   "drop": true,
+   "context": "f5eac4b6b5476786913f6c2934131e435b27d7f92a30be1e026b851ff3d40370",
+   "date": "2026-11-14",
+   "run": "40af7ef6a728d531e3e645a898554a58c0c303b266c0d781192b269d07358299",
+   "subject_key": "bf43755e1d7fb68776a66be594327626b49171f4ce9987cb9c7fe1862cfb95e7"
+  },
+  {
+   "case": "classm.f1095a.3",
+   "printed": "f1095a[form_1].b_wrong_asked",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The case answers that Part III shows the same column A and the same column B in all 12 months (f1095a[form_1].same_months yes), and that with column B corrected the form is not the same every month (b_fixed_same no); the twelve column B entries ($400.00 January to June, $300.00 July to December) are the corrected amounts the input asks for (f1095a.in_b_*: \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong ...\"). Line 33C is $0.00, so no advance payments were made (no_aptc yes, agreed), and i8962 p. 14, Line 10: \"1. No APTC was paid for your coverage. If no APTC was paid ..., the SLCSP premium reported in Part III, lines 21 through 32, column B, of Form 1095-A may be wrong, left blank, or reported as -0-\", \"you must determine the correct applicable SLCSP premium for every month\". On same_months yes, f1095a.b_wrong_asked reads b_check, so it is yes; the model took the route for a form not the same every month and read b_wrong (no). The model set the filer's months answer aside, reading the corrected monthly amounts as the printed form. The values that follow agree: uniform no, column B by month and line 33B $4,200.00.",
+   "drop": true,
+   "context": "f5eac4b6b5476786913f6c2934131e435b27d7f92a30be1e026b851ff3d40370",
+   "date": "2026-11-14",
+   "run": "40af7ef6a728d531e3e645a898554a58c0c303b266c0d781192b269d07358299",
+   "subject_key": "a1fbe072efaff2c75e74dc210e1ba7fdfe66537b5bfe859e651fc25c5ea7689e"
   }
  ]
 }

@@ -22,7 +22,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 6,
@@ -35,7 +35,7 @@
         "person[taxpayer].w2[emp_a].box10": 400000,
         "f2441.line13": 50000,
         "f2441.plan_max": 500000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line15": {
@@ -115,7 +115,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 6,
@@ -205,7 +205,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 6,
@@ -281,7 +281,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 4,
         "dependent[a].months": 12,
@@ -411,7 +411,7 @@
           "a",
           "b"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -557,7 +557,7 @@
         "$dependent": [
           "a"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -705,7 +705,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 5,
@@ -864,7 +864,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 2,
@@ -1020,7 +1020,7 @@
           "a",
           "b"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -1254,7 +1254,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 13,
         "dependent[a].months": 12,
@@ -1384,7 +1384,7 @@
         "$dependent": [
           "a"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -1532,7 +1532,7 @@
         "$dependent": [
           "a"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -1599,7 +1599,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 1,
         "dependent[a].months": 12,
@@ -1737,7 +1737,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 6,
         "dependent[a].months": 12,
@@ -1870,7 +1870,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 6,
         "dependent[a].months": 12,
@@ -2003,7 +2003,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 6,
@@ -2165,7 +2165,7 @@
           "b"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 3,
         "dependent[a].months": 12,
@@ -2301,7 +2301,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -2394,7 +2394,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -2487,7 +2487,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -2580,7 +2580,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -2673,7 +2673,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -2766,7 +2766,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -2859,7 +2859,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -2952,7 +2952,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -3045,7 +3045,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -3138,7 +3138,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -3231,7 +3231,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -3324,7 +3324,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -3417,7 +3417,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -3510,7 +3510,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 5,
         "dependent[a].months": 12,
@@ -3599,7 +3599,7 @@
         "$dependent": [
           "a"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -3706,7 +3706,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 4,
@@ -3834,7 +3834,7 @@
           "b"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 2,
@@ -4003,7 +4003,7 @@
           "a",
           "b"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -4021,14 +4021,15 @@
         "dependent[a].months": 12,
         "dependent[b].age": 9,
         "dependent[b].months": 12,
-        "f2441.student_disabled": true,
+        "f2441.student": true,
+        "f2441.unable": false,
         "dependent[a].dc_paid": 350000,
         "dependent[b].dc_paid": 350000,
         "$dcprov": [
           "p0"
         ],
         "dcprov[p0].paid": 700000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line4": {
@@ -4103,7 +4104,7 @@
           "b"
         ],
         "s8812.combat_pay": true,
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -4127,7 +4128,7 @@
           "p0"
         ],
         "dcprov[p0].paid": 700000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line4": {
@@ -4202,7 +4203,7 @@
           "a",
           "b"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -4224,7 +4225,7 @@
           "p0"
         ],
         "dcprov[p0].paid": 700000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line4": {
@@ -4298,7 +4299,7 @@
           "a",
           "b"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -4323,7 +4324,7 @@
           "p0"
         ],
         "dcprov[p0].paid": 700000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line5": {
@@ -4371,7 +4372,7 @@
           "a",
           "b"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -4399,7 +4400,7 @@
         "person[taxpayer].w2[e0].box10": 300000,
         "person[spouse].w2[e0].box10": 300000,
         "f2441.plan_max": 500000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line4": {
@@ -4449,7 +4450,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 4,
         "dependent[a].months": 12,
@@ -4459,7 +4460,7 @@
           "p0"
         ],
         "dcprov[p0].paid": 400000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line9b": {
@@ -4494,7 +4495,7 @@
           "a",
           "b"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -4521,7 +4522,7 @@
         "dcprov[p0].paid": 1950000,
         "person[taxpayer].w2[e0].box10": 100000,
         "f2441.plans_differ": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line21": {
@@ -4556,7 +4557,7 @@
           "a",
           "b"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -4581,7 +4582,7 @@
         "dcprov[p0].paid": 1950000,
         "person[taxpayer].w2[e0].box10": 100000,
         "f2441.line14": 200000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line15": {
@@ -4618,16 +4619,17 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 4,
         "dependent[a].months": 12,
+        "f2441.care_other": true,
         "f2441.nondependent": true,
         "$dcprov": [
           "p0"
         ],
         "dcprov[p0].paid": 400000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.qp_count": {
@@ -4677,7 +4679,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 4,
         "dependent[a].months": 12,
@@ -4686,7 +4688,7 @@
         ],
         "dcprov[p0].paid": 400000,
         "dcprov[p0].related": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.paid_total": {
@@ -4731,7 +4733,7 @@
         "dcprov[p0].paid": 400000,
         "eic.same_home": null,
         "eic.legally_separated": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line11": {
@@ -4775,7 +4777,7 @@
           "p0"
         ],
         "dcprov[p0].paid": 600000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line26": {
@@ -4814,7 +4816,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 1,
         "dependent[a].months": 12,
@@ -4869,7 +4871,7 @@
           "b"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 4,
         "dependent[a].months": 12,
@@ -4919,7 +4921,7 @@
           "c"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 3,
         "dependent[a].months": 12,
@@ -4963,7 +4965,7 @@
           "a",
           "b"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5027,7 +5029,7 @@
         "$dependent": [
           "a"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5189,7 +5191,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 6,
@@ -5239,7 +5241,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 6,
@@ -5288,7 +5290,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 6,
@@ -5300,7 +5302,7 @@
         "person[taxpayer].w2[emp_a].box10": 100000,
         "f2441.line13": 50000,
         "f2441.line14": 100001,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line12": {
@@ -5343,7 +5345,7 @@
         "$dependent": [
           "a"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5485,7 +5487,7 @@
         "$dependent": [
           "a"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5631,7 +5633,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 1,
         "dependent[a].months": 12,
@@ -5676,7 +5678,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 1,
         "dependent[a].months": 12,
@@ -5720,7 +5722,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "dependent[a].age": 1,
         "dependent[a].months": 12,
@@ -5749,6 +5751,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Mutation fixture (the not-filing alternative of f2441.line1_box), predicted from the archived i2441 before evaluating: stage15.f5695.s1's wage earner (single, W-2 wages $80,000) without the Form 5695 facts, who paid no dependent care expenses and received no dependent care benefits, so Form 2441 is not filed; the care-provider list, which is asked only for a Form 2441 filer, is withheld. With no Form 2441 the box above line 1 is not checked (i2441 p. 2, Line 1), whatever the unasked provider list would hold.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -5782,7 +5785,7 @@
         "$dependent": [
           "a"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5841,7 +5844,7 @@
         "$dependent": [
           "a"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5916,7 +5919,7 @@
           "b"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 2,
@@ -5932,7 +5935,7 @@
         "person[taxpayer].w2[emp_a].box10": 200000,
         "f2441.plan_max": 500000,
         "f2441.employer_care": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.paid_total": {
@@ -6003,15 +6006,18 @@
         "person[spouse].w2[e0].box5": 2500000,
         "person[taxpayer].w2[e0].box5": 6000000,
         "f2441.care": true,
-        "f2441.student_disabled": true,
-        "household.married": true,
+        "household.married_dec31": true,
+        "f2441.student": true,
+        "f2441.unable": false,
         "f2441.employer_care": null,
-        "f2441.paid_2026": null,
+        "f2441.other_care_expenses": null,
         "f2441.line14": null,
         "person[spouse].w2[e0].box10": null,
         "person[taxpayer].w2[e0].box10": null,
+        "person[spouse].ira_owner": true,
         "person[spouse].sav_trad": null,
         "person[spouse].ira_dist": null,
+        "person[taxpayer].ira_owner": true,
         "person[taxpayer].sav_trad": null,
         "person[taxpayer].ira_dist": null,
         "ira.deduct_less": null,
@@ -6020,17 +6026,15 @@
         "dependent[b].us_half": null,
         "dependent[b].eic_ssn": null,
         "f1040.tax_exempt_interest": null,
-        "eic.died_2025": null,
+        "eic.died_this_year": null,
         "eic.us_home": null,
-        "f5695.part1_any": null,
         "f5695.business_use": null,
         "f5695.line7a": null,
         "f5695.line12": null,
         "person[spouse].w2[e0].box6": null,
         "person[taxpayer].w2[e0].box6": null,
-        "f5695.part2_any": null,
         "f5695.condo": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line24": {
@@ -6065,7 +6069,7 @@
         "$dependent": [
           "a"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -6135,7 +6139,7 @@
           "b"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 2,
@@ -6148,7 +6152,7 @@
         "dcprov[p0].paid": 600000,
         "person[taxpayer].w2[emp_a].box10": 200000,
         "f2441.employer_care": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.line15": {
@@ -6211,7 +6215,7 @@
           "b"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 2,
@@ -6227,7 +6231,7 @@
         "person[taxpayer].w2[emp_a].box10": 200000,
         "f2441.plan_max": 500000,
         "f2441.employer_care": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f2441.employer_care_l16": {

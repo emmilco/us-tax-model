@@ -55,3 +55,13 @@ Fresh reviews of 2026-11-03 under prompt policy source-only-computation-v3 (clau
 | deepseek | transcription | ssb.has_benefits | representation | agree on sample | i1040gi p. 31 | Same test. |
 
 Fix check: BUG-0399 is correct for married filing separately living together. Findings: SSB-L1 (low, display) in `.transcription/proposed/rf/ssb.findings.md`.
+
+## Landing round (2026-11-14)
+
+Interview redraft (landing worktree), Claude line-scoped pass 8aebc36a3d4a. Triage `.transcription/triage/2025/ssb.json` (executable-triage-v2, regenerated 2026-11-14 on the fresh build; not rerun). Rulings applied with `rule.py`; full text in the log and sidecar.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | ssb.lump_sum | representation | 2,324/2,773; 6 value (refused mutation records only), 443 project-unknown | i1040gi p. 31, Line 6c | The reply adds ssb.any, which the project's only reader (worksheet line 2) already implies. |
+
+Counts: representation 1 (1). Findings: none. Project lines unchanged.

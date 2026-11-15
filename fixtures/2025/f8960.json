@@ -15,6 +15,7 @@
         "f4952.line1": 100000,
         "f8960.allocated_taxes": 200000,
         "sa.elect_itemize": true,
+        "sa.state_tax_any": true,
         "sa.line5a": 500000,
         "sb.ordinary_dividends": 700000,
         "$sales": [
@@ -133,7 +134,7 @@
         "dependent[child].canada_mexico": true,
         "dependent[child].supported": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f8960.line17": {
@@ -169,7 +170,7 @@
         "dependent[child].canada_mexico": true,
         "dependent[child].supported": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f8960.line17": {
@@ -254,7 +255,7 @@
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 24800000,
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.tips": null,
         "s1a.overtime": null,
         "s1a.carloan": null
@@ -288,7 +289,7 @@
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 24900000,
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.tips": null,
         "s1a.overtime": null,
         "s1a.carloan": null
@@ -370,6 +371,7 @@
         "div.any": true,
         "f4952.has_interest": true,
         "f4952.line1": 100000,
+        "sa.state_tax_any": true,
         "sa.line5a": 50000,
         "sb.ordinary_dividends": 200000,
         "$w2@person[taxpayer]": [
@@ -414,7 +416,7 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f8960.line17": {
@@ -595,7 +597,7 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f8960.line17": {
@@ -812,7 +814,7 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f8960.line17": {
@@ -850,7 +852,7 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f8960.line17": {
@@ -1025,6 +1027,7 @@
         "f4952.line1": 100000,
         "f8960.allocated_taxes": 200000,
         "sa.elect_itemize": true,
+        "sa.state_tax_any": true,
         "sa.line5a": 500000,
         "sb.ordinary_dividends": 700000,
         "$sales": [
@@ -1108,6 +1111,7 @@
         "$interest": [
           "bank_a"
         ],
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -1244,7 +1248,7 @@
         "clcw.prior_sd7": -1000000,
         "clcw.prior_sd21": 300000,
         "f8960.prior_2i": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f8960.line5b": {

@@ -4,21 +4,23 @@
  "family": "claude",
  "base": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-11); see Line-scoped reviews"
+  "agree / disagree / missing": "3 / 6 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "sli.deduction",
-   "record": "651a1ca18f10ca9f39136c6d23e50127d613f2694079b6e4e15fe7f9ed598437",
+   "record": "86275f5d1a86468c78b4bdb735886b783ca5a2c9836eff9b187ddd1f5fda3262",
    "status": "DISAGREE",
-   "ruling": "Ruling: interface gap; i1040gi p. 98, Schedule 1, line 21 (the conditions for the deduction). The reply's two tests are the project's (a filing status other than married filing separately; no one on the return claimed as a dependent, person.sav_claimed) and it gives worksheet line 9 as the project does. It lacks the project's first alternative, $0 when no interest was paid (sli.interest zero), so it reads person.sav_claimed on returns with no student loan interest. The earlier rulings on this line found earlier replies to lack the dependent test; this reply has it. Re-reviewed because sli.interest was reworded (the older \"(or your spouse if filing jointly)\" in the eligible-student list is now the one spouse phrase; wording only, no expression changed). executable-triage-v2 (`.transcription/triage/2025/sli.json`, pass 970c08bc396c; 1,767 fixtures, 500 generated returns seed 20261026, 40 partial records): 1,759 of 2,307 comparisons agree; differences by kind {\"candidate-refuses\": 331, \"candidate-unknown\": 208, \"project-unknown\": 9}; on completed returns 101 candidate-unknown (on the six the record lists the project is $0 and the reply is unknown for person.sav_claimed); no value difference. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "203ea5714cd5530bc6a8a3455e1c8a1b99bad4b4f1ee33ee5697cccef8b01ab3"
+   "ruling": "Ruling: model error; i1040gi p. 98, Schedule 1, line 21: \"You can take this deduction only if all of the following apply\", including \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return.\" The reply drops that condition, saying no supplied input states it, but the request's person collection carried person.sav_claimed (\"Are you claimed as a dependent on someone else's 2025 tax return?\"), which the project counts in sli.claimed_count. Completed stage11.sli.claimed (project $0, reply $1,200) and stage11.sli.spouse_claimed (project $0, reply $2,497.50). executable triage (.transcription/triage/2025/sli.json, executable-triage-v2): 2,063 of 2,726 agree; 6 value (3 completed), 155 candidate-unknown (20 completed: the reply reads the loan answers without sli.any), 492 candidate-refuses (refused returns, upstream refusals through line 9), 10 project-unknown. Project stands.",
+   "subject_key": "b70ced23c7aa7846fdc017e549809534cfd00741553fbeb7b1509891494fcb31"
   },
   {
    "key": "1",
-   "record": "651a1ca18f10ca9f39136c6d23e50127d613f2694079b6e4e15fe7f9ed598437",
-   "status": "AGREE",
-   "subject_key": "1657986165797c0b39c15f1f121a48f5734c5a61a8a692e91975b5489f118b19"
+   "record": "86275f5d1a86468c78b4bdb735886b783ca5a2c9836eff9b187ddd1f5fda3262",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 1: \"Enter the total interest you paid in 2025 on qualified student loans ... Don't enter more than $2,500\"; p. 98, \"Don't include any amount paid from a distribution of earnings made from a qualified tuition program\". Both take the interest less the unqualified and the assisted amounts, floored at zero, capped at $2,500 (subtracting the two in turn with a zero floor equals subtracting their sum), and both refuse on sa.excluded_income. The project asks sli.unqualified_any and sli.assisted_any only after sli.any; the reply reads them directly. executable triage (.transcription/triage/2025/sli.json, executable-triage-v2): 2,643 of 2,726 agree; 83 candidate-unknown (20 completed, e.g. classm.eic.1: no student loan, project $0), no value difference. Project stands.",
+   "subject_key": "e79602d59ab600ebc29b31c14b94a9617a62961436f9cbe09b81a2335c3959e8"
   },
   {
    "key": "2",
@@ -68,8 +70,8 @@
   }
  ],
  "subjects": {
-  "sli.deduction": "2c8ec2105a8d6399fd99cd2be769be01a87e6c925c7040a7a7bb53531755097c",
-  "1": "47317c0241444d2cff59f25e5257145ab7923fd69b054f9f4d09721fc234631e",
+  "sli.deduction": "878041143334e579ad7551742ab6d352559c38022113236e201d83a09693b1c3",
+  "1": "6cc7caf3ae6a0a8c4c559f1a456d9f7649204f7c61c19079faf3a3eb27b4ca9b",
   "2": "03b76842d0b2c01ed25446bb350441f94e4e87fe6f19ca18a3ea8ee9d0f06a4d",
   "3": "3a2f5cd698d5de7f0de48e3a76ddcbbd07c2f0b49b90c745ef539cc95ad9986d",
   "4": "7525f5f108db9d3ec62d4c245aeea6b7186ca4e6c389a61b6e16750c48e330f2",
@@ -80,7 +82,7 @@
  },
  "__rest__": "cdbf85c374e333f356e978a01b3319b841c43b9a1e74b210b748829916056fb7",
  "foreign": {
-  "sli.deduction": "5e71e09486b3638eef1ca7ad68c53ea93594179c3192bf31e4e4b3916035bc7d",
-  "1": "d1408b4be3e38b6eb6df9edf6bc2fa06e821d29dc7dd063be4e4ed86653ee737"
+  "sli.deduction": "84fa026db1b24146bbd852cff15a811bdf6727359efc6de7bb24ee8cb94d783c",
+  "1": "b5d39970c65924eeb9c9cc256d48e49b6b9a3ba9f69ce87ba05e7f1296aad57d"
  }
 }

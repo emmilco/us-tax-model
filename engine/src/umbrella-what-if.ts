@@ -26,36 +26,25 @@ export interface Umbrella {
   covers: string[];
 }
 
-/** The candidates measured, by the design's names. */
+/** The candidates measured, by the design's names: those the formal model does not already hold. The interview has its
+ * own parents for the foreign items of Schedule B, the payments other than W-2 withholding, the carryovers, the
+ * educator expenses and student loan interest, so those candidates are not measured; nor are the Schedule 2 items it
+ * asks beneath a parent of their own (the W-2 marks) or derives (line 16 and the Form 5329 screens). */
 export const UMBRELLAS: Umbrella[] = [
   { id: "s1.line8_any", label: "Any income for Schedule 1 line 8 (lines 8a to 8z)",
-    covers: ["s1.gambling_winnings", "s1.cod_any", "s1.line8g", "s1.line8h", "s1.line8i", "s1.line8j", "s1.line8r", "s1.line8_other", "$oi8z"] },
+    covers: ["s1.winnings_any", "s1.cod_any", "s1.alaska_any", "s1.jury_any", "s1.hobby_any", "s1.scholarship_any", "s1.ltc_payout", "s1.inmate_wages", "s1.digital_income", "$oi8z"] },
   { id: "s1.part1_other_any", label: "Unemployment compensation or any income for Schedule 1 line 8",
-    covers: ["s1.uc_paid", "s1.gambling_winnings", "s1.cod_any", "s1.line8g", "s1.line8h", "s1.line8i", "s1.line8j", "s1.line8r", "s1.line8_other", "$oi8z"] },
-  { id: "sb.foreign_any", label: "Any foreign account, foreign financial asset, foreign trust or foreign corporation",
-    covers: ["sb.fbar_required", "sb.form8938", "sb.line8", "sb.form5471"] },
-  { id: "sb.foreign_wide_any", label: "Any foreign account, asset, trust or corporation, or excluded foreign income",
-    covers: ["sb.fbar_required", "sb.form8938", "sb.line8", "sb.form5471", "sa.excluded_income"] },
-  { id: "f1040.other_payments_any", label: `Federal tax withheld other than on a W-2, or any other payment toward ${YEAR} tax`,
-    covers: ["f1040.line25b", "f1040.line25c_other", "f1040.line26", "s3.line10"] },
-  { id: "f1040.withholding_other_any", label: "Federal tax withheld other than on a W-2 (survey B-4)",
-    covers: ["f1040.line25b", "f1040.line25c_other"] },
-  { id: "sd.carryovers_any", label: `A carryover into ${YEAR} from an earlier year's return (capital loss, section 179, QBI loss)`,
-    covers: ["sd.carryover", "s179.line10", "qbi.carryforward"] },
-  { id: "f5695.any", label: "Residential energy credits (Form 5695 Part I or Part II)",
-    covers: ["f5695.part1_any", "f5695.part2_any"] },
+    covers: ["s1.uc_any", "s1.winnings_any", "s1.cod_any", "s1.alaska_any", "s1.jury_any", "s1.hobby_any", "s1.scholarship_any", "s1.ltc_payout", "s1.inmate_wages", "s1.digital_income", "$oi8z"] },
   { id: "f2441.any", label: "Child and dependent care expenses or benefits (Form 2441)",
     covers: ["f2441.care", "f2441.benefits"] },
   { id: "s2.other_taxes_any", label: "Additional taxes this tool does not figure (merged Schedule 2 screens)",
-    covers: ["s2.amt", "s2.other", "scope.other_line16", "person.x_other", "f8959.unsupported"] },
-  { id: "s1.adjustments_any", label: "Educator expenses or student loan interest (Schedule 1 Part II items asked separately)",
-    covers: ["person.educator_expenses", "sli.interest"] },
+    covers: ["s2.amt_owed", "s2.options_any", "s2.household_help", "s2.hsa_testing", "s2.credit_recapture", "s2.other_tax", "f8959.territory_w2"] },
   { id: "s1a.any", label: "Tips, overtime or car loan interest (Schedule 1-A Parts II to IV)",
     covers: ["s1a.tips", "s1a.overtime", "s1a.carloan"] },
 ];
 
 /** The umbrellas the design recommends landing, measured together. */
-export const RECOMMENDED = ["s1.line8_any", "sb.foreign_any", "f1040.other_payments_any", "f5695.any", "sd.carryovers_any"];
+export const RECOMMENDED = ["s1.line8_any"];
 
 /** Replaces every reference to `from` that `refsOf` would collect (the same keys are skipped). */
 function replaceRef(node: unknown, from: string, to: string): unknown {

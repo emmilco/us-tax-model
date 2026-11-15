@@ -155,6 +155,14 @@ params:
           mother; parent_relative is an ancestor or sibling of a parent (a Step 4 relative, but not the parent of
           Head of Household Test 1); in_law is a step-parent or an in-law; household_member is any other person
           who lived with you all year"
+    dependent_support_view:
+      values:
+        - under_half
+        - over_half
+        - unsure
+      cite:
+        doc: i1040gi
+        locator: "pp. 17 and 19, Who Qualifies as Your Dependent, Step 1, \"Who didn't provide over half of their own support for 2025\", and Step 4, \"For whom you provided over half of the person's support in 2025\": the filer's plain answer to a support test (clearly under half, clearly over half, or close or unsure, in which case the test is asked in full)"
     dc_tin_kind:
       values:
         - tin
@@ -256,6 +264,106 @@ params:
         doc: f7206
         locator: 'Form 7206 (2025), line 2(b), the ages 40 or younger, 41 to 50, 51 to 60, 61 to 70, and 71 or older'
   values:
+    # Age cut-offs as years of birth. age.cut_N is the year of birth in which only a person born on January 1 is N or
+    # older at the end of the tax year (a person is considered to reach an age on the day before the birthday): a person
+    # born before it is N or older, a person born after it is younger. Each moves by one with the tax year.
+    age.birth_year_latest:
+      type: Count
+      value: 2025
+      cite:
+        doc: i1040gi
+        locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)" (the latest year of birth of a
+          person on a return for the tax year: the tax year itself; a consistency bound)'
+    age.birth_year_earliest:
+      type: Count
+      value: 1900
+      cite:
+        doc: i1040gi
+        locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)" (the earliest year of birth
+          accepted: 125 years before the tax year; a consistency bound, not a rule of the instructions)'
+    age.cut_65:
+      type: Count
+      value: 1961
+      cite:
+        doc: i1040gi
+        locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"'
+    age.turning_65:
+      type: Count
+      value: 1960
+      cite:
+        doc: i1040gi
+        locator: 'p. 110, Schedule 1-A, Part V, Death of a taxpayer in 2025, "If a taxpayer was born before January 2, 1961, but
+          died in 2025 before reaching age 65, then the taxpayer doesn’t qualify for the enhanced deduction for seniors. A person
+          is considered to reach age 65 on the day before the person’s 65th birthday." (the year of birth of a person whose 65th
+          birthday falls in the tax year)'
+    age.cut_25:
+      type: Count
+      value: 2001
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2,
+          2001"
+    age.cut_24:
+      type: Count
+      value: 2002
+      cite:
+        doc: i8863
+        locator: p. 7, Line 7, "1. Were you under age 24 at the end of 2025?"
+    age.cut_19:
+      type: Count
+      value: 2007
+      cite:
+        doc: i8863
+        locator: p. 7, Line 7, "b. Age 18 at the end of 2025 and your earned income (defined later) was less than one-half of
+          your support (defined later), or" (over age 18 is 19 or older)
+    age.cut_18:
+      type: Count
+      value: 2008
+      cite:
+        doc: f8880
+        locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+          born after January 1, 2008"'
+    age.cut_16:
+      type: Count
+      value: 2010
+      cite:
+        doc: i1040gi
+        locator: 'p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025"'
+    age.cut_50:
+      type: Count
+      value: 1976
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025"'
+    age.cut_55:
+      type: Count
+      value: 1971
+      cite:
+        doc: i8889
+        locator: p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older"; p. 6, Line 3 Limitation Chart, "If
+          you were age 55 or older at the end of 2025"
+    age.cut_60:
+      type: Count
+      value: 1966
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "in a tax year in which they attain age 60, 61, 62, or 63"
+    age.cut_64:
+      type: Count
+      value: 1962
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "in a tax year in which they attain age 60, 61, 62, or 63" (attaining
+          64 leaves the band)
+    age.cut_73:
+      type: Count
+      value: 1953
+      cite:
+        doc: i5329
+        locator: p. 9, Lines 52a and 52b, "following the year in which you reach age 73"
     ordinary.table_boundary:
       type: Dollars
       value: 10000000
@@ -1144,6 +1252,12 @@ params:
         locator: 'Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of
           taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or
           were a grantor of, or a transferor to, a foreign trust"'
+    sales.detail:
+      value: detail
+      type: Enum(sales_route)
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
     sales.one:
       value: 1
       type: Count
@@ -2086,6 +2200,27 @@ params:
       cite:
         doc: p560
         locator: 'chapter 5, Deduction Worksheet for Self-Employed, Step 8, "Contribution dollar limit $70,000"'
+    ret.catchup_under50:
+      type: Enum(catchup_age)
+      value: under50
+      cite:
+        doc: p560
+        locator: 'chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63": under 50 at the end of the year: no catch-up contributions'
+    ret.catchup_age50:
+      type: Enum(catchup_age)
+      value: age50
+      cite:
+        doc: p560
+        locator: 'chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63": age 50 or over at the end of the year and not attaining age 60, 61, 62 or 63 in it: the general catch-up limit'
+    ret.catchup_age60_63:
+      type: Enum(catchup_age)
+      value: age60_63
+      cite:
+        doc: p560
+        locator: 'chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63": attaining age 60, 61, 62 or 63 in the year: the higher catch-up limit'
     ret.simple_limit:
       type: NonNegDollars
       value: 1650000

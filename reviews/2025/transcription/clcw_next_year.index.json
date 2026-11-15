@@ -1,0 +1,130 @@
+{
+ "kind": "transcription",
+ "form": "clcw_next_year",
+ "family": "claude",
+ "base": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+ "lines": [
+  {
+   "key": "1",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply drops the worksheet's applicability test, so it shows the line where the source says there is no carryover. i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet ... if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16; or (b) if the amount on your 2024 Form 1040 ... line 15 would be less than zero ... Otherwise, you don't have any carryovers.\"; p. 14, Line 21, the same test for the carryover to 2026. The value expression is the project's; the project hides the line on exactly that test (clcw_next_year.show, .show_st, .show_lt; amb.2025.clcw_to_2026). Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 434 agree; 2,070 differ, all candidate-shows-skipped, candidate-refuses or candidate-unknown, no value witness (e.g. line 2 on stage20.blind.r8: the reply shows $2,000 where the line is hidden). Same ruling as the deepseek reply in Stage 20 round 2.",
+   "subject_key": "25a6bd0039af32042c916f01eb9c8a23d6f8d44e3c8f0c73ec1d85255c477d51"
+  },
+  {
+   "key": "2",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply drops the worksheet's applicability test, so it shows the line where the source says there is no carryover. i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet ... if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16; or (b) if the amount on your 2024 Form 1040 ... line 15 would be less than zero ... Otherwise, you don't have any carryovers.\"; p. 14, Line 21, the same test for the carryover to 2026. The value expression is the project's; the project hides the line on exactly that test (clcw_next_year.show, .show_st, .show_lt; amb.2025.clcw_to_2026). Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,483 agree; 21 differ (candidate-shows-skipped, project-refuses, project-unknown), no value witness (e.g. line 2 on stage20.blind.r8: the reply shows $2,000 where the line is hidden). Same ruling as the deepseek reply in Stage 20 round 2.",
+   "subject_key": "5fabb032de62b891c34022ab92e1d3a856e85e82722c93b7d028a20db59bf4bf"
+  },
+  {
+   "key": "3",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply drops the worksheet's applicability test, so it shows the line where the source says there is no carryover. i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet ... if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16; or (b) if the amount on your 2024 Form 1040 ... line 15 would be less than zero ... Otherwise, you don't have any carryovers.\"; p. 14, Line 21, the same test for the carryover to 2026. The value expression is the project's; the project hides the line on exactly that test (clcw_next_year.show, .show_st, .show_lt; amb.2025.clcw_to_2026). Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 697 agree; 1,807 differ (shows-skipped, refuses, unknown), no value witness (e.g. line 2 on stage20.blind.r8: the reply shows $2,000 where the line is hidden). Same ruling as the deepseek reply in Stage 20 round 2.",
+   "subject_key": "ecfcdaaa98f7c847b06319b55e9c2c0cde34aba974c96a090694f20380e5b98c"
+  },
+  {
+   "key": "4",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply drops the worksheet's applicability test, so it shows the line where the source says there is no carryover. i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet ... if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16; or (b) if the amount on your 2024 Form 1040 ... line 15 would be less than zero ... Otherwise, you don't have any carryovers.\"; p. 14, Line 21, the same test for the carryover to 2026. The value expression is the project's; the project hides the line on exactly that test (clcw_next_year.show, .show_st, .show_lt; amb.2025.clcw_to_2026). Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,883 agree; 621 differ (shows-skipped, refuses, unknown), no value witness (e.g. line 2 on stage20.blind.r8: the reply shows $2,000 where the line is hidden). Same ruling as the deepseek reply in Stage 20 round 2.",
+   "subject_key": "13443eb711dd8245dba4dd2357113fee5d3757f494ca4c78afc4f2120cf5e3d8"
+  },
+  {
+   "key": "5",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply drops the worksheet's applicability test, so it shows the line where the source says there is no carryover. i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet ... if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16; or (b) if the amount on your 2024 Form 1040 ... line 15 would be less than zero ... Otherwise, you don't have any carryovers.\"; p. 14, Line 21, the same test for the carryover to 2026. The value expression is the project's; the project hides the line on exactly that test (clcw_next_year.show, .show_st, .show_lt; amb.2025.clcw_to_2026). Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,417 agree; 87 differ (shows-skipped, refuses, unknown), no value witness (e.g. line 2 on stage20.blind.r8: the reply shows $2,000 where the line is hidden). Same ruling as the deepseek reply in Stage 20 round 2.",
+   "subject_key": "414772cf8753e40fe6efa1d956988bf370249100c3ee74eb2a8ce90b6a7c9b31"
+  },
+  {
+   "key": "6",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply drops the worksheet's applicability test, so it shows the line where the source says there is no carryover. i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet ... if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16; or (b) if the amount on your 2024 Form 1040 ... line 15 would be less than zero ... Otherwise, you don't have any carryovers.\"; p. 14, Line 21, the same test for the carryover to 2026. The value expression is the project's; the project hides the line on exactly that test (clcw_next_year.show, .show_st, .show_lt; amb.2025.clcw_to_2026). Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,205 agree; 299 differ (shows-skipped, refuses, unknown), no value witness (e.g. line 2 on stage20.blind.r8: the reply shows $2,000 where the line is hidden). Same ruling as the deepseek reply in Stage 20 round 2.",
+   "subject_key": "75db486615defd3be0cc94311c544bbfceca37f29bc0801f4be66d0e92ace4fc"
+  },
+  {
+   "key": "7",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply drops the worksheet's applicability test, so it shows the line where the source says there is no carryover. i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet ... if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16; or (b) if the amount on your 2024 Form 1040 ... line 15 would be less than zero ... Otherwise, you don't have any carryovers.\"; p. 14, Line 21, the same test for the carryover to 2026. The value expression is the project's; the project hides the line on exactly that test (clcw_next_year.show, .show_st, .show_lt; amb.2025.clcw_to_2026). Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,665 agree; 839 differ (shows-skipped, refuses, unknown), no value witness (e.g. line 2 on stage20.blind.r8: the reply shows $2,000 where the line is hidden). Same ruling as the deepseek reply in Stage 20 round 2.",
+   "subject_key": "394856c8ef4e5f6e3481b14e7ff49b1e5d9e69ac95f2f7a2c2abc9ed00588c1b"
+  },
+  {
+   "key": "8",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply's decedent rule is the project's. p550 p. 103, Decedent's capital loss: a decedent's capital loss \"can be deducted only on the final income tax return filed for the decedent\" and \"The decedent's estate cannot deduct any of the loss or carry it over to following years.\" The reply gives 0 on a final return; the project hides the carryover line there and shows a notice (clcw_next_year.show_st_carry / show_lt_carry). The reply reads the raw input clcw_next_year.final_return, which the interview asks only when a carryover is figured on a return other than a joint return (final_return_if_carryover), so it is unknown elsewhere. Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,415 agree; 1,089 differ, all candidate-unknown (clcw_next_year.final_return not supplied), candidate-refuses or project-refuses; no value witness.",
+   "subject_key": "034c8e66e6e4a931db65ff9ef1db3816d5aa0260288dc617ae8bff7d0e0ea6b8"
+  },
+  {
+   "key": "9",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply drops the worksheet's applicability test, so it shows the line where the source says there is no carryover. i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet ... if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16; or (b) if the amount on your 2024 Form 1040 ... line 15 would be less than zero ... Otherwise, you don't have any carryovers.\"; p. 14, Line 21, the same test for the carryover to 2026. The value expression is the project's; the project hides the line on exactly that test (clcw_next_year.show, .show_st, .show_lt; amb.2025.clcw_to_2026). Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,470 agree; 34 differ (shows-skipped, project-refuses), no value witness (e.g. line 2 on stage20.blind.r8: the reply shows $2,000 where the line is hidden). Same ruling as the deepseek reply in Stage 20 round 2.",
+   "subject_key": "a0bf4729fb99ff947487c2ec40a5b1606208c23d918454f7e8e1a08b52108d29"
+  },
+  {
+   "key": "10",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply drops the worksheet's applicability test, so it shows the line where the source says there is no carryover. i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet ... if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16; or (b) if the amount on your 2024 Form 1040 ... line 15 would be less than zero ... Otherwise, you don't have any carryovers.\"; p. 14, Line 21, the same test for the carryover to 2026. The value expression is the project's; the project hides the line on exactly that test (clcw_next_year.show, .show_st, .show_lt; amb.2025.clcw_to_2026). Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,346 agree; 158 differ (shows-skipped, project-refuses), no value witness (e.g. line 2 on stage20.blind.r8: the reply shows $2,000 where the line is hidden). Same ruling as the deepseek reply in Stage 20 round 2.",
+   "subject_key": "5cef54efb709a31b3951690c6194645fdc405894e006834051f16d6154fc576e"
+  },
+  {
+   "key": "11",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply drops the worksheet's applicability test, so it shows the line where the source says there is no carryover. i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet ... if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16; or (b) if the amount on your 2024 Form 1040 ... line 15 would be less than zero ... Otherwise, you don't have any carryovers.\"; p. 14, Line 21, the same test for the carryover to 2026. The value expression is the project's; the project hides the line on exactly that test (clcw_next_year.show, .show_st, .show_lt; amb.2025.clcw_to_2026). Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,850 agree; 654 differ (shows-skipped, refuses, unknown), no value witness (e.g. line 2 on stage20.blind.r8: the reply shows $2,000 where the line is hidden). Same ruling as the deepseek reply in Stage 20 round 2.",
+   "subject_key": "8b2a21720afdee51f2085ea181ab603c78a4da2482268577a41d6bde353f3406"
+  },
+  {
+   "key": "12",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply drops the worksheet's applicability test, so it shows the line where the source says there is no carryover. i1040sd p. 10, Capital Loss Carryover Worksheet: \"Use this worksheet ... if your 2024 Schedule D, line 21, is a loss and (a) that loss is a smaller loss than the loss on your 2024 Schedule D, line 16; or (b) if the amount on your 2024 Form 1040 ... line 15 would be less than zero ... Otherwise, you don't have any carryovers.\"; p. 14, Line 21, the same test for the carryover to 2026. The value expression is the project's; the project hides the line on exactly that test (clcw_next_year.show, .show_st, .show_lt; amb.2025.clcw_to_2026). Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,801 agree; 703 differ (shows-skipped, refuses, unknown), no value witness (e.g. line 2 on stage20.blind.r8: the reply shows $2,000 where the line is hidden). Same ruling as the deepseek reply in Stage 20 round 2.",
+   "subject_key": "25359df61c8ee0bb4b3e5eaadc33023ff8cc8957fc1ae8c9d5f1ff292e82b7e7"
+  },
+  {
+   "key": "13",
+   "record": "852d188ad637a11662ff778514058d45b9be8eebbcc41f932b28cf360ff8d53e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply's decedent rule is the project's. p550 p. 103, Decedent's capital loss: a decedent's capital loss \"can be deducted only on the final income tax return filed for the decedent\" and \"The decedent's estate cannot deduct any of the loss or carry it over to following years.\" The reply gives 0 on a final return; the project hides the carryover line there and shows a notice (clcw_next_year.show_st_carry / show_lt_carry). The reply reads the raw input clcw_next_year.final_return, which the interview asks only when a carryover is figured on a return other than a joint return (final_return_if_carryover), so it is unknown elsewhere. Triage .transcription/triage/2025/clcw_next_year.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,427 agree; 1,077 differ, all candidate-unknown, candidate-refuses or project-refuses; no value witness.",
+   "subject_key": "215fcc1cc26540ce801d76334c78d9343cbb66bdb4893368e8c497653600a88b"
+  }
+ ],
+ "subjects": {
+  "1": "d2f191cb9f968f0d58676c00b47637de26736095c74ddb38b55c5cd5bbe370ca",
+  "2": "207f988d556995fbe8505c7a457a9db4a771ac4d27744fc43b2eb20ef0e533d2",
+  "3": "c277e3d8c7ece3e98bd1c9eeac6b9e529193a3923660a61d819d4127a10c1cba",
+  "4": "5c0b384316534702e8c4e2097774adbefe04036444c84b686124f035dc6fe9eb",
+  "5": "30f47a72198e08c6a49c9fcc64280583ebbc253bc9197ea0f654b2329f9f3c0a",
+  "6": "e73393b83bc007fd8ffc247d6d97ce76d3b3dc4339d1029535e75b47939cabcb",
+  "7": "27d18c2cc0b7723ae5fd4ffb879e8f3185cb39542d1cf2ed1ebb68b55c99ed51",
+  "8": "d7b232a7534c56219f9600a6cc2a634c57bf2ee271b8e6beec8a465f357d5148",
+  "9": "cd0c42196922bb2e14089d21d10b1f1069f3df2ae0711d8fa08461aee8321077",
+  "10": "6aee80598053ef5d2b1619075a24a16503ee1de56e949b43c5b9585baf16fdba",
+  "11": "13baabc034ba27d0f7d42b35bff66cd76e414f61e9a6a9566c50fb1a7149a994",
+  "12": "ba1afadaf9425e2e6ee702c1368efa7f90887aa350b651e82d7de3edcb765f89",
+  "13": "84921cfe7ed9e6ce6675b5955719225aa362c32599a41095d8cfd618e25e8e74"
+ },
+ "__rest__": "bdb98d66f783c8e4be7cb5dc99cb861722b26c55777c7ed521758f297362cfd0",
+ "foreign": {
+  "1": "ede9d0bdff7c17e48364e052086285f997b9a23d32085a82a328ca98891b516b",
+  "2": "d8672d17649d1adcee5deb019d03524fa3793a5a5cbcc27c6af2065e20a02697",
+  "3": "d8672d17649d1adcee5deb019d03524fa3793a5a5cbcc27c6af2065e20a02697",
+  "4": "ede9d0bdff7c17e48364e052086285f997b9a23d32085a82a328ca98891b516b",
+  "5": "2dd836866cd986a885078d682cd2f95258ede43020cce1c653bce5989d3b5226",
+  "6": "4093e45317e338bef03081da7ffedaad2dcd6586bffc2039362d9d0d4d42e614",
+  "7": "521ec71fb7114a97255e6388c2254edf80b8ef3ff0b51311cda44996d604c1b9",
+  "8": "8a4dfc9c67684c87b45f0b2fa4b24ef15d4fbc454a3a292463c755b6b0be0337",
+  "9": "8929a080a9a8ae46ed1b037deba1269b5a1aa5e175047a01795ca5a835281abf",
+  "10": "4093e45317e338bef03081da7ffedaad2dcd6586bffc2039362d9d0d4d42e614",
+  "11": "a8467a2a5f5e2a35115d3c2e1cc57c75683c5a417e891a55890e92a302f37fc8",
+  "12": "a8467a2a5f5e2a35115d3c2e1cc57c75683c5a417e891a55890e92a302f37fc8",
+  "13": "1215b17632e1c3658e73ab8ee70750ec342b8a790dbec95ea4f8f44b5872a208"
+ }
+}

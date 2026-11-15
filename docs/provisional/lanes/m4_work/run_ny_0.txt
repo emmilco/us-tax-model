@@ -1,0 +1,43 @@
+{"mutants":665,"check":248,"killed":374,"survivors":43,"explained":8,"unexplained":35,"stale":7}
+STALE operand.ny_it201.ny_it201.line78.line77: killed
+STALE operand.ny_it201.ny_it201.gate.line79_over.line77.gt.1: killed
+STALE operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then0: no longer holds
+STALE operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then2: no longer holds
+STALE operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then3: no longer holds
+STALE operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then4: no longer holds
+STALE operand.ny_it201.ny_it201.est_penalty_balance.no.then1: no longer holds
+OPEN operand.ny_it201.ny_it201.moved.moved_in.any.0.eq.0	replace an operand	ny_it201.ny_it201.moved	ny_it201.ask.moved_in -> ny_it201.active_duty_if_armed_forces (Bool)
+OPEN operand.ny_it201.ny_it201.ask.special_code.bab_if_interest.any.0.eq.0	replace an operand	ny_it201.ny_it201.ask.special_code	ny_it201.bab_if_interest -> ny_it201.moved (Bool)
+OPEN operand.ny_it201.ny_it201.ask.special_code.installment.any.2.eq.0	replace an operand	ny_it201.ny_it201.ask.special_code	ny_it201.ask.installment -> ny_it201.moved (Bool)
+OPEN operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then0	replace an operand	ny_it201.ny_it201.gate.spouse_nonresident	ny_it201.no -> ny_it201.gate.part_year_city (Bool)
+OPEN operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then2	replace an operand	ny_it201.ny_it201.gate.spouse_nonresident	ny_it201.no -> ny_it201.gate.part_year_city (Bool)
+OPEN operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then3	replace an operand	ny_it201.ny_it201.gate.spouse_nonresident	ny_it201.no -> ny_it201.gate.part_year_city (Bool)
+OPEN operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then4	replace an operand	ny_it201.ny_it201.gate.spouse_nonresident	ny_it201.no -> ny_it201.gate.part_year_city (Bool)
+OPEN operand.ny_it201.ny_it201.item_c_if_not_federal.no.then0	replace an operand	ny_it201.ny_it201.item_c_if_not_federal	ny_it201.no -> ny_it201.gate.decedent (Bool)
+OPEN boundary.ny_it201.ny_it201.has_tax_exempt	replace strict greater-than with inclusive	ny_it201.ny_it201.has_tax_exempt	
+OPEN operand.ny_it201.ny_it201.gov_said_no.has_pension_income.all.0.eq.0	replace an operand	ny_it201.ny_it201.gov_said_no	ny_it201.has_pension_income -> ny_it201.no (Bool)
+OPEN operand.ny_it201.ny_it201.gov_said_no.gov_pension_if_income.all.1.eq.0	replace an operand	ny_it201.ny_it201.gov_said_no	ny_it201.gov_pension_if_income -> ny_it201.no (Bool)
+OPEN operand.ny_it201.ny_it201.pension_59_known.pension_59_people.gt.0	replace an operand	ny_it201.ny_it201.pension_59_known	ny_it201.pension_59_people -> ny_it201.edu_people (Count)
+OPEN operand.ny_it201.ny_it201.pension_exclusion_line.pension_59_known.any.0.eq.0	replace an operand	ny_it201.ny_it201.pension_exclusion_line	ny_it201.pension_59_known -> ny_it201.gate.line28 (Bool)
+OPEN operand.ny_it201.ny_it201.pension_exclusion_after_gov.no.then0	replace an operand	ny_it201.ny_it201.pension_exclusion_after_gov	ny_it201.no -> ny_it201.pension_exclusion_if_young (Bool)
+OPEN operand.ny_it201.ny_it201.pension_exclusion_after_gov.pension_exclusion_line.then1	replace an operand	ny_it201.ny_it201.pension_exclusion_after_gov	ny_it201.pension_exclusion_line -> ny_it201.pension_exclusion_if_young (Bool)
+OPEN operand.ny_it201.ny_it201.gate.line29.pension_exclusion_after_gov.then0	replace an operand	ny_it201.ny_it201.gate.line29	ny_it201.pension_exclusion_after_gov -> ny_it201.pension_exclusion_line (Bool)
+OPEN operand.ny_it201.ny_it201.spouse_itemizes_if_mfs.no.then0	replace an operand	ny_it201.ny_it201.spouse_itemizes_if_mfs	ny_it201.no -> ny_it201.gate.line30 (Bool)
+OPEN operand.ny_it201.ny_it201.spouse_itemizes_if_mfs.no.then1	replace an operand	ny_it201.ny_it201.spouse_itemizes_if_mfs	ny_it201.no -> ny_it201.gate.line30 (Bool)
+OPEN operand.ny_it201.ny_it201.spouse_itemizes_if_mfs.spouse_itemizes.then2	replace an operand	ny_it201.ny_it201.spouse_itemizes_if_mfs	ny_it201.ask.spouse_itemizes -> ny_it201.gate.line30 (Bool)
+OPEN operand.ny_it201.ny_it201.spouse_itemizes_if_mfs.no.then3	replace an operand	ny_it201.ny_it201.spouse_itemizes_if_mfs	ny_it201.no -> ny_it201.gate.line30 (Bool)
+OPEN operand.ny_it201.ny_it201.spouse_itemizes_if_mfs.no.then4	replace an operand	ny_it201.ny_it201.spouse_itemizes_if_mfs	ny_it201.no -> ny_it201.gate.line30 (Bool)
+OPEN operand.ny_it201.ny_it201.gate.itemize.spouse_itemizes_if_mfs.any.1.eq.0	replace an operand	ny_it201.ny_it201.gate.itemize	ny_it201.spouse_itemizes_if_mfs -> ny_it201.gate.line30 (Bool)
+OPEN operand.ny_it201.ny_it201.use_tax_exact_if_small.no.then0	replace an operand	ny_it201.ny_it201.use_tax_exact_if_small	ny_it201.no -> ny_it201.gate.use_tax_abode (Bool)
+OPEN operand.ny_it201.ny_it201.use_tax_exact_if_small.use_tax_exact.then1	replace an operand	ny_it201.ny_it201.use_tax_exact_if_small	ny_it201.ask.use_tax_exact -> ny_it201.gate.use_tax_abode (Bool)
+OPEN operand.ny_it201.ny_it201.gate.use_tax_st141.use_tax_exact_if_small.all.1.any.1.eq.0	replace an operand	ny_it201.ny_it201.gate.use_tax_st141	ny_it201.use_tax_exact_if_small -> ny_it201.gate.use_tax_abode (Bool)
+OPEN operand.ny_it201.ny_it201.low_income.fagi_rounded.all.0.le.0	replace an operand	ny_it201.ny_it201.low_income	ny_it201.fagi_rounded -> ny_it201.line33 (Dollars)
+OPEN operand.ny_it201.ny_it201.low_income.item_c.all.1.eq.0	replace an operand	ny_it201.ny_it201.low_income	ny_it201.item_c -> ny_it201.gate.noncustodial (Bool)
+OPEN operand.ny_it201.ny_it201.gate.college_tuition.no.then1	replace an operand	ny_it201.ny_it201.gate.college_tuition	ny_it201.no -> ny_it201.gate.real_property (Bool)
+OPEN operand.ny_it201.ny_it201.gate.other_withholding.no.then1	replace an operand	ny_it201.ny_it201.gate.other_withholding	ny_it201.no -> ny_it201.gate.it270 (Bool)
+OPEN operand.ny_it201.ny_it201.est_penalty_balance.no.then1	replace an operand	ny_it201.ny_it201.est_penalty_balance	ny_it201.no -> ny_it201.gate.other_withholding (Bool)
+OPEN operand.ny_it201.ny_it201.gate.late.no.then1	replace an operand	ny_it201.ny_it201.gate.late	ny_it201.no -> ny_it201.gate.estimated_penalty (Bool)
+OPEN boundary.ny_it201.ny_it201.has_overpayment	replace strict greater-than with inclusive	ny_it201.ny_it201.has_overpayment	
+OPEN operand.ny_it201.ny_it201.line79.zero.then1	replace an operand	ny_it201.ny_it201.line79	ny_it201.zero -> ny_it201.line77 (NonNegDollars)
+OPEN operand.ny_it201.ny_it201.gate.line79_over.line79.gt.0	replace an operand	ny_it201.ny_it201.gate.line79_over	ny_it201.line79 -> ny_it201.line79_wanted (NonNegDollars)
+OPEN operand.ny_it201.ny_it201.line78.line79	replace an operand	ny_it201.ny_it201.line78	ny_it201.line79 -> ny_it201.line79_wanted (NonNegDollars)

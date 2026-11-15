@@ -861,7 +861,7 @@
 ## (helper) — `s1a.died_before_65_count`
 
 - **Authored helper label:** Your entry, if you were born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65
-- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "The final return of a person who died in 2025 before reaching age 65 (asked only of a person born in 1960, or on January 1, 1961; otherwise no)" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.died_before_65",{"const":true}],"op":"test"}],"op":"test"}}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -918,7 +918,7 @@
 ## (helper) — `s1a.spouse_died_before_65_count`
 
 - **Authored helper label:** Your spouse's entry, if your spouse was born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65
-- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'spouse' and helper "Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'spouse' and helper "The final return of a person who died in 2025 before reaching age 65 (asked only of a person born in 1960, or on January 1, 1961; otherwise no)" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"spouse"}],"op":"test"},{"eq":["person.died_before_65",{"const":true}],"op":"test"}],"op":"test"}}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 

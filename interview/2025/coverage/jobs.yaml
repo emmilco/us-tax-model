@@ -1,0 +1,133 @@
+# Coverage rows for jobs, tips and overtime (lane 3 of the provisional redraft). See opening.yaml for how a row is read.
+tax_year: 2025
+part: Jobs, tips and overtime
+profile: full
+sets:
+  tip_job:
+    says: One person who got tips at one employer and has a social security number valid for work.
+    answers:
+      s1a.tips: true
+      person[taxpayer].work_ssn: true
+      $tipjob@person[taxpayer]: [diner]
+  listed_work:
+    says: The tips were for work on the list of tipped occupations.
+    answers:
+      person[taxpayer].tipjob[diner].listed: true
+  ot_job:
+    says: One person who was paid overtime by one employer and has a social security number valid for work.
+    answers:
+      s1a.overtime: true
+      person[taxpayer].work_ssn: true
+      $otjob@person[taxpayer]: [plant]
+rows:
+  - id: jobs.tips_all_qualify
+    design: lane 3, tipjob.qualified taken apart (every test met)
+    situation: A server's tips were all for listed work, left freely by customers in money, and lawful.
+    uses: [tip_job, listed_work]
+    answers:
+      person[taxpayer].tipjob[diner].other_work: false
+      person[taxpayer].tipjob[diner].charged: false
+      person[taxpayer].tipjob[diner].unlawful: false
+      person[taxpayer].tipjob[diner].tips: 900000
+    expect:
+      proceeds:
+        person[taxpayer].tipjob[diner].tips: 900000
+  - id: jobs.tips_work_not_listed
+    design: lane 3, tipjob.qualified taken apart (the occupation is not on the list; today such a filer answers No to s1a.tips)
+    situation: A person got tips at a job that is not on the list of tipped occupations; the return is completed without the deduction and nothing more is asked about the tips.
+    uses: [tip_job]
+    answers:
+      person[taxpayer].tipjob[diner].listed: false
+    expect:
+      proceeds:
+        person[taxpayer].tipjob[diner].listed: false
+      not_asked:
+        - person[taxpayer].tipjob[diner].other_work
+        - person[taxpayer].tipjob[diner].charged
+        - person[taxpayer].tipjob[diner].unlawful
+        - person[taxpayer].tipjob[diner].tips
+  - id: jobs.tips_other_work
+    design: lane 3, tipjob.qualified taken apart (two occupations for one employer, one not listed)
+    situation: A person got tips from one employer for listed work and for other work that is not on the list.
+    uses: [tip_job, listed_work]
+    answers:
+      person[taxpayer].tipjob[diner].other_work: true
+    expect:
+      refused: person[taxpayer].tipjob[diner].mixed
+  - id: jobs.tips_service_charge
+    design: lane 3, tipjob.qualified taken apart (not voluntary, negotiated, or not in cash)
+    situation: A server's tips from one employer include an automatic gratuity the restaurant added to the bill.
+    uses: [tip_job, listed_work]
+    answers:
+      person[taxpayer].tipjob[diner].other_work: false
+      person[taxpayer].tipjob[diner].charged: true
+    expect:
+      refused: person[taxpayer].tipjob[diner].mixed
+  - id: jobs.tips_unlawful_service
+    design: lane 3, tipjob.qualified taken apart (a service that is a crime, prostitution or pornographic activity)
+    situation: A bartender got tips while serving alcohol without the license the state requires.
+    uses: [tip_job, listed_work]
+    answers:
+      person[taxpayer].tipjob[diner].other_work: false
+      person[taxpayer].tipjob[diner].charged: false
+      person[taxpayer].tipjob[diner].unlawful: true
+    expect:
+      refused: person[taxpayer].tipjob[diner].mixed
+  - id: jobs.overtime_from_pay_stub
+    design: lane 3, otjob.method by the paper (total pay at time-and-a-half)
+    situation: An hourly worker covered by the federal overtime law reads the year's overtime pay, at time-and-a-half, from the last pay stub.
+    uses: [ot_job]
+    answers:
+      person[taxpayer].otjob[plant].flsa: true
+      person[taxpayer].otjob[plant].special_rule: false
+      person[taxpayer].otjob[plant].method: total_time_and_half
+      person[taxpayer].otjob[plant].statement: 300000
+    expect:
+      proceeds:
+        person[taxpayer].otjob[plant].method: total_time_and_half
+  - id: jobs.overtime_not_covered
+    design: lane 3, otjob.flsa (an exempt employee)
+    situation: A salaried manager exempt from the federal overtime law was paid overtime; the return is completed without the deduction.
+    uses: [ot_job]
+    answers:
+      person[taxpayer].otjob[plant].flsa: false
+    expect:
+      proceeds:
+        person[taxpayer].otjob[plant].flsa: false
+      not_asked:
+        - person[taxpayer].otjob[plant].method
+        - person[taxpayer].otjob[plant].statement
+  - id: jobs.overtime_special_rule
+    design: lane 3, otjob.special_rule (a firefighter's work period)
+    situation: A firefighter's overtime is counted over a work period longer than a week.
+    uses: [ot_job]
+    answers:
+      person[taxpayer].otjob[plant].flsa: true
+      person[taxpayer].otjob[plant].special_rule: true
+    expect:
+      refused: person[taxpayer].otjob[plant].refused
+  - id: jobs.overtime_other_method
+    design: lane 3, otjob.method (none of the five ways)
+    situation: A worker's overtime includes daily overtime in weeks of 40 hours or fewer that cannot be separated out.
+    uses: [ot_job]
+    answers:
+      person[taxpayer].otjob[plant].flsa: true
+      person[taxpayer].otjob[plant].special_rule: false
+      person[taxpayer].otjob[plant].method: other
+    expect:
+      refused: person[taxpayer].otjob[plant].refused
+  - id: jobs.railroad
+    design: lane 3, person.rrta asked first in the jobs topic
+    situation: A person worked for a railroad in 2025.
+    answers:
+      person[taxpayer].rrta: true
+    expect:
+      refused: person[taxpayer].rrta
+  - id: jobs.no_w2_no_w2_screen
+    design: round two, the W-2 screen (s2.w2_marks and s1.nqdc_pension asked only when a W-2 is listed)
+    situation: A person with a state tax refund and no W-2 is asked nothing about the boxes of a W-2.
+    answers:
+      refund.any: true
+    expect:
+      asks: refund.box8
+      not_asked: [s2.w2_marks, s1.nqdc_pension, scope.w2_marks, scope.artist_official]

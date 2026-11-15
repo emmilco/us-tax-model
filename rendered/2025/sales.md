@@ -72,6 +72,20 @@
 - Expr: `{"op":"input","source":"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals"}`
 - Cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
 
+## (helper) — `sales.detail`
+
+- **Authored helper label:** Year parameter sales.detail (a sale listed on Form 8949)
+- **Encoded (Enum(sales_route)):** Enter detail (sales.detail).
+- Expr: `{"op":"param","ref":"sales.detail"}`
+- Cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sales.route_if_chosen`
+
+- **Authored helper label:** Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)
+- **Encoded (Enum(sales_route)):** Choose — [sd helper "Do you want to choose, sale by sale, between listing a sale on Form 8949 and adding it to a total on Schedule D? The tax is the same either way; with a No, every sale is listed." = true → helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals"] [sd helper "Do you want to choose, sale by sale, between listing a sale on Form 8949 and adding it to a total on Schedule D? The tax is the same either way; with a No, every sale is listed." = false → helper "Year parameter sales.detail (a sale listed on Form 8949)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sd.route_each",{"const":true}],"op":"test"},"then":"sales.route"},{"guard":{"eq":["sd.route_each",{"const":false}],"op":"test"},"then":"sales.detail"}],"op":"choose"}`
+- Cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
+
 ## (helper) — `sales.code`
 
 - **Authored helper label:** Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect, code D for a bond with accrued market discount, or code O for a contingent payment debt instrument with the Ordinary box checked
@@ -232,8 +246,8 @@
 ## (helper) — `sales.bad_aggregate`
 
 - **Authored helper label:** Aggregate route fails its eligibility conditions
-- **Encoded (Bool):** Choose — [helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate' → helper "An aggregate-route transaction fails an aggregate condition"] [helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail' → helper "Year parameter household.no (false)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["sales.route",{"const":"aggregate"}],"op":"test"},"then":"sales.aggregate_fails"},{"guard":{"eq":["sales.route",{"const":"detail"}],"op":"test"},"then":"sales.no"}],"op":"choose"}`
+- **Encoded (Bool):** Choose — [helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'aggregate' → helper "An aggregate-route transaction fails an aggregate condition"] [helper "Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D totals (otherwise listed on Form 8949)" = 'detail' → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sales.route_if_chosen",{"const":"aggregate"}],"op":"test"},"then":"sales.aggregate_fails"},{"guard":{"eq":["sales.route_if_chosen",{"const":"detail"}],"op":"test"},"then":"sales.no"}],"op":"choose"}`
 - Cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sales.aggregate_fails`

@@ -1,0 +1,12 @@
+name: ny01_single_nyc_w2
+who: A single person, 31, who lived in Brooklyn all of 2025 with one job (one Form W-2, $52,000 of wages, New York State and City tax withheld) and nothing else to report.
+end: complete
+profile: ny
+extends: 01_single_w2
+answers:
+  ny_it201.ask.city_resident: true
+  $ny_it2: [acme]
+  ny_it2[acme].state_withheld: 280000
+  ny_it2[acme].city_withheld: 190000
+  ny_it2[acme].yonkers_withheld: 0
+  ny_it201.ask.public_job: false

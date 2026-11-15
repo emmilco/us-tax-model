@@ -1,0 +1,22 @@
+ok    build (516s): build OK
+ok    test_fixtures (65s): fixtures: 1880/1880 passed through the command-line program
+FAIL  interview_rules (236s): see /var/folders/kw/rp67pf8d5ng588lqp7d_gb240000gn/T//draft-check-provisional-m1-54889/interview_rules.log
+  minimal returns: full: every gate closed asks 114 question(s); existence gates not reached there: asset.industry, asset.listed, asset.software, dependent.ever_married, dependent.lived_all_year, dependent.ptc_files, eic.lived_with_relative, f5695.line17b, f5695.line21a, f8889.coverage_year, f8962.o
+  minimal returns: ny: every gate closed asks 140 question(s); existence gates not reached there: asset.industry, asset.listed, asset.software, dependent.ever_married, dependent.lived_all_year, dependent.ptc_files, eic.lived_with_relative, f5695.line17b, f5695.line21a, f8889.coverage_year, f8962.oth
+  minimal returns: 71 return(s) with one existence gate opened
+  early completion: 0 input template(s) left reachable at completion, 0 held by the baseline
+  reach: 143 complete returns classed; 29131 leftover answer(s) withheld from their random traversals; 0 template(s) reached only out of bank order (0 held); 0 asked and unread (0 held)
+  pruning opportunities (asked in bank order, unread by the complete return):
+  time: no-input-set (profiles, choices, gated targets) 0.0 s
+  time: generate returns 1.3 s
+  time: completion and no-input-set: walks in bank order 57.0 s
+  time: order: reversed and shuffled replays 0.7 s
+  time: order: random traversals 133.9 s
+  time: completion: random subsets of the answers 1.4 s
+  time: minimal returns: every gate closed, and each existence gate opened alone 41.0 s
+  reports/2025/interview_pruning.md is not what this run finds; run: node engine/dist/main.js interview-rules --write-pruning
+interview-rules: 1 problem(s); 177 walks, each replayed reversed and shuffled; 415 answered in a random order
+ok    interview_coverage (1358s): interview-coverage: 0 problem(s)
+ok    tick_groups (44s): tick-groups: passed
+draft-check: RED
+exit 1

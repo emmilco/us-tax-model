@@ -4,8 +4,9 @@
  "family": "claude",
  "base": "29fb98fc5ef41cf40f29429a9231b56dba6721ca4d69be28a6cf0bdc6a0e9d8e",
  "head_rows": {
-  "match / mismatch / unclear / missing": "13 / 2 / 0 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
+  "lines judged": "32",
+  "match / mismatch / unclear / missing": "31 / 1 / 0 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -21,10 +22,112 @@
    "subject_key": "3714b4681bdbea1cd1b3ea1af0e7a7e94479b33728535e2222b8391d7dfd789e"
   },
   {
-   "key": "(screen) (asset.screen)",
-   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "key": "(screen) (asset.kind_excluded)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
    "status": "MATCH",
-   "subject_key": "57bbf4242d63a813eb3e0d010a8e115faf13b1a11c0776e8343144129b43596e"
+   "subject_key": "8a308b482a1282fd726d3511b201944b2b4f93d8fb3c8b8749beaa9aac508f34"
+  },
+  {
+   "key": "(screen) (asset.software)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "561b3e2b8e0c25e36f89d9a722eec38b9375b794166117520413cb4067cc0eb5"
+  },
+  {
+   "key": "(screen) (asset.software_spread)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "4ea780c564842de6d6bb5a7c3357dea6388f17636b8845fa3ac0381d8f20644f"
+  },
+  {
+   "key": "(screen) (asset.industry)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "900cdce5d0ac15f524d8d8ad68e6161314d87b84790006bbb8e731c0a25334e1"
+  },
+  {
+   "key": "(screen) (asset.industry_item)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "5ee02ec9c81d8b78b8679f915402e3632ad796cd88f5498a7e8572d0a2413e82"
+  },
+  {
+   "key": "(screen) (asset.long_production)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "4ee77e4fa508d7141c687c7ba8c2a487ee5a95ad3fd13615f0ba092604fa6fc0"
+  },
+  {
+   "key": "(screen) (asset.got_other)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "c60ca76c697cb6d957cf0623813f2306a2f50fb4a38abec852b9e55654869822"
+  },
+  {
+   "key": "(screen) (asset.acquired_before_bonus_date)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "f87d97233247be2984c1a832990130e3fcbf37a7aa9d080fe6483ade71f0ebcb"
+  },
+  {
+   "key": "(screen) (asset.used_before)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "ec9e42349fcd34e76085e21ed892619752a2936c595b76500b967cd9ad0edd76"
+  },
+  {
+   "key": "(screen) (asset.ended_this_year)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "9e31353b1659e06f82621d7ac59ce2ef7e3acc3a8349107dd7508088ea6e75d8"
+  },
+  {
+   "key": "(screen) (asset.basis_changed)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "7b69bc22b12011aeb3358397c7d7a4226b6efd459f4e1cd5eb4ea3941c5686d9"
+  },
+  {
+   "key": "(screen) (asset.use_changed)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "2d341869f4fe93bb4be8ebaaefa6710578196ff235e68b0bd1b30d4fae10159e"
+  },
+  {
+   "key": "(screen) (asset.short_year)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "193e46257a618b72ff6422610a5e253017fd6a3f22309a5ca2c62f161316f4ea"
+  },
+  {
+   "key": "(screen) (asset.method_other)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "a97dfda2628341e83926edb2d85d8756d9301ebdce14125f9a7c63dcf9f5db48"
+  },
+  {
+   "key": "(screen) (asset.ads_required)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "3ab2699aef9800d10da8eab9edd4b755c36db48354ca7e94793cff469b029604"
+  },
+  {
+   "key": "(screen) (asset.outside_use)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "4aec21cee432685821e55be8a90d84c7c2e6eef22942430171d1d5dc9abf9c7a"
+  },
+  {
+   "key": "(screen) (asset.qbu_low)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "2c99dba378003b4cefe44a781279e93d953e5396af6250ca024aa48d8770fdca"
+  },
+  {
+   "key": "(screen) (asset.screen)",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "87ce04459e8b55ca476d24edb9a2f82d43246291ee29d92c811eb7d59a0f97d7"
   },
   {
    "key": "(b)",
@@ -53,34 +156,33 @@
   },
   {
    "key": "14",
-   "record": "a72da620652921c00bed4d571f76549ba675d9dd301a77009fe177798d178018",
-   "status": "MISMATCH",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Both objections are answered by asset.screen, which refuses the property before any allowance is figured (asset.screened, refused at asset.cost): its list includes \"property with a long production period, an aircraft, or qualified production property\", so the 60% cases of i4562 p. 5, Line 14 never reach line 14, and \"its basis is reduced by a credit or deduction other than the section 179 deduction and the special depreciation allowance\" (the disabled access credit and the other credits named there), so the basis the allowance is figured on is cost times business use less section 179 on every accepted property. This round changed only the wording of asset.after_jan19 (the written binding contract rule, P.L. 119-21 sec. 70301(c)(4)), not an expression. Project stands.",
-   "subject_key": "7a91219263ee0b54010ac1d5799160151eac588f43e7d1a49d0eab4f7fb9645d"
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
+   "status": "MATCH",
+   "subject_key": "38f440b17578b36398dc461d04ee5d41a2af5679db0c3c2f59daac5d8329358c"
   },
   {
    "key": "25",
-   "record": "29fb98fc5ef41cf40f29429a9231b56dba6721ca4d69be28a6cf0bdc6a0e9d8e",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
    "status": "MATCH",
-   "subject_key": "7be801003da35365a22af5bbc047dd2fe73dd05d9824e28123bad0f3f4dd0ad4"
+   "subject_key": "0710c89e46df09fb20181f201905120586b51b1e80a064b9708279ddb363bbaf"
   },
   {
    "key": "26(i)",
-   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
    "status": "MATCH",
-   "subject_key": "83a4e642b69f3a8b2cbc5ccf3548d422cd323af3313977e9436bfc41c258730b"
+   "subject_key": "262d0739d6c95c52aab674d8ec32abcf830b7ccaa90edc93eb0031e00ef06d7e"
   },
   {
    "key": "19(c)",
-   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
    "status": "MATCH",
-   "subject_key": "aec9f506888c151719484fb786217cf8e4fc1bd48e92a54092dc6b659135b21a"
+   "subject_key": "4a42e5d8c525172cc319f90ab143b69945fe741d2051b84f3a4cb9c0fa218098"
   },
   {
    "key": "19(g)",
-   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
    "status": "MATCH",
-   "subject_key": "61a9d57fb7b50fa596d4e5e4ddf0b676212255b132af44dc771e7c2ce23763a8"
+   "subject_key": "53deadd854ea8596b5bb870b7475aa0f525fe4c252b566b05ab7031b22cdabdb"
   },
   {
    "key": "(e)",
@@ -90,33 +192,50 @@
   },
   {
    "key": "17",
-   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
    "status": "MATCH",
-   "subject_key": "b3d1e824ae61d4e2a6317a80c3bed7410ad9647a7a016a708a873f742f110fbf"
+   "subject_key": "ea6e7dab989b4d947738f4d3fe6d6d5f4f6d3c979fbb6b79c5c071055a1a957f"
   },
   {
    "key": "26(h)",
-   "record": "3bb68a4f714c9dea8a41a848ef9a70b2dc1ad8940de8d70719c12e5487ef8ae2",
+   "record": "002189e2739a192f833c44a760c31ab2c52d81bec144ecdfa0372de68b9375de",
    "status": "MATCH",
-   "subject_key": "5b9afc4d8ef78c12983e3c6014a1eaa8c72d25b2cfe9c56e57a5907afbfc3124"
+   "subject_key": "d0c61c284eabdb28447863721e9de6bc7bf85070e72b0ff1a56231b13f5620a5"
   }
  ],
  "subjects": {
   "(a)": "e7ddc5c08fd4fdfb949997e3fd3aaa39b70c52428a85a8e87272ea5c37bda358",
   "(d)": "b92ddb258734975b9f3862acfd79b1bee56e7844fd13894f7e35d6be7c8d8e54",
-  "(screen) (asset.screen)": "403bea3751c53fd013b85f53589e47ad6da348c6eee96cc150f54b347c4d6009",
+  "(screen) (asset.kind_excluded)": "a019cc8e6daa11e2b09cf8a6e3aba137960a90a2046de55f0ce643ff0b3e8e6a",
+  "(screen) (asset.software)": "9c6e3ddf1ddd68085b5c69bb9f290bf0b613527fc9801623a2a4c7ecb4967f4a",
+  "(screen) (asset.software_spread)": "1685bdc21554a5eb7d41b6667aabdbd69d9febabcd7e31fda51a900576f84a2c",
+  "(screen) (asset.industry)": "ce2d519f9b7418e89762ee713cd0919485bbed6cbad065d2dc8e09073ad3e26c",
+  "(screen) (asset.industry_item)": "e0be08b68eb9947a04593e7be3cd2c8d6c64edf2a42ac2aa8bc11e759dff1ccd",
+  "(screen) (asset.long_production)": "62956280f8c966c7ce57243213edb4b4832c15f386b5df5132c6811c8cef4b8f",
+  "(screen) (asset.got_other)": "7d5c84359526463d6faa2199afc6f811569f8f0ab9b28bc8035ddd8942436dee",
+  "(screen) (asset.acquired_before_bonus_date)": "9cce58239207ba32804c193cd3645014c8c2a2253cdbda5b7332af57ff377605",
+  "(screen) (asset.used_before)": "0652080a2272db9f7ed1ab4425339e863f08b8628f1c12bb4dc465519a1bbd80",
+  "(screen) (asset.ended_this_year)": "ff61f2d7b698d7c4a5eccad4ee8f4c805558c017d997a5be4fed97359c3737dd",
+  "(screen) (asset.basis_changed)": "13da748c6cf0469d5a859b4e5822c08a25a37002f14aa159cfdcf116308e8557",
+  "(screen) (asset.use_changed)": "780c60227a932185721d9828b17712c8831965041e6d0b9d908e8a279b0ae4c6",
+  "(screen) (asset.short_year)": "e9083a123aba0529f4e21964adbcf63359892a43df8172622f72ee0cd67eb9a7",
+  "(screen) (asset.method_other)": "28c83fd9ebd0d1680ba73c5d6eae66d9557c3375e25f42e59cc0b14be7131cc4",
+  "(screen) (asset.ads_required)": "1d98ba7709ea3c2c4e2e25a95b97a7186c4a072df7a42eb97ef4fbc0d18a261f",
+  "(screen) (asset.outside_use)": "057bbc627ac1ea1f57f87d3d3839450cee8a345f9aef6f67bfcddafb96cbdaf0",
+  "(screen) (asset.qbu_low)": "32091f6e2cfdbf48e73f3f4313ab0e8b18b8b1009fd99e9e47bef71f5a232fba",
+  "(screen) (asset.screen)": "f06861bd522fdee63cddd21bd7af3ebf1e174ba02822466976ea044986c0f300",
   "(b)": "11c2b67acc1cf618b82feacbaddb645adda0fb28a8d1efc758cf7952f6f6cfd8",
   "(c)": "d73586c607b01c97ecdfab67f565e7b67aaf3ed18e11df61d97bab267ebb8f74",
   "6(c)": "084dddb1873a0f47ceb66432c36955190ec9664cc738b5f474619c191e8ecce7",
   "(screen) (asset.bonus_same)": "2f34e9e3885fb3fa0b0ec17dc96999e5445e98b80c54ddbaaa89064cca8fe4ea",
-  "14": "3a16970b01165cd92c9d603c7372bd275326d51166731ad46b543f6dcb7ac6a1",
-  "25": "4b426ebe7b78071c2a8116ed219a8177a4e50a5d5cd1964666a8cbc004017fea",
-  "26(i)": "972bf999bb72cb2de985955f855b6d9c9bae4e980b417a580fd7fd6d51ef6d5a",
-  "19(c)": "5b66752b589f0971467311e10fed998f21c63678fcf35bcdfbd9884586abec92",
-  "19(g)": "03bbe7b036774ffb313bb79f78b8a4f71d9012e5e129191f610ef58659e0be41",
+  "14": "9f060452e4e60a98f54bba1a613a71f12774ecdddeec289bfdca3179a44b3fdb",
+  "25": "5fe2cf1eb056cca2b382dbe5e205a53e5d6501fb357bf963c8b77e888bd2b8de",
+  "26(i)": "bb09d632dc3206a619b644782e320cfed13ece031bccc137a682a4550e83cf3d",
+  "19(c)": "5df248855ebb6efd9abcfe23563599e1cb692ec556ebd68007dca66521856d33",
+  "19(g)": "9e8d2e9003578462447625c39e31294ecc157a28bb16f65ed400b360cbe08287",
   "(e)": "58c601084fe91483f688a5198d983bff68af4e5e06906923295c9f5e6a2925d6",
-  "17": "6a34fb433b328c67729c214a1ec1207019105c47a5d049f10f94ffc4706a75c5",
-  "26(h)": "c177f61a98dd2618c32a9fb4836533b01729248ee90a47cec70859fcd50cecd9"
+  "17": "0c3c0b28574f39e5f67efbb35890b02de00aa0aaff1ab2e1de7f82240355b708",
+  "26(h)": "63e05b097debabcc70c2f7038843de34549ce2b0245f9a6977e2b9ea9f71e198"
  },
  "__rest__": "f636cbc4d4d8b77135b4fed9b7130553c8aeaa64b4580beda19da8d4f7a1c38a"
 }

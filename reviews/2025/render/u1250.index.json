@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -88,16 +88,16 @@
   },
   {
    "key": "11",
-   "record": "375e37c2acfc3c69671458e5702769eaecc8d48aa336d3c9824bf85050517e99",
+   "record": "f98f8c6fbbc04383d763b3c693bb7d991c5840cd1ebf2f83909602ff3a36da2a",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040sd p. 13, Unrecaptured Section 1250 Gain Worksheet, line 11: \"Enter the total of any amounts reported to you as “unrecaptured section 1250 gain” on a Schedule K-1, Form 1099-DIV, or Form 2439 ...\" Schedule K-1 and Form 2439 amounts: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") refuses them, reaching Form 1040 line 7a through Schedule D lines 7, 15 and 16 (as the earlier rulings of this line); a Form 1099-R lump-sum distribution by retirement.special (\"a lump-sum distribution you may report on Form 4972\"), as in the earlier rulings. Within scope line 11 is Form 1099-DIV box 2b alone. The box 2a condition is the box 2b input's: f1099div p. 5, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\", so box 2b is zero when box 2a is. Project retained.",
-   "subject_key": "c6f736d117f28c78050706985f9c469fec4680ea0d9bc4f0657e4c1a09ca67ef"
+   "ruling": "Ruling: scope; i1040sd p. 13, Unrecaptured Section 1250 Gain Worksheet, line 11: \"Enter the total of any amounts reported to you as 'unrecaptured section 1250 gain' on a Schedule K-1, Form 1099-DIV, or Form 2439 ... or in connection with a Form 1099-R\", as the earlier rulings. Form 2439 is refused through sd.f2439, a limb of sd.other_forms (refusing Schedule D); Schedule K-1 through scope.k1, a limb of scope.schedule1 (scope.ready); a Form 1099-R lump-sum distribution with a capital gain part (only for a participant born before January 2, 1936) through retirement.lump_sum_if_born_before_averaging_date, a limb of retirement.special. Within scope line 11 is Form 1099-DIV box 2b alone, \"the portion of the amount in box 2a\" (f1099div p. 5). Project stands.",
+   "subject_key": "fbeb93399add9c055763093eef12023d544a879829e0a9fd42b1480c00605c06"
   },
   {
    "key": "13",
-   "record": "375e37c2acfc3c69671458e5702769eaecc8d48aa336d3c9824bf85050517e99",
+   "record": "f98f8c6fbbc04383d763b3c693bb7d991c5840cd1ebf2f83909602ff3a36da2a",
    "status": "MATCH",
-   "subject_key": "3cfb0c008b4fa1cf30b4a382bcac603983e757697e9de8c7990803edf1776d9a"
+   "subject_key": "1b7c3d498793b6cd4c631550107d45812bc7ac560a83d62acafcd3b2486a3a8c"
   },
   {
    "key": "14",
@@ -138,8 +138,8 @@
   "10": "391cc8565050b58ecec8b1554c09b5bfc5b2381d0b1b5a538b2cb5245cd8933f",
   "12": "ed381921c0beefae9d9a2aa8a9fc51151d103baa8dccaed314f3a0ee2a71e118",
   "16": "90db11e965da6d903458a9ad09b77f266c00b798caabb395b986f639c257c12f",
-  "11": "c10887b7f9393fad982b7c30addc378ae36a1bc3e1188cad6dbf8bf4202b1c20",
-  "13": "6b254348f75a19e7f1b2289512cfd141c6cd17e05652855c4a750703bf193201",
+  "11": "5e3789a7accf873322482ab2fff00bcd09c99ba2733f52971ba75150c47e678c",
+  "13": "d30255b9bcb8ef8f8eccbeaef9edce66bd633b2460b877daa92c238041b291a9",
   "14": "02dad5573bf37912eb969fc61ab59c1dd018dbef49505fa45455c71f5b7f7f05",
   "15": "81ecb18775a038cfee1e4cad052056de403e95111259fcadd2c1f33a9ae2e660",
   "17": "28254859ee2237f89b26fc3aa6970c5977bc2066b9fb399befd608c1b86abe5b",

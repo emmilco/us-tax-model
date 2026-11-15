@@ -2,7 +2,8 @@
 // return: every value, status, refusal and question comes from the engine. The current question is the page's centre,
 // with its source beside it; the answered list, the values sheets with their derivations, and the scope and notices
 // are views one tab away; a refusal's details open in a dialog from the status line. Every question shows its id: the
-// input key the engine and the answer log know it by.
+// input key the engine and the answer log know it by. A few yes or no questions the bank groups are shown as one
+// screen of tick-boxes (`renderGroup`); each is still answered, listed and corrected as a question of its own.
 
 import { api, button, el, longText, richText, textBlocks } from "./text.js";
 
@@ -21,9 +22,13 @@ interface Recorded { input: string; value: unknown; shown: string }
 interface Choice { label: string; value: string[]; labels: Record<string, string>; records?: Recorded[] }
 interface FormRef { designation: string; id: string; title?: string; purpose?: { text: string; doc: string; page: number } }
 /** `value_order`: a labelled enum's values in the order offered; `withheld`: the values not offered; `frame`: the per-person
- * frame the prompt begins with ("About your spouse"); `recorded` (an answered roster question): what its answer recorded. */
+ * frame the prompt begins with ("About your spouse"); `recorded` (an answered roster question): what its answer recorded;
+ * `group` and `tick`: the tick-box group the question is a member of and the words shown beside its box. */
 interface Question { input: string; prompt: string; help: string; cite: Cite; helpRequested?: boolean; type: string; values?: string[]; choices?: Choice[]; value_labels?: Record<string, string>;
-  value_order?: string[]; withheld?: string[]; frame?: string; recorded?: Recorded[]; value?: unknown; forms?: FormRef[] }
+  value_order?: string[]; withheld?: string[]; frame?: string; recorded?: Recorded[]; value?: unknown; forms?: FormRef[]; group?: string; tick?: string }
+/** The tick-box screen the next question is shown in: its heading as shown and the questions shown as its boxes, in
+ * asking order. */
+interface Group { id: string; heading: string; frame?: string; members: Question[] }
 interface SheetLine { key: string; printed: string; label: string; value: Value; status: string; shown: boolean; notes: string[] }
 interface Section { doc: string; title: string; entry: string | null; lines: SheetLine[] }
 /** A refusal whose gate is a consistency check: answers that contradict each other, not an unsupported case. */
@@ -33,7 +38,7 @@ interface State {
   /** What the interview adds to the refusal: what the filer can do next. */
   refusalNote: string | null;
   conflicts: Conflict[];
-  pending: Question[]; answered: Question[]; scope: string; notices: string; standingNotices: string[];
+  pending: Question[]; group: Group | null; answered: Question[]; scope: string; notices: string; standingNotices: string[];
   values: Record<string, Derivation>; sheets: { federal: Section[]; newYork: Section[] }; changed: string[];
   entryLabels: Record<string, string>;
 }
@@ -430,6 +435,9 @@ function renderQuestion(): void {
       el("p", { class: "lede" }, "You can change any answer from the Answered tab, or see how each line was figured under Your return so far.")));
     return;
   }
+  // The next question's tick-box group, unless a question was chosen: a chosen question is shown on its own.
+  const group = reopened ? null : state!.group;
+  if (group) { renderGroup(panel, group, group.members); return; }
   const { q, correcting } = current;
   const errorLine = el("p", { class: "field-error", id: "field-error", role: "alert" });
   const submit = async (value: unknown, labels?: Record<string, string>) => {
@@ -556,6 +564,62 @@ function renderQuestion(): void {
     el("div", { class: "actions" }, help));
   panel.replaceChildren(savedLine(), ...conflictBlocks(), ...refusalNoteBlocks(), el("article", { class: "question", "data-input": q.input }, main, sourceBlock(q.cite)));
   if (view === "question") (panel.querySelector("#answer-input, .widget .choice, .roster-row input") as HTMLElement | null)?.focus({ preventScroll: true });
+}
+/** A tick-box group: the heading, one box per open member with its label, and two ways to answer. "None of these"
+ * records No for every member shown; "Continue" records Yes for the ticked and No for the others. The answers go to
+ * the server together and are saved together or not at all. Each member's own question, its explanation and its
+ * source are behind "What this asks", with a control that shows the member as a question on its own. */
+function renderGroup(panel: HTMLElement, group: Group, members: Question[]): void {
+  const errorLine = el("p", { class: "field-error", id: "field-error", role: "alert" });
+  const labelId = "prompt-heading";
+  const label = (q: Question) => q.tick ?? firstLine(q.prompt);
+  const boxes = members.map((q, i) => el("input", { type: "checkbox", id: `tick-${i}`, "data-input": q.input }) as HTMLInputElement);
+  const submit = async (ticked: boolean[]) => {
+    errorLine.textContent = "";
+    try {
+      state = await api<State>("POST", `/api/returns/${encodeURIComponent(state!.name)}/answers`, { answers: members.map((q, i) => ({ input: q.input, value: ticked[i]! })) });
+      const yes = members.filter((_, i) => ticked[i]).map(label);
+      lastSaved = { prompt: shortPrompt(firstLine(group.heading), 90), answer: yes.length ? yes.join("; ") : "None of these", changed: state.changed.length };
+      reopened = null;
+      render();
+    } catch (e) { errorLine.textContent = `Not saved: ${(e as Error).message}`; }
+  };
+  const none = button("None of these", { class: "choice", id: "ticks-none" }, () => void submit(members.map(() => false)));
+  const go = button("Continue", { class: "primary", id: "ticks-submit" }, () => void submit(boxes.map((b) => b.checked)));
+  // One way to answer is live at a time: with nothing ticked only "None of these", with a box ticked only "Continue".
+  const sync = () => {
+    const n = boxes.filter((b) => b.checked).length;
+    go.disabled = n === 0;
+    none.disabled = n > 0;
+    go.textContent = n === 0 ? "Continue" : `Continue with ${n} ticked`;
+  };
+  const items = members.map((q, i) => {
+    boxes[i]!.addEventListener("change", sync);
+    const more = el("details", { class: "tick-more" },
+      el("summary", {}, "What this asks"),
+      longText(q.prompt, "tick-prompt", `tick-prompt-${i}`, "question", false),
+      q.help ? longText(q.help, "help-text", `tick-help-${i}`, "explanation", true) : null,
+      el("p", { class: "meta" }, `Source: ${citeText(q.cite)}`),
+      // A box whose question is open now can be shown as a question of its own.
+      state!.pending.some((p) => p.input === q.input) ? button("Answer this one on its own", { class: "link", "data-alone": q.input }, () => reopen(q.input)) : null);
+    return el("li", { class: "tick", "data-input": q.input },
+      el("label", { for: `tick-${i}` }, boxes[i]!, el("span", { class: "tick-label" }, label(q))),
+      questionIdTag(q.input),
+      q.helpRequested ? el("p", { class: "note" }, "You asked for help with this one.") : null,
+      more);
+  });
+  sync();
+  const about = aboutContext(members[0]!);
+  const main = el("div", { class: "ask" },
+    about ? el("p", { class: "about" }, `About: ${about}`) : null,
+    el("h2", { class: "prompt-heading visually-hidden", id: labelId }, shortPrompt(firstLine(group.heading), 160)),
+    longText(group.heading, "prompt-text", "prompt", "question", false),
+    el("p", { class: "hint" }, "Tick each one that is true, or choose “None of these”."),
+    el("ul", { class: "ticks", role: "group", "aria-labelledby": labelId }, ...items),
+    el("div", { class: "entry tick-answers" }, none, go),
+    errorLine);
+  panel.replaceChildren(savedLine(), ...conflictBlocks(), ...refusalNoteBlocks(), el("article", { class: "question tick-screen", "data-group": group.id }, main));
+  if (view === "question") boxes[0]!.focus({ preventScroll: true });
 }
 function shortPrompt(text: string, n: number): string {
   if (text.length <= n) return text;

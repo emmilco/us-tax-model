@@ -11,15 +11,54 @@ form:
     counted.
   lines:
     # Questions the flow chart asks of the filer.
+    - id: eic.lived_with_relative
+      printed: (helper)
+      type: Bool
+      label: Did you live for more than half of 2025 with a person whose qualifying child you could be by relationship?
+      expr:
+        op: input
+        source: In 2025, did you live for more than half the year in the same home as your parent, grandparent, brother, sister,
+          aunt or uncle, or a foster parent? Count time you were temporarily away, for example at school.
+      cite:
+        doc: i1040gi
+        locator: 'p. 41, Step 3, Qualifying Child, "A qualifying child for the EIC is your... Son, daughter, stepchild, foster child, brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them" and "Who lived with you in the United States for more than half of 2025"; p. 41, Step 3, question 6, and p. 42, Step 4, question 5'
+      note: A plain question in front of eic.qc_of_another. A person is the qualifying child of another only when that other is
+        the person's parent, stepparent, foster parent, brother or sister (step or half included) or an ancestor of one of
+        them, and the two lived together for more than half of 2025; a filer who lived with no such relative for more than
+        half the year is no one's qualifying child.
     - id: eic.qc_of_another
       printed: (helper)
       type: Bool
+      gated_by: eic.qc_of_another_if_lived
       label: Could you be a qualifying child of another person for 2025?
       expr:
         op: input
         source: Could you be a qualifying child of another person for 2025? Answer no if the other person isn't required
           to file, and isn't filing, a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income
           tax or estimated tax paid.
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, question 6, and p. 42, Step 4, question 5
+    - id: eic.qc_of_another_if_lived
+      printed: (helper)
+      type: Bool
+      label: Whether you could be a qualifying child of another person, asked only when you lived for more than half of 2025 with
+        a relative whose qualifying child you could be (false otherwise)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - eic.lived_with_relative
+                - const: true
+            then: eic.qc_of_another
+          - guard:
+              op: test
+              eq:
+                - eic.lived_with_relative
+                - const: false
+            then: eic.no
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, question 6, and p. 42, Step 4, question 5
@@ -36,18 +75,18 @@ form:
           all:
           - op: test
             eq:
-            - person.born_before_2001
+            - person.eic_age25
             - const: true
           - op: test
             eq:
-            - person.born_after_1960
+            - person.eic_under65
             - const: true
       cite:
         doc: i1040gi
         locator: p. 41, Step 4, question 2, "Were you, or your spouse if filing a joint return, at least age 25 but under
           age 65 at the end of 2025? (Check 'Yes' if you, or your spouse if filing a joint return, were born after December
           31, 1960, and before January 2, 2001.)"
-    - id: eic.died_2025
+    - id: eic.died_this_year
       printed: (helper)
       type: Bool
       label: Spouse died in 2025, or a return for someone who died in 2025?
@@ -72,7 +111,7 @@ form:
         locator: p. 41, Step 4, question 2, "Were you, or your spouse if filing a joint return, at least age 25 but under
           age 65 at the end of 2025?"
       refuses:
-        - when: eic.died_2025
+        - when: eic.died_this_year
           form: EIC age test after a death in 2025 (Pub. 596)
           remedy: When your spouse died in 2025 or the return is for someone who died in 2025, the EIC age test is answered under Pub. 596, which this tool does not apply.
           cite:
@@ -716,7 +755,7 @@ form:
       expr:
         op: test
         eq:
-        - eic.qc_of_another
+        - eic.qc_of_another_if_lived
         - const: false
       cite:
         doc: i1040gi
@@ -824,7 +863,7 @@ form:
           all:
           - op: test
             eq:
-            - eic.qc_of_another
+            - eic.qc_of_another_if_lived
             - const: false
           - op: test
             eq:
@@ -1808,7 +1847,7 @@ form:
                   - const: mfj
               - op: test
                 eq:
-                  - eic.qc_of_another
+                  - eic.qc_of_another_if_lived
                   - const: true
           - op: test
             all:
@@ -1860,7 +1899,7 @@ form:
                   - const: mfj
               - op: test
                 eq:
-                  - eic.qc_of_another
+                  - eic.qc_of_another_if_lived
                   - const: true
           - op: test
             eq:
@@ -1968,7 +2007,7 @@ form:
               - const: true
           - op: test
             eq:
-              - eic.qc_of_another
+              - eic.qc_of_another_if_lived
               - const: false
       cite:
         doc: i1040gi

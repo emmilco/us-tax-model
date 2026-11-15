@@ -1,0 +1,63 @@
+name: 02_couple_children_mortgage
+who: A married couple filing together, each with one job (two Forms W-2, $95,000 and $68,000), two children aged 3 and 6, and a mortgaged home; they itemize.
+end: complete
+answers:
+  $person: [taxpayer, spouse]
+  $w2@person[taxpayer]: [northside_hospital]
+  $w2@person[spouse]: [city_schools]
+  $dependent: [older_child, younger_child]
+  household.married_dec31: true
+  dependent[older_child].other_claimant: false
+  dependent[older_child].parents_apart: false
+  dependent[older_child].relationship: child
+  dependent[older_child].age: 6
+  dependent[older_child].younger: true
+  dependent[older_child].ever_married: false
+  dependent[older_child].own_money: false
+  dependent[younger_child].other_claimant: false
+  dependent[younger_child].parents_apart: false
+  dependent[younger_child].relationship: child
+  dependent[younger_child].age: 3
+  dependent[younger_child].younger: true
+  dependent[younger_child].ever_married: false
+  dependent[younger_child].own_money: false
+  dependent[older_child].lived_all_year: true
+  dependent[older_child].citizen_ssn: true
+  dependent[younger_child].lived_all_year: true
+  dependent[younger_child].citizen_ssn: true
+  person[taxpayer].w2[northside_hospital].box1: 9500000
+  person[taxpayer].w2[northside_hospital].box2: 1050000
+  person[taxpayer].w2[northside_hospital].box4: 589000
+  person[taxpayer].w2[northside_hospital].box5: 9500000
+  person[taxpayer].w2[northside_hospital].box6: 137750
+  person[spouse].w2[city_schools].box1: 6800000
+  person[spouse].w2[city_schools].box2: 720000
+  person[spouse].w2[city_schools].box4: 421600
+  person[spouse].w2[city_schools].box5: 6800000
+  person[spouse].w2[city_schools].box6: 98600
+  sa.state_tax_any: true
+  sa.line5a: 780000
+  sa.home_owner: true
+  sa.mortgage_unreported: false
+  sa.line5b: 520000
+  sa.property_tax_other_any: false
+  sa.mortgage_interest: 1890000
+  sa.mortgage_over_limit: false
+  sa.mortgage_other_use: false
+  sa.gifts: true
+  person[taxpayer].tin: true
+  person[spouse].tin: true
+  s3.mcc: false
+  sa.charity_limited: false
+  $gift: []
+  sa.line11: 310000
+  person[spouse].work_ssn: true
+  person[taxpayer].work_ssn: true
+  household.credit_disallowed: false
+  s8812.puerto_rico: false
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false
+  s2.mortgage_subsidy: false

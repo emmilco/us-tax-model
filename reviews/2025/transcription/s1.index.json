@@ -4,8 +4,9 @@
  "family": "claude",
  "base": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
  "head_rows": {
-  "agree / disagree / missing": "21 / 6 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-11); see Line-scoped reviews"
+  "printed lines compared": "32",
+  "agree / disagree / missing": "23 / 9 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,9 +23,10 @@
   },
   {
    "key": "s1.has_gambling",
-   "record": "b3b79c6e43f54c5933e68ca7b16a2668e64b7fd966bc7391050b6a1528c3002d",
-   "status": "AGREE",
-   "subject_key": "a6bf244a5cb6f6f990487c711554b0a5cf91038cd3cd6c2aa8399c04bca84050"
+   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply tests line 8b, the project the gated winnings amount that line 8b copies (s1.gambling_winnings_if_winnings); they differ only where line 8b refuses for a professional gambler (s1.gambling_business: p525 p. 33, \"If you're in the trade or business of gambling, use Schedule C\") or its question is unasked. Triage (pass eba464d939db): 3,551/3,553 agree; 1 candidate-refuses (refused return, stage16.refuse.s1.gambling_business), 1 candidate-unknown (incomplete); no value difference.",
+   "subject_key": "5a3860bd96681b0f615f647b60cf1655bcf61eee758f1a7ee6a97b3af577084c"
   },
   {
    "key": "1",
@@ -35,10 +37,10 @@
   },
   {
    "key": "7",
-   "record": "43060c69017339a33c29fdf276af644ac46b8a56449810b0052d966be21f01b6",
+   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 89, Schedule 1, line 7: \"If you received an overpayment of unemployment compensation in 2025, subtract the amount you repaid from the total amount you received\". Where both give a value the reply's amount is the project's (unemployment compensation paid less the 2025 repayment, floored at zero); but the reply subtracts s1.uc_repaid and declares its refusal on s1.uc_unsupported on every return, where the project reads the repayment only when compensation was paid and the interview asks the repayment and the screen only then. So on returns with no unemployment compensation the reply needs answers the interview does not ask (candidate-unknown; the recorded witnesses name s1.uc_unsupported), and on records that answer the screen yes without compensation, which the interview cannot produce, it refuses. Triage executable-triage-v2 (`.transcription/triage/2025/s1.json`, pass b317ac242aaa; 1,767 fixtures, 500 generated returns seed 20261026): 2,427 of 2,897 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 11, \"candidate-unknown\": 470}; on completed returns 172 candidate-unknown and 2 candidate-refuses, each with the project's value zero; no value differs. The project line is retained.",
-   "subject_key": "35bfb552ae525af2811a66057e218fba76c98a8a9b06fc6464a8599f73c5aa45"
+   "ruling": "Ruling: representation; both give box 1 of Form 1099-G less a 2025 repayment, floored at zero (i1040gi p. 89, Line 7, \"subtract the amount you repaid from the total amount you received\"). The reply refuses on s1.uc_unsupported for every filer, the project only when unemployment compensation was received (s1.line7_figured): contributions to a program reduce \"the amount you report on line 7\" and an earlier-year repayment is not a line 7 amount, so with no compensation line 7 is zero either way. Triage (pass eba464d939db): 2,804/3,553 agree; differences only candidate-refuses/candidate-unknown on s1.uc_unsupported where the project has no compensation (19 + 15 on completed returns, project 0); no value difference.",
+   "subject_key": "0de5ca1752aa6387b4934a56c71bed50d3cc37126288eec82306c2cd7dc39cdf"
   },
   {
    "key": "7 (box)",
@@ -61,9 +63,39 @@
   },
   {
    "key": "8b",
-   "record": "b3b79c6e43f54c5933e68ca7b16a2668e64b7fd966bc7391050b6a1528c3002d",
+   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
    "status": "AGREE",
-   "subject_key": "b9f77e4e6bfe059a6a7dcf4362988b4b239154525e21a580938447ed4ba54fcc"
+   "subject_key": "df90c5d8dddc413967157af4a4569ee702b676c13730fb0b0e16fee3f348e800"
+  },
+  {
+   "key": "8g",
+   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
+   "status": "AGREE",
+   "subject_key": "6d17c7bb92d4000745f25755a49a2b719a051eb86341317e4c046ff17b33becc"
+  },
+  {
+   "key": "8h",
+   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
+   "status": "AGREE",
+   "subject_key": "dbe2eb8249140514ec8930cd78659837265ab272b678f715392b90cc41d17810"
+  },
+  {
+   "key": "8i",
+   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
+   "status": "AGREE",
+   "subject_key": "c71005fa833cfca1914ea2158cd8391d22cf4767e6c66e2f742e600cb48e19e6"
+  },
+  {
+   "key": "8j",
+   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
+   "status": "AGREE",
+   "subject_key": "ae23662c16a80209665176d2de0b1f64629f791021b74446c4bf06b1315e410c"
+  },
+  {
+   "key": "8r",
+   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
+   "status": "AGREE",
+   "subject_key": "b0f1fef4c75dac0dd26b5cb9ba4e682e9aeac6da639b1b95087e9b65ee244d09"
   },
   {
    "key": "8z",
@@ -73,9 +105,10 @@
   },
   {
    "key": "2a",
-   "record": "43060c69017339a33c29fdf276af644ac46b8a56449810b0052d966be21f01b6",
-   "status": "AGREE",
-   "subject_key": "eb14c7e0795df60f5711bdf66ff9549e958056b45d3269a7ed486c2c1b3fe864"
+   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent: the reply's conjunction (s1.alimony_any and s1.alimony) is the project's gated choose of s1.alimony_received, with zero otherwise (i1040gi p. 89, Line 2a). Triage (pass eba464d939db): 3,553/3,553 agree, no difference of any kind (an audit sample held from mechanical ruling).",
+   "subject_key": "5ab3b9e41573643ec261266b0e36f74b6897ffa437418a7a56e90fac28e9f500"
   },
   {
    "key": "8c",
@@ -92,9 +125,9 @@
   },
   {
    "key": "9",
-   "record": "43060c69017339a33c29fdf276af644ac46b8a56449810b0052d966be21f01b6",
+   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
    "status": "AGREE",
-   "subject_key": "cd945aba7a5a7cb5395a1be0d059a29896b05476aacbf1a6e2c6de95b63eab68"
+   "subject_key": "b71837ffd1fd226736cc9d964387dd77926dd4d6ac19470f118bd8b90e8944cd"
   },
   {
    "key": "10",
@@ -141,9 +174,10 @@
   },
   {
    "key": "19a",
-   "record": "b3b79c6e43f54c5933e68ca7b16a2668e64b7fd966bc7391050b6a1528c3002d",
-   "status": "AGREE",
-   "subject_key": "204fe8567b6f5295406353014ad7097fef14804234bf654011278bae21b19c01"
+   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3554 values compared, none different or missing: 1987 on 1987 fixture cases, 500 on 500 generated returns seed 20261026, 1067 on 1067 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "4c798f6948faa27a475b4fe9bef11ce8d05728d2123c7196e754fc87fd5c4cdd"
   },
   {
    "key": "20",
@@ -159,10 +193,10 @@
   },
   {
    "key": "24a",
-   "record": "6e7bd13b456e72dae0d3414b9e99c56b9ab16aee5426c2f12e73d1101fb5005c",
+   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.2025.jury_24a_cap. i1040gi p. 91, Line 8h, \"Enter any jury duty pay and see the instructions for line 24a\"; p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer\"; p525 p. 34, Jury duty, \"Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h. If you must give the pay to your employer ... you can deduct the amount turned over to your employer\". The candidate reads the amount given to the employer directly; the project reads it through s1.jury_to_employer_if_pay, which asks it only when line 8h is above zero and is zero otherwise. They differ only where line 8h is zero and an amount given is entered, which the chosen reading of amb.2025.jury_24a_cap treats as an impossible entry (the pay given is part of the pay on line 8h); with line 8h zero the project no longer asks it. executable-triage-v2 (`../triage/s1.json`; 1,638 fixtures, 500 generated returns seed 20261026, 586 partial records): no value difference; 41 candidate-unknown (21 on completed returns, where line 8h is zero and the amount given is withheld) and 40 project-unknown, on incomplete or refused records. Project stands.",
-   "subject_key": "2b3a6475361f7b21971b94c40c1faea681e9bf037d4be8c54b19489b1275c7c0"
+   "ruling": "Ruling: representation; both enter the jury duty pay given to the employer (i1040gi, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury\"). The reply gates on the parent question s1.jury_any, the project on line 8h being more than zero; they part only where jury pay is zero (nothing to give back) or a question is unasked. Triage (pass eba464d939db): 3,549/3,553 agree; 4 project-unknown (incomplete/refused); no value difference.",
+   "subject_key": "5a7846899689ffc83e34e767b26b1c82cf615bd5a45ab3b6309725f8cc8b4c2c"
   },
   {
    "key": "25",
@@ -180,18 +214,23 @@
  "subjects": {
   "s1.has_sc": "0fe1b1b9461b2a4c48585ceada14a7c4ecfedd2f9f0ed4039dcbb6dcbb4ff250",
   "s1.sc_1a": "5c6f1b079cd92fba4c6d2b1a6f359ba77427d33e9f45725797617359bf69d6c5",
-  "s1.has_gambling": "c49e1bc96c6528f134a282131fcc23cc54835476256c2415a4b4dd4290d4209f",
+  "s1.has_gambling": "53187f318247b17e052505192c3f65724ecec0c5fe10054fa1282c68ff26c1da",
   "1": "22095d5b679fd68f482e87a713c5db00395fae9e5a4f972380f9559246c90320",
-  "7": "61d0d07047d70f556c77e7c05f40be5dbf7578e90f7f0354a5300240086f4843",
+  "7": "fcd2529d8f0221272b86fb99f937008156f8d53cf113ff460a3c1cc620d0053f",
   "7 (box)": "6800053d71cb26ff4f4fcf6c1914d4c22fff5f4df1300d2e07af4e8184f1139f",
   "7 (amount repaid)": "5b9e4b8684f95b8e68638e79322cce45359abe70ac55476ea167d454ca65a490",
   "3": "c97c946386c5fb2067144aa7f84b4311e2207f35de90cd4575a6a5145f2a548e",
-  "8b": "d9354a3723dd0e3d5a892ffd25196dd0e7eb9f88926ffa6206874ebf39612682",
+  "8b": "317c9af4b8707be06471ed88e4d9b39551d8cf70d504260681d24c58481737b4",
+  "8g": "f97329321b0a39d024ab667e4b1a9066383f5510a46e325d0ef15c37ce806768",
+  "8h": "a624e95b6ab59b1369cedeaaff167e84b80885b45dca5831904fce89ed2159ed",
+  "8i": "eab395b360ced398ef837fd7768bb73a7f66783308ef16c5d8bd77bb4708f212",
+  "8j": "07e50c701ff1bfaf2dadb97455272aa6f7a195da5c9d1d94ed31d2b83f455ac9",
+  "8r": "720cc9bb1292a75cab91b2043c69ba63eb165615a5502519289301806495d335",
   "8z": "630e42eaae09bcc1f9c3a94b62627ca12df3047d675eedcd4e7443f1360b1dcb",
-  "2a": "73f917bb0d55338d2a6290e8224d39fb8546bb74882c2d6504b8b11124e6920a",
+  "2a": "2624bf842fdb3dea79f7e27e69337c835de05e667027bbcb00126ba016de922a",
   "8c": "cd3eb2275592cfa79fd45d7f97cc301f7031d9b18f9b6ce065b0936d54bfadca",
   "8f": "dee58c3a3a2e9d420ebd44edc73fd91c3b2398b04d3f339930e9912c50bae6cb",
-  "9": "d07b77234274dceb7137636cb0fad15675bf76e3365d8fac08d641d46eb1bfd1",
+  "9": "d273332a6d53d80671c67e26f1e25f268f0857a77460bfe1d057b32f2a7f9f70",
   "10": "6c36a2439085118e58153a4eedf06b6b3556c61da0268e00e54e72c18962a6d9",
   "11": "044622b1359c92e89ddafdebcf93219d03874a227210145e840c3635ea4836eb",
   "13": "544655e51ba5584cd13ac2f7d4ae27838a90075a0ecba6e0be48c48c12c4de13",
@@ -199,10 +238,10 @@
   "16": "46ccfd82cbcf302bc2c6dd19178440f482f2a3a979fae3924279fe41cbd9db44",
   "17": "ae8565ac3ac27148d55fda031fb952dd231c17d638c5f37fdb31bae596f0c399",
   "18": "d0843bef728c388d96ec672f0464994db9be0ac65197c5e23a6f9963b6ba97ab",
-  "19a": "8b978dc12d61418e77270db65426dd722088a74d8bb097dd281189e53433f46a",
+  "19a": "289a02980b1fc161aa2e65a6f37322ec0a2ec781f201714963b366f773ad12f8",
   "20": "b550eeb947adf246372cd559bbc937259ff83c85f8a2e7e1c191a5bdac8b61a2",
   "21": "1a5d9962277c896a177908b1334498f2ad890269bdcbe23a087e88d4cf52777c",
-  "24a": "1a07d314abe52be1b8483fe634bff5cb3c320b672b3af641ea83a8234870f9a6",
+  "24a": "74e87d07a1be2c9186862fecfde0af3a91e7cd86b6f8d96d19ad07a7049b06be",
   "25": "c38ffe50b1c38810522edb06965e35cef4cb3a1489b32da902ee06976a5d733d",
   "26": "8a994c6eee6006255d99630346fdabaadca00d972b915194e48e0c524fe81b65"
  },
@@ -213,10 +252,15 @@
   "7 (box)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "7 (amount repaid)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "8b": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
-  "2a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8g": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8h": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8i": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8j": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8r": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "2a": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "8c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "9": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "19a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "9": "469bee8697dab6d4542734647dc5fbaf74dff8039fc97fdc6dddd2e3fe593111",
+  "19a": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "24a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
  }
 }

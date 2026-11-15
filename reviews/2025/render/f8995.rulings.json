@@ -57,6 +57,16 @@
    "model": "The IRS line says 'Combine lines 1i through 1v, column (c)', which sums QBI per trade, business, or aggregation. The restatement sums person.qbi per person, and person.qbi is not defined in the glossary, so it cannot be confirmed to equal the per-business column (c) total.",
    "ruling": "Ruling: representation; restatement accepted. person.qbi is the sum over the person's Schedule C entries of sc.qbi, which is Form 8995 line 1 column (c) for that business (person.yaml, cited to i8995 pp. 2, 4); line 2 adds them over the persons on the return, which is lines 1i to 1v column (c) with one row per Schedule C, and more than five businesses are included in the line 2 total as i8995 says ('include the income and loss from those trade(s) or business(es) in the total for line 2'). Other trades or businesses are refused through qbi.unsupported.",
    "subject_key": "80623d9574d20ec06082c7d1db595376ce14ba1f84729fb7701369885ee96862"
+  },
+  {
+   "printed": "3",
+   "restated": "Subtract qbi helper \"The qualified business loss carryforward, asked only when the 2024 return includes Form 8995 or 8995-A (zero without it)\" from qbi helper \"Year parameter sales.zero\".",
+   "model": "The restatement does get the sign right: it enters the carryforward as a negative, matching the parentheses printed on line 3. But it only uses last year's Form 8995/8995-A line 16 amount, and treats it as zero if there was no 2024 form. The instructions say to \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year,\" and that \"the qualified portion of the loss or deduction allowed under each provision is treated as a qualified net loss carryforward ... See Line 3.\" Those previously suspended losses are omitted, and no refusal names the omission.",
+   "ruling": "Ruling: scope; i8995 p. 4, Line 3: \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\"; p. 3: \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion ... is treated as a qualified net loss carryforward from a separate trade or business ... See Line 3.\" Previously suspended losses are refused: qbi.suspended (\"losses or deductions of a trade or business that were suspended in an earlier year by another provision (such as the at-risk or passive activity limits) and are allowed in calculating taxable income this year\", asked with a Schedule C) is a limb of qbi.unsupported, which refuses qbi.eligible, read by Form 8995 line 6; businesses other than Schedule C (Schedule E, K-1, farm, passive activities) are refused by scope.schedule1 and scope.passive. Within scope line 3 is the prior year's Form 8995/8995-A line 16 carryforward, entered as a negative. Project stands.",
+   "context": "02103dcc1085dfee1a0aeb30dc06cfaaa9777592213aad65cbd02c866a087791",
+   "date": "2026-11-14",
+   "run": "ce14411652b71dfc78064d1bb92a63fb659f48ee79be76ab58eb6f8664acb608",
+   "subject_key": "d9c9ba4378c51afaab0e8fd3c1cfbaad818cd8dc823ce722bbc5cf2e8dc1006b"
   }
  ]
 }

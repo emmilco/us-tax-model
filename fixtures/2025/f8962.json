@@ -21,7 +21,7 @@
         "person[taxpayer].w2[a].box5": 32500000,
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.tips": null,
         "s1a.overtime": null,
         "s1a.carloan": null
@@ -64,12 +64,12 @@
         "person[taxpayer].w2[emp_a].box5": 4000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 50000,
-        "f1095a[m].mo_b": 45000,
-        "f1095a[m].c_total": 350000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 50000,
+        "f1095a[form_1].mo_b": 45000,
+        "f1095a[form_1].c_total": 350000
       },
       "expect": {
         "f8962.line2a": {
@@ -170,12 +170,12 @@
         "person[taxpayer].w2[emp_a].box5": 2500000,
         "person[taxpayer].w2[emp_a].box6": 36250,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 40000,
-        "f1095a[m].mo_b": 42000,
-        "f1095a[m].c_total": 420000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 40000,
+        "f1095a[form_1].mo_b": 42000,
+        "f1095a[form_1].c_total": 420000
       },
       "expect": {
         "f8962.line2a": {
@@ -276,12 +276,12 @@
         "person[taxpayer].w2[emp_a].box5": 5500000,
         "person[taxpayer].w2[emp_a].box6": 79750,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 60000,
-        "f1095a[m].mo_b": 55000,
-        "f1095a[m].c_total": 600000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 60000,
+        "f1095a[form_1].mo_b": 55000,
+        "f1095a[form_1].c_total": 600000
       },
       "expect": {
         "f8962.line2a": {
@@ -390,12 +390,12 @@
         "person[taxpayer].w2[emp_a].box5": 7000000,
         "person[taxpayer].w2[emp_a].box6": 101500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 70000,
-        "f1095a[m].mo_b": 65000,
-        "f1095a[m].c_total": 300000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 70000,
+        "f1095a[form_1].mo_b": 65000,
+        "f1095a[form_1].c_total": 300000
       },
       "expect": {
         "f8962.line2a": {
@@ -509,18 +509,18 @@
           "k1"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
         "dependent[k0].age": 6,
         "dependent[k0].months": 12,
         "dependent[k1].age": 9,
         "dependent[k1].months": 12,
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 110000,
-        "f1095a[m].mo_b": 100000,
-        "f1095a[m].c_total": 900000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 110000,
+        "f1095a[form_1].mo_b": 100000,
+        "f1095a[form_1].c_total": 900000
       },
       "expect": {
         "f8962.line2a": {
@@ -622,7 +622,7 @@
           "k0",
           "k1"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -640,16 +640,16 @@
         "person[spouse].w2[e0].box5": 4000000,
         "person[spouse].w2[e0].box6": 58000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
         "dependent[k0].age": 5,
         "dependent[k0].months": 12,
         "dependent[k1].age": 8,
         "dependent[k1].months": 12,
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 150000,
-        "f1095a[m].mo_b": 140000,
-        "f1095a[m].c_total": 1500000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 150000,
+        "f1095a[form_1].mo_b": 140000,
+        "f1095a[form_1].c_total": 1500000
       },
       "expect": {
         "f8962.line2a": {
@@ -758,12 +758,12 @@
         "person[taxpayer].w2[emp_a].box5": 1200000,
         "person[taxpayer].w2[emp_a].box6": 17400,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 45000,
-        "f1095a[m].mo_b": 43000,
-        "f1095a[m].c_total": 500000,
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 45000,
+        "f1095a[form_1].mo_b": 43000,
+        "f1095a[form_1].c_total": 500000,
         "f8962.estimate_100": true
       },
       "expect": {
@@ -865,13 +865,13 @@
         "person[taxpayer].w2[emp_a].box5": 1200000,
         "person[taxpayer].w2[emp_a].box6": 17400,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 45000,
-        "f1095a[m].mo_b": 43000,
-        "f1095a[m].c_total": 500000,
-        "f1095a[m].in_c_dec": null
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 45000,
+        "f1095a[form_1].mo_b": 43000,
+        "f1095a[form_1].c_total": 500000,
+        "f1095a[form_1].in_c_dec": null
       },
       "expect": {
         "f8962.line2a": {
@@ -963,35 +963,35 @@
         "person[taxpayer].w2[emp_a].box5": 3500000,
         "person[taxpayer].w2[emp_a].box6": 50750,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_apr": 48000,
-        "f1095a[m].in_b_apr": 46000,
-        "f1095a[m].in_c_apr": 30000,
-        "f1095a[m].in_a_may": 48000,
-        "f1095a[m].in_b_may": 46000,
-        "f1095a[m].in_c_may": 30000,
-        "f1095a[m].in_a_jun": 48000,
-        "f1095a[m].in_b_jun": 46000,
-        "f1095a[m].in_c_jun": 30000,
-        "f1095a[m].in_a_jul": 48000,
-        "f1095a[m].in_b_jul": 46000,
-        "f1095a[m].in_c_jul": 30000,
-        "f1095a[m].in_a_aug": 48000,
-        "f1095a[m].in_b_aug": 46000,
-        "f1095a[m].in_c_aug": 30000,
-        "f1095a[m].in_a_sep": 48000,
-        "f1095a[m].in_b_sep": 46000,
-        "f1095a[m].in_c_sep": 30000,
-        "f1095a[m].in_a_oct": 48000,
-        "f1095a[m].in_b_oct": 46000,
-        "f1095a[m].in_c_oct": 30000,
-        "f1095a[m].in_a_nov": 48000,
-        "f1095a[m].in_b_nov": 46000,
-        "f1095a[m].in_c_nov": 30000,
-        "f1095a[m].in_a_dec": 48000,
-        "f1095a[m].in_b_dec": 46000,
-        "f1095a[m].in_c_dec": 30000
+        "f1095a[form_1].in_a_apr": 48000,
+        "f1095a[form_1].in_b_apr": 46000,
+        "f1095a[form_1].in_c_apr": 30000,
+        "f1095a[form_1].in_a_may": 48000,
+        "f1095a[form_1].in_b_may": 46000,
+        "f1095a[form_1].in_c_may": 30000,
+        "f1095a[form_1].in_a_jun": 48000,
+        "f1095a[form_1].in_b_jun": 46000,
+        "f1095a[form_1].in_c_jun": 30000,
+        "f1095a[form_1].in_a_jul": 48000,
+        "f1095a[form_1].in_b_jul": 46000,
+        "f1095a[form_1].in_c_jul": 30000,
+        "f1095a[form_1].in_a_aug": 48000,
+        "f1095a[form_1].in_b_aug": 46000,
+        "f1095a[form_1].in_c_aug": 30000,
+        "f1095a[form_1].in_a_sep": 48000,
+        "f1095a[form_1].in_b_sep": 46000,
+        "f1095a[form_1].in_c_sep": 30000,
+        "f1095a[form_1].in_a_oct": 48000,
+        "f1095a[form_1].in_b_oct": 46000,
+        "f1095a[form_1].in_c_oct": 30000,
+        "f1095a[form_1].in_a_nov": 48000,
+        "f1095a[form_1].in_b_nov": 46000,
+        "f1095a[form_1].in_c_nov": 30000,
+        "f1095a[form_1].in_a_dec": 48000,
+        "f1095a[form_1].in_b_dec": 46000,
+        "f1095a[form_1].in_c_dec": 30000
       },
       "expect": {
         "f8962.line2a": {
@@ -1263,15 +1263,15 @@
           "kind": "count",
           "value": 1
         },
-        "f1095a[m].line33a": {
+        "f1095a[form_1].line33a": {
           "kind": "money",
           "cents": 432000
         },
-        "f1095a[m].line33b": {
+        "f1095a[form_1].line33b": {
           "kind": "money",
           "cents": 414000
         },
-        "f1095a[m].line33c": {
+        "f1095a[form_1].line33c": {
           "kind": "money",
           "cents": 270000
         },
@@ -1305,7 +1305,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -1323,44 +1323,44 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000,
-        "f1095a[m].in_b_jan": 85000,
-        "f1095a[m].in_c_jan": 50000,
-        "f1095a[m].in_a_feb": 90000,
-        "f1095a[m].in_b_feb": 85000,
-        "f1095a[m].in_c_feb": 50000,
-        "f1095a[m].in_a_mar": 90000,
-        "f1095a[m].in_b_mar": 85000,
-        "f1095a[m].in_c_mar": 50000,
-        "f1095a[m].in_a_apr": 90000,
-        "f1095a[m].in_b_apr": 85000,
-        "f1095a[m].in_c_apr": 50000,
-        "f1095a[m].in_a_may": 90000,
-        "f1095a[m].in_b_may": 85000,
-        "f1095a[m].in_c_may": 50000,
-        "f1095a[m].in_a_jun": 90000,
-        "f1095a[m].in_b_jun": 85000,
-        "f1095a[m].in_c_jun": 50000,
-        "f1095a[m].in_a_jul": 90000,
-        "f1095a[m].in_b_jul": 95000,
-        "f1095a[m].in_c_jul": 55000,
-        "f1095a[m].in_a_aug": 90000,
-        "f1095a[m].in_b_aug": 95000,
-        "f1095a[m].in_c_aug": 55000,
-        "f1095a[m].in_a_sep": 90000,
-        "f1095a[m].in_b_sep": 95000,
-        "f1095a[m].in_c_sep": 55000,
-        "f1095a[m].in_a_oct": 90000,
-        "f1095a[m].in_b_oct": 95000,
-        "f1095a[m].in_c_oct": 55000,
-        "f1095a[m].in_a_nov": 90000,
-        "f1095a[m].in_b_nov": 95000,
-        "f1095a[m].in_c_nov": 55000,
-        "f1095a[m].in_a_dec": 90000,
-        "f1095a[m].in_b_dec": 95000,
-        "f1095a[m].in_c_dec": 55000
+        "f1095a[form_1].in_a_jan": 90000,
+        "f1095a[form_1].in_b_jan": 85000,
+        "f1095a[form_1].in_c_jan": 50000,
+        "f1095a[form_1].in_a_feb": 90000,
+        "f1095a[form_1].in_b_feb": 85000,
+        "f1095a[form_1].in_c_feb": 50000,
+        "f1095a[form_1].in_a_mar": 90000,
+        "f1095a[form_1].in_b_mar": 85000,
+        "f1095a[form_1].in_c_mar": 50000,
+        "f1095a[form_1].in_a_apr": 90000,
+        "f1095a[form_1].in_b_apr": 85000,
+        "f1095a[form_1].in_c_apr": 50000,
+        "f1095a[form_1].in_a_may": 90000,
+        "f1095a[form_1].in_b_may": 85000,
+        "f1095a[form_1].in_c_may": 50000,
+        "f1095a[form_1].in_a_jun": 90000,
+        "f1095a[form_1].in_b_jun": 85000,
+        "f1095a[form_1].in_c_jun": 50000,
+        "f1095a[form_1].in_a_jul": 90000,
+        "f1095a[form_1].in_b_jul": 95000,
+        "f1095a[form_1].in_c_jul": 55000,
+        "f1095a[form_1].in_a_aug": 90000,
+        "f1095a[form_1].in_b_aug": 95000,
+        "f1095a[form_1].in_c_aug": 55000,
+        "f1095a[form_1].in_a_sep": 90000,
+        "f1095a[form_1].in_b_sep": 95000,
+        "f1095a[form_1].in_c_sep": 55000,
+        "f1095a[form_1].in_a_oct": 90000,
+        "f1095a[form_1].in_b_oct": 95000,
+        "f1095a[form_1].in_c_oct": 55000,
+        "f1095a[form_1].in_a_nov": 90000,
+        "f1095a[form_1].in_b_nov": 95000,
+        "f1095a[form_1].in_c_nov": 55000,
+        "f1095a[form_1].in_a_dec": 90000,
+        "f1095a[form_1].in_b_dec": 95000,
+        "f1095a[form_1].in_c_dec": 55000
       },
       "expect": {
         "f8962.line2a": {
@@ -1712,15 +1712,15 @@
           "kind": "money",
           "cents": 47800
         },
-        "f1095a[m].line33a": {
+        "f1095a[form_1].line33a": {
           "kind": "money",
           "cents": 1080000
         },
-        "f1095a[m].line33b": {
+        "f1095a[form_1].line33b": {
           "kind": "money",
           "cents": 1080000
         },
-        "f1095a[m].line33c": {
+        "f1095a[form_1].line33c": {
           "kind": "money",
           "cents": 630000
         },
@@ -1809,18 +1809,18 @@
         "person[taxpayer].w2[emp_a].box5": 3800000,
         "person[taxpayer].w2[emp_a].box6": 55100,
         "$f1095a": [
-          "m1",
-          "m2"
+          "form_1",
+          "form_2"
         ],
-        "f1095a[m1].uniform": true,
-        "f1095a[m1].b_counted": true,
-        "f1095a[m1].mo_a": 35000,
-        "f1095a[m1].mo_b": 50000,
-        "f1095a[m1].c_total": 240000,
-        "f1095a[m2].uniform": true,
-        "f1095a[m2].mo_a": 15000,
-        "f1095a[m2].mo_b": 50000,
-        "f1095a[m2].c_total": 60000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].b_counted": true,
+        "f1095a[form_1].mo_a": 35000,
+        "f1095a[form_1].mo_b": 50000,
+        "f1095a[form_1].c_total": 240000,
+        "f1095a[form_2].same_months": true,
+        "f1095a[form_2].mo_a": 15000,
+        "f1095a[form_2].mo_b": 50000,
+        "f1095a[form_2].c_total": 60000
       },
       "expect": {
         "f8962.line2a": {
@@ -1921,47 +1921,47 @@
         "person[taxpayer].w2[emp_a].box5": 3800000,
         "person[taxpayer].w2[emp_a].box6": 55100,
         "$f1095a": [
-          "m1",
-          "m2"
+          "form_1",
+          "form_2"
         ],
-        "f1095a[m1].b_counted": true,
-        "f1095a[m1].in_a_jan": 50000,
-        "f1095a[m1].in_b_jan": 48000,
-        "f1095a[m1].in_c_jan": 30000,
-        "f1095a[m1].in_a_feb": 50000,
-        "f1095a[m1].in_b_feb": 48000,
-        "f1095a[m1].in_c_feb": 30000,
-        "f1095a[m1].in_a_mar": 50000,
-        "f1095a[m1].in_b_mar": 48000,
-        "f1095a[m1].in_c_mar": 30000,
-        "f1095a[m1].in_a_apr": 50000,
-        "f1095a[m1].in_b_apr": 48000,
-        "f1095a[m1].in_c_apr": 30000,
-        "f1095a[m1].in_a_may": 50000,
-        "f1095a[m1].in_b_may": 48000,
-        "f1095a[m1].in_c_may": 30000,
-        "f1095a[m2].b_counted": true,
-        "f1095a[m2].in_a_jun": 52000,
-        "f1095a[m2].in_b_jun": 51000,
-        "f1095a[m2].in_c_jun": 32000,
-        "f1095a[m2].in_a_jul": 52000,
-        "f1095a[m2].in_b_jul": 51000,
-        "f1095a[m2].in_c_jul": 32000,
-        "f1095a[m2].in_a_aug": 52000,
-        "f1095a[m2].in_b_aug": 51000,
-        "f1095a[m2].in_c_aug": 32000,
-        "f1095a[m2].in_a_sep": 52000,
-        "f1095a[m2].in_b_sep": 51000,
-        "f1095a[m2].in_c_sep": 32000,
-        "f1095a[m2].in_a_oct": 52000,
-        "f1095a[m2].in_b_oct": 51000,
-        "f1095a[m2].in_c_oct": 32000,
-        "f1095a[m2].in_a_nov": 52000,
-        "f1095a[m2].in_b_nov": 51000,
-        "f1095a[m2].in_c_nov": 32000,
-        "f1095a[m2].in_a_dec": 52000,
-        "f1095a[m2].in_b_dec": 51000,
-        "f1095a[m2].in_c_dec": 32000
+        "f1095a[form_1].b_counted": true,
+        "f1095a[form_1].in_a_jan": 50000,
+        "f1095a[form_1].in_b_jan": 48000,
+        "f1095a[form_1].in_c_jan": 30000,
+        "f1095a[form_1].in_a_feb": 50000,
+        "f1095a[form_1].in_b_feb": 48000,
+        "f1095a[form_1].in_c_feb": 30000,
+        "f1095a[form_1].in_a_mar": 50000,
+        "f1095a[form_1].in_b_mar": 48000,
+        "f1095a[form_1].in_c_mar": 30000,
+        "f1095a[form_1].in_a_apr": 50000,
+        "f1095a[form_1].in_b_apr": 48000,
+        "f1095a[form_1].in_c_apr": 30000,
+        "f1095a[form_1].in_a_may": 50000,
+        "f1095a[form_1].in_b_may": 48000,
+        "f1095a[form_1].in_c_may": 30000,
+        "f1095a[form_2].b_counted": true,
+        "f1095a[form_2].in_a_jun": 52000,
+        "f1095a[form_2].in_b_jun": 51000,
+        "f1095a[form_2].in_c_jun": 32000,
+        "f1095a[form_2].in_a_jul": 52000,
+        "f1095a[form_2].in_b_jul": 51000,
+        "f1095a[form_2].in_c_jul": 32000,
+        "f1095a[form_2].in_a_aug": 52000,
+        "f1095a[form_2].in_b_aug": 51000,
+        "f1095a[form_2].in_c_aug": 32000,
+        "f1095a[form_2].in_a_sep": 52000,
+        "f1095a[form_2].in_b_sep": 51000,
+        "f1095a[form_2].in_c_sep": 32000,
+        "f1095a[form_2].in_a_oct": 52000,
+        "f1095a[form_2].in_b_oct": 51000,
+        "f1095a[form_2].in_c_oct": 32000,
+        "f1095a[form_2].in_a_nov": 52000,
+        "f1095a[form_2].in_b_nov": 51000,
+        "f1095a[form_2].in_c_nov": 32000,
+        "f1095a[form_2].in_a_dec": 52000,
+        "f1095a[form_2].in_b_dec": 51000,
+        "f1095a[form_2].in_c_dec": 32000
       },
       "expect": {
         "f8962.line2a": {
@@ -2305,27 +2305,27 @@
           "kind": "money",
           "cents": 12900
         },
-        "f1095a[m1].line33a": {
+        "f1095a[form_1].line33a": {
           "kind": "money",
           "cents": 250000
         },
-        "f1095a[m1].line33b": {
+        "f1095a[form_1].line33b": {
           "kind": "money",
           "cents": 240000
         },
-        "f1095a[m1].line33c": {
+        "f1095a[form_1].line33c": {
           "kind": "money",
           "cents": 150000
         },
-        "f1095a[m2].line33a": {
+        "f1095a[form_2].line33a": {
           "kind": "money",
           "cents": 364000
         },
-        "f1095a[m2].line33b": {
+        "f1095a[form_2].line33b": {
           "kind": "money",
           "cents": 357000
         },
-        "f1095a[m2].line33c": {
+        "f1095a[form_2].line33c": {
           "kind": "money",
           "cents": 224000
         }
@@ -2350,12 +2350,12 @@
         "person[taxpayer].w2[emp_a].box5": 3000000,
         "person[taxpayer].w2[emp_a].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 65000,
-        "f1095a[m].mo_b": 64000,
-        "f1095a[m].c_total": 600000,
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 65000,
+        "f1095a[form_1].mo_b": 64000,
+        "f1095a[form_1].c_total": 600000,
         "f8962.fpl_table": "alaska"
       },
       "expect": {
@@ -2461,16 +2461,16 @@
           "k0"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
         "dependent[k0].age": 10,
         "dependent[k0].months": 12,
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 80000,
-        "f1095a[m].mo_b": 76000,
-        "f1095a[m].c_total": 780000,
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 80000,
+        "f1095a[form_1].mo_b": 76000,
+        "f1095a[form_1].c_total": 780000,
         "f8962.fpl_table": "hawaii"
       },
       "expect": {
@@ -2588,18 +2588,18 @@
           "k0"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
         "dependent[k0].age": 17,
         "dependent[k0].months": 12,
         "dependent[k0].ptc_files": true,
         "dependent[k0].ptc_magi": 800000,
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 90000,
-        "f1095a[m].mo_b": 88000,
-        "f1095a[m].c_total": 800000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 90000,
+        "f1095a[form_1].mo_b": 88000,
+        "f1095a[form_1].c_total": 800000
       },
       "expect": {
         "f8962.line2a": {
@@ -2703,15 +2703,16 @@
         "person[taxpayer].w2[emp_a].box4": 173600,
         "person[taxpayer].w2[emp_a].box5": 2800000,
         "person[taxpayer].w2[emp_a].box6": 40600,
+        "ssb.any": true,
         "ssb.benefits": 900000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
         "f1040.tax_exempt_interest": 120000,
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 52000,
-        "f1095a[m].mo_b": 50000,
-        "f1095a[m].c_total": 400000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 52000,
+        "f1095a[form_1].mo_b": 50000,
+        "f1095a[form_1].c_total": 400000
       },
       "expect": {
         "f8962.line2a": {
@@ -2812,11 +2813,12 @@
         "person[taxpayer].w2[emp_a].box5": 3000000,
         "person[taxpayer].w2[emp_a].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 38000,
-        "f1095a[m].mo_b": 40000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].b_fixed_same": true,
+        "f1095a[form_1].mo_a": 38000,
+        "f1095a[form_1].mo_b": 40000
       },
       "expect": {
         "f8962.line2a": {
@@ -2903,6 +2905,147 @@
       }
     },
     {
+      "id": "stage18.reg.no_aptc_slcsp_by_month",
+      "covers": [
+        "f8962",
+        "f1095a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0634 regression, predicted by hand from the source before evaluating: the facts of stage18.blind.p17 (no advance payments; column A $380 and column B $400 printed every month), but the filer moved on July 1 and told the Marketplace, so column B was not updated, and the correct applicable SLCSP premium is $400 for January to June and $300 for July to December. i8962 p. 14: with no APTC column B \"may be wrong\", the correct premium is determined for every month, and when it is not the same every month line 10 is No and lines 12 to 23 are used. Line 8b $49 (line 8a $588 / 12); each month column (d) is column (b) less $49 and column (e) the smaller of column (a) and (d): $351 for six months and $251 for six, so line 24 $3,612; line 25 zero; line 26 $3,612.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "$f1095a": [
+          "form_1"
+        ],
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].b_fixed_same": false,
+        "f1095a[form_1].in_a_jan": 38000,
+        "f1095a[form_1].in_b_jan": 40000,
+        "f1095a[form_1].in_c_jan": 0,
+        "f1095a[form_1].in_a_feb": 38000,
+        "f1095a[form_1].in_b_feb": 40000,
+        "f1095a[form_1].in_c_feb": 0,
+        "f1095a[form_1].in_a_mar": 38000,
+        "f1095a[form_1].in_b_mar": 40000,
+        "f1095a[form_1].in_c_mar": 0,
+        "f1095a[form_1].in_a_apr": 38000,
+        "f1095a[form_1].in_b_apr": 40000,
+        "f1095a[form_1].in_c_apr": 0,
+        "f1095a[form_1].in_a_may": 38000,
+        "f1095a[form_1].in_b_may": 40000,
+        "f1095a[form_1].in_c_may": 0,
+        "f1095a[form_1].in_a_jun": 38000,
+        "f1095a[form_1].in_b_jun": 40000,
+        "f1095a[form_1].in_c_jun": 0,
+        "f1095a[form_1].in_a_jul": 38000,
+        "f1095a[form_1].in_b_jul": 30000,
+        "f1095a[form_1].in_c_jul": 0,
+        "f1095a[form_1].in_a_aug": 38000,
+        "f1095a[form_1].in_b_aug": 30000,
+        "f1095a[form_1].in_c_aug": 0,
+        "f1095a[form_1].in_a_sep": 38000,
+        "f1095a[form_1].in_b_sep": 30000,
+        "f1095a[form_1].in_c_sep": 0,
+        "f1095a[form_1].in_a_oct": 38000,
+        "f1095a[form_1].in_b_oct": 30000,
+        "f1095a[form_1].in_c_oct": 0,
+        "f1095a[form_1].in_a_nov": 38000,
+        "f1095a[form_1].in_b_nov": 30000,
+        "f1095a[form_1].in_c_nov": 0,
+        "f1095a[form_1].in_a_dec": 38000,
+        "f1095a[form_1].in_b_dec": 30000,
+        "f1095a[form_1].in_c_dec": 0
+      },
+      "expect": {
+        "f8962.line10": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.line8b": {
+          "kind": "money",
+          "cents": 4900
+        },
+        "f8962.line12a": {
+          "kind": "money",
+          "cents": 38000
+        },
+        "f8962.line12b": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f8962.line12c": {
+          "kind": "money",
+          "cents": 4900
+        },
+        "f8962.line12d": {
+          "kind": "money",
+          "cents": 35100
+        },
+        "f8962.line12e": {
+          "kind": "money",
+          "cents": 35100
+        },
+        "f8962.line12f": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8962.line18a": {
+          "kind": "money",
+          "cents": 38000
+        },
+        "f8962.line18b": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f8962.line18c": {
+          "kind": "money",
+          "cents": 4900
+        },
+        "f8962.line18d": {
+          "kind": "money",
+          "cents": 25100
+        },
+        "f8962.line18e": {
+          "kind": "money",
+          "cents": 25100
+        },
+        "f8962.line18f": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8962.line23b": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f8962.line23e": {
+          "kind": "money",
+          "cents": 25100
+        },
+        "f8962.line24": {
+          "kind": "money",
+          "cents": 361200
+        },
+        "f8962.line25": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8962.line26": {
+          "kind": "money",
+          "cents": 361200
+        },
+        "s3.line9": {
+          "kind": "money",
+          "cents": 361200
+        }
+      }
+    },
+    {
       "id": "stage18.blind.p18",
       "covers": [
         "f8962",
@@ -2921,12 +3064,12 @@
         "person[taxpayer].w2[emp_a].box5": 6024000,
         "person[taxpayer].w2[emp_a].box6": 87348,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 60000,
-        "f1095a[m].mo_b": 58000,
-        "f1095a[m].c_total": 100000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 60000,
+        "f1095a[form_1].mo_b": 58000,
+        "f1095a[form_1].c_total": 100000
       },
       "expect": {
         "f8962.line2a": {
@@ -3027,12 +3170,12 @@
         "person[taxpayer].w2[emp_a].box5": 6034700,
         "person[taxpayer].w2[emp_a].box6": 87503,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 80000,
-        "f1095a[m].mo_b": 78000,
-        "f1095a[m].c_total": 200000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 80000,
+        "f1095a[form_1].mo_b": 78000,
+        "f1095a[form_1].c_total": 200000
       },
       "expect": {
         "f8962.line2a": {
@@ -3139,7 +3282,7 @@
           "k5",
           "k6"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -3157,7 +3300,7 @@
         "person[spouse].w2[e0].box5": 4000000,
         "person[spouse].w2[e0].box6": 58000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
         "dependent[k0].age": 2,
         "dependent[k0].months": 12,
@@ -3173,10 +3316,10 @@
         "dependent[k5].months": 12,
         "dependent[k6].age": 14,
         "dependent[k6].months": 12,
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 220000,
-        "f1095a[m].mo_b": 210000,
-        "f1095a[m].c_total": 2000000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 220000,
+        "f1095a[form_1].mo_b": 210000,
+        "f1095a[form_1].c_total": 2000000
       },
       "expect": {
         "f8962.line2a": {
@@ -3273,10 +3416,11 @@
         "person[taxpayer].w2[emp_a].box5": 4000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f8962.alloc": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "f8962.shared_policy": true
       },
       "expect": {
         "f8962.line24": {
@@ -3339,10 +3483,12 @@
         "person[taxpayer].w2[emp_a].box5": 4000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f8962.other": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "f8962.other_coverage": true,
+        "f8962.mec_government": true
       },
       "expect": {
         "f8962.line24": {
@@ -3401,10 +3547,12 @@
         "person[taxpayer].w2[emp_a].box5": 4000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f8962.other": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "f8962.other_coverage": true,
+        "f8962.mec_job_enrolled": true
       },
       "expect": {
         "f8962.line24": {
@@ -3465,10 +3613,11 @@
         "person[taxpayer].w2[emp_a].box5": 4000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].void": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "f1095a[form_1].void": true
       },
       "expect": {
         "f8962.line24": {
@@ -3529,10 +3678,11 @@
         "person[taxpayer].w2[emp_a].box5": 4000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f8962.premium_adjust": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "f8962.midmonth_start": true
       },
       "expect": {
         "f8962.line24": {
@@ -3592,12 +3742,12 @@
         "person[taxpayer].w2[emp_a].box5": 4000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 50000,
-        "f1095a[m].mo_b": 45000,
-        "f1095a[m].c_total": 350000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 50000,
+        "f1095a[form_1].mo_b": 45000,
+        "f1095a[form_1].c_total": 350000
       },
       "expect": {
         "f8962.marriage": {
@@ -3627,7 +3777,7 @@
           "k0",
           "k1"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -3643,14 +3793,15 @@
         "person[spouse].w2[e0].box5": 4000000,
         "person[spouse].w2[e0].box6": 58000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
         "dependent[k0].age": 5,
         "dependent[k0].months": 12,
         "dependent[k1].age": 8,
         "dependent[k1].months": 12,
-        "f8962.married_in_2025": true,
-        "s179.line10": null
+        "f8962.married_this_year": true,
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f8962.line24": {
@@ -3713,11 +3864,12 @@
         "person[taxpayer].w2[emp_a].box5": 3800000,
         "person[taxpayer].w2[emp_a].box6": 55100,
         "$f1095a": [
-          "m1",
-          "m2"
+          "form_1",
+          "form_2"
         ],
         "f8962.same_state_counted": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f8962.line24": {
@@ -3763,7 +3915,8 @@
         "person[taxpayer].w2[emp_a].box1": 4000000,
         "person[taxpayer].w2[emp_a].box5": 4000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f8962.ws1_3": {
@@ -3816,18 +3969,18 @@
           "k1"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
         "dependent[k0].age": 17,
         "dependent[k0].months": 12,
         "dependent[k0].ptc_files": true,
         "dependent[k0].ptc_magi": 800000,
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 90000,
-        "f1095a[m].mo_b": 88000,
-        "f1095a[m].c_total": 800000,
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 90000,
+        "f1095a[form_1].mo_b": 88000,
+        "f1095a[form_1].c_total": 800000,
         "dependent[k1].relationship": "parent",
         "dependent[k1].age": 70,
         "dependent[k1].gross_income": 3000000,
@@ -3874,64 +4027,64 @@
         "person[taxpayer].w2[emp_a].box5": 3800000,
         "person[taxpayer].w2[emp_a].box6": 55100,
         "$f1095a": [
-          "m1",
-          "m2"
+          "form_1",
+          "form_2"
         ],
-        "f1095a[m1].b_counted": true,
-        "f1095a[m1].in_a_jan": 35000,
-        "f1095a[m1].in_b_jan": 50000,
-        "f1095a[m1].in_c_jan": 20000,
-        "f1095a[m1].in_a_feb": 35000,
-        "f1095a[m1].in_b_feb": 50000,
-        "f1095a[m1].in_c_feb": 20000,
-        "f1095a[m1].in_a_mar": 35000,
-        "f1095a[m1].in_b_mar": 50000,
-        "f1095a[m1].in_c_mar": 20000,
-        "f1095a[m1].in_a_apr": 35000,
-        "f1095a[m1].in_b_apr": 50000,
-        "f1095a[m1].in_c_apr": 20000,
-        "f1095a[m1].in_a_may": 35000,
-        "f1095a[m1].in_b_may": 50000,
-        "f1095a[m1].in_c_may": 20000,
-        "f1095a[m1].in_a_jun": 35000,
-        "f1095a[m1].in_b_jun": 50000,
-        "f1095a[m1].in_c_jun": 20000,
-        "f1095a[m1].in_a_jul": 35000,
-        "f1095a[m1].in_b_jul": 50000,
-        "f1095a[m1].in_c_jul": 20000,
-        "f1095a[m1].in_a_aug": 35000,
-        "f1095a[m1].in_b_aug": 50000,
-        "f1095a[m1].in_c_aug": 20000,
-        "f1095a[m1].in_a_sep": 35000,
-        "f1095a[m1].in_b_sep": 50000,
-        "f1095a[m1].in_c_sep": 20000,
-        "f1095a[m1].in_a_oct": 35000,
-        "f1095a[m1].in_b_oct": 50000,
-        "f1095a[m1].in_c_oct": 20000,
-        "f1095a[m1].in_a_nov": 35000,
-        "f1095a[m1].in_b_nov": 50000,
-        "f1095a[m1].in_c_nov": 20000,
-        "f1095a[m1].in_a_dec": 35000,
-        "f1095a[m1].in_b_dec": 50000,
-        "f1095a[m1].in_c_dec": 20000,
-        "f1095a[m2].in_a_jul": 15000,
-        "f1095a[m2].in_b_jul": 50000,
-        "f1095a[m2].in_c_jul": 5000,
-        "f1095a[m2].in_a_aug": 15000,
-        "f1095a[m2].in_b_aug": 50000,
-        "f1095a[m2].in_c_aug": 5000,
-        "f1095a[m2].in_a_sep": 15000,
-        "f1095a[m2].in_b_sep": 50000,
-        "f1095a[m2].in_c_sep": 5000,
-        "f1095a[m2].in_a_oct": 15000,
-        "f1095a[m2].in_b_oct": 50000,
-        "f1095a[m2].in_c_oct": 5000,
-        "f1095a[m2].in_a_nov": 15000,
-        "f1095a[m2].in_b_nov": 50000,
-        "f1095a[m2].in_c_nov": 5000,
-        "f1095a[m2].in_a_dec": 15000,
-        "f1095a[m2].in_b_dec": 50000,
-        "f1095a[m2].in_c_dec": 5000
+        "f1095a[form_1].b_counted": true,
+        "f1095a[form_1].in_a_jan": 35000,
+        "f1095a[form_1].in_b_jan": 50000,
+        "f1095a[form_1].in_c_jan": 20000,
+        "f1095a[form_1].in_a_feb": 35000,
+        "f1095a[form_1].in_b_feb": 50000,
+        "f1095a[form_1].in_c_feb": 20000,
+        "f1095a[form_1].in_a_mar": 35000,
+        "f1095a[form_1].in_b_mar": 50000,
+        "f1095a[form_1].in_c_mar": 20000,
+        "f1095a[form_1].in_a_apr": 35000,
+        "f1095a[form_1].in_b_apr": 50000,
+        "f1095a[form_1].in_c_apr": 20000,
+        "f1095a[form_1].in_a_may": 35000,
+        "f1095a[form_1].in_b_may": 50000,
+        "f1095a[form_1].in_c_may": 20000,
+        "f1095a[form_1].in_a_jun": 35000,
+        "f1095a[form_1].in_b_jun": 50000,
+        "f1095a[form_1].in_c_jun": 20000,
+        "f1095a[form_1].in_a_jul": 35000,
+        "f1095a[form_1].in_b_jul": 50000,
+        "f1095a[form_1].in_c_jul": 20000,
+        "f1095a[form_1].in_a_aug": 35000,
+        "f1095a[form_1].in_b_aug": 50000,
+        "f1095a[form_1].in_c_aug": 20000,
+        "f1095a[form_1].in_a_sep": 35000,
+        "f1095a[form_1].in_b_sep": 50000,
+        "f1095a[form_1].in_c_sep": 20000,
+        "f1095a[form_1].in_a_oct": 35000,
+        "f1095a[form_1].in_b_oct": 50000,
+        "f1095a[form_1].in_c_oct": 20000,
+        "f1095a[form_1].in_a_nov": 35000,
+        "f1095a[form_1].in_b_nov": 50000,
+        "f1095a[form_1].in_c_nov": 20000,
+        "f1095a[form_1].in_a_dec": 35000,
+        "f1095a[form_1].in_b_dec": 50000,
+        "f1095a[form_1].in_c_dec": 20000,
+        "f1095a[form_2].in_a_jul": 15000,
+        "f1095a[form_2].in_b_jul": 50000,
+        "f1095a[form_2].in_c_jul": 5000,
+        "f1095a[form_2].in_a_aug": 15000,
+        "f1095a[form_2].in_b_aug": 50000,
+        "f1095a[form_2].in_c_aug": 5000,
+        "f1095a[form_2].in_a_sep": 15000,
+        "f1095a[form_2].in_b_sep": 50000,
+        "f1095a[form_2].in_c_sep": 5000,
+        "f1095a[form_2].in_a_oct": 15000,
+        "f1095a[form_2].in_b_oct": 50000,
+        "f1095a[form_2].in_c_oct": 5000,
+        "f1095a[form_2].in_a_nov": 15000,
+        "f1095a[form_2].in_b_nov": 50000,
+        "f1095a[form_2].in_c_nov": 5000,
+        "f1095a[form_2].in_a_dec": 15000,
+        "f1095a[form_2].in_b_dec": 50000,
+        "f1095a[form_2].in_c_dec": 5000
       },
       "expect": {
         "f8962.line10": {
@@ -3998,7 +4151,7 @@
           "k16",
           "k17"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -4016,7 +4169,7 @@
         "person[spouse].w2[e0].box5": 10000000,
         "person[spouse].w2[e0].box6": 145000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
         "dependent[k0].age": 1,
         "dependent[k0].months": 12,
@@ -4054,10 +4207,10 @@
         "dependent[k16].months": 12,
         "dependent[k17].age": 18,
         "dependent[k17].months": 12,
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 300000,
-        "f1095a[m].mo_b": 290000,
-        "f1095a[m].c_total": 2000000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 300000,
+        "f1095a[form_1].mo_b": 290000,
+        "f1095a[form_1].c_total": 2000000
       },
       "expect": {
         "f8962.line1": {
@@ -4113,7 +4266,7 @@
           "k17",
           "k18"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -4129,7 +4282,7 @@
         "person[spouse].w2[e0].box5": 10000000,
         "person[spouse].w2[e0].box6": 145000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
         "dependent[k0].age": 1,
         "dependent[k0].months": 12,
@@ -4169,7 +4322,8 @@
         "dependent[k17].months": 12,
         "dependent[k18].age": 19,
         "dependent[k18].supported": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f8962.line4": {
@@ -4217,11 +4371,12 @@
         "person[taxpayer].w2[emp_a].box5": 1200000,
         "person[taxpayer].w2[emp_a].box6": 17400,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 45000,
-        "f1095a[m].mo_b": 43000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].b_fixed_same": true,
+        "f1095a[form_1].mo_a": 45000,
+        "f1095a[form_1].mo_b": 43000
       },
       "expect": {
         "f8962.aptc": {
@@ -4259,47 +4414,47 @@
         "person[taxpayer].w2[emp_a].box5": 3800000,
         "person[taxpayer].w2[emp_a].box6": 55100,
         "$f1095a": [
-          "m1",
-          "m2"
+          "form_1",
+          "form_2"
         ],
-        "f1095a[m1].b_counted": true,
-        "f1095a[m1].in_a_jan": 35000,
-        "f1095a[m1].in_b_jan": 50000,
-        "f1095a[m1].in_c_jan": 20000,
-        "f1095a[m1].in_a_feb": 35000,
-        "f1095a[m1].in_b_feb": 50000,
-        "f1095a[m1].in_c_feb": 20000,
-        "f1095a[m1].in_a_mar": 35000,
-        "f1095a[m1].in_b_mar": 50000,
-        "f1095a[m1].in_c_mar": 20000,
-        "f1095a[m1].in_a_apr": 35000,
-        "f1095a[m1].in_b_apr": 50000,
-        "f1095a[m1].in_c_apr": 20000,
-        "f1095a[m1].in_a_may": 35000,
-        "f1095a[m1].in_b_may": 50000,
-        "f1095a[m1].in_c_may": 20000,
-        "f1095a[m1].in_a_jun": 35000,
-        "f1095a[m1].in_b_jun": 50000,
-        "f1095a[m1].in_c_jun": 20000,
-        "f1095a[m2].b_counted": true,
-        "f1095a[m2].in_a_jul": 15000,
-        "f1095a[m2].in_b_jul": 50000,
-        "f1095a[m2].in_c_jul": 5000,
-        "f1095a[m2].in_a_aug": 15000,
-        "f1095a[m2].in_b_aug": 50000,
-        "f1095a[m2].in_c_aug": 5000,
-        "f1095a[m2].in_a_sep": 15000,
-        "f1095a[m2].in_b_sep": 50000,
-        "f1095a[m2].in_c_sep": 5000,
-        "f1095a[m2].in_a_oct": 15000,
-        "f1095a[m2].in_b_oct": 50000,
-        "f1095a[m2].in_c_oct": 5000,
-        "f1095a[m2].in_a_nov": 15000,
-        "f1095a[m2].in_b_nov": 50000,
-        "f1095a[m2].in_c_nov": 5000,
-        "f1095a[m2].in_a_dec": 15000,
-        "f1095a[m2].in_b_dec": 50000,
-        "f1095a[m2].in_c_dec": 5000
+        "f1095a[form_1].b_counted": true,
+        "f1095a[form_1].in_a_jan": 35000,
+        "f1095a[form_1].in_b_jan": 50000,
+        "f1095a[form_1].in_c_jan": 20000,
+        "f1095a[form_1].in_a_feb": 35000,
+        "f1095a[form_1].in_b_feb": 50000,
+        "f1095a[form_1].in_c_feb": 20000,
+        "f1095a[form_1].in_a_mar": 35000,
+        "f1095a[form_1].in_b_mar": 50000,
+        "f1095a[form_1].in_c_mar": 20000,
+        "f1095a[form_1].in_a_apr": 35000,
+        "f1095a[form_1].in_b_apr": 50000,
+        "f1095a[form_1].in_c_apr": 20000,
+        "f1095a[form_1].in_a_may": 35000,
+        "f1095a[form_1].in_b_may": 50000,
+        "f1095a[form_1].in_c_may": 20000,
+        "f1095a[form_1].in_a_jun": 35000,
+        "f1095a[form_1].in_b_jun": 50000,
+        "f1095a[form_1].in_c_jun": 20000,
+        "f1095a[form_2].b_counted": true,
+        "f1095a[form_2].in_a_jul": 15000,
+        "f1095a[form_2].in_b_jul": 50000,
+        "f1095a[form_2].in_c_jul": 5000,
+        "f1095a[form_2].in_a_aug": 15000,
+        "f1095a[form_2].in_b_aug": 50000,
+        "f1095a[form_2].in_c_aug": 5000,
+        "f1095a[form_2].in_a_sep": 15000,
+        "f1095a[form_2].in_b_sep": 50000,
+        "f1095a[form_2].in_c_sep": 5000,
+        "f1095a[form_2].in_a_oct": 15000,
+        "f1095a[form_2].in_b_oct": 50000,
+        "f1095a[form_2].in_c_oct": 5000,
+        "f1095a[form_2].in_a_nov": 15000,
+        "f1095a[form_2].in_b_nov": 50000,
+        "f1095a[form_2].in_c_nov": 5000,
+        "f1095a[form_2].in_a_dec": 15000,
+        "f1095a[form_2].in_b_dec": 50000,
+        "f1095a[form_2].in_c_dec": 5000
       },
       "expect": {
         "f8962.line10": {
@@ -4350,10 +4505,11 @@
         "person[taxpayer].w2[emp_a].box5": 1200000,
         "person[taxpayer].w2[emp_a].box6": 17400,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
         "f8962.alien_below": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f8962.line24": {
@@ -4414,76 +4570,76 @@
         "person[taxpayer].w2[emp_a].box5": 3800000,
         "person[taxpayer].w2[emp_a].box6": 55100,
         "$f1095a": [
-          "m1",
-          "m2"
+          "form_1",
+          "form_2"
         ],
-        "f1095a[m1].b_counted": true,
-        "f1095a[m1].in_a_jan": 35000,
-        "f1095a[m1].in_b_jan": 50000,
-        "f1095a[m1].in_c_jan": 20000,
-        "f1095a[m1].in_a_feb": 35000,
-        "f1095a[m1].in_b_feb": 50000,
-        "f1095a[m1].in_c_feb": 20000,
-        "f1095a[m1].in_a_mar": 35000,
-        "f1095a[m1].in_b_mar": 50000,
-        "f1095a[m1].in_c_mar": 20000,
-        "f1095a[m1].in_a_apr": 35000,
-        "f1095a[m1].in_b_apr": 50000,
-        "f1095a[m1].in_c_apr": 20000,
-        "f1095a[m1].in_a_may": 35000,
-        "f1095a[m1].in_b_may": 50000,
-        "f1095a[m1].in_c_may": 20000,
-        "f1095a[m1].in_a_jun": 35000,
-        "f1095a[m1].in_b_jun": 50000,
-        "f1095a[m1].in_c_jun": 20000,
-        "f1095a[m1].in_a_jul": 35000,
-        "f1095a[m1].in_b_jul": 50000,
-        "f1095a[m1].in_c_jul": 20000,
-        "f1095a[m1].in_a_aug": 35000,
-        "f1095a[m1].in_b_aug": 50000,
-        "f1095a[m1].in_c_aug": 20000,
-        "f1095a[m1].in_a_sep": 35000,
-        "f1095a[m1].in_b_sep": 50000,
-        "f1095a[m1].in_c_sep": 20000,
-        "f1095a[m1].in_a_oct": 35000,
-        "f1095a[m1].in_b_oct": 50000,
-        "f1095a[m1].in_c_oct": 20000,
-        "f1095a[m1].in_a_nov": 35000,
-        "f1095a[m1].in_b_nov": 50000,
-        "f1095a[m1].in_c_nov": 20000,
-        "f1095a[m1].in_a_dec": 35000,
-        "f1095a[m1].in_b_dec": 50000,
-        "f1095a[m1].in_c_dec": 20000,
-        "f1095a[m2].in_a_jan": 15000,
-        "f1095a[m2].in_b_jan": 50000,
-        "f1095a[m2].in_c_jan": 5000,
-        "f1095a[m2].in_a_feb": 15000,
-        "f1095a[m2].in_b_feb": 50000,
-        "f1095a[m2].in_c_feb": 5000,
-        "f1095a[m2].in_a_mar": 15000,
-        "f1095a[m2].in_b_mar": 50000,
-        "f1095a[m2].in_c_mar": 5000,
-        "f1095a[m2].in_a_apr": 15000,
-        "f1095a[m2].in_b_apr": 50000,
-        "f1095a[m2].in_c_apr": 5000,
-        "f1095a[m2].in_a_may": 15000,
-        "f1095a[m2].in_b_may": 50000,
-        "f1095a[m2].in_c_may": 5000,
-        "f1095a[m2].in_a_jun": 15000,
-        "f1095a[m2].in_b_jun": 50000,
-        "f1095a[m2].in_c_jun": 5000,
-        "f1095a[m2].in_a_jul": 15000,
-        "f1095a[m2].in_c_jul": 5000,
-        "f1095a[m2].in_a_aug": 15000,
-        "f1095a[m2].in_c_aug": 5000,
-        "f1095a[m2].in_a_sep": 15000,
-        "f1095a[m2].in_c_sep": 5000,
-        "f1095a[m2].in_a_oct": 15000,
-        "f1095a[m2].in_c_oct": 5000,
-        "f1095a[m2].in_a_nov": 15000,
-        "f1095a[m2].in_c_nov": 5000,
-        "f1095a[m2].in_a_dec": 15000,
-        "f1095a[m2].in_c_dec": 5000
+        "f1095a[form_1].b_counted": true,
+        "f1095a[form_1].in_a_jan": 35000,
+        "f1095a[form_1].in_b_jan": 50000,
+        "f1095a[form_1].in_c_jan": 20000,
+        "f1095a[form_1].in_a_feb": 35000,
+        "f1095a[form_1].in_b_feb": 50000,
+        "f1095a[form_1].in_c_feb": 20000,
+        "f1095a[form_1].in_a_mar": 35000,
+        "f1095a[form_1].in_b_mar": 50000,
+        "f1095a[form_1].in_c_mar": 20000,
+        "f1095a[form_1].in_a_apr": 35000,
+        "f1095a[form_1].in_b_apr": 50000,
+        "f1095a[form_1].in_c_apr": 20000,
+        "f1095a[form_1].in_a_may": 35000,
+        "f1095a[form_1].in_b_may": 50000,
+        "f1095a[form_1].in_c_may": 20000,
+        "f1095a[form_1].in_a_jun": 35000,
+        "f1095a[form_1].in_b_jun": 50000,
+        "f1095a[form_1].in_c_jun": 20000,
+        "f1095a[form_1].in_a_jul": 35000,
+        "f1095a[form_1].in_b_jul": 50000,
+        "f1095a[form_1].in_c_jul": 20000,
+        "f1095a[form_1].in_a_aug": 35000,
+        "f1095a[form_1].in_b_aug": 50000,
+        "f1095a[form_1].in_c_aug": 20000,
+        "f1095a[form_1].in_a_sep": 35000,
+        "f1095a[form_1].in_b_sep": 50000,
+        "f1095a[form_1].in_c_sep": 20000,
+        "f1095a[form_1].in_a_oct": 35000,
+        "f1095a[form_1].in_b_oct": 50000,
+        "f1095a[form_1].in_c_oct": 20000,
+        "f1095a[form_1].in_a_nov": 35000,
+        "f1095a[form_1].in_b_nov": 50000,
+        "f1095a[form_1].in_c_nov": 20000,
+        "f1095a[form_1].in_a_dec": 35000,
+        "f1095a[form_1].in_b_dec": 50000,
+        "f1095a[form_1].in_c_dec": 20000,
+        "f1095a[form_2].in_a_jan": 15000,
+        "f1095a[form_2].in_b_jan": 50000,
+        "f1095a[form_2].in_c_jan": 5000,
+        "f1095a[form_2].in_a_feb": 15000,
+        "f1095a[form_2].in_b_feb": 50000,
+        "f1095a[form_2].in_c_feb": 5000,
+        "f1095a[form_2].in_a_mar": 15000,
+        "f1095a[form_2].in_b_mar": 50000,
+        "f1095a[form_2].in_c_mar": 5000,
+        "f1095a[form_2].in_a_apr": 15000,
+        "f1095a[form_2].in_b_apr": 50000,
+        "f1095a[form_2].in_c_apr": 5000,
+        "f1095a[form_2].in_a_may": 15000,
+        "f1095a[form_2].in_b_may": 50000,
+        "f1095a[form_2].in_c_may": 5000,
+        "f1095a[form_2].in_a_jun": 15000,
+        "f1095a[form_2].in_b_jun": 50000,
+        "f1095a[form_2].in_c_jun": 5000,
+        "f1095a[form_2].in_a_jul": 15000,
+        "f1095a[form_2].in_c_jul": 5000,
+        "f1095a[form_2].in_a_aug": 15000,
+        "f1095a[form_2].in_c_aug": 5000,
+        "f1095a[form_2].in_a_sep": 15000,
+        "f1095a[form_2].in_c_sep": 5000,
+        "f1095a[form_2].in_a_oct": 15000,
+        "f1095a[form_2].in_c_oct": 5000,
+        "f1095a[form_2].in_a_nov": 15000,
+        "f1095a[form_2].in_c_nov": 5000,
+        "f1095a[form_2].in_a_dec": 15000,
+        "f1095a[form_2].in_c_dec": 5000
       },
       "expect": {
         "f8962.line10": {
@@ -4565,7 +4721,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -4581,14 +4737,15 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000,
-        "f1095a[m].in_b_jan": 85000,
-        "f1095a[m].in_a_feb": 90000,
-        "f1095a[m].in_b_feb": 85000,
-        "f1095a[m].in_a_mar": 90000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "f1095a[form_1].in_a_jan": 90000,
+        "f1095a[form_1].in_b_jan": 85000,
+        "f1095a[form_1].in_a_feb": 90000,
+        "f1095a[form_1].in_b_feb": 85000,
+        "f1095a[form_1].in_a_mar": 90000
       },
       "expect": {
         "f8962.line24": {
@@ -4634,11 +4791,13 @@
         "person[taxpayer].w2[emp_a].box5": 4000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].mo_a": 50000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].b_fixed_same": true,
+        "f1095a[form_1].mo_a": 50000
       },
       "expect": {
         "f8962.line24": {
@@ -4683,9 +4842,12 @@
         "f4952.line1": 845200,
         "household.qss_eligible": true,
         "sa.gifts": true,
+        "sa.medical_any": true,
         "sa.line1": 2858200,
+        "sa.state_tax_any": true,
         "sa.line5a": 5000000,
-        "sa.line8a": 1889400,
+        "sa.home_owner": true,
+        "sa.mortgage_interest": 1889400,
         "person[taxpayer].f8889[hsa].line9": 278900,
         "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
@@ -4697,6 +4859,8 @@
         "$sc@person[taxpayer]": [
           "biz_a"
         ],
+        "person[taxpayer].sc[biz_a].travel_meals": true,
+        "person[taxpayer].sc[biz_a].employees": true,
         "person[taxpayer].sc[biz_a].line1": 5000000,
         "person[taxpayer].sc[biz_a].line6": 500000,
         "person[taxpayer].sc[biz_a].line24a": 3000000,
@@ -4706,7 +4870,9 @@
           "car_2"
         ],
         "person[taxpayer].sc[biz_a].scveh[car_1].miles_business": 13041,
-        "person[taxpayer].sc[biz_a].scveh[car_1].smr_ok": true,
+        "person[taxpayer].sc[biz_a].scveh[car_1].smr_always": true,
+        "person[taxpayer].sc[biz_a].scveh[car_1].smr_first": false,
+        "person[taxpayer].sc[biz_a].scveh[car_1].fleet": false,
         "person[taxpayer].sc[biz_a].scveh[car_2].method": "actual",
         "person[taxpayer].sc[biz_a].scveh[car_2].owned": true,
         "person[taxpayer].sc[biz_a].scveh[car_2].miles_business": 10716,
@@ -4746,13 +4912,13 @@
         ],
         "gift[item_a].deduction": 258900,
         "$f1095a": [
-          "mkt_a"
+          "form_1"
         ],
-        "f1095a[mkt_a].in_a_nov": 105200,
-        "f1095a[mkt_a].in_b_nov": 74500,
-        "f1095a[mkt_a].in_a_dec": 105200,
-        "f1095a[mkt_a].in_b_dec": 74500,
-        "f1095a[mkt_a].in_c_dec": 64600,
+        "f1095a[form_1].in_a_nov": 105200,
+        "f1095a[form_1].in_b_nov": 74500,
+        "f1095a[form_1].in_a_dec": 105200,
+        "f1095a[form_1].in_b_dec": 74500,
+        "f1095a[form_1].in_c_dec": 64600,
         "person[taxpayer].sc[biz_a].scveh[car_2].quarter": null
       },
       "expect": {
@@ -4827,26 +4993,26 @@
         "person[taxpayer].w2[emp_a].box5": 3500000,
         "person[taxpayer].w2[emp_a].box6": 50750,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 48000,
-        "f1095a[m].in_b_jan": 46000,
-        "f1095a[m].in_c_jan": 30000,
-        "f1095a[m].in_a_mar": 48000,
-        "f1095a[m].in_b_mar": 46000,
-        "f1095a[m].in_c_mar": 30000,
-        "f1095a[m].in_a_may": 48000,
-        "f1095a[m].in_b_may": 46000,
-        "f1095a[m].in_c_may": 30000,
-        "f1095a[m].in_a_jul": 48000,
-        "f1095a[m].in_b_jul": 46000,
-        "f1095a[m].in_c_jul": 30000,
-        "f1095a[m].in_a_sep": 48000,
-        "f1095a[m].in_b_sep": 46000,
-        "f1095a[m].in_c_sep": 30000,
-        "f1095a[m].in_a_nov": 48000,
-        "f1095a[m].in_b_nov": 46000,
-        "f1095a[m].in_c_nov": 30000
+        "f1095a[form_1].in_a_jan": 48000,
+        "f1095a[form_1].in_b_jan": 46000,
+        "f1095a[form_1].in_c_jan": 30000,
+        "f1095a[form_1].in_a_mar": 48000,
+        "f1095a[form_1].in_b_mar": 46000,
+        "f1095a[form_1].in_c_mar": 30000,
+        "f1095a[form_1].in_a_may": 48000,
+        "f1095a[form_1].in_b_may": 46000,
+        "f1095a[form_1].in_c_may": 30000,
+        "f1095a[form_1].in_a_jul": 48000,
+        "f1095a[form_1].in_b_jul": 46000,
+        "f1095a[form_1].in_c_jul": 30000,
+        "f1095a[form_1].in_a_sep": 48000,
+        "f1095a[form_1].in_b_sep": 46000,
+        "f1095a[form_1].in_c_sep": 30000,
+        "f1095a[form_1].in_a_nov": 48000,
+        "f1095a[form_1].in_b_nov": 46000,
+        "f1095a[form_1].in_c_nov": 30000
       },
       "expect": {
         "f8962.show_jan": {
@@ -5132,26 +5298,26 @@
         "person[taxpayer].w2[emp_a].box5": 3500000,
         "person[taxpayer].w2[emp_a].box6": 50750,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_feb": 48000,
-        "f1095a[m].in_b_feb": 46000,
-        "f1095a[m].in_c_feb": 30000,
-        "f1095a[m].in_a_apr": 48000,
-        "f1095a[m].in_b_apr": 46000,
-        "f1095a[m].in_c_apr": 30000,
-        "f1095a[m].in_a_jun": 48000,
-        "f1095a[m].in_b_jun": 46000,
-        "f1095a[m].in_c_jun": 30000,
-        "f1095a[m].in_a_aug": 48000,
-        "f1095a[m].in_b_aug": 46000,
-        "f1095a[m].in_c_aug": 30000,
-        "f1095a[m].in_a_oct": 48000,
-        "f1095a[m].in_b_oct": 46000,
-        "f1095a[m].in_c_oct": 30000,
-        "f1095a[m].in_a_dec": 48000,
-        "f1095a[m].in_b_dec": 46000,
-        "f1095a[m].in_c_dec": 30000
+        "f1095a[form_1].in_a_feb": 48000,
+        "f1095a[form_1].in_b_feb": 46000,
+        "f1095a[form_1].in_c_feb": 30000,
+        "f1095a[form_1].in_a_apr": 48000,
+        "f1095a[form_1].in_b_apr": 46000,
+        "f1095a[form_1].in_c_apr": 30000,
+        "f1095a[form_1].in_a_jun": 48000,
+        "f1095a[form_1].in_b_jun": 46000,
+        "f1095a[form_1].in_c_jun": 30000,
+        "f1095a[form_1].in_a_aug": 48000,
+        "f1095a[form_1].in_b_aug": 46000,
+        "f1095a[form_1].in_c_aug": 30000,
+        "f1095a[form_1].in_a_oct": 48000,
+        "f1095a[form_1].in_b_oct": 46000,
+        "f1095a[form_1].in_c_oct": 30000,
+        "f1095a[form_1].in_a_dec": 48000,
+        "f1095a[form_1].in_b_dec": 46000,
+        "f1095a[form_1].in_c_dec": 30000
       },
       "expect": {
         "f8962.show_jan": {
@@ -5434,7 +5600,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5450,9 +5616,9 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000
+        "f1095a[form_1].in_a_jan": 90000
       },
       "expect": {
         "f8962.b_zero": {
@@ -5479,7 +5645,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5495,11 +5661,11 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000,
-        "f1095a[m].in_b_jan": 85000,
-        "f1095a[m].in_a_feb": 90000
+        "f1095a[form_1].in_a_jan": 90000,
+        "f1095a[form_1].in_b_jan": 85000,
+        "f1095a[form_1].in_a_feb": 90000
       },
       "expect": {
         "f8962.b_zero": {
@@ -5526,7 +5692,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5542,15 +5708,15 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000,
-        "f1095a[m].in_b_jan": 85000,
-        "f1095a[m].in_a_feb": 90000,
-        "f1095a[m].in_b_feb": 85000,
-        "f1095a[m].in_a_mar": 90000,
-        "f1095a[m].in_b_mar": 85000,
-        "f1095a[m].in_a_apr": 90000
+        "f1095a[form_1].in_a_jan": 90000,
+        "f1095a[form_1].in_b_jan": 85000,
+        "f1095a[form_1].in_a_feb": 90000,
+        "f1095a[form_1].in_b_feb": 85000,
+        "f1095a[form_1].in_a_mar": 90000,
+        "f1095a[form_1].in_b_mar": 85000,
+        "f1095a[form_1].in_a_apr": 90000
       },
       "expect": {
         "f8962.b_zero": {
@@ -5577,7 +5743,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5593,17 +5759,17 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000,
-        "f1095a[m].in_b_jan": 85000,
-        "f1095a[m].in_a_feb": 90000,
-        "f1095a[m].in_b_feb": 85000,
-        "f1095a[m].in_a_mar": 90000,
-        "f1095a[m].in_b_mar": 85000,
-        "f1095a[m].in_a_apr": 90000,
-        "f1095a[m].in_b_apr": 85000,
-        "f1095a[m].in_a_may": 90000
+        "f1095a[form_1].in_a_jan": 90000,
+        "f1095a[form_1].in_b_jan": 85000,
+        "f1095a[form_1].in_a_feb": 90000,
+        "f1095a[form_1].in_b_feb": 85000,
+        "f1095a[form_1].in_a_mar": 90000,
+        "f1095a[form_1].in_b_mar": 85000,
+        "f1095a[form_1].in_a_apr": 90000,
+        "f1095a[form_1].in_b_apr": 85000,
+        "f1095a[form_1].in_a_may": 90000
       },
       "expect": {
         "f8962.b_zero": {
@@ -5630,7 +5796,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5646,19 +5812,19 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000,
-        "f1095a[m].in_b_jan": 85000,
-        "f1095a[m].in_a_feb": 90000,
-        "f1095a[m].in_b_feb": 85000,
-        "f1095a[m].in_a_mar": 90000,
-        "f1095a[m].in_b_mar": 85000,
-        "f1095a[m].in_a_apr": 90000,
-        "f1095a[m].in_b_apr": 85000,
-        "f1095a[m].in_a_may": 90000,
-        "f1095a[m].in_b_may": 85000,
-        "f1095a[m].in_a_jun": 90000
+        "f1095a[form_1].in_a_jan": 90000,
+        "f1095a[form_1].in_b_jan": 85000,
+        "f1095a[form_1].in_a_feb": 90000,
+        "f1095a[form_1].in_b_feb": 85000,
+        "f1095a[form_1].in_a_mar": 90000,
+        "f1095a[form_1].in_b_mar": 85000,
+        "f1095a[form_1].in_a_apr": 90000,
+        "f1095a[form_1].in_b_apr": 85000,
+        "f1095a[form_1].in_a_may": 90000,
+        "f1095a[form_1].in_b_may": 85000,
+        "f1095a[form_1].in_a_jun": 90000
       },
       "expect": {
         "f8962.b_zero": {
@@ -5685,7 +5851,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5701,21 +5867,21 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000,
-        "f1095a[m].in_b_jan": 85000,
-        "f1095a[m].in_a_feb": 90000,
-        "f1095a[m].in_b_feb": 85000,
-        "f1095a[m].in_a_mar": 90000,
-        "f1095a[m].in_b_mar": 85000,
-        "f1095a[m].in_a_apr": 90000,
-        "f1095a[m].in_b_apr": 85000,
-        "f1095a[m].in_a_may": 90000,
-        "f1095a[m].in_b_may": 85000,
-        "f1095a[m].in_a_jun": 90000,
-        "f1095a[m].in_b_jun": 85000,
-        "f1095a[m].in_a_jul": 90000
+        "f1095a[form_1].in_a_jan": 90000,
+        "f1095a[form_1].in_b_jan": 85000,
+        "f1095a[form_1].in_a_feb": 90000,
+        "f1095a[form_1].in_b_feb": 85000,
+        "f1095a[form_1].in_a_mar": 90000,
+        "f1095a[form_1].in_b_mar": 85000,
+        "f1095a[form_1].in_a_apr": 90000,
+        "f1095a[form_1].in_b_apr": 85000,
+        "f1095a[form_1].in_a_may": 90000,
+        "f1095a[form_1].in_b_may": 85000,
+        "f1095a[form_1].in_a_jun": 90000,
+        "f1095a[form_1].in_b_jun": 85000,
+        "f1095a[form_1].in_a_jul": 90000
       },
       "expect": {
         "f8962.b_zero": {
@@ -5742,7 +5908,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5758,23 +5924,23 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000,
-        "f1095a[m].in_b_jan": 85000,
-        "f1095a[m].in_a_feb": 90000,
-        "f1095a[m].in_b_feb": 85000,
-        "f1095a[m].in_a_mar": 90000,
-        "f1095a[m].in_b_mar": 85000,
-        "f1095a[m].in_a_apr": 90000,
-        "f1095a[m].in_b_apr": 85000,
-        "f1095a[m].in_a_may": 90000,
-        "f1095a[m].in_b_may": 85000,
-        "f1095a[m].in_a_jun": 90000,
-        "f1095a[m].in_b_jun": 85000,
-        "f1095a[m].in_a_jul": 90000,
-        "f1095a[m].in_b_jul": 95000,
-        "f1095a[m].in_a_aug": 90000
+        "f1095a[form_1].in_a_jan": 90000,
+        "f1095a[form_1].in_b_jan": 85000,
+        "f1095a[form_1].in_a_feb": 90000,
+        "f1095a[form_1].in_b_feb": 85000,
+        "f1095a[form_1].in_a_mar": 90000,
+        "f1095a[form_1].in_b_mar": 85000,
+        "f1095a[form_1].in_a_apr": 90000,
+        "f1095a[form_1].in_b_apr": 85000,
+        "f1095a[form_1].in_a_may": 90000,
+        "f1095a[form_1].in_b_may": 85000,
+        "f1095a[form_1].in_a_jun": 90000,
+        "f1095a[form_1].in_b_jun": 85000,
+        "f1095a[form_1].in_a_jul": 90000,
+        "f1095a[form_1].in_b_jul": 95000,
+        "f1095a[form_1].in_a_aug": 90000
       },
       "expect": {
         "f8962.b_zero": {
@@ -5801,7 +5967,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5817,25 +5983,25 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000,
-        "f1095a[m].in_b_jan": 85000,
-        "f1095a[m].in_a_feb": 90000,
-        "f1095a[m].in_b_feb": 85000,
-        "f1095a[m].in_a_mar": 90000,
-        "f1095a[m].in_b_mar": 85000,
-        "f1095a[m].in_a_apr": 90000,
-        "f1095a[m].in_b_apr": 85000,
-        "f1095a[m].in_a_may": 90000,
-        "f1095a[m].in_b_may": 85000,
-        "f1095a[m].in_a_jun": 90000,
-        "f1095a[m].in_b_jun": 85000,
-        "f1095a[m].in_a_jul": 90000,
-        "f1095a[m].in_b_jul": 95000,
-        "f1095a[m].in_a_aug": 90000,
-        "f1095a[m].in_b_aug": 95000,
-        "f1095a[m].in_a_sep": 90000
+        "f1095a[form_1].in_a_jan": 90000,
+        "f1095a[form_1].in_b_jan": 85000,
+        "f1095a[form_1].in_a_feb": 90000,
+        "f1095a[form_1].in_b_feb": 85000,
+        "f1095a[form_1].in_a_mar": 90000,
+        "f1095a[form_1].in_b_mar": 85000,
+        "f1095a[form_1].in_a_apr": 90000,
+        "f1095a[form_1].in_b_apr": 85000,
+        "f1095a[form_1].in_a_may": 90000,
+        "f1095a[form_1].in_b_may": 85000,
+        "f1095a[form_1].in_a_jun": 90000,
+        "f1095a[form_1].in_b_jun": 85000,
+        "f1095a[form_1].in_a_jul": 90000,
+        "f1095a[form_1].in_b_jul": 95000,
+        "f1095a[form_1].in_a_aug": 90000,
+        "f1095a[form_1].in_b_aug": 95000,
+        "f1095a[form_1].in_a_sep": 90000
       },
       "expect": {
         "f8962.b_zero": {
@@ -5862,7 +6028,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5878,27 +6044,27 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000,
-        "f1095a[m].in_b_jan": 85000,
-        "f1095a[m].in_a_feb": 90000,
-        "f1095a[m].in_b_feb": 85000,
-        "f1095a[m].in_a_mar": 90000,
-        "f1095a[m].in_b_mar": 85000,
-        "f1095a[m].in_a_apr": 90000,
-        "f1095a[m].in_b_apr": 85000,
-        "f1095a[m].in_a_may": 90000,
-        "f1095a[m].in_b_may": 85000,
-        "f1095a[m].in_a_jun": 90000,
-        "f1095a[m].in_b_jun": 85000,
-        "f1095a[m].in_a_jul": 90000,
-        "f1095a[m].in_b_jul": 95000,
-        "f1095a[m].in_a_aug": 90000,
-        "f1095a[m].in_b_aug": 95000,
-        "f1095a[m].in_a_sep": 90000,
-        "f1095a[m].in_b_sep": 95000,
-        "f1095a[m].in_a_oct": 90000
+        "f1095a[form_1].in_a_jan": 90000,
+        "f1095a[form_1].in_b_jan": 85000,
+        "f1095a[form_1].in_a_feb": 90000,
+        "f1095a[form_1].in_b_feb": 85000,
+        "f1095a[form_1].in_a_mar": 90000,
+        "f1095a[form_1].in_b_mar": 85000,
+        "f1095a[form_1].in_a_apr": 90000,
+        "f1095a[form_1].in_b_apr": 85000,
+        "f1095a[form_1].in_a_may": 90000,
+        "f1095a[form_1].in_b_may": 85000,
+        "f1095a[form_1].in_a_jun": 90000,
+        "f1095a[form_1].in_b_jun": 85000,
+        "f1095a[form_1].in_a_jul": 90000,
+        "f1095a[form_1].in_b_jul": 95000,
+        "f1095a[form_1].in_a_aug": 90000,
+        "f1095a[form_1].in_b_aug": 95000,
+        "f1095a[form_1].in_a_sep": 90000,
+        "f1095a[form_1].in_b_sep": 95000,
+        "f1095a[form_1].in_a_oct": 90000
       },
       "expect": {
         "f8962.b_zero": {
@@ -5925,7 +6091,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -5941,29 +6107,29 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000,
-        "f1095a[m].in_b_jan": 85000,
-        "f1095a[m].in_a_feb": 90000,
-        "f1095a[m].in_b_feb": 85000,
-        "f1095a[m].in_a_mar": 90000,
-        "f1095a[m].in_b_mar": 85000,
-        "f1095a[m].in_a_apr": 90000,
-        "f1095a[m].in_b_apr": 85000,
-        "f1095a[m].in_a_may": 90000,
-        "f1095a[m].in_b_may": 85000,
-        "f1095a[m].in_a_jun": 90000,
-        "f1095a[m].in_b_jun": 85000,
-        "f1095a[m].in_a_jul": 90000,
-        "f1095a[m].in_b_jul": 95000,
-        "f1095a[m].in_a_aug": 90000,
-        "f1095a[m].in_b_aug": 95000,
-        "f1095a[m].in_a_sep": 90000,
-        "f1095a[m].in_b_sep": 95000,
-        "f1095a[m].in_a_oct": 90000,
-        "f1095a[m].in_b_oct": 95000,
-        "f1095a[m].in_a_nov": 90000
+        "f1095a[form_1].in_a_jan": 90000,
+        "f1095a[form_1].in_b_jan": 85000,
+        "f1095a[form_1].in_a_feb": 90000,
+        "f1095a[form_1].in_b_feb": 85000,
+        "f1095a[form_1].in_a_mar": 90000,
+        "f1095a[form_1].in_b_mar": 85000,
+        "f1095a[form_1].in_a_apr": 90000,
+        "f1095a[form_1].in_b_apr": 85000,
+        "f1095a[form_1].in_a_may": 90000,
+        "f1095a[form_1].in_b_may": 85000,
+        "f1095a[form_1].in_a_jun": 90000,
+        "f1095a[form_1].in_b_jun": 85000,
+        "f1095a[form_1].in_a_jul": 90000,
+        "f1095a[form_1].in_b_jul": 95000,
+        "f1095a[form_1].in_a_aug": 90000,
+        "f1095a[form_1].in_b_aug": 95000,
+        "f1095a[form_1].in_a_sep": 90000,
+        "f1095a[form_1].in_b_sep": 95000,
+        "f1095a[form_1].in_a_oct": 90000,
+        "f1095a[form_1].in_b_oct": 95000,
+        "f1095a[form_1].in_a_nov": 90000
       },
       "expect": {
         "f8962.b_zero": {
@@ -5990,7 +6156,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -6006,31 +6172,31 @@
         "person[spouse].w2[e0].box5": 3000000,
         "person[spouse].w2[e0].box6": 43500,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].in_a_jan": 90000,
-        "f1095a[m].in_b_jan": 85000,
-        "f1095a[m].in_a_feb": 90000,
-        "f1095a[m].in_b_feb": 85000,
-        "f1095a[m].in_a_mar": 90000,
-        "f1095a[m].in_b_mar": 85000,
-        "f1095a[m].in_a_apr": 90000,
-        "f1095a[m].in_b_apr": 85000,
-        "f1095a[m].in_a_may": 90000,
-        "f1095a[m].in_b_may": 85000,
-        "f1095a[m].in_a_jun": 90000,
-        "f1095a[m].in_b_jun": 85000,
-        "f1095a[m].in_a_jul": 90000,
-        "f1095a[m].in_b_jul": 95000,
-        "f1095a[m].in_a_aug": 90000,
-        "f1095a[m].in_b_aug": 95000,
-        "f1095a[m].in_a_sep": 90000,
-        "f1095a[m].in_b_sep": 95000,
-        "f1095a[m].in_a_oct": 90000,
-        "f1095a[m].in_b_oct": 95000,
-        "f1095a[m].in_a_nov": 90000,
-        "f1095a[m].in_b_nov": 95000,
-        "f1095a[m].in_a_dec": 90000
+        "f1095a[form_1].in_a_jan": 90000,
+        "f1095a[form_1].in_b_jan": 85000,
+        "f1095a[form_1].in_a_feb": 90000,
+        "f1095a[form_1].in_b_feb": 85000,
+        "f1095a[form_1].in_a_mar": 90000,
+        "f1095a[form_1].in_b_mar": 85000,
+        "f1095a[form_1].in_a_apr": 90000,
+        "f1095a[form_1].in_b_apr": 85000,
+        "f1095a[form_1].in_a_may": 90000,
+        "f1095a[form_1].in_b_may": 85000,
+        "f1095a[form_1].in_a_jun": 90000,
+        "f1095a[form_1].in_b_jun": 85000,
+        "f1095a[form_1].in_a_jul": 90000,
+        "f1095a[form_1].in_b_jul": 95000,
+        "f1095a[form_1].in_a_aug": 90000,
+        "f1095a[form_1].in_b_aug": 95000,
+        "f1095a[form_1].in_a_sep": 90000,
+        "f1095a[form_1].in_b_sep": 95000,
+        "f1095a[form_1].in_a_oct": 90000,
+        "f1095a[form_1].in_b_oct": 95000,
+        "f1095a[form_1].in_a_nov": 90000,
+        "f1095a[form_1].in_b_nov": 95000,
+        "f1095a[form_1].in_a_dec": 90000
       },
       "expect": {
         "f8962.b_zero": {
@@ -6058,7 +6224,7 @@
         "person[taxpayer].w2[emp_a].box5": 1200000,
         "person[taxpayer].w2[emp_a].box6": 17400,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
         "f8962.alien_below": true
       },

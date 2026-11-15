@@ -488,7 +488,7 @@
   ]
  },
  {
-  "screen": "eic.died_2025",
+  "screen": "eic.died_this_year",
   "question": "Did your spouse die in 2025, or are you preparing this return for someone who died in 2025?",
   "lines": [
    "eic.age_range"
@@ -514,7 +514,7 @@
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
   ],
-  "subject_sha": "739c99e441a08a488aecafa84cb94e4e14de8253bae48e91c4ce3988970f3fe8",
+  "subject_sha": "ba9c7d64b5867c11d41f934f4d19448051da0de959fa6476d160581fe58836aa",
   "grandfathered": true,
   "samples": [
    {
@@ -526,7 +526,15 @@
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
     "response": ".transcription/screens/eic.died_2025.response.txt"
    }
-  ]
+  ],
+  "carried": {
+   "by": "rename",
+   "map": {
+    "eic.died_2025": "eic.died_this_year"
+   },
+   "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+   "was": "739c99e441a08a488aecafa84cb94e4e14de8253bae48e91c4ce3988970f3fe8"
+  }
  },
  {
   "screen": "f2441.plans_differ",
@@ -3225,7 +3233,7 @@
   ]
  },
  {
-  "screen": "gate:clcw26.final_ask",
+  "screen": "gate:clcw_next_year.final_ask",
   "kind": "gate",
   "condition": "clcw26.final_ask",
   "lines": [
@@ -3252,7 +3260,7 @@
     "cols_sha256": "7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51"
    }
   ],
-  "subject_sha": "d7881adecd94573cefc55bdcb231b9898e633c80b624142f5173b53ea1b63575",
+  "subject_sha": "66f9b217fcc0742121c41192dc65071cad692072b7a886bc33005584489f041d",
   "grandfathered": true,
   "samples": [
    {
@@ -3278,7 +3286,20 @@
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
     "response": ".transcription/screens/gate_clcw26.final_ask.response.txt"
    }
-  ]
+  ],
+  "carried": {
+   "by": "rename",
+   "map": {
+    "clcw26.final_ask": "clcw_next_year.final_ask",
+    "clcw26.final_return": "clcw_next_year.final_return",
+    "clcw26.final_return_if_carryover": "clcw_next_year.final_return_if_carryover",
+    "clcw26.no": "clcw_next_year.no",
+    "clcw26.not_joint": "clcw_next_year.not_joint",
+    "clcw26.show": "clcw_next_year.show"
+   },
+   "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+   "was": "d7881adecd94573cefc55bdcb231b9898e633c80b624142f5173b53ea1b63575"
+  }
  },
  {
   "screen": "gate:div.any",
@@ -3388,72 +3409,6 @@
     "date": "2026-11-07",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
     "response": ".transcription/screens/gate_div.any.response.txt"
-   }
-  ]
- },
- {
-  "screen": "gate:div.has_capital_gain",
-  "kind": "gate",
-  "condition": "div.has_capital_gain",
-  "lines": [
-   "div.box2b_if_capital_gain",
-   "div.box2c_if_capital_gain",
-   "div.box2d_if_capital_gain",
-   "div.box2f_if_capital_gain"
-  ],
-  "inputs": [
-   "div.box2b",
-   "div.box2c",
-   "div.box2d",
-   "div.box2f"
-  ],
-  "used": [
-   {
-    "doc": "f1099div",
-    "revision": "January 2024 (continuous-use form)",
-    "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
-    "pages": [
-     1,
-     2,
-     3,
-     4,
-     5,
-     6
-    ],
-    "how": "whole document",
-    "locators": [
-     "Instructions for Recipient, boxes 1–16",
-     "p. 5, Instructions for Recipient, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain from certain depreciable real property\"",
-     "p. 5, Instructions for Recipient, \"Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion\"",
-     "p. 5, Instructions for Recipient, \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles\"",
-     "p. 5, Instructions for Recipient, \"Box 2f. Shows the portion of the amount in box 2a that is section 897 gain attributable to disposition of USRPI\"",
-     "p. 5, Instructions for Recipient, boxes 2b, 2c, 2d and 2f, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain from certain depreciable real property\", \"Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion\", \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles\", \"Box 2f. Shows the portion of the amount in box 2a that is section 897 gain attributable to disposition of USRPI\""
-    ],
-    "cols_pages": [
-     5
-    ],
-    "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
-   }
-  ],
-  "subject_sha": "63c1d99be8fe89725cd8f3c68ce6018281f9d8c7e5af71639fb22926c2ae6d2e",
-  "grandfathered": true,
-  "samples": [
-   {
-    "verdict": "COVERS",
-    "findings": [
-     {
-      "kind": "WIDE",
-      "situation": "A filer whose Forms 1099-DIV show only box 2a capital gain distributions, with boxes 2b, 2c, 2d and 2f blank, is still asked the four gated questions.",
-      "irs_text": "f1099div p. 5: \"But, if no amount is shown in boxes 2b, 2c, 2d, and 2f and your only capital gains and losses are capital gain distributions, you may be able to report the amounts shown in box 2a on your Form 1040\"",
-      "why": "Box 2a above zero does not mean any of the sub-boxes has an amount. Because each sub-box is a \"portion of the amount in box 2a,\" none can be nonzero when box 2a is zero, so the gate never drops an amount."
-     }
-    ],
-    "prompt_sha": "e14d37628c13363e916b9e201ad25fbd9c7bf0c601c588c81987229b847a4b70",
-    "cost": 0.047799999999999995,
-    "model": "claude-opus-5-5",
-    "date": "2026-11-07",
-    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "response": ".transcription/screens/gate_div.has_capital_gain.response.txt"
    }
   ]
  },

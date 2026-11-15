@@ -1,0 +1,39 @@
+name: 07_college_student
+who: A single college student, 24, who supports himself with a part-time job ($19,000 of wages) and paid his own tuition for his third year of college.
+end: complete
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  person[taxpayer].birth_year: 2001
+  person[taxpayer].born_jan1: false
+  $w2@person[taxpayer]: [campus_bookstore]
+  f8863.paid: true
+  person[taxpayer].w2[campus_bookstore].box1: 1900000
+  person[taxpayer].w2[campus_bookstore].box2: 95000
+  person[taxpayer].w2[campus_bookstore].box4: 117800
+  person[taxpayer].w2[campus_bookstore].box5: 1900000
+  person[taxpayer].w2[campus_bookstore].box6: 27550
+  person[taxpayer].sav_claimed: false
+  person[taxpayer].tin: true
+  person[taxpayer].edu: true
+  person[taxpayer].edu_1098t: true
+  person[taxpayer].edu_a_this_year: 250000
+  person[taxpayer].edu_a_next_year: 0
+  person[taxpayer].edu_line23: false
+  person[taxpayer].edu_line24: true
+  person[taxpayer].edu_refunds: 0
+  person[taxpayer].edu_inst: 840000
+  person[taxpayer].edu_line25: false
+  person[taxpayer].edu_line26: false
+  person[taxpayer].edu_ein: true
+  person[taxpayer].edu_over: false
+  person[taxpayer].edu_mat: 60000
+  f8863.ban: false
+  person[taxpayer].eic_ssn: true
+  f1040.tax_exempt_interest: 0
+  eic.died_this_year: false
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false

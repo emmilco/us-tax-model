@@ -1490,7 +1490,7 @@
    "bugs": [],
    "subject_sha": "8d9bc6f8344314388e3d9d1ae2900589ad96d7fa62cb54cc5afc80ebead9cb63"
   },
-  "unruled:gate:clcw26.final_ask#1": {
+  "unruled:gate:clcw_next_year.final_ask#1": {
    "reason": "No defect: a joint return is left out of the final-return question on purpose and keeps clcw26.decedent_notice; the question is asked only on a return with one filer.",
    "findings": [
     {
@@ -1506,7 +1506,20 @@
      "evidence": "p550 p. 103. The question is reached only through clcw26.not_joint, so it is asked only on a return with one filer (single, head of household, separate or qualifying surviving spouse), where \"a filer who died in 2025\" can only be that filer; a deceased spouse on a joint return is the decedent_notice case above."
     }
    ],
-   "subject_sha": "d7881adecd94573cefc55bdcb231b9898e633c80b624142f5173b53ea1b63575"
+   "subject_sha": "66f9b217fcc0742121c41192dc65071cad692072b7a886bc33005584489f041d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "clcw26.final_ask": "clcw_next_year.final_ask",
+     "clcw26.final_return": "clcw_next_year.final_return",
+     "clcw26.final_return_if_carryover": "clcw_next_year.final_return_if_carryover",
+     "clcw26.no": "clcw_next_year.no",
+     "clcw26.not_joint": "clcw_next_year.not_joint",
+     "clcw26.show": "clcw_next_year.show"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "d7881adecd94573cefc55bdcb231b9898e633c80b624142f5173b53ea1b63575"
+   }
   },
   "unruled:f8889.dist_code#1": {
    "reason": "No defect in the question: it is the paper backstop of four questions asked of every account, each of which catches its own case without a form.",

@@ -12,7 +12,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -23,7 +23,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -1320,7 +1323,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -1331,7 +1334,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -1389,7 +1395,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -1400,7 +1406,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -1458,7 +1467,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -1469,7 +1478,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -1527,7 +1539,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -1538,7 +1550,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -1702,7 +1717,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -1713,7 +1728,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -1877,7 +1895,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -1888,7 +1906,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -2059,15 +2080,15 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
         "dependent[parent].supported": true,
         "dependent[parent].parent_home_paid": true,
         "ny_it201.ask.city_resident": true,
-        "f1040.tax_exempt_interest": null,
-        "eic.died_2025": null,
+        "f1040.tax_exempt_interest": 0,
+        "eic.died_this_year": null,
         "eic.us_home": null,
         "eic.qc_of_another": null
       },
@@ -2120,15 +2141,15 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
         "dependent[parent].supported": true,
         "dependent[parent].parent_home_paid": true,
         "ny_it201.ask.city_resident": true,
-        "f1040.tax_exempt_interest": null,
-        "eic.died_2025": null,
+        "f1040.tax_exempt_interest": 0,
+        "eic.died_this_year": null,
         "eic.us_home": null,
         "eic.qc_of_another": null
       },
@@ -2181,15 +2202,15 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
         "dependent[parent].supported": true,
         "dependent[parent].parent_home_paid": true,
         "ny_it201.ask.city_resident": true,
-        "f1040.tax_exempt_interest": null,
-        "eic.died_2025": null,
+        "f1040.tax_exempt_interest": 0,
+        "eic.died_this_year": null,
         "eic.us_home": null,
         "eic.qc_of_another": null
       },
@@ -2242,7 +2263,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -2382,7 +2403,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -2522,7 +2543,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -2662,7 +2683,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -3451,7 +3472,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -3462,7 +3483,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -3626,7 +3650,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -3637,7 +3661,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -3801,7 +3828,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -3812,7 +3839,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -3976,7 +4006,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -3987,7 +4017,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -4158,7 +4191,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -4298,7 +4331,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -4438,7 +4471,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -4578,7 +4611,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -6610,7 +6643,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -6621,7 +6654,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -6785,7 +6821,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -6796,7 +6832,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -6960,7 +6999,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -6971,7 +7010,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -7135,7 +7177,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -7146,7 +7188,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -7310,7 +7355,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -7321,7 +7366,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -7485,7 +7533,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -7496,7 +7544,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -7660,7 +7711,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -7671,7 +7722,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -7835,7 +7889,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -7846,7 +7900,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -7987,7 +8044,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -7998,7 +8055,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -8146,7 +8206,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -8309,7 +8369,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -8472,7 +8532,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -8635,7 +8695,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -8798,7 +8858,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -8938,7 +8998,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -9876,7 +9936,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -9887,7 +9947,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -9945,7 +10008,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -9956,7 +10019,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -10014,7 +10080,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -10025,7 +10091,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -10189,7 +10258,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -10200,7 +10269,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -10371,15 +10443,15 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
         "dependent[parent].supported": true,
         "dependent[parent].parent_home_paid": true,
         "ny_it201.ask.city_resident": true,
-        "f1040.tax_exempt_interest": null,
-        "eic.died_2025": null,
+        "f1040.tax_exempt_interest": 0,
+        "eic.died_this_year": null,
         "eic.us_home": null,
         "eic.qc_of_another": null
       },
@@ -10432,15 +10504,15 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
         "dependent[parent].supported": true,
         "dependent[parent].parent_home_paid": true,
         "ny_it201.ask.city_resident": true,
-        "f1040.tax_exempt_interest": null,
-        "eic.died_2025": null,
+        "f1040.tax_exempt_interest": 0,
+        "eic.died_this_year": null,
         "eic.us_home": null,
         "eic.qc_of_another": null
       },
@@ -10493,7 +10565,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -10633,7 +10705,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -11608,8 +11680,10 @@
         "ny_it2[w0].city_withheld": 300000,
         "ny_it2[w1].state_withheld": 100000,
         "ny_it2[w1].city_withheld": 50000,
-        "ny_it201.line75": 20000,
-        "ny_it201.line79_amount": 10000
+        "ny_it201.line79_amount": 10000,
+        "ny_it201.ask.est_any": true,
+        "ny_it201.line75_amount": 20000,
+        "ny_it201.ask.apply_any": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: schedule). Federal amounts copied (from the federal encoding): status single, f1040.line1z 78,000.00, f1040.line11a 78,000.00, eic.limit 19,104.00. Two W-2 records, an estimated payment and part of the refund applied to 2026. Taxable income reached (line 38): $70,000; New York AGI (line 33): $78,000.",
@@ -12194,7 +12268,8 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.special_accrual": true
+        "ny_it201.ask.special_accrual": true,
+        "ny_it201.ask.moved_out": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: special accruals (IT-225 A-115, S-129). The New York answers make ny_it201.gate.special_accrual true, so ny_it201.line1 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text.",
@@ -12286,7 +12361,7 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.special_code": true
+        "ny_it201.ask.abroad": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: an item G special condition code. The New York answers make ny_it201.gate.special_code true, so ny_it201.line1 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text.",
@@ -12378,7 +12453,8 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.out_of_state_bond_interest": true
+        "ny_it201.ask.out_of_state_bond_interest": true,
+        "f1040.tax_exempt_interest": 50000
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: line 20 is not computed (B4). The New York answers make ny_it201.gate.line20 true, so ny_it201.line20 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text.",
@@ -12424,7 +12500,8 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.414h": true
+        "ny_it201.ask.414h": true,
+        "ny_it201.ask.public_job": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: line 21 is not computed (B4). The New York answers make ny_it201.gate.line21 true, so ny_it201.line21 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text.",
@@ -12470,7 +12547,9 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.529_nonqualified": true
+        "ny_it201.ask.529_nonqualified": true,
+        "person[taxpayer].x_edu_account": true,
+        "ny_it201.ask.ny_529": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: line 22 is not computed (B4). The New York answers make ny_it201.gate.line22 true, so ny_it201.line22 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text.",
@@ -12575,7 +12654,12 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.inflation_check": true
+        "ny_it201.ask.inflation_check": true,
+        "$oi8z": [
+          "inflation_check"
+        ],
+        "oi8z[inflation_check].kind": "kickbacks",
+        "oi8z[inflation_check].amount": 27000
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: line 25 (B1). The New York answers make ny_it201.gate.line25 true, so ny_it201.line25 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text. Line 33 (line 24 less line 32, which adds line 25) carries line 25's refusal.",
@@ -12785,7 +12869,9 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.529_owner": true
+        "ny_it201.ask.529_owner": true,
+        "person[taxpayer].x_edu_account": true,
+        "ny_it201.ask.ny_529": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: line 30 is not computed (B4). The New York answers make ny_it201.gate.line30 true, so ny_it201.line30 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text.",
@@ -12831,7 +12917,9 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.itemize": true
+        "ny_it201.ask.itemize": true,
+        "sa.personal_property_tax_any": true,
+        "sa.line5c": 60000
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: itemizing (Form IT-196). The New York answers make ny_it201.gate.itemize true, so ny_it201.line34 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text.",
@@ -13056,7 +13144,10 @@
           "w0"
         ],
         "ny_it2[w0].state_withheld": 300000,
-        "ny_it2[w0].city_withheld": 200000
+        "ny_it2[w0].city_withheld": 200000,
+        "$sc@person[taxpayer]": [
+          "consulting"
+        ]
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: City credits on Form IT-201-ATT. The New York answers make ny_it201.gate.city_credits true, so ny_it201.line53 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text. Line 54 (line 52 less line 53) carries line 53's refusal.",
@@ -13478,23 +13569,16 @@
           "bank_a"
         ],
         "$w2@person[taxpayer]": [
-          "emp_a",
-          "emp_b"
+          "emp_a"
         ],
-        "person[taxpayer].w2[emp_a].box1": 3800000,
-        "person[taxpayer].w2[emp_a].box2": 1200000,
-        "person[taxpayer].w2[emp_a].box3": 3800000,
-        "person[taxpayer].w2[emp_a].box4": 496000,
-        "person[taxpayer].w2[emp_a].box5": 3800000,
-        "person[taxpayer].w2[emp_a].box6": 116000,
-        "person[taxpayer].w2[emp_b].box1": 4000000,
-        "person[taxpayer].w2[emp_b].box2": 500000,
-        "person[taxpayer].w2[emp_b].box3": 4000000,
-        "person[taxpayer].w2[emp_b].box4": 248000,
-        "person[taxpayer].w2[emp_b].box5": 4000000,
-        "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.real_property_credit": true
+        "ny_it201.ask.real_property_credit": true,
+        "person[taxpayer].w2[emp_a].box1": 1500000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 1500000,
+        "person[taxpayer].w2[emp_a].box4": 93000,
+        "person[taxpayer].w2[emp_a].box5": 1500000,
+        "person[taxpayer].w2[emp_a].box6": 21750
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: the real property tax credit. The New York answers make ny_it201.gate.real_property true, so ny_it201.line67 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text.",
@@ -13540,7 +13624,8 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.college_tuition": true
+        "ny_it201.ask.college_tuition": true,
+        "f8863.paid": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: the college tuition credit. The New York answers make ny_it201.gate.college_tuition true, so ny_it201.line68 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text.",
@@ -13586,7 +13671,13 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.other_withholding": true
+        "ny_it201.ask.other_withholding": true,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 1200000,
+        "person[taxpayer].retirement[p].box5": 120000
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: New York withholding on a form other than a W-2 (B2). The New York answers make ny_it201.gate.other_withholding true, so ny_it201.line72 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text. Line 73 (New York City tax withheld) refuses on the same screen.",
@@ -13733,7 +13824,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -13744,7 +13835,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -13860,7 +13954,8 @@
         ],
         "ny_it2[w0].state_withheld": 900000,
         "ny_it2[w0].city_withheld": 500000,
-        "ny_it201.line79_amount": 50000000
+        "ny_it201.line79_amount": 50000000,
+        "ny_it201.ask.apply_any": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: line 79 more than the overpayment. The New York answers make ny_it201.gate.line79_over true, so ny_it201.line78 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text.",
@@ -14446,7 +14541,7 @@
       ],
       "inputs": {
         "f1040.status": "mfs",
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "person[taxpayer].blind": true,
         "$w2@person[taxpayer]": [
           "a"
@@ -14601,7 +14696,7 @@
       ],
       "inputs": {
         "f1040.status": "mfs",
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "person[taxpayer].blind": true,
         "$w2@person[taxpayer]": [
           "a"
@@ -14756,7 +14851,7 @@
       ],
       "inputs": {
         "f1040.status": "mfs",
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "person[taxpayer].blind": true,
         "$w2@person[taxpayer]": [
           "a"
@@ -14911,7 +15006,7 @@
       ],
       "inputs": {
         "f1040.status": "mfs",
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "person[taxpayer].blind": true,
         "$w2@person[taxpayer]": [
           "a"
@@ -15077,7 +15172,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -15218,7 +15313,7 @@
           "parent",
           "parent2"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -15365,7 +15460,7 @@
           "parent2",
           "parent3"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -15518,7 +15613,7 @@
           "parent3",
           "parent4"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -15677,7 +15772,7 @@
           "parent4",
           "parent5"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -15842,7 +15937,7 @@
           "parent5",
           "parent6"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -15996,7 +16091,7 @@
       ],
       "inputs": {
         "f1040.status": "mfs",
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "person[taxpayer].blind": true,
         "$w2@person[taxpayer]": [
           "a"
@@ -16052,7 +16147,7 @@
           "parent6",
           "parent7"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -16288,7 +16383,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -16299,7 +16394,10 @@
         "$w2@person[spouse]": [
           "e0"
         ],
-        "f5695.part2_any": true,
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
         "f5695.line20a_i": 220000,
@@ -16587,7 +16685,8 @@
         ],
         "ny_it2[w0].state_withheld": 900000,
         "ny_it2[w0].city_withheld": 500000,
-        "ny_it201.line75": 100000
+        "ny_it201.ask.est_any": true,
+        "ny_it201.line75_amount": 100000
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: an estimated installment paid late or short, even with a refund. The New York answers make ny_it201.gate.estimated_penalty true, so ny_it201.line81 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text. Line 77 carries line 81's refusal: line 77, \"If you have to pay an estimated tax penalty (see line 81 instructions), subtract the penalty from the overpayment\" (IT-201-I p. 22).",
@@ -16923,7 +17022,8 @@
         ],
         "ny_it2[w0].state_withheld": 900000,
         "ny_it2[w0].city_withheld": 500000,
-        "ny_it201.line75": 100000
+        "ny_it201.ask.est_any": true,
+        "ny_it201.line75_amount": 100000
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Gate regression, predicted from the source: the withholding exceeds the tax, but an estimated tax installment was late, so line 81 (the estimated tax penalty) is a refusal and line 77, the overpayment less that penalty (IT-201-I p. 22, Line 77), carries it. Whether there is an overpayment to apply to 2026 (line 79) is then not known, so line 79 carries the same refusal.",

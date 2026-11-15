@@ -1,0 +1,151 @@
+{
+ "s3.disability_retired": [
+  118,
+  10
+ ],
+ "s3.adoption_any": [
+  126,
+  10
+ ],
+ "s3.adoption": [
+  126,
+  20
+ ],
+ "s3.adoption_earlier": [
+  126,
+  30
+ ],
+ "s3.adoption_us": [
+  126,
+  40
+ ],
+ "s3.mcc": [
+  215,
+  10
+ ],
+ "s3.ev": [
+  225,
+  10
+ ],
+ "s3.ev_dealer": [
+  225,
+  20
+ ],
+ "s3.ev_bought": [
+  225,
+  30
+ ],
+ "s3.ev_credit": [
+  225,
+  40
+ ],
+ "s3.ev_equipment": [
+  225,
+  50
+ ],
+ "s3.foreign_any": [
+  279,
+  10
+ ],
+ "s3.section960c": [
+  279,
+  20
+ ],
+ "s3.section965": [
+  279,
+  30
+ ],
+ "s3.virgin_islands": [
+  279,
+  40
+ ],
+ "ftc.carryover": [
+  279,
+  15
+ ],
+ "ftc.taxes": [
+  279,
+  60
+ ],
+ "ftc.all_passive": [
+  279,
+  70
+ ],
+ "ftc.statements": [
+  279,
+  80
+ ],
+ "ftc.eligible": [
+  279,
+  90
+ ],
+ "ftc.elect": [
+  279,
+  100
+ ],
+ "s3.farmland": [
+  290,
+  1
+ ],
+ "s3.kerosene": [
+  290,
+  2
+ ],
+ "s3.repaid_income": [
+  290,
+  3
+ ],
+ "s3.credit_bond": [
+  290,
+  4
+ ],
+ "s3.farmland_deferral": [
+  290,
+  5
+ ],
+ "s3.kerosene_credit": [
+  290,
+  6
+ ],
+ "s3.prior_other_forms": [
+  290,
+  10
+ ],
+ "s3.prior_amt": [
+  290,
+  20
+ ],
+ "s3.prior_forms": [
+  290,
+  30
+ ],
+ "s3.line10": [
+  305,
+  10
+ ],
+ "s3.elderly_credit": [
+  318,
+  10
+ ],
+ "#lists": {
+  "s3.line7": [
+   "s3.adoption_if_any",
+   "s3.adoption_us_if_earlier",
+   "s3.mcc_if_interest",
+   "s3.ev_dealer_if_ev",
+   "s3.ev_credit_if_bought",
+   "s3.ev_equipment_if_ev",
+   "s3.credit_bond",
+   "s3.prior_amt_if_forms",
+   "s3.prior_forms_if_forms",
+   "s3.elderly_credit_if_asked"
+  ],
+  "s3.line14": [
+   "s3.section960c_if_foreign",
+   "s3.section965_if_foreign",
+   "s3.virgin_islands_if_foreign",
+   "s3.farmland_deferral_if_sold",
+   "s3.repaid_income"
+  ]
+ }
+}

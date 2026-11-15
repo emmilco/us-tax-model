@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "3820de89b16e07ec18b8f2948a1ba4c707e6b244b7c5f94165ef67ba0ac1f02b",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-12); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -64,10 +64,10 @@
   },
   {
    "key": "7",
-   "record": "0f30153e0376f30fa2bf7796f846f3b2f7df7fa573a3ab223dd81e436b79c539",
+   "record": "b17035b989547d90d8d1bb7ef6d6c31a3d471a9a853dfab7972a09eb45bf9e98",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error (+ scope); f8863 p. 1, lines 6 and 7 (\"Multiply line 1 by line 6\"; amb.2025.edu_ratio_places on both sides). Same prorate wherever both evaluate, but through line 1 the reply declares `refuses: [f8863.ban]` on line 1, so every line reading line 1 needs the Form 8862 answer on every return and refuses whenever it is Yes, where the project asks it only when an American opportunity credit is claimed (f8863.ban_refused: lines 1 and 4 both above zero; the interview does not ask it otherwise) (i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit\"). executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 1,489 of 2,261 agree; 429 candidate-refuses, 342 candidate-unknown, 1 value; on completed returns 168 candidate-unknown on f8863.ban (165 where the project hides the line, 3 where it shows $0.00 with no American opportunity credit: classm.f8863.4 and .deepseek, classm.person.10) and 1 candidate-refuses, stage19.mut.aoc_line4_zero_ban (ban Yes, line 1 $2,387.50, line 4 $0.00: no credit is claimed, so no Form 8862 is needed; the project completes the return, the same in HEAD and the working tree). The refused-return differences: the candidate-refuses are whole-return screens (sa.excluded_income, sb.form8938, plan_screened, sb.line8 and others) that the reply reaches through Form 1040 line 11b on returns refused under the full interview; the value is generated 415, an MFS return (the MFS returns are refused for the whole return by scope.ready on s3.mfs (forms/2025/scope.yaml, i1040gi p. 14, Married Filing Separately)). Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "subject_key": "f62c050f8091038bf08ef8286c0d5fcf02bcf26f533c962299a62b58edab0034"
+   "ruling": "Ruling: model error; the amount is the project's (prorate line 1 by line 4 over line 5, three places; Form 8863 lines 6 and 7), but the reply shows line 7 whenever expenses were paid and line 4 is above zero, leaving out the bar the project's f8863.show_after4 carries through f8863.eligible: i8863 p. 3, Who cannot claim a credit, \"1. You're claimed as a dependent on another person's tax return\" (page 3 was given; the reply's whole-form reply applies that bar, and its scoped note says its test \"may differ from show_after4\"). Triage executable-triage-v2 (.transcription/triage/2025/f8863.json, pass 88a9511732a4): 1,913 of 2,546 agree; no value difference; 506 candidate-refuses and 62 candidate-unknown on refused returns, 62 candidate-unknown and 2 project-unknown on incomplete returns (the reply evaluates line 4 where the project's display condition does not); no completed-return difference.",
+   "subject_key": "279fed7d30aafc2aa71c3a34b88ec7e66f5294d8356fcb13648f715d2d6d8fe6"
   },
   {
    "key": "7 (box)",
@@ -212,7 +212,7 @@
   "3": "e4e192887ac56d6d7244d00ebaf4aa3313cdb5c948da246849640d87847beb37",
   "4": "1cf62dc05f9983aa57608e2a9dcbd666474b59b3092508fb2ba185e5eccdba21",
   "5": "727b46cb07179ed321f48fc5113bb790539e4250195df99bb92f5e282a7aa6c5",
-  "7": "54ba5ed94cbd5f93d8ac31c14050cad11998535a1a1f52d6bd8dea13b6a6d234",
+  "7": "6a1d68f7cea50fb1e502c3439aba4b10f69ec1ca0219c7fa1f84433c04af1353",
   "7 (box)": "100be1ae1eb0182fd8ad27345696b890bec55ae76345a55fc8abcdc290de44d5",
   "8": "4de6fe402a35f9dc0c234d20e8837e48b582c6ce0cbb25acbdf80c6565a38ed6",
   "9": "2d3290049c0ae34491b4086477dfc3eb3f7da5fb2adb76a514fdb8c7baca7642",

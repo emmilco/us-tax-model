@@ -1,0 +1,43 @@
+# Consumers check, group C1: pairs not ruled "same"
+
+Group C1 has 68 pairs: 62 are ruled "same" in `crulings_C1.json`, and the 6 below are not ruled. Every pair was read against the reader's definition in `forms/2025/*.yaml`, the input's line and its `interview/2025/questions.yaml` entry, and the page text in `cprompts/us/<input>@<doc>_p<page>.txt`.
+
+## Differs: ISO stock that first vests in 2025 (4 pairs, one cause)
+
+### consumer:s2.iso@i6251:p4 (reader `s2.iso_if_options`)
+- Question: "Did you (or, on a joint return, your spouse) exercise incentive stock options in 2025 and not dispose of the stock in 2025?" The filer's prompt says "buy shares in 2025 with incentive stock options (ISOs) and still hold any of them at the end of 2025".
+- Page (i6251 p. 4, Line 2i): "The fair market value (FMV) of the stock acquired through exercise of the option (determined without regard to any lapse restriction) when your rights in the acquired stock first become transferable or when these rights are no longer subject to a substantial risk of forfeiture".
+- Why: the line 2i adjustment falls in the year the stock vests (first becomes transferable or free of substantial risk of forfeiture), not in the year of exercise. Take an option exercised early, in 2024 or before, with the stock vesting in 2025 and no election made at transfer. That filer has a 2025 adjustment but truthfully answers No, because the exercise was not in 2025. The answer is also wrong the other way: stock exercised in 2025 that vests in 2026 gets a Yes, but that error only refuses, so it is safe. The only other way into Form 6251 is `s2.amt_owed`, whose prompt is "Do you ... owe alternative minimum tax for 2025?" A filer who does not know about the adjustment cannot answer it. The question's own cite ("Who Must File; Part I, the adjustment for the exercise of incentive stock options") has no page number, so this page counts as non-own.
+- What I read: s2.yaml (`s2.iso`, `s2.iso_if_options`, `s2.amt_owed`, `s2.amt`), the interview entries for `s2.iso`, `s2.options_any` and `s2.amt_owed`, and a search of the questions and forms for "vest", "transferable", "substantial risk" and "3921": nothing else asks about this case.
+
+### consumer:s2.options_any@i6251:p4 (reader `s2.iso_if_options`)
+- Question: "In 2025, did you (or, on a joint return, your spouse) exercise stock options from an employer?" The prompt is "use stock options from an employer to buy shares, or sell shares bought that way".
+- Page: same p. 4 words as above.
+- Why: this is the same case one level up. A filer whose ISO stock was exercised in an earlier year, vests in 2025 and is not sold answers No to the parent, so `s2.iso` is never asked.
+
+### consumer:s2.iso@i6251:p1 and consumer:s2.options_any@i6251:p1 (reader `s2.iso_if_options`)
+- Questions: as above.
+- Page (i6251 p. 1, Who Must File): "Attach Form 6251 to your return if any of the following statements are true. 1. Form 6251, line 7, is greater than line 10."
+- Why: the gate stands in for "an ISO adjustment brings in Form 6251". Line 7 includes the line 2i adjustment for stock that vests in 2025, which the two questions leave out, as above. I listed these two pairs with the p. 4 pairs because one fix covers all four: ask about ISO stock that vested in 2025 or was exercised in 2025 with an election at transfer.
+
+## Unsure, probably harmless: a CTC rule cited for an EIC reader
+
+### consumer:dependent.eic_ssn@i1040gi:p18 (reader `dependent.eic_ssn_known`)
+- Question: "Did this person have a social security number issued on or before the due date of your 2025 return (including extensions) that is valid for the EIC? Any number issued by the Social Security Administration is valid unless the card says \"Not Valid for Employment\" and the number was issued solely to apply for or receive a federally funded benefit".
+- Page (i1040gi p. 18, Step 3, question 4, child tax credit): "Did you, or your spouse if filing a joint return, and this child have SSNs valid for employment and issued before the due date of your 2025 return (including extensions)?"
+- Why: the two tests differ. A card marked "Not Valid for Employment" whose number was not issued for a federal benefit counts as valid for the EIC but not for employment. Measured against the p. 18 rule, the question would be "differs". But the reader's only consumer is `dependent.eic_ssn_child`, which counts EIC children (Worksheet A, line 2), so the answer never decides the child tax credit and the return comes out right. The citation looks like the defect, not the question. The reader probably cites p. 18 to justify the citizen branch (a citizen's SSN is valid for employment, and so for the EIC). Citing i1040gi pp. 44-45 (EIC, Social security number) for the eic_ssn branch would make the pair the question's own rule. I ruled p. 22 "same", since its DHS sentence matches the question.
+- What I read: `dependent.eic_ssn_known` and `dependent.eic_ssn_child` in dependent.yaml, plus a grep for consumers of `dependent.eic_ssn_known`. It has one consumer.
+
+## Unsure, low severity: "Do you have an IRA" in the present tense
+
+### consumer:person.ira_owner@f5329:p1 (reader `person.x_ira_prior_excess_if_ira_owner`)
+- Question: "Do you have an individual retirement arrangement (IRA) of any kind: traditional, Roth, SEP or SIMPLE, including an inherited IRA and one opened in 2026 for 2025?" The prompt is "Do you have an IRA (an individual retirement account) of any kind?"
+- Page (f5329 p. 1, Part III): "Complete this part if you contributed more to your traditional IRAs (which include your traditional SEP IRAs and traditional SIMPLE IRAs) for 2025 than is allowable or you had an amount on line 17 of your 2024 Form 5329." The tax is 6% of the excess, up to "the value of your traditional IRAs on December 31, 2025". Part IV has the same rule for Roth IRAs.
+- Why: the page needs IRAs held at the end of 2025. The question is in the present tense, at interview time in 2026. Take a filer whose earlier excess was still in an IRA on December 31, 2025, and who emptied and closed that IRA in early 2026. That filer can truthfully answer No, so `person.x_ira_prior_excess` (refused on Yes) is never asked, and the 2025 6% tax is lost without any notice. This is narrow. For Form 8880, the question's own form, an account closed after the contribution is harmless, because the distribution cancels the contribution on line 4. Possible fix: ask "did you have an IRA at any time in 2025, or do you have one now".
+- What I read: the gate and `person.x_ira_prior_excess` (person.yaml and its interview prompt), plus a search for other prior-excess questions. There are none.
+
+## Observations outside the pairs (I ruled "same" anyway)
+
+1. **asset.listed: transportation property.** On i4562 p. 3, listed property includes "Any other property used for transportation if the nature of the property lends itself to personal use". `asset.listed` asks only about entertainment and recreation property and pre-2018 computers. It relies on `asset.kind_excluded` ("a building or part of one, land, a vehicle, an aircraft, a film or a recording") to keep transportation property out. Vessels (asset class `c00_28`, "Vessels, Barges, Tugs, and Similar Water Transportation Equipment") are in the class list. A filer with a business boat might not call it "a vehicle". If so, the boat answers No to `asset.listed`, and if business use is 50% or less it would still get the special allowance and GDS. This gap is in the question's own (p. 3) definition and affects every consumer of `asset.listed` equally, including the six pages already ruled "same" in consumers.json. It is not a consumer difference, so I ruled the eight C1 asset pairs "same". It may be worth a separate look: name boats in the vehicle screen, or add transportation property to `asset.listed`.
+2. **Copied citations.** Several gates carry their whole form's shared citation, so they cite pages with no rule about their subject. Examples: `asset.qbu_low_if_listed` cites i4562 pp. 6, 8, 11 and p946 pp. 17, 31, 37; `person.rmd_age` and `person.x_ira_prior_excess_if_ira_owner` cite f5329 p. 1 Part II (Coverdell) and the Part IX required-distribution pages. I ruled those pairs "same", and each reason says the page sets no different sense for the input. Trimming the citations would remove these pairs.
+3. **f5695.any wording (ruled same).** The source text lists "solar panels, a battery, insulation, windows, doors, or heating, cooling or hot-water equipment" after a colon, and has no interview prompt. Fuel cells and small wind are not named; they are covered only by "anything ... that saves or makes energy" and the help's "If in doubt, answer Yes".

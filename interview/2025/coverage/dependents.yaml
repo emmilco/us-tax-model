@@ -1,0 +1,268 @@
+tax_year: 2025
+part: Children and other dependents
+profile: full
+sets:
+  one_listed:
+    says: One person on the return, single, who lists one person as a child or other dependent.
+    answers:
+      $person: [taxpayer]
+      f1040.status: single
+      $dependent: [kid]
+  young_child:
+    says: The person listed is the filer's own child, aged 4, younger than the filer, who lived with the filer all year.
+    answers:
+      dependent[kid].relationship: child
+      dependent[kid].age: 4
+      dependent[kid].lived_all_year: true
+      dependent[kid].younger: true
+  teenager:
+    says: The person listed is the filer's own child, aged 17, younger than the filer, who lived with the filer all year.
+    answers:
+      dependent[kid].relationship: child
+      dependent[kid].age: 17
+      dependent[kid].lived_all_year: true
+      dependent[kid].younger: true
+  no_other_claim:
+    says: No other relative could claim the person, and the person is not a child of parents who live apart.
+    answers:
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: false
+rows:
+  - id: dependents.ordinary_child
+    design: lane 2a, the ordinary child (N4)
+    situation: A young child of the filer's own, never married, with no money of their own, who lived with the filer all year, is asked none of the precise tests.
+    uses: [one_listed, young_child, no_other_claim]
+    answers:
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
+    expect:
+      asks: dependent[kid].citizen_ssn
+      not_asked:
+        - dependent[kid].months
+        - dependent[kid].kidnapped
+        - dependent[kid].married
+        - dependent[kid].joint_return
+        - dependent[kid].self_support_view
+        - dependent[kid].self_support
+        - dependent[kid].divorced_rule
+        - dependent[kid].other_nontaxpayer
+  - id: dependents.married_refused
+    design: dependent.married (the married person rules), beneath dependent.ever_married
+    situation: A 17-year-old child who was married at the end of 2025 is still refused at the married person rules.
+    uses: [one_listed, teenager, no_other_claim]
+    answers:
+      dependent[kid].ever_married: true
+      dependent[kid].married: true
+      dependent[kid].own_money: false
+    expect:
+      refused: dependent[kid].married
+  - id: dependents.widowed_asks_joint_return
+    design: dependent.joint_return, beneath dependent.ever_married
+    situation: A child who was married before but not at the end of 2025 is asked the joint return test.
+    uses: [one_listed, teenager, no_other_claim]
+    answers:
+      dependent[kid].ever_married: true
+      dependent[kid].married: false
+      dependent[kid].own_money: false
+    expect:
+      asks: dependent[kid].joint_return
+  - id: dependents.divorced_rule_refused
+    design: dependent.divorced_rule, beneath dependent.parents_apart
+    situation: A child whose parents live apart, and whose custodial parent released the claim, is still refused at the rule for children of divorced or separated parents.
+    uses: [one_listed, young_child]
+    answers:
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: true
+      dependent[kid].ever_married: false
+      dependent[kid].divorced_rule: true
+      dependent[kid].own_money: false
+    expect:
+      refused: dependent[kid].divorced_rule
+  - id: dependents.parents_apart_no_release
+    design: dependent.divorced_rule, beneath dependent.parents_apart
+    situation: A child whose parents live apart, with no release of the claim, goes on to the next question.
+    uses: [one_listed, young_child]
+    answers:
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: true
+      dependent[kid].ever_married: false
+    expect:
+      asks: dependent[kid].own_money
+  - id: dependents.tiebreak_refused
+    design: dependent.qc_tiebreak (qualifying child of more than one person)
+    situation: A child who is the filer's qualifying child and whom another relative could also claim is still refused at the tie-breaker rules.
+    uses: [one_listed, young_child]
+    answers:
+      dependent[kid].other_claimant: true
+      dependent[kid].own_money: false
+      dependent[kid].ever_married: false
+      dependent[kid].parents_apart: false
+    expect:
+      refused: dependent[kid].qc_tiebreak
+  - id: dependents.kidnapped_refused
+    design: dependent.kidnapped, beneath dependent.lived_all_year
+    situation: A child presumed kidnapped who lived with the filer for 3 months is still refused at the kidnapped child rules.
+    uses: [one_listed, young_child, no_other_claim]
+    answers:
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
+      dependent[kid].lived_all_year: false
+      dependent[kid].kidnapped: true
+      dependent[kid].months: 3
+    expect:
+      refused: dependent[kid].kidnap_residency
+  - id: dependents.part_year_asks_months
+    design: dependent.months, beneath dependent.lived_all_year
+    situation: A child who did not live with the filer all year is asked the months.
+    uses: [one_listed, young_child, no_other_claim]
+    answers:
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
+      dependent[kid].lived_all_year: false
+    expect:
+      asks: dependent[kid].months
+  - id: dependents.own_money_clear
+    design: dependent.self_support, beneath dependent.own_money and the plain answer
+    situation: A teenager with pay of their own who clearly paid less than half of their own costs is not asked the full support test.
+    uses: [one_listed, teenager, no_other_claim]
+    answers:
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: true
+      dependent[kid].self_support_view: under_half
+    expect:
+      asks: dependent[kid].citizen_ssn
+      not_asked:
+        - dependent[kid].self_support
+  - id: dependents.own_money_unsure
+    design: dependent.self_support, beneath dependent.own_money and the plain answer
+    situation: A teenager with pay of their own, where it is close, is asked the full support test.
+    uses: [one_listed, teenager, no_other_claim]
+    answers:
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: true
+      dependent[kid].self_support_view: unsure
+    expect:
+      asks: dependent[kid].self_support
+  - id: dependents.citizen_with_number
+    design: dependent.citizen, dependent.tin, dependent.work_ssn, beneath dependent.citizen_ssn
+    situation: A child who is a U.S. citizen with a social security number is asked nothing more about citizenship or the number.
+    uses: [one_listed, young_child, no_other_claim]
+    answers:
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
+      dependent[kid].citizen_ssn: true
+      person[taxpayer].work_ssn: true
+    expect:
+      asks: person[taxpayer].tin
+      not_asked:
+        - dependent[kid].citizen
+        - dependent[kid].tin
+        - dependent[kid].work_ssn
+  - id: dependents.not_citizen_with_number
+    design: dependent.citizen, beneath dependent.citizen_ssn
+    situation: A child who is not a U.S. citizen with a social security number is asked the citizenship test.
+    uses: [one_listed, young_child, no_other_claim]
+    answers:
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
+      dependent[kid].citizen_ssn: false
+    expect:
+      asks: dependent[kid].citizen
+  - id: dependents.no_number_refused
+    design: dependent.claimed_no_tin (a dependent without a number)
+    situation: A child who meets the tests but has no social security number, ITIN or ATIN is still refused.
+    uses: [one_listed, young_child, no_other_claim]
+    answers:
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
+      dependent[kid].citizen_ssn: false
+      dependent[kid].citizen: true
+      dependent[kid].tin: false
+    expect:
+      refused: dependent[kid].claimed_no_tin
+  - id: dependents.parent_multiple_support_refused
+    design: dependent.multiple_support
+    situation: A parent supported by the filer together with others, none paying over half, is still refused at the multiple support agreement.
+    uses: [one_listed]
+    answers:
+      dependent[kid].relationship: parent
+      dependent[kid].age: 78
+      dependent[kid].citizen_ssn: true
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: false
+      dependent[kid].ever_married: true
+      dependent[kid].married: false
+      dependent[kid].multiple_support: true
+      dependent[kid].disabled: false
+      dependent[kid].gross_income: 0
+    expect:
+      refused: dependent[kid].multiple_support
+  - id: dependents.parent_support_clear
+    design: dependent.supported, beneath the plain answer
+    situation: A parent with little income whom the filer clearly supports is not asked the full support test.
+    uses: [one_listed]
+    answers:
+      dependent[kid].relationship: parent
+      dependent[kid].age: 78
+      dependent[kid].citizen_ssn: true
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: false
+      dependent[kid].ever_married: true
+      dependent[kid].married: false
+      dependent[kid].multiple_support: false
+      dependent[kid].disabled: false
+      dependent[kid].gross_income: 0
+      dependent[kid].supported_view: over_half
+    expect:
+      asks: person[taxpayer].tin
+      not_asked:
+        - dependent[kid].supported
+  - id: dependents.parent_support_unsure
+    design: dependent.supported, beneath the plain answer
+    situation: A parent whose support is close is asked the full support test.
+    uses: [one_listed]
+    answers:
+      dependent[kid].relationship: parent
+      dependent[kid].age: 78
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: false
+      dependent[kid].ever_married: true
+      dependent[kid].married: false
+      dependent[kid].multiple_support: false
+      dependent[kid].disabled: false
+      dependent[kid].gross_income: 0
+      dependent[kid].supported_view: unsure
+    expect:
+      asks: dependent[kid].supported
+  - id: dependents.housemate_all_year
+    design: dependent.qr_all_year, beneath dependent.lived_all_year
+    situation: A partner who lived with the filer all year is not asked again whether they lived there all year.
+    uses: [one_listed]
+    answers:
+      dependent[kid].relationship: household_member
+      dependent[kid].age: 40
+      dependent[kid].lived_all_year: true
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: false
+      dependent[kid].ever_married: false
+      dependent[kid].multiple_support: false
+      dependent[kid].disabled: false
+      dependent[kid].gross_income: 0
+    expect:
+      asks: dependent[kid].supported_view
+      not_asked:
+        - dependent[kid].qr_all_year
+  - id: dependents.housemate_part_year
+    design: dependent.qr_all_year, beneath dependent.lived_all_year
+    situation: A partner who did not live with the filer for all of 2025 is asked whether the time away was temporary.
+    uses: [one_listed]
+    answers:
+      dependent[kid].relationship: household_member
+      dependent[kid].age: 40
+      dependent[kid].lived_all_year: false
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: false
+      dependent[kid].ever_married: false
+      dependent[kid].disabled: false
+    expect:
+      asks: dependent[kid].qr_all_year

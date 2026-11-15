@@ -1,0 +1,47 @@
+name: 06_investor_loss_carryover
+who: A single person, 45, with wages from one job and a brokerage account, who sold stock in 2025, received dividends, and carries a capital loss over from 2024.
+end: complete
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  person[taxpayer].birth_year: 1980
+  $w2@person[taxpayer]: [software_co]
+  $sales: [stock_a, stock_b]
+  sd.route_each: false
+  sd.f2439: false
+  div.any: true
+  ftc.taxes: 0
+  div.other_boxes: false
+  sd.carryover: true
+  person[taxpayer].w2[software_co].box1: 11800000
+  person[taxpayer].w2[software_co].box2: 1890000
+  person[taxpayer].w2[software_co].box4: 731600
+  person[taxpayer].w2[software_co].box5: 11800000
+  person[taxpayer].w2[software_co].box6: 171100
+  sb.ordinary_dividends: 184000
+  sd.distributions: 0
+  sales[stock_a].box: A
+  sales[stock_a].special: false
+  sales[stock_a].code: none
+  sales[stock_a].proceeds: 1240000
+  sales[stock_a].reported_basis: 1490000
+  sales[stock_b].box: D
+  sales[stock_b].special: false
+  sales[stock_b].code: none
+  sales[stock_b].proceeds: 3100000
+  sales[stock_b].reported_basis: 2250000
+  clcw.prior_sd7: -200000
+  clcw.prior_sd15: -950000
+  clcw.prior_sd21: 300000
+  clcw.spouse_screen: false
+  clcw.prior_11: 10400000
+  clcw.prior_14: 1460000
+  f1040.line3a: 152000
+  sb.nominee: false
+  sb.bonds_any: false
+  qbi.dividends: 0
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false

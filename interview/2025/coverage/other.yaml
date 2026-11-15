@@ -1,0 +1,335 @@
+tax_year: 2025
+part: Other money received, other taxes and the rare situations
+profile: full
+sets:
+  won:
+    says: A person who won something in 2025.
+    answers:
+      s1.winnings_any: true
+  options:
+    says: A person who used employer stock options in 2025, or sold shares bought with them.
+    answers:
+      s2.options_any: true
+  one_w2:
+    says: A person with one job and one Form W-2.
+    answers:
+      $w2@person[taxpayer]: [job]
+      person[taxpayer].w2[job].box1: 5200000
+      person[taxpayer].w2[job].box2: 520000
+      person[taxpayer].w2[job].box4: 322400
+      person[taxpayer].w2[job].box5: 5200000
+      person[taxpayer].w2[job].box6: 75400
+rows:
+- id: other.iso_kept
+  design: s2.amt, incentive stock options (Form 6251 line 2i)
+  situation: A person bought shares with incentive stock options in 2025 and still holds them.
+  uses: [options]
+  answers:
+    s2.iso: true
+  expect:
+    refused: s2.amt
+- id: other.iso_vested_2025
+  design: s2.amt, incentive stock option shares that vest in 2025 (Form 6251 line 2i; BUG-0643)
+  situation: A person bought shares early with incentive stock options in 2024; they vested in 2025, and nothing was bought or sold in 2025.
+  answers:
+    s2.options_any: false
+    s2.iso_vested: true
+  expect:
+    refused: s2.amt
+- id: other.options_income_not_on_w2
+  design: s1.line8_other, line 8k (stock options)
+  situation: A person sold early the shares of a purchase plan, and the employer did not put the income on a W-2.
+  uses: [options]
+  answers:
+    s2.iso: false
+    s1.stock_options: true
+  expect:
+    refused: s1.line8_other
+- id: other.options_nothing_more
+  design: s2.options_any, the common case beneath the parent
+  situation: A person exercised ordinary stock options, with the income on the W-2, and goes on.
+  uses: [options]
+  answers:
+    s2.iso: false
+    s1.stock_options: false
+  expect:
+    proceeds:
+      s1.stock_options: false
+- id: other.amt_owed
+  design: s2.amt, the tax owed for a reason no question names
+  situation: A person with a large capital gain has worked out on Form 6251 that alternative minimum tax is owed.
+  answers:
+    s2.amt_owed: true
+  expect:
+    refused: s2.amt
+- id: other.w2_uncollected_tax
+  design: s2.other, Schedule 2 lines 5, 13, 17h, 17k (the marks on a W-2)
+  situation: A person's W-2 shows the letter B in box 12, Medicare tax the employer did not collect on tips.
+  uses: [one_w2]
+  answers:
+    s2.w2_marks: true
+    scope.w2_marks: false
+    s1.nqdc_pension: false
+    scope.artist_official: false
+    scope.excess_deferral: false
+    s2.amt_owed: false
+  expect:
+    refused: s2.other
+- id: other.household_employee
+  design: s2.other, Schedule 2 line 9
+  situation: A person paid a nanny $20,000 in 2025.
+  answers:
+    s2.household_help: true
+    s2.household_employee: true
+    s2.amt_owed: false
+  expect:
+    refused: s2.other
+- id: other.household_help_small
+  design: s2.household_help, the common case beneath the parent
+  situation: A person paid a babysitter a few hundred dollars over the year and goes on.
+  answers:
+    s2.household_help: true
+    s2.household_employee: false
+  expect:
+    proceeds:
+      s2.household_employee: false
+- id: other.credit_recapture
+  design: s2.other, Schedule 2 lines 1d to 1y, 16, 17a, 19
+  situation: A person sold in 2025 a building for which a rehabilitation credit was claimed in 2022 and must pay part of it back.
+  answers:
+    s2.credit_recapture: true
+    s2.amt_owed: false
+  expect:
+    refused: s2.other
+- id: other.other_tax
+  design: s2.other, Schedule 2 lines 17h to 17m, 1y and 17z (the residual question)
+  situation: A director received a golden parachute payment reported on Form 1099-NEC and owes the 20% tax on it.
+  answers:
+    s2.other_tax: true
+  expect:
+    refused: s2.other
+- id: other.territory_wage_statement
+  design: f8959.unsupported, territory wage statements
+  situation: A person worked part of the year in Puerto Rico and has a Form 499R-2/W-2PR.
+  answers:
+    f8959.territory_w2: true
+  expect:
+    refused: f8959.unsupported
+- id: other.ltc_payout
+  design: s1.line8_other, line 8e (Form 8853, long-term care)
+  situation: A person was paid a daily benefit by a long-term care insurance policy.
+  answers:
+    s1.ltc_payout: true
+  expect:
+    refused: s1.line8_other
+- id: other.nqdc_pension
+  design: s1.line8_other, line 8t
+  situation: A retired executive's W-2 shows in box 11 a payout from a former employer's deferred pay plan.
+  uses: [one_w2]
+  answers:
+    s2.w2_marks: false
+    s1.nqdc_pension: true
+  expect:
+    refused: s1.line8_other
+- id: other.inmate_wages
+  design: s1.line8_other, line 8u
+  situation: A person was paid for work done while in prison.
+  answers:
+    s1.inmate_wages: true
+  expect:
+    refused: s1.line8_other
+- id: other.digital_income
+  design: s1.line8_other, line 8v
+  situation: A person received crypto from staking.
+  answers:
+    s1.digital_income: true
+  expect:
+    refused: s1.line8_other
+- id: other.olympic_medal
+  design: s1.line8_other, line 8m
+  situation: An athlete won an Olympic medal and its prize money.
+  uses: [won]
+  answers:
+    s1.gambling_winnings: 0
+    s1.olympic: true
+    s1.prizes: 3750000
+  expect:
+    refused: s1.line8_other
+- id: other.gambling_winnings
+  design: s1.gambling_winnings beneath s1.winnings_any
+  situation: A person won $300 on a lottery ticket.
+  uses: [won]
+  answers:
+    s1.gambling_winnings: 30000
+    sa.gambling_losses: 0
+    s1.gambling_pro: false
+    s1.prizes: 3750000
+    s1.olympic: false
+    person[taxpayer].sav_student: false
+    person[taxpayer].sav_voluntary: 0
+    person[taxpayer].sav_able: false
+  expect:
+    proceeds:
+      s1.gambling_winnings: 30000
+- id: other.professional_gambler
+  design: s1.gambling_business (unchanged refusal, new path)
+  situation: A person gambles for a living.
+  uses: [won]
+  answers:
+    s1.gambling_winnings: 9000000
+    s1.gambling_pro: true
+    s1.ltc_payout: false
+    s1.inmate_wages: false
+    s1.digital_income: false
+    s1.olympic: false
+  expect:
+    refused: s1.gambling_business
+- id: other.prize
+  design: s1.line8i beneath s1.winnings_any
+  situation: A person won a $1,000 prize in a contest.
+  uses: [won]
+  answers:
+    s1.gambling_winnings: 0
+    s1.prizes: 100000
+    s1.olympic: false
+  expect:
+    proceeds:
+      s1.prizes: 100000
+- id: other.unemployment
+  design: s1.uc_paid beneath s1.uc_any
+  situation: A person was paid $5,000 of unemployment benefits.
+  answers:
+    s1.uc_any: true
+    s1.uc_paid: 500000
+    s1.uc_repaid: 0
+    s1.uc_unsupported: false
+  expect:
+    proceeds:
+      s1.uc_paid: 500000
+- id: other.unemployment_fund_contributions
+  design: s1.uc_unsupported (unchanged refusal, new path)
+  situation: A person on unemployment benefits had paid into the state's unemployment fund from wages.
+  answers:
+    s1.uc_any: true
+    s1.uc_paid: 500000
+    s1.uc_unsupported: true
+    s1.uc_repaid: 0
+  expect:
+    refused: s1.uc_unsupported
+- id: other.alimony_new_agreement
+  design: s1.alimony beneath s1.alimony_any
+  situation: A person divorced in 2021 pays alimony; it is neither income nor a deduction, and nothing more is asked.
+  answers:
+    s1.alimony_any: true
+    s1.alimony: false
+  expect:
+    proceeds:
+      s1.alimony: false
+    not_asked: [s1.alimony_received, s1.alimony_paid]
+- id: other.alimony_old_agreement
+  design: s1.alimony_received beneath s1.alimony
+  situation: A person divorced in 2015 received $12,000 of alimony in 2025.
+  answers:
+    s1.alimony_any: true
+    s1.alimony: true
+    s1.alimony_received: 1200000
+    s1.alimony_paid: 0
+    s1.alimony_unsupported: false
+  expect:
+    proceeds:
+      s1.alimony_received: 1200000
+- id: other.alimony_recapture
+  design: s1.alimony_unsupported (unchanged refusal, new path); the recapture with no payment in 2025
+  situation: A person divorced in 2018 paid alimony in 2023 and 2024 and none in 2025, so part of the deduction is recaptured.
+  answers:
+    s1.alimony_any: true
+    s1.alimony: true
+    s1.alimony_unsupported: true
+    s1.alimony_received: 0
+    s1.alimony_paid: 0
+  expect:
+    refused: s1.alimony_unsupported
+- id: other.jury_pay
+  design: s1.line8h beneath s1.jury_any
+  situation: A person was paid $100 for jury duty and kept it.
+  answers:
+    s1.jury_any: true
+    s1.jury_pay: 10000
+    s1.jury_to_employer: 0
+  expect:
+    proceeds:
+      s1.jury_pay: 10000
+- id: other.alaska_dividend
+  design: s1.line8g beneath s1.alaska_any
+  situation: An Alaska resident received the Permanent Fund dividend.
+  answers:
+    s1.alaska_any: true
+    s1.alaska_dividend: 100000
+  expect:
+    proceeds:
+      s1.alaska_dividend: 100000
+- id: other.hobby_income
+  design: s1.line8j beneath s1.hobby_any
+  situation: A person sold $400 of paintings made as a pastime.
+  answers:
+    s1.hobby_any: true
+    s1.hobby_income: 40000
+  expect:
+    proceeds:
+      s1.hobby_income: 40000
+- id: other.scholarship
+  design: s1.line8r beneath s1.scholarship_any
+  situation: A degree student's scholarship paid $3,000 toward room and board.
+  answers:
+    s1.scholarship_any: true
+    s1.scholarship_taxable: 300000
+  expect:
+    proceeds:
+      s1.scholarship_taxable: 300000
+- id: other.scholarship_tuition_only
+  design: s1.scholarship_any, the common case beneath the parent
+  situation: A student's grant covered tuition only; nothing is income.
+  answers:
+    s1.scholarship_any: true
+    s1.scholarship_taxable: 0
+  expect:
+    proceeds:
+      s1.scholarship_taxable: 0
+- id: other.canceled_debt_exception
+  design: s1.cod_unsupported (unchanged refusal)
+  situation: A person whose credit card debt was canceled owed more than everything they owned.
+  answers:
+    s1.cod_any: true
+    s1.cod_amount: 400000
+    s1.cod_unsupported: true
+    s1.digital_income: false
+  expect:
+    refused: s1.cod_unsupported
+- id: other.other_income_item
+  design: $oi8z, a kind the tool prepares
+  situation: A person received a $500 side commission.
+  answers:
+    $oi8z: [commission]
+    oi8z[commission].kind: kickbacks
+    oi8z[commission].amount: 50000
+  expect:
+    proceeds:
+      oi8z[commission].amount: 50000
+- id: other.other_income_other_kind
+  design: oi8z.figured (unchanged refusal)
+  situation: A person received a $500 reward, a kind of other income the tool does not figure.
+  answers:
+    $oi8z: [reward]
+    oi8z[reward].kind: other
+    scope.business_before: false
+  expect:
+    refused: oi8z[reward].figured
+- id: other.recovery_item
+  design: oi8z.recovery (unchanged refusal)
+  situation: A person was repaid in 2025 medical bills deducted in 2023.
+  answers:
+    $oi8z: [repaid]
+    oi8z[repaid].kind: recovery
+    scope.business_before: false
+  expect:
+    refused: oi8z[repaid].recovery

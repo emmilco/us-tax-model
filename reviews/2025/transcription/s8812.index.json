@@ -5,7 +5,7 @@
  "base": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
  "head_rows": {
   "agree / disagree / missing": "12 / 39 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-12); see Line-scoped reviews"
+  "line-scoped reviews": "5 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -180,10 +180,10 @@
   },
   {
    "key": "18a",
-   "record": "5b9fea1df9b64c103540663756ba0ca1a5d8f39a2ab5ba9ea6300e6ac9524b99",
+   "record": "177f4713bde7c280dd9a8d4a838a90e2cae20bbcc5d40de913f3cbf5df472a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error and interface gap; i1040s8812 p. 8, Earned Income Worksheet (\"If married filing jointly, include your spouse’s amounts with yours when completing this worksheet.\"), and line 18a of Schedule 8812. Where the project shows the line and the reply gives a value, the values agree; the reply has no matching display condition, so it shows an amount where the project hides the line (candidate-shows-skipped, the display difference ruled in earlier rounds), and it declares its own refusal (s8812.h_18a_refuse, \"Outside candidate scope\", no citation) that fires on completed returns the project computes (fixture classm.f8880.1.deepseek: the project enters zero, not taking the EIC, Earned Income Worksheet line 7 zero): a refusal the source does not call for. Triage executable-triage-v2 (`.transcription/triage/2025/s8812.json`, pass 0ad8c98576d4; 1,767 fixtures, 500 generated returns seed 20261026): 465 of 1,654 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 22, \"candidate-shows-skipped\": 1126, \"candidate-unknown\": 34, \"project-unknown\": 29}; on completed returns 821 candidate-shows-skipped and 10 candidate-refuses; no value differs. The project line is retained.",
-   "subject_key": "06d81c2c26ace1b631b49bf5046569343dab635b61dbec81e85d5b103c32e939"
+   "ruling": "Ruling: model error; the reply writes its own Earned Income Worksheet (Form 1040 line 1z less Schedule 1 line 15) and refuses any self-employment earnings (its gate s8812.h_eiw_se_needed), though the Earned Income Worksheet adds them (i1040s8812 p. 7, Earned Income Worksheet, lines 2a to 2e) and the project figures them (s8812.eiw_7); it also drops the line's display condition (Part II-A is completed only when the project's s8812.show_iia holds). The Earned Income Chart branches (taking the EIC with or without Worksheet B, not taking it) are the project's. Triage executable-triage-v2 (.transcription/triage/2025/s8812.json, pass 8d30f3bab662): 916 of 2,553 agree; no value difference; candidate-shows-skipped 996 (656 on completed returns), candidate-refuses 220 (132 completed, e.g. stage14.asset.hy_5yr, gate s8812.h_eiw_se_needed), candidate-unknown 216, project-refuses 176 and project-unknown 29 on incomplete or refused returns.",
+   "subject_key": "f31d6734e94e85e6fa5fea58fdfc16c94da19aa96ecea1af5409479e6a74cf0f"
   },
   {
    "key": "18b",
@@ -271,10 +271,10 @@
   },
   {
    "key": "(CLW B 3)",
-   "record": "5b9fea1df9b64c103540663756ba0ca1a5d8f39a2ab5ba9ea6300e6ac9524b99",
+   "record": "177f4713bde7c280dd9a8d4a838a90e2cae20bbcc5d40de913f3cbf5df472a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error and interface gap; i1040s8812 p. 5, Credit Limit Worksheet B, line 3, \"Enter your earned income from line 7 of the Earned Income Worksheet\". The reply has no display condition matching the project's s8812.show_clwb, so it shows the line on returns that do not complete Worksheet B (candidate-shows-skipped, as ruled in earlier rounds), and it refuses through its own helper s8812.h_clwb3_refuse (\"Outside candidate scope\") on a completed return the project computes (mutation fixture stage16.cleanup.mut.clwb_three_figured, project $2,858.70): a refusal the source does not call for. Its expression also drops the project's Schedule 1 line 3 term from the worksheet's earned income; no recorded comparison shows a value difference from it. Triage executable-triage-v2 (`.transcription/triage/2025/s8812.json`, pass 0ad8c98576d4; 1,767 fixtures, 500 generated returns seed 20261026): 352 of 1,767 in-scope comparisons agree; differences by kind {\"candidate-refuses\": 1, \"candidate-shows-skipped\": 1398, \"candidate-unknown\": 16, \"project-unknown\": 1}; on completed returns 934 candidate-shows-skipped and 1 candidate-refuses. The project line is retained.",
-   "subject_key": "67fd1359eac4c329b5a295b31ac1574dafb29435235517f50a65474c11697207"
+   "ruling": "Ruling: model error; Credit Limit Worksheet B line 3 is \"your earned income from line 7 of the Earned Income Worksheet\" (i1040s8812 p. 5); the reply rewrites that worksheet as Form 1040 line 1z less Schedule 1 line 15 and refuses self-employment (eic.self_employed), combat pay and Medicaid waiver amounts, where the project copies s8812.eiw_7, which figures lines 2a to 2e, and it drops the worksheet's display condition (s8812.show_clwb). Triage executable-triage-v2 (.transcription/triage/2025/s8812.json, pass 8d30f3bab662): 431 of 2,553 agree; no value difference; candidate-shows-skipped 1,250 (729 on completed returns), candidate-refuses 263 (151 completed, e.g. stage14.asset.hy_5yr), candidate-unknown 183, project-refuses 426 on refused returns.",
+   "subject_key": "e4595744683e36ffe2f28a605655493a37bfd5b7fd27da5885a4d5365ad2dafd"
   },
   {
    "key": "(CLW B 4)",
@@ -414,12 +414,12 @@
   "6": "e5f15ec8384c902cbb90f2bbbb7a45114137186470f38670f9a39136c31a792e",
   "(CLW A 2)": "7505de1ea4ef4e22cc0e952ae590d2fb27280c9b92e43cd8642ffa4b6feed7d5",
   "(CLW A 4)": "85543fecffaaf297af9af2b94b36d8c85da701db9dec80245f073cc31ebab1fa",
-  "18a": "8ad211a8e15777d7128605fcb605285c5eddbd15d4cbf0eb1da8a5dc908e228b",
+  "18a": "f11c3cc587fad3363856f5b368af5465b1e83e91f3d7c46f0da3a5de722333d2",
   "18b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "27": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "(CLW B 1)": "127301fc8ea42af98695155ffec1a3844bdb0cf332076fe8235e5d74871f0ddb",
   "(CLW B 2)": "127301fc8ea42af98695155ffec1a3844bdb0cf332076fe8235e5d74871f0ddb",
-  "(CLW B 3)": "d602f210b947b34d095a20363eed683c850461803828b10a76b2208c344ad0d7",
+  "(CLW B 3)": "ff15b57b4a65d2df8854dfba062baad437f762cffe14820ff70d3f2ded09c162",
   "(CLW B 4)": "127301fc8ea42af98695155ffec1a3844bdb0cf332076fe8235e5d74871f0ddb",
   "(CLW B 5)": "127301fc8ea42af98695155ffec1a3844bdb0cf332076fe8235e5d74871f0ddb",
   "(CLW B 7)": "127301fc8ea42af98695155ffec1a3844bdb0cf332076fe8235e5d74871f0ddb",

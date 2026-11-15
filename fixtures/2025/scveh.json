@@ -167,7 +167,7 @@
         "person[taxpayer].sc[haul].scveh[suv].cost": 7000000
       },
       "expect": {
-        "person[taxpayer].sc[haul].scveh[suv].s179_2025_ok": {
+        "person[taxpayer].sc[haul].scveh[suv].s179_this_year_ok": {
           "kind": "refusal",
           "gate": "person[taxpayer].sc[haul].scveh[suv].s179_bad",
           "form": "Section 179 election above the vehicle's business cost or the SUV limit",
@@ -278,7 +278,7 @@
         "person[taxpayer].sc[r].scveh[car].owned": true,
         "person[taxpayer].sc[r].scveh[car].miles_business": 8000,
         "person[taxpayer].sc[r].scveh[car].miles_other": 2000,
-        "person[taxpayer].sc[r].scveh[car].screen": true,
+        "person[taxpayer].sc[r].scveh[car].records": true, "person[taxpayer].sc[r].scveh[car].got_other": false, "person[taxpayer].sc[r].scveh[car].acquired_before_bonus_date": false, "person[taxpayer].sc[r].scveh[car].used_before": false, "person[taxpayer].sc[r].scveh[car].bonus_excluded": false, "person[taxpayer].sc[r].scveh[car].prior_bonus": false, "person[taxpayer].sc[r].scveh[car].prior_smr": false, "person[taxpayer].sc[r].scveh[car].prior_low_use": false, "person[taxpayer].sc[r].scveh[car].converted": false, "person[taxpayer].sc[r].scveh[car].disposed": true, "person[taxpayer].sc[r].scveh[car].basis_changed": false, "person[taxpayer].sc[r].scveh[car].short_year": false, "person[taxpayer].sc[r].scveh[car].for_hire": false, "person[taxpayer].sc[r].scveh[car].investment": false, "person[taxpayer].sc[r].scveh[car].method_other": false, "person[taxpayer].sc[r].scveh[car].others_use": false, "person[taxpayer].sc[r].scveh[car].leasing": false, "person[taxpayer].sc[r].scveh[car].exempt_use": false, "person[taxpayer].sc[r].scveh[car].qbu_low": false,
         "person[taxpayer].sc[r].scveh[car].passenger": true,
         "person[taxpayer].sc[r].scveh[car].after_jan19": true,
         "person[taxpayer].sc[r].scveh[car].bonus_same": true,
@@ -320,7 +320,7 @@
         "person[taxpayer].sc[r].scveh[car].owned": true,
         "person[taxpayer].sc[r].scveh[car].miles_business": 8000,
         "person[taxpayer].sc[r].scveh[car].miles_other": 2000,
-        "person[taxpayer].sc[r].scveh[car].screen": true,
+        "person[taxpayer].sc[r].scveh[car].records": true, "person[taxpayer].sc[r].scveh[car].got_other": false, "person[taxpayer].sc[r].scveh[car].acquired_before_bonus_date": true, "person[taxpayer].sc[r].scveh[car].used_before": false, "person[taxpayer].sc[r].scveh[car].bonus_excluded": false, "person[taxpayer].sc[r].scveh[car].prior_bonus": false, "person[taxpayer].sc[r].scveh[car].prior_smr": false, "person[taxpayer].sc[r].scveh[car].prior_low_use": false, "person[taxpayer].sc[r].scveh[car].converted": false, "person[taxpayer].sc[r].scveh[car].disposed": false, "person[taxpayer].sc[r].scveh[car].basis_changed": false, "person[taxpayer].sc[r].scveh[car].short_year": false, "person[taxpayer].sc[r].scveh[car].for_hire": false, "person[taxpayer].sc[r].scveh[car].investment": false, "person[taxpayer].sc[r].scveh[car].method_other": false, "person[taxpayer].sc[r].scveh[car].others_use": false, "person[taxpayer].sc[r].scveh[car].leasing": false, "person[taxpayer].sc[r].scveh[car].exempt_use": false, "person[taxpayer].sc[r].scveh[car].qbu_low": false,
         "person[taxpayer].sc[r].scveh[car].passenger": true,
         "person[taxpayer].sc[r].scveh[car].after_jan19": true,
         "person[taxpayer].sc[r].scveh[car].bonus_same": true,
@@ -605,7 +605,7 @@
           "kind": "money",
           "cents": 1220000
         },
-        "person[taxpayer].sc[r].scveh[car].s179_2025": {
+        "person[taxpayer].sc[r].scveh[car].s179_this_year": {
           "kind": "money",
           "cents": 1220000
         },
@@ -885,7 +885,7 @@
           "car"
         ],
         "person[taxpayer].sc[r].scveh[car].miles_business": 5000,
-        "person[taxpayer].sc[r].scveh[car].smr_ok": true
+        "person[taxpayer].sc[r].scveh[car].smr_always": true, "person[taxpayer].sc[r].scveh[car].smr_first": false, "person[taxpayer].sc[r].scveh[car].fleet": false
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].line9": {
@@ -923,7 +923,7 @@
         "person[taxpayer].sc[h].scveh[suv].cost": 7000000
       },
       "expect": {
-        "person[taxpayer].sc[h].scveh[suv].s179_2025_ok": {
+        "person[taxpayer].sc[h].scveh[suv].s179_this_year_ok": {
           "kind": "refusal",
           "gate": "person[taxpayer].sc[h].scveh[suv].s179_bad",
           "form": "Section 179 election above the vehicle's business cost or the SUV limit",
@@ -1129,7 +1129,7 @@
           "kind": "money",
           "cents": 1220000
         },
-        "person[taxpayer].sc[r].scveh[car].s179_2025": {
+        "person[taxpayer].sc[r].scveh[car].s179_this_year": {
           "kind": "money",
           "cents": 1220000
         },

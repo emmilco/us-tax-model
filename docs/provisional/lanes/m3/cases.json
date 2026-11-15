@@ -1,0 +1,1232 @@
+[
+  {
+    "id": "mutation.m3.scope.s1_reservist_expenses",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.armed_forces": true,
+      "scope.reservist_expenses": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.schedule1"
+    ],
+    "expect": {
+      "scope.ready_schedule1": {
+        "refusal": "scope.schedule1"
+      }
+    },
+    "note": "Mutation fixture for the Schedule 1 screen (scope.schedule1, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.armed_forces Yes, scope.reservist_expenses Yes. Predicted by hand from scope.schedule1's expression before running the evaluator: scope.reservist_expenses_if_armed_forces is Yes, so scope.schedule1 is true and scope.ready_schedule1 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.reservist_expenses_if_armed_forces from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.s1_military_move",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.armed_forces": true,
+      "scope.military_move": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.schedule1"
+    ],
+    "expect": {
+      "scope.ready_schedule1": {
+        "refusal": "scope.schedule1"
+      }
+    },
+    "note": "Mutation fixture for the Schedule 1 screen (scope.schedule1, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.armed_forces Yes, scope.military_move Yes. Predicted by hand from scope.schedule1's expression before running the evaluator: scope.military_move_if_armed_forces is Yes, so scope.schedule1 is true and scope.ready_schedule1 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.military_move_if_armed_forces from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.s1_church_exempt_wages",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.religious_work": true,
+      "scope.church_exempt_wages": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.schedule1"
+    ],
+    "expect": {
+      "scope.ready_schedule1": {
+        "refusal": "scope.schedule1"
+      }
+    },
+    "note": "Mutation fixture for the Schedule 1 screen (scope.schedule1, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.religious_work Yes, scope.church_exempt_wages Yes. Predicted by hand from scope.schedule1's expression before running the evaluator: scope.church_exempt_wages_if_religious_work is Yes, so scope.schedule1 is true and scope.ready_schedule1 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.church_exempt_wages_if_religious_work from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.s1_w2_marks",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.w2_marks": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.schedule1"
+    ],
+    "expect": {
+      "scope.ready_schedule1": {
+        "refusal": "scope.schedule1"
+      }
+    },
+    "note": "Mutation fixture for the Schedule 1 screen (scope.schedule1, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.w2_marks Yes. Predicted by hand from scope.schedule1's expression before running the evaluator: scope.w2_marks_if_w2 is Yes, so scope.schedule1 is true and scope.ready_schedule1 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.w2_marks_if_w2 from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.s1_performer_expenses",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.artist_official": true,
+      "scope.performer_expenses": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.schedule1"
+    ],
+    "expect": {
+      "scope.ready_schedule1": {
+        "refusal": "scope.schedule1"
+      }
+    },
+    "note": "Mutation fixture for the Schedule 1 screen (scope.schedule1, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.artist_official Yes, scope.performer_expenses Yes. Predicted by hand from scope.schedule1's expression before running the evaluator: scope.performer_expenses_if_artist_official is Yes, so scope.schedule1 is true and scope.ready_schedule1 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.performer_expenses_if_artist_official from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.s1_recovery",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.recovery": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.schedule1"
+    ],
+    "expect": {
+      "scope.ready_schedule1": {
+        "refusal": "scope.schedule1"
+      }
+    },
+    "note": "Mutation fixture for the Schedule 1 screen (scope.schedule1, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.recovery Yes. Predicted by hand from scope.schedule1's expression before running the evaluator: scope.recovery is Yes, so scope.schedule1 is true and scope.ready_schedule1 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.recovery from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.s1_se_plan_other",
+    "base": "mutation.t2.person.ira_se_comp",
+    "set": {
+      "scope.se_plan_other": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.schedule1"
+    ],
+    "expect": {
+      "scope.ready_schedule1": {
+        "refusal": "scope.schedule1"
+      }
+    },
+    "note": "Mutation fixture for the Schedule 1 screen (scope.schedule1, a derived line true when any of its items is Yes): inputs of mutation.t2.person.ira_se_comp (single, one Schedule C business), every scope screen No; then scope.se_plan_other Yes. Predicted by hand from scope.schedule1's expression before running the evaluator: scope.se_plan_other_if_business is Yes, so scope.schedule1 is true and scope.ready_schedule1 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.se_plan_other_if_business from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.s1_reforestation",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.reforestation": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.schedule1"
+    ],
+    "expect": {
+      "scope.ready_schedule1": {
+        "refusal": "scope.schedule1"
+      }
+    },
+    "note": "Mutation fixture for the Schedule 1 screen (scope.schedule1, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.reforestation Yes. Predicted by hand from scope.schedule1's expression before running the evaluator: scope.reforestation is Yes, so scope.schedule1 is true and scope.ready_schedule1 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.reforestation from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.s1_attorney_fees",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.attorney_fees": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.schedule1"
+    ],
+    "expect": {
+      "scope.ready_schedule1": {
+        "refusal": "scope.schedule1"
+      }
+    },
+    "note": "Mutation fixture for the Schedule 1 screen (scope.schedule1, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.attorney_fees Yes. Predicted by hand from scope.schedule1's expression before running the evaluator: scope.attorney_fees is Yes, so scope.schedule1 is true and scope.ready_schedule1 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.attorney_fees from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.s1_nol",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.business_before": true,
+      "scope.nol": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.schedule1"
+    ],
+    "expect": {
+      "scope.ready_schedule1": {
+        "refusal": "scope.schedule1"
+      }
+    },
+    "note": "Mutation fixture for the Schedule 1 screen (scope.schedule1, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.business_before Yes, scope.nol Yes. Predicted by hand from scope.schedule1's expression before running the evaluator: scope.nol_if_business_before is Yes, so scope.schedule1 is true and scope.ready_schedule1 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.nol_if_business_before from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.oi_reservist_repaid",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.armed_forces": true,
+      "scope.reservist_repaid": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_income"
+    ],
+    "expect": {
+      "scope.ready_other_income": {
+        "refusal": "scope.other_income"
+      }
+    },
+    "note": "Mutation fixture for the other-income screen (scope.other_income, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.armed_forces Yes, scope.reservist_repaid Yes. Predicted by hand from scope.other_income's expression before running the evaluator: scope.reservist_repaid_if_armed_forces is Yes, so scope.other_income is true and scope.ready_other_income refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.reservist_repaid_if_armed_forces from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.oi_adoption_benefits",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "s3.adoption_any": true,
+      "scope.adoption_benefits": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_income"
+    ],
+    "expect": {
+      "scope.ready_other_income": {
+        "refusal": "scope.other_income"
+      }
+    },
+    "note": "Mutation fixture for the other-income screen (scope.other_income, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then s3.adoption_any Yes, scope.adoption_benefits Yes. Predicted by hand from scope.other_income's expression before running the evaluator: scope.adoption_benefits_if_adoption is Yes, so scope.other_income is true and scope.ready_other_income refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.adoption_benefits_if_adoption from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.oi_pay_no_w2",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.pay_no_w2": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_income"
+    ],
+    "expect": {
+      "scope.ready_other_income": {
+        "refusal": "scope.other_income"
+      }
+    },
+    "note": "Mutation fixture for the other-income screen (scope.other_income, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.pay_no_w2 Yes. Predicted by hand from scope.other_income's expression before running the evaluator: scope.pay_no_w2 is Yes, so scope.other_income is true and scope.ready_other_income refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.pay_no_w2 from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.oi_care_benefits_other",
+    "base": "mutation.t2.hoh_no_s1a_parts",
+    "set": {
+      "scope.care_benefits_other": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_income"
+    ],
+    "expect": {
+      "scope.ready_other_income": {
+        "refusal": "scope.other_income"
+      }
+    },
+    "note": "Mutation fixture for the other-income screen (scope.other_income, a derived line true when any of its items is Yes): inputs of mutation.t2.hoh_no_s1a_parts (head of household, dependent care benefits on Form W-2 box 10), every scope screen No; then scope.care_benefits_other Yes. Predicted by hand from scope.other_income's expression before running the evaluator: scope.care_benefits_other_if_benefits is Yes, so scope.other_income is true and scope.ready_other_income refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.care_benefits_other_if_benefits from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.oi_disaster_distribution",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.disaster_distribution": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_income"
+    ],
+    "expect": {
+      "scope.ready_other_income": {
+        "refusal": "scope.other_income"
+      }
+    },
+    "note": "Mutation fixture for the other-income screen (scope.other_income, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.disaster_distribution Yes. Predicted by hand from scope.other_income's expression before running the evaluator: scope.disaster_distribution is Yes, so scope.other_income is true and scope.ready_other_income refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.disaster_distribution from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.oi_excess_deferral",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.excess_deferral": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_income"
+    ],
+    "expect": {
+      "scope.ready_other_income": {
+        "refusal": "scope.other_income"
+      }
+    },
+    "note": "Mutation fixture for the other-income screen (scope.other_income, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.excess_deferral Yes. Predicted by hand from scope.other_income's expression before running the evaluator: scope.excess_deferral_if_w2 is Yes, so scope.other_income is true and scope.ready_other_income refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.excess_deferral_if_w2 from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.oi_passive",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.business_before": true,
+      "scope.passive": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_income"
+    ],
+    "expect": {
+      "scope.ready_other_income": {
+        "refusal": "scope.other_income"
+      }
+    },
+    "note": "Mutation fixture for the other-income screen (scope.other_income, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.business_before Yes, scope.passive Yes. Predicted by hand from scope.other_income's expression before running the evaluator: scope.passive_if_business_before is Yes, so scope.other_income is true and scope.ready_other_income refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.passive_if_business_before from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.l16_f8615_single",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "person[taxpayer].birth_year": 2004,
+      "scope.unearned_2700": true,
+      "scope.f8615": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_line16"
+    ],
+    "expect": {
+      "scope.ready_other_line16": {
+        "refusal": "scope.other_line16"
+      }
+    },
+    "note": "Mutation fixture for the line 16 screen (scope.other_line16, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then person[taxpayer].birth_year 2004, scope.unearned_2700 Yes, scope.f8615 Yes (born in 2004, so under 24 at the end of 2025, and filing single, so scope.under24_if_not_joint is true). Predicted by hand from scope.other_line16's expression before running the evaluator: scope.f8615_if_unearned_2700 is Yes, so scope.other_line16 is true and scope.ready_other_line16 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.f8615_if_unearned_2700 from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.l16_education_recapture",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.education_recapture": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_line16"
+    ],
+    "expect": {
+      "scope.ready_other_line16": {
+        "refusal": "scope.other_line16"
+      }
+    },
+    "note": "Mutation fixture for the line 16 screen (scope.other_line16, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.education_recapture Yes. Predicted by hand from scope.other_line16's expression before running the evaluator: scope.education_recapture is Yes, so scope.other_line16 is true and scope.ready_other_line16 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.education_recapture from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.l16_income_averaging",
+    "base": "mutation.t2.person.ira_se_comp",
+    "set": {
+      "scope.income_averaging": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_line16"
+    ],
+    "expect": {
+      "scope.ready_other_line16": {
+        "refusal": "scope.other_line16"
+      }
+    },
+    "note": "Mutation fixture for the line 16 screen (scope.other_line16, a derived line true when any of its items is Yes): inputs of mutation.t2.person.ira_se_comp (single, one Schedule C business), every scope screen No; then scope.income_averaging Yes. Predicted by hand from scope.other_line16's expression before running the evaluator: scope.income_averaging_if_business is Yes, so scope.other_line16 is true and scope.ready_other_line16 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.income_averaging_if_business from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.l16_pfic",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.foreign_shares": true,
+      "scope.pfic": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_line16"
+    ],
+    "expect": {
+      "scope.ready_other_line16": {
+        "refusal": "scope.other_line16"
+      }
+    },
+    "note": "Mutation fixture for the line 16 screen (scope.other_line16, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.foreign_shares Yes, scope.pfic Yes. Predicted by hand from scope.other_line16's expression before running the evaluator: scope.pfic_if_foreign_shares is Yes, so scope.other_line16 is true and scope.ready_other_line16 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.pfic_if_foreign_shares from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.l16_cfc",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.foreign_shares": true,
+      "scope.cfc": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_line16"
+    ],
+    "expect": {
+      "scope.ready_other_line16": {
+        "refusal": "scope.other_line16"
+      }
+    },
+    "note": "Mutation fixture for the line 16 screen (scope.other_line16, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.foreign_shares Yes, scope.cfc Yes. Predicted by hand from scope.other_line16's expression before running the evaluator: scope.cfc_if_foreign_shares is Yes, so scope.other_line16 is true and scope.ready_other_line16 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.cfc_if_foreign_shares from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.l16_f8978",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "scope.business_before": true,
+      "scope.f8978": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_line16"
+    ],
+    "expect": {
+      "scope.ready_other_line16": {
+        "refusal": "scope.other_line16"
+      }
+    },
+    "note": "Mutation fixture for the line 16 screen (scope.other_line16, a derived line true when any of its items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then scope.business_before Yes, scope.f8978 Yes. Predicted by hand from scope.other_line16's expression before running the evaluator: scope.f8978_if_business_before is Yes, so scope.other_line16 is true and scope.ready_other_line16 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.f8978_if_business_before from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.l16_f8615_hoh",
+    "base": "mutation.t2.hoh_no_s1a_parts",
+    "set": {
+      "person[taxpayer].birth_year": 2004,
+      "scope.unearned_2700": true,
+      "scope.f8615": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_line16"
+    ],
+    "expect": {
+      "scope.ready_other_line16": {
+        "refusal": "scope.other_line16"
+      }
+    },
+    "note": "Mutation fixture for the line 16 screen (scope.other_line16, a derived line true when any of its items is Yes): inputs of mutation.t2.hoh_no_s1a_parts (head of household, dependent care benefits on Form W-2 box 10), every scope screen No; then person[taxpayer].birth_year 2004, scope.unearned_2700 Yes, scope.f8615 Yes (born in 2004, so under 24 at the end of 2025, and filing as head of household, so scope.under24_if_not_joint is true). Predicted by hand from scope.other_line16's expression before running the evaluator: scope.f8615_if_unearned_2700 is Yes, so scope.other_line16 is true and scope.ready_other_line16 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.f8615_if_unearned_2700 from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.l16_f8615_qss",
+    "base": "mutation.t2.qss_s1a_tips_ot_car",
+    "set": {
+      "person[taxpayer].birth_year": 2004,
+      "scope.unearned_2700": true,
+      "scope.f8615": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_line16"
+    ],
+    "expect": {
+      "scope.ready_other_line16": {
+        "refusal": "scope.other_line16"
+      }
+    },
+    "note": "Mutation fixture for the line 16 screen (scope.other_line16, a derived line true when any of its items is Yes): inputs of mutation.t2.qss_s1a_tips_ot_car (qualifying surviving spouse), every scope screen No; then person[taxpayer].birth_year 2004, scope.unearned_2700 Yes, scope.f8615 Yes (born in 2004, so under 24 at the end of 2025, and filing as qualifying surviving spouse, so scope.under24_if_not_joint is true). Predicted by hand from scope.other_line16's expression before running the evaluator: scope.f8615_if_unearned_2700 is Yes, so scope.other_line16 is true and scope.ready_other_line16 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.f8615_if_unearned_2700 from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.l16_f8615_mfs",
+    "base": "mutation.t2.mfs_sli_line5",
+    "set": {
+      "person[taxpayer].birth_year": 2004,
+      "scope.unearned_2700": true,
+      "scope.f8615": true
+    },
+    "drop": [],
+    "covers": [
+      "scope",
+      "scope.other_line16"
+    ],
+    "expect": {
+      "scope.ready_other_line16": {
+        "refusal": "scope.other_line16"
+      }
+    },
+    "note": "Mutation fixture for the line 16 screen (scope.other_line16, a derived line true when any of its items is Yes): inputs of mutation.t2.mfs_sli_line5 (married filing separately), every scope screen No; then person[taxpayer].birth_year 2004, scope.unearned_2700 Yes, scope.f8615 Yes (born in 2004, so under 24 at the end of 2025, and filing separately, so scope.under24_if_not_joint is true). Predicted by hand from scope.other_line16's expression before running the evaluator: scope.f8615_if_unearned_2700 is Yes, so scope.other_line16 is true and scope.ready_other_line16 refuses on it, with the form, remedy and citation that line states; that is this tool's way of declining a return the instructions send to a form it does not prepare. A mutant that drops scope.f8615_if_unearned_2700 from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.scope.l16_joint_unasked",
+    "base": "mutation.t2.mfj_no_trad_ira",
+    "set": {
+      "scope.armed_forces": true,
+      "scope.reservist_repaid": true
+    },
+    "drop": [
+      "scope.unearned_2700",
+      "scope.f8615"
+    ],
+    "covers": [
+      "scope",
+      "scope.under24_if_not_joint",
+      "scope.other_line16"
+    ],
+    "expect": {
+      "scope.ready_other_income": {
+        "refusal": "scope.other_income"
+      },
+      "scope.ready_other_line16": {
+        "bool": true
+      }
+    },
+    "note": "Mutation fixture for the joint-return branch of scope.under24_if_not_joint: inputs of mutation.t2.mfj_no_trad_ira (married filing jointly), every scope screen No, then scope.armed_forces Yes and scope.reservist_repaid Yes; scope.unearned_2700 and scope.f8615 are left unanswered, as the interview never asks them on a joint return (they sit beneath scope.under24_if_not_joint, false for a joint return). Predicted by hand from the scope lines before running the evaluator: scope.other_income is true (a repayment of a qualified reservist distribution), so scope.ready_other_income refuses on it with the form, remedy and citation that line states; scope.other_line16 is false with every item known, so scope.ready_other_line16 is true. A mutant that reads another line than scope.no on the joint branch reaches the unanswered questions and leaves the line 16 screen unknown."
+  },
+  {
+    "id": "mutation.m3.sb.asset_8938",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.asset_any": true,
+      "sb.trust_any": false,
+      "sb.company_any": false,
+      "sb.territory_any": false,
+      "sb.fbar_required": false,
+      "sb.form8938": true,
+      "sb.line8": false,
+      "sb.form5471": false
+    },
+    "drop": [],
+    "covers": [
+      "sb",
+      "sb.foreign_any"
+    ],
+    "expect": {
+      "sb.line2": {
+        "refusal": "sb.form8938_if_foreign"
+      }
+    },
+    "note": "Mutation fixture for the Schedule B foreign screens: inputs of mutation.sb.form5471_refuses (single, taxable interest of $1,200 from one payer, ordinary dividends) with only sb.asset_any Yes (another foreign financial asset) of the five foreign screens and Form 8938 required Yes (every other Schedule B question No): sb.foreign_any is true, so sb.form8938_if_foreign is the Form 8938 answer, Yes, and Schedule B line 2 refuses on it (the form, remedy and citation are those the line states); a mutant that drops sb.asset_any from sb.foreign_any leaves Form 8938 unread and line 2 at $1,200. Predicted by hand from the Schedule B lines and i1040sb p. 2, Part III, lines 7a, 7b and 8, and the TIPs on Forms 114, 8938, 3520 and 5471 before running the evaluator."
+  },
+  {
+    "id": "mutation.m3.sb.trust_8938",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.asset_any": false,
+      "sb.trust_any": true,
+      "sb.company_any": false,
+      "sb.territory_any": false,
+      "sb.fbar_required": false,
+      "sb.form8938": true,
+      "sb.line8": false,
+      "sb.form5471": false
+    },
+    "drop": [],
+    "covers": [
+      "sb",
+      "sb.foreign_any"
+    ],
+    "expect": {
+      "sb.line2": {
+        "refusal": "sb.form8938_if_foreign"
+      }
+    },
+    "note": "Mutation fixture for the Schedule B foreign screens: inputs of mutation.sb.form5471_refuses (single, taxable interest of $1,200 from one payer, ordinary dividends) with only sb.trust_any Yes (a connection to a foreign trust) of the five foreign screens and Form 8938 required Yes (every other Schedule B question No): sb.foreign_any is true, so sb.form8938_if_foreign is the Form 8938 answer, Yes, and Schedule B line 2 refuses on it (the form, remedy and citation are those the line states); a mutant that drops sb.trust_any from sb.foreign_any leaves Form 8938 unread and line 2 at $1,200. Predicted by hand from the Schedule B lines and i1040sb p. 2, Part III, lines 7a, 7b and 8, and the TIPs on Forms 114, 8938, 3520 and 5471 before running the evaluator."
+  },
+  {
+    "id": "mutation.m3.sb.company_8938",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.asset_any": false,
+      "sb.trust_any": false,
+      "sb.company_any": true,
+      "sb.territory_any": false,
+      "sb.fbar_required": false,
+      "sb.form8938": true,
+      "sb.line8": false,
+      "sb.form5471": false
+    },
+    "drop": [],
+    "covers": [
+      "sb",
+      "sb.foreign_any"
+    ],
+    "expect": {
+      "sb.line2": {
+        "refusal": "sb.form8938_if_foreign"
+      }
+    },
+    "note": "Mutation fixture for the Schedule B foreign screens: inputs of mutation.sb.form5471_refuses (single, taxable interest of $1,200 from one payer, ordinary dividends) with only sb.company_any Yes (a role in or 10% of a foreign company) of the five foreign screens and Form 8938 required Yes (every other Schedule B question No): sb.foreign_any is true, so sb.form8938_if_foreign is the Form 8938 answer, Yes, and Schedule B line 2 refuses on it (the form, remedy and citation are those the line states); a mutant that drops sb.company_any from sb.foreign_any leaves Form 8938 unread and line 2 at $1,200. Predicted by hand from the Schedule B lines and i1040sb p. 2, Part III, lines 7a, 7b and 8, and the TIPs on Forms 114, 8938, 3520 and 5471 before running the evaluator."
+  },
+  {
+    "id": "mutation.m3.sb.territory_8938",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.asset_any": false,
+      "sb.trust_any": false,
+      "sb.company_any": false,
+      "sb.territory_any": true,
+      "sb.fbar_required": false,
+      "sb.form8938": true,
+      "sb.line8": false,
+      "sb.form5471": false
+    },
+    "drop": [],
+    "covers": [
+      "sb",
+      "sb.foreign_any"
+    ],
+    "expect": {
+      "sb.line2": {
+        "refusal": "sb.form8938_if_foreign"
+      }
+    },
+    "note": "Mutation fixture for the Schedule B foreign screens: inputs of mutation.sb.form5471_refuses (single, taxable interest of $1,200 from one payer, ordinary dividends) with only sb.territory_any Yes (an account, investment, company or trust in a U.S. territory) of the five foreign screens and Form 8938 required Yes (every other Schedule B question No): sb.foreign_any is true, so sb.form8938_if_foreign is the Form 8938 answer, Yes, and Schedule B line 2 refuses on it (the form, remedy and citation are those the line states); a mutant that drops sb.territory_any from sb.foreign_any leaves Form 8938 unread and line 2 at $1,200. Predicted by hand from the Schedule B lines and i1040sb p. 2, Part III, lines 7a, 7b and 8, and the TIPs on Forms 114, 8938, 3520 and 5471 before running the evaluator."
+  },
+  {
+    "id": "mutation.m3.sb.account_only_unasked",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": true,
+      "sb.asset_any": false,
+      "sb.trust_any": false,
+      "sb.company_any": false,
+      "sb.territory_any": false,
+      "sb.fbar_required": false,
+      "sb.form8938": false,
+      "sb.line8": false,
+      "sb.form5471": false
+    },
+    "drop": [
+      "sb.line8",
+      "sb.form5471"
+    ],
+    "covers": [
+      "sb",
+      "sb.foreign_any"
+    ],
+    "expect": {
+      "sb.line2": {
+        "money": 120000
+      }
+    },
+    "note": "Mutation fixture for the Schedule B foreign screens: inputs of mutation.sb.form5471_refuses (single, taxable interest of $1,200 from one payer, ordinary dividends) with only sb.account_any Yes (a foreign account) of the five foreign screens, FBAR and Form 8938 No, and the Form 3520 question (line 8) and the Form 5471 question left unanswered, as the interview asks them only after a foreign trust, a foreign company or a U.S. territory answer: nothing refuses and Schedule B line 2 is the $1,200 of interest; a mutant that asks line 8 or Form 5471 of this filer leaves line 2 unknown. Predicted by hand from the Schedule B lines and i1040sb p. 2, Part III, lines 7a, 7b and 8, and the TIPs on Forms 114, 8938, 3520 and 5471 before running the evaluator."
+  },
+  {
+    "id": "mutation.m3.sb.trust_only_unasked",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.asset_any": false,
+      "sb.trust_any": true,
+      "sb.company_any": false,
+      "sb.territory_any": false,
+      "sb.fbar_required": false,
+      "sb.form8938": false,
+      "sb.line8": false,
+      "sb.form5471": false
+    },
+    "drop": [
+      "sb.form5471"
+    ],
+    "covers": [
+      "sb",
+      "sb.foreign_any"
+    ],
+    "expect": {
+      "sb.line2": {
+        "money": 120000
+      }
+    },
+    "note": "Mutation fixture for the Schedule B foreign screens: inputs of mutation.sb.form5471_refuses (single, taxable interest of $1,200 from one payer, ordinary dividends) with only sb.trust_any Yes (a connection to a foreign trust), FBAR, Form 8938 and line 8 No, and the Form 5471 question left unanswered, as the interview asks it only after a foreign company or a U.S. territory answer: nothing refuses and Schedule B line 2 is $1,200; a mutant that asks Form 5471 of this filer leaves line 2 unknown. Predicted by hand from the Schedule B lines and i1040sb p. 2, Part III, lines 7a, 7b and 8, and the TIPs on Forms 114, 8938, 3520 and 5471 before running the evaluator."
+  },
+  {
+    "id": "mutation.m3.sd.other_forms_business_property",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "sd.sold_other": true,
+      "sd.business_property": true,
+      "sd.installment": false,
+      "sd.like_kind": false
+    },
+    "covers": [
+      "sd",
+      "sd.other_forms"
+    ],
+    "expect": {
+      "sd.count": {
+        "refusal": "sd.other_forms"
+      }
+    },
+    "note": "Mutation fixture for the Schedule D other-forms screen (sd.other_forms, a derived line true when any of its nine items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then sd.business_property_if_sold Yes (business property sold (Form 4797)) and every other item of the screen No. Predicted by hand from sd.other_forms's expression before running the evaluator: the screen is true, so sd.count refuses on it, with the form, remedy and citation that line states (f1040sd, the gains belong on a source form this tool does not prepare). A mutant that drops sd.business_property_if_sold from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.sd.other_forms_installment",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "sd.sold_other": true,
+      "sd.business_property": false,
+      "sd.installment": true,
+      "sd.like_kind": false
+    },
+    "covers": [
+      "sd",
+      "sd.other_forms"
+    ],
+    "expect": {
+      "sd.count": {
+        "refusal": "sd.other_forms"
+      }
+    },
+    "note": "Mutation fixture for the Schedule D other-forms screen (sd.other_forms, a derived line true when any of its nine items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then sd.installment_if_sold Yes (an installment sale (Form 6252)) and every other item of the screen No. Predicted by hand from sd.other_forms's expression before running the evaluator: the screen is true, so sd.count refuses on it, with the form, remedy and citation that line states (f1040sd, the gains belong on a source form this tool does not prepare). A mutant that drops sd.installment_if_sold from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.sd.other_forms_like_kind",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "sd.sold_other": true,
+      "sd.business_property": false,
+      "sd.installment": false,
+      "sd.like_kind": true
+    },
+    "covers": [
+      "sd",
+      "sd.other_forms"
+    ],
+    "expect": {
+      "sd.count": {
+        "refusal": "sd.other_forms"
+      }
+    },
+    "note": "Mutation fixture for the Schedule D other-forms screen (sd.other_forms, a derived line true when any of its nine items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then sd.like_kind_if_sold Yes (a like-kind exchange (Form 8824)) and every other item of the screen No. Predicted by hand from sd.other_forms's expression before running the evaluator: the screen is true, so sd.count refuses on it, with the form, remedy and citation that line states (f1040sd, the gains belong on a source form this tool does not prepare). A mutant that drops sd.like_kind_if_sold from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.sd.other_forms_condemned",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "sd.condemned": true
+    },
+    "covers": [
+      "sd",
+      "sd.other_forms"
+    ],
+    "expect": {
+      "sd.count": {
+        "refusal": "sd.other_forms"
+      }
+    },
+    "note": "Mutation fixture for the Schedule D other-forms screen (sd.other_forms, a derived line true when any of its nine items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then sd.condemned Yes (property condemned or sold under threat of condemnation) and every other item of the screen No. Predicted by hand from sd.other_forms's expression before running the evaluator: the screen is true, so sd.count refuses on it, with the form, remedy and citation that line states (f1040sd, the gains belong on a source form this tool does not prepare). A mutant that drops sd.condemned from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.sd.other_forms_small_business_stock",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "sd.small_business_stock": true
+    },
+    "covers": [
+      "sd",
+      "sd.other_forms"
+    ],
+    "expect": {
+      "sd.count": {
+        "refusal": "sd.other_forms"
+      }
+    },
+    "note": "Mutation fixture for the Schedule D other-forms screen (sd.other_forms, a derived line true when any of its nine items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then sd.small_business_stock Yes (qualified small business stock) and every other item of the screen No. Predicted by hand from sd.other_forms's expression before running the evaluator: the screen is true, so sd.count refuses on it, with the form, remedy and citation that line states (f1040sd, the gains belong on a source form this tool does not prepare). A mutant that drops sd.small_business_stock from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.sd.other_forms_trader_election",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "sd.trader_election": true
+    },
+    "covers": [
+      "sd",
+      "sd.other_forms"
+    ],
+    "expect": {
+      "sd.count": {
+        "refusal": "sd.other_forms"
+      }
+    },
+    "note": "Mutation fixture for the Schedule D other-forms screen (sd.other_forms, a derived line true when any of its nine items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then sd.trader_election Yes (a trader's mark-to-market election) and every other item of the screen No. Predicted by hand from sd.other_forms's expression before running the evaluator: the screen is true, so sd.count refuses on it, with the form, remedy and citation that line states (f1040sd, the gains belong on a source form this tool does not prepare). A mutant that drops sd.trader_election from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.sd.other_forms_f2439",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "sd.f2439": true
+    },
+    "covers": [
+      "sd",
+      "sd.other_forms"
+    ],
+    "expect": {
+      "sd.count": {
+        "refusal": "sd.other_forms"
+      }
+    },
+    "note": "Mutation fixture for the Schedule D other-forms screen (sd.other_forms, a derived line true when any of its nine items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then sd.f2439_if_dividends Yes (a Form 2439 (undistributed capital gains of a fund)) and every other item of the screen No. Predicted by hand from sd.other_forms's expression before running the evaluator: the screen is true, so sd.count refuses on it, with the form, remedy and citation that line states (f1040sd, the gains belong on a source form this tool does not prepare). A mutant that drops sd.f2439_if_dividends from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.sd.other_forms_casualty",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "sd.casualty": true
+    },
+    "covers": [
+      "sd",
+      "sd.other_forms"
+    ],
+    "expect": {
+      "sd.count": {
+        "refusal": "sd.other_forms"
+      }
+    },
+    "note": "Mutation fixture for the Schedule D other-forms screen (sd.other_forms, a derived line true when any of its nine items is Yes): inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No; then sd.casualty Yes (a casualty or theft (Form 4684)) and every other item of the screen No. Predicted by hand from sd.other_forms's expression before running the evaluator: the screen is true, so sd.count refuses on it, with the form, remedy and citation that line states (f1040sd, the gains belong on a source form this tool does not prepare). A mutant that drops sd.casualty from the screen gives no refusal."
+  },
+  {
+    "id": "mutation.m3.sb.nominee",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.asset_any": false,
+      "sb.trust_any": false,
+      "sb.company_any": false,
+      "sb.territory_any": false,
+      "sb.fbar_required": false,
+      "sb.form8938": false,
+      "sb.line8": false,
+      "sb.form5471": false,
+      "sb.nominee": true
+    },
+    "drop": [],
+    "covers": [
+      "sb",
+      "sb.foreign_any"
+    ],
+    "expect": {
+      "sb.line2": {
+        "refusal": "sb.unsupported_if_income"
+      }
+    },
+    "note": "Mutation fixture for the Schedule B foreign screens: inputs of mutation.sb.form5471_refuses (single, taxable interest of $1,200 from one payer, ordinary dividends) with every foreign screen No and sb.nominee Yes (interest or dividends received as a nominee; taxable interest is above zero, so the question is asked): sb.unsupported is true through its nominee item and Schedule B line 2 refuses on sb.unsupported_if_income (i1040sb p. 1, Nominees; the form, remedy and citation are those the line states); a mutant that copies only the bond item gives no refusal. Predicted by hand from the Schedule B lines and i1040sb p. 2, Part III, lines 7a, 7b and 8, and the TIPs on Forms 114, 8938, 3520 and 5471 before running the evaluator."
+  },
+  {
+    "id": "mutation.m3.div.boxes_no_capital_gain",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "div.other_boxes": true,
+      "div.box2e": 0,
+      "div.box3": 0,
+      "div.box9": 0,
+      "div.box10": 0,
+      "div.box13": 0
+    },
+    "drop": [
+      "div.box2b",
+      "div.box2c",
+      "div.box2d",
+      "div.box2f",
+      "div.basis_reconciled"
+    ],
+    "covers": [
+      "div",
+      "div.has_capital_gain"
+    ],
+    "expect": {
+      "div.screen": {
+        "money": 0
+      }
+    },
+    "note": "Mutation fixture for the Form 1099-DIV gates: inputs of mutation.sb.form5471_refuses (single; ordinary dividends of $2,000 and no capital gain distributions, box 2a $0) with the foreign screens answered No, and the question 'does any Form 1099-DIV show an amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13' answered Yes; boxes 2e, 3, 9, 10 and 13 are $0 and the basis question for box 3 is left unanswered (asked only when box 3 is above zero). The capital-gain boxes 2b, 2c, 2d and 2f are left unanswered: the interview asks them only when box 2a is above zero (div.capital_gain_boxes). Predicted by hand from the div lines and the Form 1099-DIV instructions (i1099div boxes 2a to 3, 9, 10 and 13) before running the evaluator: no distribution needs a form this tool does not prepare, so the distribution screen div.screen is $0. A mutant that asks the capital-gain boxes at a $0 box 2a leaves it unknown."
+  },
+  {
+    "id": "mutation.m3.div.return_of_capital_no_capital_gain",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "div.other_boxes": true,
+      "div.box2e": 0,
+      "div.box3": 30000,
+      "div.box9": 0,
+      "div.box10": 0,
+      "div.box13": 0,
+      "div.basis_reconciled": true
+    },
+    "drop": [
+      "div.box2b",
+      "div.box2c",
+      "div.box2d",
+      "div.box2f"
+    ],
+    "covers": [
+      "div",
+      "div.capital_gain_boxes"
+    ],
+    "expect": {
+      "div.screen": {
+        "money": 0
+      }
+    },
+    "note": "Mutation fixture for the Form 1099-DIV gates: inputs of mutation.sb.form5471_refuses (single; ordinary dividends of $2,000 and no capital gain distributions, box 2a $0) with the foreign screens answered No, and the question 'does any Form 1099-DIV show an amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13' answered Yes; a nondividend distribution (box 3) of $300, no more than the remaining basis, and boxes 2e, 9, 10 and 13 $0. The capital-gain boxes 2b, 2c, 2d and 2f are left unanswered: the interview asks them only when box 2a is above zero (div.capital_gain_boxes). Predicted by hand from the div lines and the Form 1099-DIV instructions (i1099div boxes 2a to 3, 9, 10 and 13) before running the evaluator: a return of capital within basis is not taxed and needs no other form (i1099div box 3), so div.screen is $0. A mutant that asks the capital-gain boxes because box 3 is above zero leaves it unknown."
+  },
+  {
+    "id": "mutation.m3.div.box2e_no_capital_gain",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "div.other_boxes": true,
+      "div.box2e": 10000,
+      "div.box3": 0,
+      "div.box9": 0,
+      "div.box10": 0,
+      "div.box13": 0
+    },
+    "drop": [
+      "div.box2b",
+      "div.box2c",
+      "div.box2d",
+      "div.box2f",
+      "div.basis_reconciled"
+    ],
+    "covers": [
+      "div",
+      "div.ordinary_boxes"
+    ],
+    "expect": {
+      "div.screen": {
+        "refusal": "div.unsupported"
+      }
+    },
+    "note": "Mutation fixture for the Form 1099-DIV gates: inputs of mutation.sb.form5471_refuses (single; ordinary dividends of $2,000 and no capital gain distributions, box 2a $0) with the foreign screens answered No, and the question 'does any Form 1099-DIV show an amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13' answered Yes; section 897 ordinary dividends (box 2e) of $100, boxes 3, 9, 10 and 13 $0 and the basis question for box 3 unanswered. The capital-gain boxes 2b, 2c, 2d and 2f are left unanswered: the interview asks them only when box 2a is above zero (div.capital_gain_boxes). Predicted by hand from the div lines and the Form 1099-DIV instructions (i1099div boxes 2a to 3, 9, 10 and 13) before running the evaluator: box 2e is asked (ordinary dividends are above zero) and is above zero, so div.unsupported is true and div.screen refuses on it (the form, remedy and citation are those the line states). A mutant that asks box 2e only with capital gain distributions leaves box 2e unread and gives no refusal."
+  },
+  {
+    "id": "mutation.m3.f1040.withholding_25b_25c",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "f1040.withheld_other_any": true,
+      "f1040.line25b": 30000,
+      "f1040.line25c_other": 20000
+    },
+    "covers": [
+      "f1040.line25c",
+      "f1040.line25d"
+    ],
+    "expect": {
+      "f1040.line25b_if_withheld_other": {
+        "money": 30000
+      },
+      "f1040.line25c": {
+        "money": 20000
+      },
+      "f1040.line25d": {
+        "money": 1750000
+      }
+    },
+    "note": "Mutation fixture for Form 1040 lines 25b to 25d: inputs of mutation.sb.form5471_refuses (single; Forms W-2 with federal income tax withheld of $12,000 and $5,000, social security and Medicare wages of $120,000 in all) with the foreign screens answered No, tax withheld from a payment other than wages Yes, $300 withheld on Forms 1099 (line 25b) and $200 on a Form W-2G (other forms, line 25c). Predicted by hand from the archived i1040gi (p. 39, lines 25a to 25d; Form 8959 line 24) before running the evaluator: line 25a is $17,000; line 25b $300; Form 8959 line 24 is $0 (Medicare tax withheld, $1,740, is 1.45% of the $120,000 of Medicare wages, so no additional Medicare tax was withheld), so line 25c is $200; line 25d is $17,500. A mutant that swaps the 25b and 25c amounts gives $300 on line 25c or $17,400 on line 25d."
+  },
+  {
+    "id": "mutation.m3.refund.sales_tax_2024",
+    "base": "mutation.t2.refund.single_blind",
+    "set": {
+      "refund.sales": true
+    },
+    "covers": [
+      "refund",
+      "s1.line1"
+    ],
+    "expect": {
+      "refund.worksheet": {
+        "bool": false
+      },
+      "s1.line1": {
+        "money": 0
+      }
+    },
+    "note": "Mutation fixture for the refund worksheet's sales-tax test: inputs of mutation.t2.refund.single_blind (a $3,000 state refund, itemized for 2024, the refund for 2024 and the 2024 tax paid in 2024) with 'On your 2024 Schedule A, did you deduct state and local general sales taxes instead of state and local income taxes' answered Yes; the worksheet answers of the base are kept and are not read. Predicted by hand from the archived i1040gi before running the evaluator: p. 88, 'None of your refund is taxable if, in the year you paid the tax, you either (a) didn't itemize deductions, or (b) elected to deduct state and local general sales taxes', so the worksheet is not used and Schedule 1 line 1 is $0. A mutant that tests another answer in place of the sales-tax one uses the worksheet and taxes the refund."
+  },
+  {
+    "id": "mutation.m3.s2.iso_amt",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "s2.options_any": true,
+      "s2.iso": true,
+      "s1.stock_options": false
+    },
+    "covers": [
+      "s2",
+      "s2.amt"
+    ],
+    "expect": {
+      "s2.line2": {
+        "refusal": "s2.amt"
+      }
+    },
+    "note": "Mutation fixture for the Schedule 2 AMT screen (s2.amt, a derived line over two items): inputs of mutation.sb.form5471_refuses with the foreign screens answered No, employer stock options exercised Yes, incentive stock options exercised in 2025 with the stock kept Yes, and stock option income not otherwise reported No; the AMT-owed question stays No. Predicted by hand from the archived i6251 (p. 1, Who Must File, an adjustment for incentive stock options, line 2i) before running the evaluator: s2.amt is true through the incentive stock option item and Schedule 2 line 2 refuses on it (Form 6251; the form, remedy and citation are those the line states). A mutant that drops that item from s2.amt gives no refusal."
+  },
+  {
+    "id": "mutation.m3.sa.no_mortgage_property_tax",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "sa.personal_property_tax_any": true,
+      "sa.line5c": 50000
+    },
+    "drop": [
+      "sa.mortgage_over_limit",
+      "sa.mortgage_other_use",
+      "s2.mortgage_subsidy"
+    ],
+    "covers": [
+      "sa",
+      "sa.has_mortgage_interest",
+      "s2.has_mortgage_interest"
+    ],
+    "expect": {
+      "sa.line5c_if_taxed": {
+        "money": 50000
+      },
+      "sa.line8a": {
+        "money": 0
+      },
+      "sa.line15": {
+        "money": 0
+      },
+      "s2.line2": {
+        "money": 0
+      }
+    },
+    "note": "Mutation fixture for the mortgage-interest gates of Schedules A and 2: inputs of mutation.sb.form5471_refuses (single, owns no home or other real estate and pays no interest on a loan secured by a home) with the foreign screens answered No and state and local personal property tax of $500 paid. The three questions asked only when home mortgage interest is entered (more than the Form 1098 limits, proceeds used otherwise, a subsidized mortgage on a home sold) are left unanswered. Predicted by hand from the Schedule A and Schedule 2 lines before running the evaluator: line 5c is $500, line 8a $0, so nothing refuses: Schedule A line 15 (casualty, none) is $0 and Schedule 2 line 2 is $0. A mutant that asks a mortgage question at line 8a $0, or tests line 5c in place of line 8a, leaves those lines unknown."
+  },
+  {
+    "id": "mutation.m3.sa.medical_premiums",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "sa.medical_any": false,
+      "sa.medical_premiums": true,
+      "sa.line1": 300000
+    },
+    "covers": [
+      "sa",
+      "sa.medical_asked"
+    ],
+    "expect": {
+      "sa.line1_if_medical": {
+        "money": 300000
+      }
+    },
+    "note": "Mutation fixture for the Schedule A medical questions: inputs of mutation.sb.form5471_refuses (single, born in 1980) with the foreign screens answered No, medical and dental costs not said to be more than 7.5% of income, health insurance paid with money already taxed Yes, and $3,000 of medical and dental expenses. Predicted by hand from the Schedule A lines and i1040sca (p. 1, Line 1, insurance premiums you paid) before running the evaluator: the expenses are asked and Schedule A line 1 is $3,000. A mutant that tests the age question in place of the premiums answer (the filer is under 65) gives line 1 $0."
+  },
+  {
+    "id": "mutation.m3.sa.carryover_no_gifts",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false,
+      "sa.gifts": false,
+      "sa.gift_carryover": true
+    },
+    "drop": [
+      "sa.charity_limited"
+    ],
+    "covers": [
+      "sa",
+      "sa.line13",
+      "sa.line15"
+    ],
+    "expect": {
+      "sa.line13": {
+        "refusal": "sa.gift_carryover_if_no_gifts"
+      },
+      "sa.line15": {
+        "money": 0
+      }
+    },
+    "note": "Mutation fixture for the charitable carryover with no gifts in 2025: inputs of mutation.sb.form5471_refuses with the foreign screens answered No, no gifts to charity in 2025 and a charitable contribution carried over from an earlier year Yes; the question about income limits on 2025 gifts is left unanswered (asked only with gifts). Predicted by hand from the Schedule A lines and i1040sca (p. 13, Line 13, Carryover From Prior Year) before running the evaluator: Schedule A line 13 refuses on sa.gift_carryover_if_no_gifts (the form, remedy and citation are those the line states); line 15 (casualty and theft losses, none) does not refuse on the carryover and is $0. Mutants that drop the carryover refusal from line 13, that test another answer for it, or that copy line 13 onto line 15 change one of the two."
+  },
+  {
+    "id": "mutation.m3.scope.over24_unasked",
+    "base": "mutation.sb.form5471_refuses",
+    "set": {
+      "sb.account_any": false,
+      "sb.company_any": false,
+      "sb.form5471": false
+    },
+    "drop": [
+      "scope.unearned_2700",
+      "scope.f8615"
+    ],
+    "covers": [
+      "scope",
+      "scope.under24",
+      "scope.other_line16"
+    ],
+    "expect": {
+      "scope.ready_other_line16": {
+        "bool": true
+      }
+    },
+    "note": "Mutation fixture for the under-24 gate of the Form 8615 questions: inputs of mutation.sb.form5471_refuses (single, two Forms W-2, interest and dividends) with the foreign-account and foreign-company screens answered No (no foreign account, no Form 5471), so every Schedule B and scope screen is No (born in 1980, so 45 at the end of 2025); the two Form 8615 questions (unearned income over $2,700, Form 8615 required) are left unanswered, as the interview asks them only of a filer under 24 who is not filing jointly. Predicted by hand from the scope lines before running the evaluator: the line 16 screen is false with every item it reads known, so scope.ready_other_line16 is true. A mutant that counts another person or line as under 24, or tests the count at zero, reaches the unanswered questions and leaves it unknown."
+  },
+  {
+    "id": "mutation.m3.scope.no_w2_unasked",
+    "base": "mutation.t2.person.ira_se_comp",
+    "set": {},
+    "drop": [
+      "scope.w2_marks",
+      "scope.artist_official",
+      "scope.performer_expenses",
+      "scope.excess_deferral"
+    ],
+    "covers": [
+      "scope",
+      "scope.has_w2"
+    ],
+    "expect": {
+      "scope.ready_schedule1": {
+        "bool": true
+      },
+      "scope.ready_other_income": {
+        "bool": true
+      }
+    },
+    "note": "Mutation fixture for the Form W-2 gate of the scope screens: inputs of mutation.t2.person.ira_se_comp (single, one Schedule C business), every scope screen No, and no Form W-2; the four questions asked only of a filer with a Form W-2 (statutory employee or other box 13 marks, qualified performing artist or fee-basis official and the expenses, deferrals over the limit) are left unanswered. Predicted by hand from the scope lines before running the evaluator: the Schedule 1 and other-income screens are false with every item they read known, so scope.ready_schedule1 and scope.ready_other_income are true. A mutant that asks the W-2 questions with no Form W-2 leaves them unknown."
+  }
+]

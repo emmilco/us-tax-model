@@ -1,0 +1,11 @@
+name: ny03_retiree_gov_pension
+who: A retired married couple in Manhattan all of 2025, 71 and 69, filing together, with social security, a New York City pension (a Form 1099-R), bank interest and some fund dividends.
+end: { refused: ny_it201.gate.line26 }
+profile: ny
+extends: 04_retired_couple
+answers:
+  ny_it201.ask.city_resident: true
+  ny_it201.ask.spouse_resident: true
+  ny_it201.ask.gov_pension: true
+  ny_it201.ask.us_obligation_interest: false
+  ny_it201.ask.bab: false

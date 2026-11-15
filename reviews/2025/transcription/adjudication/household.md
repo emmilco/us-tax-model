@@ -631,3 +631,31 @@ Triage: `../triage/<stem>.json`, executable-triage-v2, rerun today with `tools/t
 | deepseek | render | filing_status_conflict | scope | render MISMATCH | i1040gi p. 14, Married Filing Separately. | MFS is refused for the whole return by s3.mfs on scope.ready; the gate covers the single and joint contradictions (BUG-0286). As the prior ruling. Project stands. |
 
 Counts: claude transcription model error 5, representation 4, scope 3 (12); deepseek transcription model error 11, scope 1 (12); claude render scope 2 (2); deepseek render scope 3, model error 2, representation 2 (7). Errors introduced: none (BUG-0398 changed only the cites of `household.taxpayer_work_ssn`). Reclassified: Claude `household.taxpayer_work_ssn` (model error to representation: the reply now counts the taxpayer only) and `household.ctc_ssn` (representation to model error: the class M route-limited answers now complete records on which the reply asks `person.tin` of a filer with an SSN valid for employment; no amount differs); deepseek `household.roster_bad` (model error to scope: the reply now states the roster invariant). Findings: none.
+
+## Landing round (2026-11-14)
+
+Interview redraft (landing worktree), Claude line-scoped pass 9b2e82e812c5. Ruled by reading the source and the form YAML, without executable triage: `triage.py --form household` refuses because an earlier pass names `household.widowed_2025`, renamed `household.widowed_this_year` (tools/year_free_names.json), and the record on disk (Nov 11) predates the redraft. Rulings applied with `rule.py`; full text in the log and sidecar.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | household.roster_bad | scope | by reading (no triage) | f1040 p. 1; amb.2025.filer_under_16; DECISIONS.md section 2 | Complement of roster_ok; the project also carries the under-16 and birth-year entry checks. |
+| claude | transcription | household.married | model error | by reading (no triage) | p501 p. 6; i8889 p. 6 | Folds the 2025 death into "married at the end of 2025", changing Form 8889's year-end status. |
+| claude | transcription | household.hoh_fails | scope | by reading (no triage) | i1040gi p. 14; p501 p. 9; amb.2025.hoh_community_property | Same tests; the widowed case ends at widowed_this_year in the project; project's absence and community-property refusals. |
+| claude | transcription | household.widowed_this_year | model error | by reading (no triage) | i1040gi p. 13, Married Filing Jointly | Drops the single/HOH guard, refusing a valid death-year joint return (as ruled on widowed_2025). |
+| claude | transcription | household.cp_marriage_ended | representation | by reading (no triage) | i1040gi p. 23; p501 p. 6 | Same conditions; reads cp_married and married_dec31 without the marriage_possible parent. |
+| claude | transcription | household.filing_status_conflict | scope | by reading (no triage) | i1040gi pp. 13-15; p501 pp. 6-8 | Folds in the cases refused by widowed_this_year, s3.mfs, hoh_fails and qss_fails (as prior rulings). |
+
+Counts: model error 2, representation 1, scope 3 (6). Findings: none. Project lines unchanged.
+
+## Landing round (2026-11-14), render
+
+Lane land3-adj7 (claude-opus-5-5, judgment). Open lines of the Claude render log `.transcription/logs/2025/render/household.md`, ruled on the rendered English (`rendered/2025/household.md`), the form YAML and the cited source; the deepseek log is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | hoh_eligible | scope | UNCLEAR; form YAML (widowed_this_year, considered_unmarried) | p501 p. 6, Spouse died during the year | A head of household filer widowed in 2025 is refused at Form 1040 line 12e by household.widowed_this_year. |
+| claude | render | filing_status_conflict | scope | MISMATCH; form YAML | i1040gi pp. 14-15 | MFS refused by s3.mfs; a remarried or 2025-widowed QSS filer fails qss_eligible and is refused by qss_fails. Same as earlier rounds. |
+
+Counts: claude render: scope 2.
+
+Findings: none. No line left open.

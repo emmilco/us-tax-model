@@ -1,0 +1,454 @@
+form:
+  id: clcw_next_year
+  kind: worksheet
+  title: Capital loss carryover to 2026 (Capital Loss Carryover Worksheet applied to this return)
+  tax_year: 2025
+  note: The carryovers to 2026, shown on the values sheet and read by no other line. The Schedule D instructions point to
+    the 2026 worksheet or Pub. 550; the 13 lines of the 2025 worksheet are applied to this return with each 2024 figure
+    read as the 2025 one (amb.2025.clcw_to_2026). Shown only when the instructions' test for a carryover to 2026 holds.
+    On the final return of a filer who died in 2025 (other than a joint return) the carryover lines are not shown; a
+    notice says the loss does not carry over.
+  lines:
+  - id: clcw_next_year.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 3, "If zero or less, enter -0-"
+  - id: clcw_next_year.show
+    printed: (helper)
+    label: Schedule D line 16 is a loss that is more than the loss on line 21, or taxable income would be less than zero, so a
+      carryover to 2026 is figured
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - sd.has_loss
+        - const: true
+      - op: test
+        any:
+        - op: test
+          lt:
+          - sd.line16
+          - sd.line21
+        - op: test
+          lt:
+          - f1040.line11b
+          - f1040.line14
+    cite:
+      doc: i1040sd
+      locator: p. 14, Line 21, "You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16 and
+        either", "That loss is more than the loss on line 21", "The amount on Form 1040, 1040-SR, or 1040-NR, line 15, would
+        be less than zero if you could enter a negative amount on that line"
+    ambiguity: amb.2025.clcw_to_2026
+  - id: clcw_next_year.show_st
+    printed: (helper)
+    label: Schedule D line 16 and line 7 are losses
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - clcw_next_year.show
+        - const: true
+      - op: test
+        lt:
+        - sd.line7
+        - const: 0
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If line 7 of your 2024 Schedule D is a loss, go to
+        line 5"
+    ambiguity: amb.2025.clcw_to_2026
+  - id: clcw_next_year.show_lt
+    printed: (helper)
+    label: Schedule D line 16 and line 15 are losses
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - clcw_next_year.show
+        - const: true
+      - op: test
+        lt:
+        - sd.line15
+        - const: 0
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "If line 15 of your 2024 Schedule D is a loss, go to
+        line 9"
+    ambiguity: amb.2025.clcw_to_2026
+  - id: clcw_next_year.line1
+    printed: "1"
+    label: Form 1040 line 15 for 2025, negative if it would have been a loss (line 11b less line 14)
+    shown_when: clcw_next_year.show
+    type: Dollars
+    expr:
+      op: subtract
+      from: f1040.line11b
+      take: f1040.line14
+    cite:
+      doc: i1040sd
+      locator: p. 14, Line 21, "The amount on Form 1040, 1040-SR, or 1040-NR, line 15, would be less than zero if you could
+        enter a negative amount on that line"
+    ambiguity: amb.2025.clcw_to_2026
+  - id: clcw_next_year.line2
+    printed: "2"
+    label: The loss on Schedule D line 21, as a positive amount
+    shown_when: clcw_next_year.show
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw_next_year.zero
+      take: sd.line21
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 2, "Enter the loss from your 2024 Schedule D,
+        line 21, as a positive amount"
+    ambiguity: amb.2025.clcw_to_2026
+  - id: clcw_next_year.combined
+    printed: (helper)
+    label: Lines 1 and 2 combined
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - clcw_next_year.line1
+      - clcw_next_year.line2
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 3, "Combine lines 1 and 2"
+  - id: clcw_next_year.line3
+    printed: "3"
+    label: Combine lines 1 and 2. If zero or less, enter -0-
+    shown_when: clcw_next_year.show
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw_next_year.combined
+      take: clcw_next_year.zero
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 3, "Combine lines 1 and 2. If zero or less,
+        enter -0-"
+  - id: clcw_next_year.line4
+    printed: "4"
+    label: Enter the smaller of line 2 or line 3
+    shown_when: clcw_next_year.show
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - clcw_next_year.line2
+      - clcw_next_year.line3
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 4, "Enter the smaller of line 2 or line 3"
+  - id: clcw_next_year.line5
+    printed: "5"
+    label: The loss on Schedule D line 7, as a positive amount (zero if line 7 is not a loss)
+    shown_when: clcw_next_year.show
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw_next_year.zero
+      take: sd.line7
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 5, "Enter the loss from your 2024 Schedule D,
+        line 7, as a positive amount"
+  - id: clcw_next_year.line6
+    printed: "6"
+    label: Any gain on Schedule D line 15. If a loss, enter -0-
+    shown_when: clcw_next_year.show_st
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: sd.line15
+      take: clcw_next_year.zero
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 6, "Enter any gain from your 2024 Schedule D,
+        line 15. If a loss, enter -0-"
+  - id: clcw_next_year.line7
+    printed: "7"
+    label: Add lines 4 and 6
+    shown_when: clcw_next_year.show_st
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - clcw_next_year.line4
+      - clcw_next_year.line6
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 7, "Add lines 4 and 6"
+  - id: clcw_next_year.line8
+    printed: "8"
+    label: Short-term capital loss carryover to 2026. Subtract line 7 from line 5. If zero or less, enter -0-
+    shown_when: clcw_next_year.show_st_carry
+    display: The short-term capital loss carryover to 2026, the figure the 2026 Schedule D line 6 will need.
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw_next_year.line5
+      take: clcw_next_year.line7
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 8, "Subtract line 7 from line 5. If zero or
+        less, enter -0-"; p. 14, Line 21, "If you want to figure your carryover to 2026 now, see Pub. 550"
+    ambiguity: amb.2025.clcw_to_2026
+  - id: clcw_next_year.line9
+    printed: "9"
+    label: The loss on Schedule D line 15, as a positive amount
+    shown_when: clcw_next_year.show_lt
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw_next_year.zero
+      take: sd.line15
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 9, "Enter the loss from your 2024 Schedule D,
+        line 15, as a positive amount"
+  - id: clcw_next_year.line10
+    printed: "10"
+    label: Any gain on Schedule D line 7. If a loss, enter -0-
+    shown_when: clcw_next_year.show_lt
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: sd.line7
+      take: clcw_next_year.zero
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 10, "Enter any gain from your 2024 Schedule D,
+        line 7. If a loss, enter -0-"
+  - id: clcw_next_year.line11
+    printed: "11"
+    label: Subtract line 5 from line 4. If zero or less, enter -0-
+    shown_when: clcw_next_year.show_lt
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw_next_year.line4
+      take: clcw_next_year.line5
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 11, "Subtract line 5 from line 4. If zero or
+        less, enter -0-"
+  - id: clcw_next_year.line12
+    printed: "12"
+    label: Add lines 10 and 11
+    shown_when: clcw_next_year.show_lt
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - clcw_next_year.line10
+      - clcw_next_year.line11
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 12, "Add lines 10 and 11"
+  - id: clcw_next_year.line13
+    printed: "13"
+    label: Long-term capital loss carryover to 2026. Subtract line 12 from line 9. If zero or less, enter -0-
+    shown_when: clcw_next_year.show_lt_carry
+    display: The long-term capital loss carryover to 2026, the figure the 2026 Schedule D line 14 will need.
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: clcw_next_year.line9
+      take: clcw_next_year.line12
+    cite:
+      doc: i1040sd
+      locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 13, "Subtract line 12 from line 9. If zero or
+        less, enter -0-"; p. 14, Line 21, "If you want to figure your carryover to 2026 now, see Pub. 550"
+    ambiguity: amb.2025.clcw_to_2026
+  - id: clcw_next_year.decedent_notice
+    printed: (helper)
+    label: 'Notice: if your spouse died in 2025, the part of these carryovers that came from your spouse''s losses does not
+      carry over to 2026; it can be deducted only on this return.'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f1040.status
+        - const: mfj
+      - op: test
+        any:
+        - op: test
+          gt:
+          - clcw_next_year.line8
+          - const: 0
+        - op: test
+          gt:
+          - clcw_next_year.line13
+          - const: 0
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the
+        decedent"
+  - id: clcw_next_year.no
+    printed: (helper)
+    label: Year parameter household.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to
+        following years"
+  - id: clcw_next_year.not_joint
+    printed: (helper)
+    label: Not a joint return
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f8880.joint
+      - const: false
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the
+        decedent"
+  - id: clcw_next_year.final_ask
+    printed: (gate)
+    label: A carryover to 2026 is figured on a return other than a joint return
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - clcw_next_year.show
+        - const: true
+      - op: test
+        eq:
+        - clcw_next_year.not_joint
+        - const: true
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "A capital loss sustained by a decedent during the decedent’s last tax year
+        (or carried over to that year from an earlier year) can be deducted only on the final income tax return filed for
+        the decedent"
+  - id: clcw_next_year.final_return
+    printed: (helper)
+    label: Is this the final return of a filer who died in 2025?
+    type: Bool
+    gated_by: clcw_next_year.final_return_if_carryover
+    expr:
+      op: input
+      source: Is this the final income tax return of a filer who died in 2025 (a return filed for the decedent)?
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the
+        decedent" and "The decedent's estate cannot deduct any of the loss or carry it over to following years"
+  - id: clcw_next_year.final_return_if_carryover
+    printed: (helper)
+    label: The final return of a filer who died in 2025, when a carryover to 2026 is figured on a return other than a joint
+      return; false otherwise
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - clcw_next_year.final_ask
+          - const: true
+        then: clcw_next_year.final_return
+      - guard:
+          op: test
+          eq:
+          - clcw_next_year.final_ask
+          - const: false
+        then: clcw_next_year.no
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the
+        decedent"
+  - id: clcw_next_year.carries
+    printed: (helper)
+    label: Not the final return of a filer who died in 2025, so the carryover goes to 2026
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - clcw_next_year.final_return_if_carryover
+      - const: false
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to
+        following years"
+  - id: clcw_next_year.show_st_carry
+    printed: (helper)
+    label: Schedule D line 16 and line 7 are losses, and the carryover goes to 2026
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - clcw_next_year.show_st
+          - const: true
+        then: clcw_next_year.carries
+      - guard:
+          op: test
+          eq:
+          - clcw_next_year.show_st
+          - const: false
+        then: clcw_next_year.no
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to
+        following years"
+  - id: clcw_next_year.show_lt_carry
+    printed: (helper)
+    label: Schedule D line 16 and line 15 are losses, and the carryover goes to 2026
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - clcw_next_year.show_lt
+          - const: true
+        then: clcw_next_year.carries
+      - guard:
+          op: test
+          eq:
+          - clcw_next_year.show_lt
+          - const: false
+        then: clcw_next_year.no
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to
+        following years"
+  - id: clcw_next_year.final_notice
+    printed: (helper)
+    label: 'Notice: this is the final return of a filer who died in 2025. The capital loss can be deducted only on this
+      return; none of it carries over to 2026, and the estate cannot deduct it.'
+    display: 'Notice on the values sheet: the capital loss carryover does not go to 2026 on a final return.'
+    type: Bool
+    expr:
+      op: copy
+      from: clcw_next_year.final_return_if_carryover
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the
+        decedent" and "The decedent's estate cannot deduct any of the loss or carry it over to following years"

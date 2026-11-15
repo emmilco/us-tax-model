@@ -4,14 +4,14 @@
  "family": "claude",
  "base": "b52d3b19c9b08baf29a21b5972959c1667055172192b3ba0c2d9f2a301b4d26e",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-11); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "bfb2e64cdfa150174b5fea276fc0175388874016e901e3daafe3903391988d5b",
+   "record": "8022f4ef7e323760f0e6b2af33fe6f3682f1be03f398ebb89f7f15be1190f780",
    "status": "MATCH",
-   "subject_key": "480f4a6e12805bda562e2c1128baf344d14fab61cf78af79a462b20833520a06"
+   "subject_key": "6753668d7c0748a4f17b60e3c7f799f66f4cdd72a9ab2f3a2e1780b5bedcacf6"
   },
   {
    "key": "2",
@@ -47,26 +47,26 @@
   },
   {
    "key": "8",
-   "record": "b52d3b19c9b08baf29a21b5972959c1667055172192b3ba0c2d9f2a301b4d26e",
+   "record": "8022f4ef7e323760f0e6b2af33fe6f3682f1be03f398ebb89f7f15be1190f780",
    "status": "MATCH",
-   "subject_key": "4ce408b0bdb261447e4a5111bdc9b00d852b0c6e0c4a93420ed6d9062b6d48fa"
+   "subject_key": "9e87e0fedc9c6d93c252dbc489886a03be68c0aa9519b2252007a1456a4c8815"
   },
   {
    "key": "9",
-   "record": "b52d3b19c9b08baf29a21b5972959c1667055172192b3ba0c2d9f2a301b4d26e",
+   "record": "8022f4ef7e323760f0e6b2af33fe6f3682f1be03f398ebb89f7f15be1190f780",
    "status": "MATCH",
-   "subject_key": "e847a8e1bdfc5caa3cd1ce184f12e8b3b04c069cf768346518e3a934fbb9b1fe"
+   "subject_key": "839652ae238f2464d8d01083c26f96cbb3684fa3b69fb70da785e4ad2c9a6568"
   }
  ],
  "subjects": {
-  "1": "2ffc9aad9860e536e2f794a5ed7ae79a20efb96da8c5b017bfcd77940888a089",
+  "1": "1081205afd30409ecc8dbf684619c65e51b0b592f3aae8a625fc32fdbf91c9f2",
   "2": "44a322e52fce7e7a028df233a318d945fcc9a2726176337b964ce5f20c99d463",
   "3": "9a7502bf57f013ced47f8150707fb8e150be4eb5138caec1da8a48527632a73b",
   "4": "e4e03402ab3d98b2d59c43c95d6607f6b5291dadd68687d950576d408e73913f",
   "5": "5a97e4bc0f0144ba2ea1ed5e71505d3b7ff5e059ecc9bbb141867e92ed25f876",
   "6": "720bb61c4e5a977f8e56a97d2ee72953edcda9d2cf9ef9285a673caed8771e75",
-  "8": "ed1bc3b0be293664c0793145429d0ce816af825a511247376827c8866c5cfed5",
-  "9": "9f5a76e3866c7af0a334d8fdc9aeff29357e2668cb6482285d1c11d0226ec0b6"
+  "8": "c676c3fa7974e72ba8cde7e433bc73948de63e1358b2a588070c1aa571cdf187",
+  "9": "32239389bacb140fc71ba42e346717b2406b55cc8f6c0a93c855303e78493326"
  },
  "__rest__": "d6d486c34c7306cec96ffd4fcb63dac9cbe5b3cae1dbe18fa37601df3331b603"
 }

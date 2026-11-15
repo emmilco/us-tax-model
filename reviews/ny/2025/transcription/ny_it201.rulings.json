@@ -974,11 +974,47 @@
    "printed": "1",
    "project_expr_sha256": "4e0fde6bbd661f1105d1a536ba0f5adfd120991ae32984f69ca91d31bbaa9a97",
    "second_expr_sha256": "483e47bf835761306362f5ca228c939ae3d18344d6a248b860b93a8d0ca2d17b",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line1z in cents. Same reference otherwise.",
-   "context": "6846384c78b8f823da7544b3f964e34fe13b2bab7bfe00df5e866e16251ae303",
-   "date": "2026-11-10",
-   "run": "7e1479e36528e4669ad134206722451683c9e97da010e9a1d285227c5c923295",
-   "subject_key": "8c6ffb9201eef7da6635c2fd21251e938736e15c0804d4a33424f3ac14eca2d1"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4). The reply copies f1040.line1z in cents; the project rounds it half-up to the dollar as it is entered. IT-201-I p. 2, Entering whole dollar amounts: \"When you enter amounts on your return, enter whole dollar amounts only ... round cents to the nearest dollar ... Drop amounts that are less than 50 cents ... Increase amounts that are 50 cents or more to the next dollar\"; the register's chosen reading rounds each federal amount on lines 1 to 18 as it is entered, the reply takes the reading that federal amounts are already whole. The two differ only where line 1z carries cents (triage: 48 value witnesses, all on refused returns). Project retained.",
+   "context": "a58224f191cef95c82e465b600ba65cd3cb7147c39d90e305815de6f5000f0db",
+   "date": "2026-11-14",
+   "run": "eb3fc991784c7e3d50fd008cd630cf6f34bdcfcd34f2f2b6a5640beaefb59ec4",
+   "subject_key": "e297692462a89e650633f0538f4ee8a6b0b8acb02603aadb91a58482654cb937",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@ny_it201",
+     "fixture:stage14.asset.mq_7yr@ny_it201",
+     "fixture:stage14.asset.mq_mixed@ny_it201",
+     "fixture:stage14.asset.mq_not@ny_it201",
+     "fixture:stage14.asset.bonus_100@ny_it201",
+     "fixture:stage14.asset.bonus_40_before@ny_it201",
+     "fixture:classm.w2.1.deepseek@ny_it201",
+     "fixture:stage13.refuse.joint_without_spouse@ny_it201",
+     "fixture:stage13.refuse.single_with_spouse@ny_it201",
+     "fixture:f2.t121.line13_earned_refused@ny_it201",
+     "fixture:stage15.refuse.f2441.plans_differ@ny_it201",
+     "fixture:stage15.refuse.f2441.line14_over@ny_it201",
+     "generated:20261026.0@ny_it201",
+     "generated:20261026.1@ny_it201",
+     "generated:20261026.2@ny_it201",
+     "generated:20261026.3@ny_it201",
+     "generated:20261026.4@ny_it201",
+     "generated:20261026.5@ny_it201",
+     "generated:20261026.116@ny_it201",
+     "generated:20261026.182@ny_it201",
+     "generated:20261026.301@ny_it201",
+     "generated:20261026.471@ny_it201",
+     "partial:generated 20261026/116-ny_it201.ask.state_resident@ny_it201",
+     "partial:generated 20261026/116-ny_it201.ask.special_accrual@ny_it201"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "10",
@@ -1940,6 +1976,45 @@
   },
   {
    "printed": "79",
+   "project_expr_sha256": "4a0bb281acdd5c95640acccf33d37148ede70b856eec37589b260346aeb05fa0",
+   "second_expr_sha256": "5038d325e0971aa1086d5478237faea25539bd207c80754b41b4e42e842b77d9",
+   "ruling": "Ruling: representation; the reply asks \"apply any of the overpayment to 2026 estimated tax\" on every return; the project asks it only when line 77 is more than zero and otherwise enters 0. IT-201-I p. 23, Line 79: \"Enter the amount of overpayment from line 77 that you want applied to your ... estimated tax for 2026. The total of lines 78a through 79 should equal the amount on line 77\": with no overpayment there is nothing to apply, so the gate forbids only an amount the source forbids. Triage: no value difference on any return (1,030 of 1,040 in-scope witnesses agree; the rest are refusals or unanswered questions on one side).",
+   "context": "a58224f191cef95c82e465b600ba65cd3cb7147c39d90e305815de6f5000f0db",
+   "date": "2026-11-14",
+   "run": "eb3fc991784c7e3d50fd008cd630cf6f34bdcfcd34f2f2b6a5640beaefb59ec4",
+   "subject_key": "4721bd325e55a4e40fd8b5c895f98b00c8063fe203e40506f6f0447117f215be",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.u1250.2.deepseek@ny_it201",
+     "fixture:classm.aqee.2.deepseek@ny_it201",
+     "fixture:classm.u1250.2@ny_it201",
+     "fixture:classm.person.21@ny_it201",
+     "fixture:classm.aqee.2@ny_it201",
+     "fixture:f1.t113.dep_llc_applied@ny_it201",
+     "fixture:mutation.t2.refund.mfs_box@ny_it201",
+     "fixture:mutation.t2.refund.qss_box@ny_it201",
+     "fixture:mutation.t2.refund.single_blind@ny_it201",
+     "fixture:stage16.refund.f3@ny_it201",
+     "fixture:stage16.refund.f5@ny_it201",
+     "fixture:stage16.refund.f6@ny_it201",
+     "partial:generated 20261026/0-ny_it201.ask.state_resident@ny_it201",
+     "partial:generated 20261026/0-ny_it201.ask.city_resident@ny_it201",
+     "partial:generated 20261026/24-ny_it201.ask.state_resident@ny_it201",
+     "partial:generated 20261026/24-ny_it201.ask.city_resident@ny_it201",
+     "partial:generated 20261026/88-ny_it201.ask.state_resident@ny_it201",
+     "partial:generated 20261026/88-ny_it201.ask.city_resident@ny_it201"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "79",
    "project_expr_sha256": "8021900d0953e1b861631dc3b09b5abd8486c564be295cd566c9b3bd556c6161",
    "second_expr_sha256": "5820bd35e51b3ae36f8c0cef77eed07b52140924ce3b5890578b09fb81e4becb",
    "ruling": "Ruling: representation; the project asks the line 79 amount only when line 77 is above zero (ny_it201.has_overpayment; IT-201-I p. 23, Line 79, \"Enter the amount of overpayment from line 77 that you want applied\") and is $0 otherwise; the second copies the amount. They differ only where line 77 is $0 and a positive amount is supplied, a record the interview cannot produce (the amount is not asked then), and where the second's own check (line 79 more than line 77) refuses. Equal wherever line 77 is above zero.",
@@ -2010,6 +2085,38 @@
      "generated:20261026.21@ny_it201",
      "generated:20261026.22@ny_it201",
      "generated:20261026.24@ny_it201"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "C",
+   "project_expr_sha256": "f5903e57bb11561e03060f01e96722ebfa8eefe96e93a647ff604e415f04a943",
+   "second_expr_sha256": "2ddb9664a78aba095aec7f638603f4b2a941de1e2b46c3e1fa544faddc141dab",
+   "ruling": "Ruling: representation; the reply asks the New York item C question on every return; the project asks it only after a federal No (ny_it201.item_c_if_not_federal) and takes Yes when sa.dependent is Yes. A federal Yes refuses the federal return (sa.deduction refuses when sa.dependent: \"A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice\"), and a refused federal return is a refused New York return, so on every return the tool completes item C is the New York question, as the reply has it (owner decision B8; IT-201-I p. 5, Item C, \"If you can be claimed as a dependent on another taxpayer's federal return, you must mark an X in the Yes box. You must mark the Yes box even if the other taxpayer did not claim you\"). Triage: all 182 differing witnesses are on refused returns; none on a completed or incomplete one.",
+   "context": "a58224f191cef95c82e465b600ba65cd3cb7147c39d90e305815de6f5000f0db",
+   "date": "2026-11-14",
+   "run": "eb3fc991784c7e3d50fd008cd630cf6f34bdcfcd34f2f2b6a5640beaefb59ec4",
+   "subject_key": "5f96cc262d96c8a36d1bebb6908ad63f67c084ee9ac7f49e53a2eb226b06135b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@ny_it201",
+     "fixture:classm.f4952.3.deepseek@ny_it201",
+     "fixture:classm.clcw.3.deepseek@ny_it201",
+     "fixture:classm.sa.5.deepseek@ny_it201",
+     "fixture:classm.sli.4@ny_it201",
+     "fixture:classm.ssb.5@ny_it201",
+     "generated:20261026.26@ny_it201",
+     "generated:20261026.48@ny_it201",
+     "generated:20261026.120@ny_it201",
+     "generated:20261026.128@ny_it201",
+     "generated:20261026.142@ny_it201",
+     "generated:20261026.184@ny_it201"
     ],
     "policy": "executable-triage-v2"
    }

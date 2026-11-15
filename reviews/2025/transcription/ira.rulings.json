@@ -3,6 +3,50 @@
  "form": "ira",
  "rulings": [
   {
+   "printed": "(screen) (ira.reservist_repaid)",
+   "project_expr_sha256": "7bebdaa2414afa9b83706a6c845f7e68f689f020fb21af35a9d8c7e39b0b4556",
+   "second_expr_sha256": "5a5cbd70609cd65510d1b17e24a21b9696b94e070d23d61e4c6c7bc6c22750db",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (2591 values compared, none different or missing: 1986 on 1986 fixture cases, 500 on 500 generated returns seed 20261026, 105 on 105 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "c0095ba05924ba54590c6a5eb5a37ad4d7d432042063d3c822e9cec9580d7a5c",
+   "date": "2026-11-14",
+   "run": "9ea1a48c6a77d08f08297e20134a6b6622e20a774c997a716464bc6293cd56fa",
+   "subject_key": "42d7a73fddb3381086b53b68ea364f37bb00553e9eefcdf819c2a99c4f490976",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(screen) (ira.special)",
+   "project_expr_sha256": "32d720f3f1b1942c37414fe2bb8bb2f00a8a822e6b3adb683546b0f32dded328",
+   "second_expr_sha256": "619b3512940728b0aa03a788ccadc0c6c9f50891ffce3eb504bb84cc1bd17d28",
+   "ruling": "Ruling: model error; the interface label names the four cases \"deferred compensation, a fellowship not on a Form W-2, a reservist repayment, difficulty of care payments\" (i1040gi p. 95, items on line 8 income and \"Don't include any repayments of qualified reservist distributions\"; p590a pp. 6, 16). The reply drops the reservist repayment (moving it to special_gate) and adds ira.se_capital, which belongs to worksheet line 9 (p590a pp. 6-7, Self-employment income) and is a separate project gate (ira.se_capital_gate). Triage (pass 12f36e046fb1): 2,563/2,591 agree; all 28 differences are candidate-unknown (ira.se_capital unasked without a Schedule C, classm.ira.2), 8 on completed returns.",
+   "context": "c0095ba05924ba54590c6a5eb5a37ad4d7d432042063d3c822e9cec9580d7a5c",
+   "date": "2026-11-14",
+   "run": "9ea1a48c6a77d08f08297e20134a6b6622e20a774c997a716464bc6293cd56fa",
+   "subject_key": "834ac8b64e39e1566b75833089c6a04753ac2ddba7c99c69f1a04a2f5b3da2ea",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.ira.2@ira",
+     "fixture:classm.person.2@ira",
+     "fixture:classm.person.5@ira",
+     "fixture:stage16.refuse.ira.se_capital@ira",
+     "fixture:mutation.m3.scope.oi_reservist_repaid@ira",
+     "fixture:mutation.m3.scope.l16_joint_unasked@ira",
+     "fixture:mutation.m1.ira.special_reservist@ira",
+     "partial:stage14.asset.hy_5yr-ira.se_capital@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "11a",
    "project_expr_sha256": "ae21b408bd25d2919ea50c06940eebd41bddc26c19d913b45b1a3bf2622ff6f3",
    "second_expr_sha256": "fb47e52d91d839a5bb8c662936b41e6197415bf887bf403d5733f52d4e3373cd",
@@ -590,6 +634,31 @@
   },
   {
    "printed": "ira.both_kinds",
+   "project_expr_sha256": "7da239a8fb3fb21cd53806623c0bc51c754467f06748caf50751557d89bfe591",
+   "second_expr_sha256": "d7484438d1eb9c1a69776a2e0226f1c7c85ea76ba3411e60dd6fc44119476286",
+   "ruling": "Ruling: representation; i1040gi p. 95, Line 20, \"If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don't use the IRA Deduction Worksheet\". Both sides take the return-wide reading (amb.2025.ira_both_kinds). The reply reads the amount person.ira_trad, which the interview asks only after person.sav_trad (and person.ira_owner) is Yes; the project reads person.ira_contrib, zero after No. Triage executable-triage-v2 (pass 12f36e046fb1; 1,986 fixtures, 500 generated returns, seed 20261026): 2,585/2,591 agree; the 6 differences are candidate-unknown (the unasked amount, classm.f8880.3, classm.tcw.2), none on a completed return, no value difference.",
+   "context": "c0095ba05924ba54590c6a5eb5a37ad4d7d432042063d3c822e9cec9580d7a5c",
+   "date": "2026-11-14",
+   "run": "9ea1a48c6a77d08f08297e20134a6b6622e20a774c997a716464bc6293cd56fa",
+   "subject_key": "e3c637340a5987907eeed8d96b3ed01499cdae8ce23ed581f1b59e371c34c4b1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8880.3.deepseek@ira",
+     "fixture:classm.f8880.3@ira",
+     "fixture:classm.tcw.2@ira",
+     "fixture:classm.tcw.11@ira",
+     "fixture:classm.w2.1@ira",
+     "fixture:mutation.t2.f8880.line6a_student_spouse_eligible@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ira.both_kinds",
    "project_expr_sha256": "929cac4c38830552621a8558c24e4915dbf9fadfe1ded6fa9682f41d5bb2bcf2",
    "second_expr_sha256": "4eec430354b3e28e4c98446ecd4b3f238cd114015806555f0bef85ed38e1872b",
    "ruling": "Ruling: representation; i1040gi p. 95, Line 20, item 2: \"If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions.\" Both lines take the broad reading the register records (amb.2025.ira_both_kinds). Triage executable-triage-v1 (triage/ira.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1617 of 1640 comparisons agree; 23 candidate-unknown. All 23 candidate-unknown records are joint returns whose persons answered No to person.sav_trad (tcw.mfj.b1, classm.f8880.2, classm.w2.1): person.ira_trad is the amount question the interview asks only after Yes on person.sav_trad; the candidate reads it without that question, so on a return answered No the amount is not supplied, although it is necessarily zero. Project stands.",
@@ -813,15 +882,17 @@
    "printed": "ira.line20",
    "project_expr_sha256": "734b9913dd9977d8fdfac33b115d057cab32933037fbc63665bb341233f2bb12",
    "second_expr_sha256": "b1038cc7badab0196e9cc0906543ddae7fdc49c6c67f653cb6fbc00a4f20c458",
-   "ruling": "Ruling: model error; i1040gi p. 98, IRA Deduction Worksheet, line 12: \"This is the most you can deduct. Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20. Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\" (amb.2025.ira_deduct_less). The sum of lines 12a and 12b is the project's sum of person.ira_deduction. executable-triage-v2 (`.transcription/triage/2025/ira.json`, pass 2f14fa8fede2; 1,702 fixtures, 500 generated returns seed 20261026, 69 partial records; 2,271 comparisons): 1,918 of 2,271 agree; differences 353 candidate-unknown; on returns the full interview completes: 153 candidate-unknown; witnesses enumerated with the cap lifted. No value differs on any record. Every one of the 153 completed differences is a candidate-unknown on ira.deduct_less, which the candidate declares as an unconditioned refusal gate, on a return whose deduction is $0 (project $0 on all 153): with nothing to deduct there is no smaller amount to elect, the project asks the election only when line 12a plus 12b is above zero (ira.less_gate), and the interview does not ask it otherwise. A candidate that needs an answer the source does not need is a model error (README). As the earlier ruling on this line. Gate-wave check: ira.less_gate (all, now a choose on ira.has_deduction) and Schedule 1 line 20 give the same values in HEAD and the working tree on every completed return (1,702 fixtures and 500 generated returns evaluated in both trees). Project stands.",
-   "context": "2eedbb3dbe104418acda70a35087b3e8df4acf72835919cc1a7bc22cf19d5b5a",
-   "date": "2026-11-09",
-   "run": "49695cec4a5734c9198a466cf1fef0e7f66456fe4e11a18bb0014941120474f7",
-   "subject_key": "913bd496c7247abbb3811f821010b50de62a3a166b2ce3b238b0aab1f683f598",
+   "ruling": "Ruling: model error; i1040gi p. 98, worksheet line 12, \"Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20\". No value differs where both sides compute (triage pass 12f36e046fb1: 1,987/2,591 agree), but the reply's line refuses through its special_gate, which has no traditional-contribution condition: candidate-refuses on returns with no IRA contribution (classm.f8889.4.deepseek, classm.f5329.1.deepseek; 7 on completed returns) and 46 candidate-unknown on completed returns from unasked special-case answers. The 1 project refusal (stage16.refuse.ira.over_comp) is the project's cited excess-contribution screen.",
+   "context": "c0095ba05924ba54590c6a5eb5a37ad4d7d432042063d3c822e9cec9580d7a5c",
+   "date": "2026-11-14",
+   "run": "9ea1a48c6a77d08f08297e20134a6b6622e20a774c997a716464bc6293cd56fa",
+   "subject_key": "972c2df5b101554477019e0a1c944863b613e9d73b10a4494fa7e65f1778ea65",
    "triage": {
     "verdict": "differs",
     "kinds": [
-     "candidate-unknown"
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
     ],
     "witnesses": [
      "fixture:classm.f2441.1.deepseek@ira",
@@ -829,7 +900,14 @@
      "fixture:classm.f2441.3.deepseek@ira",
      "fixture:classm.f2441.4.deepseek@ira",
      "fixture:classm.f2441.5.deepseek@ira",
-     "fixture:classm.f2441.6.deepseek@ira"
+     "fixture:classm.f2441.6.deepseek@ira",
+     "fixture:classm.f8889.4.deepseek@ira",
+     "fixture:classm.g28.2.deepseek@ira",
+     "fixture:classm.clcw_next_year.2.deepseek@ira",
+     "fixture:classm.f5329.1.deepseek@ira",
+     "fixture:classm.g28.2@ira",
+     "fixture:classm.ssb.3@ira",
+     "fixture:stage16.refuse.ira.over_comp@ira"
     ],
     "policy": "executable-triage-v2"
    }
@@ -868,6 +946,55 @@
    }
   },
   {
+   "printed": "ira.over_comp",
+   "project_expr_sha256": "f39ca4e9bca4d66ed9f2673f2f17a76effb84754ecf44ad702a952c125cee271",
+   "second_expr_sha256": "3b74140de78acc44784c59cc2576dfdd217c544f6a35d46221251b0bd0720ccb",
+   "ruling": "Ruling: model error; the interface is the excess-contribution screen (label \"Traditional and Roth IRA contributions for 2025 more than the compensation on line 10\"; p590a p. 35, Excess Contributions, \"the smaller of: $7,000 ($8,000 if you are age 50 or older), or Your taxable compensation\"), but the reply transcribes the CAUTION below worksheet line 10 (i1040gi p. 98, \"If married filing jointly and line 10 is less than $14,000 ... stop here and use the worksheet in Pub. 590-A\"), which the project carries on ira.kbh_short. It also drops the traditional-contribution condition: the worksheet is used only \"If you made contributions to a traditional IRA for 2025\" (i1040gi p. 95). Triage (pass 12f36e046fb1): 2,544/2,591 agree; 12 value records (classm.f5329.1.deepseek, classm.ssb.3: joint, line 10 $6,574, no traditional contribution; project false, reply true), 6 candidate-refuses, 6 candidate-unknown, 6 project-unknown, 2 project-refuses on refused returns; 7 value differences on completed returns.",
+   "context": "c0095ba05924ba54590c6a5eb5a37ad4d7d432042063d3c822e9cec9580d7a5c",
+   "date": "2026-11-14",
+   "run": "9ea1a48c6a77d08f08297e20134a6b6622e20a774c997a716464bc6293cd56fa",
+   "subject_key": "706f8424e0908b28a17d7e4dc44ceb7977f406102838c3104c060ca9e3f3d16c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.2.deepseek@ira",
+     "fixture:classm.f8889.4.deepseek@ira",
+     "fixture:classm.g28.2.deepseek@ira",
+     "fixture:classm.clcw_next_year.2.deepseek@ira",
+     "fixture:classm.dependent.2.deepseek@ira",
+     "fixture:classm.f5329.1.deepseek@ira",
+     "fixture:classm.g28.2@ira",
+     "fixture:classm.ssb.3@ira",
+     "fixture:classm.eic.5@ira",
+     "fixture:classm.f8889.1@ira",
+     "fixture:classm.f8889.10@ira",
+     "fixture:classm.f5329.1@ira",
+     "fixture:stage21.choose.eic_limit_status_unanswered@ira",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ira",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ira",
+     "fixture:stage16.cleanup.refuse.scope_credits@ira",
+     "fixture:stage16.cleanup.refuse.f2441_line24@ira",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@ira",
+     "fixture:stage16.cleanup.f8959_line16_se_refused@ira",
+     "fixture:stage16.refuse.ira.se_capital@ira",
+     "fixture:mutation.t2.mfj_no_overtime_part3@ira",
+     "fixture:mutation.t2.f8880.simple_line2@ira",
+     "fixture:mutation.t2.s1a.line13_magi_first@ira",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_three_jobs@ira",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_one_job@ira",
+     "generated:20261026.108@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "ira.special_gate",
    "project_expr_sha256": "c5350411e96678953e4561e0ce257205b17aec8e593a4d2de8ecea4472e43d4d",
    "second_expr_sha256": "21fbcd6d8316a3b899823c4de25c88a721df5977d234abe71fb0c195470377ba",
@@ -888,6 +1015,45 @@
      "fixture:classm.f2441.6.deepseek@ira"
     ],
     "policy": "executable-triage-v1"
+   }
+  },
+  {
+   "printed": "ira.special_gate",
+   "project_expr_sha256": "deadb3692c31f36d2fd49b1cb58b6d6394a9cfc0204ec43ff8cbd2b78d5f1419",
+   "second_expr_sha256": "2879f47f500eb71b60325a90122c39eb25cdd11a3ee10df0abe779ebc844a47b",
+   "ruling": "Ruling: model error; i1040gi p. 95, Line 20, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction ... But read the following list before you fill in the worksheet\": the special cases matter only with a traditional contribution. The reply drops that condition and folds in its own over_comp (the line 10 caution read without any contribution), its both-kinds test and the deduct-less election. Triage (pass 12f36e046fb1): 1,978/2,591 agree; value records where no traditional contribution was made and the reply refuses through over_comp (classm.f5329.1.deepseek, classm.clcw_next_year.2.deepseek; 7 on completed returns), and candidate-unknown on unasked special-case answers (46 on completed returns). Same reading as the earlier Claude ruling of this line.",
+   "context": "c0095ba05924ba54590c6a5eb5a37ad4d7d432042063d3c822e9cec9580d7a5c",
+   "date": "2026-11-14",
+   "run": "9ea1a48c6a77d08f08297e20134a6b6622e20a774c997a716464bc6293cd56fa",
+   "subject_key": "a7507a6267f5b0b0c6858e3298b3b841a78710aef1cb8e9950c97c76a43e9f60",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@ira",
+     "fixture:classm.f2441.2.deepseek@ira",
+     "fixture:classm.f2441.3.deepseek@ira",
+     "fixture:classm.f2441.4.deepseek@ira",
+     "fixture:classm.f2441.5.deepseek@ira",
+     "fixture:classm.f2441.6.deepseek@ira",
+     "fixture:classm.f8889.4.deepseek@ira",
+     "fixture:classm.g28.2.deepseek@ira",
+     "fixture:classm.clcw_next_year.2.deepseek@ira",
+     "fixture:classm.f5329.1.deepseek@ira",
+     "fixture:classm.g28.2@ira",
+     "fixture:classm.ssb.3@ira",
+     "fixture:classm.eic.5@ira",
+     "fixture:classm.f8889.1@ira",
+     "fixture:classm.f8889.10@ira",
+     "fixture:classm.f5329.1@ira",
+     "fixture:mutation.t2.f8880.simple_line2@ira",
+     "generated:20261026.108@ira"
+    ],
+    "policy": "executable-triage-v2"
    }
   }
  ]

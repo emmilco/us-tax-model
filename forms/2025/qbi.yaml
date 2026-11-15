@@ -20,16 +20,124 @@ form:
       cite:
         doc: f8995
         locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
-    - id: qbi.unsupported
+    - id: qbi.no
       printed: (helper)
       type: Bool
-      label: 'Do you (or, on a joint return, your spouse) have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you (or, on a joint return, your spouse) a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?'
+      label: Year parameter s3.no (false)
       expr:
-        op: input
-        source: 'Do you (or, on a joint return, your spouse) have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you (or, on a joint return, your spouse) a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?'
+        op: param
+        ref: s3.no
       cite:
         doc: f8995
         locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.prior_form
+      printed: (helper)
+      type: Bool
+      label: "Does your (or, on a joint return, your spouse's) 2024 return include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?"
+      expr:
+        op: input
+        source: "Does your (or, on a joint return, your spouse's) 2024 return include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?"
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.reit_loss
+      printed: (helper)
+      type: Bool
+      gated_by: qbi.reit_loss_if_prior_form
+      label: "Does your (or, on a joint return, your spouse's) 2024 Form 8995 or Form 8995-A show a qualified REIT dividends and PTP (loss) carryforward (2024 Form 8995, line 17, or the corresponding line of Form 8995-A)?"
+      expr:
+        op: input
+        source: "Does your (or, on a joint return, your spouse's) 2024 Form 8995 or Form 8995-A show a qualified REIT dividends and PTP (loss) carryforward (2024 Form 8995, line 17, or the corresponding line of Form 8995-A)?"
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.reit_loss_if_prior_form
+      printed: (gate)
+      type: Bool
+      label: "Whether the 2024 Form 8995 or 8995-A carries forward a REIT or PTP loss, asked only when the 2024 return includes that form (false without it)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - qbi.prior_form
+            - const: true
+          then: qbi.reit_loss
+        - guard:
+            op: test
+            eq:
+            - qbi.prior_form
+            - const: false
+          then: qbi.no
+      cite:
+        doc: i8995
+        locator: 'p. 4, Line 7, "Include here the qualified portion of PTP (loss) carryforward allowed in calculating taxable income in the current year"'
+    - id: qbi.suspended
+      printed: (helper)
+      type: Bool
+      gated_by: qbi.suspended_if_business
+      label: "Do you (or, on a joint return, your spouse) have losses or deductions of a trade or business that were suspended in an earlier year by another provision (such as the at-risk or passive activity limits) and are allowed in calculating taxable income this year?"
+      expr:
+        op: input
+        source: "Do you (or, on a joint return, your spouse) have losses or deductions of a trade or business that were suspended in an earlier year by another provision (such as the at-risk or passive activity limits) and are allowed in calculating taxable income this year?"
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.suspended_if_business
+      printed: (gate)
+      type: Bool
+      label: "Whether losses or deductions suspended in an earlier year are allowed this year, asked only when the return has a Schedule C (false without one)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - s1.has_sc
+            - const: true
+          then: qbi.suspended
+        - guard:
+            op: test
+            eq:
+            - s1.has_sc
+            - const: false
+          then: qbi.no
+      cite:
+        doc: i8995
+        locator: 'p. 3, Determining Your Qualified Business Income, "When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income"'
+    - id: qbi.coop_patron
+      printed: (helper)
+      type: Bool
+      label: "Are you (or, on a joint return, your spouse) a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?"
+      expr:
+        op: input
+        source: "Are you (or, on a joint return, your spouse) a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?"
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.unsupported
+      printed: (helper)
+      type: Bool
+      label: 'Any of these: a prior-year REIT or PTP loss carryforward; losses or deductions suspended in an earlier year by another provision and allowed this year; being a patron of any agricultural or horticultural cooperative, specified or not. Qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses is refused by the scope questions on Schedule E, Schedule K-1 and Schedule F income'
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - qbi.reit_loss_if_prior_form
+          - const: true
+        - op: test
+          eq:
+          - qbi.suspended_if_business
+          - const: true
+        - op: test
+          eq:
+          - qbi.coop_patron
+          - const: true
+      cite:
+        doc: i8995
+        locator: 'p. 4, Line 7, "Include here the qualified portion of PTP (loss) carryforward allowed in calculating taxable income in the current year"; p. 3, Determining Your Qualified Business Income, "When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income"; p. 1, Who Can Take the Deduction, "You aren’t a patron in a specified agricultural or horticultural cooperative"; p. 3, Determining Your Qualified Business Income, "If you received qualified payments reported to you on Form 1099-PATR from a specified agricultural or horticultural cooperative, you must reduce your QBI by the patron reduction and use Form 8995-A"'
       ambiguity: amb.2025.qbi_cooperative_patron
     - id: qbi.zero
       printed: (helper)
@@ -62,6 +170,7 @@ form:
       printed: '3'
       label: Qualified business net (loss) carryforward from the prior year (as a positive amount)
       type: NonNegDollars
+      gated_by: qbi.carryforward_if_prior_form
       expr:
         op: input
         source: The qualified business loss carryforward from line 16 of your 2024 Form 8995 (or the corresponding line of your
@@ -71,6 +180,29 @@ form:
         locator: 'p. 4, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating
           taxable income in the current year"; p. 5, Line 16, "This is the amount to be carried forward to the next year" (owner:
           the printed amount)'
+    - id: qbi.carryforward_if_prior_form
+      printed: (gate)
+      type: NonNegDollars
+      label: The qualified business loss carryforward, asked only when the 2024 return includes Form 8995 or 8995-A (zero without it)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - qbi.prior_form
+            - const: true
+          then: qbi.carryforward
+        - guard:
+            op: test
+            eq:
+            - qbi.prior_form
+            - const: false
+          then: qbi.zero
+      cite:
+        doc: i8995
+        locator: 'p. 4, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating
+          taxable income in the current year"; p. 5, Line 16, "This is the amount to be carried forward to the next year"'
     - id: qbi.business_any
       printed: (gate)
       label: Business income or a carryforward with taxable income above the Form 8995 threshold
@@ -84,7 +216,7 @@ form:
           - param: sales.zero
         - op: test
           gt:
-          - qbi.carryforward
+          - qbi.carryforward_if_prior_form
           - param: sales.zero
       cite:
         doc: i8995

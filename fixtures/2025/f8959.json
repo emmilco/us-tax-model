@@ -170,7 +170,7 @@
         "dependent[child].canada_mexico": true,
         "dependent[child].supported": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f8959.line6": {
@@ -212,7 +212,7 @@
         "dependent[child].canada_mexico": true,
         "dependent[child].supported": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f8959.line6": {
@@ -250,7 +250,7 @@
         "dependent[child].canada_mexico": true,
         "dependent[child].supported": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f8959.line6": {
@@ -483,7 +483,7 @@
         },
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.tips": null,
         "s1a.overtime": null,
         "s1a.carloan": null
@@ -523,7 +523,7 @@
         },
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.tips": null,
         "s1a.overtime": null,
         "s1a.carloan": null
@@ -559,7 +559,7 @@
         "person[taxpayer].w2[a].box5": 25100000,
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.tips": null,
         "s1a.overtime": null,
         "s1a.carloan": null
@@ -721,25 +721,25 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
-        "f8959.unsupported": true,
+        "f8959.territory_w2": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
         "person[taxpayer].w2[a].box1": 10000000,
-        "s1a.tips": null,
-        "s1a.overtime": null,
-        "s1a.carloan": null,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
         "person[taxpayer].w2[a].box2": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f8959.line18": {
           "kind": "refusal",
           "gate": "f8959.unsupported",
           "form": "Form 8959 additional source forms",
-          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "remedy": "Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare Form 8959 with one.",
           "cite": {
             "doc": "f8959",
             "tax_year": 2025,
@@ -752,7 +752,7 @@
           "kind": "refusal",
           "gate": "f8959.unsupported",
           "form": "Form 8959 additional source forms",
-          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "remedy": "Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare Form 8959 with one.",
           "cite": {
             "doc": "f8959",
             "tax_year": 2025,
@@ -765,7 +765,7 @@
           "kind": "refusal",
           "gate": "f8959.unsupported",
           "form": "Form 8959 additional source forms",
-          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "remedy": "Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare Form 8959 with one.",
           "cite": {
             "doc": "f8959",
             "tax_year": 2025,
@@ -778,7 +778,7 @@
           "kind": "refusal",
           "gate": "f8959.unsupported",
           "form": "Form 8959 additional source forms",
-          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "remedy": "Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare Form 8959 with one.",
           "cite": {
             "doc": "f8959",
             "tax_year": 2025,
@@ -791,7 +791,7 @@
           "kind": "refusal",
           "gate": "f8959.unsupported",
           "form": "Form 8959 additional source forms",
-          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "remedy": "Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare Form 8959 with one.",
           "cite": {
             "doc": "f8959",
             "tax_year": 2025,
@@ -804,7 +804,7 @@
           "kind": "refusal",
           "gate": "f8959.unsupported",
           "form": "Form 8959 additional source forms",
-          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "remedy": "Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare Form 8959 with one.",
           "cite": {
             "doc": "f8959",
             "tax_year": 2025,
@@ -817,7 +817,7 @@
           "kind": "refusal",
           "gate": "f8959.unsupported",
           "form": "Form 8959 additional source forms",
-          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "remedy": "Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare Form 8959 with one.",
           "cite": {
             "doc": "f8959",
             "tax_year": 2025,
@@ -830,7 +830,7 @@
           "kind": "refusal",
           "gate": "f8959.unsupported",
           "form": "Form 8959 additional source forms",
-          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "remedy": "Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare Form 8959 with one.",
           "cite": {
             "doc": "f8959",
             "tax_year": 2025,
@@ -855,7 +855,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0",
           "e1"
@@ -909,7 +909,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -1011,10 +1011,10 @@
         "person[taxpayer].sc[b].line1": 1000000,
         "person[taxpayer].se_screen": true,
         "f2441.benefits": null,
-        "s179.line10": null,
+        "s179.prior_form": null, "s179.carryover": null,
         "f2441.care": null,
-        "f5695.part2_any": null,
         "f5695.condo": null,
+        "person[taxpayer].ira_owner": true,
         "person[taxpayer].sav_trad": null,
         "person[taxpayer].ira_dist": null
       },

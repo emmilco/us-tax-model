@@ -18,10 +18,11 @@
         "$dependent": [
           "child"
         ],
-        "person[taxpayer].under16": true,
+        "person[taxpayer].birth_year": 2012,
         "dependent[child].age": 12,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "household.filer_under16": {
@@ -79,6 +80,7 @@
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -94,12 +96,13 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
-        "household.married": true,
+        "household.considered_unmarried": true,
+        "household.married_dec31": true,
         "household.community_property": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "household.hoh_community_property": {
@@ -157,6 +160,7 @@
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -173,8 +177,8 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
-        "household.married": true,
+        "household.considered_unmarried": true,
+        "household.married_dec31": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12
       },
@@ -252,6 +256,7 @@
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -269,7 +274,7 @@
           "room"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
         "dependent[room].relationship": "other",
@@ -310,6 +315,7 @@
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -327,7 +333,7 @@
           "kid2"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].absence_no_return": true,
         "dependent[child].months": 12,
@@ -366,6 +372,7 @@
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -383,7 +390,7 @@
           "hm"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
         "dependent[hm].relationship": "household_member",
@@ -647,6 +654,7 @@
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -662,7 +670,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "household.community_property": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12
@@ -696,7 +704,7 @@
           "kid",
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -735,7 +743,7 @@
         "$dependent": [
           "parent"
         ],
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -774,8 +782,8 @@
         "$dependent": [
           "kid"
         ],
-        "household.unmarried": false,
-        "household.married": true,
+        "household.considered_unmarried": false,
+        "household.married_dec31": true,
         "household.home_cost": true,
         "dependent[kid].age": 10,
         "dependent[kid].months": 12,
@@ -805,7 +813,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": null,
+        "household.married_dec31": null,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -843,7 +851,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[spouse]": [],
         "person[spouse].work_ssn": false,
         "person[spouse].tin": false,
@@ -904,7 +912,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -988,7 +996,8 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "interest[bank_a].amount": 120000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "household.qss_fails": {
@@ -1121,7 +1130,8 @@
         "household.rdp": true,
         "dependent[child].age": 12,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "household.rdp_community_property": {
@@ -1179,7 +1189,7 @@
           "c"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[a].age": 2,
         "dependent[a].months": 12,
         "dependent[b].age": 5,
@@ -1212,12 +1222,13 @@
     {
       "id": "stage21.household.widow_single_false",
       "covers": [
-        "household.widowed_2025"
+        "household.widowed_this_year"
       ],
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Predicted before evaluation from archived p501 p. 6, Spouse died during the year, and i1040gi p. 13: a spouse's death in 2025 leaves the filer married for filing status; owner decision refuses single/HOH at line 12e. Negative controls retain the 2025 single $15,750 or HOH $23,625 standard deduction. The HOH positive case deliberately retains unmarried=yes to test enforcement despite a mistaken status answer. No independent human hand-work claimed.",
       "inputs": {
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -1237,7 +1248,7 @@
         "dependent[child].months": 12
       },
       "expect": {
-        "household.widowed_2025": {
+        "household.widowed_this_year": {
           "kind": "bool",
           "value": false
         },
@@ -1250,12 +1261,13 @@
     {
       "id": "stage21.household.widow_single_true",
       "covers": [
-        "household.widowed_2025"
+        "household.widowed_this_year"
       ],
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Predicted before evaluation from archived p501 p. 6, Spouse died during the year, and i1040gi p. 13: a spouse's death in 2025 leaves the filer married for filing status; owner decision refuses single/HOH at line 12e. Negative controls retain the 2025 single $15,750 or HOH $23,625 standard deduction. The HOH positive case deliberately retains unmarried=yes to test enforcement despite a mistaken status answer. No independent human hand-work claimed.",
       "inputs": {
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -1270,19 +1282,20 @@
         "$dependent": [
           "child"
         ],
-        "household.spouse_died_2025": true,
+        "household.spouse_died_this_year": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
-        "household.widowed_2025": {
+        "household.widowed_this_year": {
           "kind": "bool",
           "value": true
         },
         "f1040.line12e": {
           "kind": "refusal",
-          "gate": "household.widowed_2025",
+          "gate": "household.widowed_this_year",
           "form": "Filing status after a spouse's death in 2025",
           "remedy": "Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly), or a separate return, which this tool does not support.",
           "cite": {
@@ -1298,13 +1311,14 @@
     {
       "id": "stage21.household.widow_hoh_false",
       "covers": [
-        "household.widowed_2025"
+        "household.widowed_this_year"
       ],
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Predicted before evaluation from archived p501 p. 6, Spouse died during the year, and i1040gi p. 13: a spouse's death in 2025 leaves the filer married for filing status; owner decision refuses single/HOH at line 12e. Negative controls retain the 2025 single $15,750 or HOH $23,625 standard deduction. The HOH positive case deliberately retains unmarried=yes to test enforcement despite a mistaken status answer. No independent human hand-work claimed.",
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -1321,12 +1335,12 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12
       },
       "expect": {
-        "household.widowed_2025": {
+        "household.widowed_this_year": {
           "kind": "bool",
           "value": false
         },
@@ -1339,13 +1353,14 @@
     {
       "id": "stage21.household.widow_hoh_true",
       "covers": [
-        "household.widowed_2025"
+        "household.widowed_this_year"
       ],
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Predicted before evaluation from archived p501 p. 6, Spouse died during the year, and i1040gi p. 13: a spouse's death in 2025 leaves the filer married for filing status; owner decision refuses single/HOH at line 12e. Negative controls retain the 2025 single $15,750 or HOH $23,625 standard deduction. The HOH positive case deliberately retains unmarried=yes to test enforcement despite a mistaken status answer. No independent human hand-work claimed.",
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -1361,20 +1376,21 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
-        "household.spouse_died_2025": true,
+        "household.considered_unmarried": true,
+        "household.spouse_died_this_year": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
-        "household.widowed_2025": {
+        "household.widowed_this_year": {
           "kind": "bool",
           "value": true
         },
         "f1040.line12e": {
           "kind": "refusal",
-          "gate": "household.widowed_2025",
+          "gate": "household.widowed_this_year",
           "form": "Filing status after a spouse's death in 2025",
           "remedy": "Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly), or a separate return, which this tool does not support.",
           "cite": {
@@ -1408,7 +1424,8 @@
         "household.cp_married": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "household.cp_marriage_ended": {
@@ -1439,6 +1456,7 @@
       "evidence_note": "Predicted before evaluation from archived i1040gi p. 23, Community Property States, and the owner's refusal decision: a non-joint filer whose marriage ended after living married in a community property state refuses at line 1a. Otherwise wages remain $120,000. Still-married HOH retains the existing downstream line12e community-property refusal. Outside-state positive cp_married is an unasked-answer control. No independent human hand-work claimed.",
       "inputs": {
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -1482,6 +1500,7 @@
       "evidence_note": "Predicted before evaluation from archived i1040gi p. 23, Community Property States, and the owner's refusal decision: a non-joint filer whose marriage ended after living married in a community property state refuses at line 1a. Otherwise wages remain $120,000. Still-married HOH retains the existing downstream line12e community-property refusal. Outside-state positive cp_married is an unasked-answer control. No independent human hand-work claimed.",
       "inputs": {
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -1525,6 +1544,7 @@
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -1540,13 +1560,14 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
-        "household.married": true,
+        "household.considered_unmarried": true,
+        "household.married_dec31": true,
         "household.community_property": true,
         "household.cp_married": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "household.cp_marriage_ended": {
@@ -1581,6 +1602,7 @@
       "evidence_note": "Predicted before evaluation from archived i1040gi p.13 Single and Married Filing Jointly and p501 p.6: single conflicts with a marriage in effect at year end; joint requires marriage or a spouse who died during the year. HOH has its separate considered-unmarried tests. Standard deductions for under-65, nonblind filers are $15,750 single, $31,500 joint and $23,625 HOH. No new independent numeric credit claimed.",
       "inputs": {
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -1619,6 +1641,7 @@
       "evidence_note": "Predicted before evaluation from archived i1040gi p.13 Single and Married Filing Jointly and p501 p.6: single conflicts with a marriage in effect at year end; joint requires marriage or a spouse who died during the year. HOH has its separate considered-unmarried tests. Standard deductions for under-65, nonblind filers are $15,750 single, $31,500 joint and $23,625 HOH. No new independent numeric credit claimed.",
       "inputs": {
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -1633,10 +1656,11 @@
         "$dependent": [
           "child"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "household.filing_status_conflict": {
@@ -1682,7 +1706,7 @@
         "$dependent": [
           "child"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "dependent[child].relationship": "other",
         "dependent[child].age": 30,
         "dependent[child].spouse_relative": true,
@@ -1726,9 +1750,10 @@
         "dependent[child].age": 30,
         "dependent[child].spouse_relative": true,
         "dependent[child].supported": true,
-        "s179.line10": null,
-        "household.married": false,
-        "household.unmarried": true
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "household.married_dec31": false,
+        "household.considered_unmarried": true
       },
       "expect": {
         "household.filing_status_conflict": {
@@ -1774,12 +1799,12 @@
         "$dependent": [
           "child"
         ],
-        "household.spouse_died_2025": true,
+        "household.spouse_died_this_year": true,
         "dependent[child].relationship": "other",
         "dependent[child].age": 30,
         "dependent[child].spouse_relative": true,
         "dependent[child].supported": true,
-        "household.married": false
+        "household.married_dec31": false
       },
       "expect": {
         "household.filing_status_conflict": {
@@ -1802,6 +1827,7 @@
       "inputs": {
         "f1040.status": "hoh",
         "ftc.taxes": 2500,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -1818,8 +1844,8 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
-        "household.married": true,
+        "household.considered_unmarried": true,
+        "household.married_dec31": true,
         "dependent[child].age": 10,
         "dependent[child].months": 12
       },

@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "65c196ceb6df30d9c6140b3c66b0abbdb93374ba0893d011bec927b0b749dc3a",
  "head_rows": {
-  "printed lines compared": "2",
-  "agree / disagree / missing": "0 / 2 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-12); see Line-scoped reviews"
+  "printed lines compared": "3",
+  "agree / disagree / missing": "0 / 3 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -17,20 +17,29 @@
    "subject_key": "452a3ee97af3ac24853d24989362a9e732a16b637e7113a6baae390e979ad422"
   },
   {
-   "key": "ftc.credit",
-   "record": "1456921272952bfa0ff347c6e9b43a21dc762e51fcf920acc566311a2b5c9a78",
+   "key": "ftc.has_tax",
+   "record": "b2cfedd6a3d8c9c7acca4491920fa78835a81ea2ae0ee940d41e51eed1d3e20e",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error on the regular tax, representation otherwise; i1116 (2025) pp. 1-2, the election to claim the credit without filing Form 1116: the smaller of the foreign tax and the regular tax; p. 25, Line 20, \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\". As ruled before on this line: the reply names the refusal for a carryover (ftc.carryover_if_asked, BUG-0619), as the project does, and takes Form 1040 line 16 alone as the regular tax, saying no line 1z is supplied. executable-triage-v2 (`.transcription/triage/2025/ftc.json`, pass c0bc3a63fe27; 1,854 fixtures, 500 generated returns seed 20261026, 149 partial records from 40 bases; 2,503 comparisons): 1,826 agree; 593 candidate-refuses, 48 candidate-unknown and 3 project-refuses on refused returns, 31 candidate-unknown on incomplete ones, and 2 value differences on completed returns: the fixture stage18.ftc_limit_with_repayment ($200.00 of foreign tax, Form 1040 line 16 of $0, an excess advance premium tax credit repayment on Schedule 2: project $200.00, reply $0.00) and generated return 35 ($149.13 of foreign tax, line 16 of $0: project $99.09, reply $0.00). Checked against the page: line 20 adds Schedule 2, Part I, line 1z. Project stands.",
-   "subject_key": "2feeea729a2d88a597bbc0c8461f33339bf7e5096d0cf97e50694736c37c3737"
+   "ruling": "Ruling: representation; i1116 pp. 1-2, the election to claim the credit without Form 1116 (\"All of your foreign source gross income was passive category income\" ... \"reported to you on a payee statement\"). The project tests ftc.taxes_if_asked, the foreign tax asked only of a filer who owned shares or received a Form 1099-DIV, was paid taxable interest, or paid tax to another country (ftc.asked); the reply tests ftc.taxes directly. Where the amount is asked the two are the same test. executable triage (.transcription/triage/2025/ftc.json, executable-triage-v2): 2,581 of 2,629 agree; 35 candidate-unknown (12 completed, e.g. classm.eic.3: no question asked, project false) and 13 project-unknown on incomplete or refused records; no value difference. Project stands.",
+   "subject_key": "a7d744cb2fad98a59281eac422dfd8adbd7ff893d87fcd2d515c82b364fe8de0"
+  },
+  {
+   "key": "ftc.credit",
+   "record": "b2cfedd6a3d8c9c7acca4491920fa78835a81ea2ae0ee940d41e51eed1d3e20e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1116 p. 25, Line 20: \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\" (the regular tax that limits the credit under the election). The reply limits the credit by Form 1040 line 16 alone, dropping Schedule 2 line 1z: completed stage18.ftc_limit_with_repayment ($200 of foreign tax, line 16 $0, Schedule 2 line 1z $375), project $200, reply $0. It also reads the election inputs (ftc.all_passive, ftc.elect, ftc.carryover and others) where the interview does not ask them. executable triage (.transcription/triage/2025/ftc.json, executable-triage-v2): 1,757 of 2,629 agree; 1 value (completed, the witness above), 641 candidate-unknown (22 completed), 198 candidate-refuses (refused returns, upstream refusals through f1040.line16), 20 project-refuses, 12 project-unknown. Project stands.",
+   "subject_key": "acf700c54324eea0ef9fc91fabaae04749cf24bf0c8558a22e89579d00f2563b"
   }
  ],
  "subjects": {
   "ftc.carryover_if_asked": "b4d6bec027ee368c2448eaa608846710cf41834d017cbab91ffc9f643b1beb45",
-  "ftc.credit": "06960b35ff8ebfaea82c15793873ad5964c3e24acfce2827d5b0058bcb9a69b8"
+  "ftc.has_tax": "ce7d82df38a776b8a0d94a05062ba2c7d39b5b5e5916d36a1341d137ca6c2639",
+  "ftc.credit": "89af288fc200fbf036e9bde2f9ec5a760bac8459e6f915bb1e6ca8b39fa5ca18"
  },
  "__rest__": "0b27c1db7e23a8e90ed880b6d5e278e7ce96926cdbe182df2a1cfd1afeed920d",
  "foreign": {
   "ftc.carryover_if_asked": "101424bfae053a6fc397942b53d359900381c419c0394c302da8687f95c7cfcb",
-  "ftc.credit": "c8ab2cecb913c08e828e6847fac8341525cb87bae7068df48ddfed28f3696278"
+  "ftc.has_tax": "ec11c0522c2e35b28cc43c29df709dfb45bbb31a47d44093c456501d397e9836",
+  "ftc.credit": "c219d11a7a0ac1a3b7b23a045a74704d43d1ce066673e2113ab931241f5719e9"
  }
 }

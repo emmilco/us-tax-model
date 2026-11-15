@@ -1,0 +1,24 @@
+planning 18 job(s): dry runs build each request, 3 at a time
+Cost estimate (dry-run request size x recent ledger cost per prompt character):
+  classm        ny_city_rs       claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        ny_it2           claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        ny_it201         claude    whole                 1,601,688 chars      $4.18  whole
+  classm        ny_rs            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        ny_tcw           claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        ny_tcw_first     claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        ny_city_rs       claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        ny_it2           claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        ny_it201         claude    --lines auto            355,562 chars      $1.04  line-scoped
+  render        ny_rs            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        ny_tcw           claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        ny_tcw_first     claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription ny_city_rs       claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription ny_it2           claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription ny_it201         claude    --lines auto            285,423 chars      $1.20  line-scoped
+  transcription ny_rs            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription ny_tcw           claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription ny_tcw_first     claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  total $6.41 for 3 job(s); gate $3.00
+not run, once per form per round: 15 job(s) whose log already answers the current subject (transcription ny_city_rs, transcription ny_it2, transcription ny_rs, transcription ny_tcw, transcription ny_tcw_first, render ny_city_rs, render ny_it2, render ny_rs, render ny_tcw, render ny_tcw_first, classm ny_city_rs, classm ny_it2, classm ny_rs, classm ny_tcw, classm ny_tcw_first); --force-rerun REASON runs them
+dry run: no model called
+rc=0

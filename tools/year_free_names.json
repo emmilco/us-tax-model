@@ -1,0 +1,72 @@
+{
+ "description": [
+  "The year-free names given in the 2025 tree to every id that carried a year (the owner's decision; the coordinator",
+  "chose the names). One entry per old id: the new id, the class of the year it",
+  "carried (tools/year_ids.json, 'classes', plus fixed_date: a date in the law that does not move with the tax year)",
+  "and why the name says what the line is. A review tool carries each verdict from the old id to the new one by this map.",
+  "Dotted ids under the document clcw26 are renamed by the document entry (clcw26.<x> to clcw_next_year.<x>)."
+ ],
+ "renames": {
+  "clcw26": {"to": "clcw_next_year", "kind": "document", "class": "next_year", "why": "the capital loss carryover worksheet figured for next year's return"},
+
+  "asset.is2025": {"to": "asset.placed_this_year", "kind": "computed", "class": "this_year", "why": "placed in service in the tax year"},
+  "asset.on_26_2025": {"to": "asset.on_26_this_year", "kind": "computed", "class": "this_year", "why": "listed property placed this year, reported on lines 25 and 26"},
+  "asset.macrs2025": {"to": "asset.macrs_this_year", "kind": "computed", "class": "this_year", "why": "MACRS on property placed this year; pairs with asset.macrs_prior"},
+  "asset.mq_q4_2025": {"to": "asset.mqbase_q4", "kind": "computed", "class": "this_year", "why": "the mid-quarter basis (asset.mqbase) when placed in October to December; the line itself does not test the year"},
+  "asset.dep_2025": {"to": "asset.dep_this_year", "kind": "computed", "class": "this_year", "why": "MACRS on property placed this year; pairs with asset.dep_prior"},
+  "asset.bonus_2025": {"to": "asset.bonus_this_year", "kind": "computed", "class": "this_year", "why": "special allowance on property placed this year"},
+  "asset.s179_2025": {"to": "asset.s179_this_year", "kind": "computed", "class": "this_year", "why": "section 179 elected on property placed this year"},
+  "asset.cost179_2025": {"to": "asset.cost179_over_half", "kind": "computed", "class": "this_year", "why": "the business cost when used more than 50% in the business; the line itself does not test the year (asset.cost179 does)"},
+  "asset.ended_2025": {"to": "asset.ended_this_year", "kind": "input", "class": "this_year", "why": "disposed of, in part or whole, or converted to personal use in the tax year"},
+  "asset.before_2017": {"to": "asset.acquired_before_bonus_date", "kind": "input", "class": "fixed_date", "why": "acquired before September 28, 2017, the first acquisition date of the special allowance of i4562 line 14 (a date in the law; it does not move)"},
+
+  "scveh.is2025": {"to": "scveh.placed_this_year", "kind": "computed", "class": "this_year", "why": "vehicle placed in service in the tax year"},
+  "scveh.is2019": {"to": "scveh.first_year_after_recovery", "kind": "computed", "class": "offset", "why": "the tax year is the first after the vehicle's recovery period (recovery year 7, Pub. 946 p. 61)"},
+  "scveh.claims_bonus_2025": {"to": "scveh.claims_bonus_this_year", "kind": "computed", "class": "this_year", "why": "placed this year and a special allowance is claimed"},
+  "scveh.before_2017": {"to": "scveh.acquired_before_bonus_date", "kind": "input", "class": "fixed_date", "why": "as asset.acquired_before_bonus_date, for a vehicle"},
+  "scveh.before_2017_if_2025": {"to": "scveh.acquired_before_bonus_date_if_this_year", "kind": "computed", "class": "this_year", "why": "the gate of scveh.acquired_before_bonus_date: asked only of a vehicle placed this year"},
+  "scveh.lim_2025": {"to": "scveh.lim_this_year", "kind": "computed", "class": "this_year", "why": "the depreciation limit of a vehicle placed this year; pairs with scveh.lim_prior"},
+  "scveh.s179_2025_ok": {"to": "scveh.s179_this_year_ok", "kind": "computed", "class": "this_year", "why": "section 179 elected for a vehicle placed this year"},
+  "scveh.line10_2025": {"to": "scveh.line10_this_year", "kind": "computed", "class": "this_year", "why": "line 10 for a vehicle placed this year"},
+  "scveh.bonus_2025": {"to": "scveh.bonus_this_year", "kind": "computed", "class": "this_year", "why": "special allowance for a vehicle placed this year"},
+  "scveh.line19_2025": {"to": "scveh.line19_this_year", "kind": "computed", "class": "this_year", "why": "line 19 for a vehicle placed this year; pairs with scveh.line19_earlier"},
+  "scveh.s179_2025": {"to": "scveh.s179_this_year", "kind": "computed", "class": "this_year", "why": "column (i), section 179 cost of a vehicle placed this year"},
+  "scveh.s179_2025_o": {"to": "scveh.s179_this_year_o", "kind": "computed", "class": "this_year", "why": "the same, owned and on actual expenses"},
+
+  "dependent.edu_a2025": {"to": "dependent.edu_a_this_year", "kind": "input", "class": "this_year", "why": "tax-free educational assistance received this year (worksheet line 2a)"},
+  "dependent.edu_a2026": {"to": "dependent.edu_a_next_year", "kind": "input", "class": "next_year", "why": "tax-free educational assistance received next year before filing (worksheet line 2b)"},
+  "person.edu_a2025": {"to": "person.edu_a_this_year", "kind": "input", "class": "this_year", "why": "as dependent.edu_a_this_year, for the filer or spouse"},
+  "person.edu_a2026": {"to": "person.edu_a_next_year", "kind": "input", "class": "next_year", "why": "as dependent.edu_a_next_year, for the filer or spouse"},
+  "eic.died_2025": {"to": "eic.died_this_year", "kind": "input", "class": "this_year", "why": "the spouse died this year, or the return is for someone who died this year"},
+  "f2441.paid_2026": {"to": "f2441.other_care_expenses", "kind": "input", "class": "misnomer", "why": "care expenses incurred this year not already counted in the per-person amounts; the old year was not what the line is about"},
+  "f8880.dist_2025": {"to": "f8880.dist_this_year", "kind": "computed", "class": "this_year", "why": "the distributions of this year's return that line 4 counts"},
+  "f8962.married_in_2025": {"to": "f8962.married_this_year", "kind": "input", "class": "this_year", "why": "married during the tax year with coverage before the first full month of marriage"},
+  "household.spouse_died_2025": {"to": "household.spouse_died_this_year", "kind": "input", "class": "this_year", "why": "the spouse died in the tax year"},
+  "household.spouse_died_2025_if_ever_married": {"to": "household.spouse_died_this_year_if_ever_married", "kind": "computed", "class": "this_year", "why": "its gate"},
+  "household.widowed_2025": {"to": "household.widowed_this_year", "kind": "computed", "class": "this_year", "why": "filing single or head of household although the spouse died this year"},
+
+  "refund.not_2024": {"to": "refund.not_prior_year", "kind": "computed", "class": "prior_year", "why": "a refund for a year other than the prior year, or prior-year tax paid outside the usual time"},
+  "refund.line5d_2024": {"to": "refund.line5d_prior_year", "kind": "input", "class": "prior_year", "why": "line 5d of the prior year's Schedule A"},
+  "refund.line5e_2024": {"to": "refund.line5e_prior_year", "kind": "input", "class": "prior_year", "why": "line 5e of the prior year's Schedule A"},
+  "refund.line17_2024": {"to": "refund.line17_prior_year", "kind": "input", "class": "prior_year", "why": "line 17 of the prior year's Schedule A"},
+
+  "person.born_after_1960": {"to": "person.eic_under65", "kind": "computed", "class": "offset", "why": "under 65 at year end by the earned income credit's own birth-date test (born after December 31 of the year 65 years before)"},
+  "person.born_before_2001": {"to": "person.eic_age25", "kind": "computed", "class": "offset", "why": "25 or older at year end by the earned income credit's birth-date test"},
+  "person.edu_born_2002": {"to": "person.edu_age24", "kind": "computed", "class": "offset", "why": "24 or older at year end (not 'under age 24', i8863 line 7)"},
+  "person.edu_born_2007": {"to": "person.edu_over18", "kind": "computed", "class": "offset", "why": "over age 18 at year end (i8863 line 7)"},
+  "person.born_2010": {"to": "person.under16_open_year", "kind": "computed", "class": "offset", "why": "born in the one year in which the birth year leaves 'under 16 at year end' open"},
+  "person.under16_at_year_end_if_born_2010": {"to": "person.under16_at_year_end_if_open_year", "kind": "computed", "class": "offset", "why": "the gate of person.under16_at_year_end"},
+  "person.born_1976": {"to": "person.age50_open_year", "kind": "computed", "class": "offset", "why": "born in the one year in which the birth year leaves '50 or older at year end' open"},
+  "person.age50_at_year_end_if_born_1976": {"to": "person.age50_at_year_end_if_open_year", "kind": "computed", "class": "offset", "why": "the gate of person.age50_at_year_end"},
+  "person.born_1971": {"to": "person.age55_open_year", "kind": "computed", "class": "offset", "why": "born in the one year in which the birth year leaves '55 or older at year end' open"},
+  "person.age55_at_year_end_if_born_1971": {"to": "person.age55_at_year_end_if_open_year", "kind": "computed", "class": "offset", "why": "the gate of person.age55_at_year_end"},
+  "person.simple_age_1976": {"to": "person.simple_age_from_age50", "kind": "computed", "class": "offset", "why": "the catch-up band of a person born in the age-50 open year, from that person's age-50 answer"},
+  "person.turned_65_in_2025": {"to": "person.turned_65_this_year", "kind": "computed", "class": "this_year", "why": "the 65th birthday, or the day before it, fell in the tax year"},
+
+  "retirement.born_1936": {"to": "retirement.born_before_averaging_date", "kind": "input", "class": "fixed_date", "why": "the plan participant was born before January 2, 1936, the date of birth that opens Form 4972 (a date in the law; it does not move)"},
+  "retirement.born_1936_if_plan": {"to": "retirement.born_before_averaging_date_if_plan", "kind": "computed", "class": "fixed_date", "why": "its gate"},
+  "retirement.lump_sum_if_born_1936": {"to": "retirement.lump_sum_if_born_before_averaging_date", "kind": "computed", "class": "fixed_date", "why": "the gate of retirement.lump_sum"},
+  "retirement.start_1996": {"to": "retirement.started_before_simplified_method_date", "kind": "input", "class": "fixed_date", "why": "annuity payments started before November 19, 1996, after which the Simplified Method is required (a date in the law; it does not move)"},
+  "retirement.start_1996_if_cost": {"to": "retirement.started_before_simplified_method_date_if_cost", "kind": "computed", "class": "fixed_date", "why": "its gate"}
+ }
+}

@@ -4,7 +4,9 @@
  "family": "claude",
  "base": "b4ed89150e8053bc9ff2c0c87a1cc09929ea3c2fb2956158a134a212cf29fe46",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
+  "printed lines compared": "31",
+  "agree / disagree / missing": "6 / 25 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -42,24 +44,24 @@
   },
   {
    "key": "ira.both_kinds",
-   "record": "b4ed89150e8053bc9ff2c0c87a1cc09929ea3c2fb2956158a134a212cf29fe46",
+   "record": "0d939d3c094825014f3a5bc2df822f912d4341393c1280366ce88cec7de9c743",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 95, Line 20, item 2: \"If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions.\" Both lines take the broad reading the register records (amb.2025.ira_both_kinds). Triage executable-triage-v1 (triage/ira.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1617 of 1640 comparisons agree; 23 candidate-unknown. All 23 candidate-unknown records are joint returns whose persons answered No to person.sav_trad (tcw.mfj.b1, classm.f8880.2, classm.w2.1): person.ira_trad is the amount question the interview asks only after Yes on person.sav_trad; the candidate reads it without that question, so on a return answered No the amount is not supplied, although it is necessarily zero. Project stands.",
-   "subject_key": "68aa62a24c5881151847d211b098ddd4ff253e848550dd3e8d3699f403657673"
+   "ruling": "Ruling: representation; i1040gi p. 95, Line 20, \"If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don't use the IRA Deduction Worksheet\". Both sides take the return-wide reading (amb.2025.ira_both_kinds). The reply reads the amount person.ira_trad, which the interview asks only after person.sav_trad (and person.ira_owner) is Yes; the project reads person.ira_contrib, zero after No. Triage executable-triage-v2 (pass 12f36e046fb1; 1,986 fixtures, 500 generated returns, seed 20261026): 2,585/2,591 agree; the 6 differences are candidate-unknown (the unasked amount, classm.f8880.3, classm.tcw.2), none on a completed return, no value difference.",
+   "subject_key": "9f478bd998b87677be5102dc8d8f430567000949a753187cd04b33b3ba3320ab"
   },
   {
    "key": "ira.over_comp",
-   "record": "b4ed89150e8053bc9ff2c0c87a1cc09929ea3c2fb2956158a134a212cf29fe46",
+   "record": "0d939d3c094825014f3a5bc2df822f912d4341393c1280366ce88cec7de9c743",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; p590a p. 35, Excess Contributions: \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of: • $7,000 ($8,000 if you are age 50 or older), or • Your taxable compensation for the year.\" The project refuses when traditional plus Roth contributions exceed line 10 and leaves the per-person dollar limit to person.ira_over_limit; the candidate compares each column's traditional contributions with the smaller of the limit and line 10 (the spouse's with the limit only) and leaves Roth contributions to the person.ira_excess screen. Triage executable-triage-v1 (triage/ira.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 599 of 1640 comparisons agree; 987 candidate-unknown, 52 candidate-refuses, 2 value. The 2 value records move a refusal between cited gates on returns refused anyway: stage16.refuse.ira.kbh_short (project true, candidate false; refused by ira.kbh_short) and stage16.refuse.person.ira_over_limit (project false, candidate true; refused by person.ira_over_limit). Where the two can differ on a reachable return (Roth contributions taking the total above compensation), the project refuses with this cited screen an excess contribution the tool does not prepare (Form 5329), an acceptable scope refusal. The 52 candidate-refuses records are returns refused by other gates; of the 987 candidate-unknown records 948 answer No to person.sav_trad (person.ira_trad is the amount question the interview asks only after Yes on person.sav_trad; the candidate reads it without that question, so on a return answered No the amount is not supplied, although it is necessarily zero) 38 are no-contribution partial records on which a zero line 11 cannot exceed any cap, and ss.person.separation lacks a role. Project stands.",
-   "subject_key": "a56f543eed52913b096296ac7346b4bd28355e14c3f1a881532e10fe536905e2"
+   "ruling": "Ruling: model error; the interface is the excess-contribution screen (label \"Traditional and Roth IRA contributions for 2025 more than the compensation on line 10\"; p590a p. 35, Excess Contributions, \"the smaller of: $7,000 ($8,000 if you are age 50 or older), or Your taxable compensation\"), but the reply transcribes the CAUTION below worksheet line 10 (i1040gi p. 98, \"If married filing jointly and line 10 is less than $14,000 ... stop here and use the worksheet in Pub. 590-A\"), which the project carries on ira.kbh_short. It also drops the traditional-contribution condition: the worksheet is used only \"If you made contributions to a traditional IRA for 2025\" (i1040gi p. 95). Triage (pass 12f36e046fb1): 2,544/2,591 agree; 12 value records (classm.f5329.1.deepseek, classm.ssb.3: joint, line 10 $6,574, no traditional contribution; project false, reply true), 6 candidate-refuses, 6 candidate-unknown, 6 project-unknown, 2 project-refuses on refused returns; 7 value differences on completed returns.",
+   "subject_key": "45fbaf3ba8400ea4314343430d6ead8eb717703492bd575472d35c3056d04375"
   },
   {
    "key": "ira.special_gate",
-   "record": "b4ed89150e8053bc9ff2c0c87a1cc09929ea3c2fb2956158a134a212cf29fe46",
+   "record": "0d939d3c094825014f3a5bc2df822f912d4341393c1280366ce88cec7de9c743",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 95, Line 20: \"Use the IRA Deduction Worksheet to figure the amount, if any, of your IRA deduction. But read the following list before you fill in the worksheet.\" The special cases matter only to a worksheet that is filled in (i1040gi p. 95, Line 20: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction.\"); the candidate's gate omits the contribution condition and its line 8 refuses on it. Triage executable-triage-v1 (triage/ira.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 674 of 1640 comparisons agree; 966 candidate-unknown. All 966 candidate-unknown records have no traditional contributions (classm.f2441.1.deepseek, classm.f8995a.2, partial classm.s3.2 without ira.special), where the project does not ask the screen. The answer is not determined there (deferred compensation income can exist without an IRA), so the candidate requires an answer the source does not need and would refuse such a return, which has no IRA deduction. Project stands.",
-   "subject_key": "116c3153018e8ee43e40d6920731b970f6120a5f3bed71f130069bb2f4e79bae"
+   "ruling": "Ruling: model error; i1040gi p. 95, Line 20, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction ... But read the following list before you fill in the worksheet\": the special cases matter only with a traditional contribution. The reply drops that condition and folds in its own over_comp (the line 10 caution read without any contribution), its both-kinds test and the deduct-less election. Triage (pass 12f36e046fb1): 1,978/2,591 agree; value records where no traditional contribution was made and the reply refuses through over_comp (classm.f5329.1.deepseek, classm.clcw_next_year.2.deepseek; 7 on completed returns), and candidate-unknown on unasked special-case answers (46 on completed returns). Same reading as the earlier Claude ruling of this line.",
+   "subject_key": "13ecbdd57c4198ec753e88552de952570450d9e850dd0cd7f70b0b95f2712795"
   },
   {
    "key": "ira.combat_gate",
@@ -77,10 +79,10 @@
   },
   {
    "key": "ira.line20",
-   "record": "0ab6f13f6eea83a8033e36ddf945e9ee78d6a91aea796a050b1af148274defa3",
+   "record": "0d939d3c094825014f3a5bc2df822f912d4341393c1280366ce88cec7de9c743",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 98, IRA Deduction Worksheet, line 12: \"This is the most you can deduct. Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20. Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\" (amb.2025.ira_deduct_less). The sum of lines 12a and 12b is the project's sum of person.ira_deduction. executable-triage-v2 (`.transcription/triage/2025/ira.json`, pass 2f14fa8fede2; 1,702 fixtures, 500 generated returns seed 20261026, 69 partial records; 2,271 comparisons): 1,918 of 2,271 agree; differences 353 candidate-unknown; on returns the full interview completes: 153 candidate-unknown; witnesses enumerated with the cap lifted. No value differs on any record. Every one of the 153 completed differences is a candidate-unknown on ira.deduct_less, which the candidate declares as an unconditioned refusal gate, on a return whose deduction is $0 (project $0 on all 153): with nothing to deduct there is no smaller amount to elect, the project asks the election only when line 12a plus 12b is above zero (ira.less_gate), and the interview does not ask it otherwise. A candidate that needs an answer the source does not need is a model error (README). As the earlier ruling on this line. Gate-wave check: ira.less_gate (all, now a choose on ira.has_deduction) and Schedule 1 line 20 give the same values in HEAD and the working tree on every completed return (1,702 fixtures and 500 generated returns evaluated in both trees). Project stands.",
-   "subject_key": "4c3d65c86110f3dc24197fb6811173ba971aa93403a1bb24a85351e30044da94"
+   "ruling": "Ruling: model error; i1040gi p. 98, worksheet line 12, \"Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20\". No value differs where both sides compute (triage pass 12f36e046fb1: 1,987/2,591 agree), but the reply's line refuses through its special_gate, which has no traditional-contribution condition: candidate-refuses on returns with no IRA contribution (classm.f8889.4.deepseek, classm.f5329.1.deepseek; 7 on completed returns) and 46 candidate-unknown on completed returns from unasked special-case answers. The 1 project refusal (stage16.refuse.ira.over_comp) is the project's cited excess-contribution screen.",
+   "subject_key": "b4bc52114e26d7ce58cdc2e506a370202e41ea1e8052b672b54ba403077ee202"
   },
   {
    "key": "1a",
@@ -177,6 +179,20 @@
    "subject_key": "c74e8031c2676d82b29539741375da2f72018db6c1efe6a248eecbcedb4a6498"
   },
   {
+   "key": "(screen) (ira.special)",
+   "record": "0d939d3c094825014f3a5bc2df822f912d4341393c1280366ce88cec7de9c743",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the interface label names the four cases \"deferred compensation, a fellowship not on a Form W-2, a reservist repayment, difficulty of care payments\" (i1040gi p. 95, items on line 8 income and \"Don't include any repayments of qualified reservist distributions\"; p590a pp. 6, 16). The reply drops the reservist repayment (moving it to special_gate) and adds ira.se_capital, which belongs to worksheet line 9 (p590a pp. 6-7, Self-employment income) and is a separate project gate (ira.se_capital_gate). Triage (pass 12f36e046fb1): 2,563/2,591 agree; all 28 differences are candidate-unknown (ira.se_capital unasked without a Schedule C, classm.ira.2), 8 on completed returns.",
+   "subject_key": "50abb7c1522a8ffd2cb33e139e594c584bf58b0e3625e40de75a67e278f7c778"
+  },
+  {
+   "key": "(screen) (ira.reservist_repaid)",
+   "record": "0d939d3c094825014f3a5bc2df822f912d4341393c1280366ce88cec7de9c743",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (2591 values compared, none different or missing: 1986 on 1986 fixture cases, 500 on 500 generated returns seed 20261026, 105 on 105 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "389cd0bbcddd8eda9c836b69fd02b5260be9ef517927d75fe64bae239d9542e6"
+  },
+  {
    "key": "11a",
    "record": "b4ed89150e8053bc9ff2c0c87a1cc09929ea3c2fb2956158a134a212cf29fe46",
    "status": "DISAGREE",
@@ -211,12 +227,12 @@
   "ira.anyone_covered": "b7db71ab3bed181a7b39a82f25a2de45f393378839d46f09b280c39b1dc21ece",
   "ira.cov_gate": "42e34fb72af678637525cb7d96066015972e411b333ab68dc6982455ce23883b",
   "ira.kbh_short": "8471d8496289d4b1b3ed6d47555a1876a0e972a225541c2699e0f867f289e4f2",
-  "ira.both_kinds": "685e53786f58b5dd7566565bcba2eb87e34321c6c6742dbf674150b103133bbd",
-  "ira.over_comp": "52312a29a87661c0b3bbeb0f73a944e94eaa0659aa21a60b0e4a37f469b7bae7",
-  "ira.special_gate": "78ff47ae51b6551a9a428636bef048582633ffe14db3c26de52f0af739bfa8c7",
+  "ira.both_kinds": "1cb39e3da77d9ff2301e8e79845e42cddad9c3b4b59acda3de109caefa81d014",
+  "ira.over_comp": "fd21e056dc4ca704a55b1bc1944dd6bf8c0ea511853069864ea6ef045c8f0736",
+  "ira.special_gate": "5a1eac91fc38a91bc9fa9a6482fef51223ced42999da498aa5aceb051ed03259",
   "ira.combat_gate": "0074db81433811c53cd733ce0724ea280aa8a33d9a116aa502ddd1ddf152003f",
   "ira.excl_gate": "24f0f6dcaa11552258cefbe852fa5180dda40ee575e960b8a22b3ffa31c53d5d",
-  "ira.line20": "9a631783c69c2b82b4bcd3e4d3c2de7907cf3976c84041e97cf388f0f82904ab",
+  "ira.line20": "1b49c8cfb6f0fec6904cbfaf8d4e9cf6afcef87c57567783ca091c52907bc4c6",
   "1a": "c718de8917f5f3888088c2a52e5ab3577d2839ec4b9db9f6e8aac2bdeb20785c",
   "1b": "0b5459110e122f5244fe421f199b71693e94bdb2b298b595bbfb7047e07cdb7e",
   "2a": "ccb0da605717d3932003df64bc4c824dfdd9fae011ed6963ab02690e3f898f08",
@@ -231,6 +247,8 @@
   "8": "7597109de3fec41b733a74816d8a220d240e9ecde0bf76774502bdbce079b654",
   "9": "0b806f1a31e147b2cbc269826fa9e900506495312ab407c0c8f74f3f2de8fda2",
   "10": "bca4d9e6e7600ac219f8466c342382500fa2e0de9bac73aa2670bcec80f6fe6a",
+  "(screen) (ira.special)": "5f79a772fe57093e0bd4ed33debf756e02240f5f4f474d9438ffaac5840dbd53",
+  "(screen) (ira.reservist_repaid)": "85cb353f7249ab5a63609d8ae60312a95768ab8665285db978193a21f2b1b895",
   "11a": "9f9c7a464eb572ffd5a9e421c438ffeb0251460c5da96d152c2666972981acd3",
   "11b": "25435b164251aec5cb70ef5bcb9a9bf2111fdbb4d90739305808653e93b34838",
   "12a": "b82f13e6cb42f6758d3a0c95c27f44da7b3260011de4b745d26c3f3b6ad947e2",
@@ -238,7 +256,12 @@
  },
  "__rest__": "51bd60f3e1f3c5dc4a9156da6cc70b2d7fd330e94846768242fe389be4a6c05d",
  "foreign": {
+  "ira.both_kinds": "5854b78d117217f28eb86ce7750587b5b935caa30f5befd58e0f684c2a8c0f0e",
+  "ira.over_comp": "21ac5f64a33a76f7f7d620e36f73fe5cd5c6bdd243ccff3085d36d54488fc324",
+  "ira.special_gate": "72f9b6dd1bccc9866f4dd2eb123aef4bb4a61a4ac92b37991aed27caaf4d4486",
   "ira.combat_gate": "c289dc6646202069a3209e5c65de4e8f83116a3ce4588fefabd1e4474be36c78",
-  "ira.line20": "5c16bbd2c3580c26e60a0627c1651f2d3a296698fbdc1da90687d87346d59cb1"
+  "ira.line20": "5c16bbd2c3580c26e60a0627c1651f2d3a296698fbdc1da90687d87346d59cb1",
+  "(screen) (ira.special)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(screen) (ira.reservist_repaid)": "6b5702b76bc91accc9aa3962b054dcf78023d020244c72c564eba6e05003f96e"
  }
 }

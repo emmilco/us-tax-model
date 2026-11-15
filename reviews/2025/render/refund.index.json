@@ -4,33 +4,50 @@
  "family": "claude",
  "base": "065668c04b29710210bfb26a7214102ecc1b9bbb5e89c7a4046308f7c59c2680",
  "head_rows": {
-  "match / mismatch / unclear / missing": "8 / 0 / 1 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "734cb0eb8490cfa9eafbd1bf97bae8f0a24de6168d3e7af5aa2fdd03ec2c22e3",
-   "status": "MATCH",
-   "subject_key": "d4ba003a3b12d6353546c8f71ca1bb22cf1b7200f9ea711aa30294c9f45acf96"
+   "record": "2c3ad12f96416b95c644a4d61827099d8bd6104823283f7a0f08d219a5f3137c",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity and scope; i1040gi p. 90, worksheet line 1, \"But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\": the cap is the register's chosen reading amb.2025.refund_cap_5d, as the earlier rulings. i1040gi p. 89, Exception 1, \"You received a refund in 2025 that is for a tax year other than 2024\", and Exception 5, \"You made your last payment of 2024 estimated state or local income tax in 2025\": both are refused by refund.not_prior_year (refund.other_year, \"Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G)?\"; refund.paid_other_time, \"pay any of your 2024 state or local income tax in 2025 ... or before 2024\"; amb.2025.refund_exceptions), whose refusal sits on refund.taxable, the line Schedule 1 line 1 reads, so no such refund reaches line 1 on a completed return. The model saw only line 1's own refusals. Project stands.",
+   "subject_key": "9317966f112c96da653f6f0f67fb96cf66dc6a7132a752615ff2301df042c1b7"
   },
   {
    "key": "2",
    "record": "065668c04b29710210bfb26a7214102ecc1b9bbb5e89c7a4046308f7c59c2680",
    "status": "MATCH",
-   "subject_key": "41509f6fbd1d4c64fd88ae83f94076c6c2a62780dd17690d106668737f458bd8"
+   "subject_key": "be2eabe3af855a95440ac8e42366e07b95c806e4693243e5f17057b3c640d2b7",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "refund.line5d_2024": "refund.line5d_prior_year",
+     "refund.line5e_2024": "refund.line5e_prior_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "41509f6fbd1d4c64fd88ae83f94076c6c2a62780dd17690d106668737f458bd8"
+   }
   },
   {
    "key": "3",
-   "record": "065668c04b29710210bfb26a7214102ecc1b9bbb5e89c7a4046308f7c59c2680",
+   "record": "2c3ad12f96416b95c644a4d61827099d8bd6104823283f7a0f08d219a5f3137c",
    "status": "MATCH",
-   "subject_key": "17e0ad8c040a45eaecaa2450e8db0fd3c4629b9930206fb9038115be3134d54c"
+   "subject_key": "d27b1d820d0c432df476e431e9a3f9d5d3c97fa92a98ff9e1bc71b6bdbd47237"
   },
   {
    "key": "4",
    "record": "065668c04b29710210bfb26a7214102ecc1b9bbb5e89c7a4046308f7c59c2680",
    "status": "MATCH",
-   "subject_key": "4adfa381e3ae0d5535c8059c4602ebcea5b8477fa4975806d2b0f752f7687d91"
+   "subject_key": "e1b4ebc142b2a710b278ccfba880250aa5a964ce54149e3e12fe724fdd9483f0",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "refund.line17_2024": "refund.line17_prior_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "4adfa381e3ae0d5535c8059c4602ebcea5b8477fa4975806d2b0f752f7687d91"
+   }
   },
   {
    "key": "5",
@@ -55,25 +72,33 @@
    "key": "8",
    "record": "065668c04b29710210bfb26a7214102ecc1b9bbb5e89c7a4046308f7c59c2680",
    "status": "MATCH",
-   "subject_key": "e9a9168b90b2fcfdbfa5c0eba36880625412fed05547f2568186052b327255f8"
+   "subject_key": "5e2f7bee08ebd3db973b91b3a5d91b7e607d4d58441074e4d9eb369d80d52f74",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "refund.line17_2024": "refund.line17_prior_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "e9a9168b90b2fcfdbfa5c0eba36880625412fed05547f2568186052b327255f8"
+   }
   },
   {
    "key": "9",
-   "record": "065668c04b29710210bfb26a7214102ecc1b9bbb5e89c7a4046308f7c59c2680",
+   "record": "2c3ad12f96416b95c644a4d61827099d8bd6104823283f7a0f08d219a5f3137c",
    "status": "MATCH",
-   "subject_key": "e4287cd1276140f3d4bf69f6388c5283da8e540404b3e0d9f13618bce8a836f0"
+   "subject_key": "91824c9671e1332ba87175b457323c8d60dd935f0a2f8dbeb37149afcfc2c7a8"
   }
  ],
  "subjects": {
-  "1": "03f5c2c443202541add3fbdef3b12072118748cce5f84b44956e0d6701130b57",
-  "2": "64ee375443db4d5681b13017cb0beefc7d0189bba838bc54d0d6d372f24baebf",
-  "3": "7e768e1b0a412727a88dc53ef7ef2727191660ee56704ac012af38a9bb2b01c7",
-  "4": "a9070dc323d2c3bc196806e7bc7d17234d25af30648cbfcc43f5a4bb6a2248d2",
+  "1": "1a9e68e210bbdd95519eb9ba11b494022bf52ecf9ae187028ae0d26d53890461",
+  "2": "34562088c4d7570ac525b4c19b926af56d468e636400770325c931a8c582fe1c",
+  "3": "f6b6191b0826ef873a07757b76f1ece3da43306bea5d3218765c85d0d294a5ab",
+  "4": "1c5e3cdc4327598989d65b011ce5931d796509d16a93609b218d451232289c41",
   "5": "c2aa03b1776c93f69517515f9576e86ddbc821852e8a0a25184242877b6690d6",
   "6": "dfcb1e386609829b602089371d5ad2d5f087c27e6c6b2d8afa2b099d46b3b62a",
   "7": "45153661dbdea8aec9d870359ddc8243ff57567c177304e40b151c426a29bad2",
-  "8": "d3c4df515082143275c794a951377e14850fff6e1306042b7a7096d17c6c5a23",
-  "9": "fb9c8c57713ca96d6c1ed57cb9e4c759e2a2362e0761b48ad29633565e04c7ac"
+  "8": "6fcc5d245ff0a0dd2c4c2fae22127bf8694d7eebd27213d1f78ecfd87877bfff",
+  "9": "52731ed038a374ddf4f0a2b7ea2f2dc3db38e88eac3f36e286f25c129fd4b568"
  },
  "__rest__": "6363ce87fd62f5283cf735cd271c62cbfda63ab7510078cab4f87befb9f24088"
 }

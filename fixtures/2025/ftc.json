@@ -15,6 +15,7 @@
           "status": "single",
           "offset": -1
         },
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -43,6 +44,7 @@
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
         "ftc.taxes": 30000,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -75,6 +77,7 @@
           "status": "single",
           "offset": 0
         },
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -106,6 +109,7 @@
           "status": "single",
           "offset": 1
         },
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -116,14 +120,11 @@
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
-        "s1a.tips": null,
-        "s1a.overtime": null,
-        "s1a.carloan": null,
         "person[taxpayer].w2[a].box2": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "ftc.credit": {
@@ -150,20 +151,18 @@
       "evidence": "synthetic refusal regression",
       "inputs": {
         "ftc.taxes": 10000,
+        "s3.foreign_any": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
-        "s1a.tips": null,
-        "s1a.overtime": null,
-        "s1a.carloan": null,
         "person[taxpayer].w2[a].box2": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "ftc.credit": {
@@ -190,6 +189,7 @@
       "evidence": "synthetic refusal regression",
       "inputs": {
         "ftc.taxes": 10000,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.eligible": true,
         "ftc.elect": true,
@@ -199,14 +199,11 @@
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
-        "s1a.tips": null,
-        "s1a.overtime": null,
-        "s1a.carloan": null,
         "person[taxpayer].w2[a].box2": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "ftc.credit": {
@@ -233,6 +230,7 @@
       "evidence": "synthetic refusal regression",
       "inputs": {
         "ftc.taxes": 10000,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.elect": true,
@@ -242,14 +240,11 @@
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
-        "s1a.tips": null,
-        "s1a.overtime": null,
-        "s1a.carloan": null,
         "person[taxpayer].w2[a].box2": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "ftc.credit": {
@@ -276,6 +271,7 @@
       "evidence": "synthetic refusal regression",
       "inputs": {
         "ftc.taxes": 10000,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -285,14 +281,11 @@
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
-        "s1a.tips": null,
-        "s1a.overtime": null,
-        "s1a.carloan": null,
         "person[taxpayer].w2[a].box2": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "ftc.credit": {
@@ -321,6 +314,7 @@
       "evidence_note": "Stage 18 adjudication regression (finding F1), predicted by hand: blind return P8 (Form 8962 line 29 $375, Form 1040 line 16 $0) with $200 of creditable foreign tax under the election without Form 1116. The limit is regular tax, i1116 p. 25, Line 20, \"the total of Form 1040 ... line 16, and Schedule 2 (Form 1040), Part I, line 1z\": $0 + $375, so the credit is $200 and line 22 $175.",
       "inputs": {
         "ftc.taxes": 20000,
+        "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -333,10 +327,10 @@
         "person[taxpayer].w2[emp_a].box5": 1200000,
         "person[taxpayer].w2[emp_a].box6": 17400,
         "$f1095a": [
-          "m"
+          "form_1"
         ],
-        "f1095a[m].uniform": true,
-        "f1095a[m].c_total": 500000
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].c_total": 500000
       },
       "expect": {
         "ftc.credit": {

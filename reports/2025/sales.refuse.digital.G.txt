@@ -1,15 +1,7 @@
 Values sheet — tax year 2025 (not a complete return for all filers)
 
 == Form 1099-DIV — distribution components and scope screening ==
-  (gate) In 2025, did you (or your spouse) receive any dividends or other distributions from a company or a fund, with or without a Form 1099-DIV? Count amounts that were reinvested, credited to an account or paid in shares or other property. Answer Yes if any of these applies:
-
-      - a Form 1099-DIV for 2025, or the dividends section of a broker's consolidated statement or another substitute statement, shows an amount in your (or your spouse's) name, even if it was paid in early 2026 or no cash was paid (such as a deemed dividend on a convertible bond)
-      - dividends from stock or from a mutual fund, ETF, money market fund or REIT
-      - capital gain distributions, exempt-interest dividends, nondividend distributions (a return of capital) or liquidation distributions
-      - dividends paid to you as a participant in an employee stock ownership plan (ESOP)
-      - dividends received in your name that belong to someone else (as a nominee), or dividends that belong to you but were paid in someone else's name, such as your share of an account you own with a parent or another person
-      - a corporation you own paid your personal expenses or gave you property, and the amount is treated as a dividend
-      - dividends from a foreign company, dividends reported on a Schedule K-1, or dividends received without any form
+  (gate) In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund outside a retirement account, or get a Form 1099-DIV?
       = false
       cite: [f1099div] p. 5, Instructions for Recipient, boxes 1a, 2a, 3, 9, 10, 12 and 13, Box 1b, "The amount shown may be dividends a corporation paid directly to you as a participant (or beneficiary of a participant) in an employee stock ownership plan (ESOP)", Nominees, "If this form includes amounts belonging to another person, you are considered a nominee recipient", "Box 1a. Shows total ordinary dividends that are taxable", "Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)", "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12" (January 2024 (continuous-use form); 4ea1de80)
   (helper) No amount in a box whose condition does not hold
@@ -92,6 +84,21 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [f2441] Form 2441 (2025), Part I, "Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next."; i2441 p. 1, Purpose of Form (2025; created 2025-03-18; 6c3c2d19)
 
+== Foreign tax credit — election without Form 1116 ==
+  (gate) Shares or a Form 1099-DIV, taxable interest above zero, or income tax ever paid to another country: the filers who can have foreign tax to enter
+      = false
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
+  (helper) Total creditable foreign taxes after required reductions, when you or your spouse owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country; zero otherwise
+      = $0
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      note: taken: {"eq":["ftc.asked",{"const":false}],"op":"test"}
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
+  (helper) Positive foreign taxes
+      = false
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
+
 == Household facts for dependents and head of household ==
   (helper) Number of entries for you
       = 1
@@ -107,6 +114,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) The people entered do not match the filing status
       = false
       cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)" (2025; created 2025-09-05; 3d31c226)
+  (helper) Number of people on the return whose year of birth entered is not possible (person.birth_year_bad)
+      = 0
+      cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (gate) A year of birth entered for you, or your spouse on a joint return, is after the tax year or more than 125 years before it
+      = false
+      cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Number of people on the return under age 16 at the end of 2025
       = 0
       cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
@@ -115,9 +129,20 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
       note: Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
+  (helper) Have you ever been married?
+      = true
+      cite: [i1040gi] p. 13, Filing Status, Single, "You were never married" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) A marriage is possible: the filing status states one, or a person filing as single or head of household has been married at some time
+      = true
+      cite: [i1040gi] p. 13, Filing Status, Single, "You were never married" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
   (helper) Were you married at the end of 2025?
       = false
       cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?"; i8889 p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year"; p501 p. 6, Marital Status, "State law governs whether you are married or legally separated under a divorce or separate maintenance decree."; p501 p. 6, Definition of marriage, "Individuals who have entered into a registered domestic partnership, civil union, or other similar relationship"; p501 p. 6, Considered married, "You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began."; p501 p. 6, Divorce and remarriage, "you and your spouse must file as married individuals in both years."; p501 p. 6, Annulled marriages, "you are considered unmarried even if you filed joint returns for earlier years." (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Married at the end of 2025 (false for a person filing as single or head of household who has never been married)
+      = false
+      cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?"; i8889 p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year"; p501 p. 6, Marital Status, "State law governs whether you are married or legally separated under a divorce or separate maintenance decree."; p501 p. 6, Definition of marriage, "Individuals who have entered into a registered domestic partnership, civil union, or other similar relationship"; p501 p. 6, Considered married, "You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began."; p501 p. 6, Divorce and remarriage, "you and your spouse must file as married individuals in both years."; p501 p. 6, Annulled marriages, "you are considered unmarried even if you filed joint returns for earlier years." (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["household.marriage_possible",{"const":true}],"op":"test"}
   (helper) Did you live in a community property state at any time in 2025?
       = false
       cite: [i1040gi] p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin" (2025; printed date 2026-02-25; 482e9c48)
@@ -133,6 +158,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Did your spouse die in 2025?
       = false
       cite: [p501] p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025 returns; PDF created 2026-02-04; 288b62a4)
+  (helper) Your spouse died in 2025, asked only where a marriage is possible (false for a person never married)
+      = false
+      cite: [p501] p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025 returns; PDF created 2026-02-04; 288b62a4)
+      note: taken: {"eq":["household.marriage_possible",{"const":true}],"op":"test"}
   (gate) Filing as single or head of household although your spouse died in 2025
       = false
       cite: [i1040gi] p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025; printed date 2026-02-25; 482e9c48)
@@ -179,19 +208,32 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) One entry for this person
       = 1
       cite: [f1040] Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse (2025; created 2025-09-05; 3d31c226)
-  (helper) Were you born before January 2, 1961?
+  (helper) The year you were born
+      = 1980
+      cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; p. 33, Blindness, "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that:", "You can't see better than 20/200 in your better eye with glasses or contact lenses, or", "Your field of vision is 20 degrees or less.", "If your eye condition isn’t likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead." and "You must keep the statement for your records."; p501 p. 23, Not totally blind, "If your vision can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection, or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify." (2025; printed date 2026-02-25; 482e9c48)
+  (helper) The year of birth entered is after the tax year, or more than 125 years before it
       = false
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Born before January 2, 1961
+      = false
+      cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Under age 24 at the end of 2025 (born after January 1, 2002)
+      = false
+      cite: [i8615] p. 1, Certain January 1 birthdays, "Use the following chart to determine whether certain children with January 1 birthdays meet condition 3 under Who Must File" (a child born on "January 1, 2002" is considered to be 24 at the end of 2025: "Don’t use Form 8615 for this child.") (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 902ca736)
   (helper) Were you blind at the end of 2025 (totally blind, or partly blind with a statement certified by your eye doctor)?
       = false
       cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; p. 33, Blindness, "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that:", "You can't see better than 20/200 in your better eye with glasses or contact lenses, or", "Your field of vision is 20 degrees or less.", "If your eye condition isn’t likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead." and "You must keep the statement for your records."; p501 p. 23, Not totally blind, "If your vision can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection, or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify." (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Were you under age 16 at the end of 2025?
+  (helper) Under age 16 at the end of 2025
       = false
       cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
       note: Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
-  (helper) Qualified educator expenses you paid in 2025
+  (helper) Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?
+      = false
+      cite: [i1040gi] p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year' (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Qualified educator expenses paid in 2025 (asked only of an eligible educator; otherwise zero)
       = $0
       cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses, 'For professional development courses you have taken related to the curriculum you teach or to the students you teach', 'equipment (including computer equipment, software, and services)', 'for personal protective equipment, disinfectant, and other supplies used for the prevention of the spread of coronavirus', and 'You must reduce your qualified expenses by the following amounts'; p. 93, 'Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses in health or physical education.' (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.eligible_educator",{"const":false}],"op":"test"}
   (helper) Born before January 2, 1961, and not a person who died in 2025 before reaching 65 (a box checked for age)
       = false
       cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; 482e9c48)
@@ -221,6 +263,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Self-employment and railroad retirement compensation together
       = false
       cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; 05bc2b3e)
+  employers Total w2.one for this person
+      = 0
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $w2@person[taxpayer]:
   (helper) Total W-2 box 1 for this person
       = $0
       cite: [f1040] Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
@@ -255,16 +301,20 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f7206] Form 7206 (2025), line 14 (2025; created 2025-10-02; 822203c9)
       note: confirmed roster $sc@person[taxpayer]:
-  (helper) Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?
+  (helper) Had an IRA of any kind at any time in 2025, or has one now (traditional, Roth, SEP or SIMPLE, inherited, or opened in 2026 for 2025)
       = false
       cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any nondeductible contributions to a traditional" (2025; created 2025-11-04; ba2b2877)
+  (gate) Made traditional IRA contributions for 2025 (asked only of a person with an IRA; otherwise no)
+      = false
+      cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any nondeductible contributions to a traditional" (2025; created 2025-11-04; ba2b2877)
+      note: taken: {"eq":["person.ira_owner",{"const":false}],"op":"test"}
   (helper) Year parameter household.no (false)
       = false
       cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D" (2025; printed date 2025-02-19; bfecbc99)
   (helper) This person's traditional IRA contributions for 2025 (zero if the traditional IRA question was answered No)
       = $0
       cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 11, "Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025" (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["person.sav_trad",{"const":false}],"op":"test"}
+      note: taken: {"eq":["person.sav_trad_if_ira_owner",{"const":false}],"op":"test"}
   (helper) This person made traditional IRA contributions for 2025
       = false
       cite: [i1040gi] p. 95, Line 20, "If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction" (2025; printed date 2026-02-25; 482e9c48)
@@ -281,12 +331,30 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter sales.zero
       = $0
       cite: [f1040s1] Schedule 1 (2025), lines 7, 11, 21 (2025; created 2025-07-25; 8dafec71)
+  (helper) Number of Schedules C on the return
+      = 0
+      cite: [f1040s1] Schedule 1 (2025), line 3, "Business income or (loss). Attach Schedule C" (2025; created 2025-07-25; 8dafec71)
+      note: confirmed roster $person: taxpayer
+  (helper) The return has a Schedule C
+      = false
+      cite: [f1040s1] Schedule 1 (2025), line 3, "Business income or (loss). Attach Schedule C" (2025; created 2025-07-25; 8dafec71)
+  (helper) Year parameter household.no (false)
+      = false
+      cite: [p525] p. 33, Gambling winnings, "If you’re in the trade or business of gambling, use Schedule C (Form 1040)" (2025; 39b0fa5e)
+  (helper) Did you (or, on a joint return, your spouse) receive jury duty pay in 2025?
+      = false
+      cite: [f1040s1] Schedule 1 (2025), line 8h (2025; created 2025-07-25; 8dafec71)
   8h  Jury duty pay
       = $0
       cite: [i1040gi] p. 91, Line 8h, "Enter any jury duty pay and see the instructions for line 24a"; p525 p. 34, Jury duty, "Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h" (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered into on or before December 31, 2018, or must you include or may you deduct a recapture of alimony?
+      note: taken: {"eq":["s1.jury_any",{"const":false}],"op":"test"}
+  (helper) Did you (or, on a joint return, your spouse) pay or receive alimony or separate maintenance in 2023, 2024 or 2025?
       = false
-      cite: [i1040gi] p. 89, Line 2a, "Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018"; p. 95, Line 19a, "You can't take a deduction for alimony payments you made to or for your spouse if you entered into your divorce or separation agreement after December 31, 2018"; p504 p. 16, Certain Rules for Instruments Executed or Modified After 2018, "if the modification expressly states that the alimony isn’t deductible to the payer or includible in the income of the recipient", and Example 2, "the modification expressly provided that the post-2018 alimony rules apply" and "The alimony payments made in January 2025 through May 2025 are includible in the recipient’s income and deductible from the payer’s income." (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 89, Line 2a; p. 95, Line 19a (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Alimony under an agreement of 2018 or earlier, or a recapture of alimony, asked only when alimony was paid or received since the start of 2023 (false otherwise)
+      = false
+      cite: [i1040gi] p. 89, Line 2a; p. 95, Line 19a (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1.alimony_any",{"const":false}],"op":"test"}
   11  Educator expenses
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 11; i1040gi p. 93, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; created 2025-07-25; 8dafec71)
@@ -314,7 +382,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   19a Alimony paid
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 19a; i1040gi p. 95, Line 19a (2025; created 2025-07-25; 8dafec71)
-      note: taken: {"eq":["s1.alimony",{"const":false}],"op":"test"}; Interpretation amb.2025.alimony_screen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or paid after a change after 2018 that expressly applies the post-2018 rules (one that states that those rules apply, or that alimony isn't deductible by the payer or isn't included in the recipient's income), are not asked, as the questions say, and are neither income nor deductible). The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2). The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment partly child support needs the Pub. 504 allocation rules. (p504, p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 16, Recapture of Alimony; p. 13, Underpayment)
+      note: taken: {"eq":["s1.alimony_if_any",{"const":false}],"op":"test"}; Interpretation amb.2025.alimony_screen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or paid after a change after 2018 that expressly applies the post-2018 rules (one that states that those rules apply, or that alimony isn't deductible by the payer or isn't included in the recipient's income), are not asked, as the questions say, and are neither income nor deductible). The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2). The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment partly child support needs the Pub. 504 allocation rules. (p504, p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 16, Recapture of Alimony; p. 13, Underpayment)
   20  IRA deduction
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 20; i1040gi p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20" (2025; created 2025-07-25; 8dafec71)
@@ -342,11 +410,16 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 26 (lines 12, 14 and 23 are outside this tool and refused at Form 1040 line 10 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
 
-== Schedule A — supported itemized deductions and standard comparison ==
-  (helper) Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
+== Schedule 3 — selected lines ==
+  (helper) Have you (or, on a joint return, your spouse) ever paid income tax to a foreign country or a U.S. territory, had income from sources in a U.S. territory, or owned 10% or more of a foreign corporation?
       = false
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:
+      cite: [i1040gi] p. 115, Line 1, "If you paid income tax to a foreign country or U.S. territory, you may be able to take this credit"; p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"; p. 117, Line 13d, "If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d" (2025; printed date 2026-02-25; 482e9c48)
+
+== Schedule A — supported itemized deductions and standard comparison ==
+  (helper) A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt or use limits; the sales-tax election; a foreign tax deduction; or a deduction from the Schedule A line 16 list other than gambling losses
+      = false
+      cite: [i1040sca] p. 8, Limits on home mortgage interest, "Your deduction for home mortgage interest is subject to a number of limits"; p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 3, Line 5a, "You can elect to deduct state and local general sales taxes instead of state and local income taxes"; p. 7, Other Taxes, "Include on this line income taxes you paid to a foreign country"; pp. 11–12, Other Itemized Deductions, "Only the expenses listed next can be deducted on line 16" (2025; printed date 2025-12-08; b0999b12)
+  (helper) Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:
 
       - money given to a charity by cash, check, card or payroll deduction, including money put into a donor-advised fund
       - a payment to a charity that got you something back (such as a fundraising dinner, an auction item or a membership), or that earned you a state or local tax credit
@@ -354,7 +427,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       - out-of-pocket costs of volunteer work for a charity, such as mileage, parking, supplies or uniforms, or unreimbursed costs of hosting a student or a foster child placed by a charitable organization
       - a charitable contribution shown on a Schedule K-1 from a partnership, S corporation, estate or trust
       - expenses you paid as a whaling captain for Native Alaskan subsistence bowhead whale hunting
-      - a contribution from an earlier year (in most cases one of the five years before 2025) that was more than you could deduct that year, by either of you, on a joint or separate return; if you itemized in any of those years, check that return and any carryover worksheet or statement kept with it
 
       A charity here is any organization that is religious, charitable, educational, scientific or literary in purpose (such as a church, a school, a nonprofit hospital, a veterans' group or a fraternal order's charitable work), one that works to prevent cruelty to children or animals, or a federal, state, local or Indian tribal government receiving a gift for public purposes; nonprofit cemetery companies and other qualified organizations count too.
       = false
@@ -362,7 +434,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter sa.no (no)
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Charitable deductions are reduced by income limits or carried over from a prior year (no when you and your spouse gave nothing to charity and have no carryover)
+  (helper) Charitable deductions are reduced by income limits or carried over from a prior year (no when you and your spouse gave nothing to charity in 2025)
       = false
       cite: [i1040sca] p. 10, Limit on the amount you can deduct, "See Pub. 526 to figure the amount of your deduction if any of the following applies"; p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; b0999b12)
       note: taken: {"eq":["sa.gifts",{"const":false}],"op":"test"}
@@ -382,9 +454,77 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Form 1040 line 11b adjusted gross income
       = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  1   Unreimbursed eligible medical and dental expenses
+  (helper) In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your income?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) In 2025, did you (or, on a joint return, your spouse) pay for health insurance with money that had already been taxed, such as Medicare premiums, a Marketplace plan, COBRA or long-term care insurance, rather than through a deduction from pay at a job?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (gate) Paid for health insurance with money already taxed (asked only when medical and dental costs were not said to be more than 7.5% of income)
+      = false
+      cite: [i1040sca] p. 1, Medical and Dental Expenses, "Insurance premiums for medical and dental care", "You can't include insurance premiums paid by making a pretax reduction to your employee compensation" (2025; printed date 2025-12-08; b0999b12)
+      note: taken: {"eq":["sa.medical_any",{"const":false}],"op":"test"}
+  (helper) Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)
+      = false
+      cite: [i1040sca] p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income", "You can't include insurance premiums paid by making a pretax reduction to your employee compensation" (2025; printed date 2025-12-08; b0999b12)
+  1   Medical and dental expenses (zero when your costs were not more than 7.5% of income and you paid for no health insurance with money already taxed)
       = $0
       cite: [i1040sca] p. 1, Medical and Dental Expenses, "If you received a distribution from a health savings account or a medical savings account in 2025, see Pub. 969 to figure your deduction", "Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return", "You can't include insurance premiums paid by making a pretax reduction to your employee compensation", "If you are a retired public safety officer, you can't include any premiums you paid to the extent they were paid for with a tax-free distribution from your retirement plan", "If you paid someone to do both nursing and housework, you can deduct only the cost of the nursing help", "Hospital care (including meals and lodging), clinic costs, and lab fees", "Lodging expenses (but not meals) while away from home to receive medical care"; p. 2, "Don't deduct more than $50 a night for each person who meets the requirements in Pub. 502 under Lodging", "Limit on long-term care premiums you can include. The amount you can include for qualified long-term care insurance contracts (as defined in Pub. 502) depends on the age at the end of 2025 of the person for whom the premiums were paid", Line 1 Medical and Dental Expenses, "Enter the total of your medical and dental expenses after you reduce these expenses by any payments received from insurance or other sources", "If advance payments of the premium tax credit were made or you think you may be eligible to claim a premium tax credit, fill out Form 8962 before filling out Schedule A, line 1", "self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the amount on line 17", "You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them", "Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents", "Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return", "You can't deduct any premiums attributable to this individual unless this individual is a person described under Whose medical and dental expenses can you include, earlier", "However, if you had family coverage when you added this individual to your policy and your premiums didn't increase, you can enter on line 1 the full amount of your medical and dental insurance premiums", "If you received a reimbursement in 2025 for prior year medical or dental expenses, don't reduce your 2025 expenses by this amount", "don’t include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2", "Also, don't include any other medical and dental expenses paid by the plan unless the amount paid is included in box 1 of your Form(s) W-2"; p502 p. 12, Premium Tax Credit, "You can’t include in medical expenses the amount of health insurance premiums paid by or through the premium tax credit", "You also can’t include in medical expenses any amount of advance payments of the premium tax credit made that you did not have to pay back", "However, any amount of advance payments of the premium tax credit that you did have to pay back can be included in medical expenses", "You are treated as paying $5,100 ($8,700 less the allowed premium tax credit of $3,600)"; i8962 p. 2, "You cannot deduct the portion of your health insurance premium on your tax return that is paid for by the PTC or APTC (after you determine how much of any excess APTC you must repay)"; p969 p. 9, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your HSA"; p969 p. 13, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your Archer MSA" (2025; printed date 2025-12-08; b0999b12)
+      note: taken: {"eq":["sa.medical_asked",{"const":false}],"op":"test"}
+  (helper) At any time in 2025, did you (or, on a joint return, your spouse) own a home or other real estate?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) In 2025, did you (or, on a joint return, your spouse) pay interest on a loan secured by a boat, a camper or a mobile home that has sleeping, cooking and toilet facilities, or on a mortgage on a home that is in another person's name?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (gate) Paid interest on a loan secured by a boat, camper or mobile home, or on a mortgage on a home in the name of another person (asked only when you owned no home or other real estate)
+      = false
+      cite: [i1040sca] p. 8, Line 8, "A home can be a house, condominium, cooperative, mobile home, boat, or similar property", "It must provide basic living accommodations including sleeping space, toilet, and cooking facilities" (2025; printed date 2025-12-08; b0999b12)
+      note: taken: {"eq":["sa.home_owner",{"const":false}],"op":"test"}
+  (helper) You owned a home or other real estate, or paid interest on a loan secured by a home
+      = false
+      cite: [i1040sca] p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own"; p. 8, Line 8, "A home mortgage is any loan that is secured by your main home or second home" (2025; printed date 2025-12-08; b0999b12)
+  8a  Home mortgage interest and points reported to you on Form 1098 (zero when you owned no home or other real estate and paid no interest on a mortgage secured by a home)
+      = $0
+      cite: [i1040sca] p. 8, Line 8a, "Enter on line 8a mortgage interest and points reported to you on Form 1098 unless one or more of the limits on home mortgage interest apply to you" (2025; printed date 2025-12-08; b0999b12)
+      note: taken: {"eq":["sa.home_asked",{"const":false}],"op":"test"}
+  (helper) Home mortgage interest is entered on line 8a
+      = false
+      cite: [i1040sca] p. 8, Line 8a, "Enter on line 8a mortgage interest and points reported to you on Form 1098" (2025; printed date 2025-12-08; b0999b12)
+  (gate) Asked only where it can apply (sa.mortgage_unreported)
+      = false
+      cite: [i1040sca] p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 9, Line 8c, "Points Not Reported on Form 1098" (2025; printed date 2025-12-08; b0999b12)
+      note: taken: {"eq":["sa.home_asked",{"const":false}],"op":"test"}
+  (gate) Asked only where it can apply (sa.mortgage_over_limit)
+      = false
+      cite: [i1040sca] p. 8, Limits on home mortgage interest, "you can only deduct home mortgage interest on up to $1,000,000", "deduct home mortgage interest on up to $750,000", "If the total amount of all mortgages is more than the fair market value of the home" (2025; printed date 2025-12-08; b0999b12)
+      note: taken: {"eq":["sa.has_mortgage_interest",{"const":false}],"op":"test"}
+  (gate) Asked only where it can apply (sa.mortgage_other_use)
+      = false
+      cite: [i1040sca] p. 8, Line 8, "Interest paid on home mortgage proceeds used for other purposes isn’t deductible on lines 8a or 8b" (2025; printed date 2025-12-08; b0999b12)
+      note: taken: {"eq":["sa.has_mortgage_interest",{"const":false}],"op":"test"}
+  (helper) Do you elect to deduct state and local general sales taxes instead of state and local income taxes?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (gate) Asked only where it can apply (sa.foreign_tax_deduct)
+      = false
+      cite: [i1040sca] p. 7, Line 6, "Include on this line income taxes you paid to a foreign country", "You may want to take a credit for the foreign tax instead" (2025; printed date 2025-12-08; b0999b12)
+      note: taken: {"eq":["ftc.has_tax",{"const":false}],"op":"test"}
+  (helper) Do you (or, on a joint return, your spouse) have a deduction for federal estate tax on income in respect of a decedent?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Do you (or, on a joint return, your spouse) have a deduction for amortizable bond premium (for example, a bond premium carryforward, or premium on bonds acquired before October 23, 1986)?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Do you (or, on a joint return, your spouse) have an ordinary loss attributable to a contingent payment debt instrument or an inflation-indexed debt instrument (for example, a Treasury Inflation-Protected Security)?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Is there an unrecovered investment in a pension to deduct (the after-tax contributions of a person who died before recovering them)?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Do you (or, on a joint return, your spouse) have impairment-related work expenses of a disabled person?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   (helper) Year parameter sales.zero
       = $0
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -401,7 +541,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040sa] p. 1, Medical and Dental Expenses, line 3, "Multiply line 2 by 7.5% (0.075)" (2025; created 2025-11-20; c14acf34)
       note: Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
-  4   Subtract sa.line3 from sa.line1; if zero or less, enter zero
+  4   Subtract sa.line3 from sa.line1_if_medical; if zero or less, enter zero
       = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
       cite: [f1040sa] p. 1, Medical and Dental Expenses, line 4, "Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-" (2025; created 2025-11-20; c14acf34)
   (helper) Married filing separately
@@ -488,17 +628,31 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
 
 == Schedule B — supported interest and ordinary dividends ==
-  (gate) At any time in 2025, did you (or, on a joint return, your spouse) have a foreign account, any other foreign financial asset, a connection to a foreign trust, or a role in a foreign corporation? Count an account or asset you had for only part of the year, including one closed, emptied or sold during 2025, and count it whatever its value. Count what you hold directly or indirectly: through an agent or nominee, a single-member LLC or other disregarded entity, a trust you are treated as owning (such as a revocable living trust), or a corporation, partnership or other entity in which you own more than 50% of the value, the voting power, the profits or the capital, directly or through other companies, partnerships or trusts. Answer Yes if any of these applies to you (or, on a joint return, your spouse):
-
-      - a financial interest in, or signature authority over, an account located outside the United States: a bank, savings, checking, deposit, brokerage, securities, mutual fund, pension or retirement, or commodity futures or options account, or an insurance or annuity policy with a cash value (an account at a branch of a US bank located abroad counts, and so does a cash-value policy issued by an insurer organized outside the United States, even if you bought it or pay for it from the United States)
-      - signature authority means you could direct the institution to move the account's assets, alone or together with someone else, even with no money of your own in it, such as an account of your employer, a relative, a business or an organization
-      - a financial interest also includes an account of a trust in which you have more than a 50% present beneficial interest
-      - an account with a financial institution organized in a US territory (such as Puerto Rico or Guam), or any other account or balance with a business outside the United States that holds money or assets for customers, such as an online payment, mobile-money, cryptocurrency exchange, online betting or gaming, precious-metals custody, or prepaid or stored-value account
-      - held outside an account at a US financial institution, counting a company, partnership or other entity organized in Puerto Rico, Guam or another US territory as foreign: stock, bonds or other securities issued by a non-US company or person; an interest in a foreign partnership, company, estate or other entity; a foreign pension or deferred compensation plan; a swap, option or other contract with a foreign counterparty; a loan you made to, or other debt owed to you by, someone who is not a US citizen or resident, or a foreign company or government, even if they live or operate in the United States (including a personal loan to a relative or friend abroad); or being an heir or beneficiary of an estate probated or administered outside the United States, or of someone who lived or died outside the United States, even if nothing has been paid to you yet
-      - any of the above held by a child whose interest and dividends you report on your return (Form 8814)
-      - a distribution from a foreign trust, including money or property that reached you through another person or company (a loan of cash or marketable securities counts, and so does free or below-market use of a home, car or other property the trust owns); being the grantor of, or a transferor to, a foreign trust that existed at any time during 2025, even one created or funded in an earlier year (a transferor is anyone who gave, sold, lent or otherwise transferred money or property to the trust, directly or through another person, in 2025 or any earlier year); or being a beneficiary of a foreign trust
-      - a foreign foundation (such as a Stiftung or Anstalt), a waqf or another arrangement that holds property for beneficiaries counts as a trust; a trust counts as foreign if a court outside the 50 states and the District of Columbia (including one in Puerto Rico, Guam or another US territory) supervises it, or if any trustee or anyone who controls a substantial trust decision is not a US citizen or resident (such as a relative abroad), even if the trust was set up under US law or has a US address; if you are not sure whether an arrangement is a trust or whether a trust is foreign, answer Yes
-      - being an officer, director, managing director or manager of a foreign corporation or other company, whatever it is called (such as a Ltd, plc, GmbH, AG, SA, SARL or BV), that is organized outside the 50 states and the District of Columbia, including in Puerto Rico, Guam or another US territory (such as an employer's subsidiary there); or owning 10% or more of the total value, or of the combined voting power, of a foreign corporation's stock, counting shares owned by your spouse, children, grandchildren or parents and by partnerships, corporations, trusts or estates you have an interest in, and shares any of you could acquire through options or warrants
+  (helper) Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, or other special treatment
+      = false
+      cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
+  (gate) At any time in 2025, did you (or, on a joint return, your spouse) have an account in another country (a bank, investment, pension, payment or crypto account), or the power to sign for one?
+      = false
+      cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans (2025; created 2025-04-23; dd1ec371)
+  (gate) At any time in 2025, did you (or, on a joint return, your spouse) own anything else of value outside the United States, or were you owed money by someone abroad?
+      = false
+      cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans (2025; created 2025-04-23; dd1ec371)
+  (gate) Do you (or, on a joint return, your spouse) have anything to do with a trust or family foundation that is outside the United States or has a trustee abroad, as the person who set it up, gave to it, or may receive from it?
+      = false
+      cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans (2025; created 2025-04-23; dd1ec371)
+  (gate) In 2025, were you (or, on a joint return, your spouse) a director, officer or manager of a company set up outside the United States, or an owner, alone or with your family, of 10% or more of one?
+      = false
+      cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans (2025; created 2025-04-23; dd1ec371)
+  (gate) At any time in 2025, did you (or, on a joint return, your spouse) have an account, an investment, a company or a trust in Puerto Rico, Guam or another U.S. territory?
+      = false
+      cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans (2025; created 2025-04-23; dd1ec371)
+  (gate) A foreign account, another foreign financial asset, a connection to a foreign trust or a role in a foreign corporation, or any of these in a U.S. territory, at any time in 2025
+      = false
+      cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans (2025; created 2025-04-23; dd1ec371)
+  (gate) A connection to a foreign trust, or an account, investment, company or trust in a U.S. territory
+      = false
+      cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans (2025; created 2025-04-23; dd1ec371)
+  (gate) A role in or 10% of a foreign company, or an account, investment, company or trust in a U.S. territory
       = false
       cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans (2025; created 2025-04-23; dd1ec371)
   (helper) No foreign account, asset, trust or corporation question without a foreign connection
@@ -534,10 +688,21 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i1040sb] p. 2, Line 5, "Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements" (TY2025; printed April 23, 2025; b92f31ec)
       note: taken: {"eq":["div.any",{"const":false}],"op":"test"}
-  (helper) Schedule B special treatment, when taxable interest, ordinary dividends or capital gain distributions are above zero; false otherwise
+  (helper) Interest or ordinary dividends received as a nominee, when taxable interest, ordinary dividends or capital gain distributions are above zero; false otherwise
       = false
       cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
       note: taken: {"eq":["sb.has_income",{"const":false}],"op":"test"}
+  (helper) Bonds or notes owned directly, savings bonds cashed, or interest on a loan or a sale, when taxable interest, ordinary dividends or capital gain distributions are above zero; false otherwise
+      = false
+      cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
+      note: taken: {"eq":["sb.has_income",{"const":false}],"op":"test"}
+  (helper) Special treatment of bond or loan interest, when bonds or notes were owned directly, savings bonds cashed, or interest received on a loan or a sale; false otherwise
+      = false
+      cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
+      note: taken: {"eq":["sb.bonds_any_if_income",{"const":false}],"op":"test"}
+  (helper) Schedule B special treatment, when taxable interest, ordinary dividends or capital gain distributions are above zero; false otherwise
+      = false
+      cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
   (helper) FinCEN Form 114 (FBAR) required, when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise
       = false
       cite: [i1040sb] p. 3, Line 7a—Question 2, "See FinCEN Form 114 and its instructions at FINCEN.gov to determine whether you must file the form"; fincen114 p. 4, Who Must File an FBAR, "A United States person that has a financial interest in or signature authority over foreign financial accounts must file an FBAR if the aggregate value of the foreign financial accounts exceeds $10,000 at any time during the calendar year" (TY2025; printed April 23, 2025; b92f31ec)
@@ -549,81 +714,180 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Schedule B line 8 (a foreign trust distribution, or the grantor of or a transferor to a foreign trust), when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise
       = false
       cite: [i1040sb] p. 3, Line 8, "If you received a distribution from a foreign trust, you must provide additional information", "If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520" (TY2025; printed April 23, 2025; b92f31ec)
-      note: taken: {"eq":["sb.foreign_any",{"const":false}],"op":"test"}
+      note: taken: {"eq":["sb.foreign_trust_any",{"const":false}],"op":"test"}
   (helper) Form 5471 officer, director or 10% shareholder of a foreign corporation, when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise
       = false
       cite: [i1040sb] p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation" (TY2025; printed April 23, 2025; b92f31ec)
-      note: taken: {"eq":["sb.foreign_any",{"const":false}],"op":"test"}
+      note: taken: {"eq":["sb.foreign_company_any",{"const":false}],"op":"test"}
 
 == Proof-of-concept scope screening ==
-  (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately, including any of the following?
-
-      Income:
-      - statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner
-      - church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)
-      - a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund, for example:
-        - a refund of general sales tax, real estate tax or personal property tax
-        - a refund of mortgage interest in box 4 of Form 1098
-        - a reimbursement of medical expenses
-        - a payment on a bad debt you deducted
-      - sales of business property (Form 4797)
-      - a net operating loss deduction
-      - rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)
-      - rental of personal property
-      - farm income (Schedule F)
-      - an exclusion of Medicaid waiver payments (Schedule 1 line 8s)
-
-      Adjustments:
-      - other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan)
-      - an adjustment on Schedule 1 line 12, 14 or 23
-
-      The ones this tool asks about separately:
-      - business income or loss from Schedule C
-      - a taxable state or local income tax refund
-      - alimony under an agreement made before 2019
-      - unemployment compensation
-      - the line 8 items asked one by one
-      - educator expenses
-      - the HSA deduction
-      - the deductible part of self-employment tax
-      - self-employed SEP and SIMPLE contributions
-      - the self-employed health insurance deduction
-      - the penalty on early withdrawal of savings
-      - the IRA deduction
-      - student loan interest
-      - jury duty pay you gave your employer
-
-      Schedule 1-A deductions are asked separately.
+  (helper) Year parameter household.no (false)
       = false
-      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 43, Clergy, "The following instructions apply to ministers, members of religious orders who have not taken a vow of poverty, and Christian Science practitioners."; i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes." (2025; created 2025-09-05; 3d31c226)
-  (helper) Any additional Form 1040 line 16 tax or filing, including any of the following?
-
-      A child's unearned income:
-      - filing Form 8814 (even with no tax)
-      - Form 8615, required if all of these apply:
-        - you had more than $2,700 of unearned income
-        - you are required to file
-        - you do not file jointly
-        - you have a parent who was alive at the end of 2025
-        - you were under 18 at the end of 2025, or 18 with earned income of not more than half your support, or a full-time student 19 to 23 with earned income of not more than half your support
-
-      Foreign corporations:
-      - a section 962 election
-      - Form 8621
-      - stock you own, directly or indirectly, in a controlled foreign corporation (CFC) or a passive foreign investment company (PFIC), even with nothing to include in income for 2025 (its distributions, dispositions and related adjustments can make the modified AGI of Form 8960 line 13 differ from AGI)
-
-      Other:
-      - Form 4972
-      - a Form 8978 amount
-      - recapture of an education credit
-      - income averaging of farming or fishing income on Schedule J (if you choose it)
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (helper) Number of Forms W-2 on the return
+      = 0
+      cite: [i1040gi] p. 23, Line 1a, "Enter the total amount from Form(s) W-2, box 1" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (helper) The return has a Form W-2
       = false
-      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 36, "You must file Form 8615 if you meet all of the following conditions." and "If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J."; i8960 p. 22, Line 13—Modified Adjusted Gross Income (MAGI), "If you exclude amounts under section 911 or own certain CFCs or PFICs, your MAGI is your AGI as modified by certain rules described in Regulations section 1.1411-10(e)(1).", "Increase AGI by the amount of any distributions described in section 959(d) or 1293(c) included in your NII as a dividend." and "Increase AGI by the amount of any excess distributions derived from a PFIC that are dividends included in MAGI but not included in gross income for regular income tax purposes." (2025; created 2025-09-05; 3d31c226)
+      cite: [i1040gi] p. 23, Line 1a, "Enter the total amount from Form(s) W-2, box 1" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (gate) The answer to scope.reservist_expenses, asked only when the question scope.armed_forces is answered Yes (false otherwise)
+      = false
+      cite: [i1040gi] p. 93, Line 12, "Certain business expenses of National Guard and reserve members who traveled more than 100 miles from home" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.armed_forces",{"const":false}],"op":"test"}
+  (gate) The answer to scope.military_move, asked only when the question scope.armed_forces is answered Yes (false otherwise)
+      = false
+      cite: [i1040gi] p. 93, Line 14, "You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.armed_forces",{"const":false}],"op":"test"}
+  (helper) Your entry, if you were under 24 at the end of 2025 (from your year of birth)
+      = 0
+      cite: [i8615] p. 1, Certain January 1 birthdays, "Use the following chart to determine whether certain children with January 1 birthdays meet condition 3 under Who Must File" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 902ca736)
+      note: confirmed roster $person: taxpayer
+  (helper) You were under 24 at the end of 2025
+      = false
+      cite: [i8615] p. 1, Who Must File, "under age 24 at the end of 2025" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 902ca736)
+  (gate) The answer to scope.under24, asked only when the return is not a joint return (false otherwise)
+      = false
+      cite: [i8615] p. 1, Who Must File, "The child doesn’t file a joint return for 2025" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 902ca736)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  (gate) The answer to scope.unearned_2700, asked only when the question scope.under24 is answered Yes (false otherwise)
+      = false
+      cite: [i8615] p. 1, Who Must File, "The child had more than $2,700 of unearned income" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 902ca736)
+      note: taken: {"eq":["scope.under24_if_not_joint",{"const":false}],"op":"test"}
+  (gate) The answer to scope.f8615, asked only when the question scope.unearned_2700 is answered Yes (false otherwise)
+      = false
+      cite: [i8615] p. 1, Who Must File, "Form 8615 must be filed for any child who meets all of the following conditions" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 902ca736)
+      note: taken: {"eq":["scope.unearned_2700_if_under24",{"const":false}],"op":"test"}
+  (helper) Are you (or, on a joint return, your spouse) reporting a child's 2025 interest or dividends on your own return instead of filing a return for the child?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (helper) In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (helper) In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust? A paper called Schedule K-1 reports it.
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (helper) In 2025, did you (or, on a joint return, your spouse) have income or a loss from farming?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (helper) In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (gate) The answer to scope.clergy, asked only when the question scope.religious_work is answered Yes (false otherwise)
+      = false
+      cite: [i1040gi] i1040sse p. 1, Ministers, Members of Religious Orders, and Christian Science Practitioners, "you must pay SE tax on salaries and other income for services you performed as a minister, member of a religious order who hasn’t taken a vow of poverty, or Christian Science practitioner" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.religious_work",{"const":false}],"op":"test"}
+  (gate) The answer to scope.church_exempt_wages, asked only when the question scope.religious_work is answered Yes (false otherwise)
+      = false
+      cite: [i1040gi] i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.religious_work",{"const":false}],"op":"test"}
+  (gate) The answer to scope.w2_marks, asked only when a Form W-2 is listed (false otherwise)
+      = false
+      cite: [i1040gi] p. 25, Were You a Statutory Employee?, "Statutory employees report the amount shown in box 1 of Form W-2 on a Schedule C"; p. 100, Line 24f, "Enter contributions to section 501(c)(18)" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.has_w2",{"const":false}],"op":"test"}
+  (gate) The answer to scope.artist_official, asked only when a Form W-2 is listed (false otherwise)
+      = false
+      cite: [i1040gi] p. 93, Line 12, "Performing-arts-related expenses as a qualified performing artist", "Business expenses of fee-basis state or local government officials" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.has_w2",{"const":false}],"op":"test"}
+  (gate) The answer to scope.performer_expenses, asked only when the question scope.artist_official is answered Yes (false otherwise)
+      = false
+      cite: [i1040gi] p. 93, Line 12, "Performing-arts-related expenses as a qualified performing artist", "Business expenses of fee-basis state or local government officials"; p. 93, Line 12, "For more details, see Form 2106" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.artist_official_if_w2",{"const":false}],"op":"test"}
+  (helper) In 2025, were you (or, on a joint return, your spouse) paid back an amount whose deduction or credit on an earlier year's return lowered your tax, other than a state or local income tax refund?
+      = false
+      cite: [p525] p. 24, Recoveries, "A recovery is a return of an amount you deducted or took a credit for in an earlier year" (2025; 39b0fa5e)
+  (helper) In 2025, did you (or, on a joint return, your spouse) put money into, or take money out of, an Archer MSA or a Medicare Advantage MSA (older kinds of medical savings account, not a health savings account)?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (helper) In 2025, was tuition or a fee refunded, or tax-free aid given, to a student for a year for which you (or, on a joint return, your spouse) had already claimed an education credit?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (gate) The answer to scope.se_plan_other, asked only when a business (Schedule C) is listed (false otherwise)
+      = false
+      cite: [i1040gi] p. 93, Line 16, "Self-Employed SEP, SIMPLE, and Qualified Plans", "If you were self-employed or a partner, you may be able to take this" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1.has_sc",{"const":false}],"op":"test"}
+  (gate) The answer to scope.income_averaging, asked only when a business (Schedule C) is listed (false otherwise)
+      = false
+      cite: [i1040gi] p. 36, Schedule J, "If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J"; i1040sj p. 1, "all or part of your 2025 taxable income from your trade or business of farming or fishing" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1.has_sc",{"const":false}],"op":"test"}
+  (helper) In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (gate) The answer to scope.pfic, asked only when the question scope.foreign_shares is answered Yes (false otherwise)
+      = false
+      cite: [i1040gi] p. 34, Line 16, "Any tax from Form 8621, line 16e, relating to a section 1291 fund"; p. 114, Line 17p, "Enter any interest amount from Form 8621, line 16f" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.foreign_shares",{"const":false}],"op":"test"}
+  (gate) The answer to scope.cfc, asked only when the question scope.foreign_shares is answered Yes (false otherwise)
+      = false
+      cite: [i1040gi] p. 91, Line 8n, "Section 951 generally requires that a U.S. shareholder of a controlled foreign corporation include in income its pro rata share"; p. 91, Line 8o, "Section 951A generally requires that a U.S. shareholder of a controlled foreign corporation include in income its global intangible low-taxed income" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.foreign_shares",{"const":false}],"op":"test"}
+  (helper) Do you (or, on a joint return, your spouse) own or lease timber land on which you paid to plant or replant trees, in 2025 or in the seven years before?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (helper) In 2025, did you (or, on a joint return, your spouse) pay a lawyer or court costs to win a claim of unlawful discrimination or a whistleblower award?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (helper) In any year before 2025, did you (or, on a joint return, your spouse) own a business, a farm, a rental property, or a share of a partnership or an S corporation?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (helper) Are you (or, on a joint return, your spouse) carrying a loss from an earlier year into 2025 as a 'net operating loss' deduction?
+      = false
+      cite: [i1040gi] p. 91, Line 8a, "Enter any deduction for an NOL from an earlier year" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) The answer to scope.f8978, asked only when the question scope.business_before is answered Yes (false otherwise)
+      = false
+      cite: [i1040gi] p. 34, Line 16, "Tax from Form 8978, line 14 (relating to partner’s audit liability under section 6226)" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.business_before",{"const":false}],"op":"test"}
+  (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool computes (true when any of the Schedule 1 screening questions is answered Yes)
+      = false
+      cite: [i1040gi] p. 93, Line 12, "Certain business expenses of National Guard and reserve members who traveled more than 100 miles from home"; p. 93, Line 12, "Performing-arts-related expenses as a qualified performing artist", "Business expenses of fee-basis state or local government officials"; p. 93, Line 14, "You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station"; p. 93, Line 16, "Self-Employed SEP, SIMPLE, and Qualified Plans", "If you were self-employed or a partner, you may be able to take this"; p. 91, Line 8a, "Enter any deduction for an NOL from an earlier year"; i1040se p. 1, General Instructions, "Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties, partnerships, S corporations, estates, trusts, and residual interests in REMICs"; i1040sf p. 2, General Instructions, "Use Schedule F (Form 1040) to report farm income and expenses"; i1040sse p. 1, Ministers, Members of Religious Orders, and Christian Science Practitioners, "you must pay SE tax on salaries and other income for services you performed as a minister, member of a religious order who hasn’t taken a vow of poverty, or Christian Science practitioner"; i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes"; p. 25, Were You a Statutory Employee?, "Statutory employees report the amount shown in box 1 of Form W-2 on a Schedule C"; p. 100, Line 24f, "Enter contributions to section 501(c)(18)"; p. 92, Line 8z, "Reimbursements or other amounts received for items deducted in an earlier year"; p. 99, Line 23, "Archer MSA Deduction"; p. 99, Lines 24a Through 24z, "Enter reforestation amortization and expenses"; p. 100, Line 24h, "Enter attorney fees and court costs for actions involving certain unlawful" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) An additional Form 1040 line 16 tax or filing outside this tool (true when any of the line 16 screening questions is answered Yes)
+      = false
+      cite: [i1040gi] p. 36, Form 8615, "You must file Form 8615 if you meet all of the following conditions"; p. 34, Line 16, "Tax from Form(s) 8814 (relating to the election to report child’s interest or dividends)", "Recapture of an education credit", "Tax with respect to a section 962 election (election made by a domestic shareholder of a controlled foreign corporation to be taxed at corporate rates)"; p. 34, Line 16, "Any tax from Form 8621, line 16e, relating to a section 1291 fund"; p. 114, Line 17p, "Enter any interest amount from Form 8621, line 16f"; p. 34, Line 16, "Tax from Form 8978, line 14 (relating to partner’s audit liability under section 6226)"; p. 36, Schedule J, "If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J" (2025; printed date 2026-02-25; 482e9c48)
 
 == Schedule D — securities sales and supplied distribution subtotals ==
-  (helper) Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
+  (helper) Year parameter household.no (false)
       = false
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (gate) In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale.
+      = false
+      cite: [i1040sd] p. 1, Other Forms You May Have To File; p. 1, "To report a gain from Form 2439 or 6252 or Part I of Form 4797" and "To report a gain or loss from Form 4684, 6781, or 8824" (2025; printed date 2025-12-11; 650643a6)
+  (gate) Whether property sold or traded was business, rental or mineral property (Form 4797), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)
+      = false
+      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 4797 to report the following." and "Real property used in your trade or business" (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["sd.sold_other",{"const":false}],"op":"test"}
+  (gate) Whether a sale is reported on the installment method (Form 6252), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)
+      = false
+      cite: [i1040sd] p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method. Also, use Form 6252 to report any payment received in 2025 from a sale made in an earlier year that you reported on the installment method." and "To elect out of the installment method, report the full amount of the gain on Form 8949" (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["sd.sold_other",{"const":false}],"op":"test"}
+  (gate) Whether there was a like-kind exchange (Form 8824), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)
+      = false
+      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 8824 to report like-kind exchanges." (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["sd.sold_other",{"const":false}],"op":"test"}
+  (gate) In 2025, did you (or, on a joint return, your spouse) trade futures, foreign currency contracts or options on a stock index (section 1256 contracts, shown in boxes 8 to 11 of a Form 1099-B), or hold offsetting positions taxed as a straddle?
+      = false
+      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 6781 to report gains and losses from section 1256 contracts and straddles."; f1099b p. 7, "Box 8. Shows the profit or (loss) realized on regulated futures, foreign currency, or Section 1256 option contracts closed during 2025." (2025; printed date 2025-12-11; 650643a6)
+  (gate) In 2025, was your (or, on a joint return, your spouse's) business or investment property taken by a government, or sold under threat of that (a condemnation)?
+      = false
+      cite: [i1040sd] p. 1, Other Forms You May Have To File, "The involuntary conversion (other than from casualty or theft) of property used in a trade or business and capital assets held more than 1 year for business or profit." (2025; printed date 2025-12-11; 650643a6)
+  (gate) In 2025, did you (or, on a joint return, your spouse) lose money on stock that a small company issued to you, a loss you claim as an ordinary loss and not a capital loss (section 1244 or section 1242 stock)?
+      = false
+      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Ordinary loss on the sale, exchange, or worthlessness of small business investment company (section 1242) stock." and "Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock." (2025; printed date 2025-12-11; 650643a6)
+  (gate) Do you (or, on a joint return, your spouse) trade securities or commodities as a business, under a mark-to-market election made in an earlier year?
+      = false
+      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election." (2025; printed date 2025-12-11; 650643a6)
+  (gate) Whether a fund or REIT sent a Form 2439 (undistributed long-term capital gains), asked only when you or your spouse received dividends or other distributions (false otherwise)
+      = false
+      cite: [i1040sd] p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439." (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["div.any",{"const":false}],"op":"test"}
+  (gate) In 2025, was your (or, on a joint return, your spouse's) property damaged, destroyed or stolen, leaving a loss that insurance did not cover or an insurance payment above what the property cost?
+      = false
+      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 4684 to report involuntary conversions of property due to casualty or theft." (2025; printed date 2025-12-11; 650643a6)
+  (helper) Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
+      = false
+      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 4797 to report the following.", "The involuntary conversion (other than from casualty or theft) of property used in a trade or business", "Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.", "Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.", "Use Form 4684 to report involuntary conversions of property due to casualty or theft.", "Use Form 6781 to report gains and losses from section 1256 contracts and straddles.", "Use Form 8824 to report like-kind exchanges."; p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method"; p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439." (2025; printed date 2025-12-11; 650643a6)
   (helper) Count screened transactions
       = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
       cite: [f1040sd] p. 1, Capital Gains and Losses, "Use Form 8949 to list your transactions for lines 1b, 2, 3, 8b, 9, and 10" (2025; created 2025-10-06; 90564c8b)
@@ -655,9 +919,38 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter sales.zero
       = $0
       cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Year parameter household.no (false)
+      = false
+      cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) You (or, on a joint return, your spouse) paid interest on a student loan in 2025
+      = false
+      cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Total interest paid in 2025 on student loans, asked only when interest was paid on a student loan (zero otherwise)
+      = $0
+      cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sli.any",{"const":false}],"op":"test"}
+  (gate) Whether any of the interest was on a loan that is not a qualified student loan, asked only when interest was paid on a student loan (false otherwise)
+      = false
+      cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sli.any",{"const":false}],"op":"test"}
+  (gate) The interest on loans that are not qualified student loans, asked only when there is such a loan (zero otherwise)
+      = $0
+      cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sli.unqualified_any_if_any",{"const":false}],"op":"test"}
+  (gate) Whether any of the interest was paid from tax-free qualified tuition program earnings or through tax-free loan repayment assistance, asked only when interest was paid on a student loan (false otherwise)
+      = false
+      cite: [i1040gi] p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sli.any",{"const":false}],"op":"test"}
+  (gate) The interest paid from tax-free qualified tuition program earnings or loan repayment assistance, asked only when there is some (zero otherwise)
+      = $0
+      cite: [i1040gi] p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sli.assisted_any_if_any",{"const":false}],"op":"test"}
+  (helper) Interest that is not counted (on loans that are not qualified student loans, and paid from tax-free earnings or repayment assistance)
+      = $0
+      cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; 482e9c48)
   (helper) Total interest you paid in 2025 on qualified student loans
       = $0
-      cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' and 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' and 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)' (2025; printed date 2026-02-25; 482e9c48)
   (helper) Any student loan interest
       = false
       cite: [i1040gi] p. 98, Schedule 1, line 21 (2025; printed date 2026-02-25; 482e9c48)
@@ -667,9 +960,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["sli.has",{"const":false}],"op":"test"}
 
 == Social Security Benefits Worksheet—Lines 6a and 6b ==
-  (helper) Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099
+  (helper) Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them.
+      = false
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Net benefits, asked only of a filer who got social security or railroad retirement benefits (none otherwise)
       = $0
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["ssb.any",{"const":false}],"op":"test"}
   1   Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099
       = $0
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1 (2025; printed date 2026-02-25; 482e9c48)
@@ -685,7 +982,28 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["ssb.has_benefits",{"const":false}],"op":"test"}
 
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
+  sd.business_property_if_sold: chose false (guard 1)
+      not taken: guard 0 = false
+  sd.installment_if_sold: chose false (guard 1)
+      not taken: guard 0 = false
+  sd.like_kind_if_sold: chose false (guard 1)
+      not taken: guard 0 = false
+  sd.f2439_if_dividends: chose false (guard 1)
+      not taken: guard 0 = false
   sd.to1040: chose REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+  scope.under24_if_not_joint: chose false (guard 0)
+  scope.unearned_2700_if_under24: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.f8615_if_unearned_2700: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.income_averaging_if_business: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.pfic_if_foreign_shares: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.cfc_if_foreign_shares: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.f8978_if_business_before: chose false (guard 1)
+      not taken: guard 0 = false
   household.cp_not_joint: chose false (guard 1)
       not taken: guard 0 = false
   household.cp_marriage_ended: chose false (guard 0)
@@ -695,9 +1013,11 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   sd.distributions_if_dividends: chose $0 (guard 1)
       not taken: guard 0 = false
-  sb.unsupported_if_income: chose false (guard 1)
+  sb.nominee_if_income: chose false (guard 1)
       not taken: guard 0 = false
-  sb.form5471_if_foreign: chose false (guard 1)
+  sb.bonds_any_if_income: chose false (guard 1)
+      not taken: guard 0 = false
+  sb.bond_special_if_bonds: chose false (guard 1)
       not taken: guard 0 = false
   sb.fbar_required_if_foreign: chose false (guard 1)
       not taken: guard 0 = false
@@ -705,7 +1025,29 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   sb.line8_if_foreign: chose false (guard 1)
       not taken: guard 0 = false
+  sb.form5471_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
+  ssb.benefits_if_any: chose $0 (guard 1)
+      not taken: guard 0 = false
   ssb.line18: chose $0 (guard 1)
+      not taken: guard 0 = false
+  scope.reservist_expenses_if_armed_forces: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.military_move_if_armed_forces: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.clergy_if_religious_work: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.church_exempt_wages_if_religious_work: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.w2_marks_if_w2: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.artist_official_if_w2: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.performer_expenses_if_artist_official: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.se_plan_other_if_business: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].educator_expenses_if_educator: chose $0 (guard 1)
       not taken: guard 0 = false
   person[taxpayer].educator_deduction: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -713,7 +1055,11 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   person[taxpayer].s16: chose $0 (guard 1)
       not taken: guard 0 = false
+  s1.alimony_if_any: chose false (guard 1)
+      not taken: guard 0 = false
   s1.line19a: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].sav_trad_if_ira_owner: chose false (guard 1)
       not taken: guard 0 = false
   person[taxpayer].ira_contrib: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -723,15 +1069,46 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   ira.less_gate: chose false (guard 1)
       not taken: guard 0 = false
+  sli.interest_if_any: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sli.unqualified_any_if_any: chose false (guard 1)
+      not taken: guard 0 = false
+  sli.unqualified_if_some: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sli.assisted_any_if_any: chose false (guard 1)
+      not taken: guard 0 = false
+  sli.assisted_if_some: chose $0 (guard 1)
+      not taken: guard 0 = false
   sli.deduction: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s1.line8h: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.jury_to_employer_if_pay: chose $0 (guard 1)
       not taken: guard 0 = false
+  household.marriage_possible: chose true (guard 0)
+  household.married: chose false (guard 0)
   household.filing_status_conflict: chose false (guard 0)
-  household.widowed_2025: chose false (guard 0)
+  household.spouse_died_this_year_if_ever_married: chose false (guard 0)
+  household.widowed_this_year: chose false (guard 0)
   sa.mfs_spouse_itemizes: chose false (guard 1)
       not taken: guard 0 = false
   sa.charity_limited_if_gifts: chose false (guard 1)
+      not taken: guard 0 = false
+  sa.home_other_if_not_owner: chose false (guard 0)
+  sa.mortgage_unreported_if_home: chose false (guard 1)
+      not taken: guard 0 = false
+  sa.line8a: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sa.mortgage_over_limit_if_interest: chose false (guard 1)
+      not taken: guard 0 = false
+  sa.mortgage_other_use_if_interest: chose false (guard 1)
+      not taken: guard 0 = false
+  ftc.taxes_if_asked: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sa.foreign_tax_deduct_if_tax: chose false (guard 1)
+      not taken: guard 0 = false
+  sa.medical_premiums_if_not_large: chose false (guard 0)
+  sa.line1_if_medical: chose $0 (guard 1)
       not taken: guard 0 = false
   sa.mfs_spouse_extra: chose false (guard 1)
       not taken: guard 0 = false
@@ -743,6 +1120,12 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f1040.line16: chose REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
 
 Derivations:
+  sd.no: param(#household.no = false)
+  sd.business_property_if_sold: choose(sd.sold_other = false; true = true; sd.sold_other = false; false = false; sd.no = false)
+  sd.installment_if_sold: choose(sd.sold_other = false; true = true; sd.sold_other = false; false = false; sd.no = false)
+  sd.like_kind_if_sold: choose(sd.sold_other = false; true = true; sd.sold_other = false; false = false; sd.no = false)
+  sd.f2439_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; sd.no = false)
+  sd.other_forms: test(sd.business_property_if_sold = false; true = true; sd.installment_if_sold = false; true = true; sd.like_kind_if_sold = false; true = true; sd.sec1256 = false; true = true; sd.condemned = false; true = true; sd.small_business_stock = false; true = true; sd.trader_election = false; true = true; sd.f2439_if_dividends = false; true = true; sd.casualty = false; true = true)
   sales[a].digital: test(sales[a].box = G; "G" = G)
   sales[a].one: gate(sales[a].digital = true)
   sd.count: sum_over(sd.other_forms = false; sales[a].one = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
@@ -753,12 +1136,30 @@ Derivations:
   sd.has_loss: test(sd.line16 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); 0 = $0)
   sd.to1040: choose(sd.has_loss = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); true = true)
   f1040.line7a: copy(sd.to1040 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  person[taxpayer].under24: test(person[taxpayer].birth_year = 1980; #age.cut_24 = 2002; person[taxpayer].birth_year = 1980; #age.cut_24 = 2002)
+  scope.under24_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].under24 = false; true = true)
+  scope.under24: test(scope.under24_count = 0; 0 = 0)
+  scope.under24_if_not_joint: choose(f1040.status = single; "single" = single; scope.under24 = false)
+  scope.no: param(#household.no = false)
+  scope.unearned_2700_if_under24: choose(scope.under24_if_not_joint = false; true = true; scope.under24_if_not_joint = false; false = false; scope.no = false)
+  scope.f8615_if_unearned_2700: choose(scope.unearned_2700_if_under24 = false; true = true; scope.unearned_2700_if_under24 = false; false = false; scope.no = false)
+  s1.sc_count: sum_over(person[taxpayer].sc_count = 0)
+  s1.has_sc: test(s1.sc_count = 0; 0 = 0)
+  scope.income_averaging_if_business: choose(s1.has_sc = false; true = true; s1.has_sc = false; false = false; scope.no = false)
+  scope.pfic_if_foreign_shares: choose(scope.foreign_shares = false; true = true; scope.foreign_shares = false; false = false; scope.no = false)
+  scope.cfc_if_foreign_shares: choose(scope.foreign_shares = false; true = true; scope.foreign_shares = false; false = false; scope.no = false)
+  scope.f8978_if_business_before: choose(scope.business_before = false; true = true; scope.business_before = false; false = false; scope.no = false)
+  scope.other_line16: test(scope.f8615_if_unearned_2700 = false; true = true; scope.f8814 = false; true = true; scope.education_recapture = false; true = true; scope.income_averaging_if_business = false; true = true; scope.pfic_if_foreign_shares = false; true = true; scope.cfc_if_foreign_shares = false; true = true; scope.f8978_if_business_before = false; true = true)
+  person[taxpayer].birth_year_bad: test(person[taxpayer].birth_year = 1980; #age.birth_year_latest = 2025; person[taxpayer].birth_year = 1980; #age.birth_year_earliest = 1900)
+  household.birth_year_bad_count: sum_over(person[taxpayer].birth_year_bad = false; true = true)
+  household.birth_year_bad: test(household.birth_year_bad_count = 0; 0 = 0)
+  person[taxpayer].under16: test(person[taxpayer].birth_year = 1980; #age.cut_16 = 2010; person[taxpayer].birth_year = 1980; #age.cut_16 = 2010)
   household.under16_count: sum_over(person[taxpayer].under16 = false; true = true)
   household.filer_under16: test(household.under16_count = 0; 0 = 0)
   person[taxpayer].one: param(#person.one = 1)
   household.taxpayers: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].one = 1)
   household.spouses: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
-  household.roster_ok: test(household.filer_under16 = false; f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)
+  household.roster_ok: test(household.birth_year_bad = false; household.filer_under16 = false; f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)
   household.roster_bad: test(household.roster_ok = true; false = false)
   household.no: param(#household.no = false)
   household.cp_not_joint: choose(household.community_property = false; true = true; household.community_property = false; false = false; household.no = false)
@@ -774,28 +1175,48 @@ Derivations:
   sd.distributions_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; div.zero = $0)
   sb.has_income: test(sb.interest_total = $0; 0 = $0; sb.ordinary_dividends_if_dividends = $0; 0 = $0; sd.distributions_if_dividends = $0; 0 = $0)
   sb.no: param(#sb.no = false)
-  sb.unsupported_if_income: choose(sb.has_income = false; true = true; sb.has_income = false; false = false; sb.no = false)
+  sb.nominee_if_income: choose(sb.has_income = false; true = true; sb.has_income = false; false = false; sb.no = false)
+  sb.bonds_any_if_income: choose(sb.has_income = false; true = true; sb.has_income = false; false = false; sb.no = false)
+  sb.bond_special_if_bonds: choose(sb.bonds_any_if_income = false; true = true; sb.bonds_any_if_income = false; false = false; sb.no = false)
+  sb.unsupported: test(sb.nominee_if_income = false; true = true; sb.bond_special_if_bonds = false; true = true)
+  sb.unsupported_if_income: copy(sb.unsupported = false)
+  sb.foreign_any: test(sb.account_any = false; true = true; sb.asset_any = false; true = true; sb.trust_any = false; true = true; sb.company_any = false; true = true; sb.territory_any = false; true = true)
   sb.foreign_no: param(#sb.foreign_no = false)
-  sb.form5471_if_foreign: choose(sb.foreign_any = false; true = true; sb.foreign_any = false; false = false; sb.foreign_no = false)
   sb.fbar_required_if_foreign: choose(sb.foreign_any = false; true = true; sb.foreign_any = false; false = false; sb.foreign_no = false)
   sb.form8938_if_foreign: choose(sb.foreign_any = false; true = true; sb.foreign_any = false; false = false; sb.foreign_no = false)
-  sb.line8_if_foreign: choose(sb.foreign_any = false; true = true; sb.foreign_any = false; false = false; sb.foreign_no = false)
-  sb.line2: sum_over(sb.unsupported_if_income = false; sb.form5471_if_foreign = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false)
-  sb.line3: copy(sb.unsupported_if_income = false; sb.form5471_if_foreign = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.zero = $0)
+  sb.foreign_trust_any: test(sb.trust_any = false; true = true; sb.territory_any = false; true = true)
+  sb.line8_if_foreign: choose(sb.foreign_trust_any = false; true = true; sb.foreign_trust_any = false; false = false; sb.foreign_no = false)
+  sb.foreign_company_any: test(sb.company_any = false; true = true; sb.territory_any = false; true = true)
+  sb.form5471_if_foreign: choose(sb.foreign_company_any = false; true = true; sb.foreign_company_any = false; false = false; sb.foreign_no = false)
+  sb.line2: sum_over(sb.unsupported_if_income = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.form5471_if_foreign = false)
+  sb.line3: copy(sb.unsupported_if_income = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.form5471_if_foreign = false; sb.zero = $0)
   sb.line4: subtract(sb.line2 = $0; sb.line3 = $0)
   f1040.line2b: copy(sb.line4 = $0)
-  sb.line6: copy(sb.unsupported_if_income = false; sb.form5471_if_foreign = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.ordinary_dividends_if_dividends = $0)
+  sb.line6: copy(sb.unsupported_if_income = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.form5471_if_foreign = false; sb.ordinary_dividends_if_dividends = $0)
   f1040.line3b: copy(sb.line6 = $0)
   f1040.line4b: sum_over(person[taxpayer].ira_taxable = $0)
   f1040.line5b: sum_over(person[taxpayer].plan_taxable = $0)
-  ssb.line1: copy(ssb.benefits = $0)
-  ssb.has_benefits: test(ssb.line1 = $0; #sales.zero = $0)
   ssb.zero: param(#sales.zero = $0)
+  ssb.benefits_if_any: choose(ssb.any = false; true = true; ssb.any = false; false = false; ssb.zero = $0)
+  ssb.line1: copy(ssb.benefits_if_any = $0)
+  ssb.has_benefits: test(ssb.line1 = $0; #sales.zero = $0)
   ssb.line18: choose(ssb.has_benefits = false; true = true; ssb.has_benefits = false; false = false; ssb.zero = $0)
   f1040.line6b: copy(ssb.line18 = $0)
   f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3b = $0; f1040.line4b = $0; f1040.line5b = $0; f1040.line6b = $0; f1040.line7a = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
-  person[taxpayer].has_educator_expenses: test(person[taxpayer].educator_expenses = $0; #sales.zero = $0)
+  scope.reservist_expenses_if_armed_forces: choose(scope.armed_forces = false; true = true; scope.armed_forces = false; false = false; scope.no = false)
+  scope.military_move_if_armed_forces: choose(scope.armed_forces = false; true = true; scope.armed_forces = false; false = false; scope.no = false)
+  scope.clergy_if_religious_work: choose(scope.religious_work = false; true = true; scope.religious_work = false; false = false; scope.no = false)
+  scope.church_exempt_wages_if_religious_work: choose(scope.religious_work = false; true = true; scope.religious_work = false; false = false; scope.no = false)
+  scope.w2_count: sum_over(person[taxpayer].employers = 0)
+  scope.has_w2: test(scope.w2_count = 0; 0 = 0)
+  scope.w2_marks_if_w2: choose(scope.has_w2 = false; true = true; scope.has_w2 = false; false = false; scope.no = false)
+  scope.artist_official_if_w2: choose(scope.has_w2 = false; true = true; scope.has_w2 = false; false = false; scope.no = false)
+  scope.performer_expenses_if_artist_official: choose(scope.artist_official_if_w2 = false; true = true; scope.artist_official_if_w2 = false; false = false; scope.no = false)
+  scope.se_plan_other_if_business: choose(s1.has_sc = false; true = true; s1.has_sc = false; false = false; scope.no = false)
+  scope.schedule1: test(scope.reservist_expenses_if_armed_forces = false; true = true; scope.military_move_if_armed_forces = false; true = true; scope.rental = false; true = true; scope.k1 = false; true = true; scope.farm = false; true = true; scope.clergy_if_religious_work = false; true = true; scope.church_exempt_wages_if_religious_work = false; true = true; scope.w2_marks_if_w2 = false; true = true; scope.performer_expenses_if_artist_official = false; true = true; scope.recovery = false; true = true; scope.archer_msa = false; true = true; scope.se_plan_other_if_business = false; true = true; scope.reforestation = false; true = true; scope.attorney_fees = false; true = true; scope.nol = false; true = true)
   person[taxpayer].zero: param(#ss.zero = $0)
+  person[taxpayer].educator_expenses_if_educator: choose(person[taxpayer].eligible_educator = false; true = true; person[taxpayer].eligible_educator = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].has_educator_expenses: test(person[taxpayer].educator_expenses_if_educator = $0; #sales.zero = $0)
   person[taxpayer].educator_deduction: choose(person[taxpayer].has_educator_expenses = false; true = true; person[taxpayer].has_educator_expenses = false; false = false; person[taxpayer].zero = $0)
   s1.line11: sum_over(person[taxpayer].educator_deduction = $0)
   person[taxpayer].hsa_repeated: test(person[taxpayer].hsa_forms = 0; 1 = 1)
@@ -808,11 +1229,14 @@ Derivations:
   person[taxpayer].s16: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s1.line16: sum_over(person[taxpayer].s16 = $0)
   s1.line17: sum_over(person[taxpayer].sehi = $0)
+  s1.no: param(#household.no = false)
+  s1.alimony_if_any: choose(s1.alimony_any = false; true = true; s1.alimony_any = false; false = false; s1.no = false)
   s1.zero: param(#sales.zero = $0)
-  s1.line19a: choose(s1.alimony = false; true = true; s1.alimony = false; false = false; s1.zero = $0)
-  person[taxpayer].ira_contrib: choose(person[taxpayer].sav_trad = false; true = true; person[taxpayer].sav_trad = false; false = false; person[taxpayer].zero = $0)
-  person[taxpayer].ira_has: test(person[taxpayer].ira_contrib = $0; #sales.zero = $0)
+  s1.line19a: choose(s1.alimony_if_any = false; true = true; s1.alimony_if_any = false; false = false; s1.zero = $0)
   person[taxpayer].no: param(#household.no = false)
+  person[taxpayer].sav_trad_if_ira_owner: choose(person[taxpayer].ira_owner = false; true = true; person[taxpayer].ira_owner = false; false = false; person[taxpayer].no = false)
+  person[taxpayer].ira_contrib: choose(person[taxpayer].sav_trad_if_ira_owner = false; true = true; person[taxpayer].sav_trad_if_ira_owner = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].ira_has: test(person[taxpayer].ira_contrib = $0; #sales.zero = $0)
   person[taxpayer].ira_dist_gate: choose(person[taxpayer].ira_has = false; true = true; person[taxpayer].ira_has = false; false = false; person[taxpayer].no = false)
   person[taxpayer].ira_deduction: choose(person[taxpayer].ira_dist_gate = false; person[taxpayer].ira_has = false; true = true; person[taxpayer].ira_has = false; false = false; person[taxpayer].zero = $0)
   ira.total: sum_over(person[taxpayer].ira_deduction = $0)
@@ -821,10 +1245,19 @@ Derivations:
   ira.less_gate: choose(ira.has_deduction = false; true = true; ira.has_deduction = false; false = false; ira.no = false)
   ira.line20: copy(ira.less_gate = false; ira.total = $0)
   s1.line20: copy(ira.line20 = $0)
-  sli.has: test(sli.interest = $0; #sales.zero = $0)
   sli.zero: param(#sales.zero = $0)
+  sli.interest_if_any: choose(sli.any = false; true = true; sli.any = false; false = false; sli.zero = $0)
+  sli.no: param(#household.no = false)
+  sli.unqualified_any_if_any: choose(sli.any = false; true = true; sli.any = false; false = false; sli.no = false)
+  sli.unqualified_if_some: choose(sli.unqualified_any_if_any = false; true = true; sli.unqualified_any_if_any = false; false = false; sli.zero = $0)
+  sli.assisted_any_if_any: choose(sli.any = false; true = true; sli.any = false; false = false; sli.no = false)
+  sli.assisted_if_some: choose(sli.assisted_any_if_any = false; true = true; sli.assisted_any_if_any = false; false = false; sli.zero = $0)
+  sli.not_counted: sum(sli.unqualified_if_some = $0; sli.assisted_if_some = $0)
+  sli.qualified: subtract_floor0(sli.interest_if_any = $0; sli.not_counted = $0)
+  sli.has: test(sli.qualified = $0; #sales.zero = $0)
   sli.deduction: choose(sli.has = false; true = true; sli.has = false; false = false; sli.zero = $0)
   s1.line21: copy(sli.deduction = $0)
+  s1.line8h: choose(s1.jury_any = false; true = true; s1.jury_any = false; false = false; s1.zero = $0)
   s1.has_jury_pay: test(s1.line8h = $0; s1.zero = $0)
   s1.jury_to_employer_if_pay: choose(s1.has_jury_pay = false; true = true; s1.has_jury_pay = false; false = false; s1.zero = $0)
   s1.jury_over: test(s1.jury_to_employer_if_pay = $0; s1.line8h = $0)
@@ -834,24 +1267,44 @@ Derivations:
   f1040.line10: copy(scope.schedule1 = false; s1.line26 = $0)
   f1040.line11a: subtract(f1040.line9 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  household.marriage_possible: choose(f1040.status = single; "single" = single; household.ever_married = true)
+  household.married: choose(household.marriage_possible = true; true = true; household.married_dec31 = false)
   household.filing_status_conflict: choose(f1040.status = single; "single" = single; household.married = false)
   household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
-  household.widowed_2025: choose(f1040.status = single; "single" = single; household.spouse_died_2025 = false)
+  household.spouse_died_this_year_if_ever_married: choose(household.marriage_possible = true; true = true; household.spouse_died_this_year = false)
+  household.widowed_this_year: choose(f1040.status = single; "single" = single; household.spouse_died_this_year_if_ever_married = false)
   household.qss_fails: test(f1040.status = single; "qss" = qss)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
   sa.no: param(#sa.no = false)
   sa.mfs_spouse_itemizes: choose(sa.mfs = false; true = true; sa.mfs = false; false = false; sa.no = false)
   sa.charity_limited_if_gifts: choose(sa.gifts = false; true = true; sa.gifts = false; false = false; sa.no = false)
-  sa.agi: copy(f1040.line11b = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  sa.home_other_if_not_owner: choose(sa.home_owner = false; false = false; sa.home_other = false)
+  sa.home_asked: test(sa.home_owner = false; true = true; sa.home_other_if_not_owner = false; true = true)
+  sa.mortgage_unreported_if_home: choose(sa.home_asked = false; true = true; sa.home_asked = false; false = false; sa.no = false)
   sa.zero: param(#sales.zero = $0)
+  sa.line8a: choose(sa.home_asked = false; true = true; sa.home_asked = false; false = false; sa.zero = $0)
+  sa.has_mortgage_interest: test(sa.line8a = $0; 0 = $0)
+  sa.mortgage_over_limit_if_interest: choose(sa.has_mortgage_interest = false; true = true; sa.has_mortgage_interest = false; false = false; sa.no = false)
+  sa.mortgage_other_use_if_interest: choose(sa.has_mortgage_interest = false; true = true; sa.has_mortgage_interest = false; false = false; sa.no = false)
+  ftc.asked: test(div.any = false; true = true; sb.interest_total = $0; 0 = $0; s3.foreign_any = false; true = true)
+  ftc.zero: param(#sales.zero = $0)
+  ftc.taxes_if_asked: choose(ftc.asked = false; true = true; ftc.asked = false; false = false; ftc.zero = $0)
+  ftc.has_tax: test(ftc.taxes_if_asked = $0; 0 = $0)
+  sa.foreign_tax_deduct_if_tax: choose(ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; sa.no = false)
+  sa.unsupported: test(sa.mortgage_unreported_if_home = false; true = true; sa.mortgage_over_limit_if_interest = false; true = true; sa.mortgage_other_use_if_interest = false; true = true; sa.sales_tax_wish = false; true = true; sa.foreign_tax_deduct_if_tax = false; true = true; sa.estate_tax_income = false; true = true; sa.bond_premium = false; true = true; sa.debt_instrument_loss = false; true = true; sa.pension_unrecovered = false; true = true; sa.impairment_work = false; true = true)
+  sa.medical_premiums_if_not_large: choose(sa.medical_any = false; false = false; sa.medical_premiums = false)
+  sa.medical_asked: test(sa.medical_any = false; true = true; sa.medical_premiums_if_not_large = false; true = true)
+  sa.line1_if_medical: choose(sa.medical_asked = false; true = true; sa.medical_asked = false; false = false; sa.zero = $0)
+  sa.agi: copy(f1040.line11b = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   sa.agi_floor: subtract_floor0(sa.agi = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); sa.zero = $0)
   sa.line2: copy(sa.agi_floor = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   sa.line3: multiply_rate(sa.line2 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); #sa.medical_rate = 75/1000)
-  sa.line4: subtract_floor0(sa.line1 = $0; sa.line3 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
-  sa.line17: sum(sa.unsupported = false; sa.charity_limited_if_gifts = false; sa.excluded_income = false; sa.line4 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  sa.line4: subtract_floor0(sa.line1_if_medical = $0; sa.line3 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  sa.line17: sum(sa.charity_limited_if_gifts = false; sa.unsupported = false; sa.excluded_income = false; sa.line4 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   sa.mfs_spouse_extra: choose(sa.mfs = false; true = true; sa.mfs = false; false = false; sa.no = false)
   sa.standardbase: param(#sa.standard_base = $15,750)
   sa.extra: param(#sa.standard_extra = $2,000)
+  person[taxpayer].age65: test(person[taxpayer].birth_year = 1980; #age.cut_65 = 1961; person[taxpayer].birth_year = 1980; #age.cut_65 = 1961)
   person[taxpayer].age65_box: choose(person[taxpayer].age65 = false; true = true; person[taxpayer].age65 = false; false = false; person[taxpayer].no = false)
   sa.boxes_age65: sum_over(person[taxpayer].age65_box = false; true = true)
   sa.extra_age65: multiply_count(sa.extra = $2,000; sa.boxes_age65 = 0)
@@ -861,7 +1314,7 @@ Derivations:
   sa.standard: choose(sa.dependent = false; sa.mfs_spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
   sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); sa.standard = $15,750)
   sa.deduction: choose(sa.dependent = false; sa.itemizes = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); true = true)
-  f1040.line12e: copy(household.filing_status_conflict = false; household.hoh_fails = false; household.widowed_2025 = false; household.qss_fails = false; sa.deduction = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  f1040.line12e: copy(household.filing_status_conflict = false; household.hoh_fails = false; household.widowed_this_year = false; household.qss_fails = false; sa.deduction = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   f1040.line14: sum(f1040.line12e = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   f1040.line15: subtract_floor0(f1040.line11b = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); f1040.line14 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   f1040.gate.qdcg_applies: test(f1040.line15 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); 0 = $0)

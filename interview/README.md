@@ -17,7 +17,7 @@ A profile file lists its targets, its initial answers and the inputs it asks; th
 | default (`social-security`) | `2025/social-security.yaml` | Form 1040 line 31 | Social Security credit, with the other Schedule 3 Part II amounts refused where they apply; not a complete return |
 | `sales` | `2025/sales.yaml` | Form 1040 lines 7a and 16 | securities sales, Schedule D and tax-method selection; AGI and taxable income computed; not a complete return |
 | `stage4` | `2025/stage4.yaml` | `scope.ready`, lines 7a and 16, the Schedule A deduction, Form 4952 line 8, the QBI deduction, Schedule 2 line 21, Form 8959 line 24, Schedule 3 line 1 | form slices with eligibility and valuation screens; not a complete return |
-| `full` | `2025/full.yaml` | `scope.ready`, Form 1040 lines 24, 33, 34 and 37, `f2441.line1_box`, `f2441.line1_paid`, `f2441.statement_notice`, `f2441.household_notice`, `f5695.line32b`, `ira.basis_total`, and Form 8889's three results (`s1.line13`, `s1.line8f`, `s2.line17c`) | the whole return: Form 1040 lines 1a–37 end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them); no filing or transmission |
+| `full` | `2025/full.yaml` | `scope.ready`, Form 1040 lines 24, 33, 34 and 37, `f2441.line1_box`, `f2441.line1_paid`, `f2441.statement_notice`, `f2441.household_notice`, `f5695.line32b`, `ira.basis_total`, `clcw_next_year.line8`, `clcw_next_year.line13`, `clcw_next_year.decedent_notice`, `clcw.figures_notice`, `s179.line13`, Form 8889's three results (`s1.line13`, `s1.line8f`, `s2.line17c`), and `s1.line10`, `s1a.line7`, `s1a.line15`, `sa.line17` and `s2.other`, asked for directly so that their questions are open in their own topics | the whole return: Form 1040 lines 1a–37 end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them); no filing or transmission |
 
 The default, `sales` and `stage4` profiles fix the person roster to `taxpayer` in their
 initial answers. The `full` profile starts from no answers and asks `$person` first
@@ -64,8 +64,8 @@ Answer using the question's exact `input` key. `--value` is JSON: `false`, `6200
 `"single"`, `null` or `["employer_a","employer_b"]`. `null` requests help: the value
 stays unknown and the same question is asked again with `helpRequested` set. A blank
 printed money box must be entered as zero if that is the intended answer; unanswered
-questions never default to zero. Questions are asked in bank order, then by key; the questions of a
-block are asked entry by entry and in the block's sequence ("Blocks", under Question data).
+questions never default to zero. Questions are asked in the order the bank states: by `order`, then by
+`seq`, entry by entry, then by key ("Blocks", under Question data).
 
 ## Web UI
 
@@ -130,6 +130,21 @@ when the key is taken), an edited label keeps its entry's key, and the page show
 not keys, except in a question's id. The labels are saved on the roster answer's event as
 `labels`, a map from entry key to label, which replay ignores.
 
+A few yes or no questions the bank puts in a tick-box group ("Tick-box groups" below) are shown
+on one screen when the first of them is the next question: the group's heading as the question,
+one box per member with its short label and its id, and two ways to answer. "None of these"
+records No for every box; ticking boxes and choosing "Continue" records Yes for the ticked and
+No for the others. One way is live at a time: "Continue" is disabled until a box is ticked, and
+"None of these" while one is. Beside each box, "What this asks" opens the member's own question
+in full, its explanation and its source, with "Answer this one on its own", which shows it as an
+ordinary question (with "I don't know / need help"). The screen's answers are sent together and
+saved together or not at all (`POST …/answers`). Afterwards nothing remembers the screen: the
+answered list has each member as its own answer under its own question, choosing one reopens
+that question alone, and a refusal a ticked member brings about is shown as that question's
+refusal always is. A member answered earlier is not on the screen; when one member is left it is
+asked as an ordinary question; a group asked of each person has a screen per person under the
+per-person frame.
+
 Every question shows its id, the input key the engine and the answer log know it by: under
 the current question's text (with a control that copies it), and under each question of the
 answered list, of a conflict's answers and of a derivation's "Answers it depends on". A
@@ -145,8 +160,9 @@ Its API:
 |---|---|
 | `GET /api/returns` | the return logs in the directory, the scope sentence, the notices, `docTitles` (document id to printed title) and `docDesignations` (document id to printed designation, for the documents that have one), both from the year's source catalogs |
 | `POST /api/returns` `{name}` | starts a log (profile `ny`); an existing name is refused |
-| `GET /api/returns/:name` | the state: the CLI's fields, `pending` with each input's `type` (and enum `values`) and `forms` (the catalogued forms its question names: `designation`, `id`, `title`, `purpose`), `refusalFinal`, the structured `sheets` (federal and New York), the `answered` questions, the `entryLabels` (entry path to label) and the lines the last answer `changed` |
+| `GET /api/returns/:name` | the state: the CLI's fields, `pending` with each input's `type` (and enum `values`) and `forms` (the catalogued forms its question names: `designation`, `id`, `title`, `purpose`), `group` (the tick-box screen the first pending question is shown in, or null: `id`, `heading` as shown, `frame`, and `members`, the questions shown as its boxes, each as a pending question is served, with its label `tick`), `refusalFinal`, the structured `sheets` (federal and New York), the `answered` questions, the `entryLabels` (entry path to label) and the lines the last answer `changed` |
 | `POST /api/returns/:name/answer` `{input, value[, labels]}` | appends the answer and returns the new state, or 400 with the reason |
+| `POST /api/returns/:name/answers` `{answers: [{input, value}, …]}` | the answers of the tick-box screen the state offers (`group`): exactly one for each box, each `true` or `false`. Appends one event per box, in the order given, in one write, and returns the new state; 400 with the reason, and nothing appended, when any is rejected |
 | `GET /api/vetting` | the vetting page's cards, each with its record and whether it is stale, the records of questions no longer asked, the counts and the verdict file's path ("Vetting the questions") |
 | `POST /api/vetting` `{id, digest[, verdict][, note]}` | saves a verdict (`up`, `down` or `none`) or a note on the question as shown and returns the record and the counts; 409 when `digest` is not the card's (the wording changed), 500 with the reason when the file could not be written |
 
@@ -181,7 +197,8 @@ A card shows, apart from one another:
   list (named by its list question); when it is asked, as far as the engine can say; and the
   words of the question and the help as shown (the words tool's `words`), with the longest
   sentence of the stored question (`longestSentence`; over 40 words is long, as the words
-  report counts).
+  report counts). A member of a tick-box group also has "Shown as": the group, the screen's
+  heading and the label beside this question's box. A verdict's digest does not cover them.
 
 "When" is one of a few fixed statements, each read off the engine and none of them a guess. A
 question whose input has a gate (`gated_by`) says "asked only after an earlier answer" and
@@ -238,6 +255,14 @@ an event on an initial key is invalid. A correction is another event for the sam
 `answer` accepts an input only if it is currently reachable or already answered. Before
 an event is appended the candidate inputs are validated and the state is computed, so a
 malformed or unreachable answer is a command failure and is not written.
+
+The answers of a tick-box screen are ordinary events, one `{input, value}` per box, appended
+together (`applyAnswers` in `interview.ts`). They are checked against the state before any of
+them, because the filer gave them together: each must be a box of the screen the interview
+offers at that moment, every box must be answered, and each answer is yes or no. So the log may
+hold a No for a question the engine would not have reached one question at a time (a member
+after one whose Yes refuses the return); replay reads it as any answer, and it stands if the
+question is reached later. The log does not record that the answers shared a screen.
 
 ### Answers a choice records
 
@@ -363,7 +388,8 @@ log and the profile-mismatch error.
 ## Coverage rows
 
 `2025/coverage/` lists the situations the interview is known to handle, one file per part of
-the interview (`opening.yaml`, `credits.yaml`, `hsa.yaml`). A row names a situation as the
+the interview (`opening.yaml`, `jobs.yaml`, `credits.yaml`, `hsa.yaml` and the others; `ny.yaml` holds the
+New York part's rows, profile `ny`). A row names a situation as the
 answers a filer in it gives and the end the interview must come to, and `interview-coverage`
 (`engine/src/interview-coverage.ts`, in `check-all`) walks the built interview with those
 answers, in the interview's own order, and fails naming the row when the tree does not end
@@ -384,10 +410,11 @@ sets:                             # optional: named answers several rows share
 rows:
   - id: opening.married_picks_single
     design: C.1 row 9 (married, picks "None of these")
-    situation: A married person files alone and takes the status of an unmarried person.
+    situation: A married person takes the line that says they were not married, then says they were married at the end of 2025.
     uses: [one_person]
     answers:
-      household.married: true
+      household.ever_married: true
+      household.married_dec31: true
     expect:
       refused: household.filing_status_conflict
 ```
@@ -395,7 +422,7 @@ rows:
 A row has an `id` (lower case, no tax year, unique across the files), the `design` row it
 comes from, the `situation` in one plain sentence, its `answers` and one expected end.
 Answers are keyed by the question's exact id, as the answer log has it and the page shows
-it (`person[taxpayer].age65`, `$f8889@person[taxpayer]`), with the log's values. A row
+it (`person[taxpayer].birth_year`, `$f8889@person[taxpayer]`), with the log's values. A row
 written against the interview as it stands before a redesigned part lands says so in
 `replace_when`, and the report marks it. The schema is `coverageFile` in
 `schema/data.schema.json`.
@@ -447,7 +474,8 @@ answer, recorded answers, and a file's repeated id, unused set and stale set ans
 ## Question data
 
 Every profile asks its questions from one bank, `2025/questions.yaml`: each entry gives
-an input's `order` and `help`. Its prompt is filled at build from the form line's
+an input's `order` and `help`, and where it has them its `seq` ("Blocks") and its tick-box `group` and `tick`
+("Tick-box groups"). Its prompt is filled at build from the form line's
 question text, after its collection's frame (for example "For this business — "), and
 its citation from the line (a roster question's from its collection). An entry states a
 `prompt` or `cite` only for interview wording the line does not carry; the build fails
@@ -469,20 +497,60 @@ value given now is always offered, and an answer is accepted whether or not it w
 
 ### Blocks
 
-A topic whose questions belong together is a block: every question of one `order` number, each with its place in
-the block, `seq` (a whole number from 1). Among the open questions of a block the interview asks first those of the
-first entry of the outermost collection (the person, for a form each person has), and within one entry the lowest
-`seq`; so a couple is asked one person's questions through, then the other's. An order number is all block or none
-(the build fails otherwise), and a question outside a block is asked in bank order, then by key, as before
-(`askOrder` in `engine/src/interview.ts`, which the interview-rules check also uses).
+The bank states the order of asking (`askOrder` in `engine/src/interview.ts`, which the interview-rules check also
+uses). A question's `order` number is its topic's position: the open question with the lowest `order` is asked first.
+Its `seq` (a whole number from 1; gaps are allowed) is its place within the topic. No two questions of one order
+number state the same `seq` (the build fails otherwise). A question that states no `seq` is asked after those of
+its order number that do, by key.
 
-Order alone does not keep a topic together: a question is asked only once it is reachable from a target, and a form
-whose results enter the return in several places becomes reachable piece by piece, as each place is reached. The
-health savings account block (order 9: the roster `$f8889`, the Form 8889 questions and `person.x_hsa_value`) is
+Within one order number the questions that state a `seq` are asked as an outline reads. At each level (the return;
+an entry of a collection, such as a person; an entry of a collection inside it, such as one of that person's W-2s)
+the lower number comes first, where a question of that level counts by its own `seq` and a run of entry questions by
+the lowest `seq` in it. A run is a stretch of questions, consecutive in `seq`, that belong to one collection; all of
+one entry's questions in the run are asked before the next entry's (entries by key). So a couple is asked one
+person's questions through, then the other's; a person with two W-2s is asked one W-2 through, then the other; and a
+question of the person placed (by its `seq`) after the W-2 questions is asked after the last W-2. The build computes
+each run's place into the built question (`at`).
+
+A child follows its parent at once when the bank gives it the same `order` and the next `seq`, and when the child is
+reachable as soon as the parent is answered. A question is asked only once the return is certain to need it. The
+evaluation proper reads a line's refusal gates in order and stops at the first one not yet answered, so a question
+behind such a gate used to wait for the gate's own question, whatever the bank said. While a return is incomplete the
+interview therefore also runs a reach pass (`inputsAhead` in `engine/src/eval.ts`), which reads past an unanswered
+refusal gate to the gates after it and to the line's own expression, as the evaluation will once the gate is answered
+no. A question it finds that states a `seq` is open at once, and the bank's order decides among the open
+questions; one that states no `seq` stays closed until the evaluation itself reaches it, so where the bank states no
+order the forms' order of refusal gates still decides (a screen before what stands behind it). The pass changes no
+value, and a complete or refused return's open questions are the evaluation's own. It does not read ahead in two places, where
+the need for a question truly depends on an answer: beyond the first unanswered guard of a `choose`, and beneath the
+operands of an `all` or `any` test that follow an unanswered one. A question that waits on such an answer (or on its
+roster) is placed after the question it waits on; `node engine/dist/main.js interview-order` walks returns and lists
+every question that became reachable late, with the answer it waited on.
+
+Order alone does not keep a topic together where a form's results enter the return in several places, each read
+only once the return has got that far. The
+health savings account block (order 190: the roster `$f8889`, the Form 8889 questions, `person.age55_at_year_end` and
+`person.x_hsa_value`) is
 kept together by the `full` profile's asking for Form 8889's three results directly (`s1.line13`, `s1.line8f` and
 `s2.line17c`, which the return's own targets read in any case): each of the form's questions is then reachable as
 soon as the account is listed, and a refusal on the form is told at once. `person.x_hsa_value` is the exception: it
 is reached through Form 5329 and is asked when that form is.
+
+Schedule 3's unprepared credits are refused from lists read in order: the refusal entries of `s3.line7` (adoption,
+the bond credit, the credit for the elderly, vehicles, the earlier year's forms, the mortgage certificate) and of
+`s3.line14` (the farmland choice, the three foreign items, repaid income), with the chain `s3.other_credit` and the
+list of `scope.ready` in nearly the same order. Two things follow, and they are different
+(`docs/provisional/lanes/stitch.md`, part 3, measured):
+
+- **When a question is asked.** A Schedule 3 question that states a `seq` is open as soon as the return needs it,
+  whatever stands ahead of it in those lists (the reach pass), so each can be asked at an order number of its own. One
+  that states no `seq` still waits for the questions ahead of it.
+- **When a refusal is told.** A refusal is told only once the situations listed before it on its line are answered.
+  A question numbered before one that its line lists earlier is asked in its place, but its Yes is told as a refusal
+  only when that earlier question is answered (`s3.ev_dealer` before `s3.credit_bond`; a child of `s3.foreign_any`
+  before `s3.farmland`). The coverage rows show it as "the refusal … came on a background answer". The bank's remedy
+  is to number the screens of one line in the line's order; the form's is to list the entries in the order of
+  asking, or to give each situation a line of its own.
 
 The Form 8863 Part III questions exist twice, as `person.edu*` and `dependent.edu*` lines with a bank entry
 each, because a student is a person on the return or a dependent. The two statements are kept the same:
@@ -490,6 +558,73 @@ a change to the wording, help, order or citation of one is made to its twin in t
 that has claimed both `person` and `dependent`, and `tools/check_twins.py` (check-all) fails on any
 difference not declared with its reason in `reviews/2025/twins.json`. `check_twins.py --sync-from person`
 shows the copy and `--write` makes it (tools/README.md, "Twin lines").
+
+### Tick-box groups
+
+A tick-box group is a few yes or no questions, side by side in one topic, that the page shows on
+one screen ("Web UI"). It is presentation only: each member stays its own input with its own
+prompt, help and citation, is recorded as its own answer and is corrected on its own; the CLI
+asks the members one at a time, and the forms know nothing of groups. The bank declares a group
+once and a question joins it by naming it (the bank's group `rare_credits`, three Schedule 3
+questions of order 290, on which `test-serve` tests the screen):
+
+```yaml
+bank:
+  groups:
+  - id: rare_credits
+    heading: In 2025, did you (or, on a joint return, your spouse) do any of these?
+  questions:
+  - input: s3.farmland
+    order: 290
+    seq: 2
+    group: rare_credits
+    tick: Sold farmland
+```
+
+`heading` is the question the filer reads above the boxes; `tick` is the few plain words beside
+a member's box. Both are reworded as a prompt is when shown (the spouse phrase; for a group
+asked of each person the build puts the collection's frame before the heading, and the
+per-person frame and the person named follow the entry).
+
+A group is placed as its members are ("Blocks"): the members have one `order`, the topic's, and
+each states a `seq`, the order of the boxes. The numbers may leave gaps (10, 20, 30), but no other
+question of the order number has a `seq` from the lowest member's to the highest's. The group
+needs no order number of its own, and the other questions of the topic need
+not state a `seq` (one that states none is asked after those that do). Stating a `seq` also
+opens a member as soon as the return needs it, whatever refusal screen stands ahead of it in
+its form, so the screen is whole unless a member truly waits on an answer outside the group (its
+parent's, its roster's, or an answer that decides whether its form is read).
+
+The build (`tickGroupProblems` in `engine/src/tick-groups.ts`) refuses: a group with fewer than
+two or more than six members; a member that is not a yes or no input; a member without `tick`,
+or `tick` without `group`; a label of more than twelve words, on more than one line, ending in a
+question mark, or shared by two members; a heading of more than 25 words or more than one line;
+entry syntax or a near-miss of the spouse phrase in either; a group no question names, or a name
+no group declares; members of more than one order number; a member without `seq`; another
+question's `seq` lying from the lowest member's to the highest's; members of
+several forms when one of them is a list's form (a screen is asked of one entry); and a member
+that another member's Yes opens (its gate reads that member, directly or through what yes/no
+lines compute; a gate that only stands behind a derived refusal screen does not count). The
+build does not say where the other questions a member opens stand; `tick-groups` checks when
+they are asked. Asked one at a time (the CLI, or a member answered on its own), an opened
+question follows the remaining members rather than its own parent.
+
+When the first pending question is a member, `interviewView` returns the screen as `group`: the
+members of that group, for the same entry, that are open, and those that would be open once the
+open ones are answered No (a member the engine reaches only after another member, because the
+two are read by one chain of tests, belongs on the screen: with none ticked it is asked next in
+any case). Open means what it means for the next question: the evaluation's own inputs and those
+the reach pass finds. A member already answered, or waiting on an answer outside the group, is not on it,
+and a screen of one box is no screen (`group` is null and the question is asked as usual).
+
+`node engine/dist/main.js tick-groups` (check-all step `tick_groups`; its `--self-test` in `tools/self_tests.py`) checks every group of the
+built `full` and `ny` interviews on the background return: that the screen shows the whole
+group; that with each member in turn ticked each question the answers open is asked before
+any question that was already waiting and has an earlier order number than the opened one (so
+an opened question is given the group's order number; within it, other questions may come
+first); and that the same answers given one at a time end the return the same
+way. `tick-groups --self-test` plants each refused declaration, and a group asked of each
+person on the built interview. `docs/provisional/lanes/tick.md` says what makes a good group.
 
 A long question is written as structured text (`engine/src/text.ts`): a line's `label`, an input's
 `source`, a `note`, and a bank `prompt` or `help` may hold line breaks, and then only a small Markdown
@@ -646,3 +781,42 @@ prompts met, and the longest sentences of the question bank. A word is a run of 
 digit, so list markers and dashes are not counted. The returns are those `interview-length` walks. It is a sibling of
 that tool, not part of it: `interview-length` compares question counts under three orders and never builds a question
 as shown; this one counts reading under the one order the interview has. Its `--self-test` runs in `check-all`.
+
+## What a given filer is asked
+
+`node engine/dist/main.js draft-walk` (`engine/src/draft-walk.ts`; free and deterministic, no model call) walks each
+persona of `2025/personas/` through the built `full` interview and writes a transcript per persona, and `SUMMARY.md`,
+to `docs/provisional/walks/after/` (`--out DIR` for another place; `--only NAME` for one persona; `--summary` for the
+table alone). A persona is a filer in one sentence with the answers that filer gives, keyed by the question's exact id
+as the answer log has it:
+
+```yaml
+name: 01_single_w2                # the file's name
+who: A single person, 31, with one job (one Form W-2, $52,000 of wages) and nothing else to report.
+end: complete                     # or { refused: <gate> }; optional
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  $w2@person[taxpayer]: [acme]
+  person[taxpayer].w2[acme].box1: 5200000
+```
+
+The walk is the coverage rows' walk (`interviewView`, `applyAnswer`, first refusal or completion), and every question
+the persona does not answer is answered by the same background return. It differs in one way: a question the
+background return never met is given the closed answer (no, zero, none, the first option) so that the walk goes on, and
+is reported as opened and unanswered, with the answer that opened it. The command fails, naming the persona, on an
+opened and unanswered question, on a stale answer (an id that names no question, or a question the walk never asks),
+on an answer the interview rejects, and on an end other than the persona's `end`; the transcript is written all the
+same, with the problems at its head.
+
+A transcript lists each question asked, in order: its id, its topic (the form its input belongs to), the prompt as the
+page shows it to this filer (`shownAt`), the answers offered, the answer and where it came from, the words of the
+prompt and of the help, and the help's first sentence. A question whose topic differs from the one before it is marked
+as a topic switch, and as a return when the walk had already left that topic. It ends with the end reached (a
+refusal's wording as shown), the totals, the ten longest prompts and the whole walk at one line per question.
+A tick-box screen is one step: the walk answers its boxes together, as the page does, prints the
+heading and the labels with the boxes ticked, and counts the heading's and the labels' words
+once in place of the members' own prompts (which the page keeps behind "What this asks"). The
+totals and `SUMMARY.md` give the steps (screens) beside the questions.
+`docs/provisional/walks/before/` holds the walks of the interview before the provisional redraft; a file there is
+never overwritten. `draft-walk --self-test` (check-all, `tools/self_tests.py`) plants each failure on the built interview.

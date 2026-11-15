@@ -402,6 +402,18 @@
   },
   {
    "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_this_year",
+   "project": "$155.63",
+   "model": "$234.39",
+   "ruling": "Ruling: model error; project retained. Follows from the model's method: it applied Table A-5 (150% DB, mid-quarter, fourth quarter, 15-year, year 1 1.25%) to $18,751.20, but qualified improvement property is GDS straight line (p946 Table 4-1, \"GDS using SL ... Qualified improvement property ... placed in service after 2017\"); Table A-12 (Straight Line Method, Mid-Quarter Convention, Placed in Service in Fourth Quarter), 15 years, year 1, is 0.83%, and $18,751.20 x 0.83% = $155.63, the project's amount. Both sides agree on the basis ($18,751.20, 19(c)) and the fourth-quarter convention. Not evidence.",
+   "drop": true,
+   "context": "7b285fbf5a63a1399e36ce7818dea408b2fc5aaeeecdb0512a1a36373029efb9",
+   "date": "2026-11-14",
+   "run": "5b1f6c7cd6e5bf2dfbd3a53a4433e42f86701cffd03226ae69089a75c6b13138",
+   "subject_key": "57a5e92e6c46b281878567ddf7080793c4676240f571c50881b1b8227f369578"
+  },
+  {
+   "case": "classm.asset.3",
    "printed": "person[taxpayer].sc[biz_a].asset[item_1].pct_c",
    "project": "$0.30",
    "model": "$30.00",
@@ -417,6 +429,18 @@
    "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
    "drop": true,
    "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].period",
+   "project": "y15sl",
+   "model": "y15",
+   "ruling": "Ruling: model error; project retained. The item is qualified improvement property placed in service after 2017; p946 Table 4-1, GDS using SL: \"Qualified improvement property (as defined in section 168(e)(6) of the Internal Revenue Code) placed in service after 2017\". The class is 15-year straight line (y15sl), as the project has it; the model gave the 15-year 150% DB class (y15), as in the earlier ruling on classm.asset.2. Not evidence.",
+   "drop": true,
+   "context": "7b285fbf5a63a1399e36ce7818dea408b2fc5aaeeecdb0512a1a36373029efb9",
+   "date": "2026-11-14",
+   "run": "5b1f6c7cd6e5bf2dfbd3a53a4433e42f86701cffd03226ae69089a75c6b13138",
+   "subject_key": "2e8750be8528884e66fe2a3b26a7059859817aaa72283972d0efe3f1f712f68c"
   },
   {
    "case": "classm.asset.3",
@@ -489,6 +513,18 @@
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
    "drop": true,
    "subject_key": "47230d6e6b608bddb2b79d4c63fc52a9f45b8371c13e39b112206ea2fcda2b2b"
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].basis",
+   "project": "$165.00",
+   "model": "$0.00",
+   "ruling": "Ruling: model error; project retained. The line requested is the project's '(c)' marker, labeled \"Basis for depreciation (business/investment use only), before section 179 and the special allowance\": $165.00 x 100% = $165.00. The model subtracted the section 179 deduction, which i4562 p. 11, Column (c) (\"From that result, subtract any credits and deductions allocable to the property ... Section 179 expense deduction\") applies to the reduced basis the project carries at 19(c) (asset.col19c), as settled in the transcription rulings on (c) (representation: the business basis at (c), the reduced basis at 19(c)). The model read the label wrong. Not evidence.",
+   "drop": true,
+   "context": "7b285fbf5a63a1399e36ce7818dea408b2fc5aaeeecdb0512a1a36373029efb9",
+   "date": "2026-11-14",
+   "run": "ab9490699c839dc2ed06d2e03e604f3812f3f09f11f78ebb12a929e75257ac50",
+   "subject_key": "a5cf37895b7abc216bdf316bad207205613e0db9503b36b900df8681a68fd70e"
   },
   {
    "case": "classm.asset.4",

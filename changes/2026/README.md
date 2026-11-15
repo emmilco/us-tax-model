@@ -9,7 +9,7 @@ adopted copy. Nothing here is read by the build.
 | File | Entries | Operations | Change-map entries |
 |---|---:|---:|---|
 | `f1040.yaml` | 8 | 34 | C-PRI-01, -02, -03, -04, -05, -07, -08, -18 |
-| `sa.yaml` | 6 | 29 | C-PRI-14 to C-PRI-18 |
+| `sa.yaml` | 6 | 33 | C-PRI-14 to C-PRI-18 |
 | `scveh.yaml` | 1 | 17 | C-BUS-01 |
 | `w2.yaml` | 1 | 4 | C-PRI-24 |
 | `s3a.yaml` | 1 | 2 | C-PRI-05 (the new Schedule 3-A) |
@@ -30,6 +30,11 @@ mended (each entry concerned says so in its `note`):
 - The questions the proposals left to adoption are written: `f1040.form1062`, `s3a.wants_benefit`, `w2.box12_tp`,
   `w2.box12_tt`, and `scveh.miles_business_h1` and `_h2`, which take the place of `scveh.miles_business` in the bank
   and the profiles.
+- The interview redraft: `f1040.line33` reads `f1040.line26_if_estimated` (line 26 is asked beneath
+  `f1040.estimated_any`); the Schedule A screen `sa.unsupported` is a computed line over the questions it was taken
+  apart into, so its label is re-based on it, mortgage insurance premiums (line 8d) are a new question
+  `sa.mortgage_insurance` beneath the mortgage interest answer that makes it true, and the disaster rule for personal
+  casualty losses is re-based on the help of `sd.casualty`.
 - `s3a.line4` reads the 2026 Schedule 2 line 20, which the Schedule 2 renumbering (C-SCHED-10) is to add; the entry
   `awaits` it, so the check reports it and adoption refuses until an operation adds it.
 

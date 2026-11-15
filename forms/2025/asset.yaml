@@ -95,13 +95,716 @@ form:
       doc: i4562
       locator: p. 10, Determining the classification, "Qualified improvement property, as defined in section 168(e)(6),
         placed in service by you after December 31, 2017"
-  - id: asset.screen
+  - id: asset.claims_bonus
+    printed: (helper)
+    label: 'Placed in service in 2025 and a special depreciation allowance is claimed for its class'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - asset.placed_this_year
+          - const: true
+        then: asset.bonus_claimed
+      - guard:
+          op: test
+          eq:
+          - asset.placed_this_year
+          - const: false
+        then: asset.no
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.kind_excluded
     printed: (screen)
-    label: Does any of these apply to this property?
+    label: 'Real property (a building or a structural component, other than qualified improvement property) or land; a
+      car, truck or other vehicle; an aircraft; a film, videotape or sound recording'
     type: Bool
     expr:
       op: input
+      source: 'Is this a building or part of one, land, a vehicle, an aircraft, a film or a recording?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.software
+    printed: (screen)
+    label: 'Computer software'
+    type: Bool
+    expr:
+      op: input
+      source: 'Is this computer software?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.software_spread
+    printed: (screen)
+    label: 'Computer software not placed in service in 2025, or whose business cost is not all deducted in 2025
+      through section 179 and the special depreciation allowance'
+    type: Bool
+    gated_by: asset.software_spread_if_software
+    expr:
+      op: input
+      source: 'Is any of its business cost left to deduct after 2025: you began using it before 2025, or you are not
+        deducting the whole cost in 2025?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.software_spread_if_software
+    printed: (gate)
+    label: 'Computer software not placed in service in 2025, or whose business cost is not all deducted in 2025
+      through section 179 and the special depreciation allowance, asked only of computer software (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - asset.software
+          - const: true
+        then: asset.software_spread
+      - guard:
+          op: test
+          eq:
+          - asset.software
+          - const: false
+        then: asset.no
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.industry
+    printed: (screen)
+    label: 'The business is a utility, an energy producer, a recycler, a rent-to-own dealer, a motorsports complex, or
+      one with floor plan financing'
+    type: Bool
+    expr:
+      op: input
+      source: 'Is your business a utility or energy producer, a recycler, a rent-to-own dealer, a motor racing track,
+        or a dealer that finances its stock with a loan secured by it?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.industry_item
+    printed: (screen)
+    label: 'Qualified reuse and recycling property; qualified rent-to-own property; energy property; a motorsports
+      entertainment complex; a natural gas gathering line; smart electric meter or grid property; electric transmission
+      property; an initial clearing and grading land improvement for utility property; or, with a special depreciation
+      allowance in 2025, property described in section 168(k)(9)(A) or 168(k)(9)(B)'
+    type: Bool
+    gated_by: asset.industry_item_if_industry
+    expr:
+      op: input
       source: |-
+        Is this item any of these?
+
+        - machinery or equipment used exclusively to collect, distribute or recycle reuse and recyclable materials (qualified reuse and recycling property, section 168(m))
+        - qualified rent-to-own property (section 168(i)(14))
+        - energy property specified in section 168(e)(3)(B)(vi)
+        - a motorsports entertainment complex (section 168(i)(15))
+        - a natural gas gathering line (section 168(i)(17))
+        - qualified smart electric meter or qualified smart electric grid system property
+        - electric transmission property specified in section 168(e)(3)(E)(v)
+        - an initial clearing and grading land improvement for gas utility property or for electric utility transmission and distribution plants
+        - property you claim a special depreciation allowance for in 2025 that is either of these:
+          - property primarily used in a trade or business of furnishing or selling electrical energy, water or sewage disposal services, gas or steam through a local distribution system, or transportation of gas or steam by pipeline, whose rates are established or approved by a State or political subdivision, an agency or instrumentality of the United States, a public service or public utility commission or similar body of a State or political subdivision, or the governing or ratemaking body of an electric cooperative
+          - property used in a trade or business that has had floor plan financing indebtedness (a loan used to buy motor vehicles, boats, farm machinery or equipment, or trailers or campers held for sale or lease, and secured by them) whose interest was taken into account under section 163(j)(1)(C) in figuring the business interest expense limit
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.industry_item_if_industry
+    printed: (gate)
+    label: 'Qualified reuse and recycling property; qualified rent-to-own property; energy property; a motorsports
+      entertainment complex; a natural gas gathering line; smart electric meter or grid property; electric transmission
+      property; an initial clearing and grading land improvement for utility property; or, with a special depreciation
+      allowance in 2025, property described in section 168(k)(9)(A) or 168(k)(9)(B), asked only of a business of one of
+      those kinds (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - asset.industry
+          - const: true
+        then: asset.industry_item
+      - guard:
+          op: test
+          eq:
+          - asset.industry
+          - const: false
+        then: asset.no
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.long_production
+    printed: (screen)
+    label: 'Property with a long production period, or qualified production property'
+    type: Bool
+    expr:
+      op: input
+      source: 'Was it built or produced for you over a long period (property with a ''long production period''), or is
+        it ''qualified production property''?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.got_other
+    printed: (screen)
+    label: 'Acquired in a like-kind exchange or an involuntary conversion, with a trade-in, from a related person, or
+      by gift or inheritance'
+    type: Bool
+    expr:
+      op: input
+      source: 'Did you get it with a trade-in, in an exchange, as a replacement for property that was destroyed,
+        stolen or condemned, from a relative or a business you control, or as a gift or inheritance?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.acquired_before_bonus_date
+    printed: (screen)
+    label: 'Acquired before September 28, 2017'
+    type: Bool
+    expr:
+      op: input
+      source: 'Did you get it before September 28, 2017?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.used_before
+    printed: (screen)
+    label: 'A special depreciation allowance is claimed for it in 2025 and its original use did not begin with you'
+    type: Bool
+    gated_by: asset.used_before_if_bonus
+    expr:
+      op: input
+      source: 'Had anyone used it before you got it?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.used_before_if_bonus
+    printed: (gate)
+    label: 'A special depreciation allowance is claimed for it in 2025 and its original use did not begin with you,
+      asked only of property placed in service in 2025 with a special depreciation allowance (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - asset.claims_bonus
+          - const: true
+        then: asset.used_before
+      - guard:
+          op: test
+          eq:
+          - asset.claims_bonus
+          - const: false
+        then: asset.no
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.ended_this_year
+    printed: (screen)
+    label: 'Disposed of, or a portion of it disposed of, or converted to personal use in 2025'
+    type: Bool
+    expr:
+      op: input
+      source: 'In 2025, did you sell, give away or scrap it or part of it, or start using it personally and no longer
+        in the business?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.basis_changed
+    printed: (screen)
+    label: 'Basis adjusted for anything other than depreciation (for example a casualty loss), or reduced by a credit
+      or deduction other than the section 179 deduction and the special depreciation allowance, for example: the section
+      179D deduction for energy efficient commercial building property; the deduction for removal of barriers to the
+      disabled and the elderly; the disabled access credit; the enhanced oil recovery credit; the credit for alternative
+      fuel vehicle refueling property; the credit for employer-provided childcare facilities and services; a basis
+      adjustment for investment credit property or advanced manufacturing investment credit property'
+    type: Bool
+    expr:
+      op: input
+      source: 'Has its cost for tax purposes been changed by anything except depreciation, such as a casualty loss, or
+        a tax credit or special deduction taken for it?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.use_changed
+    printed: (screen)
+    label: 'Its business use percentage has changed since it was placed in service'
+    type: Bool
+    gated_by: asset.use_changed_if_earlier
+    expr:
+      op: input
+      source: 'Has the business share of its use changed since you first used it in the business?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.use_changed_if_earlier
+    printed: (gate)
+    label: 'Its business use percentage has changed since it was placed in service, asked only of property placed in
+      service before 2025 (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - asset.placed_this_year
+          - const: false
+        then: asset.use_changed
+      - guard:
+          op: test
+          eq:
+          - asset.placed_this_year
+          - const: true
+        then: asset.no
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.short_year
+    printed: (screen)
+    label: 'The 2025 tax year, or any tax year since it was placed in service, is shorter than 12 months'
+    type: Bool
+    expr:
+      op: input
+      source: 'Was 2025, or any year since you began using it in the business, a tax year of less than 12 months for
+        you?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.method_other
+    printed: (screen)
+    label: 'ADS, the straight line method or the 150% declining balance method elected; a method other than the MACRS
+      percentage tables; a general asset account; amortized'
+    type: Bool
+    expr:
+      op: input
+      source: 'Did you choose a special way of depreciating it: straight line, 150% declining balance, the alternative
+        system (ADS), a general asset account, amortization, or any method that does not use the IRS percentage tables?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.ads_required
+    printed: (screen)
+    label: 'Must be depreciated under ADS, for example: imported property covered by an executive order of the
+      President of the United States; property used predominantly in a farming business and placed in service in a tax
+      year in which you made an election under section 263A(d)(3) not to have the uniform capitalization rules apply;
+      qualified improvement property held by an electing real property trade or business; property with a recovery
+      period of 10 years or more held by an electing farming business'
+    type: Bool
+    expr:
+      op: input
+      source: 'Are you required to use the alternative depreciation system (ADS) for it, for example as imported
+        property covered by a presidential order, or as property of a farming or real estate business that made certain
+        elections?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.outside_use
+    printed: (screen)
+    label: 'Used predominantly outside the United States, or tax-exempt use or tax-exempt bond financed property'
+    type: Bool
+    expr:
+      op: input
+      source: 'Is it used mostly outside the United States, leased to a charity, a government or a foreign person, or
+        paid for with tax-exempt bonds?'
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.qbu_low
+    printed: (screen)
+    label: 'Listed property whose qualified business use is 50% or less'
+    type: Bool
+    gated_by: asset.qbu_low_if_listed
+    expr:
+      op: input
+      source: |-
+        Is its business use 50% or less once you leave out these uses, which are not qualified business use?
+
+        - investment use
+        - leasing it to a 5% owner or related person, or using it as compensation for services of a 5% owner or related person, unless for the lease the value is reported as income to that person
+        - using it as compensation for services of anyone else unless an amount is included in that person's income for the use and any required income tax was withheld
+        - use that is nondeductible under section 274
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.qbu_low_if_listed
+    printed: (gate)
+    label: 'Listed property whose qualified business use is 50% or less, asked only of listed property (false
+      otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - asset.listed
+          - const: true
+        then: asset.qbu_low
+      - guard:
+          op: test
+          eq:
+          - asset.listed
+          - const: false
+        then: asset.no
+    cite:
+      doc: i4562
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
+        Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
+        include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
+  - id: asset.screen
+    printed: (screen)
+    label: |-
         Does any of these apply to this property?
 
         - you disposed of it, or of a portion of it, or converted it to personal use in 2025
@@ -152,6 +855,70 @@ form:
           - leasing it to a 5% owner or related person, or using it as compensation for services of a 5% owner or related person, unless for the lease the value is reported as income to that person
           - using it as compensation for services of anyone else unless an amount is included in that person's income for the use and any required income tax was withheld
           - use that is nondeductible under section 274
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - asset.kind_excluded
+        - const: true
+      - op: test
+        eq:
+        - asset.software_spread_if_software
+        - const: true
+      - op: test
+        eq:
+        - asset.industry_item_if_industry
+        - const: true
+      - op: test
+        eq:
+        - asset.long_production
+        - const: true
+      - op: test
+        eq:
+        - asset.got_other
+        - const: true
+      - op: test
+        eq:
+        - asset.acquired_before_bonus_date
+        - const: true
+      - op: test
+        eq:
+        - asset.used_before_if_bonus
+        - const: true
+      - op: test
+        eq:
+        - asset.ended_this_year
+        - const: true
+      - op: test
+        eq:
+        - asset.basis_changed
+        - const: true
+      - op: test
+        eq:
+        - asset.use_changed_if_earlier
+        - const: true
+      - op: test
+        eq:
+        - asset.short_year
+        - const: true
+      - op: test
+        eq:
+        - asset.method_other
+        - const: true
+      - op: test
+        eq:
+        - asset.ads_required
+        - const: true
+      - op: test
+        eq:
+        - asset.outside_use
+        - const: true
+      - op: test
+        eq:
+        - asset.qbu_low_if_listed
+        - const: true
     cite:
       doc: i4562
       locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
@@ -379,15 +1146,16 @@ form:
         locator: p. 14, Lines 26 and 27; p. 15, Column (f)—Recovery period, "For property placed in service after 1986 and
           used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS
           recovery period"
-  - id: asset.is2025
+  - id: asset.placed_this_year
     printed: (helper)
     label: Placed in service in 2025
     type: Bool
     expr:
       op: test
       eq:
-      - asset.placed
-      - const: y2025
+      - asset.year
+      - const: 1
+        type: Count
     cite:
       doc: i4562
       locator: p. 9, Lines 19a Through 19j, "Use lines 19a through 19j only for assets placed in service during the
@@ -402,7 +1170,7 @@ form:
       all:
       - op: test
         eq:
-        - asset.is2025
+        - asset.placed_this_year
         - const: true
       - op: test
         eq:
@@ -421,7 +1189,7 @@ form:
       all:
       - op: test
         eq:
-        - asset.is2025
+        - asset.placed_this_year
         - const: false
       - op: test
         eq:
@@ -430,7 +1198,7 @@ form:
     cite:
       doc: i4562
       locator: p. 9, Line 17
-  - id: asset.on_26_2025
+  - id: asset.on_26_this_year
     printed: (helper)
     label: Reported on lines 25 and 26 column (i) (listed property placed in service in 2025)
     type: Bool
@@ -439,7 +1207,7 @@ form:
       all:
       - op: test
         eq:
-        - asset.is2025
+        - asset.placed_this_year
         - const: true
       - op: test
         eq:
@@ -490,6 +1258,13 @@ form:
       doc: p946
       locator: p. 37, Using the MACRS Percentage Tables
     refuses:
+    - when: asset.listed_low
+      form: Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%
+      remedy: Listed property used 50% or less for business is depreciated under ADS and is outside this tool.
+      cite:
+        doc: i4562
+        locator: p. 15, "used 50% or less in a qualified business use, depreciate the property using the straight line
+          method over its ADS recovery period"
     - when: asset.screened
       form: Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in
         service before 2018, disposition, exchange, real property, reuse and recycling property, an acquisition before
@@ -499,13 +1274,6 @@ form:
       cite:
         doc: i4562
         locator: pp. 8-12, Part III, and Pub. 946 Appendix B
-    - when: asset.listed_low
-      form: Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%
-      remedy: Listed property used 50% or less for business is depreciated under ADS and is outside this tool.
-      cite:
-        doc: i4562
-        locator: p. 15, "used 50% or less in a qualified business use, depreciate the property using the straight line
-          method over its ADS recovery period"
   - id: asset.quarter
     printed: (helper)
     label: Quarter of 2025 in which the property was placed in service
@@ -592,26 +1360,20 @@ form:
       or it is not section 179 property
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        gt:
-        - asset.s179
-        - asset.zero
-      - op: test
-        any:
-        - op: test
-          gt:
-          - asset.s179
-          - asset.basis
-        - op: test
+      op: choose
+      alternatives:
+      - guard:
+          op: test
           eq:
-          - asset.over_half
-          - const: false
-        - op: test
-          eq:
-          - asset.not179
+          - asset.s179_bad_test1
           - const: true
+        then: asset.s179_bad_test2
+      - guard:
+          op: test
+          eq:
+          - asset.s179_bad_test1
+          - const: false
+        then: asset.no
     cite:
       doc: i4562
       locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
@@ -662,6 +1424,20 @@ form:
       source: For the class of property this belongs to (its recovery period), did you claim the special depreciation allowance
         (full), elect the 40% allowance instead of 100% for property acquired after January 19, 2025 (forty), or elect not
         to claim any special allowance (none)?
+    cite:
+      doc: i4562
+      locator: pp. 5–6, Line 14, "you can elect to take a 40% special depreciation allowance"; p. 7, Election out, "for any class
+        of property"
+  - id: asset.bonus_claimed
+    printed: (helper)
+    label: A special depreciation allowance is claimed for the class of this property (the full allowance or the 40%
+      allowance)
+    type: Bool
+    expr:
+      op: test
+      ne:
+      - asset.bonus_choice
+      - const: none
     cite:
       doc: i4562
       locator: pp. 5–6, Line 14, "you can elect to take a 40% special depreciation allowance"; p. 7, Election out, "for any class
@@ -771,6 +1547,28 @@ form:
       - guard:
           op: test
           eq:
+          - asset.placed_this_year
+          - const: true
+        then: asset.bonus_elected
+      - guard:
+          op: test
+          eq:
+          - asset.placed_this_year
+          - const: false
+        then: asset.zero
+    cite:
+      doc: i4562
+      locator: pp. 5-7, Line 14, Qualified property and Election out
+  - id: asset.bonus_elected
+    printed: (helper)
+    label: Special depreciation allowance for this property as elected for its class
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
           - asset.bonus_choice
           - const: full
         then: asset.bonus_fullcase
@@ -792,7 +1590,7 @@ form:
   - id: asset.f25
     printed: '25'
     label: Special depreciation allowance for this listed property (line 25)
-    shown_when: asset.on_26_2025
+    shown_when: asset.on_26_this_year
     type: NonNegDollars
     expr:
       op: copy
@@ -803,7 +1601,7 @@ form:
   - id: asset.f26i
     printed: 26(i)
     label: Elected section 179 cost of this listed property (column (i))
-    shown_when: asset.on_26_2025
+    shown_when: asset.on_26_this_year
     type: NonNegDollars
     expr:
       op: copy
@@ -900,7 +1698,7 @@ form:
     cite:
       doc: i4562
       locator: p. 12, Column (g)
-  - id: asset.macrs2025
+  - id: asset.macrs_this_year
     printed: 19(g)
     label: MACRS depreciation for 2025 property
     shown_when: asset.on_19
@@ -936,7 +1734,7 @@ form:
       locator: p. 34, Which Convention Applies?, Mid-quarter convention, Caution, "reflects the reduction in basis for amounts
         expensed under section 179 and the part of the basis of property attributable to personal use. However, it does not
         reflect any reduction in basis for any special depreciation allowance"
-  - id: asset.mq_q4_2025
+  - id: asset.mqbase_q4
     printed: (helper)
     label: That basis when placed in service October to December
     type: NonNegDollars
@@ -1079,7 +1877,7 @@ form:
       doc: i4562
       locator: p. 9, Line 17; i4562 p. 9, "Prior years' depreciation, plus current year's depreciation, can never exceed the
         depreciable basis"
-  - id: asset.dep_2025
+  - id: asset.dep_this_year
     printed: (helper)
     label: MACRS on 2025 property
     type: NonNegDollars
@@ -1089,19 +1887,19 @@ form:
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: true
-        then: asset.macrs2025
+        then: asset.macrs_this_year
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: false
         then: asset.zero
     cite:
       doc: i4562
       locator: p. 9, Lines 19a Through 19j and Line 17; p. 4, Line 2
-  - id: asset.bonus_2025
+  - id: asset.bonus_this_year
     printed: (helper)
     label: Special allowance on 2025 property
     type: NonNegDollars
@@ -1111,19 +1909,19 @@ form:
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: true
         then: asset.bonus
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: false
         then: asset.zero
     cite:
       doc: i4562
       locator: p. 9, Lines 19a Through 19j and Line 17; p. 4, Line 2
-  - id: asset.s179_2025
+  - id: asset.s179_this_year
     printed: (helper)
     label: Section 179 elected on 2025 property
     type: NonNegDollars
@@ -1133,13 +1931,13 @@ form:
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: true
         then: asset.s179
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: false
         then: asset.zero
     cite:
@@ -1155,13 +1953,13 @@ form:
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: true
-        then: asset.mq_q4_2025
+        then: asset.mqbase_q4
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: false
         then: asset.zero
     cite:
@@ -1177,13 +1975,13 @@ form:
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: true
         then: asset.mqbase
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: false
         then: asset.zero
     cite:
@@ -1199,19 +1997,19 @@ form:
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: true
-        then: asset.cost179_2025
+        then: asset.cost179_over_half
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: false
         then: asset.zero
     cite:
       doc: i4562
       locator: p. 9, Lines 19a Through 19j and Line 17; p. 4, Line 2
-  - id: asset.cost179_2025
+  - id: asset.cost179_over_half
     printed: (helper)
     label: The business cost when used more than 50% in the business
     type: NonNegDollars
@@ -1294,13 +2092,13 @@ form:
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: false
         then: asset.macrs_prior
       - guard:
           op: test
           eq:
-          - asset.is2025
+          - asset.placed_this_year
           - const: true
         then: asset.zero
     cite:
@@ -1314,12 +2112,114 @@ form:
     expr:
       op: sum
       of:
-      - asset.dep_2025
+      - asset.dep_this_year
       - asset.dep_prior
     cite:
       doc: i4562
       locator: p. 15, Column (h)—Depreciation deduction, "For property used more than 50% in a qualified business use (line
         26) ... figure column (h) by following the instructions for line 19, column (g)"
+  - id: asset.no
+    printed: (helper)
+    label: Year parameter household.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: i4562
+      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
+        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
+        and "you cannot elect the section 179 deduction for the following property"
+  - id: asset.s179_bad_test1
+    printed: (helper)
+    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 1"
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - asset.s179
+      - asset.zero
+    cite:
+      doc: i4562
+      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
+        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
+        and "you cannot elect the section 179 deduction for the following property"
+  - id: asset.s179_bad_test2
+    printed: (helper)
+    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 2"
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - asset.s179_bad_test2_test1
+          - const: true
+        then: asset.s179_bad_test2_test1
+      - guard:
+          op: test
+          eq:
+          - asset.s179_bad_test2_test1
+          - const: false
+        then: asset.s179_bad_test2_from2
+    cite:
+      doc: i4562
+      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
+        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
+        and "you cannot elect the section 179 deduction for the following property"
+  - id: asset.s179_bad_test2_test1
+    printed: (helper)
+    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 2: condition 1"
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - asset.s179
+      - asset.basis
+    cite:
+      doc: i4562
+      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
+        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
+        and "you cannot elect the section 179 deduction for the following property"
+  - id: asset.s179_bad_test2_test2
+    printed: (helper)
+    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 2: condition 2"
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - asset.over_half
+      - const: false
+    cite:
+      doc: i4562
+      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
+        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
+        and "you cannot elect the section 179 deduction for the following property"
+  - id: asset.s179_bad_test2_from2
+    printed: (helper)
+    label: "The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property: condition 2: conditions 2 to 3"
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - asset.over_half
+          - const: false
+        then: asset.s179_bad_test2_test2
+      - guard:
+          op: test
+          eq:
+          - asset.over_half
+          - const: true
+        then: asset.not179
+    cite:
+      doc: i4562
+      locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
+        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
+        and "you cannot elect the section 179 deduction for the following property"
   collection:
     parent: sc
     cite:

@@ -30,6 +30,16 @@
   },
   {
    "printed": "filing_status_conflict",
+   "restated": "Choose — [f1040 line Filing Status = 'single' → helper \"Married at the end of 2025 (false for a person filing as single or head of household who has never been married)\"] [f1040 line Filing Status = 'mfj' → helper \"Filing jointly, not married at the end of 2025, and no spouse who died in 2025\"] [f1040 line Filing Status = 'mfs' → helper \"Year parameter household.no (false)\"] [f1040 line Filing Status = 'hoh' → helper \"Year parameter household.no (false)\"] [f1040 line Filing Status = 'qss' → helper \"Year parameter household.no (false)\"]",
+   "model": "The Single and MFJ branches match i1040gi, but MFS and QSS always return false. i1040gi says 'Check the Married filing separately box... if you are married at the end of 2025', so MFS with married at year end = No is a conflict. QSS requires 'Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025' and says 'If your spouse died in 2025, you can't file as qualifying surviving spouse', but a QSS filer married at year end or widowed in 2025 is not flagged.",
+   "ruling": "Ruling: scope; i1040gi p. 14, Married Filing Separately; p. 15, Qualifying Surviving Spouse, \"1. Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025\", as the earlier rulings. Married filing separately is refused for the whole return by s3.mfs (scope.ready), so an unmarried MFS filer gets no completed return. A QSS filer who remarried or whose spouse died in 2025 fails household.qss_eligible (first test: \"Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025 (if your spouse died in 2025, answer No)\"), and household.qss_fails refuses Form 1040 line 12e. The gate covers the statuses whose conflict is not refused elsewhere (single with a year-end marriage; joint without one and without a 2025 death). Project stands.",
+   "context": "d5d1faa6308bb2408e2b3dddaf73e17f19115b70b0da188f77e47a463df0d51d",
+   "date": "2026-11-14",
+   "run": "1d344c463b19ea8b85b21f45ecf6b01690ef3e6f58abcff6daf17d24d3d15df0",
+   "subject_key": "c5de0d580de4feac9cb050f4d5a62c2c5dd3a0a3a4930ccf571f22d6fdc5ffb0"
+  },
+  {
+   "printed": "filing_status_conflict",
    "restated": "Choose — [f1040 line Filing Status = 'single' → helper \"Were you married at the end of 2025?\"] [f1040 line Filing Status = 'mfj' → helper \"Filing jointly, not married at the end of 2025, and no spouse who died in 2025\"] [f1040 line Filing Status = 'mfs' → helper \"Year parameter household.no (false)\"] [f1040 line Filing Status = 'hoh' → helper \"Year parameter household.no (false)\"] [f1040 line Filing Status = 'qss' → helper \"Year parameter household.no (false)\"]",
    "model": "MFS and QSS always return false, so some conflicts are never detected. The IRS says to check MFS only 'if you are married at the end of 2025 and file a separate return,' and QSS requires that 'you didn't remarry before the end of 2025.'",
    "ruling": "Ruling: scope; i1040gi p. 14, Married Filing Separately; p. 15, Qualifying Surviving Spouse, \"1. Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025.\" A separate return is outside the tool: s3.mfs refuses scope.ready and the return's closing lines (executed on stage8.hoh.child.ctc with status mfs and household.married No: f1040.line31, line33 and line37 refused at s3.mfs), so an unmarried MFS filer gets no completed return. A remarried QSS filer fails household.qss_eligible, whose first test is the no-remarriage test, and household.qss_fails refuses line 12e (executed with status qss: line 12e and line 24 refused at household.qss_fails). The gate covers the two supported statuses that can contradict the marriage facts (single with a year-end marriage; joint with no year-end marriage and no 2025 death), as BUG-0286 records; its expression was not changed by the gate-wave rewrite. As the prior ruling. Project stands.",
@@ -37,6 +47,16 @@
    "date": "2026-11-09",
    "run": "cf3f13ff2914b8ea8813dda9a38af6ee60f48730a34871c9a5b18b7703c829c6",
    "subject_key": "e0d49611119309c857cc78e25e04fee01d734282f6d444d4cb723a1f09b2af92"
+  },
+  {
+   "printed": "hoh_eligible",
+   "restated": "helper \"Unmarried, or considered unmarried under the head of household rules, at the end of 2025\" = true and (helper \"Test 1 met\" = true or helper \"Test 2 met, having paid over half the cost of keeping up your own home\" = true)",
+   "model": "The formula matches 'only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies.' However, Pub. 501 says 'If your spouse died during the year, you are considered married for the whole year for filing status purposes,' and married_dec31 leaves that case to separate handling. Whether a filer widowed in 2025 is kept out of HOH depends on a use of widowed_this_year that this review does not show.",
+   "ruling": "Ruling: scope; Pub. 501 p. 6, Spouse died during the year: \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\" A head of household filer whose spouse died in 2025 is refused: household.widowed_this_year (hoh branch, household.spouse_died_this_year_if_ever_married) refuses Form 1040 line 12e (forms/2025/f1040.yaml, \"Filing status after a spouse's death in 2025\"), and household.considered_unmarried tells the filer \"if your spouse died in 2025, you are considered married for the whole year: answer No\". So hoh_eligible never decides a completed return for a filer widowed in 2025; the line itself states i1040gi p. 14 correctly. Project stands.",
+   "context": "d5d1faa6308bb2408e2b3dddaf73e17f19115b70b0da188f77e47a463df0d51d",
+   "date": "2026-11-14",
+   "run": "1d344c463b19ea8b85b21f45ecf6b01690ef3e6f58abcff6daf17d24d3d15df0",
+   "subject_key": "35347e142747b15be0a840c165e3e1b140176fb5fd299f0f4da47d419d67d04f"
   },
   {
    "printed": "hsa_share_sum",

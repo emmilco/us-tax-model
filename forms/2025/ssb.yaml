@@ -6,8 +6,29 @@ form:
   note: The worksheet of the Form 1040 instructions; the exceptions that send a filer to Pub. 915 or Pub. 590-A,
     and the lump-sum election, are refused.
   lines:
+  - id: ssb.any
+    printed: (helper)
+    label: 'Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them.'
+    type: Bool
+    expr:
+      op: input
+      source: 'Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them.'
+    cite:
+      doc: i1040gi
+      locator: p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b
+  - id: ssb.no
+    printed: (helper)
+    label: Year parameter s3.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: s3.no
+    cite:
+      doc: i1040gi
+      locator: p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b
   - id: ssb.benefits
     printed: (helper)
+    gated_by: ssb.benefits_if_any
     label: 'Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099'
     type: NonNegDollars
     expr:
@@ -17,29 +38,84 @@ form:
     cite:
       doc: i1040gi
       locator: p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b
-  - id: ssb.pub915
+  - id: ssb.ira_covered
     printed: (helper)
-    label: 'Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you (or, on a joint return, your spouse) were covered by a retirement plan at work or through self-employment; your social security repayments in 2025
-      (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided
-      adoption benefits or income from sources within Puerto Rico?'
+    label: 'Did you (or, on a joint return, your spouse) put money into a traditional IRA for 2025 while covered by a retirement plan at work or through self-employment?'
     type: Bool
     expr:
       op: input
-      source: 'Does any of these apply: you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you (or, on a joint return, your spouse) were covered by a retirement plan at work or through self-employment; your social security repayments in
-        2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided
-        adoption benefits or income from sources within Puerto Rico?'
+      source: 'Did you (or, on a joint return, your spouse) put money into a traditional IRA for 2025 while covered by a retirement plan at work or through self-employment?'
     cite:
       doc: i1040gi
       locator: p. 31, Lines 6a and 6b, Exception
-  - id: ssb.lump_sum
+  - id: ssb.repaid_more
     printed: (helper)
-    label: Do you elect to use the lump-sum election method for a social security benefit payment to you (or, on a joint
-      return, your spouse) that was for an earlier year?
+    label: 'On any of your (or, on a joint return, your spouse''s) Forms SSA-1099 or RRB-1099, is box 4 (benefits repaid) more than box 3 (benefits paid)?'
     type: Bool
     expr:
       op: input
-      source: Do you elect to use the lump-sum election method for a social security benefit payment to you (or, on a joint
-        return, your spouse) that was for an earlier year?
+      source: 'On any of your (or, on a joint return, your spouse''s) Forms SSA-1099 or RRB-1099, is box 4 (benefits repaid) more than box 3 (benefits paid)?'
+    cite:
+      doc: i1040gi
+      locator: p. 31, Lines 6a and 6b, Exception
+  - id: ssb.pub915
+    printed: (helper)
+    label: 'A situation in which the Social Security Benefits Worksheet of the Form 1040 instructions does not apply: a traditional IRA contribution for 2025 by a person covered by a retirement plan, or repayments (box 4) that are more than the benefits (box 3). The excluded income of Forms 2555 and 4563 and of Puerto Rico, the savings bond interest of Form 8815 and employer adoption benefits are asked about at their own questions.'
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - ssb.ira_covered
+        - const: true
+      - op: test
+        eq:
+        - ssb.repaid_more
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: p. 31, Lines 6a and 6b, Exception
+  - id: ssb.prior_year_pay
+    printed: (helper)
+    label: 'Did the 2025 benefits paid to you (or, on a joint return, your spouse) include a payment for an earlier year? The Form SSA-1099 says so in its description of the amount in box 3.'
+    type: Bool
+    expr:
+      op: input
+      source: 'Did the 2025 benefits paid to you (or, on a joint return, your spouse) include a payment for an earlier year? The Form SSA-1099 says so in its description of the amount in box 3.'
+    cite:
+      doc: i1040gi
+      locator: p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP
+  - id: ssb.lump_elect
+    printed: (helper)
+    label: 'Do you want to figure the tax on that earlier year''s payment with the lump-sum election method?'
+    type: Bool
+    gated_by: ssb.lump_sum
+    expr:
+      op: input
+      source: 'Do you want to figure the tax on that earlier year''s payment with the lump-sum election method?'
+    cite:
+      doc: i1040gi
+      locator: p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP
+  - id: ssb.lump_sum
+    printed: (gate)
+    label: 'The lump-sum election method is chosen for a benefit payment that was for an earlier year (asked only when the benefits include such a payment; false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ssb.prior_year_pay
+          - const: true
+        then: ssb.lump_elect
+      - guard:
+          op: test
+          eq:
+          - ssb.prior_year_pay
+          - const: false
+        then: ssb.no
     cite:
       doc: i1040gi
       locator: p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP
@@ -64,13 +140,35 @@ form:
     cite:
       doc: i1040gi
       locator: p. 31, Line 6d; p. 32, worksheet, Before you begin and line 8
+  - id: ssb.benefits_if_any
+    printed: (gate)
+    label: 'Net benefits, asked only of a filer who got social security or railroad retirement benefits (none otherwise)'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ssb.any
+          - const: true
+        then: ssb.benefits
+      - guard:
+          op: test
+          eq:
+          - ssb.any
+          - const: false
+        then: ssb.zero
+    cite:
+      doc: i1040gi
+      locator: p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b
   - id: ssb.line1
     printed: '1'
     label: Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099
     type: NonNegDollars
     expr:
       op: copy
-      from: ssb.benefits
+      from: ssb.benefits_if_any
     cite:
       doc: i1040gi
       locator: p. 32, Social Security Benefits Worksheet, line 1

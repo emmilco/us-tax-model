@@ -149,6 +149,34 @@
    "date": "2026-11-04",
    "run": "5dfa6a4e46e56519758f3b0c44170dcee514a2c71aeb203255fec1ff73db040a",
    "subject_key": "c21350a26c46e8cbd390bcb8fdcdeb9958bb06822a44e357f22881ef44c627e0"
+  },
+  {
+   "printed": "sales.route_if_chosen",
+   "project_expr_sha256": "e6d24f5d1b422241276682e540d641a127dcb4081542df3d3b3433da46f3033d",
+   "second_expr_sha256": "b0f8f4ed49d8d51e04c852cf266e554405fb376a946f3b7b3f269ca3be2d8485",
+   "ruling": "Ruling: representation; triage 1,898/1,933 agree, no value difference; differences are candidate-unknown (the reply reads sales.route, which is asked only when sd.route_each is Yes) and candidate-refuses (6 on completed returns: the reply's own consistency refusal of an aggregate route that fails Exception 1, which the project refuses at sales.one through sales.bad_aggregate). i1040sd p. 10, lines 1a and 8a: \"You can report on line 1a ... or line 8a ... the aggregate totals from any transactions ... for which\" basis was reported and no adjustment shown, and \"If you choose to report these transactions on lines 1a and 8a, don't report them on Form 8949\": aggregation is the filer's option, and with sd.route_each No every sale is listed on Form 8949 (sales.detail), which the project's choose returns. The reply's note that choose cannot yield an enum value is mistaken (the project's line is such a choose); it ignores the parent question.",
+   "context": "2849dd20fdfdbc4937cce5c84803c73ec73c5ab5ce4c2d17f8a40f6e2312a123",
+   "date": "2026-11-14",
+   "run": "160fd842a7b036cde83b8aa28812d1705839458f78f7de4d0d6c6d3a630201da",
+   "subject_key": "d0bc0114036c83bc1afd2a6c1cb753adb8150c4ec9527bbe9b4eecb5d59f8ed6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.eic.8@sales[s1]",
+     "fixture:classm.eic.8@sales[s2]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sales[s1]",
+     "fixture:mutation.m1.person.no_e05_schedule_a_refused@sales[s1]",
+     "fixture:sales.refuse.aggregate.eligibility@sales[a]",
+     "fixture:sales.refuse.aggregate.basis@sales[a]",
+     "fixture:sales.refuse.aggregate.adjustment@sales[a]",
+     "generated:20261026.10@sales[s1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

@@ -225,6 +225,9 @@ def identity(kind, form, family, scope, subjects, head_text, raw_text):
 def write_record(ident, parts):
     """Store a record (identity, [(part name, text)]); returns its sha. A record already stored is never
     rewritten: storing the same sha with other parts is an error."""
+    names = [name for name, _ in parts]
+    if len(set(names)) != len(names):
+        raise ValueError(f"record parts share a name: {sorted({n for n in names if names.count(n) > 1})}")
     sha = _sha(ident)
     text = [f"# Review record {sha[:12]} — {ident['kind']} {families.stem(ident['form'], ident['family'])}", "",
             "One pass of a review, stored once (tools/transcription/review_store.py); the form's index says which lines "
@@ -652,7 +655,8 @@ def check():
                     ident, _ = load_record(kind, sha)
                 except (OSError, ValueError) as ex:
                     problems.append(f"{kind}/{families.stem(form, family)}: record {sha[:12]}: {ex}"); continue
-                if _sha(ident) != sha or (ident["kind"], ident["form"], ident["family"]) != (kind, form, family):
+                if _sha(ident) != sha or (ident["kind"], ident["form"], ident["family"]) not in \
+                        {(kind, name, family) for name in (form, former_document(form))}:
                     problems.append(f"{kind}/{families.stem(form, family)}: record {sha[:12]} is not the pass its name hashes")
             try:
                 text = view_of(index)
@@ -666,6 +670,15 @@ def check():
         print(p, file=sys.stderr)
     print(f"review store: {n} indexes, {len(used)} records" + (f"; {len(problems)} problem(s)" if problems else "; every record present and named by its hash"))
     return 1 if problems else 0
+
+
+def former_document(form):
+    """The name a document had before the rename recorded in tools/year_free_names.json (None if it was not renamed):
+    a record is immutable, so it keeps the name of the document it reviewed, and its index, moved to the new name by
+    rename_carry.py, still holds it."""
+    path = os.path.join(ROOT, "tools", "year_free_names.json")
+    renames = json.load(open(path, encoding="utf-8")).get("renames", {}) if os.path.exists(path) else {}
+    return next((old for old, r in renames.items() if r.get("kind") == "document" and r["to"] == form), None)
 
 
 def main(argv=None):

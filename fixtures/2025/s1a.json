@@ -20,8 +20,8 @@
         "$tipjob@person[taxpayer]": [
           "emp0"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 800000
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 800000
       },
       "expect": {
         "s1a.line3": {
@@ -86,10 +86,10 @@
           "emp0",
           "emp1"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 900000,
-        "person[taxpayer].tipjob[emp1].qualified": true,
-        "person[taxpayer].tipjob[emp1].amount": 450000
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 900000,
+        "person[taxpayer].tipjob[emp1].listed": true,
+        "person[taxpayer].tipjob[emp1].tips": 450000
       },
       "expect": {
         "s1a.line4a": {
@@ -133,8 +133,8 @@
         "$tipjob@person[taxpayer]": [
           "emp0"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 3000000
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 3000000
       },
       "expect": {
         "s1a.line6": {
@@ -170,8 +170,8 @@
         "$tipjob@person[taxpayer]": [
           "emp0"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 2000000
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 2000000
       },
       "expect": {
         "s1a.line10": {
@@ -207,8 +207,8 @@
         "$tipjob@person[taxpayer]": [
           "emp0"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 200000
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 200000
       },
       "expect": {
         "s1a.line12": {
@@ -244,8 +244,8 @@
         "$tipjob@person[taxpayer]": [
           "emp0"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 500000
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 500000
       },
       "expect": {
         "s1a.line10": {
@@ -281,8 +281,8 @@
         "$tipjob@person[taxpayer]": [
           "emp0"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 500000
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 500000
       },
       "expect": {
         "s1a.line10": {
@@ -351,7 +351,10 @@
         "$tipjob@person[taxpayer]": [
           "emp0"
         ],
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].other_work": true
       },
       "expect": {
         "s1a.line13": {
@@ -718,7 +721,8 @@
         ],
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].method": "other",
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1a.line21": {
@@ -757,7 +761,8 @@
         ],
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].special_rule": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1a.line21": {
@@ -1175,7 +1180,8 @@
         "carloan[VIN0].vehicle": true,
         "carloan[VIN0].interest": 150000,
         "carloan[VIN0].financed": 2000000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1a.line30": {
@@ -1201,7 +1207,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, born before January 2, 1961, valid SSN, wages $50,000. Line 31 $50,000; line 32 $75,000; line 33 zero or less, so line 35 $6,000; line 36a $6,000; line 37 $6,000; line 38 $6,000; Form 1040 line 14 = $15,750 + $2,000 (age 65) + $6,000 = $23,750; line 15 = $26,250.",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1245,7 +1251,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $90,000. Line 33 $15,000; line 34 = 6% = $900; line 35 = $6,000 - $900 = $5,100; line 37 $5,100.",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1281,7 +1287,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $175,000. Line 33 $100,000; line 34 $6,000; line 35 -0-.",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1313,7 +1319,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $75,000.10. Line 33 $0.10; line 34 = 6% = $0.006, rounded half-up to the cent $0.01 (amb.2025.multiplication_subcent); line 35 $5,999.99.",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1349,7 +1355,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $50,000, no SSN valid for employment: line 36a $0; line 37 $0.",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1378,7 +1384,8 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: the final return of a person born in 1960 who died in 2025 before reaching 65: refused (owner's ruling).",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1960,
+        "person[taxpayer].died_at_64": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1386,8 +1393,8 @@
         "person[taxpayer].w2[emp_a].box4": 310000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 72500,
-        "person[taxpayer].died_before_65": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1a.line37": {
@@ -1413,7 +1420,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $120,000; tips $5,000 (one employer); overtime premium $4,000; car loan interest $3,000. Line 3 $120,000. Line 13 $5,000 (line 10 zero or less). Line 21 $4,000. Line 27 $20,000; line 28 20; line 29 $4,000; line 30 = $3,000 - $4,000, -0-. Line 33 $45,000; line 34 $2,700; line 35 $3,300; line 37 $3,300. Line 38 = $5,000 + $4,000 + $0 + $3,300 = $12,300; Form 1040 line 14 = $17,750 + $12,300 = $30,050; line 15 = $89,950.",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1427,8 +1434,8 @@
         "$tipjob@person[taxpayer]": [
           "emp0"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 500000,
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 500000,
         "$otjob@person[taxpayer]": [
           "ot0"
         ],
@@ -1490,14 +1497,15 @@
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: 65 or older and filing Form 2555 (excluded income): modified AGI needs Schedule 1-A lines 2a-2d, refused through sa.excluded_income.",
       "inputs": {
         "sa.excluded_income": true,
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
         "person[taxpayer].w2[emp_a].box1": 5000000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 72500,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1a.line38": {
@@ -1547,7 +1555,7 @@
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: married filing separately, wages $60,000; tips $8,000, overtime premium $6,000, born before January 2, 1961, car loan interest $3,000. The Part II, III and V cautions say a married filer must file jointly to claim: lines 13, 21 and 37 are $0. Part IV has no such bar: line 26 $100,000, line 27 zero or less, line 30 $3,000.",
       "inputs": {
         "f1040.status": "mfs",
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1603,14 +1611,14 @@
         "person[taxpayer].w2[emp_a].box4": 1091820,
         "person[taxpayer].w2[emp_a].box5": 30100000,
         "person[taxpayer].w2[emp_a].box6": 436450,
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.tips": true,
         "s1a.overtime": true,
         "$tipjob@person[taxpayer]": [
           "emp0"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 2000000,
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 2000000,
         "$otjob@person[taxpayer]": [
           "ot0"
         ],
@@ -1665,7 +1673,7 @@
         "person[taxpayer].w2[emp_a].box4": 1091820,
         "person[taxpayer].w2[emp_a].box5": 20000050,
         "person[taxpayer].w2[emp_a].box6": 290001,
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.carloan": true,
         "$carloan": [
           "VIN0"
@@ -1702,7 +1710,7 @@
           "taxpayer",
           "spouse"
         ],
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1710,7 +1718,7 @@
         "person[taxpayer].w2[emp_a].box4": 992000,
         "person[taxpayer].w2[emp_a].box5": 16000000,
         "person[taxpayer].w2[emp_a].box6": 232000,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "s1a.line32": {
@@ -1770,7 +1778,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips from one employer and Form 4137 (s2.other): line 4b refuses (Form 4137 is outside this tool), so line 13 refuses.",
       "inputs": {
-        "s2.other": true,
+        "s2.other_tax": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1782,9 +1790,17 @@
         "$tipjob@person[taxpayer]": [
           "emp0"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 800000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 800000,
+        "s2.w2_marks": false,
+        "s2.household_help": false,
+        "s2.hsa_testing": false,
+        "s2.credit_recapture": false,
+        "s2.mortgage_subsidy": false,
+        "s2.lookback": false,
+        "sa.mortgage_interest": 0
       },
       "expect": {
         "s1a.line13": {
@@ -1810,7 +1826,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips from two employers and Form 4137 (s2.other): worksheet column (c) refuses, so line 4c and line 13 refuse.",
       "inputs": {
-        "s2.other": true,
+        "s2.other_tax": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1823,9 +1839,17 @@
           "emp0",
           "emp1"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 500000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 500000,
+        "s2.w2_marks": false,
+        "s2.household_help": false,
+        "s2.hsa_testing": false,
+        "s2.credit_recapture": false,
+        "s2.mortgage_subsidy": false,
+        "s2.lookback": false,
+        "sa.mortgage_interest": 0
       },
       "expect": {
         "s1a.line4c": {
@@ -1864,7 +1888,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: born before January 2, 1961, with a spouse's standard-deduction boxes claimed (sa.spouse_extra): line 36b refuses, so line 37 refuses. Stage 13: a spouses boxes are refused only on a married filing separately return, and line 36b is for a spouse on a joint return, so on this single return line 36b is $0 and line 37 equals line 36a (unchanged). The case formerly expected a refusal; renamed from stage12.refuse.spouse_senior. Joint cases with a spouse born before 1961 are in stage13.json.",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1896,7 +1920,28 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips claimed and Schedule 1 business income (scope.schedule1): line 5 refuses, so line 6 refuses.",
       "inputs": {
-        "scope.schedule1": true,
+        "scope.noncitizen": false,
+        "scope.armed_forces": false,
+        "scope.unearned_2700": false,
+        "scope.religious_work": false,
+        "scope.artist_official": false,
+        "scope.foreign_shares": false,
+        "scope.business_before": false,
+        "scope.reservist_expenses": false,
+        "scope.military_move": false,
+        "scope.rental": false,
+        "scope.k1": true,
+        "scope.farm": false,
+        "scope.clergy": false,
+        "scope.church_exempt_wages": false,
+        "scope.w2_marks": false,
+        "scope.performer_expenses": false,
+        "scope.recovery": false,
+        "scope.archer_msa": false,
+        "scope.se_plan_other": false,
+        "scope.reforestation": false,
+        "scope.attorney_fees": false,
+        "scope.nol": false,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1907,9 +1952,10 @@
         "$tipjob@person[taxpayer]": [
           "emp0"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 800000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 800000
       },
       "expect": {
         "s1a.line4c": {
@@ -1939,7 +1985,28 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: overtime claimed and Schedule 1 business income (scope.schedule1): line 14b refuses, so line 14c refuses.",
       "inputs": {
-        "scope.schedule1": true,
+        "scope.noncitizen": false,
+        "scope.armed_forces": false,
+        "scope.unearned_2700": false,
+        "scope.religious_work": false,
+        "scope.artist_official": false,
+        "scope.foreign_shares": false,
+        "scope.business_before": false,
+        "scope.reservist_expenses": false,
+        "scope.military_move": false,
+        "scope.rental": false,
+        "scope.k1": true,
+        "scope.farm": false,
+        "scope.clergy": false,
+        "scope.church_exempt_wages": false,
+        "scope.w2_marks": false,
+        "scope.performer_expenses": false,
+        "scope.recovery": false,
+        "scope.archer_msa": false,
+        "scope.se_plan_other": false,
+        "scope.reforestation": false,
+        "scope.attorney_fees": false,
+        "scope.nol": false,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1953,7 +2020,8 @@
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].method": "premium",
         "person[taxpayer].otjob[ot0].statement": 300000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1a.line14a": {
@@ -1991,7 +2059,8 @@
         "person[taxpayer].w2[emp_a].box5": 4000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
         "s1a.tips": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1a.line13": {
@@ -2023,8 +2092,8 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -2078,8 +2147,8 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
+        "household.married_dec31": true,
         "person[taxpayer].blind": true,
         "$w2@person[taxpayer]": [
           "e0"
@@ -2088,7 +2157,7 @@
         "person[taxpayer].w2[e0].box4": 372000,
         "person[taxpayer].w2[e0].box5": 6000000,
         "person[taxpayer].w2[e0].box6": 87000,
-        "person[spouse].age65": true,
+        "person[spouse].birth_year": 1950,
         "person[spouse].blind": true,
         "$w2@person[spouse]": [
           "e0"
@@ -2134,8 +2203,8 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -2143,7 +2212,7 @@
         "person[taxpayer].w2[e0].box4": 744000,
         "person[taxpayer].w2[e0].box5": 12000000,
         "person[taxpayer].w2[e0].box6": 174000,
-        "person[spouse].age65": true,
+        "person[spouse].birth_year": 1950,
         "$w2@person[spouse]": [
           "e0"
         ],
@@ -2192,8 +2261,8 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -2201,7 +2270,7 @@
         "person[taxpayer].w2[e0].box4": 372000,
         "person[taxpayer].w2[e0].box5": 6000000,
         "person[taxpayer].w2[e0].box6": 87000,
-        "person[spouse].age65": true,
+        "person[spouse].birth_year": 1950,
         "person[spouse].work_ssn": false,
         "$w2@person[spouse]": [
           "e0"
@@ -2240,7 +2309,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -2248,7 +2317,7 @@
         "person[taxpayer].w2[e0].box4": 372000,
         "person[taxpayer].w2[e0].box5": 6000000,
         "person[taxpayer].w2[e0].box6": 87000,
-        "person[spouse].age65": true,
+        "person[spouse].birth_year": 1950,
         "$w2@person[spouse]": [
           "e0"
         ],
@@ -2289,7 +2358,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -2297,8 +2366,8 @@
         "person[taxpayer].w2[e0].box4": 372000,
         "person[taxpayer].w2[e0].box5": 6000000,
         "person[taxpayer].w2[e0].box6": 87000,
-        "person[spouse].age65": true,
-        "person[spouse].died_before_65": true,
+        "person[spouse].birth_year": 1960,
+        "person[spouse].died_at_64": true,
         "$w2@person[spouse]": [
           "e0"
         ],
@@ -2306,7 +2375,8 @@
         "person[spouse].w2[e0].box4": 310000,
         "person[spouse].w2[e0].box5": 5000000,
         "person[spouse].w2[e0].box6": 72500,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1a.line36a": {
@@ -2355,7 +2425,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.tips": true,
         "$w2@person[taxpayer]": [
           "e0"
@@ -2377,10 +2447,10 @@
         "$tipjob@person[spouse]": [
           "job"
         ],
-        "person[taxpayer].tipjob[job].qualified": true,
-        "person[taxpayer].tipjob[job].amount": 1500000,
-        "person[spouse].tipjob[job].qualified": true,
-        "person[spouse].tipjob[job].amount": 1400000
+        "person[taxpayer].tipjob[job].listed": true,
+        "person[taxpayer].tipjob[job].tips": 1500000,
+        "person[spouse].tipjob[job].listed": true,
+        "person[spouse].tipjob[job].tips": 1400000
       },
       "expect": {
         "s1a.line4a": {
@@ -2414,7 +2484,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.tips": true,
         "$w2@person[taxpayer]": [
           "e0"
@@ -2437,8 +2507,8 @@
         "$tipjob@person[spouse]": [
           "job"
         ],
-        "person[taxpayer].tipjob[job].qualified": true,
-        "person[taxpayer].tipjob[job].amount": 1500000
+        "person[taxpayer].tipjob[job].listed": true,
+        "person[taxpayer].tipjob[job].tips": 1500000
       },
       "expect": {
         "s1a.line4a": {
@@ -2469,7 +2539,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.overtime": true,
         "$w2@person[taxpayer]": [
           "e0"
@@ -2526,8 +2596,8 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
+        "household.married_dec31": true,
         "person[taxpayer].work_ssn": false,
         "$w2@person[taxpayer]": [
           "e0"
@@ -2536,7 +2606,7 @@
         "person[taxpayer].w2[e0].box4": 372000,
         "person[taxpayer].w2[e0].box5": 6000000,
         "person[taxpayer].w2[e0].box6": 87000,
-        "person[spouse].age65": true,
+        "person[spouse].birth_year": 1950,
         "$w2@person[spouse]": [
           "e0"
         ],
@@ -2573,7 +2643,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.tips": true,
         "$w2@person[taxpayer]": [
           "e0"
@@ -2597,10 +2667,10 @@
         "$tipjob@person[spouse]": [
           "job"
         ],
-        "person[taxpayer].tipjob[a].qualified": true,
-        "person[taxpayer].tipjob[a].amount": 1000000,
-        "person[taxpayer].tipjob[b].qualified": true,
-        "person[taxpayer].tipjob[b].amount": 600000
+        "person[taxpayer].tipjob[a].listed": true,
+        "person[taxpayer].tipjob[a].tips": 1000000,
+        "person[taxpayer].tipjob[b].listed": true,
+        "person[taxpayer].tipjob[b].tips": 600000
       },
       "expect": {
         "s1a.line4a": {
@@ -2630,7 +2700,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.tips": true,
         "$w2@person[taxpayer]": [
           "e0"
@@ -2672,7 +2742,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.overtime": true,
         "$w2@person[taxpayer]": [
           "e0"
@@ -2725,7 +2795,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -2769,7 +2839,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.overtime": true,
         "$w2@person[taxpayer]": [
           "e0"
@@ -2812,7 +2882,7 @@
         "person[taxpayer].sc[b].line1": 1000000,
         "person[taxpayer].sc[b].tips_ot": true,
         "f1040.tax_exempt_interest": null,
-        "eic.died_2025": null,
+        "eic.died_this_year": null,
         "eic.us_home": null,
         "eic.qc_of_another": null
       },
@@ -2846,7 +2916,7 @@
         "person[taxpayer].sc[b].line1": 1000000,
         "person[taxpayer].sc[b].tips_ot": true,
         "f1040.tax_exempt_interest": null,
-        "eic.died_2025": null,
+        "eic.died_this_year": null,
         "eic.us_home": null,
         "eic.qc_of_another": null
       },
@@ -2912,8 +2982,8 @@
         "$tipjob@person[taxpayer]": [
           "emp0"
         ],
-        "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 800000,
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 800000,
         "$sc@person[taxpayer]": [
           "side"
         ],
@@ -3019,7 +3089,8 @@
         ],
         "person[taxpayer].role": "taxpayer",
         "person[spouse].role": "spouse",
-        "person[spouse].died_before_65": true
+        "person[spouse].birth_year": 1960,
+        "person[spouse].died_at_64": true
       },
       "expect": {
         "s1a.part2": {

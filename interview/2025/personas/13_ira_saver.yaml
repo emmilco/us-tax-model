@@ -1,0 +1,31 @@
+name: 13_ira_saver
+who: A single person, 40, with one job that has a 401(k) (one Form W-2, $52,000 of wages), who put $4,000 into a traditional IRA for 2025.
+end: complete
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  person[taxpayer].birth_year: 1985
+  $w2@person[taxpayer]: [acme]
+  person[taxpayer].w2[acme].box1: 5200000
+  person[taxpayer].w2[acme].box2: 520000
+  person[taxpayer].w2[acme].box4: 322400
+  person[taxpayer].w2[acme].box5: 5200000
+  person[taxpayer].w2[acme].box6: 75400
+  person[taxpayer].ira_owner: true
+  person[taxpayer].sav_trad: true
+  person[taxpayer].ira_trad: 400000
+  person[taxpayer].ira_work_plan: true
+  person[taxpayer].ira_extra_left: false
+  person[taxpayer].ira_recharacterized: false
+  person[taxpayer].x_ira_prior_excess: false
+  person[taxpayer].sav_roth: 0
+  ira.deferred_comp: false
+  ira.fellowship: false
+  ira.care_payments: false
+  s8812.combat_pay: false
+  ira.deduct_less: false
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false

@@ -156,7 +156,8 @@
           "desk"
         ],
         "person[taxpayer].sc[desk].line1": 5000000,
-        "s179.line10": 300000
+        "scope.business_before": true, "s179.prior_form": true,
+        "s179.carryover": 300000
       },
       "expect": {
         "s179.line1": {
@@ -235,7 +236,8 @@
         "$asset@person[taxpayer].sc[d]": [
           "press"
         ],
-        "s179.line10": 100000,
+        "scope.business_before": true, "s179.prior_form": true,
+        "s179.carryover": 100000,
         "person[taxpayer].sc[d].asset[press].placed": "y2025",
         "person[taxpayer].sc[d].asset[press].cost": 400010000,
         "person[taxpayer].sc[d].asset[press].pct": 100,
@@ -439,9 +441,10 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $3,000 section 179 carryover from 2024 on a return with no Schedule C: Part I line 13 refuses.",
       "inputs": {
-        "s179.line10": 300000,
+        "scope.business_before": true, "s179.prior_form": true,
+        "s179.carryover": 300000,
         "f1040.tax_exempt_interest": null,
-        "eic.died_2025": null,
+        "eic.died_this_year": null,
         "eic.us_home": null,
         "eic.qc_of_another": null
       },
@@ -476,7 +479,8 @@
         "$asset@person[taxpayer].sc[d]": [
           "saw"
         ],
-        "s179.line10": 300000,
+        "scope.business_before": true, "s179.prior_form": true,
+        "s179.carryover": 300000,
         "person[taxpayer].sc[d].asset[saw].placed": "y2025",
         "person[taxpayer].sc[d].asset[saw].cost": 200000,
         "person[taxpayer].sc[d].asset[saw].pct": 100,
@@ -517,7 +521,8 @@
         "$asset@person[taxpayer].sc[d]": [
           "saw"
         ],
-        "s179.line10": 300000,
+        "scope.business_before": true, "s179.prior_form": true,
+        "s179.carryover": 300000,
         "person[taxpayer].sc[d].asset[saw].placed": "y2025",
         "person[taxpayer].sc[d].asset[saw].cost": 700000000,
         "person[taxpayer].sc[d].asset[saw].pct": 100,
@@ -553,7 +558,8 @@
         "$asset@person[taxpayer].sc[d]": [
           "saw"
         ],
-        "s179.line10": 300000,
+        "scope.business_before": true, "s179.prior_form": true,
+        "s179.carryover": 300000,
         "person[taxpayer].sc[d].asset[saw].placed": "y2025",
         "person[taxpayer].sc[d].asset[saw].cost": 200000,
         "person[taxpayer].sc[d].asset[saw].pct": 100,
@@ -663,7 +669,8 @@
           "pc",
           "lot"
         ],
-        "s179.line10": 40000000,
+        "scope.business_before": true, "s179.prior_form": true,
+        "s179.carryover": 40000000,
         "person[taxpayer].sc[desk].asset[pc].placed": "y2025",
         "person[taxpayer].sc[desk].asset[pc].cost": 200000000,
         "person[taxpayer].sc[desk].asset[pc].pct": 100,
@@ -727,8 +734,9 @@
         "person[taxpayer].w2[emp_a].box4": 124000,
         "person[taxpayer].w2[emp_a].box5": 2000000,
         "person[taxpayer].w2[emp_a].box6": 29000,
-        "s179.line10": 300000,
-        "household.married": null
+        "scope.business_before": true, "s179.prior_form": true,
+        "s179.carryover": 300000,
+        "household.married_dec31": null
       },
       "expect": {
         "s179.line11": {
@@ -998,7 +1006,8 @@
           "desk"
         ],
         "person[taxpayer].sc[desk].line1": 5000000,
-        "s179.line10": 300000,
+        "scope.business_before": true, "s179.prior_form": true,
+        "s179.carryover": 300000,
         "$interest": [
           "bank_a"
         ],

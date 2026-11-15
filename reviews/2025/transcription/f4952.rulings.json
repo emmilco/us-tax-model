@@ -16,11 +16,11 @@
    "printed": "2",
    "project_expr_sha256": "ec08a1b7c448d7b2c8c38e3ea6bd27453f2dc22fc5904bceb7f7bf72532c1aa2",
    "second_expr_sha256": "ffba9eabe72c8109b40a9585eacea0bb634fe516f6d69c46564e512e9d61bb77",
-   "ruling": "Ruling: model error; f4952 p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\". The reply takes f4952.prior_7 when f4952.carryover is true and zero otherwise, the project's amount; but it reads the input f4952.carryover where the project reads the gate line f4952.carryover_if_interest, which is f4952.carryover only when f4952.has_interest is yes and false otherwise (the interview asks the carryover only after the gate). So on completed returns where the gate is No the reply needs an answer the interview never asks (triage: 10 candidate-unknown on completed returns; the recorded witnesses name f4952.carryover); the earlier ruling that this difference cannot reach a return the interview produces holds for the values, not for the reply's need of the unasked answer. Triage executable-triage-v2 (`.transcription/triage/2025/f4952.json`, pass c48595c59516; 1,767 fixtures, 500 generated returns seed 20261026, 244 partial records): 2,366 of 2,446 in-scope comparisons agree; differences by kind {\"candidate-unknown\": 16, \"project-refuses\": 31, \"project-unknown\": 64}; the project refusals and unknowns, including those on completed returns, are at its cited gate f4952.alternative_allocation (f4952 pp. 1, 3–4: only the default allocation is supported) and f4952.unsupported, scope. No value differs. The project line is retained.",
-   "context": "a2ac3755c60e019068569ecad17970eac83aef1372595362fe9ee8e8430fb13d",
-   "date": "2026-11-10",
-   "run": "48eb57e8b37dc681c256537c311962d6a95ac37c29dd6778de8b76471c1fceb5",
-   "subject_key": "b15d05ab6680ec8cea04750b87acb1dbcca8039dfdea5071036ce231470a717e",
+   "ruling": "Ruling: representation; triage 2,618/2,730 agree, no value difference; differences are candidate-unknown (16 on completed returns: the reply reads f4952.carryover, which is asked only when f4952.has_interest is yes) and project-unknown/refuses (the project's f4952.alternative_allocation and f4952.unsupported refusals on this line). f4952 line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\": with no investment interest and no carryforward (has_interest No) the project's line 2 is 0, as the reply's would be; the reply ignores the parent question.",
+   "context": "b9ff468391027376bf18225d30dadaf11c759fac21538d4f245096a3d6e74283",
+   "date": "2026-11-14",
+   "run": "5592cbdcc64cc7b453dd556076b9c3472fb435712da39d40fb416975ddd8d35a",
+   "subject_key": "2e4438b2e28863870b9ebefe18de1b8851e5871d22ed48384d0cf11d33e02de6",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -185,6 +185,52 @@
    }
   },
   {
+   "printed": "4h",
+   "project_expr_sha256": "f5e5609bed32aaae0697038ebca70f23a37ae05087737d3ae251bdcae5d0b5e1",
+   "second_expr_sha256": "7d977f9b30a766d52ace9bc8ad72e931d853137bb615e945215e528a83f27c65",
+   "ruling": "Ruling: representation; triage 2,600/2,730 agree; 21 value differences (3 on completed returns), each with f4952.has_interest No and an f4952.line4g answer present in the record (e.g. generated 465: line 4g $9,163.89 with no investment interest): line 4g is asked only beneath has_interest Yes (gated_by f4952.line4g_if_interest), so that answer is never collected and the project's election is 0. The reply sums the raw input. Where line 4g is asked the two agree; the project also refuses an election above lines 4b plus 4e (f4952 line 4g, \"don't enter more than the sum of lines 4b and 4e\"). f4952 line 4h, \"Add lines 4c, 4f, and 4g\".",
+   "context": "b9ff468391027376bf18225d30dadaf11c759fac21538d4f245096a3d6e74283",
+   "date": "2026-11-14",
+   "run": "5592cbdcc64cc7b453dd556076b9c3472fb435712da39d40fb416975ddd8d35a",
+   "subject_key": "b27edf9008690430fff0d48ddf89319ec793fc22072aa7c5eb658c13aafec06b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8962.4.gpt@f4952",
+     "fixture:classm.carloan.2@f4952",
+     "fixture:classm.oi8z.1@f4952",
+     "fixture:classm.otjob.1@f4952",
+     "fixture:classm.otjob.3@f4952",
+     "fixture:classm.tcw.10@f4952",
+     "fixture:classm.eic.3@f4952",
+     "fixture:classm.eic.6@f4952",
+     "fixture:classm.eic.7@f4952",
+     "fixture:classm.eic.9@f4952",
+     "fixture:classm.eic.10@f4952",
+     "fixture:classm.eic.11@f4952",
+     "fixture:classm.f8962.3@f4952",
+     "fixture:stage4.refuse.4952.election@f4952",
+     "fixture:stage16.f4952.allocation_unanswered@f4952",
+     "fixture:stage16.f4952.election_unsupported@f4952",
+     "fixture:stage16.f4952.election_alternative@f4952",
+     "fixture:mutation.t2.hoh_s1a_car@f4952",
+     "generated:20261026.15@f4952",
+     "partial:stage14.asset.hy_5yr-f4952.has_interest@f4952",
+     "partial:stage14.asset.bonus_100-f4952.has_interest@f4952",
+     "partial:stage14.asset.prior_7yr-f4952.has_interest@f4952",
+     "partial:stage14.asset.qip-f4952.has_interest@f4952",
+     "partial:stage14.asset.done-f4952.has_interest@f4952"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "8",
    "project_expr_sha256": "7a24a37754effd9d7a2b34a6ce9d88371eed0e3e5a2cc80abe6682e7cccf25cc",
    "second_expr_sha256": "8b86671eccf262c2a4b3b216401c7c484f39d463d7d77778ad969fb1760f0bda",
@@ -193,6 +239,45 @@
    "date": "2026-11-04",
    "run": "afecabe56f9df6743352654bbafea8754171d91b0909bc1a47f28e213da94ce1",
    "subject_key": "9c78988a04a91bcdc14e5e4541ea4f77f74ea3c8a31c754214eed92318362cbf"
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "a5023dfeda6a21c174e16a535995279b753b45d9b7e5957651302ec54ec929e5",
+   "second_expr_sha256": "8b86671eccf262c2a4b3b216401c7c484f39d463d7d77778ad969fb1760f0bda",
+   "ruling": "Ruling: representation; triage 2,308/2,730 agree, no value difference; differences are candidate-unknown (36 on completed returns: the reply reaches f4952.unsupported where the form is not used and that question is not asked) and candidate/project-refuses (refusals reached through line 6 on returns where the form is not used). When the form is not used, line 1 and line 2 are 0, so line 3 is 0 and the smaller of lines 3 and 6 is 0, the project's value. f4952 line 8, \"Enter the smaller of line 3 or line 6\".",
+   "context": "b9ff468391027376bf18225d30dadaf11c759fac21538d4f245096a3d6e74283",
+   "date": "2026-11-14",
+   "run": "5592cbdcc64cc7b453dd556076b9c3472fb435712da39d40fb416975ddd8d35a",
+   "subject_key": "965687be09b6f9729e41084af9758c381f85e1e387b3cba3a147fd4ae0f63c5d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage12.car.mixed_sc_interest_prorated@f4952",
+     "fixture:classm.f2441.1.deepseek@f4952",
+     "fixture:classm.f2441.2.deepseek@f4952",
+     "fixture:classm.f2441.3.deepseek@f4952",
+     "fixture:classm.f2441.4.deepseek@f4952",
+     "fixture:classm.f2441.5.deepseek@f4952",
+     "fixture:classm.f2441.6.deepseek@f4952",
+     "fixture:classm.clcw.1.deepseek@f4952",
+     "fixture:classm.clcw.2.deepseek@f4952",
+     "fixture:classm.clcw.4.deepseek@f4952",
+     "fixture:classm.aqee.1.deepseek@f4952",
+     "fixture:classm.eic.4.deepseek@f4952",
+     "fixture:classm.oi8z.1@f4952",
+     "fixture:classm.otjob.1@f4952",
+     "fixture:classm.f8962.3@f4952",
+     "fixture:stage4.refuse.4952.election@f4952",
+     "generated:20261026.3@f4952",
+     "generated:20261026.33@f4952"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "8",
@@ -241,6 +326,57 @@
    "date": "2026-11-07",
    "run": "79e2db3d15a3f3892ceef6bfa6843764d3000cf8557676b45fd1aba2694cefe1",
    "subject_key": "cf30ce1aa6bb197e378d5b8e3c934251d569c77f2e0cd89c4694ebe82042d9e9"
+  },
+  {
+   "printed": "f4952.required",
+   "project_expr_sha256": "294b6c9b91959cf36225a9369627876afe09d77891629a2ff2e66e3eeff34b98",
+   "second_expr_sha256": "8d307d8057de8df80ba182812ea7aa117481cef69789e65cb97a730af0b2c4cf",
+   "ruling": "Ruling: model error; triage 2,581/2,730 agree; 33 value differences (3 on completed returns), every one witnessed with an election on line 4g and the exception's three conditions met (e.g. classm.f1040.2: has_interest yes, line 1 $2,441, line 4g $5,992, no carryover): the project says the form is required, the reply says not. Form 4952 instructions p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\"; the election is made on the form, so the p. 3 Exception (\"You don't have to file Form 4952 if all of the following apply\") cannot excuse a filer who elects. The reply reads only the exception and ignores the election. Its other differences are refusal placement and the project's has_interest gate (unasked line 1, carryover).",
+   "context": "b9ff468391027376bf18225d30dadaf11c759fac21538d4f245096a3d6e74283",
+   "date": "2026-11-14",
+   "run": "5592cbdcc64cc7b453dd556076b9c3472fb435712da39d40fb416975ddd8d35a",
+   "subject_key": "b46e39429804e5dc6b25d319dcca038872eb7e04b8e2853c03014b854e32cfa5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f4952",
+     "fixture:classm.dependent.2.deepseek@f4952",
+     "fixture:classm.dependent.3.deepseek@f4952",
+     "fixture:classm.f8880.2.deepseek@f4952",
+     "fixture:classm.f1040.2.deepseek@f4952",
+     "fixture:classm.retirement.4.deepseek@f4952",
+     "fixture:classm.f5329.2.deepseek@f4952",
+     "fixture:classm.f8880.2@f4952",
+     "fixture:classm.ltc.2@f4952",
+     "fixture:classm.oi8z.1@f4952",
+     "fixture:classm.otjob.1@f4952",
+     "fixture:classm.s179.1@f4952",
+     "fixture:classm.sb.1@f4952",
+     "fixture:classm.scveh.2@f4952",
+     "fixture:classm.f8962.3@f4952",
+     "fixture:classm.f8962.6@f4952",
+     "fixture:classm.f8863.1@f4952",
+     "fixture:classm.f8863.2@f4952",
+     "fixture:classm.gift.1@f4952",
+     "fixture:stage4.refuse.4952.unsupported@f4952",
+     "fixture:stage4.refuse.4952.alternative_allocation@f4952",
+     "fixture:stage4.refuse.4952.election@f4952",
+     "fixture:stage16.f4952.allocation_unanswered@f4952",
+     "partial:classm.f4952.3.deepseek-f4952.line1@f4952",
+     "partial:classm.f4952.3.deepseek-f4952.carryover@f4952",
+     "partial:classm.f4952.3.deepseek-f4952.prior_7@f4952",
+     "partial:classm.f4952.3.deepseek-f4952.unsupported@f4952",
+     "partial:classm.f4952.3.deepseek-f4952.alternative_allocation@f4952"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f4952.required",

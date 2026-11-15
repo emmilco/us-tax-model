@@ -9,7 +9,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
-        "s2.amt": true,
+        "s2.amt_owed": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -20,7 +20,75 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s2.options_any": false
+      },
+      "expect": {
+        "s2.line21": {
+          "kind": "refusal",
+          "gate": "s2.amt",
+          "form": "Form 6251",
+          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        },
+        "s2.line2": {
+          "kind": "refusal",
+          "gate": "s2.amt",
+          "form": "Form 6251",
+          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        },
+        "s2.line3": {
+          "kind": "refusal",
+          "gate": "s2.amt",
+          "form": "Form 6251",
+          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        }
+      }
+    },
+    {
+      "id": "s2.reg.iso_vested_2025",
+      "walk": "stage4",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "regression: i6251 p. 4, Line 2i; incentive stock option shares bought in 2024 vest in 2025, with no options used and no shares sold in 2025 (BUG-0643)",
+      "inputs": {
+        "s2.amt_owed": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s2.options_any": false,
+        "s2.iso_vested": true
       },
       "expect": {
         "s2.line21": {
@@ -72,7 +140,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
-        "s2.other": true,
+        "s2.other_tax": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -83,7 +151,15 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s2.w2_marks": false,
+        "s2.household_help": false,
+        "s2.hsa_testing": false,
+        "s2.credit_recapture": false,
+        "s2.mortgage_subsidy": false,
+        "s2.lookback": false,
+        "sa.mortgage_interest": 0
       },
       "expect": {
         "s2.line21": {
@@ -135,8 +211,8 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
-        "s2.amt": true,
-        "s2.other": true,
+        "s2.amt_owed": true,
+        "s2.other_tax": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -147,7 +223,16 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s2.options_any": false,
+        "s2.w2_marks": false,
+        "s2.household_help": false,
+        "s2.hsa_testing": false,
+        "s2.credit_recapture": false,
+        "s2.mortgage_subsidy": false,
+        "s2.lookback": false,
+        "sa.mortgage_interest": 0
       },
       "expect": {
         "s2.line21": {
@@ -199,7 +284,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Stage 18 mutation scenario: Schedule 2 line 3 refuses on its own screen for other Schedule 2 taxes (s2.other) even when Form 8962, read through line 1z, also refuses (an allocation, f8962.alloc). The screen order is the evidence: s2.amt, then s2.other, before the lines summed.",
       "inputs": {
-        "s2.other": true,
+        "s2.other_tax": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -209,8 +294,16 @@
         "$f1095a": [
           "m"
         ],
-        "f8962.alloc": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "f8962.shared_policy": true,
+        "s2.w2_marks": false,
+        "s2.household_help": false,
+        "s2.hsa_testing": false,
+        "s2.credit_recapture": false,
+        "s2.mortgage_subsidy": false,
+        "s2.lookback": false,
+        "sa.mortgage_interest": 0
       },
       "expect": {
         "s2.line3": {

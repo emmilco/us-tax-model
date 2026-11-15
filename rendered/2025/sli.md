@@ -10,31 +10,113 @@
 - Expr: `{"op":"param","ref":"sales.zero"}`
 - Cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `sli.no`
+
+- **Authored helper label:** Year parameter household.no (false)
+- **Encoded (Bool):** Enter false (household.no).
+- Expr: `{"op":"param","ref":"household.no"}`
+- Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sli.any`
+
+- **Authored helper label:** You (or, on a joint return, your spouse) paid interest on a student loan in 2025
+- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) pay interest on a student loan in 2025?
+- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) pay interest on a student loan in 2025?"}`
+- Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `sli.interest`
 
+- **Authored helper label:** Total interest you paid in 2025 on student loans
+- **Encoded (NonNegDollars):** Input — How much interest did you (or, on a joint return, your spouse) pay on student loans in 2025? Each lender reports it in box 1 of Form 1098-E; add the forms together.
+- Expr: `{"op":"input","source":"How much interest did you (or, on a joint return, your spouse) pay on student loans in 2025? Each lender reports it in box 1 of Form 1098-E; add the forms together."}`
+- Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `sli.interest_if_any`
+
+- **Authored helper label:** Total interest paid in 2025 on student loans, asked only when interest was paid on a student loan (zero otherwise)
+- **Encoded (NonNegDollars):** Choose — [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025" = true → helper "Total interest you paid in 2025 on student loans"] [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sli.any",{"const":true}],"op":"test"},"then":"sli.interest"},{"guard":{"eq":["sli.any",{"const":false}],"op":"test"},"then":"sli.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sli.unqualified_any`
+
+- **Authored helper label:** Any of that interest was on a loan that is not a qualified student loan
+- **Encoded (Bool):** Input — Was any of those loans one of these?
+
+  - a loan from a relative, or from someone who borrowed the money from an employer's plan
+  - a loan used partly for something other than school costs
+  - a loan taken out for someone who was not you, your spouse or your dependent at the time
+- Expr: `{"op":"input","source":"Was any of those loans one of these?\n\n- a loan from a relative, or from someone who borrowed the money from an employer's plan\n- a loan used partly for something other than school costs\n- a loan taken out for someone who was not you, your spouse or your dependent at the time"}`
+- Cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `sli.unqualified_any_if_any`
+
+- **Authored helper label:** Whether any of the interest was on a loan that is not a qualified student loan, asked only when interest was paid on a student loan (false otherwise)
+- **Encoded (Bool):** Choose — [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025" = true → helper "Any of that interest was on a loan that is not a qualified student loan"] [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sli.any",{"const":true}],"op":"test"},"then":"sli.unqualified_any"},{"guard":{"eq":["sli.any",{"const":false}],"op":"test"},"then":"sli.no"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sli.unqualified`
+
+- **Authored helper label:** The part of that interest paid on loans that are not qualified student loans
+- **Encoded (NonNegDollars):** Input — How much of the interest was on those loans?
+- Expr: `{"op":"input","source":"How much of the interest was on those loans?"}`
+- Cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `sli.unqualified_if_some`
+
+- **Authored helper label:** The interest on loans that are not qualified student loans, asked only when there is such a loan (zero otherwise)
+- **Encoded (NonNegDollars):** Choose — [helper "Whether any of the interest was on a loan that is not a qualified student loan, asked only when interest was paid on a student loan (false otherwise)" = true → helper "The part of that interest paid on loans that are not qualified student loans"] [helper "Whether any of the interest was on a loan that is not a qualified student loan, asked only when interest was paid on a student loan (false otherwise)" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sli.unqualified_any_if_any",{"const":true}],"op":"test"},"then":"sli.unqualified"},{"guard":{"eq":["sli.unqualified_any_if_any",{"const":false}],"op":"test"},"then":"sli.zero"}],"op":"choose"}`
+- Cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sli.assisted_any`
+
+- **Authored helper label:** Any of that interest was paid from tax-free qualified tuition program earnings or through tax-free student loan repayment assistance
+- **Encoded (Bool):** Input — Was any of that interest paid for you (or, on a joint return, your spouse) by a loan repayment program for health workers, or with tax-free earnings of a 529 plan?
+- Expr: `{"op":"input","source":"Was any of that interest paid for you (or, on a joint return, your spouse) by a loan repayment program for health workers, or with tax-free earnings of a 529 plan?"}`
+- Cite: [i1040gi] p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `sli.assisted_any_if_any`
+
+- **Authored helper label:** Whether any of the interest was paid from tax-free qualified tuition program earnings or through tax-free loan repayment assistance, asked only when interest was paid on a student loan (false otherwise)
+- **Encoded (Bool):** Choose — [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025" = true → helper "Any of that interest was paid from tax-free qualified tuition program earnings or through tax-free student loan repayment assistance"] [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sli.any",{"const":true}],"op":"test"},"then":"sli.assisted_any"},{"guard":{"eq":["sli.any",{"const":false}],"op":"test"},"then":"sli.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sli.assisted`
+
+- **Authored helper label:** The part of that interest paid from tax-free qualified tuition program earnings or through tax-free student loan repayment assistance
+- **Encoded (NonNegDollars):** Input — How much of the interest was paid that way?
+- Expr: `{"op":"input","source":"How much of the interest was paid that way?"}`
+- Cite: [i1040gi] p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `sli.assisted_if_some`
+
+- **Authored helper label:** The interest paid from tax-free qualified tuition program earnings or loan repayment assistance, asked only when there is some (zero otherwise)
+- **Encoded (NonNegDollars):** Choose — [helper "Whether any of the interest was paid from tax-free qualified tuition program earnings or through tax-free loan repayment assistance, asked only when interest was paid on a student loan (false otherwise)" = true → helper "The part of that interest paid from tax-free qualified tuition program earnings or through tax-free student loan repayment assistance"] [helper "Whether any of the interest was paid from tax-free qualified tuition program earnings or through tax-free loan repayment assistance, asked only when interest was paid on a student loan (false otherwise)" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sli.assisted_any_if_any",{"const":true}],"op":"test"},"then":"sli.assisted"},{"guard":{"eq":["sli.assisted_any_if_any",{"const":false}],"op":"test"},"then":"sli.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sli.not_counted`
+
+- **Authored helper label:** Interest that is not counted (on loans that are not qualified student loans, and paid from tax-free earnings or repayment assistance)
+- **Encoded (NonNegDollars):** Add helper "The interest on loans that are not qualified student loans, asked only when there is such a loan (zero otherwise)" and helper "The interest paid from tax-free qualified tuition program earnings or loan repayment assistance, asked only when there is some (zero otherwise)".
+- Expr: `{"of":["sli.unqualified_if_some","sli.assisted_if_some"],"op":"sum"}`
+- Cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sli.qualified`
+
 - **Authored helper label:** Total interest you paid in 2025 on qualified student loans
-- **Encoded (NonNegDollars):** Input — Total interest you (or, on a joint return, your spouse) paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting the amounts below; zero if none.
-
-  Not counted:
-  - any amount paid from tax-free qualified tuition program earnings
-  - any amount paid through tax-free student loan repayment assistance (the National Health Service Corps Loan Repayment Program, a state education loan repayment program eligible for funds under the Public Health Service Act, or another state loan repayment or loan forgiveness program intended to increase the availability of health services in underserved or health professional shortage areas)
-
-  A qualified student loan is a loan you took out to pay the qualified higher education expenses (tuition, fees, room and board, and related expenses such as books and supplies, for education in a degree, certificate or similar program at an eligible educational institution) of an eligible student who was any of these:
-
-  - you
-  - your spouse
-  - a person who was your dependent when the loan was taken out
-  - a person you could have claimed as a dependent for that year except that the person filed a joint return, had gross income of at least the exemption amount for that year, or you (or, on a joint return, your spouse) could be claimed as a dependent
-
-  It is not a qualified student loan if any of its proceeds were used for other purposes, or if it was from a related person or from a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan.
-- Expr: `{"op":"input","source":"Total interest you (or, on a joint return, your spouse) paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting the amounts below; zero if none.\n\nNot counted:\n- any amount paid from tax-free qualified tuition program earnings\n- any amount paid through tax-free student loan repayment assistance (the National Health Service Corps Loan Repayment Program, a state education loan repayment program eligible for funds under the Public Health Service Act, or another state loan repayment or loan forgiveness program intended to increase the availability of health services in underserved or health professional shortage areas)\n\nA qualified student loan is a loan you took out to pay the qualified higher education expenses (tuition, fees, room and board, and related expenses such as books and supplies, for education in a degree, certificate or similar program at an eligible educational institution) of an eligible student who was any of these:\n\n- you\n- your spouse\n- a person who was your dependent when the loan was taken out\n- a person you could have claimed as a dependent for that year except that the person filed a joint return, had gross income of at least the exemption amount for that year, or you (or, on a joint return, your spouse) could be claimed as a dependent\n\nIt is not a qualified student loan if any of its proceeds were used for other purposes, or if it was from a related person or from a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan."}`
-- Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' and 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (NonNegDollars):** Subtract helper "Interest that is not counted (on loans that are not qualified student loans, and paid from tax-free earnings or repayment assistance)" from helper "Total interest paid in 2025 on student loans, asked only when interest was paid on a student loan (zero otherwise)". If zero or less, enter -0-.
+- Expr: `{"from":"sli.interest_if_any","op":"subtract_floor0","take":"sli.not_counted"}`
+- Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' and 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)' (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sli.has`
 
 - **Authored helper label:** Any student loan interest
 - **Encoded (Bool):** helper "Total interest you paid in 2025 on qualified student loans" > $0 (sales.zero)
-- Expr: `{"gt":["sli.interest",{"param":"sales.zero"}],"op":"test"}`
+- Expr: `{"gt":["sli.qualified",{"param":"sales.zero"}],"op":"test"}`
 - Cite: [i1040gi] p. 98, Schedule 1, line 21 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sli.claimed_count`
@@ -56,7 +138,7 @@
 - **IRS:** Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21). Don't enter more than $2,500
 - **Encoded (NonNegDollars):** Enter the smaller of helper "Total interest you paid in 2025 on qualified student loans" or helper "Year parameter sli.max ($2,500)".
 - **Refusal:** when sa.excluded_income is true, cannot complete Pub. 970 (student loan interest with Form 2555 or 4563, or excluded Puerto Rico income). Use Pub. 970 instead of the worksheet; it is outside this tool. Cite: [i1040gi] p. 98, Schedule 1, line 21, Exception (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"of":["sli.interest","sli.max"],"op":"smaller_of"}`
+- Expr: `{"of":["sli.qualified","sli.max"],"op":"smaller_of"}`
 - Cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 2 — `sli.line2`

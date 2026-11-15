@@ -13,7 +13,7 @@ Findings: 0; ruled 0; in the baseline to be worked off 0.
 - `asset`: lines, citations or cited pages changed since its samples
 - `carloan`: lines, citations or cited pages changed since its samples
 - `clcw`: lines, citations or cited pages changed since its samples
-- `clcw26`: lines, citations or cited pages changed since its samples
+- `clcw_next_year`: never reviewed
 - `dcprov`: lines, citations or cited pages changed since its samples
 - `dependent`: lines, citations or cited pages changed since its samples
 - `div`: lines, citations or cited pages changed since its samples

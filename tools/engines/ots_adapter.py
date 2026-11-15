@@ -303,7 +303,7 @@ def run_case(pkg, case, workdir):
         h_vals, _, _ = run_program(pkg, "taxsolve_HSA_f8889", "HSA_Form_8889/HSA_Form_8889_template.txt",
                                    {**IDENT, "L1:": "Family" if family else "Self-Only", "L2": money(inputs[f"{HSA}.line2"]),
                                     "L3": money(param("hsa.family") if family else param("hsa.self_only")),
-                                    "L7": money(param("hsa.additional") if inputs.get(f"{HSA}.age55") else 0),
+                                    "L7": money(param("hsa.additional") if f.get("hsa_age55") else 0),
                                     "L9": money(inputs[f"{HSA}.line9"])},
                                    workdir, "f8889")
         hsa_l13 = h_vals["L13"]
@@ -334,8 +334,8 @@ def run_case(pkg, case, workdir):
     # --- Form 1040, pass 1 ---
     def f1040_values(l13a, l19, l28, s2_12, s3_1, s3_2):
         v = {
-            "Status": STATUS[status], "You_65+Over?": yn(inputs.get(f"{TAXPAYER}.age65")), "You_Blind?": "N",
-            "Spouse_65+Over?": yn(joint and inputs.get("person[spouse].age65")), "Spouse_Blind?": "N",
+            "Status": STATUS[status], "You_65+Over?": yn(f.get("age", 40) >= 65), "You_Blind?": "N",
+            "Spouse_65+Over?": yn(joint and f.get("spouse_age", 40) >= 65), "Spouse_Blind?": "N",
             "Dependents": str(len(children)), "CkHomeInUS": "Y", "VirtCurr?": "N",
             "L1a": [money(inputs[f"{TAXPAYER}.w2[{k}].box1"]) for k in inputs.get(f"$w2@{TAXPAYER}", [])]
                    + ([money(inputs[f"person[spouse].w2[{k}].box1"]) for k in inputs.get("$w2@person[spouse]", [])] if joint else []),

@@ -904,7 +904,7 @@
           "migrated"
         ],
         "person[taxpayer].w2[migrated].box1": 18485000,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -978,7 +978,7 @@
           "migrated"
         ],
         "person[taxpayer].w2[migrated].box1": 33215000,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1052,7 +1052,7 @@
           "migrated"
         ],
         "person[taxpayer].w2[migrated].box1": 47932500,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1126,7 +1126,7 @@
           "migrated"
         ],
         "person[taxpayer].w2[migrated].box1": 65782500,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1200,7 +1200,7 @@
           "migrated"
         ],
         "person[taxpayer].w2[migrated].box1": 83150000,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1623,7 +1623,7 @@
         "dependent[child].citizen": false,
         "dependent[child].canada_mexico": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1701,7 +1701,7 @@
         "dependent[child].citizen": false,
         "dependent[child].canada_mexico": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1779,7 +1779,7 @@
         "dependent[child].citizen": false,
         "dependent[child].canada_mexico": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1857,7 +1857,7 @@
         "dependent[child].citizen": false,
         "dependent[child].canada_mexico": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1935,7 +1935,7 @@
         "dependent[child].citizen": false,
         "dependent[child].canada_mexico": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2149,7 +2149,7 @@
           "migrated"
         ],
         "person[taxpayer].w2[migrated].box1": 5680000,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3271,7 +3271,7 @@
           "migrated"
         ],
         "person[taxpayer].w2[migrated].box1": 13150000,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3576,7 +3576,7 @@
         "dependent[child].citizen": false,
         "dependent[child].canada_mexico": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4294,7 +4294,7 @@
           "migrated"
         ],
         "person[taxpayer].w2[migrated].box1": 23820099,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4368,7 +4368,7 @@
           "migrated"
         ],
         "person[taxpayer].w2[migrated].box1": 42610099,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4442,7 +4442,7 @@
           "migrated"
         ],
         "person[taxpayer].w2[migrated].box1": 53255099,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4516,7 +4516,7 @@
           "migrated"
         ],
         "person[taxpayer].w2[migrated].box1": 78310099,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4870,7 +4870,7 @@
         "dependent[child].citizen": false,
         "dependent[child].canada_mexico": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4948,7 +4948,7 @@
         "dependent[child].citizen": false,
         "dependent[child].canada_mexico": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5026,7 +5026,7 @@
         "dependent[child].citizen": false,
         "dependent[child].canada_mexico": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5104,7 +5104,7 @@
         "dependent[child].citizen": false,
         "dependent[child].canada_mexico": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {

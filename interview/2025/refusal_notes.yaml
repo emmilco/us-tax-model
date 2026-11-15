@@ -30,3 +30,18 @@ notes:
     You chose the line about being widowed in 2023 or 2024 (qualifying surviving spouse), but your answer about its
     tests was No. Go back to “Which of these fits you on December 31, 2025?” and choose another line, or change that
     answer if it is wrong.
+  scope.schedule1: >-
+    This tool cannot prepare a return with what you just answered Yes to. The most common cases are rent or royalties
+    (Schedule E), income or a loss from a partnership, an S corporation, an estate or a trust (Schedule K-1), and
+    farming (Schedule F). If that Yes was a mistake, go back and change it. If it was right, this return needs tax
+    software or a preparer that handles it.
+  scope.other_income: >-
+    This tool cannot prepare a return with what you just answered Yes to. The most common cases are a person who was a
+    nonresident alien for part of 2025 (that return is Form 1040-NR, or a dual-status return), wages or tips that are
+    not on a W-2, and a chapter 11 bankruptcy case. If that Yes was a mistake, go back and change it. If it was right,
+    this return needs tax software or a preparer that handles it.
+  scope.other_line16: >-
+    This tool cannot prepare a return with what you just answered Yes to: a tax figured on a form of its own, such as
+    the tax on a child's investment income (Form 8615 or Form 8814) or on shares of a foreign fund or company. If that
+    Yes was a mistake, go back and change it. If it was a choice the question said you may leave out, answer No to go
+    on without it. Otherwise this return needs tax software or a preparer that handles it.

@@ -88,3 +88,28 @@ records that reading. Full ruling text: `.transcription/proposed/fixr5/render.re
 | deepseek | render | 6 | representation | render MISMATCH | i1040gi p. 90, line 6 footnote | MFS conditions are in the spouse questions. |
 
 Findings: none.
+
+## Landing round (2026-11-14)
+
+Lane land3-adj5, interview redraft landing. Open lines of the Claude pass 643525b6700d, ruled on `.transcription/triage/2025/refund.json` (executable-triage-v2; 3,206 comparisons per line) and the sources. Rulings `/tmp/land3-adj5/refund.json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | refund.taxable | representation | 2,584/3,206 agree; no value; 66 project-unknown on completed returns with no refund (refund.box8 unasked) | i1040gi p. 88, Line 1 | Same zero-or-line-9 rule; Schedule 1 line 1 reads it only when refund.has. |
+| claude | transcription | 1 | representation | 3,002/3,206; 2 value, both mutation.t2.refund.not_itemized (incomplete; worksheet not used); 60 candidate-unknown completed | i1040gi p. 90, worksheet line 1 | Same cap; the project reads the refund through refund.received_if_worksheet. |
+
+Counts: representation 2.
+
+Findings: none.
+
+## Landing round (2026-11-14), render
+
+Lane land3-adj7 (claude-opus-5-5, judgment). Open lines of the Claude render log `.transcription/logs/2025/render/refund.md`, ruled on the rendered English (`rendered/2025/refund.md`), the form YAML and the cited source; the deepseek log is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | 1 | ambiguity and scope | MISMATCH; form YAML, register | i1040gi pp. 89-90; amb.2025.refund_cap_5d, amb.2025.refund_exceptions | Exceptions 1 and 5 refused by refund.not_prior_year on refund.taxable; cap at 2024 line 5d is the chosen reading. Same as earlier rounds. |
+
+Counts: claude render: ambiguity and scope 1.
+
+Findings: none. No line left open.

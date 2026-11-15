@@ -150,7 +150,12 @@ generated returns; `reports/2025/properties.md` reports 9 properties, all holdin
 default profile (the Stage 2 Social Security credit slice, over the `stage2.json` fixtures) and walk the
 five Stage 5 whole-return fixtures for the full profile: every walk ends in a complete form set or a
 cited refusal, and reversing the answer order does not change the return. The full-profile walk is
-representative, not exhaustive; the fixtures of Stages 8 to 21 are not walked through the interview. **Guarantees:** the fixtures are sensitive to the data they
+representative, not exhaustive; the fixtures of Stages 8 to 21 are not walked through the interview. Two
+more walks run in check-all: `interview-coverage` walks each coverage row of `interview/2025/coverage/` (a
+situation stated as the answers a filer gives, with the end the interview must come to) and fails when the
+walk ends elsewhere, and `tick-groups` checks that each tick-box group is shown whole and that its answers,
+given on one screen or one at a time, end the return the same way. Both test where answers lead, not whether
+a filer in the situation would give them (`interview/README.md`, "Coverage rows" and "Tick-box groups"). **Guarantees:** the fixtures are sensitive to the data they
 claim to test, the stated invariants hold, and the interview has no dead end on the paths walked.
 **Does not guarantee:** anything a mutation cannot express or a fixture already encodes wrongly
 (BUG-0001 again), or that a question's wording asks what the source asks.

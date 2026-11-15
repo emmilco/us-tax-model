@@ -1,0 +1,32 @@
+name: 09_tips_overtime
+who: A single restaurant server, 27, with one job that paid wages, tips and overtime.
+end: complete
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  person[taxpayer].birth_year: 1998
+  $w2@person[taxpayer]: [bistro]
+  s1a.tips: true
+  s1a.overtime: true
+  person[taxpayer].w2[bistro].box1: 4600000
+  person[taxpayer].w2[bistro].box2: 380000
+  person[taxpayer].w2[bistro].box4: 285200
+  person[taxpayer].w2[bistro].box5: 4600000
+  person[taxpayer].w2[bistro].box6: 66700
+  person[taxpayer].work_ssn: true
+  $otjob@person[taxpayer]: [bistro]
+  $tipjob@person[taxpayer]: [bistro]
+  person[taxpayer].otjob[bistro].flsa: true
+  person[taxpayer].tipjob[bistro].listed: true
+  person[taxpayer].tipjob[bistro].other_work: false
+  person[taxpayer].tipjob[bistro].charged: false
+  person[taxpayer].tipjob[bistro].unlawful: false
+  person[taxpayer].tipjob[bistro].tips: 1450000
+  person[taxpayer].otjob[bistro].method: employer_reported
+  person[taxpayer].otjob[bistro].special_rule: false
+  person[taxpayer].otjob[bistro].statement: 180000
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false

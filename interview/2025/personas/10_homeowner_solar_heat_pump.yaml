@@ -1,0 +1,47 @@
+name: 10_homeowner_solar_heat_pump
+who: A single homeowner, 52, with wages from one job, who had solar panels and a heat pump installed at her home in 2025.
+end: complete
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  person[taxpayer].birth_year: 1973
+  $w2@person[taxpayer]: [utility_co]
+  f5695.any: true
+  f5695.solar: true
+  f5695.solar_water: false
+  f5695.wind: false
+  f5695.geothermal: false
+  f5695.insulation: false
+  f5695.doors: false
+  f5695.windows: false
+  f5695.panel: false
+  f5695.audit: false
+  f5695.heat_pump: true
+  f5695.hp_water_heater: false
+  f5695.central_ac: false
+  f5695.water_heater: false
+  f5695.furnace: false
+  f5695.biomass: false
+  person[taxpayer].w2[utility_co].box1: 8400000
+  person[taxpayer].w2[utility_co].box2: 1100000
+  person[taxpayer].w2[utility_co].box4: 520800
+  person[taxpayer].w2[utility_co].box5: 8400000
+  person[taxpayer].w2[utility_co].box6: 121800
+  f5695.business_use: false
+  f5695.construction_later: false
+  f5695.joint_occupancy: false
+  f5695.line1: 2150000
+  f5695.line5a: false
+  f5695.line7a: false
+  f5695.b_new_home: false
+  f5695.condo: false
+  f5695.line21a: true
+  f5695.line21b: true
+  f5695.line29a: 920000
+  f5695.line29b: 0
+  f5695.qmid_hp: true
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false

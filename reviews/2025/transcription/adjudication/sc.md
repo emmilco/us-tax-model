@@ -154,3 +154,30 @@ Logs re-reviewed today on the package's tree; triage rerun with `tools/transcrip
 | deepseek | render | 4 (sc.f7206_line4) | scope | - | f7206 line 4 footnote, "Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income". The only earne... |
 | deepseek | render | 5 (sc.f7206_line5) | scope | - | Schedule F and K-1 profits are refused by the self-employment screen (person.x_other) and other earned income outside Schedule C is refused (sd.other_forms, scope.yaml), so the sum of Schedule C ne... |
 | deepseek | render | 9 (sc.f7206_line9) | ambiguity | - | the line 16 deduction is attributed in proportion to net profit, the recorded reading. |
+
+## Landing round (2026-11-14)
+
+Interview redraft (landing worktree), Claude line-scoped pass 44e57e57a147. Triage `.transcription/triage/2025/sc.json` (executable-triage-v2, regenerated 2026-11-14 on the fresh build; not rerun). Rulings applied with `rule.py`; full text in the log and sidecar.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | sc.line31_pre179 | model error | 1,606/3,749; 1,916 candidate-unknown (371 completed), 112 candidate-refuses, 115 project-refuses; no value | i4562 p. 5, Line 11; p946 pp. 17-19 | Line 31 plus Form 4562 line 12 is circular (line 12 is limited by this line). |
+| claude | transcription | 5 (sc.ho_line5) | model error | 1,953/3,749; 1,488 candidate-unknown (352 completed), 110 candidate-refuses, 198 project-refuses; no value | i1040sc p. 12, line 5; p946 p. 19, Two different taxable income limits | Line 1 after the section 179 deduction makes a cycle Pub. 946 resolves; the project orders the limits and refuses where both bind. |
+| claude | transcription | 40 | representation (equivalent) | 3,746/3,749; 2 project-unknown, 1 project-refuses; no value | f1040sc line 40 | Zero sum when no goods, against zeroing each line. |
+
+Counts: model error 2, representation 1 (3). Findings: none. Project lines unchanged.
+
+
+## Landing round (2026-11-14), class M
+
+Lane land3-adj12 (claude-opus-5-5, judgment). Claude class M log of 2026-11-14 (subject hash equal to the current computation); `carry.py --kind classm` ruled nothing. Rulings file `/tmp/land3-adj12/sc.json`, applied with `rule.py --kind classm` (see the lane note `docs/provisional/lanes/land3-adj12.md` for whether it has been applied: the review store index for this log had not been carried into the landing tree when the rulings were written).
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | classm | classm.sc.2 — person[taxpayer].sc[d].f7206_line4 | representation | dropped from the fixture | f7206 line 4; sc.hi_uses, sc.f7206_line14#1 | helper of a branch this entry does not take; project retained. No health insurance plan is established under business d (sc.hi_uses false, Form 7206 line 1 zero), so Form... |
+| claude | classm | classm.sc.2 — person[taxpayer].sc[d].f7206_line7 | representation | dropped from the fixture | f7206 line 4; sc.hi_uses, sc.f7206_line14#1 | helper of a branch this entry does not take; project retained. No health insurance plan is established under business d (sc.hi_uses false, Form 7206 line 1 zero), so Form... |
+| claude | classm | classm.sc.2 — person[taxpayer].sc[d].f7206_line8 | representation | dropped from the fixture | f7206 line 4; sc.hi_uses, sc.f7206_line14#1 | helper of a branch this entry does not take; project retained. No health insurance plan is established under business d (sc.hi_uses false, Form 7206 line 1 zero), so Form... |
+| claude | classm | classm.sc.2 — person[taxpayer].sc[d].f7206_line10 | representation | dropped from the fixture | f7206 line 4; sc.hi_uses, sc.f7206_line14#1 | helper of a branch this entry does not take; project retained. No health insurance plan is established under business d (sc.hi_uses false, Form 7206 line 1 zero), so Form... |
+| claude | classm | classm.sc.2 — person[taxpayer].sc[d].f7206_line13 | representation | dropped from the fixture | f7206 line 4; sc.hi_uses, sc.f7206_line14#1 | helper of a branch this entry does not take; project retained. No health insurance plan is established under business d (sc.hi_uses false, Form 7206 line 1 zero), so Form... |
+
+Counts: claude classm representation 5. Findings: none. Left open: none.

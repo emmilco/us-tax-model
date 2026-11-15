@@ -3,6 +3,14 @@
 - Document: `eic` (worksheet, tax year 2025)
 - Note: The eligibility steps of the Form 1040 instructions (pp. 40–43) as helper lines, in the order the flow chart asks them, and Worksheet A (p. 46) as printed lines 1 to 6. Worksheet B (self-employment, clergy, church employees, statutory employees) is refused with citations; married filers who file separately or as head of household answer Step 3, questions 4 and 5; a filer whose income is at or above the largest Step 1 limit for the filing status stops before any person is counted.
 
+## (helper) — `eic.lived_with_relative`
+
+- **Authored helper label:** Did you live for more than half of 2025 with a person whose qualifying child you could be by relationship?
+- **Encoded (Bool):** Input — In 2025, did you live for more than half the year in the same home as your parent, grandparent, brother, sister, aunt or uncle, or a foster parent? Count time you were temporarily away, for example at school.
+- Note: A plain question in front of eic.qc_of_another. A person is the qualifying child of another only when that other is the person's parent, stepparent, foster parent, brother or sister (step or half included) or an ancestor of one of them, and the two lived together for more than half of 2025; a filer who lived with no such relative for more than half the year is no one's qualifying child.
+- Expr: `{"op":"input","source":"In 2025, did you live for more than half the year in the same home as your parent, grandparent, brother, sister, aunt or uncle, or a foster parent? Count time you were temporarily away, for example at school."}`
+- Cite: [i1040gi] p. 41, Step 3, Qualifying Child, "A qualifying child for the EIC is your... Son, daughter, stepchild, foster child, brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them" and "Who lived with you in the United States for more than half of 2025"; p. 41, Step 3, question 6, and p. 42, Step 4, question 5 (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `eic.qc_of_another`
 
 - **Authored helper label:** Could you be a qualifying child of another person for 2025?
@@ -10,14 +18,21 @@
 - Expr: `{"op":"input","source":"Could you be a qualifying child of another person for 2025? Answer no if the other person isn't required to file, and isn't filing, a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid."}`
 - Cite: [i1040gi] p. 41, Step 3, question 6, and p. 42, Step 4, question 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `eic.qc_of_another_if_lived`
+
+- **Authored helper label:** Whether you could be a qualifying child of another person, asked only when you lived for more than half of 2025 with a relative whose qualifying child you could be (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Did you live for more than half of 2025 with a person whose qualifying child you could be by relationship?" = true → helper "Could you be a qualifying child of another person for 2025?"] [helper "Did you live for more than half of 2025 with a person whose qualifying child you could be by relationship?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["eic.lived_with_relative",{"const":true}],"op":"test"},"then":"eic.qc_of_another"},{"guard":{"eq":["eic.lived_with_relative",{"const":false}],"op":"test"},"then":"eic.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 41, Step 3, question 6, and p. 42, Step 4, question 5 (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `eic.age_range_count`
 
 - **Authored helper label:** Number of people on the return born after December 31, 1960, and before January 2, 2001
-- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Were you born before January 2, 2001?" = true and helper "Were you born after December 31, 1960?" = true, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.born_before_2001",{"const":true}],"op":"test"},{"eq":["person.born_after_1960",{"const":true}],"op":"test"}],"op":"test"}}`
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Born before January 2, 2001" = true and helper "Born after December 31, 1960" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.eic_age25",{"const":true}],"op":"test"},{"eq":["person.eic_under65",{"const":true}],"op":"test"}],"op":"test"}}`
 - Cite: [i1040gi] p. 41, Step 4, question 2, "Were you, or your spouse if filing a joint return, at least age 25 but under age 65 at the end of 2025? (Check 'Yes' if you, or your spouse if filing a joint return, were born after December 31, 1960, and before January 2, 2001.)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `eic.died_2025`
+## (helper) — `eic.died_this_year`
 
 - **Authored helper label:** Spouse died in 2025, or a return for someone who died in 2025?
 - **Encoded (Bool):** Input — Did your spouse die in 2025, or are you preparing this return for someone who died in 2025?
@@ -28,7 +43,7 @@
 
 - **Authored helper label:** You, or your spouse if filing a joint return, were at least age 25 but under age 65 at the end of 2025
 - **Encoded (Bool):** helper "Number of people on the return born after December 31, 1960, and before January 2, 2001" > 0 (a count)
-- **Refusal:** when eic.died_2025 is true, cannot complete EIC age test after a death in 2025 (Pub. 596). When your spouse died in 2025 or the return is for someone who died in 2025, the EIC age test is answered under Pub. 596, which this tool does not apply. Cite: [i1040gi] p. 42, Step 4, question 2, "spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596 before you answer." (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when eic.died_this_year is true, cannot complete EIC age test after a death in 2025 (Pub. 596). When your spouse died in 2025 or the return is for someone who died in 2025, the EIC age test is answered under Pub. 596, which this tool does not apply. Cite: [i1040gi] p. 42, Step 4, question 2, "spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596 before you answer." (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"gt":["eic.age_range_count",{"const":0,"type":"Count"}],"op":"test"}`
 - Cite: [i1040gi] p. 41, Step 4, question 2, "Were you, or your spouse if filing a joint return, at least age 25 but under age 65 at the end of 2025?" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -77,7 +92,7 @@
 ## (helper) — `eic.married_rules`
 
 - **Authored helper label:** A married filer whose filing status is married filing separately or head of household
-- **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'mfj' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'mfs' → helper "Filing status married filing separately"] [f1040 line Filing Status = 'hoh' → household helper "Were you married at the end of 2025?"] [f1040 line Filing Status = 'qss' → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'mfj' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'mfs' → helper "Filing status married filing separately"] [f1040 line Filing Status = 'hoh' → household helper "Married at the end of 2025 (false for a person filing as single or head of household who has never been married)"] [f1040 line Filing Status = 'qss' → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"eic.no"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"eic.no"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"eic.status_mfs"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"household.married"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"eic.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -197,7 +212,7 @@
 ## (helper) — `eic.step1_resident`
 
 - **Authored helper label:** Step 1, question 4. Not a nonresident alien for any part of 2025
-- **Encoded (Bool):** scope helper "Any nonresident alien status, or other income or return treatment outside the kinds listed below?" = false
+- **Encoded (Bool):** scope helper "Nonresident alien status, or other income or return treatment outside this tool (true when any of the other-income screening questions is answered Yes)" = false
 - **Refusal:** when scope.other_income is true, cannot complete Nonresident aliens (EIC, Step 1, question 4). Nonresident and dual-status treatment is outside this tool. Cite: [i1040gi] p. 40, Step 1, question 4; p. 44, Nonresident aliens (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"eq":["scope.other_income",{"const":false}],"op":"test"}`
 - Cite: [i1040gi] p. 40, Step 1, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -226,7 +241,7 @@
 ## (helper) — `eic.step2_other`
 
 - **Authored helper label:** Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity
-- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately, including any of the following?" = false and scope helper "Any additional Form 1040 line 16 tax or filing, including any of the following?" = false
+- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1 other than the ones this tool computes (true when any of the Schedule 1 screening questions is answered Yes)" = false and scope helper "An additional Form 1040 line 16 tax or filing outside this tool (true when any of the line 16 screening questions is answered Yes)" = false
 - **Refusal:** when scope.schedule1 is true, cannot complete Pub. 596, Worksheet 1 (EIC, Step 2, question 4). Schedule E, rental of personal property and passive activity income are outside this tool. Cite: [i1040gi] p. 40, Step 2, question 4, "Yes. Use Worksheet 1 ... in Pub. 596" (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when scope.other_line16 is true, cannot complete Form 8814 (EIC, Step 2, question 4). Reporting a child's interest and dividends on Form 8814 is outside this tool. Cite: [i1040gi] p. 40, Step 2, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"all":[{"eq":["scope.schedule1",{"const":false}],"op":"test"},{"eq":["scope.other_line16",{"const":false}],"op":"test"}],"op":"test"}`
@@ -270,8 +285,8 @@
 ## (helper) — `eic.not_qc_of_another`
 
 - **Authored helper label:** Step 3, question 6: not a qualifying child of another person
-- **Encoded (Bool):** helper "Could you be a qualifying child of another person for 2025?" = false
-- Expr: `{"eq":["eic.qc_of_another",{"const":false}],"op":"test"}`
+- **Encoded (Bool):** helper "Whether you could be a qualifying child of another person, asked only when you lived for more than half of 2025 with a relative whose qualifying child you could be (false otherwise)" = false
+- Expr: `{"eq":["eic.qc_of_another_if_lived",{"const":false}],"op":"test"}`
 - Cite: [i1040gi] p. 41, Step 3, questions 2 to 6 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.step3`
@@ -298,8 +313,8 @@
 ## (helper) — `eic.step4_dependent`
 
 - **Authored helper label:** Step 4, questions 3 and 4: filing jointly, or not a qualifying child or dependent of another person
-- **Encoded (Bool):** (f1040 line Filing Status = 'mfj' or helper "Could you be a qualifying child of another person for 2025?" = false and sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false)
-- Expr: `{"any":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"all":[{"eq":["eic.qc_of_another",{"const":false}],"op":"test"},{"eq":["sa.dependent",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** (f1040 line Filing Status = 'mfj' or helper "Whether you could be a qualifying child of another person, asked only when you lived for more than half of 2025 with a relative whose qualifying child you could be (false otherwise)" = false and sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false)
+- Expr: `{"any":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"all":[{"eq":["eic.qc_of_another_if_lived",{"const":false}],"op":"test"},{"eq":["sa.dependent",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31, 1960 and before January 2, 2001) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.step4`
@@ -667,8 +682,8 @@
 ## (helper) — `eic.check_27c`
 
 - **Authored helper label:** The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked
-- **Encoded (Bool):** (helper "Adjusted gross income below the largest Step 1 limit (otherwise question 1 is "No" for any number of children)" = true and helper "Step 1, question 1. Is the amount on Form 1040, line 11b, less than the limit for the number of children who have valid SSNs?" = true and helper "Step 1, question 2. Do you have a social security number issued on or before the due date of your return that allows you to work and is valid for EIC purposes?" = false or helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = true and helper "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025" = true and f1040 line Filing Status ≠ 'mfj' and helper "Could you be a qualifying child of another person for 2025?" = true or helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = false and helper "A married filer whose filing status is married filing separately or head of household" = false and helper "You, or your spouse if filing a joint return, were at least age 25 but under age 65 at the end of 2025" = true and helper "Was your main home, and your spouse's if filing a joint return, in the United States for more than half of 2025?" = false or helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = false and helper "A married filer whose filing status is married filing separately or head of household" = false and helper "You, or your spouse if filing a joint return, were at least age 25 but under age 65 at the end of 2025" = true and helper "Was your main home, and your spouse's if filing a joint return, in the United States for more than half of 2025?" = true and f1040 line Filing Status ≠ 'mfj' and helper "Could you be a qualifying child of another person for 2025?" = true or helper "Steps 1 to 5 passed and Worksheet A, line 2 is zero (a STOP that says to check line 27c)" = true or helper "Worksheet B, line 5 is No (line 4b is not less than the limit), a STOP that says to check line 27c" = true)
-- Expr: `{"any":[{"all":[{"eq":["eic.below_top",{"const":true}],"op":"test"},{"eq":["eic.step1_income",{"const":true}],"op":"test"},{"eq":["eic.step1_ssn",{"const":false}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":true}],"op":"test"},{"eq":["eic.step3_married",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["eic.qc_of_another",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":false}],"op":"test"},{"eq":["eic.married_rules",{"const":false}],"op":"test"},{"eq":["eic.age_range",{"const":true}],"op":"test"},{"eq":["eic.us_home",{"const":false}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":false}],"op":"test"},{"eq":["eic.married_rules",{"const":false}],"op":"test"},{"eq":["eic.age_range",{"const":true}],"op":"test"},{"eq":["eic.us_home",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["eic.qc_of_another",{"const":true}],"op":"test"}],"op":"test"},{"eq":["eic.worksheet_a_stop",{"const":true}],"op":"test"},{"eq":["eic.wsb_line5_stop",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** (helper "Adjusted gross income below the largest Step 1 limit (otherwise question 1 is "No" for any number of children)" = true and helper "Step 1, question 1. Is the amount on Form 1040, line 11b, less than the limit for the number of children who have valid SSNs?" = true and helper "Step 1, question 2. Do you have a social security number issued on or before the due date of your return that allows you to work and is valid for EIC purposes?" = false or helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = true and helper "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025" = true and f1040 line Filing Status ≠ 'mfj' and helper "Whether you could be a qualifying child of another person, asked only when you lived for more than half of 2025 with a relative whose qualifying child you could be (false otherwise)" = true or helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = false and helper "A married filer whose filing status is married filing separately or head of household" = false and helper "You, or your spouse if filing a joint return, were at least age 25 but under age 65 at the end of 2025" = true and helper "Was your main home, and your spouse's if filing a joint return, in the United States for more than half of 2025?" = false or helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = false and helper "A married filer whose filing status is married filing separately or head of household" = false and helper "You, or your spouse if filing a joint return, were at least age 25 but under age 65 at the end of 2025" = true and helper "Was your main home, and your spouse's if filing a joint return, in the United States for more than half of 2025?" = true and f1040 line Filing Status ≠ 'mfj' and helper "Whether you could be a qualifying child of another person, asked only when you lived for more than half of 2025 with a relative whose qualifying child you could be (false otherwise)" = true or helper "Steps 1 to 5 passed and Worksheet A, line 2 is zero (a STOP that says to check line 27c)" = true or helper "Worksheet B, line 5 is No (line 4b is not less than the limit), a STOP that says to check line 27c" = true)
+- Expr: `{"any":[{"all":[{"eq":["eic.below_top",{"const":true}],"op":"test"},{"eq":["eic.step1_income",{"const":true}],"op":"test"},{"eq":["eic.step1_ssn",{"const":false}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":true}],"op":"test"},{"eq":["eic.step3_married",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["eic.qc_of_another_if_lived",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":false}],"op":"test"},{"eq":["eic.married_rules",{"const":false}],"op":"test"},{"eq":["eic.age_range",{"const":true}],"op":"test"},{"eq":["eic.us_home",{"const":false}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":false}],"op":"test"},{"eq":["eic.married_rules",{"const":false}],"op":"test"},{"eq":["eic.age_range",{"const":true}],"op":"test"},{"eq":["eic.us_home",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["eic.qc_of_another_if_lived",{"const":true}],"op":"test"}],"op":"test"},{"eq":["eic.worksheet_a_stop",{"const":true}],"op":"test"},{"eq":["eic.wsb_line5_stop",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 40, Step 1, question 2; p. 41, Step 3, question 6; p. 42, Step 4, questions 3 and 5; p. 43, Line 27c; p. 46, Worksheet A, line 2 ("Check the box on Form 1040 or 1040-SR, line 27c"); p. 47, Worksheet B, line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.wsb_4b_positive`
@@ -688,15 +703,15 @@
 ## (helper) — `eic.separated_box`
 
 - **Authored helper label:** A married filer filing separately or as head of household who passes Step 3, questions 4 and 5, and answers No to question 6 (the special rule for separated spouses)
-- **Encoded (Bool):** helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = true and helper "A married filer whose filing status is married filing separately or head of household" = true and helper "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025" = true and helper "Could you be a qualifying child of another person for 2025?" = false
+- **Encoded (Bool):** helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = true and helper "A married filer whose filing status is married filing separately or head of household" = true and helper "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025" = true and helper "Whether you could be a qualifying child of another person, asked only when you lived for more than half of 2025 with a relative whose qualifying child you could be (false otherwise)" = false
 - Interpretation: amb.2025.separated_spouses_box
-- Expr: `{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":true}],"op":"test"},{"eq":["eic.married_rules",{"const":true}],"op":"test"},{"eq":["eic.step3_married",{"const":true}],"op":"test"},{"eq":["eic.qc_of_another",{"const":false}],"op":"test"}],"op":"test"}`
+- Expr: `{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":true}],"op":"test"},{"eq":["eic.married_rules",{"const":true}],"op":"test"},{"eq":["eic.step3_married",{"const":true}],"op":"test"},{"eq":["eic.qc_of_another_if_lived",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 41, Step 3, question 6, "No. Check the box in the Dependents section that discusses the special rule for separated spouses"; p. 44, Special rule for separated spouses (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.clergy`
 
 - **Authored helper label:** A member of the clergy filing Schedule SE with an amount also on Form 1040, line 1z (refused; Schedule SE is outside the tool)
-- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately, including any of the following?" = true
+- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1 other than the ones this tool computes (true when any of the Schedule 1 screening questions is answered Yes)" = true
 - **Refusal:** when scope.schedule1 is true, cannot complete Clergy filing Schedule SE (Form 1040, line 27b). Schedule SE is outside this tool. Cite: [i1040gi] p. 43, Line 27b, and Clergy (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"eq":["scope.schedule1",{"const":true}],"op":"test"}`
 - Cite: [i1040gi] p. 43, Line 27b (2025; printed date 2026-02-25; sha256 482e9c48)

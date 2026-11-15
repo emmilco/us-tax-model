@@ -196,7 +196,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
-        "qbi.unsupported": true,
+        "qbi.coop_patron": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -207,7 +207,7 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "qbi.deduction": {

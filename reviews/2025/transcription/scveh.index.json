@@ -4,189 +4,222 @@
  "family": "claude",
  "base": "cd52c51f07121c0362f233665ec57129f26d12638a93939e8f76b1cfcef005ae",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+  "printed lines compared": "23",
+  "agree / disagree / missing": "0 / 23 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "scveh.bonus",
-   "record": "cd52c51f07121c0362f233665ec57129f26d12638a93939e8f76b1cfcef005ae",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\". The project prorates at six places, half-up; the candidate at another precision, so amounts differ by cents to a few dollars: classm.scveh.1 and classm.f8962.5.gpt biz_b car_2 $9,918.86/$9,918.39, classm.scveh.5 car_1 $4,998.73/$4,998.50, generated 242 car_1 $6,634.96/$6,634.72. Triage executable-triage-v2 (`../triage/scveh.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,227 partial records): 2,206 of 2,504 agree; on completed returns 44 value, 2 candidate-unknown (partials of stage14.veh.suv_179 without suv and stage14.veh.2025_179_limit without bonus_same). The remaining differences are records withholding an answer the interview asks of the vehicle (suv, bonus_same, owned, placed_date) and the project's cited vehicle screens on refused returns.",
-   "subject_key": "a3e95fae572f38550e113680a2d4be4bf8a12e2b0fca446a227faf1c658171b8"
+   "ruling": "Ruling: ambiguity; i4562 p. 13, Line 25, and p946 pp. 61-62, worksheet line 16. (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $0.47). The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 4,206/5,540 agree; 1,099 candidate-unknown, 135 candidate-refuses, 65 value, 19 project-refuses, 16 project-unknown; on completed returns: 40 candidate-refuses, 39 candidate-unknown, 1 value.",
+   "subject_key": "7fb570b96ec6b1d1522b1f9298317fc4f87a8a03d05375ab525f6696b642e6f5"
   },
   {
    "key": "scveh.macrs",
-   "record": "320decd8ff580ade676652db701cc9e247e3845fda691de6deaa043482b879a9",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity (amb.2025.vehicle_business_pct, owner's ruling); same reply and project as the earlier ruling. i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\". The project prorates at six places, half-up; the reply at four, so amounts differ by cents. Triage executable-triage-v2 (reviews/2025/transcription/triage/scveh.json; 1,638 fixtures, 500 generated returns seed 20261026, 1237 partial records): 2,189 of 2,809 comparisons agree; on completed returns 41 value differences of cents (e.g. classm.f8962.4.deepseek car_2 $782.01/$782.03, classm.person.1.deepseek car_1 $10,208.44/$10,208.43); the other differences are on refused or incomplete returns, where the reply asks scveh.employee_use or declares its own gates. Project stands.",
-   "subject_key": "7e90c6b39a151f79fc01407d3b2037b6b445135de95118820dc516c3f88082b6"
+   "ruling": "Ruling: ambiguity; i4562 p. 15, Column (h), and p946 pp. 61-62, worksheet line 20. (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $0.46). The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 4,124/5,540 agree; 849 candidate-unknown, 433 value, 96 candidate-refuses, 20 project-refuses, 18 project-unknown; on completed returns: 40 candidate-refuses, 39 candidate-unknown, 13 value.",
+   "subject_key": "3555b4f772a6aeb1a5ff53e65f7c9f7afacdb53043f8eace6f9b02b31e1ff65a"
   },
   {
    "key": "scveh.mq_q4",
-   "record": "c270bd96059c45b235fb26874248b7e88e18439caf242a1decbb730b22165a76",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity (amb.2025.vehicle_business_pct (owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\"); same line and candidate as the refresh-round ruling: line 15 of an owned actual-expense vehicle placed in the fourth quarter of 2025, zero otherwise; amounts can differ only through the business-use precision of line 13 (4 places in the reply, 6 in the project).",
-   "subject_key": "1146190a26d99195125c1751e53e3f305e1a42cd8ec86ec316d00323da7714cf"
+   "ruling": "Ruling: ambiguity; p946 p. 34, mid-quarter convention, depreciable bases placed in service in the last 3 months. (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $1.95). The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 4,040/5,540 agree; 1,189 candidate-unknown, 171 candidate-refuses, 118 project-unknown, 17 project-refuses, 5 value; on completed returns: 40 candidate-refuses, 39 candidate-unknown, 1 value.",
+   "subject_key": "4cd161beb32e213022055caba923e555903eaa11e4619257a5b6e8e1f28d4ea5"
   },
   {
    "key": "scveh.mq_total",
-   "record": "c270bd96059c45b235fb26874248b7e88e18439caf242a1decbb730b22165a76",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity (amb.2025.vehicle_business_pct (owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\"); same line and candidate as the refresh-round ruling (line 15 of an owned actual-expense 2025 vehicle); differences only through the business-use precision of line 13.",
-   "subject_key": "39704a56dc0fbcf6a9d5004fca680c5449bb720b93f078d653f2d4d94d74dff5"
+   "ruling": "Ruling: ambiguity; p946 p. 34, mid-quarter convention, total depreciable bases. (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $1.95). The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 4,109/5,540 agree; 1,111 candidate-unknown, 138 candidate-refuses, 88 project-unknown, 75 value, 19 project-refuses; on completed returns: 40 candidate-refuses, 39 candidate-unknown, 2 value.",
+   "subject_key": "cbe1f9e486a26d52d9045af9d22f0cd990817ca225353b97e873f376788dacd7"
   },
   {
    "key": "scveh.cost179",
-   "record": "c270bd96059c45b235fb26874248b7e88e18439caf242a1decbb730b22165a76",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity (amb.2025.vehicle_business_pct (owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\"); same line and candidate as the refresh-round ruling: line 13 for an owned actual-expense 2025 vehicle (i4562 p. 4, Line 2), zero otherwise; differences only through the business-use precision.",
-   "subject_key": "c39eae0ca584b767f3385a7c4d9952501809b7cda874c90ad8e5827dd234068c"
+   "ruling": "Ruling: ambiguity; i4562 p. 4, Line 2, \"Enter the total cost of all section 179 property you placed in service during the tax year ... Any listed property from Part V\". (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $1.95). The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 4,092/5,540 agree; 1,119 candidate-unknown, 138 candidate-refuses, 93 project-unknown, 81 value, 17 project-refuses; on completed returns: 40 candidate-refuses, 39 candidate-unknown, 2 value.",
+   "subject_key": "8b2e25a3712abe967c4f0173107d084ec52fc6fccd2e90259ac86da8b9e14c9b"
+  },
+  {
+   "key": "(screen) (scveh.smr_ok)",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040sc p. 6, Line 9, \"You can take the standard mileage rate for 2025 only if you: Owned the vehicle and used the standard mileage rate for the first year you placed the vehicle in service, or Leased the vehicle and are using the standard mileage rate for the entire lease period\", and \"You must use actual expenses if you used five or more vehicles simultaneously\". The reply reads scveh.smr_first for every owned vehicle; the interview asks it only when scveh.smr_always is No (scveh.smr_first_if_not_always), since a vehicle on the rate every year was on it in its first year. Every value record is an owned vehicle answering Yes to smr_always with the unasked smr_first supplied as No (classm.g28.1.deepseek, classm.sd.1.deepseek, classm.clcw.2.deepseek: project true, reply false). For a leased vehicle both sides read smr_always (smr_first's question says to answer No if leased). Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 1,764/5,540 agree; 3,380 value, 324 candidate-unknown, 72 project-unknown; on completed returns: 83 value, 9 project-unknown, 3 candidate-unknown.",
+   "subject_key": "d9f13387e00e124f7cc79cb71b17201f0acfe22b1e8d24f619668261723e9d5b"
   },
   {
    "key": "9 (scveh.line9)",
-   "record": "c270bd96059c45b235fb26874248b7e88e18439caf242a1decbb730b22165a76",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity (amb.2025.vehicle_business_pct (owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\"); the reply's line 9 is the project's (standard mileage: rate times business miles plus parking and tolls; actual: business share of operating expenses plus parking and tolls) with the business share rounded to 4 places instead of 6. The refresh round's model error (scveh.employee_use needed for standard-mileage vehicles) is gone: the reply's scveh.h_emp tests actual expenses first, the project's scveh.employee_bad. Ruled from reading the pass reply (.transcription/scveh.lines-dcabfc147add) against the project; triage was not rerun.",
-   "subject_key": "b509f4d7fe547dd8184a2e5ceb607865b17a140c33501a1e1bb88878080016b5"
+   "ruling": "Ruling: ambiguity; i1040sc pp. 6-7, Line 9, \"Include on line 9 the business portion of expenses for gasoline, oil, repairs, insurance, license plates, etc.\". (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $0.27). The reply's candidate refusals are its standard-mileage test (ruled representation under (screen) (scveh.smr_ok)): an owned vehicle that answered Yes to scveh.smr_always, where the interview does not ask scveh.smr_first. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 2,241/5,540 agree; 1,663 candidate-refuses, 1,067 value, 568 candidate-unknown, 1 project-refuses; on completed returns: 55 candidate-refuses, 12 value, 4 candidate-unknown.",
+   "subject_key": "673374b6a33952475efe40b08ead63d8eac932105861ef39eb9d264a76042352"
   },
   {
    "key": "20a",
-   "record": "c270bd96059c45b235fb26874248b7e88e18439caf242a1decbb730b22165a76",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity (amb.2025.vehicle_business_pct (owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\"); the business share of the lease payments of a leased actual-expense vehicle, zero otherwise, as the project, at 4 places instead of 6. The lease inclusion amount is refused by sc.special (\"an inclusion amount for leased property\"). The refresh round's model error (scveh.employee_use needed for standard-mileage vehicles) is gone: the reply's scveh.h_emp tests actual expenses first, the project's scveh.employee_bad. Ruled from reading the pass reply (.transcription/scveh.lines-dcabfc147add) against the project; triage was not rerun.",
-   "subject_key": "c46b7ccdb756c5f22a676efb00028c248dcde096f160e448ed374fb441494690"
+   "ruling": "Ruling: ambiguity; i1040sc p. 8, Lines 20a and 20b, \"enter on line 20a the business portion of your rental cost\". (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $0.21). The reply's candidate refusals are its standard-mileage test (ruled representation under (screen) (scveh.smr_ok)): an owned vehicle that answered Yes to scveh.smr_always, where the interview does not ask scveh.smr_first. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 2,038/5,540 agree; 1,664 candidate-refuses, 1,468 candidate-unknown, 369 value, 1 project-refuses; on completed returns: 55 candidate-refuses, 4 candidate-unknown, 4 value.",
+   "subject_key": "dc89c599593c9420af4b05561697285fa0b4b7d4e286c551761722547a424a27"
+  },
+  {
+   "key": "(screen) (scveh.screen)",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i4562 pp. 13-15, Part V, and the items of the screen. The reply's screen differs from the project's only where the interview does not ask or where the project refuses elsewhere: (1) it refuses a 2025 vehicle answering No to scveh.bonus_same even with no allowance claimed; the interview asks bonus_same only where the allowance is claimed and the project refuses a mixed class election on the claiming entry (scveh.bonus_full, scveh.bonus_forty, and asset's lines), i4562 p. 7, Election out, \"You can elect, for any class of property, to not deduct any special allowance for all such property in such class\" (stage14.veh.2025_mq_nobonus: bonus_same unasked, project false, reply true); (2) vehicles placed in service before 2019, which the project refuses at column (d) (scveh.too_old; stage14.veh.refuse_too_old); (3) scveh.employee_use, which the project refuses at scveh.operating_business; (4) the parent-gated items (prior_bonus, prior_smr and prior_low_use only for an earlier vehicle; used_before and bonus_excluded only with an allowance; leasing, exempt_use and qbu_low only if others use the vehicle; acquired_before_bonus_date only for a 2025 vehicle), which the reply reads directly. The reply limits the screen to owned vehicles on actual expenses; the project's screen is read only through the depreciation lines of those vehicles. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 3,226/5,540 agree; 898 candidate-unknown, 823 project-unknown, 510 project-refuses, 83 value; on completed returns: 40 value, 26 candidate-unknown, 16 project-unknown, 12 project-refuses.",
+   "subject_key": "1898be26ab5089ed3e4bfe474ebe8e7c0c3507d31ef94c31ba1497889312dd59"
   },
   {
    "key": "13",
-   "record": "320decd8ff580ade676652db701cc9e247e3845fda691de6deaa043482b879a9",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; same reply and project as the round-2 and round-3 rulings. i4562 p. 14, Column (c) (amb.2025.vehicle_business_pct, owner's ruling): cost times the business-use percentage, the reply rounding to 4 places against the project's 6. Triage executable-triage-v2 (reviews/2025/transcription/triage/scveh.json; 1,638 fixtures, 500 generated returns seed 20261026, 1237 partial records): 1,015 of 2,809 comparisons agree; on completed returns 119 value differences of cents to a few dollars (e.g. classm.g28.1.deepseek car_1 $2,565.15/$2,565.00) and 193 candidate-unknown, where the reply asks scveh.employee_use on vehicles whose line the project hides (not owned on actual expenses). Project stands.",
-   "subject_key": "b87c7c2bfca378cf6e6e34781465ea105c4cee332b658f746fbdb6be5dec72a1"
+   "ruling": "Ruling: ambiguity; p946 pp. 61-62, worksheet line 13, \"Multiply line 12 by line 8. This is your business/investment cost\". (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $1.49). The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. The reply's line has no display condition, so it shows the business cost of standard-mileage vehicles whose cost the record supplies (classm.f1040.6.deepseek spouse car_1); the project hides the line for them. Whether the interview ever asks the cost of a standard-mileage vehicle was not checked by an interview run; no printed amount of such a vehicle reads it. The line 10 stop note (BUG-0633) also applies to this line on the project side. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 1,454/5,540 agree; 1,634 candidate-shows-skipped, 1,449 candidate-unknown, 829 value, 99 candidate-refuses, 58 project-unknown, 17 project-refuses; on completed returns: 54 candidate-shows-skipped, 40 candidate-refuses, 29 candidate-unknown, 16 value.",
+   "subject_key": "bed5b6b7de2cffbb373f2b0eda702f13ed3844664b4d60c73f472a2c59dda8d5"
   },
   {
    "key": "7",
-   "record": "c270bd96059c45b235fb26874248b7e88e18439caf242a1decbb730b22165a76",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; p946 Depreciation Worksheet for Passenger Automobiles, line 7. For a passenger automobile the reply's limit is the project's (the first-year limit without the allowance for a 2025 vehicle with no special allowance, otherwise the table for the recovery year, year 4 and later read as one row); for a vehicle that is not a passenger automobile it enters the cost and the project the table amount, a line the project hides there and does not use for such a vehicle (its line 10 takes the election directly). Zero for a vehicle not depreciated, also hidden. The refresh round's model error (scveh.employee_use needed for standard-mileage vehicles) is gone: the reply's scveh.h_emp tests actual expenses first, the project's scveh.employee_bad. Ruled from reading the pass reply (.transcription/scveh.lines-dcabfc147add) against the project; triage was not rerun.",
-   "subject_key": "fa11d1f7ac42a78ab211fb3b0ec7b1d7a60d4cce6fd6fe51d2fe94f5de14ca09"
+   "ruling": "Ruling: model error; p946 pp. 61-62, worksheet line 7, \"Maximum depreciation deduction for this year from the appropriate table\". The project shows the limit lines 7, 9, 11 and 17 only for a passenger automobile owned and on actual expenses (shown_when scveh.on_auto_limits); the limits apply only to passenger automobiles (i4562 pp. 14-15, Limits for passenger automobiles, \"Passenger automobiles are 4-wheeled vehicles ...\" and Exception). The reply's line has no display condition and shows the passenger-automobile limit for an owned vehicle on actual expenses that is not a passenger automobile, a reachable record whose inputs the interview asks (fixtures with scveh.passenger false and a 2025 or earlier placed-in-service year), and for standard-mileage vehicles. Its values agree wherever the project shows the line. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 2,358/5,540 agree; 2,324 candidate-shows-skipped, 601 candidate-unknown, 205 project-unknown, 52 project-refuses; on completed returns: 101 candidate-shows-skipped, 8 candidate-unknown.",
+   "subject_key": "17e35a218b77e27bd8c87d13bc39f7dfabf2183ca0c5181aa6a7e078e18c8125"
   },
   {
    "key": "9 (scveh.line9w)",
-   "record": "c270bd96059c45b235fb26874248b7e88e18439caf242a1decbb730b22165a76",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity (amb.2025.vehicle_business_pct (owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\"); line 7 times the business-use percentage, as the project, at 4 places instead of 6. The refresh round's model error (scveh.employee_use needed for standard-mileage vehicles) is gone: the reply's scveh.h_emp tests actual expenses first, the project's scveh.employee_bad. Ruled from reading the pass reply (.transcription/scveh.lines-dcabfc147add) against the project; triage was not rerun.",
-   "subject_key": "e751c854fe5b71af23767ab90ca9e2e28298b96876c295fde566178faea01d78"
+   "ruling": "Ruling: model error; p946 pp. 61-62, worksheet line 9, \"Multiply line 7 by line 8. This is your adjusted maximum depreciation deduction\". The project shows the limit lines 7, 9, 11 and 17 only for a passenger automobile owned and on actual expenses (shown_when scveh.on_auto_limits); the limits apply only to passenger automobiles (i4562 pp. 14-15, Limits for passenger automobiles, \"Passenger automobiles are 4-wheeled vehicles ...\" and Exception). The reply shows the line (no display condition) for owned vehicles on actual expenses that are not passenger automobiles, and for standard-mileage vehicles. Where both show it the values differ only by the business-percentage rounding (amb.2025.vehicle_business_pct, owner's ruling; at most $0.57). Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 585/5,540 agree; 2,258 candidate-shows-skipped, 1,866 value, 667 candidate-unknown, 112 project-unknown, 52 project-refuses; on completed returns: 99 candidate-shows-skipped, 14 value, 10 candidate-unknown.",
+   "subject_key": "65a2f01207cc075063f29dc0816362d602fe55c1a900b76b4fc85cad84580219"
   },
   {
    "key": "10",
-   "record": "c270bd96059c45b235fb26874248b7e88e18439caf242a1decbb730b22165a76",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation (+ scope); p946 Depreciation Worksheet, line 10, \"Section 179 deduction claimed this year (not more than line 9)\"; i4562 p. 16, Column (i), \"subject to the limits for passenger automobiles\" and \"You cannot elect to expense more than $31,300 of the cost of any SUVs\". The reply takes the smaller of its column (i) and line 9; for a passenger automobile that is the project's, and for another vehicle line 9 is its business cost, so the result is the election, as the project. An election above the business cost or the SUV limit, which the reply caps, the project refuses (scveh.s179_bad). Ruled from reading the pass reply (.transcription/scveh.lines-dcabfc147add) against the project; triage was not rerun.",
-   "subject_key": "89f753fffc033ee05dfee3018c2500ce90da5cf447a5be8575ddb930198e975d"
+   "ruling": "Ruling: ambiguity; p946 pp. 61-62, worksheet line 10, \"Section 179 deduction claimed this year (not more than line 9)\", and i4562 p. 16, Column (i). (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $0.69). The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. The reply caps an election above the business cost or the $31,300 SUV limit; the project refuses it at its cited gate scveh.s179_bad (scope). Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 3,604/5,540 agree; 1,679 candidate-unknown, 138 candidate-refuses, 98 project-unknown, 19 project-refuses, 2 value; on completed returns: 40 candidate-refuses, 40 candidate-unknown.",
+   "subject_key": "ee8d77b9b84211460f388b0ebfd07130c7e009a14d6231cf5b4ff5ee1396e095"
   },
   {
    "key": "11",
-   "record": "cd52c51f07121c0362f233665ec57129f26d12638a93939e8f76b1cfcef005ae",
-   "status": "AGREE",
-   "subject_key": "7a8bf3da1c3c6bc14244cf7ea301d46e3d1a08e5e7e5a0eaca085146372ca81d"
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; p946 pp. 61-62, worksheet line 11, \"Subtract line 10 from line 9. This is the limit on the amount you can deduct for depreciation\". The project shows the limit lines 7, 9, 11 and 17 only for a passenger automobile owned and on actual expenses (shown_when scveh.on_auto_limits); the limits apply only to passenger automobiles (i4562 pp. 14-15, Limits for passenger automobiles, \"Passenger automobiles are 4-wheeled vehicles ...\" and Exception). The reply's display condition (owned, actual expenses, and either not a passenger automobile or line 10 less than line 9) shows the limit line for a vehicle that is not a passenger automobile. Its hiding of the line after the line 10 stop note is consistent with the source; the project shows a zero there, which the README's skipped-line rule allows. Triage applies only the project's display condition, so its candidate-shows-skipped count also includes records the reply's own condition hides. Value differences are the business-percentage rounding (amb.2025.vehicle_business_pct, owner's ruling). Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 551/5,540 agree; 2,193 candidate-shows-skipped, 1,752 candidate-unknown, 788 value, 180 candidate-refuses, 62 project-unknown, 14 project-refuses; on completed returns: 82 candidate-shows-skipped, 49 candidate-unknown, 40 candidate-refuses, 14 value.",
+   "subject_key": "e08d20881c633900a657171ec0273e3d90ff5c7befaecab1528ab6c9ea69ebab"
   },
   {
    "key": "14",
-   "record": "c270bd96059c45b235fb26874248b7e88e18439caf242a1decbb730b22165a76",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; p946 Depreciation Worksheet, line 14, \"Section 179 deduction claimed in the year you placed the car in service\": line 10 for a 2025 vehicle, scveh.prior_179 for an earlier one, as the project; zero for a vehicle not depreciated, where the line is hidden.",
-   "subject_key": "4b7a2982fbcb4968a0b0df6e63f5052947f30a61b7aa42e77498d821c3eca260"
+   "ruling": "Ruling: ambiguity; p946 pp. 61-62, worksheet line 14. (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $0.69). The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. Its candidate-shows-skipped records are standard-mileage vehicles or generated records (the reply's line has no display condition). Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 3,987/5,540 agree; 739 candidate-unknown, 516 candidate-shows-skipped, 144 project-unknown, 93 candidate-refuses, 59 project-refuses, 2 value; on completed returns: 40 candidate-refuses, 16 candidate-unknown, 2 candidate-shows-skipped.",
+   "subject_key": "e4a19a74626b4c998d21e26ee3a5dc29401b99a6b4b54e152d7001e3d697253f"
   },
   {
    "key": "15",
-   "record": "cd52c51f07121c0362f233665ec57129f26d12638a93939e8f76b1cfcef005ae",
-   "status": "AGREE",
-   "subject_key": "ba2fa761fbd364822d29ab6d48a552787d8946377ad204f0d19c281344b38f37"
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
+   "status": "DISAGREE",
+   "ruling": "Ruling: finding; p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, Note after line 10, \"1) If line 10 is equal to line 9, stop here ... 2) If line 10 is less than line 9, complete Part II\", and Note after line 16, \"1) If line 16 is equal to line 11, stop here ... 2) If line 16 is less than line 11, complete Part III\". The project shows line 15 for every owned vehicle on actual expenses (shown_when scveh.is_actual_owned), so for a passenger automobile that stops at line 10 it shows a nonzero amount on a line the filer never reaches (stage14.veh.2025_179_over_line9, evaluated: line 10 = line 9 = $12,200, line 15 $77,800; no later amount changes). The reply hides line 15 there. Low (BUG-0633): a display condition only; the value stays computed for the mid-quarter bases. Other differences: business-percentage rounding (amb.2025.vehicle_business_pct, owner's ruling); refusals and unknowns from the reply's screen (representation, see (screen) (scveh.screen)); the candidate-shows-skipped records are standard-mileage vehicles that the reply's own display condition hides (triage applies only the project's). Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 1,468/5,540 agree; 1,602 candidate-shows-skipped, 1,486 candidate-unknown, 813 value, 99 candidate-refuses, 53 project-unknown, 19 project-refuses; on completed returns: 52 candidate-shows-skipped, 40 candidate-refuses, 31 candidate-unknown, 16 value.",
+   "subject_key": "a2d58f151ad2153e2b534e3a1b12d772440db1ed6de1937f095236aa4fd46c27"
   },
   {
    "key": "16",
-   "record": "c270bd96059c45b235fb26874248b7e88e18439caf242a1decbb730b22165a76",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error and ambiguity; i4562 p. 7, Election out: \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year\". The rates are the project's (100% after January 19 unless 40% is elected, 40% otherwise, none for none), with the business-use precision (amb.2025.vehicle_business_pct (owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\"). Model error: the reply's line 16 refuses on scveh.h_bonus_mixed (a 2025 depreciated vehicle and scveh.bonus_same false) whatever the choice, so it asks scveh.bonus_same of a vehicle whose choice is none; the project asks it only on the full and forty branches (scveh.bonus_full, scveh.bonus_forty refuse on scveh.bonus_mixed). Ruled from reading the pass reply (.transcription/scveh.lines-dcabfc147add) against the project; triage was not rerun.",
-   "subject_key": "a3f3bc61c031367e157330bf9bbb3ebd77b4e353ed9cb1e13fc31b547b1545c5"
+   "ruling": "Ruling: ambiguity; p946 pp. 61-62, worksheet line 16, and i4562 pp. 5-7, Line 14. (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $0.50). The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. Its candidate-shows-skipped record is a generated return. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 3,440/5,540 agree; 1,695 candidate-unknown, 136 candidate-refuses, 98 project-unknown, 85 candidate-shows-skipped, 67 value, 19 project-refuses; on completed returns: 40 candidate-refuses, 39 candidate-unknown, 1 candidate-shows-skipped, 1 value.",
+   "subject_key": "df0ca07326d7d8b3964bd652fb90c79888cf9d944a379a2da79e9f7a6be20ac1"
   },
   {
    "key": "25",
-   "record": "cd52c51f07121c0362f233665ec57129f26d12638a93939e8f76b1cfcef005ae",
-   "status": "AGREE",
-   "subject_key": "f24366f7622f4362f6b49f630bcccf138a50bd6f68152b7de1954346264c5055"
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; p946 pp. 61-62, worksheet line 16, Note 1, \"If line 16 is equal to line 11, stop here\". (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $0.61). The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. For a vehicle that is not a passenger automobile the reply puts line 16 on this line, which the project hides and reads from line 16; the quantity is the same. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 4,157/5,540 agree; 1,115 candidate-unknown, 177 candidate-refuses, 63 value, 14 project-refuses, 9 project-unknown, 5 candidate-shows-skipped; on completed returns: 40 candidate-refuses, 39 candidate-unknown, 1 candidate-shows-skipped, 1 value.",
+   "subject_key": "dd0efa4423bbae438173a7503592c05148730c9dc264d2b8ca90621bb067371a"
   },
   {
    "key": "17",
-   "record": "cd52c51f07121c0362f233665ec57129f26d12638a93939e8f76b1cfcef005ae",
-   "status": "AGREE",
-   "subject_key": "70a3b54835abc2414699166cbc8f560d852841d9ba3679935f96516b7ed81e2b"
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; p946 pp. 61-62, worksheet line 17, \"Subtract line 16 from line 11. This is the limit on the amount you can deduct for MACRS depreciation\". The project shows the limit lines 7, 9, 11 and 17 only for a passenger automobile owned and on actual expenses (shown_when scveh.on_auto_limits); the limits apply only to passenger automobiles (i4562 pp. 14-15, Limits for passenger automobiles, \"Passenger automobiles are 4-wheeled vehicles ...\" and Exception). The reply's display condition shows the line for a vehicle that is not a passenger automobile. After either stop note the project's line 17 is zero. Triage applies only the project's display condition, so its candidate-shows-skipped count includes records the reply's condition hides. Value differences are the business-percentage rounding (amb.2025.vehicle_business_pct, owner's ruling). Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 660/5,540 agree; 2,108 candidate-shows-skipped, 1,747 candidate-unknown, 772 value, 177 candidate-refuses, 62 project-unknown, 14 project-refuses; on completed returns: 81 candidate-shows-skipped, 49 candidate-unknown, 40 candidate-refuses, 14 value.",
+   "subject_key": "9dbf03b207e1dfd82dd1ff8c4abcd7df0a7a17ac332f7e9c4b3fa08edf27afa1"
   },
   {
    "key": "18",
-   "record": "cd52c51f07121c0362f233665ec57129f26d12638a93939e8f76b1cfcef005ae",
-   "status": "AGREE",
-   "subject_key": "d3da4f39a5641fecbce28486f2e307a9c06a4e978e400f8c260fa18616a15668"
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
+   "status": "DISAGREE",
+   "ruling": "Ruling: finding; p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, Note after line 10, \"1) If line 10 is equal to line 9, stop here ... 2) If line 10 is less than line 9, complete Part II\", and Note after line 16, \"1) If line 16 is equal to line 11, stop here ... 2) If line 16 is less than line 11, complete Part III\". The project shows line 18 for every owned vehicle on actual expenses, so for a passenger automobile that stops at line 10 or at line 16 it shows a nonzero amount on a line of Part III the filer never reaches (stage14.veh.2025_179_over_line9, evaluated: line 18 $77,800, line 19 $15,560, line 20 $0). The reply hides line 18 once either stop note applies. Low (BUG-0633); the fix also covers lines 13, 14, 16 and 19. Other differences: business-percentage rounding (amb.2025.vehicle_business_pct, owner's ruling); refusals and unknowns from the reply's screen; the candidate-shows-skipped records are standard-mileage vehicles that the reply's own display condition hides. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 1,498/5,540 agree; 1,600 candidate-shows-skipped, 1,482 candidate-unknown, 792 value, 96 candidate-refuses, 53 project-unknown, 19 project-refuses; on completed returns: 51 candidate-shows-skipped, 40 candidate-refuses, 31 candidate-unknown, 15 value.",
+   "subject_key": "64e3ccdee6d2bcb1e30819011460cad07c861fee65ecb1db9ebf5cd98d19a46c"
   },
   {
    "key": "19",
-   "record": "c270bd96059c45b235fb26874248b7e88e18439caf242a1decbb730b22165a76",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; same reading as the refresh-round ruling: p946 p. 61, Deductions After the Recovery Period, \"you can deduct that unrecovered basis after the recovery period ends\", and worksheet line 19, \"Multiply line 18 by line 6\". The reply puts the business share of the unrecovered basis on line 19 after the recovery period and limits it at line 20; the project enters $0 there and deducts the unrecovered basis outside the worksheet (scveh.post, amb.2025.auto_unrecovered_basis). Within the recovery period both take the table rate (half-year or mid-quarter in 2025, the original convention earlier). Ruled from reading the pass reply (.transcription/scveh.lines-dcabfc147add) against the project; triage was not rerun.",
-   "subject_key": "bdfba2d358ff9fc7e0a6bf1770496fc213772cd6e5c5233d1b1123edbe2481f3"
+   "ruling": "Ruling: ambiguity; p946 pp. 61-62, worksheet line 19, \"Multiply line 18 by line 6\", and p. 61, Deductions After the Recovery Period. Value differences: the business-percentage rounding (amb.2025.vehicle_business_pct, owner's ruling); and vehicles placed in service in 2019 (stage14.veh.2019_post: project $0, reply $27,972; stage14.veh.2019_mq_179), where the project leaves the worksheet at zero and figures the deduction after the recovery period in column (h), and the reply enters the unrecovered basis here. The recorded value differences of column (h) (scveh.macrs) are at most $0.46, so this is an intermediate difference (representation). The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. The candidate-shows-skipped records are standard-mileage vehicles (no display condition on the reply's line). Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 1,571/5,540 agree; 1,955 candidate-unknown, 1,397 candidate-shows-skipped, 445 value, 97 candidate-refuses, 55 project-unknown, 20 project-refuses; on completed returns: 49 candidate-shows-skipped, 45 candidate-unknown, 40 candidate-refuses, 16 value.",
+   "subject_key": "ffedc83ddeed65a51d5d256d39e4d1ba2ad58006b5ff3acd7020d48bf4f0dab1"
   },
   {
    "key": "20",
-   "record": "cd52c51f07121c0362f233665ec57129f26d12638a93939e8f76b1cfcef005ae",
-   "status": "AGREE",
-   "subject_key": "41ba1d15f05303b7cec225e065062c34614ec69cd5681eac095f8c263608d8d2"
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; p946 pp. 61-62, worksheet line 20, \"Enter the lesser of line 17 or line 19. This is your MACRS depreciation deduction\". Value differences: the business-percentage rounding (amb.2025.vehicle_business_pct, owner's ruling); and 2019 vehicles (stage14.veh.2019_post: project $0, reply $4,320; stage14.veh.2019_mq_179: $0 against $5,760), where the reply puts the deduction after the recovery period on this line and the project carries it on column (h); the recorded value differences of scveh.macrs are at most $0.46 (representation). For a vehicle that is not a passenger automobile the reply enters line 19 here, a line the project hides; the deduction is the same. The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 1,590/5,540 agree; 1,995 candidate-unknown, 1,356 candidate-shows-skipped, 409 value, 140 candidate-refuses, 35 project-unknown, 15 project-refuses; on completed returns: 51 candidate-shows-skipped, 46 candidate-unknown, 40 candidate-refuses, 14 value.",
+   "subject_key": "eec7c27ed562796cfb95d6f1fc39149caab0e19e6bb509729b5143aff34b5e63"
   },
   {
    "key": "(i)",
-   "record": "c270bd96059c45b235fb26874248b7e88e18439caf242a1decbb730b22165a76",
+   "record": "39b8fcc84fc55659e146cd32dc5289d31b0e7b33af7348091e7b6cf71c819958",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i4562 p. 16, Column (i)—Elected section 179 cost: \"Enter the amount you elect to expense for section 179 property used more than 50% in a qualified business use (subject to the limits for passenger automobiles)\" and \"You cannot elect to expense more than $31,300 of the cost of any SUVs\". The round-2 change prints at (i) the election as limited on line 10 (scveh.s179_2025, shown for owned actual-expense vehicles), which matches this text (regression stage14.veh.2025_179_over_line9). The reply caps the election at the business cost, at $31,300 for an SUV and at line 9 for a passenger automobile; the project computes the same where the election is within those limits and refuses above the business cost or the SUV limit (scveh.s179_bad, remedy \"A section 179 election must not exceed the business cost, or $31,300 for an SUV\"). No supported return differs. Ruled from reading the pass reply (.transcription/scveh.lines-dcabfc147add) against the project; triage was not rerun.",
-   "subject_key": "abdd23bba4f0a1f5609b5274933aa6d66462acede09d960b98b900528d9e199e"
+   "ruling": "Ruling: ambiguity; i4562 p. 16, Column (i)—Elected section 179 cost. (amb.2025.vehicle_business_pct, owner's ruling); i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\": the project rounds the business-use ratio half-up to six places, the reply to four places, so values differ by cents (at most $0.69). The other differences come from the reply's vehicle screen, ruled representation under (screen) (scveh.screen): its refusals come from items the interview does not ask there (scveh.bonus_same answered No with no allowance claimed) or that the project refuses at another line (placed in service before 2019, employee use), and its unknowns are screen answers the interview asks only behind their parent questions. Triage executable-triage-v2 (pass b03568771f62; 1,986 fixtures, 500 generated returns, seed 20261026): 4,215/5,540 agree; 1,111 candidate-unknown, 138 candidate-refuses, 55 project-unknown, 19 project-refuses, 2 value; on completed returns: 40 candidate-refuses, 39 candidate-unknown.",
+   "subject_key": "51e1e7e249baede21714090edce9bc18b0f8275938a6b93d0fd423df0969fb92"
   }
  ],
  "subjects": {
-  "scveh.bonus": "742b28a7e18afe73f81ab72579aa98aba41ae4a1f65b9df3eb8d540b82d07f8b",
-  "scveh.macrs": "7a894626cf48e456434644a2dceb4a20ac3c5799a653906c56b625e48673bc5a",
-  "scveh.mq_q4": "30c30fd47a8d18657eea5ecc909fca377551a9490b88d8db97882f7cf4155e4b",
-  "scveh.mq_total": "63e064a9d7d1ac94ba031579c827f90df5d7701427e046d9f86615f171268773",
-  "scveh.cost179": "4b8feef910e50f3d528d90c4d15c6eef2084b1d91a7ea86f3627c81506556dda",
-  "9 (scveh.line9)": "9be49d6edd181fe87af603e939ccb428536e47eb16ed850b35fcf24076c3f154",
-  "20a": "96d723a1b3c3cf32fae25b6c60ce842dbf589aa58bd1c4064796708800161fd4",
-  "13": "cc77c285c92b421b6807cc27ded09aaf40cc71767ca4b8217d9ab4211f53a992",
-  "7": "cb76130f5c976d2f02b86ff3340948350908a3f8802446848fe8eb9c8328289f",
-  "9 (scveh.line9w)": "acc6e565d97b05e004a6c7e7b50d34dbcd9d3cbe8361f64e5e8962f9f3f97013",
-  "10": "0cdd1bd8ddd9805e288b2e95b6b48de7e9f84f0499a30c04e56a4136f71d28c2",
-  "11": "63aafaf34a36efd0349f92bdc4829fa1b03c77d3127e383f76bfaf30f5eaf53a",
-  "14": "a34b4a112cfd21bb2452a915aaff1b8010c87b76800ea57cf2783610d523941d",
-  "15": "cef2847c188d700394e44df2cdbaeda17e898cd97b486d589680ffd360e1f294",
-  "16": "ca3231fd8bc00a239a879c2509458aba8aeca2a98bc1e917a6c8a61d46775246",
-  "25": "e6db16f060aca037000ee6a86b41a4b1873ba82c2be9d1acb9948e61efb2228a",
-  "17": "2f4e7d05c453e55df6f4bacd9ee82094a3a1277a26d088b8a0d76aa45e258080",
-  "18": "3c80c48a80c9c24e7fe36094be029b06278f61448c8b8f5bc5d188f80b31c33c",
-  "19": "46735e15aef2b08d8d46d61686d07e790f7c85caafbf22c44078c7a78ee138c6",
-  "20": "fd02c85780183242223861e805a757834b25bd2261464a81f86a220da5813dc4",
-  "(i)": "c16514db53a569ca8190ae2f5b329ff2820f9e0a5c89f3ecd3d94e6ae9814145"
+  "scveh.bonus": "181bcb6dbc0c80e8136f0a854359472183ec3cc3d83beefa2534e7b1c180f752",
+  "scveh.macrs": "bb6b5ace638dabd9f0c15748a065d2b7d9370a5400485b39ce1ec08df93356d4",
+  "scveh.mq_q4": "fc245687a965ac11bdc1a4c55396104c91b08502cc52a2998dadc1b8703b579a",
+  "scveh.mq_total": "0cccc0d2817ff7eb69d812dd6bc0a3867bd85012e3d026a3bece21750f02c8c1",
+  "scveh.cost179": "0b34f030facccbf57206286895ef02617d6a04444c6849b2615663d71593be9e",
+  "(screen) (scveh.smr_ok)": "e264963b36320dbfda42577373f5a16eaac77b9a6f9c270dfdc1c84aa6718440",
+  "9 (scveh.line9)": "02f6972feb3e67d6703b435092beb29cd5e54e237285f88cffd598d13aff8660",
+  "20a": "bedafd64e59c1ec74823d48a913e84945ae23ddc7e7ca6a32b213bf2fdb8b631",
+  "(screen) (scveh.screen)": "cc62c51875644734a580fa3ed19c913474c06c992598f330b2eb79d0aaef9612",
+  "13": "43e43ae3f3437d18ce54cfbabe655d07c09a927596692f664fd9b0089d7f6413",
+  "7": "5e3db88bfe37150acc67f08cb524c565c280dee52ee9f91c0cf34cd2a4560913",
+  "9 (scveh.line9w)": "4e09c91c56bedbab20823dfeeef3497ef1235e6a28f48ea5528c1997366f57ea",
+  "10": "80665dfaa7c50c8f1afa64705aeff0120c43a958f85cdf151b547c190d930867",
+  "11": "c12604d13463a85e8140bba83bd1b0816556983e27c3411d310b32e6bce98b20",
+  "14": "52aaa58268678e3334530f49d5a321a69aaeb6dc09432b6e679378190cf732f9",
+  "15": "7496e1e812b597e1de9588a7d06f05d4377191f3b186b926090ca3f1e88d5791",
+  "16": "ae0c58ca670baa97ff873dec520c4cbd47fceee3ae00dfbaf4ddd523f9cc4a4e",
+  "25": "664f1ad43d2917c9c6926605b42fee39322637c6fb23b424523b6193a88f48da",
+  "17": "a25e5a7e5855753fd9cfb91d49c53685c4f06dc405b3244e3079d7eaffc4f327",
+  "18": "2cf38a335b0dab01df12ca8300bde430fb972d7dea5b2189e20f44fed1ae31a1",
+  "19": "189447df7c2d90303b15d4cff60dd050ae1138f0383548595055ff37712fa04a",
+  "20": "8b1570bf113eda4cc59ee37fd6ace7d4eb9e313ff2cf6e4993b3e42e1353daae",
+  "(i)": "20614ae96b2208c103e470320681b863b19bd62e0681f693351ab80793e42dbe"
  },
  "__rest__": "283262f04ee142927d8a97cbb4a51f301bcf98287849f8353a1f888b7ffcdbc4",
  "foreign": {
-  "scveh.macrs": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "scveh.mq_q4": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "scveh.mq_total": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "scveh.cost179": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "scveh.bonus": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "scveh.macrs": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "scveh.mq_q4": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "scveh.mq_total": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "scveh.cost179": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "(screen) (scveh.smr_ok)": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
   "9 (scveh.line9)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "20a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "13": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "7": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "9 (scveh.line9w)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "10": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "14": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "16": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "19": "14ab4862811584dfd01cb4c921ce8aa19deac170e103f50c05485c1ee3465442",
-  "(i)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
+  "20a": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "(screen) (scveh.screen)": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "13": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "7": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "9 (scveh.line9w)": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "10": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "11": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "14": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "15": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "16": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "25": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "17": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "18": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "19": "5e6dcc0b248827ce03b63b31dea3425e281fc746b2ee132e78a71197d28dd1e3",
+  "20": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "(i)": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5"
  }
 }

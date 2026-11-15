@@ -1,0 +1,8 @@
+name: 12_refused_nonresident
+who: A single person with wages from one job who was a nonresident alien for part of 2025; the tool does not prepare that return.
+end: { refused: scope.other_income }
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  scope.noncitizen: true
+  scope.nonresident: true

@@ -603,12 +603,48 @@
   },
   {
    "case": "classm.f8889.4",
+   "printed": "person[spouse].f8889[hsa].line12",
+   "project": "$5,279.17",
+   "model": "$5,112.50",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (owner accepted after Stage 13; chosen: count every month treated as eligible); model value dropped from the fixture (the non-chosen reading). The case (classm.f8889.4, married filing jointly) has the spouse born in 1950, so 55 or older at the end of 2025, an eligible individual in all 12 months, 10 of them with family coverage, December family, the last-month rule not used. i8889 p. 7, Additional Contribution Amount Worksheet: \"1. $1,000 x number of months eligible\"; the chosen reading counts 12 months, so line 7 is $1,000.00; the model counted the 10 family months, $833.33, the register's reading 2. Line 12 follows: line 8 less line 11 ($0.00, agreed), $5,279.17 against $5,112.50. As the earlier rulings on line 7 of this form.",
+   "drop": true,
+   "context": "c625ad37edd89a87873555959b0e966a878fd1b36f47f2c362c053a4965b5ef9",
+   "date": "2026-11-14",
+   "run": "57cfc39c691c836760b685ec0aefa2710d1c9d46931981831ad094838c56c991",
+   "subject_key": "d05f9495cb3341fe21b1c95d60c18509fd9d8a3910af60a4afe111cd78a1b5fd"
+  },
+  {
+   "case": "classm.f8889.4",
    "printed": "person[spouse].f8889[hsa].line6_split",
    "project": "$10,112.00",
    "model": "$4,300.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. A branch not taken: neither spouse had family coverage, so line 6 is line 5 (Form 8889 (2025), line 6, 'Enter the amount from line 5').",
    "drop": true,
    "subject_key": "6278ba70d55d9e5eb4c818c82d44b30282146dd1407fd631071c67fe9e9bcef8"
+  },
+  {
+   "case": "classm.f8889.4",
+   "printed": "person[spouse].f8889[hsa].line7",
+   "project": "$1,000.00",
+   "model": "$833.33",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (owner accepted after Stage 13; chosen: count every month treated as eligible); model value dropped from the fixture (the non-chosen reading). The case (classm.f8889.4, married filing jointly) has the spouse born in 1950, so 55 or older at the end of 2025, an eligible individual in all 12 months, 10 of them with family coverage, December family, the last-month rule not used. i8889 p. 7, Additional Contribution Amount Worksheet: \"1. $1,000 x number of months eligible\"; the chosen reading counts 12 months, so line 7 is $1,000.00; the model counted the 10 family months, $833.33, the register's reading 2. Line 6 ($4,279.17) agrees. As the earlier rulings on line 7 of this form.",
+   "drop": true,
+   "context": "c625ad37edd89a87873555959b0e966a878fd1b36f47f2c362c053a4965b5ef9",
+   "date": "2026-11-14",
+   "run": "57cfc39c691c836760b685ec0aefa2710d1c9d46931981831ad094838c56c991",
+   "subject_key": "2f8c04df9bde2caf42d69ea0a6439858979a4404fb56c18c9c311c7cb2d69897"
+  },
+  {
+   "case": "classm.f8889.4",
+   "printed": "person[spouse].f8889[hsa].line8",
+   "project": "$5,279.17",
+   "model": "$5,112.50",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (owner accepted after Stage 13; chosen: count every month treated as eligible); model value dropped from the fixture (the non-chosen reading). The case (classm.f8889.4, married filing jointly) has the spouse born in 1950, so 55 or older at the end of 2025, an eligible individual in all 12 months, 10 of them with family coverage, December family, the last-month rule not used. i8889 p. 7, Additional Contribution Amount Worksheet: \"1. $1,000 x number of months eligible\"; the chosen reading counts 12 months, so line 7 is $1,000.00; the model counted the 10 family months, $833.33, the register's reading 2. Line 8 follows: $4,279.17 (line 6, agreed) + line 7, $5,279.17 in the project against the model's $5,112.50. As the earlier rulings on line 7 of this form.",
+   "drop": true,
+   "context": "c625ad37edd89a87873555959b0e966a878fd1b36f47f2c362c053a4965b5ef9",
+   "date": "2026-11-14",
+   "run": "57cfc39c691c836760b685ec0aefa2710d1c9d46931981831ad094838c56c991",
+   "subject_key": "38d80d1d0808c4d88bd4645017d2c23c0a2a84938c10dabf74d1dd4ff69bf232"
   },
   {
    "case": "classm.f8889.4",

@@ -69,3 +69,6 @@ kbd { font-family: var(--mono); font-size: 0.75rem; border: 1px solid var(--rule
   .controls, .vet-columns { grid-template-columns: 1fr; }
   #context-part { position: static; }
 }
+#tick span { display: block; }
+#tick .tick-heading { margin-top: 0.35rem; font-family: var(--serif); }
+#tick .tick-label { font-family: var(--serif); }

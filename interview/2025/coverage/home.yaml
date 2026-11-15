@@ -1,0 +1,394 @@
+tax_year: 2025
+part: Your home, taxes you paid, gifts to charity and medical bills
+profile: full
+rows:
+  - id: home.renter
+    design: provisional redraft, lane 7a (the home parent; a No spares the mortgage and property tax amounts)
+    situation: A person who rents, owns no real estate and has no loan on a boat or camper.
+    answers:
+      sa.home_owner: false
+      sa.home_other: false
+    expect:
+      proceeds:
+        sa.home_owner: false
+      not_asked: [sa.mortgage_interest, sa.line5b]
+  - id: home.owner_with_mortgage
+    design: provisional redraft, lane 7a (what sa.line8a and sa.line5b asked of everyone)
+    situation: A homeowner paid $12,000 of mortgage interest shown on Form 1098 and $4,000 of property tax.
+    answers:
+      sa.home_owner: true
+      sa.mortgage_unreported: false
+      sa.mortgage_interest: 1200000
+      sa.mortgage_over_limit: false
+      sa.mortgage_other_use: false
+      sa.line5b: 400000
+      sa.property_tax_other_any: false
+      s3.mcc: false
+      s2.mortgage_subsidy: false
+    expect:
+      proceeds:
+        sa.mortgage_interest: 1200000
+        sa.line5b: 400000
+      not_asked: [sa.home_other]
+  - id: home.owner_no_mortgage
+    design: provisional redraft, lane 7a (an owner with no loan still reaches the property tax)
+    situation: A person owns a home outright and paid $3,000 of property tax.
+    answers:
+      sa.home_owner: true
+      sa.mortgage_unreported: false
+      sa.mortgage_interest: 0
+      sa.line5b: 300000
+      sa.property_tax_other_any: false
+    expect:
+      proceeds:
+        sa.line5b: 300000
+      not_asked: [s3.mcc]
+  - id: home.boat_loan
+    design: provisional redraft, lane 7a (the guard of a wrong No to the home parent)
+    situation: A person who owns no real estate pays interest on a loan secured by a houseboat they can live on.
+    answers:
+      sa.home_owner: false
+      sa.home_other: true
+      sa.mortgage_unreported: false
+      sa.mortgage_interest: 300000
+      sa.mortgage_over_limit: false
+      sa.mortgage_other_use: false
+      sa.line5b: 0
+      sa.property_tax_other_any: false
+      s3.mcc: false
+      s2.mortgage_subsidy: false
+    expect:
+      proceeds:
+        sa.mortgage_interest: 300000
+  - id: home.no_state_tax
+    design: provisional redraft, lane 7a (the state income tax parent)
+    situation: A person in a state with no income tax paid none and had nothing taken from pay for a state fund.
+    answers:
+      sa.state_tax_any: false
+      sa.state_tax_other_any: false
+    expect:
+      proceeds:
+        sa.state_tax_any: false
+      not_asked: [sa.line5a, sa.state_tax_other]
+  - id: home.state_tax_withheld
+    design: provisional redraft, lane 7a (what sa.line5a asked of everyone)
+    situation: A wage earner had $2,500 of state income tax taken out of pay.
+    answers:
+      sa.state_tax_any: true
+      sa.line5a: 250000
+      sa.state_tax_other_any: false
+    expect:
+      proceeds:
+        sa.line5a: 250000
+      not_asked: [sa.state_tax_other]
+  - id: home.state_fund_only
+    design: provisional redraft, lane 7a (state tax paid other than from pay is its own question, asked of everyone)
+    situation: A worker in Washington paid no income tax but had $600 taken from pay for the state workers' compensation fund.
+    answers:
+      sa.state_tax_any: false
+      sa.state_tax_other_any: true
+      sa.state_tax_other: 60000
+    expect:
+      proceeds:
+        sa.state_tax_other: 60000
+      not_asked: [sa.line5a]
+  - id: home.state_tax_estimates
+    design: provisional redraft, lane 7a (the two parts of line 5a, withheld from pay and paid another way)
+    situation: A person had $2,500 of state tax taken from pay and also made $1,000 of estimated state tax payments.
+    answers:
+      sa.state_tax_any: true
+      sa.line5a: 250000
+      sa.state_tax_other_any: true
+      sa.state_tax_other: 100000
+    expect:
+      proceeds:
+        sa.line5a: 250000
+        sa.state_tax_other: 100000
+  - id: home.property_tax_with_charges
+    design: "provisional redraft, lane 7a (the rules of sa.line5b as a child: the part of the bill to leave out)"
+    situation: A homeowner paid $4,000 on the property tax bill, $300 of it a trash collection charge.
+    answers:
+      sa.home_owner: true
+      sa.mortgage_unreported: false
+      sa.mortgage_interest: 0
+      sa.line5b: 400000
+      sa.property_tax_other_any: true
+      sa.property_tax_leave_out: 30000
+    expect:
+      proceeds:
+        sa.property_tax_leave_out: 30000
+  - id: home.car_tax
+    design: provisional redraft, lane 7a (what sa.line5c asked of everyone)
+    situation: A person paid a yearly tax of $120 based on the value of a car.
+    answers:
+      sa.personal_property_tax_any: true
+      sa.line5c: 12000
+    expect:
+      proceeds:
+        sa.line5c: 12000
+  - id: home.no_car_tax
+    design: provisional redraft, lane 7a (a No spares the amount)
+    situation: A person paid no yearly tax based on the value of a car or other belongings.
+    answers:
+      sa.personal_property_tax_any: false
+    expect:
+      proceeds:
+        sa.personal_property_tax_any: false
+      not_asked: [sa.line5c]
+  - id: home.no_gifts
+    design: provisional redraft, lane 7a (sa.gifts in one line; the carryover is its own question)
+    situation: A person gave nothing to charity in 2025 and has no gift carried over from an earlier year.
+    answers:
+      sa.gifts: false
+      sa.gift_carryover: false
+    expect:
+      proceeds:
+        sa.gift_carryover: false
+      not_asked: [sa.line11, $gift, sa.charity_limited]
+  - id: home.gift_carryover_only
+    design: provisional redraft, lane 7a (the guard of a wrong No to sa.gifts; today a Yes to sa.gifts and to sa.charity_limited)
+    situation: A person gave nothing in 2025 but has a charitable contribution carried over from an earlier year.
+    answers:
+      sa.gifts: false
+      sa.gift_carryover: true
+      s3.foreign_any: false
+    expect:
+      refused: sa.gift_carryover_if_no_gifts
+  - id: home.gifts_of_money
+    design: "provisional redraft, lane 7a (what sa.gifts covered: money given)"
+    situation: A person gave $1,000 in money to charity, nothing else, and no limit applies.
+    answers:
+      sa.gifts: true
+      sa.line11: 100000
+      $gift: []
+      sa.charity_limited: false
+    expect:
+      proceeds:
+        sa.line11: 100000
+      not_asked: [sa.gift_carryover]
+  - id: home.gifts_limited
+    design: provisional redraft, lane 7a (what sa.charity_limited covered)
+    situation: A person gave to charity in 2025 and the deduction is limited by income or includes a carryover.
+    answers:
+      sa.gifts: true
+      sa.charity_limited: true
+    expect:
+      refused: sa.charity_limited_if_gifts
+  - id: home.no_medical
+    design: provisional redraft, lane 7a (the medical parent and its guard)
+    situation: A person with insurance through a job whose medical costs were small.
+    answers:
+      sa.medical_any: false
+      sa.medical_premiums: false
+    expect:
+      proceeds:
+        sa.medical_premiums: false
+      not_asked: [sa.line1]
+  - id: home.large_medical
+    design: provisional redraft, lane 7a (what sa.line1 asked of everyone)
+    situation: A person paid $9,000 of medical bills that insurance did not cover, more than 7.5% of income.
+    answers:
+      sa.medical_any: true
+      sa.line1: 900000
+    expect:
+      proceeds:
+        sa.line1: 900000
+      not_asked: [sa.medical_premiums]
+  - id: home.medicare_premiums
+    design: provisional redraft, lane 7a (the guard of a wrong No to the medical parent)
+    situation: A retired person does not think of their costs as large but paid $4,500 of Medicare premiums and other costs.
+    answers:
+      sa.medical_any: false
+      sa.medical_premiums: true
+      sa.line1: 450000
+    expect:
+      proceeds:
+        sa.line1: 450000
+  - id: home.refund_none
+    design: provisional redraft, lane 7a (a yes or no parent in place of the refund amount asked of everyone)
+    situation: A person got no state or local income tax refund in 2025.
+    answers:
+      refund.any: false
+    expect:
+      proceeds:
+        refund.any: false
+      not_asked: [refund.itemized, refund.received, refund.box8]
+  - id: home.refund_not_itemized
+    design: provisional redraft, lane 7a (a filer who took the standard deduction for 2024 never types the refund)
+    situation: A person got a refund of 2024 state income tax, all of it paid in 2024, and took the standard deduction for 2024.
+    answers:
+      refund.any: true
+      refund.other_year: false
+      refund.paid_other_time: false
+      refund.box8: false
+      refund.itemized: false
+    expect:
+      proceeds:
+        refund.itemized: false
+      not_asked: [refund.received, refund.sales, refund.exc_tax]
+  - id: home.refund_other_year
+    design: provisional redraft, lane 7a (the first fact of refund.not_prior_year)
+    situation: A person got a refund in 2025 of state income tax for 2023.
+    answers:
+      refund.any: true
+      refund.box8: false
+      refund.other_year: true
+    expect:
+      refused: refund.not_prior_year
+  - id: home.refund_tax_paid_in_2025
+    design: provisional redraft, lane 7a (the second fact of refund.not_prior_year)
+    situation: A person got a refund of 2024 state income tax after making the last 2024 estimated payment in January 2025.
+    answers:
+      refund.any: true
+      refund.box8: false
+      refund.other_year: false
+      refund.paid_other_time: true
+    expect:
+      refused: refund.not_prior_year
+  - id: home.refund_business_tax
+    design: provisional redraft, lane 7a (what refund.box8 covered)
+    situation: A person got a refund of a state tax charged only on business income (box 8 of Form 1099-G is checked).
+    answers:
+      refund.any: true
+      refund.box8: true
+    expect:
+      refused: refund.box8
+  - id: home.refund_sales_tax_deducted
+    design: provisional redraft, lane 7a (a filer who deducted sales tax for 2024 never types the refund)
+    situation: A person itemized for 2024 and deducted sales taxes instead of income taxes.
+    answers:
+      refund.any: true
+      refund.other_year: false
+      refund.paid_other_time: false
+      refund.box8: false
+      refund.itemized: true
+      refund.sales: true
+    expect:
+      proceeds:
+        refund.sales: true
+      not_asked: [refund.received]
+  - id: home.refund_itemized
+    design: provisional redraft, lane 7a (the worksheet path of today's interview)
+    situation: A single person itemized for 2024 with state income tax and got a $3,000 refund of it.
+    answers:
+      refund.any: true
+      refund.other_year: false
+      refund.paid_other_time: false
+      refund.box8: false
+      refund.itemized: true
+      refund.sales: false
+      refund.received: 300000
+      refund.exc_tax: false
+      refund.exc_who: false
+      refund.line5d_prior_year: 1000000
+      refund.line5e_prior_year: 1000000
+      refund.line17_prior_year: 3000000
+      refund.status: single
+      refund.you_born: false
+      refund.you_blind: false
+    expect:
+      proceeds:
+        refund.received: 300000
+  - id: home.refund_exception
+    design: provisional redraft, lane 7a (what refund.exc_tax covered)
+    situation: A person itemized for 2024, got a refund, and owed alternative minimum tax for 2024.
+    answers:
+      refund.any: true
+      refund.other_year: false
+      refund.paid_other_time: false
+      refund.box8: false
+      refund.itemized: true
+      refund.sales: false
+      refund.exc_tax: true
+      refund.received: 60000
+    expect:
+      refused: refund.exc_tax
+  - id: home.mortgage_interest_no_1098
+    design: "provisional redraft, lane 7a (sa.unsupported taken apart: mortgage interest or points not on Form 1098)"
+    situation: A homeowner pays mortgage interest to the person who sold them the home, with no Form 1098.
+    answers:
+      sa.home_owner: true
+      sa.mortgage_interest: 0
+      sa.mortgage_unreported: true
+    expect:
+      refused: sa.unsupported
+  - id: home.mortgage_over_limit
+    design: "provisional redraft, lane 7a (sa.unsupported taken apart: mortgage debt over the limit)"
+    situation: A homeowner with $30,000 of mortgage interest on Form 1098 owes more than $750,000 on the home.
+    answers:
+      sa.home_owner: true
+      sa.mortgage_unreported: false
+      sa.mortgage_interest: 3000000
+      sa.mortgage_over_limit: true
+    expect:
+      refused: sa.unsupported
+  - id: home.mortgage_other_use
+    design: "provisional redraft, lane 7a (sa.unsupported taken apart: loan money not all used for the home)"
+    situation: A homeowner with mortgage interest on Form 1098 used part of a home equity loan to pay off other debts.
+    answers:
+      sa.home_owner: true
+      sa.mortgage_unreported: false
+      sa.mortgage_interest: 900000
+      sa.mortgage_over_limit: false
+      sa.mortgage_other_use: true
+    expect:
+      refused: sa.unsupported
+  - id: home.sales_tax_wish
+    design: "provisional redraft, lane 7a (sa.unsupported taken apart: the sales tax election)"
+    situation: A person in a state with no income tax wants to deduct sales tax.
+    answers:
+      sa.sales_tax_wish: true
+    expect:
+      refused: sa.unsupported
+  - id: home.foreign_tax_deduction
+    design: "provisional redraft, lane 7a (sa.unsupported taken apart: a foreign tax deduction)"
+    situation: A person paid $100 of foreign tax and wants to deduct it instead of taking the credit.
+    answers:
+      s3.foreign_any: true
+      ftc.taxes: 10000
+      ftc.all_passive: true
+      ftc.statements: true
+      ftc.eligible: true
+      ftc.elect: true
+      sa.foreign_tax_deduct: true
+      s3.section965: false
+      s3.section960c: false
+      s3.virgin_islands: false
+      ftc.carryover: false
+    expect:
+      refused: sa.unsupported
+  - id: home.estate_tax_on_inherited_income
+    design: "provisional redraft, lane 7a (sa.unsupported taken apart: Schedule A line 16, estate tax on income in respect of a decedent)"
+    situation: A person reports inherited retirement income on which federal estate tax was paid.
+    answers:
+      sa.estate_tax_income: true
+    expect:
+      refused: sa.unsupported
+  - id: home.bond_premium
+    design: "provisional redraft, lane 7a (sa.unsupported taken apart: Schedule A line 16, amortizable bond premium)"
+    situation: A person has a bond premium carryforward to deduct.
+    answers:
+      sa.bond_premium: true
+    expect:
+      refused: sa.unsupported
+  - id: home.debt_instrument_loss
+    design: "provisional redraft, lane 7a (sa.unsupported taken apart: Schedule A line 16, loss on a debt instrument)"
+    situation: A person had an ordinary loss on a Treasury inflation-protected security.
+    answers:
+      sa.debt_instrument_loss: true
+    expect:
+      refused: sa.unsupported
+  - id: home.pension_unrecovered
+    design: "provisional redraft, lane 7a (sa.unsupported taken apart: Schedule A line 16, unrecovered investment in a pension)"
+    situation: The final return of a pensioner who died before recovering their own contributions.
+    answers:
+      sa.pension_unrecovered: true
+    expect:
+      refused: sa.unsupported
+  - id: home.impairment_work_expenses
+    design: "provisional redraft, lane 7a (sa.unsupported taken apart: Schedule A line 16, impairment-related work expenses)"
+    situation: A person with a disability pays an attendant in order to work.
+    answers:
+      sa.impairment_work: true
+    expect:
+      refused: sa.unsupported

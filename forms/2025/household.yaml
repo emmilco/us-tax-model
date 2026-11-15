@@ -97,6 +97,14 @@ form:
         locator: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first
           name and middle initial"; p. 1, Filing Status, "Married filing jointly (even if only one had income)"
       refuses:
+        - when: household.birth_year_bad
+          form: Year of birth not possible
+          remedy: Correct the year of birth. A person on a return for 2025 was born in 2025 or earlier, and a year more than
+            125 years before 2025 is taken for a mistyped year.
+          cite:
+            doc: i1040gi
+            locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+              January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"'
         - when: household.filer_under16
           form: A filer under age 16 at the end of 2025
           remedy: A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this
@@ -284,6 +292,37 @@ form:
       cite:
         doc: i1040gi
         locator: 'p. 40, Step 1, question 2, "Do you, and your spouse if filing a joint return, have a social security number ... that allows you to work and is valid for EIC purposes"; p. 44, Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration unless “Not Valid for Employment” is printed on the social security card and the number was issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit"'
+    - id: household.birth_year_bad_count
+      printed: (helper)
+      type: Count
+      label: Number of people on the return whose year of birth entered is not possible (person.birth_year_bad)
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          eq:
+          - person.birth_year_bad
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"'
+    - id: household.birth_year_bad
+      printed: (gate)
+      type: Bool
+      label: A year of birth entered for you, or your spouse on a joint return, is after the tax year or more than 125 years before it
+      expr:
+        op: test
+        gt:
+        - household.birth_year_bad_count
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"'
     - id: household.under16_count
       printed: (helper)
       type: Count
@@ -432,19 +471,19 @@ form:
       cite:
         doc: i1040gi
         locator: 'p. 14, Head of Household, Test 2; p. 15, "Keeping up a home. To find out what is included in the cost of keeping up a home, see Pub. 501."; p501 p. 9, Keeping Up a Home, "Costs you include. Include in the cost of keeping up a home expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home." p501 p. 9, "Costs you don’t include. Don’t include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation. Also don’t include the value of your services or those of a member of your household." p501 p. 9, Note, "Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you."; p501 p. 9, Note, "if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided for that person"'
-    - id: household.unmarried
+    - id: household.considered_unmarried
       printed: (helper)
       type: Bool
-      label: Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?
+      gated_by: household.considered_unmarried_if_married
+      label: Married at the end of 2025 but considered unmarried under the head of household rules
       expr:
         op: input
         source: |-
-          Were you unmarried at the end of 2025, or considered unmarried for head of household?
+          Although you were married at the end of 2025, are you considered unmarried for head of household?
 
-          You are considered unmarried if any of these applies (if your spouse died in 2025, you are considered married for the whole year: answer No).
+          You are considered unmarried if either of these applies (if your spouse died in 2025, you are considered married for the whole year: answer No).
 
-          - At the end of 2025 you were legally separated under your state's law by a decree of divorce or separate maintenance (if your divorce wasn't final at the end of 2025, an interlocutory decree, you were married).
-          - You are married but lived apart from your spouse for the last 6 months of 2025, and all of these apply:
+          - You lived apart from your spouse for the last 6 months of 2025, and all of these apply:
             - you file a separate return from your spouse
             - you paid over half the cost of keeping up your home for 2025
             - your home was the main home of your child, stepchild or foster child for more than half of 2025 (temporary absences by you or the child for special circumstances count as time lived in the home; a child born or who died in 2025 meets this if the child lived with you for more than half the part of the year the child was alive; a child adopted, lawfully placed with you for legal adoption or placed as an eligible foster child in 2025 meets it if your main home was the child's main home for more than half the time since)
@@ -455,9 +494,134 @@ form:
       cite:
         doc: i1040gi
         locator: 'p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."'
-    - id: household.married
+    - id: household.considered_unmarried_if_married
+      printed: (helper)
+      label: 'Considered unmarried under the head of household rules, asked only of a person married at the end of 2025 (false otherwise)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.married
+            - const: true
+          then: household.considered_unmarried
+        - guard:
+            op: test
+            eq:
+            - household.married
+            - const: false
+          then: household.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."'
+    - id: household.not_married
       printed: (helper)
       type: Bool
+      label: Not married at the end of 2025
+      expr:
+        op: test
+        eq:
+        - household.married
+        - const: false
+      cite:
+        doc: i1040gi
+        locator: 'p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."'
+    - id: household.unmarried
+      printed: (helper)
+      type: Bool
+      label: Unmarried, or considered unmarried under the head of household rules, at the end of 2025
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - household.not_married
+          - const: true
+        - op: test
+          eq:
+          - household.considered_unmarried_if_married
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."'
+    - id: household.ever_married
+      printed: (helper)
+      type: Bool
+      label: Have you ever been married?
+      expr:
+        op: input
+        source: Have you ever been married? (Asked when your filing status is single or head of household. A common law marriage recognized in the state where you now live or where it began is a marriage; a registered domestic partnership, civil union or similar relationship not denominated as a marriage is not.)
+      cite:
+        doc: i1040gi
+        locator: p. 13, Filing Status, Single, "You were never married"
+    - id: household.status_states_marriage
+      printed: (helper)
+      type: Bool
+      label: The filing status is one only a person who is or was married takes (married filing jointly, married filing separately or qualifying surviving spouse)
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - f1040.status
+          - const: mfj
+        - op: test
+          eq:
+          - f1040.status
+          - const: mfs
+        - op: test
+          eq:
+          - f1040.status
+          - const: qss
+      cite:
+        doc: i1040gi
+        locator: p. 13, Filing Status, Single, "You were never married"
+    - id: household.marriage_possible
+      printed: (helper)
+      type: Bool
+      label: 'A marriage is possible: the filing status states one, or a person filing as single or head of household has been married at some time'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: single
+          then: household.ever_married
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfj
+          then: household.status_states_marriage
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfs
+          then: household.status_states_marriage
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: hoh
+          then: household.ever_married
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: qss
+          then: household.status_states_marriage
+      cite:
+        doc: i1040gi
+        locator: p. 13, Filing Status, Single, "You were never married"
+    - id: household.married_dec31
+      printed: (helper)
+      type: Bool
+      gated_by: household.married
       label: Were you married at the end of 2025?
       expr:
         op: input
@@ -477,6 +641,28 @@ form:
           This question asks whether you were married at year end; the separate filing-status rules for a spouse who died during 2025 are addressed separately.
 
           When choosing your filing status, also note: if you divorced solely to file as unmarried, intending at the time to remarry each other in the next tax year, and actually do so, you must file as married in both years.
+      cite:
+        doc: i1040gi
+        locator: 'p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?"; i8889 p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year"; p501 p. 6, Marital Status, "State law governs whether you are married or legally separated under a divorce or separate maintenance decree."; p501 p. 6, Definition of marriage, "Individuals who have entered into a registered domestic partnership, civil union, or other similar relationship"; p501 p. 6, Considered married, "You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began."; p501 p. 6, Divorce and remarriage, "you and your spouse must file as married individuals in both years."; p501 p. 6, Annulled marriages, "you are considered unmarried even if you filed joint returns for earlier years."'
+    - id: household.married
+      printed: (helper)
+      label: 'Married at the end of 2025 (false for a person filing as single or head of household who has never been married)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.marriage_possible
+            - const: true
+          then: household.married_dec31
+        - guard:
+            op: test
+            eq:
+            - household.marriage_possible
+            - const: false
+          then: household.no
       cite:
         doc: i1040gi
         locator: 'p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?"; i8889 p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year"; p501 p. 6, Marital Status, "State law governs whether you are married or legally separated under a divorce or separate maintenance decree."; p501 p. 6, Definition of marriage, "Individuals who have entered into a registered domestic partnership, civil union, or other similar relationship"; p501 p. 6, Considered married, "You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began."; p501 p. 6, Divorce and remarriage, "you and your spouse must file as married individuals in both years."; p501 p. 6, Annulled marriages, "you are considered unmarried even if you filed joint returns for earlier years."'
@@ -1027,9 +1213,10 @@ form:
       cite:
         doc: i1040gi
         locator: 'p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner"'
-    - id: household.spouse_died_2025
+    - id: household.spouse_died_this_year
       printed: (helper)
       type: Bool
+      gated_by: household.spouse_died_this_year_if_ever_married
       label: Did your spouse die in 2025?
       expr:
         op: input
@@ -1037,7 +1224,29 @@ form:
       cite:
         doc: p501
         locator: p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."
-    - id: household.widowed_2025
+    - id: household.spouse_died_this_year_if_ever_married
+      printed: (helper)
+      label: 'Your spouse died in 2025, asked only where a marriage is possible (false for a person never married)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.marriage_possible
+            - const: true
+          then: household.spouse_died_this_year
+        - guard:
+            op: test
+            eq:
+            - household.marriage_possible
+            - const: false
+          then: household.no
+      cite:
+        doc: p501
+        locator: p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."
+    - id: household.widowed_this_year
       printed: (gate)
       type: Bool
       label: Filing as single or head of household although your spouse died in 2025
@@ -1049,7 +1258,7 @@ form:
             eq:
             - f1040.status
             - const: single
-          then: household.spouse_died_2025
+          then: household.spouse_died_this_year_if_ever_married
         - guard:
             op: test
             eq:
@@ -1067,7 +1276,7 @@ form:
             eq:
             - f1040.status
             - const: hoh
-          then: household.spouse_died_2025
+          then: household.spouse_died_this_year_if_ever_married
         - guard:
             op: test
             eq:
@@ -1080,6 +1289,7 @@ form:
     - id: household.cp_married
       printed: (helper)
       type: Bool
+      gated_by: household.cp_married_if_ever_married
       label: Married at any time in 2025 while living in a community property state, though not married at the end of 2025
       expr:
         op: input
@@ -1087,6 +1297,28 @@ form:
           community property state (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or
           Wisconsin)? (Asked when you lived in a community property state in 2025, are not filing jointly and were not
           married at the end of 2025.)
+      cite:
+        doc: i1040gi
+        locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."'
+    - id: household.cp_married_if_ever_married
+      printed: (helper)
+      label: 'Married for part of 2025 while living in a community property state, asked only where a marriage is possible (false for a person never married)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.marriage_possible
+            - const: true
+          then: household.cp_married
+        - guard:
+            op: test
+            eq:
+            - household.marriage_possible
+            - const: false
+          then: household.no
       cite:
         doc: i1040gi
         locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."'
@@ -1134,7 +1366,7 @@ form:
             eq:
             - household.married
             - const: false
-          then: household.cp_married
+          then: household.cp_married_if_ever_married
       cite:
         doc: i1040gi
         locator: p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually
@@ -1234,7 +1466,7 @@ form:
       expr:
         op: test
         eq:
-        - household.spouse_died_2025
+        - household.spouse_died_this_year_if_ever_married
         - const: false
       cite:
         doc: i1040gi

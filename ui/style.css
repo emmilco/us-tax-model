@@ -138,6 +138,22 @@ h1 span { font-weight: 400; color: var(--muted); }
 #roster { list-style: none; padding: 0; margin: 0 0 0.6rem; display: grid; gap: 0.4rem; max-width: 30rem; }
 .roster-row { display: flex; gap: 0.4rem; }
 .roster-row input { flex: 1; min-width: 0; }
+/* A tick-box group: one box per question, the label beside it, the question's own words behind a disclosure. */
+.question.tick-screen { grid-template-columns: minmax(0, var(--measure)); }
+.ticks { list-style: none; padding: 0; margin: 1.2rem 0 1.4rem; display: grid; gap: 0.2rem; }
+.tick { padding: 0.55rem 0 0.5rem; border-top: 1px solid var(--rule-soft); }
+.tick:last-child { border-bottom: 1px solid var(--rule-soft); }
+.tick label { display: flex; gap: 0.7rem; align-items: baseline; cursor: pointer; font-size: 1.0625rem; line-height: 1.45; }
+.tick label input { flex: none; position: relative; top: 0.12rem; width: 1.1rem; height: 1.1rem; }
+.tick .qid, .tick .note, .tick-more { margin-left: 1.8rem; }
+.tick .qid { display: block; }
+.tick-more { margin-top: 0.15rem; font-size: 0.875rem; }
+.tick-more summary { color: var(--accent); cursor: pointer; width: fit-content; }
+.tick-more[open] { padding-bottom: 0.5rem; }
+.tick-more .tick-prompt { font-family: var(--serif); font-size: 1rem; line-height: 1.55; margin-top: 0.4rem; }
+.tick-more .help-text { font-size: 0.9375rem; margin-top: 0.5rem; }
+.tick-more .meta { margin: 0.5rem 0; font-size: 0.75rem; color: var(--muted); overflow-wrap: anywhere; }
+.tick-answers button:disabled { opacity: 0.45; cursor: default; }
 .field-error { color: var(--refused); font-size: 0.875rem; min-height: 1.4rem; margin-top: 0.35rem; }
 .field-error:empty { min-height: 1.4rem; }
 .note { color: var(--unknown); font-size: 0.875rem; margin-bottom: 0.6rem; }

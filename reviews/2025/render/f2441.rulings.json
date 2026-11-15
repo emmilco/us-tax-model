@@ -109,6 +109,16 @@
   {
    "printed": "19",
    "restated": "Choose — [helper \"Married filing jointly\" = true → helper \"Your spouse's earned income for line 19\"] [helper \"Married filing jointly\" = false → line 18]",
+   "model": "For married filing separately, the line 19 instructions ask whether you are considered unmarried and say: 'No. Enter your spouse's earned income on line 19.' The restatement enters line 18 for every return that is not joint. That is wrong for a separate filer who is not considered unmarried, and no refusal names that case.",
+   "ruling": "Ruling: scope; Form 2441 (2025) line 19: \"If married filing jointly, enter your spouse's earned income ...; all others, enter the amount from line 18\"; the married filing separately branch the model cites (i2441, Line 19, \"No. Enter your spouse's earned income on line 19\") is never reached: married filing separately is refused for the whole return by s3.mfs (forms/2025/s3.yaml, f1040.status equal to mfs; refused at scope.ready and in Form 2441 itself, forms/2025/f2441.yaml). On every supported status the English gives the line its source amount. Project stands.",
+   "context": "623f72a586802d8a61360a0dbbdb1f0bb755eb8415c5ed8c9b1bfd22cfeb03b5",
+   "date": "2026-11-14",
+   "run": "7ae90939fbc4f1be8c147c3ab7aa364070e9294254bebd23c6eceb010d10fbb6",
+   "subject_key": "b40b88bbfa5cac04621f903ea3387a44ce0a87573de3166b35f8ae421a84bf90"
+  },
+  {
+   "printed": "19",
+   "restated": "Choose — [helper \"Married filing jointly\" = true → helper \"Your spouse's earned income for line 19\"] [helper \"Married filing jointly\" = false → line 18]",
    "model": "The branching follows the line text, and married filing separately is refused at lines 11 and 26. But the spouse's earned income uses the same per-person total, which leaves out the line 1z parts other than W-2 box 1 (lines 1b, 1c, 1d, 1g, 1h).",
    "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The refreshed prompt supplies Form 1040. The omitted wage classes are explicitly outside completed-return scope, not reviewer noise or supported cases.",
    "context": "93ce585c49d2360759206d6eb5c4cdcca9b47552f5acd100e71f6f85b91fff70",

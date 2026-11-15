@@ -42,7 +42,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "person[taxpayer].tin": false,
         "$w2@person[taxpayer]": [
           "e0"
@@ -59,7 +59,8 @@
         "person[taxpayer].edu_line24": true,
         "person[taxpayer].edu_line25": true,
         "person[taxpayer].itin_applied": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].edu_line31": {
@@ -105,7 +106,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "person[taxpayer].tin": false,
         "$w2@person[taxpayer]": [
           "e0"
@@ -378,7 +379,7 @@
         "person[taxpayer].sc[firm].line1": 6000000,
         "person[taxpayer].plan": "simple",
         "person[taxpayer].simple_deferral": 1800000,
-        "person[taxpayer].simple_age": "age50",
+        "person[taxpayer].birth_year": 1975,
         "person[taxpayer].simple_employer": 166230
       },
       "expect": {
@@ -410,7 +411,7 @@
         "person[taxpayer].sc[firm].line1": 6000000,
         "person[taxpayer].plan": "simple",
         "person[taxpayer].simple_deferral": 1800000,
-        "person[taxpayer].simple_age": "age50",
+        "person[taxpayer].birth_year": 1975,
         "person[taxpayer].simple_employer": 166230
       },
       "expect": {
@@ -434,7 +435,7 @@
         "person[taxpayer].sc[firm].line1": 6000000,
         "person[taxpayer].plan": "simple",
         "person[taxpayer].simple_deferral": 2175000,
-        "person[taxpayer].simple_age": "age60_63",
+        "person[taxpayer].birth_year": 1965,
         "person[taxpayer].simple_kind": "nonelective",
         "person[taxpayer].simple_employer": 110820
       },
@@ -499,7 +500,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$sc@person[taxpayer]": [
           "t"
         ],
@@ -545,7 +546,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$sc@person[taxpayer]": [
           "t"
         ],
@@ -804,7 +805,7 @@
         "person[taxpayer].sc[f].line1": 1900000,
         "person[taxpayer].plan": "simple",
         "person[taxpayer].simple_deferral": 1800000,
-        "person[taxpayer].simple_age": "age50"
+        "person[taxpayer].birth_year": 1975
       },
       "expect": {
         "person[taxpayer].catchup_max": {
@@ -1043,6 +1044,7 @@
       "inputs": {
         "div.any": true,
         "sa.gifts": true,
+        "sa.medical_any": true,
         "sa.line1": 261900,
         "sb.ordinary_dividends": 3619400,
         "person[taxpayer].se_screen": true,
@@ -1053,6 +1055,7 @@
           "biz_a",
           "biz_b"
         ],
+        "person[taxpayer].sc[biz_a].employees": true,
         "person[taxpayer].sc[biz_a].ho_uses": true,
         "person[taxpayer].sc[biz_a].line16a": 1273500,
         "person[taxpayer].sc[biz_a].line19": 2183900,
@@ -1073,7 +1076,9 @@
         "person[taxpayer].sc[biz_a].scveh[car_1].passenger": true,
         "person[taxpayer].sc[biz_a].scveh[car_1].prior_conv": "mq2",
         "person[taxpayer].sc[biz_a].scveh[car_2].miles_business": 15655,
-        "person[taxpayer].sc[biz_a].scveh[car_2].smr_ok": true,
+        "person[taxpayer].sc[biz_a].scveh[car_2].smr_always": true,
+        "person[taxpayer].sc[biz_a].scveh[car_2].smr_first": false,
+        "person[taxpayer].sc[biz_a].scveh[car_2].fleet": false,
         "$asset@person[taxpayer].sc[biz_a]": [
           "item_1"
         ],
@@ -1085,6 +1090,7 @@
         "person[taxpayer].sc[biz_a].asset[item_1].quarter": "q3",
         "person[taxpayer].sc[biz_a].asset[item_1].after_jan19": true,
         "person[taxpayer].sc[biz_a].asset[item_1].bonus_same": true,
+        "person[taxpayer].sc[biz_b].travel_meals": true,
         "person[taxpayer].sc[biz_b].line1": 273300,
         "person[taxpayer].sc[biz_b].line6": 454400,
         "person[taxpayer].sc[biz_b].line17": 1614000,
@@ -1105,7 +1111,9 @@
         "person[taxpayer].sc[biz_b].scveh[car_1].prior_conv": "mq3",
         "person[taxpayer].sc[biz_b].scveh[car_2].miles_business": 13197,
         "person[taxpayer].sc[biz_b].scveh[car_2].parking": 62800,
-        "person[taxpayer].sc[biz_b].scveh[car_2].smr_ok": true,
+        "person[taxpayer].sc[biz_b].scveh[car_2].smr_always": true,
+        "person[taxpayer].sc[biz_b].scveh[car_2].smr_first": false,
+        "person[taxpayer].sc[biz_b].scveh[car_2].fleet": false,
         "$asset@person[taxpayer].sc[biz_b]": [
           "item_1"
         ],
@@ -1246,6 +1254,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage15.f8880.s2 with ABLE account contributions or distributions answered Yes: the person's Form 8880 line 1 and both prior-year distribution amounts (line 4) are refused, each by its own entry (Pub. 907). The refused values are the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -1255,8 +1264,10 @@
         "person[taxpayer].w2[emp_a].box5": 2000000,
         "person[taxpayer].w2[emp_a].box6": 29000,
         "person[taxpayer].sav_able": true,
+        "person[taxpayer].ira_owner": true,
         "person[taxpayer].sav_roth": 150000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].sav_line1": {
@@ -1308,6 +1319,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage15.f8880.s3 (box 12 code D $3,000) with excess elective deferrals answered Yes: the person's Form 8880 line 2 is refused. The refused value is the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -1316,10 +1328,11 @@
         "person[taxpayer].w2[emp_a].box4": 186000,
         "person[taxpayer].w2[emp_a].box5": 3000000,
         "person[taxpayer].w2[emp_a].box6": 43500,
-        "person[taxpayer].sav_excess": true,
+        "scope.excess_deferral": true,
         "person[taxpayer].w2[emp_a].box12_any": true,
         "person[taxpayer].w2[emp_a].box12_d": 300000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].sav_line2": {
@@ -1345,6 +1358,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i9 (single, wages $30,000, not covered by a plan, traditional IRA contribution $5,000), with the excess-or-recharacterized-contributions question answered Yes. Two lines carry this gate on their own: person.ira_line11 (after the joint-return gates, false on a single return) and Form 8880 line 1 (person.sav_line1, first entry); each reads the contribution, an input through the traditional-IRA question, so each line's own entry decides its value; line 20 and Schedule 1 line 20 carry the refusal through line 11. The refused values are the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -1352,10 +1366,13 @@
         "person[taxpayer].w2[emp_a].box1": 3000000,
         "person[taxpayer].w2[emp_a].box5": 3000000,
         "person[taxpayer].w2[emp_a].box6": 43500,
+        "person[taxpayer].ira_owner": true,
         "person[taxpayer].sav_trad": true,
         "person[taxpayer].ira_trad": 500000,
-        "person[taxpayer].ira_excess": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "person[taxpayer].ira_extra_left": true,
+        "person[taxpayer].ira_recharacterized": false
       },
       "expect": {
         "person[taxpayer].ira_line11": {
@@ -1420,6 +1437,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i3 (single, wages $85,000, covered by a workplace plan, $4,200 nondeductible, so Form 8606 is filed), with the basis-adjustments question (Form 8606 line 2) answered Yes. The person's line 2 amount chooses the basis input when Form 8606 is filed, so its own entry decides its value; Form 8606 lines 2, 3 and 14 carry the same refusal through it, while line 1 stays a number. The refused values are the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -1428,11 +1446,13 @@
         "person[taxpayer].w2[emp_a].box4": 527000,
         "person[taxpayer].w2[emp_a].box5": 8500000,
         "person[taxpayer].w2[emp_a].box6": 123250,
+        "person[taxpayer].ira_owner": true,
         "person[taxpayer].sav_trad": true,
         "person[taxpayer].ira_trad": 700000,
         "person[taxpayer].ira_work_plan": true,
         "person[taxpayer].ira_basis_adjusted": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].ira_8606_line2": {
@@ -1501,7 +1521,8 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.ira.i10 (single, wages $20,000, social security benefits $12,000, traditional IRA contribution $3,000, 50 or older), with workplace retirement plan coverage answered Yes, so the gate for social security benefits with an IRA deduction and plan coverage (Pub. 590-A Appendix B) holds. The figured amount is the smaller of the limit-or-compensation amount and line 11, and neither carries this gate (person.ira_line11's gates are false here), so its own entry decides its value; the person's amount for the Social Security Benefits Worksheet carries the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -1509,12 +1530,14 @@
         "person[taxpayer].w2[emp_a].box1": 2000000,
         "person[taxpayer].w2[emp_a].box5": 2000000,
         "person[taxpayer].w2[emp_a].box6": 29000,
+        "ssb.any": true,
         "ssb.benefits": 1200000,
+        "person[taxpayer].ira_owner": true,
         "person[taxpayer].sav_trad": true,
         "person[taxpayer].ira_trad": 300000,
-        "person[taxpayer].ira_age50": true,
         "person[taxpayer].ira_work_plan": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].ira_ssb_figured": {
@@ -1558,33 +1581,46 @@
         "f2441.benefits": null,
         "sd.distributions": null,
         "ssb.benefits": null,
-        "sd.other_forms": null,
-        "refund.received": null,
+        "refund.any": null,
+        "sd.sold_other": null,
+        "sd.sec1256": null,
+        "sd.condemned": null,
+        "sd.small_business_stock": null,
+        "sd.trader_election": null,
+        "sd.casualty": null,
         "s1.alimony": null,
         "s1.uc_paid": null,
-        "s1.line8_other": null,
+        "person[taxpayer].ira_owner": true,
+        "s1.ltc_payout": null,
         "person[taxpayer].sav_trad": null,
         "person[taxpayer].ira_dist": null,
         "ira.deduct_less": null,
         "sli.interest": null,
-        "s1.line8h": null,
+        "s1.jury_pay": null,
         "sa.dependent": null,
         "s1a.carloan": null,
-        "s2.amt": null,
+        "s2.amt_owed": null,
         "sa.excluded_income": null,
         "f1040.tax_exempt_interest": null,
         "div.box12": null,
         "f2441.care": null,
-        "f5695.part2_any": null,
-        "f5695.part1_any": null,
         "f5695.business_use": null,
         "f5695.line7a": null,
         "f5695.line12": null,
-        "f8959.unsupported": null,
+        "f8959.territory_w2": null,
         "s3.line10": null,
         "f5695.condo": null,
         "sd.carryover": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s1.uc_any": true,
+        "s1.jury_any": true,
+        "s1.alimony_any": true,
+        "s2.options_any": false,
+        "s1.nqdc_pension": false,
+        "s1.inmate_wages": false,
+        "s1.digital_income": false,
+        "s1.olympic": false
       },
       "expect": {
         "person[taxpayer].medicare5": {
@@ -1632,7 +1668,7 @@
         "f8863.paid": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
-        "person[taxpayer].edu_a2026": 50000,
+        "person[taxpayer].edu_a_next_year": 50000,
         "person[taxpayer].edu_ein": true,
         "person[taxpayer].edu_line24": true,
         "person[taxpayer].edu_over": true,
@@ -1640,7 +1676,8 @@
         "person[taxpayer].w2[emp_a].box2": 676500,
         "person[taxpayer].w2[emp_a].box5": 8456700,
         "person[taxpayer].w2[emp_a].box6": 122622,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].edu_line27": {
@@ -1731,9 +1768,8 @@
         "f8863.paid": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
-        "person[taxpayer].edu_a2026": 50000,
-        "person[taxpayer].edu_born_2002": true,
-        "person[taxpayer].edu_born_2007": true,
+        "person[taxpayer].edu_a_next_year": 50000,
+        "person[taxpayer].birth_year": 1980,
         "person[taxpayer].edu_ein": true,
         "person[taxpayer].edu_inst": 310000,
         "person[taxpayer].edu_line24": true,
@@ -1777,7 +1813,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Mutation scenario, predicted by hand: stage16.ira.i10 (single, aged 66, wages $20,000, Social Security benefits). The Social Security Benefits Worksheet copy of the IRA deduction limit is the smaller of the applicable amount ($7,000 plus the $1,000 catch-up at 50 or older, $8,000) and IRA Deduction Worksheet line 10 ($20,000 of compensation): $8,000 (i1040gi p. 98, line 12, \"enter the smallest of line 7a, 10, or 11a\").",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -1786,10 +1823,11 @@
         "person[taxpayer].w2[emp_a].box4": 124000,
         "person[taxpayer].w2[emp_a].box5": 2000000,
         "person[taxpayer].w2[emp_a].box6": 29000,
+        "ssb.any": true,
         "ssb.benefits": 1200000,
+        "person[taxpayer].ira_owner": true,
         "person[taxpayer].sav_trad": true,
-        "person[taxpayer].ira_trad": 300000,
-        "person[taxpayer].ira_age50": true
+        "person[taxpayer].ira_trad": 300000
       },
       "expect": {
         "person[taxpayer].ira_ssb_lim": {
@@ -1821,7 +1859,8 @@
         "person[taxpayer].w2[emp_a].box4": 248000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "s1a.senior_count": {

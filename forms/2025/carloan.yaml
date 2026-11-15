@@ -342,6 +342,7 @@ form:
     printed: (helper)
     label: Interest on this loan deducted on Schedule C
     type: NonNegDollars
+    gated_by: carloan.sc_interest
     expr:
       op: input
       source: The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)

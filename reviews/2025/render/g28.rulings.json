@@ -101,6 +101,16 @@
   },
   {
    "printed": "4",
+   "restated": "Enter the amount from div helper \"Collectibles (28%) gain, box 2d, when capital gain distributions (box 2a) are above zero and a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise\".",
+   "model": "The IRS line is the total collectibles gain reported on \"Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust.\" The restatement takes only Form 1099-DIV box 2d, and no refusal is shown that excludes Form 2439 or Schedule K-1 amounts.",
+   "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 4: \"Enter the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust.\" Form 2439: sd.f2439 (\"Did a mutual fund or a real estate investment trust (REIT) send you ... a Form 2439 for 2025\", asked under div.any, which covers anyone owning fund shares) is a limb of sd.other_forms, which refuses Schedule D (sd.route_each and lines 4, 6, 14 and others, forms/2025/sd.yaml). Schedule K-1: scope.k1 is a limb of scope.schedule1, refused at scope.ready. Within scope line 4 is Form 1099-DIV box 2d alone; box 2d is \"the portion of the amount in box 2a\" (f1099div p. 5), so the box 2a condition is the input's. Project stands.",
+   "context": "5374d505db59b620ff6e9f0d7309f41d0fce61ce8342518f2c3d3b297bcdcf35",
+   "date": "2026-11-14",
+   "run": "ed031c44110acb77a6c7e66e87915a0651a6d93c857ef5e771ed59e97b4170ba",
+   "subject_key": "8eb7639f62b8d270160de4dd7b3a5ed1cdfa67564bb8f8f9298cb3a5df0a3eed"
+  },
+  {
+   "printed": "4",
    "restated": "Enter the amount from div helper \"Collectibles (28%) gain, box 2d, when capital gain distributions (box 2a) are above zero; zero otherwise\".",
    "model": "The IRS line is a total of collectibles gain from three sources: \"Form 1099-DIV, box 2d; • Form 2439, box 1d; and • Schedule K-1 from a partnership, S corporation, estate, or trust.\" The restatement enters only box 2d, and no refusal names the excluded Form 2439 and Schedule K-1 amounts. Gating box 2d on box 2a being above zero is consistent with box 2d being \"the portion of the amount in box 2a.\"",
    "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 4: \"Enter the total of any collectibles gain reported to you on: • Form 1099-DIV, box 2d; • Form 2439, box 1d; and • Schedule K-1 from a partnership, S corporation, estate, or trust.\" Form 2439 and Schedule K-1 amounts: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") refuses them, reaching Form 1040 line 7a through Schedule D lines 7, 15 and 16 (as the earlier rulings of this line). Within scope line 4 is Form 1099-DIV box 2d alone. The restatement now names the box 2a condition of the box 2d input: f1099div p. 5, \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\", so box 2d is zero when box 2a is. Project retained.",

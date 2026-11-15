@@ -30,7 +30,7 @@ import { loadCanonical } from "./canonical.js";
 import { gatesOf, readsOf } from "./gates.js";
 import { answerEvent, askOrder, inputMeta, interviewView, loadInterview, offeredValues, questionTemplate, replayState, withheldValues, type AnswerEvent, type InterviewData } from "./interview.js";
 import { longestSentence, shownAt, words } from "./interview-words.js";
-import { STATUS_INPUT } from "./spouse-wording.js";
+import { STATUS_INPUT, shownFor, shownLabel } from "./spouse-wording.js";
 import { YEAR } from "./year.js";
 import type { CanonicalData, FormDoc, Inputs, Line } from "./types.js";
 
@@ -186,6 +186,9 @@ export interface Card {
   /** Words of the main prompt and help, and of the stored prompt's longest sentence. */
   words: { prompt: number; help: number; sentence: number };
   long: boolean;
+  /** For a member of a tick-box group: the group, its heading and the label beside this question's box, as a
+   * one-person return is shown them, and the other members' ids. The verdict's digest does not cover them. */
+  tick?: { group: string; heading: string; label: string; with: string[] };
 }
 
 const firstLine = (text: string): string => text.split("\n")[0]!;
@@ -329,6 +332,7 @@ export function vettingCards(data: CanonicalData, config: InterviewData): Card[]
       : !roster && chain.some((f) => f.id !== "person" && !f.collection!.implicit) && openListed.has(q.input) ? { text: "Asked of an entry as soon as it is listed: it is pending when the lists have entries and nothing else is answered", questions: [] }
       : { text: "Asked only in some cases", questions: [] };
     const sentence = longestSentence(q.prompt);
+    const group = q.group === undefined ? undefined : config.groups?.find((g) => g.id === q.group);
     return {
       id: q.input, digest: digestOf(judged), prompt: main.prompt, help: main.help, variants,
       stored: main.prompt === q.prompt && main.help === (q.help ?? "") ? null : { prompt: q.prompt, help: q.help ?? "" },
@@ -338,6 +342,8 @@ export function vettingCards(data: CanonicalData, config: InterviewData): Card[]
       gate: gateInfo,
       words: { prompt: words(main.prompt), help: words(main.help), sentence },
       long: sentence > LONG_SENTENCE,
+      ...(group && q.tick !== undefined ? { tick: { group: group.id, heading: shownFor({ prompt: group.heading, help: "" }, key, one).prompt, label: shownLabel(q.tick, q.prompt, key, one),
+        with: config.questions.filter((m) => m.group === group.id && m.input !== q.input).sort(askOrder).map((m) => m.input) } } : {}),
     };
   });
 }

@@ -282,6 +282,66 @@
    "subject_key": "68ca8464a3a5475a481ee76ff385512f0ac9a29c19239170ee811c4fdfabb93d"
   },
   {
+   "case": "classm.sc.2",
+   "printed": "person[taxpayer].sc[d].f7206_line10",
+   "project": "$42,378.46",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; helper of a branch this entry does not take; project retained. No health insurance plan is established under business d (sc.hi_uses false, Form 7206 line 1 zero), so Form 7206 line 14 takes zero (branch sc.f7206_line14#1) and agrees ($0.00); the project figures lines 4 to 13 from the business's profit regardless, read by no line this entry reaches (the business's QBI, $42,378.46, agrees). The model entered zero for the unused lines (f7206 line 4, \"Enter your net profit ... from the trade or business under which the insurance plan is established\"). Same pattern as the earlier rulings on classm.sc.2 and classm.sc.3. Not evidence.",
+   "drop": true,
+   "context": "1a4fdeefa93079b3d51a9303b33dbe9b5d4a8ed3326857d90de7d05df66a26ad",
+   "date": "2026-11-14",
+   "run": "5d25a42ca47f62748ac8ccc1a222d3b29b2622a9eaf6e72e39c3f60f561da8cc",
+   "subject_key": "8ee77907cf2086480e5e33a9d0177157f33abdbe50d9bd5ca997d233e2fdd5bb"
+  },
+  {
+   "case": "classm.sc.2",
+   "printed": "person[taxpayer].sc[d].f7206_line13",
+   "project": "$42,378.46",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; helper of a branch this entry does not take; project retained. No health insurance plan is established under business d (sc.hi_uses false, Form 7206 line 1 zero), so Form 7206 line 14 takes zero (branch sc.f7206_line14#1) and agrees ($0.00); the project figures lines 4 to 13 from the business's profit regardless, read by no line this entry reaches (the business's QBI, $42,378.46, agrees). The model entered zero for the unused lines (f7206 line 4, \"Enter your net profit ... from the trade or business under which the insurance plan is established\"). Same pattern as the earlier rulings on classm.sc.2 and classm.sc.3. Not evidence.",
+   "drop": true,
+   "context": "1a4fdeefa93079b3d51a9303b33dbe9b5d4a8ed3326857d90de7d05df66a26ad",
+   "date": "2026-11-14",
+   "run": "5d25a42ca47f62748ac8ccc1a222d3b29b2622a9eaf6e72e39c3f60f561da8cc",
+   "subject_key": "147296f0111b61e6d6b6313174b7b155d45b17d143ee92d9508590f39d25d466"
+  },
+  {
+   "case": "classm.sc.2",
+   "printed": "person[taxpayer].sc[d].f7206_line4",
+   "project": "$45,600.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; helper of a branch this entry does not take; project retained. No health insurance plan is established under business d (sc.hi_uses false, Form 7206 line 1 zero), so Form 7206 line 14 takes zero (branch sc.f7206_line14#1) and agrees ($0.00); the project figures lines 4 to 13 from the business's profit regardless, read by no line this entry reaches (the business's QBI, $42,378.46, agrees). The model entered zero for the unused lines (f7206 line 4, \"Enter your net profit ... from the trade or business under which the insurance plan is established\"). Same pattern as the earlier rulings on classm.sc.2 and classm.sc.3. Not evidence.",
+   "drop": true,
+   "context": "1a4fdeefa93079b3d51a9303b33dbe9b5d4a8ed3326857d90de7d05df66a26ad",
+   "date": "2026-11-14",
+   "run": "5d25a42ca47f62748ac8ccc1a222d3b29b2622a9eaf6e72e39c3f60f561da8cc",
+   "subject_key": "6ff408fb4c28fae9c119337652eedfca6e0243650133d49b714e098fd6b0a053"
+  },
+  {
+   "case": "classm.sc.2",
+   "printed": "person[taxpayer].sc[d].f7206_line7",
+   "project": "$3,221.54",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; helper of a branch this entry does not take; project retained. No health insurance plan is established under business d (sc.hi_uses false, Form 7206 line 1 zero), so Form 7206 line 14 takes zero (branch sc.f7206_line14#1) and agrees ($0.00); the project figures lines 4 to 13 from the business's profit regardless, read by no line this entry reaches (the business's QBI, $42,378.46, agrees). The model entered zero for the unused lines (f7206 line 4, \"Enter your net profit ... from the trade or business under which the insurance plan is established\"). Same pattern as the earlier rulings on classm.sc.2 and classm.sc.3. Not evidence.",
+   "drop": true,
+   "context": "1a4fdeefa93079b3d51a9303b33dbe9b5d4a8ed3326857d90de7d05df66a26ad",
+   "date": "2026-11-14",
+   "run": "5d25a42ca47f62748ac8ccc1a222d3b29b2622a9eaf6e72e39c3f60f561da8cc",
+   "subject_key": "30e02d5efe4cea36f023ade1542c3bf7de786671187f7c7687992b0418812dfb"
+  },
+  {
+   "case": "classm.sc.2",
+   "printed": "person[taxpayer].sc[d].f7206_line8",
+   "project": "$42,378.46",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; helper of a branch this entry does not take; project retained. No health insurance plan is established under business d (sc.hi_uses false, Form 7206 line 1 zero), so Form 7206 line 14 takes zero (branch sc.f7206_line14#1) and agrees ($0.00); the project figures lines 4 to 13 from the business's profit regardless, read by no line this entry reaches (the business's QBI, $42,378.46, agrees). The model entered zero for the unused lines (f7206 line 4, \"Enter your net profit ... from the trade or business under which the insurance plan is established\"). Same pattern as the earlier rulings on classm.sc.2 and classm.sc.3. Not evidence.",
+   "drop": true,
+   "context": "1a4fdeefa93079b3d51a9303b33dbe9b5d4a8ed3326857d90de7d05df66a26ad",
+   "date": "2026-11-14",
+   "run": "5d25a42ca47f62748ac8ccc1a222d3b29b2622a9eaf6e72e39c3f60f561da8cc",
+   "subject_key": "a5b83e74ead59668a4bd2cd4a9e99d76b894117c67fa3a3e2489c4695b7adc50"
+  },
+  {
    "case": "classm.sc.3",
    "printed": "person[taxpayer].sc[biz_a].f7206_has",
    "project": "yes",

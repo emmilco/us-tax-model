@@ -735,11 +735,25 @@ form:
         rules 4 and 5'
   - id: f8889.age55
     printed: (helper)
-    label: Were you age 55 or older at the end of 2025?
+    label: Age 55 or older at the end of 2025 (born in 1970 or earlier; for a person born in 1971, as that person states)
     type: Bool
     expr:
-      op: input
-      source: Were you age 55 or older at the end of 2025?
+      op: test
+      any:
+      - op: test
+        lt:
+        - person.birth_year
+        - param: age.cut_55
+      - op: test
+        all:
+        - op: test
+          eq:
+          - person.birth_year
+          - param: age.cut_55
+        - op: test
+          eq:
+          - person.age55_at_year_end_if_open_year
+          - const: true
     cite:
       doc: i8889
       locator: p. 4, Line 3, rule 6, and p. 6, Line 3 Limitation Chart

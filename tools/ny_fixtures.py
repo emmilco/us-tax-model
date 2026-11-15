@@ -184,7 +184,7 @@ def gated_federal(gate):
                            "stage14.f8959.se_above_threshold's business), so its net profit is over $50,000 and the screen is asked "
                            "(ny_it201.mctmt_possible).")
     if gate == "gate.dependent_care":
-        return ({"f2441.care": True, "f2441.nondependent": False, "f2441.prior_year": False, "f2441.student_disabled": False,
+        return ({"f2441.care": True, "f2441.care_other": False, "f2441.nondependent": False, "f2441.prior_year": False, "f2441.student": False, "f2441.unable": False,
                  "$dcprov": ["p0"], "dcprov[p0].household": False, "dcprov[p0].paid": 600000, "dcprov[p0].related": False,
                  "dcprov[p0].tin_kind": "tin"}, None,
                 " The federal care question (f2441.care) is answered Yes, so the screen is asked (ny_it201.federal_care); its "

@@ -1,0 +1,513 @@
+tax_year: 2025
+part: The scope screens taken apart
+profile: full
+sets:
+  one_w2:
+    says: "A person with one job and one Form W-2."
+    answers:
+      "$w2@person[taxpayer]": ["job"]
+      "person[taxpayer].w2[job].box1": 5200000
+      "person[taxpayer].w2[job].box2": 520000
+      "person[taxpayer].w2[job].box4": 322400
+      "person[taxpayer].w2[job].box5": 5200000
+      "person[taxpayer].w2[job].box6": 75400
+      "s2.w2_marks": false
+      "s1.nqdc_pension": false
+  one_business:
+    says: "A person who runs one small business."
+    answers:
+      "$sc@person[taxpayer]": ["shop"]
+      "person[taxpayer].sc[shop].business_credit": false
+      "person[taxpayer].sc[shop].fuel_credit": false
+      "$asset@person[taxpayer].sc[shop]": []
+      "$scveh@person[taxpayer].sc[shop]": []
+      "person[taxpayer].sc[shop].ho_uses": false
+      "person[taxpayer].sc[shop].line10": 0
+      "person[taxpayer].sc[shop].line11": 0
+      "person[taxpayer].sc[shop].line15": 0
+      "person[taxpayer].sc[shop].line16a": 0
+      "person[taxpayer].sc[shop].line16b": 0
+      "person[taxpayer].sc[shop].line17": 0
+      "person[taxpayer].sc[shop].line18": 0
+      "person[taxpayer].sc[shop].line2": 0
+      "person[taxpayer].sc[shop].line20b": 0
+      "person[taxpayer].sc[shop].line21": 0
+      "person[taxpayer].sc[shop].line22": 0
+      "person[taxpayer].sc[shop].line23": 0
+      "person[taxpayer].sc[shop].line25": 0
+      "person[taxpayer].sc[shop].line48": 0
+      "person[taxpayer].sc[shop].line6": 0
+      "person[taxpayer].sc[shop].line8": 0
+      "person[taxpayer].sc[shop].method_other": false
+      "person[taxpayer].sc[shop].passive": true
+      "person[taxpayer].sc[shop].rent_equipment": 0
+      "person[taxpayer].sc[shop].special": false
+      "person[taxpayer].sc[shop].spouse_owned": false
+      "person[taxpayer].sc[shop].statutory": false
+      "person[taxpayer].sc[shop].line1": 5000000
+      "person[taxpayer].sc[shop].tips_ot": false
+      "person[taxpayer].se_screen": false
+rows:
+- id: scope.statutory_employee
+  design: "MAP 2.1 item 1"
+  situation: "A person's W-2 has the 'Statutory employee' box ticked in box 13."
+  uses: [one_w2]
+  answers:
+    "scope.w2_marks": true
+  expect:
+    refused: scope.schedule1
+- id: scope.clergy
+  design: "MAP 2.1 item 2"
+  situation: "A minister is paid by her church."
+  answers:
+    "scope.religious_work": true
+    "scope.clergy": true
+  expect:
+    refused: scope.schedule1
+- id: scope.church_employee
+  design: "MAP 2.1 item 3"
+  situation: "A church's bookkeeper is paid wages with no social security or Medicare tax taken out."
+  answers:
+    "scope.religious_work": true
+    "scope.church_exempt_wages": true
+    "scope.clergy": false
+  expect:
+    refused: scope.schedule1
+- id: scope.recovery
+  design: "MAP 2.1 item 4"
+  situation: "A person was refunded property tax deducted on an earlier year's return."
+  answers:
+    "scope.recovery": true
+  expect:
+    refused: scope.schedule1
+- id: scope.recovery_no_tax_benefit
+  design: "DECISIONS.md item 1 (the old screen's scope: a recovery that has to be reported)"
+  situation: "A person who took the standard deduction last year got back part of a medical bill deducted in an earlier year that gave no tax benefit."
+  answers:
+    "scope.recovery": false
+  expect:
+    proceeds: {"scope.recovery": false}
+- id: scope.business_property_sale
+  design: "MAP 2.1 item 5 (already caught by sd.other_forms)"
+  situation: "A person sold equipment used in a business (Form 4797)."
+  answers:
+    "sd.sold_other": true
+    "sd.business_property": true
+  expect:
+    refused: sd.other_forms
+- id: scope.nol
+  design: "MAP 2.1 item 6"
+  situation: "A person who closed a business in 2023 carries its loss into 2025."
+  answers:
+    "scope.business_before": true
+    "scope.nol": true
+  expect:
+    refused: scope.schedule1
+- id: scope.nol_casualty_no_business
+  design: "BUG-0642: an NOL with no business (i1040gi p. 91, Line 8a)"
+  situation: "A person who never had a business carries into 2025 a loss from a 2023 disaster that was bigger than that year's income."
+  answers:
+    "scope.business_before": false
+    "scope.nol": true
+  expect:
+    refused: scope.schedule1
+- id: scope.rental
+  design: "MAP 2.1 item 7"
+  situation: "A person rents out a house she owns."
+  answers:
+    "scope.rental": true
+  expect:
+    refused: scope.schedule1
+- id: scope.royalties
+  design: "MAP 2.1 item 7 (royalties)"
+  situation: "A person receives royalties from a book."
+  answers:
+    "scope.rental": true
+  expect:
+    refused: scope.schedule1
+- id: scope.k1
+  design: "MAP 2.1 item 8"
+  situation: "A person has a share of a partnership's income, reported on a Schedule K-1."
+  answers:
+    "scope.k1": true
+  expect:
+    refused: scope.schedule1
+- id: scope.equipment_rental
+  design: "MAP 2.1 item 9"
+  situation: "A person rents out a trailer he owns."
+  answers:
+    "scope.rental": true
+  expect:
+    refused: scope.schedule1
+- id: scope.farm
+  design: "MAP 2.1 item 10"
+  situation: "A person runs a farm."
+  answers:
+    "scope.farm": true
+  expect:
+    refused: scope.schedule1
+- id: scope.reservist_expenses
+  design: "MAP 2.1 item 13"
+  situation: "A National Guard member paid to travel 150 miles to drills."
+  answers:
+    "scope.armed_forces": true
+    "scope.reservist_expenses": true
+  expect:
+    refused: scope.schedule1
+- id: scope.reservist_expenses_not_deducted
+  design: "DECISIONS.md item 1 (the wish: the old screen asked for an adjustment)"
+  situation: "A National Guard member paid to travel 150 miles to drills and does not claim the deduction."
+  answers:
+    "scope.armed_forces": true
+    "scope.reservist_expenses": false
+    "scope.military_move": false
+    "scope.reservist_repaid": false
+  expect:
+    proceeds: {"scope.reservist_expenses": false}
+- id: scope.performing_artist
+  design: "MAP 2.1 item 14"
+  situation: "An actor with two employers deducts unreimbursed costs as a qualified performing artist."
+  uses: [one_w2]
+  answers:
+    "scope.artist_official": true
+    "scope.performer_expenses": true
+    "scope.w2_marks": false
+    "scope.excess_deferral": false
+  expect:
+    refused: scope.schedule1
+- id: scope.performing_artist_not_deducted
+  design: "DECISIONS.md item 1 (the wish: the old screen asked for an adjustment)"
+  situation: "An actor with two employers had unreimbursed costs and does not claim them as a qualified performing artist."
+  uses: [one_w2]
+  answers:
+    "scope.artist_official": true
+    "scope.performer_expenses": false
+    "scope.w2_marks": false
+    "scope.excess_deferral": false
+  expect:
+    proceeds: {"scope.performer_expenses": false}
+- id: scope.military_move
+  design: "MAP 2.1 item 15"
+  situation: "A soldier moved to a new permanent post and paid part of the move."
+  answers:
+    "scope.armed_forces": true
+    "scope.military_move": true
+    "scope.reservist_expenses": false
+  expect:
+    refused: scope.schedule1
+- id: scope.military_move_not_deducted
+  design: "DECISIONS.md item 1 (the wish: the old screen asked for an adjustment)"
+  situation: "A soldier moved to a new permanent post, paid part of the move, and does not claim the deduction."
+  answers:
+    "scope.armed_forces": true
+    "scope.military_move": false
+    "scope.reservist_expenses": false
+    "scope.reservist_repaid": false
+  expect:
+    proceeds: {"scope.military_move": false}
+- id: scope.archer_msa
+  design: "MAP 2.1 item 16"
+  situation: "A person put money into an Archer MSA."
+  answers:
+    "scope.archer_msa": true
+  expect:
+    refused: scope.schedule1
+- id: scope.archer_msa_payout
+  design: "MAP 2.1 item 16 (distributions from an Archer or Medicare Advantage MSA, Form 8853 lines 8 and 12)"
+  situation: "A person on Medicare was paid from a Medicare Advantage MSA in 2025 for medical bills."
+  answers:
+    "scope.archer_msa": true
+  expect:
+    refused: scope.schedule1
+- id: scope.reforestation
+  design: "MAP 2.1 item 17 (line 24d)"
+  situation: "A person replanted trees on timber land she owns."
+  answers:
+    "scope.reforestation": true
+  expect:
+    refused: scope.schedule1
+- id: scope.code_h
+  design: "MAP 2.1 item 17 (line 24f)"
+  situation: "A person's W-2 shows the code H in box 12."
+  uses: [one_w2]
+  answers:
+    "scope.w2_marks": true
+  expect:
+    refused: scope.schedule1
+- id: scope.chaplain_403b
+  design: "MAP 2.1 item 17 (line 24g; a chaplain is clergy)"
+  situation: "A hospital chaplain paid into a 403(b) plan himself."
+  answers:
+    "scope.religious_work": true
+    "scope.clergy": true
+  expect:
+    refused: scope.schedule1
+- id: scope.attorney_fees
+  design: "MAP 2.1 item 17 (lines 24h and 24i)"
+  situation: "A person paid a lawyer in a job discrimination case that was settled in 2025."
+  answers:
+    "scope.attorney_fees": true
+  expect:
+    refused: scope.schedule1
+- id: scope.estate_excess_deductions
+  design: "MAP 2.1 item 17 (line 24k)"
+  situation: "An heir's Schedule K-1 from an estate shows excess deductions."
+  answers:
+    "scope.k1": true
+  expect:
+    refused: scope.schedule1
+- id: scope.solo_401k
+  design: "MAP 2.1 item 12"
+  situation: "A self-employed person pays into a solo 401(k)."
+  uses: [one_business]
+  answers:
+    "scope.se_plan_other": true
+    "person[taxpayer].sc[shop].travel_meals": false
+    "person[taxpayer].sc[shop].employees": false
+    "person[taxpayer].sc[shop].goods": false
+    "person[taxpayer].sc[shop].hi_uses": false
+    "person[taxpayer].plan": none
+  expect:
+    refused: scope.schedule1
+- id: scope.nonresident
+  design: "MAP 2.2 item 1"
+  situation: "A person was a nonresident alien for part of 2025."
+  answers:
+    "scope.noncitizen": true
+    "scope.nonresident": true
+  expect:
+    refused: scope.other_income
+- id: scope.green_card_all_year
+  design: "MAP 2.2 item 1 (the plain parent does not refuse)"
+  situation: "A person who is not a citizen held a green card all year: the nonresident question is asked and answered No, and the return is prepared."
+  answers:
+    "scope.noncitizen": true
+    "scope.nonresident": false
+  expect:
+    proceeds: {"scope.nonresident": false}
+- id: scope.pay_no_w2
+  design: "MAP 2.2 item 2"
+  situation: "A person was paid cash wages for work in a household and got no W-2."
+  answers:
+    "scope.pay_no_w2": true
+  expect:
+    refused: scope.other_income
+- id: scope.medicaid_waiver
+  design: "MAP 2.2 item 3 and 2.1 item 11"
+  situation: "A state Medicaid program pays a person to care for her father in her home."
+  answers:
+    "scope.medicaid_waiver": true
+  expect:
+    refused: scope.other_income
+- id: scope.adoption_benefits
+  design: "MAP 2.2 item 4"
+  situation: "An employer repaid part of the cost of an adoption that became final in 2024."
+  answers:
+    "scope.adoption_benefits": true
+    "s3.adoption_any": true
+    "s3.adoption": false
+    "s3.adoption_earlier": false
+  expect:
+    refused: scope.other_income
+- id: scope.adoption_benefits_employer_only
+  design: "MAP 2.2 item 4 (employer-paid adoption costs, the person paying nothing)"
+  situation: "An employer paid an adoption agency directly in 2025 for an adoption still in progress at the end of the year; the person paid nothing themselves."
+  answers:
+    "s3.adoption_any": true
+    "s3.adoption": false
+    "s3.adoption_earlier": false
+    "scope.adoption_benefits": true
+  expect:
+    refused: scope.other_income
+- id: scope.care_benefits_other
+  design: "MAP 2.2 item 5"
+  situation: "A person's dependent care benefits are not in box 10 of a W-2."
+  answers:
+    "scope.care_benefits_other": true
+    "f2441.benefits": true
+    "f2441.student": false
+    "f2441.unable": false
+    "f2441.employer_care": false
+    "f2441.line13": 0
+    "f2441.line14": 0
+    "f2441.other_care_expenses": 0
+    "f2441.plans_differ": false
+    "f2441.plan_max": 0
+    "$dcprov": []
+  expect:
+    refused: scope.other_income
+- id: scope.excess_deferral
+  design: "MAP 2.2 item 6 (line 1h, excess elective deferrals)"
+  situation: "A person with two jobs put more into 401(k) plans than the yearly limit."
+  uses: [one_w2]
+  answers:
+    "scope.excess_deferral": true
+    "scope.w2_marks": false
+    "scope.artist_official": false
+  expect:
+    refused: scope.other_income
+- id: scope.strike_benefits
+  design: "MAP 2.2 item 6 (line 1h)"
+  situation: "A person received strike benefits from a union."
+  answers:
+    "scope.pay_no_w2": true
+  expect:
+    refused: scope.other_income
+- id: scope.passive
+  design: "MAP 2.2 item 7"
+  situation: "A person who owned a rental before 2025 sold her share of a business she did not help run."
+  answers:
+    "scope.business_before": true
+    "scope.passive": true
+    "scope.nol": false
+  expect:
+    refused: scope.other_income
+- id: scope.disaster_distribution
+  design: "MAP 2.2 item 8"
+  situation: "A person took a disaster distribution in 2023 and spread its tax over three years."
+  answers:
+    "scope.disaster_distribution": true
+  expect:
+    refused: scope.other_income
+- id: scope.reservist_repaid
+  design: "MAP 2.2 item 9"
+  situation: "A reservist put back into an IRA money taken out when called to active duty."
+  answers:
+    "scope.armed_forces": true
+    "scope.reservist_repaid": true
+    "scope.reservist_expenses": false
+    "scope.military_move": false
+  expect:
+    refused: scope.other_income
+- id: scope.chapter11
+  design: "MAP 2.2 item 10"
+  situation: "A wage earner was in a chapter 11 bankruptcy case in 2025."
+  answers:
+    "scope.chapter11": true
+  expect:
+    refused: scope.other_income
+- id: scope.f8814
+  design: "MAP 2.3 item 1"
+  situation: "A parent puts a child's dividends on the parent's own return."
+  answers:
+    "scope.f8814": true
+  expect:
+    refused: scope.other_line16
+- id: scope.f8615
+  design: "MAP 2.3 item 2"
+  situation: "A 20-year-old full-time student with $5,000 of dividends, whose parents support her."
+  answers:
+    "person[taxpayer].birth_year": 2005
+    "scope.unearned_2700": true
+    "scope.f8615": true
+  expect:
+    refused: scope.other_line16
+- id: scope.under24_small_income
+  design: "MAP 2.3 item 2 (the plain parents do not refuse)"
+  situation: "A 22-year-old with no investment income: one more question, and the return is prepared."
+  answers:
+    "person[taxpayer].birth_year": 2003
+    "scope.unearned_2700": false
+  expect:
+    proceeds: {"scope.unearned_2700": false}
+- id: scope.couple_not_asked_age
+  design: "MAP 2.3 item 2 (not asked on a joint return)"
+  situation: "A couple filing together is not asked the under-24 question on income that is not pay (the age comes from the years of birth); one of them was in a chapter 11 case."
+  answers:
+    "scope.chapter11": true
+    "$person": ["taxpayer", "spouse"]
+    "household.married_dec31": true
+  expect:
+    refused: scope.other_income
+    not_asked: [scope.unearned_2700]
+- id: scope.sec962
+  design: "MAP 2.3 item 3 (an owner of a controlled foreign corporation)"
+  situation: "A person who owns a foreign company makes a section 962 election."
+  answers:
+    "scope.foreign_shares": true
+    "scope.cfc": true
+    "scope.pfic": false
+  expect:
+    refused: scope.other_line16
+- id: scope.pfic
+  design: "MAP 2.3 items 4 and 5"
+  situation: "A person holds shares of a mutual fund set up in Ireland."
+  answers:
+    "scope.foreign_shares": true
+    "scope.pfic": true
+  expect:
+    refused: scope.other_line16
+- id: scope.cfc
+  design: "MAP 2.3 item 5"
+  situation: "A person owns shares of a foreign company mostly owned by Americans."
+  answers:
+    "scope.foreign_shares": true
+    "scope.cfc": true
+    "scope.pfic": false
+  expect:
+    refused: scope.other_line16
+- id: scope.foreign_shares_plain
+  design: "MAP 2.3 item 5 (the plain parent does not refuse)"
+  situation: "A person owns shares of a large foreign car maker: two more questions, and the return is prepared."
+  answers:
+    "scope.foreign_shares": true
+    "scope.pfic": false
+    "scope.cfc": false
+  expect:
+    proceeds: {"scope.cfc": false}
+- id: scope.lump_sum
+  design: "MAP 2.3 item 6 (already caught by retirement.special)"
+  situation: "A person takes a lump-sum distribution reported on Form 4972."
+  answers:
+    "$retirement@person[taxpayer]": ["plan"]
+    "person[taxpayer].retirement[plan].account": "plan"
+    "person[taxpayer].retirement[plan].born_before_averaging_date": true
+    "person[taxpayer].retirement[plan].lump_sum": true
+    "person[taxpayer].retirement[plan].box6": false
+    "person[taxpayer].retirement[plan].code": normal_7
+    "person[taxpayer].retirement[plan].under59": false
+    "person[taxpayer].retirement[plan].rollover_any": false
+    "person[taxpayer].retirement[plan].disaster": false
+    "person[taxpayer].retirement[plan].loan_offset": false
+    "person[taxpayer].retirement[plan].disability": false
+    "person[taxpayer].retirement[plan].pso_exclusion": false
+  expect:
+    refused: person[taxpayer].retirement[plan].special
+- id: scope.f8978
+  design: "MAP 2.3 item 7"
+  situation: "A former partner was sent a Form 8986 after an audit of the partnership."
+  answers:
+    "scope.business_before": true
+    "scope.f8978": true
+    "scope.nol": false
+    "scope.passive": false
+  expect:
+    refused: scope.other_line16
+- id: scope.education_recapture
+  design: "MAP 2.3 item 8"
+  situation: "A person was refunded tuition for which an education credit was claimed last year."
+  answers:
+    "scope.education_recapture": true
+  expect:
+    refused: scope.other_line16
+- id: scope.income_averaging
+  design: "MAP 2.3 item 9"
+  situation: "A self-employed fisher chooses income averaging."
+  uses: [one_business]
+  answers:
+    "scope.income_averaging": true
+    "scope.se_plan_other": false
+    "person[taxpayer].sc[shop].travel_meals": false
+    "person[taxpayer].sc[shop].employees": false
+    "person[taxpayer].sc[shop].goods": false
+    "person[taxpayer].sc[shop].hi_uses": false
+    "person[taxpayer].plan": none
+  expect:
+    refused: scope.other_line16
+- id: scope.farm_income_averaging
+  design: "MAP 2.3 item 9 (a farmer is refused at the farm question)"
+  situation: "A farmer who would choose income averaging."
+  answers:
+    "scope.farm": true
+  expect:
+    refused: scope.schedule1

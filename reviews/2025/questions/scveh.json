@@ -842,7 +842,7 @@
    ]
   },
   "scveh.passenger": {
-   "subject_sha": "e6f2696e575f54f0e678f7c0eb6808572f22b1e0cb8dda6190c7662e56c2edaf",
+   "subject_sha": "13fa9d1acfa82df0db1fa93cf4f87eec047cbfabaf8e01a9b65a69b621f437bd",
    "samples": [
     {
      "verdict": "NARROW",
@@ -920,7 +920,16 @@
      "cols_pages": [],
      "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
     }
-   ]
+   ],
+   "carried": {
+    "by": "rename",
+    "map": {
+     "scveh.line10_2025": "scveh.line10_this_year",
+     "scveh.s179_2025_ok": "scveh.s179_this_year_ok"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "e6f2696e575f54f0e678f7c0eb6808572f22b1e0cb8dda6190c7662e56c2edaf"
+   }
   },
   "scveh.placed": {
    "subject_sha": "e77f6f6bde32d01f392e24af81bd59d224fe95eb4773998c0ceba7bcd0420630",
@@ -1052,7 +1061,7 @@
    ]
   },
   "scveh.prior_179": {
-   "subject_sha": "92899f489d34103cb891f3ff6698e016ae628c8c2ff5aa37c871232c7f48d223",
+   "subject_sha": "85531b829d7726724dd278350fabda2fc25845faf6723771eae3c01c0c9b710e",
    "samples": [
     {
      "verdict": "WRONG_FIGURE",
@@ -1104,7 +1113,15 @@
      ],
      "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
     }
-   ]
+   ],
+   "carried": {
+    "by": "rename",
+    "map": {
+     "scveh.is2025": "scveh.placed_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "92899f489d34103cb891f3ff6698e016ae628c8c2ff5aa37c871232c7f48d223"
+   }
   },
   "scveh.prior_conv": {
    "subject_sha": "a1526b0189861a69e5b56297bf3093c6f7e319ebd39c6bd2cc372e12c238a640",
@@ -1275,151 +1292,6 @@
      ],
      "cols_pages": [],
      "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
-    }
-   ]
-  },
-  "scveh.screen": {
-   "subject_sha": "3b01d04340eaeebbae7b39cd3464991187b7359a49c9ff44e43e811bafc17e86",
-   "samples": [
-    {
-     "verdict": "NARROW",
-     "findings": [
-      {
-       "kind": "NARROW",
-       "situation": "A filer whose vehicle is a truck or van placed in service after July 6, 2003 and specially modified into a qualified nonpersonal use vehicle (for example, shelving, front bench only, company advertising) answers no, so the tool computes it as a passenger automobile under the listed-property limits.",
-       "source_text": "i4562 p. 15: \"The following vehicles are not considered passenger automobiles. ... Any truck or van placed in service after July 6, 2003, that is a qualified nonpersonal use vehicle.\" Also i4562 p. 3: \"Listed property does not include: ... 4. Any truck or van placed in service after July 6, 2003, that is a qualified nonpersonal use vehicle.\"",
-       "why": "The list refuses the other excepted vehicles (transport for hire, ambulance, hearse) but leaves out qualified nonpersonal use trucks and vans. These vehicles are neither passenger automobiles nor listed property, so the passenger-automobile limits and the qualified-business-use test do not apply to them, and the gate should refuse them.",
-       "bound": ""
-      },
-      {
-       "kind": "UNCLEAR",
-       "situation": "A vehicle whose business plus investment use was over 50% in an earlier year, but whose qualified business use that year was 50% or less, can get either answer depending on how the filer reads the two bullets.",
-       "source_text": "Question: \"its business use was 50% or less in any earlier year\" and \"its qualified business use is 50% or less once you leave out uses that are not qualified business use\". p463 p. 25: \"You must meet this more-than-50%-use test each year of the recovery period\" and \"It doesn't include use for the production of income (investment use)\".",
-       "why": "The earlier-year bullet says \"business use\" without the qualified-business-use exclusions. The qualified-use bullet uses the present tense \"is\", which reads as 2025 only. A filer could therefore count earlier-year investment or related-person use as business use and answer no, even though the text treats a year at 50% or less of qualified business use as forcing straight-line depreciation and recapture.",
-       "bound": ""
-      }
-     ],
-     "prompt_sha": "c2bea85db2b414fbcf57a8641a085f9569d79f02b8ca89dcbd7b3ec3291ccf2b",
-     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
-     "model": "claude-opus-5-5",
-     "cost": 0.209788,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/scveh.screen.3b01d04340ea.1.response.txt"
-    }
-   ],
-   "type": "Bool",
-   "readers": 1,
-   "brief": false,
-   "used": [
-    {
-     "doc": "i4562",
-     "revision": "2025",
-     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
-     "pages": [
-      3,
-      4,
-      5,
-      6,
-      7,
-      9,
-      11,
-      12,
-      13,
-      14,
-      15
-     ],
-     "how": "cited pages",
-     "locators": [
-      "pp. 13-15, Part V",
-      "pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, \"If during the tax year you convert property used solely for personal purposes to business/investment use\"); , Deductions for Passenger Automobiles Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025; p. 7, Exceptions, \"Property converted from business or income-producing use to personal use in the same tax year it is acquired\" and \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 9, Line 17, \"the carryover basis of property you acquire in a like-kind exchange or involuntary conversion\"; p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, \"The following types of property must be depreciated under ADS\"; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; p. 15, \"The business use requirement and the limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly engaged in the business of leasing passenger automobiles\"; , \"You cannot use the percentage tables for a short tax year\" and \"If you reduce the basis of your property because of a casualty, you cannot continue to use the percentage tables\"; , \"If you have a short tax year, you must reduce the maximum deduction amount\"; , \"You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove your business/investment use with adequate records or with sufficient evidence to support your own statements\"; , What Property Does Not Qualify?, \"Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property\" and Leased property; i4562 p. 3, \"for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless\"; i4562 p. 4, Line 2, \"Enter the total cost of all section 179 property you placed in service during the tax year\"; i4562 p. 14, Column (c)—Business/investment use percentage, \"for trade or business purposes or for the production of income during the year\"; , Qualified business use, \"However, you do combine your business and investment use to figure your depreciation deduction for the tax year\"; , Improvements, \"A major improvement to a car is treated as a new item of 5-year recovery property\" and \"you must treat the improvement and the car as a whole when applying the limits on the depreciation deductions\""
-     ],
-     "cols_pages": [
-      3,
-      5,
-      6,
-      7,
-      9,
-      11,
-      12,
-      13,
-      14,
-      15
-     ],
-     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
-    },
-    {
-     "doc": "p946",
-     "revision": "For use in preparing 2025 returns",
-     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
-     "pages": [
-      17,
-      31,
-      37,
-      60,
-      63
-     ],
-     "how": "pages named by another document's citation",
-     "locators": [],
-     "cols_pages": [
-      17,
-      31,
-      37,
-      63
-     ],
-     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
-    },
-    {
-     "doc": "p463",
-     "revision": "For use in preparing 2025 returns",
-     "text_sha256": "153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda",
-     "pages": [
-      25,
-      26
-     ],
-     "how": "pages named by another document's citation",
-     "locators": [],
-     "cols_pages": [
-      25,
-      26
-     ],
-     "cols_sha256": "a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326"
-    }
-   ]
-  },
-  "scveh.smr_ok": {
-   "subject_sha": "93250f64f6156d4b81ecd8d53b6e117976a3d0dd762d7d8c272853b37e4421ec",
-   "samples": [
-    {
-     "verdict": "MATCH",
-     "findings": [],
-     "prompt_sha": "5bd26513ee9fbd5e93b0f39e8b4d6f7784adc2bcba3fa33bc35b2d3e93d0e2ad",
-     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
-     "model": "claude-opus-5-5",
-     "cost": 0.026496,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/scveh.smr_ok.93250f64f615.1.response.txt"
-    }
-   ],
-   "type": "Bool",
-   "readers": 1,
-   "brief": false,
-   "used": [
-    {
-     "doc": "i1040sc",
-     "revision": "2025",
-     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
-     "pages": [
-      6
-     ],
-     "how": "cited pages",
-     "locators": [
-      "p. 6, Line 9",
-      "p. 6, Line 9, \"You must use actual expenses if you used five or more vehicles simultaneously\" and \"You can take the standard mileage rate for 2025 only if you\""
-     ],
-     "cols_pages": [
-      6
-     ],
-     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
     }
    ]
   },

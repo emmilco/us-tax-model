@@ -165,7 +165,87 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "asset.screen",
+      "input": "asset.kind_excluded",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.software",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.software_spread",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.industry",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.industry_item",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.long_production",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.got_other",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.acquired_before_bonus_date",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.used_before",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.ended_this_year",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.basis_changed",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.use_changed",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.short_year",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.method_other",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.ads_required",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.outside_use",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "asset.qbu_low",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -255,7 +335,7 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "clcw26.final_return",
+      "input": "clcw_next_year.final_return",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -305,6 +385,11 @@
       "reason": "true: a listed dependent ordinarily meets the citizenship or residency test; one who does not is the special case."
     },
     {
+      "input": "dependent.citizen_ssn",
+      "value": false,
+      "reason": "Closed: false leaves the citizenship and number answers a scenario states (or their defaults) read."
+    },
+    {
       "input": "dependent.dc_incapable",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
@@ -345,12 +430,12 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "dependent.edu_a2025",
+      "input": "dependent.edu_a_this_year",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "dependent.edu_a2026",
+      "input": "dependent.edu_a_next_year",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
@@ -435,6 +520,11 @@
       "reason": "true: a listed dependent's SSN is ordinarily valid for the EIC; one that is not is the special case."
     },
     {
+      "input": "dependent.ever_married",
+      "value": true,
+      "reason": "true: the answer that opens the married and joint-return questions, so a scenario that states either is read; a scenario of a person never married states false."
+    },
+    {
       "input": "dependent.gross_income",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
@@ -453,6 +543,11 @@
       "input": "dependent.lawful",
       "value": true,
       "reason": "true: a relationship in a scenario is lawful under local law unless the scenario says it is not."
+    },
+    {
+      "input": "dependent.lived_all_year",
+      "value": false,
+      "reason": "Closed: a scenario states the months lived with the filer; false leaves that count read."
     },
     {
       "input": "dependent.married",
@@ -480,9 +575,19 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "dependent.own_money",
+      "value": true,
+      "reason": "true: the answer that opens the self-support question, so a scenario that states it is read."
+    },
+    {
       "input": "dependent.parent_home_paid",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "dependent.parents_apart",
+      "value": true,
+      "reason": "true: the answer that opens the question on the rule for children of divorced or separated parents, so a scenario that states it is read."
     },
     {
       "input": "dependent.part_year_home",
@@ -520,6 +625,11 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "dependent.self_support_view",
+      "value": "unsure",
+      "reason": "unsure: the answer that opens the full support test, so a scenario that states the person's own support is read."
+    },
+    {
       "input": "dependent.spouse_relative",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
@@ -533,6 +643,11 @@
       "input": "dependent.supported",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "dependent.supported_view",
+      "value": "unsure",
+      "reason": "unsure: the answer that opens the full support test, so a scenario that states the filer's support of the person is read."
     },
     {
       "input": "dependent.tin",
@@ -615,12 +730,22 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "eic.died_2025",
+      "input": "div.other_boxes",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "eic.died_this_year",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "eic.legally_separated",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "eic.lived_with_relative",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -638,6 +763,16 @@
       "input": "eic.us_home",
       "value": true,
       "reason": "true: the ordinary filer's main home is in the United States for more than half the year; a home abroad bars the EIC."
+    },
+    {
+      "input": "f1040.withheld_other_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f1040.estimated_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "f1040.line25b",
@@ -692,6 +827,26 @@
         ],
         "reason": "A return's only Form 1095-A is counted, so no is not a truthful answer there; the question is asked only where there are two or more forms."
       }
+    },
+    {
+      "input": "f1095a.b_blank",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f1095a.b_changed",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f1095a.b_doubt",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f1095a.b_fixed_same",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "f1095a.c_total",
@@ -889,7 +1044,7 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "f1095a.uniform",
+      "input": "f1095a.same_months",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -924,12 +1079,17 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
+      "input": "f2441.care_other",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "f2441.nondependent",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "f2441.paid_2026",
+      "input": "f2441.other_care_expenses",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
@@ -954,7 +1114,12 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "f2441.student_disabled",
+      "input": "f2441.student",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f2441.unable",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -1224,12 +1389,87 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "f5695.part1_any",
+      "input": "f5695.any",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "f5695.part2_any",
+      "input": "f5695.solar",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.solar_water",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.wind",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.geothermal",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.insulation",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.doors",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.windows",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.panel",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.audit",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.heat_pump",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.hp_water_heater",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.central_ac",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.water_heater",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.furnace",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.biomass",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f5695.carry",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -1280,11 +1520,6 @@
     },
     {
       "input": "f8863.paid",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
-      "input": "f8889.age55",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -1434,7 +1669,7 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "f8959.unsupported",
+      "input": "f8959.territory_w2",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -1459,12 +1694,17 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "f8962.a_zero_paid",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "f8962.alien_below",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "f8962.alloc",
+      "input": "f8962.divorced_enrolled",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -1479,22 +1719,87 @@
       "reason": "The enum's first value: no value is ordinary, so a scenario that reads this input states it."
     },
     {
-      "input": "f8962.married_in_2025",
+      "input": "f8962.hra",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "f8962.other",
+      "input": "f8962.incarcerated",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "f8962.premium_adjust",
+      "input": "f8962.job_offer",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.married_this_year",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.mec_government",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.mec_job_affordable",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.mec_job_enrolled",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.mec_other",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.medicaid_reversed",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.midmonth_start",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.no_family",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.not_lawful",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.other_coverage",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.premium_refunded",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "f8962.same_state_counted",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.shared_policy",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8962.unpaid",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -1564,7 +1869,12 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "household.married",
+      "input": "household.ever_married",
+      "value": true,
+      "reason": "Open: a case that does not say otherwise is of a person who has been married, so that the answer it states to household.married_dec31 is read."
+    },
+    {
+      "input": "household.married_dec31",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so.",
       "withheld": {
@@ -1591,12 +1901,12 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "household.spouse_died_2025",
+      "input": "household.spouse_died_this_year",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "household.unmarried",
+      "input": "household.considered_unmarried",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so.",
       "withheld": {
@@ -1633,7 +1943,17 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "ira.special",
+      "input": "ira.care_payments",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ira.deferred_comp",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ira.fellowship",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -1678,27 +1998,37 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "person.age65",
+      "input": "person.age50_at_year_end",
+      "value": false,
+      "reason": "Closed: asked only of a person born in 1976; the circumstance does not apply unless the scenario says so."
+    },
+    {
+      "input": "person.age55_at_year_end",
+      "value": false,
+      "reason": "Closed: asked only of a person born in 1971; the circumstance does not apply unless the scenario says so."
+    },
+    {
+      "input": "person.birth_year",
+      "value": 1980,
+      "reason": "1980: the ordinary filer is 45 at the end of 2025, a year that settles every age test the ordinary way (not 65 or older, not 50 or older, 25 or older, not under 18) and is on no cut. A scenario about an age states the year."
+    },
+    {
+      "input": "person.born_jan1",
+      "value": false,
+      "reason": "Closed: asked only of a person born in 1961, 2001, 2002, 2007 or 2008; a birth on January 1 is the special case."
+    },
+    {
+      "input": "person.died_at_64",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "person.under16_at_year_end",
+      "value": false,
+      "reason": "Closed: asked only of a person born in 2010; the circumstance does not apply unless the scenario says so."
     },
     {
       "input": "person.blind",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
-      "input": "person.born_after_1960",
-      "value": true,
-      "reason": "true: the ordinary filer is under 65 at the end of 2025; 65 or older is the special case (additional standard deduction, senior deduction, EIC age limit)."
-    },
-    {
-      "input": "person.born_before_2001",
-      "value": true,
-      "reason": "true: the ordinary filer is 25 or older, the EIC's minimum age; a younger filer is the special case."
-    },
-    {
-      "input": "person.died_before_65",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -1713,24 +2043,14 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "person.edu_a2025",
+      "input": "person.edu_a_this_year",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "person.edu_a2026",
+      "input": "person.edu_a_next_year",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
-    },
-    {
-      "input": "person.edu_born_2002",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
-      "input": "person.edu_born_2007",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "person.edu_ein",
@@ -1808,11 +2128,6 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "person.ira_age50",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
       "input": "person.ira_basis",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
@@ -1824,11 +2139,6 @@
     },
     {
       "input": "person.ira_dist",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
-      "input": "person.ira_excess",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -1873,17 +2183,7 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "person.sav_born",
-      "value": true,
-      "reason": "true: the ordinary filer is 18 or older (born before January 2, 2008), as the saver's credit requires; a younger filer is the special case."
-    },
-    {
       "input": "person.sav_claimed",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
-      "input": "person.sav_excess",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -1933,9 +2233,9 @@
       "reason": "Closed: none unless the scenario states a count."
     },
     {
-      "input": "person.simple_age",
-      "value": "under50",
-      "reason": "The enum's first value: no value is ordinary, so a scenario that reads this input states it."
+      "input": "person.simple_age_at_year_end",
+      "value": "age50",
+      "reason": "Asked only of a person born in 1962 or 1966 with a SIMPLE plan; no value is ordinary, so a scenario that reads this input states it."
     },
     {
       "input": "person.simple_deferral",
@@ -1958,11 +2258,6 @@
       "reason": "true: an ordinary filer has an SSN or ITIN issued by the due date of the return; having none is the special case, which bars several credits."
     },
     {
-      "input": "person.under16",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
       "input": "person.work_ssn",
       "value": true,
       "reason": "true: an ordinary filer's SSN is valid for employment; an SSN not valid for work is the special case (child tax credit, EIC)."
@@ -1978,14 +2273,64 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "person.x_other",
+      "input": "person.x_prior09",
+      "value": 0,
+      "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "person.ira_owner",
+      "value": false,
+      "reason": "Closed: the ordinary filer of the defaults has no IRA; a scenario with an IRA contribution states it."
+    },
+    {
+      "input": "person.ira_extra_left",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "person.x_prior09",
-      "value": 0,
-      "reason": "Closed: no amount unless the scenario states one."
+      "input": "person.ira_recharacterized",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "person.x_edu_account",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "person.x_edu_taxable",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "person.x_edu_excess",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "person.x_archer_excess",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "person.x_ira_prior_excess",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "person.x_hsa_prior_excess",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "person.inherited_account",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "person.rmd_missed",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "qbi.carryforward",
@@ -1998,7 +2343,27 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "qbi.unsupported",
+      "input": "qbi.coop_patron",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "qbi.prior_form",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "qbi.reit_loss",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "qbi.suspended",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "refund.any",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2023,17 +2388,17 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "refund.line17_2024",
+      "input": "refund.line17_prior_year",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "refund.line5d_2024",
+      "input": "refund.line5d_prior_year",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "refund.line5e_2024",
+      "input": "refund.line5e_prior_year",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
@@ -2043,7 +2408,12 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "refund.not_2024",
+      "input": "refund.other_year",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "refund.paid_other_time",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2113,11 +2483,6 @@
       "reason": "The enum's first value: no value is ordinary, so a scenario that reads this input states it."
     },
     {
-      "input": "retirement.code_screen",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
       "input": "retirement.combined_age",
       "value": 0,
       "reason": "Closed: none unless the scenario states a count."
@@ -2183,17 +2548,177 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "retirement.special",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
       "input": "retirement.used_last_year",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "retirement.rollover_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.roth_moved",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.rollover_property",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.rollover_qdro",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.levy_returned",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.charity_hsa",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.ira_returned",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.ira_basis",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.box6",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.loan_offset",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.disability",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.dis_early",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.dis_terror",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.dis_military",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.pso_exclusion",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.born_before_averaging_date",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.lump_sum",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.death_exclusion",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.ben_before_retire",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.ben_guaranteed",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.ben_shared",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.cost_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.own_annuity",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.csrs_alt",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.started_before_simplified_method_date",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.general_rule",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.lump_at_start",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.disaster",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.under59",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.sec457",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.code2_partial",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.not_beneficiary",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "s1.alimony",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s1.alimony_any",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2238,44 +2763,99 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
+      "input": "s1.winnings_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "s1.jury_to_employer",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "s1.line8_other",
+      "input": "s1.ltc_payout",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "s1.line8g",
+      "input": "s1.stock_options",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s1.olympic",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s1.nqdc_pension",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s1.inmate_wages",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s1.digital_income",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s1.alaska_dividend",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "s1.line8h",
+      "input": "s1.alaska_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s1.jury_pay",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "s1.line8i",
+      "input": "s1.jury_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s1.prizes",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "s1.line8j",
+      "input": "s1.hobby_income",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "s1.line8r",
+      "input": "s1.hobby_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s1.scholarship_taxable",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "s1.scholarship_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "s1.uc_paid",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "s1.uc_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "s1.uc_repaid",
@@ -2288,9 +2868,14 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "s179.line10",
+      "input": "s179.carryover",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "s179.prior_form",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "s179.wc_interest",
@@ -2313,12 +2898,62 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "s2.amt",
+      "input": "s2.amt_owed",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "s2.other",
+      "input": "s2.options_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s2.iso",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s2.iso_vested",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s2.other_tax",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s2.w2_marks",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s2.household_help",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s2.household_employee",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s2.mortgage_subsidy",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s2.hsa_testing",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s2.credit_recapture",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s2.lookback",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2463,7 +3098,17 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "sa.bond_premium",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "sa.charity_limited",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.debt_instrument_loss",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2478,7 +3123,17 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "sa.estate_tax_income",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "sa.excluded_income",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.foreign_tax_deduct",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2488,7 +3143,27 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
+      "input": "sa.gift_carryover",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "sa.gifts",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.home_other",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.home_owner",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.impairment_work",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2518,9 +3193,59 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "sa.line8a",
+      "input": "sa.medical_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.medical_premiums",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.mortgage_interest",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "sa.mortgage_other_use",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.mortgage_over_limit",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.mortgage_unreported",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.pension_unrecovered",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.personal_property_tax_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.property_tax_leave_out",
+      "value": 0,
+      "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "sa.property_tax_other_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.sales_tax_wish",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "sa.spouse_extra",
@@ -2533,7 +3258,17 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "sa.unsupported",
+      "input": "sa.state_tax_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sa.state_tax_other",
+      "value": 0,
+      "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "sa.state_tax_other_any",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2588,7 +3323,27 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "sb.foreign_any",
+      "input": "sb.account_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sb.asset_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sb.company_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sb.territory_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sb.trust_any",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2618,7 +3373,17 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "sb.unsupported",
+      "input": "sb.bond_special",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sb.bonds_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sb.nominee",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2629,6 +3394,21 @@
     },
     {
       "input": "sc.business_credit",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sc.employees",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sc.goods",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sc.travel_meals",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2863,17 +3643,197 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "scope.other_income",
+      "input": "scope.adoption_benefits",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "scope.other_line16",
+      "input": "scope.archer_msa",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "scope.schedule1",
+      "input": "scope.armed_forces",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.artist_official",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.attorney_fees",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.business_before",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.care_benefits_other",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.cfc",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.chapter11",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.church_exempt_wages",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.clergy",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.disaster_distribution",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.education_recapture",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.excess_deferral",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.f8615",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.f8814",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.f8978",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.farm",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.foreign_shares",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.income_averaging",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.k1",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.medicaid_waiver",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.military_move",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.nol",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.noncitizen",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.nonresident",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.passive",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.pay_no_w2",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.performer_expenses",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.pfic",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.recovery",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.reforestation",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.religious_work",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.rental",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.reservist_expenses",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.reservist_repaid",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.se_plan_other",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.unearned_2700",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.w2_marks",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2983,12 +3943,112 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "scveh.screen",
+      "input": "scveh.records",
+      "value": true,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.got_other",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "scveh.smr_ok",
+      "input": "scveh.acquired_before_bonus_date",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.used_before",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.bonus_excluded",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.prior_bonus",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.prior_smr",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.prior_low_use",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.converted",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.disposed",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.basis_changed",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.short_year",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.for_hire",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.investment",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.method_other",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.others_use",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.leasing",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.exempt_use",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.qbu_low",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.smr_always",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.smr_first",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scveh.fleet",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2998,7 +4058,22 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "sd.business_property",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "sd.carryover",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sd.casualty",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sd.condemned",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -3008,12 +4083,72 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "sd.other_forms",
+      "input": "sd.f2439",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sd.installment",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sd.like_kind",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sd.sec1256",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sd.small_business_stock",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sd.route_each",
+      "value": true,
+      "reason": "Open: where each sale is reported is asked sale by sale unless the scenario says the filer leaves every sale on Form 8949."
+    },
+    {
+      "input": "sd.sold_other",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sd.trader_election",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "sli.interest",
+      "value": 0,
+      "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "sli.any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sli.unqualified_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sli.unqualified",
+      "value": 0,
+      "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "sli.assisted_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sli.assisted",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
@@ -3028,27 +4163,57 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "ssb.lump_sum",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
-      "input": "ssb.pub915",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
       "input": "ssb.terror_disability",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "tipjob.amount",
+      "input": "ssb.any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ssb.ira_covered",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ssb.repaid_more",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ssb.prior_year_pay",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ssb.lump_elect",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "tipjob.charged",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "tipjob.listed",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "tipjob.other_work",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "tipjob.tips",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "tipjob.qualified",
+      "input": "tipjob.unlawful",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -3167,23 +4332,6 @@
     {
       "never": [
         {
-          "input": "household.married",
-          "is": false
-        },
-        {
-          "input": "household.unmarried",
-          "is": false
-        },
-        {
-          "input": "household.spouse_died_2025",
-          "is": false
-        }
-      ],
-      "reason": "A filer whose spouse did not die in the year was either married or unmarried at its end."
-    },
-    {
-      "never": [
-        {
           "input": "f4952.has_interest",
           "is": false
         },
@@ -3193,53 +4341,6 @@
         }
       ],
       "reason": "The election on Form 4952 line 4g is made by a filer with investment interest expense."
-    },
-    {
-      "never": [
-        {
-          "input": "person.born_before_2001",
-          "is": true
-        },
-        {
-          "input": "person.edu_born_2002",
-          "is": false
-        }
-      ],
-      "reason": "A person born before January 2, 2001 was born before January 2, 2002.",
-      "open": {
-        "(defaults)": "The filer of the defaults is 25 or older, and the defaults answer no to this question; withholding or changing that no changes lines of the education credit cases that read it.",
-        "stage19.mut.aoc_student_20_not_fulltime": "States a filer born on or after January 2, 2002 and takes the default yes; the truthful no changes the values of its earned income credit lines.",
-        "stage19.mut.aoc_joint_line7_unasked": "States a filer born on or after January 2, 2002 and takes the default yes; the truthful no changes the values of its earned income credit lines."
-      }
-    },
-    {
-      "never": [
-        {
-          "input": "person.born_before_2001",
-          "is": true
-        },
-        {
-          "input": "person.edu_born_2007",
-          "is": false
-        }
-      ],
-      "reason": "A person born before January 2, 2001 was born before January 2, 2007.",
-      "open": {
-        "(defaults)": "The filer of the defaults is 25 or older, and the defaults answer no to this question; withholding or changing that no changes lines of the education credit cases that read it."
-      }
-    },
-    {
-      "never": [
-        {
-          "input": "person.edu_born_2002",
-          "is": true
-        },
-        {
-          "input": "person.edu_born_2007",
-          "is": false
-        }
-      ],
-      "reason": "A person born before January 2, 2002 was born before January 2, 2007."
     }
   ]
 }

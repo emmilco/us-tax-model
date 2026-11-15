@@ -207,7 +207,13 @@ export async function integrationChecks(): Promise<void> {
         if(id==="stage4.sdtw.special_rates")assert.equal(state.values["f1040.line16"].value.cents,6166300);
         if(id==="stage4.base") {
           assert.equal(state.values["sa.deduction"].value.cents,1575000);
-          state=await cli(["interview","answer","--log",path,"--input","sa.line8a","--value","2000000"]);
+          // A home owned opens the mortgage and property tax questions; each is answered as it is asked.
+          const home:Record<string,string>={"sa.mortgage_interest":"2000000","sa.mortgage_unreported":"false","sa.mortgage_over_limit":"false","sa.mortgage_other_use":"false","sa.line5b":"0","sa.property_tax_other_any":"false","s3.mcc":"false","s2.mortgage_subsidy":"false"};
+          state=await cli(["interview","answer","--log",path,"--input","sa.home_owner","--value","true"]);
+          for(let step=0;state.status==="incomplete"&&step<10;step++) {
+            const key=state.question.input;assert.ok(key in home,`missing ${key}`);
+            state=await cli(["interview","answer","--log",path,"--input",key,"--value",home[key]]);
+          }
           assert.equal(state.values["sa.deduction"].value.cents,2000000);
           await cli(["interview","answer","--log",path,"--input","f8959.line18","--value","1"],false);
         }
@@ -298,12 +304,12 @@ export async function integrationChecks(): Promise<void> {
         ["joint",[{input:"$person",value:["taxpayer","spouse"]},{input:"f1040.status",value:"mfj"},{input:"person[spouse].role",value:"spouse"},{input:"person[taxpayer].role",value:"taxpayer"}],["taxpayer","spouse"]],
         ["single",[{input:"$person",value:["taxpayer"]},{input:"f1040.status",value:"single"},{input:"person[taxpayer].role",value:"taxpayer"}],["taxpayer"]],
       ] as const) {
-        const oldState=await cli(["interview","advance","--log",write(`old-${name}.jsonl`,[...old,{input:"scope.other_line16",value:false}])]);
+        const oldState=await cli(["interview","advance","--log",write(`old-${name}.jsonl`,[...old,{input:"scope.chapter11",value:false}])]);
         const newLog=join(dir,`new-${name}.jsonl`);
         await cli(["interview","start","--profile","full","--log",newLog]);
         await cli(["interview","answer","--log",newLog,"--input","$person","--value",JSON.stringify(now)]);
         if (name==="single") await cli(["interview","answer","--log",newLog,"--input","f1040.status","--value",'"single"']);
-        const newState=await cli(["interview","answer","--log",newLog,"--input","scope.other_line16","--value","false"]);
+        const newState=await cli(["interview","answer","--log",newLog,"--input","scope.chapter11","--value","false"]);
         assert.equal(comparable(oldState),comparable(newState),`${name}: a log of the earlier questions gives today's state`);
         assert.deepEqual(oldState.recorded,[],"answers given directly are not recorded ones");
         // The earlier log stays correctable: its status was answered directly, and changing the first answer records anew.

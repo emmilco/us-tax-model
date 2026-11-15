@@ -1729,13 +1729,21 @@ class ClassMProvenance(unittest.TestCase):
         with patch.object(T, "call_model", return_value=("lines: []", {"model_reported": ["deepseek-v4-pro"]})):
             T.review_response("AMOUNT 1", "deepseek-v4-pro", self.base, M.PROMPT_POLICY, system=M.SYSTEM)
 
-    def run_main(self, extra):
-        with patch.object(M, "JOBS", str(self.jobs)), patch.object(M, "RAW", self.temp.name), patch.object(M.subprocess, "run") as build, patch.object(M, "load_form", return_value={"id": "fake"}), patch.object(M, "manifest", return_value={}), patch.object(M, "excerpt_for", return_value=("SOURCE", [])), patch.object(M, "build_prompt", side_effect=lambda f, e, j: f"AMOUNT {j['own_inputs'][0]}"), patch.object(M, "write_outputs", return_value=("LOG", {"AGREE": 0, "DISAGREE": 0, "SKIPPED": 0, "MISSING": 0})) as write, patch.object(sys, "argv", ["classm.py", "--doc", "fake", "--model", "deepseek-v4-pro", *extra]), patch.object(T, "call_model", side_effect=AssertionError("must stay offline")):
+    def run_main(self, extra, stale="planted: the build is stale"):
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        import build_fresh
+        with patch.object(build_fresh, "stale", return_value=stale), patch.object(M, "JOBS", str(self.jobs)), patch.object(M, "RAW", self.temp.name), patch.object(M.subprocess, "run") as build, patch.object(M, "load_form", return_value={"id": "fake"}), patch.object(M, "manifest", return_value={}), patch.object(M, "excerpt_for", return_value=("SOURCE", [])), patch.object(M, "build_prompt", side_effect=lambda f, e, j: f"AMOUNT {j['own_inputs'][0]}"), patch.object(M, "write_outputs", return_value=("LOG", {"AGREE": 0, "DISAGREE": 0, "SKIPPED": 0, "MISSING": 0})) as write, patch.object(sys, "argv", ["classm.py", "--doc", "fake", "--model", "deepseek-v4-pro", *extra]), patch.object(T, "call_model", side_effect=AssertionError("must stay offline")):
             try:
                 M.main()
             finally:
-                self.assertEqual(build.call_count, 2, "reuse must also rebuild current jobs")
+                self.assertEqual(build.call_count, 2 if stale else 1, "reuse must also rebuild current jobs")
+                self.assertIn("classm-jobs", build.call_args_list[-1][0][0], "the document's jobs are always rebuilt")
                 self.written = write.call_count
+
+    def test_fresh_build_is_not_rebuilt_but_jobs_are(self):
+        with self.assertRaises(SystemExit) as result:
+            self.run_main(["--from-response"], stale=None)
+        self.assertEqual(result.exception.code, 0)
 
     def test_current_jobs_can_reuse_matching_request(self):
         with self.assertRaises(SystemExit) as result:
@@ -2930,6 +2938,79 @@ class LineScopedReviews(unittest.TestCase):
         self.assertIsNone(T.subjects.log_state("render", self.FORM, T.Y, new))
         with contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(rulings.check(), 0)
+
+
+class ScreenLineKeys(unittest.TestCase):
+    """Two computed `(screen)` lines of one form are two compared lines: each has its own log key, a
+    line-scoped pass over both stores one section per line, and the request still shows them bare."""
+    FORM = "ira"
+    SCREENS = ("ira.special", "ira.reservist_repaid")
+    setUp = LineScopedReviews.setUp
+    base_log = LineScopedReviews.base_log
+    scoped = LineScopedReviews.scoped
+    sections = LineScopedReviews.sections
+
+    def stored(self):
+        p = patch.object(rulings, "STORE_ELSEWHERE", True)
+        p.start(); self.addCleanup(p.stop)
+
+    def test_keys_are_qualified_only_among_computed_screen_lines(self):
+        screen = lambda i, computed: {"id": i, "printed": "(screen)", "type": "Bool",
+                                      "expr": {"op": "not", "arg": "x.q"} if computed else {"op": "input", "source": "Q?"}}
+        two = T.marker_keys([screen("x.a", True), screen("x.b", True), screen("x.q", False)])
+        self.assertEqual(two, {"x.a": "(screen) (x.a)", "x.b": "(screen) (x.b)", "x.q": "(screen)"})
+        self.assertEqual(T.marker_keys([screen("x.a", True), screen("x.q", False), screen("x.r", False)]),
+                         {"x.a": "(screen)", "x.q": "(screen)", "x.r": "(screen)"})
+        # A reply that gives one of them bare, under the project's id, is keyed as the project keys it.
+        self.assertEqual(T.second_keys(two, [screen("x.b", True)]), {"x.b": "(screen) (x.b)"})
+        keys = [k for k, _ in T.line_keys(self.doc)]
+        self.assertEqual(len(keys), len(set(keys)))
+        with patch.object(T, "collection_notes", return_value=""), patch.object(T, "screen_notes", return_value=""):
+            prompt = T.build_prompt(self.doc, "SOURCE", {}, {}, scope=set(self.SCREENS))
+        for i in self.SCREENS:
+            self.assertIn(f"  - printed '(screen)' (id {i};", prompt)
+
+    def test_a_line_scoped_pass_over_two_screen_lines_stores_both(self):
+        self.stored()
+        self.base_log()
+        scope, _ = T.scoped_lines(self.doc, list(self.SCREENS))
+        self.assertTrue(set(self.SCREENS) <= scope)
+        reply = [dict(l, printed="(screen)") if l["id"] in self.SCREENS else l for l in self.computed if l["id"] in scope]
+        reply = [dict(l, expr={"op": "test", "eq": [{"const": True}, {"const": True}]}) if l["id"] == "ira.special" else l
+                 for l in reply]
+        text = self.scoped(",".join(self.SCREENS), reply)
+        sections = self.sections(text)
+        special, repaid = sections["(screen) (ira.special)"], sections["(screen) (ira.reservist_repaid)"]
+        self.assertIn("Status: **DISAGREE**", special)
+        self.assertIn("Status: **AGREE**", repaid)
+        self.assertNotIn("(screen)", sections)
+        index = self.store_index()
+        self.assertEqual(len([l for l in index["lines"] if l["key"].startswith("(screen)")]), 2)
+        self.assertEqual(rulings.read_log("transcription", self.FORM), text)
+        import review_store
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(review_store.check(), 0)
+
+    def test_a_pass_over_one_screen_line_matches_it_by_id(self):
+        self.stored()
+        self.base_log()
+        scope, _ = T.scoped_lines(self.doc, ["ira.special"])
+        self.assertNotIn("ira.reservist_repaid", scope)
+        reply = [dict(l, printed="(screen)") if l["id"] in self.SCREENS else l for l in self.computed if l["id"] in scope]
+        sections = self.sections(self.scoped("ira.special", reply))
+        self.assertIn("Status: **AGREE**", sections["(screen) (ira.special)"])
+        self.assertIn("(screen) (ira.reservist_repaid)", sections)  # kept from the whole review
+
+    def store_index(self):
+        import review_store
+        return json.loads(Path(review_store.index_path("transcription", self.FORM)).read_text())
+
+    def test_a_record_with_two_parts_of_one_name_is_refused(self):
+        import review_store
+        self.stored()
+        with self.assertRaisesRegex(ValueError, "share a name"):
+            review_store.write_record({"kind": "transcription", "form": "x", "family": "claude"},
+                                      [("section (screen)", "a"), ("section (screen)", "b")])
 
 
 class ScopedCatalog(unittest.TestCase):

@@ -3,6 +3,44 @@
  "form": "refund",
  "rulings": [
   {
+   "printed": "1",
+   "project_expr_sha256": "978905f7c09be689ffb0082458714c611274000a5a786cccec22b9d682081175",
+   "second_expr_sha256": "9392bf00c3faea6e3264824feff3eb8729578e5464960556cc284878b41ec306",
+   "ruling": "Ruling: representation; both enter the refund capped at the 2024 Schedule A line 5d amount (i1040gi p. 90, worksheet line 1, \"But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\"); the project reads the refund through its parent question (refund.received_if_worksheet: zero when the worksheet is not used) and refuses the Pub. 525 exceptions at this line, the reply reads refund.received directly and refuses box 8 here. Triage executable-triage-v2 (.transcription/triage/2025/refund.json, pass 643525b6700d): 3,002 of 3,206 agree; 2 value differences, both on the incomplete mutation mutation.t2.refund.not_itemized (2024 deductions not itemized, $3,000 refund supplied: project $0.00, reply $3,000.00), where the worksheet is not used and line 1 reaches nothing; 160 candidate-unknown (60 on completed returns, refund.received unasked when the worksheet does not apply), 40 project-unknown, 2 candidate-refuses on refused returns.",
+   "context": "f1f5b447210755859dd30923da5d3cf9e23cfabbb9aa59bc990846ce351e0375",
+   "date": "2026-11-14",
+   "run": "021be3d7eb2593ac97e8915cade30ca3ba88cccfd89ce5f99fb27c3a0ba762cc",
+   "subject_key": "7d338cab4c1dc4f784d8d43a7718db274eb60d4b354fcb4913680dc1512df3d8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:mutation.t2.refund.not_itemized@refund",
+     "fixture:mutation.m3.refund.sales_tax_2024@refund",
+     "fixture:stage16.refuse.refund.box8@refund",
+     "fixture:stage16.refuse.refund.not_2024@refund",
+     "partial:stage14.asset.hy_5yr-refund.received@refund",
+     "partial:stage14.asset.hy_5yr-refund.box8@refund",
+     "partial:stage14.asset.hy_5yr-refund.other_year@refund",
+     "partial:stage14.asset.hy_5yr-refund.paid_other_time@refund",
+     "partial:stage14.asset.hy_5yr-refund.itemized@refund",
+     "partial:stage14.asset.bonus_100-refund.received@refund",
+     "partial:stage14.asset.bonus_100-refund.box8@refund",
+     "partial:stage14.asset.bonus_100-refund.itemized@refund",
+     "partial:stage14.asset.prior_7yr-refund.itemized@refund",
+     "partial:stage14.asset.qip-refund.itemized@refund",
+     "partial:stage14.asset.done-refund.itemized@refund",
+     "partial:stage14.asset.refuse_class-refund.itemized@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "6",
    "project_expr_sha256": "a43a2621c566c0fd1047c075d72ab5dbd4c92695c5029a0bbefb180e283691df",
    "second_expr_sha256": "9ad8d2499599ac31323ca40e24393be1eb70128457efe054c7eabc04f00700f0",
@@ -157,6 +195,34 @@
      "fixture:stage16.refuse.refund.not_2024@refund",
      "partial:stage14.asset.hy_5yr-refund.received@refund",
      "partial:stage14.asset.bonus_100-refund.received@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "refund.taxable",
+   "project_expr_sha256": "bdcdede77fadf132ddea8e8a6676468c471bae362ca38722910ba13122b9e9da",
+   "second_expr_sha256": "6bcf8f5e00b2a26ad64a5b6fe92f126f9cd00ba7ee9ee0b968749ea40c65653b",
+   "ruling": "Ruling: representation; both are zero unless a refund was received, 2024 deductions were itemized and income taxes (not sales taxes) were deducted, and line 9 otherwise (i1040gi p. 88, Line 1, \"None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn't itemize deductions, or (b) elected to deduct state and local general sales taxes\"); the project reads refund.worksheet and checks its box 8 and other-year refusals first, and Schedule 1 line 1 reads refund.taxable only when refund.has is true, which the reply folds in as refund.any. Triage executable-triage-v2 (.transcription/triage/2025/refund.json, pass 643525b6700d): 2,584 of 3,206 agree; no value difference; 620 project-unknown (66 on completed returns, e.g. classm.eic.1, where no refund was received and refund.box8 is not asked, so Schedule 1 line 1 takes zero without this line), 2 project-refuses on refused returns.",
+   "context": "f1f5b447210755859dd30923da5d3cf9e23cfabbb9aa59bc990846ce351e0375",
+   "date": "2026-11-14",
+   "run": "021be3d7eb2593ac97e8915cade30ca3ba88cccfd89ce5f99fb27c3a0ba762cc",
+   "subject_key": "50ca8fa884a305cf8bbec636d11418a025afbc462120373d928ae758ff3e1bdd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@refund",
+     "fixture:classm.f2441.2.deepseek@refund",
+     "fixture:classm.f2441.3.deepseek@refund",
+     "fixture:classm.f2441.4.deepseek@refund",
+     "fixture:classm.f2441.5.deepseek@refund",
+     "fixture:classm.f2441.6.deepseek@refund",
+     "fixture:stage16.refuse.refund.box8@refund",
+     "fixture:stage16.refuse.refund.not_2024@refund"
     ],
     "policy": "executable-triage-v2"
    }

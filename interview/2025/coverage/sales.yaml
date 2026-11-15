@@ -1,0 +1,172 @@
+# Coverage rows for sales of investments, loss carryovers and borrowing to invest (lane 5b of the provisional redraft).
+# See opening.yaml for how a row is read.
+tax_year: 2025
+part: Sales of investments, loss carryovers and borrowing to invest
+profile: full
+rows:
+  - id: sales.business_property_sold
+    design: MAP 2.8, sd.other_forms (Form 4797, sale of business or rental property)
+    situation: A person sold a building they had rented out.
+    answers:
+      sd.sold_other: true
+      sd.business_property: true
+    expect:
+      refused: sd.other_forms
+  - id: sales.installment_sale
+    design: MAP 2.8, sd.other_forms (Form 6252)
+    situation: A person sold land in 2023 and is paid for it over ten years, reporting the gain as the payments arrive.
+    answers:
+      sd.sold_other: true
+      sd.business_property: false
+      sd.installment: true
+    expect:
+      refused: sd.other_forms
+  - id: sales.like_kind_exchange
+    design: MAP 2.8, sd.other_forms (Form 8824)
+    situation: A person traded investment land for other land in a like-kind exchange.
+    answers:
+      sd.sold_other: true
+      sd.business_property: false
+      sd.installment: false
+      sd.like_kind: true
+    expect:
+      refused: sd.other_forms
+  - id: sales.home_sold_nothing_special
+    design: MAP 2.8, sd.sold_other (the parent does not refuse)
+    situation: A person sold real estate that was never rented or used in a business, for one payment, with no exchange.
+    answers:
+      sd.sold_other: true
+      sd.business_property: false
+      sd.installment: false
+      sd.like_kind: false
+    expect:
+      proceeds:
+        sd.like_kind: false
+  - id: sales.nothing_sold_children_not_asked
+    design: MAP 2.8, sd.sold_other (a No spares the three children)
+    situation: A person sold no real estate or business property and is paid for nothing over several years.
+    answers:
+      sd.sold_other: false
+    expect:
+      proceeds:
+        sd.sold_other: false
+      not_asked: [sd.business_property, sd.installment, sd.like_kind]
+  - id: sales.futures
+    design: MAP 2.8, sd.other_forms (Form 6781)
+    situation: A person traded futures contracts, reported in boxes 8 to 11 of a Form 1099-B.
+    answers:
+      sd.sec1256: true
+    expect:
+      refused: sd.other_forms
+  - id: sales.condemnation
+    design: sd.other_forms (Form 4797, involuntary conversion other than casualty or theft)
+    situation: A city took a person's investment land for a road and paid for it.
+    answers:
+      sd.condemned: true
+    expect:
+      refused: sd.other_forms
+  - id: sales.small_business_stock_loss
+    design: sd.other_forms (Form 4797, ordinary loss on section 1244 stock)
+    situation: A person lost money on stock a small company issued to them and claims an ordinary loss.
+    answers:
+      sd.small_business_stock: true
+    expect:
+      refused: sd.other_forms
+  - id: sales.trader_mark_to_market
+    design: sd.other_forms (Form 4797, mark-to-market election)
+    situation: A person trades securities as a business under a mark-to-market election.
+    answers:
+      sd.trader_election: true
+    expect:
+      refused: sd.other_forms
+  - id: sales.casualty
+    design: MAP 2.8, sd.other_forms (Form 4684)
+    situation: A person's home was damaged in a federally declared disaster and insurance did not cover the loss.
+    answers:
+      sd.casualty: true
+    expect:
+      refused: sd.other_forms
+  - id: sales.no_investment_interest
+    design: MAP 2.8, f4952.line4g beneath f4952.has_interest
+    situation: A person never borrowed to invest.
+    answers:
+      f4952.has_interest: false
+    expect:
+      proceeds:
+        f4952.has_interest: false
+      not_asked: [f4952.line1, f4952.carryover, f4952.line4g]
+  - id: sales.interest_election_asked
+    design: MAP 2.8, f4952.line4g beneath f4952.has_interest
+    situation: A person paid $500 of margin interest in 2025 and has no carryforward from 2024.
+    answers:
+      f4952.has_interest: true
+    expect:
+      asks: f4952.line4g
+  - id: sales.interest_election_too_large
+    design: f4952.bad_election (the election still refuses when it exceeds lines 4b plus 4e)
+    situation: A person with margin interest and no dividends or gains elects $1 into investment income.
+    answers:
+      f4952.has_interest: true
+      f4952.line1: 50000
+      f4952.carryover: false
+      f4952.line4g: 100
+      f4952.unsupported: false
+      f4952.alternative_allocation: false
+      s3.foreign_any: false
+    expect:
+      refused: f4952.bad_election
+  - id: sales.ordinary_sale
+    design: MAP 2.9, the per-sale questions; the route beneath a question asked once
+    situation: A person sold shares of one stock, reported on a Form 1099-B with basis, and none of the special kinds.
+    answers:
+      $sales: [a]
+      sd.route_each: false
+      sales[a].box: A
+      sales[a].special: false
+      sales[a].code: none
+      sales[a].proceeds: 500000
+      sales[a].reported_basis: 400000
+    expect:
+      proceeds:
+        sales[a].box: A
+      not_asked: ["sales[a].route", "sales[a].correct_basis", "sales[a].wash_loss"]
+  - id: sales.collectible_sold
+    design: MAP 2.9, sales.special (the same refusal)
+    situation: A person sold shares of a fund that holds gold.
+    answers:
+      $sales: [a]
+      sales[a].box: D
+      sales[a].special: true
+      sd.route_each: false
+      sales[a].proceeds: 0
+      sales[a].reported_basis: 0
+      sales[a].code: none
+      sd.trader_election: false
+    expect:
+      refused: sales[a].special
+  - id: sales.crypto_sold
+    design: MAP 2.9, sales.box (digital asset boxes G to L)
+    situation: A person lists a sale of crypto reported on a Form 1099-DA.
+    answers:
+      $sales: [a]
+      sales[a].box: G
+      sd.route_each: false
+      sd.trader_election: false
+    expect:
+      refused: sales[a].digital
+  - id: sales.added_to_total
+    design: sales.route beneath sd.route_each (the aggregate route stays reachable)
+    situation: A person chooses sale by sale and adds one sale, with basis reported and nothing to adjust, to the Schedule D total.
+    answers:
+      $sales: [a]
+      sd.route_each: true
+      sales[a].box: A
+      sales[a].special: false
+      sales[a].code: none
+      sales[a].route: aggregate
+      sales[a].aggregate_eligible: true
+      sales[a].proceeds: 500000
+      sales[a].reported_basis: 400000
+    expect:
+      proceeds:
+        sales[a].route: aggregate

@@ -10,6 +10,20 @@
 - Expr: `{"op":"input","source":"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7"}`
 - Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
 
+## (gate) — `ftc.asked`
+
+- **Authored helper label:** Shares or a Form 1099-DIV, taxable interest above zero, or income tax ever paid to another country: the filers who can have foreign tax to enter
+- **Encoded (Bool):** (div helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund outside a retirement account, or get a Form 1099-DIV?" = true or sb helper "Taxable interest from all payers, before any Schedule B adjustment" > $0 or s3 helper "Have you (or, on a joint return, your spouse) ever paid income tax to a foreign country or a U.S. territory, had income from sources in a U.S. territory, or owned 10% or more of a foreign corporation?" = true)
+- Expr: `{"any":[{"eq":["div.any",{"const":true}],"op":"test"},{"gt":["sb.interest_total",{"const":0}],"op":"test"},{"eq":["s3.foreign_any",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## (helper) — `ftc.taxes_if_asked`
+
+- **Authored helper label:** Total creditable foreign taxes after required reductions, when you or your spouse owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country; zero otherwise
+- **Encoded (NonNegDollars):** Choose — [helper "Shares or a Form 1099-DIV, taxable interest above zero, or income tax ever paid to another country: the filers who can have foreign tax to enter" = true → helper "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7"] [helper "Shares or a Form 1099-DIV, taxable interest above zero, or income tax ever paid to another country: the filers who can have foreign tax to enter" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ftc.asked",{"const":true}],"op":"test"},"then":"ftc.taxes"},{"guard":{"eq":["ftc.asked",{"const":false}],"op":"test"},"then":"ftc.zero"}],"op":"choose"}`
+- Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
+
 ## (helper) — `ftc.carryover`
 
 - **Authored helper label:** Do you (or, on a joint return, your spouse) want to claim a foreign tax credit for unused foreign taxes carried to 2025 from another tax year?
@@ -76,8 +90,8 @@
 ## (helper) — `ftc.has_tax`
 
 - **Authored helper label:** Positive foreign taxes
-- **Encoded (Bool):** helper "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7" > $0
-- Expr: `{"gt":["ftc.taxes",{"const":0}],"op":"test"}`
+- **Encoded (Bool):** helper "Total creditable foreign taxes after required reductions, when you or your spouse owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country; zero otherwise" > $0
+- Expr: `{"gt":["ftc.taxes_if_asked",{"const":0}],"op":"test"}`
 - Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
 
 ## (helper) — `ftc.no`
@@ -118,8 +132,8 @@
 ## (helper) — `ftc.needs1116`
 
 - **Authored helper label:** Fails a condition of the election
-- **Encoded (Bool):** helper "Positive foreign taxes" = true and (helper "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7" > helper "Year parameter ftc.limit" or helper "Whether all foreign-source gross income was passive category income, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)" = false or helper "Whether all foreign income and taxes were reported on qualified payee statements, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)" = false or helper "Whether the creditability, holding-period, related-payment and reduction rules are met, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)" = false or helper "Whether the election without Form 1116 is made, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)" = false)
-- Expr: `{"all":[{"eq":["ftc.has_tax",{"const":true}],"op":"test"},{"any":[{"gt":["ftc.taxes","ftc.limit"],"op":"test"},{"eq":["ftc.all_passive_if_tax",{"const":false}],"op":"test"},{"eq":["ftc.statements_if_tax",{"const":false}],"op":"test"},{"eq":["ftc.eligible_if_tax",{"const":false}],"op":"test"},{"eq":["ftc.elect_if_tax",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** helper "Positive foreign taxes" = true and (helper "Total creditable foreign taxes after required reductions, when you or your spouse owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country; zero otherwise" > helper "Year parameter ftc.limit" or helper "Whether all foreign-source gross income was passive category income, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)" = false or helper "Whether all foreign income and taxes were reported on qualified payee statements, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)" = false or helper "Whether the creditability, holding-period, related-payment and reduction rules are met, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)" = false or helper "Whether the election without Form 1116 is made, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)" = false)
+- Expr: `{"all":[{"eq":["ftc.has_tax",{"const":true}],"op":"test"},{"any":[{"gt":["ftc.taxes_if_asked","ftc.limit"],"op":"test"},{"eq":["ftc.all_passive_if_tax",{"const":false}],"op":"test"},{"eq":["ftc.statements_if_tax",{"const":false}],"op":"test"},{"eq":["ftc.eligible_if_tax",{"const":false}],"op":"test"},{"eq":["ftc.elect_if_tax",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
 
 ## (helper) — `ftc.regular_tax`
@@ -131,15 +145,15 @@
 
 ## (helper) — `ftc.limited`
 
-- **Authored helper label:** Smaller of ftc.taxes, ftc.regular_tax
-- **Encoded (Dollars):** Enter the smaller of helper "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7" or helper "Regular tax for the limit (Form 1040 line 16 plus Schedule 2 line 1z)".
-- Expr: `{"of":["ftc.taxes","ftc.regular_tax"],"op":"smaller_of"}`
+- **Authored helper label:** Smaller of ftc.taxes_if_asked, ftc.regular_tax
+- **Encoded (Dollars):** Enter the smaller of helper "Total creditable foreign taxes after required reductions, when you or your spouse owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country; zero otherwise" or helper "Regular tax for the limit (Form 1040 line 16 plus Schedule 2 line 1z)".
+- Expr: `{"of":["ftc.taxes_if_asked","ftc.regular_tax"],"op":"smaller_of"}`
 - Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
 
 ## (helper) — `ftc.credit`
 
 - **Authored helper label:** Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax
-- **Encoded (Dollars):** Choose — [helper "Positive foreign taxes" = true → helper "Smaller of ftc.taxes, ftc.regular_tax"] [helper "Positive foreign taxes" = false → helper "Year parameter sales.zero"]
+- **Encoded (Dollars):** Choose — [helper "Positive foreign taxes" = true → helper "Smaller of ftc.taxes_if_asked, ftc.regular_tax"] [helper "Positive foreign taxes" = false → helper "Year parameter sales.zero"]
 - **Refusal:** when ftc.needs1116 is true, cannot complete Form 1116. The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately. Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
 - **Refusal:** when ftc.carryover_if_asked is true, cannot complete Form 1116. A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare. Cite: [i1116] p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025" (2025; printed date 2025-12-23; sha256 6998cf8c)
 - Expr: `{"alternatives":[{"guard":{"eq":["ftc.has_tax",{"const":true}],"op":"test"},"then":"ftc.limited"},{"guard":{"eq":["ftc.has_tax",{"const":false}],"op":"test"},"then":"ftc.zero"}],"op":"choose"}`

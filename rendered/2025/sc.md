@@ -127,9 +127,9 @@
 
 - **IRS:** Gross receipts or sales
 - **Encoded (NonNegDollars):** Input — Gross receipts or sales of this business for 2025, including amounts properly shown on Forms 1099-NEC and any other gross receipts of this business reported to you on a Form 1099 (such as Form 1099-K), and state and local sales tax imposed on you as the seller that you collected from buyers; not the other business income asked about separately, such as prizes and awards, and not royalties or other name, image and likeness (NIL) income that is not self-employment income, which is reported on Schedule E (zero if none)
-- **Refusal:** when sc.screened is true, cannot complete Schedule C items outside this tool. Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool. Cite: [i1040sc] pp. 2-15, the items named in the screens of this Schedule C (2025; sha256 b5536db9)
 - **Refusal:** when sc.business_credit is true, cannot complete Form 3800 (general business credit). Business credits (Form 3800) are outside this tool. Cite: [i1040gi] p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334" (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when sc.fuel_credit is true, cannot complete Form 4136 (credit for federal tax paid on fuels). The credit for federal tax paid on fuels (Form 4136) is outside this tool. Cite: [i1040gi] p. 117, Line 12, "Attach Form 4136" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when sc.screened is true, cannot complete Schedule C items outside this tool. Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool. Cite: [i1040sc] pp. 2-15, the items named in the screens of this Schedule C (2025; sha256 b5536db9)
 - Expr: `{"op":"input","source":"Gross receipts or sales of this business for 2025, including amounts properly shown on Forms 1099-NEC and any other gross receipts of this business reported to you on a Form 1099 (such as Form 1099-K), and state and local sales tax imposed on you as the seller that you collected from buyers; not the other business income asked about separately, such as prizes and awards, and not royalties or other name, image and likeness (NIL) income that is not self-employment income, which is reported on Schedule E (zero if none)"}`
 - Cite: [i1040sc] p. 5, Line 1, "Enter gross receipts from your trade or business. Be sure to check any Forms 1099 you received"; p. 9, Line 23, "If you collected this tax from the buyer, you must also include the amount collected in gross receipts or sales on line 1"; p. 6, Name, image, likeness (NIL) income, "However, report royalties and other NIL income that is not self-employment income on Schedule E instead" (2025; sha256 b5536db9)
 
@@ -217,11 +217,25 @@
 - Expr: `{"of":["sc.dep_other","sc.s179_allowed"],"op":"sum"}`
 - Cite: [i1040sc] p. 7, Line 13, "See the Instructions for Form 4562 and Pub. 946 to figure the amount to enter on line 13"; i4562 p. 13, Part IV, line 22 (2025; sha256 b5536db9)
 
+## (helper) — `sc.employees`
+
+- **Authored helper label:** Did this business have employees in 2025?
+- **Encoded (Bool):** Input — Did this business have employees in 2025?
+- Expr: `{"op":"input","source":"Did this business have employees in 2025?"}`
+- Cite: [f1040sc] Schedule C (2025), lines 14, 19 and 26 (2025; created 2025-04-03; sha256 ddf401db)
+
 ## 14 — `sc.line14`
 
 - **IRS:** Employee benefit programs (other than on line 19)
 - **Encoded (NonNegDollars):** Input — Contributions to employee benefit programs for your employees, such as accident and health plans, group-term life insurance and dependent care assistance (not for yourself, and not pension or profit-sharing plans); zero if none
 - Expr: `{"op":"input","source":"Contributions to employee benefit programs for your employees, such as accident and health plans, group-term life insurance and dependent care assistance (not for yourself, and not pension or profit-sharing plans); zero if none"}`
+- Cite: [i1040sc] pp. 7-8, Line 14 (2025; sha256 b5536db9)
+
+## (gate) — `sc.line14_if_employees`
+
+- **Authored helper label:** Employee benefit programs (other than on line 19), asked only of a business with employees (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business have employees in 2025?" = true → line 14 (sc.line14)] [helper "Did this business have employees in 2025?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.employees",{"const":true}],"op":"test"},"then":"sc.line14"},{"guard":{"eq":["sc.employees",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
 - Cite: [i1040sc] pp. 7-8, Line 14 (2025; sha256 b5536db9)
 
 ## 15 — `sc.line15`
@@ -266,6 +280,13 @@
 - Expr: `{"op":"input","source":"Contributions you made for your employees to a pension, profit-sharing or annuity plan, including SEP, SIMPLE and SARSEP plans (not contributions for yourself, which go on Schedule 1, line 16); zero if none"}`
 - Cite: [i1040sc] p. 8, Line 19 (2025; sha256 b5536db9)
 
+## (gate) — `sc.line19_if_employees`
+
+- **Authored helper label:** Pension and profit-sharing plans, asked only of a business with employees (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business have employees in 2025?" = true → line 19] [helper "Did this business have employees in 2025?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.employees",{"const":true}],"op":"test"},"then":"sc.line19"},{"guard":{"eq":["sc.employees",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
+- Cite: [i1040sc] p. 8, Line 19 (2025; sha256 b5536db9)
+
 ## 20a — `sc.line20a`
 
 - **IRS:** Rent or lease: vehicles, machinery, and equipment
@@ -301,6 +322,13 @@
 - Expr: `{"op":"input","source":"Business taxes and licenses: sales tax imposed on you as the seller, real estate and personal property taxes on business assets, licenses and regulatory fees paid each year (not licenses you must amortize, such as some liquor licenses, and not license plates for a car, truck or van you list for this business, which its car and truck expenses already include), the employer share of social security and Medicare taxes, federal unemployment tax, federal highway use tax, contributions to a state unemployment insurance fund or a paid family and medical leave program disability benefit fund if they are taxes under state law (not income or self-employment tax, not taxes on property you bought, and not real estate taxes on your home, which with the simplified method for business use of the home you can deduct only on Schedule A); zero if none"}`
 - Cite: [i1040sc] p. 9, Line 23, "Licenses and regulatory fees for your trade or business paid each year to state or local governments" and "Contributions to a state unemployment insurance fund, or paid family and medical leave program disability benefit fund if they are considered taxes under state law"; p. 14, Line 30, "You can’t deduct any excess mortgage interest, excess real estate taxes, or excess casualty losses on Schedule C for this home" (2025; sha256 b5536db9)
 
+## (helper) — `sc.travel_meals`
+
+- **Authored helper label:** Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?
+- **Encoded (Bool):** Input — Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?
+- Expr: `{"op":"input","source":"Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?"}`
+- Cite: [f1040sc] Schedule C (2025), lines 24a and 24b (2025; created 2025-04-03; sha256 ddf401db)
+
 ## 24a — `sc.line24a`
 
 - **IRS:** Travel
@@ -318,6 +346,13 @@
 - Expr: `{"op":"input","source":"Lodging and transportation for overnight business travel away from your tax home, and incidental expenses of that travel, as described below; zero if none.\n\nIncidental expenses of that travel:\n- fees and tips to porters, baggage carriers, bellhops, hotel maids, stewards and others on ships, and hotel servants in foreign countries\n- not laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams or telephone calls\n- either at their actual cost or, for a travel day on which you paid or incurred no meal expenses and did not use the standard meal allowance, at $5 for that day (not meals and not entertainment; on a day you use the standard meal allowance, incidental expenses are part of that allowance)\n\nOther limits:\n- not expenses of employment away from home for a period of more than 1 year\n- not travel expenses for your spouse, your dependent or any other person unless that person is your employee, the travel is for a bona fide business purpose and the expenses would otherwise be deductible by that person\n- not a convention, seminar or similar meeting held outside the North American area unless it is directly related to your business and it is as reasonable to hold it outside the North American area as within it"}`
 - Cite: [i1040sc] p. 9, Line 24a, "you can use an optional method for deducting incidental expenses only if you did not pay or incur meal expenses on a day you were traveling away from your tax home", "The amount of the deduction is $5 a day", "They do not include expenses for laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams or telephone calls" and "You cannot use this method on any day that you use the standard meal allowance", "You can’t deduct expenses paid or incurred in connection with employment away from home if that period of employment exceeds 1 year", "you cannot deduct travel expenses for your spouse, your dependent, or any other individual unless" and "held outside the North American area unless"; p. 9, Line 24b, "you can use the standard meal allowance for your daily meals and incidental expenses" (2025; sha256 b5536db9)
 
+## (gate) — `sc.line24a_if_travel_meals`
+
+- **Authored helper label:** Travel, asked only of a business with travel, meal or food expenses (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?" = true → line 24a] [helper "Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.travel_meals",{"const":true}],"op":"test"},"then":"sc.line24a"},{"guard":{"eq":["sc.travel_meals",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
+- Cite: [i1040sc] p. 9, Line 24a, "you can use an optional method for deducting incidental expenses only if you did not pay or incur meal expenses on a day you were traveling away from your tax home", "The amount of the deduction is $5 a day", "They do not include expenses for laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams or telephone calls" and "You cannot use this method on any day that you use the standard meal allowance", "You can’t deduct expenses paid or incurred in connection with employment away from home if that period of employment exceeds 1 year", "you cannot deduct travel expenses for your spouse, your dependent, or any other individual unless" and "held outside the North American area unless"; p. 9, Line 24b, "you can use the standard meal allowance for your daily meals and incidental expenses" (2025; sha256 b5536db9)
+
 ## (helper) — `sc.meals_50`
 
 - **Authored helper label:** Business meals subject to the 50% limit, at their full cost
@@ -325,11 +360,25 @@
 - Expr: `{"op":"input","source":"The full cost of business meals (actual cost or the standard meal allowance) subject to the 50% limit, before applying the percentage: meals while you or your employees travel away from home on business, including your employees' travel meals you pay for or reimburse other than as wages; and meals with a current or potential business customer, client, consultant or similar business contact that were ordinary and necessary in your business, not lavish or extravagant, with you or your employee present, and, at an entertainment event, bought separately from the entertainment or stated separately on the bill. Do not include entertainment, meals during a period of duty under the Department of Transportation hours of service limits, or food for the children in your daycare, which are asked about separately; zero if none"}`
 - Cite: [i1040sc] pp. 9–10, Line 24b, Business meal expenses ("You can deduct a percentage of the actual cost of a meal if the following conditions are met"), Standard meal allowance, Amount of deduction ("including meals incurred while away from home on business"); p. 9, Line 24a, "Do not include entertainment expenses on this line" (2025; sha256 b5536db9)
 
+## (gate) — `sc.meals_50_if_travel_meals`
+
+- **Authored helper label:** Business meals subject to the 50% limit, at their full cost, asked only of a business with travel, meal or food expenses (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?" = true → helper "Business meals subject to the 50% limit, at their full cost"] [helper "Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.travel_meals",{"const":true}],"op":"test"},"then":"sc.meals_50"},{"guard":{"eq":["sc.travel_meals",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
+- Cite: [i1040sc] pp. 9–10, Line 24b, Business meal expenses ("You can deduct a percentage of the actual cost of a meal if the following conditions are met"), Standard meal allowance, Amount of deduction ("including meals incurred while away from home on business"); p. 9, Line 24a, "Do not include entertainment expenses on this line" (2025; sha256 b5536db9)
+
 ## (helper) — `sc.meals_80`
 
 - **Authored helper label:** Business meals during or incident to a period of duty under the Department of Transportation hours of service limits, at their full cost
 - **Encoded (NonNegDollars):** Input — The full cost of business meals consumed by you or your employees during or incident to a period of duty for which the person who ate the meal was subject to the Department of Transportation hours of service limits (certain air transportation workers, interstate truck operators, certain merchant mariners), including your employees' duty meals you pay for or reimburse other than as wages, before applying the percentage; zero if none
 - Expr: `{"op":"input","source":"The full cost of business meals consumed by you or your employees during or incident to a period of duty for which the person who ate the meal was subject to the Department of Transportation hours of service limits (certain air transportation workers, interstate truck operators, certain merchant mariners), including your employees' duty meals you pay for or reimburse other than as wages, before applying the percentage; zero if none"}`
+- Cite: [i1040sc] p. 10, Line 24b, Amount of deduction, "for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80% for business meals consumed during or incident to any period of duty for which those limits are in effect" (2025; sha256 b5536db9)
+
+## (gate) — `sc.meals_80_if_travel_meals`
+
+- **Authored helper label:** Business meals during or incident to a period of duty under the Department of Transportation hours of service limits,, asked only of a business with travel, meal or food expenses (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?" = true → helper "Business meals during or incident to a period of duty under the Department of Transportation hours of service limits, at their full cost"] [helper "Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.travel_meals",{"const":true}],"op":"test"},"then":"sc.meals_80"},{"guard":{"eq":["sc.travel_meals",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
 - Cite: [i1040sc] p. 10, Line 24b, Amount of deduction, "for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80% for business meals consumed during or incident to any period of duty for which those limits are in effect" (2025; sha256 b5536db9)
 
 ## (helper) — `sc.meals_100`
@@ -340,25 +389,32 @@
 - Expr: `{"op":"input","source":"The cost of meals and incidentals not subject to the 50% limit, deducted in full: meals furnished or reimbursed to an employee and treated as wages subject to withholding; meals provided to a nonemployee, to the extent includible in their income and reported on Form 1099-NEC; meals a customer or client reimbursed you for, as an independent contractor, after you gave them adequate records; recreational, social or similar activities for your employees (such as a holiday party or a summer picnic); food and beverages provided to the general public as advertising or to promote goodwill; meals you sell to the public; and, if you run a daycare, the food consumed by the children in your care (actual cost or, for eligible children in family daycare, the standard meal and snack rates; not food consumed by you or your family), less any reimbursement under a food program of the Department of Agriculture. Don't include anything entered elsewhere on this Schedule C (for example, in cost of goods sold); zero if none"}`
 - Cite: [i1040sc] p. 10, Line 24b, Amount of deduction, "However, you can fully deduct meals and incidentals furnished or reimbursed to an employee if you properly treat the expense as wages subject to withholding. You can also fully deduct meals and incidentals provided to a nonemployee to the extent the expenses are includible in the gross income of that person and reported on Form 1099-NEC" and Daycare providers, "If you receive reimbursement under a food program of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement"; p587 p. 13, Meals, "You can deduct as a business expense 100% of the actual cost of food consumed by your daycare recipients" (2025; sha256 b5536db9)
 
+## (gate) — `sc.meals_100_if_travel_meals`
+
+- **Authored helper label:** Meals and incidentals not subject to the 50% limit, deducted in full, asked only of a business with travel, meal or food expenses (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?" = true → helper "Meals and incidentals not subject to the 50% limit, deducted in full"] [helper "Did this business have expenses in 2025 for travel away from home overnight, or for meals, food or beverages?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.travel_meals",{"const":true}],"op":"test"},"then":"sc.meals_100"},{"guard":{"eq":["sc.travel_meals",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
+- Cite: [i1040sc] p. 10, Line 24b, Amount of deduction, "However, you can fully deduct meals and incidentals furnished or reimbursed to an employee if you properly treat the expense as wages subject to withholding. You can also fully deduct meals and incidentals provided to a nonemployee to the extent the expenses are includible in the gross income of that person and reported on Form 1099-NEC" and Daycare providers, "If you receive reimbursement under a food program of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement"; p587 p. 13, Meals, "You can deduct as a business expense 100% of the actual cost of food consumed by your daycare recipients" (2025; sha256 b5536db9)
+
 ## (helper) — `sc.meals_50_ded`
 
 - **Authored helper label:** 50% of the meals subject to the 50% limit
-- **Encoded (NonNegDollars):** Multiply helper "Business meals subject to the 50% limit, at their full cost" by 50% (0.50) (sc.meals_rate).
-- Expr: `{"amount":"sc.meals_50","op":"multiply_rate","rate":{"param":"sc.meals_rate"}}`
+- **Encoded (NonNegDollars):** Multiply helper "Business meals subject to the 50% limit, at their full cost, asked only of a business with travel, meal or food expenses (zero without)" by 50% (0.50) (sc.meals_rate).
+- Expr: `{"amount":"sc.meals_50_if_travel_meals","op":"multiply_rate","rate":{"param":"sc.meals_rate"}}`
 - Cite: [i1040sc] p. 10, Line 24b, Amount of deduction, "you can deduct only 50% of your business meal expenses" (2025; sha256 b5536db9)
 
 ## (helper) — `sc.meals_80_ded`
 
 - **Authored helper label:** 80% of the meals under the hours of service limits
-- **Encoded (NonNegDollars):** Multiply helper "Business meals during or incident to a period of duty under the Department of Transportation hours of service limits, at their full cost" by 80% (0.80) (sc.meals_rate_dot).
-- Expr: `{"amount":"sc.meals_80","op":"multiply_rate","rate":{"param":"sc.meals_rate_dot"}}`
+- **Encoded (NonNegDollars):** Multiply helper "Business meals during or incident to a period of duty under the Department of Transportation hours of service limits,, asked only of a business with travel, meal or food expenses (zero without)" by 80% (0.80) (sc.meals_rate_dot).
+- Expr: `{"amount":"sc.meals_80_if_travel_meals","op":"multiply_rate","rate":{"param":"sc.meals_rate_dot"}}`
 - Cite: [i1040sc] p. 10, Line 24b, Amount of deduction (2025; sha256 b5536db9)
 
 ## 24b — `sc.line24b`
 
 - **IRS:** Deductible meals
-- **Encoded (NonNegDollars):** Add helper "50% of the meals subject to the 50% limit", helper "80% of the meals under the hours of service limits", and helper "Meals and incidentals not subject to the 50% limit, deducted in full".
-- Expr: `{"of":["sc.meals_50_ded","sc.meals_80_ded","sc.meals_100"],"op":"sum"}`
+- **Encoded (NonNegDollars):** Add helper "50% of the meals subject to the 50% limit", helper "80% of the meals under the hours of service limits", and helper "Meals and incidentals not subject to the 50% limit, deducted in full, asked only of a business with travel, meal or food expenses (zero without)".
+- Expr: `{"of":["sc.meals_50_ded","sc.meals_80_ded","sc.meals_100_if_travel_meals"],"op":"sum"}`
 - Cite: [i1040sc] p. 9, Line 24b, "Enter your deductible business meal expenses" (2025; sha256 b5536db9)
 
 ## 25 — `sc.line25`
@@ -373,6 +429,13 @@
 - **IRS:** Wages (less employment credits)
 - **Encoded (NonNegDollars):** Input — Salaries and wages of your employees for 2025 under your accounting method (with the cash method, the amounts you paid in 2025; with an accrual method, the amounts incurred for 2025) (not amounts paid to yourself, not wages deducted elsewhere, and not the part of a taxable fringe benefit, such as personal use of a car, that is depreciation or other expenses you claim elsewhere); zero if none
 - Expr: `{"op":"input","source":"Salaries and wages of your employees for 2025 under your accounting method (with the cash method, the amounts you paid in 2025; with an accrual method, the amounts incurred for 2025) (not amounts paid to yourself, not wages deducted elsewhere, and not the part of a taxable fringe benefit, such as personal use of a car, that is depreciation or other expenses you claim elsewhere); zero if none"}`
+- Cite: [i1040sc] p. 10, Line 26, "Enter the total salaries and wages for the tax year" and "If you provided taxable fringe benefits to your employees, such as personal use of a car, do not deduct as wages the amount applicable to depreciation and other expenses claimed elsewhere" (2025; sha256 b5536db9)
+
+## (gate) — `sc.line26_if_employees`
+
+- **Authored helper label:** Wages (less employment credits), asked only of a business with employees (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business have employees in 2025?" = true → line 26] [helper "Did this business have employees in 2025?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.employees",{"const":true}],"op":"test"},"then":"sc.line26"},{"guard":{"eq":["sc.employees",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
 - Cite: [i1040sc] p. 10, Line 26, "Enter the total salaries and wages for the tax year" and "If you provided taxable fringe benefits to your employees, such as personal use of a car, do not deduct as wages the amount applicable to depreciation and other expenses claimed elsewhere" (2025; sha256 b5536db9)
 
 ## 27a — `sc.line27a`
@@ -399,8 +462,8 @@
 ## 28 — `sc.line28`
 
 - **IRS:** Total expenses before expenses for business use of home. Add lines 8 through 27b
-- **Encoded (NonNegDollars):** Add line 8 (sc.line8), line 9 (sc.line9), line 10 (sc.line10), line 11, line 12 (sc.line12), line 13 (sc.line13), line 14 (sc.line14), line 15, line 16a, line 16b, line 17, line 18, line 19, line 20a, line 20b, line 21, line 22, line 23, line 24a, line 24b, line 25, line 26, line 27a, and line 27b.
-- Expr: `{"of":["sc.line8","sc.line9","sc.line10","sc.line11","sc.line12","sc.line13","sc.line14","sc.line15","sc.line16a","sc.line16b","sc.line17","sc.line18","sc.line19","sc.line20a","sc.line20b","sc.line21","sc.line22","sc.line23","sc.line24a","sc.line24b","sc.line25","sc.line26","sc.line27a","sc.line27b"],"op":"sum"}`
+- **Encoded (NonNegDollars):** Add line 8 (sc.line8), line 9 (sc.line9), line 10 (sc.line10), line 11, line 12 (sc.line12), line 13 (sc.line13), helper "Employee benefit programs (other than on line 19), asked only of a business with employees (zero without)", line 15, line 16a, line 16b, line 17, line 18, helper "Pension and profit-sharing plans, asked only of a business with employees (zero without)", line 20a, line 20b, line 21, line 22, line 23, helper "Travel, asked only of a business with travel, meal or food expenses (zero without)", line 24b, line 25, helper "Wages (less employment credits), asked only of a business with employees (zero without)", line 27a, and line 27b.
+- Expr: `{"of":["sc.line8","sc.line9","sc.line10","sc.line11","sc.line12","sc.line13","sc.line14_if_employees","sc.line15","sc.line16a","sc.line16b","sc.line17","sc.line18","sc.line19_if_employees","sc.line20a","sc.line20b","sc.line21","sc.line22","sc.line23","sc.line24a_if_travel_meals","sc.line24b","sc.line25","sc.line26_if_employees","sc.line27a","sc.line27b"],"op":"sum"}`
 - Cite: [f1040sc] Schedule C (2025), line 28 (2025; created 2025-04-03; sha256 ddf401db)
 
 ## 29 — `sc.line29`
@@ -413,8 +476,8 @@
 ## (helper) — `sc.line28_pre179`
 
 - **Authored helper label:** Line 28 without the section 179 expense deduction
-- **Encoded (NonNegDollars):** Add line 8 (sc.line8), line 9 (sc.line9), line 10 (sc.line10), line 11, line 12 (sc.line12), line 14 (sc.line14), line 15, line 16a, line 16b, line 17, line 18, line 19, line 20a, line 20b, line 21, line 22, line 23, line 24a, line 24b, line 25, line 26, line 27a, line 27b, and helper "Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)".
-- Expr: `{"of":["sc.line8","sc.line9","sc.line10","sc.line11","sc.line12","sc.line14","sc.line15","sc.line16a","sc.line16b","sc.line17","sc.line18","sc.line19","sc.line20a","sc.line20b","sc.line21","sc.line22","sc.line23","sc.line24a","sc.line24b","sc.line25","sc.line26","sc.line27a","sc.line27b","sc.dep_other"],"op":"sum"}`
+- **Encoded (NonNegDollars):** Add line 8 (sc.line8), line 9 (sc.line9), line 10 (sc.line10), line 11, line 12 (sc.line12), helper "Employee benefit programs (other than on line 19), asked only of a business with employees (zero without)", line 15, line 16a, line 16b, line 17, line 18, helper "Pension and profit-sharing plans, asked only of a business with employees (zero without)", line 20a, line 20b, line 21, line 22, line 23, helper "Travel, asked only of a business with travel, meal or food expenses (zero without)", line 24b, line 25, helper "Wages (less employment credits), asked only of a business with employees (zero without)", line 27a, line 27b, and helper "Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)".
+- Expr: `{"of":["sc.line8","sc.line9","sc.line10","sc.line11","sc.line12","sc.line14_if_employees","sc.line15","sc.line16a","sc.line16b","sc.line17","sc.line18","sc.line19_if_employees","sc.line20a","sc.line20b","sc.line21","sc.line22","sc.line23","sc.line24a_if_travel_meals","sc.line24b","sc.line25","sc.line26_if_employees","sc.line27a","sc.line27b","sc.dep_other"],"op":"sum"}`
 - Cite: [p946] pp. 17-19, Business Income Limit, Taxable income, "figure taxable income without regard to ... The section 179 deduction" (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `sc.line29_pre179`
@@ -652,12 +715,26 @@
 - Expr: `{"op":"input","source":"Do you value closing inventory by a method other than cost or lower of cost or market, or was there any change in determining quantities, costs or valuations between opening and closing inventory (line 34)? Answer No if you have no inventory"}`
 - Cite: [i1040sc] p. 15, Part III, Line 33; Schedule C (2025), lines 33 and 34 (2025; sha256 b5536db9)
 
+## (helper) — `sc.goods`
+
+- **Authored helper label:** Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?
+- **Encoded (Bool):** Input — Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?
+- Expr: `{"op":"input","source":"Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?"}`
+- Cite: [f1040sc] Schedule C (2025), Part III, Cost of Goods Sold, lines 35 to 42 (2025; created 2025-04-03; sha256 ddf401db)
+
 ## 35 — `sc.line35`
 
 - **IRS:** Inventory at beginning of year
 - **Encoded (NonNegDollars):** Input — Inventory at the beginning of 2025 (the same as your closing inventory for 2024); zero if none
 - **Refusal:** when sc.inventory_other is true, cannot complete Schedule C, Part III, other inventory methods or a change in valuation. Inventory valued other than at cost or lower of cost or market, or changed between opening and closing, is outside this tool. Cite: [i1040sc] p. 15, Lines 33 and 35 (2025; sha256 b5536db9)
 - Expr: `{"op":"input","source":"Inventory at the beginning of 2025 (the same as your closing inventory for 2024); zero if none"}`
+- Cite: [i1040sc] p. 15, Line 35 (2025; sha256 b5536db9)
+
+## (gate) — `sc.line35_if_goods`
+
+- **Authored helper label:** Inventory at beginning of year, asked only of a business with goods for sale or an inventory (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?" = true → line 35] [helper "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.goods",{"const":true}],"op":"test"},"then":"sc.line35"},{"guard":{"eq":["sc.goods",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
 - Cite: [i1040sc] p. 15, Line 35 (2025; sha256 b5536db9)
 
 ## 36 — `sc.line36`
@@ -667,12 +744,26 @@
 - Expr: `{"op":"input","source":"Purchases of merchandise or materials for sale, less the cost of items you withdrew for personal use; zero if none"}`
 - Cite: [f1040sc] Schedule C (2025), line 36 (2025; created 2025-04-03; sha256 ddf401db)
 
+## (gate) — `sc.line36_if_goods`
+
+- **Authored helper label:** Purchases less cost of items withdrawn for personal use, asked only of a business with goods for sale or an inventory (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?" = true → line 36] [helper "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.goods",{"const":true}],"op":"test"},"then":"sc.line36"},{"guard":{"eq":["sc.goods",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
+- Cite: [f1040sc] p. 2, Cost of Goods Sold, line 36, "Purchases less cost of items withdrawn for personal use"; i1040sc p. 15, Part III. Cost of Goods Sold, "you must take inventories into account at the beginning and end of your tax year" (2025; created 2025-04-03; sha256 ddf401db)
+
 ## 37 — `sc.line37`
 
 - **IRS:** Cost of labor
 - **Encoded (NonNegDollars):** Input — Cost of labor for producing goods for sale (not amounts paid to yourself); zero if none
 - Expr: `{"op":"input","source":"Cost of labor for producing goods for sale (not amounts paid to yourself); zero if none"}`
 - Cite: [f1040sc] Schedule C (2025), line 37 (2025; created 2025-04-03; sha256 ddf401db)
+
+## (gate) — `sc.line37_if_goods`
+
+- **Authored helper label:** Cost of labor, asked only of a business with goods for sale or an inventory (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?" = true → line 37] [helper "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.goods",{"const":true}],"op":"test"},"then":"sc.line37"},{"guard":{"eq":["sc.goods",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
+- Cite: [f1040sc] p. 2, Cost of Goods Sold, line 37, "Cost of labor. Do not include any amounts paid to yourself"; i1040sc p. 15, Part III. Cost of Goods Sold, "you must take inventories into account at the beginning and end of your tax year" (2025; created 2025-04-03; sha256 ddf401db)
 
 ## 38 — `sc.line38`
 
@@ -681,6 +772,13 @@
 - Expr: `{"op":"input","source":"Materials and supplies used in producing goods for sale; zero if none"}`
 - Cite: [f1040sc] Schedule C (2025), line 38 (2025; created 2025-04-03; sha256 ddf401db)
 
+## (gate) — `sc.line38_if_goods`
+
+- **Authored helper label:** Materials and supplies, asked only of a business with goods for sale or an inventory (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?" = true → line 38] [helper "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.goods",{"const":true}],"op":"test"},"then":"sc.line38"},{"guard":{"eq":["sc.goods",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
+- Cite: [f1040sc] p. 2, Cost of Goods Sold, line 38, "Materials and supplies"; i1040sc p. 15, Part III. Cost of Goods Sold, "you must take inventories into account at the beginning and end of your tax year" (2025; created 2025-04-03; sha256 ddf401db)
+
 ## 39 — `sc.line39`
 
 - **IRS:** Other costs
@@ -688,11 +786,18 @@
 - Expr: `{"op":"input","source":"Other costs of goods sold; zero if none"}`
 - Cite: [f1040sc] Schedule C (2025), line 39 (2025; created 2025-04-03; sha256 ddf401db)
 
+## (gate) — `sc.line39_if_goods`
+
+- **Authored helper label:** Other costs, asked only of a business with goods for sale or an inventory (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?" = true → line 39] [helper "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.goods",{"const":true}],"op":"test"},"then":"sc.line39"},{"guard":{"eq":["sc.goods",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
+- Cite: [f1040sc] p. 2, Cost of Goods Sold, line 39, "Other costs"; i1040sc p. 15, Part III. Cost of Goods Sold, "you must take inventories into account at the beginning and end of your tax year" (2025; created 2025-04-03; sha256 ddf401db)
+
 ## 40 — `sc.line40`
 
 - **IRS:** Add lines 35 through 39
-- **Encoded (NonNegDollars):** Add line 35, line 36, line 37, line 38, and line 39.
-- Expr: `{"of":["sc.line35","sc.line36","sc.line37","sc.line38","sc.line39"],"op":"sum"}`
+- **Encoded (NonNegDollars):** Add helper "Inventory at beginning of year, asked only of a business with goods for sale or an inventory (zero without)", helper "Purchases less cost of items withdrawn for personal use, asked only of a business with goods for sale or an inventory (zero without)", helper "Cost of labor, asked only of a business with goods for sale or an inventory (zero without)", helper "Materials and supplies, asked only of a business with goods for sale or an inventory (zero without)", and helper "Other costs, asked only of a business with goods for sale or an inventory (zero without)".
+- Expr: `{"of":["sc.line35_if_goods","sc.line36_if_goods","sc.line37_if_goods","sc.line38_if_goods","sc.line39_if_goods"],"op":"sum"}`
 - Cite: [f1040sc] Schedule C (2025), line 40 (2025; created 2025-04-03; sha256 ddf401db)
 
 ## 41 — `sc.line41`
@@ -702,25 +807,32 @@
 - Expr: `{"op":"input","source":"Inventory at the end of 2025; zero if none"}`
 - Cite: [f1040sc] Schedule C (2025), line 41 (2025; created 2025-04-03; sha256 ddf401db)
 
+## (gate) — `sc.line41_if_goods`
+
+- **Authored helper label:** Inventory at end of year, asked only of a business with goods for sale or an inventory (zero without)
+- **Encoded (NonNegDollars):** Choose — [helper "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?" = true → line 41] [helper "Did this business sell goods in 2025 that it bought or produced, or have an inventory at the beginning or end of the year?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sc.goods",{"const":true}],"op":"test"},"then":"sc.line41"},{"guard":{"eq":["sc.goods",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
+- Cite: [f1040sc] p. 2, Cost of Goods Sold, line 41, "Inventory at end of year"; i1040sc p. 15, Part III. Cost of Goods Sold, "you must take inventories into account at the beginning and end of your tax year" (2025; created 2025-04-03; sha256 ddf401db)
+
 ## 42 — `sc.line42`
 
 - **IRS:** Cost of goods sold. Subtract line 41 from line 40
-- **Encoded (Dollars):** Subtract line 41 from line 40.
-- Expr: `{"from":"sc.line40","op":"subtract","take":"sc.line41"}`
+- **Encoded (Dollars):** Subtract helper "Inventory at end of year, asked only of a business with goods for sale or an inventory (zero without)" from line 40.
+- Expr: `{"from":"sc.line40","op":"subtract","take":"sc.line41_if_goods"}`
 - Cite: [f1040sc] Schedule C (2025), line 42 (2025; created 2025-04-03; sha256 ddf401db)
 
 ## (helper) — `sc.f6`
 
 - **Authored helper label:** Section 179 elected on property other than listed property
-- **Encoded (NonNegDollars):** Add asset.s179_2025 over every confirmed asset entry for which helper "Is this listed property?" = false, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"asset","field":"asset.s179_2025","op":"sum_over","where":{"eq":["asset.listed",{"const":false}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add asset.s179_this_year over every confirmed asset entry for which helper "Is this listed property?" = false, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"asset","field":"asset.s179_this_year","op":"sum_over","where":{"eq":["asset.listed",{"const":false}],"op":"test"}}`
 - Cite: [i4562] p. 5, Line 6 (2025; sha256 5c1c95b7)
 
 ## (helper) — `sc.f14`
 
 - **Authored helper label:** Special allowance on property other than listed property
-- **Encoded (NonNegDollars):** Add asset.bonus_2025 over every confirmed asset entry for which helper "Is this listed property?" = false, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"asset","field":"asset.bonus_2025","op":"sum_over","where":{"eq":["asset.listed",{"const":false}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add asset.bonus_this_year over every confirmed asset entry for which helper "Is this listed property?" = false, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"asset","field":"asset.bonus_this_year","op":"sum_over","where":{"eq":["asset.listed",{"const":false}],"op":"test"}}`
 - Cite: [i4562] p. 5, Line 14 (2025; sha256 5c1c95b7)
 
 ## (helper) — `sc.f17`
@@ -733,57 +845,57 @@
 ## (helper) — `sc.f19_y3`
 
 - **Authored helper label:** MACRS on 2025 property of period y3 other than listed property
-- **Encoded (NonNegDollars):** Add asset.dep_2025 over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y3', within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"asset","field":"asset.dep_2025","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y3"}],"op":"test"}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add asset.dep_this_year over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y3', within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"asset","field":"asset.dep_this_year","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y3"}],"op":"test"}],"op":"test"}}`
 - Cite: [i4562] pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property (2025; sha256 5c1c95b7)
 
 ## (helper) — `sc.f19_y5`
 
 - **Authored helper label:** MACRS on 2025 property of period y5 other than listed property
-- **Encoded (NonNegDollars):** Add asset.dep_2025 over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y5', within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"asset","field":"asset.dep_2025","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y5"}],"op":"test"}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add asset.dep_this_year over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y5', within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"asset","field":"asset.dep_this_year","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y5"}],"op":"test"}],"op":"test"}}`
 - Cite: [i4562] pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property (2025; sha256 5c1c95b7)
 
 ## (helper) — `sc.f19_y7`
 
 - **Authored helper label:** MACRS on 2025 property of period y7 other than listed property
-- **Encoded (NonNegDollars):** Add asset.dep_2025 over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y7', within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"asset","field":"asset.dep_2025","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y7"}],"op":"test"}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add asset.dep_this_year over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y7', within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"asset","field":"asset.dep_this_year","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y7"}],"op":"test"}],"op":"test"}}`
 - Cite: [i4562] pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property (2025; sha256 5c1c95b7)
 
 ## (helper) — `sc.f19_y10`
 
 - **Authored helper label:** MACRS on 2025 property of period y10 other than listed property
-- **Encoded (NonNegDollars):** Add asset.dep_2025 over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y10', within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"asset","field":"asset.dep_2025","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y10"}],"op":"test"}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add asset.dep_this_year over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y10', within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"asset","field":"asset.dep_this_year","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y10"}],"op":"test"}],"op":"test"}}`
 - Cite: [i4562] pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property (2025; sha256 5c1c95b7)
 
 ## (helper) — `sc.f19_y15`
 
 - **Authored helper label:** MACRS on 2025 property of period y15 other than listed property
-- **Encoded (NonNegDollars):** Add asset.dep_2025 over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y15', within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"asset","field":"asset.dep_2025","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y15"}],"op":"test"}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add asset.dep_this_year over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y15', within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"asset","field":"asset.dep_this_year","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y15"}],"op":"test"}],"op":"test"}}`
 - Cite: [i4562] pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property (2025; sha256 5c1c95b7)
 
 ## (helper) — `sc.f19_y20`
 
 - **Authored helper label:** MACRS on 2025 property of period y20 other than listed property
-- **Encoded (NonNegDollars):** Add asset.dep_2025 over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y20', within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"asset","field":"asset.dep_2025","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y20"}],"op":"test"}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add asset.dep_this_year over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y20', within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"asset","field":"asset.dep_this_year","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y20"}],"op":"test"}],"op":"test"}}`
 - Cite: [i4562] pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property (2025; sha256 5c1c95b7)
 
 ## (helper) — `sc.f19_y15sl`
 
 - **Authored helper label:** MACRS on 2025 property of period y15sl other than listed property
-- **Encoded (NonNegDollars):** Add asset.dep_2025 over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y15sl', within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"asset","field":"asset.dep_2025","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y15sl"}],"op":"test"}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add asset.dep_this_year over every confirmed asset entry for which helper "Is this listed property?" = false and column (d) = 'y15sl', within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"asset","field":"asset.dep_this_year","op":"sum_over","where":{"all":[{"eq":["asset.listed",{"const":false}],"op":"test"},{"eq":["asset.period",{"const":"y15sl"}],"op":"test"}],"op":"test"}}`
 - Cite: [i4562] pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property (2025; sha256 5c1c95b7)
 
 ## (helper) — `sc.f25_assets`
 
 - **Authored helper label:** Special allowance on listed property other than vehicles
-- **Encoded (NonNegDollars):** Add asset.bonus_2025 over every confirmed asset entry for which helper "Is this listed property?" = true, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"asset","field":"asset.bonus_2025","op":"sum_over","where":{"eq":["asset.listed",{"const":true}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add asset.bonus_this_year over every confirmed asset entry for which helper "Is this listed property?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"asset","field":"asset.bonus_this_year","op":"sum_over","where":{"eq":["asset.listed",{"const":true}],"op":"test"}}`
 - Cite: [i4562] p. 13, Line 25 (2025; sha256 5c1c95b7)
 
 ## (helper) — `sc.f25_veh`
@@ -831,15 +943,15 @@
 ## (helper) — `sc.f29_assets`
 
 - **Authored helper label:** Section 179 elected on listed property other than vehicles
-- **Encoded (NonNegDollars):** Add asset.s179_2025 over every confirmed asset entry for which helper "Is this listed property?" = true, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"asset","field":"asset.s179_2025","op":"sum_over","where":{"eq":["asset.listed",{"const":true}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add asset.s179_this_year over every confirmed asset entry for which helper "Is this listed property?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"asset","field":"asset.s179_this_year","op":"sum_over","where":{"eq":["asset.listed",{"const":true}],"op":"test"}}`
 - Cite: [i4562] p. 16, Column (i) (2025; sha256 5c1c95b7)
 
 ## (helper) — `sc.f29_veh`
 
 - **Authored helper label:** Section 179 on vehicles
-- **Encoded (NonNegDollars):** Add scveh.s179_2025 over every confirmed scveh entry, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"scveh","field":"scveh.s179_2025","op":"sum_over"}`
+- **Encoded (NonNegDollars):** Add scveh.s179_this_year over every confirmed scveh entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"scveh","field":"scveh.s179_this_year","op":"sum_over"}`
 - Cite: [i4562] p. 16, Column (i) (2025; sha256 5c1c95b7)
 
 ## (helper) — `sc.f29`

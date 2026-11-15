@@ -5,7 +5,7 @@
       "id": "stage20.mut.to2026_short_gain_long_loss",
       "covers": [
         "clcw",
-        "clcw26",
+        "clcw_next_year",
         "f4952"
       ],
       "evidence": "synthetic regression (not class B)",
@@ -45,47 +45,47 @@
           "kind": "money",
           "cents": -300000
         },
-        "clcw26.line1": {
+        "clcw_next_year.line1": {
           "kind": "money",
           "cents": 4125000
         },
-        "clcw26.line2": {
+        "clcw_next_year.line2": {
           "kind": "money",
           "cents": 300000
         },
-        "clcw26.line3": {
+        "clcw_next_year.line3": {
           "kind": "money",
           "cents": 4425000
         },
-        "clcw26.line4": {
+        "clcw_next_year.line4": {
           "kind": "money",
           "cents": 300000
         },
-        "clcw26.line5": {
+        "clcw_next_year.line5": {
           "kind": "money",
           "cents": 0
         },
-        "clcw26.line9": {
+        "clcw_next_year.line9": {
           "kind": "money",
           "cents": 600000
         },
-        "clcw26.line10": {
+        "clcw_next_year.line10": {
           "kind": "money",
           "cents": 100000
         },
-        "clcw26.line11": {
+        "clcw_next_year.line11": {
           "kind": "money",
           "cents": 300000
         },
-        "clcw26.line12": {
+        "clcw_next_year.line12": {
           "kind": "money",
           "cents": 400000
         },
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 200000
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 0
         }
@@ -94,7 +94,7 @@
     {
       "id": "bug0477.clcw26.final_return_long",
       "covers": [
-        "clcw26"
+        "clcw_next_year"
       ],
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0477, predicted by hand from p550 p. 103 (Decedent's capital loss, \"The decedent's estate cannot deduct any of the loss or carry it over to following years\") before recording: the inputs of stage20.mut.to2026_short_gain_long_loss (single, a $2,000 long-term carryover figured) as the final return of a filer who died in 2025. The question is asked (a carryover is figured on a return other than a joint return); line 13 is still figured ($2,000) but not shown, and the notice says nothing carries to 2026.",
@@ -115,30 +115,30 @@
         "sales[b].box": "D",
         "sales[b].proceeds": 400000,
         "sales[b].reported_basis": 1000000,
-        "clcw26.final_return": true
+        "clcw_next_year.final_return": true
       },
       "expect": {
-        "clcw26.final_ask": {
+        "clcw_next_year.final_ask": {
           "kind": "bool",
           "value": true
         },
-        "clcw26.final_return_if_carryover": {
+        "clcw_next_year.final_return_if_carryover": {
           "kind": "bool",
           "value": true
         },
-        "clcw26.show_lt_carry": {
+        "clcw_next_year.show_lt_carry": {
           "kind": "bool",
           "value": false
         },
-        "clcw26.show_st_carry": {
+        "clcw_next_year.show_st_carry": {
           "kind": "bool",
           "value": false
         },
-        "clcw26.final_notice": {
+        "clcw_next_year.final_notice": {
           "kind": "bool",
           "value": true
         },
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 200000
         }
@@ -147,7 +147,7 @@
     {
       "id": "bug0477.clcw26.not_final_return",
       "covers": [
-        "clcw26"
+        "clcw_next_year"
       ],
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0477, predicted by hand before recording: the inputs of stage20.mut.to2026_short_gain_long_loss with the final-return question answered No. Line 13, $2,000, is shown as the carryover to 2026 and no notice is given.",
@@ -168,22 +168,22 @@
         "sales[b].box": "D",
         "sales[b].proceeds": 400000,
         "sales[b].reported_basis": 1000000,
-        "clcw26.final_return": false
+        "clcw_next_year.final_return": false
       },
       "expect": {
-        "clcw26.final_ask": {
+        "clcw_next_year.final_ask": {
           "kind": "bool",
           "value": true
         },
-        "clcw26.show_lt_carry": {
+        "clcw_next_year.show_lt_carry": {
           "kind": "bool",
           "value": true
         },
-        "clcw26.final_notice": {
+        "clcw_next_year.final_notice": {
           "kind": "bool",
           "value": false
         },
-        "clcw26.line13": {
+        "clcw_next_year.line13": {
           "kind": "money",
           "cents": 200000
         }
@@ -192,7 +192,7 @@
     {
       "id": "bug0477.clcw26.final_return_short",
       "covers": [
-        "clcw26"
+        "clcw_next_year"
       ],
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0477, predicted by hand from p550 p. 103 before recording: the inputs of sales.carryover.short_term (single, a $3,000 short-term carryover to 2026 figured on line 8) as the final return of a filer who died in 2025: line 8 is figured but not shown, and the notice is given.",
@@ -207,22 +207,22 @@
         "clcw.prior_14": 1500000,
         "clcw.prior_sd7": -1000000,
         "clcw.prior_sd21": 300000,
-        "clcw26.final_return": true
+        "clcw_next_year.final_return": true
       },
       "expect": {
-        "clcw26.show_st_carry": {
+        "clcw_next_year.show_st_carry": {
           "kind": "bool",
           "value": false
         },
-        "clcw26.show_lt_carry": {
+        "clcw_next_year.show_lt_carry": {
           "kind": "bool",
           "value": false
         },
-        "clcw26.final_notice": {
+        "clcw_next_year.final_notice": {
           "kind": "bool",
           "value": true
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 300000
         }
@@ -231,7 +231,7 @@
     {
       "id": "bug0477.clcw26.not_final_return_short",
       "covers": [
-        "clcw26"
+        "clcw_next_year"
       ],
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "BUG-0477, predicted by hand before recording: the inputs of sales.carryover.short_term (single, a $3,000 short-term carryover on line 8, Schedule D line 15 not a loss) with the final-return question answered No. Line 8 is shown; lines 9 to 13 are not (line 15 is not a loss); no notice.",
@@ -246,22 +246,22 @@
         "clcw.prior_14": 1500000,
         "clcw.prior_sd7": -1000000,
         "clcw.prior_sd21": 300000,
-        "clcw26.final_return": false
+        "clcw_next_year.final_return": false
       },
       "expect": {
-        "clcw26.show_st_carry": {
+        "clcw_next_year.show_st_carry": {
           "kind": "bool",
           "value": true
         },
-        "clcw26.show_lt_carry": {
+        "clcw_next_year.show_lt_carry": {
           "kind": "bool",
           "value": false
         },
-        "clcw26.final_notice": {
+        "clcw_next_year.final_notice": {
           "kind": "bool",
           "value": false
         },
-        "clcw26.line8": {
+        "clcw_next_year.line8": {
           "kind": "money",
           "cents": 300000
         }

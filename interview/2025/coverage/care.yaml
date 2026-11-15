@@ -1,0 +1,109 @@
+# Coverage rows for care for a child or dependent (Form 2441) and the earned income credit's question on being
+# another person's qualifying child. See opening.yaml for how a row is read.
+tax_year: 2025
+part: Care for a child or dependent, and the credits for a family
+profile: full
+sets:
+  paid_care:
+    says: A filer who used or paid for care so as to work.
+    answers:
+      f2441.care: true
+  own_children_only:
+    says: All of the care was for the filer's own children under 13, listed as dependents.
+    answers:
+      f2441.care_other: false
+  low_earner:
+    says: A filer aged 25 to 64 with a social security number, whose home was in the United States, with no child.
+    answers:
+      person[taxpayer].eic_ssn: true
+      f1040.tax_exempt_interest: 0
+      eic.died_this_year: false
+      person[taxpayer].birth_year: 1980
+      eic.us_home: true
+rows:
+  - id: care.other_person_not_dependent
+    design: lane 2b, f2441.nondependent beneath the parent f2441.care_other (the question as it stood, where a Yes refuses)
+    situation: A filer paid for the care of a disabled brother who lives with them and whom they cannot claim because of his income.
+    uses: [paid_care]
+    answers:
+      f2441.care_other: true
+      f2441.nondependent: true
+      f2441.prior_year: false
+      f2441.student: false
+      f2441.unable: false
+    expect:
+      refused: f2441.nondependent_gate
+  - id: care.other_person_is_dependent
+    design: lane 2b, f2441.care_other answered Yes, the narrow question No
+    situation: A filer paid for the care of a disabled adult who is their dependent.
+    uses: [paid_care]
+    answers:
+      f2441.care_other: true
+    expect:
+      asks: f2441.prior_year
+  - id: care.own_children_only
+    design: lane 2b, f2441.care_other answered No (the ordinary case)
+    situation: A filer paid for day care for their own young children, who are listed as dependents.
+    uses: [paid_care, own_children_only]
+    expect:
+      asks: f2441.prior_year
+      not_asked: [f2441.nondependent]
+  - id: care.bill_for_2024
+    design: lane 2b, f2441.prior_year (unchanged in the model)
+    situation: A filer paid in 2025 a bill for care given in 2024.
+    uses: [paid_care, own_children_only]
+    answers:
+      f2441.prior_year: true
+    expect:
+      refused: f2441.prior_year
+  - id: care.student
+    design: lane 2b, f2441.student_disabled split in two (the student half)
+    situation: A filer who paid for care was a full-time student for five months of 2025.
+    uses: [paid_care, own_children_only]
+    answers:
+      f2441.prior_year: false
+      f2441.student: true
+    expect:
+      refused: f2441.student_disabled
+  - id: care.unable_to_care_for_self
+    design: lane 2b, f2441.student_disabled split in two (the half on not being able to care for oneself)
+    situation: A filer who paid for care was for part of 2025 not able to care for themselves.
+    uses: [paid_care, own_children_only]
+    answers:
+      f2441.prior_year: false
+      f2441.student: false
+      f2441.unable: true
+    expect:
+      refused: f2441.student_disabled
+  - id: eic.lived_with_no_relative
+    design: lane 2b, eic.qc_of_another beneath the parent eic.lived_with_relative (the ordinary case)
+    situation: A low earner with no child who did not live with a parent or other close relative is not asked whether they are someone's qualifying child.
+    uses: [low_earner]
+    answers:
+      eic.lived_with_relative: false
+      s8812.combat_pay: false
+    expect:
+      proceeds:
+        eic.lived_with_relative: false
+      not_asked: [eic.qc_of_another]
+  - id: eic.lived_with_relative_not_their_child
+    design: lane 2b, eic.lived_with_relative answered Yes, the narrow question No
+    situation: A low earner of 40 with no child who shares a home with a sister is not her qualifying child.
+    uses: [low_earner]
+    answers:
+      eic.lived_with_relative: true
+      eic.qc_of_another: false
+      s8812.combat_pay: false
+    expect:
+      proceeds:
+        eic.qc_of_another: false
+  - id: eic.qualifying_child_of_another
+    design: lane 2b, eic.qc_of_another answered Yes (the question as it stood; the return goes on without the credit)
+    situation: A permanently disabled adult with a small wage who lives with their mother is her qualifying child and gets no earned income credit.
+    uses: [low_earner]
+    answers:
+      eic.lived_with_relative: true
+      eic.qc_of_another: true
+    expect:
+      proceeds:
+        eic.qc_of_another: true

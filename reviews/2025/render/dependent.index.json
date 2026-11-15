@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "b32b431555d8278cb8c5c645963f5963e5589272d14045c69d59e728d9f0682d",
  "head_rows": {
-  "match / mismatch / unclear / missing": "6 / 5 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-11); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "1 / 10 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -17,9 +17,9 @@
   },
   {
    "key": "2(c)",
-   "record": "271b6951111336b159002a81b5351fee29194936008ee5b8cc3f8852af1778df",
+   "record": "4cc9859fd4a9bb67cf48bd6eee6882e98360551189e85b5a6c7208127d853abb",
    "status": "MATCH",
-   "subject_key": "83d72957dac5f658f1017289f01f2e35e74c3385f45c46c75f163593a4efc76f"
+   "subject_key": "2b8bfd1bfc0ced38fcb349fc3026cd5358173e19ed40992969398780744374de"
   },
   {
    "key": "23",
@@ -51,47 +51,52 @@
   },
   {
    "key": "27",
-   "record": "271b6951111336b159002a81b5351fee29194936008ee5b8cc3f8852af1778df",
-   "status": "MATCH",
-   "subject_key": "f4cb5a1cc6fc2899c1b1f8429f4e9c7303a1af49aaf40881488dc8f53c238d7e"
+   "record": "4cc9859fd4a9bb67cf48bd6eee6882e98360551189e85b5a6c7208127d853abb",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; owner's decision D7(d) (amb.2025.edu_1098t_date). i8863 p. 1, Form 1098-T requirement, \"After January 31, 2026, but before you file the return\"; p970 p. 2, Reminders, \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return\". The two IRS texts differ; the project takes Pub. 970's later date in dependent.edu_1098t, by the owner's recorded choice. The reply was not given p970 p. 2 and read the i8863 date as the only rule. The worksheet arithmetic of line 27 it accepts. Project stands.",
+   "subject_key": "765528e8f3b0d3110aabc07145c3c7f55541a606015cc68c3641376fb260d091"
   },
   {
    "key": "28",
-   "record": "271b6951111336b159002a81b5351fee29194936008ee5b8cc3f8852af1778df",
-   "status": "MATCH",
-   "subject_key": "5cc6a4d553f1b0cb9fff35d42879cdfaec6d1e7d40a23b185da71e4728f2587e"
+   "record": "4cc9859fd4a9bb67cf48bd6eee6882e98360551189e85b5a6c7208127d853abb",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; owner's decision D7(d) (amb.2025.edu_1098t_date). i8863 p. 1, Form 1098-T requirement, \"After January 31, 2026, but before you file the return\"; p970 p. 2, Reminders, \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return\". The two IRS texts differ; the project takes Pub. 970's later date in dependent.edu_1098t, by the owner's recorded choice. The reply was not given p970 p. 2 and read the i8863 date as the only rule. The worksheet arithmetic of line 28 it accepts. Project stands.",
+   "subject_key": "677f8f01e1c1a95e5ee022848b2a2b512dfb39553e8d9e9777fc5ad8b6119173"
   },
   {
    "key": "29",
-   "record": "271b6951111336b159002a81b5351fee29194936008ee5b8cc3f8852af1778df",
-   "status": "MATCH",
-   "subject_key": "29bf26d6190f19cd3d24079ed9f40f65f1d67460466fff56b0d65a0e6ba5c162"
+   "record": "4cc9859fd4a9bb67cf48bd6eee6882e98360551189e85b5a6c7208127d853abb",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; owner's decision D7(d) (amb.2025.edu_1098t_date). i8863 p. 1, Form 1098-T requirement, \"After January 31, 2026, but before you file the return\"; p970 p. 2, Reminders, \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return\". The two IRS texts differ; the project takes Pub. 970's later date in dependent.edu_1098t, by the owner's recorded choice. The reply was not given p970 p. 2 and read the i8863 date as the only rule. The worksheet arithmetic of line 29 it accepts. Project stands.",
+   "subject_key": "7248d573c4f38f40c7b98937b039ccecbd8009dbc62c3ce3ad8b773dfb9071c5"
   },
   {
    "key": "30",
-   "record": "271b6951111336b159002a81b5351fee29194936008ee5b8cc3f8852af1778df",
-   "status": "MATCH",
-   "subject_key": "c989cf52300eacb6b9780d9a0dd8eb727c9a4ebc994598cc79f4f539d8a6d3ff"
+   "record": "4cc9859fd4a9bb67cf48bd6eee6882e98360551189e85b5a6c7208127d853abb",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; owner's decision D7(d) (amb.2025.edu_1098t_date). i8863 p. 1, Form 1098-T requirement, \"After January 31, 2026, but before you file the return\"; p970 p. 2, Reminders, \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return\". The two IRS texts differ; the project takes Pub. 970's later date in dependent.edu_1098t, by the owner's recorded choice. The reply was not given p970 p. 2 and read the i8863 date as the only rule. The worksheet arithmetic of line 30 it accepts. Project stands.",
+   "subject_key": "8e80f218d917a0e700ad4c278d4e95f78aa6c2c41f2031749e17d9d7066faca3"
   },
   {
    "key": "31",
-   "record": "271b6951111336b159002a81b5351fee29194936008ee5b8cc3f8852af1778df",
-   "status": "MATCH",
-   "subject_key": "889b67a15f402c208677983b2e12a9463fa1a5682a00f2d674a149dcd448a9fd"
+   "record": "4cc9859fd4a9bb67cf48bd6eee6882e98360551189e85b5a6c7208127d853abb",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; owner's decision D7(d) (amb.2025.edu_1098t_date). i8863 p. 1, Form 1098-T requirement, \"After January 31, 2026, but before you file the return\"; p970 p. 2, Reminders, \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return\". The two IRS texts differ; the project takes Pub. 970's later date in dependent.edu_1098t, by the owner's recorded choice. The reply was not given p970 p. 2 and read the i8863 date as the only rule. The worksheet arithmetic of line 31 it accepts. Project stands.",
+   "subject_key": "e355521946a48c2e95703446baddcbb77e64b81a1652eb10f8ceed374d9ccdca"
   }
  ],
  "subjects": {
   "2(d)": "f7e42973fe29ad72d98658d96dce0d09b8c81ec36865f67aa53f5dff8f10cf63",
-  "2(c)": "d94797db4ec7c1864f166739d0362814d067e59c4dc9c06409eaa1eae28fda52",
+  "2(c)": "4ddd1398226fead4c9f0b3f776da0a09f88ffb048bdb1a897b84002497c6f54b",
   "23": "6ef859612fc9225528754b68254a0f904c73e2d5cbe8172eadcfd9a024d89b7e",
   "24": "950b5911626062d8b6e371390ffa4abaa869d4f8ae8879b4c770300013e47632",
   "25": "d478c5d661e7a967987ef96c88fb3d604b3cdf01a1cfcb6e3ba0e9ef25c1fcb4",
   "26": "411783735e8d1485648d29199c6cec2a0dcf0678979c53de8767046ed22d7ea8",
-  "27": "b226f2310394d635f31198cbb1030ee3689dbcc8414ca17ba6ecdf7ca6ab75d4",
-  "28": "1a8d129f58cc32e63078aefb62a4d80e7a5ff192f2f17a4c82eed25e6e6c3903",
-  "29": "4fc7568ee1db0bf12886d12bb62aee8b021fb7ddd02d78fa9c89f0fff9e84d34",
-  "30": "9b104552552eef305c4b8848b4eb7afc6cb40ded0ccf9324a5846d839bc27057",
-  "31": "0d5bac5c5a5e5a4d6890d2891464a11743c01bf058122ca00715547ab7d3b98c"
+  "27": "2c2a11e46e8c7603ce2f039d56fd0b2aea07ab53813d5632865877b63c9f6485",
+  "28": "907a9e1af3df6d94d2ad1983648d2e4000df0e4b1e904fc2bd1279ae865686cc",
+  "29": "a4842c5a58d7d1917cdce52b3e120f6085a32e30e325f011c207b22d031341be",
+  "30": "70d30e87dba9899b17345cb5b1e7eef5d927e6221148d5421e5b6ba3a593037d",
+  "31": "28faebefefc4fc05d282dc3105fd7c9d3d0042c0bcb44f492c61a65cd60982d0"
  },
  "__rest__": "85c13429612c31523d60858f9c1f8860027800b8a1a07fdceb234a74b1f8f973"
 }

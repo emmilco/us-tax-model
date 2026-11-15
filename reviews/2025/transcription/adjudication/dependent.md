@@ -1114,3 +1114,34 @@ Whole-form rerun of dependent (claude-opus-5-5) after `edu_student` and `edu_aoc
 | deepseek | render | 2(d) | ambiguity | render MISMATCH | amb.2025.dc_line30 (owner's decision, Stage 15 decision 6) | |
 
 Counts: claude render ambiguity 10, model error 1; claude transcription model error 12, scope 8; deepseek render ambiguity 1. Errors introduced: none. Findings: none.
+
+## Landing round (2026-11-14)
+
+Claude transcription of 2026-11-14 (redraft over main 83c7d1c0), 21 open lines, all ruled by the land3-adj4 lane (claude-opus-5-5, judgment). Triage `.transcription/triage/2025/dependent.json` (log sha matches; 6,189 comparisons per line). Rulings applied with `rule.py`; full text in the sidecar.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | dependent.claimed | model error | 4,857 agree; classm.sa.5.deepseek, classm.sa.6 (mfj, sa.dependent true): project false, reply true | i1040gi pp. 18-19, Steps 2 and 4, "Yes. STOP You can't claim any dependents"; p501 p. 9, Death or birth | The reply exempts a joint return from the dependent taxpayer test and tests residency by months > 6 only (no born/died, adoption or placement rule). |
+| claude | transcription | ctc_child, odc_person, ctc_amount, odc_amount, actc_amount | model error | 5,054-5,383 agree; unknown or refusals only (masked) | as dependent.claimed | Each embeds the reply's dependent test; ruled on the expression. |
+| claude | transcription | dependent.hoh_test2 | model error | 4,964 agree; stage8.hoh.parent.died_lived_part_year, stage8.hoh.adopted_part_year, stage15.f2441.parent_died_part_year true v. false; t091 absence cases false v. true | p501 p. 9, Death or birth and Temporary absences; i1040gi p. 15 | Months-only test; absence head of household does not count not excluded. |
+| claude | transcription | dependent.hoh_absence | model error | 5,109 agree; unknown or refusals only | p501 p. 9; i1040gi p. 15 | Same months-only Test 2 person; ruled on the expression. |
+| claude | transcription | dependent.hoh_test1, eic_child, eic_ssn_child | representation | 5,732-5,805 agree; unknown or refusals only | i1040gi pp. 14, 41, 44 | Equal where both evaluate; the project refuses tie-breaker, married and kidnapped cases the reply reads raw. |
+| claude | transcription | dependent.dc_qp, dc_count, 2(c), 2(d) | model error | stage15.f2441.parent_died_part_year and classm.dependent.2: 2(d) $4,000 v. $0, 2(c) true v. false; most dc_qp/dc_count witnesses are f2441.care false or the count filter (representation) | p503 p. 3, Birth or death of otherwise qualifying person | The reply's qualifying-person test omits the part-year rule (and carries the joint-return exception). |
+| claude | transcription | dependent.ptc_magi_counted | model error | 5,551 agree; stage18.mut.unclaimed_relative $30,000 v. $0 (filter, representation) | i8962 p. 8, Line 2b; p501 p. 9 | Embedded dependent test drops a dependent who died in 2025 and must file. |
+| claude | transcription | 27 | model error | 3,791 agree; f1.t113.dep_aoc_applied $4,000 v. $0 | p970 p. 11, ATIN or ITIN applied for by the due date | The reply denies the AOC when the student's ATIN/ITIN was applied for by the due date. |
+| claude | transcription | 28, 29, 30 | representation | 3,791 agree each; one value witness inherited from line 27 | Form 8863 lines 28-30 | Form arithmetic on line 27; no shown_when. |
+| claude | transcription | 31 | model error | 3,785 agree; unknown or refusals only | as dependent.claimed; i8863 p. 3 | Embeds the reply's dependent test; the TIN-applied case the project refuses (scope). |
+
+Counts: model error 15, representation 6. The reply's dependent test, embedded in most lines, exempts a joint return from the dependent taxpayer test and has no part-year residency rule; where the triage shows no value witness (unknowns from ungated inputs mask it) the line is ruled on its expression. Findings: none.
+
+## Landing round (2026-11-14), render
+
+Line-scoped Claude render review, pass 119d4e297227 (lines 2(c), 27 to 31; 2(c) agreed). `carry.py --kind render` ruled
+nothing (each line's subject changed). Ruled by lane land3-adj9 against the rendered English (`rendered/2025/dependent.md`),
+the cited source and `forms/2025/dependent.yaml`; rulings in `/tmp/land3-adj9/dependent.json`, applied with rule.py.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | 27, 28, 29, 30, 31 | ambiguity | MISMATCH; arithmetic accepted, objection only to the 1098-T exception date in `dependent.edu_1098t` | i8863 p. 1 ("After January 31, 2026") against p970 p. 2 ("After February 2, 2026 (January 31 falls on a Saturday)") | Owner's decision D7(d), `amb.2025.edu_1098t_date`: the project takes Pub. 970's date. The reply was not given p970 p. 2. |
+
+5 lines: 5 ambiguity. No findings.

@@ -10,6 +10,13 @@
 - Expr: `{"op":"param","ref":"sales.zero"}`
 - Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, "None of your refund is taxable" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `refund.any`
+
+- **Authored helper label:** Did you (or, on a joint return, your spouse) receive a refund, credit or offset of state or local income tax in 2025?
+- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) receive a refund, credit or offset of state or local income tax in 2025? Count a refund you had applied to your 2025 estimated state or local income tax or that was taken to pay a debt, and one for which you received no Form 1099-G.
+- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) receive a refund, credit or offset of state or local income tax in 2025? Count a refund you had applied to your 2025 estimated state or local income tax or that was taken to pay a debt, and one for which you received no Form 1099-G."}`
+- Cite: [i1040gi] p. 88, Line 1, "If you received a refund, credit, or offset of state or local income taxes in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `refund.received`
 
 - **Authored helper label:** State or local income tax refunds, credits or offsets you received in 2025
@@ -20,8 +27,8 @@
 ## (helper) — `refund.has`
 
 - **Authored helper label:** Any state or local income tax refund received in 2025
-- **Encoded (Bool):** helper "State or local income tax refunds, credits or offsets you received in 2025" > $0 (sales.zero)
-- Expr: `{"gt":["refund.received",{"param":"sales.zero"}],"op":"test"}`
+- **Encoded (Bool):** helper "Did you (or, on a joint return, your spouse) receive a refund, credit or offset of state or local income tax in 2025?" = true
+- Expr: `{"eq":["refund.any",{"const":true}],"op":"test"}`
 - Cite: [i1040gi] p. 88, Line 1, "If you received a refund, credit, or offset of state or local income taxes in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `refund.box8`
@@ -31,12 +38,26 @@
 - Expr: `{"op":"input","source":"Is any of these refunds a refund of a state or local income tax that applies only to income from a trade or business (for example, box 8 is checked on the Form 1099-G that reports it), including such a refund for which you received no Form 1099-G?"}`
 - Cite: [f1099g] p. 5, Instructions for Recipient, "Box 8. If this box is checked, the amount in box 2 is attributable to an income tax that applies exclusively to income from a trade or business" and "If taxable, report the amount in box 2 on Schedule C or F (Form 1040), as appropriate" (Rev. March 2024 (continuous-use form for calendar year 2025; the December 2026 revision is first used for 2026); sha256 fe46acb4)
 
-## (gate) — `refund.not_2024`
+## (helper) — `refund.other_year`
 
-- **Authored helper label:** Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024 state or local income tax in 2025 or before 2024?
-- **Encoded (Bool):** Input — Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you (or, on a joint return, your spouse) pay any of your 2024 state or local income tax in 2025 (for example a last estimated payment in January 2025, a payment with an extension, or a balance due) or before 2024 (for example a 2024 estimated payment made in December 2023)?
+- **Authored helper label:** Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G)?
+- **Encoded (Bool):** Input — Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G)?
+- Expr: `{"op":"input","source":"Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G)?"}`
+- Cite: [i1040gi] p. 89, Line 1, "1. You received a refund in 2025 that is for a tax year other than 2024" and "5. You made your last payment of 2024 estimated state or local income tax in 2025"; f1099g p. 5, Instructions for Recipient, "Box 3. Identifies the tax year for which the box 2 refunds, credits, or offsets shown were made"; p525 p. 24, Recovery for 2 or more years, "If you receive a refund or other recovery that is for amounts you paid in 2 or more separate years, you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `refund.paid_other_time`
+
+- **Authored helper label:** Did you (or, on a joint return, your spouse) pay any of your 2024 state or local income tax in 2025 (for example a last estimated payment in January 2025, a payment with an extension, or a balance due) or before 2024 (for example a 2024 estimated payment made in December 2023)?
+- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) pay any of your 2024 state or local income tax in 2025 (for example a last estimated payment in January 2025, a payment with an extension, or a balance due) or before 2024 (for example a 2024 estimated payment made in December 2023)?
+- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) pay any of your 2024 state or local income tax in 2025 (for example a last estimated payment in January 2025, a payment with an extension, or a balance due) or before 2024 (for example a 2024 estimated payment made in December 2023)?"}`
+- Cite: [i1040gi] p. 89, Line 1, "1. You received a refund in 2025 that is for a tax year other than 2024" and "5. You made your last payment of 2024 estimated state or local income tax in 2025"; f1099g p. 5, Instructions for Recipient, "Box 3. Identifies the tax year for which the box 2 refunds, credits, or offsets shown were made"; p525 p. 24, Recovery for 2 or more years, "If you receive a refund or other recovery that is for amounts you paid in 2 or more separate years, you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `refund.not_prior_year`
+
+- **Authored helper label:** A refund is for a tax year other than 2024 (box 3 of Form 1099-G), or you paid any of your 2024 state or local income tax in 2025 or before 2024
+- **Encoded (Bool):** (helper "Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G)?" = true or helper "Did you (or, on a joint return, your spouse) pay any of your 2024 state or local income tax in 2025 (for example a last estimated payment in January 2025, a payment with an extension, or a balance due) or before 2024 (for example a 2024 estimated payment made in December 2023)?" = true)
 - Interpretation: amb.2025.refund_exceptions
-- Expr: `{"op":"input","source":"Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you (or, on a joint return, your spouse) pay any of your 2024 state or local income tax in 2025 (for example a last estimated payment in January 2025, a payment with an extension, or a balance due) or before 2024 (for example a 2024 estimated payment made in December 2023)?"}`
+- Expr: `{"any":[{"eq":["refund.other_year",{"const":true}],"op":"test"},{"eq":["refund.paid_other_time",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 89, Line 1, "1. You received a refund in 2025 that is for a tax year other than 2024" and "5. You made your last payment of 2024 estimated state or local income tax in 2025"; f1099g p. 5, Instructions for Recipient, "Box 3. Identifies the tax year for which the box 2 refunds, credits, or offsets shown were made"; p525 p. 24, Recovery for 2 or more years, "If you receive a refund or other recovery that is for amounts you paid in 2 or more separate years, you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `refund.itemized`
@@ -76,7 +97,7 @@
 - Expr: `{"op":"input","source":"Could you be claimed as a dependent by someone else in 2024; were you a nonresident alien filing Form 1040-NR for 2024; or did you receive any of these refunds because of a jointly filed state or local income tax return when you are not filing a joint 2025 Form 1040 or 1040-SR with the same person?"}`
 - Cite: [i1040gi] p. 89, Line 1, "8. You could be claimed as a dependent by someone else in 2024" and "9. You received a refund because of a jointly filed state or local income tax return, but you aren’t filing a joint 2025 Form 1040 or 1040-SR with the same person"; p525 p. 24, Itemized Deduction Recoveries, "You can’t use the State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, and must use this discussion if you’re a nonresident alien" (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `refund.line5d_2024`
+## (helper) — `refund.line5d_prior_year`
 
 - **Authored helper label:** The amount on your 2024 Schedule A, line 5d
 - **Encoded (NonNegDollars):** Input — The amount on your 2024 Schedule A, line 5d (your state and local income or general sales taxes, real estate taxes and personal property taxes, added together)
@@ -84,35 +105,42 @@
 - Expr: `{"op":"input","source":"The amount on your 2024 Schedule A, line 5d (your state and local income or general sales taxes, real estate taxes and personal property taxes, added together)"}`
 - Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, "your state and local income taxes shown on your 2024 Schedule A, line 5d", and line 2, "(generally, this is the amount reported on your 2024 Schedule A, line 5d)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `refund.line5e_2024`
+## (helper) — `refund.line5e_prior_year`
 
 - **Authored helper label:** The amount on your 2024 Schedule A, line 5e
 - **Encoded (NonNegDollars):** Input — The amount on your 2024 Schedule A, line 5e
 - Expr: `{"op":"input","source":"The amount on your 2024 Schedule A, line 5e"}`
 - Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "more than the amount on your 2024 Schedule A, line 5e" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (gate) — `refund.received_if_worksheet`
+
+- **Authored helper label:** State or local income tax refunds, credits or offsets received in 2025 (zero when you did not itemize deductions for 2024 or deducted general sales taxes, since none of the refund is then taxable)
+- **Encoded (NonNegDollars):** Choose — [helper "You itemized deductions for 2024 and deducted state and local income taxes, so the worksheet is used" = true → helper "State or local income tax refunds, credits or offsets you received in 2025"] [helper "You itemized deductions for 2024 and deducted state and local income taxes, so the worksheet is used" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["refund.worksheet",{"const":true}],"op":"test"},"then":"refund.received"},{"guard":{"eq":["refund.worksheet",{"const":false}],"op":"test"},"then":"refund.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 88, Line 1, "If you received a refund, credit, or offset of state or local income taxes in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (gate) — `refund.line5e_bad`
 
 - **Authored helper label:** The amount entered for 2024 Schedule A line 5e is more than the amount entered for line 5d
 - **Encoded (Bool):** helper "The amount on your 2024 Schedule A, line 5e" > helper "The amount on your 2024 Schedule A, line 5d"
-- Expr: `{"gt":["refund.line5e_2024","refund.line5d_2024"],"op":"test"}`
+- Expr: `{"gt":["refund.line5e_prior_year","refund.line5d_prior_year"],"op":"test"}`
 - Cite: [i1040sca] p. 7, Line 5e, "enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)" (2025; printed date 2025-12-08; sha256 b0999b12)
 
 ## 1 — `refund.line1`
 
 - **IRS:** Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d
-- **Encoded (NonNegDollars):** Enter the smaller of helper "State or local income tax refunds, credits or offsets you received in 2025" or helper "The amount on your 2024 Schedule A, line 5d".
+- **Encoded (NonNegDollars):** Enter the smaller of helper "State or local income tax refunds, credits or offsets received in 2025 (zero when you did not itemize deductions for 2024 or deducted general sales taxes, since none of the refund is then taxable)" or helper "The amount on your 2024 Schedule A, line 5d".
 - **Refusal:** when refund.exc_tax is true, cannot complete Pub. 525, Itemized Deduction Recoveries (Worksheet 2). Your 2024 alternative minimum tax, unused credits, 0% capital gain rate or sales tax choice means the refund is figured with Pub. 525 instead of the Form 1040 worksheet; that is outside this tool. Cite: [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 3, 4, 6 and 7 (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when refund.exc_who is true, cannot complete Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A 2024 return on which you could be claimed as a dependent, a 2024 Form 1040-NR, or a refund from a joint state or local return with someone you are not filing jointly with for 2025 is figured with Pub. 525 instead of the Form 1040 worksheet; that is outside this tool. Cite: [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 8 and 9; p525 p. 24, Itemized Deduction Recoveries, "if you’re a nonresident alien" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Interpretation: amb.2025.refund_cap_5d
-- Expr: `{"of":["refund.received","refund.line5d_2024"],"op":"smaller_of"}`
+- Expr: `{"of":["refund.received_if_worksheet","refund.line5d_prior_year"],"op":"smaller_of"}`
 - Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, "Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `refund.line2_more`
 
 - **Authored helper label:** Is the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024 (generally, this is the amount reported on your 2024 Schedule A, line 5d) more than the amount on your 2024 Schedule A, line 5e?
 - **Encoded (Bool):** helper "The amount on your 2024 Schedule A, line 5d" > helper "The amount on your 2024 Schedule A, line 5e"
-- Expr: `{"gt":["refund.line5d_2024","refund.line5e_2024"],"op":"test"}`
+- Expr: `{"gt":["refund.line5d_prior_year","refund.line5e_prior_year"],"op":"test"}`
 - Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "Is the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 2 — `refund.line2`
@@ -120,7 +148,7 @@
 - **IRS:** Subtract the amount on your 2024 Schedule A, line 5e, from the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024 (generally, this is the amount reported on your 2024 Schedule A, line 5d)
 - **Encoded (NonNegDollars):** Subtract helper "The amount on your 2024 Schedule A, line 5e" from helper "The amount on your 2024 Schedule A, line 5d". If zero or less, enter -0-.
 - **Refusal:** when refund.line5e_bad is true, cannot complete State and Local Income Tax Refund Worksheet, line 2 (2024 Schedule A lines 5d and 5e). The amount on 2024 Schedule A line 5e cannot be more than line 5d, since line 5e is the smaller of line 5d and the limit. Check both amounts against your 2024 Schedule A. Cite: [i1040sca] p. 7, Line 5e, "enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)" (2025; printed date 2025-12-08; sha256 b0999b12)
-- Expr: `{"from":"refund.line5d_2024","op":"subtract_floor0","take":"refund.line5e_2024"}`
+- Expr: `{"from":"refund.line5d_prior_year","op":"subtract_floor0","take":"refund.line5e_prior_year"}`
 - Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "No. Enter the amount from line 1 on line 3 and go to line 4. Yes. Subtract the amount on your 2024 Schedule A, line 5e" (zero on No, so that line 3 is line 1) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `refund.line3_more`
@@ -137,7 +165,7 @@
 - Expr: `{"from":"refund.line1","op":"subtract_floor0","take":"refund.line2"}`
 - Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 3, "Yes. Subtract line 2 from line 1" (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `refund.line17_2024`
+## (helper) — `refund.line17_prior_year`
 
 - **Authored helper label:** Your total itemized deductions from your 2024 Schedule A, line 17
 - **Encoded (NonNegDollars):** Input — Your total itemized deductions from your 2024 Schedule A, line 17
@@ -148,7 +176,7 @@
 
 - **IRS:** Enter your total itemized deductions from your 2024 Schedule A, line 17
 - **Encoded (NonNegDollars):** Enter the amount from helper "Your total itemized deductions from your 2024 Schedule A, line 17".
-- Expr: `{"from":"refund.line17_2024","op":"copy"}`
+- Expr: `{"from":"refund.line17_prior_year","op":"copy"}`
 - Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `refund.status`
@@ -352,7 +380,7 @@
 - **Authored helper label:** Taxable part of your refund (zero when you did not itemize for 2024 or deducted general sales taxes)
 - **Encoded (NonNegDollars):** Choose — [helper "You itemized deductions for 2024 and deducted state and local income taxes, so the worksheet is used" = false → helper "Year parameter sales.zero"] [helper "You itemized deductions for 2024 and deducted state and local income taxes, so the worksheet is used" = true → line 9]
 - **Refusal:** when refund.box8 is true, cannot complete Form 1099-G box 8 (a refund of a tax on trade or business income, Schedule C or F). A refund of an income tax that applies only to trade or business income is reported, if taxable, on Schedule C or F; that is outside this tool. Cite: [f1099g] p. 5, Instructions for Recipient, "Box 8. If this box is checked, the amount in box 2 is attributable to an income tax that applies exclusively to income from a trade or business" (Rev. March 2024 (continuous-use form for calendar year 2025; the December 2026 revision is first used for 2026); sha256 fe46acb4)
-- **Refusal:** when refund.not_2024 is true, cannot complete Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A refund for a tax year other than 2024, or a refund when any of your 2024 state or local income tax was paid in 2025 (a last estimated payment, a payment with an extension, or a balance due) or before 2024, is figured with Pub. 525 (and may reduce your 2025 deduction for taxes); that is outside this tool. Cite: [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 1 and 5; p525 p. 24, Recovery for 2 or more years, "you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when refund.not_prior_year is true, cannot complete Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A refund for a tax year other than 2024, or a refund when any of your 2024 state or local income tax was paid in 2025 (a last estimated payment, a payment with an extension, or a balance due) or before 2024, is figured with Pub. 525 (and may reduce your 2025 deduction for taxes); that is outside this tool. Cite: [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 1 and 5; p525 p. 24, Recovery for 2 or more years, "you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Interpretation: amb.2025.refund_not_itemized
 - Expr: `{"alternatives":[{"guard":{"eq":["refund.worksheet",{"const":false}],"op":"test"},"then":"refund.zero"},{"guard":{"eq":["refund.worksheet",{"const":true}],"op":"test"},"then":"refund.line9"}],"op":"choose"}`
 - Cite: [i1040gi] p. 88, Line 1, "None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn’t itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes" (2025; printed date 2026-02-25; sha256 482e9c48)

@@ -52,6 +52,38 @@
    "second_expr_sha256": "3a5f77614c394ce2998c1f07cae566f5c67486f8b39d31206c2a9bc85bccd408",
    "ruling": "Ruling: equivalent; project retained. Line 3 is \"Add lines 1z and 2\" (f1040s2 p. 1, line 3); line 1z is zero within scope because every line 1 item is refused by s2.other (\"Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax or Net Investment Income Tax\"), and line 2 is zero because the alternative minimum tax is refused by s2.amt. The second copies line 2, which is zero, where the project writes the constant 0, as ruled before.",
    "subject_key": "25498619172831228ef3c05ec90d4e568526b5a2efbf42d5286267328e169e4c"
+  },
+  {
+   "printed": "s2.other",
+   "project_expr_sha256": "0fd414586f80d568dd057295f38cd2743bbca11367201f1cf93d58ad8d803056",
+   "second_expr_sha256": "76b9ec2efa58bde3dd52f3a32eb5d47a21de8530c8a0edf9e1854a5f14fe24fa",
+   "ruling": "Ruling: model error; the line is the screening question whose label lists what counts as another amount, including \"household employment taxes\" and \"uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N)\" (i1040gi p. 113, Lines 9 and 13); the reply's test leaves out those two answers (s2.household_employee_if_help, s2.w2_marks_if_w2), so as a gate for the readers that rely on it (s8812 line 22, \"Schedule 2 lines 5, 6 and 13 are refused by s2.other\"; tipjob; s1a) it would not refuse them, and it reads the ungated s2.mortgage_subsidy and s2.lookback where the project reads their parent-gated forms. Triage executable-triage-v2 (.transcription/triage/2025/s2.json, pass 19839a055a94): 2,740 of 2,868 agree; no value difference in the sample (no sampled return answers Yes to the two omitted questions); 61 candidate-unknown (15 on completed returns, s2.mortgage_subsidy or s2.lookback unasked behind their parent questions), 67 project-unknown on incomplete or refused returns.",
+   "context": "f188276e5baeeffd0e29eec2f3b6454e76f7cf77712502d2b7cd92c6bdf518d0",
+   "date": "2026-11-14",
+   "run": "45c916e0ec1b27c0af43a616d038d75238538e30a90c8f64d2857bea1cdfd318",
+   "subject_key": "d8a5a79861962a21d9c32910f5f61bd65f4cc5bfcc295d9d86e84fcdd039d505",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.eic.2@s2",
+     "fixture:classm.eic.3@s2",
+     "fixture:classm.eic.4@s2",
+     "fixture:classm.eic.5@s2",
+     "fixture:classm.eic.6@s2",
+     "fixture:classm.eic.7@s2",
+     "partial:stage14.asset.hy_5yr-s2.household_help@s2",
+     "partial:stage14.asset.bonus_100-s2.household_help@s2",
+     "partial:stage14.asset.prior_7yr-s2.household_help@s2",
+     "partial:stage14.asset.qip-s2.household_help@s2",
+     "partial:stage14.asset.done-s2.household_help@s2",
+     "partial:stage14.asset.refuse_class-s2.household_help@s2"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

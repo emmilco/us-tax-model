@@ -13,6 +13,7 @@
       "inputs": {
         "div.any": true,
         "div.box3": 100,
+        "div.other_boxes": true,
         "div.basis_reconciled": true,
         "$w2@person[taxpayer]": [
           "a"

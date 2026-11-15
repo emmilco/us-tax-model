@@ -44,7 +44,15 @@ interview:
   - dependent.spouse_relative
   - dependent.qr_all_year
   - dependent.absence_no_return
-  - person.x_other
+  - person.x_edu_account
+  - person.x_edu_taxable
+  - person.x_edu_excess
+  - person.x_archer_excess
+  - person.x_ira_prior_excess
+  - person.x_hsa_prior_excess
+  - person.inherited_account
+  - person.rmd_missed
+  - person.ira_owner
   - dependent.work_ssn
   - dependent.gross_income
   - dependent.supported
@@ -57,17 +65,26 @@ interview:
   - dependent.born_died
   - dependent.placed
   - dependent.part_year_home
+  - dependent.lived_all_year
+  - dependent.ever_married
+  - dependent.parents_apart
+  - dependent.own_money
+  - dependent.self_support_view
+  - dependent.supported_view
+  - dependent.citizen_ssn
   - person.tin
   - person.itin_applied
   - person.work_ssn
   - person.eic_ssn
-  - person.under16
+  - person.birth_year
+  - person.under16_at_year_end
   - household.home_cost
-  - household.unmarried
-  - household.married
+  - household.considered_unmarried
+  - household.married_dec31
+  - household.ever_married
   - household.community_property
   - household.rdp
-  - household.spouse_died_2025
+  - household.spouse_died_this_year
   - household.cp_married
   - household.qss_eligible
   - household.credit_disallowed

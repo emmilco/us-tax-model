@@ -195,11 +195,6 @@
    "adjudication": "reviews/2025/screens/adjudication/gates-c.md",
    "subject_sha": "5ae0a7dcb1c5ae16c3ccbee50046b250206bb44fed2b505f0232cb662db79c25"
   },
-  "unruled:gate:clcw26.final_ask#1": {
-   "class": "no gate defect; joint return designed out to a notice, wording finding low",
-   "reason": "(1) FALSE_NO, joint return of a spouse who died in 2025: by design, as the screen-review rulings of this gate. On a joint return a carryover is figured for both spouses and only the deceased spouse's part stops (p550 p. 103); the project does not split a joint carryover between the spouses and gives clcw26.decedent_notice (shown on a joint return when line 8 or line 13 is above zero: the part from the deceased spouse's losses does not carry over to 2026 and can be deducted only on this return). The question is for a return whose whole carryover is the decedent's. The same-page sentence on joint and separate returns concerns a later separate return; a 2025 separate return is refused (s3.mfs). (2) UNCLEAR, a representative reading 'filer' as themselves: low; the question says 'a return filed for the decedent', and it is asked only on a return with one filer, whose return the representative is preparing.",
-   "subject_sha": "d7881adecd94573cefc55bdcb231b9898e633c80b624142f5173b53ea1b63575"
-  },
   "unruled:gate:s179.wc_ask#1": {
    "class": "no gate defect; one finding designed out, one wording point accepted (low)",
    "reason": "(1) a partner or S corporation shareholder whose K-1 reports the entity's interest on operating cash: designed out; an interest in a partnership or S corporation is refused by scope.schedule1 ('partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)'), so only Schedule C businesses reach line 11, and their working capital is the filer's own. (2) an operating reserve held in Treasury bills or a money market fund: low; the help (interview/questions-2025.yaml, s179.wc_interest) says working capital is money held for the business's operating needs 'in any kind of account', with the account types as examples, however titled. The previous review of this gate (before the help named the account types) also raised a carryover with no 2025 property: s179.has179 reads lines 9 and 10 added together, so it is asked (fixture bug0474.s179.wc_interest_carryover_only).",
@@ -764,6 +759,11 @@
     "BUG-0620"
    ],
    "subject_sha": "9b220dfc1b79068dce34a30c5203115edd339c3f7376d0e3d8818f4fb8b508ff"
+  },
+  "unruled:gate:clcw_next_year.final_ask#1": {
+   "class": "no gate defect; joint return designed out to a notice, wording finding low",
+   "reason": "(1) FALSE_NO, joint return of a spouse who died in 2025: by design, as the screen-review rulings of this gate. On a joint return a carryover is figured for both spouses and only the deceased spouse's part stops (p550 p. 103); the project does not split a joint carryover between the spouses and gives clcw_next_year.decedent_notice (shown on a joint return when line 8 or line 13 is above zero: the part from the deceased spouse's losses does not carry over to 2026 and can be deducted only on this return). The question is for a return whose whole carryover is the decedent's. The same-page sentence on joint and separate returns concerns a later separate return; a 2025 separate return is refused (s3.mfs). (2) UNCLEAR, a representative reading 'filer' as themselves: low; the question says 'a return filed for the decedent', and it is asked only on a return with one filer, whose return the representative is preparing.",
+   "subject_sha": "66f9b217fcc0742121c41192dc65071cad692072b7a886bc33005584489f041d"
   }
  },
  "baseline": {}

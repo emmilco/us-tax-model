@@ -523,9 +523,17 @@ function selfTest(): number {
   const opened = problemsOf([row("r", { [roster!.input]: ["planted"] }, { proceeds: { [roster!.input]: ["planted"] } })]);
   assert.match(opened, /row r: the walk asks .* \(after \d+ answers\), which the row does not answer and the background return is never asked\. It was opened by question \d+, .* = \["planted"\] \(the row's answer\)\. The row's answers lead to it, so the row is incomplete/);
   // The same from the other side: a question the background does not answer (planted: its answer is taken away) and
-  // no answer of the row opened.
-  const without: Ctx = { ...ctx, backgrounds: { full: { ...background, answers: new Map([...background.answers].filter(([t]) => t !== questionTemplate(NEXT))) } } };
-  assert.match(checkFiles(without, file([row("r", { [Q]: false }, { proceeds: { [Q]: false } })])).results[0]!.problems.join("\n"), /the walk asks .*, which the row does not answer and the background return is never asked\. .* No answer of the row leads to it directly, so the tree asks this filer something the row's author did not expect/);
+  // no answer of the row opened: the first question after the row's answer whose walk, with its background answer
+  // taken away, stops at it with an opener that is not the row's.
+  let unopened: string | null = null;
+  for (const s of bg.slice(bg.findIndex((b) => b.input === Q) + 1)) {
+    const without: Ctx = { ...ctx, backgrounds: { full: { ...background, answers: new Map([...background.answers].filter(([t]) => t !== questionTemplate(s.input))) } } };
+    const r = checkFiles(without, file([row("r", { [Q]: false }, { proceeds: { [Q]: false } })])).results[0]!;
+    const end = r.walk?.end;
+    if (end?.kind === "unanswered" && end.input === s.input && (end.openedBy === null || end.openedBy.from !== "row")) { unopened = r.problems.join("\n"); break; }
+  }
+  assert.ok(unopened !== null, "the background return asks, after the row's answer, a question no answer of the row opens");
+  assert.match(unopened!, /the walk asks .*, which the row does not answer and the background return is never asked\. .* No answer of the row leads to it directly, so the tree asks this filer something the row's author did not expect/);
 
   // 3. A row's answer is never asked: the walk ends first, the entry does not exist, or the id is a template.
   assert.match(problemsOf([row("r", { [Q]: true, [NEXT]: bg.find((s) => s.input === NEXT)!.value }, { refused: GATE })]), /row r: the row's answer to .* is never asked before the walk ends \(it was refused at .*: a stale answer/);

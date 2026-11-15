@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Smoke test of the web UI in a separately launched headless Chrome on port 9227, run by hand (not in check-all):
+// Smoke test of the web UI in a separately launched headless Chrome on port 9227 (or CHROME_PORT), run by hand (not in check-all):
 //   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --remote-debugging-port=9227 \
 //     --user-data-dir="$(mktemp -d)" about:blank &
 //   npm run compile && node ui/test_browser.mjs
@@ -12,7 +12,9 @@
 // and of the forms a question names to /private/tmp/tax-ui-glosses.png. A second return, written as a log, has
 // conflicting Form 8889 month answers: it is shown as a conflict with links to the answers involved, not as a
 // refusal (screenshot /private/tmp/tax-ui-conflict.png). Every question shows its id: in the answered list and under
-// the current question (screenshots /private/tmp/tax-ui-design-{answered-ids,question-id}.png).
+// the current question (screenshots /private/tmp/tax-ui-design-{answered-ids,question-id}.png). A tick-box screen met
+// on the walk (a group of yes or no questions shown together) is checked box by box and answered as the fixture
+// answers its members (screenshots /private/tmp/tax-ui-design-{ticks,ticks-open}.png).
 // Before the walk it goes through the vetting page (/vet), saving to a verdict file in a temporary directory: a
 // question with its help, answer and context, verdicts and a note by key and by button, a reload, the filters and
 // jumps, a failed save, a stale record and a record of a question no longer asked (screenshots
@@ -31,9 +33,10 @@ const { inputs } = loadFixtureCases("ny", canonical).find(c => c.id === "ny.refu
 
 const wait = ms => new Promise(r => setTimeout(r, ms));
 const fmtMoney = c => { const d = Math.floor(Math.abs(c) / 100).toLocaleString("en-US"), r = Math.abs(c) % 100; return `${c < 0 ? "-" : ""}$${d}${r ? "." + String(r).padStart(2, "0") : ""}`; };
-const pages = await fetch("http://127.0.0.1:9227/json/list").then(r => r.json());
+const CHROME_PORT = process.env.CHROME_PORT ?? "9227";
+const pages = await fetch(`http://127.0.0.1:${CHROME_PORT}/json/list`).then(r => r.json());
 const page = pages.find(p => p.type === "page");
-assert(page, "launch a separate headless Chrome on port 9227 first");
+assert(page, `launch a separate headless Chrome on port ${CHROME_PORT} first`);
 const ws = new WebSocket(page.webSocketDebuggerUrl);
 await new Promise((ok, fail) => { ws.addEventListener("open", ok); ws.addEventListener("error", fail); });
 let id = 0;
@@ -352,8 +355,77 @@ try {
   assert.equal(await evaluate("document.querySelectorAll('.forms-mentioned .form-gloss').length"), 0, "the first question names no form");
 
   // A blank amount is refused on the page and nothing is written; a help request leaves the question pending.
-  let answered = 0, correctedAt = null, sawProvisional = false, derivationOpened = false, blankRefused = false, sawFolded = false, sawGlosses = false, sawStatus = false;
+  let answered = 0, correctedAt = null, sawProvisional = false, derivationOpened = false, blankRefused = false, sawFolded = false, sawGlosses = false, sawStatus = false, tickScreens = 0;
   for (let step = 0; step < 400; step++) {
+    // A tick-box screen: a group of yes or no questions shown together, answered as the fixture answers its members.
+    if (await evaluate("!!document.querySelector('.question.tick-screen')")) {
+      const group = (await served()).group;
+      assert(group && group.members.length >= 2, "the page shows a tick-box screen only when the server offers one");
+      if (!group.members.every(m => fx(m.input) in inputs)) break;
+      const screen = () => evaluate(`({group:document.querySelector('.question.tick-screen').dataset.group, heading:document.querySelector('.prompt-text').innerText,
+        boxes:[...document.querySelectorAll('.ticks .tick')].map(li=>({input:li.dataset.input, label:li.querySelector('.tick-label').textContent, id:li.querySelector('.qid-key').textContent,
+          checked:li.querySelector('input[type=checkbox]').checked, named:li.querySelector('label').htmlFor===li.querySelector('input').id, open:li.querySelector('details').open})),
+        none:document.getElementById('ticks-none').disabled, go:document.getElementById('ticks-submit').disabled, goText:document.getElementById('ticks-submit').textContent,
+        yesNo:document.querySelectorAll('.widget [data-answer]').length, source:!!document.querySelector('.question .source'), help:!!document.getElementById('need-help')})`);
+      let shown = await screen();
+      assert.equal(shown.group, group.id);
+      assert.equal(shown.heading.replace(/\s+/g, " ").trim(), group.heading, "the heading is the question, word for word");
+      assert.deepEqual(shown.boxes.map(b => [b.input, b.label, b.id]), group.members.map(m => [m.input, m.tick, m.input]), "one box per member, with its label and its id");
+      assert(shown.boxes.every(b => !b.checked && b.named && !b.open), "the boxes start unticked, each named by its label, the members' own questions closed");
+      assert(shown.none === false && shown.go === true && shown.yesNo === 0, "with nothing ticked only “None of these” is live, and there are no Yes and No buttons");
+      if (tickScreens === 0) {
+        await shot("ticks");
+        const before = logLines();
+        // Ticking a box: only “Continue” is live. Unticking it: only “None of these” again. Nothing is sent meanwhile.
+        await click(".ticks .tick:nth-child(2) input[type=checkbox]");
+        shown = await screen();
+        assert(shown.boxes[1].checked && shown.none === true && shown.go === false && /^Continue with 1 ticked$/.test(shown.goText), `with a box ticked only “Continue” is live: ${JSON.stringify([shown.none, shown.go, shown.goText])}`);
+        // Behind a box: the member's own question, word for word, its help and its source.
+        await click(".ticks .tick:nth-child(2) summary");
+        const own = await evaluate(`({open:document.querySelector('.ticks .tick:nth-child(2) details').open, prompt:document.querySelector('.ticks .tick:nth-child(2) .tick-prompt').innerText,
+          help:document.querySelector('.ticks .tick:nth-child(2) .help-text')?.innerText ?? '', source:document.querySelector('.ticks .tick:nth-child(2) .meta').textContent,
+          alone:!!document.querySelector('.ticks .tick:nth-child(2) [data-alone]')})`);
+        const words = (t) => t.replace(/^\s*- /gm, "").replace(/\s+/g, " ").trim();
+        assert(own.open, "“What this asks” opens");
+        assert.equal(words(own.prompt), words(group.members[1].prompt), "the member's own question is shown word for word");
+        assert.equal(words(own.help), words(group.members[1].help), "with its help");
+        assert.match(own.source, /^Source: /);
+        await shot("ticks-open");
+        // “Answer this one on its own” shows the member as an ordinary question; “Back to the next question” returns.
+        const pendingNow = (await served()).pending.map(p => p.input);
+        const aloneAt = group.members.findIndex(m => pendingNow.includes(m.input));
+        await click(`.ticks .tick:nth-child(${aloneAt + 1}) summary`);
+        await click(`.ticks .tick:nth-child(${aloneAt + 1}) [data-alone]`);
+        await until(`document.querySelector('.question[data-input]')?.dataset.input === ${JSON.stringify(group.members[aloneAt].input)}`, "the member as a question of its own");
+        assert(await evaluate("document.querySelectorAll('.widget [data-answer]').length === 2 && !!document.getElementById('need-help') && !!document.querySelector('.question .source')"), "alone, the member is an ordinary yes or no question");
+        await click("#back-next");
+        await until("!!document.querySelector('.question.tick-screen')", "the tick-box screen again");
+        assert.equal(logLines(), before, "nothing is written until the screen is answered");
+      }
+      const yes = group.members.map(m => inputs[fx(m.input)] === true);
+      const before = logLines();
+      for (const [i, on] of yes.entries()) if (on) await click(`.ticks .tick:nth-child(${i + 1}) input[type=checkbox]`);
+      await click(yes.some(Boolean) ? "#ticks-submit" : "#ticks-none");
+      for (let i = 0; i < 400 && logLines() === before; i++) { const err = await evaluate("document.getElementById('field-error')?.textContent ?? ''"); assert(!err, `tick-box screen ${group.id}: ${err}`); await wait(25); }
+      assert.equal(logLines(), before + group.members.length, `tick-box screen ${group.id}: one answer per box is written`);
+      const written = readFileSync(join(dir, "smoke.jsonl"), "utf8").trim().split("\n").slice(-group.members.length).map(l => JSON.parse(l));
+      assert.deepEqual(written, group.members.map((m, i) => ({ input: m.input, value: yes[i] })), "each box is recorded as its own answer, in the order shown");
+      await until(`document.querySelector('.question.tick-screen')?.dataset.group !== ${JSON.stringify(group.id)} || document.querySelector('.question[data-input]') !== null || document.querySelector('.empty') !== null`, "the page after the tick-box screen");
+      if (tickScreens === 0) {
+        assert.match(await evaluate("document.getElementById('saved').textContent"), yes.some(Boolean) ? /^Saved: / : /^Saved: None of these for “/);
+        // The answered list has each member as its own answer, under its own question; one reopens alone.
+        await view("answered");
+        const rows = await evaluate(`[...document.querySelectorAll('#answered li')].map(li=>[li.querySelector('button[data-input]').dataset.input, li.querySelector('.q').textContent, li.querySelector('.value').textContent])`);
+        for (const [i, m] of group.members.entries()) assert.deepEqual(rows.find(r => r[0] === m.input), [m.input, m.prompt.split("\n")[0], yes[i] ? "Yes" : "No"], `${m.input} in the answered list`);
+        await click(`#answered button[data-input="${group.members[0].input}"]`);
+        await until(`document.querySelector('.question[data-input]')?.dataset.input === ${JSON.stringify(group.members[0].input)} && !!document.querySelector('.correcting')`, "a member reopened on its own");
+        assert(await evaluate("document.querySelectorAll('.widget [data-answer]').length === 2 && !document.querySelector('.tick-screen')"), "a member is corrected as an ordinary yes or no question");
+        await click("#back-next");
+        await until("!document.querySelector('.correcting')", "back to the next question");
+      }
+      tickScreens++; answered += group.members.length;
+      continue;
+    }
     const input = await question();
     if (!input || !(fx(input) in inputs)) break;
     if (answered === 0) {
@@ -582,7 +654,7 @@ try {
   const links = await evaluate("[...document.querySelectorAll('#conflict button[data-input]')].map(b=>b.dataset.input)");
   assert.deepEqual([...links].sort(), ["coverage_year", "dec_coverage", "months_eligible", "months_family"].map(k => hsa + k), "the conflict links the four answers it reads");
   const conflictShown = Object.fromEntries(await evaluate("[...document.querySelectorAll('#conflict li')].map(l=>[l.querySelector('button').dataset.input,l.querySelector('.conflict-value').textContent])"));
-  assert.deepEqual({ ...conflictShown, [`${hsa}coverage_year`]: undefined }, { [`${hsa}coverage_year`]: undefined, [`${hsa}dec_coverage`]: "Self-only HDHP coverage", [`${hsa}months_eligible`]: "12", [`${hsa}months_family`]: "12" }, "each answer is shown beside its question");
+  assert.deepEqual({ ...conflictShown, [`${hsa}coverage_year`]: undefined }, { [`${hsa}coverage_year`]: undefined, [`${hsa}dec_coverage`]: "An HSA-qualifying plan covering one person only", [`${hsa}months_eligible`]: "12", [`${hsa}months_family`]: "12" }, "each answer is shown beside its question");
   assert.ok(conflictShown[`${hsa}coverage_year`], "the coverage answer is shown too");
   assert.deepEqual(await evaluate("[...document.querySelectorAll('#conflict li')].map(l=>l.querySelector('.qid-key').textContent).sort()"), [...links].sort(), "each conflicting answer shows its id");
   await evaluate("window.scrollTo(0, 0)");
@@ -613,6 +685,8 @@ try {
   console.log(`Browser passed: the person selector with no entry syntax, ${answered} answers through the page's widgets, labelled roster entries (a colliding label suffixed; labels in the answered list, a sheet heading and a question's entry), a help request, a refused blank amount, a correction through the answered list, a derivation with operand links and the answer it depends on, a provisional refusal that became final, a reload, conflicting answers shown as a conflict with links that reopen them.`);
   assert(longShot, "the long question scope.other_line16 was shown in full");
   assert(sawFolded, "a question naming more than two forms was shown with each form folded to one line");
+  assert(tickScreens > 0, "the walk met a tick-box screen");
+  console.log(`Tick-box screens passed: ${tickScreens} met on the walk; boxes, labels and ids; one way to answer live at a time; a member's own question behind its box and on its own; one answer per box written together; each member its own row of the answered list.`);
   console.log(`Vetting page passed: ${vetted} questions listed; verdicts and a note by key and button, kept over a reload; filters and jumps; a failed save shown as failed; a stale record and an orphan.`);
   console.log("Screenshots: /private/tmp/tax-ui-vet-{choice,long,person,stale}.png, /private/tmp/tax-ui-design-{answered-ids,question-id}.png, /private/tmp/tax-ui-design-{question,status,long,roster,answered,return,sheet-order,refusal-provisional,refusal,refused-sheet,about,narrow}.png, /private/tmp/tax-ui-glosses.png, /private/tmp/tax-ui-conflict.png");
 } finally {

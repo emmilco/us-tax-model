@@ -34,8 +34,8 @@
 ## (helper) — `ira.roth_total`
 
 - **Authored helper label:** Roth IRA contributions for 2025 on this return (you and your spouse)
-- **Encoded (NonNegDollars):** Add person.sav_roth over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"person","field":"person.sav_roth","op":"sum_over"}`
+- **Encoded (NonNegDollars):** Add person.sav_roth_if_ira_owner over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.sav_roth_if_ira_owner","op":"sum_over"}`
 - Cite: [i1040gi] p. 95, Line 20, "You can’t deduct contributions to a Roth IRA" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ira.any_trad`
@@ -241,7 +241,7 @@
 ## (helper) — `ira.age50_count`
 
 - **Authored helper label:** Number of spouses age 50 or older at the end of 2025
-- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Were you age 50 or older at the end of 2025?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Age 50 or older at the end of 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.ira_age50",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, Caution, "($15,000 if one spouse is age 50 or older at the end of 2025; $16,000 if both spouses are age 50 or older at the end of 2025)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -304,10 +304,38 @@
 
 ## (screen) — `ira.special`
 
-- **Authored helper label:** Does any of these apply to you or your spouse (the IRA deduction special cases)?
-- **Encoded (Bool):** Input — Does any of these apply to you (or your spouse on a joint return): income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (an amount in box 11 of your Form W-2, in box 12 with code Z, or in box 15 of Form 1099-MISC); taxable non-tuition fellowship or stipend payments for graduate or postdoctoral study not reported on a Form W-2; a repayment to an IRA of a qualified reservist distribution; or difficulty of care payments (qualified foster care payments) used to increase your nondeductible IRA contribution limit?
+- **Authored helper label:** One of the IRA deduction special cases applies (deferred compensation, a fellowship not on a Form W-2, a reservist repayment, difficulty of care payments)
+- **Encoded (Bool):** (helper "Income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan" = true or helper "Taxable non-tuition fellowship or stipend payments not reported on a Form W-2" = true or helper "A repayment to an IRA of a qualified reservist distribution (the answer to scope.reservist_repaid)" = true or helper "Difficulty of care payments used to increase the nondeductible IRA contribution limit" = true)
+- Expr: `{"any":[{"eq":["ira.deferred_comp",{"const":true}],"op":"test"},{"eq":["ira.fellowship",{"const":true}],"op":"test"},{"eq":["ira.reservist_repaid",{"const":true}],"op":"test"},{"eq":["ira.care_payments",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (screen) — `ira.deferred_comp`
+
+- **Authored helper label:** Income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan
+- **Encoded (Bool):** Input — Did you (or your spouse on a joint return) have income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (an amount in box 11 of your Form W-2, in box 12 with code Z, or in box 15 of Form 1099-MISC)?
+- Expr: `{"op":"input","source":"Did you (or your spouse on a joint return) have income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (an amount in box 11 of your Form W-2, in box 12 with code Z, or in box 15 of Form 1099-MISC)?"}`
+- Cite: [i1040gi] p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (screen) — `ira.fellowship`
+
+- **Authored helper label:** Taxable non-tuition fellowship or stipend payments not reported on a Form W-2
+- **Encoded (Bool):** Input — Did you (or your spouse on a joint return) receive taxable non-tuition fellowship or stipend payments for graduate or postdoctoral study that were not reported on a Form W-2?
 - Interpretation: amb.2025.ira_fellowship
-- Expr: `{"op":"input","source":"Does any of these apply to you (or your spouse on a joint return): income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (an amount in box 11 of your Form W-2, in box 12 with code Z, or in box 15 of Form 1099-MISC); taxable non-tuition fellowship or stipend payments for graduate or postdoctoral study not reported on a Form W-2; a repayment to an IRA of a qualified reservist distribution; or difficulty of care payments (qualified foster care payments) used to increase your nondeductible IRA contribution limit?"}`
+- Expr: `{"op":"input","source":"Did you (or your spouse on a joint return) receive taxable non-tuition fellowship or stipend payments for graduate or postdoctoral study that were not reported on a Form W-2?"}`
+- Cite: [i1040gi] p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (screen) — `ira.reservist_repaid`
+
+- **Authored helper label:** A repayment to an IRA of a qualified reservist distribution (the answer to scope.reservist_repaid)
+- **Encoded (Bool):** scope helper "The answer to scope.reservist_repaid, asked only when the question scope.armed_forces is answered Yes (false otherwise)" = true
+- Expr: `{"eq":["scope.reservist_repaid_if_armed_forces",{"const":true}],"op":"test"}`
+- Cite: [i1040gi] p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (screen) — `ira.care_payments`
+
+- **Authored helper label:** Difficulty of care payments used to increase the nondeductible IRA contribution limit
+- **Encoded (Bool):** Input — Did you (or your spouse on a joint return) use difficulty of care payments (qualified foster care payments) to increase your nondeductible IRA contribution limit?
+- Expr: `{"op":"input","source":"Did you (or your spouse on a joint return) use difficulty of care payments (qualified foster care payments) to increase your nondeductible IRA contribution limit?"}`
 - Cite: [i1040gi] p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (screen) — `ira.se_capital`
@@ -327,7 +355,7 @@
 ## (gate) — `ira.special_gate`
 
 - **Authored helper label:** Traditional IRA contributions with an IRA deduction special case (screen)
-- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "Does any of these apply to you or your spouse (the IRA deduction special cases)?" = true
+- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "One of the IRA deduction special cases applies (deferred compensation, a fellowship not on a Form W-2, a reservist repayment, difficulty of care payments)" = true
 - Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"eq":["ira.special",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 95, Line 20, "But read the following list before you fill in the worksheet" (2025; printed date 2026-02-25; sha256 482e9c48)
 

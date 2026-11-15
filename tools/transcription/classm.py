@@ -465,7 +465,12 @@ def main():
     with open(os.path.join(os.path.dirname(JOBS), "lock"), "w") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         main_js = os.path.join(ROOT, "engine", "dist", "main.js")
-        subprocess.run(["node", main_js, "build", *YEAR_ARGS], check=True, stdout=subprocess.DEVNULL)
+        # A build of unchanged sources rewrites the same canonical data: skip it when tools/build_fresh.py finds
+        # canonical/ and engine/dist current, so runs side by side do not each rebuild an unchanged tree.
+        sys.path.insert(0, os.path.join(ROOT, "tools"))
+        import build_fresh
+        if build_fresh.stale():
+            subprocess.run(["node", main_js, "build", *YEAR_ARGS], check=True, stdout=subprocess.DEVNULL)
         subprocess.run(["node", "--max-old-space-size=8192", main_js, "classm-jobs", "--docs", a.doc, "--include-fixtures", *YEAR_ARGS, *ENGINE_ARGS], check=True, stdout=subprocess.DEVNULL)
         jobs = [j for j in json.load(open(JOBS))["jobs"] if j["doc"] == a.doc]
     if not jobs:

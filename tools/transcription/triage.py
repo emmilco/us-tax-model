@@ -172,7 +172,7 @@ def pairs_for(form, project_lines, second_lines, handles):
     exported = {l["id"] for l in T.exported_lines({"id": form, "lines": project_lines})}
     inputs = {l["id"]: l for l in project_lines if l["expr"].get("op") == "input"}
     pkeys = T.marker_keys(project_lines)
-    skeys = {**{i: pkeys[i] for i in inputs}, **T.marker_keys(second_lines)}
+    skeys = {**{i: pkeys[i] for i in inputs}, **T.second_keys(pkeys, second_lines)}
     by_id = {l["id"]: l for l in second_lines}
     by_printed = {skeys[l["id"]]: l for l in second_lines if l["printed"] not in T.HELPER_PRINTED}
     shown = {l["id"]: l.get("shown_when") for l in project_lines}

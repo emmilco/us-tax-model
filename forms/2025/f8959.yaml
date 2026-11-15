@@ -4,18 +4,31 @@ form:
   title: Form 8959 — Additional Medicare Tax on wages and self-employment income
   tax_year: 2025
   note: The total liability feeds Schedule 2 line 11. Additional Medicare withholding feeds Form 1040
-    line 25c, separately from the tax. Railroad and self-employment paths are explicitly refused.
+    line 25c, separately from the tax. Self-employment income (Part II) is figured from Schedule SE.
+    Railroad retirement (RRTA) compensation (Part III) and a wage statement from a U.S. territory are refused.
   lines:
+    - id: f8959.territory_w2
+      printed: (helper)
+      type: Bool
+      label: "Did you (or, on a joint return, your spouse) receive a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR)?"
+      expr:
+        op: input
+        source: "Did you (or, on a joint return, your spouse) receive a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR)?"
+      cite:
+        doc: i8959
+        locator: 'p. 1, Forms W-2 of U.S. territories, "However, for Form 499R-2/W-2PR, Medicare"'
     - id: f8959.unsupported
       printed: (helper)
       type: Bool
-      label: 'Do you (or, on a joint return, your spouse) have any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?'
+      label: 'A wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR), which this tool does not prepare (true when f8959.territory_w2 is answered Yes)'
       expr:
-        op: input
-        source: 'Do you (or, on a joint return, your spouse) have any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?'
+        op: test
+        eq:
+        - f8959.territory_w2
+        - const: true
       cite:
-        doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        doc: i8959
+        locator: 'p. 1, Forms W-2 of U.S. territories, "However, for Form 499R-2/W-2PR, Medicare"'
     - id: f8959.zero
       printed: (helper)
       type: NonNegDollars
@@ -41,7 +54,9 @@ form:
       refuses:
         - when: f8959.unsupported
           form: Form 8959 additional source forms
-          remedy: The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.
+          remedy: Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in
+            Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare
+            Form 8959 with one.
           cite:
             doc: f8959
             locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
@@ -58,7 +73,9 @@ form:
       refuses:
         - when: f8959.unsupported
           form: Form 8959 additional source forms
-          remedy: The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.
+          remedy: Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in
+            Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare
+            Form 8959 with one.
           cite:
             doc: f8959
             locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
@@ -75,7 +92,9 @@ form:
       refuses:
         - when: f8959.unsupported
           form: Form 8959 additional source forms
-          remedy: The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.
+          remedy: Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in
+            Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare
+            Form 8959 with one.
           cite:
             doc: f8959
             locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
@@ -89,11 +108,14 @@ form:
         field: person.se_line6
       cite:
         doc: f8959
-        locator: Form 8959 (2025), line 8 (on a joint return, the combined amounts of both spouses' Schedules SE, line 6)
+        locator: Form 8959 (2025), line 8 (on a joint return, the combined amounts of both spouses' Schedules SE, line 6);
+          i8959 p. 3, Line 8, "Enter your self-employment income from Schedule SE (Form 1040), Part I, line 6"
       refuses:
         - when: f8959.unsupported
           form: Form 8959 additional source forms
-          remedy: The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.
+          remedy: Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in
+            Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare
+            Form 8959 with one.
           cite:
             doc: f8959
             locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
@@ -106,11 +128,13 @@ form:
         from: f8959.zero
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: Form 8959 (2025), lines 1–24; i8959 p. 4, Line 14, "Enter the total of your RRTA compensation and tips"
       refuses:
         - when: f8959.unsupported
           form: Form 8959 additional source forms
-          remedy: The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.
+          remedy: Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in
+            Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare
+            Form 8959 with one.
           cite:
             doc: f8959
             locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
@@ -123,11 +147,14 @@ form:
         from: f8959.zero
       cite:
         doc: f8959
-        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+        locator: Form 8959 (2025), lines 1–24; i8959 p. 4, Line 23, "Enter the amount of Additional Medicare Tax withheld, if
+          any, reported on Form W-2, box 14"
       refuses:
         - when: f8959.unsupported
           form: Form 8959 additional source forms
-          remedy: The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.
+          remedy: Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in
+            Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare
+            Form 8959 with one.
           cite:
             doc: f8959
             locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
@@ -293,11 +320,13 @@ form:
       cite:
         doc: f8959
         locator: p. 1, Part V, line 19, "Medicare tax withheld from Form W-2, box 6", "enter the total of the amounts
-          from box 6"; i8959 pp. 1–3
+          from box 6"; i8959 p. 4, Line 19, "Enter the amount of Medicare tax withheld, if any, reported on Form W-2, box 6"
       refuses:
         - when: f8959.unsupported
           form: Form 8959 additional source forms
-          remedy: The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.
+          remedy: Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in
+            Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare
+            Form 8959 with one.
           cite:
             doc: f8959
             locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3

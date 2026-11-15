@@ -14,6 +14,38 @@
   },
   {
    "printed": "16",
+   "project_expr_sha256": "702258c68b1cd6a2ef8519da90c1213b39d07d63a545d7ba20a31dd7d76bf14f",
+   "second_expr_sha256": "599070f6295828f7d9c26d27c8ee1c327b1796083b26957e3c65d94927df1579",
+   "ruling": "Ruling: representation; both take the Schedule D Tax Worksheet, else the Qualified Dividends and Capital Gain Tax Worksheet, else the tax on line 15 (i1040gi p. 36, Line 16, \"Use the Qualified Dividends and Capital Gain Tax Worksheet, later, to figure your tax if you don't have to use the Schedule D Tax Worksheet\"); the reply tests f1040.line3a directly where the project reads f1040.line3a_if_ordinary (zero when the parent question about ordinary dividends is No), and the reply lists no refusal for the other line 16 taxes, which the project refuses by scope.other_line16 (its note: taken to be screened elsewhere). Triage executable-triage-v2 (.transcription/triage/2025/f1040.json, pass 99250f853f76): 2,603 of 2,769 agree; no value difference; 130 candidate-unknown (9 on completed returns, f1040.line3a unasked, project equal to qdcg.line25), 36 project-refuses (scope.other_line16) on refused returns.",
+   "context": "b6bac0bbcbd83f3231388095f62fea9fd12f374e66a309631e5d8ac79ecc8b03",
+   "date": "2026-11-14",
+   "run": "e1322ce57e7cd96ee0005cc8f39eda637516a98efefad4b8dc6ab8c33a0fcfc0",
+   "subject_key": "7d6a7065f233e286c7cf876f6b99dc5533362a9030c423c0c5424918e0dde685",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.clcw_next_year.3.deepseek@f1040",
+     "fixture:classm.sa.6.deepseek@f1040",
+     "fixture:classm.carloan.2@f1040",
+     "fixture:classm.f2441.1@f1040",
+     "fixture:classm.f2441.2@f1040",
+     "fixture:classm.f2441.4@f1040",
+     "fixture:classm.f2441.5@f1040",
+     "fixture:classm.f2441.6@f1040",
+     "fixture:classm.f8960.2@f1040",
+     "fixture:classm.sli.1@f1040",
+     "fixture:classm.ssb.1@f1040",
+     "fixture:stage9.eic.refuse.other_income@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
    "project_expr_sha256": "a4cca324b317d7a6dd5925bbcf0dae4ecaf5710fb985e646090d5b797eb226bd",
    "second_expr_sha256": "3a26ef698b756cba7fd825132af48a5844130e4d7450d5a91cf367a097ee4c5e",
    "ruling": "Ruling: model error; inherited from the candidate's own lines 6b and 1e. executable-triage-v2 (triage/f1040.json; 1,306 fixtures, 500 generated returns seed 20261026, 313 partial records from 40 bases; 2,119 comparisons): 1,159 of 2,119 agree; 960 differ: 783 candidate-unknown, 101 candidate-refuses, 76 project-refuses, no value difference; completed returns 489 candidate-unknown and 4 candidate-refuses. The witnesses trace outside the line's own worksheet choice: (a) witnesses 0 to 5 (classm.f2441.1.deepseek to .6.deepseek, completed, project e.g. $2,825.00) need ssb.pub915 through the candidate's line 6b, which declares the refusals ssb.pub915, ssb.lump_sum and ssb.terror_disability on every return, whereas i1040gi p. 31, Lines 6a and 6b, asks them only of a filer with benefits (\"Use the Social Security Benefits Worksheet in these instructions to see if any of your benefits are taxable. Exception. Do not use the Social Security Benefits Worksheet in these instructions if any of the following applies\"); (b) the candidate refusals (f2441.plans_differ on the completed classm.s3.3.deepseek, classm.f5695.8; s3.mfs on classm.qdcg.3) come through its line 1e = f2441.line26 (i1040gi p. 24, Line 1e: \"Enter the total of your taxable dependent care benefits from Form 2441, line 26. Dependent care benefits should be shown in box 10 of your Form(s) W-2. But first complete Form 2441 to see if you can exclude part or all of the benefits\"; Form 2441 p. 1, Part I: \"Did you receive dependent care benefits? No. Complete only Part II below\"). The 76 project refusals are returns the project refuses on cited screens (household.hoh_fails, qbi.business_any) while the candidate stops earlier or computes. The candidate's own line 16 selection (Schedule D Tax Worksheet, Qualified Dividends and Capital Gain Tax Worksheet, else Tax Table or Tax Computation Worksheet) produced no value difference. Same ruling as round 4. Project stands.",

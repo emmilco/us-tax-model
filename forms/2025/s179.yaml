@@ -235,17 +235,97 @@ form:
     cite:
       doc: i4562
       locator: p. 5, Line 5, "If line 5 is zero, you cannot elect to expense any section 179 property. In this case, skip lines 6 through 11"
+  - id: s179.prior_form
+    printed: (helper)
+    label: A section 179 deduction of an earlier year is still carried over (an amount on line 13 of the last Form 4562)
+    type: Bool
+    gated_by: s179.prior_form_if_before
+    expr:
+      op: input
+      source: Do you (or, on a joint return, your spouse) have a deduction for business equipment left over from an
+        earlier year?
+    cite:
+      doc: i4562
+      locator: 'p. 5, Line 10, "The carryover of disallowed deduction from 2024 is the amount of section 179 property, if
+        any, you elected to expense in previous years that was not allowed as a deduction because of the business income
+        limitation" and "If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562" (owner:
+        the printed amount)'
+  - id: s179.prior_form_if_before
+    printed: (gate)
+    label: Whether a section 179 deduction of an earlier year is still carried over, asked only of a filer who owned a
+      business, a farm, a rental property or a share of a partnership or an S corporation in a year before 2025 (false
+      otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scope.business_before
+          - const: true
+        then: s179.prior_form
+      - guard:
+          op: test
+          eq:
+          - scope.business_before
+          - const: false
+        then: s179.no
+    cite:
+      doc: i4562
+      locator: 'p. 5, Line 10, "The carryover of disallowed deduction from 2024 is the amount of section 179 property, if
+        any, you elected to expense in previous years that was not allowed as a deduction because of the business income
+        limitation" and "If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562" (owner:
+        the printed amount)'
+  - id: s179.carryover
+    printed: (helper)
+    label: The carryover of disallowed deduction from line 13 of the 2024 Form 4562, as entered
+    type: NonNegDollars
+    gated_by: s179.carryover_if_prior_form
+    expr:
+      op: input
+      source: How much is left over? It is on line 13 of your (or, on a joint return, your spouse's) 2024 Form 4562, or
+        of the last Form 4562 you filed if you filed none for 2024.
+    cite:
+      doc: i4562
+      locator: 'p. 5, Line 10, "The carryover of disallowed deduction from 2024 is the amount of section 179 property, if
+        any, you elected to expense in previous years that was not allowed as a deduction because of the business income
+        limitation" and "If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562" (owner:
+        the printed amount)'
+  - id: s179.carryover_if_prior_form
+    printed: (gate)
+    label: The carryover of disallowed deduction, asked only when a deduction of an earlier year is left over (zero
+      otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s179.prior_form_if_before
+          - const: true
+        then: s179.carryover
+      - guard:
+          op: test
+          eq:
+          - s179.prior_form_if_before
+          - const: false
+        then: s179.zero
+    cite:
+      doc: i4562
+      locator: 'p. 5, Line 10, "The carryover of disallowed deduction from 2024 is the amount of section 179 property, if
+        any, you elected to expense in previous years that was not allowed as a deduction because of the business income
+        limitation" and "If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562" (owner:
+        the printed amount)'
   - id: s179.line10
     printed: '10'
     shown_when: s179.show10
     label: Carryover of disallowed deduction from line 13 of your 2024 Form 4562
     type: NonNegDollars
     expr:
-      op: input
-      source: The carryover of disallowed section 179 deduction from line 13 of your (and, on a joint return, your spouse's)
-        2024 Form 4562 (zero if none). If you did not file a 2024 Form 4562 (it is required only when a deduction is
-        claimed), use line 13 of the last Form 4562 you filed (section 179 cost elected in an earlier year and not yet
-        allowed because of the business income limit carries over until it is deducted)
+      op: copy
+      from: s179.carryover_if_prior_form
     cite:
       doc: i4562
       locator: 'p. 5, Line 10, "The carryover of disallowed deduction from 2024 is the amount of section 179 property, if

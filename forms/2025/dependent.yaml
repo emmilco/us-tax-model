@@ -130,6 +130,7 @@ form:
     - id: dependent.joint_return
       printed: (helper)
       type: Bool
+      gated_by: dependent.joint_return_if_ever_married
       label: Included on a 2025 joint return filed other than only to claim a refund?
       expr:
         op: input
@@ -264,6 +265,7 @@ form:
     - id: dependent.kidnapped
       printed: (helper)
       type: Bool
+      gated_by: dependent.kidnapped_if_part_year
       label: A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?
       expr:
         op: input
@@ -731,11 +733,20 @@ form:
       type: Bool
       label: Lived with you for more than half of 2025
       expr:
-        op: test
-        gt:
-          - dependent.months
-          - const: 6
-            type: Count
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.lived_all_year
+            - const: true
+          then: dependent.lived_all_year
+        - guard:
+            op: test
+            eq:
+            - dependent.lived_all_year
+            - const: false
+          then: dependent.lived_half_counted
       cite:
         doc: i1040gi
         locator: p. 17, Step 1, "Who lived with you for more than half of 2025"
@@ -758,7 +769,7 @@ form:
             eq:
             - dependent.under_7_months
             - const: true
-          then: dependent.kidnapped
+          then: dependent.kidnapped_if_part_year
         - guard:
             op: test
             eq:
@@ -833,13 +844,13 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.self_support
+            - dependent.self_support_if_own_money
             - const: true
           then: dependent.no
         - guard:
             op: test
             eq:
-            - dependent.self_support
+            - dependent.self_support_if_own_money
             - const: false
           then: dependent.qc_from_joint
       cite:
@@ -855,13 +866,13 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.joint_return
+            - dependent.joint_return_if_ever_married
             - const: true
           then: dependent.no
         - guard:
             op: test
             eq:
-            - dependent.joint_return
+            - dependent.joint_return_if_ever_married
             - const: false
           then: dependent.lived_half
       cite:
@@ -886,13 +897,13 @@ form:
           cite:
             doc: i1040gi
             locator: p. 21, Qualifying child of more than one person
-        - when: dependent.divorced_rule
+        - when: dependent.divorced_rule_if_parents_apart
           form: Children of divorced or separated parents
           remedy: The rule for children of divorced or separated parents is outside this tool.
           cite:
             doc: i1040gi
             locator: p. 20, Children of divorced or separated parents
-        - when: dependent.married
+        - when: dependent.married_if_ever_married_qc
           form: Married person rules
           remedy: A married dependent is outside this tool; see Married person in the instructions.
           cite:
@@ -908,13 +919,13 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.citizen
+            - dependent.citizen_known
             - const: true
-          then: dependent.citizen
+          then: dependent.citizen_known
         - guard:
             op: test
             eq:
-            - dependent.citizen
+            - dependent.citizen_known
             - const: false
           then: dependent.canada_mexico
       cite:
@@ -1028,7 +1039,7 @@ form:
             - const: true
         - op: test
           eq:
-          - dependent.qr_all_year
+          - dependent.household_all_year
           - const: true
       cite:
         doc: i1040gi
@@ -1057,7 +1068,7 @@ form:
           all:
           - op: test
             eq:
-            - dependent.qr_all_year
+            - dependent.household_all_year
             - const: true
           - op: test
             eq:
@@ -1224,7 +1235,7 @@ form:
             eq:
             - dependent.under_19_kidnap
             - const: true
-          then: dependent.kidnapped
+          then: dependent.kidnapped_if_part_year
         - guard:
             op: test
             eq:
@@ -1269,7 +1280,7 @@ form:
           cite:
             doc: i1040gi
             locator: pp. 19–20, Exception to gross income test
-        - when: dependent.married
+        - when: dependent.married_if_ever_married_qr
           form: Married person rules
           remedy: A married dependent is outside this tool; see Married person in the instructions.
           cite:
@@ -1337,13 +1348,13 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.tin
+            - dependent.tin_known
             - const: false
           then: dependent.meets_tests
         - guard:
             op: test
             eq:
-            - dependent.tin
+            - dependent.tin_known
             - const: true
           then: dependent.no
       cite:
@@ -1390,13 +1401,13 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.tin
+            - dependent.tin_known
             - const: true
           then: dependent.ctc_from_citizen
         - guard:
             op: test
             eq:
-            - dependent.tin
+            - dependent.tin_known
             - const: false
           then: dependent.no
       cite:
@@ -1412,13 +1423,13 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.citizen
+            - dependent.citizen_known
             - const: true
           then: dependent.ctc_from_age
         - guard:
             op: test
             eq:
-            - dependent.citizen
+            - dependent.citizen_known
             - const: false
           then: dependent.no
       cite:
@@ -1456,13 +1467,13 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.work_ssn
+            - dependent.work_ssn_known
             - const: true
           then: household.ctc_ssn
         - guard:
             op: test
             eq:
-            - dependent.work_ssn
+            - dependent.work_ssn_known
             - const: false
           then: dependent.no
       cite:
@@ -1659,7 +1670,7 @@ form:
                   - const: true
               - op: test
                 eq:
-                  - dependent.married
+                  - dependent.married_known
                   - const: false
               - op: test
                 eq:
@@ -1763,15 +1774,15 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.other_claimant
+            - dependent.qc_relationship
             - const: true
-          then: dependent.tiebreak_other
+          then: dependent.qc_tiebreak_from_age
         - guard:
             op: test
             eq:
-            - dependent.other_claimant
+            - dependent.qc_relationship
             - const: false
-          then: dependent.no
+          then: dependent.qc_tiebreak_other_age
       cite:
         doc: p501
         locator: p. 15, Qualifying Child of More Than One Person, "Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person."; i1040gi p. 19, Step 4, "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid."
@@ -1832,13 +1843,13 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.joint_return
+            - dependent.joint_return_if_ever_married
             - const: true
           then: dependent.no
         - guard:
             op: test
             eq:
-            - dependent.joint_return
+            - dependent.joint_return_if_ever_married
             - const: false
           then: dependent.us_half
       cite:
@@ -1871,7 +1882,7 @@ form:
           cite:
             doc: i1040gi
             locator: p. 44, Qualifying child of more than one person
-        - when: dependent.married
+        - when: dependent.married_if_ever_married_eic
           form: Married child (EIC)
           remedy: A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person.
           cite:
@@ -1910,13 +1921,13 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.kidnapped
+            - dependent.kidnapped_if_part_year
             - const: true
           then: dependent.not_us_half
         - guard:
             op: test
             eq:
-            - dependent.kidnapped
+            - dependent.kidnapped_if_part_year
             - const: false
           then: dependent.no
       cite:
@@ -1968,7 +1979,7 @@ form:
             eq:
             - dependent.eic_child
             - const: true
-          then: dependent.eic_ssn
+          then: dependent.eic_ssn_known
         - guard:
             op: test
             eq:
@@ -2248,6 +2259,7 @@ form:
       printed: (helper)
       label: This dependent's modified AGI (Worksheet 1-2)
       type: Dollars
+      gated_by: dependent.ptc_magi_counted
       expr:
         op: input
         source: 'This dependent''s modified AGI for 2025: the AGI on their return (line 11a), plus their tax-exempt interest
@@ -2455,7 +2467,7 @@ form:
         locator: 'p. 4, Qualified Education Expenses, "American opportunity credit: Qualified education expenses include amounts
           paid for tuition, fees, and course materials, which include books, supplies, and equipment needed for a course of study,
           whether or not the materials are purchased from the educational institution as a condition of enrollment or attendance."'
-    - id: dependent.edu_a2025
+    - id: dependent.edu_a_this_year
       printed: (helper)
       label: Adjusted Qualified Education Expenses Worksheet, line 2a
       type: NonNegDollars
@@ -2470,7 +2482,7 @@ form:
         doc: i8863
         locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "a. Tax-free educational assistance received in 2025 allocable
           to the academic period"
-    - id: dependent.edu_a2026
+    - id: dependent.edu_a_next_year
       printed: (helper)
       label: Adjusted Qualified Education Expenses Worksheet, line 2b
       type: NonNegDollars
@@ -2501,8 +2513,8 @@ form:
       expr:
         op: sum
         of:
-        - dependent.edu_a2025
-        - dependent.edu_a2026
+        - dependent.edu_a_this_year
+        - dependent.edu_a_next_year
         - dependent.edu_refunds
       cite:
         doc: i8863
@@ -2533,6 +2545,7 @@ form:
       printed: (gate)
       label: An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution
       type: Bool
+      gated_by: dependent.edu_over_if_adj
       expr:
         op: input
         source: Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more
@@ -2718,6 +2731,7 @@ form:
       printed: (gate)
       label: The institution's employer identification number (EIN) is available
       type: Bool
+      gated_by: dependent.edu_aoc_tin
       expr:
         op: input
         source: Do you have the educational institution's employer identification number (EIN), from Form 1098-T or from the institution?
@@ -3140,11 +3154,20 @@ form:
       type: Bool
       label: Lived with you for fewer than 7 months of 2025, not counting the time missing
       expr:
-        op: test
-        lt:
-          - dependent.months
-          - const: 7
-            type: Count
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.lived_all_year
+            - const: true
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.lived_all_year
+            - const: false
+          then: dependent.under_7_counted
       cite:
         doc: p501
         locator: p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true." (a child who lived with you for more than half of 2025 meets the residency test without this treatment)
@@ -3194,13 +3217,13 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.tin
+            - dependent.tin_known
             - const: true
           then: dependent.odc_from_citizen
         - guard:
             op: test
             eq:
-            - dependent.tin
+            - dependent.tin_known
             - const: false
           then: dependent.no
       cite:
@@ -3217,13 +3240,13 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.citizen
+            - dependent.citizen_known
             - const: true
           then: dependent.odc_from_ctc
         - guard:
             op: test
             eq:
-            - dependent.citizen
+            - dependent.citizen_known
             - const: false
           then: dependent.no
       cite:
@@ -3287,7 +3310,7 @@ form:
             eq:
             - dependent.qr_income
             - const: true
-          then: dependent.supported
+          then: dependent.supported_by_view
         - guard:
             op: test
             eq:
@@ -3298,6 +3321,636 @@ form:
         doc: i1040gi
         locator: p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?"
     # --- end Stage 19 ---
+    - id: dependent.lived_all_year
+      printed: (helper)
+      type: Bool
+      label: "Lived with you for all of 2025 (for a person born, adopted or placed with you in 2025, or who died in 2025, all of their part of the year)?"
+      expr:
+        op: input
+        source: "Did this person live with you for all of 2025? For a person who was born or who died in 2025, answer for the whole time the person was alive; for a person you adopted, who was lawfully placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025, answer for the whole time since the adoption or placement. Count temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility, and a newborn's required hospital stay following birth, as time lived with you. Do not count time a child presumed kidnapped was missing because of the kidnapping: for that child, answer No."
+      cite:
+        doc: i1040gi
+        locator: "p. 17, Step 1, \"Who lived with you for more than half of 2025\"; p. 21, Exception to time lived with you (\"the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025\"; \"Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025\"); p501 p. 13, Kidnapped child, \"You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true.\""
+    - id: dependent.lived_half_counted
+      printed: (helper)
+      type: Bool
+      label: "Lived with you for more than 6 months of 2025, by the months entered"
+      expr:
+        op: test
+        gt:
+          - dependent.months
+          - const: 6
+            type: Count
+      cite:
+        doc: i1040gi
+        locator: "p. 17, Step 1, \"Who lived with you for more than half of 2025\""
+    - id: dependent.under_7_counted
+      printed: (helper)
+      type: Bool
+      label: "Lived with you for fewer than 7 months of 2025, by the months entered"
+      expr:
+        op: test
+        lt:
+          - dependent.months
+          - const: 7
+            type: Count
+      cite:
+        doc: p501
+        locator: "p. 13, Kidnapped child, \"You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true.\""
+    - id: dependent.kidnapped_if_part_year
+      printed: (gate)
+      type: Bool
+      label: "Whether this is a child presumed kidnapped and missing at some time in 2025, asked only of a person who did not live with you for all of 2025 (false for one who did)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.lived_all_year
+            - const: true
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.lived_all_year
+            - const: false
+          then: dependent.kidnapped
+      cite:
+        doc: p501
+        locator: "p. 13, Kidnapped child, \"You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true.\" (time the child was missing is not time lived with you, so a person who lived with you for all of 2025 was not missing in 2025)"
+    - id: dependent.household_all_year
+      printed: (helper)
+      type: Bool
+      label: "Lived with you all of 2025 as a member of your household: Yes for a person who lived with you for all of 2025, asked for anyone else"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.lived_all_year
+            - const: true
+          then: dependent.lived_all_year
+        - guard:
+            op: test
+            eq:
+            - dependent.lived_all_year
+            - const: false
+          then: dependent.qr_all_year
+      cite:
+        doc: p501
+        locator: "p. 19, Member of Household or Relationship Test, \"If at any time during the year the person was your spouse, that person can’t be your qualifying relative.\""
+    - id: dependent.ever_married
+      printed: (helper)
+      type: Bool
+      label: "Ever married (at any time up to the end of 2025)?"
+      expr:
+        op: input
+        source: "Has this person ever been married (at any time up to the end of 2025, even if the marriage has since ended by death, divorce or annulment)?"
+      cite:
+        doc: i1040gi
+        locator: "p. 21, Married person, \"If the person is married and files a joint return, you can’t claim that person as your dependent.\""
+    - id: dependent.joint_return_if_ever_married
+      printed: (gate)
+      type: Bool
+      label: "Whether a 2025 joint return other than one filed only to claim a refund includes this person, asked only of a person who has ever been married (false for one who has not)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.ever_married
+            - const: true
+          then: dependent.joint_return
+        - guard:
+            op: test
+            eq:
+            - dependent.ever_married
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: "p. 21, Married person, \"If the person is married and files a joint return, you can’t claim that person as your dependent.\""
+    - id: dependent.own_money
+      printed: (helper)
+      type: Bool
+      label: "Had income, benefits, savings, loans or other funds of their own in 2025, or owned the home they lived in?"
+      expr:
+        op: input
+        source: "In 2025, did this person have any income, benefits, savings, borrowed money or other funds or property of their own, or own the home they lived in? Count pay from a job, social security or other benefits paid for this person, a trust or savings in the person's name, and loans the person took out. A person with none of these provided none of their own support."
+      cite:
+        doc: p501
+        locator: "p. 19, \"A person’s own funds aren’t support unless they are actually spent for support.\"; p. 21, Person living in their own home, \"The total fair rental value of a person’s home that the person owns is considered support contributed by that person.\""
+    - id: dependent.self_support_if_own_money
+      printed: (gate)
+      type: Bool
+      label: "Whether this person provided over half of their own support, asked only of a person with funds or a home of their own (false for one with none)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.own_money
+            - const: true
+          then: dependent.self_support_by_view
+        - guard:
+            op: test
+            eq:
+            - dependent.own_money
+            - const: false
+          then: dependent.no
+      cite:
+        doc: p501
+        locator: "p. 19, \"A person’s own funds aren’t support unless they are actually spent for support.\""
+    - id: dependent.parents_apart
+      printed: (helper)
+      type: Bool
+      label: "A child whose parents are divorced, legally separated, separated under a written agreement, or lived apart for the last 6 months of 2025?"
+      expr:
+        op: input
+        source: "Is this person a child whose parents are divorced or legally separated, are separated under a written separation agreement, or lived apart at all times during the last 6 months of 2025 (whether or not they are or were married)?"
+      cite:
+        doc: i1040gi
+        locator: "p. 20, Children of divorced or separated parents"
+    - id: dependent.divorced_rule_screen
+      printed: (helper)
+      type: Bool
+      label: "Screen for the rule for children of divorced or separated parents, read only for a child whose parents are apart"
+      expr:
+        op: copy
+        from: dependent.no
+      cite:
+        doc: i1040gi
+        locator: "p. 20, Children of divorced or separated parents"
+      refuses:
+        - when: dependent.divorced_rule
+          form: "Children of divorced or separated parents"
+          remedy: "The rule for children of divorced or separated parents is outside this tool."
+          cite:
+            doc: i1040gi
+            locator: "p. 20, Children of divorced or separated parents"
+    - id: dependent.divorced_rule_if_parents_apart
+      printed: (gate)
+      type: Bool
+      label: "Whether the rule for children of divorced or separated parents applies, asked only of a child whose parents are apart (false for anyone else)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.parents_apart
+            - const: true
+          then: dependent.divorced_rule_screen
+        - guard:
+            op: test
+            eq:
+            - dependent.parents_apart
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: "p. 20, Children of divorced or separated parents"
+    - id: dependent.married_screen_qc
+      printed: (helper)
+      type: Bool
+      label: "Screen for the married person rules, read only for a person who has ever been married"
+      expr:
+        op: copy
+        from: dependent.no
+      cite:
+        doc: i1040gi
+        locator: "p. 21, Married person"
+      refuses:
+        - when: dependent.married
+          form: "Married person rules"
+          remedy: "A married dependent is outside this tool; see Married person in the instructions."
+          cite:
+            doc: i1040gi
+            locator: "p. 21, Married person"
+    - id: dependent.married_if_ever_married_qc
+      printed: (gate)
+      type: Bool
+      label: "Whether this person was married at the end of 2025 or is on a 2025 joint return, asked only of a person who has ever been married (false for one who has not)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.ever_married
+            - const: true
+          then: dependent.married_screen_qc
+        - guard:
+            op: test
+            eq:
+            - dependent.ever_married
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: "p. 21, Married person"
+    - id: dependent.married_screen_qr
+      printed: (helper)
+      type: Bool
+      label: "Screen for the married person rules, read only for a person who has ever been married"
+      expr:
+        op: copy
+        from: dependent.no
+      cite:
+        doc: i1040gi
+        locator: "p. 21, Married person"
+      refuses:
+        - when: dependent.married
+          form: "Married person rules"
+          remedy: "A married dependent is outside this tool; see Married person in the instructions."
+          cite:
+            doc: i1040gi
+            locator: "p. 21, Married person"
+    - id: dependent.married_if_ever_married_qr
+      printed: (gate)
+      type: Bool
+      label: "Whether this person was married at the end of 2025 or is on a 2025 joint return, asked only of a person who has ever been married (false for one who has not)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.ever_married
+            - const: true
+          then: dependent.married_screen_qr
+        - guard:
+            op: test
+            eq:
+            - dependent.ever_married
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: "p. 21, Married person"
+    - id: dependent.married_screen_eic
+      printed: (helper)
+      type: Bool
+      label: "Screen for the married person rules, read only for a person who has ever been married"
+      expr:
+        op: copy
+        from: dependent.no
+      cite:
+        doc: i1040gi
+        locator: "p. 44, Married child"
+      refuses:
+        - when: dependent.married
+          form: "Married child (EIC)"
+          remedy: "A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person."
+          cite:
+            doc: i1040gi
+            locator: "p. 44, Married child"
+    - id: dependent.married_if_ever_married_eic
+      printed: (gate)
+      type: Bool
+      label: "Whether this person was married at the end of 2025 or is on a 2025 joint return, asked only of a person who has ever been married (false for one who has not)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.ever_married
+            - const: true
+          then: dependent.married_screen_eic
+        - guard:
+            op: test
+            eq:
+            - dependent.ever_married
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: "p. 44, Married child"
+    - id: dependent.qc_tiebreak_from_age
+      printed: (gate)
+      type: Bool
+      label: "The tie-breaker gate for a person of a qualifying child relationship: by the age test"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_age
+            - const: true
+          then: dependent.qc_tiebreak_claimant
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_age
+            - const: false
+          then: dependent.qc_tiebreak_not_child
+      cite:
+        doc: p501
+        locator: "p. 15, Qualifying Child of More Than One Person, \"Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person.\""
+    - id: dependent.qc_tiebreak_claimant
+      printed: (gate)
+      type: Bool
+      label: "The tie-breaker gate for a person who meets your relationship and age tests"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.other_claimant
+            - const: true
+          then: dependent.tiebreak_other
+        - guard:
+            op: test
+            eq:
+            - dependent.other_claimant
+            - const: false
+          then: dependent.no
+      cite:
+        doc: p501
+        locator: "p. 15, Qualifying Child of More Than One Person, \"Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person.\""
+    - id: dependent.qc_tiebreak_not_child
+      printed: (gate)
+      type: Bool
+      label: "The tie-breaker gate for a person who cannot be your qualifying child: the qualifying child of another person who is a taxpayer"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.other_claimant
+            - const: true
+          then: dependent.other_is_taxpayer
+        - guard:
+            op: test
+            eq:
+            - dependent.other_claimant
+            - const: false
+          then: dependent.no
+      cite:
+        doc: p501
+        locator: "p. 15, Qualifying Child of More Than One Person, \"Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person.\""
+    - id: dependent.other_is_taxpayer
+      printed: (helper)
+      type: Bool
+      label: "Some other person this person is a qualifying child of is a taxpayer"
+      expr:
+        op: test
+        eq:
+          - dependent.other_nontaxpayer
+          - const: false
+      cite:
+        doc: i1040gi
+        locator: "p. 19, Step 4, \"Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025. For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid.\""
+    - id: dependent.self_support_view
+      printed: (helper)
+      type: Enum(dependent_support_view)
+      label: "Provided over half of their own support: clearly not, clearly so, or close or not sure"
+      expr:
+        op: input
+        source: "Did this person provide over half of their own support for 2025? Answer under_half if the person clearly provided less than half, over_half if the person clearly provided more than half, and unsure if it is close or you are not sure; the support test is then asked in full."
+      cite:
+        doc: i1040gi
+        locator: "p. 17, Step 1, \"Who didn't provide over half of their own support for 2025\""
+    - id: dependent.self_support_view_over
+      printed: (helper)
+      type: Bool
+      label: "The filer answered that this person clearly provided over half of their own support"
+      expr:
+        op: test
+        eq:
+          - dependent.self_support_view
+          - const: over_half
+      cite:
+        doc: i1040gi
+        locator: "p. 17, Step 1, \"Who didn't provide over half of their own support for 2025\""
+    - id: dependent.self_support_by_view
+      printed: (gate)
+      type: Bool
+      label: "Whether this person provided over half of their own support: by the plain answer where it is clear, by the full support test where it is close or unsure"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.self_support_view
+            - const: under_half
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.self_support_view
+            - const: over_half
+          then: dependent.self_support_view_over
+        - guard:
+            op: test
+            eq:
+            - dependent.self_support_view
+            - const: unsure
+          then: dependent.self_support
+      cite:
+        doc: i1040gi
+        locator: "p. 17, Step 1, \"Who didn't provide over half of their own support for 2025\""
+    - id: dependent.supported_view
+      printed: (helper)
+      type: Enum(dependent_support_view)
+      label: "You provided over half of this person's support: clearly not, clearly so, or close or not sure"
+      expr:
+        op: input
+        source: "Did you provide over half of this person's support in 2025? Answer under_half if you clearly provided less than half, over_half if you clearly provided more than half, and unsure if it is close or you are not sure; the support test is then asked in full."
+      cite:
+        doc: i1040gi
+        locator: "p. 19, Step 4, \"For whom you provided over half of the person's support in 2025\""
+    - id: dependent.supported_view_over
+      printed: (helper)
+      type: Bool
+      label: "The filer answered that they clearly provided over half of this person's support"
+      expr:
+        op: test
+        eq:
+          - dependent.supported_view
+          - const: over_half
+      cite:
+        doc: i1040gi
+        locator: "p. 19, Step 4, \"For whom you provided over half of the person's support in 2025\""
+    - id: dependent.supported_by_view
+      printed: (gate)
+      type: Bool
+      label: "Whether you provided over half of this person's support: by the plain answer where it is clear, by the full support test where it is close or unsure"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.supported_view
+            - const: under_half
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.supported_view
+            - const: over_half
+          then: dependent.supported_view_over
+        - guard:
+            op: test
+            eq:
+            - dependent.supported_view
+            - const: unsure
+          then: dependent.supported
+      cite:
+        doc: i1040gi
+        locator: "p. 19, Step 4, \"For whom you provided over half of the person's support in 2025\""
+    - id: dependent.citizen_ssn
+      printed: (helper)
+      type: Bool
+      label: A U.S. citizen with a social security number issued by the due date of your return, on a card with no work restriction?
+      expr:
+        op: input
+        source: "Is this person a U.S. citizen who has a social security number issued before the due date of your 2025 return (including extensions), on a card that carries no restriction such as \"Not Valid for Employment\" or \"Valid for Work Only With DHS Authorization\"? Such a person is a U.S. citizen, has an SSN issued by the due date, and has an SSN that is valid for employment and for the EIC."
+      cite:
+        doc: i1040gi
+        locator: "p. 18, Step 2, question 1, and Step 3, question 2; p. 18, Step 3, question 1, and p. 19, Step 5, question 2; p. 18, Step 3, question 4; p. 22, \"if “Valid for Work Only With DHS Authorization” is printed on your child’s social security card, your child has the required SSN only as long as the DHS authorization is valid\""
+    - id: dependent.citizen_known
+      printed: (helper)
+      type: Bool
+      label: "U.S. citizen, U.S. national or U.S. resident alien: Yes for a U.S. citizen with a social security number, asked for anyone else"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.citizen_ssn
+            - const: true
+          then: dependent.citizen_ssn
+        - guard:
+            op: test
+            eq:
+            - dependent.citizen_ssn
+            - const: false
+          then: dependent.citizen
+      cite:
+        doc: i1040gi
+        locator: "p. 18, Step 2, question 1, and Step 3, question 2"
+    - id: dependent.tin_known
+      printed: (helper)
+      type: Bool
+      label: "SSN, ITIN or ATIN issued on or before the due date of your return: Yes for a U.S. citizen with a social security number, asked for anyone else"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.citizen_ssn
+            - const: true
+          then: dependent.citizen_ssn
+        - guard:
+            op: test
+            eq:
+            - dependent.citizen_ssn
+            - const: false
+          then: dependent.tin
+      cite:
+        doc: i1040gi
+        locator: "p. 18, Step 3, question 1, and p. 19, Step 5, question 2"
+    - id: dependent.work_ssn_known
+      printed: (helper)
+      type: Bool
+      label: "SSN valid for employment issued before the due date of your return: Yes for a U.S. citizen with a social security number on an unrestricted card, asked for anyone else"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.citizen_ssn
+            - const: true
+          then: dependent.citizen_ssn
+        - guard:
+            op: test
+            eq:
+            - dependent.citizen_ssn
+            - const: false
+          then: dependent.work_ssn
+      cite:
+        doc: i1040gi
+        locator: "p. 18, Step 3, question 4; p. 22, \"if “Valid for Work Only With DHS Authorization” is printed on your child’s social security card, your child has the required SSN only as long as the DHS authorization is valid\""
+    - id: dependent.eic_ssn_known
+      printed: (helper)
+      type: Bool
+      label: "SSN valid for the EIC issued on or before the due date of your return: Yes for a U.S. citizen with a social security number on an unrestricted card, asked for anyone else"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.citizen_ssn
+            - const: true
+          then: dependent.citizen_ssn
+        - guard:
+            op: test
+            eq:
+            - dependent.citizen_ssn
+            - const: false
+          then: dependent.eic_ssn
+      cite:
+        doc: i1040gi
+        locator: "pp. 44–45, Social security number (SSN), \"For the EIC, a valid SSN is a number issued by the Social Security Administration unless “Not Valid for Employment” is printed on the social security card\" and \"your SSN is valid for EIC purposes only as long as the DHS authorization is still valid\""
+    - id: dependent.married_known
+      printed: (helper)
+      type: Bool
+      label: "Married at the end of 2025 or on a 2025 joint return, read without the refusal: asked only of a person who has ever been married (false for one who has not)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.ever_married
+            - const: true
+          then: dependent.married
+        - guard:
+            op: test
+            eq:
+            - dependent.ever_married
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: "p. 21, Married person, \"If the person is married and files a joint return, you can’t claim that person as your dependent.\""
+    - id: dependent.qc_tiebreak_other_age
+      printed: (gate)
+      type: Bool
+      label: The tie-breaker gate for a person who is not of a qualifying child relationship. It reads the age first, so that the age is asked directly after the relationship for every person listed; both ages lead to the same test
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.under_19_kidnap
+            - const: true
+          then: dependent.qc_tiebreak_not_child
+        - guard:
+            op: test
+            eq:
+            - dependent.under_19_kidnap
+            - const: false
+          then: dependent.qc_tiebreak_not_child
+      cite:
+        doc: p501
+        locator: "p. 15, Qualifying Child of More Than One Person, \"Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person.\""
   collection:
     cite:
       doc: f1040

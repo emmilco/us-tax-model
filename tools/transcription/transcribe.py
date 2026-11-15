@@ -58,14 +58,40 @@ def project_yaml(path):
         return yaml.load(stream, Loader=PROJECT_YAML_LOADER)
 
 
+SCREEN = "(screen)"
+
+
 def marker_keys(lines):
     """Each line's comparison key: its printed marker, qualified by the line id when several
-    lines of the document share the marker (a form that carries more than one IRS worksheet)."""
+    lines of the document share the marker (a form that carries more than one IRS worksheet).
+    `(screen)` marks no printed line, so it is qualified only where two or more computed lines
+    carry it and would otherwise share one log section; screening inputs keep the bare marker."""
     counts = {}
     for l in lines:
         counts[str(l["printed"])] = counts.get(str(l["printed"]), 0) + 1
-    plain = lambda m: counts[m] == 1 or m in HELPER_PRINTED or m == "(screen)"
-    return {l["id"]: str(l["printed"]) if plain(str(l["printed"])) else f'{l["printed"]} ({l["id"]})' for l in lines}
+    computed_screens = sum(1 for l in lines if str(l["printed"]) == SCREEN and (l.get("expr") or {}).get("op") != "input")
+
+    def plain(l):
+        m = str(l["printed"])
+        if m == SCREEN:
+            return computed_screens < 2 or (l.get("expr") or {}).get("op") == "input"
+        return counts[m] == 1 or m in HELPER_PRINTED
+    return {l["id"]: str(l["printed"]) if plain(l) else f'{l["printed"]} ({l["id"]})' for l in lines}
+
+
+def prompt_marker(keys, line):
+    """The marker a request shows for a line: its comparison key, except that a `(screen)` line is
+    shown bare (it is listed with its id, and is not a marker printed on several worksheets)."""
+    return SCREEN if str(line["printed"]) == SCREEN else keys[line["id"]]
+
+
+def second_keys(project_keys, second_lines):
+    """The comparison keys of a second transcription's lines. A `(screen)` line the second gives a
+    project id takes that project line's key: the request shows `(screen)` lines bare, so the
+    reply's own count of them (a line-scoped pass may ask for one) does not decide the key."""
+    own = marker_keys(second_lines)
+    return {l["id"]: project_keys[l["id"]] if str(l["printed"]) == SCREEN and l["id"] in project_keys else own[l["id"]]
+            for l in second_lines}
 
 
 # ---------- sources ----------
@@ -366,6 +392,11 @@ def line_keys(form_doc):
         markers = marker_keys(form_doc["lines"])
         out += [(markers[l["id"]], l["id"]) for l in form_doc["lines"]
                 if l["printed"] not in HELPER_PRINTED and l["expr"].get("op") != "input"]
+    seen = set()
+    for key, _ in out:
+        if key in seen:
+            raise ValueError(f"{form_doc['id']}: two compared lines share the log key {key!r}")
+        seen.add(key)
     return out
 
 
@@ -1053,7 +1084,7 @@ def build_prompt(form_doc, excerpt, params, other_lines, param_types=None, colle
     lines = form_doc["lines"]
     inputs = [l for l in lines if l["expr"].get("op") == "input"]
     targets = [l for l in lines if l["printed"] not in HELPER_PRINTED and l["expr"].get("op") != "input"]
-    keys = marker_keys(lines)
+    keys = {l["id"]: prompt_marker(marker_keys(lines), l) for l in lines}
     shared = any(keys[l["id"]] != str(l["printed"]) for l in lines)
     printed_row = lambda l: f"  - printed {keys[l['id']]!r} (id {l['id']}; type {l['type']}{sign_note(l['id'])})"
     exported = exported_lines(form_doc)
@@ -1557,7 +1588,7 @@ def compare(form_id, project_lines, second_lines, only=None):
     ptypes = {k: v["type"] for k, v in parameter_rows.items()}
     inputs = {l["id"]: l for l in project_lines if l["expr"].get("op") == "input"}
     pkeys = marker_keys(project_lines)
-    skeys = {**{i: pkeys[i] for i in inputs}, **marker_keys(second_lines)}
+    skeys = {**{i: pkeys[i] for i in inputs}, **second_keys(pkeys, second_lines)}
     a = Expander(form_id, project_lines, defs, inputs=inputs, params=pvals, keys=pkeys, param_types=ptypes)
     b_lines = second_lines
     if only is not None and form_id not in defs:

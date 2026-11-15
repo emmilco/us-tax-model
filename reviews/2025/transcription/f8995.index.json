@@ -3,6 +3,10 @@
  "form": "f8995",
  "family": "claude",
  "base": "1422c10c247a2a54480e13c3a883e0e66025c389329afdb0c4f7cf5ca790cd36",
+ "head_rows": {
+  "agree / disagree / missing": "12 / 4 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "2",
@@ -12,10 +16,9 @@
   },
   {
    "key": "3",
-   "record": "1422c10c247a2a54480e13c3a883e0e66025c389329afdb0c4f7cf5ca790cd36",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. Both read the same input, the 2024 line 16 carryforward entered as a positive amount (qbi.carryforward). The project stores line 3 signed, as zero less that amount, matching the form's parentheses (Form 8995 (2025), line 3, '( )'); the second stores the size of the loss. The two values differ only in sign, and line 4 is the same on both sides.",
-   "subject_key": "4fe06b39b6752a447a87fc9ca046b628377221b8ba1ccd9a85e57ad2335a7889"
+   "record": "d305e215ef8d263ee4fa4d19228e827e4cefa1b02fc2bd17bbb39034fa4e02f0",
+   "status": "AGREE",
+   "subject_key": "52237a83a04bb545886239ab614c225750541b8f144cac634934d76d5c681289"
   },
   {
    "key": "4",
@@ -108,7 +111,7 @@
  ],
  "subjects": {
   "2": "a8f8d33cc12b0eb27e831064c9634e6b806bc7ca6a0d6d865121dcbb5a7bc44a",
-  "3": "a968c3bfb973d44bbcc193c51f19645d197c3877e4366f725782fb349f5e2908",
+  "3": "50f8135e56756ff5bac5390c6aec2459568f2016ad1f62a341e0440d0d9246b6",
   "4": "4892f957e3df573ca85671dc63847a65aff059847452bcfeda16f840251ba94f",
   "5": "1f3a49a68b16288df176650e6dfdaf56039a4b551f4f2da2b4587ec9b884d710",
   "7": "df513a3cde127368148441b4b07679ef66c541c0946e5093b9760193e27dbb9f",
@@ -124,5 +127,8 @@
   "14": "c3c4dcf442682caf63fa8525b6ccf77ad4ade02f785ee018a22d212da89a3486",
   "15": "4cbe417a814f3d4c8634728773d773327072da1220d46d6dd5a77a902d745da9"
  },
- "__rest__": "6883a7f29857fc976b4e5bfc92a9938f4f89739ea851cfd0f82630d407014c65"
+ "__rest__": "6883a7f29857fc976b4e5bfc92a9938f4f89739ea851cfd0f82630d407014c65",
+ "foreign": {
+  "3": "5b7487d0bfccfc5c51ecd92a19239c1688231e80ee63423e8aed0767c75fdf25"
+ }
 }

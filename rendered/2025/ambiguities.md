@@ -446,8 +446,8 @@
 
 - Text at issue: i1040gi pp. 88-89, Line 1: "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 1 to 9; Pub. 525 p. 24 adds a nonresident alien. The exceptions say when the worksheet may not be used; they do not say whether they matter when no worksheet is needed because you did not itemize for 2024 or deducted sales taxes.
 - Candidate readings: Ask items 1 and 5 (a refund for another year; 2024 state or local income tax paid in 2025, such as a last 2024 estimated payment made in 2025, or paid before 2024, such as a 2024 estimated payment made in December 2023) and Form 1099-G box 8 of every refund, and the rest (items 3, 4, 6, 7, 8, 9 and a 2024 Form 1040-NR) only when the worksheet would be used; refuse on Yes. Item 2 (refunds of other taxes) is asked of every return with the other recoveries. | Ask every exception of every refund, before the itemizing questions.
-- **Chosen:** The first (refund.box8 and refund.not_2024 on refund.taxable; refund.exc_tax and refund.exc_who on refund.line1; refund.other on Schedule 1 line 1).
-- Reason: The TIP is stated for "the year you paid the tax", which is 2024 only when the refund is for 2024 and was paid then, so items 1 and 5 can make a refund taxable even when you did not itemize for 2024, and a part of the refund for a 2025 payment changes the 2025 deduction for taxes (Pub. 525 p. 24, Example 28). A 2024 refund of tax paid before 2024 is a recovery for the year in which the tax was paid (Pub. 525 p. 24, Recovery for 2 or more years), so it is asked with item 5 and refused by refund.not_2024. Items 3, 4, 6, 7, 8 and 9 and the nonresident rule change only how much of a refund of a deducted tax is included; when no income tax was deducted for 2024, none is (Pub. 525 p. 24, Deductions not itemized). Box 8 sends a taxable refund to Schedule C or F whatever the itemizing. A recovery deducted on an earlier Form 8960 is refused by f8960.refund when Form 8960 is filed (modified AGI above the threshold); below the threshold it changes no amount.
+- **Chosen:** The first (refund.box8 and refund.not_prior_year on refund.taxable; refund.exc_tax and refund.exc_who on refund.line1; refund.other on Schedule 1 line 1).
+- Reason: The TIP is stated for "the year you paid the tax", which is 2024 only when the refund is for 2024 and was paid then, so items 1 and 5 can make a refund taxable even when you did not itemize for 2024, and a part of the refund for a 2025 payment changes the 2025 deduction for taxes (Pub. 525 p. 24, Example 28). A 2024 refund of tax paid before 2024 is a recovery for the year in which the tax was paid (Pub. 525 p. 24, Recovery for 2 or more years), so it is asked with item 5 and refused by refund.not_prior_year. Items 3, 4, 6, 7, 8 and 9 and the nonresident rule change only how much of a refund of a deducted tax is included; when no income tax was deducted for 2024, none is (Pub. 525 p. 24, Deductions not itemized). Box 8 sends a taxable refund to Schedule C or F whatever the itemizing. A recovery deducted on an earlier Form 8960 is refused by f8960.refund when Form 8960 is filed (modified AGI above the threshold); below the threshold it changes no amount.
 - Status: Agent reading within the owner's decision D5, Stage 16 (T-053), for the owner's review.
 - Cite: [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet"; p525 p. 24, Deductions not itemized (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -464,7 +464,7 @@
 
 - Text at issue: i1040gi p. 90, State and Local Income Tax Refund Worksheet, line 2: "the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024 (generally, this is the amount reported on your 2024 Schedule A, line 5d)". "Generally" admits a paid amount different from line 5d without saying when.
 - Candidate readings: Ask the amount reported on 2024 Schedule A line 5d, and use it both for the line 1 limit and for the amount paid on line 2. | Ask the amount paid in 2024 separately from line 5d.
-- **Chosen:** The first (refund.line5d_2024).
+- **Chosen:** The first (refund.line5d_prior_year).
 - Reason: The owner's decision D6(b). The worksheet itself takes line 5d as the usual amount, and a filer reads it from the 2024 return.
 - Status: Owner decision, Stage 16 (T-053, D6).
 - Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "(generally, this is the amount reported on your 2024 Schedule A, line 5d)" (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -678,7 +678,7 @@
 ## amb.2025.clcw_to_2026
 
 - Text at issue: Schedule D instructions, line 21: "You have a capital loss carryover from 2025 to 2026 if you have a loss on line 16" and "To figure any capital loss carryover to 2026, you will use the Capital Loss Carryover Worksheet in the 2026 Instructions for Schedule D. If you want to figure your carryover to 2026 now, see Pub. 550." Pub. 550 states the rule in prose; its worksheet is the one from 2024 to 2025.
-- Candidate readings: Show no carryover to 2026, leaving it to the 2026 instructions. | Apply the 13 lines of the 2025 worksheet to this return, reading each 2024 figure as the 2025 one (clcw26).
+- Candidate readings: Show no carryover to 2026, leaving it to the 2026 instructions. | Apply the 13 lines of the 2025 worksheet to this return, reading each 2024 figure as the 2025 one (clcw_next_year).
 - **Chosen:** The second.
 - Reason: The archived 2024 and 2025 editions of the worksheet differ only in their years (sources/2024/i1040sd p. 11, sources/2025/i1040sd p. 10), and the lines give Pub. 550's rule, "the amount of your total net loss that is more than the lesser of" the allowable deduction and taxable income increased by it (checked by brute force over random cases in the Stage 20 premise map and its verification). The figures are the inputs the 2026 return needs. Owner's decision D4, 2026-10-27.
 - Status: Owner decision, 2026-10-27 (research/premises/stage20-capital-loss-carryover.decisions.md, D4).
@@ -742,7 +742,7 @@
 
 - Text at issue: i8863 p. 7 tests the age "at the end of 2025" (under 18, age 18, over 18 and under 24) without saying when a birthday on January 1 counts.
 - Candidate readings: Age at the end of 2025 by the day-before-the-birthday rule, from birth dates (born before January 2, 2008, January 2, 2007 and January 2, 2002). | The age in whole years on December 31, 2025, as the filer states it.
-- **Chosen:** The first (person.sav_born, person.edu_born_2007 and person.edu_born_2002 feeding person.edu_kid).
+- **Chosen:** The first (person.sav_born, person.edu_over18 and person.edu_age24 feeding person.edu_kid).
 - Reason: Pub. 501 states the rule for age 65 and the project's other birth-date questions apply it. Owner's decision D7(b), 2026-10-29.
 - Status: Owner decision, 2026-10-29 (research/premises/stage19-education-credits.decisions.md, D7).
 - Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)

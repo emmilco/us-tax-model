@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-12); see Line-scoped reviews"
+  "agree / disagree / missing": "21 / 34 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,10 +23,10 @@
   },
   {
    "key": "sc.line31_pre179",
-   "record": "4a2cb5cdca35ec2404ae11f7c02ca1c2a1a5807b7b5d3fb605db7c252400405a",
+   "record": "307217503d2ea8e198cef2a5e048161bcc4d75cc11ff08611c86fe2003a5908a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as the earlier rulings on this line. Both figure line 31 before the section 179 deduction for Pub. 946's two income limits (pp. 17-19); the project subtracts its depreciation from the asset and vehicle entries and the line 30 deduction as figured, the reply groups the expense lines and depreciation terms differently. Restaged by this round's question wording on lines 10, 11, 15, 21, 22, 23 and 26 (expr.source), which the reply carries. executable-triage-v2 (.transcription/triage/2025/sc.json, pass 7d11a905c40b; 1,767 fixtures, 500 generated returns seed 20261026, 2,270 partial records): 3,452 agree; 16 project-refuses and 289 project-unknown, all on refused or incomplete records; no completed return differs. Project stands.",
-   "subject_key": "6869d38ea55376506bf2c4b6eb9944625de98a395c397471d9cfc9e3539ef394"
+   "ruling": "Ruling: model error; i4562 p. 5, Line 11, and p946 pp. 17-19, Business Income Limit: the business income is figured \"without regard to the section 179 deduction\". The reply defines it as line 31 plus Form 4562 line 12 for the business (sc.s179_allowed), but line 12 is limited by line 11, which reads this line: the definition is circular and evaluates to nothing (\"cycle at ...sc[desk].line28\"). The project figures it forward, line 29 without the section 179 deduction less line 30. executable triage (.transcription/triage/2025/sc.json, executable-triage-v2): 1,606 of 3,749 agree; 1,916 candidate-unknown (371 completed, e.g. stage14.asset.hy_5yr, project $49,400.00), 112 candidate-refuses, 115 project-refuses; no value difference. Project stands.",
+   "subject_key": "8131892e4a563388a4d3361d0a9d1f846f08b628acc0c9b0f4fd484d593b799c"
   },
   {
    "key": "sc.result",
@@ -38,14 +39,30 @@
    "key": "sc.f6",
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "AGREE",
-   "subject_key": "41df8373f8a21d669f099ac3fe05477c6961253cc27c44d6bc35db0618affffa"
+   "subject_key": "3e001100c9421d98de23f9439a371567f06f4be0f0e5fbbcfdc3fe0396d546c4",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.s179_2025": "asset.s179_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "41df8373f8a21d669f099ac3fe05477c6961253cc27c44d6bc35db0618affffa"
+   }
   },
   {
    "key": "sc.f14",
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; i4562 p. 5, Line 14. The candidate now sums asset.bonus over non-listed property placed in service in 2025, the project's asset.bonus_2025; the backlog-round error is gone. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 3,597 of 3,597 agree; no difference.",
-   "subject_key": "8cc0bba282e508f7cfd1132f047c556620c0f535bb3c7cab00853c9160f81a29"
+   "subject_key": "b36284a27b349981dc474112bdbfe0ffe6830a790138ca42696a3221343a785f",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.bonus_2025": "asset.bonus_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "8cc0bba282e508f7cfd1132f047c556620c0f535bb3c7cab00853c9160f81a29"
+   }
   },
   {
    "key": "sc.f17",
@@ -59,56 +76,120 @@
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; same as the backlog-round ruling: triage found no difference on any record. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 3,597 of 3,597 agree.",
-   "subject_key": "4f637b7893b615f553d15756f2658b8305c606ee071bdeb2351dcca970b156a4"
+   "subject_key": "d6c81857dfdef8080d47a12f17d80e844150d1afd7688eb5f7fe310566e53aa2",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.dep_2025": "asset.dep_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "4f637b7893b615f553d15756f2658b8305c606ee071bdeb2351dcca970b156a4"
+   }
   },
   {
    "key": "sc.f19_y5",
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; same as the backlog-round ruling: triage found no difference on any record. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 3,597 of 3,597 agree.",
-   "subject_key": "043ba72752be05c9703ac4909ffd6d33443289f4e3f929838300f24f34e9486e"
+   "subject_key": "55100bbc3a692d0728044543fd1c9a092cb62940d6c7de7eaa0e1c47454968f7",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.dep_2025": "asset.dep_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "043ba72752be05c9703ac4909ffd6d33443289f4e3f929838300f24f34e9486e"
+   }
   },
   {
    "key": "sc.f19_y7",
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; same as the backlog-round ruling: triage found no difference on any record. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 3,597 of 3,597 agree.",
-   "subject_key": "c7f88aa86c8f61fb0057c605e165b84f6820ddd58a94071cab07174d5fb43dee"
+   "subject_key": "c37110881def955c0fc0ad2ffd7ec27965000f209437f5cbb79f924b9674e0fc",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.dep_2025": "asset.dep_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "c7f88aa86c8f61fb0057c605e165b84f6820ddd58a94071cab07174d5fb43dee"
+   }
   },
   {
    "key": "sc.f19_y10",
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; same as the backlog-round ruling: triage found no difference on any record. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 3,597 of 3,597 agree.",
-   "subject_key": "e3b9fb3ac950c9c7b05b0c0f0392bed37c7f64e6bac3ccfd73a44faa46fc337d"
+   "subject_key": "fdbf5df7bb5503d6e9ba686cf76a5c65481eb4d51ada427e679fd3860a5ea605",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.dep_2025": "asset.dep_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "e3b9fb3ac950c9c7b05b0c0f0392bed37c7f64e6bac3ccfd73a44faa46fc337d"
+   }
   },
   {
    "key": "sc.f19_y15",
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; same as the backlog-round ruling: triage found no difference on any record. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 3,597 of 3,597 agree.",
-   "subject_key": "9e090efdc560a69fa5811c147ffe378387ecd24ff272d6742e85a13ee296b4f7"
+   "subject_key": "81a8d58d4c8baa6e7685d2116a8bb93f8f05f7be96dea80cf7a214a7cd6f8570",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.dep_2025": "asset.dep_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "9e090efdc560a69fa5811c147ffe378387ecd24ff272d6742e85a13ee296b4f7"
+   }
   },
   {
    "key": "sc.f19_y20",
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; same as the backlog-round ruling: triage found no difference on any record. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 3,597 of 3,597 agree.",
-   "subject_key": "27e01da374786eb3c42e08e95008e65489660bdf1eb44f075c3873d81bbf1d7b"
+   "subject_key": "78c632dc0011eb109d796515821b2963e32dc3aa2213ff7e15cb46f53db691c8",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.dep_2025": "asset.dep_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "27e01da374786eb3c42e08e95008e65489660bdf1eb44f075c3873d81bbf1d7b"
+   }
   },
   {
    "key": "sc.f19_y15sl",
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; same as the backlog-round ruling: triage found no difference on any record. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 3,597 of 3,597 agree.",
-   "subject_key": "a8b91fb7a1dad9df79f701276a916673967bc2bb75e9843bd3d3453fec056842"
+   "subject_key": "234ddbe272212131a739c57aeeccece870fe967a24e1ef7f67a22b8e1ad9ad86",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.dep_2025": "asset.dep_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "a8b91fb7a1dad9df79f701276a916673967bc2bb75e9843bd3d3453fec056842"
+   }
   },
   {
    "key": "sc.f25",
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i4562 p. 14, \"Enter on line 25 your total special depreciation allowance for all qualified listed property\"; its Form 4562 line 25 vehicle term sums scveh.bonus_allowed, the passenger-automobile worksheet amount figured for every vehicle, instead of scveh.bonus, so for a standard-mileage vehicle it reaches the year placed in service and the project's refusal there on scveh.low_use (a standard-mileage vehicle used 50% or less takes no depreciation, so the low-use rule of i4562 p. 14, Lines 26 and 27, does not reach it) and asks miles and placed answers the project does not need (classm.clcw.2.deepseek biz_a and biz_b, classm.eic.3.deepseek refuse on sc[biz_b].scveh[car_1].low_use; classm.f4952.2.deepseek, classm.f8962.4.deepseek, classm.asset.1 unknown), and it drops the allowance of a vehicle that is not a passenger automobile (stage14.veh.suv_179, whose $38,700 allowance the project takes from scveh.bonus); same as the backlog-round ruling. Completed value difference: stage14.veh.suv_179 haul $38,700.00/$0.00. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 2,807 of 3,597 agree; on completed returns 42 candidate-refuses, 8 candidate-unknown, 1 value.",
-   "subject_key": "11683968c9cffca75d4ba6e610b64c3f0bc8823097c40f81299c02c2157f4a4a"
+   "subject_key": "7c66ae81af4d1839b074a928a6b977682da0de1a0212e9336058cc367ae1338a",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.bonus_2025": "asset.bonus_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "11683968c9cffca75d4ba6e610b64c3f0bc8823097c40f81299c02c2157f4a4a"
+   }
   },
   {
    "key": "sc.f26h",
@@ -121,13 +202,30 @@
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; line 28 adds lines 25 and 26 (i4562 p. 15); the difference is line 25: its Form 4562 line 25 vehicle term sums scveh.bonus_allowed, the passenger-automobile worksheet amount figured for every vehicle, instead of scveh.bonus, so for a standard-mileage vehicle it reaches the year placed in service and the project's refusal there on scveh.low_use (a standard-mileage vehicle used 50% or less takes no depreciation, so the low-use rule of i4562 p. 14, Lines 26 and 27, does not reach it) and asks miles and placed answers the project does not need (classm.clcw.2.deepseek biz_a and biz_b, classm.eic.3.deepseek refuse on sc[biz_b].scveh[car_1].low_use; classm.f4952.2.deepseek, classm.f8962.4.deepseek, classm.asset.1 unknown), and it drops the allowance of a vehicle that is not a passenger automobile (stage14.veh.suv_179, whose $38,700 allowance the project takes from scveh.bonus); same as the backlog-round ruling. Completed value difference: stage14.veh.suv_179 haul $38,700.00/$0.00. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 2,807 of 3,597 agree; on completed returns 42 candidate-refuses, 8 candidate-unknown, 1 value.",
-   "subject_key": "fd8d109ba1ccab95bee5c9b618e4808615982934289cc12ef01309284bdeeffc"
+   "subject_key": "6783dad6f105df4fe7070ec5b1554826554f891d9c0a900ff0d991ea6506b8e2",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.bonus_2025": "asset.bonus_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "fd8d109ba1ccab95bee5c9b618e4808615982934289cc12ef01309284bdeeffc"
+   }
   },
   {
    "key": "sc.f29",
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "AGREE",
-   "subject_key": "f085225f65cddedaace1b1cb6aa373e816473fbca9339797c7214f6253154ab3"
+   "subject_key": "4c3a4dcafa9d9d40071ae3d0bd6fc62d8cc7eb4333f073879bc72735d05816e0",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.s179_2025": "asset.s179_this_year",
+     "scveh.s179_2025": "scveh.s179_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "f085225f65cddedaace1b1cb6aa373e816473fbca9339797c7214f6253154ab3"
+   }
   },
   {
    "key": "sc.mq_q4",
@@ -156,9 +254,9 @@
   },
   {
    "key": "3 (sc.line3)",
-   "record": "0344df3f26e9426f2f8e6b7cc3757fb8d5a9e6e381cb065c28ae851447fcf589",
+   "record": "307217503d2ea8e198cef2a5e048161bcc4d75cc11ff08611c86fe2003a5908a",
    "status": "AGREE",
-   "subject_key": "e540cb61213ff18218cabd8021a039b622aa8958b3266f69b1a1fd5f3d78e2e2"
+   "subject_key": "aa4bb75ee394d84a2d0fb32003b0635a8bc97e8f017c47e1d8191633ead5db9f"
   },
   {
    "key": "4 (sc.line4)",
@@ -195,7 +293,16 @@
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; the line itself matches the project's reading, but it inherits the candidate's Form 4562 terms: its Form 4562 line 25 vehicle term sums scveh.bonus_allowed, the passenger-automobile worksheet amount figured for every vehicle, instead of scveh.bonus, so for a standard-mileage vehicle it reaches the year placed in service and the project's refusal there on scveh.low_use (a standard-mileage vehicle used 50% or less takes no depreciation, so the low-use rule of i4562 p. 14, Lines 26 and 27, does not reach it) and asks miles and placed answers the project does not need (classm.clcw.2.deepseek biz_a and biz_b, classm.eic.3.deepseek refuse on sc[biz_b].scveh[car_1].low_use; classm.f4952.2.deepseek, classm.f8962.4.deepseek, classm.asset.1 unknown), and it drops the allowance of a vehicle that is not a passenger automobile (stage14.veh.suv_179, whose $38,700 allowance the project takes from scveh.bonus); same as the backlog-round ruling. Completed value difference: stage14.veh.suv_179 haul $70,000.00/$31,300.00. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 2,532 of 3,597 agree; on completed returns 68 candidate-refuses, 10 candidate-unknown, 1 value.",
-   "subject_key": "239a033e634d83b5994da41af7b0fdfda3384d1efa827e56a77184ed4a9ea0d2"
+   "subject_key": "0da3372f38b7385d1f81fd51fb455bc4458021bc3d10a3cbcd17ae991b021e87",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.bonus_2025": "asset.bonus_this_year",
+     "asset.dep_2025": "asset.dep_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "239a033e634d83b5994da41af7b0fdfda3384d1efa827e56a77184ed4a9ea0d2"
+   }
   },
   {
    "key": "20a",
@@ -205,9 +312,10 @@
   },
   {
    "key": "24b",
-   "record": "4a2cb5cdca35ec2404ae11f7c02ca1c2a1a5807b7b5d3fb605db7c252400405a",
-   "status": "AGREE",
-   "subject_key": "d7caf4ef4279b7080f13b476e35334f94c13a088c1f2bc091fc42eeebd969be7"
+   "record": "307217503d2ea8e198cef2a5e048161bcc4d75cc11ff08611c86fe2003a5908a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3622 values compared, none different or missing: 370 on 1987 fixture cases, 186 on 500 generated returns seed 20261026, 3066 on 2321 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "6c2e1432d4f2044a6c8a301c79bc73beb90b2a793670b3b408e030c2335aae22"
   },
   {
    "key": "27a",
@@ -223,9 +331,9 @@
   },
   {
    "key": "28",
-   "record": "4a2cb5cdca35ec2404ae11f7c02ca1c2a1a5807b7b5d3fb605db7c252400405a",
+   "record": "307217503d2ea8e198cef2a5e048161bcc4d75cc11ff08611c86fe2003a5908a",
    "status": "AGREE",
-   "subject_key": "47fe09bbe97c0d0e4f344090ede0e91df05468fda4cac7c009401e42ceee37d9"
+   "subject_key": "6356c37c6d2ac754ef624d75bba156ddb29fbeef0b01f5e3bc7cf709abfe5dd4"
   },
   {
    "key": "29",
@@ -256,10 +364,10 @@
   },
   {
    "key": "5 (sc.ho_line5)",
-   "record": "0261f1636d761ffc546107ba80ecd3cf5d851f03034ba348786cf6813bf88026",
+   "record": "307217503d2ea8e198cef2a5e048161bcc4d75cc11ff08611c86fe2003a5908a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as the earlier rulings on this line. The smaller of worksheet lines 1 and 4 on both sides; the project writes it as a choose that carries the refusal where the two limits of Pub. 946 (p. 19) interact (sc.ho_both_limits), the reply as smaller_of floored at zero through a helper (sc.h_ho_smaller). executable-triage-v2 (.transcription/triage/2025/sc.json, pass 522f3f534b91; 1,767 fixtures, 500 generated returns seed 20261026, 2,103 partial records): 2,265 of 3,148 agree; 156 candidate-refuses, 528 candidate-unknown, 31 project-refuses, 168 project-unknown; on completed returns 69 candidate-unknown and 8 project-refuses, no value difference. The completed candidate-unknown witnesses listed are a cycle at the reply's helper: worksheet line 1 is Schedule C line 29, which takes the section 179 deduction allowed, and that deduction's business income limit takes line 30, which is this line; the project's choose is what breaks that dependence. The completed project-refuses listed are sc.ho_both_limits on a business with no home office, the display refusal already filed as BUG-0489 (line 30 reads line 5 only with a home office, so no amount changes). Restaged by the wording of s179.line10 only (expr.source); no expression changed. Project stands.",
-   "subject_key": "f3a4919bd8c93538ff4fec278e231d73c1055afa327142d9d648f2a83a727d57"
+   "ruling": "Ruling: model error; i1040sc p. 12, Simplified Method Worksheet, line 5, \"Enter the smaller of line 1 or line 4\", with line 1 Schedule C line 29, and p946 p. 19, Business Income Limit, \"Two different taxable income limits\" (given in the request): when a section 179 deduction and a home office limited by gross income both apply, each limit depends on the other and Pub. 946 sets the order. The reply takes the smaller of line 29 (after the section 179 deduction) and line 4, which reads line 29 through line 30 and Form 4562 line 12 in a cycle (\"cycle at ...sc[desk].line28\"), so the line evaluates to nothing on the Schedule C returns sampled. The project uses line 4 when it fits within line 29 less the most section 179 deduction possible, the smaller of line 4 and line 29 without the section 179 deduction when no section 179 deduction is possible, and refuses the case where both limits could bind (sc.ho_both_limits). executable triage (.transcription/triage/2025/sc.json, executable-triage-v2): 1,953 of 3,749 agree; 1,488 candidate-unknown (352 completed, e.g. stage14.asset.hy_5yr), 110 candidate-refuses, 198 project-refuses (7 completed, the both-limits refusal); no value difference. Project stands.",
+   "subject_key": "6418a52410f5ef9f0324a120ea5ad7d080878dc0b2703762dfbf74ca0ef792f0"
   },
   {
    "key": "30",
@@ -275,22 +383,32 @@
   },
   {
    "key": "40",
-   "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
-   "status": "AGREE",
-   "subject_key": "6d342a8fc3cb512c9a6677d644b0b00446d70ce233c0888d195eceb44ccc730f"
+   "record": "307217503d2ea8e198cef2a5e048161bcc4d75cc11ff08611c86fe2003a5908a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent. f1040sc line 40, \"Add lines 35 through 39\". The project zeroes each of lines 35 to 39 when the business sells no goods (sc.goods false) and adds them; the reply zeroes the sum. Same arithmetic. executable triage (.transcription/triage/2025/sc.json, executable-triage-v2): 3,746 of 3,749 agree; 2 project-unknown (incomplete), 1 project-refuses (refused); no value difference. Project stands.",
+   "subject_key": "7875605527c08bae066914426be26fa4bcdc66dfd4089f5c11b214b5df7ea41a"
   },
   {
    "key": "42",
-   "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
+   "record": "307217503d2ea8e198cef2a5e048161bcc4d75cc11ff08611c86fe2003a5908a",
    "status": "AGREE",
-   "subject_key": "bca557b4055bb96af1ec2a943da31fb6579e50abb124cb1c3cf0e76313aab86a"
+   "subject_key": "4a8d42298f1d9db921eb4a8e9f439a8212cb8849446e785bdd903d9c3780394f"
   },
   {
    "key": "12 (sc.s179_allowed)",
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; the line itself matches the project's reading, but it inherits the candidate's Form 4562 terms: its Form 4562 line 25 vehicle term sums scveh.bonus_allowed, the passenger-automobile worksheet amount figured for every vehicle, instead of scveh.bonus, so for a standard-mileage vehicle it reaches the year placed in service and the project's refusal there on scveh.low_use (a standard-mileage vehicle used 50% or less takes no depreciation, so the low-use rule of i4562 p. 14, Lines 26 and 27, does not reach it) and asks miles and placed answers the project does not need (classm.clcw.2.deepseek biz_a and biz_b, classm.eic.3.deepseek refuse on sc[biz_b].scveh[car_1].low_use; classm.f4952.2.deepseek, classm.f8962.4.deepseek, classm.asset.1 unknown), and it drops the allowance of a vehicle that is not a passenger automobile (stage14.veh.suv_179, whose $38,700 allowance the project takes from scveh.bonus); same as the backlog-round ruling. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 2,544 of 3,597 agree; on completed returns 68 candidate-refuses, 10 candidate-unknown; no completed value differs.",
-   "subject_key": "f74b74a61663a9d769a37dd176b4e76d41bf3bc212f67b236c3ac29745dc8b39"
+   "subject_key": "2d02fbb3a3f9816871ea3e12d8964b6dae8764d7330b9baafc689713621d3fc9",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "asset.s179_2025": "asset.s179_this_year",
+     "scveh.s179_2025": "scveh.s179_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "f74b74a61663a9d769a37dd176b4e76d41bf3bc212f67b236c3ac29745dc8b39"
+   }
   },
   {
    "key": "2 (sc.f7206_line2)",
@@ -373,48 +491,48 @@
  "subjects": {
   "sc.one": "fe4b914540c0f913191b74b151756095faeea720fe15ae78b479179be072cc04",
   "sc.rrta": "2f5f806f5ca5f2553486468b22750b9d07c58f257697cf3979fab7fe098784b8",
-  "sc.line31_pre179": "2129b83cbfb7ccdc6441e2de6f5b6cbd2be7c9891d37bf2c34162240e1b712e3",
+  "sc.line31_pre179": "ecba87a3296c18a60e244e528b9b24fd8bcdb367c3a9004522e249703ba834a3",
   "sc.result": "b6e9aa54038da0677b8de23c9e5e1c97625c3f358996d4892913e3bf2d6aefb6",
-  "sc.f6": "bfc18eca73cf34f81309b71bad47ac1d8a61f308ee17fa67714fd48dffcfe594",
-  "sc.f14": "9cc2aa405efb6044418c3dc79e3456817190c4ab21b86838a86091f1b52f36d6",
+  "sc.f6": "0243178925eb5e3f073eabca09feeb944b8e2e2069e782139633a3f0c08988bd",
+  "sc.f14": "7122c6c5873807ff43a553cbfff062e483096144a41fd245efb990cf674dc828",
   "sc.f17": "3cf2801cc41c7f16957cedd34c85ba2ce042a4422f01415ae5dc98eaa8b53ec9",
-  "sc.f19_y3": "df697de46f655137f6adc7d4cb5a3861e0f9a352502b95c7ab90a8fb78afa158",
-  "sc.f19_y5": "eec75ae3320b2cb8c5c3157b4ab1bcc2ef9ddf9a1781b6f268a05bbc1c6f7be7",
-  "sc.f19_y7": "f915313b9f649c5e727f2d7f7ae307a9b01d618f58808ad12b8d9fd45a9bbac8",
-  "sc.f19_y10": "b24504897a32dc16c4bad5bf974c12b2851f9a3971dd4e8e320a4d703f7ada62",
-  "sc.f19_y15": "9ca875f11238f25c4c0180c259c2b6753a86f341640ad2ef6d7e4751c3a49cf6",
-  "sc.f19_y20": "c847b2b55fe5ff756c9e35c1a029a45db1e48f0c01cbb99e4262723f8d6006c3",
-  "sc.f19_y15sl": "475b311190b29560dc72015f508aadfa8986deac08a40f23e3c1eb95b0209b05",
-  "sc.f25": "8402f7b66785ed0ca022b1f6e616b34cd95e0954f04ff5ebd82f2d732f2a69d5",
+  "sc.f19_y3": "756cf6a2cf2ab8a6720ad1413b6b451f8c60f2fb3b03a01c4015e36430036ad0",
+  "sc.f19_y5": "11af3649b05652189712fa7abce988fcc9fb3b2df4111c0f9cc5e8479c3dca83",
+  "sc.f19_y7": "9455c6b03d80e240e6f6e2b8cc268b3550e0a37a091c0fe5a0bb6204b95d9729",
+  "sc.f19_y10": "e97c5bb45f1ccdbb426622ae2d234e99c2b31e272760947340cfa7772d267cb6",
+  "sc.f19_y15": "6b669973747f8fd2fb6ba30590eff41c1243ecfe8b21859bdba63dc6d8249681",
+  "sc.f19_y20": "7870a04a843e355431e4f27e99fda46ba4638b884cccb7b2bc87f972f75749c1",
+  "sc.f19_y15sl": "9a8a9bdb5b5b86f6a4d894f64f4a429e56de3a5c5dfc33ab66157675169fc799",
+  "sc.f25": "c8c75294d6ad4338fd5080215c44081d269355c63d5d22fe593062ae09d43262",
   "sc.f26h": "f256ea1dafb308ae8faef38c4171673d8252ac6a9e42334129b8894f87282cc9",
-  "sc.f28": "fd13cb6c095e529cf568dd3b1ed2d91c277d4d6185eb332b49aaa1628c34db79",
-  "sc.f29": "9504c78256b1c4afe0793dedd87292d9afdab02cca7889e6cd282a526079a842",
+  "sc.f28": "201a26aa17440b4d528f0af303bcd836e2b4c83cc4570bf5d8f80366833cc0e1",
+  "sc.f29": "e3d61d4fbb99416cc8cf610f32dd1489a290c728b71daac037e185fb19c2f23a",
   "sc.mq_q4": "aecd9ee865e89756718a63d322ad5f3aa6ea69f85b1d28949a4b09df4bf38766",
   "sc.mq_total": "8fffb3718207a976666fec05c4d838d71dfe57e342398c8c51ab7cd6f81de5a5",
   "sc.cost179": "16b87f1be299748b61d29f032baf97b674ca4cb68ad633cc75fe209405ca7d17",
   "sc.profit_pos": "f8643c070bbe59001d28cdc7c669edafa0cdb42ea8970dbaa86ed124702a764c",
-  "3 (sc.line3)": "ee8e2fd1a498224d042c7646968d4720481ae5caf0350d8dfa76fe20cd0fd91d",
+  "3 (sc.line3)": "477e933c027e3354914e917b6d9a5315057cd39223d0ea3bdf409fe0ab98d2c9",
   "4 (sc.line4)": "7bd4b774295ebb6907a73453b94e3cafbd8443e8b7f82eae3bd48576d59b5abe",
   "5 (sc.line5)": "2a876599a38c0e45f4ccade66e1189a489827ebc4cc3945cfc862edf3c0bb799",
   "7 (sc.line7)": "09eae94478e71d8e240d442e9d9774723b9003fed0741bd2ab34184e75ef219f",
   "9 (sc.line9)": "1f19a192292bddf022e376bb1e037ffa34329a73a68d75b3bc117af5225c8e59",
   "12 (sc.line12)": "1543c4fc61039caa23634a39e1723f6b87e78f3bf696650203b27ea1d9badd2e",
-  "13 (sc.line13)": "c74959f7c1c75b11405bbca49a9e58c946de97c93d6cd5a4ab17550967454dfe",
+  "13 (sc.line13)": "7519f40c90cb8299117b47e19572f300f6bd093cd2a52fc005d3f9ef16f57064",
   "20a": "1f5107002a48e63d6d1feb4fdbd431ace705c2c4f5c0ced06a830ead89e7219c",
-  "24b": "542c363ad5ae3517ab569b758952caa4b7118f6e66a7dbeaa2803e7665caa39f",
+  "24b": "4d852c023b19ca06e25c691c9cd472601cd0cb4f369e82974fde5abc9b064703",
   "27a": "47b043e2748f6706b79d43cd1c0ea62233a0e213a6f86c70822a61b53167c899",
   "27b": "50ec5e742de63c33ca3899be73813729399db4b7d036f67ee59d47120353be71",
-  "28": "94b95c25ffca3b18c68bc49ab1022778929102a2a107dfd3e24f738a461f306d",
+  "28": "13c6922e94ab90cbcf764d11a935ff7e6ee327ce7e205cb070431b7ba640199c",
   "29": "0b62b218b5c7e33b5758f98a66818e155ff0a13f2f7ad2fefb693002c1eed2e8",
   "3a": "bc13ad2a70d877c3e8538eb29c02b2efc099c85cc31be64927b7d5c1a3b93745",
   "4 (sc.ho_line4)": "f0956dae29a6d49fe91ee3841c5289e873b992980f0fd075a1ff631070959048",
   "1 (sc.ho_line1)": "1ac8efe49ede6d2b7aab8c11dd93b36f03fc0474940e78d9a06ab0849ac58779",
-  "5 (sc.ho_line5)": "3a4acc4c973037d1b033670ea18be7e4a6f6ea3308e26f5fccde4a021bea22a5",
+  "5 (sc.ho_line5)": "199dd652c6c87109116786c7b0bb820b37ae647cbdf76fc5db8c55669c96a054",
   "30": "732d99153efd1c9b5ca55f8a292da87f235638a3a0b397bc834246b2c4833cf4",
   "31": "460df8d8e36833bfe9e443e8476eb1325910936c32d8279f8813916ef3e52e3a",
-  "40": "bd7875b8014cedfae32a780f455d5f5857821a0b5a45f65c07e87513b8943dce",
-  "42": "0fc463f1dd87dfa85d8919d28111f07073421028bf81f883c42a043a96a225eb",
-  "12 (sc.s179_allowed)": "4b59e712a0f8755d7a8c0c1c474780330b74c76f7f3cf37f6d622717bc83bf33",
+  "40": "1c421ba17760a5035344669970b2b49371bbb22765beda14761ac81eaedc02c9",
+  "42": "3032cf88c4dedf0d9ac3276c52fdaa6643c4ee0df05b87bc240c9afe968db8f2",
+  "12 (sc.s179_allowed)": "907f831dc2de3b92e841f12c796f477ac7c77aa9372d3e59641121af11e0ec4b",
   "2 (sc.f7206_line2)": "645e323fd6e4a72af0ec778cd08f4573a7ea856fbffa5f681ef67ecc23ad0df4",
   "3 (sc.f7206_line3)": "53aeaab492611fae3fea0f31f5d3475ed69054bc24aae0c720c7e658911c0546",
   "4 (sc.f7206_line4)": "5f94a9409ecb76fe9532d8904bf5d614260b183b391d50c0604e35beab01b56f",
@@ -429,11 +547,13 @@
  },
  "__rest__": "c47815e7189ca7c445692449dd063df97f10ec16a5290e8cca0c4b96530a9e2e",
  "foreign": {
-  "sc.line31_pre179": "5c25ef9a6fc854a28341a3a38deec33f4235de7444d9e90bc27e6ce18033b0d3",
+  "sc.line31_pre179": "5901b1de22d6b693c2b0e6eb7c54a1c9630f1ab6c8a0cf133033f513785c0747",
   "3 (sc.line3)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "24b": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "28": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "5 (sc.ho_line5)": "0be0750073a2bfc107473c68299ae8855d8bfc9c58b53b387177ad8cca729683",
+  "24b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "28": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "5 (sc.ho_line5)": "4151abe1eb9be2bd6f8ceb60d2ad8bc49a05eb3bb1a1b4c59cfa2464d80a30e9",
+  "40": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "42": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "3 (sc.f7206_line3)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "14 (sc.f7206_line14)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
  }

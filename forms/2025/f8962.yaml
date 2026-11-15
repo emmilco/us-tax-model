@@ -44,22 +44,45 @@ form:
     cite:
       doc: i8962
       locator: p. 3, Who Must File, "You are taking the PTC."
+  - id: f8962.shared_policy
+    printed: (gate)
+    label: A Marketplace policy covered someone in your tax family and also someone who is not in it
+    type: Bool
+    expr:
+      op: input
+      source: In 2025, did any Marketplace plan cover both a person on this return and a person who is not on it, such as a
+        former spouse or a child someone else claims?
+    cite: &alloc_cite
+      doc: i8962
+      locator: p. 12, Allocating policy amounts, "The policy covered at least one individual in your tax family and at least
+        one individual in another tax family" and "The other tax family received a Form 1095-A for the policy that includes
+        a member of your tax family"; p. 12, example, "your ex-spouse enrolled a child whom you are claiming as a dependent"
+  - id: f8962.divorced_enrolled
+    printed: (gate)
+    label: Divorced or legally separated during 2025 while enrolled in a policy with the former spouse
+    type: Bool
+    expr:
+      op: input
+      source: During 2025, did you (or, on a joint return, your spouse) divorce or legally separate while on the same Marketplace
+        plan as the former husband or wife?
+    cite: *alloc_cite
   - id: f8962.alloc
     printed: (gate)
     label: A policy shared with another tax family, or a divorce or separation in 2025 with a shared policy
     type: Bool
     expr:
-      op: input
-      source: Did any Marketplace policy, including one whose Form 1095-A went only to someone else, cover someone in your tax
-        family and also someone who is not in it (for example a former spouse, a child someone else claims, or a child you
-        claim whom someone else enrolled), or were you divorced or legally separated during 2025 while enrolled
-        in a policy with your former spouse?
-    cite:
-      doc: i8962
-      locator: p. 12, Allocating policy amounts, "The policy covered at least one individual in your tax family and at least
-        one individual in another tax family" and "The other tax family received a Form 1095-A for the policy that includes
-        a member of your tax family"; p. 12, example, "your ex-spouse enrolled a child whom you are claiming as a dependent"
-  - id: f8962.married_in_2025
+      op: test
+      any:
+      - op: test
+        eq:
+        - f8962.shared_policy
+        - const: true
+      - op: test
+        eq:
+        - f8962.divorced_enrolled
+        - const: true
+    cite: *alloc_cite
+  - id: f8962.married_this_year
     printed: (gate)
     label: Married during 2025 with coverage before the first full month of marriage
     type: Bool
@@ -94,7 +117,7 @@ form:
           eq:
           - f1040.status
           - const: mfj
-        then: f8962.married_in_2025
+        then: f8962.married_this_year
       - guard:
           op: test
           eq:
@@ -123,35 +146,16 @@ form:
       doc: i8962
       locator: p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month
         of marriage?"
-  - id: f8962.other
+  - id: f8962.other_coverage
     printed: (gate)
-    label: Coverage or eligibility this tool does not reconcile (other minimum essential coverage, an HRA, unpaid
-      premiums, no tax family, incarceration)
+    label: In a month of Marketplace coverage, someone in the tax family may have been eligible for other minimum essential
+      coverage
     type: Bool
     expr:
       op: input
-      source: |-
-        Does any of these apply?
-
-        - someone enrolled in a Marketplace policy was not lawfully present in the United States
-        - for any month, anyone in your tax family was eligible for minimum essential coverage other than coverage in the individual market, including:
-          - Medicare Part A or Part C
-          - Medicaid
-          - the Children's Health Insurance Program (CHIP)
-          - TRICARE
-          - certain benefits for veterans and their families
-          - health coverage for Peace Corps volunteers
-          - employer-sponsored coverage that was offered and was affordable and provided minimum value (other than during a waiting period before the benefits begin; the offer is affordable for the employee if the employee's share of the annual cost of self-only coverage is not more than 9.02% of household income (Form 8962, line 3), whatever family coverage costs, and for another member of the tax family allowed to enroll if the employee's share of the annual cost of coverage for the employee and the family members allowed to enroll is not more than 9.02% of household income)
-          - employer-sponsored coverage the person actually enrolled in (including COBRA or retiree coverage) even if it was not affordable or did not provide minimum value
-          - other health coverage the Department of Health and Human Services designates as minimum essential coverage
-        - you or a family member were offered or covered by a qualified small employer HRA (QSEHRA, W-2 box 12 code FF) or an individual coverage HRA for 2025
-        - any part of a month's premium was not paid by the due date of your return, not including extensions (or, for coverage you enrolled in retroactively after a successful eligibility appeal, by the 120th day after the appeals decision), or a Form 1095-A shows zero in column A for a month whose premium you paid
-        - advance payments were made for someone who is in no one's tax family
-        - a Marketplace determination that you or a family member was ineligible for Medicaid or CHIP was later found to be based on incorrect information given with intentional or reckless disregard for the facts
-        - someone enrolled was incarcerated, other than pending disposition of charges such as awaiting trial
-
-        Do not count coverage bought in the individual market outside the Marketplace.
-    cite:
+      source: While on Marketplace insurance, could anyone on this return have had other health coverage, such as a job's
+        plan, Medicare, Medicaid, CHIP, TRICARE or veterans' care?
+    cite: &other_cite
       doc: i8962
       locator: p. 5, "An individual in your tax family who is eligible for MEC (except coverage in the individual market)
         for a month is not in your coverage family for that month."; p. 5, "Most coverage through government-sponsored
@@ -183,21 +187,283 @@ form:
         you retroactively enrolled in the plan, then the portion of the enrollment premium for which you are responsible
         must be paid on or before the 120th day following the date of the appeals decision"; p. 4, "due date of your tax
         return (not including extensions)"
-  - id: f8962.premium_adjust
+  - id: f8962.mec_job_enrolled
     printed: (gate)
-    label: A Marketplace premium needs an adjustment this tool does not make (coverage began after the first day of a
-      month, or a premium was refunded)
+    label: Someone in the tax family was enrolled in employer-sponsored coverage (including COBRA or retiree coverage) in a
+      month of Marketplace coverage
+    type: Bool
+    gated_by: f8962.mec_job_enrolled_if_other_coverage
+    expr:
+      op: input
+      source: In one of those months, was anyone on this return enrolled in a health plan from a job, counting COBRA and retiree
+        plans?
+    cite: *other_cite
+  - id: f8962.mec_job_enrolled_if_other_coverage
+    printed: (gate)
+    label: Other coverage was possible and someone was enrolled in employer-sponsored coverage
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.other_coverage
+          - const: true
+        then: f8962.mec_job_enrolled
+      - guard:
+          op: test
+          eq:
+          - f8962.other_coverage
+          - const: false
+        then: f8962.no
+    cite: *other_cite
+  - id: f8962.job_offer
+    printed: (gate)
+    label: Someone in the tax family was offered employer-sponsored coverage and did not enroll
+    type: Bool
+    gated_by: f8962.job_offer_if_other_coverage
+    expr:
+      op: input
+      source: In one of those months, was anyone on this return offered a health plan by an employer and did not take it?
+    cite: *other_cite
+  - id: f8962.job_offer_if_other_coverage
+    printed: (gate)
+    label: Other coverage was possible and an employer offer was not taken
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.other_coverage
+          - const: true
+        then: f8962.job_offer
+      - guard:
+          op: test
+          eq:
+          - f8962.other_coverage
+          - const: false
+        then: f8962.no
+    cite: *other_cite
+  - id: f8962.mec_job_affordable
+    printed: (gate)
+    label: The employer-sponsored coverage offered and not taken was affordable and provided minimum value
+    type: Bool
+    gated_by: f8962.mec_job_affordable_if_job_offer
+    expr:
+      op: input
+      source: Was that offer affordable, and did the plan give at least 'minimum value'? It was affordable for the worker if the
+        worker's yearly share of the cheapest plan for the worker alone was no more than 9.02% of your household income; for a
+        family member, if the worker's share for the worker and the family was no more than that.
+    cite: *other_cite
+  - id: f8962.mec_job_affordable_if_job_offer
+    printed: (gate)
+    label: An employer offer was not taken, and it was affordable and provided minimum value
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.job_offer_if_other_coverage
+          - const: true
+        then: f8962.mec_job_affordable
+      - guard:
+          op: test
+          eq:
+          - f8962.job_offer_if_other_coverage
+          - const: false
+        then: f8962.no
+    cite: *other_cite
+  - id: f8962.mec_government
+    printed: (gate)
+    label: Someone in the tax family was eligible for government-sponsored minimum essential coverage in a month of Marketplace
+      coverage
+    type: Bool
+    gated_by: f8962.mec_government_if_other_coverage
+    expr:
+      op: input
+      source: In one of those months, did anyone on this return qualify for Medicare (Part A or Part C), Medicaid, CHIP, TRICARE,
+        veterans' health care or Peace Corps health coverage?
+    cite: *other_cite
+  - id: f8962.mec_government_if_other_coverage
+    printed: (gate)
+    label: Other coverage was possible and someone was eligible for government-sponsored coverage
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.other_coverage
+          - const: true
+        then: f8962.mec_government
+      - guard:
+          op: test
+          eq:
+          - f8962.other_coverage
+          - const: false
+        then: f8962.no
+    cite: *other_cite
+  - id: f8962.mec_other
+    printed: (gate)
+    label: Someone in the tax family was eligible for other health coverage designated as minimum essential coverage in a month
+      of Marketplace coverage
+    type: Bool
+    gated_by: f8962.mec_other_if_other_coverage
+    expr:
+      op: input
+      source: In one of those months, could anyone on this return have had any other health coverage that was not insurance bought
+        on your own, such as a plan from a business they own or a group plan from another country?
+    cite: *other_cite
+  - id: f8962.mec_other_if_other_coverage
+    printed: (gate)
+    label: Other coverage was possible and someone was eligible for other designated coverage
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.other_coverage
+          - const: true
+        then: f8962.mec_other
+      - guard:
+          op: test
+          eq:
+          - f8962.other_coverage
+          - const: false
+        then: f8962.no
+    cite: *other_cite
+  - id: f8962.hra
+    printed: (gate)
+    label: You or a family member were offered or covered by a QSEHRA or an individual coverage HRA for 2025
     type: Bool
     expr:
       op: input
-      source: |-
-        Did either of these happen?
-
-        - Marketplace coverage reported on a Form 1095-A (a qualified health plan) for anyone in your tax family began after the first day of a 2025 month, other than coverage effective on the date of a birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order placing the individual with your family (those count from the first day of the month)
-        - any premiums for a 2025 month of that Marketplace coverage were refunded in 2025
-
-        A start date of other coverage (employer, Medicaid, or a catastrophic, stand-alone dental or SHOP plan) does not count here.
-    cite:
+      source: For 2025, did an employer offer you, or anyone on this return, money to pay for health insurance you buy yourself (a
+        'QSEHRA' or an 'individual coverage HRA')?
+    cite: *other_cite
+  - id: f8962.not_lawful
+    printed: (gate)
+    label: Someone enrolled in a Marketplace policy was not lawfully present in the United States
+    type: Bool
+    expr:
+      op: input
+      source: Was anyone covered by the Marketplace plan not lawfully present in the United States?
+    cite: *other_cite
+  - id: f8962.incarcerated
+    printed: (gate)
+    label: Someone enrolled was incarcerated, other than pending disposition of charges
+    type: Bool
+    expr:
+      op: input
+      source: Was anyone covered by the Marketplace plan in jail or prison during 2025, other than while awaiting trial?
+    cite: *other_cite
+  - id: f8962.no_family
+    printed: (gate)
+    label: Advance payments were made for someone who is in no one's tax family
+    type: Bool
+    expr:
+      op: input
+      source: Did the Marketplace make advance payments for someone who is on no one's 2025 tax return, neither filing one nor
+        claimed as a dependent on yours or anyone else's?
+    cite: *other_cite
+  - id: f8962.medicaid_reversed
+    printed: (gate)
+    label: A Marketplace determination of ineligibility for Medicaid or CHIP was later found to be based on incorrect information
+      given with intentional or reckless disregard for the facts
+    type: Bool
+    expr:
+      op: input
+      source: Was a Marketplace finding that you, or someone on this return, could not get Medicaid or CHIP later found to rest on
+        wrong information, given on purpose or recklessly?
+    cite: *other_cite
+  - id: f8962.unpaid
+    printed: (gate)
+    label: Part of a month's premium was not paid by the due date of the return (or, after a successful appeal, by the 120th day
+      after the decision)
+    type: Bool
+    expr:
+      op: input
+      source: Was any part of a month's premium for the Marketplace plan left unpaid?
+    cite: *other_cite
+  - id: f8962.a_zero_paid
+    printed: (gate)
+    label: A Form 1095-A shows zero in column A for a month whose premium was paid
+    type: Bool
+    expr:
+      op: input
+      source: Does a Form 1095-A show zero in column A for a month whose premium you did pay?
+    cite: *other_cite
+  - id: f8962.other
+    printed: (gate)
+    label: Coverage or eligibility this tool does not reconcile (other minimum essential coverage, an HRA, unpaid
+      premiums, no tax family, incarceration)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - f8962.mec_job_enrolled_if_other_coverage
+        - const: true
+      - op: test
+        eq:
+        - f8962.mec_job_affordable_if_job_offer
+        - const: true
+      - op: test
+        eq:
+        - f8962.mec_government_if_other_coverage
+        - const: true
+      - op: test
+        eq:
+        - f8962.mec_other_if_other_coverage
+        - const: true
+      - op: test
+        eq:
+        - f8962.hra
+        - const: true
+      - op: test
+        eq:
+        - f8962.not_lawful
+        - const: true
+      - op: test
+        eq:
+        - f8962.incarcerated
+        - const: true
+      - op: test
+        eq:
+        - f8962.no_family
+        - const: true
+      - op: test
+        eq:
+        - f8962.medicaid_reversed
+        - const: true
+      - op: test
+        eq:
+        - f8962.unpaid
+        - const: true
+      - op: test
+        eq:
+        - f8962.a_zero_paid
+        - const: true
+    cite: *other_cite
+  - id: f8962.midmonth_start
+    printed: (gate)
+    label: Marketplace coverage began after the first day of a month, other than on a birth, adoption, placement or court
+      order
+    type: Bool
+    expr:
+      op: input
+      source: Did anyone's Marketplace coverage start on a day other than the first of a month? Do not count a child covered
+        from the day of a birth, an adoption, a placement for adoption or foster care, or a court order.
+    cite: &adjust_cite
       doc: i8962
       locator: p. 4, "Generally, if coverage in a qualified health plan began after the first day of the month, you are
         not allowed a monthly credit amount for the coverage for that month."; p. 4, "if an individual in your tax family
@@ -208,6 +474,31 @@ form:
         that month that were refunded in 2025"; p. 5, "Catastrophic health plans and stand-alone dental plans purchased
         through the Marketplace, and all plans purchased through the Small Business Health Options Program (SHOP), are not
         qualified health plans for purposes of the PTC."
+  - id: f8962.premium_refunded
+    printed: (gate)
+    label: Premiums for a 2025 month of Marketplace coverage were refunded in 2025
+    type: Bool
+    expr:
+      op: input
+      source: Was any premium for a 2025 month of Marketplace coverage refunded during 2025?
+    cite: *adjust_cite
+  - id: f8962.premium_adjust
+    printed: (gate)
+    label: A Marketplace premium needs an adjustment this tool does not make (coverage began after the first day of a
+      month, or a premium was refunded)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - f8962.midmonth_start
+        - const: true
+      - op: test
+        eq:
+        - f8962.premium_refunded
+        - const: true
+    cite: *adjust_cite
   - id: f8962.void_forms
     printed: (helper)
     label: Forms 1095-A entered that are marked VOID or replaced by a corrected form
@@ -535,6 +826,7 @@ form:
     printed: (gate)
     label: The Marketplace estimated household income of at least 100% of the poverty line, without misreporting
     type: Bool
+    gated_by: f8962.estimate_exception
     expr:
       op: input
       source: When you or an individual in your tax family (yourself, your spouse if filing jointly, and your dependents) enrolled in a
@@ -621,6 +913,7 @@ form:
     printed: (gate)
     label: An enrolled lawfully present alien not eligible for Medicaid because of immigration status
     type: Bool
+    gated_by: f8962.alien_from_income
     expr:
       op: input
       source: Was someone in your tax family who enrolled in a qualified health plan through the Marketplace lawfully present

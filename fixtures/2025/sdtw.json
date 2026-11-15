@@ -49,6 +49,7 @@
       "inputs": {
         "div.any": true,
         "div.box2b": 3000000,
+        "div.other_boxes": true,
         "div.box2d": 2000000,
         "sd.distributions": 10000000,
         "$w2@person[taxpayer]": [
@@ -276,6 +277,7 @@
       "inputs": {
         "div.any": true,
         "div.box2d": 2000000,
+        "div.other_boxes": true,
         "sa.gifts": true,
         "sa.elect_itemize": true,
         "sa.line11": 6000000,
@@ -369,6 +371,7 @@
       "inputs": {
         "div.any": true,
         "div.box2b": 3000000,
+        "div.other_boxes": true,
         "div.box2d": 2000000,
         "sd.distributions": 20000000,
         "$w2@person[taxpayer]": [
@@ -432,6 +435,7 @@
       "inputs": {
         "div.any": true,
         "div.box2b": 500000,
+        "div.other_boxes": true,
         "div.box2d": 1000000,
         "sd.distributions": 2000000,
         "$w2@person[taxpayer]": [
@@ -483,6 +487,7 @@
       "inputs": {
         "div.any": true,
         "div.box2b": 3000000,
+        "div.other_boxes": true,
         "div.box2d": 2000000,
         "f1040.line3a": 1000000,
         "f4952.has_interest": true,
@@ -537,6 +542,7 @@
       "inputs": {
         "div.any": true,
         "div.box2d": 2000000,
+        "div.other_boxes": true,
         "sd.distributions": 10000000,
         "$w2@person[taxpayer]": [
           "a"
@@ -573,6 +579,7 @@
       "inputs": {
         "div.any": true,
         "div.box2b": 1000000,
+        "div.other_boxes": true,
         "sd.distributions": 10000000,
         "$w2@person[taxpayer]": [
           "a"

@@ -136,10 +136,10 @@ form:
     - id: s3.adoption_any
       printed: (helper)
       type: Bool
-      label: In 2024 or 2025, did you (or, on a joint return, your spouse) adopt a child, or pay expenses in connection with adopting a child or trying to adopt one?
+      label: In 2024 or 2025, did you (or, on a joint return, your spouse) adopt a child, or pay (or have an employer pay) expenses in connection with adopting a child or trying to adopt one?
       expr:
         op: input
-        source: In 2024 or 2025, did you (or, on a joint return, your spouse) adopt a child, or pay expenses in connection with adopting a child or trying to adopt one?
+        source: In 2024 or 2025, did you (or, on a joint return, your spouse) adopt a child, or pay (or have an employer pay) expenses in connection with adopting a child or trying to adopt one?
       cite:
         doc: i8839
         locator: p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements are true"; p. 3, Domestic Adoption, "any year before the year the adoption becomes final"
@@ -1241,18 +1241,12 @@ form:
         cite:
           doc: i8839
           locator: p. 1, Purpose of Form, "2024 and the adoption wasn’t final at the end of 2024"; p. 3, Domestic Adoption, "the year after the year of the payment"
-      - when: s3.credit_bond
-        form: Form 8912 (credit to holders of tax credit bonds)
-        remedy: A tax credit from a bond, or one a fund passes on (Form 1097-BTC), is claimed on Form 8912, which this tool does not prepare.
+      - when: s3.mcc_if_interest
+        form: Form 8396 (mortgage interest credit)
+        remedy: A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A; this tool does not prepare it.
         cite:
-          doc: i8912
-          locator: p. 1, Who Can Claim the Credits, "can claim the credit by filing Form 8912 for each tax year in which it holds the bond on a credit allowance date"; p. 2, Line 1, "This amount is the total bond credits reported to you on Form(s) 1097-BTC"
-      - when: s3.elderly_credit_if_asked
-        form: Schedule R (credit for the elderly or the disabled)
-        remedy: The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question.
-        cite:
-          doc: i1040sr
-          locator: p. 1, Qualified Individual, "You are a qualified individual for this credit if you are a U.S. citizen or resident alien"
+          doc: f8396
+          locator: p. 2, Who Can Claim the Credit, "You can claim the credit only if you were issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency"; p. 2, Line 3, "you must reduce the amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3"
       - when: s3.ev_dealer_if_ev
         form: Form 8936 (clean vehicle credits)
         remedy: A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed with this return; this tool does not prepare them.
@@ -1271,6 +1265,12 @@ form:
         cite:
           doc: i8911
           locator: p. 1, Purpose of Form, "to figure your credit for alternative fuel vehicle refueling property you placed in service during your tax year"
+      - when: s3.credit_bond
+        form: Form 8912 (credit to holders of tax credit bonds)
+        remedy: A tax credit from a bond, or one a fund passes on (Form 1097-BTC), is claimed on Form 8912, which this tool does not prepare.
+        cite:
+          doc: i8912
+          locator: p. 1, Who Can Claim the Credits, "can claim the credit by filing Form 8912 for each tax year in which it holds the bond on a credit allowance date"; p. 2, Line 1, "This amount is the total bond credits reported to you on Form(s) 1097-BTC"
       - when: s3.prior_amt_if_forms
         form: Form 8801 (credit for prior year minimum tax)
         remedy: Alternative minimum tax on your 2024 return can give a credit for 2025 (Form 8801), which this tool does not prepare.
@@ -1283,12 +1283,12 @@ form:
         cite:
           doc: i3800
           locator: p. 3, Carryback and Carryforward of Unused Credit, "unused general business credits may be carried back 1 year and carried forward 20 years"; f8396 p. 2, Part II—Mortgage Interest Credit Carryforward to 2026, "you may have an unused credit to carry forward to the next 3 tax years"; i8801 p. 1, Who Should File, "A credit carryforward to 2025 (on 2024 Form 8801, line 26)"; f8834 p. 2, Line 1, "Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR"; i8839 p. 1, Purpose of Form, "You have a carryforward of an adoption credit from 2024"; f8859 p. 1, Purpose of Form, "to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024"; i8912 p. 3, Line 12, "you may carry the unused portion of the credit to the next tax year"
-      - when: s3.mcc_if_interest
-        form: Form 8396 (mortgage interest credit)
-        remedy: A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A; this tool does not prepare it.
+      - when: s3.elderly_credit_if_asked
+        form: Schedule R (credit for the elderly or the disabled)
+        remedy: The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question.
         cite:
-          doc: f8396
-          locator: p. 2, Who Can Claim the Credit, "You can claim the credit only if you were issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency"; p. 2, Line 3, "you must reduce the amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3"
+          doc: i1040sr
+          locator: p. 1, Qualified Individual, "You are a qualified individual for this credit if you are a U.S. citizen or resident alien"
     - id: s3.line8
       printed: "8"
       type: Dollars
@@ -1407,27 +1407,27 @@ form:
         locator: Schedule 3 (2025), line 14
       note: 'Zero: this tool does not prepare the amounts of lines 13a through 13z, and each situation asked about that gives one is refused here.'
       refuses:
-      - when: s3.farmland_deferral_if_sold
-        form: Form 1062 (Schedule 3 line 13z)
-        remedy: The election to pay the tax on a sale of farmland in installments (Form 1062) is reported on Schedule 3 line 13z, which this tool does not prepare.
-        cite:
-          doc: i1040gi
-          locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"
-      - when: s3.section960c_if_foreign
-        form: Schedule 3 line 13z (section 960(c) credit)
-        remedy: The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.
-        cite:
-          doc: i1040gi
-          locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"
       - when: s3.section965_if_foreign
         form: Schedule 3 line 13d (net 965 tax liability)
         remedy: A net 965 tax liability paid in installments is reported on Schedule 3 line 13d, which this tool does not prepare.
         cite:
           doc: i1040gi
           locator: p. 117, Line 13d, "If you elected to pay your net 965 tax liability in installments, report the deferred amount on line 13d"
+      - when: s3.section960c_if_foreign
+        form: Schedule 3 line 13z (section 960(c) credit)
+        remedy: The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.
+        cite:
+          doc: i1040gi
+          locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"
       - when: s3.virgin_islands_if_foreign
         form: Form 8689 (Schedule 3 line 13z)
         remedy: Tax allocable to the U.S. Virgin Islands (Form 8689) is reported on Schedule 3 line 13z, which this tool does not prepare.
+        cite:
+          doc: i1040gi
+          locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"
+      - when: s3.farmland_deferral_if_sold
+        form: Form 1062 (Schedule 3 line 13z)
+        remedy: The election to pay the tax on a sale of farmland in installments (Form 1062) is reported on Schedule 3 line 13z, which this tool does not prepare.
         cite:
           doc: i1040gi
           locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"

@@ -1,0 +1,2239 @@
+{
+ "kept": [
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.g28.1.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.g28.2.deepseek",
+   "spouse",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.sd.1.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.u1250.1.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.u1250.2.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw.4.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 2009
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw26.1.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s2.2.deepseek",
+   "spouse",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s2.2.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s2.3.deepseek",
+   "spouse",
+   "under50",
+   {
+    "y": 2007,
+    "j": false
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s2.3.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.2.deepseek",
+   "spouse",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.3.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.6.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.5.deepseek",
+   "spouse",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.retirement.2.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.retirement.3.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5329.1.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.gpt.json",
+   "classm.f8962.3.gpt",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.gpt.json",
+   "classm.f8962.4.gpt",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.gpt.json",
+   "classm.f8962.5.gpt",
+   "spouse",
+   "age50",
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/classm.gpt.json",
+   "classm.f8962.5.gpt",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.carloan.1",
+   "taxpayer",
+   "under50",
+   {
+    "y": 2001,
+    "j": false
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.carloan.2",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.dcprov.1",
+   "taxpayer",
+   "under50",
+   {
+    "y": 2001,
+    "j": false
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f4562.1",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8995.2",
+   "spouse",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.g28.1",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.g28.2",
+   "spouse",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.ltc.1",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.oi8z.1",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.retirement.2",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.retirement.3",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s2.2",
+   "spouse",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s2.2",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s2.3",
+   "spouse",
+   "under50",
+   {
+    "y": 2007,
+    "j": false
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s2.3",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sd.1",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sdtw.1",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sdtw.3",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sdtw.4",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.se.1",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.se.2",
+   "spouse",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.se.2",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.se.3",
+   "spouse",
+   "age50",
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.se.3",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.u1250.1",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.u1250.2",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.w2.1",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.2",
+   "spouse",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.3",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.6",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.clcw.4",
+   "taxpayer",
+   "under50",
+   {
+    "y": 2009
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f5329.1",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.mfs_sdtw_skip41",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8962_months_scveh3",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.no_carloan_part4",
+   "taxpayer",
+   "under50",
+   {
+    "y": 2009
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.hoh_s1a_tips_ot",
+   "taxpayer",
+   "under50",
+   {
+    "y": 2004
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.hoh_s1a_car",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.qss_s1a_car",
+   "taxpayer",
+   "under50",
+   {
+    "y": 2001,
+    "j": false
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8880.hoh_line4",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8880.sep_line2",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8880.simple_line2",
+   "spouse",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s1a.line21_magi_first",
+   "taxpayer",
+   "under50",
+   {
+    "y": 2009
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.person.simple_nonelective_excess",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8880.no_plan_line2",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1980
+   }
+  ]
+ ],
+ "moved": [
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.w2.1.deepseek",
+   "spouse",
+   "under50",
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.w2.1.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.g28.2.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.sd.2.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.sd.3.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw.1.deepseek",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw.2.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw.3.deepseek",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw26.2.deepseek",
+   "spouse",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw26.2.deepseek",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw26.3.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw26.4.deepseek",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s2.1.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1095a.1.deepseek",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.1.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.2.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.4.deepseek",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.5.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f1040.6.deepseek",
+   "spouse",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.aqee.1.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.1.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.2.deepseek",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.3.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.4.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.5.deepseek",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.6.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1970
+   },
+   {
+    "y": 1970
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.7.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 2009
+   },
+   {
+    "y": 2009
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.eic.8.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.retirement.1.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.retirement.4.deepseek",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.retirement.5.deepseek",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5329.1.deepseek",
+   "spouse",
+   "age50",
+   {
+    "y": 2009
+   },
+   {
+    "y": 2009
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5329.2.deepseek",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5329.3.deepseek",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1970
+   },
+   {
+    "y": 1970
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.gpt.json",
+   "classm.f8962.1.gpt",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.gpt.json",
+   "classm.f1095a.1.gpt",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.carloan.3",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8606.1",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8959.1",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8959.2",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1970
+   },
+   {
+    "y": 1965
+   },
+   []
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8995.1",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8995.2",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f8995.3",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.g28.2",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.ltc.2",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.refund.1",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.retirement.1",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.retirement.4",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.retirement.5",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s2.1",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sd.2",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sd.3",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sdtw.2",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sdtw.5",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.se.1",
+   "spouse",
+   "under50",
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.w2.1",
+   "spouse",
+   "age60_63",
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.1",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.2",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.4",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.5",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f1040.6",
+   "spouse",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.person.7",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.clcw.1",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.clcw.2",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.clcw.3",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.aqee.1",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f5329.1",
+   "spouse",
+   "age50",
+   {
+    "y": 2009
+   },
+   {
+    "y": 2009
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f5329.2",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f5329.3",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1970
+   },
+   {
+    "y": 1970
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.mfj_sdtw_skip23",
+   "spouse",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.mfj_sdtw_skip23",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.qss_sdtw_sli",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8962_months_r5",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8962_months_r4",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8962_months_asset3",
+   "spouse",
+   "under50",
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8962_months_asset3",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.no_carloan_part4_b",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.no_senior_part5",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.mfj_no_overtime_part3",
+   "spouse",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.mfj_no_overtime_part3",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1970
+   },
+   {
+    "y": 1970
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.no_5695_part1_s3_5a",
+   "spouse",
+   "under50",
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.no_5695_part1_s3_5a",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.mfs_sli_line5",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1970
+   },
+   {
+    "y": 1965
+   },
+   []
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.qss_s1a_ot",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.qss_s1a_tips_ot_car",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1970
+   },
+   {
+    "y": 1965
+   },
+   []
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.eic.qss_one_child",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.sli.qss_divisor",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.sli.hoh_divisor",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8880.simple_line2",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s3.one_employer",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8880.inherited_ira",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1970
+   },
+   {
+    "y": 1970
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f1095a.monthly_columns",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s1a.line13_magi_first",
+   "spouse",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.s1a.line13_magi_first",
+   "taxpayer",
+   "under50",
+   {
+    "y": 1970
+   },
+   {
+    "y": 1970
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.eic.qss_child_line5_skip",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.eic.hoh_child_line5_skip",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.eic.mfs_child_line5_skip",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.scveh.mq_prior_car_q4",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.scveh.mq_2025_car_q2",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.person.eic_se_refusal_order",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t3.ira_line1b_spouse_covered",
+   "spouse",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t3.ira_line1b_spouse_covered",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t3.roth_excess_screen",
+   "spouse",
+   "under50",
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t3.roth_excess_screen",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1950
+   },
+   {
+    "y": 1950
+   },
+   "override"
+  ],
+  [
+   "fixtures/2025/person.json",
+   "stage14.simple.match_age50",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/person.json",
+   "stage14.sep.worksheet_hidden",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/person.json",
+   "stage14.simple.nonelective_60",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/person.json",
+   "stage14.simple.refuse_catchup_comp",
+   "taxpayer",
+   "age50",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1975
+   },
+   [
+    "ira_age50"
+   ]
+  ],
+  [
+   "fixtures/2025/sd.json",
+   "stage16.sd.line17_no_skips_18",
+   "taxpayer",
+   "age60_63",
+   {
+    "y": 1980
+   },
+   {
+    "y": 1965
+   },
+   [
+    "age55",
+    "ira_age50"
+   ]
+  ]
+ ],
+ "null": [],
+ "conflict": [],
+ "unstated": []
+}

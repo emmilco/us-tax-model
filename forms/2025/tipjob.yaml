@@ -16,39 +16,181 @@ form:
     cite:
       doc: i1040gi
       locator: p. 104, Schedule 1-A, line 4c, "with respect to employment with more than one employer"
-  - id: tipjob.qualified
+  - id: tipjob.no
     printed: (helper)
-    label: Were all the tips you are counting from this employer received in an occupation on the IRS list of occupations
-      that customarily and regularly received tips on or before December 31, 2024, paid in cash (including by check,
-      card or app), voluntarily, without negotiation and in an amount the customer decided, not for a service that
-      is a crime under applicable law, and not for prostitution or pornographic activity?
+    label: Year parameter s3.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: s3.no
+    cite:
+      doc: i1040gi
+      locator: p. 103, Schedule 1-A, "Determining the amount of qualified tips received by an employee for 2025"
+  - id: tipjob.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b)
+  - id: tipjob.listed
+    printed: (helper)
+    label: Were the tips from this employer received in an occupation on the IRS list of occupations that customarily
+      and regularly received tips on or before December 31, 2024?
     type: Bool
     expr:
       op: input
-      source: Were all the tips you are counting from this employer received in an occupation on the IRS list of occupations
-        that customarily and regularly received tips on or before December 31, 2024 (IRS.gov/TippedOccupations), paid
-        in cash (including by check, card or app), voluntarily, without negotiation and in an amount the customer decided,
-        not for a service that is a felony or misdemeanor under applicable law, and not for prostitution or pornographic
-        activity?
+      source: Is the work you got these tips for on the IRS list of jobs that customarily get tips? Restaurant, bar and
+        hotel staff, hairdressers and barbers, and taxi and delivery drivers are on it.
+    cite:
+      doc: i1040gi
+      locator: pp. 101-103, Schedule 1-A, Qualified Tips, "Occupations that customarily and regularly received tips";
+        "Do not include tips received in occupations that are not included on this list"; tipped-occupations, the
+        list of occupations by Treasury Tipped Occupation Code
+  - id: tipjob.other_work
+    printed: (helper)
+    label: Were some of the tips from this employer received in an occupation that is not on the IRS list?
+    type: Bool
+    gated_by: tipjob.other_work_if_listed
+    expr:
+      op: input
+      source: Did you also get tips from this employer for other work that is not on that list?
+    cite:
+      doc: i1040gi
+      locator: p. 103, "If you received tips as an employee in more than one occupation for the same employer, only
+        those tips that were received in an occupation on the list ... are considered qualified tips. Do not include
+        tips received in occupations that are not included on this list in line 4a, 4b, or 4c"
+  - id: tipjob.other_work_if_listed
+    printed: (gate)
+    label: Whether some of this employer's tips were received in an occupation not on the list, asked only where the tips were received in a listed occupation (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - tipjob.listed
+          - const: true
+        then: tipjob.other_work
+      - guard:
+          op: test
+          eq:
+          - tipjob.listed
+          - const: false
+        then: tipjob.no
+    cite:
+      doc: i1040gi
+      locator: p. 103, Schedule 1-A, "Determining the amount of qualified tips received by an employee for 2025"
+  - id: tipjob.charged
+    printed: (helper)
+    label: Do the tips from this employer include amounts not paid voluntarily, not determined by the customer or
+      subject to negotiation (service charges, automatic gratuities), or amounts not paid in cash (including by check,
+      card or app)?
+    type: Bool
+    gated_by: tipjob.charged_if_listed
+    expr:
+      op: input
+      source: Do these tips include a service charge or automatic gratuity that the business added to the bill, an
+        amount you negotiated with the customer, or tips given as tickets, meals or goods instead of money?
     cite:
       doc: i1040gi
       locator: pp. 101-103, Schedule 1-A, Qualified Tips, Cash tips, "Paid voluntarily, not subject to negotiation,
-        and determined by the customer/payor," "Amounts received that are not qualified tips", "Tips received while
-        performing a service that is a felony or misdemeanor under applicable law are not qualified tips", "Amounts
-        received for prostitution and pornographic activity are not qualified tips" and "Occupations that
-        customarily and regularly received tips"; "Do not include tips received in occupations that are not included
-        on this list"
+        and determined by the customer/payor," "Amounts received that are not qualified tips"
+  - id: tipjob.charged_if_listed
+    printed: (gate)
+    label: Whether this employer's tips include amounts not paid voluntarily or not paid in cash, asked only where the tips were received in a listed occupation (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - tipjob.listed
+          - const: true
+        then: tipjob.charged
+      - guard:
+          op: test
+          eq:
+          - tipjob.listed
+          - const: false
+        then: tipjob.no
+    cite:
+      doc: i1040gi
+      locator: p. 103, Schedule 1-A, "Determining the amount of qualified tips received by an employee for 2025"
+  - id: tipjob.unlawful
+    printed: (helper)
+    label: Were any of the tips from this employer received while performing a service that is a felony or misdemeanor
+      under applicable law, or for prostitution or pornographic activity?
+    type: Bool
+    gated_by: tipjob.unlawful_if_listed
+    expr:
+      op: input
+      source: Was any of the work you got these tips for against the law (for example, serving alcohol without a
+        license the state requires), or was any of it prostitution or pornographic activity?
+    cite:
+      doc: i1040gi
+      locator: pp. 101-103, Schedule 1-A, Qualified Tips, "Tips received while performing a service that is a felony
+        or misdemeanor under applicable law are not qualified tips", "Amounts received for prostitution and
+        pornographic activity are not qualified tips"
+  - id: tipjob.unlawful_if_listed
+    printed: (gate)
+    label: Whether any of this employer's tips were received for an unlawful service, prostitution or pornographic activity, asked only where the tips were received in a listed occupation (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - tipjob.listed
+          - const: true
+        then: tipjob.unlawful
+      - guard:
+          op: test
+          eq:
+          - tipjob.listed
+          - const: false
+        then: tipjob.no
+    cite:
+      doc: i1040gi
+      locator: p. 103, Schedule 1-A, "Determining the amount of qualified tips received by an employee for 2025"
+  - id: tipjob.tips
+    printed: (helper)
+    label: Qualified tips from this employer, as entered
+    type: NonNegDollars
+    gated_by: tipjob.amount
+    expr:
+      op: input
+      source: What were your tips from this employer in 2025? Take box 7 of its W-2 (social security tips), or a tip
+        amount this employer gave you in box 14 or on a separate statement.
+    cite:
+      doc: i1040gi
+      locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); pp. 103-104, paragraphs 1 through 3
   - id: tipjob.amount
     printed: 1(b)
     label: Amount of qualified tips reported by this employer on Form W-2, or reported by you to this employer on Form(s)
       4070
     type: NonNegDollars
     expr:
-      op: input
-      source: 'Qualified tips from this employer, taken from one of these (your choice): Form W-2 box 7 (social security
-        tips); the total of the tips you reported to this employer on Forms 4070 or a similar monthly report (which may
-        be more accurate if Form W-2 box 1 or box 5 is more than $176,100); or an amount of tips your employer reported
-        in Form W-2 box 14 or on a separate statement'
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - tipjob.listed
+          - const: true
+        then: tipjob.tips
+      - guard:
+          op: test
+          eq:
+          - tipjob.listed
+          - const: false
+        then: tipjob.zero
     cite:
       doc: i1040gi
       locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); pp. 103-104, paragraphs 1 through 3
@@ -67,9 +209,19 @@ form:
     type: Bool
     expr:
       op: test
-      eq:
-      - tipjob.qualified
-      - const: false
+      any:
+      - op: test
+        eq:
+        - tipjob.other_work_if_listed
+        - const: true
+      - op: test
+        eq:
+        - tipjob.charged_if_listed
+        - const: true
+      - op: test
+        eq:
+        - tipjob.unlawful_if_listed
+        - const: true
     cite:
       doc: i1040gi
       locator: p. 103, Schedule 1-A, "Determining the amount of qualified tips received by an employee for 2025"

@@ -59,14 +59,30 @@
    "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; f8880 p. 2, Line 4: \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions)\"; \"If you're filing a joint return, include both spouses' amounts in both columns\"; Exception: \"Don't include your spouse's distributions with yours when entering an amount on line 4 if you and your spouse didn't file a joint return for the year the distribution was received\". On a joint return the candidate takes each spouse's sav_dist and sav_prior_joint plus the taxpayer's sav_prior_other; otherwise the taxpayer's sav_dist and sav_prior_other. The same totals as the project. executable-triage-v2 (`../triage/f8880.json`; 1,376 fixtures, 500 generated returns seed 20261026, no partial records; 1,876 comparisons; every completed witness read with the cap lifted, T-083): 1,876 of 1,876 agree. Project stands.",
-   "subject_key": "8fbebca561da4cfc4c9aa3c8a544659f4e602af9ffacdd8fe448712887b6f31a"
+   "subject_key": "ef89e895f97bac78667f30f42fbff2a8595d200accb8afed41a28654d897495d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8880.dist_2025": "f8880.dist_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "8fbebca561da4cfc4c9aa3c8a544659f4e602af9ffacdd8fe448712887b6f31a"
+   }
   },
   {
    "key": "4(b)",
    "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; f8880 p. 2, Line 4: \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions)\"; \"If you're filing a joint return, include both spouses' amounts in both columns\"; Exception: \"Don't include your spouse's distributions with yours when entering an amount on line 4 if you and your spouse didn't file a joint return for the year the distribution was received\"; f8880 p. 2, Column (b): \"Complete column (b) only if you're filing a joint return\". As 4(a) with the spouse's sav_prior_other and zero off a joint return. executable-triage-v2 (`../triage/f8880.json`; 1,376 fixtures, 500 generated returns seed 20261026, no partial records; 1,876 comparisons; every completed witness read with the cap lifted, T-083): 1,876 of 1,876 agree. Project stands.",
-   "subject_key": "0c862909864f8c9edb13ced49360414fc5d8010e5d575c4cb57fa880e547e841"
+   "subject_key": "0a96b5fa9125be06bc2e258213b81af591d2155c05f196bd4d4f306a7398ea0c",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8880.dist_2025": "f8880.dist_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "0c862909864f8c9edb13ced49360414fc5d8010e5d575c4cb57fa880e547e841"
+   }
   },
   {
    "key": "5(a)",
@@ -158,8 +174,8 @@
   "2(b)": "6b2c8ed7dbe2fde0fc6579df471a0f0fccfda81a6d8717c81729a52776388184",
   "3(a)": "36e707c3be2b1a1de6e595f783bdcaab32e4f8343b349cdda4e5bfd0b9ef0c8d",
   "3(b)": "c1da47967955bed1580256ae880162ec6b7cd29f5e3e08cbb0a6e3884c4cc1b9",
-  "4(a)": "7aa12d27fa7a78d23e96a36c7372988d5162f4bd405553bacc9cc81ee12b33e8",
-  "4(b)": "992f24d1a10d343f769cce557a34e7332474b8a3fe3a3fa567725228fa506d11",
+  "4(a)": "3b4a0135312ad23205cd015e71d1fb8daa830aa3fe5f1ac488b10d30ca07a0a3",
+  "4(b)": "cf5e90a5a0c4d1129f2aba30b04ce2db78f27f7645e2e550395f0862977dcaab",
   "5(a)": "e4bdf68ce81453fd0817cce7846a02d57d40f8175226172b15490027a6f3f75c",
   "5(b)": "5c2f485611a097396b3207a4562f50f700e0370e52a5ccd5b5be0d3e4441ef8e",
   "6(a)": "ce44ecff7356cd598adef2aacc36a39a8559ee21d47140ac46a0942d0e8ab802",

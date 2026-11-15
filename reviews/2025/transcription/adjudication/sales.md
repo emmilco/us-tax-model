@@ -63,3 +63,15 @@ Fresh reviews of 2026-11-03 under prompt policy source-only-computation-v3 (clau
 | both | render | (e), (g) | scope | sales.digital, sales.bad_code checked | i8949 pp. 6-11 | Digital boxes and other codes refused. |
 
 Fix check: the new sales.correct_basis wording matches i8949 p. 6 ("first use an amount that is equal to or less than the final estate tax value"). Findings: none.
+
+## Landing round (2026-11-14)
+
+The interview redraft's line-scoped Claude review (pass 446b4cbc7cad) of `sales.route_if_chosen`, ruled by the
+land3-adj5 lane against `.transcription/triage/2025/sales.json` (executable-triage-v2; 1,933 comparisons; not
+rebuilt). Rulings in `/tmp/land3-adj5/sales.json`, applied with rule.py.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | sales.route_if_chosen | representation | 1,898/1,933 agree; no value; candidate-unknown (`sales.route` unasked with `sd.route_each` No), candidate-refuses 6 completed (its own Exception 1 refusal, which the project makes at `sales.one`) | i1040sd p. 10, lines 1a and 8a, "You can report on line 1a ... If you choose to report these transactions on lines 1a and 8a, don't report them on Form 8949" | Aggregation is optional; with the parent question No every sale is listed (`sales.detail`). The reply ignores the parent question; its claim that choose cannot yield an enum is mistaken. |
+
+Counts: 1 representation. Findings: none.

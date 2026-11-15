@@ -1,0 +1,116 @@
+# Coverage rows of lane 1 of the provisional redraft: the household questions and the payments
+# (docs/provisional/lanes/l1.md). Format: interview/README.md, "Coverage rows".
+tax_year: 2025
+part: Who the return is for, the household, and tax already paid
+profile: full
+sets:
+  one_person:
+    says: One person on the return, who takes the filing status single.
+    answers:
+      $person: [taxpayer]
+      f1040.status: single
+rows:
+  - id: payments.none
+    design: lane 1, payments (no tax paid in advance other than from wages)
+    situation: A filer from whose payments no tax was taken other than from wages, and who sent no estimated payments, is asked for no amount.
+    uses: [one_person]
+    answers:
+      f1040.withheld_other_any: false
+      f1040.estimated_any: false
+    expect:
+      proceeds:
+        f1040.withheld_other_any: false
+        f1040.estimated_any: false
+      not_asked: [f1040.line25b, f1040.line25c_other, f1040.line26]
+  - id: payments.withheld_on_1099
+    design: lane 1, payments (f1040.line25b, tax withheld on a Form 1099)
+    situation: A filer whose pension payer took federal tax out is asked for the amount on the Forms 1099.
+    uses: [one_person]
+    answers:
+      f1040.withheld_other_any: true
+    expect:
+      asks: f1040.line25b
+  - id: payments.withheld_on_w2g
+    design: lane 1, payments (f1040.line25c_other, tax withheld on Form W-2G and the other papers)
+    situation: A filer with tax taken out of gambling winnings and none on a Form 1099 is asked for the amount on Form W-2G.
+    uses: [one_person]
+    answers:
+      f1040.withheld_other_any: true
+      f1040.line25b: 0
+    expect:
+      asks: f1040.line25c_other
+  - id: payments.withheld_complete
+    design: lane 1, payments (both amounts given)
+    situation: A filer with tax withheld on a Form 1099 gives both amounts and the return is completed.
+    uses: [one_person]
+    answers:
+      f1040.withheld_other_any: true
+      f1040.line25b: 120000
+      f1040.line25c_other: 0
+    expect:
+      proceeds:
+        f1040.line25b: 120000
+  - id: payments.estimated
+    design: lane 1, payments (f1040.line26, estimated tax payments)
+    situation: A filer who sent quarterly estimated payments is asked how much in all.
+    uses: [one_person]
+    answers:
+      f1040.estimated_any: true
+    expect:
+      asks: f1040.line26
+  - id: payments.estimated_complete
+    design: lane 1, payments (estimated payments entered)
+    situation: A filer who sent estimated payments gives the total and the return is completed.
+    uses: [one_person]
+    answers:
+      f1040.estimated_any: true
+      f1040.line26: 400000
+    expect:
+      proceeds:
+        f1040.line26: 400000
+  - id: household.single_divorced
+    design: lane 1, marriage chain (single; married before, not at the end of 2025)
+    situation: A divorced person files as single, says the marriage was over by December 31 and that no husband or wife died in 2025.
+    uses: [one_person]
+    answers:
+      household.ever_married: true
+      household.married_dec31: false
+      household.spouse_died_this_year: false
+    expect:
+      proceeds:
+        f1040.status: single
+  - id: household.hoh_divorced
+    design: lane 1, marriage chain (head of household; divorced)
+    situation: A divorced parent picks the line about paying for a home, says the marriage was over by December 31, and is asked about the cost of the home without being asked whether they count as unmarried.
+    answers:
+      $person: [taxpayer]
+      f1040.status: hoh
+      household.ever_married: true
+      household.married_dec31: false
+      household.spouse_died_this_year: false
+    expect:
+      asks: household.home_cost
+      not_asked: [household.considered_unmarried]
+  - id: household.hoh_married_not_considered_unmarried
+    design: lane 1, marriage chain (head of household; married and not considered unmarried)
+    situation: A married person who lives with their husband or wife picks the line about paying for a home and is told its tests are not met.
+    answers:
+      $person: [taxpayer]
+      f1040.status: hoh
+      household.ever_married: true
+      household.married_dec31: true
+      household.considered_unmarried: false
+      household.community_property: false
+      household.spouse_died_this_year: false
+    expect:
+      refused: household.hoh_fails
+  - id: household.couple_not_asked_ever_married
+    design: lane 1, marriage chain (a couple is not asked whether they have ever been married)
+    situation: A married couple filing together says they were married on December 31 and is not asked whether they have ever been married or whether a husband or wife died.
+    answers:
+      $person: [taxpayer, spouse]
+      household.married_dec31: true
+    expect:
+      proceeds:
+        f1040.status: mfj
+      not_asked: [household.ever_married, household.spouse_died_this_year]

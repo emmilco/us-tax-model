@@ -125,6 +125,17 @@
   {
    "printed": "14",
    "restated": "Enter $0 (sales.zero).",
+   "model": "The IRS line reads 'Total other payments or refundable credits. Add lines 13a through 13z'. The restatement enters $0 and its refusals cover 13b, 13d and the 13z items. Nothing excludes line 13a, 'Form 2439', or line 13c, 'Net elective payment election amount from Form 3800, Part III, line 6, column (j)'. Either would make line 14 nonzero.",
+   "ruling": "Ruling: finding; f1040s3 p. 1, line 13a, \"Form 2439\", and line 13c; i1040gi p. 117, Line 13c. As ruled before on this line: a Form 2439 is refused by sd.f2439 through sd.other_forms on Schedule D, and through it Form 1040 line 7a and the return; a net elective payment election amount is made with a business credit on Form 3800 (sc.business_credit, refused on Schedule C). Line 14 itself refuses only the 13b, 13d and 13z situations and shows $0 on a return refused for the other two. No completed return has a wrong value. Still BUG-0620 (6) (open): a refusal on line 14 for sd.other_forms.",
+   "context": "4f3ad4a3ed9273b0766ac8e6179243c1e6bca1ec45cdb7b5afbaf82cec19ba71",
+   "date": "2026-11-14",
+   "run": "ed646a2e5df2cc5737216b69ea36179c300e9026ba31dbcef9c8f0853002c992",
+   "severity": "low",
+   "subject_key": "77669db3dd9bafdab71817f4a435562d7e9c8766e45edebe66a37b10aa8df03f"
+  },
+  {
+   "printed": "14",
+   "restated": "Enter $0 (sales.zero).",
    "model": "The form says 'Total other payments or refundable credits. Add lines 13a through 13z', and those lines include '13a Form 2439' and '13c Net elective payment election amount from Form 3800, Part III, line 6, column (j)'. The program enters $0 and refuses only the 13b, 13d and 13z cases, so a filer with a Form 2439 amount gets zero with no refusal.",
    "ruling": "Ruling: finding; f1040s3 p. 1, line 13a, \"Form 2439\", and line 13c; i1040gi p. 117, Line 13c. A Form 2439 is refused by sd.other_forms on Schedule D, and through it Form 1040 line 7a and the return; a net elective payment election amount belongs to a business credit (sc.business_credit, refused on Schedule C). Line 14 itself refuses only the line 13b, 13d and 13z situations and shows $0 on a return refused for the other two. No completed return has a wrong value. Recorded in BUG-0620 (open): a refusal on line 14 for sd.other_forms needs that question added to the Schedule 3 slice profile, whose fixtures withhold it.",
    "context": "6e71771a65b91b98807855d6ef05ebc7293b9602ca656b5fbf6ef72be577ea2a",
@@ -154,6 +165,17 @@
    "run": "d73539ae992832cd06935c46e495e44f85a754c1007b5ab6fa737c2fae7644be",
    "severity": "low",
    "subject_key": "a5d90c06a5605b17356720a9f329e0c4fc0712d36e669dbfc407b3d2fc974496"
+  },
+  {
+   "printed": "7",
+   "restated": "Enter $0 (sales.zero).",
+   "model": "The IRS line reads 'Total other nonrefundable credits. Add lines 6a through 6z'. The restatement enters $0, but no refusal excludes a current-year 'General business credit. Attach Form 3800' (line 6a); the refusal reaches only Forms 3800 on the 2024 return. No refusal excludes line 6l, 'Amount on Form 8978, line 14' (partner's audit liability). Either amount would make line 7 nonzero.",
+   "ruling": "Ruling: finding; f1040s3 p. 1, line 6a, \"General business credit. Attach Form 3800\", and line 6l, \"Amount on Form 8978, line 14\". As ruled before on this line: a current-year business credit is asked of each business (sc.business_credit) and refuses its Schedule C at line 1, and through it the return; a credit through a partnership, S corporation or rental by scope.k1 or scope.rental (scope.schedule1); a Form 8978 amount by scope.f8978 through scope.other_line16. Line 7 itself carries no refusal for them and shows $0 on that refused return. No completed return has a wrong value. Still BUG-0620 (6) (open): the line-level refusal waits for the next change to Schedule 3; the landing's Schedule 3 changes did not make it.",
+   "context": "4f3ad4a3ed9273b0766ac8e6179243c1e6bca1ec45cdb7b5afbaf82cec19ba71",
+   "date": "2026-11-14",
+   "run": "ed646a2e5df2cc5737216b69ea36179c300e9026ba31dbcef9c8f0853002c992",
+   "severity": "low",
+   "subject_key": "af8ef21d593d0e2b2e4b7f3cf1579164fb2d898520b2089b58da3b78dc8714e0"
   }
  ]
 }

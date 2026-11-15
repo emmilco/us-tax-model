@@ -10,6 +10,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
+        "sa.state_tax_any": true,
         "sa.line5a": 5000000,
         "$w2@person[taxpayer]": [
           "a"
@@ -38,6 +39,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
+        "sa.state_tax_any": true,
         "sa.line5a": 5000000,
         "$w2@person[taxpayer]": [
           "a"
@@ -62,6 +64,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
+        "sa.state_tax_any": true,
         "sa.line5a": 5000000,
         "$w2@person[taxpayer]": [
           "a"
@@ -86,6 +89,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
+        "sa.state_tax_any": true,
         "sa.line5a": 5000000,
         "$w2@person[taxpayer]": [
           "a"
@@ -110,6 +114,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
+        "sa.state_tax_any": true,
         "sa.line5a": 5000000,
         "$w2@person[taxpayer]": [
           "a"
@@ -135,6 +140,7 @@
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
         "f1040.status": "mfs",
+        "sa.state_tax_any": true,
         "sa.line5a": 5000000,
         "$w2@person[taxpayer]": [
           "a"
@@ -163,6 +169,7 @@
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
         "f1040.status": "mfs",
+        "sa.state_tax_any": true,
         "sa.line5a": 5000000,
         "$w2@person[taxpayer]": [
           "a"
@@ -194,6 +201,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
+        "sa.state_tax_any": true,
         "sa.line5a": 500000,
         "$w2@person[taxpayer]": [
           "a"
@@ -218,6 +226,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
+        "sa.medical_any": true,
         "sa.line1": 749999,
         "$w2@person[taxpayer]": [
           "a"
@@ -246,6 +255,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
+        "sa.medical_any": true,
         "sa.line1": 1000000,
         "$w2@person[taxpayer]": [
           "a"
@@ -270,7 +280,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "person[taxpayer].blind": true,
         "$w2@person[taxpayer]": [
           "a"
@@ -296,7 +306,7 @@
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
         "f1040.status": "hoh",
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "person[taxpayer].blind": true,
         "$w2@person[taxpayer]": [
           "a"
@@ -313,7 +323,7 @@
         "dependent[child].canada_mexico": true,
         "dependent[child].supported": true,
         "household.home_cost": true,
-        "household.unmarried": true
+        "household.considered_unmarried": true
       },
       "expect": {
         "sa.standard": {
@@ -333,7 +343,7 @@
       "inputs": {
         "f1040.status": "qss",
         "household.qss_eligible": true,
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "person[taxpayer].blind": true,
         "$w2@person[taxpayer]": [
           "a"
@@ -359,7 +369,7 @@
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
         "f1040.status": "mfj",
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "person[taxpayer].blind": true,
         "$person": [
           "taxpayer",
@@ -371,7 +381,7 @@
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
-        "household.married": true,
+        "household.married_dec31": true,
         "s1a.tips": null,
         "s1a.overtime": null,
         "s1a.carloan": null
@@ -393,7 +403,7 @@
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
         "f1040.status": "mfs",
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "person[taxpayer].blind": true,
         "$w2@person[taxpayer]": [
           "a"
@@ -453,7 +463,8 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
       "inputs": {
-        "sa.line8a": 2000000,
+        "sa.home_owner": true,
+        "sa.mortgage_interest": 2000000,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -605,7 +616,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
-        "sa.unsupported": true,
+        "sa.sales_tax_wish": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -616,13 +627,14 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sa.line17": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -635,7 +647,7 @@
         "sa.line6": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -648,7 +660,7 @@
         "sa.line8b": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -661,7 +673,7 @@
         "sa.line8c": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -674,7 +686,7 @@
         "sa.line12": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -687,7 +699,7 @@
         "sa.line13": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -700,7 +712,7 @@
         "sa.line15": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -713,7 +725,7 @@
         "sa.line16": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -745,7 +757,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sa.line17": {
@@ -898,7 +911,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sa.line17": {
@@ -1026,7 +1040,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sa.standard": {
@@ -1078,7 +1093,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sa.deduction": {
@@ -1130,7 +1146,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sa.standard": {
@@ -1172,7 +1189,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sa.line12": {
@@ -1198,7 +1216,7 @@
       ],
       "evidence": "synthetic refusal regression",
       "inputs": {
-        "sa.unsupported": true,
+        "sa.sales_tax_wish": true,
         "sa.excluded_income": true,
         "$w2@person[taxpayer]": [
           "a"
@@ -1210,13 +1228,14 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sa.line17": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -1229,7 +1248,7 @@
         "sa.line6": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -1242,7 +1261,7 @@
         "sa.line8b": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -1255,7 +1274,7 @@
         "sa.line8c": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -1268,7 +1287,7 @@
         "sa.line12": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -1281,7 +1300,7 @@
         "sa.line13": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -1294,7 +1313,7 @@
         "sa.line15": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -1307,7 +1326,7 @@
         "sa.line16": {
           "kind": "refusal",
           "gate": "sa.unsupported",
-          "form": "Schedule A unsupported item / Form 4684",
+          "form": "Schedule A unsupported item",
           "remedy": "Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.",
           "cite": {
             "doc": "f1040sa",
@@ -1331,11 +1350,15 @@
         "f4952.has_interest": true,
         "f4952.line1": 100000,
         "sa.gifts": true,
+        "sa.medical_any": true,
         "sa.line1": 1000000,
+        "sa.state_tax_any": true,
         "sa.line5a": 300000,
+        "sa.home_owner": true,
         "sa.line5b": 400000,
+        "sa.personal_property_tax_any": true,
         "sa.line5c": 200000,
-        "sa.line8a": 1000000,
+        "sa.mortgage_interest": 1000000,
         "sa.line11": 500000,
         "$interest": [
           "bank"
@@ -1466,6 +1489,7 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Predicted by hand from the archived text before recording (BUG-0094): the same return as audit.sa.negative_agi_medical with $1,000 of medical and dental expenses on Schedule A line 1; adjusted gross income -$6,000. Line 2 $0, line 3 $0, line 4 $1,000 - $0 = $1,000 (the whole of line 1, never more), line 17 $1,000 (no other itemized deductions); the signed reading would give line 4 $1,450.",
       "inputs": {
+        "sa.medical_any": true,
         "sa.line1": 100000,
         "$w2@person[taxpayer]": [
           "job"
@@ -1513,6 +1537,7 @@
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: married filing separately (refused overall at Schedule 3 line 11; Schedule A still figured): state and local income tax $30,000; AGI $100,000 below the $250,000 threshold for a separate return, so the $40,000 ceiling is not reduced; half for a separate return, $20,000; line 5e the smaller of $30,000 and $20,000, $20,000.",
       "inputs": {
         "f1040.status": "mfs",
+        "sa.state_tax_any": true,
         "sa.line5a": 3000000,
         "$w2@person[taxpayer]": [
           "e0"
@@ -1541,6 +1566,7 @@
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: as above with AGI $400,000: $150,000 over the $250,000 threshold, reduced by 30% = $45,000, the ceiling $40,000 - $45,000 is below the $10,000 floor, so $10,000; half, $5,000; line 5e $5,000.",
       "inputs": {
         "f1040.status": "mfs",
+        "sa.state_tax_any": true,
         "sa.line5a": 3000000,
         "$w2@person[taxpayer]": [
           "e0"
@@ -1569,8 +1595,11 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $60,000. Gambling winnings $5,000 (Form W-2G box 1); gambling losses $7,000. State income tax paid $4,000; home mortgage interest (Form 1098) $9,000. Working (predictor A): s1 8b gambling winnings 5,000 (i1040gi Line 8b p.90); s1 9 = 5,000; s1 10 = 5,000 -> f1040 line 8. f1040 1z 60,000; 9 = 65,000; 10 = 0; 11a/11b AGI 65,000. Sch A: 5a 4,000; 5d 4,000; 5e smaller of 5d or 40,000 = 4,000 (AGI under 500,000; f1040sa line 5e); 7 = 4,000; 8a 9,000; 8e 9,000; 10 9,000; 16 gambling losses only to the extent of winnings on s1 8b (i1040sca line 16): min(7,000, 5,000) = 5,000; 17 = 4,000+9,000+5,000 = 18,000 > standard 15,750 (single, i1040gi Standard Deduction) so itemize: 12e = 18,000; 14 = 18,000; 15 = 65,000 - 18,000 = 47,000; 16 Tax Table single 47,000-47,050 = 5,405; 18 = 5,405 (no Schedule 2).",
       "inputs": {
+        "sa.state_tax_any": true,
         "sa.line5a": 400000,
-        "sa.line8a": 900000,
+        "sa.home_owner": true,
+        "sa.mortgage_interest": 900000,
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -1580,7 +1609,8 @@
         "person[taxpayer].w2[emp_a].box5": 6000000,
         "person[taxpayer].w2[emp_a].box6": 87000,
         "s1.gambling_winnings": 500000,
-        "sa.gambling_losses": 700000
+        "sa.gambling_losses": 700000,
+        "s1.winnings_any": true
       },
       "expect": {
         "s1.line8b": {
@@ -1692,7 +1722,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -1700,7 +1730,8 @@
         "person[taxpayer].w2[e0].box4": 372000,
         "person[taxpayer].w2[e0].box5": 6000000,
         "person[taxpayer].w2[e0].box6": 87000,
-        "person[spouse].age65": true,
+        "person[spouse].birth_year": 1960,
+        "person[spouse].died_at_64": true,
         "person[spouse].work_ssn": false,
         "$w2@person[spouse]": [
           "e0"
@@ -1708,8 +1739,7 @@
         "person[spouse].w2[e0].box1": 5000000,
         "person[spouse].w2[e0].box4": 310000,
         "person[spouse].w2[e0].box5": 5000000,
-        "person[spouse].w2[e0].box6": 72500,
-        "person[spouse].died_before_65": true
+        "person[spouse].w2[e0].box6": 72500
       },
       "expect": {
         "sa.boxes_age65": {
@@ -1739,9 +1769,10 @@
       "evidence_note": "Simultaneous refusals (precedence), with every answer of stage16.refund.f7 given: Yes to the Schedule A charitable limitation screen and Yes to Form 8938. Adjusted gross income, and so Schedule A line 4, refuses for Form 8938; Schedule A line 17 checks its own entries before its operands, so it refuses for the charitable limitation. The refused value is the evaluator's.",
       "inputs": {
         "sa.gifts": true,
-        "sb.foreign_any": true,
+        "sb.account_any": true,
         "sb.form8938": true,
         "sa.charity_limited": true,
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -1749,7 +1780,8 @@
         "person[taxpayer].w2[emp_a].box1": 5000000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 72500,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sa.line17": {
@@ -1775,9 +1807,10 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Simultaneous refusals (precedence), with every answer of stage16.refund.f7 given: Yes to the excluded-income screen and Yes to Form 8938. Adjusted gross income, and so Schedule A line 4, refuses for Form 8938; Schedule A line 17 checks its own entries before its operands, so it refuses for excluded income (its SALT worksheet entry). The refused value is the evaluator's.",
       "inputs": {
-        "sb.foreign_any": true,
+        "sb.account_any": true,
         "sb.form8938": true,
         "sa.excluded_income": true,
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -1785,7 +1818,8 @@
         "person[taxpayer].w2[emp_a].box1": 5000000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 72500,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sa.line17": {

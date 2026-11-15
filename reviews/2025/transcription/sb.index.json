@@ -4,27 +4,34 @@
  "family": "claude",
  "base": "e7e819909c6f6e33764ab0d991705d0e9013e6a66417745b89b4e1a75e39de3e",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
+  "printed lines compared": "6",
+  "agree / disagree / missing": "6 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
+   "key": "sb.interest_total",
+   "record": "f7a9049a0fc0d88fb12d32e48391a0beacbc36aa07cd07bc9b20c2c588a8518c",
+   "status": "AGREE",
+   "subject_key": "79241a4d04b14de24d021de6f976a89fcc31981cad3fb837c589e93c4a4c7bfe"
+  },
+  {
    "key": "sb.ordinary_dividends_if_dividends",
-   "record": "f9626fa84e2649a89c8e1d06e7119c516d8a420c62573e686b1f775bebb583f1",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; the candidate takes line 6 when div.any is yes and zero when it is no; the project takes box 1a (sb.ordinary_dividends) when div.any is yes and zero otherwise, and line 6 is a copy of this gate line with the Schedule B refusals, so the two agree on every return where line 6 is not refused (a refused line 6 refuses the return either way). Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
-   "subject_key": "901ef572c77871f1b4885a34f0e8401c0197090d9b00f48cd6495fa4d7bd9545"
+   "record": "f7a9049a0fc0d88fb12d32e48391a0beacbc36aa07cd07bc9b20c2c588a8518c",
+   "status": "AGREE",
+   "subject_key": "33f41326daf7d8461d5dae2209cbc6c5bbbbe92a7f096b2c26f297d82d0c594c"
   },
   {
    "key": "2",
-   "record": "e3e2bb5432cabff8fac4f1df1e48d2150c826635ea567c179c517e1e52be5c3c",
+   "record": "f7a9049a0fc0d88fb12d32e48391a0beacbc36aa07cd07bc9b20c2c588a8518c",
    "status": "AGREE",
-   "subject_key": "718c207ba04ad99d3e5b66000ef056017ece0c2ed55da6982fec789ec030e36b"
+   "subject_key": "02f5b66f3fa6577d6d7d0792d1d9b49a4c9d76487869a3910aa62bb73318e7f4"
   },
   {
    "key": "3",
-   "record": "e3e2bb5432cabff8fac4f1df1e48d2150c826635ea567c179c517e1e52be5c3c",
+   "record": "f7a9049a0fc0d88fb12d32e48391a0beacbc36aa07cd07bc9b20c2c588a8518c",
    "status": "AGREE",
-   "subject_key": "579691fe76d298df5aae1dbfc3422fb63034d5aeed577d918011d5bb0d1f3421"
+   "subject_key": "9e96ed4a8c6cb1e8737510544c64d8d69ba838fbb0532faa54769084dd29adfa"
   },
   {
    "key": "4",
@@ -34,24 +41,25 @@
   },
   {
    "key": "6",
-   "record": "e3e2bb5432cabff8fac4f1df1e48d2150c826635ea567c179c517e1e52be5c3c",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; the candidate copies sb.ordinary_dividends whether or not the filer received dividends or other distributions (div.any), so it needs that answer where the source does not: i1040sb p. 2, Line 5, \"Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements\": a filer who received no dividends has none to report. The project copies the gate line sb.ordinary_dividends_if_dividends, which takes sb.ordinary_dividends when div.any holds and zero otherwise; the interview asks sb.ordinary_dividends only then (gated_by), so on every return the interview can produce the two agree. The line was rescoped because the wording of the foreign screens its refusal gates read changed (the spouse phrase); its expression is unchanged. Ruled by reading.",
-   "subject_key": "b95c94af4698b0793f6542ee128fd6b992789deb4860c138bf64a01d8fca8881"
+   "record": "f7a9049a0fc0d88fb12d32e48391a0beacbc36aa07cd07bc9b20c2c588a8518c",
+   "status": "AGREE",
+   "subject_key": "da7f0a1a2fe8c245e4b438314af16cabcc9ab333139b031aa910e30732803cf3"
   }
  ],
  "subjects": {
+  "sb.interest_total": "a823ed7bdda9a3aa4d7577af47aa144b6dfad54199aaea3a39bf5466d614c560",
   "sb.ordinary_dividends_if_dividends": "b1d271d8d849b7c1efeca53defa98c7bd54ccc1decc43a9cac93006238a8ca45",
-  "2": "96138909dbc08cd9658187b65e311d6f1d916033816723098989e04d93f9d0af",
-  "3": "bca8affff094eedc84499c9ad821f5813fb01cfca9744cc45bc86d839e9daabd",
+  "2": "3ce3583356f42850e8a7d7f7c23c8d7591811a660655e6995e2e4eb8b535fce5",
+  "3": "8b69d5e369395073f29fbda50a77c1f045057ced847fb7a21d09f006ee4b754e",
   "4": "d225f28e9701cf230747bff686459225d04bd398ce08e2040a616fb8958167c4",
-  "6": "148261733c2f5a17e8da4d9a446171754c28564120f8f060f6a1a82605733c39"
+  "6": "e48b69a4c8bf5bc991a0d825ca0e7ce72dae7cc2063cc23bf1deb7d19cd96ee7"
  },
  "__rest__": "013e58d3d274e971cd170d48794200b98ac690d600b9af1e38e8133de7ae11db",
  "foreign": {
-  "sb.ordinary_dividends_if_dividends": "6c48c72035307b8bd1ab9c5771777c8b178c3509cec1b4d6aa030c43e1a415f8",
-  "2": "31e4161f21912b241e1de23fe5f89c504cead2e99f9ac4d8aced189ce6e5cdde",
-  "3": "31e4161f21912b241e1de23fe5f89c504cead2e99f9ac4d8aced189ce6e5cdde",
-  "6": "31e4161f21912b241e1de23fe5f89c504cead2e99f9ac4d8aced189ce6e5cdde"
+  "sb.interest_total": "8cf0ce2bf0c7b014651488e8075711ffe3df51f55ed3ac4c95e42bc148c22246",
+  "sb.ordinary_dividends_if_dividends": "ae4f24f3eed20081a92cecaecf8db33911476c5839be89b64491e6867c2d4916",
+  "2": "4fd9e19d02dca8ee7eda2031b97a774019022fe30c5c3b542215c4731b946ea4",
+  "3": "4fd9e19d02dca8ee7eda2031b97a774019022fe30c5c3b542215c4731b946ea4",
+  "6": "4fd9e19d02dca8ee7eda2031b97a774019022fe30c5c3b542215c4731b946ea4"
  }
 }

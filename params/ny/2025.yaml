@@ -2,6 +2,14 @@ params:
   tax_year: 2025
   enums: {}
   values:
+    ny.pension.latest_birth_year:
+      type: Count
+      value: 1965
+      cite:
+        doc: ny_it201i
+        locator: 'p. 9, Line 29, "If Yes, and you were 59½ before January 1, 2025, enter the qualifying pension and annuity income
+          included in your 2025 federal adjusted gross income, but not more than $20,000." (the latest year of birth of a
+          person 59½ or older at some time in the tax year, as the line reads it)'
     ny.rs.b1.rate:
       type: Rate
       value: { num: 4, den: 100 }

@@ -13,6 +13,10 @@
 //   POST /api/returns/:name/answer {input, value[, labels]}
 //                                     (labels: a roster answer's label for each entry key, kept in the log)
 //                                     appends the answer and returns the new state, or 400 with the reason
+//   POST /api/returns/:name/answers {answers: [{input, value}, ...]}
+//                                     the answers of the tick-box screen the state offers (`group`: a heading and the
+//                                     questions shown as its boxes), yes or no for each box: appends them all, in the
+//                                     order given, and returns the new state, or 400 with the reason and nothing appended
 //   GET  /api/vetting                 every question the profile can ask as a card (vetting.ts), each with the owner's
 //                                     record and whether it is stale, the records of questions no longer asked, and
 //                                     the counts
@@ -31,7 +35,7 @@ import { appendFileSync, existsSync, readFileSync, readdirSync, realpathSync, st
 import { join, relative, resolve, sep } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { CANON_DIR, loadCanonical } from "./canonical.js";
-import { applyAnswer, inputMeta, interviewView, loadInterview, questionTemplate, recordedTemplates, replay, replayState, withheldValues, type Event, type InterviewData, type JsonDerivation } from "./interview.js";
+import { applyAnswer, applyAnswers, inputMeta, interviewView, loadInterview, questionTemplate, recordedTemplates, replay, replayState, withheldValues, type Event, type InterviewData, type JsonDerivation } from "./interview.js";
 import { templateKey } from "./branches.js";
 import { jointReturn, shownFor, spouseWording } from "./spouse-wording.js";
 import { standingNotices, type SheetSection } from "./output.js";
@@ -222,6 +226,8 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
     return {
       name, ...rest,
       pending: view.pending.map((q) => ({ ...q, ...inputMeta(data, q.input), forms: formsFor(q.input) })),
+      // The tick-box screen the next question is shown in, each box's question as a pending question is served.
+      group: view.group ? { ...view.group, members: view.group.members.map((q) => ({ ...q, ...inputMeta(data, q.input), forms: formsFor(q.input) })) } : null,
       refusalFinal: view.refusal !== null && view.pending.length === 0,
       conflicts,
       standingNotices: standingNotices(),
@@ -270,6 +276,17 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
       catch (e) { throw new HttpError(400, (e as Error).message); }
       appendFileSync(logPath(name), JSON.stringify(applied.event) + "\n");
       return [200, state(name, [...events, applied.event], applied.after, applied.before)];
+    } else if (parts.length === 2 && parts[1] === "answers" && method === "POST") {
+      // The answers of one tick-box screen: judged together (`applyAnswers`) and appended in one write, or not at all.
+      const name = parts[0]!;
+      const events = readLog(name);
+      const b = body as { answers?: unknown } | null;
+      if (!b || !Array.isArray(b.answers)) throw new HttpError(400, "the answers of a tick-box screen are {answers: [{input, value}, ...]}");
+      let applied;
+      try { applied = applyAnswers(data, config, events, b.answers); }
+      catch (e) { throw new HttpError(400, (e as Error).message); }
+      appendFileSync(logPath(name), applied.events.map((e) => JSON.stringify(e) + "\n").join(""));
+      return [200, state(name, [...events, ...applied.events], applied.after, applied.before)];
     }
     throw new HttpError(404, "no such route");
   };

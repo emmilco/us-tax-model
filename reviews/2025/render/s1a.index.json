@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-11); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -243,16 +243,16 @@
   },
   {
    "key": "36a",
-   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "record": "e129a0e29e4daaac9ae50e1faf9cfdcc5c32d2ce619b2cbd4b869289685b7ea0",
    "status": "MATCH",
-   "subject_key": "09b8a657d13a2b4bc3120d31e5b68a7f6a995068a4dc6fd38fd1b972564754e8"
+   "subject_key": "697edb0da906bd1f017406f962e4d7e83899c7ec98bf7f83f2754a0c7ab45d9b"
   },
   {
    "key": "36b",
-   "record": "b84398d9828b25957661bd463fdd161214fc6a1c956e219a2379dec7a6b0813b",
+   "record": "e129a0e29e4daaac9ae50e1faf9cfdcc5c32d2ce619b2cbd4b869289685b7ea0",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; project retained, as ruled on this line in earlier rounds (s1a render sidecar, the same objection). Schedule 1-A line 36b: \"If you are married filing jointly, your spouse has a valid social security number (see instructions), and your spouse was born before January 2, 1961, enter the amount from line 35\"; i1040gi p. 110: \"If you are married, you must file a joint return with your spouse to claim this deduction.\" A spouse entry exists only on a joint return: household.roster_ok requires one spouse entry exactly when filing jointly, and any other roster is refused at Form 1040 line 1a (household.roster_bad; Form 1040 page 1, \"If joint return, spouse's first name\"). The spouse count now reads person.spouse_senior_work_ssn (role, then age, then SSN, in that order), the same conjunction, so the restatement is unchanged and so is the reading.",
-   "subject_key": "200ac1527cf703b96f34dec7dde674296c66254ecf892d38610d10a384fe9865"
+   "ruling": "Ruling: scope; Schedule 1-A line 36b: \"If you are married filing jointly, your spouse has a valid social security number (see instructions), and your spouse was born before January 2, 1961, enter the amount from line 35\", as the earlier rulings. The English gates line 36b on the spouse entry, and a spouse entry exists only on a joint return: household.roster_ok requires one entry for the spouse exactly when f1040.status is mfj (and none otherwise), and any other roster is refused at household.roster_bad (refusal on Form 1040 line 1a, forms/2025/f1040.yaml). A head of household or qualifying surviving spouse return with a spouse entry is refused, never given line 35; married filing separately is refused by s3.mfs. Project stands.",
+   "subject_key": "398175cc7b4283022893619435680b435aa7a209bd583306ffcaf491706b9106"
   },
   {
    "key": "37",
@@ -307,8 +307,8 @@
   "33": "76342c2d52c5e3b7096cb11acddb931ade24ec88478bbf422b0449cc94fad4be",
   "34": "dc2b2af5f42c888312d99fca8954d08b55e33e04755fdaa6ef32ef1e921d8ff9",
   "35": "d1efc4a78fdc31dbf747e01091fa7705e6965d16cf0ef03edcf29494a3879f5d",
-  "36a": "dd19ee99d459b48bd428d427b51cf4500902327dd31922a9153d113764d21e4f",
-  "36b": "8dc4a479a2c7cc811e449657a20c0ae75304a908978f077ede5f709726792a81",
+  "36a": "ba666988c2c0ddc61520d98504a019679c0807bac3508bdb2c55d97b80a8d10a",
+  "36b": "a8011039e86703a20d1e9712f71dd93791039a42bc72cd22ae2f30b5dd3a0361",
   "37": "88e92581a226f0644b63852b8d80a9f8083e3cf94f96f34bdbb878bd06a35bdd",
   "38": "cf7fb705f265f7cbca8109783e694fc138176eb9c0f20995dbba97cd0b647849"
  },

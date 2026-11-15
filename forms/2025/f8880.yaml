@@ -126,7 +126,7 @@ form:
     cite:
       doc: f8880
       locator: Form 8880 (2025), line 3, column (b)
-  - id: f8880.dist_2025
+  - id: f8880.dist_this_year
     printed: (helper)
     label: Distributions received in 2025 that line 4 counts (the Forms 1099-R of the return, less rollovers and the
       excluded kinds)
@@ -222,7 +222,7 @@ form:
     expr:
       op: sum
       of:
-      - f8880.dist_2025
+      - f8880.dist_this_year
       - f8880.prior_joint
       - f8880.prior_own_a
     cite:
@@ -238,7 +238,7 @@ form:
     expr:
       op: sum
       of:
-      - f8880.dist_2025
+      - f8880.dist_this_year
       - f8880.prior_joint
       - f8880.prior_own_b
     cite:

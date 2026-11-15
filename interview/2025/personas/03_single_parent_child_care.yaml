@@ -1,0 +1,52 @@
+name: 03_single_parent_child_care
+who: An unmarried parent, 29, with one child aged 4 who lives with her all year, $26,000 of wages from one job, and day care she pays for so she can work; head of household.
+end: complete
+answers:
+  $person: [taxpayer]
+  f1040.status: hoh
+  person[taxpayer].birth_year: 1996
+  $w2@person[taxpayer]: [grocer]
+  $dependent: [child]
+  f2441.care: true
+  dependent[child].other_claimant: false
+  dependent[child].parents_apart: true
+  dependent[child].divorced_rule: false
+  dependent[child].relationship: child
+  dependent[child].age: 4
+  dependent[child].younger: true
+  dependent[child].ever_married: false
+  dependent[child].own_money: false
+  dependent[child].lived_all_year: true
+  dependent[child].citizen_ssn: true
+  household.ever_married: false
+  household.home_cost: true
+  dependent[child].absence_no_return: false
+  person[taxpayer].w2[grocer].box1: 2600000
+  person[taxpayer].w2[grocer].box2: 90000
+  person[taxpayer].w2[grocer].box4: 161200
+  person[taxpayer].w2[grocer].box5: 2600000
+  person[taxpayer].w2[grocer].box6: 37700
+  person[taxpayer].tin: true
+  person[taxpayer].work_ssn: true
+  f2441.care_other: false
+  f2441.prior_year: false
+  f2441.student: false
+  f2441.unable: false
+  s8812.combat_pay: false
+  $dcprov: [bright_start_day_care]
+  dependent[child].dc_paid: 620000
+  dependent[child].us_half: true
+  s8812.puerto_rico: false
+  household.credit_disallowed: false
+  dcprov[bright_start_day_care].household: false
+  dcprov[bright_start_day_care].paid: 620000
+  dcprov[bright_start_day_care].related: false
+  dcprov[bright_start_day_care].tin_kind: tin
+  person[taxpayer].eic_ssn: true
+  f1040.tax_exempt_interest: 0
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false
+  eic.lived_with_relative: false

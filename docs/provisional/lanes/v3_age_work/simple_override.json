@@ -1,0 +1,101 @@
+{
+ "classm.w2.1.deepseek": {
+  "spouse": {
+   "y": 1950
+  },
+  "taxpayer": {
+   "y": 1950
+  }
+ },
+ "classm.sd.2.deepseek": {
+  "taxpayer": {
+   "y": 1950
+  }
+ },
+ "classm.eic.6.deepseek": {
+  "taxpayer": {
+   "y": 1970
+  }
+ },
+ "classm.eic.7.deepseek": {
+  "taxpayer": {
+   "y": 2009
+  }
+ },
+ "classm.f5329.1.deepseek": {
+  "spouse": {
+   "y": 2009
+  }
+ },
+ "classm.f5329.3.deepseek": {
+  "taxpayer": {
+   "y": 1970
+  }
+ },
+ "classm.sd.2": {
+  "taxpayer": {
+   "y": 1950
+  }
+ },
+ "classm.se.1": {
+  "spouse": {
+   "y": 1950
+  }
+ },
+ "classm.w2.1": {
+  "spouse": {
+   "y": 1950
+  }
+ },
+ "classm.f5329.1": {
+  "spouse": {
+   "y": 2009
+  }
+ },
+ "classm.f5329.3": {
+  "taxpayer": {
+   "y": 1970
+  }
+ },
+ "mutation.t2.f8962_months_asset3": {
+  "spouse": {
+   "y": 1950
+  }
+ },
+ "mutation.t2.no_carloan_part4_b": {
+  "taxpayer": {
+   "y": 1950
+  }
+ },
+ "mutation.t2.mfj_no_overtime_part3": {
+  "taxpayer": {
+   "y": 1970
+  }
+ },
+ "mutation.t2.no_5695_part1_s3_5a": {
+  "spouse": {
+   "y": 1950
+  },
+  "taxpayer": {
+   "y": 1950
+  }
+ },
+ "mutation.t2.f8880.inherited_ira": {
+  "taxpayer": {
+   "y": 1970
+  }
+ },
+ "mutation.t2.s1a.line13_magi_first": {
+  "taxpayer": {
+   "y": 1970
+  }
+ },
+ "mutation.t3.roth_excess_screen": {
+  "spouse": {
+   "y": 1950
+  },
+  "taxpayer": {
+   "y": 1950
+  }
+ }
+}

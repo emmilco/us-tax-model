@@ -365,6 +365,13 @@ name a directory holding the tree before the rename. Without `--write` it only r
   `rulings.py --check` and the sampled checks then accept the carried entries and fail as before on
   anything whose proof did not hold. A later review of the form drops a line's marker only when the
   line's verdict comes from a new record.
+- **A renamed document.** The `document` entries of `tools/year_free_names.json` (`--documents FILE`, `none` to skip)
+  also move the document's review files to its new name: logs, rulings sidecars and second-family variants,
+  adjudication, the per-form questions and false-no files, the top-level raw replies in `.transcription/` and
+  `.classm/`, and the class M case ids (`classm.<old>.<n>`) of the fixtures and logs (shown from their old
+  sections, with a rename marker; sidecar contexts re-stamped where they were current). Records keep the old
+  document name; `review_store.py check` accepts it for a renamed document. Lines whose proof holds are carried;
+  the rest stay stale.
 - **Not covered.** An inactive family's logs (history), definition lines' local ids, and the seeded
   generated returns (which move with input ids: rulings citing them
   rest on the earlier sample). It takes several minutes on the whole tree (it computes every subject twice).
@@ -526,7 +533,7 @@ states as `null` is left out. An input left out is unknown to the evaluator.
 its value:
 
 ```json
-{ "input": "household.married", "value": false, "reason": "...",
+{ "input": "household.married_dec31", "value": false, "reason": "...",
   "withheld": { "when": [{ "input": "f1040.status", "in": ["mfj", "mfs"] }],
                 "reason": "A filer who files jointly or separately is married, ..." } }
 ```

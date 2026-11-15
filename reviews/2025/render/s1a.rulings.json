@@ -5,6 +5,16 @@
   {
    "printed": "36b",
    "restated": "Choose — [helper \"Your spouse was born before January 2, 1961, and has a valid SSN\" = false → helper \"Year parameter sales.zero\"] [helper \"Your spouse was born before January 2, 1961, and has a valid SSN\" = true → helper \"Line 36b for a spouse born before January 2, 1961, with a valid SSN\"]",
+   "model": "The IRS line requires \"If you are married filing jointly, your spouse has a valid social security number ... and your spouse was born before January 2, 1961.\" The restatement checks only the spouse's age and SSN and never tests for married filing jointly; line 35's gate excludes only married filing separately, so a head of household or qualifying surviving spouse return with a spouse entry would get line 35 on 36b.",
+   "ruling": "Ruling: scope; Schedule 1-A line 36b: \"If you are married filing jointly, your spouse has a valid social security number (see instructions), and your spouse was born before January 2, 1961, enter the amount from line 35\", as the earlier rulings. The English gates line 36b on the spouse entry, and a spouse entry exists only on a joint return: household.roster_ok requires one entry for the spouse exactly when f1040.status is mfj (and none otherwise), and any other roster is refused at household.roster_bad (refusal on Form 1040 line 1a, forms/2025/f1040.yaml). A head of household or qualifying surviving spouse return with a spouse entry is refused, never given line 35; married filing separately is refused by s3.mfs. Project stands.",
+   "context": "569c1af2d4c997acf67f3677890f037a9f5b74def290b7cf650db074a8e57c41",
+   "date": "2026-11-14",
+   "run": "f49fbc75608db6e07fed810f44b2f7467f50d89d372a146b8bd0c7668dbb12f2",
+   "subject_key": "c08b7393e5df672a7fac16d75284cb675ee1b09e879ceec66da5267dd8442dbe"
+  },
+  {
+   "printed": "36b",
+   "restated": "Choose — [helper \"Your spouse was born before January 2, 1961, and has a valid SSN\" = false → helper \"Year parameter sales.zero\"] [helper \"Your spouse was born before January 2, 1961, and has a valid SSN\" = true → helper \"Line 36b for a spouse born before January 2, 1961, with a valid SSN\"]",
    "model": "The IRS line requires 'If you are married filing jointly, your spouse has a valid social security number..., and your spouse was born before January 2, 1961'. The restatement checks only the spouse's birth date and SSN, not the joint filing status. Married filing separately happens to yield zero through line 35, but other filing statuses with a spouse entry are not excluded.",
    "ruling": "Ruling: scope; project retained. A spouse entry exists only on a joint return: any other roster is refused at Form 1040 line 1a (household.roster_bad; Form 1040 page 1, 'If joint return, spouse's first name'), so whenever the spouse's birth date and SSN can be tested the return is filed jointly (Schedule 1-A line 36b; i1040gi p. 110).",
    "subject_key": "7fce087862a3fce74229fd4259de62699e185beb14870117e5a510e7ac034c87"

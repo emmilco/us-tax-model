@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "1360a1bcf95e5c405a63edc9d74ccbe052a1547147428fa3160de9d74b834a8f",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-11); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "91 / 4 / 0 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -64,9 +65,10 @@
   },
   {
    "key": "9",
-   "record": "a7ada0de6d5c03737c7dcbc4b3d7d3494e1c415c45f313b7371f3a004beefb6c",
-   "status": "MATCH",
-   "subject_key": "1917b53ff2499ecd1509307500a590e8370bf83fe810affa84740f2936a8ea5c"
+   "record": "d72f35a67e95d671cc413a0282d4b6c3adc40e0964fa385e82612ec0781d855f",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f8962 p. 1, line 9 and i8962 p. 12, Allocating policy amounts (\"1. The policy covered at least one individual in your tax family and at least one individual in another tax family; and 2. Either: a. ... or b. ...\") and p. 13, Table 4 (questions 1 to 5, including \"Was APTC paid for anyone in your tax family during 2025?\"). Line 9 is Yes only when f8962.alloc or f8962.marriage is true, and both refuse the return at line 24 (forms/2025/f8962.yaml, refuses: Part IV, Part V). On every completed return line 9 is No, and neither situation applies there: any policy shared with another tax family, and any divorce with a shared policy, is refused, and the alternative calculation needs a joint return with coverage before the first full month of a 2025 marriage (Table 4, questions 1 to 4), all refused. Where the restatement says Yes and the source would say No (a shared policy whose Forms 1095-A are already accurate; a 2025 marriage with no APTC or no excess APTC), the effect is an over-refusal, never a wrong line on a completed return. Project stands.",
+   "subject_key": "38aec0d7be58912f208537ab797a9230a2e25ee8209545eb98e17eee62619d22"
   },
   {
    "key": "10",
@@ -544,16 +546,16 @@
   },
   {
    "key": "24",
-   "record": "59b11802be1730cb2f9bc142c57be33af009b9552e2f46729343e94d209d49a2",
+   "record": "d72f35a67e95d671cc413a0282d4b6c3adc40e0964fa385e82612ec0781d855f",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; screen s3.mfs, as the earlier rulings on this line. i8962 p. 16, Not an applicable taxpayer, \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC. You must repay some or all of the APTC entered on line 11, column (f). To complete the rest of the form, skip lines 12 through 23, enter -0- on line 24\". No married filing separately return is completed: gate s3.mfs (forms/2025/s3.yaml, f1040.status equal to mfs) is a refusal of scope.ready (forms/2025/scope.yaml), Exception 2 included, so the applicable-taxpayer helper never meets a married filing separately filer and the restatement is faithful to the project line. The render review does not show the return-wide refusal. Re-checked this round: stage18.married_in_2025_single evaluates to line 24 $3,560, and with f1040.status set to mfs (constructed by the adjudicator from the fixture, not a fixture) to a refusal at scope.ready and Form 1040 line 37 with gate s3.mfs. The line was reviewed again because the applicable-taxpayer helper it chooses on is now a nested choose (line 5 at least 100; else advance payments and the Marketplace estimate; BUG-0604), with the same value on every complete return; the reviewer raises nothing about that change, and reads the helper's two limbs (line 5 and the Marketplace estimate exception) as they are.",
-   "subject_key": "c6871383522aaf82acc81100f7384f1d35fb95a4101f31624da24844f1c48d4c"
+   "ruling": "Ruling: scope; screen s3.mfs, as the earlier rulings on this line. i8962 p. 16, Not an applicable taxpayer: \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC ... enter -0- on line 24\". No married filing separately return is completed: s3.mfs (forms/2025/s3.yaml, f1040.status equal to mfs) refuses scope.ready (forms/2025/scope.yaml), Exception 2 included, so the applicable-taxpayer helper never meets a married filing separately filer. The render review does not show the return-wide refusal. Project stands.",
+   "subject_key": "89452d005f0561316a1ba44ffb62385e9c0be95a82e1f794ff3cd6dfa796afa5"
   },
   {
    "key": "25",
-   "record": "59b11802be1730cb2f9bc142c57be33af009b9552e2f46729343e94d209d49a2",
+   "record": "d72f35a67e95d671cc413a0282d4b6c3adc40e0964fa385e82612ec0781d855f",
    "status": "MATCH",
-   "subject_key": "013dca74bfa2010639f7e7c3a702242624228331a7f1c6d11bc3484ea865b418"
+   "subject_key": "b4fdffeb13d8c86007f4c9649f3e7879915aeb86596433656672f8b9d4f70d2e"
   },
   {
    "key": "26",
@@ -591,7 +593,7 @@
   "7": "05b94d249df529903ad05fae4be92944873a94e9f7c167d101b28a4d65dff599",
   "8a": "a04a417ffc833fc2d91c2bd8ff7a0ca7b53f416845bcb59058620b3f6b7369e7",
   "8b": "d9613e874891a064bfd99682dc5155b4dd798de3ee5faa9537d1347785951e3a",
-  "9": "666f6991fda126762464886223db2bd4e6b1fc3e309a3a27e6e2c86f1fe4df97",
+  "9": "bcb47f287ec6b3dfb70dad9c84dcc25d29eeae687d94681e4a07b3a9c1dd8f0e",
   "10": "99f971814a781cc894f095ed59c693fbe803447a1142b6432bb565632dd99a65",
   "11(a)": "b5943f2c0337b9073928792d21827f4815333852dc2c508729ec330f534f513d",
   "11(b)": "2dbea4f4078162f4a71b203819adfd68999dd0bb371cf65aa3f62a22e565357b",
@@ -671,8 +673,8 @@
   "23(d)": "d60a79c9287e2b12c97a5ce5b933a1fdfc858d39dc654b7c01b555b55810d169",
   "23(e)": "9b3ddb6cb5e26795ecf791de22e0f95b80ff155a724769cf8028876acc89b179",
   "23(f)": "89e4610491a1f8c60d22e2aedf43e35aa691775c09e0129a28a8c45ad2eaf5fc",
-  "24": "549495888ce1ee63b828ba63a05386ef10d87f5be965405989eda871ec32b85d",
-  "25": "dfdf040b877bee87d088076fa09c5c286e7658c46d7595da6e50824f96c21404",
+  "24": "bc0809e015eed819844b273f898d1519ea3a6c0a3e32e1c838a74999df5fe527",
+  "25": "12043d899f0b58b59c4f1e5560e6c20d5cf1092113183a512f6f12ca59387c53",
   "26": "f908d298d2a728189fadc68a84e90d0d391cfd93298ba1692c91ce42f60de497",
   "27": "516f26dedb1b35a72fa7e2ce05bf3c23cd36393a850ca42f81d4d40bbbb111c0",
   "28": "d296a338cce6f665028306b24638d3422f6c32c1ce57956c338e85adc10d0477",

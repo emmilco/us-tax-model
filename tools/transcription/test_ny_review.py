@@ -122,8 +122,12 @@ class NewYorkMode(unittest.TestCase):
         # Federal helper lines the encoding reads, which no source text can name: review evidence.
         self.assertEqual(got["ny_it201"]["missing"], ["dependent:dependent.claimed", "dependent:dependent.one",
                                                       "dependent:dependent.under_ctc_age", "eic:eic.limit",
-                                                      "f2441:f2441.benefits", "f2441:f2441.care", "person:person.one",
-                                                      "person:person.sc_count", "person:person.sc_total"])
+                                                      "f1040:f1040.line4a", "f1040:f1040.line5a",
+                                                      "f2441:f2441.benefits", "f2441:f2441.care", "f8863:f8863.paid",
+                                                      "person:person.birth_year", "person:person.ira_taxable", "person:person.one",
+                                                      "person:person.plan_taxable", "person:person.sc_count",
+                                                      "person:person.sc_total", "person:person.x_edu_account", "s1:s1.has_sc",
+                                                      "scope:scope.armed_forces", "scope:scope.has_w2"])
 
     def test_render_prompt_reads_the_new_york_rendering(self):
         got = run_ny("import json, render_compare as R\n"
@@ -151,8 +155,11 @@ class NewYorkMode(unittest.TestCase):
         self.assertEqual(got["form_docs"], [True, True, False, False, False])
         # The New York screens are the Yes/No questions whose Yes refuses; each is a gated input (asked only when a
         # computed amount makes it matter), and a gated screen is still a screen.
-        self.assertEqual(got["screens"], ["ny_it201.ask.dependent_care", "ny_it201.ask.gov_pension", "ny_it201.ask.mctmt",
-                                          "ny_it201.ask.pension_exclusion", "ny_it201.ask.refund_529",
+        self.assertEqual(got["screens"], ["ny_it201.ask.414h", "ny_it201.ask.529_nonqualified", "ny_it201.ask.529_owner",
+                                          "ny_it201.ask.abode_part_year", "ny_it201.ask.city_credits",
+                                          "ny_it201.ask.dependent_care", "ny_it201.ask.mctmt",
+                                          "ny_it201.ask.out_of_state_bond_interest", "ny_it201.ask.real_property_credit",
+                                          "ny_it201.ask.refund_529", "ny_it201.ask.special_accrual",
                                           "ny_it201.ask.us_obligation_interest"])
 
 

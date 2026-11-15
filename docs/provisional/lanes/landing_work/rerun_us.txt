@@ -1,0 +1,186 @@
+planning 179 job(s): dry runs build each request, 3 at a time
+Cost estimate (dry-run request size x recent ledger cost per prompt character):
+  classm        aqee             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        asset            claude    whole                 1,236,566 chars      $3.24  whole
+  classm        carloan          claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        clcw             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        clcw26           claude    not run                       0 chars      $0.00  request not built: clcw26: no jobs in /Users/elliotmilco/Documents/GitHub/tax-formalizatio
+  classm        dcprov           claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        dependent        claude    whole                 1,826,833 chars      $4.76  whole
+  classm        eic              claude    whole                 2,289,766 chars      $5.94  whole
+  classm        f1040            claude    whole                 1,454,426 chars      $3.80  whole
+  classm        f1095a           claude    whole                   141,329 chars      $0.43  whole
+  classm        f2441            claude    whole                   559,254 chars      $1.50  whole
+  classm        f4562            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        f4952            claude    whole                    68,090 chars      $0.24  whole
+  classm        f5329            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        f5695            claude    whole                 1,539,040 chars      $4.02  whole
+  classm        f8606            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        f8863            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        f8880            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        f8889            claude    whole                 1,481,398 chars      $3.87  whole
+  classm        f8959            claude    whole                    59,280 chars      $0.22  whole
+  classm        f8960            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        f8962            claude    whole                   785,008 chars      $2.08  whole
+  classm        f8995            claude    whole                    68,640 chars      $0.24  whole
+  classm        f8995a           claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        g28              claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        gift             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        ira              claude    whole                   223,289 chars      $0.64  whole
+  classm        ltc              claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        oi8z             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        otjob            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        person           claude    whole                14,070,570 chars     $36.20  whole
+  classm        qdcg             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        refund           claude    whole                   437,178 chars      $1.19  whole
+  classm        retirement       claude    whole                   662,356 chars      $1.76  whole
+  classm        s1               claude    whole                 2,802,602 chars      $7.26  whole
+  classm        s179             claude    whole                   194,283 chars      $0.56  whole
+  classm        s1a              claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        s2               claude    whole                   428,664 chars      $1.16  whole
+  classm        s3               claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        s8812            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        sa               claude    whole                 1,116,137 chars      $2.93  whole
+  classm        sales            claude    whole                   559,279 chars      $1.50  whole
+  classm        sb               claude    whole                    78,109 chars      $0.26  whole
+  classm        sc               claude    whole                   624,495 chars      $1.67  whole
+  classm        scveh            claude    whole                 1,117,380 chars      $2.93  whole
+  classm        sd               claude    whole                   936,940 chars      $2.47  whole
+  classm        sdtw             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        se               claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        sli              claude    whole                   122,602 chars      $0.38  whole
+  classm        ssb              claude    whole                   111,163 chars      $0.35  whole
+  classm        tax_on_amount    claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        tcw              claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        tipjob           claude    whole                    25,022 chars      $0.13  whole
+  classm        u1250            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  classm        w2               claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        aqee             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        asset            claude    --lines auto            430,387 chars      $1.24  line-scoped
+  render        carloan          claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        clcw             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        clcw26           claude    not run                       0 chars      $0.00  line-scoped request not built: FileNotFoundError: [Errno 2] No such file or directory: '/U
+  render        dcprov           claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        dependent        claude    --lines auto            300,438 chars      $0.88  line-scoped
+  render        div              claude    --lines auto            105,555 chars      $0.34  line-scoped
+  render        eic              claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        f1040            claude    --lines auto             81,897 chars      $0.28  line-scoped
+  render        f1095a           claude    --lines auto             82,600 chars      $0.28  line-scoped
+  render        f2441            claude    --lines auto            979,265 chars      $2.76  line-scoped
+  render        f4562            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        f4952            claude    --lines auto             30,698 chars      $0.14  line-scoped
+  render        f5329            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        f5695            claude    whole                   501,102 chars      $1.44  whole: f5695: the document changed outside every compared line since the render log (line-
+  render        f8606            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        f8863            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        f8880            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        f8889            claude    --lines auto            225,975 chars      $0.68  line-scoped
+  render        f8959            claude    --lines auto            884,050 chars      $2.50  line-scoped
+  render        f8960            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        f8962            claude    --lines auto            178,386 chars      $0.55  line-scoped
+  render        f8995            claude    --lines auto             24,602 chars      $0.12  line-scoped
+  render        f8995a           claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        ftc              claude    --lines auto             84,443 chars      $0.29  line-scoped
+  render        g28              claude    --lines auto             49,907 chars      $0.19  line-scoped
+  render        gift             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        household        claude    --lines auto          1,414,149 chars      $3.96  line-scoped
+  render        interest         claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        ira              claude    --lines auto            264,016 chars      $0.78  line-scoped
+  render        ltc              claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        mq               claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        oi8z             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        otjob            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        person           claude    --lines auto            858,809 chars      $2.43  line-scoped
+  render        qbi              claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        qdcg             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        refund           claude    --lines auto             54,339 chars      $0.20  line-scoped
+  render        retirement       claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        s1               claude    --lines auto            152,730 chars      $0.48  line-scoped
+  render        s179             claude    --lines auto            836,149 chars      $2.37  line-scoped
+  render        s1a              claude    --lines auto             73,853 chars      $0.26  line-scoped
+  render        s2               claude    --lines auto            116,029 chars      $0.37  line-scoped
+  render        s3               claude    --lines auto            517,732 chars      $1.48  line-scoped
+  render        s8812            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        sa               claude    --lines auto            262,472 chars      $0.78  line-scoped
+  render        sales            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        sb               claude    --lines auto             94,257 chars      $0.31  line-scoped
+  render        sc               claude    --lines auto            686,066 chars      $1.95  line-scoped
+  render        scope            claude    --lines auto            514,444 chars      $1.48  line-scoped
+  render        scveh            claude    --lines auto            402,381 chars      $1.17  line-scoped
+  render        sd               claude    --lines auto            357,261 chars      $1.04  line-scoped
+  render        sdtw             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        se               claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        sli              claude    --lines auto             38,589 chars      $0.16  line-scoped
+  render        ssb              claude    --lines auto          1,005,367 chars      $2.83  line-scoped
+  render        tax_on_amount    claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        tcw              claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  render        tipjob           claude    --lines auto             31,277 chars      $0.14  line-scoped
+  render        u1250            claude    --lines auto             51,178 chars      $0.19  line-scoped
+  render        w2               claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription aqee             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription asset            claude    --lines auto            547,181 chars      $2.30  line-scoped
+  transcription carloan          claude    --lines auto            292,731 chars      $1.23  line-scoped
+  transcription clcw             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription clcw26           claude    not run                       0 chars      $0.00  line-scoped request not built: FileNotFoundError: [Errno 2] No such file or directory: '/U
+  transcription dcprov           claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription dependent        claude    whole                   797,066 chars      $3.34  whole: dependent: a form with source partial-input cases is reviewed whole (its cases read
+  transcription div              claude    --lines auto            144,464 chars      $0.61  line-scoped
+  transcription eic              claude    --lines auto            478,462 chars      $2.01  line-scoped
+  transcription f1040            claude    --lines auto            372,709 chars      $1.56  line-scoped
+  transcription f1095a           claude    --lines auto            200,748 chars      $0.84  line-scoped
+  transcription f2441            claude    --lines auto            321,116 chars      $1.35  line-scoped
+  transcription f4562            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription f4952            claude    --lines auto            153,085 chars      $0.64  line-scoped
+  transcription f5329            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription f5695            claude    --lines auto            335,769 chars      $1.41  line-scoped
+  transcription f8606            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription f8863            claude    --lines auto            236,296 chars      $0.99  line-scoped
+  transcription f8880            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription f8889            claude    whole                   471,394 chars      $1.98  whole: f8889: a form with source partial-input cases is reviewed whole (its cases read eve
+  transcription f8959            claude    --lines auto            177,216 chars      $0.74  line-scoped
+  transcription f8960            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription f8962            claude    --lines auto            274,009 chars      $1.15  line-scoped
+  transcription f8995            claude    --lines auto            229,044 chars      $0.96  line-scoped
+  transcription f8995a           claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription ftc              claude    --lines auto            181,086 chars      $0.76  line-scoped
+  transcription g28              claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription gift             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription household        claude    --lines auto            457,885 chars      $1.92  line-scoped
+  transcription interest         claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription ira              claude    --lines auto            270,450 chars      $1.13  line-scoped
+  transcription ltc              claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription mq               claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription oi8z             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription otjob            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription person           claude    --lines auto            885,820 chars      $3.72  line-scoped
+  transcription qbi              claude    --lines auto            299,390 chars      $1.26  line-scoped
+  transcription qdcg             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription refund           claude    --lines auto            201,348 chars      $0.84  line-scoped
+  transcription retirement       claude    --lines auto            418,521 chars      $1.76  line-scoped
+  transcription s1               claude    --lines auto            393,091 chars      $1.65  line-scoped
+  transcription s179             claude    --lines auto            279,275 chars      $1.17  line-scoped
+  transcription s1a              claude    --lines auto            275,472 chars      $1.16  line-scoped
+  transcription s2               claude    --lines auto            298,680 chars      $1.25  line-scoped
+  transcription s3               claude    --lines auto            511,022 chars      $2.14  line-scoped
+  transcription s8812            claude    --lines auto            330,923 chars      $1.39  line-scoped
+  transcription sa               claude    --lines auto            441,235 chars      $1.85  line-scoped
+  transcription sales            claude    --lines auto            363,299 chars      $1.52  line-scoped
+  transcription sb               claude    --lines auto            146,904 chars      $0.62  line-scoped
+  transcription sc               claude    --lines auto            588,971 chars      $2.47  line-scoped
+  transcription scope            claude    --lines auto            524,271 chars      $2.20  line-scoped
+  transcription scveh            claude    --lines auto            479,870 chars      $2.01  line-scoped
+  transcription sd               claude    --lines auto            325,639 chars      $1.37  line-scoped
+  transcription sdtw             claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription se               claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription sli              claude    --lines auto            248,123 chars      $1.04  line-scoped
+  transcription ssb              claude    --lines auto            252,651 chars      $1.06  line-scoped
+  transcription tax_on_amount    claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription tcw              claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription tipjob           claude    --lines auto            249,925 chars      $1.05  line-scoped
+  transcription u1250            claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  transcription w2               claude    not run                       0 chars      $0.00  its log already answers the current subject; --force-rerun REASON to run it
+  total $182.24 for 99 job(s); gate $3.00
+not run, once per form per round: 77 job(s) whose log already answers the current subject (transcription aqee, transcription clcw, transcription dcprov, transcription f4562, transcription f5329, transcription f8606, transcription f8880, transcription f8960, transcription f8995a, transcription g28, transcription gift, transcription interest, transcription ltc, transcription mq, transcription oi8z, transcription otjob, transcription qdcg, transcription sdtw, transcription se, transcription tax_on_amount, transcription tcw, transcription u1250, transcription w2, render aqee, render carloan, render clcw, render dcprov, render eic, render f4562, render f5329, render f8606, render f8863, render f8880, render f8960, render f8995a, render gift, render interest, render ltc, render mq, render oi8z, render otjob, render qbi, render qdcg, render retirement, render s8812, render sales, render sdtw, render se, render tax_on_amount, render tcw, render w2, classm aqee, classm carloan, classm clcw, classm dcprov, classm f4562, classm f5329, classm f8606, classm f8863, classm f8880, classm f8960, classm f8995a, classm g28, classm gift, classm ltc, classm oi8z, classm otjob, classm qdcg, classm s1a, classm s3, classm s8812, classm sdtw, classm se, classm tax_on_amount, classm tcw, classm u1250, classm w2); --force-rerun REASON runs them
+not run: 3 job(s) whose request could not be built: transcription clcw26: line-scoped request not built: FileNotFoundError: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.claude/worktrees/landing/forms/2025/clcw26.yaml'; render clcw26: line-scoped request not built: FileNotFoundError: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.claude/worktrees/landing/forms/2025/clcw26.yaml'; classm clcw26: request not built: clcw26: no jobs in /Users/elliotmilco/Documents/GitHub/tax-formalization/.claude/worktrees/landing/.classm/jobs.json; run classm-jobs
+dry run: no model called
+rc=0

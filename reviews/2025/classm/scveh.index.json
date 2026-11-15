@@ -2,549 +2,492 @@
  "kind": "classm",
  "form": "scveh",
  "family": "claude",
- "base": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+ "base": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
  "lines": [
   {
    "key": "case classm.scveh.1",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": null
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line9",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line20a",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_2].line9",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_2].line20a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (72,801 x 0.799507 = 58,204.91; exact 58,204.92). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_2].line10",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_2].line14",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_2].line15",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (72,801 x 0.799507 = 58,204.91; exact 58,204.92). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_2].line16",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_2].line18",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (72,801 x 0.799507 = 58,204.91; exact 58,204.92). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_2].line19",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_2].s179_this_year",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line9",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line20a",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].bus_cost",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence. [dropped]"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line7",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line9w",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent. [dropped]"
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence. [dropped]"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line10",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line11",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent. [dropped]"
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence. [dropped]"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line14",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line15",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence. [dropped]"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line16",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence. [dropped]"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_allowed",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence. [dropped]"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line17",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent. [dropped]"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line18",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
+   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line18",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (74,477 x 0.832764 = 62,021.76 and 20,200 x 0.832764 = 16,821.83; exact 62,021.78 and 16,821.84; lines 15, 16 (40%), the allowed allowance and 18 follow). Not evidence. [dropped]"
+  },
+  {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line19",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line20",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line9",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line20a",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].bus_cost",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line7",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line9w",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line10",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line11",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line14",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line15",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line16",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_allowed",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line17",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line18",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line19",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line20",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "key": "classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].s179_this_year",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "case classm.scveh.2",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": null
   },
   {
    "key": "classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line9",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line20a",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent. [dropped]"
-  },
-  {
-   "key": "classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line10",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line14",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line15",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent. [dropped]"
-  },
-  {
-   "key": "classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line16",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line18",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent. [dropped]"
-  },
-  {
-   "key": "classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line19",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line9",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent. [dropped]"
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
   },
   {
    "key": "classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line20a",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line9",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line20a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line9",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line20a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bus_cost",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (28,221 x 0.707194 = 19,957.72; exact 19,957.71). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line7",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line9w",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line10",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line11",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line14",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line15",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (28,221 x 0.707194 = 19,957.72; exact 19,957.71). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line16",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_allowed",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line17",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line18",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (28,221 x 0.707194 = 19,957.72; exact 19,957.71). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line19",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line20",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].s179_this_year",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "case classm.scveh.3",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": null
   },
   {
    "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line9",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line20a",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. A one-cent difference from the business-use percentage: the model multiplies by the exact mileage fraction, while the project rounds the percentage to six places, the reading recorded as amb.2025.vehicle_business_pct (p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13). Same class as the backlog-round rulings of this log. [dropped]"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line7",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line9w",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line10",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line11",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line14",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line15",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. A one-cent difference from the business-use percentage: the model multiplies by the exact mileage fraction, while the project rounds the percentage to six places, the reading recorded as amb.2025.vehicle_business_pct (p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13). Same class as the backlog-round rulings of this log. [dropped]"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line16",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_allowed",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line17",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line18",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. A one-cent difference from the business-use percentage: the model multiplies by the exact mileage fraction, while the project rounds the percentage to six places, the reading recorded as amb.2025.vehicle_business_pct (p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13). Same class as the backlog-round rulings of this log. [dropped]"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line19",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line20",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line9",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (26,262/30,459 to six places is 0.862208: 9,866 x 0.862208 = 8,506.54 and 70,753 x 0.862208 = 61,003.80; exact 8,506.55 and 61,003.82; lines 15, 18 and 19 (20%) follow). Not evidence. [dropped]"
   },
   {
    "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line20a",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line9",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (26,262/30,459 to six places is 0.862208: 9,866 x 0.862208 = 8,506.54 and 70,753 x 0.862208 = 61,003.80; exact 8,506.55 and 61,003.82; lines 15, 18 and 19 (20%) follow). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line7",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line20a",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line9w",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].bus_cost",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line10",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line7",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line11",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line9w",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line14",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line10",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line15",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (26,262/30,459 to six places is 0.862208: 9,866 x 0.862208 = 8,506.54 and 70,753 x 0.862208 = 61,003.80; exact 8,506.55 and 61,003.82; lines 15, 18 and 19 (20%) follow). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line16",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line11",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_allowed",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line14",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line17",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line15",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line18",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (26,262/30,459 to six places is 0.862208: 9,866 x 0.862208 = 8,506.54 and 70,753 x 0.862208 = 61,003.80; exact 8,506.55 and 61,003.82; lines 15, 18 and 19 (20%) follow). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line19",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (26,262/30,459 to six places is 0.862208: 9,866 x 0.862208 = 8,506.54 and 70,753 x 0.862208 = 61,003.80; exact 8,506.55 and 61,003.82; lines 15, 18 and 19 (20%) follow). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line20",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line16",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_allowed",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line17",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line18",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line19",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.3 — person[taxpayer].sc[biz_b].scveh[car_1].line20",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "key": "classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].s179_this_year",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "case classm.scveh.4",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": null
   },
   {
    "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line9",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line20a",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (78,385 x 0.777478 = 60,942.61; exact 60,942.62). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line7",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line9w",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line10",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line11",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line14",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line15",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (78,385 x 0.777478 = 60,942.61; exact 60,942.62). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line16",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_allowed",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line17",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line18",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling, amb.2025.vehicle_business_pct in ambiguities/2025.yaml; i4562 p. 14, Column (c), \"determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\", no precision given); the model multiplied by the exact fraction, a difference of one or two cents (78,385 x 0.777478 = 60,942.61; exact 60,942.62). Not evidence. [dropped]"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line19",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line20",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].s179_this_year",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line9",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line20a",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent. [dropped]"
-  },
-  {
-   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line10",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line14",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line15",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent. [dropped]"
-  },
-  {
-   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line16",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line18",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent. [dropped]"
-  },
-  {
-   "key": "classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line19",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "case classm.scveh.5",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": null
   },
   {
    "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line9",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   },
   {
    "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line20a",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line7",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line9w",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line10",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line11",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line14",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line15",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line16",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_allowed",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line17",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line18",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line19",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
-   "status": "AGREE"
-  },
-  {
-   "key": "classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line20",
-   "record": "9644c721382cac25903df2be1841bf191e576ea6c367e14d31004837990e7e7a",
+   "record": "c2b1c0aed08530e2e9e5f6b71e637faa9ad3b5b31ebe8d27396d767f87e2fd4a",
    "status": "AGREE"
   }
  ]

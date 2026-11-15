@@ -345,45 +345,6 @@
     }
    ]
   },
-  "f2441.paid_2026": {
-   "subject_sha": "8c0ce4fbef2e412cd00f03003b697091d4fc3a858f19531bd372a4498a85e338",
-   "samples": [
-    {
-     "verdict": "MATCH",
-     "findings": [],
-     "prompt_sha": "b81b7613f2c8b28de979cc136d2cfb2aae3db3da0c64915688ce1c1427130fa4",
-     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
-     "model": "claude-opus-5-5",
-     "cost": 0.040251999999999996,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/f2441.paid_2026.8c0ce4fbef2e.1.response.txt"
-    }
-   ],
-   "type": "NonNegDollars",
-   "readers": 1,
-   "brief": false,
-   "used": [
-    {
-     "doc": "i2441",
-     "revision": "2025",
-     "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
-     "pages": [
-      3,
-      5
-     ],
-     "how": "cited pages",
-     "locators": [
-      "p. 5, Line 16, \"Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn't matter when the expenses were paid\"",
-      "p. 5, Line 16, \"Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn't matter when the expenses were paid\"; p. 3, Columns (a) and (b), \"If you were covered by your employer's dependent care plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your employer's name in column (a)\""
-     ],
-     "cols_pages": [
-      3,
-      5
-     ],
-     "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
-    }
-   ]
-  },
   "f2441.plan_max": {
    "subject_sha": "d704091d151b7acfa99f2c621515d26cabe01776af66485b986d65708ca72f12",
    "samples": [

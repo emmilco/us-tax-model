@@ -22,11 +22,11 @@
    "reason": "A person's number is asked as two inputs, issued (person.tin) and ITIN applied for (person.itin_applied), so the person's chain has this step for the second; dependent.tin is one input covering both.",
    "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
   },
-  "person.edu_born_2007": {
+  "person.edu_over18": {
    "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
    "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
   },
-  "person.edu_born_2002": {
+  "person.edu_age24": {
    "reason": "Part of the Form 8863 line 7 test, which is about the filer (age, support, student status, a living parent), not about a student; it is not Part III and a dependent has no such line.",
    "source": "i8863 p. 7, Line 7, \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\""
   },
@@ -191,6 +191,214 @@
    "dependent": "Part III line 31 of the dependents you claim",
    "reason": "The label names the collection the line sums line 31 over.",
    "source": "f8863 p. 1, Part II, line 10, \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 31.\""
+  },
+  {
+   "pair": "edu",
+   "field": "interview.seq",
+   "person": 10,
+   "dependent": 210,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — In 2025, was tuition or a required fee paid for this person as a student at a college, university or trade school?",
+   "dependent": "In 2025, was tuition or a required fee paid for this person as a student at a college, university or trade school?",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
+  },
+  {
+   "pair": "edu_1098t",
+   "field": "interview.seq",
+   "person": 20,
+   "dependent": 220,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu_1098t",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — Did the school send this person a Form 1098-T (Tuition Statement) for 2025?",
+   "dependent": "Did the school send this person a Form 1098-T (Tuition Statement) for 2025?",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
+  },
+  {
+   "pair": "edu_inst",
+   "field": "interview.seq",
+   "person": 90,
+   "dependent": 290,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu_inst",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — How much was paid to the school in 2025 for this person's tuition and required fees? (Form 1098-T box 1 shows what the school received.)",
+   "dependent": "How much was paid to the school in 2025 for this person's tuition and required fees? (Form 1098-T box 1 shows what the school received.)",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
+  },
+  {
+   "pair": "edu_a_this_year",
+   "field": "interview.seq",
+   "person": 110,
+   "dependent": 310,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu_a_this_year",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — How much tax-free help with these school costs came in during 2025: scholarships and grants (Form 1098-T box 5), an employer's tuition assistance, veterans' education benefits?",
+   "dependent": "How much tax-free help with these school costs came in during 2025: scholarships and grants (Form 1098-T box 5), an employer's tuition assistance, veterans' education benefits?",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
+  },
+  {
+   "pair": "edu_a_next_year",
+   "field": "interview.seq",
+   "person": 120,
+   "dependent": 320,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu_a_next_year",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — How much more of that tax-free help has come in during 2026, so far, for the same school terms?",
+   "dependent": "How much more of that tax-free help has come in during 2026, so far, for the same school terms?",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
+  },
+  {
+   "pair": "edu_refunds",
+   "field": "interview.seq",
+   "person": 130,
+   "dependent": 330,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu_refunds",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — How much of the tuition and fees paid in 2025 has the school refunded, in 2025 or so far in 2026?",
+   "dependent": "How much of the tuition and fees paid in 2025 has the school refunded, in 2025 or so far in 2026?",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
+  },
+  {
+   "pair": "edu_over",
+   "field": "interview.seq",
+   "person": 140,
+   "dependent": 340,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu_over",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required fees and required course materials?",
+   "dependent": "Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required fees and required course materials?",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
+  },
+  {
+   "pair": "edu_line23",
+   "field": "interview.seq",
+   "person": 30,
+   "dependent": 230,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu_line23",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — Has the American opportunity credit already been claimed for this person, by anyone, in four tax years before 2025?",
+   "dependent": "Has the American opportunity credit already been claimed for this person, by anyone, in four tax years before 2025?",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
+  },
+  {
+   "pair": "edu_line24",
+   "field": "interview.seq",
+   "person": 40,
+   "dependent": 240,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu_line24",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — For at least one term that began in 2025, was this person's enrollment at least half-time, in a program leading to a degree or certificate? (Form 1098-T box 8 is checked if so.)",
+   "dependent": "For at least one term that began in 2025, was this person's enrollment at least half-time, in a program leading to a degree or certificate? (Form 1098-T box 8 is checked if so.)",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
+  },
+  {
+   "pair": "edu_line25",
+   "field": "interview.seq",
+   "person": 50,
+   "dependent": 250,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu_line25",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — Were this person's first four years of college already complete before 2025 began, by the school's count of academic credit?",
+   "dependent": "Were this person's first four years of college already complete before 2025 began, by the school's count of academic credit?",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
+  },
+  {
+   "pair": "edu_line26",
+   "field": "interview.seq",
+   "person": 60,
+   "dependent": 260,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu_line26",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — By the end of 2025, was there a federal or state felony conviction of this person for possessing or distributing a controlled substance (illegal drugs)?",
+   "dependent": "By the end of 2025, was there a federal or state felony conviction of this person for possessing or distributing a controlled substance (illegal drugs)?",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
+  },
+  {
+   "pair": "edu_ein",
+   "field": "interview.seq",
+   "person": 70,
+   "dependent": 270,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu_ein",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — Is the school's employer identification number (EIN) at hand? Form 1098-T shows it, and the school can give it.",
+   "dependent": "Is the school's employer identification number (EIN) at hand? Form 1098-T shows it, and the school can give it.",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
+  },
+  {
+   "pair": "edu_mat",
+   "field": "interview.seq",
+   "person": 100,
+   "dependent": 300,
+   "reason": "One order number may not hold two questions with the same place. The two sides are asked in the same sequence, a person on the return first: the dependent side is the person side plus 200.",
+   "source": "docs/provisional/lanes/order.md (branch lane/order), section 1.5, \"two questions of one `order` state the same `seq`\""
+  },
+  {
+   "pair": "edu_mat",
+   "field": "interview.prompt",
+   "person": "For this person (you, or your spouse on a joint return) — How much was spent in 2025 on books, supplies and equipment needed for this person's courses, bought anywhere but from the school?",
+   "dependent": "How much was spent in 2025 on books, supplies and equipment needed for this person's courses, bought anywhere but from the school?",
+   "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
+   "source": "interview/README.md, \"The per-person frame as shown\""
   }
  ]
 }

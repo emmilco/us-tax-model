@@ -1,0 +1,308 @@
+# Rename carry
+
+41 review unit(s) carried across the rename, 173 not carried (map of 82 id(s), from d6e7c1e615b4af50dc585df1be72861f0514d1cb).
+
+## Carried
+
+- transcription f1040 12e: line subject
+- transcription f8880 4(a): line subject
+- transcription f8880 4(b): line subject
+- transcription refund 2: line subject
+- transcription refund 4: line subject
+- transcription sc sc.f6: line subject
+- transcription sc sc.f14: line subject
+- transcription sc sc.f19_y3: line subject
+- transcription sc sc.f19_y5: line subject
+- transcription sc sc.f19_y7: line subject
+- transcription sc sc.f19_y10: line subject
+- transcription sc sc.f19_y15: line subject
+- transcription sc sc.f19_y20: line subject
+- transcription sc sc.f19_y15sl: line subject
+- transcription sc sc.f25: line subject
+- transcription sc sc.f28: line subject
+- transcription sc sc.f29: line subject
+- transcription sc 13 (sc.line13): line subject
+- transcription sc 12 (sc.s179_allowed): line subject
+- render f1040 12e: line subject
+- render f1040 14: line subject
+- render f2441 17: line subject
+- render f8880 4(a): line subject
+- render f8880 4(b): line subject
+- render f8880 5(a): line subject
+- render person 27: line subject
+- render person 28: line subject
+- render person 29: line subject
+- render person 30: line subject
+- render person 31: line subject
+- render refund 2: line subject
+- render refund 4: line subject
+- render refund 8: line subject
+- render sc 13 (sc.line13): line subject
+- classm f8880 (whole): whole-form subject
+- questions scveh.passenger: record
+- questions scveh.prior_179: record
+- screens eic.died_2025 -> eic.died_this_year: record
+- screens gate:clcw26.final_ask -> gate:clcw_next_year.final_ask: record
+- false_no gate:clcw26.final_ask -> gate:clcw_next_year.final_ask: record
+- consumers consumer:eic.died_2025@i1040gi:p41 -> consumer:eic.died_this_year@i1040gi:p41: the input's question is unchanged
+
+## Not carried (review as usual)
+
+- transcription asset asset.dep_this_year (was asset.dep_2025): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset asset.bonus_this_year (was asset.bonus_2025): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset asset.s179_this_year (was asset.s179_2025): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset asset.mq_q4: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset asset.mq_total: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset asset.cost179: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset asset.dep_prior: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset 14: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset 25: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset 26(i): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset 19(c): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset 19(g): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset 17: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription asset 26(h): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription dependent 27: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription dependent 28: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription dependent 29: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription dependent 30: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription dependent 31: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic eic.eligible: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic eic.credit: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic eic.check_27c: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic (Step 5, 1): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic (Step 5, 2): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic (Step 5, 3): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic (Step 5, 4): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic (Step 5, 5): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic 4b: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic 6 (eic.wsb_6): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic 1: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic 2: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic 3: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic 4: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic 5: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription eic 6 (eic.line6): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription f2441 16: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription f8889 3: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription f8889 6: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription f8889 7: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription f8962 9: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription f8962 24: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription f8962 25: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription household household.widowed_this_year (was household.widowed_2025): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription household household.filing_status_conflict: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person person.age65_box: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person person.s16: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person person.ira_line7: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person person.ira_deduction: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person person.ira_nondeductible: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person person.ira_files_8606: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person person.ira_8606_line2: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person person.ira_dist_gate: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person person.ira_ssb: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person person.ira_se: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person person.edu_kid: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person 27: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person 28: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person 29: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person 30: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription person 31: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription refund refund.taxable: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription refund 1: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.has_rollover: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.taxable: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.amount_a: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.sav_amount: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.l1: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.l2: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.l2_e05: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.l2_e09: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.l2_e19: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.l2_e22: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.l2_e23: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.l1_s: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription retirement retirement.l2_s: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription sc sc.line31_pre179: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription sc 5 (sc.ho_line5): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription scveh scveh.macrs: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription scveh scveh.mq_q4: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription scveh scveh.mq_total: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription scveh scveh.cost179: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription scveh 7: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription scveh 10: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription scveh 14: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription scveh 16: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription scveh 19: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- transcription scveh (i): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render asset (screen) (asset.screen): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render asset 25: at --from: its citations changed; values changed: table recovery_year
+- render asset 26(i): at --from: its citations changed; values changed: table recovery_year
+- render asset 19(g): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render asset 26(h): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render dependent 27: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render dependent 28: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render dependent 29: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render dependent 30: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render dependent 31: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render f2441 16: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render f8889 3: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render f8889 6: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render f8889 7: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render f8962 9: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render f8962 24: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render f8962 25: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render household spouse_died_this_year (was spouse_died_2025): at --from: cited text changed: i1040gi Form 8862
+- render household widowed_this_year (was widowed_2025): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render household joint_unmarried: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render household no_spouse_died: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render person Step 1: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render person Step 2: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render refund 1: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render refund 3: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render refund 9: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render sc 5 (sc.ho_line5): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render sc 12 (sc.s179_allowed): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render scveh (screen) (scveh.screen): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render scveh 7: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render scveh 9 (scveh.line9w): at --from: cited text changed: i1040gi Form 8862
+- render scveh 10: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render scveh 11: at --from: cited text changed: i1040gi Form 8862
+- render scveh 14: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render scveh 15: at --from: cited text changed: i1040gi Form 8862
+- render scveh 16: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render scveh 25: at --from: cited text changed: i1040gi Form 8862
+- render scveh 17: at --from: cited text changed: i1040gi Form 8862
+- render scveh 18: at --from: cited text changed: i1040gi Form 8862
+- render scveh 19: the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- render scveh 20: at --from: cited text changed: i1040gi Form 8862
+- render scveh (i): the log was not current for this line at the old names (its recorded subject is not what the tree gives with the old names put back)
+- classm asset (whole): the log was not current at the old names
+- classm dependent (whole): the log was not current at the old names
+- classm eic (whole): the log was not current at the old names
+- classm f2441 (whole): the log was not current at the old names
+- classm f8889 (whole): the log was not current at the old names
+- classm f8962 (whole): the log was not current at the old names
+- classm person (whole): the log was not current at the old names
+- classm refund (whole): the log was not current at the old names
+- classm retirement (whole): the log was not current at the old names
+- classm sc (whole): the log was not current at the old names
+- classm scveh (whole): the log was not current at the old names
+- questions asset.listed: its record was not current at the old names
+- questions asset.quarter: its record was not current at the old names
+- questions asset.s179: its record was not current at the old names
+- questions clcw26.final_return -> clcw_next_year.final_return: its record was not current at the old names
+- questions dependent.edu_a2025 -> dependent.edu_a_this_year: its record was not current at the old names
+- questions dependent.edu_a2026 -> dependent.edu_a_next_year: its record was not current at the old names
+- questions dependent.edu_refunds: its record was not current at the old names
+- questions f1040.status: its record was not current at the old names
+- questions f2441.paid_2026 -> f2441.other_care_expenses: its record was not current at the old names
+- questions f8962.married_in_2025 -> f8962.married_this_year: its record was not current at the old names
+- questions household.spouse_died_2025 -> household.spouse_died_this_year: its record was not current at the old names
+- questions person.edu_a2025 -> person.edu_a_this_year: its record was not current at the old names
+- questions person.edu_a2026 -> person.edu_a_next_year: its record was not current at the old names
+- questions person.edu_refunds: its record was not current at the old names
+- questions refund.box8: its record was not current at the old names
+- questions refund.line17_2024 -> refund.line17_prior_year: its record was not current at the old names
+- questions refund.line5d_2024 -> refund.line5d_prior_year: its record was not current at the old names
+- questions refund.line5e_2024 -> refund.line5e_prior_year: its record was not current at the old names
+- questions scveh.bonus_choice: its record was not current at the old names
+- questions scveh.s179_elect: its record was not current at the old names
+- screens refund.not_2024 -> refund.not_prior_year: no such unit now
+- completeness asset: its record was not current at the old names
+- completeness dependent: its record was not current at the old names
+- completeness eic: its record was not current at the old names
+- completeness f1040: its record was not current at the old names
+- completeness f2441: its record was not current at the old names
+- completeness f8880: its record was not current at the old names
+- completeness f8962: its record was not current at the old names
+- completeness household: its record was not current at the old names
+- completeness person: its record was not current at the old names
+- completeness refund: its record was not current at the old names
+- completeness retirement: its record was not current at the old names
+- completeness scveh: its record was not current at the old names
+
+## Map
+
+- `asset.before_2017` -> `asset.acquired_before_bonus_date`
+- `asset.bonus_2025` -> `asset.bonus_this_year`
+- `asset.cost179_2025` -> `asset.cost179_over_half`
+- `asset.dep_2025` -> `asset.dep_this_year`
+- `asset.ended_2025` -> `asset.ended_this_year`
+- `asset.is2025` -> `asset.placed_this_year`
+- `asset.macrs2025` -> `asset.macrs_this_year`
+- `asset.mq_q4_2025` -> `asset.mqbase_q4`
+- `asset.on_26_2025` -> `asset.on_26_this_year`
+- `asset.s179_2025` -> `asset.s179_this_year`
+- `clcw26.carries` -> `clcw_next_year.carries`
+- `clcw26.combined` -> `clcw_next_year.combined`
+- `clcw26.decedent_notice` -> `clcw_next_year.decedent_notice`
+- `clcw26.final_ask` -> `clcw_next_year.final_ask`
+- `clcw26.final_notice` -> `clcw_next_year.final_notice`
+- `clcw26.final_return` -> `clcw_next_year.final_return`
+- `clcw26.final_return_if_carryover` -> `clcw_next_year.final_return_if_carryover`
+- `clcw26.line1` -> `clcw_next_year.line1`
+- `clcw26.line10` -> `clcw_next_year.line10`
+- `clcw26.line11` -> `clcw_next_year.line11`
+- `clcw26.line12` -> `clcw_next_year.line12`
+- `clcw26.line13` -> `clcw_next_year.line13`
+- `clcw26.line2` -> `clcw_next_year.line2`
+- `clcw26.line3` -> `clcw_next_year.line3`
+- `clcw26.line4` -> `clcw_next_year.line4`
+- `clcw26.line5` -> `clcw_next_year.line5`
+- `clcw26.line6` -> `clcw_next_year.line6`
+- `clcw26.line7` -> `clcw_next_year.line7`
+- `clcw26.line8` -> `clcw_next_year.line8`
+- `clcw26.line9` -> `clcw_next_year.line9`
+- `clcw26.no` -> `clcw_next_year.no`
+- `clcw26.not_joint` -> `clcw_next_year.not_joint`
+- `clcw26.show` -> `clcw_next_year.show`
+- `clcw26.show_lt` -> `clcw_next_year.show_lt`
+- `clcw26.show_lt_carry` -> `clcw_next_year.show_lt_carry`
+- `clcw26.show_st` -> `clcw_next_year.show_st`
+- `clcw26.show_st_carry` -> `clcw_next_year.show_st_carry`
+- `clcw26.zero` -> `clcw_next_year.zero`
+- `dependent.edu_a2025` -> `dependent.edu_a_this_year`
+- `dependent.edu_a2026` -> `dependent.edu_a_next_year`
+- `eic.died_2025` -> `eic.died_this_year`
+- `f2441.paid_2026` -> `f2441.other_care_expenses`
+- `f8880.dist_2025` -> `f8880.dist_this_year`
+- `f8962.married_in_2025` -> `f8962.married_this_year`
+- `household.spouse_died_2025` -> `household.spouse_died_this_year`
+- `household.spouse_died_2025_if_ever_married` -> `household.spouse_died_this_year_if_ever_married`
+- `household.widowed_2025` -> `household.widowed_this_year`
+- `person.age50_at_year_end_if_born_1976` -> `person.age50_at_year_end_if_open_year`
+- `person.age55_at_year_end_if_born_1971` -> `person.age55_at_year_end_if_open_year`
+- `person.born_1971` -> `person.age55_open_year`
+- `person.born_1976` -> `person.age50_open_year`
+- `person.born_2010` -> `person.under16_open_year`
+- `person.born_after_1960` -> `person.eic_under65`
+- `person.born_before_2001` -> `person.eic_age25`
+- `person.edu_a2025` -> `person.edu_a_this_year`
+- `person.edu_a2026` -> `person.edu_a_next_year`
+- `person.edu_born_2002` -> `person.edu_age24`
+- `person.edu_born_2007` -> `person.edu_over18`
+- `person.simple_age_1976` -> `person.simple_age_from_age50`
+- `person.turned_65_in_2025` -> `person.turned_65_this_year`
+- `person.under16_at_year_end_if_born_2010` -> `person.under16_at_year_end_if_open_year`
+- `refund.line17_2024` -> `refund.line17_prior_year`
+- `refund.line5d_2024` -> `refund.line5d_prior_year`
+- `refund.line5e_2024` -> `refund.line5e_prior_year`
+- `refund.not_2024` -> `refund.not_prior_year`
+- `retirement.born_1936` -> `retirement.born_before_averaging_date`
+- `retirement.born_1936_if_plan` -> `retirement.born_before_averaging_date_if_plan`
+- `retirement.lump_sum_if_born_1936` -> `retirement.lump_sum_if_born_before_averaging_date`
+- `retirement.start_1996` -> `retirement.started_before_simplified_method_date`
+- `retirement.start_1996_if_cost` -> `retirement.started_before_simplified_method_date_if_cost`
+- `scveh.before_2017` -> `scveh.acquired_before_bonus_date`
+- `scveh.before_2017_if_2025` -> `scveh.acquired_before_bonus_date_if_this_year`
+- `scveh.bonus_2025` -> `scveh.bonus_this_year`
+- `scveh.claims_bonus_2025` -> `scveh.claims_bonus_this_year`
+- `scveh.is2019` -> `scveh.first_year_after_recovery`
+- `scveh.is2025` -> `scveh.placed_this_year`
+- `scveh.lim_2025` -> `scveh.lim_this_year`
+- `scveh.line10_2025` -> `scveh.line10_this_year`
+- `scveh.line19_2025` -> `scveh.line19_this_year`
+- `scveh.s179_2025` -> `scveh.s179_this_year`
+- `scveh.s179_2025_o` -> `scveh.s179_this_year_o`
+- `scveh.s179_2025_ok` -> `scveh.s179_this_year_ok`

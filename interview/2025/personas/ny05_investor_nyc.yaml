@@ -1,0 +1,15 @@
+name: ny05_investor_nyc
+who: The investor of persona 06 (one job, interest, dividends and stock sales, a capital loss carried over), living in Manhattan all of 2025.
+end: complete
+profile: ny
+extends: 06_investor_loss_carryover
+answers:
+  ny_it201.ask.city_resident: true
+  ny_it201.ask.us_obligation_interest: false
+  $ny_it2: [software_co]
+  ny_it2[software_co].state_withheld: 700000
+  ny_it2[software_co].yonkers_withheld: 0
+  ny_it2[software_co].city_withheld: 450000
+  div.box12: 0
+  ny_it201.ask.public_job: false
+  ny_it201.ask.bab: false

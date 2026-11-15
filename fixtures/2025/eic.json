@@ -16,6 +16,7 @@
         "sa.gifts": true,
         "sa.line11": 239900,
         "sli.interest": 16400,
+        "sli.any": true,
         "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "$person": [
           "taxpayer",
@@ -38,9 +39,13 @@
           "car_2"
         ],
         "person[taxpayer].sc[biz_a].scveh[car_1].miles_business": 17026,
-        "person[taxpayer].sc[biz_a].scveh[car_1].smr_ok": true,
+        "person[taxpayer].sc[biz_a].scveh[car_1].smr_always": true,
+        "person[taxpayer].sc[biz_a].scveh[car_1].smr_first": false,
+        "person[taxpayer].sc[biz_a].scveh[car_1].fleet": false,
         "person[taxpayer].sc[biz_a].scveh[car_2].miles_business": 26937,
-        "person[taxpayer].sc[biz_a].scveh[car_2].smr_ok": true,
+        "person[taxpayer].sc[biz_a].scveh[car_2].smr_always": true,
+        "person[taxpayer].sc[biz_a].scveh[car_2].smr_first": false,
+        "person[taxpayer].sc[biz_a].scveh[car_2].fleet": false,
         "$asset@person[taxpayer].sc[biz_a]": [
           "item_1",
           "item_2"
@@ -72,7 +77,7 @@
         "$dcprov": [
           "prov_a"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "household.credit_disallowed": true
       },
       "expect": {
@@ -211,15 +216,14 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 but born before January 1, 1961 (age 65 or older, and not born after December 31, 1960): Step 4, question 2 is No, no credit (p. 41).",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1950,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
         "person[taxpayer].w2[emp_a].box1": 400000,
         "person[taxpayer].w2[emp_a].box4": 24800,
         "person[taxpayer].w2[emp_a].box5": 400000,
-        "person[taxpayer].w2[emp_a].box6": 5800,
-        "person[taxpayer].born_after_1960": false
+        "person[taxpayer].w2[emp_a].box6": 5800
       },
       "expect": {
         "f1040.line27a": {
@@ -265,7 +269,9 @@
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 but born on January 1, 1961: 65 or older for the standard deduction (sa.age65 yes), yet born after December 31, 1960, so Step 4, question 2 is Yes and the credit is the same $308 (p. 41; BUG-0034).",
       "inputs": {
-        "person[taxpayer].age65": true,
+        "person[taxpayer].birth_year": 1961,
+        "person[taxpayer].born_jan1": true,
+        "person[taxpayer].died_at_64": false,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -301,7 +307,8 @@
         "person[taxpayer].w2[emp_a].box4": 24800,
         "person[taxpayer].w2[emp_a].box5": 400000,
         "person[taxpayer].w2[emp_a].box6": 5800,
-        "person[taxpayer].born_before_2001": false
+        "person[taxpayer].birth_year": 2001,
+        "person[taxpayer].born_jan1": false
       },
       "expect": {
         "f1040.line27a": {
@@ -395,6 +402,7 @@
         "person[taxpayer].w2[emp_a].box4": 24800,
         "person[taxpayer].w2[emp_a].box5": 400000,
         "person[taxpayer].w2[emp_a].box6": 5800,
+        "eic.lived_with_relative": true,
         "eic.qc_of_another": true
       },
       "expect": {
@@ -452,7 +460,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "interest[bank_a].amount": 500000
@@ -518,7 +526,7 @@
           "c2"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[c1].age": 2,
         "dependent[c1].months": 12,
         "dependent[c2].age": 5,
@@ -578,7 +586,7 @@
           "c3"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[c1].age": 2,
         "dependent[c1].months": 12,
         "dependent[c2].age": 5,
@@ -641,7 +649,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "interest[bank_a].amount": 1200000
@@ -698,7 +706,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "dependent[child].work_ssn": false,
@@ -916,7 +924,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12
       },
@@ -971,7 +979,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "interest[bank_a].amount": {
@@ -1042,7 +1050,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "interest[bank_a].amount": 335000
@@ -1093,7 +1101,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12
       },
@@ -1136,7 +1144,7 @@
           "c2"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[c1].age": 2,
         "dependent[c1].months": 12,
         "dependent[c2].age": 5,
@@ -1182,7 +1190,7 @@
           "c3"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[c1].age": 2,
         "dependent[c1].months": 12,
         "dependent[c2].age": 5,
@@ -1228,7 +1236,7 @@
           "offset": 0
         },
         "person[taxpayer].w2[emp_a].box6": 38010,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.line27a": {
@@ -1273,7 +1281,7 @@
         ],
         "dependent[child].age": 3,
         "dependent[child].months": 12,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.line27a": {
@@ -1317,7 +1325,7 @@
           "c1",
           "c2"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "dependent[c1].age": 2,
         "dependent[c1].months": 12,
         "dependent[c2].age": 5,
@@ -1366,7 +1374,7 @@
           "c2",
           "c3"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "dependent[c1].age": 2,
         "dependent[c1].months": 12,
         "dependent[c2].age": 5,
@@ -1406,7 +1414,7 @@
         "person[taxpayer].w2[emp_a].box4": 74400,
         "person[taxpayer].w2[emp_a].box5": 1200000,
         "person[taxpayer].w2[emp_a].box6": 17400,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.line27a": {
@@ -1445,7 +1453,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "interest[bank_a].amount": 700000
@@ -1489,7 +1497,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "interest[bank_a].amount": 1150000
@@ -1528,7 +1536,8 @@
         "$dependent": [
           "parent"
         ],
-        "person[taxpayer].born_before_2001": false,
+        "person[taxpayer].birth_year": 2001,
+        "person[taxpayer].born_jan1": false,
         "dependent[parent].relationship": "parent",
         "dependent[parent].age": 70,
         "dependent[parent].gross_income": 400000,
@@ -1565,14 +1574,15 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "s8812.combat_pay": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "s1a.tips": null,
         "s1a.overtime": null,
         "s1a.carloan": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line27a": {
@@ -1624,10 +1634,10 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.line27a": {
@@ -1669,10 +1679,10 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
-        "household.married": true,
+        "household.married_dec31": true,
         "eic.same_home": true,
         "eic.legally_separated": true
       },
@@ -1708,10 +1718,10 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
-        "household.married": true,
+        "household.married_dec31": true,
         "eic.same_home": true
       },
       "expect": {
@@ -1759,7 +1769,7 @@
           "child"
         ],
         "household.home_cost": false,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "interest[bank_a].amount": 500000,
@@ -1799,7 +1809,7 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": null,
+        "household.considered_unmarried": null,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "interest[bank_a].amount": 500000,
@@ -1835,7 +1845,7 @@
           "child"
         ],
         "household.home_cost": false,
-        "household.unmarried": null,
+        "household.considered_unmarried": null,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "interest[bank_a].amount": 500000,
@@ -1844,7 +1854,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[spouse]": [],
         "eic.same_home": null,
         "eic.legally_separated": null,
@@ -1883,14 +1893,15 @@
           "child"
         ],
         "household.home_cost": false,
-        "household.unmarried": null,
+        "household.considered_unmarried": null,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "interest[bank_a].amount": 500000,
         "f1040.status": "mfs",
-        "household.married": true,
+        "household.married_dec31": true,
         "eic.same_home": true,
         "eic.legally_separated": false,
+        "eic.lived_with_relative": false,
         "eic.qc_of_another": false
       },
       "expect": {
@@ -1929,7 +1940,7 @@
         ],
         "person[taxpayer].work_ssn": false,
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "interest[bank_a].amount": 500000
@@ -2002,7 +2013,7 @@
         ],
         "person[taxpayer].eic_ssn": false,
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "interest[bank_a].amount": 500000
@@ -2061,12 +2072,13 @@
           "child"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
         "household.credit_disallowed": true,
         "interest[bank_a].amount": 500000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "eic.credit": {
@@ -2160,7 +2172,7 @@
           "a"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "f2441.care": true,
         "f2441.benefits": true,
         "dependent[a].age": 4,
@@ -2201,7 +2213,7 @@
           "a",
           "b"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -2262,7 +2274,8 @@
         "person[taxpayer].w2[emp_a].box4": 124000,
         "person[taxpayer].w2[emp_a].box5": 2000000,
         "person[taxpayer].w2[emp_a].box6": 29000,
-        "sli.interest": 250000
+        "sli.interest": 250000,
+        "sli.any": true
       },
       "expect": {
         "f1040.line11b": {
@@ -2292,14 +2305,31 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Mutation-equivalence second reading (kills refusal.eic.eic.step5_line2.0 and operand.eic.eic.step5_line4.zero), predicted from the archived i1040gi before recording: as no_child.4000 with the other-income screen answered Yes (it covers Medicaid waiver payments) and no combat pay. Step 5 line 2 is 'the Medicaid waiver payment amounts excluded from income on Schedule 1, line 8s' (p. 42), which this tool does not ask, so line 2 refuses with the Medicaid waiver entry. Step 5 line 4 is 'all of your nontaxable combat pay if you elect to include it in earned income' (p. 42): with no combat pay it is $0, whatever the other-income screen says. Form 1040 line 27a refuses through line 8's own other-income entry.",
       "inputs": {
-        "scope.other_income": true,
+        "scope.noncitizen": false,
+        "scope.armed_forces": false,
+        "scope.unearned_2700": false,
+        "scope.religious_work": false,
+        "scope.artist_official": false,
+        "scope.foreign_shares": false,
+        "scope.business_before": false,
+        "scope.nonresident": false,
+        "scope.chapter11": false,
+        "scope.reservist_repaid": false,
+        "scope.adoption_benefits": false,
+        "scope.pay_no_w2": false,
+        "scope.medicaid_waiver": true,
+        "scope.care_benefits_other": false,
+        "scope.disaster_distribution": false,
+        "scope.excess_deferral": false,
+        "scope.passive": false,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
         "person[taxpayer].w2[emp_a].box1": 400000,
         "person[taxpayer].w2[emp_a].box5": 400000,
         "person[taxpayer].w2[emp_a].box6": 5800,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "eic.step5_line2": {
@@ -2342,14 +2372,36 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Mutation-equivalence second reading (kills refusal.eic.eic.step5_line1.0), predicted from the archived i1040gi before recording: the inputs of stage9.eic.refuse.clergy_schedule1 (an item requiring Schedule 1, which covers clergy and church employee income). Step 5 question 1 asks whether you file Schedule SE as a member of the clergy or with church employee income, and Yes sends you to 'Clergy or Church employees, whichever applies' (p. 42) before worksheet line 1; this tool refuses those items, so Step 5 line 1 itself refuses rather than showing Form 1040 line 1z.",
       "inputs": {
-        "scope.schedule1": true,
+        "scope.noncitizen": false,
+        "scope.armed_forces": false,
+        "scope.unearned_2700": false,
+        "scope.religious_work": true,
+        "scope.artist_official": false,
+        "scope.foreign_shares": false,
+        "scope.business_before": false,
+        "scope.reservist_expenses": false,
+        "scope.military_move": false,
+        "scope.rental": false,
+        "scope.k1": false,
+        "scope.farm": false,
+        "scope.clergy": true,
+        "scope.church_exempt_wages": false,
+        "scope.w2_marks": false,
+        "scope.performer_expenses": false,
+        "scope.recovery": false,
+        "scope.archer_msa": false,
+        "scope.se_plan_other": false,
+        "scope.reforestation": false,
+        "scope.attorney_fees": false,
+        "scope.nol": false,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
         "person[taxpayer].w2[emp_a].box1": 400000,
         "person[taxpayer].w2[emp_a].box5": 400000,
         "person[taxpayer].w2[emp_a].box6": 5800,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "eic.step5_line1": {
@@ -2381,9 +2433,11 @@
         "f4952.line1": 920600,
         "qbi.dividends": 659700,
         "sa.gifts": true,
+        "sa.state_tax_any": true,
         "sa.line5a": 5000000,
+        "sa.home_owner": true,
         "sa.line5b": 1794200,
-        "sa.line8a": 417500,
+        "sa.mortgage_interest": 417500,
         "sa.line11": 1119600,
         "sb.ordinary_dividends": 3665000,
         "sd.distributions": 1994700,
@@ -2421,7 +2475,7 @@
         "f1040.tax_exempt_interest": null,
         "div.box12": null,
         "eic.qc_of_another": null,
-        "eic.died_2025": null,
+        "eic.died_this_year": null,
         "eic.us_home": null
       },
       "expect": {
@@ -2463,15 +2517,16 @@
           "c"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[a].age": 1,
         "dependent[a].months": 12,
         "dependent[b].age": 6,
         "dependent[b].months": 12,
         "dependent[c].age": 12,
         "dependent[c].months": 12,
+        "eic.lived_with_relative": true,
         "eic.qc_of_another": true,
-        "household.married": true
+        "household.married_dec31": true
       },
       "expect": {
         "eic.separated_box": {
@@ -2510,7 +2565,7 @@
           "c2"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[c1].age": 2,
         "dependent[c1].months": 12,
         "dependent[c2].age": 5,
@@ -2538,6 +2593,7 @@
         "person[taxpayer].w2[emp_a].box1": 400000,
         "person[taxpayer].w2[emp_a].box5": 400000,
         "person[taxpayer].w2[emp_a].box6": 5800,
+        "eic.lived_with_relative": true,
         "eic.qc_of_another": true
       },
       "expect": {
@@ -2564,8 +2620,9 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
-        "person[taxpayer].born_before_2001": false,
+        "person[taxpayer].birth_year": 2001,
+        "person[taxpayer].born_jan1": false,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -2763,6 +2820,7 @@
       "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: single, no qualifying children, Schedule C profit $21,000, no wages, $1,500 of student loan interest: Schedule SE $19,393.50 net earnings, tax $2,404.79 + $562.41 = $2,967.20, deductible half $1,483.60; AGI $21,000 - $1,483.60 - $1,500 = $18,016.40, less than $19,104, so Step 1 passes; EIC Worksheet B line 4b $21,000 - $1,483.60 = $19,516.40, not less than $19,104 (Worksheet B line 5, i1040gi p. 47): No, STOP, you can't take the credit; check the box on line 27c. Line 27a $0, line 27c checked.  Shown-line regression (owner decision 2026-10-26: skipped lines are hidden): Worksheet B line 5 is No, so i1040gi p. 47 \"No. STOP You can't take the credit\" hides Worksheet B line 6 (BUG-0156).",
       "inputs": {
         "sli.interest": 150000,
+        "sli.any": true,
         "$sc@person[taxpayer]": [
           "b"
         ],
@@ -2878,8 +2936,8 @@
           "k0"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
-        "s1.line8r": 550000,
+        "household.considered_unmarried": true,
+        "s1.scholarship_taxable": 550000,
         "dependent[k0].age": 10,
         "dependent[k0].months": 12,
         "person[taxpayer].edu": true,
@@ -2887,9 +2945,9 @@
         "person[taxpayer].edu_inst": 600000,
         "person[taxpayer].edu_line24": true,
         "person[taxpayer].edu_ein": true,
-        "person[taxpayer].edu_born_2007": true,
-        "person[taxpayer].edu_born_2002": true,
-        "eic.us_home": null
+        "person[taxpayer].birth_year": 1980,
+        "eic.us_home": null,
+        "s1.scholarship_any": true
       },
       "expect": {
         "f1040.line11b": {
@@ -3021,7 +3079,7 @@
           "c2"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[c1].age": 2,
         "dependent[c1].months": 12,
         "dependent[c2].age": 5,
@@ -3076,7 +3134,7 @@
           "c2"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[c1].age": 2,
         "dependent[c1].months": 12,
         "dependent[c2].age": 5,
@@ -3118,8 +3176,9 @@
         ],
         "dependent[child].married": true,
         "f1040.status": null,
-        "s179.line10": null,
-        "household.unmarried": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "household.considered_unmarried": null
       },
       "expect": {
         "eic.limit": {
@@ -3195,7 +3254,28 @@
         "person[taxpayer].w2[emp_a].box5": 3000000,
         "person[taxpayer].w2[emp_a].box4": 186000,
         "person[taxpayer].w2[emp_a].box6": 43500,
-        "scope.schedule1": true
+        "scope.noncitizen": false,
+        "scope.armed_forces": false,
+        "scope.unearned_2700": false,
+        "scope.religious_work": false,
+        "scope.artist_official": false,
+        "scope.foreign_shares": false,
+        "scope.business_before": false,
+        "scope.reservist_expenses": false,
+        "scope.military_move": false,
+        "scope.rental": true,
+        "scope.k1": false,
+        "scope.farm": false,
+        "scope.clergy": false,
+        "scope.church_exempt_wages": false,
+        "scope.w2_marks": false,
+        "scope.performer_expenses": false,
+        "scope.recovery": false,
+        "scope.archer_msa": false,
+        "scope.se_plan_other": false,
+        "scope.reforestation": false,
+        "scope.attorney_fees": false,
+        "scope.nol": false
       },
       "expect": {
         "eic.step2_other": {
@@ -3228,7 +3308,8 @@
         "dependent[child].married": true,
         "f1040.status": "single",
         "$interest": null,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "eic.show5": {

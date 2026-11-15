@@ -1,0 +1,58 @@
+{
+ "classm.sd.2.deepseek": {
+  "taxpayer": {
+   "y": 1950
+  }
+ },
+ "classm.otjob.1": {
+  "spouse": {
+   "y": 1950
+  }
+ },
+ "classm.sd.2": {
+  "taxpayer": {
+   "y": 1950
+  }
+ },
+ "classm.se.3": {
+  "spouse": {
+   "y": 1950
+  }
+ },
+ "classm.sli.5": {
+  "taxpayer": {
+   "y": 1950
+  }
+ },
+ "classm.w2.1": {
+  "taxpayer": {
+   "y": 1950
+  }
+ },
+ "mutation.t2.no_carloan_part4_b": {
+  "taxpayer": {
+   "y": 1950
+  }
+ },
+ "mutation.t2.s1a.mfs_ssn_unanswered": {
+  "taxpayer": {
+   "y": 1961,
+   "j": true,
+   "d": false
+  }
+ },
+ "mutation.t2.s1a.hoh_senior_decedent": {
+  "taxpayer": {
+   "y": 1961,
+   "j": true,
+   "d": true
+  }
+ },
+ "mutation.t2.s1a.qss_senior_decedent": {
+  "taxpayer": {
+   "y": 1961,
+   "j": true,
+   "d": true
+  }
+ }
+}

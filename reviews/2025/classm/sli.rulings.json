@@ -130,6 +130,18 @@
   },
   {
    "case": "classm.sli.3",
+   "printed": "1",
+   "project": "$1,500.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer is claimed as a dependent on someone else's return (person[taxpayer].sav_claimed yes) and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model wrote the bar into worksheet line 1, and the project figures every worksheet line as printed and applies the bar in sli.eligible (sli.claimed_count 1), so sli.deduction, which Schedule 1 line 21 copies, is $0.00 (engine eval of the case: sli.eligible false, sli.allowed $0.00, s1.line21 $0.00), as the model's line 9. The project's line 1 is the interest $2,000.00 less $500.00 not qualified, $1,500.00, under $2,500 (p. 99, line 1); the model's own work gives the same figure 'otherwise'. As the earlier ruling on classm.sli.2. Lines 2 to 6 agree.",
+   "drop": true,
+   "context": "c6af01cb52716e585cfb3deab3bd0b93c4489020f57863823b5fe122063f5363",
+   "date": "2026-11-14",
+   "run": "8e08f547b2f121e324b6e2b136abcd566881d7132cb64a276a55888fc6526abc",
+   "subject_key": "ca36bbfa89fdb73110b5a6b9b86c8c69835da7b95a6db5346ff204e08f8cc40d"
+  },
+  {
+   "case": "classm.sli.3",
    "printed": "6",
    "project": "$-22,792.00",
    "model": "$0.00",
@@ -154,6 +166,30 @@
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet says 'No. Skip lines 6 and 7, enter -0- on line 8' (i1040gi p. 99); line 8 reads line 6 only when line 4 is more than line 5 (sli.over), so lines 8 and 9 agree. Here line 4 is -10,817.72 and line 5 85,000.00, so the project's line 6 is -95,817.72; lines 8 and 9 are 0.00 in both. Dropped from the fixture as not evidence.",
    "drop": true,
    "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
+  },
+  {
+   "case": "classm.sli.3",
+   "printed": "8",
+   "project": "$273.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer is claimed as a dependent on someone else's return (person[taxpayer].sav_claimed yes) and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model wrote the bar into worksheet line 1, and the project figures every worksheet line as printed and applies the bar in sli.eligible (sli.claimed_count 1), so sli.deduction, which Schedule 1 line 21 copies, is $0.00 (engine eval of the case: sli.eligible false, sli.allowed $0.00, s1.line21 $0.00), as the model's line 9. The project's line 8 is $1,500.00 x 0.182 ($2,733.00 / $15,000.00 to three places, amb.2025.sli_ratio_places) = $273.00; the model multiplied its zero line 1. As the earlier ruling on classm.sli.2. Lines 2 to 6 agree.",
+   "drop": true,
+   "context": "c6af01cb52716e585cfb3deab3bd0b93c4489020f57863823b5fe122063f5363",
+   "date": "2026-11-14",
+   "run": "8e08f547b2f121e324b6e2b136abcd566881d7132cb64a276a55888fc6526abc",
+   "subject_key": "0d0b5d18731a17ae709cb30fc48ed99a9bce02c1eeafc459dff7040a61af88b0"
+  },
+  {
+   "case": "classm.sli.3",
+   "printed": "9",
+   "project": "$1,227.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer is claimed as a dependent on someone else's return (person[taxpayer].sav_claimed yes) and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model wrote the bar into worksheet line 1, and the project figures every worksheet line as printed and applies the bar in sli.eligible (sli.claimed_count 1), so sli.deduction, which Schedule 1 line 21 copies, is $0.00 (engine eval of the case: sli.eligible false, sli.allowed $0.00, s1.line21 $0.00), as the model's line 9. The project's line 9 is $1,500.00 less $273.00 = $1,227.00; the amount carried to Schedule 1 line 21 is sli.deduction, $0.00. As the earlier ruling on classm.sli.2. Lines 2 to 6 agree.",
+   "drop": true,
+   "context": "c6af01cb52716e585cfb3deab3bd0b93c4489020f57863823b5fe122063f5363",
+   "date": "2026-11-14",
+   "run": "8e08f547b2f121e324b6e2b136abcd566881d7132cb64a276a55888fc6526abc",
+   "subject_key": "c603e5ebb416e05558df4052273cb4dfe0e6092adb5d613e14ef84ce25cb2f24"
   },
   {
    "case": "classm.sli.4",

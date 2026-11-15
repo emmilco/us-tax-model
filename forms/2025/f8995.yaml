@@ -25,10 +25,10 @@ form:
       expr:
         op: subtract
         from: qbi.zero
-        take: qbi.carryforward
+        take: qbi.carryforward_if_prior_form
       cite:
         doc: f8995
-        locator: Form 8995 (2025), line 3
+        locator: Form 8995 (2025), line 3; i8995 p. 4, Line 3, "Include here the qualified portion of trade or business (loss)"
     - id: f8995.line4_sum
       printed: (helper)
       type: Dollars

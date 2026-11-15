@@ -42,10 +42,18 @@ With --write, for each unit carried:
   subject check_consumers.py holds it to) is the same at --from and now.
 The map entries a carried unit records are those whose new id its current subject names.
 
+A renamed document (the map's `document` entries, tools/year_free_names.json; --documents) also takes its review
+files to its new name, so the carry above reads and writes them there: reviews/<year>/<kind>/<old>.* (logs, rulings
+sidecars, second-family variants) and adjudication/<old>.md, the per-form questions and false-no files, the raw
+replies at the top of .transcription/ and .classm/, and the class M cases `classm.<old>.<n>` of the fixtures
+(case ids). The move changes names only: a moved log's "form" field is the one content change, and every line of it
+still falls due unless the proof above carries it.
+
 Records (reviews/store/), the verdict and ruling texts and the raw replies are never rewritten: they keep the old
 names the reviewer saw.
 
-    rename_carry.py --map MAP.json --from REV|DIR [--write] [--report PATH] [--keep DIR] [--jurisdiction ny]
+    rename_carry.py --map MAP.json --from REV|DIR [--write] [--report PATH] [--keep DIR] [--documents FILE|none]
+                    [--jurisdiction ny]
     rename_carry.py --self-test
 """
 import argparse, contextlib, hashlib, json, os, re, shutil, subprocess, sys, tempfile
@@ -461,11 +469,12 @@ def _jtree_class():
     return JTree
 
 
-def proof_b(kind, at_rev, scratch, fid, line_id, rev_policies):
-    """(holds, why) of part B for a compared line (or a class M document, line_id None)."""
+def proof_b(kind, at_rev, scratch, fid, line_id, rev_policies, fid_at_rev=None):
+    """(holds, why) of part B for a compared line (or a class M document, line_id None); `fid_at_rev` is the
+    document's name at --from when it has been renamed since."""
     import year_carry as YC
     try:
-        a = YC.parts(kind, at_rev, fid, line_id)
+        a = YC.parts(kind, at_rev, fid_at_rev or fid, line_id)
         b = YC.parts(kind, scratch, fid, line_id)
     except (KeyError, OSError, ValueError, TypeError) as ex:
         return False, f"its year-carry parts cannot be read: {ex}"
@@ -484,8 +493,9 @@ def _entries(names, back, mapping):
 
 
 class Plan:
-    def __init__(self, mapping, rev, now, old, rev_root=None, scratch_root=None):
+    def __init__(self, mapping, rev, now, old, rev_root=None, scratch_root=None, documents=None):
         self.mapping, self.rev, self.now, self.old = mapping, rev, now, old
+        self.was_document = {new: old_name for old_name, new in (documents or {}).items()}  # at --from, by old name
         self.back = {v: k for k, v in mapping.items()}
         self.fwd = substituter(mapping)
         self.carry, self.refused = [], []  # [(kind, unit, detail)], [(kind, unit, why)]
@@ -508,7 +518,7 @@ class Plan:
         if self._rev_root is None:
             return True, None
         at_rev, scratch, pol = self.trees()
-        return proof_b(kind, at_rev, scratch, fid, line_id, pol)
+        return proof_b(kind, at_rev, scratch, fid, line_id, pol, self.was_document.get(fid, fid))
 
 
 def plan_logs(plan, kind, index_of):
@@ -798,9 +808,152 @@ def sampled_records(kind):
     return {r["form"]: r for r in json.load(open(p, encoding="utf-8"))} if os.path.exists(p) else {}
 
 
+
+# ---------------------------------------------------------------- renamed documents
+
+def load_documents(path=None):
+    """{old document: new document} from the `document` entries of the year-free names map (None: no such file)."""
+    path = path or os.path.join(ROOT, "tools", "year_free_names.json")
+    if not os.path.exists(path):
+        return {}
+    renames = json.load(open(path, encoding="utf-8")).get("renames", {})
+    return {old: r["to"] for old, r in renames.items() if r.get("kind") == "document"}
+
+
+def document_moves(documents, root=None):
+    """[(src, dst)] paths that move a renamed document's review files to its new name (see the module doc)."""
+    root = root or ROOT
+    moves = []
+
+    def under(directory, prefix, new_prefix, exact=False):
+        if not os.path.isdir(directory):
+            return
+        for name in sorted(os.listdir(directory)):
+            if name.startswith(prefix) and os.path.isfile(os.path.join(directory, name)) \
+                    and (not exact or name == prefix):
+                moves.append((os.path.join(directory, name), os.path.join(directory, new_prefix + name[len(prefix):])))
+    for old, new in sorted(documents.items()):
+        for kind in KINDS:
+            under(str(jurisdiction.ypath("reviews", Y, kind)), old + ".", new + ".")
+        for kind in ("questions", "false_no"):
+            under(str(jurisdiction.ypath("reviews", Y, kind)), old + ".json", new + ".json", exact=True)
+        under(os.path.join(str(jurisdiction.ypath("reviews", Y, "transcription")), "adjudication"), old + ".", new + ".")
+        under(os.path.join(root, ".transcription"), old + ".", new + ".")
+        under(os.path.join(root, ".classm"), "classm." + old + ".", "classm." + new + ".")
+    return moves
+
+
+def legacy_index(documents):
+    """index_of(kind, fid) -> the index of a log, found under the document's old name while it is not yet moved."""
+    import families
+    import review_store
+    back = {v: k for k, v in documents.items()}
+
+    def index_of(kind, fid):
+        index = review_store.load_index(kind, fid, families.DEFAULT)
+        if index is None and fid in back:
+            index = review_store.load_index(kind, back[fid], families.DEFAULT)
+        return index
+    return index_of
+
+
+def rekey_classm(documents, rev):
+    """Rename the class M cases of a moved document's indexes (`classm.<old>.<n>` to `classm.<new>.<n>`, in the keys
+    "case <id>" and "<id> — <printed>") in every family's index, each shown from the section it was judged under
+    (`section`) with a rename marker, and in the `case` field of the rulings sidecars."""
+    top = str(jurisdiction.ypath("reviews", Y, "classm"))
+    out = []
+    for old, new in sorted(documents.items()):
+        legacy = re.compile(r"^(case )?classm\." + re.escape(old) + r"\.")
+        for name in sorted(os.listdir(top)) if os.path.isdir(top) else []:
+            if not name.startswith(new + "."):
+                continue
+            path = os.path.join(top, name)
+            data = json.load(open(path, encoding="utf-8"))
+            changed = False
+            if name.endswith(".index.json"):
+                for l in data["lines"]:
+                    if legacy.match(l["key"]):
+                        k_new = legacy.sub(lambda m: (m.group(1) or "") + "classm." + new + ".", l["key"], 1)
+                        l["section"] = l.get("section", l["key"])
+                        l["carried"] = {"by": "rename", "map": {}, "from": rev, "keys": {l["section"]: k_new}}
+                        l["key"], changed = k_new, True
+            elif name.endswith(".rulings.json"):
+                for r in data.get("rulings", []):
+                    if legacy.match(r.get("case", "")):
+                        r["case"], changed = legacy.sub(lambda m: "classm." + new + ".", r["case"], 1), True
+            if changed:
+                _json_write(path, data)
+                out.append(path)
+    restamp_classm(documents)
+    return out
+
+
+def restamp_classm(documents):
+    """A class M ruling is bound to the review context, which names the cases (`### case <id>`). Where a ruling's
+    context is the one the log had under the old case ids, it takes the context of the log under the new ones: the
+    names are all that differ. A ruling whose context was not current stays as it is."""
+    import families
+    import rulings
+    top = str(jurisdiction.ypath("reviews", Y, "classm"))
+    for old, new in sorted(documents.items()):
+        for name in sorted(os.listdir(top)) if os.path.isdir(top) else []:
+            if not (name.startswith(new + ".") and name.endswith(".rulings.json")):
+                continue
+            form, family = families.split_stem(name[:-len(".rulings.json")])
+            try:
+                text = rulings.read_log("classm", form, family)
+            except (KeyError, OSError, ValueError):
+                text = None  # no readable log: the rulings keep their contexts, and check_logs reports them
+            if text is None:
+                continue
+            was = rulings.review_context("classm", text.replace("### case classm." + new + ".", "### case classm." + old + "."))
+            now = rulings.review_context("classm", text)
+            path = os.path.join(top, name)
+            data = json.load(open(path, encoding="utf-8"))
+            changed = False
+            for r in data.get("rulings", []):
+                if r.get("context") == was and was != now:
+                    r["context"], changed = now, True
+            if changed:
+                _json_write(path, data)
+
+
+def move_documents(documents, write=False, rev=None):
+    """Move the files of `document_moves` (refused whole when a destination exists); returns the moves.
+    The "form" field of a moved index is the new document."""
+    moves = document_moves(documents)
+    taken = [dst for _, dst in moves if os.path.exists(dst)]
+    if taken:
+        raise SystemExit("rename_carry: a renamed document's files already exist at the new name: " + ", ".join(taken))
+    if not write:
+        return moves
+    for src, dst in moves:
+        os.rename(src, dst)
+    for _, dst in moves:
+        if dst.endswith(".json") and os.sep + "reviews" + os.sep in dst:
+            try:
+                data = json.load(open(dst, encoding="utf-8"))
+            except ValueError:
+                continue
+            if isinstance(data, dict) and data.get("form") in documents:
+                data["form"] = documents[data["form"]]
+                _json_write(dst, data)
+    rekey_classm(documents, rev)
+    for fixture in sorted(str(p) for p in jurisdiction.ypath("fixtures", Y).glob("classm*.json")):
+        text = open(fixture, encoding="utf-8").read()
+        new_text = text
+        for old, new in documents.items():
+            new_text = re.sub(r'("id": "classm\.)' + re.escape(old) + r'(\.)', r"\g<1>" + new + r"\g<2>", new_text)
+        if new_text != text:
+            with open(fixture, "w", encoding="utf-8") as f:
+                f.write(new_text)
+    return moves
+
+
 # ---------------------------------------------------------------- the run
 
-def run(mapping, origin, write=False, report=None, keep=None):
+def run(mapping, origin, write=False, report=None, keep=None, documents=None):
     """Plan (and with `write` apply) the carry; (exit status, Plan or None)."""
     import families
     import review_store
@@ -819,20 +972,25 @@ def run(mapping, origin, write=False, report=None, keep=None):
         scratch_tree(ROOT, scratch, back)
         now = dump_tree(ROOT, set(mapping.values()), os.path.join(work, "now.json"))
         old = dump_tree(scratch, set(mapping), os.path.join(work, "old.json"))
-        plan = Plan(mapping, label, now, old, at_rev, scratch)
-        index_of = lambda kind, fid: review_store.load_index(kind, fid, families.DEFAULT)
+        plan = Plan(mapping, label, now, old, at_rev, scratch, documents)
+        documents = documents or {}
+        index_of = legacy_index(documents)
+        moves = move_documents(documents, False) if documents else []
         logs = {k: dict(plan_logs(plan, k, index_of)) for k in ("transcription", "render")}
         logs["classm"] = dict(plan_classm(plan, index_of))
         sampled = {k: plan_sampled(plan, k, sampled_records(k)) for k in SAMPLED}
         consumers = plan_consumers(plan, before_lines, now_lines)
         written = []
         if write:
+            moves = move_documents(documents, True, label) if documents else []
+            written += [dst for _, dst in moves]
             for kind in KINDS:
                 for fid, ch in logs[kind].items():
                     written.append(write_log_index(kind, fid, ch))
             for kind in SAMPLED:
                 written += write_sampled(kind, sampled[kind], plan.fwd)
             written += write_consumers(consumers, plan)
+        plan.moves = moves
         text = render_report(plan, write)
         if report:
             with open(report, "w", encoding="utf-8") as f:
@@ -854,6 +1012,10 @@ def render_report(plan, wrote):
         lines += ["## Carried", ""] + [f"- {k} {u}: {d}" for k, u, d in plan.carry] + [""]
     if plan.refused:
         lines += ["## Not carried (review as usual)", ""] + [f"- {k} {u}: {w}" for k, u, w in plan.refused] + [""]
+    moves = getattr(plan, "moves", [])
+    if moves:
+        lines += [f"## Renamed documents' files ({'moved' if wrote else 'to move'}: {len(moves)})", ""]
+        lines += [f"- `{os.path.relpath(a, ROOT)}` -> `{os.path.relpath(b, ROOT)}`" for a, b in moves] + [""]
     lines += ["## Map", ""] + [f"- `{o}` -> `{n}`" for o, n in sorted(plan.mapping.items())]
     return "\n".join(lines) + "\n"
 
@@ -872,6 +1034,8 @@ def main(argv=None):
     ap.add_argument("--from", dest="rev", help="the commit before the rename, or a directory holding that tree")
     ap.add_argument("--write", action="store_true", help="write the carried entries (default: report only)")
     ap.add_argument("--report", help="write the report (markdown) here")
+    ap.add_argument("--documents", help="a year-free names map whose `document` entries move their review files "
+                    "(default tools/year_free_names.json; `none` moves nothing)")
     ap.add_argument("--keep", help="keep the scratch trees and subject dumps in this directory")
     ap.add_argument("--self-test", action="store_true")
     ap.add_argument("--dump", help=argparse.SUPPRESS)
@@ -890,7 +1054,8 @@ def main(argv=None):
     build_fresh.require(rendered=True)
     if a.keep:
         os.makedirs(a.keep, exist_ok=True)
-    status, _ = run(load_map(a.map), a.rev, a.write, a.report, a.keep)
+    documents = {} if a.documents == "none" else load_documents(a.documents)
+    status, _ = run(load_map(a.map), a.rev, a.write, a.report, a.keep, documents)
     return status
 
 

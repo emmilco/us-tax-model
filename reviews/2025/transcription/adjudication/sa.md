@@ -48,3 +48,66 @@ Fresh reviews of 2026-11-03 (claude-opus-5-5 and deepseek-flash, and gpt-6-astra
 | deepseek | 12 | model error | 1,367/2,120 agree; 401 value, 197 project-refuses, 155 project-unknown | i1040sca p. 10, line 12 | Enters zero claiming no gift input, though the gift collection is in its interface. |
 
 Findings: none. Project lines unchanged.
+
+## Landing round (2026-11-14)
+
+The interview redraft's line-scoped Claude review (pass a4485d8179f7) of sa.itemizes, sa.deduction and lines 5a, 5b,
+8a, 11, 12 and 16, ruled by the land3-adj5 lane against `.transcription/triage/2025/sa.json` (executable-triage-v2;
+3,708 comparisons; not rebuilt). No line shows a value difference; the differences are unknowns from parent questions
+the reply reads around (the separate-return questions, the home and gift parents) and refusal placement. Rulings in
+`/tmp/land3-adj5/sa.json`, applied with rule.py.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | sa.itemizes | representation | 3,046/3,708 agree; no value; candidate-unknown 41 completed (`sa.spouse_extra` read for every filer) | i1040sca p. 1, "your federal income tax will be less if you take the larger of your itemized deductions or your standard deduction"; p. 12, Line 18 | Same three reasons to itemize and the same tie rule; the reply ignores the separate-return parents. |
+| claude | transcription | sa.deduction | representation | 3,030/3,708 agree; no value; follows sa.itemizes | f1040 line 12e | Line 17 or the standard deduction, as the project. |
+| claude | transcription | 5a | finding (low) | 3,620/3,708 agree; no value in the sample; candidate-refuses 10 (sales tax election refused on this line) | i1040sca p. 3, Line 5a ("State and local estimated tax payments made during 2025", "taxes paid in 2025 for a prior year") | The project's sum of withholding (`sa.line5a`) and other payments (`sa.state_tax_other`) is right as the interview asks it, but `sa.line5a`'s label and source still describe the whole total, so read as declared the sum double-counts (BUG-0632). |
+| claude | transcription | 5b | representation | 3,686/3,708 agree; no value; project-unknown 22 only | f1040sa line 5b; i1040sca p. 6, Line 5b | The project asks 5b under `sa.home_asked`; the reply reads the inputs directly. |
+| claude | transcription | 8a | representation | 3,566/3,708 agree; no value; candidate-unknown 15 completed (`s3.mcc` in its refusal helper) | i1040sca p. 8, Line 8a | Same amount; the reply reads `sa.home_other` also of an owner. |
+| claude | transcription | 11 | representation | 3,666/3,708 agree; no value; candidate-refuses 24 (limited-charity refusal placed here) | f1040sa line 11 | Same amount; the project refuses that case on lines 12 and 16. |
+| claude | transcription | 12 | representation | 3,250/3,708 agree; no value; unknowns and refusal placement | f1040sa line 12 | Same sum of `gift.allowed`. |
+| claude | transcription | 16 | representation | 3,367/3,708 agree; no value; unknowns and refusal placement | i1040sca p. 11, "only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b" | Same smaller-of; 0 without winnings either way. |
+
+Counts: 7 representation, 1 finding (low). Finding BUG-0632 (`bug_pending/land3-adj5-02.md`): fix the
+label and input source of `sa.line5a` (W-2 boxes 17 and 19 only), move the other payments' text to
+`sa.state_tax_other`'s source, and narrow `sa.state_tax_any`'s text to tax taken out of pay.
+Citation corrections to the ruling texts as written in the log: the sa.itemizes quote is "your federal income tax will
+be less" (i1040sca p. 1); Line 5b is on i1040sca p. 6 (not p. 4) and the gambling-loss rule on p. 11 (not p. 12).
+
+## Landing round (2026-11-14), render
+
+Line-scoped Claude render review, pass 4bc7a200f1c1. `carry.py --kind render` ruled nothing. Ruled by lane land3-adj9;
+rulings in `/tmp/land3-adj9/sa.json`, applied with rule.py.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | 1 | scope | MISMATCH; fifth category of people omitted | i1040sca p. 2, Line 1 | As before: a filer who can be claimed as a dependent is refused by `sa.dependent` on sa.standard and sa.deduction. |
+| claude | render | 5a | finding (medium) | MISMATCH; withheld amount plus other taxes counted twice as encoded | i1040sca Line 5a | `sa.line5a`'s source still asks for every state income tax; the interview prompts are right. The ruling cites BUG-0636, a duplicate of BUG-0632 (transcription lane), found after the ruling was applied. |
+| claude | render | 8a | finding (low) | MISMATCH; no share rule, no Form 8396 subtraction | i1040sca Line 8a, "deduct only your share of the interest" | Form 8396 refused by `s3.mcc_if_interest`; the co-borrower's share is the open BUG-0459. |
+| claude | render | 6 | scope | MISMATCH; no refusal for the GST deduction | i1040sca Line 6, "generation-skipping tax (GST) imposed on certain income distributions" | The GST is on trust income distributions, reported on a Schedule K-1 (Form 1041); `scope.k1` refuses through scope.schedule1. |
+| claude | render | 15 | finding (low) | MISMATCH; no question behind sa.unsupported asks about a casualty | i1040sca Line 15 | Value right (`sd.casualty` through sd.other_forms); the refusal on lines 6, 15, 16 still names Form 4684. BUG-0639. |
+| claude | render | 16 | scope | MISMATCH; other line 16 items not refused | i1040sca Line 16 list | Casualty by `sd.casualty`, claim of right by `s3.repaid_income`, the rest by their own questions. |
+
+6 lines: 3 scope, 3 finding (1 medium, 2 low). Findings: line 5a, BUG-0632 (already recorded by the
+transcription lane; this lane rates it medium because fixtures and other readers use the encoded text; the ruling's
+BUG-0636 duplicates it and should be dropped before `new_bug.py --assign`, with the ruling's reference
+read as BUG-0632); line 8a, the
+open BUG-0459; line 15, BUG-0639 (`bug_pending/land3-adj9-04.md`): drop "/ Form 4684" from the
+sa.unsupported refusal on lines 6, 15 and 16 and name sd.casualty in line 15's citation.
+
+## Landing round (2026-11-14), after the sa text fix
+
+Subject after lane land3-sa (BUG-0632 and BUG-0639: `sa.line5a` limited to W-2 boxes 17 and
+19, `sa.state_tax_any` relabelled, the `sa.unsupported` refusal renamed, line 15 re-cited). Last review of this round
+for sa. Claude transcription pass 51a9b88c8eed (line 16), triage `.transcription/triage/2025/sa.json`
+(executable-triage-v2, 3,717 comparisons; carry ruled nothing). Claude render pass e804cc14a78b (lines 6, 8b, 8c, 13,
+15, 16). Rulings in `/tmp/land3-adj14/sa.transcription.json` and `/tmp/land3-adj14/sa.render.json` (lane land3-adj14).
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | 16 | representation | 2,735/3,717 agree; no value; 733 candidate-unknown (gambling losses read ungated), 61 project-refuses, 1 candidate-refuses (s3.repaid_income) | i1040sca p. 11, "only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b" | Same smaller-of; 0 without winnings either way; the other list items are refused elsewhere. |
+| claude | render | 6 | scope | MISMATCH; no refusal for the GST deduction | i1040sca Line 6 | As before: GST on a trust's income distribution comes with a Schedule K-1 (Form 1041); `scope.k1` refuses. |
+| claude | render | 15 | scope | MISMATCH; no listed refusal covers a casualty | i1040sca p. 11, Line 15; mutation.json (gate sd.other_forms) | `sd.casualty`, asked of every filer, refuses through sd.other_forms; the line's citation now says so. |
+| claude | render | 16 | scope | MISMATCH; casualty, claim of right, disaster loss not refused | i1040sca p. 11, Line 16 list; p525 p. 36 | `sd.casualty`, `s3.repaid_income` and `sa.unsupported` refuse them. |
+
+4 lines: transcription 1 representation; render 3 scope. Findings: none.

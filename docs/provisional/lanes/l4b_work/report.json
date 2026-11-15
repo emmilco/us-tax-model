@@ -1,0 +1,417 @@
+{
+ "unsat": [
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.w2.1.deepseek",
+   "spouse",
+   {
+    "age65": true,
+    "born_after_1960": false,
+    "born_before_2001": true,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.w2.1.deepseek",
+   "taxpayer",
+   {
+    "age65": true,
+    "born_after_1960": false,
+    "born_before_2001": true,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.sd.2.deepseek",
+   "taxpayer",
+   {
+    "age65": true,
+    "born_after_1960": false,
+    "born_before_2001": true,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.clcw.3.deepseek",
+   "taxpayer",
+   {
+    "age65": false,
+    "born_after_1960": true,
+    "born_before_2001": true,
+    "sav_born": false,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.s2.3.deepseek",
+   "spouse",
+   {
+    "age65": false,
+    "born_after_1960": false,
+    "born_before_2001": false,
+    "edu_born_2002": false,
+    "edu_born_2007": false,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false
+   },
+   {
+    "y": 2007,
+    "j": false
+   }
+  ],
+  [
+   "fixtures/2025/classm.deepseek.json",
+   "classm.f5329.1.deepseek",
+   "spouse",
+   {
+    "age65": false,
+    "born_after_1960": true,
+    "born_before_2001": true,
+    "edu_born_2002": false,
+    "edu_born_2007": false,
+    "sav_born": false,
+    "under16": false,
+    "ira_age50": false
+   },
+   {
+    "y": 2009
+   }
+  ],
+  [
+   "fixtures/2025/classm.gpt.json",
+   "classm.f8962.5.gpt",
+   "spouse",
+   {
+    "age65": true,
+    "born_after_1960": false,
+    "born_before_2001": true,
+    "edu_born_2002": true,
+    "edu_born_2007": true,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.s2.3",
+   "spouse",
+   {
+    "age65": false,
+    "born_after_1960": false,
+    "born_before_2001": false,
+    "edu_born_2002": false,
+    "edu_born_2007": false,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false
+   },
+   {
+    "y": 2007,
+    "j": false
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.sd.2",
+   "taxpayer",
+   {
+    "age65": true,
+    "born_after_1960": false,
+    "born_before_2001": true,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.w2.1",
+   "taxpayer",
+   {
+    "age65": true,
+    "born_after_1960": false,
+    "born_before_2001": false,
+    "sav_born": true,
+    "under16": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.clcw.3",
+   "taxpayer",
+   {
+    "age65": false,
+    "born_after_1960": true,
+    "born_before_2001": true,
+    "sav_born": false,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1980
+   }
+  ],
+  [
+   "fixtures/2025/classm.json",
+   "classm.f5329.1",
+   "spouse",
+   {
+    "age65": false,
+    "born_after_1960": true,
+    "born_before_2001": true,
+    "edu_born_2002": false,
+    "edu_born_2007": false,
+    "sav_born": false,
+    "under16": false,
+    "ira_age50": false
+   },
+   {
+    "y": 2009
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.f8962_months_asset3",
+   "spouse",
+   {
+    "age65": true,
+    "born_after_1960": false,
+    "born_before_2001": true,
+    "edu_born_2002": true,
+    "edu_born_2007": true,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.no_carloan_part4_b",
+   "taxpayer",
+   {
+    "age65": true,
+    "born_after_1960": false,
+    "born_before_2001": true,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.no_5695_part1_s3_5a",
+   "spouse",
+   {
+    "age65": true,
+    "born_after_1960": false,
+    "born_before_2001": true,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t2.no_5695_part1_s3_5a",
+   "taxpayer",
+   {
+    "age65": true,
+    "born_after_1960": false,
+    "born_before_2001": true,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t3.roth_excess_screen",
+   "spouse",
+   {
+    "age65": true,
+    "born_after_1960": false,
+    "born_before_2001": true,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1950
+   }
+  ],
+  [
+   "fixtures/2025/mutation.json",
+   "mutation.t3.roth_excess_screen",
+   "taxpayer",
+   {
+    "age65": true,
+    "born_after_1960": false,
+    "born_before_2001": true,
+    "sav_born": true,
+    "under16": false,
+    "ira_age50": false,
+    "died_before_65": false
+   },
+   {
+    "y": 1950
+   }
+  ]
+ ],
+ "null": [
+  [
+   "fixtures/2025/f1040.json",
+   "stage9.eic.refuse.f1040_line16.separated_spouses",
+   "taxpayer",
+   {
+    "age65": null
+   }
+  ],
+  [
+   "fixtures/2025/f1040.json",
+   "stage16.cleanup.refuse.f1040_line16",
+   "taxpayer",
+   {
+    "age65": null
+   }
+  ],
+  [
+   "fixtures/2025/f1040.json",
+   "stage16.cleanup.refuse.scope_credits",
+   "taxpayer",
+   {
+    "age65": null
+   }
+  ],
+  [
+   "fixtures/2025/f4952.json",
+   "stage16.cleanup.refuse.f4952_unsupported",
+   "taxpayer",
+   {
+    "age65": null
+   }
+  ],
+  [
+   "fixtures/2025/f4952.json",
+   "t264.f4952.unsupported_with_interest",
+   "taxpayer",
+   {
+    "age65": null
+   }
+  ],
+  [
+   "fixtures/2025/retirement.json",
+   "stage16.cleanup.refuse.retirement.special_first",
+   "spouse",
+   {
+    "age65": null
+   }
+  ],
+  [
+   "fixtures/2025/retirement.json",
+   "stage16.cleanup.refuse.retirement.special_first",
+   "taxpayer",
+   {
+    "age65": null
+   }
+  ],
+  [
+   "fixtures/2025/s3.json",
+   "ss.single.over",
+   "taxpayer",
+   {
+    "age65": null
+   }
+  ],
+  [
+   "fixtures/2025/s3.json",
+   "ss.multi.over",
+   "taxpayer",
+   {
+    "age65": null
+   }
+  ],
+  [
+   "fixtures/2025/s3.json",
+   "ss.mfs",
+   "taxpayer",
+   {
+    "age65": null
+   }
+  ],
+  [
+   "fixtures/2025/s3.json",
+   "ss.rrta",
+   "taxpayer",
+   {
+    "age65": null
+   }
+  ],
+  [
+   "fixtures/2025/s3.json",
+   "ss.early.refusal",
+   "taxpayer",
+   {
+    "age65": null
+   }
+  ]
+ ]
+}

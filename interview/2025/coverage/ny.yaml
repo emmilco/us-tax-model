@@ -1,0 +1,336 @@
+# Coverage rows for the New York part (profile ny): each situation a New York question covered before lane ny took it
+# apart or put it behind an earlier answer still reaches its end. See opening.yaml for how a row is read. The New York
+# questions are asked after the federal ones, which the background return answers.
+tax_year: 2025
+part: The New York part (Form IT-201, full-year New York City resident)
+profile: ny
+sets:
+  one_w2:
+    says: One person with one job (a Form W-2 of $52,000), New York State and City tax taken out of it.
+    answers:
+      $w2@person[taxpayer]: [acme]
+      person[taxpayer].w2[acme].box1: 5200000
+      person[taxpayer].w2[acme].box2: 520000
+      person[taxpayer].w2[acme].box4: 322400
+      person[taxpayer].w2[acme].box5: 5200000
+      person[taxpayer].w2[acme].box6: 75400
+      scope.w2_marks: false
+      s2.w2_marks: false
+      s1.nqdc_pension: false
+      scope.artist_official: false
+      scope.excess_deferral: false
+  pension:
+    says: A person born in 1980 with a pension of $24,000 from a former employer's plan (one Form 1099-R).
+    answers:
+      $retirement@person[taxpayer]: [pension]
+      person[taxpayer].retirement[pension].account: plan
+      person[taxpayer].retirement[pension].code: normal_7
+      person[taxpayer].retirement[pension].under59: false
+      person[taxpayer].retirement[pension].rollover_any: false
+      person[taxpayer].retirement[pension].loan_offset: false
+      person[taxpayer].retirement[pension].disability: false
+      person[taxpayer].retirement[pension].pso_exclusion: false
+      person[taxpayer].retirement[pension].born_before_averaging_date: false
+      person[taxpayer].retirement[pension].cost_any: false
+      person[taxpayer].retirement[pension].disaster: false
+      person[taxpayer].retirement[pension].box6: false
+      person[taxpayer].retirement[pension].box1: 2400000
+      person[taxpayer].retirement[pension].box5: 0
+  interest:
+    says: A person with $850 of bank interest.
+    answers:
+      $interest: [bank]
+      interest[bank].amount: 85000
+      interest[bank].penalty: 0
+      sb.nominee: false
+      sb.bonds_any: false
+      ftc.taxes: 0
+rows:
+  # Where you lived
+  - id: ny.city_no_state_yes
+    design: lane ny, ny_it201.ask.city_resident asked first; the State question only after a No
+    situation: A person who lived all year in Buffalo, in New York State but not in New York City.
+    answers:
+      ny_it201.ask.city_resident: false
+      ny_it201.ask.state_resident: true
+    expect:
+      refused: ny_it201.gate.part_year_city
+  - id: ny.city_no_state_no
+    design: lane ny, ny_it201.ask.state_resident after a No to the city
+    situation: A person who moved to the Bronx from New Jersey in June.
+    answers:
+      ny_it201.ask.city_resident: false
+      ny_it201.ask.state_resident: false
+    expect:
+      refused: ny_it201.gate.part_year_state
+  - id: ny.city_yes_state_settled
+    design: lane ny, a full-year city resident is a full-year State resident (N8)
+    situation: A person who lived in Brooklyn all year is not asked whether they lived in New York State.
+    answers:
+      ny_it201.ask.city_resident: true
+    expect:
+      asks: ny_it201.ask.yonkers
+      not_asked: [ny_it201.ask.state_resident]
+  - id: ny.active_duty
+    design: 'lane ny, ny_it201.ask.active_duty beneath the federal scope.armed_forces (the old State question: "Answer No if you were in active military service")'
+    situation: A soldier stationed in Brooklyn all year.
+    answers:
+      scope.armed_forces: true
+      scope.reservist_expenses: false
+      scope.military_move: false
+      scope.reservist_repaid: false
+      ny_it201.ask.city_resident: true
+      ny_it201.ask.active_duty: true
+    expect:
+      refused: ny_it201.gate.part_year_state
+  - id: ny.spouse_elsewhere
+    design: lane ny, ny_it201.ask.spouse_resident (the city question asks about the filer only)
+    situation: A married couple of full-time students filing together, one of whom lived in New Jersey all year.
+    answers:
+      $person: [taxpayer, spouse]
+      household.married_dec31: true
+      person[spouse].sav_student: true
+      person[taxpayer].sav_student: true
+      ny_it201.ask.city_resident: true
+      ny_it201.ask.spouse_resident: false
+    expect:
+      refused: ny_it201.gate.spouse_nonresident
+  - id: ny.yonkers
+    design: lane ny, ny_it201.ask.yonkers on the tick-box screen ny_where
+    situation: A city resident who works in Yonkers.
+    answers:
+      ny_it201.ask.yonkers: true
+      ny_it201.ask.moved_in: false
+      ny_it201.ask.moved_out: false
+    expect:
+      refused: ny_it201.gate.yonkers
+  - id: ny.moved_in_accrual
+    design: lane ny, ny_it201.ask.special_accrual beneath ny_it201.ask.moved_in
+    situation: A person who moved into the city on January 1, 2025, with a 2024 bonus paid in 2025.
+    answers:
+      ny_it201.ask.moved_in: true
+      ny_it201.ask.special_accrual: true
+    expect:
+      refused: ny_it201.gate.special_accrual
+  - id: ny.moved_out_accrual
+    design: lane ny, ny_it201.ask.special_accrual beneath ny_it201.ask.moved_out
+    situation: A person who moved out of the city on January 1, 2026, with a 2025 bonus paid in 2026.
+    answers:
+      ny_it201.ask.moved_out: true
+      ny_it201.ask.special_accrual: true
+    expect:
+      refused: ny_it201.gate.special_accrual
+  - id: ny.moved_no_accrual
+    design: lane ny, a move with no such income goes on
+    situation: A person who moved into the city on January 1, 2025, with no income earned in one year and paid in the other.
+    answers:
+      ny_it201.ask.moved_in: true
+      ny_it201.ask.special_accrual: false
+    expect:
+      asks: ny_it201.ask.decedent
+  - id: ny.decedent
+    design: lane ny, ny_it201.ask.decedent
+    situation: A son files the 2025 return of his mother, who died in March 2026.
+    answers:
+      ny_it201.ask.decedent: true
+    expect:
+      refused: ny_it201.gate.decedent
+  - id: ny.item_c_new_york_only
+    design: lane ny, ny_it201.ask.item_c after a federal No
+    situation: A young adult whose parent could claim them but does not have to file a return.
+    answers:
+      ny_it201.ask.item_c: true
+    expect:
+      asks: ny_it201.ask.owes_use_tax
+  - id: ny.special_code_abroad
+    design: lane ny, item G code E3 or E5 (ny_it201.ask.special_code taken apart)
+    situation: A city resident working in London on April 15, 2026, filing in June.
+    answers:
+      ny_it201.ask.abroad: true
+    expect:
+      refused: ny_it201.gate.special_code
+  - id: ny.special_code_installment
+    design: lane ny, item G code C2
+    situation: A filer who will ask to pay the tax owed in installments.
+    answers:
+      ny_it201.ask.installment: true
+    expect:
+      refused: ny_it201.gate.special_code
+  - id: ny.special_code_bab
+    design: lane ny, item G code A6 beneath interest
+    situation: A filer with interest from Build America Bonds.
+    uses: [interest]
+    answers:
+      ny_it201.ask.us_obligation_interest: false
+      ny_it201.ask.bab: true
+    expect:
+      refused: ny_it201.gate.special_code
+  # Income as New York counts it
+  - id: ny.414h
+    design: lane ny, ny_it201.ask.414h beneath ny_it201.ask.public_job, asked only with a W-2
+    situation: A city schoolteacher whose W-2 shows a 414(h) contribution.
+    uses: [one_w2]
+    answers:
+      ny_it201.ask.public_job: true
+      ny_it201.ask.414h: true
+    expect:
+      refused: ny_it201.gate.line21
+  - id: ny.public_job_no_414h
+    design: lane ny, a public job without a 414(h) contribution goes on
+    situation: A city clerk in a 457 plan only.
+    uses: [one_w2]
+    answers:
+      ny_it201.ask.public_job: true
+      ny_it201.ask.414h: false
+    expect:
+      asks: ny_it201.ask.it225
+  - id: ny.treasury_interest
+    design: lane ny, ny_it201.ask.us_obligation_interest on the tick-box screen ny_interest
+    situation: A filer with Treasury bill interest.
+    uses: [interest]
+    answers:
+      ny_it201.ask.us_obligation_interest: true
+    expect:
+      refused: ny_it201.gate.line28
+  - id: ny.other_state_bonds
+    design: lane ny, ny_it201.ask.out_of_state_bond_interest asked only with tax-exempt interest
+    situation: A filer with a national tax-free bond fund.
+    answers:
+      f1040.tax_exempt_interest: 40000
+      ny_it201.ask.out_of_state_bond_interest: true
+    expect:
+      refused: ny_it201.gate.line20
+  - id: ny.gov_pension
+    design: lane ny, ny_it201.ask.gov_pension asked only with pension or IRA income
+    situation: A retired city police officer.
+    uses: [pension]
+    answers:
+      ny_it201.ask.gov_pension: true
+    expect:
+      refused: ny_it201.gate.line26
+  - id: ny.gov_pension_other
+    design: lane ny, ny_it201.ask.gov_pension_other after a No (the public plans of the old list)
+    situation: A retired Long Island Rail Road conductor who did not think of the railroad as a government.
+    uses: [pension]
+    answers:
+      ny_it201.ask.gov_pension: false
+      ny_it201.ask.gov_pension_other: true
+    expect:
+      refused: ny_it201.gate.line26
+  - id: ny.pension_exclusion_by_age
+    design: lane ny, the pension exclusion settled by the birth year (N8)
+    situation: A retiree born in 1955 with a private pension is not asked about the age of 59½.
+    uses: [pension]
+    answers:
+      person[taxpayer].birth_year: 1955
+      person[taxpayer].work_ssn: true
+      s3.elderly_credit: false
+      ny_it201.ask.gov_pension: false
+      ny_it201.ask.gov_pension_other: false
+    expect:
+      refused: ny_it201.gate.line29
+      not_asked: [ny_it201.ask.pension_exclusion]
+  - id: ny.pension_exclusion_beneficiary
+    design: lane ny, ny_it201.ask.pension_exclusion for a younger recipient
+    situation: A widow born in 1980 receiving her late husband's pension as his beneficiary.
+    uses: [pension]
+    answers:
+      ny_it201.ask.gov_pension: false
+      ny_it201.ask.gov_pension_other: false
+      ny_it201.ask.pension_exclusion: true
+    expect:
+      refused: ny_it201.gate.line29
+  - id: ny.529_nonqualified
+    design: lane ny, ny_it201.ask.529_nonqualified beneath ny_it201.ask.ny_529, asked after the federal account questions (order 180), only with a 529 account
+    situation: A parent who paid a child's private high school tuition from a New York 529 account.
+    answers:
+      person[taxpayer].x_edu_account: true
+      person[taxpayer].x_edu_taxable: false
+      person[taxpayer].x_edu_excess: false
+      ny_it201.ask.ny_529: true
+      ny_it201.ask.529_nonqualified: true
+    expect:
+      refused: ny_it201.gate.line22
+  - id: ny.529_owner
+    design: lane ny, ny_it201.ask.529_owner beneath ny_it201.ask.ny_529
+    situation: A parent who put money into a New York 529 account in 2025.
+    answers:
+      person[taxpayer].x_edu_account: true
+      person[taxpayer].x_edu_taxable: false
+      person[taxpayer].x_edu_excess: false
+      ny_it201.ask.ny_529: true
+      ny_it201.ask.529_nonqualified: false
+      ny_it201.ask.529_owner: true
+    expect:
+      refused: ny_it201.gate.line30
+  - id: ny.529_other_state
+    design: lane ny, a 529 account of another state's program
+    situation: A parent whose 529 account is in another state's program is asked nothing more about it.
+    answers:
+      person[taxpayer].x_edu_account: true
+      person[taxpayer].x_edu_taxable: false
+      person[taxpayer].x_edu_excess: false
+      ny_it201.ask.ny_529: false
+    expect:
+      asks: ny_it201.ask.city_resident
+      not_asked: [ny_it201.ask.529_owner, ny_it201.ask.529_nonqualified]
+  - id: ny.it225
+    design: lane ny, ny_it201.ask.it225 (kept as one question)
+    situation: A filer with a New York modification on Form IT-225.
+    answers:
+      ny_it201.ask.it225: true
+    expect:
+      refused: ny_it201.gate.it225
+  # Deductions
+  - id: ny.itemize_wish
+    design: lane ny, ny_it201.ask.itemize asks the wish, only with amounts New York itemizes
+    situation: A homeowner who wants to itemize on the New York return.
+    answers:
+      sa.personal_property_tax_any: true
+      sa.line5c: 60000
+      ny_it201.ask.itemize: true
+    expect:
+      refused: ny_it201.gate.itemize
+  # Credits and other taxes
+  - id: ny.resident_credit
+    design: lane ny, ny_it201.ask.resident_credit
+    situation: A city resident who worked in New Jersey and paid New Jersey tax.
+    answers:
+      ny_it201.ask.resident_credit: true
+    expect:
+      refused: ny_it201.gate.resident_credit
+  - id: ny.real_property_income_too_high
+    design: lane ny, federal AGI above $18,000 settles the real property tax credit (N8)
+    situation: A worker earning $52,000 is not asked about the real property tax credit.
+    uses: [one_w2]
+    answers:
+      ny_it201.ask.public_job: false
+    expect:
+      asks: ny_it201.ask.noncustodial
+      not_asked: [ny_it201.ask.real_property_credit]
+  - id: ny.use_tax_exact
+    design: lane ny, ny_it201.ask.use_tax_exact after a No to the large or business purchase
+    situation: A filer who wants the use tax worked out from receipts.
+    answers:
+      ny_it201.ask.owes_use_tax: true
+      ny_it201.ask.use_tax_st141: false
+      ny_it201.ask.use_tax_exact: true
+      ny_it201.ask.abode_part_year: false
+    expect:
+      refused: ny_it201.gate.use_tax_st141
+  - id: ny.use_tax_large
+    design: lane ny, ny_it201.ask.use_tax_st141
+    situation: A filer who bought a $1,500 television out of state.
+    answers:
+      ny_it201.ask.owes_use_tax: true
+      ny_it201.ask.abode_part_year: false
+      ny_it201.ask.use_tax_st141: true
+    expect:
+      refused: ny_it201.gate.use_tax_st141
+  - id: ny.contributions
+    design: lane ny, ny_it201.ask.contributions on the tick-box screen ny_filing
+    situation: A filer who wants to give to a New York charity fund on the return.
+    answers:
+      ny_it201.ask.contributions: true
+    expect:
+      refused: ny_it201.gate.contributions

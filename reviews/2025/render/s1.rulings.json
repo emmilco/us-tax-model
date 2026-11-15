@@ -58,6 +58,17 @@
   {
    "printed": "10",
    "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
+   "model": "The form says 'Combine lines 1 through 7 and 9', but the restatement adds only lines 1, 2a, 3, 7 and 9. Lines 4, 5 and 6 are omitted, and no refusal shown here excludes them.",
+   "ruling": "Ruling: finding; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". The value is right: line 4 (Form 4797) is refused by sd.business_property_if_sold through sd.other_forms on Schedule D, lines 5 and 6 by scope.rental, scope.k1 and scope.farm through scope.schedule1 at Form 1040 line 8 (which copies this line), so within scope they are zero. But the citation puts lines 4 to 6 at \"scope.schedule1 and the line 8 screen\", and Form 4797 no longer refuses there (MAP 2.7). Low (BUG-0637).",
+   "context": "d67c4ba1b51529b8491e18c6dd0875752a843c6fc36eb14addd1983683b3ed81",
+   "date": "2026-11-14",
+   "run": "2c5415e8f6162d6dc449262582f1da40d781239ace0ae86e6a90453269bf2cf3",
+   "severity": "low",
+   "subject_key": "3c4838da24c9cd84e1a3fa1d4ea96939d450fc661e4ce5c86bce0bdf958f83b7"
+  },
+  {
+   "printed": "10",
+   "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
    "model": "The form says 'Combine lines 1 through 7 and 9'. The restatement omits lines 4, 5 and 6 (Form 4797/4684 gains, Schedule E, Schedule F), and no refusal names them.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Lines 4 to 6 are refused by scope.schedule1, which names them (\"sales of business property (Form 4797) ... rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1) ... farm income (Schedule F)\", and a Form 4684 gain under its opening \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\") and refuses Form 1040 line 8, the line this one is entered on, and every line after it; within scope they are zero, as the line's citation says (f1040s1, line 10, \"Combine lines 1 through 7 and 9\"). Lines 1, 2a, 3, 7 and 9 are figured.",
    "subject_key": "e00568db9533ee19f0cf3afc041b82316dc37ff99eebe0ce5e63f3a1469a5738"
@@ -314,6 +325,16 @@
   {
    "printed": "26",
    "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
+   "model": "The form says 'Add lines 11 through 23 and 25', but the restatement omits line 12 (business expenses of reservists and others, Form 2106), line 14 (Armed Forces moving expenses) and line 23 (Archer MSA deduction). No refusal shown here excludes them.",
+   "ruling": "Ruling: scope; refusal located elsewhere (as the prior rulings). f1040s1 line 26, \"Add lines 11 through 23 and 25\". Line 12 is asked by scope.reservist_expenses and scope.performer_expenses, line 14 by scope.military_move, line 23 by scope.archer_msa, all in scope.schedule1, which refuses Form 1040 line 10, the line this one is entered on; within scope they are zero, as the line's citation says. Line 22 is reserved. Project stands.",
+   "context": "d67c4ba1b51529b8491e18c6dd0875752a843c6fc36eb14addd1983683b3ed81",
+   "date": "2026-11-14",
+   "run": "2c5415e8f6162d6dc449262582f1da40d781239ace0ae86e6a90453269bf2cf3",
+   "subject_key": "a0b6f0d8e7e6a52fbcde009b70e4f70569f8bde4612739578d85ee84547ceba7"
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
    "model": "The form says 'Add lines 11 through 23 and 25'. The restatement omits line 12 (Form 2106 expenses), line 14 (moving expenses) and line 23 (Archer MSA deduction), and no refusal names them.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Lines 12, 14 and 23 are named in scope.schedule1 (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"), which refuses Form 1040 line 10, the line this one is entered on; within scope they are zero, as the line's citation says (f1040s1, line 26, \"Add lines 11 through 23 and 25\"). Line 22 is reserved; every other line is added.",
    "subject_key": "2ad3d6e44e02598b243819ff18e9506a9e9d3f6e56ffd0f7bff28193d66cc4e6"
@@ -332,6 +353,17 @@
    "model": "The line sums oi8z.taxable over 'the supported line 8z items', but neither those items nor how their taxable amounts are figured is defined in the text given. Whether each matches 'any taxable income not reported elsewhere' cannot be judged.",
    "ruling": "Ruling: representation; project retained. oi8z.taxable is each line 8z entry's taxable amount, defined in forms/2025/oi8z.yaml: an entry's kind comes from a fixed list (decision D4), reemployment trade adjustment assistance and kickbacks are computed and every other kind is refused at the entry (i1040gi p. 92, Line 8z, \"Examples of income to report on line 8z include the following\"; p525 p. 34, Kickbacks). Those entries are judged in the render log of `oi8z`, where they are given.",
    "subject_key": "5d3e8d51e15d115d361ec2dc71852aa846cdca92209e070d90be14d6b3941953"
+  },
+  {
+   "printed": "9",
+   "restated": "Add line 8b, line 8c, line 8f, line 8g, line 8h, line 8i, line 8j, line 8r, and line 8z.",
+   "model": "The form says 'Add lines 8a through 8z', but the restatement omits lines 8a, 8d, 8l, 8n, 8o, 8p, 8q and 8s. The line8_other gate only fires for 8k, 8m, 8t, 8u, 8v and LTC/Form 8853 items, so an amount such as a net operating loss (8a) or a taxable ABLE distribution (8q) would be silently dropped.",
+   "ruling": "Ruling: finding; f1040s1 line 9, \"Add lines 8a through 8z\". The value is right: each item not summed refuses the return elsewhere (8a scope.nol and 8l scope.rental through scope.schedule1 at Form 1040 line 8; 8d sa.excluded_income on Schedule A lines 6, 15, 16, read by sa.itemizes; 8n, 8o scope.cfc through scope.other_line16; 8p the excess business loss refusal on line 3; 8q person.x_edu_taxable through person.x_other on Form 5329; 8s scope.medicaid_waiver through scope.other_income), so 8a, 8d, 8l, 8n to 8q and 8s are not silently dropped, as the reply says. But the line's citation says those lines \"are refused by s1.line8_other\", which since the redraft tests only 8e, 8k, 8m and 8t to 8v: the line names the wrong screen. Low (BUG-0637).",
+   "context": "d67c4ba1b51529b8491e18c6dd0875752a843c6fc36eb14addd1983683b3ed81",
+   "date": "2026-11-14",
+   "run": "2c5415e8f6162d6dc449262582f1da40d781239ace0ae86e6a90453269bf2cf3",
+   "severity": "low",
+   "subject_key": "3bab8f2dc10d5b780706ee29a480af8d7f17c16e63e6899eef726efa30896026"
   }
  ]
 }

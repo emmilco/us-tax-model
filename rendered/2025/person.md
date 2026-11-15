@@ -18,12 +18,54 @@
 - Expr: `{"op":"param","ref":"person.one"}`
 - Cite: [f1040] Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse (2025; created 2025-09-05; sha256 3d31c226)
 
+## (helper) — `person.birth_year`
+
+- **Authored helper label:** The year you were born
+- **Encoded (Count):** Input — In what year were you born?
+- Expr: `{"op":"input","source":"In what year were you born?"}`
+- Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; p. 33, Blindness, "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that:", "You can't see better than 20/200 in your better eye with glasses or contact lenses, or", "Your field of vision is 20 degrees or less.", "If your eye condition isn’t likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead." and "You must keep the statement for your records."; p501 p. 23, Not totally blind, "If your vision can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection, or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.birth_cut_year`
+
+- **Authored helper label:** Born in a year in which a birth on January 1 changes an age test of this return (1961, 2001, 2002, 2007 or 2008)
+- **Encoded (Bool):** (helper "The year you were born" = 1961 (age.cut_65) or helper "The year you were born" = 2001 (age.cut_25) or helper "The year you were born" = 2002 (age.cut_24) or helper "The year you were born" = 2007 (age.cut_19) or helper "The year you were born" = 2008 (age.cut_18))
+- Expr: `{"any":[{"eq":["person.birth_year",{"param":"age.cut_65"}],"op":"test"},{"eq":["person.birth_year",{"param":"age.cut_25"}],"op":"test"},{"eq":["person.birth_year",{"param":"age.cut_24"}],"op":"test"},{"eq":["person.birth_year",{"param":"age.cut_19"}],"op":"test"},{"eq":["person.birth_year",{"param":"age.cut_18"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; p. 33, Blindness, "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that:", "You can't see better than 20/200 in your better eye with glasses or contact lenses, or", "Your field of vision is 20 degrees or less.", "If your eye condition isn’t likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead." and "You must keep the statement for your records."; p501 p. 23, Not totally blind, "If your vision can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection, or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.born_jan1`
+
+- **Authored helper label:** Were you born on January 1?
+- **Encoded (Bool):** Input — Were you born on January 1?
+- Expr: `{"op":"input","source":"Were you born on January 1?"}`
+- Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; p. 33, Blindness, "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that:", "You can't see better than 20/200 in your better eye with glasses or contact lenses, or", "Your field of vision is 20 degrees or less.", "If your eye condition isn’t likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead." and "You must keep the statement for your records."; p501 p. 23, Not totally blind, "If your vision can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection, or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.born_jan1_if_cut_year`
+
+- **Authored helper label:** Born on January 1 (asked only of a person born in 1961, 2001, 2002, 2007 or 2008; otherwise no)
+- **Encoded (Bool):** Choose — [helper "Born in a year in which a birth on January 1 changes an age test of this return (1961, 2001, 2002, 2007 or 2008)" = true → helper "Were you born on January 1?"] [helper "Born in a year in which a birth on January 1 changes an age test of this return (1961, 2001, 2002, 2007 or 2008)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.birth_cut_year",{"const":true}],"op":"test"},"then":"person.born_jan1"},{"guard":{"eq":["person.birth_cut_year",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; p. 33, Blindness, "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that:", "You can't see better than 20/200 in your better eye with glasses or contact lenses, or", "Your field of vision is 20 degrees or less.", "If your eye condition isn’t likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead." and "You must keep the statement for your records."; p501 p. 23, Not totally blind, "If your vision can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection, or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.birth_year_bad`
+
+- **Authored helper label:** The year of birth entered is after the tax year, or more than 125 years before it
+- **Encoded (Bool):** (helper "The year you were born" > 2025 (age.birth_year_latest) or helper "The year you were born" < 1900 (age.birth_year_earliest))
+- Expr: `{"any":[{"gt":["person.birth_year",{"param":"age.birth_year_latest"}],"op":"test"},{"lt":["person.birth_year",{"param":"age.birth_year_earliest"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `person.age65`
 
-- **Authored helper label:** Were you born before January 2, 1961?
-- **Encoded (Bool):** Input — Were you born before January 2, 1961?
-- Expr: `{"op":"input","source":"Were you born before January 2, 1961?"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Authored helper label:** Born before January 2, 1961
+- **Encoded (Bool):** (helper "The year you were born" < 1961 (age.cut_65) or helper "The year you were born" = 1961 (age.cut_65) and helper "Born on January 1 (asked only of a person born in 1961, 2001, 2002, 2007 or 2008; otherwise no)" = true)
+- Expr: `{"any":[{"lt":["person.birth_year",{"param":"age.cut_65"}],"op":"test"},{"all":[{"eq":["person.birth_year",{"param":"age.cut_65"}],"op":"test"},{"eq":["person.born_jan1_if_cut_year",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.under24`
+
+- **Authored helper label:** Under age 24 at the end of 2025 (born after January 1, 2002)
+- **Encoded (Bool):** (helper "The year you were born" > 2002 (age.cut_24) or helper "The year you were born" = 2002 (age.cut_24) and helper "Born on January 1 (asked only of a person born in 1961, 2001, 2002, 2007 or 2008; otherwise no)" = false)
+- Expr: `{"any":[{"gt":["person.birth_year",{"param":"age.cut_24"}],"op":"test"},{"all":[{"eq":["person.birth_year",{"param":"age.cut_24"}],"op":"test"},{"eq":["person.born_jan1_if_cut_year",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i8615] p. 1, Certain January 1 birthdays, "Use the following chart to determine whether certain children with January 1 birthdays meet condition 3 under Who Must File" (a child born on "January 1, 2002" is considered to be 24 at the end of 2025: "Don’t use Form 8615 for this child.") (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 902ca736)
 
 ## (helper) — `person.blind`
 
@@ -70,10 +112,32 @@
 
 ## (helper) — `person.under16`
 
+- **Authored helper label:** Under age 16 at the end of 2025
+- **Encoded (Bool):** (helper "The year you were born" > 2010 (age.cut_16) or helper "The year you were born" = 2010 (age.cut_16) and helper "Under age 16 at the end of 2025, as stated by a person born in 2010 (otherwise no)" = true)
+- Interpretation: amb.2025.filer_under_16
+- Expr: `{"any":[{"gt":["person.birth_year",{"param":"age.cut_16"}],"op":"test"},{"all":[{"eq":["person.birth_year",{"param":"age.cut_16"}],"op":"test"},{"eq":["person.under16_at_year_end_if_open_year",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.under16_open_year`
+
+- **Authored helper label:** Born in 2010
+- **Encoded (Bool):** helper "The year you were born" = 2010 (age.cut_16)
+- Expr: `{"eq":["person.birth_year",{"param":"age.cut_16"}],"op":"test"}`
+- Cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.under16_at_year_end`
+
 - **Authored helper label:** Were you under age 16 at the end of 2025?
 - **Encoded (Bool):** Input — Were you under age 16 at the end of 2025?
 - Interpretation: amb.2025.filer_under_16
 - Expr: `{"op":"input","source":"Were you under age 16 at the end of 2025?"}`
+- Cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.under16_at_year_end_if_open_year`
+
+- **Authored helper label:** Under age 16 at the end of 2025, as stated by a person born in 2010 (otherwise no)
+- **Encoded (Bool):** Choose — [helper "Born in 2010" = true → helper "Were you under age 16 at the end of 2025?"] [helper "Born in 2010" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.under16_open_year",{"const":true}],"op":"test"},"then":"person.under16_at_year_end"},{"guard":{"eq":["person.under16_open_year",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.educator_expenses`
@@ -90,31 +154,38 @@
 - Expr: `{"op":"input","source":"Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?"}`
 - Cite: [i1040gi] p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year' (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `person.born_before_2001`
+## (gate) — `person.educator_expenses_if_educator`
 
-- **Authored helper label:** Were you born before January 2, 2001?
-- **Encoded (Bool):** Input — Were you born before January 2, 2001?
-- Expr: `{"op":"input","source":"Were you born before January 2, 2001?"}`
+- **Authored helper label:** Qualified educator expenses paid in 2025 (asked only of an eligible educator; otherwise zero)
+- **Encoded (NonNegDollars):** Choose — [helper "Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?" = true → helper "Qualified educator expenses you paid in 2025"] [helper "Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.eligible_educator",{"const":true}],"op":"test"},"then":"person.educator_expenses"},{"guard":{"eq":["person.eligible_educator",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses, 'For professional development courses you have taken related to the curriculum you teach or to the students you teach', 'equipment (including computer equipment, software, and services)', 'for personal protective equipment, disinfectant, and other supplies used for the prevention of the spread of coronavirus', and 'You must reduce your qualified expenses by the following amounts'; p. 93, 'Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses in health or physical education.' (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.eic_age25`
+
+- **Authored helper label:** Born before January 2, 2001
+- **Encoded (Bool):** (helper "The year you were born" < 2001 (age.cut_25) or helper "The year you were born" = 2001 (age.cut_25) and helper "Born on January 1 (asked only of a person born in 1961, 2001, 2002, 2007 or 2008; otherwise no)" = true)
+- Expr: `{"any":[{"lt":["person.birth_year",{"param":"age.cut_25"}],"op":"test"},{"all":[{"eq":["person.birth_year",{"param":"age.cut_25"}],"op":"test"},{"eq":["person.born_jan1_if_cut_year",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `person.born_after_1960`
+## (helper) — `person.eic_under65`
 
-- **Authored helper label:** Were you born after December 31, 1960?
-- **Encoded (Bool):** Input — Were you born after December 31, 1960?
-- Expr: `{"op":"input","source":"Were you born after December 31, 1960?"}`
+- **Authored helper label:** Born after December 31, 1960
+- **Encoded (Bool):** helper "The year you were born" ≥ 1961 (age.cut_65)
+- Expr: `{"ge":["person.birth_year",{"param":"age.cut_65"}],"op":"test"}`
 - Cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.age65_box`
 
 - **Authored helper label:** Born before January 2, 1961, and not a person who died in 2025 before reaching 65 (a box checked for age)
-- **Encoded (Bool):** Choose — [helper "Were you born before January 2, 1961?" = true → helper "Not a person who died in 2025 before reaching 65"] [helper "Were you born before January 2, 1961?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "Born before January 2, 1961" = true → helper "Not a person who died in 2025 before reaching 65"] [helper "Born before January 2, 1961" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.age65",{"const":true}],"op":"test"},"then":"person.not_died_before_65"},{"guard":{"eq":["person.age65",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.not_died_before_65`
 
 - **Authored helper label:** Not a person who died in 2025 before reaching 65
-- **Encoded (Bool):** helper "Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?" = false
+- **Encoded (Bool):** helper "The final return of a person who died in 2025 before reaching age 65 (asked only of a person born in 1960, or on January 1, 1961; otherwise no)" = false
 - Expr: `{"eq":["person.died_before_65",{"const":false}],"op":"test"}`
 - Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -132,11 +203,25 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["person.tin",{"const":true}],"op":"test"},"then":"person.tin"},{"guard":{"eq":["person.tin",{"const":false}],"op":"test"},"then":"person.work_ssn"}],"op":"choose"}`
 - Cite: [i1040gi] p. 17, Before you begin, "The other spouse must have either an SSN or ITIN" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `person.turned_65_this_year`
+
+- **Authored helper label:** Born in 1960, or on January 1, 1961 (a person whose 65th birthday, or the day before it, fell in 2025)
+- **Encoded (Bool):** (helper "The year you were born" = 1960 (age.turning_65) or helper "The year you were born" = 1961 (age.cut_65) and helper "Born on January 1 (asked only of a person born in 1961, 2001, 2002, 2007 or 2008; otherwise no)" = true)
+- Expr: `{"any":[{"eq":["person.birth_year",{"param":"age.turning_65"}],"op":"test"},{"all":[{"eq":["person.birth_year",{"param":"age.cut_65"}],"op":"test"},{"eq":["person.born_jan1_if_cut_year",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `person.died_before_65`
 
-- **Authored helper label:** Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?
-- **Encoded (Bool):** Input — Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
-- Expr: `{"op":"input","source":"Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)"}`
+- **Authored helper label:** The final return of a person who died in 2025 before reaching age 65 (asked only of a person born in 1960, or on January 1, 1961; otherwise no)
+- **Encoded (Bool):** Choose — [helper "Born in 1960, or on January 1, 1961 (a person whose 65th birthday, or the day before it, fell in 2025)" = true → helper "Is this the final return of a person who died in 2025 before reaching age 65?"] [helper "Born in 1960, or on January 1, 1961 (a person whose 65th birthday, or the day before it, fell in 2025)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.turned_65_this_year",{"const":true}],"op":"test"},"then":"person.died_at_64"},{"guard":{"eq":["person.turned_65_this_year",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.died_at_64`
+
+- **Authored helper label:** Is this the final return of a person who died in 2025 before reaching age 65?
+- **Encoded (Bool):** Input — Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
+- Expr: `{"op":"input","source":"Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.educator_max`
@@ -149,15 +234,15 @@
 ## (helper) — `person.has_educator_expenses`
 
 - **Authored helper label:** Any qualified educator expenses for this person
-- **Encoded (Bool):** helper "Qualified educator expenses you paid in 2025" > $0 (sales.zero)
-- Expr: `{"gt":["person.educator_expenses",{"param":"sales.zero"}],"op":"test"}`
+- **Encoded (Bool):** helper "Qualified educator expenses paid in 2025 (asked only of an eligible educator; otherwise zero)" > $0 (sales.zero)
+- Expr: `{"gt":["person.educator_expenses_if_educator",{"param":"sales.zero"}],"op":"test"}`
 - Cite: [i1040gi] p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.educator_limited`
 
 - **Authored helper label:** This person's qualified educator expenses, up to $300
-- **Encoded (NonNegDollars):** Enter the smaller of helper "Qualified educator expenses you paid in 2025" or helper "Year parameter s1.educator_max ($300)".
-- Expr: `{"of":["person.educator_expenses","person.educator_max"],"op":"smaller_of"}`
+- **Encoded (NonNegDollars):** Enter the smaller of helper "Qualified educator expenses paid in 2025 (asked only of an eligible educator; otherwise zero)" or helper "Year parameter s1.educator_max ($300)".
+- Expr: `{"of":["person.educator_expenses_if_educator","person.educator_max"],"op":"smaller_of"}`
 - Cite: [i1040gi] p. 93, Schedule 1, line 11, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.educator_eligible_amount`
@@ -744,9 +829,80 @@
 
 ## (helper) — `person.simple_age`
 
-- **Authored helper label:** Catch-up eligibility
+- **Authored helper label:** Catch-up eligibility from the year of birth: 64 or older or 50 to 59 age50, 60 to 63 age60_63, under 50 under50; for a person born in a year in which only the birth date decides the band, as that person states
+- **Encoded (Enum(catchup_age)):** Choose — [helper "The year you were born" ≥ 0 (a count) and helper "The year you were born" < 1962 (age.cut_64) → helper "Year parameter ret.catchup_age50 (age50)"] [helper "The year you were born" ≥ 1962 (age.cut_64) and helper "The year you were born" < 1966 (age.cut_60) → helper "Catch-up band of a person born from the year age.cut_64 up to the year before age.cut_60: 60 to 63, or for a person born in the year age.cut_64 as that person states"] [helper "The year you were born" ≥ 1966 (age.cut_60) and helper "The year you were born" < 1976 (age.cut_50) → helper "Catch-up band of a person born from the year age.cut_60 up to the year before age.cut_50: 50 to 59, or for a person born in the year age.cut_60 as that person states"] [helper "The year you were born" ≥ 1976 (age.cut_50) → helper "Catch-up band of a person born in the year age.cut_50 or later: under 50, or for a person born in the year age.cut_50 from that person's age-50 answer"]
+- Expr: `{"alternatives":[{"guard":{"all":[{"ge":["person.birth_year",{"const":0,"type":"Count"}],"op":"test"},{"lt":["person.birth_year",{"param":"age.cut_64"}],"op":"test"}],"op":"test"},"then":"person.catchup_age50"},{"guard":{"all":[{"ge":["person.birth_year",{"param":"age.cut_64"}],"op":"test"},{"lt":["person.birth_year",{"param":"age.cut_60"}],"op":"test"}],"op":"test"},"then":"person.simple_age_60_63_years"},{"guard":{"all":[{"ge":["person.birth_year",{"param":"age.cut_60"}],"op":"test"},{"lt":["person.birth_year",{"param":"age.cut_50"}],"op":"test"}],"op":"test"},"then":"person.simple_age_50_59_years"},{"guard":{"ge":["person.birth_year",{"param":"age.cut_50"}],"op":"test"},"then":"person.simple_age_under50_years"}],"op":"choose"}`
+- Cite: [p560] p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; sha256 1f1f7abe)
+
+## (helper) — `person.simple_age_60_63_years`
+
+- **Authored helper label:** Catch-up band of a person born from the year age.cut_64 up to the year before age.cut_60: 60 to 63, or for a person born in the year age.cut_64 as that person states
+- **Encoded (Enum(catchup_age)):** Choose — [helper "Born in 1962 or 1966 (a year in which the birth date decides whether the SIMPLE catch-up age band is 60 to 63)" = true → helper "Catch-up eligibility as stated by a person born in 1962 or 1966 (otherwise 50 to 59 or 64 and over; read only for those years)"] [helper "Born in 1962 or 1966 (a year in which the birth date decides whether the SIMPLE catch-up age band is 60 to 63)" = false → helper "Year parameter ret.catchup_age60_63 (age60_63)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.simple_open_year",{"const":true}],"op":"test"},"then":"person.simple_age_if_open_year"},{"guard":{"eq":["person.simple_open_year",{"const":false}],"op":"test"},"then":"person.catchup_age60_63"}],"op":"choose"}`
+- Cite: [p560] p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; sha256 1f1f7abe)
+
+## (helper) — `person.simple_age_50_59_years`
+
+- **Authored helper label:** Catch-up band of a person born from the year age.cut_60 up to the year before age.cut_50: 50 to 59, or for a person born in the year age.cut_60 as that person states
+- **Encoded (Enum(catchup_age)):** Choose — [helper "Born in 1962 or 1966 (a year in which the birth date decides whether the SIMPLE catch-up age band is 60 to 63)" = true → helper "Catch-up eligibility as stated by a person born in 1962 or 1966 (otherwise 50 to 59 or 64 and over; read only for those years)"] [helper "Born in 1962 or 1966 (a year in which the birth date decides whether the SIMPLE catch-up age band is 60 to 63)" = false → helper "Year parameter ret.catchup_age50 (age50)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.simple_open_year",{"const":true}],"op":"test"},"then":"person.simple_age_if_open_year"},{"guard":{"eq":["person.simple_open_year",{"const":false}],"op":"test"},"then":"person.catchup_age50"}],"op":"choose"}`
+- Cite: [p560] p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; sha256 1f1f7abe)
+
+## (helper) — `person.simple_age_under50_years`
+
+- **Authored helper label:** Catch-up band of a person born in the year age.cut_50 or later: under 50, or for a person born in the year age.cut_50 from that person's age-50 answer
+- **Encoded (Enum(catchup_age)):** Choose — [helper "Born in 1976" = true → helper "Catch-up eligibility of a person born in 1976 (50 or over at the end of 2025 as that person states, otherwise under 50)"] [helper "Born in 1976" = false → helper "Year parameter ret.catchup_under50 (under50)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.age50_open_year",{"const":true}],"op":"test"},"then":"person.simple_age_from_age50"},{"guard":{"eq":["person.age50_open_year",{"const":false}],"op":"test"},"then":"person.catchup_under50"}],"op":"choose"}`
+- Cite: [p560] p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; sha256 1f1f7abe)
+
+## (helper) — `person.simple_open_year`
+
+- **Authored helper label:** Born in 1962 or 1966 (a year in which the birth date decides whether the SIMPLE catch-up age band is 60 to 63)
+- **Encoded (Bool):** (helper "The year you were born" = 1962 (age.cut_64) or helper "The year you were born" = 1966 (age.cut_60))
+- Expr: `{"any":[{"eq":["person.birth_year",{"param":"age.cut_64"}],"op":"test"},{"eq":["person.birth_year",{"param":"age.cut_60"}],"op":"test"}],"op":"test"}`
+- Cite: [p560] p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; sha256 1f1f7abe)
+
+## (helper) — `person.simple_age_at_year_end`
+
+- **Authored helper label:** Catch-up eligibility, as stated by a person born in 1962 or 1966
 - **Encoded (Enum(catchup_age)):** Input — Your age at the end of 2025 for SIMPLE catch-up contributions: under 50 (under50), 50 to 59 or 64 and over (age50), or 60, 61, 62 or 63 (age60_63)
 - Expr: `{"op":"input","source":"Your age at the end of 2025 for SIMPLE catch-up contributions: under 50 (under50), 50 to 59 or 64 and over (age50), or 60, 61, 62 or 63 (age60_63)"}`
+- Cite: [p560] p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; sha256 1f1f7abe)
+
+## (gate) — `person.simple_age_if_open_year`
+
+- **Authored helper label:** Catch-up eligibility as stated by a person born in 1962 or 1966 (otherwise 50 to 59 or 64 and over; read only for those years)
+- **Encoded (Enum(catchup_age)):** Choose — [helper "Born in 1962 or 1966 (a year in which the birth date decides whether the SIMPLE catch-up age band is 60 to 63)" = true → helper "Catch-up eligibility, as stated by a person born in 1962 or 1966"] [helper "Born in 1962 or 1966 (a year in which the birth date decides whether the SIMPLE catch-up age band is 60 to 63)" = false → helper "Year parameter ret.catchup_age50 (age50)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.simple_open_year",{"const":true}],"op":"test"},"then":"person.simple_age_at_year_end"},{"guard":{"eq":["person.simple_open_year",{"const":false}],"op":"test"},"then":"person.catchup_age50"}],"op":"choose"}`
+- Cite: [p560] p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; sha256 1f1f7abe)
+
+## (helper) — `person.simple_age_from_age50`
+
+- **Authored helper label:** Catch-up eligibility of a person born in 1976 (50 or over at the end of 2025 as that person states, otherwise under 50)
+- **Encoded (Enum(catchup_age)):** Choose — [helper "Age 50 or older at the end of 2025, as stated by a person born in 1976 (otherwise no)" = true → helper "Year parameter ret.catchup_age50 (age50)"] [helper "Age 50 or older at the end of 2025, as stated by a person born in 1976 (otherwise no)" = false → helper "Year parameter ret.catchup_under50 (under50)"]
+- Interpretation: amb.2025.ira_age50
+- Expr: `{"alternatives":[{"guard":{"eq":["person.age50_at_year_end_if_open_year",{"const":true}],"op":"test"},"then":"person.catchup_age50"},{"guard":{"eq":["person.age50_at_year_end_if_open_year",{"const":false}],"op":"test"},"then":"person.catchup_under50"}],"op":"choose"}`
+- Cite: [p560] p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; sha256 1f1f7abe)
+
+## (helper) — `person.catchup_under50`
+
+- **Authored helper label:** Year parameter ret.catchup_under50 (under50)
+- **Encoded (Enum(catchup_age)):** Enter under50 (ret.catchup_under50).
+- Expr: `{"op":"param","ref":"ret.catchup_under50"}`
+- Cite: [p560] p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; sha256 1f1f7abe)
+
+## (helper) — `person.catchup_age50`
+
+- **Authored helper label:** Year parameter ret.catchup_age50 (age50)
+- **Encoded (Enum(catchup_age)):** Enter age50 (ret.catchup_age50).
+- Expr: `{"op":"param","ref":"ret.catchup_age50"}`
+- Cite: [p560] p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; sha256 1f1f7abe)
+
+## (helper) — `person.catchup_age60_63`
+
+- **Authored helper label:** Year parameter ret.catchup_age60_63 (age60_63)
+- **Encoded (Enum(catchup_age)):** Enter age60_63 (ret.catchup_age60_63).
+- Expr: `{"op":"param","ref":"ret.catchup_age60_63"}`
 - Cite: [p560] p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; sha256 1f1f7abe)
 
 ## (helper) — `person.simple_kind`
@@ -794,7 +950,7 @@
 ## (helper) — `person.catchup_limit`
 
 - **Authored helper label:** Catch-up contribution limit
-- **Encoded (NonNegDollars):** Find the entry in SIMPLE IRA catch-up contribution limit, 2025 (Pub. 560, chapter 3) for age helper "Catch-up eligibility".
+- **Encoded (NonNegDollars):** Find the entry in SIMPLE IRA catch-up contribution limit, 2025 (Pub. 560, chapter 3) for age helper "Catch-up eligibility from the year of birth: 64 or older or 50 to 59 age50, 60 to 63 age60_63, under 50 under50; for a person born in a year in which only the birth date decides the band, as that person states".
 - Expr: `{"keys":["person.simple_age"],"op":"keyed_lookup","table":"simple_catchup"}`
 - Cite: [p560] p. 16, chapter 3, Catch-up contributions, "generally $3,500 for 2025" and "the higher limit on catch-up contributions ... is $5,250" (For use in preparing 2025 returns; sha256 1f1f7abe)
 
@@ -1024,9 +1180,9 @@
 
 ## (helper) — `person.sav_born`
 
-- **Authored helper label:** Were you born before January 2, 2008?
-- **Encoded (Bool):** Input — Were you born before January 2, 2008?
-- Expr: `{"op":"input","source":"Were you born before January 2, 2008?"}`
+- **Authored helper label:** Born before January 2, 2008
+- **Encoded (Bool):** (helper "The year you were born" < 2008 (age.cut_18) or helper "The year you were born" = 2008 (age.cut_18) and helper "Born on January 1 (asked only of a person born in 1961, 2001, 2002, 2007 or 2008; otherwise no)" = true)
+- Expr: `{"any":[{"lt":["person.birth_year",{"param":"age.cut_18"}],"op":"test"},{"all":[{"eq":["person.birth_year",{"param":"age.cut_18"}],"op":"test"},{"eq":["person.born_jan1_if_cut_year",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [f8880] p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008" (2025; created 2025-11-04; sha256 ba2b2877)
 
 ## (helper) — `person.sav_student`
@@ -1046,9 +1202,23 @@
 ## (helper) — `person.sav_ineligible`
 
 - **Authored helper label:** Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student (the dependent question is asked only if someone can claim you or your spouse as a dependent)
-- **Encoded (Bool):** (helper "Were you born before January 2, 2008?" = false or helper "Were you a student in 2025 (during any part of 5 calendar months, enrolled as a full-time student at a school, or taking a full-time, on-farm training course given by a school or a state, county, or local government agency)?" = true or sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = true and helper "Are you claimed as a dependent on someone else's 2025 tax return?" = true)
+- **Encoded (Bool):** (helper "Born before January 2, 2008" = false or helper "Were you a student in 2025 (during any part of 5 calendar months, enrolled as a full-time student at a school, or taking a full-time, on-farm training course given by a school or a state, county, or local government agency)?" = true or sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = true and helper "Are you claimed as a dependent on someone else's 2025 tax return?" = true)
 - Expr: `{"any":[{"eq":["person.sav_born",{"const":false}],"op":"test"},{"eq":["person.sav_student",{"const":true}],"op":"test"},{"all":[{"eq":["sa.dependent",{"const":true}],"op":"test"},{"eq":["person.sav_claimed",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [f8880] p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (helper) — `person.ira_owner`
+
+- **Authored helper label:** Had an IRA of any kind at any time in 2025, or has one now (traditional, Roth, SEP or SIMPLE, inherited, or opened in 2026 for 2025)
+- **Encoded (Bool):** Input — Did you have an individual retirement arrangement (IRA) of any kind at any time in 2025, or do you have one now: traditional, Roth, SEP or SIMPLE, including an inherited IRA and one opened in 2026 for 2025?
+- Expr: `{"op":"input","source":"Did you have an individual retirement arrangement (IRA) of any kind at any time in 2025, or do you have one now: traditional, Roth, SEP or SIMPLE, including an inherited IRA and one opened in 2026 for 2025?"}`
+- Cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any nondeductible contributions to a traditional" (2025; created 2025-11-04; sha256 ba2b2877)
+
+## (gate) — `person.sav_trad_if_ira_owner`
+
+- **Authored helper label:** Made traditional IRA contributions for 2025 (asked only of a person with an IRA; otherwise no)
+- **Encoded (Bool):** Choose — [helper "Had an IRA of any kind at any time in 2025, or has one now (traditional, Roth, SEP or SIMPLE, inherited, or opened in 2026 for 2025)" = true → helper "Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?"] [helper "Had an IRA of any kind at any time in 2025, or has one now (traditional, Roth, SEP or SIMPLE, inherited, or opened in 2026 for 2025)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.ira_owner",{"const":true}],"op":"test"},"then":"person.sav_trad"},{"guard":{"eq":["person.ira_owner",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any nondeductible contributions to a traditional" (2025; created 2025-11-04; sha256 ba2b2877)
 
 ## (helper) — `person.sav_trad`
 
@@ -1071,14 +1241,21 @@
 - Expr: `{"op":"input","source":"Your contributions to a Roth IRA for 2025, including contributions made by the due date of your 2025 return that are for 2025; do not include rollover contributions or conversions; zero if none"}`
 - Cite: [f8880] Form 8880 (2025), line 1, "Do not include rollover contributions"; p. 2, Who Can Take This Credit, "(a) contributions (other than rollover contributions) to a traditional or Roth IRA" (2025; created 2025-11-04; sha256 ba2b2877)
 
+## (gate) — `person.sav_roth_if_ira_owner`
+
+- **Authored helper label:** Roth IRA contributions for 2025 (asked only of a person with an IRA; otherwise zero)
+- **Encoded (NonNegDollars):** Choose — [helper "Had an IRA of any kind at any time in 2025, or has one now (traditional, Roth, SEP or SIMPLE, inherited, or opened in 2026 for 2025)" = true → helper "Your contributions to a Roth IRA for 2025 (not rollovers or conversions)"] [helper "Had an IRA of any kind at any time in 2025, or has one now (traditional, Roth, SEP or SIMPLE, inherited, or opened in 2026 for 2025)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.ira_owner",{"const":true}],"op":"test"},"then":"person.sav_roth"},{"guard":{"eq":["person.ira_owner",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [f8880] Form 8880 (2025), line 1, "Do not include rollover contributions"; p. 2, Who Can Take This Credit, "(a) contributions (other than rollover contributions) to a traditional or Roth IRA" (2025; created 2025-11-04; sha256 ba2b2877)
+
 ## (helper) — `person.sav_line1`
 
 - **Authored helper label:** Form 8880 line 1 for this person (traditional IRA contributions for 2025, deductible or not, and Roth IRA contributions for 2025)
-- **Encoded (NonNegDollars):** Add helper "This person's traditional IRA contributions for 2025 (zero if the traditional IRA question was answered No)" and helper "Your contributions to a Roth IRA for 2025 (not rollovers or conversions)".
+- **Encoded (NonNegDollars):** Add helper "This person's traditional IRA contributions for 2025 (zero if the traditional IRA question was answered No)" and helper "Roth IRA contributions for 2025 (asked only of a person with an IRA; otherwise zero)".
 - **Refusal:** when person.ira_excess_gate is true, cannot complete Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A). Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool. Cite: [p590a] p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of" (2025; sha256 ca0e4287)
 - **Refusal:** when person.sav_able is true, cannot complete ABLE account contributions or distributions on Form 8880 (Pub. 907). Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool. Cite: [f8880] p. 2, What’s New, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts" (2025; created 2025-11-04; sha256 ba2b2877)
 - Interpretation: amb.2025.savers_traditional
-- Expr: `{"of":["person.ira_contrib","person.sav_roth"],"op":"sum"}`
+- Expr: `{"of":["person.ira_contrib","person.sav_roth_if_ira_owner"],"op":"sum"}`
 - Cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; p. 2, Who Can Take This Credit, "(a) contributions (other than rollover contributions) to a traditional or Roth IRA" (2025; created 2025-11-04; sha256 ba2b2877)
 
 ## (helper) — `person.sav_w2`
@@ -1091,8 +1268,8 @@
 ## (screen) — `person.sav_excess`
 
 - **Authored helper label:** Were your elective deferrals and designated Roth contributions for 2025 more than the limit for your plans?
-- **Encoded (Bool):** Input — Is the total of your elective deferrals and designated Roth contributions for 2025 (Form W-2 box 12, from all your employers) more than the limit that applies to you (for a 401(k) plan, $23,500 plus any catch-up contributions your plan allows), so that you have excess deferrals?
-- Expr: `{"op":"input","source":"Is the total of your elective deferrals and designated Roth contributions for 2025 (Form W-2 box 12, from all your employers) more than the limit that applies to you (for a 401(k) plan, $23,500 plus any catch-up contributions your plan allows), so that you have excess deferrals?"}`
+- **Encoded (Bool):** scope helper "The answer to scope.excess_deferral, asked only when a Form W-2 is listed (false otherwise)" = true
+- Expr: `{"eq":["scope.excess_deferral_if_w2",{"const":true}],"op":"test"}`
 - Cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D" (2025; printed date 2025-02-19; sha256 bfecbc99)
 
 ## (helper) — `person.no`
@@ -1203,8 +1380,8 @@
 ## (helper) — `person.ira_contrib`
 
 - **Authored helper label:** This person's traditional IRA contributions for 2025 (zero if the traditional IRA question was answered No)
-- **Encoded (NonNegDollars):** Choose — [helper "Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?" = true → helper "Your traditional IRA contributions for 2025 (not rollovers)"] [helper "Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?" = false → line zero]
-- Expr: `{"alternatives":[{"guard":{"eq":["person.sav_trad",{"const":true}],"op":"test"},"then":"person.ira_trad"},{"guard":{"eq":["person.sav_trad",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- **Encoded (NonNegDollars):** Choose — [helper "Made traditional IRA contributions for 2025 (asked only of a person with an IRA; otherwise no)" = true → helper "Your traditional IRA contributions for 2025 (not rollovers)"] [helper "Made traditional IRA contributions for 2025 (asked only of a person with an IRA; otherwise no)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.sav_trad_if_ira_owner",{"const":true}],"op":"test"},"then":"person.ira_trad"},{"guard":{"eq":["person.sav_trad_if_ira_owner",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 11, "Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.ira_has`
@@ -1217,35 +1394,88 @@
 ## (helper) — `person.ira_any_contrib`
 
 - **Authored helper label:** This person made traditional or Roth IRA contributions for 2025
-- **Encoded (Bool):** (helper "This person made traditional IRA contributions for 2025" = true or helper "Your contributions to a Roth IRA for 2025 (not rollovers or conversions)" > $0 (sales.zero))
-- Expr: `{"any":[{"eq":["person.ira_has",{"const":true}],"op":"test"},{"gt":["person.sav_roth",{"param":"sales.zero"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** (helper "This person made traditional IRA contributions for 2025" = true or helper "Roth IRA contributions for 2025 (asked only of a person with an IRA; otherwise zero)" > $0 (sales.zero))
+- Expr: `{"any":[{"eq":["person.ira_has",{"const":true}],"op":"test"},{"gt":["person.sav_roth_if_ira_owner",{"param":"sales.zero"}],"op":"test"}],"op":"test"}`
 - Cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions" (2025; created 2025-11-04; sha256 ba2b2877)
 
 ## (screen) — `person.ira_excess`
 
-- **Authored helper label:** Were your 2025 IRA contributions more than allowed, recharacterized, or did an earlier excess contribution remain in your traditional or Roth IRA at the end of 2025?
-- **Encoded (Bool):** Input — Does any of these apply to you?
+- **Authored helper label:** This person's 2025 IRA contributions were more than allowed and not withdrawn, or were recharacterized
+- **Encoded (Bool):** (helper "Were your contributions for 2025 to traditional and Roth IRAs together more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date of your return (including extensions)?" = true or helper "Did you recharacterize a 2025 contribution (move it from a traditional to a Roth IRA or the reverse)?" = true)
+- Expr: `{"any":[{"eq":["person.ira_extra_left",{"const":true}],"op":"test"},{"eq":["person.ira_recharacterized",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [p590a] p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of"; p. 35, Tax on Excess Contributions, "In general, if the excess contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you are subject to a 6% tax"; p. 30, "Recharacterizing excess contributions"; i1040gi p. 95, Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules" (2025; sha256 ca0e4287)
 
-  - your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return (including extensions)
-  - you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse)
-  - an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025
-- Expr: `{"op":"input","source":"Does any of these apply to you?\n\n- your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return (including extensions)\n- you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse)\n- an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025"}`
+## (screen) — `person.ira_extra_left`
+
+- **Authored helper label:** Were your contributions for 2025 to traditional and Roth IRAs together more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date of your return (including extensions)?
+- **Encoded (Bool):** Input — Were your contributions for 2025 to traditional and Roth IRAs together more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date of your return (including extensions)?
+- Expr: `{"op":"input","source":"Were your contributions for 2025 to traditional and Roth IRAs together more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date of your return (including extensions)?"}`
+- Cite: [p590a] p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of"; p. 35, Tax on Excess Contributions, "In general, if the excess contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you are subject to a 6% tax"; p. 30, "Recharacterizing excess contributions"; i1040gi p. 95, Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules" (2025; sha256 ca0e4287)
+
+## (screen) — `person.ira_recharacterized`
+
+- **Authored helper label:** Did you recharacterize a 2025 contribution (move it from a traditional to a Roth IRA or the reverse)?
+- **Encoded (Bool):** Input — Did you recharacterize a 2025 contribution (move it from a traditional to a Roth IRA or the reverse)?
+- Expr: `{"op":"input","source":"Did you recharacterize a 2025 contribution (move it from a traditional to a Roth IRA or the reverse)?"}`
 - Cite: [p590a] p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of"; p. 35, Tax on Excess Contributions, "In general, if the excess contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you are subject to a 6% tax"; p. 30, "Recharacterizing excess contributions"; i1040gi p. 95, Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules" (2025; sha256 ca0e4287)
 
 ## (gate) — `person.ira_excess_gate`
 
 - **Authored helper label:** This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remained at the end of 2025 (screen)
-- **Encoded (Bool):** Choose — [helper "This person made traditional or Roth IRA contributions for 2025" = true → helper "Were your 2025 IRA contributions more than allowed, recharacterized, or did an earlier excess contribution remain in your traditional or Roth IRA at the end of 2025?"] [helper "This person made traditional or Roth IRA contributions for 2025" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "This person made traditional or Roth IRA contributions for 2025" = true → helper "This person's 2025 IRA contributions were more than allowed and not withdrawn, or were recharacterized"] [helper "This person made traditional or Roth IRA contributions for 2025" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.ira_any_contrib",{"const":true}],"op":"test"},"then":"person.ira_excess"},{"guard":{"eq":["person.ira_any_contrib",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
 - Cite: [p590a] p. 35, Excess Contributions, "In general, if the excess contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you are subject to a 6% tax" (2025; sha256 ca0e4287)
 
 ## (helper) — `person.ira_age50`
+
+- **Authored helper label:** Age 50 or older at the end of 2025
+- **Encoded (Bool):** (helper "The year you were born" < 1976 (age.cut_50) or helper "The year you were born" = 1976 (age.cut_50) and helper "Age 50 or older at the end of 2025, as stated by a person born in 1976 (otherwise no)" = true)
+- Interpretation: amb.2025.ira_age50
+- Expr: `{"any":[{"lt":["person.birth_year",{"param":"age.cut_50"}],"op":"test"},{"all":[{"eq":["person.birth_year",{"param":"age.cut_50"}],"op":"test"},{"eq":["person.age50_at_year_end_if_open_year",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.age50_open_year`
+
+- **Authored helper label:** Born in 1976
+- **Encoded (Bool):** helper "The year you were born" = 1976 (age.cut_50)
+- Expr: `{"eq":["person.birth_year",{"param":"age.cut_50"}],"op":"test"}`
+- Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.age50_at_year_end`
 
 - **Authored helper label:** Were you age 50 or older at the end of 2025?
 - **Encoded (Bool):** Input — Were you age 50 or older at the end of 2025?
 - Interpretation: amb.2025.ira_age50
 - Expr: `{"op":"input","source":"Were you age 50 or older at the end of 2025?"}`
 - Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.age50_at_year_end_if_open_year`
+
+- **Authored helper label:** Age 50 or older at the end of 2025, as stated by a person born in 1976 (otherwise no)
+- **Encoded (Bool):** Choose — [helper "Born in 1976" = true → helper "Were you age 50 or older at the end of 2025?"] [helper "Born in 1976" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.age50_open_year",{"const":true}],"op":"test"},"then":"person.age50_at_year_end"},{"guard":{"eq":["person.age50_open_year",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.age55_open_year`
+
+- **Authored helper label:** Born in 1971
+- **Encoded (Bool):** helper "The year you were born" = 1971 (age.cut_55)
+- Expr: `{"eq":["person.birth_year",{"param":"age.cut_55"}],"op":"test"}`
+- Cite: [i8889] p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older"; p. 6, Line 3 Limitation Chart, "If you were age 55 or older at the end of 2025" (2025; sha256 da6f2f58)
+
+## (helper) — `person.age55_at_year_end`
+
+- **Authored helper label:** Were you age 55 or older at the end of 2025?
+- **Encoded (Bool):** Input — Were you age 55 or older at the end of 2025?
+- Expr: `{"op":"input","source":"Were you age 55 or older at the end of 2025?"}`
+- Cite: [i8889] p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older"; p. 6, Line 3 Limitation Chart, "If you were age 55 or older at the end of 2025" (2025; sha256 da6f2f58)
+
+## (gate) — `person.age55_at_year_end_if_open_year`
+
+- **Authored helper label:** Age 55 or older at the end of 2025, as stated by a person born in 1971 (otherwise no)
+- **Encoded (Bool):** Choose — [helper "Born in 1971" = true → helper "Were you age 55 or older at the end of 2025?"] [helper "Born in 1971" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.age55_open_year",{"const":true}],"op":"test"},"then":"person.age55_at_year_end"},{"guard":{"eq":["person.age55_open_year",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [i8889] p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older"; p. 6, Line 3 Limitation Chart, "If you were age 55 or older at the end of 2025" (2025; sha256 da6f2f58)
 
 ## (helper) — `person.ira_work_plan`
 
@@ -1288,7 +1518,7 @@
 ## (helper) — `person.ira_limit`
 
 - **Authored helper label:** The applicable amount for this person ($7,000 if under age 50 at the end of 2025; $8,000 if age 50 or older)
-- **Encoded (NonNegDollars):** Choose — [helper "Were you age 50 or older at the end of 2025?" = true → helper "$8,000"] [helper "Were you age 50 or older at the end of 2025?" = false → helper "$7,000"]
+- **Encoded (NonNegDollars):** Choose — [helper "Age 50 or older at the end of 2025" = true → helper "$8,000"] [helper "Age 50 or older at the end of 2025" = false → helper "$7,000"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.ira_age50",{"const":true}],"op":"test"},"then":"person.ira_limit_over50"},{"guard":{"eq":["person.ira_age50",{"const":false}],"op":"test"},"then":"person.ira_limit_under50"}],"op":"choose"}`
 - Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$7,000 if under age 50 at the end of 2025" and "$8,000 if age 50 or older at the end of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -1400,14 +1630,14 @@
 ## (helper) — `person.ira_prod_wide`
 
 - **Authored helper label:** Line 6 multiplied by 70% (0.70), or by 80% (0.80) for a person age 50 or older at the end of 2025
-- **Encoded (NonNegDollars):** Choose — [helper "Were you age 50 or older at the end of 2025?" = true → helper "Line 6 multiplied by 80% (0.80)"] [helper "Were you age 50 or older at the end of 2025?" = false → helper "Line 6 multiplied by 70% (0.70)"]
+- **Encoded (NonNegDollars):** Choose — [helper "Age 50 or older at the end of 2025" = true → helper "Line 6 multiplied by 80% (0.80)"] [helper "Age 50 or older at the end of 2025" = false → helper "Line 6 multiplied by 70% (0.70)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.ira_age50",{"const":true}],"op":"test"},"then":"person.ira_p80"},{"guard":{"eq":["person.ira_age50",{"const":false}],"op":"test"},"then":"person.ira_p70"}],"op":"choose"}`
 - Cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 7, "Single, head of household, or married filing separately, multiply by 70% (0.70) (or by 80% (0.80) in the column for the IRA of a person who is age 50 or older at the end of 2025)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.ira_prod_joint`
 
 - **Authored helper label:** Line 6 multiplied by 35% (0.35), or by 40% (0.40) for a person age 50 or older at the end of 2025
-- **Encoded (NonNegDollars):** Choose — [helper "Were you age 50 or older at the end of 2025?" = true → helper "Line 6 multiplied by 40% (0.40)"] [helper "Were you age 50 or older at the end of 2025?" = false → helper "Line 6 multiplied by 35% (0.35)"]
+- **Encoded (NonNegDollars):** Choose — [helper "Age 50 or older at the end of 2025" = true → helper "Line 6 multiplied by 40% (0.40)"] [helper "Age 50 or older at the end of 2025" = false → helper "Line 6 multiplied by 35% (0.35)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.ira_age50",{"const":true}],"op":"test"},"then":"person.ira_p40"},{"guard":{"eq":["person.ira_age50",{"const":false}],"op":"test"},"then":"person.ira_p35"}],"op":"choose"}`
 - Cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 7, "Married filing jointly or qualifying surviving spouse, multiply by 35% (0.35) (or by 40% (0.40) in the column for the IRA of a person who is age 50 or older at the end of 2025)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -1471,8 +1701,8 @@
 ## (helper) — `person.ira_own_total`
 
 - **Authored helper label:** This person's traditional and Roth IRA contributions for 2025
-- **Encoded (NonNegDollars):** Add helper "This person's traditional IRA contributions for 2025 (zero if the traditional IRA question was answered No)" and helper "Your contributions to a Roth IRA for 2025 (not rollovers or conversions)".
-- Expr: `{"of":["person.ira_contrib","person.sav_roth"],"op":"sum"}`
+- **Encoded (NonNegDollars):** Add helper "This person's traditional IRA contributions for 2025 (zero if the traditional IRA question was answered No)" and helper "Roth IRA contributions for 2025 (asked only of a person with an IRA; otherwise zero)".
+- Expr: `{"of":["person.ira_contrib","person.sav_roth_if_ira_owner"],"op":"sum"}`
 - Cite: [i8606] p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation" (2025; sha256 735fb7ae)
 
 ## (helper) — `person.ira_line11`
@@ -1721,14 +1951,14 @@
 - Expr: `{"op":"input","source":"Other course materials paid for in 2025 for this student: books, supplies and equipment needed for a course of study that did not have to be paid to the institution (they count for the American opportunity credit only); the same exclusions as for the expenses paid to the institution; zero if none"}`
 - Cite: [i8863] p. 4, Qualified Education Expenses, "American opportunity credit: Qualified education expenses include amounts paid for tuition, fees, and course materials, which include books, supplies, and equipment needed for a course of study, whether or not the materials are purchased from the educational institution as a condition of enrollment or attendance." (2025; sha256 195cfd5e)
 
-## (helper) — `person.edu_a2025`
+## (helper) — `person.edu_a_this_year`
 
 - **Authored helper label:** Adjusted Qualified Education Expenses Worksheet, line 2a
 - **Encoded (NonNegDollars):** Input — Tax-free educational assistance received in 2025 for this student's 2025 expenses: the tax-free part of scholarships and fellowship grants (including Pell grants; Form 1098-T box 5 may help), tax-free employer-provided educational assistance, veterans' educational assistance, and other tax-free educational assistance. Do not include wages, loans, gifts, inheritances, withdrawals from personal savings, emergency financial aid grants, or a scholarship the student includes in income (for you or your spouse, the amount on Schedule 1 line 8r); zero if none
 - Expr: `{"op":"input","source":"Tax-free educational assistance received in 2025 for this student's 2025 expenses: the tax-free part of scholarships and fellowship grants (including Pell grants; Form 1098-T box 5 may help), tax-free employer-provided educational assistance, veterans' educational assistance, and other tax-free educational assistance. Do not include wages, loans, gifts, inheritances, withdrawals from personal savings, emergency financial aid grants, or a scholarship the student includes in income (for you or your spouse, the amount on Schedule 1 line 8r); zero if none"}`
 - Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "a. Tax-free educational assistance received in 2025 allocable to the academic period" (2025; sha256 195cfd5e)
 
-## (helper) — `person.edu_a2026`
+## (helper) — `person.edu_a_next_year`
 
 - **Authored helper label:** Adjusted Qualified Education Expenses Worksheet, line 2b
 - **Encoded (NonNegDollars):** Input — Tax-free educational assistance received in 2026, before you file this return, that is allocable to an academic period of these 2025 expenses; zero if none
@@ -1746,7 +1976,7 @@
 
 - **Authored helper label:** Add lines 2a, 2b and 2c
 - **Encoded (NonNegDollars):** Add helper "Adjusted Qualified Education Expenses Worksheet, line 2a", helper "Adjusted Qualified Education Expenses Worksheet, line 2b", and helper "Adjusted Qualified Education Expenses Worksheet, line 2c".
-- Expr: `{"of":["person.edu_a2025","person.edu_a2026","person.edu_refunds"],"op":"sum"}`
+- Expr: `{"of":["person.edu_a_this_year","person.edu_a_next_year","person.edu_refunds"],"op":"sum"}`
 - Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "3. Total adjustments (add lines 2a, 2b, and 2c)" (2025; sha256 195cfd5e)
 
 ## (helper) — `person.edu_adj`
@@ -1954,20 +2184,20 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["person.edu_llc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"person.edu_adj","inst":"person.edu_inst","mat":"person.zero"},"def":"aqee","line":"ws4_llc"}},{"guard":{"eq":["person.edu_llc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f8863] p. 2, Part III, line 31, "Adjusted qualified education expenses (see instructions). Include the total of all amounts from all Parts III, line 31, on Part II, line 10"; i8863 p. 9, Line 31 (2025; sha256 a251a1cf)
 
-## (helper) — `person.edu_born_2007`
+## (helper) — `person.edu_over18`
 
-- **Authored helper label:** Were you born before January 2, 2007?
-- **Encoded (Bool):** Input — Were you born before January 2, 2007?
+- **Authored helper label:** Born before January 2, 2007
+- **Encoded (Bool):** (helper "The year you were born" < 2007 (age.cut_19) or helper "The year you were born" = 2007 (age.cut_19) and helper "Born on January 1 (asked only of a person born in 1961, 2001, 2002, 2007 or 2008; otherwise no)" = true)
 - Interpretation: amb.2025.edu_age_rule
-- Expr: `{"op":"input","source":"Were you born before January 2, 2007?"}`
+- Expr: `{"any":[{"lt":["person.birth_year",{"param":"age.cut_19"}],"op":"test"},{"all":[{"eq":["person.birth_year",{"param":"age.cut_19"}],"op":"test"},{"eq":["person.born_jan1_if_cut_year",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i8863] p. 7, Line 7, "b. Age 18 at the end of 2025 and your earned income (defined later) was less than one-half of your support (defined later), or" (2025; sha256 195cfd5e)
 
-## (helper) — `person.edu_born_2002`
+## (helper) — `person.edu_age24`
 
-- **Authored helper label:** Were you born before January 2, 2002?
-- **Encoded (Bool):** Input — Were you born before January 2, 2002?
+- **Authored helper label:** Born before January 2, 2002
+- **Encoded (Bool):** (helper "The year you were born" < 2002 (age.cut_24) or helper "The year you were born" = 2002 (age.cut_24) and helper "Born on January 1 (asked only of a person born in 1961, 2001, 2002, 2007 or 2008; otherwise no)" = true)
 - Interpretation: amb.2025.edu_age_rule
-- Expr: `{"op":"input","source":"Were you born before January 2, 2002?"}`
+- Expr: `{"any":[{"lt":["person.birth_year",{"param":"age.cut_24"}],"op":"test"},{"all":[{"eq":["person.birth_year",{"param":"age.cut_24"}],"op":"test"},{"eq":["person.born_jan1_if_cut_year",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i8863] p. 7, Line 7, "1. Were you under age 24 at the end of 2025?" (2025; sha256 195cfd5e)
 
 ## (helper) — `person.edu_fulltime`
@@ -1995,15 +2225,15 @@
 ## (helper) — `person.edu_kid_age`
 
 - **Authored helper label:** Line 7 conditions 1 and 2 for you (under 18 and a parent alive, or the tests for 18 to 23)
-- **Encoded (Bool):** Choose — [helper "Were you born before January 2, 2008?" = true → helper "Line 7 conditions 1b, 1c and 2 for you, born before January 2, 2008 (age 18 with earned income less than half of your support and a parent alive, or the tests for 19 to 23)"] [helper "Were you born before January 2, 2008?" = false → helper "At least one of your parents was alive at the end of 2025"]
+- **Encoded (Bool):** Choose — [helper "Born before January 2, 2008" = true → helper "Line 7 conditions 1b, 1c and 2 for you, born before January 2, 2008 (age 18 with earned income less than half of your support and a parent alive, or the tests for 19 to 23)"] [helper "Born before January 2, 2008" = false → helper "At least one of your parents was alive at the end of 2025"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.sav_born",{"const":true}],"op":"test"},"then":"person.edu_kid_18"},{"guard":{"eq":["person.sav_born",{"const":false}],"op":"test"},"then":"person.edu_parent"}],"op":"choose"}`
 - Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)
 
 ## (helper) — `person.edu_kid_18`
 
 - **Authored helper label:** Line 7 conditions 1b, 1c and 2 for you, born before January 2, 2008 (age 18 with earned income less than half of your support and a parent alive, or the tests for 19 to 23)
-- **Encoded (Bool):** Choose — [helper "Were you born before January 2, 2007?" = true → helper "Line 7 conditions 1c and 2 for you, born before January 2, 2007 (born after January 1, 2002, first)"] [helper "Were you born before January 2, 2007?" = false → helper "Line 7 conditions 1b and 2 for you, age 18: earned income less than half of your support and a parent alive"]
-- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_born_2007",{"const":true}],"op":"test"},"then":"person.edu_kid_student_age"},{"guard":{"eq":["person.edu_born_2007",{"const":false}],"op":"test"},"then":"person.edu_kid_18_support"}],"op":"choose"}`
+- **Encoded (Bool):** Choose — [helper "Born before January 2, 2007" = true → helper "Line 7 conditions 1c and 2 for you, born before January 2, 2007 (born after January 1, 2002, first)"] [helper "Born before January 2, 2007" = false → helper "Line 7 conditions 1b and 2 for you, age 18: earned income less than half of your support and a parent alive"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_over18",{"const":true}],"op":"test"},"then":"person.edu_kid_student_age"},{"guard":{"eq":["person.edu_over18",{"const":false}],"op":"test"},"then":"person.edu_kid_18_support"}],"op":"choose"}`
 - Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)
 
 ## (helper) — `person.edu_kid_18_support`
@@ -2016,8 +2246,8 @@
 ## (helper) — `person.edu_kid_student_age`
 
 - **Authored helper label:** Line 7 conditions 1c and 2 for you, born before January 2, 2007 (born after January 1, 2002, first)
-- **Encoded (Bool):** Choose — [helper "Were you born before January 2, 2002?" = true → helper "Year parameter edu.no (false)"] [helper "Were you born before January 2, 2002?" = false → helper "Line 7 conditions 1c and 2 for you, born after January 1, 2002, and before January 2, 2007 (earned income less than half of your support first)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_born_2002",{"const":true}],"op":"test"},"then":"person.edu_no"},{"guard":{"eq":["person.edu_born_2002",{"const":false}],"op":"test"},"then":"person.edu_kid_support"}],"op":"choose"}`
+- **Encoded (Bool):** Choose — [helper "Born before January 2, 2002" = true → helper "Year parameter edu.no (false)"] [helper "Born before January 2, 2002" = false → helper "Line 7 conditions 1c and 2 for you, born after January 1, 2002, and before January 2, 2007 (earned income less than half of your support first)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_age24",{"const":true}],"op":"test"},"then":"person.edu_no"},{"guard":{"eq":["person.edu_age24",{"const":false}],"op":"test"},"then":"person.edu_kid_support"}],"op":"choose"}`
 - Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)
 
 ## (helper) — `person.edu_kid_support`
@@ -2300,14 +2530,127 @@
 ## (gate) — `person.x_other`
 
 - **Authored helper label:** Form 5329 parts this tool does not prepare
-- **Encoded (Bool):** Input — Does any of these apply to you?
+- **Encoded (Bool):** (helper "A required minimum distribution not received in full by its deadline (asked only of a person born in 1952 or earlier or with an inherited account; otherwise no)" = true or helper "A taxable distribution from a Coverdell ESA, a qualified tuition program or an ABLE account (asked only with such an account; otherwise no)" = true or helper "Excess contributions to a Coverdell ESA or an ABLE account (asked only with such an account; otherwise no)" = true or helper "Do you have excess contributions to an Archer MSA?" = true or helper "An earlier year's excess IRA contributions remained at the end of 2025 (asked only of a person with an IRA; otherwise no)" = true or helper "An earlier year's excess HSA contributions not removed or used up before 2025 (asked only of a person who listed a health savings account; otherwise no)" = true)
+- Expr: `{"any":[{"eq":["person.rmd_missed_if_possible",{"const":true}],"op":"test"},{"eq":["person.x_edu_taxable_if_account",{"const":true}],"op":"test"},{"eq":["person.x_edu_excess_if_account",{"const":true}],"op":"test"},{"eq":["person.x_archer_excess",{"const":true}],"op":"test"},{"eq":["person.x_ira_prior_excess_if_ira_owner",{"const":true}],"op":"test"},{"eq":["person.x_hsa_prior_excess_if_hsa",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
 
-  - a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account
-  - excess contributions to a traditional or Roth IRA for an earlier year that remained in the IRA at the end of 2025 (whether or not you contributed for 2025)
-  - excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account
-  - excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported), whether or not you have a Form 8889 for 2025
-  - a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)
-- Expr: `{"op":"input","source":"Does any of these apply to you?\n\n- a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account\n- excess contributions to a traditional or Roth IRA for an earlier year that remained in the IRA at the end of 2025 (whether or not you contributed for 2025)\n- excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account\n- excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported), whether or not you have a Form 8889 for 2025\n- a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)"}`
+## (helper) — `person.x_edu_account`
+
+- **Authored helper label:** A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025
+- **Encoded (Bool):** Input — In 2025, was money put into or taken out of a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account that is yours or is held for you?
+- Expr: `{"op":"input","source":"In 2025, was money put into or taken out of a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account that is yours or is held for you?"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (helper) — `person.x_edu_taxable`
+
+- **Authored helper label:** Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?
+- **Encoded (Bool):** Input — Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?
+- Expr: `{"op":"input","source":"Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (gate) — `person.x_edu_taxable_if_account`
+
+- **Authored helper label:** A taxable distribution from a Coverdell ESA, a qualified tuition program or an ABLE account (asked only with such an account; otherwise no)
+- **Encoded (Bool):** Choose — [helper "A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025" = true → helper "Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?"] [helper "A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.x_edu_account",{"const":true}],"op":"test"},"then":"person.x_edu_taxable"},{"guard":{"eq":["person.x_edu_account",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (helper) — `person.x_edu_excess`
+
+- **Authored helper label:** Do you have excess contributions to a Coverdell ESA or an ABLE account?
+- **Encoded (Bool):** Input — Do you have excess contributions to a Coverdell ESA or an ABLE account?
+- Expr: `{"op":"input","source":"Do you have excess contributions to a Coverdell ESA or an ABLE account?"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (gate) — `person.x_edu_excess_if_account`
+
+- **Authored helper label:** Excess contributions to a Coverdell ESA or an ABLE account (asked only with such an account; otherwise no)
+- **Encoded (Bool):** Choose — [helper "A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025" = true → helper "Do you have excess contributions to a Coverdell ESA or an ABLE account?"] [helper "A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.x_edu_account",{"const":true}],"op":"test"},"then":"person.x_edu_excess"},{"guard":{"eq":["person.x_edu_account",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (helper) — `person.x_archer_excess`
+
+- **Authored helper label:** Do you have excess contributions to an Archer MSA?
+- **Encoded (Bool):** Input — Do you have excess contributions to an Archer MSA?
+- Expr: `{"op":"input","source":"Do you have excess contributions to an Archer MSA?"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (helper) — `person.x_ira_prior_excess`
+
+- **Authored helper label:** Did excess contributions to a traditional or Roth IRA for an earlier year remain in the IRA at the end of 2025 (whether or not you contributed for 2025)?
+- **Encoded (Bool):** Input — Did excess contributions to a traditional or Roth IRA for an earlier year remain in the IRA at the end of 2025 (whether or not you contributed for 2025)?
+- Expr: `{"op":"input","source":"Did excess contributions to a traditional or Roth IRA for an earlier year remain in the IRA at the end of 2025 (whether or not you contributed for 2025)?"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (gate) — `person.x_ira_prior_excess_if_ira_owner`
+
+- **Authored helper label:** An earlier year's excess IRA contributions remained at the end of 2025 (asked only of a person with an IRA; otherwise no)
+- **Encoded (Bool):** Choose — [helper "Had an IRA of any kind at any time in 2025, or has one now (traditional, Roth, SEP or SIMPLE, inherited, or opened in 2026 for 2025)" = true → helper "Did excess contributions to a traditional or Roth IRA for an earlier year remain in the IRA at the end of 2025 (whether or not you contributed for 2025)?"] [helper "Had an IRA of any kind at any time in 2025, or has one now (traditional, Roth, SEP or SIMPLE, inherited, or opened in 2026 for 2025)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.ira_owner",{"const":true}],"op":"test"},"then":"person.x_ira_prior_excess"},{"guard":{"eq":["person.ira_owner",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (helper) — `person.has_hsa`
+
+- **Authored helper label:** This person listed a health savings account
+- **Encoded (Bool):** helper "Number of Forms 8889 entered for this person" > 0 (a count)
+- Expr: `{"gt":["person.hsa_forms",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (helper) — `person.x_hsa_prior_excess`
+
+- **Authored helper label:** Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported)?
+- **Encoded (Bool):** Input — Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported)?
+- Expr: `{"op":"input","source":"Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported)?"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (gate) — `person.x_hsa_prior_excess_if_hsa`
+
+- **Authored helper label:** An earlier year's excess HSA contributions not removed or used up before 2025 (asked only of a person who listed a health savings account; otherwise no)
+- **Encoded (Bool):** Choose — [helper "This person listed a health savings account" = true → helper "Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported)?"] [helper "This person listed a health savings account" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.has_hsa",{"const":true}],"op":"test"},"then":"person.x_hsa_prior_excess"},{"guard":{"eq":["person.has_hsa",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (helper) — `person.rmd_age`
+
+- **Authored helper label:** Born in 1952 or earlier (age 73 or older at the end of 2025)
+- **Encoded (Bool):** helper "The year you were born" < 1953 (age.cut_73)
+- Expr: `{"lt":["person.birth_year",{"param":"age.cut_73"}],"op":"test"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (helper) — `person.inherited_account`
+
+- **Authored helper label:** Have you inherited an IRA or an account in a retirement plan from someone who died?
+- **Encoded (Bool):** Input — Have you inherited an IRA or an account in a retirement plan from someone who died?
+- Expr: `{"op":"input","source":"Have you inherited an IRA or an account in a retirement plan from someone who died?"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (gate) — `person.inherited_account_if_under_73`
+
+- **Authored helper label:** Inherited an IRA or a retirement plan account (asked only of a person born after 1952; otherwise no)
+- **Encoded (Bool):** Choose — [helper "Born in 1952 or earlier (age 73 or older at the end of 2025)" = false → helper "Have you inherited an IRA or an account in a retirement plan from someone who died?"] [helper "Born in 1952 or earlier (age 73 or older at the end of 2025)" = true → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.rmd_age",{"const":false}],"op":"test"},"then":"person.inherited_account"},{"guard":{"eq":["person.rmd_age",{"const":true}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (helper) — `person.rmd_possible`
+
+- **Authored helper label:** A required minimum distribution is possible for this person (born in 1952 or earlier, or inherited an account)
+- **Encoded (Bool):** (helper "Born in 1952 or earlier (age 73 or older at the end of 2025)" = true or helper "Inherited an IRA or a retirement plan account (asked only of a person born after 1952; otherwise no)" = true)
+- Expr: `{"any":[{"eq":["person.rmd_age",{"const":true}],"op":"test"},{"eq":["person.inherited_account_if_under_73",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (helper) — `person.rmd_missed`
+
+- **Authored helper label:** Was there a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)?
+- **Encoded (Bool):** Input — Was there a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)?
+- Expr: `{"op":"input","source":"Was there a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)?"}`
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+
+## (gate) — `person.rmd_missed_if_possible`
+
+- **Authored helper label:** A required minimum distribution not received in full by its deadline (asked only of a person born in 1952 or earlier or with an inherited account; otherwise no)
+- **Encoded (Bool):** Choose — [helper "A required minimum distribution is possible for this person (born in 1952 or earlier, or inherited an account)" = true → helper "Was there a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)?"] [helper "A required minimum distribution is possible for this person (born in 1952 or earlier, or inherited an account)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.rmd_possible",{"const":true}],"op":"test"},"then":"person.rmd_missed"},{"guard":{"eq":["person.rmd_possible",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
 - Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
 
 ## (helper) — `person.x_hsa_value`
@@ -2327,7 +2670,7 @@
 ## (helper) — `person.senior_work_ssn`
 
 - **Authored helper label:** Born before January 2, 1961, and has a valid SSN
-- **Encoded (Bool):** Choose — [helper "Were you born before January 2, 1961?" = true → helper "Do you have an SSN valid for employment issued before the due date of your return?"] [helper "Were you born before January 2, 1961?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "Born before January 2, 1961" = true → helper "Do you have an SSN valid for employment issued before the due date of your return?"] [helper "Born before January 2, 1961" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.age65",{"const":true}],"op":"test"},"then":"person.work_ssn"},{"guard":{"eq":["person.age65",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; sha256 482e9c48)
 

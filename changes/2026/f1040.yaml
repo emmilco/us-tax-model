@@ -357,6 +357,8 @@ changes:
       page: 3
       quote: 33 Add lines 25d, 26, and 32c
     verified: draft
+    note: 'Mended for the interview redraft: line 26 is asked beneath f1040.estimated_any, so line 33 reads its gate line
+      f1040.line26_if_estimated (formal gates rule: only its gate line reads a gated input).'
     operations:
     - set:
         line: f1040.line32
@@ -410,9 +412,9 @@ changes:
         field: expr.of
         from:
         - f1040.line25d
-        - f1040.line26
+        - f1040.line26_if_estimated
         - f1040.line32
         to:
         - f1040.line25d
-        - f1040.line26
+        - f1040.line26_if_estimated
         - f1040.line32c

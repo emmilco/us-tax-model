@@ -35,6 +35,17 @@
    "subject_key": "fb51fd1693c589b8b32832892f2cfa505937bd143c6dbcb11225b945b5ed3233"
   },
   {
+   "printed": "b_wrong",
+   "restated": "(helper \"Column B of this Form 1095-A is blank or zero in a month that has an amount in column A\" = true or helper \"A change in circumstances during 2025 that affects the applicable SLCSP premium was not reported to the Marketplace, so column B may be wrong\" = true)",
+   "model": "The IRS also requires redetermination 'if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium'. It also says that when no APTC was paid, column B 'may be wrong', not just blank or -0-. Neither case is covered, so a nonzero but wrong column B with no unreported change is treated as correct.",
+   "ruling": "Ruling: finding; i8962 p. 14, Line 10, Missing or incorrect SLCSP premium: \"If either of these two situations applies to you, or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month\"; situation 1, \"If no APTC was paid ... column B ... may be wrong, left blank, or reported as -0-\"; p. 15, \"or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium\". f1095a.b_wrong tests only b_blank and b_changed, so a no-APTC form or one the filer otherwise believes wrong, with Part III the same every month, is taken as uniform without f1095a.b_fixed_same, and f1095a.mo_b takes the corrected premium as one amount the same every month; a correct premium that differs by month cannot be entered, and line 10 is Yes where the instructions give No. The model is right. Fix: add a no-APTC / reason-to-believe question as a third limb of b_wrong (BUG-0634).",
+   "context": "43d352bfdd3c2c4e38f8ba63099ff034d41b42ac21b216e669a35115bbf1a06f",
+   "date": "2026-11-14",
+   "run": "936b9af70b697fdf35be326e557ea6826908dddb1a565758aa5317709d6ed256",
+   "severity": "medium",
+   "subject_key": "4d505a93e534fe87db35307a92925dc7bdd98f066beecbc4a890cf73ea9e2148"
+  },
+  {
    "printed": "in_b_apr",
    "restated": "Input — April 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",

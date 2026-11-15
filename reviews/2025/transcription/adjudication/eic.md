@@ -386,3 +386,31 @@ Counts:
 - **3**: model error — i1040gi p. 46, Worksheet A, line 3. Executable triage was unavailable for this entire reply because eic.self_employed and eic.clergy fail validation (`triage/eic.deepseek.json`, state invalid); this line is outside their closure and is ruled by reading. By reading, it omits shown_when: eic.show3 and shows Form 1040 line 11b on returns that STOP before Worksheet A or at line 2. No sampled equivalence is claimed.
 - **5**: model error — i1040gi p. 46, Worksheet A, lines 4 and 5. Executable triage was unavailable for this entire reply because eic.self_employed and eic.clergy fail validation (`triage/eic.deepseek.json`, state invalid); this line is outside their closure and is ruled by reading. By reading, it omits shown_when: eic.show5 and looks up line 3 in the EIC Table whenever line 3 >= threshold, even after earlier STOPs. No sampled equivalence is claimed.
 - **6 (eic.line6)**: model error — i1040gi p. 46, Worksheet A, line 6. Executable triage was unavailable for this entire reply because eic.self_employed and eic.clergy fail validation (`triage/eic.deepseek.json`, state invalid), and eic.line6 lists eic.clergy in refuses. By reading, it omits shown_when: eic.eligible and computes line 6 after earlier STOPs from a line 1 that ignores Worksheet B. No sampled equivalence is claimed.
+
+## Landing round (2026-11-14)
+
+Lane land3-adj3 (claude-opus-5-5, judgment), interview redraft landing (uncommitted over main 83c7d1c0). Open lines of the line-scoped Claude pass 3f7b5a85aafa, ruled on `.transcription/triage/2025/eic.json` (executable-triage-v2; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records; 2,606 comparisons per line), `--explain` witnesses, the reply (`.transcription/eic.lines-*.response.txt`) and the sources. Rulings `/tmp/land3-adj3/eic.json`, applied with `rule.py`; full text in the log and sidecar. The reply now declares shown_when on most worksheet lines, but none of them tests Steps 1 to 4 (its own eic.h_r5), and Step 5 lines 1, 3 and 5 have none; the triage applies only the project's shown_when, so the reply's was read and the shows-skipped counts on returns its own condition hides (no Schedule C for Worksheet B, a Schedule C for Worksheet A) are artifacts. eic.credit, the Form 1040 line 27a amount, agrees on every completed return.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | eic.eligible | model error | 2,292/2,606 agree; completed: 92 value | i1040gi pp. 40-42, Steps 1-5; pp. 46-48 | Read as "can take the credit" (adds worksheet STOPs); false on filers with no credit. Credit agrees. |
+| claude | transcription | eic.credit | scope | 2,424/2,606 agree; completed: none | i1040gi pp. 40-48 | No completed difference; refusal placement (Form 8862, combat pay) on refused/incomplete records. |
+| claude | transcription | eic.check_27c | scope | 2,442/2,606 agree; completed: none | i1040gi p. 43, Line 27c | No completed difference. |
+| claude | transcription | eic.separated_box | scope | 2,567/2,606 agree; completed: none | i1040gi p. 41, Step 3; amb.2025.separated_spouses_box | No completed difference. |
+| claude | transcription | (Step 5, 1) | model error | 677/2,606 agree; completed: 645 candidate-shows-skipped | i1040gi pp. 40-42 | No shown_when: shown on returns that STOP in Steps 1-4. |
+| claude | transcription | (Step 5, 2) | scope | 1,918/2,606 agree; completed: none | i1040gi p. 42, line 2 | $0 both; nothing completed. |
+| claude | transcription | (Step 5, 3) | model error | 687/2,606 agree; completed: 645 candidate-shows-skipped | i1040gi pp. 40-42 | As (Step 5, 1). |
+| claude | transcription | (Step 5, 4) | model error | 1,780/2,606 agree; completed: 2 candidate-refuses | i1040gi p. 42, line 4 | Refuses combat pay on two completed returns that never reach Step 5. |
+| claude | transcription | (Step 5, 5) | model error | 691/2,606 agree; completed: 643 candidate-shows-skipped, 2 candidate-refuses | i1040gi pp. 40-42 | As (Step 5, 1), plus the combat pay refusal. |
+| claude | transcription | 4b | model error | 402/2,606 agree; completed: 882 candidate-shows-skipped, 2 candidate-refuses | i1040gi p. 47, Worksheet B | Shown for any Schedule C filer, with no Steps 1-4 test (stage14.asset fixtures, Step 1 STOP). |
+| claude | transcription | 6 (eic.wsb_6) | model error | 419/2,606 agree; completed: 879 candidate-shows-skipped, 2 candidate-refuses | i1040gi p. 48, Worksheet B line 6 | As 4b. |
+| claude | transcription | 1 | model error | 640/2,606 agree; completed: 647 candidate-shows-skipped, 29 value, 2 candidate-refuses | i1040gi p. 46, Worksheet A | Shown with no Steps 1-4 test (stage9.eic.no_child Step 4 STOPs); Schedule C differences are layout. |
+| claude | transcription | 2 | model error | 1,672/2,606 agree; completed: 28 candidate-shows-skipped, 25 value, 2 candidate-refuses | i1040gi p. 46, line 2 | As 1 ($308 on Step 4 STOP returns). |
+| claude | transcription | 3 | model error | 919/2,606 agree; completed: 857 candidate-shows-skipped | i1040gi p. 46, line 3 | As 1, through line 2 above zero. |
+| claude | transcription | 4 | model error | 1,683/2,606 agree; completed: 392 candidate-shows-skipped, 15 value, 2 candidate-refuses | i1040gi p. 46, line 4 | As 3. |
+| claude | transcription | 5 | model error | 2,184/2,606 agree; completed: 160 candidate-shows-skipped | i1040gi p. 46, lines 4-5 | As 3, by reading. |
+| claude | transcription | 6 (eic.line6) | model error | 2,322/2,606 agree; completed: 25 value, 17 candidate-shows-skipped, 2 candidate-refuses | i1040gi p. 46, line 6 | As 3; eic.credit agrees. |
+
+Counts: model error 13, scope 4.
+
+Findings: none.

@@ -12,6 +12,8 @@ project's full process (reviews, the commit guard) has not happened. The tools n
 clone until then. Where this document says "the bank", "the forms" and so on it means the project's own files; the
 method does not depend on the clone.
 
+**Since written:** the redraft has landed on `main` (record: `docs/provisional/lanes/landing.md`); the tools of section 6 are there but `tools/draft_check.sh`, removed: its checks run in `tools/check_all.sh` (among them the steps `tick_groups` and `interview_coverage`, and the `draft-walk`, `interview-order` and `tick-groups` self-tests in `tools/self_tests.py`).
+
 Sources this document condenses, each the authority for its own subject: the owner's words in
 `docs/2026-11-12_question_walk_notes.md` (the cost frame, rule 1) and `docs/2026-11-11_interview_redesign_intent.md`
 (the intent and its decisions); in the clone, `docs/provisional/NORMS.md` (the norms as the agents received them),

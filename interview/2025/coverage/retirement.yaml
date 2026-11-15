@@ -1,0 +1,697 @@
+# Coverage rows for retirement money received (Form 1099-R) and social security. See opening.yaml for how a row is read.
+# First written by docs/provisional/lanes/l4a_work/coverage.py, whose paths are in the asking order of lane 4a's branch; it no longer reproduces this file.
+tax_year: 2025
+part: Retirement money received, and social security
+profile: full
+rows:
+  - id: retirement.roth
+    design: "retirement.special: a conversion; a rollover to a Roth IRA or designated Roth account"
+    situation: "A person moved pension money into a Roth IRA."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: true
+      person[taxpayer].retirement[r].roth_moved: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.rollover_property
+    design: "retirement.special: a rollover of property other than cash"
+    situation: "A plan paid out shares, which the person sold before rolling over the money."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: true
+      person[taxpayer].retirement[r].roth_moved: false
+      person[taxpayer].retirement[r].rollover_property: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.rollover_qdro
+    design: "retirement.special: a rollover of a distribution under a qualified domestic relations order"
+    situation: "A person rolled over money received from a former spouse's plan under a court order."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: true
+      person[taxpayer].retirement[r].roth_moved: false
+      person[taxpayer].retirement[r].rollover_property: false
+      person[taxpayer].retirement[r].rollover_qdro: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.levy_returned
+    design: "retirement.special: a distribution the IRS wrongfully levied, returned and contributed back"
+    situation: "The IRS returned a levied amount, which the person put back into the plan."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: true
+      person[taxpayer].retirement[r].roth_moved: false
+      person[taxpayer].retirement[r].rollover_property: false
+      person[taxpayer].retirement[r].rollover_qdro: false
+      person[taxpayer].retirement[r].levy_returned: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.charity_hsa
+    design: "retirement.special: a qualified charitable distribution or HSA funding distribution"
+    situation: "An IRA owner had part of a withdrawal sent straight to a charity."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: traditional_ira
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].charity_hsa: true
+      person[taxpayer].retirement[r].box1: 900000
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.ira_returned
+    design: "retirement.special: an IRA contribution returned; excess contributions for an earlier year returned in 2025"
+    situation: "An IRA paid back a contribution that was over the yearly limit."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: traditional_ira
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].charity_hsa: false
+      person[taxpayer].retirement[r].ira_returned: true
+      person[taxpayer].retirement[r].box1: 900000
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.ira_basis
+    design: "retirement.special: nondeductible contributions to any traditional IRA"
+    situation: "An IRA owner made contributions in earlier years that were not deducted."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: traditional_ira
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].charity_hsa: false
+      person[taxpayer].retirement[r].ira_returned: false
+      person[taxpayer].retirement[r].ira_basis: true
+      person[taxpayer].retirement[r].box1: 900000
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.box6
+    design: "retirement.special: a distribution of employer securities with net unrealized appreciation (an amount in box 6)"
+    situation: "A plan's Form 1099-R shows an amount in box 6."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].under59: false
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].box6: true
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.loan_offset
+    design: "retirement.special: a plan loan offset"
+    situation: "An unpaid plan loan was taken off the balance when the person left the job."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.dis_early
+    design: "retirement.special: a disability pension received before minimum retirement age"
+    situation: "A person of 60 draws a disability pension from a plan whose minimum retirement age is 62."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: true
+      person[taxpayer].retirement[r].dis_early: true
+      person[taxpayer].retirement[r].under59: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.dis_terror
+    design: "retirement.special: a pension partly excludable because of disability from a terrorist attack"
+    situation: "A disability pension for injuries in a terrorist attack."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: true
+      person[taxpayer].retirement[r].dis_early: false
+      person[taxpayer].retirement[r].dis_terror: true
+      person[taxpayer].retirement[r].under59: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.dis_military
+    design: "retirement.special: a military disability pension"
+    situation: "A disability pension for service in the armed forces."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: true
+      person[taxpayer].retirement[r].dis_early: false
+      person[taxpayer].retirement[r].dis_terror: false
+      person[taxpayer].retirement[r].dis_military: true
+      person[taxpayer].retirement[r].under59: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.pso_exclusion
+    design: "retirement.special: the retired public safety officer premium exclusion"
+    situation: "A retired firefighter wants to leave out the pension money that paid health insurance premiums."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.lump_sum
+    design: "retirement.special: a lump-sum distribution you may report on Form 4972"
+    situation: "A person born in 1935 was paid the whole balance of a plan in 2025."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: true
+      person[taxpayer].retirement[r].lump_sum: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.death_exclusion
+    design: "retirement.special: a death benefit exclusion"
+    situation: "The beneficiary of an employee who died before August 21, 1996."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: death_4
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].death_exclusion: true
+      person[taxpayer].retirement[r].not_beneficiary: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.ben_before_retire
+    design: "retirement.special: an annuity received as the beneficiary of an employee who died before retiring"
+    situation: "A widow draws the pension of a husband who died while still working."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: death_4
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].death_exclusion: false
+      person[taxpayer].retirement[r].ben_before_retire: true
+      person[taxpayer].retirement[r].not_beneficiary: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.ben_guaranteed
+    design: "retirement.special: guaranteed payments received as the beneficiary of a retiree under a life annuity contract"
+    situation: "A son receives the rest of the ten years of payments his late father's pension guaranteed."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: death_4
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].death_exclusion: false
+      person[taxpayer].retirement[r].ben_before_retire: false
+      person[taxpayer].retirement[r].ben_guaranteed: true
+      person[taxpayer].retirement[r].not_beneficiary: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.ben_shared
+    design: "retirement.special: an annuity shared among more than one beneficiary"
+    situation: "Two children share their late mother's pension."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: death_4
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].death_exclusion: false
+      person[taxpayer].retirement[r].ben_before_retire: false
+      person[taxpayer].retirement[r].ben_guaranteed: false
+      person[taxpayer].retirement[r].ben_shared: true
+      person[taxpayer].retirement[r].not_beneficiary: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.own_annuity
+    design: "retirement.special: a nonqualified annuity"
+    situation: "A person draws an annuity bought from an insurance company with their own money."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: true
+      person[taxpayer].retirement[r].own_annuity: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.csrs_alt
+    design: "retirement.special: U.S. Civil Service retirement benefits under the alternative annuity option"
+    situation: "A federal retiree who took the lump-sum payment of contributions at retirement."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: true
+      person[taxpayer].retirement[r].own_annuity: false
+      person[taxpayer].retirement[r].csrs_alt: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.started_before_simplified_method_date
+    design: "retirement.special: an annuity with after-tax cost whose starting date was before November 19, 1996"
+    situation: "A pension with after-tax contributions that began in 1994."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: true
+      person[taxpayer].retirement[r].own_annuity: false
+      person[taxpayer].retirement[r].csrs_alt: false
+      person[taxpayer].retirement[r].started_before_simplified_method_date: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.general_rule
+    design: "retirement.special: an annuity with after-tax cost for which the Simplified Method does not apply (the General Rule)"
+    situation: "A pension begun at 76 with ten years of payments guaranteed."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: true
+      person[taxpayer].retirement[r].own_annuity: false
+      person[taxpayer].retirement[r].csrs_alt: false
+      person[taxpayer].retirement[r].started_before_simplified_method_date: false
+      person[taxpayer].retirement[r].general_rule: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.lump_at_start
+    design: "retirement.special: a nonperiodic payment on or after the annuity starting date of an annuity with after-tax cost"
+    situation: "A partial lump sum was paid when a pension with after-tax contributions began."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: true
+      person[taxpayer].retirement[r].own_annuity: false
+      person[taxpayer].retirement[r].csrs_alt: false
+      person[taxpayer].retirement[r].started_before_simplified_method_date: false
+      person[taxpayer].retirement[r].general_rule: false
+      person[taxpayer].retirement[r].lump_at_start: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.disaster
+    design: "retirement.special: a qualified disaster recovery distribution, a repayment or a recontribution (Form 8915-F)"
+    situation: "A person took money out of a 401(k) after a federally declared disaster."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.disaster_ira
+    design: "retirement.special: the same, from an IRA"
+    situation: "An IRA owner took money out after a federally declared disaster."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: traditional_ira
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].charity_hsa: false
+      person[taxpayer].retirement[r].ira_returned: false
+      person[taxpayer].retirement[r].ira_basis: false
+      person[taxpayer].retirement[r].disaster: true
+      person[taxpayer].retirement[r].box1: 900000
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.code_corrective
+    design: "retirement.special: a corrective distribution of excess deferrals or contributions (box 7 code 8, P or E), now ended by the code"
+    situation: "A 401(k) paid back excess deferrals; box 7 shows code 8."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: other
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: false
+    expect:
+      refused: person[taxpayer].retirement[r].bad_code
+  - id: retirement.code_loan_offset
+    design: "retirement.special: a plan loan offset (box 7 code M or L), now ended by the code"
+    situation: "A qualified plan loan offset; box 7 shows code M."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: other
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: false
+    expect:
+      refused: person[taxpayer].retirement[r].bad_code
+  - id: retirement.code_nonqualified
+    design: "retirement.special: a nonqualified annuity (box 7 shows D with another code), now ended by the code"
+    situation: "A commercial annuity's Form 1099-R shows the codes 7D."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: other
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: false
+    expect:
+      refused: person[taxpayer].retirement[r].bad_code
+  - id: retirement.code_rrb
+    design: "retirement.special: a Form RRB-1099-R (no code in box 7), now ended by the code"
+    situation: "A railroad retiree's Form RRB-1099-R, which has no distribution code."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: other
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: false
+    expect:
+      refused: person[taxpayer].retirement[r].bad_code
+  - id: retirement.code_recharacterized
+    design: "retirement.special: a recharacterization (box 7 code N or R), now ended by the code"
+    situation: "An IRA contribution was recharacterized; box 7 shows code R."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: traditional_ira
+      person[taxpayer].retirement[r].code: other
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].charity_hsa: false
+      person[taxpayer].retirement[r].ira_returned: false
+      person[taxpayer].retirement[r].ira_basis: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].box1: 900000
+    expect:
+      refused: person[taxpayer].retirement[r].bad_code
+  - id: retirement.code7_under59
+    design: "retirement.code_screen: code 7 although under age 59½"
+    situation: "A person of 57 whose Form 1099-R wrongly shows code 7."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: false
+      person[taxpayer].retirement[r].under59: true
+      person[taxpayer].retirement[r].sec457: false
+    expect:
+      refused: person[taxpayer].retirement[r].screen_refused
+  - id: retirement.code7_under59_457
+    design: "retirement.code_screen: code 7 under age 59½ from a section 457 plan (not an error)"
+    situation: "A person of 57 paid from a state's section 457 plan, which rightly shows code 7."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: false
+      person[taxpayer].retirement[r].under59: true
+      person[taxpayer].retirement[r].sec457: true
+    expect:
+      asks: person[taxpayer].retirement[r].box1
+  - id: retirement.code2_partial
+    design: "retirement.code_screen: code 2 and the exception does not cover all of it"
+    situation: "A code 2 distribution of which only part meets the exception."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: early_exception_2
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: false
+      person[taxpayer].retirement[r].code2_partial: true
+    expect:
+      refused: person[taxpayer].retirement[r].screen_refused
+  - id: retirement.code4_not_beneficiary
+    design: "retirement.code_screen: code 4 although not a beneficiary"
+    situation: "A Form 1099-R wrongly shows code 4."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: death_4
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].death_exclusion: false
+      person[taxpayer].retirement[r].ben_before_retire: false
+      person[taxpayer].retirement[r].ben_guaranteed: false
+      person[taxpayer].retirement[r].ben_shared: false
+      person[taxpayer].retirement[r].cost_any: false
+      person[taxpayer].retirement[r].not_beneficiary: true
+    expect:
+      refused: person[taxpayer].retirement[r].screen_refused
+  - id: retirement.ordinary_pension
+    design: "the common case"
+    situation: "A retiree with an ordinary pension (code 7, no after-tax contributions) meets none of the special situations and goes on to the amounts."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: false
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      asks: person[taxpayer].retirement[r].box1
+      not_asked: ['person[taxpayer].retirement[r].rollover', 'person[taxpayer].retirement[r].annuity', 'person[taxpayer].retirement[r].roth_moved', 'person[taxpayer].retirement[r].dis_early', 'person[taxpayer].retirement[r].lump_sum', 'person[taxpayer].retirement[r].own_annuity', 'person[taxpayer].retirement[r].death_exclusion', 'person[taxpayer].retirement[r].charity_hsa', 'person[taxpayer].retirement[r].ira_basis', 'person[taxpayer].retirement[r].sec457']
+  - id: retirement.ordinary_ira
+    design: "the common case"
+    situation: "A retiree with an ordinary withdrawal from a traditional IRA (code 7) goes on to the amount."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: traditional_ira
+    expect:
+      asks: person[taxpayer].retirement[r].box1
+      not_asked: ['person[taxpayer].retirement[r].rollover', 'person[taxpayer].retirement[r].box6', 'person[taxpayer].retirement[r].loan_offset', 'person[taxpayer].retirement[r].disability', 'person[taxpayer].retirement[r].cost_any', 'person[taxpayer].retirement[r].annuity', 'person[taxpayer].retirement[r].born_before_averaging_date', 'person[taxpayer].retirement[r].roth_moved']
+  - id: ssb.repaid_more
+    design: "ssb.pub915: repayments (box 4) more than benefits (box 3)"
+    situation: "A person repaid more social security in 2025 than they were paid."
+    answers:
+      ssb.any: true
+      ssb.benefits: 2000000
+      ssb.repaid_more: true
+    expect:
+      refused: ssb.pub915
+  - id: ssb.ira_covered
+    design: "ssb.pub915: a traditional IRA contribution by a person covered by a retirement plan"
+    situation: "A person with benefits still works, is covered by the employer's plan and put money into a traditional IRA."
+    answers:
+      ssb.any: true
+      ssb.benefits: 2000000
+      ssb.repaid_more: false
+      ssb.ira_covered: true
+    expect:
+      refused: ssb.pub915
+  - id: ssb.lump_elect
+    design: "ssb.lump_sum: the lump-sum election"
+    situation: "Back benefits for 2023 were paid in 2025 and the person wants the lump-sum election method."
+    answers:
+      ssb.any: true
+      ssb.benefits: 2000000
+      ssb.repaid_more: false
+      ssb.ira_covered: false
+      ssb.prior_year_pay: true
+      ssb.lump_elect: true
+    expect:
+      refused: ssb.lump_sum
+  - id: ssb.lump_not_elected
+    design: "ssb.lump_sum: an earlier year's payment without the election"
+    situation: "Back benefits were paid in 2025 and the person does not ask for the election."
+    answers:
+      ssb.any: true
+      ssb.benefits: 2000000
+      ssb.repaid_more: false
+      ssb.ira_covered: false
+      ssb.prior_year_pay: true
+      ssb.lump_elect: false
+    expect:
+      asks: ssb.terror_disability
+  - id: ssb.terror_disability
+    design: "ssb.terror_disability"
+    situation: "Social security disability payments for injuries in a terrorist attack."
+    answers:
+      ssb.any: true
+      ssb.benefits: 2000000
+      ssb.repaid_more: false
+      ssb.ira_covered: false
+      ssb.prior_year_pay: false
+      ssb.terror_disability: true
+    expect:
+      refused: ssb.terror_disability
+  - id: ssb.none
+    design: "ssb.any: no benefits"
+    situation: "A person with no social security benefits is asked for no amount."
+    answers:
+      ssb.any: false
+    expect:
+      proceeds: {ssb.any: false}
+      not_asked: [ssb.benefits, ssb.repaid_more, ssb.prior_year_pay, ssb.terror_disability, ssb.ira_covered]
+  - id: ssb.ordinary
+    design: "the common case"
+    situation: "A retiree with benefits and none of the special situations."
+    answers:
+      ssb.any: true
+      ssb.benefits: 2000000
+      f1040.tax_exempt_interest: 0
+      ssb.repaid_more: false
+      ssb.ira_covered: false
+      ssb.prior_year_pay: false
+      ssb.terror_disability: false
+    expect:
+      proceeds: {ssb.any: true}
+      not_asked: [ssb.lump_elect]

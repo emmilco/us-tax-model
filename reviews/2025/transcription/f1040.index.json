@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "b1d494b8d9c7a8ac571efc9eac58e31bed40a2ae1cf596cd087583ffaca15443",
  "head_rows": {
-  "line-scoped reviews": "5 (latest 2026-11-12); see Line-scoped reviews"
+  "line-scoped reviews": "5 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -121,9 +121,9 @@
   },
   {
    "key": "8",
-   "record": "2dd3b7171c0dae53188145cc8b454a298f900415fdaed7cb7e33b85288d3c2c2",
+   "record": "564999d7355bb93c3450aa47e14445d949ed93f8cf723acb97ded0d6faf5d0da",
    "status": "AGREE",
-   "subject_key": "7b31aff722f3c21017b881567747218fa3966b82d5ab830de1db5d47eb1aa971"
+   "subject_key": "99212c5517f7c9499927cc3c5f1051113d3bacf6c43abbb396492278979fefa5"
   },
   {
    "key": "9",
@@ -153,7 +153,15 @@
    "key": "12e",
    "record": "4443950570801288449b10da9cba283ff549c9ace887c64b8350acc29755614d",
    "status": "AGREE",
-   "subject_key": "8cc42fdcbd0b3928d33dbed8d8ff674168cca59fcb062fd5e4ef4974f65049c2"
+   "subject_key": "99f0c366b90987d98367b0ba397b5e2bf693150fbe405213c98fcc9bb6c2659d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "household.widowed_2025": "household.widowed_this_year"
+    },
+    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+    "was": "8cc42fdcbd0b3928d33dbed8d8ff674168cca59fcb062fd5e4ef4974f65049c2"
+   }
   },
   {
    "key": "13a",
@@ -181,10 +189,10 @@
   },
   {
    "key": "16",
-   "record": "041680494df8e03e6bd412aadcf2c7abf0eaaa46e168438c3bbb4315d6cdf89f",
+   "record": "564999d7355bb93c3450aa47e14445d949ed93f8cf723acb97ded0d6faf5d0da",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; line 16 itself is unchanged: it was reviewed again because it reads line 3a, now through the gate line. The worksheet choice stands as in the earlier rulings of this line (i1040sd p. 15; amb.2025.sd4952_selection). The refusals the note names are the project's: scope.other_line16 for Forms 8814 and 4972, the section 962 tax, education credit recapture, Forms 8621, 8978 and 8615 and Schedule J; Form 2555 is refused by sa.excluded_income (\"Are you filing Form 2555 or Form 4563 ...\"), not assumed screened by Schedule 1 line 8d as the note supposes.",
-   "subject_key": "1a15afd6ecbaf8a9235d021d730f01e84c6088c7f4fb223dc8585eef58b89908"
+   "ruling": "Ruling: representation; both take the Schedule D Tax Worksheet, else the Qualified Dividends and Capital Gain Tax Worksheet, else the tax on line 15 (i1040gi p. 36, Line 16, \"Use the Qualified Dividends and Capital Gain Tax Worksheet, later, to figure your tax if you don't have to use the Schedule D Tax Worksheet\"); the reply tests f1040.line3a directly where the project reads f1040.line3a_if_ordinary (zero when the parent question about ordinary dividends is No), and the reply lists no refusal for the other line 16 taxes, which the project refuses by scope.other_line16 (its note: taken to be screened elsewhere). Triage executable-triage-v2 (.transcription/triage/2025/f1040.json, pass 99250f853f76): 2,603 of 2,769 agree; no value difference; 130 candidate-unknown (9 on completed returns, f1040.line3a unasked, project equal to qdcg.line25), 36 project-refuses (scope.other_line16) on refused returns.",
+   "subject_key": "708e09782028d6312c772fde69467b54c363178fe8f4dc5ae1768053b0c0f51f"
   },
   {
    "key": "17",
@@ -242,15 +250,15 @@
   },
   {
    "key": "25c",
-   "record": "e7c0bec1f567ceec5f635d8bb8e968ee03f741229898314bdd98ead174fbe2d0",
+   "record": "564999d7355bb93c3450aa47e14445d949ed93f8cf723acb97ded0d6faf5d0da",
    "status": "AGREE",
-   "subject_key": "ed303fb1539b7523dc2866215747c13f9d06ad834c027d6685419fd1d0ed0410"
+   "subject_key": "df71bb5d0de7c49f46156dcf3bf3a4c210d55286c22ea53ea39a7a006213e6e0"
   },
   {
    "key": "25d",
-   "record": "e7c0bec1f567ceec5f635d8bb8e968ee03f741229898314bdd98ead174fbe2d0",
+   "record": "564999d7355bb93c3450aa47e14445d949ed93f8cf723acb97ded0d6faf5d0da",
    "status": "AGREE",
-   "subject_key": "694602005c72d20aa08216a92c271cb4ca23d3400a2629cccab173a4f9392aad"
+   "subject_key": "64002174171fcbe37ad4d10c1b023b85acdb46e30dfc9c3a864406acdd79f053"
   },
   {
    "key": "27a",
@@ -316,9 +324,9 @@
   },
   {
    "key": "33",
-   "record": "e7c0bec1f567ceec5f635d8bb8e968ee03f741229898314bdd98ead174fbe2d0",
+   "record": "564999d7355bb93c3450aa47e14445d949ed93f8cf723acb97ded0d6faf5d0da",
    "status": "AGREE",
-   "subject_key": "d18a75e8e1577e14d7b9c13d9aeaf20f86ba552908491ee0dfbdc9389c146b65"
+   "subject_key": "1bdc2ad6e9f37565da5a8d55321951cb8c824c53cbb9e6c1e50f6bbae5a79122"
   },
   {
    "key": "34",
@@ -357,7 +365,7 @@
   "10": "756e100cb725da7f4f3229d4bff1971708cb3df121b350ac7aad7d6353d25a91",
   "11a": "27dbd72910e0e60e4ecc381522950d81ef3bdfe9a87d2d2c9872d4a98133d20f",
   "11b": "980e586ccd43ed0b1ead654efdff7144a1b81e5872e19fd1f4f6e1bf95781112",
-  "12e": "15fb0dc252bac308839c86466f8b8aa797d84310c4ca1f173c4a4038997bc343",
+  "12e": "86be008fe4d757b3f1b9d218f74032f4e9c17b1fea26aa125a6742f5df933c0f",
   "13a": "1ca2c02f6b1ae44a9fe194ebef88f9b5d81de340e765fb0184c4beb5f5e68f28",
   "13b": "0d9926e84244027e7ad6305124cabe1353f17fffaaba10b10c0e104cedab91f9",
   "14": "ee12548e01b68f2075b8332ff2bf76bf773510ce09b40e3da6d344bfa77f06fd",
@@ -372,8 +380,8 @@
   "23": "10f862ddf722034b9dd4292204de978273c6814c4d35e80a07d1320266291149",
   "24": "56ae9053b326c3a8c139c1894951e3b10e81392583f2d62a9be7d73e7741f4a1",
   "25a": "b3260ac8427478e624d505c205d070cdb79b9eb2966109747704def8c238066e",
-  "25c": "aa136d09f5c190445cbe2728a3fe271dd852b57aa74173863a23d1afb895b076",
-  "25d": "8599b37539f7763a41b1bb9a7dcb788f1ee16dd70b0122738d11fb8bd708cbb2",
+  "25c": "ce7e2635984905f4d28945c7dd4ed0ee28d6d43ed371b216cc79ced3acd727eb",
+  "25d": "a848e2ae083179f1d95db74a00f663738aa04d707f81be46ec4405a983276c21",
   "27a": "c49fbb742239c591b4eba998f713bd683b369f2e90def56f0127b382c7956352",
   "27b": "b69cd312051c77e6e586a9632e26c34fef189b17b58d18eb159bae58b217e090",
   "27c": "1ad25f283008d0e1305f40f9de619cbf2f4254cabacea9ce9f7cc83c7e674230",
@@ -384,7 +392,7 @@
   "30": "d7d0369e80fee8c54ae210576bb3695a085f3e1f4aa20a2ed1f8d5dab0632998",
   "31": "37586779530fcdb9da44f4f75e3f6a36abab40dbd06119ebd449ee9164ff1f1c",
   "32": "2a0c0707e902998f704acf7e3574aee9fa0961bde3df0263cafa4a341e724ff5",
-  "33": "390093c2dd4d26ed7c9bd7dac8ab7cc88f2c617c2345797167301835cd1211e7",
+  "33": "47b04824eb89a1947a0680d8788ca85b8eafcfd99aa1157e60d7c322499c8c2c",
   "34": "da64209dec787ebfbe10f6f2e9f5cf30726d9fa4dbe45779405023f8fbc211ca",
   "37": "1fbe79b60207f9761aaffb6e098ac77998fb7cd9e2c6befce0c174e791874434"
  },
@@ -394,14 +402,14 @@
   "1a": "f020a8428ad289e0166890c3fe5bf7a2554f1d48db6f1cc30a20a736f5867c82",
   "1z": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "2a": "fd19b2e351c32dc8459f25a65c94080d73dfdae76fdce3fba9221b09db16ae24",
-  "8": "8f985b5bc8d6c6eba295ca58934a7c89bac2875d1acde432fd2aa5a4918cdf07",
+  "8": "9d9b1244a6b31e9215f6785b64809b81e7260ab667b5133138b45f7154edb2f1",
   "9": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "12e": "cfe4a033a0d8290dcfc04dd6d44a4465de6080f1389b31f48c57c50426857576",
+  "12e": "9b30f50bb00f289650037086cf10b86ff178c651f00c6b3b7082e7b0370bd0b0",
   "14": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "16": "76a76cedf837979db15c7ed6ed8e6e06e46bf46dfbe14f16c8138005375620d4",
-  "25c": "1a94c75631f5edb3c5bfdff8bfa30169d8dd7ae158308a372a30b345e35ec97a",
-  "25d": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "16": "72393a35744677e430686903eae3b7be50b01edc8aa1cda734634b750f5ef149",
+  "25c": "c988dcb200ff1b948922f85ba58a1011f7c3d8fe211204736be4562b19420682",
+  "25d": "1011e44494516a8c09fdbac7cd21050e605b243ed2e3a7ba2b0dfd366606d44e",
   "30": "68c3a60aa5783f9a88ca5121b006feeac37e2e06c3640dee796337b38b74c9a6",
-  "33": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  "33": "1011e44494516a8c09fdbac7cd21050e605b243ed2e3a7ba2b0dfd366606d44e"
  }
 }

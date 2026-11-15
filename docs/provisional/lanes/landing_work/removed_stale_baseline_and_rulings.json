@@ -1,0 +1,357 @@
+{
+ "reviews/2025/consumers.json": {
+  "baseline": {
+   "consumer:dependent.divorced_rule@i1040gi:p17": "d2e686c025ceb1cc",
+   "consumer:dependent.eic_ssn@i1040gi:p46": "c640be8f62a36c13",
+   "consumer:dependent.joint_return@i1040gi:p41": "afc8d829737a3a70",
+   "consumer:dependent.married@i1040gi:p14": "68b73057bcc456cc",
+   "consumer:dependent.married@i1040gi:p17": "68b73057bcc456cc",
+   "consumer:dependent.married@i1040gi:p19": "68b73057bcc456cc",
+   "consumer:dependent.married@i1040gi:p41": "68b73057bcc456cc",
+   "consumer:dependent.tin@i1040gi:p22": "e3c9b3d40a8e3ec5",
+   "consumer:eic.qc_of_another@i1040gi:p40": "0cf5e57a1cdaabc7",
+   "consumer:eic.qc_of_another@i1040gi:p42": "0cf5e57a1cdaabc7",
+   "consumer:eic.qc_of_another@i1040gi:p43": "0cf5e57a1cdaabc7",
+   "consumer:eic.qc_of_another@i1040gi:p44": "0cf5e57a1cdaabc7",
+   "consumer:eic.qc_of_another@i1040gi:p46": "0cf5e57a1cdaabc7",
+   "consumer:eic.qc_of_another@i1040gi:p47": "0cf5e57a1cdaabc7",
+   "consumer:f2441.student_disabled@i2441:p5": "8353feb14a0cf833",
+   "consumer:f5695.part2_any@i5695:p7": "b7ae4aa4a4832688",
+   "consumer:f8959.unsupported@f8959:p1": "3054be2b32b5024f",
+   "consumer:f8962.alloc@f8962:p1": "ae439ec9ecd27ba7",
+   "consumer:f8962.other@f8962:p1": "9a775f88e4a06179",
+   "consumer:person.age65@i1040gi:p110": "7fd2c64c4fd4e80a",
+   "consumer:person.age65@i1040gi:p33": "7fd2c64c4fd4e80a",
+   "consumer:person.age65@i1040gi:p34": "7fd2c64c4fd4e80a",
+   "consumer:person.age65@i1040gi:p35": "7fd2c64c4fd4e80a",
+   "consumer:person.died_before_65@i1040gi:p33": "a3ac05903529a6e1",
+   "consumer:person.died_before_65@i1040gi:p34": "a3ac05903529a6e1",
+   "consumer:person.died_before_65@i1040gi:p35": "a3ac05903529a6e1",
+   "consumer:person.ira_age50@i1040gi:p98": "469eef086f4d07e5",
+   "consumer:person.sav_born@i8863:p7": "75304e427ba4f04e",
+   "consumer:person.sav_trad@i1040gi:p98": "cbb597c38c2d92fb",
+   "consumer:person.x_other@f5329:p2": "ccd90a47265491c1",
+   "consumer:refund.not_2024@i1040gi:p88": "78989007e6d8ce51",
+   "consumer:s2.amt@f1040s2:p1": "36715d9c92da32fc",
+   "consumer:s2.other@f1040s2:p1": "fb7162a180975aa0",
+   "consumer:s2.other@i1040gi:p104": "fb7162a180975aa0",
+   "consumer:sa.unsupported@f1040sa:p1": "fe46fc2c004bfa16",
+   "consumer:sa.unsupported@i1040sca:p11": "fe46fc2c004bfa16",
+   "consumer:sales.route@f1040sd:p1": "f0336f94f5ced148",
+   "consumer:scope.other_income@i1040gi:p40": "e00061a51c73a832",
+   "consumer:scope.other_income@i1040gi:p42": "e00061a51c73a832",
+   "consumer:scope.other_line16@i1040gi:p34": "98b5845b83df5d6b",
+   "consumer:scope.other_line16@i1040gi:p40": "98b5845b83df5d6b",
+   "consumer:scope.schedule1@i1040gi:p104": "5d95d3a04feb741a",
+   "consumer:scope.schedule1@i1040gi:p108": "5d95d3a04feb741a",
+   "consumer:scope.schedule1@i1040gi:p32": "5d95d3a04feb741a",
+   "consumer:scope.schedule1@i1040gi:p40": "5d95d3a04feb741a",
+   "consumer:scope.schedule1@i1040gi:p42": "5d95d3a04feb741a",
+   "consumer:scope.schedule1@i1040s8812:p8": "5d95d3a04feb741a",
+   "consumer:sd.other_forms@f1040sd:p1": "c7623108d3bf3a83",
+   "consumer:ssb.pub915@i1040gi:p32": "b3f14810aa7532f1"
+  },
+  "rulings": {
+   "consumer:dependent.divorced_rule@i1040gi:p17": {
+    "verdict": "same",
+    "question_phrase": "Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person",
+    "source_phrase": "Who lived with you for more than half of 2025. If the child didn't live with you for the required time, see Exception to time lived with you, later",
+    "reason": "Step 1's residency test points to the exceptions on p. 21, of which the rule for children of divorced or separated parents is the one this question names; the line refuses on yes, and p. 17 sets no other definition of the rule."
+   },
+   "consumer:dependent.joint_return@i1040gi:p41": {
+    "verdict": "same",
+    "question_phrase": "Is a joint return being filed for 2025 that includes this person ... other than one filed only to claim a refund of withheld or estimated tax",
+    "source_phrase": "Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund of withheld income tax or estimated tax paid",
+    "reason": "The EIC qualifying-child test words the joint-return condition and its refund-only exception exactly as Step 1 does, which the question asks."
+   },
+   "consumer:dependent.married@i1040gi:p14": {
+    "verdict": "same",
+    "question_phrase": "Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married), or is a joint return being filed for 2025 that includes this person (including one filed by this person with a spouse who died during 2025",
+    "source_phrase": "2. Your unmarried qualifying child who isn't your dependent",
+    "reason": "Head of household Test 2 item 2 needs the child to be unmarried; the question's no is unmarried at the end of 2025 with legal separation counted as unmarried and a spouse who died in 2025 counted as married, the year-end status the filing-status rules use."
+   },
+   "consumer:dependent.married@i1040gi:p17": {
+    "verdict": "same",
+    "question_phrase": "Was this person married at the end of 2025 ... or is a joint return being filed for 2025 that includes this person",
+    "source_phrase": "Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund of withheld income tax or estimated tax paid",
+    "reason": "The question asks for every person on a joint return (and every married person), so every person Step 1's joint-return condition reaches is refused through it; the line's own joint-return test reads dependent.joint_return."
+   },
+   "consumer:dependent.married@i1040gi:p19": {
+    "verdict": "same",
+    "question_phrase": "Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married)",
+    "source_phrase": "3. Was your qualifying relative married? Yes. See Married person",
+    "reason": "Step 4, question 3 asks the same married test the question asks, and the line refuses on yes rather than applying Married person."
+   },
+   "consumer:dependent.married@i1040gi:p41": {
+    "verdict": "same",
+    "question_phrase": "Was this person married at the end of 2025 ... or is a joint return being filed for 2025 that includes this person",
+    "source_phrase": "If the child was married, see Married child, later; Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund",
+    "reason": "The EIC step sends a married child to Married child (married at the end of 2025), which the question asks; the line refuses on yes, and its own joint-return test reads dependent.joint_return."
+   },
+   "consumer:dependent.tin@i1040gi:p22": {
+    "verdict": "same",
+    "question_phrase": "an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN or ATIN for this person by then",
+    "source_phrase": "You must enter each dependent's social security number (SSN) ... If your dependent won't have a number by the date your return is due, see What if You Can't File on Time?",
+    "reason": "The page requires a number for each listed dependent, which the question asks with the ITIN and ATIN of Steps 3 and 5; the born-and-died child entered as \"Died\" is refused by dependent.claimed rather than read through this question."
+   },
+   "consumer:f5695.part2_any@i5695:p7": {
+    "verdict": "same",
+    "question_phrase": "Did you have 2025 costs for insulation or air sealing, ... or a home energy audit, for a home in the United States? A cost of an item counts in 2025 when its original installation is completed in 2025",
+    "source_phrase": "Line 32a. Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a",
+    "reason": "Claiming the energy efficient home improvement credit is having 2025 Part II costs, counted when installation is completed (p. 1, Costs), as the question asks; joint occupancy is read from f5695.joint_occupancy and refused on line 30."
+   },
+   "consumer:f8959.unsupported@f8959:p1": {
+    "verdict": "same",
+    "question_phrase": "Any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your (or, on a joint return, your spouse's) employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory",
+    "source_phrase": "Part I, lines 1 to 3, \"Medicare wages and tips from Form W-2, box 5\", \"Unreported tips from Form 4137, line 6\", \"Wages from Form 8919, line 6\"; Part III, line 14, \"Railroad retirement (RRTA) compensation and tips\"",
+    "reason": "The line refuses on a Yes because lines 2, 3 and 14 and the other listed sources are not prepared; the form's amounts on a joint return include the spouse's (i8959 p. 3, Line 2, \"If you are filing a joint return, also include the amount from line 6 of your spouse's Form 4137\"), which the question names."
+   },
+   "consumer:f8962.alloc@f8962:p1": {
+    "verdict": "same",
+    "question_phrase": "Did any Marketplace policy ... cover someone in your tax family and also someone who is not in it ... or were you divorced or legally separated during 2025 while enrolled in a policy with your former spouse",
+    "source_phrase": "Are you allocating policy amounts with another taxpayer or do you want to use the alternative calculation for year of marriage? See instructions",
+    "reason": "The instructions (i8962 p. 12) require allocation in exactly the shared-policy and divorce-or-separation cases the question asks; line 9 also reads f8962.marriage for the alternative calculation, and line 24 refuses on yes."
+   },
+   "consumer:f8962.other@f8962:p1": {
+    "verdict": "same",
+    "question_phrase": "someone enrolled was not lawfully present ... a qualified small employer HRA ... or an individual coverage HRA ... any part of a month's premium was not paid by the due date ... advance payments were made for someone who is in no one's tax family",
+    "source_phrase": "Total PTC. Enter the amount from line 11, column (e), or add lines 12 through 23, column (e)",
+    "reason": "Line 24 sets no condition of its own; the conditions that bar or change the credit are the i8962 rules the question quotes, and the line refuses on yes."
+   },
+   "consumer:person.sav_trad@i1040gi:p98": {
+    "verdict": "same",
+    "question_phrase": "Did you make contributions (other than rollover contributions) to a traditional IRA for 2025 ... Do not count contributions made under a SEP or SIMPLE IRA plan, including those you made for yourself as a self-employed person.",
+    "source_phrase": "line 11, \"Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025 to your IRA\"",
+    "reason": "Worksheet line 11 takes the person's own traditional IRA contributions for 2025; SEP and SIMPLE plan contributions are deducted on Schedule 1 line 16 (p560 p. 17), which the question now excludes."
+   },
+   "consumer:person.x_other@f5329:p2": {
+    "verdict": "same",
+    "question_phrase": "excess HSA contributions from an earlier year when you have no Form 8889 for 2025",
+    "source_phrase": "Complete this part if you, someone on your behalf, or your employer contributed more to your HSAs for 2025 than is allowable or you had an amount on line 49 of your 2024 Form 5329",
+    "reason": "The earlier-year excess Part VII needs on line 42 is asked here for returns without Form 8889 and by the Form 8889 screen (prior-year excess contributions) for the others, and line 49 refuses on yes."
+   },
+   "consumer:refund.not_2024@i1040gi:p88": {
+    "verdict": "same",
+    "question_phrase": "Is any of these refunds for a tax year other than 2024 ... or did you pay any of your 2024 state or local income tax in 2025",
+    "source_phrase": "If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet ... Exception. See Itemized Deduction Recoveries in Pub. 525",
+    "reason": "The worksheet applies to a refund of tax paid in 2024; the question asks the cases outside it that the Exception list sends to Pub. 525, and the line refuses on yes."
+   },
+   "consumer:s2.other@f1040s2:p1": {
+    "verdict": "same",
+    "question_phrase": "Any amount on Schedule 2 other than the following? ... self-employment tax from Schedule SE ... Additional Medicare Tax ... Net Investment Income Tax ... the additional 20% tax on taxable HSA distributions ... Other amounts, for example: ... the alternative minimum tax ... tax on unreported tips (Form 4137)",
+    "source_phrase": "Additions to tax: 1a Excess advance premium tax credit repayment ... 1b ... 1y Other additions to tax ... 2 Alternative minimum tax ... 3 Add lines 1z and 2",
+    "reason": "s2.line3 adds line 1z (line 1a from Form 8962, which the tool figures) and line 2, and refuses on yes; every other Part I amount (lines 1b to 1y, line 2) is an amount the question asks about, so a no leaves only the figured line 1a (a filer who reads line 1a as another amount answers yes and is refused, which is safe, as the screen ruling's finding 2 notes)."
+   },
+   "consumer:s2.other@i1040gi:p104": {
+    "verdict": "same",
+    "question_phrase": "Any amount on Schedule 2 other than the following? ... self-employment tax from Schedule SE ... Additional Medicare Tax ... Net Investment Income Tax ... the additional 20% tax on taxable HSA distributions ... Other amounts, for example: ... the alternative minimum tax ... tax on unreported tips (Form 4137)",
+    "source_phrase": "Line 4b. Enter the qualified tips included on Form 4137, line 1, row A, column (c).",
+    "reason": "s1a.line4b_calc is zero unless Form 4137 is filed and refuses on yes; the question names tax on unreported tips (Form 4137) among the other amounts, so a filer with a Form 4137 answers yes and line 4b is never zeroed wrongly."
+   },
+   "consumer:scope.other_income@i1040gi:p40": {
+    "verdict": "same",
+    "question_phrase": "Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages ... including ... Medicaid waiver payments (whether or not in Form W-2 box 1)",
+    "source_phrase": "Step 1, question 4, \"Were you or your spouse a nonresident alien for any part of 2025?\" (read by eic.step1_resident)",
+    "reason": "The question still asks nonresident alien status for any part of 2025 and the line refuses on yes; the added qualified disaster recovery distribution item only widens the screen."
+   },
+   "consumer:scope.other_income@i1040gi:p42": {
+    "verdict": "same",
+    "question_phrase": "Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages ... including ... Medicaid waiver payments (whether or not in Form W-2 box 1)",
+    "source_phrase": "Step 5, worksheet line 2, Medicaid waiver payments excluded from income on Schedule 1, line 8s (read by eic.step5_line2)",
+    "reason": "The question still asks Medicaid waiver payments whether or not in box 1 and the line refuses on yes, figuring zero; the added qualified disaster recovery distribution item only widens the screen."
+   },
+   "consumer:scope.other_line16@i1040gi:p34": {
+    "verdict": "same",
+    "question_phrase": "Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615 ..., a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit",
+    "source_phrase": "Include in the total on the entry space on line 16 all of the following taxes that apply ... Tax from Form(s) 8814 ... Tax from Form 4972 ... Tax with respect to a section 962 election",
+    "reason": "The line 16 taxes other than the tax on taxable income are the ones the question lists, and the line refuses on yes."
+   },
+   "consumer:scope.other_line16@i1040gi:p40": {
+    "verdict": "same",
+    "question_phrase": "including filing Form 8814 (even with no tax)",
+    "source_phrase": "You are filing Form 8814 (relating to election to report child's interest and dividends on your return)",
+    "reason": "EIC Step 2, question 4's Form 8814 condition is filing the form, which the question asks."
+   },
+   "consumer:scope.schedule1@i1040gi:p104": {
+    "verdict": "same",
+    "question_phrase": "other than the ones this tool asks about separately (business income or loss from Schedule C; ... rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); ... farm income (Schedule F)",
+    "source_phrase": "Line 5. Include the qualified tips you and/or your spouse received in the course of a trade or business",
+    "reason": "A trade or business other than Schedule C is asked here and Schedule C by s1.sc_1a; the line refuses on either."
+   },
+   "consumer:scope.schedule1@i1040gi:p108": {
+    "verdict": "same",
+    "question_phrase": "other than the ones this tool asks about separately (business income or loss from Schedule C; ... including statutory-employee wages",
+    "source_phrase": "Qualified overtime reported on Form 1099-NEC, box 1, or Form 1099-MISC, box 3",
+    "reason": "Nonemployee overtime belongs to a trade or business, asked here and (Schedule C) by s1.sc_1a; the line refuses on either."
+   },
+   "consumer:scope.schedule1@i1040gi:p32": {
+    "verdict": "same",
+    "question_phrase": "or an adjustment on Schedule 1 line 12, 14 or 23",
+    "source_phrase": "Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25",
+    "reason": "The worksheet's Schedule 1 lines the tool does not figure (12, 14 and 23) are named in the question; the others are computed lines."
+   },
+   "consumer:scope.schedule1@i1040gi:p40": {
+    "verdict": "same",
+    "question_phrase": "rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property",
+    "source_phrase": "You are filing Schedule E. You are reporting income from the rental of personal property not used in a trade or business. ... You have income or loss from a passive activity",
+    "reason": "Schedule E and rental of personal property are asked here and Form 8814 by scope.other_line16; passive activity income is asked by scope.other_income, which refuses the return."
+   },
+   "consumer:scope.schedule1@i1040gi:p42": {
+    "verdict": "same",
+    "question_phrase": "statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner; church employee income",
+    "source_phrase": "Are you filing Schedule SE because you were a member of the clergy or you had church employee income of $108.28 or more?",
+    "reason": "Clergy and church employee income are asked, and the line refuses on yes."
+   },
+   "consumer:scope.schedule1@i1040s8812:p8": {
+    "verdict": "same",
+    "question_phrase": "statutory-employee wages ... church employee income ... partnerships ... (Schedule E or a Schedule K-1) ... farm income (Schedule F)",
+    "source_phrase": "Next, if you are filing Schedule C, F, or SE, or you received a Schedule K-1 (Form 1065), go to line 2a ... a. Enter any statutory employee income reported on line 1 of Schedule C",
+    "reason": "Statutory employee, farm, partnership and church employee income are asked here and refused; Schedule C net profit is figured on line 2b (s8812.eiw_2b)."
+   },
+   "consumer:ssb.pub915@i1040gi:p32": {
+    "verdict": "same",
+    "question_phrase": "you (or, on a joint return, your spouse) made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you (or, on a joint return, your spouse) file Form 2555, 4563 or 8815; or you (or, on a joint return, your spouse) exclude employer-provided adoption benefits or income from sources within Puerto Rico",
+    "source_phrase": "Social Security Benefits Worksheet, \"Be sure you have read the Exception in the line 6a and 6b instructions to see if you can use this worksheet instead of a publication to find out if any of your benefits are taxable.\"",
+    "reason": "The worksheet line refuses on a Yes, the Exception's cases (p. 31) in which a publication's worksheet is used instead; the worksheet takes the joint return's benefits and income, so each case applies when it is true of either spouse, as the question says."
+   },
+   "consumer:dependent.other_claimant@i1040gi:p19": {
+    "verdict": "same",
+    "question_phrase": "meet the conditions to be the qualifying child of any other person for 2025, under the dependent rules or under the EIC rules",
+    "source_phrase": "Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025. For this purpose, a person isn’t a taxpayer if ...",
+    "reason": "The gate combines this answer with dependent.other_nontaxpayer to reach p. 19's 'qualifying child of any taxpayer'; the question is broader (it includes the EIC rules), so a broader Yes can only keep the refusal, never compute a qualifying relative the page excludes."
+   },
+   "consumer:f1095a.uniform@i1095a:p2": {
+    "verdict": "same",
+    "question_phrase": "Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A ... every month and the same amount in column B ... every month?",
+    "source_phrase": "i1095a p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\" (read by f1095a.line33a)",
+    "reason": "Line 33 is the total of the monthly amounts; the answer only picks whether that total is 12 times the one monthly amount or the sum of twelve entries, which agree when the question's condition holds."
+   },
+   "consumer:f1095a.uniform@i1095a:p3": {
+    "verdict": "same",
+    "question_phrase": "the same in every month",
+    "source_phrase": "Column B (p. 3), the monthly applicable SLCSP premium reported for each month",
+    "reason": "The uniform question asks whether the monthly column B amounts printed are equal; the p. 3 rule says what column B reports for each month, the same column the question reads."
+   },
+   "consumer:f1095a.uniform@i8962:p16": {
+    "verdict": "same",
+    "question_phrase": "Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A (monthly enrollment premiums) every month and the same amount in column B (monthly SLCSP premium) every month? Use the corrected column B ...",
+    "source_phrase": "i8962 p. 16, Column (a), the monthly enrollment premiums entered on lines 12 through 23 (read by f1095a.a_jan to f1095a.a_dec)",
+    "reason": "The reading lines use the answer only to choose between the one monthly column A amount (mo_a) and the twelve monthly amounts; when column A is the same every month the two routes give the same column (a) entry, which is what p. 16 asks for."
+   },
+   "consumer:f1095a.uniform@p974:p27": {
+    "verdict": "same",
+    "question_phrase": "... the same amount in column B (monthly SLCSP premium) every month? Use the corrected column B if column B is blank, zero or wrong, and answer no if the correct amount is not the same every month ... Get the correct amount from the Marketplace's tool",
+    "source_phrase": "p974 p. 27, Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\" (read by f1095a.b_jan to f1095a.b_dec)",
+    "reason": "The question is about the corrected applicable SLCSP premium, which the page says comes from the Marketplace's tool; the reading lines take that same corrected amount, monthly or uniform."
+   },
+   "consumer:f5695.part1_any@i1040s8812:p4": {
+    "verdict": "same",
+    "question_phrase": "Did you have 2025 costs for solar electric, solar water heating, small wind energy, geothermal heat pump, battery storage or fuel cell property for a home in the United States, or do you have a residential clean energy credit carryforward from line 16 of your 2024 Form 5695? A cost of an item counts in 2025 when its original installation is completed in 2025",
+    "source_phrase": "You are claiming one or more of the following credits ... c. Residential clean energy credit, Form 5695, Part I",
+    "reason": "Claiming the residential clean energy credit is having 2025 Part I costs (counted when installation is completed, i5695 p. 1, Costs) or a carryforward, as the question asks; f5695.claiming_part1 then also requires line 13 above zero."
+   },
+   "consumer:f8962.alloc@i8962:p17": {
+    "verdict": "same",
+    "question_phrase": "a Marketplace policy covered someone in your tax family and also someone not in it, or a divorce or legal separation during 2025 with coverage shared with the former spouse",
+    "source_phrase": "i8962 p. 17, Lines 12 through 23, column (b): if you completed Part IV for any Form 1095-A, add the applicable SLCSP premium allocated to you",
+    "reason": "p. 17's allocation sentence refers to the Part IV allocation the input asks about; the input's shared-policy and divorce-or-separation limbs are the same rule, and the line refuses rather than allocating."
+   },
+   "consumer:f8962.alloc@i8962:p18": {
+    "verdict": "same",
+    "question_phrase": "a Marketplace policy covered someone in your tax family and also someone not in it, or a divorce or legal separation during 2025 with coverage shared with the former spouse",
+    "source_phrase": "i8962 p. 18, Part IV—Allocation of Policy Amounts: see Line 1 and Line 9 to determine whether you need to complete Part IV",
+    "reason": "The p. 18 reference is to Part IV allocation, the same rule the input asks about; the input's question already covers a shared policy and a divorce or separation in 2025, and the line refuses rather than allocating."
+   },
+   "consumer:f8962.other@i8962:p17": {
+    "verdict": "same",
+    "question_phrase": "someone not lawfully present; eligibility for other minimum essential coverage; an HRA; unpaid premiums; advance payments for someone in no tax family; a Marketplace Medicaid or CHIP determination on intentionally or recklessly incorrect information; or an incarcerated enrollee",
+    "source_phrase": "i8962 p. 17, Column (b): if you or a family member isn't lawfully present and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan",
+    "reason": "p. 17 points to the Pub. 974 rule for an unlawfully present enrollee, one of the input's exclusions; the page does not give the exclusion a different definition, and the line refuses on the gate."
+   },
+   "consumer:f8962.other@i8962:p18": {
+    "verdict": "same",
+    "question_phrase": "someone not lawfully present; eligibility for other minimum essential coverage; an HRA; unpaid premiums; advance payments for someone in no tax family; a Marketplace Medicaid or CHIP determination on intentionally or recklessly incorrect information; or an incarcerated enrollee",
+    "source_phrase": "i8962 p. 18, Not an applicable taxpayer: if you are not an applicable taxpayer because you are using filing status married filing separately, you must repay some or all of the APTC",
+    "reason": "p. 18's eligibility paragraph is the married-filing-separately rule, which the return-level s3.mfs refusal already handles; it does not give the input's other coverage-eligibility exclusions a different meaning, and the line refuses on the gate."
+   },
+   "consumer:f8962.premium_adjust@f8962:p1": {
+    "verdict": "same",
+    "question_phrase": "coverage began after the first day of a month, other than on a birth, adoption, placement for adoption or foster care, or court order; or Marketplace premiums for a month were refunded in 2025",
+    "source_phrase": "f8962 p. 1, Part II, line 24: Total PTC",
+    "reason": "The form face states the total the gate's refusal protects; it does not define the premium adjustment, which comes from i8962 p. 4."
+   },
+   "consumer:f8962.premium_adjust@i8962:p17": {
+    "verdict": "same",
+    "question_phrase": "coverage for anyone in your tax family began after the first day of a month, other than coverage effective on the date of a birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order; or any Marketplace premiums for a month were refunded in 2025",
+    "source_phrase": "i8962 p. 17, Lines 12 Through 23, column (c) and Column (c): the monthly contribution amount and the column (c) entries for lines 12 through 23",
+    "reason": "p. 17 states where the monthly contribution amount and the column (c) entries come from; it does not define the premium adjustments the input asks about, and the line reads the gate only to refuse a return with an unadjusted premium."
+   },
+   "consumer:f8962.premium_adjust@i8962:p18": {
+    "verdict": "same",
+    "question_phrase": "coverage for anyone in your tax family began after the first day of a month, other than coverage effective on the date of a birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order; or any Marketplace premiums for a month were refunded in 2025",
+    "source_phrase": "i8962 p. 18, Line 25: enter the amount from line 11(f) or add lines 12(f) through 23(f), and Line 29: enter the smaller of line 27 or line 28",
+    "reason": "p. 18 states the line 25 and line 29 amounts; it does not redefine the mid-month or refunded-premium adjustment, and the line reads the gate only to refuse the return."
+   },
+   "consumer:household.married@i1040gi:p13": {
+    "verdict": "same",
+    "question_phrase": "Were you married at the end of 2025 (including married but considered unmarried for head of household status)?",
+    "source_phrase": "You were married at the end of 2025, even if you didn’t live with your spouse at the end of 2025.",
+    "reason": "Both use the same year-end marital-status test with the same treatment of living apart, legal separation and interlocutory decrees, while the death-year joint-filing route on p. 13 is explicitly left by the question to household.spouse_died_2025, which household.filing_status_conflict reads alongside household.married."
+   },
+   "consumer:household.married@i1040gi:p23": {
+    "verdict": "same",
+    "question_phrase": "Were you married at the end of 2025 (including married but considered unmarried for head of household status)?",
+    "source_phrase": "If you and your spouse lived in a community property state, you must usually follow state law",
+    "reason": "household.hoh_community_property screens the still-married HOH case only. Ended marriages are separately covered by household.cp_marriage_ended and domestic partners by household.rdp_community_property. The model interpreted this one reader as the whole scope policy; the actual sibling gates cover the two cases it identified."
+   },
+   "consumer:household.married@i8889:p5": {
+    "verdict": "same",
+    "question_phrase": "Were you married at the end of 2025 (including married but considered unmarried for head of household status)?",
+    "source_phrase": "If you are married and had family coverage at any time during the year",
+    "reason": "Read with i8889 p.4 rule6 and p.6 chart, which explicitly determine unmarried status at year end. The at-any-time phrase concerns family coverage, not an alternative year-end-marriage definition. The current question keeps legally married HOH filers married and distinguishes the filing-status death-year rule. The model disclosed its competing grammatical reading; p.6 supplies the explicit temporal definition used here."
+   },
+   "consumer:household.married@i8889:p6": {
+    "verdict": "same",
+    "question_phrase": "Were you married at the end of 2025 (including married but considered unmarried for head of household status)?",
+    "source_phrase": "If, at the end of 2025, you were unmarried and age 55 or older",
+    "reason": "The year-end unmarried chart condition is the negation of the question’s year-end marriage answer; age is tested separately. The isolated model draft also returned same."
+   },
+   "consumer:household.spouse_died_2025@i1040gi:p13": {
+    "verdict": "same",
+    "question_phrase": "Did your spouse die in 2025? (Asked when your filing status is single or head of household.)",
+    "source_phrase": "Your spouse died in 2025 and you didn’t remarry in 2025.",
+    "reason": "The input supplies the death-year fact, not eligibility to file jointly. household.widowed_2025 combines it with a single/HOH status guard and refuses the owner-selected death-year situation (BUG-0277); it never treats this answer alone as establishing the quoted joint-return rule. The isolated model response conflated that scope screen with a joint-return eligibility predicate."
+   },
+   "consumer:person.age65@i1040sr:p1": {
+    "verdict": "same",
+    "question_phrase": "Were you born before January 2, 1961?",
+    "source_phrase": "\"You are considered age 65 on the day before your 65th birthday. As a result, if you were born on January 1, 1961, you are considered to be age 65 at the end of 2025.\"",
+    "reason": "Both count a person born on January 1, 1961 as 65. The page also treats a person who died in 2025 before reaching 65 as under 65; s3.elderly_ask then has the credit question asked, and the question only refuses on a wish to claim, so no value depends on the difference."
+   },
+   "consumer:person.x_other@i5329:p5": {
+    "verdict": "same",
+    "question_phrase": "a taxable distribution ...; excess contributions ...; a required minimum distribution",
+    "source_phrase": "Line 4 (p. 5), \"you must multiply that amount by 25% instead of 10%\"",
+    "reason": "Line 4 reads the screen only through its Part refusal; the rate rule on p. 5 uses no word of the question, whose items concern other Parts."
+   },
+   "consumer:sa.unsupported@i1040sca:p10": {
+    "verdict": "same",
+    "question_phrase": "Any casualty or theft loss; a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits; or the sales-tax election",
+    "source_phrase": "Line 12, \"Enter on line 12 the total value of your contributions of property other than by cash or check\"",
+    "reason": "sa.line12 refuses on this Schedule A-wide screen as it did before the gate; p. 10 defines nothing the screen asks, and its own conditions are screened by sa.charity_limited and the gift refusals."
+   }
+  }
+ },
+ "reviews/2025/limits.json": {
+  "baseline": {},
+  "rulings": {
+   "limit:p575:p35:1499b8a9": {
+    "enforced_by": [
+     "retirement.special",
+     "scope.other_income"
+    ],
+    "reason": "The $22,000 per-disaster limit across plans is never reached: retirement.special asks for \"a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one (Form 8915-F)\" and refuses the distribution on yes, and scope.other_income asks for \"the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F)\" and refuses the return on yes."
+   }
+  }
+ }
+}

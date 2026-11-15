@@ -61,9 +61,9 @@ def saver_answers(person):
 def gen_case(rng, i):
     inputs = {
         "f1040.status": "single", "$person": ["taxpayer"], "person[taxpayer].role": "taxpayer", "person[taxpayer].rrta": False,
-        "sb.unsupported": False, "sb.form5471": False, "sb.line7a": False, "sb.fbar_required": False, "sb.form8938": False, "sb.line8": False,
-        "sb.foreign_any": False,
-        "div.box2c": 0, "div.box2e": 0, "div.box2f": 0, "div.box3": 0,
+        "sb.nominee": False, "sb.bonds_any": False, "sb.bond_special": False, "sb.form5471": False, "sb.line7a": False, "sb.fbar_required": False, "sb.form8938": False, "sb.line8": False,
+        "sb.account_any": False, "sb.asset_any": False, "sb.trust_any": False, "sb.company_any": False, "sb.territory_any": False,
+        "div.other_boxes": False, "div.box2c": 0, "div.box2e": 0, "div.box2f": 0, "div.box3": 0,
         "div.box9": 0, "div.box10": 0, "div.box13": 0, "div.basis_reconciled": True,
         "sd.other_forms": False, "sd.carryover": False,
         "qbi.unsupported": False,
@@ -77,22 +77,22 @@ def gen_case(rng, i):
         "f8959.unsupported": False, "f8960.unsupported": False, "f8960.refund": False, "f8960.allocated_taxes": 0,
         "ftc.all_passive": True, "ftc.statements": True, "ftc.eligible": True, "ftc.elect": True,
         "$f1095a": [], "s3.line10": 0,
-        "sa.unsupported": False, "sa.charity_limited": False, "sa.excluded_income": False, "sa.dependent": False,
+        "sa.sales_tax_wish": False, "sa.estate_tax_income": False, "sa.bond_premium": False, "sa.debt_instrument_loss": False, "sa.pension_unrecovered": False, "sa.impairment_work": False, "sa.charity_limited": False, "sa.excluded_income": False, "sa.dependent": False,
         "sa.spouse_extra": False, "person[taxpayer].age65": False, "person[taxpayer].blind": False, "sa.spouse_itemizes": False, "sa.elect_itemize": False,
-        "sa.line5c": 0,
+        "sa.personal_property_tax_any": False, "sa.line5c": 0, "sa.gift_carryover": False,
         "scope.schedule1": False, "scope.other_income": False,
         # The credit questions asked of everyone: none of the situations applies.
         "s3.adoption_any": False, "s3.credit_bond": False, "s3.disability_retired": False, "s3.elderly_credit": False, "s3.ev": False,
         "s3.farmland": False, "s3.foreign_any": False, "s3.kerosene": False, "s3.mcc": False, "s3.prior_other_forms": False, "s3.repaid_income": False,
-        "refund.received": 0,
+        "refund.any": False,
         # Schedule 1 lines 2a, 8c and 19a: no alimony and no canceled debt.
         "s1.alimony": False, "s1.cod_any": False, "s1.cod_amount": 0,
         "scope.other_line16": False, "s2.amt": False, "s2.other": False,
         "f1040.line25b": 0, "f1040.line25c_other": 0, "f1040.line26": 0, "f1040.line35a": 0, "f1040.line36": 0,
         # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
         # nobody's qualifying child, with no tax-exempt interest.
-        "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.qc_of_another": False, "person[taxpayer].born_before_2001": True, "person[taxpayer].born_after_1960": True, "eic.us_home": True, "household.married": False,
-        "household.credit_disallowed": False, "household.community_property": False, "household.rdp": False, "household.spouse_died_2025": False, "household.cp_married": False, "eic.died_2025": False,
+        "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.lived_with_relative": False, "eic.qc_of_another": False, "person[taxpayer].eic_age25": True, "person[taxpayer].eic_under65": True, "eic.us_home": True, "household.married": False,
+        "household.credit_disallowed": False, "household.community_property": False, "household.rdp": False, "household.spouse_died_this_year": False, "household.cp_married": False, "eic.died_this_year": False,
         "person[taxpayer].eic_ssn": True, "person[taxpayer].under16": False,
         "$retirement@person[taxpayer]": [],
         # Form 2441: no care expenses and no dependent care benefits.
@@ -183,7 +183,9 @@ def gen_case(rng, i):
     cash_gifts = min(log_uniform(rng, 10_000, 2_000_000), wages // 8) if itemize and rng.random() < 0.6 else 0
     noncash = min(log_uniform(rng, 10_000, 500_000), wages // 20) if itemize and rng.random() < 0.3 else 0
     inv_interest = log_uniform(rng, 10_000, 1_000_000) if itemize and rng.random() < 0.3 else 0
-    inputs.update({"sa.line1": medical, "sa.line5a": salt_income, "sa.line5b": salt_re, "sa.line8a": mortgage,
+    inputs.update({"sa.medical_any": bool(medical), "sa.medical_premiums": False, "sa.line1": medical,
+                   "sa.state_tax_any": bool(salt_income), "sa.state_tax_other_any": False, "sa.line5a": salt_income,
+                   "sa.home_owner": bool(salt_re or mortgage), "sa.home_other": False, "sa.line5b": salt_re, "sa.property_tax_other_any": False, "sa.mortgage_interest": mortgage,
                    "sa.line11": cash_gifts, "f4952.line1": inv_interest,
                    "sa.gifts": bool(cash_gifts or noncash), "f4952.has_interest": bool(inv_interest)})
     inputs["$gift"] = ["items"] if noncash else []
@@ -208,7 +210,9 @@ def gen_case(rng, i):
                        f"{key}.canada_mexico": False, f"{key}.married": False, f"{key}.tin": True, f"{key}.work_ssn": True,
                        f"{key}.gross_income": 0, f"{key}.supported": True, f"{key}.kidnapped": False, f"{key}.spouse_relative": False, f"{key}.qr_all_year": True, f"{key}.absence_no_return": False, f"{key}.other_claimant": False,
                        f"{key}.divorced_rule": False, f"{key}.multiple_support": False, f"{key}.parent_home_paid": False,
-                       f"{key}.us_half": True, f"{key}.eic_ssn": True})
+                       f"{key}.us_half": True, f"{key}.eic_ssn": True,
+                       f"{key}.lived_all_year": True, f"{key}.ever_married": False, f"{key}.parents_apart": False,
+                       f"{key}.own_money": False, f"{key}.self_support_view": "under_half", f"{key}.supported_view": "over_half", f"{key}.citizen_ssn": True})
     hoh = n_children > 0 and rng.random() < 0.5
     inputs["f1040.status"] = "hoh" if hoh else "single"
     inputs.update({"person[taxpayer].tin": True, "person[taxpayer].work_ssn": True,
@@ -278,11 +282,11 @@ def gen_case(rng, i):
     age = 40
     if r.random() < 0.15:
         age = r.randint(66, 85)
-        inputs.update({"person[taxpayer].age65": True, "person[taxpayer].died_before_65": False, "person[taxpayer].born_after_1960": False})
+        inputs.update({"person[taxpayer].age65": True, "person[taxpayer].died_before_65": False, "person[taxpayer].eic_under65": False})
         features.add("senior")
     tips = r.randint(10_000, min(4_000_000, wages)) if r.random() < 0.12 else 0
     if tips:
-        inputs.update({"s1a.tips": True, "$tipjob@person[taxpayer]": ["t"], "person[taxpayer].tipjob[t].qualified": True, "person[taxpayer].tipjob[t].amount": tips})
+        inputs.update({"s1a.tips": True, "$tipjob@person[taxpayer]": ["t"], "person[taxpayer].tipjob[t].listed": True, "person[taxpayer].tipjob[t].tips": tips})
         features.add("tips")
     overtime = r.randint(10_000, min(2_000_000, wages // 3)) if r.random() < 0.12 and wages >= 30_000 else 0
     if overtime:
@@ -373,7 +377,7 @@ def add_early(r, inputs, facts, features, person, who):
 
 
 EDU_ANSWERS = ("", "_1098t", "_over", "_line23", "_line24", "_line25", "_line26", "_ein")
-EDU_AMOUNTS = ("_inst", "_mat", "_a2025", "_a2026", "_refunds")
+EDU_AMOUNTS = ("_inst", "_mat", "_a_this_year", "_a_next_year", "_refunds")
 
 
 def edu_entry_defaults(inputs, entry):
@@ -386,7 +390,7 @@ def edu_line7_answers(inputs, person, age, r=None):
     """Form 8863 line 7 birth-date, student, support and parent answers for a filer `age` at the end of the year (born
     before January 2, 2007 means 19 or older, before January 2, 2002 means 24 or older)."""
     young = r is not None
-    inputs.update({f"{person}.edu_born_2007": age >= 19, f"{person}.edu_born_2002": age >= 24,
+    inputs.update({f"{person}.edu_over18": age >= 19, f"{person}.edu_age24": age >= 24,
                    f"{person}.edu_fulltime": young and r.random() < 0.6, f"{person}.edu_half_support": young and r.random() < 0.6,
                    f"{person}.edu_parent": not young or r.random() < 0.9})
 
@@ -405,7 +409,7 @@ def edu_student(r, inputs, entry):
     refunds = amount(0, 40_000) if r.random() < 0.05 else 0
     why = "aoc" if r.random() < 0.75 else r.choice(["line23", "ein", "ein", "line23", "line25", "line24"])
     inputs.update({f"{entry}.edu": True, f"{entry}.edu_1098t": True, f"{entry}.edu_inst": inst, f"{entry}.edu_mat": mat,
-                   f"{entry}.edu_a2025": a2025, f"{entry}.edu_a2026": a2026, f"{entry}.edu_refunds": refunds, f"{entry}.edu_over": False,
+                   f"{entry}.edu_a_this_year": a2025, f"{entry}.edu_a_next_year": a2026, f"{entry}.edu_refunds": refunds, f"{entry}.edu_over": False,
                    f"{entry}.edu_line23": why == "line23", f"{entry}.edu_line24": why != "line24", f"{entry}.edu_line25": why == "line25",
                    f"{entry}.edu_line26": False, f"{entry}.edu_ein": why != "ein"})
     assistance = a2025 + a2026 + refunds
@@ -454,7 +458,7 @@ def add_education(r, inputs, facts, features, ages, young_ok):
             age = r.randint(18, 23)
             facts["age"] = age
             edu_line7_answers(inputs, TAXPAYER, age, r)
-            inputs.update({f"{TAXPAYER}.born_before_2001": False, f"{TAXPAYER}.sav_student": inputs[f"{TAXPAYER}.edu_fulltime"]})
+            inputs.update({f"{TAXPAYER}.eic_age25": False, f"{TAXPAYER}.sav_student": inputs[f"{TAXPAYER}.edu_fulltime"]})
             features.add("young_filer")
     inputs["f8863.paid"] = True
     facts["education"] = {"students": students}
@@ -466,7 +470,7 @@ def add_marketplace(r, inputs, facts, features):
     advance payments from none to more than the credit. The screens are answered No (the generated families are
     unaffected by them), the 48-state poverty table applies, and claimed dependents are not required to file. A
     separate generator leaves every earlier draw unchanged."""
-    inputs.update({"f8962.alloc": False, "f8962.married_in_2025": False, "f8962.other": False, "f8962.premium_adjust": False, "f8962.same_state_counted": False, "f8962.alien_below": False,
+    inputs.update({"f8962.alloc": False, "f8962.married_this_year": False, "f8962.other": False, "f8962.premium_adjust": False, "f8962.same_state_counted": False, "f8962.alien_below": False,
                    "f8962.fpl_table": "contiguous", "f8962.estimate_100": True})
     for k in inputs.get("$dependent", []):
         inputs.update({f"dependent[{k}].ptc_files": False, f"dependent[{k}].ptc_magi": 0})
@@ -532,8 +536,8 @@ def add_form_features(r, inputs, facts, features, ages, wages, age):
             if r.random() < 0.8:
                 care_paid[k] = r.randint(50_000, 900_000)
     if care_paid:
-        inputs.update({"f2441.care": True, "f2441.student_disabled": False, "f2441.spouse_died": False,
-                       "f2441.nondependent": False, "f2441.prior_year": False, "f2441.paid_2026": 0,
+        inputs.update({"f2441.care": True, "f2441.student": False, "f2441.unable": False, "f2441.spouse_died": False,
+                       "f2441.care_other": False, "f2441.nondependent": False, "f2441.prior_year": False, "f2441.other_care_expenses": 0,
                        "f2441.line13": 0, "f2441.line14": 0, "f2441.plans_differ": False, "f2441.plan_max": 500_000,
                        "$dcprov": ["p0"], "dcprov[p0].tin_kind": "tin", "dcprov[p0].household": False,
                        "dcprov[p0].paid": sum(care_paid.values()), "dcprov[p0].related": False})
@@ -636,8 +640,8 @@ def make_joint(case, j):
     age = r.randint(66, 85) if r.random() < 0.15 else r.randint(25, 64)
     inputs.update({f"{SPOUSE}.role": "spouse", f"{SPOUSE}.rrta": False, f"{SPOUSE}.tin": True, f"{SPOUSE}.work_ssn": True,
                    f"{SPOUSE}.eic_ssn": True, f"{SPOUSE}.under16": False,
-                   f"{SPOUSE}.age65": age >= 66, f"{SPOUSE}.blind": False, f"{SPOUSE}.born_before_2001": True,
-                   f"{SPOUSE}.born_after_1960": age < 66, f"{SPOUSE}.educator_expenses": 0,
+                   f"{SPOUSE}.age65": age >= 66, f"{SPOUSE}.blind": False, f"{SPOUSE}.eic_age25": True,
+                   f"{SPOUSE}.eic_under65": age < 66, f"{SPOUSE}.educator_expenses": 0,
                    f"$tipjob@{SPOUSE}": [], f"$otjob@{SPOUSE}": [], f"$f8889@{SPOUSE}": [], f"$sc@{SPOUSE}": [],
                    f"$retirement@{SPOUSE}": []})
     inputs.update(saver_answers(SPOUSE))
@@ -707,6 +711,161 @@ def make_se(case, j):
 # The amounts div.any gates directly (Form 1099-DIV boxes 1a, 2a, 3, 9, 10, 12 and 13), as in engine/src/generate.ts.
 DIV_ANY_GATED = ("sb.ordinary_dividends", "sd.distributions", "div.box3", "div.box9", "div.box10", "div.box12", "div.box13")
 
+# The generator draws a return with working answers that are no longer inputs: screens and birth-date facts that the
+# interview now asks as separate questions and derives. redraft_answers turns them into the questions' answers at the
+# end, as engine/src/generate.ts does, so that every draw, and so every earlier case, is the one it was.
+# Working answers of a person: the birth-date facts (the birth year is figured from the person's age) and the screens.
+PERSON_WORKING = ("age65", "eic_under65", "eic_age25", "died_before_65", "sav_born", "under16", "edu_over18", "edu_age24",
+                  "ira_age50", "ira_excess", "sav_excess", "x_other")
+# The questions person.x_other and person.ira_excess were taken apart into: no generated person has one.
+PERSON_NO = ("x_edu_account", "x_edu_taxable", "x_edu_excess", "x_archer_excess", "x_ira_prior_excess", "x_hsa_prior_excess",
+             "inherited_account", "rmd_missed", "ira_extra_left", "ira_recharacterized", "born_jan1", "under16_at_year_end",
+             "age50_at_year_end", "age55_at_year_end", "died_at_64")
+# Screens answered No on every generated return, and the questions each was taken apart into, all answered No (a
+# question beneath a parent answered No is not asked; its answer is then not read).
+SCREENS_NO = {
+    "sd.other_forms": ("sd.sold_other", "sd.business_property", "sd.installment", "sd.like_kind", "sd.casualty", "sd.condemned",
+                       "sd.f2439", "sd.sec1256", "sd.small_business_stock", "sd.trader_election"),
+    "qbi.unsupported": ("qbi.coop_patron", "qbi.prior_form", "qbi.reit_loss", "qbi.suspended"),
+    "f8959.unsupported": ("f8959.territory_w2",),
+    "s1.line8_other": ("s1.digital_income", "s1.inmate_wages", "s1.ltc_payout", "s1.nqdc_pension", "s1.olympic", "s1.stock_options",
+                       "s1.winnings_any"),
+    "s1.line8g": ("s1.alaska_any",), "s1.line8h": ("s1.jury_any",), "s1.line8i": ("s1.winnings_any",),
+    "s1.line8j": ("s1.hobby_any",), "s1.line8r": ("s1.scholarship_any",),
+    "s2.amt": ("s2.amt_owed", "s2.options_any", "s2.iso", "s2.iso_vested"),
+    "s2.other": ("s2.credit_recapture", "s2.household_help", "s2.household_employee", "s2.hsa_testing", "s2.lookback",
+                 "s2.mortgage_subsidy", "s2.other_tax", "s2.w2_marks"),
+    "scope.schedule1": ("scope.archer_msa", "scope.armed_forces", "scope.artist_official", "scope.attorney_fees",
+                        "scope.business_before", "scope.church_exempt_wages", "scope.clergy", "scope.farm", "scope.k1",
+                        "scope.military_move", "scope.nol", "scope.performer_expenses", "scope.recovery", "scope.reforestation",
+                        "scope.religious_work", "scope.rental", "scope.reservist_expenses", "scope.se_plan_other", "scope.w2_marks"),
+    "scope.other_income": ("scope.adoption_benefits", "scope.care_benefits_other", "scope.chapter11", "scope.disaster_distribution",
+                           "scope.excess_deferral", "scope.medicaid_waiver", "scope.noncitizen", "scope.nonresident", "scope.passive",
+                           "scope.pay_no_w2", "scope.reservist_repaid"),
+    "scope.other_line16": ("scope.cfc", "scope.education_recapture", "scope.f8615", "scope.f8814", "scope.f8978", "scope.foreign_shares",
+                           "scope.income_averaging", "scope.pfic", "scope.unearned_2700"),
+    "ira.special": ("ira.care_payments", "ira.deferred_comp", "ira.fellowship"),
+    "ssb.lump_sum": ("ssb.lump_elect", "ssb.prior_year_pay"),
+    "ssb.pub915": ("ssb.ira_covered", "ssb.repaid_more"),
+    "f8962.alloc": ("f8962.divorced_enrolled", "f8962.shared_policy"),
+    "f8962.other": ("f8962.a_zero_paid", "f8962.hra", "f8962.incarcerated", "f8962.job_offer", "f8962.mec_government",
+                    "f8962.mec_job_affordable", "f8962.mec_job_enrolled", "f8962.mec_other", "f8962.medicaid_reversed",
+                    "f8962.no_family", "f8962.not_lawful", "f8962.other_coverage", "f8962.unpaid"),
+    "f8962.premium_adjust": ("f8962.midmonth_start", "f8962.premium_refunded"),
+}
+# The amounts beneath those screens, zero (the old screen's line, now derived, was zero).
+SCREEN_AMOUNTS_ZERO = ("s1.alaska_dividend", "s1.jury_pay", "s1.prizes", "s1.hobby_income", "s1.scholarship_taxable")
+# Form 5695's kinds of property (engine/src/generate.ts, F5695_PART1_KINDS and F5695_PART2_KINDS), each Yes when its cost
+# is drawn: the costs of each kind as the generator states them.
+F5695_KINDS = {"solar": ("line1",), "solar_water": ("line2",), "wind": ("line3",), "geothermal": ("line4",), "insulation": ("line18a",),
+               "doors": ("line19a", "line19d_i", "line19d_ii", "line19e"),
+               "windows": ("line20a_i", "line20a_ii", "line20a_iii", "line20a_iv", "line20b"),
+               "heat_pump": ("line29a", "line29b"), "hp_water_heater": ("line29c", "line29d"), "central_ac": ("line22a", "line22b"),
+               "water_heater": ("line23a_i", "line23a_ii", "line23b"), "furnace": ("line24a", "line24b"), "biomass": ("line29e", "line29f"),
+               "panel": ("line25c",), "audit": ("line26b",)}
+
+
+def redraft_answers(case):
+    """Turn the working answers of a generated case into the interview's questions (see PERSON_WORKING). A person's
+    birth year is the one that makes the person's age at the end of the year; a filer whose Health Savings Account
+    answer drawn is the age-55 addition and who is younger is 56 (the age the UsTaxes adapter gave such a filer), so
+    that every engine and the project read the same person. The person's facts keep the age, and `hsa_age55` the
+    addition's answer, for the adapters."""
+    inputs, facts = case["inputs"], case["facts"]
+    hsa_age55 = bool(inputs.pop(f"{HSA}.age55", False))
+    if hsa_age55 and facts.get("age", 40) < 55:
+        facts["age"] = 56
+    facts["hsa_age55"] = facts.get("age", 40) >= 55 if f"$f8889@{TAXPAYER}" in inputs and "hsa" in case["features"] else False
+    for role in inputs.get("$person", []):
+        P = f"person[{role}]"
+        age = facts.get("age", 40) if role == "taxpayer" else facts.get("spouse_age", 40)
+        for k in PERSON_WORKING:
+            inputs.pop(f"{P}.{k}", None)
+        inputs[f"{P}.birth_year"] = int(Y) - age
+        for k in PERSON_NO:
+            inputs[f"{P}.{k}"] = False
+        ira = inputs.get(f"{P}.ira_trad", 0) > 0 or inputs.get(f"{P}.sav_roth", 0) > 0 or any(
+            inputs.get(f"{P}.retirement[{k}].account") == "traditional_ira" for k in inputs.get(f"$retirement@{P}", []))
+        inputs[f"{P}.ira_owner"] = ira
+        # A Form 1099-R of an IRA: the special-situations screen (answered No) is now the questions an IRA's form is
+        # asked, each No; nothing went into another retirement account (box 1 is taxable).
+        for k in inputs.get(f"$retirement@{P}", []):
+            E = f"{P}.retirement[{k}]"
+            inputs.pop(f"{E}.code_screen", None)
+            assert inputs.pop(f"{E}.special") is False, case["id"]
+            for q in ("charity_hsa", "ira_basis", "ira_returned", "disaster", "rollover_any"):
+                inputs[f"{E}.{q}"] = False
+    # The household: a joint filer married at the end of the year; a single filer or head of household never married.
+    joint = inputs["f1040.status"] == "mfj"
+    for k in ("household.married", "household.unmarried"):
+        inputs.pop(k, None)
+    inputs["household.ever_married"] = joint
+    if joint:
+        inputs["household.married_dec31"] = True
+    for screen, questions in SCREENS_NO.items():
+        assert inputs.pop(screen, False) in (False, 0), (case["id"], screen)
+        for q in questions:
+            inputs[q] = False
+    for k in SCREEN_AMOUNTS_ZERO:
+        inputs[k] = 0
+    for k in ("s179.line10",):
+        inputs.pop(k, None)
+    # Parents the interview now asks before amounts the generator states: each from the amounts it opens.
+    inputs["ssb.any"] = inputs.get("ssb.benefits", 0) > 0
+    inputs["f1040.withheld_other_any"] = inputs.get("f1040.line25b", 0) > 0 or inputs.get("f1040.line25c_other", 0) > 0
+    inputs["f1040.estimated_any"] = inputs.get("f1040.line26", 0) > 0
+    inputs["sli.any"] = inputs.get("sli.interest", 0) > 0
+    # No mortgage over the limit or unreported, no foreign tax deducted instead of credited, no alimony, every sale
+    # listed on Form 8949 (the generator's route), no care provider when no care was paid.
+    inputs.update({"sa.mortgage_unreported": False, "sa.mortgage_over_limit": False, "sa.foreign_tax_deduct": False,
+                   "s1.alimony_any": False, "sli.unqualified_any": False, "sli.assisted_any": False, "sd.route_each": False})
+    # Form 1099-DIV: the boxes other than 1a, 1b, 2a, 5, 7 and 12 are asked beneath their own parent.
+    inputs["div.other_boxes"] = any(inputs.get(f"div.{b}", 0) for b in ("box2b", "box2c", "box2d", "box2e", "box2f", "box3",
+                                                                        "box9", "box10", "box13"))
+    # Foreign tax on a return with no dividends and no interest was paid to another country directly: the foreign
+    # question is Yes (and none of the Schedule 3 items beneath it applies), so the foreign tax is asked.
+    if inputs.get("ftc.taxes", 0) > 0 and not inputs.get("div.any") and not any(
+            inputs.get(f"interest[{k}].amount", 0) for k in inputs.get("$interest", [])):
+        inputs.update({"s3.foreign_any": True, "s3.section965": False, "s3.section960c": False, "s3.virgin_islands": False})
+    inputs["s1.uc_any"] =inputs.get("s1.uc_paid", 0) > 0 or inputs.get("s1.uc_repaid", 0) > 0
+    inputs["sa.mortgage_other_use"] = False
+    inputs.setdefault("$dcprov", [])
+    # Form 2441's questions on a return with no care paid: none applies (the answers the care branch gives).
+    inputs.update({k: v for k, v in (("f2441.student", False), ("f2441.unable", False), ("f2441.spouse_died", False),
+                                     ("f2441.care_other", False), ("f2441.nondependent", False), ("f2441.prior_year", False),
+                                     ("f2441.other_care_expenses", 0), ("f2441.line13", 0), ("f2441.line14", 0),
+                                     ("f2441.plans_differ", False), ("f2441.plan_max", 500_000)) if k not in inputs})
+    for k in inputs.get("$sc@person[taxpayer]", []):
+        inputs[f"person[taxpayer].sc[{k}].goods"] = False
+        inputs[f"person[taxpayer].sc[{k}].employees"] = False
+        inputs[f"person[taxpayer].sc[{k}].travel_meals"] = False
+    for role in inputs.get("$person", []):
+        inputs.setdefault(f"person[{role}].eligible_educator", False)
+        for k in inputs.get(f"$tipjob@person[{role}]", []):
+            for q in ("charged", "other_work", "unlawful"):
+                inputs[f"person[{role}].tipjob[{k}].{q}"] = False
+    if joint:
+        inputs["household.considered_unmarried"] = False
+    # Form 5695's answers about the home, for a return with only one part's costs drawn.
+    for k in ("business_use", "joint_occupancy", "separate_homes", "condo", "construction_later", "line5a", "line7a"):
+        inputs.setdefault(f"f5695.{k}", False)
+    inputs.setdefault("f5695.battery_cost", 0)
+    inputs.setdefault("f5695.line12", 0)
+    # Every generated child has a social security number issued before the return's due date.
+    for k in inputs.get("$dependent", []):
+        inputs[f"dependent[{k}].edu_tin_issued"] = True
+    # Form 5695: the two part screens become the parent and the kinds of property whose costs are drawn.
+    part1, part2 = inputs.pop("f5695.part1_any", False), inputs.pop("f5695.part2_any", False)
+    inputs["f5695.any"] = bool(part1 or part2)
+    for kind, costs in F5695_KINDS.items():
+        inputs[f"f5695.{kind}"] = any(inputs.get(f"f5695.{c}", 0) for c in costs)
+    # A Form 1095-A with the same columns A and B every month, column B as the Marketplace figured it.
+    for k in inputs.get("$f1095a", []):
+        E = f"f1095a[{k}]"
+        uniform = inputs.pop(f"{E}.uniform")
+        inputs.update({f"{E}.same_months": uniform, f"{E}.b_blank": False, f"{E}.b_changed": False,
+                       f"{E}.b_doubt": False, f"{E}.b_fixed_same": uniform})
+
 
 def main():
     ap = argparse.ArgumentParser()
@@ -723,6 +882,7 @@ def main():
     # The dividends question agrees with the amounts it gates, answered once every amount is final.
     for c in cases:
         c["inputs"]["div.any"] = any(c["inputs"].get(k, 0) != 0 for k in DIV_ANY_GATED)
+        redraft_answers(c)
     with open(a.out, "w") as f:
         json.dump(cases, f)
     print(f"generated {len(cases)} cases (seed {a.seed}) -> {a.out}")

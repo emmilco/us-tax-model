@@ -237,3 +237,24 @@ the validation policy.
 - Attempt: `stage14.veh.leased_actual` with `scveh.screen` answered Yes and No.
 - Observation: both complete with line 9 $1,000, line 20a $3,000 and the same f1040 line 24.
 - Learning: one fixture run, one leased path. It suggests the inherited "refusal located elsewhere" reading was wrong for this path; recorded as BUG-0310.
+
+## 2026-11-13 — A target to keep the s3 questions in place behind a later s3.credit_bond (provisional redraft, lane tick)
+
+- Hypothesis: with `s3.other_credit_4` among the `full` profile's targets, the s3 questions behind `s3.credit_bond` stay where they were when that question is asked later (in the tick-box group `rare_events`, order 13), and nothing else changes. Wrong if any check of `tools/draft_check.sh` fails.
+- Attempt: the target added to `interview/2025/full.yaml`; first in memory on the background return, then one full `tools/draft_check.sh`.
+- Observation: the background return is asked `s3.disability_retired` and `s3.ev` at 45 and 46 again and the group whole at 71 to 74. The check failed at the coverage rows: 16 rows of `interview/2025/coverage/credits.yaml`, each "the refusal … came on a background answer (… s3.credit_bond = false)".
+- Learning: one profile, one group. The questions became reachable, but their refusals are told from a list read in order (`scope.ready`), which still waits for `s3.credit_bond`. Target taken out; in no commit. Recorded in `docs/provisional/lanes/tick.md`, part 9, with the choices left.
+
+## 2026-11-13 — The wait behind s3.credit_bond, with the reach pass (provisional redraft, lane stitch)
+
+- Hypothesis: on the base that has the reach pass, a Schedule 3 question that states a `seq` is asked at its own order number whatever the chain's order, and the tick-box group `rare_events` is shown whole at any place. Wrong if a numbered Schedule 3 question is asked after a later order number has begun without a true wait, or if `tick-groups` leaves a member out.
+- Attempt: the built `full` interview given other numbers in memory (`docs/provisional/lanes/stitch_trial/trial.mjs`): the other Schedule 3 questions numbered in place; the map's numbers (118, 126, 215, 225, 279, 290, 305, 318); the chain's order reversed among the early topics. Each walked on the background return, with the tick-group check and the 46 rows of `interview/2025/coverage/credits.yaml`. Then the refusal lists of `s3.line7` and `s3.line14` reordered, and split into a line for each entry, in memory.
+- Observation: in every trial the group was whole (at order 13, 290 and 1) and each numbered question was asked at its number; the one late question, `s3.disability_retired` in the reversed trial, waits on the age answers. The rows failed (21, 9 and 22 of 46), nearly all because a refusal was told on a later background answer: at the map's numbers the vehicle rows on `s3.credit_bond`, `credits.mcc` on `s3.prior_other_forms`, the three foreign rows on `s3.farmland`; each still ended at the same gate. With the two lists reordered to the map's order, or split, 45 of 46 passed and no Schedule 3 refusal was late.
+- Learning: one background return, 46 rows, in memory. It suggests the earlier entry's reading was half right: the reach pass removes the wait on asking, and what remains is the telling of a refusal, which follows the order of the entries of `s3.line7` and `s3.line14` (not `scope.ready`'s list or the chain `s3.other_credit`, which were untouched in the trials that mended it). No form was changed. Recorded in `docs/provisional/lanes/stitch.md`, part 3.
+
+## 2026-11-13 — The server test of the half-written screen fails on the merged base (provisional redraft, lane stitch)
+
+- Hypothesis: `test-serve` fails at "one at a time, a later box of the same screen: expected 400, got 200" because the reach pass opens `s3.repaid_income` (it states a `seq`) past the unanswered gate `s3.farmland_deferral_if_sold`, and not because of this lane's change to `tickScreen`. Wrong if the test passes with that change taken out.
+- Attempt: `tickScreen`'s probe put back to the plain evaluation, compiled, `node engine/dist/main.js test-serve`; then restored.
+- Observation: the same failure, with the change taken out.
+- Learning: one run. It is consistent with the cause being the two contracts themselves: the tick lane's test states that the ordinary route rejects a later box once an earlier box's Yes has opened a question, which was so only while a refusal screen held a question back. See `docs/provisional/lanes/stitch.md`, part 5.

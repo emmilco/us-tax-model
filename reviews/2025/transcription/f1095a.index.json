@@ -4,7 +4,9 @@
  "family": "claude",
  "base": "1dc8dd1860048f19287c26046154b4a3cb144a7111834d50c957b4943f8749a5",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "printed lines compared": "30",
+  "agree / disagree / missing": "1 / 29 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -14,180 +16,200 @@
    "subject_key": "6339024936543f281c9c6c5896a94d629d95062694f0993f4b1bdd08f1956848"
   },
   {
+   "key": "f1095a.uniform",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: finding; low (BUG-0635). Two differences, one each way. (1) The reply is wrong on the no-APTC limb: its h_no_b_issue tests only b_blank, b_changed and b_doubt, so a form with no advance payments and a filled-in column B is uniform on same_months alone. i8962 p. 14, Missing or incorrect SLCSP premium: \"If either of these two situations applies to you, or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month\"; situation 1, \"No APTC was paid for your coverage ... column B ... may be wrong, left blank, or reported as -0-\" (also p. 16, Column (b), \"or if no APTC was paid\"). No APTC is a trigger of its own, not only a blank column B; the project's f1095a.no_aptc (line 33C zero) carries it. Triage pass ea49629f14d1: 2,386 of 2,842 agree; 1 completed value witness, stage18.reg.no_aptc_slcsp_by_month (no APTC, correct SLCSP $400 Jan-Jun, $300 Jul-Dec): project No, reply Yes; 398 candidate-unknown (b_doubt not stated in older class M fixtures and partials, which the project's short-circuit does not read), 57 project-unknown (line 33C withheld). (2) The project is wrong on the route where Part III differs by month: f1095a.b_wrong_asked reads only b_wrong there, so b_doubt and no advance payments never reach b_fixed_same, while b_blank does. i8962 p. 14, Line 10, \"Your SLCSP premium is the same for every month ... But see Missing or incorrect SLCSP premium\" and \"If the correct applicable SLCSP premium is not the same for every month of 2025, check No\": the line 10 test is on the corrected premium (as the project's own b_blank route reads it), and line 10 is a test (amb.2025.ptc_annual_route). A form with column A the same all year whose corrected column B is uniform gets line 10 No and lines 12-23 (a few dollars through the line 8b rounding). The reply applies the doubt test on both routes and is right there. No sample input reaches (2); not witnessed, found by reading.",
+   "subject_key": "790627d93972197e009e89838b4e266e379b67add79b5fcaa1c19ab8dfcee3a4"
+  },
+  {
    "key": "f1095a.a_jan",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "795a460dc163818bf722143738d6405720c5523b329ce3117b5321821fe23e03"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_jan); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_jan for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "subject_key": "2e41007ae937660227f9b7c09f36870a4704c32bfa1aa7b02b651f7462eab361"
   },
   {
    "key": "f1095a.a_feb",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "52d1f797818fe85cdf1d04814ff0545f9052f062a9afe996da9ad8049f9d314b"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_feb); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_feb for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "subject_key": "6d9c59a63a8f2488e642f9d233e8f694e5bf9c721b17a2692f05e0b2a6d98d81"
   },
   {
    "key": "f1095a.a_mar",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "3c4f6825e493a2da936745c41ea16ec976652a2c6a5d3d9faeccb8663566fb56"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_mar); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_mar for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "subject_key": "ba4fe2a656e9e974df784af2db9e9f16b3748374656424dd26e565e7364ade36"
   },
   {
    "key": "f1095a.a_apr",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "171b5e8bee307a4295cf48426e235284a5e81e63b9be25b2f51a70a0f153fc39"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_apr); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_apr for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "subject_key": "912f3a946e98f72cda2f6205c3d68075f9110f69f7c517f41317c78dbe8ef921"
   },
   {
    "key": "f1095a.a_may",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "fdf8e7fc6ca950b8ffdfb67622d385e83012443954258d4112dd48289457e4e4"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_may); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_may for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "subject_key": "c1a967c8e0c12adca789b557f24b1af2f0952063bad903ee15b8be9c04b8dc28"
   },
   {
    "key": "f1095a.a_jun",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "c1a9a55ca545a14c43de3d3b59d7d9f69f0cab62fcb91b42ef916668d64cf9d2"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_jun); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_jun for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "subject_key": "3cd55221ecffa033b9880a17343e4fca90bab86f08bad3deea71edd526180e09"
   },
   {
    "key": "f1095a.a_jul",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "42d02dd48c019cad9a0dd0cfe8c2b11ef0920933d180f9bf41f6b5f3356ec2ac"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_jul); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_jul for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "subject_key": "eb2d135600b80ed32fcb63699e6d669d1f4bd167d1934918cc5a7e216cc809e2"
   },
   {
    "key": "f1095a.a_aug",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "8dfa516076742262e40b1d0a2d15ee5dc5b21c6b5ab789a431fdc652ba38f35b"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_aug); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_aug for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "subject_key": "7978208667c0d9c37c11586b0ae5fc7d8b711d11baed968bdc785631f53737aa"
   },
   {
    "key": "f1095a.a_sep",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "3cae777699a297e2714595f45831254085cb53dd25fbb001e1b28842f9a02b30"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_sep); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_sep for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "subject_key": "b9118d0533555f60fb33b0a2359114f07e82ed82ea9a822b262bdfbb326d5069"
   },
   {
    "key": "f1095a.a_oct",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "9997e579a608e21899110216ee70cf8204afba73a58a31b2da24051b3eb91936"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_oct); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_oct for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "subject_key": "085357632b36dd637babc582875c822f3a29d4ce67c0906439fe9fbda0ad859d"
   },
   {
    "key": "f1095a.a_nov",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "71ec2770a8b8995b0a7b9b91e450af5e9ad1e38ddeb874bac0e87cf1b637c057"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_nov); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_nov for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "subject_key": "78ecb1a80802c3d91dbd5bf72b52ca2d3c54a110c038c6d7263be0568caf477f"
   },
   {
    "key": "f1095a.a_dec",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "2f477e007325c39e9d0db9851606f548816c33b3c3bdb2f847b3a617ba0adbef"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the expression is the project's choose on f1095a.uniform (mo_a against in_a_dec); it differs only through the reply's f1095a.uniform, ruled on that line (no-APTC limb dropped; BUG-0635 for the project's months-differ route). Where the two uniform tests part, same_months is Yes (or b_fixed_same Yes), so column A is the same every month and mo_a equals in_a_dec for a consistent filer (i8962 p. 16, Column (a)). Triage pass ea49629f14d1: 2,393 of 2,842 agree; 391 candidate-unknown (b_doubt/b_blank/b_changed not stated), 57 project-unknown (line 33C withheld); 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($380.00 vs $0.00), where the fixture states the monthly inputs the project asks and not mo_a, which the reply's route would ask.",
+   "subject_key": "e08f8fa92618dc28291bc8a2b79f0c1ad337385c5987373139abc3b2d746f8d2"
   },
   {
    "key": "f1095a.b_jan",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's January column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,891 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 4 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
-   "subject_key": "1ce6dc8c1e9d57a432aab7003fc997b01aded4487a0fb893957f658690f81622"
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "subject_key": "2824b9956dea3d3e4bbcfc89c095c1c9affebbddc312282a5a0560507f2c70cf"
   },
   {
    "key": "f1095a.b_feb",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's February column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,891 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 4 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
-   "subject_key": "df8819bb225593da7531b8959cc53cc95c1e274a843da5551baf60c800fbc559"
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "subject_key": "5cecfc8ae35f693c7d747d7f944f46458cee61a9570214c775cf4c70f7c5e39a"
   },
   {
    "key": "f1095a.b_mar",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's March column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,891 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 4 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
-   "subject_key": "b04a49cb0b3e28d42ac769a5ba2b2c2585bf29feefc4280f15f1bcfa92f581eb"
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "subject_key": "172efd9a4f07baa29531a392a837fd3ea1d3b077bd17f61c5c0bacd50701bd5c"
   },
   {
    "key": "f1095a.b_apr",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's April column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,891 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 4 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
-   "subject_key": "3538845a5cdb907484efa82c9240a328fe379e733dd6ad772b2577421957f41a"
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "subject_key": "5bd25024b835b66a259aacc26c84454286d6b3a6b54a0afc94dd1c92c80af8c7"
   },
   {
    "key": "f1095a.b_may",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's May column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,889 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 6 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
-   "subject_key": "be89b9073ce53a49e0259e2ad16b68e3ad5ff27fe6c8e52d5778828e58434343"
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "subject_key": "ea441ffc320b20506113ebd9f8589dab4985ae0692785bf756222779c978f35d"
   },
   {
    "key": "f1095a.b_jun",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's June column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,889 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 6 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
-   "subject_key": "89cb1a47b378da80e4b843f09c8c97556f4f6168ad40f63ab3212f17321c47b8"
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "subject_key": "9ed18e024b37c0be9b8e24b0831e0b1ba1543052d6d72d4dc376c887d22c349a"
   },
   {
    "key": "f1095a.b_jul",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's July column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,887 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 8 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
-   "subject_key": "9716c9c7e09a05da21080e6f36f3ca50aa788f56d4672b89dc8b64fde81a91a6"
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "subject_key": "52bf753db0c3b562f3b83f608caab8b1079cfc37eea08c34bfefa699d76a5c94"
   },
   {
    "key": "f1095a.b_aug",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's August column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,887 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 8 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
-   "subject_key": "c823f90d977c396dbe2e8256e04bce2fdb70131540cc45bde6c2a7acd107888f"
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "subject_key": "c5d492482f1238d6cb72a05078befb9eef0f0498f0219a7c1d125289540a49a3"
   },
   {
    "key": "f1095a.b_sep",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's September column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,886 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 9 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
-   "subject_key": "e2a78ea49772a83ec63fe255080fe71244a492aaba5435be137caf76304f4294"
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "subject_key": "f1fc75300cc48abb2da4c19a94e0820dfc1e55039255b45a0c14f8c56fa82f11"
   },
   {
    "key": "f1095a.b_oct",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's October column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,885 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 10 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
-   "subject_key": "60fa56ebdde47bd3cc762d8f0864fd0eadd53e1758aa71f306653616e8ecfa60"
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "subject_key": "372b77deea75ca66368157a60bd1277b73d5c493a7be44a6aacd57902a1eba40"
   },
   {
    "key": "f1095a.b_nov",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's November column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,885 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 10 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
-   "subject_key": "ab7a3d0af3404ccf9852a119dc67961567e9c2c7bb778f88f99c6c93d32a145e"
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "subject_key": "78bf466541ba97f69f64ab2e63ce193b2e5e2a5cc00eac3873d510078c1e980f"
   },
   {
    "key": "f1095a.b_dec",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's December column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,885 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 10 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
-   "subject_key": "7c99fbf829881726b7cfb8015c081ca20ebcb664c4998d0203465fd04ad4898b"
+   "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
+   "subject_key": "778abeca2e8768dc0c11d74b4149cf6c5bfbfbed914e1d4566cb697905230874"
   },
   {
    "key": "f1095a.line33a",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation — f1095a (2025) p. 2, line 33, \"Annual Totals\", column A. The candidate sums twelve monthly choices on f1095a.uniform (mo_a when Yes, the month's entry when No); the project takes mo_a times ptc.months when Yes and the twelve entries when No; the same amount. As the earlier ruling, with a regrouped reply; the uniform test is read as the project reads it. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 2,053 of 2,053 comparisons agree; no difference. Project stands.",
-   "subject_key": "733b45eccccb0a70ad5256651122e6c02895b66f54c6a0bc98255c2a1e4d1b5a"
+   "ruling": "Ruling: representation; the sum of the twelve column A lines, as the project's choose of 12 x mo_a or the monthly sum (i1095a p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33\"). It differs only through f1095a.uniform, ruled on that line; column A is the same every month wherever the routes part. Triage pass ea49629f14d1: 2,470 of 2,842 agree; 314 candidate-unknown, 57 project-unknown; 1 completed value, stage18.reg.no_aptc_slcsp_by_month ($4,560.00 vs $0.00, mo_a not stated in that fixture).",
+   "subject_key": "0c0c2bf4ca63b39aab750c1791417b397594e22356f72b9474292c99f2eb2ab3"
   },
   {
    "key": "f1095a.line33b",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error — the same deviation the earlier ruling decided: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\" and line 33, \"Annual Totals\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The candidate sums its own monthly column B, which it zeroes on a form whose column B is not counted (its note: \"This total includes the b_counted exclusion. A form whose column B is not counted contributes zero\"); line 33B is the document's total. Inherited from the monthly lines; the f1095a.uniform branch is the project's, so the restructured question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,885 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 10 value; on completed returns 21 candidate-unknown (f1095a.b_counted on a single form) and 6 project-unknown (the uncounted form's monthly column B withheld); the value differences are on refused or incomplete returns (for example classm.f1095a.1.deepseek, mkt_b, $2,463.00 against $0.00). No Form 8962 amount differs. Project stands.",
-   "subject_key": "11ba1b3036e1adbbb1d4de1c79321ace40955e8d9d88c920df1e18579b25aba3"
+   "ruling": "Ruling: model error; inherits the column B lines (uncounted form's column B zeroed; b_counted required with one form; no-APTC limb dropped through f1095a.uniform). i8962 p. 16, Column (b); i8962 p. 14, situation 1. Triage pass ea49629f14d1: 1,690 of 2,842 agree; 808 candidate-unknown, 101 project-unknown, 243 value (completed: stage18.blind.p11 form_2 $6,000.00 vs $0.00; stage18.mut.two_forms_one_state_monthly and _full_overlap $3,000.00 vs $0.00; generated 20261026/126 and /442).",
+   "subject_key": "d468e4994a982749328af18109da58066dc5788df8ba21cbd328a9af5d84d246"
   },
   {
    "key": "f1095a.line33c",
-   "record": "d4600a08f1741144758cfd480d9fe22c0997f627b3793eab447b7e8c5ecf4284",
-   "status": "AGREE",
-   "subject_key": "864ec9be53ae4a99a51f088c22966d0879b5b64a10b7ef1299280187e29a737b"
+   "record": "a6779204d5839f809fcecdd27fe15b242fd3db7cf6a8043ce4087f79d3370ca0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; c_total on the uniform route, the monthly column C sum otherwise, as the project (i1095a p. 2; i8962 p. 16, Column (f)). It differs only through f1095a.uniform, ruled on that line; where the routes part, line 33C equals the monthly sum for a consistent filer. Triage pass ea49629f14d1: 2,495 of 2,842 agree; 314 candidate-unknown, 33 project-unknown; no value difference.",
+   "subject_key": "1fc8cc30b1ef364d9ebc645d54f6ea73e10209178fb87db1a418471268c1d6d0"
   },
   {
    "key": "f1095a.b_used",
@@ -199,63 +221,65 @@
  ],
  "subjects": {
   "f1095a.one": "d2edb794b68d2a7e14df48fc27f33b9388eee33f0fc864a528aea677afbc2149",
-  "f1095a.a_jan": "9d6be02c91921098a22df154346159c3ed827a748aa667db5bb0539f9e95dcb7",
-  "f1095a.a_feb": "164385f767edaf6d36117a28d27d16e821224db861ce3d0c7afb40ebc61102c1",
-  "f1095a.a_mar": "ea9fa1eec71efc61ae31ee0b7ac9adf867b7cc8c7617175f4a87c80776674eaa",
-  "f1095a.a_apr": "c05fb579a5b2fd330a5c71ee391b5b5054031518fdf4e9977b1f90579c59ea68",
-  "f1095a.a_may": "7188e0122c101e59fe02cdcedf8113f76434611081ec23a04f6196c4e80c1325",
-  "f1095a.a_jun": "4b5e41d0863ce3d50ab729a5820994f4747b926494f361f248d8cdbe18711f5e",
-  "f1095a.a_jul": "bc92eabb9cb8c8562f20697e0bba969f7e9981574409808cb8f36da57039b0b2",
-  "f1095a.a_aug": "21a327383dff7b2c827db26a1df6bd64702010715b59c2f8cddaf1ba03149c95",
-  "f1095a.a_sep": "ddaaf46b0f7816f7bf10a5728381e6ccd04bfa069593489eebfa07d1bda18a4e",
-  "f1095a.a_oct": "4fc464cbe8958077ba62d5cd629eb7dc6313c62074e80f0b1fcb2b0bfcd82d6d",
-  "f1095a.a_nov": "f123b0c0acb1f72c0084fb03adb058372970f1e1c097b56b8f87c5981e553590",
-  "f1095a.a_dec": "5acdb185091b4c7fa457a204859aa320a18af4bc9ffa3df4f47ce234cf643e7d",
-  "f1095a.b_jan": "ecd93992df2901008fc8b8c6990bbf2b739937bebc81c999bf64d84fc839e082",
-  "f1095a.b_feb": "80e7cd0b55e73103dc51adf551e84cacf6f18a4e218bed5135deba1726ca794c",
-  "f1095a.b_mar": "87d56ba14e33b18d55e56ce606d9bbdef0b8b40289910efcd72fe4811641a9c7",
-  "f1095a.b_apr": "0ed210fca85e98a103988115fa6669c32a8654605f6defabf51b18edc6e6d3cd",
-  "f1095a.b_may": "00bfeb256fa3c99719378bc84a6983250851c604f4db97d3ab5bf65dfc37eeb4",
-  "f1095a.b_jun": "5f154b07d669886065b5d0c25a976c5f38d1639e39a18762c4c2c94d6aeb250b",
-  "f1095a.b_jul": "09b238b8a58b8dfaeee6f4c32c25fad3069a7094c00eba36b596e299e0f3c971",
-  "f1095a.b_aug": "117fb3e6bf60abd777904e44e3487ed549026c244c5977d495d70f7f293e5b4b",
-  "f1095a.b_sep": "25cc251dc1bd70c6a9c2fbb29ff2c0189f7f02771da247eea2202e0412d27161",
-  "f1095a.b_oct": "85d351ee46332493f51291bc699eafbe39f20a36f311935ea8bbd8da81c032f0",
-  "f1095a.b_nov": "fe4c61319af7bdef0bc0f1e649f2188b7fe88faa7a5b93dfbc00d647eec68bb3",
-  "f1095a.b_dec": "72418f7deb7454b5040e9874aa58544c68eb5d76f04bfda95be089950dc39ae6",
-  "f1095a.line33a": "393cebb78108bf7f6440355730a3a498afb4eab0de5978728357b99d7ed16078",
-  "f1095a.line33b": "9218f50606fd8bd948f2ce175d7ef881e713649d2808846436a7feda6461727e",
-  "f1095a.line33c": "c153689a360d8162aaedacdf1391b1eaed2856591bf1cb9b1906911ca0ee3524",
+  "f1095a.uniform": "49559bf1d44ae081fd5ac939e6cd3d51fe309c5ca6a1d4c8691404fbb875fe5a",
+  "f1095a.a_jan": "49b40b6a0a08809a45b284d3ad41a55090a34732965454936ccf2d17d0e9ec01",
+  "f1095a.a_feb": "2c74052a1d6d9c6961c7789e0eed4a0cc76e45ebeecf4dfabc19d6f52c14b300",
+  "f1095a.a_mar": "87cdff93a209775b2804a98b924ace08797fb27cada93e85c8889b9e3d80607e",
+  "f1095a.a_apr": "28c4d8e9ca15261a54797a961e6848695485181cae3abb536d511fae1b8446a8",
+  "f1095a.a_may": "d4ce24e75101c05b43552b55683d22469170ad65b0b09303a51aa0df0423fd98",
+  "f1095a.a_jun": "465c1cdd35d0d39583fc99bcd412c98f23bda5903175134b0b1be93b8e6c4494",
+  "f1095a.a_jul": "ef0984562e809296e63b9391752bf9cb4dbd501aeabbf61df693b3d63faa5e39",
+  "f1095a.a_aug": "9a4858eebccff998e362b38cf4e47ae3a53236b6af89f8816f38571223fc8c9c",
+  "f1095a.a_sep": "9b7070f4675a1e169f38ba5514fdc46940693c3c70f5a53e542a83ba2431d7a9",
+  "f1095a.a_oct": "46caddecdaaf98305b2ab55b22d279cf27658b7f3f1022050678f45af6b43263",
+  "f1095a.a_nov": "c68a2088ebd5903cd9ed5eb392a79e5f463f30266a4be6cdcdab9ca670b5f3db",
+  "f1095a.a_dec": "7e62b353c41b33b4fb5dd947ebc11adef529e15cb94b3bd2fe3d830000f6b8eb",
+  "f1095a.b_jan": "4b020f182954117d3cd2ff4a7aecb73300e7d6453a0d8aabe58438c51584dc23",
+  "f1095a.b_feb": "85eb6f66da3ad5e4c63e1b89b773c01d06da34e337cc51cd798d0c7f7a33dbec",
+  "f1095a.b_mar": "1e3843ab3fcc4eee028ba6ff548a88bd1d4d5f37376fec19756c030ab4907de4",
+  "f1095a.b_apr": "60ffa36f47f8e707ee5228732d326fd418994f67439e4d3ff16ebae2afa22e2b",
+  "f1095a.b_may": "16d53f25f95c83e75d817aeb1c77ec6dcf04730a08a9d7355d8acbd8d0d89414",
+  "f1095a.b_jun": "ec9377bec224ccf2fe4239efc04713cf3e497ee2095740ee59638e4fec0e717a",
+  "f1095a.b_jul": "f21100b0b57db60919d627d8b084c60d5b9db0a37ecf3b4cb779fd17d1f8f3a8",
+  "f1095a.b_aug": "077d0d229c228cb166b3c6c0ba644691024375035d9b3eaeef2f42c166f19cfb",
+  "f1095a.b_sep": "266d7d2bc4207d17e3f73349c3b98124d94ea2d120899c9d2b933b6ad7b44aad",
+  "f1095a.b_oct": "88d04bd8577bfc49542c330d9ce5814c879c6493859faf1526a94dcbd02f277b",
+  "f1095a.b_nov": "de83400aa963800ed5cffbb819c38774e8febafcac5b5bd90fc44b96097b67f8",
+  "f1095a.b_dec": "b44289f33dc1bdd600e5693875939fc5ea3cdfafa81f9ca88d630dd8c5a26bb4",
+  "f1095a.line33a": "35ad2ecf0bdb9da071bc23215505033e8d55d1e6e991e552c4792eac9e7a7a87",
+  "f1095a.line33b": "ba8d803fece11ee5bbb7efb032bd3349261368555a1b8d63604efa0aedcc9278",
+  "f1095a.line33c": "af32a2c625d373181e93be06833db6ee4aa873bdfd33e458ed499f4c3c7388dc",
   "f1095a.b_used": "11faa3d6f30d1c3c554b34336331ae1028324f0275c386f84c02a64c641391c8"
  },
  "__rest__": "ef43fceec313ada31a4f7df20c20f79a8128589757b72ada001e5bb1ff7dd1d6",
  "foreign": {
-  "f1095a.a_jan": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.a_feb": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.a_mar": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.a_apr": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.a_may": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.a_jun": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.a_jul": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.a_aug": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.a_sep": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.a_oct": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.a_nov": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.a_dec": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.b_jan": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.b_feb": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.b_mar": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.b_apr": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.b_may": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.b_jun": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.b_jul": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.b_aug": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.b_sep": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.b_oct": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.b_nov": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.b_dec": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.line33a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.line33b": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "f1095a.line33c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  "f1095a.uniform": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.a_jan": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.a_feb": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.a_mar": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.a_apr": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.a_may": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.a_jun": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.a_jul": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.a_aug": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.a_sep": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.a_oct": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.a_nov": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.a_dec": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.b_jan": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.b_feb": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.b_mar": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.b_apr": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.b_may": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.b_jun": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.b_jul": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.b_aug": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.b_sep": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.b_oct": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.b_nov": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.b_dec": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.line33a": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.line33b": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "f1095a.line33c": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a"
  }
 }

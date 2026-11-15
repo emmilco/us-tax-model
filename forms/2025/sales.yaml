@@ -127,10 +127,44 @@ form:
       label: Report this transaction in detail on Form 8949 or directly in Schedule D
         aggregate totals
       type: Enum(sales_route)
+      gated_by: sales.route_if_chosen
       expr:
         op: input
         source: Report this transaction in detail on Form 8949 or directly in Schedule D
           aggregate totals
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
+    - id: sales.detail
+      printed: (helper)
+      label: Year parameter sales.detail (a sale listed on Form 8949)
+      type: Enum(sales_route)
+      expr:
+        op: param
+        ref: sales.detail
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
+    - id: sales.route_if_chosen
+      printed: (gate)
+      label: Where this sale is reported, asked only when you choose sale by sale between Form 8949 and the Schedule D
+        totals (otherwise listed on Form 8949)
+      type: Enum(sales_route)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sd.route_each
+                - const: true
+            then: sales.route
+          - guard:
+              op: test
+              eq:
+                - sd.route_each
+                - const: false
+            then: sales.detail
       cite:
         doc: i1040sd
         locator: p. 10, lines 1a and 8a
@@ -526,13 +560,13 @@ form:
           - guard:
               op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: aggregate
             then: sales.aggregate_fails
           - guard:
               op: test
               eq:
-                - sales.route
+                - sales.route_if_chosen
                 - const: detail
             then: sales.no
       cite:

@@ -14,7 +14,6 @@ Enter this case in FreeTaxUSA (2025) and OLT (2025), then read the lines below b
 | 1099-DIV box 7 — foreign tax paid | 120.00 |
 | Medical and dental expenses paid | 3000.00 |
 | State and local income taxes paid | 10000.00 |
-| Home mortgage interest from Form 1098 | 10000.00 |
 | Gifts to charity by cash or check | 5000.00 |
 | W-2 (emp_a) box 1 — wages, tips, other compensation | 90000.00 |
 | W-2 (emp_a) box 2 — federal income tax withheld | 10000.00 |

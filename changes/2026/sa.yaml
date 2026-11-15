@@ -83,31 +83,147 @@ changes:
       page: 3
       quote: 17z Add lines 17a through 17k
     verified: draft
+    note: 'Mended for the interview redraft: sa.unsupported is no longer a question but true when any of the Schedule A questions
+      it was taken apart into is Yes. The 2026 changes are re-based on it: its label names lines 17b to 17k and mortgage insurance
+      premiums; the premiums, deductible again in 2026 (line 8d) and not prepared by this tool, are a new question sa.mortgage_insurance
+      asked beneath the mortgage interest answer like the other mortgage limits, whose Yes makes sa.unsupported true (refusing
+      at line 8d and the other Schedule A lines). The casualty wording of the proposal (a disaster loss
+      from a federally or state-declared disaster) is re-based on the help of sd.casualty, which now asks those losses
+      and states the 2025 rule.'
     operations:
     - set:
         line: sa.unsupported
         field: label
-        from: Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the
-          Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage
-          interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build
-          or improve the home, or debt over the limit); or the sales-tax election?
-        to: Any casualty or theft loss (from a federally or state-declared disaster, or a disaster loss added to the standard
-          deduction); a deduction on Schedule A lines 17b to 17k (other than gambling losses); a foreign tax or generation-skipping
-          tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds
-          not all used to buy, build or improve the home, or debt over the limit); mortgage insurance premiums; or the sales-tax
-          election?
+        from: 'A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt
+          or use limits; the sales-tax election; a foreign tax deduction; or a deduction from the Schedule A line 16 list other
+          than gambling losses'
+        to: 'A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt
+          or use limits; mortgage insurance premiums; the sales-tax election; a foreign tax deduction; or a deduction from the
+          Schedule A lines 17b to 17k list other than gambling losses'
     - set:
         line: sa.unsupported
-        field: expr.source
-        from: Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the
-          Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage
-          interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build
-          or improve the home, or debt over the limit); or the sales-tax election?
-        to: Any casualty or theft loss (from a federally or state-declared disaster, or a disaster loss added to the standard
-          deduction); a deduction on Schedule A lines 17b to 17k (other than gambling losses); a foreign tax or generation-skipping
-          tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds
-          not all used to buy, build or improve the home, or debt over the limit); mortgage insurance premiums; or the sales-tax
-          election?
+        field: expr.any
+        from:
+        - &id001
+          op: test
+          eq:
+          - sa.mortgage_unreported_if_home
+          - const: true
+        - &id002
+          op: test
+          eq:
+          - sa.mortgage_over_limit_if_interest
+          - const: true
+        - &id003
+          op: test
+          eq:
+          - sa.mortgage_other_use_if_interest
+          - const: true
+        - &id004
+          op: test
+          eq:
+          - sa.sales_tax_wish
+          - const: true
+        - &id005
+          op: test
+          eq:
+          - sa.foreign_tax_deduct_if_tax
+          - const: true
+        - &id006
+          op: test
+          eq:
+          - sa.estate_tax_income
+          - const: true
+        - &id007
+          op: test
+          eq:
+          - sa.bond_premium
+          - const: true
+        - &id008
+          op: test
+          eq:
+          - sa.debt_instrument_loss
+          - const: true
+        - &id009
+          op: test
+          eq:
+          - sa.pension_unrecovered
+          - const: true
+        - &id010
+          op: test
+          eq:
+          - sa.impairment_work
+          - const: true
+        to:
+        - *id001
+        - *id002
+        - *id003
+        - *id004
+        - *id005
+        - *id006
+        - *id007
+        - *id008
+        - *id009
+        - *id010
+        - op: test
+          eq:
+          - sa.mortgage_insurance_if_interest
+          - const: true
+    - add_line:
+        after: sa.mortgage_other_use_if_interest
+        line:
+          id: sa.mortgage_insurance
+          printed: (helper)
+          type: Bool
+          gated_by: sa.mortgage_insurance_if_interest
+          label: Did you (or, on a joint return, your spouse) pay mortgage insurance premiums, such as private mortgage insurance,
+            on a loan for your home?
+          expr:
+            op: input
+            source: Did you (or, on a joint return, your spouse) pay mortgage insurance premiums, such as private mortgage insurance,
+              on a loan for your home?
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2026), line 8d (draft), "8d Mortgage insurance premiums (see instructions)"
+    - add_line:
+        after: sa.mortgage_insurance
+        line:
+          id: sa.mortgage_insurance_if_interest
+          printed: (gate)
+          type: Bool
+          label: Asked only where it can apply (sa.mortgage_insurance)
+          expr:
+            op: choose
+            alternatives:
+            - guard:
+                op: test
+                eq:
+                - sa.has_mortgage_interest
+                - const: true
+              then: sa.mortgage_insurance
+            - guard:
+                op: test
+                eq:
+                - sa.has_mortgage_interest
+                - const: false
+              then: sa.no
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2026), line 8d (draft), "8d Mortgage insurance premiums (see instructions)"
+    - add_question:
+        input: sa.mortgage_insurance
+        like: sa.mortgage_other_use
+        entry:
+          seq: 29
+          help: Private mortgage insurance (PMI), or a funding fee or premium for a VA, FHA or Rural Housing Service loan. A return
+            that deducts mortgage insurance premiums is outside what this tool prepares; a Yes ends the interview here.
+    - set_question:
+        input: sd.casualty
+        field: help
+        from: A loss to things you own for personal use counts only if it came from a federally declared disaster; an ordinary
+          accident or break-in is a No. A return with this is outside what this tool prepares; a Yes ends the interview here.
+        to: A loss to things you own for personal use counts only if it came from a federally or state-declared disaster; an ordinary
+          accident or break-in is a No. A return with this is outside what this tool prepares; a Yes ends the interview here.
   - change: C-PRI-15
     evidence:
     - doc: f1040sa

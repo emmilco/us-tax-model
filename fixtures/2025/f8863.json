@@ -19,7 +19,7 @@
         "$dependent": [
           "k0"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -98,7 +98,7 @@
         "$dependent": [
           "k0"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -197,7 +197,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -270,7 +270,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -350,7 +350,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -432,7 +432,7 @@
         "dependent[k0].edu": true,
         "dependent[k0].edu_1098t": true,
         "dependent[k0].edu_inst": 500000,
-        "dependent[k0].edu_a2025": 500000,
+        "dependent[k0].edu_a_this_year": 500000,
         "dependent[k0].edu_line24": true,
         "dependent[k0].edu_ein": true
       },
@@ -489,11 +489,10 @@
         "dependent[k0].edu": true,
         "dependent[k0].edu_1098t": true,
         "dependent[k0].edu_inst": 500000,
-        "dependent[k0].edu_a2025": 100000,
+        "dependent[k0].edu_a_this_year": 100000,
         "dependent[k0].edu_line24": true,
         "dependent[k0].edu_ein": true,
-        "person[taxpayer].edu_born_2007": true,
-        "person[taxpayer].edu_born_2002": true,
+        "person[taxpayer].birth_year": 1980,
         "person[taxpayer].edu_parent": null,
         "person[taxpayer].edu_half_support": null,
         "person[taxpayer].edu_fulltime": null
@@ -549,11 +548,10 @@
         "dependent[k0].edu": true,
         "dependent[k0].edu_1098t": true,
         "dependent[k0].edu_inst": 500000,
-        "dependent[k0].edu_a2025": 100000,
+        "dependent[k0].edu_a_this_year": 100000,
         "dependent[k0].edu_line24": true,
         "dependent[k0].edu_ein": true,
-        "person[taxpayer].edu_born_2007": true,
-        "person[taxpayer].edu_born_2002": true
+        "person[taxpayer].birth_year": 1980
       },
       "expect": {
         "dependent[k0].edu_line27": {
@@ -618,8 +616,7 @@
         "person[taxpayer].edu_inst": 560000,
         "person[taxpayer].edu_line24": true,
         "person[taxpayer].edu_ein": true,
-        "person[taxpayer].edu_born_2007": true,
-        "person[taxpayer].edu_born_2002": true
+        "person[taxpayer].birth_year": 1980
       },
       "expect": {
         "f1040.line11b": {
@@ -690,7 +687,7 @@
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 560000,
-        "person[taxpayer].edu_a2025": 560000,
+        "person[taxpayer].edu_a_this_year": 560000,
         "person[taxpayer].edu_line24": true,
         "person[taxpayer].edu_ein": true
       },
@@ -745,15 +742,15 @@
         "person[taxpayer].w2[emp_a].box4": 243350,
         "person[taxpayer].w2[emp_a].box5": 3925000,
         "person[taxpayer].w2[emp_a].box6": 56912,
-        "s1.line8r": 400000,
+        "s1.scholarship_taxable": 400000,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 560000,
-        "person[taxpayer].edu_a2025": 160000,
+        "person[taxpayer].edu_a_this_year": 160000,
         "person[taxpayer].edu_line24": true,
         "person[taxpayer].edu_ein": true,
-        "person[taxpayer].edu_born_2007": true,
-        "person[taxpayer].edu_born_2002": true
+        "person[taxpayer].birth_year": 1980,
+        "s1.scholarship_any": true
       },
       "expect": {
         "s1.line8r": {
@@ -828,17 +825,16 @@
           "k0"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "dependent[k0].age": 10,
         "dependent[k0].months": 12,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 600000,
-        "person[taxpayer].edu_a2025": 550000,
+        "person[taxpayer].edu_a_this_year": 550000,
         "person[taxpayer].edu_line24": true,
         "person[taxpayer].edu_ein": true,
-        "person[taxpayer].edu_born_2007": true,
-        "person[taxpayer].edu_born_2002": true
+        "person[taxpayer].birth_year": 1980
       },
       "expect": {
         "f1040.line11b": {
@@ -918,18 +914,18 @@
           "k0"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
-        "s1.line8r": 350000,
+        "household.considered_unmarried": true,
+        "s1.scholarship_taxable": 350000,
         "dependent[k0].age": 10,
         "dependent[k0].months": 12,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 600000,
-        "person[taxpayer].edu_a2025": 200000,
+        "person[taxpayer].edu_a_this_year": 200000,
         "person[taxpayer].edu_line24": true,
         "person[taxpayer].edu_ein": true,
-        "person[taxpayer].edu_born_2007": true,
-        "person[taxpayer].edu_born_2002": true
+        "person[taxpayer].birth_year": 1980,
+        "s1.scholarship_any": true
       },
       "expect": {
         "f1040.line11b": {
@@ -1009,18 +1005,18 @@
           "k0"
         ],
         "household.home_cost": true,
-        "household.unmarried": true,
-        "s1.line8r": 150000,
+        "household.considered_unmarried": true,
+        "s1.scholarship_taxable": 150000,
         "dependent[k0].age": 10,
         "dependent[k0].months": 12,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 600000,
-        "person[taxpayer].edu_a2025": 400000,
+        "person[taxpayer].edu_a_this_year": 400000,
         "person[taxpayer].edu_line24": true,
         "person[taxpayer].edu_ein": true,
-        "person[taxpayer].edu_born_2007": true,
-        "person[taxpayer].edu_born_2002": true
+        "person[taxpayer].birth_year": 1980,
+        "s1.scholarship_any": true
       },
       "expect": {
         "f1040.line11b": {
@@ -1091,8 +1087,7 @@
         "f8863.paid": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
-        "person[taxpayer].edu_born_2002": true,
-        "person[taxpayer].edu_born_2007": true,
+        "person[taxpayer].birth_year": 1980,
         "person[taxpayer].edu_ein": true,
         "person[taxpayer].edu_inst": 310000,
         "person[taxpayer].edu_line24": true,
@@ -1266,7 +1261,7 @@
         "dependent[son].age": 20,
         "dependent[son].edu": true,
         "dependent[son].edu_1098t": true,
-        "dependent[son].edu_a2025": 100000,
+        "dependent[son].edu_a_this_year": 100000,
         "dependent[son].edu_ein": true,
         "dependent[son].edu_inst": 480000,
         "dependent[son].edu_line24": true,
@@ -1275,7 +1270,7 @@
         "dependent[son].student": true,
         "f1040.status": "mfj",
         "f8863.paid": true,
-        "household.married": true,
+        "household.married_dec31": true,
         "person[spouse].edu": true,
         "person[spouse].edu_1098t": true,
         "person[spouse].edu_inst": 900000,
@@ -1497,7 +1492,7 @@
         "f1040.status": "hoh",
         "f8863.paid": true,
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 500000,
@@ -1699,7 +1694,7 @@
         "dependent[son].months": 12,
         "f1040.status": "mfj",
         "f8863.paid": true,
-        "household.married": true,
+        "household.married_dec31": true,
         "person[spouse].w2[e0].box1": 1500000,
         "person[spouse].w2[e0].box2": 120000,
         "person[spouse].w2[e0].box4": 93000,
@@ -1868,7 +1863,7 @@
         "person[taxpayer].edu_inst": 400000,
         "person[taxpayer].edu_line24": true,
         "person[taxpayer].edu_parent": true,
-        "person[taxpayer].sav_born": false,
+        "person[taxpayer].birth_year": 2009,
         "person[taxpayer].w2[emp_a].box1": 3000000,
         "person[taxpayer].w2[emp_a].box2": 240000,
         "person[taxpayer].w2[emp_a].box4": 186000,
@@ -2034,7 +2029,9 @@
         "person[taxpayer].w2[emp_a].box2": 176000,
         "person[taxpayer].w2[emp_a].box4": 136400,
         "person[taxpayer].w2[emp_a].box5": 2200000,
-        "person[taxpayer].w2[emp_a].box6": 31900
+        "person[taxpayer].w2[emp_a].box6": 31900,
+        "person[taxpayer].birth_year": 2007,
+        "person[taxpayer].born_jan1": false
       },
       "expect": {
         "person[taxpayer].edu_line23": {
@@ -2185,8 +2182,8 @@
         "f8863.paid": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
-        "person[taxpayer].edu_a2025": 150000,
-        "person[taxpayer].edu_born_2007": true,
+        "person[taxpayer].edu_a_this_year": 150000,
+        "person[taxpayer].birth_year": 2004,
         "person[taxpayer].edu_ein": true,
         "person[taxpayer].edu_fulltime": true,
         "person[taxpayer].edu_half_support": true,
@@ -2348,7 +2345,7 @@
         "f8863.paid": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
-        "person[taxpayer].edu_born_2007": true,
+        "person[taxpayer].birth_year": 1980,
         "person[taxpayer].edu_ein": true,
         "person[taxpayer].edu_fulltime": true,
         "person[taxpayer].edu_half_support": true,
@@ -2529,7 +2526,7 @@
         "f1040.status": "hoh",
         "f8863.paid": true,
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 180000,
@@ -2879,7 +2876,7 @@
         "person[taxpayer].w2[emp_a].box5": 8456700,
         "person[taxpayer].w2[emp_a].box6": 122622,
         "sa.excluded_income": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f8863.line3": {
@@ -2936,7 +2933,7 @@
         "person[taxpayer].w2[emp_a].box2": 676500,
         "person[taxpayer].w2[emp_a].box5": 8456700,
         "person[taxpayer].w2[emp_a].box6": 122622,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f8863.line7": {
@@ -2971,8 +2968,7 @@
         "f8863.paid": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
-        "person[taxpayer].edu_born_2002": true,
-        "person[taxpayer].edu_born_2007": true,
+        "person[taxpayer].birth_year": 1980,
         "person[taxpayer].edu_ein": true,
         "person[taxpayer].edu_inst": 310000,
         "person[taxpayer].edu_line24": true,
@@ -2982,7 +2978,7 @@
         "person[taxpayer].w2[emp_a].box5": 8456700,
         "person[taxpayer].w2[emp_a].box6": 122622,
         "s3.credit_bond": true,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "f8863.clw5": {
@@ -3025,7 +3021,7 @@
         "f1040.status": "hoh",
         "f8863.paid": true,
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "person[taxpayer].sav_claimed": true,
         "person[taxpayer].w2[emp_a].box1": 6200000,
         "person[taxpayer].w2[emp_a].box2": 496000,
@@ -3077,7 +3073,7 @@
         "f1040.status": "hoh",
         "f8863.paid": true,
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "person[taxpayer].sav_claimed": true,
         "person[taxpayer].w2[emp_a].box1": 6200000,
         "person[taxpayer].w2[emp_a].box2": 496000,
@@ -3138,7 +3134,7 @@
         "f1040.status": "hoh",
         "f8863.paid": true,
         "household.home_cost": true,
-        "household.unmarried": true,
+        "household.considered_unmarried": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 500000,
@@ -3192,7 +3188,9 @@
         "person[taxpayer].w2[emp_a].box2": 676500,
         "person[taxpayer].w2[emp_a].box4": 524315,
         "person[taxpayer].w2[emp_a].box5": 8456700,
-        "person[taxpayer].w2[emp_a].box6": 122622
+        "person[taxpayer].w2[emp_a].box6": 122622,
+        "person[taxpayer].birth_year": 2007,
+        "person[taxpayer].born_jan1": false
       },
       "expect": {
         "person[taxpayer].edu_kid": {
@@ -3220,8 +3218,7 @@
         "f8863.paid": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
-        "person[taxpayer].edu_born_2002": false,
-        "person[taxpayer].edu_born_2007": true,
+        "person[taxpayer].birth_year": 2004,
         "person[taxpayer].edu_ein": true,
         "person[taxpayer].edu_inst": 310000,
         "person[taxpayer].edu_line24": true,
@@ -3265,8 +3262,7 @@
         "f8863.paid": true,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
-        "person[taxpayer].edu_born_2002": false,
-        "person[taxpayer].edu_born_2007": true,
+        "person[taxpayer].birth_year": 2004,
         "person[taxpayer].edu_ein": true,
         "person[taxpayer].edu_inst": 310000,
         "person[taxpayer].edu_line24": true,
@@ -3281,7 +3277,7 @@
           "taxpayer",
           "spouse"
         ],
-        "household.married": true,
+        "household.married_dec31": true,
         "$w2@person[spouse]": [],
         "person[taxpayer].edu_fulltime": null,
         "person[taxpayer].edu_half_support": null,

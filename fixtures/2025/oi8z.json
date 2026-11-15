@@ -9,6 +9,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.other.o9 (two line 8z items: reemployment trade adjustment assistance $1,500 and kickbacks $800), with the first item's type changed to recovery (Pub. 525, Recoveries). The item's taxable amount copies its amount, an input, so its own entry decides its value; line 8z and the lines after it carry the same refusal through it, and the second item stays $800. The refused values are the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -23,7 +24,7 @@
         "oi8z[z0].kind": "recovery",
         "oi8z[z1].kind": "kickbacks",
         "oi8z[z1].amount": 80000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "oi8z[z0].taxable": {
@@ -92,6 +93,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.other.o9 (two line 8z items: reemployment trade adjustment assistance $1,500 and kickbacks $800), with the first item's type changed to charitable_recapture (an additional tax on Schedule 2 line 17g). The recovery gate before it is false, and the taxable amount copies the item's amount, an input, so its second entry decides its value; line 8z and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -106,7 +108,7 @@
         "oi8z[z0].kind": "charitable_recapture",
         "oi8z[z1].kind": "kickbacks",
         "oi8z[z1].amount": 80000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "oi8z[z0].taxable": {
@@ -175,6 +177,7 @@
       "evidence": "synthetic refusal regression",
       "evidence_note": "Inputs are stage16.other.o9 (two line 8z items: reemployment trade adjustment assistance $1,500 and kickbacks $800), with the first item's type changed to other (income figured under Pub. 525, Miscellaneous Income). The two gates before it are false, and the taxable amount copies the item's amount, an input, so its third entry decides its value; line 8z and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
+        "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -189,7 +192,7 @@
         "oi8z[z0].kind": "other",
         "oi8z[z1].kind": "kickbacks",
         "oi8z[z1].amount": 80000,
-        "s179.line10": null
+        "s179.prior_form": null, "s179.carryover": null
       },
       "expect": {
         "oi8z[z0].taxable": {

@@ -24,7 +24,7 @@
         "person[taxpayer].sc[desk].asset[pc].bonus_choice": "none"
       },
       "expect": {
-        "person[taxpayer].sc[desk].asset[pc].macrs2025": {
+        "person[taxpayer].sc[desk].asset[pc].macrs_this_year": {
           "kind": "money",
           "cents": 60000
         },
@@ -65,7 +65,7 @@
           "kind": "bool",
           "value": true
         },
-        "person[taxpayer].sc[desk].asset[sofa].macrs2025": {
+        "person[taxpayer].sc[desk].asset[sofa].macrs_this_year": {
           "kind": "money",
           "cents": 35700
         }
@@ -104,11 +104,11 @@
           "kind": "bool",
           "value": true
         },
-        "person[taxpayer].sc[desk].asset[pc].macrs2025": {
+        "person[taxpayer].sc[desk].asset[pc].macrs_this_year": {
           "kind": "money",
           "cents": 210000
         },
-        "person[taxpayer].sc[desk].asset[sofa].macrs2025": {
+        "person[taxpayer].sc[desk].asset[sofa].macrs_this_year": {
           "kind": "money",
           "cents": 17850
         }
@@ -147,11 +147,11 @@
           "kind": "bool",
           "value": false
         },
-        "person[taxpayer].sc[desk].asset[pc].macrs2025": {
+        "person[taxpayer].sc[desk].asset[pc].macrs_this_year": {
           "kind": "money",
           "cents": 120000
         },
-        "person[taxpayer].sc[desk].asset[sofa].macrs2025": {
+        "person[taxpayer].sc[desk].asset[sofa].macrs_this_year": {
           "kind": "money",
           "cents": 42870
         }
@@ -183,7 +183,7 @@
           "kind": "money",
           "cents": 2000000
         },
-        "person[taxpayer].sc[desk].asset[saw].macrs2025": {
+        "person[taxpayer].sc[desk].asset[saw].macrs_this_year": {
           "kind": "money",
           "cents": 0
         },
@@ -223,7 +223,7 @@
           "kind": "money",
           "cents": 400000
         },
-        "person[taxpayer].sc[desk].asset[pc].macrs2025": {
+        "person[taxpayer].sc[desk].asset[pc].macrs_this_year": {
           "kind": "money",
           "cents": 120000
         },
@@ -260,7 +260,7 @@
           "kind": "money",
           "cents": 400000
         },
-        "person[taxpayer].sc[desk].asset[pc].macrs2025": {
+        "person[taxpayer].sc[desk].asset[pc].macrs_this_year": {
           "kind": "money",
           "cents": 120000
         }
@@ -289,7 +289,7 @@
         "person[taxpayer].sc[desk].asset[saw].bonus_choice": "none"
       },
       "expect": {
-        "person[taxpayer].sc[desk].asset[saw].macrs2025": {
+        "person[taxpayer].sc[desk].asset[saw].macrs_this_year": {
           "kind": "money",
           "cents": 100030
         },
@@ -458,7 +458,7 @@
         "person[taxpayer].sc[desk].asset[fitout].bonus_choice": "none"
       },
       "expect": {
-        "person[taxpayer].sc[desk].asset[fitout].macrs2025": {
+        "person[taxpayer].sc[desk].asset[fitout].macrs_this_year": {
           "kind": "money",
           "cents": 99900
         },
@@ -494,7 +494,7 @@
         "person[taxpayer].sc[desk].asset[fitout].bonus_choice": "none"
       },
       "expect": {
-        "person[taxpayer].sc[desk].asset[fitout].macrs2025": {
+        "person[taxpayer].sc[desk].asset[fitout].macrs_this_year": {
           "kind": "money",
           "cents": 199800
         },
@@ -566,7 +566,7 @@
           "kind": "money",
           "cents": 3000000
         },
-        "person[taxpayer].sc[desk].asset[fitout].macrs2025": {
+        "person[taxpayer].sc[desk].asset[fitout].macrs_this_year": {
           "kind": "money",
           "cents": 66600
         },
@@ -618,7 +618,7 @@
           "desk"
         ],
         "person[taxpayer].sc[desk].asset[pc].placed": "y2015",
-        "person[taxpayer].sc[desk].asset[pc].screen": true,
+        "person[taxpayer].sc[desk].asset[pc].kind_excluded": false, "person[taxpayer].sc[desk].asset[pc].software": false, "person[taxpayer].sc[desk].asset[pc].software_spread": false, "person[taxpayer].sc[desk].asset[pc].industry": false, "person[taxpayer].sc[desk].asset[pc].industry_item": false, "person[taxpayer].sc[desk].asset[pc].long_production": false, "person[taxpayer].sc[desk].asset[pc].got_other": false, "person[taxpayer].sc[desk].asset[pc].acquired_before_bonus_date": false, "person[taxpayer].sc[desk].asset[pc].used_before": false, "person[taxpayer].sc[desk].asset[pc].ended_this_year": false, "person[taxpayer].sc[desk].asset[pc].basis_changed": false, "person[taxpayer].sc[desk].asset[pc].use_changed": false, "person[taxpayer].sc[desk].asset[pc].short_year": false, "person[taxpayer].sc[desk].asset[pc].method_other": true, "person[taxpayer].sc[desk].asset[pc].ads_required": false, "person[taxpayer].sc[desk].asset[pc].outside_use": false, "person[taxpayer].sc[desk].asset[pc].qbu_low": false,
         "person[taxpayer].sc[desk].line1": 5000000
       },
       "expect": {
@@ -998,7 +998,7 @@
           "kind": "money",
           "cents": 400000
         },
-        "person[taxpayer].sc[d].asset[pc].macrs2025": {
+        "person[taxpayer].sc[d].asset[pc].macrs_this_year": {
           "kind": "money",
           "cents": 30000
         }
@@ -1064,7 +1064,7 @@
           "kind": "money",
           "cents": 600000
         },
-        "person[taxpayer].sc[d].asset[pc].macrs2025": {
+        "person[taxpayer].sc[d].asset[pc].macrs_this_year": {
           "kind": "money",
           "cents": 120000
         },
@@ -1097,7 +1097,7 @@
         "person[taxpayer].sc[d].asset[pc].bonus_choice": "none"
       },
       "expect": {
-        "person[taxpayer].sc[d].asset[pc].macrs2025": {
+        "person[taxpayer].sc[d].asset[pc].macrs_this_year": {
           "kind": "money",
           "cents": 80000
         },
@@ -1167,11 +1167,11 @@
           "kind": "bool",
           "value": false
         },
-        "person[taxpayer].sc[d].asset[pc].macrs2025": {
+        "person[taxpayer].sc[d].asset[pc].macrs_this_year": {
           "kind": "money",
           "cents": 120000
         },
-        "person[taxpayer].sc[d].asset[sofa].macrs2025": {
+        "person[taxpayer].sc[d].asset[sofa].macrs_this_year": {
           "kind": "money",
           "cents": 57160
         }
@@ -1310,7 +1310,7 @@
           "kind": "bool",
           "value": false
         },
-        "person[taxpayer].sc[d].asset[cam].on_26_2025": {
+        "person[taxpayer].sc[d].asset[cam].on_26_this_year": {
           "kind": "bool",
           "value": true
         },
@@ -1492,7 +1492,7 @@
         "person[taxpayer].sc[desk].asset[pc].listed": null
       },
       "expect": {
-        "person[taxpayer].sc[desk].asset[pc].is2025": {
+        "person[taxpayer].sc[desk].asset[pc].placed_this_year": {
           "kind": "bool",
           "value": true
         },

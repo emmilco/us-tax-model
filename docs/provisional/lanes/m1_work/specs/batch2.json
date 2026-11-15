@@ -1,0 +1,145 @@
+[
+ {
+  "id": "mutation.m1.person.no_e05_schedule_a_refused",
+  "base": "mutation.t2.person.simple_nonelective_excess",
+  "expect": {
+   "person[taxpayer].x_c05": {
+    "kind": "money",
+    "cents": 0
+   },
+   "s2.e05_total": {
+    "kind": "money",
+    "cents": 0
+   }
+  },
+  "kills": [
+   "boundary.person.person.x_has05"
+  ]
+ },
+ {
+  "id": "mutation.m1.person.spouse_no_deferrals_excess_other",
+  "base": "mutation.eic.mfj_two_children_60000",
+  "set": {
+   "person[taxpayer].w2[e0].box12_d": 2200000,
+   "scope.excess_deferral": true
+  },
+  "expect": {
+   "person[spouse].sav_line2": {
+    "kind": "money",
+    "cents": 0
+   }
+  },
+  "kills": [
+   "boundary.person.person.sav_has_w2"
+  ]
+ },
+ {
+  "id": "mutation.m1.ira.special_fellowship",
+  "base": "ira.json:stage16.refuse.ira.special",
+  "set": {
+   "ira.deferred_comp": false,
+   "ira.fellowship": true
+  },
+  "expect": {
+   "person[taxpayer].ira_line11": {
+    "kind": "refusal",
+    "gate": "ira.special_gate",
+    "form": "IRA deduction special cases (Pub. 590-A)",
+    "remedy": "Nonqualified deferred compensation in box 1 (Form W-2 box 11 or code Z, Form 1099-MISC box 15), fellowship or stipend payments not on a Form W-2, repayments of qualified reservist distributions and difficulty of care payments change the IRA compensation or contribution limits; they are outside this tool.",
+    "cite": {
+     "doc": "i1040gi",
+     "locator": "p. 95, Line 20, \"don\u2019t include that income on line 8 of the worksheet\" and \"Don\u2019t include any repayments of qualified reservist distributions\"; p590a p. 6, What Is Compensation?, \"certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes\"",
+     "revision": "2025; printed date 2026-02-25",
+     "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+     "tax_year": 2025
+    }
+   }
+  },
+  "kills": [
+   "operand.ira.ira.special.fellowship.any.1.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.ira.special_reservist",
+  "base": "ira.json:stage16.refuse.ira.special",
+  "set": {
+   "ira.deferred_comp": false,
+   "scope.reservist_repaid": true,
+   "scope.armed_forces": true
+  },
+  "expect": {
+   "person[taxpayer].ira_line11": {
+    "kind": "refusal",
+    "gate": "ira.special_gate",
+    "form": "IRA deduction special cases (Pub. 590-A)",
+    "remedy": "Nonqualified deferred compensation in box 1 (Form W-2 box 11 or code Z, Form 1099-MISC box 15), fellowship or stipend payments not on a Form W-2, repayments of qualified reservist distributions and difficulty of care payments change the IRA compensation or contribution limits; they are outside this tool.",
+    "cite": {
+     "doc": "i1040gi",
+     "locator": "p. 95, Line 20, \"don\u2019t include that income on line 8 of the worksheet\" and \"Don\u2019t include any repayments of qualified reservist distributions\"; p590a p. 6, What Is Compensation?, \"certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes\"",
+     "revision": "2025; printed date 2026-02-25",
+     "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+     "tax_year": 2025
+    }
+   }
+  },
+  "kills": [
+   "operand.ira.ira.special.reservist_repaid.any.2.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.ira.special_care_payments",
+  "base": "ira.json:stage16.refuse.ira.special",
+  "set": {
+   "ira.deferred_comp": false,
+   "ira.care_payments": true
+  },
+  "expect": {
+   "person[taxpayer].ira_line11": {
+    "kind": "refusal",
+    "gate": "ira.special_gate",
+    "form": "IRA deduction special cases (Pub. 590-A)",
+    "remedy": "Nonqualified deferred compensation in box 1 (Form W-2 box 11 or code Z, Form 1099-MISC box 15), fellowship or stipend payments not on a Form W-2, repayments of qualified reservist distributions and difficulty of care payments change the IRA compensation or contribution limits; they are outside this tool.",
+    "cite": {
+     "doc": "i1040gi",
+     "locator": "p. 95, Line 20, \"don\u2019t include that income on line 8 of the worksheet\" and \"Don\u2019t include any repayments of qualified reservist distributions\"; p590a p. 6, What Is Compensation?, \"certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes\"",
+     "revision": "2025; printed date 2026-02-25",
+     "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+     "tax_year": 2025
+    }
+   }
+  },
+  "kills": [
+   "operand.ira.ira.special.care_payments.any.3.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.ssb.ira_covered",
+  "base": "f1040.json:stage10.refuse.pub915",
+  "set": {
+   "ssb.repaid_more": false,
+   "ssb.ira_covered": true,
+   "person[taxpayer].ira_owner": true,
+   "person[taxpayer].sav_trad": true,
+   "person[taxpayer].ira_trad": 300000,
+   "person[taxpayer].ira_work_plan": true
+  },
+  "expect": {
+   "f1040.line6b": {
+    "kind": "refusal",
+    "gate": "ssb.pub915",
+    "form": "Pub. 915 or Pub. 590-A worksheet",
+    "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication.",
+    "cite": {
+     "doc": "i1040gi",
+     "locator": "p. 31, Lines 6a and 6b, Exception",
+     "revision": "2025; printed date 2026-02-25",
+     "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+     "tax_year": 2025
+    }
+   }
+  },
+  "kills": [
+   "operand.ssb.ssb.pub915.ira_covered.any.0.eq.0"
+  ]
+ }
+]

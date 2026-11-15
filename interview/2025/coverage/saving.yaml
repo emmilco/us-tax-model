@@ -1,0 +1,196 @@
+# Coverage rows for a person's age, the educator deduction, IRAs and the Form 5329 situations (lane 4b of the
+# provisional redraft). See opening.yaml for how a row is read.
+tax_year: 2025
+part: The person's age, saving for retirement and the accounts with their own penalties
+profile: full
+rows:
+  - id: saving.age_65_or_older
+    design: lane 4b step B (person.age65, person.died_before_65)
+    situation: A person born in 1950 gives the year once and is not asked for a day of birth or about a death before 65.
+    answers:
+      person[taxpayer].birth_year: 1950
+      person[taxpayer].work_ssn: true
+      person[taxpayer].rmd_missed: false
+      s3.elderly_credit: false
+    expect:
+      proceeds:
+        person[taxpayer].birth_year: 1950
+      not_asked:
+      - person[taxpayer].born_jan1
+      - person[taxpayer].died_at_64
+      - person[taxpayer].inherited_account
+  - id: saving.turned_65_this_year
+    design: lane 4b step B (person.died_before_65)
+    situation: A person born in 1960, whose 65th birthday fell in 2025, is asked whether this is the final return of someone who died before it.
+    answers:
+      person[taxpayer].birth_year: 1960
+    expect:
+      asks: person[taxpayer].died_at_64
+  - id: saving.born_1961
+    design: lane 4b step B (person.age65 on the cut)
+    situation: A person born in 1961 is 65 for this return only if born on January 1, so the day is asked.
+    answers:
+      person[taxpayer].birth_year: 1961
+    expect:
+      asks: person[taxpayer].born_jan1
+  - id: saving.born_2012
+    design: lane 4b step B (person.under16)
+    situation: A person born in 2012 was under 16 at the end of 2025; the return is outside the tool, with no further age question.
+    answers:
+      person[taxpayer].birth_year: 2012
+    expect:
+      refused: household.filer_under16
+      not_asked:
+      - person[taxpayer].under16_at_year_end
+  - id: saving.born_2010_under_16
+    design: lane 4b step B (person.under16, the year that does not settle it)
+    situation: A person born in 2010 says they were under 16 at the end of 2025.
+    answers:
+      person[taxpayer].birth_year: 2010
+      person[taxpayer].under16_at_year_end: true
+    expect:
+      refused: household.filer_under16
+  - id: saving.not_an_educator
+    design: lane 4b step C (the educator pair turned round)
+    situation: A person who did not work in a school is not asked for classroom expenses.
+    answers:
+      person[taxpayer].eligible_educator: false
+    expect:
+      proceeds:
+        person[taxpayer].eligible_educator: false
+      not_asked:
+      - person[taxpayer].educator_expenses
+  - id: saving.educator
+    design: lane 4b step C (the educator pair turned round)
+    situation: A teacher who spent $250 on classroom supplies gives the amount.
+    answers:
+      person[taxpayer].eligible_educator: true
+      person[taxpayer].educator_expenses: 25000
+    expect:
+      proceeds:
+        person[taxpayer].educator_expenses: 25000
+  - id: saving.no_ira
+    design: lane 4b step C (person.ira_owner)
+    situation: A person with no IRA is asked nothing more about IRAs.
+    answers:
+      person[taxpayer].ira_owner: false
+    expect:
+      proceeds:
+        person[taxpayer].ira_owner: false
+      not_asked:
+      - person[taxpayer].sav_trad
+      - person[taxpayer].x_ira_prior_excess
+  - id: saving.ira_earlier_excess
+    design: person.x_other item 2 (an earlier year's excess IRA contribution still in the IRA)
+    situation: A person with an IRA who put nothing in for 2025 still has an excess contribution of an earlier year in it.
+    answers:
+      person[taxpayer].ira_owner: true
+      person[taxpayer].sav_trad: false
+      person[taxpayer].x_ira_prior_excess: true
+      s2.other_tax: false
+    expect:
+      refused: person[taxpayer].x_other
+  - id: saving.ira_too_much_left_in
+    design: person.ira_excess item 1 (contributions over the limit, not withdrawn)
+    situation: A person put more into a traditional IRA for 2025 than allowed and left the extra in.
+    answers:
+      person[taxpayer].ira_owner: true
+      person[taxpayer].sav_trad: true
+      person[taxpayer].ira_trad: 300000
+      person[taxpayer].ira_work_plan: false
+      person[taxpayer].ira_extra_left: true
+      person[taxpayer].sav_roth: 0
+      s8812.combat_pay: false
+    expect:
+      refused: person[taxpayer].ira_excess_gate
+  - id: saving.ira_recharacterized
+    design: person.ira_excess item 2 (a recharacterized contribution)
+    situation: A person moved a 2025 contribution from a traditional IRA to a Roth IRA.
+    answers:
+      person[taxpayer].ira_owner: true
+      person[taxpayer].sav_trad: true
+      person[taxpayer].ira_trad: 300000
+      person[taxpayer].ira_work_plan: false
+      person[taxpayer].ira_extra_left: false
+      person[taxpayer].ira_recharacterized: true
+      person[taxpayer].sav_roth: 0
+      s8812.combat_pay: false
+    expect:
+      refused: person[taxpayer].ira_excess_gate
+  - id: saving.education_account_taxable
+    design: person.x_other item 1 (a taxable distribution from a Coverdell ESA, a 529 plan or an ABLE account)
+    situation: Money came out of a person's 529 plan in 2025 and part of it was taxable.
+    answers:
+      person[taxpayer].x_edu_account: true
+      person[taxpayer].x_edu_taxable: true
+      s2.other_tax: false
+    expect:
+      refused: person[taxpayer].x_other
+  - id: saving.education_account_excess
+    design: person.x_other item 3 (excess contributions to a Coverdell ESA or an ABLE account)
+    situation: More was put into a Coverdell account held for a person than its limit.
+    answers:
+      person[taxpayer].x_edu_account: true
+      person[taxpayer].x_edu_taxable: false
+      person[taxpayer].x_edu_excess: true
+      s2.other_tax: false
+    expect:
+      refused: person[taxpayer].x_other
+  - id: saving.education_account_plain
+    design: lane 4b step C (person.x_edu_account, the ordinary yes)
+    situation: A person has a 529 plan; nothing taxable came out and nothing went in over a limit.
+    answers:
+      person[taxpayer].x_edu_account: true
+      person[taxpayer].x_edu_taxable: false
+      person[taxpayer].x_edu_excess: false
+    expect:
+      proceeds:
+        person[taxpayer].x_edu_excess: false
+  - id: saving.archer_excess
+    design: person.x_other item 3 (excess contributions to an Archer MSA)
+    situation: More was put into a person's Archer MSA than its limit.
+    answers:
+      person[taxpayer].x_archer_excess: true
+      s2.other_tax: false
+    expect:
+      refused: person[taxpayer].x_other
+  - id: saving.inherited_minimum_missed
+    design: person.x_other item 5 (a required minimum distribution not received in full), an inherited account
+    situation: A person under 73 inherited an IRA and did not take the year's required minimum out in time.
+    answers:
+      person[taxpayer].inherited_account: true
+      person[taxpayer].rmd_missed: true
+      s2.other_tax: false
+    expect:
+      refused: person[taxpayer].x_other
+  - id: saving.inherited_minimum_taken
+    design: lane 4b step C (person.inherited_account, the ordinary yes)
+    situation: A person inherited an IRA and took the required amounts out.
+    answers:
+      person[taxpayer].inherited_account: true
+      person[taxpayer].rmd_missed: false
+    expect:
+      proceeds:
+        person[taxpayer].rmd_missed: false
+  - id: saving.age_73_minimum_missed
+    design: person.x_other item 5 (a required minimum distribution not received in full), the person's own account
+    situation: A person born in 1950 did not take the required minimum out of a retirement account in time; no inheritance question is asked.
+    answers:
+      person[taxpayer].birth_year: 1950
+      person[taxpayer].rmd_missed: true
+      s2.other_tax: false
+      person[taxpayer].work_ssn: true
+    expect:
+      refused: person[taxpayer].x_other
+      not_asked:
+      - person[taxpayer].inherited_account
+  - id: saving.no_hsa_no_excess_question
+    design: person.x_other item 4 (an earlier year's excess HSA contribution), a person with no account
+    situation: A person who lists no health savings account is not asked about an old excess in one.
+    answers:
+      $f8889@person[taxpayer]: []
+    expect:
+      proceeds:
+        $f8889@person[taxpayer]: []
+      not_asked:
+      - person[taxpayer].x_hsa_prior_excess

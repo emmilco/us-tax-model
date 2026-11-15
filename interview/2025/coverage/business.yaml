@@ -1,0 +1,256 @@
+tax_year: 2025
+part: A person's own business
+profile: full
+sets:
+  one_business:
+    says: One person with one business that took in $90,000, with no vehicle, no equipment, no home office, no health insurance and no retirement plan.
+    answers:
+      $sc@person[taxpayer]: [shop]
+      $asset@person[taxpayer].sc[shop]: []
+      $scveh@person[taxpayer].sc[shop]: []
+      person[taxpayer].sc[shop].line1: 9000000
+      person[taxpayer].sc[shop].line2: 0
+      person[taxpayer].sc[shop].line6: 0
+      person[taxpayer].sc[shop].tips_ot: false
+      person[taxpayer].sc[shop].spouse_owned: false
+      person[taxpayer].sc[shop].statutory: false
+      person[taxpayer].sc[shop].passive: true
+      person[taxpayer].sc[shop].method_other: false
+      person[taxpayer].sc[shop].special: false
+      person[taxpayer].sc[shop].business_credit: false
+      person[taxpayer].sc[shop].fuel_credit: false
+      person[taxpayer].sc[shop].line8: 0
+      person[taxpayer].sc[shop].line11: 0
+      person[taxpayer].sc[shop].line10: 0
+      person[taxpayer].sc[shop].line18: 0
+      person[taxpayer].sc[shop].line22: 0
+      person[taxpayer].sc[shop].line20b: 0
+      person[taxpayer].sc[shop].rent_equipment: 0
+      person[taxpayer].sc[shop].line25: 0
+      person[taxpayer].sc[shop].line15: 0
+      person[taxpayer].sc[shop].line17: 0
+      person[taxpayer].sc[shop].line23: 0
+      person[taxpayer].sc[shop].line21: 0
+      person[taxpayer].sc[shop].line16a: 0
+      person[taxpayer].sc[shop].line16b: 0
+      person[taxpayer].sc[shop].travel_meals: false
+      person[taxpayer].sc[shop].employees: false
+      person[taxpayer].sc[shop].line48: 0
+      person[taxpayer].sc[shop].goods: false
+      person[taxpayer].sc[shop].ho_uses: false
+      person[taxpayer].sc[shop].hi_uses: false
+      person[taxpayer].plan: none
+      person[taxpayer].se_screen: false
+rows:
+  - id: business.none
+    design: lane 6a, step 1 (the off-ramp)
+    situation: A person who did not work for themselves lists no business and is asked nothing about one.
+    answers:
+      $sc@person[taxpayer]: []
+    expect:
+      proceeds:
+        $sc@person[taxpayer]: []
+      not_asked: [qbi.suspended, qbi.carryforward, qbi.reit_loss]
+  - id: business.simple_age_settled_by_birth_year
+    design: N8 (the SIMPLE catch-up age band settled by the year of birth)
+    situation: A person born in 1964 with a one-person business and a SIMPLE IRA who put $20,000 of their own earnings into it is not asked their age band.
+    uses: [one_business]
+    answers:
+      person[taxpayer].birth_year: 1964
+      person[taxpayer].plan: simple
+      person[taxpayer].plan_screen: false
+      person[taxpayer].simple_deferral: 2000000
+    expect:
+      asks: person[taxpayer].simple_employer
+      not_asked: ["person[taxpayer].simple_age_at_year_end"]
+  - id: business.simple_age_asked_born_1966
+    design: N8 (a birth year that leaves the SIMPLE catch-up age band open)
+    situation: A person born in 1966 with a one-person business and a SIMPLE IRA who put $20,000 of their own earnings into it is asked how old they were at the end of 2025.
+    uses: [one_business]
+    answers:
+      person[taxpayer].birth_year: 1966
+      person[taxpayer].plan: simple
+      person[taxpayer].plan_screen: false
+      person[taxpayer].simple_deferral: 2000000
+    expect:
+      asks: person[taxpayer].simple_age_at_year_end
+  - id: business.plain
+    design: lane 6a, step 3 (the three parents answered no)
+    situation: A one-person business with no employees, no goods for sale and no travel or meals is asked none of the thirteen amounts beneath those three questions.
+    uses: [one_business]
+    answers:
+      qbi.suspended: false
+      s2.lookback: false
+      scope.se_plan_other: false
+      scope.income_averaging: false
+    expect:
+      proceeds:
+        person[taxpayer].sc[shop].employees: false
+        person[taxpayer].sc[shop].goods: false
+        person[taxpayer].sc[shop].travel_meals: false
+      not_asked:
+        - person[taxpayer].sc[shop].line26
+        - person[taxpayer].sc[shop].line14
+        - person[taxpayer].sc[shop].line19
+        - person[taxpayer].sc[shop].line35
+        - person[taxpayer].sc[shop].line36
+        - person[taxpayer].sc[shop].line37
+        - person[taxpayer].sc[shop].line38
+        - person[taxpayer].sc[shop].line39
+        - person[taxpayer].sc[shop].line41
+        - person[taxpayer].sc[shop].inventory_other
+        - person[taxpayer].sc[shop].line24a
+        - person[taxpayer].sc[shop].meals_50
+        - person[taxpayer].sc[shop].meals_80
+        - person[taxpayer].sc[shop].meals_100
+  - id: business.employees
+    design: lane 6a, step 3 (sc.employees, was sc.line14, sc.line19 and sc.line26 asked of every business)
+    situation: A business with employees enters their wages, their benefits and its payments to their retirement plan.
+    uses: [one_business]
+    answers:
+      person[taxpayer].sc[shop].employees: true
+      person[taxpayer].sc[shop].line26: 1200000
+      person[taxpayer].sc[shop].line14: 100000
+      person[taxpayer].sc[shop].line19: 50000
+      qbi.suspended: false
+      s2.lookback: false
+      scope.se_plan_other: false
+      scope.income_averaging: false
+    expect:
+      proceeds:
+        person[taxpayer].sc[shop].line26: 1200000
+        person[taxpayer].sc[shop].line14: 100000
+        person[taxpayer].sc[shop].line19: 50000
+  - id: business.goods
+    design: lane 6a, step 3 (sc.goods, was sc.line35 to sc.line41 asked of every business)
+    situation: A business that sells goods enters its inventory and what the goods cost.
+    uses: [one_business]
+    answers:
+      person[taxpayer].sc[shop].goods: true
+      person[taxpayer].sc[shop].inventory_other: false
+      person[taxpayer].sc[shop].line35: 200000
+      person[taxpayer].sc[shop].line36: 1000000
+      person[taxpayer].sc[shop].line37: 0
+      person[taxpayer].sc[shop].line38: 0
+      person[taxpayer].sc[shop].line39: 0
+      person[taxpayer].sc[shop].line41: 300000
+      qbi.suspended: false
+      s2.lookback: false
+      scope.se_plan_other: false
+      scope.income_averaging: false
+    expect:
+      proceeds:
+        person[taxpayer].sc[shop].line35: 200000
+        person[taxpayer].sc[shop].line36: 1000000
+        person[taxpayer].sc[shop].line41: 300000
+  - id: business.inventory_method
+    design: lane 6a, step 3 (sc.inventory_other beneath sc.goods)
+    situation: A business that sells goods values its inventory by a method other than cost or the lower of cost or market.
+    uses: [one_business]
+    answers:
+      person[taxpayer].sc[shop].goods: true
+      person[taxpayer].sc[shop].inventory_other: true
+      person[taxpayer].sc[shop].line36: 0
+      person[taxpayer].sc[shop].line37: 0
+      person[taxpayer].sc[shop].line38: 0
+      person[taxpayer].sc[shop].line39: 0
+      person[taxpayer].sc[shop].line41: 0
+      person[taxpayer].sc[shop].line35: 0
+    expect:
+      refused: person[taxpayer].sc[shop].inventory_other
+  - id: business.travel_meals
+    design: lane 6a, step 3 (sc.travel_meals, was sc.line24a and the three meals amounts asked of every business)
+    situation: A business that paid for overnight travel and meals with clients enters the travel and the meals.
+    uses: [one_business]
+    answers:
+      person[taxpayer].sc[shop].travel_meals: true
+      person[taxpayer].sc[shop].line24a: 95000
+      person[taxpayer].sc[shop].meals_50: 36000
+      person[taxpayer].sc[shop].meals_80: 0
+      person[taxpayer].sc[shop].meals_100: 0
+      qbi.suspended: false
+      s2.lookback: false
+      scope.se_plan_other: false
+      scope.income_averaging: false
+    expect:
+      proceeds:
+        person[taxpayer].sc[shop].line24a: 95000
+        person[taxpayer].sc[shop].meals_50: 36000
+  - id: business.daycare_food
+    design: lane 6a, step 3 (the wrong No to sc.travel_meals that its words guard against)
+    situation: A daycare owner with no travel answers yes for the food of the children in care and enters it as food deducted in full.
+    uses: [one_business]
+    answers:
+      person[taxpayer].sc[shop].travel_meals: true
+      person[taxpayer].sc[shop].line24a: 0
+      person[taxpayer].sc[shop].meals_50: 0
+      person[taxpayer].sc[shop].meals_80: 0
+      person[taxpayer].sc[shop].meals_100: 400000
+      qbi.suspended: false
+      s2.lookback: false
+      scope.se_plan_other: false
+      scope.income_averaging: false
+    expect:
+      proceeds:
+        person[taxpayer].sc[shop].meals_100: 400000
+  - id: business.self_employment_screen
+    design: lane 6a, step 1 (person.se_screen cut to five items)
+    situation: A business owner has an approved exemption from self-employment tax on religious grounds.
+    uses: [one_business]
+    answers:
+      person[taxpayer].se_screen: true
+    expect:
+      refused: person[taxpayer].se_screened
+  - id: business.qbi_no_2024_form
+    design: lane 6a, step 2 (qbi.prior_form, was qbi.carryforward asked of everyone)
+    situation: A person whose 2024 return has no Form 8995 or 8995-A is not asked for a loss carried forward.
+    answers:
+      qbi.prior_form: false
+    expect:
+      proceeds:
+        qbi.prior_form: false
+      not_asked: [qbi.carryforward, qbi.reit_loss]
+  - id: business.qbi_loss_carried
+    design: lane 6a, step 2 (qbi.carryforward beneath qbi.prior_form)
+    situation: A person whose 2024 Form 8995 carries a business loss forward enters it.
+    answers:
+      qbi.prior_form: true
+      qbi.carryforward: 500000
+      qbi.reit_loss: false
+    expect:
+      proceeds:
+        qbi.carryforward: 500000
+  - id: business.qbi_reit_loss
+    design: lane 6a, step 2 (qbi.unsupported item 2, a REIT or PTP loss carried from an earlier year)
+    situation: A person's 2024 Form 8995 carries forward a loss of real estate fund dividends or of a publicly traded partnership.
+    answers:
+      qbi.prior_form: true
+      qbi.carryforward: 0
+      qbi.reit_loss: true
+    expect:
+      refused: qbi.unsupported
+  - id: business.qbi_suspended
+    design: lane 6a, step 2 (qbi.unsupported item 3, losses suspended earlier and allowed now)
+    situation: A business owner deducts in 2025 a loss of an earlier year that a tax limit had held back.
+    uses: [one_business]
+    answers:
+      qbi.suspended: true
+      s2.lookback: false
+      scope.se_plan_other: false
+      scope.income_averaging: false
+    expect:
+      refused: qbi.unsupported
+  - id: business.qbi_coop_patron
+    design: lane 6a, step 2 (qbi.unsupported item 4, a patron of an agricultural or horticultural cooperative)
+    situation: A person with no business is a patron of a farm cooperative.
+    answers:
+      qbi.coop_patron: true
+    expect:
+      refused: qbi.unsupported
+  - id: business.qbi_other_income
+    design: lane 6a, step 2 (qbi.unsupported item 1, other qualified business or PTP income, now told at the scope question)
+    situation: A person has business income from a partnership, an S corporation or a rental, reported on a Schedule K-1 or Schedule E.
+    answers:
+      scope.k1: true
+    expect:
+      refused: scope.schedule1

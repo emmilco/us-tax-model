@@ -27,6 +27,7 @@
   },
   "base_inputs": {
     "div.any": true,
+    "div.other_boxes": true,
     "div.box2b": 0,
     "div.box2c": 0,
     "div.box2d": 0,

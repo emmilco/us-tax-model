@@ -1,0 +1,8 @@
+name: ny04_refused_part_year
+who: A single person with one job who moved from New Jersey to the Bronx in June 2025; the tool does not prepare a part-year resident's New York return.
+end: { refused: ny_it201.gate.part_year_state }
+profile: ny
+extends: 01_single_w2
+answers:
+  ny_it201.ask.city_resident: false
+  ny_it201.ask.state_resident: false

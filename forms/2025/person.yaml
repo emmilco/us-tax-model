@@ -24,16 +24,181 @@ form:
       cite:
         doc: f1040
         locator: "Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse"
+    - id: person.birth_year
+      printed: (helper)
+      type: Count
+      label: The year you were born
+      expr:
+        op: input
+        source: In what year were you born?
+      cite:
+        doc: i1040gi
+        locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; p. 33, Blindness, "If you weren’t
+          totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or
+          optometrist) that:", "You can''t see better than 20/200 in your better eye with glasses or contact lenses, or",
+          "Your field of vision is 20 degrees or less.", "If your eye condition isn’t likely to improve beyond the conditions
+          listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect
+          instead." and "You must keep the statement for your records."; p501 p. 23, Not totally blind, "If your vision
+          can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection,
+          or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify."'
+    - id: person.birth_cut_year
+      printed: (helper)
+      type: Bool
+      label: Born in a year in which a birth on January 1 changes an age test of this return (1961, 2001, 2002, 2007 or 2008)
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - person.birth_year
+          - param: age.cut_65
+        - op: test
+          eq:
+          - person.birth_year
+          - param: age.cut_25
+        - op: test
+          eq:
+          - person.birth_year
+          - param: age.cut_24
+        - op: test
+          eq:
+          - person.birth_year
+          - param: age.cut_19
+        - op: test
+          eq:
+          - person.birth_year
+          - param: age.cut_18
+      cite:
+        doc: i1040gi
+        locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; p. 33, Blindness, "If you weren’t
+          totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or
+          optometrist) that:", "You can''t see better than 20/200 in your better eye with glasses or contact lenses, or",
+          "Your field of vision is 20 degrees or less.", "If your eye condition isn’t likely to improve beyond the conditions
+          listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect
+          instead." and "You must keep the statement for your records."; p501 p. 23, Not totally blind, "If your vision
+          can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection,
+          or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify."'
+    - id: person.born_jan1
+      printed: (helper)
+      type: Bool
+      gated_by: person.born_jan1_if_cut_year
+      label: Were you born on January 1?
+      expr:
+        op: input
+        source: Were you born on January 1?
+      cite:
+        doc: i1040gi
+        locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; p. 33, Blindness, "If you weren’t
+          totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or
+          optometrist) that:", "You can''t see better than 20/200 in your better eye with glasses or contact lenses, or",
+          "Your field of vision is 20 degrees or less.", "If your eye condition isn’t likely to improve beyond the conditions
+          listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect
+          instead." and "You must keep the statement for your records."; p501 p. 23, Not totally blind, "If your vision
+          can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection,
+          or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify."'
+    - id: person.born_jan1_if_cut_year
+      printed: (gate)
+      type: Bool
+      label: Born on January 1 (asked only of a person born in 1961, 2001, 2002, 2007 or 2008; otherwise no)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.birth_cut_year
+            - const: true
+          then: person.born_jan1
+        - guard:
+            op: test
+            eq:
+            - person.birth_cut_year
+            - const: false
+          then: person.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; p. 33, Blindness, "If you weren’t
+          totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or
+          optometrist) that:", "You can''t see better than 20/200 in your better eye with glasses or contact lenses, or",
+          "Your field of vision is 20 degrees or less.", "If your eye condition isn’t likely to improve beyond the conditions
+          listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect
+          instead." and "You must keep the statement for your records."; p501 p. 23, Not totally blind, "If your vision
+          can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection,
+          or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify."'
+    - id: person.birth_year_bad
+      printed: (helper)
+      type: Bool
+      label: The year of birth entered is after the tax year, or more than 125 years before it
+      expr:
+        op: test
+        any:
+        - op: test
+          gt:
+          - person.birth_year
+          - param: age.birth_year_latest
+        - op: test
+          lt:
+          - person.birth_year
+          - param: age.birth_year_earliest
+      cite:
+        doc: i1040gi
+        locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"'
     - id: person.age65
       printed: (helper)
       type: Bool
-      label: Were you born before January 2, 1961?
+      label: Born before January 2, 1961
       expr:
-        op: input
-        source: Were you born before January 2, 1961?
+        op: test
+        any:
+        - op: test
+          lt:
+          - person.birth_year
+          - param: age.cut_65
+        - op: test
+          all:
+          - op: test
+            eq:
+            - person.birth_year
+            - param: age.cut_65
+          - op: test
+            eq:
+            - person.born_jan1_if_cut_year
+            - const: true
       cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        doc: i1040gi
+        locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"'
+    - id: person.under24
+      printed: (helper)
+      type: Bool
+      label: Under age 24 at the end of 2025 (born after January 1, 2002)
+      expr:
+        op: test
+        any:
+        - op: test
+          gt:
+          - person.birth_year
+          - param: age.cut_24
+        - op: test
+          all:
+          - op: test
+            eq:
+            - person.birth_year
+            - param: age.cut_24
+          - op: test
+            eq:
+            - person.born_jan1_if_cut_year
+            - const: false
+      cite:
+        doc: i8615
+        locator: 'p. 1, Certain January 1 birthdays, "Use the following chart to determine whether certain children with
+          January 1 birthdays meet condition 3 under Who Must File" (a child born on "January 1, 2002" is considered to be
+          24 at the end of 2025: "Don’t use Form 8615 for this child.")'
     - id: person.blind
       printed: (helper)
       type: Bool
@@ -117,6 +282,44 @@ form:
     - id: person.under16
       printed: (helper)
       type: Bool
+      label: Under age 16 at the end of 2025
+      expr:
+        op: test
+        any:
+        - op: test
+          gt:
+          - person.birth_year
+          - param: age.cut_16
+        - op: test
+          all:
+          - op: test
+            eq:
+            - person.birth_year
+            - param: age.cut_16
+          - op: test
+            eq:
+            - person.under16_at_year_end_if_open_year
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025"'
+      ambiguity: amb.2025.filer_under_16
+    - id: person.under16_open_year
+      printed: (helper)
+      type: Bool
+      label: Born in 2010
+      expr:
+        op: test
+        eq:
+        - person.birth_year
+        - param: age.cut_16
+      cite:
+        doc: i1040gi
+        locator: 'p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025"'
+    - id: person.under16_at_year_end
+      printed: (helper)
+      type: Bool
+      gated_by: person.under16_at_year_end_if_open_year
       label: Were you under age 16 at the end of 2025?
       expr:
         op: input
@@ -125,10 +328,33 @@ form:
         doc: i1040gi
         locator: 'p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025"'
       ambiguity: amb.2025.filer_under_16
+    - id: person.under16_at_year_end_if_open_year
+      printed: (gate)
+      type: Bool
+      label: Under age 16 at the end of 2025, as stated by a person born in 2010 (otherwise no)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.under16_open_year
+            - const: true
+          then: person.under16_at_year_end
+        - guard:
+            op: test
+            eq:
+            - person.under16_open_year
+            - const: false
+          then: person.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025"'
     - id: person.educator_expenses
       printed: (helper)
       label: Qualified educator expenses you paid in 2025
       type: NonNegDollars
+      gated_by: person.educator_expenses_if_educator
       expr:
         op: input
         source: Qualified educator expenses you paid in 2025 (professional development courses you took that are related to
@@ -158,24 +384,66 @@ form:
         doc: i1040gi
         locator: p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor,
           principal, or aide who worked in a school for at least 900 hours during a school year'
-    - id: person.born_before_2001
+    - id: person.educator_expenses_if_educator
+      printed: (gate)
+      type: NonNegDollars
+      label: Qualified educator expenses paid in 2025 (asked only of an eligible educator; otherwise zero)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.eligible_educator
+            - const: true
+          then: person.educator_expenses
+        - guard:
+            op: test
+            eq:
+            - person.eligible_educator
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: p. 93, Schedule 1, line 11, Qualified expenses, 'For professional development courses you have taken related
+          to the curriculum you teach or to the students you teach', 'equipment (including computer equipment, software, and
+          services)', 'for personal protective equipment, disinfectant, and other supplies used for the prevention of the
+          spread of coronavirus', and 'You must reduce your qualified expenses by the following amounts'; p. 93, 'Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses
+          in health or physical education.'
+    - id: person.eic_age25
       printed: (helper)
       type: Bool
-      label: Were you born before January 2, 2001?
+      label: Born before January 2, 2001
       expr:
-        op: input
-        source: Were you born before January 2, 2001?
+        op: test
+        any:
+        - op: test
+          lt:
+          - person.birth_year
+          - param: age.cut_25
+        - op: test
+          all:
+          - op: test
+            eq:
+            - person.birth_year
+            - param: age.cut_25
+          - op: test
+            eq:
+            - person.born_jan1_if_cut_year
+            - const: true
       cite:
         doc: i1040gi
         locator: p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2,
           2001"
-    - id: person.born_after_1960
+    - id: person.eic_under65
       printed: (helper)
       type: Bool
-      label: Were you born after December 31, 1960?
+      label: Born after December 31, 1960
       expr:
-        op: input
-        source: Were you born after December 31, 1960?
+        op: test
+        ge:
+        - person.birth_year
+        - param: age.cut_65
       cite:
         doc: i1040gi
         locator: p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2,
@@ -264,15 +532,60 @@ form:
       cite:
         doc: i1040gi
         locator: p. 17, Before you begin, "The other spouse must have either an SSN or ITIN"
+    - id: person.turned_65_this_year
+      printed: (helper)
+      type: Bool
+      label: Born in 1960, or on January 1, 1961 (a person whose 65th birthday, or the day before it, fell in 2025)
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - person.birth_year
+          - param: age.turning_65
+        - op: test
+          all:
+          - op: test
+            eq:
+            - person.birth_year
+            - param: age.cut_65
+          - op: test
+            eq:
+            - person.born_jan1_if_cut_year
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
     - id: person.died_before_65
       printed: (helper)
-      label: Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before
-        reaching age 65?
+      label: The final return of a person who died in 2025 before reaching age 65 (asked only of a person born in 1960, or on January 1, 1961; otherwise no)
       type: Bool
       expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.turned_65_this_year
+            - const: true
+          then: person.died_at_64
+        - guard:
+            op: test
+            eq:
+            - person.turned_65_this_year
+            - const: false
+          then: person.no
+      cite:
+        doc: i1040gi
+        locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
+    - id: person.died_at_64
+      printed: (helper)
+      type: Bool
+      gated_by: person.died_before_65
+      label: Is this the final return of a person who died in 2025 before reaching age 65?
+      expr:
         op: input
-        source: Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before
-          reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
+        source: Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
       cite:
         doc: i1040gi
         locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
@@ -293,7 +606,7 @@ form:
       expr:
         op: test
         gt:
-        - person.educator_expenses
+        - person.educator_expenses_if_educator
         - param: sales.zero
       cite:
         doc: i1040gi
@@ -305,7 +618,7 @@ form:
       expr:
         op: smaller_of
         of:
-        - person.educator_expenses
+        - person.educator_expenses_if_educator
         - person.educator_max
       cite:
         doc: i1040gi
@@ -1572,12 +1885,240 @@ form:
           locator: pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5
     - id: person.simple_age
       printed: (helper)
-      label: Catch-up eligibility
+      label: 'Catch-up eligibility from the year of birth: 64 or older or 50 to 59 age50, 60 to 63 age60_63, under 50 under50; for
+        a person born in a year in which only the birth date decides the band, as that person states'
       type: Enum(catchup_age)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            all:
+            - op: test
+              ge:
+              - person.birth_year
+              - const: 0
+                type: Count
+            - op: test
+              lt:
+              - person.birth_year
+              - param: age.cut_64
+          then: person.catchup_age50
+        - guard:
+            op: test
+            all:
+            - op: test
+              ge:
+              - person.birth_year
+              - param: age.cut_64
+            - op: test
+              lt:
+              - person.birth_year
+              - param: age.cut_60
+          then: person.simple_age_60_63_years
+        - guard:
+            op: test
+            all:
+            - op: test
+              ge:
+              - person.birth_year
+              - param: age.cut_60
+            - op: test
+              lt:
+              - person.birth_year
+              - param: age.cut_50
+          then: person.simple_age_50_59_years
+        - guard:
+            op: test
+            ge:
+            - person.birth_year
+            - param: age.cut_50
+          then: person.simple_age_under50_years
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63"
+    - id: person.simple_age_60_63_years
+      printed: (helper)
+      type: Enum(catchup_age)
+      label: 'Catch-up band of a person born from the year age.cut_64 up to the year before age.cut_60: 60 to 63, or for a person
+        born in the year age.cut_64 as that person states'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.simple_open_year
+            - const: true
+          then: person.simple_age_if_open_year
+        - guard:
+            op: test
+            eq:
+            - person.simple_open_year
+            - const: false
+          then: person.catchup_age60_63
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63"
+    - id: person.simple_age_50_59_years
+      printed: (helper)
+      type: Enum(catchup_age)
+      label: 'Catch-up band of a person born from the year age.cut_60 up to the year before age.cut_50: 50 to 59, or for a person
+        born in the year age.cut_60 as that person states'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.simple_open_year
+            - const: true
+          then: person.simple_age_if_open_year
+        - guard:
+            op: test
+            eq:
+            - person.simple_open_year
+            - const: false
+          then: person.catchup_age50
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63"
+    - id: person.simple_age_under50_years
+      printed: (helper)
+      type: Enum(catchup_age)
+      label: 'Catch-up band of a person born in the year age.cut_50 or later: under 50, or for a person born in the year age.cut_50
+        from that person''s age-50 answer'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.age50_open_year
+            - const: true
+          then: person.simple_age_from_age50
+        - guard:
+            op: test
+            eq:
+            - person.age50_open_year
+            - const: false
+          then: person.catchup_under50
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63"
+    - id: person.simple_open_year
+      printed: (helper)
+      type: Bool
+      label: Born in 1962 or 1966 (a year in which the birth date decides whether the SIMPLE catch-up age band is 60 to 63)
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - person.birth_year
+          - param: age.cut_64
+        - op: test
+          eq:
+          - person.birth_year
+          - param: age.cut_60
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63"
+    - id: person.simple_age_at_year_end
+      printed: (helper)
+      label: Catch-up eligibility, as stated by a person born in 1962 or 1966
+      type: Enum(catchup_age)
+      gated_by: person.simple_age_if_open_year
       expr:
         op: input
         source: 'Your age at the end of 2025 for SIMPLE catch-up contributions: under 50 (under50), 50 to 59 or 64 and over (age50),
           or 60, 61, 62 or 63 (age60_63)'
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63"
+    - id: person.simple_age_if_open_year
+      printed: (gate)
+      type: Enum(catchup_age)
+      label: Catch-up eligibility as stated by a person born in 1962 or 1966 (otherwise 50 to 59 or 64 and over; read only for
+        those years)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.simple_open_year
+            - const: true
+          then: person.simple_age_at_year_end
+        - guard:
+            op: test
+            eq:
+            - person.simple_open_year
+            - const: false
+          then: person.catchup_age50
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63"
+    - id: person.simple_age_from_age50
+      printed: (helper)
+      type: Enum(catchup_age)
+      label: Catch-up eligibility of a person born in 1976 (50 or over at the end of 2025 as that person states, otherwise under 50)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.age50_at_year_end_if_open_year
+            - const: true
+          then: person.catchup_age50
+        - guard:
+            op: test
+            eq:
+            - person.age50_at_year_end_if_open_year
+            - const: false
+          then: person.catchup_under50
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63"
+      ambiguity: amb.2025.ira_age50
+    - id: person.catchup_under50
+      printed: (helper)
+      type: Enum(catchup_age)
+      label: Year parameter ret.catchup_under50 (under50)
+      expr:
+        op: param
+        ref: ret.catchup_under50
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63"
+    - id: person.catchup_age50
+      printed: (helper)
+      type: Enum(catchup_age)
+      label: Year parameter ret.catchup_age50 (age50)
+      expr:
+        op: param
+        ref: ret.catchup_age50
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63"
+    - id: person.catchup_age60_63
+      printed: (helper)
+      type: Enum(catchup_age)
+      label: Year parameter ret.catchup_age60_63 (age60_63)
+      expr:
+        op: param
+        ref: ret.catchup_age60_63
       cite:
         doc: p560
         locator: p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
@@ -2150,11 +2691,25 @@ form:
         locator: 'p. 5, Line 18, "Earned income for figuring the amount of dependent care benefits you are able to exclude or deduct from your income is determined in the same way as earned income for figuring the credit is determined" and "for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12"'
     - id: person.sav_born
       printed: (helper)
-      label: Were you born before January 2, 2008?
+      label: Born before January 2, 2008
       type: Bool
       expr:
-        op: input
-        source: Were you born before January 2, 2008?
+        op: test
+        any:
+        - op: test
+          lt:
+          - person.birth_year
+          - param: age.cut_18
+        - op: test
+          all:
+          - op: test
+            eq:
+            - person.birth_year
+            - param: age.cut_18
+          - op: test
+            eq:
+            - person.born_jan1_if_cut_year
+            - const: true
       cite:
         doc: f8880
         locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
@@ -2216,10 +2771,45 @@ form:
         doc: f8880
         locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
           born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
+    - id: person.ira_owner
+      printed: (helper)
+      type: Bool
+      label: "Had an IRA of any kind at any time in 2025, or has one now (traditional, Roth, SEP or SIMPLE, inherited, or opened in 2026 for 2025)"
+      expr:
+        op: input
+        source: "Did you have an individual retirement arrangement (IRA) of any kind at any time in 2025, or do you have one now: traditional, Roth, SEP or SIMPLE, including an inherited IRA and one opened in 2026 for 2025?"
+      cite:
+        doc: f8880
+        locator: 'Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any
+          nondeductible contributions to a traditional"'
+    - id: person.sav_trad_if_ira_owner
+      printed: (gate)
+      type: Bool
+      label: Made traditional IRA contributions for 2025 (asked only of a person with an IRA; otherwise no)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_owner
+            - const: true
+          then: person.sav_trad
+        - guard:
+            op: test
+            eq:
+            - person.ira_owner
+            - const: false
+          then: person.no
+      cite:
+        doc: f8880
+        locator: 'Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any
+          nondeductible contributions to a traditional"'
     - id: person.sav_trad
       printed: (helper)
       label: Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?
       type: Bool
+      gated_by: person.sav_trad_if_ira_owner
       expr:
         op: input
         source: Did you make contributions (other than rollover contributions) to a traditional IRA for 2025, deductible or
@@ -2246,10 +2836,34 @@ form:
       printed: (helper)
       label: Your contributions to a Roth IRA for 2025 (not rollovers or conversions)
       type: NonNegDollars
+      gated_by: person.sav_roth_if_ira_owner
       expr:
         op: input
         source: Your contributions to a Roth IRA for 2025, including contributions made by the due date of your 2025 return that
           are for 2025; do not include rollover contributions or conversions; zero if none
+      cite:
+        doc: f8880
+        locator: 'Form 8880 (2025), line 1, "Do not include rollover contributions"; p. 2, Who Can Take This Credit, "(a) contributions
+          (other than rollover contributions) to a traditional or Roth IRA"'
+    - id: person.sav_roth_if_ira_owner
+      printed: (gate)
+      type: NonNegDollars
+      label: Roth IRA contributions for 2025 (asked only of a person with an IRA; otherwise zero)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_owner
+            - const: true
+          then: person.sav_roth
+        - guard:
+            op: test
+            eq:
+            - person.ira_owner
+            - const: false
+          then: person.zero
       cite:
         doc: f8880
         locator: 'Form 8880 (2025), line 1, "Do not include rollover contributions"; p. 2, Who Can Take This Credit, "(a) contributions
@@ -2263,7 +2877,7 @@ form:
         op: sum
         of:
         - person.ira_contrib
-        - person.sav_roth
+        - person.sav_roth_if_ira_owner
       cite:
         doc: f8880
         locator: 'Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; p. 2, Who Can Take This Credit, "(a)
@@ -2302,10 +2916,10 @@ form:
       label: Were your elective deferrals and designated Roth contributions for 2025 more than the limit for your plans?
       type: Bool
       expr:
-        op: input
-        source: Is the total of your elective deferrals and designated Roth contributions for 2025 (Form W-2 box 12, from all
-          your employers) more than the limit that applies to you (for a 401(k) plan, $23,500 plus any catch-up contributions
-          your plan allows), so that you have excess deferrals?
+        op: test
+        eq:
+        - scope.excess_deferral_if_w2
+        - const: true
       cite:
         doc: iw2w3
         locator: 'p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is
@@ -2528,6 +3142,7 @@ form:
       printed: (helper)
       label: Your traditional IRA contributions for 2025 (not rollovers)
       type: NonNegDollars
+      gated_by: person.ira_contrib
       expr:
         op: input
         source: 'Your contributions to your traditional IRAs for 2025, made in 2025 or made by April 15, 2026, and designated for
@@ -2551,13 +3166,13 @@ form:
         - guard:
             op: test
             eq:
-            - person.sav_trad
+            - person.sav_trad_if_ira_owner
             - const: true
           then: person.ira_trad
         - guard:
             op: test
             eq:
-            - person.sav_trad
+            - person.sav_trad_if_ira_owner
             - const: false
           then: person.zero
       cite:
@@ -2589,24 +3204,56 @@ form:
           - const: true
         - op: test
           gt:
-          - person.sav_roth
+          - person.sav_roth_if_ira_owner
           - param: sales.zero
       cite:
         doc: f8880
         locator: Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"
     - id: person.ira_excess
       printed: (screen)
-      label: Were your 2025 IRA contributions more than allowed, recharacterized, or did an earlier excess contribution remain in
-        your traditional or Roth IRA at the end of 2025?
+      label: "This person's 2025 IRA contributions were more than allowed and not withdrawn, or were recharacterized"
       type: Bool
       expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - person.ira_extra_left
+          - const: true
+        - op: test
+          eq:
+          - person.ira_recharacterized
+          - const: true
+      cite:
+        doc: p590a
+        locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
+          IRAs for the year that is more than the smaller of"; p. 35, Tax on Excess Contributions, "In general, if the excess
+          contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you
+          are subject to a 6% tax"; p. 30, "Recharacterizing excess contributions"; i1040gi p. 95,
+          Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs
+          shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules"'
+    - id: person.ira_extra_left
+      printed: (screen)
+      type: Bool
+      label: "Were your contributions for 2025 to traditional and Roth IRAs together more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date of your return (including extensions)?"
+      expr:
         op: input
-        source: |-
-          Does any of these apply to you?
-
-          - your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return (including extensions)
-          - you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse)
-          - an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025
+        source: "Were your contributions for 2025 to traditional and Roth IRAs together more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date of your return (including extensions)?"
+      cite:
+        doc: p590a
+        locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
+          IRAs for the year that is more than the smaller of"; p. 35, Tax on Excess Contributions, "In general, if the excess
+          contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you
+          are subject to a 6% tax"; p. 30, "Recharacterizing excess contributions"; i1040gi p. 95,
+          Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs
+          shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules"'
+    - id: person.ira_recharacterized
+      printed: (screen)
+      type: Bool
+      label: "Did you recharacterize a 2025 contribution (move it from a traditional to a Roth IRA or the reverse)?"
+      expr:
+        op: input
+        source: "Did you recharacterize a 2025 contribution (move it from a traditional to a Roth IRA or the reverse)?"
       cite:
         doc: p590a
         locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
@@ -2640,8 +3287,46 @@ form:
           your return for the year is due (including extensions), you are subject to a 6% tax"'
     - id: person.ira_age50
       printed: (helper)
-      label: Were you age 50 or older at the end of 2025?
+      label: Age 50 or older at the end of 2025
       type: Bool
+      expr:
+        op: test
+        any:
+        - op: test
+          lt:
+          - person.birth_year
+          - param: age.cut_50
+        - op: test
+          all:
+          - op: test
+            eq:
+            - person.birth_year
+            - param: age.cut_50
+          - op: test
+            eq:
+            - person.age50_at_year_end_if_open_year
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025"'
+      ambiguity: amb.2025.ira_age50
+    - id: person.age50_open_year
+      printed: (helper)
+      type: Bool
+      label: Born in 1976
+      expr:
+        op: test
+        eq:
+        - person.birth_year
+        - param: age.cut_50
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025"'
+    - id: person.age50_at_year_end
+      printed: (helper)
+      type: Bool
+      gated_by: person.age50_at_year_end_if_open_year
+      label: Were you age 50 or older at the end of 2025?
       expr:
         op: input
         source: Were you age 50 or older at the end of 2025?
@@ -2649,6 +3334,76 @@ form:
         doc: i1040gi
         locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025"'
       ambiguity: amb.2025.ira_age50
+    - id: person.age50_at_year_end_if_open_year
+      printed: (gate)
+      type: Bool
+      label: Age 50 or older at the end of 2025, as stated by a person born in 1976 (otherwise no)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.age50_open_year
+            - const: true
+          then: person.age50_at_year_end
+        - guard:
+            op: test
+            eq:
+            - person.age50_open_year
+            - const: false
+          then: person.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025"'
+    - id: person.age55_open_year
+      printed: (helper)
+      type: Bool
+      label: Born in 1971
+      expr:
+        op: test
+        eq:
+        - person.birth_year
+        - param: age.cut_55
+      cite:
+        doc: i8889
+        locator: p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older"; p. 6, Line 3 Limitation Chart, "If
+          you were age 55 or older at the end of 2025"
+    - id: person.age55_at_year_end
+      printed: (helper)
+      type: Bool
+      gated_by: person.age55_at_year_end_if_open_year
+      label: Were you age 55 or older at the end of 2025?
+      expr:
+        op: input
+        source: Were you age 55 or older at the end of 2025?
+      cite:
+        doc: i8889
+        locator: p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older"; p. 6, Line 3 Limitation Chart, "If
+          you were age 55 or older at the end of 2025"
+    - id: person.age55_at_year_end_if_open_year
+      printed: (gate)
+      type: Bool
+      label: Age 55 or older at the end of 2025, as stated by a person born in 1971 (otherwise no)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.age55_open_year
+            - const: true
+          then: person.age55_at_year_end
+        - guard:
+            op: test
+            eq:
+            - person.age55_open_year
+            - const: false
+          then: person.no
+      cite:
+        doc: i8889
+        locator: p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older"; p. 6, Line 3 Limitation Chart, "If
+          you were age 55 or older at the end of 2025"
     - id: person.ira_work_plan
       printed: (helper)
       label: Were you covered by a retirement plan at work in 2025?
@@ -3170,7 +3925,7 @@ form:
         op: sum
         of:
         - person.ira_contrib
-        - person.sav_roth
+        - person.sav_roth_if_ira_owner
       cite:
         doc: i8606
         locator: 'p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional
@@ -3377,6 +4132,7 @@ form:
       printed: (helper)
       label: Your total basis in traditional IRAs before 2025 (Form 8606 line 2)
       type: NonNegDollars
+      gated_by: person.ira_8606_line2
       expr:
         op: input
         source: 'Your total basis in traditional IRAs (Form 8606 line 2): zero if this is the first year you file Form 8606;
@@ -3455,6 +4211,7 @@ form:
       printed: (helper)
       label: In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?
       type: Bool
+      gated_by: person.ira_dist_if_files
       expr:
         op: input
         source: In 2025, did you take a distribution from a traditional IRA (including a SEP or SIMPLE IRA), or make a Roth
@@ -3802,7 +4559,7 @@ form:
         locator: 'p. 4, Qualified Education Expenses, "American opportunity credit: Qualified education expenses include amounts
           paid for tuition, fees, and course materials, which include books, supplies, and equipment needed for a course of study,
           whether or not the materials are purchased from the educational institution as a condition of enrollment or attendance."'
-    - id: person.edu_a2025
+    - id: person.edu_a_this_year
       printed: (helper)
       label: Adjusted Qualified Education Expenses Worksheet, line 2a
       type: NonNegDollars
@@ -3817,7 +4574,7 @@ form:
         doc: i8863
         locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "a. Tax-free educational assistance received in 2025 allocable
           to the academic period"
-    - id: person.edu_a2026
+    - id: person.edu_a_next_year
       printed: (helper)
       label: Adjusted Qualified Education Expenses Worksheet, line 2b
       type: NonNegDollars
@@ -3848,8 +4605,8 @@ form:
       expr:
         op: sum
         of:
-        - person.edu_a2025
-        - person.edu_a2026
+        - person.edu_a_this_year
+        - person.edu_a_next_year
         - person.edu_refunds
       cite:
         doc: i8863
@@ -3880,6 +4637,7 @@ form:
       printed: (gate)
       label: An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution
       type: Bool
+      gated_by: person.edu_over_if_adj
       expr:
         op: input
         source: Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more
@@ -4065,6 +4823,7 @@ form:
       printed: (gate)
       label: The institution's employer identification number (EIN) is available
       type: Bool
+      gated_by: person.edu_aoc_tin
       expr:
         op: input
         source: Do you have the educational institution's employer identification number (EIN), from Form 1098-T or from the institution?
@@ -4468,25 +5227,53 @@ form:
           locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for
             each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having
             paid) qualified education expenses in 2025."
-    - id: person.edu_born_2007
+    - id: person.edu_over18
       printed: (helper)
-      label: Were you born before January 2, 2007?
+      label: Born before January 2, 2007
       type: Bool
       expr:
-        op: input
-        source: Were you born before January 2, 2007?
+        op: test
+        any:
+        - op: test
+          lt:
+          - person.birth_year
+          - param: age.cut_19
+        - op: test
+          all:
+          - op: test
+            eq:
+            - person.birth_year
+            - param: age.cut_19
+          - op: test
+            eq:
+            - person.born_jan1_if_cut_year
+            - const: true
       cite:
         doc: i8863
         locator: p. 7, Line 7, "b. Age 18 at the end of 2025 and your earned income (defined later) was less than one-half of
           your support (defined later), or"
       ambiguity: amb.2025.edu_age_rule
-    - id: person.edu_born_2002
+    - id: person.edu_age24
       printed: (helper)
-      label: Were you born before January 2, 2002?
+      label: Born before January 2, 2002
       type: Bool
       expr:
-        op: input
-        source: Were you born before January 2, 2002?
+        op: test
+        any:
+        - op: test
+          lt:
+          - person.birth_year
+          - param: age.cut_24
+        - op: test
+          all:
+          - op: test
+            eq:
+            - person.birth_year
+            - param: age.cut_24
+          - op: test
+            eq:
+            - person.born_jan1_if_cut_year
+            - const: true
       cite:
         doc: i8863
         locator: p. 7, Line 7, "1. Were you under age 24 at the end of 2025?"
@@ -4564,13 +5351,13 @@ form:
         - guard:
             op: test
             eq:
-            - person.edu_born_2007
+            - person.edu_over18
             - const: true
           then: person.edu_kid_student_age
         - guard:
             op: test
             eq:
-            - person.edu_born_2007
+            - person.edu_over18
             - const: false
           then: person.edu_kid_18_support
       cite:
@@ -4610,13 +5397,13 @@ form:
         - guard:
             op: test
             eq:
-            - person.edu_born_2002
+            - person.edu_age24
             - const: true
           then: person.edu_no
         - guard:
             op: test
             eq:
-            - person.edu_born_2002
+            - person.edu_age24
             - const: false
           then: person.edu_kid_support
       cite:
@@ -5200,15 +5987,360 @@ form:
       label: Form 5329 parts this tool does not prepare
       type: Bool
       expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - person.rmd_missed_if_possible
+          - const: true
+        - op: test
+          eq:
+          - person.x_edu_taxable_if_account
+          - const: true
+        - op: test
+          eq:
+          - person.x_edu_excess_if_account
+          - const: true
+        - op: test
+          eq:
+          - person.x_archer_excess
+          - const: true
+        - op: test
+          eq:
+          - person.x_ira_prior_excess_if_ira_owner
+          - const: true
+        - op: test
+          eq:
+          - person.x_hsa_prior_excess_if_hsa
+          - const: true
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.x_edu_account
+      printed: (helper)
+      type: Bool
+      label: "A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025"
+      expr:
         op: input
-        source: |-
-          Does any of these apply to you?
-
-          - a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account
-          - excess contributions to a traditional or Roth IRA for an earlier year that remained in the IRA at the end of 2025 (whether or not you contributed for 2025)
-          - excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account
-          - excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported), whether or not you have a Form 8889 for 2025
-          - a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)
+        source: "In 2025, was money put into or taken out of a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account that is yours or is held for you?"
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.x_edu_taxable
+      printed: (helper)
+      type: Bool
+      gated_by: person.x_edu_taxable_if_account
+      label: "Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?"
+      expr:
+        op: input
+        source: "Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?"
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.x_edu_taxable_if_account
+      printed: (gate)
+      type: Bool
+      label: A taxable distribution from a Coverdell ESA, a qualified tuition program or an ABLE account (asked only with such an account; otherwise no)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.x_edu_account
+            - const: true
+          then: person.x_edu_taxable
+        - guard:
+            op: test
+            eq:
+            - person.x_edu_account
+            - const: false
+          then: person.no
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.x_edu_excess
+      printed: (helper)
+      type: Bool
+      gated_by: person.x_edu_excess_if_account
+      label: "Do you have excess contributions to a Coverdell ESA or an ABLE account?"
+      expr:
+        op: input
+        source: "Do you have excess contributions to a Coverdell ESA or an ABLE account?"
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.x_edu_excess_if_account
+      printed: (gate)
+      type: Bool
+      label: Excess contributions to a Coverdell ESA or an ABLE account (asked only with such an account; otherwise no)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.x_edu_account
+            - const: true
+          then: person.x_edu_excess
+        - guard:
+            op: test
+            eq:
+            - person.x_edu_account
+            - const: false
+          then: person.no
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.x_archer_excess
+      printed: (helper)
+      type: Bool
+      label: "Do you have excess contributions to an Archer MSA?"
+      expr:
+        op: input
+        source: "Do you have excess contributions to an Archer MSA?"
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.x_ira_prior_excess
+      printed: (helper)
+      type: Bool
+      gated_by: person.x_ira_prior_excess_if_ira_owner
+      label: "Did excess contributions to a traditional or Roth IRA for an earlier year remain in the IRA at the end of 2025 (whether or not you contributed for 2025)?"
+      expr:
+        op: input
+        source: "Did excess contributions to a traditional or Roth IRA for an earlier year remain in the IRA at the end of 2025 (whether or not you contributed for 2025)?"
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.x_ira_prior_excess_if_ira_owner
+      printed: (gate)
+      type: Bool
+      label: An earlier year's excess IRA contributions remained at the end of 2025 (asked only of a person with an IRA; otherwise no)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_owner
+            - const: true
+          then: person.x_ira_prior_excess
+        - guard:
+            op: test
+            eq:
+            - person.ira_owner
+            - const: false
+          then: person.no
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.has_hsa
+      printed: (helper)
+      type: Bool
+      label: This person listed a health savings account
+      expr:
+        op: test
+        gt:
+        - person.hsa_forms
+        - const: 0
+          type: Count
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.x_hsa_prior_excess
+      printed: (helper)
+      type: Bool
+      gated_by: person.x_hsa_prior_excess_if_hsa
+      label: "Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported)?"
+      expr:
+        op: input
+        source: "Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported)?"
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.x_hsa_prior_excess_if_hsa
+      printed: (gate)
+      type: Bool
+      label: An earlier year's excess HSA contributions not removed or used up before 2025 (asked only of a person who listed a health savings account; otherwise no)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.has_hsa
+            - const: true
+          then: person.x_hsa_prior_excess
+        - guard:
+            op: test
+            eq:
+            - person.has_hsa
+            - const: false
+          then: person.no
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.rmd_age
+      printed: (helper)
+      type: Bool
+      label: Born in 1952 or earlier (age 73 or older at the end of 2025)
+      expr:
+        op: test
+        lt:
+        - person.birth_year
+        - param: age.cut_73
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.inherited_account
+      printed: (helper)
+      type: Bool
+      label: "Have you inherited an IRA or an account in a retirement plan from someone who died?"
+      expr:
+        op: input
+        source: "Have you inherited an IRA or an account in a retirement plan from someone who died?"
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.inherited_account_if_under_73
+      printed: (gate)
+      type: Bool
+      label: Inherited an IRA or a retirement plan account (asked only of a person born after 1952; otherwise no)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.rmd_age
+            - const: false
+          then: person.inherited_account
+        - guard:
+            op: test
+            eq:
+            - person.rmd_age
+            - const: true
+          then: person.no
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.rmd_possible
+      printed: (helper)
+      type: Bool
+      label: A required minimum distribution is possible for this person (born in 1952 or earlier, or inherited an account)
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - person.rmd_age
+          - const: true
+        - op: test
+          eq:
+          - person.inherited_account_if_under_73
+          - const: true
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.rmd_missed
+      printed: (helper)
+      type: Bool
+      gated_by: person.rmd_missed_if_possible
+      label: "Was there a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)?"
+      expr:
+        op: input
+        source: "Was there a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)?"
+      cite:
+        doc: f5329
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
+          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
+          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+    - id: person.rmd_missed_if_possible
+      printed: (gate)
+      type: Bool
+      label: A required minimum distribution not received in full by its deadline (asked only of a person born in 1952 or earlier or with an inherited account; otherwise no)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.rmd_possible
+            - const: true
+          then: person.rmd_missed
+        - guard:
+            op: test
+            eq:
+            - person.rmd_possible
+            - const: false
+          then: person.no
       cite:
         doc: f5329
         locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from

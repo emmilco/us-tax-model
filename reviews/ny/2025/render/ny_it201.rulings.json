@@ -63,6 +63,16 @@
    "subject_key": "123ce07ce04e905a19ef0bfbe96a0fa704f3000318a7fa0c8d51c2be9acf9baf"
   },
   {
+   "printed": "53",
+   "restated": "Enter $0 (ny.zero).",
+   "model": "The instructions ask \"Can you claim the New York City unincorporated business tax (UBT) credit, the New York City accumulation distribution credit, or the part-year resident ... credit?\" The program asks only when a Schedule C exists, so an accumulation distribution credit from a trust, which needs no Schedule C, would wrongly get $0.",
+   "ruling": "Ruling: scope; each credit line 53 names is reached only through a source the tool refuses or reads as Schedule C. The New York City unincorporated business tax credit belongs to a business owner: a sole proprietor files Schedule C (s1.has_sc, which opens the question), and partnership income is refused federally (scope.k1, \"income or a loss from a partnership, an S corporation, an estate or a trust? A paper called Schedule K-1 reports it\"). The accumulation distribution credit belongs to a trust beneficiary, whose distribution comes on a Schedule K-1 (Form 1041): refused by the same scope.k1. The part-year resident child and dependent care credit needs a part-year City resident, refused on line 1 (ny_it201.gate.part_year_city, \"This tool computes the New York City resident tax for a full-year City resident only\"). So on a completed return without Schedule C none of the three credits can apply and $0 is right (IT-201-I p. 15, Line 53, \"If No, go to line 54\").",
+   "context": "f2510f2d7a6000b647cf6095bad3bc4d62b6ad3aec8a6e9c6ab60412f470b37e",
+   "date": "2026-11-14",
+   "run": "b797429ae3081c1fa5381ee40aa1c3fe80966ff9c6f643c14c0c54b5cc55d9c6",
+   "subject_key": "86da69dd954387a43feec236570a80e12ade52e811775e966086e0902c2cc97a"
+  },
+  {
    "printed": "54a",
    "restated": "Enter $0 (ny.zero).",
    "model": "The screening question is asked only of people with more than one Schedule C or Schedule C profit over $50,000, so other self-employment earnings get $0 with no refusal. The instructions say MCTMT net earnings include amounts on 'federal Schedule SE (Form 1040), Part 1, line 6', including IRC § 1402 income such as 'services performed by a United States citizen employed by a foreign government, the United Nations, or other international organization', which need not come from a Schedule C.",
@@ -91,6 +101,16 @@
    "date": "2026-11-04",
    "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678",
    "subject_key": "2e7dee6c2419013c9f86c18bf07e3fb37831d9e2853cd324069afa1ef1fa7e06"
+  },
+  {
+   "printed": "C",
+   "restated": "(sa helper \"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)\" = true or helper \"The New York item C question, asked only after a federal No; otherwise no\" = true)",
+   "model": "Item C asks only \"Can you be claimed as a dependent on another taxpayer's federal return?\" The restatement also sets it Yes when the federal answer is Yes only because your spouse can be claimed, or because you are a dual-status alien, and neither is part of item C.",
+   "ruling": "Ruling: scope; the restatement's first branch (sa.dependent Yes) is reached only on a return the federal return refuses: sa.deduction refuses when sa.dependent is Yes (\"A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice\"), and dual-status aliens are refused again by the scope screen (\"For any part of 2025, were you (or, on a joint return, your spouse) a nonresident alien\"); a refused federal return is a refused New York return. On every return the tool completes, item C is the New York question \"Can you be claimed as a dependent on another taxpayer's federal return? Answer Yes even if the other taxpayer did not claim you\", which is item C's own text (IT-201-I p. 5, Item C). The spouse and dual-status cases the reply names cannot reach this line.",
+   "context": "f2510f2d7a6000b647cf6095bad3bc4d62b6ad3aec8a6e9c6ab60412f470b37e",
+   "date": "2026-11-14",
+   "run": "b797429ae3081c1fa5381ee40aa1c3fe80966ff9c6f643c14c0c54b5cc55d9c6",
+   "subject_key": "f837e6cef95003d451812215bb46cb32ddba07edf003bd7ac992fb04fc9b9559"
   }
  ]
 }

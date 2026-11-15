@@ -1,0 +1,242 @@
+{
+ "kind": "transcription",
+ "form": "scope",
+ "rulings": [
+  {
+   "printed": "scope.excess_deferral_if_w2",
+   "project_expr_sha256": "5aab48da27e8e1e81e36a335576c5e56cbb734f306dfea1295fa0c5242ed7ef1",
+   "second_expr_sha256": "a19c66d54f701e6c35a1271eb531b8b60be6300b293537ad711897d7112a61e9",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (4037 values compared, none different or missing: 1987 on 1987 fixture cases, 500 on 500 generated returns seed 20261026, 1550 on 1550 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "852bef97de84c45c8048e870b17689bd0cb7cdc30d46ac7c09ccd0ca61b5bd41",
+   "date": "2026-11-14",
+   "run": "89595313a04bdabe1ed00c59811a46ddf5252ac63423c3678b0e9a5ae19cc7ad",
+   "subject_key": "d2384f22f915b0f3fb4fbadc74369685474c637d41dba37dadecae9e721d5384",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "scope.other_income",
+   "project_expr_sha256": "03af5f87faf1c0af7b57b858a1ad3cd1dc95dd6180781101dde1344582ff4233",
+   "second_expr_sha256": "1c330f5a5f2da9d20fc2014065c59a61a0fbaf1822e5c156574e8f021896a467",
+   "ruling": "Ruling: model error; the label is \"Nonresident alien status, or other income or return treatment outside this tool\", and the reply leaves out nonresident status (scope.nonresident_if_noncitizen; i1040gi p. 8, \"Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR\"), a chapter 11 case (p. 23), a repayment of qualified reservist distributions (p. 95, Line 20) and dependent care benefits from one's own business or a grace period (scope.care_benefits_other_if_benefits; i2441 p. 5, Lines 12 and 13), and adds Schedule 1 items that belong to scope.schedule1. Triage (pass 1ad4bbd67c02): 3,503/4,036 agree; 63 value differences on refused returns, mostly project true / reply false (e.g. classm.carloan.2, classm.f8959.1, classm.sb.1), one the reverse (stage9.eic.refuse.clergy_schedule1.step5); 279 candidate-unknown (37 completed: scope.adoption_benefits read without its adoption gate); 191 project-unknown.",
+   "context": "852bef97de84c45c8048e870b17689bd0cb7cdc30d46ac7c09ccd0ca61b5bd41",
+   "date": "2026-11-14",
+   "run": "89595313a04bdabe1ed00c59811a46ddf5252ac63423c3678b0e9a5ae19cc7ad",
+   "subject_key": "e70b061ca4a04b454616f1c05615fb01ab1e716f2e17aa9494586b526b7a2f23",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.2.deepseek@scope",
+     "fixture:classm.carloan.2@scope",
+     "fixture:classm.f8959.1@scope",
+     "fixture:classm.s179.1@scope",
+     "fixture:classm.s179.7@scope",
+     "fixture:classm.sb.1@scope",
+     "fixture:classm.scveh.4@scope",
+     "fixture:classm.eic.1@scope",
+     "fixture:classm.eic.2@scope",
+     "fixture:classm.eic.3@scope",
+     "fixture:classm.eic.4@scope",
+     "fixture:classm.eic.5@scope",
+     "fixture:classm.eic.6@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1.step5@scope",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@scope",
+     "fixture:t264.f4952.unsupported_with_interest@scope",
+     "fixture:stage16.cleanup.refuse.f8889.screen_no_amounts@scope",
+     "fixture:stage16.cleanup.f8959_line16_se_refused@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "scope.other_line16",
+   "project_expr_sha256": "2900cb29bb0f182dd40d6ffff6eed29fce26eff3a09b71aa4529a3067ac99147",
+   "second_expr_sha256": "d8c05e13702e656e2e2e2b0b6d7bc40852484bcb811913098ebb528a21724bc4",
+   "ruling": "Ruling: model error; the reply leaves out the controlled-foreign-corporation screen (scope.cfc_if_foreign_shares), the only question that reaches the line 16 tax of i1040gi p. 34, Line 16, \"Tax with respect to a section 962 election (election made by a domestic shareholder of a controlled foreign corporation to be taxed at corporate rates)\", while its note says no input covers section 962; and it reads scope.income_averaging and scope.f8978 without the project's business gates. Triage (pass 1ad4bbd67c02): 3,861/4,036 agree; 16 value differences on refused returns: mutation.m3.scope.l16_cfc project true / reply false, and generated records where the reply reads an ungated answer (project false / reply true); 75 candidate-unknown (14 completed: scope.unearned_2700 read where the project does not ask it); 84 project-unknown.",
+   "context": "852bef97de84c45c8048e870b17689bd0cb7cdc30d46ac7c09ccd0ca61b5bd41",
+   "date": "2026-11-14",
+   "run": "89595313a04bdabe1ed00c59811a46ddf5252ac63423c3678b0e9a5ae19cc7ad",
+   "subject_key": "9b6050d5bfe8352ab843699ee5dab8cfd4f32c63308807afe26d6bc952bf2ca6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.eic.1@scope",
+     "fixture:classm.eic.2@scope",
+     "fixture:classm.eic.3@scope",
+     "fixture:classm.eic.4@scope",
+     "fixture:classm.eic.5@scope",
+     "fixture:classm.eic.6@scope",
+     "fixture:stage21.choose.eic_limit_status_unanswered@scope",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@scope",
+     "fixture:redesign.hsa.testing_kept_age_unanswered@scope",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@scope",
+     "fixture:mutation.m3.scope.l16_cfc@scope",
+     "generated:20261026.17@scope",
+     "generated:20261026.31@scope",
+     "generated:20261026.34@scope",
+     "generated:20261026.122@scope",
+     "generated:20261026.128@scope",
+     "partial:stage14.asset.hy_5yr-scope.foreign_shares@scope",
+     "partial:stage14.asset.hy_5yr-scope.business_before@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "scope.reservist_repaid_if_armed_forces",
+   "project_expr_sha256": "5a5cbd70609cd65510d1b17e24a21b9696b94e070d23d61e4c6c7bc6c22750db",
+   "second_expr_sha256": "0265bbfb785c1d65b5f69a21927b9a359c6516e254a0e850ea6c885b2f9f2209",
+   "ruling": "Ruling: representation; equivalent: the reply's conjunction of scope.armed_forces and scope.reservist_repaid is the project's gated choose (i1040gi p. 95, Line 20, \"Don't include any repayments of qualified reservist distributions\"). Triage (pass 1ad4bbd67c02): 3,997/4,036 agree; 39 project-unknown (incomplete/refused); no value difference.",
+   "context": "852bef97de84c45c8048e870b17689bd0cb7cdc30d46ac7c09ccd0ca61b5bd41",
+   "date": "2026-11-14",
+   "run": "89595313a04bdabe1ed00c59811a46ddf5252ac63423c3678b0e9a5ae19cc7ad",
+   "subject_key": "f01dfd60f725b7df3efc06cefe690e103db1c54c8f9d705481a9bb5caaa510c2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-scope.armed_forces@scope",
+     "partial:stage14.asset.bonus_100-scope.armed_forces@scope",
+     "partial:stage14.asset.prior_7yr-scope.armed_forces@scope",
+     "partial:stage14.asset.qip-scope.armed_forces@scope",
+     "partial:stage14.asset.done-scope.armed_forces@scope",
+     "partial:stage14.asset.refuse_class-scope.armed_forces@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "scope.schedule1",
+   "project_expr_sha256": "2f69f5889a42b31310a7edf2d7b9b6f52d3640cbff0b261db7768c6207808486",
+   "second_expr_sha256": "c39b60a8625ff7bb58d6827b721a791434c19ec0b871ccd650ebeef8652b5b35",
+   "ruling": "Ruling: model error; the label is \"Any income or adjustment requiring Schedule 1 other than the ones this tool computes\", and the reply leaves out rental, K-1 and farm income (Schedule 1 lines 5 and 6: i1040se p. 1, \"Use Schedule E (Form 1040) to report income or loss from rental real estate ... partnerships, S corporations\"; i1040sf p. 2), clergy and church employee income (Schedule SE, Schedule 1 line 15), a statutory employee's Form W-2 (i1040gi p. 25, \"Statutory employees report the amount shown in box 1 of Form W-2 on a Schedule C\") and a recovery (p. 92, Line 8z), moving most of them into its scope.other_income. Readers of scope.schedule1 (carloan line 22, f2441 lines 12 and 26, f1040) rely on it refusing Schedules E and F and K-1 income. Triage (pass 1ad4bbd67c02): 3,592/4,036 agree; 77 value differences on refused returns, project true / reply false (e.g. stage9.eic.refuse.clergy_schedule1, t264.eic.step2_schedule1); 37 candidate-unknown (5 completed: scope.se_plan_other, scope.artist_official read without the project's gates); 330 project-unknown.",
+   "context": "852bef97de84c45c8048e870b17689bd0cb7cdc30d46ac7c09ccd0ca61b5bd41",
+   "date": "2026-11-14",
+   "run": "89595313a04bdabe1ed00c59811a46ddf5252ac63423c3678b0e9a5ae19cc7ad",
+   "subject_key": "ad50b5d6daa6e380cdbc5a8c0082e81ae4cd7d70842c550949aade90fbc67471",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.2.deepseek@scope",
+     "fixture:classm.s179.7@scope",
+     "fixture:classm.eic.2@scope",
+     "fixture:classm.eic.3@scope",
+     "fixture:classm.eic.4@scope",
+     "fixture:classm.eic.5@scope",
+     "fixture:classm.eic.6@scope",
+     "fixture:classm.eic.7@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1.step5@scope",
+     "fixture:t264.eic.step2_schedule1@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1@scope",
+     "fixture:mutation.t2.mfj_no_overtime_part3@scope",
+     "partial:stage14.asset.hy_5yr-scope.armed_forces@scope",
+     "partial:stage14.asset.hy_5yr-scope.rental@scope",
+     "partial:stage14.asset.hy_5yr-scope.k1@scope",
+     "partial:stage14.asset.hy_5yr-scope.farm@scope",
+     "partial:stage14.asset.hy_5yr-scope.religious_work@scope",
+     "partial:stage14.asset.hy_5yr-scope.recovery@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "scope.schedule1",
+   "project_expr_sha256": "3d8fe80292bacc11dab888eaf5d1f0a40b6f29057a881b5b4cd267f4dceb4046",
+   "second_expr_sha256": "36a08b2fcf3c8fd8b1d885db7d061b4da475627e77a5d369f32064ac2cba14c4",
+   "ruling": "Ruling: model error; as ruled twice earlier today on this line. Triage (executable-triage-v2, pass 2eb39b30c079): 3,689/4,053 agree; 59 value differences, all refused returns with the project true and the reply false (scope.rental, e.g. t264.eic.step2_schedule1; scope.clergy_if_religious_work, stage9.eic.refuse.clergy_schedule1); 53 candidate-unknown (3 completed: scope.se_plan_other read ungated), 252 project-unknown. The reply leaves out rental and royalty (Schedule E to Schedule 1 line 5; i1040se p. 1), K-1 income, farm income (i1040sf p. 2, Schedule 1 line 6), clergy and church wages, W-2 marks (i1040gi Line 24f, code H) and the gated items, all of which carloan, f2441 and f1040 rely on this screen to refuse. Its extra CFC term changes no outcome: scope.cfc_if_foreign_shares is refused by scope.other_line16 on Form 1040.",
+   "context": "71ed3b08b5e1b9dfee18c84f4dccd3ceeebd5f6cd81ed248e19b3546264a30eb",
+   "date": "2026-11-14",
+   "run": "6df60e5caad06b8b5e284da9ba2a83ee5304b4c981e14d4df9fc1ff4a63e4806",
+   "subject_key": "cd05fc241f400e7aa27ff1fa3601a60d410169e9261aa91130b3e0d8d9f9dbd1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.2.deepseek@scope",
+     "fixture:classm.f4952.2@scope",
+     "fixture:classm.f4952.3@scope",
+     "fixture:classm.f8959.1@scope",
+     "fixture:classm.s179.1@scope",
+     "fixture:classm.s179.2@scope",
+     "fixture:classm.s2.2@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1.step5@scope",
+     "fixture:t264.eic.step2_schedule1@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1@scope",
+     "fixture:mutation.t2.mfj_no_overtime_part3@scope",
+     "fixture:mutation.t2.s1a.line13_magi_first@scope",
+     "partial:stage14.asset.hy_5yr-scope.armed_forces@scope",
+     "partial:stage14.asset.hy_5yr-scope.rental@scope",
+     "partial:stage14.asset.hy_5yr-scope.k1@scope",
+     "partial:stage14.asset.hy_5yr-scope.farm@scope",
+     "partial:stage14.asset.hy_5yr-scope.religious_work@scope",
+     "partial:stage14.asset.bonus_100-scope.armed_forces@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "scope.schedule1",
+   "project_expr_sha256": "3d8fe80292bacc11dab888eaf5d1f0a40b6f29057a881b5b4cd267f4dceb4046",
+   "second_expr_sha256": "f9ed54f3665d24bfd888564e99ad1496b113f3a6d2811b07a77c2f57709aa353",
+   "ruling": "Ruling: model error; as the earlier landing ruling on this line (pass 1ad4bbd67c02), now on the reply after scope.nol was ungated (both sides read scope.nol directly, so the change itself agrees). The label is \"Any income or adjustment requiring Schedule 1 other than the ones this tool computes\", and the reply leaves out rental, K-1 and farm income (Schedule 1 lines 5 and 6; i1040se p. 1, \"Use Schedule E (Form 1040) to report income or loss from rental real estate ... partnerships, S corporations\"; i1040sf p. 2), clergy and church employee income (scope.clergy, scope.church_exempt_wages; Schedule 1 line 15 via Schedule SE), a statutory employee's or code H W-2 (scope.w2_marks; i1040gi p. 25, statutory employees on Schedule C; Line 24f, section 501(c)(18)(D) contributions), a recovery (scope.recovery; Line 8z) and self-employed plans beyond SEP/SIMPLE (scope.se_plan_other), and adds a CFC inclusion that the project screens in scope.other_line16 (scope.cfc_if_foreign_shares, the section 962 / line 8n-8o route). Readers of scope.schedule1 (carloan, f2441, f1040) rely on it refusing Schedules E and F and K-1 income. Triage (pass b8c2e2325e96): 3,651/4,039 agree; 74 value differences, all on refused returns, project true / reply false where shown (e.g. classm.dependent.2.deepseek: scope.rental true; witnesses also on scope.clergy_if_religious_work); 6 candidate-unknown (none completed); 308 project-unknown.",
+   "context": "b3673a2af6cffc037b4191b8c0ad486cb5b88e41ba7727062b9f8f87b8c0b436",
+   "date": "2026-11-14",
+   "run": "45c2e0d5573703b367b0d410e23026b1e5eae3fa5692121b049cb4bea5dd2b98",
+   "subject_key": "415bad5dffc81ae5083023a8043216cc33fe99bc730dea3ad4eaeb667a5ee0df",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.2.deepseek@scope",
+     "fixture:classm.s179.7@scope",
+     "fixture:classm.eic.10@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1.step5@scope",
+     "fixture:t264.eic.step2_schedule1@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1@scope",
+     "fixture:mutation.t2.mfj_no_overtime_part3@scope",
+     "fixture:mutation.m3.scope.no_w2_unasked@scope",
+     "partial:stage14.asset.hy_5yr-scope.armed_forces@scope",
+     "partial:stage14.asset.hy_5yr-scope.rental@scope",
+     "partial:stage14.asset.hy_5yr-scope.k1@scope",
+     "partial:stage14.asset.hy_5yr-scope.farm@scope",
+     "partial:stage14.asset.hy_5yr-scope.religious_work@scope",
+     "partial:stage14.asset.hy_5yr-scope.recovery@scope",
+     "partial:classm.dependent.2.deepseek-scope.archer_msa@scope",
+     "partial:classm.dependent.2.deepseek-scope.reforestation@scope",
+     "partial:classm.dependent.2.deepseek-scope.attorney_fees@scope",
+     "partial:classm.dependent.2.deepseek-scope.nol@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

@@ -1,0 +1,326 @@
+[
+ {
+  "id": "mutation.m1.person.jan1_2001_2002",
+  "base": "mutation.eic.mfj_no_child_20000",
+  "set": {
+   "person[taxpayer].birth_year": 2001,
+   "person[taxpayer].born_jan1": true,
+   "person[spouse].birth_year": 2002,
+   "person[spouse].born_jan1": true
+  },
+  "expect": {
+   "person[taxpayer].eic_age25": {
+    "kind": "bool",
+    "value": true
+   },
+   "person[spouse].under24": {
+    "kind": "bool",
+    "value": false
+   },
+   "person[spouse].edu_age24": {
+    "kind": "bool",
+    "value": true
+   }
+  },
+  "kills": [
+   "operand.person.person.birth_cut_year.birth_year.any.1.eq.0",
+   "operand.person.person.birth_cut_year.birth_year.any.2.eq.0",
+   "operand.person.person.eic_age25.birth_year.any.1.all.0.eq.0",
+   "operand.person.person.eic_age25.born_jan1_if_cut_year.any.1.all.1.eq.0",
+   "operand.person.person.under24.born_jan1_if_cut_year.any.1.all.1.eq.0",
+   "operand.person.person.edu_age24.birth_year.any.1.all.0.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.person.born_2002_not_jan1_and_jan1_2007",
+  "base": "mutation.eic.mfj_no_child_20000",
+  "set": {
+   "person[taxpayer].birth_year": 2002,
+   "person[taxpayer].born_jan1": false,
+   "person[spouse].birth_year": 2007,
+   "person[spouse].born_jan1": true
+  },
+  "expect": {
+   "person[taxpayer].under24": {
+    "kind": "bool",
+    "value": true
+   },
+   "person[taxpayer].edu_age24": {
+    "kind": "bool",
+    "value": false
+   },
+   "person[spouse].edu_over18": {
+    "kind": "bool",
+    "value": true
+   },
+   "person[spouse].under24": {
+    "kind": "bool",
+    "value": true
+   }
+  },
+  "kills": [
+   "operand.person.person.under24.birth_year.any.1.all.0.eq.0",
+   "operand.person.person.edu_age24.born_jan1_if_cut_year.any.1.all.1.eq.0",
+   "operand.person.person.birth_cut_year.birth_year.any.3.eq.0",
+   "operand.person.person.edu_over18.birth_year.any.1.all.0.eq.0",
+   "operand.person.person.edu_over18.born_jan1_if_cut_year.any.1.all.1.eq.0",
+   "operand.person.person.under24.birth_year.any.0.gt.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.person.jan1_2008",
+  "base": "mutation.eic.line5_key.no_child",
+  "set": {
+   "person[taxpayer].birth_year": 2008,
+   "person[taxpayer].born_jan1": true
+  },
+  "del": [
+   "person[taxpayer].x_hsa_prior_excess"
+  ],
+  "expect": {
+   "person[taxpayer].sav_born": {
+    "kind": "bool",
+    "value": true
+   },
+   "person[taxpayer].x_hsa_prior_excess_if_hsa": {
+    "kind": "bool",
+    "value": false
+   }
+  },
+  "kills": [
+   "operand.person.person.birth_cut_year.birth_year.any.4.eq.0",
+   "operand.person.person.sav_born.birth_year.any.1.all.0.eq.0",
+   "operand.person.person.sav_born.born_jan1_if_cut_year.any.1.all.1.eq.0",
+   "boundary.person.person.has_hsa"
+  ]
+ },
+ {
+  "id": "mutation.m1.person.born_2010_under16",
+  "base": "mutation.eic.line5_key.no_child",
+  "set": {
+   "person[taxpayer].birth_year": 2010,
+   "person[taxpayer].under16_at_year_end": true
+  },
+  "expect": {
+   "person[taxpayer].under16": {
+    "kind": "bool",
+    "value": true
+   }
+  },
+  "kills": [
+   "operand.person.person.under16.birth_year.any.1.all.0.eq.0",
+   "operand.person.person.under16_open_year.birth_year.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.person.born_2010_not_under16",
+  "base": "mutation.eic.line5_key.no_child",
+  "set": {
+   "person[taxpayer].birth_year": 2010,
+   "person[taxpayer].under16_at_year_end": false
+  },
+  "expect": {
+   "person[taxpayer].under16": {
+    "kind": "bool",
+    "value": false
+   }
+  },
+  "kills": [
+   "operand.person.person.under16.under16_at_year_end_if_open_year.any.1.all.1.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.person.born_1976_age50_both_answers",
+  "base": "mutation.eic.mfj_no_child_20000",
+  "set": {
+   "person[taxpayer].birth_year": 1976,
+   "person[taxpayer].age50_at_year_end": true,
+   "person[spouse].birth_year": 1976,
+   "person[spouse].age50_at_year_end": false
+  },
+  "expect": {
+   "person[taxpayer].ira_age50": {
+    "kind": "bool",
+    "value": true
+   },
+   "person[taxpayer].simple_age": {
+    "kind": "enum",
+    "value": "age50"
+   },
+   "person[spouse].ira_age50": {
+    "kind": "bool",
+    "value": false
+   },
+   "person[spouse].simple_age": {
+    "kind": "enum",
+    "value": "under50"
+   }
+  },
+  "kills": [
+   "operand.person.person.ira_age50.birth_year.any.1.all.0.eq.0",
+   "operand.person.person.ira_age50.age50_at_year_end_if_open_year.any.1.all.1.eq.0",
+   "operand.person.person.age50_open_year.birth_year.eq.0",
+   "operand.person.person.simple_age_under50_years.simple_age_from_age50.then0",
+   "operand.person.person.simple_age_from_age50.catchup_under50.then1"
+  ]
+ },
+ {
+  "id": "mutation.m1.person.born_1971_age55_and_1970",
+  "base": "mutation.eic.mfj_no_child_20000",
+  "set": {
+   "person[taxpayer].birth_year": 1971,
+   "person[taxpayer].age55_at_year_end": true,
+   "person[spouse].birth_year": 1970
+  },
+  "expect": {
+   "person[taxpayer].age55_at_year_end_if_open_year": {
+    "kind": "bool",
+    "value": true
+   },
+   "person[spouse].simple_age": {
+    "kind": "enum",
+    "value": "age50"
+   },
+   "person[taxpayer].rmd_age": {
+    "kind": "bool",
+    "value": false
+   }
+  },
+  "kills": [
+   "operand.person.person.age55_open_year.birth_year.eq.0",
+   "operand.person.person.simple_age_50_59_years.catchup_age50.then1",
+   "operand.person.person.rmd_age.birth_year.lt.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.person.simple_open_years",
+  "base": "mutation.eic.mfj_no_child_20000",
+  "set": {
+   "person[taxpayer].birth_year": 1962,
+   "person[taxpayer].simple_age_at_year_end": "age50",
+   "person[spouse].birth_year": 1966,
+   "person[spouse].simple_age_at_year_end": "age60_63"
+  },
+  "expect": {
+   "person[taxpayer].simple_age": {
+    "kind": "enum",
+    "value": "age50"
+   },
+   "person[spouse].simple_age": {
+    "kind": "enum",
+    "value": "age60_63"
+   }
+  },
+  "kills": [
+   "operand.person.person.simple_open_year.birth_year.any.0.eq.0",
+   "operand.person.person.simple_open_year.birth_year.any.1.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.person.died_at_64_and_born_1961",
+  "base": "mutation.eic.mfj_no_child_20000",
+  "set": {
+   "person[taxpayer].birth_year": 1960,
+   "person[taxpayer].died_at_64": true,
+   "person[spouse].birth_year": 1961,
+   "person[spouse].born_jan1": false
+  },
+  "expect": {
+   "person[taxpayer].tin_or_itin_applied": {
+    "kind": "bool",
+    "value": true
+   },
+   "person[taxpayer].died_before_65": {
+    "kind": "bool",
+    "value": true
+   },
+   "person[spouse].turned_65_this_year": {
+    "kind": "bool",
+    "value": false
+   }
+  },
+  "kills": [
+   "operand.person.person.tin_or_itin_applied.tin.then0",
+   "operand.person.person.turned_65_this_year.born_jan1_if_cut_year.any.1.all.1.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.person.rmd_age_and_inherited",
+  "base": "mutation.eic.mfj_no_child_20000",
+  "set": {
+   "person[taxpayer].birth_year": 1950,
+   "person[spouse].inherited_account": true
+  },
+  "del": [
+   "person[taxpayer].inherited_account"
+  ],
+  "expect": {
+   "person[taxpayer].rmd_possible": {
+    "kind": "bool",
+    "value": true
+   },
+   "person[spouse].inherited_account_if_under_73": {
+    "kind": "bool",
+    "value": true
+   },
+   "person[spouse].rmd_possible": {
+    "kind": "bool",
+    "value": true
+   }
+  },
+  "kills": [
+   "operand.person.person.rmd_possible.rmd_age.any.0.eq.0",
+   "operand.person.person.inherited_account_if_under_73.inherited_account.then0",
+   "operand.person.person.rmd_possible.inherited_account_if_under_73.any.1.eq.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.person.hsa_prior_excess_born_1950",
+  "base": "mutation.t2.f8889.dec_none_changed_all_year",
+  "set": {
+   "person[taxpayer].birth_year": 1950,
+   "person[taxpayer].x_hsa_prior_excess": true
+  },
+  "del": [
+   "person[taxpayer].inherited_account"
+  ],
+  "expect": {
+   "person[taxpayer].inherited_account_if_under_73": {
+    "kind": "bool",
+    "value": false
+   },
+   "person[taxpayer].has_hsa": {
+    "kind": "bool",
+    "value": true
+   },
+   "person[taxpayer].x_hsa_prior_excess_if_hsa": {
+    "kind": "bool",
+    "value": true
+   }
+  },
+  "kills": [
+   "operand.person.person.inherited_account_if_under_73.no.then1",
+   "operand.person.person.has_hsa.hsa_forms.gt.0"
+  ]
+ },
+ {
+  "id": "mutation.m1.person.birth_year_after_tax_year",
+  "base": "mutation.eic.line5_key.no_child",
+  "set": {
+   "person[taxpayer].birth_year": 2026
+  },
+  "expect": {
+   "person[taxpayer].birth_year_bad": {
+    "kind": "bool",
+    "value": true
+   },
+   "household.birth_year_bad": {
+    "kind": "bool",
+    "value": true
+   }
+  },
+  "kills": [
+   "operand.person.person.birth_year_bad.birth_year.any.0.gt.0"
+  ]
+ }
+]

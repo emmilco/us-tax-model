@@ -474,14 +474,21 @@ def self_test():
     declared_pairs = {e["pair"] for e in config["differences"]}
     block = [(n, ids) for n, ids in pairs(base) if n not in {r["pair"] for r in config.get("readers", [])}]
     clean = [(n, ids) for n, ids in block if n not in declared_pairs]
+    # The fields the drift on the asked pair is planted in; a pair whose declared differences lie elsewhere (the
+    # question's place and its per-person frame) shows each planted drift as clearly as a pair with none.
+    planted_fields = {"expr.source", "cite.locator", "type", f"{BANK}.help", f"{BANK}.order", f"{DEFAULT}.value"}
+    declared_fields = {}
+    for e in config["differences"]:
+        declared_fields.setdefault(e["pair"], set()).add(e["field"])
+    unplanted = [(n, ids) for n, ids in block if not declared_fields.get(n, set()) & planted_fields]
 
-    def first(test, what):
-        found = next(((n, ids) for n, ids in clean if test(base["lines"][ids[left]], ids)), None)
-        assert found, f"self-test: no pair without declared differences {what}"
+    def first(test, what, pool=clean, kind="without declared differences"):
+        found = next(((n, ids) for n, ids in pool if test(base["lines"][ids[left]], ids)), None)
+        assert found, f"self-test: no pair {kind} {what}"
         return found
 
     asked = first(lambda line, ids: line["expr"].get("op") == "input" and all(i in base["bank"] and i in base["defaults"] for i in ids.values()),
-                  "is an asked input with bank entries and defaults")
+                  "is an asked input with bank entries and defaults", unplanted, "without declared differences in the planted fields")
     computed = first(lambda line, ids: line["expr"].get("op") == "choose", "is a choose")
     gated = first(lambda line, ids: "shown_when" in line, "has shown_when")
     refusing = first(lambda line, ids: line.get("refuses"), "has a refusal")

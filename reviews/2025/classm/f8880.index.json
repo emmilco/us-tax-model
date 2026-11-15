@@ -379,5 +379,17 @@
    "record": "3c974ec5a896cb468825f93c195e87192273f0a59c8045b4a9103d846517a746",
    "status": "AGREE"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "a971b84049aac869185a02fb6684eb188099ac29e53a2c9972c5cf3641e0971b",
+  "was": "9831d065964aaf35bcec8968a808536fb6efef3a67412a934d385a7f9d811094",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f8880.dist_2025": "f8880.dist_this_year"
+   },
+   "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
+   "was": "9831d065964aaf35bcec8968a808536fb6efef3a67412a934d385a7f9d811094"
+  }
+ }
 }

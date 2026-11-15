@@ -72,10 +72,10 @@ NOT_COMPUTED_FLOOR = 0.05
 NOT_COMPUTED_ALLOW = {
     "f2441.line9c": ("f2441.care", "Form 2441 is not filed without care expenses; Schedule 3 line 2 carries the zero and is compared on every return"),
     "f2441.line11": ("f2441.care", "Form 2441 is not filed without care expenses; Schedule 3 line 2 carries the zero and is compared on every return"),
-    "f5695.line13": ("f5695.part1_any", "Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return"),
-    "f5695.line15": ("f5695.part1_any", "Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return"),
-    "f5695.line30": ("f5695.part2_any", "Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return"),
-    "f5695.line32": ("f5695.part2_any", "Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return"),
+    "f5695.line13": ("energy_part1", "Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return"),
+    "f5695.line15": ("energy_part1", "Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return"),
+    "f5695.line30": ("energy_part2", "Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return"),
+    "f5695.line32": ("energy_part2", "Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return"),
 }
 
 
@@ -204,7 +204,7 @@ def schedule_mode_expectations(values, case, t, engine_tax=None, niit=None):
     remaining = max(0, remaining - edu)
     savers = min(m("f8880.line10") or 0, remaining)
     remaining = max(0, remaining - savers)
-    eehic = min(m("f5695.line30") or 0, remaining) if case["inputs"].get("f5695.part2_any") else 0
+    eehic = min(m("f5695.line30") or 0, remaining) if case["facts"].get("energy_part2") else 0
     # Schedule 8812: Credit Limit Worksheet A line 3 is the tax after those credits, so lines 19 and 28
     # move with the table-versus-schedule difference through the credit limit. With Worksheet B (Form
     # 5695 Part I and a qualifying child) the residential clean energy credit, limited after the Worksheet
@@ -213,7 +213,7 @@ def schedule_mode_expectations(values, case, t, engine_tax=None, niit=None):
     line12 = m("s8812.line12") or 0
     worksheet_b = bool(b("s8812.clwb_complete"))
     ctc_before_rce = (m("s8812.clwb_14") or 0) if worksheet_b else min(line12, clw_a3)
-    rce = min(m("f5695.line13") or 0, max(0, clw_a3 - ctc_before_rce)) if case["inputs"].get("f5695.part1_any") else 0
+    rce = min(m("f5695.line13") or 0, max(0, clw_a3 - ctc_before_rce)) if case["facts"].get("energy_part1") else 0
     tax19 = min(line12, max(0, clw_a3 - (rce if worksheet_b else 0)))
     line16a = line12 - tax19
     line17_8812 = min(line16a, m("s8812.line16b") or 0)
@@ -900,7 +900,8 @@ def main():
                 if pv is None:
                     stats[(ename, line)]["project-" + kind] += 1
                     allow = NOT_COMPUTED_ALLOW.get(line)
-                    if allow and not case["inputs"].get(allow[0]):
+                    # An allowance names the input, or the generated fact, whose No leaves the form unfiled.
+                    if allow and not (case["inputs"].get(allow[0]) or case["facts"].get(allow[0])):
                         summary[(ename, line)]["not_computed_allowed"] += 1
                     continue
                 summary[(ename, line)]["compared"] += 1

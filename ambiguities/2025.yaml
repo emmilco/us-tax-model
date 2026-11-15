@@ -856,12 +856,12 @@ register:
         1099-G box 8 of every refund, and the rest (items 3, 4, 6, 7, 8, 9 and a 2024 Form 1040-NR) only when the worksheet would be used;
         refuse on Yes. Item 2 (refunds of other taxes) is asked of every return with the other recoveries.
       - Ask every exception of every refund, before the itemizing questions.
-      chosen: The first (refund.box8 and refund.not_2024 on refund.taxable; refund.exc_tax and refund.exc_who on refund.line1;
+      chosen: The first (refund.box8 and refund.not_prior_year on refund.taxable; refund.exc_tax and refund.exc_who on refund.line1;
         refund.other on Schedule 1 line 1).
       reason: The TIP is stated for "the year you paid the tax", which is 2024 only when the refund is for 2024 and was paid
         then, so items 1 and 5 can make a refund taxable even when you did not itemize for 2024, and a part of the refund for
         a 2025 payment changes the 2025 deduction for taxes (Pub. 525 p. 24, Example 28). A 2024 refund of tax paid before 2024 is a recovery for the year in which the tax was
-        paid (Pub. 525 p. 24, Recovery for 2 or more years), so it is asked with item 5 and refused by refund.not_2024. Items 3, 4, 6, 7, 8 and 9 and the
+        paid (Pub. 525 p. 24, Recovery for 2 or more years), so it is asked with item 5 and refused by refund.not_prior_year. Items 3, 4, 6, 7, 8 and 9 and the
         nonresident rule change only how much of a refund of a deducted tax is included; when no income tax was deducted
         for 2024, none is (Pub. 525 p. 24, Deductions not itemized). Box 8 sends a taxable refund to Schedule C or F whatever
         the itemizing. A recovery deducted on an earlier Form 8960 is refused by f8960.refund when Form 8960 is filed
@@ -896,7 +896,7 @@ register:
       - Ask the amount reported on 2024 Schedule A line 5d, and use it both for the line 1 limit and for the amount paid on
         line 2.
       - Ask the amount paid in 2024 separately from line 5d.
-      chosen: The first (refund.line5d_2024).
+      chosen: The first (refund.line5d_prior_year).
       reason: The owner's decision D6(b). The worksheet itself takes line 5d as the usual amount, and a filer reads it from
         the 2024 return.
       cite:
@@ -1325,7 +1325,7 @@ register:
         Pub. 550 states the rule in prose; its worksheet is the one from 2024 to 2025.'
       readings:
       - Show no carryover to 2026, leaving it to the 2026 instructions.
-      - Apply the 13 lines of the 2025 worksheet to this return, reading each 2024 figure as the 2025 one (clcw26).
+      - Apply the 13 lines of the 2025 worksheet to this return, reading each 2024 figure as the 2025 one (clcw_next_year).
       chosen: The second.
       reason: The archived 2024 and 2025 editions of the worksheet differ only in their years (sources/2024/i1040sd p. 11,
         sources/2025/i1040sd p. 10), and the lines give Pub. 550's rule, "the amount of your total net loss that is more
@@ -1433,7 +1433,7 @@ register:
       - Age at the end of 2025 by the day-before-the-birthday rule, from birth dates (born before January 2, 2008, January 2, 2007
         and January 2, 2002).
       - The age in whole years on December 31, 2025, as the filer states it.
-      chosen: The first (person.sav_born, person.edu_born_2007 and person.edu_born_2002 feeding person.edu_kid).
+      chosen: The first (person.sav_born, person.edu_over18 and person.edu_age24 feeding person.edu_kid).
       reason: 'Pub. 501 states the rule for age 65 and the project''s other birth-date questions apply it. Owner''s decision D7(b),
         2026-10-29.'
       cite:

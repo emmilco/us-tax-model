@@ -10,12 +10,59 @@ form:
     - id: ftc.taxes
       printed: (helper)
       type: NonNegDollars
+      gated_by: ftc.taxes_if_asked
       label: Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and
         Form 1099-DIV box 7
       expr:
         op: input
         source: Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and
           Form 1099-DIV box 7
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
+    - id: ftc.asked
+      printed: (gate)
+      type: Bool
+      label: 'Shares or a Form 1099-DIV, taxable interest above zero, or income tax ever paid to another country: the filers who can have foreign tax to enter'
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - div.any
+              - const: true
+          - op: test
+            gt:
+              - sb.interest_total
+              - const: 0
+          - op: test
+            eq:
+              - s3.foreign_any
+              - const: true
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
+          regular tax
+    - id: ftc.taxes_if_asked
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Total creditable foreign taxes after required reductions, when you or your spouse owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - ftc.asked
+                - const: true
+            then: ftc.taxes
+          - guard:
+              op: test
+              eq:
+                - ftc.asked
+                - const: false
+            then: ftc.zero
       cite:
         doc: i1116
         locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
@@ -156,7 +203,7 @@ form:
       expr:
         op: test
         gt:
-          - ftc.taxes
+          - ftc.taxes_if_asked
           - const: 0
       cite:
         doc: i1116
@@ -288,7 +335,7 @@ form:
             any:
               - op: test
                 gt:
-                  - ftc.taxes
+                  - ftc.taxes_if_asked
                   - ftc.limit
               - op: test
                 eq:
@@ -326,11 +373,11 @@ form:
     - id: ftc.limited
       printed: (helper)
       type: Dollars
-      label: Smaller of ftc.taxes, ftc.regular_tax
+      label: Smaller of ftc.taxes_if_asked, ftc.regular_tax
       expr:
         op: smaller_of
         of:
-          - ftc.taxes
+          - ftc.taxes_if_asked
           - ftc.regular_tax
       cite:
         doc: i1116

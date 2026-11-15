@@ -130,62 +130,6 @@
     }
    ]
   },
-  "f8962.married_in_2025": {
-   "subject_sha": "0cb7204c078fcd1ce635f1e8cbe738ed2818cef62099391d7205c25b0ea4752d",
-   "samples": [
-    {
-     "verdict": "WIDE",
-     "findings": [
-      {
-       "kind": "WIDE",
-       "situation": "A couple filing jointly who married in 2025, with Marketplace coverage before their first full month of marriage, but for whom no APTC was paid for anyone in the tax family during 2025, would truthfully answer yes.",
-       "source_text": "i8962 p. 13, Table 4, Q5: \"Was APTC paid for anyone in your tax family during 2025? ... No. You are not eligible to elect the alternative calculation. Do not complete Part V. ... check 'No' on line 9\"",
-       "why": "The question asks only 'Did you and your spouse marry during 2025, and was anyone in your tax family enrolled in a Marketplace plan before your first full month of marriage?' It omits the Table 4 condition that APTC was paid. A yes from these filers sends line 9 toward the alternative calculation when line 9 must be No.",
-       "bound": ""
-      },
-      {
-       "kind": "WIDE",
-       "situation": "Joint filers who married in 2025 and had pre-marriage coverage with APTC paid, but no excess APTC, or for whom the election does not reduce repayment, would answer yes.",
-       "source_text": "i8962 p. 13, Table 4, Q5: \"You are eligible to elect the alternative calculation for year of marriage if excess APTC was paid during 2025. Continue to Worksheet 3 ... see ... Pub. 974 to determine if electing the alternative calculation reduces your repayment amount.\"; f8962 line 9: \"do you want to use the alternative calculation for year of marriage?\"",
-       "why": "Line 9 records an election that is available only if excess APTC was paid, and the filer chooses whether to make it. The question asks only about marriage and enrollment, so a yes is taken as electing even when the filer is ineligible or would not elect.",
-       "bound": ""
-      },
-      {
-       "kind": "WIDE",
-       "situation": "A filer who was still married to a former spouse on January 1, 2025, divorced, and then married the current spouse later in 2025 would truthfully answer that they married during 2025.",
-       "source_text": "i8962 p. 13, Table 4, Q1: \"Were you and your spouse each unmarried on January 1, 2025? ... No. You are not eligible to elect the alternative calculation.\"",
-       "why": "'Did you and your spouse marry during 2025' does not require that each spouse was unmarried on January 1, 2025. This filer answers yes although Table 4 makes them ineligible.",
-       "bound": ""
-      }
-     ],
-     "prompt_sha": "2d80dbcfec2dc8a90e32fe259bafddfeba09fdfbbaa91fee83d53dad2301889a",
-     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
-     "model": "claude-opus-5-5",
-     "cost": 0.04616,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/f8962.married_in_2025.0cb7204c078f.1.response.txt"
-    }
-   ],
-   "type": "Bool",
-   "readers": 1,
-   "brief": false,
-   "used": [
-    {
-     "doc": "i8962",
-     "revision": "2025",
-     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
-     "pages": [
-      13
-     ],
-     "how": "cited pages",
-     "locators": [
-      "p. 13, Table 4, \"Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?\""
-     ],
-     "cols_pages": [],
-     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
-    }
-   ]
-  },
   "f8962.same_state_counted": {
    "subject_sha": "02824684df7760e3ab42826d789d3dd3fc221e129288d8a06868df8aed2c4396",
    "samples": [

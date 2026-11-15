@@ -354,7 +354,7 @@ function selfTest(): number {
   const wi = walk(applied.data, applied.configs["full"]!, no, bankOrder(applied.configs["full"]!), BOUND, () => {});
   assert.ok(wi.status === w.status && wi.valuesKey === w.valuesKey, "the umbrella keeps the values");
   assert.equal(wi.events.length, w.events.length - covered.length + 1, "the umbrella replaces the questions it covers");
-  const prize: Inputs = { ...c.inputs, "s1.line8i": 100000 };
+  const prize: Inputs = { ...c.inputs, "s1.winnings_any": true, "s1.prizes": 100000 };
   const withPrize: Answers = (k) => (k in prize ? { value: prize[k] } : undefined);
   const wp = walk(data, config, withPrize, bankOrder(config), BOUND, () => {});
   const wrong = walk(applied.data, applied.configs["full"]!, (k, cur) => (k === u.id ? { value: false } : withPrize(k, cur)), bankOrder(applied.configs["full"]!), BOUND, () => {});

@@ -210,15 +210,89 @@ form:
     cite:
       doc: i1040sc
       locator: p. 6, Line 9, "Add to this amount your parking fees and tolls"
-  - id: scveh.smr_ok
+  - id: scveh.smr_always
     printed: (screen)
-    label: May you use the standard mileage rate for this vehicle?
+    label: The standard mileage rate was used for this vehicle in every year it was used for business
     type: Bool
     expr:
       op: input
-      source: 'If you own this vehicle: did you use the standard mileage rate for it in the first year you used it for business?
-        If you lease it: are you using the standard mileage rate for the entire lease period? (Answer No if this is one of
-        five or more vehicles you used in the business at the same time.)'
+      source: Have you used the standard mileage rate for this vehicle every year you have used it for the business?
+        (Answer Yes if 2025 is the first year.)
+    cite:
+      doc: i1040sc
+      locator: p. 6, Line 9, "You must use actual expenses if you used five or more vehicles simultaneously" and "You can
+        take the standard mileage rate for 2025 only if you"
+  - id: scveh.smr_first
+    printed: (screen)
+    label: The vehicle is owned and the standard mileage rate was used for it in the first year it was used for business
+    type: Bool
+    gated_by: scveh.smr_first_if_not_always
+    expr:
+      op: input
+      source: Do you own this vehicle, and did you use the standard mileage rate for it in the first year you used it for
+        the business? (Answer No if you lease it.)
+    cite:
+      doc: i1040sc
+      locator: p. 6, Line 9, "You must use actual expenses if you used five or more vehicles simultaneously" and "You can
+        take the standard mileage rate for 2025 only if you"
+  - id: scveh.smr_first_if_not_always
+    printed: (gate)
+    label: The vehicle is owned and the standard mileage rate was used for it in its first year, asked only when the rate
+      was not used every year (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.smr_always
+          - const: false
+        then: scveh.smr_first
+      - guard:
+          op: test
+          eq:
+          - scveh.smr_always
+          - const: true
+        then: scveh.no
+    cite:
+      doc: i1040sc
+      locator: p. 6, Line 9, "You must use actual expenses if you used five or more vehicles simultaneously" and "You can
+        take the standard mileage rate for 2025 only if you"
+  - id: scveh.fleet
+    printed: (screen)
+    label: One of five or more vehicles used in the business at the same time
+    type: Bool
+    expr:
+      op: input
+      source: In 2025, did you use five or more vehicles in the business at the same time?
+    cite:
+      doc: i1040sc
+      locator: p. 6, Line 9, "You must use actual expenses if you used five or more vehicles simultaneously" and "You can
+        take the standard mileage rate for 2025 only if you"
+  - id: scveh.smr_ok
+    printed: (screen)
+    label: 'May you use the standard mileage rate for this vehicle? If you own this vehicle: did you use the standard mileage
+      rate for it in the first year you used it for business? If you lease it: are you using the standard mileage rate for
+      the entire lease period? (No if this is one of five or more vehicles you used in the business at the same time.)'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - scveh.fleet
+        - const: false
+      - op: test
+        any:
+        - op: test
+          eq:
+          - scveh.smr_always
+          - const: true
+        - op: test
+          eq:
+          - scveh.smr_first_if_not_always
+          - const: true
     cite:
       doc: i1040sc
       locator: p. 6, Line 9, "You must use actual expenses if you used five or more vehicles simultaneously" and "You can
@@ -376,16 +450,20 @@ form:
     label: Owned and on actual expenses
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        eq:
-        - scveh.method
-        - const: actual
-      - op: test
-        eq:
-        - scveh.owned
-        - const: true
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.is_actual_owned_test1
+          - const: true
+        then: scveh.owned
+      - guard:
+          op: test
+          eq:
+          - scveh.is_actual_owned_test1
+          - const: false
+        then: scveh.no
     cite:
       doc: i1040sc
       locator: p. 7, Line 9, "Show depreciation on line 13 and rent or lease payments on line 20a"
@@ -413,16 +491,20 @@ form:
     label: Leased and on actual expenses
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        eq:
-        - scveh.method
-        - const: actual
-      - op: test
-        eq:
-        - scveh.owned
-        - const: false
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.is_actual_leased_test1
+          - const: true
+        then: scveh.is_actual_leased_test2
+      - guard:
+          op: test
+          eq:
+          - scveh.is_actual_leased_test1
+          - const: false
+        then: scveh.no
     cite:
       doc: i1040sc
       locator: p. 7, Line 9
@@ -538,13 +620,1210 @@ form:
       cite:
         doc: i4562
         locator: p. 14, Lines 26 and 27; p. 15, Column (f)
-  - id: scveh.screen
+  - id: scveh.claims_bonus_this_year
+    printed: (helper)
+    label: 'Placed in service in 2025 and a special depreciation allowance is claimed for it'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.placed_this_year
+          - const: true
+        then: scveh.claims_bonus
+      - guard:
+          op: test
+          eq:
+          - scveh.placed_this_year
+          - const: false
+        then: scveh.no
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.records
     printed: (screen)
-    label: Does any of these apply to this vehicle?
+    label: 'Its business use can be proved with adequate records or with sufficient evidence to support your own
+      statements'
     type: Bool
     expr:
       op: input
+      source: 'Do you have a mileage log or other records that show how much you drove it for the business?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.got_other
+    printed: (screen)
+    label: 'Acquired in a trade-in or from a related person, or in an involuntary conversion or a like-kind exchange'
+    type: Bool
+    expr:
+      op: input
+      source: 'Did you get this vehicle with a trade-in, in an exchange, as a replacement for one that was destroyed,
+        stolen or condemned, or from a relative or a business you control?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.acquired_before_bonus_date
+    printed: (screen)
+    label: 'Placed in service in 2025 but acquired before September 28, 2017'
+    type: Bool
+    gated_by: scveh.acquired_before_bonus_date_if_this_year
+    expr:
+      op: input
+      source: 'Did you get it before September 28, 2017?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.acquired_before_bonus_date_if_this_year
+    printed: (gate)
+    label: 'Placed in service in 2025 but acquired before September 28, 2017, asked only of a vehicle placed in
+      service in 2025 (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.placed_this_year
+          - const: true
+        then: scveh.acquired_before_bonus_date
+      - guard:
+          op: test
+          eq:
+          - scveh.placed_this_year
+          - const: false
+        then: scveh.no
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.used_before
+    printed: (screen)
+    label: 'A special depreciation allowance is claimed for it in 2025 and its original use did not begin with you'
+    type: Bool
+    gated_by: scveh.used_before_if_bonus
+    expr:
+      op: input
+      source: 'Had anyone used this vehicle before you got it?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.used_before_if_bonus
+    printed: (gate)
+    label: 'A special depreciation allowance is claimed for it in 2025 and its original use did not begin with you,
+      asked only of a vehicle placed in service in 2025 with a special depreciation allowance (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.claims_bonus_this_year
+          - const: true
+        then: scveh.used_before
+      - guard:
+          op: test
+          eq:
+          - scveh.claims_bonus_this_year
+          - const: false
+        then: scveh.no
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.bonus_excluded
+    printed: (screen)
+    label: 'A special depreciation allowance is claimed for it in 2025 and it is property described in section
+      168(k)(9)(A) or 168(k)(9)(B): property primarily used in a trade or business of furnishing or selling electrical
+      energy, water or sewage disposal services, gas or steam through a local distribution system, or transportation of
+      gas or steam by pipeline, whose rates are established or approved by a State or political subdivision, an agency
+      or instrumentality of the United States, a public service or public utility commission or similar body of a State
+      or political subdivision, or the governing or ratemaking body of an electric cooperative; or property used in a
+      trade or business that has had floor plan financing indebtedness (a loan used to buy motor vehicles, boats, farm
+      machinery or equipment, or trailers or campers held for sale or lease, and secured by them) whose interest was
+      taken into account under section 163(j)(1)(C) in figuring the business interest expense limit'
+    type: Bool
+    gated_by: scveh.bonus_excluded_if_bonus
+    expr:
+      op: input
+      source: 'Is your business a regulated utility (electricity, water, sewage, gas or steam), or one that finances
+        the vehicles or equipment it holds for sale or lease with a loan secured by them?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.bonus_excluded_if_bonus
+    printed: (gate)
+    label: 'A special depreciation allowance is claimed for it in 2025 and it is property described in section
+      168(k)(9)(A) or 168(k)(9)(B): property primarily used in a trade or business of furnishing or selling electrical
+      energy, water or sewage disposal services, gas or steam through a local distribution system, or transportation of
+      gas or steam by pipeline, whose rates are established or approved by a State or political subdivision, an agency
+      or instrumentality of the United States, a public service or public utility commission or similar body of a State
+      or political subdivision, or the governing or ratemaking body of an electric cooperative; or property used in a
+      trade or business that has had floor plan financing indebtedness (a loan used to buy motor vehicles, boats, farm
+      machinery or equipment, or trailers or campers held for sale or lease, and secured by them) whose interest was
+      taken into account under section 163(j)(1)(C) in figuring the business interest expense limit, asked only of a
+      vehicle placed in service in 2025 with a special depreciation allowance (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.claims_bonus_this_year
+          - const: true
+        then: scveh.bonus_excluded
+      - guard:
+          op: test
+          eq:
+          - scveh.claims_bonus_this_year
+          - const: false
+        then: scveh.no
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.prior_bonus
+    printed: (screen)
+    label: 'A special depreciation allowance was claimed for it in an earlier year'
+    type: Bool
+    gated_by: scveh.prior_bonus_if_earlier
+    expr:
+      op: input
+      source: 'Did you claim a special (''bonus'') depreciation allowance for it in an earlier year?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.prior_bonus_if_earlier
+    printed: (gate)
+    label: 'A special depreciation allowance was claimed for it in an earlier year, asked only of a vehicle placed in
+      service before 2025 (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.placed_this_year
+          - const: false
+        then: scveh.prior_bonus
+      - guard:
+          op: test
+          eq:
+          - scveh.placed_this_year
+          - const: true
+        then: scveh.no
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.prior_smr
+    printed: (screen)
+    label: 'The standard mileage rate was used for it in an earlier year'
+    type: Bool
+    gated_by: scveh.prior_smr_if_earlier
+    expr:
+      op: input
+      source: 'Did you use the standard mileage rate for it in an earlier year?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.prior_smr_if_earlier
+    printed: (gate)
+    label: 'The standard mileage rate was used for it in an earlier year, asked only of a vehicle placed in service
+      before 2025 (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.placed_this_year
+          - const: false
+        then: scveh.prior_smr
+      - guard:
+          op: test
+          eq:
+          - scveh.placed_this_year
+          - const: true
+        then: scveh.no
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.prior_low_use
+    printed: (screen)
+    label: 'Its business use was 50% or less in any earlier year'
+    type: Bool
+    gated_by: scveh.prior_low_use_if_earlier
+    expr:
+      op: input
+      source: 'In any earlier year, was half or less of its use for business?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.prior_low_use_if_earlier
+    printed: (gate)
+    label: 'Its business use was 50% or less in any earlier year, asked only of a vehicle placed in service before
+      2025 (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.placed_this_year
+          - const: false
+        then: scveh.prior_low_use
+      - guard:
+          op: test
+          eq:
+          - scveh.placed_this_year
+          - const: true
+        then: scveh.no
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.converted
+    printed: (screen)
+    label: 'Converted from personal use to business use, or from business use to personal use, during 2025'
+    type: Bool
+    expr:
+      op: input
+      source: 'During 2025, did this vehicle change between personal and business use: you began using a personal
+        vehicle for the business, or stopped using this one for the business?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.disposed
+    printed: (screen)
+    label: 'Disposed of in 2025'
+    type: Bool
+    expr:
+      op: input
+      source: 'In 2025, did you sell, trade in, give away or scrap this vehicle?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.basis_changed
+    printed: (screen)
+    label: 'A substantial improvement made to it in 2025 or an earlier year (such as adding air conditioning or a new
+      engine); its basis reduced by a clean-fuel deduction or a vehicle credit; its basis reduced because of a casualty'
+    type: Bool
+    expr:
+      op: input
+      source: 'Has its cost for tax purposes been changed by a major improvement (such as a new engine or added air
+        conditioning), a vehicle tax credit or clean-fuel deduction, or a casualty loss?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.short_year
+    printed: (screen)
+    label: 'The 2025 tax year, or any tax year since it was placed in service, is shorter than 12 months'
+    type: Bool
+    expr:
+      op: input
+      source: 'Was 2025, or any year since you began using it in the business, a tax year of less than 12 months for
+        you?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.for_hire
+    printed: (screen)
+    label: 'Used in your business of transporting persons or property for hire, or an ambulance or hearse'
+    type: Bool
+    expr:
+      op: input
+      source: 'Do you use it to carry people or goods for pay, such as a taxi, ride-share or delivery service, or is
+        it an ambulance or hearse?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.investment
+    printed: (screen)
+    label: 'Used in 2025 for investment, that is, for the production of income outside your trade or business'
+    type: Bool
+    expr:
+      op: input
+      source: 'In 2025, did you also use it to earn income outside the business, such as looking after investments?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.method_other
+    printed: (screen)
+    label: 'Must be depreciated under ADS (for example, used predominantly outside the United States), or ADS, the
+      straight line method or the 150% declining balance method elected for it'
+    type: Bool
+    expr:
+      op: input
+      source: 'Do you depreciate it by straight line, 150% declining balance or the alternative system (ADS), by
+        choice or because you must (for example, it is driven mostly outside the United States)?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.others_use
+    printed: (screen)
+    label: 'Used by someone other than you, or in a use that is nondeductible under section 274'
+    type: Bool
+    expr:
+      op: input
+      source: 'Does anyone but you use this vehicle (someone you lease or lend it to, a relative, a co-owner, or
+        someone who gets its use as pay), or is any of its use for entertainment?'
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.leasing
+    printed: (screen)
+    label: 'You are regularly engaged in the business of leasing passenger automobiles; or you are not a corporation
+      and you purchased it and lease it to others, unless you manufactured or produced it, or the lease term (including
+      options to renew) is less than 50% of its class life and for the first 12 months after the transfer to the lessee
+      your business deductions for it (other than rents and reimbursed amounts) are more than 15% of its rental income'
+    type: Bool
+    gated_by: scveh.leasing_if_others_use
+    expr:
+      op: input
       source: |-
+        Are you regularly in the business of leasing cars, or did you buy this vehicle and lease it to others?
+
+        Answer No to the second if you manufactured or produced the vehicle, or if the lease term (including options to renew) is less than 50% of its class life and for the first 12 months after the transfer to the lessee your business deductions for it (other than rents and reimbursed amounts) are more than 15% of its rental income.
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.leasing_if_others_use
+    printed: (gate)
+    label: 'You are regularly engaged in the business of leasing passenger automobiles; or you are not a corporation
+      and you purchased it and lease it to others, unless you manufactured or produced it, or the lease term (including
+      options to renew) is less than 50% of its class life and for the first 12 months after the transfer to the lessee
+      your business deductions for it (other than rents and reimbursed amounts) are more than 15% of its rental income,
+      asked only of a vehicle others use (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.others_use
+          - const: true
+        then: scveh.leasing
+      - guard:
+          op: test
+          eq:
+          - scveh.others_use
+          - const: false
+        then: scveh.no
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.exempt_use
+    printed: (screen)
+    label: 'Used by a tax-exempt organization, unless used in connection with the production of income subject to the
+      tax on unrelated trade or business income; or used by a governmental unit or a foreign person or entity, unless
+      used under a lease with a term of less than 6 months'
+    type: Bool
+    gated_by: scveh.exempt_use_if_others_use
+    expr:
+      op: input
+      source: |-
+        Is it used by a tax-exempt organization, a governmental unit, or a foreign person or entity?
+
+        Answer No for a tax-exempt organization that uses it in connection with the production of income subject to the tax on unrelated trade or business income, and for a governmental unit or foreign person or entity that uses it under a lease with a term of less than 6 months.
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.exempt_use_if_others_use
+    printed: (gate)
+    label: 'Used by a tax-exempt organization, unless used in connection with the production of income subject to the
+      tax on unrelated trade or business income; or used by a governmental unit or a foreign person or entity, unless
+      used under a lease with a term of less than 6 months, asked only of a vehicle others use (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.others_use
+          - const: true
+        then: scveh.exempt_use
+      - guard:
+          op: test
+          eq:
+          - scveh.others_use
+          - const: false
+        then: scveh.no
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.qbu_low
+    printed: (screen)
+    label: 'Its qualified business use is 50% or less once uses that are not qualified business use are left out'
+    type: Bool
+    gated_by: scveh.qbu_low_if_others_use
+    expr:
+      op: input
+      source: |-
+        Is its business use 50% or less once you leave out these uses, which are not qualified business use?
+
+        - investment use
+        - leasing it to a 5% owner or related person, or using it as compensation for services of a 5% owner or related person, unless for the lease the value is reported as income to that person
+        - using it as compensation for services of anyone else unless an amount is included in that person's income for the use and any required income tax was withheld
+        - use that is nondeductible under section 274
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.qbu_low_if_others_use
+    printed: (gate)
+    label: 'Its qualified business use is 50% or less once uses that are not qualified business use are left out,
+      asked only of a vehicle others use (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scveh.others_use
+          - const: true
+        then: scveh.qbu_low
+      - guard:
+          op: test
+          eq:
+          - scveh.others_use
+          - const: false
+        then: scveh.no
+    cite:
+      doc: i4562
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
+        p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
+        types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
+        limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
+        engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
+        short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
+        percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
+        p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
+  - id: scveh.screen
+    printed: (screen)
+    label: |-
         Does any of these apply to this vehicle?
 
         - you placed it in service before 2019
@@ -579,6 +1858,82 @@ form:
           - leasing it to a 5% owner or related person, or using it as compensation for services of a 5% owner or related person, unless for the lease the value is reported as income to that person
           - using it as compensation for services of anyone else unless an amount is included in that person's income for the use and any required income tax was withheld
           - use that is nondeductible under section 274
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - scveh.records
+        - const: false
+      - op: test
+        eq:
+        - scveh.got_other
+        - const: true
+      - op: test
+        eq:
+        - scveh.acquired_before_bonus_date_if_this_year
+        - const: true
+      - op: test
+        eq:
+        - scveh.used_before_if_bonus
+        - const: true
+      - op: test
+        eq:
+        - scveh.bonus_excluded_if_bonus
+        - const: true
+      - op: test
+        eq:
+        - scveh.prior_bonus_if_earlier
+        - const: true
+      - op: test
+        eq:
+        - scveh.prior_smr_if_earlier
+        - const: true
+      - op: test
+        eq:
+        - scveh.prior_low_use_if_earlier
+        - const: true
+      - op: test
+        eq:
+        - scveh.converted
+        - const: true
+      - op: test
+        eq:
+        - scveh.disposed
+        - const: true
+      - op: test
+        eq:
+        - scveh.basis_changed
+        - const: true
+      - op: test
+        eq:
+        - scveh.short_year
+        - const: true
+      - op: test
+        eq:
+        - scveh.for_hire
+        - const: true
+      - op: test
+        eq:
+        - scveh.investment
+        - const: true
+      - op: test
+        eq:
+        - scveh.method_other
+        - const: true
+      - op: test
+        eq:
+        - scveh.leasing_if_others_use
+        - const: true
+      - op: test
+        eq:
+        - scveh.exempt_use_if_others_use
+        - const: true
+      - op: test
+        eq:
+        - scveh.qbu_low_if_others_use
+        - const: true
     cite:
       doc: i4562
       locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
@@ -635,6 +1990,12 @@ form:
         taxes, earlier), destination charges, and dealer preparation" and "Decrease your basis by any section 179 deduction,
         special depreciation allowance, gas guzzler tax, and vehicle credits claimed"
     refuses:
+    - when: scveh.too_old
+      form: Vehicle placed in service before 2019
+      remedy: A vehicle placed in service before 2019 is outside this tool.
+      cite:
+        doc: p946
+        locator: p. 61, Deductions After the Recovery Period
     - when: scveh.screened
       form: Vehicle depreciation outside this tool (placed in service before 2019, an earlier special allowance, an earlier
         standard mileage rate, a disposition, a trade-in, earlier business use of 50% or less, and the other items of the
@@ -643,12 +2004,6 @@ form:
       cite:
         doc: i4562
         locator: pp. 13-15, Part V
-    - when: scveh.too_old
-      form: Vehicle placed in service before 2019
-      remedy: A vehicle placed in service before 2019 is outside this tool.
-      cite:
-        doc: p946
-        locator: p. 61, Deductions After the Recovery Period
   - id: scveh.passenger
     printed: (helper)
     label: Subject to the limits for passenger automobiles
@@ -687,27 +2042,29 @@ form:
     cite:
       doc: p946
       locator: p. 37, Using the MACRS Percentage Tables
-  - id: scveh.is2025
+  - id: scveh.placed_this_year
     printed: (helper)
     label: Placed in service in 2025
     type: Bool
     expr:
       op: test
       eq:
-      - scveh.placed
-      - const: y2025
+      - scveh.year
+      - const: 1
+        type: Count
     cite:
       doc: i4562
       locator: p. 13, Line 25; p. 16, Column (i)
-  - id: scveh.is2019
+  - id: scveh.first_year_after_recovery
     printed: (helper)
     label: Placed in service in 2019 (2025 is after the recovery period)
     type: Bool
     expr:
       op: test
       eq:
-      - scveh.placed
-      - const: y2019
+      - scveh.year
+      - const: 7
+        type: Count
     cite:
       doc: p946
       locator: p. 61, Deductions After the Recovery Period
@@ -878,7 +2235,7 @@ form:
     cite:
       doc: p946
       locator: p. 59, Maximum Depreciation Deduction, footnote 1, "the maximum depreciation deduction is $12,200"
-  - id: scveh.lim_2025
+  - id: scveh.lim_this_year
     printed: (helper)
     label: Limit for a 2025 vehicle
     type: NonNegDollars
@@ -925,13 +2282,13 @@ form:
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: true
-        then: scveh.lim_2025
+        then: scveh.lim_this_year
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: false
         then: scveh.lim_prior
     cite:
@@ -952,7 +2309,7 @@ form:
       doc: p946
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 9; i4562 p. 15, "you must reduce the applicable
         limit to an amount equal to the limit multiplied by that percentage"
-  - id: scveh.s179_2025_ok
+  - id: scveh.s179_this_year_ok
     printed: (helper)
     label: Section 179 elected for a 2025 vehicle
     type: NonNegDollars
@@ -980,13 +2337,13 @@ form:
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: true
-        then: scveh.line10_2025
+        then: scveh.line10_this_year
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: false
         then: scveh.zero
     cite:
@@ -994,7 +2351,7 @@ form:
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 10, "Enter -0- if this is not the year you
         placed the car in service"; i4562 p. 16, Column (i)
     ambiguity: amb.2025.vehicle_s179_claimed
-  - id: scveh.line10_2025
+  - id: scveh.line10_this_year
     printed: (helper)
     label: 'Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile'
     type: NonNegDollars
@@ -1012,7 +2369,7 @@ form:
           eq:
           - scveh.passenger
           - const: false
-        then: scveh.s179_2025_ok
+        then: scveh.s179_this_year_ok
     cite:
       doc: i4562
       locator: p. 16, Column (i)
@@ -1023,7 +2380,7 @@ form:
     expr:
       op: smaller_of
       of:
-      - scveh.s179_2025_ok
+      - scveh.s179_this_year_ok
       - scveh.line9w
     cite:
       doc: p946
@@ -1061,13 +2418,13 @@ form:
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: true
         then: scveh.line10
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: false
         then: scveh.prior_179
     cite:
@@ -1142,7 +2499,7 @@ form:
     cite:
       doc: i4562
       locator: p. 5, Line 14
-  - id: scveh.bonus_2025
+  - id: scveh.bonus_this_year
     printed: (helper)
     label: Special allowance for a 2025 vehicle
     type: NonNegDollars
@@ -1181,13 +2538,13 @@ form:
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: true
-        then: scveh.bonus_2025
+        then: scveh.bonus_this_year
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: false
         then: scveh.zero
     cite:
@@ -1371,13 +2728,13 @@ form:
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: true
-        then: scveh.line19_2025
+        then: scveh.line19_this_year
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: false
         then: scveh.line19_earlier
     cite:
@@ -1393,20 +2750,20 @@ form:
       - guard:
           op: test
           eq:
-          - scveh.is2019
+          - scveh.first_year_after_recovery
           - const: false
         then: scveh.line19_prior
       - guard:
           op: test
           eq:
-          - scveh.is2019
+          - scveh.first_year_after_recovery
           - const: true
         then: scveh.zero
     cite:
       doc: p946
       locator: p. 61, Deductions After the Recovery Period (the unrecovered basis is deducted after the recovery period, not
         figured on the worksheet)
-  - id: scveh.line19_2025
+  - id: scveh.line19_this_year
     printed: (helper)
     label: Line 19 for a 2025 vehicle, half-year or mid-quarter
     type: NonNegDollars
@@ -1946,13 +3303,13 @@ form:
       - guard:
           op: test
           eq:
-          - scveh.is2019
+          - scveh.first_year_after_recovery
           - const: false
         then: scveh.line20
       - guard:
           op: test
           eq:
-          - scveh.is2019
+          - scveh.first_year_after_recovery
           - const: true
         then: scveh.post
     cite:
@@ -1969,13 +3326,13 @@ form:
       - guard:
           op: test
           eq:
-          - scveh.is2019
+          - scveh.first_year_after_recovery
           - const: false
         then: scveh.line19
       - guard:
           op: test
           eq:
-          - scveh.is2019
+          - scveh.first_year_after_recovery
           - const: true
         then: scveh.zero
     cite:
@@ -2047,7 +3404,7 @@ form:
     cite:
       doc: i4562
       locator: p. 13, Part V, Section A
-  - id: scveh.s179_2025
+  - id: scveh.s179_this_year
     printed: (i)
     shown_when: scveh.is_actual_owned
     label: 'Column (i): elected section 179 cost of this vehicle'
@@ -2060,7 +3417,7 @@ form:
           eq:
           - scveh.is_actual_owned
           - const: true
-        then: scveh.s179_2025_o
+        then: scveh.s179_this_year_o
       - guard:
           op: test
           eq:
@@ -2156,7 +3513,7 @@ form:
     cite:
       doc: i4562
       locator: p. 15, Column (h)
-  - id: scveh.s179_2025_o
+  - id: scveh.s179_this_year_o
     printed: (helper)
     label: Section 179 (owned, actual expenses)
     type: NonNegDollars
@@ -2210,13 +3567,13 @@ form:
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: true
         then: scveh.mq_q4_a2
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: false
         then: scveh.zero
     cite:
@@ -2242,13 +3599,13 @@ form:
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: true
         then: scveh.mq_total_a2
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: false
         then: scveh.zero
     cite:
@@ -2274,13 +3631,13 @@ form:
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: true
         then: scveh.cost179_a2
       - guard:
           op: test
           eq:
-          - scveh.is2025
+          - scveh.placed_this_year
           - const: false
         then: scveh.zero
     cite:
@@ -2296,6 +3653,52 @@ form:
     cite:
       doc: p946
       locator: p. 34, Which Convention Applies?, Mid-quarter convention, Caution
+  - id: scveh.no
+    printed: (helper)
+    label: Year parameter household.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: i1040sc
+      locator: p. 7, Line 9, "Show depreciation on line 13 and rent or lease payments on line 20a"
+  - id: scveh.is_actual_owned_test1
+    printed: (helper)
+    label: "Owned and on actual expenses: condition 1"
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - scveh.method
+      - const: actual
+    cite:
+      doc: i1040sc
+      locator: p. 7, Line 9, "Show depreciation on line 13 and rent or lease payments on line 20a"
+  - id: scveh.is_actual_leased_test1
+    printed: (helper)
+    label: "Leased and on actual expenses: condition 1"
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - scveh.method
+      - const: actual
+    cite:
+      doc: i1040sc
+      locator: p. 7, Line 9
+  - id: scveh.is_actual_leased_test2
+    printed: (helper)
+    label: "Leased and on actual expenses: condition 2"
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - scveh.owned
+      - const: false
+    cite:
+      doc: i1040sc
+      locator: p. 7, Line 9
   collection:
     parent: sc
     cite:

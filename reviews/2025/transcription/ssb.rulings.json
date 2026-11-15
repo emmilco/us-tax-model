@@ -323,6 +323,38 @@
    "ruling": "Ruling: representation; i1040gi p. 31, Lines 6a and 6b: \"Use the Social Security Benefits Worksheet in these instructions to see if any of your benefits are taxable.\". executable-triage-v2 (`reviews/2025/transcription/triage/ssb.json`; 1,382 fixtures, 500 generated returns seed 20261026, 156 partial records from 40 bases; 2,038 comparisons; every witness re-read from an uncapped scratch re-run of triage.mjs, same counts): 2,038 of 2,038 agree. The project tests line 1, a copy of ssb.benefits; the candidate tests ssb.benefits. Project stands.",
    "context": "249a88949406c5d3ef9abba751ec90dc4073a49d1e590919782fa10400fcbbe1",
    "subject_key": "1281b06ac0838bbd832a726a2709b99abf79cf354fa098d1901808ac7e852bd1"
+  },
+  {
+   "printed": "ssb.lump_sum",
+   "project_expr_sha256": "82816e50eb859cf8c35a4ce11af85faa334e346c7e38338f8e171369e7733969",
+   "second_expr_sha256": "95c1ed95bc11d4345563bdcd4a994768d66a86cc0e13a155e7e4dc60663a9a81",
+   "ruling": "Ruling: representation; i1040gi p. 31, Line 6c: \"If you elect to use the lump-sum election method for your benefits, check the box on line 6c\". Both are true when the benefits include a payment for an earlier year (ssb.prior_year_pay) and the filer elects the method (ssb.lump_elect); the reply also requires ssb.any. The project's only reader is the refusal on worksheet line 2, which is figured only for a filer with benefits, and the interview asks ssb.prior_year_pay in the group \"Is any of these true of the social security benefits?\" after ssb.any. executable triage (.transcription/triage/2025/ssb.json, executable-triage-v2): 2,324 of 2,773 agree; 6 value, all on refused mutation records with ssb.any false but ssb.prior_year_pay and ssb.lump_elect true (e.g. mutation.t2.mfj_no_overtime_part3), which the interview does not produce; 443 project-unknown (16 completed) where ssb.prior_year_pay was not supplied. No completed-return value difference. Project stands.",
+   "context": "bc16ffc944016be1aeea295fd67a42f5d97e7dd5a2dd39eb2d69944b14f9c716",
+   "date": "2026-11-14",
+   "run": "32209697fc666cf859d356fcc760ca62e6909bbc9a2efc28fdea15976a56914b",
+   "subject_key": "93437f81d43b1b30488896ba713fd2ba3a29452b053e90d784ea30dede9b0dd8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@ssb",
+     "fixture:classm.f2441.2.deepseek@ssb",
+     "fixture:classm.f2441.3.deepseek@ssb",
+     "fixture:classm.f2441.4.deepseek@ssb",
+     "fixture:classm.f2441.5.deepseek@ssb",
+     "fixture:classm.f2441.6.deepseek@ssb",
+     "fixture:mutation.t2.mfj_no_overtime_part3@ssb",
+     "fixture:mutation.t2.s1a.line13_magi_first@ssb",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_three_jobs@ssb",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_one_job@ssb",
+     "generated:20261026.48@ssb",
+     "generated:20261026.120@ssb"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

@@ -4,8 +4,9 @@
  "family": "claude",
  "base": "eff62ea2b6448f2908312be12f5a06c3f61bcc70b33c71bea09d681208069cf2",
  "head_rows": {
-  "agree / disagree / missing": "2 / 4 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
+  "printed lines compared": "7",
+  "agree / disagree / missing": "2 / 5 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -16,10 +17,17 @@
   },
   {
    "key": "qbi.eligible",
-   "record": "f653455ecaff26b4cc6851c77f4c94c006ee5b6e076dc66a4246c2c8e3c86077",
+   "record": "ca7bddff9ff4ce9fb991db10627b6a2e6fc9ee95fb651446ba07556a48780687",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply takes the input qbi.dividends on every return, where the project reads it only when ordinary dividends are above zero (zero otherwise), because the interview asks the section 199A dividend amount only after dividends are entered (f1099div p. 5, Box 5, \"Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\": box 5 is part of box 1a, so without ordinary dividends there is none). On a return with no dividends the reply therefore needs an answer the interview does not ask. Triage executable-triage-v2 (`.transcription/triage/2025/qbi.json`, pass f8a472cd57e9; 1,767 fixtures, 500 generated returns seed 20261026): 2,207 of 2,355 in-scope comparisons agree; differences by kind {\"candidate-unknown\": 134, \"project-unknown\": 14}; on completed returns 97 candidate-unknown (the recorded witnesses name qbi.dividends, with the project's value zero); the project-unknown are partial records that withhold an answer the project needs. No value differs where both give one. The project line is retained.",
-   "subject_key": "cc6d14dd8033d816446ab1ac2215b9b2413a0dc8617e3251fadf33568ce975fb"
+   "ruling": "Ruling: representation; f1099div p. 5: \"Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\". The project copies qbi.dividends_if_ordinary, asked only when ordinary dividends (box 1a) are above zero, and carries the qbi.unsupported refusal (REIT/PTP carryforward, suspended losses, cooperative patron; amb.2025.qbi_cooperative_patron); the reply copies qbi.dividends directly and leaves those cases to other screens. executable triage (.transcription/triage/2025/qbi.json, executable-triage-v2): 2,372 of 2,672 agree; 151 candidate-unknown (13 completed: box 5 not asked, project $0), 125 project-unknown and 24 project-refuses on incomplete or refused returns; no value difference. Project stands.",
+   "subject_key": "4dcb93b0b6b05ca3cd1cb753c9140006f38f5a47851174e750eb6e6ba22a3f9e"
+  },
+  {
+   "key": "qbi.carryforward_if_prior_form",
+   "record": "ca7bddff9ff4ce9fb991db10627b6a2e6fc9ee95fb651446ba07556a48780687",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent. i8995 p. 3, Line 3 (the prior year's Form 8995 line 16 carryforward). Both give line 3 when qbi.prior_form is true and zero otherwise; the reply orders the two guards the other way (\"ne true\" for a Bool answer is \"eq false\"). executable triage (.transcription/triage/2025/qbi.json, executable-triage-v2): 2,672 of 2,672 agree. Project stands.",
+   "subject_key": "895f285c2250c72c38f2362f7dd06fbe90b932e49e449ba616a026b273a6f4aa"
   },
   {
    "key": "qbi.taxable_before",
@@ -37,10 +45,10 @@
   },
   {
    "key": "qbi.deduction",
-   "record": "eff62ea2b6448f2908312be12f5a06c3f61bcc70b33c71bea09d681208069cf2",
+   "record": "ca7bddff9ff4ce9fb991db10627b6a2e6fc9ee95fb651446ba07556a48780687",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. The difference is that of qbi.taxable_before (line 11b and the Schedule A choice plus line 13b against line 11a less line 12e), equal in value within the slice; the Stage 14 selection between Form 8995 and Form 8995-A agrees on both sides.",
-   "subject_key": "2c108b186db329973a5682c106a03cd098e5941c9f29ba5dac9b854214bfad1a"
+   "ruling": "Ruling: representation; f8995 p. 1: \"Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)\"; i8995 p. 1, a patron of a specified cooperative uses Form 8995-A. Both choose Form 8995 line 15 at or under the threshold and Form 8995-A above it. The reply routes a cooperative patron to Form 8995-A and refuses suspended losses (qbi.suspended) and a REIT/PTP carryforward (qbi.reit_loss) by reading those answers directly; the project refuses all three through qbi.unsupported (amb.2025.qbi_cooperative_patron), asking qbi.suspended only with a Schedule C and qbi.reit_loss only with a 2024 Form 8995. executable triage (.transcription/triage/2025/qbi.json, executable-triage-v2): 1,992 of 2,672 agree; 476 candidate-unknown (34 completed, e.g. classm.f2441.1.deepseek: qbi.suspended not asked, project $0) and 204 project-refuses on refused returns; no value difference. Project stands.",
+   "subject_key": "fb9eed384528b8dacdac3c6d6d3e134fec16616d277b8ff06a4838f29bb39bb8"
   },
   {
    "key": "qbi.dividends_if_ordinary",
@@ -51,16 +59,19 @@
  ],
  "subjects": {
   "qbi.zero": "d351e905679017dd4f47fae49b296df613ed439c812435776e137e37960346b9",
-  "qbi.eligible": "2006142228aeb6c15d353fb7489b90ac5a69fbd3de6a2a334897b190092840a8",
+  "qbi.eligible": "f2062a771c880a8d39fc5fac29c16862fa47187ef394da12abad50f085818df8",
+  "qbi.carryforward_if_prior_form": "1ceb06b67e3225a6a1b9de6a11ad97967b49a75d25a28acdd682b11650f1254e",
   "qbi.taxable_before": "b83f0cad61a74d71f14d043cea5f54ced08d9f944f7c5fa4e5bb4d6b5a4302f0",
   "qbi.net_capital_gain": "7a116174b72815c5db82b7c6151c282b32fc369ff97504259084e21f7e00f4e4",
-  "qbi.deduction": "8ad77c43b32b60307aca48df5f4cf13e85a666d68b12b6eb9508b6cadcb82f65",
+  "qbi.deduction": "2132cb147b2970dea95941ab4cff40fe3152bad7286a86450e5042e9bec680d3",
   "qbi.dividends_if_ordinary": "6d42183163f2eea811b903beb9c5c3f876b45e26c0fac768ceb48a2618ac63d8"
  },
  "__rest__": "3ecd850aa0c9743f71e02cf3a8fda571cbba92fac4295ed77a1231fbce2a3a92",
  "foreign": {
-  "qbi.eligible": "e66873f691171d72092552d4220f3c910ccd051a8111596cd19a931d5e006938",
+  "qbi.eligible": "4bfc1a1aa5dda838516e4599a6eec85b4f8560ebb38f8d7050d1ad79ba1ffbad",
+  "qbi.carryforward_if_prior_form": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "qbi.net_capital_gain": "108c0b63626e81123a19c71dbe5d2b7018d5e76ea04202a93685cfac2616d4a9",
+  "qbi.deduction": "5454d042ed63496d219120300e2f7144b07a93b7b836d54944114d9d5155f207",
   "qbi.dividends_if_ordinary": "e66873f691171d72092552d4220f3c910ccd051a8111596cd19a931d5e006938"
  }
 }

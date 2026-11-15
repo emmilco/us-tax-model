@@ -62,3 +62,41 @@ defect of the side producing it; the project shows zero on every skipped line.
 | deepseek | 12b | model error | 584/1640; 989 candidate-unknown, 67 candidate-refuses | i1040gi p. 98, line 12 | Refuses reachable both_kinds and kbh_short returns. |
 
 Findings: none. Project lines unchanged.
+
+## Landing round (2026-11-14), render
+
+Lane land3-adj7 (claude-opus-5-5, judgment). Open lines of the Claude render log `.transcription/logs/2025/render/ira.md`, ruled on the rendered English (`rendered/2025/ira.md`), the form YAML and the cited source; the deepseek log is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | (screen) (ira.reservist_repaid) | interface gap | UNCLEAR; form YAML (scope.armed_forces) | p590a p. 9, When repayment contributions can be made | Repayment is allowed only within 2 years after active duty ends, so every 2025 repayer served after the start of 2022; the gate loses nothing. The page was not given to the reviewer. |
+
+Counts: claude render: interface gap 1.
+
+Findings: none. No line left open.
+
+## Landing round (2026-11-14)
+
+Lane land3-adj6 (claude-opus-5-5, judgment; tax year 2025, us). Open lines of the Claude transcription log after the line-scoped pass 12f36e046fb1 of the interview redraft, rerun after the fix that keys two or more computed `(screen)` lines as `(screen) (<id>)` (`docs/provisional/lanes/land3-screen.md`). Evidence: the executable triage record of that pass (`.transcription/triage/2025/ira.json`, executable-triage-v2; 1,986 fixtures, 500 generated returns seed 20261026), `triage.py --explain` derivations where cited, the archived sources and `forms/2025/ira.yaml`. Triage applies the project's display condition only; the reply's own display conditions were ruled by reading its expressions. Full ruling text: the log and its sidecar; rulings file `/tmp/land3-adj6/ira.json`. The deepseek log is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | ira.both_kinds | representation | 2,585/2,591 agree; 6 candidate-unknown; completed: none | i1040gi p. 95, Line 20 | Return-wide reading on both sides (amb.2025.ira_both_kinds); differences are the unasked ira_trad amount. |
+| claude | transcription | ira.over_comp | model error | 2,544/2,591 agree; 17 value, 13 candidate-refuses, 9 project-unknown, 6 candidate-unknown, 2 project-refuses; completed: 7 value | p590a p. 35; i1040gi p. 98, Caution | Reply transcribes the line 10 caution (the project's ira.kbh_short) for the excess-contribution screen, without the traditional-contribution condition. |
+| claude | transcription | ira.special_gate | model error | 1,978/2,591 agree; 576 candidate-unknown, 24 value, 13 candidate-refuses; completed: 46 candidate-unknown, 7 value | i1040gi p. 95, "read the following list" | No traditional-contribution condition; refuses through its over_comp on returns without contributions. |
+| claude | transcription | ira.line20 | model error | 1,987/2,591 agree; 572 candidate-unknown, 31 candidate-refuses, 1 project-refuses; completed: 46 candidate-unknown, 7 candidate-refuses | i1040gi p. 98, line 12 | No value differs; inherits the special_gate refusals on returns without contributions. |
+| claude | transcription | (screen) (ira.special) | model error | 2,563/2,591 agree; 26 candidate-unknown, 2 value; completed: 8 candidate-unknown | i1040gi p. 95; p590a pp. 6-7, 16 | Drops the reservist repayment named in the label and adds ira.se_capital (unasked without a Schedule C). |
+
+Counts: claude transcription model error 4, representation 1. Findings: none. Left open: none.
+
+
+## Landing round (2026-11-14), class M
+
+Lane land3-adj12 (claude-opus-5-5, judgment). Claude class M log of 2026-11-14 (subject hash equal to the current computation); `carry.py --kind classm` ruled nothing. Rulings file `/tmp/land3-adj12/ira.json`, applied with `rule.py --kind classm` (see the lane note `docs/provisional/lanes/land3-adj12.md` for whether it has been applied: the review store index for this log had not been carried into the landing tree when the rulings were written).
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | classm | classm.ira.3 — 7a | representation | dropped from the fixture | i1040gi Line 20, IRA Deduction | project retained. No one on the return made traditional IRA contributions (both persons' traditional contributions are $0.00; ira.any_trad false), and the IRA Deduction W... |
+| claude | classm | classm.ira.3 — 7b | representation | dropped from the fixture | i1040gi Line 20, IRA Deduction | project retained. No one on the return made traditional IRA contributions (both persons' traditional contributions are $0.00; ira.any_trad false), and the IRA Deduction W... |
+
+Counts: claude classm representation 2. Findings: none. Left open: none.

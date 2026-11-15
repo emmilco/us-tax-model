@@ -336,8 +336,26 @@ def changed_logs(base):
     return forms
 
 
+def renamed():
+    """A name as it is now, through the map of ids renamed since an entry was written (tools/year_free_names.json):
+    the inventory is append-only, so an entry keeps the names its lines had when it was written, and review logs keep
+    the names of the documents they reviewed. Returns the translation of a set of line ids and of a set of documents."""
+    path = ROOT / "tools" / "year_free_names.json"
+    renames = json.loads(path.read_text())["renames"] if path.exists() else {}
+    lines = {old: r["to"] for old, r in renames.items() if r.get("kind") != "document"}
+    documents = {old: r["to"] for old, r in renames.items() if r.get("kind") == "document"}
+
+    def now(name):
+        if name in lines:
+            return lines[name]
+        doc, dot, rest = name.partition(".")
+        return f"{documents[doc]}.{rest}" if dot and doc in documents else name
+    return (lambda names: {now(n) for n in names}), (lambda docs: {documents.get(d, d) for d in docs})
+
+
 def check(docs, ids):
     reader_map = readers(docs, ids)
+    current, current_docs = renamed()
     problems = []
     head_text = subprocess.run(["git", "show", "HEAD:BUG_INVENTORY.md"], capture_output=True, text=True, check=False).stdout
     logged = {}
@@ -351,14 +369,14 @@ def check(docs, ids):
         if "Siblings checked" not in fields:
             problems.append(f"{bug}: has a Fix field but no '- **Siblings checked:**' field")
             continue
-        fix = checked_ids(fields["Fix lines"]) & set(ids)
+        fix = current(checked_ids(fields["Fix lines"])) & set(ids)
         if not fix:
             problems.append(f"{bug}: Fix lines names no line in canonical/{Y}")
             continue
         siblings = set()
         for target in fix:
             siblings |= siblings_of(docs, ids, target, reader_map)
-        checked = checked_ids(fields["Siblings checked"])
+        checked = current(checked_ids(fields["Siblings checked"]))
         unknown = checked - set(ids)
         if unknown:
             problems.append(f"{bug}: Siblings checked names unknown line(s): {', '.join(sorted(unknown))}")
@@ -368,13 +386,13 @@ def check(docs, ids):
             # A committed entry cannot be edited (the inventory is append-only), so a sibling
             # line added after it was written is not counted against it.
             if base not in existed:
-                existed[base] = line_ids_at(base[:-1])
+                existed[base] = current(line_ids_at(base[:-1]))
             missing &= existed[base]
         if missing:
             problems.append(f"{bug}: Siblings checked omits {len(missing)} generated sibling(s): "
                             f"{', '.join(sorted(missing)[:8])}{' ...' if len(missing) > 8 else ''}")
         if base not in logged:
-            logged[base] = changed_logs(base)
+            logged[base] = current_docs(changed_logs(base))
         forms = {target.split(".")[0] for target in siblings}
         unrefreshed = sorted(forms - logged[base])
         if unrefreshed:

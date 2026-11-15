@@ -211,6 +211,9 @@ jstep test_fixtures --ny "${node[@]}" test-fixtures
 step refusal_reach "${node[0]}" tools/check_refusal_reach.mjs "$@"
 # The interview rules of the formal gates design: no input set by the interview, order independence, no early completion.
 step interview_rules "${node[@]}" interview-rules "$@"
+# The tick-box groups of the question bank: each group's declaration, and what a ticked or unticked member opens in
+# the built interview, as tick-groups.ts asks them.
+step tick_groups "${node[@]}" tick-groups "$@"
 # The questions asked of a person, as stored and as shown for each entry: the tracked report is what the built questions give.
 step person_wording "${node[@]}" spouse-wording --report --check "$@"
 # reports/<year>/interview_length.md, rewritten above its hand-written findings (about 8 minutes on one core, so the

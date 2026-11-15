@@ -16,7 +16,10 @@ The ids are then renamed (t.a_2025, t.c_2025, h.k_2025, h.m_2025) and line 2's l
 - a stale map (an id that is not a line): refused whole, nothing written;
 - a --from tree that is not the one the rename was made from (line 1's label differs there): part B refuses the
   render review of line 1 and carries its transcription review (dry run, nothing written);
-- a second run: nothing more carried, nothing changed.
+- a second run: nothing more carried, nothing changed;
+- a renamed document (`zz` to `yy`, planted files of its own): its review files, raw replies and class M fixture case
+  ids move to the new name, the "form" field of a moved index follows, the class M case keys of its index and sidecar are renamed (shown from their old sections), a file already at the new name refuses the
+  whole move, and a dry run moves nothing.
 Afterwards the currency checks (review_store.state, as check_logs uses it; review_store.check; rulings.check;
 the question subjects) accept every carried entry and still report the line whose proof failed.
 
@@ -203,6 +206,54 @@ def step_carry(map_path, origin, report, write="write"):
                       "refused": [list(r) for r in plan.refused] if plan else None}))
 
 
+def step_documents():
+    """A renamed document's files move as a whole (see rename_carry.document_moves); runs in the small tree."""
+    import rename_carry
+    import jurisdiction
+    from taxyear import Y as year
+    docs = {"zz": "yy"}
+    reviews = str(jurisdiction.ypath("reviews", year, "transcription"))
+    planted = [os.path.join(reviews, "zz.index.json"), os.path.join(reviews, "zz.deepseek.index.json"),
+               os.path.join(reviews, "zz.rulings.json"), os.path.join(reviews, "zzz.index.json"),
+               str(jurisdiction.ypath("reviews", year, "questions")) + "/zz.json",
+               ".transcription/zz.meta.json", ".transcription/zz.render.response.txt", ".transcription/zzz.meta.json",
+               ".classm/classm.zz.1.meta.json"]
+    for path in planted:
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as f:
+            json.dump({"form": "zz", "lines": []}, f)
+    classm = str(jurisdiction.ypath("reviews", year, "classm"))
+    os.makedirs(classm, exist_ok=True)
+    with open(os.path.join(classm, "zz.index.json"), "w") as f:
+        json.dump({"form": "zz", "lines": [{"key": "case classm.zz.1"}, {"key": "classm.zz.1 \u2014 1"}, {"key": "other"}]}, f)
+    with open(os.path.join(classm, "zz.deepseek.rulings.json"), "w") as f:
+        json.dump({"form": "zz", "rulings": [{"case": "classm.zz.1", "printed": "1"}]}, f)
+    planted += [os.path.join(classm, "zz.index.json"), os.path.join(classm, "zz.deepseek.rulings.json")]
+    fixture = str(jurisdiction.ypath("fixtures", year)) + "/classm.json"
+    os.makedirs(os.path.dirname(fixture), exist_ok=True)
+    with open(fixture, "w") as f:
+        f.write('{"cases": [{"id": "classm.zz.1"}, {"id": "classm.zzz.1"}, {"note": "classm.zz.1 in prose"}]}')
+    out = {}
+    dry = rename_carry.move_documents(docs, False)
+    out["dry moves"] = len(dry)
+    out["dry moved nothing"] = all(os.path.exists(p) for p in planted)
+    rename_carry.move_documents(docs, True)
+    out["moved"] = sorted(p for p in planted if not os.path.exists(p))
+    out["forms"] = [json.load(open(p.replace("/zz.", "/yy.")))["form"] for p in planted[:3] + planted[4:5]]
+    out["fixture"] = open(fixture).read()
+    index = json.load(open(os.path.join(classm, "yy.index.json")))["lines"]
+    out["classm keys"] = [(l["key"], l.get("section"), (l.get("carried") or {}).get("keys")) for l in index]
+    out["classm rulings"] = [r["case"] for r in json.load(open(os.path.join(classm, "yy.deepseek.rulings.json")))["rulings"]]
+    with open(os.path.join(reviews, "zz.index.json"), "w") as f:
+        f.write("{}")
+    try:
+        rename_carry.move_documents(docs, True)
+        out["refused"] = False
+    except SystemExit as ex:
+        out["refused"] = "already exist" in str(ex)
+    print(json.dumps(out))
+
+
 def step_digest():
     """A digest of every review file of the small tree (indexes, sidecars, sampled records)."""
     h = hashlib.sha256()
@@ -300,6 +351,19 @@ def main():
         expect(again["carry"] == [] and [(k, u) for k, u, _ in again["refused"]] == [("render", "t 2")],
                f"a second run carries nothing more: {again}")
         expect(inside(root, "state") == after, "a second run changes nothing")
+        docs_out = inside(root, "documents")
+        expect(docs_out["dry moves"] == 9 and docs_out["dry moved nothing"], f"a dry run lists the moves only: {docs_out}")
+        expect(len(docs_out["moved"]) == 9 and not any("zzz" in p for p in docs_out["moved"]),
+               f"the document's files move and a longer name is left: {docs_out['moved']}")
+        expect(docs_out["forms"] == ["yy"] * 4, f"the form field of a moved review file follows: {docs_out['forms']}")
+        expect('"classm.yy.1"' in docs_out["fixture"] and '"classm.zzz.1"' in docs_out["fixture"]
+               and "classm.zz.1 in prose" in docs_out["fixture"], f"only the class M case ids are renamed: {docs_out['fixture']}")
+        expect(docs_out["classm keys"] == [
+            ["case classm.yy.1", "case classm.zz.1", {"case classm.zz.1": "case classm.yy.1"}],
+            ["classm.yy.1 \u2014 1", "classm.zz.1 \u2014 1", {"classm.zz.1 \u2014 1": "classm.yy.1 \u2014 1"}],
+            ["other", None, None]], f"class M case keys are renamed and shown from their old sections: {docs_out['classm keys']}")
+        expect(docs_out["classm rulings"] == ["classm.yy.1"], f"the sidecar case ids follow: {docs_out['classm rulings']}")
+        expect(docs_out["refused"] is True, "a file already at the new name refuses the move")
     finally:
         shutil.rmtree(work, ignore_errors=True)
     for b in bad:
@@ -314,7 +378,8 @@ if __name__ == "__main__":
         sys.path.insert(0, os.path.join(REPO, "tools"))
         step, args = sys.argv[2], sys.argv[3:]
         del sys.argv[1:]
-        {"setup": step_setup, "state": step_state, "carry": step_carry, "digest": step_digest}[step](*args)
+        {"setup": step_setup, "state": step_state, "carry": step_carry, "digest": step_digest,
+         "documents": step_documents}[step](*args)
         sys.exit(0)
     sys.path.insert(0, HERE)
     sys.exit(main())

@@ -24,19 +24,19 @@ rows:
     situation: A person whose husband or wife died during 2025 files one return for the two of them.
     answers:
       $person: [taxpayer, spouse]
-      household.married: false
-      household.spouse_died_2025: true
+      household.married_dec31: false
+      household.spouse_died_this_year: true
     expect:
       proceeds:
         f1040.status: mfj
-        household.spouse_died_2025: true
+        household.spouse_died_this_year: true
   - id: opening.pair_not_married
     design: C.1 row 3 (filing together, not married, no death)
     situation: Two people who are not married to each other choose one return together.
     answers:
       $person: [taxpayer, spouse]
-      household.married: false
-      household.spouse_died_2025: false
+      household.married_dec31: false
+      household.spouse_died_this_year: false
     expect:
       refused: household.filing_status_conflict
   - id: opening.separate
@@ -49,21 +49,25 @@ rows:
       refused: s3.mfs
   - id: opening.living_apart_parent
     design: C.1 row 5 (married, living apart, child at home; may be head of household)
-    situation: A married parent who lives apart from their husband or wife picks the line about paying for a home and is asked whether they count as unmarried.
+    situation: A married parent who lives apart from their husband or wife picks the line about paying for a home, says they were married at the end of the year, and is asked whether they count as unmarried.
     answers:
       $person: [taxpayer]
       f1040.status: hoh
+      household.ever_married: true
+      household.married_dec31: true
+      household.spouse_died_this_year: false
     expect:
-      asks: household.unmarried
+      asks: household.considered_unmarried
   - id: opening.unmarried_with_child
     design: C.1 row 6 (unmarried with a child or supported relative)
-    situation: An unmarried person who pays for the home of their child picks the line about a home, says they were unmarried, and is asked about the cost of the home.
+    situation: A person who has never been married and pays for the home of their child picks the line about a home, and is asked about the cost of the home without being asked whether they were married or unmarried.
     answers:
       $person: [taxpayer]
       f1040.status: hoh
-      household.unmarried: true
+      household.ever_married: false
     expect:
       asks: household.home_cost
+      not_asked: [household.married_dec31, household.spouse_died_this_year, household.considered_unmarried]
   - id: opening.widowed_with_child
     design: C.1 row 7 (widowed in 2023 or 2024 with a child)
     situation: A person widowed in 2023 or 2024 whose child lives with them picks that line and is asked its five tests.
@@ -74,13 +78,13 @@ rows:
       asks: household.qss_eligible
   - id: opening.single
     design: C.1 row 8 (unmarried, none of these)
-    situation: An unmarried person with no child or supported relative takes the last line and files as single.
+    situation: A person who has never been married, with no child or supported relative, takes the last line and files as single after one question about marriage.
     answers:
       $person: [taxpayer]
       f1040.status: single
-      household.married: false
-      household.spouse_died_2025: false
+      household.ever_married: false
     expect:
+      not_asked: [household.married_dec31, household.spouse_died_this_year]
       proceeds:
         f1040.status: single
         person[taxpayer].role: taxpayer
@@ -90,7 +94,8 @@ rows:
     answers:
       $person: [taxpayer]
       f1040.status: single
-      household.married: true
+      household.ever_married: true
+      household.married_dec31: true
     expect:
       refused: household.filing_status_conflict
   - id: opening.widowed_this_year_alone
@@ -99,7 +104,39 @@ rows:
     answers:
       $person: [taxpayer]
       f1040.status: single
-      household.married: false
-      household.spouse_died_2025: true
+      household.ever_married: true
+      household.married_dec31: false
+      household.spouse_died_this_year: true
     expect:
-      refused: household.widowed_2025
+      refused: household.widowed_this_year
+  - id: opening.birth_year_after_tax_year
+    design: DECISIONS.md item 2 (a birth year is range-checked; the upper bound)
+    situation: A person types a year of birth after 2025.
+    answers:
+      person[taxpayer].birth_year: 2026
+    expect:
+      refused: household.birth_year_bad
+  - id: opening.birth_year_too_early
+    design: DECISIONS.md item 2 (a birth year is range-checked; the lower bound)
+    situation: A person types a year of birth more than 125 years before 2025.
+    answers:
+      person[taxpayer].birth_year: 1899
+    expect:
+      refused: household.birth_year_bad
+  - id: opening.birth_year_latest_accepted
+    design: DECISIONS.md item 2 (the upper bound itself is accepted)
+    situation: A person born in 2025 is not refused for the year of birth; the walk ends at the refusal of a filer under 16.
+    answers:
+      person[taxpayer].birth_year: 2025
+    expect:
+      refused: household.filer_under16
+  - id: opening.birth_year_earliest_accepted
+    design: DECISIONS.md item 2 (the lower bound itself is accepted)
+    situation: A person born in 1900, with nothing else to report.
+    answers:
+      person[taxpayer].birth_year: 1900
+      person[taxpayer].work_ssn: true
+      person[taxpayer].rmd_missed: false
+      s3.elderly_credit: false
+    expect:
+      proceeds: {"person[taxpayer].birth_year": 1900}

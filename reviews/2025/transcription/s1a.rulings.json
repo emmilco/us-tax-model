@@ -427,11 +427,11 @@
    "printed": "14b",
    "project_expr_sha256": "439bbff74c77328b320660bc90d309c721b37b713da51007ce619c048ed54c15",
    "second_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
-   "ruling": "Ruling: scope; project retained. Overtime reported on Form 1099-NEC or 1099-MISC is nonemployee compensation, refused through scope.schedule1, which line 14b carries; the second enters $0 for the same computed case. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 2,271 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 3, \"project-refuses\": 2, \"project-unknown\": 111}; on completed returns none. The other differences are on refused or incomplete returns. No change to the data.",
-   "context": "597a49b61bd8b2002e56e6e771fc8d47e0045322c364714580f136e7ba87ca58",
-   "date": "2026-11-11",
-   "run": "d9788ef27819d6228b9a974a6663f81e3834b53630d00972036ab13d99f37727",
-   "subject_key": "9ae1b41d56fa71cc27eb6d54d40bca07f6a5056ba49b6dc3eea1e2d242220d28",
+   "ruling": "Ruling: representation; triage 2,487/2,597 agree, no value difference; differences are project-unknown (unasked Part III questions), project-refuses (6) and candidate-refuses (3), all on refused or incomplete returns: both lines are 0 where they compute and both refuse Form 1099 overtime from a Schedule C (s1.sc_1a). The reply refuses on s1.sc_1a also when Part III does not apply, where the project's line is 0; refusal placement only. i1040gi, Schedule 1-A Part III, \"Fill out Schedule 1-A, Part III, only if\".",
+   "context": "00cadef30c7ba5525a5125f9e5ce6a4504ffdaa654cabe1b2f89724b3b061742",
+   "date": "2026-11-14",
+   "run": "c083400204af744bc9338af38b99386f0c531862fedf68da24f7ab823b656624",
+   "subject_key": "4f6a5da196c0fbf7e676de12ee38a256fda58b6e288ee542fbb70a4dc692a359",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -450,7 +450,11 @@
      "fixture:stage14.refuse.sch1a_tips@s1a",
      "fixture:stage14.refuse.sch1a_tips_business_only@s1a",
      "fixture:stage14.sch1a.refuse_overtime_1099@s1a",
-     "generated:20261026.389@s1a"
+     "generated:20261026.1@s1a",
+     "generated:20261026.16@s1a",
+     "generated:20261026.297@s1a",
+     "generated:20261026.416@s1a",
+     "generated:20261026.444@s1a"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1988,6 +1992,40 @@
   },
   {
    "printed": "36b",
+   "project_expr_sha256": "b88beb475e183940f560e8c1074f7808b88f802f63b1bfac6b271e28b0c31743",
+   "second_expr_sha256": "8cbd1e3f375b2e8398e15b8ae9cb657b457aadce3f23498e3a66bbb29a8162e3",
+   "ruling": "Ruling: representation; triage 2,576/2,597 agree, no value difference; differences are candidate-unknown (9: the reply reads person.died_at_64 for every spouse, a question asked only of a person born in the year that turns 65 in 2025 (gated_by person.died_before_65)) and project-refuses (11: the project refuses a spouse born before January 2, 1961 who died in 2025 before reaching 65, s1a.spouse_senior_decedent, where the reply enters 0). i1040gi p. 110, Part V, \"If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors\": the reply's 0 matches the source and the project declines the case rather than computing it (a scope choice, not a wrong value). Elsewhere both enter line 35 for a married-filing-jointly spouse born before January 2, 1961 with a valid SSN.",
+   "context": "00cadef30c7ba5525a5125f9e5ce6a4504ffdaa654cabe1b2f89724b3b061742",
+   "date": "2026-11-14",
+   "run": "c083400204af744bc9338af38b99386f0c531862fedf68da24f7ab823b656624",
+   "subject_key": "3438fd856eaf7aff208774e4166f30a570ddc962d1f28afb57e69eea43b0f352",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@s1a",
+     "fixture:classm.sa.2.deepseek@s1a",
+     "fixture:classm.sa.3.deepseek@s1a",
+     "fixture:classm.f8962.5.gpt@s1a",
+     "fixture:classm.otjob.1@s1a",
+     "fixture:classm.scveh.1@s1a",
+     "fixture:classm.se.1@s1a",
+     "fixture:classm.se.3@s1a",
+     "fixture:classm.w2.1@s1a",
+     "fixture:mutation.t2.no_5695_part1_s3_5a@s1a",
+     "fixture:mutation.t3.roth_excess_screen@s1a",
+     "fixture:stage13.refuse.senior_spouse_decedent@s1a",
+     "fixture:ss.person.separation@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "36b",
    "project_expr_sha256": "c59d55ec0f0ae23c55042682c521f880ab8633413df51e028633f07138643e89",
    "second_expr_sha256": "1e0e12f2daab72b5419f6a3f3da7ae18c919b2befd82e6ff4c18b9cc3da69e4b",
    "ruling": "Ruling: scope; i1040gi p. 110, Death of a taxpayer in 2025: \"If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn’t qualify for the enhanced deduction for seniors.\" As line 36a for the spouse: the candidate gives $0 and the project refuses at its cited gate s1a.spouse_senior_decedent (stage13.refuse.senior_spouse_decedent, generated 491). The project-unknown record lacks a roster role on an incomplete return. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,358 of 2,361 comparisons agree; differences {\"project-refuses\": 2, \"project-unknown\": 1}; on completed returns none.",
@@ -2176,41 +2214,30 @@
    "printed": "4b",
    "project_expr_sha256": "902f5efc3111f6b5c8380d6425d8b335c0ee7ac03d181073ee96d1891c070934",
    "second_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
-   "ruling": "Ruling: refusal representation; project retained. The line is $0 within scope and carries its own refusal for the form it would come from (Form 4137, through s2.other), as ruled in Stage 12 (BUG-0043); the second enters $0 and refuses Form 4137 filers by its own note. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 2,205 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 32, \"candidate-unknown\": 25, \"project-refuses\": 3, \"project-unknown\": 122}; on completed returns none. The other differences are on refused or incomplete returns. No change to the data.",
-   "context": "597a49b61bd8b2002e56e6e771fc8d47e0045322c364714580f136e7ba87ca58",
-   "date": "2026-11-11",
-   "run": "d9788ef27819d6228b9a974a6663f81e3834b53630d00972036ab13d99f37727",
-   "subject_key": "a5ad7e01dcd9fa47315f25ce0dc78f159ed0e58485fa759941cdda08ee6daddf",
+   "ruling": "Ruling: representation; triage 2,470/2,597 agree, no value difference; differences are project-unknown (unasked Part II questions: s1a.tips and the SSN tests) and project-refuses (6, refused returns: the project's Form 4137 refusal, s2.other). Both lines are 0 wherever they compute: i1040gi p. 104, line 4b, \"If Form 4137 is not filed, enter -0-\", and Form 4137 is outside the tool (refused here by the project, through person.se_screen per the reply's note). The project's line is 0 also when Part II does not apply (i1040gi p. 101, \"Fill out Schedule 1-A, Part II, only if\").",
+   "context": "00cadef30c7ba5525a5125f9e5ce6a4504ffdaa654cabe1b2f89724b3b061742",
+   "date": "2026-11-14",
+   "run": "c083400204af744bc9338af38b99386f0c531862fedf68da24f7ab823b656624",
+   "subject_key": "84f12926a369871713cf0915bee584ae2fee5c391301d33462fcdb4d6f26dabc",
    "triage": {
     "verdict": "differs",
     "kinds": [
-     "candidate-refuses",
-     "candidate-unknown",
      "project-refuses",
      "project-unknown"
     ],
     "witnesses": [
-     "fixture:stage12.car.mixed_sc_interest_prorated@s1a",
      "fixture:classm.f8889.1.deepseek@s1a",
+     "fixture:classm.f8889.2.deepseek@s1a",
      "fixture:classm.f8889.5.deepseek@s1a",
      "fixture:classm.f4952.3.deepseek@s1a",
      "fixture:classm.f4952.4.deepseek@s1a",
      "fixture:classm.f8960.2.deepseek@s1a",
-     "fixture:classm.dependent.1.deepseek@s1a",
-     "fixture:classm.eic.6.deepseek@s1a",
-     "fixture:classm.f5329.3.deepseek@s1a",
-     "fixture:classm.carloan.1@s1a",
-     "fixture:classm.f5329.3@s1a",
-     "fixture:stage19.mut.classm_f5329_3_dependent_no_ein@s1a",
-     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@s1a",
-     "fixture:stage16.cleanup.refuse.f1040_line16@s1a",
-     "fixture:stage16.cleanup.refuse.scope_credits@s1a",
-     "fixture:stage16.cleanup.refuse.f4952_unsupported@s1a",
-     "fixture:t264.f4952.unsupported_with_interest@s1a",
-     "fixture:stage16.cleanup.refuse.f8889.screen_no_amounts@s1a",
      "fixture:stage12.refuse.form4137_one_employer@s1a",
      "fixture:stage12.refuse.form4137_two_employers@s1a",
-     "generated:20261026.223@s1a"
+     "generated:20261026.40@s1a",
+     "generated:20261026.53@s1a",
+     "generated:20261026.317@s1a",
+     "generated:20261026.471@s1a"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2434,11 +2461,11 @@
    "printed": "5",
    "project_expr_sha256": "902f5efc3111f6b5c8380d6425d8b335c0ee7ac03d181073ee96d1891c070934",
    "second_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
-   "ruling": "Ruling: scope; project retained. Qualified tips in a trade or business need Schedule C, E or F and the net income limitation, refused through scope.schedule1, which line 5 carries, and for a Schedule C through s1.sc_1a; the second enters $0 for the same computed case. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 2,268 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 3, \"project-refuses\": 5, \"project-unknown\": 111}; on completed returns none. The other differences are on refused or incomplete returns. No change to the data.",
-   "context": "597a49b61bd8b2002e56e6e771fc8d47e0045322c364714580f136e7ba87ca58",
-   "date": "2026-11-11",
-   "run": "d9788ef27819d6228b9a974a6663f81e3834b53630d00972036ab13d99f37727",
-   "subject_key": "67a1ca1946688da1543b801b3e16e80939e2fe6d8a7299cb0b66f418d0eabf7d",
+   "ruling": "Ruling: representation; triage 2,481/2,597 agree, no value difference; differences are project-unknown (unasked Part II questions), project-refuses (12) and candidate-refuses (3), all on refused or incomplete returns: both lines are 0 where they compute and both refuse trade-or-business tips (s1.sc_1a; the project also scope.schedule1). The reply refuses on s1.sc_1a even when Part II does not apply, where the project's line is 0 (i1040gi p. 101, \"Fill out Schedule 1-A, Part II, only if\": you received qualified tips); refusal placement only. i1040gi p. 104, line 5.",
+   "context": "00cadef30c7ba5525a5125f9e5ce6a4504ffdaa654cabe1b2f89724b3b061742",
+   "date": "2026-11-14",
+   "run": "c083400204af744bc9338af38b99386f0c531862fedf68da24f7ab823b656624",
+   "subject_key": "5b676bc6b4544bb5a1f07c81bc64795b67fc8c60d19133cc4339153ffbf8924a",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -2455,12 +2482,13 @@
      "fixture:classm.dependent.2.deepseek@s1a",
      "fixture:mutation.t2.mfj_no_overtime_part3@s1a",
      "fixture:mutation.t2.s1a.line13_magi_first@s1a",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_three_jobs@s1a",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_one_job@s1a",
      "fixture:stage12.refuse.tips_trade_or_business@s1a",
      "fixture:stage14.refuse.sch1a_tips@s1a",
      "fixture:stage14.refuse.sch1a_tips_business_only@s1a",
      "fixture:stage14.sch1a.refuse_overtime_1099@s1a",
-     "generated:20261026.305@s1a",
-     "generated:20261026.389@s1a"
+     "generated:20261026.34@s1a"
     ],
     "policy": "executable-triage-v2"
    }

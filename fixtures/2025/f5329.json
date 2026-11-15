@@ -632,6 +632,7 @@
         "person[taxpayer].w2[emp_a].box4": 235600,
         "person[taxpayer].w2[emp_a].box5": 3800000,
         "person[taxpayer].w2[emp_a].box6": 55100,
+        "sa.medical_any": true,
         "sa.line1": 1100000
       },
       "expect": {
@@ -726,7 +727,7 @@
           "e0"
         ],
         "f1040.status": "mfj",
-        "household.married": true,
+        "household.married_dec31": true,
         "person[spouse].retirement[a].box1": 300000,
         "person[spouse].retirement[a].code": "early_1",
         "person[spouse].retirement[a].exc_amount": 300000,
@@ -748,6 +749,7 @@
         "person[taxpayer].w2[e0].box4": 372000,
         "person[taxpayer].w2[e0].box5": 6000000,
         "person[taxpayer].w2[e0].box6": 87000,
+        "sa.medical_any": true,
         "sa.line1": 1800000
       },
       "expect": {
@@ -948,7 +950,7 @@
           "e0"
         ],
         "f1040.status": "mfj",
-        "household.married": true,
+        "household.married_dec31": true,
         "person[spouse].retirement[a].box1": 300000,
         "person[spouse].retirement[a].code": "early_1",
         "person[spouse].w2[e0].box1": 8000000,
@@ -1199,7 +1201,8 @@
         "person[taxpayer].w2[emp_a].box4": 248000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].f5329[form].l1": {
@@ -1267,7 +1270,8 @@
         "person[taxpayer].w2[emp_a].box4": 248000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].f5329[form].l1": {
@@ -1343,8 +1347,16 @@
         "person[taxpayer].w2[emp_a].box4": 403000,
         "person[taxpayer].w2[emp_a].box5": 6500000,
         "person[taxpayer].w2[emp_a].box6": 94250,
-        "person[taxpayer].x_other": true,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "person[taxpayer].x_edu_account": true,
+        "person[taxpayer].x_edu_taxable": true,
+        "person[taxpayer].x_edu_excess": false,
+        "person[taxpayer].x_archer_excess": false,
+        "person[taxpayer].inherited_account": false,
+        "person[taxpayer].rmd_missed": false,
+        "person[taxpayer].x_hsa_prior_excess": false,
+        "person[taxpayer].x_ira_prior_excess": false
       },
       "expect": {
         "person[taxpayer].f5329[form].l1": {
@@ -1428,7 +1440,8 @@
         "person[taxpayer].w2[emp_a].box4": 248000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].f5329[form].l1": {
@@ -1511,7 +1524,8 @@
         "person[taxpayer].w2[emp_a].box1": 5000000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line4a": {
@@ -1576,7 +1590,8 @@
         "person[taxpayer].w2[emp_a].box1": 5000000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 58000,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line5a": {
@@ -1741,7 +1756,7 @@
           "e0"
         ],
         "f1040.status": "mfj",
-        "household.married": true,
+        "household.married_dec31": true,
         "person[spouse].retirement[a].box1": 300000,
         "person[spouse].retirement[a].code": "early_1",
         "person[spouse].retirement[a].exc_amount": 300000,
@@ -1763,8 +1778,10 @@
         "person[taxpayer].w2[e0].box4": 372000,
         "person[taxpayer].w2[e0].box5": 6000000,
         "person[taxpayer].w2[e0].box6": 87000,
+        "sa.medical_any": true,
         "sa.line1": 1577500,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].f5329[form].l2": {
@@ -1903,7 +1920,8 @@
         "person[taxpayer].w2[emp_a].box2": 520000,
         "person[taxpayer].w2[emp_a].box5": 6500000,
         "person[taxpayer].w2[emp_a].box6": 94250,
-        "s179.line10": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line13": {
