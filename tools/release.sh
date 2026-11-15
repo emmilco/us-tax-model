@@ -45,7 +45,7 @@ common="$(cd "$(git rev-parse --git-common-dir)" && pwd)"
 last="$common/check-all-bg/last"
 get() { sed -n "s/^$1=//p" "$last"; }
 # A release reruns every outside engine and compares each stored record with the fresh one (tools/engines/engine_cache.py).
-if ! ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full; then
+if ! CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full; then
   die "the full run did not pass; nothing tagged (log: $common/check-all-bg/log)"
 fi
 [ "$(get status)" = green ] && [ "$(get tier)" = full ] || die "the full run is $(get status), not green; nothing tagged"

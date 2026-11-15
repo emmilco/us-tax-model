@@ -27,7 +27,9 @@
 # A check that runs for both jurisdictions is declared once, with jstep: its New York
 # run is the step ny_<name>, the same command with the New York flag.
 #
-# --tier full|fast|docs selects the steps (default full: every step). fast skips slow_steps: the
+# --tier full|fast|docs selects the steps (default full: every step except release_steps, which only a
+# release runs: tools/release.sh sets CHECK_ALL_RELEASE=1). release_steps rewrite a report and check nothing
+# another step does not. fast skips slow_steps: the
 # mutation and independent-evaluator checks a release runs, and the interview length report. evidence then marks
 # its E column with the latest release reachable from HEAD, because the engine differential it reads was not rerun.
 # engine_differential reuses an outside engine's stored record while everything that determines it
@@ -54,7 +56,9 @@ case "$tier" in
   full|fast|docs) ;;
   *) echo "check-all: unknown tier '$tier' (full, fast or docs)" >&2; exit 2 ;;
 esac
+release_steps=" interview_length "
 in_tier() {
+  if [[ "$release_steps" == *" $1 "* ]] && [ "${CHECK_ALL_RELEASE:-}" != 1 ]; then return 1; fi
   case "$tier" in
     full) return 0 ;;
     fast) [[ "$slow_steps" != *" $1 "* ]] ;;

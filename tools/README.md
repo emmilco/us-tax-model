@@ -71,7 +71,10 @@ it back only if the worktree later edits it. `--self-test` runs in check-all.
 
 The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast`):
 
-- **full** (the default): every step. A release needs it. The recorded green full runs
+- **full** (the default): every step except `interview_length`, which only a release runs
+  (`tools/release.sh` sets `CHECK_ALL_RELEASE=1`): it rewrites `interview_length.md` and checks
+  nothing another step does not, so between releases that report can be older than the tree.
+  A release needs the full tier. The recorded green full runs
   (`.git/check-all-bg/runs/*/times`) took 13 to 32 minutes, median 17; most of the spread is
   the machine's other load. Wave 2 is the longest stage: `engine_differential`, `compare` and
   `mutate` set it. `engine_differential` reuses the outside engines' stored records while

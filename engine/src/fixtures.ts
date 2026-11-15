@@ -379,13 +379,22 @@ export function coverageReport(): void {
   out.push("because guard predicates depend only on the bound amount, each def's guards are");
   out.push("covered once across instances rather than once per instance.");
   out.push("");
+  // At most CASES_LISTED case ids per branch, with the total: the full lists outgrew a file GitHub accepts.
+  const CASES_LISTED = 8;
+  const listCases = (cases: Iterable<string>) => {
+    const ids = [...new Set(cases)].sort();
+    const shown = ids.slice(0, CASES_LISTED).join(", ");
+    return ids.length > CASES_LISTED ? `${ids.length} cases: ${shown}, …` : shown;
+  };
+  out.push(`Each branch lists at most ${CASES_LISTED} of the cases that take it (sorted), after the count.`);
+  out.push("");
   let uncovered = 0;
   for (const { key, count } of chooseLines) {
     const rows: string[] = [];
     for (let i = 0; i < count; i++) {
       const cases = taken.get(`${key}#${i}`) ?? [];
       if (cases.length === 0) uncovered++;
-      rows.push(`- guard ${i}: ${cases.length > 0 ? cases.join(", ") : "**UNOBSERVED**"}`);
+      rows.push(`- guard ${i}: ${cases.length > 0 ? listCases(cases) : "**UNOBSERVED**"}`);
     }
     out.push(`## ${key} (${count} guards)`);
     out.push(...rows);
@@ -410,7 +419,7 @@ export function coverageReport(): void {
     for (let i = 0; i < count; i++) {
       const cases = taken.get(`${instKey}#${i}`) ?? [];
       if (cases.length === 0) uncovered++;
-      out.push(`- guard ${i}: ${cases.length > 0 ? cases.join(", ") : "**UNOBSERVED**"}`);
+      out.push(`- guard ${i}: ${cases.length > 0 ? listCases(cases) : "**UNOBSERVED**"}`);
     }
     out.push("");
   }
@@ -424,7 +433,7 @@ export function coverageReport(): void {
       }
       if (line.id === "sd.screen" && side === "true") { out.push("- sd.screen true: unreachable by Count non-negativity; structural propagation gate, not a tax branch."); continue; }
       const cases=branches.get(`${line.id}:${side}`);
-      out.push(`- ${line.id} ${side}: ${cases ? [...cases].join(", ") : "**UNOBSERVED**"}`);
+      out.push(`- ${line.id} ${side}: ${cases ? listCases(cases) : "**UNOBSERVED**"}`);
       if (!cases) uncovered++;
     }
   }
